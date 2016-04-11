@@ -20,17 +20,18 @@ The Mod for Minecraft 1.8.9+
 ## Function
 以下の機能は開発中、未実装のものを含みます。<br>
 <br>
+
 1. Using Climate interface, add some recipes for the changing placed objects, or the processing of machine tiles. <br> 気候インターフェイスを利用して設置状態のオブジェクトを変化させたり、装置Tileにアイテムを処理させるレシピを追加します。<br>
-  
-2. Add heatsources for changing the temperature of the coordinates. It is used for the devices or recipes that require high temperature.  <br>座標の持つ温度を増減させる熱源。高温を必要とする装置やレシピに利用されます。<br>
 
-3.  Too high or low a temperature will harm the player. <br>  極端な高温、低温はプレイヤーにダメージを与えます。<br>
+2. Add heatsources for changing the temperature of the coordinates. It is used for the devices or recipes that require high temperature. <br> 座標の持つ温度を増減させる熱源。高温を必要とする装置やレシピに利用されます。<br>
 
-4.  Add some small veins, and new metals. They are required to the material of the tools, equipment and building blocks in this mod. <br> 新しい金属と、特殊形状のいくつかの小鉱脈と、鉱脈に由来する新しい金属を追加します。それらは、Modのツールや建材に必要になります。<br>
+3. Too high or low a temperature will harm the player. <br>  極端な高温、低温はプレイヤーにダメージを与えます。<br>
 
-5.  Add various functions to improve my work. <br> 私の開発を補助するための様々な機能。<br>
-- Automatic generation of simple json model. 簡単なものにかぎり、モデル用Jsonの自動生成。
-- Automatic addition of ore dictionary recipes. 自動的に鉱石辞書に変換・追加する機能。(FluidityFoodstuffsから移植)
+4. Add some small veins, and new metals. They are required to the material of the tools, equipment and building blocks in this mod. <br> 新しい金属と、特殊形状のいくつかの小鉱脈と、鉱脈に由来する新しい金属を追加します。それらは、Modのツールや建材に必要になります。<br>
+
+5. Add various functions to improve my work. <br> 私の開発を補助するための様々な機能。<br>
+・ Automatic generation of simple json model. 簡単なものにかぎり、モデル用Jsonの自動生成。<br>
+・ Automatic addition of ore dictionary recipes. 自動的に鉱石辞書に変換・追加する機能。(FluidityFoodstuffsから移植)<br>
 
 <br>
 (c) defeatedcrow 2016
