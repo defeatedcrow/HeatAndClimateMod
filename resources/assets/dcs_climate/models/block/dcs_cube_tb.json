@@ -1,0 +1,11 @@
+{
+    "parent": "dcs_climate:block/dcs_cube",
+    "textures": {
+        "top": "#top",
+        "down": "#down",
+        "north": "#side",
+        "south": "#side",
+        "west": "#side",
+        "east": "#side"
+    }
+}

@@ -1,0 +1,80 @@
+
+## item
+item.dcs_checker_normal.name=Climate Checker
+item.dcs_ingot_copper.name=Copper Ingot
+item.dcs_ingot_zinc.name=Zinc Ingot
+item.dcs_ingot_silver.name=Silver Ingot
+item.dcs_ingot_nickel.name=Nickel Ingot
+item.dcs_ingot_brass.name=Brass Ingot
+item.dcs_ingot_nickelsilver.name=NickelSilver Ingot
+item.dcs_ingot_magnet.name=Magnet Ingot
+item.dcs_ingot_steel.name=Steel Ingot
+item.dcs_oredust_copper.name=Copper Dust
+item.dcs_oredust_zinc.name=Zinc Dust
+item.dcs_oredust_silver.name=Silver Dust
+item.dcs_oredust_nickel.name=Nickel Dust
+item.dcs_oredust_iron.name=Iron Dust
+item.dcs_oredust_gold.name=Gold Dust
+item.dcs_oredust_steel.name=Steel Dust
+item.dcs_oredust_magnet.name=Magntite Dust
+item.dcs_gem_chal_blue.name=Blue Chalcedony
+item.dcs_gem_chal_red.name=Red Chalcedony
+item.dcs_gem_chal_white.name=White Chalcedony
+item.dcs_gem_gypsum.name=Gypsum
+item.dcs_gem_sapphire.name=Sapphire
+item.dcs_miscdust_coal.name=Coal Dust
+item.dcs_miscdust_crystal.name=Quartz Dust
+item.dcs_miscdust_gypsum.name=Gypsum Dust
+item.dcs_miscdust_wood.name=Wood Dust
+item.dcs_miscdust_presscake.name=Presscake
+item.dcs_miscdust_ash.name=Ash
+
+item.dcs_material_string_linen.name=Linen String
+item.dcs_material_string_cotton.name=Cotton String
+item.dcs_material_cloth_linen.name=Linen Cloth
+item.dcs_material_cloth_cotton.name=Cotton Cloth
+item.dcs_material_spindle_wood.name=Wooden Spindle
+
+item.dcs_yagen_stone_normal.name=Druggist's Mortar
+
+## block
+tile.dcs_ore_stone_0.name=Gypsum
+tile.dcs_ore_stone_1.name=Hematite
+tile.dcs_ore_stone_2.name=Blue Chalcedony Ore
+tile.dcs_ore_stone_3.name=Sapphire Ore
+tile.dcs_ore_stone_4.name=Pyrite
+tile.dcs_ore_stone_5.name=Magnetite
+tile.dcs_ore_stone_6.name=Chalcopyrite
+tile.dcs_ore_stone_7.name=Nickeline
+tile.dcs_ore_stone_8.name=Sphalerite
+tile.dcs_ore_stone_9.name=White Chalcedony Ore
+tile.dcs_ore_stone_10.name=Geode Quartz Ore
+tile.dcs_ore_stone_11.name=Vein Gold Ore
+tile.dcs_ore_stone_12.name=Vein Silver Ore
+tile.dcs_ore_stone_13.name=Geode Diamond Ore
+tile.dcs_ore_stone_14.name=Geode Emerald Ore
+tile.dcs_ore_stone_15.name=Vein Magnetite
+tile.dcs_dustblock_copper.name=Copper Dust Block
+tile.dcs_dustblock_zinc.name=Zinc Dust Block
+tile.dcs_dustblock_nickel.name=Nickel Dust Block
+tile.dcs_dustblock_silver.name=Silver Dust Block
+tile.dcs_dustblock_brass.name=Brass Dust Block
+tile.dcs_dustblock_nickelsilver.name=Nickelsilver Dust Block
+tile.dcs_dustblock_steel.name=Iron Dust Block
+tile.dcs_dustblock_magnet.name=Magnetite Dust Block
+tile.dcs_metal_copper.name=Copper Block
+tile.dcs_metal_zinc.name=Zinc Block
+tile.dcs_metal_nickel.name=Nickel Block
+tile.dcs_metal_silver.name=Silver Block
+tile.dcs_metal_brass.name=Brass Block
+tile.dcs_metal_nickelsilver.name=Nickelsilver Block
+tile.dcs_metal_steel.name=Steel Block
+tile.dcs_metal_magnet.name=Magnetite Block
+tile.dcs_gemblock_chal_blue.name=Blue Chalceony Block
+tile.dcs_gemblock_chal_red.name=Red Chalceony Block
+tile.dcs_gemblock_chal_white.name=White Chalceony Block
+tile.dcs_gemblock_gypsum.name=Gypsum Block
+tile.dcs_gemblock_sapphire.name=Sapphire Block
+
+## massage
+dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)

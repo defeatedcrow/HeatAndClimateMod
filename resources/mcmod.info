@@ -1,0 +1,22 @@
+[
+  {
+    "description":"Dinner party for crows!",
+    "parent":"",
+    "logoFile":"",
+    "credits":"defeatedcrow",
+    "dependencies":[],
+    "modid":"dcs_climate",
+    "mcversion":"1.8.9",
+    "screenshots":[],
+    "authorList":[
+      "defeatedcrow"
+    ],
+    "name":"HeatAndClimateMod",
+    "url":"http://defeatedcrow.jp/modwiki/Mainpage",
+    "updateUrl":"",
+    "version":"1.8.9_0.3a",
+    "requiredMods":[
+      "Minecraft Forge1.8.9-11.15.1.1722+"
+    ]
+  }
+]

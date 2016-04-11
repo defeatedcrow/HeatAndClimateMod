@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "type=0": { "model": "dcs_climate:ores/dcs_ore_dustblock0" },
+        "type=1": { "model": "dcs_climate:ores/dcs_ore_dustblock1" },
+        "type=2": { "model": "dcs_climate:ores/dcs_ore_dustblock2" },
+        "type=3": { "model": "dcs_climate:ores/dcs_ore_dustblock3" },
+        "type=4": { "model": "dcs_climate:ores/dcs_ore_dustblock4" },
+        "type=5": { "model": "dcs_climate:ores/dcs_ore_dustblock5" },
+        "type=6": { "model": "dcs_climate:ores/dcs_ore_dustblock6" },
+        "type=7": { "model": "dcs_climate:ores/dcs_ore_dustblock7" },
+        "type=8": { "model": "dcs_climate:ores/dcs_ore_dustblock8" },
+        "type=9": { "model": "dcs_climate:ores/dcs_ore_dustblock9" },
+        "type=10": { "model": "dcs_climate:ores/dcs_ore_dustblock10" },
+        "type=11": { "model": "dcs_climate:ores/dcs_ore_dustblock11" },
+        "type=12": { "model": "dcs_climate:ores/dcs_ore_dustblock12" },
+        "type=13": { "model": "dcs_climate:ores/dcs_ore_dustblock13" },
+        "type=14": { "model": "dcs_climate:ores/dcs_ore_dustblock14" },
+        "type=15": { "model": "dcs_climate:ores/dcs_ore_dustblock15" }
+    }
+}
