@@ -1,6 +1,8 @@
 
 ## item
 item.dcs_checker_normal.name=Climate Checker
+item.dcs_creative_drill_normal.name=Crow's Drill
+
 item.dcs_ingot_copper.name=Copper Ingot
 item.dcs_ingot_zinc.name=Zinc Ingot
 item.dcs_ingot_silver.name=Silver Ingot
@@ -75,6 +77,14 @@ tile.dcs_gemblock_chal_red.name=Red Chalceony Block
 tile.dcs_gemblock_chal_white.name=White Chalceony Block
 tile.dcs_gemblock_gypsum.name=Gypsum Block
 tile.dcs_gemblock_sapphire.name=Sapphire Block
+
+tile.dcs_cont_log_oak.name=Oak Log Box
+tile.dcs_cont_log_spruce.name=Spruce Log Box
+tile.dcs_cont_log_birch.name=Birch Log Box
+tile.dcs_cont_log_jungle.name=Jungle Log Box
+tile.dcs_cont_log_acacia.name=Acacia Log Box
+tile.dcs_cont_log_dark.name=Dark Log Box
+tile.dcs_cont_log_Charcoal.name=Charcoal Box
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)

@@ -4,6 +4,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import defeatedcrow.hac.core.ClimateCore;
@@ -28,14 +29,24 @@ public class ClimateMain {
 	public static ClimateMain instance;
 
 	@EventHandler
+	public void construction(FMLConstructionEvent event) {
+		// TextureStitch用のテクスチャパスのリストを作る
+		proxy.loadConst();
+	}
+
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		// materialの登録
 		proxy.loadMaterial();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		// TileEntity
 		proxy.loadTE();
+		// WorldGen
 		proxy.loadWorldGen();
+		// Recipes
 		proxy.loadRecipes();
 	}
 

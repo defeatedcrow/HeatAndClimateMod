@@ -4,6 +4,7 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
+import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.block.ores.BlockGem;
 import defeatedcrow.hac.main.block.ores.BlockMetal;
@@ -13,6 +14,7 @@ import defeatedcrow.hac.main.item.ores.ItemGems;
 import defeatedcrow.hac.main.item.ores.ItemIngots;
 import defeatedcrow.hac.main.item.ores.ItemMiscDust;
 import defeatedcrow.hac.main.item.ores.ItemOreDusts;
+import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemStoneYagen;
 
 public class MainMaterialRegister {
@@ -21,6 +23,7 @@ public class MainMaterialRegister {
 
 	public static void load() {
 		registerBlock();
+		registerSidedBlock();
 		registerItem();
 		registerHarvestLevel();
 	}
@@ -37,6 +40,12 @@ public class MainMaterialRegister {
 
 		MainInit.gemBlock = new BlockGem(Material.iron, ClimateCore.PACKAGE_BASE + "_gemblock", 4);
 		GameRegistry.registerBlock(MainInit.gemBlock, DCItemBlock.class, ClimateCore.PACKAGE_BASE + "_ore_gemblock");
+	}
+
+	static void registerSidedBlock() {
+		MainInit.logCont = new BlockLogCont(Material.wood, ClimateCore.PACKAGE_BASE + "_cont_log", 6);
+		GameRegistry.registerBlock(MainInit.logCont, DCItemBlock.class, ClimateCore.PACKAGE_BASE + "_cont_log");
+		ClimateMain.proxy.addSidedBlock(MainInit.logCont);
 	}
 
 	static void registerItem() {
@@ -63,6 +72,10 @@ public class MainMaterialRegister {
 		MainInit.stoneYagen = new ItemStoneYagen().setCreativeTab(ClimateCore.climate).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_yagen_stone");
 		GameRegistry.registerItem(MainInit.stoneYagen, ClimateCore.PACKAGE_BASE + "_yagen_stone");
+
+		MainInit.crowDrill = new ItemCrowDrill().setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_creative_drill");
+		GameRegistry.registerItem(MainInit.crowDrill, ClimateCore.PACKAGE_BASE + "_creative_drill");
 	}
 
 	private static void registerHarvestLevel() {

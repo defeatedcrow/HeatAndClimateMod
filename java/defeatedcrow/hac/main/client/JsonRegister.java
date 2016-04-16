@@ -19,6 +19,7 @@ public class JsonRegister {
 		JsonRegisterHelper.INSTANCE.regSimpleItem(MainInit.miscDust, ClimateCore.PACKAGE_ID, "dcs_misc_dust", "ores", 5);
 		JsonRegisterHelper.INSTANCE.regSimpleItem(MainInit.stoneYagen, ClimateCore.PACKAGE_ID, "dcs_stone_yagen", "tool", 0);
 		JsonRegisterHelper.INSTANCE.regSimpleItem(MainInit.materials, ClimateCore.PACKAGE_ID, "dcs_material", "tool", 4);
+		JsonRegisterHelper.INSTANCE.regSimpleItem(MainInit.crowDrill, ClimateCore.PACKAGE_ID, "dcs_crow_drill", "tool", 0);
 	}
 
 	static void regBlocks() {

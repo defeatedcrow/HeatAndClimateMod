@@ -1,6 +1,8 @@
 
 ## item
 item.dcs_checker_normal.name=気候チェッカー
+item.dcs_creative_drill_normal.name=クリエイティブ専用カラスドリル
+
 item.dcs_ingot_copper.name=銅インゴット
 item.dcs_ingot_zinc.name=亜鉛インゴット
 item.dcs_ingot_silver.name=銀インゴット
@@ -76,3 +78,14 @@ tile.dcs_gemblock_chal_red.name=赤カルセドニーブロック
 tile.dcs_gemblock_chal_white.name=白カルセドニーブロック
 tile.dcs_gemblock_gypsum.name=石膏ブロック
 tile.dcs_gemblock_sapphire.name=サファイアブロック
+
+tile.dcs_cont_log_oak.name=樫の丸太箱
+tile.dcs_cont_log_spruce.name=松の丸太箱
+tile.dcs_cont_log_birch.name=白樺の丸太箱
+tile.dcs_cont_log_jungle.name=ジャングルの丸太箱
+tile.dcs_cont_log_acacia.name=アカシアの丸太箱
+tile.dcs_cont_log_dark.name=ダークオークの丸太箱
+tile.dcs_cont_log_Charcoal.name=木炭箱
+
+## massage
+dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)

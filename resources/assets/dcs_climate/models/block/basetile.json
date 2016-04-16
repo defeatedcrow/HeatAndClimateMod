@@ -1,6 +1,0 @@
-{
-    "parent": "dcs_climate:block/dcs_0",
-    "textures": {
-        "all": "blocks/bedrock"
-    }
-}

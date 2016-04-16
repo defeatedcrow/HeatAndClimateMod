@@ -17,8 +17,7 @@ import defeatedcrow.hac.main.MainInit;
 public class WorldGenOres implements IWorldGenerator {
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGen,
-			IChunkProvider chunkProv) {
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGen, IChunkProvider chunkProv) {
 
 		int genDim1 = world.provider.getDimensionId();
 
@@ -28,7 +27,7 @@ public class WorldGenOres implements IWorldGenerator {
 
 		if ((genDim1 != 1 && genDim1 != -1)) {
 			int[] genY = {
-					10,
+					8,
 					30,
 					90,
 					160 };
@@ -43,19 +42,19 @@ public class WorldGenOres implements IWorldGenerator {
 				if (posY > 160) {
 					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN))
 						generateSediment(world, random, pos);
-				} else if (posY > 90 && random.nextInt(2) == 0) {
+				} else if (posY > 90 && random.nextInt(3) == 0) {
 					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN))
 						generateSediment(world, random, pos);
 				} else if (posY < 60 && posY > 30 && random.nextInt(3) == 0) {
 					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN)
 							|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN)) {
 						generateKieslager(world, random, pos);
-					} else if (random.nextInt(4) == 0) {
+					} else if (random.nextInt(6) == 0) {
 						generateQuartzVine(world, random, pos);
 					}
-				} else if (posY < 30 && posY > 13 && random.nextInt(5) == 0) {
+				} else if (posY < 30 && posY > 12 && random.nextInt(6) == 0) {
 					generateVugs(world, random, pos);
-				} else if (posY <= 13 && random.nextInt(2) == 0) {
+				} else if (posY <= 12) {
 					generateUnderlava(world, random, pos);
 				}
 			}
@@ -131,8 +130,8 @@ public class WorldGenOres implements IWorldGenerator {
 	 * 本来は玄武岩など塩基性寄りのはずなんだが...
 	 */
 	public void generateKieslager(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(5) + 3; // 3-7
-		int r = h + 1;
+		int h = rand.nextInt(4) + 3; // 3-6
+		int r = h + rand.nextInt(3);
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
 			if (i == 0 || i == h - 1)
@@ -149,10 +148,10 @@ public class WorldGenOres implements IWorldGenerator {
 
 		// 柱状に生成する
 		BlockPos min = new BlockPos(pos.add(0, -h + 2, -r));
-		BlockPos max = new BlockPos(pos.add(h / 2, 1, r));
+		BlockPos max = new BlockPos(pos.add(h, 1, r));
 		if (rand.nextInt(1) == 0) {
 			min = new BlockPos(pos.add(-r, -h + 2, 0));
-			max = new BlockPos(pos.add(r, 1, h / 2));
+			max = new BlockPos(pos.add(r, 1, h));
 		}
 		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 		for (BlockPos p1 : itr) {
@@ -290,7 +289,10 @@ public class WorldGenOres implements IWorldGenerator {
 	 * なかなか探しにくいが、引き当てるとバニラ宝石類が大量に手に入る。
 	 */
 	public void generateVugs(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(3) + 5; // 5-7
+		int h = rand.nextInt(4) + 3; // 3-6
+		if (rand.nextInt(10) == 0) {
+			h = 8; // 希にあたりがある
+		}
 		// 球状に生成
 		BlockPos min = new BlockPos(pos.add(-h, -h, -h));
 		BlockPos max = new BlockPos(pos.add(h, h, h));
