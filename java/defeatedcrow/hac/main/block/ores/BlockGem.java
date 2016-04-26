@@ -8,7 +8,7 @@ import defeatedcrow.hac.core.base.ITexturePath;
 public class BlockGem extends DCSimpleBlock implements ITexturePath {
 
 	public BlockGem(Material m, String s, int max) {
-		super(m, s, max);
+		super(m, s, max, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);

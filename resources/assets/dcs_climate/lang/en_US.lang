@@ -37,6 +37,8 @@ item.dcs_material_cloth_linen.name=Linen Cloth
 item.dcs_material_cloth_cotton.name=Cotton Cloth
 item.dcs_material_spindle_wood.name=Wooden Spindle
 
+item.dcs_food_itemfood_baked_apple.name=Baked Apple
+
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
 
 ## block
@@ -84,7 +86,38 @@ tile.dcs_cont_log_birch.name=Birch Log Box
 tile.dcs_cont_log_jungle.name=Jungle Log Box
 tile.dcs_cont_log_acacia.name=Acacia Log Box
 tile.dcs_cont_log_dark.name=Dark Log Box
-tile.dcs_cont_log_Charcoal.name=Charcoal Box
+tile.dcs_cont_log_charcoal.name=Charcoal Box
+tile.dcs_cont_crop_apple.name=Apple Box
+tile.dcs_cont_crop_potato.name=Potato Box
+tile.dcs_cont_crop_carrot.name=Carrot Box
+tile.dcs_cont_crop_pumpkin.name=Pumpkin Box
+tile.dcs_cont_crop_melon.name=Melon Box
+tile.dcs_cont_crop_cactus.name=Cactus Box
+tile.dcs_cont_crop_reed.name=Reed Box
+tile.dcs_cont_crop_wart.name=Wart Box
+tile.dcs_cont_crop_cocoa.name=Cocoa Box
+tile.dcs_cont_crop_baked_apple.name=Baked Apple Box
+tile.dcs_cont_crop_baked_potato.name=Baked Potato Box
+tile.dcs_cont_metal_rotten.name=Rotten Flesh Box
+tile.dcs_cont_metal_bone.name=Bone Box
+tile.dcs_cont_metal_spider.name=Spider Eye Box
+tile.dcs_cont_metal_ender.name=Ender Pearl Box
+tile.dcs_cont_metal_powder.name=Gunpowder Box
+tile.dcs_cont_misc_clay.name=Clay Box
+tile.dcs_cont_misc_fish.name=Fish Box
+tile.dcs_cont_misc_leather.name=Leather Box
+tile.dcs_cont_misc_fur.name=Fur Box
+
+tile.dcs_build_selenite_normal.name=Selenite Glass
+tile.dcs_build_selenite_light.name=Selenite Light Glass
+tile.dcs_build_selenite_half.name=Selenite Shade Glass
+tile.dcs_stairs_glass_0.name=Selenite Stairs
+tile.dcs_stairs_gypsum_0.name=Gypsum Stairs
+tile.dcs_build_slab_glass.name=Selenite Slab
+tile.dcs_build_slab_gypsum.name=Gypsum Slab
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
+
+dcs_climate.smelting=Climate Smelting
+dcs_climate.recipe=Climate Crafting

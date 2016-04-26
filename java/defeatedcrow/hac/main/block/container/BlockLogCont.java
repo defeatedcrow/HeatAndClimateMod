@@ -4,22 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.IFuelHandler;
 import defeatedcrow.hac.core.base.DCSidedBlock;
+import defeatedcrow.hac.main.MainInit;
 
-public class BlockLogCont extends DCSidedBlock {
+public class BlockLogCont extends DCSidedBlock implements IFuelHandler {
 
 	public BlockLogCont(Material m, String s, int max) {
-		super(m, s, max);
+		super(m, s, max, true);
 		this.setTickRandomly(true);
 		this.setHardness(0.5F);
 		this.setResistance(5.0F);
-	}
-
-	@Override
-	public void onUpdateClimate(World world, BlockPos pos, IBlockState state) {
 	}
 
 	@Override
@@ -45,11 +42,11 @@ public class BlockLogCont extends DCSidedBlock {
 		case 0:
 		case 1:
 			return b + "logbox_s_" + getNameSuffix()[m];
+		case 2:
 		case 3:
-		case 4:
 			return face ? b + "logbox_f_" + getNameSuffix()[m] : b + "logbox_s_" + getNameSuffix()[m];
+		case 4:
 		case 5:
-		case 6:
 			return face ? b + "logbox_s_" + getNameSuffix()[m] : b + "logbox_f_" + getNameSuffix()[m];
 		}
 		return super.getTexture(meta, side, face);
@@ -71,6 +68,18 @@ public class BlockLogCont extends DCSidedBlock {
 		list.add(b + "logbox_s_dark");
 		list.add(b + "logbox_s_acacia");
 		return list;
+	}
+
+	@Override
+	public int getBurnTime(ItemStack fuel) {
+		if (fuel != null && fuel.getItem() == Item.getItemFromBlock(MainInit.logCont)) {
+			int i = fuel.getItemDamage();
+			if (i == 6)
+				return 14400;
+			else
+				return 2700;
+		}
+		return 0;
 	}
 
 }

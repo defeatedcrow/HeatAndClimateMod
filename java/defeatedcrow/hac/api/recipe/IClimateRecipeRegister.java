@@ -46,6 +46,9 @@ public interface IClimateRecipeRegister {
 
 	void addRecipe(ItemStack output, DCHeatTier heat, Object... input);
 
+	/**
+	 * coreのClimateRecipe.class以外受け付けないのでご注意を(要本体)
+	 */
 	void addRecipe(IClimateRecipe recipe, DCHeatTier heat);
 
 	/**

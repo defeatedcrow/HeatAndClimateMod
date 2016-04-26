@@ -46,7 +46,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustGold", new ItemStack(MainInit.oreDust, 1, 4));
 		OreDictionary.registerOre("dustIron", new ItemStack(MainInit.oreDust, 1, 5));
 		OreDictionary.registerOre("dustSteel", new ItemStack(MainInit.oreDust, 1, 6));
-		OreDictionary.registerOre("dustMagnet", new ItemStack(MainInit.oreDust, 1, 7));
+		OreDictionary.registerOre("dustMagnetite", new ItemStack(MainInit.oreDust, 1, 7));
 
 		OreDictionary.registerOre("blockCopper", new ItemStack(MainInit.metalBlock, 1, 0));
 		OreDictionary.registerOre("blockZinc", new ItemStack(MainInit.metalBlock, 1, 1));

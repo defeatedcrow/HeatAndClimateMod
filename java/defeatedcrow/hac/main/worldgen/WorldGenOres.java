@@ -11,10 +11,16 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import defeatedcrow.hac.core.util.BlockSet;
+import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.main.MainInit;
 
 public class WorldGenOres implements IWorldGenerator {
+
+	private static int sedPar = 35;
+	private static int kiesPar = 50;
+	private static int vinePar = 15;
+	private static int lavaPar = 100;
+	private static int vugsPar = 30;
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGen, IChunkProvider chunkProv) {
@@ -42,19 +48,20 @@ public class WorldGenOres implements IWorldGenerator {
 				if (posY > 160) {
 					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN))
 						generateSediment(world, random, pos);
-				} else if (posY > 90 && random.nextInt(3) == 0) {
+				} else if (posY > 90 && random.nextInt(100) < sedPar) {
 					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN))
 						generateSediment(world, random, pos);
-				} else if (posY < 60 && posY > 30 && random.nextInt(3) == 0) {
+				} else if (posY < 60 && posY > 30) {
 					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN)
 							|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN)) {
-						generateKieslager(world, random, pos);
-					} else if (random.nextInt(6) == 0) {
+						if (random.nextInt(100) < kiesPar)
+							generateKieslager(world, random, pos);
+					} else if (random.nextInt(100) < vinePar) {
 						generateQuartzVine(world, random, pos);
 					}
-				} else if (posY < 30 && posY > 12 && random.nextInt(6) == 0) {
+				} else if (posY < 30 && posY > 12 && random.nextInt(100) < vugsPar) {
 					generateVugs(world, random, pos);
-				} else if (posY <= 12) {
+				} else if (posY <= 12 && random.nextInt(100) < lavaPar) {
 					generateUnderlava(world, random, pos);
 				}
 			}
@@ -82,7 +89,7 @@ public class WorldGenOres implements IWorldGenerator {
 	 * これを集めるだけでも生きてはいけるが、銅や亜鉛はここにはない。
 	 */
 	public void generateSediment(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(6) + 2; // 2-7
+		int h = rand.nextInt(6) + 1; // 2-7
 		int r = h + 1;
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
@@ -149,7 +156,7 @@ public class WorldGenOres implements IWorldGenerator {
 		// 柱状に生成する
 		BlockPos min = new BlockPos(pos.add(0, -h + 2, -r));
 		BlockPos max = new BlockPos(pos.add(h, 1, r));
-		if (rand.nextInt(1) == 0) {
+		if (rand.nextInt(2) == 0) {
 			min = new BlockPos(pos.add(-r, -h + 2, 0));
 			max = new BlockPos(pos.add(r, 1, h));
 		}
@@ -179,7 +186,7 @@ public class WorldGenOres implements IWorldGenerator {
 	 * 出現率は低く、生成も固有鉱石はない。山がないときの救済用。
 	 */
 	public void generateQuartzVine(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(5) + 5; // 5-9
+		int h = rand.nextInt(5) + 4; // 4-8
 		int r = h + 1;
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
@@ -233,7 +240,7 @@ public class WorldGenOres implements IWorldGenerator {
 			BlockPos line = new BlockPos(pos.add(rand.nextInt(5) - 2, rand.nextInt(5) - 2, rand.nextInt(5) - 2));
 			BlockPos min2 = new BlockPos(line.north(5));
 			BlockPos max2 = new BlockPos(line.south(5));
-			if (rand.nextInt(1) == 0) {
+			if (rand.nextInt(2) == 0) {
 				min2 = new BlockPos(line.north(5));
 				max2 = new BlockPos(line.south(5));
 				Iterable<BlockPos> itr2 = pos.getAllInBox(min2, max2);
@@ -251,7 +258,7 @@ public class WorldGenOres implements IWorldGenerator {
 	}
 
 	/*
-	 * マグマ底床。マグマ帯の真下に生成する。
+	 * マグマ底床。マグマ帯の周囲に生成する。
 	 * 非常に探しづらいが、ニッケルの入手手段のひとつになる。
 	 */
 	public void generateUnderlava(World world, Random rand, BlockPos pos) {
@@ -289,7 +296,7 @@ public class WorldGenOres implements IWorldGenerator {
 	 * なかなか探しにくいが、引き当てるとバニラ宝石類が大量に手に入る。
 	 */
 	public void generateVugs(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(4) + 3; // 3-6
+		int h = rand.nextInt(3) + 4; // 4-6
 		if (rand.nextInt(10) == 0) {
 			h = 8; // 希にあたりがある
 		}

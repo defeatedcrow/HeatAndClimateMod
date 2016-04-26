@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/dcs_slab_upper_base",
+    "textures": {
+        "down": "dcs_climate:blocks/ores/gemblock_gypsum",
+        "up": "dcs_climate:blocks/ores/gemblock_gypsum",
+        "side": "dcs_climate:blocks/ores/gemblock_gypsum"
+    }
+}

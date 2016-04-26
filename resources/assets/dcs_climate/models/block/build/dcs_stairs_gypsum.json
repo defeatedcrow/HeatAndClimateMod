@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "dcs_climate:blocks/ores/gemblock_gypsum",
+        "top": "dcs_climate:blocks/ores/gemblock_gypsum",
+        "side": "dcs_climate:blocks/ores/gemblock_gypsum"
+    }
+}

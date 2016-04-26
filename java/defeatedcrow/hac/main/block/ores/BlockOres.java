@@ -16,7 +16,7 @@ public class BlockOres extends DCSimpleBlock {
 	private Random rand = new Random();
 
 	public BlockOres(Material m, String s, int max) {
-		super(m, s, max);
+		super(m, s, max, false);
 		this.setTickRandomly(true);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);

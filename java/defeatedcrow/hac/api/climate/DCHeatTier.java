@@ -23,7 +23,7 @@ public enum DCHeatTier {
 	// absolute
 	ABSOLUTE(-273, -2, 0),
 	// icecream making and cooling
-	COLD(-50, -1, 1),
+	COLD(-20, -1, 1),
 	// electric or mechanical energy require
 	NORMAL(20, 0, 2),
 	// drying or brewing

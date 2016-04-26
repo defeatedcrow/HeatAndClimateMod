@@ -2,7 +2,6 @@ package defeatedcrow.hac.main;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import defeatedcrow.hac.core.base.DCSidedBlock;
 
 public class MainInit {
 	private MainInit() {
@@ -16,7 +15,17 @@ public class MainInit {
 	public static Block metalBlock;
 
 	// cont
-	public static DCSidedBlock logCont;
+	public static Block logCont;
+	public static Block cropCont;
+	public static Block dropCont;
+	public static Block miscCont;
+	public static Block cardboard;
+
+	// building
+	public static Block selenite;
+	public static Block stairsGlass;
+	public static Block stairsGypsum;
+	public static Block halfSlab;
 
 	// item
 	// ores
@@ -29,5 +38,8 @@ public class MainInit {
 	// tool
 	public static Item stoneYagen;
 	public static Item crowDrill;
+
+	// food
+	public static Item bakedApple;
 
 }

@@ -10,28 +10,28 @@ import net.minecraft.block.Block;
  */
 public interface IHeatBlockRegister {
 
-	void registerHeatBlock(Block block, DCHeatTier temp);
+	void registerHeatBlock(Block block, int meta, DCHeatTier temp);
 
-	void registerHumBlock(Block block, DCHumidity hum);
+	void registerHumBlock(Block block, int meta, DCHumidity hum);
 
-	void registerAirBlock(Block block, DCAirflow air);
+	void registerAirBlock(Block block, int meta, DCAirflow air);
 
-	DCHeatTier getHeatTier(Block block);
+	DCHeatTier getHeatTier(Block block, int meta);
 
-	DCHumidity getHumidity(Block block);
+	DCHumidity getHumidity(Block block, int meta);
 
-	DCAirflow getAirflow(Block block);
+	DCAirflow getAirflow(Block block, int meta);
 
-	boolean isRegisteredHeat(Block block);
+	boolean isRegisteredHeat(Block block, int meta);
 
-	boolean isRegisteredHum(Block block);
+	boolean isRegisteredHum(Block block, int meta);
 
-	boolean isRegisteredAir(Block block);
+	boolean isRegisteredAir(Block block, int meta);
 
-	Map<Block, DCHeatTier> getHeatList();
+	Map<BlockSet, DCHeatTier> getHeatList();
 
-	Map<Block, DCHumidity> getHumList();
+	Map<BlockSet, DCHumidity> getHumList();
 
-	Map<Block, DCAirflow> getAirList();
+	Map<BlockSet, DCAirflow> getAirList();
 
 }

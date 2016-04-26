@@ -37,6 +37,8 @@ item.dcs_material_cloth_linen.name=亜麻布
 item.dcs_material_cloth_cotton.name=木綿布
 item.dcs_material_spindle_wood.name=木の回転子
 
+item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
+
 item.dcs_yagen_stone_normal.name=石の薬研
 
 
@@ -85,7 +87,35 @@ tile.dcs_cont_log_birch.name=白樺の丸太箱
 tile.dcs_cont_log_jungle.name=ジャングルの丸太箱
 tile.dcs_cont_log_acacia.name=アカシアの丸太箱
 tile.dcs_cont_log_dark.name=ダークオークの丸太箱
-tile.dcs_cont_log_Charcoal.name=木炭箱
+tile.dcs_cont_log_charcoal.name=木炭箱
+tile.dcs_cont_crop_apple.name=リンゴ箱
+tile.dcs_cont_crop_potato.name=ジャガイモ箱
+tile.dcs_cont_crop_carrot.name=ニンジン箱
+tile.dcs_cont_crop_pumpkin.name=カボチャ箱
+tile.dcs_cont_crop_melon.name=スイカ箱
+tile.dcs_cont_crop_cactus.name=サボテン箱
+tile.dcs_cont_crop_reed.name=サトウキビ箱
+tile.dcs_cont_crop_wart.name=ネザーウォート箱
+tile.dcs_cont_crop_cocoa.name=カカオ箱
+tile.dcs_cont_crop_baked_apple.name=焼きリンゴ箱
+tile.dcs_cont_crop_baked_potato.name=ベイクドポテト箱
+tile.dcs_cont_metal_rotten.name=腐肉コンテナ
+tile.dcs_cont_metal_bone.name=骨コンテナ
+tile.dcs_cont_metal_spider.name=蜘蛛の目コンテナ
+tile.dcs_cont_metal_ender.name=エンダーパールコンテナ
+tile.dcs_cont_metal_powder.name=火薬コンテナ
+tile.dcs_cont_misc_clay.name=粘土コンテナ
+tile.dcs_cont_misc_fish.name=魚コンテナ
+tile.dcs_cont_misc_leather.name=革コンテナ
+tile.dcs_cont_misc_fur.name=毛皮コンテナ
+
+tile.dcs_build_selenite_normal.name=セレナイトガラス
+tile.dcs_build_selenite_light.name=セレナイトランプガラス
+tile.dcs_build_selenite_half.name=セレナイト遮光ガラス
+tile.dcs_stairs_glass_0.name=セレナイトの階段
+tile.dcs_stairs_gypsum_0.name=石膏の階段
+tile.dcs_build_slab_glass.name=セレナイト半ブロック
+tile.dcs_build_slab_gypsum.name=石膏半ブロック
 
 ## massage
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)

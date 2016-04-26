@@ -1,7 +1,9 @@
 package defeatedcrow.hac.main;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import defeatedcrow.hac.core.base.DCSidedBlock;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
@@ -14,6 +16,7 @@ public class CommonMainProxy {
 
 	public void loadMaterial() {
 		MainMaterialRegister.load();
+		GameRegistry.registerFuelHandler((IFuelHandler) MainInit.logCont);
 	}
 
 	public void loadRecipes() {
@@ -31,11 +34,16 @@ public class CommonMainProxy {
 		GameRegistry.registerWorldGenerator(new WorldGenOres(), 2);
 	}
 
-	public void addSidedBlock(DCSidedBlock block) {
+	public void addSidedBlock(Block block) {
 	}
 
-	public void addTBBlock(DCSidedBlock block) {
+	public void addTBBlock(Block block) {
+	}
 
+	/**
+	 * メタ無しJson製Block。一部の階段・ハーフにのみ使用している
+	 */
+	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {
 	}
 
 }
