@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.IFuelHandler;
 import defeatedcrow.hac.core.base.DCSidedBlock;
-import defeatedcrow.hac.main.MainInit;
 
-public class BlockLogCont extends DCSidedBlock implements IFuelHandler {
+public class BlockLogCont extends DCSidedBlock {
 
 	public BlockLogCont(Material m, String s, int max) {
 		super(m, s, max, true);
+		this.setStepSound(soundTypeWood);
 		this.setTickRandomly(true);
 		this.setHardness(0.5F);
 		this.setResistance(5.0F);
@@ -68,18 +65,6 @@ public class BlockLogCont extends DCSidedBlock implements IFuelHandler {
 		list.add(b + "logbox_s_dark");
 		list.add(b + "logbox_s_acacia");
 		return list;
-	}
-
-	@Override
-	public int getBurnTime(ItemStack fuel) {
-		if (fuel != null && fuel.getItem() == Item.getItemFromBlock(MainInit.logCont)) {
-			int i = fuel.getItemDamage();
-			if (i == 6)
-				return 14400;
-			else
-				return 2700;
-		}
-		return 0;
 	}
 
 }

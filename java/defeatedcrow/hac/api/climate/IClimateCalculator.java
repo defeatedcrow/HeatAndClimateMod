@@ -24,7 +24,7 @@ public interface IClimateCalculator {
 	 * @param horizontal
 	 *            : posと同高度の平面範囲を調べる
 	 */
-	IClimate getClimate(World world, BlockPos pos, int range);
+	IClimate getClimate(World world, BlockPos pos, int[] range);
 
 	/**
 	 * 範囲内の最も高いHeatTierを求める。<br>
@@ -54,6 +54,20 @@ public interface IClimateCalculator {
 	 *            : posと同高度の平面範囲を調べる
 	 */
 	DCHeatTier getColdTier(World world, BlockPos pos, int range, boolean horizontal);
+
+	/**
+	 * 範囲内のHeatTier(Heat・Coldの合成後の値)を求める。
+	 * 
+	 * @param world
+	 *            : 対象のWorld
+	 * @param pos
+	 *            : 対象のBlockPos
+	 * @param range
+	 *            : 走査半径
+	 * @param horizontal
+	 *            : posと同高度の平面範囲を調べる
+	 */
+	DCHeatTier getTemp(World world, BlockPos pos, int range, boolean horizontal);
 
 	/**
 	 * 範囲内のしめりを計算する。<br>

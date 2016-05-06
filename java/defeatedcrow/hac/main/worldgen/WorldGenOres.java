@@ -12,15 +12,16 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.main.MainInit;
 
 public class WorldGenOres implements IWorldGenerator {
 
-	private static int sedPar = 35;
-	private static int kiesPar = 50;
-	private static int vinePar = 15;
-	private static int lavaPar = 100;
-	private static int vugsPar = 30;
+	private static int sedPar = CoreConfigDC.depositGen[0];
+	private static int kiesPar = CoreConfigDC.depositGen[1];
+	private static int vinePar = CoreConfigDC.depositGen[2];
+	private static int lavaPar = CoreConfigDC.depositGen[3];
+	private static int vugsPar = CoreConfigDC.depositGen[4];
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGen, IChunkProvider chunkProv) {

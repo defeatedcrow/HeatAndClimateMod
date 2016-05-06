@@ -4,12 +4,17 @@ import net.minecraft.block.Block;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
+import defeatedcrow.hac.main.block.device.TileNormalChamber;
+import defeatedcrow.hac.main.client.block.TESRNormalChamber;
+import defeatedcrow.hac.main.event.AltTooltipEvent;
 
 public class ClientMainProxy extends CommonMainProxy {
 
@@ -29,8 +34,13 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void loadTE() {
-		super.loadTE();
-		// ClientRegistry.bindTileEntitySpecialRenderer(StoveBase.class, new TESRFuelStove());
+		ClientRegistry.registerTileEntity(TileNormalChamber.class, "tileentity.dcs.chamber_normal", new TESRNormalChamber());
+	}
+
+	@Override
+	public void loadInit() {
+		super.loadInit();
+		MinecraftForge.EVENT_BUS.register(new AltTooltipEvent());
 	}
 
 	@Override

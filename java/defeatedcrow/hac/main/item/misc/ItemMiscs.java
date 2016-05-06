@@ -12,7 +12,8 @@ public class ItemMiscs extends DCItem {
 			"string_cotton",
 			"cloth_linen",
 			"cloth_cotton",
-			"spindle_wood" };
+			"spindle_wood",
+			"spindle_arroy" };
 
 	public ItemMiscs(int max) {
 		super();
@@ -30,6 +31,7 @@ public class ItemMiscs extends DCItem {
 	 * 2: 亜麻布
 	 * 3: 木綿布
 	 * 4: 木の回転体
+	 * 5: 合金の回転体
 	 */
 	@Override
 	public String[] getNameSuffix() {

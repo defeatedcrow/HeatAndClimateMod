@@ -24,6 +24,9 @@ item.dcs_gem_chal_red.name=Red Chalcedony
 item.dcs_gem_chal_white.name=White Chalcedony
 item.dcs_gem_gypsum.name=Gypsum
 item.dcs_gem_sapphire.name=Sapphire
+item.dcs_gem_malachite.name=Malachite
+item.dcs_gem_clam.name=Fossil Princess
+item.dcs_gem_celestite.name=Celestite
 item.dcs_miscdust_coal.name=Coal Dust
 item.dcs_miscdust_crystal.name=Quartz Dust
 item.dcs_miscdust_gypsum.name=Gypsum Dust
@@ -40,6 +43,67 @@ item.dcs_material_spindle_wood.name=Wooden Spindle
 item.dcs_food_itemfood_baked_apple.name=Baked Apple
 
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
+
+item.dcs_repair_patty.name=Repair Patty
+
+item.dcs_axe_brass.name=Brass Axe
+item.dcs_axe_steel.name=Steel Axe
+item.dcs_axe_silver.name=Silver Axe
+item.dcs_axe_nickelsilver.name=Nickelsilver Axe
+item.dcs_axe_chalcedony.name=Chalcedony Axe
+item.dcs_axe_sapphire.name=Sapphire Axe
+item.dcs_pickaxe_brass.name=Brass Pickaxe
+item.dcs_pickaxe_steel.name=Steel Pickaxe
+item.dcs_pickaxe_silver.name=Silver Pickaxe
+item.dcs_pickaxe_nickelsilver.name=Nickelsilver Pickaxe
+item.dcs_pickaxe_chalcedony.name=Chalcedony Pickaxe
+item.dcs_pickaxe_sapphire.name=Sapphire Pickaxe
+item.dcs_spade_brass.name=Brass Spade
+item.dcs_spade_steel.name=Steel Spade
+item.dcs_spade_silver.name=Silver Spade
+item.dcs_spade_nickelsilver.name=Nickelsilver Spade
+item.dcs_spade_chalcedony.name=Chalcedony Spade
+item.dcs_spade_sapphire.name=Sapphire Spade
+item.dcs_sword_brass.name=Brass Sword
+item.dcs_sword_steel.name=Steel Sword
+item.dcs_sword_silver.name=Silver Sword
+item.dcs_sword_nickelsilver.name=Nickelsilver Sword
+item.dcs_sword_chalcedony.name=Chalcedony Sword
+item.dcs_sword_sapphire.name=Sapphire Sword
+
+item.dcs_met_brass.name=Brass Helmet
+item.dcs_met_steel.name=Steel Helmet
+item.dcs_met_chalcedony.name=Chalcedony Helmet
+item.dcs_met_sapphire.name=Sapphire Helmet
+item.dcs_plate_brass.name=Brass Plate
+item.dcs_plate_steel.name=Steel Plate
+item.dcs_plate_chalcedony.name=Chalcedony Plate
+item.dcs_plate_sapphire.name=Sapphire Plate
+item.dcs_leggins_brass.name=Brass Chain Mail
+item.dcs_leggins_steel.name=Steel Chain Mail
+item.dcs_leggins_chalcedony.name=Chalcedony Belt
+item.dcs_leggins_sapphire.name=Sapphire Belt
+item.dcs_boots_brass.name=Brass Boots
+item.dcs_boots_steel.name=Steel Boots
+item.dcs_boots_chalcedony.name=Chalcedony Boots
+item.dcs_boots_sapphire.name=Sapphire Boots
+
+item.dcs_leggins_linen.name=Linen Doublet
+item.dcs_leggins_cloth.name=Kilt Doublet
+item.dcs_leggins_worker.name=Worker Suit
+item.dcs_leggins_suit.name=Black Suit
+item.dcs_coat_linen.name=Surcoat
+
+item.dcs_jewel_pendant_chal_blue.name=Chrysoprase Pendant
+item.dcs_jewel_pendant_chal_red.name=Carnelian Pendant
+item.dcs_jewel_pendant_chal_white.name=White Chalcedony Pendant
+item.dcs_jewel_pendant_crystal.name=Crystal Pendant
+item.dcs_jewel_pendant_sapphire.name=Sapphire Pendant
+item.dcs_jewel_pendant_malachite.name=Malachite Pendant
+item.dcs_jewel_pendant_celestite.name=Celestite Pendant
+item.dcs_jewel_pendant_clam.name=Nacre Pendant
+item.dcs_jewel_pendant_lapis.name=Lapis-Lazuli Pendant
+item.dcs_jewel_pendant_diamond.name=Diamond Pendant
 
 ## block
 tile.dcs_ore_stone_0.name=Gypsum
@@ -118,6 +182,20 @@ tile.dcs_build_slab_gypsum.name=Gypsum Slab
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
+dcs_climate.tip.durability=Max Durability
+dcs_climate.tip.harvestlevel=Harvest Level
+dcs_climate.tip.resistance=Climate Resistance
+
+dcs.tip.pendant.0=Water & Cold Protection
+dcs.tip.pendant.1=Heat Protection
+dcs.tip.pendant.2=Damage Reduction
+dcs.tip.pendant.3=Bad Potion Protection
+dcs.tip.pendant.4=Show OreDictionary
+dcs.tip.pendant.5=Blessing Your Sight
+dcs.tip.pendant.6=Blessing Your Flight
+dcs.tip.pendant.7=Escape You from Death
+dcs.tip.pendant.8=Blessing Your Crafting
+dcs.tip.pendant.9=Blessing Your Mining
 
 dcs_climate.smelting=Climate Smelting
 dcs_climate.recipe=Climate Crafting

@@ -1,13 +1,17 @@
 package defeatedcrow.hac.main.block.ores;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.main.MainInit;
 
@@ -97,9 +101,15 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	public enum DropTable {
-		GYPSUM(MainInit.gems, 1, 3, false), HEMATITE(MainInit.oreDust, 1, 5, false), CHAL_B(MainInit.gems, 1, 0, true), SAPPIRE(
-				MainInit.gems, 1, 4, true), CHAL_W(MainInit.gems, 1, 2, false), CRYSTAL(Items.quartz, 1, 0, true), DIAMOND(Items.diamond,
-				1, 0, true), EMERALD(Items.emerald, 1, 0, true), NONE(null, 1, 0, false);
+		GYPSUM(MainInit.gems, 1, 3, true),
+		HEMATITE(MainInit.oreDust, 1, 5, true),
+		CHAL_B(MainInit.gems, 1, 0, true),
+		SAPPIRE(MainInit.gems, 1, 4, true),
+		CHAL_W(MainInit.gems, 1, 2, true),
+		CRYSTAL(Items.quartz, 1, 0, true),
+		DIAMOND(Items.diamond, 1, 0, true),
+		EMERALD(Items.emerald, 1, 0, true),
+		NONE(null, 1, 0, false);
 
 		public Item dropItem;
 		public int amount;
@@ -136,5 +146,29 @@ public class BlockOres extends DCSimpleBlock {
 			return table[meta];
 		}
 		return DropTable.NONE;
+	}
+
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+		int meta = this.getMetaFromState(state);
+		Random rand = world instanceof World ? ((World) world).rand : new Random();
+
+		ItemStack add = null;
+		int par = 2 + fortune * 5;
+		if (rand.nextInt(50) < par) {
+			switch (meta) {
+			case 0:
+				add = rand.nextInt(2) == 0 ? new ItemStack(MainInit.gems, 1, 7) : new ItemStack(MainInit.gems, 1, 6);
+				break;
+			case 6:
+				add = new ItemStack(MainInit.gems, 1, 5);
+			}
+		}
+
+		if (add != null) {
+			ret.add(add);
+		}
+		return ret;
 	}
 }

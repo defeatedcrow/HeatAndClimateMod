@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -7,6 +8,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import defeatedcrow.hac.core.ClimateCore;
 
 @Mod(
@@ -18,7 +20,7 @@ import defeatedcrow.hac.core.ClimateCore;
 		useMetadata = true)
 public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
-	public static final String MOD_NAME = "ClimateAndHeatMod";
+	public static final String MOD_NAME = "HeatAndClimateMod";
 
 	@SidedProxy(
 			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
@@ -27,6 +29,8 @@ public class ClimateMain {
 
 	@Instance("dcs_climate")
 	public static ClimateMain instance;
+
+	public static final CreativeTabs tool = new CreativeTabClimateTool(MOD_ID);
 
 	@EventHandler
 	public void construction(FMLConstructionEvent event) {
@@ -48,6 +52,11 @@ public class ClimateMain {
 		proxy.loadWorldGen();
 		// Recipes
 		proxy.loadRecipes();
+		// event
+		proxy.loadInit();
+
+		// other things
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 	}
 
 }

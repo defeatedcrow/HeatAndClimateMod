@@ -1,9 +1,9 @@
 package defeatedcrow.hac.machine.client;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import defeatedcrow.hac.core.client.base.DCModelBase;
 
-public class ModelFuelStove extends ModelBase {
+public class ModelFuelStove extends DCModelBase {
 	// fields
 	ModelRenderer base;
 	ModelRenderer chestR;
@@ -152,6 +152,7 @@ public class ModelFuelStove extends ModelBase {
 		setRotation(gasline, 0F, 0F, 0F);
 	}
 
+	@Override
 	public void render(float f) {
 		setRotationAngles(f);
 		base.render(0.0625F);
@@ -182,6 +183,7 @@ public class ModelFuelStove extends ModelBase {
 		model.rotateAngleZ = z;
 	}
 
+	@Override
 	public void setRotationAngles(float f) {
 	}
 

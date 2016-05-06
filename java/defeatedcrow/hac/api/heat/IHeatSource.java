@@ -6,7 +6,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 
 /**
  * 熱源TileEntityに持たせる伝熱機能。<br>
- * instanceofチェックの対象がTikeEntityのみなので、他のオブジェクトに対応できない。
+ * instanceofチェックの対象がTileEntityのみなので、他のオブジェクトに対応できない。
  */
 public interface IHeatSource {
 

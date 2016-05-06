@@ -1,3 +1,1 @@
-{
-    "parent": "dcs_climate:block/ores/dcs_ore_stone13"
-}
+{"parent":"dcs_climate:block/ores/dcs_ore_stone13","display":{"thirdperson":{"rotation":[10,45,170],"translation":[0.0,1.5,-2.75],"scale":[0.35,0.35,0.35]}}}
