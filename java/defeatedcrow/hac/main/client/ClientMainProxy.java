@@ -34,7 +34,8 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void loadTE() {
-		ClientRegistry.registerTileEntity(TileNormalChamber.class, "tileentity.dcs.chamber_normal", new TESRNormalChamber());
+		super.loadTE();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileNormalChamber.class, new TESRNormalChamber());
 	}
 
 	@Override

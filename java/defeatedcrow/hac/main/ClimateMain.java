@@ -42,12 +42,13 @@ public class ClimateMain {
 	public void preInit(FMLPreInitializationEvent event) {
 		// materialの登録
 		proxy.loadMaterial();
+		// TileEntity
+		proxy.loadTE();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		// TileEntity
-		proxy.loadTE();
+
 		// WorldGen
 		proxy.loadWorldGen();
 		// Recipes

@@ -37,10 +37,10 @@ public class GuiNormalChamber extends GuiContainer {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		if (this.chamber.isActive()) {
-			if (this.chamber.getCurrentHeatTierID() == 4) {
-				this.drawTexturedModalRect(i + 74, j + 23, 176, 0, 28, 26);
+			if (this.chamber.getCurrentHeatID() > 5) {
+				this.drawTexturedModalRect(i + 75, j + 23, 176, 0, 26, 26);
 			} else {
-				this.drawTexturedModalRect(i + 74, j + 23, 176, 26, 28, 26);
+				this.drawTexturedModalRect(i + 75, j + 23, 176, 26, 26, 26);
 			}
 		}
 
@@ -51,6 +51,6 @@ public class GuiNormalChamber extends GuiContainer {
 	private int getCookProgressScaled(int pixels) {
 		int i = this.chamber.getField(0);
 		int j = this.chamber.getField(1);
-		return j != 0 && i != 0 ? (32 - i) * pixels / j : 32;
+		return j != 0 && i != 0 ? pixels - (i * pixels / j) : pixels;
 	}
 }

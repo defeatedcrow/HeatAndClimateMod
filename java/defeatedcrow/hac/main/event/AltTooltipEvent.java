@@ -16,9 +16,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
+import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.magic.item.ItemMagicalPendant;
-import defeatedcrow.hac.main.util.DCArmorMaterial;
 
 @SideOnly(Side.CLIENT)
 public class AltTooltipEvent {
@@ -49,7 +49,7 @@ public class AltTooltipEvent {
 				}
 			}
 
-			if (event.showAdvancedItemTooltips) {
+			if (event.showAdvancedItemTooltips && CoreConfigDC.showAltTips) {
 				// まず耐久値
 				if (tI.isDamageable() && target.getItemDamage() == 0) {
 					int max = target.getMaxDamage();
@@ -67,7 +67,7 @@ public class AltTooltipEvent {
 				// climate reg
 				if (tI instanceof ItemArmor) {
 					ArmorMaterial mat = ((ItemArmor) tI).getArmorMaterial();
-					float reg = DCArmorMaterial.getClimateResistance(mat);
+					float reg = DamageAPI.armorRegister.getPreventAmount(mat);
 					String ret = StatCollector.translateToLocal("dcs_climate.tip.resistance") + ": " + reg;
 					event.toolTip.add(ret);
 				}

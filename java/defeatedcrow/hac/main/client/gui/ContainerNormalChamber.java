@@ -23,7 +23,11 @@ public class ContainerNormalChamber extends Container {
 		this.chamber = cham;
 		this.player = playerInv;
 
-		this.addSlotToContainer(new Slot(cham, 0, 80, 55));
+		this.addSlotToContainer(new Slot(cham, 0, 80, 58));
+
+		this.addSlotToContainer(new Slot(cham, 1, 134, 21));
+		this.addSlotToContainer(new Slot(cham, 2, 134, 39));
+		this.addSlotToContainer(new Slot(cham, 3, 134, 57));
 
 		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {

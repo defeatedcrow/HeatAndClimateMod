@@ -180,6 +180,9 @@ tile.dcs_stairs_gypsum_0.name=Gypsum Stairs
 tile.dcs_build_slab_glass.name=Selenite Slab
 tile.dcs_build_slab_gypsum.name=Gypsum Slab
 
+tile.dcs_device_chamber_0.name=Combustion Chamber
+dcs_te_normal_chamber_0=Combustion Chamber
+
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
 dcs_climate.tip.durability=Max Durability
@@ -199,3 +202,7 @@ dcs.tip.pendant.9=Blessing Your Mining
 
 dcs_climate.smelting=Climate Smelting
 dcs_climate.recipe=Climate Crafting
+dcs.gui.device.chamber=Combustion Chamber GUI
+
+death.attack.dcs_heat=%1$s was burnt browned.
+death.attack.dcs_cold=%1$s became a sherbet.

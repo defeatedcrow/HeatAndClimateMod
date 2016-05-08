@@ -27,7 +27,7 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"chal_blue", /* 水・氷耐性 */
+			"chal_blue", /* 水耐性 */
 			"chal_red", /* 火耐性 */
 			"chal_white", /* ダメージ軽減 */
 			"crystal", /* 悪性ポーション */
@@ -67,10 +67,11 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	public CharmType getType(int meta) {
 		switch (meta) {
 		case 2:
-		case 7:
 			return CharmType.DEFFENCE;
 		case 9:
 			return CharmType.TOOL;
+		case 7:
+			return CharmType.SPECIAL;
 		default:
 			return CharmType.CONSTANT;
 		}
@@ -117,17 +118,20 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 
 	@Override
 	public float reduceHeat(int meta) {
-		return meta == 1 ? 3.0F : 0.0F;
+		return meta == 1 ? 2.0F : 0.0F;
 	}
 
 	@Override
 	public float reduceCold(int meta) {
-		return meta == 0 ? 3.0F : 0.0F;
+		return meta == 0 ? 2.0F : 0.0F;
 	}
 
 	@Override
 	public float reduceDamage(DamageSource source, ItemStack charm) {
-		return charm.getItemDamage() == 2 ? 1.0F : 0.0F;
+		if (charm.getItemDamage() == 2) {
+			return 1.0F;
+		}
+		return 0.0F;
 	}
 
 	@Override

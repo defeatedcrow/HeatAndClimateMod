@@ -180,6 +180,9 @@ tile.dcs_stairs_gypsum_0.name=石膏の階段
 tile.dcs_build_slab_glass.name=セレナイト半ブロック
 tile.dcs_build_slab_gypsum.name=石膏半ブロック
 
+tile.dcs_device_chamber_0.name=燃焼チャンバー
+dcs_te_normal_chamber_0=燃焼チャンバー
+
 ## massage
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)
 dcs_climate.tip.durability=最大耐久値
@@ -196,3 +199,6 @@ dcs.tip.pendant.6=飛翔の加護
 dcs.tip.pendant.7=復活の守り
 dcs.tip.pendant.8=クラフトの加護
 dcs.tip.pendant.9=採掘の加護
+
+death.attack.dcs_heat=%1$sはこんがり焼き上がった。
+death.attack.dcs_cold=%1$sはシャーベットになった。

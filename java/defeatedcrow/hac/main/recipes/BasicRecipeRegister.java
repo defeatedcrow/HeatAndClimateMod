@@ -19,6 +19,7 @@ public class BasicRecipeRegister {
 		loadContRecipes();
 		loadBuildRecipes();
 		loadAnotherRecipes();
+		loadToolRecipes();
 	}
 
 	static void loadToolRecipe() {
@@ -61,6 +62,15 @@ public class BasicRecipeRegister {
 				'Y',
 				new ItemStack(Items.stick, 1, 0) }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 5), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'X',
+				"gearWood",
+				'Y',
+				"ingotNickelsilver" }));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
 				" X ",
 				"XYX",
@@ -80,6 +90,18 @@ public class BasicRecipeRegister {
 				new ItemStack(Items.redstone, 1, 0),
 				'Z',
 				"gemChalcedony" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chamber, 1, 0), new Object[] {
+				"ZXZ",
+				"XYX",
+				"ZXZ",
+				'X',
+				new ItemStack(Blocks.furnace, 1, 0),
+				'Y',
+				"stickBlaze",
+				'Z',
+				"ingotBrass" }));
+
 	}
 
 	static void loadYagenRecipe() {
@@ -364,9 +386,232 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.gemBlock, 1, 3) }));
 	}
 
+	private static void loadToolRecipes() {
+		String[] name = {
+				"ingotBrass",
+				"ingotSteel",
+				"ingotSilver",
+				"ingotNickelsilver",
+				"gemChalcedony",
+				"gemSapphire" };
+		for (int i = 0; i < name.length; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcPickaxe[i], 1, 0), new Object[] {
+					"  X",
+					"YYX",
+					"  X",
+					'X',
+					name[i],
+					'Y',
+					new ItemStack(Items.stick) }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcAxe[i], 1, 0), new Object[] {
+					" XX",
+					"YYX",
+					"   ",
+					'X',
+					name[i],
+					'Y',
+					new ItemStack(Items.stick) }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcSpade[i], 1, 0), new Object[] {
+					"   ",
+					"YYX",
+					"   ",
+					'X',
+					name[i],
+					'Y',
+					new ItemStack(Items.stick) }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcSword[i], 1, 0), new Object[] {
+					"   ",
+					"YXX",
+					"   ",
+					'X',
+					name[i],
+					'Y',
+					new ItemStack(Items.stick) }));
+		}
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[0], 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				'X',
+				"ingotBrass" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[0], 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				'X',
+				"ingotSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[0], 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				'X',
+				"gemChalcedony" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[0], 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				'X',
+				"gemSapphire" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[1], 1, 0), new Object[] {
+				"X X",
+				"XXX",
+				"XXX",
+				'X',
+				"ingotBrass" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[1], 1, 0), new Object[] {
+				"X X",
+				"XXX",
+				"XXX",
+				'X',
+				"ingotSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[1], 1, 0), new Object[] {
+				"X X",
+				"XXX",
+				"XXX",
+				'X',
+				"gemChalcedony" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[1], 1, 0), new Object[] {
+				"X X",
+				"XXX",
+				"XXX",
+				'X',
+				"gemSapphire" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[2], 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				"X X",
+				'X',
+				"ingotBrass" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[2], 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				"X X",
+				'X',
+				"ingotSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[2], 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				"X X",
+				'X',
+				"gemChalcedony" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[2], 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				"X X",
+				'X',
+				"gemSapphire" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[3], 1, 0), new Object[] {
+				"X X",
+				"X X",
+				'X',
+				"ingotBrass" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[3], 1, 0), new Object[] {
+				"X X",
+				"X X",
+				'X',
+				"ingotSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[3], 1, 0), new Object[] {
+				"X X",
+				"X X",
+				'X',
+				"gemChalcedony" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[3], 1, 0), new Object[] {
+				"X X",
+				"X X",
+				'X',
+				"gemSapphire" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.linenUnder, 1, 0), new Object[] {
+				"X X",
+				"XXX",
+				"XXX",
+				'X',
+				"itemLinenCloth" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.linenCourt, 1, 0), new Object[] {
+				"XXX",
+				"XXX",
+				"X X",
+				'X',
+				"itemLinenCloth" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.clothUnder, 1, 0), new Object[] {
+				"X X",
+				"XXX",
+				"XXX",
+				'X',
+				"itemCottonCloth" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.blackSuit, 1, 0), new Object[] {
+				"XYX",
+				"XXX",
+				"XXX",
+				'X',
+				"itemCottonCloth",
+				'Y',
+				"dyeBlack" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.workerSuit, 1, 0), new Object[] {
+				"XYX",
+				"XXX",
+				"XXX",
+				'X',
+				"itemCottonCloth",
+				'Y',
+				"dyeBlue" }));
+
+		// アクセサリー
+		Object[] gems = {
+				new ItemStack(MainInit.gems, 1, 0),
+				new ItemStack(MainInit.gems, 1, 1),
+				new ItemStack(MainInit.gems, 1, 2),
+				"gemQuartz",
+				"gemSapphire",
+				new ItemStack(MainInit.gems, 1, 5),
+				new ItemStack(MainInit.gems, 1, 6),
+				new ItemStack(MainInit.gems, 1, 7),
+				"gemLapis",
+				"gemDiamond" };
+		for (int i = 0; i < gems.length; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.pendant, 1, i), new Object[] {
+					" X ",
+					"X X",
+					" Y ",
+					'X',
+					"ingotSilver",
+					'Y',
+					gems[i] }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.pendant, 1, i), new Object[] {
+					" X ",
+					"X X",
+					" Y ",
+					'X',
+					"ingotNickelsilver",
+					'Y',
+					gems[i] }));
+		}
+
+	}
+
 	static void loadAnotherRecipes() {
 		// 矢
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.arrow), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.arrow, 8, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -389,5 +634,12 @@ public class BasicRecipeRegister {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.flint_and_steel, 1, 0), new Object[] {
 				new ItemStack(MainInit.ores, 1, 4),
 				new ItemStack(Items.flint) }));
+
+		// 変換
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.dye, 1, 15),
+				new Object[] { new ItemStack(MainInit.miscDust, 1, 5) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreIngot, 1, 5), new Object[] { new ItemStack(
+				MainInit.oreIngot, 1, 7) }));
 	}
 }

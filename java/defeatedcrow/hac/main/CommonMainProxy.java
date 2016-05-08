@@ -37,7 +37,7 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadTE() {
-		GameRegistry.registerTileEntity(TileNormalChamber.class, "tileentity.dcs.chamber_normal");
+		GameRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal");
 	}
 
 	public void loadWorldGen() {

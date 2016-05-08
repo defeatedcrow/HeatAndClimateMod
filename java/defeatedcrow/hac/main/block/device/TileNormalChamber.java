@@ -1,18 +1,14 @@
 package defeatedcrow.hac.main.block.device;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.core.base.TileChamberBase;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 
 public class TileNormalChamber extends TileChamberBase {
@@ -21,126 +17,103 @@ public class TileNormalChamber extends TileChamberBase {
 	private int lastBurn = 0;
 
 	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		super.readFromNBT(tag);
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound tag) {
-		super.writeToNBT(tag);
-	}
-
-	@Override
-	public Packet getDescriptionPacket() {
-		NBTTagCompound tag = new NBTTagCompound();
-		this.writeToNBT(tag);
-		return new S35PacketUpdateTileEntity(this.getPos(), 1, tag);
-	}
-
-	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-		this.readFromNBT(pkt.getNbtCompound());
-	}
-
-	@Override
-	public NBTTagCompound getNBT(NBTTagCompound tag) {
-		return super.getNBT(tag);
-	}
-
-	@Override
-	public void setNBT(NBTTagCompound tag) {
-		super.setNBT(tag);
-	}
-
-	@Override
 	public void updateTile() {
-		// 平面隣接4方向のみをチェックする特殊判定を使う
-		DCAirflow[] air = new DCAirflow[4];
-		air[0] = ClimateAPI.calculator.getAirflow(getWorld(), getPos().north(), 0, false);
-		air[1] = ClimateAPI.calculator.getAirflow(getWorld(), getPos().south(), 0, false);
-		air[2] = ClimateAPI.calculator.getAirflow(getWorld(), getPos().east(), 0, false);
-		air[3] = ClimateAPI.calculator.getAirflow(getWorld(), getPos().west(), 0, false);
-		DCAirflow check = DCAirflow.TIGHT;
-		for (DCAirflow a : air) {
-			if (a.getID() > check.getID())
-				check = a;
-		}
+		if (!getWorld().isRemote) {
+			// 平面隣接4方向のみをチェックする特殊判定を使う
+			DCAirflow air = ClimateAPI.calculator.getAirflow(getWorld(), getPos(), 1, true);
 
-		if (check.getID() > 1) {
-			this.currentHeatTier = 4;
-		} else if (check.getID() == 1) {
-			this.currentHeatTier = 3;
-		} else {
-			this.currentHeatTier = 2;
+			if (air.getID() > 1) {
+				this.currentClimate = 6;
+			} else if (air.getID() == 1) {
+				this.currentClimate = 5;
+			} else {
+				this.currentClimate = 4;
+			}
+
+			if (this.currentBurnTime == 0) {
+				if (this.getStackInSlot(0) != null && getBurnTime(this.getStackInSlot(0)) > 0) {
+					ItemStack cont = this.getStackInSlot(0).getItem().getContainerItem(this.getStackInSlot(0));
+					if (cont == null && FluidContainerRegistry.isFilledContainer(this.getStackInSlot(0))) {
+						cont = FluidContainerRegistry.drainFluidContainer(this.getStackInSlot(0).copy());
+					}
+					if (cont == null) {
+						cont = new ItemStack(MainInit.miscDust, 1, 5); // 灰が出る
+					}
+					boolean flag = false;
+					if (this.canInsertResult(cont) > 0) {
+						this.currentBurnTime = getBurnTime(this.getStackInSlot(0));
+						this.maxBurnTime = getBurnTime(this.getStackInSlot(0));
+						this.decrStackSize(0, 1);
+						this.insertResult(cont);
+						this.markDirty();
+						// DCLogger.debugLog("burntime " + this.currentBurnTime + ", " + this.maxBurnTime);
+					}
+				}
+			}
+
+			if (BlockNormalChamber.isLit(getWorld(), getPos()) != this.isActive()) {
+				BlockNormalChamber.changeLitState(getWorld(), getPos(), isActive());
+			}
 		}
 	}
 
 	@Override
 	public void onTickUpdate() {
-		if (this.currentBurnTime > 0) {
-			this.currentBurnTime--;
-		}
+
 	}
 
 	@Override
 	protected void onServerUpdate() {
-		if (this.currentBurnTime == 0) {
-			if (this.getStackInSlot(0) != null && getBurnTime(this.getStackInSlot(0)) > 0) {
-				ItemStack container = this.getStackInSlot(0).getItem().getContainerItem(this.getStackInSlot(0));
-				this.currentBurnTime = getBurnTime(this.getStackInSlot(0));
-				this.maxBurnTime = getBurnTime(this.getStackInSlot(0));
-				this.decrStackSize(0, 1);
-				if (this.getStackInSlot(0) == null && container != null) {
-					this.setInventorySlotContents(0, container);
-					this.markDirty();
-				}
-			}
-		}
-
-		// boolean f = false;
-		// if (this.lastBurn != this.currentBurnTime) {
-		// lastBurn = this.currentBurnTime;
-		// f = true;
-		// }
-		// if (this.lastTier != this.currentHeatTier) {
-		// lastTier = this.currentHeatTier;
-		// f = true;
-		// }
-		// if (f) {
-		// getWorld().markBlockForUpdate(getPos());
-		// }
-
-		if (this.getBlockType() instanceof BlockNormalChamber) {
-			BlockNormalChamber cham = (BlockNormalChamber) this.getBlockType();
-			IBlockState state = getWorld().getBlockState(getPos());
-			cham.changeLitState(getWorld(), getPos(), state, isActive());
+		if (this.currentBurnTime > 0) {
+			this.currentBurnTime--;
 		}
 	}
 
 	public static int getBurnTime(ItemStack item) {
 		int i = TileEntityFurnace.getItemBurnTime(item);
 		int ret = i / 4;
-		if (ret < 50)
+		if (ret > 0 && ret < 50)
 			ret = 50;
 		return ret;
 	}
 
+	protected int canInsertResult(ItemStack item) {
+		int ret = 0;
+		if (item == null || item.getItem() == null)
+			return 0;
+		for (int i = 1; i < this.getSizeInventory(); i++) {
+			if (this.getStackInSlot(i) == null) {
+				ret = item.stackSize;
+			} else {
+				ret = this.isItemStackable(item, this.getStackInSlot(i));
+			}
+			if (ret > 0) {
+				return ret;
+			}
+		}
+		return 0;
+	}
+
+	/** itemの減少数を返す */
+	protected int insertResult(ItemStack item) {
+		if (item == null || item.getItem() == null)
+			return 0;
+		for (int i = 1; i < this.getSizeInventory(); i++) {
+			if (this.getStackInSlot(i) == null) {
+				this.incrStackInSlot(i, item.copy());
+				return item.stackSize;
+			} else {
+				int size = this.isItemStackable(item, this.getStackInSlot(i));
+				if (this.isItemStackable(item, this.getStackInSlot(i)) > 0) {
+					this.getStackInSlot(i).stackSize += size;
+					return size;
+				}
+			}
+		}
+		return 0;
+	}
+
 	/* ========== 以下、ISidedInventoryのメソッド ========== */
-
-	@Override
-	protected int[] slotsTop() {
-		return new int[] { 0 };
-	}
-
-	@Override
-	protected int[] slotsBottom() {
-		return new int[] { 0 };
-	}
-
-	@Override
-	protected int[] slotsSides() {
-		return new int[] { 0 };
-	}
 
 	@Override
 	public String getGuiID() {

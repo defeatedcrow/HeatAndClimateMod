@@ -63,6 +63,9 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gemChalcedony", new ItemStack(MainInit.gems, 1, 2));
 		OreDictionary.registerOre("gemGypsum", new ItemStack(MainInit.gems, 1, 3));
 		OreDictionary.registerOre("gemSapphire", new ItemStack(MainInit.gems, 1, 4));
+		OreDictionary.registerOre("gemMalachite", new ItemStack(MainInit.gems, 1, 5));
+		OreDictionary.registerOre("gemCelestite", new ItemStack(MainInit.gems, 1, 6));
+		OreDictionary.registerOre("gemClam", new ItemStack(MainInit.gems, 1, 7));
 
 		OreDictionary.registerOre("blockGemChalcedony", new ItemStack(MainInit.gemBlock, 1, 0));
 		OreDictionary.registerOre("blockGemChalcedony", new ItemStack(MainInit.gemBlock, 1, 1));
@@ -83,7 +86,10 @@ public class OreDicRegister {
 		OreDictionary.registerOre("itemString", new ItemStack(MainInit.materials, 1, 1));
 		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.materials, 1, 2));
 		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.materials, 1, 3));
+		OreDictionary.registerOre("itemLinenCloth", new ItemStack(MainInit.materials, 1, 2));
+		OreDictionary.registerOre("itemCottonCloth", new ItemStack(MainInit.materials, 1, 3));
 		OreDictionary.registerOre("gearWood", new ItemStack(MainInit.materials, 1, 4));
+		OreDictionary.registerOre("gearArroy", new ItemStack(MainInit.materials, 1, 5));
 
 		// tool
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.stoneYagen, 1, 32767));

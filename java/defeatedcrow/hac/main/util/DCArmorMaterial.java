@@ -1,8 +1,8 @@
 package defeatedcrow.hac.main.util;
 
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.main.MainInit;
 
 public class DCArmorMaterial {
@@ -47,45 +47,6 @@ public class DCArmorMaterial {
 		return null;
 	}
 
-	public static float getClimateResistance(ItemArmor.ArmorMaterial mat) {
-		if (mat == DCArmorMaterial.DC_LINEN) {
-			return DCMaterial.LINEN.prevHeat;
-		}
-		if (mat == DCArmorMaterial.DC_CLOTH) {
-			return DCMaterial.CLOTH.prevHeat;
-		}
-		if (mat == DCArmorMaterial.DC_BRASS) {
-			return DCMaterial.BRASS.prevHeat;
-		}
-		if (mat == DCArmorMaterial.DC_STEEL) {
-			return DCMaterial.STEEL.prevHeat;
-		}
-		if (mat == DCArmorMaterial.DC_CHALCEDONY) {
-			return DCMaterial.CHALCEDONY.prevHeat;
-		}
-		if (mat == DCArmorMaterial.DC_SAPPHIRE) {
-			return DCMaterial.SAPPHIRE.prevHeat;
-		}
-
-		if (mat == ArmorMaterial.LEATHER) {
-			return 3.0F;
-		}
-		if (mat == ArmorMaterial.CHAIN) {
-			return 0.5F;
-		}
-		if (mat == ArmorMaterial.IRON) {
-			return 0.5F;
-		}
-		if (mat == ArmorMaterial.GOLD) {
-			return 0.5F;
-		}
-		if (mat == ArmorMaterial.DIAMOND) {
-			return 1.0F;
-		}
-
-		return 0.5F;
-	}
-
 	public static void load() {
 		DCArmorMaterial.DC_LINEN = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.LINEN.name, "dcs_" + DCMaterial.LINEN.name,
 				DCMaterial.LINEN.armorDur, DCMaterial.LINEN.reduceDam, DCMaterial.LINEN.enchant);
@@ -111,6 +72,12 @@ public class DCArmorMaterial {
 		DCArmorMaterial.DC_SAPPHIRE = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.SAPPHIRE.name, "dcs_" + DCMaterial.SAPPHIRE.name,
 				DCMaterial.SAPPHIRE.armorDur, DCMaterial.SAPPHIRE.reduceDam, DCMaterial.SAPPHIRE.enchant);
 		DCArmorMaterial.DC_SAPPHIRE.customCraftingMaterial = MainInit.repairPatty;
+
+		// 耐性登録
+		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_LINEN, 2.0F);
+		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_CLOTH, 3.0F);
+		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_CHALCEDONY, 1.0F);
+		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_SAPPHIRE, 1.0F);
 	}
 
 }

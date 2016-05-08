@@ -129,7 +129,7 @@ public class MainMaterialRegister {
 		GameRegistry.registerItem(MainInit.miscDust, ClimateCore.PACKAGE_BASE + "_miscdust");
 
 		// tools
-		MainInit.materials = new ItemMiscs(4).setCreativeTab(ClimateCore.climate)
+		MainInit.materials = new ItemMiscs(5).setCreativeTab(ClimateCore.climate)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
 		GameRegistry.registerItem(MainInit.materials, ClimateCore.PACKAGE_BASE + "_material");
 
