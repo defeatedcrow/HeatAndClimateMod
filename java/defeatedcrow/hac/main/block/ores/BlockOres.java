@@ -48,6 +48,8 @@ public class BlockOres extends DCSimpleBlock {
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		if (state.getBlock() != this)
+			return super.getItemDropped(state, rand, fortune);
 		int meta = this.getMetaFromState(state);
 		DropTable table = this.getTable(meta);
 		if (table.dropItem == null) {
@@ -64,6 +66,8 @@ public class BlockOres extends DCSimpleBlock {
 
 	@Override
 	public int quantityDropped(IBlockState state, int fortune, Random random) {
+		if (state.getBlock() != this)
+			return 0;
 		int meta = this.getMetaFromState(state);
 		DropTable table = this.getTable(meta);
 		int amo = table.amount;
@@ -77,8 +81,10 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	@Override
-	public int getExpDrop(net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune) {
+	public int getExpDrop(IBlockAccess world, BlockPos pos, int fortune) {
 		IBlockState state = world.getBlockState(pos);
+		if (state.getBlock() != this)
+			return 0;
 		int meta = this.getMetaFromState(state);
 		DropTable table = this.getTable(meta);
 		if (table.isFortuneEffective) {
@@ -91,6 +97,8 @@ public class BlockOres extends DCSimpleBlock {
 
 	@Override
 	public int damageDropped(IBlockState state) {
+		if (state.getBlock() != this)
+			return 0;
 		int meta = this.getMetaFromState(state);
 		DropTable table = this.getTable(meta);
 		if (table.dropItem == null) {

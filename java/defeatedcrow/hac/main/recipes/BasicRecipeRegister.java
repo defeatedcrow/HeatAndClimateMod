@@ -19,7 +19,7 @@ public class BasicRecipeRegister {
 		loadContRecipes();
 		loadBuildRecipes();
 		loadAnotherRecipes();
-		loadToolRecipes();
+		loadEquipsRecipes();
 	}
 
 	static void loadToolRecipe() {
@@ -66,9 +66,9 @@ public class BasicRecipeRegister {
 				" X ",
 				"XYX",
 				" X ",
-				'X',
-				"gearWood",
 				'Y',
+				"gearWood",
+				'X',
 				"ingotNickelsilver" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
@@ -77,6 +77,15 @@ public class BasicRecipeRegister {
 				"XXX",
 				'X',
 				new ItemStack(Blocks.cobblestone, 1, 0),
+				'Y',
+				new ItemStack(MainInit.materials, 1, 4) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassYagen, 1, 0), new Object[] {
+				" X ",
+				"XYX",
+				"XXX",
+				'X',
+				"ingotBrass",
 				'Y',
 				new ItemStack(MainInit.materials, 1, 4) }));
 
@@ -95,9 +104,9 @@ public class BasicRecipeRegister {
 				"ZXZ",
 				"XYX",
 				"ZXZ",
-				'X',
-				new ItemStack(Blocks.furnace, 1, 0),
 				'Y',
+				new ItemStack(Blocks.furnace, 1, 0),
+				'X',
 				"stickBlaze",
 				'Z',
 				"ingotBrass" }));
@@ -133,6 +142,22 @@ public class BasicRecipeRegister {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 1, 7), new Object[] {
 				"toolNormalYagen",
 				"oreMagnetite" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
+				"toolNormalYagen",
+				new ItemStack(Items.coal, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
+				"toolNormalYagen",
+				new ItemStack(Items.coal, 1, 1) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.dye, 5, 15), new Object[] {
+				"toolNormalYagen",
+				new ItemStack(Items.bone, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.blaze_powder, 3, 0), new Object[] {
+				"toolNormalYagen",
+				new ItemStack(Items.blaze_rod, 1, 0) }));
 	}
 
 	static void loadOreRecipes() {
@@ -386,7 +411,7 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.gemBlock, 1, 3) }));
 	}
 
-	private static void loadToolRecipes() {
+	private static void loadEquipsRecipes() {
 		String[] name = {
 				"ingotBrass",
 				"ingotSteel",
@@ -537,30 +562,30 @@ public class BasicRecipeRegister {
 				"gemSapphire" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.linenUnder, 1, 0), new Object[] {
+				"XXX",
+				"XXX",
 				"X X",
-				"XXX",
-				"XXX",
 				'X',
 				"itemLinenCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.linenCourt, 1, 0), new Object[] {
-				"XXX",
-				"XXX",
 				"X X",
+				"XXX",
+				"XXX",
 				'X',
 				"itemLinenCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.clothUnder, 1, 0), new Object[] {
+				"XXX",
+				"XXX",
 				"X X",
-				"XXX",
-				"XXX",
 				'X',
 				"itemCottonCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.blackSuit, 1, 0), new Object[] {
 				"XYX",
 				"XXX",
-				"XXX",
+				"X X",
 				'X',
 				"itemCottonCloth",
 				'Y',
@@ -569,7 +594,7 @@ public class BasicRecipeRegister {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.workerSuit, 1, 0), new Object[] {
 				"XYX",
 				"XXX",
-				"XXX",
+				"X X",
 				'X',
 				"itemCottonCloth",
 				'Y',

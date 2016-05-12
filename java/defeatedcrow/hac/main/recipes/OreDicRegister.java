@@ -93,6 +93,7 @@ public class OreDicRegister {
 
 		// tool
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.stoneYagen, 1, 32767));
+		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.brassYagen, 1, 32767));
 	}
 
 }

@@ -39,10 +39,12 @@ item.dcs_material_string_cotton.name=木綿糸
 item.dcs_material_cloth_linen.name=亜麻布
 item.dcs_material_cloth_cotton.name=木綿布
 item.dcs_material_spindle_wood.name=木の回転子
+item.dcs_material_spindle_arroy.name=合金の回転子
 
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
 
 item.dcs_yagen_stone_normal.name=石の薬研
+item.dcs_yagen_brass_normal.name=真鍮の薬研
 
 item.dcs_repair_patty.name=修繕ペースト
 

@@ -28,6 +28,7 @@ import defeatedcrow.hac.main.item.ores.ItemGems;
 import defeatedcrow.hac.main.item.ores.ItemIngots;
 import defeatedcrow.hac.main.item.ores.ItemMiscDust;
 import defeatedcrow.hac.main.item.ores.ItemOreDusts;
+import defeatedcrow.hac.main.item.tool.ItemArroyYagen;
 import defeatedcrow.hac.main.item.tool.ItemAxeDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
@@ -136,6 +137,10 @@ public class MainMaterialRegister {
 		MainInit.stoneYagen = new ItemStoneYagen().setCreativeTab(ClimateCore.climate).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_yagen_stone");
 		GameRegistry.registerItem(MainInit.stoneYagen, ClimateCore.PACKAGE_BASE + "_yagen_stone");
+
+		MainInit.brassYagen = new ItemArroyYagen().setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_yagen_brass");
+		GameRegistry.registerItem(MainInit.brassYagen, ClimateCore.PACKAGE_BASE + "_yagen_brass");
 
 		MainInit.crowDrill = new ItemCrowDrill().setCreativeTab(ClimateCore.climate).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_creative_drill");

@@ -22,7 +22,7 @@ public class OnCraftingDC {
 				ItemStack check = player.inventory.getStackInSlot(i);
 				if (check != null && check.getItem() != null && check.getItem() instanceof ItemMagicalPendant) {
 					int m = check.getItemDamage();
-					if (m == 9) {
+					if (m == 8) {
 						hasCharm = true;
 					}
 				}

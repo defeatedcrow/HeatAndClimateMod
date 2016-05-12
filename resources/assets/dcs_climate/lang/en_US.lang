@@ -39,10 +39,12 @@ item.dcs_material_string_cotton.name=Cotton String
 item.dcs_material_cloth_linen.name=Linen Cloth
 item.dcs_material_cloth_cotton.name=Cotton Cloth
 item.dcs_material_spindle_wood.name=Wooden Spindle
+item.dcs_material_spindle_arroy.name=Arroy Spindle
 
 item.dcs_food_itemfood_baked_apple.name=Baked Apple
 
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
+item.dcs_yagen_brass_normal.name=Brass Druggist's Mortar
 
 item.dcs_repair_patty.name=Repair Patty
 

@@ -38,7 +38,7 @@ public enum DCMaterial {
 			2,
 			5,
 			4,
-			2 }, 1, 256, 4.0F, 22, 1.0F, 1.0F, new ItemStack(MainInit.oreIngot, 1, 3)),
+			2 }, 1, 256, 12.0F, 22, 1.0F, 1.0F, new ItemStack(MainInit.oreIngot, 1, 3)),
 	// 普段使い用の金属。鉄の上位互換。
 	BRASS(6, "brass", 2.0F, new int[] {
 			3,
@@ -50,18 +50,18 @@ public enum DCMaterial {
 			2,
 			4,
 			4,
-			2 }, 2, 1080, 4.0F, 18, 1.0F, 1.0F, new ItemStack(MainInit.oreIngot, 1, 6)),
+			2 }, 2, 1600, 4.0F, 10, 1.0F, 1.0F, new ItemStack(MainInit.oreIngot, 1, 6)),
 	// 熱に弱いが他が強い
 	STEEL(8, "steel", 3.0F, new int[] {
 			5,
-			9,
-			6,
-			4 }, 3, 640, 7.0F, 8, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 5)),
-	// ピーキー性能
-	CHALCEDONY(9, "chalcedony", 4.0F, new int[] {
-			4,
 			8,
 			6,
+			5 }, 3, 640, 7.0F, 8, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 5)),
+	// ピーキー性能
+	CHALCEDONY(9, "chalcedony", 4.0F, new int[] {
+			5,
+			10,
+			8,
 			4 }, 3, 72, 10.0F, 25, 1.5F, 1.5F, new ItemStack(MainInit.gems, 1, 0)),
 	// 黒曜石が掘れないだけのダイヤ
 	SAPPHIRE(10, "sapphire", 3.0F, new int[] {

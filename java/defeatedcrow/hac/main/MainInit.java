@@ -40,6 +40,7 @@ public class MainInit {
 
 	// tool
 	public static Item stoneYagen;
+	public static Item brassYagen;
 	public static Item crowDrill;
 
 	public static Item repairPatty;
