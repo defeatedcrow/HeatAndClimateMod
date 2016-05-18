@@ -10,6 +10,7 @@ import defeatedcrow.hac.magic.item.ItemMagicalPendant;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
+import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
@@ -89,6 +90,10 @@ public class MainMaterialRegister {
 		MainInit.miscCont = new BlockMiscCont(Material.clay, ClimateCore.PACKAGE_BASE + "_cont_misc", 3);
 		GameRegistry.registerBlock(MainInit.miscCont, DCItemBlock.class, ClimateCore.PACKAGE_BASE + "_cont_misc");
 		ClimateMain.proxy.addTBBlock(MainInit.miscCont);
+
+		MainInit.cardboard = new BlockCardboard(Material.clay, ClimateCore.PACKAGE_BASE + "_cont_cardboard", 5);
+		GameRegistry.registerBlock(MainInit.cardboard, DCItemBlock.class, ClimateCore.PACKAGE_BASE + "_cont_cardboard");
+		ClimateMain.proxy.addSidedBlock(MainInit.cardboard);
 	}
 
 	static void regJsonBlock() {

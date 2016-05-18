@@ -12,7 +12,6 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -24,7 +23,7 @@ import defeatedcrow.hac.core.base.DCLockableTE;
 /**
  * SidedInventory持ちHeat利用Tileのベースクラス
  */
-public abstract class TileChamberBase extends DCLockableTE implements ISidedInventory, ITickable {
+public abstract class TileChamberBase extends DCLockableTE implements ISidedInventory {
 
 	protected int currentBurnTime = 0;
 	protected int maxBurnTime = 1;
@@ -194,7 +193,7 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 				3 };
 	};
 
-	public ItemStack[] inv = new ItemStack[getSizeInventory()];
+	public ItemStack[] inv = new ItemStack[this.getSizeInventory()];
 
 	// スロット数
 	@Override

@@ -173,6 +173,12 @@ tile.dcs_cont_misc_clay.name=Clay Box
 tile.dcs_cont_misc_fish.name=Fish Box
 tile.dcs_cont_misc_leather.name=Leather Box
 tile.dcs_cont_misc_fur.name=Fur Box
+tile.dcs_cont_cardboard_beef.name=Beef Box
+tile.dcs_cont_cardboard_pork.name=Pork Box
+tile.dcs_cont_cardboard_chicken.name=Chicken Box
+tile.dcs_cont_cardboard_sheep.name=Mutton Box
+tile.dcs_cont_cardboard_egg.name=Egg Box
+tile.dcs_cont_cardboard_wool.name=Wool Box
 
 tile.dcs_build_selenite_normal.name=Selenite Glass
 tile.dcs_build_selenite_light.name=Selenite Light Glass

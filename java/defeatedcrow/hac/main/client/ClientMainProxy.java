@@ -6,8 +6,11 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.main.CommonMainProxy;
+import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
@@ -16,6 +19,7 @@ import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.client.block.TESRNormalChamber;
 import defeatedcrow.hac.main.event.AltTooltipEvent;
 
+@SideOnly(Side.CLIENT)
 public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
@@ -24,6 +28,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		JsonBakery.instance.addTex(BlockCropCont.getTexList());
 		JsonBakery.instance.addTex(BlockEnemyCont.getTexList());
 		JsonBakery.instance.addTex(BlockMiscCont.getTexList());
+		JsonBakery.instance.addTex(BlockCardboard.getTexList());
 	}
 
 	@Override
@@ -34,8 +39,7 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void loadTE() {
-		super.loadTE();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileNormalChamber.class, new TESRNormalChamber());
+		ClientRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal", new TESRNormalChamber());
 	}
 
 	@Override

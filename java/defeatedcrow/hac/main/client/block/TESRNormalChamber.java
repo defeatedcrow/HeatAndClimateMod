@@ -1,11 +1,8 @@
 package defeatedcrow.hac.main.client.block;
 
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
 import defeatedcrow.hac.core.client.base.DCModelBase;
 
-@SideOnly(Side.CLIENT)
 public class TESRNormalChamber extends DCLockableTESRBase {
 
 	@Override

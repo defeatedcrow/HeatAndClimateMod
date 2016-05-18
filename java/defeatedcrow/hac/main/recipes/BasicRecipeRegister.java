@@ -351,6 +351,24 @@ public class BasicRecipeRegister {
 
 			GameRegistry.addRecipe(new ShapelessOreRecipe(enemy[i], new Object[] { new ItemStack(MainInit.dropCont, 1, i) }));
 		}
+
+		ItemStack[] meat = new ItemStack[] {
+				new ItemStack(Items.beef, 9, 0),
+				new ItemStack(Items.porkchop, 9, 0),
+				new ItemStack(Items.chicken, 9, 0),
+				new ItemStack(Items.mutton, 9, 0),
+				new ItemStack(Items.egg, 9, 0),
+				new ItemStack(Blocks.wool, 9, 32767) };
+		for (int i = 0; i < meat.length; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cardboard, 1, i), new Object[] {
+					"XXX",
+					"XXX",
+					"XXX",
+					'X',
+					meat[i] }));
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(meat[i], new Object[] { new ItemStack(MainInit.cardboard, 1, i) }));
+		}
 	}
 
 	static void loadBuildRecipes() {

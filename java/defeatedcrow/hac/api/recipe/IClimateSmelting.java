@@ -68,6 +68,11 @@ public interface IClimateSmelting {
 	int hasPlaceableOutput();
 
 	/**
+	 * 0: 高頻度, 1: BlockのRandomTick, 2: 監視イベントでの更新(低頻度)
+	 */
+	int recipeFrequency();
+
+	/**
 	 * おもにレシピ条件表示機能用
 	 * HeatTierのみ、Tier+1まで対応範囲になる
 	 */
