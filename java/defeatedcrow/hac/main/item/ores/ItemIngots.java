@@ -1,6 +1,6 @@
 package defeatedcrow.hac.main.item.ores;
 
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 

@@ -8,17 +8,16 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -33,6 +32,9 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	public static final PropertyBool SIDE = PropertyBool.create("side");
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 7);
 
+	protected static final AxisAlignedBB AABB_BOTTOM_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
+	protected static final AxisAlignedBB AABB_TOP_HALF = new AxisAlignedBB(0.0D, 0.5D, 0.0D, 1.0D, 1.0D, 1.0D);
+
 	// Type上限
 	public final int maxMeta;
 	public final boolean isGlass;
@@ -42,7 +44,6 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 
 	public BlockSlabBase(Material m, String s, int max, boolean glass) {
 		super(m);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 		this.setUnlocalizedName(s);
 		this.setCreativeTab(ClimateCore.climate);
 		this.setHardness(0.5F);
@@ -60,37 +61,17 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos) {
-		IBlockState state = worldIn.getBlockState(pos);
-
-		if (state.getBlock() == this) {
-			if (state.getValue(SIDE)) {
-				this.setBlockBounds(0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F);
-			} else {
-				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-			}
-		}
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return state.getValue(SIDE) ? AABB_TOP_HALF : AABB_BOTTOM_HALF;
 	}
 
 	@Override
-	public void setBlockBoundsForItemRender() {
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-	}
-
-	@Override
-	public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List<AxisAlignedBB> list,
-			Entity collidingEntity) {
-		this.setBlockBoundsBasedOnState(worldIn, pos);
-		super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
-	}
-
-	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
 	@Override
-	public boolean doesSideBlockRendering(IBlockAccess world, BlockPos pos, EnumFacing face) {
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		if (isGlass)
 			return false;
 		boolean top = world.getBlockState(pos).getValue(SIDE);
@@ -109,19 +90,18 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	}
 
 	@Override
-	public boolean isFullCube() {
+	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		BlockPos check = pos.offset(side.getOpposite());
-		IBlockState state = worldIn.getBlockState(pos);
 		IBlockState state2 = worldIn.getBlockState(check);
 
 		if (isGlass) {
-			if (state2.getBlock().getMaterial() != Material.glass) {
+			if (state2.getMaterial() != Material.GLASS) {
 				return true;
 			}
 
@@ -130,20 +110,15 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 					return false;
 			}
 
-			if (state2.getBlock().isFullBlock())
+			if (state2.isFullBlock())
 				return false;
 		}
 
-		if (side != EnumFacing.UP && side != EnumFacing.DOWN && !super.shouldSideBeRendered(worldIn, pos, side)) {
+		if (side != EnumFacing.UP && side != EnumFacing.DOWN && !super.shouldSideBeRendered(state, worldIn, pos, side)) {
 			return false;
 		}
 		// additional logic breaks doesSideBlockRendering and is no longer useful.
-		return super.shouldSideBeRendered(worldIn, pos, side);
-	}
-
-	@Override
-	public int getDamageValue(World worldIn, BlockPos pos) {
-		return super.getDamageValue(worldIn, pos) & 7;
+		return super.shouldSideBeRendered(state, worldIn, pos, side);
 	}
 
 	@Override
@@ -191,8 +166,8 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	}
 
 	@Override
-	protected BlockState createBlockState() {
-		return new BlockState(this, new IProperty[] {
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] {
 				SIDE,
 				TYPE });
 	}
@@ -220,9 +195,9 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 		}
 	}
 
-	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumWorldBlockLayer getBlockLayer() {
-		return EnumWorldBlockLayer.CUTOUT_MIPPED;
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 }

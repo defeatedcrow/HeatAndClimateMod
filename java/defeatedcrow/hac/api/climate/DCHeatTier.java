@@ -1,6 +1,6 @@
 package defeatedcrow.hac.api.climate;
 
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * 熱源の概念。<br>
@@ -70,7 +70,6 @@ public enum DCHeatTier {
 
 	public DCHeatTier addTier(int i) {
 		int ret = tier + i;
-		MathHelper.clamp_int(id, -2, 5);
 		return getHeatEnum(ret);
 	}
 

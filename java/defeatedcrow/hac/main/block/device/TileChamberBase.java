@@ -1,18 +1,19 @@
 package defeatedcrow.hac.main.block.device;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -52,7 +53,7 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound tag) {
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
 		// 燃焼時間や調理時間などの書き込み
 		tag.setInteger("BurnTime", this.currentBurnTime);
@@ -72,6 +73,7 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 		}
 		tag.setTag("InvItems", nbttaglist);
 		// DCLogger.debugLog("write " + this.currentBurnTime + ", " + this.maxBurnTime + ", " + this.currentClimate);
+		return tag;
 	}
 
 	@Override
@@ -119,14 +121,15 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 	}
 
 	@Override
-	public Packet getDescriptionPacket() {
+	@Nullable
+	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound nbtTagCompound = new NBTTagCompound();
 		this.writeToNBT(nbtTagCompound);
-		return new S35PacketUpdateTileEntity(pos, 0, nbtTagCompound);
+		return new SPacketUpdateTileEntity(pos, 0, nbtTagCompound);
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
 		this.readFromNBT(pkt.getNbtCompound());
 	}
 
@@ -398,8 +401,8 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 	}
 
 	@Override
-	public IChatComponent getDisplayName() {
-		return new ChatComponentTranslation(this.getName(), new Object[0]);
+	public ITextComponent getDisplayName() {
+		return new TextComponentString(this.getName());
 	}
 
 	IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);

@@ -5,8 +5,9 @@ import java.util.List;
 
 import net.minecraft.block.material.Material;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 
-public class BlockMiscCont extends DCSimpleBlock {
+public class BlockMiscCont extends DCSimpleBlock implements ITexturePath {
 
 	public BlockMiscCont(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -53,6 +54,15 @@ public class BlockMiscCont extends DCSimpleBlock {
 		list.add(b + "t_leather");
 		list.add(b + "t_fur");
 		return list;
+	}
+
+	@Override
+	public String getTexPath(int meta, boolean isFull) {
+		int m = meta & 15;
+		if (m > 3)
+			m = 3;
+		String b = "dcs_climate:items/block/cont/";
+		return b + "metalbox_" + getNameSuffix()[m];
 	}
 
 }

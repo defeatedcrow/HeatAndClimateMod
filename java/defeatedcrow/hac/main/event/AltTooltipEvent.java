@@ -10,7 +10,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,8 +27,8 @@ public class AltTooltipEvent {
 
 	@SubscribeEvent
 	public void advancedTooltip(ItemTooltipEvent event) {
-		EntityPlayer player = event.entityPlayer;
-		ItemStack target = event.itemStack;
+		EntityPlayer player = event.getEntityPlayer();
+		ItemStack target = event.getItemStack();
 		boolean flag = false;
 
 		if (player != null && player instanceof EntityPlayerSP && target != null && CoreConfigDC.showAltTips) {
@@ -49,34 +49,34 @@ public class AltTooltipEvent {
 				}
 			}
 
-			if (event.showAdvancedItemTooltips && CoreConfigDC.showAltTips) {
+			if (event.isShowAdvancedItemTooltips() && CoreConfigDC.showAltTips) {
 				// まず耐久値
 				if (tI.isDamageable() && target.getItemDamage() == 0) {
 					int max = target.getMaxDamage();
-					String ret = StatCollector.translateToLocal("dcs_climate.tip.durability") + ": " + max;
-					event.toolTip.add(ret);
+					String ret = I18n.translateToLocal("dcs_climate.tip.durability") + ": " + max;
+					event.getToolTip().add(ret);
 				}
 
 				// tool tier
 				if (tI instanceof ItemTool) {
 					int tier = ((ItemTool) tI).getToolMaterial().getHarvestLevel();
-					String ret = StatCollector.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
-					event.toolTip.add(ret);
+					String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
+					event.getToolTip().add(ret);
 				}
 
 				// climate reg
 				if (tI instanceof ItemArmor) {
 					ArmorMaterial mat = ((ItemArmor) tI).getArmorMaterial();
 					float reg = DamageAPI.armorRegister.getPreventAmount(mat);
-					String ret = StatCollector.translateToLocal("dcs_climate.tip.resistance") + ": " + reg;
-					event.toolTip.add(ret);
+					String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": " + reg;
+					event.getToolTip().add(ret);
 				}
 			}
 
 			if (flag) {
 				this.ores = this.getOre(target);
 				if (!ores.isEmpty())
-					event.toolTip.addAll(ores);
+					event.getToolTip().addAll(ores);
 			}
 		}
 	}

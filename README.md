@@ -1,12 +1,12 @@
 # HeatAndClimateMod
-The Mod for Minecraft 1.8.9+
+The Mod for Minecraft 1.9.4
 
 ## Introduction
-- This is a mod being developed by defeatedcrow. This mod requires HeatAndClimateLib.<br>  このmodはdefeatedcrowが作成する、HeatAndClimateLibを利用したMinecraft用Modです。HeatAndClimateLibを前提Modとして要求します。<br> 現在の開発環境はMC1.8.9ですが、開発MCバージョンは今後変更される可能性があります。
+- This is a mod being developed by defeatedcrow. This mod requires HeatAndClimateLib.<br>  このmodはdefeatedcrowが作成する、HeatAndClimateLibを利用したMinecraft用Modです。HeatAndClimateLibを前提Modとして要求します。<br> 現在の開発環境はMC1.9.4です。
 
 ## Current operating environment:
-- Minecraft 1.8.9  
-- MinecraftForge 11.15.1.1722+  
+- Minecraft 1.9.4  
+- MinecraftForge 12.17.0.1954+  
 - [HeatAndClimateLib](defeatedcrow/heatandclimatelib)
    
 ## Licenses

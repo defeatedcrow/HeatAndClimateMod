@@ -1,6 +1,6 @@
 package defeatedcrow.hac.api.climate;
 
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * エアフロー。

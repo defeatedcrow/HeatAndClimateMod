@@ -1,7 +1,8 @@
 package defeatedcrow.hac.api.recipe;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import defeatedcrow.hac.api.climate.IClimate;
 
@@ -16,7 +17,7 @@ public interface IClimateObject {
 
 	boolean onClimateChange(World world, BlockPos pos, IBlockState state, IClimate climate);
 
-	String getSEName(int meta);
+	SoundEvent getSE(int meta);
 
 	boolean playSEOnChanging(int meta);
 

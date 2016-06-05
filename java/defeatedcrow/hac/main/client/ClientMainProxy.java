@@ -1,14 +1,16 @@
 package defeatedcrow.hac.main.client;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonBakery;
+import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
@@ -21,6 +23,9 @@ import defeatedcrow.hac.main.event.AltTooltipEvent;
 
 @SideOnly(Side.CLIENT)
 public class ClientMainProxy extends CommonMainProxy {
+
+	public static final JsonRegisterHelper JSON_REGISTER = new JsonRegisterHelper(
+			"E:\\forge1.9.0\\forge1.9.4\\src\\main\\resources");
 
 	@Override
 	public void loadConst() {
@@ -49,12 +54,16 @@ public class ClientMainProxy extends CommonMainProxy {
 	}
 
 	@Override
-	public void addSidedBlock(Block block) {
+	public void addSidedBlock(Block block, String name, int max) {
+		JsonRegisterHelper.INSTANCE.regBakedBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
+				"cont", max);
 		JsonBakery.instance.regDummySidedModel(block);
 	}
 
 	@Override
-	public void addTBBlock(Block block) {
+	public void addTBBlock(Block block, String name, int max) {
+		JsonRegisterHelper.INSTANCE.regBakedBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
+				"cont", max);
 		JsonBakery.instance.regDummyTBModel(block);
 	}
 
@@ -65,19 +74,19 @@ public class ClientMainProxy extends CommonMainProxy {
 	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {
 		int m = 0;
 		if (max == 0) {
-			ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir + "/" + name, "inventory"));
+			ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir + "/"
+					+ name, "inventory"));
 		} else {
 			while (m < max + 1) {
 				if (f) {
-					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir + "/" + name + m,
-							"inventory"));
+					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir
+							+ "/" + name + m, "inventory"));
 				} else {
-					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir + "/" + name,
-							"inventory"));
+					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir
+							+ "/" + name, "inventory"));
 				}
 				m++;
 			}
 		}
 	}
-
 }

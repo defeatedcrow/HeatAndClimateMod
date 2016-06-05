@@ -3,14 +3,16 @@ package defeatedcrow.hac.main.block.container;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import defeatedcrow.hac.core.base.DCSidedBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 
-public class BlockCardboard extends DCSidedBlock {
+public class BlockCardboard extends DCSidedBlock implements ITexturePath {
 
 	public BlockCardboard(Material m, String s, int max) {
 		super(m, s, max, true);
-		this.setStepSound(soundTypeWood);
+		this.setSoundType(SoundType.CLOTH);
 		this.setTickRandomly(true);
 		this.setHardness(0.5F);
 		this.setResistance(5.0F);
@@ -62,6 +64,15 @@ public class BlockCardboard extends DCSidedBlock {
 		list.add(b + "cardboard_t");
 		list.add(b + "cardboard_b");
 		return list;
+	}
+
+	@Override
+	public String getTexPath(int meta, boolean isFull) {
+		int m = meta & 7;
+		if (m > 5)
+			m = 5;
+		String b = "dcs_climate:items/block/cont/";
+		return b + "cardboard_" + getNameSuffix()[m];
 	}
 
 }

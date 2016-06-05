@@ -2,9 +2,9 @@ package defeatedcrow.hac.api.climate;
 
 import java.util.Map;
 
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 
 /**
  * バイオームの気候登録。
@@ -25,7 +25,7 @@ public interface IBiomeClimateRegister {
 	 * @param airflow
 	 *            : 通気
 	 */
-	void addBiomeClimate(BiomeGenBase biome, DCHeatTier temp, DCHumidity hum, DCAirflow airflow);
+	void addBiomeClimate(Biome biome, DCHeatTier temp, DCHumidity hum, DCAirflow airflow);
 
 	Map<Integer, ? extends IClimate> getClimateList();
 
@@ -35,7 +35,7 @@ public interface IBiomeClimateRegister {
 	 */
 	IClimate getClimateFromBiome(World world, BlockPos pos);
 
-	IClimate getClimateFromBiome(BiomeGenBase biome);
+	IClimate getClimateFromBiome(Biome biome);
 
 	DCHeatTier getHeatTier(World world, BlockPos pos);
 
@@ -43,11 +43,11 @@ public interface IBiomeClimateRegister {
 
 	DCHumidity getHumidity(World world, BlockPos pos);
 
-	DCHeatTier getHeatTier(BiomeGenBase biome);
+	DCHeatTier getHeatTier(Biome biome);
 
-	DCAirflow getAirflow(BiomeGenBase biome);
+	DCAirflow getAirflow(Biome biome);
 
-	DCHumidity getHumidity(BiomeGenBase biome);
+	DCHumidity getHumidity(Biome biome);
 
 	/**
 	 * climateを0bAABBCCCのintとして表現したものと互換性を持たせる。

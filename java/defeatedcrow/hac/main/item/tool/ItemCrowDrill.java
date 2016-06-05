@@ -5,10 +5,14 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fluids.IFluidBlock;
@@ -50,11 +54,11 @@ public class ItemCrowDrill extends DCItem {
 
 	// criative 穴掘り機能
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY,
-			float hitZ) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		// creativeチェック
 		if (player == null || (!player.capabilities.isCreativeMode && !ClimateCore.isDebug)) {
-			return true;
+			return EnumActionResult.FAIL;
 		}
 
 		boolean ore = false;
@@ -71,8 +75,8 @@ public class ItemCrowDrill extends DCItem {
 				tag.setBoolean("dcs_oredig", !ore);
 				stack.setTagCompound(tag);
 			}
-			world.playSoundEffect(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, "random.pop", 0.5F, 1.8F);
-			return true;
+			world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
+			return EnumActionResult.SUCCESS;
 		}
 
 		Chunk chunk = world.getChunkFromBlockCoords(pos);
@@ -90,12 +94,12 @@ public class ItemCrowDrill extends DCItem {
 			if (p1.getX() == minX || p1.getX() == maxX || p1.getZ() == minZ || p1.getZ() == maxZ || p1.getY() == maxY) {
 				Block target = world.getBlockState(p1).getBlock();
 				if (target instanceof BlockLiquid || target instanceof IFluidBlock) {
-					world.setBlockState(p1, Blocks.glass.getDefaultState());
+					world.setBlockState(p1, Blocks.GLASS.getDefaultState());
 				}
 			} else {
 				if (ore && !world.isAirBlock(p1)) {
 					Block target = world.getBlockState(p1).getBlock();
-					int meta = target.getDamageValue(world, p1);
+					int meta = target.getMetaFromState(world.getBlockState(p1));
 					ItemStack check = new ItemStack(target, 1, meta);
 					if (check != null && check.getItem() != null && !isTarget(check)) {
 						continue;
@@ -109,8 +113,8 @@ public class ItemCrowDrill extends DCItem {
 
 		DCLogger.debugLog("Coord: " + chunk.xPosition + ", " + chunk.zPosition);
 		DCLogger.debugLog("Coord: " + minX + "-" + maxX + ", " + minY + "-" + maxY + ", " + minZ + "-" + maxZ);
-		world.playSoundEffect(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, "random.pop", 0.5F, 1.8F);
-		return true;
+		world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
+		return EnumActionResult.SUCCESS;
 
 	}
 

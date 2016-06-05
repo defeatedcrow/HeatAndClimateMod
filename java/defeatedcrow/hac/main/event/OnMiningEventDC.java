@@ -16,10 +16,10 @@ public class OnMiningEventDC {
 
 	@SubscribeEvent
 	public void preMining(PlayerEvent.BreakSpeed event) {
-		if (event.entityPlayer != null) {
+		if (event.getEntityPlayer() != null) {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
-				ItemStack check = event.entityPlayer.inventory.getStackInSlot(i);
+				ItemStack check = event.getEntityPlayer().inventory.getStackInSlot(i);
 				if (check != null && check.getItem() != null && check.getItem() instanceof ItemMagicalPendant) {
 					int m = check.getItemDamage();
 					if (m == 9) {
@@ -28,9 +28,9 @@ public class OnMiningEventDC {
 				}
 			}
 
-			event.newSpeed = event.originalSpeed;
+			event.setNewSpeed(event.getOriginalSpeed());
 			if (hasCharm) {
-				event.newSpeed += 2.0F;
+				event.setNewSpeed(event.getNewSpeed() + 2.0F);
 				event.setCanceled(false);
 			}
 		}
@@ -38,10 +38,10 @@ public class OnMiningEventDC {
 
 	// @SubscribeEvent
 	public void onMining(BlockEvent.HarvestDropsEvent event) {
-		if (!event.world.isRemote && event.harvester != null) {
+		if (!event.getWorld().isRemote && event.getHarvester() != null) {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
-				ItemStack check = event.harvester.inventory.getStackInSlot(i);
+				ItemStack check = event.getHarvester().inventory.getStackInSlot(i);
 				if (check != null && check.getItem() != null && check.getItem() instanceof ItemMagicalPendant) {
 					int m = check.getItemDamage();
 					if (m == 9) {
@@ -50,8 +50,8 @@ public class OnMiningEventDC {
 				}
 			}
 
-			if (!event.isSilkTouching && hasCharm) {
-				Block block = event.state.getBlock();
+			if (!event.isSilkTouching() && hasCharm) {
+				Block block = event.getState().getBlock();
 				if (block instanceof BlockOres) {
 					// TODO 工事中
 				}

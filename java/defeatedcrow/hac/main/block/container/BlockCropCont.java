@@ -5,8 +5,9 @@ import java.util.List;
 
 import net.minecraft.block.material.Material;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 
-public class BlockCropCont extends DCSimpleBlock {
+public class BlockCropCont extends DCSimpleBlock implements ITexturePath {
 
 	public BlockCropCont(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -87,6 +88,15 @@ public class BlockCropCont extends DCSimpleBlock {
 		list.add(b2 + "s");
 		list.add(b2 + "b");
 		return list;
+	}
+
+	@Override
+	public String getTexPath(int meta, boolean isFull) {
+		int m = meta & 15;
+		if (m > 10)
+			m = 10;
+		String b = "dcs_climate:items/block/cont/";
+		return b + "cropbox_" + getNameSuffix()[m];
 	}
 
 }

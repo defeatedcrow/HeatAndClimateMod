@@ -8,8 +8,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
@@ -81,21 +81,6 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	@Override
-	public int getExpDrop(IBlockAccess world, BlockPos pos, int fortune) {
-		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() != this)
-			return 0;
-		int meta = this.getMetaFromState(state);
-		DropTable table = this.getTable(meta);
-		if (table.isFortuneEffective) {
-			int d1 = rand.nextInt(5);
-			return d1;
-		} else {
-			return 0;
-		}
-	}
-
-	@Override
 	public int damageDropped(IBlockState state) {
 		if (state.getBlock() != this)
 			return 0;
@@ -114,9 +99,9 @@ public class BlockOres extends DCSimpleBlock {
 		CHAL_B(MainInit.gems, 1, 0, true),
 		SAPPIRE(MainInit.gems, 1, 4, true),
 		CHAL_W(MainInit.gems, 1, 2, true),
-		CRYSTAL(Items.quartz, 1, 0, true),
-		DIAMOND(Items.diamond, 1, 0, true),
-		EMERALD(Items.emerald, 1, 0, true),
+		CRYSTAL(Items.QUARTZ, 1, 0, true),
+		DIAMOND(Items.DIAMOND, 1, 0, true),
+		EMERALD(Items.EMERALD, 1, 0, true),
 		NONE(null, 1, 0, false);
 
 		public Item dropItem;

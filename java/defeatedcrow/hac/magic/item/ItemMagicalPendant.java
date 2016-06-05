@@ -9,14 +9,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCPotion;
 
 /**
  * インベントリの最上段に入れていると効果のあるアクセサリー類。
@@ -85,29 +86,29 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			List<PotionEffect> removes = new ArrayList<PotionEffect>();
 			Collection<PotionEffect> target = player.getActivePotionEffects();
 			for (PotionEffect check : target) {
-				Potion p = Potion.potionTypes[check.getPotionID()];
+				Potion p = check.getPotion();
 				if (p != null && p.isBadEffect()) {
 					removes.add(check);
 				}
 			}
 			for (PotionEffect ret : removes) {
-				player.removePotionEffect(ret.getPotionID());
+				player.removePotionEffect(ret.getPotion());
 			}
 		}
 
 		PotionEffect eff = null;
 		switch (meta) {
 		case 0:
-			eff = new PotionEffect(Potion.waterBreathing.getId(), 5, 0);
+			eff = new PotionEffect(DCPotion.water_breath, 5, 0);
 			break;
 		case 1:
-			eff = new PotionEffect(Potion.fireResistance.getId(), 5, 0);
+			eff = new PotionEffect(DCPotion.fire_reg, 5, 0);
 			break;
 		case 5:
-			eff = new PotionEffect(Potion.nightVision.getId(), 605, 0);
+			eff = new PotionEffect(DCPotion.night_vision, 605, 0);
 			break;
 		case 6:
-			eff = new PotionEffect(Potion.jump.getId(), 5, 0);
+			eff = new PotionEffect(DCPotion.jump, 5, 0);
 			break;
 		}
 
@@ -139,6 +140,6 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
 		String s = "";
 		int meta = stack.getItemDamage();
-		tooltip.add(EnumChatFormatting.YELLOW.toString() + StatCollector.translateToLocal("dcs.tip.pendant." + meta));
+		tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.tip.pendant." + meta));
 	}
 }

@@ -5,6 +5,8 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
@@ -111,6 +113,11 @@ public class TileNormalChamber extends TileChamberBase {
 			}
 		}
 		return 0;
+	}
+
+	@Override
+	public ITextComponent getDisplayName() {
+		return new TextComponentString(this.getName());
 	}
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */

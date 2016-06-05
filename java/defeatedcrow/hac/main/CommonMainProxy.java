@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -45,10 +45,10 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerWorldGenerator(new WorldGenOres(), 2);
 	}
 
-	public void addSidedBlock(Block block) {
+	public void addSidedBlock(Block block, String name, int max) {
 	}
 
-	public void addTBBlock(Block block) {
+	public void addTBBlock(Block block, String name, int max) {
 	}
 
 	/**

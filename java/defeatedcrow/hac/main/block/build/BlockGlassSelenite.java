@@ -5,9 +5,9 @@ import java.util.List;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,9 +19,11 @@ import defeatedcrow.hac.core.base.ITexturePath;
 public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath {
 
 	public BlockGlassSelenite(String s, int max) {
-		super(Material.glass, s, max, false);
+		super(Material.GLASS, s, max, false);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
+		this.fullBlock = false;
+		this.lightOpacity = 0;
 	}
 
 	@Override
@@ -56,12 +58,12 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath {
 	/* 以下Glass用設定 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, EnumFacing side) {
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		BlockPos check = pos.offset(side.getOpposite());
 		IBlockState state = world.getBlockState(pos);
 		IBlockState state2 = world.getBlockState(check);
 
-		if (state2.getBlock().getMaterial() != Material.glass) {
+		if (state2.getMaterial() != Material.GLASS) {
 			return true;
 		}
 
@@ -69,18 +71,13 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath {
 			return false;
 		}
 
-		return super.shouldSideBeRendered(world, pos, side);
+		return super.shouldSideBeRendered(blockState, world, pos, side);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumWorldBlockLayer getBlockLayer() {
-		return EnumWorldBlockLayer.CUTOUT_MIPPED;
-	}
-
-	@Override
-	public boolean isFullCube() {
-		return false;
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Override
@@ -89,7 +86,7 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath {
 	}
 
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
@@ -109,15 +106,13 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath {
 	}
 
 	@Override
-	public int getLightOpacity(IBlockAccess world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
+	public int getLightOpacity(IBlockState state, IBlockAccess world, BlockPos pos) {
 		int meta = state.getBlock().getMetaFromState(state);
 		return meta == 2 ? 255 : 0;
 	}
 
 	@Override
-	public int getLightValue(IBlockAccess world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
 		int meta = state.getBlock().getMetaFromState(state);
 		return meta == 1 ? 15 : 0;
 	}

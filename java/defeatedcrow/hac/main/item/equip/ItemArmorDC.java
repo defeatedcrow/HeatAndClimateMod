@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.item.equip;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -16,7 +17,7 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath {
 	private final String tex;
 	private final DCMaterial material;
 
-	public ItemArmorDC(ArmorMaterial m, DCMaterial mat, int slot, String t) {
+	public ItemArmorDC(ArmorMaterial m, DCMaterial mat, EntityEquipmentSlot slot, String t) {
 		super(m, 2, slot);
 		material = mat;
 		tex = t;
@@ -26,13 +27,13 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath {
 	public String getTexPath(int meta, boolean isFull) {
 		String s = "met_";
 		switch (this.armorType) {
-		case 1:
+		case CHEST:
 			s = "plate_";
 			break;
-		case 2:
+		case LEGS:
 			s = "leggins_";
 			break;
-		case 3:
+		case FEET:
 			s = "boots_";
 			break;
 		default:
@@ -42,13 +43,8 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath {
 	}
 
 	@Override
-	public boolean isValidArmor(ItemStack stack, int type, Entity entity) {
-		return this.armorType == type;
-	}
-
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		if (slot == 2) {
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+		if (slot == EntityEquipmentSlot.LEGS) {
 			return "dcs_climate:textures/models/armor/" + tex + "_layer_2.png";
 		} else {
 			return "dcs_climate:textures/models/armor/" + tex + "_layer_1.png";
@@ -57,8 +53,8 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
-		return armorSlot == 2 ? ClimateCore.proxy.getArmorModel(armorSlot) : null;
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
+		return armorSlot == EntityEquipmentSlot.LEGS ? ClimateCore.proxy.getArmorModel(armorSlot.getIndex()) : null;
 	}
 
 }

@@ -8,7 +8,7 @@ public class ItemAxeDC extends ItemAxe implements ITexturePath {
 	private final String tex;
 
 	public ItemAxeDC(ToolMaterial m, String t) {
-		super(m);
+		super(m, m.getDamageVsEntity() - 1.0F, -3.0F);
 		tex = t;
 	}
 

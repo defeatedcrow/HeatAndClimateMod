@@ -1,6 +1,6 @@
 package defeatedcrow.hac.api.heat;
 
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 
