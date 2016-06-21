@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -14,6 +15,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -25,9 +27,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.INameSuffix;
+import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 
 // doubleなし
-public abstract class BlockSlabBase extends Block implements ISidedTexture, INameSuffix {
+public abstract class BlockSlabBase extends Block implements ISidedTexture, INameSuffix, ISidedRenderingBlock {
 
 	public static final PropertyBool SIDE = PropertyBool.create("side");
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 7);
@@ -75,13 +78,14 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 		if (isGlass)
 			return false;
 		boolean top = world.getBlockState(pos).getValue(SIDE);
-		return (top && face == EnumFacing.DOWN) || (!top && face == EnumFacing.UP);
+		return (top && face == EnumFacing.UP) || (!top && face == EnumFacing.DOWN);
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-			EntityLivingBase placer) {
-		IBlockState state = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(SIDE, false);
+	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer) {
+		IBlockState state = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(
+				SIDE, false);
 		if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5D)) {
 			return state;
 		} else {
@@ -96,29 +100,41 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
-		BlockPos check = pos.offset(side.getOpposite());
-		IBlockState state2 = worldIn.getBlockState(check);
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		BlockPos check = pos.offset(side);
+		IBlockState state2 = world.getBlockState(check);
 
-		if (isGlass) {
-			if (state2.getMaterial() != Material.GLASS) {
-				return true;
+		if (state.getBlock() == this) {
+			if (this.isGlassType(state) && isGlass) {
+				boolean top = state.getValue(SIDE);
+				if (state2.getBlock() == this) {
+					boolean top2 = state2.getValue(SIDE);
+					if (side == EnumFacing.DOWN) {
+						return !top && top2;
+					} else if (side == EnumFacing.UP) {
+						return top && !top2;
+					} else {
+						return top != top2;
+					}
+				} else if (state2.getBlock() instanceof ISidedRenderingBlock) {
+					return ((ISidedRenderingBlock) state2.getBlock()).isRendered(side, state2);
+				}
+
+				if (state2.getBlock() instanceof BlockBreakable) {
+					return (!top && side != EnumFacing.DOWN) || (top && side != EnumFacing.UP);
+				}
+
+				if (!state2.isSideSolid(world, check, side.getOpposite())) {
+					return true;
+				}
 			}
-
-			if (state2.getBlock() == this) {
-				if (state.getBlock() == this && state.getValue(SIDE) == state2.getValue(SIDE))
-					return false;
-			}
-
-			if (state2.isFullBlock())
-				return false;
 		}
 
-		if (side != EnumFacing.UP && side != EnumFacing.DOWN && !super.shouldSideBeRendered(state, worldIn, pos, side)) {
+		if (side != EnumFacing.UP && side != EnumFacing.DOWN && state2.isNormalCube()) {
 			return false;
 		}
 		// additional logic breaks doesSideBlockRendering and is no longer useful.
-		return super.shouldSideBeRendered(state, worldIn, pos, side);
+		return super.shouldSideBeRendered(state, world, pos, side);
 	}
 
 	@Override
@@ -198,6 +214,28 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	@SideOnly(Side.CLIENT)
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+		return EnumBlockRenderType.MODEL;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT_MIPPED;
+	}
+
+	@Override
+	public boolean isRendered(EnumFacing face, IBlockState state) {
+		if (state.getBlock() == this) {
+			boolean top = state.getValue(SIDE);
+			return (top && face != EnumFacing.DOWN) || (!top && face != EnumFacing.UP);
+		}
+		return !isGlassType(state);
+	}
+
+	private boolean isGlassType(IBlockState state) {
+		if (state.getBlock() != this)
+			return false;
+		int i = state.getValue(TYPE);
+		return i != 0;
 	}
 }

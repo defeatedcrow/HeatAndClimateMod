@@ -5,10 +5,18 @@ import java.util.List;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 
-public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath {
+public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
 	public BlockEnemyCont(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -69,6 +77,32 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath {
 			m = 4;
 		String b = "dcs_climate:items/block/cont/";
 		return b + "metalbox_" + getNameSuffix()[m];
+	}
+
+	/* IRapidCollectables */
+
+	@Override
+	public boolean isCollectable(ItemStack item) {
+		return item != null && item.getItem() != null && item.getItem() instanceof ItemSpade;
+	}
+
+	@Override
+	public int getCollectArea(ItemStack item) {
+		return 1;
+	}
+
+	@Override
+	public boolean doMining(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
+		List<ItemStack> list = this.getDrops(world, pos, state, 0);
+		for (ItemStack item : list) {
+			double x = player.posX;
+			double y = player.posY + 0.25D;
+			double z = player.posZ;
+			EntityItem drop = new EntityItem(world, x, y, z, item);
+			world.spawnEntityInWorld(drop);
+		}
+		world.setBlockToAir(pos);
+		return true;
 	}
 
 }

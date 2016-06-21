@@ -26,6 +26,7 @@ public class MainInit {
 	public static Block stairsGlass;
 	public static Block stairsGypsum;
 	public static Block halfSlab;
+	public static Block chalLamp;
 
 	// device
 	public static Block chamber;

@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
-import defeatedcrow.hac.magic.item.ItemMagicalPendant;
+import defeatedcrow.hac.main.MainInit;
 
 @SideOnly(Side.CLIENT)
 public class AltTooltipEvent {
@@ -41,8 +41,8 @@ public class AltTooltipEvent {
 			}
 			List<ItemStack> charms = new ArrayList<ItemStack>();
 			for (ItemStack item1 : inside) {
-				if (item1 != null && item1.getItem() != null && item1.getItem() instanceof ItemMagicalPendant) {
-					int m = item1.getItemDamage();
+				if (item1 != null && item1.getItem() != null && item1.getItem() == MainInit.pendant) {
+					int m = item1.getMetadata();
 					if (m == 4) {
 						flag = true;
 					}
@@ -51,7 +51,7 @@ public class AltTooltipEvent {
 
 			if (event.isShowAdvancedItemTooltips() && CoreConfigDC.showAltTips) {
 				// まず耐久値
-				if (tI.isDamageable() && target.getItemDamage() == 0) {
+				if (tI.isDamageable() && target.getMetadata() == 0) {
 					int max = target.getMaxDamage();
 					String ret = I18n.translateToLocal("dcs_climate.tip.durability") + ": " + max;
 					event.getToolTip().add(ret);

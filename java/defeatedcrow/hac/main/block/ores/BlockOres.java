@@ -29,16 +29,11 @@ public class BlockOres extends DCSimpleBlock {
 	@Override
 	public void setHarvestLevel(String toolClass, int level) {
 		for (int i = 0; i < 16; i++) {
-			switch (i) {
-			case 0:
-			case 1:
-			case 4:
-			case 6:
-			case 8:
-			case 9:
+			if (i < 3) {
 				super.setHarvestLevel("pickaxe", 1, this.getStateFromMeta(i));
-				break;
-			default:
+			} else if (i > 8) {
+				super.setHarvestLevel("pickaxe", 3, this.getStateFromMeta(i));
+			} else {
 				super.setHarvestLevel("pickaxe", 2, this.getStateFromMeta(i));
 			}
 		}
@@ -94,15 +89,9 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	public enum DropTable {
-		GYPSUM(MainInit.gems, 1, 3, true),
-		HEMATITE(MainInit.oreDust, 1, 5, true),
-		CHAL_B(MainInit.gems, 1, 0, true),
-		SAPPIRE(MainInit.gems, 1, 4, true),
-		CHAL_W(MainInit.gems, 1, 2, true),
-		CRYSTAL(Items.QUARTZ, 1, 0, true),
-		DIAMOND(Items.DIAMOND, 1, 0, true),
-		EMERALD(Items.EMERALD, 1, 0, true),
-		NONE(null, 1, 0, false);
+		GYPSUM(MainInit.gems, 1, 3, true), HEMATITE(MainInit.oreDust, 1, 5, true), CHAL_B(MainInit.gems, 1, 0, true), SAPPIRE(
+				MainInit.gems, 1, 4, true), CHAL_W(MainInit.gems, 1, 2, true), CRYSTAL(Items.QUARTZ, 1, 0, true), DIAMOND(
+				Items.DIAMOND, 1, 0, true), EMERALD(Items.EMERALD, 1, 0, true), NONE(null, 1, 0, false);
 
 		public Item dropItem;
 		public int amount;

@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
@@ -35,9 +39,9 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			"sapphire", /* 辞書閲覧機能 */
 			"malachite", /* 常時暗視 */
 			"celestite", /* 落下耐性 */
-			"clam", /* ワープ */
+			"clam", /* 死亡時ワープ */
 			"lapis",/* クラフト経験値 */
-			"diamond"/* ブロックドロップ増加 */};
+			"diamond"/* 採掘速度増加 */};
 
 	public ItemMagicalPendant(int max) {
 		super();
@@ -67,11 +71,12 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	@Override
 	public CharmType getType(int meta) {
 		switch (meta) {
+		case 0:
+		case 1:
 		case 2:
 			return CharmType.DEFFENCE;
-		case 9:
-			return CharmType.TOOL;
 		case 7:
+		case 9:
 			return CharmType.SPECIAL;
 		default:
 			return CharmType.CONSTANT;
@@ -79,8 +84,43 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	}
 
 	@Override
-	public void formLivingEffect(EntityPlayer player, ItemStack charm) {
-		int meta = charm.getItemDamage();
+	public float reduceDamage(DamageSource source, ItemStack charm) {
+		int meta = charm.getMetadata();
+		switch (meta) {
+		case 0:
+			return source == DamageSourceClimate.climateColdDamage ? 2.0F : 0F;
+		case 1:
+			return source == DamageSourceClimate.climateHeatDamage ? 2.0F : 0F;
+		case 2:
+			return 1.0F;
+		default:
+			return 0F;
+		}
+	}
+
+	@Override
+	public float increaceDamage(EntityLivingBase target, ItemStack charm) {
+		return 1.0F;
+	}
+
+	@Override
+	public boolean onAttacking(EntityPlayer player, EntityLivingBase target, float damage, ItemStack charm) {
+		return false;
+	}
+
+	@Override
+	public boolean onDiffence(DamageSource source, EntityLivingBase target, float damage, ItemStack charm) {
+		return false;
+	}
+
+	@Override
+	public boolean onToolUsing(EntityPlayer player, BlockPos pos, IBlockState state, ItemStack charm) {
+		return false;
+	}
+
+	@Override
+	public void constantEffect(EntityPlayer player, ItemStack charm) {
+		int meta = charm.getMetadata();
 
 		if (meta == 3) {
 			List<PotionEffect> removes = new ArrayList<PotionEffect>();
@@ -99,16 +139,16 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 		PotionEffect eff = null;
 		switch (meta) {
 		case 0:
-			eff = new PotionEffect(DCPotion.water_breath, 5, 0);
+			eff = new PotionEffect(DCPotion.water_breath, 205, 0);
 			break;
 		case 1:
-			eff = new PotionEffect(DCPotion.fire_reg, 5, 0);
+			eff = new PotionEffect(DCPotion.fire_reg, 205, 0);
 			break;
 		case 5:
 			eff = new PotionEffect(DCPotion.night_vision, 605, 0);
 			break;
 		case 6:
-			eff = new PotionEffect(DCPotion.jump, 5, 0);
+			eff = new PotionEffect(DCPotion.jump, 205, 0);
 			break;
 		}
 
@@ -118,28 +158,34 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	}
 
 	@Override
-	public float reduceHeat(int meta) {
-		return meta == 1 ? 2.0F : 0.0F;
+	public boolean onUsing(EntityPlayer player, ItemStack charm) {
+		return false;
 	}
 
 	@Override
-	public float reduceCold(int meta) {
-		return meta == 0 ? 2.0F : 0.0F;
+	public boolean isActive(ItemStack charm) {
+		return true;
 	}
 
 	@Override
-	public float reduceDamage(DamageSource source, ItemStack charm) {
-		if (charm.getItemDamage() == 2) {
-			return 1.0F;
-		}
-		return 0.0F;
+	public void setActive(ItemStack charm, boolean flag) {
+	}
+
+	@Override
+	public ItemStack consumeCharmItem(ItemStack stack) {
+		return stack;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
 		String s = "";
-		int meta = stack.getItemDamage();
-		tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.tip.pendant." + meta));
+		int meta = stack.getMetadata();
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.comment.pendant." + meta));
+		} else {
+			tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.tip.pendant." + meta));
+			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
+		}
 	}
 }

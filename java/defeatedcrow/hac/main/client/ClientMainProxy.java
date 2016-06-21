@@ -24,9 +24,6 @@ import defeatedcrow.hac.main.event.AltTooltipEvent;
 @SideOnly(Side.CLIENT)
 public class ClientMainProxy extends CommonMainProxy {
 
-	public static final JsonRegisterHelper JSON_REGISTER = new JsonRegisterHelper(
-			"E:\\forge1.9.0\\forge1.9.4\\src\\main\\resources");
-
 	@Override
 	public void loadConst() {
 		JsonBakery.instance.addTex(BlockLogCont.getTexList());

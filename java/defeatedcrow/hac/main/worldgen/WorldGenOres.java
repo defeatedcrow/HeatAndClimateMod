@@ -32,7 +32,7 @@ public class WorldGenOres implements IWorldGenerator {
 
 		int chunk2X = chunkX << 4;
 		int chunk2Z = chunkZ << 4;
-		int count = 2;
+		int count = 4;
 
 		if ((genDim1 != 1 && genDim1 != -1)) {
 			int[] genY = {
@@ -41,7 +41,7 @@ public class WorldGenOres implements IWorldGenerator {
 					90,
 					160 };
 			for (int i = 0; i < count; i++) {
-				/* 計2回のチャンス */
+				/* 計4回のチャンス */
 				int posX = chunk2X + random.nextInt(16);
 				int posY = genY[i] + random.nextInt(10 + 10 * i);
 				int posZ = chunk2Z + random.nextInt(16);

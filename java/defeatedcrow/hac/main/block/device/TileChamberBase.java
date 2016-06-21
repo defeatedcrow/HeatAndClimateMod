@@ -49,7 +49,8 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 		this.currentBurnTime = tag.getInteger("BurnTime");
 		this.maxBurnTime = tag.getInteger("MaxTime");
 		this.currentClimate = tag.getByte("Climate");
-		// DCLogger.debugLog("read " + this.currentBurnTime + ", " + this.maxBurnTime + ", " + this.currentClimate);
+		// DCLogger.debugLog("read " + this.currentBurnTime + ", " + this.maxBurnTime + ", " +
+		// this.currentClimate);
 	}
 
 	@Override
@@ -72,7 +73,8 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 			}
 		}
 		tag.setTag("InvItems", nbttaglist);
-		// DCLogger.debugLog("write " + this.currentBurnTime + ", " + this.maxBurnTime + ", " + this.currentClimate);
+		// DCLogger.debugLog("write " + this.currentBurnTime + ", " + this.maxBurnTime + ", " +
+		// this.currentClimate);
 		return tag;
 	}
 
@@ -126,6 +128,11 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 		NBTTagCompound nbtTagCompound = new NBTTagCompound();
 		this.writeToNBT(nbtTagCompound);
 		return new SPacketUpdateTileEntity(pos, 0, nbtTagCompound);
+	}
+
+	@Override
+	public NBTTagCompound getUpdateTag() {
+		return this.writeToNBT(new NBTTagCompound());
 	}
 
 	@Override
@@ -274,8 +281,8 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D,
-				this.pos.getZ() + 0.5D) <= 64.0D;
+		return getWorld().getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D,
+				this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
 	@Override
@@ -319,7 +326,7 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 		if (target == null || current == null)
 			return 0;
 
-		if (target.getItem() == current.getItem() && target.getItemDamage() == current.getItemDamage()
+		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
 				&& ItemStack.areItemStackTagsEqual(target, current)) {
 			int i = current.stackSize + target.stackSize;
 			if (i > current.getMaxStackSize()) {
@@ -335,7 +342,7 @@ public abstract class TileChamberBase extends DCLockableTE implements ISidedInve
 	public void incrStackInSlot(int i, ItemStack input) {
 		if (i < this.getSizeInventory() && input != null) {
 			if (this.inv[i] != null) {
-				if (this.inv[i].getItem() == input.getItem() && this.inv[i].getItemDamage() == input.getItemDamage()) {
+				if (this.inv[i].getItem() == input.getItem() && this.inv[i].getMetadata() == input.getMetadata()) {
 					this.inv[i].stackSize += input.stackSize;
 					if (this.inv[i].stackSize > this.getInventoryStackLimit()) {
 						this.inv[i].stackSize = this.getInventoryStackLimit();

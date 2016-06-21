@@ -8,7 +8,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItemBlock;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.item.ItemMagicalBadge;
 import defeatedcrow.hac.magic.item.ItemMagicalPendant;
+import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
@@ -74,6 +77,9 @@ public class MainMaterialRegister {
 
 		MainInit.selenite = new BlockGlassSelenite(ClimateCore.PACKAGE_BASE + "_build_selenite", 2);
 		registerBlock(MainInit.selenite, ClimateCore.PACKAGE_BASE + "_build_selenite");
+
+		MainInit.chalLamp = new BlockChalcedonyLamp(ClimateCore.PACKAGE_BASE + "_build_challamp", 15);
+		registerBlock(MainInit.chalLamp, ClimateCore.PACKAGE_BASE + "_build_challamp");
 	}
 
 	static void registerSidedBlock() {
@@ -193,8 +199,13 @@ public class MainMaterialRegister {
 			GameRegistry.register(MainInit.dcSpade[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]));
 		}
 
-		for (int j = 0; j < 6; j++) {
-			MainInit.dcSword[j] = new ItemSwordDC(DCToolMaterial.getToolMaterial(j), name[j]).setCreativeTab(
+		for (int j = 0; j < 4; j++) {
+			MainInit.dcSword[j] = new ItemSwordDC(DCToolMaterial.getToolMaterial(j), name[j], false).setCreativeTab(
+					ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]);
+			GameRegistry.register(MainInit.dcSword[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]));
+		}
+		for (int j = 4; j < 6; j++) {
+			MainInit.dcSword[j] = new ItemSwordDC(DCToolMaterial.getToolMaterial(j), name[j], true).setCreativeTab(
 					ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]);
 			GameRegistry.register(MainInit.dcSword[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]));
 		}
@@ -205,7 +216,7 @@ public class MainMaterialRegister {
 				"leggins",
 				"boots" };
 		for (int i = 0; i < 4; i++) {
-			EntityEquipmentSlot slot = EntityEquipmentSlot.values()[i + 2];
+			EntityEquipmentSlot slot = DCUtil.SLOTS[i];
 			MainInit.brassArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_BRASS, DCMaterial.BRASS, slot, "brass")
 					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(
 							ClimateCore.PACKAGE_BASE + "_" + type[i] + "_brass");
@@ -258,6 +269,10 @@ public class MainMaterialRegister {
 		MainInit.pendant = new ItemMagicalPendant(9).setCreativeTab(ClimateMain.tool).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_jewel_pendant");
 		GameRegistry.register(MainInit.pendant.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_pendant"));
+
+		MainInit.badge = new ItemMagicalBadge(9).setCreativeTab(ClimateMain.tool).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_jewel_badge");
+		GameRegistry.register(MainInit.badge.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_badge"));
 	}
 
 	static void registerMaterialEnum() {
