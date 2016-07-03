@@ -1,0 +1,7 @@
+## Lang File Contributors ##
+I thank authors of each language files.
+
+zh_CN:
+TartaricAcid
+
+
