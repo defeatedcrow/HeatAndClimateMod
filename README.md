@@ -7,11 +7,12 @@ The Mod for Minecraft 1.9.4
 ## Current operating environment:
 - Minecraft 1.9.4  
 - MinecraftForge 12.17.0.1954+  
-- [HeatAndClimateLib](defeatedcrow/heatandclimatelib)
+- [HeatAndClimateLib](https://github.com/defeatedcrow/HeatAndClimateLib)
    
 ## Licenses
 - Code：MMPL-1.0  (full text is included as License.txt)  
-- Resource：CC-BY-NC  
+- Resource：CC-BY-NC
+- About the secondary users<br> - Paid use of these mods are prohibited. 権利者であるdefeatedcrowを除き、一切の営利目的での利用を禁止します。<br> - You can include these mods to your ModPack. 利用者は当ModをModPackに同梱できます。<br> - You can distribute these mods for your server user. サーバー管理者はサーバー利用者に対して当Modを配布することが出来ます。<br>
 
 ## Caution!
 1. Now this mod is still WIP. The correct operation cannot be expected. Please be careful! <br> 当modは開発途中です。正常に動作しない場合がありますので、ご了承の上でご利用下さい。<br>
