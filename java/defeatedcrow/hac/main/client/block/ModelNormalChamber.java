@@ -1,9 +1,9 @@
 package defeatedcrow.hac.main.client.block;
 
 import net.minecraft.client.model.ModelRenderer;
-import defeatedcrow.hac.core.client.base.DCModelBase;
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
 
-public class ModelNormalChamber extends DCModelBase {
+public class ModelNormalChamber extends DCTileModelBase {
 	// fields
 	ModelRenderer inner;
 	ModelRenderer under;

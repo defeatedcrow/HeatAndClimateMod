@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import defeatedcrow.hac.core.DCInit;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 
 public class BasicRecipeRegister {
@@ -712,7 +713,7 @@ public class BasicRecipeRegister {
 				"gemLapis",
 				"gemDiamond" };
 		for (int i = 0; i < gems.length; i++) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.pendant, 1, i), new Object[] {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, i), new Object[] {
 					" X ",
 					"X X",
 					" Y ",
@@ -721,7 +722,7 @@ public class BasicRecipeRegister {
 					'Y',
 					gems[i] }));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.pendant, 1, i), new Object[] {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, i), new Object[] {
 					" X ",
 					"X X",
 					" Y ",
@@ -730,7 +731,7 @@ public class BasicRecipeRegister {
 					'Y',
 					gems[i] }));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.badge, 1, i), new Object[] {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, i), new Object[] {
 					" Y ",
 					"X X",
 					" X ",
@@ -739,7 +740,7 @@ public class BasicRecipeRegister {
 					'Y',
 					gems[i] }));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.badge, 1, i), new Object[] {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, i), new Object[] {
 					" Y ",
 					"X X",
 					" X ",

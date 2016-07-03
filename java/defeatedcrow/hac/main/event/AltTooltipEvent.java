@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
-import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.magic.MagicInit;
 
 @SideOnly(Side.CLIENT)
 public class AltTooltipEvent {
@@ -41,7 +41,7 @@ public class AltTooltipEvent {
 			}
 			List<ItemStack> charms = new ArrayList<ItemStack>();
 			for (ItemStack item1 : inside) {
-				if (item1 != null && item1.getItem() != null && item1.getItem() == MainInit.pendant) {
+				if (item1 != null && item1.getItem() != null && item1.getItem() == MagicInit.pendant) {
 					int m = item1.getMetadata();
 					if (m == 4) {
 						flag = true;

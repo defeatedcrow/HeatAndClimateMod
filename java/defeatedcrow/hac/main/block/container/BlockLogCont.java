@@ -99,7 +99,7 @@ public class BlockLogCont extends DCSidedBlock implements ITexturePath, IRapidCo
 	}
 
 	@Override
-	public boolean doMining(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
+	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
 		List<ItemStack> list = this.getDrops(world, pos, state, 0);
 		for (ItemStack item : list) {
 			double x = player.posX;

@@ -42,6 +42,18 @@ item.dcs_material_spindle_wood.name=木の回転子
 item.dcs_material_spindle_arroy.name=合金の回転子
 
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
+item.dcs_food_bread_roundbread_raw.name=パン生地
+item.dcs_food_bread_roundbread_baked.name=丸パン
+item.dcs_food_bread_squarebread_raw.name=型入り生地
+item.dcs_food_bread_squarebread_baked.name=食パン
+item.dcs_food_stick_fish_raw.name=生の魚串
+item.dcs_food_stick_fish_cooked.name=焼いた魚串
+item.dcs_food_stick_yakitori_raw.name=生の鶏串
+item.dcs_food_stick_yakitori_cooked.name=焼き鳥串
+item.dcs_food_stick_pork_raw.name=生の豚串
+item.dcs_food_stick_pork_cooked.name=焼いた豚串
+item.dcs_food_stick_beef_raw.name=生の牛串
+item.dcs_food_stick_beef_cooked.name=焼いた牛串
 
 item.dcs_yagen_stone_normal.name=石の薬研
 item.dcs_yagen_brass_normal.name=真鍮の薬研

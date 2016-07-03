@@ -1,7 +1,7 @@
 package defeatedcrow.hac.main.client.block;
 
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
-import defeatedcrow.hac.core.client.base.DCModelBase;
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
 
 public class TESRNormalChamber extends DCLockableTESRBase {
 
@@ -14,8 +14,7 @@ public class TESRNormalChamber extends DCLockableTESRBase {
 	}
 
 	@Override
-	protected DCModelBase getModel(int i) {
+	protected DCTileModelBase getModel(int i) {
 		return new ModelNormalChamber();
 	}
-
 }

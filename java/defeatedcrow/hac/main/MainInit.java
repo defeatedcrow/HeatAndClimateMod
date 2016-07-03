@@ -64,10 +64,6 @@ public class MainInit {
 	public static Item workerSuit;
 	public static Item blackSuit;
 
-	// charms
-	public static Item pendant;
-	public static Item badge;
-
 	// food
 	public static Item bakedApple;
 

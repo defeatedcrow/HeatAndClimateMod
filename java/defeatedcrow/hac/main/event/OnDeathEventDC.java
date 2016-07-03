@@ -9,7 +9,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.magic.MagicInit;
 
 public class OnDeathEventDC {
 
@@ -22,7 +22,7 @@ public class OnDeathEventDC {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = player.inventory.getStackInSlot(i);
-				if (check != null && check.getItem() != null && check.getItem() == MainInit.pendant) {
+				if (check != null && check.getItem() != null && check.getItem() == MagicInit.pendant) {
 					int m = check.getMetadata();
 					if (m == 7) {
 						hasCharm = true;

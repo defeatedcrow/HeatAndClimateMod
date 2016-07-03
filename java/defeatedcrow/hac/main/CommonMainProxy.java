@@ -36,6 +36,10 @@ public class CommonMainProxy implements IGuiHandler {
 		MachineRecipeRegister.load();
 	}
 
+	public void loadEntity() {
+		MainEntityRegister.load();
+	}
+
 	public void loadTE() {
 		GameRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal");
 	}

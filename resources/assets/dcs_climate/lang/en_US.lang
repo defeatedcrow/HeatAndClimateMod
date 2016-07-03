@@ -42,6 +42,18 @@ item.dcs_material_spindle_wood.name=Wooden Spindle
 item.dcs_material_spindle_arroy.name=Arroy Spindle
 
 item.dcs_food_itemfood_baked_apple.name=Baked Apple
+item.dcs_food_bread_roundbread_raw.name=Dough
+item.dcs_food_bread_roundbread_baked.name=Round Bread
+item.dcs_food_bread_squarebread_raw.name=Molded Dough
+item.dcs_food_bread_squarebread_baked.name=White Bread
+item.dcs_food_stick_fish_raw.name=Skewered Fish
+item.dcs_food_stick_fish_cooked.name=Cooked Skewered Fish
+item.dcs_food_stick_yakitori_raw.name=Raw Yakitori
+item.dcs_food_stick_yakitori_cooked.name=Cooked Yakitori
+item.dcs_food_stick_pork_raw.name=Skewered Pork
+item.dcs_food_stick_pork_cooked.name=Cooked Skewered Pork
+item.dcs_food_stick_beef_raw.name=Skewered Beef
+item.dcs_food_stick_beef_cooked.name=Cooked Skewered Beef
 
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
 item.dcs_yagen_brass_normal.name=Brass Druggist's Mortar

@@ -6,7 +6,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.magic.MagicInit;
 
 public class OnCraftingDC {
 
@@ -20,7 +20,7 @@ public class OnCraftingDC {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = player.inventory.getStackInSlot(i);
-				if (check != null && check.getItem() != null && check.getItem() == MainInit.pendant) {
+				if (check != null && check.getItem() != null && check.getItem() == MagicInit.pendant) {
 					int m = check.getMetadata();
 					if (m == 8) {
 						hasCharm = true;

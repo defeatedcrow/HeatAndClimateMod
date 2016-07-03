@@ -9,6 +9,10 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.item.RoundBreadItem;
+import defeatedcrow.hac.food.item.StickFoodsItem;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.item.ItemMagicalBadge;
 import defeatedcrow.hac.magic.item.ItemMagicalPendant;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
@@ -169,6 +173,14 @@ public class MainMaterialRegister {
 		MainInit.bakedApple = new ItemDCFoods(0, false).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		GameRegistry.register(MainInit.bakedApple.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_itemfood"));
+
+		FoodInit.bread = new RoundBreadItem(false).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_food_bread");
+		GameRegistry.register(FoodInit.bread.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_bread"));
+
+		FoodInit.sticks = new StickFoodsItem(true).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_food_stick");
+		GameRegistry.register(FoodInit.sticks.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_stick"));
 	}
 
 	static void registerEquip() {
@@ -266,13 +278,13 @@ public class MainMaterialRegister {
 				"suit").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_suit");
 		GameRegistry.register(MainInit.blackSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_suit"));
 
-		MainInit.pendant = new ItemMagicalPendant(9).setCreativeTab(ClimateMain.tool).setUnlocalizedName(
+		MagicInit.pendant = new ItemMagicalPendant(9).setCreativeTab(ClimateMain.tool).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_jewel_pendant");
-		GameRegistry.register(MainInit.pendant.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_pendant"));
+		GameRegistry.register(MagicInit.pendant.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_pendant"));
 
-		MainInit.badge = new ItemMagicalBadge(9).setCreativeTab(ClimateMain.tool).setUnlocalizedName(
+		MagicInit.badge = new ItemMagicalBadge(9).setCreativeTab(ClimateMain.tool).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_jewel_badge");
-		GameRegistry.register(MainInit.badge.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_badge"));
+		GameRegistry.register(MagicInit.badge.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_badge"));
 	}
 
 	static void registerMaterialEnum() {
