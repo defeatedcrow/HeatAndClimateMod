@@ -1,1 +1,1 @@
-{"parent":"builtin/generated","textures":{"layer0":"dcs_climate:items/ores/oredust_steel"},"display":{"thirdperson":{"rotation1":[-90,0,0],"translation1":[0,1,-3],"scale1":[0.55,0.55,0.55]},"firstperson":{"rotation1":[0,-135,25],"translation1":[0,4,2],"scale1":[1.7,1.7,1.7]}}}
+{"parent":"item/generated","textures":{"layer0":"dcs_climate:items/ores/oredust_steel"}}

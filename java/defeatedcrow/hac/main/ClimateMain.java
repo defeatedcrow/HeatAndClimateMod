@@ -14,13 +14,17 @@ import defeatedcrow.hac.core.ClimateCore;
 @Mod(
 		modid = ClimateMain.MOD_ID,
 		name = ClimateMain.MOD_NAME,
-		version = ClimateCore.MOD_MEJOR + "." + ClimateCore.MOD_MINOR + "." + ClimateCore.MOD_BUILD,
-		dependencies = ClimateCore.MOD_DEPENDENCIES,
+		version = ClimateMain.MOD_MEJOR + "." + ClimateMain.MOD_MINOR + "." + ClimateMain.MOD_BUILD,
+		dependencies = ClimateMain.MOD_DEPENDENCIES,
 		acceptedMinecraftVersions = ClimateCore.MOD_ACCEPTED_MC_VERSIONS,
 		useMetadata = true)
 public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
+	public static final int MOD_MEJOR = 0;
+	public static final int MOD_MINOR = 7;
+	public static final int MOD_BUILD = 0;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1954,);required-after:dcs_climate|lib@[0.7.0,)";
 
 	@SidedProxy(
 			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
@@ -34,16 +38,18 @@ public class ClimateMain {
 
 	@EventHandler
 	public void construction(FMLConstructionEvent event) {
-		// TextureStitch用のテクスチャパスのリストを作る
+		// TextureStitch
 		proxy.loadConst();
 	}
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		// materialの登録
+		// Material
 		proxy.loadMaterial();
 		// TileEntity
 		proxy.loadTE();
+		// Entity
+		proxy.loadEntity();
 	}
 
 	@EventHandler

@@ -1,7 +1,7 @@
 package defeatedcrow.hac.main.block.build;
 
+import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.BlockStairs;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -11,8 +11,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 
-public class BlockStairsBase extends BlockStairs implements ISidedTexture {
+public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISidedRenderingBlock {
 
 	public final String TEX;
 	public final boolean isGlass;
@@ -35,7 +36,7 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+		return EnumBlockRenderType.MODEL;
 	}
 
 	@Override
@@ -47,15 +48,26 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		BlockPos check = pos.offset(side.getOpposite());
+		BlockPos check = pos.offset(side);
 		IBlockState state2 = world.getBlockState(check);
 
-		if (state2.getMaterial() != Material.GLASS) {
-			return true;
-		}
+		if (isGlass) {
+			if (state.getBlock() == this) {
+				if (state2.getBlock() == this && state.getValue(FACING) == state2.getValue(FACING))
+					return false;
 
-		if (state.getBlock() == this) {
-			return false;
+				if (state2.getBlock() instanceof BlockBreakable) {
+					return true;
+				}
+
+				if (state2.getBlock() instanceof ISidedRenderingBlock) {
+					return ((ISidedRenderingBlock) state2.getBlock()).isRendered(side, state2);
+				}
+
+				if (!state2.isSideSolid(world, check, side.getOpposite())) {
+					return true;
+				}
+			}
 		}
 
 		return super.shouldSideBeRendered(state, world, pos, side);
@@ -67,6 +79,11 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture {
 			return false;
 
 		return super.doesSideBlockRendering(state, world, pos, face);
+	}
+
+	@Override
+	public boolean isRendered(EnumFacing face, IBlockState state) {
+		return !isGlass;
 	}
 
 }

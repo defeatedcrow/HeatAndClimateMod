@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.main.util.DCMaterial;
 
 public class ItemArmorDC extends ItemArmor implements ITexturePath {
@@ -53,8 +54,16 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
-		return armorSlot == EntityEquipmentSlot.LEGS ? ClimateCore.proxy.getArmorModel(armorSlot.getIndex()) : null;
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot,
+			ModelBiped _default) {
+		if (armorSlot == EntityEquipmentSlot.LEGS) {
+			ModelThinBiped next = ClimateCore.proxy.getArmorModel(armorSlot.getIndex());
+			if (next != null) {
+				next.setModelAttributes(_default);
+				return next;
+			}
+		}
+		return _default;
 	}
 
 }

@@ -58,7 +58,7 @@ public class ItemCrowDrill extends DCItem {
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		// creativeチェック
 		if (player == null || (!player.capabilities.isCreativeMode && !ClimateCore.isDebug)) {
-			return EnumActionResult.FAIL;
+			return EnumActionResult.PASS;
 		}
 
 		boolean ore = false;

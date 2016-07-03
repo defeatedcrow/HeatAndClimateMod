@@ -1,5 +1,0 @@
-{
-    "variants": {
-        "side=false": { "model": "dcs_climate:dcs_slab_under_base" }
-    }
-}

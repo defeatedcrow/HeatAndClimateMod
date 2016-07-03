@@ -79,10 +79,10 @@ public class DCArmorMaterial {
 		DCArmorMaterial.DC_SAPPHIRE.customCraftingMaterial = MainInit.repairPatty;
 
 		// 耐性登録
-		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_LINEN, 2.0F);
-		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_CLOTH, 3.0F);
+		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_LINEN, 1.0F);
+		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_CLOTH, 2.0F);
 		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_CHALCEDONY, 1.0F);
-		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_SAPPHIRE, 1.0F);
+		DamageAPI.armorRegister.RegisterMaterial(DCArmorMaterial.DC_SAPPHIRE, 0.5F);
 	}
 
 }

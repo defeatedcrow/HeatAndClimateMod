@@ -26,6 +26,7 @@ public class MainInit {
 	public static Block stairsGlass;
 	public static Block stairsGypsum;
 	public static Block halfSlab;
+	public static Block chalLamp;
 
 	// device
 	public static Block chamber;
@@ -62,10 +63,6 @@ public class MainInit {
 
 	public static Item workerSuit;
 	public static Item blackSuit;
-
-	// charms
-	public static Item pendant;
-	public static Item badge;
 
 	// food
 	public static Item bakedApple;

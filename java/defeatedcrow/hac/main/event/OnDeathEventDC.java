@@ -9,7 +9,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import defeatedcrow.hac.magic.item.ItemMagicalPendant;
+import defeatedcrow.hac.magic.MagicInit;
 
 public class OnDeathEventDC {
 
@@ -22,8 +22,8 @@ public class OnDeathEventDC {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = player.inventory.getStackInSlot(i);
-				if (check != null && check.getItem() != null && check.getItem() instanceof ItemMagicalPendant) {
-					int m = check.getItemDamage();
+				if (check != null && check.getItem() != null && check.getItem() == MagicInit.pendant) {
+					int m = check.getMetadata();
 					if (m == 7) {
 						hasCharm = true;
 					}
@@ -38,7 +38,8 @@ public class OnDeathEventDC {
 					player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 1.25D, pos.getZ() + 0.5D);
 					player.fallDistance = 0.0F;
 					player.setHealth(10.0F);
-					player.worldObj.playSound(player, pos, Blocks.GLASS.getSoundType().getBreakSound(), SoundCategory.PLAYERS, 1.0F, 0.75F);
+					player.worldObj.playSound(player, pos, Blocks.GLASS.getSoundType().getBreakSound(),
+							SoundCategory.PLAYERS, 1.0F, 0.75F);
 					event.setCanceled(true);
 				}
 
