@@ -101,11 +101,11 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() == MainInit.chamber) {
 			if (f) {
-				world.setBlockState(pos,
-						MainInit.chamber.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(TYPE, 1), 3);
+				world.setBlockState(pos, MainInit.chamber.getDefaultState()
+						.withProperty(FACING, state.getValue(FACING)).withProperty(TYPE, 1), 3);
 			} else {
-				world.setBlockState(pos,
-						MainInit.chamber.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(TYPE, 0), 3);
+				world.setBlockState(pos, MainInit.chamber.getDefaultState()
+						.withProperty(FACING, state.getValue(FACING)).withProperty(TYPE, 0), 3);
 			}
 		}
 	}
@@ -116,6 +116,16 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 			return false;
 		int meta = state.getBlock().getMetaFromState(state) & 3;
 		return meta == 1;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
 	}
 
 }

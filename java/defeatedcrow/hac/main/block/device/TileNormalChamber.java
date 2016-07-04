@@ -8,7 +8,6 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
@@ -21,15 +20,18 @@ public class TileNormalChamber extends TileChamberBase {
 	@Override
 	public void updateTile() {
 		if (!getWorld().isRemote) {
-			// 平面隣接4方向のみをチェックする特殊判定を使う
-			DCAirflow air = ClimateAPI.calculator.getAirflow(getWorld(), getPos(), 1, true);
 
-			if (air.getID() > 1) {
+			DCAirflow air = DCAirflow.TIGHT;
+			if (current != null) {
+				air = current.getAirflow();
+			}
+
+			if (air.getID() == 3) {
+				this.currentClimate = 7;
+			} else if (air.getID() == 2) {
 				this.currentClimate = 6;
-			} else if (air.getID() == 1) {
-				this.currentClimate = 5;
 			} else {
-				this.currentClimate = 4;
+				this.currentClimate = 5;
 			}
 
 			if (this.currentBurnTime == 0) {
@@ -48,7 +50,8 @@ public class TileNormalChamber extends TileChamberBase {
 						this.decrStackSize(0, 1);
 						this.insertResult(cont);
 						this.markDirty();
-						// DCLogger.debugLog("burntime " + this.currentBurnTime + ", " + this.maxBurnTime);
+						// DCLogger.debugLog("burntime " + this.currentBurnTime + ", " +
+						// this.maxBurnTime);
 					}
 				}
 			}
@@ -57,11 +60,11 @@ public class TileNormalChamber extends TileChamberBase {
 				BlockNormalChamber.changeLitState(getWorld(), getPos(), isActive());
 			}
 		}
+		super.updateTile();
 	}
 
 	@Override
 	public void onTickUpdate() {
-
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import defeatedcrow.hac.food.recipes.FoodRecipeRegister;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
@@ -34,6 +35,8 @@ public class CommonMainProxy implements IGuiHandler {
 		OreDicRegister.load();
 		BasicRecipeRegister.load();
 		MachineRecipeRegister.load();
+
+		FoodRecipeRegister.load();
 	}
 
 	public void loadEntity() {

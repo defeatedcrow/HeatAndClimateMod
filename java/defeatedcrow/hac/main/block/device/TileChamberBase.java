@@ -19,12 +19,12 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.core.base.DCLockableTE;
+import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 
 /**
  * SidedInventory持ちHeat利用Tileのベースクラス
  */
-public abstract class TileChamberBase extends DCLockableTE implements ISidedInventory {
+public abstract class TileChamberBase extends ClimateReceiverLockable implements ISidedInventory {
 
 	protected int currentBurnTime = 0;
 	protected int maxBurnTime = 1;
