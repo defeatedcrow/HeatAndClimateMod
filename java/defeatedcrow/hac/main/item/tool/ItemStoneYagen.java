@@ -15,11 +15,17 @@ public class ItemStoneYagen extends DCItem {
 		this.setMaxStackSize(1);
 		this.setNoRepair();
 		this.isFull3D();
+		this.setHasSubtypes(false);
 	}
 
 	@Override
 	public int getMaxMeta() {
 		return 0;
+	}
+
+	@Override
+	public int getMetadata(int damage) {
+		return damage;
 	}
 
 	@Override
@@ -42,10 +48,11 @@ public class ItemStoneYagen extends DCItem {
 	public ItemStack getContainerItem(ItemStack stack) {
 		if (stack != null && stack.getItem() == this) {
 			Random rand = Item.itemRand;
-			boolean flag = stack.attemptDamageItem(1, rand);
-			return flag ? null : stack;
+			ItemStack copy = stack.copy();
+			boolean flag = copy.attemptDamageItem(1, rand);
+			return flag ? null : copy;
 		}
-		return null;
+		return stack;
 	}
 
 	@Override
