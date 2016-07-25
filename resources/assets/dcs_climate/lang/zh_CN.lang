@@ -42,6 +42,18 @@ item.dcs_material_spindle_wood.name=木质碾盘
 item.dcs_material_spindle_arroy.name=合金碾盘
 
 item.dcs_food_itemfood_baked_apple.name=烤苹果
+item.dcs_food_bread_roundbread_raw.name=生面团
+item.dcs_food_bread_roundbread_baked.name=圆面包
+item.dcs_food_bread_squarebread_raw.name=捏制生面团
+item.dcs_food_bread_squarebread_baked.name=精面面包
+item.dcs_food_stick_fish_raw.name=生鱼肉串
+item.dcs_food_stick_fish_cooked.name=烧鱼肉串
+item.dcs_food_stick_yakitori_raw.name=生鸡肉串
+item.dcs_food_stick_yakitori_cooked.name=烤鸡肉串
+item.dcs_food_stick_pork_raw.name=生猪肉串
+item.dcs_food_stick_pork_cooked.name=烤猪肉串
+item.dcs_food_stick_beef_raw.name=生牛肉串
+item.dcs_food_stick_beef_cooked.name=烤牛肉串
 
 item.dcs_yagen_stone_normal.name=石质药碾子
 item.dcs_yagen_brass_normal.name=青铜药碾子
