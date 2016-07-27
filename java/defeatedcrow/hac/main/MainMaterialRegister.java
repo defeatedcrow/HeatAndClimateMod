@@ -12,6 +12,19 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.item.RoundBreadItem;
 import defeatedcrow.hac.food.item.StickFoodsItem;
+import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.machine.block.BlockCrank_S;
+import defeatedcrow.hac.machine.block.BlockFan;
+import defeatedcrow.hac.machine.block.BlockGearBox;
+import defeatedcrow.hac.machine.block.BlockHandCrank;
+import defeatedcrow.hac.machine.block.BlockRedBox;
+import defeatedcrow.hac.machine.block.BlockShaft_L;
+import defeatedcrow.hac.machine.block.BlockShaft_S;
+import defeatedcrow.hac.machine.block.BlockShaft_TA;
+import defeatedcrow.hac.machine.block.BlockShaft_TB;
+import defeatedcrow.hac.machine.block.BlockStoneMill;
+import defeatedcrow.hac.machine.block.BlockWindmill;
+import defeatedcrow.hac.machine.block.BlockWindmill_L;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.item.ItemMagicalBadge;
 import defeatedcrow.hac.magic.item.ItemMagicalPendant;
@@ -25,13 +38,17 @@ import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
+import defeatedcrow.hac.main.block.device.BlockShitirin;
+import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.block.ores.BlockGem;
 import defeatedcrow.hac.main.block.ores.BlockMetal;
 import defeatedcrow.hac.main.block.ores.BlockOres;
+import defeatedcrow.hac.main.block.ores.BlockOres2;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorThinDC;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
+import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
 import defeatedcrow.hac.main.item.misc.ItemMiscs;
 import defeatedcrow.hac.main.item.misc.ItemRepairPutty;
 import defeatedcrow.hac.main.item.ores.ItemGems;
@@ -45,6 +62,7 @@ import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.main.item.tool.ItemSpadeDC;
 import defeatedcrow.hac.main.item.tool.ItemStoneYagen;
 import defeatedcrow.hac.main.item.tool.ItemSwordDC;
+import defeatedcrow.hac.main.item.tool.ItemWrench;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.DCMaterial;
 import defeatedcrow.hac.main.util.DCToolMaterial;
@@ -70,13 +88,16 @@ public class MainMaterialRegister {
 		MainInit.ores = new BlockOres(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone", 15);
 		registerBlock(MainInit.ores, ClimateCore.PACKAGE_BASE + "_ore_stone");
 
+		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 3);
+		registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone");
+
 		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 7);
 		registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock");
 
 		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 7);
 		registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock");
 
-		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 4);
+		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 5);
 		registerBlock(MainInit.gemBlock, ClimateCore.PACKAGE_BASE + "_ore_gemblock");
 
 		MainInit.selenite = new BlockGlassSelenite(ClimateCore.PACKAGE_BASE + "_build_selenite", 2);
@@ -130,6 +151,48 @@ public class MainMaterialRegister {
 	static void regDeviceBlock() {
 		MainInit.chamber = new BlockNormalChamber(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chamber", 1);
 		registerBlock(MainInit.chamber, ClimateCore.PACKAGE_BASE + "_device_chamber");
+
+		MainInit.shitirin = new BlockShitirin(Material.CLAY, ClimateCore.PACKAGE_BASE + "_device_shitirin", 1);
+		registerBlock(MainInit.shitirin, ClimateCore.PACKAGE_BASE + "_device_shitirin");
+
+		MachineInit.windmill = new BlockWindmill(ClimateCore.PACKAGE_BASE + "_device_windmill");
+		registerBlock(MachineInit.windmill, ClimateCore.PACKAGE_BASE + "_device_windmill");
+
+		MachineInit.windmill_l = new BlockWindmill_L(ClimateCore.PACKAGE_BASE + "_device_windmill_l");
+		registerBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_BASE + "_device_windmill_l");
+
+		MachineInit.shaft_s = new BlockShaft_S(ClimateCore.PACKAGE_BASE + "_device_shaft_s");
+		registerBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_BASE + "_device_shaft_s");
+
+		MachineInit.shaft_l = new BlockShaft_L(ClimateCore.PACKAGE_BASE + "_device_shaft_l");
+		registerBlock(MachineInit.shaft_l, ClimateCore.PACKAGE_BASE + "_device_shaft_l");
+
+		MachineInit.shaft_t_a = new BlockShaft_TA(ClimateCore.PACKAGE_BASE + "_device_shaft_ta");
+		registerBlock(MachineInit.shaft_t_a, ClimateCore.PACKAGE_BASE + "_device_shaft_ta");
+
+		MachineInit.shaft_t_b = new BlockShaft_TB(ClimateCore.PACKAGE_BASE + "_device_shaft_tb");
+		registerBlock(MachineInit.shaft_t_b, ClimateCore.PACKAGE_BASE + "_device_shaft_tb");
+
+		MachineInit.gearbox = new BlockGearBox(ClimateCore.PACKAGE_BASE + "_device_gearbox");
+		registerBlock(MachineInit.gearbox, ClimateCore.PACKAGE_BASE + "_device_gearbox");
+
+		MachineInit.piston = new BlockCrank_S(ClimateCore.PACKAGE_BASE + "_device_crank_s");
+		registerBlock(MachineInit.piston, ClimateCore.PACKAGE_BASE + "_device_crank_s");
+
+		MachineInit.handcrank = new BlockHandCrank(ClimateCore.PACKAGE_BASE + "_device_handcrank");
+		registerBlock(MachineInit.handcrank, ClimateCore.PACKAGE_BASE + "_device_handcrank");
+
+		MachineInit.stonemill = new BlockStoneMill(ClimateCore.PACKAGE_BASE + "_device_stonemill");
+		registerBlock(MachineInit.stonemill, ClimateCore.PACKAGE_BASE + "_device_stonemill");
+
+		MachineInit.fan = new BlockFan(ClimateCore.PACKAGE_BASE + "_device_fan");
+		registerBlock(MachineInit.fan, ClimateCore.PACKAGE_BASE + "_device_fan");
+
+		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
+		registerBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox");
+
+		MainInit.stevenson_screen = new BlockStevensonScreen(ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");
+		registerBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");
 	}
 
 	static void register() {
@@ -142,7 +205,7 @@ public class MainMaterialRegister {
 				ClimateCore.PACKAGE_BASE + "_oredust");
 		GameRegistry.register(MainInit.oreDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_oredust"));
 
-		MainInit.gems = new ItemGems(7).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+		MainInit.gems = new ItemGems(10).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_gem");
 		GameRegistry.register(MainInit.gems.setRegistryName(ClimateCore.PACKAGE_BASE + "_gem"));
 
@@ -151,7 +214,7 @@ public class MainMaterialRegister {
 		GameRegistry.register(MainInit.miscDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_miscdust"));
 
 		// tools
-		MainInit.materials = new ItemMiscs(5).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+		MainInit.materials = new ItemMiscs(6).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_material");
 		GameRegistry.register(MainInit.materials.setRegistryName(ClimateCore.PACKAGE_BASE + "_material"));
 
@@ -167,9 +230,17 @@ public class MainMaterialRegister {
 				ClimateCore.PACKAGE_BASE + "_creative_drill");
 		GameRegistry.register(MainInit.crowDrill.setRegistryName(ClimateCore.PACKAGE_BASE + "_creative_drill"));
 
+		MainInit.wrench = new ItemWrench().setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_wrench");
+		GameRegistry.register(MainInit.wrench.setRegistryName(ClimateCore.PACKAGE_BASE + "_wrench"));
+
 	}
 
 	static void registerFood() {
+		MainInit.foodMaterials = new ItemFoodMaterials(1).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_food_materials");
+		GameRegistry.register(MainInit.foodMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_materials"));
+
 		MainInit.bakedApple = new ItemDCFoods(0, false).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		GameRegistry.register(MainInit.bakedApple.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_itemfood"));
@@ -288,9 +359,9 @@ public class MainMaterialRegister {
 	}
 
 	static void registerMaterialEnum() {
-		MainInit.repairPatty = new ItemRepairPutty().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
+		MainInit.repairPutty = new ItemRepairPutty().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_repair");
-		GameRegistry.register(MainInit.repairPatty.setRegistryName(ClimateCore.PACKAGE_BASE + "_repair"));
+		GameRegistry.register(MainInit.repairPutty.setRegistryName(ClimateCore.PACKAGE_BASE + "_repair"));
 
 		DCArmorMaterial.load();
 		DCToolMaterial.load();
@@ -305,4 +376,5 @@ public class MainMaterialRegister {
 		GameRegistry.register(reg);
 		GameRegistry.register(new DCItemBlock(reg));
 	}
+
 }

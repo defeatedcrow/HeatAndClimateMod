@@ -15,7 +15,10 @@ public class ItemGems extends DCItem {
 			"sapphire",
 			"malachite",
 			"celestite",
-			"clam" };
+			"clam",
+			"salt",
+			"niter",
+			"sulfur" };
 
 	public ItemGems(int max) {
 		super();

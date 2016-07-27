@@ -5,6 +5,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 
 public class BlockChalcedonyLamp extends DCSimpleBlock {
@@ -44,7 +45,7 @@ public class BlockChalcedonyLamp extends DCSimpleBlock {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return state.getValue(TYPE) > 7 ? AABB_SMALL : AABB_FULL;
+		return state.getValue(DCState.TYPE16) > 7 ? AABB_SMALL : AABB_FULL;
 	}
 
 	@Override

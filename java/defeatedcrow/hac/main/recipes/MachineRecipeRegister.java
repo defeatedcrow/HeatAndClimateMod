@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.main.MainInit;
 
@@ -71,18 +72,20 @@ public class MachineRecipeRegister {
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 7), DCHeatTier.SMELTING, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 7));
 
-		// 3x3
-		RecipeAPI.registerRecipes.addRecipe(new ItemStack(MainInit.metalBlock, 1, 0), DCHeatTier.KILN, null,
-				DCAirflow.TIGHT, false, new Object[] {
-						"dustCopper",
-						"dustCopper",
-						"dustCopper",
-						"dustCopper",
-						"dustCopper",
-						"dustCopper",
-						"dustCopper",
-						"dustCopper",
-						"dustCopper" });
+		if (ClimateCore.isDebug) {
+			// 3x3
+			RecipeAPI.registerRecipes.addRecipe(new ItemStack(MainInit.metalBlock, 1, 0), DCHeatTier.KILN, null,
+					DCAirflow.TIGHT, false, new Object[] {
+							"dustCopper",
+							"dustCopper",
+							"dustCopper",
+							"dustCopper",
+							"dustCopper",
+							"dustCopper",
+							"dustCopper",
+							"dustCopper",
+							"dustCopper" });
+		}
 
 	}
 
@@ -157,6 +160,8 @@ public class MachineRecipeRegister {
 
 		// gems
 		GameRegistry.addSmelting(new ItemStack(Items.FLINT, 1, 0), new ItemStack(MainInit.gems, 1, 1), 0.2F);
+
+		GameRegistry.addSmelting(new ItemStack(Blocks.GLASS, 1, 0), new ItemStack(MainInit.miscDust, 1, 1), 0.2F);
 	}
 
 	static void loadVanillaRecipes() {

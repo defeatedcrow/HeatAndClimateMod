@@ -14,6 +14,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.config.CoreConfigDC;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.MainInit;
 
 public class WorldGenOres implements IWorldGenerator {
@@ -38,22 +39,28 @@ public class WorldGenOres implements IWorldGenerator {
 			int[] genY = {
 					8,
 					30,
-					90,
-					160 };
+					70,
+					120 };
 			for (int i = 0; i < count; i++) {
-				/* 計4回のチャンス */
+				/* 計5回のチャンス */
 				int posX = chunk2X + random.nextInt(16);
 				int posY = genY[i] + random.nextInt(10 + 10 * i);
 				int posZ = chunk2Z + random.nextInt(16);
 				BlockPos pos = new BlockPos(posX, posY, posZ);
 				Biome biome = world.getBiomeGenForCoords(pos);
 
-				if (posY > 160) {
-					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN))
+				if (posY > 120) {
+					if (random.nextInt(100) < sedPar) {
 						generateSediment(world, random, pos);
-				} else if (posY > 90 && random.nextInt(100) < sedPar) {
-					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN))
-						generateSediment(world, random, pos);
+					}
+				} else if (posY > 70) {
+					if (random.nextInt(100) < sedPar) {
+						if (posY > 90 && BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN)) {
+							generateSediment(world, random, pos);
+						} else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SANDY)) {
+							generateSandSediment(world, random, pos);
+						}
+					}
 				} else if (posY < 60 && posY > 30) {
 					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN)
 							|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN)) {
@@ -82,7 +89,7 @@ public class WorldGenOres implements IWorldGenerator {
 			return true;
 		if (block == Blocks.SANDSTONE)
 			return true;
-		if (block == MainInit.ores)
+		if (block == Blocks.SAND)
 			return true;
 
 		return false;
@@ -115,7 +122,8 @@ public class WorldGenOres implements IWorldGenerator {
 		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 		for (BlockPos p1 : itr) {
 			Block block = world.getBlockState(p1).getBlock();
-			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
+			double d1 = Math.sqrt(pos.distanceSq(p1.getX(), pos.getY(), p1.getZ()));
+			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
 				int height = max.getY() - p1.getY();
 				BlockSet add = gen[height];
 				if (add.block == Blocks.STONE) {
@@ -135,6 +143,40 @@ public class WorldGenOres implements IWorldGenerator {
 
 		// DCLogger.debugLog("Ore gen! Sediment:" + pos.getX() + "," + pos.getY() + "," + pos.getZ()
 		// + ", size: " + h);
+	}
+
+	/*
+	 * 堆積岩。砂漠かサバンナにのみ生成。
+	 * 料理に必要な岩塩などがある。
+	 */
+	public void generateSandSediment(World world, Random rand, BlockPos pos) {
+		int h = rand.nextInt(5) + 1; // 2-6
+		int r = h + 1;
+		BlockSet[] gen = new BlockSet[h];
+		for (int i = 0; i < h; i++) {
+			if (i == 0)
+				gen[i] = new BlockSet(MainInit.ores_2, 0);
+			else {
+				if (i <= h / 2) {
+					gen[i] = rand.nextBoolean() ? new BlockSet(MainInit.ores_2, 1) : new BlockSet(MainInit.ores_2, 0);
+				} else {
+					gen[i] = rand.nextBoolean() ? new BlockSet(MainInit.ores_2, 1) : new BlockSet(MainInit.ores_2, 2);
+				}
+			}
+		}
+
+		BlockPos min = new BlockPos(pos.add(-r, -h + 2, -r));
+		BlockPos max = new BlockPos(pos.add(r, 1, r));
+		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
+		for (BlockPos p1 : itr) {
+			Block block = world.getBlockState(p1).getBlock();
+			double d1 = Math.sqrt(pos.distanceSq(p1.getX(), pos.getY(), p1.getZ()));
+			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
+				int height = max.getY() - p1.getY();
+				BlockSet add = gen[height];
+				world.setBlockState(p1, add.getState());
+			}
+		}
 	}
 
 	/*
@@ -168,7 +210,8 @@ public class WorldGenOres implements IWorldGenerator {
 		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 		for (BlockPos p1 : itr) {
 			Block block = world.getBlockState(p1).getBlock();
-			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
+			double d1 = Math.sqrt(pos.distanceSq(p1.getX(), pos.getY(), p1.getZ()));
+			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
 				int height = max.getY() - p1.getY();
 				BlockSet add = gen[height];
 				int j = rand.nextInt(20);
@@ -229,12 +272,9 @@ public class WorldGenOres implements IWorldGenerator {
 		BlockPos max = new BlockPos(pos.add(r, 1, r));
 		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 		for (BlockPos p1 : itr) {
-			double d1 = Math.sqrt(p1.distanceSq(pos));
-			int d = h + 1 - MathHelper.floor_double(d1);
-			if (d > h)
-				continue;
+			double d1 = Math.sqrt(pos.distanceSq(p1.getX(), pos.getY(), p1.getZ()));
 			Block block = world.getBlockState(p1).getBlock();
-			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
+			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
 				int height = max.getY() - p1.getY();
 				BlockSet add = gen[height];
 				world.setBlockState(p1, add.getState());
@@ -289,7 +329,7 @@ public class WorldGenOres implements IWorldGenerator {
 				} else if (j < 3) {
 					world.setBlockState(p1, MainInit.ores.getStateFromMeta(5));
 				} else {
-					world.setBlockState(p1, Blocks.STONE.getStateFromMeta(5));
+					world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(3));
 				}
 			}
 		}
@@ -354,6 +394,24 @@ public class WorldGenOres implements IWorldGenerator {
 
 		// DCLogger.debugLog("Ore gen! Vugs:" + pos.getX() + "," + pos.getY() + "," + pos.getZ() +
 		// ", size: " + h);
+	}
+
+	// 以下はバニラ改変
+	public void generateStoneLayer(World world, Random rand, int chunkX, int chunkZ) {
+		// 花崗岩帯をY40位に追加
+		DCLogger.debugLog("stone");
+		int h2 = 40 + rand.nextInt(5);
+		int r2 = 3 + rand.nextInt(2);
+		BlockPos min2 = new BlockPos(new BlockPos(chunkX, h2, chunkZ));
+		BlockPos max2 = new BlockPos(new BlockPos(chunkX + 15, h2 + r2, chunkZ + 15));
+		Iterable<BlockPos> itr2 = BlockPos.getAllInBox(min2, max2);
+		for (BlockPos p1 : itr2) {
+			Block block = world.getBlockState(p1).getBlock();
+			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
+				BlockSet add = new BlockSet(Blocks.STONE, 1);
+				world.setBlockState(p1, add.getState());
+			}
+		}
 	}
 
 }

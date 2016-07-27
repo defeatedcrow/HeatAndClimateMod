@@ -28,7 +28,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	protected int currentBurnTime = 0;
 	protected int maxBurnTime = 1;
-	protected int currentClimate = 0;
+	protected int currentClimate = 3;
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
@@ -127,7 +127,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	public SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound nbtTagCompound = new NBTTagCompound();
 		this.writeToNBT(nbtTagCompound);
-		return new SPacketUpdateTileEntity(pos, 0, nbtTagCompound);
+		return new SPacketUpdateTileEntity(pos, -50, nbtTagCompound);
 	}
 
 	@Override

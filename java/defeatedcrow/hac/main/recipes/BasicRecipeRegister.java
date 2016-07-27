@@ -70,6 +70,15 @@ public class BasicRecipeRegister {
 				'Y',
 				"gearWood",
 				'X',
+				"ingotBrass" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 6), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'Y',
+				"gearWood",
+				'X',
 				"ingotNickelsilver" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
@@ -112,6 +121,16 @@ public class BasicRecipeRegister {
 				'Z',
 				"ingotBrass" }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.shitirin, 1, 0), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'Y',
+				new ItemStack(Blocks.FURNACE, 1, 0),
+				'X',
+				new ItemStack(Items.CLAY_BALL, 1, 0),
+				'Z',
+				"ingotBrass" }));
 	}
 
 	static void loadYagenRecipe() {
@@ -144,6 +163,22 @@ public class BasicRecipeRegister {
 				"toolNormalYagen",
 				"oreMagnetite" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 2), new Object[] {
+				"toolNormalYagen",
+				"oreLime" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 1, 8), new Object[] {
+				"toolNormalYagen",
+				"oreSalt" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 1, 9), new Object[] {
+				"toolNormalYagen",
+				"oreNiter" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 1, 10), new Object[] {
+				"toolNormalYagen",
+				"oreSulfur" }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
 				"toolNormalYagen",
 				new ItemStack(Items.COAL, 1, 0) }));
@@ -159,6 +194,14 @@ public class BasicRecipeRegister {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.BLAZE_POWDER, 3, 0), new Object[] {
 				"toolNormalYagen",
 				new ItemStack(Items.BLAZE_ROD, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.foodMaterials, 1, 0), new Object[] {
+				"toolNormalYagen",
+				"gemSalt" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.foodMaterials, 1, 1), new Object[] {
+				"toolNormalYagen",
+				"cropWheat" }));
 	}
 
 	static void loadOreRecipes() {
@@ -229,7 +272,7 @@ public class BasicRecipeRegister {
 				"dustIron",
 				"dustIron",
 				"dustIron",
-				"dustCoal" }));
+				"dustGraphite" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 7), new Object[] {
 				"dustMagnetite",
@@ -240,7 +283,7 @@ public class BasicRecipeRegister {
 				"dustMagnetite",
 				"dustMagnetite",
 				"dustMagnetite",
-				"dustCoal" }));
+				"dustGraphite" }));
 
 		// ingot <-> metalBlock
 		String[] metal = {
@@ -277,6 +320,15 @@ public class BasicRecipeRegister {
 			GameRegistry
 					.addRecipe(new ShapelessOreRecipe(gem, new Object[] { new ItemStack(MainInit.gemBlock, 1, i) }));
 		}
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.gemBlock, 1, 5), new Object[] {
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(MainInit.gems, 1, 8) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 4, 8), new Object[] { new ItemStack(
+				MainInit.gemBlock, 1, 5) }));
 	}
 
 	static void loadContRecipes() {
@@ -364,8 +416,7 @@ public class BasicRecipeRegister {
 				new ItemStack(Items.PORKCHOP, 9, 0),
 				new ItemStack(Items.CHICKEN, 9, 0),
 				new ItemStack(Items.MUTTON, 9, 0),
-				new ItemStack(Items.EGG, 9, 0),
-				new ItemStack(Blocks.WOOL, 9, 32767) };
+				new ItemStack(Items.EGG, 9, 0) };
 		for (int i = 0; i < meat.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cardboard, 1, i), new Object[] {
 					"XXX",
@@ -377,6 +428,16 @@ public class BasicRecipeRegister {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(meat[i], new Object[] { new ItemStack(MainInit.cardboard, 1,
 					i) }));
 		}
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cardboard, 1, 5), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(Blocks.WOOL, 9, 32767) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.WOOL, 9, 0), new Object[] { new ItemStack(
+				MainInit.cardboard, 1, 5) }));
 	}
 
 	static void loadBuildRecipes() {
@@ -753,23 +814,7 @@ public class BasicRecipeRegister {
 	}
 
 	static void loadAnotherRecipes() {
-		// 矢
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.ARROW, 8, 0), new Object[] {
-				"X",
-				"Y",
-				"Z",
-				'X',
-				"gemChalcedony",
-				'Y',
-				new ItemStack(Items.STICK),
-				'Z',
-				new ItemStack(Items.FEATHER) }));
-
 		// 火打ち石のアナザー
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
-				new ItemStack(Items.IRON_INGOT, 1, 0),
-				"gemChalcedony" }));
-
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
 				new ItemStack(MainInit.ores, 1, 4),
 				"gemChalcedony" }));

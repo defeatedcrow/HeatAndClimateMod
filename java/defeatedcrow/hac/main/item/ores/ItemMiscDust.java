@@ -10,7 +10,7 @@ public class ItemMiscDust extends DCItem {
 	private static String[] names = {
 			"coal",
 			"crystal",
-			"gypsum",
+			"lime",
 			"wood",
 			"presscake",
 			"ash" };
@@ -28,7 +28,7 @@ public class ItemMiscDust extends DCItem {
 	/*
 	 * 0: 炭
 	 * 1: 石英
-	 * 2: 石膏
+	 * 2: 石灰
 	 * 3: 木
 	 * 4: 油かす
 	 * 5: 灰

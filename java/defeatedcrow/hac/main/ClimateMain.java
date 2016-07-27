@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) defeatedcrow, 2016
+ * URL:http://defeatedcrow.jp/modwiki/Mainpage
+ * defeatedcrow's mods are distributed under the terms of the Minecraft Mod Public License 1.0, or MMPL.
+ * Please check the License.txt included in the package file of this Mod.
+ */
+
 package defeatedcrow.hac.main;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,9 +29,9 @@ public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 0;
-	public static final int MOD_MINOR = 7;
-	public static final int MOD_BUILD = 2;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1954,);required-after:dcs_climate|lib@[0.7.2,)";
+	public static final int MOD_MINOR = 9;
+	public static final int MOD_BUILD = 0;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1976,);required-after:dcs_climate|lib@[0.9.0,)";
 
 	@SidedProxy(
 			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",

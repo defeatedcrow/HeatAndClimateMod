@@ -10,7 +10,7 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.food.FoodInit;
 
-public class FoodRecipeRegister {
+public class FoodRecipes {
 
 	public static void load() {
 		loadBasicRecipe();
@@ -18,8 +18,9 @@ public class FoodRecipeRegister {
 	}
 
 	static void loadBasicRecipe() {
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.bread, 1, 0), new Object[] {
-				"cropWheat",
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.bread, 2, 0), new Object[] {
+				"foodFlour",
+				"dustSalt",
 				"bucketWater" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.bread, 1, 2), new Object[] {

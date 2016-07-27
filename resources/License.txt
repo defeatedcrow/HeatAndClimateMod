@@ -1,3 +1,15 @@
+Copyright (c) defeatedcrow, 2016
+URL:http://defeatedcrow.jp/modwiki/Mainpage
+All of defeatedcrow's mods are distributed under the terms of the following licenses.
+
+Code: Minecraft Mod Public License 1.0.1
+Assets: CC-BY-NC
+In addition, about the secondary users:
+ - Paid use of these mods are prohibited.
+ - You can include these mods to your ModPack.
+ - You can distribute these mods for your server user.
+
+
 Minecraft Mod Public License
 ============================
 

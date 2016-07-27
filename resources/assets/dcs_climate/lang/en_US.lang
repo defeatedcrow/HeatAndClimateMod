@@ -2,6 +2,7 @@
 ## item
 item.dcs_checker_normal.name=Climate Checker
 item.dcs_creative_drill_normal.name=Crow's Drill
+item.dcs_wrench_brass.name=Adjustable Wrench
 
 item.dcs_ingot_copper.name=Copper Ingot
 item.dcs_ingot_zinc.name=Zinc Ingot
@@ -27,9 +28,12 @@ item.dcs_gem_sapphire.name=Sapphire
 item.dcs_gem_malachite.name=Malachite
 item.dcs_gem_clam.name=Fossil Princess
 item.dcs_gem_celestite.name=Celestite
+item.dcs_gem_salt.name=Rock Salt
+item.dcs_gem_niter.name=Niter
+item.dcs_gem_sulfur.name=Sulfur
 item.dcs_miscdust_coal.name=Coal Dust
 item.dcs_miscdust_crystal.name=Quartz Dust
-item.dcs_miscdust_gypsum.name=Gypsum Dust
+item.dcs_miscdust_lime.name=Lime Dust
 item.dcs_miscdust_wood.name=Wood Dust
 item.dcs_miscdust_presscake.name=Presscake
 item.dcs_miscdust_ash.name=Ash
@@ -39,8 +43,11 @@ item.dcs_material_string_cotton.name=Cotton String
 item.dcs_material_cloth_linen.name=Linen Cloth
 item.dcs_material_cloth_cotton.name=Cotton Cloth
 item.dcs_material_spindle_wood.name=Wooden Spindle
+item.dcs_material_spindle_brass.name=Brass Spindle
 item.dcs_material_spindle_arroy.name=Arroy Spindle
 
+item.dcs_food_materials_salt.name=Salt
+item.dcs_food_materials_flour.name=Flour
 item.dcs_food_itemfood_baked_apple.name=Baked Apple
 item.dcs_food_bread_roundbread_raw.name=Dough
 item.dcs_food_bread_roundbread_baked.name=Round Bread
@@ -58,7 +65,7 @@ item.dcs_food_stick_beef_cooked.name=Cooked Skewered Beef
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
 item.dcs_yagen_brass_normal.name=Brass Druggist's Mortar
 
-item.dcs_repair_patty.name=Repair Patty
+item.dcs_repair_putty.name=Repair Putty
 
 item.dcs_axe_brass.name=Brass Axe
 item.dcs_axe_steel.name=Steel Axe
@@ -146,6 +153,10 @@ tile.dcs_ore_stone_12.name=Vein Silver Ore
 tile.dcs_ore_stone_13.name=Geode Diamond Ore
 tile.dcs_ore_stone_14.name=Geode Emerald Ore
 tile.dcs_ore_stone_15.name=Vein Magnetite
+tile.dcs_ore2_stone_0.name=Lime Stone
+tile.dcs_ore2_stone_1.name=Halite
+tile.dcs_ore2_stone_2.name=Niter Ore
+tile.dcs_ore2_stone_3.name=Sulfur Ore
 tile.dcs_dustblock_copper.name=Copper Dust Block
 tile.dcs_dustblock_zinc.name=Zinc Dust Block
 tile.dcs_dustblock_nickel.name=Nickel Dust Block
@@ -167,6 +178,7 @@ tile.dcs_gemblock_chal_red.name=Red Chalceony Block
 tile.dcs_gemblock_chal_white.name=White Chalceony Block
 tile.dcs_gemblock_gypsum.name=Gypsum Block
 tile.dcs_gemblock_sapphire.name=Sapphire Block
+tile.dcs_gemblock_salt.name=Rock Salt Block
 
 tile.dcs_cont_log_oak.name=Oak Log Box
 tile.dcs_cont_log_spruce.name=Spruce Log Box
@@ -227,7 +239,35 @@ tile.dcs_build_challamp_pendant_white.name=White Pendant Lamp
 tile.dcs_build_challamp_pendant_wood.name=Wooden Pendant Lamp
 
 tile.dcs_device_chamber_0.name=Combustion Chamber
-dcs_te_normal_chamber_0=Combustion Chamber
+tile.dcs_device_shitirin_0.name=Shichirin
+tile.dcs_device_shaft_s_0.name=Brass Shaft(I)
+tile.dcs_device_shaft_l_0.name=Brass Shaft(L)
+tile.dcs_device_shaft_ta_0.name=Brass Shaft(T-A)
+tile.dcs_device_shaft_tb_0.name=Brass Shaft(T-B)
+tile.dcs_device_crank_s_0.name=Brass Crank
+tile.dcs_device_handcrank_0.name=Brass Handcrank
+tile.dcs_device_gearbox_0.name=Gear Box
+tile.dcs_device_redbox_0.name=Gear Red Box
+tile.dcs_device_stonemill_0.name=Stone Mill
+tile.dcs_device_fan_0.name=Motor Fan
+tile.dcs_device_windmill_0.name=Windmill
+tile.dcs_device_windmill_l_0.name=Large Windmill
+tile.dcs_device_stevenson_screen_0.name=Stevenson Screen
+
+dcs_te_normal_chamber.name=Combustion Chamber
+dcs_te_shitirin.name=Shichirin
+dcs_te_shaft_s.name=Brass Shaft(I)
+dcs_te_shaft_l.name=Brass Shaft(L)
+dcs_te_shaft_ta.name=Brass Shaft(T-A)
+dcs_te_shaft_tb.name=Brass Shaft(T-B)
+dcs_te_crank_s.name=Brass Crank
+dcs_te_handcrank.name=Brass Handcrank
+dcs_te_gearbox.name=Gear Box
+dcs_te_redbox.name=Gear Red Box
+dcs_te_stonemill_s.name=Stone Mill
+dcs_te_fan_s.name=Motor Fan
+dcs_te_windmill.name=Windmill
+dcs_te_windmill_l.name=Large Windmill
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
@@ -282,6 +322,8 @@ dcs.comment.badge.9=3x3 area destruction at player sneaking
 dcs_climate.smelting=Climate Smelting
 dcs_climate.recipe=Climate Crafting
 dcs.gui.device.chamber=Combustion Chamber GUI
+dcs.gui.device.mill=Stone Mill GUI
+dcs.gui.device.stevenson_screen=Stevensoc Screen
 
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.

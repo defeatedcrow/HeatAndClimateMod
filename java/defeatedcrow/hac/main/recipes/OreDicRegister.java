@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.recipes;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.main.MainInit;
 
 public class OreDicRegister {
@@ -28,6 +29,10 @@ public class OreDicRegister {
 		OreDictionary.registerOre("oreDiamond", new ItemStack(MainInit.ores, 1, 13));
 		OreDictionary.registerOre("oreEmerald", new ItemStack(MainInit.ores, 1, 14));
 		OreDictionary.registerOre("oreMagnetite", new ItemStack(MainInit.ores, 1, 15));
+		OreDictionary.registerOre("oreLime", new ItemStack(MainInit.ores_2, 1, 0));
+		OreDictionary.registerOre("oreSalt", new ItemStack(MainInit.ores_2, 1, 1));
+		OreDictionary.registerOre("oreNiter", new ItemStack(MainInit.ores_2, 1, 2));
+		OreDictionary.registerOre("oreSulfur", new ItemStack(MainInit.ores_2, 1, 3));
 
 		// metals
 		OreDictionary.registerOre("ingotCopper", new ItemStack(MainInit.oreIngot, 1, 0));
@@ -66,17 +71,21 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gemMalachite", new ItemStack(MainInit.gems, 1, 5));
 		OreDictionary.registerOre("gemCelestite", new ItemStack(MainInit.gems, 1, 6));
 		OreDictionary.registerOre("gemClam", new ItemStack(MainInit.gems, 1, 7));
+		OreDictionary.registerOre("gemSalt", new ItemStack(MainInit.gems, 1, 8));
+		OreDictionary.registerOre("gemNiter", new ItemStack(MainInit.gems, 1, 9));
+		OreDictionary.registerOre("gemSulfur", new ItemStack(MainInit.gems, 1, 10));
 
 		OreDictionary.registerOre("blockGemChalcedony", new ItemStack(MainInit.gemBlock, 1, 0));
 		OreDictionary.registerOre("blockGemChalcedony", new ItemStack(MainInit.gemBlock, 1, 1));
 		OreDictionary.registerOre("blockGemChalcedony", new ItemStack(MainInit.gemBlock, 1, 2));
 		OreDictionary.registerOre("blockGemGypsum", new ItemStack(MainInit.gemBlock, 1, 3));
 		OreDictionary.registerOre("blockSapphire", new ItemStack(MainInit.gemBlock, 1, 4));
+		OreDictionary.registerOre("blockSalt", new ItemStack(MainInit.gemBlock, 1, 5));
 
 		// misc
-		OreDictionary.registerOre("dustCoal", new ItemStack(MainInit.miscDust, 1, 0));
+		OreDictionary.registerOre("dustGraphite", new ItemStack(MainInit.miscDust, 1, 0));
 		OreDictionary.registerOre("dustCrystal", new ItemStack(MainInit.miscDust, 1, 1));
-		OreDictionary.registerOre("dustGypsum", new ItemStack(MainInit.miscDust, 1, 2));
+		OreDictionary.registerOre("dustLime", new ItemStack(MainInit.miscDust, 1, 2));
 		OreDictionary.registerOre("dustWood", new ItemStack(MainInit.miscDust, 1, 3));
 		OreDictionary.registerOre("dustPresscake", new ItemStack(MainInit.miscDust, 1, 4));
 		OreDictionary.registerOre("dustAsh", new ItemStack(MainInit.miscDust, 1, 5));
@@ -89,11 +98,21 @@ public class OreDicRegister {
 		OreDictionary.registerOre("itemLinenCloth", new ItemStack(MainInit.materials, 1, 2));
 		OreDictionary.registerOre("itemCottonCloth", new ItemStack(MainInit.materials, 1, 3));
 		OreDictionary.registerOre("gearWood", new ItemStack(MainInit.materials, 1, 4));
-		OreDictionary.registerOre("gearArroy", new ItemStack(MainInit.materials, 1, 5));
+		OreDictionary.registerOre("gearBrass", new ItemStack(MainInit.materials, 1, 5));
+		OreDictionary.registerOre("gearArroy", new ItemStack(MainInit.materials, 1, 6));
 
 		// tool
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.stoneYagen, 1, 32767));
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.brassYagen, 1, 32767));
+
+		// food
+		OreDictionary.registerOre("dustSalt", new ItemStack(MainInit.foodMaterials, 1, 0));
+		OreDictionary.registerOre("foodFlour", new ItemStack(MainInit.foodMaterials, 1, 1));
+		OreDictionary.registerOre("dustFlour", new ItemStack(MainInit.foodMaterials, 1, 1));
+
+		/* 変換除外 */
+		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));
+		ConvertTargetList.addExclusing(new ItemStack(MainInit.materials, 1, 5));
 	}
 
 }

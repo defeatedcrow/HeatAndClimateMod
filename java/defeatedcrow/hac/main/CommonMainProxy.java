@@ -9,10 +9,29 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import defeatedcrow.hac.food.recipes.FoodRecipeRegister;
+import defeatedcrow.hac.food.recipes.FoodRecipes;
+import defeatedcrow.hac.machine.block.TileCrank_S;
+import defeatedcrow.hac.machine.block.TileFan;
+import defeatedcrow.hac.machine.block.TileGearBox;
+import defeatedcrow.hac.machine.block.TileHandCrank;
+import defeatedcrow.hac.machine.block.TileRedBox;
+import defeatedcrow.hac.machine.block.TileShaft_L;
+import defeatedcrow.hac.machine.block.TileShaft_S;
+import defeatedcrow.hac.machine.block.TileShaft_TA;
+import defeatedcrow.hac.machine.block.TileShaft_TB;
+import defeatedcrow.hac.machine.block.TileStoneMill;
+import defeatedcrow.hac.machine.block.TileWindmill;
+import defeatedcrow.hac.machine.block.TileWindmill_L;
+import defeatedcrow.hac.machine.gui.ContainerStoneMill;
+import defeatedcrow.hac.machine.gui.GuiStoneMill;
+import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
+import defeatedcrow.hac.main.block.device.TileShitirin;
+import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
+import defeatedcrow.hac.main.client.gui.ContainerStevensonScreen;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
+import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
@@ -36,7 +55,8 @@ public class CommonMainProxy implements IGuiHandler {
 		BasicRecipeRegister.load();
 		MachineRecipeRegister.load();
 
-		FoodRecipeRegister.load();
+		FoodRecipes.load();
+		MachineRecipes.load();
 	}
 
 	public void loadEntity() {
@@ -45,11 +65,25 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadTE() {
 		GameRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal");
+		GameRegistry.registerTileEntity(TileShitirin.class, "dcs_te_shitirin");
+		GameRegistry.registerTileEntity(TileWindmill.class, "dcs_te_windmill");
+		GameRegistry.registerTileEntity(TileWindmill_L.class, "dcs_te_windmill_l");
+		GameRegistry.registerTileEntity(TileShaft_S.class, "dcs_te_shaft_s");
+		GameRegistry.registerTileEntity(TileShaft_L.class, "dcs_te_shaft_l");
+		GameRegistry.registerTileEntity(TileShaft_TA.class, "dcs_te_shaft_ta");
+		GameRegistry.registerTileEntity(TileShaft_TB.class, "dcs_te_shaft_tb");
+		GameRegistry.registerTileEntity(TileGearBox.class, "dcs_te_gearbox");
+		GameRegistry.registerTileEntity(TileCrank_S.class, "dcs_te_crank_s");
+		GameRegistry.registerTileEntity(TileHandCrank.class, "dcs_te_handcrank");
+		GameRegistry.registerTileEntity(TileStoneMill.class, "dcs_te_stonemill");
+		GameRegistry.registerTileEntity(TileRedBox.class, "dcs_te_redbox");
+		GameRegistry.registerTileEntity(TileFan.class, "dcs_te_fan");
+		GameRegistry.registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen");
 	}
 
 	public void loadWorldGen() {
 		// gen
-		GameRegistry.registerWorldGenerator(new WorldGenOres(), 2);
+		GameRegistry.registerWorldGenerator(new WorldGenOres(), 10);
 	}
 
 	public void addSidedBlock(Block block, String name, int max) {
@@ -81,6 +115,12 @@ public class CommonMainProxy implements IGuiHandler {
 		if (tile instanceof TileNormalChamber) {
 			return new ContainerNormalChamber((TileNormalChamber) tile, player.inventory);
 		}
+		if (tile instanceof TileStevensonScreen) {
+			return new ContainerStevensonScreen((TileStevensonScreen) tile, player);
+		}
+		if (tile instanceof TileStoneMill) {
+			return new ContainerStoneMill((TileStoneMill) tile, player.inventory);
+		}
 		return null;
 	}
 
@@ -94,6 +134,12 @@ public class CommonMainProxy implements IGuiHandler {
 			return null;
 		if (tile instanceof TileNormalChamber) {
 			return new GuiNormalChamber((TileNormalChamber) tile, player.inventory);
+		}
+		if (tile instanceof TileStevensonScreen) {
+			return new GuiStevensonScreen((TileStevensonScreen) tile, player);
+		}
+		if (tile instanceof TileStoneMill) {
+			return new GuiStoneMill((TileStoneMill) tile, player.inventory);
 		}
 		return null;
 	}

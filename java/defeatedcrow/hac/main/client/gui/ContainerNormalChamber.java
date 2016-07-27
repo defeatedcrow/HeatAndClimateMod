@@ -8,18 +8,18 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.main.block.device.TileNormalChamber;
+import defeatedcrow.hac.main.block.device.TileChamberBase;
 
 public class ContainerNormalChamber extends Container {
 
-	public final TileNormalChamber chamber;
+	public final TileChamberBase chamber;
 	public final InventoryPlayer player;
 
 	private int currentBurn;
 	private int maxBurn;
 	private int heatTier;
 
-	public ContainerNormalChamber(TileNormalChamber cham, InventoryPlayer playerInv) {
+	public ContainerNormalChamber(TileChamberBase cham, InventoryPlayer playerInv) {
 		this.chamber = cham;
 		this.player = playerInv;
 

@@ -29,7 +29,7 @@ public class ItemCrowDrill extends DCItem {
 		super();
 		this.setMaxDamage(192);
 		this.setMaxStackSize(1);
-		this.isFull3D();
+		this.setFull3D();
 	}
 
 	@Override

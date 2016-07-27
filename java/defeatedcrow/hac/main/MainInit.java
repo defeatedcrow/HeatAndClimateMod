@@ -10,6 +10,7 @@ public class MainInit {
 	// block
 	// ores
 	public static Block ores;
+	public static Block ores_2;
 	public static Block dustBlock;
 	public static Block gemBlock;
 	public static Block metalBlock;
@@ -30,6 +31,8 @@ public class MainInit {
 
 	// device
 	public static Block chamber;
+	public static Block shitirin;
+	public static Block stevenson_screen;
 
 	// item
 	// ores
@@ -44,7 +47,8 @@ public class MainInit {
 	public static Item brassYagen;
 	public static Item crowDrill;
 
-	public static Item repairPatty;
+	public static Item repairPutty;
+	public static Item wrench;
 
 	public static Item[] dcAxe = new Item[6];
 	public static Item[] dcPickaxe = new Item[6];
@@ -66,5 +70,6 @@ public class MainInit {
 
 	// food
 	public static Item bakedApple;
+	public static Item foodMaterials;
 
 }

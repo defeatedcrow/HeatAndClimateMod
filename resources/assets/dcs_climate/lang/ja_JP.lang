@@ -2,6 +2,7 @@
 ## item
 item.dcs_checker_normal.name=気候チェッカー
 item.dcs_creative_drill_normal.name=クリエイティブ専用カラスドリル
+item.dcs_wrench_brass.name=真鍮のスパナ
 
 item.dcs_ingot_copper.name=銅インゴット
 item.dcs_ingot_zinc.name=亜鉛インゴット
@@ -27,9 +28,12 @@ item.dcs_gem_sapphire.name=サファイア
 item.dcs_gem_malachite.name=孔雀石
 item.dcs_gem_clam.name=姫ハマグリの化石
 item.dcs_gem_celestite.name=天青石
+item.dcs_gem_salt.name=ロックソルト
+item.dcs_gem_niter.name=硝石
+item.dcs_gem_sulfur.name=硫黄
 item.dcs_miscdust_coal.name=石墨の粉
 item.dcs_miscdust_crystal.name=石英の粉
-item.dcs_miscdust_gypsum.name=石膏の粉
+item.dcs_miscdust_lime.name=石灰
 item.dcs_miscdust_wood.name=木くず
 item.dcs_miscdust_presscake.name=油かす
 item.dcs_miscdust_ash.name=草木灰
@@ -39,8 +43,11 @@ item.dcs_material_string_cotton.name=木綿糸
 item.dcs_material_cloth_linen.name=亜麻布
 item.dcs_material_cloth_cotton.name=木綿布
 item.dcs_material_spindle_wood.name=木の回転子
+item.dcs_material_spindle_brass.name=真鍮の回転子
 item.dcs_material_spindle_arroy.name=合金の回転子
 
+item.dcs_food_materials_salt.name=食塩
+item.dcs_food_materials_flour.name=小麦粉
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
 item.dcs_food_bread_roundbread_raw.name=パン生地
 item.dcs_food_bread_roundbread_baked.name=丸パン
@@ -146,6 +153,10 @@ tile.dcs_ore_stone_12.name=石英銀鉱石
 tile.dcs_ore_stone_13.name=石英ダイヤ鉱石
 tile.dcs_ore_stone_14.name=石英エメラルド鉱石
 tile.dcs_ore_stone_15.name=石英磁鉄鉱
+tile.dcs_ore2_stone_0.name=石灰岩
+tile.dcs_ore2_stone_1.name=岩塩
+tile.dcs_ore2_stone_2.name=硝石鉱石
+tile.dcs_ore2_stone_3.name=硫黄鉱石
 tile.dcs_dustblock_copper.name=銅粉ブロック
 tile.dcs_dustblock_zinc.name=亜鉛粉ブロック
 tile.dcs_dustblock_nickel.name=ニッケル粉ブロック
@@ -167,6 +178,7 @@ tile.dcs_gemblock_chal_red.name=赤カルセドニーブロック
 tile.dcs_gemblock_chal_white.name=白カルセドニーブロック
 tile.dcs_gemblock_gypsum.name=石膏ブロック
 tile.dcs_gemblock_sapphire.name=サファイアブロック
+tile.dcs_gemblock_salt.name=岩塩ブロック
 
 tile.dcs_cont_log_oak.name=樫の丸太箱
 tile.dcs_cont_log_spruce.name=松の丸太箱
@@ -227,7 +239,35 @@ tile.dcs_build_challamp_pendant_white.name=白玉髄の吊りランプ
 tile.dcs_build_challamp_pendant_wood.name=木の吊りランプ
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
-dcs_te_normal_chamber_0=燃焼チャンバー
+tile.dcs_device_shitirin_0.name=七輪
+tile.dcs_device_shaft_s_0.name=真鍮のシャフト(I型)
+tile.dcs_device_shaft_l_0.name=真鍮のシャフト(L型)
+tile.dcs_device_shaft_ta_0.name=真鍮のシャフト(T-A型)
+tile.dcs_device_shaft_tb_0.name=真鍮のシャフト(T-B型)
+tile.dcs_device_crank_s_0.name=真鍮のクランク
+tile.dcs_device_handcrank_0.name=手回しクランク
+tile.dcs_device_gearbox_0.name=ギアボックス
+tile.dcs_device_redbox_0.name=レッドストーンギアボックス
+tile.dcs_device_stonemill_0.name=石臼
+tile.dcs_device_fan_0.name=送風機
+tile.dcs_device_windmill_0.name=風車
+tile.dcs_device_windmill_l_0.name=大型風車
+tile.dcs_device_stevenson_screen_0.name=百葉箱
+
+dcs_te_normal_chamber.name=燃焼チャンバー
+dcs_te_shitirin.name=Shichirin
+dcs_te_shaft_s.name=真鍮のシャフト(I型)
+dcs_te_shaft_l.name=真鍮のシャフト(L型)
+dcs_te_shaft_ta.name=真鍮のシャフト(T-A型)
+dcs_te_shaft_tb.name=真鍮のシャフト(T-B型)
+dcs_te_crank_s.name=真鍮のクランク
+dcs_te_handcrank.name=手回しクランク
+dcs_te_gearbox.name=ギアボックス
+dcs_te_redbox.name=レッドストーンギアボックス
+dcs_te_stonemill_s.name=石臼
+dcs_te_fan_s.name=送風機
+dcs_te_windmill.name=風車
+dcs_te_windmill_l.name=大型風車
 
 ## massage
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)
@@ -278,6 +318,12 @@ dcs.comment.badge.6=Xキーで天候を晴れにする
 dcs.comment.badge.7=Xキーで登録座標にワープする
 dcs.comment.badge.8=スニーク採掘時に周囲のドロップアイテムを集める
 dcs.comment.badge.9=スニーク中に範囲採掘する
+
+dcs_climate.smelting=気候変化レシピ
+dcs_climate.recipe=気候クラフトレシピ
+dcs.gui.device.chamber=燃焼チャンバー
+dcs.gui.device.mill=石臼
+dcs.gui.device.stevenson_screen=百葉箱
 
 death.attack.dcs_heat=%1$sはこんがり焼き上がった。
 death.attack.dcs_cold=%1$sはシャーベットになった。

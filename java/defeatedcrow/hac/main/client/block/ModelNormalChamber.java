@@ -1,8 +1,11 @@
 package defeatedcrow.hac.main.client.block;
 
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 
+@SideOnly(Side.CLIENT)
 public class ModelNormalChamber extends DCTileModelBase {
 	// fields
 	ModelRenderer inner;

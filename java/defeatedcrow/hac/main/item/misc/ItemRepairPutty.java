@@ -7,7 +7,7 @@ public class ItemRepairPutty extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "patty" };
+	private static String[] names = { "putty" };
 
 	public ItemRepairPutty() {
 		super();

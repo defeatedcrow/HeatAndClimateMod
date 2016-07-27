@@ -13,6 +13,7 @@ public class ItemMiscs extends DCItem {
 			"cloth_linen",
 			"cloth_cotton",
 			"spindle_wood",
+			"spindle_brass",
 			"spindle_arroy" };
 
 	public ItemMiscs(int max) {

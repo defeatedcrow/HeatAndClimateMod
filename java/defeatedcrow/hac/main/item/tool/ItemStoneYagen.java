@@ -14,8 +14,8 @@ public class ItemStoneYagen extends DCItem {
 		this.setMaxDamage(192);
 		this.setMaxStackSize(1);
 		this.setNoRepair();
-		this.isFull3D();
 		this.setHasSubtypes(false);
+		this.setFull3D();
 	}
 
 	@Override

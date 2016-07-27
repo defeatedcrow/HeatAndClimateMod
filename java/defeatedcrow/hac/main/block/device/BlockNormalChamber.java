@@ -20,6 +20,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
@@ -38,7 +39,7 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
-			if (tile instanceof TileNormalChamber) {
+			if (tile instanceof TileChamberBase) {
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 			}
 		}
@@ -71,16 +72,16 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 	}
 
 	@Override
-	public DCHeatTier getHeatTier(World world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
+	public DCHeatTier getHeatTier(World world, BlockPos from, BlockPos to) {
+		IBlockState state = world.getBlockState(to);
 		int meta = this.getMetaFromState(state);
 		if ((meta & 3) == 1) {
-			TileEntity t = world.getTileEntity(pos);
+			TileEntity t = world.getTileEntity(to);
 			if (t instanceof TileChamberBase) {
 				DCHeatTier heat = ((TileChamberBase) t).getCurrentHeatTier();
 				return heat;
 			}
-			return DCHeatTier.OVEN;
+			return DCHeatTier.HOT;
 		}
 		return DCHeatTier.NORMAL;
 	}
@@ -101,11 +102,9 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() == MainInit.chamber) {
 			if (f) {
-				world.setBlockState(pos, MainInit.chamber.getDefaultState()
-						.withProperty(FACING, state.getValue(FACING)).withProperty(TYPE, 1), 3);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 3);
 			} else {
-				world.setBlockState(pos, MainInit.chamber.getDefaultState()
-						.withProperty(FACING, state.getValue(FACING)).withProperty(TYPE, 0), 3);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 3);
 			}
 		}
 	}
