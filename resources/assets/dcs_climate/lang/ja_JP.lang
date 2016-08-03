@@ -240,6 +240,7 @@ tile.dcs_build_slab_glass.name=セレナイト半ブロック
 tile.dcs_build_slab_gypsum.name=石膏半ブロック
 tile.dcs_build_bricks_gypsum.name=石膏レンガブロック
 tile.dcs_build_bricks_marble.name=大理石レンガブロック
+tile.dcs_build_bricks_lime.name=石灰岩レンガブロック
 tile.dcs_build_challamp_cube_blue.name=青玉髄ランプ
 tile.dcs_build_challamp_cube_red.name=赤玉髄ランプ
 tile.dcs_build_challamp_cube_white.name=白玉髄ランプ

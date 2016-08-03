@@ -18,7 +18,7 @@ import defeatedcrow.hac.core.base.ITexturePath;
 public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
 	public BlockGemBricks(Material m, String s) {
-		super(m, s, 1, false);
+		super(m, s, 2, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
@@ -26,7 +26,8 @@ public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, IRapi
 
 	private static String[] names = {
 			"gypsum",
-			"marble" };
+			"marble",
+			"lime" };
 
 	@Override
 	public String[] getNameSuffix() {

@@ -240,6 +240,7 @@ tile.dcs_build_slab_glass.name=Selenite Slab
 tile.dcs_build_slab_gypsum.name=Gypsum Slab
 tile.dcs_build_bricks_gypsum.name=Gypsum Bricks
 tile.dcs_build_bricks_marble.name=Marble Bricks
+tile.dcs_build_bricks_lime.name=Lime Bricks
 tile.dcs_build_challamp_cube_blue.name=Blue Chalcedony Lamp
 tile.dcs_build_challamp_cube_red.name=Red Chalcedony Lamp
 tile.dcs_build_challamp_cube_white.name=White Chalcedony Lamp

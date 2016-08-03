@@ -549,11 +549,20 @@ public class BasicRecipeRegister {
 				'X',
 				new ItemStack(MainInit.gemBlock, 1, 6) }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.bricks, 1, 2), new Object[] {
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(MainInit.ores_2, 1, 0) }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 4, 3),
 				new Object[] { new ItemStack(MainInit.bricks, 1, 0) }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 4, 6),
 				new Object[] { new ItemStack(MainInit.bricks, 1, 1) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.ores_2, 4, 0),
+				new Object[] { new ItemStack(MainInit.bricks, 1, 2) }));
 
 		Object[] chal = new Object[] {
 				new ItemStack(MainInit.gemBlock, 1, 0),
