@@ -6,6 +6,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -30,7 +31,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
@@ -43,6 +43,7 @@ import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCPotion;
+import defeatedcrow.hac.main.util.CustomExplosion;
 
 public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 
@@ -58,7 +59,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			"celestite", /* 天候制御 */
 			"clam", /* ワープ */
 			"lapis",/* アイテム収集範囲 */
-			"diamond"/* 範囲採掘 */};
+			"diamond",/* 範囲採掘 */
+			"schorl" /* サンボル */};
 
 	public ItemMagicalBadge(int max) {
 		super();
@@ -230,7 +232,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			if (meta == 6) {
 				if (player.worldObj.isRaining() || player.worldObj.isThundering()) {
 					WorldInfo worldinfo = player.worldObj.getWorldInfo();
-					worldinfo.setCleanWeatherTime(1200); // 1min
+					worldinfo.setCleanWeatherTime(6000); // 5min
 					worldinfo.setRainTime(0);
 					worldinfo.setThunderTime(0);
 					worldinfo.setRaining(false);
@@ -306,7 +308,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	}
 
 	@Override
-	public boolean onAttacking(EntityPlayer player, EntityLivingBase target, float damage, ItemStack charm) {
+	public boolean onAttacking(EntityPlayer player, EntityLivingBase target, DamageSource source, float damage,
+			ItemStack charm) {
 		int meta = charm.getMetadata();
 		if (player.isSneaking()) {
 			if (meta == 3) {
@@ -318,13 +321,23 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				return true;
 			}
 		}
-		if (meta == 4 && this.itemRand.nextInt(50) == 0) {
+		if (meta == 4 && this.itemRand.nextInt(20) == 0) {
 			if (target instanceof IMob && target.getHealth() <= damage) {
 				EnchantmentData data = this.getEnchantment(target);
 				ItemStack ret = Items.ENCHANTED_BOOK.getEnchantedItemStack(data);
 				EntityItem drop = new EntityItem(player.worldObj, target.posX, target.posY + 0.5D, target.posZ, ret);
 				drop.setDefaultPickupDelay();
 				player.worldObj.spawnEntityInWorld(drop);
+				return true;
+			}
+		}
+		if (meta == 10) {
+			if (player != null && target != null && !source.isExplosion() && source.isProjectile()) {
+				CustomExplosion explosion = new CustomExplosion(player.worldObj, player, player, target.posX,
+						target.posY + 0.25D, target.posZ, 3F, CustomExplosion.Type.Silk, true);
+				explosion.doExplosion();
+				player.worldObj.addWeatherEffect(new EntityLightningBolt(player.worldObj, target.posX,
+						target.posY - 0.25D, target.posZ, !player.isSneaking()));
 				return true;
 			}
 		}
@@ -335,16 +348,29 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	public boolean onToolUsing(EntityPlayer player, BlockPos pos, IBlockState state, ItemStack charm) {
 		int meta = charm.getMetadata();
 		if (player.isSneaking() && !player.worldObj.isRemote && state != null) {
-			if (meta == 8) {
-				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() - 1,
-						(double) pos.getZ() - 5, (double) pos.getX() + 6, (double) pos.getY() + 2,
-						(double) pos.getZ() + 6);
-				List<EntityItem> drops = player.worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
-				for (EntityItem drop : drops) {
-					drop.setPosition(player.posX, player.posY + 0.5D, player.posZ);
+			if (meta == 9) {
+				// 一括破壊
+				ItemStack hold = player.getHeldItemMainhand();
+				BlockPos min = pos.add(-5, -5, -5);
+				BlockPos max = pos.add(5, 5, 5);
+				Iterable<BlockPos> itr = pos.getAllInBox(min, max);
+				boolean flag = false;
+				for (BlockPos p : itr) {
+					if (p.getY() < 0 || p.getY() > 255) {
+						continue;
+					}
+					IBlockState target = player.worldObj.getBlockState(p);
+					if (target.equals(state)
+							&& target.getBlock().getMetaFromState(target) == state.getBlock().getMetaFromState(state)
+							&& !target.getBlock().hasTileEntity(target)) {
+						// 同Block同Metadata
+						target.getBlock().harvestBlock(player.worldObj, player, p, target, null, hold);
+						player.worldObj.setBlockToAir(p);
+						flag = true;
+					}
 				}
-				return true;
-			} else if (meta == 9 && pos.getY() > 1 && pos.getY() < 255) {
+				return flag;
+			} else if (meta == 8) {
 				ItemStack hold = player.getHeldItemMainhand();
 				String tool = state.getBlock().getHarvestTool(state);
 				int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, hold);
@@ -353,6 +379,9 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 				boolean flag = false;
 				for (BlockPos p : itr) {
+					if (p.getY() < 0 || p.getY() > 255) {
+						continue;
+					}
 					IBlockState block = player.worldObj.getBlockState(p);
 					if (block.getBlock().isToolEffective(tool, block) && !block.getBlock().hasTileEntity(block)) {
 						block.getBlock().harvestBlock(player.worldObj, player, p, block, null, hold);
@@ -368,9 +397,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 
 	public static EnchantmentData getEnchantment(EntityLivingBase entity) {
 		EnchantmentData data = new EnchantmentData(Enchantments.UNBREAKING, 0);
-		if (entity instanceof EntityPigZombie) {
-			data = new EnchantmentData(Enchantments.FIRE_ASPECT, 0);
-		}
+
 		if (entity instanceof EntityZombie) {
 			data = new EnchantmentData(Enchantments.SHARPNESS, 0);
 		}
@@ -386,9 +413,6 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		if (entity instanceof EntityEnderman) {
 			data = new EnchantmentData(Enchantments.LOOTING, 0);
 		}
-		if (entity instanceof EntityMagmaCube) {
-			data = new EnchantmentData(Enchantments.FIRE_PROTECTION, 0);
-		}
 		if (entity instanceof EntitySlime) {
 			data = new EnchantmentData(Enchantments.PROTECTION, 0);
 		}
@@ -403,6 +427,12 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		}
 		if (entity instanceof EntityGuardian) {
 			data = new EnchantmentData(Enchantments.AQUA_AFFINITY, 0);
+		}
+		if (entity instanceof EntityPigZombie) {
+			data = new EnchantmentData(Enchantments.FIRE_ASPECT, 0);
+		}
+		if (entity instanceof EntityMagmaCube) {
+			data = new EnchantmentData(Enchantments.FIRE_PROTECTION, 0);
 		}
 		return data;
 	}

@@ -39,6 +39,7 @@ import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenOres;
+import defeatedcrow.hac.main.worldgen.WorldGenSkarn;
 
 public class CommonMainProxy implements IGuiHandler {
 
@@ -83,7 +84,8 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadWorldGen() {
 		// gen
-		GameRegistry.registerWorldGenerator(new WorldGenOres(), 10);
+		GameRegistry.registerWorldGenerator(new WorldGenOres(), 2);
+		GameRegistry.registerWorldGenerator(new WorldGenSkarn(false), 3);
 	}
 
 	public void addSidedBlock(Block block, String name, int max) {

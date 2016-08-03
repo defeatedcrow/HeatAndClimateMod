@@ -30,6 +30,10 @@ public class WorldGenOres implements IWorldGenerator {
 			IChunkProvider chunkProvider) {
 
 		int genDim1 = world.provider.getDimension();
+		if (chunkX > 3000 || chunkZ > 3000) {
+			// あまり遠いと生成しない
+			return;
+		}
 
 		int chunk2X = chunkX << 4;
 		int chunk2Z = chunkZ << 4;
@@ -129,14 +133,14 @@ public class WorldGenOres implements IWorldGenerator {
 				if (add.block == Blocks.STONE) {
 					int j = rand.nextInt(50);
 					if (j == 0) {
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(3));
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(3), 2);
 					} else if (j < 10) {
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(2));
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(2), 2);
 					} else {
-						world.setBlockState(p1, add.getState());
+						world.setBlockState(p1, add.getState(), 2);
 					}
 				} else {
-					world.setBlockState(p1, add.getState());
+					world.setBlockState(p1, add.getState(), 2);
 				}
 			}
 		}
@@ -174,7 +178,7 @@ public class WorldGenOres implements IWorldGenerator {
 			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
 				int height = max.getY() - p1.getY();
 				BlockSet add = gen[height];
-				world.setBlockState(p1, add.getState());
+				world.setBlockState(p1, add.getState(), 2);
 			}
 		}
 	}
@@ -193,7 +197,7 @@ public class WorldGenOres implements IWorldGenerator {
 			else {
 				// 亜鉛 - 銅 - 鉄
 				if (i >= h / 2) {
-					gen[i] = rand.nextInt(1) == 0 ? new BlockSet(MainInit.ores, 6) : new BlockSet(MainInit.ores, 4);
+					gen[i] = rand.nextInt(3) > 0 ? new BlockSet(MainInit.ores, 6) : new BlockSet(MainInit.ores, 4);
 				} else {
 					gen[i] = rand.nextInt(2) == 0 ? new BlockSet(MainInit.ores, 8) : new BlockSet(MainInit.ores, 4);
 				}
@@ -214,13 +218,16 @@ public class WorldGenOres implements IWorldGenerator {
 			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
 				int height = max.getY() - p1.getY();
 				BlockSet add = gen[height];
-				int j = rand.nextInt(20);
+				int j = rand.nextInt(30);
+				// ニッケル、錫の生成チャンス
 				if (j == 0) {
-					world.setBlockState(p1, MainInit.ores.getStateFromMeta(7));
-				} else if (j > 12) {
-					world.setBlockState(p1, Blocks.STONE.getStateFromMeta(5));
+					world.setBlockState(p1, MainInit.ores.getStateFromMeta(7), 2);
+				} else if (j == 1) {
+					world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(4), 2);
+				} else if (j > 20) {
+					world.setBlockState(p1, Blocks.STONE.getStateFromMeta(5), 2);
 				} else {
-					world.setBlockState(p1, add.getState());
+					world.setBlockState(p1, add.getState(), 2);
 				}
 			}
 		}
@@ -258,6 +265,7 @@ public class WorldGenOres implements IWorldGenerator {
 					break;
 				case 3:
 				case 4:
+				case 5:
 					gen[i] = new BlockSet(MainInit.ores, 8);
 					break;
 				default:
@@ -277,7 +285,7 @@ public class WorldGenOres implements IWorldGenerator {
 			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
 				int height = max.getY() - p1.getY();
 				BlockSet add = gen[height];
-				world.setBlockState(p1, add.getState());
+				world.setBlockState(p1, add.getState(), 2);
 			}
 		}
 
@@ -294,7 +302,7 @@ public class WorldGenOres implements IWorldGenerator {
 					Block block = world.getBlockState(p2).getBlock();
 					if (p2.getY() > 1 && p2.getY() < world.getActualHeight() && isPlaceable(block)) {
 						int m = k == 0 ? 8 : 5;
-						world.setBlockState(p2, MainInit.ores.getStateFromMeta(m));
+						world.setBlockState(p2, MainInit.ores.getStateFromMeta(m), 2);
 					}
 				}
 			}
@@ -325,11 +333,11 @@ public class WorldGenOres implements IWorldGenerator {
 			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
 				int j = rand.nextInt(5);
 				if (j == 0) {
-					world.setBlockState(p1, MainInit.ores.getStateFromMeta(7));
+					world.setBlockState(p1, MainInit.ores.getStateFromMeta(7), 2);
 				} else if (j < 3) {
-					world.setBlockState(p1, MainInit.ores.getStateFromMeta(5));
+					world.setBlockState(p1, MainInit.ores.getStateFromMeta(5), 2);
 				} else {
-					world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(3));
+					world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(3), 2);
 				}
 			}
 		}
@@ -360,31 +368,34 @@ public class WorldGenOres implements IWorldGenerator {
 			Block block = world.getBlockState(p1).getBlock();
 			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
 				if (r < 2.0D) {
-					world.setBlockState(p1, Blocks.STONE.getStateFromMeta(1));
+					world.setBlockState(p1, Blocks.STONE.getStateFromMeta(1), 2);
 				} else if (r < 4.0D) {
-					world.setBlockState(p1, MainInit.ores.getStateFromMeta(9));
+					world.setBlockState(p1, MainInit.ores.getStateFromMeta(9), 2);
 				} else if (r < 5.0D) {
 					int j = rand.nextInt(10);
 					switch (j) {
 					case 0:
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(12));
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(12), 2);
 						break;
 					case 1:
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(13));
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(13), 2);
 						break;
 					case 2:
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(14));
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(14), 2);
 						break;
 					case 3:
-					case 4:
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(10));
+						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(5), 2);
 						break;
+					case 4:
 					case 5:
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(10), 2);
+						break;
 					case 6:
+					case 7:
 						world.setBlockToAir(p1);
 						break;
 					default:
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(9));
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(9), 2);
 					}
 				} else {
 					world.setBlockToAir(p1);
@@ -409,7 +420,7 @@ public class WorldGenOres implements IWorldGenerator {
 			Block block = world.getBlockState(p1).getBlock();
 			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
 				BlockSet add = new BlockSet(Blocks.STONE, 1);
-				world.setBlockState(p1, add.getState());
+				world.setBlockState(p1, add.getState(), 2);
 			}
 		}
 	}

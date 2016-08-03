@@ -23,6 +23,7 @@ public class MainInit {
 	public static Block cardboard;
 
 	// building
+	public static Block bricks;
 	public static Block selenite;
 	public static Block stairsGlass;
 	public static Block stairsGypsum;

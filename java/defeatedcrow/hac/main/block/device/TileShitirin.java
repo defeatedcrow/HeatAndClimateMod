@@ -3,12 +3,9 @@ package defeatedcrow.hac.main.block.device;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.fluids.FluidContainerRegistry;
 import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 
 public class TileShitirin extends TileNormalChamber {
@@ -18,6 +15,7 @@ public class TileShitirin extends TileNormalChamber {
 
 	@Override
 	public void updateTile() {
+		super.updateTile();
 		if (!getWorld().isRemote) {
 
 			DCAirflow air = DCAirflow.TIGHT;
@@ -31,31 +29,10 @@ public class TileShitirin extends TileNormalChamber {
 				this.currentClimate = 4;
 			}
 
-			if (this.currentBurnTime == 0) {
-				if (this.getStackInSlot(0) != null && getBurnTime(this.getStackInSlot(0)) > 0) {
-					ItemStack cont = this.getStackInSlot(0).getItem().getContainerItem(this.getStackInSlot(0));
-					if (cont == null && FluidContainerRegistry.isFilledContainer(this.getStackInSlot(0))) {
-						cont = FluidContainerRegistry.drainFluidContainer(this.getStackInSlot(0).copy());
-					}
-					if (cont == null) {
-						cont = new ItemStack(MainInit.miscDust, 1, 5); // 灰が出る
-					}
-					boolean flag = false;
-					if (this.canInsertResult(cont) > 0) {
-						this.currentBurnTime = getBurnTime(this.getStackInSlot(0));
-						this.maxBurnTime = getBurnTime(this.getStackInSlot(0));
-						this.decrStackSize(0, 1);
-						this.insertResult(cont);
-						this.markDirty();
-					}
-				}
-			}
-
 			if (BlockShitirin.isLit(getWorld(), getPos()) != this.isActive()) {
 				BlockShitirin.changeLitState(getWorld(), getPos(), isActive());
 			}
 		}
-		super.updateTile();
 	}
 
 	@Override
