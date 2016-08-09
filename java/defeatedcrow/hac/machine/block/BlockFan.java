@@ -2,10 +2,14 @@ package defeatedcrow.hac.machine.block;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
@@ -31,7 +35,7 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 			boolean active = isActive(face.getOpposite(), pos, target) && world.isAirBlock(target.offset(face));
 			if (active) {
 				float torque = fan.getCurrentTorque();
-				if (torque >= 4.0F) {
+				if (torque >= 6.0F) {
 					return DCAirflow.WIND;
 				} else if (torque > 0F) {
 					return DCAirflow.FLOW;
@@ -39,6 +43,25 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 			}
 		}
 		return DCAirflow.TIGHT;
+	}
+
+	// 設置時にはプレイヤーの方を向いている方が自然なので
+	@Override
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer) {
+		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		if (placer != null) {
+			EnumFacing face = placer.getHorizontalFacing();
+			if (placer.rotationPitch > 75.0F) {
+				face = EnumFacing.UP;
+			} else if (placer.rotationPitch > 75.0F) {
+				face = EnumFacing.DOWN;
+			}
+			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite()));
+		} else {
+			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(facing.getOpposite()));
+		}
+		return state;
 	}
 
 	boolean isActive(EnumFacing face, BlockPos to, BlockPos from) {

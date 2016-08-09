@@ -8,14 +8,19 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.machine.client.ModelShaft_TA;
 
 public class TileShaft_TA extends TileTorqueBase implements ITorqueProvider, ITorqueReceiver {
 
 	@SideOnly(Side.CLIENT)
-	private final ModelShaft_TA model = new ModelShaft_TA();
+	private defeatedcrow.hac.machine.client.ModelShaft_TA model;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	protected void createModel() {
+		if (model == null)
+			model = new defeatedcrow.hac.machine.client.ModelShaft_TA();
+	}
 
 	@Override
 	public void updateTile() {
@@ -88,7 +93,7 @@ public class TileShaft_TA extends TileTorqueBase implements ITorqueProvider, ITo
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public DCTileModelBase getModel() {
+	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
 		return model;
 	}
 }

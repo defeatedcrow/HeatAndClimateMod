@@ -49,6 +49,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 
 	private final int maxMeta;
 
+	private final float maxCount = 128;
+
 	private static String[] names = {
 			"chal_blue", /* 水属性追撃 */
 			"chal_red", /* 火属性追撃 */
@@ -165,7 +167,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack) {
 		int i = this.getNBTDamage(stack);
-		return i / 128.0D;
+		return i / maxCount;
 	}
 
 	public int getNBTDamage(ItemStack stack) {
@@ -196,7 +198,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				dam = tag.getInteger("dcs.itemdam");
 			}
 			dam++;
-			if (dam > 128) {
+			if (dam > maxCount) {
 				return null;
 			} else {
 				tag.setInteger("dcs.itemdam", dam);
@@ -371,6 +373,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				}
 				return flag;
 			} else if (meta == 8) {
+				// 範囲破壊
 				ItemStack hold = player.getHeldItemMainhand();
 				String tool = state.getBlock().getHarvestTool(state);
 				int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, hold);

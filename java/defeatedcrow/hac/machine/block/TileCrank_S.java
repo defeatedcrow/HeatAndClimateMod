@@ -8,14 +8,19 @@ import defeatedcrow.hac.api.energy.ICrankDC;
 import defeatedcrow.hac.api.energy.ICrankReceiver;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.machine.client.ModelCrank_S;
 
 public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICrankDC {
 
 	@SideOnly(Side.CLIENT)
-	private final ModelCrank_S model = new ModelCrank_S();
+	private defeatedcrow.hac.machine.client.ModelCrank_S model;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	protected void createModel() {
+		if (model == null)
+			model = new defeatedcrow.hac.machine.client.ModelCrank_S();
+	}
 
 	@Override
 	public void updateTile() {
@@ -76,7 +81,7 @@ public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICra
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public DCTileModelBase getModel() {
+	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
 		return model;
 	}
 

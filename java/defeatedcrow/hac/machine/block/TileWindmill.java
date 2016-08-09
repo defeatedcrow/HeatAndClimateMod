@@ -12,12 +12,19 @@ import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.machine.client.ModelWindmill;
+import defeatedcrow.hac.core.util.DCUtil;
 
 public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
 	@SideOnly(Side.CLIENT)
-	private final ModelWindmill model = new ModelWindmill();
+	private defeatedcrow.hac.machine.client.ModelWindmill model;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	protected void createModel() {
+		if (model == null)
+			model = new defeatedcrow.hac.machine.client.ModelWindmill();
+	}
 
 	@Override
 	public void updateTile() {
@@ -27,15 +34,18 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 			DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos, 1, false);
 			float wind = 0.0F;
 			switch (air) {
-			case FLOW:
+			case NORMAL:
 				wind = getGearTier() * 0.25F;
 				break;
-			case WIND:
+			case FLOW:
 				wind = getGearTier() * 0.5F;
+				break;
+			case WIND:
+				wind = getGearTier() * 1.0F;
 				break;
 			default:
 			}
-			if (this.getBaseSide() == EnumFacing.WEST || this.getBaseSide() == EnumFacing.EAST) {
+			if (this.getBaseSide() == DCUtil.getWorldWind(worldObj).getOpposite()) {
 				wind *= 2.0F;
 			}
 			this.currentTorque += wind;
@@ -43,6 +53,11 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 			// provider
 			this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
 		}
+	}
+
+	@Override
+	public float getGearTier() {
+		return 4.0F;
 	}
 
 	@Override

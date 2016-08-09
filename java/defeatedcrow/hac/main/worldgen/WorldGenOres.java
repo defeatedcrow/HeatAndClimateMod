@@ -13,17 +13,17 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import defeatedcrow.hac.api.climate.BlockSet;
-import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.WorldGenConfig;
 
 public class WorldGenOres implements IWorldGenerator {
 
-	private static int sedPar = CoreConfigDC.depositGen[0];
-	private static int kiesPar = CoreConfigDC.depositGen[1];
-	private static int vinePar = CoreConfigDC.depositGen[2];
-	private static int lavaPar = CoreConfigDC.depositGen[3];
-	private static int vugsPar = CoreConfigDC.depositGen[4];
+	private static int sedPar = WorldGenConfig.depositGen[0];
+	private static int kiesPar = WorldGenConfig.depositGen[1];
+	private static int vinePar = WorldGenConfig.depositGen[2];
+	private static int lavaPar = WorldGenConfig.depositGen[3];
+	private static int vugsPar = WorldGenConfig.depositGen[4];
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
@@ -53,8 +53,8 @@ public class WorldGenOres implements IWorldGenerator {
 				BlockPos pos = new BlockPos(posX, posY, posZ);
 				Biome biome = world.getBiomeGenForCoords(pos);
 
-				if (posY > 120) {
-					if (random.nextInt(100) < sedPar) {
+				if (posY > 140) {
+					if (random.nextInt(100) < sedPar * 2) {
 						generateSediment(world, random, pos);
 					}
 				} else if (posY > 70) {

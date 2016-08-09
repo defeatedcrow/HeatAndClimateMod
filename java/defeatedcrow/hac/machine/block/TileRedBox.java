@@ -4,14 +4,19 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.energy.ICrankReceiver;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.machine.client.ModelGearBox;
 
 public class TileRedBox extends TileTorqueBase implements ICrankReceiver {
 
 	@SideOnly(Side.CLIENT)
-	private final ModelGearBox model = new ModelGearBox();
+	private defeatedcrow.hac.machine.client.ModelGearBox model;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	protected void createModel() {
+		if (model == null)
+			model = new defeatedcrow.hac.machine.client.ModelGearBox();
+	}
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
@@ -25,7 +30,7 @@ public class TileRedBox extends TileTorqueBase implements ICrankReceiver {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public DCTileModelBase getModel() {
+	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
 		return model;
 	}
 

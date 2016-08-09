@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.config.MainConfig;
 
 @Mod(
 		modid = ClimateMain.MOD_ID,
@@ -30,8 +31,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 0;
 	public static final int MOD_MINOR = 9;
-	public static final int MOD_BUILD = 1;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1976,);required-after:dcs_climate|lib@[0.9.0,)";
+	public static final int MOD_BUILD = 3;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1976,);required-after:dcs_climate|lib@[0.9.3,)";
 
 	@SidedProxy(
 			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
@@ -51,6 +52,8 @@ public class ClimateMain {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		// config
+		MainConfig.INSTANCE.load(event.getModConfigurationDirectory());
 		// Material
 		proxy.loadMaterial();
 		// TileEntity

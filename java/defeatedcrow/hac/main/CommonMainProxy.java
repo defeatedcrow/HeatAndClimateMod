@@ -32,7 +32,6 @@ import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import defeatedcrow.hac.main.client.gui.ContainerStevensonScreen;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
-import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
@@ -103,7 +102,7 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadInit() {
 		MinecraftForge.EVENT_BUS.register(new OnMiningEventDC());
 		MinecraftForge.EVENT_BUS.register(new OnDeathEventDC());
-		MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
+		// MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
 	}
 
 	@Override
