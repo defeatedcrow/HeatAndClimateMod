@@ -2,6 +2,7 @@
 ## item
 item.dcs_checker_normal.name=气候检查器
 item.dcs_creative_drill_normal.name=(创造模式专用)乌鸦钻
+item.dcs_wrench_brass.name=黄铜扳手
 
 item.dcs_ingot_copper.name=铜锭
 item.dcs_ingot_zinc.name=锌锭
@@ -27,9 +28,12 @@ item.dcs_gem_sapphire.name=蓝宝石
 item.dcs_gem_malachite.name=孔雀石
 item.dcs_gem_clam.name=公主蛤化石
 item.dcs_gem_celestite.name=天青石
+item.dcs_gem_salt.name=岩盐
+item.dcs_gem_niter.name=硝石
+item.dcs_gem_sulfur.name=硫磺
 item.dcs_miscdust_coal.name=煤粉
 item.dcs_miscdust_crystal.name=石英粉
-item.dcs_miscdust_gypsum.name=石膏粉
+item.dcs_miscdust_lime.name=石灰
 item.dcs_miscdust_wood.name=木屑
 item.dcs_miscdust_presscake.name=油渣
 item.dcs_miscdust_ash.name=灰烬
@@ -39,8 +43,11 @@ item.dcs_material_string_cotton.name=木棉线
 item.dcs_material_cloth_linen.name=亚麻布
 item.dcs_material_cloth_cotton.name=木棉布
 item.dcs_material_spindle_wood.name=木质碾盘
+item.dcs_material_spindle_brass.name=黄铜碾盘
 item.dcs_material_spindle_arroy.name=合金碾盘
 
+item.dcs_food_materials_salt.name=食盐
+item.dcs_food_materials_flour.name=面粉
 item.dcs_food_itemfood_baked_apple.name=烤苹果
 item.dcs_food_bread_roundbread_raw.name=生面团
 item.dcs_food_bread_roundbread_baked.name=圆面包
@@ -58,7 +65,7 @@ item.dcs_food_stick_beef_cooked.name=烤牛肉串
 item.dcs_yagen_stone_normal.name=石质药碾子
 item.dcs_yagen_brass_normal.name=青铜药碾子
 
-item.dcs_repair_patty.name=Repair Patty
+item.dcs_repair_putty.name=修补油灰
 
 item.dcs_axe_brass.name=黄铜斧
 item.dcs_axe_steel.name=钢斧
@@ -146,6 +153,10 @@ tile.dcs_ore_stone_12.name=银石英矿
 tile.dcs_ore_stone_13.name=钻石石英矿
 tile.dcs_ore_stone_14.name=绿宝石石英矿
 tile.dcs_ore_stone_15.name=磁铁石英矿
+tile.dcs_ore2_stone_0.name=石灰岩
+tile.dcs_ore2_stone_1.name=岩盐
+tile.dcs_ore2_stone_2.name=硝石矿石
+tile.dcs_ore2_stone_3.name=硫磺矿石
 tile.dcs_dustblock_copper.name=铜粉块
 tile.dcs_dustblock_zinc.name=锌粉块
 tile.dcs_dustblock_nickel.name=镍粉块
@@ -167,6 +178,7 @@ tile.dcs_gemblock_chal_red.name=红色玉髓块
 tile.dcs_gemblock_chal_white.name=白色玉髓块
 tile.dcs_gemblock_gypsum.name=石膏块
 tile.dcs_gemblock_sapphire.name=蓝宝石块
+tile.dcs_gemblock_salt.name=岩盐块
 
 tile.dcs_cont_log_oak.name=装箱橡木
 tile.dcs_cont_log_spruce.name=装箱云杉木
@@ -227,7 +239,35 @@ tile.dcs_build_challamp_pendant_white.name=白玉髓吊灯
 tile.dcs_build_challamp_pendant_wood.name=木质吊灯
 
 tile.dcs_device_chamber_0.name=燃烧室
-dcs_te_normal_chamber_0=燃烧室
+tile.dcs_device_shitirin_0.name=七轮（一种日式炭火烤架）
+tile.dcs_device_shaft_s_0.name=黄铜轴(I型)
+tile.dcs_device_shaft_l_0.name=黄铜轴(L型)
+tile.dcs_device_shaft_ta_0.name=黄铜轴(T-A型)
+tile.dcs_device_shaft_tb_0.name=黄铜轴(T-B型)
+tile.dcs_device_crank_s_0.name=黄铜曲柄
+tile.dcs_device_handcrank_0.name=黄铜手摇曲柄
+tile.dcs_device_gearbox_0.name=齿轮箱
+tile.dcs_device_redbox_0.name=红石齿轮箱
+tile.dcs_device_stonemill_0.name=石臼
+tile.dcs_device_fan_0.name=鼓风机
+tile.dcs_device_windmill_0.name=风车
+tile.dcs_device_windmill_l_0.name=大型风车
+tile.dcs_device_stevenson_screen_0.name=百叶箱
+
+dcs_te_normal_chamber.name=燃烧室
+dcs_te_shitirin.name=七轮（一种日式炭火烤架）
+dcs_te_shaft_s.name=黄铜轴(I型)
+dcs_te_shaft_l.name=黄铜轴(L型)
+dcs_te_shaft_ta.name=黄铜轴(T-A型)
+dcs_te_shaft_tb.name=黄铜轴(T-B型)
+dcs_te_crank_s.name=黄铜曲柄
+dcs_te_handcrank.name=黄铜手摇曲柄
+dcs_te_gearbox.name=齿轮箱
+dcs_te_redbox.name=红石齿轮箱
+dcs_te_stonemill_s.name=石臼
+dcs_te_fan_s.name=鼓风机
+dcs_te_windmill.name=风车
+dcs_te_windmill_l.name=大型风车
 
 ## massage
 dcs.climate.tip.checker=右击方块可以查看Climate(气候)信息(范围2)
@@ -282,6 +322,8 @@ dcs.comment.badge.9=玩家潜行键挖掘时破坏3×3范围方块
 dcs_climate.smelting=冶炼温度
 dcs_climate.recipe=制作温度
 dcs.gui.device.chamber=燃烧室GUI
+dcs.gui.device.mill=石臼GUI
+dcs.gui.device.stevenson_screen=百叶箱
 
 death.attack.dcs_heat=%1$s 被烤的焦黄。
 death.attack.dcs_cold=%1$s 变成了冰冻果子露。
