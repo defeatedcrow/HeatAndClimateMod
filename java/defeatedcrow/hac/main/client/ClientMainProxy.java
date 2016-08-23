@@ -15,11 +15,24 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonBakery;
+import defeatedcrow.hac.food.block.TilePotteryPot;
+import defeatedcrow.hac.food.block.TileSteelPot;
+import defeatedcrow.hac.food.block.crop.BlockCoffee;
+import defeatedcrow.hac.food.block.crop.BlockCotton;
+import defeatedcrow.hac.food.block.crop.BlockLeavesLemon;
+import defeatedcrow.hac.food.block.crop.BlockLeavesOlive;
+import defeatedcrow.hac.food.block.crop.BlockOnion;
+import defeatedcrow.hac.food.block.crop.BlockRice;
+import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
+import defeatedcrow.hac.food.block.crop.BlockSpinach;
+import defeatedcrow.hac.food.block.crop.BlockTomato;
 import defeatedcrow.hac.food.client.BeefStickRenderer;
 import defeatedcrow.hac.food.client.FishStickRenderer;
 import defeatedcrow.hac.food.client.PorkStickRenderer;
 import defeatedcrow.hac.food.client.RoundBreadRenderer;
 import defeatedcrow.hac.food.client.SquareBreadRenderer;
+import defeatedcrow.hac.food.client.TESRPotteryPot;
+import defeatedcrow.hac.food.client.TESRSteelPot;
 import defeatedcrow.hac.food.client.YakitoriStickRenderer;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
@@ -75,6 +88,15 @@ public class ClientMainProxy extends CommonMainProxy {
 		JsonBakery.instance.addTex(BlockEnemyCont.getTexList());
 		JsonBakery.instance.addTex(BlockMiscCont.getTexList());
 		JsonBakery.instance.addTex(BlockCardboard.getTexList());
+		JsonBakery.instance.addTex(BlockRice.getTexList());
+		JsonBakery.instance.addTex(BlockOnion.getTexList());
+		JsonBakery.instance.addTex(BlockSpinach.getTexList());
+		JsonBakery.instance.addTex(BlockTomato.getTexList());
+		JsonBakery.instance.addTex(BlockCotton.getTexList());
+		JsonBakery.instance.addTex(BlockCoffee.getTexList());
+		JsonBakery.instance.addTex(BlockLeavesLemon.getTexList());
+		JsonBakery.instance.addTex(BlockLeavesOlive.getTexList());
+		JsonBakery.instance.addTex(BlockSaplingDC.getTexList());
 	}
 
 	@Override
@@ -112,6 +134,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		ClientRegistry.registerTileEntity(TileFan.class, "dcs_te_fan", new FanTESR());
 		ClientRegistry.registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen",
 				new TESRStevensonScreen());
+		ClientRegistry.registerTileEntity(TilePotteryPot.class, "dcs_te_pottery_pot", new TESRPotteryPot());
+		ClientRegistry.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot", new TESRSteelPot());
 	}
 
 	@Override
@@ -132,6 +156,13 @@ public class ClientMainProxy extends CommonMainProxy {
 		JsonRegister.MAIN_INSTANCE.regBakedBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
 				"cont", max);
 		JsonBakery.instance.regDummyTBModel(block);
+	}
+
+	@Override
+	public void addCropBlock(Block block, String name, int max) {
+		JsonRegister.MAIN_INSTANCE.regBakedBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
+				"crop", max);
+		JsonBakery.instance.regDummyCropModel(block);
 	}
 
 	/**

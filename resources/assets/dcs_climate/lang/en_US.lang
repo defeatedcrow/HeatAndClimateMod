@@ -257,6 +257,17 @@ tile.dcs_build_challamp_pendant_blue.name=Blue Pendant Lamp
 tile.dcs_build_challamp_pendant_red.name=Red Pendant Lamp
 tile.dcs_build_challamp_pendant_white.name=White Pendant Lamp
 tile.dcs_build_challamp_pendant_wood.name=Wooden Pendant Lamp
+tile.dcs_table_marble_0.name=Marble Table
+tile.dcs_table_gypsum_0.name=Gypsum Table
+tile.dcs_table_wood_0.name=Wooden Table
+tile.dcs_table_darkwood_0.name=Dark Wooden Table
+tile.dcs_carpet_red_0.name=Carpet Wood (Red)
+tile.dcs_carpet_white_0.name=Carpet Wood (White)
+tile.dcs_carpet_gray_0.name=Carpet Wood (Black)
+tile.dcs_sofa_black_0.name=Sofa (Black)
+tile.dcs_sofa_red_0.name=Sofa (Red)
+tile.dcs_stool_black_0.name=Stool (Black)
+tile.dcs_stool_red_0.name=Stool (Red)
 
 tile.dcs_device_chamber_0.name=Combustion Chamber
 tile.dcs_device_shitirin_0.name=Shichirin
@@ -273,6 +284,8 @@ tile.dcs_device_fan_0.name=Motor Fan
 tile.dcs_device_windmill_0.name=Windmill
 tile.dcs_device_windmill_l_0.name=Large Windmill
 tile.dcs_device_stevenson_screen_0.name=Stevenson Screen
+tile.dcs_device_potter_pot_0.name=Pottery Pot
+tile.dcs_device_steel_pot_0.name=Steel Pot
 
 dcs_te_normal_chamber.name=Combustion Chamber
 dcs_te_shitirin.name=Shichirin
@@ -288,6 +301,8 @@ dcs_te_stonemill_s.name=Stone Mill
 dcs_te_fan_s.name=Motor Fan
 dcs_te_windmill.name=Windmill
 dcs_te_windmill_l.name=Large Windmill
+tile.te_potter_pot_0.name=Pottery Pot
+tile.te_steel_pot_0.name=Stell Pot
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
@@ -349,6 +364,12 @@ dcs.gui.device.chamber=Combustion Chamber GUI
 dcs.gui.device.shitirin=Shichirin GUI
 dcs.gui.device.mill=Stone Mill GUI
 dcs.gui.device.stevenson_screen=Stevensoc Screen
+
+dcs.gui.message.nullclimate=Climate data is not loaded.
+dcs.gui.message.pottery.toocold=Too cold
+dcs.gui.message.pottery.toohot=Too hot
+dcs.gui.message.steel.toocold=Too cold
+dcs.gui.message.suitableclimate=Suitable Climate
 
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.

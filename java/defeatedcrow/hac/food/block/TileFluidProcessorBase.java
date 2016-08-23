@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
@@ -19,18 +20,22 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import defeatedcrow.hac.api.climate.ClimateAPI;
-import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.api.recipe.IFluidRecipe;
 import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 
 public abstract class TileFluidProcessorBase extends ClimateReceiverLockable implements ISidedInventory {
 
-	protected DCTank inputT = new DCTank(5000);
-	protected DCTank outputT = new DCTank(5000);
+	public DCTank inputT = new DCTank(5000);
+	public DCTank outputT = new DCTank(5000);
 
 	// process
 	public int currentBurnTime = 0;
@@ -39,42 +44,80 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	private int lastTier = 0;
 	private int lastBurn = 0;
 
+	private int lastInT = 0;
+	private int lastOutT = 0;
+
+	public IFluidRecipe currentRecipe = null;
+
 	@Override
 	public void updateTile() {
 		super.updateTile();
 		if (!worldObj.isRemote) {
+			// 液体スロットの処理
+			this.processFluidSlots();
 			// 完了処理
 			if (this.maxBurnTime > 0) {
 				if (this.currentBurnTime >= this.maxBurnTime) {
-					DCLogger.debugLog("b");
 					// レシピ進行の再チェック
-					if (this.isRecipeMaterial(this.getStackInSlot(0))) {
-						DCLogger.debugLog("c");
+					if (this.canRecipeProcess()) {
 						if (this.onProcess()) {
 							this.currentBurnTime = 0;
-							this.maxBurnTime = 0;
-							this.decrStackSize(0, 1);
+							this.maxBurnTime = -1;
 							this.markDirty();
 						}
 					} else {
 						// 一致しないためリセット
 						this.currentBurnTime = 0;
-						this.maxBurnTime = 0;
+						this.maxBurnTime = -1;
+						currentRecipe = null;
 					}
 				} else {
 					// レシピ進行の再チェック
-					if (this.isRecipeMaterial(this.getStackInSlot(0))) {
+					if (this.canRecipeProcess()) {
 						this.currentBurnTime += 1;
 					} else {
 						// 一致しないためリセット
 						this.currentBurnTime = 0;
-						this.maxBurnTime = 0;
+						this.maxBurnTime = -1;
+						currentRecipe = null;
 					}
 				}
 			} else if (this.canStartProcess()) {
-				DCLogger.debugLog("s");
 				// レシピ開始可能かどうか
-				this.maxBurnTime = this.getProcessTime(this.getStackInSlot(0));
+				this.maxBurnTime = this.getProcessTime();
+			} else {
+
+			}
+		}
+	}
+
+	@Override
+	public void onTickUpdate() {
+	}
+
+	@Override
+	protected void onServerUpdate() {
+		boolean flag = false;
+		if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
+			flag = true;
+			lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
+		} else if (FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount() != lastOutT) {
+			flag = true;
+			lastOutT = FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount();
+		} else if (this.maxBurnTime != lastBurn) {
+			flag = true;
+			lastBurn = this.maxBurnTime;
+		}
+
+		if (flag) {
+			if (!this.hasWorldObj())
+				return;
+			@SuppressWarnings("unchecked")
+			List<EntityPlayer> list = this.getWorld().playerEntities;
+			for (EntityPlayer player : list) {
+				if (player instanceof EntityPlayerMP) {
+					((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+				}
 			}
 		}
 	}
@@ -99,21 +142,168 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		this.maxBurnTime = i;
 	}
 
+	public void processFluidSlots() {
+		this.processTank(inputT, 0, 1);
+		this.processTank(outputT, 2, 3);
+	}
+
+	protected void processTank(DCTank tank, int slot1, int slot2) {
+		if (!this.onDrainTank(tank, slot1, slot2)) {
+			this.onFillTank(tank, slot1, slot2);
+		}
+	}
+
+	private boolean onFillTank(DCTank tank, int slot1, int slot2) {
+		ItemStack in = this.getStackInSlot(slot1);
+		ItemStack out = this.getStackInSlot(slot2);
+		if (in == null)
+			return false;
+
+		IFluidHandler cont = null;
+		IFluidHandler dummy = null;
+		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
+		if (in.getTagCompound() != null)
+			in2.setTagCompound(in.getTagCompound());
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandler) {
+			cont = (IFluidHandler) in.getItem();
+			dummy = (IFluidHandler) in2.getItem();
+		}
+
+		if (dummy != null && dummy.getTankProperties() != null) {
+			boolean loose = false;
+			ItemStack ret = null;
+
+			int max = dummy.getTankProperties()[0].getCapacity();
+			FluidStack fc = dummy.drain(max, false);
+			// 流入の場合
+			if (fc != null && fc.amount > 0) {
+				ret = null;
+				loose = false;
+				if (tank.canFillTarget(fc) && fc.amount + tank.getFluidAmount() <= tank.getCapacity()) {
+					FluidStack fill = null;
+					if (in.getItem() instanceof IFluidHandler) {
+						fill = ((IFluidHandler) in2.getItem()).drain(max, true);
+						ret = in2;
+					} else {
+						fill = dummy.drain(max, true);
+						ret = in2;
+					}
+
+					if (fill != null && this.canInsertResult(ret, slot2, slot2 + 1) > 0) {
+						loose = true;
+						tank.fill(fill, true);
+					}
+				}
+			}
+
+			if (loose) {
+				this.decrStackSize(slot1, 1);
+				this.incrStackInSlot(slot2, ret);
+				this.markDirty();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean onDrainTank(DCTank tank, int slot1, int slot2) {
+		ItemStack in = this.getStackInSlot(slot1);
+		ItemStack out = this.getStackInSlot(slot2);
+		if (in == null)
+			return false;
+
+		IFluidHandler cont = null;
+		IFluidHandler dummy = null;
+		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
+		if (in.getTagCompound() != null)
+			in2.setTagCompound(in.getTagCompound());
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandler) {
+			cont = (IFluidHandler) in.getItem();
+			dummy = (IFluidHandler) in2.getItem();
+		}
+
+		if (dummy != null && dummy.getTankProperties() != null) {
+			boolean loose = false;
+			ItemStack ret = null;
+
+			int max = dummy.getTankProperties()[0].getCapacity();
+			FluidStack fc = dummy.drain(max, false);
+			// 排出の場合
+			if (fc == null || fc.amount == 0) {
+				if (max <= tank.getFluidAmount()) {
+					FluidStack drain = tank.getContents().copy();
+					int fill = 0;
+					if (in.getItem() instanceof IFluidHandler) {
+						fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
+						ret = in2;
+					} else {
+						fill = dummy.fill(drain, true);
+						ret = in2;
+					}
+					if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) > 0) {
+						loose = true;
+						tank.drain(fill, true);
+					}
+				}
+			}
+
+			if (loose) {
+				this.decrStackSize(slot1, 1);
+				this.incrStackInSlot(slot2, ret);
+				this.markDirty();
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/* === レシピ判定 === */
 
-	public abstract int getProcessTime(ItemStack item);
+	// レシピにかかる所要時間の取得、0以下の場合はレシピ判定失敗
+	public abstract int getProcessTime();
 
-	public abstract boolean isRecipeMaterial(ItemStack item);
+	// レシピがあるかどうか
+	public abstract boolean canRecipeProcess();
 
+	// レシピ開始できるか
 	public abstract boolean canStartProcess();
 
+	// 完了処理
 	public abstract boolean onProcess();
 
-	/** itemの減少数を返す */
-	public int insertResult(ItemStack item) {
+	// 気候の適合性
+	public abstract boolean isSuitableClimate();
+
+	public abstract String notSuitableMassage();
+
+	public int canInsertResult(ItemStack item, int s1, int s2) {
+		int ret = 0;
 		if (item == null || item.getItem() == null)
 			return 0;
-		for (int i = 1; i < this.getSizeInventory(); i++) {
+		for (int i = s1; i < s2; i++) {
+			if (this.getStackInSlot(i) == null) {
+				ret = item.stackSize;
+			} else {
+				ret = this.isItemStackable(item, this.getStackInSlot(i));
+			}
+			if (ret > 0) {
+				return ret;
+			}
+		}
+		return 0;
+	}
+
+	/** itemの減少数を返す */
+	public int insertResult(ItemStack item, int s1, int s2) {
+		if (item == null || item.getItem() == null)
+			return 0;
+		for (int i = s1; i < s2; i++) {
 			if (this.getStackInSlot(i) == null) {
 				this.incrStackInSlot(i, item.copy());
 				return item.stackSize;
@@ -130,35 +320,61 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */
 
+	/*
+	 * 0: fluid in 1
+	 * 1: fluid out 1
+	 * 2: fluid in 2
+	 * 3: fluid out 2
+	 * 4-6: in
+	 * 7-9: out
+	 */
+
 	protected int[] slotsTop() {
-		return new int[] { 0 };
+		return new int[] {
+				0,
+				2,
+				4,
+				5,
+				6 };
 	};
 
 	protected int[] slotsBottom() {
 		return new int[] {
 				1,
-				2 };
+				3,
+				7,
+				8,
+				9 };
 	};
 
 	protected int[] slotsSides() {
 		return new int[] {
 				0,
 				1,
-				2 };
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9 };
 	};
 
 	public ItemStack[] inv = new ItemStack[this.getSizeInventory()];
 
 	public List<ItemStack> getInputs() {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
-		if (inv[0] != null)
-			ret.add(inv[0]);
+		for (int i = 4; i < 7; i++) {
+			if (inv[i] != null)
+				ret.add(inv[i]);
+		}
 		return ret;
 	}
 
 	public List<ItemStack> getOutputs() {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
-		for (int i = 1; i < this.getSizeInventory(); i++) {
+		for (int i = 7; i < 10; i++) {
 			if (inv[i] != null)
 				ret.add(inv[i]);
 		}
@@ -168,7 +384,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// スロット数
 	@Override
 	public int getSizeInventory() {
-		return 3;
+		return 10;
 	}
 
 	// インベントリ内の任意のスロットにあるアイテムを取得
@@ -219,7 +435,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// インベントリの名前
 	@Override
 	public String getName() {
-		return "dcs.gui.device.processor";
+		return "dcs.gui.device.fluidprocessor";
 	}
 
 	@Override
@@ -256,7 +472,21 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
-		return i > 0 ? false : getProcessTime(stack) > 0;
+		if (i == 0 || i == 2) {
+			if (stack == null)
+				return false;
+			IFluidHandler cont = null;
+			if (stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+				cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			} else if (stack.getItem() instanceof IFluidHandler) {
+				cont = (IFluidHandler) stack.getItem();
+			}
+			return cont != null;
+		} else if (i > 3 && i < 7) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	// ホッパーにアイテムの受け渡しをする際の優先度
@@ -336,6 +566,14 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			return this.maxBurnTime;
 		case 2:
 			return this.current == null ? 0 : this.current.getClimateInt();
+		case 3:
+			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
+		case 4:
+			return this.outputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT.getFluidType());
+		case 5:
+			return this.inputT.getFluidAmount();
+		case 6:
+			return this.outputT.getFluidAmount();
 		default:
 			return 0;
 		}
@@ -352,12 +590,25 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			break;
 		case 2:
 			this.current = ClimateAPI.register.getClimateFromInt(value);
+			break;
+		case 3:
+			inputT.setFluidById(value);
+			break;
+		case 4:
+			outputT.setFluidById(value);
+			break;
+		case 5:
+			this.inputT.setAmount(value);
+			break;
+		case 6:
+			this.outputT.setAmount(value);
+			break;
 		}
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 3;
+		return 7;
 	}
 
 	@Override
@@ -377,14 +628,30 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
 
 	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			return true;
+		}
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			return true;
+		}
+		return super.hasCapability(capability, facing);
+	}
+
+	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)
 				return (T) handlerTop;
 			else
 				return (T) handlerSide;
+		} else if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+			if (facing == EnumFacing.DOWN)
+				return (T) outputT;
+			else
+				return (T) inputT;
 		return super.getCapability(capability, facing);
 	}
 
@@ -414,6 +681,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 		this.currentBurnTime = tag.getInteger("BurnTime");
 		this.maxBurnTime = tag.getInteger("MaxTime");
+
+		inputT = inputT.readFromNBT(tag, "Tank1");
+		outputT = outputT.readFromNBT(tag, "Tank2");
 	}
 
 	@Override
@@ -435,6 +705,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			}
 		}
 		tag.setTag("InvItems", nbttaglist);
+
+		inputT.writeToNBT(tag, "Tank1");
+		outputT.writeToNBT(tag, "Tank2");
 		return tag;
 	}
 
@@ -457,6 +730,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			}
 		}
 		tag.setTag("InvItems", nbttaglist);
+
+		inputT.writeToNBT(tag, "Tank1");
+		outputT.writeToNBT(tag, "Tank2");
 		return tag;
 	}
 
@@ -478,6 +754,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 		this.currentBurnTime = tag.getInteger("BurnTime");
 		this.maxBurnTime = tag.getInteger("MaxTime");
+
+		inputT = inputT.readFromNBT(tag, "Tank1");
+		outputT = outputT.readFromNBT(tag, "Tank2");
 	}
 
 	@Override

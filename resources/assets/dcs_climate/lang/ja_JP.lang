@@ -56,6 +56,8 @@ item.dcs_material_spindle_arroy.name=合金の回転子
 item.dcs_food_materials_salt.name=食塩
 item.dcs_food_materials_flour.name=小麦粉
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
+item.dcs_food_itemfood_boiled_egg.name=ゆで卵
+item.dcs_food_itemfood_jerky.name=ジャーキー
 item.dcs_food_bread_roundbread_raw.name=パン生地
 item.dcs_food_bread_roundbread_baked.name=丸パン
 item.dcs_food_bread_squarebread_raw.name=型入り生地
@@ -257,6 +259,17 @@ tile.dcs_build_challamp_pendant_blue.name=青玉髄の吊りランプ
 tile.dcs_build_challamp_pendant_red.name=赤玉髄の吊りランプ
 tile.dcs_build_challamp_pendant_white.name=白玉髄の吊りランプ
 tile.dcs_build_challamp_pendant_wood.name=木の吊りランプ
+tile.dcs_table_marble_0.name=大理石のテーブル
+tile.dcs_table_gypsum_0.name=石膏のテーブル
+tile.dcs_table_wood_0.name=木のテーブル
+tile.dcs_table_darkwood_0.name=ダークオークのテーブル
+tile.dcs_carpet_red_0.name=カーペットブロック(赤)
+tile.dcs_carpet_white_0.name=カーペットブロック(白)
+tile.dcs_carpet_gray_0.name=カーペットブロック(黒)
+tile.dcs_sofa_black_0.name=ソファ(黒)
+tile.dcs_sofa_red_0.name=ソファ(赤)
+tile.dcs_stool_black_0.name=スツール(黒)
+tile.dcs_stool_red_0.name=スツール(赤)
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪
@@ -273,6 +286,8 @@ tile.dcs_device_fan_0.name=送風機
 tile.dcs_device_windmill_0.name=風車
 tile.dcs_device_windmill_l_0.name=大型風車
 tile.dcs_device_stevenson_screen_0.name=百葉箱
+tile.dcs_device_potter_pot_0.name=調理甕
+tile.dcs_device_steel_pot_0.name=調理鍋
 
 dcs_te_normal_chamber.name=燃焼チャンバー
 dcs_te_shitirin.name=七輪
@@ -288,6 +303,8 @@ dcs_te_stonemill_s.name=石臼
 dcs_te_fan_s.name=送風機
 dcs_te_windmill.name=風車
 dcs_te_windmill_l.name=大型風車
+tile.te_potter_pot_0.name=調理甕
+tile.te_steel_pot_0.name=調理鍋
 
 ## massage
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)
@@ -349,6 +366,13 @@ dcs.gui.device.chamber=燃焼チャンバー
 dcs.gui.device.shitirin=七輪
 dcs.gui.device.mill=石臼
 dcs.gui.device.stevenson_screen=百葉箱
+dcs.gui.device.fluidprocessor=液体加工
+
+dcs.gui.message.nullclimate=気候データが読み込まれていません
+dcs.gui.message.pottery.toocold=温度が低すぎます
+dcs.gui.message.pottery.toohot=温度が高すぎます
+dcs.gui.message.steel.toocold=温度が低すぎます
+dcs.gui.message.suitableclimate=適温
 
 death.attack.dcs_heat=%1$sはこんがり焼き上がった。
 death.attack.dcs_cold=%1$sはシャーベットになった。

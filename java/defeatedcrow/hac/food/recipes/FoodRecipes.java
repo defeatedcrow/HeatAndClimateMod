@@ -2,19 +2,28 @@ package defeatedcrow.hac.food.recipes;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
+import defeatedcrow.hac.core.climate.recipe.FluidCraftRecipe;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.MainInit;
 
 public class FoodRecipes {
 
 	public static void load() {
 		loadBasicRecipe();
 		loadClimateRecipe();
+		loadFluidRecipes();
 	}
 
 	static void loadBasicRecipe() {
@@ -89,4 +98,46 @@ public class FoodRecipes {
 		RecipeAPI.registerSmelting.addRecipe(beef, DCHeatTier.OVEN);
 	}
 
+	static void loadFluidRecipes() {
+		FluidCraftRecipe salt = new FluidCraftRecipe(new ItemStack(MainInit.foodMaterials, 1, 0), null, null,
+				DCHeatTier.HOT, DCHumidity.DRY, null, 0, false, new FluidStack(FluidRegistry.WATER, 1000),
+				(Object[]) null) {
+			@Override
+			public boolean additionalRequire(World world, BlockPos pos) {
+				Biome biome = world.getBiomeGenForCoords(pos);
+				if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN)
+						|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.BEACH)) {
+					return true;
+				}
+				return false;
+			}
+
+			@Override
+			public String additionalString() {
+				return "OCEAN Only";
+			}
+
+		};
+		RecipeAPI.registerFluidRecipes.addRecipe(salt, DCHeatTier.HOT);
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 1, 2), null, 0F, null,
+				DCHeatTier.NORMAL, DCHumidity.DRY, null, false, null, new Object[] {
+						new ItemStack(MainInit.foodMaterials, 1, 0),
+						new ItemStack(Items.ROTTEN_FLESH) });
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 3, 2), null, 0F, null,
+				DCHeatTier.NORMAL, DCHumidity.DRY, null, false, null, new Object[] {
+						new ItemStack(MainInit.foodMaterials, 1, 0),
+						new ItemStack(Items.BEEF) });
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 3, 2), null, 0F, null,
+				DCHeatTier.NORMAL, DCHumidity.DRY, null, false, null, new Object[] {
+						new ItemStack(MainInit.foodMaterials, 1, 0),
+						new ItemStack(Items.PORKCHOP) });
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 1, 1), null, 0F, null,
+				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
+						new ItemStack(MainInit.foodMaterials, 1, 0),
+						new ItemStack(Items.EGG) });
+	}
 }

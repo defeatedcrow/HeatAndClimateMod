@@ -7,7 +7,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.energy.ICrankDC;
 import defeatedcrow.hac.api.energy.ICrankReceiver;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 
 public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICrankDC {
@@ -38,7 +37,7 @@ public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICra
 			boolean b2 = crank.isMaxPressed();
 			if (b1 != power) {
 				crank.setPressed(power);
-				DCLogger.debugLog("push! " + power);
+				// DCLogger.debugLog("push! " + power);
 			}
 			if (b2 != max) {
 				crank.setMaxPressed(max);

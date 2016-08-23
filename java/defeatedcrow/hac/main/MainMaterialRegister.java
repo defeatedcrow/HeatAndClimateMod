@@ -10,6 +10,20 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.block.BlockPotteryPot;
+import defeatedcrow.hac.food.block.BlockSteelPot;
+import defeatedcrow.hac.food.block.crop.BlockCoffee;
+import defeatedcrow.hac.food.block.crop.BlockCotton;
+import defeatedcrow.hac.food.block.crop.BlockLeavesLemon;
+import defeatedcrow.hac.food.block.crop.BlockLeavesOlive;
+import defeatedcrow.hac.food.block.crop.BlockLeavesTea;
+import defeatedcrow.hac.food.block.crop.BlockOnion;
+import defeatedcrow.hac.food.block.crop.BlockRice;
+import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
+import defeatedcrow.hac.food.block.crop.BlockSpinach;
+import defeatedcrow.hac.food.block.crop.BlockTomato;
+import defeatedcrow.hac.food.item.ItemDCCrops;
+import defeatedcrow.hac.food.item.ItemDCSeeds;
 import defeatedcrow.hac.food.item.RoundBreadItem;
 import defeatedcrow.hac.food.item.StickFoodsItem;
 import defeatedcrow.hac.machine.MachineInit;
@@ -32,7 +46,9 @@ import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
+import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
+import defeatedcrow.hac.main.block.build.BlockTableBase;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
@@ -78,6 +94,7 @@ public class MainMaterialRegister {
 		registerSidedBlock();
 		regJsonBlock();
 		regDeviceBlock();
+		regCropBlock();
 		registerItems();
 		registerMaterialEnum();
 		registerEquip();
@@ -133,6 +150,47 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.addSidedBlock(MainInit.cardboard, "cont_cardboard", 5);
 	}
 
+	static void regCropBlock() {
+		FoodInit.cropRice = new BlockRice(ClimateCore.PACKAGE_BASE + "_crop_rice");
+		registerBlock(FoodInit.cropRice, ClimateCore.PACKAGE_BASE + "_crop_rice");
+		ClimateMain.proxy.addCropBlock(FoodInit.cropRice, "crop_rice", 3);
+
+		FoodInit.cropOnion = new BlockOnion(ClimateCore.PACKAGE_BASE + "_crop_onion");
+		registerBlock(FoodInit.cropOnion, ClimateCore.PACKAGE_BASE + "_crop_onion");
+		ClimateMain.proxy.addCropBlock(FoodInit.cropOnion, "crop_onion", 3);
+
+		FoodInit.cropSpinach = new BlockSpinach(ClimateCore.PACKAGE_BASE + "_crop_spinach");
+		registerBlock(FoodInit.cropSpinach, ClimateCore.PACKAGE_BASE + "_crop_spinach");
+		ClimateMain.proxy.addCropBlock(FoodInit.cropSpinach, "crop_spinach", 3);
+
+		FoodInit.cropTomato = new BlockTomato(ClimateCore.PACKAGE_BASE + "_crop_tomato");
+		registerBlock(FoodInit.cropTomato, ClimateCore.PACKAGE_BASE + "_crop_tomato");
+		ClimateMain.proxy.addCropBlock(FoodInit.cropTomato, "crop_tomato", 7);
+
+		FoodInit.cropCoffee = new BlockCoffee(ClimateCore.PACKAGE_BASE + "_crop_coffee");
+		registerBlock(FoodInit.cropCoffee, ClimateCore.PACKAGE_BASE + "_crop_coffee");
+		ClimateMain.proxy.addCropBlock(FoodInit.cropCoffee, "crop_coffee", 7);
+
+		FoodInit.cropCotton = new BlockCotton(ClimateCore.PACKAGE_BASE + "_crop_cotton");
+		registerBlock(FoodInit.cropCotton, ClimateCore.PACKAGE_BASE + "_crop_cotton");
+		ClimateMain.proxy.addCropBlock(FoodInit.cropCotton, "crop_cotton", 7);
+
+		FoodInit.leavesLemon = new BlockLeavesLemon(ClimateCore.PACKAGE_BASE + "_leaves_lemon");
+		registerBlock(FoodInit.leavesLemon, ClimateCore.PACKAGE_BASE + "_leaves_lemon");
+		ClimateMain.proxy.addSidedBlock(FoodInit.leavesLemon, "leaves_lemon", 3);
+
+		FoodInit.leavesOlive = new BlockLeavesOlive(ClimateCore.PACKAGE_BASE + "_leaves_olive");
+		registerBlock(FoodInit.leavesOlive, ClimateCore.PACKAGE_BASE + "_leaves_olive");
+		ClimateMain.proxy.addSidedBlock(FoodInit.leavesOlive, "leaves_olive", 3);
+
+		FoodInit.leavesTea = new BlockLeavesTea(ClimateCore.PACKAGE_BASE + "_leaves_tea");
+		registerBlock(FoodInit.leavesTea, ClimateCore.PACKAGE_BASE + "_leaves_tea");
+
+		FoodInit.saplings = new BlockSaplingDC(ClimateCore.PACKAGE_BASE + "_crop_sapling");
+		registerBlock(FoodInit.saplings, ClimateCore.PACKAGE_BASE + "_crop_sapling");
+		ClimateMain.proxy.addCropBlock(FoodInit.saplings, "crop_sapling", 2);
+	}
+
 	static void regJsonBlock() {
 		MainInit.stairsGlass = new BlockStairsBase(MainInit.selenite.getDefaultState(), "build/glass_stairs", true)
 				.setUnlocalizedName("dcs_stairs_glass");
@@ -150,6 +208,61 @@ public class MainMaterialRegister {
 		registerBlock(MainInit.halfSlab, ClimateCore.PACKAGE_BASE + "_build_slab");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab), "dcs_climate", "dcs_build_slab",
 				"build", 2, true);
+
+		MainInit.tableMarble = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_marble", false);
+		registerBlock(MainInit.tableMarble, ClimateCore.PACKAGE_BASE + "_table_marble");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableMarble), "dcs_climate", "dcs_table_marble",
+				"build", 0, false);
+
+		MainInit.tableGypsum = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_gypsum", false);
+		registerBlock(MainInit.tableGypsum, ClimateCore.PACKAGE_BASE + "_table_gypsum");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableGypsum), "dcs_climate", "dcs_table_gypsum",
+				"build", 0, false);
+
+		MainInit.tableWood = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_wood", false);
+		registerBlock(MainInit.tableWood, ClimateCore.PACKAGE_BASE + "_table_wood");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableWood), "dcs_climate", "dcs_table_wood",
+				"build", 0, false);
+
+		MainInit.tableDark = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_darkwood", false);
+		registerBlock(MainInit.tableDark, ClimateCore.PACKAGE_BASE + "_table_darkwood");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableDark), "dcs_climate", "dcs_table_darkwood",
+				"build", 0, false);
+
+		MainInit.carpetRed = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_red", true);
+		registerBlock(MainInit.carpetRed, ClimateCore.PACKAGE_BASE + "_carpet_red");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.carpetRed), "dcs_climate", "dcs_carpet_red",
+				"build", 0, false);
+
+		MainInit.carpetWhite = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_white", true);
+		registerBlock(MainInit.carpetWhite, ClimateCore.PACKAGE_BASE + "_carpet_white");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.carpetWhite), "dcs_climate", "dcs_carpet_white",
+				"build", 0, false);
+
+		MainInit.carpetGray = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_gray", true);
+		registerBlock(MainInit.carpetGray, ClimateCore.PACKAGE_BASE + "_carpet_gray");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.carpetGray), "dcs_climate", "dcs_carpet_gray",
+				"build", 0, false);
+
+		MainInit.sofaBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_black");
+		registerBlock(MainInit.sofaBlack, ClimateCore.PACKAGE_BASE + "_sofa_black");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.sofaBlack), "dcs_climate", "dcs_sofa_black",
+				"build", 0, false);
+
+		MainInit.sofaRed = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_red");
+		registerBlock(MainInit.sofaRed, ClimateCore.PACKAGE_BASE + "_sofa_red");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.sofaRed), "dcs_climate", "dcs_sofa_red", "build",
+				0, false);
+
+		MainInit.stoolBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_black").setSmallAABB();
+		registerBlock(MainInit.stoolBlack, ClimateCore.PACKAGE_BASE + "_stool_black");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stoolBlack), "dcs_climate", "dcs_stool_black",
+				"build", 0, false);
+
+		MainInit.stoolRed = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_red").setSmallAABB();
+		registerBlock(MainInit.stoolRed, ClimateCore.PACKAGE_BASE + "_stool_red");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stoolRed), "dcs_climate", "dcs_stool_red",
+				"build", 0, false);
 	}
 
 	static void regDeviceBlock() {
@@ -197,6 +310,12 @@ public class MainMaterialRegister {
 
 		MainInit.stevenson_screen = new BlockStevensonScreen(ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");
 		registerBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");
+
+		FoodInit.potteryPot = new BlockPotteryPot(ClimateCore.PACKAGE_BASE + "_device_pottery_pot");
+		registerBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_BASE + "_device_pottery_pot");
+
+		FoodInit.steelPot = new BlockSteelPot(ClimateCore.PACKAGE_BASE + "_device_steel_pot");
+		registerBlock(FoodInit.steelPot, ClimateCore.PACKAGE_BASE + "_device_steel_pot");
 	}
 
 	static void registerItems() {
@@ -241,21 +360,29 @@ public class MainMaterialRegister {
 	}
 
 	static void registerFood() {
-		MainInit.foodMaterials = new ItemFoodMaterials(1).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+		MainInit.foodMaterials = new ItemFoodMaterials(2).setCreativeTab(ClimateMain.food).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_food_materials");
 		GameRegistry.register(MainInit.foodMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_materials"));
 
-		MainInit.bakedApple = new ItemDCFoods(0, false).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+		MainInit.bakedApple = new ItemDCFoods(2, false).setCreativeTab(ClimateMain.food).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		GameRegistry.register(MainInit.bakedApple.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_itemfood"));
 
-		FoodInit.bread = new RoundBreadItem(false).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+		FoodInit.bread = new RoundBreadItem(false).setCreativeTab(ClimateMain.food).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_food_bread");
 		GameRegistry.register(FoodInit.bread.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_bread"));
 
-		FoodInit.sticks = new StickFoodsItem(true).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
+		FoodInit.sticks = new StickFoodsItem(true).setCreativeTab(ClimateMain.food).setUnlocalizedName(
 				ClimateCore.PACKAGE_BASE + "_food_stick");
 		GameRegistry.register(FoodInit.sticks.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_stick"));
+
+		FoodInit.crops = new ItemDCCrops(9).setCreativeTab(ClimateMain.food).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_food_crops");
+		GameRegistry.register(FoodInit.crops.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_crops"));
+
+		FoodInit.seeds = new ItemDCSeeds(5).setCreativeTab(ClimateMain.food).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_food_seeds");
+		GameRegistry.register(FoodInit.seeds.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_seeds"));
 	}
 
 	static void registerEquip() {

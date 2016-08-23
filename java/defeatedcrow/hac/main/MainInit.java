@@ -28,7 +28,20 @@ public class MainInit {
 	public static Block stairsGlass;
 	public static Block stairsGypsum;
 	public static Block halfSlab;
+
+	// furniture
 	public static Block chalLamp;
+	public static Block tableMarble;
+	public static Block tableGypsum;
+	public static Block tableWood;
+	public static Block tableDark;
+	public static Block stoolBlack;
+	public static Block stoolRed;
+	public static Block sofaBlack;
+	public static Block sofaRed;
+	public static Block carpetRed;
+	public static Block carpetWhite;
+	public static Block carpetGray;
 
 	// device
 	public static Block chamber;

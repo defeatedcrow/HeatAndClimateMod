@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.List;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -7,16 +10,22 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import defeatedcrow.hac.core.ClimateCore;
 
-public class BlockTableBase extends DCSimpleBlock {
+public class BlockTableBase extends Block {
 
 	/* 接続方式はFenceと同じ */
 	public static final PropertyBool NORTH = PropertyBool.create("north");
@@ -26,15 +35,19 @@ public class BlockTableBase extends DCSimpleBlock {
 
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 
-	public BlockTableBase(String s, int max) {
-		super(Material.CLAY, s, max, false);
+	protected final boolean isFull;
+
+	public BlockTableBase(String s, boolean full) {
+		super(Material.CLAY);
+		this.setCreativeTab(ClimateCore.climate);
+		this.setUnlocalizedName(s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.fullBlock = false;
-		this.setLightLevel(1.0F);
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.TYPE16, 0).withProperty(NORTH, false)
-				.withProperty(SOUTH, false).withProperty(WEST, false).withProperty(EAST, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(SOUTH, false)
+				.withProperty(WEST, false).withProperty(EAST, false));
+		isFull = full;
 	}
 
 	// additional state
@@ -84,23 +97,10 @@ public class BlockTableBase extends DCSimpleBlock {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.TYPE16,
 				NORTH,
 				EAST,
 				WEST,
 				SOUTH });
-	}
-
-	@Override
-	public String[] getNameSuffix() {
-		String[] name = {
-				"table_marble",
-				"table_gypsum",
-				"table_wood",
-				"table_dark",
-				"carpet_red",
-				"carpet_white" };
-		return name;
 	}
 
 	@Override
@@ -110,22 +110,78 @@ public class BlockTableBase extends DCSimpleBlock {
 
 	@Override
 	protected boolean canSilkHarvest() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return false;
+		return isFull;
 	}
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-		return false;
+		return isFull;
 	}
 
 	@Override
 	public boolean isBlockSolid(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
-		return side == EnumFacing.UP || DCState.getInt(worldIn.getBlockState(pos), DCState.TYPE16) > 3;
+		return side == EnumFacing.UP || isFull;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT_MIPPED;
+	}
+
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.MODEL;
+	}
+
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+		list.add(new ItemStack(this, 1, 0));
+	}
+
+	// 設置・破壊処理
+	@Override
+	public int damageDropped(IBlockState state) {
+		return 0;
+	}
+
+	@Override
+	public int quantityDropped(Random random) {
+		return 1;
+	}
+
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(state.getBlock());
+	}
+
+	// state関連
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		IBlockState state = this.getDefaultState();
+		return state;
+	}
+
+	// state
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return 0;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		if (isFull) {
+			Block b = world.getBlockState(pos.offset(side)).getBlock();
+			return b == this ? super.shouldSideBeRendered(state, world, pos, side) : true;
+		} else {
+			return true;
+		}
 	}
 
 }

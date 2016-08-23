@@ -10,16 +10,17 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimateTileEntity;
+import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.base.ClimateReceiveTile;
 
 public class TileStevensonScreen extends ClimateReceiveTile {
 
 	@Override
 	public void updateTile() {
-		DCHeatTier heat = ClimateAPI.calculator.getHeat(worldObj, pos, 2, false);
-		DCHeatTier cold = ClimateAPI.calculator.getCold(worldObj, pos, 2, false);
-		DCHumidity hum = ClimateAPI.calculator.getHumidity(worldObj, pos, 1, false);
-		DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos, 1, false);
+		DCHeatTier heat = ClimateAPI.calculator.getHeat(worldObj, pos, CoreConfigDC.heatRange, false);
+		DCHeatTier cold = ClimateAPI.calculator.getCold(worldObj, pos, CoreConfigDC.heatRange, false);
+		DCHumidity hum = ClimateAPI.calculator.getHumidity(worldObj, pos);
+		DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos);
 
 		List<BlockPos> remove = new ArrayList<BlockPos>();
 		for (BlockPos p : effectiveTiles) {

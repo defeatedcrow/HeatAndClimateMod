@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/build/dcs_carpet_base_top",
+    "textures": {
+        "top": "dcs_climate:blocks/build/carpets/carpet_red_0111",
+        "side": "dcs_climate:blocks/build/carpets/carpet_red_1111",
+        "base": "blocks/planks_oak"
+    }
+}

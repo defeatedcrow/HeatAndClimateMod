@@ -31,7 +31,7 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 		super.updateTile();
 		if (!worldObj.isRemote) {
 			// Airflowチェック
-			DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos, 1, false);
+			DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos);
 			float wind = 0.0F;
 			switch (air) {
 			case NORMAL:

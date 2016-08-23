@@ -9,6 +9,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import defeatedcrow.hac.food.block.TileFluidProcessorBase;
+import defeatedcrow.hac.food.block.TilePotteryPot;
+import defeatedcrow.hac.food.block.TileSteelPot;
+import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
+import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileFan;
@@ -79,6 +84,8 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileRedBox.class, "dcs_te_redbox");
 		GameRegistry.registerTileEntity(TileFan.class, "dcs_te_fan");
 		GameRegistry.registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen");
+		GameRegistry.registerTileEntity(TilePotteryPot.class, "dcs_te_pottery_pot");
+		GameRegistry.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot");
 	}
 
 	public void loadWorldGen() {
@@ -91,6 +98,9 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void addTBBlock(Block block, String name, int max) {
+	}
+
+	public void addCropBlock(Block block, String name, int max) {
 	}
 
 	/**
@@ -122,6 +132,9 @@ public class CommonMainProxy implements IGuiHandler {
 		if (tile instanceof TileStoneMill) {
 			return new ContainerStoneMill((TileStoneMill) tile, player.inventory);
 		}
+		if (tile instanceof TileFluidProcessorBase) {
+			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
+		}
 		return null;
 	}
 
@@ -141,6 +154,9 @@ public class CommonMainProxy implements IGuiHandler {
 		}
 		if (tile instanceof TileStoneMill) {
 			return new GuiStoneMill((TileStoneMill) tile, player.inventory);
+		}
+		if (tile instanceof TileFluidProcessorBase) {
+			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		}
 		return null;
 	}
