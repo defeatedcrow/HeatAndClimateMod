@@ -23,7 +23,9 @@ public class BlockOres2 extends DCSimpleBlock {
 	@Override
 	public void setHarvestLevel(String toolClass, int level) {
 		for (int i = 0; i < 16; i++) {
-			if (i < 2) {
+			if (i == 4) {
+				super.setHarvestLevel("pickaxe", 3, this.getStateFromMeta(i));
+			} else if (i < 2) {
 				super.setHarvestLevel("pickaxe", 1, this.getStateFromMeta(i));
 			} else {
 				super.setHarvestLevel("pickaxe", 2, this.getStateFromMeta(i));
@@ -81,11 +83,11 @@ public class BlockOres2 extends DCSimpleBlock {
 	}
 
 	public enum DropTable {
-		SALT(MainInit.gems, 1, 8, true), NITER(MainInit.gems, 1, 9, true), SULFER(MainInit.gems, 1, 10, true), NONE(
-				null,
-				1,
-				0,
-				false);
+		SALT(MainInit.gems, 1, 8, true),
+		NITER(MainInit.gems, 1, 9, true),
+		SULFER(MainInit.gems, 1, 10, true),
+		SCHORL(MainInit.gems, 1, 11, true),
+		NONE(null, 1, 0, false);
 
 		public Item dropItem;
 		public int amount;
@@ -107,7 +109,7 @@ public class BlockOres2 extends DCSimpleBlock {
 				DropTable.NITER,
 				DropTable.SULFER,
 				DropTable.NONE,
-				DropTable.NONE,
+				DropTable.SCHORL,
 				DropTable.NONE,
 				DropTable.NONE,
 				DropTable.NONE,

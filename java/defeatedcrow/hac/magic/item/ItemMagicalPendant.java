@@ -6,11 +6,13 @@ import java.util.List;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
@@ -41,7 +43,8 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			"celestite", /* 落下耐性 */
 			"clam", /* 死亡時ワープ */
 			"lapis",/* クラフト経験値 */
-			"diamond"/* 採掘速度増加 */};
+			"diamond",/* 採掘速度増加 */
+			"schorl" /* 加速 */};
 
 	public ItemMagicalPendant(int max) {
 		super();
@@ -78,6 +81,8 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 		case 7:
 		case 9:
 			return CharmType.SPECIAL;
+		case 8:
+			return CharmType.TOOL;
 		default:
 			return CharmType.CONSTANT;
 		}
@@ -93,6 +98,8 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			return source == DamageSourceClimate.climateHeatDamage ? 2.0F : 0F;
 		case 2:
 			return 1.0F;
+		case 10:
+			return source == DamageSource.lightningBolt ? 5.0F : 0F;
 		default:
 			return 0F;
 		}
@@ -104,7 +111,8 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	}
 
 	@Override
-	public boolean onAttacking(EntityPlayer player, EntityLivingBase target, float damage, ItemStack charm) {
+	public boolean onAttacking(EntityPlayer player, EntityLivingBase target, DamageSource source, float damage,
+			ItemStack charm) {
 		return false;
 	}
 
@@ -115,6 +123,18 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 
 	@Override
 	public boolean onToolUsing(EntityPlayer player, BlockPos pos, IBlockState state, ItemStack charm) {
+		int meta = charm.getMetadata();
+		if (player.isSneaking() && !player.worldObj.isRemote && state != null) {
+			if (meta == 8) {
+				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() - 2,
+						(double) pos.getZ() - 5, (double) pos.getX() + 5, (double) pos.getY() + 3,
+						(double) pos.getZ() + 5);
+				List<EntityItem> drops = player.worldObj.getEntitiesWithinAABB(EntityItem.class, aabb);
+				for (EntityItem drop : drops) {
+					drop.setPosition(player.posX, player.posY + 0.5D, player.posZ);
+				}
+			}
+		}
 		return false;
 	}
 
@@ -149,6 +169,9 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			break;
 		case 6:
 			eff = new PotionEffect(DCPotion.jump, 205, 0);
+			break;
+		case 10:
+			eff = new PotionEffect(DCPotion.speed, 205, 0);
 			break;
 		}
 

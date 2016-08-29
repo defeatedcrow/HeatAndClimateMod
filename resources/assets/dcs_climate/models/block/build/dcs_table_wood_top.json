@@ -1,0 +1,6 @@
+{
+    "parent": "dcs_climate:block/build/dcs_table_base_top",
+    "textures": {
+        "base": "blocks/planks_oak"
+    }
+}

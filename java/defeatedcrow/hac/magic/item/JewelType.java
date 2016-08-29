@@ -11,7 +11,8 @@ public enum JewelType {
 	CELESTITE("crystal", "crystal"),
 	NACRE("nacre", "nacre"),
 	LAPIS("lapis_lazli", "lapis"),
-	DIAMOND("diamond", "diamond");
+	DIAMOND("diamond", "diamond"),
+	SCHORL("schorl", "schorl");
 
 	private final String name;
 	private final String tex;

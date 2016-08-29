@@ -2,9 +2,9 @@
   {
     "description":"",
     "parent":"",
-    "logoFile":"",
+    "logoFile":"logofile_x256.png",
     "credits":"defeatedcrow",
-    "dependencies":["HeatAndClimateLib-1.9.4_0.9.0+"],
+    "dependencies":["HeatAndClimateLib-1.9.4_0.9.9+"],
     "modid":"dcs_climate",
     "mcversion":"1.9.4",
     "screenshots":[],
@@ -12,11 +12,11 @@
       "defeatedcrow"
     ],
     "name":"HeatAndClimateMod",
-    "url":"http://defeatedcrow.jp/modwiki/Mainpage",
+    "url":"http://defeatedcrow.jp/modwiki/HeatAndClimate",
     "updateUrl":"",
-    "version":"1.9.4_0.9.0",
+    "version":"1.9.4_0.9.9",
     "requiredMods":[
-      "Minecraft Forge1.8.9-12.17.0.1976+", "HeatAndClimateLib-1.9.4_0.9.0+"
+      "Minecraft Forge1.8.9-12.17.0.1976+", "HeatAndClimateLib-1.9.4_0.9.9+"
     ]
   }
 ]

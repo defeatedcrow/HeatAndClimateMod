@@ -32,7 +32,9 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 			"brass",
 			"steel",
 			"nickelsilver",
-			"magnet" };
+			"magnet",
+			"tin",
+			"bronze" };
 
 	@Override
 	public String[] getNameSuffix() {

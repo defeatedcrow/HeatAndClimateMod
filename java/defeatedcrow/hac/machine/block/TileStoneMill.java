@@ -12,15 +12,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.api.recipe.IMillRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
-import defeatedcrow.hac.machine.client.ModelStoneMill;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 
 public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceiver {
 
 	@SideOnly(Side.CLIENT)
-	private final ModelStoneMill model = new ModelStoneMill();
+	private defeatedcrow.hac.machine.client.ModelStoneMill model;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	protected void createModel() {
+		if (model == null)
+			model = new defeatedcrow.hac.machine.client.ModelStoneMill();
+	}
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
@@ -57,7 +62,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public DCTileModelBase getModel() {
+	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
 		return model;
 	}
 

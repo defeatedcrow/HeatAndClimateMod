@@ -4,14 +4,25 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.machine.client.ModelFan;
 
 public class TileFan extends TileTorqueBase implements ITorqueReceiver {
 
 	@SideOnly(Side.CLIENT)
-	private final ModelFan model = new ModelFan();
+	private defeatedcrow.hac.machine.client.ModelFan model;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	protected void createModel() {
+		if (model == null)
+			model = new defeatedcrow.hac.machine.client.ModelFan();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
+		return model;
+	}
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
@@ -49,12 +60,6 @@ public class TileFan extends TileTorqueBase implements ITorqueReceiver {
 	@Override
 	public float maxSpeed() {
 		return 360.0F;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public DCTileModelBase getModel() {
-		return model;
 	}
 
 }

@@ -180,10 +180,10 @@ public class MachineRecipes {
 				0.25F, "oreNickel");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 4), new ItemStack(MainInit.oreDust, 1, 3),
-				0.10F, "oreGold");
+				0.25F, "oreGold");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 3), new ItemStack(MainInit.oreDust, 1, 0),
-				0.1F, "oreSilver");
+				0.25F, "oreSilver");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 3), new ItemStack(MainInit.gems, 1, 6),
 				0.05F, "oreGypsum");
@@ -209,6 +209,12 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 10), new ItemStack(MainInit.gems, 1, 10),
 				0.5F, "oreSulfur");
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 8), new ItemStack(MainInit.oreDust, 1, 8),
+				0.25F, "oreTin");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 11), new ItemStack(MainInit.gems, 1, 11),
+				0.2F, "oreSchorl");
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.QUARTZ, 1, 0), new ItemStack(Items.QUARTZ, 1, 0), 0.2F,
 				"oreQuartz");
 
@@ -221,7 +227,7 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 3, 4), new ItemStack(MainInit.oreDust, 1, 0), 0.25F,
 				"oreLapis");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.REDSTONE, 2, 0), new ItemStack(Items.REDSTONE, 1, 0),
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.REDSTONE, 3, 0), new ItemStack(Items.REDSTONE, 1, 0),
 				0.5F, "oreRedstone");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.COAL, 2, 0), new ItemStack(MainInit.miscDust, 1, 0),
@@ -229,11 +235,13 @@ public class MachineRecipes {
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 0), new ItemStack(Items.COAL, 1, 0));
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 0), new ItemStack(Items.COAL, 1, 1));
-
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), "gemQuartz");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), "gemChalcedony");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 6), "gemNiter");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), "gemSulfur");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 0), "gemSalt");
 

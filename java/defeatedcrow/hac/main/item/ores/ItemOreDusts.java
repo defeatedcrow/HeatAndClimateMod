@@ -15,7 +15,8 @@ public class ItemOreDusts extends DCItem {
 			"gold",
 			"iron",
 			"steel",
-			"magnet" };
+			"magnet",
+			"tin" };
 
 	public ItemOreDusts(int max) {
 		super();

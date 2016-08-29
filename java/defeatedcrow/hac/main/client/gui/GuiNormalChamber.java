@@ -12,7 +12,7 @@ import defeatedcrow.hac.main.block.device.TileChamberBase;
 @SideOnly(Side.CLIENT)
 public class GuiNormalChamber extends GuiContainer {
 	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
-			"textures/gui/chamber.normal.gui.png");
+			"textures/gui/chamber_normal_gui.png");
 	/** The player inventory bound to this GUI. */
 	private final InventoryPlayer playerInventory;
 	private final TileChamberBase chamber;

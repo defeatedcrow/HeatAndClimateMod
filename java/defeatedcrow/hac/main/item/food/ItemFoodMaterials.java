@@ -9,7 +9,8 @@ public class ItemFoodMaterials extends DCItem {
 
 	private static String[] names = {
 			"salt",
-			"flour" };
+			"flour",
+			"rice" };
 
 	public ItemFoodMaterials(int max) {
 		super();

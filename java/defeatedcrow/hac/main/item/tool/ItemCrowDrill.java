@@ -20,7 +20,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItem;
 
 public class ItemCrowDrill extends DCItem {
@@ -111,8 +110,9 @@ public class ItemCrowDrill extends DCItem {
 			}
 		}
 
-		DCLogger.debugLog("Coord: " + chunk.xPosition + ", " + chunk.zPosition);
-		DCLogger.debugLog("Coord: " + minX + "-" + maxX + ", " + minY + "-" + maxY + ", " + minZ + "-" + maxZ);
+		// DCLogger.debugLog("Coord: " + chunk.xPosition + ", " + chunk.zPosition);
+		// DCLogger.debugLog("Coord: " + minX + "-" + maxX + ", " + minY + "-" + maxY + ", " + minZ
+		// + "-" + maxZ);
 		world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 		return EnumActionResult.SUCCESS;
 

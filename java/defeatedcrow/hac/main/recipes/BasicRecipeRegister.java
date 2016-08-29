@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import defeatedcrow.hac.core.DCInit;
-import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 
 public class BasicRecipeRegister {
@@ -42,15 +41,26 @@ public class BasicRecipeRegister {
 				'Y',
 				"stickWood" }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 1), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				"cropCotton",
+				'Y',
+				"stickWood" }));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 2), new Object[] {
-				"XX",
-				"XX",
+				" X ",
+				"X X",
+				" X ",
 				'X',
 				new ItemStack(MainInit.materials, 1, 0) }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 3), new Object[] {
-				"XX",
-				"XX",
+				" X ",
+				"X X",
+				" X ",
 				'X',
 				new ItemStack(MainInit.materials, 1, 1) }));
 
@@ -163,6 +173,10 @@ public class BasicRecipeRegister {
 				"toolNormalYagen",
 				"oreMagnetite" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 1, 8), new Object[] {
+				"toolNormalYagen",
+				"oreTin" }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 2), new Object[] {
 				"toolNormalYagen",
 				"oreLime" }));
@@ -179,13 +193,21 @@ public class BasicRecipeRegister {
 				"toolNormalYagen",
 				"oreSulfur" }));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 1, 11), new Object[] {
 				"toolNormalYagen",
-				new ItemStack(Items.COAL, 1, 0) }));
+				"oreSchorl" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 6), new Object[] {
+				"toolNormalYagen",
+				"gemNiter" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 7), new Object[] {
+				"toolNormalYagen",
+				"gemSulfur" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
 				"toolNormalYagen",
-				new ItemStack(Items.COAL, 1, 1) }));
+				new ItemStack(Items.COAL, 1, 0) }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.DYE, 5, 15), new Object[] {
 				"toolNormalYagen",
@@ -227,6 +249,13 @@ public class BasicRecipeRegister {
 				'X',
 				"dustNickel" }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustIron" }));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBlock, 1, 3), new Object[] {
 				"XXX",
 				"XXX",
@@ -234,12 +263,12 @@ public class BasicRecipeRegister {
 				'X',
 				"dustSilver" }));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBlock, 1, 7), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBlock, 1, 8), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
 				'X',
-				"dustMagnetite" }));
+				"dustTin" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 4), new Object[] {
 				"dustCopper",
@@ -260,8 +289,19 @@ public class BasicRecipeRegister {
 				"dustCopper",
 				"dustCopper",
 				"dustNickel",
-				"dustZinc",
+				"dustNickel",
 				"dustZinc" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustTin",
+				"dustTin" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 				"dustIron",
@@ -294,8 +334,10 @@ public class BasicRecipeRegister {
 				"Brass",
 				"Steel",
 				"Nickelsilver",
-				"Magnet" };
-		for (int i = 0; i < 8; i++) {
+				"Magnet",
+				"Tin",
+				"Bronze" };
+		for (int i = 0; i < metal.length; i++) {
 			ItemStack ingot = new ItemStack(MainInit.oreIngot, 9, i);
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.metalBlock, 1, i), new Object[] {
 					"XXX",
@@ -327,8 +369,14 @@ public class BasicRecipeRegister {
 				'X',
 				new ItemStack(MainInit.gems, 1, 8) }));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 4, 8), new Object[] { new ItemStack(
-				MainInit.gemBlock, 1, 5) }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.gemBlock, 1, 7), new Object[] {
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(MainInit.gems, 1, 11) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 4, 11),
+				new Object[] { new ItemStack(MainInit.gemBlock, 1, 7) }));
 	}
 
 	static void loadContRecipes() {
@@ -497,6 +545,33 @@ public class BasicRecipeRegister {
 				'X',
 				new ItemStack(MainInit.gemBlock, 1, 3) }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.bricks, 1, 0), new Object[] {
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 3) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.bricks, 1, 1), new Object[] {
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 6) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.bricks, 1, 2), new Object[] {
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(MainInit.ores_2, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 4, 3),
+				new Object[] { new ItemStack(MainInit.bricks, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 4, 6),
+				new Object[] { new ItemStack(MainInit.bricks, 1, 1) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.ores_2, 4, 0),
+				new Object[] { new ItemStack(MainInit.bricks, 1, 2) }));
+
 		Object[] chal = new Object[] {
 				new ItemStack(MainInit.gemBlock, 1, 0),
 				new ItemStack(MainInit.gemBlock, 1, 1),
@@ -569,6 +644,102 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.chalLamp, 1, 3),
 				'Y',
 				"ingotCopper" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.tableMarble, 1, 0), new Object[] {
+				"XXX",
+				" X ",
+				" X ",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 6) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.tableGypsum, 1, 0), new Object[] {
+				"XXX",
+				" X ",
+				" X ",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 3) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.tableWood, 1, 0), new Object[] {
+				"XXX",
+				" X ",
+				" X ",
+				'X',
+				new ItemStack(Blocks.PLANKS, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.tableDark, 1, 0), new Object[] {
+				"XXX",
+				" X ",
+				" X ",
+				'X',
+				new ItemStack(Blocks.PLANKS, 1, 5) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.carpetRed, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(Blocks.CARPET, 1, 14),
+				'Y',
+				"plankWood" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.carpetWhite, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(Blocks.CARPET, 1, 0),
+				'Y',
+				"plankWood" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.carpetGray, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(Blocks.CARPET, 1, 15),
+				'Y',
+				"plankWood" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sofaBlack, 1, 0), new Object[] {
+				" X ",
+				"YYY",
+				"ZZZ",
+				'X',
+				"dyeBlack",
+				'Y',
+				"itemCloth",
+				'Z',
+				new ItemStack(Blocks.WOOL, 1, 32767) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sofaRed, 1, 0), new Object[] {
+				" X ",
+				"YYY",
+				"ZZZ",
+				'X',
+				"dyeRed",
+				'Y',
+				"itemCloth",
+				'Z',
+				new ItemStack(Blocks.WOOL, 1, 32767) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.stoolBlack, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				"dyeBlack",
+				'Y',
+				"itemCloth",
+				'Z',
+				"blockMarble" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.stoolRed, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				"dyeRed",
+				'Y',
+				"itemCloth",
+				'Z',
+				"plankWood" }));
 
 	}
 
@@ -760,56 +931,6 @@ public class BasicRecipeRegister {
 				"itemCottonCloth",
 				'Y',
 				"dyeBlue" }));
-
-		// アクセサリー
-		Object[] gems = {
-				new ItemStack(MainInit.gems, 1, 0),
-				new ItemStack(MainInit.gems, 1, 1),
-				new ItemStack(MainInit.gems, 1, 2),
-				"gemQuartz",
-				"gemSapphire",
-				new ItemStack(MainInit.gems, 1, 5),
-				new ItemStack(MainInit.gems, 1, 6),
-				new ItemStack(MainInit.gems, 1, 7),
-				"gemLapis",
-				"gemDiamond" };
-		for (int i = 0; i < gems.length; i++) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, i), new Object[] {
-					" X ",
-					"X X",
-					" Y ",
-					'X',
-					"ingotSilver",
-					'Y',
-					gems[i] }));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, i), new Object[] {
-					" X ",
-					"X X",
-					" Y ",
-					'X',
-					"ingotNickelsilver",
-					'Y',
-					gems[i] }));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, i), new Object[] {
-					" Y ",
-					"X X",
-					" X ",
-					'X',
-					"ingotSilver",
-					'Y',
-					gems[i] }));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, i), new Object[] {
-					" Y ",
-					"X X",
-					" X ",
-					'X',
-					"ingotNickelsilver",
-					'Y',
-					gems[i] }));
-		}
 
 	}
 
