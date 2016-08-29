@@ -21,6 +21,8 @@ import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
@@ -233,6 +235,13 @@ public class BlockLeavesOlive extends ClimateCropBase implements ITexturePath, I
 	}
 
 	@Override
+	public void beginLeavesDecay(IBlockState state, World world, BlockPos pos) {
+		if (!(Boolean) state.getValue(CHECK_DECAY)) {
+			world.setBlockState(pos, state.withProperty(CHECK_DECAY, true), 4);
+		}
+	}
+
+	@Override
 	protected float getSeedDropChance() {
 		return 0.2F;
 	}
@@ -280,6 +289,23 @@ public class BlockLeavesOlive extends ClimateCropBase implements ITexturePath, I
 				DCState.STAGE4,
 				DECAYABLE,
 				CHECK_DECAY });
+	}
+
+	@Override
+	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.COLD);
+		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.HOT);
+		return ret;
+	}
+
+	@Override
+	public List<DCHumidity> getSuitableHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.DRY);
+		ret.add(DCHumidity.NORMAL);
+		return ret;
 	}
 
 }

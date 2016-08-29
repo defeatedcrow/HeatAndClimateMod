@@ -192,7 +192,11 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 						ret = in2;
 					}
 
-					if (fill != null && this.canInsertResult(ret, slot2, slot2 + 1) > 0) {
+					if (ret.stackSize <= 0) {
+						ret = null;
+					}
+
+					if (fill != null && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -246,7 +250,12 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 						fill = dummy.fill(drain, true);
 						ret = in2;
 					}
-					if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) > 0) {
+
+					if (ret.stackSize <= 0) {
+						ret = null;
+					}
+
+					if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
 						loose = true;
 						tank.drain(fill, true);
 					}
@@ -284,8 +293,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	public int canInsertResult(ItemStack item, int s1, int s2) {
 		int ret = 0;
-		if (item == null || item.getItem() == null)
-			return 0;
+		if (item == null || item.getItem() == null || item.stackSize == 0)
+			return -1;
 		for (int i = s1; i < s2; i++) {
 			if (this.getStackInSlot(i) == null) {
 				ret = item.stackSize;
@@ -301,7 +310,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	/** itemの減少数を返す */
 	public int insertResult(ItemStack item, int s1, int s2) {
-		if (item == null || item.getItem() == null)
+		if (item == null || item.getItem() == null || item.stackSize == 0)
 			return 0;
 		for (int i = s1; i < s2; i++) {
 			if (this.getStackInSlot(i) == null) {

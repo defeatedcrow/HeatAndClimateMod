@@ -13,6 +13,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
@@ -93,6 +95,23 @@ public class BlockTomato extends ClimateDoubleCropBase implements ITexturePath {
 		int i = 1 + rand.nextInt(1 + fortune);
 		list.add(new ItemStack(FoodInit.crops, i, 3));
 		return list;
+	}
+
+	@Override
+	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.HOT);
+		ret.add(DCHeatTier.OVEN);
+		return ret;
+	}
+
+	@Override
+	public List<DCHumidity> getSuitableHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.DRY);
+		ret.add(DCHumidity.NORMAL);
+		return ret;
 	}
 
 }

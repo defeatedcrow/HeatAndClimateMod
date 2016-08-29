@@ -18,6 +18,9 @@ import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
@@ -63,14 +66,19 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 
 	@Override
 	public ItemStack getSeedItem(IBlockState thisState) {
-		return new ItemStack(FoodInit.seeds, 1, 0);
+		return new ItemStack(FoodInit.saplings, 1, 2);
 	}
 
 	@Override
 	public List<ItemStack> getCropItems(IBlockState thisState, int fortune) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(FoodInit.crops, 1, 0));
+		list.add(new ItemStack(FoodInit.crops, 1, 8));
 		return list;
+	}
+
+	@Override
+	public IBlockState getGrownState() {
+		return this.getDefaultState().withProperty(DCState.STAGE4, 1);
 	}
 
 	@Override
@@ -135,5 +143,29 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 	@Override
 	public boolean canStayOnHarvest() {
 		return true;
+	}
+
+	@Override
+	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.HOT);
+		return ret;
+	}
+
+	@Override
+	public List<DCHumidity> getSuitableHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.NORMAL);
+		ret.add(DCHumidity.WET);
+		return ret;
+	}
+
+	@Override
+	public List<DCAirflow> getSuitableAir(IBlockState thisState) {
+		List<DCAirflow> ret = new ArrayList<DCAirflow>();
+		ret.add(DCAirflow.FLOW);
+		ret.add(DCAirflow.WIND);
+		return ret;
 	}
 }

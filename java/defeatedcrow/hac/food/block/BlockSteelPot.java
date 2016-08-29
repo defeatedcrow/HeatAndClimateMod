@@ -17,6 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -33,6 +34,7 @@ public class BlockSteelPot extends DCTileBlock {
 	public BlockSteelPot(String s) {
 		super(Material.CLAY, s, 0);
 		this.setSoundType(SoundType.ANVIL);
+		this.setCreativeTab(ClimateMain.food);
 	}
 
 	@Override
@@ -113,6 +115,23 @@ public class BlockSteelPot extends DCTileBlock {
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (state != null && BlockSteelPot.isLit(world, pos)) {
+			if (rand.nextFloat() < 0.25F) {
+				double x = (double) pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
+				double y = (double) pos.getY() + 0.75D + rand.nextDouble() * 0.25D;
+				double z = (double) pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
+				double dx = rand.nextDouble() * 0.05D;
+				double dy = rand.nextDouble() * 0.05D;
+				double dz = rand.nextDouble() * 0.05D;
+
+				world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
+			}
+		}
 	}
 
 }

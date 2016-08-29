@@ -9,27 +9,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
-import defeatedcrow.hac.food.block.TilePotteryPot;
-import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
-import defeatedcrow.hac.machine.block.TileCrank_S;
-import defeatedcrow.hac.machine.block.TileFan;
-import defeatedcrow.hac.machine.block.TileGearBox;
-import defeatedcrow.hac.machine.block.TileHandCrank;
-import defeatedcrow.hac.machine.block.TileRedBox;
-import defeatedcrow.hac.machine.block.TileShaft_L;
-import defeatedcrow.hac.machine.block.TileShaft_S;
-import defeatedcrow.hac.machine.block.TileShaft_TA;
-import defeatedcrow.hac.machine.block.TileShaft_TB;
+import defeatedcrow.hac.machine.MachineCommonProxy;
 import defeatedcrow.hac.machine.block.TileStoneMill;
-import defeatedcrow.hac.machine.block.TileWindmill;
-import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
+import defeatedcrow.hac.magic.MagicCommonProxy;
+import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
@@ -62,30 +53,21 @@ public class CommonMainProxy implements IGuiHandler {
 
 		FoodRecipes.load();
 		MachineRecipes.load();
+		MagicRecipeRegister.load();
 	}
 
 	public void loadEntity() {
-		MainEntityRegister.load();
+		FoodCommonProxy.loadEntity();
 	}
 
 	public void loadTE() {
 		GameRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal");
 		GameRegistry.registerTileEntity(TileShitirin.class, "dcs_te_shitirin");
-		GameRegistry.registerTileEntity(TileWindmill.class, "dcs_te_windmill");
-		GameRegistry.registerTileEntity(TileWindmill_L.class, "dcs_te_windmill_l");
-		GameRegistry.registerTileEntity(TileShaft_S.class, "dcs_te_shaft_s");
-		GameRegistry.registerTileEntity(TileShaft_L.class, "dcs_te_shaft_l");
-		GameRegistry.registerTileEntity(TileShaft_TA.class, "dcs_te_shaft_ta");
-		GameRegistry.registerTileEntity(TileShaft_TB.class, "dcs_te_shaft_tb");
-		GameRegistry.registerTileEntity(TileGearBox.class, "dcs_te_gearbox");
-		GameRegistry.registerTileEntity(TileCrank_S.class, "dcs_te_crank_s");
-		GameRegistry.registerTileEntity(TileHandCrank.class, "dcs_te_handcrank");
-		GameRegistry.registerTileEntity(TileStoneMill.class, "dcs_te_stonemill");
-		GameRegistry.registerTileEntity(TileRedBox.class, "dcs_te_redbox");
-		GameRegistry.registerTileEntity(TileFan.class, "dcs_te_fan");
 		GameRegistry.registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen");
-		GameRegistry.registerTileEntity(TilePotteryPot.class, "dcs_te_pottery_pot");
-		GameRegistry.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot");
+
+		FoodCommonProxy.loadTE();
+		MachineCommonProxy.loadTE();
+		MagicCommonProxy.loadTE();
 	}
 
 	public void loadWorldGen() {

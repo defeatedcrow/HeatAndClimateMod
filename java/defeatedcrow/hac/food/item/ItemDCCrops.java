@@ -17,7 +17,7 @@ public class ItemDCCrops extends DCItem {
 			"lemon",
 			"olive",
 			"tea",
-			"harb" };
+			"herb" };
 
 	public ItemDCCrops(int max) {
 		super();

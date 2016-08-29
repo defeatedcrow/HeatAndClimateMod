@@ -5,11 +5,15 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockOldLog;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -18,6 +22,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.blockstate.DCState;
@@ -26,8 +34,9 @@ import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.worldgen.WorldGenDCTree;
 
-public class BlockSaplingDC extends ClimateCropBase implements ITexturePath {
+public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPlantable {
 
 	public BlockSaplingDC(String s) {
 		super(Material.PLANTS, s, 3);
@@ -138,7 +147,35 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath {
 	@Override
 	public boolean grow(World world, BlockPos pos, IBlockState thisState) {
 		if (thisState != null && thisState.getBlock() instanceof ClimateCropBase) {
-			// TODO
+
+			if (!TerrainGen.saplingGrowTree(world, cropRand, pos))
+				return false;
+
+			int meta = thisState.getValue(DCState.STAGE4);
+			WorldGenerator gen = null;
+			if (meta == 0) {
+				// lemon
+				IBlockState leaves = FoodInit.leavesLemon.getDefaultState().withProperty(DCState.STAGE4, 0)
+						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				gen = new WorldGenDCTree(true, leaves);
+			} else if (meta == 1) {
+				// olive
+				IBlockState leaves = FoodInit.leavesOlive.getDefaultState().withProperty(DCState.STAGE4, 0)
+						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				gen = new WorldGenDCTree(true, leaves);
+			}
+
+			if (gen != null) {
+				if (gen.generate(world, cropRand, pos)) {
+					world.setBlockState(pos,
+							Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK), 4);
+				} else {
+					world.setBlockState(pos, thisState, 4);
+				}
+			} else {
+				IBlockState leaves = FoodInit.leavesTea.getDefaultState();
+				world.setBlockState(pos, leaves, 4);
+			}
 		}
 		return false;
 	}
@@ -151,6 +188,19 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath {
 	@Override
 	public boolean isCollectable(ItemStack item) {
 		return false;
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+		return EnumPlantType.Plains;
+	}
+
+	@Override
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		if (state.getBlock() != this)
+			return getDefaultState();
+		return state;
 	}
 
 }

@@ -32,8 +32,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 0;
 	public static final int MOD_MINOR = 9;
-	public static final int MOD_BUILD = 4;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1976,);required-after:dcs_climate|lib@[0.9.3,)";
+	public static final int MOD_BUILD = 9;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1976,);required-after:dcs_climate|lib@[0.9.9,)";
 
 	@SidedProxy(
 			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
@@ -45,11 +45,13 @@ public class ClimateMain {
 
 	public static final CreativeTabs tool = new CreativeTabClimateTool(MOD_ID);
 	public static final CreativeTabs food = new CreativeTabClimateFood(MOD_ID + "_food");
+	public static final CreativeTabs build = new CreativeTabClimateBuild(MOD_ID + "_build");
 
 	@EventHandler
 	public void construction(FMLConstructionEvent event) {
 		// TextureStitch
 		proxy.loadConst();
+		FluidRegistry.enableUniversalBucket();
 	}
 
 	@EventHandler
@@ -62,8 +64,6 @@ public class ClimateMain {
 		proxy.loadTE();
 		// Entity
 		proxy.loadEntity();
-
-		FluidRegistry.enableUniversalBucket();
 	}
 
 	@EventHandler

@@ -1,11 +1,16 @@
 package defeatedcrow.hac.main.block.device;
 
+import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.main.MainInit;
 
@@ -37,6 +42,18 @@ public class BlockShitirin extends BlockNormalChamber {
 			return false;
 		int meta = state.getBlock().getMetaFromState(state) & 3;
 		return meta == 1;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (state != null && BlockShitirin.isLit(world, pos)) {
+			double x = (double) pos.getX() + 0.5D + rand.nextDouble() * 0.15D;
+			double y = (double) pos.getY() + 0.75D + rand.nextDouble() * 0.15D;
+			double z = (double) pos.getZ() + 0.5D + rand.nextDouble() * 0.15D;
+
+			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+		}
 	}
 
 }

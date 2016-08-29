@@ -15,6 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -125,6 +126,19 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (state != null && BlockNormalChamber.isLit(world, pos)) {
+			EnumFacing face = DCState.getFace(state, DCState.FACING).getOpposite();
+			double x = (double) pos.getX() + 0.5D + face.getFrontOffsetX() * 0.5D + rand.nextDouble() * 0.15D;
+			double y = (double) pos.getY() + 0.25D + rand.nextDouble() * 0.15D;
+			double z = (double) pos.getZ() + 0.5D + face.getFrontOffsetZ() * 0.5D + rand.nextDouble() * 0.15D;
+
+			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+		}
 	}
 
 }

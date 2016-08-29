@@ -55,6 +55,12 @@ item.dcs_material_spindle_arroy.name=合金の回転子
 
 item.dcs_food_materials_salt.name=食塩
 item.dcs_food_materials_flour.name=小麦粉
+item.dcs_food_materials_rice.name=米
+item.dcs_food_leaves_coffee.name=煎ったコーヒー豆
+item.dcs_food_leaves_tea_green.name=緑茶の茶葉
+item.dcs_food_leaves_tea_black.name=紅茶の茶葉
+item.dcs_food_drop_oil.name=植物油のドロップ
+
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
 item.dcs_food_itemfood_boiled_egg.name=ゆで卵
 item.dcs_food_itemfood_jerky.name=ジャーキー
@@ -70,11 +76,30 @@ item.dcs_food_stick_pork_raw.name=生の豚串
 item.dcs_food_stick_pork_cooked.name=焼いた豚串
 item.dcs_food_stick_beef_raw.name=生の牛串
 item.dcs_food_stick_beef_cooked.name=焼いた牛串
+item.dcs_food_teacup_silver.name=洋白銀器のカップ
+item.dcs_food_teacup_white.name=白磁のカップ
+
+item.dcs_food_crops_rice.name=稲束
+item.dcs_food_crops_onion.name=玉ねぎ
+item.dcs_food_crops_spinach.name=ほうれんそう
+item.dcs_food_crops_tomato.name=トマト
+item.dcs_food_crops_coffee.name=コーヒーチェリー
+item.dcs_food_crops_cotton.name=綿花
+item.dcs_food_crops_lemon.name=レモン
+item.dcs_food_crops_olive.name=オリーブ
+item.dcs_food_crops_tea.name=茶葉
+item.dcs_food_crops_herb.name=香草
+item.dcs_food_seeds_rice.name=稲籾
+item.dcs_food_seeds_onion.name=玉ねぎの種
+item.dcs_food_seeds_spinach.name=ほうれんそうの種
+item.dcs_food_seeds_tomato.name=トマトの種
+item.dcs_food_seeds_coffee.name=コーヒーの種
+item.dcs_food_seeds_cotton.name=綿花の種
 
 item.dcs_yagen_stone_normal.name=石の薬研
 item.dcs_yagen_brass_normal.name=真鍮の薬研
 
-item.dcs_repair_patty.name=修繕ペースト
+item.dcs_repair_putty.name=修繕ペースト
 
 item.dcs_axe_brass.name=真鍮の斧
 item.dcs_axe_steel.name=鋼の斧
@@ -286,8 +311,28 @@ tile.dcs_device_fan_0.name=送風機
 tile.dcs_device_windmill_0.name=風車
 tile.dcs_device_windmill_l_0.name=大型風車
 tile.dcs_device_stevenson_screen_0.name=百葉箱
-tile.dcs_device_potter_pot_0.name=調理甕
+tile.dcs_device_pottery_pot_0.name=調理甕
 tile.dcs_device_steel_pot_0.name=調理鍋
+
+tile.dcs_crop_rice_3.name=稲
+tile.dcs_crop_onion_3.name=玉ねぎの苗
+tile.dcs_crop_spinach_3.name=ほうれんそうの苗
+tile.dcs_crop_tomato_7.name=トマトの苗
+tile.dcs_crop_coffee_7.name=コーヒーの苗
+tile.dcs_crop_cotton_7.name=綿花の苗
+tile.dcs_leaves_lemon_0.name=レモンの葉ブロック
+tile.dcs_leaves_lemon_1.name=レモンの葉ブロック
+tile.dcs_leaves_lemon_2.name=レモンの葉ブロック
+tile.dcs_leaves_lemon_3.name=レモンの葉ブロック
+tile.dcs_leaves_olive_0.name=オリーブの葉ブロック
+tile.dcs_leaves_olive_1.name=オリーブの葉ブロック
+tile.dcs_leaves_olive_2.name=オリーブの葉ブロック
+tile.dcs_leaves_olive_3.name=オリーブの葉ブロック
+tile.dcs_leaves_tea_0.name=茶の葉ブロック
+tile.dcs_leaves_tea_1.name=茶の葉ブロック
+tile.dcs_crop_sapling_0.name=レモンの苗木
+tile.dcs_crop_sapling_1.name=オリーブの苗木
+tile.dcs_crop_sapling_2.name=茶の苗木
 
 dcs_te_normal_chamber.name=燃焼チャンバー
 dcs_te_shitirin.name=七輪
@@ -303,10 +348,20 @@ dcs_te_stonemill_s.name=石臼
 dcs_te_fan_s.name=送風機
 dcs_te_windmill.name=風車
 dcs_te_windmill_l.name=大型風車
-tile.te_potter_pot_0.name=調理甕
+tile.te_pottery_pot_0.name=調理甕
 tile.te_steel_pot_0.name=調理鍋
 
-## massage
+## fluid
+fluid.dcs.seed_oil=植物油
+tile.dcs_fluidblock_oil_0.name=植物油
+fluid.dcs.black_tea=紅茶
+tile.dcs_fluidblock_blacktea_0.name=紅茶
+fluid.dcs.green_tea=緑茶
+tile.dcs_fluidblock_greentea_0.name=緑茶
+fluid.dcs.black_coffee=コーヒー
+tile.dcs_fluidblock_coffee_0.name=コーヒー
+
+## message
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)
 dcs_climate.tip.durability=最大耐久値
 dcs_climate.tip.harvestlevel=採掘レベル

@@ -60,21 +60,21 @@ public enum DCMaterial {
 			2,
 			4,
 			4,
-			2 }, 2, 1600, 4.0F, 10, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 6),
+			2 }, 2, 2400, 4.0F, 10, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 6),
 			SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
 	// 熱に弱いが他が強い
-	STEEL(8, "steel", 3.0F, new int[] {
-			5,
-			8,
+	STEEL(8, "steel", 4.0F, new int[] {
 			6,
-			5 }, 3, 640, 7.0F, 8, 0.25F, 0.25F, new ItemStack(MainInit.oreIngot, 1, 5),
-			SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F),
-	// ピーキー性能
-	CHALCEDONY(9, "chalcedony", 4.0F, new int[] {
-			5,
 			10,
 			8,
-			4 }, 3, 72, 10.0F, 25, 1.0F, 1.0F, new ItemStack(MainInit.gems, 1, 0),
+			5 }, 3, 1080, 8.0F, 8, 0.25F, 0.25F, new ItemStack(MainInit.oreIngot, 1, 5),
+			SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F),
+	// ピーキー性能
+	CHALCEDONY(9, "chalcedony", 6.0F, new int[] {
+			6,
+			12,
+			7,
+			6 }, 4, 72, 12.0F, 25, 1.0F, 1.0F, new ItemStack(MainInit.gems, 1, 0),
 			SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F),
 	// 黒曜石が掘れないだけのダイヤ
 	SAPPHIRE(10, "sapphire", 3.0F, new int[] {

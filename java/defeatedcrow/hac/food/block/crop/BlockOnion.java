@@ -13,6 +13,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
@@ -70,7 +72,8 @@ public class BlockOnion extends ClimateCropBase implements ITexturePath {
 
 	@Override
 	public ItemStack getSeedItem(IBlockState thisState) {
-		return new ItemStack(FoodInit.seeds, 1, 1);
+		int i = 1 + cropRand.nextInt(2);
+		return new ItemStack(FoodInit.seeds, i, 1);
 	}
 
 	@Override
@@ -78,6 +81,24 @@ public class BlockOnion extends ClimateCropBase implements ITexturePath {
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		list.add(new ItemStack(FoodInit.crops, 1, 1));
 		return list;
+	}
+
+	@Override
+	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.FROSTBITE);
+		ret.add(DCHeatTier.COLD);
+		ret.add(DCHeatTier.NORMAL);
+		return ret;
+	}
+
+	@Override
+	public List<DCHumidity> getSuitableHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.DRY);
+		ret.add(DCHumidity.NORMAL);
+		ret.add(DCHumidity.WET);
+		return ret;
 	}
 
 }
