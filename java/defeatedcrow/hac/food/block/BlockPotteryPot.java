@@ -21,12 +21,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.block.fluid.FluidUtil;
 
-public class BlockPotteryPot extends DCTileBlock {
+public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 
 	public BlockPotteryPot(String s) {
 		super(Material.CLAY, s, 0);
@@ -39,6 +42,9 @@ public class BlockPotteryPot extends DCTileBlock {
 		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TilePotteryPot) {
+				if (FluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+					return true;
+				}
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 			}
 		}
@@ -103,6 +109,11 @@ public class BlockPotteryPot extends DCTileBlock {
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
+	}
+
+	@Override
+	public DCAirflow getAirflow(World world, BlockPos to, BlockPos from) {
+		return DCAirflow.NORMAL;
 	}
 
 }

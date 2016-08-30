@@ -151,6 +151,28 @@ public class FoodRecipes {
 				new ItemStack(Blocks.SAPLING, 1, 0),
 				"gemChalcedony" }));
 
+		String[] crops = new String[] {
+				"cropRice",
+				"cropOnion",
+				"cropSpinach",
+				"cropTomato",
+				"cropCoffee",
+				"cropCotton",
+				"cropLemon",
+				"cropOlive",
+				"cropTea" };
+		for (int i = 0; i < crops.length; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cropBasket, 1, i), new Object[] {
+					"XXX",
+					"XXX",
+					"XXX",
+					'X',
+					crops[i] }));
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.crops, 1, i),
+					new Object[] { new ItemStack(MainInit.cropBasket, 1, i) }));
+		}
+
 	}
 
 	static void loadClimateRecipes() {

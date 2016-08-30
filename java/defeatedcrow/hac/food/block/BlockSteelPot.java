@@ -24,12 +24,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.block.fluid.FluidUtil;
 
-public class BlockSteelPot extends DCTileBlock {
+public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 
 	public BlockSteelPot(String s) {
 		super(Material.CLAY, s, 0);
@@ -43,6 +46,9 @@ public class BlockSteelPot extends DCTileBlock {
 		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TileSteelPot) {
+				if (FluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+					return true;
+				}
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 			}
 		}
@@ -132,6 +138,11 @@ public class BlockSteelPot extends DCTileBlock {
 				world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
 			}
 		}
+	}
+
+	@Override
+	public DCAirflow getAirflow(World world, BlockPos to, BlockPos from) {
+		return DCAirflow.NORMAL;
 	}
 
 }

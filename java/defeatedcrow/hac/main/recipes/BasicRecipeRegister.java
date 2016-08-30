@@ -477,6 +477,23 @@ public class BasicRecipeRegister {
 					i) }));
 		}
 
+		ItemStack[] dust = new ItemStack[] {
+				new ItemStack(Items.SUGAR, 9, 0),
+				new ItemStack(MainInit.foodMaterials, 9, 0),
+				new ItemStack(MainInit.foodMaterials, 9, 1),
+				new ItemStack(MainInit.foodMaterials, 9, 2) };
+		for (int i = 0; i < dust.length; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBags, 1, i), new Object[] {
+					"XXX",
+					"XXX",
+					"XXX",
+					'X',
+					dust[i] }));
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(dust[i],
+					new Object[] { new ItemStack(MainInit.dustBags, 1, i) }));
+		}
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cardboard, 1, 5), new Object[] {
 				"XXX",
 				"XXX",

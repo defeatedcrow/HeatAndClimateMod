@@ -20,7 +20,9 @@ import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
 import defeatedcrow.hac.main.block.build.BlockTableBase;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
+import defeatedcrow.hac.main.block.container.BlockCropBasket;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
+import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
@@ -129,6 +131,16 @@ public class MainMaterialRegister {
 				.setCreativeTab(ClimateMain.build);
 		registerBlock(MainInit.cardboard, ClimateCore.PACKAGE_BASE + "_cont_cardboard");
 		ClimateMain.proxy.addSidedBlock(MainInit.cardboard, "cont_cardboard", 5);
+
+		MainInit.dustBags = new BlockDustBag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_bags", 3)
+				.setCreativeTab(ClimateMain.build);
+		registerBlock(MainInit.dustBags, ClimateCore.PACKAGE_BASE + "_cont_bags");
+		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 3);
+
+		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 8)
+				.setCreativeTab(ClimateMain.build);
+		registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket");
+		ClimateMain.proxy.addTBBlock(MainInit.cropBasket, "cont_basket", 8);
 	}
 
 	static void regJsonBlock() {

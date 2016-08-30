@@ -240,7 +240,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			FluidStack fc = dummy.drain(max, false);
 			// 排出の場合
 			if (fc == null || fc.amount == 0) {
-				if (max <= tank.getFluidAmount()) {
+				if (tank.getFluidAmount() > 0 && max <= tank.getFluidAmount()) {
 					FluidStack drain = tank.getContents().copy();
 					int fill = 0;
 					if (in.getItem() instanceof IFluidHandler) {
