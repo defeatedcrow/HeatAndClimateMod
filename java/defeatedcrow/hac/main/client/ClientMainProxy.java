@@ -20,7 +20,9 @@ import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
+import defeatedcrow.hac.main.block.container.BlockCropBasket;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
+import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
@@ -43,6 +45,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		JsonBakery.instance.addTex(BlockEnemyCont.getTexList());
 		JsonBakery.instance.addTex(BlockMiscCont.getTexList());
 		JsonBakery.instance.addTex(BlockCardboard.getTexList());
+		JsonBakery.instance.addTex(BlockCropBasket.getTexList());
+		JsonBakery.instance.addTex(BlockDustBag.getTexList());
 		JsonBakery.instance.addTex(DCFluidBlockBase.getTexList());
 
 		FoodClientProxy.loadConst();

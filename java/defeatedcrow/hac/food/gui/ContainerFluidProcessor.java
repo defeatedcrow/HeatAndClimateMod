@@ -23,9 +23,9 @@ public class ContainerFluidProcessor extends Container {
 
 		// 液体系
 		this.addSlotToContainer(new Slot(tile, 0, 19, 18));
-		this.addSlotToContainer(new Slot(tile, 1, 19, 53));
+		this.addSlotToContainer(new Slot(tile, 1, 19, 54));
 		this.addSlotToContainer(new Slot(tile, 2, 140, 18));
-		this.addSlotToContainer(new Slot(tile, 3, 140, 53));
+		this.addSlotToContainer(new Slot(tile, 3, 140, 54));
 
 		for (int i = 0; i < 3; i++) {
 			this.addSlotToContainer(new Slot(tile, 4 + i, 57, 18 + 18 * i));

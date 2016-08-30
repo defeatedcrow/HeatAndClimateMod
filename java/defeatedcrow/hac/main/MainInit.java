@@ -21,6 +21,8 @@ public class MainInit {
 	public static Block dropCont;
 	public static Block miscCont;
 	public static Block cardboard;
+	public static Block cropBasket;
+	public static Block dustBags;
 
 	// building
 	public static Block bricks;

@@ -78,7 +78,7 @@ public class GuiFluidProcessor extends GuiContainer {
 		if (!processor.outputT.isEmpty()) {
 			int out = this.processor.getField(4);
 			int outAmo = 50 * this.processor.getField(6) / 5000;
-			renderFluid(out, outAmo, i + 123, j + 20, 12, 50);
+			renderFluid(out, outAmo, i + 125, j + 20, 12, 50);
 		}
 	}
 

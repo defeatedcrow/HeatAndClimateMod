@@ -131,7 +131,7 @@ public class TileSteelPot extends TileFluidProcessorBase {
 	@Override
 	public boolean isSuitableClimate() {
 		// 高温が必要
-		return current != null && current.getHeat().getTier() > 2;
+		return current != null && current.getHeat().getTier() > 1;
 	}
 
 	@Override
@@ -139,13 +139,22 @@ public class TileSteelPot extends TileFluidProcessorBase {
 		if (current == null) {
 			return "dcs.gui.message.nullclimate";
 		} else {
-			if (current.getHeat().getTier() < 3) {
+			if (current.getHeat().getTier() < 2) {
 				return "dcs.gui.message.steel.toocold";
 			} else {
 				return "dcs.gui.message.suitableclimate";
 			}
 		}
 	}
+
+	// @Override
+	// protected void onServerUpdate() {
+	// super.onServerUpdate();
+	// boolean lit = !this.outputT.isEmpty();
+	// if (BlockSteelPot.isLit(getWorld(), getPos()) != lit) {
+	// BlockSteelPot.changeLitState(getWorld(), getPos(), lit);
+	// }
+	// }
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */
 

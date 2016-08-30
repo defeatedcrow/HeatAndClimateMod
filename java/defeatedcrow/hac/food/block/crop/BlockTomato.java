@@ -111,6 +111,7 @@ public class BlockTomato extends ClimateDoubleCropBase implements ITexturePath {
 		List<DCHumidity> ret = new ArrayList<DCHumidity>();
 		ret.add(DCHumidity.DRY);
 		ret.add(DCHumidity.NORMAL);
+		ret.add(DCHumidity.WET);
 		return ret;
 	}
 
