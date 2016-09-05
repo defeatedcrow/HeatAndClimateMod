@@ -135,12 +135,12 @@ public class ModelShaft_TB extends DCTileModelBase {
 		shaft1.rotateAngleY += f1;
 		gear1.rotateAngleY += f1;
 
-		shaftcube2.rotateAngleX -= f1;
-		shaft2.rotateAngleX -= f1;
-		gear2.rotateAngleX -= f1;
-		shaftcube3.rotateAngleX += f1;
+		shaftcube2.rotateAngleX -= f1 * 0.5F;
+		shaft2.rotateAngleX -= f1 * 0.5F;
+		gear2.rotateAngleX -= f1 * 0.5F;
+		shaftcube3.rotateAngleX += f1 * 0.5F;
 
-		gear3.rotateAngleX -= f1;
+		gear3.rotateAngleX -= f1 * 0.5F;
 	}
 
 }

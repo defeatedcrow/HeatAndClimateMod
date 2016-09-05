@@ -1,6 +1,8 @@
 package defeatedcrow.hac.main.event;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -8,7 +10,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 
 public class OnDeathEventDC {
@@ -17,7 +21,10 @@ public class OnDeathEventDC {
 	public void onDeath(LivingDeathEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
 		DamageSource source = event.getSource();
-		if (living != null && living instanceof EntityPlayer) {
+		if (living == null)
+			return;
+
+		if (living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
@@ -43,6 +50,26 @@ public class OnDeathEventDC {
 					event.setCanceled(true);
 				}
 
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onDrop(LivingHurtEvent event) {
+		EntityLivingBase living = event.getEntityLiving();
+		DamageSource source = event.getSource();
+		float dam = event.getAmount();
+		if (living == null)
+			return;
+
+		/* Projectileでの一撃必殺 */
+		if (living instanceof EntityAnimal && !living.worldObj.isRemote && living.worldObj.rand.nextBoolean()) {
+			if (source.isProjectile() && source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
+				if (living.getHealth() >= living.getMaxHealth() && dam > living.getMaxHealth()) {
+					ItemStack vis = new ItemStack(FoodInit.meat, 1, 0);
+					EntityItem drop = new EntityItem(living.worldObj, living.posX, living.posY, living.posZ, vis);
+					living.worldObj.spawnEntityInWorld(drop);
+				}
 			}
 		}
 	}

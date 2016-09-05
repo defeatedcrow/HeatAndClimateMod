@@ -25,9 +25,9 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.block.fluid.FluidUtil;
 
 public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 
@@ -42,7 +42,7 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TilePotteryPot) {
-				if (FluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+				if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
 					return true;
 				}
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());

@@ -45,7 +45,7 @@ public class TileShaft_TA extends TileTorqueBase implements ITorqueProvider, ITo
 	@Override
 	public boolean canProvideTorque(World world, BlockPos outputPos, EnumFacing output) {
 		TileEntity tile = world.getTileEntity(outputPos);
-		float amo = this.getCurrentTorque();
+		float amo = this.getCurrentTorque() * 0.5F;
 		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F) {
 			return ((ITorqueReceiver) tile).canReceiveTorque(amo, output.getOpposite());
 		}
@@ -54,7 +54,7 @@ public class TileShaft_TA extends TileTorqueBase implements ITorqueProvider, ITo
 
 	@Override
 	public float provideTorque(World world, BlockPos outputPos, EnumFacing output, boolean sim) {
-		float amo = this.getCurrentTorque();
+		float amo = this.getCurrentTorque() * 0.5F;
 		if (canProvideTorque(world, outputPos, output)) {
 			ITorqueReceiver target = (ITorqueReceiver) world.getTileEntity(outputPos);
 			float ret = target.receiveTorque(amo, output, sim);

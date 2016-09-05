@@ -84,7 +84,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 		IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(in);
 		if (recipe != null) {
 			List<ItemStack> outs = this.getOutputs();
-			return recipe.matchOutput(outs, 2);
+			return recipe.matchOutput(outs, in, 2);
 		}
 		return false;
 	}
@@ -96,15 +96,17 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 		IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(in);
 		if (recipe != null) {
 			List<ItemStack> outs = this.getOutputs();
-			if (recipe.matchOutput(outs, 2)) {
+			if (recipe.matchOutput(outs, in, 2)) {
 				ItemStack out = recipe.getOutput();
 				ItemStack sec = recipe.getSecondary();
+				ItemStack cont = recipe.getContainerItem(in);
 				float chance = recipe.getSecondaryChance();
 				int r = (int) (chance * 100);
 				int i1 = this.insertResult(out);
 				if (this.worldObj.rand.nextInt(100) < r) {
 					int i2 = this.insertResult(sec);
 				}
+				int i3 = this.insertResult(cont);
 				return true;
 			}
 		}

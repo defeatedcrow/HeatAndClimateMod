@@ -5,13 +5,19 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSteelPot;
+import defeatedcrow.hac.food.entity.AppleTartEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
 import defeatedcrow.hac.food.entity.FishStickEntity;
+import defeatedcrow.hac.food.entity.LemonTartEntity;
+import defeatedcrow.hac.food.entity.MeatPieEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
+import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
+import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
+import defeatedcrow.hac.food.entity.SugarPieEntity;
 import defeatedcrow.hac.food.entity.YakitoriStickEntity;
 import defeatedcrow.hac.main.ClimateMain;
 
@@ -36,10 +42,25 @@ public class FoodCommonProxy {
 				ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(BeefStickEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.beef_stick", 6,
 				ClimateMain.instance, 128, 5, true);
+
 		EntityRegistry.registerModEntity(EntityTeaCupSilver.class, ClimateCore.PACKAGE_BASE + "entity.food.cup_silver",
 				7, ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(EntityTeaCupWhite.class, ClimateCore.PACKAGE_BASE + "entity.food.cup_white",
 				8, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(AppleTartEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.tart_apple", 9,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(LemonTartEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.tart_lemon",
+				10, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SpinachQuicheEntity.class, ClimateCore.PACKAGE_BASE
+				+ "entity.food.quiche_spinach", 11, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PotatoQuicheEntity.class, ClimateCore.PACKAGE_BASE
+				+ "entity.food.quiche_potato", 12, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SugarPieEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pie_sugar", 13,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(MeatPieEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pie_meat", 14,
+				ClimateMain.instance, 128, 5, true);
+
 	}
 
 }

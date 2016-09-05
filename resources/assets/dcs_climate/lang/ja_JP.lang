@@ -60,6 +60,19 @@ item.dcs_food_leaves_coffee.name=煎ったコーヒー豆
 item.dcs_food_leaves_tea_green.name=緑茶の茶葉
 item.dcs_food_leaves_tea_black.name=紅茶の茶葉
 item.dcs_food_drop_oil.name=植物油のドロップ
+item.dcs_food_drop_cream.name=生クリームのドロップ
+item.dcs_food_dairy_butter.name=バター
+item.dcs_food_dairy_cheese.name=チーズ
+item.dcs_food_dairy_custard.name=カスタード
+item.dcs_food_pastry_raw.name=ペイストリー生地
+item.dcs_food_meat_viscera.name=内臓
+item.dcs_food_meat_rennet.name=レンネット
+
+item.dcs_food_pack_milk.name=牛乳パック
+item.dcs_food_pack_water.name=水パック
+item.dcs_food_pack_cream.name=生クリームパック
+item.dcs_food_pack_oil.name=植物油パック
+item.dcs_food_pack_empty.name=紙パック
 
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
 item.dcs_food_itemfood_boiled_egg.name=ゆで卵
@@ -78,6 +91,18 @@ item.dcs_food_stick_beef_raw.name=生の牛串
 item.dcs_food_stick_beef_cooked.name=焼いた牛串
 item.dcs_food_teacup_silver.name=洋白銀器のカップ
 item.dcs_food_teacup_white.name=白磁のカップ
+item.dcs_food_tart_apple_raw.name=生のアップルタルト
+item.dcs_food_tart_apple_baked.name=アップルタルト
+item.dcs_food_tart_lemon_raw.name=生のレモンクリームタルト
+item.dcs_food_tart_lemon_baked.name=レモンクリームタルト
+item.dcs_food_tart_spinach_raw.name=生のほうれんそうのキッシュ
+item.dcs_food_tart_spinach_baked.name=ほうれんそうのキッシュ
+item.dcs_food_tart_potato_raw.name=生のポテトと魚のキッシュ
+item.dcs_food_tart_potato_baked.name=ポテトと魚のキッシュ
+item.dcs_food_pie_sugar_raw.name=生のシュガーペイストリー
+item.dcs_food_pie_sugar_baked.name=シュガーペイストリー
+item.dcs_food_pie_meat_raw.name=生のミートパイ
+item.dcs_food_pie_meat_baked.name=ミートパイ
 
 item.dcs_food_crops_rice.name=稲束
 item.dcs_food_crops_onion.name=玉ねぎ
@@ -373,6 +398,8 @@ fluid.dcs.green_tea=緑茶
 tile.dcs_fluidblock_greentea_0.name=緑茶
 fluid.dcs.black_coffee=コーヒー
 tile.dcs_fluidblock_coffee_0.name=コーヒー
+fluid.dcs.milk_cream=生クリーム
+tile.dcs_fluidblock_cream_0.name=生クリーム
 
 ## message
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)

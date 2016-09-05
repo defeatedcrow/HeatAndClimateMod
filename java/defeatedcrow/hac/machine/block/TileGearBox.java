@@ -68,7 +68,7 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
-		return side == getBaseSide().getOpposite();
+		return side == getOutputSide();
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 		if (this.currentTorque >= this.maxTorque()) {
 			return false;
 		}
-		return this.isInputSide(side.getOpposite());
+		return this.isInputSide(side);
 	}
 
 	@Override
