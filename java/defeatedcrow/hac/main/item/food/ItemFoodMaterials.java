@@ -29,7 +29,7 @@ public class ItemFoodMaterials extends DCItem {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		String s = "items/food/" + names[meta];
+		String s = "items/food/food_" + names[meta];
 		if (f) {
 			s = "textures/" + s;
 		}

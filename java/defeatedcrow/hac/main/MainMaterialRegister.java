@@ -273,10 +273,6 @@ public class MainMaterialRegister {
 				ClimateCore.PACKAGE_BASE + "_creative_drill");
 		GameRegistry.register(MainInit.crowDrill.setRegistryName(ClimateCore.PACKAGE_BASE + "_creative_drill"));
 
-		MainInit.wrench = new ItemWrench().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_wrench");
-		GameRegistry.register(MainInit.wrench.setRegistryName(ClimateCore.PACKAGE_BASE + "_wrench"));
-
 	}
 
 	static void registerFood() {
@@ -383,6 +379,10 @@ public class MainMaterialRegister {
 		MainInit.blackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
 				"suit").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_suit");
 		GameRegistry.register(MainInit.blackSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_suit"));
+
+		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0)).setCreativeTab(ClimateMain.tool)
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wrench_brass");
+		GameRegistry.register(MainInit.wrench.setRegistryName(ClimateCore.PACKAGE_BASE + "_wrench"));
 
 	}
 

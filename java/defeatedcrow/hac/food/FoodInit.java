@@ -11,11 +11,20 @@ public class FoodInit {
 
 	public static Item bread;
 	public static Item sticks;
+	public static Item pastryRound;
+	public static Item pastrySquare;
 
 	public static Item crops;
 	public static Item seeds;
 	public static Item teaLeaves;
-	public static Item drop;
+
+	public static Item dropOil;
+	public static Item dropCream;
+	public static Item paperPack;
+
+	public static Item meat;
+	public static Item dairy;
+	public static Item pastry;
 
 	public static Item cupSilver;
 
@@ -39,10 +48,12 @@ public class FoodInit {
 	public static Fluid greenTea;
 	public static Fluid blackTea;
 	public static Fluid coffee;
+	public static Fluid cream;
 
 	public static Block oilBlock;
 	public static Block greenTeaBlock;
 	public static Block blackTeaBlock;
 	public static Block coffeeBlock;
+	public static Block creamBlock;
 
 }

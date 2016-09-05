@@ -92,7 +92,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	@Override
 	public ItemStack getFoodContainerItem(ItemStack item) {
-		ItemStack ret = new ItemStack(this);
+		ItemStack ret = new ItemStack(this, 1, item.getItemDamage());
 		return ret;
 	}
 

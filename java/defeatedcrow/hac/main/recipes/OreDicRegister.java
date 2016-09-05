@@ -3,7 +3,6 @@ package defeatedcrow.hac.main.recipes;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
-import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 
 public class OreDicRegister {
@@ -124,35 +123,15 @@ public class OreDicRegister {
 
 		// food
 		OreDictionary.registerOre("dustSalt", new ItemStack(MainInit.foodMaterials, 1, 0));
+		OreDictionary.registerOre("foodSalt", new ItemStack(MainInit.foodMaterials, 1, 0));
 		OreDictionary.registerOre("foodFlour", new ItemStack(MainInit.foodMaterials, 1, 1));
 		OreDictionary.registerOre("dustFlour", new ItemStack(MainInit.foodMaterials, 1, 1));
 		OreDictionary.registerOre("foodRice", new ItemStack(MainInit.foodMaterials, 1, 2));
-		OreDictionary.registerOre("cropRice", new ItemStack(FoodInit.crops, 1, 0));
-		OreDictionary.registerOre("cropOnion", new ItemStack(FoodInit.crops, 1, 1));
-		OreDictionary.registerOre("cropSpinach", new ItemStack(FoodInit.crops, 1, 2));
-		OreDictionary.registerOre("cropTomato", new ItemStack(FoodInit.crops, 1, 3));
-		OreDictionary.registerOre("cropCoffee", new ItemStack(FoodInit.crops, 1, 4));
-		OreDictionary.registerOre("cropCotton", new ItemStack(FoodInit.crops, 1, 5));
-		OreDictionary.registerOre("cropLemon", new ItemStack(FoodInit.crops, 1, 6));
-		OreDictionary.registerOre("cropOlive", new ItemStack(FoodInit.crops, 1, 7));
-		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
-		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
-		OreDictionary.registerOre("seedRice", new ItemStack(FoodInit.seeds, 1, 0));
-		OreDictionary.registerOre("seedOnion", new ItemStack(FoodInit.seeds, 1, 1));
-		OreDictionary.registerOre("seedSpinach", new ItemStack(FoodInit.seeds, 1, 2));
-		OreDictionary.registerOre("seedTomato", new ItemStack(FoodInit.seeds, 1, 3));
-		OreDictionary.registerOre("seedCoffee", new ItemStack(FoodInit.seeds, 1, 4));
-		OreDictionary.registerOre("seedCotton", new ItemStack(FoodInit.seeds, 1, 5));
-		OreDictionary.registerOre("saplingLemon", new ItemStack(FoodInit.saplings, 1, 0));
-		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 0));
-		OreDictionary.registerOre("saplingOlive", new ItemStack(FoodInit.saplings, 1, 1));
-		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 1));
-		OreDictionary.registerOre("saplingTea", new ItemStack(FoodInit.saplings, 1, 2));
-		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 2));
 
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.materials, 1, 5));
+
 	}
 
 }

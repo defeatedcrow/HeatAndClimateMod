@@ -32,7 +32,7 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 		if (tile != null && tile instanceof TileFan) {
 			TileFan fan = (TileFan) tile;
 			EnumFacing face = fan.getBaseSide();
-			boolean active = isActive(face.getOpposite(), pos, target) && world.isAirBlock(target.offset(face));
+			boolean active = isActive(face, pos, target) && world.isAirBlock(target.offset(face.getOpposite()));
 			if (active) {
 				float torque = fan.getCurrentTorque();
 				if (torque >= 6.0F) {
@@ -52,7 +52,7 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
-			if (placer.rotationPitch > 75.0F) {
+			if (placer.rotationPitch < -75.0F) {
 				face = EnumFacing.UP;
 			} else if (placer.rotationPitch > 75.0F) {
 				face = EnumFacing.DOWN;
@@ -74,13 +74,13 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 		case UP:
 			return to.getY() > from.getY();
 		case NORTH:
-			return to.getZ() > from.getZ();
-		case SOUTH:
 			return to.getZ() < from.getZ();
-		case EAST:
-			return to.getX() > from.getX();
+		case SOUTH:
+			return to.getZ() > from.getZ();
 		case WEST:
 			return to.getX() < from.getX();
+		case EAST:
+			return to.getX() > from.getX();
 		default:
 			return false;
 

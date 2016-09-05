@@ -37,6 +37,7 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 		list.add(b + "greentea_still");
 		list.add(b + "coffee_still");
 		list.add(b + "seedoil_still");
+		list.add(b + "cream_still");
 		return list;
 	}
 

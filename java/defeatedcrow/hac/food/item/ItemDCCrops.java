@@ -1,9 +1,9 @@
 package defeatedcrow.hac.food.item;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.base.DCFoodItem;
 
-public class ItemDCCrops extends DCItem {
+public class ItemDCCrops extends DCFoodItem {
 
 	private final int maxMeta;
 
@@ -20,7 +20,7 @@ public class ItemDCCrops extends DCItem {
 			"herb" };
 
 	public ItemDCCrops(int max) {
-		super();
+		super(false);
 		maxMeta = max;
 	}
 
@@ -41,6 +41,26 @@ public class ItemDCCrops extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	public int getFoodAmo(int meta) {
+		switch (meta) {
+		case 3:
+			return 5;
+		case 1:
+		case 2:
+		case 4:
+		case 6:
+			return 2;
+		default:
+			return 1;
+		}
+	}
+
+	@Override
+	public float getSaturation(int meta) {
+		return 0.25F;
 	}
 
 }
