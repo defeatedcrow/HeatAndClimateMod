@@ -60,6 +60,19 @@ item.dcs_food_leaves_coffee.name=烤咖啡豆
 item.dcs_food_leaves_tea_green.name=绿茶茶叶
 item.dcs_food_leaves_tea_black.name=红茶茶叶
 item.dcs_food_drop_oil.name=植物油滴
+item.dcs_food_drop_cream.name=奶油滴
+item.dcs_food_dairy_butter.name=黄油
+item.dcs_food_dairy_cheese.name=奶酪
+item.dcs_food_dairy_custard.name=蛋奶沙司
+item.dcs_food_pastry_raw.name=油酥面团
+item.dcs_food_meat_viscera.name=内脏
+item.dcs_food_meat_rennet.name=凝乳
+
+item.dcs_food_pack_milk.name=牛奶盒
+item.dcs_food_pack_water.name=瓶装水
+item.dcs_food_pack_cream.name=奶油盒
+item.dcs_food_pack_oil.name=瓶装植物油
+item.dcs_food_pack_empty.name=空纸盒
 
 item.dcs_food_itemfood_baked_apple.name=烤苹果
 item.dcs_food_itemfood_boiled_egg.name=煮鸡蛋
@@ -78,6 +91,18 @@ item.dcs_food_stick_beef_raw.name=生牛肉串
 item.dcs_food_stick_beef_cooked.name=烤牛肉串
 item.dcs_food_teacup_silver.name=洋白铜杯子
 item.dcs_food_teacup_white.name=白瓷杯子
+item.dcs_food_tart_apple_raw.name=生苹果馅饼
+item.dcs_food_tart_apple_baked.name=苹果馅饼
+item.dcs_food_tart_lemon_raw.name=生柠檬奶油馅饼
+item.dcs_food_tart_lemon_baked.name=柠檬奶油馅饼
+item.dcs_food_tart_spinach_raw.name=生菠菜乳蛋饼
+item.dcs_food_tart_spinach_baked.name=菠菜乳蛋饼
+item.dcs_food_tart_potato_raw.name=生番茄乳蛋饼
+item.dcs_food_tart_potato_baked.name=番茄乳蛋饼
+item.dcs_food_pie_sugar_raw.name=生糖油酥
+item.dcs_food_pie_sugar_baked.name=糖油酥
+item.dcs_food_pie_meat_raw.name=生肉饼
+item.dcs_food_pie_meat_baked.name=肉饼
 
 item.dcs_food_crops_rice.name=水稻
 item.dcs_food_crops_onion.name=洋葱
@@ -373,6 +398,8 @@ fluid.dcs.green_tea=绿茶
 tile.dcs_fluidblock_greentea_0.name=绿茶
 fluid.dcs.black_coffee=咖啡
 tile.dcs_fluidblock_coffee_0.name=咖啡
+fluid.dcs.milk_cream=奶油
+tile.dcs_fluidblock_cream_0.name=奶油
 
 ## massage
 dcs.climate.tip.checker=右击方块可以查看Climate(气候)信息(范围2)
@@ -434,7 +461,6 @@ dcs.gui.device.chamber=燃烧室
 dcs.gui.device.shitirin=七轮
 dcs.gui.device.mill=石臼
 dcs.gui.device.stevenson_screen=百叶箱
-dcs.gui.device.fluidprocessor=液体加工
 
 dcs.gui.message.nullclimate=气候数据没有正常加载。
 dcs.gui.message.pottery.toocold=温度过低
