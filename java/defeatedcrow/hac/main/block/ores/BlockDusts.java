@@ -36,6 +36,7 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+		super.onBlockAdded(world, pos, state);
 		world.scheduleUpdate(pos, this, this.tickRate(world));
 	}
 
@@ -49,7 +50,8 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 			"nickelsilver",
 			"magnet",
 			"tin",
-			"bronze" };
+			"bronze",
+			"sus" };
 
 	@Override
 	public String[] getNameSuffix() {

@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.Render;
@@ -18,6 +21,7 @@ import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.food.FoodClientProxy;
 import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.magic.MagicClientProxy;
+import defeatedcrow.hac.magic.client.TESRInfernalFlame;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
@@ -33,6 +37,8 @@ import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.client.block.TESRNormalChamber;
 import defeatedcrow.hac.main.client.block.TESRShitirin;
 import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
+import defeatedcrow.hac.main.client.particle.ParticleBlink;
+import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.event.AltTooltipEvent;
 
 @SideOnly(Side.CLIENT)
@@ -48,6 +54,15 @@ public class ClientMainProxy extends CommonMainProxy {
 		JsonBakery.instance.addTex(BlockCropBasket.getTexList());
 		JsonBakery.instance.addTex(BlockDustBag.getTexList());
 		JsonBakery.instance.addTex(DCFluidBlockBase.getTexList());
+
+		List<String> particles = new ArrayList<String>();
+		particles.add(ParticleBlink.BLINK_TEX);
+		particles.add(ParticleFallingStar.STAR_TEX);
+
+		particles.add(TESRInfernalFlame.TEX1.toString());
+		particles.add(TESRInfernalFlame.TEX2.toString());
+
+		JsonBakery.instance.addTex(particles);
 
 		FoodClientProxy.loadConst();
 	}
@@ -67,6 +82,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		super.loadEntity();
 
 		FoodClientProxy.loadEntity();
+		MagicClientProxy.loadEntity();
 	}
 
 	@Override
@@ -85,6 +101,7 @@ public class ClientMainProxy extends CommonMainProxy {
 	public void loadInit() {
 		super.loadInit();
 		MinecraftForge.EVENT_BUS.register(new AltTooltipEvent());
+		MinecraftForge.EVENT_BUS.register(AdvancedHUDEvent.INSTANCE);
 	}
 
 	@Override

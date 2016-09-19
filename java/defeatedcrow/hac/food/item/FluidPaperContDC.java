@@ -46,12 +46,12 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 		int meta = 0;
 		if (resource.getFluid() == FluidRegistry.WATER) {
 			meta = 1;
-		} else if (resource.getFluid().getName().contains("milk")) {
-			meta = 2;
 		} else if (resource.getFluid() == FoodInit.cream) {
 			meta = 3;
 		} else if (resource.getFluid() == FoodInit.oil) {
 			meta = 4;
+		} else if (resource.getFluid().getName().contains("milk")) {
+			meta = 2;
 		}
 
 		if (meta == 0) {
@@ -76,12 +76,12 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 		int meta = 0;
 		if (resource.getFluid() == FluidRegistry.WATER) {
 			meta = 1;
-		} else if (resource.getFluid().getName().contains("milk")) {
-			meta = 2;
 		} else if (resource.getFluid() == FoodInit.cream) {
 			meta = 3;
 		} else if (resource.getFluid() == FoodInit.oil) {
 			meta = 4;
+		} else if (resource.getFluid().getName().contains("milk")) {
+			meta = 2;
 		}
 
 		if (meta == 0) {

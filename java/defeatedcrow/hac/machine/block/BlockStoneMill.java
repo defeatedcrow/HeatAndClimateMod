@@ -16,6 +16,8 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 
 public class BlockStoneMill extends BlockTorqueBase {
 
@@ -33,6 +35,12 @@ public class BlockStoneMill extends BlockTorqueBase {
 				((TileTorqueProcessor) tile).rotateFace();
 			} else if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				if (((TileTorqueProcessor) tile).isActive()) {
+					// achievement
+					if (player.hasAchievement(AchievementClimate.MACHINE_USING)) {
+						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_USING);
+					}
+				}
 			}
 		}
 		return true;

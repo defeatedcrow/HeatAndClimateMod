@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.config.MainConfig;
 
 @Mod(
@@ -32,8 +33,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
 	public static final int MOD_MINOR = 0;
-	public static final int MOD_BUILD = 2;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1976,);required-after:dcs_climate|lib@[1.0.2,)";
+	public static final int MOD_BUILD = 3;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1976,);required-after:dcs_climate|lib@[1.0.3,)";
 
 	@SidedProxy(
 			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
@@ -44,6 +45,7 @@ public class ClimateMain {
 	public static ClimateMain instance;
 
 	public static final CreativeTabs tool = new CreativeTabClimateTool(MOD_ID);
+	public static final CreativeTabs machine = new CreativeTabClimateMachine(MOD_ID + "_machine");
 	public static final CreativeTabs food = new CreativeTabClimateFood(MOD_ID + "_food");
 	public static final CreativeTabs build = new CreativeTabClimateBuild(MOD_ID + "_build");
 
@@ -64,6 +66,10 @@ public class ClimateMain {
 		proxy.loadTE();
 		// Entity
 		proxy.loadEntity();
+		// potion
+		proxy.loadPotion();
+		// achievement
+		AchievementClimate.load();
 	}
 
 	@EventHandler

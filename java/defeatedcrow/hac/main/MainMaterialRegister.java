@@ -12,6 +12,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInitRegister;
 import defeatedcrow.hac.machine.MachineInitRegister;
 import defeatedcrow.hac.magic.MagicInitRegister;
+import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
@@ -84,144 +85,127 @@ public class MainMaterialRegister {
 		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 5);
 		registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone");
 
-		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 9);
+		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 10);
 		registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock");
 
-		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 9);
+		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 10);
 		registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock");
 
 		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 7);
 		registerBlock(MainInit.gemBlock, ClimateCore.PACKAGE_BASE + "_ore_gemblock");
 
-		MainInit.bricks = new BlockGemBricks(Material.ROCK, ClimateCore.PACKAGE_BASE + "_build_bricks")
-				.setCreativeTab(ClimateMain.build);
+		MainInit.bricks = new BlockGemBricks(Material.ROCK, ClimateCore.PACKAGE_BASE + "_build_bricks");
 		registerBlock(MainInit.bricks, ClimateCore.PACKAGE_BASE + "_build_bricks");
 
-		MainInit.selenite = new BlockGlassSelenite(ClimateCore.PACKAGE_BASE + "_build_selenite", 2)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.builds = new BlockBuilding(Material.ROCK, ClimateCore.PACKAGE_BASE + "_build_build");
+		registerBlock(MainInit.builds, ClimateCore.PACKAGE_BASE + "_build_build");
+
+		MainInit.selenite = new BlockGlassSelenite(ClimateCore.PACKAGE_BASE + "_build_selenite", 2);
 		registerBlock(MainInit.selenite, ClimateCore.PACKAGE_BASE + "_build_selenite");
 
-		MainInit.chalLamp = new BlockChalcedonyLamp(ClimateCore.PACKAGE_BASE + "_build_challamp", 15)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.chalLamp = new BlockChalcedonyLamp(ClimateCore.PACKAGE_BASE + "_build_challamp", 15);
 		registerBlock(MainInit.chalLamp, ClimateCore.PACKAGE_BASE + "_build_challamp");
 	}
 
 	static void registerSidedBlock() {
-		MainInit.logCont = new BlockLogCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_log", 6)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.logCont = new BlockLogCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_log", 6);
 		registerBlock(MainInit.logCont, ClimateCore.PACKAGE_BASE + "_cont_log");
 		ClimateMain.proxy.addSidedBlock(MainInit.logCont, "cont_log", 6);
 
-		MainInit.cropCont = new BlockCropCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_crop", 10)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.cropCont = new BlockCropCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_crop", 10);
 		registerBlock(MainInit.cropCont, ClimateCore.PACKAGE_BASE + "_cont_crop");
 		ClimateMain.proxy.addTBBlock(MainInit.cropCont, "cont_crop", 10);
 
-		MainInit.dropCont = new BlockEnemyCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_metal", 4)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.dropCont = new BlockEnemyCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_metal", 4);
 		registerBlock(MainInit.dropCont, ClimateCore.PACKAGE_BASE + "_cont_metal");
 		ClimateMain.proxy.addTBBlock(MainInit.dropCont, "cont_metal", 4);
 
-		MainInit.miscCont = new BlockMiscCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_misc", 3)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.miscCont = new BlockMiscCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_misc", 3);
 		registerBlock(MainInit.miscCont, ClimateCore.PACKAGE_BASE + "_cont_misc");
 		ClimateMain.proxy.addTBBlock(MainInit.miscCont, "cont_misc", 3);
 
-		MainInit.cardboard = new BlockCardboard(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cardboard", 5)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.cardboard = new BlockCardboard(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cardboard", 5);
 		registerBlock(MainInit.cardboard, ClimateCore.PACKAGE_BASE + "_cont_cardboard");
 		ClimateMain.proxy.addSidedBlock(MainInit.cardboard, "cont_cardboard", 5);
 
-		MainInit.dustBags = new BlockDustBag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_bags", 3)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.dustBags = new BlockDustBag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_bags", 3);
 		registerBlock(MainInit.dustBags, ClimateCore.PACKAGE_BASE + "_cont_bags");
 		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 3);
 
-		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 8)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 8);
 		registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket");
 		ClimateMain.proxy.addTBBlock(MainInit.cropBasket, "cont_basket", 8);
 	}
 
 	static void regJsonBlock() {
 		MainInit.stairsGlass = new BlockStairsBase(MainInit.selenite.getDefaultState(), "build/glass_stairs", true)
-				.setUnlocalizedName("dcs_stairs_glass").setCreativeTab(ClimateMain.build);
+				.setUnlocalizedName("dcs_stairs_glass");
 		registerBlock(MainInit.stairsGlass, ClimateCore.PACKAGE_BASE + "_stairs_glass");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsGlass), "dcs_climate", "dcs_stairs_glass",
 				"build", 15, false);
 
 		MainInit.stairsGypsum = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_gypsum", false)
-				.setUnlocalizedName("dcs_stairs_gypsum").setCreativeTab(ClimateMain.build);
+				.setUnlocalizedName("dcs_stairs_gypsum");
 		registerBlock(MainInit.stairsGypsum, ClimateCore.PACKAGE_BASE + "_stairs_gypsum");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsGypsum), "dcs_climate",
 				"dcs_stairs_gypsum", "build", 15, false);
 
-		MainInit.halfSlab = new BlockSlabDC().setCreativeTab(ClimateMain.build);
+		MainInit.halfSlab = new BlockSlabDC();
 		registerBlock(MainInit.halfSlab, ClimateCore.PACKAGE_BASE + "_build_slab");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab), "dcs_climate", "dcs_build_slab",
 				"build", 2, true);
 
-		MainInit.tableMarble = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_marble", false)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.tableMarble = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_marble", false);
 		registerBlock(MainInit.tableMarble, ClimateCore.PACKAGE_BASE + "_table_marble");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableMarble), "dcs_climate", "dcs_table_marble",
 				"build", 0, false);
 
-		MainInit.tableGypsum = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_gypsum", false)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.tableGypsum = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_gypsum", false);
 		registerBlock(MainInit.tableGypsum, ClimateCore.PACKAGE_BASE + "_table_gypsum");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableGypsum), "dcs_climate", "dcs_table_gypsum",
 				"build", 0, false);
 
-		MainInit.tableWood = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_wood", false)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.tableWood = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_wood", false);
 		registerBlock(MainInit.tableWood, ClimateCore.PACKAGE_BASE + "_table_wood");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableWood), "dcs_climate", "dcs_table_wood",
 				"build", 0, false);
 
-		MainInit.tableDark = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_darkwood", false)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.tableDark = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_darkwood", false);
 		registerBlock(MainInit.tableDark, ClimateCore.PACKAGE_BASE + "_table_darkwood");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableDark), "dcs_climate", "dcs_table_darkwood",
 				"build", 0, false);
 
-		MainInit.carpetRed = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_red", true)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.carpetRed = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_red", true);
 		registerBlock(MainInit.carpetRed, ClimateCore.PACKAGE_BASE + "_carpet_red");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.carpetRed), "dcs_climate", "dcs_carpet_red",
 				"build", 0, false);
 
-		MainInit.carpetWhite = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_white", true)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.carpetWhite = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_white", true);
 		registerBlock(MainInit.carpetWhite, ClimateCore.PACKAGE_BASE + "_carpet_white");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.carpetWhite), "dcs_climate", "dcs_carpet_white",
 				"build", 0, false);
 
-		MainInit.carpetGray = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_gray", true)
-				.setCreativeTab(ClimateMain.build);
+		MainInit.carpetGray = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_gray", true);
 		registerBlock(MainInit.carpetGray, ClimateCore.PACKAGE_BASE + "_carpet_gray");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.carpetGray), "dcs_climate", "dcs_carpet_gray",
 				"build", 0, false);
 
-		MainInit.sofaBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_black")
-				.setCreativeTab(ClimateMain.build);
+		MainInit.sofaBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_black");
 		registerBlock(MainInit.sofaBlack, ClimateCore.PACKAGE_BASE + "_sofa_black");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.sofaBlack), "dcs_climate", "dcs_sofa_black",
 				"build", 0, false);
 
-		MainInit.sofaRed = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_red").setCreativeTab(ClimateMain.build);
+		MainInit.sofaRed = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_red");
 		registerBlock(MainInit.sofaRed, ClimateCore.PACKAGE_BASE + "_sofa_red");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.sofaRed), "dcs_climate", "dcs_sofa_red", "build",
 				0, false);
 
-		MainInit.stoolBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_black").setSmallAABB()
-				.setCreativeTab(ClimateMain.build);
+		MainInit.stoolBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_black").setSmallAABB();
 		registerBlock(MainInit.stoolBlack, ClimateCore.PACKAGE_BASE + "_stool_black");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stoolBlack), "dcs_climate", "dcs_stool_black",
 				"build", 0, false);
 
-		MainInit.stoolRed = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_red").setSmallAABB().setCreativeTab(
-				ClimateMain.build);
+		MainInit.stoolRed = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_red").setSmallAABB();
 		registerBlock(MainInit.stoolRed, ClimateCore.PACKAGE_BASE + "_stool_red");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stoolRed), "dcs_climate", "dcs_stool_red",
 				"build", 0, false);
@@ -240,48 +224,39 @@ public class MainMaterialRegister {
 
 	static void registerItems() {
 		// ores
-		MainInit.oreIngot = new ItemIngots(9).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		GameRegistry.register(MainInit.oreIngot.setRegistryName(ClimateCore.PACKAGE_BASE + "_ingot"));
 
-		MainInit.oreDust = new ItemOreDusts(8).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_oredust");
+		MainInit.oreDust = new ItemOreDusts(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		GameRegistry.register(MainInit.oreDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_oredust"));
 
-		MainInit.gems = new ItemGems(11).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(11).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		GameRegistry.register(MainInit.gems.setRegistryName(ClimateCore.PACKAGE_BASE + "_gem"));
 
-		MainInit.miscDust = new ItemMiscDust(7).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_miscdust");
+		MainInit.miscDust = new ItemMiscDust(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		GameRegistry.register(MainInit.miscDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_miscdust"));
 
 		// tools
-		MainInit.materials = new ItemMiscs(6).setCreativeTab(ClimateCore.climate).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_material");
+		MainInit.materials = new ItemMiscs(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
 		GameRegistry.register(MainInit.materials.setRegistryName(ClimateCore.PACKAGE_BASE + "_material"));
 
-		MainInit.stoneYagen = new ItemStoneYagen().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_yagen_stone");
+		MainInit.stoneYagen = new ItemStoneYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_stone");
 		GameRegistry.register(MainInit.stoneYagen.setRegistryName(ClimateCore.PACKAGE_BASE + "_yagen_stone"));
 
-		MainInit.brassYagen = new ItemArroyYagen().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_yagen_brass");
+		MainInit.brassYagen = new ItemArroyYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_brass");
 		GameRegistry.register(MainInit.brassYagen.setRegistryName(ClimateCore.PACKAGE_BASE + "_yagen_brass"));
 
-		MainInit.crowDrill = new ItemCrowDrill().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_creative_drill");
+		MainInit.crowDrill = new ItemCrowDrill().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_creative_drill");
 		GameRegistry.register(MainInit.crowDrill.setRegistryName(ClimateCore.PACKAGE_BASE + "_creative_drill"));
 
 	}
 
 	static void registerFood() {
-		MainInit.foodMaterials = new ItemFoodMaterials(2).setCreativeTab(ClimateMain.food).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_food_materials");
+		MainInit.foodMaterials = new ItemFoodMaterials(2).setUnlocalizedName(ClimateCore.PACKAGE_BASE
+				+ "_food_materials");
 		GameRegistry.register(MainInit.foodMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_materials"));
 
-		MainInit.bakedApple = new ItemDCFoods(2, false).setCreativeTab(ClimateMain.food).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_food_itemfood");
+		MainInit.bakedApple = new ItemDCFoods(2, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		GameRegistry.register(MainInit.bakedApple.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_itemfood"));
 	}
 
@@ -380,15 +355,14 @@ public class MainMaterialRegister {
 				"suit").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_suit");
 		GameRegistry.register(MainInit.blackSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_suit"));
 
-		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0)).setCreativeTab(ClimateMain.tool)
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wrench_brass");
+		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0)).setUnlocalizedName(ClimateCore.PACKAGE_BASE
+				+ "_wrench_brass");
 		GameRegistry.register(MainInit.wrench.setRegistryName(ClimateCore.PACKAGE_BASE + "_wrench"));
 
 	}
 
 	static void registerMaterialEnum() {
-		MainInit.repairPutty = new ItemRepairPutty().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_repair");
+		MainInit.repairPutty = new ItemRepairPutty().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_repair");
 		GameRegistry.register(MainInit.repairPutty.setRegistryName(ClimateCore.PACKAGE_BASE + "_repair"));
 
 		DCArmorMaterial.load();

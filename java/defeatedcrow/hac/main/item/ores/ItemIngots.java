@@ -18,7 +18,8 @@ public class ItemIngots extends DCItem {
 			"nickelsilver",
 			"magnet",
 			"tin",
-			"bronze" };
+			"bronze",
+			"sus" };
 
 	public ItemIngots(int max) {
 		super();
@@ -41,6 +42,7 @@ public class ItemIngots extends DCItem {
 	 * 7: 磁石
 	 * 8: 錫
 	 * 9: 青銅
+	 * 10: SUS
 	 */
 	@Override
 	public String[] getNameSuffix() {

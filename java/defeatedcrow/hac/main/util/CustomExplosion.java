@@ -98,7 +98,7 @@ public class CustomExplosion extends Explosion {
 
 				boolean flag = true;
 				float damage = (int) ((this.size * this.size * 2) * (d11 * d11));
-				damage = Math.max(damage, 3.0F);
+				damage = Math.max(damage, 15.0F);
 
 				if (this.type == Type.Silk) {
 					if (entity instanceof EntityItem || entity instanceof IProjectile || entity == this.bomb) {

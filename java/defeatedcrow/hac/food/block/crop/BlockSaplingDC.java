@@ -33,7 +33,6 @@ import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.worldgen.WorldGenDCTree;
 
 public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPlantable {
@@ -43,7 +42,6 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		setSoundType(SoundType.PLANT);
 		setHardness(0.0F);
 		setResistance(3.0F);
-		setCreativeTab(ClimateMain.food);
 	}
 
 	@Override

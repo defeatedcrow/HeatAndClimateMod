@@ -47,6 +47,8 @@ public class OreDicRegister {
 		OreDictionary.registerOre("ingotMagnet", new ItemStack(MainInit.oreIngot, 1, 7));
 		OreDictionary.registerOre("ingotTin", new ItemStack(MainInit.oreIngot, 1, 8));
 		OreDictionary.registerOre("ingotBronze", new ItemStack(MainInit.oreIngot, 1, 9));
+		OreDictionary.registerOre("ingotInox", new ItemStack(MainInit.oreIngot, 1, 10));
+		OreDictionary.registerOre("ingotSUS", new ItemStack(MainInit.oreIngot, 1, 10));
 
 		OreDictionary.registerOre("dustCopper", new ItemStack(MainInit.oreDust, 1, 0));
 		OreDictionary.registerOre("dustZinc", new ItemStack(MainInit.oreDust, 1, 1));
@@ -57,6 +59,8 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustSteel", new ItemStack(MainInit.oreDust, 1, 6));
 		OreDictionary.registerOre("dustMagnetite", new ItemStack(MainInit.oreDust, 1, 7));
 		OreDictionary.registerOre("dustTin", new ItemStack(MainInit.oreDust, 1, 8));
+		OreDictionary.registerOre("dustChromium", new ItemStack(MainInit.oreDust, 1, 9));
+		OreDictionary.registerOre("dyeGreen", new ItemStack(MainInit.oreDust, 1, 9));
 
 		OreDictionary.registerOre("blockCopper", new ItemStack(MainInit.metalBlock, 1, 0));
 		OreDictionary.registerOre("blockZinc", new ItemStack(MainInit.metalBlock, 1, 1));
@@ -68,6 +72,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("blockMagnet", new ItemStack(MainInit.metalBlock, 1, 7));
 		OreDictionary.registerOre("blockTin", new ItemStack(MainInit.metalBlock, 1, 8));
 		OreDictionary.registerOre("blockBronze", new ItemStack(MainInit.metalBlock, 1, 9));
+		OreDictionary.registerOre("blockSUS", new ItemStack(MainInit.metalBlock, 1, 10));
 
 		// gems
 		OreDictionary.registerOre("gemChalcedony", new ItemStack(MainInit.gems, 1, 0));
@@ -116,6 +121,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gearBrass", new ItemStack(MainInit.materials, 1, 5));
 		OreDictionary.registerOre("gearArroy", new ItemStack(MainInit.materials, 1, 6));
 		OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.materials, 1, 6));
+		OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.materials, 1, 7));
 
 		// tool
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.stoneYagen, 1, 32767));
@@ -131,7 +137,6 @@ public class OreDicRegister {
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.materials, 1, 5));
-
 	}
 
 }

@@ -13,6 +13,8 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 
 public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 
@@ -34,6 +36,12 @@ public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 			if (tile != null && tile.getBlock() instanceof BlockTorqueBase) {
 				EnumFacing face = tile.getValue(DCState.SIDE).getFacing();
 				world.setBlockState(pos, tile.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite())));
+
+				// achievement
+				if (player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
+					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+				}
+
 				return EnumActionResult.SUCCESS;
 			}
 		}

@@ -18,7 +18,6 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.main.ClimateMain;
 
 public class BlockCotton extends ClimateDoubleCropBase implements ITexturePath {
 
@@ -27,7 +26,6 @@ public class BlockCotton extends ClimateDoubleCropBase implements ITexturePath {
 		setSoundType(SoundType.PLANT);
 		setHardness(0.0F);
 		setResistance(3.0F);
-		setCreativeTab(ClimateMain.food);
 	}
 
 	@Override

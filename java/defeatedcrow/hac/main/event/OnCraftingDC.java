@@ -1,12 +1,15 @@
 package defeatedcrow.hac.main.event;
 
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 
 public class OnCraftingDC {
 
@@ -15,23 +18,18 @@ public class OnCraftingDC {
 
 		EntityPlayer player = event.player;
 		IInventory craftMatrix = event.craftMatrix;
-		ItemStack crafting = event.crafting;
-		if (player != null && !player.worldObj.isRemote) {
-			boolean hasCharm = false;
-			for (int i = 9; i < 18; i++) {
-				ItemStack check = player.inventory.getStackInSlot(i);
-				if (check != null && check.getItem() != null && check.getItem() == MagicInit.pendant) {
-					int m = check.getMetadata();
-					if (m == 8) {
-						hasCharm = true;
-					}
-				}
-			}
+		ItemStack craft = event.crafting;
 
-			int exp = player.worldObj.rand.nextInt(4) + 2;
-			if (player.worldObj.rand.nextInt(3) == 0 && hasCharm) {
-				player.worldObj.spawnEntityInWorld(new EntityXPOrb(player.worldObj, player.posX, player.posY,
-						player.posZ, exp));
+		// achievement
+		if (craft != null) {
+			if (player != null) {
+				if (craft.getItem() == DCInit.climate_checker) {
+					AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_CHECKER);
+				} else if (craft.getItem() == MainInit.materials && craft.getItemDamage() == 5) {
+					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_GEAR);
+				} else if (craft.getItem() == MagicInit.daggerSilver) {
+					AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_KNIFE);
+				}
 			}
 		}
 	}

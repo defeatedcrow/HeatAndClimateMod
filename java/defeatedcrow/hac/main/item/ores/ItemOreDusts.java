@@ -16,7 +16,8 @@ public class ItemOreDusts extends DCItem {
 			"iron",
 			"steel",
 			"magnet",
-			"tin" };
+			"tin",
+			"chromium" };
 
 	public ItemOreDusts(int max) {
 		super();
@@ -37,6 +38,8 @@ public class ItemOreDusts extends DCItem {
 	 * 5: 鉄
 	 * 6: 鋼
 	 * 7: 磁石
+	 * 8: 錫
+	 * 9: 三価クロム
 	 */
 	@Override
 	public String[] getNameSuffix() {

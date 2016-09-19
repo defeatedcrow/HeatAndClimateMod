@@ -14,6 +14,7 @@ item.dcs_ingot_magnet.name=磁石インゴット
 item.dcs_ingot_steel.name=鋼インゴット
 item.dcs_ingot_tin.name=錫インゴット
 item.dcs_ingot_bronze.name=青銅インゴット
+item.dcs_ingot_sus.name=SUSインゴット
 item.dcs_oredust_copper.name=銅粉末
 item.dcs_oredust_zinc.name=亜鉛粉末
 item.dcs_oredust_silver.name=銀粉末
@@ -24,6 +25,7 @@ item.dcs_oredust_steel.name=鋼粉末
 item.dcs_oredust_magnet.name=磁鉄鉱粉末
 item.dcs_oredust_tin.name=錫粉末
 item.dcs_oredust_bronze.name=青銅粉末
+item.dcs_oredust_chromium.name=クロミウム粉末
 item.dcs_gem_chal_blue.name=青カルセドニー
 item.dcs_gem_chal_red.name=赤カルセドニー
 item.dcs_gem_chal_white.name=白カルセドニー
@@ -52,6 +54,7 @@ item.dcs_material_cloth_cotton.name=木綿布
 item.dcs_material_spindle_wood.name=木の回転子
 item.dcs_material_spindle_brass.name=真鍮の回転子
 item.dcs_material_spindle_arroy.name=合金の回転子
+item.dcs_material_spindle_steel.name=鋼の回転子
 
 item.dcs_food_materials_salt.name=食塩
 item.dcs_food_materials_flour.name=小麦粉
@@ -197,6 +200,24 @@ item.dcs_jewel_badge_lapis.name=ラピスラズリのバッジ
 item.dcs_jewel_badge_diamond.name=ダイヤのバッジ
 item.dcs_jewel_badge_schorl.name=ショールのバッジ
 
+item.dcs_dagger_silver.name=銀の投げナイフ
+item.dcs_dagger_magic_0.name=宝石剣 (対空)
+item.dcs_dagger_magic_1.name=宝石剣 (炸裂)
+item.dcs_dagger_magic_2.name=宝石剣 (氷)
+item.dcs_dagger_magic_3.name=宝石剣 (極寒)
+item.dcs_dagger_magic_4.name=宝石剣 (火)
+item.dcs_dagger_magic_5.name=宝石剣 (煉獄)
+item.dcs_dagger_magic_6.name=宝石剣 (重力)
+item.dcs_dagger_magic_7.name=宝石剣 (浮遊)
+item.dcs_dagger_magic_8.name=宝石剣 (錯乱)
+item.dcs_dagger_magic_9.name=宝石剣 (敵性バリア)
+item.dcs_dagger_magic_10.name=宝石剣 (投擲バリア)
+item.dcs_dagger_magic_11.name=宝石剣 (回復バリア)
+item.dcs_dagger_magic_12.name=宝石剣 (雷雨)
+item.dcs_dagger_magic_13.name=宝石剣 (瞬間移動)
+item.dcs_dagger_magic_14.name=宝石剣 (鉱脈生成)
+item.dcs_dagger_magic_15.name=宝石剣 (???)
+
 ## block
 tile.dcs_ore_stone_0.name=石膏石
 tile.dcs_ore_stone_1.name=赤鉄鉱
@@ -230,6 +251,7 @@ tile.dcs_dustblock_steel.name=鉄粉ブロック
 tile.dcs_dustblock_magnet.name=磁鉄鉱粉ブロック
 tile.dcs_dustblock_tin.name=錫粉末ブロック
 tile.dcs_dustblock_bronze.name=青銅粉末ブロック
+tile.dcs_dustblock_sus.name=SUS粉末ブロック
 tile.dcs_metal_copper.name=銅ブロック
 tile.dcs_metal_zinc.name=亜鉛ブロック
 tile.dcs_metal_nickel.name=ニッケルブロック
@@ -240,6 +262,7 @@ tile.dcs_metal_steel.name=鋼ブロック
 tile.dcs_metal_magnet.name=磁鉄鉱ブロック
 tile.dcs_metal_tin.name=錫ブロック
 tile.dcs_metal_bronze.name=青銅ブロック
+tile.dcs_metal_sus.name=SUSブロック
 tile.dcs_gemblock_chal_blue.name=青カルセドニーブロック
 tile.dcs_gemblock_chal_red.name=赤カルセドニーブロック
 tile.dcs_gemblock_chal_white.name=白カルセドニーブロック
@@ -306,6 +329,9 @@ tile.dcs_build_slab_gypsum.name=石膏半ブロック
 tile.dcs_build_bricks_gypsum.name=石膏レンガブロック
 tile.dcs_build_bricks_marble.name=大理石レンガブロック
 tile.dcs_build_bricks_lime.name=石灰岩レンガブロック
+tile.dcs_build_build_concrete.name=コンクリートブロック
+tile.dcs_build_build_mosaic_red.name=モザイクタイル(赤)
+tile.dcs_build_build_mosaic_blue.name=モザイクタイル(青)
 tile.dcs_build_challamp_cube_blue.name=青玉髄ランプ
 tile.dcs_build_challamp_cube_red.name=赤玉髄ランプ
 tile.dcs_build_challamp_cube_white.name=白玉髄ランプ
@@ -429,8 +455,25 @@ dcs.tip.badge.7=転移の徽章
 dcs.tip.badge.8=採掘の徽章
 dcs.tip.badge.9=鉱業の徽章
 dcs.tip.badge.10=雷撃の徽章
+dcs.tip.dagger.0=単体:対空攻撃
+dcs.tip.dagger.1=範囲:爆発を発生
+dcs.tip.dagger.2=単体:氷属性攻撃
+dcs.tip.dagger.3=範囲:絶対零度の氷を召喚する
+dcs.tip.dagger.4=単体:火属性攻撃
+dcs.tip.dagger.5=範囲:煉獄の炎を召喚する
+dcs.tip.dagger.6=範囲:重力ポーションを付与する
+dcs.tip.dagger.7=範囲:浮遊ポーションを付与する
+dcs.tip.dagger.8=範囲:モブ同士で戦わせる
+dcs.tip.dagger.9=設置:敵性モブを消去するバリア
+dcs.tip.dagger.10=設置:投擲弾を消去するバリア
+dcs.tip.dagger.11=設置:プレイヤーに回復効果を与えるバリア
+dcs.tip.dagger.12=単体:着弾点に雷を落とし、雷雲を呼ぶ
+dcs.tip.dagger.13=単体:着弾点にワープする
+dcs.tip.dagger.14=範囲:着弾点付近のダイヤブロックの数に応じて、スカルン鉱脈を召喚する
+dcs.tip.dagger.15=範囲:???
 
 dcs.tip.shift=Lshiftキー: 詳細を表示
+dcs.tip.require_achievement=取扱いに実績が必要!
 
 dcs.comment.pendant.0=水と氷ダメージを軽減する
 dcs.comment.pendant.1=炎と高熱ダメージを軽減する
@@ -471,3 +514,48 @@ dcs.gui.message.suitableclimate=適温
 
 death.attack.dcs_heat=%1$sはこんがり焼き上がった。
 death.attack.dcs_cold=%1$sはシャーベットになった。
+
+#potion
+dcs.potion.gravity=重力
+potion.effect.dcs.gravity=重力のポーション
+splash_potion.effect.dcs.gravity=重力のスプラッシュポーション
+lingering_potion.effect.dcs.gravity=重力の残留ポーション
+
+#achievement
+achievement.dcs.climate_master=気候観測士
+achievement.dcs.climate_master.desc=気候に関する実績を積もう!
+dcs.achievement_additional_desc.climate_master=達成ボーナス:より詳しい気候情報がHUDに表示される
+achievement.dcs.machine_master=トルク機械技師
+achievement.dcs.machine_master.desc=トルクマシンに関する実績を積もう!
+dcs.achievement_additional_desc.machine_master=達成ボーナス: 上位Tierの機械を扱えるようになる
+achievement.dcs.magic_master=宝石職人
+achievement.dcs.magic_master.desc=宝石に関する実績を積もう!
+dcs.achievement_additional_desc.magic_master=達成ボーナス:さらなる宝石の魔法アイテムを扱えるようになる
+
+achievement.dcs.climate_checker=現在地の気候をチェック
+achievement.dcs.climate_checker.desc=気候チェッカーをクラフトする
+achievement.dcs.climate_damage=きびしい気候
+achievement.dcs.climate_damage.desc=気候からダメージを受ける
+achievement.dcs.climate_prevent=衣服で快適に
+achievement.dcs.climate_prevent.desc=気候耐性値が合計4.0F以上になるように防具を着よう
+achievement.dcs.climate_smelt=気候で精錬
+achievement.dcs.climate_smelt.desc=熱い温度の場所にリンゴ箱ブロックを置いて、焼きリンゴを手に入れよう
+
+achievement.dcs.machine_gear=マシンの部品作り
+achievement.dcs.machine_gear.desc=真鍮の回転体を作る
+achievement.dcs.machine_place=回転が持つエネルギー
+achievement.dcs.machine_place.desc=いずれかのトルクシャフトを設置する
+achievement.dcs.machine_rotate=レンチの取扱い
+achievement.dcs.machine_rotate.desc=レンチでトルクマシンを右クリックして、回転させる
+achievement.dcs.machine_stonemill=新しいエネルギーでできること
+achievement.dcs.machine_stonemill.desc=石臼を稼働させ、使用する
+
+achievement.dcs.magic_getgem=新種の宝石
+achievement.dcs.magic_getgem.desc=いずれかの追加された宝石を拾う
+achievement.dcs.magic_raregem=レアな宝石
+achievement.dcs.magic_raregem.desc=幸運ツールか石臼レシピでしか得られないレア宝石を拾う
+achievement.dcs.magic_charm=宝石の魔力
+achievement.dcs.magic_charm.desc=宝石のペンダントを作り、インベントリの一番上に置いてみよう!
+achievement.dcs.magic_knife=銀の投げナイフ
+achievement.dcs.magic_knife.desc=銀の投げナイフを作ろう
+

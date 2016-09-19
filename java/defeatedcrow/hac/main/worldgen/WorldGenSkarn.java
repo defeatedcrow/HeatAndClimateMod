@@ -20,12 +20,26 @@ import defeatedcrow.hac.main.config.WorldGenConfig;
 public class WorldGenSkarn implements IWorldGenerator {
 
 	private final boolean isForced;
+	private int range = -1;
+	private int forceX = 0;
+	private int forceZ = 0;
 
 	private static Random pRandom;
 
 	public WorldGenSkarn(boolean force) {
 		super();
 		isForced = force;
+	}
+
+	public void setRange(int i) {
+		if (i > 10)
+			i = 10;
+		range = i;
+	}
+
+	public void setForcePos(int x, int z) {
+		forceX = x;
+		forceZ = z;
 	}
 
 	@Override
@@ -53,10 +67,18 @@ public class WorldGenSkarn implements IWorldGenerator {
 
 		posX += world.rand.nextInt(16);
 		posZ += world.rand.nextInt(16);
+		if (isForced && forceX != 0 & forceZ != 0) {
+			posX = forceX;
+			posZ = forceZ;
+		}
 		BlockPos pos = new BlockPos(posX, 75, posZ);
+
 		Biome biome = world.getBiomeGenForCoords(pos);
 		int f = world.rand.nextInt(15);
-		int r = 3 + f;
+		if (range > 0) {
+			f = (range / 2) + world.rand.nextInt(range);
+		}
+		int r = 2 + f;
 
 		if (!BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.WET)
 				&& BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.FOREST)) {

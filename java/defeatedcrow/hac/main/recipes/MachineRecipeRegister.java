@@ -51,7 +51,7 @@ public class MachineRecipeRegister {
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 6), DCHeatTier.SMELTING, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 6));
 		// magnet
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 7), DCHeatTier.SMELTING, null,
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 7), DCHeatTier.UHT, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 7));
 
 		// tin
@@ -61,6 +61,10 @@ public class MachineRecipeRegister {
 		// bronze
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 9), DCHeatTier.KILN, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 9));
+
+		// sus
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 10), DCHeatTier.UHT, null,
+				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 10));
 
 		// dust個別精錬
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 0), DCHeatTier.KILN, null,

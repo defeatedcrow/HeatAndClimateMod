@@ -33,7 +33,14 @@ public class ItemFluidPack extends DCItem {
 
 	public ItemFluidPack() {
 		super();
-		this.setContainerItem(this);
+	}
+
+	@Override
+	public ItemStack getContainerItem(ItemStack stack) {
+		if (stack.getItemDamage() == 0) {
+			return null;
+		}
+		return new ItemStack(this);
 	}
 
 	@Override
