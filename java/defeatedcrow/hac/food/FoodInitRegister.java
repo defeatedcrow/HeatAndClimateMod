@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.block.BlockPotteryPot;
 import defeatedcrow.hac.food.block.BlockSteelPot;
+import defeatedcrow.hac.food.block.BlockTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockCoffee;
 import defeatedcrow.hac.food.block.crop.BlockCotton;
 import defeatedcrow.hac.food.block.crop.BlockLeavesLemon;
@@ -17,6 +18,7 @@ import defeatedcrow.hac.food.block.crop.BlockRice;
 import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
 import defeatedcrow.hac.food.block.crop.BlockSpinach;
 import defeatedcrow.hac.food.block.crop.BlockTomato;
+import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.item.ItemDCCrops;
 import defeatedcrow.hac.food.item.ItemDCSeeds;
 import defeatedcrow.hac.food.item.ItemDairy;
@@ -41,6 +43,8 @@ public class FoodInitRegister {
 	}
 
 	public static void load() {
+		DrinkCapabilityHandler.register();
+
 		loadBlocks();
 		loadItems();
 		loadFluids();
@@ -95,6 +99,9 @@ public class FoodInitRegister {
 
 		FoodInit.steelPot = new BlockSteelPot(ClimateCore.PACKAGE_BASE + "_device_steel_pot");
 		MainMaterialRegister.registerBlock(FoodInit.steelPot, ClimateCore.PACKAGE_BASE + "_device_steel_pot");
+
+		FoodInit.teaPot = new BlockTeaPot(ClimateCore.PACKAGE_BASE + "_device_tea_pot");
+		MainMaterialRegister.registerBlock(FoodInit.teaPot, ClimateCore.PACKAGE_BASE + "_device_tea_pot");
 	}
 
 	static void loadItems() {
@@ -227,6 +234,7 @@ public class FoodInitRegister {
 
 		FoodInit.potteryPot.setCreativeTab(ClimateMain.food);
 		FoodInit.steelPot.setCreativeTab(ClimateMain.food);
+		FoodInit.teaPot.setCreativeTab(ClimateMain.food);
 
 		FoodInit.cropRice.setCreativeTab(ClimateMain.food);
 		FoodInit.cropOnion.setCreativeTab(ClimateMain.food);

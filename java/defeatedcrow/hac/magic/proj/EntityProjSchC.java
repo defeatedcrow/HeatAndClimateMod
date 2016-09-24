@@ -1,5 +1,8 @@
 package defeatedcrow.hac.magic.proj;
 
+import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
+import defeatedcrow.hac.main.client.particle.ParticleShock;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,9 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
-import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
-import defeatedcrow.hac.main.client.particle.ParticleShock;
 
 public class EntityProjSchC extends EntityMagicProjBase {
 
@@ -48,11 +48,7 @@ public class EntityProjSchC extends EntityMagicProjBase {
 			liv.fallDistance = 0.0F;
 			this.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.8F / (this.rand.nextFloat() * 0.2F + 0.9F));
 		}
-		if (worldObj.rand.nextInt(5) != 0) {
-			this.dropAndDeath();
-		} else {
-			this.setDead();
-		}
+		this.dropAndDeath();
 		return true;
 	}
 
@@ -74,18 +70,18 @@ public class EntityProjSchC extends EntityMagicProjBase {
 	@Override
 	protected void onGroundClient() {
 
-		double x1 = (double) posX + rand.nextDouble() - 0.5D;
-		double y1 = (double) posY + rand.nextDouble() - 0.5D;
-		double z1 = (double) posZ + rand.nextDouble() - 0.5D;
+		double x1 = posX + rand.nextDouble() - 0.5D;
+		double y1 = posY + rand.nextDouble() - 0.5D;
+		double z1 = posZ + rand.nextDouble() - 0.5D;
 		Particle shock = new ParticleShock.Factory().getEntityFX(0, worldObj, x1, y1, z1, 0D, 0D, 0D, new int[0]);
 		shock.setRBGColorF(0.65F, 0.95F, 0.95F);
 		FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 
 		int i = 0;
 		while (i < 3) {
-			double x = (double) posX + rand.nextDouble();
-			double y = (double) posY + 0.25D + rand.nextDouble();
-			double z = (double) posZ + rand.nextDouble();
+			double x = posX + rand.nextDouble();
+			double y = posY + 0.25D + rand.nextDouble();
+			double z = posZ + rand.nextDouble();
 
 			double fx = 0.5D * rand.nextDouble() - 0.25D;
 			double fy = 0.5D + rand.nextDouble() * 0.25D;

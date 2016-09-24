@@ -1,15 +1,14 @@
 package defeatedcrow.hac.magic.client;
 
+import defeatedcrow.hac.core.client.base.DCFoodModelBase;
+import defeatedcrow.hac.magic.proj.EntityMagicProjBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCFoodModelBase;
-import defeatedcrow.hac.magic.proj.EntityMagicProjBase;
 
 @SideOnly(Side.CLIENT)
 public class MagicDaggerRenderer extends Render<EntityMagicProjBase> {
@@ -37,12 +36,12 @@ public class MagicDaggerRenderer extends Render<EntityMagicProjBase> {
 		GlStateManager.scale(-1.0F, -1.0F, 1.0F);
 		this.bindTexture(tex);
 
-		float rotX = (entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks);
+		float rotX = -(entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks);
 		float rotY = 180.0F - (entity.prevRotationYaw + (entity.rotationYaw - entity.prevRotationYaw) * partialTicks);
-		float rotZ = (entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks);
+		float rotZ = 0.0F;
 
-		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(rotZ, 0.0F, 0.0F, 1.0F);
 
 		model.render(0.0625F);
@@ -53,7 +52,7 @@ public class MagicDaggerRenderer extends Render<EntityMagicProjBase> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityMagicProjBase entity) {
-		return TextureMap.LOCATION_BLOCKS_TEXTURE;
+		return TEX;
 	}
 
 	protected ResourceLocation getTexture() {

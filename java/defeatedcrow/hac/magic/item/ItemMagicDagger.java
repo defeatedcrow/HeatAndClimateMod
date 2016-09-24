@@ -2,23 +2,6 @@ package defeatedcrow.hac.magic.item;
 
 import java.util.List;
 
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.magic.proj.EntityMagicProjBase;
@@ -38,6 +21,23 @@ import defeatedcrow.hac.magic.proj.EntityProjSapW;
 import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.main.achievement.AcvHelper;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMagicDagger extends DCItem {
 
@@ -90,7 +90,7 @@ public class ItemMagicDagger extends DCItem {
 			"sch_clm", /* 13:着弾点に移動 */
 			// エリア効果
 			"clm_dia_sap", /* 14:鉱石生成イベント呼び出し */
-			"clm_mal_cel" /* 15:Biome書き換え */};
+			"clm_mal_cel" /* 15:Biome書き換え */ };
 
 	public ItemMagicDagger() {
 		super();
@@ -224,11 +224,15 @@ public class ItemMagicDagger extends DCItem {
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
 		String s = "";
 		int meta = stack.getMetadata();
-		tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.tip.dagger." + meta));
-		if (meta == 13) {
-			tooltip.add(TextFormatting.BOLD.toString() + "RETURNABLE");
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.tip.dagger." + meta));
+			if (meta == 13) {
+				tooltip.add(TextFormatting.BOLD.toString() + "RETURNABLE");
+			} else {
+				tooltip.add(TextFormatting.BOLD.toString() + "DISPOSABLE");
+			}
 		} else {
-			tooltip.add(TextFormatting.BOLD.toString() + "DISPOSABLE");
+			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
 		}
 		if (player != null && !AcvHelper.hasMagicMaster(player)) {
 			tooltip.add(TextFormatting.RED.toString() + I18n.translateToLocal("dcs.tip.require_achievement"));

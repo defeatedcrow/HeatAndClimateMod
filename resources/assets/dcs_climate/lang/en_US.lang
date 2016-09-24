@@ -98,10 +98,10 @@ item.dcs_food_tart_apple_raw.name=Raw Apple Tart
 item.dcs_food_tart_apple_baked.name=Apple Tart
 item.dcs_food_tart_lemon_raw.name=Raw Lemon Cream Tart
 item.dcs_food_tart_lemon_baked.name=Lemon Cream Tart
-item.dcs_food_tart_spinach_raw.name=Raw Spinach Quiche 
-item.dcs_food_tart_spinach_baked.name=Spinach Quiche 
-item.dcs_food_tart_potato_raw.name=Raw Potato Quiche 
-item.dcs_food_tart_potato_baked.name=Potato Quiche 
+item.dcs_food_tart_spinach_raw.name=Raw Spinach Quiche
+item.dcs_food_tart_spinach_baked.name=Spinach Quiche
+item.dcs_food_tart_potato_raw.name=Raw Potato Quiche
+item.dcs_food_tart_potato_baked.name=Potato Quiche
 item.dcs_food_pie_sugar_raw.name=Raw Sugar Pastry
 item.dcs_food_pie_sugar_baked.name=Sugar Pastry
 item.dcs_food_pie_meat_raw.name=Raw Meat Pie
@@ -378,6 +378,7 @@ tile.dcs_device_windmill_l_0.name=Large Windmill
 tile.dcs_device_stevenson_screen_0.name=Stevenson Screen
 tile.dcs_device_pottery_pot_0.name=Pottery Pot
 tile.dcs_device_steel_pot_0.name=Steel Pot
+tile.dcs_device_tea_pot_0.name=Tea Pot
 
 tile.dcs_crop_rice_3.name=Rice Plant
 tile.dcs_crop_onion_3.name=Onion Plant
@@ -457,6 +458,11 @@ dcs.tip.badge.8=Boosting Your Digging
 dcs.tip.badge.9=Chained Mining
 dcs.tip.badge.10=Thunderbolt
 
+dcs.tip.shitirin.description=It's the japanese charcoal stove.
+dcs.tip.teapot=Right-click to this block with flavor items.
+dcs.tip.teapot.milk=ex. milk pack, cream pack
+dcs.tip.teapot.sugar=ex. sugar
+
 dcs.tip.shift=Lshift Key: expand tooltip
 dcs.tip.require_achievement=Require the achievement for using!
 
@@ -489,6 +495,8 @@ dcs.gui.device.chamber=Combustion Chamber GUI
 dcs.gui.device.shitirin=Shichirin GUI
 dcs.gui.device.mill=Stone Mill GUI
 dcs.gui.device.stevenson_screen=Stevensoc Screen
+dcs.gui.device.fluidprocessor=Fluid Crafting
+dcs.gui.device.teapot=Tea Pot
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold
@@ -535,7 +543,7 @@ achievement.dcs.machine_stonemill=New Energy, New Crafting
 achievement.dcs.machine_stonemill.desc=Place and operate the Stone Mill.
 
 achievement.dcs.magic_getgem=New Gems
-achievement.dcs.magic_getgem.desc=New gem ores generated in new lode. 
+achievement.dcs.magic_getgem.desc=New gem ores generated in new lode.
 achievement.dcs.magic_raregem=Rare Gems
 achievement.dcs.magic_raregem.desc=Rare gems will be discovered by fortune tools or millstone recipes.
 achievement.dcs.magic_charm=Magical Silver Jewelry

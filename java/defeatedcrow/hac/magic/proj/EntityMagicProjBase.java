@@ -74,7 +74,7 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 	protected void onHit(RayTraceResult raytraceResultIn) {
 		Entity entity = raytraceResultIn.entityHit;
 
-		if (entity != null) {
+		if (entity != null && !this.worldObj.isRemote) {
 
 			if (entity.isEntityEqual(this.shootingEntity) || entity instanceof IProjectile) {
 				return;
@@ -84,8 +84,8 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 				return;
 			}
 
-			float speed = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY
-					+ this.motionZ * this.motionZ);
+			float speed = MathHelper.sqrt_double(
+					this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 			float damage = this.getHitDamage(entity, speed);
 			DamageSource source = this.getHitSource(entity);
 

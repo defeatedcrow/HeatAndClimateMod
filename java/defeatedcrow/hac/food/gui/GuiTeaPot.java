@@ -5,8 +5,11 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
-import defeatedcrow.hac.food.block.TileFluidProcessorBase;
+import defeatedcrow.hac.food.block.TileTeaPot;
+import defeatedcrow.hac.food.capability.DrinkMilk;
+import defeatedcrow.hac.food.capability.DrinkSugar;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -22,31 +25,72 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiFluidProcessor extends GuiContainer {
-	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
-			"textures/gui/fluidprocessor_gui.png");
+public class GuiTeaPot extends GuiContainer {
+	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate", "textures/gui/teapot_gui.png");
 
 	private final InventoryPlayer playerInventory;
-	private final TileFluidProcessorBase processor;
+	private final TileTeaPot pot;
 
-	public GuiFluidProcessor(TileFluidProcessorBase te, InventoryPlayer playerInv) {
-		super(new ContainerFluidProcessor(te, playerInv));
+	public GuiTeaPot(TileTeaPot te, InventoryPlayer playerInv) {
+		super(new ContainerTeaPot(te, playerInv));
 		this.playerInventory = playerInv;
-		this.processor = te;
+		this.pot = te;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String s = I18n.translateToLocal(this.processor.getName());
+		String s = I18n.translateToLocal(this.pot.getName());
 		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 2, 4210752);
+
+		String im = "" + pot.getField(9);
+		int colorm = pot.getField(9) == 0 ? 0xCCCCCC : 0x00FFFF;
+		String is = "" + pot.getField(10);
+		int colors = pot.getField(10) == 0 ? 0xCCCCCC : 0x00FFFF;
+
+		this.fontRendererObj.drawString(im, 116 - this.fontRendererObj.getStringWidth(im), 24, colorm, true);
+		this.fontRendererObj.drawString(is, 116 - this.fontRendererObj.getStringWidth(is), 44, colors, true);
 
 		if (this.isPointInRegion(-20, 4, 20, 20, mouseX, mouseY)) {
 			List<String> list = new ArrayList<String>();
-			if (processor != null) {
-				list.add(I18n.translateToLocal(processor.notSuitableMassage()));
+			if (pot != null) {
+				list.add(I18n.translateToLocal(pot.notSuitableMassage()));
 			}
 			if (!list.isEmpty()) {
 				this.drawHoveringText(list, mouseX - this.guiLeft, mouseY - this.guiTop);
+			}
+		}
+
+		if (this.isPointInRegion(102, 18, 16, 16, mouseX, mouseY)) {
+			List<String> list = new ArrayList<String>();
+			if (pot != null) {
+				DrinkMilk milk = DrinkMilk.getFromId(pot.getField(7));
+				list.add("Milk: " + milk.toString());
+				if (ClimateCore.proxy.isShiftKeyDown()) {
+					list.add(I18n.translateToLocal("dcs.tip.teapot"));
+					list.add(I18n.translateToLocal("dcs.tip.teapot.milk"));
+				} else {
+					list.add(I18n.translateToLocal("dcs.tip.shift"));
+				}
+			}
+			if (!list.isEmpty()) {
+				this.drawHoveringText(list, mouseX - this.guiLeft - 80, mouseY - this.guiTop - 10);
+			}
+		}
+
+		if (this.isPointInRegion(102, 36, 16, 16, mouseX, mouseY)) {
+			List<String> list = new ArrayList<String>();
+			if (pot != null) {
+				DrinkSugar sugar = DrinkSugar.getFromId(pot.getField(8));
+				list.add("Sugar: " + sugar.toString());
+				if (ClimateCore.proxy.isShiftKeyDown()) {
+					list.add(I18n.translateToLocal("dcs.tip.teapot"));
+					list.add(I18n.translateToLocal("dcs.tip.teapot.sugar"));
+				} else {
+					list.add(I18n.translateToLocal("dcs.tip.shift"));
+				}
+			}
+			if (!list.isEmpty()) {
+				this.drawHoveringText(list, mouseX - this.guiLeft - 80, mouseY - this.guiTop - 10);
 			}
 		}
 	}
@@ -62,28 +106,28 @@ public class GuiFluidProcessor extends GuiContainer {
 		int l = this.getCookProgressScaled(20);
 		this.drawTexturedModalRect(i + 78, j + 38, 176, 0, l, 11);
 
-		if (processor.isSuitableClimate()) {
+		if (pot.isSuitableClimate()) {
 			this.drawTexturedModalRect(i - 20, j + 4, 176, 29, 20, 20);
 		} else {
 			this.drawTexturedModalRect(i - 20, j + 4, 176, 49, 20, 20);
 		}
 
-		if (!processor.inputT.isEmpty()) {
-			int in = this.processor.getField(3);
-			int inAmo = 50 * this.processor.getField(5) / 5000;
+		if (!pot.inputT.isEmpty()) {
+			int in = this.pot.getField(3);
+			int inAmo = 50 * this.pot.getField(5) / 5000;
 			renderFluid(in, inAmo, i + 38, j + 20, 12, 50);
 		}
 
-		if (!processor.outputT.isEmpty()) {
-			int out = this.processor.getField(4);
-			int outAmo = 50 * this.processor.getField(6) / 5000;
+		if (!pot.outputT.isEmpty()) {
+			int out = this.pot.getField(4);
+			int outAmo = 50 * this.pot.getField(6) / 5000;
 			renderFluid(out, outAmo, i + 125, j + 20, 12, 50);
 		}
 	}
 
 	private int getCookProgressScaled(int pixels) {
-		int i = this.processor.getField(0);
-		int j = this.processor.getField(1);
+		int i = this.pot.getField(0);
+		int j = this.pot.getField(1);
 		return j != 0 && i != 0 ? i * pixels / j : 0;
 	}
 

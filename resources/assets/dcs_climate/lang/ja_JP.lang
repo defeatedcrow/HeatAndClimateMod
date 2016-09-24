@@ -339,7 +339,7 @@ tile.dcs_build_challamp_cube_wood.name=木のランプ
 tile.dcs_build_challamp_glass_blue.name=青玉髄のガラスランプ
 tile.dcs_build_challamp_glass_red.name=赤玉髄のガラスランプ
 tile.dcs_build_challamp_glass_white.name=白玉髄のガラスランプ
-tile.dcs_build_challamp_glass_wood.name=木のデスクランプ
+tile.dcs_build_challamp_glass_wood.name=木のガラスランプ
 tile.dcs_build_challamp_desk_blue.name=青玉髄のデスクランプ
 tile.dcs_build_challamp_desk_red.name=赤玉髄のデスクランプ
 tile.dcs_build_challamp_desk_white.name=白玉髄のデスクランプ
@@ -377,6 +377,7 @@ tile.dcs_device_windmill_l_0.name=大型風車
 tile.dcs_device_stevenson_screen_0.name=百葉箱
 tile.dcs_device_pottery_pot_0.name=調理甕
 tile.dcs_device_steel_pot_0.name=調理鍋
+tile.dcs_device_tea_pot_0.name=ティーポット
 
 tile.dcs_crop_rice_3.name=稲
 tile.dcs_crop_onion_3.name=玉ねぎの苗
@@ -472,6 +473,11 @@ dcs.tip.dagger.13=単体:着弾点にワープする
 dcs.tip.dagger.14=範囲:着弾点付近のダイヤブロックの数に応じて、スカルン鉱脈を召喚する
 dcs.tip.dagger.15=範囲:???
 
+dcs.tip.shitirin.description=
+dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック
+dcs.tip.teapot.milk=例: 牛乳入り容器、生クリーム入り容器
+dcs.tip.teapot.sugar=例: 砂糖、蜂蜜
+
 dcs.tip.shift=Lshiftキー: 詳細を表示
 dcs.tip.require_achievement=取扱いに実績が必要!
 
@@ -505,6 +511,7 @@ dcs.gui.device.shitirin=七輪
 dcs.gui.device.mill=石臼
 dcs.gui.device.stevenson_screen=百葉箱
 dcs.gui.device.fluidprocessor=液体加工
+dcs.gui.device.teapot=ティーポット
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます
