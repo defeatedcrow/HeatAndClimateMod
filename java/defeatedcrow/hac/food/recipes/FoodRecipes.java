@@ -168,7 +168,7 @@ public class FoodRecipes {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 2), new Object[] {
 				"foodPastry",
-				"croplemon",
+				"cropLemon",
 				"dropHoney",
 				"foodCream" }));
 

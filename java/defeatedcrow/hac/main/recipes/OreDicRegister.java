@@ -1,9 +1,9 @@
 package defeatedcrow.hac.main.recipes;
 
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.main.MainInit;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class OreDicRegister {
 	public static void load() {
@@ -103,6 +103,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustCrystal", new ItemStack(MainInit.miscDust, 1, 1));
 		OreDictionary.registerOre("dustLime", new ItemStack(MainInit.miscDust, 1, 2));
 		OreDictionary.registerOre("dustWood", new ItemStack(MainInit.miscDust, 1, 3));
+		OreDictionary.registerOre("pulpWood", new ItemStack(MainInit.miscDust, 1, 3));
 		OreDictionary.registerOre("dustPresscake", new ItemStack(MainInit.miscDust, 1, 4));
 		OreDictionary.registerOre("dustAsh", new ItemStack(MainInit.miscDust, 1, 5));
 		OreDictionary.registerOre("dustNiter", new ItemStack(MainInit.miscDust, 1, 6));

@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.capability.DrinkSugar;
 import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
+import defeatedcrow.hac.plugin.DrinkPotionType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -186,6 +187,11 @@ public class ItemSilverCup extends FoodItemBase {
 								ampF));
 					} else if (f.getFluid() == FluidRegistry.LAVA) {
 						ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+					} else if (DrinkPotionType.isRegistered(f.getFluid())) {
+						Potion potion = DrinkPotionType.getPotion(f.getFluid());
+						if (potion != null) {
+							ret.add(new PotionEffect(potion, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+						}
 					} else {
 						ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(1200 * dirF),
 								ampF));
@@ -199,10 +205,18 @@ public class ItemSilverCup extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		tooltip.add("Placeable as an Entity");
+
+		List<PotionEffect> effects = this.getPotionEffect(stack);
+		if (!effects.isEmpty()) {
+			PotionEffect eff = effects.get(0);
+			if (eff != null && eff.getPotion() != null) {
+				tooltip.add(TextFormatting.AQUA.toString() + I18n.translateToLocal(eff.getPotion().getName()));
+			}
+		}
 		IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add("Placeable as an Entity");
 			if (cont != null && cont.getTankProperties() != null) {
 				FluidStack f = cont.getTankProperties()[0].getContents();
 				if (f != null && f.getFluid() != null) {
@@ -210,12 +224,13 @@ public class ItemSilverCup extends FoodItemBase {
 					tooltip.add("Fluid: " + f.getLocalizedName());
 					tooltip.add("Amount: " + f.amount);
 				}
+				if (drink != null) {
+					tooltip.add(TextFormatting.BOLD.toString() + "DRINK CUSTOMIZE");
+					tooltip.add("Milk: " + drink.getMilk().toString());
+					tooltip.add("Sugar: " + drink.getSugar().toString());
+				}
 			}
-			if (drink != null) {
-				tooltip.add(TextFormatting.BOLD.toString() + "DRINK CUSTOMIZE");
-				tooltip.add("Milk: " + drink.getMilk().toString());
-				tooltip.add("Sugar: " + drink.getSugar().toString());
-			}
+
 		} else {
 			String mes = "";
 			if (cont != null && cont.getTankProperties() != null) {

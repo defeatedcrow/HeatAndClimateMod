@@ -7,6 +7,10 @@
 
 package defeatedcrow.hac.main;
 
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.config.MainConfig;
+import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -15,11 +19,9 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.config.MainConfig;
 
 @Mod(
 		modid = ClimateMain.MOD_ID,
@@ -84,6 +86,11 @@ public class ClimateMain {
 
 		// other things
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
+	}
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		DCIntegrationCore.INSTANCE.load();
 	}
 
 }
