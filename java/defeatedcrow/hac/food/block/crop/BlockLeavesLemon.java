@@ -26,7 +26,6 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.main.ClimateMain;
 
 public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, IShearable {
 
@@ -41,7 +40,6 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 		setHardness(0.0F);
 		setResistance(3.0F);
 		setLightOpacity(1);
-		setCreativeTab(ClimateMain.food);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0)
 				.withProperty(DECAYABLE, false).withProperty(CHECK_DECAY, false));
 	}

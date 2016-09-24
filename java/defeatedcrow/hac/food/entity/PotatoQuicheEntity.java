@@ -25,7 +25,7 @@ public class PotatoQuicheEntity extends FoodEntityBase {
 	@Override
 	protected ItemStack[] drops() {
 		return new ItemStack[] {
-				new ItemStack(FoodInit.pastryRound, 1, 5),
-				new ItemStack(FoodInit.pastryRound, 1, 6) };
+				new ItemStack(FoodInit.pastryRound, 1, 6),
+				new ItemStack(FoodInit.pastryRound, 1, 7) };
 	}
 }

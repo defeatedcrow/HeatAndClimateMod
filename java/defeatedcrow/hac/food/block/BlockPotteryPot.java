@@ -33,7 +33,6 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 
 	public BlockPotteryPot(String s) {
 		super(Material.CLAY, s, 0);
-		this.setCreativeTab(ClimateMain.food);
 	}
 
 	@Override

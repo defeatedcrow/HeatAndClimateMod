@@ -13,7 +13,9 @@ import defeatedcrow.hac.machine.block.BlockShaft_TB;
 import defeatedcrow.hac.machine.block.BlockStoneMill;
 import defeatedcrow.hac.machine.block.BlockWindmill;
 import defeatedcrow.hac.machine.block.BlockWindmill_L;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainMaterialRegister;
+import defeatedcrow.hac.main.config.ModuleConfig;
 
 public class MachineInitRegister {
 
@@ -23,6 +25,9 @@ public class MachineInitRegister {
 	public static void load() {
 		loadBlocks();
 		loadItems();
+
+		if (ModuleConfig.machine)
+			loadCreativeTab();
 	}
 
 	static void loadBlocks() {
@@ -65,6 +70,24 @@ public class MachineInitRegister {
 
 	static void loadItems() {
 
+	}
+
+	static void loadCreativeTab() {
+		MachineInit.windmill.setCreativeTab(ClimateMain.machine);
+		MachineInit.windmill_l.setCreativeTab(ClimateMain.machine);
+		MachineInit.handcrank.setCreativeTab(ClimateMain.machine);
+
+		MachineInit.shaft_s.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft_l.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft_t_a.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft_t_b.setCreativeTab(ClimateMain.machine);
+		MachineInit.gearbox.setCreativeTab(ClimateMain.machine);
+
+		MachineInit.piston.setCreativeTab(ClimateMain.machine);
+
+		MachineInit.stonemill.setCreativeTab(ClimateMain.machine);
+		MachineInit.fan.setCreativeTab(ClimateMain.machine);
+		MachineInit.redbox.setCreativeTab(ClimateMain.machine);
 	}
 
 }

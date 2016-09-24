@@ -2,6 +2,10 @@ package defeatedcrow.hac.main.block.ores;
 
 import java.util.List;
 
+import defeatedcrow.hac.api.placeable.IRapidCollectables;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -10,10 +14,6 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.placeable.IRapidCollectables;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
-import defeatedcrow.hac.core.base.ITexturePath;
 
 public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 

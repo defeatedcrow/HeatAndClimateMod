@@ -3,6 +3,10 @@ package defeatedcrow.hac.food.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.opengl.GL11;
+
+import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -16,11 +20,6 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import org.lwjgl.opengl.GL11;
-
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
-import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 
 @SideOnly(Side.CLIENT)
 public class GuiFluidProcessor extends GuiContainer {
@@ -134,11 +133,12 @@ public class GuiFluidProcessor extends GuiContainer {
 		GL11.glColor4f(red, green, blue, 1.0F);
 	}
 
-	private static void drawFluidTexture(double x, double y, TextureAtlasSprite spr, int widL, int heiL, double zLevel) {
-		double uMin = (double) spr.getMinU();
-		double uMax = (double) spr.getMaxU();
-		double vMin = (double) spr.getMinV();
-		double vMax = (double) spr.getMaxV();
+	private static void drawFluidTexture(double x, double y, TextureAtlasSprite spr, int widL, int heiL,
+			double zLevel) {
+		double uMin = spr.getMinU();
+		double uMax = spr.getMaxU();
+		double vMin = spr.getMinV();
+		double vMax = spr.getMaxV();
 		double l = heiL / 16.0D;
 		vMax = vMin + ((vMax - vMin) * l);
 

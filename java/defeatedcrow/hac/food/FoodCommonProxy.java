@@ -5,6 +5,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSteelPot;
+import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
@@ -26,6 +27,7 @@ public class FoodCommonProxy {
 	public static void loadTE() {
 		GameRegistry.registerTileEntity(TilePotteryPot.class, "dcs_te_pottery_pot");
 		GameRegistry.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot");
+		GameRegistry.registerTileEntity(TileTeaPot.class, "dcs_te_tea_pot");
 	}
 
 	public static void loadEntity() {

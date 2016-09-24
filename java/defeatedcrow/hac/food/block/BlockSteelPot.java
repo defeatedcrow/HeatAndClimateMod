@@ -37,7 +37,6 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 	public BlockSteelPot(String s) {
 		super(Material.CLAY, s, 0);
 		this.setSoundType(SoundType.ANVIL);
-		this.setCreativeTab(ClimateMain.food);
 	}
 
 	@Override

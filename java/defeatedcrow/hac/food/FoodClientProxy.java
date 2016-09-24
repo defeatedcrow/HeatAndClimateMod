@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSteelPot;
+import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockCoffee;
 import defeatedcrow.hac.food.block.crop.BlockCotton;
 import defeatedcrow.hac.food.block.crop.BlockLeavesLemon;
@@ -39,6 +40,7 @@ import defeatedcrow.hac.food.client.SquareBreadRenderer;
 import defeatedcrow.hac.food.client.SugarPieRenderer;
 import defeatedcrow.hac.food.client.TESRPotteryPot;
 import defeatedcrow.hac.food.client.TESRSteelPot;
+import defeatedcrow.hac.food.client.TESRTeaPot;
 import defeatedcrow.hac.food.client.YakitoriStickRenderer;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
@@ -92,6 +94,7 @@ public class FoodClientProxy {
 	public static void loadTE() {
 		ClientRegistry.registerTileEntity(TilePotteryPot.class, "dcs_te_pottery_pot", new TESRPotteryPot());
 		ClientRegistry.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot", new TESRSteelPot());
+		ClientRegistry.registerTileEntity(TileTeaPot.class, "dcs_te_tea_pot", new TESRTeaPot());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -121,6 +124,7 @@ public class FoodClientProxy {
 
 		instance.regTEBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_ID, "dcs_device_pottery_pot", "machine", 0);
 		instance.regTEBlock(FoodInit.steelPot, ClimateCore.PACKAGE_ID, "dcs_device_steel_pot", "machine", 0);
+		instance.regTEBlock(FoodInit.teaPot, ClimateCore.PACKAGE_ID, "dcs_device_tea_pot", "machine", 0);
 
 		// fluid
 

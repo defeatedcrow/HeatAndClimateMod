@@ -2,6 +2,8 @@ package defeatedcrow.hac.main;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionType;
 
 public class MainInit {
 	private MainInit() {
@@ -30,6 +32,7 @@ public class MainInit {
 	public static Block stairsGlass;
 	public static Block stairsGypsum;
 	public static Block halfSlab;
+	public static Block builds;
 
 	// furniture
 	public static Block chalLamp;
@@ -87,5 +90,9 @@ public class MainInit {
 	// food
 	public static Item bakedApple;
 	public static Item foodMaterials;
+
+	// potion
+	public static Potion gravity;
+	public static PotionType gravityType;
 
 }

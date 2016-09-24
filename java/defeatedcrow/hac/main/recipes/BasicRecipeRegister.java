@@ -87,9 +87,36 @@ public class BasicRecipeRegister {
 				"XYX",
 				" X ",
 				'Y',
-				"gearWood",
+				"gearBrass",
 				'X',
 				"ingotNickelsilver" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 7), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'Y',
+				"gearBrass",
+				'X',
+				"ingotSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 6), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'Y',
+				"gearIron",
+				'X',
+				"ingotNickelsilver" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 7), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'Y',
+				"gearIron",
+				'X',
+				"ingotSteel" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
 				" X ",
@@ -314,7 +341,7 @@ public class BasicRecipeRegister {
 				"dustIron",
 				"dustGraphite" }));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 7), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 				"dustMagnetite",
 				"dustMagnetite",
 				"dustMagnetite",
@@ -324,6 +351,61 @@ public class BasicRecipeRegister {
 				"dustMagnetite",
 				"dustMagnetite",
 				"dustGraphite" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustCoal" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustCoal" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 7), new Object[] {
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"gemCelestite",
+				"dustLime" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustChromium",
+				"dustChromium",
+				"dustNickel" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustChromium",
+				"dustChromium",
+				"dustNickel" }));
 
 		// ingot <-> metalBlock
 		String[] metal = {
@@ -336,7 +418,8 @@ public class BasicRecipeRegister {
 				"Nickelsilver",
 				"Magnet",
 				"Tin",
-				"Bronze" };
+				"Bronze",
+				"SUS" };
 		for (int i = 0; i < metal.length; i++) {
 			ItemStack ingot = new ItemStack(MainInit.oreIngot, 9, i);
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.metalBlock, 1, i), new Object[] {
@@ -579,6 +662,21 @@ public class BasicRecipeRegister {
 				"XX",
 				'X',
 				new ItemStack(MainInit.ores_2, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 0), new Object[] {
+				"dustLime",
+				"dustLime",
+				new ItemStack(Blocks.GRAVEL) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 1), new Object[] {
+				"dyeRed",
+				new ItemStack(MainInit.builds, 1, 0),
+				new ItemStack(Blocks.GLASS) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 2), new Object[] {
+				"dyeBlue",
+				new ItemStack(MainInit.builds, 1, 0),
+				new ItemStack(Blocks.GLASS) }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 4, 3),
 				new Object[] { new ItemStack(MainInit.bricks, 1, 0) }));

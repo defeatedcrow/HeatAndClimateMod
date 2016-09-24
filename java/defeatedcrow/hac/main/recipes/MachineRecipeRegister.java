@@ -1,9 +1,5 @@
 package defeatedcrow.hac.main.recipes;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
@@ -11,6 +7,10 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.main.MainInit;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineRecipeRegister {
 
@@ -51,7 +51,7 @@ public class MachineRecipeRegister {
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 6), DCHeatTier.SMELTING, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 6));
 		// magnet
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 7), DCHeatTier.SMELTING, null,
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 7), DCHeatTier.UHT, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 7));
 
 		// tin
@@ -62,25 +62,38 @@ public class MachineRecipeRegister {
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 9), DCHeatTier.KILN, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 9));
 
+		// sus
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 10), DCHeatTier.UHT, null,
+				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 10));
+
 		// dust個別精錬
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 0), DCHeatTier.KILN, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 0));
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 1), DCHeatTier.KILN, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 1));
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 2), DCHeatTier.SMELTING, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 2));
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 3), DCHeatTier.SMELTING, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 3));
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(Items.GOLD_INGOT, 1, 0), DCHeatTier.KILN, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 4));
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(Items.IRON_INGOT, 1, 0), DCHeatTier.KILN, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 5));
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 5), DCHeatTier.SMELTING, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 6));
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 7), DCHeatTier.SMELTING, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 7));
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 8), DCHeatTier.KILN, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 8));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 0),
+		// DCHeatTier.KILN, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 0));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 1),
+		// DCHeatTier.KILN, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 1));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 2),
+		// DCHeatTier.SMELTING, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 2));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 3),
+		// DCHeatTier.SMELTING, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 3));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(Items.GOLD_INGOT, 1, 0),
+		// DCHeatTier.KILN, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 4));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(Items.IRON_INGOT, 1, 0),
+		// DCHeatTier.KILN, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 5));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 5),
+		// DCHeatTier.SMELTING, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 6));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 7),
+		// DCHeatTier.UHT, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 7));
+		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 8),
+		// DCHeatTier.KILN, null,
+		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 8));
 
 		if (ClimateCore.isDebug) {
 			// 3x3
@@ -109,8 +122,8 @@ public class MachineRecipeRegister {
 		}
 
 		// burnt crops
-		ClimateSmelting apple = new ClimateSmelting(new ItemStack(MainInit.cropCont, 1, 9), null, DCHeatTier.OVEN,
-				null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.cropCont, 1, 0));
+		ClimateSmelting apple = new ClimateSmelting(new ItemStack(MainInit.cropCont, 1, 9), null, DCHeatTier.OVEN, null,
+				DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.cropCont, 1, 0));
 		apple.requiredAir().add(DCAirflow.NORMAL);
 		RecipeAPI.registerSmelting.addRecipe(apple, DCHeatTier.OVEN);
 
@@ -145,10 +158,16 @@ public class MachineRecipeRegister {
 	}
 
 	static void loadBuildRecipes() {
-		ClimateSmelting apple = new ClimateSmelting(new ItemStack(MainInit.selenite, 1, 0), null, DCHeatTier.KILN,
-				null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.gemBlock, 1, 3));
-		apple.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(apple, DCHeatTier.KILN);
+		// 建材
+		ClimateSmelting marble = new ClimateSmelting(new ItemStack(MainInit.gemBlock, 1, 6), null, DCHeatTier.KILN,
+				null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.ores_2, 1, 0));
+		marble.requiredAir().add(DCAirflow.NORMAL);
+		RecipeAPI.registerSmelting.addRecipe(marble, DCHeatTier.KILN);
+
+		ClimateSmelting sele = new ClimateSmelting(new ItemStack(MainInit.selenite, 1, 0), null, DCHeatTier.KILN, null,
+				DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.gemBlock, 1, 3));
+		sele.requiredAir().add(DCAirflow.NORMAL);
+		RecipeAPI.registerSmelting.addRecipe(sele, DCHeatTier.KILN);
 	}
 
 	static void loadSmelting() {

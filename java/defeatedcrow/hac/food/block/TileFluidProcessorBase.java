@@ -5,6 +5,11 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.recipe.IFluidRecipe;
+import defeatedcrow.hac.core.base.ClimateReceiverLockable;
+import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -26,11 +31,6 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
-import defeatedcrow.hac.api.climate.ClimateAPI;
-import defeatedcrow.hac.api.recipe.IFluidRecipe;
-import defeatedcrow.hac.core.base.ClimateReceiverLockable;
-import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 
 public abstract class TileFluidProcessorBase extends ClimateReceiverLockable implements ISidedInventory {
 
@@ -153,7 +153,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		}
 	}
 
-	private boolean onFillTank(DCTank tank, int slot1, int slot2) {
+	protected boolean onFillTank(DCTank tank, int slot1, int slot2) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
 		if (in == null)
@@ -213,7 +213,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		return false;
 	}
 
-	private boolean onDrainTank(DCTank tank, int slot1, int slot2) {
+	protected boolean onDrainTank(DCTank tank, int slot1, int slot2) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
 		if (in == null)
@@ -466,8 +466,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D,
-				this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+		return getWorld().getTileEntity(this.pos) != this ? false
+				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
 	@Override
@@ -513,7 +513,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// 隣接するホッパーにアイテムを送れるかどうか
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (index == 0) {
+		if (index == 0 || index == 4 || index == 5 || index == 6) {
 			return false;
 		}
 

@@ -30,6 +30,7 @@ public class FoodInit {
 
 	public static Block potteryPot;
 	public static Block steelPot;
+	public static Block teaPot;
 
 	public static Block cropRice;
 	public static Block cropOnion;

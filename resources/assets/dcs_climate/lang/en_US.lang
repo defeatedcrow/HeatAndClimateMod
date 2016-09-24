@@ -14,6 +14,7 @@ item.dcs_ingot_magnet.name=Magnet Ingot
 item.dcs_ingot_steel.name=Steel Ingot
 item.dcs_ingot_tin.name=Tin Ingot
 item.dcs_ingot_bronze.name=Bronze Ingot
+item.dcs_ingot_sus.name=Inox Ingot
 item.dcs_oredust_copper.name=Copper Dust
 item.dcs_oredust_zinc.name=Zinc Dust
 item.dcs_oredust_silver.name=Silver Dust
@@ -24,6 +25,7 @@ item.dcs_oredust_steel.name=Steel Dust
 item.dcs_oredust_magnet.name=Magntite Dust
 item.dcs_oredust_tin.name=Tin Dust
 item.dcs_oredust_bronze.name=Bronze Dust
+item.dcs_oredust_chromium.name=Chromium Dust
 item.dcs_gem_chal_blue.name=Blue Chalcedony
 item.dcs_gem_chal_red.name=Red Chalcedony
 item.dcs_gem_chal_white.name=White Chalcedony
@@ -52,6 +54,7 @@ item.dcs_material_cloth_cotton.name=Cotton Cloth
 item.dcs_material_spindle_wood.name=Wooden Spindle
 item.dcs_material_spindle_brass.name=Brass Spindle
 item.dcs_material_spindle_arroy.name=Arroy Spindle
+item.dcs_material_spindle_steel.name=Steel Spindle
 
 item.dcs_food_materials_salt.name=Salt
 item.dcs_food_materials_flour.name=Flour
@@ -95,10 +98,10 @@ item.dcs_food_tart_apple_raw.name=Raw Apple Tart
 item.dcs_food_tart_apple_baked.name=Apple Tart
 item.dcs_food_tart_lemon_raw.name=Raw Lemon Cream Tart
 item.dcs_food_tart_lemon_baked.name=Lemon Cream Tart
-item.dcs_food_tart_spinach_raw.name=Raw Spinach Quiche 
-item.dcs_food_tart_spinach_baked.name=Spinach Quiche 
-item.dcs_food_tart_potato_raw.name=Raw Potato Quiche 
-item.dcs_food_tart_potato_baked.name=Potato Quiche 
+item.dcs_food_tart_spinach_raw.name=Raw Spinach Quiche
+item.dcs_food_tart_spinach_baked.name=Spinach Quiche
+item.dcs_food_tart_potato_raw.name=Raw Potato Quiche
+item.dcs_food_tart_potato_baked.name=Potato Quiche
 item.dcs_food_pie_sugar_raw.name=Raw Sugar Pastry
 item.dcs_food_pie_sugar_baked.name=Sugar Pastry
 item.dcs_food_pie_meat_raw.name=Raw Meat Pie
@@ -197,6 +200,25 @@ item.dcs_jewel_badge_lapis.name=Lapis-Lazuli Badge
 item.dcs_jewel_badge_diamond.name=Diamond Badge
 item.dcs_jewel_badge_schorl.name=Schorl Badge
 
+item.dcs_dagger_silver.name=Silver Dagger
+item.dcs_dagger_magic_0.name=Magic Dagger (Power)
+item.dcs_dagger_magic_1.name=Magic Dagger (Explotion)
+item.dcs_dagger_magic_2.name=Magic Dagger (Ice)
+item.dcs_dagger_magic_3.name=Magic Dagger (Absolute)
+item.dcs_dagger_magic_4.name=Magic Dagger (Fire)
+item.dcs_dagger_magic_5.name=Magic Dagger (Inferno)
+item.dcs_dagger_magic_6.name=Magic Dagger (Gravity)
+item.dcs_dagger_magic_7.name=Magic Dagger (Levitation)
+item.dcs_dagger_magic_8.name=Magic Dagger (Hypnotize)
+item.dcs_dagger_magic_9.name=Magic Dagger (Enemy Barrier)
+item.dcs_dagger_magic_10.name=Magic Dagger (Arrow Barrier)
+item.dcs_dagger_magic_11.name=Magic Dagger (Heal Barrier)
+item.dcs_dagger_magic_12.name=Magic Dagger (Thunderstorm)
+item.dcs_dagger_magic_13.name=Magic Dagger (Warp)
+item.dcs_dagger_magic_14.name=Magic Dagger (Generate Ore Vine)
+item.dcs_dagger_magic_15.name=Magic Dagger (???)
+
+
 ## block
 tile.dcs_ore_stone_0.name=Gypsum
 tile.dcs_ore_stone_1.name=Hematite
@@ -230,6 +252,7 @@ tile.dcs_dustblock_steel.name=Iron Dust Block
 tile.dcs_dustblock_magnet.name=Magnetite Dust Block
 tile.dcs_dustblock_tin.name=Tin Dust Block
 tile.dcs_dustblock_bronze.name=Bronze Dust Block
+tile.dcs_dustblock_sus.name=Inox Dust Block
 tile.dcs_metal_copper.name=Copper Block
 tile.dcs_metal_zinc.name=Zinc Block
 tile.dcs_metal_nickel.name=Nickel Block
@@ -240,6 +263,7 @@ tile.dcs_metal_steel.name=Steel Block
 tile.dcs_metal_magnet.name=Magnetite Block
 tile.dcs_metal_tin.name=Tin Block
 tile.dcs_metal_bronze.name=Bronze Block
+tile.dcs_metal_sus.name=Inox Block
 tile.dcs_gemblock_chal_blue.name=Blue Chalceony Block
 tile.dcs_gemblock_chal_red.name=Red Chalceony Block
 tile.dcs_gemblock_chal_white.name=White Chalceony Block
@@ -306,6 +330,9 @@ tile.dcs_build_slab_gypsum.name=Gypsum Slab
 tile.dcs_build_bricks_gypsum.name=Gypsum Bricks
 tile.dcs_build_bricks_marble.name=Marble Bricks
 tile.dcs_build_bricks_lime.name=Lime Bricks
+tile.dcs_build_build_concrete.name=Concrete Block
+tile.dcs_build_build_mosaic_red.name=Red Mosaic Block
+tile.dcs_build_build_mosaic_blue.name=Blue Mosaic Block
 tile.dcs_build_challamp_cube_blue.name=Blue Chalcedony Lamp
 tile.dcs_build_challamp_cube_red.name=Red Chalcedony Lamp
 tile.dcs_build_challamp_cube_white.name=White Chalcedony Lamp
@@ -351,6 +378,7 @@ tile.dcs_device_windmill_l_0.name=Large Windmill
 tile.dcs_device_stevenson_screen_0.name=Stevenson Screen
 tile.dcs_device_pottery_pot_0.name=Pottery Pot
 tile.dcs_device_steel_pot_0.name=Steel Pot
+tile.dcs_device_tea_pot_0.name=Tea Pot
 
 tile.dcs_crop_rice_3.name=Rice Plant
 tile.dcs_crop_onion_3.name=Onion Plant
@@ -430,7 +458,13 @@ dcs.tip.badge.8=Boosting Your Digging
 dcs.tip.badge.9=Chained Mining
 dcs.tip.badge.10=Thunderbolt
 
+dcs.tip.shitirin.description=It's the japanese charcoal stove.
+dcs.tip.teapot=Right-click to this block with flavor items.
+dcs.tip.teapot.milk=ex. milk pack, cream pack
+dcs.tip.teapot.sugar=ex. sugar
+
 dcs.tip.shift=Lshift Key: expand tooltip
+dcs.tip.require_achievement=Require the achievement for using!
 
 dcs.comment.pendant.0=Reduce ice & water damage
 dcs.comment.pendant.1=Reduce heat damage
@@ -461,6 +495,8 @@ dcs.gui.device.chamber=Combustion Chamber GUI
 dcs.gui.device.shitirin=Shichirin GUI
 dcs.gui.device.mill=Stone Mill GUI
 dcs.gui.device.stevenson_screen=Stevensoc Screen
+dcs.gui.device.fluidprocessor=Fluid Crafting
+dcs.gui.device.teapot=Tea Pot
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold
@@ -470,3 +506,47 @@ dcs.gui.message.suitableclimate=Suitable Climate
 
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.
+
+#potion
+dcs.potion.gravity=Gravity
+potion.effect.dcs.gravity=Potion of Gravity
+splash_potion.effect.dcs.gravity=Splash Potion of Gravity
+lingering_potion.effect.dcs.gravity=Lingering Potion of Gravity
+
+#acievement
+achievement.dcs.climate_master=Climate Watcher
+achievement.dcs.climate_master.desc=Require other climate achievements.
+dcs.achievement_additional_desc.climate_master=Bonus: Expand HUD for climate data
+achievement.dcs.machine_master=Torque Mechanic
+achievement.dcs.machine_master.desc=Require other machine achievements.
+dcs.achievement_additional_desc.machine_master=Bonus: You can handle high tier machines.
+achievement.dcs.magic_master=Lapidary
+achievement.dcs.magic_master.desc=Require other jewel achievements.
+dcs.achievement_additional_desc.magic_master=Bonus: You can handle high tier magic items.
+
+achievement.dcs.climate_checker=Check Climate!
+achievement.dcs.climate_checker.desc=Craft a climate Checker.
+achievement.dcs.climate_damage=Climate Hurts You
+achievement.dcs.climate_damage.desc=Receive damage from climate.
+achievement.dcs.climate_prevent=Confotable Wear
+achievement.dcs.climate_prevent.desc=Get the climate resistance more than 4.0F by wearing clothes.
+achievement.dcs.climate_smelt=Climate Smelting
+achievement.dcs.climate_smelt.desc=Place a Apple Box Block on hot place, then it will be smelted.
+
+achievement.dcs.machine_gear=Parts of Machines
+achievement.dcs.machine_gear.desc=Craft a Brass Spindle.
+achievement.dcs.machine_place=Rotary Energy
+achievement.dcs.machine_place.desc=Place any Torque Shafts on your world.
+achievement.dcs.machine_rotate=Wrench Handling
+achievement.dcs.machine_rotate.desc=Right-click the Torque Machines with wrench.
+achievement.dcs.machine_stonemill=New Energy, New Crafting
+achievement.dcs.machine_stonemill.desc=Place and operate the Stone Mill.
+
+achievement.dcs.magic_getgem=New Gems
+achievement.dcs.magic_getgem.desc=New gem ores generated in new lode.
+achievement.dcs.magic_raregem=Rare Gems
+achievement.dcs.magic_raregem.desc=Rare gems will be discovered by fortune tools or millstone recipes.
+achievement.dcs.magic_charm=Magical Silver Jewelry
+achievement.dcs.magic_charm.desc=Put a Jewelry Pendant in the top line of your inventory.
+achievement.dcs.magic_knife=Throwing Dagger
+achievement.dcs.magic_knife.desc=Craft a silver dagger.

@@ -1,18 +1,12 @@
 package defeatedcrow.hac.main;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.network.IGuiHandler;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
+import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
+import defeatedcrow.hac.food.gui.ContainerTeaPot;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
+import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
 import defeatedcrow.hac.machine.block.TileStoneMill;
@@ -28,13 +22,30 @@ import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import defeatedcrow.hac.main.client.gui.ContainerStevensonScreen;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
+import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.event.AchievementEventDC;
+import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
+import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
+import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenOres;
 import defeatedcrow.hac.main.worldgen.WorldGenSkarn;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionType;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonMainProxy implements IGuiHandler {
 
@@ -44,6 +55,14 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadMaterial() {
 		MainMaterialRegister.load();
 		GameRegistry.registerFuelHandler(new DCFuelHandler());
+		MainCreativeTabRegister.load();
+	}
+
+	public void loadPotion() {
+		MainInit.gravity = new PotionGravityDC();
+		GameRegistry.register(MainInit.gravity, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.gravity"));
+		MainInit.gravityType = new PotionType("dcs.gravity", new PotionEffect(MainInit.gravity));
+		GameRegistry.register(MainInit.gravityType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.gravity"));
 	}
 
 	public void loadRecipes() {
@@ -51,13 +70,19 @@ public class CommonMainProxy implements IGuiHandler {
 		BasicRecipeRegister.load();
 		MachineRecipeRegister.load();
 
-		FoodRecipes.load();
-		MachineRecipes.load();
-		MagicRecipeRegister.load();
+		if (ModuleConfig.food)
+			FoodRecipes.load();
+
+		if (ModuleConfig.machine)
+			MachineRecipes.load();
+
+		if (ModuleConfig.magic)
+			MagicRecipeRegister.load();
 	}
 
 	public void loadEntity() {
 		FoodCommonProxy.loadEntity();
+		MagicCommonProxy.loadEntity();
 	}
 
 	public void loadTE() {
@@ -94,7 +119,9 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadInit() {
 		MinecraftForge.EVENT_BUS.register(new OnMiningEventDC());
 		MinecraftForge.EVENT_BUS.register(new OnDeathEventDC());
-		// MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
+		MinecraftForge.EVENT_BUS.register(new OnJumpEventDC());
+		MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
+		MinecraftForge.EVENT_BUS.register(new AchievementEventDC());
 	}
 
 	@Override
@@ -113,6 +140,9 @@ public class CommonMainProxy implements IGuiHandler {
 		}
 		if (tile instanceof TileStoneMill) {
 			return new ContainerStoneMill((TileStoneMill) tile, player.inventory);
+		}
+		if (tile instanceof TileTeaPot) {
+			return new ContainerTeaPot((TileTeaPot) tile, player.inventory);
 		}
 		if (tile instanceof TileFluidProcessorBase) {
 			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
@@ -136,6 +166,9 @@ public class CommonMainProxy implements IGuiHandler {
 		}
 		if (tile instanceof TileStoneMill) {
 			return new GuiStoneMill((TileStoneMill) tile, player.inventory);
+		}
+		if (tile instanceof TileTeaPot) {
+			return new GuiTeaPot((TileTeaPot) tile, player.inventory);
 		}
 		if (tile instanceof TileFluidProcessorBase) {
 			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);

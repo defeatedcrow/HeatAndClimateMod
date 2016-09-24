@@ -1,5 +1,9 @@
 package defeatedcrow.hac.food.client;
 
+import defeatedcrow.hac.core.client.base.DCFoodModelBase;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.client.model.ModelTeaCup;
+import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -13,9 +17,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCFoodModelBase;
-import defeatedcrow.hac.food.client.model.ModelTeaCup;
-import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 
 @SideOnly(Side.CLIENT)
 public class CupWhiteRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
@@ -33,7 +34,10 @@ public class CupWhiteRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 		super.doRender(entity, x, y, z, yaw, partialTicks);
 		Fluid f = FluidRegistry.getFluid(entity.getFluidName());
 		if (f != null) {
-			renderFluid(f, x, y, z, entity.rotationYaw, partialTicks);
+			renderFluid(f, x, y, z, entity.rotationYaw, partialTicks, 1.0F);
+		}
+		if (entity.getMilk() != 0) {
+			renderFluid(FoodInit.cream, x, y + 0.001D, z, entity.rotationYaw, partialTicks, 0.5F);
 		}
 	}
 
@@ -47,18 +51,22 @@ public class CupWhiteRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 		return MODEL;
 	}
 
-	private void renderFluid(Fluid fluid, double x, double y, double z, float r, float partialTicks) {
+	private void renderFluid(Fluid fluid, double x, double y, double z, float r, float partialTicks, float alpha) {
 		GlStateManager.disableLighting();
 		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
 		TextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(fluid.getStill().toString());
 		GlStateManager.pushMatrix();
+		GlStateManager.enableBlend();
+		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
+				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
+				GlStateManager.DestFactor.ZERO);
 		GlStateManager.translate((float) x, (float) y, (float) z);
 		float f2 = 0.45F;
 		float f = 0.18F;
 		Tessellator tessellator = Tessellator.getInstance();
 		VertexBuffer vertexbuffer = tessellator.getBuffer();
 		GlStateManager.rotate(-r, 0.0F, 1.0F, 0.0F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, alpha);
 
 		int i = 0;
 		vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
@@ -76,6 +84,7 @@ public class CupWhiteRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 
 		GlStateManager.rotate(0.0F, 0.0F, 0.0F, 0.0F);
 		tessellator.draw();
+		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 		GlStateManager.enableLighting();
 	}
