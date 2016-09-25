@@ -72,18 +72,18 @@ public class DCPluginForestry {
 						"XXX",
 						"XYX",
 						"XXX",
-						'X',
-						new ItemStack(FoodInit.bread, 1, 1),
 						'Y',
+						new ItemStack(FoodInit.bread, 1, 1),
+						'X',
 						"dropHoney" }));
 
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(slice, 4, 0), new Object[] {
 						"XXX",
 						"XYX",
 						"XXX",
-						'X',
-						new ItemStack(FoodInit.bread, 1, 3),
 						'Y',
+						new ItemStack(FoodInit.bread, 1, 3),
+						'X',
 						"dropHoney" }));
 			}
 		}

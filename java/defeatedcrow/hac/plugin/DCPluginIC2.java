@@ -34,9 +34,9 @@ public class DCPluginIC2 {
 		Recipes.macerator.addRecipe(new RecipeInputOreDict("oreZinc"), tag1, false, new ItemStack[] {
 				new ItemStack(MainInit.oreDust, 2, 1) });
 		Recipes.macerator.addRecipe(new RecipeInputOreDict("oreNickel"), tag1, false, new ItemStack[] {
-				new ItemStack(MainInit.oreDust, 2, 7) });
-		Recipes.macerator.addRecipe(new RecipeInputOreDict("oreMagnetite"), tag1, false, new ItemStack[] {
 				new ItemStack(MainInit.oreDust, 2, 2) });
+		Recipes.macerator.addRecipe(new RecipeInputOreDict("oreMagnetite"), tag1, false, new ItemStack[] {
+				new ItemStack(MainInit.oreDust, 2, 7) });
 		Recipes.macerator.addRecipe(new RecipeInputOreDict("oreGypsum"), tag1, false, new ItemStack[] {
 				new ItemStack(MainInit.gems, 2, 3) });
 		Recipes.macerator.addRecipe(new RecipeInputOreDict("oreChalcedonyB"), tag1, false, new ItemStack[] {

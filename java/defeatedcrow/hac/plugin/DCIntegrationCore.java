@@ -14,17 +14,19 @@ public class DCIntegrationCore {
 
 		DCPluginFluid.load();
 
-		if (Loader.isModLoaded("BiomeOPlenty")) {
+		if (Loader.isModLoaded("BiomesOPlenty")) {
 			try {
 				DCPluginBoP.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: BiomesOPlenty");
 			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomeOPlenty");
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomesOPlenty");
 			}
 		}
 
 		if (Loader.isModLoaded("forestry")) {
 			try {
 				DCPluginForestry.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: forestry");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: forestry");
 			}
@@ -33,6 +35,7 @@ public class DCIntegrationCore {
 		if (Loader.isModLoaded("IC2")) {
 			try {
 				DCPluginIC2.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: IC2");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: IC2");
 			}
