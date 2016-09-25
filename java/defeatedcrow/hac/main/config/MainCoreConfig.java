@@ -13,7 +13,7 @@ public class MainCoreConfig {
 
 	public static boolean enableAdvHUD = true;
 	public static int iconX = 0;
-	public static int iconY = -50;
+	public static int iconY = -48;
 
 	public void load(Configuration cfg) {
 

@@ -1,11 +1,11 @@
 package defeatedcrow.hac.magic.proj;
 
+import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import defeatedcrow.hac.magic.MagicInit;
 
 public class EntityProjSilver extends EntityMagicProjBase {
 
@@ -35,7 +35,7 @@ public class EntityProjSilver extends EntityMagicProjBase {
 
 	@Override
 	protected float getHitDamage(Entity target, float speed) {
-		float f = 5.0F + this.worldObj.rand.nextFloat();
+		float f = 6.0F + this.worldObj.rand.nextFloat();
 		if (target != null && target instanceof EntityLivingBase) {
 			EntityLivingBase liv = (EntityLivingBase) target;
 			if (liv.isEntityUndead()) {
@@ -47,8 +47,8 @@ public class EntityProjSilver extends EntityMagicProjBase {
 
 	@Override
 	protected DamageSource getHitSource(Entity target) {
-		return this.shootingEntity == null ? DamageSource.causeArrowDamage(this, this) : DamageSource.causeArrowDamage(
-				this, this.shootingEntity);
+		return this.shootingEntity == null ? DamageSource.causeArrowDamage(this, this)
+				: DamageSource.causeArrowDamage(this, this.shootingEntity);
 	}
 
 }

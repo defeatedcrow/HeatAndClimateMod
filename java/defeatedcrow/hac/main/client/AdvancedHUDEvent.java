@@ -1,5 +1,12 @@
 package defeatedcrow.hac.main.client;
 
+import org.lwjgl.opengl.GL11;
+
+import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.achievement.AcvHelper;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
@@ -16,14 +23,6 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import org.lwjgl.opengl.GL11;
-
-import defeatedcrow.hac.api.climate.ClimateAPI;
-import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.main.achievement.AcvHelper;
-import defeatedcrow.hac.main.config.MainCoreConfig;
 
 @SideOnly(Side.CLIENT)
 public class AdvancedHUDEvent {
@@ -88,9 +87,9 @@ public class AdvancedHUDEvent {
 						String hum = clm.getHumidity().toString();
 						String air = clm.getAirflow().toString();
 
-						fr.drawString(temp, x + 12, y + 15, clm.getHeat().getColorInt(), true);
-						fr.drawString(hum, x + 12, y + 27, clm.getHumidity().getColorInt(), true);
-						fr.drawString(air, x + 12, y + 39, clm.getAirflow().getColorInt(), true);
+						fr.drawString(temp, x + 10, y + 15, clm.getHeat().getColorInt(), true);
+						fr.drawString(hum, x + 10, y + 25, clm.getHumidity().getColorInt(), true);
+						fr.drawString(air, x + 10, y + 35, clm.getAirflow().getColorInt(), true);
 
 						GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 					}
