@@ -1,12 +1,15 @@
 # HeatAndClimateMod
-The Mod for Minecraft 1.9.4
+The Mod for Minecraft 1.9.4-1.10.2
+
+## Project Site
+Please visit my new Wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
 
 ## Introduction
 - This is a mod being developed by defeatedcrow. This mod requires HeatAndClimateLib.<br>  このmodはdefeatedcrowが作成する、HeatAndClimateLibを利用したMinecraft用Modです。HeatAndClimateLibを前提Modとして要求します。<br> 現在の開発環境はMC1.9.4です。
 
 ## Current operating environment:
 - Minecraft 1.9.4  
-- MinecraftForge 12.17.0.1954+  
+- MinecraftForge 12.17.0.1976+  
 - [HeatAndClimateLib](https://github.com/defeatedcrow/HeatAndClimateLib)
    
 ## Licenses
@@ -31,8 +34,8 @@ The Mod for Minecraft 1.9.4
 4. Add some small veins, and new metals. They are required to the material of the tools, equipment and building blocks in this mod. <br> 新しい金属と、特殊形状のいくつかの小鉱脈と、鉱脈に由来する新しい金属を追加します。それらは、Modのツールや建材に必要になります。<br>
 
 5. Add various functions to improve my work. <br> 私の開発を補助するための様々な機能。<br>
-・ Automatic generation of simple json model. 簡単なものにかぎり、モデル用Jsonの自動生成。<br>
-・ Automatic addition of ore dictionary recipes. 自動的に鉱石辞書に変換・追加する機能。(FluidityFoodstuffsから移植)<br>
+ -  Automatic generation of simple json model. 簡単なものにかぎり、モデル用Jsonの自動生成。<br>
+ -  Automatic addition of ore dictionary recipes. 自動的に鉱石辞書に変換・追加する機能。(FluidityFoodstuffsから移植)<br>
 
 <br>
 (c) defeatedcrow 2016
