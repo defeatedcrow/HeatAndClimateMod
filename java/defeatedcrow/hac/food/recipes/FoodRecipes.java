@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.climate.recipe.FluidCraftRecipe;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -34,6 +35,7 @@ public class FoodRecipes {
 		loadMillRecipe();
 		loadFluidRecipes();
 		loadCropData();
+		loadFuelData();
 	}
 
 	static void loadBasicRecipes() {
@@ -282,7 +284,7 @@ public class FoodRecipes {
 					'X',
 					crops[i] }));
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.crops, 1, i), new Object[] {
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.crops, 9, i), new Object[] {
 					new ItemStack(MainInit.cropBasket, 1, i) }));
 		}
 
@@ -421,17 +423,17 @@ public class FoodRecipes {
 		RecipeAPI.registerFluidRecipes.addRecipe(salt, DCHeatTier.HOT);
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 1, 2), null, 0F, null,
-				DCHeatTier.NORMAL, DCHumidity.DRY, null, false, null, new Object[] {
+				DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
 						new ItemStack(MainInit.foodMaterials, 1, 0),
 						new ItemStack(Items.ROTTEN_FLESH) });
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 3, 2), null, 0F, null,
-				DCHeatTier.NORMAL, DCHumidity.DRY, null, false, null, new Object[] {
+				DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
 						new ItemStack(MainInit.foodMaterials, 1, 0),
 						new ItemStack(Items.BEEF) });
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 3, 2), null, 0F, null,
-				DCHeatTier.NORMAL, DCHumidity.DRY, null, false, null, new Object[] {
+				DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
 						new ItemStack(MainInit.foodMaterials, 1, 0),
 						new ItemStack(Items.PORKCHOP) });
 
@@ -449,7 +451,7 @@ public class FoodRecipes {
 						"cropTea" });
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.teaLeaves, 1, 2), null, 0F, null,
-				DCHeatTier.NORMAL, DCHumidity.WET, null, false, null, new Object[] {
+				DCHeatTier.WARM, DCHumidity.WET, null, false, null, new Object[] {
 						new ItemStack(FoodInit.teaLeaves, 1, 1) });
 
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.coffee, 1000), DCHeatTier.OVEN,
@@ -464,11 +466,11 @@ public class FoodRecipes {
 				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						new ItemStack(FoodInit.teaLeaves, 1, 2) });
 
-		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1, 0), null, 0F, null, DCHeatTier.NORMAL,
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1, 0), null, 0F, null, DCHeatTier.WARM,
 				DCHumidity.WET, null, false, new FluidStack(FoodInit.cream, 1000), new Object[] {
 						"foodSalt" });
 
-		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1, 1), null, 0F, null, DCHeatTier.NORMAL,
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1, 1), null, 0F, null, DCHeatTier.WARM,
 				DCHumidity.WET, null, false, new FluidStack(FoodInit.cream, 1000), new Object[] {
 						"foodRennet" });
 
@@ -524,5 +526,9 @@ public class FoodRecipes {
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 2));
+	}
+
+	static void loadFuelData() {
+		MainAPIManager.fuelRegister.registerFuel("dcs.seed_oil", 100);
 	}
 }

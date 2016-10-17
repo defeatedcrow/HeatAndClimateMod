@@ -1,5 +1,10 @@
 package defeatedcrow.hac.food.client;
 
+import defeatedcrow.hac.core.base.DCLockableTE;
+import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
+import defeatedcrow.hac.food.block.TilePotteryPot;
+import defeatedcrow.hac.food.client.model.ModelPotteryPot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -8,50 +13,50 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.base.DCLockableTE;
-import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
-import defeatedcrow.hac.food.block.TilePotteryPot;
-import defeatedcrow.hac.food.client.model.ModelPotteryPot;
 
 @SideOnly(Side.CLIENT)
 public class TESRPotteryPot extends DCLockableTESRBase {
 
+	private static final String TEX = "dcs_climate:textures/tiles/pottery_pot.png";
+	private static final ModelPotteryPot MODEL = new ModelPotteryPot();
+
 	@Override
-	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage) {
+	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks,
+			int destroyStage) {
 		super.renderTileEntityAt(te, x, y, z, partialTicks, destroyStage);
 
 		if (te instanceof TilePotteryPot && te.hasWorldObj()) {
 			TilePotteryPot pot = (TilePotteryPot) te;
-			Fluid f = pot.outputT.getFluidType();
+			FluidStack f = pot.outputT.getFluid();
 			if (f == null) {
-				f = pot.inputT.getFluidType();
+				f = pot.inputT.getFluid();
 			}
 			if (f != null) {
-				renderFluid(f, x, y, z, partialTicks);
+				renderFluid(f.getFluid(), x, y, z, partialTicks, f.amount);
 			}
 		}
 	}
 
 	@Override
 	protected String getTexPass(int i) {
-		return "dcs_climate:textures/tiles/pottery_pot.png";
+		return TEX;
 	}
 
 	@Override
 	protected DCTileModelBase getModel(int i) {
-		return new ModelPotteryPot();
+		return MODEL;
 	}
 
-	private void renderFluid(Fluid fluid, double x, double y, double z, float partialTicks) {
+	private void renderFluid(Fluid fluid, double x, double y, double z, float partialTicks, int amo) {
 		GlStateManager.disableLighting();
 		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
 		TextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(fluid.getStill().toString());
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x + 0.5F, (float) y, (float) z + 0.5F);
-		float f2 = 0.7F;
+		float f2 = 0.0625F + 0.7F * amo / 5000F;
 		float f = 0.4F;
 		Tessellator tessellator = Tessellator.getInstance();
 		VertexBuffer vertexbuffer = tessellator.getBuffer();

@@ -1,5 +1,9 @@
 package defeatedcrow.hac.main.block.device;
 
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -8,9 +12,6 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 
 public class TileNormalChamber extends TileChamberBase {
 
@@ -27,11 +28,11 @@ public class TileNormalChamber extends TileChamberBase {
 			}
 
 			if (air.getID() == 3) {
-				this.currentClimate = 7;
+				this.currentClimate = DCHeatTier.SMELTING.getID();
 			} else if (air.getID() == 2) {
-				this.currentClimate = 6;
+				this.currentClimate = DCHeatTier.KILN.getID();
 			} else {
-				this.currentClimate = 5;
+				this.currentClimate = DCHeatTier.OVEN.getID();
 			}
 
 			if (this.currentBurnTime == 0) {

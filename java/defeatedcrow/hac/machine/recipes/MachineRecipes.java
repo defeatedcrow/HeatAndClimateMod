@@ -1,14 +1,13 @@
 package defeatedcrow.hac.machine.recipes;
 
+import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.DCInit;
-import defeatedcrow.hac.machine.MachineInit;
-import defeatedcrow.hac.main.MainInit;
 
 public class MachineRecipes {
 
@@ -146,16 +145,37 @@ public class MachineRecipes {
 				'Z',
 				"dustRedstone" }));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.stevenson_screen, 1, 0), new Object[] {
-				"XZX",
-				"ZYZ",
-				"XZX",
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.fauset, 1, 0), new Object[] {
+				" Y ",
+				"XXX",
+				"X  ",
 				'X',
-				"plankWood",
+				"ingotNickelsilver",
 				'Y',
-				new ItemStack(DCInit.climate_checker),
+				"gearArroy" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.IBC, 1, 0), new Object[] {
+				"ZXZ",
+				"YYY",
+				'X',
+				new ItemStack(Blocks.GLASS, 1, 0),
+				'Y',
+				"ingotNickelsilver",
 				'Z',
-				"dyeWhite" }));
+				new ItemStack(Blocks.IRON_BARS, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.heatPump, 1, 0), new Object[] {
+				"XXX",
+				"WZW",
+				"YYY",
+				'X',
+				"ingotCopper",
+				'Y',
+				"ingotSteel",
+				'Z',
+				new ItemStack(MachineInit.fan, 1, 0),
+				'W',
+				new ItemStack(Blocks.IRON_BARS, 1, 0) }));
 
 	}
 
@@ -185,11 +205,11 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 3), new ItemStack(MainInit.oreDust, 1, 0),
 				0.25F, "oreSilver");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 3), new ItemStack(MainInit.gems, 1, 6),
-				0.05F, "oreGypsum");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 3), new ItemStack(MainInit.gems, 1, 6), 0.05F,
+				"oreGypsum");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 0), new ItemStack(MainInit.gems, 1, 4),
-				0.05F, "oreChalcedonyB");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 0), new ItemStack(MainInit.gems, 1, 4), 0.05F,
+				"oreChalcedonyB");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 2), new ItemStack(Items.QUARTZ), 0.25F,
 				"oreChalcedonyW");
@@ -230,8 +250,8 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.REDSTONE, 3, 0), new ItemStack(Items.REDSTONE, 1, 0),
 				0.5F, "oreRedstone");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.COAL, 2, 0), new ItemStack(MainInit.miscDust, 1, 0),
-				0.5F, "oreCoal");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.COAL, 2, 0), new ItemStack(MainInit.miscDust, 1, 0), 0.5F,
+				"oreCoal");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 0), new ItemStack(Items.COAL, 1, 0));
 
@@ -248,8 +268,8 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 1), "cropWheat");
 
 		// 以下バニラ
-		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.BLAZE_POWDER, 3, 0), new ItemStack(Items.BLAZE_POWDER, 1,
-				0), 0.5F, "stickBlaze");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.BLAZE_POWDER, 3, 0),
+				new ItemStack(Items.BLAZE_POWDER, 1, 0), 0.5F, "stickBlaze");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 5, 15), new ItemStack(Items.DYE, 2, 15), 0.5F,
 				"bone");
@@ -257,16 +277,19 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.SUGAR, 2, 0), new ItemStack(Items.SUGAR, 1, 0), 0.5F,
 				"sugarcane");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 0), null, 0.0F, new ItemStack(Blocks.SANDSTONE,
-				1, 32767));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 0), null, 0.0F,
+				new ItemStack(Blocks.SANDSTONE, 1, 32767));
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 1), new ItemStack(Blocks.RED_SANDSTONE, 1,
-				32767));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 1),
+				new ItemStack(Blocks.RED_SANDSTONE, 1, 32767));
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.GLOWSTONE_DUST, 4, 0), new ItemStack(Blocks.GLOWSTONE));
 
-		RecipeAPI.registerMills
-				.addRecipe(new ItemStack(Blocks.ICE, 1, 0), null, 0.0F, new ItemStack(Blocks.PACKED_ICE));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.BLAZE_POWDER, 1, 0),
+				new ItemStack(Blocks.field_189877_df));
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.ICE, 1, 0), null, 0.0F,
+				new ItemStack(Blocks.PACKED_ICE));
 	}
 
 }

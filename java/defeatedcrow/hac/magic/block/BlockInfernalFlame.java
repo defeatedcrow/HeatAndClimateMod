@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.IHeatTile;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -22,8 +24,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.IHeatTile;
 
 public class BlockInfernalFlame extends BlockContainer implements IHeatTile {
 
@@ -72,7 +72,7 @@ public class BlockInfernalFlame extends BlockContainer implements IHeatTile {
 				for (int y = 1; y < 4; y++) {
 					BlockPos p3 = p2.down(y);
 					if (!world.isAirBlock(p3) && world.getBlockState(p3).getMaterial() != Material.FIRE) {
-						world.setBlockState(p2, Blocks.FIRE.getDefaultState());
+						world.setBlockState(p2, Blocks.FIRE.getDefaultState(), 2);
 						count++;
 						break;
 					}
@@ -82,7 +82,7 @@ public class BlockInfernalFlame extends BlockContainer implements IHeatTile {
 					BlockPos p3 = p2.up(y);
 					if (world.getBlockState(p3).getBlock().isReplaceable(world, p3)
 							&& world.getBlockState(p3).getMaterial() != Material.FIRE) {
-						world.setBlockState(p3, Blocks.FIRE.getDefaultState());
+						world.setBlockState(p3, Blocks.FIRE.getDefaultState(), 2);
 						count++;
 						break;
 					}
@@ -143,14 +143,13 @@ public class BlockInfernalFlame extends BlockContainer implements IHeatTile {
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (world.isRemote) {
 			if (rand.nextInt(24) == 0) {
-				world.playSound((double) ((float) pos.getX() + 0.5F), (double) ((float) pos.getY() + 0.5F),
-						(double) ((float) pos.getZ() + 0.5F), SoundEvents.BLOCK_FIRE_AMBIENT, SoundCategory.BLOCKS,
-						1.0F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.3F, false);
+				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, SoundEvents.BLOCK_FIRE_AMBIENT,
+						SoundCategory.BLOCKS, 1.0F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.3F, false);
 			}
 
-			double x = (double) pos.getX() + rand.nextDouble();
-			double y = (double) pos.getY() + 0.25D + rand.nextDouble() * 0.5D;
-			double z = (double) pos.getZ() + rand.nextDouble();
+			double x = pos.getX() + rand.nextDouble();
+			double y = pos.getY() + 0.25D + rand.nextDouble() * 0.5D;
+			double z = pos.getZ() + rand.nextDouble();
 
 			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
 

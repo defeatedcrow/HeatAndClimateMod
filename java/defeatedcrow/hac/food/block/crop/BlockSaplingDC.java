@@ -5,6 +5,12 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.cultivate.GrowingStage;
+import defeatedcrow.hac.core.base.ClimateCropBase;
+import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.worldgen.WorldGenDCTree;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
@@ -28,12 +34,6 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.cultivate.GrowingStage;
-import defeatedcrow.hac.core.base.ClimateCropBase;
-import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.main.worldgen.WorldGenDCTree;
 
 public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPlantable {
 
@@ -166,11 +166,12 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 			if (gen != null) {
 				if (gen.generate(world, cropRand, pos)) {
 					world.setBlockState(pos,
-							Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK), 4);
+							Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK),
+							4);
 				}
 			} else {
 				IBlockState leaves = FoodInit.leavesTea.getDefaultState();
-				world.setBlockState(pos, leaves, 3);
+				world.setBlockState(pos, leaves, 2);
 			}
 		}
 		return false;

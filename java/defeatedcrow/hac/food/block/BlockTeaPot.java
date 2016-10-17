@@ -31,6 +31,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -42,8 +43,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 
+	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.125D, 0.125D, 0.125D, 0.875D, 0.875D,
+			0.875D);
+
 	public BlockTeaPot(String s) {
 		super(Material.CLAY, s, 0);
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return AABB_MIDDLE;
 	}
 
 	@Override
@@ -119,9 +128,9 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() == FoodInit.teaPot) {
 			if (f) {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 3);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 2);
 			} else {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 3);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 2);
 			}
 		}
 	}

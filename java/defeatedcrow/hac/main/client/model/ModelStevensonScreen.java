@@ -1,4 +1,4 @@
-package defeatedcrow.hac.main.client.block;
+package defeatedcrow.hac.main.client.model;
 
 import net.minecraft.client.model.ModelRenderer;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;

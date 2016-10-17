@@ -2,6 +2,12 @@ package defeatedcrow.hac.magic.item;
 
 import java.util.List;
 
+import defeatedcrow.hac.api.magic.CharmType;
+import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCPotion;
+import defeatedcrow.hac.main.util.CustomExplosion;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -38,12 +44,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.magic.CharmType;
-import defeatedcrow.hac.api.magic.IJewelCharm;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
-import defeatedcrow.hac.core.util.DCPotion;
-import defeatedcrow.hac.main.util.CustomExplosion;
 
 public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 
@@ -60,9 +60,9 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			"malachite", /* マーキング追撃 */
 			"celestite", /* 天候制御 */
 			"clam", /* ワープ */
-			"lapis",/* アイテム収集範囲 */
-			"diamond",/* 範囲採掘 */
-			"schorl" /* サンボル */};
+			"lapis", /* アイテム収集範囲 */
+			"diamond", /* 範囲採掘 */
+			"schorl" /* サンボル */ };
 
 	public ItemMagicalBadge(int max) {
 		super();
@@ -133,7 +133,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			int meta = stack.getMetadata();
 			if (!world.isRemote) {
 				if (meta == 7) {
-					if (pos.getY() > 0 && pos.getY() < 254 && world.isAirBlock(pos.up()) && world.isAirBlock(pos.up(2))) {
+					if (pos.getY() > 0 && pos.getY() < 254 && world.isAirBlock(pos.up())
+							&& world.isAirBlock(pos.up(2))) {
 						NBTTagCompound tag = stack.getTagCompound();
 						if (tag == null) {
 							tag = new NBTTagCompound();
@@ -386,7 +387,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 						continue;
 					}
 					IBlockState block = player.worldObj.getBlockState(p);
-					if (block.getBlock().isToolEffective(tool, block) && !block.getBlock().hasTileEntity(block)) {
+					if (!block.getBlock().hasTileEntity(block)) {
 						block.getBlock().harvestBlock(player.worldObj, player, p, block, null, hold);
 						player.worldObj.setBlockToAir(p);
 						flag = true;

@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.cultivate.GrowingStage;
+import defeatedcrow.hac.core.base.ClimateCropBase;
+import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -17,14 +25,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
-import defeatedcrow.hac.api.cultivate.GrowingStage;
-import defeatedcrow.hac.core.base.ClimateCropBase;
-import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.food.FoodInit;
 
 public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, IShearable {
 
@@ -147,6 +147,7 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
 		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
 		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.WARM);
 		ret.add(DCHeatTier.HOT);
 		return ret;
 	}

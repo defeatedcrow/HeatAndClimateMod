@@ -1,10 +1,10 @@
 package defeatedcrow.hac.magic.recipe;
 
+import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.main.MainInit;
 
 public class MagicRecipeRegister {
 
@@ -235,7 +235,7 @@ public class MagicRecipeRegister {
 				'X',
 				"gemClam",
 				'Y',
-				"gemScorl",
+				"gemSchorl",
 				'Z',
 				new ItemStack(MagicInit.daggerSilver) }));
 

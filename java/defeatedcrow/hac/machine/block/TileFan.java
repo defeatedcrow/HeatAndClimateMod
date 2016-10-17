@@ -114,7 +114,7 @@ public class TileFan extends TileTorqueBase implements ITorqueReceiver, IClimate
 
 	@Override
 	public DCAirflow getAirflow(BlockPos target) {
-		if (this.currentTorque > 6.0F) {
+		if (this.currentTorque > 5.5F) {
 			return DCAirflow.WIND;
 		} else if (this.currentTorque > 1.0F) {
 			return DCAirflow.FLOW;

@@ -44,8 +44,8 @@ public class DCPluginFluid {
 		}
 
 		Fluid f5 = FluidRegistry.getFluid("ic2steam");
-		Block b5 = f5.getBlock();
-		if (f4 != null) {
+		if (f5 != null) {
+			Block b5 = f5.getBlock();
 			if (b5 != null) {
 				ClimateAPI.registerBlock.registerHeatBlock(b5, 32767, DCHeatTier.OVEN);
 				ClimateAPI.registerBlock.registerAirBlock(b5, 32767, DCAirflow.NORMAL);

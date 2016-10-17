@@ -50,7 +50,7 @@ public enum DrinkSugar {
 			int[] ids = OreDictionary.getOreIDs(item);
 			for (int i : ids) {
 				String name = OreDictionary.getOreName(i);
-				if (name.contains("Honey")) {
+				if (name.contains("honey") || name.contains("Honey")) {
 					return HONEY;
 				} else if (name.contains("sugar") || name.contains("Sugar")) {
 					return SUGAR;

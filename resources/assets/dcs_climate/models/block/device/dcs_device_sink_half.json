@@ -1,0 +1,69 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/build/sink_side",
+        "base": "dcs_climate:blocks/ores/gemblock_marble",
+        "overlay": "dcs_climate:blocks/build/sink_overlay",
+        "clear": "dcs_climate:blocks/clear",
+        "sinkbottom": "dcs_climate:blocks/build/sink_bottom",
+        "sinkside": "dcs_climate:blocks/build/sink_side"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 2, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#sinkside", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#sinkbottom", "cullface": "up" },
+                "north": { "uv": [ 0, 6, 16, 8 ], "texture": "#sinkside", "cullface": "north" },
+                "south": { "uv": [ 0, 6, 16, 8 ], "texture": "#sinkside", "cullface": "south" },
+                "west":  { "uv": [ 0, 6, 16, 8 ], "texture": "#sinkside", "cullface": "west" },
+                "east":  { "uv": [ 0, 6, 16, 8 ], "texture": "#sinkside", "cullface": "east" }
+            }
+        },
+        {   "from": [ 0, 2, 0 ],
+            "to": [ 16, 8, 2 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 2 ], "texture": "#sinkside", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 2 ], "texture": "#sinkside", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 6 ], "texture": "#sinkside", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 6 ], "texture": "#sinkside", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 2, 6 ], "texture": "#sinkside", "cullface": "west" },
+                "east":  { "uv": [ 14, 0, 16, 6 ], "texture": "#sinkside", "cullface": "east" }
+            }
+        },
+        {   "from": [ 0, 2, 14 ],
+            "to": [ 16, 8, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 14, 16, 16 ], "texture": "#sinkside", "cullface": "down" },
+                "up":    { "uv": [ 0, 14, 16, 16 ], "texture": "#sinkside", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 6 ], "texture": "#sinkside", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 6 ], "texture": "#sinkside", "cullface": "south" },
+                "west":  { "uv": [ 14, 0, 16, 6], "texture": "#sinkside", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 2, 6 ], "texture": "#sinkside", "cullface": "east" }
+            }
+        },
+        {   "from": [ 0, 2, 2 ],
+            "to": [ 2, 8, 14 ],
+            "faces": {
+                "down":  { "uv": [ 0, 2, 2, 14 ], "texture": "#sinkside", "cullface": "down" },
+                "up":    { "uv": [ 0, 2, 2, 14 ], "texture": "#sinkside", "cullface": "up" },
+                "north": { "uv": [ 14, 0, 16, 6 ], "texture": "#sinkside", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 2, 6 ], "texture": "#sinkside", "cullface": "south" },
+                "west":  { "uv": [ 2, 0, 14, 6 ], "texture": "#sinkside", "cullface": "west" },
+                "east":  { "uv": [ 2, 0, 14, 6 ], "texture": "#sinkside", "cullface": "east" }
+            }
+        },
+        {   "from": [ 14, 2, 2 ],
+            "to": [ 16, 8, 14 ],
+            "faces": {
+                "down":  { "uv": [ 14, 2, 16, 14 ], "texture": "#sinkside", "cullface": "down" },
+                "up":    { "uv": [ 14, 2, 16, 14 ], "texture": "#sinkside", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 2, 6 ], "texture": "#sinkside", "cullface": "north" },
+                "south": { "uv": [ 14, 0, 16, 6 ], "texture": "#sinkside", "cullface": "south" },
+                "west":  { "uv": [ 2, 0, 14, 6 ], "texture": "#sinkside", "cullface": "west" },
+                "east":  { "uv": [ 2, 0, 14, 6 ], "texture": "#sinkside", "cullface": "east" }
+            }
+        }
+    ]
+}

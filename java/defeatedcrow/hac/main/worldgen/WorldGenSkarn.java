@@ -2,6 +2,9 @@ package defeatedcrow.hac.main.worldgen;
 
 import java.util.Random;
 
+import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,9 +16,6 @@ import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import defeatedcrow.hac.api.climate.BlockSet;
-import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.config.WorldGenConfig;
 
 public class WorldGenSkarn implements IWorldGenerator {
 
