@@ -30,6 +30,7 @@ public class DCPluginBoP {
 
 		// add ore
 		OreDictionary.registerOre("dropHoney", new ItemStack(BOPItems.jar_filled));
+		OreDictionary.registerOre("dropHoney", new ItemStack(BOPItems.honeycomb));
 
 	}
 

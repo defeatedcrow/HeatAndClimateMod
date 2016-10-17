@@ -9,7 +9,7 @@
             "to": [ 11, 14, 11 ],
             "faces": {
                 "down":  { "uv": [ 5, 5, 11, 11 ], "texture": "#base", "cullface": "down" },
-                "up":    { "uv": [ 5, 5, 11, 112 ], "texture": "#base", "cullface": "up" },
+                "up":    { "uv": [ 5, 5, 11, 11 ], "texture": "#base", "cullface": "up" },
                 "north": { "uv": [ 5, 0, 11, 14 ], "texture": "#base", "cullface": "north" },
                 "south": { "uv": [ 5, 0, 11, 14 ], "texture": "#base", "cullface": "south" },
                 "west":  { "uv": [ 5, 0, 11, 14 ], "texture": "#base", "cullface": "west" },

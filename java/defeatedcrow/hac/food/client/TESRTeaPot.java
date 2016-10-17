@@ -1,19 +1,23 @@
 package defeatedcrow.hac.food.client;
 
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.food.client.model.ModelTeaPot;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class TESRTeaPot extends DCLockableTESRBase {
 
+	private static final String TEX = "dcs_climate:textures/tiles/teapot_silver.png";
+	private static final ModelTeaPot MODEL = new ModelTeaPot();
+
 	@Override
-	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage) {
+	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks,
+			int destroyStage) {
 		int type = 0;
 		int face = 0;
 		float f = 0.0F;
@@ -55,11 +59,11 @@ public class TESRTeaPot extends DCLockableTESRBase {
 
 	@Override
 	protected String getTexPass(int i) {
-		return "dcs_climate:textures/tiles/teapot_silver.png";
+		return TEX;
 	}
 
 	@Override
 	protected DCTileModelBase getModel(int i) {
-		return new ModelTeaPot();
+		return MODEL;
 	}
 }

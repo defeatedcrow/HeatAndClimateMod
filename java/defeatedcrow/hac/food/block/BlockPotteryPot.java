@@ -5,6 +5,14 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.IAirflowTile;
+import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,14 +28,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.IAirflowTile;
-import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.DCTileBlock;
-import defeatedcrow.hac.core.fluid.DCFluidUtil;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.main.ClimateMain;
 
 public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 
@@ -85,9 +85,9 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() == FoodInit.potteryPot) {
 			if (f) {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 3);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 2);
 			} else {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 3);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 2);
 			}
 		}
 	}

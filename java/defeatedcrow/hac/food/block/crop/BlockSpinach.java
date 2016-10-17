@@ -5,6 +5,11 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.core.base.ClimateCropBase;
+import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,11 +18,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
-import defeatedcrow.hac.core.base.ClimateCropBase;
-import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.food.FoodInit;
 
 public class BlockSpinach extends ClimateCropBase implements ITexturePath {
 
@@ -86,7 +86,9 @@ public class BlockSpinach extends ClimateCropBase implements ITexturePath {
 		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
 		ret.add(DCHeatTier.FROSTBITE);
 		ret.add(DCHeatTier.COLD);
+		ret.add(DCHeatTier.COOL);
 		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.WARM);
 		return ret;
 	}
 

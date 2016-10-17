@@ -3,8 +3,11 @@ package defeatedcrow.hac.machine;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockFan;
+import defeatedcrow.hac.machine.block.BlockFauset;
 import defeatedcrow.hac.machine.block.BlockGearBox;
 import defeatedcrow.hac.machine.block.BlockHandCrank;
+import defeatedcrow.hac.machine.block.BlockHeatExchanger;
+import defeatedcrow.hac.machine.block.BlockIBC;
 import defeatedcrow.hac.machine.block.BlockRedBox;
 import defeatedcrow.hac.machine.block.BlockShaft_L;
 import defeatedcrow.hac.machine.block.BlockShaft_S;
@@ -13,9 +16,11 @@ import defeatedcrow.hac.machine.block.BlockShaft_TB;
 import defeatedcrow.hac.machine.block.BlockStoneMill;
 import defeatedcrow.hac.machine.block.BlockWindmill;
 import defeatedcrow.hac.machine.block.BlockWindmill_L;
+import defeatedcrow.hac.machine.block.ItemIBC;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineInitRegister {
 
@@ -66,6 +71,17 @@ public class MachineInitRegister {
 
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
 		MainMaterialRegister.registerBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox");
+
+		MachineInit.fauset = new BlockFauset(ClimateCore.PACKAGE_BASE + "_device_fauset");
+		MainMaterialRegister.registerBlock(MachineInit.fauset, ClimateCore.PACKAGE_BASE + "_device_fauset");
+
+		MachineInit.IBC = new BlockIBC(ClimateCore.PACKAGE_BASE + "_device_ibc");
+		MachineInit.IBC.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_ibc");
+		GameRegistry.register(MachineInit.IBC);
+		GameRegistry.register(new ItemIBC(MachineInit.IBC));
+
+		MachineInit.heatPump = new BlockHeatExchanger(ClimateCore.PACKAGE_BASE + "_device_heat_exchanger");
+		MainMaterialRegister.registerBlock(MachineInit.heatPump, ClimateCore.PACKAGE_BASE + "_device_heat_exchanger");
 	}
 
 	static void loadItems() {
@@ -88,6 +104,10 @@ public class MachineInitRegister {
 		MachineInit.stonemill.setCreativeTab(ClimateMain.machine);
 		MachineInit.fan.setCreativeTab(ClimateMain.machine);
 		MachineInit.redbox.setCreativeTab(ClimateMain.machine);
+
+		MachineInit.fauset.setCreativeTab(ClimateMain.machine);
+		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
+		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
 	}
 
 }

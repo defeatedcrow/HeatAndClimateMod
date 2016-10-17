@@ -1,5 +1,10 @@
 package defeatedcrow.hac.machine.block;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.blockstate.EnumSide;
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.IAirflowTile;
+import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -8,11 +13,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.IAirflowTile;
-import defeatedcrow.hac.core.energy.BlockTorqueBase;
 
 public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 
@@ -35,7 +35,7 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 			boolean active = isActive(face, pos, target) && world.isAirBlock(target.offset(face.getOpposite()));
 			if (active) {
 				float torque = fan.getCurrentTorque();
-				if (torque >= 6.0F) {
+				if (torque >= 5.5F) {
 					return DCAirflow.WIND;
 				} else if (torque > 0F) {
 					return DCAirflow.FLOW;

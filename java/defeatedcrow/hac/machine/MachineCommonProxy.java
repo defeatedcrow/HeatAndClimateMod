@@ -1,10 +1,12 @@
 package defeatedcrow.hac.machine;
 
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileFan;
+import defeatedcrow.hac.machine.block.TileFauset;
 import defeatedcrow.hac.machine.block.TileGearBox;
 import defeatedcrow.hac.machine.block.TileHandCrank;
+import defeatedcrow.hac.machine.block.TileHeatExchanger;
+import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileRedBox;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_S;
@@ -13,6 +15,7 @@ import defeatedcrow.hac.machine.block.TileShaft_TB;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineCommonProxy {
 
@@ -29,6 +32,9 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileStoneMill.class, "dcs_te_stonemill");
 		GameRegistry.registerTileEntity(TileRedBox.class, "dcs_te_redbox");
 		GameRegistry.registerTileEntity(TileFan.class, "dcs_te_fan");
+		GameRegistry.registerTileEntity(TileFauset.class, "dcs_te_fauset");
+		GameRegistry.registerTileEntity(TileIBC.class, "dcs_te_ibc");
+		GameRegistry.registerTileEntity(TileHeatExchanger.class, "dcs_te_heatexchanger");
 	}
 
 }

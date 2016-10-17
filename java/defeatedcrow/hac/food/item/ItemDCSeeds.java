@@ -1,5 +1,9 @@
 package defeatedcrow.hac.food.item;
 
+import defeatedcrow.hac.api.cultivate.IClimateCrop;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,10 +13,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.cultivate.IClimateCrop;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
-import defeatedcrow.hac.food.FoodInit;
 
 public class ItemDCSeeds extends DCItem {
 
@@ -64,7 +64,7 @@ public class ItemDCSeeds extends DCItem {
 			Block crop = getCropBlock(meta);
 			if (crop instanceof IClimateCrop) {
 				if (((IClimateCrop) crop).isSuitablePlace(worldIn, pos, state)) {
-					worldIn.setBlockState(pos.up(), crop.getDefaultState());
+					worldIn.setBlockState(pos.up(), crop.getDefaultState(), 3);
 					--stack.stackSize;
 					return EnumActionResult.SUCCESS;
 				}

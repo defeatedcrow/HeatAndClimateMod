@@ -5,6 +5,14 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.IAirflowTile;
+import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -23,14 +31,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.IAirflowTile;
-import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.DCTileBlock;
-import defeatedcrow.hac.core.fluid.DCFluidUtil;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.main.ClimateMain;
 
 public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 
@@ -97,9 +97,9 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() == FoodInit.steelPot) {
 			if (f) {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 3);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 2);
 			} else {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 3);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 2);
 			}
 		}
 	}
@@ -127,9 +127,9 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && BlockSteelPot.isLit(world, pos)) {
 			if (rand.nextFloat() < 0.25F) {
-				double x = (double) pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
-				double y = (double) pos.getY() + 0.75D + rand.nextDouble() * 0.25D;
-				double z = (double) pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
+				double x = pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
+				double y = pos.getY() + 0.75D + rand.nextDouble() * 0.25D;
+				double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
 				double dx = rand.nextDouble() * 0.05D;
 				double dy = rand.nextDouble() * 0.05D;
 				double dz = rand.nextDouble() * 0.05D;

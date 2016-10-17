@@ -2,6 +2,8 @@ package defeatedcrow.hac.main.block.device;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -18,8 +20,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 
 /**
  * SidedInventory持ちHeat利用Tileのベースクラス
@@ -28,7 +28,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	protected int currentBurnTime = 0;
 	protected int maxBurnTime = 1;
-	protected int currentClimate = 3;
+	protected int currentClimate = DCHeatTier.OVEN.getID();
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
@@ -185,7 +185,8 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	/* ========== 以下、ISidedInventoryのメソッド ========== */
 
 	protected int[] slotsTop() {
-		return new int[] { 0 };
+		return new int[] {
+				0 };
 	};
 
 	protected int[] slotsBottom() {
@@ -281,8 +282,8 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D,
-				this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+		return getWorld().getTileEntity(this.pos) != this ? false
+				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
 	@Override

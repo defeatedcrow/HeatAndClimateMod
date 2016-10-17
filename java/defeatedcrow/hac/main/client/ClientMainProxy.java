@@ -3,8 +3,44 @@ package defeatedcrow.hac.main.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.client.JsonBakery;
+import defeatedcrow.hac.core.client.base.ModelThinBiped;
+import defeatedcrow.hac.food.FoodClientProxy;
+import defeatedcrow.hac.machine.MachineClientProxy;
+import defeatedcrow.hac.magic.MagicClientProxy;
+import defeatedcrow.hac.magic.client.TESRInfernalFlame;
+import defeatedcrow.hac.main.CommonMainProxy;
+import defeatedcrow.hac.main.block.build.TileLowChest;
+import defeatedcrow.hac.main.block.build.TileMagnetChest;
+import defeatedcrow.hac.main.block.build.TileMetalChest;
+import defeatedcrow.hac.main.block.container.BlockCardboard;
+import defeatedcrow.hac.main.block.container.BlockCropBasket;
+import defeatedcrow.hac.main.block.container.BlockCropCont;
+import defeatedcrow.hac.main.block.container.BlockDustBag;
+import defeatedcrow.hac.main.block.container.BlockEnemyCont;
+import defeatedcrow.hac.main.block.container.BlockLogCont;
+import defeatedcrow.hac.main.block.container.BlockMiscCont;
+import defeatedcrow.hac.main.block.device.TileCookingStove;
+import defeatedcrow.hac.main.block.device.TileNormalChamber;
+import defeatedcrow.hac.main.block.device.TileShitirin;
+import defeatedcrow.hac.main.block.device.TileSink;
+import defeatedcrow.hac.main.block.device.TileStevensonScreen;
+import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
+import defeatedcrow.hac.main.client.block.TESRFuelStove;
+import defeatedcrow.hac.main.client.block.TESRMagnetChest;
+import defeatedcrow.hac.main.client.block.TESRMetalChest;
+import defeatedcrow.hac.main.client.block.TESRNormalChamber;
+import defeatedcrow.hac.main.client.block.TESRShitirin;
+import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
+import defeatedcrow.hac.main.client.model.ModelHat;
+import defeatedcrow.hac.main.client.particle.ParticleBlink;
+import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
+import defeatedcrow.hac.main.event.AltTooltipEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -14,35 +50,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.client.JsonBakery;
-import defeatedcrow.hac.food.FoodClientProxy;
-import defeatedcrow.hac.machine.MachineClientProxy;
-import defeatedcrow.hac.magic.MagicClientProxy;
-import defeatedcrow.hac.magic.client.TESRInfernalFlame;
-import defeatedcrow.hac.main.CommonMainProxy;
-import defeatedcrow.hac.main.block.container.BlockCardboard;
-import defeatedcrow.hac.main.block.container.BlockCropBasket;
-import defeatedcrow.hac.main.block.container.BlockCropCont;
-import defeatedcrow.hac.main.block.container.BlockDustBag;
-import defeatedcrow.hac.main.block.container.BlockEnemyCont;
-import defeatedcrow.hac.main.block.container.BlockLogCont;
-import defeatedcrow.hac.main.block.container.BlockMiscCont;
-import defeatedcrow.hac.main.block.device.TileNormalChamber;
-import defeatedcrow.hac.main.block.device.TileShitirin;
-import defeatedcrow.hac.main.block.device.TileStevensonScreen;
-import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
-import defeatedcrow.hac.main.client.block.TESRNormalChamber;
-import defeatedcrow.hac.main.client.block.TESRShitirin;
-import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
-import defeatedcrow.hac.main.client.particle.ParticleBlink;
-import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
-import defeatedcrow.hac.main.event.AltTooltipEvent;
 
 @SideOnly(Side.CLIENT)
 public class ClientMainProxy extends CommonMainProxy {
+
+	private static final ModelHat hatModel = new ModelHat(0);
 
 	@Override
 	public void loadConst() {
@@ -89,8 +104,13 @@ public class ClientMainProxy extends CommonMainProxy {
 	public void loadTE() {
 		ClientRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal", new TESRNormalChamber());
 		ClientRegistry.registerTileEntity(TileShitirin.class, "dcs_te_shitirin", new TESRShitirin());
+		ClientRegistry.registerTileEntity(TileCookingStove.class, "dcs_te_fuel_stove", new TESRFuelStove());
 		ClientRegistry.registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen",
 				new TESRStevensonScreen());
+		GameRegistry.registerTileEntity(TileLowChest.class, "dcs_te_lowchest");
+		ClientRegistry.registerTileEntity(TileMetalChest.class, "dcs_te_metalchest", new TESRMetalChest());
+		ClientRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest", new TESRMagnetChest());
+		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
 
 		FoodClientProxy.loadTE();
 		MachineClientProxy.loadTE();
@@ -132,20 +152,29 @@ public class ClientMainProxy extends CommonMainProxy {
 	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {
 		int m = 0;
 		if (max == 0) {
-			ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir + "/"
-					+ name, "inventory"));
+			ModelLoader.setCustomModelResourceLocation(item, m,
+					new ModelResourceLocation(domein + ":" + dir + "/" + name, "inventory"));
 		} else {
 			while (m < max + 1) {
 				if (f) {
-					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir
-							+ "/" + name + m, "inventory"));
+					ModelLoader.setCustomModelResourceLocation(item, m,
+							new ModelResourceLocation(domein + ":" + dir + "/" + name + m, "inventory"));
 				} else {
-					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir
-							+ "/" + name, "inventory"));
+					ModelLoader.setCustomModelResourceLocation(item, m,
+							new ModelResourceLocation(domein + ":" + dir + "/" + name, "inventory"));
 				}
 				m++;
 			}
 		}
+	}
+
+	@Override
+	public void regTEJson(Block block, String domein, String name, String dir) {
+		ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(DCState.TYPE4).build());
+		// ModelBakery.registerItemVariants(Item.getItemFromBlock(block), new
+		// ModelResourceLocation(domein + ":" + name));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
+				new ModelResourceLocation(domein + ":" + dir + "/" + name, "inventory"));
 	}
 
 	// ruby氏に無限に感謝
@@ -167,5 +196,16 @@ public class ClientMainProxy extends CommonMainProxy {
 				return null;
 			}
 		});
+	}
+
+	// mainで追加したBipedModel
+	@Override
+	public ModelThinBiped getArmorModel(int slot) {
+		switch (slot) {
+		case 3:
+			return hatModel;
+		default:
+			return null;
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main;
 
+import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileTeaPot;
@@ -15,11 +16,20 @@ import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.magic.MagicCommonProxy;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
+import defeatedcrow.hac.main.block.build.TileLowChest;
+import defeatedcrow.hac.main.block.build.TileMagnetChest;
+import defeatedcrow.hac.main.block.build.TileMetalChest;
+import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TileShitirin;
+import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
+import defeatedcrow.hac.main.client.gui.ContainerFuelStove;
+import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import defeatedcrow.hac.main.client.gui.ContainerStevensonScreen;
+import defeatedcrow.hac.main.client.gui.GuiFuelStove;
+import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -32,8 +42,8 @@ import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
-import defeatedcrow.hac.main.worldgen.WorldGenOres;
-import defeatedcrow.hac.main.worldgen.WorldGenSkarn;
+import defeatedcrow.hac.main.worldgen.WorldGenAltOres;
+import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -88,7 +98,12 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadTE() {
 		GameRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal");
 		GameRegistry.registerTileEntity(TileShitirin.class, "dcs_te_shitirin");
+		GameRegistry.registerTileEntity(TileCookingStove.class, "dcs_te_fuel_stove");
 		GameRegistry.registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen");
+		GameRegistry.registerTileEntity(TileLowChest.class, "dcs_te_lowchest");
+		GameRegistry.registerTileEntity(TileMetalChest.class, "dcs_te_metalchest");
+		GameRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest");
+		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
 
 		FoodCommonProxy.loadTE();
 		MachineCommonProxy.loadTE();
@@ -97,8 +112,8 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadWorldGen() {
 		// gen
-		GameRegistry.registerWorldGenerator(new WorldGenOres(), 2);
-		GameRegistry.registerWorldGenerator(new WorldGenSkarn(false), 3);
+		GameRegistry.registerWorldGenerator(new WorldGenAltOres(), 2);
+		GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 3);
 	}
 
 	public void addSidedBlock(Block block, String name, int max) {
@@ -114,6 +129,12 @@ public class CommonMainProxy implements IGuiHandler {
 	 * メタ無しJson製Block。一部の階段・ハーフにのみ使用している
 	 */
 	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {
+	}
+
+	/**
+	 * TEの向きのみ対応させたJsonタイプモデル
+	 */
+	public void regTEJson(Block block, String domein, String name, String dir) {
 	}
 
 	public void loadInit() {
@@ -147,6 +168,12 @@ public class CommonMainProxy implements IGuiHandler {
 		if (tile instanceof TileFluidProcessorBase) {
 			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		}
+		if (tile instanceof TileLowChest) {
+			return new ContainerLowChest((TileLowChest) tile, player);
+		}
+		if (tile instanceof TileCookingStove) {
+			return new ContainerFuelStove((TileCookingStove) tile, player.inventory);
+		}
 		return null;
 	}
 
@@ -173,6 +200,16 @@ public class CommonMainProxy implements IGuiHandler {
 		if (tile instanceof TileFluidProcessorBase) {
 			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		}
+		if (tile instanceof TileLowChest) {
+			return new GuiLowChest((TileLowChest) tile, player);
+		}
+		if (tile instanceof TileCookingStove) {
+			return new GuiFuelStove((TileCookingStove) tile, player.inventory);
+		}
+		return null;
+	}
+
+	public ModelThinBiped getArmorModel(int slot) {
 		return null;
 	}
 

@@ -2,9 +2,17 @@ package defeatedcrow.hac.main.event;
 
 import java.util.Map;
 
+import defeatedcrow.hac.api.damage.DamageAPI;
+import defeatedcrow.hac.api.damage.DamageSourceClimate;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
@@ -13,12 +21,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import defeatedcrow.hac.api.damage.DamageAPI;
-import defeatedcrow.hac.api.damage.DamageSourceClimate;
-import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 
 // 実績トリガー
 public class AchievementEventDC {
@@ -26,30 +28,38 @@ public class AchievementEventDC {
 	@SubscribeEvent
 	public void onEvent(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
-		if (living != null && living instanceof EntityPlayer && !living.worldObj.isRemote) {
+		if (living != null && living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
-
-			if (!player.hasAchievement(AchievementClimate.CLIMATE_ARMOR)) {
-				Iterable<ItemStack> items = living.getArmorInventoryList();
-				float prev = 0F;
-				if (items != null) {
-					for (ItemStack item : items) {
-						if (item != null && item.getItem() instanceof ItemArmor) {
-							ArmorMaterial mat = ((ItemArmor) item.getItem()).getArmorMaterial();
-							prev += DamageAPI.armorRegister.getPreventAmount(mat);
+			if (!living.worldObj.isRemote) {
+				if (!player.hasAchievement(AchievementClimate.CLIMATE_ARMOR)) {
+					Iterable<ItemStack> items = living.getArmorInventoryList();
+					float prev = 0F;
+					if (items != null) {
+						for (ItemStack item : items) {
+							if (item != null && item.getItem() instanceof ItemArmor) {
+								ArmorMaterial mat = ((ItemArmor) item.getItem()).getArmorMaterial();
+								prev += DamageAPI.armorRegister.getPreventAmount(mat);
+							}
 						}
 					}
+					if (prev >= 4.0F) {
+						AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_ARMOR);
+					}
 				}
-				if (prev >= 4.0F) {
-					AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_ARMOR);
+
+				if (!player.hasAchievement(AchievementClimate.MAGIC_CHARM)) {
+					Map<Integer, ItemStack> charms = DCUtil.getPlayerCharm(player, null);
+					if (!charms.isEmpty()) {
+						AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_CHARM);
+					}
 				}
 			}
 
-			if (!player.hasAchievement(AchievementClimate.MAGIC_CHARM)) {
-				Map<Integer, ItemStack> charms = DCUtil.getPlayerCharm(player, null);
-				if (!charms.isEmpty()) {
-					AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_CHARM);
-				}
+			if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10))
+					&& player.isPotionActive(MobEffects.SPEED)) {
+				player.stepHeight = 1.0F;
+			} else {
+				player.stepHeight = 0.6F;
 			}
 		}
 	}

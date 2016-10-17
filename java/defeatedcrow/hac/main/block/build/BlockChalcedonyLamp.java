@@ -1,17 +1,19 @@
 package defeatedcrow.hac.main.block.build;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.base.DCSimpleBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
 
 public class BlockChalcedonyLamp extends DCSimpleBlock {
 
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-	protected static final AxisAlignedBB AABB_SMALL = new AxisAlignedBB(0.125D, 0.125D, 0.125D, 0.875D, 0.875D, 0.875D);
+	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.125D, 0.125D, 0.125D, 0.875D, 0.875D,
+			0.875D);
+	protected static final AxisAlignedBB AABB_SMALL = new AxisAlignedBB(0.25D, 0D, 0.25D, 0.75D, 1D, 0.75D);
 
 	public BlockChalcedonyLamp(String s, int max) {
 		super(Material.GLASS, s, max, false);
@@ -45,7 +47,13 @@ public class BlockChalcedonyLamp extends DCSimpleBlock {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return state.getValue(DCState.TYPE16) > 7 ? AABB_SMALL : AABB_FULL;
+		if (state.getValue(DCState.TYPE16) > 11) {
+			return AABB_MIDDLE;
+		} else if (state.getValue(DCState.TYPE16) > 7) {
+			return AABB_SMALL;
+		} else {
+			return AABB_FULL;
+		}
 	}
 
 	@Override

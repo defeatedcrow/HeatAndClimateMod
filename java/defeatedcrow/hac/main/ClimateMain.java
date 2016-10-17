@@ -9,7 +9,9 @@ package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
+import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -34,9 +36,9 @@ public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
-	public static final int MOD_MINOR = 0;
-	public static final int MOD_BUILD = 3;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.17.0.1976,);required-after:dcs_climate|lib@[1.0.3,)";
+	public static final int MOD_MINOR = 1;
+	public static final int MOD_BUILD = 0;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.1.2094,);required-after:dcs_climate|lib@[1.1.0,)";
 
 	@SidedProxy(
 			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
@@ -62,6 +64,10 @@ public class ClimateMain {
 	public void preInit(FMLPreInitializationEvent event) {
 		// config
 		MainConfig.INSTANCE.load(event.getModConfigurationDirectory());
+		// api
+		MainAPIManager.fuelRegister = new DCFluidFuelRegister();
+		MainAPIManager.isLoaded = true;
+
 		// Material
 		proxy.loadMaterial();
 		// TileEntity

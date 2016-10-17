@@ -11,10 +11,15 @@ import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
+import defeatedcrow.hac.main.block.build.BlockIronPlate;
+import defeatedcrow.hac.main.block.build.BlockLowChest;
+import defeatedcrow.hac.main.block.build.BlockMagnetChest;
+import defeatedcrow.hac.main.block.build.BlockMetalChest;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
 import defeatedcrow.hac.main.block.build.BlockTableBase;
+import defeatedcrow.hac.main.block.build.BlockWallLamp;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
@@ -22,8 +27,10 @@ import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
+import defeatedcrow.hac.main.block.device.BlockCookingStove;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
 import defeatedcrow.hac.main.block.device.BlockShitirin;
+import defeatedcrow.hac.main.block.device.BlockSink;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
@@ -32,6 +39,7 @@ import defeatedcrow.hac.main.block.ores.BlockMetal;
 import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
+import defeatedcrow.hac.main.item.equip.ItemArmorHat;
 import defeatedcrow.hac.main.item.equip.ItemArmorThinDC;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
@@ -56,6 +64,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MainMaterialRegister {
@@ -106,6 +115,9 @@ public class MainMaterialRegister {
 
 		MainInit.chalLamp = new BlockChalcedonyLamp(ClimateCore.PACKAGE_BASE + "_build_challamp", 15);
 		registerBlock(MainInit.chalLamp, ClimateCore.PACKAGE_BASE + "_build_challamp");
+
+		MainInit.wallLamp = new BlockWallLamp(ClimateCore.PACKAGE_BASE + "_build_walllamp");
+		registerBlock(MainInit.wallLamp, ClimateCore.PACKAGE_BASE + "_build_walllamp");
 	}
 
 	static void registerSidedBlock() {
@@ -210,6 +222,28 @@ public class MainMaterialRegister {
 		registerBlock(MainInit.stoolRed, ClimateCore.PACKAGE_BASE + "_stool_red");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stoolRed), "dcs_climate", "dcs_stool_red",
 				"build", 0, false);
+
+		MainInit.plate = new BlockIronPlate(ClimateCore.PACKAGE_BASE + "_build_plate", 1);
+		registerBlock(MainInit.plate, ClimateCore.PACKAGE_BASE + "_build_plate");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.plate), "dcs_climate", "dcs_build_plate", "build",
+				1, false);
+
+		MainInit.chestMarble = new BlockLowChest(Material.ROCK, ClimateCore.PACKAGE_BASE + "_device_lowchest_marble",
+				true);
+		registerBlock(MainInit.chestMarble, ClimateCore.PACKAGE_BASE + "_device_lowchest_marble");
+		ClimateMain.proxy.regTEJson(MainInit.chestMarble, "dcs_climate", "dcs_device_lowchest_marble", "device");
+
+		MainInit.chestWood = new BlockLowChest(Material.ROCK, ClimateCore.PACKAGE_BASE + "_device_lowchest_wood", true);
+		registerBlock(MainInit.chestWood, ClimateCore.PACKAGE_BASE + "_device_lowchest_wood");
+		ClimateMain.proxy.regTEJson(MainInit.chestWood, "dcs_climate", "dcs_device_lowchest_wood", "device");
+
+		MainInit.sinkMetal = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_half", false);
+		registerBlock(MainInit.sinkMetal, ClimateCore.PACKAGE_BASE + "_device_sink_half");
+		ClimateMain.proxy.regTEJson(MainInit.sinkMetal, "dcs_climate", "dcs_device_sink_half", "device");
+
+		MainInit.sinkChest = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_full", true);
+		registerBlock(MainInit.sinkChest, ClimateCore.PACKAGE_BASE + "_device_sink_full");
+		ClimateMain.proxy.regTEJson(MainInit.sinkChest, "dcs_climate", "dcs_device_sink_full", "device");
 	}
 
 	static void regDeviceBlock() {
@@ -221,8 +255,17 @@ public class MainMaterialRegister {
 		GameRegistry.register(MainInit.shitirin);
 		GameRegistry.register(new ItemBlockShitirin(MainInit.shitirin));
 
+		MainInit.fuelStove = new BlockCookingStove(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_fuelstove", 3);
+		registerBlock(MainInit.fuelStove, ClimateCore.PACKAGE_BASE + "_device_fuelstove");
+
 		MainInit.stevenson_screen = new BlockStevensonScreen(ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");
 		registerBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");
+
+		MainInit.chestMetal = new BlockMetalChest(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chest_metal");
+		registerBlock(MainInit.chestMetal, ClimateCore.PACKAGE_BASE + "_device_chest_metal");
+
+		MainInit.chestMagnet = new BlockMagnetChest(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chest_magnet");
+		registerBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_BASE + "_device_chest_magnet");
 	}
 
 	static void registerItems() {
@@ -360,6 +403,15 @@ public class MainMaterialRegister {
 		MainInit.blackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
 				"suit").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_suit");
 		GameRegistry.register(MainInit.blackSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_suit"));
+
+		MainInit.leatherHat = new ItemArmorHat(ArmorMaterial.LEATHER, DCMaterial.LINEN, EntityEquipmentSlot.HEAD,
+				"leather").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hat_leather");
+		GameRegistry.register(MainInit.leatherHat.setRegistryName(ClimateCore.PACKAGE_BASE + "_hat_leather"));
+
+		MainInit.cottonHat = new ItemArmorHat(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.HEAD,
+				"cotton").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hat_cotton");
+		GameRegistry.register(MainInit.cottonHat.setRegistryName(ClimateCore.PACKAGE_BASE + "_hat_cotton"));
 
 		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0))
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wrench_brass");

@@ -176,6 +176,8 @@ item.dcs_leggins_cloth.name=Kilt Doublet
 item.dcs_leggins_worker.name=Worker Suit
 item.dcs_leggins_suit.name=Black Suit
 item.dcs_coat_linen.name=Surcoat
+item.dcs_hat_leather.name=Leather Hat
+item.dcs_hat_cotton.name=Cotton Hat
 
 item.dcs_jewel_pendant_chal_blue.name=Chrysoprase Pendant
 item.dcs_jewel_pendant_chal_red.name=Carnelian Pendant
@@ -360,6 +362,12 @@ tile.dcs_sofa_black_0.name=Sofa (Black)
 tile.dcs_sofa_red_0.name=Sofa (Red)
 tile.dcs_stool_black_0.name=Stool (Black)
 tile.dcs_stool_red_0.name=Stool (Red)
+tile.dcs_build_walllamp_0.name=Blue Wall Lamp
+tile.dcs_build_walllamp_1.name=Red Wall Lamp
+tile.dcs_build_walllamp_2.name=White Wall Lamp
+tile.dcs_build_walllamp_3.name=Wooden Wall Lamp
+tile.dcs_build_plate_iron.name=Iron Plate
+tile.dcs_build_plate_mesh.name=Iron Mesh
 
 tile.dcs_device_chamber_0.name=Combustion Chamber
 tile.dcs_device_shitirin_0.name=Shichirin
@@ -379,6 +387,16 @@ tile.dcs_device_stevenson_screen_0.name=Stevenson Screen
 tile.dcs_device_pottery_pot_0.name=Pottery Pot
 tile.dcs_device_steel_pot_0.name=Steel Pot
 tile.dcs_device_tea_pot_0.name=Tea Pot
+tile.dcs_device_lowchest_marble_0.name=Marble Low Chest
+tile.dcs_device_lowchest_wood_0.name=Wooden Low Chest
+tile.dcs_device_chest_metal_0.name=Metal Chest
+tile.dcs_device_chest_magnet_0.name=Magnet Chest
+tile.dcs_device_sink_half_0.name=Sink (Half)
+tile.dcs_device_sink_full_0.name=Sink
+tile.dcs_device_fauset_0.name=Fauset
+tile.dcs_device_ibc_0.name=IBC Container
+tile.dcs_device_heat_exchanger_0.name=Heat Exchanger
+tile.dcs_device_fuelstove_0.name=Fluid Fuel Stove
 
 tile.dcs_crop_rice_3.name=Rice Plant
 tile.dcs_crop_onion_3.name=Onion Plant
@@ -497,6 +515,8 @@ dcs.gui.device.mill=Stone Mill GUI
 dcs.gui.device.stevenson_screen=Stevensoc Screen
 dcs.gui.device.fluidprocessor=Fluid Crafting
 dcs.gui.device.teapot=Tea Pot
+dcs.gui.device.chest=Chest
+dcs.gui.device.fuel_stove=Fluid Fuel Stove
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold

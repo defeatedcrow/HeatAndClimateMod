@@ -176,6 +176,8 @@ item.dcs_leggins_cloth.name=キルトのダブレット
 item.dcs_leggins_worker.name=作業着
 item.dcs_leggins_suit.name=ウェストコート
 item.dcs_coat_linen.name=サーコート
+item.dcs_hat_leather.name=レザーハット
+item.dcs_hat_cotton.name=中折れ帽
 
 item.dcs_jewel_pendant_chal_blue.name=青玉髄のペンダント
 item.dcs_jewel_pendant_chal_red.name=紅玉髄のペンダント
@@ -359,6 +361,12 @@ tile.dcs_sofa_black_0.name=ソファ(黒)
 tile.dcs_sofa_red_0.name=ソファ(赤)
 tile.dcs_stool_black_0.name=スツール(黒)
 tile.dcs_stool_red_0.name=スツール(赤)
+tile.dcs_build_walllamp_0.name=青玉髄の壁掛けランプ
+tile.dcs_build_walllamp_1.name=赤玉髄の壁掛けランプ
+tile.dcs_build_walllamp_2.name=白玉髄の壁掛けランプ
+tile.dcs_build_walllamp_3.name=木の壁掛けランプ
+tile.dcs_build_plate_iron.name=鉄板
+tile.dcs_build_plate_mesh.name=鉄網
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪
@@ -378,6 +386,16 @@ tile.dcs_device_stevenson_screen_0.name=百葉箱
 tile.dcs_device_pottery_pot_0.name=調理甕
 tile.dcs_device_steel_pot_0.name=調理鍋
 tile.dcs_device_tea_pot_0.name=ティーポット
+tile.dcs_device_lowchest_marble_0.name=大理石のローチェスト
+tile.dcs_device_lowchest_wood_0.name=木のローチェスト
+tile.dcs_device_chest_metal_0.name=鋼鉄のチェスト
+tile.dcs_device_chest_magnet_0.name=磁力のチェスト
+tile.dcs_device_sink_half_0.name=ハーフ流し台
+tile.dcs_device_sink_full_0.name=流し台
+tile.dcs_device_fauset_0.name=蛇口
+tile.dcs_device_ibc_0.name=IBCタンク
+tile.dcs_device_heat_exchanger_0.name=熱交換器
+tile.dcs_device_fuelstove_0.name=液体燃料コンロ
 
 tile.dcs_crop_rice_3.name=稲
 tile.dcs_crop_onion_3.name=玉ねぎの苗
@@ -512,6 +530,8 @@ dcs.gui.device.mill=石臼
 dcs.gui.device.stevenson_screen=百葉箱
 dcs.gui.device.fluidprocessor=液体加工
 dcs.gui.device.teapot=ティーポット
+dcs.gui.device.chest=チェスト
+dcs.gui.device.fuel_stove=液体燃料炉
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます

@@ -1,14 +1,14 @@
 package defeatedcrow.hac.machine;
 
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileFan;
+import defeatedcrow.hac.machine.block.TileFauset;
 import defeatedcrow.hac.machine.block.TileGearBox;
 import defeatedcrow.hac.machine.block.TileHandCrank;
+import defeatedcrow.hac.machine.block.TileHeatExchanger;
+import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileRedBox;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_S;
@@ -20,6 +20,8 @@ import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.client.FanTESR;
 import defeatedcrow.hac.machine.client.GearBoxTESR;
 import defeatedcrow.hac.machine.client.HandCrankTESR;
+import defeatedcrow.hac.machine.client.HeatExchangerTESR;
+import defeatedcrow.hac.machine.client.IBCTESR;
 import defeatedcrow.hac.machine.client.L_ShaftTESR;
 import defeatedcrow.hac.machine.client.L_WindmillTESR;
 import defeatedcrow.hac.machine.client.RedBoxTESR;
@@ -29,6 +31,10 @@ import defeatedcrow.hac.machine.client.StoneMillTESR;
 import defeatedcrow.hac.machine.client.TA_ShaftTESR;
 import defeatedcrow.hac.machine.client.TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.WindmillTESR;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class MachineClientProxy {
@@ -46,13 +52,17 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileStoneMill.class, "dcs_te_stonemill", new StoneMillTESR());
 		ClientRegistry.registerTileEntity(TileRedBox.class, "dcs_te_redbox", new RedBoxTESR());
 		ClientRegistry.registerTileEntity(TileFan.class, "dcs_te_fan", new FanTESR());
+		GameRegistry.registerTileEntity(TileFauset.class, "dcs_te_fauset");
+		ClientRegistry.registerTileEntity(TileIBC.class, "dcs_te_ibc", new IBCTESR());
+		ClientRegistry.registerTileEntity(TileHeatExchanger.class, "dcs_te_heatexchanger", new HeatExchangerTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
 		// block
 
 		instance.regTETorqueBlock(MachineInit.windmill, ClimateCore.PACKAGE_ID, "dcs_device_windmill", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_ID, "dcs_device_windmill_l", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_ID, "dcs_device_windmill_l", "machine",
+				0);
 		instance.regTETorqueBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta", "machine", 0);
@@ -63,6 +73,11 @@ public class MachineClientProxy {
 		instance.regTETorqueBlock(MachineInit.stonemill, ClimateCore.PACKAGE_ID, "dcs_device_stonemill", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.fan, ClimateCore.PACKAGE_ID, "dcs_device_fan", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.redbox, ClimateCore.PACKAGE_ID, "dcs_device_redbox", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.heatPump, ClimateCore.PACKAGE_ID, "dcs_device_heat_exchanger", "machine",
+				0);
+
+		instance.regTEBlock(MachineInit.IBC, ClimateCore.PACKAGE_ID, "dcs_device_ibc", "machine", 0);
+		instance.regSimpleBlock(MachineInit.fauset, ClimateCore.PACKAGE_ID, "dcs_device_fauset", "machine", 0);
 	}
 
 }

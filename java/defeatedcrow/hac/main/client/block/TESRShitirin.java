@@ -1,5 +1,11 @@
 package defeatedcrow.hac.main.client.block;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.core.base.DCLockableTE;
+import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
+import defeatedcrow.hac.main.block.device.TileChamberBase;
+import defeatedcrow.hac.main.client.model.ModelShitirin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -9,16 +15,16 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.base.DCLockableTE;
-import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
-import defeatedcrow.hac.main.block.device.TileChamberBase;
 
 @SideOnly(Side.CLIENT)
 public class TESRShitirin extends DCLockableTESRBase {
 
+	private static final String TEX = "dcs_climate:textures/tiles/shitirin_clay.png";
+	private static final ModelShitirin MODEL = new ModelShitirin();
+
 	@Override
-	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage) {
+	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks,
+			int destroyStage) {
 		super.renderTileEntityAt(te, x, y, z, partialTicks, destroyStage);
 
 		if (te.hasWorldObj()) {
@@ -33,12 +39,12 @@ public class TESRShitirin extends DCLockableTESRBase {
 
 	@Override
 	protected String getTexPass(int i) {
-		return "dcs_climate:textures/tiles/shitirin_clay.png";
+		return TEX;
 	}
 
 	@Override
 	protected DCTileModelBase getModel(int i) {
-		return new ModelShitirin();
+		return MODEL;
 	}
 
 	private void renderFire(int level, double x, double y, double z, float partialTicks) {
@@ -49,9 +55,9 @@ public class TESRShitirin extends DCLockableTESRBase {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x + 0.5F, (float) y + 0.35F, (float) z + 0.5F);
 		float f = 0.35F;
-		if (level > 6) {
+		if (level > DCHeatTier.KILN.getID()) {
 			f = 0.8F;
-		} else if (level > 5) {
+		} else if (level > DCHeatTier.OVEN.getID()) {
 			f = 0.5F;
 		}
 		GlStateManager.scale(f, f, f);

@@ -95,28 +95,34 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	public void onTickUpdate() {
 	}
 
+	private int count = 20;
+
 	@Override
 	protected void onServerUpdate() {
-		boolean flag = false;
-		if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
-			flag = true;
-			lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
-		} else if (FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount() != lastOutT) {
-			flag = true;
-			lastOutT = FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount();
-		} else if (this.maxBurnTime != lastBurn) {
-			flag = true;
-			lastBurn = this.maxBurnTime;
-		}
+		if (count > 0) {
+			count--;
+		} else {
+			boolean flag = false;
+			if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
+				flag = true;
+				lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
+			} else if (FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount() != lastOutT) {
+				flag = true;
+				lastOutT = FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount();
+			} else if (this.maxBurnTime != lastBurn) {
+				flag = true;
+				lastBurn = this.maxBurnTime;
+			}
 
-		if (flag) {
-			if (!this.hasWorldObj())
-				return;
-			@SuppressWarnings("unchecked")
-			List<EntityPlayer> list = this.getWorld().playerEntities;
-			for (EntityPlayer player : list) {
-				if (player instanceof EntityPlayerMP) {
-					((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+			if (flag) {
+				if (!this.hasWorldObj())
+					return;
+				@SuppressWarnings("unchecked")
+				List<EntityPlayer> list = this.getWorld().playerEntities;
+				for (EntityPlayer player : list) {
+					if (player instanceof EntityPlayerMP) {
+						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+					}
 				}
 			}
 		}
@@ -657,10 +663,10 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			else
 				return (T) handlerSide;
 		} else if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
-			if (facing == EnumFacing.DOWN)
-				return (T) outputT;
-			else
+			if (facing == EnumFacing.UP)
 				return (T) inputT;
+			else
+				return (T) outputT;
 		return super.getCapability(capability, facing);
 	}
 

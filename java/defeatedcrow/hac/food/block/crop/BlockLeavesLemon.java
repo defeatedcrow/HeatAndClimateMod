@@ -5,6 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.core.base.ClimateCropBase;
+import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -20,12 +26,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
-import defeatedcrow.hac.core.base.ClimateCropBase;
-import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.food.FoodInit;
 
 public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, IShearable {
 
@@ -143,8 +143,7 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 	public boolean isSuitablePlace(World world, BlockPos pos, IBlockState stateIn) {
 		IBlockState state = world.getBlockState(pos);
 		if (!world.isRemote && state.getBlock() == this) {
-			if (((Boolean) state.getValue(CHECK_DECAY)).booleanValue()
-					&& ((Boolean) state.getValue(DECAYABLE)).booleanValue()) {
+			if (state.getValue(CHECK_DECAY).booleanValue() && state.getValue(DECAYABLE).booleanValue()) {
 				int i = 4;
 				int j = i + 1;
 				int x = pos.getX();
@@ -164,8 +163,8 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 					for (int x1 = -i; x1 <= i; ++x1) {
 						for (int y1 = -i; y1 <= i; ++y1) {
 							for (int z1 = -i; z1 <= i; ++z1) {
-								IBlockState iblockstate = world.getBlockState(blockpos$mutableblockpos.setPos(x + x1, y
-										+ y1, z + z1));
+								IBlockState iblockstate = world
+										.getBlockState(blockpos$mutableblockpos.setPos(x + x1, y + y1, z + z1));
 								Block block = iblockstate.getBlock();
 
 								if (!block.canSustainLeaves(iblockstate, world,
@@ -204,7 +203,8 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 											this.surroundings[(j3 + r2) * r1 + (k3 + r2 + 1) * area + l3 + r2] = i3;
 										}
 
-										if (this.surroundings[(j3 + r2) * r1 + (k3 + r2) * area + (l3 + r2 - 1)] == -2) {
+										if (this.surroundings[(j3 + r2) * r1 + (k3 + r2) * area
+												+ (l3 + r2 - 1)] == -2) {
 											this.surroundings[(j3 + r2) * r1 + (k3 + r2) * area + (l3 + r2 - 1)] = i3;
 										}
 
@@ -292,8 +292,9 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 	@Override
 	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
 		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
-		ret.add(DCHeatTier.COLD);
+		ret.add(DCHeatTier.COOL);
 		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.WARM);
 		ret.add(DCHeatTier.HOT);
 		return ret;
 	}

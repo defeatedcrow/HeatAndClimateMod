@@ -1,12 +1,13 @@
 package defeatedcrow.hac.main.block.device;
 
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 
 public class TileShitirin extends TileNormalChamber {
 
@@ -24,9 +25,9 @@ public class TileShitirin extends TileNormalChamber {
 			}
 
 			if (air.getID() > 0) {
-				this.currentClimate = 5;
+				this.currentClimate = DCHeatTier.OVEN.getID();
 			} else {
-				this.currentClimate = 4;
+				this.currentClimate = DCHeatTier.HOT.getID();
 			}
 
 			if (BlockShitirin.isLit(getWorld(), getPos()) != this.isActive()) {

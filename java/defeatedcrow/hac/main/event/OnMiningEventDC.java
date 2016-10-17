@@ -2,6 +2,8 @@ package defeatedcrow.hac.main.event;
 
 import java.util.Random;
 
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemShears;
@@ -9,8 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.magic.MagicInit;
 
 public class OnMiningEventDC {
 
@@ -32,7 +32,7 @@ public class OnMiningEventDC {
 
 			event.setNewSpeed(event.getOriginalSpeed());
 			if (hasCharm) {
-				event.setNewSpeed(event.getNewSpeed() + 2.0F);
+				event.setNewSpeed(event.getNewSpeed() * 1.2F + 2.0F);
 				event.setCanceled(false);
 			}
 		}

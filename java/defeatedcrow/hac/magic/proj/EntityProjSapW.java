@@ -1,14 +1,13 @@
 package defeatedcrow.hac.magic.proj;
 
+import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.util.CustomExplosion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.main.util.CustomExplosion;
 
 public class EntityProjSapW extends EntityMagicProjBase {
 
@@ -59,7 +58,7 @@ public class EntityProjSapW extends EntityMagicProjBase {
 
 	@Override
 	protected void onGroundClient() {
-		DCLogger.debugLog("on client");
+		// DCLogger.debugLog("on client");
 		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
 	}
 

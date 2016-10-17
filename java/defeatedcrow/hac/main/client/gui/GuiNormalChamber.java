@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.client.gui;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.main.block.device.TileChamberBase;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -7,7 +9,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.main.block.device.TileChamberBase;
 
 @SideOnly(Side.CLIENT)
 public class GuiNormalChamber extends GuiContainer {
@@ -40,7 +41,7 @@ public class GuiNormalChamber extends GuiContainer {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		if (this.chamber.isActive()) {
-			if (this.chamber.getCurrentHeatID() > 6) {
+			if (this.chamber.getCurrentHeatID() > DCHeatTier.KILN.getID()) {
 				this.drawTexturedModalRect(i + 75, j + 23, 176, 0, 26, 26);
 			} else {
 				this.drawTexturedModalRect(i + 75, j + 23, 176, 26, 26, 26);
