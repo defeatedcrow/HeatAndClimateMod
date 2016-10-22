@@ -24,6 +24,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileCookingStove extends DCTileEntity implements ITagGetter, IInventory {
 
@@ -152,13 +153,19 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return true;
 		}
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			return false;
+		}
 		return super.hasCapability(capability, facing);
 	}
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return (T) inputT;
+		} else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			return null;
+		}
 		return super.getCapability(capability, facing);
 	}
 

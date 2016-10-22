@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.entity.EntityCution;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -17,11 +18,13 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -62,6 +65,25 @@ public class BlockSofaBase extends Block {
 	public BlockSofaBase setSmallAABB() {
 		isSmallAABB = true;
 		return this;
+	}
+
+	// すわる
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+			List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, AABB_FULL);
+			if (list.isEmpty()) {
+				double y1 = isSmallAABB ? 0.45D : 0.30D;
+				EntityCution cution = new EntityCution(world, pos.getX() + 0.5D, pos.getY() + y1, pos.getZ() + 0.5D);
+				world.spawnEntityInWorld(cution);
+				if (player.isRiding()) {
+					player.dismountRidingEntity();
+				}
+				player.startRiding(cution);
+			}
+		}
+		return true;
 	}
 
 	// additional state

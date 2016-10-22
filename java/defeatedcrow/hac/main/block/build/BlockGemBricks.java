@@ -2,6 +2,12 @@ package defeatedcrow.hac.main.block.build;
 
 import java.util.List;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.IThermalInsulationBlock;
+import defeatedcrow.hac.api.placeable.IRapidCollectables;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -10,12 +16,8 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.placeable.IRapidCollectables;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
-import defeatedcrow.hac.core.base.ITexturePath;
 
-public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
+public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, IRapidCollectables, IThermalInsulationBlock {
 
 	public BlockGemBricks(Material m, String s) {
 		super(m, s, 2, false);
@@ -69,5 +71,11 @@ public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, IRapi
 		}
 		world.setBlockToAir(pos);
 		return true;
+	}
+
+	@Override
+	public int getReductionAmount(World world, BlockPos pos, IBlockState state) {
+		int meta = DCState.getInt(state, DCState.TYPE16);
+		return meta == 0 ? -1 : 0;
 	}
 }

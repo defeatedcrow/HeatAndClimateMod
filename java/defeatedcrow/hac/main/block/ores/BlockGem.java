@@ -2,6 +2,8 @@ package defeatedcrow.hac.main.block.ores;
 
 import java.util.List;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.IThermalInsulationBlock;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
@@ -15,7 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
+public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidCollectables, IThermalInsulationBlock {
 
 	public BlockGem(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -74,5 +76,11 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 		}
 		world.setBlockToAir(pos);
 		return true;
+	}
+
+	@Override
+	public int getReductionAmount(World world, BlockPos pos, IBlockState state) {
+		int meta = DCState.getInt(state, DCState.TYPE16);
+		return meta == 3 ? -1 : 0;
 	}
 }

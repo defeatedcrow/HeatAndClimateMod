@@ -10,8 +10,10 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -27,6 +29,9 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -42,7 +47,22 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			if (!player.isSneaking() && tile instanceof TileCookingStove) {
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				boolean flag = false;
+				if (heldItem != null && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+					IFluidHandler cont = heldItem.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
+					if (cont != null && cont.drain(1000, false) != null) {
+						FluidStack f = cont.drain(1000, false);
+						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid().getName())) {
+							if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+								flag = true;
+							}
+						}
+					}
+				}
+				if (!flag) {
+					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				}
+				return true;
 			} else {
 				this.changePowerState(world, pos);
 				world.playSound(null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.8F, 2.0F);

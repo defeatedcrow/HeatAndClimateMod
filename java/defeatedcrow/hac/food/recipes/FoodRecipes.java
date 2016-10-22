@@ -529,6 +529,6 @@ public class FoodRecipes {
 	}
 
 	static void loadFuelData() {
-		MainAPIManager.fuelRegister.registerFuel("dcs.seed_oil", 100);
+		MainAPIManager.fuelRegister.registerFuel("dcs.seed_oil", 60);
 	}
 }

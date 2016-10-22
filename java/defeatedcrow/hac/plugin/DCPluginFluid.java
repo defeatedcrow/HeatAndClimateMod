@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.Block;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
@@ -119,6 +120,9 @@ public class DCPluginFluid {
 		Fluid f18 = FluidRegistry.getFluid("bio.ethanol");
 		registerPotion(f18, MobEffects.BLINDNESS);
 
+		Fluid f33 = FluidRegistry.getFluid("biomass");
+		registerPotion(f33, MobEffects.NAUSEA);
+
 		Fluid f19 = FluidRegistry.getFluid("glass");
 		if (f19 != null) {
 			Block b19 = f19.getBlock();
@@ -196,6 +200,13 @@ public class DCPluginFluid {
 				ClimateAPI.registerBlock.registerHeatBlock(b32, 32767, DCHeatTier.OVEN);
 			}
 		}
+
+		// fuel
+		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
+		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
+		MainAPIManager.fuelRegister.registerFuel("bio.ethanol", 100);
+		MainAPIManager.fuelRegister.registerFuel("biomass", 60);
+		MainAPIManager.fuelRegister.registerFuel("fusionfueldt", 120);
 
 	}
 

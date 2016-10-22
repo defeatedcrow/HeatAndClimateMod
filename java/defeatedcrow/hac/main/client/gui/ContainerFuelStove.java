@@ -6,6 +6,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -61,5 +62,10 @@ public class ContainerFuelStove extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return this.processor.isUseableByPlayer(playerIn);
+	}
+
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
+		return null;
 	}
 }

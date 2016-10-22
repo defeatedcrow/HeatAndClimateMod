@@ -34,9 +34,11 @@ import defeatedcrow.hac.main.client.block.TESRMetalChest;
 import defeatedcrow.hac.main.client.block.TESRNormalChamber;
 import defeatedcrow.hac.main.client.block.TESRShitirin;
 import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
+import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
+import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.event.AltTooltipEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -95,6 +97,7 @@ public class ClientMainProxy extends CommonMainProxy {
 	@Override
 	public void loadEntity() {
 		super.loadEntity();
+		registRender(EntityCution.class, RenderEntityCution.class);
 
 		FoodClientProxy.loadEntity();
 		MagicClientProxy.loadEntity();

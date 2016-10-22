@@ -130,7 +130,7 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 	}
 
 	private DCHeatTier getUnderHeat() {
-		DCHeatTier hot = DCHeatTier.NORMAL;
+		DCHeatTier hot = ClimateAPI.calculator.getAverageTemp(worldObj, getPos().down(), 0, false);
 
 		Block block = worldObj.getBlockState(pos.down()).getBlock();
 		int m = block.getMetaFromState(worldObj.getBlockState(pos.down()));

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main.block.build;
 
 import defeatedcrow.hac.core.base.DCSimpleBlock;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -16,6 +17,7 @@ public class BlockIronPlate extends DCSimpleBlock {
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.fullBlock = false;
+		this.setSoundType(SoundType.METAL);
 	}
 
 	@Override

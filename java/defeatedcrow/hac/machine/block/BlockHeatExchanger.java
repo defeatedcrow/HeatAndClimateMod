@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
+import defeatedcrow.hac.api.climate.IThermalInsulationBlock;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -19,7 +20,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile {
+public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile, IThermalInsulationBlock {
 
 	public BlockHeatExchanger(String s) {
 		super(Material.ROCK, s, 0);
@@ -143,6 +144,11 @@ public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile {
 			return 1;
 
 		}
+	}
+
+	@Override
+	public int getReductionAmount(World world, BlockPos pos, IBlockState state) {
+		return 1;
 	}
 
 }
