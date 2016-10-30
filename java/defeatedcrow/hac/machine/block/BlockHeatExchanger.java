@@ -7,7 +7,10 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IThermalInsulationBlock;
+import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -35,26 +38,13 @@ public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile, IT
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		// if (player != null && heldItem == null) {
-		// TileEntity tile = world.getTileEntity(pos);
-		// if (tile instanceof TileHeatExchanger) {
-		// TileHeatExchanger ex = (TileHeatExchanger) tile;
-		// EnumFacing face = ex.getBaseSide();
-		// if (ex.current != null) {
-		// int active = isActive(face, player.getPosition(), pos);
-		// DCHeatTier cur = ex.current.getHeat();
-		// float torque = ex.getCurrentTorque();
-		// if (torque >= 31.5F) {
-		// active *= 2;
-		// }
-		// DCLogger.debugLog("*** current:" + cur + ", add" + active);
-		// DCHeatTier next = cur.addTier(active);
-		// DCLogger.debugLog("*** added:" + next);
-		// return true;
-		// }
-		// }
-		// return true;
-		// }
+		if (player != null && heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
+			TileEntity tile = world.getTileEntity(pos);
+			// achievement
+			if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
+				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+			}
+		}
 		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
 	}
 

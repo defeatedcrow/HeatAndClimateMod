@@ -51,6 +51,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
+import net.minecraft.stats.Achievement;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -217,6 +218,10 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public ModelThinBiped getArmorModel(int slot) {
 		return null;
+	}
+
+	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
+		return player != null && player.hasAchievement(acv);
 	}
 
 }

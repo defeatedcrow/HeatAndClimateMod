@@ -1,11 +1,16 @@
 package defeatedcrow.hac.main.achievement;
 
+import defeatedcrow.hac.core.ClimateCore;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.stats.Achievement;
 
+// 非リモート環境のみ
 public class AcvHelper {
 
 	public static boolean hasClimateMaster(EntityPlayer player) {
+		if (ClimateCore.isDebug) {
+			return true;
+		}
 		if (player != null && player.hasAchievement(AchievementClimate.CLIMATE_MASTER)) {
 			return true;
 		} else {
@@ -39,6 +44,9 @@ public class AcvHelper {
 	}
 
 	public static boolean hasMachineMaster(EntityPlayer player) {
+		if (ClimateCore.isDebug) {
+			return true;
+		}
 		if (player != null && player.hasAchievement(AchievementClimate.MACHINE_MASTER)) {
 			return true;
 		} else {
@@ -72,6 +80,9 @@ public class AcvHelper {
 	}
 
 	public static boolean hasMagicMaster(EntityPlayer player) {
+		if (ClimateCore.isDebug) {
+			return true;
+		}
 		if (player != null && player.hasAchievement(AchievementClimate.MAGIC_MASTER)) {
 			return true;
 		} else {

@@ -33,6 +33,7 @@ public class ItemIBC extends DCItemBlock {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
 		IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		if (cont != null && cont.getTankProperties() != null) {
 			FluidStack f = cont.getTankProperties()[0].getContents();

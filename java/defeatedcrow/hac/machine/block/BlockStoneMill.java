@@ -2,6 +2,12 @@ package defeatedcrow.hac.machine.block;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.energy.IWrenchDC;
+import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.core.energy.TileTorqueProcessor;
+import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -12,12 +18,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.energy.IWrenchDC;
-import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.core.energy.TileTorqueProcessor;
-import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 
 public class BlockStoneMill extends BlockTorqueBase {
 
@@ -37,7 +37,7 @@ public class BlockStoneMill extends BlockTorqueBase {
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				if (((TileTorqueProcessor) tile).isActive()) {
 					// achievement
-					if (player.hasAchievement(AchievementClimate.MACHINE_USING)) {
+					if (!player.hasAchievement(AchievementClimate.MACHINE_USING)) {
 						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_USING);
 					}
 				}

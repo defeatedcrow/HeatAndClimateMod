@@ -2,6 +2,10 @@ package defeatedcrow.hac.machine.block;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.energy.IWrenchDC;
+import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,10 +17,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.energy.IWrenchDC;
-import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 
 public class BlockShaft_S extends BlockTorqueBase {
 
@@ -36,7 +36,7 @@ public class BlockShaft_S extends BlockTorqueBase {
 		// achievement
 		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;
-			if (player.hasAchievement(AchievementClimate.MACHINE_PLACE)) {
+			if (!player.hasAchievement(AchievementClimate.MACHINE_PLACE)) {
 				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_PLACE);
 			}
 		}
@@ -49,7 +49,7 @@ public class BlockShaft_S extends BlockTorqueBase {
 		if (player != null && heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
 			TileEntity tile = world.getTileEntity(pos);
 			// achievement
-			if (player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
+			if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
 				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
 			}
 		}

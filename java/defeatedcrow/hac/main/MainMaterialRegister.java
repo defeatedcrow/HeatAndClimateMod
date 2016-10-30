@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main;
 
+import java.util.List;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItemBlock;
@@ -62,9 +64,12 @@ import defeatedcrow.hac.main.util.DCMaterial;
 import defeatedcrow.hac.main.util.DCToolMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MainMaterialRegister {
@@ -248,7 +253,14 @@ public class MainMaterialRegister {
 
 	static void regDeviceBlock() {
 		MainInit.chamber = new BlockNormalChamber(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chamber", 1);
-		registerBlock(MainInit.chamber, ClimateCore.PACKAGE_BASE + "_device_chamber");
+		MainInit.chamber.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_chamber");
+		GameRegistry.register(MainInit.chamber);
+		GameRegistry.register(new DCItemBlock(MainInit.chamber) {
+			@Override
+			public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+				tooltip.add(TextFormatting.BOLD.toString() + "Tier 1");
+			}
+		});
 
 		MainInit.shitirin = new BlockShitirin(Material.CLAY, ClimateCore.PACKAGE_BASE + "_device_shitirin", 1);
 		MainInit.shitirin.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_shitirin");
@@ -256,7 +268,14 @@ public class MainMaterialRegister {
 		GameRegistry.register(new ItemBlockShitirin(MainInit.shitirin));
 
 		MainInit.fuelStove = new BlockCookingStove(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_fuelstove", 3);
-		registerBlock(MainInit.fuelStove, ClimateCore.PACKAGE_BASE + "_device_fuelstove");
+		MainInit.fuelStove.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_fuelstove");
+		GameRegistry.register(MainInit.fuelStove);
+		GameRegistry.register(new DCItemBlock(MainInit.fuelStove) {
+			@Override
+			public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+				tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
+			}
+		});
 
 		MainInit.stevenson_screen = new BlockStevensonScreen(ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");
 		registerBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");

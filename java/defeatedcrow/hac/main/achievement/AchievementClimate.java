@@ -5,7 +5,6 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.DCInit;
-import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
@@ -24,7 +23,7 @@ public class AchievementClimate {
 
 	/* climate */
 	public static final Achievement CLIMATE_MASTER = (new Achievement("achievement.climate_master",
-			"dcs.climate_master", 3, -2, new ItemStack(FoodInit.cropTomato, 1, 7), (Achievement) null) {
+			"dcs.climate_master", 3, -2, new ItemStack(MainInit.stevenson_screen, 1, 0), (Achievement) null) {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public String getDescription() {

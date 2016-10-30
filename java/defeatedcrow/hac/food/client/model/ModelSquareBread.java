@@ -1,10 +1,10 @@
 package defeatedcrow.hac.food.client.model;
 
+import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 
 @SideOnly(Side.CLIENT)
 public class ModelSquareBread extends DCFoodModelBase {
@@ -69,7 +69,7 @@ public class ModelSquareBread extends DCFoodModelBase {
 
 	@Override
 	public void render(float scale) {
-		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale);
+		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale * 1.5F);
 	}
 
 	@Override

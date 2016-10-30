@@ -16,10 +16,11 @@ import defeatedcrow.hac.machine.block.BlockShaft_TB;
 import defeatedcrow.hac.machine.block.BlockStoneMill;
 import defeatedcrow.hac.machine.block.BlockWindmill;
 import defeatedcrow.hac.machine.block.BlockWindmill_L;
+import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineInitRegister {
@@ -37,43 +38,43 @@ public class MachineInitRegister {
 
 	static void loadBlocks() {
 		MachineInit.windmill = new BlockWindmill(ClimateCore.PACKAGE_BASE + "_device_windmill");
-		MainMaterialRegister.registerBlock(MachineInit.windmill, ClimateCore.PACKAGE_BASE + "_device_windmill");
+		registerTierBlock(MachineInit.windmill, ClimateCore.PACKAGE_BASE + "_device_windmill", 1);
 
 		MachineInit.windmill_l = new BlockWindmill_L(ClimateCore.PACKAGE_BASE + "_device_windmill_l");
-		MainMaterialRegister.registerBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_BASE + "_device_windmill_l");
+		registerTierBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_BASE + "_device_windmill_l", 1);
 
 		MachineInit.shaft_s = new BlockShaft_S(ClimateCore.PACKAGE_BASE + "_device_shaft_s");
-		MainMaterialRegister.registerBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_BASE + "_device_shaft_s");
+		registerTierBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_BASE + "_device_shaft_s", 1);
 
 		MachineInit.shaft_l = new BlockShaft_L(ClimateCore.PACKAGE_BASE + "_device_shaft_l");
-		MainMaterialRegister.registerBlock(MachineInit.shaft_l, ClimateCore.PACKAGE_BASE + "_device_shaft_l");
+		registerTierBlock(MachineInit.shaft_l, ClimateCore.PACKAGE_BASE + "_device_shaft_l", 1);
 
 		MachineInit.shaft_t_a = new BlockShaft_TA(ClimateCore.PACKAGE_BASE + "_device_shaft_ta");
-		MainMaterialRegister.registerBlock(MachineInit.shaft_t_a, ClimateCore.PACKAGE_BASE + "_device_shaft_ta");
+		registerTierBlock(MachineInit.shaft_t_a, ClimateCore.PACKAGE_BASE + "_device_shaft_ta", 1);
 
 		MachineInit.shaft_t_b = new BlockShaft_TB(ClimateCore.PACKAGE_BASE + "_device_shaft_tb");
-		MainMaterialRegister.registerBlock(MachineInit.shaft_t_b, ClimateCore.PACKAGE_BASE + "_device_shaft_tb");
+		registerTierBlock(MachineInit.shaft_t_b, ClimateCore.PACKAGE_BASE + "_device_shaft_tb", 1);
 
 		MachineInit.gearbox = new BlockGearBox(ClimateCore.PACKAGE_BASE + "_device_gearbox");
-		MainMaterialRegister.registerBlock(MachineInit.gearbox, ClimateCore.PACKAGE_BASE + "_device_gearbox");
+		registerTierBlock(MachineInit.gearbox, ClimateCore.PACKAGE_BASE + "_device_gearbox", 1);
 
 		MachineInit.piston = new BlockCrank_S(ClimateCore.PACKAGE_BASE + "_device_crank_s");
-		MainMaterialRegister.registerBlock(MachineInit.piston, ClimateCore.PACKAGE_BASE + "_device_crank_s");
+		registerTierBlock(MachineInit.piston, ClimateCore.PACKAGE_BASE + "_device_crank_s", 1);
 
 		MachineInit.handcrank = new BlockHandCrank(ClimateCore.PACKAGE_BASE + "_device_handcrank");
-		MainMaterialRegister.registerBlock(MachineInit.handcrank, ClimateCore.PACKAGE_BASE + "_device_handcrank");
+		registerTierBlock(MachineInit.handcrank, ClimateCore.PACKAGE_BASE + "_device_handcrank", 1);
 
 		MachineInit.stonemill = new BlockStoneMill(ClimateCore.PACKAGE_BASE + "_device_stonemill");
-		MainMaterialRegister.registerBlock(MachineInit.stonemill, ClimateCore.PACKAGE_BASE + "_device_stonemill");
+		registerTierBlock(MachineInit.stonemill, ClimateCore.PACKAGE_BASE + "_device_stonemill", 1);
 
 		MachineInit.fan = new BlockFan(ClimateCore.PACKAGE_BASE + "_device_fan");
-		MainMaterialRegister.registerBlock(MachineInit.fan, ClimateCore.PACKAGE_BASE + "_device_fan");
+		registerTierBlock(MachineInit.fan, ClimateCore.PACKAGE_BASE + "_device_fan", 1);
 
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
-		MainMaterialRegister.registerBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox");
+		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 1);
 
 		MachineInit.fauset = new BlockFauset(ClimateCore.PACKAGE_BASE + "_device_fauset");
-		MainMaterialRegister.registerBlock(MachineInit.fauset, ClimateCore.PACKAGE_BASE + "_device_fauset");
+		registerTierBlock(MachineInit.fauset, ClimateCore.PACKAGE_BASE + "_device_fauset", 2);
 
 		MachineInit.IBC = new BlockIBC(ClimateCore.PACKAGE_BASE + "_device_ibc");
 		MachineInit.IBC.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_ibc");
@@ -81,7 +82,7 @@ public class MachineInitRegister {
 		GameRegistry.register(new ItemIBC(MachineInit.IBC));
 
 		MachineInit.heatPump = new BlockHeatExchanger(ClimateCore.PACKAGE_BASE + "_device_heat_exchanger");
-		MainMaterialRegister.registerBlock(MachineInit.heatPump, ClimateCore.PACKAGE_BASE + "_device_heat_exchanger");
+		registerTierBlock(MachineInit.heatPump, ClimateCore.PACKAGE_BASE + "_device_heat_exchanger", 2);
 	}
 
 	static void loadItems() {
@@ -108,6 +109,12 @@ public class MachineInitRegister {
 		MachineInit.fauset.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
 		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
+	}
+
+	public static void registerTierBlock(Block block, String name, int i) {
+		Block reg = block.setRegistryName(name);
+		GameRegistry.register(reg);
+		GameRegistry.register(new ItemBlockHighTier(reg, i));
 	}
 
 }

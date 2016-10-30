@@ -5,9 +5,10 @@ import org.lwjgl.opengl.GL11;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.main.achievement.AcvHelper;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
@@ -50,7 +51,12 @@ public class AdvancedHUDEvent {
 						count = 10;
 
 						if (!hasAcv) {
-							hasAcv = ClimateCore.isDebug || AcvHelper.hasClimateMaster(player);
+							if (player instanceof EntityPlayerSP) {
+								if (((EntityPlayerSP) player).getStatFileWriter()
+										.hasAchievementUnlocked(AchievementClimate.CLIMATE_MASTER)) {
+									hasAcv = true;
+								}
+							}
 						}
 
 						/* 10Fごとに使用データを更新 */

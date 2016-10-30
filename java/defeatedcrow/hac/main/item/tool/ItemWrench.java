@@ -1,5 +1,12 @@
 package defeatedcrow.hac.main.item.tool;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.blockstate.EnumSide;
+import defeatedcrow.hac.api.energy.IWrenchDC;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -8,19 +15,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.api.energy.IWrenchDC;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 
 public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 
 	private final int maxMeta;
 
-	private static String[] names = { "brass" };
+	private static String[] names = {
+			"brass" };
 
 	public ItemWrench(ToolMaterial m) {
 		super(m, "brass");
@@ -38,7 +39,7 @@ public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 				world.setBlockState(pos, tile.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite())));
 
 				// achievement
-				if (player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
+				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
 					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
 				}
 

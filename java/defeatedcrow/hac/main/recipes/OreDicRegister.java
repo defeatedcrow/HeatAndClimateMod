@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.recipes;
 
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.main.MainInit;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -138,6 +139,13 @@ public class OreDicRegister {
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.materials, 1, 5));
+
+		/* バニラ補足 */
+		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 0));
+		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 1));
+		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 2));
+		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 2));
+		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 3));
 	}
 
 }

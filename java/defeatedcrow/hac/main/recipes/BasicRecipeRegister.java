@@ -32,6 +32,15 @@ public class BasicRecipeRegister {
 				'Y',
 				"stickWood" }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 0), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				"blockTallGrass",
+				'Y',
+				"stickWood" }));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 1), new Object[] {
 				"XXX",
 				"XYX",
@@ -949,12 +958,12 @@ public class BasicRecipeRegister {
 				new ItemStack(Blocks.CHEST, 1, 0) }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.plate, 2, 0), new Object[] {
-				"XX",
+				"X X",
 				'X',
 				"ingotIron" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.plate, 2, 1), new Object[] {
-				"XX",
+				"X X",
 				'X',
 				new ItemStack(Blocks.IRON_BARS, 1, 0) }));
 
@@ -1188,6 +1197,18 @@ public class BasicRecipeRegister {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
 				new ItemStack(MainInit.ores, 1, 4),
 				new ItemStack(Items.FLINT) }));
+
+		// 矢
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.ARROW, 8, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				"gemChalcedony",
+				'Y',
+				"stickWood",
+				'Z',
+				"feather" }));
 
 		// ブレイズロッド救済用
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.BLAZE_ROD, 1, 0), new Object[] {

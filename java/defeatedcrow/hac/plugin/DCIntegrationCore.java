@@ -41,6 +41,15 @@ public class DCIntegrationCore {
 			}
 		}
 
+		if (Loader.isModLoaded("schor0tanpopo")) {
+			try {
+				DCPluginTanpopo.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: schor0tanpopo");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: schor0tanpopo");
+			}
+		}
+
 	}
 
 }
