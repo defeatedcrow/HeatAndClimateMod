@@ -9,7 +9,7 @@ Please visit my new Wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
 
 ## Current operating environment:
 - Minecraft 1.10.2  
-- MinecraftForge 12.18.1.2094+  
+- MinecraftForge 12.18.2.2099+  
 - [HeatAndClimateLib](https://github.com/defeatedcrow/HeatAndClimateLib)
    
 ## Licenses
