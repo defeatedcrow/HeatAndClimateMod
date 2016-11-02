@@ -92,7 +92,7 @@ public class MachineRecipes {
 				'X',
 				"gearBrass",
 				'Y',
-				"gearArroy",
+				"gearAlloy",
 				'Z',
 				"ingotIron" }));
 
@@ -103,7 +103,7 @@ public class MachineRecipes {
 				'X',
 				"dustRedstone",
 				'Y',
-				"gearArroy" }));
+				"gearAlloy" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.windmill, 1, 0), new Object[] {
 				" X ",
@@ -132,7 +132,7 @@ public class MachineRecipes {
 				'X',
 				"stone",
 				'Y',
-				"gearArroy" }));
+				"gearAlloy" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.fan, 1, 0), new Object[] {
 				"XZX",
@@ -152,7 +152,7 @@ public class MachineRecipes {
 				'X',
 				"ingotNickelsilver",
 				'Y',
-				"gearArroy" }));
+				"gearAlloy" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.IBC, 1, 0), new Object[] {
 				"ZXZ",

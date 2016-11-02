@@ -1,15 +1,5 @@
 package defeatedcrow.hac.food;
 
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.StateMapperBase;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
@@ -35,29 +25,48 @@ import defeatedcrow.hac.food.client.MeatPieRenderer;
 import defeatedcrow.hac.food.client.PorkStickRenderer;
 import defeatedcrow.hac.food.client.PotatoQuicheRenderer;
 import defeatedcrow.hac.food.client.RoundBreadRenderer;
+import defeatedcrow.hac.food.client.SandwichAppleRenderer;
+import defeatedcrow.hac.food.client.SandwichEggRenderer;
+import defeatedcrow.hac.food.client.SandwichSaladRenderer;
 import defeatedcrow.hac.food.client.SpinachQuicheRenderer;
 import defeatedcrow.hac.food.client.SquareBreadRenderer;
 import defeatedcrow.hac.food.client.SugarPieRenderer;
 import defeatedcrow.hac.food.client.TESRPotteryPot;
 import defeatedcrow.hac.food.client.TESRSteelPot;
 import defeatedcrow.hac.food.client.TESRTeaPot;
+import defeatedcrow.hac.food.client.ToastRenderer;
 import defeatedcrow.hac.food.client.YakitoriStickRenderer;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
+import defeatedcrow.hac.food.entity.EggSandwichEntity;
+import defeatedcrow.hac.food.entity.EntitySandwich;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
 import defeatedcrow.hac.food.entity.FishStickEntity;
+import defeatedcrow.hac.food.entity.LemonSandwichEntity;
 import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
+import defeatedcrow.hac.food.entity.SaladSandwichEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
 import defeatedcrow.hac.food.entity.SugarPieEntity;
+import defeatedcrow.hac.food.entity.ToastBreadEntity;
 import defeatedcrow.hac.food.entity.YakitoriStickEntity;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.ClientMainProxy;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class FoodClientProxy {
@@ -89,6 +98,11 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(PotatoQuicheEntity.class, PotatoQuicheRenderer.class);
 		ClientMainProxy.registRender(SugarPieEntity.class, SugarPieRenderer.class);
 		ClientMainProxy.registRender(MeatPieEntity.class, MeatPieRenderer.class);
+		ClientMainProxy.registRender(ToastBreadEntity.class, ToastRenderer.class);
+		ClientMainProxy.registRender(EntitySandwich.class, SandwichAppleRenderer.class);
+		ClientMainProxy.registRender(EggSandwichEntity.class, SandwichEggRenderer.class);
+		ClientMainProxy.registRender(LemonSandwichEntity.class, SandwichAppleRenderer.class);
+		ClientMainProxy.registRender(SaladSandwichEntity.class, SandwichSaladRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -103,7 +117,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.teaLeaves, ClimateCore.PACKAGE_ID, "dcs_food_leaves", "food", 2);
 		instance.regSimpleItem(FoodInit.dropOil, ClimateCore.PACKAGE_ID, "dcs_food_drop_oil", "food", 0);
 		instance.regSimpleItem(FoodInit.dropCream, ClimateCore.PACKAGE_ID, "dcs_food_drop_cream", "food", 0);
-		instance.regSimpleItem(FoodInit.bread, ClimateCore.PACKAGE_ID, "dcs_round_bread", "food", 3);
+		instance.regSimpleItem(FoodInit.bread, ClimateCore.PACKAGE_ID, "dcs_round_bread", "food", 5);
 		instance.regSimpleItem(FoodInit.sticks, ClimateCore.PACKAGE_ID, "dcs_stick_foods", "food", 7);
 		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 9);
 		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 5);
@@ -113,6 +127,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.pastry, ClimateCore.PACKAGE_ID, "dcs_food_pastry", "food", 0);
 		instance.regSimpleItem(FoodInit.pastryRound, ClimateCore.PACKAGE_ID, "dcs_food_tart", "food", 7);
 		instance.regSimpleItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_ID, "dcs_food_pie", "food", 3);
+		instance.regSimpleItem(FoodInit.sandwich, ClimateCore.PACKAGE_ID, "dcs_food_sandwich", "food", 3);
 
 		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 4);
 
@@ -129,8 +144,8 @@ public class FoodClientProxy {
 		// fluid
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.oilBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel_Oil = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_oil", "fluid");
+			final ModelResourceLocation fluidModel_Oil = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_oil", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -138,8 +153,8 @@ public class FoodClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(FoodInit.oilBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel_Oil = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_oil", "fluid");
+			final ModelResourceLocation fluidModel_Oil = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_oil", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -148,8 +163,8 @@ public class FoodClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.greenTeaBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_greentea", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_greentea", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -157,8 +172,8 @@ public class FoodClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(FoodInit.greenTeaBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_greentea", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_greentea", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -167,8 +182,8 @@ public class FoodClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.blackTeaBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -176,8 +191,8 @@ public class FoodClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(FoodInit.blackTeaBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -186,8 +201,8 @@ public class FoodClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.coffeeBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_coffee", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_coffee", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -195,8 +210,8 @@ public class FoodClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(FoodInit.coffeeBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_coffee", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_coffee", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -205,8 +220,8 @@ public class FoodClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.creamBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_cream", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_cream", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -214,8 +229,8 @@ public class FoodClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(FoodInit.creamBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":"
-					+ ClimateCore.PACKAGE_BASE + "_fluidblock_cream", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_cream", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {

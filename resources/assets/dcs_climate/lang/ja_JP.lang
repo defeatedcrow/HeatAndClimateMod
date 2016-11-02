@@ -84,6 +84,8 @@ item.dcs_food_bread_roundbread_raw.name=パン生地
 item.dcs_food_bread_roundbread_baked.name=丸パン
 item.dcs_food_bread_squarebread_raw.name=型入り生地
 item.dcs_food_bread_squarebread_baked.name=食パン
+item.dcs_food_bread_butter_toast_raw.name=バタースライスパン
+item.dcs_food_bread_butter_toast_baked.name=バタートースト
 item.dcs_food_stick_fish_raw.name=生の魚串
 item.dcs_food_stick_fish_cooked.name=焼いた魚串
 item.dcs_food_stick_yakitori_raw.name=生の鶏串
@@ -106,6 +108,10 @@ item.dcs_food_pie_sugar_raw.name=生のシュガーペイストリー
 item.dcs_food_pie_sugar_baked.name=シュガーペイストリー
 item.dcs_food_pie_meat_raw.name=生のミートパイ
 item.dcs_food_pie_meat_baked.name=ミートパイ
+item.dcs_food_sandwich_apple.name=リンゴサンド
+item.dcs_food_sandwich_egg.name=たまごサンド
+item.dcs_food_sandwich_lemon.name=レモンサンド
+item.dcs_food_sandwich_salad.name=野菜サンド
 
 item.dcs_food_crops_rice.name=稲束
 item.dcs_food_crops_onion.name=玉ねぎ
@@ -273,6 +279,7 @@ tile.dcs_gemblock_sapphire.name=サファイアブロック
 tile.dcs_gemblock_salt.name=岩塩ブロック
 tile.dcs_gemblock_marble.name=大理石ブロック
 tile.dcs_gemblock_schorl.name=黒トルマリンブロック
+tile.dcs_gemblock_compressed.name=圧縮されたカルセドニー
 
 tile.dcs_cont_log_oak.name=樫の丸太箱
 tile.dcs_cont_log_spruce.name=松の丸太箱

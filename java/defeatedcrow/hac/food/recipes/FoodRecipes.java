@@ -134,6 +134,10 @@ public class FoodRecipes {
 				new ItemStack(FoodInit.bread, 1, 0),
 				new ItemStack(Items.PAPER, 1, 0) }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.bread, 3, 4), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 3),
+				"foodButter" }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sticks, 1, 0), new Object[] {
 				"stickWood",
 				new ItemStack(Items.FISH, 1, 0) }));
@@ -204,6 +208,37 @@ public class FoodRecipes {
 				"foodAnyMeat",
 				"dustSalt",
 				"cropHerb" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 0), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 3),
+				"cropApple",
+				"dustSugar" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 1), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 3),
+				"egg" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 2), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 3),
+				"cropLemon",
+				"dustSugar" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 2), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 3),
+				"cropLemon",
+				"dropHoney" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 3), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 3),
+				"cropSpinach",
+				"cropOnion",
+				new ItemStack(Items.COOKED_PORKCHOP, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 3), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 3),
+				"cropHerb",
+				"cropTomato",
+				new ItemStack(Items.COOKED_CHICKEN, 1, 0) }));
 
 		// smelting
 		GameRegistry.addSmelting(new ItemStack(FoodInit.seeds, 1, 4), new ItemStack(FoodInit.teaLeaves, 1, 0), 0.1F);
@@ -306,6 +341,13 @@ public class FoodRecipes {
 
 	static void loadClimateRecipes() {
 
+		ClimateSmelting toast = new ClimateSmelting(new ItemStack(FoodInit.bread, 1, 5), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.bread, 1, 4));
+		toast.requiredHeat().add(DCHeatTier.SMELTING);
+		toast.requiredHum().add(DCHumidity.NORMAL);
+		toast.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(toast, DCHeatTier.OVEN);
+
 		ClimateSmelting square = new ClimateSmelting(new ItemStack(FoodInit.bread, 1, 3), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.bread, 1, 2));
 		square.requiredHeat().add(DCHeatTier.SMELTING);
@@ -398,6 +440,14 @@ public class FoodRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
 				0.25F, new ItemStack(FoodInit.crops, 4, 7));
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropCream, 2, 0), "bucketMilk");
+
+		// yagen
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new Object[] {
+				"toolNormalYagen",
+				"cropOlive",
+				"cropOlive",
+				"cropOlive",
+				"cropOlive" }));
 	}
 
 	static void loadFluidRecipes() {

@@ -12,8 +12,10 @@ public class RenderEntityCution extends Render<EntityCution> {
 
 	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate", "textures/entity/cution_white.png");
 
-	protected RenderEntityCution(RenderManager renderManager) {
+	public RenderEntityCution(RenderManager renderManager) {
 		super(renderManager);
+		this.shadowSize = 0.2F;
+		this.shadowOpaque = 0.2F;
 	}
 
 	@Override

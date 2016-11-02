@@ -34,7 +34,8 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 			"sapphire",
 			"salt",
 			"marble",
-			"schorl" };
+			"schorl",
+			"compressed" };
 
 	@Override
 	public String[] getNameSuffix() {

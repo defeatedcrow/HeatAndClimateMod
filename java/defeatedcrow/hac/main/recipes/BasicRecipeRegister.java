@@ -497,6 +497,16 @@ public class BasicRecipeRegister {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 4, 11), new Object[] {
 				new ItemStack(MainInit.gemBlock, 1, 7) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 2) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 9, 2), new Object[] {
+				new ItemStack(MainInit.gemBlock, 1, 8) }));
 	}
 
 	static void loadContRecipes() {
@@ -973,10 +983,10 @@ public class BasicRecipeRegister {
 				'X',
 				"ingotNickelsilver" }));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.sinkMetal, 1, 1), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.sinkMetal, 1, 0), new Object[] {
 				new ItemStack(MainInit.sinkChest, 1, 0) }));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.sinkChest, 1, 1), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.sinkChest, 1, 0), new Object[] {
 				new ItemStack(MainInit.sinkMetal, 1, 0) }));
 
 	}

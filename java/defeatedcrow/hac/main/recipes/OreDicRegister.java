@@ -74,6 +74,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("blockTin", new ItemStack(MainInit.metalBlock, 1, 8));
 		OreDictionary.registerOre("blockBronze", new ItemStack(MainInit.metalBlock, 1, 9));
 		OreDictionary.registerOre("blockSUS", new ItemStack(MainInit.metalBlock, 1, 10));
+		OreDictionary.registerOre("blockInox", new ItemStack(MainInit.metalBlock, 1, 10));
 
 		// gems
 		OreDictionary.registerOre("gemChalcedony", new ItemStack(MainInit.gems, 1, 0));
@@ -121,7 +122,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("itemCottonCloth", new ItemStack(MainInit.materials, 1, 3));
 		OreDictionary.registerOre("gearWood", new ItemStack(MainInit.materials, 1, 4));
 		OreDictionary.registerOre("gearBrass", new ItemStack(MainInit.materials, 1, 5));
-		OreDictionary.registerOre("gearArroy", new ItemStack(MainInit.materials, 1, 6));
+		OreDictionary.registerOre("gearAlloy", new ItemStack(MainInit.materials, 1, 6));
 		OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.materials, 1, 6));
 		OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.materials, 1, 7));
 
@@ -146,6 +147,10 @@ public class OreDicRegister {
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 2));
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 2));
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 3));
+
+		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 1));
+		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 3));
+		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
 	}
 
 }

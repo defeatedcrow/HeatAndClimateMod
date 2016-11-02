@@ -95,8 +95,8 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadEntity() {
-		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 99,
-				ClimateMain.instance, 128, 5, false);
+		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 50,
+				ClimateMain.instance, 128, 5, true);
 
 		FoodCommonProxy.loadEntity();
 		MagicCommonProxy.loadEntity();

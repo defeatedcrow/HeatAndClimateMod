@@ -193,7 +193,7 @@ public class ItemSilverCup extends FoodItemBase {
 							ret.add(new PotionEffect(potion, MathHelper.ceiling_float_int(1200 * dirF), ampF));
 						}
 					} else {
-						ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(1200 * dirF),
+						ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF),
 								ampF));
 					}
 				}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.food.FoodClientProxy;
@@ -197,6 +198,7 @@ public class ClientMainProxy extends CommonMainProxy {
 				try {
 					return render.getConstructor(manager.getClass()).newInstance(manager);
 				} catch (Exception e) {
+					DCLogger.infoLog("dcs_climate", "failed to register entity render: " + cls.getName());
 					e.printStackTrace();
 				}
 				return null;

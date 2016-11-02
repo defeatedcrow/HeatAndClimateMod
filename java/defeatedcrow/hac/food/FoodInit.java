@@ -10,6 +10,7 @@ public class FoodInit {
 	}
 
 	public static Item bread;
+	public static Item sandwich;
 	public static Item sticks;
 	public static Item pastryRound;
 	public static Item pastrySquare;

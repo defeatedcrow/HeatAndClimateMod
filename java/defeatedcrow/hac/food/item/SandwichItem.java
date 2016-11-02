@@ -5,9 +5,10 @@ import java.util.List;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.RoundBreadEntity;
-import defeatedcrow.hac.food.entity.SquareBreadEntity;
-import defeatedcrow.hac.food.entity.ToastBreadEntity;
+import defeatedcrow.hac.food.entity.EggSandwichEntity;
+import defeatedcrow.hac.food.entity.EntitySandwich;
+import defeatedcrow.hac.food.entity.LemonSandwichEntity;
+import defeatedcrow.hac.food.entity.SaladSandwichEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -16,23 +17,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class RoundBreadItem extends FoodItemBase {
+public class SandwichItem extends FoodItemBase {
 
-	public RoundBreadItem(boolean isWolfFood) {
+	public SandwichItem(boolean isWolfFood) {
 		super(isWolfFood);
 	}
 
 	@Override
 	public int getMaxMeta() {
-		return 5;
+		return 3;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
 		int i = MathHelper.clamp_int(0, meta, 1);
-		String s = "items/food/" + this.getNameSuffix()[i];
+		String s = "items/food/sandwich_" + this.getNameSuffix()[i];
 		if (f) {
-			s = "textures/" + s;
+			s = "textures/sandwich_" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
 	}
@@ -40,40 +41,37 @@ public class RoundBreadItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"roundbread_raw",
-				"roundbread_baked",
-				"squarebread_raw",
-				"squarebread_baked",
-				"butter_toast_raw",
-				"butter_toast_baked" };
+				"apple",
+				"egg",
+				"lemon",
+				"salad" };
 		return s;
 	}
 
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new RoundBreadEntity(world, x, y, z, player);
-		if (i == 2 || i == 3) {
-			ret = new SquareBreadEntity(world, x, y, z, player);
+		FoodEntityBase ret = new EntitySandwich(world, x, y, z, player);
+		if (i == 1) {
+			ret = new EggSandwichEntity(world, x, y, z, player);
 		}
-		if (i == 4 || i == 5) {
-			ret = new ToastBreadEntity(world, x, y, z, player);
+		if (i == 2) {
+			ret = new LemonSandwichEntity(world, x, y, z, player);
 		}
-
-		if ((i & 1) == 0) {
-			ret.setRAW(true);
+		if (i == 3) {
+			ret = new SaladSandwichEntity(world, x, y, z, player);
 		}
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return (meta & 1) == 0 ? 0 : 6;
+		return meta + 6;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 0.5F;
+		return 0.25F;
 	}
 
 	@Override
