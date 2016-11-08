@@ -20,6 +20,8 @@ import net.minecraft.world.World;
 /* ベースは矢だが手投げ式 */
 public abstract class EntityMagicProjBase extends EntityArrow implements IProjectile {
 
+	private int age = 0;
+
 	public EntityMagicProjBase(World worldIn) {
 		super(worldIn);
 		this.setStart(false);
@@ -43,16 +45,19 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
+		age++;
 
 		if (!this.worldObj.isRemote) {
 			if (this.start) {
-				if (count > 2) {
+				if (count > 0) {
 					if (this.onGroundHit()) {
 					}
 				} else {
 					count++;
 				}
 			} else if (this.inGround) {
+				this.setStart(true);
+			} else if (this.inWater) {
 				this.setStart(true);
 			}
 		} else {
@@ -63,6 +68,10 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 						0.0D, 0.0D, new int[0]);
 			}
 		}
+
+		if ((this.motionX * this.motionX + this.motionZ * this.motionZ + this.motionY * this.motionY) < 0.005D) {
+			this.setDead();
+		}
 	}
 
 	/* 着弾時のエフェクト表現用 */
@@ -72,6 +81,9 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 
 	@Override
 	protected void onHit(RayTraceResult raytraceResultIn) {
+		if (age < 1) {
+			return;
+		}
 		Entity entity = raytraceResultIn.entityHit;
 
 		if (entity != null && !this.worldObj.isRemote) {

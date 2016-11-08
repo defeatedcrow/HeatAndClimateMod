@@ -112,6 +112,7 @@ item.dcs_food_sandwich_apple.name=Apple Sandwich
 item.dcs_food_sandwich_egg.name=Egg Sandwich
 item.dcs_food_sandwich_lemon.name=Lemon Sandwich
 item.dcs_food_sandwich_salad.name=Salad Sandwich
+item.dcs_food_rice_boiled.name=Boiled Rice
 
 item.dcs_food_crops_rice.name=Rice Plant
 item.dcs_food_crops_onion.name=Onion
@@ -208,6 +209,18 @@ item.dcs_jewel_badge_lapis.name=Lapis-Lazuli Badge
 item.dcs_jewel_badge_diamond.name=Diamond Badge
 item.dcs_jewel_badge_schorl.name=Schorl Badge
 
+tile.dcs_magicmace_light_0.name=Magical Mace (Light)
+tile.dcs_magicmace_ice_0.name=Magical Mace (Ice)
+tile.dcs_magicmace_moon_0.name=Magical Mace (Moonlight)
+tile.dcs_magicmace_bird_0.name=Magical Mace (Wing)
+tile.dcs_magicmace_ocean_0.name=Magical Mace (Sea)
+item.dcs_macecore_light.name=Talisman (Light)
+item.dcs_macecore_ice.name=Talisman (Ice)
+item.dcs_macecore_moon.name=Talisman (Moonlight)
+item.dcs_macecore_bird.name=Talisman (Wing)
+item.dcs_macecore_ocean.name=Talisman (Sea)
+item.dcs_mace_handle_silver.name=Handle of Mace
+
 item.dcs_dagger_silver.name=Silver Dagger
 item.dcs_dagger_magic_0.name=Magic Dagger (Power)
 item.dcs_dagger_magic_1.name=Magic Dagger (Explotion)
@@ -281,6 +294,7 @@ tile.dcs_gemblock_salt.name=Rock Salt Block
 tile.dcs_gemblock_marble.name=Marble Block
 tile.dcs_gemblock_schorl.name=Schorl Block
 tile.dcs_gemblock_compressed.name=Compressed Chalcedony Block
+tile.dcs_ore_elestial_normal.name=Elestial Block
 
 tile.dcs_cont_log_oak.name=Oak Log Box
 tile.dcs_cont_log_spruce.name=Spruce Log Box
@@ -539,6 +553,16 @@ dcs.potion.gravity=Gravity
 potion.effect.dcs.gravity=Potion of Gravity
 splash_potion.effect.dcs.gravity=Splash Potion of Gravity
 lingering_potion.effect.dcs.gravity=Lingering Potion of Gravity
+
+dcs.potion.bird=Wing Blessing
+potion.effect.dcs.bird=Potion of Wing Blessing
+splash_potion.effect.dcs.bird=Splash Potion of Wing Blessing
+lingering_potion.effect.dcs.bird=Lingering Potion of Wing Blessing
+
+dcs.potion.ocean=Sea Blessing
+potion.effect.dcs.ocean=Potion of Sea Blessing
+splash_potion.effect.dcs.ocean=Splash Potion of Sea Blessing
+lingering_potion.effect.dcs.ocean=Lingering Potion of Sea Blessing
 
 #acievement
 achievement.dcs.climate_master=Climate Watcher

@@ -112,6 +112,7 @@ item.dcs_food_sandwich_apple.name=リンゴサンド
 item.dcs_food_sandwich_egg.name=たまごサンド
 item.dcs_food_sandwich_lemon.name=レモンサンド
 item.dcs_food_sandwich_salad.name=野菜サンド
+item.dcs_food_rice_boiled.name=ご飯
 
 item.dcs_food_crops_rice.name=稲束
 item.dcs_food_crops_onion.name=玉ねぎ
@@ -226,6 +227,18 @@ item.dcs_dagger_magic_13.name=宝石剣 (瞬間移動)
 item.dcs_dagger_magic_14.name=宝石剣 (鉱脈生成)
 item.dcs_dagger_magic_15.name=宝石剣 (???)
 
+tile.dcs_magicmace_light_0.name=魔法のメイス (陽光)
+tile.dcs_magicmace_ice_0.name=魔法のメイス (氷)
+tile.dcs_magicmace_moon_0.name=魔法のメイス (月光)
+tile.dcs_magicmace_bird_0.name=魔法のメイス (翼)
+tile.dcs_magicmace_ocean_0.name=魔法のメイス (海)
+item.dcs_macecore_light.name=タリスマン (陽光)
+item.dcs_macecore_ice.name=タリスマン (氷)
+item.dcs_macecore_moon.name=タリスマン (月光)
+item.dcs_macecore_bird.name=タリスマン (翼)
+item.dcs_macecore_ocean.name=タリスマン (海)
+item.dcs_mace_handle_silver.name=メイスの柄
+
 ## block
 tile.dcs_ore_stone_0.name=石膏石
 tile.dcs_ore_stone_1.name=赤鉄鉱
@@ -280,6 +293,7 @@ tile.dcs_gemblock_salt.name=岩塩ブロック
 tile.dcs_gemblock_marble.name=大理石ブロック
 tile.dcs_gemblock_schorl.name=黒トルマリンブロック
 tile.dcs_gemblock_compressed.name=圧縮されたカルセドニー
+tile.dcs_ore_elestial_normal.name=エレスチャルブロック
 
 tile.dcs_cont_log_oak.name=樫の丸太箱
 tile.dcs_cont_log_spruce.name=松の丸太箱
@@ -554,6 +568,16 @@ dcs.potion.gravity=重力
 potion.effect.dcs.gravity=重力のポーション
 splash_potion.effect.dcs.gravity=重力のスプラッシュポーション
 lingering_potion.effect.dcs.gravity=重力の残留ポーション
+
+dcs.potion.bird=鳥の加護
+potion.effect.dcs.bird=鳥の加護のポーション
+splash_potion.effect.dcs.bird=鳥の加護のスプラッシュポーション
+lingering_potion.effect.dcs.bird=鳥の加護の残留ポーション
+
+dcs.potion.ocean=魚の加護
+potion.effect.dcs.ocean=魚の加護
+splash_potion.effect.dcs.ocean=魚の加護のスプラッシュポーション
+lingering_potion.effect.dcs.ocean=魚の加護の残留ポーション
 
 #achievement
 achievement.dcs.climate_master=気候観測士

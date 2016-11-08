@@ -67,6 +67,7 @@ public class MainInit {
 	public static Block shitirin;
 	public static Block fuelStove;
 	public static Block stevenson_screen;
+	public static Block bellow;
 
 	// item
 	// ores
@@ -112,5 +113,11 @@ public class MainInit {
 	// potion
 	public static Potion gravity;
 	public static PotionType gravityType;
+
+	public static Potion bird;
+	public static PotionType birdType;
+
+	public static Potion ocean;
+	public static PotionType oceanType;
 
 }

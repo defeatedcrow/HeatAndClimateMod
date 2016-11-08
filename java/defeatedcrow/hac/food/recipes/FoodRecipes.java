@@ -524,6 +524,10 @@ public class FoodRecipes {
 				DCHumidity.WET, null, false, new FluidStack(FoodInit.cream, 1000), new Object[] {
 						"foodRennet" });
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.ricebowl, 1, 0), null, 0F, null,
+				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"foodRice" });
+
 	}
 
 	static void loadCropData() {

@@ -60,6 +60,7 @@ public class MainCreativeTabRegister {
 		MainInit.shitirin.setCreativeTab(ClimateMain.machine);
 		MainInit.fuelStove.setCreativeTab(ClimateMain.machine);
 		MainInit.stevenson_screen.setCreativeTab(ClimateCore.climate);
+		MainInit.bellow.setCreativeTab(ClimateMain.machine);
 
 		// item
 		// ores

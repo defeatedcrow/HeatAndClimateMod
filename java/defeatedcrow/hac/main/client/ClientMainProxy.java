@@ -3,6 +3,8 @@ package defeatedcrow.hac.main.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
@@ -11,8 +13,10 @@ import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.food.FoodClientProxy;
 import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.magic.MagicClientProxy;
+import defeatedcrow.hac.magic.client.RenderPlayerEventDC;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
 import defeatedcrow.hac.main.CommonMainProxy;
+import defeatedcrow.hac.main.block.build.TileBellow;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
@@ -29,6 +33,7 @@ import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
+import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
 import defeatedcrow.hac.main.client.block.TESRMagnetChest;
 import defeatedcrow.hac.main.client.block.TESRMetalChest;
@@ -42,6 +47,7 @@ import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.event.AltTooltipEvent;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
@@ -118,6 +124,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		ClientRegistry.registerTileEntity(TileMetalChest.class, "dcs_te_metalchest", new TESRMetalChest());
 		ClientRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest", new TESRMagnetChest());
 		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
+		ClientRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
 
 		FoodClientProxy.loadTE();
 		MachineClientProxy.loadTE();
@@ -129,6 +136,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		super.loadInit();
 		MinecraftForge.EVENT_BUS.register(new AltTooltipEvent());
 		MinecraftForge.EVENT_BUS.register(AdvancedHUDEvent.INSTANCE);
+		MinecraftForge.EVENT_BUS.register(new RenderPlayerEventDC());
 	}
 
 	@Override
@@ -221,5 +229,23 @@ public class ClientMainProxy extends CommonMainProxy {
 	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
 		return player != null && player instanceof EntityPlayerSP
 				&& ((EntityPlayerSP) player).getStatFileWriter().hasAchievementUnlocked(acv);
+	}
+
+	@Override
+	public boolean isForwardKeyDown() {
+		return Keyboard.isCreated() && Keyboard.isKeyDown(getFowardKey());
+	}
+
+	@Override
+	public boolean isSneakKeyDown() {
+		return Keyboard.isCreated() && Keyboard.isKeyDown(getSneakKey());
+	}
+
+	private int getFowardKey() {
+		return Minecraft.getMinecraft().gameSettings.keyBindForward.getKeyCode();
+	}
+
+	private int getSneakKey() {
+		return Minecraft.getMinecraft().gameSettings.keyBindSneak.getKeyCode();
 	}
 }

@@ -17,6 +17,7 @@ import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.magic.MagicCommonProxy;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
+import defeatedcrow.hac.main.block.build.TileBellow;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
@@ -36,11 +37,14 @@ import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.event.AchievementEventDC;
+import defeatedcrow.hac.main.event.LivingMainEventDC;
 import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
 import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
+import defeatedcrow.hac.main.potion.PotionBirdDC;
 import defeatedcrow.hac.main.potion.PotionGravityDC;
+import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
@@ -75,8 +79,21 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadPotion() {
 		MainInit.gravity = new PotionGravityDC();
 		GameRegistry.register(MainInit.gravity, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.gravity"));
-		MainInit.gravityType = new PotionType("dcs.gravity", new PotionEffect(MainInit.gravity));
+		MainInit.gravityType = new PotionType("dcs.gravity", new PotionEffect[] {
+				new PotionEffect(MainInit.gravity, 1800, 0) });
 		GameRegistry.register(MainInit.gravityType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.gravity"));
+
+		MainInit.bird = new PotionBirdDC();
+		GameRegistry.register(MainInit.bird, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.bird"));
+		MainInit.birdType = new PotionType("dcs.bird", new PotionEffect[] {
+				new PotionEffect(MainInit.bird, 3600, 0) });
+		GameRegistry.register(MainInit.birdType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.bird"));
+
+		MainInit.ocean = new PotionOceanDC();
+		GameRegistry.register(MainInit.ocean, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.ocean"));
+		MainInit.oceanType = new PotionType("dcs.ocean", new PotionEffect[] {
+				new PotionEffect(MainInit.ocean, 3600, 0) });
+		GameRegistry.register(MainInit.oceanType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.ocean"));
 	}
 
 	public void loadRecipes() {
@@ -111,6 +128,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileMetalChest.class, "dcs_te_metalchest");
 		GameRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest");
 		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
+		GameRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow");
 
 		FoodCommonProxy.loadTE();
 		MachineCommonProxy.loadTE();
@@ -150,6 +168,7 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new OnJumpEventDC());
 		MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
 		MinecraftForge.EVENT_BUS.register(new AchievementEventDC());
+		MinecraftForge.EVENT_BUS.register(new LivingMainEventDC());
 	}
 
 	@Override
@@ -222,6 +241,14 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
 		return player != null && player.hasAchievement(acv);
+	}
+
+	public boolean isForwardKeyDown() {
+		return false;
+	}
+
+	public boolean isSneakKeyDown() {
+		return false;
 	}
 
 }

@@ -265,6 +265,14 @@ public class BasicRecipeRegister {
 				"toolNormalYagen",
 				"gemSulfur" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
+				"toolNormalYagen",
+				"gemChalcedony" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
+				"toolNormalYagen",
+				"gemQuartz" }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
 				"toolNormalYagen",
 				new ItemStack(Items.COAL, 1, 0) }));

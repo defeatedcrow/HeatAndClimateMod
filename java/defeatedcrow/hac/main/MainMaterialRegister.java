@@ -8,7 +8,9 @@ import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInitRegister;
 import defeatedcrow.hac.machine.MachineInitRegister;
+import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.magic.MagicInitRegister;
+import defeatedcrow.hac.main.block.build.BlockBellow;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
@@ -285,6 +287,11 @@ public class MainMaterialRegister {
 
 		MainInit.chestMagnet = new BlockMagnetChest(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chest_magnet");
 		registerBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_BASE + "_device_chest_magnet");
+
+		MainInit.bellow = new BlockBellow(ClimateCore.PACKAGE_BASE + "_device_bellow");
+		MainInit.bellow.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_bellow");
+		GameRegistry.register(MainInit.bellow);
+		GameRegistry.register(new ItemBlockHighTier(MainInit.bellow, 1));
 	}
 
 	static void registerItems() {

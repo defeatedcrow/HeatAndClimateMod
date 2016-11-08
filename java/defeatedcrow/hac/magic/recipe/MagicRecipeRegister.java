@@ -1,14 +1,21 @@
 package defeatedcrow.hac.magic.recipe;
 
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class MagicRecipeRegister {
 
 	public static void load() {
+		loadOres();
 		loadItemRecipes();
 	}
 
@@ -250,6 +257,130 @@ public class MagicRecipeRegister {
 				"gemSapphire",
 				'Z',
 				new ItemStack(MagicInit.daggerSilver) }));
+
+		// mace
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.macehandle, 1, 0), new Object[] {
+				"  X",
+				" Y ",
+				"X  ",
+				'X',
+				"ingotGold",
+				'Y',
+				"ingotSilver" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 0), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				new ItemStack(MainInit.gems, 1, 1),
+				'Z',
+				new ItemStack(Items.ENDER_EYE, 1, 0),
+				'W',
+				"blockElestial" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 1), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemLapis",
+				'Z',
+				"gemCelestite",
+				'W',
+				"blockElestial" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 3), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				new ItemStack(MainInit.gems, 1, 0),
+				'Z',
+				new ItemStack(Blocks.PACKED_ICE, 1, 0),
+				'W',
+				"blockElestial" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 2), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemSapphire",
+				'Z',
+				"gemSchorl",
+				'W',
+				"blockElestial" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 4), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemClam",
+				'Z',
+				new ItemStack(Items.EMERALD, 1, 0),
+				'W',
+				"blockElestial" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceSun, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 0),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceMoon, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 1),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceBird, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 2),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceIce, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 3),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceOcean, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 4),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0) }));
+
+		// elestial
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MagicInit.elestial, 1, 0), DCHeatTier.KILN, null,
+				DCAirflow.TIGHT, false, new ItemStack(MainInit.gemBlock, 1, 8));
+	}
+
+	static void loadOres() {
+		OreDictionary.registerOre("blockElestial", new ItemStack(MagicInit.elestial, 1, 0));
 	}
 
 }

@@ -24,6 +24,7 @@ import defeatedcrow.hac.food.client.LemonTartRenderer;
 import defeatedcrow.hac.food.client.MeatPieRenderer;
 import defeatedcrow.hac.food.client.PorkStickRenderer;
 import defeatedcrow.hac.food.client.PotatoQuicheRenderer;
+import defeatedcrow.hac.food.client.RiceBowlRenderer;
 import defeatedcrow.hac.food.client.RoundBreadRenderer;
 import defeatedcrow.hac.food.client.SandwichAppleRenderer;
 import defeatedcrow.hac.food.client.SandwichEggRenderer;
@@ -39,6 +40,7 @@ import defeatedcrow.hac.food.client.YakitoriStickRenderer;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
+import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntitySandwich;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
@@ -103,6 +105,7 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(EggSandwichEntity.class, SandwichEggRenderer.class);
 		ClientMainProxy.registRender(LemonSandwichEntity.class, SandwichAppleRenderer.class);
 		ClientMainProxy.registRender(SaladSandwichEntity.class, SandwichSaladRenderer.class);
+		ClientMainProxy.registRender(EntityRiceBowl.class, RiceBowlRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -128,6 +131,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.pastryRound, ClimateCore.PACKAGE_ID, "dcs_food_tart", "food", 7);
 		instance.regSimpleItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_ID, "dcs_food_pie", "food", 3);
 		instance.regSimpleItem(FoodInit.sandwich, ClimateCore.PACKAGE_ID, "dcs_food_sandwich", "food", 3);
+		instance.regSimpleItem(FoodInit.ricebowl, ClimateCore.PACKAGE_ID, "dcs_food_rice_bowl", "food", 0);
 
 		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 4);
 

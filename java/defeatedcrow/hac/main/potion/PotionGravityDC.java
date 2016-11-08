@@ -9,17 +9,17 @@ public class PotionGravityDC extends Potion {
 	public PotionGravityDC() {
 		super(true, 0x50FF50);
 		this.setPotionName("dcs.potion.gravity");
-		this.setIconIndex(1, 1);
+		this.setIconIndex(0, 0);
 	}
 
 	@Override
 	public boolean isInstant() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean isReady(int duration, int amplifier) {
-		return true;
+		return false;
 	}
 
 	@Override

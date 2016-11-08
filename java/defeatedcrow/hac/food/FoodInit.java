@@ -15,6 +15,8 @@ public class FoodInit {
 	public static Item pastryRound;
 	public static Item pastrySquare;
 
+	public static Item ricebowl;
+
 	public static Item crops;
 	public static Item seeds;
 	public static Item teaLeaves;

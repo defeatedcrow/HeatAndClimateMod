@@ -20,6 +20,8 @@ import defeatedcrow.hac.magic.proj.EntityProjSapR;
 import defeatedcrow.hac.magic.proj.EntityProjSapW;
 import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
+import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -234,7 +236,7 @@ public class ItemMagicDagger extends DCItem {
 		} else {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
 		}
-		if (player != null && !AcvHelper.hasMagicMaster(player)) {
+		if (player != null && !ClimateMain.proxy.hasAchivement(player, AchievementClimate.MAGIC_MASTER)) {
 			tooltip.add(TextFormatting.RED.toString() + I18n.translateToLocal("dcs.tip.require_achievement"));
 		}
 	}

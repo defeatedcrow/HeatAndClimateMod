@@ -37,7 +37,7 @@ public class AdvancedHUDEvent {
 
 	public static boolean enable = MainCoreConfig.enableAdvHUD;
 
-	public static boolean hasAcv = false;
+	public static boolean hasAcv = ClimateCore.isDebug;
 
 	@SubscribeEvent
 	public void doRender(RenderGameOverlayEvent.Post event) {

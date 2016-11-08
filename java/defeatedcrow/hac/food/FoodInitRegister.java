@@ -24,6 +24,7 @@ import defeatedcrow.hac.food.item.ItemMeatMaterials;
 import defeatedcrow.hac.food.item.ItemPastry;
 import defeatedcrow.hac.food.item.ItemSilverCup;
 import defeatedcrow.hac.food.item.ItemTeaLeaves;
+import defeatedcrow.hac.food.item.RiceBowlItem;
 import defeatedcrow.hac.food.item.RoundBreadItem;
 import defeatedcrow.hac.food.item.RoundPastryItem;
 import defeatedcrow.hac.food.item.SandwichItem;
@@ -142,6 +143,9 @@ public class FoodInitRegister {
 		FoodInit.sandwich = new SandwichItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_sandwich");
 		GameRegistry.register(FoodInit.sandwich.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_sandwich"));
 
+		FoodInit.ricebowl = new RiceBowlItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_rice");
+		GameRegistry.register(FoodInit.ricebowl.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_rice"));
+
 		FoodInit.cupSilver = new ItemSilverCup(true).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_teacup");
 		GameRegistry.register(FoodInit.cupSilver.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_teacup"));
 	}
@@ -225,6 +229,8 @@ public class FoodInitRegister {
 		FoodInit.pastryRound.setCreativeTab(ClimateMain.food);
 		FoodInit.pastrySquare.setCreativeTab(ClimateMain.food);
 		FoodInit.sandwich.setCreativeTab(ClimateMain.food);
+
+		FoodInit.ricebowl.setCreativeTab(ClimateMain.food);
 
 		FoodInit.crops.setCreativeTab(ClimateMain.food);
 		FoodInit.seeds.setCreativeTab(ClimateMain.food);
