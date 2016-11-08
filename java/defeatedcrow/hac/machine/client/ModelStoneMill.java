@@ -1,9 +1,9 @@
 package defeatedcrow.hac.machine.client;
 
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 
 @SideOnly(Side.CLIENT)
 public class ModelStoneMill extends DCTileModelBase {
@@ -66,6 +66,8 @@ public class ModelStoneMill extends DCTileModelBase {
 		model.rotateAngleZ = z;
 	}
 
+	private float lastR = 0.0F;
+
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
@@ -74,9 +76,16 @@ public class ModelStoneMill extends DCTileModelBase {
 		}
 		float f1 = speed * 0.1F;
 		f1 *= 0.01745329F;
+		lastR += f1;
+		if (lastR > Math.PI * 2) {
+			lastR -= Math.PI * 2;
+		}
+		if (lastR < -Math.PI * 2) {
+			lastR += Math.PI * 2;
+		}
 
-		stone2.rotateAngleY += f1;
-		plate2.rotateAngleY += f1;
+		stone2.rotateAngleY = lastR;
+		plate2.rotateAngleY = lastR;
 	}
 
 }

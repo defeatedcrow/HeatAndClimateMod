@@ -167,7 +167,7 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 				if (gen.generate(world, cropRand, pos)) {
 					world.setBlockState(pos,
 							Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK),
-							4);
+							3);
 				}
 			} else {
 				IBlockState leaves = FoodInit.leavesTea.getDefaultState();

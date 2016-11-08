@@ -1,8 +1,10 @@
 package defeatedcrow.hac.main.block.ores;
 
 import java.util.List;
+import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IThermalInsulationBlock;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
@@ -83,5 +85,19 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 	public int getReductionAmount(World world, BlockPos pos, IBlockState state) {
 		int meta = DCState.getInt(state, DCState.TYPE16);
 		return meta == 3 ? -1 : 0;
+	}
+
+	@Override
+	public int tickRate(World world) {
+		return 20;
+	}
+
+	@Override
+	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		super.updateTick(worldIn, pos, state, rand);
+		if (!worldIn.isRemote && state != null && state.getBlock() != null) {
+			IClimate clm = this.onUpdateClimate(worldIn, pos, state);
+			this.onClimateChange(worldIn, pos, state, clm);
+		}
 	}
 }

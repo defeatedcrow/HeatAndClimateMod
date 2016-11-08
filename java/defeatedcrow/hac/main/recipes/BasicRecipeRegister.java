@@ -201,6 +201,19 @@ public class BasicRecipeRegister {
 				new ItemStack(Blocks.FURNACE, 1, 0),
 				'W',
 				new ItemStack(Items.BUCKET, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.bellow, 1, 0), new Object[] {
+				"XYX",
+				"XZX",
+				"XWX",
+				'X',
+				"ingotIron",
+				'Y',
+				"stickWood",
+				'Z',
+				"gearWood",
+				'W',
+				new ItemStack(Blocks.PISTON, 1, 0) }));
 	}
 
 	static void loadYagenRecipe() {

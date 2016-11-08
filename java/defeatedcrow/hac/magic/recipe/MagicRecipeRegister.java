@@ -1,6 +1,5 @@
 package defeatedcrow.hac.magic.recipe;
 
-import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.magic.MagicInit;
@@ -375,8 +374,8 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0) }));
 
 		// elestial
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MagicInit.elestial, 1, 0), DCHeatTier.KILN, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.gemBlock, 1, 8));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MagicInit.elestial, 1, 0), DCHeatTier.KILN, null, null,
+				false, new ItemStack(MainInit.gemBlock, 1, 8));
 	}
 
 	static void loadOres() {

@@ -1,9 +1,9 @@
 package defeatedcrow.hac.machine.client;
 
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 
 @SideOnly(Side.CLIENT)
 public class ModelWindmill_L extends DCTileModelBase {
@@ -114,6 +114,8 @@ public class ModelWindmill_L extends DCTileModelBase {
 		model.rotateAngleZ = z;
 	}
 
+	private float lastR = 0.0F;
+
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
@@ -122,17 +124,24 @@ public class ModelWindmill_L extends DCTileModelBase {
 		}
 		float f1 = speed * 0.1F;
 		f1 *= 0.01745329F;
+		lastR += f1;
+		if (lastR > Math.PI * 2) {
+			lastR -= Math.PI * 2;
+		}
+		if (lastR < -Math.PI * 2) {
+			lastR += Math.PI * 2;
+		}
 
-		shaftcube.rotateAngleY += f1;
-		middle.rotateAngleY += f1;
-		winglod1.rotateAngleY += f1;
-		winglod2.rotateAngleY += f1;
-		winglod3.rotateAngleY += f1;
-		winglod4.rotateAngleY += f1;
-		wingcloth1.rotateAngleY += f1;
-		wingcloth2.rotateAngleY += f1;
-		wingcloth3.rotateAngleY += f1;
-		wingcloth4.rotateAngleY += f1;
+		shaftcube.rotateAngleY = lastR;
+		middle.rotateAngleY = lastR;
+		winglod1.rotateAngleY = lastR;
+		winglod2.rotateAngleY = lastR + (float) Math.PI * 0.5F;
+		winglod3.rotateAngleY = lastR + (float) Math.PI;
+		winglod4.rotateAngleY = lastR + (float) Math.PI * 1.5F;
+		wingcloth1.rotateAngleY = lastR;
+		wingcloth2.rotateAngleY = lastR + (float) Math.PI * 0.5F;
+		wingcloth3.rotateAngleY = lastR + (float) Math.PI;
+		wingcloth4.rotateAngleY = lastR + (float) Math.PI * 1.5F;
 	}
 
 }

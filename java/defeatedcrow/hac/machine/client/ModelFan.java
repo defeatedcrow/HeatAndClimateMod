@@ -1,9 +1,9 @@
 package defeatedcrow.hac.machine.client;
 
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 
 @SideOnly(Side.CLIENT)
 public class ModelFan extends DCTileModelBase {
@@ -154,6 +154,8 @@ public class ModelFan extends DCTileModelBase {
 		model.rotateAngleZ = z;
 	}
 
+	private float lastR = 0.0F;
+
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
@@ -162,10 +164,17 @@ public class ModelFan extends DCTileModelBase {
 		}
 		float f1 = speed * 0.1F;
 		f1 *= 0.01745329F;
+		lastR += f1;
+		if (lastR > Math.PI * 2) {
+			lastR -= Math.PI * 2;
+		}
+		if (lastR < -Math.PI * 2) {
+			lastR += Math.PI * 2;
+		}
 
-		wing1.rotateAngleY += f1;
-		wing2.rotateAngleY += f1;
-		wing3.rotateAngleY += f1;
+		wing1.rotateAngleY = lastR;
+		wing2.rotateAngleY = lastR + 2.094395F;
+		wing3.rotateAngleY = lastR - 2.094395F;
 	}
 
 }
