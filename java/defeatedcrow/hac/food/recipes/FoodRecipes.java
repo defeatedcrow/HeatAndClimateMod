@@ -314,12 +314,12 @@ public class FoodRecipes {
 		for (int i = 0; i < crops.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cropBasket, 1, i), new Object[] {
 					"XXX",
-					"XXX",
+					"X X",
 					"XXX",
 					'X',
 					crops[i] }));
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.crops, 9, i), new Object[] {
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.crops, 8, i), new Object[] {
 					new ItemStack(MainInit.cropBasket, 1, i) }));
 		}
 

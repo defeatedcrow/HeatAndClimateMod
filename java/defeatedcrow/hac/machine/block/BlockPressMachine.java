@@ -1,13 +1,12 @@
-package defeatedcrow.hac.main.block.build;
+package defeatedcrow.hac.machine.block;
 
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.SoundType;
@@ -22,16 +21,16 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockBellow extends BlockTorqueBase implements IAirflowTile {
+public class BlockPressMachine extends BlockTorqueBase {
 
-	public BlockBellow(String s) {
+	public BlockPressMachine(String s) {
 		super(Material.ROCK, s, 0);
 		this.setSoundType(SoundType.METAL);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileBellow();
+		return new TilePressMachine();
 	}
 
 	@Override
@@ -44,75 +43,25 @@ public class BlockBellow extends BlockTorqueBase implements IAirflowTile {
 				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
 					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
 				}
-			} else if (tile != null && tile instanceof TileBellow) {
-				TileBellow crank = ((TileBellow) tile);
-				float add = crank.currentTorque + 1.0F;
-				if (add > crank.maxTorque()) {
-					add = crank.maxTorque();
-				}
-				crank.currentTorque = add;
-				return true;
+			} else if (!player.worldObj.isRemote && hand == EnumHand.MAIN_HAND) {
+				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 			}
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
 	}
 
-	@Override
-	public DCAirflow getAirflow(World world, BlockPos pos, BlockPos target) {
-		TileEntity tile = world.getTileEntity(target);
-		if (tile != null && tile instanceof TileBellow) {
-			TileBellow fan = (TileBellow) tile;
-			EnumFacing face = fan.getBaseSide();
-			boolean active = isActive(face, pos, target);
-			if (active) {
-				float torque = fan.getCurrentTorque();
-				if (torque > 0.0F) {
-					return DCAirflow.WIND;
-				}
-			}
-		}
-		return DCAirflow.TIGHT;
-	}
-
+	// 設置時にはプレイヤーの方を向いている方が自然なので
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer) {
 		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
-			if (placer.rotationPitch < -75.0F) {
-				face = EnumFacing.UP;
-			} else if (placer.rotationPitch > 75.0F) {
-				face = EnumFacing.DOWN;
-			}
-			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face));
+			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite()));
 		} else {
-			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(facing));
+			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(EnumFacing.NORTH));
 		}
 		return state;
-	}
-
-	boolean isActive(EnumFacing face, BlockPos to, BlockPos from) {
-		if (to.equals(from)) {
-			return true;
-		}
-		switch (face) {
-		case DOWN:
-			return to.up().equals(from);
-		case UP:
-			return to.down().equals(from);
-		case NORTH:
-			return to.south().equals(from);
-		case SOUTH:
-			return to.north().equals(from);
-		case WEST:
-			return to.east().equals(from);
-		case EAST:
-			return to.west().equals(from);
-		default:
-			return false;
-
-		}
 	}
 
 }

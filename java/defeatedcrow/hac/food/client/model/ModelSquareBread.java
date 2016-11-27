@@ -72,8 +72,20 @@ public class ModelSquareBread extends DCFoodModelBase {
 		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale * 1.5F);
 	}
 
+	public void renderMold(float scale) {
+		renderMold(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale * 1.5F);
+	}
+
 	@Override
 	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+			float headPitch, float scale) {
+		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+		bread1.render(scale);
+		if (isBaked())
+			bread2.render(scale);
+	}
+
+	public void renderMold(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
 			float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 		base1.render(scale);
@@ -81,10 +93,6 @@ public class ModelSquareBread extends DCFoodModelBase {
 		base3.render(scale);
 		base4.render(scale);
 		base5.render(scale);
-		bread1.render(scale);
-
-		if (isBaked())
-			bread2.render(scale);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

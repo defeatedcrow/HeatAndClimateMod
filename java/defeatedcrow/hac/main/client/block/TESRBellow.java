@@ -3,7 +3,7 @@ package defeatedcrow.hac.main.client.block;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.main.block.build.TileBellow;
+import defeatedcrow.hac.main.block.device.TileBellow;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;

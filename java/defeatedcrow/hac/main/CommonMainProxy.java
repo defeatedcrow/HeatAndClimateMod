@@ -11,16 +11,19 @@ import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
+import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
+import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
+import defeatedcrow.hac.machine.gui.GuiPressMachine;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.magic.MagicCommonProxy;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
-import defeatedcrow.hac.main.block.build.TileBellow;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
+import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TileShitirin;
@@ -37,6 +40,7 @@ import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.event.AchievementEventDC;
+import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.LivingMainEventDC;
 import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
@@ -169,6 +173,7 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
 		MinecraftForge.EVENT_BUS.register(new AchievementEventDC());
 		MinecraftForge.EVENT_BUS.register(new LivingMainEventDC());
+		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
 	}
 
 	@Override
@@ -199,6 +204,9 @@ public class CommonMainProxy implements IGuiHandler {
 		}
 		if (tile instanceof TileCookingStove) {
 			return new ContainerFuelStove((TileCookingStove) tile, player.inventory);
+		}
+		if (tile instanceof TilePressMachine) {
+			return new ContainerPressMachine((TilePressMachine) tile, player.inventory);
 		}
 		return null;
 	}
@@ -232,6 +240,9 @@ public class CommonMainProxy implements IGuiHandler {
 		if (tile instanceof TileCookingStove) {
 			return new GuiFuelStove((TileCookingStove) tile, player.inventory);
 		}
+		if (tile instanceof TilePressMachine) {
+			return new GuiPressMachine((TilePressMachine) tile, player.inventory);
+		}
 		return null;
 	}
 
@@ -240,6 +251,8 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
+		if (ClimateCore.isDebug)
+			return true;
 		return player != null && player.hasAchievement(acv);
 	}
 

@@ -23,7 +23,7 @@ public class TileWindmill_L extends TileWindmill {
 
 	@Override
 	public float getGearTier() {
-		return 8.0F;
+		return 16.0F;
 	}
 
 }

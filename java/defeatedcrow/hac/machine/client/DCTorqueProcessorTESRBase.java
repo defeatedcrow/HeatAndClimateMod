@@ -1,13 +1,13 @@
 package defeatedcrow.hac.machine.client;
 
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
+import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
-import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 
 @SideOnly(Side.CLIENT)
 public abstract class DCTorqueProcessorTESRBase extends TileEntitySpecialRenderer<TileTorqueProcessor> {
@@ -17,7 +17,7 @@ public abstract class DCTorqueProcessorTESRBase extends TileEntitySpecialRendere
 			int destroyStage) {
 		DCTileModelBase model = this.getModel(te);
 		float speed = te.currentSpeed;
-		float rot = te.rotation;
+		float rot = te.prevRotation + (te.currentRotation - te.prevRotation) * partialTicks;
 
 		this.bindTexture(new ResourceLocation(getTexPass(0)));
 

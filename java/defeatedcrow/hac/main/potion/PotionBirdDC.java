@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 public class PotionBirdDC extends Potion {
 
 	public PotionBirdDC() {
-		super(true, 0x50EEFF);
+		super(false, 0x50EEFF);
 		this.setPotionName("dcs.potion.bird");
 		this.setIconIndex(1, 0);
 	}

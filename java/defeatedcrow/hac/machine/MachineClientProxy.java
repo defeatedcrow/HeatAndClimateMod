@@ -2,34 +2,54 @@ package defeatedcrow.hac.machine;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
+import defeatedcrow.hac.machine.block.TileBoilerTurbine;
 import defeatedcrow.hac.machine.block.TileCrank_S;
+import defeatedcrow.hac.machine.block.TileCreativeBox;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFauset;
 import defeatedcrow.hac.machine.block.TileGearBox;
+import defeatedcrow.hac.machine.block.TileGearBox_SUS;
 import defeatedcrow.hac.machine.block.TileHandCrank;
 import defeatedcrow.hac.machine.block.TileHeatExchanger;
 import defeatedcrow.hac.machine.block.TileIBC;
+import defeatedcrow.hac.machine.block.TileKineticMotor;
+import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileRedBox;
 import defeatedcrow.hac.machine.block.TileShaft_L;
+import defeatedcrow.hac.machine.block.TileShaft_L_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_S;
+import defeatedcrow.hac.machine.block.TileShaft_S_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_TA;
+import defeatedcrow.hac.machine.block.TileShaft_TA_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_TB;
+import defeatedcrow.hac.machine.block.TileShaft_TB_SUS;
 import defeatedcrow.hac.machine.block.TileStoneMill;
+import defeatedcrow.hac.machine.block.TileWaterPump;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
+import defeatedcrow.hac.machine.client.BoilerTurbineTESR;
+import defeatedcrow.hac.machine.client.CreativeBoxTESR;
 import defeatedcrow.hac.machine.client.FanTESR;
 import defeatedcrow.hac.machine.client.GearBoxTESR;
 import defeatedcrow.hac.machine.client.HandCrankTESR;
 import defeatedcrow.hac.machine.client.HeatExchangerTESR;
 import defeatedcrow.hac.machine.client.IBCTESR;
+import defeatedcrow.hac.machine.client.KineticMotorTESR;
 import defeatedcrow.hac.machine.client.L_ShaftTESR;
 import defeatedcrow.hac.machine.client.L_WindmillTESR;
+import defeatedcrow.hac.machine.client.PressMachineTESR;
 import defeatedcrow.hac.machine.client.RedBoxTESR;
+import defeatedcrow.hac.machine.client.SUS_GearBoxTESR;
+import defeatedcrow.hac.machine.client.SUS_L_ShaftTESR;
+import defeatedcrow.hac.machine.client.SUS_S_ShaftTESR;
+import defeatedcrow.hac.machine.client.SUS_TA_ShaftTESR;
+import defeatedcrow.hac.machine.client.SUS_TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.S_CrankTESR;
 import defeatedcrow.hac.machine.client.S_ShaftTESR;
 import defeatedcrow.hac.machine.client.StoneMillTESR;
 import defeatedcrow.hac.machine.client.TA_ShaftTESR;
 import defeatedcrow.hac.machine.client.TB_ShaftTESR;
+import defeatedcrow.hac.machine.client.WaterPumpTESR;
 import defeatedcrow.hac.machine.client.WindmillTESR;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -55,6 +75,16 @@ public class MachineClientProxy {
 		GameRegistry.registerTileEntity(TileFauset.class, "dcs_te_fauset");
 		ClientRegistry.registerTileEntity(TileIBC.class, "dcs_te_ibc", new IBCTESR());
 		ClientRegistry.registerTileEntity(TileHeatExchanger.class, "dcs_te_heatexchanger", new HeatExchangerTESR());
+		ClientRegistry.registerTileEntity(TileShaft_S_SUS.class, "dcs_te_shaft_s_sus", new SUS_S_ShaftTESR());
+		ClientRegistry.registerTileEntity(TileShaft_L_SUS.class, "dcs_te_shaft_l_sus", new SUS_L_ShaftTESR());
+		ClientRegistry.registerTileEntity(TileShaft_TA_SUS.class, "dcs_te_shaft_ta_sus", new SUS_TA_ShaftTESR());
+		ClientRegistry.registerTileEntity(TileShaft_TB_SUS.class, "dcs_te_shaft_tb_sus", new SUS_TB_ShaftTESR());
+		ClientRegistry.registerTileEntity(TileGearBox_SUS.class, "dcs_te_gearbox_sus", new SUS_GearBoxTESR());
+		ClientRegistry.registerTileEntity(TileBoilerTurbine.class, "dcs_te_boiler_turbine", new BoilerTurbineTESR());
+		ClientRegistry.registerTileEntity(TileKineticMotor.class, "dcs_te_kinetic_motor", new KineticMotorTESR());
+		ClientRegistry.registerTileEntity(TilePressMachine.class, "dcs_te_press_machine", new PressMachineTESR());
+		ClientRegistry.registerTileEntity(TileWaterPump.class, "dcs_te_water_pump", new WaterPumpTESR());
+		ClientRegistry.registerTileEntity(TileCreativeBox.class, "dcs_te_creative", new CreativeBoxTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -75,9 +105,26 @@ public class MachineClientProxy {
 		instance.regTETorqueBlock(MachineInit.redbox, ClimateCore.PACKAGE_ID, "dcs_device_redbox", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.heatPump, ClimateCore.PACKAGE_ID, "dcs_device_heat_exchanger", "machine",
 				0);
+		instance.regTETorqueBlock(MachineInit.shaft2_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_sus", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft2_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_sus", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft2_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_sus", "machine",
+				0);
+		instance.regTETorqueBlock(MachineInit.shaft2_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_sus", "machine",
+				0);
+		instance.regTETorqueBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_ID, "dcs_device_gearbox_sus", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_ID, "dcs_device_boiler_turbine",
+				"machine", 0);
+		instance.regTETorqueBlock(MachineInit.motor, ClimateCore.PACKAGE_ID, "dcs_device_kinetic_motor", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_ID, "dcs_device_press_machine",
+				"machine", 0);
+		instance.regTETorqueBlock(MachineInit.waterPump, ClimateCore.PACKAGE_ID, "dcs_device_water_pump", "machine", 0);
 
 		instance.regTEBlock(MachineInit.IBC, ClimateCore.PACKAGE_ID, "dcs_device_ibc", "machine", 0);
 		instance.regSimpleBlock(MachineInit.fauset, ClimateCore.PACKAGE_ID, "dcs_device_fauset", "machine", 0);
+
+		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
+
+		instance.regTEBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_ID, "dcs_device_creative_box", "machine", 0);
 	}
 
 }

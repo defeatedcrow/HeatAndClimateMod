@@ -66,7 +66,7 @@ public class MagicInitRegister {
 		MagicInit.infernalFlame = new BlockInfernalFlame(ClimateCore.PACKAGE_BASE + "_infernal_flame");
 		MainMaterialRegister.registerBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_BASE + "_infernal_flame");
 
-		MagicInit.elestial = new BlockElestial(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_elestial");
+		MagicInit.elestial = new BlockElestial(Material.GLASS, ClimateCore.PACKAGE_BASE + "_ore_elestial");
 		MainMaterialRegister.registerBlock(MagicInit.elestial, ClimateCore.PACKAGE_BASE + "_ore_elestial");
 
 		MagicInit.maceSun = new BlockMaceLight(ClimateCore.PACKAGE_BASE + "_magicmace_light");

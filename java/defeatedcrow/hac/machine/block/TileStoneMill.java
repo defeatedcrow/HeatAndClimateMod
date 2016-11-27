@@ -2,6 +2,11 @@ package defeatedcrow.hac.machine.block;
 
 import java.util.List;
 
+import defeatedcrow.hac.api.energy.ITorqueReceiver;
+import defeatedcrow.hac.api.recipe.IMillRecipe;
+import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.energy.TileTorqueProcessor;
+import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,11 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.api.recipe.IMillRecipe;
-import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.energy.TileTorqueProcessor;
-import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 
 public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceiver {
 
@@ -57,7 +57,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 
 	@Override
 	public float getGearTier() {
-		return 8.0F;
+		return 16.0F;
 	}
 
 	@Override

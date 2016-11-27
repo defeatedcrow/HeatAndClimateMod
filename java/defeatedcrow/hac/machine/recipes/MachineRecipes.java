@@ -194,7 +194,7 @@ public class MachineRecipes {
 				0.25F, "oreIron");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 7), new ItemStack(MainInit.oreDust, 1, 9),
-				0.03F, "oreMagnetite");
+				0.1F, "oreMagnetite");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 2), new ItemStack(MainInit.oreDust, 1, 5),
 				0.25F, "oreNickel");

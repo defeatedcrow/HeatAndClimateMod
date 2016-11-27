@@ -1,14 +1,14 @@
 package defeatedcrow.hac.machine.block;
 
+import defeatedcrow.hac.api.energy.ITorqueProvider;
+import defeatedcrow.hac.api.energy.ITorqueReceiver;
+import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.energy.ITorqueProvider;
-import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.core.energy.TileTorqueBase;
 
 public class TileShaft_TA extends TileTorqueBase implements ITorqueProvider, ITorqueReceiver {
 
@@ -20,6 +20,11 @@ public class TileShaft_TA extends TileTorqueBase implements ITorqueProvider, ITo
 	protected void createModel() {
 		if (model == null)
 			model = new defeatedcrow.hac.machine.client.ModelShaft_TA();
+	}
+
+	@Override
+	public float getGearTier() {
+		return 8.0F;
 	}
 
 	@Override

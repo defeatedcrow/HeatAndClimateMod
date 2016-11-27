@@ -55,6 +55,9 @@ public class RoundBreadItem extends FoodItemBase {
 		FoodEntityBase ret = new RoundBreadEntity(world, x, y, z, player);
 		if (i == 2 || i == 3) {
 			ret = new SquareBreadEntity(world, x, y, z, player);
+			if (i == 2) {
+				((SquareBreadEntity) ret).setMOLD(true);
+			}
 		}
 		if (i == 4 || i == 5) {
 			ret = new ToastBreadEntity(world, x, y, z, player);

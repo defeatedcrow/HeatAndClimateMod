@@ -532,17 +532,17 @@ public class BasicRecipeRegister {
 
 	static void loadContRecipes() {
 		ItemStack[] logs = new ItemStack[] {
-				new ItemStack(Blocks.LOG, 9, 0),
-				new ItemStack(Blocks.LOG, 9, 1),
-				new ItemStack(Blocks.LOG, 9, 2),
-				new ItemStack(Blocks.LOG, 9, 3),
-				new ItemStack(Blocks.LOG2, 9, 0),
-				new ItemStack(Blocks.LOG2, 9, 1),
-				new ItemStack(Items.COAL, 9, 1) };
+				new ItemStack(Blocks.LOG, 8, 0),
+				new ItemStack(Blocks.LOG, 8, 1),
+				new ItemStack(Blocks.LOG, 8, 2),
+				new ItemStack(Blocks.LOG, 8, 3),
+				new ItemStack(Blocks.LOG2, 8, 0),
+				new ItemStack(Blocks.LOG2, 8, 1),
+				new ItemStack(Items.COAL, 8, 1) };
 		for (int i = 0; i < logs.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.logCont, 1, i), new Object[] {
 					"XXX",
-					"XXX",
+					"X X",
 					"XXX",
 					'X',
 					logs[i] }));
@@ -552,21 +552,21 @@ public class BasicRecipeRegister {
 		}
 
 		ItemStack[] crops = new ItemStack[] {
-				new ItemStack(Items.APPLE, 9, 0),
-				new ItemStack(Items.POTATO, 9, 0),
-				new ItemStack(Items.CARROT, 9, 0),
-				new ItemStack(Blocks.PUMPKIN, 9, 0),
-				new ItemStack(Blocks.MELON_BLOCK, 9, 0),
-				new ItemStack(Blocks.CACTUS, 9, 0),
-				new ItemStack(Items.REEDS, 9, 0),
-				new ItemStack(Items.NETHER_WART, 9, 0),
-				new ItemStack(Items.DYE, 9, EnumDyeColor.BROWN.getMetadata()),
-				new ItemStack(MainInit.bakedApple, 9, 0),
-				new ItemStack(Items.BAKED_POTATO, 9, 0) };
+				new ItemStack(Items.APPLE, 8, 0),
+				new ItemStack(Items.POTATO, 8, 0),
+				new ItemStack(Items.CARROT, 8, 0),
+				new ItemStack(Blocks.PUMPKIN, 8, 0),
+				new ItemStack(Blocks.MELON_BLOCK, 8, 0),
+				new ItemStack(Blocks.CACTUS, 8, 0),
+				new ItemStack(Items.REEDS, 8, 0),
+				new ItemStack(Items.NETHER_WART, 8, 0),
+				new ItemStack(Items.DYE, 8, EnumDyeColor.BROWN.getDyeDamage()),
+				new ItemStack(MainInit.bakedApple, 8, 0),
+				new ItemStack(Items.BAKED_POTATO, 8, 0) };
 		for (int i = 0; i < crops.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cropCont, 1, i), new Object[] {
 					"XXX",
-					"XXX",
+					"X X",
 					"XXX",
 					'X',
 					crops[i] }));
@@ -576,14 +576,14 @@ public class BasicRecipeRegister {
 		}
 
 		ItemStack[] misc = new ItemStack[] {
-				new ItemStack(Items.CLAY_BALL, 9, 0),
-				new ItemStack(Items.FISH, 9, 0),
-				new ItemStack(Items.LEATHER, 9, 0),
-				new ItemStack(Items.RABBIT_HIDE, 9, 0) };
+				new ItemStack(Items.CLAY_BALL, 8, 0),
+				new ItemStack(Items.FISH, 8, 0),
+				new ItemStack(Items.LEATHER, 8, 0),
+				new ItemStack(Items.RABBIT_HIDE, 8, 0) };
 		for (int i = 0; i < misc.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.miscCont, 1, i), new Object[] {
 					"XXX",
-					"XXX",
+					"X X",
 					"XXX",
 					'X',
 					misc[i] }));
@@ -593,15 +593,15 @@ public class BasicRecipeRegister {
 		}
 
 		ItemStack[] enemy = new ItemStack[] {
-				new ItemStack(Items.ROTTEN_FLESH, 9, 0),
-				new ItemStack(Items.BONE, 9, 0),
-				new ItemStack(Items.SPIDER_EYE, 9, 0),
-				new ItemStack(Items.ENDER_PEARL, 9, 0),
-				new ItemStack(Items.GUNPOWDER, 9, 0) };
+				new ItemStack(Items.ROTTEN_FLESH, 8, 0),
+				new ItemStack(Items.BONE, 8, 0),
+				new ItemStack(Items.SPIDER_EYE, 8, 0),
+				new ItemStack(Items.ENDER_PEARL, 8, 0),
+				new ItemStack(Items.GUNPOWDER, 8, 0) };
 		for (int i = 0; i < enemy.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dropCont, 1, i), new Object[] {
 					"XXX",
-					"XXX",
+					"X X",
 					"XXX",
 					'X',
 					enemy[i] }));
@@ -611,15 +611,15 @@ public class BasicRecipeRegister {
 		}
 
 		ItemStack[] meat = new ItemStack[] {
-				new ItemStack(Items.BEEF, 9, 0),
-				new ItemStack(Items.PORKCHOP, 9, 0),
-				new ItemStack(Items.CHICKEN, 9, 0),
-				new ItemStack(Items.MUTTON, 9, 0),
-				new ItemStack(Items.EGG, 9, 0) };
+				new ItemStack(Items.BEEF, 8, 0),
+				new ItemStack(Items.PORKCHOP, 8, 0),
+				new ItemStack(Items.CHICKEN, 8, 0),
+				new ItemStack(Items.MUTTON, 8, 0),
+				new ItemStack(Items.EGG, 8, 0) };
 		for (int i = 0; i < meat.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cardboard, 1, i), new Object[] {
 					"XXX",
-					"XXX",
+					"X X",
 					"XXX",
 					'X',
 					meat[i] }));
@@ -629,14 +629,14 @@ public class BasicRecipeRegister {
 		}
 
 		ItemStack[] dust = new ItemStack[] {
-				new ItemStack(Items.SUGAR, 9, 0),
-				new ItemStack(MainInit.foodMaterials, 9, 0),
-				new ItemStack(MainInit.foodMaterials, 9, 1),
-				new ItemStack(MainInit.foodMaterials, 9, 2) };
+				new ItemStack(Items.SUGAR, 8, 0),
+				new ItemStack(MainInit.foodMaterials, 8, 0),
+				new ItemStack(MainInit.foodMaterials, 8, 1),
+				new ItemStack(MainInit.foodMaterials, 8, 2) };
 		for (int i = 0; i < dust.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBags, 1, i), new Object[] {
 					"XXX",
-					"XXX",
+					"X X",
 					"XXX",
 					'X',
 					dust[i] }));
@@ -647,12 +647,12 @@ public class BasicRecipeRegister {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cardboard, 1, 5), new Object[] {
 				"XXX",
-				"XXX",
+				"X X",
 				"XXX",
 				'X',
-				new ItemStack(Blocks.WOOL, 9, 32767) }));
+				new ItemStack(Blocks.WOOL, 8, 32767) }));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.WOOL, 9, 0), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.WOOL, 8, 0), new Object[] {
 				new ItemStack(MainInit.cardboard, 1, 5) }));
 	}
 
@@ -1060,15 +1060,19 @@ public class BasicRecipeRegister {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[0], 1, 0), new Object[] {
 				"XXX",
-				"X X",
+				"XYX",
 				'X',
-				"ingotBrass" }));
+				"ingotBrass",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[0], 1, 0), new Object[] {
 				"XXX",
-				"X X",
+				"XYX",
 				'X',
-				"ingotSteel" }));
+				"ingotSteel",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[0], 1, 0), new Object[] {
 				"XXX",
@@ -1084,24 +1088,30 @@ public class BasicRecipeRegister {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[1], 1, 0), new Object[] {
 				"X X",
-				"XXX",
+				"XYX",
 				"XXX",
 				'X',
-				"ingotBrass" }));
+				"ingotBrass",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[1], 1, 0), new Object[] {
 				"X X",
-				"XXX",
+				"XYX",
 				"XXX",
 				'X',
-				"ingotSteel" }));
+				"ingotSteel",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[1], 1, 0), new Object[] {
 				"X X",
-				"XXX",
+				"XYX",
 				"XXX",
 				'X',
-				"gemChalcedony" }));
+				"gemChalcedony",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[1], 1, 0), new Object[] {
 				"X X",
@@ -1111,56 +1121,72 @@ public class BasicRecipeRegister {
 				"gemSapphire" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[2], 1, 0), new Object[] {
-				"XXX",
+				"XYX",
 				"X X",
 				"X X",
 				'X',
-				"ingotBrass" }));
+				"ingotBrass",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[2], 1, 0), new Object[] {
-				"XXX",
+				"XYX",
 				"X X",
 				"X X",
 				'X',
-				"ingotSteel" }));
+				"ingotSteel",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[2], 1, 0), new Object[] {
-				"XXX",
+				"XYX",
 				"X X",
 				"X X",
 				'X',
-				"gemChalcedony" }));
+				"gemChalcedony",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[2], 1, 0), new Object[] {
-				"XXX",
+				"XYX",
 				"X X",
 				"X X",
 				'X',
-				"gemSapphire" }));
+				"gemSapphire",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[3], 1, 0), new Object[] {
 				"X X",
-				"X X",
+				"XYX",
 				'X',
-				"ingotBrass" }));
+				"ingotBrass",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[3], 1, 0), new Object[] {
 				"X X",
-				"X X",
+				"XYX",
 				'X',
-				"ingotSteel" }));
+				"ingotSteel",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[3], 1, 0), new Object[] {
 				"X X",
-				"X X",
+				"XYX",
 				'X',
-				"gemChalcedony" }));
+				"gemChalcedony",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[3], 1, 0), new Object[] {
 				"X X",
-				"X X",
+				"XYX",
 				'X',
-				"gemSapphire" }));
+				"gemSapphire",
+				'Y',
+				"itemCloth" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.linenUnder, 1, 0), new Object[] {
 				"XXX",
@@ -1207,7 +1233,7 @@ public class BasicRecipeRegister {
 				'X',
 				"itemLeather",
 				'Y',
-				"itemString" }));
+				"string" }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cottonHat, 1, 0), new Object[] {
 				"XXX",
@@ -1215,7 +1241,7 @@ public class BasicRecipeRegister {
 				'X',
 				"itemCottonCloth",
 				'Y',
-				"itemString" }));
+				"string" }));
 
 	}
 

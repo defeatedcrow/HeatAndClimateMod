@@ -22,7 +22,6 @@ public class TileIBC extends DCTileEntity implements ITagGetter {
 	public DCTank inputT = new DCTank(128000);
 
 	private int lastInT = 0;
-
 	private int count = 20;
 
 	@Override

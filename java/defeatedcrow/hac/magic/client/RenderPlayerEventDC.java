@@ -3,7 +3,7 @@ package defeatedcrow.hac.magic.client;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
-import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +30,7 @@ public class RenderPlayerEventDC {
 	public void renderWings(RenderPlayerEvent.Post event) {
 		EntityPlayer player = event.getEntityPlayer();
 		float partial = event.getPartialRenderTick();
-		if (player != null && player instanceof EntityPlayerSP && !player.isElytraFlying()) {
+		if (player != null && player instanceof AbstractClientPlayer && !player.isElytraFlying()) {
 			float f = this.interpolateRotation(player.prevRenderYawOffset, player.renderYawOffset, partial);
 			float f1 = this.interpolateRotation(player.prevRotationYawHead, player.rotationYawHead, partial);
 			double x = event.getX();
@@ -43,79 +43,87 @@ public class RenderPlayerEventDC {
 			if (player.isPotionActive(MainInit.bird) && !player.isInWater()) {
 				PotionEffect effB = player.getActivePotionEffect(MainInit.bird);
 				if (effB != null) {
-					int dur = effB.getDuration() & 7;
-					boolean b = (effB.getDuration() & 8) == 0;
-					float angle = 8.0F;
-					if (jump) {
-						angle = lastDurB * 1.0F + (dur - lastDurB) * partial;
-						if (b) {
-							angle = 8.0F - angle;
+					if (effB.getDuration() < 0) {
+						player.removeActivePotionEffect(MainInit.bird);
+					} else {
+						int dur = effB.getDuration() & 7;
+						boolean b = (effB.getDuration() & 8) == 8;
+						float angle = 8.0F;
+						if (jump || forward) {
+							angle = lastDurB * 1.0F + (dur - lastDurB) * partial;
+							if (b) {
+								angle = 7.0F - angle;
+							}
 						}
+						lastDurB = dur;
+
+						GlStateManager.pushMatrix();
+						GlStateManager.translate((float) x, (float) y, (float) z);
+						GlStateManager.rotate(180F - f, 0.0F, 1.0F, 0.0F);
+						GlStateManager.enableBlend();
+						GlStateManager.disableLighting();
+						GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
+								GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
+								GlStateManager.DestFactor.ZERO);
+
+						int i = 15728880;
+						int j = i % 65536;
+						int k = i / 65536;
+						OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
+
+						GlStateManager.color(1.0F, 1.0F, 1.0F, 0.75F);
+						event.getRenderer().bindTexture(WING_TEX);
+
+						GlStateManager.scale(-1.2F, -1.2F, 1.2F);
+						MODEL.renderWing(player, 0.0625F, sneak, angle);
+
+						GlStateManager.enableLighting();
+						GlStateManager.disableBlend();
+						GlStateManager.popMatrix();
 					}
-					lastDurB = dur;
-
-					GlStateManager.pushMatrix();
-					GlStateManager.translate((float) x, (float) y, (float) z);
-					GlStateManager.rotate(180F - f, 0.0F, 1.0F, 0.0F);
-					GlStateManager.enableBlend();
-					GlStateManager.disableLighting();
-					GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-							GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-							GlStateManager.DestFactor.ZERO);
-
-					int i = 15728880;
-					int j = i % 65536;
-					int k = i / 65536;
-					OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
-
-					GlStateManager.color(1.0F, 1.0F, 1.0F, 0.75F);
-					event.getRenderer().bindTexture(WING_TEX);
-
-					GlStateManager.scale(-1.2F, -1.2F, 1.2F);
-					MODEL.renderWing(player, 0.0625F, sneak, angle);
-
-					GlStateManager.enableLighting();
-					GlStateManager.disableBlend();
-					GlStateManager.popMatrix();
 				}
 			}
 			if (player.isPotionActive(MainInit.ocean)) {
 				PotionEffect effO = player.getActivePotionEffect(MainInit.ocean);
 				if (effO != null) {
-					int dur = effO.getDuration() & 7;
-					boolean b = (effO.getDuration() & 8) == 0;
-					float angle = 4.0F;
-					if (forward) {
-						angle = lastDurO * 1.0F + (dur - lastDurO) * partial;
-						if (b) {
-							angle = 8.0F - angle;
+					if (effO.getDuration() < 0) {
+						player.removeActivePotionEffect(MainInit.ocean);
+					} else {
+						int dur = effO.getDuration() & 7;
+						boolean b = (effO.getDuration() & 8) == 0;
+						float angle = 4.0F;
+						if (forward) {
+							angle = lastDurO * 1.0F + (dur - lastDurO) * partial;
+							if (b) {
+								angle = 8.0F - angle;
+							}
 						}
+						lastDurO = dur;
+
+						GlStateManager.pushMatrix();
+						GlStateManager.translate((float) x, (float) y, (float) z);
+						GlStateManager.rotate(180F - f, 0.0F, 1.0F, 0.0F);
+						GlStateManager.enableBlend();
+						GlStateManager.disableLighting();
+						GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
+								GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
+								GlStateManager.DestFactor.ZERO);
+
+						int i = 15728880;
+						int j = i % 65536;
+						int k = i / 65536;
+						OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
+
+						GlStateManager.color(1.0F, 1.0F, 1.0F, 0.75F);
+						event.getRenderer().bindTexture(TAIL_TEX);
+
+						GlStateManager.scale(-1.2F, -1.2F, 1.2F);
+						MODEL.renderTail(player, 0.0625F, false, angle);
+
+						GlStateManager.enableLighting();
+						GlStateManager.disableBlend();
+						GlStateManager.popMatrix();
 					}
-					lastDurO = dur;
-
-					GlStateManager.pushMatrix();
-					GlStateManager.translate((float) x, (float) y, (float) z);
-					GlStateManager.rotate(180F - f, 0.0F, 1.0F, 0.0F);
-					GlStateManager.enableBlend();
-					GlStateManager.disableLighting();
-					GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-							GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-							GlStateManager.DestFactor.ZERO);
-
-					int i = 15728880;
-					int j = i % 65536;
-					int k = i / 65536;
-					OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
-
-					GlStateManager.color(1.0F, 1.0F, 1.0F, 0.75F);
-					event.getRenderer().bindTexture(TAIL_TEX);
-
-					GlStateManager.scale(-1.2F, -1.2F, 1.2F);
-					MODEL.renderTail(player, 0.0625F, false, angle);
-
-					GlStateManager.enableLighting();
-					GlStateManager.disableBlend();
-					GlStateManager.popMatrix();
 				}
 			}
 		}

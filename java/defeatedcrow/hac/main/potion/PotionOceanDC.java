@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 public class PotionOceanDC extends Potion {
 
 	public PotionOceanDC() {
-		super(true, 0x5050FF);
+		super(false, 0x5050FF);
 		this.setPotionName("dcs.potion.ocean");
 		this.setIconIndex(2, 0);
 	}

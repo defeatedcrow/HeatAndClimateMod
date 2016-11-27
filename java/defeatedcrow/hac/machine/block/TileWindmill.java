@@ -1,11 +1,5 @@
 package defeatedcrow.hac.machine.block;
 
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
@@ -13,6 +7,12 @@ import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
@@ -57,7 +57,7 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
 	@Override
 	public float getGearTier() {
-		return 4.0F;
+		return 8.0F;
 	}
 
 	@Override

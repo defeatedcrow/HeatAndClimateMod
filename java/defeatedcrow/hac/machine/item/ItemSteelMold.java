@@ -1,0 +1,335 @@
+package defeatedcrow.hac.machine.item;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.api.IPressMold;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+public class ItemSteelMold extends DCItem implements IPressMold {
+
+	private final int maxMeta;
+
+	private static String[] names = {
+			"steel" };
+
+	public ItemSteelMold() {
+		super();
+		maxMeta = 0;
+	}
+
+	@Override
+	public int getMaxMeta() {
+		return maxMeta;
+	}
+
+	@Override
+	public String[] getNameSuffix() {
+		return names;
+	}
+
+	@Override
+	public String getTexPath(int meta, boolean f) {
+		String s = "items/misc/mold_" + names[meta];
+		if (f) {
+			s = "textures/" + s;
+		}
+		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+		if (stack != null && stack.hasTagCompound()) {
+			ItemStack output = this.getOutput(stack);
+			if (output != null) {
+				tooltip.add(TextFormatting.BOLD.toString() + "Output " + output.getDisplayName());
+			}
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return stack != null && stack.hasTagCompound();
+	}
+
+	@Override
+	public void setOutput(ItemStack mold, ItemStack output) {
+		if (output != null && mold != null && mold.getItem() instanceof IPressMold) {
+			IPressMold mol = (IPressMold) mold.getItem();
+			if (mol.getOutput(mold) == null) {
+				// レシピ検索
+				List<ItemStack> list = this.getInputList(output);
+				if (!list.isEmpty()) {
+					for (int i = 0; i < list.size(); i++) {
+						ItemStack ret = list.get(i);
+						DCLogger.debugLog("required " + i + ": " + ret.getDisplayName() + ", " + ret.stackSize);
+					}
+				}
+				if (!list.isEmpty()) {
+					NBTTagCompound tag = new NBTTagCompound();
+
+					NBTTagList nbttaglist1 = new NBTTagList();
+					NBTTagCompound tag1 = new NBTTagCompound();
+					output.writeToNBT(tag1);
+					nbttaglist1.appendTag(tag1);
+					tag.setTag("MoldOutput", nbttaglist1);
+
+					NBTTagList nbttaglist2 = new NBTTagList();
+					for (int j = 0; j < list.size(); j++) {
+						NBTTagCompound tag2 = new NBTTagCompound();
+						tag2.setByte("Input", (byte) j);
+						list.get(j).writeToNBT(tag2);
+						nbttaglist2.appendTag(tag2);
+					}
+					tag.setTag("MoldRecipe", nbttaglist2);
+					mold.setTagCompound(tag);
+				}
+				list.clear();
+			}
+		}
+	}
+
+	@Override
+	public ItemStack getOutput(ItemStack mold) {
+		if (mold != null && mold.getItem() instanceof IPressMold) {
+			NBTTagCompound tag = new NBTTagCompound();
+			if (mold.hasTagCompound()) {
+				tag = mold.getTagCompound();
+			}
+			NBTTagList nbttaglist = tag.getTagList("MoldOutput", 10);
+			if (nbttaglist.tagCount() > 0) {
+				NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(0);
+				ItemStack ret = ItemStack.loadItemStackFromNBT(tag1);
+				if (ret != null) {
+					return ret;
+				}
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<ItemStack> getInputs(ItemStack mold) {
+		List<ItemStack> list = new ArrayList<ItemStack>();
+		if (mold != null && mold.getItem() instanceof IPressMold) {
+			NBTTagCompound tag = new NBTTagCompound();
+			if (mold.hasTagCompound()) {
+				tag = mold.getTagCompound();
+			}
+			NBTTagList nbttaglist = tag.getTagList("MoldRecipe", 10);
+			for (int i = 0; i < nbttaglist.tagCount(); i++) {
+				NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
+				ItemStack ret = ItemStack.loadItemStackFromNBT(tag1);
+				if (ret != null) {
+					list.add(ret);
+				}
+			}
+		}
+		return list;
+	}
+
+	private List<ItemStack> getInputList(ItemStack output) {
+		List<ItemStack> list = new ArrayList<ItemStack>();
+		List<ItemStack> empty = new ArrayList<ItemStack>();
+		List<IRecipe> targetRecipes = CraftingManager.getInstance().getRecipeList();
+
+		ShapedRecipes s = null;
+		ShapedOreRecipe sOre = null;
+		ShapelessRecipes sl = null;
+		ShapelessOreRecipe slOre = null;
+
+		for (IRecipe rec : targetRecipes) {
+			if (rec.getRecipeOutput() != null && DCUtil.isSameItem(output, rec.getRecipeOutput())) {
+				if (s == null && rec instanceof ShapedRecipes) {
+					s = (ShapedRecipes) rec;
+				}
+				if (sOre == null && rec instanceof ShapedOreRecipe) {
+					sOre = (ShapedOreRecipe) rec;
+				}
+				if (sl == null && rec instanceof ShapelessRecipes) {
+					sl = (ShapelessRecipes) rec;
+				}
+				if (slOre == null && rec instanceof ShapelessOreRecipe) {
+					slOre = (ShapelessOreRecipe) rec;
+				}
+				if (s != null && sOre != null) {
+					break;
+				}
+				if (sl != null && slOre != null) {
+					break;
+				}
+			}
+		}
+
+		if (sOre != null) {
+			for (Object obj : sOre.getInput()) {
+				if (obj == null) {
+					continue;
+				}
+
+				ItemStack item = null;
+				boolean b = false;
+				if (obj instanceof ItemStack) {
+					item = (ItemStack) obj;
+				} else if (obj instanceof Item) {
+					item = new ItemStack((Item) obj);
+				} else if (obj instanceof Block) {
+					item = new ItemStack((Block) obj, 1, 0);
+				} else if (obj instanceof List) {
+					if ((List<ItemStack>) obj != null && !((List<ItemStack>) obj).isEmpty()) {
+						List<ItemStack> ores = (List<ItemStack>) obj;
+						for (ItemStack oreItem : ores) {
+							if (oreItem != null) {
+								item = new ItemStack(oreItem.getItem(), 1, oreItem.getItemDamage());
+								break;
+							}
+						}
+					}
+				}
+
+				if (item != null) {
+					if (list.isEmpty()) {
+						list.add(item);
+						DCLogger.debugLog("set reqs " + 0 + ": " + item.getDisplayName() + ", " + item.stackSize);
+						continue;
+					} else {
+						boolean c = false;
+						for (int i = 0; i < list.size(); i++) {
+							if (DCUtil.isSameItem(item, list.get(i))) {
+								list.get(i).stackSize++;
+								DCLogger.debugLog(
+										"set reqs " + i + ": " + item.getDisplayName() + ", " + list.get(i).stackSize);
+								c = true;
+								break;
+							}
+						}
+						if (!c) {
+							list.add(item);
+							DCLogger.debugLog("set reqs " + (list.size() - 1) + ": " + item.getDisplayName() + ", "
+									+ item.stackSize);
+						}
+					}
+				}
+			}
+			return list;
+		} else if (slOre != null) {
+			for (Object obj : slOre.getInput()) {
+				if (obj == null) {
+					continue;
+				}
+				ItemStack item = null;
+				boolean b = false;
+				if (obj instanceof ItemStack) {
+					item = (ItemStack) obj;
+				} else if (obj instanceof Item) {
+					item = new ItemStack((Item) obj);
+				} else if (obj instanceof Block) {
+					item = new ItemStack((Block) obj, 1, 0);
+				} else if (obj instanceof List) {
+					if ((List<ItemStack>) obj != null && !((List<ItemStack>) obj).isEmpty()) {
+						List<ItemStack> ores = (List<ItemStack>) obj;
+						for (ItemStack oreItem : ores) {
+							if (oreItem != null) {
+								item = new ItemStack(oreItem.getItem(), 1, oreItem.getItemDamage());
+								break;
+							}
+						}
+					}
+				}
+
+				if (item != null) {
+					if (list.isEmpty()) {
+						list.add(item);
+						continue;
+					} else {
+						boolean c = false;
+						for (int i = 0; i < list.size(); i++) {
+							if (DCUtil.isSameItem(item, list.get(i))) {
+								list.get(i).stackSize++;
+								c = true;
+								break;
+							}
+						}
+						if (!c) {
+							list.add(item);
+						}
+					}
+				} else {
+					return empty;
+				}
+			}
+			return list;
+		} else if (s != null) {
+			for (ItemStack obj : s.recipeItems) {
+				ItemStack item = obj;
+
+				if (item != null) {
+					if (list.isEmpty()) {
+						list.add(item);
+						continue;
+					} else {
+						boolean c = false;
+						for (int i = 0; i < list.size(); i++) {
+							if (DCUtil.isSameItem(item, list.get(i))) {
+								list.get(i).stackSize++;
+								c = true;
+								break;
+							}
+						}
+						if (!c) {
+							list.add(item);
+						}
+					}
+				}
+			}
+			return list;
+		} else if (sl != null) {
+			for (ItemStack obj : sl.recipeItems) {
+				ItemStack item = obj;
+
+				if (item != null) {
+					if (list.isEmpty()) {
+						list.add(item);
+						continue;
+					} else {
+						boolean c = false;
+						for (int i = 0; i < list.size(); i++) {
+							if (DCUtil.isSameItem(item, list.get(i))) {
+								list.get(i).stackSize++;
+								c = true;
+								break;
+							}
+						}
+						if (!c) {
+							list.add(item);
+						}
+					}
+				}
+			}
+			return list;
+		}
+
+		return empty;
+	}
+
+}

@@ -16,7 +16,6 @@ import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.magic.client.RenderPlayerEventDC;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
 import defeatedcrow.hac.main.CommonMainProxy;
-import defeatedcrow.hac.main.block.build.TileBellow;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
@@ -27,6 +26,7 @@ import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
+import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TileShitirin;
@@ -227,6 +227,8 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
+		if (ClimateCore.isDebug)
+			return true;
 		return player != null && player instanceof EntityPlayerSP
 				&& ((EntityPlayerSP) player).getStatFileWriter().hasAchievementUnlocked(acv);
 	}

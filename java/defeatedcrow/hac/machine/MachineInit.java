@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 
 public class MachineInit {
 
@@ -32,7 +33,6 @@ public class MachineInit {
 	public static Block IBC;
 
 	public static Block heatPump;
-	public static Block boiler;
 
 	// tier 3
 
@@ -42,11 +42,18 @@ public class MachineInit {
 	public static Block shaft2_t_b;
 	public static Block gearbox2;
 
-	public static Block stoveUHT;
-	public static Block motor;
-	public static Block generator;
+	public static Block boilerTurbine; // Climate -> Torque
+	public static Block motor; // FU -> Torque
+	public static Block generator; // Torque -> FU
+	public static Block converter; // EU/RF -> FU
 
+	public static Block waterPump;
 	public static Block pressMachine;
 	public static Block hopperR;
 	public static Block catapult;
+
+	public static Item mold;
+	public static Item machimeMaterials;
+
+	public static Block creativeBox;
 }

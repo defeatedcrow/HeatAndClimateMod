@@ -1,13 +1,13 @@
 package defeatedcrow.hac.machine.block;
 
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.energy.ICrankDC;
 import defeatedcrow.hac.api.energy.ICrankReceiver;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICrankDC {
 
@@ -86,7 +86,7 @@ public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICra
 
 	@Override
 	public float outputPower() {
-		double rot = (float) (this.rotation * Math.PI / 360F);
+		double rot = (float) (this.currentRotation * Math.PI / 360F);
 		double cos = Math.cos(rot);
 		return (float) cos;
 	}
