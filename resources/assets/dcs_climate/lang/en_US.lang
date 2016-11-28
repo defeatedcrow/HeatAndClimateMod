@@ -418,6 +418,7 @@ tile.dcs_device_fauset_0.name=Fauset
 tile.dcs_device_ibc_0.name=IBC Container
 tile.dcs_device_heat_exchanger_0.name=Heat Exchanger
 tile.dcs_device_fuelstove_0.name=Fluid Fuel Stove
+tile.dcs_device_bellow_0.name=Bellow
 
 tile.dcs_crop_rice_3.name=Rice Plant
 tile.dcs_crop_onion_3.name=Onion Plant

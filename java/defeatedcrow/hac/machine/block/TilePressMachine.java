@@ -59,7 +59,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 					output = mold.getOutput(moldItem);
 				}
 
-				if (output != null) {
+				if (output != null && canIncrStack(output, 1)) {
 					ItemStack[] reqs = new ItemStack[9];
 					ItemStack[] rets = new ItemStack[9];
 					int[] reduce = new int[9];
@@ -77,32 +77,32 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 					}
 
 					// 何か型によるレシピが表示されている時
-					if (countQ > 0 && countR > countQ) {
+					boolean flag = false;
+					if (countQ > 0 && countR >= countQ) {
 						for (int j = 0; j < 9; j++) {
 							ItemStack target = reqs[j];
 							int slo = getMatchSlot(target, rets);
 							if (slo >= 0) {
 								reduce[slo] += target.stackSize;
 								countQ -= target.stackSize;
+								flag = true;
 							}
 						}
 					}
 
 					// ぴったりなくなった
-					if (countQ == 0) {
-						if (canIncrStack(output, 1)) {
-							if (this.inv[1] == null) {
-								this.inv[1] = output;
-							} else {
-								this.inv[1].stackSize += output.stackSize;
+					if (flag && countQ == 0) {
+						if (this.inv[1] == null) {
+							this.inv[1] = output;
+						} else {
+							this.inv[1].stackSize += output.stackSize;
+						}
+						for (int k = 0; k < 9; k++) {
+							int red = reduce[k];
+							if (red > 0) {
+								this.decrStackSize(k + 2, red);
 							}
-							for (int k = 0; k < 9; k++) {
-								int red = reduce[k];
-								if (red > 0) {
-									this.decrStackSize(k + 2, red);
-								}
-								this.markDirty();
-							}
+							this.markDirty();
 						}
 					}
 				}
@@ -198,12 +198,12 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	// public void onTickUpdate() {
 	// super.onTickUpdate();
 	// if (!worldObj.isRemote) {
-	// if (prevRotation >= 120 && !flag) {
+	// if (prevRotation >= 220 && !flag) {
 	// worldObj.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_ANVIL_BREAK,
 	// SoundCategory.BLOCKS, 0.85F, 0.25F);
 	// flag = true;
 	// }
-	// if (flag && prevRotation < 120) {
+	// if (flag && prevRotation < 220) {
 	// flag = false;
 	// }
 	// }
@@ -261,7 +261,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	@Override
 	public float getGearTier() {
-		return 1.0F;
+		return 16.0F;
 	}
 
 	@Override
@@ -467,6 +467,42 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		return ret;
 	}
 
+	// reqsの減少と容器返却を同時に行う
+	private void reduceReqItem(int slot, int amo) {
+		if (slot < 0 || slot > 8 || amo <= 0) {
+			return;
+		}
+		ItemStack target = inv[slot + 2];
+		if (target != null) {
+			ItemStack ret = target.getItem().getContainerItem(target);
+			if (ret != null) {
+				ret.stackSize = amo;
+				if (amo >= target.stackSize) {
+					target = ret;
+				} else {
+					target.stackSize -= amo;
+					for (int i = 0; i < 9; i++) {
+						if (i == slot) {
+							continue;
+						}
+						int a = incrStackSize(i + 2, ret);
+						if (a < ret.stackSize) {
+							ret.stackSize -= a;
+						} else {
+							break;
+						}
+					}
+				}
+			} else {
+				if (target.stackSize >= amo) {
+					target = null;
+				} else {
+					target.stackSize -= amo;
+				}
+			}
+		}
+	}
+
 	private boolean canIncrStack(ItemStack incr, int slot) {
 		ItemStack check = getStackInSlot(slot);
 		if (check == null || incr == null) {
@@ -475,6 +511,29 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			return incr.stackSize + check.stackSize <= 64;
 		} else {
 			return false;
+		}
+	}
+
+	public int incrStackSize(int i, ItemStack get) {
+		if (i < 0 || i >= this.getSizeInventory() || get == null)
+			return 0;
+		if (this.getStackInSlot(i) != null) {
+			if (getStackInSlot(i).getItem() != get.getItem()
+					|| getStackInSlot(i).getItemDamage() != get.getItemDamage()) {
+				return 0;
+			}
+			int ret = 64 - this.getStackInSlot(i).stackSize;
+
+			if (ret >= get.stackSize) {
+				this.getStackInSlot(i).stackSize += get.stackSize;
+				return get.stackSize;
+			} else {
+				this.getStackInSlot(i).stackSize = 64;
+				return ret;
+			}
+		} else {
+			this.setInventorySlotContents(i, get);
+			return get.stackSize;
 		}
 	}
 

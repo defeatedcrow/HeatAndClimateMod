@@ -57,7 +57,7 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
 	@Override
 	public float getGearTier() {
-		return 8.0F;
+		return 2.0F;
 	}
 
 	@Override

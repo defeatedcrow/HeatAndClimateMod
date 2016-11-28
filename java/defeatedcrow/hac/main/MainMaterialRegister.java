@@ -105,7 +105,7 @@ public class MainMaterialRegister {
 		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 10);
 		registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock");
 
-		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 10);
+		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 11);
 		registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock");
 
 		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 8);
@@ -309,7 +309,7 @@ public class MainMaterialRegister {
 		GameRegistry.register(MainInit.miscDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_miscdust"));
 
 		// tools
-		MainInit.materials = new ItemMiscs(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
+		MainInit.materials = new ItemMiscs(8).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
 		GameRegistry.register(MainInit.materials.setRegistryName(ClimateCore.PACKAGE_BASE + "_material"));
 
 		MainInit.stoneYagen = new ItemStoneYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_stone");

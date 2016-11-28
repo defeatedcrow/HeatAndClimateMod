@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.IPressMold;
@@ -78,33 +77,27 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 			IPressMold mol = (IPressMold) mold.getItem();
 			if (mol.getOutput(mold) == null) {
 				// レシピ検索
-				List<ItemStack> list = this.getInputList(output);
-				if (!list.isEmpty()) {
-					for (int i = 0; i < list.size(); i++) {
-						ItemStack ret = list.get(i);
-						DCLogger.debugLog("required " + i + ": " + ret.getDisplayName() + ", " + ret.stackSize);
-					}
-				}
-				if (!list.isEmpty()) {
+				RecipePair recipe = this.getInputList(output);
+				if (recipe != null) {
 					NBTTagCompound tag = new NBTTagCompound();
 
 					NBTTagList nbttaglist1 = new NBTTagList();
 					NBTTagCompound tag1 = new NBTTagCompound();
-					output.writeToNBT(tag1);
+					ItemStack ret = new ItemStack(output.getItem(), recipe.amount, output.getItemDamage());
+					ret.writeToNBT(tag1);
 					nbttaglist1.appendTag(tag1);
 					tag.setTag("MoldOutput", nbttaglist1);
 
 					NBTTagList nbttaglist2 = new NBTTagList();
-					for (int j = 0; j < list.size(); j++) {
+					for (int j = 0; j < recipe.requiers.size(); j++) {
 						NBTTagCompound tag2 = new NBTTagCompound();
 						tag2.setByte("Input", (byte) j);
-						list.get(j).writeToNBT(tag2);
+						recipe.requiers.get(j).writeToNBT(tag2);
 						nbttaglist2.appendTag(tag2);
 					}
 					tag.setTag("MoldRecipe", nbttaglist2);
 					mold.setTagCompound(tag);
 				}
-				list.clear();
 			}
 		}
 	}
@@ -148,7 +141,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 		return list;
 	}
 
-	private List<ItemStack> getInputList(ItemStack output) {
+	private RecipePair getInputList(ItemStack output) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		List<ItemStack> empty = new ArrayList<ItemStack>();
 		List<IRecipe> targetRecipes = CraftingManager.getInstance().getRecipeList();
@@ -190,7 +183,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				ItemStack item = null;
 				boolean b = false;
 				if (obj instanceof ItemStack) {
-					item = (ItemStack) obj;
+					item = new ItemStack(((ItemStack) obj).getItem(), 1, ((ItemStack) obj).getItemDamage());
 				} else if (obj instanceof Item) {
 					item = new ItemStack((Item) obj);
 				} else if (obj instanceof Block) {
@@ -210,28 +203,33 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				if (item != null) {
 					if (list.isEmpty()) {
 						list.add(item);
-						DCLogger.debugLog("set reqs " + 0 + ": " + item.getDisplayName() + ", " + item.stackSize);
+						// DCLogger.debugLog("set reqs " + 0 + ": " + item.getDisplayName() + ", " +
+						// item.stackSize);
 						continue;
 					} else {
 						boolean c = false;
 						for (int i = 0; i < list.size(); i++) {
 							if (DCUtil.isSameItem(item, list.get(i))) {
 								list.get(i).stackSize++;
-								DCLogger.debugLog(
-										"set reqs " + i + ": " + item.getDisplayName() + ", " + list.get(i).stackSize);
+								// DCLogger.debugLog(
+								// "add reqs " + i + ": " + item.getDisplayName() + ", " +
+								// list.get(i).stackSize);
 								c = true;
 								break;
 							}
 						}
 						if (!c) {
 							list.add(item);
-							DCLogger.debugLog("set reqs " + (list.size() - 1) + ": " + item.getDisplayName() + ", "
-									+ item.stackSize);
+							// DCLogger.debugLog("set reqs " + (list.size() - 1) + ": " +
+							// item.getDisplayName() + ", "
+							// + item.stackSize);
 						}
 					}
 				}
 			}
-			return list;
+			if (!list.isEmpty()) {
+				return new RecipePair(sOre.getRecipeOutput().stackSize, list);
+			}
 		} else if (slOre != null) {
 			for (Object obj : slOre.getInput()) {
 				if (obj == null) {
@@ -240,7 +238,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				ItemStack item = null;
 				boolean b = false;
 				if (obj instanceof ItemStack) {
-					item = (ItemStack) obj;
+					item = new ItemStack(((ItemStack) obj).getItem(), 1, ((ItemStack) obj).getItemDamage());
 				} else if (obj instanceof Item) {
 					item = new ItemStack((Item) obj);
 				} else if (obj instanceof Block) {
@@ -275,61 +273,81 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 						}
 					}
 				} else {
-					return empty;
+					return null;
 				}
 			}
-			return list;
+			if (!list.isEmpty()) {
+				return new RecipePair(slOre.getRecipeOutput().stackSize, list);
+			}
 		} else if (s != null) {
 			for (ItemStack obj : s.recipeItems) {
-				ItemStack item = obj;
+				if (obj == null) {
+					continue;
+				}
+				ItemStack item = new ItemStack(obj.getItem(), 1, obj.getItemDamage());
 
-				if (item != null) {
-					if (list.isEmpty()) {
+				if (list.isEmpty()) {
+					list.add(item);
+					continue;
+				} else {
+					boolean c = false;
+					for (int i = 0; i < list.size(); i++) {
+						if (DCUtil.isSameItem(item, list.get(i))) {
+							list.get(i).stackSize++;
+							c = true;
+							break;
+						}
+					}
+					if (!c) {
 						list.add(item);
-						continue;
-					} else {
-						boolean c = false;
-						for (int i = 0; i < list.size(); i++) {
-							if (DCUtil.isSameItem(item, list.get(i))) {
-								list.get(i).stackSize++;
-								c = true;
-								break;
-							}
-						}
-						if (!c) {
-							list.add(item);
-						}
 					}
 				}
 			}
-			return list;
+			if (!list.isEmpty()) {
+				return new RecipePair(s.getRecipeOutput().stackSize, list);
+			}
 		} else if (sl != null) {
 			for (ItemStack obj : sl.recipeItems) {
-				ItemStack item = obj;
+				if (obj == null) {
+					continue;
+				}
+				ItemStack item = new ItemStack(obj.getItem(), 1, obj.getItemDamage());
 
-				if (item != null) {
-					if (list.isEmpty()) {
+				if (list.isEmpty()) {
+					list.add(item);
+					continue;
+				} else {
+					boolean c = false;
+					for (int i = 0; i < list.size(); i++) {
+						if (DCUtil.isSameItem(item, list.get(i))) {
+							list.get(i).stackSize++;
+							c = true;
+							break;
+						}
+					}
+					if (!c) {
 						list.add(item);
-						continue;
-					} else {
-						boolean c = false;
-						for (int i = 0; i < list.size(); i++) {
-							if (DCUtil.isSameItem(item, list.get(i))) {
-								list.get(i).stackSize++;
-								c = true;
-								break;
-							}
-						}
-						if (!c) {
-							list.add(item);
-						}
 					}
 				}
 			}
-			return list;
+			if (!list.isEmpty()) {
+				return new RecipePair(sl.getRecipeOutput().stackSize, list);
+			}
 		}
 
-		return empty;
+		return null;
+	}
+
+	protected class RecipePair {
+
+		protected final int amount;
+		protected final List<ItemStack> requiers = new ArrayList<ItemStack>();
+
+		protected RecipePair(int amo, List<ItemStack> list) {
+			amount = amo;
+			if (list != null && !list.isEmpty())
+				requiers.addAll(list);
+		}
 	}
 
 }

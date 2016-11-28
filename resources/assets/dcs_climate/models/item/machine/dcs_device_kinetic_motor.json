@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "dcs_climate:items/block/stovefuel_item"
+        "layer0": "dcs_climate:items/block/kinetic_motor_item"
     }
 }

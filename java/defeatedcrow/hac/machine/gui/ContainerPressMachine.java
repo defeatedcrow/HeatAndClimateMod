@@ -23,10 +23,10 @@ public class ContainerPressMachine extends Container {
 
 		this.addSlotToContainer(new SlotMold(tile, 0, 24, 15));
 
-		this.addSlotToContainer(new Slot(tile, 1, 136, 20));
+		this.addSlotToContainer(new Slot(tile, 1, 136, 24));
 
 		for (int c = 0; c < 9; ++c) {
-			this.addSlotToContainer(new Slot(tile, c + 2, 8 + c * 18, 73));
+			this.addSlotToContainer(new Slot(tile, c + 2, 8 + c * 18, 75));
 		}
 
 		for (int a = 0; a < 3; ++a) {
@@ -37,12 +37,12 @@ public class ContainerPressMachine extends Container {
 
 		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {
-				this.addSlotToContainer(new Slot(playerInv, i1 + k * 9 + 9, 8 + i1 * 18, 102 + k * 18));
+				this.addSlotToContainer(new Slot(playerInv, i1 + k * 9 + 9, 8 + i1 * 18, 104 + k * 18));
 			}
 		}
 
 		for (int l = 0; l < 9; ++l) {
-			this.addSlotToContainer(new Slot(playerInv, l, 8 + l * 18, 160));
+			this.addSlotToContainer(new Slot(playerInv, l, 8 + l * 18, 162));
 		}
 	}
 

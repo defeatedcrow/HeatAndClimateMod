@@ -1,6 +1,5 @@
 package defeatedcrow.hac.main.event;
 
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.api.IPressMold;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.AnvilUpdateEvent;
@@ -16,7 +15,7 @@ public class AnvilMoldEvent {
 		if (left != null && moldItem != null && moldItem.getItem() instanceof IPressMold && ret == null) {
 			IPressMold mold = (IPressMold) moldItem.copy().getItem();
 			if (mold.getOutput(moldItem) == null) {
-				DCLogger.debugLog("anvil event cycle");
+				// DCLogger.debugLog("anvil event cycle");
 				ItemStack next = new ItemStack(moldItem.getItem(), moldItem.stackSize, moldItem.getItemDamage());
 				mold.setOutput(next, left);
 				event.setOutput(next);

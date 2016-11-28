@@ -219,22 +219,12 @@ public class ModelPressMachine extends DCTileModelBase {
 		float rot = limbSwing;
 		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 		float c1 = (float) Math.sin(f2);
-		float c2 = c1 - 0.75F; // 1.75F ~ -0.25F
-		float f3 = c2 * 20F;
-		if (c2 > 0.0F) {
-			hummer1.rotationPointY = -4.8F + f3;
-			hummer2.rotationPointY = -4.8F + f3;
-			hummer3.rotationPointY = -4.8F + f3;
-			hummer4.rotationPointY = -4.8F + f3;
-			hummer5.rotationPointY = -4.8F + f3;
-		} else {
-			hummer1.rotationPointY = -4.8F;
-			hummer2.rotationPointY = -4.8F;
-			hummer3.rotationPointY = -4.8F;
-			hummer4.rotationPointY = -4.8F;
-			hummer5.rotationPointY = -4.8F;
-		}
-		// DCLogger.debugLog("press machine model: rot " + rot + ", c1 " + c1);
+		float f3 = c1 * 2.4F;
+		hummer1.rotationPointY = -2.4F + f3;
+		hummer2.rotationPointY = -2.4F + f3;
+		hummer3.rotationPointY = -2.4F + f3;
+		hummer4.rotationPointY = -2.4F + f3;
+		hummer5.rotationPointY = -2.4F + f3;
 	}
 
 }

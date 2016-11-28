@@ -1,5 +1,7 @@
 package defeatedcrow.hac.machine.gui;
 
+import java.util.ArrayList;
+
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -21,7 +23,7 @@ public class GuiPressMachine extends GuiContainer {
 		super(new ContainerPressMachine(te, playerInv));
 		this.playerInventory = playerInv;
 		this.machine = te;
-		this.ySize = 184;
+		this.ySize = 186;
 	}
 
 	@Override
@@ -33,6 +35,16 @@ public class GuiPressMachine extends GuiContainer {
 	}
 
 	@Override
+	public void drawScreen(int x, int y, float partialTicks) {
+		super.drawScreen(x, y, partialTicks);
+		if (isPointInRegion(41, 12, 58, 58, x, y)) {
+			ArrayList<String> list1 = new ArrayList<String>();
+			list1.add("Required Items");
+			this.drawHoveringText(list1, x, y - 12, fontRendererObj);
+		}
+	}
+
+	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(guiTex());
@@ -41,7 +53,7 @@ public class GuiPressMachine extends GuiContainer {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		int l = this.getCookProgressScaled(20);
-		this.drawTexturedModalRect(i + 110, j + 22, 176, 0, l, 12);
+		this.drawTexturedModalRect(i + 110, j + 26, 176, 0, l, 12);
 	}
 
 	private int getCookProgressScaled(int pixels) {

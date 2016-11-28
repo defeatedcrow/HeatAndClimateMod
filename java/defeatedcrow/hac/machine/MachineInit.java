@@ -52,6 +52,7 @@ public class MachineInit {
 	public static Block hopperR;
 	public static Block catapult;
 
+	public static Item torqueChecker;
 	public static Item mold;
 	public static Item machimeMaterials;
 

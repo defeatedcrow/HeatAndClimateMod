@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
 	public BlockBuilding(Material m, String s) {
-		super(m, s, 2, false);
+		super(m, s, 4, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
 		this.setResistance(30.0F);
@@ -26,13 +26,15 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public int getMaxMeta() {
-		return 2;
+		return 4;
 	}
 
 	private static String[] names = {
 			"concrete",
 			"mosaic_red",
-			"mosaic_blue" };
+			"mosaic_blue",
+			"mosaic_yellow",
+			"mosaic_black" };
 
 	@Override
 	public String[] getNameSuffix() {

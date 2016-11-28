@@ -417,6 +417,7 @@ tile.dcs_device_fauset_0.name=蛇口
 tile.dcs_device_ibc_0.name=IBCタンク
 tile.dcs_device_heat_exchanger_0.name=熱交換器
 tile.dcs_device_fuelstove_0.name=液体燃料コンロ
+tile.dcs_device_bellow_0.name=ふいご
 
 tile.dcs_crop_rice_3.name=稲
 tile.dcs_crop_onion_3.name=玉ねぎの苗
@@ -586,7 +587,7 @@ dcs.achievement_additional_desc.climate_master=達成ボーナス:より詳し�
 achievement.dcs.machine_master=トルク機械技師
 achievement.dcs.machine_master.desc=トルクマシンに関する実績を積もう!
 dcs.achievement_additional_desc.machine_master=達成ボーナス: 上位Tierの機械を扱えるようになる
-achievement.dcs.magic_master=宝石職人
+achievement.dcs.magic_master=宝石細工師
 achievement.dcs.magic_master.desc=宝石に関する実績を積もう!
 dcs.achievement_additional_desc.magic_master=達成ボーナス:さらなる宝石の魔法アイテムを扱えるようになる
 

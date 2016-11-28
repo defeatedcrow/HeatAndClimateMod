@@ -54,14 +54,14 @@ public class ModelSquareBread extends DCFoodModelBase {
 		base5.mirror = true;
 		setRotation(base5, 0F, 0F, 0F);
 		bread1 = new ModelRenderer(this, 32, 0);
-		bread1.addBox(-2F, 4.5F, -3F, 4, 2, 6);
-		bread1.setRotationPoint(0F, -8F, 0F);
+		bread1.addBox(-2F, 3.9F, -3.5F, 4, 4, 7);
+		bread1.setRotationPoint(0F, 16F, 0F);
 		bread1.setTextureSize(64, 32);
 		bread1.mirror = true;
 		setRotation(bread1, 0F, 0F, 0F);
-		bread2 = new ModelRenderer(this, 32, 10);
+		bread2 = new ModelRenderer(this, 32, 12);
 		bread2.addBox(-2.5F, 3F, -3.5F, 5, 1, 7);
-		bread2.setRotationPoint(0F, -8F, 0F);
+		bread2.setRotationPoint(0F, 16F, 0F);
 		bread2.setTextureSize(64, 32);
 		bread2.mirror = true;
 		setRotation(bread2, 0F, 0F, 0F);

@@ -42,7 +42,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 
 		if (!worldObj.isRemote) {
 			currentProgressTime += MathHelper.floor_float(prevTorque);
-			int count = currentProgressTime / 32;
+			int limit = currentProgressTime / 32;
 			int ret = currentProgressTime % 32;
 			// DCLogger.debugLog("count: " + count + ", ret " + ret);
 			currentProgressTime = ret;
@@ -51,7 +51,11 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 			BlockPos next = getPos().down();
 			BlockPos prev = getPos().down();
 			int fill = 0;
-			for (int i = 0; i < count; i++) {
+			int count = 0;
+			for (int i = 0; i < 4; i++) {
+				if (count >= limit) {
+					break;
+				}
 				if (worldObj.isAirBlock(next)) {
 					for (int d = 1; d < 5; d++) {
 						if (!worldObj.isAirBlock(next.down(d))) {
@@ -91,6 +95,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 						}
 					}
 					next = next.offset(nF);
+					count++;
 				} else {
 					break;
 				}

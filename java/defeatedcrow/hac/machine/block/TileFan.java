@@ -65,7 +65,7 @@ public class TileFan extends TileTorqueBase implements ITorqueReceiver, IClimate
 
 	@Override
 	public float getGearTier() {
-		return 1.0F;
+		return 4.0F;
 	}
 
 	@Override

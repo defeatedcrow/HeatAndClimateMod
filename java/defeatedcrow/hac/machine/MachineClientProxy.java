@@ -123,6 +123,8 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.fauset, ClimateCore.PACKAGE_ID, "dcs_device_fauset", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
+		instance.regSimpleItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_ID, "dcs_device_torque_checker_steel",
+				"machine", 0);
 
 		instance.regTEBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_ID, "dcs_device_creative_box", "machine", 0);
 	}

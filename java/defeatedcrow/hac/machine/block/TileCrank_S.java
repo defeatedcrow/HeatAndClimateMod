@@ -75,7 +75,7 @@ public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICra
 
 	@Override
 	public float getGearTier() {
-		return 1.0F;
+		return 8.0F;
 	}
 
 	@Override

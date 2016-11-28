@@ -140,7 +140,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public float getGearTier() {
-		return 64.0F;
+		return 16.0F;
 	}
 
 	/* 燃焼判定 */

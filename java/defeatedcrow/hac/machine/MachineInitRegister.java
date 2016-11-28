@@ -29,6 +29,7 @@ import defeatedcrow.hac.machine.block.BlockWindmill_L;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
 import defeatedcrow.hac.machine.item.ItemSteelMold;
+import defeatedcrow.hac.machine.item.ItemTorqueChecker;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
@@ -129,6 +130,10 @@ public class MachineInitRegister {
 	static void loadItems() {
 		MachineInit.mold = new ItemSteelMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mold");
 		GameRegistry.register(MachineInit.mold.setRegistryName(ClimateCore.PACKAGE_BASE + "_mold"));
+
+		MachineInit.torqueChecker = new ItemTorqueChecker()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_torque_checker");
+		GameRegistry.register(MachineInit.torqueChecker.setRegistryName(ClimateCore.PACKAGE_BASE + "_torque_checker"));
 	}
 
 	static void loadCreativeTab() {
@@ -165,6 +170,7 @@ public class MachineInitRegister {
 		MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.mold.setCreativeTab(ClimateMain.machine);
+		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.creativeBox.setCreativeTab(ClimateMain.machine);
 	}
