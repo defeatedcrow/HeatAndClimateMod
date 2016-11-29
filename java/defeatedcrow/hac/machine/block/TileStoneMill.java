@@ -56,6 +56,11 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 	}
 
 	@Override
+	public float maxTorque() {
+		return 128.0F;
+	}
+
+	@Override
 	public float getGearTier() {
 		return 32.0F;
 	}

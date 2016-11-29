@@ -23,8 +23,13 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 	}
 
 	@Override
+	public float maxTorque() {
+		return 128.0F;
+	}
+
+	@Override
 	public float getGearTier() {
-		return 8.0F;
+		return 32.0F;
 	}
 
 	@Override

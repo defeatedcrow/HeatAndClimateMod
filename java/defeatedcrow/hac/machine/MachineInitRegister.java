@@ -28,6 +28,7 @@ import defeatedcrow.hac.machine.block.BlockWindmill;
 import defeatedcrow.hac.machine.block.BlockWindmill_L;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
+import defeatedcrow.hac.machine.item.ItemMachineMaterial;
 import defeatedcrow.hac.machine.item.ItemSteelMold;
 import defeatedcrow.hac.machine.item.ItemTorqueChecker;
 import defeatedcrow.hac.main.ClimateMain;
@@ -68,7 +69,7 @@ public class MachineInitRegister {
 		registerTierBlock(MachineInit.shaft_t_b, ClimateCore.PACKAGE_BASE + "_device_shaft_tb", 1);
 
 		MachineInit.gearbox = new BlockGearBox(ClimateCore.PACKAGE_BASE + "_device_gearbox");
-		registerTierBlock(MachineInit.gearbox, ClimateCore.PACKAGE_BASE + "_device_gearbox", 1);
+		registerTierBlock(MachineInit.gearbox, ClimateCore.PACKAGE_BASE + "_device_gearbox", 2);
 
 		MachineInit.piston = new BlockCrank_S(ClimateCore.PACKAGE_BASE + "_device_crank_s");
 		registerTierBlock(MachineInit.piston, ClimateCore.PACKAGE_BASE + "_device_crank_s", 1);
@@ -77,13 +78,13 @@ public class MachineInitRegister {
 		registerTierBlock(MachineInit.handcrank, ClimateCore.PACKAGE_BASE + "_device_handcrank", 1);
 
 		MachineInit.stonemill = new BlockStoneMill(ClimateCore.PACKAGE_BASE + "_device_stonemill");
-		registerTierBlock(MachineInit.stonemill, ClimateCore.PACKAGE_BASE + "_device_stonemill", 1);
+		registerTierBlock(MachineInit.stonemill, ClimateCore.PACKAGE_BASE + "_device_stonemill", 2);
 
 		MachineInit.fan = new BlockFan(ClimateCore.PACKAGE_BASE + "_device_fan");
 		registerTierBlock(MachineInit.fan, ClimateCore.PACKAGE_BASE + "_device_fan", 1);
 
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
-		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 1);
+		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 2);
 
 		MachineInit.fauset = new BlockFauset(ClimateCore.PACKAGE_BASE + "_device_fauset");
 		registerTierBlock(MachineInit.fauset, ClimateCore.PACKAGE_BASE + "_device_fauset", 2);
@@ -92,6 +93,9 @@ public class MachineInitRegister {
 		MachineInit.IBC.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_ibc");
 		GameRegistry.register(MachineInit.IBC);
 		GameRegistry.register(new ItemIBC(MachineInit.IBC));
+
+		MachineInit.waterPump = new BlockWaterPump(ClimateCore.PACKAGE_BASE + "_device_water_pump");
+		registerTierBlock(MachineInit.waterPump, ClimateCore.PACKAGE_BASE + "_device_water_pump", 2);
 
 		MachineInit.heatPump = new BlockHeatExchanger(ClimateCore.PACKAGE_BASE + "_device_heat_exchanger");
 		registerTierBlock(MachineInit.heatPump, ClimateCore.PACKAGE_BASE + "_device_heat_exchanger", 2);
@@ -120,14 +124,15 @@ public class MachineInitRegister {
 		MachineInit.pressMachine = new BlockPressMachine(ClimateCore.PACKAGE_BASE + "_device_press_machine");
 		registerTierBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_BASE + "_device_press_machine", 3);
 
-		MachineInit.waterPump = new BlockWaterPump(ClimateCore.PACKAGE_BASE + "_device_water_pump");
-		registerTierBlock(MachineInit.waterPump, ClimateCore.PACKAGE_BASE + "_device_water_pump", 3);
-
 		MachineInit.creativeBox = new BlockCreativeBox(ClimateCore.PACKAGE_BASE + "_device_creative_box");
 		registerTierBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_BASE + "_device_creative_box", 3);
 	}
 
 	static void loadItems() {
+		MachineInit.machimeMaterials = new ItemMachineMaterial(1)
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mechanical");
+		GameRegistry.register(MachineInit.machimeMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_mechanical"));
+
 		MachineInit.mold = new ItemSteelMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mold");
 		GameRegistry.register(MachineInit.mold.setRegistryName(ClimateCore.PACKAGE_BASE + "_mold"));
 
@@ -156,6 +161,7 @@ public class MachineInitRegister {
 		MachineInit.fauset.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
 		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
+		MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.shaft2_s.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_l.setCreativeTab(ClimateMain.machine);
@@ -167,8 +173,8 @@ public class MachineInitRegister {
 		MachineInit.motor.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.pressMachine.setCreativeTab(ClimateMain.machine);
-		MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
 
+		MachineInit.machimeMaterials.setCreativeTab(ClimateCore.climate);
 		MachineInit.mold.setCreativeTab(ClimateMain.machine);
 		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
 

@@ -8,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class MachineRecipes {
 
@@ -176,6 +177,143 @@ public class MachineRecipes {
 				new ItemStack(MachineInit.fan, 1, 0),
 				'W',
 				new ItemStack(Blocks.IRON_BARS, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.shaft2_s, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"X",
+				'X',
+				"ingotSUS",
+				'Y',
+				"gearSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.shaft2_l, 1, 0), new Object[] {
+				" X",
+				"XY",
+				'X',
+				new ItemStack(MachineInit.shaft2_s, 1, 0),
+				'Y',
+				"gearSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.shaft2_t_a, 1, 0), new Object[] {
+				" X ",
+				"XY ",
+				" X ",
+				'X',
+				new ItemStack(MachineInit.shaft2_s, 1, 0),
+				'Y',
+				"gearSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.shaft2_t_b, 1, 0), new Object[] {
+				" X ",
+				"XYX",
+				'X',
+				new ItemStack(MachineInit.shaft2_s, 1, 0),
+				'Y',
+				"gearSteel" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.gearbox2, 1, 0), new Object[] {
+				"ZXZ",
+				"XYX",
+				"ZXZ",
+				'X',
+				"gearAlloy",
+				'Y',
+				"gearSteel",
+				'Z',
+				"ingotSUS" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.waterPump, 1, 0), new Object[] {
+				"XYX",
+				"XZX",
+				"XYX",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				new ItemStack(Blocks.IRON_BARS, 1, 0),
+				'Z',
+				"gearAlloy" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.boilerTurbine, 1, 0), new Object[] {
+				"XXX",
+				"ZYW",
+				"XXX",
+				'X',
+				"ingotSUS",
+				'Y',
+				"gearSteel",
+				'Z',
+				new ItemStack(MachineInit.IBC, 1, 0),
+				'W',
+				new ItemStack(MachineInit.heatPump, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.pressMachine, 1, 0), new Object[] {
+				"XYX",
+				"X X",
+				"XZX",
+				'X',
+				"ingotSUS",
+				'Y',
+				"gearSteel",
+				'Z',
+				new ItemStack(Blocks.ANVIL, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.motor, 1, 0), new Object[] {
+				"YZW",
+				"XXX",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(MachineInit.shaft2_s, 1, 0),
+				'Z',
+				"gearSteel",
+				'W',
+				new ItemStack(MachineInit.machimeMaterials, 1, 0) }));
+
+		/* == items == */
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.torqueChecker, 1, 0), new Object[] {
+				"XXX",
+				"YZY",
+				" X ",
+				'X',
+				"ingotSteel",
+				'Y',
+				new ItemStack(Blocks.GLASS_PANE, 1, 0),
+				'Z',
+				"dustRedstone" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.mold, 4, 0), new Object[] {
+				"XYX",
+				'X',
+				"ingotIron",
+				'Y',
+				"ingotSteel" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.mold, 1, 0), new Object[] {
+				new ItemStack(MachineInit.mold, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.machimeMaterials, 1, 0), new Object[] {
+				"XZX",
+				"YZY",
+				"XZX",
+				'X',
+				"ingotCopper",
+				'Y',
+				new ItemStack(Blocks.IRON_BARS, 1, 0),
+				'Z',
+				"ingotIron" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.machimeMaterials, 1, 1), new Object[] {
+				"XYX",
+				"YZY",
+				"XYX",
+				'X',
+				"ingotSteel",
+				'Y',
+				"ingotCopper",
+				'Z',
+				"ingotMagnet" }));
 
 	}
 

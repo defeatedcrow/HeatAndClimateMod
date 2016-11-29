@@ -60,7 +60,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 		if (stack != null && stack.hasTagCompound()) {
 			ItemStack output = this.getOutput(stack);
 			if (output != null) {
-				tooltip.add(TextFormatting.BOLD.toString() + "Output " + output.getDisplayName());
+				tooltip.add(TextFormatting.BOLD.toString() + "Output: " + output.getDisplayName());
 			}
 		}
 	}
@@ -201,6 +201,9 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				}
 
 				if (item != null) {
+					if (item.getItem().isDamageable()) {
+						item = new ItemStack(item.getItem(), 1, 0);
+					}
 					if (list.isEmpty()) {
 						list.add(item);
 						// DCLogger.debugLog("set reqs " + 0 + ": " + item.getDisplayName() + ", " +
@@ -256,6 +259,9 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				}
 
 				if (item != null) {
+					if (item.getItem().isDamageable()) {
+						item = new ItemStack(item.getItem(), 1, 0);
+					}
 					if (list.isEmpty()) {
 						list.add(item);
 						continue;
@@ -285,6 +291,9 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					continue;
 				}
 				ItemStack item = new ItemStack(obj.getItem(), 1, obj.getItemDamage());
+				if (item.getItem().isDamageable()) {
+					item = new ItemStack(item.getItem(), 1, 0);
+				}
 
 				if (list.isEmpty()) {
 					list.add(item);
@@ -312,6 +321,9 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					continue;
 				}
 				ItemStack item = new ItemStack(obj.getItem(), 1, obj.getItemDamage());
+				if (item.getItem().isDamageable()) {
+					item = new ItemStack(item.getItem(), 1, 0);
+				}
 
 				if (list.isEmpty()) {
 					list.add(item);

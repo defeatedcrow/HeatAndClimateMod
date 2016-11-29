@@ -5,7 +5,7 @@ public class TileShaft_TB_SUS extends TileShaft_TB {
 	// tier
 	@Override
 	public float maxTorque() {
-		return 128.0F;
+		return 512.0F;
 	}
 
 	@Override

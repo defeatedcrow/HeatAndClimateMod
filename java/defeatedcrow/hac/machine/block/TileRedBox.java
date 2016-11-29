@@ -1,10 +1,10 @@
 package defeatedcrow.hac.machine.block;
 
+import defeatedcrow.hac.api.energy.ICrankReceiver;
+import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.energy.ICrankReceiver;
-import defeatedcrow.hac.core.energy.TileTorqueBase;
 
 public class TileRedBox extends TileTorqueBase implements ICrankReceiver {
 
@@ -51,6 +51,16 @@ public class TileRedBox extends TileTorqueBase implements ICrankReceiver {
 
 	@Override
 	public void setMaxPressed(boolean flag) {
+	}
+
+	@Override
+	public float maxTorque() {
+		return 128.0F;
+	}
+
+	@Override
+	public float getGearTier() {
+		return 32.0F;
 	}
 
 }

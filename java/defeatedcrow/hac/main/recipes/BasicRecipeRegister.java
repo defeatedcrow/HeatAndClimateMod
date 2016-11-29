@@ -465,6 +465,31 @@ public class BasicRecipeRegister {
 				"dustChromium",
 				"dustNickel" }));
 
+		// dustBlock -> dust
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 0), new Object[] {
+				new ItemStack(MainInit.dustBlock, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 1), new Object[] {
+				new ItemStack(MainInit.dustBlock, 1, 1) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 2), new Object[] {
+				new ItemStack(MainInit.dustBlock, 1, 2) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 3), new Object[] {
+				new ItemStack(MainInit.dustBlock, 1, 3) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 5), new Object[] {
+				new ItemStack(MainInit.dustBlock, 1, 5) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 7), new Object[] {
+				new ItemStack(MainInit.dustBlock, 1, 7) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 8), new Object[] {
+				new ItemStack(MainInit.dustBlock, 1, 8) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 4), new Object[] {
+				new ItemStack(MainInit.dustBlock, 1, 11) }));
+
 		// ingot <-> metalBlock
 		String[] metal = {
 				"Copper",
@@ -743,6 +768,16 @@ public class BasicRecipeRegister {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 2), new Object[] {
 				"dyeBlue",
+				new ItemStack(MainInit.builds, 1, 0),
+				new ItemStack(Blocks.GLASS) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 3), new Object[] {
+				"dyeYellow",
+				new ItemStack(MainInit.builds, 1, 0),
+				new ItemStack(Blocks.GLASS) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 4), new Object[] {
+				"dyeBlack",
 				new ItemStack(MainInit.builds, 1, 0),
 				new ItemStack(Blocks.GLASS) }));
 

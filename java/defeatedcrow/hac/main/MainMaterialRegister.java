@@ -309,7 +309,7 @@ public class MainMaterialRegister {
 		GameRegistry.register(MainInit.miscDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_miscdust"));
 
 		// tools
-		MainInit.materials = new ItemMiscs(8).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
+		MainInit.materials = new ItemMiscs(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
 		GameRegistry.register(MainInit.materials.setRegistryName(ClimateCore.PACKAGE_BASE + "_material"));
 
 		MainInit.stoneYagen = new ItemStoneYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_stone");

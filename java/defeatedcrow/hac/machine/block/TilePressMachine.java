@@ -100,7 +100,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 						for (int k = 0; k < 9; k++) {
 							int red = reduce[k];
 							if (red > 0) {
-								this.decrStackSize(k + 2, red);
+								this.reduceReqItem(k, red);
 							}
 							this.markDirty();
 						}
@@ -123,9 +123,13 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			ItemStack check = inv[i + 2];
 			if (check == null || check.getItem() == null) {
 				continue;
-			} else if (DCUtil.isSameItem(item, check)) {
+			} else if (DCUtil.isIntegratedItem(check, item)) {
 				if (check.stackSize >= item.stackSize) {
-					return i;
+					return i; // 一致
+				}
+			} else if (item.getItem().isDamageable() && item.getItem() == check.getItem()) {
+				if (check.stackSize >= item.stackSize) {
+					return i; // damageableの場合、ダメージ値を問わない
 				}
 			} else {
 				int[] tarDic = OreDictionary.getOreIDs(check);
@@ -136,7 +140,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 							if (tarDic[a] == itemDic[b]) {
 								// 同一の辞書IDを持っている
 								if (check.stackSize >= item.stackSize) {
-									return i;
+									return i; // 強制的に辞書レシピ化
 								}
 							}
 						}
@@ -256,7 +260,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	// tier
 	@Override
 	public float maxTorque() {
-		return 128.0F;
+		return 512.0F;
 	}
 
 	@Override
@@ -478,7 +482,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			if (ret != null) {
 				ret.stackSize = amo;
 				if (amo >= target.stackSize) {
-					target = ret;
+					inv[slot + 2] = ret;
 				} else {
 					target.stackSize -= amo;
 					for (int i = 0; i < 9; i++) {
@@ -494,10 +498,10 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 					}
 				}
 			} else {
-				if (target.stackSize >= amo) {
-					target = null;
+				if (target.stackSize <= amo) {
+					inv[slot + 2] = null;
 				} else {
-					target.stackSize -= amo;
+					inv[slot + 2].stackSize -= amo;
 				}
 			}
 		}

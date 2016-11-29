@@ -1,23 +1,17 @@
-package defeatedcrow.hac.main.item.misc;
+package defeatedcrow.hac.machine.item;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 
-public class ItemMiscs extends DCItem {
+public class ItemMachineMaterial extends DCItem {
 
 	private final int maxMeta;
 
 	private static String[] names = {
-			"string_linen",
-			"string_cotton",
-			"cloth_linen",
-			"cloth_cotton",
-			"spindle_wood",
-			"spindle_brass",
-			"spindle_arroy",
-			"spindle_steel" };
+			"induction_motor",
+			"alternator" };
 
-	public ItemMiscs(int max) {
+	public ItemMachineMaterial(int max) {
 		super();
 		maxMeta = max;
 	}
@@ -27,15 +21,6 @@ public class ItemMiscs extends DCItem {
 		return maxMeta;
 	}
 
-	/*
-	 * 0: 亜麻糸
-	 * 1: 木綿糸
-	 * 2: 亜麻布
-	 * 3: 木綿布
-	 * 4: 木の回転体
-	 * 5: 合金の回転体
-	 * 6: 鋼の回転体
-	 */
 	@Override
 	public String[] getNameSuffix() {
 		return names;

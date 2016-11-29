@@ -82,6 +82,11 @@ public class BlockSpinach extends ClimateCropBase implements ITexturePath {
 	}
 
 	@Override
+	public boolean canStayOnHarvest() {
+		return true;
+	}
+
+	@Override
 	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
 		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
 		ret.add(DCHeatTier.FROSTBITE);
