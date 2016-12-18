@@ -1,6 +1,6 @@
 package defeatedcrow.hac.main.achievement;
 
-import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.stats.Achievement;
 
@@ -8,11 +8,12 @@ import net.minecraft.stats.Achievement;
 public class AcvHelper {
 
 	public static boolean hasClimateMaster(EntityPlayer player) {
-		if (ClimateCore.isDebug) {
-			return true;
-		}
-		if (player != null && player.hasAchievement(AchievementClimate.CLIMATE_MASTER)) {
-			return true;
+		if (player != null) {
+			if (player.worldObj.isRemote) {
+				return ClimateMain.proxy.hasAchivement(player, AchievementClimate.CLIMATE_MASTER);
+			} else {
+				return player.hasAchievement(AchievementClimate.CLIMATE_MASTER);
+			}
 		} else {
 			return false;
 		}
@@ -44,11 +45,12 @@ public class AcvHelper {
 	}
 
 	public static boolean hasMachineMaster(EntityPlayer player) {
-		if (ClimateCore.isDebug) {
-			return true;
-		}
-		if (player != null && player.hasAchievement(AchievementClimate.MACHINE_MASTER)) {
-			return true;
+		if (player != null) {
+			if (player.worldObj.isRemote) {
+				return ClimateMain.proxy.hasAchivement(player, AchievementClimate.MACHINE_MASTER);
+			} else {
+				return player.hasAchievement(AchievementClimate.MACHINE_MASTER);
+			}
 		} else {
 			return false;
 		}
@@ -80,11 +82,12 @@ public class AcvHelper {
 	}
 
 	public static boolean hasMagicMaster(EntityPlayer player) {
-		if (ClimateCore.isDebug) {
-			return true;
-		}
-		if (player != null && player.hasAchievement(AchievementClimate.MAGIC_MASTER)) {
-			return true;
+		if (player != null) {
+			if (player.worldObj.isRemote) {
+				return ClimateMain.proxy.hasAchivement(player, AchievementClimate.MAGIC_MASTER);
+			} else {
+				return player.hasAchievement(AchievementClimate.MAGIC_MASTER);
+			}
 		} else {
 			return false;
 		}
@@ -113,6 +116,12 @@ public class AcvHelper {
 		} else {
 			return false;
 		}
+	}
+
+	public static void forceOpenMaster(EntityPlayer player) {
+		player.addStat(AchievementClimate.CLIMATE_MASTER);
+		player.addStat(AchievementClimate.MACHINE_MASTER);
+		player.addStat(AchievementClimate.MAGIC_MASTER);
 	}
 
 }

@@ -3,7 +3,6 @@ package defeatedcrow.hac.machine.block;
 import cofh.api.energy.IEnergyReceiver;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.plugin.EnergyConvertRate;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,22 +14,10 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.Optional.Method;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.InterfaceList({
 		@Optional.Interface(iface = "cofh.api.energy.IEnergyReceiver", modid = "CoFHAPI|energy"), })
 public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider, IEnergyReceiver {
-
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelKineticMotor model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelKineticMotor();
-	}
 
 	public int cashedRF = 0;
 	public int cashedFU = 0;
@@ -44,7 +31,7 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 		super.updateTile();
 		if (!worldObj.isRemote) {
 			// Airflowチェック
-			// 方向ごとのRFTileを能動的に見に行く
+			// 方向ごとのFUTileを能動的に見に行く
 			for (EnumFacing face : EnumFacing.VALUES) {
 				if (face == this.getBaseSide()) {
 					continue;
@@ -104,7 +91,7 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 
 	@Override
 	public float getAmount() {
-		return this.getCurrentTorque() * this.getFrictionalForce();
+		return this.getCurrentTorque();
 	}
 
 	@Override
@@ -136,12 +123,6 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
 		return side == getBaseSide();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public DCTileModelBase getModel() {
-		return model;
 	}
 
 	// nbt

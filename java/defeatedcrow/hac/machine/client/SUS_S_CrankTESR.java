@@ -14,9 +14,11 @@ public class SUS_S_CrankTESR extends DCTorqueTESRBase {
 		return "dcs_climate:textures/tiles/crank_sus.png";
 	}
 
+	private static final DCTileModelBase MODEL = new ModelCrank_S();
+
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
-		return te.getModel();
+		return MODEL;
 	}
 
 }

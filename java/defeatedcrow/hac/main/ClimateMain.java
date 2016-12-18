@@ -36,9 +36,9 @@ public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
-	public static final int MOD_MINOR = 1;
-	public static final int MOD_BUILD = 8;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.2.2099,);required-after:dcs_climate|lib@[1.1.7,)";
+	public static final int MOD_MINOR = 2;
+	public static final int MOD_BUILD = 0;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.2.2099,);required-after:dcs_climate|lib@[1.2.0,)";
 
 	@SidedProxy(
 			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
@@ -85,8 +85,6 @@ public class ClimateMain {
 
 		// WorldGen
 		proxy.loadWorldGen();
-		// Recipes
-		proxy.loadRecipes();
 		// event
 		proxy.loadInit();
 
@@ -96,6 +94,8 @@ public class ClimateMain {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		// Recipes
+		proxy.loadRecipes();
 		DCIntegrationCore.INSTANCE.load();
 	}
 

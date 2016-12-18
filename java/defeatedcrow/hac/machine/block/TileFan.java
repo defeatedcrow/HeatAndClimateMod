@@ -14,26 +14,8 @@ import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileFan extends TileTorqueBase implements ITorqueReceiver, IClimateTileEntity {
-
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelFan model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelFan();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
-		return model;
-	}
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {

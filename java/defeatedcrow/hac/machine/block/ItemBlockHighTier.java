@@ -28,11 +28,16 @@ public class ItemBlockHighTier extends DCItemBlock {
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (player != null && MachineTier.canHandleTier(player, tier)) {
-			return super.onItemUse(stack, player, world, pos, hand, facing, hitX, hitY, hitZ);
-		} else {
-			return EnumActionResult.FAIL;
+		if (player != null) {
+			boolean hasAcv = MachineTier.canHandleTier(player, tier);
+			boolean flag = player.capabilities.isCreativeMode;
+			if (hasAcv || flag) {
+				super.onItemUse(stack, player, world, pos, hand, facing, hitX, hitY, hitZ);
+			} else {
+				return EnumActionResult.PASS;
+			}
 		}
+		return EnumActionResult.PASS;
 	}
 
 	@Override

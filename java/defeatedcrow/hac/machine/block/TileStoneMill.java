@@ -12,20 +12,8 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceiver {
-
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelStoneMill model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelStoneMill();
-	}
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
@@ -62,13 +50,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 
 	@Override
 	public float getGearTier() {
-		return 32.0F;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
-		return model;
+		return 16.0F;
 	}
 
 	@Override

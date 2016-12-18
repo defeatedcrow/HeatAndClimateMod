@@ -90,31 +90,19 @@ public class ModelShaft_L extends DCTileModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	private float lastR = 0.0F;
-
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
-		if (speed < 0.5F) {
-			speed = 0.0F;
-		}
-		float f1 = speed * 0.1F;
-		f1 *= 0.01745329F;
-		lastR += f1;
-		if (lastR > Math.PI * 2) {
-			lastR -= Math.PI * 2;
-		}
-		if (lastR < -Math.PI * 2) {
-			lastR += Math.PI * 2;
-		}
+		float rot = f;
+		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 
-		shaftcube1.rotateAngleY = lastR;
-		shaft1.rotateAngleY = lastR;
-		gear1.rotateAngleY = lastR;
+		shaftcube1.rotateAngleY = f2;
+		shaft1.rotateAngleY = f2;
+		gear1.rotateAngleY = f2;
 
-		shaftcube2.rotateAngleX = -lastR;
-		shaft2.rotateAngleX = -lastR;
-		gear2.rotateAngleX = -lastR;
+		shaftcube2.rotateAngleX = -f2;
+		shaft2.rotateAngleX = -f2;
+		gear2.rotateAngleX = -f2;
 	}
 
 }

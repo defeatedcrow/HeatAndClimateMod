@@ -61,6 +61,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 			ItemStack output = this.getOutput(stack);
 			if (output != null) {
 				tooltip.add(TextFormatting.BOLD.toString() + "Output: " + output.getDisplayName());
+			} else {
+				tooltip.add("Please register an item on the anvil.");
 			}
 		}
 	}
@@ -201,8 +203,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				}
 
 				if (item != null) {
-					if (item.getItem().isDamageable()) {
-						item = new ItemStack(item.getItem(), 1, 0);
+					if (item.getItem().isDamageable() && item.getItemDamage() > 0) {
+						item = new ItemStack(item.getItem(), 1, 1);
 					}
 					if (list.isEmpty()) {
 						list.add(item);
@@ -259,8 +261,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				}
 
 				if (item != null) {
-					if (item.getItem().isDamageable()) {
-						item = new ItemStack(item.getItem(), 1, 0);
+					if (item.getItem().isDamageable() && item.getItemDamage() > 0) {
+						item = new ItemStack(item.getItem(), 1, 1);
 					}
 					if (list.isEmpty()) {
 						list.add(item);
@@ -291,8 +293,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					continue;
 				}
 				ItemStack item = new ItemStack(obj.getItem(), 1, obj.getItemDamage());
-				if (item.getItem().isDamageable()) {
-					item = new ItemStack(item.getItem(), 1, 0);
+				if (item.getItem().isDamageable() && item.getItemDamage() > 0) {
+					item = new ItemStack(item.getItem(), 1, 1);
 				}
 
 				if (list.isEmpty()) {
@@ -321,8 +323,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					continue;
 				}
 				ItemStack item = new ItemStack(obj.getItem(), 1, obj.getItemDamage());
-				if (item.getItem().isDamageable()) {
-					item = new ItemStack(item.getItem(), 1, 0);
+				if (item.getItem().isDamageable() && item.getItemDamage() > 0) {
+					item = new ItemStack(item.getItem(), 1, 1);
 				}
 
 				if (list.isEmpty()) {

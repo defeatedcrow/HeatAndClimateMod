@@ -96,6 +96,24 @@ public class FoodRecipes {
 				'X',
 				new ItemStack(Items.PAPER, 1, 0) }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.dish, 1, 0), new Object[] {
+				"XXX",
+				" X ",
+				'X',
+				"gemChalcedony" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.dish, 1, 1), new Object[] {
+				"XXX",
+				" X ",
+				'X',
+				"ingotSilver" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.dish, 1, 1), new Object[] {
+				"XXX",
+				" X ",
+				'X',
+				"ingotNickelSilver" }));
+
 		// materials
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.meat, 1, 1), new Object[] {

@@ -16,9 +16,11 @@ public class CreativeBoxTESR extends DCTorqueTESRBase {
 		return "dcs_climate:textures/tiles/creative_torque_box.png";
 	}
 
+	private static final DCTileModelBase MODEL = new ModelGearBox();
+
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
-		return te.getModel();
+		return MODEL;
 	}
 
 	@Override

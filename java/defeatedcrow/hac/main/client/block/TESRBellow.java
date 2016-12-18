@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.main.block.device.TileBellow;
+import defeatedcrow.hac.main.client.model.ModelBellow;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
@@ -17,9 +18,11 @@ public class TESRBellow extends DCTorqueTESRBase {
 		return "dcs_climate:textures/tiles/bellow_wood.png";
 	}
 
+	private static final DCTileModelBase MODEL = new ModelBellow();
+
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
-		return te.getModel();
+		return MODEL;
 	}
 
 	@Override

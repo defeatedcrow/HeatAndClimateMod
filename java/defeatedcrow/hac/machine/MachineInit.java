@@ -22,7 +22,6 @@ public class MachineInit {
 
 	public static Block piston;
 
-	public static Block stonemill;
 	public static Block fan;
 	public static Block redbox;
 
@@ -32,7 +31,9 @@ public class MachineInit {
 	public static Block hopperFluid;
 	public static Block IBC;
 
+	public static Block stonemill;
 	public static Block heatPump;
+	public static Block conveyor;
 
 	// tier 3
 

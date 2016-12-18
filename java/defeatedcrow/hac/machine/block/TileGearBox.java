@@ -7,20 +7,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITorqueReceiver {
-
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelGearBox model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelGearBox();
-	}
 
 	@Override
 	public float maxTorque() {
@@ -29,7 +17,7 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 
 	@Override
 	public float getGearTier() {
-		return 32.0F;
+		return 16.0F;
 	}
 
 	@Override
@@ -53,7 +41,7 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 	@Override
 	public boolean canProvideTorque(World world, BlockPos outputPos, EnumFacing output) {
 		TileEntity tile = world.getTileEntity(outputPos);
-		float amo = this.getCurrentTorque();
+		float amo = getAmount();
 		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F) {
 			return ((ITorqueReceiver) tile).canReceiveTorque(amo, output.getOpposite());
 		}
@@ -97,12 +85,6 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 			currentTorque += ret;
 		}
 		return ret;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
-		return model;
 	}
 
 }

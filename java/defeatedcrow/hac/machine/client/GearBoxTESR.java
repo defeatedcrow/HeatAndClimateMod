@@ -1,12 +1,12 @@
 package defeatedcrow.hac.machine.client;
 
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
+import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
+import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
-import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
-import defeatedcrow.hac.core.energy.TileTorqueBase;
 
 @SideOnly(Side.CLIENT)
 public class GearBoxTESR extends DCTorqueTESRBase {
@@ -16,9 +16,11 @@ public class GearBoxTESR extends DCTorqueTESRBase {
 		return "dcs_climate:textures/tiles/gearbox_brass.png";
 	}
 
+	private static final DCTileModelBase MODEL = new ModelGearBox();
+
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
-		return te.getModel();
+		return MODEL;
 	}
 
 	@Override

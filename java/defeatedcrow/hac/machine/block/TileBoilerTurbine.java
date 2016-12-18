@@ -26,27 +26,9 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory {
-
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelBoilerTurbine model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelBoilerTurbine();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
-		return model;
-	}
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -255,7 +237,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public float getAmount() {
-		return this.getCurrentTorque() * this.getFrictionalForce();
+		return this.getCurrentTorque();
 	}
 
 	@Override

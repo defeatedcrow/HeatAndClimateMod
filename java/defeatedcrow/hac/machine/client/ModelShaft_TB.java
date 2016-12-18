@@ -122,42 +122,23 @@ public class ModelShaft_TB extends DCTileModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	private float lastR = 0.0F;
-	private float lastR2 = 0.0F;
-
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
-		if (speed < 0.5F) {
-			speed = 0.0F;
-		}
-		float f1 = speed * 0.1F;
-		f1 *= 0.01745329F;
-		lastR += f1;
-		if (lastR > Math.PI * 2) {
-			lastR -= Math.PI * 2;
-		}
-		if (lastR < -Math.PI * 2) {
-			lastR += Math.PI * 2;
-		}
-		lastR2 += f1 * 0.5F;
-		if (lastR2 > Math.PI * 2) {
-			lastR2 -= Math.PI * 2;
-		}
-		if (lastR2 < -Math.PI * 2) {
-			lastR2 += Math.PI * 2;
-		}
+		float rot = f;
+		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
+		float f3 = f2 * 0.5F;
 
-		shaftcube1.rotateAngleY = lastR;
-		shaft1.rotateAngleY = lastR;
-		gear1.rotateAngleY = lastR;
+		shaftcube1.rotateAngleY = f2;
+		shaft1.rotateAngleY = f2;
+		gear1.rotateAngleY = f2;
 
-		shaftcube2.rotateAngleX = lastR2;
-		shaft2.rotateAngleX = lastR2;
-		gear2.rotateAngleX = lastR2;
-		shaftcube3.rotateAngleX = -lastR2;
+		shaftcube2.rotateAngleX = f3;
+		shaft2.rotateAngleX = f3;
+		gear2.rotateAngleX = f3;
+		shaftcube3.rotateAngleX = -f3;
 
-		gear3.rotateAngleX = lastR2;
+		gear3.rotateAngleX = f3;
 	}
 
 }

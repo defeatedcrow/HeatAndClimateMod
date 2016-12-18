@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine.item;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,11 +37,10 @@ public class ItemTorqueChecker extends DCItem {
 				float torque = tq.prevTorque;
 				player.addChatMessage(new TextComponentString("== Torque Checker =="));
 				player.addChatMessage(new TextComponentString("Current Amount: " + torque));
-
-				return EnumActionResult.SUCCESS;
+				DCLogger.debugLog("Current Amount(dbg): " + torque);
 			}
 		}
-		return EnumActionResult.PASS;
+		return EnumActionResult.SUCCESS;
 	}
 
 	@Override

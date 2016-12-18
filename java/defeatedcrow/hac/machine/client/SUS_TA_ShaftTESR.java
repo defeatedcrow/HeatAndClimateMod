@@ -14,9 +14,11 @@ public class SUS_TA_ShaftTESR extends DCTorqueTESRBase {
 		return "dcs_climate:textures/tiles/shaft_sus_t_a.png";
 	}
 
+	private static final DCTileModelBase MODEL = new ModelShaft_TA();
+
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
-		return te.getModel();
+		return MODEL;
 	}
 
 }

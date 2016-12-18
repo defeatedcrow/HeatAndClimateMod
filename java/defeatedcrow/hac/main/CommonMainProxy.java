@@ -251,8 +251,6 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
-		if (ClimateCore.isDebug)
-			return true;
 		return player != null && player.hasAchievement(acv);
 	}
 

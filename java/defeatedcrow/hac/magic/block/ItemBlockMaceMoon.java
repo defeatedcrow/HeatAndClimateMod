@@ -3,8 +3,7 @@ package defeatedcrow.hac.magic.block;
 import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -26,7 +25,7 @@ public class ItemBlockMaceMoon extends ItemBlockMace {
 	@Override
 	protected void doUsingEffect(ItemStack stack, EntityPlayer player, World world) {
 		if (stack != null && player != null) {
-			boolean hasAcv = ClimateMain.proxy.hasAchivement(player, AchievementClimate.MAGIC_MASTER);
+			boolean hasAcv = AcvHelper.hasMagicMaster(player);
 			boolean flag = player.capabilities.isCreativeMode;
 
 			if (hasAcv || flag) {

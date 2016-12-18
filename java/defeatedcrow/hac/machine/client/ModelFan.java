@@ -154,27 +154,15 @@ public class ModelFan extends DCTileModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	private float lastR = 0.0F;
-
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
-		if (speed < 0.5F) {
-			speed = 0.0F;
-		}
-		float f1 = speed * 0.1F;
-		f1 *= 0.01745329F;
-		lastR += f1;
-		if (lastR > Math.PI * 2) {
-			lastR -= Math.PI * 2;
-		}
-		if (lastR < -Math.PI * 2) {
-			lastR += Math.PI * 2;
-		}
+		float rot = f;
+		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 
-		wing1.rotateAngleY = lastR;
-		wing2.rotateAngleY = lastR + 2.094395F;
-		wing3.rotateAngleY = lastR - 2.094395F;
+		wing1.rotateAngleY = f2;
+		wing2.rotateAngleY = f2 + 2.094395F;
+		wing3.rotateAngleY = f2 - 2.094395F;
 	}
 
 }

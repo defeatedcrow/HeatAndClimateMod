@@ -465,6 +465,17 @@ public class BasicRecipeRegister {
 				"dustChromium",
 				"dustNickel" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 11), new Object[] {
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold" }));
+
 		// dustBlock -> dust
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 0), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 0) }));

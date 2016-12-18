@@ -227,8 +227,6 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
-		if (ClimateCore.isDebug)
-			return true;
 		return player != null && player instanceof EntityPlayerSP
 				&& ((EntityPlayerSP) player).getStatFileWriter().hasAchievementUnlocked(acv);
 	}

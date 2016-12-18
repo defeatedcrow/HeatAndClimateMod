@@ -109,8 +109,10 @@ public class JsonRegister {
 	}
 
 	static void regCube(ITexturePath block, String domein, String name, String dir, int meta) {
-		for (int i = 0; i <= meta; i++) {
-			MAIN_INSTANCE.checkAndBuildJsonCube(block, domein, name, dir, i, true);
+		if (MAIN_INSTANCE.active) {
+			for (int i = 0; i <= meta; i++) {
+				MAIN_INSTANCE.checkAndBuildJsonCube(block, domein, name, dir, i, true);
+			}
 		}
 	}
 

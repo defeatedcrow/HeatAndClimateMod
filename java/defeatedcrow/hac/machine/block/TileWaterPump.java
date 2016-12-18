@@ -349,7 +349,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 
 	@Override
 	public float getGearTier() {
-		return 32.0F;
+		return 16.0F;
 	}
 
 	@Override

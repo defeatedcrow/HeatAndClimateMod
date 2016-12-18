@@ -212,19 +212,18 @@ public class ModelPressMachine extends DCTileModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
-			float headPitch, float scaleFactor, Entity entityIn) {
-		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+	public void setRotationAngles(float f, float speed, float tick) {
+		setRotationAngles(f);
 
-		float rot = limbSwing;
+		float rot = f;
 		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 		float c1 = (float) Math.sin(f2);
 		float f3 = c1 * 2.4F;
 		hummer1.rotationPointY = -2.4F + f3;
-		hummer2.rotationPointY = -2.4F + f3;
-		hummer3.rotationPointY = -2.4F + f3;
-		hummer4.rotationPointY = -2.4F + f3;
-		hummer5.rotationPointY = -2.4F + f3;
+		hummer2.rotationPointY = -2.0F + f3;
+		hummer3.rotationPointY = -2.0F + f3;
+		hummer4.rotationPointY = -2.0F + f3;
+		hummer5.rotationPointY = -2.0F + f3;
 	}
 
 }

@@ -24,8 +24,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -127,7 +125,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				if (check.stackSize >= item.stackSize) {
 					return i; // 一致
 				}
-			} else if (item.getItem().isDamageable() && item.getItem() == check.getItem()) {
+			} else if (item.getItem().isDamageable() && item.getItem() == check.getItem() && item.getItemDamage() > 0) {
 				if (check.stackSize >= item.stackSize) {
 					return i; // damageableの場合、ダメージ値を問わない
 				}
@@ -141,6 +139,13 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 								// 同一の辞書IDを持っている
 								if (check.stackSize >= item.stackSize) {
 									return i; // 強制的に辞書レシピ化
+								}
+							} else if (itemDic[b] == OreDictionary.getOreID("dustIron")) {
+								// iron dust のみの特例措置
+								if (tarDic[a] == OreDictionary.getOreID("dustMagnetite")) {
+									if (check.stackSize >= item.stackSize) {
+										return i; // 強制的に辞書レシピ化
+									}
 								}
 							}
 						}
@@ -212,22 +217,6 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	// }
 	// }
 	// }
-
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelPressMachine model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelPressMachine();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
-		return model;
-	}
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {

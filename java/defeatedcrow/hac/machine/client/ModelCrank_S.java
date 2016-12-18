@@ -1,9 +1,9 @@
 package defeatedcrow.hac.machine.client;
 
+import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 
 @SideOnly(Side.CLIENT)
 public class ModelCrank_S extends DCTileModelBase {
@@ -125,21 +125,17 @@ public class ModelCrank_S extends DCTileModelBase {
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
-		if (speed < 0.5F) {
-			speed = 0.0F;
-		}
-		float f1 = speed * 0.1F;
-		f1 *= 0.01745329F;
+		float rot = f;
+		float f1 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 
-		shaftcube1.rotateAngleY += f1 * 0.25F;
-		shaft1.rotateAngleY += f1 * 0.25F;
+		shaftcube1.rotateAngleY = f1;
+		shaft1.rotateAngleY = f1;
 
-		gear2.rotateAngleX += f1 * 0.275F;
-		crank.rotateAngleX += f1 * 0.275F;
+		gear2.rotateAngleX = f1;
+		crank.rotateAngleX = f1;
 
-		float f2 = (float) (f * Math.PI / 180F);// f * 0.01745329F;
-		float c1 = (float) Math.cos(f2);
-		float c2 = (float) Math.cos(f2 - 1.570796F);
+		float c1 = (float) Math.cos(f1);
+		float c2 = (float) Math.cos(f1 - 1.570796F);
 		float f3 = c2 * 0.15F;
 
 		piston.rotationPointY = c1 * 2.0F;

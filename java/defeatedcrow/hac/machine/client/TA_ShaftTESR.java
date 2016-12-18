@@ -1,10 +1,10 @@
 package defeatedcrow.hac.machine.client;
 
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class TA_ShaftTESR extends DCTorqueTESRBase {
@@ -14,9 +14,11 @@ public class TA_ShaftTESR extends DCTorqueTESRBase {
 		return "dcs_climate:textures/tiles/shaft_brass_t_a.png";
 	}
 
+	private static final DCTileModelBase MODEL = new ModelShaft_TA();
+
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
-		return te.getModel();
+		return MODEL;
 	}
 
 }

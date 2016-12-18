@@ -1,6 +1,7 @@
 package defeatedcrow.hac.food;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.food.block.BlockDish;
 import defeatedcrow.hac.food.block.BlockPotteryPot;
 import defeatedcrow.hac.food.block.BlockSteelPot;
 import defeatedcrow.hac.food.block.BlockTeaPot;
@@ -104,6 +105,9 @@ public class FoodInitRegister {
 
 		FoodInit.teaPot = new BlockTeaPot(ClimateCore.PACKAGE_BASE + "_device_tea_pot");
 		MainMaterialRegister.registerBlock(FoodInit.teaPot, ClimateCore.PACKAGE_BASE + "_device_tea_pot");
+
+		FoodInit.dish = new BlockDish(ClimateCore.PACKAGE_BASE + "_build_dish", 1);
+		MainMaterialRegister.registerBlock(FoodInit.dish, ClimateCore.PACKAGE_BASE + "_build_dish");
 	}
 
 	static void loadItems() {
@@ -261,6 +265,8 @@ public class FoodInitRegister {
 		FoodInit.leavesLemon.setCreativeTab(ClimateMain.food);
 		FoodInit.leavesTea.setCreativeTab(ClimateMain.food);
 		FoodInit.saplings.setCreativeTab(ClimateMain.food);
+
+		FoodInit.dish.setCreativeTab(ClimateMain.build);
 	}
 
 }

@@ -16,9 +16,11 @@ public class SUS_GearBoxTESR extends DCTorqueTESRBase {
 		return "dcs_climate:textures/tiles/gearbox_sus.png";
 	}
 
+	private static final DCTileModelBase MODEL = new ModelGearBox();
+
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
-		return te.getModel();
+		return MODEL;
 	}
 
 	@Override

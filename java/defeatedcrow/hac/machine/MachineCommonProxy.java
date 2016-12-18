@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine;
 
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
+import defeatedcrow.hac.machine.block.TileConveyor;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileCreativeBox;
 import defeatedcrow.hac.machine.block.TileFan;
@@ -55,6 +56,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TilePressMachine.class, "dcs_te_press_machine");
 		GameRegistry.registerTileEntity(TileWaterPump.class, "dcs_te_water_pump");
 		GameRegistry.registerTileEntity(TileCreativeBox.class, "dcs_te_creative");
+		GameRegistry.registerTileEntity(TileConveyor.class, "dcs_te_conveyor");
 	}
 
 }

@@ -6,20 +6,8 @@ import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICrankDC {
-
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelCrank_S model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelCrank_S();
-	}
 
 	@Override
 	public void updateTile() {
@@ -75,13 +63,7 @@ public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICra
 
 	@Override
 	public float getGearTier() {
-		return 8.0F;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
-		return model;
+		return 4.0F;
 	}
 
 	@Override

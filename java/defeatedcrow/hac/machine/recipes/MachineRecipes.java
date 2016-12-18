@@ -315,6 +315,13 @@ public class MachineRecipes {
 				'Z',
 				"ingotMagnet" }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.conveyor, 8, 0), new Object[] {
+				"XYX",
+				'X',
+				"ingotSteel",
+				'Y',
+				"gearSteel" }));
+
 	}
 
 	static void loadClimateRecipe() {
@@ -332,7 +339,7 @@ public class MachineRecipes {
 				0.25F, "oreIron");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 7), new ItemStack(MainInit.oreDust, 1, 9),
-				0.1F, "oreMagnetite");
+				0.25F, "oreMagnetite");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 2), new ItemStack(MainInit.oreDust, 1, 5),
 				0.25F, "oreNickel");

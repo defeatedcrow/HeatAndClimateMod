@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "type=0": { "model": "dcs_climate:build/dcs_build_dish_white" },
+        "type=1": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=2": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=3": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=4": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=5": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=6": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=7": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=8": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=9": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=10": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=11": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=12": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=13": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=14": { "model": "dcs_climate:build/dcs_build_dish_silver" },
+        "type=15": { "model": "dcs_climate:build/dcs_build_dish_silver" }
+    }
+}

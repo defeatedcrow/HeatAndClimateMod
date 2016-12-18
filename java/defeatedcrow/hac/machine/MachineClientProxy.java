@@ -3,6 +3,7 @@ package defeatedcrow.hac.machine;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
+import defeatedcrow.hac.machine.block.TileConveyor;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileCreativeBox;
 import defeatedcrow.hac.machine.block.TileFan;
@@ -28,6 +29,7 @@ import defeatedcrow.hac.machine.block.TileWaterPump;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.client.BoilerTurbineTESR;
+import defeatedcrow.hac.machine.client.ConveyorTESR;
 import defeatedcrow.hac.machine.client.CreativeBoxTESR;
 import defeatedcrow.hac.machine.client.FanTESR;
 import defeatedcrow.hac.machine.client.GearBoxTESR;
@@ -85,6 +87,7 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TilePressMachine.class, "dcs_te_press_machine", new PressMachineTESR());
 		ClientRegistry.registerTileEntity(TileWaterPump.class, "dcs_te_water_pump", new WaterPumpTESR());
 		ClientRegistry.registerTileEntity(TileCreativeBox.class, "dcs_te_creative", new CreativeBoxTESR());
+		ClientRegistry.registerTileEntity(TileConveyor.class, "dcs_te_conveyor", new ConveyorTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -118,7 +121,6 @@ public class MachineClientProxy {
 		instance.regTETorqueBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_ID, "dcs_device_press_machine",
 				"machine", 0);
 		instance.regTETorqueBlock(MachineInit.waterPump, ClimateCore.PACKAGE_ID, "dcs_device_water_pump", "machine", 0);
-
 		instance.regTEBlock(MachineInit.IBC, ClimateCore.PACKAGE_ID, "dcs_device_ibc", "machine", 0);
 		instance.regSimpleBlock(MachineInit.fauset, ClimateCore.PACKAGE_ID, "dcs_device_fauset", "machine", 0);
 
@@ -127,9 +129,9 @@ public class MachineClientProxy {
 		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
 		instance.regSimpleItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_ID, "dcs_device_torque_checker_steel",
 				"machine", 0);
-
 		instance.regTETorqueBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_ID, "dcs_device_creative_box", "machine",
 				0);
+		instance.regSimpleBlock(MachineInit.conveyor, ClimateCore.PACKAGE_ID, "dcs_device_conveyor", "machine", 0);
 	}
 
 }

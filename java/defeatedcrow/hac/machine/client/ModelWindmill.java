@@ -114,34 +114,22 @@ public class ModelWindmill extends DCTileModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	private float lastR = 0.0F;
-
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
-		if (speed < 0.5F) {
-			speed = 0.0F;
-		}
-		float f1 = speed * 0.1F;
-		f1 *= 0.01745329F;
-		lastR += f1;
-		if (lastR > Math.PI * 2) {
-			lastR -= Math.PI * 2;
-		}
-		if (lastR < -Math.PI * 2) {
-			lastR += Math.PI * 2;
-		}
+		float rot = f;
+		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 
-		shaftcube.rotateAngleY = lastR;
-		middle.rotateAngleY = lastR;
-		winglod1.rotateAngleY = lastR;
-		winglod2.rotateAngleY = lastR + (float) Math.PI * 0.5F;
-		winglod3.rotateAngleY = lastR + (float) Math.PI;
-		winglod4.rotateAngleY = lastR + (float) Math.PI * 1.5F;
-		wingcloth1.rotateAngleY = lastR;
-		wingcloth2.rotateAngleY = lastR + (float) Math.PI * 0.5F;
-		wingcloth3.rotateAngleY = lastR + (float) Math.PI;
-		wingcloth4.rotateAngleY = lastR + (float) Math.PI * 1.5F;
+		shaftcube.rotateAngleY = f2;
+		middle.rotateAngleY = f2;
+		winglod1.rotateAngleY = f2;
+		winglod2.rotateAngleY = f2 + (float) Math.PI * 0.5F;
+		winglod3.rotateAngleY = f2 + (float) Math.PI;
+		winglod4.rotateAngleY = f2 + (float) Math.PI * 1.5F;
+		wingcloth1.rotateAngleY = f2;
+		wingcloth2.rotateAngleY = f2 + (float) Math.PI * 0.5F;
+		wingcloth3.rotateAngleY = f2 + (float) Math.PI;
+		wingcloth4.rotateAngleY = f2 + (float) Math.PI * 1.5F;
 	}
 
 }

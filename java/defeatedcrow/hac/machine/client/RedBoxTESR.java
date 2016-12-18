@@ -42,9 +42,11 @@ public class RedBoxTESR extends DCTorqueTESRBase {
 		}
 	}
 
+	private static final DCTileModelBase MODEL = new ModelGearBox();
+
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
-		return te.getModel();
+		return MODEL;
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 
 	public BlockGem(Material m, String s, int max) {
 		super(m, s, max, false);
-		this.setTickRandomly(false);
+		this.setTickRandomly(true);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 	}
@@ -89,7 +89,7 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 
 	@Override
 	public int tickRate(World world) {
-		return 20;
+		return 120;
 	}
 
 	@Override

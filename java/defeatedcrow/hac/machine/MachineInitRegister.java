@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.machine.block.BlockBoilerTurbine;
+import defeatedcrow.hac.machine.block.BlockConveyor;
 import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockCreativeBox;
 import defeatedcrow.hac.machine.block.BlockFan;
@@ -126,6 +127,9 @@ public class MachineInitRegister {
 
 		MachineInit.creativeBox = new BlockCreativeBox(ClimateCore.PACKAGE_BASE + "_device_creative_box");
 		registerTierBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_BASE + "_device_creative_box", 3);
+
+		MachineInit.conveyor = new BlockConveyor(ClimateCore.PACKAGE_BASE + "_device_conveyor");
+		registerTierBlock(MachineInit.conveyor, ClimateCore.PACKAGE_BASE + "_device_conveyor", 2);
 	}
 
 	static void loadItems() {
@@ -154,6 +158,7 @@ public class MachineInitRegister {
 
 		MachineInit.piston.setCreativeTab(ClimateMain.machine);
 
+		MachineInit.conveyor.setCreativeTab(ClimateMain.machine);
 		MachineInit.stonemill.setCreativeTab(ClimateMain.machine);
 		MachineInit.fan.setCreativeTab(ClimateMain.machine);
 		MachineInit.redbox.setCreativeTab(ClimateMain.machine);

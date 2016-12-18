@@ -4,60 +4,47 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelWindmill model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelWindmill();
-	}
-
 	@Override
 	public void updateTile() {
-		super.updateTile();
 		if (!worldObj.isRemote) {
 			// Airflowチェック
 			DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos);
-			float wind = 0.0F;
+			float wind = getGearTier() * 0.25F;
 			switch (air) {
 			case NORMAL:
-				wind = getGearTier() * 0.25F;
+				wind *= 0.5F;
 				break;
 			case FLOW:
-				wind = getGearTier() * 0.5F;
+				wind *= 1.0F;
 				break;
 			case WIND:
-				wind = getGearTier() * 1.0F;
+				wind *= 2.0F;
 				break;
 			default:
 			}
 			if (this.getBaseSide() == DCUtil.getWorldWind(worldObj).getOpposite()) {
 				wind *= 2.0F;
 			}
-			this.currentTorque += wind;
+			this.currentTorque = wind;
 
 			// provider
 			this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
 		}
+		super.updateTile();
 	}
 
 	@Override
 	public float getGearTier() {
-		return 2.0F;
+		return 4.0F;
 	}
 
 	@Override
@@ -67,7 +54,7 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
 	@Override
 	public float getAmount() {
-		return this.getCurrentTorque() * this.getFrictionalForce();
+		return this.getCurrentTorque();
 	}
 
 	@Override
@@ -99,12 +86,6 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
 		return side == getBaseSide();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public DCTileModelBase getModel() {
-		return model;
 	}
 
 }

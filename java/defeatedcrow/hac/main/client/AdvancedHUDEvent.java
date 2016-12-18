@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
@@ -62,7 +63,10 @@ public class AdvancedHUDEvent {
 						/* 10Fごとに使用データを更新 */
 
 						if (hasAcv) {
-							BlockPos pos = player.getPosition();
+							int px = MathHelper.floor_double(player.posX);
+							int py = MathHelper.floor_double(player.posY);
+							int pz = MathHelper.floor_double(player.posZ);
+							BlockPos pos = new BlockPos(px, py, pz);
 							if (pos != null && world.isAreaLoaded(pos.add(-2, -2, -2), pos.add(2, 2, 2))) {
 								IClimate id = ClimateAPI.calculator.getClimate(world, pos);
 								if (id != null) {

@@ -66,26 +66,14 @@ public class ModelStoneMill extends DCTileModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	private float lastR = 0.0F;
-
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
-		if (speed < 0.5F) {
-			speed = 0.0F;
-		}
-		float f1 = speed * 0.1F;
-		f1 *= 0.01745329F;
-		lastR += f1;
-		if (lastR > Math.PI * 2) {
-			lastR -= Math.PI * 2;
-		}
-		if (lastR < -Math.PI * 2) {
-			lastR += Math.PI * 2;
-		}
+		float rot = f;
+		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 
-		stone2.rotateAngleY = lastR;
-		plate2.rotateAngleY = lastR;
+		stone2.rotateAngleY = f2;
+		plate2.rotateAngleY = f2;
 	}
 
 }

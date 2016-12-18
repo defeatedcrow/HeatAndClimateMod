@@ -7,20 +7,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileHandCrank extends TileTorqueBase implements ITorqueProvider {
-
-	@SideOnly(Side.CLIENT)
-	private defeatedcrow.hac.machine.client.ModelHandCrank model;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (model == null)
-			model = new defeatedcrow.hac.machine.client.ModelHandCrank();
-	}
 
 	@Override
 	public void updateTile() {
@@ -31,7 +19,7 @@ public class TileHandCrank extends TileTorqueBase implements ITorqueProvider {
 
 	@Override
 	public float maxTorque() {
-		return 16.0F;
+		return 1.0F;
 	}
 
 	@Override
@@ -41,7 +29,7 @@ public class TileHandCrank extends TileTorqueBase implements ITorqueProvider {
 
 	@Override
 	public float getAmount() {
-		return this.getCurrentTorque() * this.getFrictionalForce();
+		return this.getCurrentTorque();
 	}
 
 	@Override
@@ -73,11 +61,5 @@ public class TileHandCrank extends TileTorqueBase implements ITorqueProvider {
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
 		return side == getBaseSide();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
-		return model;
 	}
 }

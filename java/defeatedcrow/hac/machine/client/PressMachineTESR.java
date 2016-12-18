@@ -30,7 +30,6 @@ public class PressMachineTESR extends DCTorqueTESRBase {
 		float x = 0F;
 		float y = 0F;
 		float z = 0F;
-		rot = rot % 360.0F;
 
 		switch (base) {
 		case DOWN:

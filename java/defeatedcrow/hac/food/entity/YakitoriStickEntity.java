@@ -2,11 +2,11 @@ package defeatedcrow.hac.food.entity;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.base.FoodEntityBase;
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import defeatedcrow.hac.core.base.FoodEntityBase;
-import defeatedcrow.hac.food.FoodInit;
 
 public class YakitoriStickEntity extends FoodEntityBase {
 

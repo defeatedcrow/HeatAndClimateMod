@@ -1,9 +1,13 @@
 
 ## item
+## mod tools
 item.dcs_checker_normal.name=Climate Checker
 item.dcs_creative_drill_normal.name=Crow's Drill
 item.dcs_wrench_brass.name=Adjustable Wrench
+item.dcs_torque_checker_steel.name=Torque Checker
+item.dcs_mold_steel.name=Press Mold
 
+## metals
 item.dcs_ingot_copper.name=Copper Ingot
 item.dcs_ingot_zinc.name=Zinc Ingot
 item.dcs_ingot_silver.name=Silver Ingot
@@ -47,15 +51,19 @@ item.dcs_miscdust_ash.name=Ash
 item.dcs_miscdust_niter.name=Niter Dust
 item.dcs_miscdust_sulfur.name=Sulfur Dust
 
+## materials
 item.dcs_material_string_linen.name=Linen String
 item.dcs_material_string_cotton.name=Cotton String
 item.dcs_material_cloth_linen.name=Linen Cloth
 item.dcs_material_cloth_cotton.name=Cotton Cloth
 item.dcs_material_spindle_wood.name=Wooden Spindle
 item.dcs_material_spindle_brass.name=Brass Spindle
-item.dcs_material_spindle_arroy.name=Arroy Spindle
+item.dcs_material_spindle_arroy.name=Alloy Spindle
 item.dcs_material_spindle_steel.name=Steel Spindle
+item.dcs_mechanical_induction_motor.name=Induction motor
+item.dcs_mechanical_alternator.name=Alternator
 
+## foods
 item.dcs_food_materials_salt.name=Salt
 item.dcs_food_materials_flour.name=Flour
 item.dcs_food_materials_rice.name=Rice
@@ -114,6 +122,7 @@ item.dcs_food_sandwich_lemon.name=Lemon Sandwich
 item.dcs_food_sandwich_salad.name=Salad Sandwich
 item.dcs_food_rice_boiled.name=Boiled Rice
 
+## crops
 item.dcs_food_crops_rice.name=Rice Plant
 item.dcs_food_crops_onion.name=Onion
 item.dcs_food_crops_spinach.name=Spinach
@@ -131,9 +140,11 @@ item.dcs_food_seeds_tomato.name=Tomato Seeds
 item.dcs_food_seeds_coffee.name=Coffee Seeds
 item.dcs_food_seeds_cotton.name=Cotton Seeds
 
+## craft tools
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
 item.dcs_yagen_brass_normal.name=Brass Druggist's Mortar
 
+## mining tools
 item.dcs_repair_putty.name=Repair Putty
 
 item.dcs_axe_brass.name=Brass Axe
@@ -154,6 +165,8 @@ item.dcs_spade_silver.name=Silver Spade
 item.dcs_spade_nickelsilver.name=Nickelsilver Spade
 item.dcs_spade_chalcedony.name=Chalcedony Spade
 item.dcs_spade_sapphire.name=Sapphire Spade
+
+## weapons
 item.dcs_sword_brass.name=Brass Sword
 item.dcs_sword_steel.name=Steel Sword
 item.dcs_sword_silver.name=Silver Sword
@@ -161,6 +174,7 @@ item.dcs_sword_nickelsilver.name=Nickelsilver Sword
 item.dcs_sword_chalcedony.name=Chalcedony Sword
 item.dcs_sword_sapphire.name=Sapphire Sword
 
+## armors
 item.dcs_met_brass.name=Brass Helmet
 item.dcs_met_steel.name=Steel Helmet
 item.dcs_met_chalcedony.name=Chalcedony Helmet
@@ -186,6 +200,7 @@ item.dcs_coat_linen.name=Surcoat
 item.dcs_hat_leather.name=Leather Hat
 item.dcs_hat_cotton.name=Cotton Hat
 
+## jewels
 item.dcs_jewel_pendant_chal_blue.name=Chrysoprase Pendant
 item.dcs_jewel_pendant_chal_red.name=Carnelian Pendant
 item.dcs_jewel_pendant_chal_white.name=White Chalcedony Pendant
@@ -241,6 +256,7 @@ item.dcs_dagger_magic_15.name=Magic Dagger (???)
 
 
 ## block
+## ores
 tile.dcs_ore_stone_0.name=Gypsum
 tile.dcs_ore_stone_1.name=Hematite
 tile.dcs_ore_stone_2.name=Blue Chalcedony Ore
@@ -274,6 +290,7 @@ tile.dcs_dustblock_magnet.name=Magnetite Dust Block
 tile.dcs_dustblock_tin.name=Tin Dust Block
 tile.dcs_dustblock_bronze.name=Bronze Dust Block
 tile.dcs_dustblock_sus.name=Inox Dust Block
+tile.dcs_dustblock_gold.name=Gold Dust Block
 tile.dcs_metal_copper.name=Copper Block
 tile.dcs_metal_zinc.name=Zinc Block
 tile.dcs_metal_nickel.name=Nickel Block
@@ -296,6 +313,7 @@ tile.dcs_gemblock_schorl.name=Schorl Block
 tile.dcs_gemblock_compressed.name=Compressed Chalcedony Block
 tile.dcs_ore_elestial_normal.name=Elestial Block
 
+## containers
 tile.dcs_cont_log_oak.name=Oak Log Box
 tile.dcs_cont_log_spruce.name=Spruce Log Box
 tile.dcs_cont_log_birch.name=Birch Log Box
@@ -343,6 +361,7 @@ tile.dcs_cont_basket_lemon.name=Lemon Basket
 tile.dcs_cont_basket_olive.name=Olive Basket
 tile.dcs_cont_basket_tea.name=Tea Leaves Basket
 
+## building blocks
 tile.dcs_build_selenite_normal.name=Selenite Glass
 tile.dcs_build_selenite_light.name=Selenite Light Glass
 tile.dcs_build_selenite_half.name=Selenite Shade Glass
@@ -356,6 +375,8 @@ tile.dcs_build_bricks_lime.name=Lime Bricks
 tile.dcs_build_build_concrete.name=Concrete Block
 tile.dcs_build_build_mosaic_red.name=Red Mosaic Block
 tile.dcs_build_build_mosaic_blue.name=Blue Mosaic Block
+tile.dcs_build_build_mosaic_yellow.name=Yellow Mosaic Block
+tile.dcs_build_build_mosaic_black.name=Black Mosaic Block
 tile.dcs_build_challamp_cube_blue.name=Blue Chalcedony Lamp
 tile.dcs_build_challamp_cube_red.name=Red Chalcedony Lamp
 tile.dcs_build_challamp_cube_white.name=White Chalcedony Lamp
@@ -389,7 +410,10 @@ tile.dcs_build_walllamp_2.name=White Wall Lamp
 tile.dcs_build_walllamp_3.name=Wooden Wall Lamp
 tile.dcs_build_plate_iron.name=Iron Plate
 tile.dcs_build_plate_mesh.name=Iron Mesh
+tile.dcs_build_dish_white.name=White Dish
+tile.dcs_build_dish_silver.name=Silver Dish
 
+## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
 tile.dcs_device_shitirin_0.name=Shichirin
 tile.dcs_device_shaft_s_0.name=Brass Shaft(I)
@@ -419,7 +443,20 @@ tile.dcs_device_ibc_0.name=IBC Container
 tile.dcs_device_heat_exchanger_0.name=Heat Exchanger
 tile.dcs_device_fuelstove_0.name=Fluid Fuel Stove
 tile.dcs_device_bellow_0.name=Bellow
+tile.dcs_device_shaft_s_sus_0.name=Inox Shaft(I)
+tile.dcs_device_shaft_l_sus_0.name=Inox Shaft(L)
+tile.dcs_device_shaft_ta_sus_0.name=Inox Shaft(T-A)
+tile.dcs_device_shaft_tb_sus_0.name=Inox Shaft(T-B)
+tile.dcs_device_crank_s_sus_0.name=Inox Crank
+tile.dcs_device_gearbox_sus_0.name=Inox Gear Box
+tile.dcs_device_boiler_turbine_0.name=Boiler Turbine Block
+tile.dcs_device_kinetic_motor_0.name=Induction Motor Block
+tile.dcs_device_water_pump_0.name=Centrifugal pump
+tile.dcs_device_press_machine_0.name=Press Machine
+tile.dcs_device_creative_box_0.name=Creative Torque Block
+tile.dcs_device_conveyor_0.name=Conveyor Belt
 
+## crops
 tile.dcs_crop_rice_3.name=Rice Plant
 tile.dcs_crop_onion_3.name=Onion Plant
 tile.dcs_crop_spinach_3.name=Spinach Plant
@@ -539,6 +576,7 @@ dcs.gui.device.fluidprocessor=Fluid Crafting
 dcs.gui.device.teapot=Tea Pot
 dcs.gui.device.chest=Chest
 dcs.gui.device.fuel_stove=Fluid Fuel Stove
+dcs.gui.device.pressmachine=Press Machine
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold

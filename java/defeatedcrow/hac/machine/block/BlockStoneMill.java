@@ -1,5 +1,7 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.energy.IWrenchDC;
@@ -15,6 +17,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -92,6 +95,16 @@ public class BlockStoneMill extends BlockTorqueBase {
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);
 
+	}
+
+	@Override
+	public int quantityDropped(Random random) {
+		return 0;
+	}
+
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return null;
 	}
 
 }

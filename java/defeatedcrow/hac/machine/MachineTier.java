@@ -1,7 +1,6 @@
 package defeatedcrow.hac.machine;
 
-import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.entity.player.EntityPlayer;
 
 public enum MachineTier {
@@ -32,8 +31,11 @@ public enum MachineTier {
 	}
 
 	public static boolean canHandleTier(EntityPlayer player, int i) {
+		if (player == null) {
+			return false;
+		}
 		if (i > 2) {
-			return ClimateMain.proxy.hasAchivement(player, AchievementClimate.MACHINE_MASTER);
+			return AcvHelper.hasMachineMaster(player);
 		} else {
 			return true;
 		}

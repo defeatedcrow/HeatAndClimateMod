@@ -3,26 +3,8 @@ package defeatedcrow.hac.main.block.device;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileBellow extends TileTorqueBase implements ITorqueReceiver {
-
-	@SideOnly(Side.CLIENT)
-	private static defeatedcrow.hac.main.client.model.ModelBellow MODEL;
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected void createModel() {
-		if (MODEL == null)
-			MODEL = new defeatedcrow.hac.main.client.model.ModelBellow();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public defeatedcrow.hac.core.client.base.DCTileModelBase getModel() {
-		return MODEL;
-	}
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
@@ -54,7 +36,7 @@ public class TileBellow extends TileTorqueBase implements ITorqueReceiver {
 
 	@Override
 	public float getGearTier() {
-		return 1.0F;
+		return 4.0F;
 	}
 
 	@Override
@@ -78,7 +60,7 @@ public class TileBellow extends TileTorqueBase implements ITorqueReceiver {
 
 		// フイゴの描画用
 		if (worldObj.isRemote) {
-			if (this.prevSpeed > 0.0F) {
+			if (this.prevTorque > 0.0F) {
 				lastcount = count;
 				if (back) {
 					if (count <= 0) {
