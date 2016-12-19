@@ -16,6 +16,7 @@ import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
 import defeatedcrow.hac.food.block.crop.BlockSpinach;
 import defeatedcrow.hac.food.block.crop.BlockTomato;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
+import defeatedcrow.hac.food.item.EmptyPlateItem;
 import defeatedcrow.hac.food.item.ItemDCCrops;
 import defeatedcrow.hac.food.item.ItemDCSeeds;
 import defeatedcrow.hac.food.item.ItemDairy;
@@ -25,6 +26,8 @@ import defeatedcrow.hac.food.item.ItemMeatMaterials;
 import defeatedcrow.hac.food.item.ItemPastry;
 import defeatedcrow.hac.food.item.ItemSilverCup;
 import defeatedcrow.hac.food.item.ItemTeaLeaves;
+import defeatedcrow.hac.food.item.PlateMeatItem;
+import defeatedcrow.hac.food.item.PlateSoupItem;
 import defeatedcrow.hac.food.item.RiceBowlItem;
 import defeatedcrow.hac.food.item.RoundBreadItem;
 import defeatedcrow.hac.food.item.RoundPastryItem;
@@ -150,8 +153,18 @@ public class FoodInitRegister {
 		FoodInit.ricebowl = new RiceBowlItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_rice");
 		GameRegistry.register(FoodInit.ricebowl.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_rice"));
 
-		FoodInit.cupSilver = new ItemSilverCup(true).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_teacup");
+		FoodInit.cupSilver = new ItemSilverCup(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_teacup");
 		GameRegistry.register(FoodInit.cupSilver.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_teacup"));
+
+		FoodInit.steakplate = new EmptyPlateItem(false)
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_steakplate_item");
+		GameRegistry.register(FoodInit.steakplate.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_steakplate_item"));
+
+		FoodInit.plateMeal = new PlateMeatItem(true).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_plate_meat");
+		GameRegistry.register(FoodInit.plateMeal.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_plate_meat"));
+
+		FoodInit.plateSoup = new PlateSoupItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_plate_soup");
+		GameRegistry.register(FoodInit.plateSoup.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_plate_soup"));
 	}
 
 	public static void loadFluids() {
@@ -236,6 +249,9 @@ public class FoodInitRegister {
 
 		FoodInit.ricebowl.setCreativeTab(ClimateMain.food);
 
+		FoodInit.plateMeal.setCreativeTab(ClimateMain.food);
+		FoodInit.plateSoup.setCreativeTab(ClimateMain.food);
+
 		FoodInit.crops.setCreativeTab(ClimateMain.food);
 		FoodInit.seeds.setCreativeTab(ClimateMain.food);
 		FoodInit.teaLeaves.setCreativeTab(ClimateMain.food);
@@ -249,6 +265,7 @@ public class FoodInitRegister {
 		FoodInit.pastry.setCreativeTab(ClimateMain.food);
 
 		FoodInit.cupSilver.setCreativeTab(ClimateMain.food);
+		FoodInit.steakplate.setCreativeTab(ClimateMain.food);
 
 		FoodInit.potteryPot.setCreativeTab(ClimateMain.food);
 		FoodInit.steelPot.setCreativeTab(ClimateMain.food);

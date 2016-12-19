@@ -17,6 +17,9 @@ public class FoodInit {
 
 	public static Item ricebowl;
 
+	public static Item plateMeal;
+	public static Item plateSoup;
+
 	public static Item crops;
 	public static Item seeds;
 	public static Item teaLeaves;
@@ -30,6 +33,7 @@ public class FoodInit {
 	public static Item pastry;
 
 	public static Item cupSilver;
+	public static Item steakplate;
 
 	public static Block potteryPot;
 	public static Block steelPot;

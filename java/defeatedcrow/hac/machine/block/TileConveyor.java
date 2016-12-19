@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
@@ -48,7 +49,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 
 	@Override
 	public void updateTile() {
-		super.updateTile(); // superはよばない
+		super.updateTile();
 	}
 
 	@Override
@@ -247,7 +248,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 						getPos().getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
 				inv[1] = ret;
 				DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
-			} else if (current.getHeat().getID() > DCHeatTier.KILN.getID()) {
+			} else if (current.getAirflow() == DCAirflow.TIGHT && current.getHeat().getID() > DCHeatTier.KILN.getID()) {
 				ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(inv[1]);
 				if (burnt != null) {
 					worldObj.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D,

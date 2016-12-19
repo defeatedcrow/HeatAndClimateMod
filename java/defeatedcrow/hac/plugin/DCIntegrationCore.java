@@ -50,7 +50,7 @@ public class DCIntegrationCore {
 			}
 		}
 
-		DCsJeiPlugin2.load();
+		DCsJEIPlugin2.load();
 
 	}
 

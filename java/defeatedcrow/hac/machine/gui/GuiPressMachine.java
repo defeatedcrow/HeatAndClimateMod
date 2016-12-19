@@ -58,7 +58,7 @@ public class GuiPressMachine extends GuiContainer {
 
 	private int getCookProgressScaled(int pixels) {
 		int i = this.machine.getField(0);
-		int j = 512;
+		int j = this.machine.MAX_PROGRESS_TIME;
 		return i != 0 ? i * pixels / j : 0;
 	}
 

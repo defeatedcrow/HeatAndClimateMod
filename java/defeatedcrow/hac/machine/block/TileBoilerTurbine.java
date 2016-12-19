@@ -132,11 +132,11 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 		case OVEN:
 			return 1;
 		case KILN:
-			return 5;
-		case SMELTING:
 			return 10;
-		case UHT:
+		case SMELTING:
 			return 20;
+		case UHT:
+			return 50;
 		default:
 			return 0;
 		}
@@ -167,13 +167,13 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	public float getProvideTorque(DCHeatTier tier) {
 		switch (tier) {
 		case OVEN:
-			return 2.0F;
-		case KILN:
 			return 8.0F;
-		case SMELTING:
-			return 16.0F;
-		case UHT:
+		case KILN:
 			return 32.0F;
+		case SMELTING:
+			return 64.0F;
+		case UHT:
+			return 128.0F;
 		default:
 			return 0F;
 		}

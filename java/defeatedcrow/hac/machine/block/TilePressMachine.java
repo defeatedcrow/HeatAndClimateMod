@@ -33,7 +33,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	public int prevProgressTime = 0;
 	public int currentProgressTime = 0;
-	public static final int MAX_PROGRESS_TIME = 512;
+	public static final int MAX_PROGRESS_TIME = 256;
 
 	private int loadCount = 3;
 
@@ -48,7 +48,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		if (!worldObj.isRemote) {
 			prevProgressTime = currentProgressTime;
 			currentProgressTime += MathHelper.floor_float(prevTorque);
-			if (currentProgressTime >= 512) {
+			if (currentProgressTime >= MAX_PROGRESS_TIME) {
 				// レシピ処理
 				ItemStack output = null;
 				ItemStack moldItem = this.getStackInSlot(0);
@@ -106,7 +106,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				}
 			}
 
-			int ret = currentProgressTime % 512;
+			int ret = currentProgressTime % MAX_PROGRESS_TIME;
 			// DCLogger.debugLog("PressMachine rprogress " + ret);
 			currentProgressTime = ret;
 		}

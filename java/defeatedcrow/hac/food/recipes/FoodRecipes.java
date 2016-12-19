@@ -114,6 +114,14 @@ public class FoodRecipes {
 				'X',
 				"ingotNickelSilver" }));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.steakplate, 3, 0), new Object[] {
+				"X X",
+				" Y ",
+				'X',
+				"ingotIron",
+				'Y',
+				new ItemStack(MainInit.plate, 1, 0) }));
+
 		// materials
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.meat, 1, 1), new Object[] {
@@ -227,6 +235,31 @@ public class FoodRecipes {
 				"dustSalt",
 				"cropHerb" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 4), new Object[] {
+				"foodPastry",
+				"dustSugar",
+				"cropCocoa" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 4), new Object[] {
+				"foodPastry",
+				"dustSugar",
+				new ItemStack(Items.DYE, 1, 3) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
+				"foodPastry",
+				"dustSugar",
+				"cropApple" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
+				"foodPastry",
+				"dustSugar",
+				"cropBerry" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
+				"foodPastry",
+				"dustSugar",
+				"cropPeach" }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 0), new Object[] {
 				new ItemStack(FoodInit.bread, 1, 3),
 				"cropApple",
@@ -257,6 +290,43 @@ public class FoodRecipes {
 				"cropHerb",
 				"cropTomato",
 				new ItemStack(Items.COOKED_CHICKEN, 1, 0) }));
+
+		ItemStack[] meats = {
+				new ItemStack(Items.BEEF),
+				new ItemStack(Items.PORKCHOP),
+				new ItemStack(Items.CHICKEN),
+				new ItemStack(Items.FISH) };
+		for (int i = 0; i < meats.length; i++) {
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateMeal, 1, i * 2), new Object[] {
+					new ItemStack(FoodInit.steakplate, 1, 0),
+					"cropTomato",
+					"cropPotato",
+					meats[i] }));
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateMeal, 1, i * 2), new Object[] {
+					new ItemStack(FoodInit.steakplate, 1, 0),
+					"cropSpinach",
+					"cropPotato",
+					meats[i] }));
+		}
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateSoup, 1, 0), new Object[] {
+				new ItemStack(FoodInit.steakplate, 1, 0),
+				"cropPotato",
+				"foodButter",
+				"dustSalt" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateSoup, 1, 2), new Object[] {
+				new ItemStack(FoodInit.steakplate, 1, 0),
+				"cropPotato",
+				"cropTomato",
+				"cropOnion" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateSoup, 1, 2), new Object[] {
+				new ItemStack(FoodInit.steakplate, 1, 0),
+				"cropPotato",
+				"cropTomato",
+				"foodCheese" }));
 
 		// smelting
 		GameRegistry.addSmelting(new ItemStack(FoodInit.seeds, 1, 4), new ItemStack(FoodInit.teaLeaves, 1, 0), 0.1F);
@@ -410,45 +480,101 @@ public class FoodRecipes {
 
 		ClimateSmelting a_tart = new ClimateSmelting(new ItemStack(FoodInit.pastryRound, 1, 1), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastryRound, 1, 0));
-		beef.requiredHeat().add(DCHeatTier.SMELTING);
-		beef.requiredHum().add(DCHumidity.NORMAL);
-		beef.requiredHum().add(DCHumidity.WET);
+		a_tart.requiredHeat().add(DCHeatTier.SMELTING);
+		a_tart.requiredHum().add(DCHumidity.NORMAL);
+		a_tart.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(a_tart, DCHeatTier.OVEN);
 
 		ClimateSmelting l_tart = new ClimateSmelting(new ItemStack(FoodInit.pastryRound, 1, 3), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastryRound, 1, 2));
-		beef.requiredHeat().add(DCHeatTier.SMELTING);
-		beef.requiredHum().add(DCHumidity.NORMAL);
-		beef.requiredHum().add(DCHumidity.WET);
+		l_tart.requiredHeat().add(DCHeatTier.SMELTING);
+		l_tart.requiredHum().add(DCHumidity.NORMAL);
+		l_tart.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(l_tart, DCHeatTier.OVEN);
 
 		ClimateSmelting s_tart = new ClimateSmelting(new ItemStack(FoodInit.pastryRound, 1, 5), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastryRound, 1, 4));
-		beef.requiredHeat().add(DCHeatTier.SMELTING);
-		beef.requiredHum().add(DCHumidity.NORMAL);
-		beef.requiredHum().add(DCHumidity.WET);
+		s_tart.requiredHeat().add(DCHeatTier.SMELTING);
+		s_tart.requiredHum().add(DCHumidity.NORMAL);
+		s_tart.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(s_tart, DCHeatTier.OVEN);
 
 		ClimateSmelting p_tart = new ClimateSmelting(new ItemStack(FoodInit.pastryRound, 1, 7), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastryRound, 1, 6));
-		beef.requiredHeat().add(DCHeatTier.SMELTING);
-		beef.requiredHum().add(DCHumidity.NORMAL);
-		beef.requiredHum().add(DCHumidity.WET);
+		p_tart.requiredHeat().add(DCHeatTier.SMELTING);
+		p_tart.requiredHum().add(DCHumidity.NORMAL);
+		p_tart.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(p_tart, DCHeatTier.OVEN);
 
 		ClimateSmelting s_pie = new ClimateSmelting(new ItemStack(FoodInit.pastrySquare, 1, 1), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastrySquare, 1, 0));
-		beef.requiredHeat().add(DCHeatTier.SMELTING);
-		beef.requiredHum().add(DCHumidity.NORMAL);
-		beef.requiredHum().add(DCHumidity.WET);
+		s_pie.requiredHeat().add(DCHeatTier.SMELTING);
+		s_pie.requiredHum().add(DCHumidity.NORMAL);
+		s_pie.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(s_pie, DCHeatTier.OVEN);
 
 		ClimateSmelting m_pie = new ClimateSmelting(new ItemStack(FoodInit.pastrySquare, 1, 3), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastrySquare, 1, 2));
-		beef.requiredHeat().add(DCHeatTier.SMELTING);
-		beef.requiredHum().add(DCHumidity.NORMAL);
-		beef.requiredHum().add(DCHumidity.WET);
+		m_pie.requiredHeat().add(DCHeatTier.SMELTING);
+		m_pie.requiredHum().add(DCHumidity.NORMAL);
+		m_pie.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(m_pie, DCHeatTier.OVEN);
+
+		ClimateSmelting c_pie = new ClimateSmelting(new ItemStack(FoodInit.pastrySquare, 1, 5), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastrySquare, 1, 4));
+		c_pie.requiredHeat().add(DCHeatTier.SMELTING);
+		c_pie.requiredHum().add(DCHumidity.NORMAL);
+		c_pie.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(c_pie, DCHeatTier.OVEN);
+
+		ClimateSmelting f_pie = new ClimateSmelting(new ItemStack(FoodInit.pastrySquare, 1, 7), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastrySquare, 1, 6));
+		f_pie.requiredHeat().add(DCHeatTier.SMELTING);
+		f_pie.requiredHum().add(DCHumidity.NORMAL);
+		f_pie.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(f_pie, DCHeatTier.OVEN);
+
+		ClimateSmelting b_plate = new ClimateSmelting(new ItemStack(FoodInit.plateMeal, 1, 1), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.plateMeal, 1, 0));
+		b_plate.requiredHeat().add(DCHeatTier.SMELTING);
+		b_plate.requiredHum().add(DCHumidity.NORMAL);
+		b_plate.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(b_plate, DCHeatTier.OVEN);
+
+		ClimateSmelting po_plate = new ClimateSmelting(new ItemStack(FoodInit.plateMeal, 1, 3), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.plateMeal, 1, 2));
+		po_plate.requiredHeat().add(DCHeatTier.SMELTING);
+		po_plate.requiredHum().add(DCHumidity.NORMAL);
+		po_plate.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(po_plate, DCHeatTier.OVEN);
+
+		ClimateSmelting c_plate = new ClimateSmelting(new ItemStack(FoodInit.plateMeal, 1, 5), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.plateMeal, 1, 4));
+		c_plate.requiredHeat().add(DCHeatTier.SMELTING);
+		c_plate.requiredHum().add(DCHumidity.NORMAL);
+		c_plate.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(c_plate, DCHeatTier.OVEN);
+
+		ClimateSmelting f_plate = new ClimateSmelting(new ItemStack(FoodInit.plateMeal, 1, 7), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.plateMeal, 1, 6));
+		f_plate.requiredHeat().add(DCHeatTier.SMELTING);
+		f_plate.requiredHum().add(DCHumidity.NORMAL);
+		f_plate.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(f_plate, DCHeatTier.OVEN);
+
+		ClimateSmelting p_plate = new ClimateSmelting(new ItemStack(FoodInit.plateSoup, 1, 1), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.plateSoup, 1, 0));
+		p_plate.requiredHeat().add(DCHeatTier.SMELTING);
+		p_plate.requiredHum().add(DCHumidity.NORMAL);
+		p_plate.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(p_plate, DCHeatTier.OVEN);
+
+		ClimateSmelting t_plate = new ClimateSmelting(new ItemStack(FoodInit.plateSoup, 1, 3), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.plateSoup, 1, 2));
+		t_plate.requiredHeat().add(DCHeatTier.SMELTING);
+		t_plate.requiredHum().add(DCHumidity.NORMAL);
+		t_plate.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(t_plate, DCHeatTier.OVEN);
 	}
 
 	static void loadMillRecipe() {

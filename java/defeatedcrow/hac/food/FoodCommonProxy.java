@@ -5,20 +5,29 @@ import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
+import defeatedcrow.hac.food.entity.BeefPlateEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
+import defeatedcrow.hac.food.entity.ChickenPlateEntity;
+import defeatedcrow.hac.food.entity.ChocolatePieEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
+import defeatedcrow.hac.food.entity.EmptyPlateEntity;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntitySandwich;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
+import defeatedcrow.hac.food.entity.FishPlateEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
+import defeatedcrow.hac.food.entity.FruitPieEntity;
 import defeatedcrow.hac.food.entity.LemonSandwichEntity;
 import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
+import defeatedcrow.hac.food.entity.PorkPlateEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
+import defeatedcrow.hac.food.entity.PotatoPlateEntity;
 import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
 import defeatedcrow.hac.food.entity.SaladSandwichEntity;
+import defeatedcrow.hac.food.entity.SoupPlateEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
 import defeatedcrow.hac.food.entity.SugarPieEntity;
@@ -81,6 +90,26 @@ public class FoodCommonProxy {
 				ClimateCore.PACKAGE_BASE + "entity.food.sandwich_salad", 19, ClimateMain.instance, 128, 5, true);
 
 		EntityRegistry.registerModEntity(EntityRiceBowl.class, ClimateCore.PACKAGE_BASE + "entity.food.rice_bowl", 20,
+				ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EmptyPlateEntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.empty_steakplate", 21, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(BeefPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.plate_beef", 22,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PorkPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.plate_pork", 23,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(ChickenPlateEntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.plate_chicken", 24, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(FishPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.plate_fish", 25,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PotatoPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.plate_potato",
+				26, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SoupPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.soup_tomato",
+				27, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(ChocolatePieEntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.pie_chocolate", 28, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(FruitPieEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pie_fruit", 29,
 				ClimateMain.instance, 128, 5, true);
 
 	}

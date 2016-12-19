@@ -3,6 +3,13 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.FoodEntityBase;
+import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.ChocolatePieEntity;
+import defeatedcrow.hac.food.entity.FruitPieEntity;
+import defeatedcrow.hac.food.entity.MeatPieEntity;
+import defeatedcrow.hac.food.entity.SugarPieEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -11,11 +18,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.FoodEntityBase;
-import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.MeatPieEntity;
-import defeatedcrow.hac.food.entity.SugarPieEntity;
 
 public class SquarePastryItem extends FoodItemBase {
 
@@ -25,7 +27,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 3;
+		return 7;
 	}
 
 	@Override
@@ -44,7 +46,11 @@ public class SquarePastryItem extends FoodItemBase {
 				"sugar_raw",
 				"sugar_baked",
 				"meat_raw",
-				"meat_baked" };
+				"meat_baked",
+				"choco_raw",
+				"choco_baked",
+				"fruit_raw",
+				"fruit_baked" };
 		return s;
 	}
 
@@ -60,6 +66,12 @@ public class SquarePastryItem extends FoodItemBase {
 		case 2:
 		case 3:
 			ret = new MeatPieEntity(world, x, y, z, player);
+		case 4:
+		case 5:
+			ret = new ChocolatePieEntity(world, x, y, z, player);
+		case 6:
+		case 7:
+			ret = new FruitPieEntity(world, x, y, z, player);
 			break;
 		default:
 			ret = new SugarPieEntity(world, x, y, z, player);
@@ -76,6 +88,9 @@ public class SquarePastryItem extends FoodItemBase {
 		switch (meta) {
 		case 1:
 			return 6;
+		case 5:
+		case 7:
+			return 8;
 		case 3:
 			return 10;
 		default:
