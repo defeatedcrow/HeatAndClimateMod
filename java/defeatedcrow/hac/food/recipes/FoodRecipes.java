@@ -14,10 +14,6 @@ import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -42,291 +38,207 @@ public class FoodRecipes {
 
 		// devices
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.potteryPot, 1, 0), new Object[] {
-				"XYX",
-				"X X",
-				"XXX",
-				'X',
-				new ItemStack(Blocks.HARDENED_CLAY, 1, 0),
-				'Y',
-				"itemCloth" }));
+				"XYX", "X X", "XXX", 'X', new ItemStack(Blocks.HARDENED_CLAY, 1, 0), 'Y', "itemCloth"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.steelPot, 1, 0), new Object[] {
-				"XYX",
-				"X X",
-				"XXX",
-				'X',
-				"ingotSteel",
-				'Y',
-				new ItemStack(Blocks.GLASS, 1, 0) }));
+				"XYX", "X X", "XXX", 'X', "ingotSteel", 'Y', new ItemStack(Blocks.GLASS, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.teaPot, 1, 0), new Object[] {
-				" X ",
-				"XYX",
-				" XX",
-				'X',
-				"ingotSilver",
-				'Y',
-				"itemCloth" }));
+				" X ", "XYX", " XX", 'X', "ingotSilver", 'Y', "itemCloth"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.teaPot, 1, 0), new Object[] {
-				" X ",
-				"XYX",
-				" XX",
-				'X',
-				"ingotNickelsilver",
-				'Y',
-				"itemCloth" }));
+				" X ", "XYX", " XX", 'X', "ingotNickelsilver", 'Y', "itemCloth"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.cupSilver, 1, 0), new Object[] {
-				"XXX",
-				"XX ",
-				'X',
-				"ingotNickelsilver" }));
+				"XXX", "XX ", 'X', "ingotNickelsilver"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.cupSilver, 1, 1), new Object[] {
-				"XXX",
-				"XX ",
-				'X',
-				new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 0) }));
+				"XXX", "XX ", 'X', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.paperPack, 4, 0), new Object[] {
-				" X ",
-				"X X",
-				" X ",
-				'X',
-				new ItemStack(Items.PAPER, 1, 0) }));
+				" X ", "X X", " X ", 'X', new ItemStack(Items.PAPER, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.dish, 1, 0), new Object[] {
-				"XXX",
-				" X ",
-				'X',
-				"gemChalcedony" }));
+				"XXX", " X ", 'X', "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.dish, 1, 1), new Object[] {
-				"XXX",
-				" X ",
-				'X',
-				"ingotSilver" }));
+				"XXX", " X ", 'X', "ingotSilver"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.dish, 1, 1), new Object[] {
-				"XXX",
-				" X ",
-				'X',
-				"ingotNickelSilver" }));
+				"XXX", " X ", 'X', "ingotNickelSilver"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FoodInit.steakplate, 3, 0), new Object[] {
-				"X X",
-				" Y ",
-				'X',
-				"ingotIron",
-				'Y',
-				new ItemStack(MainInit.plate, 1, 0) }));
+				"X X", " Y ", 'X', "ingotIron", 'Y', new ItemStack(MainInit.plate, 1, 0)
+		}));
 
 		// materials
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.meat, 1, 1), new Object[] {
-				"foodViscera" }));
+				"foodViscera"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastry, 4, 0), new Object[] {
-				"dustFlour",
-				"foodButter",
-				"egg",
-				"dustSalt" }));
+				"dustFlour", "foodButter", "egg", "dustSalt"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastry, 2, 0), new Object[] {
-				"foodFlour",
-				"foodOil",
-				"bucketWater",
-				"dustSalt" }));
+				"foodFlour", "foodOil", "bucketWater", "dustSalt"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.dairy, 1, 2), new Object[] {
-				"foodCream",
-				"egg",
-				"dustFlour" }));
+				"foodCream", "egg", "dustFlour"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.dairy, 1, 2), new Object[] {
-				"foodCream",
-				"egg",
-				"dustSugar" }));
+				"foodCream", "egg", "dustSugar"
+		}));
 
 		// foods
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.bread, 2, 0), new Object[] {
-				"foodFlour",
-				"dustSalt",
-				"bucketWater" }));
+				"foodFlour", "dustSalt", "bucketWater"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.bread, 1, 2), new Object[] {
-				new ItemStack(FoodInit.bread, 1, 0),
-				new ItemStack(Items.PAPER, 1, 0) }));
+				new ItemStack(FoodInit.bread, 1, 0), new ItemStack(Items.PAPER, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.bread, 3, 4), new Object[] {
-				new ItemStack(FoodInit.bread, 1, 3),
-				"foodButter" }));
+				new ItemStack(FoodInit.bread, 1, 3), "foodButter"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sticks, 1, 0), new Object[] {
-				"stickWood",
-				new ItemStack(Items.FISH, 1, 0) }));
+				"stickWood", new ItemStack(Items.FISH, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sticks, 1, 2), new Object[] {
-				"stickWood",
-				new ItemStack(Items.CHICKEN, 1, 0) }));
+				"stickWood", new ItemStack(Items.CHICKEN, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sticks, 1, 4), new Object[] {
-				"stickWood",
-				new ItemStack(Items.PORKCHOP, 1, 0) }));
+				"stickWood", new ItemStack(Items.PORKCHOP, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sticks, 1, 6), new Object[] {
-				"stickWood",
-				new ItemStack(Items.BEEF, 1, 0) }));
+				"stickWood", new ItemStack(Items.BEEF, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 0), new Object[] {
-				"foodPastry",
-				"cropApple",
-				"dustSugar",
-				"foodButter" }));
+				"foodPastry", "cropApple", "dustSugar", "foodButter"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 0), new Object[] {
-				"foodPastry",
-				"cropApple",
-				"dropHoney",
-				"foodButter" }));
+				"foodPastry", "cropApple", "dropHoney", "foodButter"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 2), new Object[] {
-				"foodPastry",
-				"cropLemon",
-				"dustSugar",
-				"foodCream" }));
+				"foodPastry", "cropLemon", "dustSugar", "foodCream"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 2), new Object[] {
-				"foodPastry",
-				"cropLemon",
-				"dropHoney",
-				"foodCream" }));
+				"foodPastry", "cropLemon", "dropHoney", "foodCream"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 4), new Object[] {
-				"foodPastry",
-				"cropSpinach",
-				"foodAnyMeat",
-				"foodCustard",
-				"foodCheese" }));
+				"foodPastry", "cropSpinach", "foodAnyMeat", "foodCustard", "foodCheese"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 6), new Object[] {
-				"foodPastry",
-				"cropPotato",
-				"cropOnion",
-				"foodFish",
-				"foodCustard",
-				"foodCheese" }));
+				"foodPastry", "cropPotato", "cropOnion", "foodFish", "foodCustard", "foodCheese"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 0), new Object[] {
-				"foodPastry",
-				"dustSugar" }));
+				"foodPastry", "dustSugar"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 2), new Object[] {
-				"foodPastry",
-				"foodAnyMeat",
-				"dustSalt",
-				"cropOnion" }));
+				"foodPastry", "foodAnyMeat", "dustSalt", "cropOnion"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 2), new Object[] {
-				"foodPastry",
-				"foodAnyMeat",
-				"dustSalt",
-				"cropHerb" }));
+				"foodPastry", "foodAnyMeat", "dustSalt", "cropHerb"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 4), new Object[] {
-				"foodPastry",
-				"dustSugar",
-				"cropCocoa" }));
+				"foodPastry", "dustSugar", "cropCocoa"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 4), new Object[] {
-				"foodPastry",
-				"dustSugar",
-				new ItemStack(Items.DYE, 1, 3) }));
+				"foodPastry", "dustSugar", new ItemStack(Items.DYE, 1, 3)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
-				"foodPastry",
-				"dustSugar",
-				"cropApple" }));
+				"foodPastry", "dustSugar", "cropApple"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
-				"foodPastry",
-				"dustSugar",
-				"cropBerry" }));
+				"foodPastry", "dustSugar", "cropBerry"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
-				"foodPastry",
-				"dustSugar",
-				"cropPeach" }));
+				"foodPastry", "dustSugar", "cropPeach"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 0), new Object[] {
-				new ItemStack(FoodInit.bread, 1, 3),
-				"cropApple",
-				"dustSugar" }));
+				new ItemStack(FoodInit.bread, 1, 3), "cropApple", "dustSugar"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 1), new Object[] {
-				new ItemStack(FoodInit.bread, 1, 3),
-				"egg" }));
+				new ItemStack(FoodInit.bread, 1, 3), "egg"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 2), new Object[] {
-				new ItemStack(FoodInit.bread, 1, 3),
-				"cropLemon",
-				"dustSugar" }));
+				new ItemStack(FoodInit.bread, 1, 3), "cropLemon", "dustSugar"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 2), new Object[] {
-				new ItemStack(FoodInit.bread, 1, 3),
-				"cropLemon",
-				"dropHoney" }));
+				new ItemStack(FoodInit.bread, 1, 3), "cropLemon", "dropHoney"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 3), new Object[] {
-				new ItemStack(FoodInit.bread, 1, 3),
-				"cropSpinach",
-				"cropOnion",
-				new ItemStack(Items.COOKED_PORKCHOP, 1, 0) }));
+				new ItemStack(FoodInit.bread, 1, 3), "cropSpinach", "cropOnion",
+				new ItemStack(Items.COOKED_PORKCHOP, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 3), new Object[] {
-				new ItemStack(FoodInit.bread, 1, 3),
-				"cropHerb",
-				"cropTomato",
-				new ItemStack(Items.COOKED_CHICKEN, 1, 0) }));
+				new ItemStack(FoodInit.bread, 1, 3), "cropHerb", "cropTomato", new ItemStack(Items.COOKED_CHICKEN, 1, 0)
+		}));
 
 		ItemStack[] meats = {
-				new ItemStack(Items.BEEF),
-				new ItemStack(Items.PORKCHOP),
-				new ItemStack(Items.CHICKEN),
-				new ItemStack(Items.FISH) };
+				new ItemStack(Items.BEEF), new ItemStack(Items.PORKCHOP), new ItemStack(Items.CHICKEN),
+				new ItemStack(Items.FISH, 1, 32767)
+		};
 		for (int i = 0; i < meats.length; i++) {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateMeal, 1, i * 2), new Object[] {
-					new ItemStack(FoodInit.steakplate, 1, 0),
-					"cropTomato",
-					"cropPotato",
-					meats[i] }));
+					new ItemStack(FoodInit.steakplate, 1, 0), "cropTomato", "cropPotato", meats[i]
+			}));
 
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateMeal, 1, i * 2), new Object[] {
-					new ItemStack(FoodInit.steakplate, 1, 0),
-					"cropSpinach",
-					"cropPotato",
-					meats[i] }));
+					new ItemStack(FoodInit.steakplate, 1, 0), "cropSpinach", "cropPotato", meats[i]
+			}));
 		}
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateSoup, 1, 0), new Object[] {
-				new ItemStack(FoodInit.steakplate, 1, 0),
-				"cropPotato",
-				"foodButter",
-				"dustSalt" }));
+				new ItemStack(FoodInit.steakplate, 1, 0), "cropPotato", "foodButter", "dustSalt"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateSoup, 1, 2), new Object[] {
-				new ItemStack(FoodInit.steakplate, 1, 0),
-				"cropPotato",
-				"cropTomato",
-				"cropOnion" }));
+				new ItemStack(FoodInit.steakplate, 1, 0), "cropPotato", "cropTomato", "foodCheese"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.plateSoup, 1, 2), new Object[] {
-				new ItemStack(FoodInit.steakplate, 1, 0),
-				"cropPotato",
-				"cropTomato",
-				"foodCheese" }));
+				new ItemStack(FoodInit.steakplate, 1, 0), "cropOnion", "cropTomato", "foodCheese"
+		}));
 
 		// smelting
 		GameRegistry.addSmelting(new ItemStack(FoodInit.seeds, 1, 4), new ItemStack(FoodInit.teaLeaves, 1, 0), 0.1F);
@@ -337,93 +249,84 @@ public class FoodRecipes {
 
 		for (int i = 0; i < 6; i++) {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, i), new Object[] {
-					new ItemStack(FoodInit.crops, 1, i) }));
+					new ItemStack(FoodInit.crops, 1, i)
+			}));
 		}
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.saplings, 1, 0), new Object[] {
-				new ItemStack(FoodInit.crops, 1, 6),
-				new ItemStack(Blocks.SAPLING, 1, 0) }));
+				new ItemStack(FoodInit.crops, 1, 6), new ItemStack(Blocks.SAPLING, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.saplings, 1, 1), new Object[] {
-				new ItemStack(FoodInit.crops, 1, 7),
-				new ItemStack(Blocks.SAPLING, 1, 0) }));
+				new ItemStack(FoodInit.crops, 1, 7), new ItemStack(Blocks.SAPLING, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.saplings, 1, 2), new Object[] {
-				new ItemStack(FoodInit.crops, 1, 8),
-				new ItemStack(Blocks.SAPLING, 1, 0) }));
+				new ItemStack(FoodInit.crops, 1, 8), new ItemStack(Blocks.SAPLING, 1, 0)
+		}));
 
 		// seeds another recipes
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 0), new Object[] {
-				new ItemStack(Items.WHEAT_SEEDS, 1, 0),
-				"gemChalcedony" }));
+				new ItemStack(Items.WHEAT_SEEDS, 1, 0), "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 1), new Object[] {
-				new ItemStack(Items.MELON_SEEDS, 1, 0),
-				"gemChalcedony" }));
+				new ItemStack(Items.MELON_SEEDS, 1, 0), "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 2), new Object[] {
-				new ItemStack(Items.PUMPKIN_SEEDS, 1, 0),
-				"gemChalcedony" }));
+				new ItemStack(Items.PUMPKIN_SEEDS, 1, 0), "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 3), new Object[] {
-				new ItemStack(Items.CARROT, 1, 0),
-				"gemChalcedony" }));
+				new ItemStack(Items.CARROT, 1, 0), "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 4), new Object[] {
-				new ItemStack(Items.DYE, 1, 3),
-				"gemChalcedony" }));
+				new ItemStack(Items.DYE, 1, 3), "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 5), new Object[] {
-				new ItemStack(Items.REEDS, 1, 0),
-				"gemChalcedony" }));
+				new ItemStack(Items.REEDS, 1, 0), "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.saplings, 1, 0), new Object[] {
-				new ItemStack(Blocks.SAPLING, 1, 1),
-				"gemChalcedony" }));
+				new ItemStack(Blocks.SAPLING, 1, 1), "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.saplings, 1, 1), new Object[] {
-				new ItemStack(Blocks.SAPLING, 1, 2),
-				"gemChalcedony" }));
+				new ItemStack(Blocks.SAPLING, 1, 2), "gemChalcedony"
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.saplings, 1, 2), new Object[] {
-				new ItemStack(Blocks.SAPLING, 1, 0),
-				"gemChalcedony" }));
+				new ItemStack(Blocks.SAPLING, 1, 0), "gemChalcedony"
+		}));
 
 		String[] crops = new String[] {
-				"cropRice",
-				"cropOnion",
-				"cropSpinach",
-				"cropTomato",
-				"cropCoffee",
-				"cropCotton",
-				"cropLemon",
-				"cropOlive",
-				"cropTea" };
+				"cropRice", "cropOnion", "cropSpinach", "cropTomato", "cropCoffee", "cropCotton", "cropLemon",
+				"cropOlive", "cropTea"
+		};
 		for (int i = 0; i < crops.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cropBasket, 1, i), new Object[] {
-					"XXX",
-					"X X",
-					"XXX",
-					'X',
-					crops[i] }));
+					"XXX", "X X", "XXX", 'X', crops[i]
+			}));
 
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.crops, 8, i), new Object[] {
-					new ItemStack(MainInit.cropBasket, 1, i) }));
+					new ItemStack(MainInit.cropBasket, 1, i)
+			}));
 		}
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.paperPack, 4, 1), new Object[] {
-				new ItemStack(FoodInit.paperPack, 1, 0),
-				new ItemStack(FoodInit.paperPack, 1, 0),
-				new ItemStack(FoodInit.paperPack, 1, 0),
-				new ItemStack(FoodInit.paperPack, 1, 0),
-				new ItemStack(Items.WATER_BUCKET) }));
+				new ItemStack(FoodInit.paperPack, 1, 0), new ItemStack(FoodInit.paperPack, 1, 0),
+				new ItemStack(FoodInit.paperPack, 1, 0), new ItemStack(FoodInit.paperPack, 1, 0),
+				new ItemStack(Items.WATER_BUCKET)
+		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.paperPack, 4, 2), new Object[] {
-				new ItemStack(FoodInit.paperPack, 1, 0),
-				new ItemStack(FoodInit.paperPack, 1, 0),
-				new ItemStack(FoodInit.paperPack, 1, 0),
-				new ItemStack(FoodInit.paperPack, 1, 0),
-				new ItemStack(Items.MILK_BUCKET) }));
+				new ItemStack(FoodInit.paperPack, 1, 0), new ItemStack(FoodInit.paperPack, 1, 0),
+				new ItemStack(FoodInit.paperPack, 1, 0), new ItemStack(FoodInit.paperPack, 1, 0),
+				new ItemStack(Items.MILK_BUCKET)
+		}));
 
 	}
 
@@ -587,90 +490,80 @@ public class FoodRecipes {
 
 		// yagen
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new Object[] {
-				"toolNormalYagen",
-				"cropOlive",
-				"cropOlive",
-				"cropOlive",
-				"cropOlive" }));
+				"toolNormalYagen", "cropOlive", "cropOlive", "cropOlive", "cropOlive"
+		}));
 	}
 
 	static void loadFluidRecipes() {
 		FluidCraftRecipe salt = new FluidCraftRecipe(new ItemStack(MainInit.foodMaterials, 1, 0), null, null,
 				DCHeatTier.HOT, DCHumidity.DRY, null, 0, false, new FluidStack(FluidRegistry.WATER, 1000),
-				(Object[]) null) {
-			@Override
-			public boolean additionalRequire(World world, BlockPos pos) {
-				Biome biome = world.getBiomeGenForCoords(pos);
-				if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN)
-						|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.BEACH)) {
-					return true;
-				}
-				return false;
-			}
-
-			@Override
-			public String additionalString() {
-				return "OCEAN Only";
-			}
-
-		};
+				(Object[]) null);
 		RecipeAPI.registerFluidRecipes.addRecipe(salt, DCHeatTier.HOT);
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 1, 2), null, 0F, null,
 				DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
-						new ItemStack(MainInit.foodMaterials, 1, 0),
-						new ItemStack(Items.ROTTEN_FLESH) });
+						new ItemStack(MainInit.foodMaterials, 1, 0), new ItemStack(Items.ROTTEN_FLESH)
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 3, 2), null, 0F, null,
 				DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
-						new ItemStack(MainInit.foodMaterials, 1, 0),
-						new ItemStack(Items.BEEF) });
+						new ItemStack(MainInit.foodMaterials, 1, 0), new ItemStack(Items.BEEF)
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 3, 2), null, 0F, null,
 				DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
-						new ItemStack(MainInit.foodMaterials, 1, 0),
-						new ItemStack(Items.PORKCHOP) });
+						new ItemStack(MainInit.foodMaterials, 1, 0), new ItemStack(Items.PORKCHOP)
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 1, 1), null, 0F, null,
 				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
-						new ItemStack(MainInit.foodMaterials, 1, 0),
-						new ItemStack(Items.EGG) });
+						new ItemStack(MainInit.foodMaterials, 1, 0), new ItemStack(Items.EGG)
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.teaLeaves, 1, 0), null, 0F, null,
 				DCHeatTier.OVEN, null, null, false, null, new Object[] {
-						"seedCoffee" });
+						"seedCoffee"
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.teaLeaves, 1, 1), null, 0F, null,
 				DCHeatTier.OVEN, null, null, false, null, new Object[] {
-						"cropTea" });
+						"cropTea"
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.teaLeaves, 1, 2), null, 0F, null,
 				DCHeatTier.WARM, DCHumidity.WET, null, false, null, new Object[] {
-						new ItemStack(FoodInit.teaLeaves, 1, 1) });
+						new ItemStack(FoodInit.teaLeaves, 1, 1)
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.coffee, 1000), DCHeatTier.OVEN,
 				null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-						new ItemStack(FoodInit.teaLeaves, 1, 0) });
+						new ItemStack(FoodInit.teaLeaves, 1, 0)
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.greenTea, 1000),
 				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-						new ItemStack(FoodInit.teaLeaves, 1, 1) });
+						new ItemStack(FoodInit.teaLeaves, 1, 1)
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.blackTea, 1000),
 				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-						new ItemStack(FoodInit.teaLeaves, 1, 2) });
+						new ItemStack(FoodInit.teaLeaves, 1, 2)
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1, 0), null, 0F, null, DCHeatTier.WARM,
 				DCHumidity.WET, null, false, new FluidStack(FoodInit.cream, 1000), new Object[] {
-						"foodSalt" });
+						"foodSalt"
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1, 1), null, 0F, null, DCHeatTier.WARM,
 				DCHumidity.WET, null, false, new FluidStack(FoodInit.cream, 1000), new Object[] {
-						"foodRennet" });
+						"foodRennet"
+				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.ricebowl, 1, 0), null, 0F, null,
 				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-						"foodRice" });
+						"foodRice"
+				});
 
 	}
 

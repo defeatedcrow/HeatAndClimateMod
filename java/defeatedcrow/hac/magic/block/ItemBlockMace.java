@@ -31,6 +31,7 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	public ItemBlockMace(Block block) {
 		super(block);
 		this.setMaxStackSize(1);
+		this.isFull3D();
 	}
 
 	public float getDamageVsEntity() {

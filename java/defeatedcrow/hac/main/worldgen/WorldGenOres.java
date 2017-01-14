@@ -2,6 +2,10 @@ package defeatedcrow.hac.main.worldgen;
 
 import java.util.Random;
 
+import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -12,10 +16,6 @@ import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import defeatedcrow.hac.api.climate.BlockSet;
-import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.config.WorldGenConfig;
 
 public class WorldGenOres implements IWorldGenerator {
 
@@ -30,10 +30,9 @@ public class WorldGenOres implements IWorldGenerator {
 			IChunkProvider chunkProvider) {
 
 		int genDim1 = world.provider.getDimension();
-		if (chunkX > 3000 || chunkZ > 3000) {
+		if (chunkX > 3000 || chunkZ > 3000)
 			// あまり遠いと生成しない
 			return;
-		}
 
 		int chunk2X = chunkX << 4;
 		int chunk2Z = chunkZ << 4;
@@ -41,17 +40,15 @@ public class WorldGenOres implements IWorldGenerator {
 
 		if ((genDim1 != 1 && genDim1 != -1)) {
 			int[] genY = {
-					8,
-					30,
-					70,
-					120 };
+					5, 30, 70, 120
+			};
 			for (int i = 0; i < count; i++) {
-				/* 計5回のチャンス */
+				/* 計4回のチャンス */
 				int posX = chunk2X + random.nextInt(16);
-				int posY = genY[i] + random.nextInt(10 + 10 * i);
+				int posY = genY[i] + random.nextInt(20 + 10 * i);
 				int posZ = chunk2Z + random.nextInt(16);
 				BlockPos pos = new BlockPos(posX, posY, posZ);
-				Biome biome = world.getBiomeGenForCoords(pos);
+				Biome biome = world.getBiomeForCoordsBody(pos);
 
 				if (posY > 140) {
 					if (random.nextInt(100) < sedPar * 2) {
@@ -74,9 +71,9 @@ public class WorldGenOres implements IWorldGenerator {
 					} else if (random.nextInt(100) < vinePar) {
 						generateQuartzVine(world, random, pos);
 					}
-				} else if (posY < 30 && posY > 12 && random.nextInt(100) < vugsPar) {
+				} else if (posY < 30 && posY > 19 && random.nextInt(100) < vugsPar) {
 					generateVugs(world, random, pos);
-				} else if (posY < 13 && random.nextInt(100) < lavaPar) {
+				} else if (posY <= 19 && random.nextInt(100) < lavaPar) {
 					generateUnderlava(world, random, pos);
 				}
 			}
@@ -108,11 +105,11 @@ public class WorldGenOres implements IWorldGenerator {
 		int r = h + 1;
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
-			if (i == 0)
+			if (i == 0) {
 				gen[i] = new BlockSet(MainInit.ores, 0);
-			else if (i == h - 1)
+			} else if (i == h - 1) {
 				gen[i] = rand.nextInt(2) == 0 ? new BlockSet(MainInit.ores, 1) : new BlockSet(Blocks.COAL_ORE, 0);
-			else {
+			} else {
 				if (i <= h / 2) {
 					gen[i] = rand.nextInt(2) == 0 ? new BlockSet(Blocks.COAL_ORE, 0) : new BlockSet(MainInit.ores, 0);
 				} else {
@@ -158,9 +155,9 @@ public class WorldGenOres implements IWorldGenerator {
 		int r = h + 1;
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
-			if (i == 0)
+			if (i == 0) {
 				gen[i] = new BlockSet(MainInit.ores_2, 0);
-			else {
+			} else {
 				if (i <= h / 2) {
 					gen[i] = rand.nextBoolean() ? new BlockSet(MainInit.ores_2, 1) : new BlockSet(MainInit.ores_2, 0);
 				} else {
@@ -192,9 +189,9 @@ public class WorldGenOres implements IWorldGenerator {
 		int r = h + rand.nextInt(3);
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
-			if (i == 0 || i == h - 1)
+			if (i == 0 || i == h - 1) {
 				gen[i] = new BlockSet(Blocks.STONE, 5); // andesite
-			else {
+			} else {
 				// 亜鉛 - 銅 - 鉄
 				if (i >= h / 2) {
 					gen[i] = rand.nextInt(3) > 0 ? new BlockSet(MainInit.ores, 6) : new BlockSet(MainInit.ores, 4);
@@ -327,8 +324,9 @@ public class WorldGenOres implements IWorldGenerator {
 		for (BlockPos p1 : itr) {
 			double d1 = Math.sqrt(p1.distanceSq(pos));
 			int d = r + 1 - MathHelper.floor_double(d1);
-			if (d1 > d)
+			if (d1 > d) {
 				continue;
+			}
 			Block block = world.getBlockState(p1).getBlock();
 			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
 				int j = rand.nextInt(5);
@@ -363,8 +361,9 @@ public class WorldGenOres implements IWorldGenerator {
 		for (BlockPos p1 : itr) {
 			double d1 = Math.sqrt(p1.distanceSq(pos));
 			int r = h + 1 - MathHelper.floor_double(d1);
-			if (r < -0.0D)
+			if (r < -0.0D) {
 				continue;
+			}
 			Block block = world.getBlockState(p1).getBlock();
 			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
 				if (r < 2.0D) {
@@ -372,7 +371,7 @@ public class WorldGenOres implements IWorldGenerator {
 				} else if (r < 4.0D) {
 					world.setBlockState(p1, MainInit.ores.getStateFromMeta(9), 2);
 				} else if (r < 5.0D) {
-					int j = rand.nextInt(10);
+					int j = rand.nextInt(15);
 					switch (j) {
 					case 0:
 						world.setBlockState(p1, MainInit.ores.getStateFromMeta(12), 2);

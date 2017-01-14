@@ -70,7 +70,7 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 			GlStateManager.pushMatrix();
 			GlStateManager.enableRescaleNormal();
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			GlStateManager.translate((float) x + 0.5F + offX, (float) y + 0.35F, (float) z + 0.5F + offZ);
+			GlStateManager.translate((float) x + 0.5F + offX, (float) y + 0.45F, (float) z + 0.5F + offZ);
 			GlStateManager.scale(1.0F, -1.0F, -1.0F);
 			GlStateManager.rotate(rot, 0F, 1F, 0F);
 			GlStateManager.rotate(180F, 0F, 0F, 1F);
@@ -90,7 +90,7 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 			GlStateManager.pushMatrix();
 			GlStateManager.enableRescaleNormal();
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			GlStateManager.translate((float) x + 0.5F + offX, (float) y + 0.35F, (float) z + 0.5F + offZ);
+			GlStateManager.translate((float) x + 0.5F + offX, (float) y + 0.45F, (float) z + 0.5F + offZ);
 			GlStateManager.scale(1.0F, -1.0F, -1.0F);
 			GlStateManager.rotate(rot, 0F, 1F, 0F);
 			GlStateManager.rotate(180F, 0F, 0F, 1F);

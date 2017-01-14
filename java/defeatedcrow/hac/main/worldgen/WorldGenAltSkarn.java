@@ -32,8 +32,9 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	}
 
 	public void setRange(int i) {
-		if (i > 10)
+		if (i > 10) {
 			i = 10;
+		}
 		range = i;
 	}
 
@@ -49,18 +50,15 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		pRandom = new Random(world.getSeed() + chunkX + chunkZ * 31);
 
 		int genDim1 = world.provider.getDimension();
-		if ((genDim1 == 1 || genDim1 == -1)) {
+		if ((genDim1 == 1 || genDim1 == -1))
 			return;
-		}
 
-		if (chunkX > 3000 || chunkZ > 3000) {
+		if (chunkX > 3000 || chunkZ > 3000)
 			// あまり遠いと生成しない
 			return;
-		}
 
-		if (!canGenerate(chunkX, chunkZ, world)) {
+		if (!canGenerate(chunkX, chunkZ, world))
 			return;
-		}
 
 		int posX = chunkX << 4;
 		int posZ = chunkZ << 4;
@@ -73,7 +71,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		}
 		BlockPos pos = new BlockPos(posX, 75, posZ);
 
-		Biome biome = world.getBiomeGenForCoords(pos);
+		Biome biome = world.getBiomeForCoordsBody(pos);
 		int f = world.rand.nextInt(15);
 		if (range > 0) {
 			f = (range / 2) + world.rand.nextInt(range);
@@ -120,8 +118,9 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 							} else if (block.getMaterial() == Material.WOOD || block.getMaterial() == Material.LEAVES) {
 								world.setBlockToAir(p);
 							} else if (block.getMaterial() == Material.GRASS) {
-								if (world.rand.nextBoolean())
+								if (world.rand.nextBoolean()) {
 									world.setBlockToAir(p);
+								}
 							}
 						}
 					}
@@ -132,9 +131,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 
 	// 1/200
 	private boolean canGenerate(int chunkX, int chunkZ, World world) {
-		if (isForced) {
+		if (isForced)
 			return true;
-		}
 		if (!SkarnGenPoint.hasPos(chunkX, chunkZ)) {
 			int i = WorldGenConfig.skarnGen;
 			pRandom.nextFloat();
@@ -149,22 +147,21 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 
 	private BlockSet getBlockSet1(int y, int f, Random rand) {
 		int f2 = rand.nextInt(3);
-		if (y < 12 + f2) {
+		if (y < 12 + f2)
 			// 最下層: 溶岩と花崗岩のレンズ状のかたまり
 			return LAVA;
-		} else if (y < 14 + f2) {
+		else if (y < 14 + f2)
 			// 最下層: 花崗岩
 			return AIR;
-		} else if (y < 17 + f2) {
+		else if (y < 17 + f2)
 			// 最下層: 花崗岩
 			return STONE_1;
-		} else if (y > 50 + f2) {
+		else if (y > 50 + f2) {
 			// 最上層: 石灰岩と大理石
-			if (y > 58 + f2) {
+			if (y > 58 + f2)
 				return LIME;
-			} else {
+			else
 				return MARBLE;
-			}
 		} else {
 			// 中層: 下から、磁鉄鉱/金/閃緑岩、黄鉄鉱/黄銅鉱/錫石/他MOD鉱/石、閃亜鉛鉱/錫石/赤鉄鉱/大理石
 			if (y < 28) {
@@ -201,31 +198,29 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 
 	private BlockSet getBlockSet2(int y, int f, Random rand) {
 		int f2 = rand.nextInt(3);
-		if (y < 12 + f2) {
+		if (y < 12 + f2)
 			// 最下層
 			return STONE_1;
-		} else if (y < 20 + f2) {
+		else if (y < 20 + f2)
 			// 最下層
 			return STONE_1;
-		} else if (y > 48 + f2) {
+		else if (y > 48 + f2) {
 			// 最上層
-			if (y > 58 + f2) {
+			if (y > 58 + f2)
 				return LIME;
-			} else {
+			else
 				return MARBLE;
-			}
 		} else {
 			// 中層
-			if (y < 30) {
+			if (y < 30)
 				return STONE_1;
-			} else if (y < 45) {
+			else if (y < 45) {
 				if (rand.nextBoolean())
 					return IRON_1;
 				else
 					return STONE_2;
-			} else {
+			} else
 				return MARBLE;
-			}
 		}
 	}
 

@@ -23,9 +23,9 @@ public class ParticleFallingStar extends Particle {
 		this.motionX = this.motionX * 0.01D + xSpeedIn;
 		this.motionY = this.motionY * 0.01D + ySpeedIn;
 		this.motionZ = this.motionZ * 0.01D + zSpeedIn;
-		this.posX += (double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F);
-		this.posY += (double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F);
-		this.posZ += (double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F);
+		this.posX += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
+		this.posY += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
+		this.posZ += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
 		this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
 		this.particleAlpha = 0.85F;
 		this.particleMaxAge = 40;
@@ -59,7 +59,7 @@ public class ParticleFallingStar extends Particle {
 
 	@Override
 	public int getBrightnessForRender(float p_189214_1_) {
-		float f = ((float) this.particleAge + p_189214_1_) / (float) this.particleMaxAge;
+		float f = (this.particleAge + p_189214_1_) / this.particleMaxAge;
 		f = MathHelper.clamp_float(f, 0.0F, 1.0F);
 		int i = super.getBrightnessForRender(p_189214_1_);
 		int j = i & 255;
@@ -100,7 +100,7 @@ public class ParticleFallingStar extends Particle {
 	@SideOnly(Side.CLIENT)
 	public static class Factory implements IParticleFactory {
 		@Override
-		public Particle getEntityFX(int particleID, World worldIn, double xCoordIn, double yCoordIn, double zCoordIn,
+		public Particle createParticle(int particleID, World worldIn, double xCoordIn, double yCoordIn, double zCoordIn,
 				double xSpeedIn, double ySpeedIn, double zSpeedIn, int... p_178902_15_) {
 			return new ParticleFallingStar(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 		}

@@ -58,7 +58,7 @@ public class EntityProjLightSpit extends EntityMagicProjBase {
 
 	// no gravity
 	@Override
-	public boolean func_189652_ae() {
+	public boolean hasNoGravity() {
 		return true;
 	}
 

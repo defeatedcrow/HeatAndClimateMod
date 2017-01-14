@@ -60,18 +60,18 @@ public class ParticleShock extends Particle {
 	@Override
 	public void renderParticle(VertexBuffer worldRendererIn, Entity entityIn, float partialTicks, float rotationX,
 			float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
-		int i = (int) (((float) this.particleAge + partialTicks) * 32.0F / (float) this.particleMaxAge);
+		int i = (int) ((this.particleAge + partialTicks) * 32.0F / this.particleMaxAge);
 
 		if (i <= 10) {
 			this.textureManager.bindTexture(new ResourceLocation(SHOCK_TEX));
 			float fu = 0.0F;
 			float fU = 1.0F;
-			float fv = (float) i / 32.0F;
+			float fv = i / 32.0F;
 			float fV = fv + 0.03125F;
 			float scale = this.particleScale;
-			float fx = (float) (this.prevPosX + (this.posX - this.prevPosX) * (double) partialTicks - interpPosX);
-			float fy = (float) (this.prevPosY + (this.posY - this.prevPosY) * (double) partialTicks - interpPosY);
-			float fz = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * (double) partialTicks - interpPosZ);
+			float fx = (float) (this.prevPosX + (this.posX - this.prevPosX) * partialTicks - interpPosX);
+			float fy = (float) (this.prevPosY + (this.posY - this.prevPosY) * partialTicks - interpPosY);
+			float fz = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * partialTicks - interpPosZ);
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 			GlStateManager.disableLighting();
 			RenderHelper.disableStandardItemLighting();
@@ -81,28 +81,24 @@ public class ParticleShock extends Particle {
 					GlStateManager.DestFactor.ZERO);
 			worldRendererIn.begin(7, VERTEX_FORMAT);
 			worldRendererIn
-					.pos((double) (fx - rotationX * scale - rotationXY * scale),
-							(double) (fy - rotationZ * scale * 0.5F),
-							(double) (fz - rotationYZ * scale - rotationXZ * scale)).tex((double) fU, (double) fV)
-					.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha)
+					.pos(fx - rotationX * scale - rotationXY * scale, fy - rotationZ * scale * 0.5F,
+							fz - rotationYZ * scale - rotationXZ * scale)
+					.tex(fU, fV).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha)
 					.lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
 			worldRendererIn
-					.pos((double) (fx - rotationX * scale + rotationXY * scale),
-							(double) (fy + rotationZ * scale * 0.5F),
-							(double) (fz - rotationYZ * scale + rotationXZ * scale)).tex((double) fU, (double) fv)
-					.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha)
+					.pos(fx - rotationX * scale + rotationXY * scale, fy + rotationZ * scale * 0.5F,
+							fz - rotationYZ * scale + rotationXZ * scale)
+					.tex(fU, fv).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha)
 					.lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
 			worldRendererIn
-					.pos((double) (fx + rotationX * scale + rotationXY * scale),
-							(double) (fy + rotationZ * scale * 0.5F),
-							(double) (fz + rotationYZ * scale + rotationXZ * scale)).tex((double) fu, (double) fv)
-					.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha)
+					.pos(fx + rotationX * scale + rotationXY * scale, fy + rotationZ * scale * 0.5F,
+							fz + rotationYZ * scale + rotationXZ * scale)
+					.tex(fu, fv).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha)
 					.lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
 			worldRendererIn
-					.pos((double) (fx + rotationX * scale - rotationXY * scale),
-							(double) (fy - rotationZ * scale * 0.5F),
-							(double) (fz + rotationYZ * scale - rotationXZ * scale)).tex((double) fu, (double) fV)
-					.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha)
+					.pos(fx + rotationX * scale - rotationXY * scale, fy - rotationZ * scale * 0.5F,
+							fz + rotationYZ * scale - rotationXZ * scale)
+					.tex(fu, fV).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha)
 					.lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
 			Tessellator.getInstance().draw();
 			GlStateManager.disableBlend();
@@ -112,7 +108,7 @@ public class ParticleShock extends Particle {
 
 	@Override
 	public int getBrightnessForRender(float p_189214_1_) {
-		float f = ((float) this.particleAge + p_189214_1_) / (float) this.particleMaxAge;
+		float f = (this.particleAge + p_189214_1_) / this.particleMaxAge;
 		f = MathHelper.clamp_float(f, 0.0F, 1.0F);
 		int i = super.getBrightnessForRender(p_189214_1_);
 		int j = i & 255;
@@ -145,7 +141,7 @@ public class ParticleShock extends Particle {
 	@SideOnly(Side.CLIENT)
 	public static class Factory implements IParticleFactory {
 		@Override
-		public Particle getEntityFX(int particleID, World worldIn, double xCoordIn, double yCoordIn, double zCoordIn,
+		public Particle createParticle(int particleID, World worldIn, double xCoordIn, double yCoordIn, double zCoordIn,
 				double xSpeedIn, double ySpeedIn, double zSpeedIn, int... p_178902_15_) {
 			return new ParticleShock(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 		}

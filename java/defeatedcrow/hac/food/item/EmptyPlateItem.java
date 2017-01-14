@@ -31,7 +31,7 @@ public class EmptyPlateItem extends FoodItemBase {
 	@Override
 	public String getTexPath(int meta, boolean f) {
 		int i = MathHelper.clamp_int(0, meta, 1);
-		String s = "items/food/" + this.getNameSuffix()[i];
+		String s = "items/food/steakplate_item";
 		if (f) {
 			s = "textures/" + s;
 		}
@@ -40,9 +40,7 @@ public class EmptyPlateItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"steakplate_item" };
-		return s;
+		return null;
 	}
 
 	@Override

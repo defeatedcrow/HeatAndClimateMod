@@ -15,21 +15,15 @@ public class DCPluginTanpopo {
 
 	public static final DCPluginTanpopo INSTANCE = new DCPluginTanpopo();
 
-	private DCPluginTanpopo() {
-	}
+	private DCPluginTanpopo() {}
 
 	public static void load() {
-		Item fluff = Item.REGISTRY.getObject(new ResourceLocation("schr0tanpopo", "material.fluff"));
+		Item fluff = Item.REGISTRY.getObject(new ResourceLocation("schr0tanpopo", "material_fluff"));
 		if (fluff != null) {
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 1), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(fluff, 1, 0),
-					'Y',
-					"stickWood" }));
+					"XXX", "XYX", "XXX", 'X', new ItemStack(fluff, 1, 0), 'Y', "stickWood"
+			}));
 		}
 
 		Fluid f = FluidRegistry.getFluid("fluid_essence");
