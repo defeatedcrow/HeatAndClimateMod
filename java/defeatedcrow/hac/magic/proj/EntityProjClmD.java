@@ -1,5 +1,9 @@
 package defeatedcrow.hac.magic.proj;
 
+import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
+import defeatedcrow.hac.main.client.particle.ParticleShock;
+import defeatedcrow.hac.main.worldgen.WorldGenSkarn;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -10,10 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.client.FMLClientHandler;
-import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
-import defeatedcrow.hac.main.client.particle.ParticleShock;
-import defeatedcrow.hac.main.worldgen.WorldGenSkarn;
 
 public class EntityProjClmD extends EntityMagicProjBase {
 
@@ -66,10 +66,11 @@ public class EntityProjClmD extends EntityMagicProjBase {
 		}
 
 		this.playSound(SoundEvents.ENTITY_FIREWORK_TWINKLE, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-		if (dia > 0)
+		if (dia > 0) {
 			this.setDead();
-		else
+		} else {
 			this.dropAndDeath();
+		}
 		return true;
 	}
 
@@ -91,24 +92,25 @@ public class EntityProjClmD extends EntityMagicProjBase {
 	@Override
 	protected void onGroundClient() {
 
-		double x1 = (double) posX + rand.nextDouble() - 0.5D;
-		double y1 = (double) posY + rand.nextDouble() - 0.5D;
-		double z1 = (double) posZ + rand.nextDouble() - 0.5D;
-		Particle shock = new ParticleShock.Factory().getEntityFX(0, worldObj, x1, y1, z1, 0D, 0D, 0D, new int[0]);
+		double x1 = posX + rand.nextDouble() - 0.5D;
+		double y1 = posY + rand.nextDouble() - 0.5D;
+		double z1 = posZ + rand.nextDouble() - 0.5D;
+		Particle shock = new ParticleShock.Factory().createParticle(0, worldObj, x1, y1, z1, 0D, 0D, 0D, new int[0]);
 		shock.setRBGColorF(0.95F, 0.95F, 0.95F);
 		FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 
 		int i = 0;
 		while (i < 3) {
-			double x = (double) posX + rand.nextDouble();
-			double y = (double) posY + 0.25D + rand.nextDouble();
-			double z = (double) posZ + rand.nextDouble();
+			double x = posX + rand.nextDouble();
+			double y = posY + 0.25D + rand.nextDouble();
+			double z = posZ + rand.nextDouble();
 
 			double fx = 0.5D * rand.nextDouble() - 0.25D;
 			double fy = 0.5D + rand.nextDouble() * 0.25D;
 			double fz = 0.5D * rand.nextDouble() - 0.25D;
 
-			Particle star = new ParticleFallingStar.Factory().getEntityFX(0, worldObj, x, y, z, fx, fy, fz, new int[0]);
+			Particle star = new ParticleFallingStar.Factory().createParticle(0, worldObj, x, y, z, fx, fy, fz,
+					new int[0]);
 			star.setRBGColorF(0.95F, 0.95F, 0.95F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(star);
 

@@ -122,7 +122,7 @@ public abstract class BlockMace extends DCTileBlock {
 			double y = pos.getY() + 1.0D + rand.nextDouble();
 			double z = pos.getZ() + rand.nextDouble();
 
-			Particle p = new ParticleBlink.Factory().getEntityFX(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+			Particle p = new ParticleBlink.Factory().createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
 
 		}
@@ -145,9 +145,8 @@ public abstract class BlockMace extends DCTileBlock {
 		if (state.getBlock() != null && state.getBlock() instanceof BlockMace) {
 			int meta = state.getBlock().getMetaFromState(state) & 3;
 			return meta == 1;
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	/* NBT */

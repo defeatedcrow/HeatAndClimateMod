@@ -1,5 +1,11 @@
 package defeatedcrow.hac.main.client.gui;
 
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.util.DCTimeHelper;
+import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,12 +16,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
-import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.util.DCTimeHelper;
-import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 
 @SideOnly(Side.CLIENT)
 public class GuiStevensonScreen extends GuiContainer {
@@ -34,7 +34,7 @@ public class GuiStevensonScreen extends GuiContainer {
 		climate = t.getClimate();
 		if (t.getWorld() != null) {
 			World world = t.getWorld();
-			Biome biome = world.getBiomeGenForCoords(t.getPos());
+			Biome biome = world.getBiomeForCoordsBody(t.getPos());
 			boolean snow = biome.isSnowyBiome()
 					|| (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN) && t.getPos().getY() > 100);
 			boolean dry = !biome.canRain();

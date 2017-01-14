@@ -66,9 +66,11 @@ public class SquarePastryItem extends FoodItemBase {
 		case 2:
 		case 3:
 			ret = new MeatPieEntity(world, x, y, z, player);
+			break;
 		case 4:
 		case 5:
 			ret = new ChocolatePieEntity(world, x, y, z, player);
+			break;
 		case 6:
 		case 7:
 			ret = new FruitPieEntity(world, x, y, z, player);

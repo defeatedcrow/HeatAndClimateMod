@@ -25,24 +25,18 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-@Mod(
-		modid = ClimateMain.MOD_ID,
-		name = ClimateMain.MOD_NAME,
-		version = ClimateMain.MOD_MEJOR + "." + ClimateMain.MOD_MINOR + "." + ClimateMain.MOD_BUILD,
-		dependencies = ClimateMain.MOD_DEPENDENCIES,
-		acceptedMinecraftVersions = ClimateCore.MOD_ACCEPTED_MC_VERSIONS,
-		useMetadata = true)
+@Mod(modid = ClimateMain.MOD_ID, name = ClimateMain.MOD_NAME, version = ClimateMain.MOD_MEJOR + "."
+		+ ClimateMain.MOD_MINOR + "."
+		+ ClimateMain.MOD_BUILD, dependencies = ClimateMain.MOD_DEPENDENCIES, acceptedMinecraftVersions = ClimateCore.MOD_ACCEPTED_MC_VERSIONS, useMetadata = true)
 public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
-	public static final int MOD_MINOR = 2;
+	public static final int MOD_MINOR = 3;
 	public static final int MOD_BUILD = 0;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.2.2099,);required-after:dcs_climate|lib@[1.2.0,)";
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.3.0,)";
 
-	@SidedProxy(
-			clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
-			serverSide = "defeatedcrow.hac.main.CommonMainProxy")
+	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
 
 	@Instance("dcs_climate")

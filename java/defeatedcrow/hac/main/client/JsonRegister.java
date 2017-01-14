@@ -8,7 +8,7 @@ import defeatedcrow.hac.main.MainInit;
 public class JsonRegister {
 
 	protected static final JsonRegisterHelper MAIN_INSTANCE = new JsonRegisterHelper(
-			"E:\\forge1.10.2\\HaC_Main\\src\\main\\resources");
+			"E:\\modding\\1.10.2\\hac_main\\src\\main\\resources");
 
 	public static void load() {
 		regItems();
@@ -68,12 +68,8 @@ public class JsonRegister {
 	static void regTools() {
 
 		String[] name = {
-				"brass",
-				"steel",
-				"silver",
-				"nickelsilver",
-				"chalcedony",
-				"sapphire" };
+				"brass", "steel", "silver", "nickelsilver", "chalcedony", "sapphire"
+		};
 		for (int j = 0; j < name.length; j++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip", 0);
 			MAIN_INSTANCE.regSimpleItem(MainInit.dcPickaxe[j], ClimateCore.PACKAGE_ID, "dcs_pickaxe_" + name[j],
@@ -84,10 +80,8 @@ public class JsonRegister {
 					0);
 		}
 		String[] type = {
-				"met",
-				"plate",
-				"leggins",
-				"boots" };
+				"met", "plate", "leggins", "boots"
+		};
 		for (int i = 0; i < 4; i++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_brass",
 					"equip", 0);

@@ -90,46 +90,39 @@ public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile, IH
 	}
 
 	int isActive(EnumFacing face, BlockPos to, BlockPos from) {
-		if (to.equals(from)) {
+		if (to.equals(from))
 			return 1;
-		}
 		switch (face) {
 		case DOWN:
-			if (to.getY() < from.getY()) {
+			if (to.getY() < from.getY())
 				return -1;
-			} else {
+			else
 				return 1;
-			}
 		case UP:
-			if (to.getY() > from.getY()) {
+			if (to.getY() > from.getY())
 				return -1;
-			} else {
+			else
 				return 1;
-			}
 		case NORTH:
-			if (to.getZ() < from.getZ()) {
+			if (to.getZ() < from.getZ())
 				return -1;
-			} else {
+			else
 				return 1;
-			}
 		case SOUTH:
-			if (to.getZ() > from.getZ()) {
+			if (to.getZ() > from.getZ())
 				return -1;
-			} else {
+			else
 				return 1;
-			}
 		case WEST:
-			if (to.getX() < from.getX()) {
+			if (to.getX() < from.getX())
 				return -1;
-			} else {
+			else
 				return 1;
-			}
 		case EAST:
-			if (to.getX() > from.getX()) {
+			if (to.getX() > from.getX())
 				return -1;
-			} else {
+			else
 				return 1;
-			}
 		default:
 			return 1;
 

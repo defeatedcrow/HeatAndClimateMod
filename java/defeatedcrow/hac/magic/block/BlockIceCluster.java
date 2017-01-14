@@ -5,6 +5,9 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.IHeatTile;
+import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -21,9 +24,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.IHeatTile;
-import defeatedcrow.hac.main.client.particle.ParticleBlink;
 
 public class BlockIceCluster extends BlockContainer implements IHeatTile {
 
@@ -110,11 +110,11 @@ public class BlockIceCluster extends BlockContainer implements IHeatTile {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (world.isRemote) {
-			double x = (double) pos.getX() + rand.nextDouble();
-			double y = (double) pos.getY() + 0.25D + rand.nextDouble();
-			double z = (double) pos.getZ() + rand.nextDouble();
+			double x = pos.getX() + rand.nextDouble();
+			double y = pos.getY() + 0.25D + rand.nextDouble();
+			double z = pos.getZ() + rand.nextDouble();
 
-			Particle p = new ParticleBlink.Factory().getEntityFX(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+			Particle p = new ParticleBlink.Factory().createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
 
 		}

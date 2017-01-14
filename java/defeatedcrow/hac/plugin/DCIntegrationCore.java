@@ -7,8 +7,7 @@ public class DCIntegrationCore {
 
 	public static final DCIntegrationCore INSTANCE = new DCIntegrationCore();
 
-	private DCIntegrationCore() {
-	}
+	private DCIntegrationCore() {}
 
 	public static void load() {
 
@@ -50,7 +49,14 @@ public class DCIntegrationCore {
 			}
 		}
 
-		DCsJEIPlugin2.load();
+		if (Loader.isModLoaded("JEI")) {
+			try {
+				DCsJEIPlugin2.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: JEI");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: JEI");
+			}
+		}
 
 	}
 
