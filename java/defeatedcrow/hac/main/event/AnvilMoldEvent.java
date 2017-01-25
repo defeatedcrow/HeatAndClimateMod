@@ -2,6 +2,9 @@ package defeatedcrow.hac.main.event;
 
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.init.Enchantments;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -26,19 +29,40 @@ public class AnvilMoldEvent {
 		}
 
 		/* ついでに、リペアパテの設定も… */
-		else if (left != null && left.getItem().isDamaged(left) && moldItem != null
+		else if (left != null && left.getItem().isDamageable() && moldItem != null
 				&& moldItem.getItem() == MainInit.repairPutty && ret == null) {
 			int dam = left.getItemDamage();
-			dam -= 100;
-			if (dam < 0) {
-				dam = 0;
+			int type = moldItem.getItemDamage();
+			int count = moldItem.stackSize;
+			if (type == 0 && left.getItem().isDamaged(left)) {
+				dam -= 100 * count;
+				if (dam < 0) {
+					dam = 0;
+				}
+				ItemStack next = new ItemStack(left.getItem(), left.stackSize, dam);
+				if (left.hasTagCompound()) {
+					next.setTagCompound(left.getTagCompound());
+				}
+				event.setOutput(next);
+				event.setCost(5);
+			} else if (type == 1) {
+				Item tool = left.getItem();
+				if (Enchantments.EFFICIENCY.canApply(left)
+						&& EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, left) == 0) {
+					ItemStack next = left.copy();
+					next.addEnchantment(Enchantments.EFFICIENCY, 1);
+					event.setOutput(next);
+					event.setCost(1);
+					event.setMaterialCost(1);
+				} else if (Enchantments.SHARPNESS.canApply(left)
+						&& EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, left) == 0) {
+					ItemStack next = left.copy();
+					next.addEnchantment(Enchantments.SHARPNESS, 1);
+					event.setOutput(next);
+					event.setCost(1);
+					event.setMaterialCost(1);
+				}
 			}
-			ItemStack next = new ItemStack(left.getItem(), left.stackSize, dam);
-			if (left.hasTagCompound()) {
-				next.setTagCompound(left.getTagCompound());
-			}
-			event.setOutput(next);
-			event.setCost(5);
 
 		}
 	}

@@ -48,6 +48,7 @@ import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
 import defeatedcrow.hac.main.potion.PotionBirdDC;
 import defeatedcrow.hac.main.potion.PotionGravityDC;
+import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
@@ -71,8 +72,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonMainProxy implements IGuiHandler {
 
-	public void loadConst() {
-	}
+	public void loadConst() {}
 
 	public void loadMaterial() {
 		MainMaterialRegister.load();
@@ -84,20 +84,30 @@ public class CommonMainProxy implements IGuiHandler {
 		MainInit.gravity = new PotionGravityDC();
 		GameRegistry.register(MainInit.gravity, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.gravity"));
 		MainInit.gravityType = new PotionType("dcs.gravity", new PotionEffect[] {
-				new PotionEffect(MainInit.gravity, 1800, 0) });
+				new PotionEffect(MainInit.gravity, 1800, 0)
+		});
 		GameRegistry.register(MainInit.gravityType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.gravity"));
 
 		MainInit.bird = new PotionBirdDC();
 		GameRegistry.register(MainInit.bird, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.bird"));
 		MainInit.birdType = new PotionType("dcs.bird", new PotionEffect[] {
-				new PotionEffect(MainInit.bird, 3600, 0) });
+				new PotionEffect(MainInit.bird, 3600, 0)
+		});
 		GameRegistry.register(MainInit.birdType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.bird"));
 
 		MainInit.ocean = new PotionOceanDC();
 		GameRegistry.register(MainInit.ocean, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.ocean"));
 		MainInit.oceanType = new PotionType("dcs.ocean", new PotionEffect[] {
-				new PotionEffect(MainInit.ocean, 3600, 0) });
+				new PotionEffect(MainInit.ocean, 3600, 0)
+		});
 		GameRegistry.register(MainInit.oceanType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.ocean"));
+
+		MainInit.heavyboots = new PotionHeavyBootsDC();
+		GameRegistry.register(MainInit.heavyboots, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.heavyboots"));
+		MainInit.heavybootsType = new PotionType("dcs.heavyboots", new PotionEffect[] {
+				new PotionEffect(MainInit.heavyboots, 3600, 0)
+		});
+		GameRegistry.register(MainInit.heavybootsType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.heavyboots"));
 	}
 
 	public void loadRecipes() {
@@ -105,14 +115,17 @@ public class CommonMainProxy implements IGuiHandler {
 		BasicRecipeRegister.load();
 		MachineRecipeRegister.load();
 
-		if (ModuleConfig.food)
+		if (ModuleConfig.food) {
 			FoodRecipes.load();
+		}
 
-		if (ModuleConfig.machine)
+		if (ModuleConfig.machine) {
 			MachineRecipes.load();
+		}
 
-		if (ModuleConfig.magic)
+		if (ModuleConfig.magic) {
 			MagicRecipeRegister.load();
+		}
 	}
 
 	public void loadEntity() {
@@ -145,26 +158,21 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 3);
 	}
 
-	public void addSidedBlock(Block block, String name, int max) {
-	}
+	public void addSidedBlock(Block block, String name, int max) {}
 
-	public void addTBBlock(Block block, String name, int max) {
-	}
+	public void addTBBlock(Block block, String name, int max) {}
 
-	public void addCropBlock(Block block, String name, int max) {
-	}
+	public void addCropBlock(Block block, String name, int max) {}
 
 	/**
 	 * メタ無しJson製Block。一部の階段・ハーフにのみ使用している
 	 */
-	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {
-	}
+	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {}
 
 	/**
 	 * TEの向きのみ対応させたJsonタイプモデル
 	 */
-	public void regTEJson(Block block, String domein, String name, String dir) {
-	}
+	public void regTEJson(Block block, String domein, String name, String dir) {}
 
 	public void loadInit() {
 		MinecraftForge.EVENT_BUS.register(new OnMiningEventDC());
@@ -184,30 +192,22 @@ public class CommonMainProxy implements IGuiHandler {
 		TileEntity tile = world.getTileEntity(pos);
 		if (tile == null)
 			return null;
-		if (tile instanceof TileNormalChamber) {
+		if (tile instanceof TileNormalChamber)
 			return new ContainerNormalChamber((TileNormalChamber) tile, player.inventory);
-		}
-		if (tile instanceof TileStevensonScreen) {
+		if (tile instanceof TileStevensonScreen)
 			return new ContainerStevensonScreen((TileStevensonScreen) tile, player);
-		}
-		if (tile instanceof TileStoneMill) {
+		if (tile instanceof TileStoneMill)
 			return new ContainerStoneMill((TileStoneMill) tile, player.inventory);
-		}
-		if (tile instanceof TileTeaPot) {
+		if (tile instanceof TileTeaPot)
 			return new ContainerTeaPot((TileTeaPot) tile, player.inventory);
-		}
-		if (tile instanceof TileFluidProcessorBase) {
+		if (tile instanceof TileFluidProcessorBase)
 			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
-		}
-		if (tile instanceof TileLowChest) {
+		if (tile instanceof TileLowChest)
 			return new ContainerLowChest((TileLowChest) tile, player);
-		}
-		if (tile instanceof TileCookingStove) {
+		if (tile instanceof TileCookingStove)
 			return new ContainerFuelStove((TileCookingStove) tile, player.inventory);
-		}
-		if (tile instanceof TilePressMachine) {
+		if (tile instanceof TilePressMachine)
 			return new ContainerPressMachine((TilePressMachine) tile, player.inventory);
-		}
 		return null;
 	}
 
@@ -219,30 +219,22 @@ public class CommonMainProxy implements IGuiHandler {
 		TileEntity tile = world.getTileEntity(pos);
 		if (tile == null)
 			return null;
-		if (tile instanceof TileNormalChamber) {
+		if (tile instanceof TileNormalChamber)
 			return new GuiNormalChamber((TileNormalChamber) tile, player.inventory);
-		}
-		if (tile instanceof TileStevensonScreen) {
+		if (tile instanceof TileStevensonScreen)
 			return new GuiStevensonScreen((TileStevensonScreen) tile, player);
-		}
-		if (tile instanceof TileStoneMill) {
+		if (tile instanceof TileStoneMill)
 			return new GuiStoneMill((TileStoneMill) tile, player.inventory);
-		}
-		if (tile instanceof TileTeaPot) {
+		if (tile instanceof TileTeaPot)
 			return new GuiTeaPot((TileTeaPot) tile, player.inventory);
-		}
-		if (tile instanceof TileFluidProcessorBase) {
+		if (tile instanceof TileFluidProcessorBase)
 			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
-		}
-		if (tile instanceof TileLowChest) {
+		if (tile instanceof TileLowChest)
 			return new GuiLowChest((TileLowChest) tile, player);
-		}
-		if (tile instanceof TileCookingStove) {
+		if (tile instanceof TileCookingStove)
 			return new GuiFuelStove((TileCookingStove) tile, player.inventory);
-		}
-		if (tile instanceof TilePressMachine) {
+		if (tile instanceof TilePressMachine)
 			return new GuiPressMachine((TilePressMachine) tile, player.inventory);
-		}
 		return null;
 	}
 

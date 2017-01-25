@@ -5,6 +5,9 @@ import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.magic.block.TileIceCluster;
 import defeatedcrow.hac.magic.block.TileInfernalFlame;
 import defeatedcrow.hac.magic.block.TileMaceBird;
+import defeatedcrow.hac.magic.block.TileMaceBurn;
+import defeatedcrow.hac.magic.block.TileMaceFlower;
+import defeatedcrow.hac.magic.block.TileMaceGlory;
 import defeatedcrow.hac.magic.block.TileMaceIce;
 import defeatedcrow.hac.magic.block.TileMaceLight;
 import defeatedcrow.hac.magic.block.TileMaceMoon;
@@ -19,6 +22,9 @@ import defeatedcrow.hac.magic.client.TESRIceCluster;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
 import defeatedcrow.hac.magic.client.TESRMace;
 import defeatedcrow.hac.magic.client.TESRMaceBird;
+import defeatedcrow.hac.magic.client.TESRMaceBurn;
+import defeatedcrow.hac.magic.client.TESRMaceFlower;
+import defeatedcrow.hac.magic.client.TESRMaceGlory;
 import defeatedcrow.hac.magic.client.TESRMaceIce;
 import defeatedcrow.hac.magic.client.TESRMaceMoon;
 import defeatedcrow.hac.magic.client.TESRMaceOcean;
@@ -81,21 +87,27 @@ public class MagicClientProxy {
 		ClientRegistry.registerTileEntity(TileInfernalFlame.class, "dcs_te_infernal_flame", new TESRInfernalFlame());
 
 		ClientRegistry.registerTileEntity(TileMaceLight.class, "dcs_te_magicmace_light", new TESRMace());
-		ClientRegistry.registerTileEntity(TileMaceMoon.class, "dcs_te_magicmace_moon", new TESRMaceMoon());
+		ClientRegistry.registerTileEntity(TileMaceMoon.class, "dcs_te_magicmace_moon", new TESRMaceMoon().setNoFrame());
 		ClientRegistry.registerTileEntity(TileMaceBird.class, "dcs_te_magicmace_bird", new TESRMaceBird());
 		ClientRegistry.registerTileEntity(TileMaceIce.class, "dcs_te_magicmace_ice", new TESRMaceIce());
 		ClientRegistry.registerTileEntity(TileMaceOcean.class, "dcs_te_magicmace_ocean", new TESRMaceOcean());
+		ClientRegistry.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn", new TESRMaceBurn());
+		ClientRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower",
+				new TESRMaceFlower().setNoFrame());
+		ClientRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory",
+				new TESRMaceGlory().setNoFrame());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
 		// item
 
-		instance.regSimpleItem(MagicInit.pendant, ClimateCore.PACKAGE_ID, "dcs_jewel_pendant", "equip", 10);
-		instance.regSimpleItem(MagicInit.badge, ClimateCore.PACKAGE_ID, "dcs_jewel_badge", "equip", 10);
+		instance.regSimpleItem(MagicInit.pendant, ClimateCore.PACKAGE_ID, "dcs_jewel_pendant", "equip", 13);
+		instance.regSimpleItem(MagicInit.badge, ClimateCore.PACKAGE_ID, "dcs_jewel_badge", "equip", 13);
 		instance.regSimpleItem(MagicInit.daggerSilver, ClimateCore.PACKAGE_ID, "dcs_dagger_silver", "magic", 0);
 		instance.regSimpleItem(MagicInit.daggerMagic, ClimateCore.PACKAGE_ID, "dcs_dagger_magic", "magic", 15);
 		instance.regSimpleItem(MagicInit.macehandle, ClimateCore.PACKAGE_ID, "dcs_mace_handle", "magic", 0);
-		instance.regSimpleItem(MagicInit.maceStarItem, ClimateCore.PACKAGE_ID, "dcs_macecore", "magic", 4);
+		instance.regSimpleItem(MagicInit.maceStarItem, ClimateCore.PACKAGE_ID, "dcs_macecore", "magic", 7);
+		instance.regSimpleItem(MagicInit.expGem, ClimateCore.PACKAGE_ID, "dcs_expgem", "magic", 0);
 
 		// block
 		instance.regTEBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_ID, "dcs_cluster_ice", "magic", 0);
@@ -107,6 +119,9 @@ public class MagicClientProxy {
 		instance.regTEBlock(MagicInit.maceBird, ClimateCore.PACKAGE_ID, "dcs_magicmace_bird", "magic", 0);
 		instance.regTEBlock(MagicInit.maceIce, ClimateCore.PACKAGE_ID, "dcs_magicmace_ice", "magic", 0);
 		instance.regTEBlock(MagicInit.maceOcean, ClimateCore.PACKAGE_ID, "dcs_magicmace_ocean", "magic", 0);
+		instance.regTEBlock(MagicInit.maceBurn, ClimateCore.PACKAGE_ID, "dcs_magicmace_burn", "magic", 0);
+		instance.regTEBlock(MagicInit.maceFlower, ClimateCore.PACKAGE_ID, "dcs_magicmace_flower", "magic", 0);
+		instance.regTEBlock(MagicInit.maceGlory, ClimateCore.PACKAGE_ID, "dcs_magicmace_glory", "magic", 0);
 	}
 
 }

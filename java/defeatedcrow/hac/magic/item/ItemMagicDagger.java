@@ -92,7 +92,8 @@ public class ItemMagicDagger extends DCItem {
 			"sch_clm", /* 13:着弾点に移動 */
 			// エリア効果
 			"clm_dia_sap", /* 14:鉱石生成イベント呼び出し */
-			"clm_mal_cel" /* 15:Biome書き換え */ };
+			"clm_mal_cel"
+			/* 15:Biome書き換え */ };
 
 	public ItemMagicDagger() {
 		super();
@@ -136,6 +137,10 @@ public class ItemMagicDagger extends DCItem {
 				}
 
 				player.addStat(StatList.getObjectUseStats(this));
+
+				if (!player.worldObj.isRemote && !player.hasAchievement(AchievementClimate.MAGIC_DAGGER)) {
+					AcvHelper.addMachineAcievement(player, AchievementClimate.MAGIC_DAGGER);
+				}
 
 			}
 		}
@@ -181,9 +186,8 @@ public class ItemMagicDagger extends DCItem {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		if (!AcvHelper.hasMagicMaster(player) && !ClimateCore.isDebug) {
+		if (!AcvHelper.hasMagicMaster(player) && !ClimateCore.isDebug)
 			return new ActionResult(EnumActionResult.FAIL, stack);
-		}
 		player.setActiveHand(hand);
 		return new ActionResult(EnumActionResult.SUCCESS, stack);
 	}

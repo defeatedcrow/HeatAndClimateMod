@@ -13,6 +13,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
@@ -90,11 +91,22 @@ public class AchievementEventDC {
 				AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_SMELT);
 			} else if (drop.getEntityItem().getItem() == MainInit.gems) {
 				int m = drop.getEntityItem().getItemDamage();
-				if (m == 0 || m == 1 || m == 2 || m == 3 || m == 4 || m == 11) {
+				if (m == 0 || m == 1 || m == 2 || m == 3 || m == 4 || m == 11 || m == 12 || m == 14) {
 					AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_GEM);
-				} else if (m == 5 || m == 6 || m == 7) {
+				} else if (m == 5 || m == 6 || m == 7 || m == 13) {
 					AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_GEM_RARE);
 				}
+			} else if (drop.getEntityItem().getItem() == Item.getItemFromBlock(MainInit.metalBlock)) {
+				int m = drop.getEntityItem().getItemDamage();
+				if (m == 4 || m == 9) {
+					AcvHelper.addMagicAcievement(player, AchievementClimate.METAL_TIER1);
+				} else if (m == 3 || m == 5 || m == 6) {
+					AcvHelper.addMagicAcievement(player, AchievementClimate.METAL_TIER2);
+				} else if (m == 7 || m == 10) {
+					AcvHelper.addMagicAcievement(player, AchievementClimate.METAL_TIER3);
+				}
+			} else if (drop.getEntityItem().getItem() == Item.getItemFromBlock(MagicInit.elestial)) {
+				AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_ELESTIAL);
 			}
 		}
 	}

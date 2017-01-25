@@ -15,7 +15,9 @@ public class ItemMiscDust extends DCItem {
 			"presscake",
 			"ash",
 			"niter",
-			"sulfur" };
+			"sulfur",
+			"garnet"
+	};
 
 	public ItemMiscDust(int max) {
 		super();

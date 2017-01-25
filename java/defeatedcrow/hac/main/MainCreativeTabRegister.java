@@ -4,8 +4,7 @@ import defeatedcrow.hac.core.ClimateCore;
 
 public class MainCreativeTabRegister {
 
-	private MainCreativeTabRegister() {
-	}
+	private MainCreativeTabRegister() {}
 
 	public static void load() {
 		// block
@@ -30,9 +29,13 @@ public class MainCreativeTabRegister {
 		MainInit.selenite.setCreativeTab(ClimateMain.build);
 		MainInit.stairsGlass.setCreativeTab(ClimateMain.build);
 		MainInit.stairsGypsum.setCreativeTab(ClimateMain.build);
+		MainInit.stairsMarble.setCreativeTab(ClimateMain.build);
+		MainInit.stairsSerpentine.setCreativeTab(ClimateMain.build);
+		MainInit.stairsBedrock.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab.setCreativeTab(ClimateMain.build);
 		MainInit.builds.setCreativeTab(ClimateMain.build);
 		MainInit.plate.setCreativeTab(ClimateMain.build);
+		// MainInit.markingPanel.setCreativeTab(ClimateMain.build);
 
 		// furniture
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
@@ -52,6 +55,7 @@ public class MainCreativeTabRegister {
 		MainInit.chestWood.setCreativeTab(ClimateMain.build);
 		MainInit.chestMetal.setCreativeTab(ClimateMain.build);
 		MainInit.chestMagnet.setCreativeTab(ClimateMain.build);
+		MainInit.chestVillage.setCreativeTab(ClimateMain.build);
 		MainInit.sinkMetal.setCreativeTab(ClimateMain.build);
 		MainInit.sinkChest.setCreativeTab(ClimateMain.build);
 

@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.event;
 
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -12,8 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.magic.MagicInit;
 
 public class OnDeathEventDC {
 

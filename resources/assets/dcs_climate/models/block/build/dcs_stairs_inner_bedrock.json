@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "dcs_climate:blocks/ores/gemblock_bedrock",
+        "top": "dcs_climate:blocks/ores/gemblock_bedrock",
+        "side": "dcs_climate:blocks/ores/gemblock_bedrock"
+    }
+}

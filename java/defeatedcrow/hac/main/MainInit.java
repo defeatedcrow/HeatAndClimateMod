@@ -6,8 +6,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 
 public class MainInit {
-	private MainInit() {
-	}
+	private MainInit() {}
 
 	// block
 	// ores
@@ -31,9 +30,14 @@ public class MainInit {
 	public static Block selenite;
 	public static Block stairsGlass;
 	public static Block stairsGypsum;
+	public static Block stairsMarble;
+	public static Block stairsSerpentine;
+	public static Block stairsBedrock;
 	public static Block halfSlab;
 	public static Block builds;
 	public static Block plate;
+
+	public static Block markingPanel;
 
 	// furniture
 	public static Block chalLamp;
@@ -61,6 +65,7 @@ public class MainInit {
 	public static Block chestWood;
 	public static Block chestMetal;
 	public static Block chestMagnet;
+	public static Block chestVillage;
 
 	// device
 	public static Block chamber;
@@ -89,6 +94,7 @@ public class MainInit {
 	public static Item[] dcPickaxe = new Item[6];
 	public static Item[] dcSpade = new Item[6];
 	public static Item[] dcSword = new Item[6];
+	public static Item[] dcScythe = new Item[3];
 
 	// armor
 	public static Item[] brassArmor = new Item[4];
@@ -119,5 +125,8 @@ public class MainInit {
 
 	public static Potion ocean;
 	public static PotionType oceanType;
+
+	public static Potion heavyboots;
+	public static PotionType heavybootsType;
 
 }

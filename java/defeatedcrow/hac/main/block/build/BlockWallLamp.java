@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main.block.build;
 
 import java.util.List;
+import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import net.minecraft.block.Block;
@@ -80,6 +81,16 @@ public class BlockWallLamp extends Block {
 	}
 
 	@Override
+	public int quantityDropped(Random random) {
+		return 0;
+	}
+
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return null;
+	}
+
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
 		switch (face) {
@@ -100,8 +111,9 @@ public class BlockWallLamp extends Block {
 	@Override
 	public int damageDropped(IBlockState state) {
 		int i = state.getValue(DCState.TYPE4);
-		if (i > maxMeta)
+		if (i > maxMeta) {
 			i = maxMeta;
+		}
 		return i;
 	}
 
@@ -117,8 +129,9 @@ public class BlockWallLamp extends Block {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int i = meta & 3;
-		if (i > maxMeta)
+		if (i > maxMeta) {
 			i = maxMeta;
+		}
 		int f = 5 - (meta >> 2);
 		IBlockState state = this.getDefaultState().withProperty(DCState.TYPE4, i);
 		state = state.withProperty(DCState.FACING, EnumFacing.getFront(f));
@@ -132,8 +145,9 @@ public class BlockWallLamp extends Block {
 		int f = 0;
 
 		i = state.getValue(DCState.TYPE4);
-		if (i > maxMeta)
+		if (i > maxMeta) {
 			i = maxMeta;
+		}
 
 		f = 5 - state.getValue(DCState.FACING).getIndex();
 		f = f << 2;
@@ -149,7 +163,8 @@ public class BlockWallLamp extends Block {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.FACING,
-				DCState.TYPE4 });
+				DCState.TYPE4
+		});
 	}
 
 }

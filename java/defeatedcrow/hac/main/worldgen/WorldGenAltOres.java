@@ -40,12 +40,15 @@ public class WorldGenAltOres implements IWorldGenerator {
 
 		if ((genDim1 != 1 && genDim1 != -1)) {
 			int[] genY = {
-					8, 30, 70, 120
+					5, // 5-25
+					30, // 30-60
+					70, // 70-110
+					120 // 120-170
 			};
 			for (int i = 0; i < count; i++) {
 				/* 計5回のチャンス */
 				int posX = chunk2X + random.nextInt(16);
-				int posY = genY[i] + random.nextInt(10 + 10 * i);
+				int posY = genY[i] + random.nextInt(20 + 10 * i);
 				int posZ = chunk2Z + random.nextInt(16);
 				BlockPos pos = new BlockPos(posX, posY, posZ);
 				Biome biome = world.getBiomeForCoordsBody(pos);
@@ -71,9 +74,9 @@ public class WorldGenAltOres implements IWorldGenerator {
 					} else if (random.nextInt(100) < vinePar) {
 						generateQuartzVine(world, random, pos);
 					}
-				} else if (posY < 30 && posY > 12 && random.nextInt(100) < vugsPar) {
+				} else if (posY < 30 && posY > 19 && random.nextInt(100) < vugsPar) {
 					generateVugs(world, random, pos);
-				} else if (posY < 13 && random.nextInt(100) < lavaPar) {
+				} else if (posY <= 19 && random.nextInt(100) < lavaPar) {
 					generateUnderlava(world, random, pos);
 				}
 			}
@@ -338,33 +341,58 @@ public class WorldGenAltOres implements IWorldGenerator {
 	 * 非常に探しづらいが、ニッケルの入手手段のひとつになる。
 	 */
 	public void generateUnderlava(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(2) + 2; // 2-3
-		int r = h + 1;
+		int r = rand.nextInt(2) + 2; // 2-3
 
-		// 円柱状に生成
-		for (int x = pos.getX() - r; x <= pos.getX() + r; x++) {
-			for (int z = pos.getZ() - r; z <= pos.getZ() + r; z++) {
-				for (int y = pos.getY() - h + 2; y <= pos.getY() + 1; y++) {
-					BlockPos p = new BlockPos(x, y, z);
-					double d1 = Math.sqrt(p.distanceSq(pos));
-					int d = r + 1 - MathHelper.floor_double(d1);
-					if (d1 > d) {
-						continue;
+		// 球状に生成
+		BlockPos min = new BlockPos(pos.add(-r, -r, -r));
+		BlockPos max = new BlockPos(pos.add(r, r, r));
+		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
+		int h2 = pos.getY() - r; // 高さの半分
+		for (BlockPos p1 : itr) {
+			if (p1.getY() <= 1) {
+				continue;
+			}
+			double d1 = Math.sqrt(p1.distanceSq(pos));
+			if (d1 > r + 1) {
+				continue;
+			}
+			Block block = world.getBlockState(p1).getBlock();
+			if (isPlaceable(block)) {
+				int j = rand.nextInt(7);
+				if (p1.getY() >= pos.getY() || p1.getY() < 5) {
+					switch (j) {
+					case 0:
+						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(3), 2);
+						break;
+					case 1:
+					case 2:
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(7), 2);
+						break;
+					case 3:
+						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(6), 2);
+						break;
+					default:
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(5), 2);
 					}
-					Block block = world.getBlockState(p).getBlock();
-					if (p.getY() > 1 && p.getY() < world.getActualHeight() && isPlaceable(block)) {
-						int j = rand.nextInt(5);
-						if (j == 0) {
-							world.setBlockState(p, MainInit.ores.getStateFromMeta(7), 2);
-						} else if (j < 3) {
-							world.setBlockState(p, MainInit.ores.getStateFromMeta(5), 2);
-						} else {
-							world.setBlockState(p, MainInit.ores_2.getStateFromMeta(3), 2);
-						}
+				} else {
+					switch (j) {
+					case 0:
+						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(7), 2);
+						break;
+					case 1:
+					case 2:
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(5), 2);
+						break;
+					default:
+						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(6), 2);
 					}
 				}
+
 			}
 		}
+
+		// DCLogger.debugLog("Ore gen! Underlava:" + pos.getX() + "," + pos.getY() + "," +
+		// pos.getZ() + ", size: " + h);
 	}
 
 	/*

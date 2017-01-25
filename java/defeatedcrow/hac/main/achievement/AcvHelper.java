@@ -9,20 +9,17 @@ public class AcvHelper {
 
 	public static boolean hasClimateMaster(EntityPlayer player) {
 		if (player != null) {
-			if (player.worldObj.isRemote) {
+			if (player.worldObj.isRemote)
 				return ClimateMain.proxy.hasAchivement(player, AchievementClimate.CLIMATE_MASTER);
-			} else {
+			else
 				return player.hasAchievement(AchievementClimate.CLIMATE_MASTER);
-			}
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	public static boolean checkClimateMaster(EntityPlayer player) {
-		if (player == null) {
+		if (player == null)
 			return false;
-		}
 		boolean a = player.hasAchievement(AchievementClimate.CLIMATE_CHECKER);
 		boolean b = player.hasAchievement(AchievementClimate.CLIMATE_DAMAGE);
 		boolean c = player.hasAchievement(AchievementClimate.CLIMATE_ARMOR);
@@ -39,31 +36,27 @@ public class AcvHelper {
 			player.addStat(acv);
 			checkClimateMaster(player);
 			return true;
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	public static boolean hasMachineMaster(EntityPlayer player) {
 		if (player != null) {
-			if (player.worldObj.isRemote) {
+			if (player.worldObj.isRemote)
 				return ClimateMain.proxy.hasAchivement(player, AchievementClimate.MACHINE_MASTER);
-			} else {
+			else
 				return player.hasAchievement(AchievementClimate.MACHINE_MASTER);
-			}
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	public static boolean checkMachineMaster(EntityPlayer player) {
-		if (player == null) {
+		if (player == null)
 			return false;
-		}
 		boolean a = player.hasAchievement(AchievementClimate.MACHINE_GEAR);
 		boolean b = player.hasAchievement(AchievementClimate.MACHINE_PLACE);
 		boolean c = player.hasAchievement(AchievementClimate.MACHINE_CHANGE);
-		boolean d = player.hasAchievement(AchievementClimate.MACHINE_USING);
+		boolean d = player.hasAchievement(AchievementClimate.MACHINE_ARROY);
 		if (a && b && c && d && !hasMachineMaster(player)) {
 			player.addStat(AchievementClimate.MACHINE_MASTER);
 			return true;
@@ -76,27 +69,23 @@ public class AcvHelper {
 			player.addStat(acv);
 			checkMachineMaster(player);
 			return true;
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	public static boolean hasMagicMaster(EntityPlayer player) {
 		if (player != null) {
-			if (player.worldObj.isRemote) {
+			if (player.worldObj.isRemote)
 				return ClimateMain.proxy.hasAchivement(player, AchievementClimate.MAGIC_MASTER);
-			} else {
+			else
 				return player.hasAchievement(AchievementClimate.MAGIC_MASTER);
-			}
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	public static boolean checkMagicMaster(EntityPlayer player) {
-		if (player == null) {
+		if (player == null)
 			return false;
-		}
 		boolean a = player.hasAchievement(AchievementClimate.MAGIC_GEM);
 		boolean b = player.hasAchievement(AchievementClimate.MAGIC_GEM_RARE);
 		boolean c = player.hasAchievement(AchievementClimate.MAGIC_CHARM);
@@ -113,9 +102,8 @@ public class AcvHelper {
 			player.addStat(acv);
 			checkMagicMaster(player);
 			return true;
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	public static void forceOpenMaster(EntityPlayer player) {

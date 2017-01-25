@@ -19,7 +19,11 @@ public class ItemGems extends DCItem {
 			"salt",
 			"niter",
 			"sulfur",
-			"schorl" };
+			"schorl",
+			"serpentine",
+			"olivine",
+			"almandine"
+	};
 
 	public ItemGems(int max) {
 		super();

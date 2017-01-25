@@ -5,15 +5,22 @@ import defeatedcrow.hac.magic.block.BlockElestial;
 import defeatedcrow.hac.magic.block.BlockIceCluster;
 import defeatedcrow.hac.magic.block.BlockInfernalFlame;
 import defeatedcrow.hac.magic.block.BlockMaceBird;
+import defeatedcrow.hac.magic.block.BlockMaceBurn;
+import defeatedcrow.hac.magic.block.BlockMaceFlower;
+import defeatedcrow.hac.magic.block.BlockMaceGlory;
 import defeatedcrow.hac.magic.block.BlockMaceIce;
 import defeatedcrow.hac.magic.block.BlockMaceLight;
 import defeatedcrow.hac.magic.block.BlockMaceMoon;
 import defeatedcrow.hac.magic.block.BlockMaceOcean;
 import defeatedcrow.hac.magic.block.ItemBlockMaceBird;
+import defeatedcrow.hac.magic.block.ItemBlockMaceBurn;
+import defeatedcrow.hac.magic.block.ItemBlockMaceFlower;
+import defeatedcrow.hac.magic.block.ItemBlockMaceGlory;
 import defeatedcrow.hac.magic.block.ItemBlockMaceIce;
 import defeatedcrow.hac.magic.block.ItemBlockMaceLight;
 import defeatedcrow.hac.magic.block.ItemBlockMaceMoon;
 import defeatedcrow.hac.magic.block.ItemBlockMaceOcean;
+import defeatedcrow.hac.magic.item.ItemEXPGem;
 import defeatedcrow.hac.magic.item.ItemMaceCore;
 import defeatedcrow.hac.magic.item.ItemMaceHandle;
 import defeatedcrow.hac.magic.item.ItemMagicDagger;
@@ -28,22 +35,22 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MagicInitRegister {
 
-	private MagicInitRegister() {
-	}
+	private MagicInitRegister() {}
 
 	public static void load() {
 		loadBlocks();
 		loadItems();
 
-		if (ModuleConfig.magic)
+		if (ModuleConfig.magic) {
 			loadCreativeTab();
+		}
 	}
 
 	static void loadItems() {
-		MagicInit.pendant = new ItemMagicalPendant(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_pendant");
+		MagicInit.pendant = new ItemMagicalPendant(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_pendant");
 		GameRegistry.register(MagicInit.pendant.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_pendant"));
 
-		MagicInit.badge = new ItemMagicalBadge(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_badge");
+		MagicInit.badge = new ItemMagicalBadge(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_badge");
 		GameRegistry.register(MagicInit.badge.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_badge"));
 
 		MagicInit.daggerSilver = new ItemSilverDagger().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dagger_silver");
@@ -55,8 +62,11 @@ public class MagicInitRegister {
 		MagicInit.macehandle = new ItemMaceHandle(0).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mace_handle");
 		GameRegistry.register(MagicInit.macehandle.setRegistryName(ClimateCore.PACKAGE_BASE + "_mace_handle"));
 
-		MagicInit.maceStarItem = new ItemMaceCore(4).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_macecore");
+		MagicInit.maceStarItem = new ItemMaceCore(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_macecore");
 		GameRegistry.register(MagicInit.maceStarItem.setRegistryName(ClimateCore.PACKAGE_BASE + "_macecore"));
+
+		MagicInit.expGem = new ItemEXPGem().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_expgem");
+		GameRegistry.register(MagicInit.expGem.setRegistryName(ClimateCore.PACKAGE_BASE + "_expgem"));
 	}
 
 	static void loadBlocks() {
@@ -93,6 +103,21 @@ public class MagicInitRegister {
 		MagicInit.maceOcean.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_ocean");
 		GameRegistry.register(MagicInit.maceOcean);
 		GameRegistry.register(new ItemBlockMaceOcean(MagicInit.maceOcean));
+
+		MagicInit.maceBurn = new BlockMaceBurn(ClimateCore.PACKAGE_BASE + "_magicmace_burn");
+		MagicInit.maceBurn.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_burn");
+		GameRegistry.register(MagicInit.maceBurn);
+		GameRegistry.register(new ItemBlockMaceBurn(MagicInit.maceBurn));
+
+		MagicInit.maceFlower = new BlockMaceFlower(ClimateCore.PACKAGE_BASE + "_magicmace_flower");
+		MagicInit.maceFlower.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_flower");
+		GameRegistry.register(MagicInit.maceFlower);
+		GameRegistry.register(new ItemBlockMaceFlower(MagicInit.maceFlower));
+
+		MagicInit.maceGlory = new BlockMaceGlory(ClimateCore.PACKAGE_BASE + "_magicmace_glory");
+		MagicInit.maceGlory.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_glory");
+		GameRegistry.register(MagicInit.maceGlory);
+		GameRegistry.register(new ItemBlockMaceGlory(MagicInit.maceGlory));
 	}
 
 	static void loadCreativeTab() {
@@ -109,8 +134,12 @@ public class MagicInitRegister {
 		MagicInit.maceBird.setCreativeTab(ClimateMain.tool);
 		MagicInit.maceIce.setCreativeTab(ClimateMain.tool);
 		MagicInit.maceOcean.setCreativeTab(ClimateMain.tool);
+		MagicInit.maceBurn.setCreativeTab(ClimateMain.tool);
+		MagicInit.maceFlower.setCreativeTab(ClimateMain.tool);
+		MagicInit.maceGlory.setCreativeTab(ClimateMain.tool);
 
 		MagicInit.elestial.setCreativeTab(ClimateCore.climate);
+		MagicInit.expGem.setCreativeTab(ClimateCore.climate);
 
 		// MagicInit.clusterIce.setCreativeTab(ClimateMain.tool);
 		// MagicInit.infernalFlame.setCreativeTab(ClimateMain.tool);

@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import defeatedcrow.hac.api.damage.DamageSourceClimate;
+import defeatedcrow.hac.api.magic.CharmType;
+import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCPotion;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -18,12 +26,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.damage.DamageSourceClimate;
-import defeatedcrow.hac.api.magic.CharmType;
-import defeatedcrow.hac.api.magic.IJewelCharm;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
-import defeatedcrow.hac.core.util.DCPotion;
 
 /**
  * インベントリの最上段に入れていると効果のあるアクセサリー類。
@@ -42,9 +44,13 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			"malachite", /* 常時暗視 */
 			"celestite", /* 落下耐性 */
 			"clam", /* 死亡時ワープ */
-			"lapis",/* クラフト経験値 */
-			"diamond",/* 採掘速度増加 */
-			"schorl" /* 加速 */};
+			"lapis", /* 範囲回収 */
+			"diamond", /* 採掘速度増加 */
+			"schorl", /* 加速 */
+			"serpentine", /* 透明化 */
+			"olivine", /* EXP増加 */
+			"almandine"
+			/* ノックバック防止 */ };
 
 	public ItemMagicalPendant(int max) {
 		super();
@@ -83,6 +89,8 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			return CharmType.SPECIAL;
 		case 8:
 			return CharmType.TOOL;
+		case 12:
+			return CharmType.ATTACK;
 		default:
 			return CharmType.CONSTANT;
 		}
@@ -113,6 +121,12 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	@Override
 	public boolean onAttacking(EntityPlayer player, EntityLivingBase target, DamageSource source, float damage,
 			ItemStack charm) {
+		int meta = charm.getMetadata();
+		if (meta == 12 && target != null && !player.worldObj.isRemote) {
+			int r = 2 + itemRand.nextInt(3);
+			EntityXPOrb orb = new EntityXPOrb(player.worldObj, target.posX, target.posY, target.posZ, r);
+			player.worldObj.spawnEntityInWorld(orb);
+		}
 		return false;
 	}
 
@@ -173,6 +187,11 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 		case 10:
 			eff = new PotionEffect(DCPotion.speed, 205, 0);
 			break;
+		case 11:
+			eff = new PotionEffect(DCPotion.invisible, 205, 0);
+			break;
+		case 13:
+			eff = new PotionEffect(MainInit.heavyboots, 205, 1);
 		}
 
 		if (eff != null) {
@@ -191,8 +210,7 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	}
 
 	@Override
-	public void setActive(ItemStack charm, boolean flag) {
-	}
+	public void setActive(ItemStack charm, boolean flag) {}
 
 	@Override
 	public ItemStack consumeCharmItem(ItemStack stack) {

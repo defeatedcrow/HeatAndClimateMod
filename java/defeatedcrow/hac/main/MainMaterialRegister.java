@@ -17,11 +17,13 @@ import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockIronPlate;
 import defeatedcrow.hac.main.block.build.BlockLowChest;
 import defeatedcrow.hac.main.block.build.BlockMagnetChest;
+import defeatedcrow.hac.main.block.build.BlockMarkingPanel;
 import defeatedcrow.hac.main.block.build.BlockMetalChest;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
 import defeatedcrow.hac.main.block.build.BlockTableBase;
+import defeatedcrow.hac.main.block.build.BlockVillageChest;
 import defeatedcrow.hac.main.block.build.BlockWallLamp;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
@@ -57,6 +59,7 @@ import defeatedcrow.hac.main.item.tool.ItemArroyYagen;
 import defeatedcrow.hac.main.item.tool.ItemAxeDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
+import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.item.tool.ItemSpadeDC;
 import defeatedcrow.hac.main.item.tool.ItemStoneYagen;
 import defeatedcrow.hac.main.item.tool.ItemSwordDC;
@@ -75,8 +78,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MainMaterialRegister {
-	private MainMaterialRegister() {
-	}
+	private MainMaterialRegister() {}
 
 	public static void load() {
 
@@ -99,7 +101,7 @@ public class MainMaterialRegister {
 		MainInit.ores = new BlockOres(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone", 15);
 		registerBlock(MainInit.ores, ClimateCore.PACKAGE_BASE + "_ore_stone");
 
-		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 5);
+		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 7);
 		registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone");
 
 		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 10);
@@ -108,7 +110,7 @@ public class MainMaterialRegister {
 		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 11);
 		registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock");
 
-		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 8);
+		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 12);
 		registerBlock(MainInit.gemBlock, ClimateCore.PACKAGE_BASE + "_ore_gemblock");
 
 		MainInit.bricks = new BlockGemBricks(Material.ROCK, ClimateCore.PACKAGE_BASE + "_build_bricks");
@@ -125,6 +127,9 @@ public class MainMaterialRegister {
 
 		MainInit.wallLamp = new BlockWallLamp(ClimateCore.PACKAGE_BASE + "_build_walllamp");
 		registerBlock(MainInit.wallLamp, ClimateCore.PACKAGE_BASE + "_build_walllamp");
+
+		MainInit.markingPanel = new BlockMarkingPanel(ClimateCore.PACKAGE_BASE + "_build_markingpanel");
+		registerBlock(MainInit.markingPanel, ClimateCore.PACKAGE_BASE + "_build_markingpanel");
 	}
 
 	static void registerSidedBlock() {
@@ -170,10 +175,28 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsGypsum), "dcs_climate", "dcs_stairs_gypsum",
 				"build", 15, false);
 
+		MainInit.stairsMarble = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_marble", false)
+				.setUnlocalizedName("dcs_stairs_marble");
+		registerBlock(MainInit.stairsMarble, ClimateCore.PACKAGE_BASE + "_stairs_marble");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsMarble), "dcs_climate", "dcs_stairs_marble",
+				"build", 15, false);
+
+		MainInit.stairsSerpentine = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_serpentine",
+				false).setUnlocalizedName("dcs_stairs_serpentine");
+		registerBlock(MainInit.stairsSerpentine, ClimateCore.PACKAGE_BASE + "_stairs_serpentine");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsSerpentine), "dcs_climate",
+				"dcs_stairs_serpentine", "build", 15, false);
+
+		MainInit.stairsBedrock = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_bedrock", false)
+				.setUnlocalizedName("dcs_stairs_bedrock");
+		registerBlock(MainInit.stairsBedrock, ClimateCore.PACKAGE_BASE + "_stairs_bedrock");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsBedrock), "dcs_climate",
+				"dcs_stairs_bedrock", "build", 15, false);
+
 		MainInit.halfSlab = new BlockSlabDC();
 		registerBlock(MainInit.halfSlab, ClimateCore.PACKAGE_BASE + "_build_slab");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab), "dcs_climate", "dcs_build_slab",
-				"build", 2, true);
+				"build", 4, true);
 
 		MainInit.tableMarble = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_marble", false);
 		registerBlock(MainInit.tableMarble, ClimateCore.PACKAGE_BASE + "_table_marble");
@@ -288,6 +311,10 @@ public class MainMaterialRegister {
 		MainInit.chestMagnet = new BlockMagnetChest(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chest_magnet");
 		registerBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_BASE + "_device_chest_magnet");
 
+		MainInit.chestVillage = new BlockVillageChest(Material.IRON,
+				ClimateCore.PACKAGE_BASE + "_device_chest_village");
+		registerBlock(MainInit.chestVillage, ClimateCore.PACKAGE_BASE + "_device_chest_village");
+
 		MainInit.bellow = new BlockBellow(ClimateCore.PACKAGE_BASE + "_device_bellow");
 		MainInit.bellow.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_bellow");
 		GameRegistry.register(MainInit.bellow);
@@ -302,10 +329,10 @@ public class MainMaterialRegister {
 		MainInit.oreDust = new ItemOreDusts(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		GameRegistry.register(MainInit.oreDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_oredust"));
 
-		MainInit.gems = new ItemGems(11).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		GameRegistry.register(MainInit.gems.setRegistryName(ClimateCore.PACKAGE_BASE + "_gem"));
 
-		MainInit.miscDust = new ItemMiscDust(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
+		MainInit.miscDust = new ItemMiscDust(8).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		GameRegistry.register(MainInit.miscDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_miscdust"));
 
 		// tools
@@ -339,7 +366,8 @@ public class MainMaterialRegister {
 				"silver",
 				"nickelsilver",
 				"chalcedony",
-				"sapphire" };
+				"sapphire"
+		};
 		for (int j = 0; j < 6; j++) {
 			DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 			MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
@@ -375,11 +403,24 @@ public class MainMaterialRegister {
 			GameRegistry.register(MainInit.dcSword[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]));
 		}
 
+		MainInit.dcScythe[0] = new ItemScytheDC(DCToolMaterial.getToolMaterial(0), "brass")
+				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_brass");
+		GameRegistry.register(MainInit.dcScythe[0].setRegistryName(ClimateCore.PACKAGE_BASE + "_scythe_brass"));
+
+		MainInit.dcScythe[1] = new ItemScytheDC(DCToolMaterial.getToolMaterial(1), "steel")
+				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_steel");
+		GameRegistry.register(MainInit.dcScythe[1].setRegistryName(ClimateCore.PACKAGE_BASE + "_scythe_steel"));
+
+		MainInit.dcScythe[2] = new ItemScytheDC(DCToolMaterial.getToolMaterial(4), "chalcedony")
+				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_chalcedony");
+		GameRegistry.register(MainInit.dcScythe[2].setRegistryName(ClimateCore.PACKAGE_BASE + "_scythe_chalcedony"));
+
 		String[] type = {
 				"met",
 				"plate",
 				"leggins",
-				"boots" };
+				"boots"
+		};
 		for (int i = 0; i < 4; i++) {
 			EntityEquipmentSlot slot = DCUtil.SLOTS[i];
 			MainInit.brassArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_BRASS, DCMaterial.BRASS, slot, "brass")
