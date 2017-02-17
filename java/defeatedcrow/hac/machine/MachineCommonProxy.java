@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine;
 
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
+import defeatedcrow.hac.machine.block.TileCatapult;
 import defeatedcrow.hac.machine.block.TileConveyor;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileCreativeBox;
@@ -10,6 +11,8 @@ import defeatedcrow.hac.machine.block.TileGearBox;
 import defeatedcrow.hac.machine.block.TileGearBox_SUS;
 import defeatedcrow.hac.machine.block.TileHandCrank;
 import defeatedcrow.hac.machine.block.TileHeatExchanger;
+import defeatedcrow.hac.machine.block.TileHopperFilter;
+import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TilePressMachine;
@@ -57,6 +60,9 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileWaterPump.class, "dcs_te_water_pump");
 		GameRegistry.registerTileEntity(TileCreativeBox.class, "dcs_te_creative");
 		GameRegistry.registerTileEntity(TileConveyor.class, "dcs_te_conveyor");
+		GameRegistry.registerTileEntity(TileCatapult.class, "dcs_te_catapult");
+		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
+		GameRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid");
 	}
 
 }

@@ -84,8 +84,8 @@ public class MainMaterialRegister {
 
 		registerBlock();
 		regJsonBlock();
-		registerSidedBlock();
 		regDeviceBlock();
+		registerSidedBlock();
 		registerItems();
 		registerMaterialEnum();
 		registerEquip();

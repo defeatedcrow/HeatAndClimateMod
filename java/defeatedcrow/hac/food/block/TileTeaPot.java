@@ -6,7 +6,6 @@ import java.util.List;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
@@ -61,9 +60,9 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	public boolean setMilk(DrinkMilk milk) {
 		if (milk.id == 0) {
-			if (cap.getMilk().id == 0) {
+			if (cap.getMilk().id == 0)
 				return false;
-			} else {
+			else {
 				cap.setMilk(DrinkMilk.NONE);
 				milkCount = 0;
 				return true;
@@ -79,17 +78,16 @@ public class TileTeaPot extends TileFluidProcessorBase {
 					milkCount = 64;
 				}
 				return true;
-			} else {
+			} else
 				return false;
-			}
 		}
 	}
 
 	public boolean setSugar(DrinkSugar sugar) {
 		if (sugar.id == 0) {
-			if (cap.sugarID == 0) {
+			if (cap.sugarID == 0)
 				return false;
-			} else {
+			else {
 				cap.setSugar(DrinkSugar.NONE);
 				sugarCount = 0;
 				return true;
@@ -105,15 +103,14 @@ public class TileTeaPot extends TileFluidProcessorBase {
 					sugarCount = 64;
 				}
 				return true;
-			} else {
+			} else
 				return false;
-			}
 		}
 	}
 
 	// Fill時に排出アイテムをカスタマイズできる
 	@Override
-	protected boolean onDrainTank(DCTank tank, int slot1, int slot2) {
+	protected boolean onDrainTank(DCTank tank, int slot1, int slot2, boolean flag) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
 		if (in == null)
@@ -122,8 +119,9 @@ public class TileTeaPot extends TileFluidProcessorBase {
 		IFluidHandler cont = null;
 		IFluidHandler dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
-		if (in.getTagCompound() != null)
-			in2.setTagCompound(in.getTagCompound());
+		if (in.getTagCompound() != null) {
+			in2.setTagCompound(in.getTagCompound().copy());
+		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
 			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
@@ -132,58 +130,66 @@ public class TileTeaPot extends TileFluidProcessorBase {
 			dummy = (IFluidHandler) in2.getItem();
 		}
 
-		if (dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
 			boolean loose = false;
 			ItemStack ret = null;
 
 			int max = dummy.getTankProperties()[0].getCapacity();
 			FluidStack fc = dummy.drain(max, false);
-			// 排出の場合
+			boolean b = false;
+			int rem = max;
 			if (fc == null || fc.amount == 0) {
-				if (tank.getFluidAmount() > 0 && max <= tank.getFluidAmount()) {
-					FluidStack drain = tank.getContents().copy();
-					int fill = 0;
-					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-						ret = in2;
-					} else {
-						fill = dummy.fill(drain, true);
-						ret = in2;
-					}
+				b = true;
+			} else {
+				rem = max - fc.amount;
+				if (tank.getFluidAmount() <= rem) {
+					b = true;
+				}
+			}
+			// 排出の場合
+			if (b) {
+				FluidStack drain = tank.drain(rem, false);
+				int fill = 0;
+				if (in.getItem() instanceof IFluidHandler) {
+					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
+					ret = in2;
+				} else {
+					fill = dummy.fill(drain, true);
+					ret = in2;
+				}
 
-					if (ret.stackSize <= 0) {
-						ret = null;
-					}
-					if (ret != null) {
-						// Customize
-						DCLogger.debugLog("check1");
-						if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
-							DCLogger.debugLog("check2");
-							IDrinkCustomize drink = ret.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY,
-									null);
-							DrinkMilk milk = this.cap.getMilk();
-							DrinkSugar sugar = this.cap.getSugar();
-							if (drink.setMilk(milk)) {
-								this.milkCount--;
-								if (this.milkCount <= 0) {
-									cap.setMilk(DrinkMilk.NONE);
-									this.milkCount = 0;
-								}
+				if (ret.stackSize <= 0) {
+					ret = null;
+				}
+				if (ret != null) {
+					// Customize
+					// DCLogger.debugLog("check1");
+					if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
+						// DCLogger.debugLog("check2");
+						IDrinkCustomize drink = ret.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY,
+								null);
+						DrinkMilk milk = this.cap.getMilk();
+						DrinkSugar sugar = this.cap.getSugar();
+						if (drink.setMilk(milk)) {
+							this.milkCount--;
+							if (this.milkCount <= 0) {
+								cap.setMilk(DrinkMilk.NONE);
+								this.milkCount = 0;
 							}
-							if (drink.setSugar(sugar)) {
-								this.sugarCount--;
-								if (this.sugarCount <= 0) {
-									cap.setSugar(DrinkSugar.NONE);
-									this.sugarCount = 0;
-								}
+						}
+						if (drink.setSugar(sugar)) {
+							this.sugarCount--;
+							if (this.sugarCount <= 0) {
+								cap.setSugar(DrinkSugar.NONE);
+								this.sugarCount = 0;
 							}
 						}
 					}
+				}
 
-					if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
-						loose = true;
-						tank.drain(fill, true);
-					}
+				if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
+					loose = true;
+					tank.drain(fill, true);
 				}
 			}
 
@@ -199,9 +205,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	@Override
 	public boolean canRecipeProcess() {
-		if (!isSuitableClimate()) {
+		if (!isSuitableClimate())
 			return false;
-		}
 		FluidStack inf = inputT.getFluid();
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
@@ -221,9 +226,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	@Override
 	public boolean canStartProcess() {
-		if (!isSuitableClimate()) {
+		if (!isSuitableClimate())
 			return false;
-		}
 		FluidStack inf = inputT.getFluid();
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
@@ -266,8 +270,9 @@ public class TileTeaPot extends TileFluidProcessorBase {
 							if (list != null && !list.isEmpty()) {
 								for (ItemStack item : list) {
 									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.stackSize > 0;
-									if (f)
+									if (f) {
 										match = true;
+									}
 								}
 							}
 						}
@@ -304,14 +309,13 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	@Override
 	public String notSuitableMassage() {
-		if (current == null) {
+		if (current == null)
 			return "dcs.gui.message.nullclimate";
-		} else {
-			if (current.getHeat().getTier() < 2) {
+		else {
+			if (current.getHeat().getTier() < 2)
 				return "dcs.gui.message.steel.toocold";
-			} else {
+			else
 				return "dcs.gui.message.suitableclimate";
-			}
 		}
 	}
 
@@ -324,14 +328,16 @@ public class TileTeaPot extends TileFluidProcessorBase {
 				2,
 				4,
 				5,
-				6 };
+				6
+		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
 		return new int[] {
 				1,
-				3 };
+				3
+		};
 	};
 
 	@Override
@@ -343,7 +349,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 				3,
 				4,
 				5,
-				6 };
+				6
+		};
 	};
 
 	@Override
@@ -450,17 +457,15 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY) {
+		if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY)
 			return true;
-		}
 		return super.hasCapability(capability, facing);
 	}
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY) {
+		if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY)
 			return (T) cap;
-		}
 		return super.getCapability(capability, facing);
 	}
 

@@ -92,8 +92,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	}
 
 	@Override
-	public void onTickUpdate() {
-	}
+	public void onTickUpdate() {}
 
 	private int count = 20;
 
@@ -149,12 +148,13 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	}
 
 	public void processFluidSlots() {
-		this.processTank(inputT, 0, 1);
-		this.processTank(outputT, 2, 3);
+		this.processTank(inputT, 0, 1, false);
+		this.processTank(outputT, 2, 3, true);
 	}
 
-	protected void processTank(DCTank tank, int slot1, int slot2) {
-		if (!this.onDrainTank(tank, slot1, slot2)) {
+	protected void processTank(DCTank tank, int slot1, int slot2, boolean flag) {
+		// flagはdrain優先かどうか
+		if (!this.onDrainTank(tank, slot1, slot2, flag)) {
 			this.onFillTank(tank, slot1, slot2);
 		}
 	}
@@ -168,8 +168,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		IFluidHandler cont = null;
 		IFluidHandler dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
-		if (in.getTagCompound() != null)
-			in2.setTagCompound(in.getTagCompound());
+		if (in.getTagCompound() != null) {
+			in2.setTagCompound(in.getTagCompound().copy());
+		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
 			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
@@ -185,16 +186,19 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			int max = dummy.getTankProperties()[0].getCapacity();
 			FluidStack fc = dummy.drain(max, false);
 			// 流入の場合
-			if (fc != null && fc.amount > 0) {
+			if (fc != null && fc.amount > 0 && tank.canFillTarget(fc)) {
 				ret = null;
 				loose = false;
-				if (tank.canFillTarget(fc) && fc.amount + tank.getFluidAmount() <= tank.getCapacity()) {
+				boolean b = false;
+				int rem = tank.getCapacity() - tank.getFluidAmount();
+				fc = dummy.drain(rem, false);
+				if (fc != null && fc.amount <= rem) {
 					FluidStack fill = null;
 					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).drain(max, true);
+						fill = ((IFluidHandler) in2.getItem()).drain(rem, true);
 						ret = in2;
 					} else {
-						fill = dummy.drain(max, true);
+						fill = dummy.drain(rem, true);
 						ret = in2;
 					}
 
@@ -219,7 +223,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		return false;
 	}
 
-	protected boolean onDrainTank(DCTank tank, int slot1, int slot2) {
+	protected boolean onDrainTank(DCTank tank, int slot1, int slot2, boolean flag) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
 		if (in == null)
@@ -228,8 +232,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		IFluidHandler cont = null;
 		IFluidHandler dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
-		if (in.getTagCompound() != null)
-			in2.setTagCompound(in.getTagCompound());
+		if (in.getTagCompound() != null) {
+			in2.setTagCompound(in.getTagCompound().copy());
+		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
 			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
@@ -238,33 +243,41 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			dummy = (IFluidHandler) in2.getItem();
 		}
 
-		if (dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
 			boolean loose = false;
 			ItemStack ret = null;
 
 			int max = dummy.getTankProperties()[0].getCapacity();
 			FluidStack fc = dummy.drain(max, false);
-			// 排出の場合
+			boolean b = false;
+			int rem = max;
 			if (fc == null || fc.amount == 0) {
-				if (tank.getFluidAmount() > 0 && max <= tank.getFluidAmount()) {
-					FluidStack drain = tank.getContents().copy();
-					int fill = 0;
-					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-						ret = in2;
-					} else {
-						fill = dummy.fill(drain, true);
-						ret = in2;
-					}
+				b = true;
+			} else {
+				rem = max - fc.amount;
+				if (tank.getFluidAmount() <= rem) {
+					b = true;
+				}
+			}
+			// 排出の場合
+			if (b) {
+				FluidStack drain = tank.drain(rem, false);
+				int fill = 0;
+				if (in.getItem() instanceof IFluidHandler) {
+					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
+					ret = in2;
+				} else {
+					fill = dummy.fill(drain, true);
+					ret = in2;
+				}
 
-					if (ret.stackSize <= 0) {
-						ret = null;
-					}
+				if (ret.stackSize <= 0) {
+					ret = null;
+				}
 
-					if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
-						loose = true;
-						tank.drain(fill, true);
-					}
+				if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
+					loose = true;
+					tank.drain(fill, true);
 				}
 			}
 
@@ -307,9 +320,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			} else {
 				ret = this.isItemStackable(item, this.getStackInSlot(i));
 			}
-			if (ret > 0) {
+			if (ret > 0)
 				return ret;
-			}
 		}
 		return 0;
 	}
@@ -350,7 +362,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				2,
 				4,
 				5,
-				6 };
+				6
+		};
 	};
 
 	protected int[] slotsBottom() {
@@ -359,7 +372,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				3,
 				7,
 				8,
-				9 };
+				9
+		};
 	};
 
 	protected int[] slotsSides() {
@@ -373,7 +387,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				6,
 				7,
 				8,
-				9 };
+				9
+		};
 	};
 
 	public ItemStack[] inv = new ItemStack[this.getSizeInventory()];
@@ -381,8 +396,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	public List<ItemStack> getInputs() {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
 		for (int i = 4; i < 7; i++) {
-			if (inv[i] != null)
+			if (inv[i] != null) {
 				ret.add(inv[i]);
+			}
 		}
 		return ret;
 	}
@@ -390,8 +406,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	public List<ItemStack> getOutputs() {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
 		for (int i = 7; i < 10; i++) {
-			if (inv[i] != null)
+			if (inv[i] != null) {
 				ret.add(inv[i]);
+			}
 		}
 		return ret;
 	}
@@ -436,9 +453,9 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory()) {
+		if (i < 0 || i >= this.getSizeInventory())
 			return;
-		} else {
+		else {
 			this.inv[i] = stack;
 
 			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
@@ -477,8 +494,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-	}
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
 	public void closeInventory(EntityPlayer player) {
@@ -497,11 +513,10 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				cont = (IFluidHandler) stack.getItem();
 			}
 			return cont != null;
-		} else if (i > 3 && i < 7) {
+		} else if (i > 3 && i < 7)
 			return true;
-		} else {
+		else
 			return false;
-		}
 	}
 
 	// ホッパーにアイテムの受け渡しをする際の優先度
@@ -519,9 +534,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// 隣接するホッパーにアイテムを送れるかどうか
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (index == 0 || index == 4 || index == 5 || index == 6) {
+		if (index == 0 || index == 4 || index == 5 || index == 6)
 			return false;
-		}
 
 		return true;
 	}
@@ -644,12 +658,10 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return true;
-		}
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return true;
-		}
 		return super.hasCapability(capability, facing);
 	}
 

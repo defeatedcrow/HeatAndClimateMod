@@ -33,19 +33,66 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	public int prevProgressTime = 0;
 	public int currentProgressTime = 0;
-	public static final int MAX_PROGRESS_TIME = 256;
+	public static final int MAX_PROGRESS_TIME = 512;
 
-	private int loadCount = 3;
+	private int loadCount = 4;
 
 	@Override
 	public void updateTile() {
 		super.updateTile();
-		if (loadCount > 0) {
-			loadCount--;
-			return;
-		}
+	}
 
-		if (!worldObj.isRemote) {
+	private int getMatchSlot(ItemStack item, ItemStack[] list) {
+		if (item == null || item.getItem() == null)
+			return -1;
+		for (int i = 0; i < 9; i++) {
+			ItemStack check = inv[i + 2];
+			if (check == null || check.getItem() == null) {
+				continue;
+			} else if (DCUtil.isIntegratedItem(check, item)) {
+				if (check.stackSize >= item.stackSize)
+					return i; // 一致
+			} else if (item.getItem().isDamageable() && item.getItem() == check.getItem() && item.getItemDamage() > 0) {
+				if (check.stackSize >= item.stackSize)
+					return i; // damageableの場合、ダメージ値を問わない
+			} else {
+				int[] tarDic = OreDictionary.getOreIDs(check);
+				int[] itemDic = OreDictionary.getOreIDs(item);
+				if (tarDic.length > 0 && itemDic.length > 0) {
+					for (int a = 0; a < tarDic.length; a++) {
+						for (int b = 0; b < itemDic.length; b++) {
+							if (tarDic[a] == itemDic[b]) {
+								// 同一の辞書IDを持っている
+								if (check.stackSize >= item.stackSize)
+									return i; // 強制的に辞書レシピ化
+							} else if (itemDic[b] == OreDictionary.getOreID("dustIron")) {
+								// iron dust のみの特例措置
+								if (tarDic[a] == OreDictionary.getOreID("dustMagnetite")) {
+									if (check.stackSize >= item.stackSize)
+										return i; // 強制的に辞書レシピ化
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return -1;
+	}
+
+	private boolean flag = false;
+	private int tickCount = 5;
+
+	@Override
+	protected void onServerUpdate() {
+		if (tickCount <= 0) {
+			tickCount = 5;
+
+			if (loadCount > 0) {
+				loadCount--;
+				return;
+			}
+			// recipe処理
 			prevProgressTime = currentProgressTime;
 			currentProgressTime += MathHelper.floor_float(prevTorque);
 			if (currentProgressTime >= MAX_PROGRESS_TIME) {
@@ -109,60 +156,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			int ret = currentProgressTime % MAX_PROGRESS_TIME;
 			// DCLogger.debugLog("PressMachine rprogress " + ret);
 			currentProgressTime = ret;
-		}
 
-	}
-
-	private int getMatchSlot(ItemStack item, ItemStack[] list) {
-		if (item == null || item.getItem() == null) {
-			return -1;
-		}
-		for (int i = 0; i < 9; i++) {
-			ItemStack check = inv[i + 2];
-			if (check == null || check.getItem() == null) {
-				continue;
-			} else if (DCUtil.isIntegratedItem(check, item)) {
-				if (check.stackSize >= item.stackSize) {
-					return i; // 一致
-				}
-			} else if (item.getItem().isDamageable() && item.getItem() == check.getItem() && item.getItemDamage() > 0) {
-				if (check.stackSize >= item.stackSize) {
-					return i; // damageableの場合、ダメージ値を問わない
-				}
-			} else {
-				int[] tarDic = OreDictionary.getOreIDs(check);
-				int[] itemDic = OreDictionary.getOreIDs(item);
-				if (tarDic.length > 0 && itemDic.length > 0) {
-					for (int a = 0; a < tarDic.length; a++) {
-						for (int b = 0; b < itemDic.length; b++) {
-							if (tarDic[a] == itemDic[b]) {
-								// 同一の辞書IDを持っている
-								if (check.stackSize >= item.stackSize) {
-									return i; // 強制的に辞書レシピ化
-								}
-							} else if (itemDic[b] == OreDictionary.getOreID("dustIron")) {
-								// iron dust のみの特例措置
-								if (tarDic[a] == OreDictionary.getOreID("dustMagnetite")) {
-									if (check.stackSize >= item.stackSize) {
-										return i; // 強制的に辞書レシピ化
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		return -1;
-	}
-
-	private boolean flag = false;
-	private int tickCount = 5;
-
-	@Override
-	protected void onServerUpdate() {
-		if (tickCount <= 0) {
-			tickCount = 5;
 			// moldの更新
 			ItemStack moldItem = this.getStackInSlot(0);
 			int prevCount = 0;
@@ -230,9 +224,8 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		if (this.currentTorque >= this.maxTorque()) {
+		if (this.currentTorque >= this.maxTorque())
 			return false;
-		}
 		return this.isInputSide(side.getOpposite());
 	}
 
@@ -419,12 +412,14 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				7,
 				8,
 				9,
-				10 };
+				10
+		};
 	};
 
 	protected int[] slotsBottom() {
 		return new int[] {
-				1 };
+				1
+		};
 	};
 
 	protected int[] slotsSides() {
@@ -438,7 +433,8 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				7,
 				8,
 				9,
-				10 };
+				10
+		};
 	};
 
 	public ItemStack[] inv = new ItemStack[11];
@@ -447,24 +443,25 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	public List<ItemStack> getInputs() {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
 		for (int i = 2; i < 11; i++) {
-			if (inv[i] != null)
+			if (inv[i] != null) {
 				ret.add(inv[i]);
+			}
 		}
 		return ret;
 	}
 
 	public List<ItemStack> getOutputs() {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
-		if (inv[1] != null)
+		if (inv[1] != null) {
 			ret.add(inv[1]);
+		}
 		return ret;
 	}
 
 	// reqsの減少と容器返却を同時に行う
 	private void reduceReqItem(int slot, int amo) {
-		if (slot < 0 || slot > 8 || amo <= 0) {
+		if (slot < 0 || slot > 8 || amo <= 0)
 			return;
-		}
 		ItemStack target = inv[slot + 2];
 		if (target != null) {
 			ItemStack ret = target.getItem().getContainerItem(target);
@@ -498,13 +495,12 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	private boolean canIncrStack(ItemStack incr, int slot) {
 		ItemStack check = getStackInSlot(slot);
-		if (check == null || incr == null) {
+		if (check == null || incr == null)
 			return true;
-		} else if (incr.getItem() == check.getItem() && incr.getItemDamage() == check.getItemDamage()) {
+		else if (incr.getItem() == check.getItem() && incr.getItemDamage() == check.getItemDamage())
 			return incr.stackSize + check.stackSize <= 64;
-		} else {
+		else
 			return false;
-		}
 	}
 
 	public int incrStackSize(int i, ItemStack get) {
@@ -512,9 +508,8 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			return 0;
 		if (this.getStackInSlot(i) != null) {
 			if (getStackInSlot(i).getItem() != get.getItem()
-					|| getStackInSlot(i).getItemDamage() != get.getItemDamage()) {
+					|| getStackInSlot(i).getItemDamage() != get.getItemDamage())
 				return 0;
-			}
 			int ret = 64 - this.getStackInSlot(i).stackSize;
 
 			if (ret >= get.stackSize) {
@@ -539,11 +534,10 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	@Override
 	public ItemStack getStackInSlot(int i) {
 		if (i >= 0 && i < getSizeInventory())
-			if (i < 11) {
+			if (i < 11)
 				return this.inv[i];
-			} else {
+			else
 				return this.display[i - 11];
-			}
 		else
 			return null;
 	}
@@ -586,9 +580,9 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory()) {
+		if (i < 0 || i >= this.getSizeInventory())
 			return;
-		} else {
+		else {
 			if (i < 11) {
 				this.inv[i] = stack;
 
@@ -620,8 +614,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-	}
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
 	public void closeInventory(EntityPlayer player) {
@@ -630,13 +623,12 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
-		if (i == 0) {
+		if (i == 0)
 			return stack != null && stack.getItem() != null && stack.getItem() instanceof IPressMold;
-		} else if (i == 1 || i > 10) {
+		else if (i == 1 || i > 10)
 			return false;
-		} else {
+		else
 			return true;
-		}
 	}
 
 	@Override
@@ -695,9 +687,8 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	// 隣接するホッパーにアイテムを送れるかどうか
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (index != 1) {
+		if (index != 1)
 			return false;
-		}
 
 		return true;
 	}

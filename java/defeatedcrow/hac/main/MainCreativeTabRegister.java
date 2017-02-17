@@ -15,15 +15,6 @@ public class MainCreativeTabRegister {
 		MainInit.gemBlock.setCreativeTab(ClimateCore.climate);
 		MainInit.metalBlock.setCreativeTab(ClimateCore.climate);
 
-		// cont
-		MainInit.logCont.setCreativeTab(ClimateMain.build);
-		MainInit.cropCont.setCreativeTab(ClimateMain.build);
-		MainInit.dropCont.setCreativeTab(ClimateMain.build);
-		MainInit.miscCont.setCreativeTab(ClimateMain.build);
-		MainInit.cardboard.setCreativeTab(ClimateMain.build);
-		MainInit.cropBasket.setCreativeTab(ClimateMain.build);
-		MainInit.dustBags.setCreativeTab(ClimateMain.build);
-
 		// building
 		MainInit.bricks.setCreativeTab(ClimateMain.build);
 		MainInit.selenite.setCreativeTab(ClimateMain.build);
@@ -65,6 +56,15 @@ public class MainCreativeTabRegister {
 		MainInit.fuelStove.setCreativeTab(ClimateMain.machine);
 		MainInit.stevenson_screen.setCreativeTab(ClimateCore.climate);
 		MainInit.bellow.setCreativeTab(ClimateMain.machine);
+
+		// cont
+		MainInit.logCont.setCreativeTab(ClimateMain.build);
+		MainInit.cropCont.setCreativeTab(ClimateMain.build);
+		MainInit.dropCont.setCreativeTab(ClimateMain.build);
+		MainInit.miscCont.setCreativeTab(ClimateMain.build);
+		MainInit.cardboard.setCreativeTab(ClimateMain.build);
+		MainInit.cropBasket.setCreativeTab(ClimateMain.build);
+		MainInit.dustBags.setCreativeTab(ClimateMain.build);
 
 		// item
 		// ores

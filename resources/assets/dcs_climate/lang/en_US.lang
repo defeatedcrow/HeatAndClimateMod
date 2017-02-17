@@ -109,6 +109,7 @@ item.dcs_food_stick_beef_raw.name=Skewered Beef
 item.dcs_food_stick_beef_cooked.name=Cooked Skewered Beef
 item.dcs_food_teacup_silver.name=NickelSilver Cup
 item.dcs_food_teacup_white.name=Porcelain Cup
+item.dcs_food_teacup_glass.name=Tumbler Glass
 item.dcs_food_tart_apple_raw.name=Raw Apple Tart
 item.dcs_food_tart_apple_baked.name=Apple Tart
 item.dcs_food_tart_lemon_raw.name=Raw Lemon Cream Tart
@@ -507,6 +508,9 @@ tile.dcs_device_water_pump_0.name=Centrifugal pump
 tile.dcs_device_press_machine_0.name=Press Machine
 tile.dcs_device_creative_box_0.name=Creative Torque Block
 tile.dcs_device_conveyor_0.name=Conveyor Belt
+tile.dcs_device_catapult_0.name=Catapult
+tile.dcs_device_hopper_filter_0.name=Filter Hopper
+tile.dcs_device_hopper_fluid_0.name=Fluid Hopper
 
 ## crops
 tile.dcs_crop_rice_3.name=Rice Plant
@@ -557,6 +561,8 @@ fluid.dcs.black_coffee=Coffee
 tile.dcs_fluidblock_coffee_0.name=Coffee
 fluid.dcs.milk_cream=Cream
 tile.dcs_fluidblock_cream_0.name=Cream
+fluid.dcs.vegetable_juice=Vegetable Juice
+tile.dcs_fluidblock_vegetable_0.name=Vegetable Juice
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
@@ -645,6 +651,8 @@ dcs.gui.device.teapot=Tea Pot
 dcs.gui.device.chest=Chest
 dcs.gui.device.fuel_stove=Fluid Fuel Stove
 dcs.gui.device.pressmachine=Press Machine
+dcs.gui.device.hopper.filter=Filter Hopper
+dcs.gui.device.hopper.fluid=Fluid Hopper
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold

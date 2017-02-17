@@ -6,7 +6,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelCatapalt extends DCTileModelBase {
+public class ModelCatapult extends DCTileModelBase {
 	// fields
 	public ModelRenderer base;
 	public ModelRenderer sideL;
@@ -14,30 +14,30 @@ public class ModelCatapalt extends DCTileModelBase {
 	public ModelRenderer shattle;
 	public ModelRenderer shattle2;
 
-	public ModelCatapalt() {
+	public ModelCatapult() {
 		textureWidth = 64;
 		textureHeight = 64;
 
 		this.base = new ModelRenderer(this, 0, 0);
 		this.base.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.base.addBox(-7.0F, -1.0F, 0.0F, 14, 1, 16);
-		this.setRotation(this.base, 0.2617993877991494F, 0.0F, 0.0F);
+		this.base.addBox(-7.0F, -1.0F, -8.0F, 14, 1, 16);
+		this.setRotation(this.base, 0.0F, 0.0F, 0.0F);
 		this.sideL = new ModelRenderer(this, 0, 18);
 		this.sideL.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.sideL.addBox(7.0F, -2.0F, 0.0F, 1, 2, 16);
-		this.setRotation(this.sideL, 0.2617993877991494F, 0.0F, 0.0F);
+		this.sideL.addBox(7.0F, -2.0F, -8.0F, 1, 2, 16);
+		this.setRotation(this.sideL, 0.0F, 0.0F, 0.0F);
 		this.sideR = new ModelRenderer(this, 0, 18);
 		this.sideR.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.sideR.addBox(-8.0F, -2.0F, 0.0F, 1, 2, 16);
-		this.setRotation(this.sideR, 0.2617993877991494F, 0.0F, 0.0F);
+		this.sideR.addBox(-8.0F, -2.0F, -8.0F, 1, 2, 16);
+		this.setRotation(this.sideR, 0.0F, 0.0F, 0.0F);
 		this.shattle = new ModelRenderer(this, 0, 18);
 		this.shattle.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.shattle.addBox(-1.0F, -2.0F, 0.0F, 2, 1, 4);
-		this.setRotation(this.shattle, 0.2617993877991494F, 0.0F, 0.0F);
+		this.shattle.addBox(-1.0F, -2.0F, -8.0F, 2, 1, 4);
+		this.setRotation(this.shattle, 0.0F, 0.0F, 0.0F);
 		this.shattle2 = new ModelRenderer(this, 20, 18);
 		this.shattle2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.shattle2.addBox(-0.5F, -1.5F, 1.0F, 1, 1, 14);
-		this.setRotation(this.shattle2, 0.2617993877991494F, 0.0F, 0.0F);
+		this.shattle2.addBox(-0.5F, -1.5F, -7.0F, 1, 1, 14);
+		this.setRotation(this.shattle2, 0.0F, 0.0F, 0.0F);
 	}
 
 	@Override

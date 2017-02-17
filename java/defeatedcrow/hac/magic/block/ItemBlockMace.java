@@ -31,7 +31,6 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	public ItemBlockMace(Block block) {
 		super(block);
 		this.setMaxStackSize(1);
-		this.isFull3D();
 	}
 
 	public float getDamageVsEntity() {
@@ -122,6 +121,12 @@ public abstract class ItemBlockMace extends DCItemBlock {
 
 	public boolean isActive(ItemStack item) {
 		return getNBTDamage(item) > 0;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean isFull3D() {
+		return true;
 	}
 
 	@Override

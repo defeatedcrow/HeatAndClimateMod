@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.capability.DrinkSugar;
 import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
+import defeatedcrow.hac.food.entity.EntityTumbler;
 import defeatedcrow.hac.plugin.DrinkPotionType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -50,7 +51,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 1;
+		return 2;
 	}
 
 	@Override
@@ -67,7 +68,9 @@ public class ItemSilverCup extends FoodItemBase {
 	public String[] getNameSuffix() {
 		String[] s = {
 				"silver",
-				"white" };
+				"white",
+				"glass"
+		};
 		return s;
 	}
 
@@ -90,11 +93,12 @@ public class ItemSilverCup extends FoodItemBase {
 		switch (i) {
 		case 1:
 			ret = new EntityTeaCupWhite(world, x, y, z, player).setFluid(f).setCustom(milk, sugar);
-
+			break;
+		case 2:
+			ret = new EntityTumbler(world, x, y, z, player).setFluid(f).setCustom(milk, sugar);
 			break;
 		default:
 			ret = new EntityTeaCupSilver(world, x, y, z, player).setFluid(f).setCustom(milk, sugar);
-			;
 			break;
 		}
 
@@ -108,7 +112,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 0.5F;
+		return 0.25F;
 	}
 
 	@Override
@@ -123,9 +127,8 @@ public class ItemSilverCup extends FoodItemBase {
 		IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		if (cont != null && cont.getTankProperties() != null) {
 			FluidStack f = cont.getTankProperties()[0].getContents();
-			if (f != null) {
+			if (f != null)
 				return super.onItemRightClick(item, world, player, hand);
-			}
 		}
 		return new ActionResult(EnumActionResult.FAIL, item);
 	}
@@ -140,8 +143,9 @@ public class ItemSilverCup extends FoodItemBase {
 			for (PotionEffect get : effects) {
 				if (get != null && get.getPotion() != null) {
 					Potion por = get.getPotion();
-					if (por == null)
+					if (por == null) {
 						continue;
+					}
 					int amp = get.getAmplifier();
 					int dur = get.getDuration();
 					if (living.isPotionActive(get.getPotion())) {
@@ -158,9 +162,9 @@ public class ItemSilverCup extends FoodItemBase {
 
 	public List<PotionEffect> getPotionEffect(ItemStack item) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
-		if (item == null || item.getItem() == null || item.getItem() != this) {
+		if (item == null || item.getItem() == null || item.getItem() != this)
 			return ret;
-		} else {
+		else {
 			IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 			IDrinkCustomize drink = item.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 			if (cont != null && cont.getTankProperties() != null) {
@@ -182,6 +186,9 @@ public class ItemSilverCup extends FoodItemBase {
 								ampF));
 					} else if (f.getFluid() == FoodInit.oil) {
 						ret.add(new PotionEffect(DCPotion.speed, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+					} else if (f.getFluid() == FoodInit.tomatoJuice) {
+						ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * (dirF + ampF)),
+								0));
 					} else if (f.getFluid() == FluidRegistry.WATER) {
 						ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF),
 								ampF));
@@ -279,24 +286,22 @@ public class ItemSilverCup extends FoodItemBase {
 
 		@Override
 		public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-			if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 				return true;
-			} else if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY) {
+			else if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY)
 				return true;
-			} else {
+			else
 				return false;
-			}
 		}
 
 		@Override
 		public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-			if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 				return (T) new FluidHandlerItemStack(cont, 200);
-			} else if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY) {
+			else if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY)
 				return (T) new DrinkItemCustomizer(cont);
-			} else {
+			else
 				return null;
-			}
 		}
 	}
 

@@ -103,15 +103,7 @@ public class MachineRecipeRegister {
 			// 3x3
 			RecipeAPI.registerRecipes.addRecipe(new ItemStack(MainInit.metalBlock, 1, 0), DCHeatTier.KILN, null,
 					DCAirflow.TIGHT, false, new Object[] {
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper"
+							"dustDebug"
 					});
 		}
 

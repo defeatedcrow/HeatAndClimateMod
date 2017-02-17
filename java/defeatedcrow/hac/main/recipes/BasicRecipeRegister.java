@@ -1319,6 +1319,30 @@ public class BasicRecipeRegister {
 				new ItemStack(Blocks.CHEST, 1, 0)
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chestVillage, 1, 0), new Object[] {
+				"XZX",
+				"XYX",
+				"XXX",
+				'X',
+				"ingotGold",
+				'Y',
+				new ItemStack(Blocks.CHEST, 1, 0),
+				'Z',
+				"gemEmerald"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chestVillage, 1, 0), new Object[] {
+				"XZX",
+				"XYX",
+				"XXX",
+				'X',
+				"ingotGold",
+				'Y',
+				new ItemStack(Blocks.CHEST, 1, 0),
+				'Z',
+				"gemPeridot"
+		}));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.plate, 2, 0), new Object[] {
 				"X X",
 				'X',
@@ -1365,7 +1389,7 @@ public class BasicRecipeRegister {
 					'X',
 					name[i],
 					'Y',
-					new ItemStack(Items.STICK)
+					"stickWood"
 			}));
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcAxe[i], 1, 0), new Object[] {
@@ -1375,7 +1399,7 @@ public class BasicRecipeRegister {
 					'X',
 					name[i],
 					'Y',
-					new ItemStack(Items.STICK)
+					"stickWood"
 			}));
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcSpade[i], 1, 0), new Object[] {
@@ -1385,7 +1409,7 @@ public class BasicRecipeRegister {
 					'X',
 					name[i],
 					'Y',
-					new ItemStack(Items.STICK)
+					"stickWood"
 			}));
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcSword[i], 1, 0), new Object[] {
@@ -1395,9 +1419,39 @@ public class BasicRecipeRegister {
 					'X',
 					name[i],
 					'Y',
-					new ItemStack(Items.STICK)
+					"stickWood"
 			}));
 		}
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcScythe[0], 1, 0), new Object[] {
+				" X ",
+				"  X",
+				"YYX",
+				'X',
+				"ingotBrass",
+				'Y',
+				"stickWood"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcScythe[1], 1, 0), new Object[] {
+				" X ",
+				"  X",
+				"YYX",
+				'X',
+				"ingotSteel",
+				'Y',
+				"stickWood"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcScythe[2], 1, 0), new Object[] {
+				" X ",
+				"  X",
+				"YYX",
+				'X',
+				"gemChalcedony",
+				'Y',
+				"stickWood"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[0], 1, 0), new Object[] {
 				"XXX",
@@ -1654,6 +1708,13 @@ public class BasicRecipeRegister {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreIngot, 1, 5), new Object[] {
 				new ItemStack(MainInit.oreIngot, 1, 7)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.DIRT, 1, 0), new Object[] {
+				new ItemStack(Blocks.SAND, 1, 32767),
+				new ItemStack(Items.DYE, 1, 15),
+				"dustAsh",
+				"dustPresscake",
 		}));
 	}
 }

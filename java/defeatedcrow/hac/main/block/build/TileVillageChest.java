@@ -46,7 +46,7 @@ public class TileVillageChest extends TileLowChest {
 						ItemStack item = inv.getStackInSlot(i);
 						// canAbondonItems()とisFarmItemInInventory()をキープし続ける
 						if (item != null) {
-							int count = item.getItem() == Items.BREAD ? 6 : 24;
+							int count = item.getItem() == Items.BREAD ? 6 : 30;
 							// DCLogger.debugLog("villager slot" + i + ":" + item.getDisplayName() + "x" +
 							// item.stackSize);
 							if (item.stackSize > count) {

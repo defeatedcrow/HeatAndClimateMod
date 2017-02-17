@@ -6,8 +6,7 @@ import net.minecraftforge.fluids.Fluid;
 
 public class FoodInit {
 
-	private FoodInit() {
-	}
+	private FoodInit() {}
 
 	public static Item bread;
 	public static Item sandwich;
@@ -33,6 +32,7 @@ public class FoodInit {
 	public static Item pastry;
 
 	public static Item cupSilver;
+	public static Item tumbler;
 	public static Item steakplate;
 
 	public static Block potteryPot;
@@ -58,11 +58,13 @@ public class FoodInit {
 	public static Fluid blackTea;
 	public static Fluid coffee;
 	public static Fluid cream;
+	public static Fluid tomatoJuice;
 
 	public static Block oilBlock;
 	public static Block greenTeaBlock;
 	public static Block blackTeaBlock;
 	public static Block coffeeBlock;
 	public static Block creamBlock;
+	public static Block tomatoBlock;
 
 }

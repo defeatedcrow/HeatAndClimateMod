@@ -45,8 +45,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class FoodInitRegister {
 
-	private FoodInitRegister() {
-	}
+	private FoodInitRegister() {}
 
 	public static void load() {
 		DrinkCapabilityHandler.register();
@@ -56,8 +55,9 @@ public class FoodInitRegister {
 		loadFluids();
 		loadFoods();
 
-		if (ModuleConfig.food)
+		if (ModuleConfig.food) {
 			loadCreativeTab();
+		}
 	}
 
 	static void loadBlocks() {
@@ -219,12 +219,23 @@ public class FoodInitRegister {
 		MainMaterialRegister.registerBlock(FoodInit.creamBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_cream");
 		FoodInit.cream.setBlock(FoodInit.creamBlock);
 
+		FoodInit.tomatoJuice = new Fluid("dcs.vegetable_juice",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/vegetable_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/vegetable_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".vegetable_juice");
+		FluidRegistry.registerFluid(FoodInit.tomatoJuice);
+		FoodInit.tomatoBlock = new DCFluidBlockBase(FoodInit.tomatoJuice, "vegetable_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable");
+		MainMaterialRegister.registerBlock(FoodInit.tomatoBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable");
+		FoodInit.tomatoJuice.setBlock(FoodInit.tomatoBlock);
+
 		// bucket
 		FluidRegistry.addBucketForFluid(FoodInit.oil);
 		FluidRegistry.addBucketForFluid(FoodInit.greenTea);
 		FluidRegistry.addBucketForFluid(FoodInit.blackTea);
 		FluidRegistry.addBucketForFluid(FoodInit.coffee);
 		FluidRegistry.addBucketForFluid(FoodInit.cream);
+		FluidRegistry.addBucketForFluid(FoodInit.tomatoJuice);
 
 		// fluid item
 		FoodInit.dropOil = new ItemFluidDrop("olive", "dcs.seed_oil")

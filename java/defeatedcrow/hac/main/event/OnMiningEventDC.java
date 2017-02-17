@@ -14,8 +14,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -67,27 +65,6 @@ public class OnMiningEventDC {
 		}
 	}
 
-	@SubscribeEvent
-	public void onLeftClick(PlayerInteractEvent.LeftClickBlock event) {
-		if (event.getPos().getY() > 1) {
-			if (event.getItemStack() != null && event.getHand() == EnumHand.MAIN_HAND && !event.getWorld().isRemote) {
-				ItemStack held = event.getItemStack();
-				if (held.getItem() instanceof ItemPickaxe
-						&& ((ItemTool) held.getItem()).getToolMaterial().getHarvestLevel() >= 4) {
-					IBlockState state = event.getWorld().getBlockState(event.getPos());
-					if (state != null && state.getBlock() == Blocks.BEDROCK) {
-						ItemStack item = new ItemStack(Blocks.BEDROCK);
-						EntityItem drop = new EntityItem(event.getWorld(), event.getPos().getX() + 0.5D,
-								event.getPos().getY() + 0.5D, event.getPos().getZ() + 0.5D, item);
-						event.getWorld().setBlockToAir(event.getPos());
-						event.getWorld().spawnEntityInWorld(drop);
-						held.damageItem(1, event.getEntityLiving());
-					}
-				}
-			}
-		}
-	}
-
 	// 右クリック回収機構
 	// Blockにターゲットした場合
 	@SubscribeEvent
@@ -95,30 +72,51 @@ public class OnMiningEventDC {
 		EntityPlayer player = event.getEntityPlayer();
 		BlockPos pos = event.getPos();
 		ItemStack stack = event.getItemStack();
-		if (player != null && stack != null && stack.getItem() instanceof ItemScytheDC) {
-			if (!player.worldObj.isRemote) {
-				boolean b = false;
-				int area = ((ItemScytheDC) stack.getItem()).range;
-				for (int x = -area; x <= area; x++) {
-					for (int z = -area; z <= area; z++) {
-						for (int y = -area; y <= area; y++) {
-							BlockPos p1 = pos.add(x, y, z);
-							IBlockState target = player.worldObj.getBlockState(p1);
-							if (target.getBlock() instanceof IClimateCrop) {
-								((IClimateCrop) target.getBlock()).harvest(player.worldObj, p1, target, player);
-								b = true;
+		if (player != null && stack != null) {
+			if (stack.getItem() instanceof ItemScytheDC) {
+				if (!player.worldObj.isRemote) {
+					boolean b = false;
+					int area = ((ItemScytheDC) stack.getItem()).range;
+					for (int x = -area; x <= area; x++) {
+						for (int z = -area; z <= area; z++) {
+							for (int y = -area; y <= area; y++) {
+								BlockPos p1 = pos.add(x, y, z);
+								IBlockState target = player.worldObj.getBlockState(p1);
+								if (target.getBlock() instanceof IClimateCrop) {
+									((IClimateCrop) target.getBlock()).harvest(player.worldObj, p1, target, player);
+									b = true;
+								}
 							}
 						}
 					}
+					if (b) {
+						stack.damageItem(1, player);
+						event.setUseBlock(Result.ALLOW);
+					}
 				}
-				if (b) {
-					stack.damageItem(1, player);
-					event.setUseBlock(Result.ALLOW);
+
+				player.worldObj.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_SHEEP_SHEAR,
+						SoundCategory.PLAYERS, 1.5F, 1.5F / (player.worldObj.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+
+			} else if (stack.getItem() instanceof ItemPickaxe) {
+				ItemPickaxe pic = (ItemPickaxe) stack.getItem();
+				if (pos.getY() > 1 && pic.getToolMaterial().getHarvestLevel() >= 4) {
+					IBlockState state = event.getWorld().getBlockState(pos);
+					if (state != null && state.getBlock() == Blocks.BEDROCK) {
+						ItemStack item = new ItemStack(Blocks.BEDROCK);
+						EntityItem drop = new EntityItem(event.getWorld(), pos.getX() + 0.5D, pos.getY() + 0.5D,
+								pos.getZ() + 0.5D, item);
+						if (!event.getWorld().isRemote) {
+							event.getWorld().setBlockToAir(pos);
+							event.getWorld().spawnEntityInWorld(drop);
+							stack.damageItem(1, event.getEntityLiving());
+						}
+						player.worldObj.playSound(player, player.posX, player.posY, player.posZ,
+								SoundEvents.BLOCK_STONE_BREAK, SoundCategory.PLAYERS, 1.5F,
+								1.0F / (player.worldObj.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+					}
 				}
 			}
-
-			player.worldObj.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_SHEEP_SHEAR,
-					SoundCategory.PLAYERS, 1.5F, 1.5F / (player.worldObj.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 		}
 	}
 

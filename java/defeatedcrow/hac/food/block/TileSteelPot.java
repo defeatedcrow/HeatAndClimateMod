@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -11,8 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
-import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
 
 public class TileSteelPot extends TileFluidProcessorBase {
 
@@ -23,9 +23,8 @@ public class TileSteelPot extends TileFluidProcessorBase {
 
 	@Override
 	public boolean canRecipeProcess() {
-		if (!isSuitableClimate()) {
+		if (!isSuitableClimate())
 			return false;
-		}
 		FluidStack inf = inputT.getFluid();
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
@@ -45,9 +44,8 @@ public class TileSteelPot extends TileFluidProcessorBase {
 
 	@Override
 	public boolean canStartProcess() {
-		if (!isSuitableClimate()) {
+		if (!isSuitableClimate())
 			return false;
-		}
 		FluidStack inf = inputT.getFluid();
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
@@ -90,8 +88,9 @@ public class TileSteelPot extends TileFluidProcessorBase {
 							if (list != null && !list.isEmpty()) {
 								for (ItemStack item : list) {
 									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.stackSize > 0;
-									if (f)
+									if (f) {
 										match = true;
+									}
 								}
 							}
 						}
@@ -130,21 +129,16 @@ public class TileSteelPot extends TileFluidProcessorBase {
 
 	@Override
 	public boolean isSuitableClimate() {
-		// 高温が必要
-		return current != null && current.getHeat().getTier() > 1;
+		// 問わず
+		return current != null;
 	}
 
 	@Override
 	public String notSuitableMassage() {
-		if (current == null) {
+		if (current == null)
 			return "dcs.gui.message.nullclimate";
-		} else {
-			if (current.getHeat().getTier() < 2) {
-				return "dcs.gui.message.steel.toocold";
-			} else {
-				return "dcs.gui.message.suitableclimate";
-			}
-		}
+		else
+			return "dcs.gui.message.suitableclimate";
 	}
 
 	// @Override

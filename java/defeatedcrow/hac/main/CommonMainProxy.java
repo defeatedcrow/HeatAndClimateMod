@@ -11,10 +11,16 @@ import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
+import defeatedcrow.hac.machine.block.TileHopperFilter;
+import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
+import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
+import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
 import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
+import defeatedcrow.hac.machine.gui.GuiHopperFilter;
+import defeatedcrow.hac.machine.gui.GuiHopperFluid;
 import defeatedcrow.hac.machine.gui.GuiPressMachine;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
@@ -208,6 +214,10 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerFuelStove((TileCookingStove) tile, player.inventory);
 		if (tile instanceof TilePressMachine)
 			return new ContainerPressMachine((TilePressMachine) tile, player.inventory);
+		if (tile instanceof TileHopperFilter)
+			return new ContainerHopperFilter((TileHopperFilter) tile, player);
+		if (tile instanceof TileHopperFluid)
+			return new ContainerHopperFluid((TileHopperFluid) tile, player);
 		return null;
 	}
 
@@ -235,6 +245,10 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiFuelStove((TileCookingStove) tile, player.inventory);
 		if (tile instanceof TilePressMachine)
 			return new GuiPressMachine((TilePressMachine) tile, player.inventory);
+		if (tile instanceof TileHopperFilter)
+			return new GuiHopperFilter((TileHopperFilter) tile, player);
+		if (tile instanceof TileHopperFluid)
+			return new GuiHopperFluid((TileHopperFluid) tile, player);
 		return null;
 	}
 

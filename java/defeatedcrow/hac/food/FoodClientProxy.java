@@ -45,6 +45,7 @@ import defeatedcrow.hac.food.client.TESRPotteryPot;
 import defeatedcrow.hac.food.client.TESRSteelPot;
 import defeatedcrow.hac.food.client.TESRTeaPot;
 import defeatedcrow.hac.food.client.ToastRenderer;
+import defeatedcrow.hac.food.client.TumblerRenderer;
 import defeatedcrow.hac.food.client.YakitoriStickRenderer;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
 import defeatedcrow.hac.food.entity.BeefPlateEntity;
@@ -57,6 +58,7 @@ import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntitySandwich;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
+import defeatedcrow.hac.food.entity.EntityTumbler;
 import defeatedcrow.hac.food.entity.FishPlateEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
 import defeatedcrow.hac.food.entity.FruitPieEntity;
@@ -133,6 +135,7 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(SoupPlateEntity.class, PlateTomatoRenderer.class);
 		ClientMainProxy.registRender(ChocolatePieEntity.class, ChocolatePieRenderer.class);
 		ClientMainProxy.registRender(FruitPieEntity.class, FruitPieRenderer.class);
+		ClientMainProxy.registRender(EntityTumbler.class, TumblerRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -151,7 +154,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.sticks, ClimateCore.PACKAGE_ID, "dcs_stick_foods", "food", 7);
 		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 9);
 		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 5);
-		instance.regSimpleItem(FoodInit.cupSilver, ClimateCore.PACKAGE_ID, "dcs_food_teacup", "food", 1);
+		instance.regSimpleItem(FoodInit.cupSilver, ClimateCore.PACKAGE_ID, "dcs_food_teacup", "food", 2);
 		instance.regSimpleItem(FoodInit.dairy, ClimateCore.PACKAGE_ID, "dcs_food_dairy", "food", 2);
 		instance.regSimpleItem(FoodInit.meat, ClimateCore.PACKAGE_ID, "dcs_food_meat", "food", 1);
 		instance.regSimpleItem(FoodInit.pastry, ClimateCore.PACKAGE_ID, "dcs_food_pastry", "food", 0);
@@ -266,6 +269,25 @@ public class FoodClientProxy {
 		ModelLoader.setCustomStateMapper(FoodInit.creamBlock, new StateMapperBase() {
 			final ModelResourceLocation fluidModel = new ModelResourceLocation(
 					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_cream", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.tomatoBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(FoodInit.tomatoBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {

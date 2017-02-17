@@ -5,8 +5,7 @@ import net.minecraft.item.Item;
 
 public class MachineInit {
 
-	private MachineInit() {
-	}
+	private MachineInit() {}
 
 	// tier 1
 
@@ -28,12 +27,15 @@ public class MachineInit {
 	// tier 2
 
 	public static Block fauset;
-	public static Block hopperFluid;
 	public static Block IBC;
+
+	public static Block conveyor;
+	public static Block hopperFilter;
+	public static Block hopperFluid;
 
 	public static Block stonemill;
 	public static Block heatPump;
-	public static Block conveyor;
+	public static Block catapult;
 
 	// tier 3
 
@@ -50,8 +52,6 @@ public class MachineInit {
 
 	public static Block waterPump;
 	public static Block pressMachine;
-	public static Block hopperR;
-	public static Block catapult;
 
 	public static Item torqueChecker;
 	public static Item mold;

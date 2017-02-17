@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.machine.block.TileStoneMill;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -7,11 +8,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.machine.block.TileStoneMill;
 
 @SideOnly(Side.CLIENT)
 public class GuiStoneMill extends GuiContainer {
-	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate", "textures/gui/stonemill_gui.png");
+	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
+			"textures/gui/stonemill_gui.png");
 	/** The player inventory bound to this GUI. */
 	private final InventoryPlayer playerInventory;
 	private final TileStoneMill mill;
@@ -39,6 +40,9 @@ public class GuiStoneMill extends GuiContainer {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		int l = this.getCookProgressScaled(20);
+		if (l > 20) {
+			l = 20;
+		}
 		this.drawTexturedModalRect(i + 78, j + 34, 176, 0, l, 12);
 	}
 

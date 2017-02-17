@@ -3,7 +3,7 @@ package defeatedcrow.hac.magic.proj;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleShock;
-import defeatedcrow.hac.main.worldgen.WorldGenSkarn;
+import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -58,7 +58,7 @@ public class EntityProjClmD extends EntityMagicProjBase {
 
 		if (dia > 0) {
 			Chunk chunk = worldObj.getChunkFromBlockCoords(this.getPosition());
-			WorldGenSkarn gen = new WorldGenSkarn(true);
+			WorldGenAltSkarn gen = new WorldGenAltSkarn(true);
 			gen.setRange(dia);
 			gen.setForcePos(this.getPosition().getX(), this.getPosition().getZ());
 			gen.generate(rand, chunk.xPosition, chunk.zPosition, worldObj, worldObj.provider.createChunkGenerator(),

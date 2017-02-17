@@ -3,6 +3,7 @@ package defeatedcrow.hac.machine;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
+import defeatedcrow.hac.machine.block.TileCatapult;
 import defeatedcrow.hac.machine.block.TileConveyor;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileCreativeBox;
@@ -12,6 +13,8 @@ import defeatedcrow.hac.machine.block.TileGearBox;
 import defeatedcrow.hac.machine.block.TileGearBox_SUS;
 import defeatedcrow.hac.machine.block.TileHandCrank;
 import defeatedcrow.hac.machine.block.TileHeatExchanger;
+import defeatedcrow.hac.machine.block.TileHopperFilter;
+import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TilePressMachine;
@@ -29,12 +32,14 @@ import defeatedcrow.hac.machine.block.TileWaterPump;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.client.BoilerTurbineTESR;
+import defeatedcrow.hac.machine.client.CatapultTESR;
 import defeatedcrow.hac.machine.client.ConveyorTESR;
 import defeatedcrow.hac.machine.client.CreativeBoxTESR;
 import defeatedcrow.hac.machine.client.FanTESR;
 import defeatedcrow.hac.machine.client.GearBoxTESR;
 import defeatedcrow.hac.machine.client.HandCrankTESR;
 import defeatedcrow.hac.machine.client.HeatExchangerTESR;
+import defeatedcrow.hac.machine.client.HopperFluidTESR;
 import defeatedcrow.hac.machine.client.IBCTESR;
 import defeatedcrow.hac.machine.client.KineticMotorTESR;
 import defeatedcrow.hac.machine.client.L_ShaftTESR;
@@ -88,6 +93,9 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileWaterPump.class, "dcs_te_water_pump", new WaterPumpTESR());
 		ClientRegistry.registerTileEntity(TileCreativeBox.class, "dcs_te_creative", new CreativeBoxTESR());
 		ClientRegistry.registerTileEntity(TileConveyor.class, "dcs_te_conveyor", new ConveyorTESR());
+		ClientRegistry.registerTileEntity(TileCatapult.class, "dcs_te_catapult", new CatapultTESR());
+		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
+		ClientRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid", new HopperFluidTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -131,7 +139,12 @@ public class MachineClientProxy {
 				"machine", 0);
 		instance.regTETorqueBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_ID, "dcs_device_creative_box", "machine",
 				0);
+		instance.regTETorqueBlock(MachineInit.catapult, ClimateCore.PACKAGE_ID, "dcs_device_catapult", "machine", 0);
 		instance.regSimpleBlock(MachineInit.conveyor, ClimateCore.PACKAGE_ID, "dcs_device_conveyor", "machine", 0);
+		instance.regSimpleBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter", "machine",
+				0);
+		instance.regTETorqueBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine",
+				0);
 	}
 
 }

@@ -353,6 +353,46 @@ public class MachineRecipes {
 				"gearSteel"
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.catapult, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MachineInit.conveyor, 1, 0),
+				'Y',
+				new ItemStack(Blocks.PISTON, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.hopperFilter, 1, 0), new Object[] {
+				"XZX",
+				"XYX",
+				" X ",
+				'X',
+				"ingotIron",
+				'Y',
+				new ItemStack(Blocks.CHEST, 1, 0),
+				'Z',
+				new ItemStack(Blocks.IRON_BARS, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.hopperFilter, 1, 0), new Object[] {
+				"Z",
+				"Y",
+				'Y',
+				new ItemStack(Blocks.HOPPER, 1, 0),
+				'Z',
+				new ItemStack(Blocks.IRON_BARS, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.hopperFluid, 1, 0), new Object[] {
+				"X X",
+				"XYX",
+				" X ",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				new ItemStack(Blocks.CHEST, 1, 0)
+		}));
+
 	}
 
 	static void loadClimateRecipe() {}

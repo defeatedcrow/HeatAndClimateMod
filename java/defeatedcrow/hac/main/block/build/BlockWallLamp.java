@@ -1,7 +1,6 @@
 package defeatedcrow.hac.main.block.build;
 
 import java.util.List;
-import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import net.minecraft.block.Block;
@@ -78,16 +77,6 @@ public class BlockWallLamp extends Block {
 		for (int i = 0; i < maxMeta + 1; i++) {
 			list.add(new ItemStack(this, 1, i));
 		}
-	}
-
-	@Override
-	public int quantityDropped(Random random) {
-		return 0;
-	}
-
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return null;
 	}
 
 	@Override

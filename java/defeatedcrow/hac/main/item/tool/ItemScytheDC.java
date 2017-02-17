@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -92,9 +93,14 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 					BlockPos p1 = pos.add(x, y, z);
 					IBlockState target = world.getBlockState(p1);
 					if (getStrVsBlock(stack, target) >= 5.0F && !(target.getBlock() instanceof BlockStem)) {
-						boolean flag = false;
+
+						boolean flag = true;
 						if (target.getBlock() instanceof IGrowable) {
 							flag = ((IGrowable) target.getBlock()).canGrow(world, p1, target, false);
+						}
+
+						if (target.getBlock() instanceof IShearable) {
+							flag = !((IShearable) target.getBlock()).isShearable(stack, world, p1);
 						}
 
 						if (!flag) {

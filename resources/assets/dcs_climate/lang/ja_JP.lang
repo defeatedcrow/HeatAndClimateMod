@@ -105,6 +105,7 @@ item.dcs_food_stick_beef_raw.name=生の牛串
 item.dcs_food_stick_beef_cooked.name=焼いた牛串
 item.dcs_food_teacup_silver.name=洋白銀器のカップ
 item.dcs_food_teacup_white.name=白磁のカップ
+item.dcs_food_teacup_glass.name=ガラスのタンブラー
 item.dcs_food_tart_apple_raw.name=生のアップルタルト
 item.dcs_food_tart_apple_baked.name=アップルタルト
 item.dcs_food_tart_lemon_raw.name=生のレモンクリームタルト
@@ -491,6 +492,9 @@ tile.dcs_device_water_pump_0.name=渦巻き式ポンプ
 tile.dcs_device_press_machine_0.name=プレス加工機
 tile.dcs_device_creative_box_0.name=クリエイティブ用トルク発生機
 tile.dcs_device_conveyor_0.name=コンベア
+tile.dcs_device_catapult_0.name=カタパルト
+tile.dcs_device_hopper_filter_0.name=フィルターホッパー
+tile.dcs_device_hopper_fluid_0.name=液体ホッパー
 
 tile.dcs_crop_rice_3.name=稲
 tile.dcs_crop_onion_3.name=玉ねぎの苗
@@ -540,6 +544,8 @@ fluid.dcs.black_coffee=コーヒー
 tile.dcs_fluidblock_coffee_0.name=コーヒー
 fluid.dcs.milk_cream=生クリーム
 tile.dcs_fluidblock_cream_0.name=生クリーム
+fluid.dcs.vegetable_juice=野菜ジュース
+tile.dcs_fluidblock_vegetable_0.name=野菜ジュース
 
 ## message
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)
@@ -644,6 +650,8 @@ dcs.gui.device.teapot=ティーポット
 dcs.gui.device.chest=チェスト
 dcs.gui.device.fuel_stove=液体燃料炉
 dcs.gui.device.pressmachine=プレス加工機
+dcs.gui.device.hopper.filter=フィルターホッパー
+dcs.gui.device.hopper.fluid=液体ホッパー
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます
