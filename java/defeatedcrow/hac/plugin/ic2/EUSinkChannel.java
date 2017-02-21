@@ -4,7 +4,7 @@ import ic2.api.energy.prefab.BasicSink;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-//該当のTileEntityクラスに直接BasicSinkを置かないための中継点。
+// 該当のTileEntityクラスに直接BasicSinkを置かないための中継点。
 public class EUSinkChannel extends BasicSink implements IEUSinkChannel {
 
 	public EUSinkChannel(TileEntity parent1, int capacity1, int tier1) {
@@ -37,17 +37,17 @@ public class EUSinkChannel extends BasicSink implements IEUSinkChannel {
 
 	@Override
 	public void invalidate2() {
-		super.invalidate();
+		super.onInvalidate();
 	}
 
 	@Override
 	public void onChunkUnload2() {
-		super.onChunkUnload();
+		super.onOnChunkUnload();
 	}
 
 	@Override
 	public void updateEntity2() {
-		super.update();
+		super.onupdate();
 	}
 
 	@Override

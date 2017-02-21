@@ -128,11 +128,6 @@ public class BlockHopperFilter extends BlockContainer {
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer) {
 		EnumFacing face = facing.getOpposite();
-
-		if (face == EnumFacing.UP) {
-			face = EnumFacing.DOWN;
-		}
-
 		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face))
 				.withProperty(DCState.POWERED, Boolean.valueOf(true));
 	}

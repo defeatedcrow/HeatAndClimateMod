@@ -303,8 +303,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	@Override
 	public boolean isSuitableClimate() {
-		// 高温が必要
-		return current != null && current.getHeat().getTier() > 1;
+		return current != null;
 	}
 
 	@Override

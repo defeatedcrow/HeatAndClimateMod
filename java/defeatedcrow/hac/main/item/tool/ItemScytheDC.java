@@ -15,6 +15,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -101,6 +102,17 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 
 						if (target.getBlock() instanceof IShearable) {
 							flag = !((IShearable) target.getBlock()).isShearable(stack, world, p1);
+						}
+
+						if (target.getBlock() == Blocks.PUMPKIN || target.getBlock() == Blocks.MELON_BLOCK) {
+							flag = false;
+						}
+
+						if (target.getBlock() == Blocks.REEDS) {
+							IBlockState under = world.getBlockState(p1.down());
+							if (under.getBlock() == Blocks.REEDS) {
+								flag = false;
+							}
 						}
 
 						if (!flag) {

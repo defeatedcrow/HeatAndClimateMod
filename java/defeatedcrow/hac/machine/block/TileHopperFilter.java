@@ -50,25 +50,6 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 					suctionDrop();
 				}
 			}
-
-			// int count = 0;
-			// for (int i = 0; i < this.getSizeInventory(); i++) {
-			// if (inv[i] != null) {
-			// count += inv[i].stackSize;
-			// }
-			// }
-			// if (count != lastCount) {
-			// lastCount = count;
-			// if (!this.hasWorldObj())
-			// return;
-			// @SuppressWarnings("unchecked")
-			// List<EntityPlayer> list = this.getWorld().playerEntities;
-			// for (EntityPlayer player : list) {
-			// if (player instanceof EntityPlayerMP) {
-			// ((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-			// }
-			// }
-			// }
 		} else {
 			cooldown--;
 		}
@@ -125,10 +106,10 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	}
 
 	private boolean suctionItem() {
-		EnumFacing face = EnumFacing.UP;
+		EnumFacing face = getCurrentFacing() == EnumFacing.UP ? EnumFacing.DOWN : EnumFacing.UP;
 		TileEntity tile = worldObj.getTileEntity(pos.offset(face));
-		if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite())) {
-			IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite());
+		if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
+			IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 			if (target != null) {
 				boolean b = false;
 				for (int i = 0; i < target.getSlots(); i++) {
@@ -158,6 +139,10 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		double y2 = getPos().getY() + 2D;
 		double z1 = getPos().getZ() - 0D;
 		double z2 = getPos().getZ() + 1D;
+		if (getCurrentFacing() == EnumFacing.UP) {
+			y1 = getPos().getY() - 2D;
+			y2 = getPos().getY() + 0.5D;
+		}
 		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
 		if (list == null || list.isEmpty())
 			return false;

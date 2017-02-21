@@ -2,6 +2,8 @@ package defeatedcrow.hac.food.item;
 
 import java.util.List;
 
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,8 +14,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
 
 public class ItemFluidPack extends DCItem {
 
@@ -22,14 +22,16 @@ public class ItemFluidPack extends DCItem {
 			"water",
 			"milk",
 			"cream",
-			"oil" };
+			"oil"
+	};
 
 	public static final String[] FLUIDS = {
 			"empty",
 			"water",
 			"milk",
 			"dcs.milk_cream",
-			"dcs.seed_oil" };
+			"dcs.seed_oil"
+	};
 
 	public ItemFluidPack() {
 		super();
@@ -37,10 +39,14 @@ public class ItemFluidPack extends DCItem {
 
 	@Override
 	public ItemStack getContainerItem(ItemStack stack) {
-		if (stack.getItemDamage() == 0) {
+		if (stack.getItemDamage() == 0)
 			return null;
-		}
 		return new ItemStack(this);
+	}
+
+	@Override
+	public boolean hasContainerItem(ItemStack stack) {
+		return stack.getItemDamage() != 0;
 	}
 
 	@Override
@@ -79,8 +85,9 @@ public class ItemFluidPack extends DCItem {
 
 		String s = "";
 		int i = stack.getItemDamage();
-		if (i > 4)
+		if (i > 4) {
 			i = 4;
+		}
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
 		if (f != null) {
@@ -92,8 +99,9 @@ public class ItemFluidPack extends DCItem {
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 4)
+		if (meta > 4) {
 			meta = 4;
+		}
 		return FLUIDS[meta];
 	}
 

@@ -229,6 +229,17 @@ public class FoodInitRegister {
 		MainMaterialRegister.registerBlock(FoodInit.tomatoBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable");
 		FoodInit.tomatoJuice.setBlock(FoodInit.tomatoBlock);
 
+		FoodInit.blackLiquor = new Fluid("dcs.black_liquor",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/black_liquor_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/black_liquor_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".black_liquor");
+		FluidRegistry.registerFluid(FoodInit.blackLiquor);
+		FoodInit.blackLiquorBlock = new DCFluidBlockBase(FoodInit.blackLiquor, "black_liquor_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_black_liquor");
+		MainMaterialRegister.registerBlock(FoodInit.blackLiquorBlock,
+				ClimateCore.PACKAGE_BASE + "_fluidblock_black_liquor");
+		FoodInit.blackLiquor.setBlock(FoodInit.blackLiquorBlock);
+
 		// bucket
 		FluidRegistry.addBucketForFluid(FoodInit.oil);
 		FluidRegistry.addBucketForFluid(FoodInit.greenTea);
@@ -236,6 +247,7 @@ public class FoodInitRegister {
 		FluidRegistry.addBucketForFluid(FoodInit.coffee);
 		FluidRegistry.addBucketForFluid(FoodInit.cream);
 		FluidRegistry.addBucketForFluid(FoodInit.tomatoJuice);
+		FluidRegistry.addBucketForFluid(FoodInit.blackLiquor);
 
 		// fluid item
 		FoodInit.dropOil = new ItemFluidDrop("olive", "dcs.seed_oil")

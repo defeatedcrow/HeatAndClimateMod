@@ -355,7 +355,7 @@ public class MainMaterialRegister {
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_materials");
 		GameRegistry.register(MainInit.foodMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_materials"));
 
-		MainInit.bakedApple = new ItemDCFoods(2, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
+		MainInit.bakedApple = new ItemDCFoods(3, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		GameRegistry.register(MainInit.bakedApple.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_itemfood"));
 	}
 

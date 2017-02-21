@@ -189,6 +189,8 @@ public class ItemSilverCup extends FoodItemBase {
 					} else if (f.getFluid() == FoodInit.tomatoJuice) {
 						ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * (dirF + ampF)),
 								0));
+					} else if (f.getFluid() == FoodInit.blackLiquor) {
+						ret.add(new PotionEffect(DCPotion.poison, MathHelper.ceiling_float_int(300 * dirF), ampF));
 					} else if (f.getFluid() == FluidRegistry.WATER) {
 						ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF),
 								ampF));

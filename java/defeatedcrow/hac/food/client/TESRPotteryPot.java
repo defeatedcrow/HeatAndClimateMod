@@ -30,6 +30,16 @@ public class TESRPotteryPot extends DCLockableTESRBase {
 
 		if (te instanceof TilePotteryPot && te.hasWorldObj()) {
 			TilePotteryPot pot = (TilePotteryPot) te;
+			int meta = pot.getBlockMetadata() & 3;
+
+			if (pot.hasCap()) {
+				GlStateManager.pushMatrix();
+				GlStateManager.translate((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+				GlStateManager.scale(1.0F, -1.0F, -1.0F);
+				MODEL.renderCap(0.0625F);
+				GlStateManager.popMatrix();
+			}
+
 			FluidStack f = pot.outputT.getFluid();
 			if (f == null) {
 				f = pot.inputT.getFluid();

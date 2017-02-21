@@ -49,6 +49,15 @@ public class DCIntegrationCore {
 			}
 		}
 
+		if (Loader.isModLoaded("Mekanism")) {
+			try {
+				DCPluginMekanism.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: Mekanism");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Mekanism");
+			}
+		}
+
 		if (Loader.isModLoaded("JEI")) {
 			try {
 				DCsJEIPlugin2.load();

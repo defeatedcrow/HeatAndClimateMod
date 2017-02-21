@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
+import defeatedcrow.hac.food.entity.EntityRiceMushroom;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -22,7 +23,7 @@ public class RiceBowlItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 0;
+		return 1;
 	}
 
 	@Override
@@ -39,8 +40,8 @@ public class RiceBowlItem extends FoodItemBase {
 	public String[] getNameSuffix() {
 		String[] s = {
 				"boiled",
-				"ball",
-				"ball_baked" };
+				"mushroom"
+		};
 		return s;
 	}
 
@@ -48,12 +49,16 @@ public class RiceBowlItem extends FoodItemBase {
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
 		FoodEntityBase ret = new EntityRiceBowl(world, x, y, z, player);
+		switch (i) {
+		case 1:
+			ret = new EntityRiceMushroom(world, x, y, z, player);
+		}
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 8;
+		return meta == 0 ? 8 : 10;
 	}
 
 	@Override
