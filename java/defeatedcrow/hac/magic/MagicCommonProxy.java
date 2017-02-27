@@ -32,6 +32,7 @@ import defeatedcrow.hac.magic.proj.EntityProjSapW;
 import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.magic.proj.EntityProjSilver;
+import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -83,6 +84,8 @@ public class MagicCommonProxy {
 				ClimateCore.PACKAGE_BASE + "entity.magic.proj_light", 120, ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(EntityProjIceSpit.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_ice",
 				121, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityProjWhiteSpit.class,
+				ClimateCore.PACKAGE_BASE + "entity.magic.proj_white", 122, ClimateMain.instance, 128, 5, true);
 	}
 
 	public static void loadTE() {

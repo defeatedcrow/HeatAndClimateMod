@@ -33,6 +33,8 @@ import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
+import defeatedcrow.hac.main.block.device.TileThermometer;
+import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
@@ -41,7 +43,9 @@ import defeatedcrow.hac.main.client.block.TESRMetalChest;
 import defeatedcrow.hac.main.client.block.TESRNormalChamber;
 import defeatedcrow.hac.main.client.block.TESRShitirin;
 import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
+import defeatedcrow.hac.main.client.block.TESRThermometer;
 import defeatedcrow.hac.main.client.block.TESRVillageChest;
+import defeatedcrow.hac.main.client.block.TESRWindVane;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
@@ -128,6 +132,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		ClientRegistry.registerTileEntity(TileVillageChest.class, "dcs_te_villagechest", new TESRVillageChest());
 		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
 		ClientRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
+		ClientRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
+		ClientRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
 
 		FoodClientProxy.loadTE();
 		MachineClientProxy.loadTE();

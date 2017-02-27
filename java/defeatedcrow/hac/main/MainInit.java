@@ -73,6 +73,8 @@ public class MainInit {
 	public static Block fuelStove;
 	public static Block stevenson_screen;
 	public static Block bellow;
+	public static Block thermometer;
+	public static Block windvane;
 
 	// item
 	// ores

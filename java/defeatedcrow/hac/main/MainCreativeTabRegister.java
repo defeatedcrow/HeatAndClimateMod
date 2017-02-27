@@ -55,6 +55,8 @@ public class MainCreativeTabRegister {
 		MainInit.shitirin.setCreativeTab(ClimateMain.machine);
 		MainInit.fuelStove.setCreativeTab(ClimateMain.machine);
 		MainInit.stevenson_screen.setCreativeTab(ClimateCore.climate);
+		MainInit.thermometer.setCreativeTab(ClimateCore.climate);
+		MainInit.windvane.setCreativeTab(ClimateCore.climate);
 		MainInit.bellow.setCreativeTab(ClimateMain.machine);
 
 		// cont

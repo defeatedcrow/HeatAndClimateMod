@@ -98,7 +98,7 @@ public class OnMiningEventDC {
 				player.worldObj.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_SHEEP_SHEAR,
 						SoundCategory.PLAYERS, 1.5F, 1.5F / (player.worldObj.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
-			} else if (stack.getItem() instanceof ItemPickaxe) {
+			} else if (player.isSneaking() && stack.getItem() instanceof ItemPickaxe) {
 				ItemPickaxe pic = (ItemPickaxe) stack.getItem();
 				if (pos.getY() > 1 && pic.getToolMaterial().getHarvestLevel() >= 4) {
 					IBlockState state = event.getWorld().getBlockState(pos);
@@ -110,6 +110,7 @@ public class OnMiningEventDC {
 							event.getWorld().setBlockToAir(pos);
 							event.getWorld().spawnEntityInWorld(drop);
 							stack.damageItem(1, event.getEntityLiving());
+							event.setUseBlock(Result.ALLOW);
 						}
 						player.worldObj.playSound(player, player.posX, player.posY, player.posZ,
 								SoundEvents.BLOCK_STONE_BREAK, SoundCategory.PLAYERS, 1.5F,

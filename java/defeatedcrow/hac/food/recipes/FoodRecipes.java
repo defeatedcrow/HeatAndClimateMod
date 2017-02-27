@@ -664,6 +664,13 @@ public class FoodRecipes {
 				(Object[]) null);
 		RecipeAPI.registerFluidRecipes.addRecipe(salt, DCHeatTier.HOT);
 
+		FluidCraftRecipe salt2 = new FluidCraftRecipe(new ItemStack(MainInit.foodMaterials, 1, 0), null, null,
+				DCHeatTier.KILN, DCHumidity.DRY, null, 0, false, new FluidStack(FluidRegistry.WATER, 1000),
+				(Object[]) null);
+		salt2.requiredHum().add(DCHumidity.NORMAL);
+		salt2.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerFluidRecipes.addRecipe(salt2, DCHeatTier.KILN);
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 1, 2), null, 0F, null,
 				DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
 						"dustSalt",

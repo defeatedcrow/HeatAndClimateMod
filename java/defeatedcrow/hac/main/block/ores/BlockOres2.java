@@ -28,7 +28,7 @@ public class BlockOres2 extends DCSimpleBlock {
 	@Override
 	public void setHarvestLevel(String toolClass, int level) {
 		for (int i = 0; i < 16; i++) {
-			if (i == 4) {
+			if (i == 5) {
 				super.setHarvestLevel("pickaxe", 3, this.getStateFromMeta(i));
 			} else if (i < 2) {
 				super.setHarvestLevel("pickaxe", 1, this.getStateFromMeta(i));
@@ -37,6 +37,30 @@ public class BlockOres2 extends DCSimpleBlock {
 			}
 		}
 	}
+
+	@Override
+	public int getHarvestLevel(IBlockState state) {
+		return harvestL[getMetaFromState(state)];
+	}
+
+	private int[] harvestL = new int[] {
+			1,
+			1,
+			2,
+			2,
+			2,
+			3,
+			2,
+			2,
+			2,
+			2,
+			2,
+			2,
+			2,
+			2,
+			2,
+			2
+	};
 
 	/* Drop Itemの管理 */
 

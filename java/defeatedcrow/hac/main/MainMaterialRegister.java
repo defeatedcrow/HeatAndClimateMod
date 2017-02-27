@@ -38,6 +38,8 @@ import defeatedcrow.hac.main.block.device.BlockNormalChamber;
 import defeatedcrow.hac.main.block.device.BlockShitirin;
 import defeatedcrow.hac.main.block.device.BlockSink;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
+import defeatedcrow.hac.main.block.device.BlockThermometer;
+import defeatedcrow.hac.main.block.device.BlockWindVane;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.block.ores.BlockGem;
@@ -301,6 +303,12 @@ public class MainMaterialRegister {
 				tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
 			}
 		});
+
+		MainInit.thermometer = new BlockThermometer(ClimateCore.PACKAGE_BASE + "_device_thermometer");
+		registerBlock(MainInit.thermometer, ClimateCore.PACKAGE_BASE + "_device_thermometer");
+
+		MainInit.windvane = new BlockWindVane(ClimateCore.PACKAGE_BASE + "_device_windvane");
+		registerBlock(MainInit.windvane, ClimateCore.PACKAGE_BASE + "_device_windvane");
 
 		MainInit.stevenson_screen = new BlockStevensonScreen(ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");
 		registerBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_BASE + "_device_stevenson_screen");

@@ -3,6 +3,8 @@ package defeatedcrow.hac.main.block.ores;
 import java.util.List;
 import java.util.Random;
 
+import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
@@ -12,8 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
-import defeatedcrow.hac.main.MainInit;
 
 public class BlockOres extends DCSimpleBlock {
 
@@ -39,6 +39,30 @@ public class BlockOres extends DCSimpleBlock {
 		}
 	}
 
+	@Override
+	public int getHarvestLevel(IBlockState state) {
+		return harvestL[getMetaFromState(state)];
+	}
+
+	private int[] harvestL = new int[] {
+			1,
+			1,
+			1,
+			2,
+			2,
+			2,
+			2,
+			2,
+			2,
+			3,
+			3,
+			3,
+			3,
+			3,
+			3,
+			3
+	};
+
 	/* Drop Itemの管理 */
 
 	@Override
@@ -47,11 +71,10 @@ public class BlockOres extends DCSimpleBlock {
 			return super.getItemDropped(state, rand, fortune);
 		int meta = this.getMetaFromState(state);
 		DropTable table = this.getTable(meta);
-		if (table.dropItem == null) {
+		if (table.dropItem == null)
 			return Item.getItemFromBlock(this);
-		} else {
+		else
 			return table.dropItem;
-		}
 	}
 
 	@Override
@@ -70,9 +93,8 @@ public class BlockOres extends DCSimpleBlock {
 			int max = MathHelper.ceiling_double_int(1 + fortune * 0.5D);
 			int d1 = random.nextInt(max);
 			return table.amount + d1;
-		} else {
+		} else
 			return table.amount;
-		}
 	}
 
 	@Override
@@ -81,11 +103,10 @@ public class BlockOres extends DCSimpleBlock {
 			return 0;
 		int meta = this.getMetaFromState(state);
 		DropTable table = this.getTable(meta);
-		if (table.dropItem == null) {
+		if (table.dropItem == null)
 			return meta;
-		} else {
+		else
 			return table.dropMeta;
-		}
 	}
 
 	public enum DropTable {
@@ -129,10 +150,10 @@ public class BlockOres extends DCSimpleBlock {
 				DropTable.NONE,
 				DropTable.DIAMOND,
 				DropTable.EMERALD,
-				DropTable.NONE };
-		if (meta < 16) {
+				DropTable.NONE
+		};
+		if (meta < 16)
 			return table[meta];
-		}
 		return DropTable.NONE;
 	}
 

@@ -17,6 +17,7 @@ import defeatedcrow.hac.magic.client.MagicCircleRenderer;
 import defeatedcrow.hac.magic.client.MagicDaggerRenderer;
 import defeatedcrow.hac.magic.client.MagicIceSpitRenderer;
 import defeatedcrow.hac.magic.client.MagicLightSpitRenderer;
+import defeatedcrow.hac.magic.client.MagicWhiteSpitRenderer;
 import defeatedcrow.hac.magic.client.ProjCircleRenderer;
 import defeatedcrow.hac.magic.client.TESRIceCluster;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
@@ -49,6 +50,7 @@ import defeatedcrow.hac.magic.proj.EntityProjSapW;
 import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.magic.proj.EntityProjSilver;
+import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
 import defeatedcrow.hac.main.client.ClientMainProxy;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -76,6 +78,7 @@ public class MagicClientProxy {
 		ClientMainProxy.registRender(EntityProjClmD.class, MagicDaggerRenderer.class);
 		ClientMainProxy.registRender(EntityProjLightSpit.class, MagicLightSpitRenderer.class);
 		ClientMainProxy.registRender(EntityProjIceSpit.class, MagicIceSpitRenderer.class);
+		ClientMainProxy.registRender(EntityProjWhiteSpit.class, MagicWhiteSpitRenderer.class);
 
 		ClientMainProxy.registRender(EntityMobBarrier.class, MagicCircleRenderer.class);
 		ClientMainProxy.registRender(EntityProjBarrier.class, ProjCircleRenderer.class);
@@ -101,7 +104,7 @@ public class MagicClientProxy {
 	public static void regJson(JsonRegisterHelper instance) {
 		// item
 
-		instance.regSimpleItem(MagicInit.pendant, ClimateCore.PACKAGE_ID, "dcs_jewel_pendant", "equip", 13);
+		instance.regSimpleItem(MagicInit.pendant, ClimateCore.PACKAGE_ID, "dcs_jewel_pendant", "equip", 14);
 		instance.regSimpleItem(MagicInit.badge, ClimateCore.PACKAGE_ID, "dcs_jewel_badge", "equip", 13);
 		instance.regSimpleItem(MagicInit.daggerSilver, ClimateCore.PACKAGE_ID, "dcs_dagger_silver", "magic", 0);
 		instance.regSimpleItem(MagicInit.daggerMagic, ClimateCore.PACKAGE_ID, "dcs_dagger_magic", "magic", 15);

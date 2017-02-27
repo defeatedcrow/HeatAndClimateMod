@@ -51,4 +51,9 @@ public class EntityProjSilver extends EntityMagicProjBase {
 				: DamageSource.causeArrowDamage(this, this.shootingEntity);
 	}
 
+	@Override
+	public boolean isInWater() {
+		return false;
+	}
+
 }

@@ -1,11 +1,11 @@
 package defeatedcrow.hac.magic.proj;
 
+import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import defeatedcrow.hac.magic.MagicInit;
 
 public class EntityProjChalW extends EntityMagicProjBase {
 
@@ -47,8 +47,8 @@ public class EntityProjChalW extends EntityMagicProjBase {
 
 	@Override
 	protected DamageSource getHitSource(Entity target) {
-		return this.shootingEntity == null ? DamageSource.causeIndirectMagicDamage(this, this) : DamageSource
-				.causeIndirectMagicDamage(this, this.shootingEntity);
+		return this.shootingEntity == null ? DamageSource.causeIndirectMagicDamage(this, this)
+				: DamageSource.causeIndirectMagicDamage(this, this.shootingEntity);
 	}
 
 }

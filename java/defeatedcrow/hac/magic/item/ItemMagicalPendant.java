@@ -49,8 +49,9 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			"schorl", /* 加速 */
 			"serpentine", /* 透明化 */
 			"olivine", /* EXP増加 */
-			"almandine"
-			/* ノックバック防止 */ };
+			"almandine", /* ノックバック防止 */
+			"elestial"
+			/* カルセドニー投げ */ };
 
 	public ItemMagicalPendant(int max) {
 		super();

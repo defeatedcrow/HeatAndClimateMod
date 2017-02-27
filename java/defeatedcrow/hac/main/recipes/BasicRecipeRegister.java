@@ -183,6 +183,28 @@ public class BasicRecipeRegister {
 				"dyeWhite"
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.thermometer, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				"bucketWater",
+				'Y',
+				new ItemStack(DCInit.climate_checker),
+				'Z',
+				new ItemStack(Blocks.GLASS)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.windvane, 1, 0), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'X',
+				"ingotBrass",
+				'Y',
+				new ItemStack(DCInit.climate_checker)
+		}));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chamber, 1, 0), new Object[] {
 				"ZXZ",
 				"XYX",
@@ -381,6 +403,11 @@ public class BasicRecipeRegister {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.BLAZE_POWDER, 1, 0), new Object[] {
 				"toolNormalYagen",
 				new ItemStack(Blocks.MAGMA, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.miscDust, 2, 3), new Object[] {
+				"toolNormalYagen",
+				"logWood"
 		}));
 	}
 
@@ -999,21 +1026,21 @@ public class BasicRecipeRegister {
 				"XX",
 				"XX",
 				'X',
-				new ItemStack(MainInit.gemBlock, 1, 3)
+				new ItemStack(MainInit.gemBlock, 4, 3)
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.bricks, 1, 1), new Object[] {
 				"XX",
 				"XX",
 				'X',
-				new ItemStack(MainInit.gemBlock, 1, 6)
+				new ItemStack(MainInit.gemBlock, 4, 6)
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.bricks, 1, 2), new Object[] {
 				"XX",
 				"XX",
 				'X',
-				new ItemStack(MainInit.ores_2, 1, 0)
+				new ItemStack(MainInit.ores_2, 4, 0)
 		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 0), new Object[] {
@@ -1046,15 +1073,15 @@ public class BasicRecipeRegister {
 				new ItemStack(Blocks.GLASS)
 		}));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 4, 3), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 1, 3), new Object[] {
 				new ItemStack(MainInit.bricks, 1, 0)
 		}));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 4, 6), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 1, 6), new Object[] {
 				new ItemStack(MainInit.bricks, 1, 1)
 		}));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.ores_2, 4, 0), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.ores_2, 1, 0), new Object[] {
 				new ItemStack(MainInit.bricks, 1, 2)
 		}));
 

@@ -50,8 +50,7 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 		if (!this.worldObj.isRemote) {
 			if (this.start) {
 				if (count > 0) {
-					if (this.onGroundHit()) {
-					}
+					if (this.onGroundHit()) {}
 				} else {
 					count++;
 				}
@@ -81,20 +80,17 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 
 	@Override
 	protected void onHit(RayTraceResult raytraceResultIn) {
-		if (age < 1) {
+		if (age < 1)
 			return;
-		}
 		Entity entity = raytraceResultIn.entityHit;
 
 		if (entity != null && !this.worldObj.isRemote) {
 
-			if (entity.isEntityEqual(this.shootingEntity) || entity instanceof IProjectile) {
+			if (entity.isEntityEqual(this.shootingEntity) || entity instanceof IProjectile)
 				return;
-			}
 
-			if (this.onEntityHit(entity)) {
+			if (this.onEntityHit(entity))
 				return;
-			}
 
 			float speed = MathHelper.sqrt_double(
 					this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);

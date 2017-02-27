@@ -35,6 +35,8 @@ import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
+import defeatedcrow.hac.main.block.device.TileThermometer;
+import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.client.gui.ContainerFuelStove;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
@@ -153,6 +155,8 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest");
 		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
 		GameRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow");
+		GameRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer");
+		GameRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane");
 
 		FoodCommonProxy.loadTE();
 		MachineCommonProxy.loadTE();
