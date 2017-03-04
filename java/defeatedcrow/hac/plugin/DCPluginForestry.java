@@ -29,11 +29,13 @@ public class DCPluginForestry {
 			Item mulch = Item.REGISTRY.getObject(new ResourceLocation("forestry", "mulch"));
 			Fluid seed = FluidRegistry.getFluid("seed.oil");
 			Fluid juice = FluidRegistry.getFluid("juice");
+			Fluid honey = FluidRegistry.getFluid("for.honey");
+			Fluid bio = FluidRegistry.getFluid("biomass");
 
 			if (mulch == null || seed == null || juice == null)
 				return;
 
-			// recipes
+			// squeeze
 			RecipeManagers.squeezerManager.addRecipe(10, new ItemStack[] {
 					new ItemStack(FoodInit.crops, 1, 3)
 			}, new FluidStack(juice, 100), new ItemStack(mulch), 10);
@@ -77,6 +79,82 @@ public class DCPluginForestry {
 			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
 					new ItemStack(FoodInit.seeds, 1, 5)
 			}, new FluidStack(seed, 100), new ItemStack(mulch), 10);
+
+			// fermentation
+			if (honey != null && bio != null) {
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.seeds, 1, 0), 100, 1.0F,
+						new FluidStack(bio, 100));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 1), 100, 1.0F,
+						new FluidStack(bio, 100));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 2), 50, 1.0F,
+						new FluidStack(bio, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 8), 50, 1.0F,
+						new FluidStack(bio, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 9), 50, 1.0F,
+						new FluidStack(bio, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 0), 250, 1.0F,
+						new FluidStack(bio, 250));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 1), 250, 1.0F,
+						new FluidStack(bio, 250));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 2), 250, 1.0F,
+						new FluidStack(bio, 250));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.seeds, 1, 0), 100, 1.5F,
+						new FluidStack(bio, 100), new FluidStack(honey, 100));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 1), 100, 1.5F,
+						new FluidStack(bio, 100), new FluidStack(honey, 100));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 2), 50, 1.5F,
+						new FluidStack(bio, 50), new FluidStack(honey, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 8), 50, 1.5F,
+						new FluidStack(bio, 50), new FluidStack(honey, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 9), 50, 1.5F,
+						new FluidStack(bio, 50), new FluidStack(honey, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 0), 250, 1.5F,
+						new FluidStack(bio, 250), new FluidStack(honey, 250));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 1), 250, 1.5F,
+						new FluidStack(bio, 250), new FluidStack(honey, 250));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 2), 250, 1.5F,
+						new FluidStack(bio, 250), new FluidStack(honey, 250));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.seeds, 1, 0), 100, 1.5F,
+						new FluidStack(bio, 100), new FluidStack(juice, 100));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 1), 100, 1.5F,
+						new FluidStack(bio, 100), new FluidStack(juice, 100));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 2), 50, 1.5F,
+						new FluidStack(bio, 50), new FluidStack(juice, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 8), 50, 1.5F,
+						new FluidStack(bio, 50), new FluidStack(juice, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.crops, 1, 9), 50, 1.5F,
+						new FluidStack(bio, 50), new FluidStack(juice, 50));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 0), 250, 1.5F,
+						new FluidStack(bio, 250), new FluidStack(juice, 250));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 1), 250, 1.5F,
+						new FluidStack(bio, 250), new FluidStack(juice, 250));
+
+				RecipeManagers.fermenterManager.addRecipe(new ItemStack(FoodInit.saplings, 1, 2), 250, 1.5F,
+						new FluidStack(bio, 250), new FluidStack(juice, 250));
+
+			}
 
 			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyedSlice"));
 

@@ -504,6 +504,7 @@ public class MainMaterialRegister {
 
 	private static void registerHarvestLevel() {
 		MainInit.ores.setHarvestLevel("pickaxe", 0);
+		MainInit.ores_2.setHarvestLevel("pickaxe", 0);
 	}
 
 	public static void registerBlock(Block block, String name) {

@@ -60,6 +60,7 @@ public class FoodInit {
 	public static Fluid cream;
 	public static Fluid tomatoJuice;
 	public static Fluid blackLiquor;
+	public static Fluid hotSpring;
 
 	public static Block oilBlock;
 	public static Block greenTeaBlock;
@@ -68,5 +69,6 @@ public class FoodInit {
 	public static Block creamBlock;
 	public static Block tomatoBlock;
 	public static Block blackLiquorBlock;
+	public static Block hotSpringBlock;
 
 }

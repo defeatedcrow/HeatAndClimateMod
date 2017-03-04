@@ -165,6 +165,7 @@ item.dcs_yagen_brass_normal.name=真鍮の薬研
 
 item.dcs_repair_putty.name=修繕ペースト
 item.dcs_repair_abrasive.name=砥石
+item.dcs_repair_soap.name=石鹸
 
 item.dcs_axe_brass.name=真鍮の斧
 item.dcs_axe_steel.name=鋼の斧
@@ -553,6 +554,8 @@ fluid.dcs.vegetable_juice=野菜ジュース
 tile.dcs_fluidblock_vegetable_0.name=野菜ジュース
 fluid.dcs.black_liquor=黒液
 tile.dcs_fluidblock_black_liquor_0.name=黒液
+fluid.dcs.hotspring=温泉
+tile.dcs_fluidblock_hotspring_0.name=温泉
 
 ## message
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)
@@ -617,6 +620,7 @@ dcs.tip.require_achievement=取扱いに実績が必要!
 dcs.tip.exp_gem.description=右クリックで使用する
 dcs.tip.repair_putty.description=金床: ツールの耐久度を回復する
 dcs.tip.abrasive.description=金床: ツールにEfficiencyまたはSharpnessを付与する
+dcs.tip.soap.description=金床: 革防具の色を落とす
 
 dcs.comment.pendant.0=水と氷ダメージを軽減する
 dcs.comment.pendant.1=炎と高熱ダメージを軽減する

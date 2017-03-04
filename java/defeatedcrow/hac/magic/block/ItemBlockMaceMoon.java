@@ -42,6 +42,24 @@ public class ItemBlockMaceMoon extends ItemBlockMace {
 					if (player.isPotionActive(MobEffects.NAUSEA)) {
 						player.removePotionEffect(MobEffects.NAUSEA);
 					}
+					if (player.isPotionActive(MobEffects.HUNGER)) {
+						player.removePotionEffect(MobEffects.HUNGER);
+					}
+					if (player.isPotionActive(MobEffects.LEVITATION)) {
+						player.removePotionEffect(MobEffects.LEVITATION);
+					}
+					if (player.isPotionActive(MobEffects.MINING_FATIGUE)) {
+						player.removePotionEffect(MobEffects.MINING_FATIGUE);
+					}
+					if (player.isPotionActive(MobEffects.SLOWNESS)) {
+						player.removePotionEffect(MobEffects.SLOWNESS);
+					}
+					if (player.isPotionActive(MobEffects.UNLUCK)) {
+						player.removePotionEffect(MobEffects.UNLUCK);
+					}
+					if (player.isPotionActive(MobEffects.WEAKNESS)) {
+						player.removePotionEffect(MobEffects.WEAKNESS);
+					}
 					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 1));
 				}
 

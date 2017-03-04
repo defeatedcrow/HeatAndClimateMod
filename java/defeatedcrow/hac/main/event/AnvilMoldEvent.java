@@ -5,6 +5,7 @@ import defeatedcrow.hac.main.api.IPressMold;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -28,7 +29,7 @@ public class AnvilMoldEvent {
 			}
 		}
 
-		/* ついでに、リペアパテの設定も… */
+		/* リペアパテの設定 */
 		else if (left != null && left.getItem().isDamageable() && moldItem != null
 				&& moldItem.getItem() == MainInit.repairPutty && ret == null) {
 			int dam = left.getItemDamage();
@@ -58,6 +59,15 @@ public class AnvilMoldEvent {
 						&& EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, left) == 0) {
 					ItemStack next = left.copy();
 					next.addEnchantment(Enchantments.SHARPNESS, 1);
+					event.setOutput(next);
+					event.setCost(1);
+					event.setMaterialCost(1);
+				}
+			} else if (type == 2) {
+				Item armor = left.getItem();
+				if (armor instanceof ItemArmor && ((ItemArmor) armor).hasColor(left)) {
+					ItemStack next = left.copy();
+					((ItemArmor) armor).removeColor(next);
 					event.setOutput(next);
 					event.setCost(1);
 					event.setMaterialCost(1);

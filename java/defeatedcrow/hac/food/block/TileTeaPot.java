@@ -310,12 +310,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 	public String notSuitableMassage() {
 		if (current == null)
 			return "dcs.gui.message.nullclimate";
-		else {
-			if (current.getHeat().getTier() < 2)
-				return "dcs.gui.message.steel.toocold";
-			else
-				return "dcs.gui.message.suitableclimate";
-		}
+		else
+			return "dcs.gui.message.suitableclimate";
 	}
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */

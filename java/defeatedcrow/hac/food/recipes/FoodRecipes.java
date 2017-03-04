@@ -772,16 +772,38 @@ public class FoodRecipes {
 				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(Items.PAPER, 4, 0), null, 0F,
-				new FluidStack(FoodInit.blackLiquor, 50), DCHeatTier.KILN, null, null, false, null, new Object[] {
+				new FluidStack(FoodInit.blackLiquor, 50), DCHeatTier.KILN, null, null, false,
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {
 						"pulpWood",
 						"pulpWood",
 						"dustAsh"
 				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(Items.PAPER, 4, 0), null, 0F,
-				new FluidStack(FoodInit.blackLiquor, 50), DCHeatTier.KILN, null, null, false, null, new Object[] {
+				new FluidStack(FoodInit.blackLiquor, 50), DCHeatTier.KILN, null, null, false,
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {
 						"pulpWood",
 						"pulpWood",
+						"dustLime"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.hotSpring, 1000),
+				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"dustSalt"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.hotSpring, 1000),
+				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"dustSulfur"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.repairPutty, 1, 2), null, 0F, null,
+				DCHeatTier.NORMAL, null, null, false, new FluidStack(FoodInit.oil, 500), new Object[] {
+						"dustAsh"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.repairPutty, 1, 2), null, 0F, null,
+				DCHeatTier.NORMAL, null, null, false, new FluidStack(FoodInit.oil, 500), new Object[] {
 						"dustLime"
 				});
 

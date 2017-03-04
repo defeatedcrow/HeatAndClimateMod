@@ -111,6 +111,7 @@ public class OreDicRegister {
 		// misc
 		OreDictionary.registerOre("dustGraphite", new ItemStack(MainInit.miscDust, 1, 0));
 		OreDictionary.registerOre("dustCoal", new ItemStack(MainInit.miscDust, 1, 0));
+		OreDictionary.registerOre("dyeBlack", new ItemStack(MainInit.miscDust, 1, 0));
 		OreDictionary.registerOre("dustCrystal", new ItemStack(MainInit.miscDust, 1, 1));
 		OreDictionary.registerOre("dustLime", new ItemStack(MainInit.miscDust, 1, 2));
 		OreDictionary.registerOre("dustWood", new ItemStack(MainInit.miscDust, 1, 3));

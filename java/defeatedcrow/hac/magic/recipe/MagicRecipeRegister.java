@@ -78,6 +78,46 @@ public class MagicRecipeRegister {
 			}));
 		}
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, 12), new Object[] {
+				" X ",
+				"X X",
+				" Y ",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, 12), new Object[] {
+				" X ",
+				"X X",
+				" Y ",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, 12), new Object[] {
+				" Y ",
+				"X X",
+				" X ",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, 12), new Object[] {
+				" Y ",
+				"X X",
+				" X ",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				"gemPeridot"
+		}));
+
 		// dagger
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerSilver, 3, 0), new Object[] {
 				"X",

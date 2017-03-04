@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.Block;
 import net.minecraft.init.MobEffects;
@@ -15,8 +16,7 @@ public class DCPluginFluid {
 
 	public static final DCPluginFluid INSTANCE = new DCPluginFluid();
 
-	private DCPluginFluid() {
-	}
+	private DCPluginFluid() {}
 
 	public static void load() {
 
@@ -102,6 +102,7 @@ public class DCPluginFluid {
 
 		Fluid f14 = FluidRegistry.getFluid("ice");
 		if (f14 != null) {
+			registerPotion(f14, MobEffects.WATER_BREATHING);
 			Block b14 = f14.getBlock();
 			if (b14 != null) {
 				ClimateAPI.registerBlock.registerHeatBlock(b14, 32767, DCHeatTier.FROSTBITE);
@@ -125,6 +126,7 @@ public class DCPluginFluid {
 
 		Fluid f19 = FluidRegistry.getFluid("glass");
 		if (f19 != null) {
+			registerPotion(f19, MobEffects.FIRE_RESISTANCE);
 			Block b19 = f19.getBlock();
 			if (b19 != null) {
 				ClimateAPI.registerBlock.registerHeatBlock(b19, 32767, DCHeatTier.KILN);
@@ -134,6 +136,7 @@ public class DCPluginFluid {
 		// bop
 		Fluid f20 = FluidRegistry.getFluid("sand");
 		if (f20 != null) {
+			registerPotion(f20, MobEffects.SLOWNESS);
 			Block b20 = f20.getBlock();
 			if (b20 != null) {
 				ClimateAPI.registerBlock.registerHumBlock(b20, 32767, DCHumidity.DRY);
@@ -201,12 +204,23 @@ public class DCPluginFluid {
 			}
 		}
 
+		Fluid f35 = FluidRegistry.getFluid("heavywater");
+		registerPotion(f35, MainInit.gravity);
+
+		Fluid f36 = FluidRegistry.getFluid("creosote");
+		registerPotion(f36, MobEffects.NAUSEA);
+
+		Fluid f37 = FluidRegistry.getFluid("oxigen");
+		registerPotion(f37, MobEffects.WATER_BREATHING);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
 		MainAPIManager.fuelRegister.registerFuel("bio.ethanol", 100);
 		MainAPIManager.fuelRegister.registerFuel("biomass", 60);
 		MainAPIManager.fuelRegister.registerFuel("fusionfueldt", 120);
+		MainAPIManager.fuelRegister.registerFuel("ethene", 100);
+		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
 
 	}
 

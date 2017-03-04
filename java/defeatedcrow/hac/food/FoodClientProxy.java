@@ -316,6 +316,25 @@ public class FoodClientProxy {
 				return fluidModel;
 			}
 		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.hotSpringBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_hotspring", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(FoodInit.hotSpringBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_hotspring", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
 	}
 
 }

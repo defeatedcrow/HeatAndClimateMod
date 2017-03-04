@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
 import net.minecraft.entity.player.EntityPlayer;
@@ -165,7 +166,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 	@Override
 	public boolean isSuitableClimate() {
 		// potteryは高温に耐えられない
-		return current != null && current.getHeat().getTier() < 2 && current.getHeat().getTier() > -2;
+		return current != null && current.getHeat().getTier() < DCHeatTier.OVEN.getTier()
+				&& current.getHeat().getTier() > DCHeatTier.FROSTBITE.getTier();
 	}
 
 	@Override
@@ -173,9 +175,9 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		if (current == null)
 			return "dcs.gui.message.nullclimate";
 		else {
-			if (current.getHeat().getTier() > 2)
+			if (current.getHeat().getTier() >= DCHeatTier.OVEN.getTier())
 				return "dcs.gui.message.pottery.toohot";
-			else if (current.getHeat().getTier() < -2)
+			else if (current.getHeat().getTier() <= DCHeatTier.FROSTBITE.getTier())
 				return "dcs.gui.message.pottery.toocold";
 			else
 				return "dcs.gui.message.suitableclimate";

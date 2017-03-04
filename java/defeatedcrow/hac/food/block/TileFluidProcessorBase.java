@@ -70,6 +70,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 						this.currentBurnTime = 0;
 						this.maxBurnTime = -1;
 						currentRecipe = null;
+						this.markDirty();
 					}
 				} else {
 					// レシピ進行の再チェック
@@ -80,6 +81,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 						this.currentBurnTime = 0;
 						this.maxBurnTime = -1;
 						currentRecipe = null;
+						this.markDirty();
 					}
 				}
 			} else if (this.canStartProcess()) {
@@ -90,9 +92,6 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			}
 		}
 	}
-
-	@Override
-	public void onTickUpdate() {}
 
 	private int count = 20;
 
@@ -105,10 +104,12 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
 				flag = true;
 				lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
-			} else if (FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount() != lastOutT) {
+			}
+			if (FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount() != lastOutT) {
 				flag = true;
 				lastOutT = FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount();
-			} else if (this.maxBurnTime != lastBurn) {
+			}
+			if (this.maxBurnTime != lastBurn) {
 				flag = true;
 				lastBurn = this.maxBurnTime;
 			}

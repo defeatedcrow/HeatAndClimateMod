@@ -3,8 +3,6 @@ package defeatedcrow.hac.main.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
@@ -242,19 +240,11 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public boolean isForwardKeyDown() {
-		return Keyboard.isCreated() && Keyboard.isKeyDown(getFowardKey());
+		return Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown();
 	}
 
 	@Override
 	public boolean isSneakKeyDown() {
-		return Keyboard.isCreated() && Keyboard.isKeyDown(getSneakKey());
-	}
-
-	private int getFowardKey() {
-		return Minecraft.getMinecraft().gameSettings.keyBindForward.getKeyCode();
-	}
-
-	private int getSneakKey() {
-		return Minecraft.getMinecraft().gameSettings.keyBindSneak.getKeyCode();
+		return Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown();
 	}
 }

@@ -37,12 +37,16 @@ public class GuiStevensonScreen extends GuiContainer {
 			Biome biome = world.getBiomeForCoordsBody(t.getPos());
 			boolean snow = biome.isSnowyBiome()
 					|| (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN) && t.getPos().getY() > 100);
-			boolean dry = !biome.canRain();
-			if (world.getRainStrength(1.0F) > 0.2F && !dry) {
-				if (world.getThunderStrength(1.0F) > 0.5F) {
-					weather = snow ? 4 : 3;
+			boolean dry = !biome.canRain() && !biome.isSnowyBiome();
+			if (world.getRainStrength(1.0F) > 0.2F) {
+				if (dry) {
+					weather = 5;
 				} else {
-					weather = snow ? 2 : 1;
+					if (world.getThunderStrength(1.0F) > 0.5F) {
+						weather = snow ? 4 : 3;
+					} else {
+						weather = snow ? 2 : 1;
+					}
 				}
 			}
 
@@ -143,11 +147,13 @@ public class GuiStevensonScreen extends GuiContainer {
 		SNOW(2, true, "Snowfall"),
 		THUNDER(3, true, "Thunderstorm"),
 		THUNDERSNOW(4, true, "Thundersnow"),
+		CLOUDY(5, true, "Cloudy"),
 		LUNA(0, false, "Starry Sky"),
 		L_RAIN(1, false, "Rainy Night"),
 		L_SNOW(2, false, "Snowy Night"),
 		L_THUNDER(3, false, "Thunderstorm Night"),
-		L_THUNDERSNOW(4, false, "Thundersnow Night");
+		L_THUNDERSNOW(4, false, "Thundersnow Night"),
+		L_CLOUDY(5, false, "Cloudy Night");
 
 		private final int id;
 		private final boolean day;
@@ -171,6 +177,8 @@ public class GuiStevensonScreen extends GuiContainer {
 				return d ? THUNDER : L_THUNDER;
 			case 4:
 				return d ? THUNDERSNOW : L_THUNDERSNOW;
+			case 5:
+				return d ? CLOUDY : L_CLOUDY;
 			default:
 				return d ? SUNNY : LUNA;
 			}

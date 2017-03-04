@@ -1,16 +1,7 @@
 package defeatedcrow.hac.main.block.device;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
-import defeatedcrow.hac.api.climate.IClimateTileEntity;
 import defeatedcrow.hac.core.base.ClimateReceiveTile;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 
 public class TileWindVane extends ClimateReceiveTile {
 
@@ -19,29 +10,7 @@ public class TileWindVane extends ClimateReceiveTile {
 
 	@Override
 	public void updateTile() {
-		DCHeatTier heat = DCHeatTier.NORMAL;
-		DCHeatTier cold = DCHeatTier.NORMAL;
-		DCHumidity hum = DCHumidity.NORMAL;
-		DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos);
-
-		List<BlockPos> remove = new ArrayList<BlockPos>();
-		for (BlockPos p : effectiveTiles) {
-			TileEntity tile = worldObj.getTileEntity(p);
-			if (tile != null && tile instanceof IClimateTileEntity) {
-				IClimateTileEntity effect = (IClimateTileEntity) tile;
-				if (effect.isActive()) {
-					DCAirflow air2 = effect.getAirflow(pos);
-
-					if (air2 != DCAirflow.NORMAL && air2.getID() > air.getID()) {
-						air = air2;
-					}
-				}
-			} else {
-				remove.add(p);
-			}
-		}
-		int code = (air.getID() << 6) + (hum.getID() << 4) + heat.getID();
-		current = ClimateAPI.register.getClimateFromInt(code);
+		super.updateTile();
 
 		if (worldObj.rand.nextInt(4) == 0) {
 			windPower += worldObj.rand.nextInt(3) - 1;

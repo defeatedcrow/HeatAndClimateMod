@@ -34,6 +34,7 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -137,75 +138,79 @@ public class ItemSilverCup extends FoodItemBase {
 	@Override
 	public boolean addEffects(ItemStack stack, World worldIn, EntityLivingBase living) {
 		if (!worldIn.isRemote && stack != null) {
-			List<PotionEffect> effects = this.getPotionEffect(stack);
-			if (effects.isEmpty())
+			if (stack == null || stack.getItem() == null || stack.getItem() != this)
 				return false;
-			for (PotionEffect get : effects) {
-				if (get != null && get.getPotion() != null) {
-					Potion por = get.getPotion();
-					if (por == null) {
-						continue;
+			else {
+				IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+				IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
+				if (cont != null && cont.getTankProperties() != null) {
+					FluidStack f = cont.getTankProperties()[0].getContents();
+					float dirF = 1.0F;
+					int ampF = 0;
+
+					if (drink != null) {
+						dirF *= drink.getMilk().effect;
+						ampF += drink.getSugar().effect;
 					}
-					int amp = get.getAmplifier();
-					int dur = get.getDuration();
-					if (living.isPotionActive(get.getPotion())) {
-						PotionEffect check = living.getActivePotionEffect(por);
-						dur += check.getDuration();
+					if (f != null && f.getFluid() != null) {
+						Fluid milk = FluidRegistry.getFluid("milk");
+						if (milk != null && f.getFluid() == milk) {
+							living.clearActivePotions();
+						} else {
+							List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
+							if (effects.isEmpty())
+								return false;
+							for (PotionEffect get : effects) {
+								if (get != null && get.getPotion() != null) {
+									Potion por = get.getPotion();
+									if (por == null) {
+										continue;
+									}
+									int amp = get.getAmplifier();
+									int dur = get.getDuration();
+									if (living.isPotionActive(get.getPotion())) {
+										PotionEffect check = living.getActivePotionEffect(por);
+										dur += check.getDuration();
+									}
+									living.addPotionEffect(new PotionEffect(get.getPotion(), dur, amp));
+								}
+							}
+						}
+						return true;
 					}
-					living.addPotionEffect(new PotionEffect(get.getPotion(), dur, amp));
 				}
 			}
-			return true;
 		}
 		return false;
 	}
 
-	public List<PotionEffect> getPotionEffect(ItemStack item) {
+	public List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
-		if (item == null || item.getItem() == null || item.getItem() != this)
-			return ret;
-		else {
-			IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			IDrinkCustomize drink = item.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-			if (cont != null && cont.getTankProperties() != null) {
-				FluidStack f = cont.getTankProperties()[0].getContents();
-				float dirF = 1.0F;
-				int ampF = 0;
-				if (drink != null) {
-					dirF *= drink.getMilk().effect;
-					ampF += drink.getSugar().effect;
-
+		if (fluid != null) {
+			if (fluid == FoodInit.greenTea) {
+				ret.add(new PotionEffect(DCPotion.haste, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+			} else if (fluid == FoodInit.blackTea) {
+				ret.add(new PotionEffect(DCPotion.registance, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+			} else if (fluid == FoodInit.coffee) {
+				ret.add(new PotionEffect(DCPotion.night_vision, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+			} else if (fluid == FoodInit.oil) {
+				ret.add(new PotionEffect(DCPotion.speed, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+			} else if (fluid == FoodInit.tomatoJuice) {
+				ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * (dirF + ampF)), 0));
+			} else if (fluid == FoodInit.blackLiquor) {
+				ret.add(new PotionEffect(DCPotion.poison, MathHelper.ceiling_float_int(300 * dirF), ampF));
+			} else if (fluid == FluidRegistry.WATER) {
+				ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF), ampF));
+			} else if (fluid == FluidRegistry.LAVA) {
+				ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+			} else if (DrinkPotionType.isRegistered(fluid)) {
+				Potion potion = DrinkPotionType.getPotion(fluid);
+				if (potion != null) {
+					float duration = potion.isBadEffect() ? 600 * dirF : 1200 * dirF;
+					ret.add(new PotionEffect(potion, MathHelper.ceiling_float_int(duration), ampF));
 				}
-				if (f != null && f.getFluid() != null) {
-					if (f.getFluid() == FoodInit.greenTea) {
-						ret.add(new PotionEffect(DCPotion.haste, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-					} else if (f.getFluid() == FoodInit.blackTea) {
-						ret.add(new PotionEffect(DCPotion.registance, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-					} else if (f.getFluid() == FoodInit.coffee) {
-						ret.add(new PotionEffect(DCPotion.night_vision, MathHelper.ceiling_float_int(1200 * dirF),
-								ampF));
-					} else if (f.getFluid() == FoodInit.oil) {
-						ret.add(new PotionEffect(DCPotion.speed, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-					} else if (f.getFluid() == FoodInit.tomatoJuice) {
-						ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * (dirF + ampF)),
-								0));
-					} else if (f.getFluid() == FoodInit.blackLiquor) {
-						ret.add(new PotionEffect(DCPotion.poison, MathHelper.ceiling_float_int(300 * dirF), ampF));
-					} else if (f.getFluid() == FluidRegistry.WATER) {
-						ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF),
-								ampF));
-					} else if (f.getFluid() == FluidRegistry.LAVA) {
-						ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-					} else if (DrinkPotionType.isRegistered(f.getFluid())) {
-						Potion potion = DrinkPotionType.getPotion(f.getFluid());
-						if (potion != null) {
-							ret.add(new PotionEffect(potion, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-						}
-					} else {
-						ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF),
-								ampF));
-					}
-				}
+			} else {
+				ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF), ampF));
 			}
 		}
 		return ret;
@@ -215,59 +220,62 @@ public class ItemSilverCup extends FoodItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 
-		List<PotionEffect> effects = this.getPotionEffect(stack);
-		if (!effects.isEmpty()) {
-			PotionEffect eff = effects.get(0);
-			if (eff != null && eff.getPotion() != null) {
-				tooltip.add(TextFormatting.AQUA.toString() + I18n.translateToLocal(eff.getPotion().getName()));
-			}
-		}
 		IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add("Placeable as an Entity");
-			if (cont != null && cont.getTankProperties() != null) {
-				FluidStack f = cont.getTankProperties()[0].getContents();
-				if (f != null && f.getFluid() != null) {
-					tooltip.add(TextFormatting.BOLD.toString() + "CONTAINED FLUID");
-					tooltip.add("Fluid: " + f.getLocalizedName());
-					tooltip.add("Amount: " + f.amount);
-				}
-				if (drink != null) {
-					tooltip.add(TextFormatting.BOLD.toString() + "DRINK CUSTOMIZE");
-					tooltip.add("Milk: " + drink.getMilk().toString());
-					tooltip.add("Sugar: " + drink.getSugar().toString());
-				}
-			}
 
-		} else {
-			String mes = "";
-			if (cont != null && cont.getTankProperties() != null) {
-				FluidStack f = cont.getTankProperties()[0].getContents();
-				if (f != null && f.getFluid() != null) {
-					mes += f.getLocalizedName();
-					if (drink != null) {
-						if (drink.getMilk() == DrinkMilk.NONE) {
-							if (drink.getSugar() == DrinkSugar.NONE) {
-								mes += " BLACK";
-							} else {
-								mes += " " + drink.getSugar().toString();
-							}
-						} else {
-							if (drink.getSugar() == DrinkSugar.NONE) {
-								mes += " " + drink.getMilk().toString();
-							} else {
-								mes += " " + drink.getMilk().toString() + "," + drink.getSugar().toString();
-							}
+		if (cont != null && cont.getTankProperties() != null && drink != null) {
+			FluidStack f = cont.getTankProperties()[0].getContents();
+			float dirF = 1.0F + drink.getMilk().effect;
+			int ampF = drink.getSugar().effect;
+			if (f != null && f.getFluid() != null) {
+				Fluid milk = FluidRegistry.getFluid("milk");
+				if (milk != null && f.getFluid() == milk) {
+					tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
+				} else {
+					List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
+					if (!effects.isEmpty()) {
+						PotionEffect eff = effects.get(0);
+						if (eff != null && eff.getPotion() != null) {
+							String effName = I18n.translateToLocal(eff.getEffectName());
+							effName += " " + I18n.translateToLocal("potion.potency." + eff.getAmplifier()).trim();
+							effName += " (" + Potion.getPotionDurationString(eff, 1.0F) + ")";
+							tooltip.add(TextFormatting.AQUA.toString() + effName);
 						}
 					}
-				} else {
-					mes += "EMPTY";
 				}
-				tooltip.add(TextFormatting.BOLD.toString() + mes);
-				tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
-			}
+				if (ClimateCore.proxy.isShiftKeyDown()) {
+					tooltip.add("Placeable as an Entity");
+					tooltip.add(TextFormatting.BOLD.toString() + "= CONTAINED FLUID =");
+					tooltip.add("Fluid: " + f.getLocalizedName());
+					tooltip.add("Amount: " + f.amount);
 
+					tooltip.add(TextFormatting.BOLD.toString() + "= DRINK CUSTOMIZE =");
+					tooltip.add("Milk: " + drink.getMilk().toString());
+					tooltip.add("Sugar: " + drink.getSugar().toString());
+				} else {
+					String mes = "";
+					mes += f.getLocalizedName();
+					if (drink.getMilk() == DrinkMilk.NONE) {
+						if (drink.getSugar() == DrinkSugar.NONE) {
+							mes += " BLACK";
+						} else {
+							mes += " " + drink.getSugar().toString();
+						}
+					} else {
+						if (drink.getSugar() == DrinkSugar.NONE) {
+							mes += " " + drink.getMilk().toString();
+						} else {
+							mes += " " + drink.getMilk().toString() + "," + drink.getSugar().toString();
+						}
+					}
+					tooltip.add(TextFormatting.BOLD.toString() + mes);
+					tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
+				}
+			} else {
+				tooltip.add(TextFormatting.BOLD.toString() + "EMPTY");
+			}
+		} else {
+			tooltip.add(TextFormatting.BOLD.toString() + "EMPTY");
 		}
 	}
 

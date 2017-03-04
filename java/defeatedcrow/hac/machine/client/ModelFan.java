@@ -157,7 +157,7 @@ public class ModelFan extends DCTileModelBase {
 	@Override
 	public void setRotationAngles(float f, float speed, float tick) {
 		setRotationAngles(f);
-		float rot = f;
+		float rot = f * 12.0F;
 		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 
 		wing1.rotateAngleY = f2;

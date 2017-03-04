@@ -172,6 +172,7 @@ item.dcs_yagen_brass_normal.name=Brass Druggist's Mortar
 ## mining tools
 item.dcs_repair_putty.name=Repair Putty
 item.dcs_repair_abrasive.name=Molded Abrasibe
+item.dcs_repair_soap.name=Soap
 
 item.dcs_axe_brass.name=Brass Axe
 item.dcs_axe_steel.name=Steel Axe
@@ -570,6 +571,8 @@ fluid.dcs.vegetable_juice=Vegetable Juice
 tile.dcs_fluidblock_vegetable_0.name=Vegetable Juice
 fluid.dcs.black_liquor=Black Liquor
 tile.dcs_fluidblock_black_liquor_0.name=Black Liquor
+fluid.dcs.hotspring=Hot Spring
+tile.dcs_fluidblock_hotspring_0.name=Hot Spring
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
@@ -618,6 +621,7 @@ dcs.tip.require_achievement=Require the achievement for using!
 dcs.tip.exp_gem.description=Use by right click
 dcs.tip.repair_putty.description=On Anvil: Recover the durability of tool
 dcs.tip.abrasive.description=On Anvil: Add the Efficiency or Sharpness Enchantment to a tool
+dcs.tip.soap.description=On Anvil: Decolorize leather armors
 
 dcs.comment.pendant.0=Reduce ice & water damage
 dcs.comment.pendant.1=Reduce heat damage
