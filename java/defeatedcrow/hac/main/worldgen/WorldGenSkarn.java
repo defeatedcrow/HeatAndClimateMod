@@ -17,6 +17,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
+@Deprecated
 public class WorldGenSkarn implements IWorldGenerator {
 
 	private final boolean isForced;

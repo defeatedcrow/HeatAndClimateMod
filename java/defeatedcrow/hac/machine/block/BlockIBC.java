@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -21,6 +22,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -80,9 +82,9 @@ public class BlockIBC extends DCTileBlock {
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() == MachineInit.IBC) {
 			if (f) {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 2);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 3);
 			} else {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 2);
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 3);
 			}
 		}
 	}
@@ -92,7 +94,13 @@ public class BlockIBC extends DCTileBlock {
 		if (state.getBlock() != MachineInit.IBC)
 			return false;
 		int meta = state.getBlock().getMetaFromState(state) & 3;
-		return meta > 1;
+		return meta > 0;
+	}
+
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+		int meta = this.getMetaFromState(state) & 3;
+		return meta == 1 ? 15 : 0;
 	}
 
 	@Override
@@ -103,6 +111,27 @@ public class BlockIBC extends DCTileBlock {
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
+	}
+
+	@Override
+	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+		return calcRedstone(worldIn.getTileEntity(pos));
+	}
+
+	private int calcRedstone(TileEntity te) {
+		if (te != null && te instanceof TileIBC) {
+			TileIBC ibc = (TileIBC) te;
+			DCTank tank = ibc.inputT;
+			float amo = tank.getFluidAmount() * 15.0F / tank.getCapacity();
+			int lit = MathHelper.floor_float(amo);
+			return lit;
+		}
+		return 0;
+	}
+
+	@Override
+	public boolean hasComparatorInputOverride(IBlockState state) {
+		return true;
 	}
 
 }

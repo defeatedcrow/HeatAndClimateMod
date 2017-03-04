@@ -62,4 +62,9 @@ public class EntityProjLightSpit extends EntityMagicProjBase {
 		return true;
 	}
 
+	@Override
+	public boolean isInWater() {
+		return false;
+	}
+
 }

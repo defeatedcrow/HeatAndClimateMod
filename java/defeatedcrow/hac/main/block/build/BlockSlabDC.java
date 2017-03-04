@@ -5,14 +5,18 @@ import net.minecraft.block.material.Material;
 public class BlockSlabDC extends BlockSlabBase {
 
 	public BlockSlabDC() {
-		super(Material.GLASS, "dcs_build_slab", 1, true);
+		super(Material.GLASS, "dcs_build_slab", 4, true);
 	}
 
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
 				"gypsum",
-				"glass" };
+				"glass",
+				"marble",
+				"serpentine",
+				"bedrock"
+		};
 		return name;
 	}
 

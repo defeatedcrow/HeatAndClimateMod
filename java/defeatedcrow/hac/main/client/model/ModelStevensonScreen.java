@@ -1,7 +1,7 @@
 package defeatedcrow.hac.main.client.model;
 
-import net.minecraft.client.model.ModelRenderer;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
+import net.minecraft.client.model.ModelRenderer;
 
 public class ModelStevensonScreen extends DCTileModelBase {
 	// fields
@@ -112,7 +112,6 @@ public class ModelStevensonScreen extends DCTileModelBase {
 
 	@Override
 	public void render(float f) {
-		setRotationAngles(f);
 		setRotationAngles(f);
 		bottom.render(0.0625F);
 		p1.render(0.0625F);

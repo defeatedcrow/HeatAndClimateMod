@@ -2,6 +2,14 @@ package defeatedcrow.hac.main.item.ores;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemDye;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class ItemMiscDust extends DCItem {
 
@@ -15,7 +23,9 @@ public class ItemMiscDust extends DCItem {
 			"presscake",
 			"ash",
 			"niter",
-			"sulfur" };
+			"sulfur",
+			"garnet"
+	};
 
 	public ItemMiscDust(int max) {
 		super();
@@ -47,6 +57,23 @@ public class ItemMiscDust extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+			EnumFacing facing, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = player.getHeldItem(hand);
+		if (heldItem == null)
+			return EnumActionResult.FAIL;
+
+		if (heldItem.getItemDamage() == 4 && ItemDye.applyBonemeal(heldItem, world, pos, player)) {
+			if (!world.isRemote) {
+				world.playEvent(2005, pos, 0);
+			}
+
+			return EnumActionResult.SUCCESS;
+		}
+		return EnumActionResult.PASS;
 	}
 
 }

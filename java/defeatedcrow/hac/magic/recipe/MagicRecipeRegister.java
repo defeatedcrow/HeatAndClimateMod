@@ -31,7 +31,11 @@ public class MagicRecipeRegister {
 				"gemClam",
 				"gemLapis",
 				"gemDiamond",
-				"gemSchorl" };
+				"gemSchorl",
+				"gemSerpentine",
+				"gemOlivine",
+				"gemGarnet"
+		};
 		for (int i = 0; i < gems.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, i), new Object[] {
 					" X ",
@@ -40,7 +44,8 @@ public class MagicRecipeRegister {
 					'X',
 					"ingotSilver",
 					'Y',
-					gems[i] }));
+					gems[i]
+			}));
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, i), new Object[] {
 					" X ",
@@ -49,7 +54,8 @@ public class MagicRecipeRegister {
 					'X',
 					"ingotNickelsilver",
 					'Y',
-					gems[i] }));
+					gems[i]
+			}));
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, i), new Object[] {
 					" Y ",
@@ -58,7 +64,8 @@ public class MagicRecipeRegister {
 					'X',
 					"ingotSilver",
 					'Y',
-					gems[i] }));
+					gems[i]
+			}));
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, i), new Object[] {
 					" Y ",
@@ -67,8 +74,49 @@ public class MagicRecipeRegister {
 					'X',
 					"ingotNickelsilver",
 					'Y',
-					gems[i] }));
+					gems[i]
+			}));
 		}
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, 12), new Object[] {
+				" X ",
+				"X X",
+				" Y ",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, 12), new Object[] {
+				" X ",
+				"X X",
+				" Y ",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, 12), new Object[] {
+				" Y ",
+				"X X",
+				" X ",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, 12), new Object[] {
+				" Y ",
+				"X X",
+				" X ",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				"gemPeridot"
+		}));
 
 		// dagger
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerSilver, 3, 0), new Object[] {
@@ -77,7 +125,8 @@ public class MagicRecipeRegister {
 				'X',
 				"ingotSilver",
 				'Y',
-				"stickWood" }));
+				"stickWood"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerSilver, 3, 0), new Object[] {
 				"X",
@@ -85,7 +134,8 @@ public class MagicRecipeRegister {
 				'X',
 				"ingotNickelsilver",
 				'Y',
-				"stickWood" }));
+				"stickWood"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 0), new Object[] {
 				"X",
@@ -96,7 +146,8 @@ public class MagicRecipeRegister {
 				'Y',
 				new ItemStack(MainInit.gems, 1, 2),
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 4), new Object[] {
 				"X",
@@ -107,7 +158,8 @@ public class MagicRecipeRegister {
 				'Y',
 				new ItemStack(MainInit.gems, 1, 2),
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 2), new Object[] {
 				"X",
@@ -118,7 +170,8 @@ public class MagicRecipeRegister {
 				'Y',
 				new ItemStack(MainInit.gems, 1, 2),
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 1), new Object[] {
 				"X",
@@ -129,7 +182,8 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemSapphire",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 5), new Object[] {
 				"XYW",
@@ -141,7 +195,8 @@ public class MagicRecipeRegister {
 				'W',
 				"dustBlaze",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 3), new Object[] {
 				"XYW",
@@ -153,7 +208,8 @@ public class MagicRecipeRegister {
 				'W',
 				"enderpearl",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 6), new Object[] {
 				"X",
@@ -164,7 +220,8 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemQuartz",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 7), new Object[] {
 				"X",
@@ -175,7 +232,8 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemQuartz",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 8), new Object[] {
 				"XYW",
@@ -187,7 +245,8 @@ public class MagicRecipeRegister {
 				'W',
 				"gemLapis",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 9), new Object[] {
 				"X",
@@ -198,7 +257,8 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemLapis",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 10), new Object[] {
 				"X",
@@ -209,7 +269,8 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemLapis",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 11), new Object[] {
 				"X",
@@ -220,7 +281,8 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemLapis",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 12), new Object[] {
 				"XYW",
@@ -232,7 +294,8 @@ public class MagicRecipeRegister {
 				'W',
 				new ItemStack(MainInit.gems, 1, 0),
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 13), new Object[] {
 				"X",
@@ -243,7 +306,8 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemSchorl",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 14), new Object[] {
 				"XYW",
@@ -255,7 +319,8 @@ public class MagicRecipeRegister {
 				'W',
 				"gemSapphire",
 				'Z',
-				new ItemStack(MagicInit.daggerSilver) }));
+				new ItemStack(MagicInit.daggerSilver)
+		}));
 
 		// mace
 
@@ -266,7 +331,8 @@ public class MagicRecipeRegister {
 				'X',
 				"ingotGold",
 				'Y',
-				"ingotSilver" }));
+				"ingotSilver"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 0), new Object[] {
 				"XYX",
@@ -279,7 +345,8 @@ public class MagicRecipeRegister {
 				'Z',
 				new ItemStack(Items.ENDER_EYE, 1, 0),
 				'W',
-				"blockElestial" }));
+				"blockElestial"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 1), new Object[] {
 				"XYX",
@@ -292,7 +359,8 @@ public class MagicRecipeRegister {
 				'Z',
 				"gemCelestite",
 				'W',
-				"blockElestial" }));
+				"blockElestial"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 3), new Object[] {
 				"XYX",
@@ -305,7 +373,8 @@ public class MagicRecipeRegister {
 				'Z',
 				new ItemStack(Blocks.PACKED_ICE, 1, 0),
 				'W',
-				"blockElestial" }));
+				"blockElestial"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 2), new Object[] {
 				"XYX",
@@ -318,7 +387,8 @@ public class MagicRecipeRegister {
 				'Z',
 				"gemSchorl",
 				'W',
-				"blockElestial" }));
+				"blockElestial"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 4), new Object[] {
 				"XYX",
@@ -331,7 +401,50 @@ public class MagicRecipeRegister {
 				'Z',
 				new ItemStack(Items.EMERALD, 1, 0),
 				'W',
-				"blockElestial" }));
+				"blockElestial"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 5), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemGarnet",
+				'Z',
+				new ItemStack(MainInit.gems, 1, 1),
+				'W',
+				"blockElestial"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 6), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemMalachite",
+				'Z',
+				new ItemStack(MainInit.gems, 1, 0),
+				'W',
+				"blockElestial"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceStarItem, 1, 7), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemDiamond",
+				'Z',
+				"gemCelestite",
+				'W',
+				"blockElestial"
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceSun, 1, 0), new Object[] {
 				"X",
@@ -339,7 +452,8 @@ public class MagicRecipeRegister {
 				'X',
 				new ItemStack(MagicInit.maceStarItem, 1, 0),
 				'Y',
-				new ItemStack(MagicInit.macehandle, 1, 0) }));
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceMoon, 1, 0), new Object[] {
 				"X",
@@ -347,7 +461,8 @@ public class MagicRecipeRegister {
 				'X',
 				new ItemStack(MagicInit.maceStarItem, 1, 1),
 				'Y',
-				new ItemStack(MagicInit.macehandle, 1, 0) }));
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceBird, 1, 0), new Object[] {
 				"X",
@@ -355,7 +470,8 @@ public class MagicRecipeRegister {
 				'X',
 				new ItemStack(MagicInit.maceStarItem, 1, 2),
 				'Y',
-				new ItemStack(MagicInit.macehandle, 1, 0) }));
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceIce, 1, 0), new Object[] {
 				"X",
@@ -363,7 +479,8 @@ public class MagicRecipeRegister {
 				'X',
 				new ItemStack(MagicInit.maceStarItem, 1, 3),
 				'Y',
-				new ItemStack(MagicInit.macehandle, 1, 0) }));
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceOcean, 1, 0), new Object[] {
 				"X",
@@ -371,7 +488,35 @@ public class MagicRecipeRegister {
 				'X',
 				new ItemStack(MagicInit.maceStarItem, 1, 4),
 				'Y',
-				new ItemStack(MagicInit.macehandle, 1, 0) }));
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceBurn, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 5),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceFlower, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 6),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.maceGlory, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 7),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		}));
 
 		// elestial
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MagicInit.elestial, 1, 0), DCHeatTier.KILN, null, null,

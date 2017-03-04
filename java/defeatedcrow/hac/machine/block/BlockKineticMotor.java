@@ -49,6 +49,13 @@ public class BlockKineticMotor extends BlockTorqueBase {
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer) {
+		// achievement
+		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) placer;
+			if (!player.hasAchievement(AchievementClimate.MACHINE_TIER3)) {
+				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_TIER3);
+			}
+		}
 		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();

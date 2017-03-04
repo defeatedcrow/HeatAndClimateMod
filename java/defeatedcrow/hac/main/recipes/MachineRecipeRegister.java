@@ -103,15 +103,8 @@ public class MachineRecipeRegister {
 			// 3x3
 			RecipeAPI.registerRecipes.addRecipe(new ItemStack(MainInit.metalBlock, 1, 0), DCHeatTier.KILN, null,
 					DCAirflow.TIGHT, false, new Object[] {
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper",
-							"dustCopper" });
+							"dustDebug"
+					});
 		}
 
 	}
@@ -199,6 +192,7 @@ public class MachineRecipeRegister {
 		// gems
 		GameRegistry.addSmelting(new ItemStack(Items.FLINT, 1, 0), new ItemStack(MainInit.gems, 1, 1), 0.2F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(Blocks.GLASS, 1, 0), 0.2F);
+		// GameRegistry.addSmelting(new ItemStack(MainInit.gems, 1, 12), new ItemStack(Items.ENDER_PEARL, 1, 0), 0.2F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.ores_2, 1, 0), new ItemStack(MainInit.gemBlock, 1, 6), 0.2F);
 	}

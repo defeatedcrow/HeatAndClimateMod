@@ -37,7 +37,12 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 			"salt",
 			"marble",
 			"schorl",
-			"compressed" };
+			"compressed",
+			"serpentine",
+			"olivine",
+			"almandine",
+			"bedrock"
+	};
 
 	@Override
 	public String[] getNameSuffix() {
@@ -46,8 +51,9 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		if (meta >= names.length)
+		if (meta >= names.length) {
 			meta = names.length - 1;
+		}
 		String s = "blocks/ores/gemblock_" + names[meta];
 		if (f) {
 			s = "textures/" + s;

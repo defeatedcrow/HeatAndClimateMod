@@ -12,6 +12,8 @@ public class MagicInit {
 	public static Item daggerSilver;
 	public static Item daggerMagic;
 
+	public static Item expGem;
+
 	// blocks
 	public static Block clusterIce;
 	public static Block infernalFlame;
@@ -27,5 +29,8 @@ public class MagicInit {
 	public static Block maceBird;
 	public static Block maceIce;
 	public static Block maceOcean;
+	public static Block maceBurn;
+	public static Block maceFlower;
+	public static Block maceGlory;
 
 }

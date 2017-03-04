@@ -119,8 +119,8 @@ public class IBCTESR extends DCTESRBase {
 		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
 		TextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(fluid.getStill().toString());
 		GlStateManager.pushMatrix();
-		// GL11.glEnable(GL11.GL_BLEND);
-		// GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GlStateManager.translate((float) x + 0.5F, (float) y, (float) z + 0.5F);
 		float f2 = 0.0625F + 0.8F * amount / 128000F;
 		float f = 0.45F;
@@ -163,7 +163,7 @@ public class IBCTESR extends DCTESRBase {
 		vertexbuffer.pos(-f, f2, -f).tex(uMax, vMin).endVertex();
 
 		tessellator.draw();
-		// GL11.glDisable(GL11.GL_BLEND);
+		GL11.glDisable(GL11.GL_BLEND);
 		GlStateManager.popMatrix();
 		GlStateManager.enableLighting();
 

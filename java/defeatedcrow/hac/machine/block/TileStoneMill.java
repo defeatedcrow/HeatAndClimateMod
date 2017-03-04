@@ -27,9 +27,8 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		if (this.currentTorque >= this.maxTorque()) {
+		if (this.currentTorque >= this.maxTorque())
 			return false;
-		}
 		return this.isInputSide(side.getOpposite());
 	}
 
@@ -55,7 +54,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 
 	@Override
 	public int getProcessTime(ItemStack item) {
-		return 20;
+		return 64;
 	}
 
 	@Override
@@ -90,11 +89,13 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 				float chance = recipe.getSecondaryChance();
 				int r = (int) (chance * 100);
 				int i1 = this.insertResult(out);
-				if (this.worldObj.rand.nextInt(100) < r) {
-					int i2 = this.insertResult(sec);
+				if (i1 > 0) {
+					if (this.worldObj.rand.nextInt(100) < r) {
+						int i2 = this.insertResult(sec);
+					}
+					int i3 = this.insertResult(cont);
+					return true;
 				}
-				int i3 = this.insertResult(cont);
-				return true;
 			}
 		}
 		return false;

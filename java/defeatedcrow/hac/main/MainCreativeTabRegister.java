@@ -4,8 +4,7 @@ import defeatedcrow.hac.core.ClimateCore;
 
 public class MainCreativeTabRegister {
 
-	private MainCreativeTabRegister() {
-	}
+	private MainCreativeTabRegister() {}
 
 	public static void load() {
 		// block
@@ -16,23 +15,18 @@ public class MainCreativeTabRegister {
 		MainInit.gemBlock.setCreativeTab(ClimateCore.climate);
 		MainInit.metalBlock.setCreativeTab(ClimateCore.climate);
 
-		// cont
-		MainInit.logCont.setCreativeTab(ClimateMain.build);
-		MainInit.cropCont.setCreativeTab(ClimateMain.build);
-		MainInit.dropCont.setCreativeTab(ClimateMain.build);
-		MainInit.miscCont.setCreativeTab(ClimateMain.build);
-		MainInit.cardboard.setCreativeTab(ClimateMain.build);
-		MainInit.cropBasket.setCreativeTab(ClimateMain.build);
-		MainInit.dustBags.setCreativeTab(ClimateMain.build);
-
 		// building
 		MainInit.bricks.setCreativeTab(ClimateMain.build);
 		MainInit.selenite.setCreativeTab(ClimateMain.build);
 		MainInit.stairsGlass.setCreativeTab(ClimateMain.build);
 		MainInit.stairsGypsum.setCreativeTab(ClimateMain.build);
+		MainInit.stairsMarble.setCreativeTab(ClimateMain.build);
+		MainInit.stairsSerpentine.setCreativeTab(ClimateMain.build);
+		MainInit.stairsBedrock.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab.setCreativeTab(ClimateMain.build);
 		MainInit.builds.setCreativeTab(ClimateMain.build);
 		MainInit.plate.setCreativeTab(ClimateMain.build);
+		// MainInit.markingPanel.setCreativeTab(ClimateMain.build);
 
 		// furniture
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
@@ -52,6 +46,7 @@ public class MainCreativeTabRegister {
 		MainInit.chestWood.setCreativeTab(ClimateMain.build);
 		MainInit.chestMetal.setCreativeTab(ClimateMain.build);
 		MainInit.chestMagnet.setCreativeTab(ClimateMain.build);
+		MainInit.chestVillage.setCreativeTab(ClimateMain.build);
 		MainInit.sinkMetal.setCreativeTab(ClimateMain.build);
 		MainInit.sinkChest.setCreativeTab(ClimateMain.build);
 
@@ -60,7 +55,18 @@ public class MainCreativeTabRegister {
 		MainInit.shitirin.setCreativeTab(ClimateMain.machine);
 		MainInit.fuelStove.setCreativeTab(ClimateMain.machine);
 		MainInit.stevenson_screen.setCreativeTab(ClimateCore.climate);
+		MainInit.thermometer.setCreativeTab(ClimateCore.climate);
+		MainInit.windvane.setCreativeTab(ClimateCore.climate);
 		MainInit.bellow.setCreativeTab(ClimateMain.machine);
+
+		// cont
+		MainInit.logCont.setCreativeTab(ClimateMain.build);
+		MainInit.cropCont.setCreativeTab(ClimateMain.build);
+		MainInit.dropCont.setCreativeTab(ClimateMain.build);
+		MainInit.miscCont.setCreativeTab(ClimateMain.build);
+		MainInit.cardboard.setCreativeTab(ClimateMain.build);
+		MainInit.cropBasket.setCreativeTab(ClimateMain.build);
+		MainInit.dustBags.setCreativeTab(ClimateMain.build);
 
 		// item
 		// ores

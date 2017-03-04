@@ -4,6 +4,9 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.magic.block.TileIceCluster;
 import defeatedcrow.hac.magic.block.TileInfernalFlame;
 import defeatedcrow.hac.magic.block.TileMaceBird;
+import defeatedcrow.hac.magic.block.TileMaceBurn;
+import defeatedcrow.hac.magic.block.TileMaceFlower;
+import defeatedcrow.hac.magic.block.TileMaceGlory;
 import defeatedcrow.hac.magic.block.TileMaceIce;
 import defeatedcrow.hac.magic.block.TileMaceLight;
 import defeatedcrow.hac.magic.block.TileMaceMoon;
@@ -29,6 +32,7 @@ import defeatedcrow.hac.magic.proj.EntityProjSapW;
 import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.magic.proj.EntityProjSilver;
+import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -80,6 +84,8 @@ public class MagicCommonProxy {
 				ClimateCore.PACKAGE_BASE + "entity.magic.proj_light", 120, ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(EntityProjIceSpit.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_ice",
 				121, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityProjWhiteSpit.class,
+				ClimateCore.PACKAGE_BASE + "entity.magic.proj_white", 122, ClimateMain.instance, 128, 5, true);
 	}
 
 	public static void loadTE() {
@@ -91,6 +97,9 @@ public class MagicCommonProxy {
 		GameRegistry.registerTileEntity(TileMaceBird.class, "dcs_te_magicmace_bird");
 		GameRegistry.registerTileEntity(TileMaceIce.class, "dcs_te_magicmace_ice");
 		GameRegistry.registerTileEntity(TileMaceOcean.class, "dcs_te_magicmace_ocean");
+		GameRegistry.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn");
+		GameRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower");
+		GameRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory");
 	}
 
 }

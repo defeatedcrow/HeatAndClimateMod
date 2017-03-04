@@ -4,6 +4,7 @@ import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,10 +30,15 @@ public class ItemBlockMaceBird extends ItemBlockMace {
 			boolean flag = player.capabilities.isCreativeMode;
 
 			if (hasAcv || flag) {
-				if (!player.worldObj.isRemote)
+				if (!player.worldObj.isRemote) {
 					player.addPotionEffect(new PotionEffect(MainInit.bird, 3600, 0));
+				}
 				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP,
 						SoundCategory.PLAYERS, 0.65F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+
+				if (!player.hasAchievement(AchievementClimate.MAGIC_BIRD)) {
+					AcvHelper.addMachineAcievement(player, AchievementClimate.MAGIC_BIRD);
+				}
 
 			} else {
 				world.playSound(player, player.posX, player.posY, player.posZ,

@@ -93,9 +93,8 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		if (id == 1) {
 			this.numPlayersUsing = type;
 			return true;
-		} else {
+		} else
 			return super.receiveClientEvent(id, type);
-		}
 	}
 
 	@Override
@@ -251,17 +250,16 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 				}
 				return itemstack;
 			}
-		} else {
+		} else
 			return null;
-		}
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory()) {
+		if (i < 0 || i >= this.getSizeInventory())
 			return;
-		} else {
+		else {
 			this.inv[i] = stack;
 
 			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
@@ -304,11 +302,10 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if (stack != null) {
-			if (stack.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+			if (stack.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null))
 				return false;
-			} else if (stack.hasTagCompound() && stack.getTagCompound().hasKey("InvItems")) {
+			else if (stack.hasTagCompound() && stack.getTagCompound().hasKey("InvItems"))
 				return false;
-			}
 		}
 		return true;
 	}
@@ -321,10 +318,8 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
 				&& ItemStack.areItemStackTagsEqual(target, current)) {
 			int i = current.stackSize + target.stackSize;
-			if (i > current.getMaxStackSize()) {
-				i = current.getMaxStackSize() - current.stackSize;
-				return i;
-			}
+			if (i > current.getMaxStackSize())
+				return current.getMaxStackSize() - current.stackSize;
 			return target.stackSize;
 		}
 
@@ -369,8 +364,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	}
 
 	@Override
-	public void setField(int id, int value) {
-	}
+	public void setField(int id, int value) {}
 
 	@Override
 	public int getFieldCount() {
@@ -393,9 +387,8 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return (T) handler;
-		}
 		return super.getCapability(capability, facing);
 	}
 

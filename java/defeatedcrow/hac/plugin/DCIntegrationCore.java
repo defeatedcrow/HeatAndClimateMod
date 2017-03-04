@@ -57,7 +57,17 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: JEI");
 			}
 		}
+	}
 
+	public static void loadIMC() {
+		if (Loader.isModLoaded("Mekanism")) {
+			try {
+				DCPluginMekanism.sendIMC();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: Mekanism");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Mekanism");
+			}
+		}
 	}
 
 }

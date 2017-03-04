@@ -7,6 +7,8 @@
 
 package defeatedcrow.hac.main;
 
+import java.util.Calendar;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -33,8 +35,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
 	public static final int MOD_MINOR = 3;
-	public static final int MOD_BUILD = 0;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.3.0,)";
+	public static final int MOD_BUILD = 6;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.3.5,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
@@ -46,6 +48,10 @@ public class ClimateMain {
 	public static final CreativeTabs machine = new CreativeTabClimateMachine(MOD_ID + "_machine");
 	public static final CreativeTabs food = new CreativeTabClimateFood(MOD_ID + "_food");
 	public static final CreativeTabs build = new CreativeTabClimateBuild(MOD_ID + "_build");
+
+	public static final Calendar CAL = Calendar.getInstance();
+	public static int month = 0;
+	public static int day = 0;
 
 	@EventHandler
 	public void construction(FMLConstructionEvent event) {
@@ -84,6 +90,8 @@ public class ClimateMain {
 
 		// other things
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
+
+		DCIntegrationCore.INSTANCE.loadIMC();
 	}
 
 	@EventHandler
@@ -91,6 +99,10 @@ public class ClimateMain {
 		// Recipes
 		proxy.loadRecipes();
 		DCIntegrationCore.INSTANCE.load();
+
+		// date
+		month = CAL.get(CAL.MONTH);
+		day = CAL.get(CAL.DATE);
 	}
 
 }

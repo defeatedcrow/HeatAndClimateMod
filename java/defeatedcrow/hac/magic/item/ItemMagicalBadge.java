@@ -2,11 +2,14 @@ package defeatedcrow.hac.magic.item;
 
 import java.util.List;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCPotion;
+import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.CustomExplosion;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentData;
@@ -38,6 +41,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
@@ -62,7 +66,11 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			"clam", /* ワープ */
 			"lapis", /* アイテム収集範囲 */
 			"diamond", /* 範囲採掘 */
-			"schorl" /* サンボル */ };
+			"schorl", /* サンボル */
+			"serpentine", /* マークタワー設置 */
+			"olivine", /* EXP結晶化 */
+			"almandine"
+			/* 敵の強制除去 */ };
 
 	public ItemMagicalBadge(int max) {
 		super();
@@ -94,6 +102,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		switch (meta) {
 		case 6:
 		case 7:
+		case 11:
+		case 12:
 			return CharmType.KEY;
 		case 8:
 		case 9:
@@ -174,8 +184,9 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	public int getNBTDamage(ItemStack stack) {
 		if (stack != null) {
 			NBTTagCompound tag = stack.getTagCompound();
-			if (tag == null)
+			if (tag == null) {
 				tag = new NBTTagCompound();
+			}
 
 			if (tag.hasKey("dcs.itemdam")) {
 				int d = tag.getInteger("dcs.itemdam");
@@ -191,17 +202,18 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	public ItemStack consumeCharmItem(ItemStack stack) {
 		if (stack != null) {
 			NBTTagCompound tag = stack.getTagCompound();
-			if (tag == null)
+			if (tag == null) {
 				tag = new NBTTagCompound();
+			}
 
 			int dam = 0;
 			if (tag.hasKey("dcs.itemdam")) {
 				dam = tag.getInteger("dcs.itemdam");
 			}
 			dam++;
-			if (dam > maxCount) {
+			if (dam > maxCount)
 				return null;
-			} else {
+			else {
 				tag.setInteger("dcs.itemdam", dam);
 				stack.setTagCompound(tag);
 				return stack;
@@ -259,6 +271,28 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					}
 				}
 			}
+			if (meta == 11) {
+				int x = MathHelper.floor_double(player.posX);
+				int y = MathHelper.floor_double(player.posY);
+				int z = MathHelper.floor_double(player.posZ);
+				BlockPos p = new BlockPos(x, y, z);
+				IBlockState cur = player.worldObj.getBlockState(p);
+				IBlockState set = MainInit.markingPanel.getDefaultState();
+				set = set.withProperty(DCState.FACING, player.getHorizontalFacing().getOpposite());
+				if (cur.getMaterial().isReplaceable() && player.worldObj.setBlockState(p, set))
+					return true;
+			}
+			if (meta == 12) {
+				if (player.experienceLevel > 10) {
+					ItemStack gem = new ItemStack(MagicInit.expGem);
+					EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY + 0.25D, player.posZ,
+							gem);
+					if (player.worldObj.spawnEntityInWorld(drop)) {
+						player.addExperienceLevel(-10);
+						return true;
+					}
+				}
+			}
 		}
 		return false;
 	}
@@ -295,18 +329,15 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	public float increaceDamage(EntityLivingBase target, ItemStack charm) {
 		int meta = charm.getMetadata();
 		if (meta == 0) {
-			if (target.isImmuneToFire() || target instanceof EntityEnderman) {
+			if (target.isImmuneToFire() || target instanceof EntityEnderman)
 				return 1.5F;
-			}
 		}
 		if (meta == 1) {
-			if (target.isEntityUndead() || target instanceof EntityGuardian) {
+			if (target.isEntityUndead() || target instanceof EntityGuardian)
 				return 1.5F;
-			}
 		}
-		if (meta == 2) {
+		if (meta == 2)
 			return 1.1F;
-		}
 		return 1.0F;
 	}
 
@@ -341,6 +372,12 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				explosion.doExplosion();
 				player.worldObj.addWeatherEffect(new EntityLightningBolt(player.worldObj, target.posX,
 						target.posY - 0.25D, target.posZ, !player.isSneaking()));
+				return true;
+			}
+		}
+		if (meta == 13) {
+			if (player != null && target != null && !source.isExplosion() && target instanceof IMob) {
+				target.setDead();
 				return true;
 			}
 		}

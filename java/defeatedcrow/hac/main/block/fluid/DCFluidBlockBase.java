@@ -1,18 +1,10 @@
 package defeatedcrow.hac.main.block.fluid;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
@@ -20,8 +12,23 @@ import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.food.FoodInit;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath, IHeatTile, IHumidityTile, IAirflowTile {
+public class DCFluidBlockBase extends BlockFluidClassic
+		implements ITexturePath, IHeatTile, IHumidityTile, IAirflowTile {
 
 	protected final String name;
 
@@ -38,6 +45,8 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 		list.add(b + "coffee_still");
 		list.add(b + "seedoil_still");
 		list.add(b + "cream_still");
+		list.add(b + "black_liquor_still");
+		list.add(b + "hotspring_still");
 		return list;
 	}
 
@@ -61,27 +70,7 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 	public DCHeatTier getHeatTier(World world, BlockPos to, BlockPos from) {
 		if (this.stack.getFluid() != null) {
 			int temp = this.stack.getFluid().getTemperature();
-			if (temp >= 7300) {
-				return DCHeatTier.INFERNO;
-			} else if (temp >= 3300) {
-				return DCHeatTier.UHT;
-			} else if (temp >= 1800) {
-				return DCHeatTier.SMELTING;
-			} else if (temp >= 1000) {
-				return DCHeatTier.KILN;
-			} else if (temp >= 520) {
-				return DCHeatTier.OVEN;
-			} else if (temp >= 350) {
-				return DCHeatTier.HOT;
-			} else if (temp > 290) {
-				return DCHeatTier.NORMAL;
-			} else if (temp > 230) {
-				return DCHeatTier.COLD;
-			} else if (temp > 200) {
-				return DCHeatTier.FROSTBITE;
-			} else {
-				return DCHeatTier.ABSOLUTE;
-			}
+			return getFluidHeatTier(temp);
 		}
 		return DCHeatTier.NORMAL;
 	}
@@ -91,15 +80,64 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && state.getBlock() == this && this.stack.getFluid() != null) {
 			int temp = this.stack.getFluid().getTemperature();
-			if (temp > 350 && rand.nextFloat() < 0.25F) {
-				double x = (double) pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
-				double y = (double) pos.getY() + 0.7D + rand.nextDouble() * 0.25D;
-				double z = (double) pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
+			if (temp > 320 && rand.nextFloat() < 0.25F) {
+				double x = pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
+				double y = pos.getY() + 0.7D + rand.nextDouble() * 0.25D;
+				double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
 				double dx = rand.nextDouble() * 0.05D;
 				double dy = rand.nextDouble() * 0.05D;
 				double dz = rand.nextDouble() * 0.05D;
 
 				world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
+			}
+		}
+	}
+
+	public static DCHeatTier getFluidHeatTier(int temp) {
+		if (temp >= 7300)
+			return DCHeatTier.INFERNO;
+		else if (temp >= 3300)
+			return DCHeatTier.UHT;
+		else if (temp >= 1800)
+			return DCHeatTier.SMELTING;
+		else if (temp >= 1000)
+			return DCHeatTier.KILN;
+		else if (temp >= 500)
+			return DCHeatTier.OVEN;
+		else if (temp >= 320)
+			return DCHeatTier.HOT;
+		else if (temp >= 290)
+			return DCHeatTier.WARM;
+		else if (temp > 270)
+			return DCHeatTier.NORMAL;
+		else if (temp > 250)
+			return DCHeatTier.COOL;
+		else if (temp > 200)
+			return DCHeatTier.COLD;
+		else if (temp > 70)
+			return DCHeatTier.FROSTBITE;
+		else
+			return DCHeatTier.ABSOLUTE;
+	}
+
+	@Override
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+		if (entity != null && entity instanceof EntityLivingBase && !world.isRemote) {
+			EntityLivingBase living = (EntityLivingBase) entity;
+			if (this.getFluid() != null && this.getFluid() == FoodInit.hotSpring) {
+				Collection<PotionEffect> effs = living.getActivePotionEffects();
+				if (effs.isEmpty())
+					return;
+
+				List<Potion> removes = new ArrayList<Potion>();
+				for (PotionEffect eff : effs) {
+					if (eff != null && eff.getPotion() != null && eff.getPotion().isBadEffect()) {
+						removes.add(eff.getPotion());
+					}
+				}
+				for (Potion eff : removes) {
+					living.removePotionEffect(eff);
+				}
 			}
 		}
 	}

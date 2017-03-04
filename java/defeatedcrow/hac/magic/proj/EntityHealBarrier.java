@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -27,8 +28,9 @@ public class EntityHealBarrier extends EntityMobBarrier {
 
 	public EntityHealBarrier(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		this(worldIn, posX, posY, posZ);
-		if (player != null)
+		if (player != null) {
 			this.rotationYaw = player.rotationYaw;
+		}
 	}
 
 	int count = 20;
@@ -41,7 +43,7 @@ public class EntityHealBarrier extends EntityMobBarrier {
 
 			if (entity != null && entity instanceof EntityLivingBase) {
 				EntityLivingBase liv = (EntityLivingBase) entity;
-				if (entity instanceof EntityTameable || entity instanceof EntityPlayer) {
+				if (liv instanceof EntityTameable || liv instanceof EntityPlayer || liv instanceof EntityHorse) {
 					if (!liv.isPotionActive(MobEffects.REGENERATION)) {
 						liv.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 0));
 					}
@@ -67,9 +69,8 @@ public class EntityHealBarrier extends EntityMobBarrier {
 	@Override
 	@Nullable
 	public AxisAlignedBB getCollisionBox(Entity entity) {
-		if (entity != null && entity instanceof EntityLivingBase) {
+		if (entity != null && entity instanceof EntityLivingBase)
 			return this.getEntityBoundingBox();
-		}
 		return null;
 	}
 

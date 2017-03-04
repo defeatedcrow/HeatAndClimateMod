@@ -3,7 +3,6 @@ package defeatedcrow.hac.main.worldgen;
 import java.util.Random;
 
 import defeatedcrow.hac.api.climate.BlockSet;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.block.Block;
@@ -17,6 +16,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
+@Deprecated
 public class WorldGenOres implements IWorldGenerator {
 
 	private static int sedPar = WorldGenConfig.depositGen[0];
@@ -40,7 +40,10 @@ public class WorldGenOres implements IWorldGenerator {
 
 		if ((genDim1 != 1 && genDim1 != -1)) {
 			int[] genY = {
-					5, 30, 70, 120
+					5, // 5-25
+					30, // 30-60
+					70, // 70-110
+					120 // 120-170
 			};
 			for (int i = 0; i < count; i++) {
 				/* 計4回のチャンス */
@@ -314,29 +317,53 @@ public class WorldGenOres implements IWorldGenerator {
 	 * 非常に探しづらいが、ニッケルの入手手段のひとつになる。
 	 */
 	public void generateUnderlava(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(2) + 2; // 2-3
-		int r = h + 1;
+		int h = rand.nextInt(2) + 4; // 4-5
+		int r = h - 2;
 
 		// 円柱状に生成
-		BlockPos min = new BlockPos(pos.add(-r, -h + 2, -r));
+		BlockPos min = new BlockPos(pos.add(-r, -h, -r));
 		BlockPos max = new BlockPos(pos.add(r, 1, r));
 		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
+		int h2 = pos.getY() - r; // 高さの半分
 		for (BlockPos p1 : itr) {
+			if (p1.getY() <= 1) {
+				continue;
+			}
 			double d1 = Math.sqrt(p1.distanceSq(pos));
-			int d = r + 1 - MathHelper.floor_double(d1);
+			int d = h + 1 - MathHelper.floor_double(d1);
 			if (d1 > d) {
 				continue;
 			}
 			Block block = world.getBlockState(p1).getBlock();
-			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
+			if (isPlaceable(block)) {
 				int j = rand.nextInt(5);
-				if (j == 0) {
-					world.setBlockState(p1, MainInit.ores.getStateFromMeta(7), 2);
-				} else if (j < 3) {
-					world.setBlockState(p1, MainInit.ores.getStateFromMeta(5), 2);
+				if (p1.getY() >= h2) {
+					switch (j) {
+					// case 0:
+					// world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(3), 2);
+					// break;
+					// case 1:
+					// world.setBlockState(p1, MainInit.ores.getStateFromMeta(5), 2);
+					// break;
+					// case 2:
+					// world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(6), 2);
+					// break;
+					default:
+						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(7), 2);
+					}
 				} else {
-					world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(3), 2);
+					switch (j) {
+					case 0:
+						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(7), 2);
+						break;
+					case 1:
+						world.setBlockState(p1, MainInit.ores.getStateFromMeta(7), 2);
+						break;
+					default:
+						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(6), 2);
+					}
 				}
+
 			}
 		}
 
@@ -351,7 +378,7 @@ public class WorldGenOres implements IWorldGenerator {
 	 */
 	public void generateVugs(World world, Random rand, BlockPos pos) {
 		int h = rand.nextInt(3) + 4; // 4-6
-		if (rand.nextInt(10) == 0) {
+		if (rand.nextInt(10) == 5) {
 			h = 8; // 希にあたりがある
 		}
 		// 球状に生成
@@ -404,24 +431,6 @@ public class WorldGenOres implements IWorldGenerator {
 
 		// DCLogger.debugLog("Ore gen! Vugs:" + pos.getX() + "," + pos.getY() + "," + pos.getZ() +
 		// ", size: " + h);
-	}
-
-	// 以下はバニラ改変
-	public void generateStoneLayer(World world, Random rand, int chunkX, int chunkZ) {
-		// 花崗岩帯をY40位に追加
-		DCLogger.debugLog("stone");
-		int h2 = 40 + rand.nextInt(5);
-		int r2 = 3 + rand.nextInt(2);
-		BlockPos min2 = new BlockPos(new BlockPos(chunkX, h2, chunkZ));
-		BlockPos max2 = new BlockPos(new BlockPos(chunkX + 15, h2 + r2, chunkZ + 15));
-		Iterable<BlockPos> itr2 = BlockPos.getAllInBox(min2, max2);
-		for (BlockPos p1 : itr2) {
-			Block block = world.getBlockState(p1).getBlock();
-			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && isPlaceable(block)) {
-				BlockSet add = new BlockSet(Blocks.STONE, 1);
-				world.setBlockState(p1, add.getState(), 2);
-			}
-		}
 	}
 
 }

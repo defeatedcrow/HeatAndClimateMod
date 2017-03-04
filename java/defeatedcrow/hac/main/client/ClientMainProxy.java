@@ -3,8 +3,6 @@ package defeatedcrow.hac.main.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
@@ -19,6 +17,7 @@ import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
+import defeatedcrow.hac.main.block.build.TileVillageChest;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
@@ -32,6 +31,8 @@ import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
+import defeatedcrow.hac.main.block.device.TileThermometer;
+import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
@@ -40,6 +41,9 @@ import defeatedcrow.hac.main.client.block.TESRMetalChest;
 import defeatedcrow.hac.main.client.block.TESRNormalChamber;
 import defeatedcrow.hac.main.client.block.TESRShitirin;
 import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
+import defeatedcrow.hac.main.client.block.TESRThermometer;
+import defeatedcrow.hac.main.client.block.TESRVillageChest;
+import defeatedcrow.hac.main.client.block.TESRWindVane;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
@@ -123,8 +127,11 @@ public class ClientMainProxy extends CommonMainProxy {
 		GameRegistry.registerTileEntity(TileLowChest.class, "dcs_te_lowchest");
 		ClientRegistry.registerTileEntity(TileMetalChest.class, "dcs_te_metalchest", new TESRMetalChest());
 		ClientRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest", new TESRMagnetChest());
+		ClientRegistry.registerTileEntity(TileVillageChest.class, "dcs_te_villagechest", new TESRVillageChest());
 		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
 		ClientRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
+		ClientRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
+		ClientRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
 
 		FoodClientProxy.loadTE();
 		MachineClientProxy.loadTE();
@@ -195,9 +202,9 @@ public class ClientMainProxy extends CommonMainProxy {
 	// ruby氏に無限に感謝
 	/**
 	 * @param cls
-	 *            えんちちーのくらす
+	 *        えんちちーのくらす
 	 * @param render
-	 *            Renderの継承クラス
+	 *        Renderの継承クラス
 	 */
 	public static void registRender(Class<? extends Entity> cls, final Class<? extends Render> render) {
 		RenderingRegistry.registerEntityRenderingHandler(cls, new IRenderFactory() {
@@ -233,19 +240,11 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public boolean isForwardKeyDown() {
-		return Keyboard.isCreated() && Keyboard.isKeyDown(getFowardKey());
+		return Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown();
 	}
 
 	@Override
 	public boolean isSneakKeyDown() {
-		return Keyboard.isCreated() && Keyboard.isKeyDown(getSneakKey());
-	}
-
-	private int getFowardKey() {
-		return Minecraft.getMinecraft().gameSettings.keyBindForward.getKeyCode();
-	}
-
-	private int getSneakKey() {
-		return Minecraft.getMinecraft().gameSettings.keyBindSneak.getKeyCode();
+		return Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown();
 	}
 }

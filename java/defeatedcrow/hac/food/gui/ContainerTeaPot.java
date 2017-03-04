@@ -55,11 +55,15 @@ public class ContainerTeaPot extends Container {
 		for (int i = 0; i < this.listeners.size(); ++i) {
 			IContainerListener icrafting = this.listeners.get(i);
 
-			if (this.current[i] != this.processor.getField(i)) {
-				icrafting.sendProgressBarUpdate(this, i, this.processor.getField(i));
+			for (int j = 0; j < this.processor.getFieldCount(); j++) {
+				if (this.current[j] != this.processor.getField(j)) {
+					icrafting.sendProgressBarUpdate(this, j, this.processor.getField(j));
+				}
 			}
+		}
 
-			this.current[i] = this.processor.getField(i);
+		for (int k = 0; k < this.processor.getFieldCount(); k++) {
+			this.current[k] = this.processor.getField(k);
 		}
 	}
 
@@ -85,13 +89,11 @@ public class ContainerTeaPot extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < lim) {
-				if (!this.mergeItemStack(itemstack1, lim + 1, 36 + lim, true)) {
+				if (!this.mergeItemStack(itemstack1, lim + 1, 36 + lim, true))
 					return null;
-				}
 				slot.onSlotChange(itemstack1, itemstack);
-			} else if (!this.mergeItemStack(itemstack1, 0, lim, false)) {
+			} else if (!this.mergeItemStack(itemstack1, 0, lim, false))
 				return null;
-			}
 
 			if (itemstack1.stackSize == 0) {
 				slot.putStack((ItemStack) null);
@@ -99,9 +101,8 @@ public class ContainerTeaPot extends Container {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize) {
+			if (itemstack1.stackSize == itemstack.stackSize)
 				return null;
-			}
 
 			slot.onPickupFromSlot(playerIn, itemstack1);
 		}

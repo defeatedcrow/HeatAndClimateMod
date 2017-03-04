@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
-//中継用クラス
+// 中継用クラス
 public class EUSourceChannel extends BasicSource implements IEUSourceChannel {
 
 	public EUSourceChannel(TileEntity parent1, int capacity1, int tier1) {
@@ -25,17 +25,17 @@ public class EUSourceChannel extends BasicSource implements IEUSourceChannel {
 
 	@Override
 	public void invalidate2() {
-		super.invalidate();
+		super.onInvalidate();
 	}
 
 	@Override
 	public void onChunkUnload2() {
-		super.onChunkUnload();
+		super.onOnChunkUnload();
 	}
 
 	@Override
 	public void updateEntity2() {
-		super.update();
+		super.onupdate();
 	}
 
 	@Override

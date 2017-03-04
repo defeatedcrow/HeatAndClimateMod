@@ -5,9 +5,19 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.api.climate.IHeatTile;
+import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,18 +31,24 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.api.climate.IHeatTile;
-import defeatedcrow.hac.core.base.DCTileBlock;
-import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.MainInit;
 
 public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 
 	public BlockNormalChamber(Material m, String s, int max) {
 		super(m, s, max);
+	}
+
+	@Override
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer) {
+		// achievement
+		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) placer;
+			if (!player.hasAchievement(AchievementClimate.METAL_CHAMBER)) {
+				AcvHelper.addMachineAcievement(player, AchievementClimate.METAL_CHAMBER);
+			}
+		}
+		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 	}
 
 	@Override
@@ -133,9 +149,9 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && BlockNormalChamber.isLit(world, pos)) {
 			EnumFacing face = DCState.getFace(state, DCState.FACING).getOpposite();
-			double x = (double) pos.getX() + 0.5D + face.getFrontOffsetX() * 0.5D + rand.nextDouble() * 0.15D;
-			double y = (double) pos.getY() + 0.25D + rand.nextDouble() * 0.15D;
-			double z = (double) pos.getZ() + 0.5D + face.getFrontOffsetZ() * 0.5D + rand.nextDouble() * 0.15D;
+			double x = pos.getX() + 0.5D + face.getFrontOffsetX() * 0.5D + rand.nextDouble() * 0.15D;
+			double y = pos.getY() + 0.25D + rand.nextDouble() * 0.15D;
+			double z = pos.getZ() + 0.5D + face.getFrontOffsetZ() * 0.5D + rand.nextDouble() * 0.15D;
 
 			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
 		}

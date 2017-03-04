@@ -75,6 +75,13 @@ public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile, IH
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer) {
 		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		// achievement
+		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) placer;
+			if (!player.hasAchievement(AchievementClimate.MACHINE_EXCHANGER)) {
+				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_EXCHANGER);
+			}
+		}
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
 			if (placer.rotationPitch < -75.0F) {

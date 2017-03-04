@@ -20,6 +20,13 @@ public class TESRMace extends TileEntitySpecialRenderer<TileMaceBase> {
 			"textures/entity/magic/magicmace_light.png");
 	private static final ModelMace MODEL = new ModelMace();
 
+	private boolean renderFrame = true;
+
+	public TESRMace setNoFrame() {
+		renderFrame = false;
+		return this;
+	}
+
 	@Override
 	public void renderTileEntityAt(TileMaceBase te, double x, double y, double z, float partialTicks,
 			int destroyStage) {
@@ -51,6 +58,9 @@ public class TESRMace extends TileEntitySpecialRenderer<TileMaceBase> {
 
 				GlStateManager.rotate(yi, 0.0F, 1.0F, 0.0F);
 				MODEL.render(0.0625F * 1.0F);
+				if (renderFrame) {
+					MODEL.renderFrame(0.0625F);
+				}
 				GlStateManager.disableRescaleNormal();
 				GlStateManager.popMatrix();
 

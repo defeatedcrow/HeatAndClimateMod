@@ -177,8 +177,9 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	public static int getBurnTime(ItemStack item) {
 		int i = TileEntityFurnace.getItemBurnTime(item);
 		int ret = i / 4;
-		if (ret < 50)
+		if (ret > 0 && ret < 50) {
 			ret = 50;
+		}
 		return ret;
 	}
 
@@ -186,7 +187,8 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	protected int[] slotsTop() {
 		return new int[] {
-				0 };
+				0
+		};
 	};
 
 	protected int[] slotsBottom() {
@@ -194,14 +196,16 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 				0,
 				1,
 				2,
-				3 };
+				3
+		};
 	};
 
 	protected int[] slotsSides() {
 		return new int[] {
 				1,
 				2,
-				3 };
+				3
+		};
 	};
 
 	public ItemStack[] inv = new ItemStack[this.getSizeInventory()];
@@ -246,9 +250,9 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory()) {
+		if (i < 0 || i >= this.getSizeInventory())
 			return;
-		} else {
+		else {
 			this.inv[i] = stack;
 
 			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
@@ -287,8 +291,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-	}
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
 	public void closeInventory(EntityPlayer player) {
@@ -315,9 +318,8 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	// 隣接するホッパーにアイテムを送れるかどうか
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (index == 0) {
+		if (index == 0)
 			return false;
-		}
 
 		return true;
 	}

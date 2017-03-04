@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.machine.block.BlockBoilerTurbine;
+import defeatedcrow.hac.machine.block.BlockCatapult;
 import defeatedcrow.hac.machine.block.BlockConveyor;
 import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockCreativeBox;
@@ -11,6 +12,8 @@ import defeatedcrow.hac.machine.block.BlockGearBox;
 import defeatedcrow.hac.machine.block.BlockGearBox_SUS;
 import defeatedcrow.hac.machine.block.BlockHandCrank;
 import defeatedcrow.hac.machine.block.BlockHeatExchanger;
+import defeatedcrow.hac.machine.block.BlockHopperFilter;
+import defeatedcrow.hac.machine.block.BlockHopperFluid;
 import defeatedcrow.hac.machine.block.BlockIBC;
 import defeatedcrow.hac.machine.block.BlockKineticMotor;
 import defeatedcrow.hac.machine.block.BlockPressMachine;
@@ -39,15 +42,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineInitRegister {
 
-	private MachineInitRegister() {
-	}
+	private MachineInitRegister() {}
 
 	public static void load() {
 		loadBlocks();
 		loadItems();
 
-		if (ModuleConfig.machine)
+		if (ModuleConfig.machine) {
 			loadCreativeTab();
+		}
 	}
 
 	static void loadBlocks() {
@@ -87,6 +90,16 @@ public class MachineInitRegister {
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
 		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 2);
 
+		MachineInit.conveyor = new BlockConveyor(ClimateCore.PACKAGE_BASE + "_device_conveyor");
+		registerTierBlock(MachineInit.conveyor, ClimateCore.PACKAGE_BASE + "_device_conveyor", 2);
+
+		MachineInit.catapult = new BlockCatapult(ClimateCore.PACKAGE_BASE + "_device_catapult");
+		registerTierBlock(MachineInit.catapult, ClimateCore.PACKAGE_BASE + "_device_catapult", 2);
+
+		MachineInit.hopperFilter = new BlockHopperFilter(ClimateCore.PACKAGE_BASE + "_device_hopper_filter");
+		registerTierBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_BASE + "_device_hopper_filter", 2);
+		ClimateMain.proxy.regTEJson(MachineInit.hopperFilter, "dcs_climate", "dcs_device_hopper_filter", "machine");
+
 		MachineInit.fauset = new BlockFauset(ClimateCore.PACKAGE_BASE + "_device_fauset");
 		registerTierBlock(MachineInit.fauset, ClimateCore.PACKAGE_BASE + "_device_fauset", 2);
 
@@ -94,6 +107,9 @@ public class MachineInitRegister {
 		MachineInit.IBC.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_ibc");
 		GameRegistry.register(MachineInit.IBC);
 		GameRegistry.register(new ItemIBC(MachineInit.IBC));
+
+		MachineInit.hopperFluid = new BlockHopperFluid(ClimateCore.PACKAGE_BASE + "_device_hopper_fluid");
+		registerTierBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_BASE + "_device_hopper_fluid", 2);
 
 		MachineInit.waterPump = new BlockWaterPump(ClimateCore.PACKAGE_BASE + "_device_water_pump");
 		registerTierBlock(MachineInit.waterPump, ClimateCore.PACKAGE_BASE + "_device_water_pump", 2);
@@ -128,8 +144,6 @@ public class MachineInitRegister {
 		MachineInit.creativeBox = new BlockCreativeBox(ClimateCore.PACKAGE_BASE + "_device_creative_box");
 		registerTierBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_BASE + "_device_creative_box", 3);
 
-		MachineInit.conveyor = new BlockConveyor(ClimateCore.PACKAGE_BASE + "_device_conveyor");
-		registerTierBlock(MachineInit.conveyor, ClimateCore.PACKAGE_BASE + "_device_conveyor", 2);
 	}
 
 	static void loadItems() {
@@ -162,9 +176,12 @@ public class MachineInitRegister {
 		MachineInit.stonemill.setCreativeTab(ClimateMain.machine);
 		MachineInit.fan.setCreativeTab(ClimateMain.machine);
 		MachineInit.redbox.setCreativeTab(ClimateMain.machine);
+		MachineInit.catapult.setCreativeTab(ClimateMain.machine);
+		MachineInit.hopperFilter.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.fauset.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
+		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
 		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
 		MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
 

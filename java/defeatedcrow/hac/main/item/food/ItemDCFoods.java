@@ -10,7 +10,9 @@ public class ItemDCFoods extends DCFoodItem {
 	private static String[] names = {
 			"baked_apple",
 			"boiled_egg",
-			"jerky" };
+			"jerky",
+			"boiled_sausage"
+	};
 
 	public ItemDCFoods(int max, boolean f) {
 		super(f);
@@ -26,6 +28,7 @@ public class ItemDCFoods extends DCFoodItem {
 	 * 0: 焼きリンゴ
 	 * 1: ゆで卵
 	 * 2: ジャーキー
+	 * 3: ソーセージ
 	 */
 	@Override
 	public String[] getNameSuffix() {
@@ -50,6 +53,8 @@ public class ItemDCFoods extends DCFoodItem {
 			return 6;
 		case 2:
 			return 6;
+		case 3:
+			return 7;
 		default:
 			return 2;
 		}

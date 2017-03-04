@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -42,13 +43,19 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+		if (player != null && !world.isRemote && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
-			if (tile instanceof TileSteelPot) {
-				if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
-					return true;
+			if (tile != null && tile instanceof TileSteelPot) {
+				if (player.isSneaking() && heldItem == null) {
+					boolean f = ((TileSteelPot) tile).hasCap();
+					boolean next = !f;
+					DCLogger.debugLog("pottery type " + f + "->" + next);
+					((TileSteelPot) tile).setCap(next);
+				} else {
+					if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player))
+						return true;
+					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				}
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 			}
 		}
 		return true;

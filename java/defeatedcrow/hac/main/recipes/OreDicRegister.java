@@ -36,6 +36,8 @@ public class OreDicRegister {
 		OreDictionary.registerOre("oreSulfur", new ItemStack(MainInit.ores_2, 1, 3));
 		OreDictionary.registerOre("oreTin", new ItemStack(MainInit.ores_2, 1, 4));
 		OreDictionary.registerOre("oreSchorl", new ItemStack(MainInit.ores_2, 1, 5));
+		OreDictionary.registerOre("oreSerpentine", new ItemStack(MainInit.ores_2, 1, 6));
+		OreDictionary.registerOre("oreGarnet", new ItemStack(MainInit.ores_2, 1, 7));
 
 		// metals
 		OreDictionary.registerOre("ingotCopper", new ItemStack(MainInit.oreIngot, 1, 0));
@@ -89,6 +91,10 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gemNiter", new ItemStack(MainInit.gems, 1, 9));
 		OreDictionary.registerOre("gemSulfur", new ItemStack(MainInit.gems, 1, 10));
 		OreDictionary.registerOre("gemSchorl", new ItemStack(MainInit.gems, 1, 11));
+		OreDictionary.registerOre("gemSerpentine", new ItemStack(MainInit.gems, 1, 12));
+		OreDictionary.registerOre("gemPeridot", new ItemStack(MainInit.gems, 1, 13));
+		OreDictionary.registerOre("gemOlivine", new ItemStack(MainInit.gems, 1, 13));
+		OreDictionary.registerOre("gemGarnet", new ItemStack(MainInit.gems, 1, 14));
 
 		OreDictionary.registerOre("blockGemChalcedony", new ItemStack(MainInit.gemBlock, 1, 0));
 		OreDictionary.registerOre("blockGemChalcedony", new ItemStack(MainInit.gemBlock, 1, 1));
@@ -98,10 +104,14 @@ public class OreDicRegister {
 		OreDictionary.registerOre("blockSalt", new ItemStack(MainInit.gemBlock, 1, 5));
 		OreDictionary.registerOre("blockMarble", new ItemStack(MainInit.gemBlock, 1, 6));
 		OreDictionary.registerOre("blockGemSchorl", new ItemStack(MainInit.gemBlock, 1, 7));
+		OreDictionary.registerOre("blockGemSerpentine", new ItemStack(MainInit.gemBlock, 1, 8));
+		OreDictionary.registerOre("blockGemOlivine", new ItemStack(MainInit.gemBlock, 1, 9));
+		OreDictionary.registerOre("blockGemGarnet", new ItemStack(MainInit.gemBlock, 1, 10));
 
 		// misc
 		OreDictionary.registerOre("dustGraphite", new ItemStack(MainInit.miscDust, 1, 0));
 		OreDictionary.registerOre("dustCoal", new ItemStack(MainInit.miscDust, 1, 0));
+		OreDictionary.registerOre("dyeBlack", new ItemStack(MainInit.miscDust, 1, 0));
 		OreDictionary.registerOre("dustCrystal", new ItemStack(MainInit.miscDust, 1, 1));
 		OreDictionary.registerOre("dustLime", new ItemStack(MainInit.miscDust, 1, 2));
 		OreDictionary.registerOre("dustWood", new ItemStack(MainInit.miscDust, 1, 3));
@@ -110,6 +120,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustAsh", new ItemStack(MainInit.miscDust, 1, 5));
 		OreDictionary.registerOre("dustNiter", new ItemStack(MainInit.miscDust, 1, 6));
 		OreDictionary.registerOre("dustSulfur", new ItemStack(MainInit.miscDust, 1, 7));
+		OreDictionary.registerOre("dustGarnet", new ItemStack(MainInit.miscDust, 1, 8));
 
 		// material
 		OreDictionary.registerOre("itemString", new ItemStack(MainInit.materials, 1, 0));

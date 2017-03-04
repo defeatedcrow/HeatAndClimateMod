@@ -100,8 +100,9 @@ public class BlockWallLamp extends Block {
 	@Override
 	public int damageDropped(IBlockState state) {
 		int i = state.getValue(DCState.TYPE4);
-		if (i > maxMeta)
+		if (i > maxMeta) {
 			i = maxMeta;
+		}
 		return i;
 	}
 
@@ -117,8 +118,9 @@ public class BlockWallLamp extends Block {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int i = meta & 3;
-		if (i > maxMeta)
+		if (i > maxMeta) {
 			i = maxMeta;
+		}
 		int f = 5 - (meta >> 2);
 		IBlockState state = this.getDefaultState().withProperty(DCState.TYPE4, i);
 		state = state.withProperty(DCState.FACING, EnumFacing.getFront(f));
@@ -132,8 +134,9 @@ public class BlockWallLamp extends Block {
 		int f = 0;
 
 		i = state.getValue(DCState.TYPE4);
-		if (i > maxMeta)
+		if (i > maxMeta) {
 			i = maxMeta;
+		}
 
 		f = 5 - state.getValue(DCState.FACING).getIndex();
 		f = f << 2;
@@ -149,7 +152,8 @@ public class BlockWallLamp extends Block {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.FACING,
-				DCState.TYPE4 });
+				DCState.TYPE4
+		});
 	}
 
 }
