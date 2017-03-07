@@ -86,7 +86,7 @@ public class AchievementEventDC {
 		EntityPlayer player = event.getEntityPlayer();
 		EntityItem drop = event.getItem();
 		if (player != null && drop != null && drop.getEntityItem() != null && !player.worldObj.isRemote) {
-			if (DCUtil.isSameItem(drop.getEntityItem(), new ItemStack(MainInit.cropCont, 1, 9))
+			if (DCUtil.isSameItem(drop.getEntityItem(), new ItemStack(MainInit.cropCont, 1, 9), false)
 					&& !player.hasAchievement(AchievementClimate.CLIMATE_SMELT)) {
 				AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_SMELT);
 			} else if (drop.getEntityItem().getItem() == MainInit.gems) {

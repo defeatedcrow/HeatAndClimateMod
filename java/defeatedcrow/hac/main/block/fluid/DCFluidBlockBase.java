@@ -21,6 +21,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
@@ -140,6 +141,22 @@ public class DCFluidBlockBase extends BlockFluidClassic
 				}
 			}
 		}
+	}
+
+	@Override
+	public boolean canDisplace(IBlockAccess world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		if (state.getMaterial().isLiquid())
+			return state.getBlock().getMetaFromState(state) > 7;
+		return super.canDisplace(world, pos);
+	}
+
+	@Override
+	public boolean displaceIfPossible(World world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		if (state.getMaterial().isLiquid())
+			return state.getBlock().getMetaFromState(state) > 7;
+		return super.displaceIfPossible(world, pos);
 	}
 
 }

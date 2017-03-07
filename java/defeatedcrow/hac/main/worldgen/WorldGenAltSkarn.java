@@ -56,6 +56,9 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		if (chunkX > 3000 || chunkZ > 3000)
 			// あまり遠いと生成しない
 			return;
+		if (chunkX < -3000 || chunkZ < -3000)
+			// あまり遠いと生成しない
+			return;
 
 		if (!canGenerate(chunkX, chunkZ, world))
 			return;
@@ -63,8 +66,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		int posX = chunkX << 4;
 		int posZ = chunkZ << 4;
 
-		posX += world.rand.nextInt(16);
-		posZ += world.rand.nextInt(16);
+		posX += world.rand.nextInt(15) + 1;
+		posZ += world.rand.nextInt(15) + 1;
 		if (isForced && forceX != 0 & forceZ != 0) {
 			posX = forceX;
 			posZ = forceZ;

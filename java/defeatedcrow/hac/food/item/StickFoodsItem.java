@@ -3,6 +3,14 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.FoodEntityBase;
+import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.core.util.DCPotion;
+import defeatedcrow.hac.food.entity.BeefStickEntity;
+import defeatedcrow.hac.food.entity.FishStickEntity;
+import defeatedcrow.hac.food.entity.PorkStickEntity;
+import defeatedcrow.hac.food.entity.YakitoriStickEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -12,14 +20,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.FoodEntityBase;
-import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.core.util.DCPotion;
-import defeatedcrow.hac.food.entity.BeefStickEntity;
-import defeatedcrow.hac.food.entity.FishStickEntity;
-import defeatedcrow.hac.food.entity.PorkStickEntity;
-import defeatedcrow.hac.food.entity.YakitoriStickEntity;
 
 public class StickFoodsItem extends FoodItemBase {
 
@@ -52,7 +52,8 @@ public class StickFoodsItem extends FoodItemBase {
 				"pork_raw",
 				"pork_cooked",
 				"beef_raw",
-				"beef_cooked" };
+				"beef_cooked"
+		};
 		return s;
 	}
 
@@ -91,9 +92,9 @@ public class StickFoodsItem extends FoodItemBase {
 	public int getFoodAmo(int meta) {
 		switch (meta) {
 		case 1:
-			return 4;
-		case 3:
 			return 6;
+		case 3:
+			return 8;
 		case 5:
 			return 8;
 		case 7:
@@ -105,7 +106,7 @@ public class StickFoodsItem extends FoodItemBase {
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 0.5F;
+		return (meta & 1) == 0 ? 0F : 0.6F;
 	}
 
 	@Override

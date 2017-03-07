@@ -50,7 +50,8 @@ public class PlateMeatItem extends FoodItemBase {
 				"chicken_raw",
 				"chicken_baked",
 				"fish_raw",
-				"fish_baked" };
+				"fish_baked"
+		};
 		return s;
 	}
 
@@ -76,12 +77,12 @@ public class PlateMeatItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return (meta & 1) == 0 ? 0 : 10;
+		return (meta & 1) == 0 ? 0 : 14;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 0.5F;
+		return (meta & 1) == 0 ? 0F : 0.6F;
 	}
 
 	@Override

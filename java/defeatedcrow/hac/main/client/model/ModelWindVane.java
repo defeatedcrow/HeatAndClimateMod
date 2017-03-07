@@ -9,7 +9,7 @@ public class ModelWindVane extends DCTileModelBase {
 	ModelRenderer shaft;
 	ModelRenderer bar;
 	ModelRenderer bar2;
-	ModelRenderer clow;
+	ModelRenderer crow;
 	ModelRenderer cup1;
 	ModelRenderer cup2;
 	ModelRenderer cup3;
@@ -43,12 +43,12 @@ public class ModelWindVane extends DCTileModelBase {
 		bar2.setTextureSize(64, 64);
 		bar2.mirror = true;
 		setRotation(bar2, 0F, 0F, 0F);
-		clow = new ModelRenderer(this, 0, 32);
-		clow.addBox(-6F, -12F, 0F, 12, 12, 0);
-		clow.setRotationPoint(0F, 16F, 0F);
-		clow.setTextureSize(64, 64);
-		clow.mirror = true;
-		setRotation(clow, 0F, 0F, 0F);
+		crow = new ModelRenderer(this, 0, 32);
+		crow.addBox(-6F, -12F, 0F, 12, 12, 0);
+		crow.setRotationPoint(0F, 16F, 0F);
+		crow.setTextureSize(64, 64);
+		crow.mirror = true;
+		setRotation(crow, 0F, 0F, 0F);
 		cup1 = new ModelRenderer(this, 0, 6);
 		cup1.addBox(-8F, 1.5F, 0F, 2, 2, 2);
 		cup1.setRotationPoint(0F, 16F, 0F);
@@ -80,7 +80,10 @@ public class ModelWindVane extends DCTileModelBase {
 		setRotationAngles(f);
 		base.render(0.0625F);
 		shaft.render(0.0625F);
-		clow.render(0.0625F);
+	}
+
+	public void renderCrow(float f) {
+		crow.render(0.0625F);
 	}
 
 	public void renderScrew(float f) {

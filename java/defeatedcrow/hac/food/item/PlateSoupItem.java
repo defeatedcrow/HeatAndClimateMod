@@ -44,7 +44,8 @@ public class PlateSoupItem extends FoodItemBase {
 				"potato_raw",
 				"potato_baked",
 				"tomato_raw",
-				"tomato_baked" };
+				"tomato_baked"
+		};
 		return s;
 	}
 
@@ -64,7 +65,7 @@ public class PlateSoupItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return (meta & 1) == 0 ? 0 : 8;
+		return (meta & 1) == 0 ? 0 : 6;
 	}
 
 	@Override
