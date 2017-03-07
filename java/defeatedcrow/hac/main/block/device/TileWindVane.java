@@ -6,20 +6,25 @@ import defeatedcrow.hac.core.base.ClimateReceiveTile;
 public class TileWindVane extends ClimateReceiveTile {
 
 	private int lastClimate = 0;
-	private int windPower = 15;
+	public int lastPower = 15;
+	public int windPower = 15;
 
 	@Override
 	public void updateTile() {
 		super.updateTile();
 
-		if (worldObj.rand.nextInt(4) == 0) {
-			windPower += worldObj.rand.nextInt(3) - 1;
-		}
-		if (windPower > 20) {
-			windPower = 20;
-		}
-		if (windPower < 10) {
-			windPower = 10;
+		if (current != null && current.getAirflow().getID() >= DCAirflow.FLOW.getID()) {
+			if (worldObj.rand.nextInt(3) == 0) {
+				windPower += worldObj.rand.nextInt(5) - 2;
+			}
+			if (windPower > 20) {
+				windPower = 20;
+			}
+			if (windPower < 10) {
+				windPower = 10;
+			}
+		} else {
+			windPower = 15;
 		}
 	}
 
@@ -56,6 +61,8 @@ public class TileWindVane extends ClimateReceiveTile {
 			}
 			rot = f1;
 		}
+
+		lastPower = windPower;
 	}
 
 }

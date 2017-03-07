@@ -3,6 +3,13 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.FoodEntityBase;
+import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.AppleTartEntity;
+import defeatedcrow.hac.food.entity.LemonTartEntity;
+import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
+import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -11,13 +18,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.FoodEntityBase;
-import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.AppleTartEntity;
-import defeatedcrow.hac.food.entity.LemonTartEntity;
-import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
-import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 
 public class RoundPastryItem extends FoodItemBase {
 
@@ -50,7 +50,8 @@ public class RoundPastryItem extends FoodItemBase {
 				"spinach_raw",
 				"spinach_baked",
 				"potato_raw",
-				"potato_baked" };
+				"potato_baked"
+		};
 		return s;
 	}
 
@@ -100,7 +101,7 @@ public class RoundPastryItem extends FoodItemBase {
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 0.5F;
+		return (meta & 1) == 0 ? 0F : 0.8F;
 	}
 
 	@Override

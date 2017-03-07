@@ -48,7 +48,7 @@ public class ItemDCFoods extends DCFoodItem {
 	public int getFoodAmo(int meta) {
 		switch (meta) {
 		case 0:
-			return 4;
+			return 5;
 		case 1:
 			return 6;
 		case 2:

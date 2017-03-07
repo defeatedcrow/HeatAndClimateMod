@@ -50,6 +50,7 @@ import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.CombatEvent;
+import defeatedcrow.hac.main.event.DCLootEvent;
 import defeatedcrow.hac.main.event.LivingMainEventDC;
 import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
@@ -194,6 +195,7 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new LivingMainEventDC());
 		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
 		MinecraftForge.EVENT_BUS.register(new CombatEvent());
+		MinecraftForge.EVENT_BUS.register(new DCLootEvent());
 	}
 
 	@Override

@@ -21,29 +21,42 @@ public class TESRWindVane extends DCTESRBase {
 		int face = 0;
 		float f = 0.0F;
 		float rotation = 0.0F;
+		float crowR = 0.0F;
 
 		if (te.hasWorldObj() && te instanceof TileWindVane) {
 			int meta = te.getBlockMetadata();
 			TileWindVane meter = (TileWindVane) te;
+			crowR = meter.lastPower + (meter.windPower - meter.lastPower) * partialTicks;
+			crowR *= 2.0F;
 
 			type = meta & 3;
 			face = DCUtil.getWorldWind(te.getWorld()).getIndex();
 			if (face == 4) {
-				f = 0F;
+				f += 0F;
 			}
 			if (face == 5) {
-				f = 180F;
+				f += 180F;
 			}
 			if (face == 2) {
-				f = -90F;
+				f += -90F;
 			}
 			if (face == 3) {
-				f = 90F;
+				f += 90F;
 			}
 
 			rotation = meter.lastRot + (meter.rot - meter.lastRot) * partialTicks;
 
 			this.bindTexture(new ResourceLocation(getTexPass(type)));
+
+			GlStateManager.pushMatrix();
+			GlStateManager.enableRescaleNormal();
+			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+			GlStateManager.translate((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+			GlStateManager.scale(1.0F, -1.0F, -1.0F);
+			GlStateManager.rotate(f + crowR - 20.0F, 0.0F, 1.0F, 0.0F);
+			model.renderCrow(0.0F);
+			GlStateManager.disableRescaleNormal();
+			GlStateManager.popMatrix();
 
 			GlStateManager.pushMatrix();
 			GlStateManager.enableRescaleNormal();

@@ -47,9 +47,9 @@ public class WorldGenAltOres implements IWorldGenerator {
 			};
 			for (int i = 0; i < count; i++) {
 				/* 計5回のチャンス */
-				int posX = chunk2X + random.nextInt(16);
+				int posX = chunk2X + random.nextInt(15) + 1;
 				int posY = genY[i] + random.nextInt(20 + 10 * i);
-				int posZ = chunk2Z + random.nextInt(16);
+				int posZ = chunk2Z + random.nextInt(15) + 1;
 				BlockPos pos = new BlockPos(posX, posY, posZ);
 				Biome biome = world.getBiomeForCoordsBody(pos);
 

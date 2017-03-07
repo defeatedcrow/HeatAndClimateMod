@@ -50,7 +50,8 @@ public class SquarePastryItem extends FoodItemBase {
 				"choco_raw",
 				"choco_baked",
 				"fruit_raw",
-				"fruit_baked" };
+				"fruit_baked"
+		};
 		return s;
 	}
 
@@ -92,9 +93,9 @@ public class SquarePastryItem extends FoodItemBase {
 			return 6;
 		case 5:
 		case 7:
-			return 8;
+			return 7;
 		case 3:
-			return 10;
+			return 8;
 		default:
 			return 1;
 		}
@@ -102,7 +103,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 0.5F;
+		return (meta & 1) == 0 ? 0F : 0.9F;
 	}
 
 	@Override

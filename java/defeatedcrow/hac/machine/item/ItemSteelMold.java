@@ -28,7 +28,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"steel" };
+			"steel"
+	};
 
 	public ItemSteelMold() {
 		super();
@@ -115,9 +116,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 			if (nbttaglist.tagCount() > 0) {
 				NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(0);
 				ItemStack ret = ItemStack.loadItemStackFromNBT(tag1);
-				if (ret != null) {
+				if (ret != null)
 					return ret;
-				}
 			}
 		}
 		return null;
@@ -154,7 +154,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 		ShapelessOreRecipe slOre = null;
 
 		for (IRecipe rec : targetRecipes) {
-			if (rec.getRecipeOutput() != null && DCUtil.isSameItem(output, rec.getRecipeOutput())) {
+			if (rec.getRecipeOutput() != null && DCUtil.isSameItem(output, rec.getRecipeOutput(), false)) {
 				if (s == null && rec instanceof ShapedRecipes) {
 					s = (ShapedRecipes) rec;
 				}
@@ -214,7 +214,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					} else {
 						boolean c = false;
 						for (int i = 0; i < list.size(); i++) {
-							if (DCUtil.isSameItem(item, list.get(i))) {
+							if (DCUtil.isSameItem(item, list.get(i), false)) {
 								list.get(i).stackSize++;
 								// DCLogger.debugLog(
 								// "add reqs " + i + ": " + item.getDisplayName() + ", " +
@@ -232,9 +232,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					}
 				}
 			}
-			if (!list.isEmpty()) {
+			if (!list.isEmpty())
 				return new RecipePair(sOre.getRecipeOutput().stackSize, list);
-			}
 		} else if (slOre != null) {
 			for (Object obj : slOre.getInput()) {
 				if (obj == null) {
@@ -270,7 +269,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					} else {
 						boolean c = false;
 						for (int i = 0; i < list.size(); i++) {
-							if (DCUtil.isSameItem(item, list.get(i))) {
+							if (DCUtil.isSameItem(item, list.get(i), false)) {
 								list.get(i).stackSize++;
 								c = true;
 								break;
@@ -280,13 +279,11 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 							list.add(item);
 						}
 					}
-				} else {
+				} else
 					return null;
-				}
 			}
-			if (!list.isEmpty()) {
+			if (!list.isEmpty())
 				return new RecipePair(slOre.getRecipeOutput().stackSize, list);
-			}
 		} else if (s != null) {
 			for (ItemStack obj : s.recipeItems) {
 				if (obj == null) {
@@ -303,7 +300,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				} else {
 					boolean c = false;
 					for (int i = 0; i < list.size(); i++) {
-						if (DCUtil.isSameItem(item, list.get(i))) {
+						if (DCUtil.isSameItem(item, list.get(i), false)) {
 							list.get(i).stackSize++;
 							c = true;
 							break;
@@ -314,9 +311,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					}
 				}
 			}
-			if (!list.isEmpty()) {
+			if (!list.isEmpty())
 				return new RecipePair(s.getRecipeOutput().stackSize, list);
-			}
 		} else if (sl != null) {
 			for (ItemStack obj : sl.recipeItems) {
 				if (obj == null) {
@@ -333,7 +329,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				} else {
 					boolean c = false;
 					for (int i = 0; i < list.size(); i++) {
-						if (DCUtil.isSameItem(item, list.get(i))) {
+						if (DCUtil.isSameItem(item, list.get(i), false)) {
 							list.get(i).stackSize++;
 							c = true;
 							break;
@@ -344,9 +340,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					}
 				}
 			}
-			if (!list.isEmpty()) {
+			if (!list.isEmpty())
 				return new RecipePair(sl.getRecipeOutput().stackSize, list);
-			}
 		}
 
 		return null;
@@ -359,8 +354,9 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 
 		protected RecipePair(int amo, List<ItemStack> list) {
 			amount = amo;
-			if (list != null && !list.isEmpty())
+			if (list != null && !list.isEmpty()) {
 				requiers.addAll(list);
+			}
 		}
 	}
 
