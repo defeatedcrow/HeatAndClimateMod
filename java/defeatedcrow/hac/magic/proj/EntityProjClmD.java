@@ -31,7 +31,7 @@ public class EntityProjClmD extends EntityMagicProjBase {
 
 	@Override
 	public ItemStack getDropStack() {
-		return new ItemStack(MagicInit.daggerMagic, 1, 13);
+		return new ItemStack(MagicInit.daggerMagic, 1, 14);
 	}
 
 	@Override

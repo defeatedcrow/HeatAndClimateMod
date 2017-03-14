@@ -1,12 +1,18 @@
 package defeatedcrow.hac.plugin;
 
+import defeatedcrow.hac.core.base.ClimateCropBase;
+import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.plugin.forestry.DCFarmable;
+import defeatedcrow.hac.plugin.forestry.DCFarmableDouble;
+import forestry.api.farming.Farmables;
 import forestry.api.fuels.EngineBronzeFuel;
 import forestry.api.fuels.FermenterFuel;
 import forestry.api.fuels.FuelManager;
 import forestry.api.recipes.RecipeManagers;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -15,6 +21,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class DCPluginForestry {
 
@@ -27,6 +34,7 @@ public class DCPluginForestry {
 		if (ModuleConfig.food) {
 
 			Item mulch = Item.REGISTRY.getObject(new ResourceLocation("forestry", "mulch"));
+			Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizerCompound"));
 			Fluid seed = FluidRegistry.getFluid("seed.oil");
 			Fluid juice = FluidRegistry.getFluid("juice");
 			Fluid honey = FluidRegistry.getFluid("for.honey");
@@ -180,8 +188,17 @@ public class DCPluginForestry {
 				}));
 			}
 
+			if (fer != null) {
+				GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(fer, 1, 0), new Object[] {
+						"dustPresscake",
+						"dustAsh",
+						new ItemStack(Items.DYE, 1, 15)
+				}));
+			}
+
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
 			FuelManager.fermenterFuel.put(oilcake, new FermenterFuel(oilcake, 48, 200));
+			Farmables.fertilizers.put(oilcake, Integer.valueOf(200));
 
 			Fluid oil = FoodInit.oil;
 			if (oil != null) {
@@ -192,6 +209,16 @@ public class DCPluginForestry {
 			if (black != null) {
 				FuelManager.bronzeEngineFuel.put(black, new EngineBronzeFuel(black, 30, 2500, 1));
 			}
+
+			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropRice));
+			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropOnion));
+			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropSpinach));
+			Farmables.farmables.put("farmVegetables",
+					new DCFarmableDouble((ClimateDoubleCropBase) FoodInit.cropTomato));
+			Farmables.farmables.put("farmVegetables",
+					new DCFarmableDouble((ClimateDoubleCropBase) FoodInit.cropCoffee));
+			Farmables.farmables.put("farmVegetables",
+					new DCFarmableDouble((ClimateDoubleCropBase) FoodInit.cropCotton));
 		}
 
 	}

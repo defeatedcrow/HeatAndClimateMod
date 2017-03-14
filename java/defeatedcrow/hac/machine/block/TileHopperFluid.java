@@ -313,7 +313,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 						ret = null;
 					}
 
-					if (fill != null && this.isItemStackable(ret, inv[slot2]) > 0) {
+					if (fill != null && (ret == null || this.isItemStackable(ret, inv[slot2]) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -382,7 +382,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 					ret = null;
 				}
 
-				if (fill > 0 && this.isItemStackable(ret, inv[slot2]) > 0) {
+				if (fill > 0 && (ret == null || this.isItemStackable(ret, inv[slot2]) > 0)) {
 					loose = true;
 					tank.drain(fill, true);
 				}

@@ -3,13 +3,13 @@ package defeatedcrow.hac.magic.proj;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleShock;
+import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.client.FMLClientHandler;
 
@@ -29,7 +29,7 @@ public class EntityProjClmM extends EntityMagicProjBase {
 
 	@Override
 	public ItemStack getDropStack() {
-		return new ItemStack(MagicInit.daggerMagic, 1, 13);
+		return new ItemStack(MagicInit.daggerMagic, 1, 15);
 	}
 
 	@Override
@@ -41,14 +41,17 @@ public class EntityProjClmM extends EntityMagicProjBase {
 
 	@Override
 	protected boolean onGroundHit() {
-		BlockPos min = new BlockPos(posX - 4, posY, posZ - 4);
-		BlockPos max = new BlockPos(posX + 4, posY, posZ + 4);
-		Iterable<BlockPos> itr = min.getAllInBox(min, max);
 		Chunk chunk = worldObj.getChunkFromBlockCoords(this.getPosition());
+		WorldGenWindmill gen = new WorldGenWindmill(true);
+		gen.setForcePos(this.getPosition().getX(), this.getPosition().getZ());
+		if (gen.generateWindmill(rand, chunk.xPosition, chunk.zPosition, worldObj,
+				worldObj.provider.createChunkGenerator(), worldObj.getChunkProvider())) {
+			this.setDead();
+		} else {
+			this.dropAndDeath();
+		}
+		this.playSound(SoundEvents.ENTITY_FIREWORK_TWINKLE, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
-		Biome biome = worldObj.getBiomeForCoordsBody(getPosition());
-
-		this.setDead();
 		return true;
 	}
 

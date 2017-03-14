@@ -317,7 +317,20 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemClam",
 				'W',
-				"gemSapphire",
+				new ItemStack(Items.NETHER_STAR),
+				'Z',
+				new ItemStack(MagicInit.daggerSilver)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.daggerMagic, 1, 15), new Object[] {
+				"XYW",
+				" Z ",
+				'X',
+				"gemLapis",
+				'Y',
+				"gemClam",
+				'W',
+				"gemCelestite",
 				'Z',
 				new ItemStack(MagicInit.daggerSilver)
 		}));

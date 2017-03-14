@@ -297,6 +297,17 @@ item.dcs_dagger_magic_13.name=Magic Dagger (Warp)
 item.dcs_dagger_magic_14.name=Magic Dagger (Generate Ore Vine)
 item.dcs_dagger_magic_15.name=Magic Dagger (???)
 
+## plugin
+item.dcs_metal_oredust_zinc_dirty.name=Dirty Zinc Dust
+item.dcs_metal_shard_zinc.name=Zinc Shard
+item.dcs_metal_chunk_zinc.name=Zinc Clump
+item.dcs_metal_crystal_zinc.name=Zinc Crystal
+item.dcs_metal_oredust_nickel_dirty.name=Dirty Nickel Dust
+item.dcs_metal_shard_nickel.name=Nickel Shard
+item.dcs_metal_chunk_nickel.name=Nickel Clump
+item.dcs_metal_crystal_nickel.name=Nickel Crystal
+item.dcs_circuit_chalcedony.name=Chalcedony Circuit
+
 
 ## block
 ## ores
@@ -609,6 +620,22 @@ dcs.tip.badge.10=Thunderbolt
 dcs.tip.badge.11=Road marking
 dcs.tip.badge.12=Extraction of EXP
 dcs.tip.badge.13=Exclusion
+dcs.tip.dagger.0=(Unit Attack) Anti-Aircraft Attack
+dcs.tip.dagger.1=(Area Effect) Explode
+dcs.tip.dagger.2=(Unit Attack) Icy Attack
+dcs.tip.dagger.3=(Area Effect) Summon Absolute Crystals
+dcs.tip.dagger.4=(Unit Attack) Heat Attack
+dcs.tip.dagger.5=(Area Effect) Summon Infernal Fire
+dcs.tip.dagger.6=(Area Effect) Apply Gravity Potion Effect
+dcs.tip.dagger.7=(Area Effect) Apply Levitation Potion Effect
+dcs.tip.dagger.8=(Area Effect) Confuse Enemies
+dcs.tip.dagger.9=(Area Effect) Summon Enemy Barrier
+dcs.tip.dagger.10=(Area Effect) Summon Projectile Barrier
+dcs.tip.dagger.11=(Area Effect) Summon Healing Circle
+dcs.tip.dagger.12=(Area Effect) Summon Thunderbolt
+dcs.tip.dagger.13=(Unit Effect) Warp to the impact point
+dcs.tip.dagger.14=(Area Effect) Summon Skarn (require some daimond blocks near the impact point)
+dcs.tip.dagger.15=(Area Effect) No Effect Yet
 
 dcs.tip.shitirin.description=It's the japanese charcoal stove.
 dcs.tip.teapot=Right-click to this block with flavor items.
