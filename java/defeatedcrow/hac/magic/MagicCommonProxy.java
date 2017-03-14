@@ -18,6 +18,7 @@ import defeatedcrow.hac.magic.proj.EntityProjChalB;
 import defeatedcrow.hac.magic.proj.EntityProjChalR;
 import defeatedcrow.hac.magic.proj.EntityProjChalW;
 import defeatedcrow.hac.magic.proj.EntityProjClmD;
+import defeatedcrow.hac.magic.proj.EntityProjClmM;
 import defeatedcrow.hac.magic.proj.EntityProjCryC;
 import defeatedcrow.hac.magic.proj.EntityProjCryL;
 import defeatedcrow.hac.magic.proj.EntityProjCryM;
@@ -71,6 +72,8 @@ public class MagicCommonProxy {
 		EntityRegistry.registerModEntity(EntityProjSchC.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_13", 114,
 				ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(EntityProjClmD.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_14", 115,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityProjClmM.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_15", 116,
 				ClimateMain.instance, 128, 5, true);
 
 		EntityRegistry.registerModEntity(EntityMobBarrier.class, ClimateCore.PACKAGE_BASE + "entity.magic.circle_0",

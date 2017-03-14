@@ -9,6 +9,7 @@ import defeatedcrow.hac.magic.proj.EntityProjChalB;
 import defeatedcrow.hac.magic.proj.EntityProjChalR;
 import defeatedcrow.hac.magic.proj.EntityProjChalW;
 import defeatedcrow.hac.magic.proj.EntityProjClmD;
+import defeatedcrow.hac.magic.proj.EntityProjClmM;
 import defeatedcrow.hac.magic.proj.EntityProjCryC;
 import defeatedcrow.hac.magic.proj.EntityProjCryL;
 import defeatedcrow.hac.magic.proj.EntityProjCryM;
@@ -179,6 +180,8 @@ public class ItemMagicDagger extends DCItem {
 			return new EntityProjSchC(world, player);
 		case 14:
 			return new EntityProjClmD(world, player);
+		case 15:
+			return new EntityProjClmM(world, player);
 		default:
 			return new EntityProjChalW(world, player);
 		}

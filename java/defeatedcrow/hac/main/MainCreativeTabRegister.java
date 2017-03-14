@@ -1,6 +1,9 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.plugin.DCIntegrationCore;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class MainCreativeTabRegister {
 
@@ -87,5 +90,20 @@ public class MainCreativeTabRegister {
 		// food
 		MainInit.bakedApple.setCreativeTab(ClimateMain.food);
 		MainInit.foodMaterials.setCreativeTab(ClimateMain.food);
+
+		if (DCIntegrationCore.loadedForestry) {
+			MainInit.circuit.setCreativeTab(ClimateCore.climate);
+		}
+		if (DCIntegrationCore.loadedMekanism) {
+			MainInit.metalMaterials.setCreativeTab(ClimateCore.climate);
+			OreDictionary.registerOre("dustDirtyZinc", new ItemStack(MainInit.metalMaterials, 1, 0));
+			OreDictionary.registerOre("shardZinc", new ItemStack(MainInit.metalMaterials, 1, 1));
+			OreDictionary.registerOre("chunkZinc", new ItemStack(MainInit.metalMaterials, 1, 2));
+			OreDictionary.registerOre("crystalZinc", new ItemStack(MainInit.metalMaterials, 1, 3));
+			OreDictionary.registerOre("dustDirtyNickel", new ItemStack(MainInit.metalMaterials, 1, 4));
+			OreDictionary.registerOre("shardNickel", new ItemStack(MainInit.metalMaterials, 1, 5));
+			OreDictionary.registerOre("chunkNickel", new ItemStack(MainInit.metalMaterials, 1, 6));
+			OreDictionary.registerOre("crystalNickel", new ItemStack(MainInit.metalMaterials, 1, 7));
+		}
 	}
 }

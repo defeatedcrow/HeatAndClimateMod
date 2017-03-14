@@ -36,6 +36,7 @@ import defeatedcrow.hac.magic.proj.EntityProjChalB;
 import defeatedcrow.hac.magic.proj.EntityProjChalR;
 import defeatedcrow.hac.magic.proj.EntityProjChalW;
 import defeatedcrow.hac.magic.proj.EntityProjClmD;
+import defeatedcrow.hac.magic.proj.EntityProjClmM;
 import defeatedcrow.hac.magic.proj.EntityProjCryC;
 import defeatedcrow.hac.magic.proj.EntityProjCryL;
 import defeatedcrow.hac.magic.proj.EntityProjCryM;
@@ -76,6 +77,7 @@ public class MagicClientProxy {
 		ClientMainProxy.registRender(EntityProjSchB.class, MagicDaggerRenderer.class);
 		ClientMainProxy.registRender(EntityProjSchC.class, MagicDaggerRenderer.class);
 		ClientMainProxy.registRender(EntityProjClmD.class, MagicDaggerRenderer.class);
+		ClientMainProxy.registRender(EntityProjClmM.class, MagicDaggerRenderer.class);
 		ClientMainProxy.registRender(EntityProjLightSpit.class, MagicLightSpitRenderer.class);
 		ClientMainProxy.registRender(EntityProjIceSpit.class, MagicIceSpitRenderer.class);
 		ClientMainProxy.registRender(EntityProjWhiteSpit.class, MagicWhiteSpitRenderer.class);

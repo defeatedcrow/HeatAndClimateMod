@@ -35,7 +35,7 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
 	public static final int MOD_MINOR = 3;
-	public static final int MOD_BUILD = 7;
+	public static final int MOD_BUILD = 8;
 	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.3.6,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
@@ -68,6 +68,9 @@ public class ClimateMain {
 		MainAPIManager.fuelRegister = new DCFluidFuelRegister();
 		MainAPIManager.isLoaded = true;
 
+		// integration
+		DCIntegrationCore.loadedCheck();
+
 		// Material
 		proxy.loadMaterial();
 		// TileEntity
@@ -78,6 +81,7 @@ public class ClimateMain {
 		proxy.loadPotion();
 		// achievement
 		AchievementClimate.load();
+
 	}
 
 	@EventHandler

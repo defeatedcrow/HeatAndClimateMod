@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.plugin.DCIntegrationCore;
 
 public class JsonRegister {
 
@@ -29,6 +30,14 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.bakedApple, ClimateCore.PACKAGE_ID, "dcs_baked_apple", "food", 3);
 		MAIN_INSTANCE.regSimpleItem(MainInit.repairPutty, ClimateCore.PACKAGE_ID, "dcs_repair_putty", "tool", 2);
 		MAIN_INSTANCE.regSimpleItem(MainInit.foodMaterials, ClimateCore.PACKAGE_ID, "dcs_food_materials", "food", 2);
+
+		if (DCIntegrationCore.loadedForestry) {
+			MAIN_INSTANCE.regSimpleItem(MainInit.circuit, ClimateCore.PACKAGE_ID, "dcs_plugin_circuit", "device", 0);
+		}
+		if (DCIntegrationCore.loadedMekanism) {
+			MAIN_INSTANCE.regSimpleItem(MainInit.metalMaterials, ClimateCore.PACKAGE_ID, "dcs_plugin_metal_material",
+					"device", 7);
+		}
 
 	}
 

@@ -53,8 +53,10 @@ import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
 import defeatedcrow.hac.main.item.misc.ItemMiscs;
 import defeatedcrow.hac.main.item.misc.ItemRepairPutty;
+import defeatedcrow.hac.main.item.ores.ItemCircuitChal;
 import defeatedcrow.hac.main.item.ores.ItemGems;
 import defeatedcrow.hac.main.item.ores.ItemIngots;
+import defeatedcrow.hac.main.item.ores.ItemMetalMaterials;
 import defeatedcrow.hac.main.item.ores.ItemMiscDust;
 import defeatedcrow.hac.main.item.ores.ItemOreDusts;
 import defeatedcrow.hac.main.item.tool.ItemArroyYagen;
@@ -69,6 +71,7 @@ import defeatedcrow.hac.main.item.tool.ItemWrench;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.DCMaterial;
 import defeatedcrow.hac.main.util.DCToolMaterial;
+import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -93,6 +96,7 @@ public class MainMaterialRegister {
 		registerEquip();
 		registerFood();
 		registerHarvestLevel();
+		registerIntegration();
 
 		FoodInitRegister.load();
 		MachineInitRegister.load();
@@ -492,6 +496,17 @@ public class MainMaterialRegister {
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wrench_brass");
 		GameRegistry.register(MainInit.wrench.setRegistryName(ClimateCore.PACKAGE_BASE + "_wrench"));
 
+	}
+
+	static void registerIntegration() {
+		if (DCIntegrationCore.loadedForestry) {
+			MainInit.circuit = new ItemCircuitChal().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_circuit");
+			GameRegistry.register(MainInit.circuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_circuit"));
+		}
+		if (DCIntegrationCore.loadedMekanism) {
+			MainInit.metalMaterials = new ItemMetalMaterials().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_metal");
+			GameRegistry.register(MainInit.metalMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_metal"));
+		}
 	}
 
 	static void registerMaterialEnum() {

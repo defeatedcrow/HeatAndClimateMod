@@ -66,8 +66,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		int posX = chunkX << 4;
 		int posZ = chunkZ << 4;
 
-		posX += world.rand.nextInt(15) + 1;
-		posZ += world.rand.nextInt(15) + 1;
+		posX += world.rand.nextInt(8) + 4;
+		posZ += world.rand.nextInt(8) + 4;
 		if (isForced && forceX != 0 & forceZ != 0) {
 			posX = forceX;
 			posZ = forceZ;
@@ -81,8 +81,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		}
 		int r = 2 + f;
 
-		if (!BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.WET)
-				&& BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.FOREST)) {
+		if (isForced || (!BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.WET)
+				&& BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.FOREST))) {
 			for (int y = 1; y < 80; y++) {
 				// world.setBlockState(pos.up(y), Blocks.STONE.getDefaultState(), 2);
 				int r2 = y / 4;

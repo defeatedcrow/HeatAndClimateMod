@@ -131,4 +131,8 @@ public class MainInit {
 	public static Potion heavyboots;
 	public static PotionType heavybootsType;
 
+	// plugin
+	public static Item circuit;
+	public static Item metalMaterials;
+
 }

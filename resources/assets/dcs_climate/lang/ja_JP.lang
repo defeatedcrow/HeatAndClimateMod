@@ -286,6 +286,16 @@ item.dcs_macecore_flower.name=タリスマン (花)
 item.dcs_macecore_glory.name=タリスマン (栄光)
 item.dcs_mace_handle_silver.name=メイスの柄
 
+item.dcs_metal_oredust_zinc_dirty.name=汚れた亜鉛の粉
+item.dcs_metal_shard_zinc.name=亜鉛の欠片
+item.dcs_metal_chunk_zinc.name=亜鉛の塊
+item.dcs_metal_crystal_zinc.name=亜鉛の結晶
+item.dcs_metal_oredust_nickel_dirty.name=汚れたニッケルの粉
+item.dcs_metal_shard_nickel.name=ニッケルの欠片
+item.dcs_metal_chunk_nickel.name=ニッケルの塊
+item.dcs_metal_crystal_nickel.name=ニッケルの結晶
+item.dcs_circuit_chalcedony.name=カルセドニーの電子管
+
 ## block
 tile.dcs_ore_stone_0.name=石膏石
 tile.dcs_ore_stone_1.name=赤鉄鉱
@@ -636,7 +646,7 @@ dcs.comment.pendant.10=移動速度が速くなる
 dcs.comment.pendant.11=透明化効果を得る
 dcs.comment.pendant.12=攻撃時にも経験値を得られる
 dcs.comment.pendant.13=ノックバックしなくなる
-dcs.comment.pendant.14=広カルセドニーを投げられるようになる
+dcs.comment.pendant.14=白カルセドニーを投げられるようになる
 dcs.comment.badge.0=火のモブへの攻撃を強化する
 dcs.comment.badge.1=アンデッドモブへの攻撃を強化する
 dcs.comment.badge.2=攻撃力が少し増える

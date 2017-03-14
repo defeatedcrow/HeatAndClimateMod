@@ -1,19 +1,32 @@
 package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraftforge.fml.common.Loader;
 
 public class DCIntegrationCore {
 
 	public static final DCIntegrationCore INSTANCE = new DCIntegrationCore();
 
+	public static boolean loadedForestry = false;
+	public static boolean loadedMekanism = false;
+
 	private DCIntegrationCore() {}
+
+	public static void loadedCheck() {
+		if (Loader.isModLoaded("forestry")) {
+			loadedForestry = true;
+		}
+		if (Loader.isModLoaded("Mekanism")) {
+			loadedMekanism = true;
+		}
+	}
 
 	public static void load() {
 
 		DCPluginFluid.load();
 
-		if (Loader.isModLoaded("BiomesOPlenty")) {
+		if (Loader.isModLoaded("BiomesOPlenty") && ModuleConfig.bop) {
 			try {
 				DCPluginBoP.load();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: BiomesOPlenty");
@@ -22,7 +35,7 @@ public class DCIntegrationCore {
 			}
 		}
 
-		if (Loader.isModLoaded("forestry")) {
+		if (loadedForestry && ModuleConfig.ffm) {
 			try {
 				DCPluginForestry.load();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: forestry");
@@ -31,7 +44,7 @@ public class DCIntegrationCore {
 			}
 		}
 
-		if (Loader.isModLoaded("IC2")) {
+		if (Loader.isModLoaded("IC2") && ModuleConfig.ic2) {
 			try {
 				DCPluginIC2.load();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: IC2");
@@ -60,7 +73,7 @@ public class DCIntegrationCore {
 	}
 
 	public static void loadIMC() {
-		if (Loader.isModLoaded("Mekanism")) {
+		if (loadedMekanism && ModuleConfig.mek) {
 			try {
 				DCPluginMekanism.sendIMC();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: Mekanism");

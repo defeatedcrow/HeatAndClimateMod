@@ -63,6 +63,10 @@ public class DCLootEvent {
 							new SetMetadata(new LootCondition[0], new RandomValueRange(4)),
 							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
 					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gem_sapphire"));
+					pool.addEntry(new LootEntryItem(gem, 5, 3, new LootFunction[] {
+							new SetMetadata(new LootCondition[0], new RandomValueRange(7)),
+							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
+					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gem_clam"));
 					pool.addEntry(new LootEntryItem(jerky, 5, 3, new LootFunction[] {
 							new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
 							new SetCount(new LootCondition[0], new RandomValueRange(3, 8))
@@ -76,6 +80,27 @@ public class DCLootEvent {
 							new LootCondition[0], ClimateMain.MOD_ID + ":mine_hat"));
 					pool2.addEntry(new LootEntryItem(MainInit.dcPickaxe[0], 5, 1, new LootFunction[0],
 							new LootCondition[0], ClimateMain.MOD_ID + ":mine_pickaxe"));
+				}
+			} else if (event.getName().equals(LootTableList.CHESTS_SIMPLE_DUNGEON)) {
+				LootTable loot = event.getTable();
+				LootPool pool = loot.getPool("main");
+				if (pool != null) {
+					pool.addEntry(new LootEntryItem(ingot, 10, 3, new LootFunction[] {
+							new SetMetadata(new LootCondition[0], new RandomValueRange(3, 4)),
+							new SetCount(new LootCondition[0], new RandomValueRange(3, 5))
+					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_ingot_silver"));
+					pool.addEntry(new LootEntryItem(gem, 5, 3, new LootFunction[] {
+							new SetMetadata(new LootCondition[0], new RandomValueRange(4)),
+							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
+					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gem_sapphire"));
+					pool.addEntry(new LootEntryItem(gem, 5, 3, new LootFunction[] {
+							new SetMetadata(new LootCondition[0], new RandomValueRange(7)),
+							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
+					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gem_clam"));
+					pool.addEntry(new LootEntryItem(jerky, 5, 3, new LootFunction[] {
+							new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
+							new SetCount(new LootCondition[0], new RandomValueRange(3, 8))
+					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_food_jerky"));
 				}
 			}
 		}
