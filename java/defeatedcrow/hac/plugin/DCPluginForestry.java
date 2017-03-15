@@ -198,7 +198,7 @@ public class DCPluginForestry {
 
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
 			FuelManager.fermenterFuel.put(oilcake, new FermenterFuel(oilcake, 48, 200));
-			Farmables.fertilizers.put(oilcake, Integer.valueOf(200));
+			Farmables.registerFertilizer(oilcake, Integer.valueOf(200));
 
 			Fluid oil = FoodInit.oil;
 			if (oil != null) {
