@@ -21,6 +21,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -93,6 +94,43 @@ public class GuiTeaPot extends GuiContainer {
 				this.drawHoveringText(list, mouseX - this.guiLeft - 80, mouseY - this.guiTop - 10);
 			}
 		}
+	}
+
+	@Override
+	public void drawScreen(int x, int y, float par3) {
+		super.drawScreen(x, y, par3);
+
+		ArrayList<String> list = new ArrayList<String>();
+		// String hov = "point " + x + "," + y;
+		// list.add(hov);
+
+		if (isPointInRegion(38, 20, 12, 50, x, y)) {
+			if (!pot.inputT.isEmpty()) {
+				int in = this.pot.getField(3);
+				int inAmo = 5000 * this.pot.getField(5) / 5000;
+				Fluid fluid = FluidIDRegisterDC.getFluid(in);
+				if (fluid != null && inAmo > 0) {
+					String nameIn = fluid.getLocalizedName(new FluidStack(fluid, 1000));
+					list.add(nameIn);
+					list.add(inAmo + " mB");
+				}
+			}
+		}
+
+		if (isPointInRegion(125, 20, 12, 50, x, y)) {
+			if (!pot.outputT.isEmpty()) {
+				int out = this.pot.getField(4);
+				int outAmo = 5000 * this.pot.getField(6) / 5000;
+				Fluid fluid = FluidIDRegisterDC.getFluid(out);
+				if (fluid != null && outAmo > 0) {
+					String nameIn = fluid.getLocalizedName(new FluidStack(fluid, 1000));
+					list.add(nameIn);
+					list.add(outAmo + " mB");
+				}
+			}
+		}
+
+		this.drawHoveringText(list, x, y);
 	}
 
 	@Override

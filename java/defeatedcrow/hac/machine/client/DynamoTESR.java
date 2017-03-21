@@ -10,14 +10,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class BoilerTurbineTESR extends DCTorqueTESRBase {
-
-	private static final DCTileModelBase MODEL = new ModelBoilerTurbine();
+public class DynamoTESR extends DCTorqueTESRBase {
 
 	@Override
 	protected String getTexPass(int i) {
-		return "dcs_climate:textures/tiles/steam_turbine.png";
+		return "dcs_climate:textures/tiles/dynamo_steel.png";
 	}
+
+	private static final DCTileModelBase MODEL = new ModelDynamo();
 
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
@@ -33,26 +33,42 @@ public class BoilerTurbineTESR extends DCTorqueTESRBase {
 		float z = 0F;
 
 		if (te != null && te.prevTorque > 0F) {
-			this.bindTexture(new ResourceLocation("dcs_climate:textures/tiles/steam_turbine_active.png"));
+			this.bindTexture(new ResourceLocation("dcs_climate:textures/tiles/dynamo_steel_active.png"));
+		}
+
+		if (face == EnumFacing.NORTH) {
+			y = 90F;
+		}
+		if (face == EnumFacing.SOUTH) {
+			y = -90F;
+		}
+		if (face == EnumFacing.EAST) {
+			y = 180F;
+		}
+		if (face == EnumFacing.WEST) {
+			y = 0F;
 		}
 
 		switch (base) {
 		case DOWN:
-			x = 90F;
 			break;
 		case UP:
-			x = -90F;
+			x = 180F;
 			break;
 		case NORTH:
-			y = 180F;
+			x = 90F;
 			break;
 		case SOUTH:
+			x = 90F;
+			z = 180F;
 			break;
 		case EAST:
-			y = -90F;
+			x = 90F;
+			z = -90F;
 			break;
 		case WEST:
-			y = 90F;
+			x = 90F;
+			z = 90F;
 			break;
 		default:
 			break;

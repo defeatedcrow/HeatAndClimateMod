@@ -749,6 +749,16 @@ public class FoodRecipes {
 						"foodRennet"
 				});
 
+		if (MainInit.milk != null) {
+			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dropCream, 4, 0), null, 0F, null,
+					DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.milk, 1000), (Object[]) null);
+
+			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1, 1), null, 0F, null,
+					DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(MainInit.milk, 1000), new Object[] {
+							"foodRennet"
+					});
+		}
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.ricebowl, 1, 0), null, 0F, null,
 				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
 						"foodRice"

@@ -6,6 +6,7 @@ import defeatedcrow.hac.machine.block.BlockCatapult;
 import defeatedcrow.hac.machine.block.BlockConveyor;
 import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockCreativeBox;
+import defeatedcrow.hac.machine.block.BlockDynamo;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFauset;
 import defeatedcrow.hac.machine.block.BlockGearBox;
@@ -28,6 +29,7 @@ import defeatedcrow.hac.machine.block.BlockShaft_TB;
 import defeatedcrow.hac.machine.block.BlockShaft_TB_SUS;
 import defeatedcrow.hac.machine.block.BlockStoneMill;
 import defeatedcrow.hac.machine.block.BlockWaterPump;
+import defeatedcrow.hac.machine.block.BlockWatermill;
 import defeatedcrow.hac.machine.block.BlockWindmill;
 import defeatedcrow.hac.machine.block.BlockWindmill_L;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
@@ -87,6 +89,9 @@ public class MachineInitRegister {
 		MachineInit.fan = new BlockFan(ClimateCore.PACKAGE_BASE + "_device_fan");
 		registerTierBlock(MachineInit.fan, ClimateCore.PACKAGE_BASE + "_device_fan", 1);
 
+		MachineInit.watermill = new BlockWatermill(ClimateCore.PACKAGE_BASE + "_device_watermill");
+		registerTierBlock(MachineInit.watermill, ClimateCore.PACKAGE_BASE + "_device_watermill", 2);
+
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
 		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 2);
 
@@ -138,6 +143,9 @@ public class MachineInitRegister {
 		MachineInit.motor = new BlockKineticMotor(ClimateCore.PACKAGE_BASE + "_device_kinetic_motor");
 		registerTierBlock(MachineInit.motor, ClimateCore.PACKAGE_BASE + "_device_kinetic_motor", 3);
 
+		MachineInit.dynamo = new BlockDynamo(ClimateCore.PACKAGE_BASE + "_device_dynamo");
+		registerTierBlock(MachineInit.dynamo, ClimateCore.PACKAGE_BASE + "_device_dynamo", 3);
+
 		MachineInit.pressMachine = new BlockPressMachine(ClimateCore.PACKAGE_BASE + "_device_press_machine");
 		registerTierBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_BASE + "_device_press_machine", 3);
 
@@ -184,6 +192,7 @@ public class MachineInitRegister {
 		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
 		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
 		MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
+		MachineInit.watermill.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.shaft2_s.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_l.setCreativeTab(ClimateMain.machine);
@@ -193,6 +202,7 @@ public class MachineInitRegister {
 
 		MachineInit.boilerTurbine.setCreativeTab(ClimateMain.machine);
 		MachineInit.motor.setCreativeTab(ClimateMain.machine);
+		MachineInit.dynamo.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.pressMachine.setCreativeTab(ClimateMain.machine);
 

@@ -98,6 +98,26 @@ public class MagicRecipeRegister {
 				"gemPeridot"
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, 14), new Object[] {
+				" X ",
+				"X X",
+				" Y ",
+				'X',
+				"ingotSilver",
+				'Y',
+				new ItemStack(MagicInit.elestial, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, 14), new Object[] {
+				" X ",
+				"X X",
+				" Y ",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				new ItemStack(MagicInit.elestial, 1, 0)
+		}));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.badge, 1, 12), new Object[] {
 				" Y ",
 				"X X",
@@ -330,7 +350,7 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemClam",
 				'W',
-				"gemCelestite",
+				new ItemStack(Items.NETHER_STAR),
 				'Z',
 				new ItemStack(MagicInit.daggerSilver)
 		}));

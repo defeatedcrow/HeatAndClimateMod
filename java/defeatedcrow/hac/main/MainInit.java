@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
+import net.minecraftforge.fluids.Fluid;
 
 public class MainInit {
 	private MainInit() {}
@@ -134,5 +135,7 @@ public class MainInit {
 	// plugin
 	public static Item circuit;
 	public static Item metalMaterials;
+
+	public static Fluid milk;
 
 }

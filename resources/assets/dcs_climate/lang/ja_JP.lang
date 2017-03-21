@@ -266,7 +266,7 @@ item.dcs_dagger_magic_11.name=宝石剣 (回復バリア)
 item.dcs_dagger_magic_12.name=宝石剣 (雷雨)
 item.dcs_dagger_magic_13.name=宝石剣 (瞬間移動)
 item.dcs_dagger_magic_14.name=宝石剣 (鉱脈生成)
-item.dcs_dagger_magic_15.name=宝石剣 (???)
+item.dcs_dagger_magic_15.name=宝石剣 (風車生成)
 
 tile.dcs_magicmace_light_0.name=魔法のメイス (陽光)
 tile.dcs_magicmace_ice_0.name=魔法のメイス (氷)
@@ -511,6 +511,8 @@ tile.dcs_device_hopper_filter_0.name=フィルターホッパー
 tile.dcs_device_hopper_fluid_0.name=液体ホッパー
 tile.dcs_device_thermometer_0.name=温度計
 tile.dcs_device_windvane_0.name=風見鶏
+tile.dcs_device_watermill_0.name=水車
+tile.dcs_device_dynamo_0.name=ダイナモ
 
 tile.dcs_crop_rice_3.name=稲
 tile.dcs_crop_onion_3.name=玉ねぎの苗
@@ -617,7 +619,7 @@ dcs.tip.dagger.11=設置:プレイヤーに回復効果を与えるバリア
 dcs.tip.dagger.12=単体:着弾点に雷を落とし、雷雲を呼ぶ
 dcs.tip.dagger.13=単体:着弾点にワープする
 dcs.tip.dagger.14=範囲:着弾点付近のダイヤブロックの数に応じて、スカルン鉱脈を召喚する
-dcs.tip.dagger.15=範囲:???
+dcs.tip.dagger.15=範囲:着弾点に風車小屋を生成する
 
 dcs.tip.shitirin.description=
 dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック

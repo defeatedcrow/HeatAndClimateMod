@@ -76,6 +76,10 @@ public class TESRWindVane extends DCTESRBase {
 	protected String getTexPass(int i) {
 		if (ClimateMain.month == 3 && ClimateMain.day == 1)
 			return "dcs_climate:textures/tiles/weather_vane_crow.png";
+		else if (ClimateMain.month == 4) {
+			if (ClimateMain.day < 6)
+				return "dcs_climate:textures/tiles/weather_vane_gw.png";
+		}
 		return "dcs_climate:textures/tiles/weather_vane.png";
 	}
 

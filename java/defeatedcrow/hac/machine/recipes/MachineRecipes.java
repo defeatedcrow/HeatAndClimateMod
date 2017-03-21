@@ -137,6 +137,18 @@ public class MachineRecipes {
 				"ingotSteel"
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.watermill, 1, 0), new Object[] {
+				"XZX",
+				"ZYZ",
+				"XZX",
+				'X',
+				"plankWood",
+				'Y',
+				"gearAlloy",
+				'Z',
+				"stickWood"
+		}));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.stonemill, 1, 0), new Object[] {
 				"XXX",
 				" Y ",
@@ -293,6 +305,18 @@ public class MachineRecipes {
 				"gearSteel",
 				'W',
 				new ItemStack(MachineInit.machimeMaterials, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.dynamo, 1, 0), new Object[] {
+				"XZX",
+				" Y ",
+				"XZX",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(MachineInit.machimeMaterials, 1, 1),
+				'Z',
+				"gearSteel"
 		}));
 
 		/* == items == */
@@ -508,6 +532,8 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 8), "ingotTin");
 
 		// 以下バニラ
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), null, 0F, "cobbleStone");
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(Items.FLINT, 1, 0), 1.0F,
 				new ItemStack(Blocks.GRAVEL, 1, 0));
 

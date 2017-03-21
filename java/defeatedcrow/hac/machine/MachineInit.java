@@ -33,6 +33,8 @@ public class MachineInit {
 	public static Block hopperFilter;
 	public static Block hopperFluid;
 
+	public static Block watermill;
+
 	public static Block stonemill;
 	public static Block heatPump;
 	public static Block catapult;
@@ -46,8 +48,8 @@ public class MachineInit {
 	public static Block gearbox2;
 
 	public static Block boilerTurbine; // Climate -> Torque
-	public static Block motor; // FU -> Torque
-	public static Block generator; // Torque -> FU
+	public static Block motor; // FU/RF -> Torque
+	public static Block dynamo; // Torque -> FU/RF
 	public static Block converter; // EU/RF -> FU
 
 	public static Block waterPump;

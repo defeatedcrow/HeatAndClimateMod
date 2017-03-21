@@ -295,7 +295,7 @@ item.dcs_dagger_magic_11.name=Magic Dagger (Heal Barrier)
 item.dcs_dagger_magic_12.name=Magic Dagger (Thunderstorm)
 item.dcs_dagger_magic_13.name=Magic Dagger (Warp)
 item.dcs_dagger_magic_14.name=Magic Dagger (Generate Ore Vine)
-item.dcs_dagger_magic_15.name=Magic Dagger (???)
+item.dcs_dagger_magic_15.name=Magic Dagger (Generate Windmill)
 
 ## plugin
 item.dcs_metal_oredust_zinc_dirty.name=Dirty Zinc Dust
@@ -528,6 +528,8 @@ tile.dcs_device_hopper_filter_0.name=Filter Hopper
 tile.dcs_device_hopper_fluid_0.name=Fluid Hopper
 tile.dcs_device_thermometer_0.name=Galileo Thermometer
 tile.dcs_device_windvane_0.name=Wind vane
+tile.dcs_device_watermill_0.name=Watermill
+tile.dcs_device_dynamo_0.name=Dynamo
 
 ## crops
 tile.dcs_crop_rice_3.name=Rice Plant
@@ -634,8 +636,8 @@ dcs.tip.dagger.10=(Area Effect) Summon Projectile Barrier
 dcs.tip.dagger.11=(Area Effect) Summon Healing Circle
 dcs.tip.dagger.12=(Area Effect) Summon Thunderbolt
 dcs.tip.dagger.13=(Unit Effect) Warp to the impact point
-dcs.tip.dagger.14=(Area Effect) Summon Skarn (require some daimond blocks near the impact point)
-dcs.tip.dagger.15=(Area Effect) No Effect Yet
+dcs.tip.dagger.14=(Area Effect) Summon Skarn (require some diamond blocks near the impact point)
+dcs.tip.dagger.15=(Area Effect) Summon Windmill
 
 dcs.tip.shitirin.description=It's the japanese charcoal stove.
 dcs.tip.teapot=Right-click to this block with flavor items.

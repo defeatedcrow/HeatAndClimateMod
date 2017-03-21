@@ -5,19 +5,18 @@ import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class BoilerTurbineTESR extends DCTorqueTESRBase {
-
-	private static final DCTileModelBase MODEL = new ModelBoilerTurbine();
+public class WatermillTESR extends DCTorqueTESRBase {
 
 	@Override
 	protected String getTexPass(int i) {
-		return "dcs_climate:textures/tiles/steam_turbine.png";
+		return "dcs_climate:textures/tiles/watermill.png";
 	}
+
+	private static final ModelWatermill MODEL = new ModelWatermill();
 
 	@Override
 	protected DCTileModelBase getModel(TileTorqueBase te) {
@@ -27,32 +26,30 @@ public class BoilerTurbineTESR extends DCTorqueTESRBase {
 	@Override
 	public void render(TileTorqueBase te, DCTileModelBase model, float rot, float speed, float tick) {
 		EnumFacing base = te.getBaseSide();
-		EnumFacing face = te.getFaceSide();
 		float x = 0F;
 		float y = 0F;
 		float z = 0F;
 
-		if (te != null && te.prevTorque > 0F) {
-			this.bindTexture(new ResourceLocation("dcs_climate:textures/tiles/steam_turbine_active.png"));
-		}
-
 		switch (base) {
 		case DOWN:
-			x = 90F;
 			break;
 		case UP:
-			x = -90F;
+			x = 180F;
 			break;
 		case NORTH:
-			y = 180F;
+			x = 90F;
 			break;
 		case SOUTH:
+			x = 90F;
+			z = 180F;
 			break;
 		case EAST:
-			y = -90F;
+			x = 90F;
+			z = -90F;
 			break;
 		case WEST:
-			y = 90F;
+			x = 90F;
+			z = 90F;
 			break;
 		default:
 			break;
@@ -62,7 +59,13 @@ public class BoilerTurbineTESR extends DCTorqueTESRBase {
 		GlStateManager.rotate(z, 0.0F, 0.0F, 1.0F);
 		GlStateManager.rotate(y, 0.0F, 1.0F, 0.0F);
 
-		model.render(rot, speed, tick);
+		MODEL.render(rot, speed, tick);
+
+		for (int i = 0; i < 4; i++) {
+			GlStateManager.rotate(i * 90.0F, 0.0F, 1.0F, 0.0F);
+			MODEL.renderWing(rot, speed, tick);
+		}
+
 	}
 
 }

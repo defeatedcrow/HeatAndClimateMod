@@ -7,6 +7,7 @@ import defeatedcrow.hac.machine.block.TileCatapult;
 import defeatedcrow.hac.machine.block.TileConveyor;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileCreativeBox;
+import defeatedcrow.hac.machine.block.TileDynamo;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFauset;
 import defeatedcrow.hac.machine.block.TileGearBox;
@@ -29,12 +30,14 @@ import defeatedcrow.hac.machine.block.TileShaft_TB;
 import defeatedcrow.hac.machine.block.TileShaft_TB_SUS;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.block.TileWaterPump;
+import defeatedcrow.hac.machine.block.TileWatermill;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.client.BoilerTurbineTESR;
 import defeatedcrow.hac.machine.client.CatapultTESR;
 import defeatedcrow.hac.machine.client.ConveyorTESR;
 import defeatedcrow.hac.machine.client.CreativeBoxTESR;
+import defeatedcrow.hac.machine.client.DynamoTESR;
 import defeatedcrow.hac.machine.client.FanTESR;
 import defeatedcrow.hac.machine.client.GearBoxTESR;
 import defeatedcrow.hac.machine.client.HandCrankTESR;
@@ -57,6 +60,7 @@ import defeatedcrow.hac.machine.client.StoneMillTESR;
 import defeatedcrow.hac.machine.client.TA_ShaftTESR;
 import defeatedcrow.hac.machine.client.TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.WaterPumpTESR;
+import defeatedcrow.hac.machine.client.WatermillTESR;
 import defeatedcrow.hac.machine.client.WindmillTESR;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -96,6 +100,8 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileCatapult.class, "dcs_te_catapult", new CatapultTESR());
 		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
 		ClientRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid", new HopperFluidTESR());
+		ClientRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill", new WatermillTESR());
+		ClientRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -145,6 +151,8 @@ public class MachineClientProxy {
 				0);
 		instance.regTETorqueBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine",
 				0);
+		instance.regTETorqueBlock(MachineInit.watermill, ClimateCore.PACKAGE_ID, "dcs_device_watermill", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.dynamo, ClimateCore.PACKAGE_ID, "dcs_device_dynamo", "machine", 0);
 	}
 
 }

@@ -9,10 +9,12 @@ import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -427,6 +429,14 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 								drop.setDead();
 							}
 							return true;
+						}
+					}
+				} else if (entity instanceof EntityCow) {
+					EntityCow cow = (EntityCow) entity;
+					if (MainInit.milk != null && !cow.isChild()) {
+						FluidStack milk = new FluidStack(MainInit.milk, 10);
+						if (inputT.fill(milk, false) > 0) {
+							inputT.fill(milk, true);
 						}
 					}
 				}

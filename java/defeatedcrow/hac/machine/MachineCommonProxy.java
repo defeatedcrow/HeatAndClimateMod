@@ -5,6 +5,7 @@ import defeatedcrow.hac.machine.block.TileCatapult;
 import defeatedcrow.hac.machine.block.TileConveyor;
 import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileCreativeBox;
+import defeatedcrow.hac.machine.block.TileDynamo;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFauset;
 import defeatedcrow.hac.machine.block.TileGearBox;
@@ -27,6 +28,7 @@ import defeatedcrow.hac.machine.block.TileShaft_TB;
 import defeatedcrow.hac.machine.block.TileShaft_TB_SUS;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.block.TileWaterPump;
+import defeatedcrow.hac.machine.block.TileWatermill;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -63,6 +65,8 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileCatapult.class, "dcs_te_catapult");
 		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
 		GameRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid");
+		GameRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill");
+		GameRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo");
 	}
 
 }
