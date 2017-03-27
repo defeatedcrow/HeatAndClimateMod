@@ -1,10 +1,13 @@
 package defeatedcrow.hac.machine.client;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -13,6 +16,8 @@ public class GearBoxTESR extends DCTorqueTESRBase {
 
 	@Override
 	protected String getTexPass(int i) {
+		if (i == 1)
+			return "dcs_climate:textures/tiles/gearbox_brass_rs.png";
 		return "dcs_climate:textures/tiles/gearbox_brass.png";
 	}
 
@@ -25,6 +30,11 @@ public class GearBoxTESR extends DCTorqueTESRBase {
 
 	@Override
 	public void render(TileTorqueBase te, DCTileModelBase model, float rot, float speed, float tick) {
+		IBlockState state = te.getWorld().getBlockState(te.getPos());
+		if (DCState.getBool(state, DCState.POWERED)) {
+			this.bindTexture(new ResourceLocation(getTexPass(1)));
+		}
+
 		EnumFacing base = te.getBaseSide();
 		EnumFacing face = te.getFaceSide();
 		float x = 0F;

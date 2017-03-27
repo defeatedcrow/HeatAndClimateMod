@@ -55,6 +55,8 @@ public class WatermillTESR extends DCTorqueTESRBase {
 			break;
 		}
 
+		GlStateManager.scale(0.9F, 0.9F, 0.9F);
+
 		GlStateManager.rotate(x, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(z, 0.0F, 0.0F, 1.0F);
 		GlStateManager.rotate(y, 0.0F, 1.0F, 0.0F);

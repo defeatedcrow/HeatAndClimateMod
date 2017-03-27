@@ -532,7 +532,7 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 8), "ingotTin");
 
 		// 以下バニラ
-		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), null, 0F, "cobbleStone");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), null, 0F, "cobblestone");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(Items.FLINT, 1, 0), 1.0F,
 				new ItemStack(Blocks.GRAVEL, 1, 0));
@@ -558,6 +558,18 @@ public class MachineRecipes {
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.ICE, 1, 0), null, 0.0F,
 				new ItemStack(Blocks.PACKED_ICE));
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.NETHERBRICK, 4, 0), null, 0F,
+				new ItemStack(Blocks.NETHER_BRICK, 1, 0));
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.NETHERBRICK, 6, 0), null, 0F,
+				new ItemStack(Blocks.NETHER_BRICK_STAIRS, 1, 0));
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.NETHERBRICK, 4, 0), null, 0F,
+				new ItemStack(Blocks.NETHER_BRICK_FENCE, 1, 0));
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.END_STONE, 4, 0), null, 0F,
+				new ItemStack(Blocks.END_BRICKS, 1, 0));
 
 	}
 

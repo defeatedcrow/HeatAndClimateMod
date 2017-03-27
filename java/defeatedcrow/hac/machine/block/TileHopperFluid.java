@@ -98,7 +98,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 
 	private boolean isActive() {
 		IBlockState state = this.worldObj.getBlockState(pos);
-		if (state != null && state.getBlock() instanceof BlockHopperFilter) {
+		if (state != null && state.getBlock() instanceof BlockHopperFluid) {
 			boolean flag = DCState.getBool(state, DCState.POWERED);
 			return flag;
 		}

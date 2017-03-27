@@ -159,7 +159,8 @@ public class BlockFauset extends BlockContainer {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.SIDE,
-				DCState.POWERED });
+				DCState.POWERED
+		});
 
 	}
 

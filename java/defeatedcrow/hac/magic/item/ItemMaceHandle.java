@@ -10,7 +10,8 @@ public class ItemMaceHandle extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"silver" };
+			"silver"
+	};
 
 	public ItemMaceHandle(int max) {
 		super();
