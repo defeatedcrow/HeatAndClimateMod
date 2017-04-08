@@ -1022,6 +1022,34 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.gemBlock, 1, 12)
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceGypsum, 6, 0), new Object[] {
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 3)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceMarble, 6, 0), new Object[] {
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 6)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceSerpentine, 6, 0), new Object[] {
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 9)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceBedrock, 6, 0), new Object[] {
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 12)
+		}));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.bricks, 4, 0), new Object[] {
 				"XX",
 				"XX",
