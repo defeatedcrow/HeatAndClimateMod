@@ -6,7 +6,6 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.entity.EntityCution;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -52,7 +51,6 @@ public class BlockSofaBase extends Block {
 
 	public BlockSofaBase(String s) {
 		super(Material.CLAY);
-		this.setCreativeTab(ClimateCore.climate);
 		this.setUnlocalizedName(s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
@@ -108,9 +106,8 @@ public class BlockSofaBase extends Block {
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
-		if (face == null) {
+		if (face == null)
 			return super.withRotation(state, rot);
-		}
 		switch (rot) {
 		case CLOCKWISE_180:
 			return state.withProperty(DCState.FACING, face.getOpposite());
@@ -126,9 +123,8 @@ public class BlockSofaBase extends Block {
 	@Override
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
-		if (face == null) {
+		if (face == null)
 			return super.withMirror(state, mirrorIn);
-		}
 		switch (mirrorIn) {
 		case LEFT_RIGHT:
 			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(LEFT, state.getValue(RIGHT))
@@ -146,7 +142,8 @@ public class BlockSofaBase extends Block {
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.FACING,
 				LEFT,
-				RIGHT });
+				RIGHT
+		});
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package defeatedcrow.hac.food.item;
 import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.FoodInit;
@@ -60,6 +61,8 @@ public class PlateSoupItem extends FoodItemBase {
 		if ((i & 1) == 0) {
 			ret.setRAW(true);
 		}
+		ret.setIndividual(world.rand.nextInt(32));
+		DCLogger.debugLog("individual " + ret.getIndividual());
 		return ret;
 	}
 

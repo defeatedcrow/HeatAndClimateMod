@@ -1,10 +1,11 @@
 package defeatedcrow.hac.food.client.model;
 
+import defeatedcrow.hac.core.base.FoodEntityBase;
+import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 
 @SideOnly(Side.CLIENT)
 public class ModelYakitoriStick extends DCFoodModelBase {
@@ -54,8 +55,22 @@ public class ModelYakitoriStick extends DCFoodModelBase {
 	}
 
 	@Override
-	public void render(float scale) {
+	public void render(float scale, FoodEntityBase entity) {
+		setIndividualRotation(entity);
 		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale);
+	}
+
+	public void setIndividualRotation(FoodEntityBase entity) {
+		if (entity != null) {
+			float f1 = 0.0523599F;
+			chicken1.rotateAngleY = f1 + (entity.getIndividual() / 33F) * (float) (Math.PI);
+			float f2 = -0.0523599F;
+			chicken2.rotateAngleY = f2 + (entity.getIndividual() / 30F) * (float) (Math.PI);
+			float f3 = 0.2094395F;
+			chicken3.rotateAngleY = f3 + (entity.getIndividual() / 32F) * (float) (Math.PI);
+			float f4 = -0.1745329F;
+			chicken4.rotateAngleY = f4 + (entity.getIndividual() / 36F) * (float) (Math.PI);
+		}
 	}
 
 	@Override

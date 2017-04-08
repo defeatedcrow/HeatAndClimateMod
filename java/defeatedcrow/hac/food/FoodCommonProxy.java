@@ -9,6 +9,8 @@ import defeatedcrow.hac.food.entity.BeefPlateEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.ChickenPlateEntity;
 import defeatedcrow.hac.food.entity.ChocolatePieEntity;
+import defeatedcrow.hac.food.entity.ClubSandwichREntity;
+import defeatedcrow.hac.food.entity.ClubSandwichSEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
 import defeatedcrow.hac.food.entity.EmptyPlateEntity;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
@@ -32,6 +34,14 @@ import defeatedcrow.hac.food.entity.SaladSandwichEntity;
 import defeatedcrow.hac.food.entity.SoupPlateEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
+import defeatedcrow.hac.food.entity.StewBorschtEntity;
+import defeatedcrow.hac.food.entity.StewCongeeEntity;
+import defeatedcrow.hac.food.entity.StewEggEntity;
+import defeatedcrow.hac.food.entity.StewMushroomEntity;
+import defeatedcrow.hac.food.entity.StewPumpukinEntity;
+import defeatedcrow.hac.food.entity.StewPurpleEntity;
+import defeatedcrow.hac.food.entity.StewTomatoEntity;
+import defeatedcrow.hac.food.entity.StewVegiEntity;
 import defeatedcrow.hac.food.entity.SugarPieEntity;
 import defeatedcrow.hac.food.entity.ToastBreadEntity;
 import defeatedcrow.hac.food.entity.YakitoriStickEntity;
@@ -119,6 +129,28 @@ public class FoodCommonProxy {
 
 		EntityRegistry.registerModEntity(EntityRiceMushroom.class,
 				ClimateCore.PACKAGE_BASE + "entity.food.rice_mushroom", 31, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(ClubSandwichSEntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.clubsand_square", 32, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(ClubSandwichREntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.clubsand_round", 33, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(StewVegiEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_vegi", 34,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewEggEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_egg", 35,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewTomatoEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_tomato",
+				36, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewCongeeEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_congee",
+				37, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewPumpukinEntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.stew_pumpkin", 38, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewBorschtEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_borscht",
+				39, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewMushroomEntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.stew_mushroom", 40, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewPurpleEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_purple",
+				41, ClimateMain.instance, 128, 5, true);
 
 	}
 

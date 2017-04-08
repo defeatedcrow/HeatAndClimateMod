@@ -13,11 +13,13 @@ public class FoodInit {
 	public static Item sticks;
 	public static Item pastryRound;
 	public static Item pastrySquare;
+	public static Item clubsandwich;
 
 	public static Item ricebowl;
 
 	public static Item plateMeal;
 	public static Item plateSoup;
+	public static Item bowlSoup;
 
 	public static Item crops;
 	public static Item seeds;
@@ -61,6 +63,7 @@ public class FoodInit {
 	public static Fluid tomatoJuice;
 	public static Fluid blackLiquor;
 	public static Fluid hotSpring;
+	public static Fluid stock;
 
 	public static Block oilBlock;
 	public static Block greenTeaBlock;
@@ -70,5 +73,6 @@ public class FoodInit {
 	public static Block tomatoBlock;
 	public static Block blackLiquorBlock;
 	public static Block hotSpringBlock;
+	public static Block stockBlock;
 
 }

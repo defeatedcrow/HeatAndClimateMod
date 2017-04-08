@@ -85,6 +85,7 @@ public class StickFoodsItem extends FoodItemBase {
 		if (ret != null && (i & 1) == 0) {
 			ret.setRAW(true);
 		}
+		ret.setIndividual(world.rand.nextInt(32));
 		return ret;
 	}
 

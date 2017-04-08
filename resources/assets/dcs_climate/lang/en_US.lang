@@ -146,6 +146,16 @@ item.dcs_food_plate_soup_potato_raw.name=Raw Buttered Potato
 item.dcs_food_plate_soup_potato_baked.name=Buttered Potato
 item.dcs_food_plate_soup_tomato_raw.name=Raw Tomato Stew
 item.dcs_food_plate_soup_tomato_baked.name=Tomato Stew Plate
+item.dcs_food_bowl_stew_vegi.name=Vegetable Soup
+item.dcs_food_bowl_stew_egg.name=Egg Soup
+item.dcs_food_bowl_stew_congee.name=Congee
+item.dcs_food_bowl_stew_tomato.name=Tomato Congee
+item.dcs_food_bowl_stew_pumpkin.name=Pumpkin Potage
+item.dcs_food_bowl_stew_borscht.name=Borscht
+item.dcs_food_bowl_stew_mushroom.name=Mushroom Cream Stew
+item.dcs_food_bowl_stew_purple.name=Purple Potage
+item.dcs_food_clubsand_square.name=Beef Club Sandwich
+item.dcs_food_clubsand_round.name=Fish Club Sandwich
 
 ## crops
 item.dcs_food_crops_rice.name=Rice Plant
@@ -586,6 +596,8 @@ fluid.dcs.black_liquor=Black Liquor
 tile.dcs_fluidblock_black_liquor_0.name=Black Liquor
 fluid.dcs.hotspring=Hot Spring
 tile.dcs_fluidblock_hotspring_0.name=Hot Spring
+fluid.dcs.stock=Soup Stock
+tile.dcs_fluidblock_stock_0.name=Soup Stock
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)

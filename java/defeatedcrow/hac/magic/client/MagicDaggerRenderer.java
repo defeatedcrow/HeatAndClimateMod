@@ -44,7 +44,7 @@ public class MagicDaggerRenderer extends Render<EntityMagicProjBase> {
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(rotZ, 0.0F, 0.0F, 1.0F);
 
-		model.render(0.0625F);
+		model.render(0.0625F, null);
 
 		GlStateManager.popMatrix();
 		super.doRender(entity, x, y, z, yaw, partialTicks);

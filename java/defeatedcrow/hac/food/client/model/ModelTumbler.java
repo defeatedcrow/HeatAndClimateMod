@@ -2,6 +2,7 @@ package defeatedcrow.hac.food.client.model;
 
 import org.lwjgl.opengl.GL11;
 
+import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -42,7 +43,7 @@ public class ModelTumbler extends DCFoodModelBase {
 	}
 
 	@Override
-	public void render(float scale) {
+	public void render(float scale, FoodEntityBase entity) {
 		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale);
 	}
 

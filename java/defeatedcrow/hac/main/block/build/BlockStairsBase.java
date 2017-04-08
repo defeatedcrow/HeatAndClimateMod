@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.block.build;
 
+import defeatedcrow.hac.api.placeable.ISidedTexture;
+import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
@@ -9,9 +11,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.placeable.ISidedTexture;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 
 public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISidedRenderingBlock {
 
@@ -22,7 +21,6 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 		super(state);
 		TEX = "dcs_climate:blocks/" + name;
 		isGlass = glass;
-		this.setCreativeTab(ClimateCore.climate);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 	}
@@ -56,17 +54,14 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 				if (state2.getBlock() == this && state.getValue(FACING) == state2.getValue(FACING))
 					return false;
 
-				if (state2.getBlock() instanceof BlockBreakable) {
+				if (state2.getBlock() instanceof BlockBreakable)
 					return true;
-				}
 
-				if (state2.getBlock() instanceof ISidedRenderingBlock) {
+				if (state2.getBlock() instanceof ISidedRenderingBlock)
 					return ((ISidedRenderingBlock) state2.getBlock()).isRendered(side, state2);
-				}
 
-				if (!state2.isSideSolid(world, check, side.getOpposite())) {
+				if (!state2.isSideSolid(world, check, side.getOpposite()))
 					return true;
-				}
 			}
 		}
 

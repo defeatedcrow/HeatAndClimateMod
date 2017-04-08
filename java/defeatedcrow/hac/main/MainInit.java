@@ -37,6 +37,10 @@ public class MainInit {
 	public static Block halfSlab;
 	public static Block builds;
 	public static Block plate;
+	public static Block fenceGypsum;
+	public static Block fenceMarble;
+	public static Block fenceSerpentine;
+	public static Block fenceBedrock;
 
 	public static Block markingPanel;
 
@@ -137,5 +141,7 @@ public class MainInit {
 	public static Item metalMaterials;
 
 	public static Fluid milk;
+
+	public static Item manju;
 
 }

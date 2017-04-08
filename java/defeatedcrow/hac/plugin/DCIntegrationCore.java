@@ -64,7 +64,7 @@ public class DCIntegrationCore {
 
 		if (Loader.isModLoaded("JEI")) {
 			try {
-				DCsJEIPlugin2.load();
+				DCPluginJeiMain.load();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: JEI");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: JEI");

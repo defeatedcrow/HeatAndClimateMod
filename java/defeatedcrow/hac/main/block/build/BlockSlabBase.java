@@ -3,6 +3,9 @@ package defeatedcrow.hac.main.block.build;
 import java.util.List;
 import java.util.Random;
 
+import defeatedcrow.hac.api.placeable.ISidedTexture;
+import defeatedcrow.hac.core.base.INameSuffix;
+import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
@@ -24,10 +27,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.placeable.ISidedTexture;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.INameSuffix;
-import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 
 // doubleなし
 public abstract class BlockSlabBase extends Block implements ISidedTexture, INameSuffix, ISidedRenderingBlock {
@@ -48,12 +47,12 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	public BlockSlabBase(Material m, String s, int max, boolean glass) {
 		super(m);
 		this.setUnlocalizedName(s);
-		this.setCreativeTab(ClimateCore.climate);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(SIDE, false).withProperty(TYPE, 0));
-		if (max < 0 || max > 7)
+		if (max < 0 || max > 7) {
 			max = 7;
+		}
 		this.maxMeta = max;
 		this.isGlass = glass;
 	}
@@ -82,15 +81,14 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer) {
-		IBlockState state = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(
-				SIDE, false);
-		if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5D)) {
+	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer) {
+		IBlockState state = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(SIDE,
+				false);
+		if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5D))
 			return state;
-		} else {
+		else
 			return state.withProperty(SIDE, true);
-		}
 	}
 
 	@Override
@@ -109,30 +107,25 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 				boolean top = state.getValue(SIDE);
 				if (state2.getBlock() == this) {
 					boolean top2 = state2.getValue(SIDE);
-					if (side == EnumFacing.DOWN) {
+					if (side == EnumFacing.DOWN)
 						return !top && top2;
-					} else if (side == EnumFacing.UP) {
+					else if (side == EnumFacing.UP)
 						return top && !top2;
-					} else {
+					else
 						return top != top2;
-					}
-				} else if (state2.getBlock() instanceof ISidedRenderingBlock) {
+				} else if (state2.getBlock() instanceof ISidedRenderingBlock)
 					return ((ISidedRenderingBlock) state2.getBlock()).isRendered(side, state2);
-				}
 
-				if (state2.getBlock() instanceof BlockBreakable) {
+				if (state2.getBlock() instanceof BlockBreakable)
 					return (!top && side != EnumFacing.DOWN) || (top && side != EnumFacing.UP);
-				}
 
-				if (!state2.isSideSolid(world, check, side.getOpposite())) {
+				if (!state2.isSideSolid(world, check, side.getOpposite()))
 					return true;
-				}
 			}
 		}
 
-		if (side != EnumFacing.UP && side != EnumFacing.DOWN && state2.isNormalCube()) {
+		if (side != EnumFacing.UP && side != EnumFacing.DOWN && state2.isNormalCube())
 			return false;
-		}
 		// additional logic breaks doesSideBlockRendering and is no longer useful.
 		return super.shouldSideBeRendered(state, world, pos, side);
 	}
@@ -140,8 +133,9 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	@Override
 	public int damageDropped(IBlockState state) {
 		int i = state.getValue(TYPE);
-		if (i > maxMeta)
+		if (i > maxMeta) {
 			i = maxMeta;
+		}
 		return i;
 	}
 
@@ -169,8 +163,9 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 		i = state.getValue(TYPE);
-		if (i > maxMeta)
+		if (i > maxMeta) {
 			i = maxMeta;
+		}
 		boolean f = state.getValue(SIDE);
 
 		return f ? i : i | 8;
@@ -185,7 +180,8 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
 				SIDE,
-				TYPE });
+				TYPE
+		});
 	}
 
 	/** T, B, N, S, W, E */

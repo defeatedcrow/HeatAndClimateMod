@@ -142,6 +142,16 @@ item.dcs_food_plate_soup_potato_raw.name=生のじゃがバタ
 item.dcs_food_plate_soup_potato_baked.name=じゃがバタプレート
 item.dcs_food_plate_soup_tomato_raw.name=生のトマトシチュー
 item.dcs_food_plate_soup_tomato_baked.name=鉄鍋トマトシチュー
+item.dcs_food_bowl_stew_vegi.name=野菜スープ
+item.dcs_food_bowl_stew_egg.name=たまごスープ
+item.dcs_food_bowl_stew_congee.name=リゾット
+item.dcs_food_bowl_stew_tomato.name=トマトリゾット
+item.dcs_food_bowl_stew_pumpkin.name=かぼちゃスープ
+item.dcs_food_bowl_stew_borscht.name=ボルシチ
+item.dcs_food_bowl_stew_mushroom.name=きのこのクリームシチュー
+item.dcs_food_bowl_stew_purple.name=ムラサキスープ
+item.dcs_food_clubsand_square.name=ビーフクラブサンド
+item.dcs_food_clubsand_round.name=フィッシュクラブサンド
 
 item.dcs_food_crops_rice.name=稲束
 item.dcs_food_crops_onion.name=玉ねぎ
@@ -568,6 +578,8 @@ fluid.dcs.black_liquor=黒液
 tile.dcs_fluidblock_black_liquor_0.name=黒液
 fluid.dcs.hotspring=温泉
 tile.dcs_fluidblock_hotspring_0.name=温泉
+fluid.dcs.stock=スープストック
+tile.dcs_fluidblock_stock_0.name=スープストック
 
 ## message
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)

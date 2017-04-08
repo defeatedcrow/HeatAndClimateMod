@@ -19,6 +19,7 @@ import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
 import defeatedcrow.hac.food.block.crop.BlockSpinach;
 import defeatedcrow.hac.food.block.crop.BlockTomato;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
+import defeatedcrow.hac.food.item.ClubSandItem;
 import defeatedcrow.hac.food.item.EmptyPlateItem;
 import defeatedcrow.hac.food.item.ItemDCCrops;
 import defeatedcrow.hac.food.item.ItemDCSeeds;
@@ -36,6 +37,7 @@ import defeatedcrow.hac.food.item.RoundBreadItem;
 import defeatedcrow.hac.food.item.RoundPastryItem;
 import defeatedcrow.hac.food.item.SandwichItem;
 import defeatedcrow.hac.food.item.SquarePastryItem;
+import defeatedcrow.hac.food.item.StewBowlItem;
 import defeatedcrow.hac.food.item.StickFoodsItem;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainMaterialRegister;
@@ -153,6 +155,9 @@ public class FoodInitRegister {
 		FoodInit.sandwich = new SandwichItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_sandwich");
 		GameRegistry.register(FoodInit.sandwich.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_sandwich"));
 
+		FoodInit.clubsandwich = new ClubSandItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_clubsand");
+		GameRegistry.register(FoodInit.clubsandwich.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_clubsand"));
+
 		FoodInit.ricebowl = new RiceBowlItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_rice");
 		GameRegistry.register(FoodInit.ricebowl.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_rice"));
 
@@ -168,6 +173,9 @@ public class FoodInitRegister {
 
 		FoodInit.plateSoup = new PlateSoupItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_plate_soup");
 		GameRegistry.register(FoodInit.plateSoup.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_plate_soup"));
+
+		FoodInit.bowlSoup = new StewBowlItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_bowl_stew");
+		GameRegistry.register(FoodInit.bowlSoup.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_bowl_stew"));
 	}
 
 	public static void loadFluids() {
@@ -232,6 +240,16 @@ public class FoodInitRegister {
 		MainMaterialRegister.registerBlock(FoodInit.tomatoBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable");
 		FoodInit.tomatoJuice.setBlock(FoodInit.tomatoBlock);
 
+		FoodInit.stock = new Fluid("dcs.stock",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/stock_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/stock_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".stock").setTemperature(350);
+		FluidRegistry.registerFluid(FoodInit.stock);
+		FoodInit.stockBlock = new DCFluidBlockBase(FoodInit.stock, "stock_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_stock");
+		MainMaterialRegister.registerBlock(FoodInit.stockBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_stock");
+		FoodInit.stock.setBlock(FoodInit.stockBlock);
+
 		FoodInit.blackLiquor = new Fluid("dcs.black_liquor",
 				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/black_liquor_still"),
 				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/black_liquor_still"))
@@ -262,6 +280,7 @@ public class FoodInitRegister {
 		FluidRegistry.addBucketForFluid(FoodInit.tomatoJuice);
 		FluidRegistry.addBucketForFluid(FoodInit.blackLiquor);
 		FluidRegistry.addBucketForFluid(FoodInit.hotSpring);
+		FluidRegistry.addBucketForFluid(FoodInit.stock);
 
 		// fluid item
 		FoodInit.dropOil = new ItemFluidDrop("olive", "dcs.seed_oil")
@@ -284,6 +303,8 @@ public class FoodInitRegister {
 		ClimateAPI.registerBlock.registerHumBlock(FoodInit.greenTeaBlock, 32767, DCHumidity.UNDERWATER);
 		ClimateAPI.registerBlock.registerHeatBlock(FoodInit.hotSpringBlock, 32767, DCHeatTier.HOT);
 		ClimateAPI.registerBlock.registerHumBlock(FoodInit.hotSpringBlock, 32767, DCHumidity.UNDERWATER);
+		ClimateAPI.registerBlock.registerHeatBlock(FoodInit.stockBlock, 32767, DCHeatTier.HOT);
+		ClimateAPI.registerBlock.registerHumBlock(FoodInit.stockBlock, 32767, DCHumidity.UNDERWATER);
 
 	}
 
@@ -293,11 +314,13 @@ public class FoodInitRegister {
 		FoodInit.pastryRound.setCreativeTab(ClimateMain.food);
 		FoodInit.pastrySquare.setCreativeTab(ClimateMain.food);
 		FoodInit.sandwich.setCreativeTab(ClimateMain.food);
+		FoodInit.clubsandwich.setCreativeTab(ClimateMain.food);
 
 		FoodInit.ricebowl.setCreativeTab(ClimateMain.food);
 
 		FoodInit.plateMeal.setCreativeTab(ClimateMain.food);
 		FoodInit.plateSoup.setCreativeTab(ClimateMain.food);
+		FoodInit.bowlSoup.setCreativeTab(ClimateMain.food);
 
 		FoodInit.crops.setCreativeTab(ClimateMain.food);
 		FoodInit.seeds.setCreativeTab(ClimateMain.food);
