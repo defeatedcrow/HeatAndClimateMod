@@ -26,11 +26,16 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 		return (int) (128 * EnergyConvertRate.rateVsRF);
 	}
 
+	public int getMaxCashFU() {
+		int cur = cashedRF * (int) (EnergyConvertRate.rateVsRF);
+		cur /= EnergyConvertRate.rateVsFU;
+		return (int) ((128 - cur) * EnergyConvertRate.rateVsFU);
+	}
+
 	@Override
 	public void updateTile() {
 		super.updateTile();
 		if (!worldObj.isRemote) {
-			// Airflowチェック
 			// 方向ごとのFUTileを能動的に見に行く
 			for (EnumFacing face : EnumFacing.VALUES) {
 				if (face == this.getBaseSide()) {
@@ -40,11 +45,12 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 				if (tile == null) {
 					continue;
 				}
-				if (cashedRF < getMaxCashRF()) {
+
+				if (cashedFU < getMaxCashFU()) {
 					if (tile.hasCapability(CapabilityEnergy.ENERGY, face.getOpposite())) {
 						IEnergyStorage stFU = tile.getCapability(CapabilityEnergy.ENERGY, face.getOpposite());
 						if (stFU != null && stFU.canExtract()) {
-							int ext2 = (int) (128.0F * EnergyConvertRate.rateVsFU);
+							int ext2 = getMaxCashFU();
 							int ret = stFU.extractEnergy(ext2, true);
 							ret = Math.min(ret, ext2 - cashedFU);
 							if (ret > 0) {
@@ -56,20 +62,31 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 				}
 			}
 
-			float add = 0;
-			float add1 = cashedRF / EnergyConvertRate.rateVsRF;
-			float add2 = cashedFU / EnergyConvertRate.rateVsFU;
-
-			add = add1 + add2;
-			if (add > this.maxTorque()) {
-				add = this.maxTorque();
-			}
-			this.currentTorque += add;
-			this.cashedRF = 0;
-			this.cashedFU = 0;
-
 			// provider
-			this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+			this.currentTorque += cashedRF * EnergyConvertRate.rateVsRF;
+			this.currentTorque += cashedFU * EnergyConvertRate.rateVsFU;
+			if (currentTorque > this.maxTorque()) {
+				this.currentTorque = maxTorque();
+			}
+
+			float send = this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+
+			// DCLogger.debugLog("*** Kinetic Motor ***");
+			// DCLogger.debugLog("send: " + send);
+			// // RFが優先で減る
+			// float lim1 = send * EnergyConvertRate.rateVsRF;
+			// lim1 = Math.min(cashedRF, lim1);
+			// float add1 = lim1 / EnergyConvertRate.rateVsRF;
+			// this.cashedRF -= lim1;
+			// send -= add1;
+			// DCLogger.debugLog("RF use: " + lim1);
+			//
+			// // RFが優先で減る
+			// float lim2 = send * EnergyConvertRate.rateVsFU;
+			// lim2 = Math.min(cashedFU, lim2);
+			// this.cashedFU -= lim2;
+			// DCLogger.debugLog("FU use: " + lim2);
+
 		}
 
 	}
@@ -130,12 +147,14 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		this.cashedRF = tag.getInteger("dcs.Ecash");
+		this.cashedFU = tag.getInteger("dcs.Fcash");
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
 		tag.setInteger("dcs.Ecash", this.cashedRF);
+		tag.setInteger("dcs.Fcash", this.cashedFU);
 		return tag;
 	}
 
@@ -143,6 +162,7 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 	public NBTTagCompound getNBT(NBTTagCompound tag) {
 		super.getNBT(tag);
 		tag.setInteger("dcs.Ecash", this.cashedRF);
+		tag.setInteger("dcs.Fcash", this.cashedFU);
 		return tag;
 	}
 
@@ -150,6 +170,7 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 		this.cashedRF = tag.getInteger("dcs.Ecash");
+		this.cashedFU = tag.getInteger("dcs.Fcash");
 	}
 
 	@Override

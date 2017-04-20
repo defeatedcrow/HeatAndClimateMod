@@ -53,6 +53,15 @@ public class DCIntegrationCore {
 			}
 		}
 
+		if (Loader.isModLoaded("bamboomod")) {
+			try {
+				DCPluginBamboo.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: bamboomod");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: bamboomod");
+			}
+		}
+
 		if (Loader.isModLoaded("schr0tanpopo")) {
 			try {
 				DCPluginTanpopo.load();

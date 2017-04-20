@@ -207,6 +207,11 @@ public class FoodRecipes {
 				new ItemStack(Items.BEEF, 1, 0)
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sticks, 1, 8), new Object[] {
+				"stickWood",
+				new ItemStack(Items.MUTTON, 1, 0)
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 0), new Object[] {
 				"foodPastry",
 				"cropApple",
@@ -555,6 +560,13 @@ public class FoodRecipes {
 		beef.requiredHum().add(DCHumidity.NORMAL);
 		beef.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(beef, DCHeatTier.OVEN);
+
+		ClimateSmelting mutton = new ClimateSmelting(new ItemStack(FoodInit.sticks, 1, 9), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.sticks, 1, 8));
+		mutton.requiredHeat().add(DCHeatTier.SMELTING);
+		mutton.requiredHum().add(DCHumidity.NORMAL);
+		mutton.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(mutton, DCHeatTier.OVEN);
 
 		ClimateSmelting a_tart = new ClimateSmelting(new ItemStack(FoodInit.pastryRound, 1, 1), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastryRound, 1, 0));

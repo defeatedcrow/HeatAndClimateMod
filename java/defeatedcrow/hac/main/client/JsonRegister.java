@@ -5,6 +5,7 @@ import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
+import net.minecraft.item.Item;
 
 public class JsonRegister {
 
@@ -64,6 +65,9 @@ public class JsonRegister {
 				0);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.sinkMetal, ClimateCore.PACKAGE_ID, "dcs_device_sink_half", "device", 0);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.sinkChest, ClimateCore.PACKAGE_ID, "dcs_device_sink_full", "device", 0);
+
+		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.desiccant), ClimateCore.PACKAGE_ID, "dcs_desiccant",
+				"build", 3);
 
 		MAIN_INSTANCE.regTEBlock(MainInit.chamber, ClimateCore.PACKAGE_ID, "dcs_device_chamber", "machine", 0);
 		MAIN_INSTANCE.regTEBlock(MainInit.shitirin, ClimateCore.PACKAGE_ID, "dcs_device_shitirin", "machine", 0);

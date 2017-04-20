@@ -43,6 +43,7 @@ public class MainInit {
 	public static Block fenceBedrock;
 
 	public static Block markingPanel;
+	public static Block desiccant;
 
 	// furniture
 	public static Block chalLamp;

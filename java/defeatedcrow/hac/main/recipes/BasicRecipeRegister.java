@@ -743,6 +743,15 @@ public class BasicRecipeRegister {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.BEDROCK, 1, 0), new Object[] {
 				new ItemStack(MainInit.gemBlock, 1, 12)
 		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.desiccant, 1, 0), new Object[] {
+				new ItemStack(Items.PAPER, 1, 0),
+				"dustLime"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.DYE, 1, 15), new Object[] {
+				new ItemStack(MainInit.desiccant, 1, 3)
+		}));
 	}
 
 	static void loadContRecipes() {

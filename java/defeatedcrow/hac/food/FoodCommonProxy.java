@@ -25,6 +25,7 @@ import defeatedcrow.hac.food.entity.FruitPieEntity;
 import defeatedcrow.hac.food.entity.LemonSandwichEntity;
 import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
+import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkPlateEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.PotatoPlateEntity;
@@ -151,6 +152,8 @@ public class FoodCommonProxy {
 				ClimateCore.PACKAGE_BASE + "entity.food.stew_mushroom", 40, ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(StewPurpleEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_purple",
 				41, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(MuttonStickEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.mutton_stick",
+				42, ClimateMain.instance, 128, 5, true);
 
 	}
 

@@ -18,7 +18,7 @@ public class DCPluginTanpopo {
 	private DCPluginTanpopo() {}
 
 	public static void load() {
-		Item fluff = Item.REGISTRY.getObject(new ResourceLocation("schr0tanpopo", "material.fluff"));
+		Item fluff = Item.REGISTRY.getObject(new ResourceLocation("schr0tanpopo", "material_fluff"));
 		if (fluff != null) {
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 1), new Object[] {

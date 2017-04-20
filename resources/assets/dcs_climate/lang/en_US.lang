@@ -108,6 +108,8 @@ item.dcs_food_stick_pork_raw.name=Skewered Pork
 item.dcs_food_stick_pork_cooked.name=Cooked Skewered Pork
 item.dcs_food_stick_beef_raw.name=Skewered Beef
 item.dcs_food_stick_beef_cooked.name=Cooked Skewered Beef
+item.dcs_food_stick_mutton_raw.name=Skewered Mutton
+item.dcs_food_stick_mutton_cooked.name=Cooked Skewered Mutton
 item.dcs_food_teacup_silver.name=NickelSilver Cup
 item.dcs_food_teacup_white.name=Porcelain Cup
 item.dcs_food_teacup_glass.name=Tumbler Glass
@@ -493,6 +495,10 @@ tile.dcs_build_plate_mesh.name=Iron Mesh
 tile.dcs_build_dish_white.name=White Dish
 tile.dcs_build_dish_silver.name=Silver Dish
 tile.dcs_build_markingpanel_0.name=Road Marking
+tile.dcs_desiccant_red.name=Desiccant
+tile.dcs_desiccant_yellow.name=Degrated Desiccant
+tile.dcs_desiccant_green.name=Wet Desiccant
+tile.dcs_desiccant_blue.name=Used Desiccant
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber

@@ -13,18 +13,20 @@ import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -48,6 +50,8 @@ public class DCFluidBlockBase extends BlockFluidClassic
 		list.add(b + "cream_still");
 		list.add(b + "black_liquor_still");
 		list.add(b + "hotspring_still");
+		list.add(b + "vegetable_still");
+		list.add(b + "stock_still");
 		return list;
 	}
 
@@ -83,13 +87,13 @@ public class DCFluidBlockBase extends BlockFluidClassic
 			int temp = this.stack.getFluid().getTemperature();
 			if (temp > 320 && rand.nextFloat() < 0.25F) {
 				double x = pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
-				double y = pos.getY() + 0.7D + rand.nextDouble() * 0.25D;
+				double y = pos.getY() + 0.85D + rand.nextDouble() * 0.25D;
 				double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
-				double dx = rand.nextDouble() * 0.05D;
-				double dy = rand.nextDouble() * 0.05D;
-				double dz = rand.nextDouble() * 0.05D;
-
-				world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
+				double dx = rand.nextDouble() * 0.05D - 0.025D;
+				double dy = 0D;
+				double dz = rand.nextDouble() * 0.05D - 0.025D;
+				Particle cloud = new ParticleCloudDC.Factory().createParticle(0, world, x, y, z, dx, dy, dz, null);
+				FMLClientHandler.instance().getClient().effectRenderer.addEffect(cloud);
 			}
 		}
 	}

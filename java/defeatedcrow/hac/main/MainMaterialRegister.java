@@ -12,6 +12,7 @@ import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.magic.MagicInitRegister;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
+import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
@@ -137,6 +138,9 @@ public class MainMaterialRegister {
 
 		MainInit.markingPanel = new BlockMarkingPanel(ClimateCore.PACKAGE_BASE + "_build_markingpanel");
 		registerBlock(MainInit.markingPanel, ClimateCore.PACKAGE_BASE + "_build_markingpanel");
+
+		MainInit.desiccant = new BlockDesiccantPackage(ClimateCore.PACKAGE_BASE + "_desiccant");
+		registerBlock(MainInit.desiccant, ClimateCore.PACKAGE_BASE + "_desiccant");
 	}
 
 	static void registerSidedBlock() {

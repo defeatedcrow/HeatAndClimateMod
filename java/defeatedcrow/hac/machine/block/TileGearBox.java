@@ -76,6 +76,9 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
+		IBlockState state = worldObj.getBlockState(pos);
+		if (DCState.getBool(state, DCState.POWERED))
+			return false;
 		if (this.currentTorque >= this.maxTorque())
 			return false;
 		return this.isInputSide(side);
