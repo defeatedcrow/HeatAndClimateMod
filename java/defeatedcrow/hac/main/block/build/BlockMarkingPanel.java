@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main.block.build;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -85,12 +86,20 @@ public class BlockMarkingPanel extends Block {
 		return AABB_PANEL;
 	}
 
-	protected static void addCollisionBoxToList(BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, @Nullable AxisAlignedBB blockBox) {}
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+		return NULL_AABB;
+	}
 
 	@Override
 	public int damageDropped(IBlockState state) {
 		return 0;
+	}
+
+	@Override
+	@Nullable
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return null;
 	}
 
 	@Override

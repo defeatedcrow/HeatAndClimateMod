@@ -954,6 +954,11 @@ public class FoodRecipes {
 						"dustLime"
 				});
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.gems, 1, 17), null, 0F, null, DCHeatTier.KILN,
+				null, null, false, null, new Object[] {
+						"dustBismuth"
+				});
+
 	}
 
 	static void loadCropData() {

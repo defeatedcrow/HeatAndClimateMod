@@ -35,6 +35,8 @@ public class MainCreativeTabRegister {
 		MainInit.plate.setCreativeTab(ClimateMain.build);
 		MainInit.desiccant.setCreativeTab(ClimateMain.build);
 
+		MainInit.lightOrb.setCreativeTab(ClimateMain.build);
+
 		// furniture
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
 		MainInit.wallLamp.setCreativeTab(ClimateMain.build);

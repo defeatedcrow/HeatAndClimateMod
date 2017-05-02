@@ -17,6 +17,7 @@ import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockIronPlate;
+import defeatedcrow.hac.main.block.build.BlockLightOrb;
 import defeatedcrow.hac.main.block.build.BlockLowChest;
 import defeatedcrow.hac.main.block.build.BlockMagnetChest;
 import defeatedcrow.hac.main.block.build.BlockMarkingPanel;
@@ -109,13 +110,13 @@ public class MainMaterialRegister {
 		MainInit.ores = new BlockOres(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone", 15);
 		registerBlock(MainInit.ores, ClimateCore.PACKAGE_BASE + "_ore_stone");
 
-		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 7);
+		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 11);
 		registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone");
 
-		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 10);
+		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 13);
 		registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock");
 
-		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 11);
+		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 14);
 		registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock");
 
 		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 12);
@@ -138,6 +139,9 @@ public class MainMaterialRegister {
 
 		MainInit.markingPanel = new BlockMarkingPanel(ClimateCore.PACKAGE_BASE + "_build_markingpanel");
 		registerBlock(MainInit.markingPanel, ClimateCore.PACKAGE_BASE + "_build_markingpanel");
+
+		MainInit.lightOrb = new BlockLightOrb(ClimateCore.PACKAGE_BASE + "_build_lightorb");
+		registerBlock(MainInit.lightOrb, ClimateCore.PACKAGE_BASE + "_build_lightorb");
 
 		MainInit.desiccant = new BlockDesiccantPackage(ClimateCore.PACKAGE_BASE + "_desiccant");
 		registerBlock(MainInit.desiccant, ClimateCore.PACKAGE_BASE + "_desiccant");
@@ -361,13 +365,13 @@ public class MainMaterialRegister {
 
 	static void registerItems() {
 		// ores
-		MainInit.oreIngot = new ItemIngots(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		GameRegistry.register(MainInit.oreIngot.setRegistryName(ClimateCore.PACKAGE_BASE + "_ingot"));
 
-		MainInit.oreDust = new ItemOreDusts(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
+		MainInit.oreDust = new ItemOreDusts(12).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		GameRegistry.register(MainInit.oreDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_oredust"));
 
-		MainInit.gems = new ItemGems(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(17).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		GameRegistry.register(MainInit.gems.setRegistryName(ClimateCore.PACKAGE_BASE + "_gem"));
 
 		MainInit.miscDust = new ItemMiscDust(8).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");

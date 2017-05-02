@@ -42,7 +42,7 @@ public class WorldGenAltOres implements IWorldGenerator {
 			int[] genY = {
 					5, // 5-25
 					30, // 30-60
-					70, // 70-110
+					80, // 80-120
 					120 // 120-170
 			};
 			for (int i = 0; i < count; i++) {
@@ -53,16 +53,20 @@ public class WorldGenAltOres implements IWorldGenerator {
 				BlockPos pos = new BlockPos(posX, posY, posZ);
 				Biome biome = world.getBiomeForCoordsBody(pos);
 
-				if (posY > 140) {
+				if (posY > 120) {
 					if (random.nextInt(100) < sedPar * 2) {
 						generateSediment(world, random, pos);
 					}
-				} else if (posY > 70) {
+				} else if (posY > 80) {
 					if (random.nextInt(100) < sedPar) {
-						if (posY > 90 && BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN)) {
-							generateSediment(world, random, pos);
-						} else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SANDY)) {
+						if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SANDY)) {
 							generateSandSediment(world, random, pos);
+						} else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SAVANNA)
+								|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.JUNGLE)) {
+							generateBauxite(world, random, pos);
+						} else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN)
+								|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.HILLS)) {
+							generateSediment(world, random, pos);
 						}
 					}
 				} else if (posY < 60 && posY > 30) {
@@ -101,6 +105,15 @@ public class WorldGenAltOres implements IWorldGenerator {
 		return false;
 	}
 
+	static boolean isPlaceable2(Block block) {
+		if (block == Blocks.STAINED_HARDENED_CLAY)
+			return true;
+		if (block == Blocks.HARDENED_CLAY)
+			return true;
+
+		return false;
+	}
+
 	/*
 	 * 堆積岩。山岳の高高度に生成する。
 	 * これを集めるだけでも生きてはいけるが、銅や亜鉛はここにはない。
@@ -111,14 +124,25 @@ public class WorldGenAltOres implements IWorldGenerator {
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
 			if (i == 0) {
-				gen[i] = new BlockSet(MainInit.ores, 0);
+				gen[i] = GYPSUM;
 			} else if (i == h - 1) {
-				gen[i] = rand.nextInt(2) == 0 ? new BlockSet(MainInit.ores, 1) : new BlockSet(Blocks.COAL_ORE, 0);
+				gen[i] = rand.nextInt(2) == 0 ? IRON_0 : COAL;
 			} else {
 				if (i <= h / 2) {
-					gen[i] = rand.nextInt(2) == 0 ? new BlockSet(Blocks.COAL_ORE, 0) : new BlockSet(MainInit.ores, 0);
+					switch (rand.nextInt(5)) {
+					case 0:
+					case 1:
+						gen[i] = GYPSUM;
+					case 2:
+						gen[i] = STONE_2;
+					case 3:
+						gen[i] = IRON_0;
+					default:
+						gen[i] = COAL;
+					}
+
 				} else {
-					gen[i] = rand.nextInt(2) == 0 ? new BlockSet(MainInit.ores, 1) : new BlockSet(Blocks.STONE, 3);
+					gen[i] = rand.nextInt(2) == 0 ? IRON_0 : STONE_2;
 				}
 			}
 		}
@@ -129,19 +153,69 @@ public class WorldGenAltOres implements IWorldGenerator {
 					BlockPos p = new BlockPos(x, y, z);
 					Block block = world.getBlockState(p).getBlock();
 					double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
-					if (p.getY() > 1 && p.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
+					if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r) {
 						int height = pos.getY() + 1 - p.getY();
 						BlockSet add = gen[height];
-						if (add.block == Blocks.STONE) {
-							int j = rand.nextInt(50);
-							if (j == 0) {
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(3), 2);
-							} else if (j < 10) {
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(2), 2);
+						if (isPlaceable(block)) {
+							if (add.equals(STONE_2)) {
+								int j = rand.nextInt(50);
+								if (j == 0) {
+									world.setBlockState(p, SAPPHIRE.getState(), 2);
+								} else if (j < 10) {
+									world.setBlockState(p, CALC_B.getState(), 2);
+								} else {
+									world.setBlockState(p, add.getState(), 2);
+								}
 							} else {
 								world.setBlockState(p, add.getState(), 2);
 							}
-						} else {
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * 堆積岩。砂漠かメサにのみ生成。
+	 * 料理に必要な岩塩などがある。
+	 */
+	public void generateSandSediment(World world, Random rand, BlockPos pos) {
+		int h = rand.nextInt(5) + 1; // 2-6
+		int r = h + 1;
+		BlockSet[] gen = new BlockSet[h];
+		for (int i = 0; i < h; i++) {
+			if (i == 0) {
+				gen[i] = LIME;
+			} else {
+				if (i <= h / 2) {
+					switch (rand.nextInt(5)) {
+					case 0:
+						gen[i] = BAUXITE;
+						break;
+					case 1:
+					case 2:
+						gen[i] = SALT;
+						break;
+					default:
+						gen[i] = LIME;
+					}
+				} else {
+					gen[i] = rand.nextBoolean() ? SALT : NITER;
+				}
+			}
+		}
+
+		for (int x = pos.getX() - r; x <= pos.getX() + r; x++) {
+			for (int z = pos.getZ() - r; z <= pos.getZ() + r; z++) {
+				for (int y = pos.getY() - h + 2; y <= pos.getY() + 1; y++) {
+					BlockPos p = new BlockPos(x, y, z);
+					Block block = world.getBlockState(p).getBlock();
+					double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
+					if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r) {
+						int height = pos.getY() + 1 - p.getY();
+						BlockSet add = gen[height];
+						if (isPlaceable(block) || isPlaceable2(block)) {
 							world.setBlockState(p, add.getState(), 2);
 						}
 					}
@@ -151,22 +225,18 @@ public class WorldGenAltOres implements IWorldGenerator {
 	}
 
 	/*
-	 * 堆積岩。砂漠かサバンナにのみ生成。
+	 * ボーキサイト。ジャングルかサバンナにのみ生成。
 	 * 料理に必要な岩塩などがある。
 	 */
-	public void generateSandSediment(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(5) + 1; // 2-6
-		int r = h + 1;
+	public void generateBauxite(World world, Random rand, BlockPos pos) {
+		int h = rand.nextInt(4) + 1; // 1-4
+		int r = h + 3;
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
 			if (i == 0) {
-				gen[i] = new BlockSet(MainInit.ores_2, 0);
+				gen[i] = BAUXITE;
 			} else {
-				if (i <= h / 2) {
-					gen[i] = rand.nextBoolean() ? new BlockSet(MainInit.ores_2, 1) : new BlockSet(MainInit.ores_2, 0);
-				} else {
-					gen[i] = rand.nextBoolean() ? new BlockSet(MainInit.ores_2, 1) : new BlockSet(MainInit.ores_2, 2);
-				}
+				gen[i] = rand.nextBoolean() ? STONE_1 : BAUXITE;
 			}
 		}
 
@@ -176,10 +246,12 @@ public class WorldGenAltOres implements IWorldGenerator {
 					BlockPos p = new BlockPos(x, y, z);
 					Block block = world.getBlockState(p).getBlock();
 					double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
-					if (p.getY() > 1 && p.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
+					if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r) {
 						int height = pos.getY() + 1 - p.getY();
 						BlockSet add = gen[height];
-						world.setBlockState(p, add.getState(), 2);
+						if (isPlaceable(block)) {
+							world.setBlockState(p, add.getState(), 2);
+						}
 					}
 				}
 			}
@@ -196,13 +268,13 @@ public class WorldGenAltOres implements IWorldGenerator {
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
 			if (i == 0 || i == h - 1) {
-				gen[i] = new BlockSet(Blocks.STONE, 5); // andesite
+				gen[i] = STONE_3; // andesite
 			} else {
 				// 亜鉛 - 銅 - 鉄
 				if (i >= h / 2) {
-					gen[i] = rand.nextInt(3) > 0 ? new BlockSet(MainInit.ores, 6) : new BlockSet(MainInit.ores, 4);
+					gen[i] = rand.nextInt(3) > 0 ? COPPER : IRON_1;
 				} else {
-					gen[i] = rand.nextInt(2) == 0 ? new BlockSet(MainInit.ores, 8) : new BlockSet(MainInit.ores, 4);
+					gen[i] = rand.nextInt(2) == 0 ? ZINC : COPPER;
 				}
 			}
 		}
@@ -221,11 +293,11 @@ public class WorldGenAltOres implements IWorldGenerator {
 							int j = rand.nextInt(30);
 							// ニッケル、錫の生成チャンス
 							if (j == 0) {
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(7), 2);
+								world.setBlockState(p, NICKEL_1.getState(), 2);
 							} else if (j == 1) {
-								world.setBlockState(p, MainInit.ores_2.getStateFromMeta(4), 2);
+								world.setBlockState(p, TIN.getState(), 2);
 							} else if (j > 20) {
-								world.setBlockState(p, Blocks.STONE.getStateFromMeta(5), 2);
+								world.setBlockState(p, STONE_3.getState(), 2);
 							} else {
 								world.setBlockState(p, add.getState(), 2);
 							}
@@ -243,14 +315,16 @@ public class WorldGenAltOres implements IWorldGenerator {
 						if (p.getY() > 1 && p.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
 							int height = pos.getY() + 1 - p.getY();
 							BlockSet add = gen[height];
-							int j = rand.nextInt(30);
+							int j = rand.nextInt(25);
 							// ニッケル、錫の生成チャンス
 							if (j == 0) {
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(7), 2);
+								world.setBlockState(p, NICKEL_1.getState(), 2);
 							} else if (j == 1) {
-								world.setBlockState(p, MainInit.ores_2.getStateFromMeta(4), 2);
+								world.setBlockState(p, TIN.getState(), 2);
+							} else if (j > 1 && j < 4 && add.equals(ZINC)) {
+								world.setBlockState(p, BISMUTH.getState(), 2);
 							} else if (j > 20) {
-								world.setBlockState(p, Blocks.STONE.getStateFromMeta(5), 2);
+								world.setBlockState(p, STONE_3.getState(), 2);
 							} else {
 								world.setBlockState(p, add.getState(), 2);
 							}
@@ -272,29 +346,29 @@ public class WorldGenAltOres implements IWorldGenerator {
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
 			if (i == 0 || i == h - 1) {
-				gen[i] = new BlockSet(Blocks.STONE, 1); // granite
+				gen[i] = STONE_1; // granite
 			} else if (i == 1 || i == h - 2) {
-				gen[i] = new BlockSet(MainInit.ores, 9);
+				gen[i] = CALC_W;
 			} else {
 				// 優先度は 亜鉛>鉄>銀>金
 				int j = rand.nextInt(8);
 				switch (j) {
 				case 0:
-					gen[i] = new BlockSet(MainInit.ores, 10);
+					gen[i] = CRYSTAL;
 					break;
 				case 1:
-					gen[i] = new BlockSet(MainInit.ores, 11);
+					gen[i] = CALC_SILV;
 					break;
 				case 2:
-					gen[i] = new BlockSet(MainInit.ores, 12);
+					gen[i] = CALC_GOLD;
 					break;
 				case 3:
 				case 4:
 				case 5:
-					gen[i] = new BlockSet(MainInit.ores, 8);
+					gen[i] = ZINC;
 					break;
 				default:
-					gen[i] = new BlockSet(MainInit.ores, 15);
+					gen[i] = IRON_3;
 					break;
 				}
 			}
@@ -310,7 +384,11 @@ public class WorldGenAltOres implements IWorldGenerator {
 					if (p.getY() > 1 && p.getY() < world.getActualHeight() && isPlaceable(block) && d1 < r) {
 						int height = pos.getY() + 1 - p.getY();
 						BlockSet add = gen[height];
-						world.setBlockState(p, add.getState(), 2);
+						if (add.equals(ZINC) && world.rand.nextInt(20) == 0) {
+							world.setBlockState(p, BISMUTH.getState(), 2);
+						} else {
+							world.setBlockState(p, add.getState(), 2);
+						}
 					}
 				}
 			}
@@ -362,29 +440,29 @@ public class WorldGenAltOres implements IWorldGenerator {
 				if (p1.getY() >= pos.getY() || p1.getY() < 5) {
 					switch (j) {
 					case 0:
-						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(3), 2);
+						world.setBlockState(p1, SULFUR.getState(), 2);
 						break;
 					case 1:
 					case 2:
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(7), 2);
+						world.setBlockState(p1, SERPENTINE.getState(), 2);
 						break;
 					case 3:
-						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(6), 2);
+						world.setBlockState(p1, ALMANDINE.getState(), 2);
 						break;
 					default:
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(5), 2);
+						world.setBlockState(p1, IRON_2.getState(), 2);
 					}
 				} else {
 					switch (j) {
 					case 0:
-						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(7), 2);
+						world.setBlockState(p1, NICKEL_2.getState(), 2);
 						break;
 					case 1:
 					case 2:
-						world.setBlockState(p1, MainInit.ores.getStateFromMeta(5), 2);
+						world.setBlockState(p1, IRON_2.getState(), 2);
 						break;
 					default:
-						world.setBlockState(p1, MainInit.ores_2.getStateFromMeta(6), 2);
+						world.setBlockState(p1, SERPENTINE.getState(), 2);
 					}
 				}
 
@@ -418,34 +496,37 @@ public class WorldGenAltOres implements IWorldGenerator {
 					Block block = world.getBlockState(p).getBlock();
 					if (p.getY() > 1 && p.getY() < world.getActualHeight() && isPlaceable(block)) {
 						if (r < 2.0D) {
-							world.setBlockState(p, Blocks.STONE.getStateFromMeta(1), 2);
+							world.setBlockState(p, STONE_1.getState(), 2);
 						} else if (r < 4.0D) {
-							world.setBlockState(p, MainInit.ores.getStateFromMeta(9), 2);
+							world.setBlockState(p, CALC_W.getState(), 2);
 						} else if (r < 5.0D) {
 							int j = rand.nextInt(10);
 							switch (j) {
 							case 0:
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(12), 2);
+								world.setBlockState(p, CRYSTAL.getState(), 2);
 								break;
 							case 1:
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(13), 2);
+								world.setBlockState(p, CALC_DIA.getState(), 2);
 								break;
 							case 2:
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(14), 2);
+								world.setBlockState(p, CALC_EME.getState(), 2);
 								break;
 							case 3:
-								world.setBlockState(p, MainInit.ores_2.getStateFromMeta(5), 2);
+								world.setBlockState(p, SCHORL.getState(), 2);
 								break;
 							case 4:
 							case 5:
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(10), 2);
+								world.setBlockState(p, RUTILE.getState(), 2);
 								break;
 							case 6:
 							case 7:
 								world.setBlockToAir(p);
 								break;
+							case 8:
+								world.setBlockState(p, CALC_SILV.getState(), 2);
+								break;
 							default:
-								world.setBlockState(p, MainInit.ores.getStateFromMeta(9), 2);
+								world.setBlockState(p, CALC_W.getState(), 2);
 							}
 						} else {
 							world.setBlockToAir(p);
@@ -473,5 +554,49 @@ public class WorldGenAltOres implements IWorldGenerator {
 			}
 		}
 	}
+
+	private static final BlockSet AIR = new BlockSet(Blocks.AIR, 0);
+
+	private static final BlockSet LAVA = new BlockSet(Blocks.LAVA, 0);
+	private static final BlockSet STONE_0 = new BlockSet(Blocks.STONE, 0);
+	private static final BlockSet STONE_1 = new BlockSet(Blocks.STONE, 1);
+	private static final BlockSet STONE_2 = new BlockSet(Blocks.STONE, 3);
+	private static final BlockSet STONE_3 = new BlockSet(Blocks.STONE, 5);
+
+	private static final BlockSet LIME = new BlockSet(MainInit.ores_2, 0);
+	private static final BlockSet MARBLE = new BlockSet(MainInit.gemBlock, 6);
+	private static final BlockSet GYPSUM = new BlockSet(MainInit.ores, 0);
+	private static final BlockSet CALC_B = new BlockSet(MainInit.ores, 2);
+	private static final BlockSet CALC_W = new BlockSet(MainInit.ores, 9);
+
+	private static final BlockSet IRON_0 = new BlockSet(MainInit.ores, 1);
+	private static final BlockSet IRON_1 = new BlockSet(MainInit.ores, 4);
+	private static final BlockSet IRON_2 = new BlockSet(MainInit.ores, 5);
+	private static final BlockSet IRON_3 = new BlockSet(MainInit.ores, 15);
+
+	private static final BlockSet GOLD = new BlockSet(Blocks.GOLD_ORE, 0);
+	private static final BlockSet COAL = new BlockSet(Blocks.COAL_ORE, 0);
+
+	private static final BlockSet COPPER = new BlockSet(MainInit.ores, 6);
+	private static final BlockSet ZINC = new BlockSet(MainInit.ores, 8);
+	private static final BlockSet TIN = new BlockSet(MainInit.ores_2, 4);
+	private static final BlockSet BISMUTH = new BlockSet(MainInit.ores_2, 9);
+	private static final BlockSet NICKEL_1 = new BlockSet(MainInit.ores, 7);
+	private static final BlockSet NICKEL_2 = new BlockSet(MainInit.ores_2, 8);
+
+	private static final BlockSet SAPPHIRE = new BlockSet(MainInit.ores, 3);
+	private static final BlockSet CRYSTAL = new BlockSet(MainInit.ores, 10);
+	private static final BlockSet SALT = new BlockSet(MainInit.ores_2, 1);
+	private static final BlockSet NITER = new BlockSet(MainInit.ores_2, 2);
+	private static final BlockSet SULFUR = new BlockSet(MainInit.ores_2, 3);
+	private static final BlockSet SCHORL = new BlockSet(MainInit.ores_2, 5);
+	private static final BlockSet SERPENTINE = new BlockSet(MainInit.ores_2, 6);
+	private static final BlockSet ALMANDINE = new BlockSet(MainInit.ores_2, 7);
+	private static final BlockSet BAUXITE = new BlockSet(MainInit.ores_2, 10);
+	private static final BlockSet RUTILE = new BlockSet(MainInit.ores_2, 11);
+	private static final BlockSet CALC_GOLD = new BlockSet(MainInit.ores, 11);
+	private static final BlockSet CALC_SILV = new BlockSet(MainInit.ores, 12);
+	private static final BlockSet CALC_DIA = new BlockSet(MainInit.ores, 13);
+	private static final BlockSet CALC_EME = new BlockSet(MainInit.ores, 14);
 
 }

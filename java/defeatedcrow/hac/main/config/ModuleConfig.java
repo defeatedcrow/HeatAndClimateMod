@@ -14,6 +14,12 @@ public class ModuleConfig {
 	public static boolean magic = true;
 	public static boolean food = true;
 
+	public static boolean machine_advanced = true;
+	public static boolean magic_advanced = true;
+	public static boolean food_advanced = true;
+	public static boolean build_advanced = true;
+	public static boolean weapon_advanced = true;
+
 	public static boolean ffm = true;
 	public static boolean mek = true;
 	public static boolean ic2 = true;

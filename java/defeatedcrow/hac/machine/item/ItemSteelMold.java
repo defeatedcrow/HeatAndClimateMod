@@ -62,6 +62,9 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 			ItemStack output = this.getOutput(stack);
 			if (output != null) {
 				tooltip.add(TextFormatting.BOLD.toString() + "Output: " + output.getDisplayName());
+				if (ClimateCore.isDebug) {
+					tooltip.add(TextFormatting.BOLD.toString() + "Recipe ID: " + this.getRecipeNumber(stack));
+				}
 			} else {
 				tooltip.add("Please register an item on the anvil.");
 			}
@@ -75,12 +78,12 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 	}
 
 	@Override
-	public void setOutput(ItemStack mold, ItemStack output) {
+	public void setOutput(ItemStack mold, ItemStack output, int num) {
 		if (output != null && mold != null && mold.getItem() instanceof IPressMold) {
 			IPressMold mol = (IPressMold) mold.getItem();
 			if (mol.getOutput(mold) == null) {
 				// レシピ検索
-				RecipePair recipe = this.getInputList(output);
+				RecipePair recipe = this.getInputList(output, num);
 				if (recipe != null) {
 					NBTTagCompound tag = new NBTTagCompound();
 
@@ -99,6 +102,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 						nbttaglist2.appendTag(tag2);
 					}
 					tag.setTag("MoldRecipe", nbttaglist2);
+					tag.setInteger("MoldRecipeNum", recipe.number);
 					mold.setTagCompound(tag);
 				}
 			}
@@ -124,6 +128,19 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 	}
 
 	@Override
+	public int getRecipeNumber(ItemStack mold) {
+		if (mold != null && mold.getItem() instanceof IPressMold) {
+			NBTTagCompound tag = new NBTTagCompound();
+			if (mold.hasTagCompound()) {
+				tag = mold.getTagCompound();
+			}
+			int num = tag.getInteger("MoldRecipeNum");
+			return num;
+		}
+		return 0;
+	}
+
+	@Override
 	public List<ItemStack> getInputs(ItemStack mold) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		if (mold != null && mold.getItem() instanceof IPressMold) {
@@ -143,7 +160,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 		return list;
 	}
 
-	private RecipePair getInputList(ItemStack output) {
+	private RecipePair getInputList(ItemStack output, int num) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		List<ItemStack> empty = new ArrayList<ItemStack>();
 		List<IRecipe> targetRecipes = CraftingManager.getInstance().getRecipeList();
@@ -153,26 +170,35 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 		ShapelessRecipes sl = null;
 		ShapelessOreRecipe slOre = null;
 
+		List<IRecipe> targets = new ArrayList<IRecipe>();
+
 		for (IRecipe rec : targetRecipes) {
 			if (rec.getRecipeOutput() != null && DCUtil.isSameItem(output, rec.getRecipeOutput(), false)) {
-				if (s == null && rec instanceof ShapedRecipes) {
-					s = (ShapedRecipes) rec;
-				}
-				if (sOre == null && rec instanceof ShapedOreRecipe) {
-					sOre = (ShapedOreRecipe) rec;
-				}
-				if (sl == null && rec instanceof ShapelessRecipes) {
-					sl = (ShapelessRecipes) rec;
-				}
-				if (slOre == null && rec instanceof ShapelessOreRecipe) {
-					slOre = (ShapelessOreRecipe) rec;
-				}
-				if (s != null && sOre != null) {
-					break;
-				}
-				if (sl != null && slOre != null) {
-					break;
-				}
+				targets.add(rec);
+			}
+		}
+
+		if (targets.isEmpty())
+			return null;
+
+		int n = num;
+		if (num >= targets.size()) {
+			n = 0;
+		}
+
+		IRecipe rec = targets.get(n);
+		if (rec.getRecipeOutput() != null && DCUtil.isSameItem(output, rec.getRecipeOutput(), false)) {
+			if (s == null && rec instanceof ShapedRecipes) {
+				s = (ShapedRecipes) rec;
+			}
+			if (sOre == null && rec instanceof ShapedOreRecipe) {
+				sOre = (ShapedOreRecipe) rec;
+			}
+			if (sl == null && rec instanceof ShapelessRecipes) {
+				sl = (ShapelessRecipes) rec;
+			}
+			if (slOre == null && rec instanceof ShapelessOreRecipe) {
+				slOre = (ShapelessOreRecipe) rec;
 			}
 		}
 
@@ -233,7 +259,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				}
 			}
 			if (!list.isEmpty())
-				return new RecipePair(sOre.getRecipeOutput().stackSize, list);
+				return new RecipePair(sOre.getRecipeOutput().stackSize, list, n);
 		} else if (slOre != null) {
 			for (Object obj : slOre.getInput()) {
 				if (obj == null) {
@@ -283,7 +309,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					return null;
 			}
 			if (!list.isEmpty())
-				return new RecipePair(slOre.getRecipeOutput().stackSize, list);
+				return new RecipePair(slOre.getRecipeOutput().stackSize, list, n);
 		} else if (s != null) {
 			for (ItemStack obj : s.recipeItems) {
 				if (obj == null) {
@@ -312,7 +338,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				}
 			}
 			if (!list.isEmpty())
-				return new RecipePair(s.getRecipeOutput().stackSize, list);
+				return new RecipePair(s.getRecipeOutput().stackSize, list, n);
 		} else if (sl != null) {
 			for (ItemStack obj : sl.recipeItems) {
 				if (obj == null) {
@@ -341,7 +367,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				}
 			}
 			if (!list.isEmpty())
-				return new RecipePair(sl.getRecipeOutput().stackSize, list);
+				return new RecipePair(sl.getRecipeOutput().stackSize, list, n);
 		}
 
 		return null;
@@ -350,10 +376,12 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 	protected class RecipePair {
 
 		protected final int amount;
+		protected final int number;
 		protected final List<ItemStack> requiers = new ArrayList<ItemStack>();
 
-		protected RecipePair(int amo, List<ItemStack> list) {
+		protected RecipePair(int amo, List<ItemStack> list, int num) {
 			amount = amo;
+			number = num;
 			if (list != null && !list.isEmpty()) {
 				requiers.addAll(list);
 			}

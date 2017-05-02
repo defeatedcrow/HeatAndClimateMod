@@ -64,8 +64,8 @@ public class OnDeathEventDC {
 
 		/* Projectileでの一撃必殺 */
 		if (living instanceof EntityAnimal && !living.worldObj.isRemote && living.worldObj.rand.nextBoolean()) {
-			if (source.isProjectile() && source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
-				if (living.getHealth() >= living.getMaxHealth() && dam > living.getMaxHealth()) {
+			if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
+				if (dam > living.getMaxHealth()) {
 					ItemStack vis = new ItemStack(FoodInit.meat, 1, 0);
 					EntityItem drop = new EntityItem(living.worldObj, living.posX, living.posY, living.posZ, vis);
 					living.worldObj.spawnEntityInWorld(drop);

@@ -1,5 +1,9 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
@@ -69,7 +73,10 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 				this.currentTorque = maxTorque();
 			}
 
-			float send = this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+			float send = 0;
+			for (EnumFacing side : getOutputSide()) {
+				send += this.provideTorque(worldObj, getPos().offset(side), side, false);
+			}
 
 			// DCLogger.debugLog("*** Kinetic Motor ***");
 			// DCLogger.debugLog("send: " + send);
@@ -102,8 +109,10 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 	}
 
 	@Override
-	public EnumFacing getOutputSide() {
-		return this.getBaseSide();
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide());
+		return ret;
 	}
 
 	@Override

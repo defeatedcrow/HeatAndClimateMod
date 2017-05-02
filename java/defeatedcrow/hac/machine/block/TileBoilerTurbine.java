@@ -1,6 +1,10 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
+
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -74,7 +78,9 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			}
 
 			// provider
-			this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+			for (EnumFacing side : getOutputSide()) {
+				this.provideTorque(worldObj, getPos().offset(side), side, false);
+			}
 
 			// DCLogger.debugLog("current torque: " + currentTorque);
 			// DCLogger.debugLog("sent torque: " + prevTorque);
@@ -225,12 +231,14 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
-		return side == getBaseSide();
+		return getOutputSide().contains(side);
 	}
 
 	@Override
-	public EnumFacing getOutputSide() {
-		return this.getBaseSide();
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide());
+		return ret;
 	}
 
 	@Override

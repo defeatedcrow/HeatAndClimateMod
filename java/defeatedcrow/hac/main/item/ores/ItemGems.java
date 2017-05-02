@@ -23,6 +23,26 @@ public class ItemGems extends DCItem {
 
 	private final int maxMeta;
 
+	/*
+	 * 0: 青カルセドニー
+	 * 1: 赤カルセドニー
+	 * 2: 白カルセドニー
+	 * 3: 石膏
+	 * 4: サファイア
+	 * 5: マラカイト
+	 * 6: セレスタイト
+	 * 7: ハマグリ
+	 * 8: 岩塩
+	 * 9: 硫黄
+	 * 10: 硝石
+	 * 11: ショール
+	 * 12: 蛇紋石
+	 * 13: カンラン石
+	 * 14: アルマンディン
+	 * 15: ルチル
+	 * 16: ボーキサイト
+	 * 17: ビスマス
+	 */
 	private static String[] names = {
 			"chal_blue",
 			"chal_red",
@@ -38,7 +58,10 @@ public class ItemGems extends DCItem {
 			"schorl",
 			"serpentine",
 			"olivine",
-			"almandine"
+			"almandine",
+			"rutile",
+			"bauxite",
+			"bismuth"
 	};
 
 	public ItemGems(int max) {

@@ -1,5 +1,9 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
@@ -29,14 +33,18 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 		// provider
 		IBlockState state = worldObj.getBlockState(pos);
 		if (!DCState.getBool(state, DCState.POWERED)) {
-			this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+			for (EnumFacing side : getOutputSide()) {
+				this.provideTorque(worldObj, getPos().offset(side), side, false);
+			}
 		}
 
 	}
 
 	@Override
-	public EnumFacing getOutputSide() {
-		return this.getBaseSide().getOpposite();
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide().getOpposite());
+		return ret;
 	}
 
 	@Override
@@ -71,7 +79,7 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
-		return side == getOutputSide();
+		return getOutputSide().contains(side);
 	}
 
 	@Override

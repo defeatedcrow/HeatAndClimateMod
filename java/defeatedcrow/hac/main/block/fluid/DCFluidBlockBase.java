@@ -89,9 +89,9 @@ public class DCFluidBlockBase extends BlockFluidClassic
 				double x = pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
 				double y = pos.getY() + 0.85D + rand.nextDouble() * 0.25D;
 				double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
-				double dx = rand.nextDouble() * 0.05D - 0.025D;
+				double dx = 0D;
 				double dy = 0D;
-				double dz = rand.nextDouble() * 0.05D - 0.025D;
+				double dz = 0D;
 				Particle cloud = new ParticleCloudDC.Factory().createParticle(0, world, x, y, z, dx, dy, dz, null);
 				FMLClientHandler.instance().getClient().effectRenderer.addEffect(cloud);
 			}

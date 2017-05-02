@@ -28,9 +28,8 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 
 	@Override
 	public boolean onClimateChange(World world, BlockPos pos, IBlockState state, IClimate clm) {
-		if (clm != null && clm.getHumidity() == DCHumidity.UNDERWATER) {
+		if (clm != null && clm.getHumidity() == DCHumidity.UNDERWATER)
 			return false;
-		}
 		return super.onClimateChange(world, pos, state, clm);
 	}
 
@@ -52,7 +51,11 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 			"tin",
 			"bronze",
 			"sus",
-			"gold" };
+			"gold",
+			"titanium",
+			"aluminium",
+			"bismuth"
+	};
 
 	@Override
 	public String[] getNameSuffix() {
@@ -61,8 +64,9 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		if (meta >= names.length)
+		if (meta >= names.length) {
 			meta = names.length - 1;
+		}
 		String s = "blocks/ores/dustblock_" + names[meta];
 		if (f) {
 			s = "textures/" + s;

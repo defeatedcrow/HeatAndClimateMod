@@ -480,6 +480,15 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 14), new ItemStack(MainInit.gems, 1, 14),
 				0.2F, "oreGarnet");
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 10), new ItemStack(MainInit.gems, 1, 15),
+				0.2F, "oreTitanium");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 11),
+				new ItemStack(MainInit.oreDust, 1, 11), 0.5F, "oreAluminium");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 12), new ItemStack(MainInit.oreDust, 1, 1),
+				0.75F, "oreBismuth");
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.QUARTZ, 1, 0), new ItemStack(Items.QUARTZ, 1, 0), 0.2F,
 				"oreQuartz");
 
@@ -497,6 +506,12 @@ public class MachineRecipes {
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.COAL, 2, 0), new ItemStack(MainInit.miscDust, 1, 0), 0.5F,
 				"oreCoal");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 0), new ItemStack(MainInit.oreDust, 1, 11),
+				0.5F, new ItemStack(Blocks.RED_SANDSTONE, 1, 32767));
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.oreDust, 1, 11),
+				0.25F, new ItemStack(Blocks.SAND, 1, 1));
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 0), new ItemStack(Items.COAL, 1, 0));
 
@@ -516,6 +531,12 @@ public class MachineRecipes {
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 1), "cropWheat");
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 10), "gemRutile");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 11), "gemBauxite");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 12), "gemBismuth");
+
 		// ingot粉砕
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 0), "ingotCopper");
 
@@ -530,6 +551,10 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 5), "ingotIron");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 8), "ingotTin");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 11), "ingotAluminium");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 12), "ingotBismuth");
 
 		// 以下バニラ
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), null, 0F, "cobblestone");
@@ -548,9 +573,6 @@ public class MachineRecipes {
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 0), null, 0.0F,
 				new ItemStack(Blocks.SANDSTONE, 1, 32767));
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 1),
-				new ItemStack(Blocks.RED_SANDSTONE, 1, 32767));
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.GLOWSTONE_DUST, 4, 0), new ItemStack(Blocks.GLOWSTONE));
 

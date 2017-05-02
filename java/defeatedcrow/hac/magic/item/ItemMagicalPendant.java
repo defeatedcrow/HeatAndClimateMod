@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCPotion;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,6 +18,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -50,8 +52,10 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			"serpentine", /* 透明化 */
 			"olivine", /* EXP増加 */
 			"almandine", /* ノックバック防止 */
-			"elestial"
-			/* カルセドニー投げ */ };
+			"elestial", /* カルセドニー投げ */
+			"rutile", /* 爆発耐性 */
+			"bismuth"
+			/* ツールがゆっくり回復 */ };
 
 	public ItemMagicalPendant(int max) {
 		super();
@@ -84,6 +88,7 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 		case 0:
 		case 1:
 		case 2:
+		case 15:
 			return CharmType.DEFFENCE;
 		case 7:
 		case 9:
@@ -109,6 +114,8 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			return 1.0F;
 		case 10:
 			return source == DamageSource.lightningBolt ? 5.0F : 0F;
+		case 15:
+			return source.isExplosion() ? 20.0F : 0F;
 		default:
 			return 0F;
 		}
@@ -197,6 +204,33 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 
 		if (eff != null) {
 			player.addPotionEffect(eff);
+		}
+
+		if (meta == 16) {
+			int cool = 40;
+			NBTTagCompound tag = charm.getTagCompound();
+			if (tag == null) {
+				tag = new NBTTagCompound();
+			}
+			if (tag.hasKey("CharmCooldown")) {
+				cool = tag.getInteger("CharmCooldown");
+			}
+			if (cool < 0) {
+				ItemStack off = player.getHeldItemOffhand();
+				if (!DCUtil.isEmpty(off) && off.getItem().isDamageable()) {
+					int dam = off.getItemDamage();
+					if (dam > 0) {
+						dam--;
+						off.setItemDamage(dam);
+					}
+				}
+				tag.setInteger("CharmCooldown", 40);
+			} else {
+				cool--;
+				tag.setInteger("CharmCooldown", cool);
+			}
+			charm.setTagCompound(tag);
+
 		}
 	}
 

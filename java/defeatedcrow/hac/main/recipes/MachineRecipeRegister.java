@@ -4,7 +4,6 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.init.Blocks;
@@ -70,6 +69,18 @@ public class MachineRecipeRegister {
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(Blocks.GOLD_BLOCK, 1, 0), DCHeatTier.KILN, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 11));
 
+		// titanium
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 11), DCHeatTier.UHT, null,
+				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 12));
+
+		// aluminium
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 12), DCHeatTier.SMELTING, null,
+				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 13));
+
+		// bismuth
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 13), DCHeatTier.KILN, null,
+				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 14));
+
 		// dust個別精錬
 		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 0),
 		// DCHeatTier.KILN, null,
@@ -98,14 +109,6 @@ public class MachineRecipeRegister {
 		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 8),
 		// DCHeatTier.KILN, null,
 		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 8));
-
-		if (ClimateCore.isDebug) {
-			// 3x3
-			RecipeAPI.registerRecipes.addRecipe(new ItemStack(MainInit.metalBlock, 1, 0), DCHeatTier.KILN, null,
-					DCAirflow.TIGHT, false, new Object[] {
-							"dustDebug"
-					});
-		}
 
 	}
 
@@ -180,12 +183,15 @@ public class MachineRecipeRegister {
 				0.3F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 9), new ItemStack(MainInit.metalBlock, 1, 9),
 				0.3F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 14), new ItemStack(MainInit.metalBlock, 1, 13),
+				0.3F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 0), new ItemStack(MainInit.oreIngot, 1, 0), 0.1F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 1), new ItemStack(MainInit.oreIngot, 1, 1), 0.1F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 4), new ItemStack(Items.GOLD_INGOT, 1, 0), 0.1F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 5), new ItemStack(Items.IRON_INGOT, 1, 0), 0.1F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 8), new ItemStack(MainInit.oreIngot, 1, 8), 0.1F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 12), new ItemStack(MainInit.oreIngot, 1, 13), 0.1F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.gemBlock, 1, 3), new ItemStack(MainInit.selenite, 1, 0), 0.15F);
 

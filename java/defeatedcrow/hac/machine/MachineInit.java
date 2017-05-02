@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.fluids.Fluid;
 
 public class MachineInit {
 
@@ -60,4 +61,24 @@ public class MachineInit {
 	public static Item machimeMaterials;
 
 	public static Block creativeBox;
+
+	// advanced
+
+	public static Fluid hydrogen;
+	public static Fluid ammnonia;
+	public static Fluid nitric_asid;
+	public static Fluid sulfuric_asid;
+	public static Fluid fuel_oil;
+	public static Fluid fuel_gas;
+
+	public static Item chemical;
+	public static Item moldAlloy;
+	public static Item adapterCard;
+
+	public static Block energyTank;
+	public static Block adapterPanel;
+	public static Block wirelessPortal;
+
+	public static Block reactor;
+	public static Block freezer;
 }

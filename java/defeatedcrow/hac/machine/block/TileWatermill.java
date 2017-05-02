@@ -1,5 +1,9 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
@@ -59,7 +63,9 @@ public class TileWatermill extends TileTorqueBase implements ITorqueProvider {
 			this.currentTorque = flow;
 
 			// provider
-			this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+			for (EnumFacing side : getOutputSide()) {
+				this.provideTorque(worldObj, getPos().offset(side), side, false);
+			}
 		}
 		super.updateTile();
 	}
@@ -80,8 +86,10 @@ public class TileWatermill extends TileTorqueBase implements ITorqueProvider {
 	}
 
 	@Override
-	public EnumFacing getOutputSide() {
-		return this.getBaseSide();
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide());
+		return ret;
 	}
 
 	@Override

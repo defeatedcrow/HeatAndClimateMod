@@ -34,9 +34,9 @@ public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
-	public static final int MOD_MINOR = 4;
-	public static final int MOD_BUILD = 1;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.4.4,)";
+	public static final int MOD_MINOR = 5;
+	public static final int MOD_BUILD = 0;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.5.0,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;

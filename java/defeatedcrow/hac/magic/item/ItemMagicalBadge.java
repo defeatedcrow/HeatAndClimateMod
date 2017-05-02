@@ -11,9 +11,11 @@ import defeatedcrow.hac.core.util.DCPotion;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.CustomExplosion;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
@@ -40,6 +42,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
@@ -69,8 +72,11 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			"schorl", /* サンボル */
 			"serpentine", /* マークタワー設置 */
 			"olivine", /* EXP結晶化 */
-			"almandine"
-			/* 敵の強制除去 */ };
+			"almandine", /* 敵の強制除去 */
+			"elestial", /* 範囲攻撃 */
+			"rutile", /* 光源設置 */
+			"bismuth"
+			/* Block遠隔使用 */ };
 
 	public ItemMagicalBadge(int max) {
 		super();
@@ -104,6 +110,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		case 7:
 		case 11:
 		case 12:
+		case 15:
+		case 16:
 			return CharmType.KEY;
 		case 8:
 		case 9:
@@ -124,7 +132,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.tip.badge." + meta));
 			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
 		}
-		if (meta == 7) {
+		if (meta == 7 || meta == 16) {
 			NBTTagCompound tag = stack.getTagCompound();
 			if (tag != null && tag.hasKey("dcs.charm.dim")) {
 				String warpDim = tag.getString("dcs.charm.dimname");
@@ -142,7 +150,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		if (!world.isAirBlock(pos) && stack != null && stack.getItem() == this) {
 			int meta = stack.getMetadata();
 			if (!world.isRemote) {
-				if (meta == 7) {
+				if (meta == 7 || meta == 16) {
 					if (pos.getY() > 0 && pos.getY() < 254 && world.isAirBlock(pos.up())
 							&& world.isAirBlock(pos.up(2))) {
 						NBTTagCompound tag = stack.getTagCompound();
@@ -152,12 +160,12 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 						String dimName = world.provider.getDimensionType().getName();
 						int dim = world.provider.getDimension();
 						int x = pos.getX();
-						int y = pos.getY();
+						int y = meta == 7 ? pos.getY() + 1 : pos.getY();
 						int z = pos.getZ();
 						tag.setString("dcs.charm.dimname", dimName);
 						tag.setInteger("dcs.charm.dim", dim);
 						tag.setInteger("dcs.charm.x", x);
-						tag.setInteger("dcs.charm.y", y + 1);
+						tag.setInteger("dcs.charm.y", y);
 						tag.setInteger("dcs.charm.z", z);
 						stack.setTagCompound(tag);
 						return EnumActionResult.SUCCESS;
@@ -254,24 +262,36 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					worldinfo.setThundering(false);
 					return true;
 				}
-			}
-			if (meta == 7) {
+			} else if (meta == 7 || meta == 16) {
 				int dim = player.worldObj.provider.getDimension();
 				NBTTagCompound tag = charm.getTagCompound();
 				if (tag != null && tag.hasKey("dcs.charm.dim")) {
 					int warpDim = tag.getInteger("dcs.charm.dim");
-					double x = tag.getInteger("dcs.charm.x") + 0.5D;
+					double x = tag.getInteger("dcs.charm.x");
 					double y = tag.getInteger("dcs.charm.y");
-					double z = tag.getInteger("dcs.charm.z") + 0.5D;
+					double z = tag.getInteger("dcs.charm.z");
+					BlockPos pos = new BlockPos(x, y, z);
 
 					if (warpDim == dim) {
-						player.setPositionAndUpdate(x, y, z);
-						player.fallDistance = 0.0F;
-						return true;
+						if (meta == 7) {
+							player.setPositionAndUpdate(x + 0.5D, y, z + 0.5D);
+							player.fallDistance = 0.0F;
+							return true;
+
+						} else {
+							if (player.worldObj.isBlockLoaded(pos)) {
+								IBlockState state = player.worldObj.getBlockState(pos);
+								if (state != null && state.getMaterial() != Material.AIR) {
+									state.getBlock().onBlockActivated(player.worldObj, pos, state, player,
+											EnumHand.MAIN_HAND, player.getHeldItemMainhand(), EnumFacing.NORTH, 0.5F,
+											0.5F, 0.5F);
+									return true;
+								}
+							}
+						}
 					}
 				}
-			}
-			if (meta == 11) {
+			} else if (meta == 11) {
 				int x = MathHelper.floor_double(player.posX);
 				int y = MathHelper.floor_double(player.posY);
 				int z = MathHelper.floor_double(player.posZ);
@@ -281,8 +301,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				set = set.withProperty(DCState.FACING, player.getHorizontalFacing().getOpposite());
 				if (cur.getMaterial().isReplaceable() && player.worldObj.setBlockState(p, set))
 					return true;
-			}
-			if (meta == 12) {
+			} else if (meta == 12) {
 				if (player.experienceLevel > 10) {
 					ItemStack gem = new ItemStack(MagicInit.expGem);
 					EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY + 0.25D, player.posZ,
@@ -292,6 +311,15 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 						return true;
 					}
 				}
+			} else if (meta == 15) {
+				int x = MathHelper.floor_double(player.posX);
+				int y = MathHelper.floor_double(player.posY);
+				int z = MathHelper.floor_double(player.posZ);
+				BlockPos p = new BlockPos(x, y + 1, z);
+				IBlockState cur = player.worldObj.getBlockState(p);
+				IBlockState set = MainInit.lightOrb.getDefaultState();
+				if (cur.getMaterial().isReplaceable() && player.worldObj.setBlockState(p, set))
+					return true;
 			}
 		}
 		return false;
@@ -378,6 +406,21 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		if (meta == 13) {
 			if (player != null && target != null && !source.isExplosion() && target instanceof IMob) {
 				target.setDead();
+				return true;
+			}
+		}
+		if (meta == 14) {
+			if (player != null && player.isSneaking() && target != null && !source.isExplosion()
+					&& !source.isProjectile()) {
+				AxisAlignedBB aabb = target.getEntityBoundingBox().expand(5.0D, 0D, 5.0D);
+				List<EntityLiving> list = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, aabb);
+				if (list.isEmpty())
+					return false;
+				else {
+					for (EntityLiving liv : list) {
+						liv.attackEntityFrom(source, damage);
+					}
+				}
 				return true;
 			}
 		}

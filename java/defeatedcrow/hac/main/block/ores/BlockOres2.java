@@ -28,9 +28,9 @@ public class BlockOres2 extends DCSimpleBlock {
 	@Override
 	public void setHarvestLevel(String toolClass, int level) {
 		for (int i = 0; i < 16; i++) {
-			if (i == 5) {
+			if (i == 5 || i == 11) {
 				super.setHarvestLevel("pickaxe", 3, this.getStateFromMeta(i));
-			} else if (i < 2) {
+			} else if (i < 2 || i == 10) {
 				super.setHarvestLevel("pickaxe", 1, this.getStateFromMeta(i));
 			} else {
 				super.setHarvestLevel("pickaxe", 2, this.getStateFromMeta(i));
@@ -54,8 +54,8 @@ public class BlockOres2 extends DCSimpleBlock {
 			2,
 			2,
 			2,
-			2,
-			2,
+			1,
+			3,
 			2,
 			2,
 			2,
@@ -116,6 +116,8 @@ public class BlockOres2 extends DCSimpleBlock {
 		SERPENTINE(MainInit.gems, 2, 12, true),
 		OLIVINE(MainInit.gems, 1, 13, true),
 		ALMANDINE(MainInit.gems, 1, 14, true),
+		RUTILE(MainInit.gems, 1, 15, true),
+		BAUXITE(MainInit.gems, 2, 16, true),
 		NONE(null, 1, 0, false);
 
 		public Item dropItem;
@@ -143,8 +145,8 @@ public class BlockOres2 extends DCSimpleBlock {
 				DropTable.ALMANDINE,
 				DropTable.NONE,
 				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
+				DropTable.BAUXITE,
+				DropTable.RUTILE,
 				DropTable.NONE,
 				DropTable.NONE,
 				DropTable.NONE,

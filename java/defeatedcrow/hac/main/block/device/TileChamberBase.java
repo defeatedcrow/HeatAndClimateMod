@@ -286,8 +286,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
-				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+		return getWorld().getTileEntity(this.pos) != this ? false : true;
 	}
 
 	@Override

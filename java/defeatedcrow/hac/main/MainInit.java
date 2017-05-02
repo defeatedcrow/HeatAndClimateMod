@@ -43,7 +43,19 @@ public class MainInit {
 	public static Block fenceBedrock;
 
 	public static Block markingPanel;
+	public static Block lightOrb;
+
+	/* building advanced */
+
+	public static Block asphalt;
+	public static Block fireproofs;
+	public static Block fireproofhalfs;
+	public static Block fireproofStairs;
+
 	public static Block desiccant;
+	public static Block freezepack;
+	public static Block hotPack;
+	public static Block waterPack;
 
 	// furniture
 	public static Block chalLamp;
@@ -119,6 +131,19 @@ public class MainInit {
 
 	public static Item leatherHat;
 	public static Item cottonHat;
+
+	/* weapon advanced */
+
+	public static Item[] titaniumArmor = new Item[4];
+
+	public static Item crossbow;
+	public static Item bolt;
+
+	public static Item shotgun;
+	public static Item shot;
+
+	public static Item ignis;
+	public static Item injector;
 
 	// food
 	public static Item bakedApple;

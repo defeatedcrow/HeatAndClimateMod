@@ -9,9 +9,11 @@ import net.minecraft.item.ItemStack;
  */
 public interface IPressMold {
 
-	void setOutput(ItemStack mold, ItemStack output);
+	void setOutput(ItemStack mold, ItemStack output, int num);
 
 	ItemStack getOutput(ItemStack mold);
+
+	int getRecipeNumber(ItemStack mold);
 
 	List<ItemStack> getInputs(ItemStack mold);
 

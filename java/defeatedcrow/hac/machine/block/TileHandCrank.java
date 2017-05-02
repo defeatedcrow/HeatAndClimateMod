@@ -1,5 +1,9 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
@@ -14,7 +18,9 @@ public class TileHandCrank extends TileTorqueBase implements ITorqueProvider {
 	public void updateTile() {
 		super.updateTile();
 		// provider
-		this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+		for (EnumFacing side : getOutputSide()) {
+			this.provideTorque(worldObj, getPos().offset(side), side, false);
+		}
 	}
 
 	@Override
@@ -23,8 +29,10 @@ public class TileHandCrank extends TileTorqueBase implements ITorqueProvider {
 	}
 
 	@Override
-	public EnumFacing getOutputSide() {
-		return this.getBaseSide();
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide());
+		return ret;
 	}
 
 	@Override
@@ -36,9 +44,8 @@ public class TileHandCrank extends TileTorqueBase implements ITorqueProvider {
 	public boolean canProvideTorque(World world, BlockPos outputPos, EnumFacing output) {
 		TileEntity tile = world.getTileEntity(outputPos);
 		float amo = this.getCurrentTorque();
-		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F) {
+		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F)
 			return ((ITorqueReceiver) tile).canReceiveTorque(amo, output.getOpposite());
-		}
 		return false;
 	}
 

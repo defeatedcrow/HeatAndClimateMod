@@ -1,8 +1,8 @@
 package defeatedcrow.hac.main.item.ores;
 
-import net.minecraft.util.math.MathHelper;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.util.math.MathHelper;
 
 public class ItemIngots extends DCItem {
 
@@ -19,7 +19,11 @@ public class ItemIngots extends DCItem {
 			"magnet",
 			"tin",
 			"bronze",
-			"sus" };
+			"sus",
+			"titanium",
+			"aluminium",
+			"bismuth"
+	};
 
 	public ItemIngots(int max) {
 		super();
@@ -43,6 +47,9 @@ public class ItemIngots extends DCItem {
 	 * 8: 錫
 	 * 9: 青銅
 	 * 10: SUS
+	 * 11: チタン
+	 * 12: アルミニウム
+	 * 13: ビスマス
 	 */
 	@Override
 	public String[] getNameSuffix() {
