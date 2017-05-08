@@ -2,9 +2,9 @@ package defeatedcrow.hac.main.item.tool;
 
 import defeatedcrow.hac.core.ClimateCore;
 
-public class ItemArroyYagen extends ItemStoneYagen {
+public class ItemAlloyYagen extends ItemStoneYagen {
 
-	public ItemArroyYagen() {
+	public ItemAlloyYagen() {
 		super();
 		this.setMaxDamage(640);
 	}

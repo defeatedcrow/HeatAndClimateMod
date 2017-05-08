@@ -3,6 +3,7 @@ package defeatedcrow.hac.plugin;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.forestry.DCFarmable;
@@ -208,6 +209,16 @@ public class DCPluginForestry {
 			Fluid black = FoodInit.blackLiquor;
 			if (black != null) {
 				FuelManager.bronzeEngineFuel.put(black, new EngineBronzeFuel(black, 30, 2500, 1));
+			}
+
+			Fluid liq = MachineInit.fuelGas;
+			if (liq != null) {
+				FuelManager.bronzeEngineFuel.put(liq, new EngineBronzeFuel(liq, 40, 4000, 1));
+			}
+
+			Fluid gas = MachineInit.fuelGas;
+			if (gas != null) {
+				FuelManager.bronzeEngineFuel.put(gas, new EngineBronzeFuel(gas, 60, 2500, 1));
 			}
 
 			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropRice));

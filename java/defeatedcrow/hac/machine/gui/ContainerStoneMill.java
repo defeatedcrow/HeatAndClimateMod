@@ -25,8 +25,8 @@ public class ContainerStoneMill extends Container {
 
 		this.addSlotToContainer(new Slot(tile, 0, 54, 32));
 
-		this.addSlotToContainer(new Slot(tile, 1, 106, 32));
-		this.addSlotToContainer(new Slot(tile, 2, 126, 32));
+		this.addSlotToContainer(new SlotOutput(tile, 1, 106, 32));
+		this.addSlotToContainer(new SlotOutput(tile, 2, 126, 32));
 
 		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {

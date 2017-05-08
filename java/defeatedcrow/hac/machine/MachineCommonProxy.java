@@ -17,6 +17,7 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TilePressMachine;
+import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileRedBox;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_L_SUS;
@@ -67,6 +68,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid");
 		GameRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill");
 		GameRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo");
+		GameRegistry.registerTileEntity(TileReactor.class, "dcs_te_reactor");
 	}
 
 }

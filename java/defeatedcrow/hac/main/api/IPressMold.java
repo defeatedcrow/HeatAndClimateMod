@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
  */
 public interface IPressMold {
 
-	void setOutput(ItemStack mold, ItemStack output, int num);
+	ItemStack setOutput(ItemStack mold, ItemStack output, int num);
 
 	ItemStack getOutput(ItemStack mold);
 

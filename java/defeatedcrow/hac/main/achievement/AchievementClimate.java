@@ -77,11 +77,11 @@ public class AchievementClimate {
 	public static final Achievement MACHINE_CHANGE = (new Achievement("achievement.machine_rotate",
 			"dcs.machine_rotate", 0, 0, MainInit.wrench, MACHINE_PLACE)).registerStat();
 
-	public static final Achievement MACHINE_ARROY = (new Achievement("achievement.machine_arroy", "dcs.machine_arroy",
+	public static final Achievement MACHINE_ALLOY = (new Achievement("achievement.machine_alloy", "dcs.machine_alloy",
 			1, 0, new ItemStack(MainInit.materials, 1, 6), MACHINE_CHANGE)).registerStat();
 
 	public static final Achievement MACHINE_USING = (new Achievement("achievement.machine_stonemill",
-			"dcs.machine_stonemill", 5, 0, MachineInit.stonemill, MACHINE_ARROY)).registerStat();
+			"dcs.machine_stonemill", 5, 0, MachineInit.stonemill, MACHINE_ALLOY)).registerStat();
 
 	public static final Achievement MACHINE_EXCHANGER = (new Achievement("achievement.machine_heatex",
 			"dcs.machine_heatex", 6, 0, MachineInit.heatPump, MACHINE_USING)).registerStat();
@@ -145,7 +145,7 @@ public class AchievementClimate {
 				MACHINE_GEAR,
 				MACHINE_PLACE,
 				MACHINE_CHANGE,
-				MACHINE_ARROY,
+				MACHINE_ALLOY,
 				MACHINE_USING,
 				MACHINE_EXCHANGER,
 				MACHINE_SUS,

@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.core.climate.recipe.FluidCraftRecipe;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.init.Blocks;
@@ -944,6 +945,14 @@ public class FoodRecipes {
 						"dustLime"
 				});
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(Items.PAPER, 4, 0), null, 0F,
+				new FluidStack(FoodInit.blackLiquor, 50), DCHeatTier.KILN, null, null, false,
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"pulpWood",
+						"pulpWood",
+						"dustAlkali"
+				});
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.repairPutty, 1, 2), null, 0F, null,
 				DCHeatTier.NORMAL, null, null, false, new FluidStack(FoodInit.oil, 500), new Object[] {
 						"dustAsh"
@@ -954,9 +963,21 @@ public class FoodRecipes {
 						"dustLime"
 				});
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.repairPutty, 1, 2), null, 0F, null,
+				DCHeatTier.NORMAL, null, null, false, new FluidStack(FoodInit.oil, 500), new Object[] {
+						"dustAlkali"
+				});
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.gems, 1, 17), null, 0F, null, DCHeatTier.KILN,
 				null, null, false, null, new Object[] {
 						"dustBismuth"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(Items.SLIME_BALL, 1, 0), null, 0F, null,
+				DCHeatTier.NORMAL, null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
+						"cropHerb",
+						"dustCrystal",
+						new ItemStack(MachineInit.reagent, 1, 1)
 				});
 
 	}

@@ -15,6 +15,7 @@ import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
+import defeatedcrow.hac.main.block.build.BlockGlassPlastic;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockIronPlate;
 import defeatedcrow.hac.main.block.build.BlockLightOrb;
@@ -62,7 +63,7 @@ import defeatedcrow.hac.main.item.ores.ItemIngots;
 import defeatedcrow.hac.main.item.ores.ItemMetalMaterials;
 import defeatedcrow.hac.main.item.ores.ItemMiscDust;
 import defeatedcrow.hac.main.item.ores.ItemOreDusts;
-import defeatedcrow.hac.main.item.tool.ItemArroyYagen;
+import defeatedcrow.hac.main.item.tool.ItemAlloyYagen;
 import defeatedcrow.hac.main.item.tool.ItemAxeDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
@@ -142,6 +143,9 @@ public class MainMaterialRegister {
 
 		MainInit.lightOrb = new BlockLightOrb(ClimateCore.PACKAGE_BASE + "_build_lightorb");
 		registerBlock(MainInit.lightOrb, ClimateCore.PACKAGE_BASE + "_build_lightorb");
+
+		MainInit.syntheticBlock = new BlockGlassPlastic(ClimateCore.PACKAGE_BASE + "_build_synthetic_glass", 15);
+		registerBlock(MainInit.syntheticBlock, ClimateCore.PACKAGE_BASE + "_build_synthetic_glass");
 
 		MainInit.desiccant = new BlockDesiccantPackage(ClimateCore.PACKAGE_BASE + "_desiccant");
 		registerBlock(MainInit.desiccant, ClimateCore.PACKAGE_BASE + "_desiccant");
@@ -384,7 +388,7 @@ public class MainMaterialRegister {
 		MainInit.stoneYagen = new ItemStoneYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_stone");
 		GameRegistry.register(MainInit.stoneYagen.setRegistryName(ClimateCore.PACKAGE_BASE + "_yagen_stone"));
 
-		MainInit.brassYagen = new ItemArroyYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_brass");
+		MainInit.brassYagen = new ItemAlloyYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_brass");
 		GameRegistry.register(MainInit.brassYagen.setRegistryName(ClimateCore.PACKAGE_BASE + "_yagen_brass"));
 
 		MainInit.crowDrill = new ItemCrowDrill().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_creative_drill");

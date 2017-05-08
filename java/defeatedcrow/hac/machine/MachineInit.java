@@ -65,14 +65,25 @@ public class MachineInit {
 	// advanced
 
 	public static Fluid hydrogen;
-	public static Fluid ammnonia;
-	public static Fluid nitric_asid;
-	public static Fluid sulfuric_asid;
-	public static Fluid fuel_oil;
-	public static Fluid fuel_gas;
+	public static Fluid ammonia;
+	public static Fluid nitricAcid;
+	public static Fluid sulfuricAcid;
+	public static Fluid fuelOil;
+	public static Fluid fuelGas;
 
-	public static Item chemical;
+	public static Block hydrogenBlock;
+	public static Block ammoniaBlock;
+	public static Block nitricAcidBlock;
+	public static Block sulfuricAcidBlock;
+	public static Block fuelOilBlock;
+	public static Block fuelGasBlock;
+
+	public static Item reagent;
+	public static Item synthetic;
+	public static Item catalyst;
+
 	public static Item moldAlloy;
+	public static Item moldAluminium;
 	public static Item adapterCard;
 
 	public static Block energyTank;

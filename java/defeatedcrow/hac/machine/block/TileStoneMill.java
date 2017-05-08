@@ -53,13 +53,13 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 	}
 
 	@Override
-	public int getProcessTime(ItemStack item) {
+	public int getProcessTime() {
 		return 64;
 	}
 
 	@Override
-	public boolean isRecipeMaterial(ItemStack item) {
-		IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(item);
+	public boolean isRecipeMaterial() {
+		IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(inv[0]);
 		return recipe != null;
 	}
 
@@ -94,6 +94,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 						int i2 = this.insertResult(sec);
 					}
 					int i3 = this.insertResult(cont);
+					this.decrStackSize(0, 1);
 					return true;
 				}
 			}

@@ -134,10 +134,11 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		if (stay1 < 0) {
 			EnumFacing side = getBaseSide().getOpposite();
 			TileEntity target = worldObj.getTileEntity(getPos().offset(side));
+			// DOWNからの搬出を偽装
 			if (target != null
-					&& target.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite())) {
+					&& target.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
 				IItemHandler tInv = target.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
-						side.getOpposite());
+						EnumFacing.DOWN);
 				for (int i = 0; i < tInv.getSlots(); i++) {
 					if (tInv.extractItem(i, 1, true) != null) {
 						inv[0] = tInv.extractItem(i, 1, false).copy();
@@ -197,7 +198,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		EnumFacing side = getBaseSide();
 		TileEntity target = worldObj.getTileEntity(getPos().offset(side));
 		boolean skip = false;
-		if (target != null && target.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite())) {
+		if (target != null && target.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP)) {
 			if (target instanceof TileConveyor) {
 				skip = true;
 				TileConveyor tConv = (TileConveyor) target;
@@ -209,8 +210,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 					flag = true;
 				}
 			} else {
-				IItemHandler tInv = target.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
-						side.getOpposite());
+				IItemHandler tInv = target.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
 				for (int i = 0; i < tInv.getSlots(); i++) {
 					if (tInv.insertItem(i, inv[1].copy(), true) == null) {
 						ItemStack ret = tInv.insertItem(i, inv[1].copy(), false);

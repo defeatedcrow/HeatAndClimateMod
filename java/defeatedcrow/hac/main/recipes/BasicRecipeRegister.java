@@ -1503,6 +1503,166 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.sinkMetal, 1, 0)
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 0), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeWhite"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 1), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeOrange"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 2), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeMagenta"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 3), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeLightBlue"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 4), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeYellow"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 5), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeLime"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 6), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyePink"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 7), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeGray"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 8), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeLightGray"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 9), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeCyan"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 10), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyePurple"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 11), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeBlue"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 12), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeBrown"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 13), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeGreen"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 14), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeRed"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 15), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.syntheticBlock, 1, 32767),
+				'Y',
+				"dyeBlack"
+		}));
+
 	}
 
 	private static void loadEquipsRecipes() {

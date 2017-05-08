@@ -24,20 +24,22 @@ public class AnvilMoldEvent {
 				IPressMold mold = (IPressMold) right.copy().getItem();
 				if (mold.getOutput(right) == null) {
 					// DCLogger.debugLog("anvil event cycle");
-					ItemStack next = new ItemStack(right.getItem(), right.stackSize, right.getItemDamage());
-					mold.setOutput(next, left, 0);
-					event.setOutput(next);
-					event.setCost(1);
+					ItemStack next = mold.setOutput(right, left, 0);
+					if (next != null) {
+						event.setOutput(next);
+						event.setCost(1);
+					}
 				}
 			} else if (left != null && left.getItem() instanceof IPressMold && right.getItem() == Items.IRON_INGOT) {
 				// recipeの変更
 				IPressMold mold = (IPressMold) left.copy().getItem();
 				ItemStack output = mold.getOutput(left);
 				int num = mold.getRecipeNumber(left) + 1;
-				ItemStack next = new ItemStack(left.getItem(), left.stackSize, left.getItemDamage());
-				mold.setOutput(next, output, num);
-				event.setOutput(next);
-				event.setCost(1);
+				ItemStack next = mold.setOutput(left, output, num);
+				if (next != null) {
+					event.setOutput(next);
+					event.setCost(1);
+				}
 			}
 
 			/* リペアパテの設定 */
