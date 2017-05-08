@@ -30,7 +30,7 @@ public class OnCraftingDC {
 					if (craft.getItemDamage() == 5) {
 						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_GEAR);
 					} else if (craft.getItemDamage() == 6) {
-						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_ARROY);
+						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_ALLOY);
 					}
 				} else if (craft.getItem() == MagicInit.daggerSilver) {
 					AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_KNIFE);

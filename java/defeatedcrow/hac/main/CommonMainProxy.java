@@ -14,14 +14,17 @@ import defeatedcrow.hac.machine.MachineCommonProxy;
 import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePressMachine;
+import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
 import defeatedcrow.hac.machine.gui.ContainerPressMachine;
+import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 import defeatedcrow.hac.machine.gui.GuiHopperFilter;
 import defeatedcrow.hac.machine.gui.GuiHopperFluid;
 import defeatedcrow.hac.machine.gui.GuiPressMachine;
+import defeatedcrow.hac.machine.gui.GuiReactor;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.magic.MagicCommonProxy;
@@ -56,6 +59,7 @@ import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
 import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
+import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.potion.PotionBirdDC;
 import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
@@ -208,6 +212,8 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
 		MinecraftForge.EVENT_BUS.register(new CombatEvent());
 		MinecraftForge.EVENT_BUS.register(new DCLootEvent());
+
+		DCMainPacket.init();
 	}
 
 	@Override
@@ -238,6 +244,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
 			return new ContainerHopperFluid((TileHopperFluid) tile, player);
+		if (tile instanceof TileReactor)
+			return new ContainerReactor((TileReactor) tile, player.inventory);
 		return null;
 	}
 
@@ -269,6 +277,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
 			return new GuiHopperFluid((TileHopperFluid) tile, player);
+		if (tile instanceof TileReactor)
+			return new GuiReactor((TileReactor) tile, player.inventory);
 		return null;
 	}
 

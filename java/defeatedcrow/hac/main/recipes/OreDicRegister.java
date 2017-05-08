@@ -1,6 +1,8 @@
 package defeatedcrow.hac.main.recipes;
 
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -10,6 +12,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class OreDicRegister {
 	public static void load() {
 		loadOres();
+		loadFluidDic();
 	}
 
 	static void loadOres() {
@@ -181,6 +184,20 @@ public class OreDicRegister {
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
 
 		OreDictionary.registerOre("cropBeetroot", new ItemStack(Items.BEETROOT, 1, 0));
+
+		OreDictionary.registerOre("string", new ItemStack(MachineInit.synthetic, 1, 0));
+		OreDictionary.registerOre("itemString", new ItemStack(MachineInit.synthetic, 1, 0));
+		OreDictionary.registerOre("itemCloth", new ItemStack(MachineInit.synthetic, 1, 1));
+		OreDictionary.registerOre("blockGlass", new ItemStack(MachineInit.synthetic, 1, 2));
+		OreDictionary.registerOre("dustAlkali", new ItemStack(MachineInit.reagent, 1, 3));
+		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
+	}
+
+	static void loadFluidDic() {
+		FluidDictionaryDC.registerFluidDic(MachineInit.hydrogen, "hydrogen");
+		FluidDictionaryDC.registerFluidDic(MachineInit.nitricAcid, "nitricacid");
+		FluidDictionaryDC.registerFluidDic(MachineInit.sulfuricAcid, "sulfuricacid");
+		FluidDictionaryDC.registerFluidDic(MachineInit.ammonia, "ammonia");
 	}
 
 }

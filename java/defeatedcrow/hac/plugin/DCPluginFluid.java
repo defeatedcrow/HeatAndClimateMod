@@ -213,6 +213,24 @@ public class DCPluginFluid {
 		Fluid f37 = FluidRegistry.getFluid("oxigen");
 		registerPotion(f37, MobEffects.WATER_BREATHING);
 
+		Fluid f38 = FluidRegistry.getFluid("dcs.hydrogen");
+		registerPotion(f38, MobEffects.SPEED);
+
+		Fluid f39 = FluidRegistry.getFluid("dcs.ammonia");
+		registerPotion(f39, MobEffects.LEVITATION);
+
+		Fluid f40 = FluidRegistry.getFluid("dcs.fuel_oil");
+		registerPotion(f40, MobEffects.HASTE);
+
+		Fluid f41 = FluidRegistry.getFluid("dcs.fuel_gas");
+		registerPotion(f41, MobEffects.STRENGTH);
+
+		Fluid f42 = FluidRegistry.getFluid("dcs.nitric_acid");
+		registerPotion(f42, MobEffects.NAUSEA);
+
+		Fluid f43 = FluidRegistry.getFluid("dcs.sulfuric_acid");
+		registerPotion(f43, MobEffects.POISON);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
@@ -221,6 +239,9 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("fusionfueldt", 120);
 		MainAPIManager.fuelRegister.registerFuel("ethene", 100);
 		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
+
+		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 120);
+		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 150);
 
 	}
 

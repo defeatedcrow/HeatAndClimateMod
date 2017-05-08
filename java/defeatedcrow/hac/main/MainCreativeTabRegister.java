@@ -32,10 +32,11 @@ public class MainCreativeTabRegister {
 		MainInit.fenceSerpentine.setCreativeTab(ClimateMain.build);
 		MainInit.fenceBedrock.setCreativeTab(ClimateMain.build);
 		MainInit.builds.setCreativeTab(ClimateMain.build);
+		MainInit.syntheticBlock.setCreativeTab(ClimateMain.build);
 		MainInit.plate.setCreativeTab(ClimateMain.build);
 		MainInit.desiccant.setCreativeTab(ClimateMain.build);
 
-		MainInit.lightOrb.setCreativeTab(ClimateMain.build);
+		// MainInit.lightOrb.setCreativeTab(ClimateMain.build);
 
 		// furniture
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);

@@ -1,11 +1,18 @@
 package defeatedcrow.hac.machine.recipes;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.recipe.IReactorRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.climate.recipe.ReactorRecipe;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -14,8 +21,12 @@ public class MachineRecipes {
 
 	public static void load() {
 		loadBasicRecipe();
-		loadMachineRecipes();
+		loadMachineRecipe();
 		loadClimateRecipe();
+		if (ModuleConfig.machine_advanced) {
+			loadAdvancedRecipe();
+			loadReactorRecipe();
+		}
 	}
 
 	static void loadBasicRecipe() {
@@ -417,11 +428,115 @@ public class MachineRecipes {
 				new ItemStack(Blocks.CHEST, 1, 0)
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
+				"YXX",
+				"ZXX",
+				"WWW",
+				'X',
+				new ItemStack(MachineInit.IBC, 1, 0),
+				'Y',
+				new ItemStack(MachineInit.gearbox2, 1, 0),
+				'Z',
+				new ItemStack(MachineInit.machimeMaterials, 1, 1),
+				'W',
+				"ingotSUS"
+		}));
+
+		if (ModuleConfig.food) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
+					"YXX",
+					"ZXX",
+					"WWW",
+					'X',
+					new ItemStack(FoodInit.steelPot, 1, 0),
+					'Y',
+					new ItemStack(MachineInit.gearbox2, 1, 0),
+					'Z',
+					new ItemStack(MachineInit.machimeMaterials, 1, 1),
+					'W',
+					"ingotSUS"
+			}));
+		}
+
+	}
+
+	static void loadAdvancedRecipe() {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.synthetic, 1, 1), new Object[] {
+				" X ",
+				"X X",
+				" X ",
+				'X',
+				new ItemStack(MachineInit.synthetic, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.GUNPOWDER, 4, 0), new Object[] {
+				new ItemStack(MachineInit.reagent, 1, 5),
+				new ItemStack(MachineInit.reagent, 1, 6)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
+				"XYX",
+				'X',
+				"ingotAluminium",
+				'Y',
+				"ingotSteel"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.moldAlloy, 1, 0), new Object[] {
+				"XYX",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				"dustNickel"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.moldAlloy, 1, 1), new Object[] {
+				"XYX",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				"dustTitanium"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.moldAlloy, 1, 2), new Object[] {
+				"XYX",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				"dustBismuth"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.moldAlloy, 1, 3), new Object[] {
+				"XYX",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				"dustBlaze"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.moldAluminium, 1, 1), new Object[] {
+				new ItemStack(MachineInit.moldAluminium, 1, 0),
+				"string"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.moldAluminium, 1, 2), new Object[] {
+				new ItemStack(MachineInit.moldAluminium, 1, 0),
+				new ItemStack(Blocks.GLASS_PANE, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.moldAluminium, 1, 3), new Object[] {
+				new ItemStack(MachineInit.moldAluminium, 1, 0),
+				"blockGlass"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
+				new ItemStack(MachineInit.moldAluminium, 1, 32767)
+		}));
 	}
 
 	static void loadClimateRecipe() {}
 
-	static void loadMachineRecipes() {
+	static void loadMachineRecipe() {
 		// mill
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 0), new ItemStack(MainInit.gems, 1, 5),
 				0.1F, "oreCopper");
@@ -593,6 +708,132 @@ public class MachineRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.END_STONE, 4, 0), null, 0F,
 				new ItemStack(Blocks.END_BRICKS, 1, 0));
 
+	}
+
+	static void loadReactorRecipe() {
+		// Ni-Al 水蒸気改質系
+		IReactorRecipe r1 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 1), null,
+				new FluidStack(MachineInit.fuelOil, 200), null, DCHeatTier.KILN, 0,
+				new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(FoodInit.oil, 200),
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r1, DCHeatTier.KILN);
+
+		IReactorRecipe r2 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 0), null,
+				new FluidStack(MachineInit.fuelOil, 200), null, DCHeatTier.KILN, 0,
+				new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(FoodInit.blackLiquor, 200),
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r2, DCHeatTier.KILN);
+
+		IReactorRecipe r3 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 0),
+				new ItemStack(MainInit.miscDust, 1, 7), new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.OVEN,
+				0.25F, new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 200), null,
+				new Object[] {
+						new ItemStack(Items.COAL, 1)
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r3, DCHeatTier.OVEN);
+
+		IReactorRecipe r4 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 7), null,
+				new FluidStack(MachineInit.fuelOil, 50), null, DCHeatTier.OVEN, 0,
+				new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 200), null,
+				new Object[] {
+						new ItemStack(MachineInit.reagent, 1, 0)
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r4, DCHeatTier.OVEN);
+
+		// Pt 炭化水素ガス
+		IReactorRecipe r5 = new ReactorRecipe(null, null, new FluidStack(MachineInit.fuelGas, 200), null,
+				DCHeatTier.SMELTING, 0, new ItemStack(MachineInit.catalyst, 1, 3),
+				new FluidStack(MachineInit.fuelOil, 200), new FluidStack(FluidRegistry.WATER, 200), new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r5, DCHeatTier.SMELTING);
+
+		IReactorRecipe r6 = new ReactorRecipe(null, null, new FluidStack(MachineInit.fuelGas, 400), null,
+				DCHeatTier.SMELTING, 0, new ItemStack(MachineInit.catalyst, 1, 3),
+				new FluidStack(MachineInit.fuelOil, 200), new FluidStack(MachineInit.hydrogen, 200), new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r6, DCHeatTier.SMELTING);
+
+		// Ni 水素ガス
+		IReactorRecipe r7 = new ReactorRecipe(null, null, new FluidStack(MachineInit.hydrogen, 200), null,
+				DCHeatTier.SMELTING, 0, new ItemStack(MachineInit.catalyst, 1, 0),
+				new FluidStack(MachineInit.fuelGas, 200), new FluidStack(FluidRegistry.WATER, 200), new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r7, DCHeatTier.SMELTING);
+
+		// Fe ハーバーボッシュ
+		IReactorRecipe r8 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 300), null,
+				DCHeatTier.KILN, 0, new ItemStack(Items.IRON_INGOT, 1, 0), new FluidStack(MachineInit.hydrogen, 1000),
+				null, new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r8, DCHeatTier.KILN);
+
+		// Pt オストワルト
+		IReactorRecipe r12 = new ReactorRecipe(null, null, new FluidStack(MachineInit.nitricAcid, 1000), null,
+				DCHeatTier.KILN, 0, new ItemStack(MachineInit.catalyst, 1, 3),
+				new FluidStack(MachineInit.ammonia, 1000), new FluidStack(FluidRegistry.WATER, 1000), new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r12, DCHeatTier.KILN);
+
+		// Bi ソハイオ
+		IReactorRecipe r9 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 2), null, null, null,
+				DCHeatTier.KILN, 0, new ItemStack(MachineInit.catalyst, 1, 2), new FluidStack(MachineInit.fuelGas, 200),
+				new FluidStack(MachineInit.ammonia, 200), new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r9, DCHeatTier.KILN);
+
+		// 触媒なし
+		// 硝安
+		IReactorRecipe r10 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 4), null, null, null,
+				DCHeatTier.NORMAL, 0, null, new FluidStack(MachineInit.nitricAcid, 200),
+				new FluidStack(MachineInit.ammonia, 200), new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r10, DCHeatTier.NORMAL);
+
+		// 硝酸2
+		IReactorRecipe r11 = new ReactorRecipe(null, null, new FluidStack(MachineInit.nitricAcid, 200), null,
+				DCHeatTier.KILN, 0, null, new FluidStack(MachineInit.sulfuricAcid, 200),
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"dustNiter"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r11, DCHeatTier.KILN);
+
+		// 硫酸
+		IReactorRecipe r13 = new ReactorRecipe(null, null, new FluidStack(MachineInit.sulfuricAcid, 200), null,
+				DCHeatTier.KILN, 0, null, new FluidStack(FluidRegistry.WATER, 200), null, new Object[] {
+						"dustNiter",
+						"dustSulfur"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r13, DCHeatTier.KILN);
+
+		// 硫酸2
+		IReactorRecipe r14 = new ReactorRecipe(null, null, new FluidStack(MachineInit.sulfuricAcid, 500), null,
+				DCHeatTier.KILN, 0, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(FluidRegistry.WATER, 500),
+				null, new Object[] {
+						"dustSulfur"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r14, DCHeatTier.KILN);
+
+		// アルカリ1
+		IReactorRecipe r15 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 3), null, null, null,
+				DCHeatTier.KILN, 0, null, new FluidStack(FluidRegistry.WATER, 500), null, new Object[] {
+						"dustSalt"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r15, DCHeatTier.KILN);
+
+		// アルカリ2
+		IReactorRecipe r16 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 3), null, null, null,
+				DCHeatTier.KILN, 0, null, new FluidStack(FluidRegistry.WATER, 500), null, new Object[] {
+						"dustLime"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r16, DCHeatTier.KILN);
+
+		// ニトロ
+		IReactorRecipe r17 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 5), null, null, null,
+				DCHeatTier.OVEN, 0, null, new FluidStack(MachineInit.nitricAcid, 200),
+				new FluidStack(MachineInit.sulfuricAcid, 200), new Object[] {
+						"cropCotton"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r17, DCHeatTier.OVEN);
+
+		IReactorRecipe r18 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 6), null, null, null,
+				DCHeatTier.OVEN, 0, null, new FluidStack(MachineInit.nitricAcid, 200),
+				new FluidStack(MachineInit.sulfuricAcid, 200), new Object[] {
+						new ItemStack(MachineInit.reagent, 1, 1)
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r18, DCHeatTier.OVEN);
 	}
 
 }

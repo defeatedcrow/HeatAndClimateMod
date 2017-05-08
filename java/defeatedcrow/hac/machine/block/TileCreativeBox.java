@@ -39,7 +39,7 @@ public class TileCreativeBox extends TileTorqueBase implements ITorqueProvider {
 	@Override
 	public List<EnumFacing> getOutputSide() {
 		List<EnumFacing> ret = Lists.newArrayList();
-		ret.add(getBaseSide());
+		ret.add(getBaseSide().getOpposite());
 		return ret;
 	}
 

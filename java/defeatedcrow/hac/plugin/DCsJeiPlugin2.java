@@ -2,6 +2,7 @@ package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
+import defeatedcrow.hac.machine.gui.GuiReactor;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import mezz.jei.api.IJeiHelpers;
@@ -22,6 +23,10 @@ public class DCsJEIPlugin2 implements IModPlugin {
 		if (ModuleConfig.machine) {
 			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] {
 					"dcs_climate.mill"
+			});
+
+			registry.addRecipeClickArea(GuiReactor.class, 120, 18, 16, 16, new String[] {
+					"dcs_climate.reactor"
 			});
 		}
 

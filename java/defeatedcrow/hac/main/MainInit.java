@@ -41,6 +41,7 @@ public class MainInit {
 	public static Block fenceMarble;
 	public static Block fenceSerpentine;
 	public static Block fenceBedrock;
+	public static Block syntheticBlock;
 
 	public static Block markingPanel;
 	public static Block lightOrb;
@@ -144,6 +145,9 @@ public class MainInit {
 
 	public static Item ignis;
 	public static Item injector;
+
+	public static Item gemShield;
+	public static Item riotShield;
 
 	// food
 	public static Item bakedApple;

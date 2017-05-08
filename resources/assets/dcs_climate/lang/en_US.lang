@@ -6,6 +6,14 @@ item.dcs_creative_drill_normal.name=Crow's Drill
 item.dcs_wrench_brass.name=Adjustable Wrench
 item.dcs_torque_checker_steel.name=Torque Checker
 item.dcs_mold_steel.name=Press Mold
+item.dcs_aluminium_mold_0.name=Aluminium Mold
+item.dcs_aluminium_mold_1.name=Aluminium Mold
+item.dcs_aluminium_mold_2.name=Aluminium Mold
+item.dcs_aluminium_mold_3.name=Aluminium Mold
+item.dcs_alloy_mold_0.name=Alloy Mold
+item.dcs_alloy_mold_1.name=Alloy Mold
+item.dcs_alloy_mold_2.name=Alloy Mold
+item.dcs_alloy_mold_3.name=Alloy Mold
 
 ## metals
 item.dcs_ingot_copper.name=Copper Ingot
@@ -72,10 +80,25 @@ item.dcs_material_cloth_linen.name=Linen Cloth
 item.dcs_material_cloth_cotton.name=Cotton Cloth
 item.dcs_material_spindle_wood.name=Wooden Spindle
 item.dcs_material_spindle_brass.name=Brass Spindle
-item.dcs_material_spindle_arroy.name=Alloy Spindle
+item.dcs_material_spindle_alloy.name=Alloy Spindle
 item.dcs_material_spindle_steel.name=Steel Spindle
 item.dcs_mechanical_induction_motor.name=Induction motor
 item.dcs_mechanical_alternator.name=Alternator
+item.dcs_reagent_drop_coaltar.name=CoalTar Drop
+item.dcs_reagent_drop_glycerine.name=Glycerine Drop
+item.dcs_reagent_drop_synthetic.name=Synthetic Drop
+item.dcs_reagent_dust_alkali.name=Alkali Dust
+item.dcs_reagent_dust_ammonium_nitrate.name=Ammonium Nitrate Dust
+item.dcs_reagent_dust_nitrocellulose.name=Nitro Cellulose Dust
+item.dcs_reagent_bottle_nitroglycerin.name=Nitro Glycerin Bottle
+item.dcs_reagent_bottle_carbon_black.name=Carbon Black Bottle
+item.dcs_catalyst_silver.name=Nickel Catalyst
+item.dcs_catalyst_titanium.name=Titanium Catalyst
+item.dcs_catalyst_bismuth.name=Bismuth Catalyst
+item.dcs_catalyst_blaze.name=Blaze Catalyst
+item.dcs_synthetic_string.name=Synthetic String
+item.dcs_synthetic_cloth.name=Synthetic Cloth
+item.dcs_synthetic_plate.name=Synthetic Plate
 
 ## foods
 item.dcs_food_materials_salt.name=Salt
@@ -190,11 +213,11 @@ item.dcs_food_seeds_cotton.name=Cotton Seeds
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
 item.dcs_yagen_brass_normal.name=Brass Druggist's Mortar
 
-## mining tools
 item.dcs_repair_putty.name=Repair Putty
 item.dcs_repair_abrasive.name=Molded Abrasibe
 item.dcs_repair_soap.name=Soap
 
+## mining tools
 item.dcs_axe_brass.name=Brass Axe
 item.dcs_axe_steel.name=Steel Axe
 item.dcs_axe_silver.name=Silver Axe
@@ -524,6 +547,22 @@ tile.dcs_desiccant_red.name=Desiccant
 tile.dcs_desiccant_yellow.name=Degrated Desiccant
 tile.dcs_desiccant_green.name=Wet Desiccant
 tile.dcs_desiccant_blue.name=Used Desiccant
+tile.dcs_build_synthetic_glass_white.name=White Acrylic Glass
+tile.dcs_build_synthetic_glass_orange.name=Orange Acrylic Glass
+tile.dcs_build_synthetic_glass_magenta.name=Magenta Acrylic Glass
+tile.dcs_build_synthetic_glass_light_blue.name=Light Blue Acrylic Glass
+tile.dcs_build_synthetic_glass_yellow.name=Yellow Acrylic Glass
+tile.dcs_build_synthetic_glass_lime.name=Lime Acrylic Glass
+tile.dcs_build_synthetic_glass_pink.name=Pink Acrylic Glass
+tile.dcs_build_synthetic_glass_gray.name=Gray Acrylic Glass
+tile.dcs_build_synthetic_glass_silver.name=Silver Acrylic Glass
+tile.dcs_build_synthetic_glass_cyan.name=Cyan Acrylic Glass
+tile.dcs_build_synthetic_glass_purple.name=Purple Acrylic Glass
+tile.dcs_build_synthetic_glass_blue.name=Blue Acrylic Glass
+tile.dcs_build_synthetic_glass_brown.name=Brown Acrylic Glass
+tile.dcs_build_synthetic_glass_green.name=Green Acrylic Glass
+tile.dcs_build_synthetic_glass_red.name=red Acrylic Glass
+tile.dcs_build_synthetic_glass_black.name=Black Acrylic Glass
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -575,6 +614,7 @@ tile.dcs_device_thermometer_0.name=Galileo Thermometer
 tile.dcs_device_windvane_0.name=Wind vane
 tile.dcs_device_watermill_0.name=Watermill
 tile.dcs_device_dynamo_0.name=Dynamo
+tile.dcs_device_reactor_0.name=Chemical Reactor
 
 ## crops
 tile.dcs_crop_rice_3.name=Rice Plant
@@ -633,6 +673,18 @@ fluid.dcs.hotspring=Hot Spring
 tile.dcs_fluidblock_hotspring_0.name=Hot Spring
 fluid.dcs.stock=Soup Stock
 tile.dcs_fluidblock_stock_0.name=Soup Stock
+fluid.dcs.hydrogen=Hydrogen
+tile.dcs_fluidblock_hydrogen_0.name=Hydrogen
+fluid.dcs.ammonia=Ammonia
+tile.dcs_fluidblock_ammonia_0.name=Ammonia
+fluid.dcs.nitric_acid=Nitric Acid
+tile.dcs_fluidblock_nitric_acid_0.name=Nitric_Acid
+fluid.dcs.sulfuric_acid=Sulfuric Acid
+tile.dcs_fluidblock_sulfuric_acid_0.name=Sulfuric Acid
+fluid.dcs.fuel_gas=Fuel Gas
+tile.dcs_fluidblock_fuel_gas_0.name=Fuel Gas
+fluid.dcs.fuel_oil=Fuel Oil
+tile.dcs_fluidblock_fuel_oil_0.name=Fuel Oil
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
@@ -752,6 +804,7 @@ dcs.gui.device.fuel_stove=Fluid Fuel Stove
 dcs.gui.device.pressmachine=Press Machine
 dcs.gui.device.hopper.filter=Filter Hopper
 dcs.gui.device.hopper.fluid=Fluid Hopper
+dcs.gui.device.reactor=Chemical Reactor
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold
@@ -819,8 +872,8 @@ achievement.dcs.machine_rotate=Wrench Handling
 achievement.dcs.machine_rotate.desc=Right-click the Torque Machines with wrench.
 achievement.dcs.machine_stonemill=New Energy, New Crafting
 achievement.dcs.machine_stonemill.desc=Place and operate the Stone Mill.
-achievement.dcs.machine_arroy=New Arroy Machine Parts
-achievement.dcs.machine_arroy.desc=Craft a Nickelsilver Spindle.
+achievement.dcs.machine_alloy=New Alloy Machine Parts
+achievement.dcs.machine_alloy.desc=Craft a Nickelsilver Spindle.
 achievement.dcs.machine_heatex=Adjust the Temperature
 achievement.dcs.machine_heatex.desc=Place the Heat Exchanger.
 achievement.dcs.machine_sus=Stainless Steel!

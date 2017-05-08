@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.IFuelHandler;
@@ -20,6 +21,14 @@ public class DCFuelHandler implements IFuelHandler {
 				int i = fuel.getMetadata();
 				if (i == 4)
 					return 1600;
+				else
+					return 0;
+			} else if (fuel.getItem() == MachineInit.reagent) {
+				int i = fuel.getMetadata();
+				if (i == 0)
+					return 1600;
+				else if (i == 1)
+					return 800;
 				else
 					return 0;
 			}

@@ -5,19 +5,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 // 雷エフェクト召喚
-public class MessageThunderEff implements IMessage {
+public class MessageReactorButton implements IMessage {
 
 	public int x;
 	public int y;
 	public int z;
+	public byte num;
+	public byte side;
 
-	public MessageThunderEff() {
-	}
+	public MessageReactorButton() {}
 
-	public MessageThunderEff(BlockPos pos, float par1, float par2, float par3) {
+	public MessageReactorButton(BlockPos pos, byte b1, byte b2) {
 		this.x = pos.getX();
 		this.y = pos.getY();
 		this.z = pos.getZ();
+		num = b1;
+		side = b2;
 	}
 
 	// read
@@ -26,6 +29,8 @@ public class MessageThunderEff implements IMessage {
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
+		num = buf.readByte();
+		side = buf.readByte();
 	}
 
 	// write
@@ -34,5 +39,7 @@ public class MessageThunderEff implements IMessage {
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
+		buf.writeByte(num);
+		buf.writeByte(side);
 	}
 }

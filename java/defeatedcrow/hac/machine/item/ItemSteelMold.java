@@ -48,7 +48,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		String s = "items/misc/mold_" + names[meta];
+		String s = "items/misc/" + names[meta];
 		if (f) {
 			s = "textures/" + s;
 		}
@@ -78,9 +78,10 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 	}
 
 	@Override
-	public void setOutput(ItemStack mold, ItemStack output, int num) {
+	public ItemStack setOutput(ItemStack mold, ItemStack output, int num) {
 		if (output != null && mold != null && mold.getItem() instanceof IPressMold) {
-			IPressMold mol = (IPressMold) mold.getItem();
+			ItemStack next = new ItemStack(mold.getItem(), mold.stackSize, mold.getItemDamage());
+			IPressMold mol = (IPressMold) next.getItem();
 			if (mol.getOutput(mold) == null) {
 				// レシピ検索
 				RecipePair recipe = this.getInputList(output, num);
@@ -103,10 +104,12 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 					}
 					tag.setTag("MoldRecipe", nbttaglist2);
 					tag.setInteger("MoldRecipeNum", recipe.number);
-					mold.setTagCompound(tag);
+					next.setTagCompound(tag);
+					return next;
 				}
 			}
 		}
+		return null;
 	}
 
 	@Override

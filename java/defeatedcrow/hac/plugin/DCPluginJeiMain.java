@@ -25,6 +25,7 @@ public class DCPluginJeiMain {
 		DCsJEIPluginLists.fluidcrafters.add(new ItemStack(FoodInit.steelPot));
 		DCsJEIPluginLists.fluidcrafters.add(new ItemStack(FoodInit.teaPot));
 		DCsJEIPluginLists.crops.add(new ItemStack(FoodInit.cropRice, 1, 3));
+		DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.reactor, 1, 0));
 
 	}
 

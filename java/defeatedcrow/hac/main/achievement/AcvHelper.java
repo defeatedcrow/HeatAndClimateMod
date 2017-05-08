@@ -56,7 +56,7 @@ public class AcvHelper {
 		boolean a = player.hasAchievement(AchievementClimate.MACHINE_GEAR);
 		boolean b = player.hasAchievement(AchievementClimate.MACHINE_PLACE);
 		boolean c = player.hasAchievement(AchievementClimate.MACHINE_CHANGE);
-		boolean d = player.hasAchievement(AchievementClimate.MACHINE_ARROY);
+		boolean d = player.hasAchievement(AchievementClimate.MACHINE_ALLOY);
 		if (a && b && c && d && !hasMachineMaster(player)) {
 			player.addStat(AchievementClimate.MACHINE_MASTER);
 			return true;

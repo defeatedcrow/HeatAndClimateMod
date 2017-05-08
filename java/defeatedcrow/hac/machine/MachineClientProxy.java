@@ -19,6 +19,7 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TilePressMachine;
+import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileRedBox;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_L_SUS;
@@ -48,6 +49,7 @@ import defeatedcrow.hac.machine.client.KineticMotorTESR;
 import defeatedcrow.hac.machine.client.L_ShaftTESR;
 import defeatedcrow.hac.machine.client.L_WindmillTESR;
 import defeatedcrow.hac.machine.client.PressMachineTESR;
+import defeatedcrow.hac.machine.client.ReactorTESR;
 import defeatedcrow.hac.machine.client.RedBoxTESR;
 import defeatedcrow.hac.machine.client.SUS_GearBoxTESR;
 import defeatedcrow.hac.machine.client.SUS_L_ShaftTESR;
@@ -62,6 +64,14 @@ import defeatedcrow.hac.machine.client.TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.WaterPumpTESR;
 import defeatedcrow.hac.machine.client.WatermillTESR;
 import defeatedcrow.hac.machine.client.WindmillTESR;
+import defeatedcrow.hac.main.ClimateMain;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -102,6 +112,7 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid", new HopperFluidTESR());
 		ClientRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill", new WatermillTESR());
 		ClientRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
+		ClientRegistry.registerTileEntity(TileReactor.class, "dcs_te_reactor", new ReactorTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -153,6 +164,131 @@ public class MachineClientProxy {
 				0);
 		instance.regTETorqueBlock(MachineInit.watermill, ClimateCore.PACKAGE_ID, "dcs_device_watermill", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.dynamo, ClimateCore.PACKAGE_ID, "dcs_device_dynamo", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.reactor, ClimateCore.PACKAGE_ID, "dcs_device_reactor", "machine", 0);
+
+		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 7);
+		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 2);
+		instance.regSimpleItem(MachineInit.catalyst, ClimateCore.PACKAGE_ID, "dcs_misc_catalyst", "misc", 3);
+		instance.regSimpleItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_ID, "dcs_device_mold_aluminium",
+				"machine", 3);
+		instance.regSimpleItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_ID, "dcs_device_mold_alloy", "machine", 3);
+
+		// fluid
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.hydrogenBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(MachineInit.hydrogenBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.ammoniaBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(MachineInit.ammoniaBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.fuelGasBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(MachineInit.fuelGasBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.fuelOilBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(MachineInit.fuelOilBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.nitricAcidBlock),
+				new ItemMeshDefinition() {
+					final ModelResourceLocation fluidModel = new ModelResourceLocation(
+							ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid", "fluid");
+
+					@Override
+					public ModelResourceLocation getModelLocation(ItemStack stack) {
+						return fluidModel;
+					}
+				});
+		ModelLoader.setCustomStateMapper(MachineInit.nitricAcidBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.sulfuricAcidBlock),
+				new ItemMeshDefinition() {
+					final ModelResourceLocation fluidModel = new ModelResourceLocation(
+							ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", "fluid");
+
+					@Override
+					public ModelResourceLocation getModelLocation(ItemStack stack) {
+						return fluidModel;
+					}
+				});
+		ModelLoader.setCustomStateMapper(MachineInit.sulfuricAcidBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
 	}
 
 }
