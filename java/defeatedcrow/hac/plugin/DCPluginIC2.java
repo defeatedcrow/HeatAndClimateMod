@@ -26,6 +26,8 @@ public class DCPluginIC2 {
 		// energy
 		Recipes.semiFluidGenerator.addFluid("dcs.seed_oil", 1, 1.2D);
 		Recipes.semiFluidGenerator.addFluid("dcs.black_liquor", 1, 1.2D);
+		Recipes.semiFluidGenerator.addFluid("dcs.fuel_oil", 1, 1.5D);
+		Recipes.semiFluidGenerator.addFluid("dcs.fuel_gas", 1, 2.0D);
 
 		// recipe registering
 

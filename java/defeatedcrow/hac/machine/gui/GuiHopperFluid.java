@@ -1,5 +1,7 @@
 package defeatedcrow.hac.machine.gui;
 
+import java.util.ArrayList;
+
 import org.lwjgl.opengl.GL11;
 
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
@@ -16,6 +18,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -53,6 +56,30 @@ public class GuiHopperFluid extends GuiContainer {
 			int inAmo = 50 * this.processor.getField(1) / 5000;
 			renderFluid(in, inAmo, i + 92, j + 20, 12, 50);
 		}
+	}
+
+	@Override
+	public void drawScreen(int x, int y, float par3) {
+		super.drawScreen(x, y, par3);
+
+		ArrayList<String> list = new ArrayList<String>();
+		// String hov = "point " + x + "," + y;
+		// list.add(hov);
+
+		if (isPointInRegion(92, 20, 12, 50, x, y)) {
+			if (!processor.inputT.isEmpty()) {
+				int in = this.processor.getField(0);
+				int inAmo = 5000 * this.processor.getField(1) / 5000;
+				Fluid fluid = FluidIDRegisterDC.getFluid(in);
+				if (fluid != null && inAmo > 0) {
+					String nameIn = fluid.getLocalizedName(new FluidStack(fluid, 1000));
+					list.add(nameIn);
+					list.add(inAmo + " mB");
+				}
+			}
+		}
+
+		this.drawHoveringText(list, x, y);
 	}
 
 	protected void renderFluid(int id, int amo, int x, int y, int width, int height) {

@@ -1,10 +1,11 @@
 package defeatedcrow.hac.food.client.model;
 
+import defeatedcrow.hac.core.base.FoodEntityBase;
+import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 
 @SideOnly(Side.CLIENT)
 public class ModelMeatStick extends DCFoodModelBase {
@@ -47,8 +48,20 @@ public class ModelMeatStick extends DCFoodModelBase {
 	}
 
 	@Override
-	public void render(float scale) {
+	public void render(float scale, FoodEntityBase entity) {
+		setIndividualRotation(entity);
 		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale);
+	}
+
+	private void setIndividualRotation(FoodEntityBase entity) {
+		if (entity != null) {
+			float f1 = 0.0698132F;
+			meat1.rotateAngleY = f1 + ((entity.getIndividual() - 16) / 64F) * (float) (Math.PI);
+			float f2 = -0.0349066F;
+			meat2.rotateAngleY = f2 + ((entity.getIndividual() - 12) / 64F) * (float) (Math.PI);
+			float f3 = 0.0523599F;
+			meat3.rotateAngleY = f3 + ((entity.getIndividual() - 14) / 64F) * (float) (Math.PI);
+		}
 	}
 
 	@Override

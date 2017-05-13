@@ -111,7 +111,11 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 								double dist = Math.sqrt(x1 * x1 + z1 * z1);
 								if (rr > 2 && dist < rr - 2) {
 									if (b1 != null) {
-										world.setBlockState(p, b1.getState(), 2);
+										if ((b1.equals(ZINC) || b1.equals(TIN)) && world.rand.nextInt(20) == 1) {
+											world.setBlockState(p, BISMUTH.getState(), 2);
+										} else {
+											world.setBlockState(p, b1.getState(), 2);
+										}
 									}
 								} else if (dist < rr) {
 									if (b2 != null) {
@@ -176,7 +180,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 				else
 					return STONE_2;
 			} else if (y < 40) {
-				int i = rand.nextInt(5);
+				int i = rand.nextInt(4);
 				if (i == 0)
 					return IRON_1;
 				else if (i == 1)
@@ -261,5 +265,6 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	private static final BlockSet COPPER = new BlockSet(MainInit.ores, 6);
 	private static final BlockSet ZINC = new BlockSet(MainInit.ores, 8);
 	private static final BlockSet TIN = new BlockSet(MainInit.ores_2, 4);
+	private static final BlockSet BISMUTH = new BlockSet(MainInit.ores_2, 9);
 
 }

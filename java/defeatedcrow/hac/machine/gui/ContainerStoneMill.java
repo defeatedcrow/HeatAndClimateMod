@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.machine.block.TileStoneMill;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -8,7 +9,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.machine.block.TileStoneMill;
 
 public class ContainerStoneMill extends Container {
 
@@ -25,8 +25,8 @@ public class ContainerStoneMill extends Container {
 
 		this.addSlotToContainer(new Slot(tile, 0, 54, 32));
 
-		this.addSlotToContainer(new Slot(tile, 1, 106, 32));
-		this.addSlotToContainer(new Slot(tile, 2, 126, 32));
+		this.addSlotToContainer(new SlotOutput(tile, 1, 106, 32));
+		this.addSlotToContainer(new SlotOutput(tile, 2, 126, 32));
 
 		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {
@@ -90,14 +90,12 @@ public class ContainerStoneMill extends Container {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 
-			if (index == 0) {
-				if (!this.mergeItemStack(itemstack1, 1, 36, true)) {
+			if (index < 2) {
+				if (!this.mergeItemStack(itemstack1, 2, 37, true))
 					return null;
-				}
 				slot.onSlotChange(itemstack1, itemstack);
-			} else if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
+			} else if (!this.mergeItemStack(itemstack1, 0, 1, false))
 				return null;
-			}
 
 			if (itemstack1.stackSize == 0) {
 				slot.putStack((ItemStack) null);
@@ -105,9 +103,8 @@ public class ContainerStoneMill extends Container {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize) {
+			if (itemstack1.stackSize == itemstack.stackSize)
 				return null;
-			}
 
 			slot.onPickupFromSlot(playerIn, itemstack1);
 		}

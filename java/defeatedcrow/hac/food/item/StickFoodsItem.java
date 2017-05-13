@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.core.util.DCPotion;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
+import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.YakitoriStickEntity;
 import net.minecraft.entity.Entity;
@@ -29,7 +30,7 @@ public class StickFoodsItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 7;
+		return 9;
 	}
 
 	@Override
@@ -52,7 +53,9 @@ public class StickFoodsItem extends FoodItemBase {
 				"pork_raw",
 				"pork_cooked",
 				"beef_raw",
-				"beef_cooked"
+				"beef_cooked",
+				"mutton_raw",
+				"mutton_cooked"
 		};
 		return s;
 	}
@@ -78,6 +81,10 @@ public class StickFoodsItem extends FoodItemBase {
 		case 7:
 			ret = new BeefStickEntity(world, x, y, z, player);
 			break;
+		case 8:
+		case 9:
+			ret = new MuttonStickEntity(world, x, y, z, player);
+			break;
 		default:
 			ret = new FishStickEntity(world, x, y, z, player);
 		}
@@ -85,6 +92,7 @@ public class StickFoodsItem extends FoodItemBase {
 		if (ret != null && (i & 1) == 0) {
 			ret.setRAW(true);
 		}
+		ret.setIndividual(world.rand.nextInt(32));
 		return ret;
 	}
 
@@ -92,13 +100,15 @@ public class StickFoodsItem extends FoodItemBase {
 	public int getFoodAmo(int meta) {
 		switch (meta) {
 		case 1:
-			return 6;
+			return 8;
 		case 3:
-			return 8;
+			return 10;
 		case 5:
-			return 8;
+			return 10;
 		case 7:
-			return 9;
+			return 11;
+		case 9:
+			return 11;
 		default:
 			return 1;
 		}

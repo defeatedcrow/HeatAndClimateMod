@@ -1,5 +1,6 @@
 package defeatedcrow.hac.food.client.model;
 
+import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -68,7 +69,7 @@ public class ModelSquareBread extends DCFoodModelBase {
 	}
 
 	@Override
-	public void render(float scale) {
+	public void render(float scale, FoodEntityBase entity) {
 		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale * 1.5F);
 	}
 
@@ -81,8 +82,9 @@ public class ModelSquareBread extends DCFoodModelBase {
 			float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 		bread1.render(scale);
-		if (isBaked())
+		if (isBaked()) {
 			bread2.render(scale);
+		}
 	}
 
 	public void renderMold(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,

@@ -12,9 +12,13 @@ import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.magic.MagicInitRegister;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
+import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
+import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
+import defeatedcrow.hac.main.block.build.BlockGlassPlastic;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockIronPlate;
+import defeatedcrow.hac.main.block.build.BlockLightOrb;
 import defeatedcrow.hac.main.block.build.BlockLowChest;
 import defeatedcrow.hac.main.block.build.BlockMagnetChest;
 import defeatedcrow.hac.main.block.build.BlockMarkingPanel;
@@ -48,6 +52,7 @@ import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorHat;
+import defeatedcrow.hac.main.item.equip.ItemArmorHoodie;
 import defeatedcrow.hac.main.item.equip.ItemArmorThinDC;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
@@ -59,8 +64,10 @@ import defeatedcrow.hac.main.item.ores.ItemIngots;
 import defeatedcrow.hac.main.item.ores.ItemMetalMaterials;
 import defeatedcrow.hac.main.item.ores.ItemMiscDust;
 import defeatedcrow.hac.main.item.ores.ItemOreDusts;
-import defeatedcrow.hac.main.item.tool.ItemArroyYagen;
+import defeatedcrow.hac.main.item.tool.ItemAlloyYagen;
 import defeatedcrow.hac.main.item.tool.ItemAxeDC;
+import defeatedcrow.hac.main.item.tool.ItemBullets;
+import defeatedcrow.hac.main.item.tool.ItemCrossbowDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
@@ -107,13 +114,13 @@ public class MainMaterialRegister {
 		MainInit.ores = new BlockOres(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone", 15);
 		registerBlock(MainInit.ores, ClimateCore.PACKAGE_BASE + "_ore_stone");
 
-		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 7);
+		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 11);
 		registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone");
 
-		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 10);
+		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 13);
 		registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock");
 
-		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 11);
+		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 14);
 		registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock");
 
 		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 12);
@@ -136,6 +143,15 @@ public class MainMaterialRegister {
 
 		MainInit.markingPanel = new BlockMarkingPanel(ClimateCore.PACKAGE_BASE + "_build_markingpanel");
 		registerBlock(MainInit.markingPanel, ClimateCore.PACKAGE_BASE + "_build_markingpanel");
+
+		MainInit.lightOrb = new BlockLightOrb(ClimateCore.PACKAGE_BASE + "_build_lightorb");
+		registerBlock(MainInit.lightOrb, ClimateCore.PACKAGE_BASE + "_build_lightorb");
+
+		MainInit.syntheticBlock = new BlockGlassPlastic(ClimateCore.PACKAGE_BASE + "_build_synthetic_glass", 15);
+		registerBlock(MainInit.syntheticBlock, ClimateCore.PACKAGE_BASE + "_build_synthetic_glass");
+
+		MainInit.desiccant = new BlockDesiccantPackage(ClimateCore.PACKAGE_BASE + "_desiccant");
+		registerBlock(MainInit.desiccant, ClimateCore.PACKAGE_BASE + "_desiccant");
 	}
 
 	static void registerSidedBlock() {
@@ -203,6 +219,27 @@ public class MainMaterialRegister {
 		registerBlock(MainInit.halfSlab, ClimateCore.PACKAGE_BASE + "_build_slab");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab), "dcs_climate", "dcs_build_slab",
 				"build", 4, true);
+
+		MainInit.fenceGypsum = new BlockFenceBase("dcs_fence_gypsum").setUnlocalizedName("dcs_fence_gypsum");
+		registerBlock(MainInit.fenceGypsum, ClimateCore.PACKAGE_BASE + "_fence_gypsum");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceGypsum), "dcs_climate", "dcs_fence_gypsum",
+				"build", 15, false);
+
+		MainInit.fenceMarble = new BlockFenceBase("dcs_fence_marble").setUnlocalizedName("dcs_fence_marble");
+		registerBlock(MainInit.fenceMarble, ClimateCore.PACKAGE_BASE + "_fence_marble");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceMarble), "dcs_climate", "dcs_fence_marble",
+				"build", 15, false);
+
+		MainInit.fenceSerpentine = new BlockFenceBase("dcs_fence_serpentine")
+				.setUnlocalizedName("dcs_fence_serpentine");
+		registerBlock(MainInit.fenceSerpentine, ClimateCore.PACKAGE_BASE + "_fence_serpentine");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceSerpentine), "dcs_climate",
+				"dcs_fence_serpentine", "build", 15, false);
+
+		MainInit.fenceBedrock = new BlockFenceBase("dcs_fence_bedrock").setUnlocalizedName("dcs_fence_bedrock");
+		registerBlock(MainInit.fenceBedrock, ClimateCore.PACKAGE_BASE + "_fence_bedrock");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceBedrock), "dcs_climate", "dcs_fence_bedrock",
+				"build", 15, false);
 
 		MainInit.tableMarble = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_marble", false);
 		registerBlock(MainInit.tableMarble, ClimateCore.PACKAGE_BASE + "_table_marble");
@@ -335,13 +372,13 @@ public class MainMaterialRegister {
 
 	static void registerItems() {
 		// ores
-		MainInit.oreIngot = new ItemIngots(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		GameRegistry.register(MainInit.oreIngot.setRegistryName(ClimateCore.PACKAGE_BASE + "_ingot"));
 
-		MainInit.oreDust = new ItemOreDusts(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
+		MainInit.oreDust = new ItemOreDusts(12).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		GameRegistry.register(MainInit.oreDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_oredust"));
 
-		MainInit.gems = new ItemGems(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(17).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		GameRegistry.register(MainInit.gems.setRegistryName(ClimateCore.PACKAGE_BASE + "_gem"));
 
 		MainInit.miscDust = new ItemMiscDust(8).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
@@ -354,7 +391,7 @@ public class MainMaterialRegister {
 		MainInit.stoneYagen = new ItemStoneYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_stone");
 		GameRegistry.register(MainInit.stoneYagen.setRegistryName(ClimateCore.PACKAGE_BASE + "_yagen_stone"));
 
-		MainInit.brassYagen = new ItemArroyYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_brass");
+		MainInit.brassYagen = new ItemAlloyYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_brass");
 		GameRegistry.register(MainInit.brassYagen.setRegistryName(ClimateCore.PACKAGE_BASE + "_yagen_brass"));
 
 		MainInit.crowDrill = new ItemCrowDrill().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_creative_drill");
@@ -378,16 +415,17 @@ public class MainMaterialRegister {
 				"silver",
 				"nickelsilver",
 				"chalcedony",
-				"sapphire"
+				"sapphire",
+				"titanium"
 		};
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < 7; j++) {
 			DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 			MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]);
 			GameRegistry.register(MainInit.dcAxe[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]));
 		}
 
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < 7; j++) {
 			MainInit.dcPickaxe[j] = new ItemPickaxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]);
@@ -395,7 +433,7 @@ public class MainMaterialRegister {
 					.register(MainInit.dcPickaxe[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]));
 		}
 
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < 7; j++) {
 			MainInit.dcSpade[j] = new ItemSpadeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]);
@@ -415,6 +453,10 @@ public class MainMaterialRegister {
 			GameRegistry.register(MainInit.dcSword[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]));
 		}
 
+		MainInit.dcSword[6] = new ItemSwordDC(DCToolMaterial.getToolMaterial(6), name[6], false)
+				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[6]);
+		GameRegistry.register(MainInit.dcSword[6].setRegistryName(ClimateCore.PACKAGE_BASE + "_sword_" + name[6]));
+
 		MainInit.dcScythe[0] = new ItemScytheDC(DCToolMaterial.getToolMaterial(0), "brass")
 				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_brass");
 		GameRegistry.register(MainInit.dcScythe[0].setRegistryName(ClimateCore.PACKAGE_BASE + "_scythe_brass"));
@@ -426,6 +468,12 @@ public class MainMaterialRegister {
 		MainInit.dcScythe[2] = new ItemScytheDC(DCToolMaterial.getToolMaterial(4), "chalcedony")
 				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_chalcedony");
 		GameRegistry.register(MainInit.dcScythe[2].setRegistryName(ClimateCore.PACKAGE_BASE + "_scythe_chalcedony"));
+
+		MainInit.crossbow = new ItemCrossbowDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crossbow");
+		GameRegistry.register(MainInit.crossbow.setRegistryName(ClimateCore.PACKAGE_BASE + "_crossbow"));
+
+		MainInit.cartridge = new ItemBullets(0).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
+		GameRegistry.register(MainInit.cartridge.setRegistryName(ClimateCore.PACKAGE_BASE + "_cartridge"));
 
 		String[] type = {
 				"met",
@@ -458,6 +506,12 @@ public class MainMaterialRegister {
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_sapphire");
 			GameRegistry.register(
 					MainInit.sapphireArmor[i].setRegistryName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_sapphire"));
+
+			MainInit.titaniumArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_TITANIUM, DCMaterial.TITANIUM, slot,
+					"titanium").setCreativeTab(ClimateMain.tool)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium");
+			GameRegistry.register(
+					MainInit.titaniumArmor[i].setRegistryName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium"));
 		}
 
 		MainInit.linenUnder = new ItemArmorThinDC(DCArmorMaterial.DC_LINEN, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
@@ -469,19 +523,34 @@ public class MainMaterialRegister {
 				"linen").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_linen");
 		GameRegistry.register(MainInit.linenCourt.setRegistryName(ClimateCore.PACKAGE_BASE + "_coat_linen"));
 
-		MainInit.clothUnder = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
+		MainInit.clothUnder = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.LEGS,
 				"cloth").setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_cloth");
 		GameRegistry.register(MainInit.clothUnder.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_cloth"));
 
-		MainInit.workerSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
+		MainInit.workerSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.LEGS,
 				"worker").setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_worker");
 		GameRegistry.register(MainInit.workerSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_worker"));
 
-		MainInit.blackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
+		MainInit.blackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.LEGS,
 				"suit").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_suit");
 		GameRegistry.register(MainInit.blackSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_suit"));
+
+		MainInit.trackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterial.SYNTHETIC,
+				EntityEquipmentSlot.LEGS, "tracksuit").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_track");
+		GameRegistry.register(MainInit.trackSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_track"));
+
+		MainInit.combatDress = new ItemArmorThinDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterial.SYNTHETIC,
+				EntityEquipmentSlot.LEGS, "combatdress").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_combatdress");
+		GameRegistry.register(MainInit.combatDress.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_combatdress"));
+
+		MainInit.hoodie = new ItemArmorHoodie(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.CHEST,
+				"white").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie_white");
+		GameRegistry.register(MainInit.hoodie.setRegistryName(ClimateCore.PACKAGE_BASE + "_hoodie_white"));
 
 		MainInit.leatherHat = new ItemArmorHat(ArmorMaterial.LEATHER, DCMaterial.LINEN, EntityEquipmentSlot.HEAD,
 				"leather").setCreativeTab(ClimateMain.tool)

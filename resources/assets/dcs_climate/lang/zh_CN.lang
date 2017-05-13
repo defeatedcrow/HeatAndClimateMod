@@ -60,7 +60,7 @@ item.dcs_material_cloth_linen.name=亚麻布
 item.dcs_material_cloth_cotton.name=木棉布
 item.dcs_material_spindle_wood.name=木质碾盘
 item.dcs_material_spindle_brass.name=黄铜碾盘
-item.dcs_material_spindle_arroy.name=合金碾盘
+item.dcs_material_spindle_alloy.name=合金碾盘
 item.dcs_material_spindle_steel.name=钢制碾盘
 item.dcs_mechanical_induction_motor.name=感应电动机
 item.dcs_mechanical_alternator.name=交流发电机
@@ -732,8 +732,13 @@ achievement.dcs.machine_rotate=使用扳手
 achievement.dcs.machine_rotate.desc=使用扳手右击一个扭矩机器。
 achievement.dcs.machine_stonemill=新能源，新合成
 achievement.dcs.machine_stonemill.desc=放置并运转石臼。
+<<<<<<< HEAD
 achievement.dcs.machine_arroy=合金部件
 achievement.dcs.machine_arroy.desc=制作一个洋白铜碾盘。
+=======
+achievement.dcs.machine_alloy=合金部件
+achievement.dcs.machine_alloy.desc=制作一个洋白铜碾盘。
+>>>>>>> 1.10.2_develop
 achievement.dcs.machine_heatex=温度调整
 achievement.dcs.machine_heatex.desc=放置一个热交换器。
 achievement.dcs.machine_sus=不锈钢！

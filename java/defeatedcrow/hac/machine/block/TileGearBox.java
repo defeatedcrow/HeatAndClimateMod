@@ -1,8 +1,14 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -25,12 +31,20 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 		super.updateTile();
 
 		// provider
-		this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+		IBlockState state = worldObj.getBlockState(pos);
+		if (!DCState.getBool(state, DCState.POWERED)) {
+			for (EnumFacing side : getOutputSide()) {
+				this.provideTorque(worldObj, getPos().offset(side), side, false);
+			}
+		}
+
 	}
 
 	@Override
-	public EnumFacing getOutputSide() {
-		return this.getBaseSide().getOpposite();
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide().getOpposite());
+		return ret;
 	}
 
 	@Override
@@ -42,9 +56,8 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 	public boolean canProvideTorque(World world, BlockPos outputPos, EnumFacing output) {
 		TileEntity tile = world.getTileEntity(outputPos);
 		float amo = getAmount();
-		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F) {
+		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F)
 			return ((ITorqueReceiver) tile).canReceiveTorque(amo, output.getOpposite());
-		}
 		return false;
 	}
 
@@ -66,14 +79,16 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
-		return side == getOutputSide();
+		return getOutputSide().contains(side);
 	}
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		if (this.currentTorque >= this.maxTorque()) {
+		IBlockState state = worldObj.getBlockState(pos);
+		if (DCState.getBool(state, DCState.POWERED))
 			return false;
-		}
+		if (this.currentTorque >= this.maxTorque())
+			return false;
 		return this.isInputSide(side);
 	}
 

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -27,9 +28,16 @@ public class MainCreativeTabRegister {
 		MainInit.stairsSerpentine.setCreativeTab(ClimateMain.build);
 		MainInit.stairsBedrock.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab.setCreativeTab(ClimateMain.build);
+		MainInit.fenceGypsum.setCreativeTab(ClimateMain.build);
+		MainInit.fenceMarble.setCreativeTab(ClimateMain.build);
+		MainInit.fenceSerpentine.setCreativeTab(ClimateMain.build);
+		MainInit.fenceBedrock.setCreativeTab(ClimateMain.build);
 		MainInit.builds.setCreativeTab(ClimateMain.build);
+		MainInit.syntheticBlock.setCreativeTab(ClimateMain.build);
 		MainInit.plate.setCreativeTab(ClimateMain.build);
-		// MainInit.markingPanel.setCreativeTab(ClimateMain.build);
+		MainInit.desiccant.setCreativeTab(ClimateMain.build);
+
+		// MainInit.lightOrb.setCreativeTab(ClimateMain.build);
 
 		// furniture
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
@@ -91,8 +99,13 @@ public class MainCreativeTabRegister {
 		MainInit.bakedApple.setCreativeTab(ClimateMain.food);
 		MainInit.foodMaterials.setCreativeTab(ClimateMain.food);
 
+		if (ModuleConfig.weapon_advanced) {
+			MainInit.cartridge.setCreativeTab(ClimateMain.tool);
+			MainInit.crossbow.setCreativeTab(ClimateMain.tool);
+		}
+
 		if (DCIntegrationCore.loadedForestry) {
-			MainInit.circuit.setCreativeTab(ClimateCore.climate);
+			// MainInit.circuit.setCreativeTab(ClimateCore.climate);
 		}
 		if (DCIntegrationCore.loadedMekanism) {
 			MainInit.metalMaterials.setCreativeTab(ClimateCore.climate);

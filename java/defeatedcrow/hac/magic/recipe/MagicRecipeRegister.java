@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class MagicRecipeRegister {
 
@@ -34,7 +35,10 @@ public class MagicRecipeRegister {
 				"gemSchorl",
 				"gemSerpentine",
 				"gemOlivine",
-				"gemGarnet"
+				"gemGarnet",
+				new ItemStack(MagicInit.elestial, 1, 0),
+				"gemRutile",
+				"gemBismuth"
 		};
 		for (int i = 0; i < gems.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.pendant, 1, i), new Object[] {
@@ -116,6 +120,14 @@ public class MagicRecipeRegister {
 				"ingotNickelsilver",
 				'Y',
 				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MagicInit.badge, 1, 7), new Object[] {
+				new ItemStack(MagicInit.badge, 1, 7)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MagicInit.badge, 1, 16), new Object[] {
+				new ItemStack(MagicInit.badge, 1, 16)
 		}));
 
 		// dagger
@@ -330,7 +342,7 @@ public class MagicRecipeRegister {
 				'Y',
 				"gemClam",
 				'W',
-				"gemCelestite",
+				new ItemStack(Items.NETHER_STAR),
 				'Z',
 				new ItemStack(MagicInit.daggerSilver)
 		}));

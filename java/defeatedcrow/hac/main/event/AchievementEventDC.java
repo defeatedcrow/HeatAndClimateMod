@@ -37,10 +37,12 @@ public class AchievementEventDC {
 					float prev = 0F;
 					if (items != null) {
 						for (ItemStack item : items) {
-							if (item != null && item.getItem() instanceof ItemArmor) {
+							float p = DamageAPI.itemRegister.getHeatPreventAmount(item);
+							if (p == 0 && item != null && item.getItem() instanceof ItemArmor) {
 								ArmorMaterial mat = ((ItemArmor) item.getItem()).getArmorMaterial();
-								prev += DamageAPI.armorRegister.getPreventAmount(mat);
+								p = DamageAPI.armorRegister.getHeatPreventAmount(mat);
 							}
+							prev += p;
 						}
 					}
 					if (prev >= 4.0F) {

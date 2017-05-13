@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
+import net.minecraftforge.fluids.Fluid;
 
 public class MainInit {
 	private MainInit() {}
@@ -36,8 +37,26 @@ public class MainInit {
 	public static Block halfSlab;
 	public static Block builds;
 	public static Block plate;
+	public static Block fenceGypsum;
+	public static Block fenceMarble;
+	public static Block fenceSerpentine;
+	public static Block fenceBedrock;
+	public static Block syntheticBlock;
 
 	public static Block markingPanel;
+	public static Block lightOrb;
+
+	/* building advanced */
+
+	public static Block asphalt;
+	public static Block fireproofs;
+	public static Block fireproofhalfs;
+	public static Block fireproofStairs;
+
+	public static Block desiccant;
+	public static Block freezepack;
+	public static Block hotPack;
+	public static Block waterPack;
 
 	// furniture
 	public static Block chalLamp;
@@ -92,10 +111,10 @@ public class MainInit {
 	public static Item repairPutty;
 	public static Item wrench;
 
-	public static Item[] dcAxe = new Item[6];
-	public static Item[] dcPickaxe = new Item[6];
-	public static Item[] dcSpade = new Item[6];
-	public static Item[] dcSword = new Item[6];
+	public static Item[] dcAxe = new Item[7];
+	public static Item[] dcPickaxe = new Item[7];
+	public static Item[] dcSpade = new Item[7];
+	public static Item[] dcSword = new Item[7];
 	public static Item[] dcScythe = new Item[3];
 
 	// armor
@@ -113,6 +132,22 @@ public class MainInit {
 
 	public static Item leatherHat;
 	public static Item cottonHat;
+
+	/* weapon advanced */
+
+	public static Item[] titaniumArmor = new Item[4];
+
+	public static Item combatDress;
+	public static Item trackSuit;
+	public static Item hoodie;
+
+	public static Item crossbow;
+	public static Item gun;
+	public static Item ignis;
+	public static Item cartridge;
+
+	public static Item gemShield;
+	public static Item riotShield;
 
 	// food
 	public static Item bakedApple;
@@ -134,5 +169,9 @@ public class MainInit {
 	// plugin
 	public static Item circuit;
 	public static Item metalMaterials;
+
+	public static Fluid milk;
+
+	public static Item manju;
 
 }

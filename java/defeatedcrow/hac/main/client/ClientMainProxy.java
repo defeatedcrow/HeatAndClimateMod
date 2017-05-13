@@ -7,7 +7,6 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.client.JsonBakery;
-import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.food.FoodClientProxy;
 import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.magic.MagicClientProxy;
@@ -44,10 +43,15 @@ import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
 import defeatedcrow.hac.main.client.block.TESRThermometer;
 import defeatedcrow.hac.main.client.block.TESRVillageChest;
 import defeatedcrow.hac.main.client.block.TESRWindVane;
+import defeatedcrow.hac.main.client.entity.BoltRenderer;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.model.ModelHat;
+import defeatedcrow.hac.main.client.model.ModelHoodie;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
+import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
+import defeatedcrow.hac.main.client.particle.ParticleOrb;
+import defeatedcrow.hac.main.entity.EntityBulletDC;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.event.AltTooltipEvent;
 import net.minecraft.block.Block;
@@ -74,6 +78,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ClientMainProxy extends CommonMainProxy {
 
 	private static final ModelHat hatModel = new ModelHat(0);
+	private static final ModelHoodie hoodieModel = new ModelHoodie(0);
 
 	@Override
 	public void loadConst() {
@@ -89,6 +94,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		List<String> particles = new ArrayList<String>();
 		particles.add(ParticleBlink.BLINK_TEX);
 		particles.add(ParticleFallingStar.STAR_TEX);
+		particles.add(ParticleCloudDC.CLOUD_TEX);
+		particles.add(ParticleOrb.ORB_TEX);
 
 		particles.add(TESRInfernalFlame.TEX1.toString());
 		particles.add(TESRInfernalFlame.TEX2.toString());
@@ -112,6 +119,7 @@ public class ClientMainProxy extends CommonMainProxy {
 	public void loadEntity() {
 		super.loadEntity();
 		registRender(EntityCution.class, RenderEntityCution.class);
+		registRender(EntityBulletDC.class, BoltRenderer.class);
 
 		FoodClientProxy.loadEntity();
 		MagicClientProxy.loadEntity();
@@ -223,10 +231,12 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	// mainで追加したBipedModel
 	@Override
-	public ModelThinBiped getArmorModel(int slot) {
+	public net.minecraft.client.model.ModelBiped getArmorModel(int slot) {
 		switch (slot) {
 		case 3:
 			return hatModel;
+		case 2:
+			return hoodieModel;
 		default:
 			return null;
 		}

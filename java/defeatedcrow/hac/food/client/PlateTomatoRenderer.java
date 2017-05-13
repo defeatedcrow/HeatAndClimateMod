@@ -41,7 +41,7 @@ public class PlateTomatoRenderer extends DCRenderFoodBase<SoupPlateEntity> {
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(rotZ, 0.0F, 0.0F, 1.0F);
 
-		PLATE_MODEL.render(0.0625F);
+		PLATE_MODEL.render(0.0625F, entity);
 
 		GlStateManager.popMatrix();
 		super.doRender(entity, x, y, z, yaw, partialTicks);

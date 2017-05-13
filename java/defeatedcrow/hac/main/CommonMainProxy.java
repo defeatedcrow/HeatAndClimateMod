@@ -1,7 +1,6 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileTeaPot;
@@ -14,14 +13,17 @@ import defeatedcrow.hac.machine.MachineCommonProxy;
 import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePressMachine;
+import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
 import defeatedcrow.hac.machine.gui.ContainerPressMachine;
+import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 import defeatedcrow.hac.machine.gui.GuiHopperFilter;
 import defeatedcrow.hac.machine.gui.GuiHopperFluid;
 import defeatedcrow.hac.machine.gui.GuiPressMachine;
+import defeatedcrow.hac.machine.gui.GuiReactor;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.magic.MagicCommonProxy;
@@ -46,6 +48,7 @@ import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.entity.EntityBulletDC;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
@@ -56,6 +59,7 @@ import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
 import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
+import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.potion.PotionBirdDC;
 import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
@@ -77,6 +81,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -122,6 +128,12 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadRecipes() {
+		// milk
+		Fluid milk = FluidRegistry.getFluid("milk");
+		if (milk != null) {
+			MainInit.milk = milk;
+		}
+
 		OreDicRegister.load();
 		BasicRecipeRegister.load();
 		MachineRecipeRegister.load();
@@ -140,7 +152,10 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadEntity() {
-		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 50,
+		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 90,
+				ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityBulletDC.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet", 91,
 				ClimateMain.instance, 128, 5, true);
 
 		FoodCommonProxy.loadEntity();
@@ -200,6 +215,8 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
 		MinecraftForge.EVENT_BUS.register(new CombatEvent());
 		MinecraftForge.EVENT_BUS.register(new DCLootEvent());
+
+		DCMainPacket.init();
 	}
 
 	@Override
@@ -230,6 +247,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
 			return new ContainerHopperFluid((TileHopperFluid) tile, player);
+		if (tile instanceof TileReactor)
+			return new ContainerReactor((TileReactor) tile, player.inventory);
 		return null;
 	}
 
@@ -261,10 +280,12 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
 			return new GuiHopperFluid((TileHopperFluid) tile, player);
+		if (tile instanceof TileReactor)
+			return new GuiReactor((TileReactor) tile, player.inventory);
 		return null;
 	}
 
-	public ModelThinBiped getArmorModel(int slot) {
+	public net.minecraft.client.model.ModelBiped getArmorModel(int slot) {
 		return null;
 	}
 

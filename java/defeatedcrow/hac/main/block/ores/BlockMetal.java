@@ -2,6 +2,10 @@ package defeatedcrow.hac.main.block.ores;
 
 import java.util.List;
 
+import defeatedcrow.hac.api.placeable.IRapidCollectables;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -10,10 +14,6 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.placeable.IRapidCollectables;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
-import defeatedcrow.hac.core.base.ITexturePath;
 
 public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
@@ -35,7 +35,11 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 			"magnet",
 			"tin",
 			"bronze",
-			"sus" };
+			"sus",
+			"titanium",
+			"aluminium",
+			"bismuth"
+	};
 
 	@Override
 	public String[] getNameSuffix() {
@@ -44,8 +48,9 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		if (meta >= names.length)
+		if (meta >= names.length) {
 			meta = names.length - 1;
+		}
 		String s = "blocks/ores/oreblock_" + names[meta];
 		if (f) {
 			s = "textures/" + s;

@@ -6,6 +6,7 @@ import defeatedcrow.hac.machine.block.BlockCatapult;
 import defeatedcrow.hac.machine.block.BlockConveyor;
 import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockCreativeBox;
+import defeatedcrow.hac.machine.block.BlockDynamo;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFauset;
 import defeatedcrow.hac.machine.block.BlockGearBox;
@@ -17,6 +18,7 @@ import defeatedcrow.hac.machine.block.BlockHopperFluid;
 import defeatedcrow.hac.machine.block.BlockIBC;
 import defeatedcrow.hac.machine.block.BlockKineticMotor;
 import defeatedcrow.hac.machine.block.BlockPressMachine;
+import defeatedcrow.hac.machine.block.BlockReactor;
 import defeatedcrow.hac.machine.block.BlockRedBox;
 import defeatedcrow.hac.machine.block.BlockShaft_L;
 import defeatedcrow.hac.machine.block.BlockShaft_L_SUS;
@@ -28,16 +30,27 @@ import defeatedcrow.hac.machine.block.BlockShaft_TB;
 import defeatedcrow.hac.machine.block.BlockShaft_TB_SUS;
 import defeatedcrow.hac.machine.block.BlockStoneMill;
 import defeatedcrow.hac.machine.block.BlockWaterPump;
+import defeatedcrow.hac.machine.block.BlockWatermill;
 import defeatedcrow.hac.machine.block.BlockWindmill;
 import defeatedcrow.hac.machine.block.BlockWindmill_L;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
+import defeatedcrow.hac.machine.item.ItemAlloyMold;
+import defeatedcrow.hac.machine.item.ItemAluminiumMold;
+import defeatedcrow.hac.machine.item.ItemCatalyst;
 import defeatedcrow.hac.machine.item.ItemMachineMaterial;
+import defeatedcrow.hac.machine.item.ItemReagents;
 import defeatedcrow.hac.machine.item.ItemSteelMold;
+import defeatedcrow.hac.machine.item.ItemSynthetic;
 import defeatedcrow.hac.machine.item.ItemTorqueChecker;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.MainMaterialRegister;
+import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineInitRegister {
@@ -47,6 +60,7 @@ public class MachineInitRegister {
 	public static void load() {
 		loadBlocks();
 		loadItems();
+		loadFluids();
 
 		if (ModuleConfig.machine) {
 			loadCreativeTab();
@@ -86,6 +100,9 @@ public class MachineInitRegister {
 
 		MachineInit.fan = new BlockFan(ClimateCore.PACKAGE_BASE + "_device_fan");
 		registerTierBlock(MachineInit.fan, ClimateCore.PACKAGE_BASE + "_device_fan", 1);
+
+		MachineInit.watermill = new BlockWatermill(ClimateCore.PACKAGE_BASE + "_device_watermill");
+		registerTierBlock(MachineInit.watermill, ClimateCore.PACKAGE_BASE + "_device_watermill", 2);
 
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
 		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 2);
@@ -138,6 +155,12 @@ public class MachineInitRegister {
 		MachineInit.motor = new BlockKineticMotor(ClimateCore.PACKAGE_BASE + "_device_kinetic_motor");
 		registerTierBlock(MachineInit.motor, ClimateCore.PACKAGE_BASE + "_device_kinetic_motor", 3);
 
+		MachineInit.dynamo = new BlockDynamo(ClimateCore.PACKAGE_BASE + "_device_dynamo");
+		registerTierBlock(MachineInit.dynamo, ClimateCore.PACKAGE_BASE + "_device_dynamo", 3);
+
+		MachineInit.reactor = new BlockReactor(ClimateCore.PACKAGE_BASE + "_device_reactor");
+		registerTierBlock(MachineInit.reactor, ClimateCore.PACKAGE_BASE + "_device_reactor", 3);
+
 		MachineInit.pressMachine = new BlockPressMachine(ClimateCore.PACKAGE_BASE + "_device_press_machine");
 		registerTierBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_BASE + "_device_press_machine", 3);
 
@@ -154,9 +177,25 @@ public class MachineInitRegister {
 		MachineInit.mold = new ItemSteelMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mold");
 		GameRegistry.register(MachineInit.mold.setRegistryName(ClimateCore.PACKAGE_BASE + "_mold"));
 
+		MachineInit.moldAluminium = new ItemAluminiumMold()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_aluminium_mold");
+		GameRegistry.register(MachineInit.moldAluminium.setRegistryName(ClimateCore.PACKAGE_BASE + "_aluminium_mold"));
+
+		MachineInit.moldAlloy = new ItemAlloyMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_alloy_mold");
+		GameRegistry.register(MachineInit.moldAlloy.setRegistryName(ClimateCore.PACKAGE_BASE + "_alloy_mold"));
+
 		MachineInit.torqueChecker = new ItemTorqueChecker()
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_torque_checker");
 		GameRegistry.register(MachineInit.torqueChecker.setRegistryName(ClimateCore.PACKAGE_BASE + "_torque_checker"));
+
+		MachineInit.reagent = new ItemReagents().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_reagent");
+		GameRegistry.register(MachineInit.reagent.setRegistryName(ClimateCore.PACKAGE_BASE + "_reagent"));
+
+		MachineInit.synthetic = new ItemSynthetic().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_synthetic");
+		GameRegistry.register(MachineInit.synthetic.setRegistryName(ClimateCore.PACKAGE_BASE + "_synthetic"));
+
+		MachineInit.catalyst = new ItemCatalyst().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_catalyst");
+		GameRegistry.register(MachineInit.catalyst.setRegistryName(ClimateCore.PACKAGE_BASE + "_catalyst"));
 	}
 
 	static void loadCreativeTab() {
@@ -184,6 +223,7 @@ public class MachineInitRegister {
 		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
 		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
 		MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
+		MachineInit.watermill.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.shaft2_s.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_l.setCreativeTab(ClimateMain.machine);
@@ -193,14 +233,104 @@ public class MachineInitRegister {
 
 		MachineInit.boilerTurbine.setCreativeTab(ClimateMain.machine);
 		MachineInit.motor.setCreativeTab(ClimateMain.machine);
+		MachineInit.dynamo.setCreativeTab(ClimateMain.machine);
+		MachineInit.creativeBox.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.pressMachine.setCreativeTab(ClimateMain.machine);
 
+		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
 		MachineInit.machimeMaterials.setCreativeTab(ClimateCore.climate);
 		MachineInit.mold.setCreativeTab(ClimateMain.machine);
-		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
 
-		MachineInit.creativeBox.setCreativeTab(ClimateMain.machine);
+		if (ModuleConfig.machine_advanced) {
+			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
+
+			MachineInit.moldAluminium.setCreativeTab(ClimateMain.machine);
+			MachineInit.moldAlloy.setCreativeTab(ClimateMain.machine);
+
+			MachineInit.reagent.setCreativeTab(ClimateMain.machine);
+			MachineInit.synthetic.setCreativeTab(ClimateMain.machine);
+			MachineInit.catalyst.setCreativeTab(ClimateMain.machine);
+		}
+	}
+
+	static void loadFluids() {
+
+		MachineInit.hydrogen = new Fluid("dcs.hydrogen",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/hydrogen_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/hydrogen_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".hydrogen").setDensity(-1000).setViscosity(300)
+						.setGaseous(true);
+		FluidRegistry.registerFluid(MachineInit.hydrogen);
+		MachineInit.hydrogenBlock = new DCFluidBlockBase(MachineInit.hydrogen, "hydrogen_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen");
+		MainMaterialRegister.registerBlock(MachineInit.hydrogenBlock,
+				ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen");
+		MachineInit.hydrogen.setBlock(MachineInit.hydrogenBlock);
+
+		MachineInit.ammonia = new Fluid("dcs.ammonia",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/ammonia_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/ammonia_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".ammonia").setDensity(-1000).setViscosity(300)
+						.setGaseous(true);
+		FluidRegistry.registerFluid(MachineInit.ammonia);
+		MachineInit.ammoniaBlock = new DCFluidBlockBase(MachineInit.ammonia, "ammonia_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia");
+		MainMaterialRegister.registerBlock(MachineInit.ammoniaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia");
+		MachineInit.ammonia.setBlock(MachineInit.ammoniaBlock);
+
+		MachineInit.nitricAcid = new Fluid("dcs.nitric_acid",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/nitric_acid_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/nitric_acid_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".nitric_acid").setDensity(1200)
+						.setViscosity(1200);
+		FluidRegistry.registerFluid(MachineInit.nitricAcid);
+		MachineInit.nitricAcidBlock = new DCFluidBlockBase(MachineInit.nitricAcid, "nitric_acid_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid");
+		MainMaterialRegister.registerBlock(MachineInit.nitricAcidBlock,
+				ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid");
+		MachineInit.nitricAcid.setBlock(MachineInit.nitricAcidBlock);
+
+		MachineInit.sulfuricAcid = new Fluid("dcs.sulfuric_acid",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/sulfuric_acid_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/sulfuric_acid_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".sulfuric_acid").setDensity(1200)
+						.setViscosity(1200);
+		FluidRegistry.registerFluid(MachineInit.sulfuricAcid);
+		MachineInit.sulfuricAcidBlock = new DCFluidBlockBase(MachineInit.sulfuricAcid, "sulfuric_acid_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid");
+		MainMaterialRegister.registerBlock(MachineInit.sulfuricAcidBlock,
+				ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid");
+		MachineInit.sulfuricAcid.setBlock(MachineInit.sulfuricAcidBlock);
+
+		MachineInit.fuelGas = new Fluid("dcs.fuel_gas",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/fuel_gas_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/fuel_gas_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".fuel_gas").setDensity(-500).setViscosity(300)
+						.setGaseous(true);
+		FluidRegistry.registerFluid(MachineInit.fuelGas);
+		MachineInit.fuelGasBlock = new DCFluidBlockBase(MachineInit.fuelGas, "fuel_gas_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas");
+		MainMaterialRegister.registerBlock(MachineInit.fuelGasBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas");
+		MachineInit.fuelGas.setBlock(MachineInit.fuelGasBlock);
+
+		MachineInit.fuelOil = new Fluid("dcs.fuel_oil",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/fuel_oil_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/fuel_oil_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".fuel_oil").setDensity(800).setViscosity(1500);
+		FluidRegistry.registerFluid(MachineInit.fuelOil);
+		MachineInit.fuelOilBlock = new DCFluidBlockBase(MachineInit.fuelOil, "fuel_oil_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil");
+		MainMaterialRegister.registerBlock(MachineInit.fuelOilBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil");
+		MachineInit.fuelOil.setBlock(MachineInit.fuelOilBlock);
+
+		// bucket
+		FluidRegistry.addBucketForFluid(MachineInit.hydrogen);
+		FluidRegistry.addBucketForFluid(MachineInit.ammonia);
+		FluidRegistry.addBucketForFluid(MachineInit.nitricAcid);
+		FluidRegistry.addBucketForFluid(MachineInit.sulfuricAcid);
+		FluidRegistry.addBucketForFluid(MachineInit.fuelGas);
+		FluidRegistry.addBucketForFluid(MachineInit.fuelOil);
 	}
 
 	public static void registerTierBlock(Block block, String name, int i) {

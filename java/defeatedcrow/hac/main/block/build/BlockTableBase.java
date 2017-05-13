@@ -23,7 +23,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.ClimateCore;
 
 public class BlockTableBase extends Block {
 
@@ -39,7 +38,6 @@ public class BlockTableBase extends Block {
 
 	public BlockTableBase(String s, boolean full) {
 		super(Material.CLAY);
-		this.setCreativeTab(ClimateCore.climate);
 		this.setUnlocalizedName(s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
@@ -100,7 +98,8 @@ public class BlockTableBase extends Block {
 				NORTH,
 				EAST,
 				WEST,
-				SOUTH });
+				SOUTH
+		});
 	}
 
 	@Override
@@ -179,9 +178,8 @@ public class BlockTableBase extends Block {
 		if (isFull) {
 			Block b = world.getBlockState(pos.offset(side)).getBlock();
 			return b == this ? super.shouldSideBeRendered(state, world, pos, side) : true;
-		} else {
+		} else
 			return true;
-		}
 	}
 
 }

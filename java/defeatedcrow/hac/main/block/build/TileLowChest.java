@@ -2,7 +2,6 @@ package defeatedcrow.hac.main.block.build;
 
 import javax.annotation.Nullable;
 
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import net.minecraft.entity.player.EntityPlayer;
@@ -67,14 +66,14 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		int z = this.pos.getZ();
 		if (this.numPlayersUsing > 0 && !isOpen) {
 			isOpen = true;
-			DCLogger.debugLog("open");
+			// DCLogger.debugLog("open");
 			this.worldObj.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getOpenSound(),
 					SoundCategory.BLOCKS, 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 		}
 
 		if (this.numPlayersUsing == 0 && isOpen) {
 			isOpen = false;
-			DCLogger.debugLog("close");
+			// DCLogger.debugLog("close");
 			this.worldObj.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getCloseSound(),
 					SoundCategory.BLOCKS, 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 		}
@@ -295,8 +294,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
-				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+		return getWorld().getTileEntity(this.pos) != this ? false : true;
 	}
 
 	@Override

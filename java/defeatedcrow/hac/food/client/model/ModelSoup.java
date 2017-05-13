@@ -1,5 +1,6 @@
 package defeatedcrow.hac.food.client.model;
 
+import defeatedcrow.hac.core.base.FoodEntityBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
@@ -67,7 +68,8 @@ public class ModelSoup extends ModelSteakPlate {
 	}
 
 	@Override
-	public void render(float scale) {
+	public void render(float scale, FoodEntityBase entity) {
+		setIndividualRotation(entity);
 		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale);
 	}
 
@@ -82,6 +84,24 @@ public class ModelSoup extends ModelSteakPlate {
 		veg4.render(scale);
 		veg5.render(scale);
 		veg6.render(scale);
+	}
+
+	@Override
+	public void setIndividualRotation(FoodEntityBase entity) {
+		if (entity != null) {
+			float f1 = 0.2617994F;
+			veg1.rotateAngleY = f1 + (entity.getIndividual() / 16F) * (float) (Math.PI);
+			float f2 = -0.2443461F;
+			veg2.rotateAngleY = f2 + (entity.getIndividual() / 16F) * (float) (Math.PI);
+			float f3 = 0.1745329F;
+			veg3.rotateAngleY = f3 + (entity.getIndividual() / 16F) * (float) (Math.PI);
+			float f4 = -0.0872665F;
+			veg4.rotateAngleY = f4 + (entity.getIndividual() / 16F) * (float) (Math.PI);
+			float f5 = -0.6457718F;
+			veg5.rotateAngleY = f5 + (entity.getIndividual() / 16F) * (float) (Math.PI);
+			float f6 = 0.4886922F;
+			veg6.rotateAngleY = f6 + (entity.getIndividual() / 16F) * (float) (Math.PI);
+		}
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

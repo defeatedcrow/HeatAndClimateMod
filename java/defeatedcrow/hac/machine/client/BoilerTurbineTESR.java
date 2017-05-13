@@ -5,6 +5,7 @@ import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -30,6 +31,10 @@ public class BoilerTurbineTESR extends DCTorqueTESRBase {
 		float x = 0F;
 		float y = 0F;
 		float z = 0F;
+
+		if (te != null && te.prevTorque > 0F) {
+			this.bindTexture(new ResourceLocation("dcs_climate:textures/tiles/steam_turbine_active.png"));
+		}
 
 		switch (base) {
 		case DOWN:

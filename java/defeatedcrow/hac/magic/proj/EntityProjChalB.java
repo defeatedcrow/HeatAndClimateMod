@@ -7,8 +7,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 
-public class EntityProjChalB extends EntityMagicProjBase {
+public class EntityProjChalB extends EntityProjBase {
 
 	public EntityProjChalB(World worldIn) {
 		super(worldIn);

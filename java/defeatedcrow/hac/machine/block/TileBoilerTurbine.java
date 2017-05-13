@@ -1,12 +1,15 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
+
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
@@ -75,12 +78,14 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			}
 
 			// provider
-			this.provideTorque(worldObj, getPos().offset(getOutputSide()), getOutputSide(), false);
+			for (EnumFacing side : getOutputSide()) {
+				this.provideTorque(worldObj, getPos().offset(side), side, false);
+			}
 
-			DCLogger.debugLog("current torque: " + currentTorque);
-			DCLogger.debugLog("sent torque: " + prevTorque);
-			DCLogger.debugLog("current burntime: " + currentBurnTime);
-			DCLogger.debugLog("current temp: " + currentClimate);
+			// DCLogger.debugLog("current torque: " + currentTorque);
+			// DCLogger.debugLog("sent torque: " + prevTorque);
+			// DCLogger.debugLog("current burntime: " + currentBurnTime);
+			// DCLogger.debugLog("current temp: " + currentClimate);
 
 			// 外見更新
 			// if (BlockBoilerTurbine.isLit(getWorld(), getPos()) != this.isActive()) {
@@ -92,8 +97,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	@Override
-	protected void onServerUpdate() {
-	}
+	protected void onServerUpdate() {}
 
 	public boolean isActive() {
 		return this.currentBurnTime > 0;
@@ -227,12 +231,14 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
-		return side == getBaseSide();
+		return getOutputSide().contains(side);
 	}
 
 	@Override
-	public EnumFacing getOutputSide() {
-		return this.getBaseSide();
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide());
+		return ret;
 	}
 
 	@Override
@@ -244,9 +250,8 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	public boolean canProvideTorque(World world, BlockPos outputPos, EnumFacing output) {
 		TileEntity tile = world.getTileEntity(outputPos);
 		float amo = this.getCurrentTorque();
-		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F) {
+		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F)
 			return ((ITorqueReceiver) tile).canReceiveTorque(amo, output.getOpposite());
-		}
 		return false;
 	}
 
@@ -265,22 +270,19 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return true;
-		}
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return false;
-		}
 		return super.hasCapability(capability, facing);
 	}
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return (T) inputT;
-		} else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return null;
-		}
 		return super.getCapability(capability, facing);
 	}
 
@@ -389,8 +391,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	@Override
-	public void setInventorySlotContents(int index, ItemStack stack) {
-	}
+	public void setInventorySlotContents(int index, ItemStack stack) {}
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -404,12 +405,10 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-	}
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
-	public void closeInventory(EntityPlayer player) {
-	}
+	public void closeInventory(EntityPlayer player) {}
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
@@ -463,8 +462,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	@Override
-	public void clear() {
-	}
+	public void clear() {}
 
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {

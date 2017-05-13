@@ -7,8 +7,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 
-public class EntityProjChalR extends EntityMagicProjBase {
+public class EntityProjChalR extends EntityProjBase {
 
 	public EntityProjChalR(World worldIn) {
 		super(worldIn);

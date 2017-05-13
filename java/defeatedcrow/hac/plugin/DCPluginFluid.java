@@ -4,6 +4,9 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.Block;
@@ -114,12 +117,18 @@ public class DCPluginFluid {
 
 		Fluid f16 = FluidRegistry.getFluid("seed.oil");
 		registerPotion(f16, MobEffects.HASTE);
+		if (f16 != null) {
+			FluidDictionaryDC.registerFluidDic(f16, "plantoil");
+		}
 
 		Fluid f17 = FluidRegistry.getFluid("for.honey");
 		registerPotion(f17, MobEffects.RESISTANCE);
 
 		Fluid f18 = FluidRegistry.getFluid("bio.ethanol");
 		registerPotion(f18, MobEffects.BLINDNESS);
+		if (f18 != null) {
+			FluidDictionaryDC.registerFluidDic(f18, "fueloil");
+		}
 
 		Fluid f33 = FluidRegistry.getFluid("biomass");
 		registerPotion(f33, MobEffects.NAUSEA);
@@ -213,6 +222,24 @@ public class DCPluginFluid {
 		Fluid f37 = FluidRegistry.getFluid("oxigen");
 		registerPotion(f37, MobEffects.WATER_BREATHING);
 
+		Fluid f38 = FluidRegistry.getFluid("dcs.hydrogen");
+		registerPotion(f38, MobEffects.SPEED);
+
+		Fluid f39 = FluidRegistry.getFluid("dcs.ammonia");
+		registerPotion(f39, MobEffects.LEVITATION);
+
+		Fluid f40 = FluidRegistry.getFluid("dcs.fuel_oil");
+		registerPotion(f40, MobEffects.HASTE);
+
+		Fluid f41 = FluidRegistry.getFluid("dcs.fuel_gas");
+		registerPotion(f41, MobEffects.STRENGTH);
+
+		Fluid f42 = FluidRegistry.getFluid("dcs.nitric_acid");
+		registerPotion(f42, MobEffects.NAUSEA);
+
+		Fluid f43 = FluidRegistry.getFluid("dcs.sulfuric_acid");
+		registerPotion(f43, MobEffects.POISON);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
@@ -222,6 +249,16 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("ethene", 100);
 		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
 
+		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 120);
+		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 150);
+
+		// dic
+		FluidDictionaryDC.registerFluidDic(MachineInit.hydrogen, "hydrogen");
+		FluidDictionaryDC.registerFluidDic(MachineInit.nitricAcid, "nitricacid");
+		FluidDictionaryDC.registerFluidDic(MachineInit.sulfuricAcid, "sulfuricacid");
+		FluidDictionaryDC.registerFluidDic(MachineInit.ammonia, "ammonia");
+		FluidDictionaryDC.registerFluidDic(MachineInit.fuelOil, "fueloil");
+		FluidDictionaryDC.registerFluidDic(FoodInit.oil, "plantoil");
 	}
 
 	static void registerPotion(Fluid f, Potion p) {

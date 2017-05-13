@@ -1,0 +1,7 @@
+{
+    "parent": "dcs_climate:block/build/dcs_desiccant_base",
+    "textures": {
+        "main": "dcs_climate:blocks/build/desiccant_green",
+        "side": "dcs_climate:blocks/ores/gemblock_gypsum"
+    }
+}

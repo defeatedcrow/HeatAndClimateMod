@@ -23,7 +23,7 @@ public class ContainerPressMachine extends Container {
 
 		this.addSlotToContainer(new SlotMold(tile, 0, 24, 15));
 
-		this.addSlotToContainer(new Slot(tile, 1, 136, 24));
+		this.addSlotToContainer(new SlotOutput(tile, 1, 136, 24));
 
 		for (int c = 0; c < 9; ++c) {
 			this.addSlotToContainer(new Slot(tile, c + 2, 8 + c * 18, 75));
@@ -88,19 +88,16 @@ public class ContainerPressMachine extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < 12) {
-				if (!this.mergeItemStack(itemstack1, 20, 46, true)) {
+				if (!this.mergeItemStack(itemstack1, 20, 46, true))
 					return null;
-				}
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (index > 19) {
 				if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
-					if (!this.mergeItemStack(itemstack1, 2, 11, false)) {
+					if (!this.mergeItemStack(itemstack1, 2, 11, false))
 						return null;
-					}
 				}
-			} else {
+			} else
 				return null;
-			}
 
 			if (itemstack1.stackSize == 0) {
 				slot.putStack((ItemStack) null);
@@ -108,9 +105,8 @@ public class ContainerPressMachine extends Container {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize) {
+			if (itemstack1.stackSize == itemstack.stackSize)
 				return null;
-			}
 
 			slot.onPickupFromSlot(playerIn, itemstack1);
 		}

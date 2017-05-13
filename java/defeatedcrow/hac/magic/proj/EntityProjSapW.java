@@ -1,6 +1,7 @@
 package defeatedcrow.hac.magic.proj;
 
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import defeatedcrow.hac.main.util.CustomExplosion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
-public class EntityProjSapW extends EntityMagicProjBase {
+public class EntityProjSapW extends EntityProjBase {
 
 	public EntityProjSapW(World worldIn) {
 		super(worldIn);

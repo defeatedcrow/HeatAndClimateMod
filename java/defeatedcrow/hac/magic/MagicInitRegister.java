@@ -47,10 +47,10 @@ public class MagicInitRegister {
 	}
 
 	static void loadItems() {
-		MagicInit.pendant = new ItemMagicalPendant(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_pendant");
+		MagicInit.pendant = new ItemMagicalPendant(16).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_pendant");
 		GameRegistry.register(MagicInit.pendant.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_pendant"));
 
-		MagicInit.badge = new ItemMagicalBadge(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_badge");
+		MagicInit.badge = new ItemMagicalBadge(16).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_badge");
 		GameRegistry.register(MagicInit.badge.setRegistryName(ClimateCore.PACKAGE_BASE + "_jewel_badge"));
 
 		MagicInit.daggerSilver = new ItemSilverDagger().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dagger_silver");

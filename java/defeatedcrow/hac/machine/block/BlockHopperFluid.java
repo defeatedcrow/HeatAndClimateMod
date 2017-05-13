@@ -198,9 +198,10 @@ public class BlockHopperFluid extends BlockContainer {
 		this.updateState(worldIn, pos, state);
 	}
 
+	// redstone
 	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
-		this.updateState(worldIn, pos, state);
+	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
+		this.updateState(world, pos, state);
 	}
 
 	private void updateState(World worldIn, BlockPos pos, IBlockState state) {

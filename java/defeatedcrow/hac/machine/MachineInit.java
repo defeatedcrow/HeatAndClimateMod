@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.fluids.Fluid;
 
 public class MachineInit {
 
@@ -33,6 +34,8 @@ public class MachineInit {
 	public static Block hopperFilter;
 	public static Block hopperFluid;
 
+	public static Block watermill;
+
 	public static Block stonemill;
 	public static Block heatPump;
 	public static Block catapult;
@@ -46,8 +49,8 @@ public class MachineInit {
 	public static Block gearbox2;
 
 	public static Block boilerTurbine; // Climate -> Torque
-	public static Block motor; // FU -> Torque
-	public static Block generator; // Torque -> FU
+	public static Block motor; // FU/RF -> Torque
+	public static Block dynamo; // Torque -> FU/RF
 	public static Block converter; // EU/RF -> FU
 
 	public static Block waterPump;
@@ -58,4 +61,35 @@ public class MachineInit {
 	public static Item machimeMaterials;
 
 	public static Block creativeBox;
+
+	// advanced
+
+	public static Fluid hydrogen;
+	public static Fluid ammonia;
+	public static Fluid nitricAcid;
+	public static Fluid sulfuricAcid;
+	public static Fluid fuelOil;
+	public static Fluid fuelGas;
+
+	public static Block hydrogenBlock;
+	public static Block ammoniaBlock;
+	public static Block nitricAcidBlock;
+	public static Block sulfuricAcidBlock;
+	public static Block fuelOilBlock;
+	public static Block fuelGasBlock;
+
+	public static Item reagent;
+	public static Item synthetic;
+	public static Item catalyst;
+
+	public static Item moldAlloy;
+	public static Item moldAluminium;
+	public static Item adapterCard;
+
+	public static Block energyTank;
+	public static Block adapterPanel;
+	public static Block wirelessPortal;
+
+	public static Block reactor;
+	public static Block freezer;
 }

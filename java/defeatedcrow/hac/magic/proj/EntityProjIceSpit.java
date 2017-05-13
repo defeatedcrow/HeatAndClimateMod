@@ -1,6 +1,7 @@
 package defeatedcrow.hac.magic.proj;
 
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,7 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityProjIceSpit extends EntityMagicProjBase {
+public class EntityProjIceSpit extends EntityProjBase {
 
 	public EntityProjIceSpit(World worldIn) {
 		super(worldIn);

@@ -1,11 +1,12 @@
 package defeatedcrow.hac.magic.client;
 
+import defeatedcrow.hac.core.base.FoodEntityBase;
+import defeatedcrow.hac.core.client.base.DCFoodModelBase;
+import defeatedcrow.hac.magic.proj.EntityMobBarrier;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.client.base.DCFoodModelBase;
-import defeatedcrow.hac.magic.proj.EntityMobBarrier;
 
 @SideOnly(Side.CLIENT)
 public class ModelMagicCircle extends DCFoodModelBase {
@@ -34,7 +35,7 @@ public class ModelMagicCircle extends DCFoodModelBase {
 	}
 
 	@Override
-	public void render(float scale) {
+	public void render(float scale, FoodEntityBase entity) {
 		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale);
 	}
 
@@ -60,8 +61,9 @@ public class ModelMagicCircle extends DCFoodModelBase {
 		if (entity != null && entity instanceof EntityMobBarrier) {
 			EntityMobBarrier barrier = (EntityMobBarrier) entity;
 			int age = barrier.getTotalAge();
-			if (age > 120)
+			if (age > 120) {
 				age -= 120;
+			}
 			float r = age * 3.1415F / 120.0F;
 			Shape1.rotateAngleY = r;
 			Shape2.rotateAngleY = -r;

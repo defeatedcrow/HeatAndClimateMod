@@ -1,12 +1,13 @@
 package defeatedcrow.hac.magic.proj;
 
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityProjLightSpit extends EntityMagicProjBase {
+public class EntityProjLightSpit extends EntityProjBase {
 
 	public EntityProjLightSpit(World worldIn) {
 		super(worldIn);

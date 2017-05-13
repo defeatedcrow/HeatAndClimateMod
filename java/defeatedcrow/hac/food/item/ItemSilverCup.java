@@ -154,7 +154,7 @@ public class ItemSilverCup extends FoodItemBase {
 					}
 					if (f != null && f.getFluid() != null) {
 						Fluid milk = FluidRegistry.getFluid("milk");
-						if (milk != null && f.getFluid() == milk) {
+						if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
 							living.clearActivePotions();
 						} else {
 							List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
@@ -195,7 +195,7 @@ public class ItemSilverCup extends FoodItemBase {
 				ret.add(new PotionEffect(DCPotion.night_vision, MathHelper.ceiling_float_int(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.oil) {
 				ret.add(new PotionEffect(DCPotion.speed, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.tomatoJuice) {
+			} else if (fluid == FoodInit.stock) {
 				ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * (dirF + ampF)), 0));
 			} else if (fluid == FoodInit.blackLiquor) {
 				ret.add(new PotionEffect(DCPotion.poison, MathHelper.ceiling_float_int(300 * dirF), ampF));
@@ -229,7 +229,7 @@ public class ItemSilverCup extends FoodItemBase {
 			int ampF = drink.getSugar().effect;
 			if (f != null && f.getFluid() != null) {
 				Fluid milk = FluidRegistry.getFluid("milk");
-				if (milk != null && f.getFluid() == milk) {
+				if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
 					tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
 				} else {
 					List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);

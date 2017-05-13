@@ -51,6 +51,7 @@ public class BlockPressMachine extends BlockTorqueBase {
 				}
 			} else if (!player.worldObj.isRemote && hand == EnumHand.MAIN_HAND) {
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				return true;
 			}
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);

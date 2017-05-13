@@ -52,13 +52,11 @@ public class ContainerLowChest extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < lim) {
-				if (!this.mergeItemStack(itemstack1, lim, this.inventorySlots.size(), true)) {
+				if (!this.mergeItemStack(itemstack1, lim, this.inventorySlots.size(), true))
 					return null;
-				}
 				slot.onSlotChange(itemstack1, itemstack);
-			} else if (!this.mergeItemStack(itemstack1, 0, lim, false)) {
+			} else if (!this.mergeItemStack(itemstack1, 0, lim, false))
 				return null;
-			}
 
 			if (itemstack1.stackSize == 0) {
 				slot.putStack((ItemStack) null);
@@ -66,9 +64,8 @@ public class ContainerLowChest extends Container {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize) {
+			if (itemstack1.stackSize == itemstack.stackSize)
 				return null;
-			}
 
 			slot.onPickupFromSlot(playerIn, itemstack1);
 		}

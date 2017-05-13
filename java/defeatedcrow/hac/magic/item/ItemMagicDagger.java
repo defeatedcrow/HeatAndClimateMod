@@ -4,7 +4,6 @@ import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
-import defeatedcrow.hac.magic.proj.EntityMagicProjBase;
 import defeatedcrow.hac.magic.proj.EntityProjChalB;
 import defeatedcrow.hac.magic.proj.EntityProjChalR;
 import defeatedcrow.hac.magic.proj.EntityProjChalW;
@@ -24,6 +23,7 @@ import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.achievement.AcvHelper;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -120,7 +120,7 @@ public class ItemMagicDagger extends DCItem {
 
 			if (stack != null || flag) {
 				if (!world.isRemote) {
-					EntityMagicProjBase entityarrow = getEntity(metadata, world, player);
+					EntityProjBase entityarrow = getEntity(metadata, world, player);
 					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
 					world.spawnEntityInWorld(entityarrow);
 				}
@@ -147,7 +147,7 @@ public class ItemMagicDagger extends DCItem {
 		}
 	}
 
-	private EntityMagicProjBase getEntity(int meta, World world, EntityPlayer player) {
+	private EntityProjBase getEntity(int meta, World world, EntityPlayer player) {
 		int i = Math.min(meta, 15);
 		switch (i) {
 		case 0:
