@@ -1,7 +1,6 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileTeaPot;
@@ -49,6 +48,7 @@ import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.entity.EntityBulletDC;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
@@ -152,7 +152,10 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadEntity() {
-		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 50,
+		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 90,
+				ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityBulletDC.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet", 91,
 				ClimateMain.instance, 128, 5, true);
 
 		FoodCommonProxy.loadEntity();
@@ -282,7 +285,7 @@ public class CommonMainProxy implements IGuiHandler {
 		return null;
 	}
 
-	public ModelThinBiped getArmorModel(int slot) {
+	public net.minecraft.client.model.ModelBiped getArmorModel(int slot) {
 		return null;
 	}
 

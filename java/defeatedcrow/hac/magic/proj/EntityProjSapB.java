@@ -3,6 +3,7 @@ package defeatedcrow.hac.magic.proj;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleShock;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
@@ -16,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 
-public class EntityProjSapB extends EntityMagicProjBase {
+public class EntityProjSapB extends EntityProjBase {
 
 	public EntityProjSapB(World worldIn) {
 		super(worldIn);

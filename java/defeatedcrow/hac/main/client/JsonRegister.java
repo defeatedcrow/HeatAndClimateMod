@@ -96,7 +96,8 @@ public class JsonRegister {
 				"silver",
 				"nickelsilver",
 				"chalcedony",
-				"sapphire"
+				"sapphire",
+				"titanium"
 		};
 		for (int j = 0; j < name.length; j++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip", 0);
@@ -122,6 +123,8 @@ public class JsonRegister {
 					"dcs_" + type[i] + "_chalcedony", "equip", 0);
 			MAIN_INSTANCE.regSimpleItem(MainInit.sapphireArmor[i], ClimateCore.PACKAGE_ID,
 					"dcs_" + type[i] + "_sapphire", "equip", 0);
+			MAIN_INSTANCE.regSimpleItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_ID,
+					"dcs_" + type[i] + "_titanium", "equip", 0);
 		}
 
 		String[] name2 = {
@@ -134,11 +137,18 @@ public class JsonRegister {
 					0);
 		}
 
+		MAIN_INSTANCE.regSimpleItem(MainInit.crossbow, ClimateCore.PACKAGE_ID, "dcs_crossbow_iron", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.cartridge, ClimateCore.PACKAGE_ID, "dcs_cartridge", "equip", 0);
+
 		MAIN_INSTANCE.regSimpleItem(MainInit.linenUnder, ClimateCore.PACKAGE_ID, "dcs_leggins_linen", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.linenCourt, ClimateCore.PACKAGE_ID, "dcs_plate_linen", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.clothUnder, ClimateCore.PACKAGE_ID, "dcs_leggins_cloth", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.workerSuit, ClimateCore.PACKAGE_ID, "dcs_leggins_worker", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.blackSuit, ClimateCore.PACKAGE_ID, "dcs_leggins_black", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.trackSuit, ClimateCore.PACKAGE_ID, "dcs_leggins_tracksuit", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.combatDress, ClimateCore.PACKAGE_ID, "dcs_leggins_combatdress", "equip",
+				0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.hoodie, ClimateCore.PACKAGE_ID, "dcs_plate_hoodie", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.leatherHat, ClimateCore.PACKAGE_ID, "dcs_hat_leather", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cottonHat, ClimateCore.PACKAGE_ID, "dcs_hat_cotton", "equip", 0);
 	}

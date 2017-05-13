@@ -973,8 +973,8 @@ public class FoodRecipes {
 						"dustBismuth"
 				});
 
-		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(Items.SLIME_BALL, 1, 0), null, 0F, null,
-				DCHeatTier.NORMAL, null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(Items.SLIME_BALL, 1, 0), null, 0F, null, DCHeatTier.OVEN,
+				null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
 						"cropHerb",
 						"dustCrystal",
 						new ItemStack(MachineInit.reagent, 1, 1)

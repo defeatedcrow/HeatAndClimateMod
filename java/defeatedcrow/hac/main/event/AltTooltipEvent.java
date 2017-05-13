@@ -3,6 +3,10 @@ package defeatedcrow.hac.main.event;
 import java.util.ArrayList;
 import java.util.List;
 
+import defeatedcrow.hac.api.damage.DamageAPI;
+import defeatedcrow.hac.config.CoreConfigDC;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -16,9 +20,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
-import defeatedcrow.hac.api.damage.DamageAPI;
-import defeatedcrow.hac.config.CoreConfigDC;
-import defeatedcrow.hac.magic.MagicInit;
 
 @SideOnly(Side.CLIENT)
 public class AltTooltipEvent {
@@ -31,7 +32,7 @@ public class AltTooltipEvent {
 		ItemStack target = event.getItemStack();
 		boolean flag = false;
 
-		if (player != null && player instanceof EntityPlayerSP && target != null && CoreConfigDC.showAltTips) {
+		if (player != null && player instanceof EntityPlayerSP && !DCUtil.isEmpty(target) && CoreConfigDC.showAltTips) {
 			Item tI = target.getItem();
 
 			// charm
@@ -65,18 +66,26 @@ public class AltTooltipEvent {
 				}
 
 				// climate reg
-				if (tI instanceof ItemArmor) {
+				float regH = DamageAPI.itemRegister.getHeatPreventAmount(target);
+				float regC = DamageAPI.itemRegister.getColdPreventAmount(target);
+
+				if (regH == 0 && regC == 0 && tI instanceof ItemArmor) {
 					ArmorMaterial mat = ((ItemArmor) tI).getArmorMaterial();
-					float reg = DamageAPI.armorRegister.getPreventAmount(mat);
-					String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": " + reg;
+					regH = DamageAPI.armorRegister.getHeatPreventAmount(mat);
+					regC = DamageAPI.armorRegister.getColdPreventAmount(mat);
+				}
+				if (regH != 0 || regC != 0) {
+					String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": Heat " + regH + "/ Cold "
+							+ regC;
 					event.getToolTip().add(ret);
 				}
 			}
 
 			if (flag) {
 				this.ores = this.getOre(target);
-				if (!ores.isEmpty())
+				if (!ores.isEmpty()) {
 					event.getToolTip().addAll(ores);
+				}
 			}
 		}
 	}

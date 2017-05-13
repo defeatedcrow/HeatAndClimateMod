@@ -52,6 +52,7 @@ import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorHat;
+import defeatedcrow.hac.main.item.equip.ItemArmorHoodie;
 import defeatedcrow.hac.main.item.equip.ItemArmorThinDC;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
@@ -65,6 +66,8 @@ import defeatedcrow.hac.main.item.ores.ItemMiscDust;
 import defeatedcrow.hac.main.item.ores.ItemOreDusts;
 import defeatedcrow.hac.main.item.tool.ItemAlloyYagen;
 import defeatedcrow.hac.main.item.tool.ItemAxeDC;
+import defeatedcrow.hac.main.item.tool.ItemBullets;
+import defeatedcrow.hac.main.item.tool.ItemCrossbowDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
@@ -412,16 +415,17 @@ public class MainMaterialRegister {
 				"silver",
 				"nickelsilver",
 				"chalcedony",
-				"sapphire"
+				"sapphire",
+				"titanium"
 		};
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < 7; j++) {
 			DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 			MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]);
 			GameRegistry.register(MainInit.dcAxe[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]));
 		}
 
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < 7; j++) {
 			MainInit.dcPickaxe[j] = new ItemPickaxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]);
@@ -429,7 +433,7 @@ public class MainMaterialRegister {
 					.register(MainInit.dcPickaxe[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]));
 		}
 
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < 7; j++) {
 			MainInit.dcSpade[j] = new ItemSpadeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]);
@@ -449,6 +453,10 @@ public class MainMaterialRegister {
 			GameRegistry.register(MainInit.dcSword[j].setRegistryName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]));
 		}
 
+		MainInit.dcSword[6] = new ItemSwordDC(DCToolMaterial.getToolMaterial(6), name[6], false)
+				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[6]);
+		GameRegistry.register(MainInit.dcSword[6].setRegistryName(ClimateCore.PACKAGE_BASE + "_sword_" + name[6]));
+
 		MainInit.dcScythe[0] = new ItemScytheDC(DCToolMaterial.getToolMaterial(0), "brass")
 				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_brass");
 		GameRegistry.register(MainInit.dcScythe[0].setRegistryName(ClimateCore.PACKAGE_BASE + "_scythe_brass"));
@@ -460,6 +468,12 @@ public class MainMaterialRegister {
 		MainInit.dcScythe[2] = new ItemScytheDC(DCToolMaterial.getToolMaterial(4), "chalcedony")
 				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_chalcedony");
 		GameRegistry.register(MainInit.dcScythe[2].setRegistryName(ClimateCore.PACKAGE_BASE + "_scythe_chalcedony"));
+
+		MainInit.crossbow = new ItemCrossbowDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crossbow");
+		GameRegistry.register(MainInit.crossbow.setRegistryName(ClimateCore.PACKAGE_BASE + "_crossbow"));
+
+		MainInit.cartridge = new ItemBullets(0).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
+		GameRegistry.register(MainInit.cartridge.setRegistryName(ClimateCore.PACKAGE_BASE + "_cartridge"));
 
 		String[] type = {
 				"met",
@@ -492,6 +506,12 @@ public class MainMaterialRegister {
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_sapphire");
 			GameRegistry.register(
 					MainInit.sapphireArmor[i].setRegistryName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_sapphire"));
+
+			MainInit.titaniumArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_TITANIUM, DCMaterial.TITANIUM, slot,
+					"titanium").setCreativeTab(ClimateMain.tool)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium");
+			GameRegistry.register(
+					MainInit.titaniumArmor[i].setRegistryName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium"));
 		}
 
 		MainInit.linenUnder = new ItemArmorThinDC(DCArmorMaterial.DC_LINEN, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
@@ -503,19 +523,34 @@ public class MainMaterialRegister {
 				"linen").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_linen");
 		GameRegistry.register(MainInit.linenCourt.setRegistryName(ClimateCore.PACKAGE_BASE + "_coat_linen"));
 
-		MainInit.clothUnder = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
+		MainInit.clothUnder = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.LEGS,
 				"cloth").setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_cloth");
 		GameRegistry.register(MainInit.clothUnder.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_cloth"));
 
-		MainInit.workerSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
+		MainInit.workerSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.LEGS,
 				"worker").setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_worker");
 		GameRegistry.register(MainInit.workerSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_worker"));
 
-		MainInit.blackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.LINEN, EntityEquipmentSlot.LEGS,
+		MainInit.blackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.LEGS,
 				"suit").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_suit");
 		GameRegistry.register(MainInit.blackSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_suit"));
+
+		MainInit.trackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterial.SYNTHETIC,
+				EntityEquipmentSlot.LEGS, "tracksuit").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_track");
+		GameRegistry.register(MainInit.trackSuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_track"));
+
+		MainInit.combatDress = new ItemArmorThinDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterial.SYNTHETIC,
+				EntityEquipmentSlot.LEGS, "combatdress").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_combatdress");
+		GameRegistry.register(MainInit.combatDress.setRegistryName(ClimateCore.PACKAGE_BASE + "_leggins_combatdress"));
+
+		MainInit.hoodie = new ItemArmorHoodie(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH, EntityEquipmentSlot.CHEST,
+				"white").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie_white");
+		GameRegistry.register(MainInit.hoodie.setRegistryName(ClimateCore.PACKAGE_BASE + "_hoodie_white"));
 
 		MainInit.leatherHat = new ItemArmorHat(ArmorMaterial.LEATHER, DCMaterial.LINEN, EntityEquipmentSlot.HEAD,
 				"leather").setCreativeTab(ClimateMain.tool)

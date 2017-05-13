@@ -1,7 +1,7 @@
 package defeatedcrow.hac.magic.client;
 
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
-import defeatedcrow.hac.magic.proj.EntityMagicProjBase;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class MagicDaggerRenderer extends Render<EntityMagicProjBase> {
+public class MagicDaggerRenderer extends Render<EntityProjBase> {
 
 	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/magic/dagger_silver.png");
@@ -24,7 +24,7 @@ public class MagicDaggerRenderer extends Render<EntityMagicProjBase> {
 	}
 
 	@Override
-	public void doRender(EntityMagicProjBase entity, double x, double y, double z, float yaw, float partialTicks) {
+	public void doRender(EntityProjBase entity, double x, double y, double z, float yaw, float partialTicks) {
 		ItemStack itemstack = entity.getDropStack();
 
 		float height = entity.height * 0.5F;
@@ -51,7 +51,7 @@ public class MagicDaggerRenderer extends Render<EntityMagicProjBase> {
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(EntityMagicProjBase entity) {
+	protected ResourceLocation getEntityTexture(EntityProjBase entity) {
 		return TEX;
 	}
 

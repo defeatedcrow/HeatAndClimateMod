@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.util;
 
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -14,14 +15,14 @@ public enum DCMaterial {
 			2,
 			2,
 			1
-	}, 0, 72, 0.0F, 20, 2.0F, 2.0F, new ItemStack(MainInit.materials, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
+	}, 0, 72, 0.0F, 20, 2.0F, 1.0F, new ItemStack(MainInit.materials, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
 	// 少し耐寒より
 	CLOTH(1, "cloth", 1.0F, new int[] {
 			1,
 			2,
 			2,
 			1
-	}, 0, 108, 0.0F, 25, 2.0F, 2.0F, new ItemStack(MainInit.materials, 1, 1), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
+	}, 0, 108, 0.0F, 25, 2.0F, 3.0F, new ItemStack(MainInit.materials, 1, 1), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
 	// 純金属は基本的に利用しない
 	COPPER(2, "copper", 2.0F, new int[] {
 			1,
@@ -82,7 +83,21 @@ public enum DCMaterial {
 			8,
 			6,
 			3
-	}, 2, 1280, 7.0F, 18, 0.5F, 0.5F, new ItemStack(MainInit.gems, 1, 4), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+	}, 2, 1280, 7.0F, 18, 0.5F, 0.5F, new ItemStack(MainInit.gems, 1, 4), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F),
+	// いいとこ取り性能、防御能力はそこそこ
+	TITANIUM(11, "titanium", 12.0F, new int[] {
+			4,
+			10,
+			8,
+			4
+	}, 4, 1440, 12.0F, 5, 0F, 0F, new ItemStack(MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
+	// 耐暑性特化で耐久高め
+	SYNTHETIC(12, "synthetic", 3.0F, new int[] {
+			3,
+			5,
+			4,
+			2
+	}, 1, 240, 3.0F, 15, 3.0F, 1.0F, new ItemStack(MachineInit.synthetic, 1, 1), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
 	public final String name;
 	public final int id;

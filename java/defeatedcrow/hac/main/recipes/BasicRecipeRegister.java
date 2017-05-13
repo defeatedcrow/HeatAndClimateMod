@@ -2,9 +2,11 @@ package defeatedcrow.hac.main.recipes;
 
 import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -1672,7 +1674,8 @@ public class BasicRecipeRegister {
 				"ingotSilver",
 				"ingotNickelsilver",
 				"gemChalcedony",
-				"gemSapphire"
+				"gemSapphire",
+				"ingotTitanium"
 		};
 		for (int i = 0; i < name.length; i++) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dcPickaxe[i], 1, 0), new Object[] {
@@ -1746,151 +1749,59 @@ public class BasicRecipeRegister {
 				"stickWood"
 		}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[0], 1, 0), new Object[] {
-				"XXX",
-				"XYX",
-				'X',
+		String[] name2 = {
 				"ingotBrass",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[0], 1, 0), new Object[] {
-				"XXX",
-				"XYX",
-				'X',
 				"ingotSteel",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[0], 1, 0), new Object[] {
-				"XXX",
-				"X X",
-				'X',
-				"gemChalcedony"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[0], 1, 0), new Object[] {
-				"XXX",
-				"X X",
-				'X',
-				"gemSapphire"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[1], 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				"XXX",
-				'X',
-				"ingotBrass",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[1], 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				"XXX",
-				'X',
-				"ingotSteel",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[1], 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				"XXX",
-				'X',
 				"gemChalcedony",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[1], 1, 0), new Object[] {
-				"X X",
-				"XXX",
-				"XXX",
-				'X',
-				"gemSapphire"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[2], 1, 0), new Object[] {
-				"XYX",
-				"X X",
-				"X X",
-				'X',
-				"ingotBrass",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[2], 1, 0), new Object[] {
-				"XYX",
-				"X X",
-				"X X",
-				'X',
-				"ingotSteel",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[2], 1, 0), new Object[] {
-				"XYX",
-				"X X",
-				"X X",
-				'X',
-				"gemChalcedony",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[2], 1, 0), new Object[] {
-				"XYX",
-				"X X",
-				"X X",
-				'X',
 				"gemSapphire",
-				'Y',
-				"itemCloth"
-		}));
+				"ingotTitanium"
+		};
+		Item[][] armor = {
+				MainInit.brassArmor,
+				MainInit.steelArmor,
+				MainInit.chalcArmor,
+				MainInit.sapphireArmor,
+				MainInit.titaniumArmor
+		};
+		for (int i = 0; i < name2.length; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(armor[i][0], 1, 0), new Object[] {
+					"XXX",
+					"XYX",
+					'X',
+					name2[i],
+					'Y',
+					"itemCloth"
+			}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.brassArmor[3], 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				'X',
-				"ingotBrass",
-				'Y',
-				"itemCloth"
-		}));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(armor[i][1], 1, 0), new Object[] {
+					"X X",
+					"XYX",
+					"XXX",
+					'X',
+					name2[i],
+					'Y',
+					"itemCloth"
+			}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.steelArmor[3], 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				'X',
-				"ingotSteel",
-				'Y',
-				"itemCloth"
-		}));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(armor[i][2], 1, 0), new Object[] {
+					"XYX",
+					"X X",
+					"X X",
+					'X',
+					name2[i],
+					'Y',
+					"itemCloth"
+			}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chalcArmor[3], 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				'X',
-				"gemChalcedony",
-				'Y',
-				"itemCloth"
-		}));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.sapphireArmor[3], 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				'X',
-				"gemSapphire",
-				'Y',
-				"itemCloth"
-		}));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(armor[i][3], 1, 0), new Object[] {
+					"X X",
+					"XYX",
+					'X',
+					name2[i],
+					'Y',
+					"itemCloth"
+			}));
+		}
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.linenUnder, 1, 0), new Object[] {
 				"XXX",
@@ -1906,6 +1817,14 @@ public class BasicRecipeRegister {
 				"XXX",
 				'X',
 				"itemLinenCloth"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.hoodie, 1, 0), new Object[] {
+				"X X",
+				"XXX",
+				"XXX",
+				'X',
+				"itemCottonCloth"
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.clothUnder, 1, 0), new Object[] {
@@ -1953,6 +1872,50 @@ public class BasicRecipeRegister {
 				'Y',
 				"string"
 		}));
+
+		if (ModuleConfig.machine_advanced) {
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.trackSuit, 1, 0), new Object[] {
+					"XYX",
+					"XXX",
+					"X X",
+					'X',
+					"itemSyntheticCloth",
+					'Y',
+					"dyeBlack"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.combatDress, 1, 0), new Object[] {
+					"XYX",
+					"XXX",
+					"X X",
+					'X',
+					"itemSyntheticCloth",
+					'Y',
+					"itemLeather"
+			}));
+		}
+
+		if (ModuleConfig.weapon_advanced) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.crossbow, 1, 0), new Object[] {
+					"X  ",
+					"ZY ",
+					" ZY",
+					'X',
+					new ItemStack(Items.BOW, 1, 0),
+					'Y',
+					"ingotSteel",
+					'Z',
+					"plankWood"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 16, 0), new Object[] {
+					" X",
+					"X ",
+					'X',
+					"ingotIron"
+			}));
+		}
 
 	}
 

@@ -111,10 +111,10 @@ public class MainInit {
 	public static Item repairPutty;
 	public static Item wrench;
 
-	public static Item[] dcAxe = new Item[6];
-	public static Item[] dcPickaxe = new Item[6];
-	public static Item[] dcSpade = new Item[6];
-	public static Item[] dcSword = new Item[6];
+	public static Item[] dcAxe = new Item[7];
+	public static Item[] dcPickaxe = new Item[7];
+	public static Item[] dcSpade = new Item[7];
+	public static Item[] dcSword = new Item[7];
 	public static Item[] dcScythe = new Item[3];
 
 	// armor
@@ -137,14 +137,14 @@ public class MainInit {
 
 	public static Item[] titaniumArmor = new Item[4];
 
+	public static Item combatDress;
+	public static Item trackSuit;
+	public static Item hoodie;
+
 	public static Item crossbow;
-	public static Item bolt;
-
-	public static Item shotgun;
-	public static Item shot;
-
+	public static Item gun;
 	public static Item ignis;
-	public static Item injector;
+	public static Item cartridge;
 
 	public static Item gemShield;
 	public static Item riotShield;

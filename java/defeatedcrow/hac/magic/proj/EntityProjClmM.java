@@ -3,6 +3,7 @@ package defeatedcrow.hac.magic.proj;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleShock;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
@@ -13,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.client.FMLClientHandler;
 
-public class EntityProjClmM extends EntityMagicProjBase {
+public class EntityProjClmM extends EntityProjBase {
 
 	public EntityProjClmM(World worldIn) {
 		super(worldIn);

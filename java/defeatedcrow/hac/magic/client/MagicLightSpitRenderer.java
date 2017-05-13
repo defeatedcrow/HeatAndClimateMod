@@ -1,6 +1,6 @@
 package defeatedcrow.hac.magic.client;
 
-import defeatedcrow.hac.magic.proj.EntityMagicProjBase;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -17,7 +17,7 @@ public class MagicLightSpitRenderer extends MagicDaggerRenderer {
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(EntityMagicProjBase entity) {
+	protected ResourceLocation getEntityTexture(EntityProjBase entity) {
 		return TEX;
 	}
 

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -98,8 +99,13 @@ public class MainCreativeTabRegister {
 		MainInit.bakedApple.setCreativeTab(ClimateMain.food);
 		MainInit.foodMaterials.setCreativeTab(ClimateMain.food);
 
+		if (ModuleConfig.weapon_advanced) {
+			MainInit.cartridge.setCreativeTab(ClimateMain.tool);
+			MainInit.crossbow.setCreativeTab(ClimateMain.tool);
+		}
+
 		if (DCIntegrationCore.loadedForestry) {
-			MainInit.circuit.setCreativeTab(ClimateCore.climate);
+			// MainInit.circuit.setCreativeTab(ClimateCore.climate);
 		}
 		if (DCIntegrationCore.loadedMekanism) {
 			MainInit.metalMaterials.setCreativeTab(ClimateCore.climate);

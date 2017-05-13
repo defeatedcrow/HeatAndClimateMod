@@ -1,5 +1,6 @@
-package defeatedcrow.hac.magic.proj;
+package defeatedcrow.hac.main.entity;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
@@ -18,20 +19,20 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 /* ベースは矢だが手投げ式 */
-public abstract class EntityMagicProjBase extends EntityArrow implements IProjectile {
+public abstract class EntityProjBase extends EntityArrow implements IProjectile {
 
 	private int age = 0;
 
-	public EntityMagicProjBase(World worldIn) {
+	public EntityProjBase(World worldIn) {
 		super(worldIn);
 		this.setStart(false);
 	}
 
-	public EntityMagicProjBase(World worldIn, double x, double y, double z) {
+	public EntityProjBase(World worldIn, double x, double y, double z) {
 		super(worldIn, x, y, z);
 	}
 
-	public EntityMagicProjBase(World worldIn, EntityLivingBase shooter) {
+	public EntityProjBase(World worldIn, EntityLivingBase shooter) {
 		super(worldIn, shooter);
 	}
 
@@ -110,7 +111,9 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 				this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
 				// ヒットすると消えてしまう
-				this.setDead();
+				if (!canPenetrate()) {
+					this.setDead();
+				}
 
 			} else {
 				this.dropAndDeath();
@@ -136,6 +139,10 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 		return null;
 	}
 
+	protected boolean canPenetrate() {
+		return false;
+	}
+
 	public abstract ItemStack getDropStack();
 
 	protected void dropAndDeath() {
@@ -146,9 +153,11 @@ public abstract class EntityMagicProjBase extends EntityArrow implements IProjec
 	protected void dropAsItem() {
 		if (!worldObj.isRemote && this.getDropStack() != null) {
 			ItemStack item = this.getDropStack();
-			EntityItem drop = new EntityItem(worldObj, posX, posY + 0.15D, posZ, item);
-			drop.motionY = 0.025D;
-			worldObj.spawnEntityInWorld(drop);
+			if (!DCUtil.isEmpty(item)) {
+				EntityItem drop = new EntityItem(worldObj, posX, posY + 0.15D, posZ, item);
+				drop.motionY = 0.025D;
+				worldObj.spawnEntityInWorld(drop);
+			}
 		}
 	}
 
