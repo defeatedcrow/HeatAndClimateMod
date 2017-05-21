@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "clamp=false,facing=north,upper=false": { "model": "dcs_climate:build/dcs_fence_ladder_normal" },
+        "clamp=true,facing=north,upper=false": { "model": "dcs_climate:build/dcs_fence_ladder_clamp" },
+        "clamp=false,facing=north,upper=true": { "model": "dcs_climate:build/dcs_fence_ladder_normal_u" },
+        "clamp=true,facing=north,upper=true": { "model": "dcs_climate:build/dcs_fence_ladder_clamp_u" },
+        "clamp=false,facing=south,upper=false": { "model": "dcs_climate:build/dcs_fence_ladder_normal", "y": 180, "uvlock": true },
+        "clamp=true,facing=south,upper=false": { "model": "dcs_climate:build/dcs_fence_ladder_clamp", "y": 180, "uvlock": true },
+        "clamp=false,facing=south,upper=true": { "model": "dcs_climate:build/dcs_fence_ladder_normal_u", "y": 180, "uvlock": true },
+        "clamp=true,facing=south,upper=true": { "model": "dcs_climate:build/dcs_fence_ladder_clamp_u", "y": 180, "uvlock": true },
+        "clamp=false,facing=west,upper=false": { "model": "dcs_climate:build/dcs_fence_ladder_normal", "y": 270, "uvlock": true },
+        "clamp=true,facing=west,upper=false": { "model": "dcs_climate:build/dcs_fence_ladder_clamp", "y": 270, "uvlock": true },
+        "clamp=false,facing=west,upper=true": { "model": "dcs_climate:build/dcs_fence_ladder_normal_u", "y": 270, "uvlock": true },
+        "clamp=true,facing=west,upper=true": { "model": "dcs_climate:build/dcs_fence_ladder_clamp_u", "y": 270, "uvlock": true },
+        "clamp=false,facing=east,upper=false": { "model": "dcs_climate:build/dcs_fence_ladder_normal", "y": 90, "uvlock": true },
+        "clamp=true,facing=east,upper=false": { "model": "dcs_climate:build/dcs_fence_ladder_clamp", "y": 90, "uvlock": true },
+        "clamp=false,facing=east,upper=true": { "model": "dcs_climate:build/dcs_fence_ladder_normal_u", "y": 90, "uvlock": true },
+        "clamp=true,facing=east,upper=true": { "model": "dcs_climate:build/dcs_fence_ladder_clamp_u", "y": 90, "uvlock": true }
+    }
+}

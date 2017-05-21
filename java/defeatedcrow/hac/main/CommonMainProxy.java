@@ -50,6 +50,7 @@ import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.entity.EntityBulletDC;
 import defeatedcrow.hac.main.entity.EntityCution;
+import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.CombatEvent;
@@ -156,6 +157,9 @@ public class CommonMainProxy implements IGuiHandler {
 				ClimateMain.instance, 128, 5, true);
 
 		EntityRegistry.registerModEntity(EntityBulletDC.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet", 91,
+				ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityFlowerPot.class, ClimateCore.PACKAGE_BASE + "entity.main.flowerpot", 92,
 				ClimateMain.instance, 128, 5, true);
 
 		FoodCommonProxy.loadEntity();

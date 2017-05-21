@@ -2,6 +2,8 @@ package defeatedcrow.hac.machine;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
+import defeatedcrow.hac.machine.block.TileAcceptorPanel;
+import defeatedcrow.hac.machine.block.TileAdapterPanel;
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
 import defeatedcrow.hac.machine.block.TileCatapult;
 import defeatedcrow.hac.machine.block.TileConveyor;
@@ -113,6 +115,8 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill", new WatermillTESR());
 		ClientRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
 		ClientRegistry.registerTileEntity(TileReactor.class, "dcs_te_reactor", new ReactorTESR());
+		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
+		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -166,12 +170,16 @@ public class MachineClientProxy {
 		instance.regTETorqueBlock(MachineInit.dynamo, ClimateCore.PACKAGE_ID, "dcs_device_dynamo", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.reactor, ClimateCore.PACKAGE_ID, "dcs_device_reactor", "machine", 0);
 
-		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 7);
+		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 8);
 		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 2);
 		instance.regSimpleItem(MachineInit.catalyst, ClimateCore.PACKAGE_ID, "dcs_misc_catalyst", "misc", 3);
 		instance.regSimpleItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_ID, "dcs_device_mold_aluminium",
 				"machine", 3);
 		instance.regSimpleItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_ID, "dcs_device_mold_alloy", "machine", 3);
+		instance.regSimpleBlock(MachineInit.adapterPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_item", "machine",
+				0);
+		instance.regSimpleBlock(MachineInit.acceptorPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_item",
+				"machine", 0);
 
 		// fluid
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.hydrogenBlock), new ItemMeshDefinition() {

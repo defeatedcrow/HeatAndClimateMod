@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north,type=0":  { "model": "dcs_climate:build/dcs_build_awning_wood" },
+        "facing=north,type=1":  { "model": "dcs_climate:build/dcs_build_awning_metal" },
+        "facing=north,type=2": { "model": "dcs_climate:build/dcs_build_awning_linen" },
+        "facing=north,type=3": { "model": "dcs_climate:build/dcs_build_awning_cloth" },
+        "facing=south,type=0":  { "model": "dcs_climate:build/dcs_build_awning_wood", "y": 180, "uvlock": false  },
+        "facing=south,type=1":  { "model": "dcs_climate:build/dcs_build_awning_metal", "y": 180, "uvlock": false },
+        "facing=south,type=2": { "model": "dcs_climate:build/dcs_build_awning_linen", "y": 180, "uvlock": false },
+        "facing=south,type=3": { "model": "dcs_climate:build/dcs_build_awning_cloth", "y": 180, "uvlock": false },
+        "facing=west,type=0":  { "model": "dcs_climate:build/dcs_build_awning_wood", "y": 270, "uvlock": false  },
+        "facing=west,type=1":  { "model": "dcs_climate:build/dcs_build_awning_metal", "y": 270, "uvlock": false },
+        "facing=west,type=2": { "model": "dcs_climate:build/dcs_build_awning_linen", "y": 270, "uvlock": false },
+        "facing=west,type=3": { "model": "dcs_climate:build/dcs_build_awning_cloth", "y": 270, "uvlock": false },
+        "facing=east,type=0":  { "model": "dcs_climate:build/dcs_build_awning_wood", "y": 90, "uvlock": false  },
+        "facing=east,type=1":  { "model": "dcs_climate:build/dcs_build_awning_metal", "y": 90, "uvlock": false },
+        "facing=east,type=2": { "model": "dcs_climate:build/dcs_build_awning_linen", "y": 90, "uvlock": false },
+        "facing=east,type=3": { "model": "dcs_climate:build/dcs_build_awning_cloth", "y": 90, "uvlock": false }
+    }
+}

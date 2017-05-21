@@ -469,9 +469,13 @@ public class MachineRecipes {
 				new ItemStack(MachineInit.synthetic, 1, 0)
 		}));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.GUNPOWDER, 4, 0), new Object[] {
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.reagent, 1, 8), new Object[] {
 				new ItemStack(MachineInit.reagent, 1, 5),
 				new ItemStack(MachineInit.reagent, 1, 6)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.GUNPOWDER, 4, 0), new Object[] {
+				new ItemStack(MachineInit.reagent, 1, 8)
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
@@ -531,6 +535,34 @@ public class MachineRecipes {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
 				new ItemStack(MachineInit.moldAluminium, 1, 32767)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.adapterPanel, 1, 0), new Object[] {
+				"XXX",
+				" Y ",
+				"ZWZ",
+				'X',
+				"blockGlass",
+				'Y',
+				"gemBismuth",
+				'Z',
+				"gemSchorl",
+				'W',
+				"gearSteel"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.acceptorPanel, 1, 0), new Object[] {
+				"XXX",
+				" Y ",
+				"ZWZ",
+				'X',
+				"blockGlass",
+				'Y',
+				"gemBismuth",
+				'Z',
+				"gemQuartz",
+				'W',
+				"gearSteel"
 		}));
 	}
 
@@ -758,10 +790,15 @@ public class MachineRecipes {
 		RecipeAPI.registerReactorRecipes.addRecipe(r7, DCHeatTier.SMELTING);
 
 		// Fe ハーバーボッシュ
-		IReactorRecipe r8 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 300), null,
-				DCHeatTier.KILN, 0, new ItemStack(Items.IRON_INGOT, 1, 0), new FluidStack(MachineInit.hydrogen, 1000),
+		IReactorRecipe r8 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 600), null,
+				DCHeatTier.KILN, 0, new ItemStack(Blocks.IRON_ORE, 1, 0), new FluidStack(MachineInit.hydrogen, 1000),
 				null, new Object[] {});
 		RecipeAPI.registerReactorRecipes.addRecipe(r8, DCHeatTier.KILN);
+
+		IReactorRecipe r19 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 600), null,
+				DCHeatTier.KILN, 0, new ItemStack(MainInit.ores, 1, 5), new FluidStack(MachineInit.hydrogen, 1000),
+				null, new Object[] {});
+		RecipeAPI.registerReactorRecipes.addRecipe(r19, DCHeatTier.KILN);
 
 		// Pt オストワルト
 		IReactorRecipe r12 = new ReactorRecipe(null, null, new FluidStack(MachineInit.nitricAcid, 1000), null,

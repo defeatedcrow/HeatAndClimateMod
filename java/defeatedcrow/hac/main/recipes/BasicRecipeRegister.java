@@ -1665,6 +1665,109 @@ public class BasicRecipeRegister {
 				"dyeBlack"
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceAluminium, 6, 0), new Object[] {
+				"XXX",
+				"XXX",
+				'X',
+				"ingotAluminium"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceNet, 6, 0), new Object[] {
+				"XYX",
+				"XYX",
+				'X',
+				"ingotAluminium",
+				'Y',
+				new ItemStack(Blocks.IRON_BARS, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
+				"XYX",
+				"XYX",
+				'X',
+				"ingotAluminium",
+				'Y',
+				new ItemStack(Blocks.GLASS, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
+				"XYX",
+				"XYX",
+				'X',
+				"ingotAluminium",
+				'Y',
+				"blockGlass"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceLadder, 6, 0), new Object[] {
+				"X X",
+				"XXX",
+				"X X",
+				'X',
+				"ingotAluminium"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.awning, 1, 0), new Object[] {
+				"XXX",
+				"Y Y",
+				'X',
+				"plankWood",
+				'Y',
+				"stickWood"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.awning, 1, 1), new Object[] {
+				"XXX",
+				"Y Y",
+				'X',
+				"ingotAluminium",
+				'Y',
+				"stickWood"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.awning, 1, 1), new Object[] {
+				"XXX",
+				"Y Y",
+				'X',
+				"ingotIron",
+				'Y',
+				"stickWood"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.awning, 1, 2), new Object[] {
+				"XXX",
+				"Y Y",
+				'X',
+				"itemLinenCloth",
+				'Y',
+				"stickWood"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.awning, 1, 3), new Object[] {
+				"XXX",
+				"Y Y",
+				'X',
+				"itemCottonCloth",
+				'Y',
+				"stickWood"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.flowerPot, 1, 0), new Object[] {
+				" X ",
+				"X X",
+				"XXX",
+				'X',
+				"gemChalcedony"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.flowerPot, 1, 1), new Object[] {
+				" X ",
+				"X X",
+				"XXX",
+				'X',
+				new ItemStack(Blocks.HARDENED_CLAY, 1, 0)
+		}));
+
 	}
 
 	private static void loadEquipsRecipes() {
@@ -1911,9 +2014,11 @@ public class BasicRecipeRegister {
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 16, 0), new Object[] {
 					" X",
-					"X ",
+					"Y ",
 					'X',
-					"ingotIron"
+					"ingotIron",
+					'Y',
+					"cobblestone"
 			}));
 		}
 

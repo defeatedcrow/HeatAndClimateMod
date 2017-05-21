@@ -88,6 +88,7 @@ public class MachineInit {
 
 	public static Block energyTank;
 	public static Block adapterPanel;
+	public static Block acceptorPanel;
 	public static Block wirelessPortal;
 
 	public static Block reactor;

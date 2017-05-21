@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.machine.block.BlockAdapterPanel;
 import defeatedcrow.hac.machine.block.BlockBoilerTurbine;
 import defeatedcrow.hac.machine.block.BlockCatapult;
 import defeatedcrow.hac.machine.block.BlockConveyor;
@@ -33,6 +34,7 @@ import defeatedcrow.hac.machine.block.BlockWaterPump;
 import defeatedcrow.hac.machine.block.BlockWatermill;
 import defeatedcrow.hac.machine.block.BlockWindmill;
 import defeatedcrow.hac.machine.block.BlockWindmill_L;
+import defeatedcrow.hac.machine.block.ItemAdapterPanel;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
 import defeatedcrow.hac.machine.item.ItemAlloyMold;
@@ -167,6 +169,16 @@ public class MachineInitRegister {
 		MachineInit.creativeBox = new BlockCreativeBox(ClimateCore.PACKAGE_BASE + "_device_creative_box");
 		registerTierBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_BASE + "_device_creative_box", 3);
 
+		MachineInit.adapterPanel = new BlockAdapterPanel(ClimateCore.PACKAGE_BASE + "_device_adapter_item", false);
+		MachineInit.adapterPanel.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_adapter_item");
+		GameRegistry.register(MachineInit.adapterPanel);
+		GameRegistry.register(new ItemAdapterPanel(MachineInit.adapterPanel));
+
+		MachineInit.acceptorPanel = new BlockAdapterPanel(ClimateCore.PACKAGE_BASE + "_device_acceptor_item", true);
+		MachineInit.acceptorPanel.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_acceptor_item");
+		GameRegistry.register(MachineInit.acceptorPanel);
+		GameRegistry.register(new ItemAdapterPanel(MachineInit.acceptorPanel));
+
 	}
 
 	static void loadItems() {
@@ -251,6 +263,9 @@ public class MachineInitRegister {
 			MachineInit.reagent.setCreativeTab(ClimateMain.machine);
 			MachineInit.synthetic.setCreativeTab(ClimateMain.machine);
 			MachineInit.catalyst.setCreativeTab(ClimateMain.machine);
+
+			MachineInit.adapterPanel.setCreativeTab(ClimateMain.machine);
+			MachineInit.acceptorPanel.setCreativeTab(ClimateMain.machine);
 		}
 	}
 
