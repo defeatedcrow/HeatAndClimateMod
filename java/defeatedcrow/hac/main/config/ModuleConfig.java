@@ -42,6 +42,12 @@ public class ModuleConfig {
 			Property magic_b = cfg.get("module setting", "EnableMagicModule", magic);
 			Property food_b = cfg.get("module setting", "EnableFoodModule", food);
 
+			Property machine_a = cfg.get("module setting", "EnableAdvancedMachine", machine_advanced);
+			Property magic_a = cfg.get("module setting", "EnableAdvancedMagic", magic_advanced);
+			Property food_a = cfg.get("module setting", "EnableAdvancedFood", food_advanced);
+			Property weapon_a = cfg.get("module setting", "EnableAdvancedWeapon", weapon_advanced);
+			Property build_a = cfg.get("module setting", "EnableAdvancedBuildingBlocks", build_advanced);
+
 			Property mek_b = cfg.get("plugin setting", "MekanismPlugin", mek);
 			Property for_b = cfg.get("plugin setting", "ForestryPlugin", ffm);
 			Property ic2_b = cfg.get("plugin setting", "IndustrialCraft2Plugin", ic2);
@@ -50,6 +56,12 @@ public class ModuleConfig {
 			machine = machine_b.getBoolean();
 			magic = magic_b.getBoolean();
 			food = food_b.getBoolean();
+
+			machine_advanced = machine_a.getBoolean();
+			magic_advanced = magic_a.getBoolean();
+			food_advanced = food_a.getBoolean();
+			weapon_advanced = weapon_a.getBoolean();
+			build_advanced = build_a.getBoolean();
 
 			mek = mek_b.getBoolean();
 			ffm = for_b.getBoolean();

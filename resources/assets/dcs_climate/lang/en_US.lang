@@ -588,6 +588,22 @@ tile.dcs_build_awning_0.name=Wooden Awning
 tile.dcs_build_awning_1.name=Metal Awning
 tile.dcs_build_awning_2.name=Linen Awning
 tile.dcs_build_awning_3.name=Cotton Awning
+tile.dcs_build_claybrick_white.name=White Clay Brick
+tile.dcs_build_claybrick_orange.name=Orange Clay Brick
+tile.dcs_build_claybrick_magenta.name=Magenta Clay Brick
+tile.dcs_build_claybrick_light_blue.name=Light Blue Clay Brick
+tile.dcs_build_claybrick_yellow.name=Yellow Clay Brick
+tile.dcs_build_claybrick_lime.name=Lime Clay Brick
+tile.dcs_build_claybrick_pink.name=Pink Clay Brick
+tile.dcs_build_claybrick_gray.name=Gray Clay Brick
+tile.dcs_build_claybrick_silver.name=Silver Clay Brick
+tile.dcs_build_claybrick_cyan.name=Cyan Clay Brick
+tile.dcs_build_claybrick_purple.name=Purple Clay Brick
+tile.dcs_build_claybrick_blue.name=Blue Clay Brick
+tile.dcs_build_claybrick_brown.name=Brown Clay Brick
+tile.dcs_build_claybrick_green.name=Green Clay Brick
+tile.dcs_build_claybrick_red.name=red Clay Brick
+tile.dcs_build_claybrick_black.name=Black Clay Brick
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber

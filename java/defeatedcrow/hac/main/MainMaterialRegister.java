@@ -13,6 +13,7 @@ import defeatedcrow.hac.magic.MagicInitRegister;
 import defeatedcrow.hac.main.block.build.BlockAwning;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
+import defeatedcrow.hac.main.block.build.BlockClayBricks;
 import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
@@ -347,6 +348,10 @@ public class MainMaterialRegister {
 		MainInit.sinkChest = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_full", true);
 		registerBlock(MainInit.sinkChest, ClimateCore.PACKAGE_BASE + "_device_sink_full");
 		ClimateMain.proxy.regTEJson(MainInit.sinkChest, "dcs_climate", "dcs_device_sink_full", "device");
+
+		MainInit.clayBricks = new BlockClayBricks(ClimateCore.PACKAGE_BASE + "_build_claybrick");
+		registerBlock(MainInit.clayBricks, ClimateCore.PACKAGE_BASE + "_build_claybrick");
+		ClimateMain.proxy.regTEJson(MainInit.clayBricks, "dcs_climate", "dcs_build_claybrick", "build");
 	}
 
 	static void regDeviceBlock() {

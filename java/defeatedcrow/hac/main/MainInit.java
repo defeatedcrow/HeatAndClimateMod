@@ -65,6 +65,8 @@ public class MainInit {
 
 	public static Item flowerPot;
 
+	public static Block clayBricks;
+
 	// furniture
 	public static Block chalLamp;
 	public static Block wallLamp;

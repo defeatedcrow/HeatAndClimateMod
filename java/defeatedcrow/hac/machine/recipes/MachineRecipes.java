@@ -564,6 +564,25 @@ public class MachineRecipes {
 				'W',
 				"gearSteel"
 		}));
+
+		// アナザー
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
+				"Y",
+				"X",
+				'X',
+				"stickWood",
+				'Y',
+				new ItemStack(MachineInit.reagent, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
+				"Y",
+				"X",
+				'X',
+				"stickWood",
+				'Y',
+				new ItemStack(MachineInit.reagent, 1, 1)
+		}));
 	}
 
 	static void loadClimateRecipe() {}
@@ -827,6 +846,13 @@ public class MachineRecipes {
 				});
 		RecipeAPI.registerReactorRecipes.addRecipe(r11, DCHeatTier.KILN);
 
+		IReactorRecipe r21 = new ReactorRecipe(null, null, new FluidStack(MachineInit.nitricAcid, 200), null,
+				DCHeatTier.KILN, 0, null, new FluidStack(MachineInit.sulfuricAcid, 200),
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"dustSaltpeter"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r21, DCHeatTier.KILN);
+
 		// 硫酸
 		IReactorRecipe r13 = new ReactorRecipe(null, null, new FluidStack(MachineInit.sulfuricAcid, 200), null,
 				DCHeatTier.KILN, 0, null, new FluidStack(FluidRegistry.WATER, 200), null, new Object[] {
@@ -834,6 +860,13 @@ public class MachineRecipes {
 						"dustSulfur"
 				});
 		RecipeAPI.registerReactorRecipes.addRecipe(r13, DCHeatTier.KILN);
+
+		IReactorRecipe r20 = new ReactorRecipe(null, null, new FluidStack(MachineInit.sulfuricAcid, 200), null,
+				DCHeatTier.KILN, 0, null, new FluidStack(FluidRegistry.WATER, 200), null, new Object[] {
+						"dustSaltpeter",
+						"dustSulfur"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r20, DCHeatTier.KILN);
 
 		// 硫酸2
 		IReactorRecipe r14 = new ReactorRecipe(null, null, new FluidStack(MachineInit.sulfuricAcid, 500), null,
