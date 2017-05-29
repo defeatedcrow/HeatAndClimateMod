@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.recipes;
 import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -1554,165 +1555,17 @@ public class BasicRecipeRegister {
 					new ItemStack(MainInit.sinkMetal, 1, 0)
 			}));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 0), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeWhite"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 1), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeOrange"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 2), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeMagenta"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 3), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeLightBlue"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 4), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeYellow"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 5), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeLime"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 6), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyePink"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 7), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeGray"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 8), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeLightGray"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 9), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeCyan"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 10), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyePurple"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 11), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeBlue"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 12), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeBrown"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 13), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeGreen"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 14), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeRed"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 1, 15), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'X',
-					new ItemStack(MainInit.syntheticBlock, 1, 32767),
-					'Y',
-					"dyeBlack"
-			}));
+			for (int i = 0; i < 16; i++) {
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.syntheticBlock, 8, i), new Object[] {
+						"XXX",
+						"XYX",
+						"XXX",
+						'X',
+						new ItemStack(MainInit.syntheticBlock, 1, 32767),
+						'Y',
+						MainUtil.DYES[i]
+				}));
+			}
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceAluminium, 6, 0), new Object[] {
 					"XXX",
@@ -2093,6 +1946,38 @@ public class BasicRecipeRegister {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreIngot, 1, 5), new Object[] {
 				new ItemStack(MainInit.oreIngot, 1, 7)
 		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.GLASS, 8, 0), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(Blocks.STAINED_GLASS, 1, 32767),
+				'Y',
+				new ItemStack(MainInit.repairPutty, 1, 2)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.STAINED_HARDENED_CLAY, 8, 0), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 32767),
+				'Y',
+				new ItemStack(MainInit.repairPutty, 1, 2)
+		}));
+
+		for (int i = 0; i < 16; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.STAINED_HARDENED_CLAY, 8, i), new Object[] {
+					"XXX",
+					"XYX",
+					"XXX",
+					'X',
+					new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 0),
+					'Y',
+					MainUtil.DYES[i]
+			}));
+		}
 
 		// 土
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.DIRT, 1, 0), new Object[] {

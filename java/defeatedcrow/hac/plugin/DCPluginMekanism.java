@@ -19,18 +19,7 @@ public class DCPluginMekanism {
 	private DCPluginMekanism() {}
 
 	public static void load() {
-		Item bio = Item.REGISTRY.getObject(new ResourceLocation("Mekanism", "BioFuel"));
-		if (bio != null) {
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 0), new ItemStack(bio, 4, 0));
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 1), new ItemStack(bio, 4, 0));
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 2), new ItemStack(bio, 4, 0));
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 3), new ItemStack(bio, 4, 0));
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 4), new ItemStack(bio, 4, 0));
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 5), new ItemStack(bio, 4, 0));
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 6), new ItemStack(bio, 4, 0));
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 7), new ItemStack(bio, 4, 0));
-			// RecipeHelper.addCrusherRecipe(new ItemStack(FoodInit.crops, 1, 8), new ItemStack(bio, 2, 0));
-		}
+
 	}
 
 	public static void sendIMC() {

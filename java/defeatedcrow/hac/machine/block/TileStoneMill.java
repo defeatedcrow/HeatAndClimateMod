@@ -83,6 +83,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 		if (recipe != null) {
 			List<ItemStack> outs = this.getOutputs();
 			if (recipe.matchOutput(outs, in, 2)) {
+				Object in2 = recipe.getInput();
 				ItemStack out = recipe.getOutput();
 				ItemStack sec = recipe.getSecondary();
 				ItemStack cont = recipe.getContainerItem(in);
@@ -94,7 +95,13 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 						int i2 = this.insertResult(sec);
 					}
 					int i3 = this.insertResult(cont);
-					this.decrStackSize(0, 1);
+					if (in2 instanceof ItemStack) {
+						int red = ((ItemStack) in2).stackSize;
+						this.decrStackSize(0, red);
+					} else {
+						this.decrStackSize(0, 1);
+					}
+
 					return true;
 				}
 			}

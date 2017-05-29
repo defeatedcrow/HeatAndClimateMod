@@ -68,7 +68,7 @@ import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
-import defeatedcrow.hac.main.worldgen.WorldGenAltOres;
+import defeatedcrow.hac.main.worldgen.WorldGenAltOres2;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import net.minecraft.block.Block;
@@ -187,7 +187,7 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadWorldGen() {
 		// gen
 		WorldGenWindmill.initLoot();
-		GameRegistry.registerWorldGenerator(new WorldGenAltOres(), 2);
+		GameRegistry.registerWorldGenerator(new WorldGenAltOres2(), 2);
 		GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
 		GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
 
