@@ -1,0 +1,31 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/machine/bismuth_panel_crystal"
+    },
+    "elements": [
+        {   "from": [ 2, 2, 13 ],
+            "to": [ 14, 14, 16 ],
+            "faces": {
+                "down":  { "uv": [ 2, 13, 14, 16 ], "texture": "#base", "cullface": "down" },
+                "up":    { "uv": [ 2, 0, 14, 3 ], "texture": "#base", "cullface": "up" },
+                "north": { "uv": [ 2, 2, 14, 14 ], "texture": "#base", "cullface": "north" },
+                "south": { "uv": [ 2, 2, 14, 14 ], "texture": "#base", "cullface": "south" },
+                "west":  { "uv": [ 13, 2, 16, 14 ], "texture": "#base", "cullface": "west" },
+                "east":  { "uv": [ 0, 2, 3, 14 ], "texture": "#base", "cullface": "east" }
+            }
+        },
+        {   "from": [ 4, 4, 11 ],
+            "to": [ 12, 12, 13 ],
+            "faces": {
+                "down":  { "uv": [ 4, 12, 12, 14 ], "texture": "#core", "cullface": "down" },
+                "up":    { "uv": [ 4, 2, 12, 4 ], "texture": "#core", "cullface": "up" },
+                "north": { "uv": [ 4, 4, 12, 12 ], "texture": "#core", "cullface": "north" },
+                "south": { "uv": [ 4, 4, 12, 12 ], "texture": "#core", "cullface": "south" },
+                "west":  { "uv": [ 12, 4, 14, 12 ], "texture": "#core", "cullface": "west" },
+                "east":  { "uv": [ 2, 4, 4, 12 ], "texture": "#core", "cullface": "east" }
+            }
+        }
+    ]
+}

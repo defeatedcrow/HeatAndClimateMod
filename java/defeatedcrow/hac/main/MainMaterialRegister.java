@@ -10,8 +10,10 @@ import defeatedcrow.hac.food.FoodInitRegister;
 import defeatedcrow.hac.machine.MachineInitRegister;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.magic.MagicInitRegister;
+import defeatedcrow.hac.main.block.build.BlockAwning;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
+import defeatedcrow.hac.main.block.build.BlockClayBricks;
 import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
@@ -23,6 +25,8 @@ import defeatedcrow.hac.main.block.build.BlockLowChest;
 import defeatedcrow.hac.main.block.build.BlockMagnetChest;
 import defeatedcrow.hac.main.block.build.BlockMarkingPanel;
 import defeatedcrow.hac.main.block.build.BlockMetalChest;
+import defeatedcrow.hac.main.block.build.BlockMetalFenceBase;
+import defeatedcrow.hac.main.block.build.BlockMetalLadder;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
@@ -50,6 +54,7 @@ import defeatedcrow.hac.main.block.ores.BlockGem;
 import defeatedcrow.hac.main.block.ores.BlockMetal;
 import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
+import defeatedcrow.hac.main.item.entity.ItemFlowerPot;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorHat;
 import defeatedcrow.hac.main.item.equip.ItemArmorHoodie;
@@ -241,6 +246,32 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceBedrock), "dcs_climate", "dcs_fence_bedrock",
 				"build", 15, false);
 
+		MainInit.fenceAluminium = new BlockMetalFenceBase("dcs_fence_aluminium", false)
+				.setUnlocalizedName("dcs_fence_aluminium");
+		registerBlock(MainInit.fenceAluminium, ClimateCore.PACKAGE_BASE + "_fence_aluminium");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceAluminium), "dcs_climate",
+				"dcs_fence_aluminium", "build", 3, false);
+
+		MainInit.fenceNet = new BlockMetalFenceBase("dcs_fence_net", false).setUnlocalizedName("dcs_fence_net");
+		registerBlock(MainInit.fenceNet, ClimateCore.PACKAGE_BASE + "_fence_net");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceNet), "dcs_climate", "dcs_fence_net",
+				"build", 3, false);
+
+		MainInit.fenceGlass = new BlockMetalFenceBase("dcs_fence_glass", true).setUnlocalizedName("dcs_fence_glass");
+		registerBlock(MainInit.fenceGlass, ClimateCore.PACKAGE_BASE + "_fence_glass");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceGlass), "dcs_climate", "dcs_fence_glass",
+				"build", 3, false);
+
+		MainInit.fenceLadder = new BlockMetalLadder("dcs_fence_ladder").setUnlocalizedName("dcs_fence_ladder");
+		registerBlock(MainInit.fenceLadder, ClimateCore.PACKAGE_BASE + "_fence_ladder");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceLadder), "dcs_climate", "dcs_fence_ladder",
+				"build", 3, false);
+
+		MainInit.awning = new BlockAwning("dcs_build_awning").setUnlocalizedName("dcs_build_awning");
+		registerBlock(MainInit.awning, ClimateCore.PACKAGE_BASE + "_build_awning");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.awning), "dcs_climate", "dcs_build_awning",
+				"build", 3, false);
+
 		MainInit.tableMarble = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_marble", false);
 		registerBlock(MainInit.tableMarble, ClimateCore.PACKAGE_BASE + "_table_marble");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.tableMarble), "dcs_climate", "dcs_table_marble",
@@ -317,6 +348,10 @@ public class MainMaterialRegister {
 		MainInit.sinkChest = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_full", true);
 		registerBlock(MainInit.sinkChest, ClimateCore.PACKAGE_BASE + "_device_sink_full");
 		ClimateMain.proxy.regTEJson(MainInit.sinkChest, "dcs_climate", "dcs_device_sink_full", "device");
+
+		MainInit.clayBricks = new BlockClayBricks(ClimateCore.PACKAGE_BASE + "_build_claybrick");
+		registerBlock(MainInit.clayBricks, ClimateCore.PACKAGE_BASE + "_build_claybrick");
+		ClimateMain.proxy.regTEJson(MainInit.clayBricks, "dcs_climate", "dcs_build_claybrick", "build");
 	}
 
 	static void regDeviceBlock() {
@@ -396,6 +431,9 @@ public class MainMaterialRegister {
 
 		MainInit.crowDrill = new ItemCrowDrill().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_creative_drill");
 		GameRegistry.register(MainInit.crowDrill.setRegistryName(ClimateCore.PACKAGE_BASE + "_creative_drill"));
+
+		MainInit.flowerPot = new ItemFlowerPot().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_flowerpot");
+		GameRegistry.register(MainInit.flowerPot.setRegistryName(ClimateCore.PACKAGE_BASE + "_flowerpot"));
 
 	}
 

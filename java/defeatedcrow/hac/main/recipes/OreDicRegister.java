@@ -154,6 +154,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gearAlloy", new ItemStack(MainInit.materials, 1, 6));
 		OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.materials, 1, 6));
 		OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.materials, 1, 7));
+		OreDictionary.registerOre("blockGlass", new ItemStack(MainInit.syntheticBlock, 1, 32767));
 
 		// tool
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.stoneYagen, 1, 32767));

@@ -35,8 +35,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
 	public static final int MOD_MINOR = 5;
-	public static final int MOD_BUILD = 2;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.5.3,)";
+	public static final int MOD_BUILD = 6;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.5.6,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
@@ -52,6 +52,8 @@ public class ClimateMain {
 	public static final Calendar CAL = Calendar.getInstance();
 	public static int month = 0;
 	public static int day = 0;
+
+	public static final String AUTHOR = "defeatedcrow";
 
 	@EventHandler
 	public void construction(FMLConstructionEvent event) {

@@ -30,7 +30,7 @@ public class WorldGenAltOres implements IWorldGenerator {
 			IChunkProvider chunkProvider) {
 
 		int genDim1 = world.provider.getDimension();
-		if (chunkX > 3000 || chunkZ > 3000)
+		if (Math.abs(chunkX) > 3000 || Math.abs(chunkZ) > 3000)
 			// あまり遠いと生成しない
 			return;
 
@@ -47,9 +47,9 @@ public class WorldGenAltOres implements IWorldGenerator {
 			};
 			for (int i = 0; i < count; i++) {
 				/* 計5回のチャンス */
-				int posX = chunk2X + random.nextInt(8) + 4;
+				int posX = chunk2X + random.nextInt(8) + 8;
 				int posY = genY[i] + random.nextInt(20 + 10 * i);
-				int posZ = chunk2Z + random.nextInt(8) + 4;
+				int posZ = chunk2Z + random.nextInt(8) + 8;
 				BlockPos pos = new BlockPos(posX, posY, posZ);
 				Biome biome = world.getBiomeForCoordsBody(pos);
 
@@ -341,7 +341,7 @@ public class WorldGenAltOres implements IWorldGenerator {
 	 * 出現率は低く、生成も固有鉱石はない。山がないときの救済用。
 	 */
 	public void generateQuartzVine(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(5) + 4; // 4-8
+		int h = rand.nextInt(5) + 3; // 4-7
 		int r = h + 1;
 		BlockSet[] gen = new BlockSet[h];
 		for (int i = 0; i < h; i++) {
@@ -389,25 +389,6 @@ public class WorldGenAltOres implements IWorldGenerator {
 						} else {
 							world.setBlockState(p, add.getState(), 2);
 						}
-					}
-				}
-			}
-		}
-
-		// 直線状の鉱脈を伴う
-		for (int k = 0; k < 2; k++) {
-			BlockPos line = new BlockPos(pos.add(rand.nextInt(5) - 2, rand.nextInt(5) - 2, rand.nextInt(5) - 2));
-			BlockPos min2 = new BlockPos(line.north(5));
-			BlockPos max2 = new BlockPos(line.south(5));
-			if (rand.nextInt(2) == 0) {
-				min2 = new BlockPos(line.north(5));
-				max2 = new BlockPos(line.south(5));
-				Iterable<BlockPos> itr2 = pos.getAllInBox(min2, max2);
-				for (BlockPos p2 : itr2) {
-					Block block = world.getBlockState(p2).getBlock();
-					if (p2.getY() > 1 && p2.getY() < world.getActualHeight() && isPlaceable(block)) {
-						int m = k == 0 ? 8 : 5;
-						world.setBlockState(p2, MainInit.ores.getStateFromMeta(m), 2);
 					}
 				}
 			}
@@ -479,9 +460,9 @@ public class WorldGenAltOres implements IWorldGenerator {
 	 * なかなか探しにくいが、引き当てるとバニラ宝石類が大量に手に入る。
 	 */
 	public void generateVugs(World world, Random rand, BlockPos pos) {
-		int h = rand.nextInt(3) + 4; // 4-6
+		int h = rand.nextInt(3) + 4; // 2-6
 		if (rand.nextInt(10) == 0) {
-			h = 8; // 希にあたりがある
+			h = 7; // 希にあたりがある
 		}
 		// 球状に生成
 		for (int x = pos.getX() - h; x <= pos.getX() + h; x++) {

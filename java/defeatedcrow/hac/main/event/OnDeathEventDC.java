@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.event;
 
+import defeatedcrow.hac.api.damage.DamageSourceClimate;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,6 +25,8 @@ public class OnDeathEventDC {
 		DamageSource source = event.getSource();
 		if (living == null)
 			return;
+
+		boolean flag = false;
 
 		if (living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
@@ -48,8 +52,19 @@ public class OnDeathEventDC {
 					player.worldObj.playSound(player, pos, Blocks.GLASS.getSoundType().getBreakSound(),
 							SoundCategory.PLAYERS, 1.0F, 0.75F);
 					event.setCanceled(true);
+					flag = true;
 				}
+			}
 
+			if (!flag) {
+				if (player.getName().equals("defeatedcrow") || ClimateCore.isDebug) {
+					if (source.isFireDamage() || source == DamageSourceClimate.climateHeatDamage) {
+						ItemStack chicken = new ItemStack(FoodInit.sticks, 1, 3);
+						EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY, player.posZ,
+								chicken);
+						player.worldObj.spawnEntityInWorld(drop);
+					}
+				}
 			}
 		}
 	}

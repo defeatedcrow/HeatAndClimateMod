@@ -24,8 +24,6 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	private int forceX = 0;
 	private int forceZ = 0;
 
-	private static Random pRandom;
-
 	public WorldGenAltSkarn(boolean force) {
 		super();
 		isForced = force;
@@ -47,20 +45,18 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
 
-		pRandom = new Random(world.getSeed() + chunkX + chunkZ * 31);
-
 		int genDim1 = world.provider.getDimension();
 		if ((genDim1 == 1 || genDim1 == -1))
 			return;
 
-		if (chunkX > 3000 || chunkZ > 3000)
-			// あまり遠いと生成しない
-			return;
-		if (chunkX < -3000 || chunkZ < -3000)
+		if (Math.abs(chunkX) > 1000 || Math.abs(chunkZ) > 1000)
 			// あまり遠いと生成しない
 			return;
 
-		if (!canGenerate(chunkX, chunkZ, world))
+		if (!world.getChunkFromChunkCoords(chunkX, chunkZ).isLoaded())
+			return;
+
+		if (!canGenerate(chunkX, chunkZ, world, isForced))
 			return;
 
 		int posX = chunkX << 4;
@@ -137,8 +133,9 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	}
 
 	// 1/200
-	private boolean canGenerate(int chunkX, int chunkZ, World world) {
-		if (isForced)
+	public static boolean canGenerate(int chunkX, int chunkZ, World world, boolean f) {
+		Random pRandom = new Random(world.getSeed() + chunkX + chunkZ * 31);
+		if (f)
 			return true;
 		if (!SkarnGenPoint.hasPos(chunkX, chunkZ)) {
 			int i = WorldGenConfig.skarnGen;

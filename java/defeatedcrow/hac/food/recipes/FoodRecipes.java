@@ -670,17 +670,21 @@ public class FoodRecipes {
 
 	static void loadMillRecipe() {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), "seedRice");
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
-				0.25F, new ItemStack(FoodInit.seeds, 4, 5));
+				0.25F, new ItemStack(FoodInit.seeds, 2, 5));
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
-				0.25F, new ItemStack(FoodInit.crops, 4, 7));
+				0.25F, new ItemStack(FoodInit.crops, 1, 7));
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropCream, 2, 0), "bucketMilk");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 8, 4),
+				0.25F, new ItemStack(MainInit.cropCont, 1, 7));
 
 		// yagen
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new Object[] {
 				"toolNormalYagen",
-				"cropOlive",
-				"cropOlive",
 				"cropOlive",
 				"cropOlive"
 		}));
@@ -737,6 +741,11 @@ public class FoodRecipes {
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000), DCHeatTier.OVEN,
 				null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						"seaweed"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FluidRegistry.WATER, 1000),
+				DCHeatTier.HOT, null, null, false, null, new Object[] {
+						new ItemStack(Blocks.ICE, 1, 0)
 				});
 
 	}

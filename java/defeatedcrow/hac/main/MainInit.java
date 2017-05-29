@@ -42,6 +42,11 @@ public class MainInit {
 	public static Block fenceSerpentine;
 	public static Block fenceBedrock;
 	public static Block syntheticBlock;
+	public static Block fenceAluminium;
+	public static Block fenceNet;
+	public static Block fenceGlass;
+	public static Block fenceLadder;
+	public static Block awning;
 
 	public static Block markingPanel;
 	public static Block lightOrb;
@@ -57,6 +62,10 @@ public class MainInit {
 	public static Block freezepack;
 	public static Block hotPack;
 	public static Block waterPack;
+
+	public static Item flowerPot;
+
+	public static Block clayBricks;
 
 	// furniture
 	public static Block chalLamp;

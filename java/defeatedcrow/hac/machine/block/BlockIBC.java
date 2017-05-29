@@ -23,8 +23,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -42,10 +44,21 @@ public class BlockIBC extends DCTileBlock {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null && hand == EnumHand.MAIN_HAND && heldItem != null) {
+		if (player != null && hand == EnumHand.MAIN_HAND) {
+
 			TileEntity tile = world.getTileEntity(pos);
 			if (!world.isRemote && tile instanceof TileIBC) {
-				DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+				if (heldItem != null) {
+					DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+				} else {
+					FluidStack f = ((TileIBC) tile).inputT.getFluid();
+					if (f != null) {
+						String name = f.getLocalizedName();
+						int i = f.amount;
+						String mes1 = "Stored Fluid: " + name + " " + i + "mB";
+						player.addChatMessage(new TextComponentString(mes1));
+					}
+				}
 			}
 			return true;
 		}

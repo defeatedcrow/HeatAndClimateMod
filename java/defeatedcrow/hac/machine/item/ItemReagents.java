@@ -15,7 +15,8 @@ public class ItemReagents extends DCItem {
 			"dust_ammonium_nitrate",
 			"dust_nitrocellulose",
 			"bottle_nitroglycerin",
-			"bottle_carbon_black"
+			"bottle_carbon_black",
+			"smokeless_gunpowder"
 	};
 
 	private static String[] tex_names = {
@@ -26,7 +27,8 @@ public class ItemReagents extends DCItem {
 			"white_powder_bottle",
 			"white_powder_bottle",
 			"orange_water_bottle",
-			"black_water_bottle"
+			"black_water_bottle",
+			"dust_smokeless"
 	};
 
 	public ItemReagents() {

@@ -3,14 +3,17 @@ package defeatedcrow.hac.main.block.ores;
 import java.util.List;
 import java.util.Random;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -176,5 +179,14 @@ public class BlockOres2 extends DCSimpleBlock {
 			ret.add(add);
 		}
 		return ret;
+	}
+
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
+			EntityPlayer player) {
+		int meta = DCState.getInt(state, DCState.TYPE16);
+		if (meta >= 0)
+			return new ItemStack(this, 1, meta);
+		return getItem(world, pos, state);
 	}
 }
