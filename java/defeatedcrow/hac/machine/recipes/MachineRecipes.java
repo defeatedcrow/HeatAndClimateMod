@@ -800,15 +800,15 @@ public class MachineRecipes {
 		RecipeAPI.registerReactorRecipes.addRecipe(r2, DCHeatTier.KILN);
 
 		IReactorRecipe r3 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 0),
-				new ItemStack(MainInit.miscDust, 1, 7), new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.OVEN,
+				new ItemStack(MainInit.miscDust, 1, 7), new FluidStack(MachineInit.fuelOil, 400), null, DCHeatTier.OVEN,
 				0.25F, new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 200), null,
 				new Object[] {
-						new ItemStack(Items.COAL, 1)
+						"gemCoal"
 				});
 		RecipeAPI.registerReactorRecipes.addRecipe(r3, DCHeatTier.OVEN);
 
 		IReactorRecipe r4 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 7), null,
-				new FluidStack(MachineInit.fuelOil, 50), null, DCHeatTier.OVEN, 0,
+				new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.OVEN, 0,
 				new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 200), null,
 				new Object[] {
 						new ItemStack(MachineInit.reagent, 1, 0)

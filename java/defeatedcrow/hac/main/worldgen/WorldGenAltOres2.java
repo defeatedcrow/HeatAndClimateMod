@@ -304,7 +304,7 @@ public class WorldGenAltOres2 implements IWorldGenerator {
 								world.setBlockState(p, NICKEL_1.getState(), 4);
 							} else if (j == 1) {
 								world.setBlockState(p, TIN.getState(), 4);
-							} else if (j > 20) {
+							} else if (j > 25) {
 								world.setBlockState(p, STONE_3.getState(), 4);
 							} else {
 								world.setBlockState(p, add.getState(), 4);
