@@ -27,6 +27,7 @@ import defeatedcrow.hac.food.client.FishStickRenderer;
 import defeatedcrow.hac.food.client.FruitPieRenderer;
 import defeatedcrow.hac.food.client.LemonTartRenderer;
 import defeatedcrow.hac.food.client.MeatPieRenderer;
+import defeatedcrow.hac.food.client.MooncakeRenderer;
 import defeatedcrow.hac.food.client.MuttonStickRenderer;
 import defeatedcrow.hac.food.client.PlateBeefRenderer;
 import defeatedcrow.hac.food.client.PlateChickenRenderer;
@@ -44,9 +45,11 @@ import defeatedcrow.hac.food.client.SandwichEggRenderer;
 import defeatedcrow.hac.food.client.SandwichSaladRenderer;
 import defeatedcrow.hac.food.client.SpinachQuicheRenderer;
 import defeatedcrow.hac.food.client.SquareBreadRenderer;
+import defeatedcrow.hac.food.client.SquidStickRenderer;
 import defeatedcrow.hac.food.client.StewBorschtRenderer;
 import defeatedcrow.hac.food.client.StewCongeeRenderer;
 import defeatedcrow.hac.food.client.StewEggRenderer;
+import defeatedcrow.hac.food.client.StewLotusrootRenderer;
 import defeatedcrow.hac.food.client.StewMushroomRenderer;
 import defeatedcrow.hac.food.client.StewPumpkinRenderer;
 import defeatedcrow.hac.food.client.StewPurpleRenderer;
@@ -80,6 +83,7 @@ import defeatedcrow.hac.food.entity.FruitPieEntity;
 import defeatedcrow.hac.food.entity.LemonSandwichEntity;
 import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
+import defeatedcrow.hac.food.entity.MooncakeEntity;
 import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkPlateEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
@@ -90,9 +94,11 @@ import defeatedcrow.hac.food.entity.SaladSandwichEntity;
 import defeatedcrow.hac.food.entity.SoupPlateEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
+import defeatedcrow.hac.food.entity.SquidStickEntity;
 import defeatedcrow.hac.food.entity.StewBorschtEntity;
 import defeatedcrow.hac.food.entity.StewCongeeEntity;
 import defeatedcrow.hac.food.entity.StewEggEntity;
+import defeatedcrow.hac.food.entity.StewLotusrootEntity;
 import defeatedcrow.hac.food.entity.StewMushroomEntity;
 import defeatedcrow.hac.food.entity.StewPumpukinEntity;
 import defeatedcrow.hac.food.entity.StewPurpleEntity;
@@ -105,11 +111,14 @@ import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.ClientMainProxy;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -172,6 +181,9 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(StewMushroomEntity.class, StewMushroomRenderer.class);
 		ClientMainProxy.registRender(StewPurpleEntity.class, StewPurpleRenderer.class);
 		ClientMainProxy.registRender(MuttonStickEntity.class, MuttonStickRenderer.class);
+		ClientMainProxy.registRender(SquidStickEntity.class, SquidStickRenderer.class);
+		ClientMainProxy.registRender(MooncakeEntity.class, MooncakeRenderer.class);
+		ClientMainProxy.registRender(StewLotusrootEntity.class, StewLotusrootRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -187,22 +199,23 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.dropOil, ClimateCore.PACKAGE_ID, "dcs_food_drop_oil", "food", 0);
 		instance.regSimpleItem(FoodInit.dropCream, ClimateCore.PACKAGE_ID, "dcs_food_drop_cream", "food", 0);
 		instance.regSimpleItem(FoodInit.bread, ClimateCore.PACKAGE_ID, "dcs_round_bread", "food", 5);
-		instance.regSimpleItem(FoodInit.sticks, ClimateCore.PACKAGE_ID, "dcs_stick_foods", "food", 9);
-		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 9);
-		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 5);
+		instance.regSimpleItem(FoodInit.sticks, ClimateCore.PACKAGE_ID, "dcs_stick_foods", "food", 11);
+		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 11);
+		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 6);
+		instance.regSimpleItem(FoodInit.petals, ClimateCore.PACKAGE_ID, "dcs_petals", "food", 1);
 		instance.regSimpleItem(FoodInit.cupSilver, ClimateCore.PACKAGE_ID, "dcs_food_teacup", "food", 2);
 		instance.regSimpleItem(FoodInit.dairy, ClimateCore.PACKAGE_ID, "dcs_food_dairy", "food", 2);
-		instance.regSimpleItem(FoodInit.meat, ClimateCore.PACKAGE_ID, "dcs_food_meat", "food", 1);
+		instance.regSimpleItem(FoodInit.meat, ClimateCore.PACKAGE_ID, "dcs_food_meat", "food", 2);
 		instance.regSimpleItem(FoodInit.pastry, ClimateCore.PACKAGE_ID, "dcs_food_pastry", "food", 0);
-		instance.regSimpleItem(FoodInit.pastryRound, ClimateCore.PACKAGE_ID, "dcs_food_tart", "food", 7);
-		instance.regSimpleItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_ID, "dcs_food_pie", "food", 7);
+		instance.regSimpleItem(FoodInit.pastryRound, ClimateCore.PACKAGE_ID, "dcs_food_tart", "food", 9);
+		instance.regSimpleItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_ID, "dcs_food_pie", "food", 9);
 		instance.regSimpleItem(FoodInit.sandwich, ClimateCore.PACKAGE_ID, "dcs_food_sandwich", "food", 3);
 		instance.regSimpleItem(FoodInit.clubsandwich, ClimateCore.PACKAGE_ID, "dcs_food_clubsand", "food", 1);
 		instance.regSimpleItem(FoodInit.ricebowl, ClimateCore.PACKAGE_ID, "dcs_food_rice_bowl", "food", 1);
 		instance.regSimpleItem(FoodInit.steakplate, ClimateCore.PACKAGE_ID, "dcs_food_empty_plate", "food", 0);
 		instance.regSimpleItem(FoodInit.plateMeal, ClimateCore.PACKAGE_ID, "dcs_food_plate_meat", "food", 7);
 		instance.regSimpleItem(FoodInit.plateSoup, ClimateCore.PACKAGE_ID, "dcs_food_plate_potato", "food", 3);
-		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 7);
+		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 8);
 
 		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 4);
 
@@ -389,6 +402,15 @@ public class FoodClientProxy {
 				return fluidModel;
 			}
 		});
+
+		ModelLoader.setCustomStateMapper(FoodInit.cropLotus,
+				(new StateMap.Builder()).ignore(BlockFluidBase.LEVEL).build());
+		ModelBakery.registerItemVariants(Item.getItemFromBlock(FoodInit.cropLotus),
+				new ModelResourceLocation("dcs_climate:dcs_crop_lotus"));
+		for (int i = 0; i < 16; i++) {
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(FoodInit.cropLotus), i,
+					new ModelResourceLocation("dcs_climate:crop/dcs_crop_lotus", "inventory"));
+		}
 	}
 
 }

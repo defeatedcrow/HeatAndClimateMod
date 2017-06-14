@@ -827,7 +827,7 @@ public class MachineRecipes {
 		RecipeAPI.registerReactorRecipes.addRecipe(r6, DCHeatTier.SMELTING);
 
 		// Ni 水素ガス
-		IReactorRecipe r7 = new ReactorRecipe(null, null, new FluidStack(MachineInit.hydrogen, 200), null,
+		IReactorRecipe r7 = new ReactorRecipe(null, null, new FluidStack(MachineInit.hydrogen, 400), null,
 				DCHeatTier.SMELTING, 0, new ItemStack(MachineInit.catalyst, 1, 0),
 				new FluidStack(MachineInit.fuelGas, 200), new FluidStack(FluidRegistry.WATER, 200), new Object[] {});
 		RecipeAPI.registerReactorRecipes.addRecipe(r7, DCHeatTier.SMELTING);
@@ -928,6 +928,20 @@ public class MachineRecipes {
 						new ItemStack(MachineInit.reagent, 1, 1)
 				});
 		RecipeAPI.registerReactorRecipes.addRecipe(r18, DCHeatTier.OVEN);
+
+		// カーバイド
+		IReactorRecipe r25 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 9), null, null, null,
+				DCHeatTier.UHT, 0, null, null, null, new Object[] {
+						"gemCoal",
+						"dustLime"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r25, DCHeatTier.UHT);
+
+		IReactorRecipe r26 = new ReactorRecipe(null, null, new FluidStack(MachineInit.fuelGas, 300), null,
+				DCHeatTier.NORMAL, 0, null, new FluidStack(FluidRegistry.WATER, 100), null, new Object[] {
+						"gemCarbide"
+				});
+		RecipeAPI.registerReactorRecipes.addRecipe(r26, DCHeatTier.NORMAL);
 
 		// バニラ要素
 		IReactorRecipe r22 = new ReactorRecipe(null, null, new FluidStack(FluidRegistry.LAVA, 200), null,

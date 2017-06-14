@@ -1,0 +1,20 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/crop/tea_0"
+    },
+    "elements": [
+        {   "from": [ 1, 0, 1 ],
+            "to": [ 15, 16, 15 ],
+            "faces": {
+                "down":  { "uv": [ 1, 1, 15, 15 ], "texture": "#leaves", "cullface": "down" },
+                "up":    { "uv": [ 1, 1, 15, 15 ], "texture": "#leaves", "cullface": "up" },
+                "north": { "uv": [ 1, 0, 15, 16 ], "texture": "#leaves", "cullface": "north" },
+                "south": { "uv": [ 1, 0, 15, 16 ], "texture": "#leaves", "cullface": "south" },
+                "west":  { "uv": [ 1, 0, 15, 16 ], "texture": "#leaves", "cullface": "west" },
+                "east":  { "uv": [ 1, 0, 15, 16 ], "texture": "#leaves", "cullface": "east" }
+            }
+        }
+    ]
+}

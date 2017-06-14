@@ -3,6 +3,7 @@ package defeatedcrow.hac.plugin.waila;
 import java.util.List;
 
 import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.machine.block.BlockIBC;
 import defeatedcrow.hac.machine.block.TileIBC;
 import mcp.mobius.waila.addons.HUDHandlerBase;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -11,9 +12,11 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidStack;
 
 public class HUDHandlerFluidDC extends HUDHandlerBase {
 
@@ -23,6 +26,20 @@ public class HUDHandlerFluidDC extends HUDHandlerBase {
 		if (!config.getConfig("dcs_climate.showfluid") || accessor.getBlock() == null
 				|| !DCTileBlock.class.isInstance(accessor.getBlock()))
 			return currenttip;
+
+		if (BlockIBC.class.isInstance(accessor.getBlock())) {
+			NBTTagList list = accessor.getNBTData().getTagList("Tank", 10);
+			NBTTagCompound nbt2 = list.getCompoundTagAt(0);
+			if (!nbt2.hasKey("Empty")) {
+				FluidStack fluid = FluidStack.loadFluidStackFromNBT(nbt2);
+				if (fluid != null && fluid.getFluid() != null) {
+					currenttip.add(String.format("Fluid : %s", fluid.getLocalizedName()));
+					currenttip.add(String.format("Amount : %d mB", fluid.amount));
+
+				}
+			}
+
+		}
 
 		return currenttip;
 	}

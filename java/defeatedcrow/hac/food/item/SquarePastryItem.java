@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.ChocolatePieEntity;
 import defeatedcrow.hac.food.entity.FruitPieEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
+import defeatedcrow.hac.food.entity.MooncakeEntity;
 import defeatedcrow.hac.food.entity.SugarPieEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +28,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 7;
+		return 9;
 	}
 
 	@Override
@@ -50,7 +51,9 @@ public class SquarePastryItem extends FoodItemBase {
 				"choco_raw",
 				"choco_baked",
 				"fruit_raw",
-				"fruit_baked"
+				"fruit_baked",
+				"mooncake_raw",
+				"mooncake_baked"
 		};
 		return s;
 	}
@@ -76,6 +79,10 @@ public class SquarePastryItem extends FoodItemBase {
 		case 7:
 			ret = new FruitPieEntity(world, x, y, z, player);
 			break;
+		case 8:
+		case 9:
+			ret = new MooncakeEntity(world, x, y, z, player);
+			break;
 		default:
 			ret = new SugarPieEntity(world, x, y, z, player);
 		}
@@ -93,9 +100,10 @@ public class SquarePastryItem extends FoodItemBase {
 			return 6;
 		case 5:
 		case 7:
-			return 7;
-		case 3:
 			return 8;
+		case 3:
+		case 9:
+			return 10;
 		default:
 			return 1;
 		}

@@ -13,6 +13,7 @@ import defeatedcrow.hac.food.block.crop.BlockCotton;
 import defeatedcrow.hac.food.block.crop.BlockLeavesLemon;
 import defeatedcrow.hac.food.block.crop.BlockLeavesOlive;
 import defeatedcrow.hac.food.block.crop.BlockLeavesTea;
+import defeatedcrow.hac.food.block.crop.BlockLotus;
 import defeatedcrow.hac.food.block.crop.BlockOnion;
 import defeatedcrow.hac.food.block.crop.BlockRice;
 import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
@@ -26,6 +27,7 @@ import defeatedcrow.hac.food.item.ItemDCSeeds;
 import defeatedcrow.hac.food.item.ItemDairy;
 import defeatedcrow.hac.food.item.ItemFluidDrop;
 import defeatedcrow.hac.food.item.ItemFluidPack;
+import defeatedcrow.hac.food.item.ItemLotusPetal;
 import defeatedcrow.hac.food.item.ItemMeatMaterials;
 import defeatedcrow.hac.food.item.ItemPastry;
 import defeatedcrow.hac.food.item.ItemSilverCup;
@@ -116,18 +118,25 @@ public class FoodInitRegister {
 
 		FoodInit.dish = new BlockDish(ClimateCore.PACKAGE_BASE + "_build_dish", 1);
 		MainMaterialRegister.registerBlock(FoodInit.dish, ClimateCore.PACKAGE_BASE + "_build_dish");
+
+		FoodInit.cropLotus = new BlockLotus(ClimateCore.PACKAGE_BASE + "_crop_lotus", 15)
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus");
+		MainMaterialRegister.registerBlock(FoodInit.cropLotus, ClimateCore.PACKAGE_BASE + "_crop_lotus");
 	}
 
 	static void loadItems() {
 
-		FoodInit.crops = new ItemDCCrops(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
+		FoodInit.crops = new ItemDCCrops(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
 		GameRegistry.register(FoodInit.crops.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_crops"));
 
-		FoodInit.seeds = new ItemDCSeeds(5).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_seeds");
+		FoodInit.seeds = new ItemDCSeeds(6).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_seeds");
 		GameRegistry.register(FoodInit.seeds.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_seeds"));
 
 		FoodInit.teaLeaves = new ItemTeaLeaves(2).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_leaves");
 		GameRegistry.register(FoodInit.teaLeaves.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_leaves"));
+
+		FoodInit.petals = new ItemLotusPetal().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_petals");
+		GameRegistry.register(FoodInit.petals.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_petals"));
 
 		FoodInit.dairy = new ItemDairy().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_dairy");
 		GameRegistry.register(FoodInit.dairy.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_dairy"));
@@ -325,6 +334,7 @@ public class FoodInitRegister {
 		FoodInit.crops.setCreativeTab(ClimateMain.food);
 		FoodInit.seeds.setCreativeTab(ClimateMain.food);
 		FoodInit.teaLeaves.setCreativeTab(ClimateMain.food);
+		FoodInit.petals.setCreativeTab(ClimateMain.food);
 
 		FoodInit.dropOil.setCreativeTab(ClimateMain.food);
 		FoodInit.dropCream.setCreativeTab(ClimateMain.food);
@@ -347,6 +357,7 @@ public class FoodInitRegister {
 		FoodInit.cropTomato.setCreativeTab(ClimateMain.food);
 		FoodInit.cropCoffee.setCreativeTab(ClimateMain.food);
 		FoodInit.cropCotton.setCreativeTab(ClimateMain.food);
+		FoodInit.cropLotus.setCreativeTab(ClimateMain.food);
 
 		FoodInit.leavesOlive.setCreativeTab(ClimateMain.food);
 		FoodInit.leavesLemon.setCreativeTab(ClimateMain.food);

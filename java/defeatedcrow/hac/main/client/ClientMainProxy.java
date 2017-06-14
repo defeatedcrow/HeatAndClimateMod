@@ -51,6 +51,7 @@ import defeatedcrow.hac.main.client.model.ModelHoodie;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
+import defeatedcrow.hac.main.client.particle.ParticleFlameDC;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
 import defeatedcrow.hac.main.entity.EntityBulletDC;
 import defeatedcrow.hac.main.entity.EntityCution;
@@ -98,6 +99,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		particles.add(ParticleFallingStar.STAR_TEX);
 		particles.add(ParticleCloudDC.CLOUD_TEX);
 		particles.add(ParticleOrb.ORB_TEX);
+		particles.add(ParticleFlameDC.FLAME_TEX);
 
 		particles.add(TESRInfernalFlame.TEX1.toString());
 		particles.add(TESRInfernalFlame.TEX2.toString());

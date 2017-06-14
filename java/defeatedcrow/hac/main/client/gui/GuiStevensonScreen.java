@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.client.gui;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
@@ -55,12 +56,16 @@ public class GuiStevensonScreen extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		if (tile == null)
+			return;
+
 		int adjX = this.xSize / 2;
 		String s = I18n.translateToLocal("dcs.gui.device.stevenson_screen");
 		this.fontRendererObj.drawString(s, adjX - this.fontRendererObj.getStringWidth(s) / 2, 10, 4210752);
 
 		int date = DCTimeHelper.getDay(tile.getWorld());
 		int time = DCTimeHelper.currentTime(tile.getWorld());
+		EnumSeason season = DCTimeHelper.getSeasonEnum(tile.getWorld());
 		boolean day = DCTimeHelper.isDayTime(tile.getWorld());
 		boolean pm = false;
 		if (time > 12) {
@@ -69,11 +74,15 @@ public class GuiStevensonScreen extends GuiContainer {
 		}
 		int color = day ? 0x005050 : 0x500050;
 
+		int seasonColor = season.color.getMapColor().colorValue;
+		this.fontRendererObj.drawString(season.name(),
+				adjX - 30 - this.fontRendererObj.getStringWidth(season.name()) / 2, 22, seasonColor);
+
 		String s1 = date + " DAY";
-		this.fontRendererObj.drawString(s1, adjX - 15 - this.fontRendererObj.getStringWidth(s1) / 2, 22, 4210752);
+		this.fontRendererObj.drawString(s1, adjX + 5 - this.fontRendererObj.getStringWidth(s1) / 2, 22, 4210752);
 
 		String s2 = time + (pm ? " PM" : " AM");
-		this.fontRendererObj.drawString(s2, adjX + 15 - this.fontRendererObj.getStringWidth(s1) / 2, 22, color);
+		this.fontRendererObj.drawString(s2, adjX + 35 - this.fontRendererObj.getStringWidth(s1) / 2, 22, color);
 
 		Weather current = Weather.getWeather(weather, day);
 		String s3 = current.name;

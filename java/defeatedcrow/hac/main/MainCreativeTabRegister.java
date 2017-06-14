@@ -51,6 +51,7 @@ public class MainCreativeTabRegister {
 		MainInit.carpetGray.setCreativeTab(ClimateMain.build);
 		MainInit.chestMarble.setCreativeTab(ClimateMain.build);
 		MainInit.chestWood.setCreativeTab(ClimateMain.build);
+		MainInit.flowerPot.setCreativeTab(ClimateMain.build);
 
 		// device
 		MainInit.chamber.setCreativeTab(ClimateMain.machine);
@@ -97,9 +98,10 @@ public class MainCreativeTabRegister {
 			MainInit.chestVillage.setCreativeTab(ClimateMain.build);
 			MainInit.sinkMetal.setCreativeTab(ClimateMain.build);
 			MainInit.sinkChest.setCreativeTab(ClimateMain.build);
-			MainInit.flowerPot.setCreativeTab(ClimateMain.build);
 			MainInit.plate.setCreativeTab(ClimateMain.build);
 			MainInit.desiccant.setCreativeTab(ClimateMain.build);
+			MainInit.lampCarbide.setCreativeTab(ClimateMain.build);
+			MainInit.lampGas.setCreativeTab(ClimateMain.build);
 
 			// cont
 			MainInit.logCont.setCreativeTab(ClimateMain.build);
@@ -109,6 +111,10 @@ public class MainCreativeTabRegister {
 			MainInit.cardboard.setCreativeTab(ClimateMain.build);
 			MainInit.cropBasket.setCreativeTab(ClimateMain.build);
 			MainInit.dustBags.setCreativeTab(ClimateMain.build);
+			MainInit.hedgeSpring.setCreativeTab(ClimateMain.build);
+			MainInit.hedgeSummer.setCreativeTab(ClimateMain.build);
+			MainInit.hedgeAutumn.setCreativeTab(ClimateMain.build);
+			MainInit.hedgeWinter.setCreativeTab(ClimateMain.build);
 		}
 
 		if (ModuleConfig.weapon_advanced) {

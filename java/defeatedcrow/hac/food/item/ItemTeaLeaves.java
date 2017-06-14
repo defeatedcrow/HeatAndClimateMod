@@ -10,7 +10,8 @@ public class ItemTeaLeaves extends DCItem {
 	private static String[] names = {
 			"coffee",
 			"tea_green",
-			"tea_black" };
+			"tea_black"
+	};
 
 	public ItemTeaLeaves(int max) {
 		super();

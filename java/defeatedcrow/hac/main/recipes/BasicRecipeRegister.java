@@ -1482,6 +1482,22 @@ public class BasicRecipeRegister {
 				"stickWood"
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.flowerPot, 1, 0), new Object[] {
+				" X ",
+				"X X",
+				"XXX",
+				'X',
+				"gemChalcedony"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.flowerPot, 1, 1), new Object[] {
+				" X ",
+				"X X",
+				"XXX",
+				'X',
+				new ItemStack(Blocks.HARDENED_CLAY, 1, 0)
+		}));
+
 		if (ModuleConfig.build_advanced) {
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.chestMetal, 1, 0), new Object[] {
@@ -1609,22 +1625,6 @@ public class BasicRecipeRegister {
 					"ingotAluminium"
 			}));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.flowerPot, 1, 0), new Object[] {
-					" X ",
-					"X X",
-					"XXX",
-					'X',
-					"gemChalcedony"
-			}));
-
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.flowerPot, 1, 1), new Object[] {
-					" X ",
-					"X X",
-					"XXX",
-					'X',
-					new ItemStack(Blocks.HARDENED_CLAY, 1, 0)
-			}));
-
 			for (int i = 0; i < 16; i++) {
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.clayBricks, 4, i), new Object[] {
 						"XX",
@@ -1641,6 +1641,66 @@ public class BasicRecipeRegister {
 								new ItemStack(MainInit.clayBricks, 1, i)
 				}));
 			}
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.hedgeSpring, 1, 0), new Object[] {
+					"XXX",
+					"YYY",
+					'X',
+					new ItemStack(Blocks.SAPLING, 1, 0),
+					'Y',
+					"stickWood"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.hedgeSummer, 1, 0), new Object[] {
+					"XXX",
+					"YYY",
+					'X',
+					new ItemStack(Blocks.SAPLING, 1, 5),
+					'Y',
+					"stickWood"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.hedgeAutumn, 1, 0), new Object[] {
+					"XXX",
+					"YYY",
+					'X',
+					new ItemStack(Blocks.SAPLING, 1, 2),
+					'Y',
+					"stickWood"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.hedgeWinter, 1, 0), new Object[] {
+					"XXX",
+					"YYY",
+					'X',
+					new ItemStack(Blocks.SAPLING, 1, 1),
+					'Y',
+					"stickWood"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.lampCarbide, 1, 0), new Object[] {
+					"XXX",
+					"YZY",
+					"XXX",
+					'X',
+					"ingotBrass",
+					'Y',
+					"blockGlass",
+					'Z',
+					"gemCarbide"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.lampGas, 1, 0), new Object[] {
+					"XXX",
+					"YZY",
+					"XXX",
+					'X',
+					"ingotSteel",
+					'Y',
+					"blockGlass",
+					'Z',
+					"gemCarbide"
+			}));
 
 		}
 

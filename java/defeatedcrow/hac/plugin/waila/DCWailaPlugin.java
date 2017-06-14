@@ -12,5 +12,6 @@ public class DCWailaPlugin implements IWailaPlugin {
 		HUDHandlerClimateData.register(registrar);
 		HUDHandlerChamber.register(registrar);
 		HUDHandlerTorque.register(registrar);
+		HUDHandlerFluidDC.register(registrar);
 	}
 }

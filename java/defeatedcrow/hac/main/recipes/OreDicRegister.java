@@ -191,5 +191,6 @@ public class OreDicRegister {
 		OreDictionary.registerOre("blockGlass", new ItemStack(MachineInit.synthetic, 1, 2));
 		OreDictionary.registerOre("dustAlkali", new ItemStack(MachineInit.reagent, 1, 3));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
+		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));
 	}
 }

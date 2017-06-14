@@ -24,6 +24,7 @@ public class FoodInit {
 	public static Item crops;
 	public static Item seeds;
 	public static Item teaLeaves;
+	public static Item petals;
 
 	public static Item dropOil;
 	public static Item dropCream;
@@ -48,6 +49,7 @@ public class FoodInit {
 	public static Block cropTomato;
 	public static Block cropCoffee;
 	public static Block cropCotton;
+	public static Block cropLotus;
 
 	public static Block leavesOlive;
 	public static Block leavesLemon;
