@@ -24,7 +24,9 @@ public class ItemDCSeeds extends DCItem {
 			"spinach",
 			"tomato",
 			"coffee",
-			"cotton" };
+			"cotton",
+			"lotus"
+	};
 
 	public ItemDCSeeds(int max) {
 		super();
@@ -59,8 +61,7 @@ public class ItemDCSeeds extends DCItem {
 			return EnumActionResult.FAIL;
 		int meta = stack.getItemDamage();
 		IBlockState state = worldIn.getBlockState(pos);
-		if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, stack)
-				&& worldIn.isAirBlock(pos.up())) {
+		if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, stack)) {
 			Block crop = getCropBlock(meta);
 			if (crop instanceof IClimateCrop) {
 				if (((IClimateCrop) crop).isSuitablePlace(worldIn, pos, state)) {
@@ -88,8 +89,10 @@ public class ItemDCSeeds extends DCItem {
 			return FoodInit.cropCoffee;
 		case 5:
 			return FoodInit.cropCotton;
+		case 6:
+			return FoodInit.cropLotus;
 		default:
-			return FoodInit.cropCotton;
+			return FoodInit.cropRice;
 		}
 	}
 

@@ -47,6 +47,8 @@ public class MainInit {
 	public static Block fenceGlass;
 	public static Block fenceLadder;
 	public static Block awning;
+	public static Block lampCarbide;
+	public static Block lampGas;
 
 	public static Block markingPanel;
 	public static Block lightOrb;
@@ -57,6 +59,11 @@ public class MainInit {
 	public static Block fireproofs;
 	public static Block fireproofhalfs;
 	public static Block fireproofStairs;
+
+	public static Block hedgeSpring;
+	public static Block hedgeSummer;
+	public static Block hedgeAutumn;
+	public static Block hedgeWinter;
 
 	public static Block desiccant;
 	public static Block freezepack;

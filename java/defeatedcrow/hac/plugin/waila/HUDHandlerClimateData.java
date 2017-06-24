@@ -59,6 +59,8 @@ public class HUDHandlerClimateData extends HUDHandlerBase {
 				return new ItemStack(FoodInit.crops, 1, 7);
 			else if (block == FoodInit.leavesTea)
 				return new ItemStack(FoodInit.crops, 1, 8);
+			else if (block == FoodInit.cropLotus)
+				return new ItemStack(FoodInit.crops, 1, 10);
 		}
 
 		return null;

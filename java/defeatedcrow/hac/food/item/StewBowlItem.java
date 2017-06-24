@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.StewBorschtEntity;
 import defeatedcrow.hac.food.entity.StewCongeeEntity;
 import defeatedcrow.hac.food.entity.StewEggEntity;
+import defeatedcrow.hac.food.entity.StewLotusrootEntity;
 import defeatedcrow.hac.food.entity.StewMushroomEntity;
 import defeatedcrow.hac.food.entity.StewPumpukinEntity;
 import defeatedcrow.hac.food.entity.StewPurpleEntity;
@@ -30,7 +31,7 @@ public class StewBowlItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 7;
+		return 8;
 	}
 
 	@Override
@@ -53,7 +54,8 @@ public class StewBowlItem extends FoodItemBase {
 				"pumpkin",
 				"borscht",
 				"mushroom",
-				"purple"
+				"purple",
+				"lotusroot"
 		};
 		return s;
 	}
@@ -76,6 +78,8 @@ public class StewBowlItem extends FoodItemBase {
 			ret = new StewMushroomEntity(world, x, y, z, player);
 		} else if (i == 7) {
 			ret = new StewPurpleEntity(world, x, y, z, player);
+		} else if (i == 8) {
+			ret = new StewLotusrootEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		DCLogger.debugLog("individual " + ret.getIndividual());
@@ -84,7 +88,7 @@ public class StewBowlItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 6;
+		return 8;
 	}
 
 	@Override

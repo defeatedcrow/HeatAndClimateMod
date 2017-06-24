@@ -9,6 +9,8 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.achievement.AcvHelper;
@@ -26,6 +28,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 public class BlockReactor extends BlockTorqueBase {
 
@@ -42,17 +45,24 @@ public class BlockReactor extends BlockTorqueBase {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null) {
-			TileEntity tile = world.getTileEntity(pos);
-			if (heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
-				// achievement
-				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+		TileEntity tile = world.getTileEntity(pos);
+		if (player != null && tile != null) {
+			if (!DCUtil.isEmpty(heldItem)) {
+				if (heldItem.getItem() instanceof IWrenchDC) {
+					// achievement
+					if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
+						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+					}
+					return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+				} else if (heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+					DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+					return true;
 				}
-			} else if (!player.worldObj.isRemote && hand == EnumHand.MAIN_HAND) {
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
-				return true;
 			}
+			if (!world.isRemote) {
+				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+			}
+			return true;
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
 	}

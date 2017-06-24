@@ -1,0 +1,77 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/crop/lotus_stem"
+    },
+    "elements": [
+        {   "from": [ 3, 0, 3 ],
+            "to": [ 4, 20, 4 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 1, 1 ], "texture": "#stem", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 1, 1 ], "texture": "#stem", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "east" }
+            }
+        },
+        {   "from": [ 6, 0, 11 ],
+            "to": [ 7, 22, 12 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 1, 1 ], "texture": "#stem", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 1, 1 ], "texture": "#stem", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "east" }
+            }
+        },
+        {   "from": [ 10, 0, 7 ],
+            "to": [ 11, 18, 8 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 1, 1 ], "texture": "#stem", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 1, 1 ], "texture": "#stem", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 1, 16 ], "texture": "#stem", "cullface": "east" }
+            }
+        },
+        {   "from": [ -1, 20, -1 ],
+            "to": [ 9, 20, 9 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#leaf", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#leaf", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "east" }
+            }
+        },
+        {   "from": [ 2.5, 22, 7.5 ],
+            "to": [ 10.5, 22, 15.5 ],
+            "rotation": { "origin": [ 6.5, 6, 11.5 ], "axis": "y", "angle": 22.5 },
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#leaf", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#leaf", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "east" }
+            }
+        },
+        {   "from": [ 4, 18, 1 ],
+            "to": [ 16, 18, 13 ],
+            "rotation": { "origin": [ 10, 6, 7 ], "axis": "y", "angle": 45 },
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#leaf", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#leaf", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 16, 0 ], "texture": "#leaf", "cullface": "east" }
+            }
+        }
+    ]
+}

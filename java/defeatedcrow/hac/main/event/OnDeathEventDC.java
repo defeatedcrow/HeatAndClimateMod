@@ -7,6 +7,7 @@ import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -78,12 +79,22 @@ public class OnDeathEventDC {
 			return;
 
 		/* Projectileでの一撃必殺 */
-		if (living instanceof EntityAnimal && !living.worldObj.isRemote && living.worldObj.rand.nextBoolean()) {
-			if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
-				if (dam > living.getMaxHealth()) {
-					ItemStack vis = new ItemStack(FoodInit.meat, 1, 0);
-					EntityItem drop = new EntityItem(living.worldObj, living.posX, living.posY, living.posZ, vis);
-					living.worldObj.spawnEntityInWorld(drop);
+		if (!living.worldObj.isRemote && living.worldObj.rand.nextBoolean()) {
+			if (living instanceof EntitySquid) {
+				if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
+					if (dam > living.getMaxHealth()) {
+						ItemStack squid = new ItemStack(FoodInit.meat, 1, 2);
+						EntityItem drop = new EntityItem(living.worldObj, living.posX, living.posY, living.posZ, squid);
+						living.worldObj.spawnEntityInWorld(drop);
+					}
+				}
+			} else if (living instanceof EntityAnimal) {
+				if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
+					if (dam > living.getMaxHealth()) {
+						ItemStack vis = new ItemStack(FoodInit.meat, 1, 0);
+						EntityItem drop = new EntityItem(living.worldObj, living.posX, living.posY, living.posZ, vis);
+						living.worldObj.spawnEntityInWorld(drop);
+					}
 				}
 			}
 		}

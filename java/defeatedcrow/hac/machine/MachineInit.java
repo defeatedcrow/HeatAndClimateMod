@@ -24,6 +24,7 @@ public class MachineInit {
 
 	public static Block fan;
 	public static Block redbox;
+	public static Block spinning;
 
 	// tier 2
 
@@ -70,6 +71,7 @@ public class MachineInit {
 	public static Fluid sulfuricAcid;
 	public static Fluid fuelOil;
 	public static Fluid fuelGas;
+	public static Fluid nitrogen;
 
 	public static Block hydrogenBlock;
 	public static Block ammoniaBlock;
@@ -77,10 +79,12 @@ public class MachineInit {
 	public static Block sulfuricAcidBlock;
 	public static Block fuelOilBlock;
 	public static Block fuelGasBlock;
+	public static Block nitrogenBlock;
 
 	public static Item reagent;
 	public static Item synthetic;
 	public static Item catalyst;
+	public static Item gemcore;
 
 	public static Item moldAlloy;
 	public static Item moldAluminium;

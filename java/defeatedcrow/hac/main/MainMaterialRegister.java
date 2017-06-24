@@ -12,8 +12,10 @@ import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.magic.MagicInitRegister;
 import defeatedcrow.hac.main.block.build.BlockAwning;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
+import defeatedcrow.hac.main.block.build.BlockCarbideLamp;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockClayBricks;
+import defeatedcrow.hac.main.block.build.BlockCoolantPackage;
 import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
@@ -54,6 +56,7 @@ import defeatedcrow.hac.main.block.ores.BlockGem;
 import defeatedcrow.hac.main.block.ores.BlockMetal;
 import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
+import defeatedcrow.hac.main.block.plant.BlockHedge;
 import defeatedcrow.hac.main.item.entity.ItemFlowerPot;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorHat;
@@ -122,10 +125,10 @@ public class MainMaterialRegister {
 		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 11);
 		registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone");
 
-		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 13);
+		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 14);
 		registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock");
 
-		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 14);
+		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 15);
 		registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock");
 
 		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 12);
@@ -157,6 +160,9 @@ public class MainMaterialRegister {
 
 		MainInit.desiccant = new BlockDesiccantPackage(ClimateCore.PACKAGE_BASE + "_desiccant");
 		registerBlock(MainInit.desiccant, ClimateCore.PACKAGE_BASE + "_desiccant");
+
+		MainInit.freezepack = new BlockCoolantPackage(ClimateCore.PACKAGE_BASE + "_coolant");
+		registerBlock(MainInit.freezepack, ClimateCore.PACKAGE_BASE + "_coolant");
 	}
 
 	static void registerSidedBlock() {
@@ -332,6 +338,16 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.plate), "dcs_climate", "dcs_build_plate", "build",
 				1, false);
 
+		MainInit.lampCarbide = new BlockCarbideLamp(ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern");
+		registerBlock(MainInit.lampCarbide, ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.lampCarbide), "dcs_climate",
+				"dcs_lamp_carbide_lantern", "build", 0, false);
+
+		MainInit.lampGas = new BlockCarbideLamp(ClimateCore.PACKAGE_BASE + "_lamp_carbide_glass");
+		registerBlock(MainInit.lampGas, ClimateCore.PACKAGE_BASE + "_lamp_carbide_glass");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.lampGas), "dcs_climate", "dcs_lamp_carbide_glass",
+				"build", 0, false);
+
 		MainInit.chestMarble = new BlockLowChest(Material.ROCK, ClimateCore.PACKAGE_BASE + "_device_lowchest_marble",
 				true);
 		registerBlock(MainInit.chestMarble, ClimateCore.PACKAGE_BASE + "_device_lowchest_marble");
@@ -352,6 +368,26 @@ public class MainMaterialRegister {
 		MainInit.clayBricks = new BlockClayBricks(ClimateCore.PACKAGE_BASE + "_build_claybrick");
 		registerBlock(MainInit.clayBricks, ClimateCore.PACKAGE_BASE + "_build_claybrick");
 		ClimateMain.proxy.regTEJson(MainInit.clayBricks, "dcs_climate", "dcs_build_claybrick", "build");
+
+		MainInit.hedgeSpring = new BlockHedge("dcs_hedge_spring").setUnlocalizedName("dcs_hedge_spring");
+		registerBlock(MainInit.hedgeSpring, ClimateCore.PACKAGE_BASE + "_hedge_spring");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.hedgeSpring), "dcs_climate", "dcs_hedge_spring",
+				"crop", 15, false);
+
+		MainInit.hedgeSummer = new BlockHedge("dcs_hedge_summer").setUnlocalizedName("dcs_hedge_summer");
+		registerBlock(MainInit.hedgeSummer, ClimateCore.PACKAGE_BASE + "_hedge_summer");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.hedgeSummer), "dcs_climate", "dcs_hedge_summer",
+				"crop", 15, false);
+
+		MainInit.hedgeAutumn = new BlockHedge("dcs_hedge_autumn").setUnlocalizedName("dcs_hedge_autumn");
+		registerBlock(MainInit.hedgeAutumn, ClimateCore.PACKAGE_BASE + "_hedge_autumn");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.hedgeAutumn), "dcs_climate", "dcs_hedge_autumn",
+				"crop", 15, false);
+
+		MainInit.hedgeWinter = new BlockHedge("dcs_hedge_winter").setUnlocalizedName("dcs_hedge_winter");
+		registerBlock(MainInit.hedgeWinter, ClimateCore.PACKAGE_BASE + "_hedge_winter");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.hedgeWinter), "dcs_climate", "dcs_hedge_winter",
+				"crop", 15, false);
 	}
 
 	static void regDeviceBlock() {
@@ -407,7 +443,7 @@ public class MainMaterialRegister {
 
 	static void registerItems() {
 		// ores
-		MainInit.oreIngot = new ItemIngots(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		GameRegistry.register(MainInit.oreIngot.setRegistryName(ClimateCore.PACKAGE_BASE + "_ingot"));
 
 		MainInit.oreDust = new ItemOreDusts(12).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
@@ -442,7 +478,7 @@ public class MainMaterialRegister {
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_materials");
 		GameRegistry.register(MainInit.foodMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_materials"));
 
-		MainInit.bakedApple = new ItemDCFoods(3, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
+		MainInit.bakedApple = new ItemDCFoods(4, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		GameRegistry.register(MainInit.bakedApple.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_itemfood"));
 	}
 
@@ -606,6 +642,7 @@ public class MainMaterialRegister {
 	}
 
 	static void registerIntegration() {
+
 		if (DCIntegrationCore.loadedForestry) {
 			MainInit.circuit = new ItemCircuitChal().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_circuit");
 			GameRegistry.register(MainInit.circuit.setRegistryName(ClimateCore.PACKAGE_BASE + "_circuit"));

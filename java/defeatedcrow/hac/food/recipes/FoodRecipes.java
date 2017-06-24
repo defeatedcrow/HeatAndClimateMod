@@ -25,7 +25,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class FoodRecipes {
 
 	public static void load() {
-		loadOres();
 		loadBasicRecipes();
 		loadCropRecipes();
 		loadClimateRecipes();
@@ -213,6 +212,11 @@ public class FoodRecipes {
 				new ItemStack(Items.MUTTON, 1, 0)
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sticks, 1, 10), new Object[] {
+				"stickWood",
+				"fishSquid"
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastryRound, 1, 0), new Object[] {
 				"foodPastry",
 				"cropApple",
@@ -305,6 +309,19 @@ public class FoodRecipes {
 				"foodPastry",
 				"dustSugar",
 				"cropPeach"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 8), new Object[] {
+				"foodPastry",
+				"dustSugar",
+				"cropLotusSeed",
+				"egg"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 8), new Object[] {
+				"foodPastry",
+				"dustSugar",
+				"cropLotusSeed"
 		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sandwich, 2, 0), new Object[] {
@@ -429,17 +446,17 @@ public class FoodRecipes {
 		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 1), new Object[] {
-				new ItemStack(Items.MELON_SEEDS, 1, 0),
+				new ItemStack(Items.POTATO, 1, 0),
 				"gemChalcedony"
 		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 2), new Object[] {
-				new ItemStack(Items.PUMPKIN_SEEDS, 1, 0),
+				new ItemStack(Items.CARROT, 1, 0),
 				"gemChalcedony"
 		}));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 3), new Object[] {
-				new ItemStack(Items.CARROT, 1, 0),
+				new ItemStack(Items.BEETROOT, 1, 0),
 				"gemChalcedony"
 		}));
 
@@ -450,6 +467,11 @@ public class FoodRecipes {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 5), new Object[] {
 				new ItemStack(Items.REEDS, 1, 0),
+				"gemChalcedony"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.seeds, 1, 6), new Object[] {
+				new ItemStack(Blocks.WATERLILY, 1, 0),
 				"gemChalcedony"
 		}));
 
@@ -569,6 +591,13 @@ public class FoodRecipes {
 		mutton.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(mutton, DCHeatTier.OVEN);
 
+		ClimateSmelting ika = new ClimateSmelting(new ItemStack(FoodInit.sticks, 1, 11), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.sticks, 1, 10));
+		ika.requiredHeat().add(DCHeatTier.SMELTING);
+		ika.requiredHum().add(DCHumidity.NORMAL);
+		ika.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(ika, DCHeatTier.OVEN);
+
 		ClimateSmelting a_tart = new ClimateSmelting(new ItemStack(FoodInit.pastryRound, 1, 1), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastryRound, 1, 0));
 		a_tart.requiredHeat().add(DCHeatTier.SMELTING);
@@ -624,6 +653,13 @@ public class FoodRecipes {
 		f_pie.requiredHum().add(DCHumidity.NORMAL);
 		f_pie.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(f_pie, DCHeatTier.OVEN);
+
+		ClimateSmelting g_pie = new ClimateSmelting(new ItemStack(FoodInit.pastrySquare, 1, 9), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastrySquare, 1, 8));
+		g_pie.requiredHeat().add(DCHeatTier.SMELTING);
+		g_pie.requiredHum().add(DCHumidity.NORMAL);
+		g_pie.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(g_pie, DCHeatTier.OVEN);
 
 		ClimateSmelting b_plate = new ClimateSmelting(new ItemStack(FoodInit.plateMeal, 1, 1), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.plateMeal, 1, 0));
@@ -921,6 +957,12 @@ public class FoodRecipes {
 						new ItemStack(Items.CHORUS_FRUIT, 1, 0)
 				});
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.bowlSoup, 3, 8), null, 0F, null,
+				DCHeatTier.OVEN, null, null, false, new FluidStack(FoodInit.stock, 1000), new Object[] {
+						"cropSpinach",
+						"cropLotusRoot"
+				});
+
 		if (MainInit.milk != null) {
 			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null,
 					DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.milk, 1000), new Object[] {
@@ -1001,9 +1043,10 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesLemon);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesOlive);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesTea);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLotus);
 	}
 
-	static void loadOres() {
+	public static void loadOres() {
 		OreDictionary.registerOre("cropRice", new ItemStack(FoodInit.crops, 1, 0));
 		OreDictionary.registerOre("cropOnion", new ItemStack(FoodInit.crops, 1, 1));
 		OreDictionary.registerOre("cropSpinach", new ItemStack(FoodInit.crops, 1, 2));
@@ -1015,14 +1058,18 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 1));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 2));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 3));
+		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
+		OreDictionary.registerOre("cropLotusSeed", new ItemStack(FoodInit.crops, 1, 10));
+		OreDictionary.registerOre("cropLotusRoot", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("seedRice", new ItemStack(FoodInit.seeds, 1, 0));
 		OreDictionary.registerOre("seedOnion", new ItemStack(FoodInit.seeds, 1, 1));
 		OreDictionary.registerOre("seedSpinach", new ItemStack(FoodInit.seeds, 1, 2));
 		OreDictionary.registerOre("seedTomato", new ItemStack(FoodInit.seeds, 1, 3));
 		OreDictionary.registerOre("seedCoffee", new ItemStack(FoodInit.seeds, 1, 4));
 		OreDictionary.registerOre("seedCotton", new ItemStack(FoodInit.seeds, 1, 5));
+		OreDictionary.registerOre("seedLotus", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("saplingLemon", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("saplingOlive", new ItemStack(FoodInit.saplings, 1, 1));
@@ -1042,6 +1089,8 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodCustard", new ItemStack(FoodInit.dairy, 1, 2));
 		OreDictionary.registerOre("foodViscera", new ItemStack(FoodInit.meat, 1, 0));
 		OreDictionary.registerOre("foodRennet", new ItemStack(FoodInit.meat, 1, 1));
+		OreDictionary.registerOre("foodSquid", new ItemStack(FoodInit.meat, 1, 2));
+		OreDictionary.registerOre("fishSquid", new ItemStack(FoodInit.meat, 1, 2));
 		OreDictionary.registerOre("foodPastry", new ItemStack(FoodInit.pastry, 1, 0));
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));

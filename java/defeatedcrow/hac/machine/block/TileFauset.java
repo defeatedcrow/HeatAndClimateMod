@@ -22,9 +22,9 @@ public class TileFauset extends DCTileEntity {
 		if (!worldObj.isRemote) {
 			// 液体を流す
 			IBlockState state = worldObj.getBlockState(getPos());
-			if (!DCState.getBool(state, DCState.POWERED)) {
+			if (!DCState.getBool(state, DCState.POWERED))
 				return;
-			} else {
+			else {
 				EnumFacing face = DCState.getSide(state, DCState.SIDE).face;
 				TileEntity fromTE = worldObj.getTileEntity(getPos().offset(face));
 				if (fromTE == null
@@ -39,19 +39,20 @@ public class TileFauset extends DCTileEntity {
 							face.getOpposite());
 					IFluidHandler outtank = toTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 							EnumFacing.UP);
+					if (intank != null && outtank != null) {
 
-					int limit = 200; // 200mBまでしか送らない
+						int limit = 200; // 200mBまでしか送らない
 
-					// 引き出せる量
-					FluidStack get = intank.drain(limit, false);
-					if (get == null || get.getFluid() == null || get.amount == 0) {
-						return;
-					}
+						// 引き出せる量
+						FluidStack get = intank.drain(limit, false);
+						if (get == null || get.getFluid() == null || get.amount == 0)
+							return;
 
-					int ret = outtank.fill(get, false);
-					if (ret > 0) {
-						intank.drain(ret, true);
-						outtank.fill(get, true);
+						int ret = outtank.fill(get, false);
+						if (ret > 0) {
+							intank.drain(ret, true);
+							outtank.fill(get, true);
+						}
 					}
 				}
 			}

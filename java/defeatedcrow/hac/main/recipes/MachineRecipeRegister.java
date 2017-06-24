@@ -1,10 +1,12 @@
 package defeatedcrow.hac.main.recipes;
 
+import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -19,6 +21,7 @@ public class MachineRecipeRegister {
 		loadBuildRecipes();
 		loadVanillaRecipes();
 		loadSmelting();
+		registerClimate();
 	}
 
 	static void loadOreRecipes() {
@@ -80,6 +83,10 @@ public class MachineRecipeRegister {
 		// bismuth
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 13), DCHeatTier.KILN, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 14));
+
+		// bscco
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 14), DCHeatTier.UHT, null,
+				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 15));
 
 		// dust個別精錬
 		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 0),
@@ -203,10 +210,18 @@ public class MachineRecipeRegister {
 		GameRegistry.addSmelting(new ItemStack(MainInit.ores_2, 1, 0), new ItemStack(MainInit.gemBlock, 1, 6), 0.2F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.desiccant, 1, 3), new ItemStack(MainInit.desiccant, 1, 0), 0F);
+
+		GameRegistry.addSmelting(new ItemStack(FoodInit.meat, 1, 2), new ItemStack(MainInit.bakedApple, 1, 4), 0.5F);
 	}
 
 	static void loadVanillaRecipes() {
 
+	}
+
+	static void registerClimate() {
+		// climate
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.lampCarbide, 32767, DCHeatTier.WARM);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.lampGas, 32767, DCHeatTier.WARM);
 	}
 
 }

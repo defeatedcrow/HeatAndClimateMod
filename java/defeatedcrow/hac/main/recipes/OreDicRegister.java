@@ -1,8 +1,11 @@
 package defeatedcrow.hac.main.recipes;
 
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
-import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.food.recipes.FoodRecipes;
+import defeatedcrow.hac.machine.recipes.MachineRecipes;
+import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -11,6 +14,15 @@ import net.minecraftforge.oredict.OreDictionary;
 public class OreDicRegister {
 	public static void load() {
 		loadOres();
+		if (ModuleConfig.machine) {
+			MachineRecipes.loadOres();
+		}
+		if (ModuleConfig.magic) {
+			MagicRecipeRegister.loadOres();
+		}
+		if (ModuleConfig.food) {
+			FoodRecipes.loadOres();
+		}
 	}
 
 	static void loadOres() {
@@ -61,6 +73,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("ingotTitanium", new ItemStack(MainInit.oreIngot, 1, 11));
 		OreDictionary.registerOre("ingotAluminium", new ItemStack(MainInit.oreIngot, 1, 12));
 		OreDictionary.registerOre("ingotBismuth", new ItemStack(MainInit.oreIngot, 1, 13));
+		OreDictionary.registerOre("ingotBSCCO", new ItemStack(MainInit.oreIngot, 1, 14));
 
 		OreDictionary.registerOre("dustCopper", new ItemStack(MainInit.oreDust, 1, 0));
 		OreDictionary.registerOre("dustZinc", new ItemStack(MainInit.oreDust, 1, 1));
@@ -92,6 +105,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("blockTitanium", new ItemStack(MainInit.metalBlock, 1, 11));
 		OreDictionary.registerOre("blockAluminium", new ItemStack(MainInit.metalBlock, 1, 12));
 		OreDictionary.registerOre("blockBismuth", new ItemStack(MainInit.metalBlock, 1, 13));
+		OreDictionary.registerOre("blockBSCCO", new ItemStack(MainInit.metalBlock, 1, 14));
 
 		// gems
 		OreDictionary.registerOre("gemChalcedony", new ItemStack(MainInit.gems, 1, 0));
@@ -183,13 +197,5 @@ public class OreDicRegister {
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
 
 		OreDictionary.registerOre("cropBeetroot", new ItemStack(Items.BEETROOT, 1, 0));
-
-		OreDictionary.registerOre("string", new ItemStack(MachineInit.synthetic, 1, 0));
-		OreDictionary.registerOre("itemString", new ItemStack(MachineInit.synthetic, 1, 0));
-		OreDictionary.registerOre("itemCloth", new ItemStack(MachineInit.synthetic, 1, 1));
-		OreDictionary.registerOre("itemSyntheticCloth", new ItemStack(MachineInit.synthetic, 1, 1));
-		OreDictionary.registerOre("blockGlass", new ItemStack(MachineInit.synthetic, 1, 2));
-		OreDictionary.registerOre("dustAlkali", new ItemStack(MachineInit.reagent, 1, 3));
-		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
 	}
 }

@@ -2,8 +2,10 @@ package defeatedcrow.hac.magic.recipe;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -15,7 +17,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class MagicRecipeRegister {
 
 	public static void load() {
-		loadOres();
 		loadItemRecipes();
 	}
 
@@ -546,9 +547,31 @@ public class MagicRecipeRegister {
 		// elestial
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MagicInit.elestial, 1, 0), DCHeatTier.KILN, null, null,
 				false, new ItemStack(MainInit.gemBlock, 1, 8));
+
+		if (ModuleConfig.food) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.lotusCandle, 1, 0), new Object[] {
+					"XXX",
+					"XYX",
+					"XXX",
+					'X',
+					new ItemStack(FoodInit.petals, 1, 0),
+					'Y',
+					"ingotGold"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.lotusCandleBlack, 1, 0), new Object[] {
+					"XXX",
+					"XYX",
+					"XXX",
+					'X',
+					new ItemStack(FoodInit.petals, 1, 1),
+					'Y',
+					"ingotGold"
+			}));
+		}
 	}
 
-	static void loadOres() {
+	public static void loadOres() {
 		OreDictionary.registerOre("blockElestial", new ItemStack(MagicInit.elestial, 1, 0));
 	}
 

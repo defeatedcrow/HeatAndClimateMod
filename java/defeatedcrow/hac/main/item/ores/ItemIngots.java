@@ -22,7 +22,8 @@ public class ItemIngots extends DCItem {
 			"sus",
 			"titanium",
 			"aluminium",
-			"bismuth"
+			"bismuth",
+			"bscco"
 	};
 
 	public ItemIngots(int max) {
@@ -50,6 +51,7 @@ public class ItemIngots extends DCItem {
 	 * 11: チタン
 	 * 12: アルミニウム
 	 * 13: ビスマス
+	 * 14: BSCCO
 	 */
 	@Override
 	public String[] getNameSuffix() {

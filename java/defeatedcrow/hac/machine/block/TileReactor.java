@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.api.recipe.IReactorRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
@@ -92,6 +93,13 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	@Override
 	public float maxSpeed() {
 		return 360.0F;
+	}
+
+	public DCHeatTier getHeat() {
+		if (current != null)
+			return current.getHeat();
+		else
+			return DCHeatTier.ABSOLUTE;
 	}
 
 	/* inventory */

@@ -13,12 +13,15 @@ import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
+import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
@@ -156,6 +159,12 @@ public class DCFluidBlockBase extends BlockFluidClassic
 	@Override
 	public boolean canDisplace(IBlockAccess world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
+		if (state.getBlock() instanceof BlockLiquid) {
+			if (state.getMaterial() == Material.WATER) {
+				if (this.getFluid() == MachineInit.nitrogen)
+					return true;
+			}
+		}
 		if (state.getMaterial().isLiquid())
 			return state.getBlock().getMetaFromState(state) > 7;
 		return super.canDisplace(world, pos);
@@ -164,9 +173,30 @@ public class DCFluidBlockBase extends BlockFluidClassic
 	@Override
 	public boolean displaceIfPossible(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
+		if (state.getBlock() instanceof BlockLiquid) {
+			if (state.getMaterial() == Material.WATER) {
+				if (this.getFluid() == MachineInit.nitrogen)
+					return true;
+			}
+		}
 		if (state.getMaterial().isLiquid())
 			return state.getBlock().getMetaFromState(state) > 7;
 		return super.displaceIfPossible(world, pos);
+	}
+
+	// nitrogen
+	@Override
+	protected void flowIntoBlock(World world, BlockPos pos, int meta) {
+		IBlockState state = world.getBlockState(pos);
+		if (state.getBlock() instanceof BlockLiquid) {
+			if (state.getMaterial() == Material.WATER) {
+				if (this.getFluid() == MachineInit.nitrogen) {
+					world.setBlockState(pos, Blocks.ICE.getDefaultState(), 3);
+					return;
+				}
+			}
+		}
+		super.flowIntoBlock(world, pos, meta);
 	}
 
 }
