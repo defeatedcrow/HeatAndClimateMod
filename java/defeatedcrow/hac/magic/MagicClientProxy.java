@@ -4,6 +4,8 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.magic.block.TileIceCluster;
 import defeatedcrow.hac.magic.block.TileInfernalFlame;
+import defeatedcrow.hac.magic.block.TileLotusCandle;
+import defeatedcrow.hac.magic.block.TileLotusCandleBlack;
 import defeatedcrow.hac.magic.block.TileMaceBird;
 import defeatedcrow.hac.magic.block.TileMaceBurn;
 import defeatedcrow.hac.magic.block.TileMaceFlower;
@@ -21,6 +23,7 @@ import defeatedcrow.hac.magic.client.MagicWhiteSpitRenderer;
 import defeatedcrow.hac.magic.client.ProjCircleRenderer;
 import defeatedcrow.hac.magic.client.TESRIceCluster;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
+import defeatedcrow.hac.magic.client.TESRLotusCandle;
 import defeatedcrow.hac.magic.client.TESRMace;
 import defeatedcrow.hac.magic.client.TESRMaceBird;
 import defeatedcrow.hac.magic.client.TESRMaceBurn;
@@ -90,6 +93,9 @@ public class MagicClientProxy {
 	public static void loadTE() {
 		ClientRegistry.registerTileEntity(TileIceCluster.class, "dcs_te_cluster_ice", new TESRIceCluster());
 		ClientRegistry.registerTileEntity(TileInfernalFlame.class, "dcs_te_infernal_flame", new TESRInfernalFlame());
+		ClientRegistry.registerTileEntity(TileLotusCandle.class, "dcs_te_lotus_candle", new TESRLotusCandle());
+		ClientRegistry.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black",
+				new TESRLotusCandle());
 
 		ClientRegistry.registerTileEntity(TileMaceLight.class, "dcs_te_magicmace_light", new TESRMace());
 		ClientRegistry.registerTileEntity(TileMaceMoon.class, "dcs_te_magicmace_moon", new TESRMaceMoon().setNoFrame());
@@ -118,6 +124,8 @@ public class MagicClientProxy {
 		instance.regTEBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_ID, "dcs_cluster_ice", "magic", 0);
 		instance.regTEBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_ID, "dcs_infernal_flame", "magic", 0);
 		instance.regSimpleBlock(MagicInit.elestial, ClimateCore.PACKAGE_ID, "dcs_ore_elestial", "ores", 0);
+		instance.regTEBlock(MagicInit.lotusCandle, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_white", "magic", 0);
+		instance.regTEBlock(MagicInit.lotusCandleBlack, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_black", "magic", 0);
 
 		instance.regTEBlock(MagicInit.maceSun, ClimateCore.PACKAGE_ID, "dcs_magicmace_light", "magic", 0);
 		instance.regTEBlock(MagicInit.maceMoon, ClimateCore.PACKAGE_ID, "dcs_magicmace_moon", "magic", 0);

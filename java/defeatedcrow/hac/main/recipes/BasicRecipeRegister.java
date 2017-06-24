@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main.recipes;
 
 import defeatedcrow.hac.core.DCInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.MainUtil;
@@ -656,6 +657,18 @@ public class BasicRecipeRegister {
 				"dustChromium"
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 15), new Object[] {
+				"dustBismuth",
+				"dustBismuth",
+				"gemCelestite",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustLime",
+				"dustLime",
+				"dustLime"
+		}));
+
 		// dustBlock -> dust
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.oreDust, 9, 0), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 0)
@@ -712,7 +725,8 @@ public class BasicRecipeRegister {
 				"SUS",
 				"Titanium",
 				"Aluminium",
-				"Bismuth"
+				"Bismuth",
+				"BSCCO"
 		};
 		for (int i = 0; i < metal.length; i++) {
 			ItemStack ingot = new ItemStack(MainInit.oreIngot, 9, i);
@@ -818,14 +832,6 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.gemBlock, 1, 12)
 		}));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.desiccant, 1, 0), new Object[] {
-				new ItemStack(Items.PAPER, 1, 0),
-				"dustLime"
-		}));
-
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.DYE, 1, 15), new Object[] {
-				new ItemStack(MainInit.desiccant, 1, 3)
-		}));
 	}
 
 	static void loadContRecipes() {
@@ -1701,6 +1707,28 @@ public class BasicRecipeRegister {
 					'Z',
 					"gemCarbide"
 			}));
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.desiccant, 1, 0), new Object[] {
+					new ItemStack(Items.PAPER, 1, 0),
+					"dustLime"
+			}));
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.DYE, 1, 15), new Object[] {
+					new ItemStack(MainInit.desiccant, 1, 3)
+			}));
+
+			if (ModuleConfig.machine_advanced) {
+				GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.freezepack, 1, 0), new Object[] {
+						new ItemStack(Items.PAPER, 1, 0),
+						new ItemStack(MachineInit.reagent, 1, 4),
+						"bucketWater"
+				}));
+
+				GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.DYE, 1, 15), new Object[] {
+						new ItemStack(MainInit.freezepack, 1, 3)
+				}));
+
+			}
 
 		}
 

@@ -3,6 +3,8 @@ package defeatedcrow.hac.magic;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.magic.block.TileIceCluster;
 import defeatedcrow.hac.magic.block.TileInfernalFlame;
+import defeatedcrow.hac.magic.block.TileLotusCandle;
+import defeatedcrow.hac.magic.block.TileLotusCandleBlack;
 import defeatedcrow.hac.magic.block.TileMaceBird;
 import defeatedcrow.hac.magic.block.TileMaceBurn;
 import defeatedcrow.hac.magic.block.TileMaceFlower;
@@ -94,6 +96,8 @@ public class MagicCommonProxy {
 	public static void loadTE() {
 		GameRegistry.registerTileEntity(TileIceCluster.class, "dcs_te_cluster_ice");
 		GameRegistry.registerTileEntity(TileInfernalFlame.class, "dcs_te_infernal_flame");
+		GameRegistry.registerTileEntity(TileLotusCandle.class, "dcs_te_lotus_candle");
+		GameRegistry.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black");
 
 		GameRegistry.registerTileEntity(TileMaceLight.class, "dcs_te_magicmace_light");
 		GameRegistry.registerTileEntity(TileMaceMoon.class, "dcs_te_magicmace_moon");

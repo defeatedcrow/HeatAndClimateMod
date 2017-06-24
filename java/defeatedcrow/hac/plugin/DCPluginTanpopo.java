@@ -9,6 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class DCPluginTanpopo {
@@ -21,12 +22,14 @@ public class DCPluginTanpopo {
 		Item fluff = Item.REGISTRY.getObject(new ResourceLocation("schr0tanpopo", "material_fluff"));
 		if (fluff != null) {
 
+			OreDictionary.registerOre("cropFluff", new ItemStack(fluff, 1, 0));
+
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.materials, 1, 1), new Object[] {
 					"XXX",
 					"XYX",
 					"XXX",
 					'X',
-					new ItemStack(fluff, 1, 0),
+					"cropFluff",
 					'Y',
 					"stickWood"
 			}));

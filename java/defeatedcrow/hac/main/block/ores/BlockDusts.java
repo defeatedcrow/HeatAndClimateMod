@@ -54,7 +54,8 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 			"gold",
 			"titanium",
 			"aluminium",
-			"bismuth"
+			"bismuth",
+			"bscco"
 	};
 
 	@Override

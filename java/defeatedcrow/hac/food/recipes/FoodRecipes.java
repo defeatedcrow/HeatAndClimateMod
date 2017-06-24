@@ -25,7 +25,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class FoodRecipes {
 
 	public static void load() {
-		loadOres();
 		loadBasicRecipes();
 		loadCropRecipes();
 		loadClimateRecipes();
@@ -1047,7 +1046,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLotus);
 	}
 
-	static void loadOres() {
+	public static void loadOres() {
 		OreDictionary.registerOre("cropRice", new ItemStack(FoodInit.crops, 1, 0));
 		OreDictionary.registerOre("cropOnion", new ItemStack(FoodInit.crops, 1, 1));
 		OreDictionary.registerOre("cropSpinach", new ItemStack(FoodInit.crops, 1, 2));

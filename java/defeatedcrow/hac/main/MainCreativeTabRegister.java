@@ -99,9 +99,12 @@ public class MainCreativeTabRegister {
 			MainInit.sinkMetal.setCreativeTab(ClimateMain.build);
 			MainInit.sinkChest.setCreativeTab(ClimateMain.build);
 			MainInit.plate.setCreativeTab(ClimateMain.build);
-			MainInit.desiccant.setCreativeTab(ClimateMain.build);
-			MainInit.lampCarbide.setCreativeTab(ClimateMain.build);
-			MainInit.lampGas.setCreativeTab(ClimateMain.build);
+			if (ModuleConfig.machine_advanced) {
+				MainInit.lampCarbide.setCreativeTab(ClimateMain.build);
+				MainInit.lampGas.setCreativeTab(ClimateMain.build);
+				MainInit.desiccant.setCreativeTab(ClimateMain.build);
+				MainInit.freezepack.setCreativeTab(ClimateMain.build);
+			}
 
 			// cont
 			MainInit.logCont.setCreativeTab(ClimateMain.build);

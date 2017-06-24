@@ -37,12 +37,12 @@ public class GuiReactor extends GuiContainer {
 		super(new ContainerReactor(te, playerInv));
 		this.playerInventory = playerInv;
 		this.machine = te;
-		this.ySize = 208;
+		this.ySize = 200;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		this.fontRendererObj.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 100,
+		this.fontRendererObj.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92,
 				4210752);
 
 		String s1 = machine.getField(11) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(11)).name();
@@ -171,6 +171,11 @@ public class GuiReactor extends GuiContainer {
 			int in = this.machine.getField(6);
 			int inAmo = 40 * this.machine.getField(10) / 4000;
 			renderFluid(in, inAmo, i + 133, j + 50, 12, 40);
+		}
+
+		if (this.machine.getHeat() != null) {
+			int cl = machine.getHeat().getID() * 6 + 6;
+			this.drawTexturedModalRect(i + 7, j + 99, 0, 202, cl, 4);
 		}
 	}
 

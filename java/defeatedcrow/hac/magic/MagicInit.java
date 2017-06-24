@@ -34,7 +34,7 @@ public class MagicInit {
 	public static Block maceGlory;
 
 	// advanced
-
-	public static Block oreSpecimen;
+	public static Block lotusCandleBlack;
+	public static Block lotusCandle;
 
 }

@@ -304,7 +304,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 						// summer
 						next = stage + 1;
 					} else if (stage < 3 && season < 3) {
-						if (stage == 0 && world.rand.nextInt(100) == 0) {
+						if (stage == 0 && world.rand.nextInt(30) == 0) {
 							state.withProperty(BLACK, true);
 						}
 						next = stage + 1;
