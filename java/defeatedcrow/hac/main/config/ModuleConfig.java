@@ -24,6 +24,7 @@ public class ModuleConfig {
 	public static boolean mek = true;
 	public static boolean ic2 = true;
 	public static boolean bop = true;
+	public static boolean cofh = true;
 
 	public void load(Configuration cfg) {
 
@@ -52,6 +53,7 @@ public class ModuleConfig {
 			Property for_b = cfg.get("plugin setting", "ForestryPlugin", ffm);
 			Property ic2_b = cfg.get("plugin setting", "IndustrialCraft2Plugin", ic2);
 			Property bop_b = cfg.get("plugin setting", "BiomesOPlentyPlugin", bop);
+			Property cofh_b = cfg.get("plugin setting", "CoFHPlugin", bop);
 
 			machine = machine_b.getBoolean();
 			magic = magic_b.getBoolean();
@@ -67,6 +69,7 @@ public class ModuleConfig {
 			ffm = for_b.getBoolean();
 			ic2 = ic2_b.getBoolean();
 			bop = bop_b.getBoolean();
+			cofh = cofh_b.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

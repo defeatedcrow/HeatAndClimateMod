@@ -3,7 +3,6 @@ package defeatedcrow.hac.machine.recipes;
 import java.util.Iterator;
 import java.util.List;
 
-import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
@@ -31,6 +30,7 @@ public class MachineRecipes {
 		if (ModuleConfig.machine_advanced) {
 			loadAdvancedRecipe();
 		}
+		MachineDeviceRecipes.load();
 	}
 
 	static void loadBasicRecipe() {
@@ -772,8 +772,6 @@ public class MachineRecipes {
 		OreDictionary.registerOre("dustAlkali", new ItemStack(MachineInit.reagent, 1, 3));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
 		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));
-
-		FluidDictionaryDC.registerFluidDic(MachineInit.nitrogen, "nitrogen");
 	}
 
 }

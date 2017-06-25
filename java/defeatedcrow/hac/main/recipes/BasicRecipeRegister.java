@@ -366,6 +366,11 @@ public class BasicRecipeRegister {
 				"oreAlminium"
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 1, 16), new Object[] {
+				"toolNormalYagen",
+				"oreAlminum"
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 1, 15), new Object[] {
 				"toolNormalYagen",
 				"oreTitanium"
@@ -503,6 +508,14 @@ public class BasicRecipeRegister {
 				"XXX",
 				'X',
 				"dustAluminium"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustAluminum"
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBlock, 1, 14), new Object[] {
@@ -657,6 +670,18 @@ public class BasicRecipeRegister {
 				"dustChromium"
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustAluminum",
+				"dustChromium"
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 15), new Object[] {
 				"dustBismuth",
 				"dustBismuth",
@@ -742,6 +767,19 @@ public class BasicRecipeRegister {
 					new ItemStack(MainInit.metalBlock, 1, i)
 			}));
 		}
+
+		ItemStack ingotA = new ItemStack(MainInit.oreIngot, 9, 12);
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.metalBlock, 1, 12), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"ingotAluminum"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ingotA, new Object[] {
+				new ItemStack(MainInit.metalBlock, 1, 12)
+		}));
 
 		// gem <-> gemblock
 		for (int i = 0; i < 5; i++) {

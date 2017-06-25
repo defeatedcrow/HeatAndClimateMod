@@ -6,18 +6,16 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.IReactorRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ReactorRecipe;
+import defeatedcrow.hac.core.climate.recipe.SpinningRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
-import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class MachineDeviceRecipes {
@@ -97,6 +95,9 @@ public class MachineDeviceRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 11),
 				new ItemStack(MainInit.oreDust, 1, 11), 0.5F, "oreAluminium");
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 11),
+				new ItemStack(MainInit.oreDust, 1, 11), 0.5F, "oreAluminum");
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 12), new ItemStack(MainInit.oreDust, 1, 1),
 				0.75F, "oreBismuth");
 
@@ -165,6 +166,8 @@ public class MachineDeviceRecipes {
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 11), "ingotAluminium");
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 11), "ingotAluminum");
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 12), "ingotBismuth");
 
 		// 以下バニラ
@@ -227,10 +230,14 @@ public class MachineDeviceRecipes {
 		}
 
 		// spinning machine
-		TileSpinningMachine.registerRecipe("blockTallGrass", 4, new ItemStack(MainInit.materials, 1, 0));
-		TileSpinningMachine.registerRecipe("string", 4, new ItemStack(MainInit.materials, 1, 1));
-		TileSpinningMachine.registerRecipe("cropCotton", 4, new ItemStack(MainInit.materials, 1, 1));
-		TileSpinningMachine.registerRecipe("cropFluff", 4, new ItemStack(MainInit.materials, 1, 1));
+		RecipeAPI.registerSpinningRecipes
+				.addRecipe(new SpinningRecipe(new ItemStack(MainInit.materials, 1, 0), 4, "blockTallGrass"));
+		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 1, 1), 4, "string");
+		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 1, 1), 4, "cropCotton");
+		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 2, 0), 1,
+				new ItemStack(Blocks.HAY_BLOCK, 1, 0));
+		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 2, 1), 1,
+				new ItemStack(MainInit.cropBasket, 1, 5));
 	}
 
 	static void loadReactorRecipe() {
@@ -421,11 +428,10 @@ public class MachineDeviceRecipes {
 				0, null, new FluidStack(FluidRegistry.LAVA, 1000), null, new Object[] {});
 		RecipeAPI.registerReactorRecipes.addRecipe(r28, DCHeatTier.FROSTBITE);
 
-		ItemStack nb = UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,
-				MachineInit.nitrogen);
-		IReactorRecipe r30 = new ReactorRecipe(nb, null, null, null, DCHeatTier.ABSOLUTE, 0, null, null, null,
-				new Object[] {
-						new ItemStack(Items.BUCKET)
+		// nitrogen
+		IReactorRecipe r30 = new ReactorRecipe(null, null, new FluidStack(MachineInit.nitrogen, 1000), null,
+				DCHeatTier.ABSOLUTE, 0, null, null, null, new Object[] {
+						"dustCoal"
 				});
 		RecipeAPI.registerReactorRecipes.addRecipe(r30, DCHeatTier.ABSOLUTE);
 

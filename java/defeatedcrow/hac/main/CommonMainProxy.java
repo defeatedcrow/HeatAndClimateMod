@@ -73,7 +73,6 @@ import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
-import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltOres2;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
@@ -141,7 +140,6 @@ public class CommonMainProxy implements IGuiHandler {
 			MainInit.milk = milk;
 		}
 
-		OreDicRegister.load();
 		BasicRecipeRegister.load();
 		MachineRecipeRegister.load();
 

@@ -568,6 +568,10 @@ tile.dcs_desiccant_red.name=乾燥剤
 tile.dcs_desiccant_yellow.name=弱った乾燥剤
 tile.dcs_desiccant_green.name=湿った乾燥剤
 tile.dcs_desiccant_blue.name=使用済み乾燥剤
+tile.dcs_coolant_0.name=冷却材
+tile.dcs_coolant_1.name=冷却材
+tile.dcs_coolant_2.name=ぬるくなった冷却材
+tile.dcs_coolant_3.name=使用済み冷却材
 tile.dcs_build_synthetic_glass_white.name=白のアクリルガラス
 tile.dcs_build_synthetic_glass_orange.name=オレンジのアクリルガラス
 tile.dcs_build_synthetic_glass_magenta.name=マゼンタのアクリルガラス
@@ -929,7 +933,7 @@ splash_potion.effect.dcs.bird=鳥の加護のスプラッシュポーション
 lingering_potion.effect.dcs.bird=鳥の加護の残留ポーション
 
 dcs.potion.ocean=魚の加護
-potion.effect.dcs.ocean=魚の加護
+potion.effect.dcs.ocean=魚の加護のポーション
 splash_potion.effect.dcs.ocean=魚の加護のスプラッシュポーション
 lingering_potion.effect.dcs.ocean=魚の加護の残留ポーション
 

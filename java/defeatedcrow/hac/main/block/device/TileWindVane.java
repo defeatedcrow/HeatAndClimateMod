@@ -52,10 +52,11 @@ public class TileWindVane extends ClimateReceiveTile {
 			speed = f2;
 
 			float f1 = rot + speed;
-			if (f1 > 360.0F) {
+			while (f1 > 360.0F) {
 				f1 -= 360.0F;
 				lastRot -= 360.0F;
-			} else if (f1 < -360.0F) {
+			}
+			while (f1 < -360.0F) {
 				f1 += 360.0F;
 				lastRot += 360.0F;
 			}

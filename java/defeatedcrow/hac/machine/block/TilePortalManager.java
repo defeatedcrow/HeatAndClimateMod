@@ -124,8 +124,9 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 	public boolean hasCoolant() {
 		if (inputT.getFluidType() != null)
-			return FluidDictionaryDC.matchFluid(inputT.getFluidType(), MachineInit.nitrogen);
-		return inputT.drain(10, true) != null;
+			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MachineInit.nitrogen))
+				return inputT.drain(10, true) != null;
+		return false;
 	}
 
 	public int isActiveSlot(int num) {
