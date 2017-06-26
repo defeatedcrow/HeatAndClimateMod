@@ -1,6 +1,5 @@
 package defeatedcrow.hac.plugin.cofh;
 
-import cofh.api.util.ThermalExpansionHelper;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCInit;
@@ -17,6 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Loader;
 
 public class DCPluginCoFH {
 
@@ -34,10 +34,14 @@ public class DCPluginCoFH {
 
 	public static void load() {
 		loadFluid();
-		loadFuels();
-		loadRecipes();
+
 		if (ModuleConfig.machine && ModuleConfig.machine_advanced) {
 			loadDCRecipes();
+		}
+
+		if (Loader.isModLoaded("thermalexpansion")) {
+			DCRecipeCoFH.loadFuels();
+			DCRecipeCoFH.loadRecipes();
 		}
 	}
 
@@ -62,12 +66,12 @@ public class DCPluginCoFH {
 			DCPluginFluid.registerPotion(tree, MobEffects.RESISTANCE);
 			FluidDictionaryDC.registerFluidDic(tree, "tree_oil");
 		}
-		naphtha = FluidRegistry.getFluid("fuel");
+		naphtha = FluidRegistry.getFluid("refined_oil");
 		if (naphtha != null) {
 			DCPluginFluid.registerPotion(naphtha, MobEffects.HASTE);
 			FluidDictionaryDC.registerFluidDic(naphtha, "naphtha");
 		}
-		refined = FluidRegistry.getFluid("refined_oil");
+		refined = FluidRegistry.getFluid("fuel");
 		if (refined != null) {
 			DCPluginFluid.registerPotion(refined, MobEffects.RESISTANCE);
 			FluidDictionaryDC.registerFluidDic(refined, "refined");
@@ -153,36 +157,6 @@ public class DCPluginCoFH {
 						"fuelCoke",
 						"dustLime"
 				}), DCHeatTier.UHT);
-	}
-
-	static void loadFuels() {
-		ThermalExpansionHelper.addCompressionFuel("dcs.fuel_oil", 800);
-		ThermalExpansionHelper.addCompressionFuel("dcs.fuel_gas", 1000);
-		ThermalExpansionHelper.addCompressionFuel("dcs.seed_oil", 100);
-		ThermalExpansionHelper.addCompressionFuel("dcs.black_liquor", 100);
-
-		ThermalExpansionHelper.addCoolant("dcs.nitrogen", 1500);
-	}
-
-	static void loadRecipes() {
-		// crusible
-		Fluid creosote = FluidRegistry.getFluid("creosote");
-		if (creosote != null) {
-			ThermalExpansionHelper.addCrucibleRecipe(2000, new ItemStack(MachineInit.reagent, 1, 0),
-					new FluidStack(creosote, 100));
-		}
-
-		// refinary
-		// if (naphtha != null && tree != null && tar != null && rogin != null) {
-		// ThermalExpansionHelper.addRefineryRecipe(5000, new FluidStack(MachineInit.fuelOil, 100),
-		// new FluidStack(naphtha, 100), new ItemStack(MachineInit.reagent, 1, 0));
-		//
-		// ThermalExpansionHelper.addRefineryRecipe(5000, new FluidStack(FoodInit.blackLiquor, 100),
-		// new FluidStack(tree, 100), new ItemStack(MachineInit.reagent, 1, 0));
-		//
-		// ThermalExpansionHelper.addRefineryRecipe(5000, new FluidStack(FoodInit.oil, 100),
-		// new FluidStack(naphtha, 100), new ItemStack(MachineInit.reagent, 1, 1));
-		// }
 	}
 
 }

@@ -311,6 +311,12 @@ public class FoodRecipes {
 				"cropPeach"
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
+				"foodPastry",
+				"dustSugar",
+				"cropPair"
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.pastrySquare, 1, 8), new Object[] {
 				"foodPastry",
 				"dustSugar",
