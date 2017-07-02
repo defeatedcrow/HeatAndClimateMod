@@ -46,6 +46,7 @@ import defeatedcrow.hac.machine.item.ItemAdapterCard;
 import defeatedcrow.hac.machine.item.ItemAlloyMold;
 import defeatedcrow.hac.machine.item.ItemAluminiumMold;
 import defeatedcrow.hac.machine.item.ItemCatalyst;
+import defeatedcrow.hac.machine.item.ItemDynamite;
 import defeatedcrow.hac.machine.item.ItemGemCore;
 import defeatedcrow.hac.machine.item.ItemMachineMaterial;
 import defeatedcrow.hac.machine.item.ItemReagents;
@@ -230,6 +231,9 @@ public class MachineInitRegister {
 
 		MachineInit.adapterCard = new ItemAdapterCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_adapter_card");
 		GameRegistry.register(MachineInit.adapterCard.setRegistryName(ClimateCore.PACKAGE_BASE + "_adapter_card"));
+
+		MachineInit.dynamite = new ItemDynamite().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dynamite");
+		GameRegistry.register(MachineInit.dynamite.setRegistryName(ClimateCore.PACKAGE_BASE + "_dynamite"));
 	}
 
 	static void loadCreativeTab() {
@@ -293,6 +297,7 @@ public class MachineInitRegister {
 			MachineInit.acceptorPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.wirelessPortal.setCreativeTab(ClimateMain.machine);
 			MachineInit.adapterCard.setCreativeTab(ClimateMain.machine);
+			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 		}
 	}
 

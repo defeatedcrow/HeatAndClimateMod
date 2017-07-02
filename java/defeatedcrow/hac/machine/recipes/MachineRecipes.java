@@ -743,6 +743,34 @@ public class MachineRecipes {
 				new ItemStack(MachineInit.adapterCard, 1, 1)
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.dynamite, 3, 0), new Object[] {
+				"WWW",
+				"XYZ",
+				"WWW",
+				'X',
+				new ItemStack(MachineInit.reagent, 1, 6),
+				'Y',
+				new ItemStack(MachineInit.reagent, 1, 6),
+				'Z',
+				new ItemStack(MachineInit.reagent, 1, 5),
+				'W',
+				"paper"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.dynamite, 3, 1), new Object[] {
+				"WWW",
+				"XYZ",
+				"WWW",
+				'X',
+				new ItemStack(MachineInit.reagent, 1, 6),
+				'Y',
+				new ItemStack(MachineInit.reagent, 1, 5),
+				'Z',
+				new ItemStack(MachineInit.reagent, 1, 4),
+				'W',
+				"paper"
+		}));
+
 		// アナザー
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
 				"Y",

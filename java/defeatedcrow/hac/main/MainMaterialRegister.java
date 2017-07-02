@@ -77,6 +77,7 @@ import defeatedcrow.hac.main.item.tool.ItemAxeDC;
 import defeatedcrow.hac.main.item.tool.ItemBullets;
 import defeatedcrow.hac.main.item.tool.ItemCrossbowDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
+import defeatedcrow.hac.main.item.tool.ItemMusketDC;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.item.tool.ItemSpadeDC;
@@ -546,7 +547,10 @@ public class MainMaterialRegister {
 		MainInit.crossbow = new ItemCrossbowDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crossbow");
 		GameRegistry.register(MainInit.crossbow.setRegistryName(ClimateCore.PACKAGE_BASE + "_crossbow"));
 
-		MainInit.cartridge = new ItemBullets(0).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
+		MainInit.gun = new ItemMusketDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_musket");
+		GameRegistry.register(MainInit.gun.setRegistryName(ClimateCore.PACKAGE_BASE + "_musket"));
+
+		MainInit.cartridge = new ItemBullets(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
 		GameRegistry.register(MainInit.cartridge.setRegistryName(ClimateCore.PACKAGE_BASE + "_cartridge"));
 
 		String[] type = {

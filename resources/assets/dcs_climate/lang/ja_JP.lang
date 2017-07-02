@@ -261,7 +261,14 @@ item.dcs_sword_chalcedony.name=玉髄の剣
 item.dcs_sword_sapphire.name=サファイアの剣
 item.dcs_sword_titanium.name=チタンの剣
 item.dcs_crossbow.name=クロスボウ
-item.dcs_cartridge_bolt.name=クロスボウのボルト
+item.dcs_musket.name=マスケット
+item.dcs_cartridge_bolt.name=クロスボウボルト
+item.dcs_cartridge_normal.name=弾薬
+item.dcs_cartridge_shot.name=ショットガンの弾薬
+item.dcs_cartridge_silver.name=銀の弾丸
+
+item.dcs_dynamite_red.name=ダイナマイト
+item.dcs_dynamite_blue.name=シルクダイナマイト
 
 item.dcs_met_brass.name=真鍮のヘルメット
 item.dcs_met_steel.name=鋼のヘルメット

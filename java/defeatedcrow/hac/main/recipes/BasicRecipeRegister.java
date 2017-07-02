@@ -2064,6 +2064,66 @@ public class BasicRecipeRegister {
 					'Y',
 					"cobblestone"
 			}));
+
+			if (ModuleConfig.weapon_advanced) {
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.gun, 1, 0), new Object[] {
+						"Y  ",
+						"ZY ",
+						" ZX",
+						'X',
+						new ItemStack(Items.FLINT_AND_STEEL, 1, 0),
+						'Y',
+						"ingotSteel",
+						'Z',
+						"plankWood"
+				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 1), new Object[] {
+						"X",
+						"Y",
+						"Z",
+						'X',
+						"ingotIron",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8),
+						'Z',
+						"ingotBrass"
+				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 1), new Object[] {
+						"X",
+						"Y",
+						"Z",
+						'X',
+						"ingotLead",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8),
+						'Z',
+						"ingotBrass"
+				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 2), new Object[] {
+						"X",
+						"Y",
+						"Z",
+						'X',
+						"gravel",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8),
+						'Z',
+						"ingotBrass"
+				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 3), new Object[] {
+						"X",
+						"Y",
+						'X',
+						"ingotSilver",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8)
+				}));
+			}
 		}
 
 	}

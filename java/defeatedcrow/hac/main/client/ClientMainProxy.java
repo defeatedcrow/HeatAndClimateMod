@@ -45,6 +45,7 @@ import defeatedcrow.hac.main.client.block.TESRVillageChest;
 import defeatedcrow.hac.main.client.block.TESRWindVane;
 import defeatedcrow.hac.main.client.entity.BoltRenderer;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
+import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
@@ -53,9 +54,14 @@ import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleFlameDC;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
-import defeatedcrow.hac.main.entity.EntityBulletDC;
 import defeatedcrow.hac.main.entity.EntityCution;
+import defeatedcrow.hac.main.entity.EntityDynamite;
+import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
+import defeatedcrow.hac.main.entity.EntityIronBolt;
+import defeatedcrow.hac.main.entity.EntityIronBullet;
+import defeatedcrow.hac.main.entity.EntityShotgunBullet;
+import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import defeatedcrow.hac.main.event.AltTooltipEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -123,8 +129,13 @@ public class ClientMainProxy extends CommonMainProxy {
 	public void loadEntity() {
 		super.loadEntity();
 		registRender(EntityCution.class, RenderEntityCution.class);
-		registRender(EntityBulletDC.class, BoltRenderer.class);
 		registRender(EntityFlowerPot.class, RenderEntityFlowerPot.class);
+		registRender(EntityIronBolt.class, BoltRenderer.class);
+		registRender(EntityIronBullet.class, BoltRenderer.class);
+		registRender(EntitySilverBullet.class, BoltRenderer.class);
+		registRender(EntityShotgunBullet.class, BoltRenderer.class);
+		registRender(EntityDynamite.class, RenderEntityDynamite.class);
+		registRender(EntityDynamiteBlue.class, RenderEntityDynamite.class);
 
 		FoodClientProxy.loadEntity();
 		MagicClientProxy.loadEntity();

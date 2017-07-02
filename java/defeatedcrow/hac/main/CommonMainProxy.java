@@ -54,9 +54,14 @@ import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
-import defeatedcrow.hac.main.entity.EntityBulletDC;
 import defeatedcrow.hac.main.entity.EntityCution;
+import defeatedcrow.hac.main.entity.EntityDynamite;
+import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
+import defeatedcrow.hac.main.entity.EntityIronBolt;
+import defeatedcrow.hac.main.entity.EntityIronBullet;
+import defeatedcrow.hac.main.entity.EntityShotgunBullet;
+import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.CombatEvent;
@@ -160,11 +165,26 @@ public class CommonMainProxy implements IGuiHandler {
 		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 90,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityBulletDC.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet", 91,
-				ClimateMain.instance, 128, 5, true);
-
 		EntityRegistry.registerModEntity(EntityFlowerPot.class, ClimateCore.PACKAGE_BASE + "entity.main.flowerpot", 92,
 				ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityIronBolt.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_bolt", 91,
+				ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityIronBullet.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_iron",
+				93, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntitySilverBullet.class,
+				ClimateCore.PACKAGE_BASE + "entity.main.bullet_silver", 94, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityShotgunBullet.class,
+				ClimateCore.PACKAGE_BASE + "entity.main.bullet_shotgun", 95, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityDynamite.class, ClimateCore.PACKAGE_BASE + "entity.main.dynamite_red",
+				98, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityDynamiteBlue.class,
+				ClimateCore.PACKAGE_BASE + "entity.main.dynamite_blue", 99, ClimateMain.instance, 128, 5, true);
 
 		FoodCommonProxy.loadEntity();
 		MagicCommonProxy.loadEntity();
