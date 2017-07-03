@@ -103,7 +103,11 @@ public abstract class BlockMace extends DCTileBlock {
 
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+		ItemStack stack = new ItemStack(this, 1, 0);
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("dcs.mace.energy", 640);
+		stack.setTagCompound(tag);
+		list.add(stack);
 	}
 
 	// particleのON/OFF
