@@ -144,5 +144,4 @@ public abstract class ItemBlockMace extends DCItemBlock {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
 		}
 	}
-
 }

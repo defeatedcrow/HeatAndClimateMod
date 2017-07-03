@@ -62,8 +62,8 @@ public class BlockSpinningMachine extends BlockTorqueBase {
 		// achievement
 		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;
-			if (!player.hasAchievement(AchievementClimate.MACHINE_EXCHANGER)) {
-				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_EXCHANGER);
+			if (!player.hasAchievement(AchievementClimate.MACHINE_PLACE)) {
+				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_PLACE);
 			}
 		}
 		if (placer != null) {

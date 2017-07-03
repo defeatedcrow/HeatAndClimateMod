@@ -410,6 +410,9 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		List<Entity> list = this.worldObj.getEntitiesInAABBexcluding(this,
 				this.getEntityBoundingBox().addCoord(this.motionX, this.motionY, this.motionZ).expandXyz(1.0D),
 				ARROW_TARGETS);
+		if (list.contains(shootingEntity)) {
+			list.remove(shootingEntity);
+		}
 		double d0 = 0.0D;
 		if (this.getIsRangedAttack()) {
 			ret.addAll(list);
