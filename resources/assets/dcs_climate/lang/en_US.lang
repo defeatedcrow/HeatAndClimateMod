@@ -273,7 +273,14 @@ item.dcs_sword_chalcedony.name=Chalcedony Sword
 item.dcs_sword_sapphire.name=Sapphire Sword
 item.dcs_sword_titanium.name=Titanium Sword
 item.dcs_crossbow.name=Crossbow
+item.dcs_musket.name=Musket
 item.dcs_cartridge_bolt.name=Crossbow Bolt
+item.dcs_cartridge_normal.name=Ammo
+item.dcs_cartridge_shot.name=Shotgun Ammo
+item.dcs_cartridge_silver.name=Silver Bullet Ammo
+
+item.dcs_dynamite_red.name=Dynamite
+item.dcs_dynamite_blue.name=Silky Dynamite
 
 ## armors
 item.dcs_met_brass.name=Brass Helmet
@@ -587,6 +594,10 @@ tile.dcs_desiccant_red.name=Desiccant
 tile.dcs_desiccant_yellow.name=Degrated Desiccant
 tile.dcs_desiccant_green.name=Wet Desiccant
 tile.dcs_desiccant_blue.name=Used Desiccant
+tile.dcs_coolant_0.name=Coolant Pack
+tile.dcs_coolant_1.name=Coolant Pack
+tile.dcs_coolant_2.name=Degrated Coolant Pack
+tile.dcs_coolant_3.name=Used Coolant Pack
 tile.dcs_build_synthetic_glass_white.name=White Acrylic Glass
 tile.dcs_build_synthetic_glass_orange.name=Orange Acrylic Glass
 tile.dcs_build_synthetic_glass_magenta.name=Magenta Acrylic Glass

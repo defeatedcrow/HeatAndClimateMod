@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.item.tool;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.util.math.MathHelper;
 
 public class ItemBullets extends DCItem {
 
@@ -38,6 +39,30 @@ public class ItemBullets extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	public static Type getType(int meta) {
+		meta = MathHelper.clamp_int(meta, 0, 5);
+		return values[meta];
+	}
+
+	public static Type[] values = {
+			Type.BOLT,
+			Type.NORMAL,
+			Type.SILVER,
+			Type.SHOT,
+			Type.CROW,
+			Type.GHOST
+	};
+
+	public enum Type {
+		BOLT,
+		NORMAL,
+		SILVER,
+		SHOT,
+		CROW,
+		GHOST;
+
 	}
 
 }

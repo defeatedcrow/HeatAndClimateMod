@@ -2,6 +2,7 @@ package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.plugin.cofh.DCPluginCoFH;
 import net.minecraftforge.fml.common.Loader;
 
 public class DCIntegrationCore {
@@ -10,6 +11,7 @@ public class DCIntegrationCore {
 
 	public static boolean loadedForestry = false;
 	public static boolean loadedMekanism = false;
+	public static boolean loadedCoFH = false;
 
 	private DCIntegrationCore() {}
 
@@ -19,6 +21,9 @@ public class DCIntegrationCore {
 		}
 		if (Loader.isModLoaded("Mekanism")) {
 			loadedMekanism = true;
+		}
+		if (Loader.isModLoaded("cofhcore") && Loader.isModLoaded("thermalfoundation")) {
+			loadedCoFH = true;
 		}
 	}
 
@@ -88,6 +93,15 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: Mekanism");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Mekanism");
+			}
+		}
+
+		if (loadedCoFH && ModuleConfig.cofh) {
+			try {
+				DCPluginCoFH.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: cofh");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: cofh");
 			}
 		}
 	}

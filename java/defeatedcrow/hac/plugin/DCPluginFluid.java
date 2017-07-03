@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
@@ -105,7 +106,7 @@ public class DCPluginFluid {
 
 		Fluid f14 = FluidRegistry.getFluid("ice");
 		if (f14 != null) {
-			registerPotion(f14, MobEffects.WATER_BREATHING);
+			registerPotion(f14, DCInit.prevFreeze);
 			Block b14 = f14.getBlock();
 			if (b14 != null) {
 				ClimateAPI.registerBlock.registerHeatBlock(b14, 32767, DCHeatTier.FROSTBITE);
@@ -240,6 +241,9 @@ public class DCPluginFluid {
 		Fluid f43 = FluidRegistry.getFluid("dcs.sulfuric_acid");
 		registerPotion(f43, MobEffects.POISON);
 
+		Fluid f44 = FluidRegistry.getFluid("dcs.nitrogen");
+		registerPotion(f44, DCInit.prevFreeze);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
@@ -259,9 +263,10 @@ public class DCPluginFluid {
 		FluidDictionaryDC.registerFluidDic(MachineInit.ammonia, "ammonia");
 		FluidDictionaryDC.registerFluidDic(MachineInit.fuelOil, "fueloil");
 		FluidDictionaryDC.registerFluidDic(FoodInit.oil, "plantoil");
+		FluidDictionaryDC.registerFluidDic(MachineInit.nitrogen, "nitrogen");
 	}
 
-	static void registerPotion(Fluid f, Potion p) {
+	public static void registerPotion(Fluid f, Potion p) {
 		if (f != null) {
 			DrinkPotionType.registerPotion(f.getName(), p);
 		}

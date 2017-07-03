@@ -79,6 +79,9 @@ public class TESRWindVane extends DCTESRBase {
 		else if (ClimateMain.month == 4) {
 			if (ClimateMain.day < 6)
 				return "dcs_climate:textures/tiles/weather_vane_gw.png";
+		} else if (ClimateMain.month == 6) {
+			if (ClimateMain.day > 3 && ClimateMain.day < 10)
+				return "dcs_climate:textures/tiles/weather_vane_swan.png";
 		}
 		return "dcs_climate:textures/tiles/weather_vane.png";
 	}

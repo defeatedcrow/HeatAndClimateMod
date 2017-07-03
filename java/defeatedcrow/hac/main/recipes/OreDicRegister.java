@@ -55,6 +55,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("oreNickel", new ItemStack(MainInit.ores_2, 1, 8));
 		OreDictionary.registerOre("oreBismuth", new ItemStack(MainInit.ores_2, 1, 9));
 		OreDictionary.registerOre("oreAluminium", new ItemStack(MainInit.ores_2, 1, 10));
+		OreDictionary.registerOre("oreAluminum", new ItemStack(MainInit.ores_2, 1, 10));
 		OreDictionary.registerOre("oreTitanium", new ItemStack(MainInit.ores_2, 1, 11));
 
 		// metals
@@ -72,6 +73,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("ingotSUS", new ItemStack(MainInit.oreIngot, 1, 10));
 		OreDictionary.registerOre("ingotTitanium", new ItemStack(MainInit.oreIngot, 1, 11));
 		OreDictionary.registerOre("ingotAluminium", new ItemStack(MainInit.oreIngot, 1, 12));
+		OreDictionary.registerOre("ingotAluminum", new ItemStack(MainInit.oreIngot, 1, 12));
 		OreDictionary.registerOre("ingotBismuth", new ItemStack(MainInit.oreIngot, 1, 13));
 		OreDictionary.registerOre("ingotBSCCO", new ItemStack(MainInit.oreIngot, 1, 14));
 
@@ -88,6 +90,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dyeGreen", new ItemStack(MainInit.oreDust, 1, 9));
 		OreDictionary.registerOre("dustTitanium", new ItemStack(MainInit.oreDust, 1, 10));
 		OreDictionary.registerOre("dustAluminium", new ItemStack(MainInit.oreDust, 1, 11));
+		OreDictionary.registerOre("dustAluminum", new ItemStack(MainInit.oreDust, 1, 11));
 		OreDictionary.registerOre("dustBismuth", new ItemStack(MainInit.oreDust, 1, 12));
 
 		OreDictionary.registerOre("blockCopper", new ItemStack(MainInit.metalBlock, 1, 0));
@@ -104,6 +107,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("blockInox", new ItemStack(MainInit.metalBlock, 1, 10));
 		OreDictionary.registerOre("blockTitanium", new ItemStack(MainInit.metalBlock, 1, 11));
 		OreDictionary.registerOre("blockAluminium", new ItemStack(MainInit.metalBlock, 1, 12));
+		OreDictionary.registerOre("blockAluminum", new ItemStack(MainInit.metalBlock, 1, 12));
 		OreDictionary.registerOre("blockBismuth", new ItemStack(MainInit.metalBlock, 1, 13));
 		OreDictionary.registerOre("blockBSCCO", new ItemStack(MainInit.metalBlock, 1, 14));
 
@@ -151,6 +155,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustPresscake", new ItemStack(MainInit.miscDust, 1, 4));
 		OreDictionary.registerOre("dustAsh", new ItemStack(MainInit.miscDust, 1, 5));
 		OreDictionary.registerOre("dustNiter", new ItemStack(MainInit.miscDust, 1, 6));
+		OreDictionary.registerOre("dustSaltpeter", new ItemStack(MainInit.miscDust, 1, 6));
 		OreDictionary.registerOre("dustSulfur", new ItemStack(MainInit.miscDust, 1, 7));
 		OreDictionary.registerOre("dustGarnet", new ItemStack(MainInit.miscDust, 1, 8));
 

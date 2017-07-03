@@ -97,4 +97,6 @@ public class MachineInit {
 
 	public static Block reactor;
 	public static Block freezer;
+
+	public static Item dynamite;
 }

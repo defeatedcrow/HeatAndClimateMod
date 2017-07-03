@@ -261,7 +261,14 @@ item.dcs_sword_chalcedony.name=玉髄の剣
 item.dcs_sword_sapphire.name=サファイアの剣
 item.dcs_sword_titanium.name=チタンの剣
 item.dcs_crossbow.name=クロスボウ
-item.dcs_cartridge_bolt.name=クロスボウのボルト
+item.dcs_musket.name=マスケット
+item.dcs_cartridge_bolt.name=クロスボウボルト
+item.dcs_cartridge_normal.name=弾薬
+item.dcs_cartridge_shot.name=ショットガンの弾薬
+item.dcs_cartridge_silver.name=銀の弾丸
+
+item.dcs_dynamite_red.name=ダイナマイト
+item.dcs_dynamite_blue.name=シルクダイナマイト
 
 item.dcs_met_brass.name=真鍮のヘルメット
 item.dcs_met_steel.name=鋼のヘルメット
@@ -568,6 +575,10 @@ tile.dcs_desiccant_red.name=乾燥剤
 tile.dcs_desiccant_yellow.name=弱った乾燥剤
 tile.dcs_desiccant_green.name=湿った乾燥剤
 tile.dcs_desiccant_blue.name=使用済み乾燥剤
+tile.dcs_coolant_0.name=冷却材
+tile.dcs_coolant_1.name=冷却材
+tile.dcs_coolant_2.name=ぬるくなった冷却材
+tile.dcs_coolant_3.name=使用済み冷却材
 tile.dcs_build_synthetic_glass_white.name=白のアクリルガラス
 tile.dcs_build_synthetic_glass_orange.name=オレンジのアクリルガラス
 tile.dcs_build_synthetic_glass_magenta.name=マゼンタのアクリルガラス
@@ -929,7 +940,7 @@ splash_potion.effect.dcs.bird=鳥の加護のスプラッシュポーション
 lingering_potion.effect.dcs.bird=鳥の加護の残留ポーション
 
 dcs.potion.ocean=魚の加護
-potion.effect.dcs.ocean=魚の加護
+potion.effect.dcs.ocean=魚の加護のポーション
 splash_potion.effect.dcs.ocean=魚の加護のスプラッシュポーション
 lingering_potion.effect.dcs.ocean=魚の加護の残留ポーション
 

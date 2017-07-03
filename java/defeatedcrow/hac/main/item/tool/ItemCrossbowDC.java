@@ -5,14 +5,12 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.entity.EntityBulletDC;
+import defeatedcrow.hac.main.entity.EntityIronBolt;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
@@ -25,6 +23,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 	public ItemCrossbowDC() {
 		this.maxStackSize = 1;
 		this.setMaxDamage(512);
+		this.setFull3D();
 	}
 
 	@Override
@@ -73,11 +72,10 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 				float f = getArrowVelocity(i);
 
 				if (f >= 0.0D) {
-					boolean flag1 = player.capabilities.isCreativeMode || (ammo.getItem() instanceof ItemArrow
-							? ((ItemArrow) ammo.getItem()).isInfinite(ammo, stack, player) : false);
+					boolean flag1 = player.capabilities.isCreativeMode;
 
 					if (!world.isRemote) {
-						EntityArrow entityarrow = new EntityBulletDC(world, player);
+						EntityIronBolt entityarrow = new EntityIronBolt(world, player);
 						entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
 
 						int power = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);

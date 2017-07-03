@@ -366,6 +366,11 @@ public class BasicRecipeRegister {
 				"oreAlminium"
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 1, 16), new Object[] {
+				"toolNormalYagen",
+				"oreAlminum"
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gems, 1, 15), new Object[] {
 				"toolNormalYagen",
 				"oreTitanium"
@@ -503,6 +508,14 @@ public class BasicRecipeRegister {
 				"XXX",
 				'X',
 				"dustAluminium"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustAluminum"
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.dustBlock, 1, 14), new Object[] {
@@ -657,6 +670,18 @@ public class BasicRecipeRegister {
 				"dustChromium"
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustAluminum",
+				"dustChromium"
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.dustBlock, 1, 15), new Object[] {
 				"dustBismuth",
 				"dustBismuth",
@@ -742,6 +767,19 @@ public class BasicRecipeRegister {
 					new ItemStack(MainInit.metalBlock, 1, i)
 			}));
 		}
+
+		ItemStack ingotA = new ItemStack(MainInit.oreIngot, 9, 12);
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.metalBlock, 1, 12), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"ingotAluminum"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ingotA, new Object[] {
+				new ItemStack(MainInit.metalBlock, 1, 12)
+		}));
 
 		// gem <-> gemblock
 		for (int i = 0; i < 5; i++) {
@@ -1596,6 +1634,13 @@ public class BasicRecipeRegister {
 					"ingotAluminium"
 			}));
 
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceAluminium, 6, 0), new Object[] {
+					"XXX",
+					"XXX",
+					'X',
+					"ingotAluminum"
+			}));
+
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceNet, 6, 0), new Object[] {
 					"XYX",
 					"XYX",
@@ -1623,12 +1668,47 @@ public class BasicRecipeRegister {
 					"blockGlass"
 			}));
 
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceNet, 6, 0), new Object[] {
+					"XYX",
+					"XYX",
+					'X',
+					"ingotAluminum",
+					'Y',
+					new ItemStack(Blocks.IRON_BARS, 1, 0)
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
+					"XYX",
+					"XYX",
+					'X',
+					"ingotAluminum",
+					'Y',
+					new ItemStack(Blocks.GLASS, 1, 0)
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
+					"XYX",
+					"XYX",
+					'X',
+					"ingotAluminum",
+					'Y',
+					"blockGlass"
+			}));
+
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceLadder, 6, 0), new Object[] {
 					"X X",
 					"XXX",
 					"X X",
 					'X',
 					"ingotAluminium"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceLadder, 6, 0), new Object[] {
+					"X X",
+					"XXX",
+					"X X",
+					'X',
+					"ingotAluminum"
 			}));
 
 			for (int i = 0; i < 16; i++) {
@@ -1984,6 +2064,66 @@ public class BasicRecipeRegister {
 					'Y',
 					"cobblestone"
 			}));
+
+			if (ModuleConfig.weapon_advanced) {
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.gun, 1, 0), new Object[] {
+						"Y  ",
+						"ZY ",
+						" ZX",
+						'X',
+						new ItemStack(Items.FLINT_AND_STEEL, 1, 0),
+						'Y',
+						"ingotSteel",
+						'Z',
+						"plankWood"
+				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 1), new Object[] {
+						"X",
+						"Y",
+						"Z",
+						'X',
+						"ingotIron",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8),
+						'Z',
+						"ingotBrass"
+				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 1), new Object[] {
+						"X",
+						"Y",
+						"Z",
+						'X',
+						"ingotLead",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8),
+						'Z',
+						"ingotBrass"
+				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 2), new Object[] {
+						"X",
+						"Y",
+						"Z",
+						'X',
+						"gravel",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8),
+						'Z',
+						"ingotBrass"
+				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 3), new Object[] {
+						"X",
+						"Y",
+						'X',
+						"ingotSilver",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8)
+				}));
+			}
 		}
 
 	}

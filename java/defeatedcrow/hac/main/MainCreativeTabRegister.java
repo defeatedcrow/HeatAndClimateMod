@@ -123,6 +123,7 @@ public class MainCreativeTabRegister {
 		if (ModuleConfig.weapon_advanced) {
 			MainInit.cartridge.setCreativeTab(ClimateMain.tool);
 			MainInit.crossbow.setCreativeTab(ClimateMain.tool);
+			MainInit.gun.setCreativeTab(ClimateMain.tool);
 		}
 
 		if (DCIntegrationCore.loadedForestry) {

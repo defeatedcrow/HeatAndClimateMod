@@ -3,7 +3,6 @@ package defeatedcrow.hac.machine.recipes;
 import java.util.Iterator;
 import java.util.List;
 
-import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
@@ -31,6 +30,7 @@ public class MachineRecipes {
 		if (ModuleConfig.machine_advanced) {
 			loadAdvancedRecipe();
 		}
+		MachineDeviceRecipes.load();
 	}
 
 	static void loadBasicRecipe() {
@@ -743,6 +743,34 @@ public class MachineRecipes {
 				new ItemStack(MachineInit.adapterCard, 1, 1)
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.dynamite, 3, 0), new Object[] {
+				"WWW",
+				"XYZ",
+				"WWW",
+				'X',
+				new ItemStack(MachineInit.reagent, 1, 6),
+				'Y',
+				new ItemStack(MachineInit.reagent, 1, 6),
+				'Z',
+				new ItemStack(MachineInit.reagent, 1, 5),
+				'W',
+				"paper"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.dynamite, 3, 1), new Object[] {
+				"WWW",
+				"XYZ",
+				"WWW",
+				'X',
+				new ItemStack(MachineInit.reagent, 1, 6),
+				'Y',
+				new ItemStack(MachineInit.reagent, 1, 5),
+				'Z',
+				new ItemStack(MachineInit.reagent, 1, 4),
+				'W',
+				"paper"
+		}));
+
 		// アナザー
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
 				"Y",
@@ -772,8 +800,6 @@ public class MachineRecipes {
 		OreDictionary.registerOre("dustAlkali", new ItemStack(MachineInit.reagent, 1, 3));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
 		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));
-
-		FluidDictionaryDC.registerFluidDic(MachineInit.nitrogen, "nitrogen");
 	}
 
 }

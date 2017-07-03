@@ -4,34 +4,55 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
+import defeatedcrow.hac.api.recipe.ISpinningRecipe;
+import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerSpinning;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueReceiver {
+public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueProvider, ITorqueReceiver {
 
 	@Override
-	public boolean isInputSide(EnumFacing side) {
-		return side == getBaseSide().rotateY();
+	public void updateTile() {
+		super.updateTile();
+
+		// provider
+		for (EnumFacing side : getOutputSide()) {
+			this.provideTorque(worldObj, getPos().offset(side), side, false);
+		}
 	}
 
 	@Override
-	public boolean isOutputSide(EnumFacing side) {
-		return false;
+	public boolean isInputSide(EnumFacing side) {
+		return side == getBaseSide().rotateY().getOpposite();
+	}
+
+	@Override
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide().rotateY());
+		return ret;
+	}
+
+	@Override
+	public float getAmount() {
+		return this.getCurrentTorque() * this.getFrictionalForce();
 	}
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
 		if (this.currentTorque >= this.maxTorque())
 			return false;
-		return this.isInputSide(side.getOpposite());
+		return this.isInputSide(side);
 	}
 
 	@Override
@@ -42,6 +63,26 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueR
 			currentTorque += ret;
 		}
 		return ret;
+	}
+
+	@Override
+	public boolean canProvideTorque(World world, BlockPos outputPos, EnumFacing output) {
+		TileEntity tile = world.getTileEntity(outputPos);
+		float amo = getAmount();
+		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F)
+			return ((ITorqueReceiver) tile).canReceiveTorque(amo, output.getOpposite());
+		return false;
+	}
+
+	@Override
+	public float provideTorque(World world, BlockPos outputPos, EnumFacing output, boolean sim) {
+		float amo = getAmount();
+		if (canProvideTorque(world, outputPos, output)) {
+			ITorqueReceiver target = (ITorqueReceiver) world.getTileEntity(outputPos);
+			float ret = target.receiveTorque(amo, output, sim);
+			return ret;
+		}
+		return 0;
 	}
 
 	@Override
@@ -57,7 +98,7 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueR
 	@Override
 	public boolean isRecipeMaterial() {
 		ItemStack in = this.getStackInSlot(0);
-		SpinningRecipe recipe = getRecipe(in);
+		ISpinningRecipe recipe = RecipeAPI.registerSpinningRecipes.getRecipe(in);
 		return recipe != null;
 	}
 
@@ -65,7 +106,7 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueR
 	public boolean canStartProcess() {
 		// in, out両方をチェックする
 		ItemStack in = this.getStackInSlot(0);
-		SpinningRecipe recipe = getRecipe(in);
+		ISpinningRecipe recipe = RecipeAPI.registerSpinningRecipes.getRecipe(in);
 		if (recipe != null) {
 			ItemStack out = this.getStackInSlot(1);
 			return recipe.matchOutput(out);
@@ -78,13 +119,13 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueR
 		// in, out両方をチェックする
 		ItemStack in = this.getStackInSlot(0);
 		ItemStack out = this.getStackInSlot(1);
-		SpinningRecipe recipe = getRecipe(in);
+		ISpinningRecipe recipe = RecipeAPI.registerSpinningRecipes.getRecipe(in);
 		if (recipe != null) {
 			if (recipe.matchOutput(out)) {
 				ItemStack out2 = recipe.getOutput();
 				int i1 = this.insertResult(out2);
 				if (i1 > 0) {
-					this.decrStackSize(0, recipe.count);
+					this.decrStackSize(0, recipe.getInputCount());
 					return true;
 				}
 			}
@@ -105,70 +146,9 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueR
 		return new ContainerSpinning(this, playerInventory);
 	}
 
-	public static SpinningRecipe getRecipe(ItemStack item) {
-		if (DCUtil.isEmpty(item))
-			return null;
-		if (!recipes.isEmpty()) {
-			for (SpinningRecipe recipe : recipes) {
-				if (recipe.match(item))
-					return recipe;
-			}
-		}
-		return null;
-	}
-
 	@Override
 	public String getGuiID() {
 		return "dcs.gui.device.spinning_machine";
 	}
-
-	public static final List<SpinningRecipe> recipes = Lists.newArrayList();
-
-	public class SpinningRecipe {
-		public final String inputName;
-		public final ItemStack output;
-		public final int count;
-
-		public SpinningRecipe(String n, int i, ItemStack o) {
-			inputName = n;
-			output = o;
-			count = i;
-		}
-
-		public ItemStack getOutput() {
-			return output.copy();
-		}
-
-		public boolean match(ItemStack item) {
-			if (DCUtil.isEmpty(item))
-				return false;
-
-			int[] ids = OreDictionary.getOreIDs(item);
-			if (OreDictionary.doesOreNameExist(inputName) && ids != null) {
-				for (int i : ids) {
-					if (i == OreDictionary.getOreID(inputName) && item.stackSize >= count)
-						return true;
-				}
-			}
-			return false;
-		}
-
-		public boolean matchOutput(ItemStack item) {
-			if (DCUtil.isEmpty(item))
-				return true;
-
-			if (DCUtil.isStackable(item, output))
-				return true;
-			return false;
-		}
-	}
-
-	public static void registerRecipe(String s, int i, ItemStack o) {
-		if (s != null && i > 0 && !DCUtil.isEmpty(o)) {
-			recipes.add(instance.new SpinningRecipe(s, i, o));
-		}
-	}
-
-	private static final TileSpinningMachine instance = new TileSpinningMachine();
 
 }
