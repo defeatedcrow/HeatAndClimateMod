@@ -72,7 +72,6 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 				float f = getArrowVelocity(i);
 
 				if (f >= 0.0D) {
-					boolean flag1 = player.capabilities.isCreativeMode;
 
 					if (!world.isRemote) {
 						EntityIronBolt entityarrow = new EntityIronBolt(world, player);
@@ -103,7 +102,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 							SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F,
 							1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
-					if (!flag1) {
+					if (!flag) {
 						--ammo.stackSize;
 
 						if (ammo.stackSize == 0) {

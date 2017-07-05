@@ -60,7 +60,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	public Entity shootingEntity;
 	private int ticksInGround;
 	private int ticksInAir;
-	private double damage;
+	protected double damage;
 	/** The amount of knockback an arrow applies when it hits a mob. */
 	private int knockbackStrength;
 
