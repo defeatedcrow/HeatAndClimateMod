@@ -14,6 +14,8 @@ import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.achievement.AchievementClimate;
+import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -64,6 +66,13 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer) {
+		// achievement
+		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) placer;
+			if (!player.hasAchievement(AchievementClimate.FOOD_POT)) {
+				AcvHelper.addClimateAcievement(player, AchievementClimate.FOOD_POT);
+			}
+		}
 		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		state = state.withProperty(DCState.FACING, placer.getHorizontalFacing().rotateY());
 		return state;

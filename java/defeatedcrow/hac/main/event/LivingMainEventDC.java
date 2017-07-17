@@ -1,10 +1,13 @@
 package defeatedcrow.hac.main.event;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -36,6 +39,12 @@ public class LivingMainEventDC {
 			if (player.isPotionActive(MainInit.bird)) {
 				// bird potion
 				player.fallDistance = 0.0F;
+			}
+			if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10))
+					&& player.isPotionActive(MobEffects.SPEED)) {
+				player.stepHeight = 1.0F;
+			} else {
+				player.stepHeight = 0.6F;
 			}
 		}
 	}

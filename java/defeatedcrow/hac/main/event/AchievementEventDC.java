@@ -5,6 +5,7 @@ import java.util.Map;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
@@ -12,7 +13,6 @@ import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -45,7 +45,7 @@ public class AchievementEventDC {
 							prev += p;
 						}
 					}
-					if (prev >= 4.0F) {
+					if (prev >= 3.0F) {
 						AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_ARMOR);
 					}
 				}
@@ -58,11 +58,14 @@ public class AchievementEventDC {
 				}
 			}
 
-			if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10))
-					&& player.isPotionActive(MobEffects.SPEED)) {
-				player.stepHeight = 1.0F;
-			} else {
-				player.stepHeight = 0.6F;
+			if (player.hasAchievement(AchievementClimate.METAL_TIER3) && !AcvHelper.hasClimateSP(player)) {
+				AcvHelper.checkClimateSP(player);
+			}
+			if (player.hasAchievement(AchievementClimate.MACHINE_TIER3) && !AcvHelper.hasMachineSP(player)) {
+				AcvHelper.checkMachineSP(player);
+			}
+			if (player.hasAchievement(AchievementClimate.MAGIC_BIRD) && !AcvHelper.hasMagicSP(player)) {
+				AcvHelper.checkMagicSP(player);
 			}
 		}
 	}
@@ -91,6 +94,9 @@ public class AchievementEventDC {
 			if (DCUtil.isSameItem(drop.getEntityItem(), new ItemStack(MainInit.cropCont, 1, 9), false)
 					&& !player.hasAchievement(AchievementClimate.CLIMATE_SMELT)) {
 				AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_SMELT);
+			} else if (DCUtil.isSameItem(drop.getEntityItem(), new ItemStack(MainInit.cropCont, 1, 10), false)
+					&& !player.hasAchievement(AchievementClimate.CLIMATE_SMELT)) {
+				AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_SMELT);
 			} else if (drop.getEntityItem().getItem() == MainInit.gems) {
 				int m = drop.getEntityItem().getItemDamage();
 				if (m == 0 || m == 1 || m == 2 || m == 3 || m == 4 || m == 11 || m == 12 || m == 14) {
@@ -109,6 +115,12 @@ public class AchievementEventDC {
 				}
 			} else if (drop.getEntityItem().getItem() == Item.getItemFromBlock(MagicInit.elestial)) {
 				AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_ELESTIAL);
+			} else if (drop.getEntityItem().getItem() == FoodInit.sticks
+					&& (drop.getEntityItem().getItemDamage() & 1) > 0) {
+				AcvHelper.addClimateAcievement(player, AchievementClimate.FOOD_STICK);
+			} else if (drop.getEntityItem().getItem() == FoodInit.bread
+					&& (drop.getEntityItem().getItemDamage() & 1) > 0) {
+				AcvHelper.addClimateAcievement(player, AchievementClimate.FOOD_BREAD);
 			}
 		}
 	}

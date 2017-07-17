@@ -183,7 +183,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		IBlockState iblockstate = this.worldObj.getBlockState(blockpos);
 		Block block = iblockstate.getBlock();
 
-		if (iblockstate.getMaterial() != Material.AIR) {
+		if (iblockstate.getMaterial() != Material.AIR && !this.getIsGhost()) {
 			AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox(this.worldObj, blockpos);
 
 			if (axisalignedbb != Block.NULL_AABB
@@ -376,7 +376,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 					this.setDead();
 				}
 			}
-		} else if (!this.getIsPenetrate()) {
+		} else if (!this.getIsGhost()) {
 			BlockPos blockpos = raytraceResultIn.getBlockPos();
 			this.xTile = blockpos.getX();
 			this.yTile = blockpos.getY();
@@ -525,6 +525,10 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	}
 
 	public boolean getIsPenetrate() {
+		return false;
+	}
+
+	public boolean getIsGhost() {
 		return false;
 	}
 

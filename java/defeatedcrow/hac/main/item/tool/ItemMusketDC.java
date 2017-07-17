@@ -160,7 +160,7 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 
 						}
 
-						entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, speed, 1.0F);
+						entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, speed, 0.1F);
 
 						int power = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
 						int punch = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
