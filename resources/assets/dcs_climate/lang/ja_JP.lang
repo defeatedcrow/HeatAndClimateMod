@@ -623,6 +623,9 @@ tile.dcs_hedge_autumn_0.name=秋の垣根
 tile.dcs_hedge_winter_0.name=冬の垣根
 tile.dcs_lotus_candle_white_0.name=蓮のキャンドル
 tile.dcs_lotus_candle_black_0.name=黒蓮のキャンドル
+tile.dcs_build_shield_0.name=気候の表彰盾
+tile.dcs_build_shield_1.name=トルクの表彰盾
+tile.dcs_build_shield_2.name=宝石の表彰盾
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪
@@ -866,6 +869,7 @@ dcs.tip.exp_gem.description=右クリックで使用する
 dcs.tip.repair_putty.description=金床: ツールの耐久度を回復する
 dcs.tip.abrasive.description=金床: ツールにEfficiencyまたはSharpnessを付与する
 dcs.tip.soap.description=金床: 革防具の色を落とす
+dcs.tip.acv_shield=設置して右クリック: プレイヤーの実績を強制的に開放できる。
 
 dcs.comment.pendant.0=水と氷ダメージを軽減する
 dcs.comment.pendant.1=炎と高熱ダメージを軽減する
@@ -960,6 +964,16 @@ achievement.dcs.magic_master=宝石細工師
 achievement.dcs.magic_master.desc=宝石に関する実績を積もう!
 dcs.achievement_additional_desc.magic_master=達成ボーナス:さらなる宝石の魔法アイテムを扱えるようになる
 
+achievement.dcs.climate_specialist=温度管理技術者
+achievement.dcs.climate_specialist.desc=気候に関する実績をすべて開放しよう!
+dcs.achievement_additional_desc.climate_specialist=達成ボーナス: 気候の表彰盾
+achievement.dcs.machine_specialist=トルク管理責任者
+achievement.dcs.machine_specialist.desc=トルクマシンに関する実績をすべて開放しよう!
+dcs.achievement_additional_desc.machine_specialist=達成ボーナス: トルクマシンの表彰盾
+achievement.dcs.magic_specialist=宝石魔術師
+achievement.dcs.magic_specialist.desc=宝石に関する実績をすべて開放しよう!
+dcs.achievement_additional_desc.magic_specialist=達成ボーナス: 宝石の表彰盾
+
 achievement.dcs.climate_checker=現在地の気候をチェック
 achievement.dcs.climate_checker.desc=気候チェッカーをクラフトする
 achievement.dcs.climate_damage=きびしい気候
@@ -976,6 +990,13 @@ achievement.dcs.metal_tier3=金属を焼こう III
 achievement.dcs.metal_tier3.desc=UHT温度と通気TIGHTで金属粉ブロックを焼こう
 achievement.dcs.metal_chamber=燃焼チャンバーを設置しよう
 achievement.dcs.metal_chamber.desc=KILNより高い温度を得るための熱源を作ろう
+
+achievement.dcs.food_stick=串焼きを作ろう
+achievement.dcs.food_stick.desc=生の串焼き肉を高温で焼こう
+achievement.dcs.food_bread=焼き立てパン
+achievement.dcs.food_bread.desc=パン生地を作って高温で焼こう
+achievement.dcs.food_pot=料理人
+achievement.dcs.food_pot.desc=調理鍋を設置しよう
 
 achievement.dcs.machine_gear=マシンの部品作り
 achievement.dcs.machine_gear.desc=真鍮の回転体を作る

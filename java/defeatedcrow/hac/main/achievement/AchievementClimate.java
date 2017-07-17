@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.DCInit;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
@@ -29,6 +30,16 @@ public class AchievementClimate {
 		public String getDescription() {
 			return super.getDescription() + "\n"
 					+ I18n.translateToLocal("dcs.achievement_additional_desc.climate_master");
+		}
+	}).initIndependentStat().registerStat().setSpecial();
+
+	public static final Achievement CLIMATE_SPECIALIST = (new Achievement("achievement.climate_specialist",
+			"dcs.climate_specialist", 10, -2, new ItemStack(MainInit.achievementShield, 1, 0), CLIMATE_MASTER) {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public String getDescription() {
+			return super.getDescription() + "\n"
+					+ I18n.translateToLocal("dcs.achievement_additional_desc.climate_specialist");
 		}
 	}).initIndependentStat().registerStat().setSpecial();
 
@@ -57,6 +68,15 @@ public class AchievementClimate {
 	public static final Achievement METAL_TIER3 = (new Achievement("achievement.metal_tier3", "dcs.metal_tier3", 8, -2,
 			new ItemStack(MainInit.oreIngot, 1, 10), METAL_TIER2)).registerStat();
 
+	public static final Achievement FOOD_STICK = (new Achievement("achievement.food_stick", "dcs.food_stick", 1, -4,
+			new ItemStack(FoodInit.sticks, 1, 3), CLIMATE_SMELT)).registerStat();
+
+	public static final Achievement FOOD_BREAD = (new Achievement("achievement.food_bread", "dcs.food_bread", 2, -4,
+			new ItemStack(FoodInit.bread, 1, 1), FOOD_STICK)).registerStat();
+
+	public static final Achievement FOOD_POT = (new Achievement("achievement.food_pot", "dcs.food_pot", 3, -4,
+			new ItemStack(FoodInit.steelPot, 1, 0), FOOD_BREAD)).registerStat();
+
 	/* machine */
 	public static final Achievement MACHINE_MASTER = (new Achievement("achievement.machine_master",
 			"dcs.machine_master", 3, 0, MachineInit.windmill, (Achievement) null) {
@@ -65,6 +85,16 @@ public class AchievementClimate {
 		public String getDescription() {
 			return super.getDescription() + "\n"
 					+ I18n.translateToLocal("dcs.achievement_additional_desc.machine_master");
+		}
+	}).initIndependentStat().registerStat().setSpecial();
+
+	public static final Achievement MACHINE_SPECIALIST = (new Achievement("achievement.machine_specialist",
+			"dcs.machine_specialist", 10, 0, new ItemStack(MainInit.achievementShield, 1, 1), MACHINE_MASTER) {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public String getDescription() {
+			return super.getDescription() + "\n"
+					+ I18n.translateToLocal("dcs.achievement_additional_desc.machine_specialist");
 		}
 	}).initIndependentStat().registerStat().setSpecial();
 
@@ -103,6 +133,16 @@ public class AchievementClimate {
 		}
 	}).initIndependentStat().registerStat().setSpecial();
 
+	public static final Achievement MAGIC_SPECIALIST = (new Achievement("achievement.magic_specialist",
+			"dcs.magic_specialist", 10, 2, new ItemStack(MainInit.achievementShield, 1, 2), MAGIC_MASTER) {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public String getDescription() {
+			return super.getDescription() + "\n"
+					+ I18n.translateToLocal("dcs.achievement_additional_desc.magic_specialist");
+		}
+	}).initIndependentStat().registerStat().setSpecial();
+
 	public static final Achievement MAGIC_GEM = (new Achievement("achievement.magic_getgem", "dcs.magic_getgem", -2, 2,
 			new ItemStack(MainInit.gems, 1, 0), (Achievement) null)).initIndependentStat().registerStat();
 
@@ -131,6 +171,7 @@ public class AchievementClimate {
 
 		Achievement[] list = new Achievement[] {
 				CLIMATE_MASTER,
+				CLIMATE_SPECIALIST,
 				CLIMATE_DAMAGE,
 				CLIMATE_CHECKER,
 				CLIMATE_ARMOR,
@@ -141,7 +182,12 @@ public class AchievementClimate {
 				METAL_TIER2,
 				METAL_TIER3,
 
+				FOOD_STICK,
+				FOOD_BREAD,
+				FOOD_POT,
+
 				MACHINE_MASTER,
+				MACHINE_SPECIALIST,
 				MACHINE_GEAR,
 				MACHINE_PLACE,
 				MACHINE_CHANGE,
@@ -152,6 +198,7 @@ public class AchievementClimate {
 				MACHINE_TIER3,
 
 				MAGIC_MASTER,
+				MAGIC_SPECIALIST,
 				MAGIC_GEM,
 				MAGIC_GEM_RARE,
 				MAGIC_CHARM,

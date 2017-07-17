@@ -42,6 +42,7 @@ import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
+import defeatedcrow.hac.main.block.device.BlockAcvShield;
 import defeatedcrow.hac.main.block.device.BlockBellow;
 import defeatedcrow.hac.main.block.device.BlockCookingStove;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
@@ -50,6 +51,7 @@ import defeatedcrow.hac.main.block.device.BlockSink;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
 import defeatedcrow.hac.main.block.device.BlockThermometer;
 import defeatedcrow.hac.main.block.device.BlockWindVane;
+import defeatedcrow.hac.main.block.device.ItemBlockShield;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.block.ores.BlockGem;
@@ -440,6 +442,12 @@ public class MainMaterialRegister {
 		MainInit.bellow.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_bellow");
 		GameRegistry.register(MainInit.bellow);
 		GameRegistry.register(new ItemBlockHighTier(MainInit.bellow, 1));
+
+		MainInit.achievementShield = new BlockAcvShield(Material.GROUND, "dcs_build_shield", 2)
+				.setUnlocalizedName("dcs_build_shield");
+		MainInit.achievementShield.setRegistryName(ClimateCore.PACKAGE_BASE + "_build_shield");
+		GameRegistry.register(MainInit.achievementShield);
+		GameRegistry.register(new ItemBlockShield(MainInit.achievementShield));
 	}
 
 	static void registerItems() {

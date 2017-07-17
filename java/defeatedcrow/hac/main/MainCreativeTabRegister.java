@@ -34,6 +34,7 @@ public class MainCreativeTabRegister {
 		MainInit.fenceBedrock.setCreativeTab(ClimateMain.build);
 		MainInit.awning.setCreativeTab(ClimateMain.build);
 		MainInit.builds.setCreativeTab(ClimateMain.build);
+		MainInit.achievementShield.setCreativeTab(ClimateMain.build);
 
 		// furniture
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);

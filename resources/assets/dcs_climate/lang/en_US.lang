@@ -642,6 +642,9 @@ tile.dcs_hedge_autumn_0.name=Osmanthus Hedge
 tile.dcs_hedge_winter_0.name=Camellia Hedge
 tile.dcs_lotus_candle_white_0.name=Lotus Candle
 tile.dcs_lotus_candle_black_0.name=Black Lotus Candle
+tile.dcs_build_shield_0.name=Commendation shield of the Climate
+tile.dcs_build_shield_1.name=Commendation shield of the Machine
+tile.dcs_build_shield_2.name=Commendation shield of the Magic
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -887,6 +890,7 @@ dcs.tip.exp_gem.description=Use by right click
 dcs.tip.repair_putty.description=On Anvil: Recover the durability of tool
 dcs.tip.abrasive.description=On Anvil: Add the Efficiency or Sharpness Enchantment to a tool
 dcs.tip.soap.description=On Anvil: Decolorize leather armors
+dcs.tip.acv_shield=Place and click: Force unlock of the achievement of the owner player.
 
 dcs.comment.pendant.0=Reduce ice & water damage
 dcs.comment.pendant.1=Reduce heat damage
@@ -981,6 +985,16 @@ achievement.dcs.magic_master=Lapidary
 achievement.dcs.magic_master.desc=Require other jewel achievements.
 dcs.achievement_additional_desc.magic_master=Bonus: You can handle high tier magic items.
 
+achievement.dcs.climate_specialist=Climate Specialist
+achievement.dcs.climate_specialist.desc=Require other all climate achievements.
+dcs.achievement_additional_desc.climate_specialist=Bonus: Commendation shield of the climate
+achievement.dcs.machine_specialist=Torque Machine Specialist
+achievement.dcs.machine_specialist.desc=Require other all machine achievements.
+dcs.achievement_additional_desc.machine_specialist=Bonus: Commendation shield of the machine
+achievement.dcs.magic_specialist=Jewel Mage
+achievement.dcs.magic_specialist.desc=Require other all jewel achievements.
+dcs.achievement_additional_desc.magic_specialist=Bonus: Commendation shield of the magic
+
 achievement.dcs.climate_checker=Check Climate!
 achievement.dcs.climate_checker.desc=Craft a climate Checker.
 achievement.dcs.climate_damage=Climate Hurts You
@@ -997,6 +1011,13 @@ achievement.dcs.metal_tier3=New Metal III
 achievement.dcs.metal_tier3.desc=Get new Metal Block by Climate Smelting (UHT temp and TIGHT airflow).
 achievement.dcs.metal_chamber=Heat Source for High Temp
 achievement.dcs.metal_chamber.desc=Place the Combustion Chamber.
+
+achievement.dcs.food_stick=Skewered Meats!
+achievement.dcs.food_stick.desc=Bake any skewered meat.
+achievement.dcs.food_bread=More Bread
+achievement.dcs.food_bread.desc=Make bread and bake.
+achievement.dcs.food_pot=Start Cooking
+achievement.dcs.food_pot.desc=Place the Steel Pot on your world.
 
 achievement.dcs.machine_gear=Parts of Machines
 achievement.dcs.machine_gear.desc=Craft a Brass Spindle.

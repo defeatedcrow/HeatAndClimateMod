@@ -76,6 +76,8 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.syntheticBlock, ClimateCore.PACKAGE_ID, "dcs_build_synthetic_glass",
 				"build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.clayBricks, ClimateCore.PACKAGE_ID, "dcs_build_claybrick", "build", 15);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.achievementShield, ClimateCore.PACKAGE_ID, "dcs_build_shield", "build",
+				2);
 
 		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.desiccant), ClimateCore.PACKAGE_ID, "dcs_desiccant",
 				"build", 3);

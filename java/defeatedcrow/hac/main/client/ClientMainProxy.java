@@ -24,6 +24,7 @@ import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
+import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
@@ -156,6 +157,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		ClientRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
 		ClientRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
 		ClientRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
+		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 
 		FoodClientProxy.loadTE();
 		MachineClientProxy.loadTE();
