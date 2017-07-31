@@ -100,9 +100,8 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 	public DCHeatTier getHeatTier(World world, BlockPos from, BlockPos to) {
 		IBlockState state = world.getBlockState(to);
 		int meta = this.getMetaFromState(state);
-		if ((meta & 3) == 1 && to.equals(from.down())) {
+		if ((meta & 3) == 1 && (to.equals(from.down()) || to.equals(from.down(2))))
 			return DCHeatTier.SMELTING;
-		}
 		return DCHeatTier.NORMAL;
 	}
 

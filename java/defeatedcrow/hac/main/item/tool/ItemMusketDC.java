@@ -149,11 +149,11 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 						case NORMAL:
 							break;
 						case SHOT:
-							entityarrow = new EntitySilverBullet(world, player);
+							entityarrow = new EntityShotgunBullet(world, player);
 							speed = 2.0F;
 							break;
 						case SILVER:
-							entityarrow = new EntityShotgunBullet(world, player);
+							entityarrow = new EntitySilverBullet(world, player);
 							break;
 						default:
 							break;

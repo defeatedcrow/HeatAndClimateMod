@@ -54,48 +54,50 @@ public class LivingMainEventDC {
 	@SideOnly(Side.CLIENT)
 	public void onPlayerKeyUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
-		if (entity != null && entity instanceof EntityPlayer && !entity.isRiding()) {
+		if (entity != null && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntity();
-			if (player.isPotionActive(MainInit.ocean) && player.isInWater()) {
-				// ocean potion
-				if (ClimateCore.proxy.isJumpKeyDown()) {
-					player.motionY += 0.15D;
-					if (player.motionY > 2.0D) {
-						player.motionY = 2.0D;
-					}
-				} else if (ClimateMain.proxy.isSneakKeyDown() && !player.onGround) {
-					player.motionY -= 0.15D;
-					if (player.motionY < -2.0D) {
-						player.motionY = -2.0D;
-					}
-				}
-				if (ClimateMain.proxy.isForwardKeyDown()) {
-					Vec3d vec3d = player.getLookVec();
-					double d = Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ);
-					double d1 = Math.sqrt(vec3d.xCoord * vec3d.xCoord + vec3d.zCoord * vec3d.zCoord);
-					if (d < 1.0D) {
-						player.motionX += vec3d.xCoord * 0.1D;
-						player.motionZ += vec3d.zCoord * 0.1D;
-					}
-				}
-			} else if (player.isPotionActive(MainInit.bird)) {
-				// bird potion
-				if (!player.isInWater() && !player.isElytraFlying()) {
+			if (!player.isRiding()) {
+				if (player.isPotionActive(MainInit.ocean) && player.isInWater()) {
+					// ocean potion
 					if (ClimateCore.proxy.isJumpKeyDown()) {
 						player.motionY += 0.15D;
 						if (player.motionY > 2.0D) {
 							player.motionY = 2.0D;
 						}
 					} else if (ClimateMain.proxy.isSneakKeyDown() && !player.onGround) {
-						player.motionY = 0.0D;
+						player.motionY -= 0.15D;
+						if (player.motionY < -2.0D) {
+							player.motionY = -2.0D;
+						}
 					}
-					if (ClimateMain.proxy.isForwardKeyDown() && !player.onGround) {
+					if (ClimateMain.proxy.isForwardKeyDown()) {
 						Vec3d vec3d = player.getLookVec();
 						double d = Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ);
 						double d1 = Math.sqrt(vec3d.xCoord * vec3d.xCoord + vec3d.zCoord * vec3d.zCoord);
 						if (d < 1.0D) {
-							player.motionX += vec3d.xCoord * 0.05D;
-							player.motionZ += vec3d.zCoord * 0.05D;
+							player.motionX += vec3d.xCoord * 0.1D;
+							player.motionZ += vec3d.zCoord * 0.1D;
+						}
+					}
+				} else if (player.isPotionActive(MainInit.bird)) {
+					// bird potion
+					if (!player.isInWater() && !player.isElytraFlying()) {
+						if (ClimateCore.proxy.isJumpKeyDown()) {
+							player.motionY += 0.15D;
+							if (player.motionY > 2.0D) {
+								player.motionY = 2.0D;
+							}
+						} else if (ClimateMain.proxy.isSneakKeyDown() && !player.onGround) {
+							player.motionY = 0.0D;
+						}
+						if (ClimateMain.proxy.isForwardKeyDown() && !player.onGround) {
+							Vec3d vec3d = player.getLookVec();
+							double d = Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ);
+							double d1 = Math.sqrt(vec3d.xCoord * vec3d.xCoord + vec3d.zCoord * vec3d.zCoord);
+							if (d < 1.0D) {
+								player.motionX += vec3d.xCoord * 0.05D;
+								player.motionZ += vec3d.zCoord * 0.05D;
+							}
 						}
 					}
 				}

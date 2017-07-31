@@ -1,5 +1,6 @@
 package defeatedcrow.hac.plugin;
 
+import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.food.FoodInit;
@@ -13,6 +14,7 @@ import forestry.api.fuels.EngineBronzeFuel;
 import forestry.api.fuels.FermenterFuel;
 import forestry.api.fuels.FuelManager;
 import forestry.api.recipes.RecipeManagers;
+import forestry.lepidopterology.entities.EntityButterfly;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -231,6 +233,8 @@ public class DCPluginForestry {
 			Farmables.farmables.put("farmVegetables",
 					new DCFarmableDouble((ClimateDoubleCropBase) FoodInit.cropCotton));
 		}
+
+		DamageAPI.resistantData.registerEntityResistant(EntityButterfly.class, 2.0F, 2.0F);
 
 	}
 

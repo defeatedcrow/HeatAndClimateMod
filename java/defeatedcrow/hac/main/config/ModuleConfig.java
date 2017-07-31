@@ -26,6 +26,11 @@ public class ModuleConfig {
 	public static boolean bop = true;
 	public static boolean cofh = true;
 
+	public static boolean r_mill = true;
+	public static boolean r_spinning = true;
+	public static boolean r_fluid = true;
+	public static boolean r_reactor = true;
+
 	public void load(Configuration cfg) {
 
 		try {
@@ -34,10 +39,13 @@ public class ModuleConfig {
 			cfg.addCustomCategoryComment("module setting",
 					"This setting is for module parmission. " + BR
 							+ "If you set false, that module will not add recipes and creative tab items." + BR
-							+ "Please understand that you can not delete item/block registerations by this setting.");
+							+ "Please understand that you can not delete item/block registrations by this setting.");
 
 			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin installation parmission. " + BR
 					+ "If you set false, that plugin will be disabled.");
+
+			cfg.addCustomCategoryComment("recipe setting", "This setting is for recipe registration parmission. " + BR
+					+ "If you set false, that recipe will be removed.");
 
 			Property machine_b = cfg.get("module setting", "EnableMachineModule", machine);
 			Property magic_b = cfg.get("module setting", "EnableMagicModule", magic);
@@ -55,6 +63,11 @@ public class ModuleConfig {
 			Property bop_b = cfg.get("plugin setting", "BiomesOPlentyPlugin", bop);
 			Property cofh_b = cfg.get("plugin setting", "CoFHPlugin", bop);
 
+			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
+			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
+			Property fluid = cfg.get("recipe setting", "EnableCookingPanRecipe", r_fluid);
+			Property reactor = cfg.get("recipe setting", "EnableReactorRecipe", r_reactor);
+
 			machine = machine_b.getBoolean();
 			magic = magic_b.getBoolean();
 			food = food_b.getBoolean();
@@ -70,6 +83,11 @@ public class ModuleConfig {
 			ic2 = ic2_b.getBoolean();
 			bop = bop_b.getBoolean();
 			cofh = cofh_b.getBoolean();
+
+			r_mill = mill.getBoolean();
+			r_spinning = spinning.getBoolean();
+			r_fluid = fluid.getBoolean();
+			r_reactor = reactor.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

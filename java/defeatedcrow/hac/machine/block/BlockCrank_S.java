@@ -21,6 +21,7 @@ public class BlockCrank_S extends BlockTorqueBase {
 
 	public BlockCrank_S(String s) {
 		super(Material.ROCK, s, 0);
+		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
 	}
 

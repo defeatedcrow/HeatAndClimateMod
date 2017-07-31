@@ -8,15 +8,19 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.core.climate.recipe.FluidCraftRecipe;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
+import defeatedcrow.hac.core.recipe.ShapedNBTRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -28,9 +32,13 @@ public class FoodRecipes {
 		loadBasicRecipes();
 		loadCropRecipes();
 		loadClimateRecipes();
-		loadMillRecipe();
-		loadFluidRecipes();
-		loadCookingRecipes();
+		if (ModuleConfig.r_mill) {
+			loadMillRecipe();
+		}
+		if (ModuleConfig.r_fluid) {
+			loadFluidRecipes();
+			loadCookingRecipes();
+		}
 		loadCropData();
 		loadFuelData();
 	}
@@ -723,6 +731,24 @@ public class FoodRecipes {
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 8, 4),
 				0.25F, new ItemStack(MainInit.cropCont, 1, 7));
+
+		if (FluidRegistry.isUniversalBucketEnabled()) {
+			ItemStack oil = UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,
+					FoodInit.oil);
+			GameRegistry.addRecipe(new ShapedNBTRecipe(new ItemStack(FoodInit.dropOil, 5, 0), new Object[] {
+					"X",
+					'X',
+					oil
+			}));
+
+			ItemStack cream = UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,
+					FoodInit.cream);
+			GameRegistry.addRecipe(new ShapedNBTRecipe(new ItemStack(FoodInit.dropCream, 5, 0), new Object[] {
+					"X",
+					'X',
+					cream
+			}));
+		}
 
 		// yagen
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new Object[] {

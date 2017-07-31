@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.food.FoodClientProxy;
 import defeatedcrow.hac.machine.MachineClientProxy;
+import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.magic.client.RenderPlayerEventDC;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
@@ -111,6 +112,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		particles.add(TESRInfernalFlame.TEX1.toString());
 		particles.add(TESRInfernalFlame.TEX2.toString());
 
+		particles.add(GasBurnerTESR.TEX1.toString());
+
 		JsonBakery.instance.addTex(particles);
 
 		FoodClientProxy.loadConst();
@@ -139,6 +142,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityDynamiteBlue.class, RenderEntityDynamite.class);
 
 		FoodClientProxy.loadEntity();
+		MachineClientProxy.loadEntity();
 		MagicClientProxy.loadEntity();
 	}
 

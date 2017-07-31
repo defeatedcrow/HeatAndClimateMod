@@ -27,6 +27,7 @@ public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile, IH
 
 	public BlockHeatExchanger(String s) {
 		super(Material.ROCK, s, 0);
+		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
 	}
 

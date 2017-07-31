@@ -3,6 +3,7 @@ package defeatedcrow.hac.machine.client;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import defeatedcrow.hac.machine.client.model.ModelShaft_TA;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

@@ -126,6 +126,7 @@ public class MagicClientProxy {
 		instance.regSimpleBlock(MagicInit.elestial, ClimateCore.PACKAGE_ID, "dcs_ore_elestial", "ores", 0);
 		instance.regTEBlock(MagicInit.lotusCandle, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_white", "magic", 0);
 		instance.regTEBlock(MagicInit.lotusCandleBlack, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_black", "magic", 0);
+		instance.regSimpleBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_ID, "dcs_magic_biomeglass", "magic", 3);
 
 		instance.regTEBlock(MagicInit.maceSun, ClimateCore.PACKAGE_ID, "dcs_magicmace_light", "magic", 0);
 		instance.regTEBlock(MagicInit.maceMoon, ClimateCore.PACKAGE_ID, "dcs_magicmace_moon", "magic", 0);

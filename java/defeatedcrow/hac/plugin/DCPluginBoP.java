@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -14,8 +15,7 @@ public class DCPluginBoP {
 
 	public static final DCPluginBoP INSTANCE = new DCPluginBoP();
 
-	private DCPluginBoP() {
-	}
+	private DCPluginBoP() {}
 
 	public static void load() {
 		// climate registering
@@ -49,8 +49,10 @@ public class DCPluginBoP {
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(BOPBlocks.plant_1, 1, 0));
 
 		// machine
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2),
-				new ItemStack(MainInit.foodMaterials, 1, 2), 0.5F, "plantWildRice");
+		if (ModuleConfig.r_mill) {
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2),
+					new ItemStack(MainInit.foodMaterials, 1, 2), 0.5F, "plantWildRice");
+		}
 
 	}
 

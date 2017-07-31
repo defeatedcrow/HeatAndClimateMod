@@ -53,69 +53,69 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 								player.posZ, 16, 0.75D, 0.75D, 0.75D, 0.5D, new int[0]);
 					}
 
-					if (player.isSneaking()) {
-						// 精錬
-						IClimate clm = ClimateAPI.register.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL,
-								DCAirflow.TIGHT);
-						// 5x5x3 の範囲
-						BlockPos pos = player.getPosition();
-						BlockPos min = new BlockPos(pos.add(-3, -2, -3));
-						BlockPos max = new BlockPos(pos.add(3, 3, 3));
-						Iterable<BlockPos> itr = pos.getAllInBox(min, max);
-						for (BlockPos p1 : itr) {
-							IBlockState st = world.getBlockState(p1);
-							int meta = st.getBlock().damageDropped(st);
-							if (world.isAirBlock(p1) || st.getMaterial() == Material.WATER
-									|| st.getBlock() == Blocks.DIRT || st.getBlock() == Blocks.GRASS) {
-								continue;
-							}
-							ItemStack target = new ItemStack(st.getBlock(), 1, meta);
-							IClimateSmelting recipe = RecipeAPI.registerSmelting.getRecipe(clm, target);
-							if (recipe != null) {
-								ItemStack ret = recipe.getOutput();
-								if (ret != null) {
-									EntityItem drop = new EntityItem(world, p1.getX() + 0.5D, p1.getY() + 0.5D,
-											p1.getZ() + 0.5D, ret);
-									if (ret.getItem() instanceof ItemBlock) {
-										Block put = ((ItemBlock) ret.getItem()).getBlock();
-										IBlockState next = put.getStateFromMeta(ret.getItemDamage());
-										world.setBlockState(p1, next);
-										world.notifyBlockOfStateChange(p1, put);
-									} else {
-										world.setBlockToAir(p1);
-										drop.motionY = 0.025D;
-										world.spawnEntityInWorld(drop);
-									}
-									if (world instanceof WorldServer) {
-										((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() + 0.5D,
-												p1.getY() + 0.5D, p1.getZ() + 0.5D, 8, 0.75D, 0.75D, 0.75D, 0.5D,
-												new int[0]);
-									}
+					// if (player.isSneaking()) {
+					// 精錬
+					IClimate clm = ClimateAPI.register.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL,
+							DCAirflow.TIGHT);
+					// 5x5x5 の範囲
+					BlockPos pos = player.getPosition();
+					BlockPos min = new BlockPos(pos.add(-3, -2, -3));
+					BlockPos max = new BlockPos(pos.add(3, 3, 3));
+					Iterable<BlockPos> itr = pos.getAllInBox(min, max);
+					for (BlockPos p1 : itr) {
+						IBlockState st = world.getBlockState(p1);
+						int meta = st.getBlock().damageDropped(st);
+						if (world.isAirBlock(p1) || st.getMaterial() == Material.WATER || st.getBlock() == Blocks.DIRT
+								|| st.getBlock() == Blocks.GRASS) {
+							continue;
+						}
+						ItemStack target = new ItemStack(st.getBlock(), 1, meta);
+						IClimateSmelting recipe = RecipeAPI.registerSmelting.getRecipe(clm, target);
+						if (recipe != null) {
+							ItemStack ret = recipe.getOutput();
+							if (ret != null) {
+								EntityItem drop = new EntityItem(world, p1.getX() + 0.5D, p1.getY() + 0.5D,
+										p1.getZ() + 0.5D, ret);
+								if (ret.getItem() instanceof ItemBlock) {
+									Block put = ((ItemBlock) ret.getItem()).getBlock();
+									IBlockState next = put.getStateFromMeta(ret.getItemDamage());
+									world.setBlockState(p1, next);
+									world.notifyBlockOfStateChange(p1, put);
+								} else {
+									world.setBlockToAir(p1);
+									drop.motionY = 0.025D;
+									world.spawnEntityInWorld(drop);
 								}
-							} else {
-								ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(target);
-								if (burnt != null) {
-									EntityItem drop2 = new EntityItem(world, p1.getX() + 0.5D, p1.getY() + 0.5D,
-											p1.getZ() + 0.5D, new ItemStack(burnt.getItem(), 1, burnt.getItemDamage()));
-									if (burnt.getItem() instanceof ItemBlock) {
-										Block put = ((ItemBlock) burnt.getItem()).getBlock();
-										IBlockState next = put.getStateFromMeta(burnt.getItemDamage());
-										world.setBlockState(p1, next);
-										world.notifyBlockOfStateChange(p1, put);
-									} else {
-										world.setBlockToAir(p1);
-										drop2.motionY = 0.025D;
-										world.spawnEntityInWorld(drop2);
-									}
-									if (world instanceof WorldServer) {
-										((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() + 0.5D,
-												p1.getY() + 0.0D, p1.getZ() + 0.5D, 8, 0.75D, 0.75D, 0.75D, 0.05D,
-												new int[0]);
-									}
+								if (world instanceof WorldServer) {
+									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() + 0.5D,
+											p1.getY() + 0.5D, p1.getZ() + 0.5D, 8, 0.75D, 0.75D, 0.75D, 0.5D,
+											new int[0]);
+								}
+							}
+						} else {
+							ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(target);
+							if (burnt != null) {
+								EntityItem drop2 = new EntityItem(world, p1.getX() + 0.5D, p1.getY() + 0.5D,
+										p1.getZ() + 0.5D, new ItemStack(burnt.getItem(), 1, burnt.getItemDamage()));
+								if (burnt.getItem() instanceof ItemBlock) {
+									Block put = ((ItemBlock) burnt.getItem()).getBlock();
+									IBlockState next = put.getStateFromMeta(burnt.getItemDamage());
+									world.setBlockState(p1, next);
+									world.notifyBlockOfStateChange(p1, put);
+								} else {
+									world.setBlockToAir(p1);
+									drop2.motionY = 0.025D;
+									world.spawnEntityInWorld(drop2);
+								}
+								if (world instanceof WorldServer) {
+									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() + 0.5D,
+											p1.getY() + 0.0D, p1.getZ() + 0.5D, 8, 0.75D, 0.75D, 0.75D, 0.05D,
+											new int[0]);
 								}
 							}
 						}
 					}
+					// }
 
 				}
 

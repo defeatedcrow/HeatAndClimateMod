@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.client.base.DCTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.machine.block.TileIBC;
+import defeatedcrow.hac.machine.client.model.ModelIBC;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;

@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
+import defeatedcrow.hac.machine.client.model.ModelHopperF;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;

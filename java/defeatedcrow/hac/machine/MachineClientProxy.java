@@ -13,6 +13,7 @@ import defeatedcrow.hac.machine.block.TileDynamo;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFauset;
 import defeatedcrow.hac.machine.block.TileFreezer;
+import defeatedcrow.hac.machine.block.TileGasBurner;
 import defeatedcrow.hac.machine.block.TileGearBox;
 import defeatedcrow.hac.machine.block.TileGearBox_SUS;
 import defeatedcrow.hac.machine.block.TileHandCrank;
@@ -46,6 +47,7 @@ import defeatedcrow.hac.machine.client.CreativeBoxTESR;
 import defeatedcrow.hac.machine.client.DynamoTESR;
 import defeatedcrow.hac.machine.client.FanTESR;
 import defeatedcrow.hac.machine.client.FreezerTESR;
+import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.machine.client.GearBoxTESR;
 import defeatedcrow.hac.machine.client.HandCrankTESR;
 import defeatedcrow.hac.machine.client.HeatExchangerTESR;
@@ -58,6 +60,8 @@ import defeatedcrow.hac.machine.client.PortalManagerTESR;
 import defeatedcrow.hac.machine.client.PressMachineTESR;
 import defeatedcrow.hac.machine.client.ReactorTESR;
 import defeatedcrow.hac.machine.client.RedBoxTESR;
+import defeatedcrow.hac.machine.client.RenderCartMotor;
+import defeatedcrow.hac.machine.client.RenderScooter;
 import defeatedcrow.hac.machine.client.SUS_GearBoxTESR;
 import defeatedcrow.hac.machine.client.SUS_L_ShaftTESR;
 import defeatedcrow.hac.machine.client.SUS_S_ShaftTESR;
@@ -72,7 +76,10 @@ import defeatedcrow.hac.machine.client.TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.WaterPumpTESR;
 import defeatedcrow.hac.machine.client.WatermillTESR;
 import defeatedcrow.hac.machine.client.WindmillTESR;
+import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
+import defeatedcrow.hac.machine.entity.EntityScooter;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.client.ClientMainProxy;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -87,6 +94,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class MachineClientProxy {
+
+	public static void loadEntity() {
+		ClientMainProxy.registRender(EntityMinecartMotor.class, RenderCartMotor.class);
+		ClientMainProxy.registRender(EntityScooter.class, RenderScooter.class);
+	}
 
 	public static void loadTE() {
 		ClientRegistry.registerTileEntity(TileWindmill.class, "dcs_te_windmill", new WindmillTESR());
@@ -127,6 +139,7 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TilePortalManager.class, "dcs_te_portal_manager", new PortalManagerTESR());
 		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
 		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
+		ClientRegistry.registerTileEntity(TileGasBurner.class, "dcs_te_gas_burner", new GasBurnerTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -164,7 +177,7 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.fauset, ClimateCore.PACKAGE_ID, "dcs_device_fauset", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_ID, "dcs_device_mechanical", "machine",
-				1);
+				4);
 		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
 		instance.regSimpleItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_ID, "dcs_device_torque_checker_steel",
 				"machine", 0);
@@ -184,6 +197,7 @@ public class MachineClientProxy {
 				"machine", 0);
 		instance.regTETorqueBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_ID, "dcs_device_portal_manager",
 				"machine", 0);
+		instance.regTEBlock(MachineInit.burner, ClimateCore.PACKAGE_ID, "dcs_device_gas_burner", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 9);
 		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 2);
@@ -200,6 +214,8 @@ public class MachineClientProxy {
 				0);
 		instance.regSimpleBlock(MachineInit.acceptorPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_item",
 				"machine", 0);
+		instance.regSimpleItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_ID, "dcs_motor_minecart", "device", 0);
+		instance.regSimpleItem(MachineInit.scooter, ClimateCore.PACKAGE_ID, "dcs_motor_scooter", "device", 3);
 
 		// fluid
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.hydrogenBlock), new ItemMeshDefinition() {
