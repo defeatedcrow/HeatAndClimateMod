@@ -35,7 +35,8 @@ public class HUDHandlerChamber extends HUDHandlerBase {
 		Block block = accessor.getBlock();
 		int meta = accessor.getMetadata();
 
-		if (block == MainInit.chamber || block == MainInit.shitirin || block == MainInit.fuelStove) {
+		if (block == MainInit.chamber || block == MainInit.shitirin || block == MainInit.fuelStove
+				|| block == MachineInit.burner) {
 			int burntime = accessor.getNBTData().getInteger("BurnTime");
 			byte tier = accessor.getNBTData().getByte("Climate");
 			if (burntime > 0) {

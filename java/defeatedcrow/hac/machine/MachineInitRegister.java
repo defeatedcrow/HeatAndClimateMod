@@ -298,7 +298,7 @@ public class MachineInitRegister {
 
 		if (ModuleConfig.machine_advanced) {
 			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
-			MachineInit.burner.setCreativeTab(ClimateMain.machine);
+			// MachineInit.burner.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.moldAluminium.setCreativeTab(ClimateMain.machine);
 			MachineInit.moldAlloy.setCreativeTab(ClimateMain.machine);

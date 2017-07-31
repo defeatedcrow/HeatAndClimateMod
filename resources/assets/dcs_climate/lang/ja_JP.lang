@@ -691,6 +691,7 @@ tile.dcs_device_watermill_0.name=水車
 tile.dcs_device_dynamo_0.name=ダイナモ
 tile.dcs_device_reactor_0.name=化学反応槽
 tile.dcs_device_freezer_0.name=冷凍機
+tile.dcs_device_gas_burner_0.name=アセチレンバーナー
 tile.dcs_device_spinning_machine_0.name=ガラ紡機
 tile.dcs_device_portal_manager_0.name=転送ポータル
 tile.dcs_device_adapter_item_0.name=アイテム送信パネル

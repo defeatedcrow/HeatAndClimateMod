@@ -67,10 +67,10 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 
 		if (this.rand.nextInt(4) == 0) {
 			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 0.75D
-					- Math.cos(rotationYaw * 0.017453292F) * 0.25D;
+					- Math.cos(rotationYaw * 0.017453292F) * 0.3D;
 			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 0.75D
-					- Math.sin(rotationYaw * 0.017453292F) * 0.25D;
-			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, px, this.posY + 0.25D, pz, 0.0D, 0.0D, 0.0D,
+					- Math.sin(rotationYaw * 0.017453292F) * 0.3D;
+			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, px, this.posY + 0.45D, pz, 0.0D, 0.0D, 0.0D,
 					new int[0]);
 		}
 	}
