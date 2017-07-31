@@ -89,6 +89,9 @@ item.dcs_material_spindle_alloy.name=Alloy Spindle
 item.dcs_material_spindle_steel.name=Steel Spindle
 item.dcs_mechanical_induction_motor.name=Induction motor
 item.dcs_mechanical_alternator.name=Alternator
+item.dcs_mechanical_enginepart.name=Engine Part
+item.dcs_mechanical_engine.name=Engine
+item.dcs_mechanical_tire.name=Tire
 item.dcs_reagent_drop_coaltar.name=CoalTar Drop
 item.dcs_reagent_drop_glycerine.name=Glycerine Drop
 item.dcs_reagent_drop_synthetic.name=Synthetic Drop
@@ -386,6 +389,13 @@ item.dcs_dagger_magic_13.name=Magic Dagger (Warp)
 item.dcs_dagger_magic_14.name=Magic Dagger (Generate Ore Vine)
 item.dcs_dagger_magic_15.name=Magic Dagger (Generate Windmill)
 
+# entities
+item.dcs_motor_minecart_white.name=Motorized Cart
+item.dcs_motor_scooter_orange.name=Scooter (Orange)
+item.dcs_motor_scooter_blue.name=Scooter (Blue)
+item.dcs_motor_scooter_white.name=Scooter (White)
+item.dcs_motor_scooter_black.name=Scooter (Black)
+
 ## plugin
 item.dcs_metal_oredust_zinc_dirty.name=Dirty Zinc Dust
 item.dcs_metal_shard_zinc.name=Zinc Shard
@@ -645,6 +655,10 @@ tile.dcs_lotus_candle_black_0.name=Black Lotus Candle
 tile.dcs_build_shield_0.name=Commendation shield of the Climate
 tile.dcs_build_shield_1.name=Commendation shield of the Machine
 tile.dcs_build_shield_2.name=Commendation shield of the Magic
+tile.dcs_device_biomeglass_0.name=Biome Cube(Plain)
+tile.dcs_device_biomeglass_1.name=Biome Cube(Jungle)
+tile.dcs_device_biomeglass_2.name=Biome Cube(Desert)
+tile.dcs_device_biomeglass_3.name=Biome Cube(Ice)
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -698,6 +712,7 @@ tile.dcs_device_watermill_0.name=Watermill
 tile.dcs_device_dynamo_0.name=Dynamo
 tile.dcs_device_reactor_0.name=Chemical Reactor
 tile.dcs_device_freezer_0.name=Freezer
+tile.dcs_device_gas_burner_0.name=Fuel Gas Burner
 tile.dcs_device_spinning_machine_0.name=Spinning Machine
 tile.dcs_device_portal_manager_0.name=Transfer Portal
 tile.dcs_device_adapter_item_0.name=Item Sending Panel
@@ -1100,3 +1115,8 @@ entity.dcs_climate.dcsentity.food.squid_stick.name=Squid Skewers
 entity.dcs_climate.dcsentity.food.stew_lotusroot.name=Lotusroot Soup
 entity.dcs_climate.dcsentity.food.moon_cake.name=Mooncake
 entity.dcs_climate.dcsentity.main.flowerpot.name=Flower Pot
+entity.dcs_climate.dcsentity.main.dynamite_red.name=Dynamite
+entity.dcs_climate.dcsentity.main.dynamite_blue.name=Silky Dynamite
+entity.dcs_climate.dcsentity.machine.motor_cart.name=Motorized Cart
+entity.dcs_climate.dcsentity.machine.motor_scooter.name=Scooter
+

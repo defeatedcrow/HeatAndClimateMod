@@ -1,23 +1,16 @@
 package defeatedcrow.hac.machine.recipes;
 
-import java.util.Iterator;
-import java.util.List;
-
+import defeatedcrow.hac.core.recipe.ShapedNBTRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.ForgeModContainer;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.UniversalBucket;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -449,7 +442,7 @@ public class MachineRecipes {
 		if (FluidRegistry.isUniversalBucketEnabled()) {
 			ItemStack ub = UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,
 					MachineInit.ammonia);
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.freezer, 1, 0), new Object[] {
+			GameRegistry.addRecipe(new ShapedNBTRecipe(new ItemStack(MachineInit.freezer, 1, 0), new Object[] {
 					"WZ ",
 					"WYV",
 					"XXX",
@@ -463,63 +456,7 @@ public class MachineRecipes {
 					new ItemStack(MachineInit.IBC, 1, 0),
 					'V',
 					new ItemStack(MachineInit.gearbox2, 1, 0),
-			}) {
-				@Override
-				@SuppressWarnings("unchecked")
-				protected boolean checkMatch(InventoryCrafting inv, int startX, int startY, boolean mirror) {
-					for (int x = 0; x < MAX_CRAFT_GRID_WIDTH; x++) {
-						for (int y = 0; y < MAX_CRAFT_GRID_HEIGHT; y++) {
-							int subX = x - startX;
-							int subY = y - startY;
-							Object target = null;
-
-							if (subX >= 0 && subY >= 0 && subX < width && subY < height) {
-								if (mirror) {
-									target = input[width - subX - 1 + subY * width];
-								} else {
-									target = input[subX + subY * width];
-								}
-							}
-
-							ItemStack slot = inv.getStackInRowAndColumn(x, y);
-
-							if (target instanceof ItemStack) {
-								if (!OreDictionary.itemMatches((ItemStack) target, slot, false)) {
-									boolean check = false;
-									ItemStack bucket = (ItemStack) target;
-									if (bucket != null
-											&& bucket.getItem() == ForgeModContainer.getInstance().universalBucket) {
-										if (slot != null && slot
-												.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-											IFluidHandler handler = slot.getCapability(
-													CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-											FluidStack f = handler.drain(Fluid.BUCKET_VOLUME, false);
-											if (f != null && f.getFluid() == MachineInit.ammonia) {
-												check = true;
-											}
-										}
-									}
-									if (!check)
-										return false;
-								}
-							} else if (target instanceof List) {
-								boolean matched = false;
-
-								Iterator<ItemStack> itr = ((List<ItemStack>) target).iterator();
-								while (itr.hasNext() && !matched) {
-									matched = OreDictionary.itemMatches(itr.next(), slot, false);
-								}
-
-								if (!matched)
-									return false;
-							} else if (target == null && slot != null)
-								return false;
-						}
-					}
-
-					return true;
-				}
-			});
+			}));
 		} else {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.freezer, 1, 0), new Object[] {
 					"WZ ",
@@ -771,6 +708,20 @@ public class MachineRecipes {
 				"paper"
 		}));
 
+		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.burner, 1, 0), new Object[] {
+		// "X X",
+		// "X X",
+		// "YZW",
+		// 'X',
+		// "ingotSUS",
+		// 'Y',
+		// "gearSteel",
+		// 'Z',
+		// new ItemStack(Items.FLINT_AND_STEEL, 1, 0),
+		// 'W',
+		// new ItemStack(MachineInit.IBC, 1, 0)
+		// }));
+
 		// アナザー
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
 				"Y",
@@ -788,6 +739,75 @@ public class MachineRecipes {
 				"stickWood",
 				'Y',
 				new ItemStack(MachineInit.reagent, 1, 1)
+		}));
+
+		// エンジン!
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.machimeMaterials, 1, 2), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				"ingotAluminium",
+				'Y',
+				"gearSteel"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.machimeMaterials, 1, 3), new Object[] {
+				"ZZZ",
+				"ZYZ",
+				"ZZZ",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(MachineInit.machimeMaterials, 1, 2),
+				'Z',
+				"gearSteel"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.machimeMaterials, 1, 4), new Object[] {
+				new ItemStack(MachineInit.reagent, 1, 2),
+				new ItemStack(MachineInit.reagent, 1, 7),
+				"slimeball",
+				"dustSulfur"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.motorMinecart, 1, 0), new Object[] {
+				new ItemStack(MachineInit.machimeMaterials, 1, 3),
+				new ItemStack(Items.MINECART, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.scooter, 1, 2), new Object[] {
+				" X ",
+				"WYW",
+				"Z Z",
+				'X',
+				new ItemStack(Items.SADDLE, 1, 0),
+				'Y',
+				new ItemStack(MachineInit.machimeMaterials, 1, 3),
+				'W',
+				"gearSteel",
+				'Z',
+				new ItemStack(MachineInit.machimeMaterials, 1, 4)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.scooter, 1, 0), new Object[] {
+				new ItemStack(MachineInit.scooter, 1, 32767),
+				"dyeOrange"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.scooter, 1, 1), new Object[] {
+				new ItemStack(MachineInit.scooter, 1, 32767),
+				"dyeBlue"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.scooter, 1, 2), new Object[] {
+				new ItemStack(MachineInit.scooter, 1, 32767),
+				"dyeWhite"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.scooter, 1, 3), new Object[] {
+				new ItemStack(MachineInit.scooter, 1, 32767),
+				"dyeBlack"
 		}));
 	}
 

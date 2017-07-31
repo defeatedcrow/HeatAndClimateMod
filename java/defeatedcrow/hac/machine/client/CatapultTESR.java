@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.machine.block.TileCatapult;
+import defeatedcrow.hac.machine.client.model.ModelCatapult;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;

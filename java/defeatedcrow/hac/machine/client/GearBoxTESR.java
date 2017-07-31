@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import defeatedcrow.hac.machine.client.model.ModelGearBox;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;

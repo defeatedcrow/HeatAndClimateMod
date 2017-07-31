@@ -9,7 +9,11 @@ public class ItemMachineMaterial extends DCItem {
 
 	private static String[] names = {
 			"induction_motor",
-			"alternator" };
+			"alternator",
+			"enginepart",
+			"engine",
+			"tire"
+	};
 
 	public ItemMachineMaterial(int max) {
 		super();

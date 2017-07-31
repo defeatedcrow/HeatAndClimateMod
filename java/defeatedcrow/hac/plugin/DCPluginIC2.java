@@ -111,12 +111,18 @@ public class DCPluginIC2 {
 				Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(FoodInit.teaLeaves, 1, 0)), tag1,
 						false, new ItemStack(coffee, 2, 1));
 
-				RecipeAPI.registerMills.addRecipe(new ItemStack(coffee, 2, 1), new ItemStack(FoodInit.teaLeaves, 1, 0));
+				if (ModuleConfig.r_mill) {
+					RecipeAPI.registerMills.addRecipe(new ItemStack(coffee, 2, 1),
+							new ItemStack(FoodInit.teaLeaves, 1, 0));
+				}
 
-				RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.coffee, 1000),
-						DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-								new ItemStack(coffee, 1, 1)
-						});
+				if (ModuleConfig.r_fluid) {
+					RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.coffee, 1000),
+							DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000),
+							new Object[] {
+									new ItemStack(coffee, 1, 1)
+							});
+				}
 			}
 		}
 

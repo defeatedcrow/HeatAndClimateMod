@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.machine.block.TileAcceptorPanel;
 import defeatedcrow.hac.machine.block.TileAdapterPanel;
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
@@ -11,6 +12,7 @@ import defeatedcrow.hac.machine.block.TileDynamo;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFauset;
 import defeatedcrow.hac.machine.block.TileFreezer;
+import defeatedcrow.hac.machine.block.TileGasBurner;
 import defeatedcrow.hac.machine.block.TileGearBox;
 import defeatedcrow.hac.machine.block.TileGearBox_SUS;
 import defeatedcrow.hac.machine.block.TileHandCrank;
@@ -37,6 +39,10 @@ import defeatedcrow.hac.machine.block.TileWaterPump;
 import defeatedcrow.hac.machine.block.TileWatermill;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
+import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
+import defeatedcrow.hac.machine.entity.EntityScooter;
+import defeatedcrow.hac.main.ClimateMain;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineCommonProxy {
@@ -79,6 +85,16 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TilePortalManager.class, "dcs_te_portal_manager");
 		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
 		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
+		GameRegistry.registerTileEntity(TileGasBurner.class, "dcs_te_gas_burner");
+	}
+
+	public static void loadEntity() {
+		EntityRegistry.registerModEntity(EntityMinecartMotor.class,
+				ClimateCore.PACKAGE_BASE + "entity.machine.motor_cart", 80, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityScooter.class, ClimateCore.PACKAGE_BASE + "entity.machine.motor_scooter",
+				81, ClimateMain.instance, 128, 1, true);
+
 	}
 
 }

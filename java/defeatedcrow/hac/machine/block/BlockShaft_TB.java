@@ -33,6 +33,7 @@ public class BlockShaft_TB extends BlockTorqueBase {
 
 	public BlockShaft_TB(String s) {
 		super(Material.ROCK, s, 0);
+		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
 	}
 

@@ -58,7 +58,7 @@ public class OnDeathEventDC {
 			}
 
 			if (!flag) {
-				if (player.getName().equals("defeatedcrow") || ClimateCore.isDebug) {
+				if (player.getDisplayNameString().equals("defeatedcrow") || ClimateCore.isDebug) {
 					if (source.isFireDamage() || source == DamageSourceClimate.climateHeatDamage) {
 						ItemStack chicken = new ItemStack(FoodInit.sticks, 1, 3);
 						EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY, player.posZ,

@@ -188,6 +188,7 @@ public class CommonMainProxy implements IGuiHandler {
 				ClimateCore.PACKAGE_BASE + "entity.main.dynamite_blue", 99, ClimateMain.instance, 128, 5, true);
 
 		FoodCommonProxy.loadEntity();
+		MachineCommonProxy.loadEntity();
 		MagicCommonProxy.loadEntity();
 	}
 

@@ -21,6 +21,7 @@ public class BlockWindmill extends BlockTorqueBase {
 
 	public BlockWindmill(String s) {
 		super(Material.ROCK, s, 0);
+		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
 	}
 

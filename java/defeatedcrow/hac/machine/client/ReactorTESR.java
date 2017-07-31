@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import defeatedcrow.hac.machine.client.model.ModelReactor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;

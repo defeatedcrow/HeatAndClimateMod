@@ -31,6 +31,7 @@ public class BlockPressMachine extends BlockTorqueBase {
 
 	public BlockPressMachine(String s) {
 		super(Material.ROCK, s, 0);
+		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
 	}
 

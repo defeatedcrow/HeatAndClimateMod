@@ -1,0 +1,9 @@
+{
+    "parent": "dcs_climate:block/device/dcs_biomeglass_base",
+    "textures": {
+        "base": "dcs_climate:blocks/magic/biomeglass_green",
+        "inner": "dcs_climate:blocks/magic/biomeglass_green_i",
+        "down": "dcs_climate:blocks/magic/biomeglass_green_b",
+        "up": "dcs_climate:blocks/magic/biomeglass_green_u"
+    }
+}

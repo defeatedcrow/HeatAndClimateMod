@@ -26,6 +26,7 @@ public class BlockFreezer extends BlockTorqueBase implements IHeatTile {
 
 	public BlockFreezer(String s) {
 		super(Material.ROCK, s, 0);
+		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
 	}
 

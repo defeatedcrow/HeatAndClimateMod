@@ -21,6 +21,7 @@ public class BlockCreativeBox extends BlockTorqueBase {
 
 	public BlockCreativeBox(String s) {
 		super(Material.ROCK, s, 0);
+		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
 	}
 

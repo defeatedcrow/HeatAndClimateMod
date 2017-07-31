@@ -13,6 +13,7 @@ import defeatedcrow.hac.machine.block.BlockDynamo;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFauset;
 import defeatedcrow.hac.machine.block.BlockFreezer;
+import defeatedcrow.hac.machine.block.BlockGasBurner;
 import defeatedcrow.hac.machine.block.BlockGearBox;
 import defeatedcrow.hac.machine.block.BlockGearBox_SUS;
 import defeatedcrow.hac.machine.block.BlockHandCrank;
@@ -49,7 +50,9 @@ import defeatedcrow.hac.machine.item.ItemCatalyst;
 import defeatedcrow.hac.machine.item.ItemDynamite;
 import defeatedcrow.hac.machine.item.ItemGemCore;
 import defeatedcrow.hac.machine.item.ItemMachineMaterial;
+import defeatedcrow.hac.machine.item.ItemMinecartMotor;
 import defeatedcrow.hac.machine.item.ItemReagents;
+import defeatedcrow.hac.machine.item.ItemScooter;
 import defeatedcrow.hac.machine.item.ItemSteelMold;
 import defeatedcrow.hac.machine.item.ItemSynthetic;
 import defeatedcrow.hac.machine.item.ItemTorqueChecker;
@@ -58,6 +61,7 @@ import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -196,10 +200,20 @@ public class MachineInitRegister {
 		MachineInit.wirelessPortal = new BlockPortalManager(ClimateCore.PACKAGE_BASE + "_device_portal_manager");
 		registerTierBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_BASE + "_device_portal_manager", 3);
 
+		MachineInit.burner = new BlockGasBurner(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
+		registerTierBlock(MachineInit.burner, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
+
+		MachineInit.motorMinecart = new ItemMinecartMotor()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_minecart");
+		GameRegistry.register(MachineInit.motorMinecart.setRegistryName(ClimateCore.PACKAGE_BASE + "_motor_minecart"));
+
+		MachineInit.scooter = new ItemScooter().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_scooter");
+		GameRegistry.register(MachineInit.scooter.setRegistryName(ClimateCore.PACKAGE_BASE + "_motor_scooter"));
+
 	}
 
 	static void loadItems() {
-		MachineInit.machimeMaterials = new ItemMachineMaterial(1)
+		MachineInit.machimeMaterials = new ItemMachineMaterial(4)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mechanical");
 		GameRegistry.register(MachineInit.machimeMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_mechanical"));
 
@@ -284,6 +298,7 @@ public class MachineInitRegister {
 
 		if (ModuleConfig.machine_advanced) {
 			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
+			// MachineInit.burner.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.moldAluminium.setCreativeTab(ClimateMain.machine);
 			MachineInit.moldAlloy.setCreativeTab(ClimateMain.machine);
@@ -298,6 +313,8 @@ public class MachineInitRegister {
 			MachineInit.wirelessPortal.setCreativeTab(ClimateMain.machine);
 			MachineInit.adapterCard.setCreativeTab(ClimateMain.machine);
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
+			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);
+			MachineInit.scooter.setCreativeTab(ClimateMain.machine);
 		}
 	}
 

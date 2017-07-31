@@ -1,6 +1,7 @@
 package defeatedcrow.hac.magic;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.magic.block.BlockBiomeGlass;
 import defeatedcrow.hac.magic.block.BlockElestial;
 import defeatedcrow.hac.magic.block.BlockIceCluster;
 import defeatedcrow.hac.magic.block.BlockInfernalFlame;
@@ -87,6 +88,9 @@ public class MagicInitRegister {
 		MainMaterialRegister.registerBlock(MagicInit.lotusCandleBlack,
 				ClimateCore.PACKAGE_BASE + "_lotus_candle_black");
 
+		MagicInit.biomeOrb = new BlockBiomeGlass(ClimateCore.PACKAGE_BASE + "_device_biomeglass");
+		MainMaterialRegister.registerBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_BASE + "_device_biomeglass");
+
 		MagicInit.maceSun = new BlockMaceLight(ClimateCore.PACKAGE_BASE + "_magicmace_light");
 		MagicInit.maceSun.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_light");
 		GameRegistry.register(MagicInit.maceSun);
@@ -150,6 +154,8 @@ public class MagicInitRegister {
 		MagicInit.expGem.setCreativeTab(ClimateCore.climate);
 		MagicInit.lotusCandle.setCreativeTab(ClimateMain.build);
 		MagicInit.lotusCandleBlack.setCreativeTab(ClimateMain.build);
+
+		MagicInit.biomeOrb.setCreativeTab(ClimateMain.build);
 
 		// MagicInit.clusterIce.setCreativeTab(ClimateMain.tool);
 		// MagicInit.infernalFlame.setCreativeTab(ClimateMain.tool);

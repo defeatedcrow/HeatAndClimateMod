@@ -49,8 +49,8 @@ public class ItemBullets extends DCItem {
 	public static Type[] values = {
 			Type.BOLT,
 			Type.NORMAL,
-			Type.SILVER,
 			Type.SHOT,
+			Type.SILVER,
 			Type.CROW,
 			Type.GHOST
 	};

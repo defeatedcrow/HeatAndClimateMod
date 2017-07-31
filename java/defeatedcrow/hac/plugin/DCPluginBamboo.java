@@ -3,6 +3,7 @@ package defeatedcrow.hac.plugin;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import ruby.bamboo.api.BambooItems;
@@ -15,7 +16,9 @@ public class DCPluginBamboo {
 	private DCPluginBamboo() {}
 
 	public static void load() {
-		loadHaCMillRecipe();
+		if (ModuleConfig.r_mill) {
+			loadHaCMillRecipe();
+		}
 		loadBambooMillRecipe();
 	}
 

@@ -26,6 +26,7 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 
 	public BlockFan(String s) {
 		super(Material.ROCK, s, 0);
+		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
 	}
 
@@ -56,11 +57,10 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 			boolean active = isActive(face, pos, target) && world.isAirBlock(target.offset(face.getOpposite()));
 			if (active) {
 				float torque = fan.getCurrentTorque();
-				if (torque >= 5.5F) {
+				if (torque >= 5.5F)
 					return DCAirflow.WIND;
-				} else if (torque > 0F) {
+				else if (torque > 0F)
 					return DCAirflow.FLOW;
-				}
 			}
 		}
 		return DCAirflow.TIGHT;
@@ -86,9 +86,8 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 	}
 
 	boolean isActive(EnumFacing face, BlockPos to, BlockPos from) {
-		if (to.equals(from)) {
+		if (to.equals(from))
 			return true;
-		}
 		switch (face) {
 		case DOWN:
 			return to.getY() < from.getY();

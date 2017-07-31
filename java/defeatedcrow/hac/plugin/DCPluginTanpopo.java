@@ -3,6 +3,7 @@ package defeatedcrow.hac.plugin;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,7 +36,9 @@ public class DCPluginTanpopo {
 					"stickWood"
 			}));
 
-			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 1, 1), 4, "cropFluff");
+			if (ModuleConfig.r_spinning) {
+				RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 1, 1), 4, "cropFluff");
+			}
 		}
 
 		Fluid f = FluidRegistry.getFluid("fluid_essence");

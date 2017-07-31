@@ -341,6 +341,10 @@ public class EntityBulletDC extends Entity implements IProjectile {
 				damagesource = DamageSource.causeIndirectMagicDamage(this, null);
 			}
 
+			if (getBulletType() == BulletType.BOLT) {
+				damagesource = damagesource.setProjectile();
+			}
+
 			if (entity.attackEntityFrom(damagesource, dam)) {
 				if (entity instanceof EntityLivingBase) {
 					EntityLivingBase living = (EntityLivingBase) entity;

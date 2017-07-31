@@ -569,6 +569,57 @@ public class MagicRecipeRegister {
 					"ingotGold"
 			}));
 		}
+
+		// advanced
+		if (ModuleConfig.magic_advanced) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.biomeOrb, 1, 0), new Object[] {
+					"XYX",
+					"YZY",
+					"XYX",
+					'X',
+					new ItemStack(MainInit.selenite, 1, 0),
+					'Y',
+					"gemPeridot",
+					'Z',
+					new ItemStack(MagicInit.maceStarItem, 1, 0)
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.biomeOrb, 1, 1), new Object[] {
+					"XYX",
+					"YZY",
+					"XYX",
+					'X',
+					new ItemStack(MainInit.selenite, 1, 0),
+					'Y',
+					"gemPeridot",
+					'Z',
+					new ItemStack(MagicInit.maceStarItem, 1, 6)
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.biomeOrb, 1, 2), new Object[] {
+					"XYX",
+					"YZY",
+					"XYX",
+					'X',
+					new ItemStack(MainInit.selenite, 1, 0),
+					'Y',
+					"gemPeridot",
+					'Z',
+					new ItemStack(MagicInit.maceStarItem, 1, 5)
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.biomeOrb, 1, 3), new Object[] {
+					"XYX",
+					"YZY",
+					"XYX",
+					'X',
+					new ItemStack(MainInit.selenite, 1, 0),
+					'Y',
+					"gemPeridot",
+					'Z',
+					new ItemStack(MagicInit.maceStarItem, 1, 3)
+			}));
+		}
 	}
 
 	public static void loadOres() {

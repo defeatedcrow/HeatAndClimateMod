@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.event;
 
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.Item;
@@ -23,6 +24,7 @@ public class DCLootEvent {
 			Item ingot = MainInit.oreIngot;
 			Item gem = MainInit.gems;
 			Item jerky = MainInit.bakedApple;
+			Item meat = FoodInit.meat;
 			if (event.getName().equals(LootTableList.CHESTS_DESERT_PYRAMID)) {
 				LootTable loot = event.getTable();
 				LootPool pool = loot.getPool("main");
@@ -101,6 +103,14 @@ public class DCLootEvent {
 							new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
 							new SetCount(new LootCondition[0], new RandomValueRange(3, 8))
 					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_food_jerky"));
+				}
+			} else if (event.getName().equals(LootTableList.GAMEPLAY_FISHING_FISH)) {
+				LootTable loot = event.getTable();
+				LootPool pool = loot.getPool("main");
+				if (pool != null) {
+					pool.addEntry(new LootEntryItem(meat, 10, 1, new LootFunction[] {
+							new SetMetadata(new LootCondition[0], new RandomValueRange(2))
+					}, new LootCondition[0], ClimateMain.MOD_ID + ":fish_ika"));
 				}
 			}
 		}

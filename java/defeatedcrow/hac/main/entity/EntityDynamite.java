@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main.entity;
 
 import defeatedcrow.hac.main.util.CustomExplosion;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,6 +13,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraft.world.storage.loot.LootContext;
+import net.minecraft.world.storage.loot.LootTableList;
 
 public class EntityDynamite extends Entity {
 
@@ -90,14 +94,34 @@ public class EntityDynamite extends Entity {
 		for (BlockPos p : list) {
 			IBlockState state = worldObj.getBlockState(p);
 			if (!worldObj.isAirBlock(p)) {
-				if (isSilk() && state.getBlock().canSilkHarvest(worldObj, p, state, null)) {
-					ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
-					EntityItem drop = new EntityItem(worldObj, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() + 0.5D, item);
-					worldObj.spawnEntityInWorld(drop);
+				if (state.getMaterial() == Material.WATER) {
+					if (worldObj.rand.nextInt(32) == 0) {
+						LootContext.Builder lootcontext$builder = new LootContext.Builder((WorldServer) this.worldObj);
+						lootcontext$builder.withLuck(0.0F);
+
+						for (ItemStack itemstack : this.worldObj.getLootTableManager()
+								.getLootTableFromLocation(LootTableList.GAMEPLAY_FISHING)
+								.generateLootForPools(this.rand, lootcontext$builder.build())) {
+							double d0 = p.getX() + 0.5D;
+							double d1 = p.getY() + 0.5D;
+							double d2 = p.getZ() + 0.5D;
+							EntityItem entityitem = new EntityItem(this.worldObj, d0, d1, d2, itemstack);
+							entityitem.motionY = 0.1D;
+							worldObj.spawnEntityInWorld(entityitem);
+						}
+					}
+
 				} else {
-					state.getBlock().dropBlockAsItem(worldObj, p, state, 0);
+					if (isSilk() && state.getBlock().canSilkHarvest(worldObj, p, state, null)) {
+						ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
+						EntityItem drop = new EntityItem(worldObj, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() + 0.5D,
+								item);
+						worldObj.spawnEntityInWorld(drop);
+					} else {
+						state.getBlock().dropBlockAsItem(worldObj, p, state, 0);
+					}
+					worldObj.setBlockToAir(p);
 				}
-				worldObj.setBlockToAir(p);
 			}
 		}
 	}

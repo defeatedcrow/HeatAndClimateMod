@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "powered=false,type=0":  { "model": "dcs_climate:device/dcs_magic_biomeglass_plain" },
+        "powered=false,type=1":  { "model": "dcs_climate:device/dcs_magic_biomeglass_green" },
+        "powered=false,type=2": { "model": "dcs_climate:device/dcs_magic_biomeglass_yellow" },
+        "powered=false,type=3": { "model": "dcs_climate:device/dcs_magic_biomeglass_blue" },
+        "powered=true,type=0":  { "model": "dcs_climate:device/dcs_magic_biomeglass_plain"},
+        "powered=true,type=1":  { "model": "dcs_climate:device/dcs_magic_biomeglass_green" },
+        "powered=true,type=2": { "model": "dcs_climate:device/dcs_magic_biomeglass_yellow" },
+        "powered=true,type=3": { "model": "dcs_climate:device/dcs_magic_biomeglass_blue" }
+    }
+}

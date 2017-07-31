@@ -104,6 +104,13 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: cofh");
 			}
 		}
+
+		try {
+			MobResistantData.load();
+			DCLogger.infoLog("dcs_climate", "Successfully loaded mob resistant data");
+		} catch (Exception e) {
+			DCLogger.infoLog("dcs_climate", "Failed to load mob resistant data");
+		}
 	}
 
 }

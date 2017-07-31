@@ -37,4 +37,7 @@ public class MagicInit {
 	public static Block lotusCandleBlack;
 	public static Block lotusCandle;
 
+	public static Item biomecard;
+	public static Block biomeOrb;
+
 }

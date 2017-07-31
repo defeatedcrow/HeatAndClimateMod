@@ -61,8 +61,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	}
 
 	@Override
-	public void onTickUpdate() {
-	}
+	public void onTickUpdate() {}
 
 	@Override
 	protected void onServerUpdate() {
@@ -150,22 +149,19 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return true;
-		}
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return false;
-		}
 		return super.hasCapability(capability, facing);
 	}
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return (T) inputT;
-		} else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return null;
-		}
 		return super.getCapability(capability, facing);
 	}
 
@@ -245,7 +241,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public String getName() {
-		return "dcs.gui.device.fuel_stove";
+		return "dcs.gui.device.gas_burner";
 	}
 
 	@Override
@@ -274,8 +270,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	}
 
 	@Override
-	public void setInventorySlotContents(int index, ItemStack stack) {
-	}
+	public void setInventorySlotContents(int index, ItemStack stack) {}
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -289,12 +284,10 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-	}
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
-	public void closeInventory(EntityPlayer player) {
-	}
+	public void closeInventory(EntityPlayer player) {}
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
@@ -348,8 +341,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	}
 
 	@Override
-	public void clear() {
-	}
+	public void clear() {}
 
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
