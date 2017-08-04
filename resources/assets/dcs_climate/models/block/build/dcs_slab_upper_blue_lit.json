@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/build/dcs_slab_upper_lit_base",
+    "textures": {
+        "down": "dcs_climate:blocks/build/panel_chal_lamp_b",
+        "up": "dcs_climate:blocks/build/panel_chal_lamp_b",
+        "side": "dcs_climate:blocks/build/panel_chal_lamp_b"
+    }
+}

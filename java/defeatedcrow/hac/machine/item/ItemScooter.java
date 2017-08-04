@@ -8,6 +8,7 @@ import defeatedcrow.hac.machine.entity.EntityScooter;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -50,6 +51,12 @@ public class ItemScooter extends DCEntityItem {
 		int i = item.getItemDamage() & 3;
 		EntityScooter ret = new EntityScooter(world, x, y, z, player);
 		ret.setColor(i);
+
+		NBTTagCompound tag = item.getTagCompound();
+		if (tag != null) {
+			ret.setNBTToEntity(tag);
+		}
+
 		return ret;
 	}
 

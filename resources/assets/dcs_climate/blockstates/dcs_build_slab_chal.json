@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "side=false,type=0": { "model": "dcs_climate:build/dcs_slab_under_blue" },
+        "side=true,type=0": { "model": "dcs_climate:build/dcs_slab_upper_blue" },
+        "side=false,type=1": { "model": "dcs_climate:build/dcs_slab_under_red" },
+        "side=true,type=1": { "model": "dcs_climate:build/dcs_slab_upper_red" },
+        "side=false,type=2": { "model": "dcs_climate:build/dcs_slab_under_white" },
+        "side=true,type=2": { "model": "dcs_climate:build/dcs_slab_upper_white" },
+        "side=false,type=3": { "model": "dcs_climate:build/dcs_slab_under_blue_lit" },
+        "side=true,type=3": { "model": "dcs_climate:build/dcs_slab_upper_blue_lit" },
+        "side=false,type=4": { "model": "dcs_climate:build/dcs_slab_under_red_lit" },
+        "side=true,type=4": { "model": "dcs_climate:build/dcs_slab_upper_red_lit" },
+        "side=false,type=5": { "model": "dcs_climate:build/dcs_slab_under_white_lit" },
+        "side=true,type=5": { "model": "dcs_climate:build/dcs_slab_upper_white_lit" },
+        "side=false,type=6": { "model": "dcs_climate:build/dcs_slab_under_wood_lit" },
+        "side=true,type=6": { "model": "dcs_climate:build/dcs_slab_upper_wood_lit" },
+        "side=false,type=7": { "model": "dcs_climate:build/dcs_slab_under_wood_lit" },
+        "side=true,type=7": { "model": "dcs_climate:build/dcs_slab_upper_wood_lit" }
+    }
+}

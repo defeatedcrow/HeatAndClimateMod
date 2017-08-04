@@ -1119,34 +1119,76 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.gemBlock, 1, 12)
 		}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 3, 1), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 6, 1), new Object[] {
 				"XXX",
 				'X',
 				new ItemStack(MainInit.selenite, 1, 0)
 		}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 3, 0), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 6, 0), new Object[] {
 				"XXX",
 				'X',
 				new ItemStack(MainInit.gemBlock, 1, 3)
 		}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 3, 2), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 6, 2), new Object[] {
 				"XXX",
 				'X',
 				new ItemStack(MainInit.gemBlock, 1, 6)
 		}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 3, 3), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 6, 3), new Object[] {
 				"XXX",
 				'X',
 				new ItemStack(MainInit.gemBlock, 1, 9)
 		}));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 3, 4), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab, 6, 4), new Object[] {
 				"XXX",
 				'X',
 				new ItemStack(MainInit.gemBlock, 1, 12)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab2, 6, 0), new Object[] {
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab2, 6, 1), new Object[] {
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 1)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab2, 6, 2), new Object[] {
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 2)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab2, 6, 3), new Object[] {
+				"XXX",
+				'X',
+				new ItemStack(MainInit.chalLamp, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab2, 6, 4), new Object[] {
+				"XXX",
+				'X',
+				new ItemStack(MainInit.chalLamp, 1, 1)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab2, 6, 5), new Object[] {
+				"XXX",
+				'X',
+				new ItemStack(MainInit.chalLamp, 1, 2)
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.halfSlab2, 1, 6), new Object[] {
+				"XXX",
+				'X',
+				new ItemStack(MainInit.chalLamp, 1, 3)
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceGypsum, 6, 0), new Object[] {

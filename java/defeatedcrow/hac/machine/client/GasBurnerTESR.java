@@ -2,11 +2,13 @@ package defeatedcrow.hac.machine.client;
 
 import org.lwjgl.opengl.GL11;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.client.base.DCTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.machine.block.TileGasBurner;
 import defeatedcrow.hac.machine.client.model.ModelGasBurner;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -31,7 +33,8 @@ public class GasBurnerTESR extends DCTESRBase {
 		boolean lit = false;
 		boolean power = false;
 		if (te.hasWorldObj() && te instanceof TileGasBurner) {
-			int meta = te.getBlockMetadata();
+			IBlockState state = te.getWorld().getBlockState(te.getPos());
+			int meta = DCState.getInt(state, DCState.TYPE4);
 			lit = (meta & 3) == 1;
 			power = (meta & 2) == 0;
 		}

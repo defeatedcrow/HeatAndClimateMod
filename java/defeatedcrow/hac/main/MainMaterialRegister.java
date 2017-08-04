@@ -29,6 +29,7 @@ import defeatedcrow.hac.main.block.build.BlockMarkingPanel;
 import defeatedcrow.hac.main.block.build.BlockMetalChest;
 import defeatedcrow.hac.main.block.build.BlockMetalFenceBase;
 import defeatedcrow.hac.main.block.build.BlockMetalLadder;
+import defeatedcrow.hac.main.block.build.BlockSlabChal;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
@@ -233,6 +234,11 @@ public class MainMaterialRegister {
 		registerBlock(MainInit.halfSlab, ClimateCore.PACKAGE_BASE + "_build_slab");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab), "dcs_climate", "dcs_build_slab",
 				"build", 4, true);
+
+		MainInit.halfSlab2 = new BlockSlabChal();
+		registerBlock(MainInit.halfSlab2, ClimateCore.PACKAGE_BASE + "_build_slab_chal");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab2), "dcs_climate", "dcs_build_slab_chal",
+				"build", 6, true);
 
 		MainInit.fenceGypsum = new BlockFenceBase("dcs_fence_gypsum").setUnlocalizedName("dcs_fence_gypsum");
 		registerBlock(MainInit.fenceGypsum, ClimateCore.PACKAGE_BASE + "_fence_gypsum");

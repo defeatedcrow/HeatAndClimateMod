@@ -708,19 +708,19 @@ public class MachineRecipes {
 				"paper"
 		}));
 
-		// GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.burner, 1, 0), new Object[] {
-		// "X X",
-		// "X X",
-		// "YZW",
-		// 'X',
-		// "ingotSUS",
-		// 'Y',
-		// "gearSteel",
-		// 'Z',
-		// new ItemStack(Items.FLINT_AND_STEEL, 1, 0),
-		// 'W',
-		// new ItemStack(MachineInit.IBC, 1, 0)
-		// }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.burner, 1, 0), new Object[] {
+				"X X",
+				"X X",
+				"YZW",
+				'X',
+				"ingotSUS",
+				'Y',
+				"gearSteel",
+				'Z',
+				new ItemStack(Items.FLINT_AND_STEEL, 1, 0),
+				'W',
+				new ItemStack(MachineInit.IBC, 1, 0)
+		}));
 
 		// アナザー
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.TORCH, 6, 0), new Object[] {

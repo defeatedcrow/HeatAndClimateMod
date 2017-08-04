@@ -11,7 +11,6 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
-import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.material.Material;
@@ -38,7 +37,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 
 	public BlockGasBurner(Material m, String s, int max) {
-		super(Material.ROCK, s, 0);
+		super(Material.ROCK, s, 3);
 		this.setHardness(1.5F);
 	}
 
@@ -100,9 +99,11 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 	@Override
 	public DCHeatTier getHeatTier(World world, BlockPos from, BlockPos to) {
 		IBlockState state = world.getBlockState(to);
-		int meta = this.getMetaFromState(state);
-		if ((meta & 3) == 1 && (to.equals(from.down()) || to.equals(from.down(2))))
-			return DCHeatTier.UHT;
+		int m = DCState.getInt(state, DCState.TYPE4);
+		if (m >= 0) {
+			if ((m & 3) == 1 && (to.equals(from.down()) || to.equals(from.down(2))))
+				return DCHeatTier.UHT;
+		}
 		return DCHeatTier.NORMAL;
 	}
 
@@ -120,8 +121,8 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 
 	public static void changeLitState(World world, BlockPos pos, boolean f) {
 		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() == MachineInit.burner) {
-			int m = DCState.getInt(state, DCState.TYPE4);
+		int m = DCState.getInt(state, DCState.TYPE4);
+		if (m >= 0) {
 			int power = m & 2;
 			if (f) {
 				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1 + power), 3);
@@ -133,8 +134,8 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 
 	public static void changePowerState(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() == MachineInit.burner) {
-			int m = DCState.getInt(state, DCState.TYPE4);
+		int m = DCState.getInt(state, DCState.TYPE4);
+		if (m >= 0) {
 			int lit = m & 1;
 			boolean power = (m & 2) == 0;
 			if (power) {
@@ -147,18 +148,14 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 
 	public static boolean isLit(IBlockAccess world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() != MachineInit.burner)
-			return false;
-		int meta = state.getBlock().getMetaFromState(state) & 1;
-		return meta == 1;
+		int meta = DCState.getInt(state, DCState.TYPE4);
+		return meta == 1 || meta == 3;
 	}
 
 	public static boolean isPower(IBlockAccess world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() != MachineInit.burner)
-			return false;
-		int meta = state.getBlock().getMetaFromState(state) & 2;
-		return meta == 0;
+		int meta = DCState.getInt(state, DCState.TYPE4);
+		return meta == 0 || meta == 1;
 	}
 
 	@Override

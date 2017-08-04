@@ -35,6 +35,7 @@ public class MainInit {
 	public static Block stairsSerpentine;
 	public static Block stairsBedrock;
 	public static Block halfSlab;
+	public static Block halfSlab2;
 	public static Block builds;
 	public static Block plate;
 	public static Block fenceGypsum;
