@@ -70,7 +70,9 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 		}
 
 		if ((this.motionX * this.motionX + this.motionZ * this.motionZ + this.motionY * this.motionY) < 0.005D) {
-			this.setDead();
+			if (age > 3000) {
+				this.setDead();
+			}
 		}
 	}
 

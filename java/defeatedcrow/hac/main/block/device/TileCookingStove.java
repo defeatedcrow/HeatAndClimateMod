@@ -241,7 +241,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public String getName() {
-		return "dcs.gui.device.gas_burner";
+		return "dcs.gui.device.fuel_stove";
 	}
 
 	@Override
@@ -279,7 +279,8 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
+		return getWorld().getTileEntity(this.pos) != this
+				? false
 				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 

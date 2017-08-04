@@ -17,6 +17,8 @@ import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
+import defeatedcrow.hac.machine.entity.EntityScooter;
+import defeatedcrow.hac.machine.gui.ContainerEntityScooter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
 import defeatedcrow.hac.machine.gui.ContainerPortalManager;
@@ -24,6 +26,7 @@ import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.machine.gui.ContainerSpinning;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
+import defeatedcrow.hac.machine.gui.GuiEntityScooter;
 import defeatedcrow.hac.machine.gui.GuiHopperFilter;
 import defeatedcrow.hac.machine.gui.GuiHopperFluid;
 import defeatedcrow.hac.machine.gui.GuiPortalManager;
@@ -83,6 +86,7 @@ import defeatedcrow.hac.main.worldgen.WorldGenAltOres2;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.potion.PotionEffect;
@@ -252,6 +256,11 @@ public class CommonMainProxy implements IGuiHandler {
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		if (ID > 0) {
+			Entity entity = world.getEntityByID(ID);
+			if (entity instanceof EntityScooter)
+				return new ContainerEntityScooter((EntityScooter) entity, player);
+		}
 		BlockPos pos = new BlockPos(x, y, z);
 		if (!world.isBlockLoaded(pos))
 			return null;
@@ -289,6 +298,11 @@ public class CommonMainProxy implements IGuiHandler {
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		if (ID > 0) {
+			Entity entity = world.getEntityByID(ID);
+			if (entity instanceof EntityScooter)
+				return new GuiEntityScooter((EntityScooter) entity, player);
+		}
 		BlockPos pos = new BlockPos(x, y, z);
 		if (!world.isBlockLoaded(pos))
 			return null;

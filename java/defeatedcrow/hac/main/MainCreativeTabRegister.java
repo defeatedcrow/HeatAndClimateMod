@@ -28,6 +28,7 @@ public class MainCreativeTabRegister {
 		MainInit.stairsSerpentine.setCreativeTab(ClimateMain.build);
 		MainInit.stairsBedrock.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab.setCreativeTab(ClimateMain.build);
+		MainInit.halfSlab2.setCreativeTab(ClimateMain.build);
 		MainInit.fenceGypsum.setCreativeTab(ClimateMain.build);
 		MainInit.fenceMarble.setCreativeTab(ClimateMain.build);
 		MainInit.fenceSerpentine.setCreativeTab(ClimateMain.build);

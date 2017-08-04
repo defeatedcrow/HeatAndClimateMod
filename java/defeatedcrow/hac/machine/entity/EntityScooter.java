@@ -4,29 +4,48 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryBasic;
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EntitySelectors;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class EntityScooter extends Entity {
+public class EntityScooter extends Entity implements IInventory {
 
 	private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityScooter.class,
 			DataSerializers.BOOLEAN);
@@ -45,8 +64,15 @@ public class EntityScooter extends Entity {
 
 	public boolean brake;
 
-	private Status status = Status.IN_AIR;
-	private Status prevStatus = Status.IN_AIR;
+	protected Status status = Status.IN_AIR;
+	protected Status prevStatus = Status.IN_AIR;
+
+	public final ItemStack[] tankSlot = new ItemStack[3];
+	public final InventoryBasic inv = new InventoryBasic("Items", false, 18);
+	public final DCTank tank = new DCTank(5000);
+
+	protected int currentBurnTime = 0;
+	protected int maxBurnTime = 1;
 
 	/* コンストラクタ */
 
@@ -55,6 +81,7 @@ public class EntityScooter extends Entity {
 		this.preventEntitySpawning = true;
 		this.setSize(1.5F, 1.0F);
 		this.stepHeight = 1.25F;
+		this.setInventorySlotContents(2, new ItemStack(Items.BUCKET));
 	}
 
 	public EntityScooter(World worldIn, double x, double y, double z) {
@@ -98,8 +125,7 @@ public class EntityScooter extends Entity {
 		EntityPlayer rider = null;
 		boolean stop = false;
 
-		if (brake || !this.getPowered() || this.getPassengers().isEmpty()
-				|| !(this.getPassengers().get(0) instanceof EntityPlayer)) {
+		if (brake || this.getPassengers().isEmpty() || !(this.getPassengers().get(0) instanceof EntityPlayer)) {
 			stop = true;
 		} else if (!this.getPassengers().isEmpty() && this.getPassengers().get(0) instanceof EntityPlayer) {
 			rider = (EntityPlayer) this.getPassengers().get(0);
@@ -157,13 +183,13 @@ public class EntityScooter extends Entity {
 					this.motionX *= 0.75D;
 					this.motionZ *= 0.75D;
 				} else {
-					this.motionX *= 0.98D;
-					this.motionZ *= 0.98D;
+					this.motionX *= 0.99D;
+					this.motionZ *= 0.99D;
 				}
 			}
 
 			float speed = (float) Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-			if (speed < 0.03D) {
+			if (speed < 0.01D) {
 				this.motionX = 0.0D;
 				this.motionZ = 0.0D;
 			}
@@ -190,7 +216,7 @@ public class EntityScooter extends Entity {
 			}
 		}
 
-		if (this.rand.nextInt(4) == 0) {
+		if (this.getPowered() && this.rand.nextInt(4) == 0) {
 			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 0.75D
 					- Math.cos(rotationYaw * 0.017453292F) * 0.25D;
 			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 0.75D
@@ -200,6 +226,12 @@ public class EntityScooter extends Entity {
 		}
 	}
 
+	public static int getBurnTime(Fluid fluid) {
+		String s = fluid.getName();
+		int burn = MainAPIManager.fuelRegister.getBurningTime(s) * 10;
+		return burn;
+	}
+
 	protected void updateSpeed(EntityPlayer rider, boolean brake) {
 		float yaw = this.rotationYaw * 0.017453292F;
 
@@ -207,11 +239,16 @@ public class EntityScooter extends Entity {
 			double d1 = -Math.sin(yaw);
 			double d2 = Math.cos(yaw);
 			double d9 = this.motionX * this.motionX + this.motionZ * this.motionZ;
+			double d10 = Math.sqrt(d9);
 
-			if (d9 < getMaxSpeed()) {
-				this.motionX += d1 * 0.5D;
-				this.motionZ += d2 * 0.5D;
+			this.motionX += d1 * 0.2D;
+			this.motionZ += d2 * 0.2D;
+
+			if (d10 > getMaxSpeed()) {
+				this.motionX = d1 * getMaxSpeed();
+				this.motionZ = d2 * getMaxSpeed();
 			}
+
 			// DCLogger.debugLog("foward " + rider.moveForward + ", sp " + d9);
 			rider.moveForward = 0F;
 		} else {
@@ -240,12 +277,82 @@ public class EntityScooter extends Entity {
 	}
 
 	// 現時点ではtrue
+	private int cooltime = 20;
+
 	protected boolean updatePowered() {
-		boolean last = this.getPowered();
-		if (!last) {
-			this.setPowered(true);
+		if (!worldObj.isRemote && cooltime <= 0) {
+			cooltime = 20;
+			// 燃料関係
+			processTank();
+
+			if (this.currentBurnTime > 0 && !this.getPassengers().isEmpty()) {
+				this.currentBurnTime--;
+			}
+
+			if (this.currentBurnTime == 0) {
+
+				FluidStack f = tank.getContents();
+				if (f != null && f.getFluid() != null && tank.getFluidAmount() > 0) {
+					int i = getBurnTime(f.getFluid());
+					if (i > 0) {
+						this.currentBurnTime = i;
+						this.maxBurnTime = i;
+						tank.drain(1, true);
+						this.markDirty();
+					}
+				}
+			}
+
+			if (this.currentBurnTime > 0 && !this.getPowered()) {
+				this.setPowered(true);
+			} else if (this.currentBurnTime == 0 && this.getPowered()) {
+				this.setPowered(false);
+			}
+
+			// setBucketTag();
+
+		} else {
+			cooltime--;
 		}
-		return true;
+		return getPowered();
+	}
+
+	protected void setBucketTag() {
+
+		ItemStack bu = this.getStackInSlot(2);
+		if (DCUtil.isEmpty(bu)) {
+			this.setInventorySlotContents(2, new ItemStack(Items.BUCKET));
+		}
+
+		NBTTagCompound tag = bu.getTagCompound();
+		if (tag == null) {
+			tag = new NBTTagCompound();
+		}
+
+		if (!tank.isEmpty()) {
+			tag = tank.getFluid().writeToNBT(tag);
+		} else {
+			tag.setString("FluidName", "NONE");
+			tag.setInteger("Amount", 0);
+		}
+		bu.setTagCompound(tag);
+		this.setInventorySlotContents(2, bu);
+		this.markDirty();
+
+	}
+
+	public FluidStack getBucketTag() {
+		ItemStack bu = this.getStackInSlot(2);
+		if (bu != null) {
+			NBTTagCompound tag = bu.getTagCompound();
+			if (tag != null) {
+				tag = new NBTTagCompound();
+			}
+
+			FluidStack f = FluidStack.loadFluidStackFromNBT(tag);
+			return f;
+		}
+		return null;
 	}
 
 	private Status getStatus() {
@@ -344,9 +451,12 @@ public class EntityScooter extends Entity {
 
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
-		if (player.isSneaking())
-			return false;
-		else if (this.isBeingRidden())
+		if (player.isSneaking()) {
+			int id = this.getEntityId();
+			player.openGui(ClimateMain.instance, id, worldObj, getPosition().getX(), getPosition().getY(),
+					getPosition().getZ());
+			return true;
+		} else if (this.isBeingRidden())
 			return true;
 		else {
 			if (!this.worldObj.isRemote) {
@@ -366,6 +476,11 @@ public class EntityScooter extends Entity {
 					&& ((EntityDamageSource) source).getEntity() instanceof EntityPlayer) {
 				int m = getColorID();
 				ItemStack itemstack = new ItemStack(MachineInit.scooter, 1, m);
+
+				NBTTagCompound tag = new NBTTagCompound();
+				this.getNBTFromEntity(tag);
+				itemstack.setTagCompound(tag);
+
 				this.entityDropItem(itemstack, 0.0F);
 
 				this.setDead();
@@ -385,11 +500,52 @@ public class EntityScooter extends Entity {
 	protected void readEntityFromNBT(NBTTagCompound tag) {
 		int c = tag.getInteger("dcs.color");
 		this.setColor(c);
+
+		this.currentBurnTime = tag.getInteger("BurnTime");
+		this.maxBurnTime = tag.getInteger("MaxTime");
+
+		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
+
+		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			byte b0 = nbttagcompound1.getByte("Slot");
+
+			if (b0 >= 0 && b0 < this.getSizeInventory()) {
+				this.setInventorySlotContents(b0, ItemStack.loadItemStackFromNBT(nbttagcompound1));
+			}
+		}
+
+		tank.readFromNBT(tag, "Tank");
 	}
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound tag) {
 		tag.setInteger("dcs.color", getColorID());
+
+		tag.setInteger("BurnTime", this.currentBurnTime);
+		tag.setInteger("MaxTime", this.maxBurnTime);
+
+		NBTTagList list = new NBTTagList();
+
+		for (int i = 0; i < this.getSizeInventory(); ++i) {
+			if (this.getStackInSlot(i) != null) {
+				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				nbttagcompound1.setByte("Slot", (byte) i);
+				this.getStackInSlot(i).writeToNBT(nbttagcompound1);
+				list.appendTag(nbttagcompound1);
+			}
+		}
+		tag.setTag("InvItems", list);
+
+		tank.writeToNBT(tag, "Tank");
+	}
+
+	public void getNBTFromEntity(NBTTagCompound tag) {
+		writeEntityToNBT(tag);
+	}
+
+	public void setNBTToEntity(NBTTagCompound tag) {
+		readEntityFromNBT(tag);
 	}
 
 	public void setPowered(boolean b) {
@@ -416,7 +572,7 @@ public class EntityScooter extends Entity {
 	}
 
 	protected float getMaxSpeed() {
-		return 3.5F;
+		return getPowered() ? 1.8F : 0.4F;
 	}
 
 	public int getColorID() {
@@ -427,10 +583,366 @@ public class EntityScooter extends Entity {
 		this.dataManager.set(COLOR, i);
 	}
 
+	public InventoryBasic getInventory() {
+		return this.inv;
+	}
+
+	public DCTank getFuelTank() {
+		return this.tank;
+	}
+
+	public boolean isActive() {
+		return this.currentBurnTime > 0;
+	}
+
+	public int getCurrentBurnTime() {
+		return this.currentBurnTime;
+	}
+
+	public int getMaxBurnTime() {
+		return this.maxBurnTime;
+	}
+
+	public void setCurrentBurnTime(int i) {
+		this.currentBurnTime = i;
+	}
+
+	public void setMaxBurnTime(int i) {
+		this.maxBurnTime = i;
+	}
+
 	public static enum Status {
 		IN_TILE,
 		UNDER_WATER,
 		IN_AIR;
+	}
+
+	/* ==== fluid ==== */
+
+	protected void processTank() {
+		if (!this.onDrainTank(tank, 0, 1)) {
+			this.onFillTank(tank, 0, 1);
+		}
+	}
+
+	protected boolean onFillTank(DCTank tank, int slot1, int slot2) {
+		ItemStack in = this.getStackInSlot(slot1);
+		ItemStack out = this.getStackInSlot(slot2);
+		if (in == null)
+			return false;
+
+		IFluidHandler cont = null;
+		IFluidHandler dummy = null;
+		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
+		if (in.getTagCompound() != null) {
+			in2.setTagCompound(in.getTagCompound().copy());
+		}
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandler) {
+			cont = (IFluidHandler) in.getItem();
+			dummy = (IFluidHandler) in2.getItem();
+		}
+
+		if (dummy != null && dummy.getTankProperties() != null) {
+			boolean loose = false;
+			ItemStack ret = null;
+
+			int max = dummy.getTankProperties()[0].getCapacity();
+			FluidStack fc = dummy.drain(max, false);
+			// 流入の場合
+			if (fc != null && fc.amount > 0 && tank.canFillTarget(fc)) {
+				ret = null;
+				loose = false;
+				boolean b = false;
+				int rem = tank.getCapacity() - tank.getFluidAmount();
+				fc = dummy.drain(rem, false);
+				if (fc != null && fc.amount <= rem) {
+					FluidStack fill = null;
+					if (in.getItem() instanceof IFluidHandler) {
+						fill = ((IFluidHandler) in2.getItem()).drain(rem, true);
+						ret = in2;
+					} else {
+						fill = dummy.drain(rem, true);
+						ret = in2;
+					}
+
+					if (ret.stackSize <= 0) {
+						ret = null;
+					}
+
+					if (fill != null && (ret == null || this.isItemStackable(ret, this.getStackInSlot(slot2)) > 0)) {
+						loose = true;
+						tank.fill(fill, true);
+					}
+				}
+			}
+
+			if (loose) {
+				this.decrStackSize(slot1, 1);
+				this.incrStackInSlot(slot2, ret);
+				this.markDirty();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	protected boolean onDrainTank(DCTank tank, int slot1, int slot2) {
+		ItemStack in = this.getStackInSlot(slot1);
+		ItemStack out = this.getStackInSlot(slot2);
+		if (in == null)
+			return false;
+
+		IFluidHandler cont = null;
+		IFluidHandler dummy = null;
+		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
+		if (in.getTagCompound() != null) {
+			in2.setTagCompound(in.getTagCompound().copy());
+		}
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandler) {
+			cont = (IFluidHandler) in.getItem();
+			dummy = (IFluidHandler) in2.getItem();
+		}
+
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
+			boolean loose = false;
+			ItemStack ret = null;
+
+			int max = dummy.getTankProperties()[0].getCapacity();
+			FluidStack fc = dummy.drain(max, false);
+			boolean b = false;
+			int rem = max;
+			if (fc == null || fc.amount == 0) {
+				b = true;
+			} else {
+				rem = max - fc.amount;
+				if (tank.getFluidAmount() <= rem) {
+					b = true;
+				}
+			}
+			// 排出の場合
+			if (b) {
+				FluidStack drain = tank.drain(rem, false);
+				int fill = 0;
+				if (in.getItem() instanceof IFluidHandler) {
+					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
+					ret = in2;
+				} else {
+					fill = dummy.fill(drain, true);
+					ret = in2;
+				}
+
+				if (ret.stackSize <= 0) {
+					ret = null;
+				}
+
+				if (fill > 0 && (ret == null || this.isItemStackable(ret, this.getStackInSlot(slot2)) > 0)) {
+					loose = true;
+					tank.drain(fill, true);
+				}
+			}
+
+			if (loose) {
+				this.decrStackSize(slot1, 1);
+				this.incrStackInSlot(slot2, ret);
+				this.markDirty();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/* ==== inventory ==== */
+
+	public static int isItemStackable(ItemStack target, ItemStack current) {
+		if (target == null)
+			return 0;
+		else if (current == null)
+			return target.stackSize;
+
+		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
+				&& ItemStack.areItemStackTagsEqual(target, current)) {
+			int i = current.stackSize + target.stackSize;
+			if (i > current.getMaxStackSize()) {
+				i = current.getMaxStackSize() - current.stackSize;
+				return i;
+			}
+			return target.stackSize;
+		}
+
+		return 0;
+	}
+
+	public void incrStackInSlot(int i, ItemStack input) {
+		if (i < this.getSizeInventory() && input != null) {
+			if (this.getStackInSlot(i) != null) {
+				if (this.getStackInSlot(i).getItem() == input.getItem()
+						&& this.getStackInSlot(i).getMetadata() == input.getMetadata()
+						&& ItemStack.areItemStackTagsEqual(this.getStackInSlot(i), input)) {
+					this.getStackInSlot(i).stackSize += input.stackSize;
+					if (this.getStackInSlot(i).stackSize > this.getInventoryStackLimit()) {
+						this.getStackInSlot(i).stackSize = this.getInventoryStackLimit();
+					}
+				}
+			} else {
+				this.setInventorySlotContents(i, input);
+			}
+		}
+	}
+
+	@Override
+	public int getSizeInventory() {
+		return inv.getSizeInventory() + 3;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int index) {
+		if (index < 3)
+			return tankSlot[index];
+		else
+			return inv.getStackInSlot(index - 3);
+	}
+
+	@Override
+	public ItemStack decrStackSize(int index, int count) {
+		if (index < 3) {
+			ItemStack stack = ItemStackHelper.getAndSplit(tankSlot, index, count);
+			if (stack != null) {
+				this.markDirty();
+			}
+			return stack;
+		} else
+			return inv.decrStackSize(index - 3, count);
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		if (index < 3) {
+			if (tankSlot[index] != null) {
+				ItemStack stack = tankSlot[index];
+				tankSlot[index] = null;
+				return stack;
+			} else
+				return null;
+		} else
+			return inv.removeStackFromSlot(index - 3);
+	}
+
+	@Override
+	public void setInventorySlotContents(int index, ItemStack stack) {
+		if (index < 3) {
+			tankSlot[index] = stack;
+			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
+				stack.stackSize = this.getInventoryStackLimit();
+			}
+			this.markDirty();
+		} else {
+			inv.setInventorySlotContents(index - 3, stack);
+		}
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		return inv.getInventoryStackLimit();
+	}
+
+	@Override
+	public void markDirty() {
+		inv.markDirty();
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		return inv.isUseableByPlayer(player);
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+		inv.openInventory(player);
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+		inv.closeInventory(player);
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		if (index < 3)
+			return !DCUtil.isEmpty(stack) && stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		else
+			return inv.isItemValidForSlot(index - 3, stack);
+	}
+
+	@Override
+	public int getField(int id) {
+		switch (id) {
+		case 0:
+			return this.currentBurnTime;
+		case 1:
+			return this.maxBurnTime;
+		case 2:
+			return this.tank.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(tank.getFluidType());
+		case 3:
+			return this.tank.getFluidAmount();
+		default:
+			return 0;
+		}
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		switch (id) {
+		case 0:
+			this.currentBurnTime = value;
+			break;
+		case 1:
+			this.maxBurnTime = value;
+			break;
+		case 2:
+			tank.setFluidById(value);
+			break;
+		case 3:
+			this.tank.setAmount(value);
+			break;
+		default:
+			return;
+		}
+	}
+
+	@Override
+	public int getFieldCount() {
+		return 4;
+	}
+
+	@Override
+	public void clear() {
+		inv.clear();
+	}
+
+	IItemHandler handler = new InvWrapper(this.inv);
+
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+			return true;
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+			return true;
+		return super.hasCapability(capability, facing);
+	}
+
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+			return (T) tank;
+		else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+			return (T) handler;
+		return super.getCapability(capability, facing);
 	}
 
 }
