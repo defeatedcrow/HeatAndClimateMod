@@ -13,6 +13,7 @@ import defeatedcrow.hac.food.entity.StewLotusrootEntity;
 import defeatedcrow.hac.food.entity.StewMushroomEntity;
 import defeatedcrow.hac.food.entity.StewPumpukinEntity;
 import defeatedcrow.hac.food.entity.StewPurpleEntity;
+import defeatedcrow.hac.food.entity.StewSquidEntity;
 import defeatedcrow.hac.food.entity.StewTomatoEntity;
 import defeatedcrow.hac.food.entity.StewVegiEntity;
 import net.minecraft.entity.Entity;
@@ -31,7 +32,7 @@ public class StewBowlItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 8;
+		return 9;
 	}
 
 	@Override
@@ -55,7 +56,8 @@ public class StewBowlItem extends FoodItemBase {
 				"borscht",
 				"mushroom",
 				"purple",
-				"lotusroot"
+				"lotusroot",
+				"squid"
 		};
 		return s;
 	}
@@ -80,6 +82,8 @@ public class StewBowlItem extends FoodItemBase {
 			ret = new StewPurpleEntity(world, x, y, z, player);
 		} else if (i == 8) {
 			ret = new StewLotusrootEntity(world, x, y, z, player);
+		} else if (i == 9) {
+			ret = new StewSquidEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		DCLogger.debugLog("individual " + ret.getIndividual());

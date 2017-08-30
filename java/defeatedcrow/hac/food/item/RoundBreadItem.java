@@ -5,6 +5,7 @@ import java.util.List;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.PizzaTomatoEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
 import defeatedcrow.hac.food.entity.ToastBreadEntity;
@@ -24,7 +25,7 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 5;
+		return 7;
 	}
 
 	@Override
@@ -45,7 +46,10 @@ public class RoundBreadItem extends FoodItemBase {
 				"squarebread_raw",
 				"squarebread_baked",
 				"butter_toast_raw",
-				"butter_toast_baked" };
+				"butter_toast_baked",
+				"pizza_tomato_raw",
+				"pizza_tomato_baked"
+		};
 		return s;
 	}
 
@@ -62,6 +66,9 @@ public class RoundBreadItem extends FoodItemBase {
 		if (i == 4 || i == 5) {
 			ret = new ToastBreadEntity(world, x, y, z, player);
 		}
+		if (i == 6 || i == 7) {
+			ret = new PizzaTomatoEntity(world, x, y, z, player);
+		}
 
 		if ((i & 1) == 0) {
 			ret.setRAW(true);
@@ -71,6 +78,8 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
+		if (meta == 7)
+			return 10;
 		return (meta & 1) == 0 ? 0 : 6;
 	}
 

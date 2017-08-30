@@ -195,6 +195,13 @@ public class FoodRecipes {
 				"foodButter"
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.bread, 1, 6), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 0),
+				"cropTomato",
+				"foodCheese",
+				"cropHerb"
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.sticks, 1, 0), new Object[] {
 				"stickWood",
 				new ItemStack(Items.FISH, 1, 0)
@@ -387,6 +394,35 @@ public class FoodRecipes {
 				"listAllveggie",
 				"cropTomato",
 				new ItemStack(Items.COOKED_FISH, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.salad, 1, 0), new Object[] {
+				"cropSpinach",
+				"cropTomato",
+				"listAllveggie"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.salad, 1, 0), new Object[] {
+				"cropCabagge",
+				"cropTomato",
+				"listAllveggie"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.salad, 1, 0), new Object[] {
+				"cropLettuce",
+				"cropTomato",
+				"listAllveggie"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.salad, 1, 1), new Object[] {
+				"egg",
+				"listAllveggie",
+				new ItemStack(Items.BAKED_POTATO, 1, 0)
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.salad, 1, 2), new Object[] {
+				"cropLotusRoot",
+				"cropCarrot"
 		}));
 
 		ItemStack[] meats = {
@@ -735,7 +771,7 @@ public class FoodRecipes {
 		if (FluidRegistry.isUniversalBucketEnabled()) {
 			ItemStack oil = UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,
 					FoodInit.oil);
-			GameRegistry.addRecipe(new ShapedNBTRecipe(new ItemStack(FoodInit.dropOil, 5, 0), new Object[] {
+			GameRegistry.addRecipe(new ShapedNBTRecipe(true, new ItemStack(FoodInit.dropOil, 5, 0), new Object[] {
 					"X",
 					'X',
 					oil
@@ -743,7 +779,7 @@ public class FoodRecipes {
 
 			ItemStack cream = UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,
 					FoodInit.cream);
-			GameRegistry.addRecipe(new ShapedNBTRecipe(new ItemStack(FoodInit.dropCream, 5, 0), new Object[] {
+			GameRegistry.addRecipe(new ShapedNBTRecipe(true, new ItemStack(FoodInit.dropCream, 5, 0), new Object[] {
 					"X",
 					'X',
 					cream
@@ -993,6 +1029,13 @@ public class FoodRecipes {
 				DCHeatTier.OVEN, null, null, false, new FluidStack(FoodInit.stock, 1000), new Object[] {
 						"cropSpinach",
 						"cropLotusRoot"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.bowlSoup, 3, 9), null, 0F, null,
+				DCHeatTier.OVEN, null, null, false, new FluidStack(FoodInit.stock, 1000), new Object[] {
+						"cropTomato",
+						"foodRice",
+						"fishSquid"
 				});
 
 		if (MainInit.milk != null) {
