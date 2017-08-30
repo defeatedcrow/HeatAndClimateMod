@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=x": { "model": "dcs_climate:build/dcs_pillar_steel_hor" },
+        "axis=y": { "model": "dcs_climate:build/dcs_pillar_steel_var" },
+        "axis=z": { "model": "dcs_climate:build/dcs_pillar_steel_hor", "y": 90 }
+    }
+}

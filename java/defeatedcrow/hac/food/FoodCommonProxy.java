@@ -27,11 +27,15 @@ import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
 import defeatedcrow.hac.food.entity.MooncakeEntity;
 import defeatedcrow.hac.food.entity.MuttonStickEntity;
+import defeatedcrow.hac.food.entity.PizzaTomatoEntity;
 import defeatedcrow.hac.food.entity.PorkPlateEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.PotatoPlateEntity;
 import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
+import defeatedcrow.hac.food.entity.SaladGreenEntity;
+import defeatedcrow.hac.food.entity.SaladLotusrootEntity;
+import defeatedcrow.hac.food.entity.SaladPotatoEntity;
 import defeatedcrow.hac.food.entity.SaladSandwichEntity;
 import defeatedcrow.hac.food.entity.SoupPlateEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
@@ -44,6 +48,7 @@ import defeatedcrow.hac.food.entity.StewLotusrootEntity;
 import defeatedcrow.hac.food.entity.StewMushroomEntity;
 import defeatedcrow.hac.food.entity.StewPumpukinEntity;
 import defeatedcrow.hac.food.entity.StewPurpleEntity;
+import defeatedcrow.hac.food.entity.StewSquidEntity;
 import defeatedcrow.hac.food.entity.StewTomatoEntity;
 import defeatedcrow.hac.food.entity.StewVegiEntity;
 import defeatedcrow.hac.food.entity.SugarPieEntity;
@@ -163,7 +168,17 @@ public class FoodCommonProxy {
 				ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(StewLotusrootEntity.class,
 				ClimateCore.PACKAGE_BASE + "entity.food.stew_lotusroot", 45, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewSquidEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_squid", 46,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PizzaTomatoEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pizza_tomato",
+				47, ClimateMain.instance, 128, 5, true);
 
+		EntityRegistry.registerModEntity(SaladGreenEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.salad_green",
+				48, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SaladLotusrootEntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.salad_lotusroot", 49, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SaladPotatoEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.salad_potato",
+				50, ClimateMain.instance, 128, 5, true);
 	}
 
 }

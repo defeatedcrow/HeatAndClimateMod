@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.client.Minecraft;
@@ -81,17 +82,24 @@ public class AdvancedHUDEvent {
 
 					if (hasAcv) {
 						IClimate clm = ClimateAPI.register.getClimateFromInt(climate);
+						int we = WeatherChecker.getTempOffset(world.provider.getDimension(), false);
 
 						Minecraft.getMinecraft().getTextureManager().bindTexture(TEX);
 						FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
 						GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 						GlStateManager.enableBlend();
 
+						int iw = 0;
+						if (we > 0) {
+							iw = 32;
+						} else if (we < 0) {
+							iw = 64;
+						}
 						int offsetX = MainCoreConfig.iconX;
 						int offsetY = MainCoreConfig.iconY;
 						int x = offsetX;
 						int y = event.getResolution().getScaledHeight() + offsetY;
-						drawTexturedModalRect(x, y, 0, 0, 16, 64);
+						drawTexturedModalRect(x, y, iw, 0, iw + 16, 64);
 
 						String temp = clm.getHeat().toString();
 						String hum = clm.getHumidity().toString();

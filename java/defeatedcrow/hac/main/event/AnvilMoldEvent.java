@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.event;
 
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -20,6 +21,7 @@ public class AnvilMoldEvent {
 		ItemStack ret = event.getOutput();
 		/* Moldのレシピ登録 */
 		if (right != null) {
+
 			if (right.getItem() instanceof IPressMold && ret == null) {
 				IPressMold mold = (IPressMold) right.copy().getItem();
 				if (mold.getOutput(right) == null) {
@@ -30,15 +32,19 @@ public class AnvilMoldEvent {
 						event.setCost(1);
 					}
 				}
-			} else if (left != null && left.getItem() instanceof IPressMold && right.getItem() == Items.IRON_INGOT) {
+			} else if (left != null && left.getItem() instanceof IPressMold && right.getItem() == Items.IRON_INGOT
+					&& ret == null) {
 				// recipeの変更
+				DCLogger.debugLog("anvil event cycle");
 				IPressMold mold = (IPressMold) left.copy().getItem();
 				ItemStack output = mold.getOutput(left);
-				int num = mold.getRecipeNumber(left) + 1;
-				ItemStack next = mold.setOutput(left, output, num);
-				if (next != null) {
-					event.setOutput(next);
-					event.setCost(1);
+				if (output != null) {
+					int num = mold.getRecipeNumber(left) + 1;
+					ItemStack next = mold.setOutput(left, output, num);
+					if (next != null) {
+						event.setOutput(next);
+						event.setCost(1);
+					}
 				}
 			}
 

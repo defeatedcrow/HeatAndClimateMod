@@ -1,8 +1,15 @@
 package defeatedcrow.hac.main.item.ores;
 
+import java.util.List;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemIngots extends DCItem {
 
@@ -66,6 +73,68 @@ public class ItemIngots extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		int i = stack.getItemDamage();
+		if (i >= 0 && i <= maxMeta) {
+			int tier = Metal.VALUES[i].tier;
+			TextFormatting color = TextFormatting.YELLOW;
+			if (tier > 2) {
+				color = TextFormatting.GOLD;
+			}
+			if (tier > 1) {
+				tooltip.add(color.toString() + "Tier " + Metal.VALUES[i].tier);
+			} else {
+				tooltip.add("Tier " + Metal.VALUES[i].tier);
+			}
+		}
+	}
+
+	public enum Metal {
+		COPPER("copper", 1),
+		ZINC("zinc", 1),
+		NICKEL("nickel", 1),
+		SILVER("silver", 2),
+		BRASS("brass", 1),
+		STEEL("steel", 2),
+		NICKELSILVER("nickelsilver", 2),
+		MAGNET("magnet", 3),
+		TIN("tin", 1),
+		BRONZE("bronze", 1),
+		SUS("sus", 3),
+		TITANIUM("titanium", 3),
+		ALUMINIUM("aluminium", 2),
+		BISMUTH("bismuth", 1),
+		BSCCO("bscco", 3);
+
+		public String name;
+		public int tier;
+
+		private Metal(String s, int i) {
+			name = s;
+			tier = i;
+		}
+
+		public static final Metal[] VALUES = {
+				COPPER,
+				ZINC,
+				NICKEL,
+				SILVER,
+				BRASS,
+				STEEL,
+				NICKELSILVER,
+				MAGNET,
+				TIN,
+				BRONZE,
+				SUS,
+				TITANIUM,
+				ALUMINIUM,
+				BISMUTH,
+				BSCCO
+		};
 	}
 
 }

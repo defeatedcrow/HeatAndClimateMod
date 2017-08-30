@@ -82,7 +82,8 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 		if (output != null && mold != null && mold.getItem() instanceof IPressMold) {
 			ItemStack next = new ItemStack(mold.getItem(), mold.stackSize, mold.getItemDamage());
 			IPressMold mol = (IPressMold) next.getItem();
-			if (mol.getOutput(mold) == null) {
+			ItemStack current = mol.getOutput(mold);
+			if (mol.getOutput(mold) == null || DCUtil.isStackable(output, current)) {
 				// レシピ検索
 				RecipePair recipe = this.getInputList(output, num);
 				if (recipe != null) {

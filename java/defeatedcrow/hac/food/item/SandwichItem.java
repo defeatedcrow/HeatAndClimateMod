@@ -33,7 +33,7 @@ public class SandwichItem extends FoodItemBase {
 		int i = MathHelper.clamp_int(0, meta, 1);
 		String s = "items/food/sandwich_" + this.getNameSuffix()[i];
 		if (f) {
-			s = "textures/sandwich_" + s;
+			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
 	}
@@ -44,7 +44,8 @@ public class SandwichItem extends FoodItemBase {
 				"apple",
 				"egg",
 				"lemon",
-				"salad" };
+				"salad"
+		};
 		return s;
 	}
 

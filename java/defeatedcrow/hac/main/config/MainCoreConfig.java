@@ -5,8 +5,7 @@ import net.minecraftforge.common.config.Property;
 
 public class MainCoreConfig {
 
-	private MainCoreConfig() {
-	}
+	private MainCoreConfig() {}
 
 	public static final MainCoreConfig INSTANCE = new MainCoreConfig();
 	private final String BR = System.getProperty("line.separator");
@@ -19,6 +18,10 @@ public class MainCoreConfig {
 	public static double rateVsEU = 2.0D;
 	public static double rateVsFU = 10.0D;
 
+	public static boolean steel = true;
+	public static boolean pendant_schorl = true;
+	public static boolean pendant_clam = true;
+
 	public void load(Configuration cfg) {
 
 		try {
@@ -26,6 +29,7 @@ public class MainCoreConfig {
 
 			cfg.addCustomCategoryComment("render setting", "This setting is for such as display and model.");
 			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin with the other mods.");
+			cfg.addCustomCategoryComment("item setting", "This setting is for the items.");
 
 			Property hud_icon = cfg.get("render setting", "Advanced Info on HUD", enableAdvHUD,
 					"Enable display the advanced info on HUD.");
@@ -45,6 +49,12 @@ public class MainCoreConfig {
 			Property vsFU = cfg.get("plugin setting", "Conversion rate vs FU", rateVsFU,
 					"Set the amount of conversion rate as FU/torque.");
 
+			Property noSteel = cfg.get("item setting", "Disable Steel Recipe", steel,
+					"Disable the climate recipe for smelting the steel block.");
+
+			Property p_schorl = cfg.get("item setting", "Enable Schorl Pendant Effect", pendant_schorl,
+					"Enable effect of schorl pendant.");
+
 			enableAdvHUD = hud_icon.getBoolean();
 			iconX = hud_x.getInt();
 			iconY = hud_y.getInt();
@@ -52,6 +62,9 @@ public class MainCoreConfig {
 			rateVsRF = vsRF.getDouble();
 			rateVsEU = vsEU.getDouble();
 			rateVsFU = vsFU.getDouble();
+
+			steel = noSteel.getBoolean();
+			pendant_schorl = p_schorl.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

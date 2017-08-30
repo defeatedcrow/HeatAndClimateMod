@@ -52,6 +52,11 @@ public class MainInit {
 	public static Block lampGas;
 	public static Block achievementShield;
 
+	public static Block fenceLadderSteel;
+	public static Block fenceSteel;
+	public static Block fenceNetSteel;
+	public static Block pillarSteel;
+
 	public static Block markingPanel;
 	public static Block lightOrb;
 

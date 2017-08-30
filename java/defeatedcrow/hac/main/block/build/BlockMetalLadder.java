@@ -143,8 +143,7 @@ public class BlockMetalLadder extends Block {
 	}
 
 	@Override
-	public boolean isBlockSolid(IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
-		IBlockState state = worldIn.getBlockState(pos);
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
 		return face == side;
 	}

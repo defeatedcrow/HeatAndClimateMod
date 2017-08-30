@@ -29,6 +29,7 @@ import defeatedcrow.hac.main.block.build.BlockMarkingPanel;
 import defeatedcrow.hac.main.block.build.BlockMetalChest;
 import defeatedcrow.hac.main.block.build.BlockMetalFenceBase;
 import defeatedcrow.hac.main.block.build.BlockMetalLadder;
+import defeatedcrow.hac.main.block.build.BlockMetalPillar;
 import defeatedcrow.hac.main.block.build.BlockSlabChal;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
@@ -260,6 +261,28 @@ public class MainMaterialRegister {
 		registerBlock(MainInit.fenceBedrock, ClimateCore.PACKAGE_BASE + "_fence_bedrock");
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceBedrock), "dcs_climate", "dcs_fence_bedrock",
 				"build", 15, false);
+
+		MainInit.pillarSteel = new BlockMetalPillar("dcs_pillar_steel").setUnlocalizedName("dcs_pillar_steel");
+		registerBlock(MainInit.pillarSteel, ClimateCore.PACKAGE_BASE + "_pillar_steel");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.pillarSteel), "dcs_climate", "dcs_pillar_steel",
+				"build", 15, false);
+
+		MainInit.fenceSteel = new BlockFenceBase("dcs_fence_steel").setUnlocalizedName("dcs_fence_steel");
+		registerBlock(MainInit.fenceSteel, ClimateCore.PACKAGE_BASE + "_fence_steel");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceSteel), "dcs_climate", "dcs_fence_steel",
+				"build", 15, false);
+
+		MainInit.fenceNetSteel = new BlockMetalFenceBase("dcs_fence_net_steel", false)
+				.setUnlocalizedName("dcs_fence_net_steel");
+		registerBlock(MainInit.fenceNetSteel, ClimateCore.PACKAGE_BASE + "_fence_net_steel");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceNetSteel), "dcs_climate",
+				"dcs_fence_net_steel", "build", 3, false);
+
+		MainInit.fenceLadderSteel = new BlockMetalLadder("dcs_fence_ladder_steel")
+				.setUnlocalizedName("dcs_fence_ladder_steel");
+		registerBlock(MainInit.fenceLadderSteel, ClimateCore.PACKAGE_BASE + "_fence_ladder_steel");
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceLadderSteel), "dcs_climate",
+				"dcs_fence_ladder_steel", "build", 3, false);
 
 		MainInit.fenceAluminium = new BlockMetalFenceBase("dcs_fence_aluminium", false)
 				.setUnlocalizedName("dcs_fence_aluminium");

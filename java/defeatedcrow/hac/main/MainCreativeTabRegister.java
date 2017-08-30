@@ -87,6 +87,10 @@ public class MainCreativeTabRegister {
 		if (ModuleConfig.build_advanced) {
 
 			// building
+			MainInit.pillarSteel.setCreativeTab(ClimateMain.build);
+			MainInit.fenceSteel.setCreativeTab(ClimateMain.build);
+			MainInit.fenceNetSteel.setCreativeTab(ClimateMain.build);
+			MainInit.fenceLadderSteel.setCreativeTab(ClimateMain.build);
 			MainInit.fenceAluminium.setCreativeTab(ClimateMain.build);
 			MainInit.fenceNet.setCreativeTab(ClimateMain.build);
 			MainInit.fenceGlass.setCreativeTab(ClimateMain.build);

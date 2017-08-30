@@ -1753,6 +1753,44 @@ public class BasicRecipeRegister {
 					"ingotAluminum"
 			}));
 
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.pillarSteel, 6, 0), new Object[] {
+					"XX",
+					"YY",
+					"XX",
+					'X',
+					"ingotSteel",
+					'Y',
+					"ingotIron"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceSteel, 6, 0), new Object[] {
+					"XYX",
+					"XYX",
+					'X',
+					"ingotSteel",
+					'Y',
+					"ingotIron"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceNetSteel, 6, 0), new Object[] {
+					"XYX",
+					"XYX",
+					'X',
+					"ingotSteel",
+					'Y',
+					new ItemStack(Blocks.IRON_BARS, 1, 0)
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.fenceLadderSteel, 6, 0), new Object[] {
+					"X X",
+					"XYX",
+					"X X",
+					'X',
+					"ingotSteel",
+					'Y',
+					"ingotIron"
+			}));
+
 			for (int i = 0; i < 16; i++) {
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.clayBricks, 4, i), new Object[] {
 						"XX",
