@@ -120,6 +120,8 @@ item.dcs_food_pastry_raw.name=ペイストリー生地
 item.dcs_food_meat_viscera.name=内臓
 item.dcs_food_meat_rennet.name=レンネット
 item.dcs_food_meat_raw_squid.name=イカ
+item.dcs_food_meat_agar.name=寒天
+item.dcs_food_meat_gelatine.name=ゼラチン
 
 item.dcs_food_pack_milk.name=牛乳パック
 item.dcs_food_pack_water.name=水パック
@@ -207,6 +209,11 @@ item.dcs_food_clubsand_round.name=フィッシュクラブサンド
 item.dcs_food_salad_green.name=グリーンサラダ
 item.dcs_food_salad_potato.name=ポテトサラダ
 item.dcs_food_salad_lotusroot.name=レンコンのきんぴら
+item.dcs_food_cake_butter_raw.name=生のバターケーキ生地
+item.dcs_food_cake_butter.name=バターケーキ
+item.dcs_food_cake_chocolate.name=チョコケーキ
+item.dcs_food_cake_coffeejelly.name=コーヒーゼリー
+item.dcs_food_cake_lemonjelly.name=レモンゼリー
 
 item.dcs_food_crops_rice.name=稲束
 item.dcs_food_crops_onion.name=玉ねぎ
@@ -275,6 +282,7 @@ item.dcs_cartridge_bolt.name=クロスボウボルト
 item.dcs_cartridge_normal.name=弾薬
 item.dcs_cartridge_shot.name=ショットガンの弾薬
 item.dcs_cartridge_silver.name=銀の弾丸
+item.dcs_cartridge_ghist.name=幽霊弾の弾薬
 
 item.dcs_dynamite_red.name=ダイナマイト
 item.dcs_dynamite_blue.name=シルクダイナマイト

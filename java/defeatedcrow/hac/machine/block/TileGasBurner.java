@@ -15,6 +15,9 @@ public class TileGasBurner extends TileCookingStove {
 	@Override
 	public void updateTile() {
 		super.updateTile();
+		if (currentClimate != DCHeatTier.UHT.getID()) {
+			currentClimate = DCHeatTier.UHT.getID();
+		}
 		if (!getWorld().isRemote) {
 			if (BlockGasBurner.isLit(getWorld(), getPos()) != this.isActive()) {
 				BlockGasBurner.changeLitState(getWorld(), getPos(), isActive());

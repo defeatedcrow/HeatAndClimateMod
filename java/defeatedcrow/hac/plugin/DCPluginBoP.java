@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.climate.recipe.SpinningRecipe;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.item.ItemStack;
@@ -34,6 +35,10 @@ public class DCPluginBoP {
 		OreDictionary.registerOre("dropHoney", new ItemStack(BOPItems.jar_filled));
 		OreDictionary.registerOre("dropHoney", new ItemStack(BOPItems.filled_honeycomb));
 
+		OreDictionary.registerOre("cropSeaweed", new ItemStack(BOPBlocks.coral, 1, 4));
+		OreDictionary.registerOre("cropSeaweed", new ItemStack(BOPBlocks.seaweed, 1, 0));
+		OreDictionary.registerOre("cropKelp", new ItemStack(BOPBlocks.seaweed, 1, 0));
+
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(BOPBlocks.plant_0, 1, 0));
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(BOPBlocks.plant_0, 1, 1));
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(BOPBlocks.plant_0, 1, 2));
@@ -52,6 +57,11 @@ public class DCPluginBoP {
 		if (ModuleConfig.r_mill) {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2),
 					new ItemStack(MainInit.foodMaterials, 1, 2), 0.5F, "plantWildRice");
+		}
+
+		if (ModuleConfig.r_spinning) {
+			RecipeAPI.registerSpinningRecipes
+					.addRecipe(new SpinningRecipe(new ItemStack(MainInit.materials, 1, 0), 2, "plantFlax"));
 		}
 
 	}

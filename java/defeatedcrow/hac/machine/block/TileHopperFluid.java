@@ -35,6 +35,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -211,6 +213,29 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 						return true;
 					}
 				}
+			}
+		} else if (inputT.isEmpty() || inputT.getFluidType().getName().equalsIgnoreCase("milk")) {
+			Fluid milk = FluidRegistry.getFluid("milk");
+			boolean flag = false;
+			if (milk != null) {
+				AxisAlignedBB bb = new AxisAlignedBB(pos.add(-2, -1, -2), pos.add(3, 2, 3));
+				List<Entity> entities = worldObj.getEntitiesWithinAABB(EntityCow.class, bb);
+				if (!entities.isEmpty()) {
+					for (Entity e : entities) {
+						if (e instanceof EntityCow) {
+							FluidStack ret = new FluidStack(milk, 50);
+							int fill = inputT.fill(ret, false);
+							if (fill > 0) {
+								inputT.fill(ret, true);
+								this.markDirty();
+								flag = true;
+							}
+						}
+					}
+				}
+
+				if (flag)
+					return true;
 			}
 		}
 		return false;
@@ -553,7 +578,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
+		return getWorld().getTileEntity(this.pos) != this
+				? false
 				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 

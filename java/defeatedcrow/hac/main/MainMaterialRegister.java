@@ -87,6 +87,7 @@ import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.item.tool.ItemSpadeDC;
 import defeatedcrow.hac.main.item.tool.ItemStoneYagen;
 import defeatedcrow.hac.main.item.tool.ItemSwordDC;
+import defeatedcrow.hac.main.item.tool.ItemThermalScope;
 import defeatedcrow.hac.main.item.tool.ItemWrench;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.DCMaterial;
@@ -509,6 +510,9 @@ public class MainMaterialRegister {
 		MainInit.flowerPot = new ItemFlowerPot().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_flowerpot");
 		GameRegistry.register(MainInit.flowerPot.setRegistryName(ClimateCore.PACKAGE_BASE + "_flowerpot"));
 
+		MainInit.scope = new ItemThermalScope().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_thermal_scope");
+		GameRegistry.register(MainInit.scope.setRegistryName(ClimateCore.PACKAGE_BASE + "_thermal_scope"));
+
 	}
 
 	static void registerFood() {
@@ -587,7 +591,7 @@ public class MainMaterialRegister {
 		MainInit.gun = new ItemMusketDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_musket");
 		GameRegistry.register(MainInit.gun.setRegistryName(ClimateCore.PACKAGE_BASE + "_musket"));
 
-		MainInit.cartridge = new ItemBullets(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
+		MainInit.cartridge = new ItemBullets(4).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
 		GameRegistry.register(MainInit.cartridge.setRegistryName(ClimateCore.PACKAGE_BASE + "_cartridge"));
 
 		String[] type = {

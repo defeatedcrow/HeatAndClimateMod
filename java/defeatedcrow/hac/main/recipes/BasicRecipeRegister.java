@@ -2203,6 +2203,18 @@ public class BasicRecipeRegister {
 						'Y',
 						new ItemStack(MachineInit.reagent, 1, 8)
 				}));
+
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.cartridge, 8, 4), new Object[] {
+						"X",
+						"Y",
+						"Z",
+						'X',
+						"ingotBismuth",
+						'Y',
+						new ItemStack(MachineInit.reagent, 1, 8),
+						'Z',
+						"ingotBrass"
+				}));
 			}
 		}
 

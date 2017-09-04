@@ -21,6 +21,7 @@ public class FoodInit {
 	public static Item plateSoup;
 	public static Item bowlSoup;
 	public static Item salad;
+	public static Item cake;
 
 	public static Item crops;
 	public static Item seeds;

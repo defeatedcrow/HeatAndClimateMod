@@ -79,6 +79,7 @@ public class MainCreativeTabRegister {
 
 		MainInit.repairPutty.setCreativeTab(ClimateMain.tool);
 		MainInit.wrench.setCreativeTab(ClimateMain.machine);
+		// MainInit.scope.setCreativeTab(ClimateMain.tool);
 
 		// food
 		MainInit.bakedApple.setCreativeTab(ClimateMain.food);

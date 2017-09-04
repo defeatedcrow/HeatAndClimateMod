@@ -461,6 +461,19 @@ public class FoodRecipes {
 				"foodCheese"
 		}));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.cake, 1, 0), new Object[] {
+				"foodButter",
+				"foodFlour",
+				"dustSugar",
+				"egg"
+		}));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(FoodInit.cake, 1, 2), new Object[] {
+				new ItemStack(FoodInit.cake, 1, 1),
+				"cropCocoa",
+				"foodCream"
+		}));
+
 		// smelting
 		GameRegistry.addSmelting(new ItemStack(FoodInit.seeds, 1, 4), new ItemStack(FoodInit.teaLeaves, 1, 0), 0.1F);
 		GameRegistry.addSmelting(new ItemStack(FoodInit.crops, 1, 8), new ItemStack(FoodInit.teaLeaves, 1, 1), 0.1F);
@@ -752,6 +765,13 @@ public class FoodRecipes {
 		t_plate.requiredHum().add(DCHumidity.NORMAL);
 		t_plate.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(t_plate, DCHeatTier.OVEN);
+
+		ClimateSmelting cake = new ClimateSmelting(new ItemStack(FoodInit.cake, 1, 1), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.cake, 1, 0));
+		cake.requiredHeat().add(DCHeatTier.SMELTING);
+		cake.requiredHum().add(DCHumidity.NORMAL);
+		cake.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(cake, DCHeatTier.OVEN);
 	}
 
 	static void loadMillRecipe() {
@@ -765,8 +785,8 @@ public class FoodRecipes {
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropCream, 2, 0), "bucketMilk");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 8, 4),
-				0.25F, new ItemStack(MainInit.cropCont, 1, 7));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 8, 0), new ItemStack(MainInit.miscDust, 1, 4),
+				0.25F, new ItemStack(MainInit.cropBasket, 1, 7));
 
 		if (FluidRegistry.isUniversalBucketEnabled()) {
 			ItemStack oil = UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket,
@@ -1038,6 +1058,34 @@ public class FoodRecipes {
 						"fishSquid"
 				});
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, DCHeatTier.OVEN,
+				null, null, false, new FluidStack(FoodInit.coffee, 1000), new Object[] {
+						"dustSugar",
+						"foodCream",
+						"foodAgar"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, DCHeatTier.OVEN,
+				null, null, false, new FluidStack(FoodInit.coffee, 1000), new Object[] {
+						"dustSugar",
+						"foodCream",
+						"foodGelatine"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.cake, 3, 4), null, 0F, null, DCHeatTier.OVEN,
+				null, null, false, new FluidStack(FoodInit.cream, 1000), new Object[] {
+						"dustSugar",
+						"cropLemon",
+						"foodAgar"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.cake, 3, 4), null, 0F, null, DCHeatTier.OVEN,
+				null, null, false, new FluidStack(FoodInit.cream, 1000), new Object[] {
+						"dustSugar",
+						"cropLemon",
+						"foodGelatine"
+				});
+
 		if (MainInit.milk != null) {
 			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null,
 					DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.milk, 1000), new Object[] {
@@ -1106,6 +1154,16 @@ public class FoodRecipes {
 						new ItemStack(MachineInit.reagent, 1, 1)
 				});
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 3), null, 0F, null, DCHeatTier.COLD,
+				DCHumidity.DRY, null, false, null, new Object[] {
+						"cropSeaweed"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 4), null, 0F, null, DCHeatTier.OVEN,
+				null, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"itemLeather"
+				});
+
 	}
 
 	static void loadCropData() {
@@ -1134,6 +1192,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 2));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 3));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.seeds, 1, 6));
+		OreDictionary.registerOre("listAllrootveggie", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("cropLotusSeed", new ItemStack(FoodInit.crops, 1, 10));
@@ -1166,6 +1225,8 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodRennet", new ItemStack(FoodInit.meat, 1, 1));
 		OreDictionary.registerOre("foodSquid", new ItemStack(FoodInit.meat, 1, 2));
 		OreDictionary.registerOre("fishSquid", new ItemStack(FoodInit.meat, 1, 2));
+		OreDictionary.registerOre("foodAgar", new ItemStack(FoodInit.meat, 1, 3));
+		OreDictionary.registerOre("foodGelatine", new ItemStack(FoodInit.meat, 1, 4));
 		OreDictionary.registerOre("foodPastry", new ItemStack(FoodInit.pastry, 1, 0));
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));

@@ -62,6 +62,7 @@ import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
+import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBolt;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
@@ -184,6 +185,9 @@ public class CommonMainProxy implements IGuiHandler {
 
 		EntityRegistry.registerModEntity(EntityShotgunBullet.class,
 				ClimateCore.PACKAGE_BASE + "entity.main.bullet_shotgun", 95, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityGhostBullet.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_ghost",
+				96, ClimateMain.instance, 128, 5, true);
 
 		EntityRegistry.registerModEntity(EntityDynamite.class, ClimateCore.PACKAGE_BASE + "entity.main.dynamite_red",
 				98, ClimateMain.instance, 128, 5, true);

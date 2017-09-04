@@ -133,6 +133,7 @@ public class MainInit {
 
 	public static Item repairPutty;
 	public static Item wrench;
+	public static Item scope;
 
 	public static Item[] dcAxe = new Item[7];
 	public static Item[] dcPickaxe = new Item[7];

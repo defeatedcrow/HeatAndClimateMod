@@ -7,6 +7,10 @@ import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
 import defeatedcrow.hac.food.entity.BeefPlateEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
+import defeatedcrow.hac.food.entity.CakeButterEntity;
+import defeatedcrow.hac.food.entity.CakeChocolateEntity;
+import defeatedcrow.hac.food.entity.CakeCoffeeEntity;
+import defeatedcrow.hac.food.entity.CakeLemonEntity;
 import defeatedcrow.hac.food.entity.ChickenPlateEntity;
 import defeatedcrow.hac.food.entity.ChocolatePieEntity;
 import defeatedcrow.hac.food.entity.ClubSandwichREntity;
@@ -172,13 +176,20 @@ public class FoodCommonProxy {
 				ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(PizzaTomatoEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pizza_tomato",
 				47, ClimateMain.instance, 128, 5, true);
-
 		EntityRegistry.registerModEntity(SaladGreenEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.salad_green",
 				48, ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(SaladLotusrootEntity.class,
 				ClimateCore.PACKAGE_BASE + "entity.food.salad_lotusroot", 49, ClimateMain.instance, 128, 5, true);
 		EntityRegistry.registerModEntity(SaladPotatoEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.salad_potato",
 				50, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(CakeButterEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.cake_butter",
+				51, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(CakeChocolateEntity.class,
+				ClimateCore.PACKAGE_BASE + "entity.food.cake_chocolate", 52, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(CakeCoffeeEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.cake_coffee",
+				53, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(CakeLemonEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.cake_lemon", 54,
+				ClimateMain.instance, 128, 5, true);
 	}
 
 }

@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -42,13 +43,18 @@ public class MachineRecipeRegister {
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 4), DCHeatTier.KILN, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 4));
 		// steel
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 5), DCHeatTier.SMELTING, null,
-				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
-		// iron
-		ClimateSmelting iron = new ClimateSmelting(new ItemStack(Blocks.IRON_BLOCK, 1, 0), null, DCHeatTier.KILN, null,
-				DCAirflow.TIGHT, 0F, false, new ItemStack(MainInit.dustBlock, 1, 5));
-		iron.requiredHeat().remove(DCHeatTier.SMELTING);
-		RecipeAPI.registerSmelting.addRecipe(iron, DCHeatTier.KILN);
+		if (MainCoreConfig.steel) {
+			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 5), DCHeatTier.SMELTING, null,
+					DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
+			// iron
+			ClimateSmelting iron = new ClimateSmelting(new ItemStack(Blocks.IRON_BLOCK, 1, 0), null, DCHeatTier.KILN,
+					null, DCAirflow.TIGHT, 0F, false, new ItemStack(MainInit.dustBlock, 1, 5));
+			iron.requiredHeat().remove(DCHeatTier.SMELTING);
+			RecipeAPI.registerSmelting.addRecipe(iron, DCHeatTier.KILN);
+		} else {
+			RecipeAPI.registerSmelting.addRecipe(new ItemStack(Blocks.IRON_BLOCK, 1, 0), DCHeatTier.KILN, null,
+					DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
+		}
 		// nickelsilver
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1, 6), DCHeatTier.SMELTING, null,
 				DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 6));

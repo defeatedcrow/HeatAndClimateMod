@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.entity.EntityBulletDC;
+import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
@@ -142,9 +143,8 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 						switch (ItemBullets.getType(type)) {
 						case BOLT:
 							break;
-						case CROW:
-							break;
 						case GHOST:
+							entityarrow = new EntityGhostBullet(world, player);
 							break;
 						case NORMAL:
 							break;

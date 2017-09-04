@@ -1,23 +1,20 @@
-package defeatedcrow.hac.food.item;
+package defeatedcrow.hac.main.item.tool;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 
-public class ItemMeatMaterials extends DCItem {
+public class ItemThermalScope extends DCItem {
 
 	private final int maxMeta;
 
 	private static String[] names = {
-			"viscera",
-			"rennet",
-			"raw_squid",
-			"agar",
-			"gelatine"
+			"steel"
 	};
 
-	public ItemMeatMaterials() {
+	public ItemThermalScope() {
 		super();
-		maxMeta = 4;
+		maxMeta = 0;
+		this.setMaxStackSize(1);
 	}
 
 	@Override
@@ -32,7 +29,7 @@ public class ItemMeatMaterials extends DCItem {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		String s = "items/food/food_" + names[meta];
+		String s = "items/tool/thermal_scope_" + names[meta];
 		if (f) {
 			s = "textures/" + s;
 		}
