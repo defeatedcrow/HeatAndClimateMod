@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.block.build;
 
 import java.util.List;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
@@ -12,21 +13,31 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
 	public BlockBuilding(Material m, String s) {
-		super(m, s, 4, false);
+		super(m, s, 5, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
 		this.setResistance(30.0F);
 	}
 
 	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		int meta = DCState.getInt(state, DCState.TYPE16);
+		if (meta == 5)
+			return side != EnumFacing.UP;
+		return true;
+	}
+
+	@Override
 	public int getMaxMeta() {
-		return 4;
+		return 5;
 	}
 
 	private static String[] names = {
@@ -34,7 +45,9 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 			"mosaic_red",
 			"mosaic_blue",
 			"mosaic_yellow",
-			"mosaic_black" };
+			"mosaic_black",
+			"road"
+	};
 
 	@Override
 	public String[] getNameSuffix() {
@@ -43,8 +56,9 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		if (meta > getMaxMeta())
+		if (meta > getMaxMeta()) {
 			meta = getMaxMeta();
+		}
 		String s = "blocks/build/build_" + names[meta];
 		if (f) {
 			s = "textures/" + s;

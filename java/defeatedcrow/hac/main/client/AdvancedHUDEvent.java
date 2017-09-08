@@ -41,6 +41,8 @@ public class AdvancedHUDEvent {
 
 	public static boolean hasAcv = ClimateCore.isDebug;
 
+	public static boolean active = false;
+
 	@SubscribeEvent
 	public void doRender(RenderGameOverlayEvent.Post event) {
 		if (event.getType() != null && event.getType() == ElementType.ALL) {
@@ -50,6 +52,7 @@ public class AdvancedHUDEvent {
 			if (player != null && world != null && gui == null) {
 				if (enable) {
 					if (count == 0) {
+						active = true;
 						count = 10;
 
 						if (!hasAcv) {
@@ -77,6 +80,7 @@ public class AdvancedHUDEvent {
 						}
 
 					} else {
+						active = false;
 						count--;
 					}
 

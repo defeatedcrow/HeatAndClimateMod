@@ -44,9 +44,9 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+		if (!player.worldObj.isRemote && player != null) {
 			TileEntity tile = world.getTileEntity(pos);
-			if (!player.isSneaking() && tile instanceof TileGasBurner) {
+			if (!player.isSneaking() && tile instanceof TileGasBurner && hand == EnumHand.MAIN_HAND) {
 				boolean flag = false;
 				if (heldItem != null && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 					IFluidHandler cont = heldItem.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);

@@ -277,6 +277,56 @@ public class BasicRecipeRegister {
 				"dustClay",
 				"dustGarnet"
 		}));
+
+		if (ModuleConfig.machine) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.scope, 1, 0), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					new ItemStack(DCInit.climate_checker, 1, 0),
+					'Y',
+					new ItemStack(MachineInit.torqueChecker, 1, 0),
+					'Z',
+					"ingotSteel"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"gemMalachite",
+					'Y',
+					new ItemStack(MachineInit.torqueChecker, 1, 0),
+					'Z',
+					"ingotSteel"
+			}));
+		} else {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.scope, 1, 0), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					new ItemStack(Blocks.GLASS_PANE, 1, 0),
+					'Y',
+					new ItemStack(DCInit.climate_checker, 1, 0),
+					'Z',
+					"ingotSteel"
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"gemMalachite",
+					'Y',
+					new ItemStack(DCInit.climate_checker, 1, 0),
+					'Z',
+					"ingotSteel"
+			}));
+		}
 	}
 
 	static void loadYagenRecipe() {
@@ -1269,6 +1319,19 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.builds, 1, 0),
 				new ItemStack(Blocks.GLASS)
 		}));
+
+		if (ModuleConfig.machine) {
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 5), new Object[] {
+					"gravel",
+					new ItemStack(MachineInit.reagent, 1, 0)
+			}));
+		} else {
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.builds, 1, 5), new Object[] {
+					"gravel",
+					"slimeball",
+					"dyeBlack"
+			}));
+		}
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MainInit.gemBlock, 1, 3), new Object[] {
 				new ItemStack(MainInit.bricks, 1, 0)

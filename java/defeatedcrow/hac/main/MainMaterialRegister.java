@@ -81,6 +81,7 @@ import defeatedcrow.hac.main.item.tool.ItemAxeDC;
 import defeatedcrow.hac.main.item.tool.ItemBullets;
 import defeatedcrow.hac.main.item.tool.ItemCrossbowDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
+import defeatedcrow.hac.main.item.tool.ItemEntityScope;
 import defeatedcrow.hac.main.item.tool.ItemMusketDC;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
@@ -513,6 +514,8 @@ public class MainMaterialRegister {
 		MainInit.scope = new ItemThermalScope().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_thermal_scope");
 		GameRegistry.register(MainInit.scope.setRegistryName(ClimateCore.PACKAGE_BASE + "_thermal_scope"));
 
+		MainInit.entityScope = new ItemEntityScope().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_entity_scope");
+		GameRegistry.register(MainInit.entityScope.setRegistryName(ClimateCore.PACKAGE_BASE + "_entity_scope"));
 	}
 
 	static void registerFood() {
