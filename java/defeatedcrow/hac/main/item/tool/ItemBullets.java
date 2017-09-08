@@ -13,7 +13,6 @@ public class ItemBullets extends DCItem {
 			"normal",
 			"shot",
 			"silver",
-			"crow",
 			"ghost"
 	};
 
@@ -42,7 +41,7 @@ public class ItemBullets extends DCItem {
 	}
 
 	public static Type getType(int meta) {
-		meta = MathHelper.clamp_int(meta, 0, 5);
+		meta = MathHelper.clamp_int(meta, 0, 4);
 		return values[meta];
 	}
 
@@ -51,7 +50,6 @@ public class ItemBullets extends DCItem {
 			Type.NORMAL,
 			Type.SHOT,
 			Type.SILVER,
-			Type.CROW,
 			Type.GHOST
 	};
 
@@ -60,7 +58,6 @@ public class ItemBullets extends DCItem {
 		NORMAL,
 		SILVER,
 		SHOT,
-		CROW,
 		GHOST;
 
 	}

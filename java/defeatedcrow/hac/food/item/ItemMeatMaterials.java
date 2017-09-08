@@ -10,12 +10,14 @@ public class ItemMeatMaterials extends DCItem {
 	private static String[] names = {
 			"viscera",
 			"rennet",
-			"raw_squid"
+			"raw_squid",
+			"agar",
+			"gelatine"
 	};
 
 	public ItemMeatMaterials() {
 		super();
-		maxMeta = 2;
+		maxMeta = 4;
 	}
 
 	@Override

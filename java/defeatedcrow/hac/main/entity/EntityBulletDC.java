@@ -192,7 +192,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			}
 		}
 
-		if (this.inGround) {
+		if (this.inGround && !this.getIsGhost()) {
 			int j = block.getMetaFromState(iblockstate);
 
 			if (block == this.inTile && j == this.inData) {

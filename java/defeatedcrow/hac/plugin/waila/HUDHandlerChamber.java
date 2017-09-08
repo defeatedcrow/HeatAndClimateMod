@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.block.TileFan;
+import defeatedcrow.hac.machine.block.TileFreezer;
 import defeatedcrow.hac.machine.block.TileHeatExchanger;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.device.TileBellow;
@@ -42,6 +43,17 @@ public class HUDHandlerChamber extends HUDHandlerBase {
 			if (burntime > 0) {
 				DCHeatTier heat = DCHeatTier.getTypeByID(tier);
 				currenttip.add(String.format("Temperature: %s", SpecialChars.GOLD + heat));
+			} else {
+				currenttip.add(String.format("%s", "Stopping"));
+			}
+		}
+
+		if (block == MachineInit.freezer) {
+			float burntime = accessor.getNBTData().getFloat("dcs.pretoq");
+			byte tier = accessor.getNBTData().getByte("dcs.heatID");
+			if (burntime > 0) {
+				DCHeatTier heat = DCHeatTier.getTypeByID(tier);
+				currenttip.add(String.format("Temperature: %s", SpecialChars.AQUA + heat));
 			} else {
 				currenttip.add(String.format("%s", "Stopping"));
 			}
@@ -103,5 +115,8 @@ public class HUDHandlerChamber extends HUDHandlerBase {
 
 		registrar.registerBodyProvider(provider, TileHeatExchanger.class);
 		registrar.registerNBTProvider(provider, TileHeatExchanger.class);
+
+		registrar.registerBodyProvider(provider, TileFreezer.class);
+		registrar.registerNBTProvider(provider, TileFreezer.class);
 	}
 }

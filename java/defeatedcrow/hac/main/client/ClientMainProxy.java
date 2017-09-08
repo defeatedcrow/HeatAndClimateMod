@@ -11,7 +11,6 @@ import defeatedcrow.hac.food.FoodClientProxy;
 import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.magic.MagicClientProxy;
-import defeatedcrow.hac.magic.client.RenderPlayerEventDC;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.build.TileLowChest;
@@ -60,6 +59,7 @@ import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
+import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBolt;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
@@ -138,6 +138,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityIronBullet.class, BoltRenderer.class);
 		registRender(EntitySilverBullet.class, BoltRenderer.class);
 		registRender(EntityShotgunBullet.class, BoltRenderer.class);
+		registRender(EntityGhostBullet.class, BoltRenderer.class);
 		registRender(EntityDynamite.class, RenderEntityDynamite.class);
 		registRender(EntityDynamiteBlue.class, RenderEntityDynamite.class);
 

@@ -20,6 +20,7 @@ import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
 import defeatedcrow.hac.food.block.crop.BlockSpinach;
 import defeatedcrow.hac.food.block.crop.BlockTomato;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
+import defeatedcrow.hac.food.item.CakeItem;
 import defeatedcrow.hac.food.item.ClubSandItem;
 import defeatedcrow.hac.food.item.EmptyPlateItem;
 import defeatedcrow.hac.food.item.ItemDCCrops;
@@ -189,6 +190,9 @@ public class FoodInitRegister {
 
 		FoodInit.salad = new SaladItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_salad");
 		GameRegistry.register(FoodInit.salad.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_salad"));
+
+		FoodInit.cake = new CakeItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_cake");
+		GameRegistry.register(FoodInit.cake.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_cake"));
 	}
 
 	public static void loadFluids() {
@@ -335,6 +339,7 @@ public class FoodInitRegister {
 		FoodInit.plateSoup.setCreativeTab(ClimateMain.food);
 		FoodInit.bowlSoup.setCreativeTab(ClimateMain.food);
 		FoodInit.salad.setCreativeTab(ClimateMain.food);
+		FoodInit.cake.setCreativeTab(ClimateMain.food);
 
 		FoodInit.crops.setCreativeTab(ClimateMain.food);
 		FoodInit.seeds.setCreativeTab(ClimateMain.food);

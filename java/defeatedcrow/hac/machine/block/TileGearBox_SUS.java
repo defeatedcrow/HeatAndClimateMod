@@ -5,7 +5,7 @@ public class TileGearBox_SUS extends TileGearBox {
 	// tier
 	@Override
 	public float maxTorque() {
-		return 128.0F;
+		return 512.0F;
 	}
 
 	@Override
