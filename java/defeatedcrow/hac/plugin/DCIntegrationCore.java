@@ -12,18 +12,22 @@ public class DCIntegrationCore {
 	public static boolean loadedForestry = false;
 	public static boolean loadedMekanism = false;
 	public static boolean loadedCoFH = false;
+	public static boolean loadedBoP = false;
 
 	private DCIntegrationCore() {}
 
 	public static void loadedCheck() {
-		if (Loader.isModLoaded("forestry")) {
+		if (Loader.isModLoaded("forestry") && ModuleConfig.ffm) {
 			loadedForestry = true;
 		}
-		if (Loader.isModLoaded("Mekanism")) {
+		if (Loader.isModLoaded("Mekanism") && ModuleConfig.mek) {
 			loadedMekanism = true;
 		}
-		if (Loader.isModLoaded("cofhcore") && Loader.isModLoaded("thermalfoundation")) {
+		if (Loader.isModLoaded("cofhcore") && Loader.isModLoaded("thermalfoundation") && ModuleConfig.cofh) {
 			loadedCoFH = true;
+		}
+		if (Loader.isModLoaded("BiomesOPlenty") && ModuleConfig.bop) {
+			loadedBoP = true;
 		}
 	}
 

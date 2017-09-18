@@ -7,9 +7,12 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.SpinningRecipe;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class DCPluginBoP {
@@ -35,7 +38,6 @@ public class DCPluginBoP {
 		OreDictionary.registerOre("dropHoney", new ItemStack(BOPItems.jar_filled));
 		OreDictionary.registerOre("dropHoney", new ItemStack(BOPItems.filled_honeycomb));
 
-		OreDictionary.registerOre("cropSeaweed", new ItemStack(BOPBlocks.coral, 1, 4));
 		OreDictionary.registerOre("cropSeaweed", new ItemStack(BOPBlocks.seaweed, 1, 0));
 		OreDictionary.registerOre("cropKelp", new ItemStack(BOPBlocks.seaweed, 1, 0));
 
@@ -53,13 +55,24 @@ public class DCPluginBoP {
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(BOPBlocks.plant_0, 1, 15));
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(BOPBlocks.plant_1, 1, 0));
 
-		// machine
-		if (ModuleConfig.r_mill) {
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2),
-					new ItemStack(MainInit.foodMaterials, 1, 2), 0.5F, "plantWildRice");
+		if (ModuleConfig.food && ModuleConfig.r_fluid) {
+			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 3), null, 0F, null,
+					DCHeatTier.COLD, DCHumidity.DRY, null, false, null, new Object[] {
+							"cropSeaweed"
+					});
+
+			RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000),
+					DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+							"cropKelp"
+					});
 		}
 
-		if (ModuleConfig.r_spinning) {
+		// machine
+		if (ModuleConfig.machine && ModuleConfig.r_mill) {
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "plantWildrice");
+		}
+
+		if (ModuleConfig.machine && ModuleConfig.r_spinning) {
 			RecipeAPI.registerSpinningRecipes
 					.addRecipe(new SpinningRecipe(new ItemStack(MainInit.materials, 1, 0), 2, "plantFlax"));
 		}
