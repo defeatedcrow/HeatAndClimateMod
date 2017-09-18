@@ -14,6 +14,7 @@ import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -857,16 +858,6 @@ public class FoodRecipes {
 						"listAllveggie"
 				});
 
-		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000), DCHeatTier.OVEN,
-				null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-						"cropSeaweed"
-				});
-
-		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000), DCHeatTier.OVEN,
-				null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-						"seaweed"
-				});
-
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FluidRegistry.WATER, 1000),
 				DCHeatTier.HOT, null, null, false, null, new Object[] {
 						new ItemStack(Blocks.ICE, 1, 0)
@@ -1154,15 +1145,22 @@ public class FoodRecipes {
 						new ItemStack(MachineInit.reagent, 1, 1)
 				});
 
-		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 3), null, 0F, null, DCHeatTier.COLD,
-				DCHumidity.DRY, null, false, null, new Object[] {
-						"cropSeaweed"
-				});
-
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 4), null, 0F, null, DCHeatTier.OVEN,
 				null, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
 						"itemLeather"
 				});
+
+		if (!DCIntegrationCore.loadedBoP) {
+			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 3), null, 0F, null,
+					DCHeatTier.COLD, DCHumidity.DRY, null, false, null, new Object[] {
+							"cropSeaweed"
+					});
+
+			RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000),
+					DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+							"cropKelp"
+					});
+		}
 
 	}
 
