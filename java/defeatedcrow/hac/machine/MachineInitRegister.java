@@ -56,6 +56,7 @@ import defeatedcrow.hac.machine.item.ItemScooter;
 import defeatedcrow.hac.machine.item.ItemSteelMold;
 import defeatedcrow.hac.machine.item.ItemSynthetic;
 import defeatedcrow.hac.machine.item.ItemTorqueChecker;
+import defeatedcrow.hac.machine.item.plating.ItemPlatingChrome;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
@@ -248,6 +249,10 @@ public class MachineInitRegister {
 
 		MachineInit.dynamite = new ItemDynamite().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dynamite");
 		GameRegistry.register(MachineInit.dynamite.setRegistryName(ClimateCore.PACKAGE_BASE + "_dynamite"));
+
+		MachineInit.platingChrome = new ItemPlatingChrome()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coating_tool");
+		GameRegistry.register(MachineInit.platingChrome.setRegistryName(ClimateCore.PACKAGE_BASE + "_coating_tool"));
 	}
 
 	static void loadCreativeTab() {
@@ -315,6 +320,8 @@ public class MachineInitRegister {
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);
 			MachineInit.scooter.setCreativeTab(ClimateMain.machine);
+
+			MachineInit.platingChrome.setCreativeTab(ClimateMain.machine);
 		}
 	}
 

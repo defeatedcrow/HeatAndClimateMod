@@ -199,7 +199,7 @@ public class MachineClientProxy {
 				"machine", 0);
 		instance.regTEBlock(MachineInit.burner, ClimateCore.PACKAGE_ID, "dcs_device_gas_burner", "machine", 0);
 
-		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 9);
+		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 12);
 		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 2);
 		instance.regSimpleItem(MachineInit.catalyst, ClimateCore.PACKAGE_ID, "dcs_misc_catalyst", "misc", 3);
 		instance.regSimpleItem(MachineInit.gemcore, ClimateCore.PACKAGE_ID, "dcs_misc_gemcore", "misc", 0);
@@ -216,6 +216,7 @@ public class MachineClientProxy {
 				"machine", 0);
 		instance.regSimpleItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_ID, "dcs_motor_minecart", "device", 0);
 		instance.regSimpleItem(MachineInit.scooter, ClimateCore.PACKAGE_ID, "dcs_motor_scooter", "device", 3);
+		instance.regSimpleItem(MachineInit.platingChrome, ClimateCore.PACKAGE_ID, "dcs_coating_tool", "misc", 9);
 
 		// fluid
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.hydrogenBlock), new ItemMeshDefinition() {

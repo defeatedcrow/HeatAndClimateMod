@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main;
 
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
@@ -190,6 +191,9 @@ public class MainInit {
 
 	public static Potion heavyboots;
 	public static PotionType heavybootsType;
+
+	public static Enchantment venom;
+	public static Enchantment corrosion;
 
 	// plugin
 	public static Item circuit;

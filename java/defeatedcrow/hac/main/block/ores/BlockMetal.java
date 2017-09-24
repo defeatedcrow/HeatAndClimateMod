@@ -39,7 +39,8 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 			"titanium",
 			"aluminium",
 			"bismuth",
-			"bscco"
+			"bscco",
+			"lead"
 	};
 
 	@Override

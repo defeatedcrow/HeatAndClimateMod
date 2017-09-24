@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -67,6 +68,9 @@ public class WorldGenAltOres2 implements IWorldGenerator {
 						case UNDERLAVA:
 							generateUnderlava(world, vein, posX1, posZ1);
 							break;
+						case GUANO:
+							generateGuano(world, vein, posX1, posZ1);
+							break;
 						default:
 							break;
 						}
@@ -98,6 +102,15 @@ public class WorldGenAltOres2 implements IWorldGenerator {
 		if (block == Blocks.STAINED_HARDENED_CLAY)
 			return true;
 		if (block == Blocks.HARDENED_CLAY)
+			return true;
+
+		return debug;
+	}
+
+	static boolean isPlaceable3(Block block) {
+		if (block == Blocks.SAND)
+			return true;
+		if (block == Blocks.SANDSTONE)
 			return true;
 
 		return debug;
@@ -256,6 +269,46 @@ public class WorldGenAltOres2 implements IWorldGenerator {
 							BlockSet add = gen[height];
 							if (isPlaceable(block)) {
 								world.setBlockState(p, add.getState(), 4);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * 燐グアノ。浅い海洋にのみ生成。
+	 */
+	public void generateGuano(World world, OreVein vein, int limX, int limZ) {
+		BlockPos pos = vein.pos;
+		int r = vein.round - 1;
+		int h = r / 2;
+		int[] rands = vein.rands;
+		BlockSet[] gen = new BlockSet[h];
+		for (int i = 0; i < h; i++) {
+			gen[i] = GUANO;
+		}
+
+		for (int x = pos.getX() - r; x < pos.getX() + r; x++) {
+			for (int z = pos.getZ() - r; z < pos.getZ() + r; z++) {
+				for (int y = pos.getY(); y < pos.getY() + h; y++) {
+					if (x > limX && z > limZ) {
+						BlockPos p = new BlockPos(x, y, z);
+						Block block = world.getBlockState(p).getBlock();
+						double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
+						boolean b = world.getBlockState(p.up(1)).getMaterial() == Material.WATER
+								|| world.getBlockState(p.up(2)).getMaterial() == Material.WATER;
+						if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r && b) {
+							int height = p.getY() - pos.getY();
+							BlockSet add = gen[height];
+							if (isPlaceable3(block)) {
+								world.setBlockState(p, add.getState(), 4);
+							} else if (block == Blocks.GRAVEL) {
+								int j = world.rand.nextInt(3);
+								if (j > 0) {
+									world.setBlockState(p, add.getState(), 4);
+								}
 							}
 						}
 					}
@@ -531,6 +584,7 @@ public class WorldGenAltOres2 implements IWorldGenerator {
 	private static final BlockSet STONE_1 = new BlockSet(Blocks.STONE, 1);
 	private static final BlockSet STONE_2 = new BlockSet(Blocks.STONE, 3);
 	private static final BlockSet STONE_3 = new BlockSet(Blocks.STONE, 5);
+	private static final BlockSet GRAVEL = new BlockSet(Blocks.GRAVEL, 0);
 
 	private static final BlockSet LIME = new BlockSet(MainInit.ores_2, 0);
 	private static final BlockSet MARBLE = new BlockSet(MainInit.gemBlock, 6);
@@ -567,5 +621,6 @@ public class WorldGenAltOres2 implements IWorldGenerator {
 	private static final BlockSet CALC_SILV = new BlockSet(MainInit.ores, 12);
 	private static final BlockSet CALC_DIA = new BlockSet(MainInit.ores, 13);
 	private static final BlockSet CALC_EME = new BlockSet(MainInit.ores, 14);
+	private static final BlockSet GUANO = new BlockSet(MainInit.ores_2, 12);
 
 }

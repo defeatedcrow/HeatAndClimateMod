@@ -50,9 +50,16 @@ public class OreGenPos {
 		BlockPos pos2 = new BlockPos(x2, y2, z2);
 		int rand2 = rand.nextInt(100);
 		Biome biome2 = world.getBiome(pos2);
-		if ((BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.MOUNTAIN)
-				|| BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.OCEAN)) && rand2 < kiesP) {
+		if (BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.BEACH) && rand2 < kiesP) {
+			ret[1] = getVeinFromSeed(world, pos2, Veins.GUANO, seed);
+		} else if (BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.MOUNTAIN) && rand2 < kiesP) {
 			ret[1] = getVeinFromSeed(world, pos2, Veins.KIESLAGER, seed);
+		} else if (BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.OCEAN) && rand2 < kiesP) {
+			if (y2 > 50) {
+				ret[1] = getVeinFromSeed(world, pos2, Veins.GUANO, seed);
+			} else {
+				ret[1] = getVeinFromSeed(world, pos2, Veins.KIESLAGER, seed);
+			}
 		} else if (rand2 < veinP) {
 			ret[1] = getVeinFromSeed(world, pos2, Veins.QUARTZ, seed);
 		}
@@ -122,7 +129,8 @@ public class OreGenPos {
 		KIESLAGER(4, 4),
 		QUARTZ(5, 5),
 		UNDERLAVA(6, 2),
-		GEODE(7, 4);
+		GEODE(7, 4),
+		GUANO(8, 4);
 
 		public static final Veins[] VALUES = {
 				SEDIMENT,
@@ -131,7 +139,8 @@ public class OreGenPos {
 				KIESLAGER,
 				QUARTZ,
 				UNDERLAVA,
-				GEODE
+				GEODE,
+				GUANO
 		};
 
 		public final int id;

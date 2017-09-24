@@ -58,6 +58,7 @@ import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.enchant.EnchantmentVenom;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
@@ -142,6 +143,13 @@ public class CommonMainProxy implements IGuiHandler {
 				new PotionEffect(MainInit.heavyboots, 3600, 0)
 		});
 		GameRegistry.register(MainInit.heavybootsType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.heavyboots"));
+	}
+
+	public void loadEnchantment() {
+
+		MainInit.venom = new EnchantmentVenom();
+		GameRegistry.register(MainInit.venom, new ResourceLocation(ClimateMain.MOD_ID, "dcs.venom"));
+
 	}
 
 	public void loadRecipes() {

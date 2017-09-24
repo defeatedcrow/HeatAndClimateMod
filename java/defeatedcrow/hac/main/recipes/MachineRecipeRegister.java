@@ -205,6 +205,7 @@ public class MachineRecipeRegister {
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 5), new ItemStack(Items.IRON_INGOT, 1, 0), 0.1F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 8), new ItemStack(MainInit.oreIngot, 1, 8), 0.1F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 12), new ItemStack(MainInit.oreIngot, 1, 13), 0.1F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 13), new ItemStack(MainInit.oreIngot, 1, 15), 0.1F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.gemBlock, 1, 3), new ItemStack(MainInit.selenite, 1, 0), 0.15F);
 

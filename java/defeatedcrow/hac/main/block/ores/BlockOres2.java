@@ -35,6 +35,8 @@ public class BlockOres2 extends DCSimpleBlock {
 				super.setHarvestLevel("pickaxe", 3, this.getStateFromMeta(i));
 			} else if (i < 2 || i == 10) {
 				super.setHarvestLevel("pickaxe", 1, this.getStateFromMeta(i));
+			} else if (i == 12) {
+				super.setHarvestLevel("pickaxe", 0, this.getStateFromMeta(i));
 			} else {
 				super.setHarvestLevel("pickaxe", 2, this.getStateFromMeta(i));
 			}
@@ -59,10 +61,10 @@ public class BlockOres2 extends DCSimpleBlock {
 			2,
 			1,
 			3,
-			2,
-			2,
-			2,
-			2
+			0,
+			0,
+			0,
+			0
 	};
 
 	/* Drop Itemの管理 */

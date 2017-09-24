@@ -14,6 +14,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -32,52 +33,59 @@ public class AltTooltipEvent {
 		ItemStack target = event.getItemStack();
 		boolean flag = false;
 
-		if (player != null && player instanceof EntityPlayerSP && !DCUtil.isEmpty(target) && CoreConfigDC.showAltTips) {
+		if (player != null && player instanceof EntityPlayerSP && !DCUtil.isEmpty(target)) {
 			Item tI = target.getItem();
 
-			// charm
-			ItemStack[] inside = new ItemStack[9];
-			for (int i = 0; i < 9; i++) {
-				inside[i] = player.inventory.getStackInSlot(i + 9);
+			if (target.hasTagCompound() && target.getTagCompound().hasKey("dcs.plated")) {
+				byte b = target.getTagCompound().getByte("dcs.plated");
+				event.getToolTip().add(TextFormatting.BOLD.toString() + "Plated Item x" + b);
 			}
-			List<ItemStack> charms = new ArrayList<ItemStack>();
-			for (ItemStack item1 : inside) {
-				if (item1 != null && item1.getItem() != null && item1.getItem() == MagicInit.pendant) {
-					int m = item1.getMetadata();
-					if (m == 4) {
-						flag = true;
+
+			if (CoreConfigDC.showAltTips) {
+				// charm
+				ItemStack[] inside = new ItemStack[9];
+				for (int i = 0; i < 9; i++) {
+					inside[i] = player.inventory.getStackInSlot(i + 9);
+				}
+				List<ItemStack> charms = new ArrayList<ItemStack>();
+				for (ItemStack item1 : inside) {
+					if (item1 != null && item1.getItem() != null && item1.getItem() == MagicInit.pendant) {
+						int m = item1.getMetadata();
+						if (m == 4) {
+							flag = true;
+						}
 					}
 				}
-			}
 
-			if (event.isShowAdvancedItemTooltips() && CoreConfigDC.showAltTips) {
-				// まず耐久値
-				if (tI.isDamageable() && target.getMetadata() == 0) {
-					int max = target.getMaxDamage();
-					String ret = I18n.translateToLocal("dcs_climate.tip.durability") + ": " + max;
-					event.getToolTip().add(ret);
-				}
+				if (event.isShowAdvancedItemTooltips()) {
+					// まず耐久値
+					if (tI.isDamageable() && target.getMetadata() == 0) {
+						int max = target.getMaxDamage();
+						String ret = I18n.translateToLocal("dcs_climate.tip.durability") + ": " + max;
+						event.getToolTip().add(ret);
+					}
 
-				// tool tier
-				if (tI instanceof ItemTool) {
-					int tier = ((ItemTool) tI).getToolMaterial().getHarvestLevel();
-					String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
-					event.getToolTip().add(ret);
-				}
+					// tool tier
+					if (tI instanceof ItemTool) {
+						int tier = ((ItemTool) tI).getToolMaterial().getHarvestLevel();
+						String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
+						event.getToolTip().add(ret);
+					}
 
-				// climate reg
-				float regH = DamageAPI.itemRegister.getHeatPreventAmount(target);
-				float regC = DamageAPI.itemRegister.getColdPreventAmount(target);
+					// climate reg
+					float regH = DamageAPI.itemRegister.getHeatPreventAmount(target);
+					float regC = DamageAPI.itemRegister.getColdPreventAmount(target);
 
-				if (regH == 0 && regC == 0 && tI instanceof ItemArmor) {
-					ArmorMaterial mat = ((ItemArmor) tI).getArmorMaterial();
-					regH = DamageAPI.armorRegister.getHeatPreventAmount(mat);
-					regC = DamageAPI.armorRegister.getColdPreventAmount(mat);
-				}
-				if (regH != 0 || regC != 0) {
-					String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": Heat " + regH + "/ Cold "
-							+ regC;
-					event.getToolTip().add(ret);
+					if (regH == 0 && regC == 0 && tI instanceof ItemArmor) {
+						ArmorMaterial mat = ((ItemArmor) tI).getArmorMaterial();
+						regH = DamageAPI.armorRegister.getHeatPreventAmount(mat);
+						regC = DamageAPI.armorRegister.getColdPreventAmount(mat);
+					}
+					if (regH != 0 || regC != 0) {
+						String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": Heat " + regH + "/ Cold "
+								+ regC;
+						event.getToolTip().add(ret);
+					}
 				}
 			}
 

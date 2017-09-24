@@ -809,6 +809,18 @@ public class MachineRecipes {
 				new ItemStack(MachineInit.scooter, 1, 32767),
 				"dyeBlack"
 		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.platingChrome, 1, 9), new Object[] {
+				"X  ",
+				"YYY",
+				"Z Z",
+				'X',
+				"string",
+				'Y',
+				"plankWood",
+				'Z',
+				"ingotIron"
+		}));
 	}
 
 	public static void loadOres() {
@@ -820,6 +832,7 @@ public class MachineRecipes {
 		OreDictionary.registerOre("dustAlkali", new ItemStack(MachineInit.reagent, 1, 3));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
 		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));
+		OreDictionary.registerOre("dustPhosphorus", new ItemStack(MachineInit.reagent, 1, 9));
 	}
 
 }
