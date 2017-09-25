@@ -55,7 +55,7 @@ public class OreGenPos {
 		} else if (BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.MOUNTAIN) && rand2 < kiesP) {
 			ret[1] = getVeinFromSeed(world, pos2, Veins.KIESLAGER, seed);
 		} else if (BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.OCEAN) && rand2 < kiesP) {
-			if (y2 > 50) {
+			if (y2 > 45) {
 				ret[1] = getVeinFromSeed(world, pos2, Veins.GUANO, seed);
 			} else {
 				ret[1] = getVeinFromSeed(world, pos2, Veins.KIESLAGER, seed);
@@ -128,7 +128,7 @@ public class OreGenPos {
 		BAUXITE(3, 3),
 		KIESLAGER(4, 4),
 		QUARTZ(5, 5),
-		UNDERLAVA(6, 2),
+		UNDERLAVA(6, 3),
 		GEODE(7, 4),
 		GUANO(8, 4);
 

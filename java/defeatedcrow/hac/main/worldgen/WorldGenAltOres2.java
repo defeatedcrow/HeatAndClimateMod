@@ -112,6 +112,8 @@ public class WorldGenAltOres2 implements IWorldGenerator {
 			return true;
 		if (block == Blocks.SANDSTONE)
 			return true;
+		if (block == Blocks.DIRT)
+			return true;
 
 		return debug;
 	}

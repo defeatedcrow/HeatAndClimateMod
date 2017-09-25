@@ -30,14 +30,14 @@ public class OreDicRegister {
 		// ores
 		OreDictionary.registerOre("oreGypsum", new ItemStack(MainInit.ores, 1, 0));
 		OreDictionary.registerOre("oreIron", new ItemStack(MainInit.ores, 1, 1));
-		OreDictionary.registerOre("oreChalcedonyB", new ItemStack(MainInit.ores, 1, 2));
+		OreDictionary.registerOre("oreChalcedonyBlue", new ItemStack(MainInit.ores, 1, 2));
 		OreDictionary.registerOre("oreSapphire", new ItemStack(MainInit.ores, 1, 3));
 		OreDictionary.registerOre("oreIron", new ItemStack(MainInit.ores, 1, 4));
 		OreDictionary.registerOre("oreMagnetite", new ItemStack(MainInit.ores, 1, 5));
 		OreDictionary.registerOre("oreCopper", new ItemStack(MainInit.ores, 1, 6));
 		OreDictionary.registerOre("oreNickel", new ItemStack(MainInit.ores, 1, 7));
 		OreDictionary.registerOre("oreZinc", new ItemStack(MainInit.ores, 1, 8));
-		OreDictionary.registerOre("oreChalcedonyW", new ItemStack(MainInit.ores, 1, 9));
+		OreDictionary.registerOre("oreChalcedonyWhite", new ItemStack(MainInit.ores, 1, 9));
 		OreDictionary.registerOre("oreQuartz", new ItemStack(MainInit.ores, 1, 10));
 		OreDictionary.registerOre("oreGold", new ItemStack(MainInit.ores, 1, 11));
 		OreDictionary.registerOre("oreSilver", new ItemStack(MainInit.ores, 1, 12));
