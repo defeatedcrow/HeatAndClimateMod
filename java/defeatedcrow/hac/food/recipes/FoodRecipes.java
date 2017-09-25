@@ -1138,6 +1138,16 @@ public class FoodRecipes {
 						"dustBismuth"
 				});
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.gems, 1, 18), null, 0F, null, DCHeatTier.KILN,
+				null, null, false, null, new Object[] {
+						"dustApatite"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 9), null, 0F, null,
+				DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
+						new ItemStack(Items.DYE, 1, 15)
+				});
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(Items.SLIME_BALL, 1, 0), null, 0F, null, DCHeatTier.OVEN,
 				null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
 						"cropHerb",

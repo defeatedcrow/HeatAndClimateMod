@@ -11,11 +11,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockOres2 extends DCSimpleBlock {
 
@@ -29,12 +32,20 @@ public class BlockOres2 extends DCSimpleBlock {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT;
+	}
+
+	@Override
 	public void setHarvestLevel(String toolClass, int level) {
 		for (int i = 0; i < 16; i++) {
 			if (i == 5 || i == 11) {
 				super.setHarvestLevel("pickaxe", 3, this.getStateFromMeta(i));
 			} else if (i < 2 || i == 10) {
 				super.setHarvestLevel("pickaxe", 1, this.getStateFromMeta(i));
+			} else if (i == 12) {
+				super.setHarvestLevel("pickaxe", 0, this.getStateFromMeta(i));
 			} else {
 				super.setHarvestLevel("pickaxe", 2, this.getStateFromMeta(i));
 			}
@@ -59,10 +70,10 @@ public class BlockOres2 extends DCSimpleBlock {
 			2,
 			1,
 			3,
-			2,
-			2,
-			2,
-			2
+			0,
+			0,
+			0,
+			0
 	};
 
 	/* Drop Itemの管理 */

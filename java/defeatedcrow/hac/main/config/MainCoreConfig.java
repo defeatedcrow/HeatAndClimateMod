@@ -19,6 +19,7 @@ public class MainCoreConfig {
 	public static double rateVsFU = 10.0D;
 
 	public static boolean steel = true;
+	public static boolean lead = false;
 	public static boolean pendant_schorl = true;
 	public static boolean pendant_clam = true;
 
@@ -49,8 +50,11 @@ public class MainCoreConfig {
 			Property vsFU = cfg.get("plugin setting", "Conversion rate vs FU", rateVsFU,
 					"Set the amount of conversion rate as FU/torque.");
 
-			Property noSteel = cfg.get("item setting", "Disable Steel Recipe", steel,
-					"Disable the climate recipe for smelting the steel block.");
+			Property noSteel = cfg.get("item setting", "Enable Steel Recipe", steel,
+					"Enable the climate recipe for smelting the steel block.");
+
+			Property noLead = cfg.get("item setting", "Enable Lead Ingot", lead,
+					"Enable to add the lead dust and ingot.");
 
 			Property p_schorl = cfg.get("item setting", "Enable Schorl Pendant Effect", pendant_schorl,
 					"Enable effect of schorl pendant.");
@@ -64,6 +68,7 @@ public class MainCoreConfig {
 			rateVsFU = vsFU.getDouble();
 
 			steel = noSteel.getBoolean();
+			lead = noLead.getBoolean();
 			pendant_schorl = p_schorl.getBoolean();
 
 		} catch (Exception e) {

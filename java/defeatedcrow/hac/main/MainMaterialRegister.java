@@ -129,10 +129,10 @@ public class MainMaterialRegister {
 		MainInit.ores = new BlockOres(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone", 15);
 		registerBlock(MainInit.ores, ClimateCore.PACKAGE_BASE + "_ore_stone");
 
-		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 11);
+		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 12);
 		registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone");
 
-		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 14);
+		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 15);
 		registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock");
 
 		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 15);
@@ -483,16 +483,16 @@ public class MainMaterialRegister {
 
 	static void registerItems() {
 		// ores
-		MainInit.oreIngot = new ItemIngots(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		GameRegistry.register(MainInit.oreIngot.setRegistryName(ClimateCore.PACKAGE_BASE + "_ingot"));
 
-		MainInit.oreDust = new ItemOreDusts(12).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
+		MainInit.oreDust = new ItemOreDusts(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		GameRegistry.register(MainInit.oreDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_oredust"));
 
-		MainInit.gems = new ItemGems(17).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(18).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		GameRegistry.register(MainInit.gems.setRegistryName(ClimateCore.PACKAGE_BASE + "_gem"));
 
-		MainInit.miscDust = new ItemMiscDust(8).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
+		MainInit.miscDust = new ItemMiscDust(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		GameRegistry.register(MainInit.miscDust.setRegistryName(ClimateCore.PACKAGE_BASE + "_miscdust"));
 
 		// tools

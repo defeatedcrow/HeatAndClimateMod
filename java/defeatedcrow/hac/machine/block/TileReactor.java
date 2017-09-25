@@ -497,7 +497,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 			// 3: item required
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
-			for (int i = 9; i < 12; i++) {
+			for (int i = 9; i < 13; i++) {
 				ItemStack slot = this.inv[i];
 				if (slot != null) {
 					boolean inRecipe = false;

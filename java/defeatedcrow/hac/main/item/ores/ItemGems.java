@@ -41,7 +41,8 @@ public class ItemGems extends DCItem {
 	 * 14: アルマンディン
 	 * 15: ルチル
 	 * 16: ボーキサイト
-	 * 17: ビスマス
+	 * 17: ビスマス,
+	 * 18: アパタイト
 	 */
 	private static String[] names = {
 			"chal_blue",
@@ -61,7 +62,8 @@ public class ItemGems extends DCItem {
 			"almandine",
 			"rutile",
 			"bauxite",
-			"bismuth"
+			"bismuth",
+			"apatite"
 	};
 
 	public ItemGems(int max) {
@@ -134,7 +136,8 @@ public class ItemGems extends DCItem {
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
 		if (ModuleConfig.magic && stack != null && stack.getItem() == this && stack.getItemDamage() == 2)
-			return playerHasCharm(player) ? new ActionResult(EnumActionResult.SUCCESS, stack)
+			return playerHasCharm(player)
+					? new ActionResult(EnumActionResult.SUCCESS, stack)
 					: new ActionResult(EnumActionResult.PASS, stack);
 		return new ActionResult(EnumActionResult.PASS, stack);
 	}
