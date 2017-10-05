@@ -279,9 +279,10 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this
-				? false
-				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+		if (getWorld().getTileEntity(this.pos) != this || player == null)
+			return false;
+		else
+			return Math.sqrt(player.getDistanceSq(pos)) < 256D;
 	}
 
 	@Override

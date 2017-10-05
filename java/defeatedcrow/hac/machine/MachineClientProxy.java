@@ -61,6 +61,7 @@ import defeatedcrow.hac.machine.client.PressMachineTESR;
 import defeatedcrow.hac.machine.client.ReactorTESR;
 import defeatedcrow.hac.machine.client.RedBoxTESR;
 import defeatedcrow.hac.machine.client.RenderCartMotor;
+import defeatedcrow.hac.machine.client.RenderMagneticHover;
 import defeatedcrow.hac.machine.client.RenderScooter;
 import defeatedcrow.hac.machine.client.SUS_GearBoxTESR;
 import defeatedcrow.hac.machine.client.SUS_L_ShaftTESR;
@@ -76,6 +77,7 @@ import defeatedcrow.hac.machine.client.TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.WaterPumpTESR;
 import defeatedcrow.hac.machine.client.WatermillTESR;
 import defeatedcrow.hac.machine.client.WindmillTESR;
+import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
 import defeatedcrow.hac.main.ClimateMain;
@@ -98,6 +100,7 @@ public class MachineClientProxy {
 	public static void loadEntity() {
 		ClientMainProxy.registRender(EntityMinecartMotor.class, RenderCartMotor.class);
 		ClientMainProxy.registRender(EntityScooter.class, RenderScooter.class);
+		ClientMainProxy.registRender(EntityMagneticHover.class, RenderMagneticHover.class);
 	}
 
 	public static void loadTE() {
@@ -177,7 +180,7 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.fauset, ClimateCore.PACKAGE_ID, "dcs_device_fauset", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_ID, "dcs_device_mechanical", "machine",
-				4);
+				5);
 		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
 		instance.regSimpleItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_ID, "dcs_device_torque_checker_steel",
 				"machine", 0);
@@ -202,7 +205,7 @@ public class MachineClientProxy {
 		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 12);
 		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 2);
 		instance.regSimpleItem(MachineInit.catalyst, ClimateCore.PACKAGE_ID, "dcs_misc_catalyst", "misc", 3);
-		instance.regSimpleItem(MachineInit.gemcore, ClimateCore.PACKAGE_ID, "dcs_misc_gemcore", "misc", 0);
+		instance.regSimpleItem(MachineInit.gemcore, ClimateCore.PACKAGE_ID, "dcs_misc_gemcore", "misc", 1);
 		instance.regSimpleItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_ID, "dcs_device_mold_aluminium",
 				"machine", 3);
 		instance.regSimpleItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_ID, "dcs_device_mold_alloy", "machine", 3);
@@ -216,6 +219,7 @@ public class MachineClientProxy {
 				"machine", 0);
 		instance.regSimpleItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_ID, "dcs_motor_minecart", "device", 0);
 		instance.regSimpleItem(MachineInit.scooter, ClimateCore.PACKAGE_ID, "dcs_motor_scooter", "device", 3);
+		instance.regSimpleItem(MachineInit.magneticHover, ClimateCore.PACKAGE_ID, "dcs_magnetic_hover", "device", 0);
 		instance.regSimpleItem(MachineInit.platingChrome, ClimateCore.PACKAGE_ID, "dcs_coating_tool", "misc", 9);
 
 		// fluid

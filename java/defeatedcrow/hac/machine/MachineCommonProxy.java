@@ -39,6 +39,7 @@ import defeatedcrow.hac.machine.block.TileWaterPump;
 import defeatedcrow.hac.machine.block.TileWatermill;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
+import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
 import defeatedcrow.hac.main.ClimateMain;
@@ -94,6 +95,9 @@ public class MachineCommonProxy {
 
 		EntityRegistry.registerModEntity(EntityScooter.class, ClimateCore.PACKAGE_BASE + "entity.machine.motor_scooter",
 				81, ClimateMain.instance, 128, 1, true);
+
+		EntityRegistry.registerModEntity(EntityMagneticHover.class,
+				ClimateCore.PACKAGE_BASE + "entity.machine.magnetic_hover", 82, ClimateMain.instance, 128, 1, true);
 
 	}
 

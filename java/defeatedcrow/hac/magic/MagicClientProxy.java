@@ -14,6 +14,7 @@ import defeatedcrow.hac.magic.block.TileMaceIce;
 import defeatedcrow.hac.magic.block.TileMaceLight;
 import defeatedcrow.hac.magic.block.TileMaceMoon;
 import defeatedcrow.hac.magic.block.TileMaceOcean;
+import defeatedcrow.hac.magic.block.TileTimeCage;
 import defeatedcrow.hac.magic.client.HealCircleRenderer;
 import defeatedcrow.hac.magic.client.MagicCircleRenderer;
 import defeatedcrow.hac.magic.client.MagicDaggerRenderer;
@@ -32,6 +33,7 @@ import defeatedcrow.hac.magic.client.TESRMaceGlory;
 import defeatedcrow.hac.magic.client.TESRMaceIce;
 import defeatedcrow.hac.magic.client.TESRMaceMoon;
 import defeatedcrow.hac.magic.client.TESRMaceOcean;
+import defeatedcrow.hac.magic.client.TESRTimeCage;
 import defeatedcrow.hac.magic.proj.EntityHealBarrier;
 import defeatedcrow.hac.magic.proj.EntityMobBarrier;
 import defeatedcrow.hac.magic.proj.EntityProjBarrier;
@@ -107,6 +109,8 @@ public class MagicClientProxy {
 				new TESRMaceFlower().setNoFrame());
 		ClientRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory",
 				new TESRMaceGlory().setNoFrame());
+
+		ClientRegistry.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage", new TESRTimeCage());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -127,6 +131,7 @@ public class MagicClientProxy {
 		instance.regTEBlock(MagicInit.lotusCandle, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_white", "magic", 0);
 		instance.regTEBlock(MagicInit.lotusCandleBlack, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_black", "magic", 0);
 		instance.regSimpleBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_ID, "dcs_magic_biomeglass", "magic", 3);
+		instance.regTEBlock(MagicInit.timeCage, ClimateCore.PACKAGE_ID, "dcs_time_cage", "magic", 0);
 
 		instance.regTEBlock(MagicInit.maceSun, ClimateCore.PACKAGE_ID, "dcs_magicmace_light", "magic", 0);
 		instance.regTEBlock(MagicInit.maceMoon, ClimateCore.PACKAGE_ID, "dcs_magicmace_moon", "magic", 0);

@@ -19,6 +19,7 @@ public class MagicInit {
 	public static Block infernalFlame;
 
 	public static Block elestial;
+	public static Block timeCage;
 
 	// magical mace
 

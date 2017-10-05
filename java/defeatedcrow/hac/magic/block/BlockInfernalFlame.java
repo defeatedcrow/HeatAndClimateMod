@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,6 +30,7 @@ public class BlockInfernalFlame extends BlockContainer implements IHeatTile {
 
 	public BlockInfernalFlame(String s) {
 		super(Material.FIRE);
+		this.setSoundType(SoundType.SNOW);
 		this.setUnlocalizedName(s);
 		this.setTickRandomly(true);
 		this.setLightLevel(1.0F);

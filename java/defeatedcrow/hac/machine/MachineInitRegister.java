@@ -50,6 +50,7 @@ import defeatedcrow.hac.machine.item.ItemCatalyst;
 import defeatedcrow.hac.machine.item.ItemDynamite;
 import defeatedcrow.hac.machine.item.ItemGemCore;
 import defeatedcrow.hac.machine.item.ItemMachineMaterial;
+import defeatedcrow.hac.machine.item.ItemMagneticHover;
 import defeatedcrow.hac.machine.item.ItemMinecartMotor;
 import defeatedcrow.hac.machine.item.ItemReagents;
 import defeatedcrow.hac.machine.item.ItemScooter;
@@ -211,10 +212,14 @@ public class MachineInitRegister {
 		MachineInit.scooter = new ItemScooter().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_scooter");
 		GameRegistry.register(MachineInit.scooter.setRegistryName(ClimateCore.PACKAGE_BASE + "_motor_scooter"));
 
+		MachineInit.magneticHover = new ItemMagneticHover()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magnetic_hover");
+		GameRegistry.register(MachineInit.magneticHover.setRegistryName(ClimateCore.PACKAGE_BASE + "_magnetic_hover"));
+
 	}
 
 	static void loadItems() {
-		MachineInit.machimeMaterials = new ItemMachineMaterial(4)
+		MachineInit.machimeMaterials = new ItemMachineMaterial(5)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mechanical");
 		GameRegistry.register(MachineInit.machimeMaterials.setRegistryName(ClimateCore.PACKAGE_BASE + "_mechanical"));
 
@@ -311,7 +316,7 @@ public class MachineInitRegister {
 			MachineInit.reagent.setCreativeTab(ClimateMain.machine);
 			MachineInit.synthetic.setCreativeTab(ClimateMain.machine);
 			MachineInit.catalyst.setCreativeTab(ClimateMain.machine);
-			MachineInit.gemcore.setCreativeTab(ClimateMain.machine);
+			MachineInit.gemcore.setCreativeTab(ClimateMain.tool);
 
 			MachineInit.adapterPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.acceptorPanel.setCreativeTab(ClimateMain.machine);
@@ -320,7 +325,7 @@ public class MachineInitRegister {
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);
 			MachineInit.scooter.setCreativeTab(ClimateMain.machine);
-
+			MachineInit.magneticHover.setCreativeTab(ClimateMain.machine);
 			MachineInit.platingChrome.setCreativeTab(ClimateMain.machine);
 		}
 	}

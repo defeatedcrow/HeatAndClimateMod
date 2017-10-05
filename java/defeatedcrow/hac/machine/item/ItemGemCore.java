@@ -14,7 +14,7 @@ public class ItemGemCore extends DCItem {
 
 	public ItemGemCore() {
 		super();
-		maxMeta = 0;
+		maxMeta = 1;
 	}
 
 	@Override

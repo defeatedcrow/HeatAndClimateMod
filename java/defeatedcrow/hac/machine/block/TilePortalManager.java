@@ -570,7 +570,10 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false : player != null;
+		if (getWorld().getTileEntity(this.pos) != this || player == null)
+			return false;
+		else
+			return Math.sqrt(player.getDistanceSq(pos)) < 256D;
 	}
 
 	@Override

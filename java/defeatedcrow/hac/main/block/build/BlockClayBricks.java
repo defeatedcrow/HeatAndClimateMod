@@ -61,7 +61,7 @@ public class BlockClayBricks extends DCSimpleBlock implements ITexturePath, IThe
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
+		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override

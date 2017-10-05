@@ -13,6 +13,7 @@ import defeatedcrow.hac.magic.block.TileMaceIce;
 import defeatedcrow.hac.magic.block.TileMaceLight;
 import defeatedcrow.hac.magic.block.TileMaceMoon;
 import defeatedcrow.hac.magic.block.TileMaceOcean;
+import defeatedcrow.hac.magic.block.TileTimeCage;
 import defeatedcrow.hac.magic.proj.EntityHealBarrier;
 import defeatedcrow.hac.magic.proj.EntityMobBarrier;
 import defeatedcrow.hac.magic.proj.EntityProjBarrier;
@@ -107,6 +108,8 @@ public class MagicCommonProxy {
 		GameRegistry.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn");
 		GameRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower");
 		GameRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory");
+
+		GameRegistry.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage");
 	}
 
 }

@@ -64,10 +64,10 @@ public class MachineDeviceRecipes {
 					0.05F, "oreGypsum");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 0), new ItemStack(MainInit.gems, 1, 4),
-					0.05F, "oreChalcedonyB");
+					0.05F, "oreChalcedonyBlue");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 2), new ItemStack(Items.QUARTZ), 0.25F,
-					"oreChalcedonyW");
+					"oreChalcedonyWhite");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 4), new ItemStack(MainInit.gems, 1, 4),
 					0.2F, "oreSapphire");
@@ -474,6 +474,12 @@ public class MachineDeviceRecipes {
 							"dustCoal"
 					});
 			RecipeAPI.registerReactorRecipes.addRecipe(r30, DCHeatTier.ABSOLUTE);
+
+			IReactorRecipe r33 = new ReactorRecipe(null, null, new FluidStack(MachineInit.nitrogen, 1000), null,
+					DCHeatTier.ABSOLUTE, 0, null, null, null, new Object[] {
+							new ItemStack(Items.COAL, 1, 1)
+					});
+			RecipeAPI.registerReactorRecipes.addRecipe(r33, DCHeatTier.ABSOLUTE);
 
 			IReactorRecipe r29 = new ReactorRecipe(new ItemStack(Blocks.STONE), null, null, null, DCHeatTier.NORMAL, 0,
 					null, new FluidStack(FluidRegistry.WATER, 100), new FluidStack(FluidRegistry.LAVA, 100),

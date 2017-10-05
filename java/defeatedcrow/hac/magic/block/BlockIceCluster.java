@@ -34,7 +34,7 @@ public class BlockIceCluster extends BlockContainer implements IHeatTile {
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.setTickRandomly(true);
-		this.setLightLevel(0.4F);
+		this.setLightLevel(0.5F);
 	}
 
 	@Override

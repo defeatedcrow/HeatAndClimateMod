@@ -109,6 +109,7 @@ item.dcs_mechanical_alternator.name=Alternator
 item.dcs_mechanical_enginepart.name=Engine Part
 item.dcs_mechanical_engine.name=Engine
 item.dcs_mechanical_tire.name=Tire
+item.dcs_mechanical_sc_magnet.name=SC Magnet
 item.dcs_reagent_drop_coaltar.name=CoalTar Drop
 item.dcs_reagent_drop_glycerine.name=Glycerine Drop
 item.dcs_reagent_drop_synthetic.name=Synthetic Drop
@@ -130,6 +131,7 @@ item.dcs_synthetic_string.name=Synthetic String
 item.dcs_synthetic_cloth.name=Synthetic Cloth
 item.dcs_synthetic_plate.name=Synthetic Plate
 item.dcs_gemcore_portal.name=Transfer Core
+item.dcs_gemcore_feather.name=Butterfly's Wing
 
 item.dcs_flowerpot_white.name=White Flower Pot
 item.dcs_flowerpot_brown.name=Brown Flower Pot
@@ -430,6 +432,7 @@ item.dcs_motor_scooter_orange.name=Scooter (Orange)
 item.dcs_motor_scooter_blue.name=Scooter (Blue)
 item.dcs_motor_scooter_white.name=Scooter (White)
 item.dcs_motor_scooter_black.name=Scooter (Black)
+item.dcs_magnetic_hover_blue.name=Magnetic Hovercraft
 
 ## plugin
 item.dcs_metal_oredust_zinc_dirty.name=Dirty Zinc Dust
@@ -708,6 +711,7 @@ tile.dcs_device_biomeglass_0.name=Biome Cube(Plain)
 tile.dcs_device_biomeglass_1.name=Biome Cube(Jungle)
 tile.dcs_device_biomeglass_2.name=Biome Cube(Desert)
 tile.dcs_device_biomeglass_3.name=Biome Cube(Ice)
+tile.dcs_time_cage_0.name=Butterfly of Time Flow
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -1181,4 +1185,5 @@ entity.dcs_climate.dcsentity.main.dynamite_red.name=Dynamite
 entity.dcs_climate.dcsentity.main.dynamite_blue.name=Silky Dynamite
 entity.dcs_climate.dcsentity.machine.motor_cart.name=Motorized Cart
 entity.dcs_climate.dcsentity.machine.motor_scooter.name=Scooter
+entity.dcs_climate.dcsentity.machine.magnetic_hover.name=Magnetic Hovercraft
 

@@ -47,24 +47,25 @@ import net.minecraftforge.items.wrapper.InvWrapper;
 
 public class EntityScooter extends Entity implements IInventory {
 
-	private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityScooter.class,
+	protected static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityScooter.class,
 			DataSerializers.BOOLEAN);
-	private static final DataParameter<Integer> COLOR = EntityDataManager.<Integer>createKey(EntityScooter.class,
+	protected static final DataParameter<Integer> COLOR = EntityDataManager.<Integer>createKey(EntityScooter.class,
 			DataSerializers.VARINT);
 
 	public float headYaw;
 	public float prevHeadYaw;
 
-	private int lerpSteps;
-	private double lastX;
-	private double lastY;
-	private double lastZ;
-	private double lastYaw;
-	private double lastRot;
+	protected int lerpSteps;
+	protected double lastX;
+	protected double lastY;
+	protected double lastZ;
+	protected double lastYaw;
+	protected double lastRot;
+	public double lastMoveY;
 
 	public boolean brake;
 
-	protected Status status = Status.IN_AIR;
+	public Status status = Status.IN_AIR;
 	protected Status prevStatus = Status.IN_AIR;
 
 	public final ItemStack[] tankSlot = new ItemStack[3];
@@ -117,6 +118,7 @@ public class EntityScooter extends Entity implements IInventory {
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
+		this.lastMoveY = this.motionY;
 		super.onUpdate();
 		this.tickLerp();
 
@@ -152,22 +154,7 @@ public class EntityScooter extends Entity implements IInventory {
 
 		// 移動処理
 
-		// falling
-		this.fallDistance = 0.0F;
-		if (rider != null) {
-			rider.fallDistance = 0.0F;
-		}
-		if (this.status == Status.IN_TILE) {
-			this.motionY += 0.1D;
-		} else if (status == Status.UNDER_WATER) {
-			this.motionY -= 0.02D;
-		} else {
-			if (this.onGround) {
-				this.motionY *= 0.5D;
-			} else {
-				this.motionY -= 0.05D;
-			}
-		}
+		updateFalling(rider);
 
 		if (!worldObj.isRemote) {
 
@@ -179,13 +166,8 @@ public class EntityScooter extends Entity implements IInventory {
 				this.motionX *= 0.5D;
 				this.motionZ *= 0.5D;
 			} else {
-				if (status == Status.UNDER_WATER) {
-					this.motionX *= 0.75D;
-					this.motionZ *= 0.75D;
-				} else {
-					this.motionX *= 0.99D;
-					this.motionZ *= 0.99D;
-				}
+				this.motionX *= 0.99D;
+				this.motionZ *= 0.99D;
 			}
 
 			float speed = (float) Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
@@ -216,6 +198,14 @@ public class EntityScooter extends Entity implements IInventory {
 			}
 		}
 
+		if (this.status == Status.IN_TILE) {
+			this.setPosition(posX, posY + 1D, posZ);
+		}
+
+		addParticle();
+	}
+
+	protected void addParticle() {
 		if (this.getPowered() && this.rand.nextInt(4) == 0) {
 			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 0.75D
 					- Math.cos(rotationYaw * 0.017453292F) * 0.25D;
@@ -226,10 +216,29 @@ public class EntityScooter extends Entity implements IInventory {
 		}
 	}
 
-	public static int getBurnTime(Fluid fluid) {
+	public int getBurnTime(Fluid fluid) {
 		String s = fluid.getName();
-		int burn = MainAPIManager.fuelRegister.getBurningTime(s) * 10;
+		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
 		return burn;
+	}
+
+	public void updateFalling(EntityPlayer rider) {
+		// falling
+		this.fallDistance = 0.0F;
+		if (rider != null) {
+			rider.fallDistance = 0.0F;
+		}
+		if (this.status == Status.ON_TILE) {
+			this.motionY += 0.1D;
+		} else if (status == Status.UNDER_WATER) {
+			this.motionY -= 0.02D;
+		} else {
+			if (this.onGround) {
+				this.motionY *= 0.5D;
+			} else {
+				this.motionY -= 0.05D;
+			}
+		}
 	}
 
 	protected void updateSpeed(EntityPlayer rider, boolean brake) {
@@ -256,6 +265,11 @@ public class EntityScooter extends Entity implements IInventory {
 			this.motionZ *= 0.5D;
 		}
 
+		if (this.status == Status.UNDER_WATER) {
+			this.motionX *= 0.75D;
+			this.motionZ *= 0.75D;
+		}
+
 	}
 
 	protected void updateYaw(EntityPlayer rider) {
@@ -277,7 +291,7 @@ public class EntityScooter extends Entity implements IInventory {
 	}
 
 	// 現時点ではtrue
-	private int cooltime = 20;
+	protected int cooltime = 20;
 
 	protected boolean updatePowered() {
 		if (!worldObj.isRemote && cooltime <= 0) {
@@ -355,7 +369,7 @@ public class EntityScooter extends Entity implements IInventory {
 		return null;
 	}
 
-	private Status getStatus() {
+	protected Status getStatus() {
 		// AxisAlignedBB aabb = this.getEntityBoundingBox();
 		// int ix = MathHelper.floor_double(posX);
 		// int iy = MathHelper.floor_double(posY);
@@ -375,7 +389,7 @@ public class EntityScooter extends Entity implements IInventory {
 		return getUnderGround();
 	}
 
-	private Status getUnderGround() {
+	protected Status getUnderGround() {
 		AxisAlignedBB aabb = this.getEntityBoundingBox();
 		int i = MathHelper.floor_double(aabb.minX);
 		int j = MathHelper.ceiling_double_int(aabb.maxX);
@@ -412,11 +426,11 @@ public class EntityScooter extends Entity implements IInventory {
 			mpos.release();
 		}
 
-		return flag ? Status.IN_TILE : flag2 ? Status.UNDER_WATER : Status.IN_AIR;
+		return flag ? Status.ON_TILE : flag2 ? Status.UNDER_WATER : Status.IN_AIR;
 	}
 
 	// ガクガク対策
-	private void tickLerp() {
+	protected void tickLerp() {
 		if (this.lerpSteps > 0 && !this.canPassengerSteer()) {
 			double d0 = this.posX + (this.lastX - this.posX); // / this.lerpSteps;
 			double d1 = this.posY + (this.lastY - this.posY); // / this.lerpSteps;
@@ -614,7 +628,8 @@ public class EntityScooter extends Entity implements IInventory {
 	public static enum Status {
 		IN_TILE,
 		UNDER_WATER,
-		IN_AIR;
+		IN_AIR,
+		ON_TILE;
 	}
 
 	/* ==== fluid ==== */

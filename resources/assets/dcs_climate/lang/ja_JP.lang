@@ -100,6 +100,7 @@ item.dcs_mechanical_alternator.name=オルタネーター
 item.dcs_mechanical_enginepart.name=エンジン部品
 item.dcs_mechanical_engine.name=エンジン
 item.dcs_mechanical_tire.name=タイヤ
+item.dcs_mechanical_sc_magnet.name=SC磁石
 item.dcs_reagent_drop_coaltar.name=コールタール
 item.dcs_reagent_drop_glycerine.name=グリセリン
 item.dcs_reagent_drop_synthetic.name=合成樹脂ドロップ
@@ -121,6 +122,7 @@ item.dcs_synthetic_string.name=合成繊維
 item.dcs_synthetic_cloth.name=合成布
 item.dcs_synthetic_plate.name=合成樹脂板
 item.dcs_gemcore_portal.name=ポータルコア
+item.dcs_gemcore_feather.name=翅のかけら
 
 item.dcs_flowerpot_white.name=白の花瓶
 item.dcs_flowerpot_brown.name=茶色の花瓶
@@ -415,6 +417,7 @@ item.dcs_motor_scooter_orange.name=スクーター(オレンジ)
 item.dcs_motor_scooter_blue.name=スクーター(青)
 item.dcs_motor_scooter_white.name=スクーター(白)
 item.dcs_motor_scooter_black.name=スクーター(黒)
+item.dcs_magnetic_hover_blue.name=超電導ホバークラフト
 
 item.dcs_metal_oredust_zinc_dirty.name=汚れた亜鉛の粉
 item.dcs_metal_shard_zinc.name=亜鉛の欠片
@@ -687,6 +690,7 @@ tile.dcs_device_biomeglass_0.name=バイオームグラス(平原)
 tile.dcs_device_biomeglass_1.name=バイオームグラス(ジャングル)
 tile.dcs_device_biomeglass_2.name=バイオームグラス(砂漠)
 tile.dcs_device_biomeglass_3.name=バイオームグラス(氷原)
+tile.dcs_time_cage_0.name=時の蝶の標本
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪

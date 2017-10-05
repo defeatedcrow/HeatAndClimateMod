@@ -103,6 +103,7 @@ public class MachineInit {
 
 	public static Item motorMinecart;
 	public static Item scooter;
+	public static Item magneticHover;
 
 	public static Item platingChrome;
 }
