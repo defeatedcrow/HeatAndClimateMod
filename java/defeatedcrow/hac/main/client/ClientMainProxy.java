@@ -33,7 +33,7 @@ import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
-import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
+import defeatedcrow.hac.main.block.fluid.FluidUtil;
 import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
 import defeatedcrow.hac.main.client.block.TESRMagnetChest;
@@ -100,7 +100,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		JsonBakery.instance.addTex(BlockCardboard.getTexList());
 		JsonBakery.instance.addTex(BlockCropBasket.getTexList());
 		JsonBakery.instance.addTex(BlockDustBag.getTexList());
-		JsonBakery.instance.addTex(DCFluidBlockBase.getTexList());
+		JsonBakery.instance.addTex(FluidUtil.getTexList());
 
 		List<String> particles = new ArrayList<String>();
 		particles.add(ParticleBlink.BLINK_TEX);

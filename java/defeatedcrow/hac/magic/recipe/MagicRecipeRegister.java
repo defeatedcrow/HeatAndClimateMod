@@ -3,6 +3,7 @@ package defeatedcrow.hac.magic.recipe;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -618,6 +619,18 @@ public class MagicRecipeRegister {
 					"gemPeridot",
 					'Z',
 					new ItemStack(MagicInit.maceStarItem, 1, 3)
+			}));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.timeCage, 1, 0), new Object[] {
+					"XYX",
+					"YZY",
+					"XYX",
+					'X',
+					"ingotSilver",
+					'Y',
+					new ItemStack(MainInit.selenite, 1, 0),
+					'Z',
+					new ItemStack(MachineInit.gemcore, 1, 1)
 			}));
 		}
 	}

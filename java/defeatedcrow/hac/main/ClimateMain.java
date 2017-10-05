@@ -15,6 +15,7 @@ import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
+import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -36,8 +37,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 1;
 	public static final int MOD_MINOR = 5;
-	public static final int MOD_BUILD = 19;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.5.16,)";
+	public static final int MOD_BUILD = 20;
+	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.5.17,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
@@ -87,6 +88,8 @@ public class ClimateMain {
 		// achievement
 		AchievementClimate.load();
 		OreDicRegister.load();
+		// loader
+		DCChunkloadContoroller.getInstance().preInit();
 	}
 
 	@EventHandler

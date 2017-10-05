@@ -640,6 +640,20 @@ public class MachineRecipes {
 				"gemSchorl"
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
+				"ZXZ",
+				"WYW",
+				"ZXZ",
+				'W',
+				"gemSapphire",
+				'X',
+				"gemCelestite",
+				'Y',
+				"gemClam",
+				'Z',
+				"obsidian"
+		}));
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.adapterCard, 1, 0), new Object[] {
 				"ZXZ",
 				" Y ",
@@ -771,6 +785,16 @@ public class MachineRecipes {
 				"dustSulfur"
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.machimeMaterials, 1, 5), new Object[] {
+				"ZXZ",
+				"X X",
+				"ZXZ",
+				'X',
+				"ingotBSCCO",
+				'Z',
+				"ingotTitanium"
+		}));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.motorMinecart, 1, 0), new Object[] {
 				new ItemStack(MachineInit.machimeMaterials, 1, 3),
 				new ItemStack(Items.MINECART, 1, 0)
@@ -808,6 +832,20 @@ public class MachineRecipes {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(MachineInit.scooter, 1, 3), new Object[] {
 				new ItemStack(MachineInit.scooter, 1, 32767),
 				"dyeBlack"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.magneticHover, 1, 0), new Object[] {
+				" X ",
+				"WYW",
+				"Z Z",
+				'X',
+				new ItemStack(Items.SADDLE, 1, 0),
+				'Y',
+				new ItemStack(MachineInit.freezer, 1, 0),
+				'W',
+				"gearSteel",
+				'Z',
+				new ItemStack(MachineInit.machimeMaterials, 1, 5)
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MachineInit.platingChrome, 1, 9), new Object[] {

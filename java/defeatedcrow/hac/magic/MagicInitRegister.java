@@ -14,6 +14,7 @@ import defeatedcrow.hac.magic.block.BlockMaceIce;
 import defeatedcrow.hac.magic.block.BlockMaceLight;
 import defeatedcrow.hac.magic.block.BlockMaceMoon;
 import defeatedcrow.hac.magic.block.BlockMaceOcean;
+import defeatedcrow.hac.magic.block.BlockTimeCage;
 import defeatedcrow.hac.magic.block.ItemBlockMaceBird;
 import defeatedcrow.hac.magic.block.ItemBlockMaceBurn;
 import defeatedcrow.hac.magic.block.ItemBlockMaceFlower;
@@ -130,6 +131,9 @@ public class MagicInitRegister {
 		MagicInit.maceGlory.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_glory");
 		GameRegistry.register(MagicInit.maceGlory);
 		GameRegistry.register(new ItemBlockMaceGlory(MagicInit.maceGlory));
+
+		MagicInit.timeCage = new BlockTimeCage(ClimateCore.PACKAGE_BASE + "_time_cage");
+		MainMaterialRegister.registerBlock(MagicInit.timeCage, ClimateCore.PACKAGE_BASE + "_time_cage");
 	}
 
 	static void loadCreativeTab() {
@@ -156,6 +160,7 @@ public class MagicInitRegister {
 		MagicInit.lotusCandleBlack.setCreativeTab(ClimateMain.build);
 
 		MagicInit.biomeOrb.setCreativeTab(ClimateMain.build);
+		MagicInit.timeCage.setCreativeTab(ClimateMain.build);
 
 		// MagicInit.clusterIce.setCreativeTab(ClimateMain.tool);
 		// MagicInit.infernalFlame.setCreativeTab(ClimateMain.tool);
