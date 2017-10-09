@@ -202,7 +202,9 @@ public class EntityScooter extends Entity implements IInventory {
 			this.setPosition(posX, posY + 1D, posZ);
 		}
 
-		addParticle();
+		if (worldObj.isRemote) {
+			addParticle();
+		}
 	}
 
 	protected void addParticle() {
