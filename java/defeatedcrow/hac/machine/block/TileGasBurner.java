@@ -44,7 +44,7 @@ public class TileGasBurner extends TileCookingStove {
 				break;
 			}
 
-			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
+			TileEntity tile = world.getTileEntity(getPos().offset(face));
 			if (tile != null
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,

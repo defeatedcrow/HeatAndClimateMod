@@ -39,9 +39,9 @@ public class EntityProjBarrier extends EntityMobBarrier {
 		super.onUpdate();
 
 		// 接触判定
-		if (!worldObj.isRemote) {
-			List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox()
-					.expandXyz(1.0D));
+		if (!world.isRemote) {
+			List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this,
+					this.getEntityBoundingBox().grow(1.0D));
 			if (list != null && !list.isEmpty()) {
 				for (int i = 0; i < list.size(); i++) {
 					Entity entity = list.get(i);
@@ -79,8 +79,7 @@ public class EntityProjBarrier extends EntityMobBarrier {
 	}
 
 	@Override
-	public void applyEntityCollision(Entity entity) {
-	}
+	public void applyEntityCollision(Entity entity) {}
 
 	@Override
 	@Nullable

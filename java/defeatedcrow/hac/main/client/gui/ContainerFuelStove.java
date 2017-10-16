@@ -46,7 +46,7 @@ public class ContainerFuelStove extends Container {
 			IContainerListener icrafting = this.listeners.get(i);
 
 			if (this.current[i] != this.processor.getField(i)) {
-				icrafting.sendProgressBarUpdate(this, i, this.processor.getField(i));
+				icrafting.sendWindowProperty(this, i, this.processor.getField(i));
 			}
 
 			this.current[i] = this.processor.getField(i);
@@ -61,7 +61,7 @@ public class ContainerFuelStove extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return this.processor.isUseableByPlayer(playerIn);
+		return this.processor.isUsableByPlayer(playerIn);
 	}
 
 	@Override

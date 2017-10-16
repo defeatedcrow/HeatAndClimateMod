@@ -33,7 +33,7 @@ public class EntityCution extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 
-		if (worldObj.isRemote) {
+		if (world.isRemote) {
 			if (count > 0) {
 				count--;
 			} else {
@@ -47,15 +47,12 @@ public class EntityCution extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {
-	}
+	protected void entityInit() {}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
-	}
+	protected void readEntityFromNBT(NBTTagCompound compound) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
-	}
+	protected void writeEntityToNBT(NBTTagCompound compound) {}
 
 }

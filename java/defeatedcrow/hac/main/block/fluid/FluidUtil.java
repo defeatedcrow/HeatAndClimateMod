@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +27,8 @@ public class FluidUtil {
 	 */
 	public static boolean onActivateDCTank(TileEntity tile, ItemStack item, World world, IBlockState state,
 			EnumFacing side, EntityPlayer player) {
-		if (item != null && tile != null && item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)
+		if (!DCUtil.isEmpty(item) && tile != null
+				&& item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)
 				&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 			ItemStack copy = new ItemStack(item.getItem(), 1, item.getItemDamage());
 			if (item.getTagCompound() != null) {
@@ -46,15 +48,12 @@ public class FluidUtil {
 				DCTank dc_in = (DCTank) intank;
 				DCTank dc_out = (DCTank) outtank;
 
-				ItemStack ret = null;
+				ItemStack ret = ItemStack.EMPTY;
 				boolean success = false;
 				// input
 				if (f1 != null && dc_in.fill(f1, false) == max) {
 					FluidStack fill = dummy.drain(max, true);
 					ret = copy;
-					if (ret.stackSize <= 0) {
-						ret = null;
-					}
 					if (fill != null && fill.amount == max) {
 						dc_in.fill(fill, true);
 						success = true;
@@ -64,9 +63,6 @@ public class FluidUtil {
 				else if (f1 == null && dc_out.drain(max, false) != null) {
 					int drain = dummy.fill(dc_out.drain(max, false), true);
 					ret = copy;
-					if (ret.stackSize <= 0) {
-						ret = null;
-					}
 					if (drain == max) {
 						dc_out.drain(drain, true);
 						success = true;
@@ -74,14 +70,14 @@ public class FluidUtil {
 				}
 
 				if (success) {
-					if (!player.capabilities.isCreativeMode && item.stackSize-- <= 0) {
-						item = null;
+					if (!player.capabilities.isCreativeMode) {
+						DCUtil.reduceStackSize(item, 1);
 					}
 					tile.markDirty();
 					player.inventory.markDirty();
-					if (ret != null) {
+					if (!DCUtil.isEmpty(ret)) {
 						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret);
-						world.spawnEntityInWorld(drop);
+						world.spawnEntity(drop);
 					}
 					return true;
 				}

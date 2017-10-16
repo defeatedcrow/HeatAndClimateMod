@@ -59,7 +59,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 
 	@Override
 	public boolean isRecipeMaterial() {
-		IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(inv[0]);
+		IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(inventory.getStackInSlot(0));
 		return recipe != null;
 	}
 
@@ -91,12 +91,12 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 				int r = (int) (chance * 100);
 				int i1 = this.insertResult(out);
 				if (i1 > 0) {
-					if (this.worldObj.rand.nextInt(100) < r) {
+					if (this.world.rand.nextInt(100) < r) {
 						int i2 = this.insertResult(sec);
 					}
 					int i3 = this.insertResult(cont);
 					if (in2 instanceof ItemStack) {
-						int red = ((ItemStack) in2).stackSize;
+						int red = ((ItemStack) in2).getCount();
 						this.decrStackSize(0, red);
 					} else {
 						this.decrStackSize(0, 1);
@@ -125,6 +125,11 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 	@Override
 	public String getGuiID() {
 		return "dcs.gui.device.mill";
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return inventory.isEmpty();
 	}
 
 }

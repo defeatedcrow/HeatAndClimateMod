@@ -19,9 +19,9 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
 	@Override
 	public void updateTile() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// Airflowチェック
-			DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos);
+			DCAirflow air = ClimateAPI.calculator.getAirflow(world, pos);
 			float wind = getGearTier() * 0.25F;
 			switch (air) {
 			case NORMAL:
@@ -35,14 +35,14 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 				break;
 			default:
 			}
-			if (this.getBaseSide() == DCUtil.getWorldWind(worldObj).getOpposite()) {
+			if (this.getBaseSide() == DCUtil.getWorldWind(world).getOpposite()) {
 				wind *= 2.0F;
 			}
 			this.currentTorque = wind;
 
 			// provider
 			for (EnumFacing side : getOutputSide()) {
-				this.provideTorque(worldObj, getPos().offset(side), side, false);
+				this.provideTorque(world, getPos().offset(side), side, false);
 			}
 		}
 		super.updateTile();

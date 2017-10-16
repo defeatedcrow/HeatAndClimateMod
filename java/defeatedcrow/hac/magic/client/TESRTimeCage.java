@@ -16,14 +16,13 @@ public class TESRTimeCage extends TileEntitySpecialRenderer<TileTimeCage> {
 	private static final ModelButterflyCage MODEL = new ModelButterflyCage();
 
 	@Override
-	public void renderTileEntityAt(TileTimeCage te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileTimeCage te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		this.bindTexture(TEX);
 		float r = 0.0F;
 		int type = 0;
 		int face = 0;
 
-		if (te.hasWorldObj()) {
+		if (te.hasWorld()) {
 			int meta = te.getBlockMetadata();
 
 			type = meta & 3;

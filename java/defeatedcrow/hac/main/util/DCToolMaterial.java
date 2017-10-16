@@ -34,59 +34,61 @@ public class DCToolMaterial {
 		return null;
 	}
 
-	public static DCMaterial getMaterial(int i) {
+	public static DCMaterialEnum getMaterial(int i) {
 		if (i == 0)
-			return DCMaterial.BRASS;
+			return DCMaterialEnum.BRASS;
 		if (i == 1)
-			return DCMaterial.STEEL;
+			return DCMaterialEnum.STEEL;
 		if (i == 2)
-			return DCMaterial.SILVER;
+			return DCMaterialEnum.SILVER;
 		if (i == 3)
-			return DCMaterial.NICKELSILVER;
+			return DCMaterialEnum.NICKELSILVER;
 		if (i == 4)
-			return DCMaterial.CHALCEDONY;
+			return DCMaterialEnum.CHALCEDONY;
 		if (i == 5)
-			return DCMaterial.SAPPHIRE;
+			return DCMaterialEnum.SAPPHIRE;
 		if (i == 6)
-			return DCMaterial.TITANIUM;
+			return DCMaterialEnum.TITANIUM;
 		return null;
 	}
 
 	public static void load() {
-		DCToolMaterial.DC_SILVER = EnumHelper.addToolMaterial("dcs_" + DCMaterial.SILVER.name,
-				DCMaterial.SILVER.harvestTier, DCMaterial.SILVER.duration, DCMaterial.SILVER.efficiency,
-				DCMaterial.SILVER.attackDam, DCMaterial.SILVER.enchant);
-		DCToolMaterial.DC_SILVER.setRepairItem(DCMaterial.SILVER.repairItem);
+		DCToolMaterial.DC_SILVER = EnumHelper.addToolMaterial("dcs_" + DCMaterialEnum.SILVER.name,
+				DCMaterialEnum.SILVER.harvestTier, DCMaterialEnum.SILVER.duration, DCMaterialEnum.SILVER.efficiency,
+				DCMaterialEnum.SILVER.attackDam, DCMaterialEnum.SILVER.enchant);
+		DCToolMaterial.DC_SILVER.setRepairItem(DCMaterialEnum.SILVER.repairItem);
 
-		DCToolMaterial.DC_NICKELSILVER = EnumHelper.addToolMaterial("dcs_" + DCMaterial.NICKELSILVER.name,
-				DCMaterial.NICKELSILVER.harvestTier, DCMaterial.NICKELSILVER.duration,
-				DCMaterial.NICKELSILVER.efficiency, DCMaterial.NICKELSILVER.attackDam, DCMaterial.NICKELSILVER.enchant);
-		DCToolMaterial.DC_NICKELSILVER.setRepairItem(DCMaterial.NICKELSILVER.repairItem);
+		DCToolMaterial.DC_NICKELSILVER = EnumHelper.addToolMaterial("dcs_" + DCMaterialEnum.NICKELSILVER.name,
+				DCMaterialEnum.NICKELSILVER.harvestTier, DCMaterialEnum.NICKELSILVER.duration,
+				DCMaterialEnum.NICKELSILVER.efficiency, DCMaterialEnum.NICKELSILVER.attackDam,
+				DCMaterialEnum.NICKELSILVER.enchant);
+		DCToolMaterial.DC_NICKELSILVER.setRepairItem(DCMaterialEnum.NICKELSILVER.repairItem);
 
-		DCToolMaterial.DC_BRASS = EnumHelper.addToolMaterial("dcs_" + DCMaterial.BRASS.name,
-				DCMaterial.BRASS.harvestTier, DCMaterial.BRASS.duration, DCMaterial.BRASS.efficiency,
-				DCMaterial.BRASS.attackDam, DCMaterial.BRASS.enchant);
-		DCToolMaterial.DC_BRASS.setRepairItem(DCMaterial.BRASS.repairItem);
+		DCToolMaterial.DC_BRASS = EnumHelper.addToolMaterial("dcs_" + DCMaterialEnum.BRASS.name,
+				DCMaterialEnum.BRASS.harvestTier, DCMaterialEnum.BRASS.duration, DCMaterialEnum.BRASS.efficiency,
+				DCMaterialEnum.BRASS.attackDam, DCMaterialEnum.BRASS.enchant);
+		DCToolMaterial.DC_BRASS.setRepairItem(DCMaterialEnum.BRASS.repairItem);
 
-		DCToolMaterial.DC_STEEL = EnumHelper.addToolMaterial("dcs_" + DCMaterial.STEEL.name,
-				DCMaterial.STEEL.harvestTier, DCMaterial.STEEL.duration, DCMaterial.STEEL.efficiency,
-				DCMaterial.STEEL.attackDam, DCMaterial.STEEL.enchant);
-		DCToolMaterial.DC_STEEL.setRepairItem(DCMaterial.STEEL.repairItem);
+		DCToolMaterial.DC_STEEL = EnumHelper.addToolMaterial("dcs_" + DCMaterialEnum.STEEL.name,
+				DCMaterialEnum.STEEL.harvestTier, DCMaterialEnum.STEEL.duration, DCMaterialEnum.STEEL.efficiency,
+				DCMaterialEnum.STEEL.attackDam, DCMaterialEnum.STEEL.enchant);
+		DCToolMaterial.DC_STEEL.setRepairItem(DCMaterialEnum.STEEL.repairItem);
 
-		DCToolMaterial.DC_CHALCEDONY = EnumHelper.addToolMaterial("dcs_" + DCMaterial.CHALCEDONY.name,
-				DCMaterial.CHALCEDONY.harvestTier, DCMaterial.CHALCEDONY.duration, DCMaterial.CHALCEDONY.efficiency,
-				DCMaterial.CHALCEDONY.attackDam, DCMaterial.CHALCEDONY.enchant);
-		DCToolMaterial.DC_CHALCEDONY.setRepairItem(DCMaterial.CHALCEDONY.repairItem);
+		DCToolMaterial.DC_CHALCEDONY = EnumHelper.addToolMaterial("dcs_" + DCMaterialEnum.CHALCEDONY.name,
+				DCMaterialEnum.CHALCEDONY.harvestTier, DCMaterialEnum.CHALCEDONY.duration,
+				DCMaterialEnum.CHALCEDONY.efficiency, DCMaterialEnum.CHALCEDONY.attackDam,
+				DCMaterialEnum.CHALCEDONY.enchant);
+		DCToolMaterial.DC_CHALCEDONY.setRepairItem(DCMaterialEnum.CHALCEDONY.repairItem);
 
-		DCToolMaterial.DC_SAPPHIRE = EnumHelper.addToolMaterial("dcs_" + DCMaterial.SAPPHIRE.name,
-				DCMaterial.SAPPHIRE.harvestTier, DCMaterial.SAPPHIRE.duration, DCMaterial.SAPPHIRE.efficiency,
-				DCMaterial.SAPPHIRE.attackDam, DCMaterial.SAPPHIRE.enchant);
-		DCToolMaterial.DC_SAPPHIRE.setRepairItem(DCMaterial.SAPPHIRE.repairItem);
+		DCToolMaterial.DC_SAPPHIRE = EnumHelper.addToolMaterial("dcs_" + DCMaterialEnum.SAPPHIRE.name,
+				DCMaterialEnum.SAPPHIRE.harvestTier, DCMaterialEnum.SAPPHIRE.duration,
+				DCMaterialEnum.SAPPHIRE.efficiency, DCMaterialEnum.SAPPHIRE.attackDam, DCMaterialEnum.SAPPHIRE.enchant);
+		DCToolMaterial.DC_SAPPHIRE.setRepairItem(DCMaterialEnum.SAPPHIRE.repairItem);
 
-		DCToolMaterial.DC_TITANIUM = EnumHelper.addToolMaterial("dcs_" + DCMaterial.TITANIUM.name,
-				DCMaterial.TITANIUM.harvestTier, DCMaterial.TITANIUM.duration, DCMaterial.TITANIUM.efficiency,
-				DCMaterial.TITANIUM.attackDam, DCMaterial.TITANIUM.enchant);
-		DCToolMaterial.DC_TITANIUM.setRepairItem(DCMaterial.TITANIUM.repairItem);
+		DCToolMaterial.DC_TITANIUM = EnumHelper.addToolMaterial("dcs_" + DCMaterialEnum.TITANIUM.name,
+				DCMaterialEnum.TITANIUM.harvestTier, DCMaterialEnum.TITANIUM.duration,
+				DCMaterialEnum.TITANIUM.efficiency, DCMaterialEnum.TITANIUM.attackDam, DCMaterialEnum.TITANIUM.enchant);
+		DCToolMaterial.DC_TITANIUM.setRepairItem(DCMaterialEnum.TITANIUM.repairItem);
 	}
 
 }

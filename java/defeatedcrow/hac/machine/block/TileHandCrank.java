@@ -19,7 +19,7 @@ public class TileHandCrank extends TileTorqueBase implements ITorqueProvider {
 		super.updateTile();
 		// provider
 		for (EnumFacing side : getOutputSide()) {
-			this.provideTorque(worldObj, getPos().offset(side), side, false);
+			this.provideTorque(world, getPos().offset(side), side, false);
 		}
 	}
 

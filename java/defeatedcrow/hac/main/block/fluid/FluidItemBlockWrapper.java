@@ -58,12 +58,13 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
 		return new FluidTankProperties[] {
-				new FluidTankProperties(getFluid(), capacity) };
+				new FluidTankProperties(getFluid(), capacity)
+		};
 	}
 
 	@Override
 	public int fill(FluidStack resource, boolean doFill) {
-		if (container.stackSize != 1 || resource == null || resource.amount <= 0 || !canFillFluidType(resource)) {
+		if (container.getCount() != 1 || resource == null || resource.amount <= 0 || !canFillFluidType(resource)) {
 			return 0;
 		}
 
@@ -96,7 +97,7 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 
 	@Override
 	public FluidStack drain(FluidStack resource, boolean doDrain) {
-		if (container.stackSize != 1 || resource == null || resource.amount <= 0
+		if (container.getCount() != 1 || resource == null || resource.amount <= 0
 				|| !resource.isFluidEqual(getFluid())) {
 			return null;
 		}
@@ -105,7 +106,7 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 
 	@Override
 	public FluidStack drain(int maxDrain, boolean doDrain) {
-		if (container.stackSize != 1 || maxDrain <= 0) {
+		if (container.getCount() != 1 || maxDrain <= 0) {
 			return null;
 		}
 

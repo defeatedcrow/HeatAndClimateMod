@@ -3,6 +3,8 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
@@ -11,6 +13,7 @@ import defeatedcrow.hac.food.entity.FruitPieEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
 import defeatedcrow.hac.food.entity.MooncakeEntity;
 import defeatedcrow.hac.food.entity.SugarPieEntity;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -33,7 +36,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp_int(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 1);
 		String s = "items/food/pie_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -44,16 +47,8 @@ public class SquarePastryItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"sugar_raw",
-				"sugar_baked",
-				"meat_raw",
-				"meat_baked",
-				"choco_raw",
-				"choco_baked",
-				"fruit_raw",
-				"fruit_baked",
-				"mooncake_raw",
-				"mooncake_baked"
+				"sugar_raw", "sugar_baked", "meat_raw", "meat_baked", "choco_raw", "choco_baked", "fruit_raw",
+				"fruit_baked", "mooncake_raw", "mooncake_baked"
 		};
 		return s;
 	}
@@ -122,7 +117,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 		tooltip.add("Placeable as an Entity");
 	}
 

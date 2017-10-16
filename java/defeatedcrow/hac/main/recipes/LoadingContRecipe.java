@@ -1,0 +1,112 @@
+package defeatedcrow.hac.main.recipes;
+
+import defeatedcrow.hac.core.DCRecipe;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.util.RecipeResourcesMain;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.ItemStack;
+
+public class LoadingContRecipe {
+
+	public static void add(RecipeResourcesMain res) {
+		ItemStack[] logs = new ItemStack[] {
+				new ItemStack(Blocks.LOG, 8, 0), new ItemStack(Blocks.LOG, 8, 1), new ItemStack(Blocks.LOG, 8, 2),
+				new ItemStack(Blocks.LOG, 8, 3), new ItemStack(Blocks.LOG2, 8, 0), new ItemStack(Blocks.LOG2, 8, 1),
+				new ItemStack(Items.COAL, 8, 1)
+		};
+		for (int i = 0; i < logs.length; i++) {
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.logCont, 1, i), new Object[] {
+					"XXX", "X X", "XXX", 'X', logs[i]
+			});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), logs[i], new Object[] {
+					new ItemStack(MainInit.logCont, 1, i)
+			});
+		}
+
+		ItemStack[] crops = new ItemStack[] {
+				new ItemStack(Items.APPLE, 8, 0), new ItemStack(Items.POTATO, 8, 0), new ItemStack(Items.CARROT, 8, 0),
+				new ItemStack(Blocks.PUMPKIN, 8, 0), new ItemStack(Blocks.MELON_BLOCK, 8, 0),
+				new ItemStack(Blocks.CACTUS, 8, 0), new ItemStack(Items.REEDS, 8, 0),
+				new ItemStack(Items.NETHER_WART, 8, 0), new ItemStack(Items.DYE, 8, EnumDyeColor.BROWN.getDyeDamage()),
+				new ItemStack(MainInit.bakedApple, 8, 0), new ItemStack(Items.BAKED_POTATO, 8, 0)
+		};
+		for (int i = 0; i < crops.length; i++) {
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cropCont, 1, i), new Object[] {
+					"XXX", "X X", "XXX", 'X', crops[i]
+			});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), crops[i], new Object[] {
+					new ItemStack(MainInit.cropCont, 1, i)
+			});
+		}
+
+		ItemStack[] misc = new ItemStack[] {
+				new ItemStack(Items.CLAY_BALL, 8, 0), new ItemStack(Items.FISH, 8, 0),
+				new ItemStack(Items.LEATHER, 8, 0), new ItemStack(Items.RABBIT_HIDE, 8, 0)
+		};
+		for (int i = 0; i < misc.length; i++) {
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.miscCont, 1, i), new Object[] {
+					"XXX", "X X", "XXX", 'X', misc[i]
+			});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), misc[i], new Object[] {
+					new ItemStack(MainInit.miscCont, 1, i)
+			});
+		}
+
+		ItemStack[] enemy = new ItemStack[] {
+				new ItemStack(Items.ROTTEN_FLESH, 8, 0), new ItemStack(Items.BONE, 8, 0),
+				new ItemStack(Items.SPIDER_EYE, 8, 0), new ItemStack(Items.ENDER_PEARL, 8, 0),
+				new ItemStack(Items.GUNPOWDER, 8, 0)
+		};
+		for (int i = 0; i < enemy.length; i++) {
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dropCont, 1, i), new Object[] {
+					"XXX", "X X", "XXX", 'X', enemy[i]
+			});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), enemy[i], new Object[] {
+					new ItemStack(MainInit.dropCont, 1, i)
+			});
+		}
+
+		ItemStack[] meat = new ItemStack[] {
+				new ItemStack(Items.BEEF, 8, 0), new ItemStack(Items.PORKCHOP, 8, 0),
+				new ItemStack(Items.CHICKEN, 8, 0), new ItemStack(Items.MUTTON, 8, 0), new ItemStack(Items.EGG, 8, 0)
+		};
+		for (int i = 0; i < meat.length; i++) {
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cardboard, 1, i), new Object[] {
+					"XXX", "X X", "XXX", 'X', meat[i]
+			});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), meat[i], new Object[] {
+					new ItemStack(MainInit.cardboard, 1, i)
+			});
+		}
+
+		ItemStack[] dust = new ItemStack[] {
+				new ItemStack(Items.SUGAR, 8, 0), new ItemStack(MainInit.foodMaterials, 8, 0),
+				new ItemStack(MainInit.foodMaterials, 8, 1), new ItemStack(MainInit.foodMaterials, 8, 2)
+		};
+		for (int i = 0; i < dust.length; i++) {
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBags, 1, i), new Object[] {
+					"XXX", "X X", "XXX", 'X', dust[i]
+			});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), dust[i], new Object[] {
+					new ItemStack(MainInit.dustBags, 1, i)
+			});
+		}
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cardboard, 1, 5), new Object[] {
+				"XXX", "X X", "XXX", 'X', new ItemStack(Blocks.WOOL, 8, 32767)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 8, 0), new Object[] {
+				new ItemStack(MainInit.cardboard, 1, 5)
+		});
+	}
+
+}

@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.item.tool;
 
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockLiquid;
@@ -19,8 +22,6 @@ import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
 
 public class ItemCrowDrill extends DCItem {
 
@@ -47,15 +48,18 @@ public class ItemCrowDrill extends DCItem {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = { "normal" };
+		String[] s = {
+				"normal"
+		};
 		return s;
 	}
 
 	// criative 穴掘り機能
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		// creativeチェック
+		ItemStack stack = player.getHeldItem(hand);
 		if (player == null || (!player.capabilities.isCreativeMode && !ClimateCore.isDebug)) {
 			return EnumActionResult.PASS;
 		}
@@ -79,9 +83,9 @@ public class ItemCrowDrill extends DCItem {
 		}
 
 		Chunk chunk = world.getChunkFromBlockCoords(pos);
-		int minX = (chunk.xPosition << 4) - 1;
+		int minX = (chunk.x << 4) - 1;
 		int minY = pos.getY() - (pos.getY() & 15);
-		int minZ = (chunk.zPosition << 4) - 1;
+		int minZ = (chunk.z << 4) - 1;
 		int maxX = minX + 17;
 		int maxY = minY + 17;
 		int maxZ = minZ + 17;
@@ -100,7 +104,7 @@ public class ItemCrowDrill extends DCItem {
 					Block target = world.getBlockState(p1).getBlock();
 					int meta = target.getMetaFromState(world.getBlockState(p1));
 					ItemStack check = new ItemStack(target, 1, meta);
-					if (check != null && check.getItem() != null && !isTarget(check)) {
+					if (!DCUtil.isEmpty(check) && !isTarget(check)) {
 						continue;
 					} else if (target instanceof BlockContainer) {
 						continue;

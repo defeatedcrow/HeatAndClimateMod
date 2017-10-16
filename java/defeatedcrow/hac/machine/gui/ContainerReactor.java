@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.TileReactor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -64,7 +65,7 @@ public class ContainerReactor extends Container {
 
 			for (int j = 0; j < this.machine.getFieldCount(); j++) {
 				if (this.current[j] != this.machine.getField(j)) {
-					icrafting.sendProgressBarUpdate(this, j, this.machine.getField(j));
+					icrafting.sendWindowProperty(this, j, this.machine.getField(j));
 				}
 			}
 		}
@@ -82,12 +83,12 @@ public class ContainerReactor extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return this.machine.isUseableByPlayer(playerIn);
+		return this.machine.isUsableByPlayer(playerIn);
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack itemstack = null;
+		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.inventorySlots.get(index);
 
 		if (slot != null && slot.getHasStack()) {
@@ -96,23 +97,22 @@ public class ContainerReactor extends Container {
 
 			if (index < 16) {
 				if (!this.mergeItemStack(itemstack1, 17, 52, true))
-					return null;
+					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else {
 				if (!this.mergeItemStack(itemstack1, 13, 16, false))
-					return null;
+					return ItemStack.EMPTY;
 			}
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize)
-				return null;
+			if (itemstack1.getCount() == itemstack.getCount()) {
+				return ItemStack.EMPTY;
+			}
 
-			slot.onPickupFromSlot(playerIn, itemstack1);
+			slot.onTake(playerIn, itemstack1);
 		}
 
 		return itemstack;

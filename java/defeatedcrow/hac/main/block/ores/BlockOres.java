@@ -5,6 +5,7 @@ import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -57,22 +58,7 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	private int[] harvestL = new int[] {
-			1,
-			1,
-			1,
-			2,
-			2,
-			2,
-			2,
-			2,
-			2,
-			3,
-			3,
-			3,
-			3,
-			3,
-			3,
-			3
+			1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3
 	};
 
 	/* Drop Itemの管理 */
@@ -102,7 +88,7 @@ public class BlockOres extends DCSimpleBlock {
 		DropTable table = this.getTable(meta);
 		int amo = table.amount;
 		if (table.isFortuneEffective && fortune > 0) {
-			int max = MathHelper.ceiling_double_int(1 + fortune * 0.5D);
+			int max = MathHelper.ceil(1 + fortune * 0.5D);
 			int d1 = random.nextInt(max);
 			return table.amount + d1;
 		} else
@@ -147,22 +133,9 @@ public class BlockOres extends DCSimpleBlock {
 
 	private DropTable getTable(int meta) {
 		DropTable[] table = {
-				DropTable.GYPSUM,
-				DropTable.HEMATITE,
-				DropTable.CHAL_B,
-				DropTable.SAPPIRE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.CHAL_W,
-				DropTable.CRYSTAL,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.DIAMOND,
-				DropTable.EMERALD,
-				DropTable.NONE
+				DropTable.GYPSUM, DropTable.HEMATITE, DropTable.CHAL_B, DropTable.SAPPIRE, DropTable.NONE,
+				DropTable.NONE, DropTable.NONE, DropTable.NONE, DropTable.NONE, DropTable.CHAL_W, DropTable.CRYSTAL,
+				DropTable.NONE, DropTable.NONE, DropTable.DIAMOND, DropTable.EMERALD, DropTable.NONE
 		};
 		if (meta < 16)
 			return table[meta];
@@ -175,7 +148,7 @@ public class BlockOres extends DCSimpleBlock {
 		int meta = this.getMetaFromState(state);
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
-		ItemStack add = null;
+		ItemStack add = ItemStack.EMPTY;
 		int par = 2 + fortune * 5;
 		if (rand.nextInt(50) < par) {
 			switch (meta) {
@@ -187,7 +160,7 @@ public class BlockOres extends DCSimpleBlock {
 			}
 		}
 
-		if (add != null) {
+		if (!DCUtil.isEmpty(add)) {
 			ret.add(add);
 		}
 		return ret;
@@ -199,6 +172,6 @@ public class BlockOres extends DCSimpleBlock {
 		int meta = DCState.getInt(state, DCState.TYPE16);
 		if (meta >= 0)
 			return new ItemStack(this, 1, meta);
-		return getItem(world, pos, state);
+		return super.getPickBlock(state, target, world, pos, player);
 	}
 }

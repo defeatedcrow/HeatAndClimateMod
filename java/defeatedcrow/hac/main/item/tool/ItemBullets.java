@@ -9,11 +9,7 @@ public class ItemBullets extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"bolt",
-			"normal",
-			"shot",
-			"silver",
-			"ghost"
+			"bolt", "normal", "shot", "silver", "ghost"
 	};
 
 	public ItemBullets(int max) {
@@ -41,16 +37,12 @@ public class ItemBullets extends DCItem {
 	}
 
 	public static Type getType(int meta) {
-		meta = MathHelper.clamp_int(meta, 0, 4);
+		meta = MathHelper.clamp(meta, 0, 4);
 		return values[meta];
 	}
 
 	public static Type[] values = {
-			Type.BOLT,
-			Type.NORMAL,
-			Type.SHOT,
-			Type.SILVER,
-			Type.GHOST
+			Type.BOLT, Type.NORMAL, Type.SHOT, Type.SILVER, Type.GHOST
 	};
 
 	public enum Type {

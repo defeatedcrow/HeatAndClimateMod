@@ -18,7 +18,7 @@ public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICra
 	protected void onServerUpdate() {
 		boolean power = this.outputPower() > 0F;
 		boolean max = this.outputPower() >= 1.0F;
-		TileEntity target = worldObj.getTileEntity(pos.offset(getBaseSide().getOpposite()));
+		TileEntity target = world.getTileEntity(pos.offset(getBaseSide().getOpposite()));
 		if (target != null && target instanceof ICrankReceiver) {
 			ICrankReceiver crank = (ICrankReceiver) target;
 			boolean b1 = crank.isPressed();

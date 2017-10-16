@@ -28,8 +28,7 @@ public class TESRMace extends TileEntitySpecialRenderer<TileMaceBase> {
 	}
 
 	@Override
-	public void renderTileEntityAt(TileMaceBase te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileMaceBase te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		if (te != null) {
 			this.bindTexture(getTex());
 			IBlockState state = te.getWorld().getBlockState(te.getPos());

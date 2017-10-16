@@ -81,7 +81,7 @@ public class DCChunkloadContoroller implements LoadingCallback {
 		setBlockType(t);
 		setBlock(t, x, y, z, i, j, d);
 		ticketList.put(cood, t);
-		ForgeChunkManager.forceChunk(t, world.getChunkFromChunkCoords(i, j).getChunkCoordIntPair());
+		ForgeChunkManager.forceChunk(t, world.getChunkFromChunkCoords(i, j).getPos());
 		DCLogger.infoLog("Succeed to register chunkloader. Cood: " + i + ", " + j);
 		return true;
 	}
@@ -94,8 +94,7 @@ public class DCChunkloadContoroller implements LoadingCallback {
 		if (ticketList.containsKey(cood)) {
 
 			if (!ForgeChunkManager.getPersistentChunksFor(ticketList.get(cood).world).isEmpty()) {
-				ForgeChunkManager.unforceChunk(ticketList.get(cood),
-						world.getChunkFromChunkCoords(i, j).getChunkCoordIntPair());
+				ForgeChunkManager.unforceChunk(ticketList.get(cood), world.getChunkFromChunkCoords(i, j).getPos());
 				ForgeChunkManager.releaseTicket(ticketList.get(cood));
 			}
 

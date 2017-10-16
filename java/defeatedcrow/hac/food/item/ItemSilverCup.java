@@ -3,10 +3,12 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.core.util.DCPotion;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.capability.DrinkItemCustomizer;
@@ -17,9 +19,11 @@ import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
 import defeatedcrow.hac.food.entity.EntityTumbler;
 import defeatedcrow.hac.plugin.DrinkPotionType;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -57,7 +61,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp_int(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 1);
 		String s = "items/food/cup_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -68,9 +72,7 @@ public class ItemSilverCup extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"silver",
-				"white",
-				"glass"
+				"silver", "white", "glass"
 		};
 		return s;
 	}
@@ -124,21 +126,26 @@ public class ItemSilverCup extends FoodItemBase {
 
 	// カラなら飲食できない
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
-		IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-		if (cont != null && cont.getTankProperties() != null) {
-			FluidStack f = cont.getTankProperties()[0].getContents();
-			if (f != null)
-				return super.onItemRightClick(item, world, player, hand);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		if (player != null) {
+			ItemStack item = player.getHeldItem(hand);
+			if (!DCUtil.isEmpty(item)) {
+				IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+				if (cont != null && cont.getTankProperties() != null) {
+					FluidStack f = cont.getTankProperties()[0].getContents();
+					if (f != null)
+						return super.onItemRightClick(world, player, hand);
+				}
+			}
 		}
-		return new ActionResult(EnumActionResult.FAIL, item);
+		return new ActionResult(EnumActionResult.FAIL, ItemStack.EMPTY);
 	}
 
 	// potion の取得方法が違う
 	@Override
-	public boolean addEffects(ItemStack stack, World worldIn, EntityLivingBase living) {
-		if (!worldIn.isRemote && stack != null) {
-			if (stack == null || stack.getItem() == null || stack.getItem() != this)
+	public boolean addEffects(ItemStack stack, World world, EntityLivingBase living) {
+		if (!world.isRemote && !DCUtil.isEmpty(stack)) {
+			if (stack.getItem() != this)
 				return false;
 			else {
 				IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
@@ -188,29 +195,29 @@ public class ItemSilverCup extends FoodItemBase {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if (fluid != null) {
 			if (fluid == FoodInit.greenTea) {
-				ret.add(new PotionEffect(DCPotion.haste, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.HASTE, MathHelper.ceil(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.blackTea) {
-				ret.add(new PotionEffect(DCPotion.registance, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.RESISTANCE, MathHelper.ceil(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.coffee) {
-				ret.add(new PotionEffect(DCPotion.night_vision, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.NIGHT_VISION, MathHelper.ceil(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.oil) {
-				ret.add(new PotionEffect(DCPotion.speed, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.SPEED, MathHelper.ceil(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.stock) {
-				ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * (dirF + ampF)), 0));
+				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(1200 * (dirF + ampF)), 0));
 			} else if (fluid == FoodInit.blackLiquor) {
-				ret.add(new PotionEffect(DCPotion.poison, MathHelper.ceiling_float_int(300 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.POISON, MathHelper.ceil(300 * dirF), ampF));
 			} else if (fluid == FluidRegistry.WATER) {
-				ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceil(300 * dirF), ampF));
 			} else if (fluid == FluidRegistry.LAVA) {
-				ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(1200 * dirF), ampF));
 			} else if (DrinkPotionType.isRegistered(fluid)) {
 				Potion potion = DrinkPotionType.getPotion(fluid);
 				if (potion != null) {
 					float duration = potion.isBadEffect() ? 600 * dirF : 1200 * dirF;
-					ret.add(new PotionEffect(potion, MathHelper.ceiling_float_int(duration), ampF));
+					ret.add(new PotionEffect(potion, MathHelper.ceil(duration), ampF));
 				}
 			} else {
-				ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceil(300 * dirF), ampF));
 			}
 		}
 		return ret;
@@ -218,7 +225,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 
 		IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);

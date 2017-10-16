@@ -2,6 +2,8 @@ package defeatedcrow.hac.food.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.FoodEntityBase;
@@ -9,6 +11,7 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.entity.PotatoPlateEntity;
 import defeatedcrow.hac.food.entity.SoupPlateEntity;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -31,7 +34,7 @@ public class PlateSoupItem extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp_int(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 1);
 		String s = "items/food/plate_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -42,10 +45,7 @@ public class PlateSoupItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"potato_raw",
-				"potato_baked",
-				"tomato_raw",
-				"tomato_baked"
+				"potato_raw", "potato_baked", "tomato_raw", "tomato_baked"
 		};
 		return s;
 	}
@@ -78,7 +78,7 @@ public class PlateSoupItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 		tooltip.add("Placeable as an Entity");
 	}
 

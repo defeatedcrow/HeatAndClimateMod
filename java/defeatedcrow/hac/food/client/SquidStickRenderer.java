@@ -2,6 +2,7 @@ package defeatedcrow.hac.food.client;
 
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.client.model.ModelStickBase;
 import defeatedcrow.hac.food.entity.SquidStickEntity;
@@ -58,10 +59,10 @@ public class SquidStickRenderer extends DCRenderFoodBase<SquidStickEntity> {
 	private void renderItem(SquidStickEntity entity, boolean baked, int i) {
 		ItemStack fish = baked ? COOKED_ITEM : RAW_ITEM;
 
-		if (fish != null) {
-			EntityItem drop = new EntityItem(entity.worldObj, 0.0D, 0.0D, 0.0D, fish);
-			Item item = drop.getEntityItem().getItem();
-			drop.getEntityItem().stackSize = 1;
+		if (!DCUtil.isEmpty(fish)) {
+			EntityItem drop = new EntityItem(entity.world, 0.0D, 0.0D, 0.0D, fish);
+			Item item = drop.getItem().getItem();
+			drop.getItem().setCount(1);
 			drop.hoverStart = 0.0F;
 			GlStateManager.pushMatrix();
 			GlStateManager.disableLighting();
@@ -73,7 +74,7 @@ public class SquidStickRenderer extends DCRenderFoodBase<SquidStickEntity> {
 
 			GlStateManager.pushAttrib();
 			RenderHelper.enableStandardItemLighting();
-			this.itemRenderer.renderItem(drop.getEntityItem(), ItemCameraTransforms.TransformType.FIXED);
+			this.itemRenderer.renderItem(drop.getItem(), ItemCameraTransforms.TransformType.FIXED);
 			RenderHelper.disableStandardItemLighting();
 			GlStateManager.popAttrib();
 

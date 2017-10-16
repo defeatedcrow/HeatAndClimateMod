@@ -4,7 +4,7 @@ public class TileMaceLight extends TileMaceBase {
 
 	@Override
 	protected boolean checkEnvironment() {
-		int light = worldObj.getLight(getPos());
+		int light = world.getLight(getPos());
 		return light > 13;
 	}
 

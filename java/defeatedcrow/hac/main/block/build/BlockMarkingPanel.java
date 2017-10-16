@@ -1,11 +1,11 @@
 package defeatedcrow.hac.main.block.build;
 
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -18,6 +18,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -77,8 +79,9 @@ public class BlockMarkingPanel extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override
@@ -87,8 +90,8 @@ public class BlockMarkingPanel extends Block {
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
-		return NULL_AABB;
+	public boolean isCollidable() {
+		return false;
 	}
 
 	@Override
@@ -103,9 +106,9 @@ public class BlockMarkingPanel extends Block {
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
-		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		state = state.withProperty(DCState.FACING, placer.getHorizontalFacing());
 		return state;
 	}

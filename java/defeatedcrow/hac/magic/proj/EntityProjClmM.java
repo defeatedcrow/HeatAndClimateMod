@@ -42,11 +42,11 @@ public class EntityProjClmM extends EntityProjBase {
 
 	@Override
 	protected boolean onGroundHit() {
-		Chunk chunk = worldObj.getChunkFromBlockCoords(this.getPosition());
+		Chunk chunk = world.getChunkFromBlockCoords(this.getPosition());
 		WorldGenWindmill gen = new WorldGenWindmill(true);
 		gen.setForcePos(this.getPosition().getX(), this.getPosition().getZ());
-		if (gen.generateWindmill(rand, chunk.xPosition, chunk.zPosition, worldObj,
-				worldObj.provider.createChunkGenerator(), worldObj.getChunkProvider())) {
+		if (gen.generateWindmill(rand, chunk.x, chunk.z, world, world.provider.createChunkGenerator(),
+				world.getChunkProvider())) {
 			this.setDead();
 		} else {
 			this.dropAndDeath();
@@ -65,7 +65,7 @@ public class EntityProjClmM extends EntityProjBase {
 
 	@Override
 	public void onUpdate() {
-		if (!this.worldObj.isRemote && (this.isInWater() || this.isInLava())) {
+		if (!this.world.isRemote && (this.isInWater() || this.isInLava())) {
 			setStart(true);
 		}
 		super.onUpdate();
@@ -77,7 +77,7 @@ public class EntityProjClmM extends EntityProjBase {
 		double x1 = posX + rand.nextDouble() - 0.5D;
 		double y1 = posY + rand.nextDouble() - 0.5D;
 		double z1 = posZ + rand.nextDouble() - 0.5D;
-		Particle shock = new ParticleShock.Factory().createParticle(0, worldObj, x1, y1, z1, 0D, 0D, 0D, new int[0]);
+		Particle shock = new ParticleShock.Factory().createParticle(0, world, x1, y1, z1, 0D, 0D, 0D, new int[0]);
 		shock.setRBGColorF(0.95F, 0.95F, 0.95F);
 		FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 
@@ -91,8 +91,7 @@ public class EntityProjClmM extends EntityProjBase {
 			double fy = 0.5D + rand.nextDouble() * 0.25D;
 			double fz = 0.5D * rand.nextDouble() - 0.25D;
 
-			Particle star = new ParticleFallingStar.Factory().createParticle(0, worldObj, x, y, z, fx, fy, fz,
-					new int[0]);
+			Particle star = new ParticleFallingStar.Factory().createParticle(0, world, x, y, z, fx, fy, fz, new int[0]);
 			star.setRBGColorF(0.95F, 0.95F, 0.95F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(star);
 

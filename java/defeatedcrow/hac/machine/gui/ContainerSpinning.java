@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -52,15 +53,15 @@ public class ContainerSpinning extends Container {
 			IContainerListener icrafting = this.listeners.get(i);
 
 			if (this.climate != this.mill.getField(2)) {
-				icrafting.sendProgressBarUpdate(this, 2, this.mill.getField(2));
+				icrafting.sendWindowProperty(this, 2, this.mill.getField(2));
 			}
 
 			if (this.currentBurn != this.mill.getField(0)) {
-				icrafting.sendProgressBarUpdate(this, 0, this.mill.getField(0));
+				icrafting.sendWindowProperty(this, 0, this.mill.getField(0));
 			}
 
 			if (this.maxBurn != this.mill.getField(1)) {
-				icrafting.sendProgressBarUpdate(this, 1, this.mill.getField(1));
+				icrafting.sendWindowProperty(this, 1, this.mill.getField(1));
 			}
 		}
 
@@ -77,12 +78,12 @@ public class ContainerSpinning extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return this.mill.isUseableByPlayer(playerIn);
+		return this.mill.isUsableByPlayer(playerIn);
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack itemstack = null;
+		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.inventorySlots.get(index);
 
 		if (slot != null && slot.getHasStack()) {
@@ -91,21 +92,20 @@ public class ContainerSpinning extends Container {
 
 			if (index < 2) {
 				if (!this.mergeItemStack(itemstack1, 2, 37, true))
-					return null;
+					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (!this.mergeItemStack(itemstack1, 0, 1, false))
-				return null;
+				return ItemStack.EMPTY;
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize)
-				return null;
+			if (itemstack1.getCount() == itemstack.getCount()) {
+				return ItemStack.EMPTY;
+			}
 
-			slot.onPickupFromSlot(playerIn, itemstack1);
+			slot.onTake(playerIn, itemstack1);
 		}
 
 		return itemstack;

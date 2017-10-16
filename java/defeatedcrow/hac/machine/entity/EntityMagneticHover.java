@@ -43,9 +43,9 @@ public class EntityMagneticHover extends EntityScooter {
 	@Override
 	protected void addParticle() {
 		if (this.getPowered() && this.rand.nextInt(4) == 0) {
-			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 1D + worldObj.rand.nextDouble() * 0.5D;
-			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 1D + worldObj.rand.nextDouble() * 0.5D;
-			Particle p = new ParticleBlink.Factory().createParticle(0, worldObj, px, posY + 0.25D, pz, 0.0D, 0.0D, 0.0D,
+			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 1D + world.rand.nextDouble() * 0.5D;
+			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 1D + world.rand.nextDouble() * 0.5D;
+			Particle p = new ParticleBlink.Factory().createParticle(0, world, px, posY + 0.25D, pz, 0.0D, 0.0D, 0.0D,
 					new int[0]);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
 		}
@@ -129,13 +129,13 @@ public class EntityMagneticHover extends EntityScooter {
 
 	@Override
 	protected Status getUnderGround() {
-		AxisAlignedBB aabb = this.getEntityBoundingBox().expandXyz(0.5D);
-		int i = MathHelper.floor_double(aabb.minX);
-		int j = MathHelper.ceiling_double_int(aabb.maxX);
-		int k = MathHelper.floor_double(aabb.minY - 1.0D);
-		int l = MathHelper.ceiling_double_int(aabb.minY);
-		int i1 = MathHelper.floor_double(aabb.minZ);
-		int j1 = MathHelper.ceiling_double_int(aabb.maxZ);
+		AxisAlignedBB aabb = this.getEntityBoundingBox().grow(0.5D);
+		int i = MathHelper.floor(aabb.minX);
+		int j = MathHelper.ceil(aabb.maxX);
+		int k = MathHelper.floor(aabb.minY - 1.0D);
+		int l = MathHelper.ceil(aabb.minY);
+		int i1 = MathHelper.floor(aabb.minZ);
+		int j1 = MathHelper.ceil(aabb.maxZ);
 		boolean flag = false;
 		boolean flag2 = false;
 		boolean flag3 = false;
@@ -146,15 +146,15 @@ public class EntityMagneticHover extends EntityScooter {
 				for (int l1 = k; l1 < l; ++l1) {
 					for (int i2 = i1; i2 < j1; ++i2) {
 						mpos.setPos(k1, l1, i2);
-						IBlockState state = this.worldObj.getBlockState(mpos);
+						IBlockState state = this.world.getBlockState(mpos);
 
-						if (state.getMaterial() == Material.WATER && state.getBoundingBox(worldObj, mpos) != null) {
-							double d = state.getBoundingBox(worldObj, mpos).maxY + mpos.getY();
+						if (state.getMaterial() == Material.WATER && state.getBoundingBox(world, mpos) != null) {
+							double d = state.getBoundingBox(world, mpos).maxY + mpos.getY();
 							if (posY < d + 1D) {
 								flag2 = true;
 							}
-						} else if (state.getCollisionBoundingBox(worldObj, mpos) != null) {
-							double d = state.getCollisionBoundingBox(worldObj, mpos).maxY + mpos.getY();
+						} else if (state.getCollisionBoundingBox(world, mpos) != null) {
+							double d = state.getCollisionBoundingBox(world, mpos).maxY + mpos.getY();
 							if (posY < d + 1D) {
 								flag = true;
 								if (posY < d) {
@@ -174,11 +174,11 @@ public class EntityMagneticHover extends EntityScooter {
 
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (!this.worldObj.isRemote && !this.isDead && !this.isBeingRidden()) {
+		if (!this.world.isRemote && !this.isDead && !this.isBeingRidden()) {
 			if (this.isEntityInvulnerable(source)) {
 				this.setDead();
 			} else if (source instanceof EntityDamageSource && !source.isProjectile()
-					&& ((EntityDamageSource) source).getEntity() instanceof EntityPlayer) {
+					&& ((EntityDamageSource) source).getTrueSource() instanceof EntityPlayer) {
 				ItemStack itemstack = new ItemStack(MachineInit.magneticHover, 1, 0);
 
 				NBTTagCompound tag = new NBTTagCompound();

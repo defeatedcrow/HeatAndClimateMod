@@ -15,15 +15,14 @@ public class TESRWindVane extends DCTESRBase {
 	private final ModelWindVane model = new ModelWindVane();
 
 	@Override
-	public void renderTileEntityAt(DCTileEntity te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(DCTileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		int type = 0;
 		int face = 0;
 		float f = 0.0F;
 		float rotation = 0.0F;
 		float crowR = 0.0F;
 
-		if (te.hasWorldObj() && te instanceof TileWindVane) {
+		if (te.hasWorld() && te instanceof TileWindVane) {
 			int meta = te.getBlockMetadata();
 			TileWindVane meter = (TileWindVane) te;
 			crowR = meter.lastPower + (meter.windPower - meter.lastPower) * partialTicks;

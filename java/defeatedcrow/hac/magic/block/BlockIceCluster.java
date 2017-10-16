@@ -1,12 +1,10 @@
 package defeatedcrow.hac.magic.block;
 
-import java.util.List;
 import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -18,7 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -61,9 +59,8 @@ public class BlockIceCluster extends BlockContainer implements IHeatTile {
 	}
 
 	@Override
-	@Nullable
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
-		return NULL_AABB;
+	public boolean isCollidable() {
+		return false;
 	}
 
 	@Override
@@ -92,8 +89,9 @@ public class BlockIceCluster extends BlockContainer implements IHeatTile {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override

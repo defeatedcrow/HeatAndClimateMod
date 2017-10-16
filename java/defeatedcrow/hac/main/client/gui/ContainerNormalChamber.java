@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.client.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.block.device.TileChamberBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -8,7 +10,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.main.block.device.TileChamberBase;
 
 public class ContainerNormalChamber extends Container {
 
@@ -54,15 +55,15 @@ public class ContainerNormalChamber extends Container {
 			IContainerListener icrafting = this.listeners.get(i);
 
 			if (this.heatTier != this.chamber.getField(2)) {
-				icrafting.sendProgressBarUpdate(this, 2, this.chamber.getField(2));
+				icrafting.sendWindowProperty(this, 2, this.chamber.getField(2));
 			}
 
 			if (this.currentBurn != this.chamber.getField(0)) {
-				icrafting.sendProgressBarUpdate(this, 0, this.chamber.getField(0));
+				icrafting.sendWindowProperty(this, 0, this.chamber.getField(0));
 			}
 
 			if (this.maxBurn != this.chamber.getField(1)) {
-				icrafting.sendProgressBarUpdate(this, 1, this.chamber.getField(1));
+				icrafting.sendWindowProperty(this, 1, this.chamber.getField(1));
 			}
 		}
 
@@ -79,12 +80,12 @@ public class ContainerNormalChamber extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return this.chamber.isUseableByPlayer(playerIn);
+		return this.chamber.isUsableByPlayer(playerIn);
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack itemstack = null;
+		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.inventorySlots.get(index);
 
 		if (slot != null && slot.getHasStack()) {
@@ -93,24 +94,22 @@ public class ContainerNormalChamber extends Container {
 
 			if (index == 0) {
 				if (!this.mergeItemStack(itemstack1, 1, 36, true)) {
-					return null;
+					return ItemStack.EMPTY;
 				}
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
-				return null;
+				return ItemStack.EMPTY;
 			}
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize) {
-				return null;
+			if (itemstack1.getCount() == itemstack.getCount()) {
+				return ItemStack.EMPTY;
 			}
 
-			slot.onPickupFromSlot(playerIn, itemstack1);
+			slot.onTake(playerIn, itemstack1);
 		}
 
 		return itemstack;

@@ -1,9 +1,10 @@
 package defeatedcrow.hac.magic.client;
 
+import defeatedcrow.hac.magic.block.TileInfernalFlame;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -11,7 +12,6 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.magic.block.TileInfernalFlame;
 
 @SideOnly(Side.CLIENT)
 public class TESRInfernalFlame extends TileEntitySpecialRenderer<TileInfernalFlame> {
@@ -21,8 +21,8 @@ public class TESRInfernalFlame extends TileEntitySpecialRenderer<TileInfernalFla
 	private static final ModelCluster MODEL = new ModelCluster();
 
 	@Override
-	public void renderTileEntityAt(TileInfernalFlame te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileInfernalFlame te, double x, double y, double z, float partialTicks, int destroyStage,
+			float a) {
 
 		GlStateManager.disableLighting();
 		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
@@ -33,7 +33,7 @@ public class TESRInfernalFlame extends TileEntitySpecialRenderer<TileInfernalFla
 		float f = 1.2F;
 		GlStateManager.scale(f, f, f);
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 		float f1 = 0.5F;
 		float f5 = 0.25F;
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

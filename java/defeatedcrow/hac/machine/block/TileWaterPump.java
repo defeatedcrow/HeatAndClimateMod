@@ -40,8 +40,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 			return;
 		}
 
-		if (!worldObj.isRemote) {
-			currentProgressTime += MathHelper.floor_float(prevTorque);
+		if (!world.isRemote) {
+			currentProgressTime += MathHelper.floor(prevTorque);
 			int limit = currentProgressTime / 32;
 			int ret = currentProgressTime % 32;
 			// DCLogger.debugLog("count: " + count + ", ret " + ret);
@@ -56,15 +56,15 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 				if (count >= limit) {
 					break;
 				}
-				if (worldObj.isAirBlock(next)) {
+				if (world.isAirBlock(next)) {
 					for (int d = 1; d < 5; d++) {
-						if (!worldObj.isAirBlock(next.down(d))) {
+						if (!world.isAirBlock(next.down(d))) {
 							next = next.down(d);
 							break;
 						}
 					}
 				}
-				IBlockState state = worldObj.getBlockState(next);
+				IBlockState state = world.getBlockState(next);
 
 				if (state != null && state.getBlock() instanceof BlockLiquid) {
 					BlockLiquid liq = (BlockLiquid) state.getBlock();
@@ -72,9 +72,9 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 				} else if (state != null && state.getBlock() instanceof BlockFluidBase) {
 					if (state.getBlock() instanceof BlockFluidFinite) {
 						BlockFluidFinite flu = (BlockFluidFinite) state.getBlock();
-						FluidStack get = flu.drain(worldObj, next, false);
+						FluidStack get = flu.drain(world, next, false);
 						if (get != null && inputT.fill(get, false) > 0) {
-							flu.drain(worldObj, next, true);
+							flu.drain(world, next, true);
 							fill = inputT.fill(get, true);
 						}
 					} else if (state.getBlock() instanceof BlockFluidClassic) {
@@ -87,7 +87,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 					EnumFacing nF = EnumFacing.DOWN;
 					for (EnumFacing f2 : EnumFacing.HORIZONTALS) {
 						BlockPos p2 = next.offset(f2);
-						IBlockState s2 = worldObj.getBlockState(p2);
+						IBlockState s2 = world.getBlockState(p2);
 						if (s2.getBlock() instanceof BlockLiquid || s2.getBlock() instanceof BlockFluidBase) {
 							if (s2.getBlock().getMetaFromState(s2) < state.getBlock().getMetaFromState(state)) {
 								nF = f2;
@@ -102,7 +102,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 			}
 
 			// 排出
-			TileEntity uTile = worldObj.getTileEntity(getPos().up());
+			TileEntity uTile = world.getTileEntity(getPos().up());
 			FluidStack fluid2 = inputT.getFluid();
 			if (uTile != null
 					&& uTile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
@@ -129,7 +129,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 			FluidStack get = new FluidStack(FluidRegistry.LAVA, 1000);
 			if (level == 0) {
 				if (inputT.fill(get, false) > 0) {
-					worldObj.setBlockToAir(tPos);
+					world.setBlockToAir(tPos);
 					return inputT.fill(get, true);
 				}
 			} else {
@@ -143,22 +143,20 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 				}
 				for (int count = 0; count < 8; count++) {
 					int[] ofs = {
-							0,
-							0,
-							0 };
+							0, 0, 0
+					};
 					for (EnumFacing f2 : EnumFacing.VALUES) {
 						if (f2 == EnumFacing.DOWN) {
 							continue; // 真下方向は探らない
 						}
 						BlockPos p2 = next.offset(f2);
-						IBlockState s2 = worldObj.getBlockState(p2);
+						IBlockState s2 = world.getBlockState(p2);
 						if (s2.getBlock() instanceof BlockLiquid && s2.getMaterial() == Material.LAVA) {
 							BlockLiquid liq2 = (BlockLiquid) s2.getBlock();
 							if (s2.getValue(BlockLiquid.LEVEL) == 0) {
 								ofs = new int[] {
-										f2.getFrontOffsetX(),
-										f2.getFrontOffsetY(),
-										f2.getFrontOffsetZ() };
+										f2.getFrontOffsetX(), f2.getFrontOffsetY(), f2.getFrontOffsetZ()
+								};
 								l2 = s2.getValue(BlockLiquid.LEVEL).intValue();
 								// DCLogger.debugLog(
 								// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] + "),
@@ -166,21 +164,19 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 								break;
 							} else if (s2.getValue(BlockLiquid.LEVEL) < l2) {
 								ofs = new int[] {
-										f2.getFrontOffsetX(),
-										f2.getFrontOffsetY(),
-										f2.getFrontOffsetZ() };
+										f2.getFrontOffsetX(), f2.getFrontOffsetY(), f2.getFrontOffsetZ()
+								};
 								l2 = s2.getValue(BlockLiquid.LEVEL).intValue();
 								// DCLogger.debugLog(
 								// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] + "),
 								// " + l2);
 							} else {
 								BlockPos p3 = p2.up();
-								IBlockState s3 = worldObj.getBlockState(p3);
+								IBlockState s3 = world.getBlockState(p3);
 								if (s3.getBlock() instanceof BlockLiquid && s3.getMaterial() == Material.LAVA) {
 									ofs = new int[] {
-											f2.getFrontOffsetX(),
-											f2.getFrontOffsetY() + 1,
-											f2.getFrontOffsetZ() };
+											f2.getFrontOffsetX(), f2.getFrontOffsetY() + 1, f2.getFrontOffsetZ()
+									};
 									l2 = s3.getValue(BlockLiquid.LEVEL);
 									// DCLogger.debugLog(
 									// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] +
@@ -193,7 +189,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 					}
 					if (ofs[0] != 0 || ofs[1] != 0 || ofs[2] != 0) {
 						next = next.add(ofs[0], ofs[1], ofs[2]);
-						if (worldObj.getBlockState(next).getValue(BlockLiquid.LEVEL).intValue() == 0) {
+						if (world.getBlockState(next).getValue(BlockLiquid.LEVEL).intValue() == 0) {
 							break;
 						}
 					} else {
@@ -201,10 +197,10 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 					}
 				}
 				if (!next.equals(tPos)) {
-					IBlockState s3 = worldObj.getBlockState(next);
+					IBlockState s3 = world.getBlockState(next);
 					if (s3.getBlock() instanceof BlockLiquid && s3.getValue(BlockLiquid.LEVEL).intValue() == 0) {
 						if (inputT.fill(get, false) > 0) {
-							worldObj.setBlockToAir(next);
+							world.setBlockToAir(next);
 							return inputT.fill(get, true);
 						}
 					}
@@ -223,9 +219,9 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 		}
 		FluidStack get = new FluidStack(fluid, 1000);
 
-		if (flu.isSourceBlock(worldObj, tPos)) {
+		if (flu.isSourceBlock(world, tPos)) {
 			if (inputT.fill(get, false) > 0) {
-				flu.drain(worldObj, tPos, true);
+				flu.drain(world, tPos, true);
 				return inputT.fill(get, true);
 			} else {
 				return 0;
@@ -234,7 +230,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 			// 隣接チェック
 			// 8ブロック先までは探る
 			BlockPos next = tPos;
-			int l2 = flu.getQuantaValue(worldObj, tPos);
+			int l2 = flu.getQuantaValue(world, tPos);
 			for (int count = 0; count < 8; count++) {
 				int[] ofs = new int[3];
 				for (EnumFacing f2 : EnumFacing.VALUES) {
@@ -242,40 +238,38 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 						continue;
 					}
 					BlockPos p2 = next.offset(f2);
-					IBlockState s2 = worldObj.getBlockState(p2);
+					IBlockState s2 = world.getBlockState(p2);
 					if (s2.getBlock() instanceof BlockFluidClassic) {
 						BlockFluidClassic flu2 = (BlockFluidClassic) s2.getBlock();
 						if (flu2.getFluid() == fluid) {
-							if (flu2.isSourceBlock(worldObj, p2)) {
+							if (flu2.isSourceBlock(world, p2)) {
 								ofs = new int[] {
-										f2.getFrontOffsetX(),
-										f2.getFrontOffsetY(),
-										f2.getFrontOffsetZ() };
-								l2 = flu2.getQuantaValue(worldObj, p2);
+										f2.getFrontOffsetX(), f2.getFrontOffsetY(), f2.getFrontOffsetZ()
+								};
+								l2 = flu2.getQuantaValue(world, p2);
 								// DCLogger.debugLog(
 								// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] + "),
 								// source");
 								break;
-							} else if (flu2.getQuantaValue(worldObj, p2) > l2) {
+							} else if (flu2.getQuantaValue(world, p2) > l2) {
 								ofs = new int[] {
-										f2.getFrontOffsetX(),
-										f2.getFrontOffsetY(),
-										f2.getFrontOffsetZ() };
-								l2 = flu2.getQuantaValue(worldObj, p2);
+										f2.getFrontOffsetX(), f2.getFrontOffsetY(), f2.getFrontOffsetZ()
+								};
+								l2 = flu2.getQuantaValue(world, p2);
 								// DCLogger.debugLog(
 								// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] + "),
 								// " + l2);
 							} else {
 								BlockPos p3 = gas ? p2.down() : p2.up();
-								IBlockState s3 = worldObj.getBlockState(p3);
+								IBlockState s3 = world.getBlockState(p3);
 								if (s3.getBlock() instanceof BlockFluidClassic) {
 									BlockFluidClassic flu3 = (BlockFluidClassic) s3.getBlock();
 									if (flu3.getFluid() == fluid) {
 										ofs = new int[] {
-												f2.getFrontOffsetX(),
-												f2.getFrontOffsetY() + (gas ? -1 : 1),
-												f2.getFrontOffsetZ() };
-										l2 = flu3.getQuantaValue(worldObj, p3);
+												f2.getFrontOffsetX(), f2.getFrontOffsetY() + (gas ? -1 : 1),
+												f2.getFrontOffsetZ()
+										};
+										l2 = flu3.getQuantaValue(world, p3);
 										// DCLogger.debugLog("c" + count + ", (" + ofs[0] + " " +
 										// ofs[1] + " " + ofs[2]
 										// + "), upper");
@@ -289,8 +283,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 
 				if (ofs[0] != 0 || ofs[1] != 0 || ofs[2] != 0) {
 					next = next.add(ofs[0], ofs[1], ofs[2]);
-					if (worldObj.getBlockState(next).getBlock() instanceof BlockFluidBase
-							&& worldObj.getBlockState(next).getValue(BlockFluidBase.LEVEL).intValue() == 0) {
+					if (world.getBlockState(next).getBlock() instanceof BlockFluidBase
+							&& world.getBlockState(next).getValue(BlockFluidBase.LEVEL).intValue() == 0) {
 						break;
 					}
 				} else {
@@ -300,10 +294,10 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 			// DCLogger.debugLog("result... x:" + next.getX() + ", y:" + next.getY() + ", z:" +
 			// next.getZ());
 			if (!next.equals(tPos)) {
-				IBlockState s4 = worldObj.getBlockState(next);
+				IBlockState s4 = world.getBlockState(next);
 				if (s4.getBlock() instanceof BlockFluidClassic && s4.getValue(BlockFluidBase.LEVEL).intValue() == 0) {
 					if (inputT.fill(get, false) > 0) {
-						flu.drain(worldObj, next, true);
+						flu.drain(world, next, true);
 						return inputT.fill(get, true);
 					}
 				}

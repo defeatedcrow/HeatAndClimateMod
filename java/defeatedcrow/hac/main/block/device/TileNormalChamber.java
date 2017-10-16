@@ -2,6 +2,8 @@ package defeatedcrow.hac.main.block.device;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.fluids.FluidContainerRegistry;
 
 public class TileNormalChamber extends TileChamberBase {
 
@@ -36,12 +37,12 @@ public class TileNormalChamber extends TileChamberBase {
 			}
 
 			if (this.currentBurnTime == 0) {
-				if (this.getStackInSlot(0) != null && getBurnTime(this.getStackInSlot(0)) > 0) {
+				if (DCUtil.isEmpty(getStackInSlot(0)) && getBurnTime(this.getStackInSlot(0)) > 0) {
 					ItemStack cont = this.getStackInSlot(0).getItem().getContainerItem(this.getStackInSlot(0));
-					if (cont == null && FluidContainerRegistry.isFilledContainer(this.getStackInSlot(0))) {
-						cont = FluidContainerRegistry.drainFluidContainer(this.getStackInSlot(0).copy());
+					if (DCUtil.isEmpty(cont)) {
+						cont = DCFluidUtil.getEmptyCont(this.getStackInSlot(0));
 					}
-					if (cont == null) {
+					if (DCUtil.isEmpty(cont)) {
 						cont = new ItemStack(MainInit.miscDust, 1, 5); // 灰が出る
 					}
 					boolean flag = false;
@@ -65,8 +66,7 @@ public class TileNormalChamber extends TileChamberBase {
 	}
 
 	@Override
-	public void onTickUpdate() {
-	}
+	public void onTickUpdate() {}
 
 	@Override
 	protected void onServerUpdate() {
@@ -85,11 +85,11 @@ public class TileNormalChamber extends TileChamberBase {
 
 	protected int canInsertResult(ItemStack item) {
 		int ret = 0;
-		if (item == null || item.getItem() == null)
+		if (DCUtil.isEmpty(item))
 			return 0;
 		for (int i = 1; i < this.getSizeInventory(); i++) {
-			if (this.getStackInSlot(i) == null) {
-				ret = item.stackSize;
+			if (DCUtil.isEmpty(getStackInSlot(i))) {
+				ret = item.getCount();
 			} else {
 				ret = this.isItemStackable(item, this.getStackInSlot(i));
 			}
@@ -102,16 +102,16 @@ public class TileNormalChamber extends TileChamberBase {
 
 	/** itemの減少数を返す */
 	protected int insertResult(ItemStack item) {
-		if (item == null || item.getItem() == null)
+		if (DCUtil.isEmpty(item))
 			return 0;
 		for (int i = 1; i < this.getSizeInventory(); i++) {
-			if (this.getStackInSlot(i) == null) {
+			if (DCUtil.isEmpty(getStackInSlot(i))) {
 				this.incrStackInSlot(i, item.copy());
-				return item.stackSize;
+				return item.getCount();
 			} else {
 				int size = this.isItemStackable(item, this.getStackInSlot(i));
-				if (this.isItemStackable(item, this.getStackInSlot(i)) > 0) {
-					this.getStackInSlot(i).stackSize += size;
+				if (size > 0) {
+					DCUtil.addStackSize(getStackInSlot(i), size);
 					return size;
 				}
 			}
@@ -134,6 +134,11 @@ public class TileNormalChamber extends TileChamberBase {
 	@Override
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
 		return new ContainerNormalChamber(this, playerInventory);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return invs.isEmpty();
 	}
 
 }

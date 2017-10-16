@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.item.ores;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
@@ -16,17 +17,7 @@ public class ItemMiscDust extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"coal",
-			"crystal",
-			"lime",
-			"wood",
-			"presscake",
-			"ash",
-			"niter",
-			"sulfur",
-			"garnet",
-			"apatite",
-			"borax"
+			"coal", "crystal", "lime", "wood", "presscake", "ash", "niter", "sulfur", "garnet", "apatite", "borax"
 	};
 
 	public ItemMiscDust(int max) {
@@ -62,13 +53,13 @@ public class ItemMiscDust extends DCItem {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = player.getHeldItem(hand);
-		if (heldItem == null)
+		if (DCUtil.isEmpty(heldItem))
 			return EnumActionResult.FAIL;
 
-		if (heldItem.getItemDamage() == 4 && ItemDye.applyBonemeal(heldItem, world, pos, player)) {
+		if (heldItem.getItemDamage() == 4 && ItemDye.applyBonemeal(heldItem, world, pos, player, hand)) {
 			if (!world.isRemote) {
 				world.playEvent(2005, pos, 0);
 			}

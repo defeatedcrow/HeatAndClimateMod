@@ -189,7 +189,7 @@ public class ModelHoodie extends ModelThinBiped {
 			ModelRenderer modelrenderer = this.getArmForSide(enumhandside);
 			this.getArmForSide(enumhandside.opposite());
 			float f1 = this.swingProgress;
-			this.bodyH.rotateAngleY = MathHelper.sin(MathHelper.sqrt_float(f1) * ((float) Math.PI * 2F)) * 0.2F;
+			this.bodyH.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
 
 			if (enumhandside == EnumHandSide.LEFT) {
 				this.bodyH.rotateAngleY *= -1.0F;
@@ -260,8 +260,8 @@ public class ModelHoodie extends ModelThinBiped {
 	}
 
 	@Override
-	public void setInvisible(boolean invisible) {
-		super.setInvisible(invisible);
+	public void setVisible(boolean invisible) {
+		super.setVisible(invisible);
 		this.headH.showModel = invisible;
 		this.bodyH.showModel = invisible;
 		this.rightArmH.showModel = invisible;

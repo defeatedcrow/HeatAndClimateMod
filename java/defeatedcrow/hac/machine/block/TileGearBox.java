@@ -31,10 +31,10 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 		super.updateTile();
 
 		// provider
-		IBlockState state = worldObj.getBlockState(pos);
+		IBlockState state = world.getBlockState(pos);
 		if (!DCState.getBool(state, DCState.POWERED)) {
 			for (EnumFacing side : getOutputSide()) {
-				this.provideTorque(worldObj, getPos().offset(side), side, false);
+				this.provideTorque(world, getPos().offset(side), side, false);
 			}
 		}
 
@@ -84,7 +84,7 @@ public class TileGearBox extends TileTorqueBase implements ITorqueProvider, ITor
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		IBlockState state = worldObj.getBlockState(pos);
+		IBlockState state = world.getBlockState(pos);
 		if (DCState.getBool(state, DCState.POWERED))
 			return false;
 		if (this.currentTorque >= this.maxTorque())

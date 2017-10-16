@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
@@ -46,6 +44,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -110,8 +109,9 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 3));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 3));
 	}
 
 	@Override
@@ -120,22 +120,21 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	}
 
 	@Override
-	@Nullable
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
-		return NULL_AABB;
+	public boolean isCollidable() {
+		return false;
 	}
 
 	/* Block動作 */
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			IBlockState crop = world.getBlockState(pos);
 			int stage = state.getValue(DCState.STAGE8);
-			ItemStack held2 = player.inventory.getCurrentItem();
-			if (held2 != null && held2.getItem() == Items.DYE && held2.getItemDamage() == 15 && held2.stackSize > 1) {
-				ItemDye.applyBonemeal(held2, world, pos, player);
+			ItemStack held = player.inventory.getCurrentItem();
+			if (!DCUtil.isEmpty(held) && held.getItem() == Items.DYE && held.getItemDamage() == 15) {
+				ItemDye.applyBonemeal(held, world, pos, player, hand);
 				return true;
 			} else if (stage > 3) {
 				player.playSound(SoundEvents.BLOCK_GRASS_PLACE, 1.0F, 1.0F);
@@ -195,7 +194,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	}
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
+	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		world.scheduleBlockUpdate(pos, block, 10, 0);
 	}
 
@@ -304,7 +303,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 						// summer
 						next = stage + 1;
 					} else if (stage < 3 && season < 3) {
-						if (stage == 0 && world.rand.nextInt(30) == 0) {
+						if (world.rand.nextInt(30) == 0) {
 							state.withProperty(BLACK, true);
 						}
 						next = stage + 1;
@@ -335,14 +334,14 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 				boolean ret = false;
 				for (ItemStack item : crops) {
 					EntityItem drop = new EntityItem(world);
-					drop.setEntityItemStack(item);
+					drop.setItem(item);
 					if (player != null) {
 						drop.setPosition(player.posX, player.posY + 0.15D, player.posZ);
 					} else {
 						drop.setPosition(pos.getX(), pos.getY() + 0.5D, pos.getZ());
 					}
 					if (!world.isRemote) {
-						world.spawnEntityInWorld(drop);
+						world.spawnEntity(drop);
 					}
 					ret = true;
 				}
@@ -447,9 +446,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.STAGE8,
-				BLACK,
-				BlockFluidBase.LEVEL
+				DCState.STAGE8, BLACK, BlockFluidBase.LEVEL
 		});
 	}
 
@@ -466,7 +463,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		if (this.getSeedItem(state) != null)
+		if (!DCUtil.isEmpty(getSeedItem(state)))
 			return this.getSeedItem(state).getItem();
 		else
 			return null;

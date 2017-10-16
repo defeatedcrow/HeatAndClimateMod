@@ -14,8 +14,8 @@ public class TileWindVane extends ClimateReceiveTile {
 		super.updateTile();
 
 		if (current != null && current.getAirflow().getID() >= DCAirflow.FLOW.getID()) {
-			if (worldObj.rand.nextInt(3) == 0) {
-				windPower += worldObj.rand.nextInt(5) - 2;
+			if (world.rand.nextInt(3) == 0) {
+				windPower += world.rand.nextInt(5) - 2;
 			}
 			if (windPower > 20) {
 				windPower = 20;
@@ -36,7 +36,7 @@ public class TileWindVane extends ClimateReceiveTile {
 
 	@Override
 	public void onTickUpdate() {
-		if (worldObj.isRemote && current != null) {
+		if (world.isRemote && current != null) {
 			lastRot = rot;
 			lastSpeed = speed;
 

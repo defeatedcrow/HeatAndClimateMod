@@ -1,9 +1,6 @@
 package defeatedcrow.hac.food.block;
 
-import java.util.List;
 import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCAirflow;
@@ -12,23 +9,22 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -44,17 +40,18 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null && !world.isRemote && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
+			ItemStack held = player.getHeldItem(hand);
 			if (tile != null && tile instanceof TileSteelPot) {
-				if (player.isSneaking() && heldItem == null) {
+				if (player.isSneaking() && DCUtil.isEmpty(held)) {
 					boolean f = ((TileSteelPot) tile).hasCap();
 					boolean next = !f;
 					DCLogger.debugLog("pottery type " + f + "->" + next);
 					((TileSteelPot) tile).setCap(next);
 				} else {
-					if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player))
+					if (!DCUtil.isEmpty(held) && DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player))
 						return true;
 					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				}
@@ -64,16 +61,13 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		// achievement
-		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
+		if (placer != null && !placer.world.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;
-			if (!player.hasAchievement(AchievementClimate.FOOD_POT)) {
-				AcvHelper.addClimateAcievement(player, AchievementClimate.FOOD_POT);
-			}
 		}
-		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		state = state.withProperty(DCState.FACING, placer.getHorizontalFacing().rotateY());
 		return state;
 	}
@@ -84,8 +78,9 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override

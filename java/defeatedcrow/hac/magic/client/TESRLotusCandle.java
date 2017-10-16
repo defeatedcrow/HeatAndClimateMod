@@ -20,8 +20,8 @@ public class TESRLotusCandle extends TileEntitySpecialRenderer<TileLotusCandle> 
 	private static final ModelLotusCandle MODEL = new ModelLotusCandle();
 
 	@Override
-	public void renderTileEntityAt(TileLotusCandle te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileLotusCandle te, double x, double y, double z, float partialTicks, int destroyStage,
+			float a) {
 		if (te != null && te instanceof TileLotusCandleBlack) {
 			this.bindTexture(TEX);
 		} else {

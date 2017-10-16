@@ -12,9 +12,9 @@ import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageReactorButton;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -42,17 +42,17 @@ public class GuiReactor extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		this.fontRendererObj.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92,
+		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92,
 				4210752);
 
 		String s1 = machine.getField(11) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(11)).name();
 		String s2 = machine.getField(12) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(12)).name();
 		String s3 = machine.getField(13) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(13)).name();
 		String s4 = machine.getField(14) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(14)).name();
-		this.fontRendererObj.drawString(s1, 26, 9, 0xFFFFFF);
-		this.fontRendererObj.drawString(s2, 66, 9, 0xFFFFFF);
-		this.fontRendererObj.drawString(s3, 108, 39, 0xFFFFFF);
-		this.fontRendererObj.drawString(s4, 148, 39, 0xFFFFFF);
+		this.fontRenderer.drawString(s1, 26, 9, 0xFFFFFF);
+		this.fontRenderer.drawString(s2, 66, 9, 0xFFFFFF);
+		this.fontRenderer.drawString(s3, 108, 39, 0xFFFFFF);
+		this.fontRenderer.drawString(s4, 148, 39, 0xFFFFFF);
 	}
 
 	@Override
@@ -292,7 +292,7 @@ public class GuiReactor extends GuiContainer {
 		vMax = vMin + ((vMax - vMin) * l);
 
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexBuffer = tessellator.getBuffer();
+		BufferBuilder vertexBuffer = tessellator.getBuffer();
 		vertexBuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
 		vertexBuffer.pos(x, y, zLevel).tex(uMin, vMax).endVertex();
 		vertexBuffer.pos(x + widL, y, zLevel).tex(uMax, vMax).endVertex();

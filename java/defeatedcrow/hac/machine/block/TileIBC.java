@@ -39,7 +39,7 @@ public class TileIBC extends DCTileEntity implements ITagGetter {
 			}
 
 			if (flag) {
-				if (!this.hasWorldObj())
+				if (!this.hasWorld())
 					return;
 				@SuppressWarnings("unchecked")
 				List<EntityPlayer> list = this.getWorld().playerEntities;

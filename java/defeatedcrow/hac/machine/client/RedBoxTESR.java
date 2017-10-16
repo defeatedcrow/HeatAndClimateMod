@@ -14,8 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RedBoxTESR extends DCTorqueTESRBase {
 
 	@Override
-	public void renderTileEntityAt(TileTorqueBase te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileTorqueBase te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		DCTileModelBase model = this.getModel(te);
 		int meta = te.getBlockMetadata();
 		float speed = te.currentSpeed;

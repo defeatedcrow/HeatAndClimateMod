@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
@@ -39,7 +40,7 @@ public class LivingMainEventDC {
 		EntityLivingBase living = event.getEntityLiving();
 		if (living != null && living instanceof EntityPlayer) {
 			this.onPlayerUpdate(event);
-			if (living.worldObj.isRemote) {
+			if (living.world.isRemote) {
 				this.onPlayerKeyUpdate(event);
 				this.onPlayerToolClientUpdate(event);
 			}
@@ -73,8 +74,8 @@ public class LivingMainEventDC {
 
 	public void onEnemyUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
-		if (entity != null && entity.isEntityAlive() && !entity.worldObj.isRemote) {
-			List<EntityPlayer> players = entity.worldObj.playerEntities;
+		if (entity != null && entity.isEntityAlive() && !entity.world.isRemote) {
+			List<EntityPlayer> players = entity.world.playerEntities;
 			boolean flag = false;
 			for (EntityPlayer p : players) {
 				if (p.isEntityAlive()) {
@@ -122,10 +123,10 @@ public class LivingMainEventDC {
 					if (ClimateMain.proxy.isForwardKeyDown()) {
 						Vec3d vec3d = player.getLookVec();
 						double d = Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ);
-						double d1 = Math.sqrt(vec3d.xCoord * vec3d.xCoord + vec3d.zCoord * vec3d.zCoord);
+						double d1 = Math.sqrt(vec3d.x * vec3d.x + vec3d.z * vec3d.z);
 						if (d < 1.0D) {
-							player.motionX += vec3d.xCoord * 0.1D;
-							player.motionZ += vec3d.zCoord * 0.1D;
+							player.motionX += vec3d.x * 0.1D;
+							player.motionZ += vec3d.z * 0.1D;
 						}
 					}
 				} else if (player.isPotionActive(MainInit.bird)) {
@@ -142,10 +143,10 @@ public class LivingMainEventDC {
 						if (ClimateMain.proxy.isForwardKeyDown() && !player.onGround) {
 							Vec3d vec3d = player.getLookVec();
 							double d = Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ);
-							double d1 = Math.sqrt(vec3d.xCoord * vec3d.xCoord + vec3d.zCoord * vec3d.zCoord);
+							double d1 = Math.sqrt(vec3d.x * vec3d.x + vec3d.z * vec3d.z);
 							if (d < 1.0D) {
-								player.motionX += vec3d.xCoord * 0.05D;
-								player.motionZ += vec3d.zCoord * 0.05D;
+								player.motionX += vec3d.x * 0.05D;
+								player.motionZ += vec3d.z * 0.05D;
 							}
 						}
 					}
@@ -159,10 +160,11 @@ public class LivingMainEventDC {
 		EntityLivingBase entity = event.getEntityLiving();
 		if (entity != null && entity instanceof EntityPlayer && AdvancedHUDEvent.INSTANCE.active) {
 			EntityPlayer player = (EntityPlayer) entity;
-			World world = player.worldObj;
+			World world = player.world;
 
-			if ((player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() == MainInit.scope)
-					|| (player.getHeldItemOffhand() != null
+			if ((!DCUtil.isEmpty(player.getHeldItemMainhand())
+					&& player.getHeldItemMainhand().getItem() == MainInit.scope)
+					|| (!DCUtil.isEmpty(player.getHeldItemOffhand())
 							&& player.getHeldItemOffhand().getItem() == MainInit.scope)) {
 
 				EnumFacing face = player.getHorizontalFacing();

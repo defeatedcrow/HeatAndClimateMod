@@ -12,8 +12,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
@@ -77,8 +77,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		}
 		int r = 2 + f;
 
-		if (isForced || (!BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.WET)
-				&& BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.FOREST))) {
+		if (isForced || (!BiomeDictionary.hasType(biome, BiomeDictionary.Type.WET)
+				&& BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST))) {
 			for (int y = 1; y < 80; y++) {
 				// world.setBlockState(pos.up(y), Blocks.STONE.getDefaultState(), 2);
 				int r2 = y / 4;

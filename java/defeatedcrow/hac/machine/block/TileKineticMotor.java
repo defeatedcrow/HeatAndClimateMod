@@ -19,9 +19,9 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.Optional.Method;
 
 @Optional.InterfaceList({
-		@Optional.Interface(iface = "cofh.api.energy.IEnergyReceiver", modid = "CoFHAPI|energy"),
+		@Optional.Interface(iface = "cofh.redstoneflux.api.IEnergyReceiver", modid = "redstoneflux"),
 })
-public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider, cofh.api.energy.IEnergyReceiver {
+public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider, cofh.redstoneflux.api.IEnergyReceiver {
 
 	public int cashedRF = 0;
 	public int cashedFU = 0;
@@ -39,13 +39,13 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 	@Override
 	public void updateTile() {
 		super.updateTile();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// 方向ごとのFUTileを能動的に見に行く
 			for (EnumFacing face : EnumFacing.VALUES) {
 				if (face == this.getBaseSide()) {
 					continue;
 				}
-				TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
+				TileEntity tile = world.getTileEntity(getPos().offset(face));
 				if (tile == null) {
 					continue;
 				}
@@ -75,7 +75,7 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 
 			float send = 0;
 			for (EnumFacing side : getOutputSide()) {
-				send += this.provideTorque(worldObj, getPos().offset(side), side, false);
+				send += this.provideTorque(world, getPos().offset(side), side, false);
 			}
 
 			// DCLogger.debugLog("*** Kinetic Motor ***");
@@ -183,27 +183,27 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "redstoneflux")
 	public int getEnergyStored(EnumFacing face) {
 		int ret = cashedRF;
 		return ret;
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "redstoneflux")
 	public int getMaxEnergyStored(EnumFacing face) {
 		int ret = getMaxCashRF();
 		return ret;
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "redstoneflux")
 	public boolean canConnectEnergy(EnumFacing face) {
 		return face != this.getBaseSide();
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "redstoneflux")
 	public int receiveEnergy(EnumFacing face, int amo, boolean sim) {
 		if (canConnectEnergy(face)) {
 			int get = this.getMaxCashRF() - cashedRF;

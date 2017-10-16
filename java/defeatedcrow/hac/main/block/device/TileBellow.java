@@ -59,7 +59,7 @@ public class TileBellow extends TileTorqueBase implements ITorqueReceiver {
 		super.onTickUpdate();
 
 		// フイゴの描画用
-		if (worldObj.isRemote) {
+		if (world.isRemote) {
 			if (this.prevTorque > 0.0F) {
 				lastcount = count;
 				if (back) {

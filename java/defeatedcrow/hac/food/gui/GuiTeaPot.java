@@ -11,9 +11,9 @@ import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.capability.DrinkMilk;
 import defeatedcrow.hac.food.capability.DrinkSugar;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -41,15 +41,15 @@ public class GuiTeaPot extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String s = I18n.translateToLocal(this.pot.getName());
-		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 2, 4210752);
+		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 2, 4210752);
 
 		String im = "" + pot.getField(9);
 		int colorm = pot.getField(9) == 0 ? 0xCCCCCC : 0x00FFFF;
 		String is = "" + pot.getField(10);
 		int colors = pot.getField(10) == 0 ? 0xCCCCCC : 0x00FFFF;
 
-		this.fontRendererObj.drawString(im, 116 - this.fontRendererObj.getStringWidth(im), 24, colorm, true);
-		this.fontRendererObj.drawString(is, 116 - this.fontRendererObj.getStringWidth(is), 44, colors, true);
+		this.fontRenderer.drawString(im, 116 - this.fontRenderer.getStringWidth(im), 24, colorm, true);
+		this.fontRenderer.drawString(is, 116 - this.fontRenderer.getStringWidth(is), 44, colors, true);
 
 		if (this.isPointInRegion(-20, 4, 20, 20, mouseX, mouseY)) {
 			List<String> list = new ArrayList<String>();
@@ -225,7 +225,7 @@ public class GuiTeaPot extends GuiContainer {
 		vMax = vMin + ((vMax - vMin) * l);
 
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexBuffer = tessellator.getBuffer();
+		BufferBuilder vertexBuffer = tessellator.getBuffer();
 		vertexBuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
 		vertexBuffer.pos(x, y, zLevel).tex(uMin, vMax).endVertex();
 		vertexBuffer.pos(x + widL, y, zLevel).tex(uMax, vMax).endVertex();

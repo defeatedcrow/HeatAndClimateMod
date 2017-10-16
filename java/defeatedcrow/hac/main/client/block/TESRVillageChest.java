@@ -13,8 +13,7 @@ public class TESRVillageChest extends DCLockableTESRBase {
 	private final ModelMetalChest model = new ModelMetalChest();
 
 	@Override
-	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		int type = 0;
 		int face = 0;
 		float f = 0.0F;
@@ -23,7 +22,7 @@ public class TESRVillageChest extends DCLockableTESRBase {
 			open = true;
 		}
 
-		if (te.hasWorldObj()) {
+		if (te.hasWorld()) {
 			int meta = te.getBlockMetadata();
 
 			type = meta & 3;

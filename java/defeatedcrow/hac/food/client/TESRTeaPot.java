@@ -16,13 +16,12 @@ public class TESRTeaPot extends DCLockableTESRBase {
 	private static final ModelTeaPot MODEL = new ModelTeaPot();
 
 	@Override
-	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		int type = 0;
 		int face = 0;
 		float f = 0.0F;
 
-		if (te.hasWorldObj()) {
+		if (te.hasWorld()) {
 			int meta = te.getBlockMetadata();
 
 			type = meta & 3;

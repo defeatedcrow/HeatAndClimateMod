@@ -36,7 +36,7 @@ public class EntityProjChalW extends EntityProjBase {
 
 	@Override
 	protected float getHitDamage(Entity target, float speed) {
-		float f = 15.0F + this.worldObj.rand.nextFloat();
+		float f = 15.0F + this.world.rand.nextFloat();
 		if (target != null && target instanceof EntityLivingBase) {
 			EntityLivingBase liv = (EntityLivingBase) target;
 			if (!liv.onGround) {

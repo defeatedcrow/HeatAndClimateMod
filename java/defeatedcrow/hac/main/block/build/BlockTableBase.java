@@ -1,8 +1,8 @@
 package defeatedcrow.hac.main.block.build;
 
-import java.util.List;
 import java.util.Random;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -17,6 +17,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -95,10 +96,7 @@ public class BlockTableBase extends Block {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				NORTH,
-				EAST,
-				WEST,
-				SOUTH
+				NORTH, EAST, WEST, SOUTH
 		});
 	}
 
@@ -139,8 +137,9 @@ public class BlockTableBase extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 0));
 	}
 
 	// 設置・破壊処理

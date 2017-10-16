@@ -8,9 +8,9 @@ import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.client.model.ModelIBC;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -28,16 +28,15 @@ public class IBCTESR extends DCTESRBase {
 	private static final ModelIBC MODEL = new ModelIBC();
 
 	@Override
-	public void renderTileEntityAt(DCTileEntity te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(DCTileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 
-		if (te instanceof TileIBC && te.hasWorldObj()) {
+		if (te instanceof TileIBC && te.hasWorld()) {
 
 			int type = 0;
 			int face = 0;
 			float f = 0.0F;
 
-			if (te.hasWorldObj()) {
+			if (te.hasWorld()) {
 				int meta = te.getBlockMetadata();
 
 				type = meta & 3;
@@ -126,7 +125,7 @@ public class IBCTESR extends DCTESRBase {
 		float f2 = 0.0625F + 0.8F * amount / 128000F;
 		float f = 0.45F;
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
 		int i = 0;

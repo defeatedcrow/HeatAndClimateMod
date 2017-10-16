@@ -6,7 +6,9 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
+import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.base.DCLockableTE;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -17,7 +19,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.IHopper;
@@ -25,7 +26,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
@@ -36,7 +36,7 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInventory {
 
-	private ItemStack[] inv = new ItemStack[5];
+	private DCInventory inv = new DCInventory(5);
 	private int cooldown = -1;
 	private int lastCount = 0;
 
@@ -57,7 +57,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Nullable
 	private EnumFacing getCurrentFacing() {
-		IBlockState state = this.worldObj.getBlockState(pos);
+		IBlockState state = this.world.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof BlockHopperFilter) {
 			EnumSide side = DCState.getSide(state, DCState.SIDE);
 			return side != null ? side.getFacing() : null;
@@ -66,7 +66,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	}
 
 	private boolean isActive() {
-		IBlockState state = this.worldObj.getBlockState(pos);
+		IBlockState state = this.world.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof BlockHopperFilter) {
 			boolean flag = DCState.getBool(state, DCState.POWERED);
 			return flag;
@@ -77,20 +77,20 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	private boolean extractItem() {
 		EnumFacing face = getCurrentFacing();
 		if (face != null) {
-			TileEntity tile = worldObj.getTileEntity(pos.offset(face));
+			TileEntity tile = world.getTileEntity(pos.offset(face));
 			if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite())) {
 				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 						face.getOpposite());
 				if (target != null) {
 					boolean b = false;
 					for (int i = 0; i < this.getSizeInventory(); i++) {
-						ItemStack item = inv[i];
-						if (item != null && item.stackSize > 1) {
+						ItemStack item = inv.getStackInSlot(i);
+						if (!DCUtil.isEmpty(item)) {
 							ItemStack ins = item.copy();
-							ins.stackSize = 1;
+							ins.setCount(1);
 							for (int j = 0; j < target.getSlots(); j++) {
 								ItemStack ret = target.insertItem(j, ins, false);
-								if (ret == null) {
+								if (DCUtil.isEmpty(ret)) {
 									this.decrStackSize(i, 1);
 									this.markDirty();
 									tile.markDirty();
@@ -107,14 +107,14 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	private boolean suctionItem() {
 		EnumFacing face = getCurrentFacing() == EnumFacing.UP ? EnumFacing.DOWN : EnumFacing.UP;
-		TileEntity tile = worldObj.getTileEntity(pos.offset(face));
+		TileEntity tile = world.getTileEntity(pos.offset(face));
 		if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
 			IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 			if (target != null) {
 				boolean b = false;
 				for (int i = 0; i < target.getSlots(); i++) {
 					ItemStack item = target.extractItem(i, 1, true);
-					if (item != null) {
+					if (!DCUtil.isEmpty(item)) {
 						for (int j = 0; j < this.getSizeInventory(); j++) {
 							ItemStack cur = this.getStackInSlot(j);
 							if (this.isItemStackable(item, cur) > 0) {
@@ -143,7 +143,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 			y1 = getPos().getY() - 2D;
 			y2 = getPos().getY() + 0.5D;
 		}
-		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
+		List list = this.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
 		if (list == null || list.isEmpty())
 			return false;
 
@@ -152,17 +152,17 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 			if (entity != null) {
 				if (entity instanceof EntityItem) {
 					EntityItem drop = (EntityItem) entity;
-					if (drop.getEntityItem() != null && drop.getEntityItem().stackSize > 0) {
-						ItemStack ins = drop.getEntityItem().copy();
+					if (!DCUtil.isEmpty(drop.getItem())) {
+						ItemStack ins = drop.getItem().copy();
 						for (int j = 0; j < this.getSizeInventory(); j++) {
 							ItemStack cur = this.getStackInSlot(j);
 							int count = this.isItemStackable(ins, cur);
 							if (count > 0) {
-								ins.stackSize = count;
+								ins.setCount(count);
 								this.incrStackInSlot(j, ins);
-								drop.getEntityItem().splitStack(count);
+								drop.getItem().splitStack(count);
 								this.markDirty();
-								if (drop.getEntityItem() == null || drop.getEntityItem().stackSize <= 0) {
+								if (DCUtil.isEmpty(drop.getItem())) {
 									drop.setDead();
 								}
 								return true;
@@ -178,38 +178,20 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	/* === 追加メソッド === */
 
 	public static int isItemStackable(ItemStack target, ItemStack current) {
-		if (target == null)
-			return 0;
-		else if (current == null)
-			return target.stackSize;
-
-		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
-				&& ItemStack.areItemStackTagsEqual(target, current)) {
-			int i = current.stackSize + target.stackSize;
+		if (DCUtil.isSameItem(target, current, true)) {
+			int i = current.getCount() + target.getCount();
 			if (i > current.getMaxStackSize()) {
-				i = current.getMaxStackSize() - current.stackSize;
+				i = current.getMaxStackSize() - current.getCount();
 				return i;
 			}
-			return target.stackSize;
+			return target.getCount();
 		}
 
 		return 0;
 	}
 
 	public void incrStackInSlot(int i, ItemStack input) {
-		if (i < this.getSizeInventory() && input != null) {
-			if (this.inv[i] != null) {
-				if (this.inv[i].getItem() == input.getItem() && this.inv[i].getMetadata() == input.getMetadata()
-						&& ItemStack.areItemStackTagsEqual(this.inv[i], input)) {
-					this.inv[i].stackSize += input.stackSize;
-					if (this.inv[i].stackSize > this.getInventoryStackLimit()) {
-						this.inv[i].stackSize = this.getInventoryStackLimit();
-					}
-				}
-			} else {
-				this.setInventorySlotContents(i, input);
-			}
-		}
+		inv.incrStackInSlot(i, input);
 	}
 
 	/* === IInventory === */
@@ -221,59 +203,23 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		if (i < getSizeInventory())
-			return this.inv[i];
-		else
-			return null;
+		return inv.getStackInSlot(i);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return null;
-		if (this.inv[i] != null) {
-			ItemStack itemstack;
-
-			if (this.inv[i].stackSize <= num) {
-				itemstack = this.inv[i];
-				this.inv[i] = null;
-				return itemstack;
-			} else {
-				itemstack = this.inv[i].splitStack(num);
-				if (this.inv[i].stackSize == 0) {
-					this.inv[i] = null;
-				}
-				return itemstack;
-			}
-		} else
-			return null;
+		return inv.decrStackSize(i, num);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		i = MathHelper.clamp_int(i, 0, this.getSizeInventory() - 1);
-		if (i < inv.length) {
-			if (this.inv[i] != null) {
-				ItemStack itemstack = this.inv[i];
-				this.inv[i] = null;
-				return itemstack;
-			}
-		}
-		return null;
+		return inv.removeStackFromSlot(i);
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return;
-		else {
-			this.inv[i] = stack;
-
-			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-				stack.stackSize = this.getInventoryStackLimit();
-			}
-		}
+		inv.setInventorySlotContents(i, stack);
 	}
 
 	@Override
@@ -282,7 +228,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player) {
 		if (getWorld().getTileEntity(this.pos) != this || player == null)
 			return false;
 		else
@@ -318,9 +264,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < this.inv.length; ++i) {
-			this.inv[i] = null;
-		}
+		inv.clear();
 	}
 
 	@Override
@@ -373,19 +317,14 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Override
 	public World getWorld() {
-		return this.worldObj;
+		return this.world;
 	}
 
 	/* === SidedInventory === */
 
 	protected int[] slotsSides() {
 		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5
+				0, 1, 2, 3, 4, 5
 		};
 	};
 
@@ -401,7 +340,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (this.getStackInSlot(index) != null && this.getStackInSlot(index).stackSize > 1)
+		if (!DCUtil.isEmpty(inv.getStackInSlot(index)))
 			return true;
 		return false;
 	}
@@ -428,17 +367,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
+		inv.readFromNBT(tag);
 
 		this.cooldown = tag.getInteger("Cooldown");
 	}
@@ -450,17 +379,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		tag.setInteger("Cooldown", this.cooldown);
 
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound tag1 = new NBTTagCompound();
-				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
-				nbttaglist.appendTag(tag1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		inv.writeToNBT(tag);
 		return tag;
 	}
 
@@ -471,17 +390,8 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		tag.setInteger("Cooldown", this.cooldown);
 
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
+		inv.writeToNBT(tag);
 
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-				nbttagcompound1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(nbttagcompound1);
-				nbttaglist.appendTag(nbttagcompound1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
 		return tag;
 	}
 
@@ -489,17 +399,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = nbttagcompound1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-			}
-		}
+		inv.readFromNBT(tag);
 
 		this.cooldown = tag.getInteger("Cooldown");
 	}
@@ -528,6 +428,11 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	@Override
 	public ITextComponent getDisplayName() {
 		return new TextComponentString(this.getName());
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return inv.isEmpty();
 	}
 
 }

@@ -39,7 +39,8 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 		return "dcs_climate:items/tool/musket";
 	}
 
-	private ItemStack findAmmo(EntityPlayer player) {
+	@Override
+	public ItemStack findAmmo(EntityPlayer player) {
 		if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
 			return player.getHeldItem(EnumHand.OFF_HAND);
 		else if (this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)))
@@ -52,7 +53,7 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 					return itemstack;
 			}
 
-			return null;
+			return ItemStack.EMPTY;
 		}
 	}
 
@@ -72,21 +73,21 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World worldIn, EntityPlayer playerIn,
-			EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
 		if (!DCUtil.isEmpty(stack)) {
 			NBTTagCompound tag = stack.getTagCompound();
 			if (tag == null) {
 				tag = new NBTTagCompound();
 			}
 			if (tag.hasKey("bulletType")) {
-				playerIn.setActiveHand(hand);
+				player.setActiveHand(hand);
 				return new ActionResult(EnumActionResult.SUCCESS, stack);
 			} else {
-				worldIn.playSound((EntityPlayer) null, playerIn.posX, playerIn.posY, playerIn.posZ,
+				worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
 						SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.NEUTRAL, 1.0F,
 						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
-				ItemStack ammo = this.findAmmo(playerIn);
+				ItemStack ammo = this.findAmmo(player);
 				boolean flag = ammo != null;
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0) {
 					tag.setInteger("bulletType", 1);
@@ -96,11 +97,8 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 					int meta = ammo.getItemDamage();
 					tag.setInteger("bulletType", meta);
 					stack.setTagCompound(tag);
-					if (!playerIn.capabilities.isCreativeMode) {
-						--ammo.stackSize;
-						if (ammo.stackSize == 0) {
-							playerIn.inventory.deleteStack(ammo);
-						}
+					if (!player.capabilities.isCreativeMode) {
+						DCUtil.reduceStackSize(ammo, 1);
 					}
 					return new ActionResult(EnumActionResult.SUCCESS, stack);
 				} else
@@ -181,7 +179,7 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 						stack.damageItem(1, player);
 						stack.getTagCompound().removeTag("bulletType");
 
-						world.spawnEntityInWorld(entityarrow);
+						world.spawnEntity(entityarrow);
 					}
 
 					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,

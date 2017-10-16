@@ -12,8 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
@@ -59,19 +59,19 @@ public class WorldGenAltOres implements IWorldGenerator {
 					}
 				} else if (posY > 80) {
 					if (random.nextInt(100) < sedPar) {
-						if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SANDY)) {
+						if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY)) {
 							generateSandSediment(world, random, pos);
-						} else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SAVANNA)
-								|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.JUNGLE)) {
+						} else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA)
+								|| BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
 							generateBauxite(world, random, pos);
-						} else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN)
-								|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.HILLS)) {
+						} else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN)
+								|| BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS)) {
 							generateSediment(world, random, pos);
 						}
 					}
 				} else if (posY < 60 && posY > 30) {
-					if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN)
-							|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.OCEAN)) {
+					if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN)
+							|| BiomeDictionary.hasType(biome, BiomeDictionary.Type.OCEAN)) {
 						if (random.nextInt(100) < kiesPar) {
 							generateKieslager(world, random, pos);
 						}
@@ -470,7 +470,7 @@ public class WorldGenAltOres implements IWorldGenerator {
 				for (int y = pos.getY() - h; y <= pos.getY() + h; y++) {
 					BlockPos p = new BlockPos(x, y, z);
 					double d1 = Math.sqrt(p.distanceSq(pos));
-					int r = h + 1 - MathHelper.floor_double(d1);
+					int r = h + 1 - MathHelper.floor(d1);
 					if (r < -0.0D) {
 						continue;
 					}

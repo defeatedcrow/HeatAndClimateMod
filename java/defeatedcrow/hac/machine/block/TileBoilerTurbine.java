@@ -47,12 +47,12 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	public void updateTile() {
 		super.updateTile();
 
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// 水の取り込み
 			this.checkSideTank();
 
 			// HeatTier更新
-			DCHeatTier heat = ClimateAPI.calculator.getAverageTemp(worldObj, pos);
+			DCHeatTier heat = ClimateAPI.calculator.getAverageTemp(world, pos);
 			currentClimate = heat.getID();
 
 			// 燃焼処理
@@ -79,7 +79,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 			// provider
 			for (EnumFacing side : getOutputSide()) {
-				this.provideTorque(worldObj, getPos().offset(side), side, false);
+				this.provideTorque(world, getPos().offset(side), side, false);
 			}
 
 			// DCLogger.debugLog("current torque: " + currentTorque);
@@ -194,7 +194,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 				break;
 			}
 
-			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
+			TileEntity tile = world.getTileEntity(getPos().offset(face));
 			if (tile != null
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
@@ -377,17 +377,17 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -399,7 +399,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player) {
 		return getWorld().getTileEntity(this.pos) != this ? false
 				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
@@ -467,6 +467,11 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
 		return oldState.getBlock() != newSate.getBlock();
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return false;
 	}
 
 }

@@ -16,8 +16,7 @@ public class TESRIceCluster extends TileEntitySpecialRenderer<TileIceCluster> {
 	private static final ModelCluster MODEL = new ModelCluster();
 
 	@Override
-	public void renderTileEntityAt(TileIceCluster te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileIceCluster te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		this.bindTexture(TEX);
 
 		GlStateManager.pushMatrix();

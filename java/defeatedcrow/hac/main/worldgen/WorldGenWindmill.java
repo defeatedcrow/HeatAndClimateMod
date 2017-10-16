@@ -27,8 +27,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
@@ -89,11 +89,11 @@ public class WorldGenWindmill implements IWorldGenerator {
 
 		Biome biome = world.getBiomeForCoordsBody(pos);
 
-		if (world.villageCollectionObj.getNearestVillage(pos, 6) != null)
+		if (world.villageCollection.getNearestVillage(pos, 6) != null)
 			return false;
 
-		if (isForced || BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.PLAINS)
-				|| BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SANDY)) {
+		if (isForced || BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS)
+				|| BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY)) {
 			// 高度選定
 			int h = -1;
 			for (int y = 2; y < 255; y++) {

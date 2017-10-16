@@ -5,9 +5,9 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.client.model.ModelTeaCup;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -64,7 +64,7 @@ public class CupWhiteRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 		float f2 = 0.45F;
 		float f = 0.18F;
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 		GlStateManager.rotate(-r, 0.0F, 1.0F, 0.0F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, alpha);
 

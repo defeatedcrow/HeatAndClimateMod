@@ -1,9 +1,6 @@
 package defeatedcrow.hac.machine.block;
 
-import java.util.List;
 import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -11,6 +8,7 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.material.Material;
@@ -18,12 +16,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -43,12 +41,14 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!player.worldObj.isRemote && player != null) {
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null && !player.world.isRemote) {
+			ItemStack heldItem = player.getHeldItem(hand);
 			TileEntity tile = world.getTileEntity(pos);
 			if (!player.isSneaking() && tile instanceof TileGasBurner && hand == EnumHand.MAIN_HAND) {
 				boolean flag = false;
-				if (heldItem != null && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+				if (!DCUtil.isEmpty(heldItem)
+						&& heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 					IFluidHandler cont = heldItem.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
@@ -77,8 +77,9 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override

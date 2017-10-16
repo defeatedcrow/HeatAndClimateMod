@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -41,12 +42,7 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 	}
 
 	private static String[] names = {
-			"concrete",
-			"mosaic_red",
-			"mosaic_blue",
-			"mosaic_yellow",
-			"mosaic_black",
-			"road"
+			"concrete", "mosaic_red", "mosaic_blue", "mosaic_yellow", "mosaic_black", "road"
 	};
 
 	@Override
@@ -70,7 +66,7 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public boolean isCollectable(ItemStack item) {
-		return item != null && item.getItem() != null && item.getItem() instanceof ItemPickaxe;
+		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemPickaxe;
 	}
 
 	@Override
@@ -86,7 +82,7 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 			double y = player.posY + 0.25D;
 			double z = player.posZ;
 			EntityItem drop = new EntityItem(world, x, y, z, item);
-			world.spawnEntityInWorld(drop);
+			world.spawnEntity(drop);
 		}
 		world.setBlockToAir(pos);
 		return true;

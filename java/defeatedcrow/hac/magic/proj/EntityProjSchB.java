@@ -43,13 +43,13 @@ public class EntityProjSchB extends EntityProjBase {
 	@Override
 	protected boolean onGroundHit() {
 		if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase) {
-			CustomExplosion explosion = new CustomExplosion(worldObj, this, (EntityLivingBase) shootingEntity, posX,
+			CustomExplosion explosion = new CustomExplosion(world, this, (EntityLivingBase) shootingEntity, posX,
 					posY + 0.25D, posZ, 3F, CustomExplosion.Type.Silk, true);
 			explosion.doExplosion();
 		}
 
-		worldObj.addWeatherEffect(new EntityLightningBolt(worldObj, posX, posY - 0.25D, posZ, false));
-		WorldInfo worldinfo = worldObj.getWorldInfo();
+		world.addWeatherEffect(new EntityLightningBolt(world, posX, posY - 0.25D, posZ, false));
+		WorldInfo worldinfo = world.getWorldInfo();
 		worldinfo.setRainTime(6000);
 		worldinfo.setThunderTime(6000);
 		worldinfo.setRaining(true);
@@ -67,7 +67,7 @@ public class EntityProjSchB extends EntityProjBase {
 
 	@Override
 	public void onUpdate() {
-		if (!this.worldObj.isRemote && (this.isInWater() || this.isInLava())) {
+		if (!this.world.isRemote && (this.isInWater() || this.isInLava())) {
 			setStart(true);
 		}
 		super.onUpdate();
@@ -79,7 +79,7 @@ public class EntityProjSchB extends EntityProjBase {
 		double x1 = posX + rand.nextDouble() - 0.5D;
 		double y1 = posY + rand.nextDouble() - 0.5D;
 		double z1 = posZ + rand.nextDouble() - 0.5D;
-		Particle shock = new ParticleShock.Factory().createParticle(0, worldObj, x1, y1, z1, 0D, 0D, 0D, new int[0]);
+		Particle shock = new ParticleShock.Factory().createParticle(0, world, x1, y1, z1, 0D, 0D, 0D, new int[0]);
 		shock.setRBGColorF(0.65F, 0.95F, 0.95F);
 		FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 
@@ -93,8 +93,7 @@ public class EntityProjSchB extends EntityProjBase {
 			double fy = 0.5D + rand.nextDouble() * 0.25D;
 			double fz = 0.5D * rand.nextDouble() - 0.25D;
 
-			Particle star = new ParticleFallingStar.Factory().createParticle(0, worldObj, x, y, z, fx, fy, fz,
-					new int[0]);
+			Particle star = new ParticleFallingStar.Factory().createParticle(0, world, x, y, z, fx, fy, fz, new int[0]);
 			star.setRBGColorF(0.65F, 0.95F, 0.95F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(star);
 

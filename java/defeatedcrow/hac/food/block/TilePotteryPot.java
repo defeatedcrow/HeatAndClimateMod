@@ -6,6 +6,7 @@ import java.util.List;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -39,7 +40,7 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		}
 
 		if (flag) {
-			if (!this.hasWorldObj())
+			if (!this.hasWorld())
 				return;
 			@SuppressWarnings("unchecked")
 			List<EntityPlayer> list = this.getWorld().playerEntities;
@@ -95,7 +96,7 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		if (currentRecipe != null) {
 			ItemStack out = currentRecipe.getOutput();
 			ItemStack sec = currentRecipe.getSecondary();
-			float chance = MathHelper.ceiling_float_int(currentRecipe.getSecondaryChance() * 100);
+			float chance = MathHelper.ceil(currentRecipe.getSecondaryChance() * 100);
 			FluidStack inF = currentRecipe.getInputFluid();
 			FluidStack outF = currentRecipe.getOutputFluid();
 
@@ -105,8 +106,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
 			for (int i = 4; i < 7; i++) {
-				ItemStack slot = this.inv[i];
-				if (slot != null) {
+				ItemStack slot = this.getStackInSlot(i);
+				if (!DCUtil.isEmpty(slot)) {
 					boolean inRecipe = false;
 					Iterator<Object> req = required.iterator();
 
@@ -117,13 +118,14 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 						int count = 1;
 
 						if (next instanceof ItemStack) {
-							count = ((ItemStack) next).stackSize;
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot.stackSize >= count;
-						} else if (next instanceof ArrayList) {
-							ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
+							count = ((ItemStack) next).getCount();
+							match = OreDictionary.itemMatches((ItemStack) next, slot, false)
+									&& slot.getCount() >= count;
+						} else if (next instanceof List) {
+							List<ItemStack> list = new ArrayList<ItemStack>((List<ItemStack>) next);
 							if (list != null && !list.isEmpty()) {
 								for (ItemStack item : list) {
-									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.stackSize > 0;
+									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.getCount() > 0;
 									if (f) {
 										match = true;
 									}
@@ -149,11 +151,11 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 				outputT.fill(outF, true);
 			}
 
-			if (out != null) {
+			if (!DCUtil.isEmpty(out)) {
 				this.insertResult(out, 7, 9);
 			}
 
-			if (sec != null && worldObj.rand.nextInt(100) < chance) {
+			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance) {
 				this.insertResult(sec, 7, 9);
 			}
 

@@ -1,6 +1,5 @@
 package defeatedcrow.hac.machine;
 
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.machine.block.TileAcceptorPanel;
 import defeatedcrow.hac.machine.block.TileAdapterPanel;
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
@@ -42,8 +41,7 @@ import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
-import defeatedcrow.hac.main.ClimateMain;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import defeatedcrow.hac.main.worldgen.DCRegistryUtil;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineCommonProxy {
@@ -90,14 +88,11 @@ public class MachineCommonProxy {
 	}
 
 	public static void loadEntity() {
-		EntityRegistry.registerModEntity(EntityMinecartMotor.class,
-				ClimateCore.PACKAGE_BASE + "entity.machine.motor_cart", 80, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityMinecartMotor.class, "entity", "motor_cart");
 
-		EntityRegistry.registerModEntity(EntityScooter.class, ClimateCore.PACKAGE_BASE + "entity.machine.motor_scooter",
-				81, ClimateMain.instance, 128, 1, true);
+		DCRegistryUtil.addEntity(EntityScooter.class, "machine", "motor_scooter", 1);
 
-		EntityRegistry.registerModEntity(EntityMagneticHover.class,
-				ClimateCore.PACKAGE_BASE + "entity.machine.magnetic_hover", 82, ClimateMain.instance, 128, 1, true);
+		DCRegistryUtil.addEntity(EntityMagneticHover.class, "entity", "magnetic_hover", 1);
 
 	}
 

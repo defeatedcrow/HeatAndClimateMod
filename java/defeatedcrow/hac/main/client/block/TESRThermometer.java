@@ -15,14 +15,13 @@ public class TESRThermometer extends DCTESRBase {
 	private final ModelThermoMeter model = new ModelThermoMeter();
 
 	@Override
-	public void renderTileEntityAt(DCTileEntity te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(DCTileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		int type = 0;
 		int face = 0;
 		float f = 0.0F;
 		float[] points = new float[10];
 
-		if (te.hasWorldObj() && te instanceof TileThermometer) {
+		if (te.hasWorld() && te instanceof TileThermometer) {
 			int meta = te.getBlockMetadata();
 			TileThermometer meter = (TileThermometer) te;
 

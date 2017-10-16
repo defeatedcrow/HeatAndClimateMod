@@ -2,8 +2,6 @@ package defeatedcrow.hac.machine.block;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
@@ -35,16 +33,19 @@ public class BlockPortalManager extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TilePortalManager) {
-			if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
-				ItemStack held = player.getHeldItem(hand);
-				if (!DCUtil.isEmpty(held)
-						&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
-					DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
-				} else {
-					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile instanceof TilePortalManager) {
+				if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+					ItemStack held = player.getHeldItem(hand);
+					if (!DCUtil.isEmpty(held)
+							&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+						DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+					} else {
+						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+					}
 				}
 			}
 		}
@@ -89,7 +90,7 @@ public class BlockPortalManager extends BlockTorqueBase {
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
 			entityitem.motionZ = (float) world.rand.nextGaussian() * f3;
-			world.spawnEntityInWorld(entityitem);
+			world.spawnEntity(entityitem);
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);

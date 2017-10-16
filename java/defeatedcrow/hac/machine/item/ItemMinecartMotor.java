@@ -2,6 +2,8 @@ package defeatedcrow.hac.machine.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
@@ -9,6 +11,7 @@ import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
@@ -39,7 +42,7 @@ public class ItemMinecartMotor extends DCItem {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp_int(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 1);
 		String s = "items/block/flowerpot_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -108,7 +111,7 @@ public class ItemMinecartMotor extends DCItem {
 				entityminecart.setCustomNameTag(stack.getDisplayName());
 			}
 
-			world.spawnEntityInWorld(entityminecart);
+			world.spawnEntity(entityminecart);
 			stack.splitStack(1);
 			return stack;
 		}
@@ -126,11 +129,11 @@ public class ItemMinecartMotor extends DCItem {
 	 * Called when a Block is right-clicked with this Item
 	 */
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos,
-			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand,
+			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		IBlockState iblockstate = worldIn.getBlockState(pos);
 
-		if (!BlockRailBase.isRailBlock(iblockstate))
+		if (!BlockRailBase.isRailBlock(iblockstate) || playerIn == null)
 			return EnumActionResult.FAIL;
 		else {
 			if (!worldIn.isRemote) {
@@ -147,22 +150,23 @@ public class ItemMinecartMotor extends DCItem {
 
 				EntityMinecart entityminecart = new EntityMinecartMotor(worldIn, pos.getX() + 0.5D,
 						pos.getY() + 0.0625D + d0, pos.getZ() + 0.5D);
+				ItemStack stack = playerIn.getHeldItem(hand);
 
 				if (stack.hasDisplayName()) {
 					entityminecart.setCustomNameTag(stack.getDisplayName());
 				}
 
-				worldIn.spawnEntityInWorld(entityminecart);
+				worldIn.spawnEntity(entityminecart);
+				stack.splitStack(1);
 			}
 
-			--stack.stackSize;
 			return EnumActionResult.SUCCESS;
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 		tooltip.add("Placeable as an Entity");
 	}
 

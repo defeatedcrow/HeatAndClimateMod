@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.block.fluid;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -38,12 +39,13 @@ public class FluidDropItemDC implements IFluidHandler, ICapabilityProvider {
 		return null;
 	}
 
-	protected void setFluid(FluidStack fluid) {
-	}
+	protected void setFluid(FluidStack fluid) {}
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
-		return new FluidTankProperties[] { new FluidTankProperties(getFluid(), 200) };
+		return new FluidTankProperties[] {
+				new FluidTankProperties(getFluid(), 200)
+		};
 	}
 
 	@Override
@@ -91,7 +93,7 @@ public class FluidDropItemDC implements IFluidHandler, ICapabilityProvider {
 	}
 
 	protected void setContainerToEmpty() {
-		container.stackSize--;
+		DCUtil.reduceStackSize(container, 1);
 	}
 
 	@Override

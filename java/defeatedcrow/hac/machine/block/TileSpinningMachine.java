@@ -27,7 +27,7 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueP
 
 		// provider
 		for (EnumFacing side : getOutputSide()) {
-			this.provideTorque(worldObj, getPos().offset(side), side, false);
+			this.provideTorque(world, getPos().offset(side), side, false);
 		}
 	}
 
@@ -149,6 +149,11 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueP
 	@Override
 	public String getGuiID() {
 		return "dcs.gui.device.spinning_machine";
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return inventory.isEmpty();
 	}
 
 }

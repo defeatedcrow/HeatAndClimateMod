@@ -10,7 +10,6 @@ package defeatedcrow.hac.main;
 import java.util.Calendar;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
@@ -35,10 +34,10 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
-	public static final int MOD_MEJOR = 1;
-	public static final int MOD_MINOR = 5;
-	public static final int MOD_BUILD = 20;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.5.17,)";
+	public static final int MOD_MEJOR = 2;
+	public static final int MOD_MINOR = 0;
+	public static final int MOD_BUILD = 0;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.0.0,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
@@ -86,10 +85,12 @@ public class ClimateMain {
 		// enchant
 		proxy.loadEnchantment();
 		// achievement
-		AchievementClimate.load();
+		// AchievementClimate.load();
 		OreDicRegister.load();
 		// loader
 		DCChunkloadContoroller.getInstance().preInit();
+
+		DCIntegrationCore.INSTANCE.loadPre();
 	}
 
 	@EventHandler
@@ -103,14 +104,14 @@ public class ClimateMain {
 		// other things
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 
-		DCIntegrationCore.INSTANCE.loadIMC();
+		DCIntegrationCore.INSTANCE.loadInit();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		// Recipes
 		proxy.loadRecipes();
-		DCIntegrationCore.INSTANCE.load();
+		DCIntegrationCore.INSTANCE.loadPost();
 
 		// date
 		month = CAL.get(CAL.MONTH);

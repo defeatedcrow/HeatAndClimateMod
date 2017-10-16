@@ -20,7 +20,7 @@ public class TileShaft_S extends TileTorqueBase implements ITorqueProvider, ITor
 
 		// provider
 		for (EnumFacing side : getOutputSide()) {
-			this.provideTorque(worldObj, getPos().offset(side), side, false);
+			this.provideTorque(world, getPos().offset(side), side, false);
 		}
 	}
 

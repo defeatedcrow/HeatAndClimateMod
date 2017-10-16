@@ -63,7 +63,7 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 		super.updateTile();
 
 		// 気候チェック
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			float f = this.prevTorque;
 			current = DCHeatTier.NORMAL;
 			if (f > 60.0F) {
@@ -90,7 +90,7 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 			}
 
 			if (flag) {
-				if (!this.hasWorldObj())
+				if (!this.hasWorld())
 					return;
 				@SuppressWarnings("unchecked")
 				List<EntityPlayer> list = this.getWorld().playerEntities;

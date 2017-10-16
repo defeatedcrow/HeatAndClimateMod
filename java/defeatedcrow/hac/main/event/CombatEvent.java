@@ -24,7 +24,7 @@ public class CombatEvent {
 		DamageSource source = event.getSource();
 		float newDam = event.getAmount();
 		if (source instanceof EntityDamageSource) {
-			Entity owner = ((EntityDamageSource) source).getEntity();
+			Entity owner = ((EntityDamageSource) source).getTrueSource();
 			if (owner != null && owner instanceof EntityLivingBase && owner.isEntityAlive()) {
 				EntityLivingBase ownerLiv = (EntityLivingBase) owner;
 				// Invisible

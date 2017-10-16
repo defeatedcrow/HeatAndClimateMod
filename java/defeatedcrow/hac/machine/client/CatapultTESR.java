@@ -27,8 +27,7 @@ public class CatapultTESR extends DCTorqueTESRBase {
 	}
 
 	@Override
-	public void renderTileEntityAt(TileTorqueBase te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileTorqueBase te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		TileCatapult cat = null;
 		if (te != null && te instanceof TileCatapult) {
 			cat = (TileCatapult) te;

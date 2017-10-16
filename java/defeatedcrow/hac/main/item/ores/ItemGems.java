@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.item.ores;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -45,25 +46,8 @@ public class ItemGems extends DCItem {
 	 * 18: アパタイト
 	 */
 	private static String[] names = {
-			"chal_blue",
-			"chal_red",
-			"chal_white",
-			"gypsum",
-			"sapphire",
-			"malachite",
-			"celestite",
-			"clam",
-			"salt",
-			"niter",
-			"sulfur",
-			"schorl",
-			"serpentine",
-			"olivine",
-			"almandine",
-			"rutile",
-			"bauxite",
-			"bismuth",
-			"apatite"
+			"chal_blue", "chal_red", "chal_white", "gypsum", "sapphire", "malachite", "celestite", "clam", "salt",
+			"niter", "sulfur", "schorl", "serpentine", "olivine", "almandine", "rutile", "bauxite", "bismuth", "apatite"
 	};
 
 	public ItemGems(int max) {
@@ -93,8 +77,8 @@ public class ItemGems extends DCItem {
 	/* gemぶっぱ */
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		return EnumActionResult.FAIL;
 	}
 
@@ -107,11 +91,11 @@ public class ItemGems extends DCItem {
 			int i = this.getMaxItemUseDuration(stack) - timeLeft;
 			flag = i > 15;
 
-			if (stack != null && flag) {
+			if (!DCUtil.isEmpty(stack) && flag) {
 				if (!world.isRemote) {
 					EntityProjWhiteSpit entityarrow = new EntityProjWhiteSpit(world, living);
 					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
-					world.spawnEntityInWorld(entityarrow);
+					world.spawnEntity(entityarrow);
 				}
 
 				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
@@ -119,11 +103,7 @@ public class ItemGems extends DCItem {
 						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
-					--stack.stackSize;
-
-					if (stack.stackSize == 0) {
-						player.inventory.deleteStack(stack);
-					}
+					DCUtil.reduceStackSize(stack, 1);
 				}
 
 				player.addStat(StatList.getObjectUseStats(this));
@@ -133,11 +113,11 @@ public class ItemGems extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
-		if (ModuleConfig.magic && stack != null && stack.getItem() == this && stack.getItemDamage() == 2)
-			return playerHasCharm(player)
-					? new ActionResult(EnumActionResult.SUCCESS, stack)
+		ItemStack stack = player.getHeldItem(hand);
+		if (ModuleConfig.magic && !DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)
+			return playerHasCharm(player) ? new ActionResult(EnumActionResult.SUCCESS, stack)
 					: new ActionResult(EnumActionResult.PASS, stack);
 		return new ActionResult(EnumActionResult.PASS, stack);
 	}
@@ -149,7 +129,7 @@ public class ItemGems extends DCItem {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		if (stack != null && stack.getItem() == this && stack.getItemDamage() == 2)
+		if (!DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)
 			return EnumAction.BOW;
 		return EnumAction.NONE;
 	}
@@ -159,7 +139,7 @@ public class ItemGems extends DCItem {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = player.inventory.getStackInSlot(i);
-				if (check != null && check.getItem() != null && check.getItem() == MagicInit.pendant) {
+				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
 					int m = check.getMetadata();
 					if (m == 14) {
 						hasCharm = true;

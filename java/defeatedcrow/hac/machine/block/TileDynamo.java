@@ -17,9 +17,9 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.Optional.Method;
 
 @Optional.InterfaceList({
-		@Optional.Interface(iface = "cofh.api.energy.IEnergyProvider", modid = "CoFHAPI|energy"),
+		@Optional.Interface(iface = "cofh.redstoneflux.api.IEnergyProvider", modid = "redstoneflux"),
 })
-public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.api.energy.IEnergyProvider {
+public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.redstoneflux.api.IEnergyProvider {
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
@@ -70,11 +70,11 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 		super.updateTile();
 
 		// RF/FU送信
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			faces.clear();
 			for (EnumFacing face : EnumFacing.VALUES) {
 				if (isOutputSide(face)) {
-					TileEntity target = worldObj.getTileEntity(pos.offset(face));
+					TileEntity target = world.getTileEntity(pos.offset(face));
 					if (target != null) {
 						if (target.hasCapability(CapabilityEnergy.ENERGY, face.getOpposite())) {
 							faces.add(face);
@@ -95,17 +95,17 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 		float sendFU = prevTorque * EnergyConvertRate.rateVsFU * 0.05F;
 		if (!faces.isEmpty() && prevTorque > 0F) {
 			for (EnumFacing face : faces) {
-				TileEntity target = worldObj.getTileEntity(pos.offset(face));
+				TileEntity target = world.getTileEntity(pos.offset(face));
 				if (target != null) {
 					if (target.hasCapability(CapabilityEnergy.ENERGY, face.getOpposite())) {
 						IEnergyStorage sto = target.getCapability(CapabilityEnergy.ENERGY, face.getOpposite());
 						float ret = sendFU / faces.size();
-						int amo = MathHelper.floor_float(ret);
+						int amo = MathHelper.floor(ret);
 						sto.receiveEnergy(amo, false);
-					} else if (ModAPIManager.INSTANCE.hasAPI("CoFHAPI|energy")) {
+					} else if (ModAPIManager.INSTANCE.hasAPI("redstoneflux")) {
 						if (RFDeviceHelper.isRFReceiver(target)) {
 							float ret = sendRF / faces.size();
-							int amo = MathHelper.floor_float(ret);
+							int amo = MathHelper.floor(ret);
 							RFDeviceHelper.inputEnergy(face.getOpposite(), target, amo, false);
 						}
 					}
@@ -116,35 +116,35 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "redstoneflux")
 	public int getEnergyStored(EnumFacing face) {
 		if (!faces.contains(face)) {
 			faces.add(face);
 		}
 		float sendRF = prevTorque * EnergyConvertRate.rateVsRF * 0.05F;
 		sendRF /= faces.size();
-		int amo = MathHelper.floor_float(sendRF);
+		int amo = MathHelper.floor(sendRF);
 		return amo;
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "redstoneflux")
 	public int getMaxEnergyStored(EnumFacing face) {
 		float sendRF = maxTorque() * EnergyConvertRate.rateVsRF;
-		int amo = MathHelper.floor_float(sendRF);
+		int amo = MathHelper.floor(sendRF);
 		return amo;
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "redstoneflux")
 	public boolean canConnectEnergy(EnumFacing face) {
 		return isOutputSide(face);
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "redstoneflux")
 	public int extractEnergy(EnumFacing face, int amo, boolean sim) {
-		TileEntity target = worldObj.getTileEntity(pos.offset(face));
+		TileEntity target = world.getTileEntity(pos.offset(face));
 		if (target == null || RFDeviceHelper.isRFReceiver(target))
 			return 0;
 

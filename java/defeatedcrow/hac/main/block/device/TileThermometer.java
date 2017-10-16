@@ -10,7 +10,7 @@ public class TileThermometer extends ClimateReceiveTile {
 
 	@Override
 	public void onTickUpdate() {
-		if (worldObj.isRemote && current != null) {
+		if (world.isRemote && current != null) {
 			for (int id = 0; id < DCHeatTier.values().length; id++) {
 				lastFloats[id] = floats[id];
 

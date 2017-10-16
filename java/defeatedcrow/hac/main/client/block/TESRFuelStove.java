@@ -6,9 +6,9 @@ import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.client.model.ModelFuelStove;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -22,11 +22,10 @@ public class TESRFuelStove extends DCTESRBase {
 	private static final ModelFuelStove MODEL = new ModelFuelStove();
 
 	@Override
-	public void renderTileEntityAt(DCTileEntity te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
-		super.renderTileEntityAt(te, x, y, z, partialTicks, destroyStage);
+	public void render(DCTileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
+		super.render(te, x, y, z, partialTicks, destroyStage, a);
 
-		if (te.hasWorldObj() && te instanceof TileCookingStove) {
+		if (te.hasWorld() && te instanceof TileCookingStove) {
 			int meta = te.getBlockMetadata();
 			boolean lit = (meta & 3) == 1;
 			if (lit) {
@@ -55,7 +54,7 @@ public class TESRFuelStove extends DCTESRBase {
 		float f = 1.0F;
 		GlStateManager.scale(f, f, f);
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 		float f1 = 0.2F;
 		float f3 = 0.3F;
 		float f5 = 0.125F;

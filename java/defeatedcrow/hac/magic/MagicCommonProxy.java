@@ -1,6 +1,5 @@
 package defeatedcrow.hac.magic;
 
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.magic.block.TileIceCluster;
 import defeatedcrow.hac.magic.block.TileInfernalFlame;
 import defeatedcrow.hac.magic.block.TileLotusCandle;
@@ -37,61 +36,37 @@ import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.magic.proj.EntityProjSilver;
 import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
-import defeatedcrow.hac.main.ClimateMain;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import defeatedcrow.hac.main.worldgen.DCRegistryUtil;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MagicCommonProxy {
 
 	public static void loadEntity() {
-		EntityRegistry.registerModEntity(EntityProjSilver.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_silver",
-				100, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjChalW.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_0", 101,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjChalB.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_1", 102,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjChalR.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_2", 103,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjSapW.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_3", 104,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjSapB.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_4", 105,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjSapR.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_5", 106,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjCryM.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_6", 107,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjCryC.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_7", 108,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjCryL.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_8", 109,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjLapC.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_9", 110,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjLapS.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_10", 111,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjLapM.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_11", 112,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjSchB.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_12", 113,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjSchC.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_13", 114,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjClmD.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_14", 115,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjClmM.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_15", 116,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityProjSilver.class, "magic", "proj_silver");
+		DCRegistryUtil.addEntity(EntityProjChalW.class, "magic", "proj_0");
+		DCRegistryUtil.addEntity(EntityProjChalB.class, "magic", "proj_1");
+		DCRegistryUtil.addEntity(EntityProjChalR.class, "magic", "proj_2");
+		DCRegistryUtil.addEntity(EntityProjSapW.class, "magic", "proj_3");
+		DCRegistryUtil.addEntity(EntityProjSapB.class, "magic", "proj_4");
+		DCRegistryUtil.addEntity(EntityProjSapR.class, "magic", "proj_5");
+		DCRegistryUtil.addEntity(EntityProjCryM.class, "magic", "proj_6");
+		DCRegistryUtil.addEntity(EntityProjCryC.class, "magic", "proj_7");
+		DCRegistryUtil.addEntity(EntityProjCryL.class, "magic", "proj_8");
+		DCRegistryUtil.addEntity(EntityProjLapC.class, "magic", "proj_9");
+		DCRegistryUtil.addEntity(EntityProjLapS.class, "magic", "proj_10");
+		DCRegistryUtil.addEntity(EntityProjLapM.class, "magic", "proj_11");
+		DCRegistryUtil.addEntity(EntityProjSchB.class, "magic", "proj_12");
+		DCRegistryUtil.addEntity(EntityProjSchC.class, "magic", "proj_13");
+		DCRegistryUtil.addEntity(EntityProjClmD.class, "magic", "proj_14");
+		DCRegistryUtil.addEntity(EntityProjClmM.class, "magic", "proj_15");
 
-		EntityRegistry.registerModEntity(EntityMobBarrier.class, ClimateCore.PACKAGE_BASE + "entity.magic.circle_0",
-				117, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjBarrier.class, ClimateCore.PACKAGE_BASE + "entity.magic.circle_1",
-				118, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityHealBarrier.class, ClimateCore.PACKAGE_BASE + "entity.magic.circle_2",
-				119, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityMobBarrier.class, "magic", "circle_0");
+		DCRegistryUtil.addEntity(EntityProjBarrier.class, "magic", "circle_1");
+		DCRegistryUtil.addEntity(EntityHealBarrier.class, "magic", "circle_2");
 
-		EntityRegistry.registerModEntity(EntityProjLightSpit.class,
-				ClimateCore.PACKAGE_BASE + "entity.magic.proj_light", 120, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjIceSpit.class, ClimateCore.PACKAGE_BASE + "entity.magic.proj_ice",
-				121, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityProjWhiteSpit.class,
-				ClimateCore.PACKAGE_BASE + "entity.magic.proj_white", 122, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityProjLightSpit.class, "magic", "proj_light");
+		DCRegistryUtil.addEntity(EntityProjIceSpit.class, "magic", "proj_ice");
+		DCRegistryUtil.addEntity(EntityProjWhiteSpit.class, "magic", "proj_white");
 	}
 
 	public static void loadTE() {

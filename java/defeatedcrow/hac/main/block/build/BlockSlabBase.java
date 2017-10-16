@@ -1,11 +1,11 @@
 package defeatedcrow.hac.main.block.build;
 
-import java.util.List;
 import java.util.Random;
 
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.base.ISidedRenderingBlock;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
@@ -21,6 +21,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -81,10 +83,10 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
-		IBlockState state = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(SIDE,
-				false);
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand)
+				.withProperty(SIDE, false);
 		if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5D))
 			return state;
 		else
@@ -179,8 +181,7 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				SIDE,
-				TYPE
+				SIDE, TYPE
 		});
 	}
 
@@ -201,10 +202,11 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		for (int i = 0; i < maxMeta + 1; i++) {
-			list.add(new ItemStack(this, 1, i));
-		}
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			for (int i = 0; i < maxMeta + 1; i++) {
+				list.add(new ItemStack(this, 1, i));
+			}
 	}
 
 	@SideOnly(Side.CLIENT)

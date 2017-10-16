@@ -129,7 +129,7 @@ public class ModelHat extends ModelThinBiped {
 	}
 
 	@Override
-	public void setInvisible(boolean invisible) {
+	public void setVisible(boolean invisible) {
 		this.top.showModel = invisible;
 		this.brim.showModel = invisible;
 		this.face.showModel = invisible;

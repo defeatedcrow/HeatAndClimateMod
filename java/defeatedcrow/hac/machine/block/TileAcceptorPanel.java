@@ -14,7 +14,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 public class TileAcceptorPanel extends DCTileEntity {
 
 	protected boolean isActive() {
-		IBlockState state = this.worldObj.getBlockState(pos);
+		IBlockState state = this.world.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof BlockAdapterPanel) {
 			boolean flag = DCState.getBool(state, DCState.POWERED);
 			return flag;
@@ -23,7 +23,7 @@ public class TileAcceptorPanel extends DCTileEntity {
 	}
 
 	protected EnumSide getSide() {
-		IBlockState state = this.worldObj.getBlockState(pos);
+		IBlockState state = this.world.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof BlockAdapterPanel) {
 			EnumSide flag = DCState.getSide(state, DCState.SIDE);
 			return flag;
@@ -34,7 +34,7 @@ public class TileAcceptorPanel extends DCTileEntity {
 	protected TileEntity targetTile() {
 		if (getSide() != null) {
 			EnumFacing face = getSide().face;
-			return worldObj.getTileEntity(pos.offset(face));
+			return world.getTileEntity(pos.offset(face));
 		}
 		return null;
 	}

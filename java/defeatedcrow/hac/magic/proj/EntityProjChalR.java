@@ -1,13 +1,13 @@
 package defeatedcrow.hac.magic.proj;
 
+import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.entity.EntityProjBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.main.entity.EntityProjBase;
 
 public class EntityProjChalR extends EntityProjBase {
 
@@ -37,7 +37,7 @@ public class EntityProjChalR extends EntityProjBase {
 
 	@Override
 	protected float getHitDamage(Entity target, float speed) {
-		float f = 15.0F + this.worldObj.rand.nextFloat();
+		float f = 15.0F + this.world.rand.nextFloat();
 		if (target != null && target instanceof EntityLivingBase) {
 			EntityLivingBase liv = (EntityLivingBase) target;
 			if (liv.isImmuneToFire() || liv.isPotionActive(MobEffects.FIRE_RESISTANCE)) {
@@ -52,7 +52,7 @@ public class EntityProjChalR extends EntityProjBase {
 
 	@Override
 	protected DamageSource getHitSource(Entity target) {
-		return DamageSource.inFire;
+		return DamageSource.IN_FIRE;
 	}
 
 }

@@ -38,7 +38,7 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 	}
 
 	public static void registerFixesMinecartEmpty(DataFixer fixer) {
-		EntityMinecart.registerFixesMinecart(fixer, "MinecartMotor");
+		EntityMinecart.registerFixesMinecart(fixer, EntityMinecartMotor.class);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 	public void killMinecart(DamageSource source) {
 		this.setDead();
 
-		if (this.worldObj.getGameRules().getBoolean("doEntityDrops")) {
+		if (this.world.getGameRules().getBoolean("doEntityDrops")) {
 			ItemStack itemstack = new ItemStack(MachineInit.motorMinecart, 1);
 
 			if (this.getName() != null) {
@@ -70,7 +70,7 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 					- Math.cos(rotationYaw * 0.017453292F) * 0.3D;
 			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 0.75D
 					- Math.sin(rotationYaw * 0.017453292F) * 0.3D;
-			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, px, this.posY + 0.45D, pz, 0.0D, 0.0D, 0.0D,
+			this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, px, this.posY + 0.45D, pz, 0.0D, 0.0D, 0.0D,
 					new int[0]);
 		}
 	}
@@ -91,7 +91,7 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 		}
 
 		double slopeAdjustment = getSlopeAdjustment();
-		BlockRailBase.EnumRailDirection blockrailbase$enumraildirection = blockrailbase.getRailDirection(worldObj, pos,
+		BlockRailBase.EnumRailDirection blockrailbase$enumraildirection = blockrailbase.getRailDirection(world, pos,
 				state, this);
 
 		switch (blockrailbase$enumraildirection) {
@@ -189,11 +189,11 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 		this.setPosition(this.posX, this.posY, this.posZ);
 		this.moveMinecartOnRail(pos);
 
-		if (aint[0][1] != 0 && MathHelper.floor_double(this.posX) - pos.getX() == aint[0][0]
-				&& MathHelper.floor_double(this.posZ) - pos.getZ() == aint[0][2]) {
+		if (aint[0][1] != 0 && MathHelper.floor(this.posX) - pos.getX() == aint[0][0]
+				&& MathHelper.floor(this.posZ) - pos.getZ() == aint[0][2]) {
 			this.setPosition(this.posX, this.posY + aint[0][1], this.posZ);
-		} else if (aint[1][1] != 0 && MathHelper.floor_double(this.posX) - pos.getX() == aint[1][0]
-				&& MathHelper.floor_double(this.posZ) - pos.getZ() == aint[1][2]) {
+		} else if (aint[1][1] != 0 && MathHelper.floor(this.posX) - pos.getX() == aint[1][0]
+				&& MathHelper.floor(this.posZ) - pos.getZ() == aint[1][2]) {
 			this.setPosition(this.posX, this.posY + aint[1][1], this.posZ);
 		}
 
@@ -201,7 +201,7 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 		Vec3d vec3d1 = this.getPos(this.posX, this.posY, this.posZ);
 
 		if (vec3d1 != null && vec3d != null) {
-			double d14 = (vec3d.yCoord - vec3d1.yCoord) * 0.05D;
+			double d14 = (vec3d.y - vec3d1.y) * 0.05D;
 			d5 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
 
 			if (d5 > 0.0D) {
@@ -209,11 +209,11 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 				this.motionZ = this.motionZ / d5 * (d5 + d14);
 			}
 
-			this.setPosition(this.posX, vec3d1.yCoord, this.posZ);
+			this.setPosition(this.posX, vec3d1.y, this.posZ);
 		}
 
-		int j = MathHelper.floor_double(this.posX);
-		int i = MathHelper.floor_double(this.posZ);
+		int j = MathHelper.floor(this.posX);
+		int i = MathHelper.floor(this.posZ);
 
 		if (j != pos.getX() || i != pos.getZ()) {
 			d5 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
@@ -222,7 +222,7 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 		}
 
 		if (shouldDoRailFunctions()) {
-			((BlockRailBase) state.getBlock()).onMinecartPass(worldObj, this, pos);
+			((BlockRailBase) state.getBlock()).onMinecartPass(world, this, pos);
 		}
 
 		if (flag && shouldDoRailFunctions()) {
@@ -233,15 +233,15 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 				this.motionX += this.motionX / d15 * 0.06D;
 				this.motionZ += this.motionZ / d15 * 0.06D;
 			} else if (blockrailbase$enumraildirection == BlockRailBase.EnumRailDirection.EAST_WEST) {
-				if (this.worldObj.getBlockState(pos.west()).isNormalCube()) {
+				if (this.world.getBlockState(pos.west()).isNormalCube()) {
 					this.motionX = 0.02D;
-				} else if (this.worldObj.getBlockState(pos.east()).isNormalCube()) {
+				} else if (this.world.getBlockState(pos.east()).isNormalCube()) {
 					this.motionX = -0.02D;
 				}
 			} else if (blockrailbase$enumraildirection == BlockRailBase.EnumRailDirection.NORTH_SOUTH) {
-				if (this.worldObj.getBlockState(pos.north()).isNormalCube()) {
+				if (this.world.getBlockState(pos.north()).isNormalCube()) {
 					this.motionZ = 0.02D;
-				} else if (this.worldObj.getBlockState(pos.south()).isNormalCube()) {
+				} else if (this.world.getBlockState(pos.south()).isNormalCube()) {
 					this.motionZ = -0.02D;
 				}
 			}

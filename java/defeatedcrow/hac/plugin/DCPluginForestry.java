@@ -1,12 +1,14 @@
 package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.api.damage.DamageAPI;
+import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import defeatedcrow.hac.plugin.forestry.DCFarmable;
 import defeatedcrow.hac.plugin.forestry.DCFarmableDouble;
 import forestry.api.farming.Farmables;
@@ -18,13 +20,11 @@ import forestry.lepidopterology.entities.EntityButterfly;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class DCPluginForestry {
 
@@ -32,64 +32,65 @@ public class DCPluginForestry {
 
 	private DCPluginForestry() {}
 
-	public static void load() {
+	public static void loadInit() {
 
 		if (ModuleConfig.food) {
 
 			Item mulch = Item.REGISTRY.getObject(new ResourceLocation("forestry", "mulch"));
-			Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizerCompound"));
+			Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizercompound"));
 			Fluid seed = FluidRegistry.getFluid("seed.oil");
 			Fluid juice = FluidRegistry.getFluid("juice");
 			Fluid honey = FluidRegistry.getFluid("for.honey");
 			Fluid bio = FluidRegistry.getFluid("biomass");
 
-			if (mulch == null || seed == null || juice == null)
+			if (mulch == null || fer == null || seed == null || juice == null)
 				return;
 
 			// squeeze
-			RecipeManagers.squeezerManager.addRecipe(10, new ItemStack[] {
-					new ItemStack(FoodInit.crops, 1, 3)
-			}, new FluidStack(juice, 100), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l1 = NonNullList.create();
+			l1.add(new ItemStack(FoodInit.crops, 1, 3));
+			RecipeManagers.squeezerManager.addRecipe(10, l1, new FluidStack(juice, 100), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
-					new ItemStack(FoodInit.crops, 1, 4)
-			}, new FluidStack(juice, 50), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l2 = NonNullList.create();
+			l2.add(new ItemStack(FoodInit.crops, 1, 4));
+			RecipeManagers.squeezerManager.addRecipe(20, l2, new FluidStack(juice, 50), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
-					new ItemStack(FoodInit.crops, 1, 5)
-			}, new FluidStack(seed, 50), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l3 = NonNullList.create();
+			l3.add(new ItemStack(FoodInit.crops, 1, 5));
+			RecipeManagers.squeezerManager.addRecipe(20, l3, new FluidStack(seed, 50), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(10, new ItemStack[] {
-					new ItemStack(FoodInit.crops, 1, 6)
-			}, new FluidStack(juice, 300), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l4 = NonNullList.create();
+			l4.add(new ItemStack(FoodInit.crops, 1, 6));
+			RecipeManagers.squeezerManager.addRecipe(10, l4, new FluidStack(juice, 300), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(10, new ItemStack[] {
-					new ItemStack(FoodInit.crops, 1, 7)
-			}, new FluidStack(FoodInit.oil, 100), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l5 = NonNullList.create();
+			l5.add(new ItemStack(FoodInit.crops, 1, 7));
+			RecipeManagers.squeezerManager.addRecipe(10, l5, new FluidStack(FoodInit.oil, 100), new ItemStack(mulch),
+					10);
 
-			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
-					new ItemStack(FoodInit.seeds, 1, 0)
-			}, new FluidStack(seed, 50), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l6 = NonNullList.create();
+			l6.add(new ItemStack(FoodInit.seeds, 1, 0));
+			RecipeManagers.squeezerManager.addRecipe(20, l6, new FluidStack(seed, 50), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
-					new ItemStack(FoodInit.seeds, 1, 1)
-			}, new FluidStack(seed, 10), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l7 = NonNullList.create();
+			l7.add(new ItemStack(FoodInit.seeds, 1, 1));
+			RecipeManagers.squeezerManager.addRecipe(20, l7, new FluidStack(seed, 10), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
-					new ItemStack(FoodInit.seeds, 1, 2)
-			}, new FluidStack(seed, 10), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l8 = NonNullList.create();
+			l8.add(new ItemStack(FoodInit.seeds, 1, 2));
+			RecipeManagers.squeezerManager.addRecipe(20, l8, new FluidStack(seed, 10), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
-					new ItemStack(FoodInit.seeds, 1, 3)
-			}, new FluidStack(seed, 10), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l9 = NonNullList.create();
+			l9.add(new ItemStack(FoodInit.seeds, 1, 3));
+			RecipeManagers.squeezerManager.addRecipe(20, l9, new FluidStack(seed, 10), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
-					new ItemStack(FoodInit.seeds, 1, 4)
-			}, new FluidStack(seed, 20), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l10 = NonNullList.create();
+			l10.add(new ItemStack(FoodInit.seeds, 1, 4));
+			RecipeManagers.squeezerManager.addRecipe(20, l10, new FluidStack(seed, 20), new ItemStack(mulch), 10);
 
-			RecipeManagers.squeezerManager.addRecipe(20, new ItemStack[] {
-					new ItemStack(FoodInit.seeds, 1, 5)
-			}, new FluidStack(seed, 100), new ItemStack(mulch), 10);
+			NonNullList<ItemStack> l11 = NonNullList.create();
+			l11.add(new ItemStack(FoodInit.seeds, 1, 5));
+			RecipeManagers.squeezerManager.addRecipe(20, l11, new FluidStack(seed, 100), new ItemStack(mulch), 10);
 
 			// fermentation
 			if (honey != null && bio != null) {
@@ -170,38 +171,26 @@ public class DCPluginForestry {
 			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyedSlice"));
 
 			if (slice != null) {
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(slice, 4, 0), new Object[] {
-						"XXX",
-						"XYX",
-						"XXX",
-						'Y',
-						new ItemStack(FoodInit.bread, 1, 1),
-						'X',
-						"dropHoney"
-				}));
+				DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),
+						new Object[] {
+								"XXX", "XYX", "XXX", 'Y', new ItemStack(FoodInit.bread, 1, 1), 'X', "dropHoney"
+						});
 
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(slice, 4, 0), new Object[] {
-						"XXX",
-						"XYX",
-						"XXX",
-						'Y',
-						new ItemStack(FoodInit.bread, 1, 3),
-						'X',
-						"dropHoney"
-				}));
+				DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),
+						new Object[] {
+								"XXX", "XYX", "XXX", 'Y', new ItemStack(FoodInit.bread, 1, 3), 'X', "dropHoney"
+						});
 			}
 
 			if (fer != null) {
-				GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(fer, 1, 0), new Object[] {
-						"dustPresscake",
-						"dustAsh",
-						new ItemStack(Items.DYE, 1, 15)
-				}));
+				DCRecipe.addShapelessRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(fer, 1, 0),
+						new Object[] {
+								"dustPresscake", "dustAsh", new ItemStack(Items.DYE, 1, 15)
+						});
 			}
 
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
 			FuelManager.fermenterFuel.put(oilcake, new FermenterFuel(oilcake, 48, 200));
-			Farmables.registerFertilizer(oilcake, Integer.valueOf(200));
 
 			Fluid oil = FoodInit.oil;
 			if (oil != null) {

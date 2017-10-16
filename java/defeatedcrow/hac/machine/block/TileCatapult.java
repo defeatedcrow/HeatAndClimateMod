@@ -85,7 +85,7 @@ public class TileCatapult extends TileTorqueBase implements ITorqueReceiver {
 			}
 
 			if (flag) {
-				if (!this.hasWorldObj())
+				if (!this.hasWorld())
 					return;
 				@SuppressWarnings("unchecked")
 				List<EntityPlayer> list = this.getWorld().playerEntities;

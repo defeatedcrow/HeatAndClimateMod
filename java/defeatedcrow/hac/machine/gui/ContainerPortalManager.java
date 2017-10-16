@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -35,12 +36,12 @@ public class ContainerPortalManager extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return this.tile.isUseableByPlayer(playerIn);
+		return this.tile.isUsableByPlayer(playerIn);
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack itemstack = null;
+		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.inventorySlots.get(index);
 		int lim = tile.getSizeInventory();
 
@@ -50,21 +51,20 @@ public class ContainerPortalManager extends Container {
 
 			if (index < lim) {
 				if (!this.mergeItemStack(itemstack1, lim, this.inventorySlots.size(), true))
-					return null;
+					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (!this.mergeItemStack(itemstack1, 0, lim, false))
-				return null;
+				return ItemStack.EMPTY;
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize)
-				return null;
+			if (itemstack1.getCount() == itemstack.getCount()) {
+				return ItemStack.EMPTY;
+			}
 
-			slot.onPickupFromSlot(playerIn, itemstack1);
+			slot.onTake(playerIn, itemstack1);
 		}
 
 		return itemstack;

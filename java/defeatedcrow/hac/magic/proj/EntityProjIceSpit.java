@@ -28,7 +28,7 @@ public class EntityProjIceSpit extends EntityProjBase {
 
 	@Override
 	public ItemStack getDropStack() {
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class EntityProjIceSpit extends EntityProjBase {
 
 	@Override
 	protected float getHitDamage(Entity target, float speed) {
-		float f = 8.0F + this.worldObj.rand.nextFloat();
+		float f = 8.0F + this.world.rand.nextFloat();
 		if (target != null && target instanceof EntityLivingBase) {
 			EntityLivingBase liv = (EntityLivingBase) target;
 			if (liv.isImmuneToFire()) {
@@ -67,19 +67,19 @@ public class EntityProjIceSpit extends EntityProjBase {
 		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 		for (BlockPos p1 : itr) {
 			double d1 = Math.sqrt(pos.distanceSq(p1.getX(), p1.getY(), p1.getZ()));
-			if (p1.getY() > 1 && p1.getY() < worldObj.getActualHeight() && d1 <= 5.0D) {
-				Block b = worldObj.getBlockState(p1).getBlock();
+			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && d1 <= 5.0D) {
+				Block b = world.getBlockState(p1).getBlock();
 				if (b == Blocks.WATER || b == Blocks.FLOWING_WATER) {
-					if (b.getMetaFromState(worldObj.getBlockState(p1)) == 0) {
-						worldObj.setBlockState(p1, Blocks.ICE.getDefaultState());
+					if (b.getMetaFromState(world.getBlockState(p1)) == 0) {
+						world.setBlockState(p1, Blocks.ICE.getDefaultState());
 					} else {
-						worldObj.setBlockToAir(p1);
+						world.setBlockToAir(p1);
 					}
 				} else if (b == Blocks.LAVA || b == Blocks.FLOWING_LAVA) {
-					if (b.getMetaFromState(worldObj.getBlockState(p1)) == 0) {
-						worldObj.setBlockState(p1, Blocks.OBSIDIAN.getDefaultState());
+					if (b.getMetaFromState(world.getBlockState(p1)) == 0) {
+						world.setBlockState(p1, Blocks.OBSIDIAN.getDefaultState());
 					} else {
-						worldObj.setBlockToAir(p1);
+						world.setBlockToAir(p1);
 					}
 				}
 			}

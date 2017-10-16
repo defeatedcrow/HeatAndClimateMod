@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -60,7 +61,7 @@ public class ContainerPressMachine extends Container {
 			IContainerListener icrafting = this.listeners.get(i);
 
 			if (this.currentBurn != this.machine.getField(0)) {
-				icrafting.sendProgressBarUpdate(this, 0, this.machine.getField(0));
+				icrafting.sendWindowProperty(this, 0, this.machine.getField(0));
 			}
 		}
 
@@ -75,12 +76,12 @@ public class ContainerPressMachine extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return this.machine.isUseableByPlayer(playerIn);
+		return this.machine.isUsableByPlayer(playerIn);
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack itemstack = null;
+		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.inventorySlots.get(index);
 
 		if (slot != null && slot.getHasStack()) {
@@ -89,26 +90,24 @@ public class ContainerPressMachine extends Container {
 
 			if (index < 12) {
 				if (!this.mergeItemStack(itemstack1, 20, 46, true))
-					return null;
+					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (index > 19) {
 				if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
 					if (!this.mergeItemStack(itemstack1, 2, 11, false))
-						return null;
+						return ItemStack.EMPTY;
 				}
-			} else
-				return null;
+			}
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 
-			if (itemstack1.stackSize == itemstack.stackSize)
-				return null;
+			if (itemstack1.getCount() == itemstack.getCount()) {
+				return ItemStack.EMPTY;
+			}
 
-			slot.onPickupFromSlot(playerIn, itemstack1);
+			slot.onTake(playerIn, itemstack1);
 		}
 
 		return itemstack;

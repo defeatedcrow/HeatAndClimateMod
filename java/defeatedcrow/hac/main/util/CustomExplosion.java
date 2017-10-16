@@ -9,7 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityMinecart;
@@ -73,12 +73,12 @@ public class CustomExplosion extends Explosion {
 
 		// エンティティへのダメージ
 		this.size *= 2.0F;
-		i = MathHelper.floor_double(this.expX - this.size - 1.0D);
-		int i2 = MathHelper.floor_double(this.expX + this.size + 1.0D);
-		j = MathHelper.floor_double(this.expY - this.size - 1.0D);
-		int j2 = MathHelper.floor_double(this.expY + this.size + 1.0D);
-		k = MathHelper.floor_double(this.expZ - this.size - 1.0D);
-		int k2 = MathHelper.floor_double(this.expZ + this.size + 1.0D);
+		i = MathHelper.floor(this.expX - this.size - 1.0D);
+		int i2 = MathHelper.floor(this.expX + this.size + 1.0D);
+		j = MathHelper.floor(this.expY - this.size - 1.0D);
+		int j2 = MathHelper.floor(this.expY + this.size + 1.0D);
+		k = MathHelper.floor(this.expZ - this.size - 1.0D);
+		int k2 = MathHelper.floor(this.expZ + this.size + 1.0D);
 		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this.bomb,
 				new AxisAlignedBB(i, j, k, i2, j2, k2));
 		Vec3d vec3 = new Vec3d(this.expX, this.expY, this.expZ);
@@ -123,7 +123,7 @@ public class CustomExplosion extends Explosion {
 						flag = false;
 					} else if (entity instanceof EntityPlayer) {
 						flag = false;
-					} else if (entity instanceof EntityDragonPart) {
+					} else if (entity instanceof EntityDragon) {
 						damage *= 2.0F;
 					} else if (!entity.onGround) {
 						damage *= 10.0F;

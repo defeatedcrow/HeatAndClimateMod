@@ -38,9 +38,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityBulletDC extends Entity implements IProjectile {
 	private static final Predicate<Entity> ARROW_TARGETS = Predicates.and(new Predicate[] {
-			EntitySelectors.NOT_SPECTATING,
-			EntitySelectors.IS_ALIVE,
-			new Predicate<Entity>() {
+			EntitySelectors.NOT_SPECTATING, EntitySelectors.IS_ALIVE, new Predicate<Entity>() {
 				@Override
 				public boolean apply(@Nullable Entity p_apply_1_) {
 					return p_apply_1_.canBeCollidedWith();
@@ -117,7 +115,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 
 	@Override
 	public void setThrowableHeading(double x, double y, double z, float velocity, float inaccuracy) {
-		float f = MathHelper.sqrt_double(x * x + y * y + z * z);
+		float f = MathHelper.sqrt(x * x + y * y + z * z);
 		x = x / f;
 		y = y / f;
 		z = z / f;
@@ -130,7 +128,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		this.motionX = x;
 		this.motionY = y;
 		this.motionZ = z;
-		float f1 = MathHelper.sqrt_double(x * x + z * z);
+		float f1 = MathHelper.sqrt(x * x + z * z);
 		this.rotationYaw = (float) (MathHelper.atan2(x, z) * (180D / Math.PI));
 		this.rotationPitch = (float) (MathHelper.atan2(y, f1) * (180D / Math.PI));
 		this.prevRotationYaw = this.rotationYaw;
@@ -154,7 +152,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		this.motionZ = z;
 
 		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
-			float f = MathHelper.sqrt_double(x * x + z * z);
+			float f = MathHelper.sqrt(x * x + z * z);
 			this.rotationPitch = (float) (MathHelper.atan2(y, f) * (180D / Math.PI));
 			this.rotationYaw = (float) (MathHelper.atan2(x, z) * (180D / Math.PI));
 			this.prevRotationPitch = this.rotationPitch;
@@ -172,7 +170,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		super.onUpdate();
 
 		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
-			float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+			float f = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
 			this.rotationYaw = (float) (MathHelper.atan2(this.motionX, this.motionZ) * (180D / Math.PI));
 			this.rotationPitch = (float) (MathHelper.atan2(this.motionY, f) * (180D / Math.PI));
 			this.prevRotationYaw = this.rotationYaw;
@@ -180,14 +178,14 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		}
 
 		BlockPos blockpos = new BlockPos(this.xTile, this.yTile, this.zTile);
-		IBlockState iblockstate = this.worldObj.getBlockState(blockpos);
+		IBlockState iblockstate = this.world.getBlockState(blockpos);
 		Block block = iblockstate.getBlock();
 
 		if (iblockstate.getMaterial() != Material.AIR && !this.getIsGhost()) {
-			AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox(this.worldObj, blockpos);
+			AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox(this.world, blockpos);
 
 			if (axisalignedbb != Block.NULL_AABB
-					&& axisalignedbb.offset(blockpos).isVecInside(new Vec3d(this.posX, this.posY, this.posZ))) {
+					&& axisalignedbb.offset(blockpos).contains(new Vec3d(this.posX, this.posY, this.posZ))) {
 				this.inGround = true;
 			}
 		}
@@ -219,13 +217,12 @@ public class EntityBulletDC extends Entity implements IProjectile {
 
 			Vec3d vec3d1 = new Vec3d(this.posX, this.posY, this.posZ);
 			Vec3d vec3d = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-			RayTraceResult raytraceresult = this.worldObj.rayTraceBlocks(vec3d1, vec3d, false, true, false);
+			RayTraceResult raytraceresult = this.world.rayTraceBlocks(vec3d1, vec3d, false, true, false);
 			vec3d1 = new Vec3d(this.posX, this.posY, this.posZ);
 			vec3d = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
 			if (raytraceresult != null) {
-				vec3d = new Vec3d(raytraceresult.hitVec.xCoord, raytraceresult.hitVec.yCoord,
-						raytraceresult.hitVec.zCoord);
+				vec3d = new Vec3d(raytraceresult.hitVec.x, raytraceresult.hitVec.y, raytraceresult.hitVec.z);
 			}
 
 			List<Entity> list = this.findEntityOnPath(vec3d1, vec3d);
@@ -254,7 +251,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			this.posX += this.motionX;
 			this.posY += this.motionY;
 			this.posZ += this.motionZ;
-			float f4 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+			float f4 = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
 			this.rotationYaw = (float) (MathHelper.atan2(this.motionX, this.motionZ) * (180D / Math.PI));
 			this.rotationPitch = (float) (MathHelper.atan2(this.motionY, f4) * (180D / Math.PI));
 
@@ -282,7 +279,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			if (this.isInWater()) {
 				for (int i = 0; i < 4; ++i) {
 					float f3 = 0.25F;
-					this.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX - this.motionX * 0.25D,
+					this.world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX - this.motionX * 0.25D,
 							this.posY - this.motionY * 0.25D, this.posZ - this.motionZ * 0.25D, this.motionX,
 							this.motionY, this.motionZ, new int[0]);
 				}
@@ -314,7 +311,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		Entity entity = raytraceResultIn.entityHit;
 
 		if (entity != null) {
-			int dam = MathHelper.ceiling_double_int(this.damage);
+			int dam = MathHelper.ceil(this.damage);
 			dam += this.rand.nextInt(dam / 2 + 2);
 
 			// 対アンデッドで2倍
@@ -325,7 +322,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			DamageSource damagesource;
 
 			if (this.isBurning()) {
-				damagesource = DamageSource.lava;
+				damagesource = DamageSource.LAVA;
 			} else if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase) {
 				if (this.getIsSilver() && entity instanceof EntityEnderman) {
 					if (this.shootingEntity instanceof EntityPlayer) {
@@ -352,7 +349,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 
 					// ノックバック
 					if (this.knockbackStrength > 0) {
-						float f1 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+						float f1 = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
 
 						if (f1 > 0.0F) {
 							living.addVelocity(this.motionX * this.knockbackStrength * 0.6D / f1, 0.1D,
@@ -385,14 +382,14 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			this.xTile = blockpos.getX();
 			this.yTile = blockpos.getY();
 			this.zTile = blockpos.getZ();
-			IBlockState state = this.worldObj.getBlockState(blockpos);
+			IBlockState state = this.world.getBlockState(blockpos);
 			this.inTile = state.getBlock();
 			this.inData = this.inTile.getMetaFromState(state);
-			this.motionX = ((float) (raytraceResultIn.hitVec.xCoord - this.posX));
-			this.motionY = ((float) (raytraceResultIn.hitVec.yCoord - this.posY));
-			this.motionZ = ((float) (raytraceResultIn.hitVec.zCoord - this.posZ));
-			float f2 = MathHelper.sqrt_double(
-					this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+			this.motionX = ((float) (raytraceResultIn.hitVec.x - this.posX));
+			this.motionY = ((float) (raytraceResultIn.hitVec.y - this.posY));
+			this.motionZ = ((float) (raytraceResultIn.hitVec.z - this.posZ));
+			float f2 = MathHelper
+					.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 			this.posX -= this.motionX / f2 * 0.05D;
 			this.posY -= this.motionY / f2 * 0.05D;
 			this.posZ -= this.motionZ / f2 * 0.05D;
@@ -400,7 +397,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			this.inGround = true;
 
 			if (state.getMaterial() != Material.AIR) {
-				this.inTile.onEntityCollidedWithBlock(this.worldObj, blockpos, state, this);
+				this.inTile.onEntityCollidedWithBlock(this.world, blockpos, state, this);
 			}
 		}
 	}
@@ -411,9 +408,8 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	protected List<Entity> findEntityOnPath(Vec3d start, Vec3d end) {
 		Entity entity = null;
 		List<Entity> ret = Lists.newArrayList();
-		List<Entity> list = this.worldObj.getEntitiesInAABBexcluding(this,
-				this.getEntityBoundingBox().addCoord(this.motionX, this.motionY, this.motionZ).expandXyz(1.0D),
-				ARROW_TARGETS);
+		List<Entity> list = this.world.getEntitiesInAABBexcluding(this,
+				this.getEntityBoundingBox().expand(this.motionX, this.motionY, this.motionZ).grow(1.0D), ARROW_TARGETS);
 		if (list.contains(shootingEntity)) {
 			list.remove(shootingEntity);
 		}
@@ -427,7 +423,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			Entity entity1 = list.get(i);
 
 			if (entity1 != this.shootingEntity || this.ticksInAir >= 0) {
-				AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expandXyz(0.3D);
+				AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().grow(0.3D);
 				RayTraceResult raytraceresult = axisalignedbb.calculateIntercept(start, end);
 
 				if (raytraceresult != null) {
@@ -493,7 +489,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender(float partialTicks) {
+	public int getBrightnessForRender() {
 		return 15728880;
 	}
 

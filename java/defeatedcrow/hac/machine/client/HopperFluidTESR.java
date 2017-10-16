@@ -8,9 +8,9 @@ import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.client.model.ModelHopperF;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -26,10 +26,9 @@ public class HopperFluidTESR extends DCLockableTESRBase {
 	private static final ModelHopperF MODEL = new ModelHopperF();
 
 	@Override
-	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 
-		if (te != null && te instanceof TileHopperFluid && te.hasWorldObj()) {
+		if (te != null && te instanceof TileHopperFluid && te.hasWorld()) {
 
 			int type = 0;
 			int face = 0;
@@ -78,7 +77,7 @@ public class HopperFluidTESR extends DCLockableTESRBase {
 		float f2 = 0.0375F + 0.45F * amount / 5000F;
 		float f = 0.45F;
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
 		int i = 0;

@@ -53,18 +53,18 @@ public class EntityProjSapB extends EntityProjBase {
 		Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 		for (BlockPos p1 : itr) {
 			double d1 = Math.sqrt(pos.distanceSq(p1.getX(), p1.getY(), p1.getZ()));
-			if (p1.getY() > 1 && p1.getY() < worldObj.getActualHeight() && d1 <= 5.0D) {
-				Block b = worldObj.getBlockState(p1).getBlock();
+			if (p1.getY() > 1 && p1.getY() < world.getActualHeight() && d1 <= 5.0D) {
+				Block b = world.getBlockState(p1).getBlock();
 				if ((b == Blocks.WATER || b == Blocks.FLOWING_WATER)
-						&& b.getMetaFromState(worldObj.getBlockState(p1)) == 0) {
-					worldObj.setBlockState(p1, Blocks.ICE.getDefaultState());
+						&& b.getMetaFromState(world.getBlockState(p1)) == 0) {
+					world.setBlockState(p1, Blocks.ICE.getDefaultState());
 				} else if ((b == Blocks.LAVA || b == Blocks.FLOWING_LAVA)
-						&& b.getMetaFromState(worldObj.getBlockState(p1)) == 0) {
-					worldObj.setBlockState(p1, Blocks.OBSIDIAN.getDefaultState());
-				} else if (b.isSideSolid(worldObj.getBlockState(p1), worldObj, p1, EnumFacing.UP)
-						&& worldObj.isAirBlock(p1.up())) {
-					if (worldObj.rand.nextInt(3) != 0) {
-						worldObj.setBlockState(p1.up(), Blocks.SNOW_LAYER.getDefaultState());
+						&& b.getMetaFromState(world.getBlockState(p1)) == 0) {
+					world.setBlockState(p1, Blocks.OBSIDIAN.getDefaultState());
+				} else if (b.isSideSolid(world.getBlockState(p1), world, p1, EnumFacing.UP)
+						&& world.isAirBlock(p1.up())) {
+					if (world.rand.nextInt(3) != 0) {
+						world.setBlockState(p1.up(), Blocks.SNOW_LAYER.getDefaultState());
 					}
 				}
 			}
@@ -78,13 +78,13 @@ public class EntityProjSapB extends EntityProjBase {
 			int x = -3 + rand.nextInt(7);
 			int z = -3 + rand.nextInt(7);
 			BlockPos p2 = pos.add(x, 0, z);
-			IBlockState s2 = worldObj.getBlockState(p2);
+			IBlockState s2 = world.getBlockState(p2);
 
-			if (s2.getBlock().isReplaceable(worldObj, p2)) {
+			if (s2.getBlock().isReplaceable(world, p2)) {
 				for (int y = 1; y < 5; y++) {
 					BlockPos p3 = p2.down(y);
-					if (!worldObj.getBlockState(p3).getBlock().isReplaceable(worldObj, p3)) {
-						worldObj.setBlockState(p3.up(), MagicInit.clusterIce.getDefaultState());
+					if (!world.getBlockState(p3).getBlock().isReplaceable(world, p3)) {
+						world.setBlockState(p3.up(), MagicInit.clusterIce.getDefaultState());
 						count++;
 						break;
 					}
@@ -92,8 +92,8 @@ public class EntityProjSapB extends EntityProjBase {
 			} else {
 				for (int y = 1; y < 5; y++) {
 					BlockPos p3 = p2.up(y);
-					if (worldObj.getBlockState(p3).getBlock().isReplaceable(worldObj, p3)) {
-						worldObj.setBlockState(p3, MagicInit.clusterIce.getDefaultState());
+					if (world.getBlockState(p3).getBlock().isReplaceable(world, p3)) {
+						world.setBlockState(p3, MagicInit.clusterIce.getDefaultState());
 						count++;
 						break;
 					}
@@ -119,7 +119,7 @@ public class EntityProjSapB extends EntityProjBase {
 
 	@Override
 	public void onUpdate() {
-		if (!this.worldObj.isRemote && (this.isInWater() || this.isInLava())) {
+		if (!this.world.isRemote && (this.isInWater() || this.isInLava())) {
 			setStart(true);
 		}
 		super.onUpdate();
@@ -131,7 +131,7 @@ public class EntityProjSapB extends EntityProjBase {
 		double x1 = posX + rand.nextDouble() - 0.5D;
 		double y1 = posY + rand.nextDouble() - 0.5D;
 		double z1 = posZ + rand.nextDouble() - 0.5D;
-		Particle shock = new ParticleShock.Factory().createParticle(0, worldObj, x1, y1, z1, 0D, 0D, 0D, new int[0]);
+		Particle shock = new ParticleShock.Factory().createParticle(0, world, x1, y1, z1, 0D, 0D, 0D, new int[0]);
 		shock.setRBGColorF(0.65F, 0.95F, 1F);
 		FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 
@@ -145,8 +145,7 @@ public class EntityProjSapB extends EntityProjBase {
 			double fy = 0.5D + rand.nextDouble() * 0.25D;
 			double fz = 0.5D * rand.nextDouble() - 0.25D;
 
-			Particle star = new ParticleFallingStar.Factory().createParticle(0, worldObj, x, y, z, fx, fy, fz,
-					new int[0]);
+			Particle star = new ParticleFallingStar.Factory().createParticle(0, world, x, y, z, fx, fy, fz, new int[0]);
 			star.setRBGColorF(0.65F, 0.95F, 1F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(star);
 

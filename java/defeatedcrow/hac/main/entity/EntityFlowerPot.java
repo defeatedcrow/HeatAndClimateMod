@@ -2,8 +2,6 @@ package defeatedcrow.hac.main.entity;
 
 import javax.annotation.Nullable;
 
-import com.google.common.base.Optional;
-
 import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
@@ -23,8 +21,8 @@ import net.minecraftforge.common.IPlantable;
 
 public class EntityFlowerPot extends DCEntityBase {
 
-	private static final DataParameter<Optional<ItemStack>> FLOWER = EntityDataManager
-			.<Optional<ItemStack>>createKey(DCEntityBase.class, DataSerializers.OPTIONAL_ITEM_STACK);
+	private static final DataParameter<ItemStack> FLOWER = EntityDataManager.<ItemStack>createKey(DCEntityBase.class,
+			DataSerializers.ITEM_STACK);
 	private static final DataParameter<Boolean> COLOR = EntityDataManager.<Boolean>createKey(DCEntityBase.class,
 			DataSerializers.BOOLEAN);
 
@@ -43,7 +41,7 @@ public class EntityFlowerPot extends DCEntityBase {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		this.dataManager.register(FLOWER, Optional.<ItemStack>absent());
+		this.dataManager.register(FLOWER, ItemStack.EMPTY);
 		this.dataManager.register(COLOR, false);
 	}
 
@@ -55,12 +53,12 @@ public class EntityFlowerPot extends DCEntityBase {
 
 	public void setFlower(ItemStack item) {
 		if (!DCUtil.isEmpty(item)) {
-			this.dataManager.set(FLOWER, Optional.of(item));
+			this.dataManager.set(FLOWER, item);
 		}
 	}
 
 	public ItemStack getFlower() {
-		ItemStack item = (ItemStack) ((Optional) this.dataManager.get(FLOWER)).orNull();
+		ItemStack item = (this.dataManager.get(FLOWER));
 		return item;
 	}
 
@@ -73,17 +71,17 @@ public class EntityFlowerPot extends DCEntityBase {
 	}
 
 	@Override
-	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
+	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
 		if (player != null && player.isSneaking()) {
 			ItemStack hold = player.getHeldItem(hand);
-			ItemStack flower = (ItemStack) ((Optional) this.dataManager.get(FLOWER)).orNull();
+			ItemStack flower = this.dataManager.get(FLOWER);
 			if (isFlower(hold)) {
 				setFlower(hold);
 				this.playSound(SoundEvents.BLOCK_GRASS_PLACE, 1.0F, 1.0F);
 				return true;
 			}
 		}
-		return super.processInitialInteract(player, stack, hand);
+		return super.processInitialInteract(player, hand);
 	}
 
 	public boolean isFlower(ItemStack item) {
@@ -101,7 +99,7 @@ public class EntityFlowerPot extends DCEntityBase {
 	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
-		ItemStack itemstack = (ItemStack) ((Optional) this.dataManager.get(FLOWER)).orNull();
+		ItemStack itemstack = this.dataManager.get(FLOWER);
 
 		if (itemstack != null) {
 			compound.setTag("FlowerItem", itemstack.writeToNBT(new NBTTagCompound()));
@@ -116,10 +114,10 @@ public class EntityFlowerPot extends DCEntityBase {
 		NBTTagCompound nbttagcompound = compound.getCompoundTag("FlowerItem");
 
 		if (nbttagcompound != null) {
-			ItemStack itemstack = ItemStack.loadItemStackFromNBT(nbttagcompound);
+			ItemStack itemstack = new ItemStack(nbttagcompound);
 
-			if (itemstack != null) {
-				this.dataManager.set(FLOWER, Optional.of(itemstack));
+			if (!DCUtil.isEmpty(itemstack)) {
+				this.dataManager.set(FLOWER, itemstack);
 			}
 		}
 

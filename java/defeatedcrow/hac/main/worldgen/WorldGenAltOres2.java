@@ -12,8 +12,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 // 新型
@@ -512,7 +512,7 @@ public class WorldGenAltOres2 implements IWorldGenerator {
 					if (x > limX && z > limZ) {
 						BlockPos p = new BlockPos(x, y, z);
 						double d1 = Math.sqrt(p.distanceSq(pos));
-						int r = h + 1 - MathHelper.floor_double(d1);
+						int r = h + 1 - MathHelper.floor(d1);
 						if (r < -0.0D) {
 							continue;
 						}

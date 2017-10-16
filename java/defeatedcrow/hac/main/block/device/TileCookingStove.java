@@ -81,7 +81,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 				break;
 			}
 
-			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
+			TileEntity tile = world.getTileEntity(getPos().offset(face));
 			if (tile != null
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
@@ -278,7 +278,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player) {
 		if (getWorld().getTileEntity(this.pos) != this || player == null)
 			return false;
 		else
@@ -348,6 +348,11 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
 		return oldState.getBlock() != newSate.getBlock();
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return false;
 	}
 
 }

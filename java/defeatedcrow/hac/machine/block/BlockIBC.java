@@ -1,26 +1,24 @@
 package defeatedcrow.hac.machine.block;
 
-import java.util.List;
 import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
@@ -43,31 +41,35 @@ public class BlockIBC extends DCTileBlock {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null && hand == EnumHand.MAIN_HAND) {
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (hand == EnumHand.MAIN_HAND) {
 
-			TileEntity tile = world.getTileEntity(pos);
-			if (!world.isRemote && tile instanceof TileIBC) {
-				if (heldItem != null) {
-					DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
-				} else {
-					FluidStack f = ((TileIBC) tile).inputT.getFluid();
-					if (f != null) {
-						String name = f.getLocalizedName();
-						int i = f.amount;
-						String mes1 = "Stored Fluid: " + name + " " + i + "mB";
-						player.addChatMessage(new TextComponentString(mes1));
+				TileEntity tile = world.getTileEntity(pos);
+				if (!world.isRemote && tile instanceof TileIBC) {
+					if (!DCUtil.isEmpty(heldItem)) {
+						DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+					} else {
+						FluidStack f = ((TileIBC) tile).inputT.getFluid();
+						if (f != null) {
+							String name = f.getLocalizedName();
+							int i = f.amount;
+							String mes1 = "Stored Fluid: " + name + " " + i + "mB";
+							player.sendMessage(new TextComponentString(mes1));
+						}
 					}
 				}
+				return true;
 			}
-			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override
@@ -136,7 +138,7 @@ public class BlockIBC extends DCTileBlock {
 			TileIBC ibc = (TileIBC) te;
 			DCTank tank = ibc.inputT;
 			float amo = tank.getFluidAmount() * 15.0F / tank.getCapacity();
-			int lit = MathHelper.floor_float(amo);
+			int lit = MathHelper.floor(amo);
 			return lit;
 		}
 		return 0;

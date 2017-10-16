@@ -2,41 +2,22 @@ package defeatedcrow.hac.machine.item;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.item.ItemStack;
 
 public class ItemReagents extends DCItem {
 
 	private final int maxMeta;
 
 	private static String[] names = {
-			"drop_coaltar",
-			"drop_glycerine",
-			"drop_synthetic",
-			"dust_alkali",
-			"dust_ammonium_nitrate",
-			"dust_nitrocellulose",
-			"bottle_nitroglycerin",
-			"bottle_carbon_black",
-			"smokeless_gunpowder",
-			"gem_carbide",
-			"bottle_phosphorus",
-			"bottle_phosphoric_acid",
-			"bottle_ammonium_phosphate"
+			"drop_coaltar", "drop_glycerine", "drop_synthetic", "dust_alkali", "dust_ammonium_nitrate",
+			"dust_nitrocellulose", "bottle_nitroglycerin", "bottle_carbon_black", "smokeless_gunpowder", "gem_carbide",
+			"bottle_phosphorus", "bottle_phosphoric_acid", "bottle_ammonium_phosphate"
 	};
 
 	private static String[] tex_names = {
-			"drop_coaltar",
-			"drop_glycerine",
-			"drop_synthetic",
-			"white_powder_bottle",
-			"white_powder_bottle",
-			"white_powder_bottle",
-			"orange_water_bottle",
-			"black_water_bottle",
-			"dust_smokeless",
-			"gem_carbide",
-			"red_powder_bottle",
-			"clear_water_bottle",
-			"white_powder_bottle"
+			"drop_coaltar", "drop_glycerine", "drop_synthetic", "white_powder_bottle", "white_powder_bottle",
+			"white_powder_bottle", "orange_water_bottle", "black_water_bottle", "dust_smokeless", "gem_carbide",
+			"red_powder_bottle", "clear_water_bottle", "white_powder_bottle"
 	};
 
 	public ItemReagents() {
@@ -61,6 +42,17 @@ public class ItemReagents extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	public int getItemBurnTime(ItemStack stack) {
+		int i = stack.getMetadata();
+		if (i == 0)
+			return 1600;
+		else if (i == 1)
+			return 800;
+		else
+			return 0;
 	}
 
 }

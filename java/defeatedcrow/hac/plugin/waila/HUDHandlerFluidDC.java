@@ -5,7 +5,7 @@ import java.util.List;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.machine.block.BlockIBC;
 import defeatedcrow.hac.machine.block.TileIBC;
-import mcp.mobius.waila.addons.HUDHandlerBase;
+import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
-public class HUDHandlerFluidDC extends HUDHandlerBase {
+public class HUDHandlerFluidDC extends HUDHandlerBlocks {
 
 	@Override
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,

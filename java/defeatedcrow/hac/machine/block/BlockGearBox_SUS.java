@@ -1,8 +1,6 @@
 package defeatedcrow.hac.machine.block;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -10,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -26,22 +25,20 @@ public class BlockGearBox_SUS extends BlockGearBox {
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		// achievement
-		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
+		if (placer != null && !placer.world.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;
-			if (!player.hasAchievement(AchievementClimate.MACHINE_SUS)) {
-				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_SUS);
-			}
 		}
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		return state;
 	}
 
 	// redstone
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
+	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
 

@@ -3,16 +3,19 @@ package defeatedcrow.hac.machine.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
@@ -47,10 +50,10 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		if (stack != null) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+		if (!DCUtil.isEmpty(stack)) {
 			ItemStack output = this.getOutput(stack);
-			if (output != null) {
+			if (!DCUtil.isEmpty(output)) {
 				tooltip.add(TextFormatting.BOLD.toString() + "Output: " + output.getDisplayName());
 			} else {
 				tooltip.add("Please register an item on the anvil.");
@@ -61,7 +64,7 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
-		return stack != null && stack.getItemDamage() > 0;
+		return !DCUtil.isEmpty(stack) && stack.getItemDamage() > 0;
 	}
 
 	@Override
@@ -78,15 +81,15 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 			meta = 3;
 		}
 		if (meta > 0) {
-			ItemStack next = new ItemStack(mold.getItem(), mold.stackSize, meta);
+			ItemStack next = new ItemStack(mold.getItem(), mold.getCount(), meta);
 			return next;
 		} else
-			return null;
+			return ItemStack.EMPTY;
 	}
 
 	@Override
 	public ItemStack getOutput(ItemStack mold) {
-		if (mold != null) {
+		if (!DCUtil.isEmpty(mold)) {
 			int m = mold.getItemDamage();
 			if (m == 1)
 				return new ItemStack(MachineInit.synthetic, 2, 0);

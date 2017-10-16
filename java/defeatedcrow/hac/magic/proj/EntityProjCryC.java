@@ -49,13 +49,13 @@ public class EntityProjCryC extends EntityProjBase {
 	@Override
 	protected boolean onGroundHit() {
 		BlockPos pos = this.getPosition();
-		int x1 = MathHelper.floor_double(this.posX - 8.0D);
-		int x2 = MathHelper.floor_double(this.posX + 8.0D);
-		int y1 = MathHelper.floor_double(this.posY - 4.0D);
-		int y2 = MathHelper.floor_double(this.posY + 4.0D);
-		int z1 = MathHelper.floor_double(this.posZ - 8.0D);
-		int z2 = MathHelper.floor_double(this.posZ + 8.0D);
-		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
+		int x1 = MathHelper.floor(this.posX - 8.0D);
+		int x2 = MathHelper.floor(this.posX + 8.0D);
+		int y1 = MathHelper.floor(this.posY - 4.0D);
+		int y2 = MathHelper.floor(this.posY + 4.0D);
+		int z1 = MathHelper.floor(this.posZ - 8.0D);
+		int z2 = MathHelper.floor(this.posZ + 8.0D);
+		List list = this.world.getEntitiesWithinAABBExcludingEntity(this, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
 		Vec3d vec3 = new Vec3d(this.posX, this.posY, this.posZ);
 
 		for (int i = 0; i < list.size(); ++i) {
@@ -90,7 +90,7 @@ public class EntityProjCryC extends EntityProjBase {
 
 	@Override
 	public void onUpdate() {
-		if (!this.worldObj.isRemote && (this.isInWater() || this.isInLava())) {
+		if (!this.world.isRemote && (this.isInWater() || this.isInLava())) {
 			setStart(true);
 		}
 		super.onUpdate();
@@ -102,7 +102,7 @@ public class EntityProjCryC extends EntityProjBase {
 		double x1 = posX + rand.nextDouble() - 0.5D;
 		double y1 = posY + rand.nextDouble() - 0.5D;
 		double z1 = posZ + rand.nextDouble() - 0.5D;
-		Particle shock = new ParticleShock.Factory().createParticle(0, worldObj, x1, y1, z1, 0D, 0D, 0D, new int[0]);
+		Particle shock = new ParticleShock.Factory().createParticle(0, world, x1, y1, z1, 0D, 0D, 0D, new int[0]);
 		shock.setRBGColorF(0.65F, 0.95F, 0.95F);
 		FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 
@@ -116,8 +116,7 @@ public class EntityProjCryC extends EntityProjBase {
 			double fy = 0.5D + rand.nextDouble() * 0.25D;
 			double fz = 0.5D * rand.nextDouble() - 0.25D;
 
-			Particle star = new ParticleFallingStar.Factory().createParticle(0, worldObj, x, y, z, fx, fy, fz,
-					new int[0]);
+			Particle star = new ParticleFallingStar.Factory().createParticle(0, world, x, y, z, fx, fy, fz, new int[0]);
 			star.setRBGColorF(0.65F, 0.95F, 0.95F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(star);
 

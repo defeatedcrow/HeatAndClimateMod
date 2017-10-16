@@ -60,12 +60,12 @@ public class TileFan extends TileTorqueBase implements ITorqueReceiver, IClimate
 		super.updateTile();
 
 		// 前方に向かって風を送る処理
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			BlockFan fan = (BlockFan) MachineInit.fan;
 			EnumFacing face = this.getBaseSide();
 			for (int i = 2; i < 5; i++) {
 				BlockPos target = this.getPos().offset(face, i);
-				TileEntity targetTE = worldObj.getTileEntity(target);
+				TileEntity targetTE = world.getTileEntity(target);
 				if (targetTE != null && targetTE instanceof ClimateReceiveTile) {
 					if (!((ClimateReceiveTile) targetTE).getHeatTilePos().contains(getPos())) {
 						((ClimateReceiveTile) targetTE).addHeatTilePos(getPos());
@@ -77,7 +77,7 @@ public class TileFan extends TileTorqueBase implements ITorqueReceiver, IClimate
 						((ClimateReceiverLockable) targetTE).addHeatTilePos(getPos());
 					}
 					break;
-				} else if (worldObj.getBlockState(target).isOpaqueCube()) {
+				} else if (world.getBlockState(target).isOpaqueCube()) {
 					break;
 				}
 			}
@@ -86,12 +86,12 @@ public class TileFan extends TileTorqueBase implements ITorqueReceiver, IClimate
 
 	@Override
 	public DCHeatTier getHeatTier(BlockPos target) {
-		return ClimateAPI.calculator.getAverageTemp(worldObj, getPos());
+		return ClimateAPI.calculator.getAverageTemp(world, getPos());
 	}
 
 	@Override
 	public DCHumidity getHumidity(BlockPos target) {
-		return ClimateAPI.calculator.getHumidity(worldObj, getPos());
+		return ClimateAPI.calculator.getHumidity(world, getPos());
 	}
 
 	@Override

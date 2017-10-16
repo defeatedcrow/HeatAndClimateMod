@@ -13,8 +13,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class DCTorqueProcessorTESRBase extends TileEntitySpecialRenderer<TileTorqueProcessor> {
 
 	@Override
-	public void renderTileEntityAt(TileTorqueProcessor te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileTorqueProcessor te, double x, double y, double z, float partialTicks, int destroyStage,
+			float a) {
 		DCTileModelBase model = this.getModel(te);
 		float speed = te.currentSpeed;
 		float rot = te.prevRotation + (te.currentRotation - te.prevRotation) * partialTicks;

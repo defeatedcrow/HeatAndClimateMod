@@ -21,7 +21,8 @@ public class DCPluginBoP {
 
 	private DCPluginBoP() {}
 
-	public static void load() {
+	public static void loadInit() {
+
 		// climate registering
 		ClimateAPI.registerBlock.registerHeatBlock(BOPBlocks.flower_1, 4, DCHeatTier.FROSTBITE);
 		ClimateAPI.registerBlock.registerHeatBlock(BOPBlocks.hard_ice, 0, DCHeatTier.COLD);

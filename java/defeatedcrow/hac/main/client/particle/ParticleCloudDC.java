@@ -3,7 +3,7 @@ package defeatedcrow.hac.main.client.particle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.IParticleFactory;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
@@ -46,15 +46,13 @@ public class ParticleCloudDC extends Particle {
 		int g = (color >> 8) & 255;
 		int b = color & 255;
 		return new int[] {
-				r,
-				g,
-				b
+				r, g, b
 		};
 	}
 
 	@Override
-	public void moveEntity(double x, double y, double z) {
-		this.setEntityBoundingBox(this.getEntityBoundingBox().offset(x, y, z));
+	public void move(double x, double y, double z) {
+		this.setBoundingBox(this.getBoundingBox().offset(x, y, z));
 		this.resetPositionToBB();
 	}
 
@@ -62,7 +60,7 @@ public class ParticleCloudDC extends Particle {
 	 * Renders the particle
 	 */
 	@Override
-	public void renderParticle(VertexBuffer worldRendererIn, Entity entityIn, float partialTicks, float rotationX,
+	public void renderParticle(BufferBuilder worldRendererIn, Entity entityIn, float partialTicks, float rotationX,
 			float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
 		float f = (this.particleAge + partialTicks) / this.particleMaxAge;
 		this.particleScale = this.flameScale * (1.0F + f * 0.5F);
@@ -73,7 +71,7 @@ public class ParticleCloudDC extends Particle {
 	@Override
 	public int getBrightnessForRender(float p_189214_1_) {
 		float f = (this.particleAge + p_189214_1_) / this.particleMaxAge;
-		f = MathHelper.clamp_float(f, 0.0F, 1.0F);
+		f = MathHelper.clamp(f, 0.0F, 1.0F);
 		int i = super.getBrightnessForRender(p_189214_1_);
 		int j = i & 255;
 		int k = i >> 16 & 255;
@@ -96,18 +94,13 @@ public class ParticleCloudDC extends Particle {
 			this.setExpired();
 		}
 
-		this.moveEntity(this.motionX, this.motionY, this.motionZ);
+		this.move(this.motionX, this.motionY, this.motionZ);
 		this.motionX *= 0.95D;
 		this.motionY += 0.001D;
 		this.motionZ *= 0.95D;
 
 		if (motionY > 1.00D) {
 			motionY = 1.00D;
-		}
-
-		if (this.isCollided) {
-			this.motionX *= 0.7D;
-			this.motionZ *= 0.7D;
 		}
 	}
 

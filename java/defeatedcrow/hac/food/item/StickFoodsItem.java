@@ -3,19 +3,22 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.core.util.DCPotion;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
 import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.SquidStickEntity;
 import defeatedcrow.hac.food.entity.YakitoriStickEntity;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
@@ -36,7 +39,7 @@ public class StickFoodsItem extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp_int(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 1);
 		String s = "items/food/stick_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -47,18 +50,8 @@ public class StickFoodsItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"fish_raw",
-				"fish_cooked",
-				"yakitori_raw",
-				"yakitori_cooked",
-				"pork_raw",
-				"pork_cooked",
-				"beef_raw",
-				"beef_cooked",
-				"mutton_raw",
-				"mutton_cooked",
-				"squid_raw",
-				"squid_cooked"
+				"fish_raw", "fish_cooked", "yakitori_raw", "yakitori_cooked", "pork_raw", "pork_cooked", "beef_raw",
+				"beef_cooked", "mutton_raw", "mutton_cooked", "squid_raw", "squid_cooked"
 		};
 		return s;
 	}
@@ -138,14 +131,14 @@ public class StickFoodsItem extends FoodItemBase {
 	public List<PotionEffect> getPotionEffect(int meta) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if ((meta & 1) == 0) {
-			ret.add(new PotionEffect(DCPotion.hunger, 300, 0));
+			ret.add(new PotionEffect(MobEffects.HUNGER, 300, 0));
 		}
 		return ret;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 		tooltip.add("Placeable as an Entity");
 	}
 

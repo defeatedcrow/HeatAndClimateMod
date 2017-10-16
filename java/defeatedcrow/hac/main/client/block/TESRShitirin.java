@@ -7,9 +7,9 @@ import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.main.block.device.TileChamberBase;
 import defeatedcrow.hac.main.client.model.ModelShitirin;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -23,11 +23,10 @@ public class TESRShitirin extends DCLockableTESRBase {
 	private static final ModelShitirin MODEL = new ModelShitirin();
 
 	@Override
-	public void renderTileEntityAt(DCLockableTE te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
-		super.renderTileEntityAt(te, x, y, z, partialTicks, destroyStage);
+	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
+		super.render(te, x, y, z, partialTicks, destroyStage, a);
 
-		if (te.hasWorldObj()) {
+		if (te.hasWorld()) {
 			int meta = te.getBlockMetadata();
 			boolean lit = ((TileChamberBase) te).isActive();
 			int level = ((TileChamberBase) te).getCurrentHeatID();
@@ -62,7 +61,7 @@ public class TESRShitirin extends DCLockableTESRBase {
 		}
 		GlStateManager.scale(f, f, f);
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 		float f1 = 0.5F;
 		float f3 = 1.0F / f;
 		float f5 = 0.25F;

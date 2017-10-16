@@ -2,15 +2,12 @@ package defeatedcrow.hac.magic.block;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller.IChunkBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -35,8 +32,8 @@ public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

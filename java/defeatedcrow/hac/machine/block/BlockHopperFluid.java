@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -30,6 +31,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -96,7 +98,7 @@ public class BlockHopperFluid extends BlockContainer {
 
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn) {
+			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean b) {
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, BASE_AABB);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, EAST_AABB);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, WEST_AABB);
@@ -105,18 +107,22 @@ public class BlockHopperFluid extends BlockContainer {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity tile = world.getTileEntity(pos);
-		if (!world.isRemote && tile != null && tile instanceof TileHopperFluid) {
-			if (player != null && hand == EnumHand.MAIN_HAND) {
-				if (!DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
-					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (!world.isRemote && tile != null && tile instanceof TileHopperFluid) {
+				if (player != null && hand == EnumHand.MAIN_HAND) {
+					if (!DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+					}
 				}
 			}
 		}
@@ -129,8 +135,8 @@ public class BlockHopperFluid extends BlockContainer {
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		EnumFacing face = facing.getOpposite();
 
 		if (face == EnumFacing.UP) {
@@ -174,7 +180,7 @@ public class BlockHopperFluid extends BlockContainer {
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
 			entityitem.motionZ = (float) world.rand.nextGaussian() * f3;
-			world.spawnEntityInWorld(entityitem);
+			world.spawnEntity(entityitem);
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);
@@ -200,7 +206,7 @@ public class BlockHopperFluid extends BlockContainer {
 
 	// redstone
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
+	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		this.updateState(world, pos, state);
 	}
 
@@ -227,7 +233,7 @@ public class BlockHopperFluid extends BlockContainer {
 			TileHopperFluid ibc = (TileHopperFluid) te;
 			DCTank tank = ibc.inputT;
 			float amo = tank.getFluidAmount() * 15.0F / tank.getCapacity();
-			int lit = MathHelper.floor_float(amo);
+			int lit = MathHelper.floor(amo);
 			return lit;
 		}
 		return 0;
@@ -261,8 +267,7 @@ public class BlockHopperFluid extends BlockContainer {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE,
-				DCState.POWERED
+				DCState.SIDE, DCState.POWERED
 		});
 
 	}

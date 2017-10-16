@@ -3,6 +3,7 @@ package defeatedcrow.hac.food.item;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -19,13 +20,7 @@ public class ItemDCSeeds extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"rice",
-			"onion",
-			"spinach",
-			"tomato",
-			"coffee",
-			"cotton",
-			"lotus"
+			"rice", "onion", "spinach", "tomato", "coffee", "cotton", "lotus"
 	};
 
 	public ItemDCSeeds(int max) {
@@ -55,18 +50,20 @@ public class ItemDCSeeds extends DCItem {
 	/* IPlantable */
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (stack == null)
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
+		if (player == null || DCUtil.isEmpty(player.getHeldItem(hand)))
 			return EnumActionResult.FAIL;
+
+		ItemStack stack = player.getHeldItem(hand);
 		int meta = stack.getItemDamage();
-		IBlockState state = worldIn.getBlockState(pos);
+		IBlockState state = world.getBlockState(pos);
 		if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, stack)) {
 			Block crop = getCropBlock(meta);
 			if (crop instanceof IClimateCrop) {
-				if (((IClimateCrop) crop).isSuitablePlace(worldIn, pos, state)) {
-					worldIn.setBlockState(pos.up(), crop.getDefaultState(), 3);
-					--stack.stackSize;
+				if (((IClimateCrop) crop).isSuitablePlace(world, pos, state)) {
+					world.setBlockState(pos.up(), crop.getDefaultState(), 3);
+					DCUtil.reduceStackSize(stack, 1);
 					return EnumActionResult.SUCCESS;
 				}
 			}

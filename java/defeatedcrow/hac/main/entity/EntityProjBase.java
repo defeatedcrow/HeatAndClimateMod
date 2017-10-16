@@ -48,7 +48,7 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 		super.onUpdate();
 		age++;
 
-		if (!this.worldObj.isRemote) {
+		if (!this.world.isRemote) {
 			if (this.start) {
 				if (count > 0) {
 					if (this.onGroundHit()) {}
@@ -64,8 +64,8 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 			if (this.inGround) {
 				this.onGroundClient();
 			} else {
-				this.worldObj.spawnParticle(EnumParticleTypes.SPELL_INSTANT, this.posX, this.posY, this.posZ, 0.0D,
-						0.0D, 0.0D, new int[0]);
+				this.world.spawnParticle(EnumParticleTypes.SPELL_INSTANT, this.posX, this.posY, this.posZ, 0.0D, 0.0D,
+						0.0D, new int[0]);
 			}
 		}
 
@@ -87,7 +87,7 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 			return;
 		Entity entity = raytraceResultIn.entityHit;
 
-		if (entity != null && !this.worldObj.isRemote) {
+		if (entity != null && !this.world.isRemote) {
 
 			if (entity.isEntityEqual(this.shootingEntity) || entity instanceof IProjectile)
 				return;
@@ -95,8 +95,8 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 			if (this.onEntityHit(entity))
 				return;
 
-			float speed = MathHelper.sqrt_double(
-					this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+			float speed = MathHelper
+					.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 			float damage = this.getHitDamage(entity, speed);
 			DamageSource source = this.getHitSource(entity);
 
@@ -153,12 +153,12 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 	}
 
 	protected void dropAsItem() {
-		if (!worldObj.isRemote && this.getDropStack() != null) {
+		if (!world.isRemote) {
 			ItemStack item = this.getDropStack();
 			if (!DCUtil.isEmpty(item)) {
-				EntityItem drop = new EntityItem(worldObj, posX, posY + 0.15D, posZ, item);
+				EntityItem drop = new EntityItem(world, posX, posY + 0.15D, posZ, item);
 				drop.motionY = 0.025D;
-				worldObj.spawnEntityInWorld(drop);
+				world.spawnEntity(drop);
 			}
 		}
 	}

@@ -42,7 +42,7 @@ public class EntityProjSapW extends EntityProjBase {
 		if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase) {
 			ign = (EntityLivingBase) this.shootingEntity;
 		}
-		CustomExplosion explosion = new CustomExplosion(worldObj, this, ign, posX, posY, posZ, 5F,
+		CustomExplosion explosion = new CustomExplosion(world, this, ign, posX, posY, posZ, 5F,
 				CustomExplosion.Type.Silk, true);
 		explosion.doExplosion();
 		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.8F / (this.rand.nextFloat() * 0.2F + 0.9F));
@@ -60,7 +60,7 @@ public class EntityProjSapW extends EntityProjBase {
 	@Override
 	protected void onGroundClient() {
 		// DCLogger.debugLog("on client");
-		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
+		world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
 	}
 
 }

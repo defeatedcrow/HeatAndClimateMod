@@ -31,7 +31,8 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 		return "dcs_climate:items/tool/crossbow_iron";
 	}
 
-	private ItemStack findAmmo(EntityPlayer player) {
+	@Override
+	public ItemStack findAmmo(EntityPlayer player) {
 		if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
 			return player.getHeldItem(EnumHand.OFF_HAND);
 		else if (this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)))
@@ -44,7 +45,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 					return itemstack;
 			}
 
-			return null;
+			return ItemStack.EMPTY;
 		}
 	}
 
@@ -63,11 +64,11 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 
 			int i = this.getMaxItemUseDuration(stack) - timeLeft;
 			i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, world, (EntityPlayer) living, i,
-					ammo != null || flag);
+					!DCUtil.isEmpty(ammo) || flag);
 			if (i < 0)
 				return;
 
-			if (ammo != null || flag) {
+			if (!DCUtil.isEmpty(ammo) || flag) {
 
 				float f = getArrowVelocity(i);
 
@@ -95,7 +96,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 
 						stack.damageItem(1, player);
 
-						world.spawnEntityInWorld(entityarrow);
+						world.spawnEntity(entityarrow);
 					}
 
 					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
@@ -103,11 +104,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 							1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 					if (!flag) {
-						--ammo.stackSize;
-
-						if (ammo.stackSize == 0) {
-							player.inventory.deleteStack(ammo);
-						}
+						DCUtil.reduceStackSize(ammo, 1);
 					}
 
 					player.addStat(StatList.getObjectUseStats(this));

@@ -9,9 +9,9 @@ public class MobResistantData {
 	private MobResistantData() {}
 
 	public static void load() {
-		Class blizz = EntityList.NAME_TO_CLASS.get("thermalfoundation.blizz");
-		Class blitz = EntityList.NAME_TO_CLASS.get("thermalfoundation.blitz");
-		Class basalz = EntityList.NAME_TO_CLASS.get("thermalfoundation.basalz");
+		Class blizz = EntityList.getClassFromName("thermalfoundation.blizz");
+		Class blitz = EntityList.getClassFromName("thermalfoundation.blitz");
+		Class basalz = EntityList.getClassFromName("thermalfoundation.basalz");
 
 		DamageAPI.resistantData.registerEntityResistant(blizz, 0.0F, 6.0F);
 		DamageAPI.resistantData.registerEntityResistant(blitz, 2.0F, 2.0F);

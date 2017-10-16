@@ -15,8 +15,7 @@ public class ItemLotusPetal extends DCFoodItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"lotus",
-			"black"
+			"lotus", "black"
 	};
 
 	public ItemLotusPetal() {
@@ -59,7 +58,7 @@ public class ItemLotusPetal extends DCFoodItem {
 			int meta = stack.getMetadata();
 			if (meta == 1) {
 				EntityXPOrb orb = new EntityXPOrb(worldIn, living.posX, living.posY + 0.25D, living.posZ, 100);
-				worldIn.spawnEntityInWorld(orb);
+				worldIn.spawnEntity(orb);
 			} else {
 				Potion por = MobEffects.REGENERATION;
 				int amp = 0;

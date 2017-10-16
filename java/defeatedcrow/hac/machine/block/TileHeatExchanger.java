@@ -9,7 +9,6 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -70,10 +69,10 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 		super.updateTile();
 
 		// 気候チェック
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			DCHeatTier heat = getUnderHeat();
-			DCHumidity hum = ClimateAPI.calculator.getHumidity(worldObj, pos, CoreConfigDC.humRange, false);
-			DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos, CoreConfigDC.airRange, false);
+			DCHumidity hum = ClimateAPI.calculator.getHumidity(world, pos, 1, false);
+			DCAirflow air = ClimateAPI.calculator.getAirflow(world, pos, 1, false);
 
 			int code = (air.getID() << 6) + (hum.getID() << 4) + heat.getID();
 			current = ClimateAPI.register.getClimateFromInt(code);
@@ -94,7 +93,7 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 			}
 
 			if (flag) {
-				if (!this.hasWorldObj())
+				if (!this.hasWorld())
 					return;
 				@SuppressWarnings("unchecked")
 				List<EntityPlayer> list = this.getWorld().playerEntities;
@@ -130,12 +129,12 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 	}
 
 	private DCHeatTier getUnderHeat() {
-		DCHeatTier hot = ClimateAPI.calculator.getAverageTemp(worldObj, getPos().down(), 0, false);
+		DCHeatTier hot = ClimateAPI.calculator.getAverageTemp(world, getPos().down(), 0, false);
 
-		Block block = worldObj.getBlockState(pos.down()).getBlock();
-		int m = block.getMetaFromState(worldObj.getBlockState(pos.down()));
+		Block block = world.getBlockState(pos.down()).getBlock();
+		int m = block.getMetaFromState(world.getBlockState(pos.down()));
 		if (block instanceof IHeatTile) {
-			DCHeatTier current = ((IHeatTile) block).getHeatTier(worldObj, pos, pos.down());
+			DCHeatTier current = ((IHeatTile) block).getHeatTier(world, pos, pos.down());
 			if (current.getTier() != hot.getTier()) {
 				hot = current;
 			}

@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.capability.DrinkCustomizer;
 import defeatedcrow.hac.food.capability.DrinkMilk;
@@ -113,7 +114,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 	protected boolean onDrainTank(DCTank tank, int slot1, int slot2, boolean flag) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
-		if (in == null)
+		if (DCUtil.isEmpty(in))
 			return false;
 
 		IFluidHandler cont = null;
@@ -132,7 +133,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
 			boolean loose = false;
-			ItemStack ret = null;
+			ItemStack ret = ItemStack.EMPTY;
 
 			int max = dummy.getTankProperties()[0].getCapacity();
 			FluidStack fc = dummy.drain(max, false);
@@ -158,10 +159,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 					ret = in2;
 				}
 
-				if (ret.stackSize <= 0) {
-					ret = null;
-				}
-				if (ret != null) {
+				if (!DCUtil.isEmpty(ret)) {
 					// Customize
 					// DCLogger.debugLog("check1");
 					if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
@@ -241,7 +239,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 		if (currentRecipe != null) {
 			ItemStack out = currentRecipe.getOutput();
 			ItemStack sec = currentRecipe.getSecondary();
-			float chance = MathHelper.ceiling_float_int(currentRecipe.getSecondaryChance() * 100);
+			float chance = MathHelper.ceil(currentRecipe.getSecondaryChance() * 100);
 			FluidStack inF = currentRecipe.getInputFluid();
 			FluidStack outF = currentRecipe.getOutputFluid();
 
@@ -251,8 +249,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
 			for (int i = 4; i < 7; i++) {
-				ItemStack slot = this.inv[i];
-				if (slot != null) {
+				ItemStack slot = this.getStackInSlot(i);
+				if (!DCUtil.isEmpty(slot)) {
 					boolean inRecipe = false;
 					Iterator<Object> req = required.iterator();
 
@@ -263,13 +261,14 @@ public class TileTeaPot extends TileFluidProcessorBase {
 						int count = 1;
 
 						if (next instanceof ItemStack) {
-							count = ((ItemStack) next).stackSize;
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot.stackSize >= count;
+							count = ((ItemStack) next).getCount();
+							match = OreDictionary.itemMatches((ItemStack) next, slot, false)
+									&& slot.getCount() >= count;
 						} else if (next instanceof ArrayList) {
 							ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
 							if (list != null && !list.isEmpty()) {
 								for (ItemStack item : list) {
-									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.stackSize > 0;
+									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.getCount() > 0;
 									if (f) {
 										match = true;
 									}
@@ -319,32 +318,21 @@ public class TileTeaPot extends TileFluidProcessorBase {
 	@Override
 	protected int[] slotsTop() {
 		return new int[] {
-				0,
-				2,
-				4,
-				5,
-				6
+				0, 2, 4, 5, 6
 		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
 		return new int[] {
-				1,
-				3
+				1, 3
 		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
 		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6
+				0, 1, 2, 3, 4, 5, 6
 		};
 	};
 

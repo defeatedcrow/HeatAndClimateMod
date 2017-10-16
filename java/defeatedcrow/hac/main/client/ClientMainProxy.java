@@ -67,15 +67,12 @@ import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import defeatedcrow.hac.main.event.AltTooltipEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.stats.Achievement;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -263,12 +260,6 @@ public class ClientMainProxy extends CommonMainProxy {
 		default:
 			return null;
 		}
-	}
-
-	@Override
-	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
-		return player != null && player instanceof EntityPlayerSP
-				&& ((EntityPlayerSP) player).getStatFileWriter().hasAchievementUnlocked(acv);
 	}
 
 	@Override

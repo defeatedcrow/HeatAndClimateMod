@@ -10,9 +10,9 @@ import defeatedcrow.hac.machine.block.TileGasBurner;
 import defeatedcrow.hac.machine.client.model.ModelGasBurner;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -28,11 +28,10 @@ public class GasBurnerTESR extends DCTESRBase {
 	private static final ModelGasBurner MODEL = new ModelGasBurner();
 
 	@Override
-	public void renderTileEntityAt(DCTileEntity te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(DCTileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		boolean lit = false;
 		boolean power = false;
-		if (te.hasWorldObj() && te instanceof TileGasBurner) {
+		if (te.hasWorld() && te instanceof TileGasBurner) {
 			IBlockState state = te.getWorld().getBlockState(te.getPos());
 			int meta = DCState.getInt(state, DCState.TYPE4);
 			lit = (meta & 3) == 1;
@@ -81,7 +80,7 @@ public class GasBurnerTESR extends DCTESRBase {
 		float f = 1.0F;
 		GlStateManager.scale(f, f, f);
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 		float f1 = 0.3F;
 		float f3 = 0.35F;
 		float f4 = 0.45F;

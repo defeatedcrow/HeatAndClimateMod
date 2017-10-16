@@ -29,8 +29,8 @@ public class GuiPressMachine extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String s = I18n.translateToLocal(this.machine.getName());
-		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 4, 4210752);
-		this.fontRendererObj.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92,
+		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 4, 4210752);
+		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92,
 				4210752);
 	}
 
@@ -40,7 +40,7 @@ public class GuiPressMachine extends GuiContainer {
 		if (isPointInRegion(41, 12, 58, 58, x, y)) {
 			ArrayList<String> list1 = new ArrayList<String>();
 			list1.add("Required Items");
-			this.drawHoveringText(list1, x, y - 12, fontRendererObj);
+			this.drawHoveringText(list1, x, y - 12, fontRenderer);
 		}
 	}
 

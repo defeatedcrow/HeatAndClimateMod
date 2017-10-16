@@ -23,7 +23,7 @@ public class DCPluginMekanism {
 	}
 
 	public static void sendIMC() {
-		Item bio = Item.REGISTRY.getObject(new ResourceLocation("Mekanism", "BioFuel"));
+		Item bio = Item.REGISTRY.getObject(new ResourceLocation("mekanism", "biofuel"));
 		if (bio != null && ModuleConfig.food) {
 			NBTTagCompound crop0 = new NBTTagCompound();
 			crop0.setTag("input", new ItemStack(FoodInit.crops, 1, 0).writeToNBT(new NBTTagCompound()));

@@ -2,12 +2,9 @@ package defeatedcrow.hac.main.block.device;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCTileBlock;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -36,7 +33,7 @@ public class BlockAcvShield extends DCTileBlock {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile != null && tile instanceof TileAcvShield) {
@@ -45,25 +42,15 @@ public class BlockAcvShield extends DCTileBlock {
 				String playerName = player.getDisplayNameString();
 				int type = DCState.getInt(state, DCState.TYPE4);
 				if (owner != null) {
-					if (owner.equals(playerName) || player.capabilities.isCreativeMode) {
-						if (type == 0) {
-							AcvHelper.forceAllClimate(player);
-						}
-						if (type == 1) {
-							AcvHelper.forceAllMachine(player);
-						}
-						if (type == 2) {
-							AcvHelper.forceAllMagic(player);
-						}
-					}
-					player.addChatMessage(new TextComponentString("Owner: " + owner));
+					if (owner.equals(playerName) || player.capabilities.isCreativeMode) {}
+					player.sendMessage(new TextComponentString("Owner: " + owner));
 				} else {
-					player.addChatMessage(new TextComponentString("Owner: NO DATA"));
+					player.sendMessage(new TextComponentString("Owner: NO DATA"));
 				}
 				return true;
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override
@@ -96,7 +83,7 @@ public class BlockAcvShield extends DCTileBlock {
 			entityitem.motionX = (float) this.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) this.rand.nextGaussian() * f3 + 0.25F;
 			entityitem.motionZ = (float) this.rand.nextGaussian() * f3;
-			world.spawnEntityInWorld(entityitem);
+			world.spawnEntity(entityitem);
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		world.removeTileEntity(pos);

@@ -57,7 +57,7 @@ public class AltTooltipEvent {
 					}
 				}
 
-				if (event.isShowAdvancedItemTooltips()) {
+				if (event.getFlags().isAdvanced()) {
 					// まず耐久値
 					if (tI.isDamageable() && target.getMetadata() == 0) {
 						int max = target.getMaxDamage();
@@ -67,7 +67,7 @@ public class AltTooltipEvent {
 
 					// tool tier
 					if (tI instanceof ItemTool) {
-						int tier = ((ItemTool) tI).getToolMaterial().getHarvestLevel();
+						int tier = ((ItemTool) tI).getHarvestLevel(target, null, player, null);
 						String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
 						event.getToolTip().add(ret);
 					}

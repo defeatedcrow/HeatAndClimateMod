@@ -20,7 +20,7 @@ public class MHandlerBiomeGlass implements IMessageHandler<MessageBiomeGlass, IM
 			int z = message.z;
 			int num = message.num;
 			BlockPos pos = new BlockPos(x, y, z);
-			BlockBiomeGlass.rebuildBiomeFromID(player.worldObj, pos, num);
+			BlockBiomeGlass.rebuildBiomeFromID(player.world, pos, num);
 		}
 		return null;
 	}

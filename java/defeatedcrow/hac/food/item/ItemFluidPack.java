@@ -2,12 +2,15 @@ package defeatedcrow.hac.food.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -18,19 +21,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemFluidPack extends DCItem {
 
 	private static String[] names = {
-			"empty",
-			"water",
-			"milk",
-			"cream",
-			"oil"
+			"empty", "water", "milk", "cream", "oil"
 	};
 
 	public static final String[] FLUIDS = {
-			"empty",
-			"water",
-			"milk",
-			"dcs.milk_cream",
-			"dcs.seed_oil"
+			"empty", "water", "milk", "dcs.milk_cream", "dcs.seed_oil"
 	};
 
 	public ItemFluidPack() {
@@ -73,13 +68,22 @@ public class ItemFluidPack extends DCItem {
 	}
 
 	@Override
+	public int getItemBurnTime(ItemStack stack) {
+		int i = stack.getMetadata();
+		if (i == 4)
+			return 1600;
+		else
+			return 0;
+	}
+
+	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
 		return new FluidPaperContDC(stack);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 		if (stack == null)
 			return;
 

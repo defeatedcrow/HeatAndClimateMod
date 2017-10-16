@@ -2,6 +2,7 @@ package defeatedcrow.hac.food.item;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -13,7 +14,6 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.FluidTankProperties;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
-import defeatedcrow.hac.food.FoodInit;
 
 /**
  * 空容器にPAPERを返却するコンテナアイテム
@@ -40,7 +40,7 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 	}
 
 	protected void setFluid(FluidStack resource) {
-		if (container.stackSize != 1 || resource == null || !canFillFluidType(resource)) {
+		if (container.getCount() != 1 || resource == null || !canFillFluidType(resource)) {
 			return;
 		}
 		int meta = 0;
@@ -63,12 +63,14 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
-		return new FluidTankProperties[] { new FluidTankProperties(getFluid(), 250) };
+		return new FluidTankProperties[] {
+				new FluidTankProperties(getFluid(), 250)
+		};
 	}
 
 	@Override
 	public int fill(FluidStack resource, boolean doFill) {
-		if (container.stackSize != 1 || resource == null || resource.amount < 250 || !canFillFluidType(resource)) {
+		if (container.getCount() != 1 || resource == null || resource.amount < 250 || !canFillFluidType(resource)) {
 			return 0;
 		}
 
@@ -97,7 +99,8 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 
 	@Override
 	public FluidStack drain(FluidStack resource, boolean doDrain) {
-		if (container.stackSize != 1 || resource == null || resource.amount < 250 || !resource.isFluidEqual(getFluid())) {
+		if (container.getCount() != 1 || resource == null || resource.amount < 250
+				|| !resource.isFluidEqual(getFluid())) {
 			return null;
 		}
 		return drain(resource.amount, doDrain);
@@ -105,7 +108,7 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 
 	@Override
 	public FluidStack drain(int maxDrain, boolean doDrain) {
-		if (container.stackSize != 1 || maxDrain < 250) {
+		if (container.getCount() != 1 || maxDrain < 250) {
 			return null;
 		}
 

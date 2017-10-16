@@ -37,7 +37,7 @@ public class GuiStevensonScreen extends GuiContainer {
 			World world = t.getWorld();
 			Biome biome = world.getBiomeForCoordsBody(t.getPos());
 			boolean snow = biome.isSnowyBiome()
-					|| (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN) && t.getPos().getY() > 100);
+					|| (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) && t.getPos().getY() > 100);
 			boolean dry = !biome.canRain() && !biome.isSnowyBiome();
 			if (world.getRainStrength(1.0F) > 0.2F) {
 				if (dry) {
@@ -61,7 +61,7 @@ public class GuiStevensonScreen extends GuiContainer {
 
 		int adjX = this.xSize / 2;
 		String s = I18n.translateToLocal("dcs.gui.device.stevenson_screen");
-		this.fontRendererObj.drawString(s, adjX - this.fontRendererObj.getStringWidth(s) / 2, 10, 4210752);
+		this.fontRenderer.drawString(s, adjX - this.fontRenderer.getStringWidth(s) / 2, 10, 4210752);
 
 		int date = DCTimeHelper.getDay(tile.getWorld());
 		int time = DCTimeHelper.currentTime(tile.getWorld());
@@ -74,28 +74,28 @@ public class GuiStevensonScreen extends GuiContainer {
 		}
 		int color = day ? 0x005050 : 0x500050;
 
-		int seasonColor = season.color.getMapColor().colorValue;
-		this.fontRendererObj.drawString(season.name(),
-				adjX - 30 - this.fontRendererObj.getStringWidth(season.name()) / 2, 22, seasonColor);
+		int seasonColor = season.color.getColorValue();
+		this.fontRenderer.drawString(season.name(), adjX - 30 - this.fontRenderer.getStringWidth(season.name()) / 2, 22,
+				seasonColor);
 
 		String s1 = date + " DAY";
-		this.fontRendererObj.drawString(s1, adjX + 5 - this.fontRendererObj.getStringWidth(s1) / 2, 22, 4210752);
+		this.fontRenderer.drawString(s1, adjX + 5 - this.fontRenderer.getStringWidth(s1) / 2, 22, 4210752);
 
 		String s2 = time + (pm ? " PM" : " AM");
-		this.fontRendererObj.drawString(s2, adjX + 35 - this.fontRendererObj.getStringWidth(s1) / 2, 22, color);
+		this.fontRenderer.drawString(s2, adjX + 35 - this.fontRenderer.getStringWidth(s1) / 2, 22, color);
 
 		Weather current = Weather.getWeather(weather, day);
 		String s3 = current.name;
-		this.fontRendererObj.drawString(s3, adjX - this.fontRendererObj.getStringWidth(s3) / 2, 60, 4210752);
+		this.fontRenderer.drawString(s3, adjX - this.fontRenderer.getStringWidth(s3) / 2, 60, 4210752);
 
 		String s4 = "TEMPERATURE";
-		this.fontRendererObj.drawString(s4, adjX - 25 - this.fontRendererObj.getStringWidth(s4) / 2, 80, 4210752);
+		this.fontRenderer.drawString(s4, adjX - 25 - this.fontRenderer.getStringWidth(s4) / 2, 80, 4210752);
 
 		String s5 = "HUMIDITY";
-		this.fontRendererObj.drawString(s5, adjX - 25 - this.fontRendererObj.getStringWidth(s5) / 2, 97, 4210752);
+		this.fontRenderer.drawString(s5, adjX - 25 - this.fontRenderer.getStringWidth(s5) / 2, 97, 4210752);
 
 		String s6 = "AIRFLOW";
-		this.fontRendererObj.drawString(s6, adjX - 25 - this.fontRendererObj.getStringWidth(s6) / 2, 114, 4210752);
+		this.fontRenderer.drawString(s6, adjX - 25 - this.fontRenderer.getStringWidth(s6) / 2, 114, 4210752);
 
 		if (climate != null) {
 			DCHeatTier temp = climate.getHeat();
@@ -103,13 +103,13 @@ public class GuiStevensonScreen extends GuiContainer {
 			DCAirflow air = climate.getAirflow();
 
 			String s7 = temp.name();
-			this.fontRendererObj.drawString(s7, adjX + 20 - this.fontRendererObj.getStringWidth(s7) / 2, 76, 4210752);
+			this.fontRenderer.drawString(s7, adjX + 20 - this.fontRenderer.getStringWidth(s7) / 2, 76, 4210752);
 
 			String s8 = hum.name();
-			this.fontRendererObj.drawString(s8, adjX + 20 - this.fontRendererObj.getStringWidth(s8) / 2, 93, 4210752);
+			this.fontRenderer.drawString(s8, adjX + 20 - this.fontRenderer.getStringWidth(s8) / 2, 93, 4210752);
 
 			String s9 = air.name();
-			this.fontRendererObj.drawString(s9, adjX + 20 - this.fontRendererObj.getStringWidth(s9) / 2, 110, 4210752);
+			this.fontRenderer.drawString(s9, adjX + 20 - this.fontRenderer.getStringWidth(s9) / 2, 110, 4210752);
 		}
 
 	}

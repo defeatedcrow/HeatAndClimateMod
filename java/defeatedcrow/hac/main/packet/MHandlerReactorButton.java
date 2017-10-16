@@ -14,14 +14,14 @@ public class MHandlerReactorButton implements IMessageHandler<MessageReactorButt
 	@Override
 	// IMessageHandlerのメソッド
 	public IMessage onMessage(MessageReactorButton message, MessageContext ctx) {
-		EntityPlayer player = ctx.getServerHandler().playerEntity;
+		EntityPlayer player = ctx.getServerHandler().player;
 		if (player != null) {
 			int x = message.x;
 			int y = message.y;
 			int z = message.z;
 			BlockPos pos = new BlockPos(x, y, z);
-			if (player.worldObj.getTileEntity(pos) != null) {
-				TileEntity t = player.worldObj.getTileEntity(pos);
+			if (player.world.getTileEntity(pos) != null) {
+				TileEntity t = player.world.getTileEntity(pos);
 				if (t instanceof TileReactor) {
 					TileReactor target = (TileReactor) t;
 					byte b1 = message.num;

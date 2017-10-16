@@ -2,13 +2,14 @@ package defeatedcrow.hac.magic.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.Multimap;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
-import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
 import net.minecraft.block.Block;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,9 +43,9 @@ public abstract class ItemBlockMace extends DCItemBlock {
 		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
 
 		if (equipmentSlot == EntityEquipmentSlot.MAINHAND) {
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(),
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(),
 					new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", this.getDamageVsEntity(), 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(),
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(),
 					new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.0D, 0));
 		}
 
@@ -52,21 +53,23 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		if (player != null && !player.isSneaking()) {
+			ItemStack stack = player.getHeldItem(hand);
 			if (this.isActive(stack)) {
 				int amo = this.getNBTDamage(stack);
-				this.onItemRightClick(stack, world, player, hand);
+				this.onItemRightClick(world, player, hand);
 				return EnumActionResult.SUCCESS;
 			}
 		}
-		return super.onItemUse(stack, player, world, pos, hand, facing, hitX, hitY, hitZ);
+		return super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (player != null && !player.isSneaking()) {
+			ItemStack stack = player.getHeldItem(hand);
 			if (this.isActive(stack)) {
 				int amo = this.getNBTDamage(stack);
 				this.doUsingEffect(stack, player, world);
@@ -86,7 +89,7 @@ public abstract class ItemBlockMace extends DCItemBlock {
 			}
 			return new ActionResult(EnumActionResult.SUCCESS, stack);
 		}
-		return new ActionResult(EnumActionResult.FAIL, stack);
+		return super.onItemRightClick(world, player, hand);
 	}
 
 	protected abstract void doUsingEffect(ItemStack stack, EntityPlayer player, World world);
@@ -131,13 +134,10 @@ public abstract class ItemBlockMace extends DCItemBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 		int d = this.getNBTDamage(stack);
 		tooltip.add("Energy: " + d + "/ 640");
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			if (player != null && !ClimateMain.proxy.hasAchivement(player, AchievementClimate.MAGIC_MASTER)) {
-				tooltip.add(TextFormatting.RED.toString() + I18n.translateToLocal("dcs.tip.require_achievement"));
-			}
 			tooltip.add(TextFormatting.YELLOW.toString()
 					+ "For energy charge, please place in the appropriate environment.");
 		} else {

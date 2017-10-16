@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.base.DCTileEntity;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -30,7 +31,7 @@ public class TileAdapterPanel extends DCTileEntity {
 	}
 
 	boolean isActive() {
-		IBlockState state = this.worldObj.getBlockState(pos);
+		IBlockState state = this.world.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof BlockAdapterPanel) {
 			boolean flag = DCState.getBool(state, DCState.POWERED);
 			return flag;
@@ -39,7 +40,7 @@ public class TileAdapterPanel extends DCTileEntity {
 	}
 
 	EnumSide getSide() {
-		IBlockState state = this.worldObj.getBlockState(pos);
+		IBlockState state = this.world.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof BlockAdapterPanel) {
 			EnumSide side = DCState.getSide(state, DCState.SIDE);
 			return side;
@@ -50,7 +51,7 @@ public class TileAdapterPanel extends DCTileEntity {
 	TileEntity targetTile() {
 		if (pairPos != null && ((pos.getX() >> 4) == (pairPos.getX() >> 4))
 				&& ((pos.getZ() >> 4) == (pairPos.getZ() >> 4)))
-			return worldObj.getTileEntity(pairPos);
+			return world.getTileEntity(pairPos);
 		return null;
 	}
 
@@ -62,7 +63,7 @@ public class TileAdapterPanel extends DCTileEntity {
 	@Override
 	public void updateTile() {
 		super.updateTile();
-		if (!worldObj.isRemote && isActive()) {
+		if (!world.isRemote && isActive()) {
 			extractItem();
 		}
 	}
@@ -72,7 +73,7 @@ public class TileAdapterPanel extends DCTileEntity {
 		if (side != null && targetTile() != null && targetTile() instanceof TileAcceptorPanel) {
 			EnumFacing face = getSide().face;
 			TileAcceptorPanel panel = (TileAcceptorPanel) targetTile();
-			TileEntity tile = worldObj.getTileEntity(pos.offset(face));
+			TileEntity tile = world.getTileEntity(pos.offset(face));
 			if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite())) {
 				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 						face.getOpposite());
@@ -82,12 +83,12 @@ public class TileAdapterPanel extends DCTileEntity {
 					boolean b = false;
 					for (int i = 0; i < target.getSlots(); i++) {
 						ItemStack item = target.extractItem(i, 1, true);
-						if (item != null && item.stackSize > 0) {
+						if (!DCUtil.isEmpty(item)) {
 							ItemStack ins = item.copy();
-							ins.stackSize = 1;
+							ins.setCount(1);
 							for (int j = 0; j < panelInv.getSlots(); j++) {
 								ItemStack ret = panelInv.insertItem(j, ins, false);
-								if (ret == null) {
+								if (DCUtil.isEmpty(ret)) {
 									target.extractItem(i, 1, false);
 									panel.targetTile().markDirty();
 									tile.markDirty();

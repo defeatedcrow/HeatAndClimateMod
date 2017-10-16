@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.entity.EntityCution;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -25,6 +26,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -68,13 +70,13 @@ public class BlockSofaBase extends Block {
 	// すわる
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, AABB_FULL);
 			if (list.isEmpty()) {
 				double y1 = isSmallAABB ? 0.45D : 0.30D;
 				EntityCution cution = new EntityCution(world, pos.getX() + 0.5D, pos.getY() + y1, pos.getZ() + 0.5D);
-				world.spawnEntityInWorld(cution);
+				world.spawnEntity(cution);
 				if (player.isRiding()) {
 					player.dismountRidingEntity();
 				}
@@ -140,9 +142,7 @@ public class BlockSofaBase extends Block {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING,
-				LEFT,
-				RIGHT
+				DCState.FACING, LEFT, RIGHT
 		});
 	}
 
@@ -153,7 +153,7 @@ public class BlockSofaBase extends Block {
 
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn) {
+			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
 		state = state.getActualState(worldIn, pos);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_HALF);
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
@@ -215,15 +215,16 @@ public class BlockSofaBase extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
+			list.add(new ItemStack(this, 1, 0));
 	}
 
 	// 設置・破壊処理
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
-		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		state = state.withProperty(DCState.FACING, placer.getHorizontalFacing());
 		return state;
 	}

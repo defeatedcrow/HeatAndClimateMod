@@ -2,8 +2,6 @@ package defeatedcrow.hac.machine.block;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.energy.IWrenchDC;
@@ -12,8 +10,6 @@ import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -45,41 +41,38 @@ public class BlockReactor extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (player != null && tile != null) {
-			if (!DCUtil.isEmpty(heldItem)) {
-				if (heldItem.getItem() instanceof IWrenchDC) {
-					// achievement
-					if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile != null) {
+				if (!DCUtil.isEmpty(heldItem)) {
+					if (heldItem.getItem() instanceof IWrenchDC) {
+
+						return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+					} else if (heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+						DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+						return true;
 					}
-					return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
-				} else if (heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-					DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
-					return true;
 				}
+				if (!world.isRemote) {
+					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				}
+				return true;
 			}
-			if (!world.isRemote) {
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
-			}
-			return true;
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	// 設置時にはプレイヤーの方を向いている方が自然なので
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		// achievement
-		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
+		if (placer != null && !placer.world.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;
-			if (!player.hasAchievement(AchievementClimate.MACHINE_TIER3)) {
-				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_TIER3);
-			}
 		}
-		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
 			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite()));
@@ -122,7 +115,7 @@ public class BlockReactor extends BlockTorqueBase {
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
 			entityitem.motionZ = (float) world.rand.nextGaussian() * f3;
-			world.spawnEntityInWorld(entityitem);
+			world.spawnEntity(entityitem);
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);

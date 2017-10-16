@@ -1,12 +1,9 @@
 package defeatedcrow.hac.machine.block;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -40,29 +37,24 @@ public class BlockShaft_TA extends BlockTorqueBase {
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		// achievement
-		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
+		if (placer != null && !placer.world.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;
-			if (!player.hasAchievement(AchievementClimate.MACHINE_PLACE)) {
-				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_PLACE);
-			}
 		}
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		return state;
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null && heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
-			TileEntity tile = world.getTileEntity(pos);
-			// achievement
-			if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
-			}
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

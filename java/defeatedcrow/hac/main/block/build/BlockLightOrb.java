@@ -1,10 +1,10 @@
 package defeatedcrow.hac.main.block.build;
 
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -76,8 +77,10 @@ public class BlockLightOrb extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
+			list.add(new ItemStack(this, 1, 0));
+		}
 	}
 
 	@Override
@@ -86,8 +89,8 @@ public class BlockLightOrb extends Block {
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
-		return NULL_AABB;
+	public boolean isCollidable() {
+		return false;
 	}
 
 	@Override

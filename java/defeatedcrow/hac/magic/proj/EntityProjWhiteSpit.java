@@ -23,7 +23,7 @@ public class EntityProjWhiteSpit extends EntityProjBase {
 
 	@Override
 	public ItemStack getDropStack() {
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class EntityProjWhiteSpit extends EntityProjBase {
 
 	@Override
 	protected float getHitDamage(Entity target, float speed) {
-		float f = 8.0F + this.worldObj.rand.nextFloat() * 4.0F;
+		float f = 8.0F + this.world.rand.nextFloat() * 4.0F;
 		return f;
 	}
 

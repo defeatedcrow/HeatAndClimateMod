@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.block.build;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.DCLockableTE;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -43,10 +44,10 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		int y = this.pos.getY();
 		int z = this.pos.getZ();
 
-		if (!worldObj.isRemote && this.numPlayersUsing != 0) {
+		if (!world.isRemote && this.numPlayersUsing != 0) {
 			this.numPlayersUsing = 0;
 
-			for (EntityPlayer entityplayer : this.worldObj.getEntitiesWithinAABB(EntityPlayer.class,
+			for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class,
 					new AxisAlignedBB(x - 5.0F, y - 5.0F, z - 5.0F, x + 1 + 5.0F, y + 1 + 5.0F, z + 1 + 5.0F))) {
 				if (entityplayer.openContainer instanceof ContainerLowChest) {
 					IInventory iinventory = ((ContainerLowChest) entityplayer.openContainer).tile;
@@ -67,15 +68,15 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		if (this.numPlayersUsing > 0 && !isOpen) {
 			isOpen = true;
 			// DCLogger.debugLog("open");
-			this.worldObj.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getOpenSound(),
-					SoundCategory.BLOCKS, 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+			this.world.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getOpenSound(),
+					SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
 		}
 
 		if (this.numPlayersUsing == 0 && isOpen) {
 			isOpen = false;
 			// DCLogger.debugLog("close");
-			this.worldObj.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getCloseSound(),
-					SoundCategory.BLOCKS, 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+			this.world.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getCloseSound(),
+					SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
 		}
 	}
 
@@ -104,9 +105,9 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 			}
 
 			++this.numPlayersUsing;
-			this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
-			this.worldObj.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
-			this.worldObj.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
+			this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
+			this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false);
+			this.world.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType(), false);
 		}
 	}
 
@@ -114,9 +115,9 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	public void closeInventory(EntityPlayer player) {
 		if (!player.isSpectator() && this.getBlockType() instanceof BlockLowChest) {
 			--this.numPlayersUsing;
-			this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
-			this.worldObj.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
-			this.worldObj.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
+			this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
+			this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false);
+			this.world.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType(), false);
 		}
 	}
 
@@ -134,7 +135,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 			byte b0 = tag1.getByte("Slot");
 
 			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
+				this.inv[b0] = new ItemStack(tag1);
 			}
 		}
 	}
@@ -187,7 +188,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 			byte b0 = nbttagcompound1.getByte("Slot");
 
 			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+				this.inv[b0] = new ItemStack(nbttagcompound1);
 			}
 		}
 	}
@@ -226,31 +227,31 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		if (i < getSizeInventory())
 			return this.inv[i];
 		else
-			return null;
+			return ItemStack.EMPTY;
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
 		if (i < 0 || i >= this.getSizeInventory())
-			return null;
-		if (this.inv[i] != null) {
+			return ItemStack.EMPTY;
+		if (!DCUtil.isEmpty(inv[i])) {
 			ItemStack itemstack;
 
-			if (this.inv[i].stackSize <= num) {
-				itemstack = this.inv[i];
-				this.inv[i] = null;
+			if (this.inv[i].getCount() <= num) {
+				itemstack = this.inv[i].copy();
+				this.inv[i] = ItemStack.EMPTY;
 				return itemstack;
 			} else {
 				itemstack = this.inv[i].splitStack(num);
-				if (this.inv[i].stackSize == 0) {
-					this.inv[i] = null;
+				if (this.inv[i].getCount() == 0) {
+					this.inv[i] = ItemStack.EMPTY;
 				} else {
 					this.markDirty();
 				}
 				return itemstack;
 			}
 		} else
-			return null;
+			return ItemStack.EMPTY;
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
@@ -261,8 +262,8 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		else {
 			this.inv[i] = stack;
 
-			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-				stack.stackSize = this.getInventoryStackLimit();
+			if (!DCUtil.isEmpty(stack) && stack.getCount() > this.getInventoryStackLimit()) {
+				stack.setCount(this.getInventoryStackLimit());
 			}
 
 			this.markDirty();
@@ -293,7 +294,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player) {
 		if (getWorld().getTileEntity(this.pos) != this || player == null)
 			return false;
 		else
@@ -302,7 +303,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
-		if (stack != null) {
+		if (!DCUtil.isEmpty(stack)) {
 			if (stack.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null))
 				return false;
 			else if (stack.hasTagCompound() && stack.getTagCompound().hasKey("InvItems"))
@@ -313,15 +314,15 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	// 追加メソッド
 	public static int isItemStackable(ItemStack target, ItemStack current) {
-		if (target == null || current == null)
+		if (DCUtil.isEmpty(target) || DCUtil.isEmpty(current))
 			return 0;
 
 		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
 				&& ItemStack.areItemStackTagsEqual(target, current)) {
-			int i = current.stackSize + target.stackSize;
+			int i = current.getCount() + target.getCount();
 			if (i > current.getMaxStackSize())
-				return current.getMaxStackSize() - current.stackSize;
-			return target.stackSize;
+				return current.getMaxStackSize() - current.getCount();
+			return target.getCount();
 		}
 
 		return 0;
@@ -329,12 +330,12 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	public void incrStackInSlot(int i, ItemStack input) {
 		if (i < this.getSizeInventory()) {
-			if (input != null) {
-				if (this.inv[i] != null) {
+			if (!DCUtil.isEmpty(input)) {
+				if (!DCUtil.isEmpty(inv[i])) {
 					if (this.inv[i].getItem() == input.getItem() && this.inv[i].getMetadata() == input.getMetadata()) {
-						this.inv[i].stackSize += input.stackSize;
-						if (this.inv[i].stackSize > this.getInventoryStackLimit()) {
-							this.inv[i].stackSize = this.getInventoryStackLimit();
+						DCUtil.addStackSize(inv[i], input.getCount());
+						if (this.inv[i].getCount() > this.getInventoryStackLimit()) {
+							this.inv[i].setCount(getInventoryStackLimit());
 						}
 					}
 				} else {
@@ -348,15 +349,15 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		i = MathHelper.clamp_int(i, 0, this.getSizeInventory() - 1);
+		i = MathHelper.clamp(i, 0, this.getSizeInventory() - 1);
 		if (i < inv.length) {
-			if (this.inv[i] != null) {
-				ItemStack itemstack = this.inv[i];
-				this.inv[i] = null;
+			if (!DCUtil.isEmpty(inv[i])) {
+				ItemStack itemstack = this.inv[i].copy();
+				this.inv[i] = ItemStack.EMPTY;
 				return itemstack;
 			}
 		}
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -375,7 +376,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	@Override
 	public void clear() {
 		for (int i = 0; i < this.inv.length; ++i) {
-			this.inv[i] = null;
+			this.inv[i] = ItemStack.EMPTY;
 		}
 	}
 
@@ -407,6 +408,17 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	@Override
 	public String getGuiID() {
 		return "dcs_climate:low_chest";
+	}
+
+	@Override
+	public boolean isEmpty() {
+		boolean ret = true;
+		for (int i = 0; i < this.inv.length; ++i) {
+			if (!DCUtil.isEmpty(inv[i])) {
+				ret = false;
+			}
+		}
+		return ret;
 	}
 
 }

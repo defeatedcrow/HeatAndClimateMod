@@ -1,5 +1,9 @@
 package defeatedcrow.hac.main.item.equip;
 
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.core.client.base.ModelThinBiped;
+import defeatedcrow.hac.main.util.DCMaterialEnum;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,17 +12,13 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.core.client.base.ModelThinBiped;
-import defeatedcrow.hac.main.util.DCMaterial;
 
 public class ItemArmorDC extends ItemArmor implements ITexturePath {
 
 	private final String tex;
-	private final DCMaterial material;
+	private final DCMaterialEnum material;
 
-	public ItemArmorDC(ArmorMaterial m, DCMaterial mat, EntityEquipmentSlot slot, String t) {
+	public ItemArmorDC(ArmorMaterial m, DCMaterialEnum mat, EntityEquipmentSlot slot, String t) {
 		super(m, 2, slot);
 		material = mat;
 		tex = t;

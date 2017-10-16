@@ -3,10 +3,10 @@ package defeatedcrow.hac.main.client.particle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.IParticleFactory;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.renderer.vertex.VertexFormat;
@@ -50,8 +50,8 @@ public class ParticleTempColor extends Particle {
 	}
 
 	@Override
-	public void moveEntity(double x, double y, double z) {
-		this.setEntityBoundingBox(this.getEntityBoundingBox().offset(x, y, z));
+	public void move(double x, double y, double z) {
+		this.setBoundingBox(this.getBoundingBox().offset(x, y, z));
 		this.resetPositionToBB();
 	}
 
@@ -59,7 +59,7 @@ public class ParticleTempColor extends Particle {
 	 * Renders the particle
 	 */
 	@Override
-	public void renderParticle(VertexBuffer worldRendererIn, Entity entityIn, float partialTicks, float rotationX,
+	public void renderParticle(BufferBuilder worldRendererIn, Entity entityIn, float partialTicks, float rotationX,
 			float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
 
 		this.textureManager.bindTexture(new ResourceLocation(TEMP_TEX));
@@ -94,7 +94,7 @@ public class ParticleTempColor extends Particle {
 	@Override
 	public int getBrightnessForRender(float p_189214_1_) {
 		float f = (this.particleAge + p_189214_1_) / this.particleMaxAge;
-		f = MathHelper.clamp_float(f, 0.0F, 1.0F);
+		f = MathHelper.clamp(f, 0.0F, 1.0F);
 		int i = super.getBrightnessForRender(p_189214_1_);
 		int j = i & 255;
 		int k = i >> 16 & 255;

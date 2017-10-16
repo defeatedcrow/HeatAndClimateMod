@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 public class JsonRegister {
 
 	protected static final JsonRegisterHelper MAIN_INSTANCE = new JsonRegisterHelper(
-			"E:\\modding\\1.10.2\\hac_main\\src\\main\\resources");
+			"E:\\modding\\1.12.1\\hac_main\\src\\main\\resources");
 
 	public static void load() {
 		regItems();
@@ -107,13 +107,7 @@ public class JsonRegister {
 	static void regTools() {
 
 		String[] name = {
-				"brass",
-				"steel",
-				"silver",
-				"nickelsilver",
-				"chalcedony",
-				"sapphire",
-				"titanium"
+				"brass", "steel", "silver", "nickelsilver", "chalcedony", "sapphire", "titanium"
 		};
 		for (int j = 0; j < name.length; j++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip", 0);
@@ -125,10 +119,7 @@ public class JsonRegister {
 					0);
 		}
 		String[] type = {
-				"met",
-				"plate",
-				"leggins",
-				"boots"
+				"met", "plate", "leggins", "boots"
 		};
 		for (int i = 0; i < 4; i++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_brass",
@@ -144,9 +135,7 @@ public class JsonRegister {
 		}
 
 		String[] name2 = {
-				"brass",
-				"steel",
-				"chalcedony"
+				"brass", "steel", "chalcedony"
 		};
 		for (int j = 0; j < name2.length; j++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.dcScythe[j], ClimateCore.PACKAGE_ID, "dcs_scythe_" + name[j], "equip",

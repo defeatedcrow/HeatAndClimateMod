@@ -6,8 +6,8 @@ public class TileMaceMoon extends TileMaceBase {
 
 	@Override
 	protected boolean checkEnvironment() {
-		if (worldObj.canSeeSky(getPos()) && !worldObj.isRaining()) {
-			return !DCTimeHelper.isDayTime(worldObj);
+		if (world.canSeeSky(getPos()) && !world.isRaining()) {
+			return !DCTimeHelper.isDayTime(world);
 		}
 		return false;
 	}

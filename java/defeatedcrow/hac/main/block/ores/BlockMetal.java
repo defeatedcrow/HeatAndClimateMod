@@ -1,17 +1,17 @@
 package defeatedcrow.hac.main.block.ores;
 
-import java.util.List;
-
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -25,22 +25,8 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 	}
 
 	private static String[] names = {
-			"copper",
-			"zinc",
-			"nickel",
-			"silver",
-			"brass",
-			"steel",
-			"nickelsilver",
-			"magnet",
-			"tin",
-			"bronze",
-			"sus",
-			"titanium",
-			"aluminium",
-			"bismuth",
-			"bscco",
-			"lead"
+			"copper", "zinc", "nickel", "silver", "brass", "steel", "nickelsilver", "magnet", "tin", "bronze", "sus",
+			"titanium", "aluminium", "bismuth", "bscco", "lead"
 	};
 
 	@Override
@@ -64,7 +50,7 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 
 	@Override
 	public boolean isCollectable(ItemStack item) {
-		return item != null && item.getItem() != null && item.getItem() instanceof ItemPickaxe;
+		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemPickaxe;
 	}
 
 	@Override
@@ -74,13 +60,14 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 
 	@Override
 	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
-		List<ItemStack> list = this.getDrops(world, pos, state, 0);
+		NonNullList<ItemStack> list = NonNullList.create();
+		this.getDrops(list, world, pos, state, 0);
 		for (ItemStack item : list) {
 			double x = player.posX;
 			double y = player.posY + 0.25D;
 			double z = player.posZ;
 			EntityItem drop = new EntityItem(world, x, y, z, item);
-			world.spawnEntityInWorld(drop);
+			world.spawnEntity(drop);
 		}
 		world.setBlockToAir(pos);
 		return true;

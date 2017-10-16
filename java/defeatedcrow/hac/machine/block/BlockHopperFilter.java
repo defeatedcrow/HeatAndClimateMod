@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.base.ITagGetter;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -29,6 +30,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -94,7 +96,8 @@ public class BlockHopperFilter extends BlockContainer {
 
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn) {
+			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
+		state = state.getActualState(worldIn, pos);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, BASE_AABB);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, EAST_AABB);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, WEST_AABB);
@@ -103,17 +106,21 @@ public class BlockHopperFilter extends BlockContainer {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
+			list.add(new ItemStack(this, 1, 0));
+		}
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile != null && tile instanceof TileHopperFilter) {
-			if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile != null && tile instanceof TileHopperFilter) {
+				if (!player.world.isRemote && hand == EnumHand.MAIN_HAND) {
+					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				}
 			}
 		}
 		return true;
@@ -125,8 +132,9 @@ public class BlockHopperFilter extends BlockContainer {
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		EnumFacing face = facing.getOpposite();
 		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face))
 				.withProperty(DCState.POWERED, Boolean.valueOf(true));
@@ -165,7 +173,7 @@ public class BlockHopperFilter extends BlockContainer {
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
 			entityitem.motionZ = (float) world.rand.nextGaussian() * f3;
-			world.spawnEntityInWorld(entityitem);
+			world.spawnEntity(entityitem);
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);
@@ -190,7 +198,7 @@ public class BlockHopperFilter extends BlockContainer {
 	}
 
 	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos from) {
 		this.updateState(worldIn, pos, state);
 	}
 
@@ -240,8 +248,7 @@ public class BlockHopperFilter extends BlockContainer {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE,
-				DCState.POWERED
+				DCState.SIDE, DCState.POWERED
 		});
 
 	}

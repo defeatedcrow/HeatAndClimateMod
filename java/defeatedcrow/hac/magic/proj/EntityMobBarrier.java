@@ -44,7 +44,7 @@ public class EntityMobBarrier extends Entity {
 		super.onUpdate();
 
 		if (this.totalAge > maxAge) {
-			if (!this.worldObj.isRemote) {
+			if (!this.world.isRemote) {
 				this.setDead();
 			}
 		} else {
@@ -69,8 +69,8 @@ public class EntityMobBarrier extends Entity {
 
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (source != null && source.getSourceOfDamage() != null) {
-			if (source.getSourceOfDamage() instanceof EntityPlayer) {
+		if (source != null && source.getTrueSource() != null) {
+			if (source.getTrueSource() instanceof EntityPlayer) {
 				return false;
 			} else {
 				return true;
@@ -95,8 +95,7 @@ public class EntityMobBarrier extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {
-	}
+	protected void entityInit() {}
 
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound tag) {

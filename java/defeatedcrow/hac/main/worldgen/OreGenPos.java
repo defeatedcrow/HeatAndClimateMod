@@ -50,11 +50,11 @@ public class OreGenPos {
 		BlockPos pos2 = new BlockPos(x2, y2, z2);
 		int rand2 = rand.nextInt(100);
 		Biome biome2 = world.getBiome(pos2);
-		if (BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.BEACH) && rand2 < kiesP) {
+		if (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.BEACH) && rand2 < kiesP) {
 			ret[1] = getVeinFromSeed(world, pos2, Veins.GUANO, seed);
-		} else if (BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.MOUNTAIN) && rand2 < kiesP) {
+		} else if (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.MOUNTAIN) && rand2 < kiesP) {
 			ret[1] = getVeinFromSeed(world, pos2, Veins.KIESLAGER, seed);
-		} else if (BiomeDictionary.isBiomeOfType(biome2, BiomeDictionary.Type.OCEAN) && rand2 < kiesP) {
+		} else if (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.OCEAN) && rand2 < kiesP) {
 			if (y2 > 45) {
 				ret[1] = getVeinFromSeed(world, pos2, Veins.GUANO, seed);
 			} else {
@@ -70,13 +70,13 @@ public class OreGenPos {
 		BlockPos pos3 = new BlockPos(x3, y3, z3);
 		int rand3 = rand.nextInt(100);
 		Biome biome3 = world.getBiome(pos3);
-		if ((BiomeDictionary.isBiomeOfType(biome3, BiomeDictionary.Type.SANDY)) && rand3 < sedP) {
+		if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SANDY)) && rand3 < sedP) {
 			ret[2] = getVeinFromSeed(world, pos3, Veins.SAND_SEDIMENT, seed);
-		} else if ((BiomeDictionary.isBiomeOfType(biome3, BiomeDictionary.Type.SAVANNA)
-				|| BiomeDictionary.isBiomeOfType(biome3, BiomeDictionary.Type.JUNGLE)) && rand3 < sedP) {
+		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SAVANNA)
+				|| BiomeDictionary.hasType(biome3, BiomeDictionary.Type.JUNGLE)) && rand3 < sedP) {
 			ret[2] = getVeinFromSeed(world, pos3, Veins.BAUXITE, seed);
-		} else if ((BiomeDictionary.isBiomeOfType(biome3, BiomeDictionary.Type.MOUNTAIN)
-				|| BiomeDictionary.isBiomeOfType(biome3, BiomeDictionary.Type.HILLS)) && rand3 < sedP) {
+		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.MOUNTAIN)
+				|| BiomeDictionary.hasType(biome3, BiomeDictionary.Type.HILLS)) && rand3 < sedP) {
 			ret[2] = getVeinFromSeed(world, pos3, Veins.SEDIMENT, seed);
 		}
 
@@ -133,14 +133,7 @@ public class OreGenPos {
 		GUANO(8, 4);
 
 		public static final Veins[] VALUES = {
-				SEDIMENT,
-				SAND_SEDIMENT,
-				BAUXITE,
-				KIESLAGER,
-				QUARTZ,
-				UNDERLAVA,
-				GEODE,
-				GUANO
+				SEDIMENT, SAND_SEDIMENT, BAUXITE, KIESLAGER, QUARTZ, UNDERLAVA, GEODE, GUANO
 		};
 
 		public final int id;

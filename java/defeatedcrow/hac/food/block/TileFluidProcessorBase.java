@@ -1,6 +1,5 @@
 package defeatedcrow.hac.food.block;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -8,8 +7,10 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.recipe.IFluidRecipe;
 import defeatedcrow.hac.core.base.ClimateReceiverLockable;
+import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -17,11 +18,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
@@ -52,7 +51,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	@Override
 	public void updateTile() {
 		super.updateTile();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// 液体スロットの処理
 			this.processFluidSlots();
 			// 完了処理
@@ -115,7 +114,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			}
 
 			if (flag) {
-				if (!this.hasWorldObj())
+				if (!this.hasWorld())
 					return;
 				@SuppressWarnings("unchecked")
 				List<EntityPlayer> list = this.getWorld().playerEntities;
@@ -163,7 +162,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	protected boolean onFillTank(DCTank tank, int slot1, int slot2) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
-		if (in == null)
+		if (DCUtil.isEmpty(in))
 			return false;
 
 		IFluidHandler cont = null;
@@ -182,13 +181,13 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 		if (dummy != null && dummy.getTankProperties() != null) {
 			boolean loose = false;
-			ItemStack ret = null;
+			ItemStack ret = ItemStack.EMPTY;
 
 			int max = dummy.getTankProperties()[0].getCapacity();
 			FluidStack fc = dummy.drain(max, false);
 			// 流入の場合
 			if (fc != null && fc.amount > 0 && tank.canFillTarget(fc)) {
-				ret = null;
+				ret = ItemStack.EMPTY;
 				loose = false;
 				boolean b = false;
 				int rem = tank.getCapacity() - tank.getFluidAmount();
@@ -203,11 +202,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 						ret = in2;
 					}
 
-					if (ret.stackSize <= 0) {
-						ret = null;
-					}
-
-					if (fill != null && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
+					if (fill != null
+							&& (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -227,7 +223,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	protected boolean onDrainTank(DCTank tank, int slot1, int slot2, boolean flag) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
-		if (in == null)
+		if (DCUtil.isEmpty(in))
 			return false;
 
 		IFluidHandler cont = null;
@@ -246,7 +242,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
 			boolean loose = false;
-			ItemStack ret = null;
+			ItemStack ret = ItemStack.EMPTY;
 
 			int max = dummy.getTankProperties()[0].getCapacity();
 			FluidStack fc = dummy.drain(max, false);
@@ -272,11 +268,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 					ret = in2;
 				}
 
-				if (ret.stackSize <= 0) {
-					ret = null;
-				}
-
-				if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
+				if (fill > 0 && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
 					loose = true;
 					tank.drain(fill, true);
 				}
@@ -313,11 +305,11 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	public int canInsertResult(ItemStack item, int s1, int s2) {
 		int ret = 0;
-		if (item == null || item.getItem() == null || item.stackSize == 0)
+		if (DCUtil.isEmpty(item))
 			return -1;
 		for (int i = s1; i < s2; i++) {
-			if (this.getStackInSlot(i) == null) {
-				ret = item.stackSize;
+			if (DCUtil.isEmpty(this.getStackInSlot(i))) {
+				ret = item.getCount();
 			} else {
 				ret = this.isItemStackable(item, this.getStackInSlot(i));
 			}
@@ -329,16 +321,16 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	/** itemの減少数を返す */
 	public int insertResult(ItemStack item, int s1, int s2) {
-		if (item == null || item.getItem() == null || item.stackSize == 0)
+		if (DCUtil.isEmpty(item))
 			return 0;
 		for (int i = s1; i < s2; i++) {
-			if (this.getStackInSlot(i) == null) {
+			if (DCUtil.isEmpty(this.getStackInSlot(i))) {
 				this.incrStackInSlot(i, item.copy());
-				return item.stackSize;
+				return item.getCount();
 			} else {
 				int size = this.isItemStackable(item, this.getStackInSlot(i));
 				if (this.isItemStackable(item, this.getStackInSlot(i)) > 0) {
-					this.getStackInSlot(i).stackSize += size;
+					DCUtil.addStackSize(this.getStackInSlot(i), size);
 					return size;
 				}
 			}
@@ -359,59 +351,30 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	protected int[] slotsTop() {
 		return new int[] {
-				0,
-				2,
-				4,
-				5,
-				6
+				0, 2, 4, 5, 6
 		};
 	};
 
 	protected int[] slotsBottom() {
 		return new int[] {
-				1,
-				3,
-				7,
-				8,
-				9
+				1, 3, 7, 8, 9
 		};
 	};
 
 	protected int[] slotsSides() {
 		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9
+				0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 		};
 	};
 
-	public ItemStack[] inv = new ItemStack[this.getSizeInventory()];
+	public DCInventory inv = new DCInventory(this.getSizeInventory());
 
 	public List<ItemStack> getInputs() {
-		List<ItemStack> ret = new ArrayList<ItemStack>();
-		for (int i = 4; i < 7; i++) {
-			if (inv[i] != null) {
-				ret.add(inv[i]);
-			}
-		}
-		return ret;
+		return inv.getInputs(4, 6);
 	}
 
 	public List<ItemStack> getOutputs() {
-		List<ItemStack> ret = new ArrayList<ItemStack>();
-		for (int i = 7; i < 10; i++) {
-			if (inv[i] != null) {
-				ret.add(inv[i]);
-			}
-		}
-		return ret;
+		return inv.getOutputs(7, 9);
 	}
 
 	// スロット数
@@ -423,46 +386,18 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// インベントリ内の任意のスロットにあるアイテムを取得
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		if (i < getSizeInventory())
-			return this.inv[i];
-		else
-			return null;
+		return inv.getStackInSlot(i);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return null;
-		if (this.inv[i] != null) {
-			ItemStack itemstack;
-
-			if (this.inv[i].stackSize <= num) {
-				itemstack = this.inv[i];
-				this.inv[i] = null;
-				return itemstack;
-			} else {
-				itemstack = this.inv[i].splitStack(num);
-				if (this.inv[i].stackSize == 0) {
-					this.inv[i] = null;
-				}
-				return itemstack;
-			}
-		} else
-			return null;
+		return inv.decrStackSize(i, num);
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return;
-		else {
-			this.inv[i] = stack;
-
-			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-				stack.stackSize = this.getInventoryStackLimit();
-			}
-		}
+		inv.setInventorySlotContents(i, stack);
 	}
 
 	// インベントリの名前
@@ -489,7 +424,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player) {
 		if (getWorld().getTileEntity(this.pos) != this || player == null)
 			return false;
 		else
@@ -507,7 +442,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if (i == 0 || i == 2) {
-			if (stack == null)
+			if (DCUtil.isEmpty(stack))
 				return false;
 			IFluidHandler cont = null;
 			if (stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
@@ -545,48 +480,21 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	// 追加メソッド
 	public static int isItemStackable(ItemStack target, ItemStack current) {
-		if (target == null || current == null)
-			return 0;
-
-		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
-				&& ItemStack.areItemStackTagsEqual(target, current)) {
-			int i = current.stackSize + target.stackSize;
-			if (i > current.getMaxStackSize()) {
-				i = current.getMaxStackSize() - current.stackSize;
-				return i;
-			}
-			return target.stackSize;
-		}
-
-		return 0;
+		return DCInventory.isItemStackable(target, current);
 	}
 
 	public void incrStackInSlot(int i, ItemStack input) {
-		if (i < this.getSizeInventory() && input != null) {
-			if (this.inv[i] != null) {
-				if (this.inv[i].getItem() == input.getItem() && this.inv[i].getMetadata() == input.getMetadata()) {
-					this.inv[i].stackSize += input.stackSize;
-					if (this.inv[i].stackSize > this.getInventoryStackLimit()) {
-						this.inv[i].stackSize = this.getInventoryStackLimit();
-					}
-				}
-			} else {
-				this.setInventorySlotContents(i, input);
-			}
-		}
+		inv.incrStackInSlot(i, input);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		i = MathHelper.clamp_int(i, 0, this.getSizeInventory() - 1);
-		if (i < inv.length) {
-			if (this.inv[i] != null) {
-				ItemStack itemstack = this.inv[i];
-				this.inv[i] = null;
-				return itemstack;
-			}
-		}
-		return null;
+		return inv.removeStackFromSlot(i);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return inv.isEmpty();
 	}
 
 	@Override
@@ -645,9 +553,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < this.inv.length; ++i) {
-			this.inv[i] = null;
-		}
+		inv.clear();
 	}
 
 	@Override
@@ -697,17 +603,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
+		inv.readFromNBT(tag);
 
 		this.currentBurnTime = tag.getInteger("BurnTime");
 		this.maxBurnTime = tag.getInteger("MaxTime");
@@ -724,17 +620,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		tag.setInteger("MaxTime", this.maxBurnTime);
 
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound tag1 = new NBTTagCompound();
-				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
-				nbttaglist.appendTag(tag1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		inv.writeToNBT(tag);
 
 		inputT.writeToNBT(tag, "Tank1");
 		outputT.writeToNBT(tag, "Tank2");
@@ -749,17 +635,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		tag.setInteger("MaxTime", this.maxBurnTime);
 
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-				nbttagcompound1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(nbttagcompound1);
-				nbttaglist.appendTag(nbttagcompound1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		inv.writeToNBT(tag);
 
 		inputT.writeToNBT(tag, "Tank1");
 		outputT.writeToNBT(tag, "Tank2");
@@ -770,17 +646,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = nbttagcompound1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-			}
-		}
+		inv.readFromNBT(tag);
 
 		this.currentBurnTime = tag.getInteger("BurnTime");
 		this.maxBurnTime = tag.getInteger("MaxTime");

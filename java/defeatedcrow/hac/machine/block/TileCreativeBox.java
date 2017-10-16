@@ -32,7 +32,7 @@ public class TileCreativeBox extends TileTorqueBase implements ITorqueProvider {
 
 		// provider
 		for (EnumFacing side : getOutputSide()) {
-			this.provideTorque(worldObj, getPos().offset(side), side, false);
+			this.provideTorque(world, getPos().offset(side), side, false);
 		}
 	}
 

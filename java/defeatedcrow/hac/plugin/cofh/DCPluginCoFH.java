@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.climate.recipe.ReactorRecipe;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DCPluginFluid;
 import net.minecraft.init.MobEffects;
@@ -56,8 +57,9 @@ public class DCPluginCoFH {
 		if (coal != null) {
 			DCPluginFluid.registerPotion(coal, MainInit.gravity);
 			FluidDictionaryDC.registerFluidDic(coal, "coal");
+			MainAPIManager.fuelRegister.registerFuel("coal", 20);
 		}
-		resin = FluidRegistry.getFluid("tree_oil");
+		resin = FluidRegistry.getFluid("resin");
 		if (resin != null) {
 			DCPluginFluid.registerPotion(resin, MobEffects.WEAKNESS);
 			FluidDictionaryDC.registerFluidDic(resin, "resin");
@@ -66,16 +68,19 @@ public class DCPluginCoFH {
 		if (tree != null) {
 			DCPluginFluid.registerPotion(tree, MobEffects.RESISTANCE);
 			FluidDictionaryDC.registerFluidDic(tree, "tree_oil");
+			MainAPIManager.fuelRegister.registerFuel("tree_oil", 30);
 		}
 		naphtha = FluidRegistry.getFluid("refined_oil");
 		if (naphtha != null) {
 			DCPluginFluid.registerPotion(naphtha, MobEffects.HASTE);
 			FluidDictionaryDC.registerFluidDic(naphtha, "naphtha");
+			MainAPIManager.fuelRegister.registerFuel("refined_oil", 100);
 		}
 		refined = FluidRegistry.getFluid("fuel");
 		if (refined != null) {
 			DCPluginFluid.registerPotion(refined, MobEffects.RESISTANCE);
 			FluidDictionaryDC.registerFluidDic(refined, "refined");
+			MainAPIManager.fuelRegister.registerFuel("fuel", 120);
 		}
 
 		// other fluid
@@ -155,8 +160,7 @@ public class DCPluginCoFH {
 
 		RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 2, 9), null,
 				null, null, DCHeatTier.UHT, 0, null, null, null, new Object[] {
-						"fuelCoke",
-						"dustLime"
+						"fuelCoke", "dustLime"
 				}), DCHeatTier.UHT);
 	}
 

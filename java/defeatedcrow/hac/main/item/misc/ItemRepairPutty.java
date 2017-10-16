@@ -4,8 +4,10 @@ import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,9 +27,7 @@ public class ItemRepairPutty extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"putty",
-			"abrasive",
-			"soap"
+			"putty", "abrasive", "soap"
 	};
 
 	public ItemRepairPutty() {
@@ -56,7 +56,7 @@ public class ItemRepairPutty extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
 		if (stack != null) {
 			int m = stack.getItemDamage();
 			if (m == 0) {
@@ -70,9 +70,10 @@ public class ItemRepairPutty extends DCItem {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (player != null && stack != null && stack.getItem() != null && stack.getItemDamage() == 2) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (player != null && !DCUtil.isEmpty(stack) && stack.getItemDamage() == 2) {
 			IBlockState state = world.getBlockState(pos);
 			if (state != null && state.getBlock() instanceof BlockColored) {
 				if (!world.isRemote) {
@@ -81,7 +82,7 @@ public class ItemRepairPutty extends DCItem {
 					world.setBlockState(pos, state.withProperty(BlockColored.COLOR, EnumDyeColor.WHITE), 3);
 				}
 				if (!player.capabilities.isCreativeMode) {
-					--stack.stackSize;
+					DCUtil.reduceStackSize(stack, 1);
 				}
 				return EnumActionResult.SUCCESS;
 			}
@@ -91,7 +92,7 @@ public class ItemRepairPutty extends DCItem {
 	}
 
 	@Override
-	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target,
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target,
 			EnumHand hand) {
 		if (target != null && target instanceof EntitySheep) {
 			EntitySheep entitysheep = (EntitySheep) target;
@@ -99,7 +100,7 @@ public class ItemRepairPutty extends DCItem {
 
 			if (!entitysheep.getSheared() && entitysheep.getFleeceColor() != enumdyecolor) {
 				entitysheep.setFleeceColor(enumdyecolor);
-				--stack.stackSize;
+				DCUtil.reduceStackSize(stack, 1);
 			}
 			return true;
 		} else

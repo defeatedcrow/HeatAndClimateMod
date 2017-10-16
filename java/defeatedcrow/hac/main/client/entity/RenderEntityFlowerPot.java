@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.client.entity;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.client.model.ModelFlowerPot;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -104,7 +106,7 @@ public class RenderEntityFlowerPot extends Render<EntityFlowerPot> {
 		float f = 1.0F;
 		float f1 = 1.0F;
 		float f2 = 1.0F;
-		MapColor mapcolor = state.getMapColor();
+		MapColor mapcolor = state.getMapColor(ClimateCore.proxy.getClientWorld(), new BlockPos(x, y, z));
 		if (mapcolor != null) {
 			int i = mapcolor.colorValue;
 			f = (i >> 16 & 255) / 255.0F;

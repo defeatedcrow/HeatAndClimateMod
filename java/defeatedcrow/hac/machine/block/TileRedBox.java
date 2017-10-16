@@ -18,7 +18,7 @@ public class TileRedBox extends TileTorqueBase implements ICrankReceiver {
 
 	@Override
 	public boolean isPressed() {
-		return BlockRedBox.isLit(worldObj, pos);
+		return BlockRedBox.isLit(world, pos);
 	}
 
 	@Override
@@ -28,12 +28,11 @@ public class TileRedBox extends TileTorqueBase implements ICrankReceiver {
 
 	@Override
 	public void setPressed(boolean flag) {
-		BlockRedBox.changeLitState(worldObj, pos, flag);
+		BlockRedBox.changeLitState(world, pos, flag);
 	}
 
 	@Override
-	public void setMaxPressed(boolean flag) {
-	}
+	public void setMaxPressed(boolean flag) {}
 
 	@Override
 	public float maxTorque() {

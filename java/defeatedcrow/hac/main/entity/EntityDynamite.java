@@ -65,11 +65,11 @@ public class EntityDynamite extends Entity {
 			return false;
 		else {
 			if (!this.isDead) {
-				if (!this.worldObj.isRemote && count == 10) {
+				if (!this.world.isRemote && count == 10) {
 					count = 3;
 
-					if (!this.worldObj.isRemote) {
-						CustomExplosion explosion = new CustomExplosion(worldObj, this, placer, posX, posY, posZ, 4.0F,
+					if (!this.world.isRemote) {
+						CustomExplosion explosion = new CustomExplosion(world, this, placer, posX, posY, posZ, 4.0F,
 								CustomExplosion.Type.Silk, true);
 						explosion.doExplosion();
 						this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F,
@@ -77,7 +77,7 @@ public class EntityDynamite extends Entity {
 						doBlockDestroy(3);
 					}
 				} else {
-					worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D,
+					world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D,
 							new int[0]);
 				}
 			}
@@ -92,35 +92,35 @@ public class EntityDynamite extends Entity {
 		BlockPos max = pos.add(range, range, range);
 		Iterable<BlockPos> list = BlockPos.getAllInBox(min, max);
 		for (BlockPos p : list) {
-			IBlockState state = worldObj.getBlockState(p);
-			if (!worldObj.isAirBlock(p)) {
+			IBlockState state = world.getBlockState(p);
+			if (!world.isAirBlock(p)) {
 				if (state.getMaterial() == Material.WATER) {
-					if (worldObj.rand.nextInt(32) == 0) {
-						LootContext.Builder lootcontext$builder = new LootContext.Builder((WorldServer) this.worldObj);
+					if (world.rand.nextInt(32) == 0) {
+						LootContext.Builder lootcontext$builder = new LootContext.Builder((WorldServer) this.world);
 						lootcontext$builder.withLuck(0.0F);
 
-						for (ItemStack itemstack : this.worldObj.getLootTableManager()
+						for (ItemStack itemstack : this.world.getLootTableManager()
 								.getLootTableFromLocation(LootTableList.GAMEPLAY_FISHING)
 								.generateLootForPools(this.rand, lootcontext$builder.build())) {
 							double d0 = p.getX() + 0.5D;
 							double d1 = p.getY() + 0.5D;
 							double d2 = p.getZ() + 0.5D;
-							EntityItem entityitem = new EntityItem(this.worldObj, d0, d1, d2, itemstack);
+							EntityItem entityitem = new EntityItem(this.world, d0, d1, d2, itemstack);
 							entityitem.motionY = 0.1D;
-							worldObj.spawnEntityInWorld(entityitem);
+							world.spawnEntity(entityitem);
 						}
 					}
 
 				} else {
-					if (isSilk() && state.getBlock().canSilkHarvest(worldObj, p, state, null)) {
+					if (isSilk() && state.getBlock().canSilkHarvest(world, p, state, null)) {
 						ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
-						EntityItem drop = new EntityItem(worldObj, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() + 0.5D,
+						EntityItem drop = new EntityItem(world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() + 0.5D,
 								item);
-						worldObj.spawnEntityInWorld(drop);
+						world.spawnEntity(drop);
 					} else {
-						state.getBlock().dropBlockAsItem(worldObj, p, state, 0);
+						state.getBlock().dropBlockAsItem(world, p, state, 0);
 					}
-					worldObj.setBlockToAir(p);
+					world.setBlockToAir(p);
 				}
 			}
 		}

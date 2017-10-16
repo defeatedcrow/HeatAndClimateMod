@@ -19,19 +19,19 @@ public class TileFauset extends DCTileEntity {
 	@Override
 	protected void onServerUpdate() {
 		super.onServerUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			// 液体を流す
-			IBlockState state = worldObj.getBlockState(getPos());
+			IBlockState state = world.getBlockState(getPos());
 			if (!DCState.getBool(state, DCState.POWERED))
 				return;
 			else {
 				EnumFacing face = DCState.getSide(state, DCState.SIDE).face;
-				TileEntity fromTE = worldObj.getTileEntity(getPos().offset(face));
+				TileEntity fromTE = world.getTileEntity(getPos().offset(face));
 				if (fromTE == null
 						|| !fromTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
-					fromTE = worldObj.getTileEntity(getPos().offset(face, 2));
+					fromTE = world.getTileEntity(getPos().offset(face, 2));
 				}
-				TileEntity toTE = worldObj.getTileEntity(getPos().down());
+				TileEntity toTE = world.getTileEntity(getPos().down());
 				if (fromTE != null && toTE != null
 						&& fromTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())
 						&& toTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {

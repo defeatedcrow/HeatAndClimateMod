@@ -1,13 +1,11 @@
 package defeatedcrow.hac.magic.block;
 
-import java.util.List;
 import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -24,6 +22,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -49,8 +48,8 @@ public abstract class BlockMace extends DCTileBlock {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			world.setBlockToAir(pos);
 		}
 		return true;
@@ -102,12 +101,14 @@ public abstract class BlockMace extends DCTileBlock {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		ItemStack stack = new ItemStack(this, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("dcs.mace.energy", 640);
-		stack.setTagCompound(tag);
-		list.add(stack);
+	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
+			ItemStack stack = new ItemStack(this, 1, 0);
+			NBTTagCompound tag = new NBTTagCompound();
+			tag.setInteger("dcs.mace.energy", 640);
+			stack.setTagCompound(tag);
+			list.add(stack);
+		}
 	}
 
 	// particleのON/OFF
@@ -189,7 +190,7 @@ public abstract class BlockMace extends DCTileBlock {
 			entityitem.motionX = (float) this.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) this.rand.nextGaussian() * f3 + 0.25F;
 			entityitem.motionZ = (float) this.rand.nextGaussian() * f3;
-			world.spawnEntityInWorld(entityitem);
+			world.spawnEntity(entityitem);
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		world.removeTileEntity(pos);

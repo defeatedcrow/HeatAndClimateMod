@@ -49,15 +49,15 @@ public class RenderCartMotor extends RenderMinecart {
 				vec3d2 = vec3d;
 			}
 
-			x += vec3d.xCoord - d0;
-			y += (vec3d1.yCoord + vec3d2.yCoord) / 2.0D - d1;
-			z += vec3d.zCoord - d2;
-			Vec3d vec3d3 = vec3d2.addVector(-vec3d1.xCoord, -vec3d1.yCoord, -vec3d1.zCoord);
+			x += vec3d.x - d0;
+			y += (vec3d1.y + vec3d2.y) / 2.0D - d1;
+			z += vec3d.z - d2;
+			Vec3d vec3d3 = vec3d2.addVector(-vec3d1.x, -vec3d1.y, -vec3d1.z);
 
 			if (vec3d3.lengthVector() != 0.0D) {
 				vec3d3 = vec3d3.normalize();
-				entityYaw = (float) (Math.atan2(vec3d3.zCoord, vec3d3.xCoord) * 180.0D / Math.PI);
-				f3 = (float) (Math.atan(vec3d3.yCoord) * 73.0D);
+				entityYaw = (float) (Math.atan2(vec3d3.z, vec3d3.x) * 180.0D / Math.PI);
+				f3 = (float) (Math.atan(vec3d3.y) * 73.0D);
 			}
 		}
 

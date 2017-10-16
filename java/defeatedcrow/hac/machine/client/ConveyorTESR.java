@@ -29,13 +29,12 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 	}
 
 	@Override
-	public void renderTileEntityAt(TileTorqueBase te, double x, double y, double z, float partialTicks,
-			int destroyStage) {
+	public void render(TileTorqueBase te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		if (te == null) {
 			return;
 		}
-		ItemStack in = null;
-		ItemStack out = null;
+		ItemStack in = ItemStack.EMPTY;
+		ItemStack out = ItemStack.EMPTY;
 		float moveF = 0F;
 		int fF = 0;
 		int preF = 0;

@@ -1,6 +1,5 @@
 package defeatedcrow.hac.main;
 
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileTeaPot;
@@ -62,7 +61,6 @@ import defeatedcrow.hac.main.enchant.EnchantmentVenom;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
-import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBolt;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
@@ -84,6 +82,7 @@ import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
+import defeatedcrow.hac.main.worldgen.DCRegistryUtil;
 import defeatedcrow.hac.main.worldgen.WorldGenAltOres2;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
@@ -91,18 +90,14 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionType;
-import net.minecraft.stats.Achievement;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonMainProxy implements IGuiHandler {
@@ -117,38 +112,22 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadPotion() {
 		MainInit.gravity = new PotionGravityDC();
-		GameRegistry.register(MainInit.gravity, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.gravity"));
-		MainInit.gravityType = new PotionType("dcs.gravity", new PotionEffect[] {
-				new PotionEffect(MainInit.gravity, 1800, 0)
-		});
-		GameRegistry.register(MainInit.gravityType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.gravity"));
+		DCRegistryUtil.addPotion(MainInit.gravity, MainInit.gravityType, "gravity");
 
 		MainInit.bird = new PotionBirdDC();
-		GameRegistry.register(MainInit.bird, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.bird"));
-		MainInit.birdType = new PotionType("dcs.bird", new PotionEffect[] {
-				new PotionEffect(MainInit.bird, 3600, 0)
-		});
-		GameRegistry.register(MainInit.birdType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.bird"));
+		DCRegistryUtil.addPotion(MainInit.bird, MainInit.birdType, "bird");
 
 		MainInit.ocean = new PotionOceanDC();
-		GameRegistry.register(MainInit.ocean, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.ocean"));
-		MainInit.oceanType = new PotionType("dcs.ocean", new PotionEffect[] {
-				new PotionEffect(MainInit.ocean, 3600, 0)
-		});
-		GameRegistry.register(MainInit.oceanType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.ocean"));
+		DCRegistryUtil.addPotion(MainInit.ocean, MainInit.oceanType, "ocean");
 
 		MainInit.heavyboots = new PotionHeavyBootsDC();
-		GameRegistry.register(MainInit.heavyboots, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.heavyboots"));
-		MainInit.heavybootsType = new PotionType("dcs.heavyboots", new PotionEffect[] {
-				new PotionEffect(MainInit.heavyboots, 3600, 0)
-		});
-		GameRegistry.register(MainInit.heavybootsType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.heavyboots"));
+		DCRegistryUtil.addPotion(MainInit.heavyboots, MainInit.heavybootsType, "heavyboots");
 	}
 
 	public void loadEnchantment() {
-
 		MainInit.venom = new EnchantmentVenom();
-		GameRegistry.register(MainInit.venom, new ResourceLocation(ClimateMain.MOD_ID, "dcs.venom"));
+		ForgeRegistries.ENCHANTMENTS
+				.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
 
 	}
 
@@ -176,32 +155,21 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadEntity() {
-		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 90,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityCution.class, "main", "cution");
 
-		EntityRegistry.registerModEntity(EntityFlowerPot.class, ClimateCore.PACKAGE_BASE + "entity.main.flowerpot", 92,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityIronBolt.class, "main", "bullet_bolt", 1);
 
-		EntityRegistry.registerModEntity(EntityIronBolt.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_bolt", 91,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityIronBullet.class, "main", "bullet_iron", 1);
 
-		EntityRegistry.registerModEntity(EntityIronBullet.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_iron",
-				93, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntitySilverBullet.class, "main", "bullet_silver", 1);
 
-		EntityRegistry.registerModEntity(EntitySilverBullet.class,
-				ClimateCore.PACKAGE_BASE + "entity.main.bullet_silver", 94, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityShotgunBullet.class, "main", "bullet_shot", 1);
 
-		EntityRegistry.registerModEntity(EntityShotgunBullet.class,
-				ClimateCore.PACKAGE_BASE + "entity.main.bullet_shotgun", 95, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityGhostBullet.class, "main", "bullet_ghost", 1);
 
-		EntityRegistry.registerModEntity(EntityGhostBullet.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_ghost",
-				96, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityDynamite.class, "main", "dynamite_red");
 
-		EntityRegistry.registerModEntity(EntityDynamite.class, ClimateCore.PACKAGE_BASE + "entity.main.dynamite_red",
-				98, ClimateMain.instance, 128, 5, true);
-
-		EntityRegistry.registerModEntity(EntityDynamiteBlue.class,
-				ClimateCore.PACKAGE_BASE + "entity.main.dynamite_blue", 99, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityDynamiteBlue.class, "main", "dynamite_blue");
 
 		FoodCommonProxy.loadEntity();
 		MachineCommonProxy.loadEntity();
@@ -352,10 +320,6 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public net.minecraft.client.model.ModelBiped getArmorModel(int slot) {
 		return null;
-	}
-
-	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
-		return player != null && player.hasAchievement(acv);
 	}
 
 	public boolean isForwardKeyDown() {

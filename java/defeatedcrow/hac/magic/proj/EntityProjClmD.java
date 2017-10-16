@@ -49,21 +49,21 @@ public class EntityProjClmD extends EntityProjBase {
 		Iterable<BlockPos> itr = min.getAllInBox(min, max);
 		int dia = 0;
 		for (BlockPos pos : itr) {
-			if (pos.getY() > 0 && pos.getY() < 255 && !worldObj.isAirBlock(pos)) {
-				if (worldObj.getBlockState(pos).getBlock() == Blocks.DIAMOND_BLOCK) {
+			if (pos.getY() > 0 && pos.getY() < 255 && !world.isAirBlock(pos)) {
+				if (world.getBlockState(pos).getBlock() == Blocks.DIAMOND_BLOCK) {
 					dia++;
-					worldObj.setBlockToAir(pos);
+					world.setBlockToAir(pos);
 				}
 			}
 		}
 
 		if (dia > 0) {
-			Chunk chunk = worldObj.getChunkFromBlockCoords(this.getPosition());
+			Chunk chunk = world.getChunkFromBlockCoords(this.getPosition());
 			WorldGenAltSkarn gen = new WorldGenAltSkarn(true);
 			gen.setRange(dia);
 			gen.setForcePos(this.getPosition().getX(), this.getPosition().getZ());
-			gen.generate(rand, chunk.xPosition, chunk.zPosition, worldObj, worldObj.provider.createChunkGenerator(),
-					worldObj.getChunkProvider());
+			gen.generate(rand, chunk.x, chunk.z, world, world.provider.createChunkGenerator(),
+					world.getChunkProvider());
 		}
 
 		this.playSound(SoundEvents.ENTITY_FIREWORK_TWINKLE, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
@@ -84,7 +84,7 @@ public class EntityProjClmD extends EntityProjBase {
 
 	@Override
 	public void onUpdate() {
-		if (!this.worldObj.isRemote && (this.isInWater() || this.isInLava())) {
+		if (!this.world.isRemote && (this.isInWater() || this.isInLava())) {
 			setStart(true);
 		}
 		super.onUpdate();
@@ -96,7 +96,7 @@ public class EntityProjClmD extends EntityProjBase {
 		double x1 = posX + rand.nextDouble() - 0.5D;
 		double y1 = posY + rand.nextDouble() - 0.5D;
 		double z1 = posZ + rand.nextDouble() - 0.5D;
-		Particle shock = new ParticleShock.Factory().createParticle(0, worldObj, x1, y1, z1, 0D, 0D, 0D, new int[0]);
+		Particle shock = new ParticleShock.Factory().createParticle(0, world, x1, y1, z1, 0D, 0D, 0D, new int[0]);
 		shock.setRBGColorF(0.95F, 0.95F, 0.95F);
 		FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 
@@ -110,8 +110,7 @@ public class EntityProjClmD extends EntityProjBase {
 			double fy = 0.5D + rand.nextDouble() * 0.25D;
 			double fz = 0.5D * rand.nextDouble() - 0.25D;
 
-			Particle star = new ParticleFallingStar.Factory().createParticle(0, worldObj, x, y, z, fx, fy, fz,
-					new int[0]);
+			Particle star = new ParticleFallingStar.Factory().createParticle(0, world, x, y, z, fx, fy, fz, new int[0]);
 			star.setRBGColorF(0.95F, 0.95F, 0.95F);
 			FMLClientHandler.instance().getClient().effectRenderer.addEffect(star);
 

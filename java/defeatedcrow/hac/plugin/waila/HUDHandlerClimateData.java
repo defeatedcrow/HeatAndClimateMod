@@ -13,7 +13,7 @@ import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
-import mcp.mobius.waila.addons.HUDHandlerBase;
+import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
@@ -28,7 +28,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 // climate data
-public class HUDHandlerClimateData extends HUDHandlerBase {
+public class HUDHandlerClimateData extends HUDHandlerBlocks {
 
 	static final List<BlockSet> targetHeatList = Lists.newArrayList();
 	static final List<BlockSet> targetHumList = Lists.newArrayList();
@@ -38,7 +38,7 @@ public class HUDHandlerClimateData extends HUDHandlerBase {
 	public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		Block block = accessor.getBlock();
 		if (block == null)
-			return null;
+			return ItemStack.EMPTY;
 
 		if (ModuleConfig.food && config.getConfig("dcs_climate.showcrop")) {
 			if (block == FoodInit.cropRice)
@@ -63,7 +63,7 @@ public class HUDHandlerClimateData extends HUDHandlerBase {
 				return new ItemStack(FoodInit.crops, 1, 10);
 		}
 
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
