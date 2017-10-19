@@ -112,7 +112,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 					int countQ = 0;
 					int countR = 0;
 					for (int i = 0; i < 9; i++) {
-						if (display.getStackInSlot(i) != null) {
+						if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
 							reqs[i] = display.getStackInSlot(i);
 							countQ += display.getStackInSlot(i).getCount();
 						}
@@ -572,7 +572,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)

@@ -98,7 +98,7 @@ public class BlockSink extends DCTileBlock {
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack held = player.getHeldItem(hand);
 			if (tile instanceof TileSink && !DCUtil.isEmpty(held)
-					&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+					&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
 				if (!player.world.isRemote) {
 					DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player);
 				}

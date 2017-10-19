@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine.gui;
 
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.entity.EntityScooter;
+import defeatedcrow.hac.main.client.gui.SlotInvalid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -24,7 +25,7 @@ public class ContainerEntityScooter extends Container {
 		this.player = playerIn.inventory;
 
 		this.addSlotToContainer(new Slot(entity, 0, 19, 16));
-		this.addSlotToContainer(new Slot(entity, 1, 19, 52));
+		this.addSlotToContainer(new SlotInvalid(entity, 1, 19, 52));
 		// this.addSlotToContainer(new SlotDisplay(entity, 2, 19, 70));
 
 		for (int c = 0; c < 6; ++c) {

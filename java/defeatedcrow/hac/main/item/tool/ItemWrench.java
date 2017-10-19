@@ -35,7 +35,7 @@ public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 		if (player != null && !world.isRemote && player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
 			IBlockState tile = world.getBlockState(pos);
-			if (DCUtil.isEmpty(stack) && tile != null && tile.getBlock() instanceof BlockTorqueBase) {
+			if (!DCUtil.isEmpty(stack) && tile != null && tile.getBlock() instanceof BlockTorqueBase) {
 				EnumFacing face = tile.getValue(DCState.SIDE).getFacing();
 				world.setBlockState(pos, tile.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite())));
 

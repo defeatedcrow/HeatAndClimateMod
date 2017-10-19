@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -39,6 +40,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -68,7 +70,7 @@ public class EntityScooter extends Entity implements IInventory {
 	public Status status = Status.IN_AIR;
 	protected Status prevStatus = Status.IN_AIR;
 
-	public final ItemStack[] tankSlot = new ItemStack[3];
+	public final DCInventory tankSlot = new DCInventory(3);
 	public final InventoryBasic inv = new InventoryBasic("Items", false, 18);
 	public final DCTank tank = new DCTank(5000);
 
@@ -307,7 +309,7 @@ public class EntityScooter extends Entity implements IInventory {
 
 			if (this.currentBurnTime == 0) {
 
-				FluidStack f = tank.getContents();
+				FluidStack f = tank.getFluid();
 				if (f != null && f.getFluid() != null && tank.getFluidAmount() > 0) {
 					int i = getBurnTime(f.getFluid());
 					if (i > 0) {
@@ -359,7 +361,7 @@ public class EntityScooter extends Entity implements IInventory {
 
 	public FluidStack getBucketTag() {
 		ItemStack bu = this.getStackInSlot(2);
-		if (bu != null) {
+		if (!DCUtil.isEmpty(bu)) {
 			NBTTagCompound tag = bu.getTagCompound();
 			if (tag != null) {
 				tag = new NBTTagCompound();
@@ -372,22 +374,6 @@ public class EntityScooter extends Entity implements IInventory {
 	}
 
 	protected Status getStatus() {
-		// AxisAlignedBB aabb = this.getEntityBoundingBox();
-		// int ix = MathHelper.floor_double(posX);
-		// int iy = MathHelper.floor_double(posY);
-		// int iz = MathHelper.floor_double(posZ);
-		// BlockPos p = new BlockPos(ix, iy, iz);
-		// IBlockState state = worldObj.getBlockState(new BlockPos(ix, iy, iz));
-		// if (state.getMaterial() == Material.WATER && state.getBoundingBox(worldObj, p) != null) {
-		// double d = state.getBoundingBox(worldObj, p).maxY + p.getY();
-		// if (posY < d)
-		// return Status.UNDER_WATER;
-		// } else if (state.getCollisionBoundingBox(worldObj, p) != null) {
-		// double d = state.getCollisionBoundingBox(worldObj, p).maxY + p.getY();
-		// if (posY < d)
-		// return Status.IN_TILE;
-		// }
-
 		return getUnderGround();
 	}
 
@@ -648,18 +634,15 @@ public class EntityScooter extends Entity implements IInventory {
 		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (dummy != null && dummy.getTankProperties() != null) {
@@ -677,13 +660,8 @@ public class EntityScooter extends Entity implements IInventory {
 				fc = dummy.drain(rem, false);
 				if (fc != null && fc.amount <= rem) {
 					FluidStack fill = null;
-					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).drain(rem, true);
-						ret = in2;
-					} else {
-						fill = dummy.drain(rem, true);
-						ret = in2;
-					}
+					fill = dummy.drain(rem, true);
+					ret = dummy.getContainer();
 
 					if (fill != null
 							&& (DCUtil.isEmpty(ret) || this.isItemStackable(ret, this.getStackInSlot(slot2)) > 0)) {
@@ -709,18 +687,15 @@ public class EntityScooter extends Entity implements IInventory {
 		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
@@ -743,13 +718,8 @@ public class EntityScooter extends Entity implements IInventory {
 			if (b) {
 				FluidStack drain = tank.drain(rem, false);
 				int fill = 0;
-				if (in.getItem() instanceof IFluidHandler) {
-					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-					ret = in2;
-				} else {
-					fill = dummy.fill(drain, true);
-					ret = in2;
-				}
+				fill = dummy.fill(drain, true);
+				ret = dummy.getContainer();
 
 				if (fill > 0 && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, this.getStackInSlot(slot2)) > 0)) {
 					loose = true;
@@ -807,26 +777,21 @@ public class EntityScooter extends Entity implements IInventory {
 
 	@Override
 	public int getSizeInventory() {
-		return inv.getSizeInventory() + 3;
+		return inv.getSizeInventory() + tankSlot.getSizeInventory();
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		if (index < 3)
-			return tankSlot[index];
-		else
+		if (index < 3) {
+			return tankSlot.getStackInSlot(index);
+		} else
 			return inv.getStackInSlot(index - 3);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
 		if (index < 3) {
-			ItemStack stack = tankSlot[index];
-			if (!DCUtil.isEmpty(stack)) {
-				stack.splitStack(count);
-				this.markDirty();
-			}
-			return stack;
+			return tankSlot.decrStackSize(index, count);
 		} else
 			return inv.decrStackSize(index - 3, count);
 	}
@@ -834,12 +799,7 @@ public class EntityScooter extends Entity implements IInventory {
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
 		if (index < 3) {
-			if (!DCUtil.isEmpty(tankSlot[index])) {
-				ItemStack stack = tankSlot[index].copy();
-				tankSlot[index] = ItemStack.EMPTY;
-				return stack;
-			} else
-				return ItemStack.EMPTY;
+			return tankSlot.removeStackFromSlot(index);
 		} else
 			return inv.removeStackFromSlot(index - 3);
 	}
@@ -847,11 +807,7 @@ public class EntityScooter extends Entity implements IInventory {
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
 		if (index < 3) {
-			tankSlot[index] = stack;
-			if (!DCUtil.isEmpty(stack) && stack.getCount() > this.getInventoryStackLimit()) {
-				stack.setCount(getInventoryStackLimit());
-			}
-			this.markDirty();
+			tankSlot.setInventorySlotContents(index, stack);
 		} else {
 			inv.setInventorySlotContents(index - 3, stack);
 		}
@@ -865,6 +821,7 @@ public class EntityScooter extends Entity implements IInventory {
 	@Override
 	public void markDirty() {
 		inv.markDirty();
+		tankSlot.markDirty();
 	}
 
 	@Override
@@ -934,6 +891,7 @@ public class EntityScooter extends Entity implements IInventory {
 	@Override
 	public void clear() {
 		inv.clear();
+		tankSlot.clear();
 	}
 
 	IItemHandler handler = new InvWrapper(this.inv);
@@ -958,7 +916,7 @@ public class EntityScooter extends Entity implements IInventory {
 
 	@Override
 	public boolean isEmpty() {
-		return inv.isEmpty();
+		return inv.isEmpty() && tankSlot.isEmpty();
 	}
 
 }

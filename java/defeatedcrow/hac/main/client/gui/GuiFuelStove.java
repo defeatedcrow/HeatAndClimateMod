@@ -65,6 +65,7 @@ public class GuiFuelStove extends GuiContainer {
 
 	@Override
 	public void drawScreen(int x, int y, float par3) {
+		this.drawDefaultBackground();
 		super.drawScreen(x, y, par3);
 
 		ArrayList<String> list = new ArrayList<String>();
@@ -85,6 +86,7 @@ public class GuiFuelStove extends GuiContainer {
 		}
 
 		this.drawHoveringText(list, x, y);
+		this.renderHoveredToolTip(x, y);
 	}
 
 	private int getCookProgressScaled(int pixels) {

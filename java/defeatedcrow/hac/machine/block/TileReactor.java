@@ -31,6 +31,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver {
@@ -135,11 +136,11 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		if (i == 0 || i == 2 || i == 4 || i == 6) {
 			if (DCUtil.isEmpty(stack))
 				return false;
-			IFluidHandler cont = null;
-			if (stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-				cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			} else if (stack.getItem() instanceof IFluidHandler) {
-				cont = (IFluidHandler) stack.getItem();
+			IFluidHandlerItem cont = null;
+			if (stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+				cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+			} else if (stack.getItem() instanceof IFluidHandlerItem) {
+				cont = (IFluidHandlerItem) stack.getItem();
 			}
 			return cont != null;
 		} else if (i > 7 && i < 13)
@@ -236,18 +237,15 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (dummy != null && dummy.getTankProperties() != null) {
@@ -265,13 +263,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 				fc = dummy.drain(rem, false);
 				if (fc != null && fc.amount <= rem) {
 					FluidStack fill = null;
-					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).drain(rem, true);
-						ret = in2;
-					} else {
-						fill = dummy.drain(rem, true);
-						ret = in2;
-					}
+					fill = dummy.drain(rem, true);
+					ret = dummy.getContainer();
 
 					if (fill != null && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
 						loose = true;
@@ -293,21 +286,18 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	protected boolean onDrainTank(DCTank tank, int slot1, int slot2, boolean flag) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
-		if (in == null)
+		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandlerItem) {
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
@@ -330,13 +320,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			if (b) {
 				FluidStack drain = tank.drain(rem, false);
 				int fill = 0;
-				if (in.getItem() instanceof IFluidHandler) {
-					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-					ret = in2;
-				} else {
-					fill = dummy.fill(drain, true);
-					ret = in2;
-				}
+				fill = dummy.fill(drain, true);
+				ret = dummy.getContainer();
 
 				if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
 					loose = true;
@@ -665,7 +650,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			if (facing == this.tankSide1.face)
 				return (T) handlerTank1;
 			else if (facing == this.tankSide2.face)

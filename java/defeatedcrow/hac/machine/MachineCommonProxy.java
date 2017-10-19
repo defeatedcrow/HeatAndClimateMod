@@ -41,7 +41,7 @@ import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
-import defeatedcrow.hac.main.worldgen.DCRegistryUtil;
+import defeatedcrow.hac.main.util.DCRegistryUtil;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineCommonProxy {
@@ -88,11 +88,11 @@ public class MachineCommonProxy {
 	}
 
 	public static void loadEntity() {
-		DCRegistryUtil.addEntity(EntityMinecartMotor.class, "entity", "motor_cart");
+		DCRegistryUtil.addEntity(EntityMinecartMotor.class, "machine", "motor_cart");
 
 		DCRegistryUtil.addEntity(EntityScooter.class, "machine", "motor_scooter", 1);
 
-		DCRegistryUtil.addEntity(EntityMagneticHover.class, "entity", "magnetic_hover", 1);
+		DCRegistryUtil.addEntity(EntityMagneticHover.class, "machine", "magnetic_hover", 1);
 
 	}
 

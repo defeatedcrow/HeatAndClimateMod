@@ -42,7 +42,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -83,7 +83,7 @@ public class ItemSilverCup extends FoodItemBase {
 		FluidStack f = null;
 		DrinkMilk milk = DrinkMilk.NONE;
 		DrinkSugar sugar = DrinkSugar.NONE;
-		IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		IFluidHandlerItem cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		IDrinkCustomize drink = item.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 		if (cont != null && cont.getTankProperties() != null) {
 			f = cont.getTankProperties()[0].getContents();
@@ -130,7 +130,7 @@ public class ItemSilverCup extends FoodItemBase {
 		if (player != null) {
 			ItemStack item = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(item)) {
-				IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+				IFluidHandlerItem cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 				if (cont != null && cont.getTankProperties() != null) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
 					if (f != null)
@@ -148,7 +148,8 @@ public class ItemSilverCup extends FoodItemBase {
 			if (stack.getItem() != this)
 				return false;
 			else {
-				IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+				IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY,
+						null);
 				IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 				if (cont != null && cont.getTankProperties() != null) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
@@ -227,7 +228,7 @@ public class ItemSilverCup extends FoodItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 
-		IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 
 		if (cont != null && cont.getTankProperties() != null && drink != null) {
@@ -303,7 +304,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 		@Override
 		public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-			if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+			if (capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY)
 				return true;
 			else if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY)
 				return true;
@@ -313,7 +314,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 		@Override
 		public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-			if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+			if (capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY)
 				return (T) new FluidHandlerItemStack(cont, 200);
 			else if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY)
 				return (T) new DrinkItemCustomizer(cont);

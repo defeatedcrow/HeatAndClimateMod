@@ -14,7 +14,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 
 public class EntityTumbler extends EntityTeaCupSilver {
 
@@ -33,7 +33,7 @@ public class EntityTumbler extends EntityTeaCupSilver {
 	@Override
 	protected ItemStack drops() {
 		ItemStack drop = new ItemStack(FoodInit.cupSilver, 1, 2);
-		IFluidHandler cont = drop.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		IFluidHandlerItem cont = drop.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		IDrinkCustomize drink = drop.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 		Fluid f = FluidRegistry.getFluid(getFluidName());
 		int amo = getAmount();
