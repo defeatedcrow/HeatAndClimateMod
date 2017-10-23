@@ -294,9 +294,10 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 	}
 
 	protected void processTank() {
-		if (!this.onDrainTank(inputT, 0, 1)) {
-			this.onFillTank(inputT, 0, 1);
-		}
+		if (onDrainTank(inputT, 0, 1)) {
+			this.markDirty();
+		} else if (onFillTank(inputT, 0, 1))
+			this.markDirty();
 	}
 
 	protected boolean onFillTank(DCTank tank, int slot1, int slot2) {
@@ -331,13 +332,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 				fc = dummy.drain(rem, false);
 				if (fc != null && fc.amount <= rem) {
 					FluidStack fill = null;
-					if (in.getItem() instanceof IFluidHandlerItem) {
-						fill = ((IFluidHandlerItem) in2.getItem()).drain(rem, true);
-						ret = ((IFluidHandlerItem) in2.getItem()).getContainer();
-					} else {
-						fill = dummy.drain(rem, true);
-						ret = dummy.getContainer();
-					}
+					fill = dummy.drain(rem, true);
+					ret = dummy.getContainer();
 
 					if (fill != null
 							&& (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
@@ -350,7 +346,6 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			if (loose) {
 				this.decrStackSize(slot1, 1);
 				this.incrStackInSlot(slot2, ret);
-				this.markDirty();
 				return true;
 			}
 		}
@@ -394,13 +389,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			if (b) {
 				FluidStack drain = tank.drain(rem, false);
 				int fill = 0;
-				if (in.getItem() instanceof IFluidHandlerItem) {
-					fill = ((IFluidHandlerItem) in2.getItem()).fill(drain, true);
-					ret = ((IFluidHandlerItem) in2.getItem()).getContainer();
-				} else {
-					fill = dummy.fill(drain, true);
-					ret = dummy.getContainer();
-				}
+				fill = dummy.fill(drain, true);
+				ret = dummy.getContainer();
 
 				if (fill > 0 && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
 					loose = true;
@@ -411,7 +401,6 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			if (loose) {
 				this.decrStackSize(slot1, 1);
 				this.incrStackInSlot(slot2, ret);
-				this.markDirty();
 				return true;
 			}
 		}
@@ -744,7 +733,9 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 	}
 
 	@Override
-	public void markDirty() {}
+	public void markDirty() {
+		inv.markDirty();
+	}
 
 	@Override
 	public ITextComponent getDisplayName() {

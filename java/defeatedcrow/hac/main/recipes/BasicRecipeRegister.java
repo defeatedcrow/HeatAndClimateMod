@@ -16,6 +16,7 @@ public class BasicRecipeRegister {
 		LoadingYagenRecipe.add(RecipeResourcesMain.MAIN);
 		LoadingOreRecipe.add(RecipeResourcesMain.MAIN);
 		LoadingBuildingRecipe.add(RecipeResourcesMain.MAIN);
+		LoadingBuildingRecipe.advanced(RecipeResourcesMain.MAIN);
 		LoadingEquipRecipe.add(RecipeResourcesMain.MAIN);
 		loadAnotherRecipes(RecipeResourcesMain.MAIN);
 		if (ModuleConfig.build_advanced) {

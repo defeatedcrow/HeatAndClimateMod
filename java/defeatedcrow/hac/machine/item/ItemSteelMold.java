@@ -15,8 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
@@ -24,8 +22,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class ItemSteelMold extends DCItem implements IPressMold {
 
@@ -83,11 +79,11 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 
 	@Override
 	public ItemStack setOutput(ItemStack mold, ItemStack output, int num) {
-		if (!DCUtil.isEmpty(output) && mold != null && mold.getItem() instanceof IPressMold) {
+		if (!DCUtil.isEmpty(output) && !DCUtil.isEmpty(mold) && mold.getItem() instanceof IPressMold) {
 			ItemStack next = new ItemStack(mold.getItem(), mold.getCount(), mold.getItemDamage());
 			IPressMold mol = (IPressMold) next.getItem();
 			ItemStack current = mol.getOutput(mold);
-			if (DCUtil.isEmpty(mol.getOutput(mold)) || DCUtil.isStackable(output, current)) {
+			if (DCUtil.isEmpty(current) || DCUtil.isStackable(output, current)) {
 				// レシピ検索
 				RecipePair recipe = this.getInputList(output, num);
 				if (recipe != null) {
@@ -173,16 +169,11 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 		List<ItemStack> empty = new ArrayList<ItemStack>();
 		Iterator<IRecipe> targetRecipes = CraftingManager.REGISTRY.iterator();
 
-		ShapedRecipes s = null;
-		ShapedOreRecipe sOre = null;
-		ShapelessRecipes sl = null;
-		ShapelessOreRecipe slOre = null;
-
 		List<IRecipe> targets = new ArrayList<IRecipe>();
 
 		while (targetRecipes.hasNext()) {
 			IRecipe rec = targetRecipes.next();
-			if (rec.getRecipeOutput() != null && DCUtil.isSameItem(output, rec.getRecipeOutput(), false)) {
+			if (!DCUtil.isEmpty(rec.getRecipeOutput()) && DCUtil.isSameItem(output, rec.getRecipeOutput(), false)) {
 				targets.add(rec);
 			}
 		}
@@ -197,9 +188,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 
 		IRecipe rec = targets.get(n);
 		NonNullList<Ingredient> ings = NonNullList.create();
-		if (!rec.getRecipeOutput().isEmpty() && DCUtil.isSameItem(output, rec.getRecipeOutput(), false)) {
-			ings.addAll(rec.getIngredients());
-		}
+		ings.addAll(rec.getIngredients());
 
 		if (!ings.isEmpty()) {
 			for (Ingredient ing : ings) {

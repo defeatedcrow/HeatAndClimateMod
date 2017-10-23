@@ -291,9 +291,16 @@ public class FoodBasicRecipe {
 
 	public static void loadCrops(RecipeResourcesMain res) {
 
+		String[] crop2 = {
+				"Rice", "Onion", "Spinach", "Tomato", "Coffee", "Cotton"
+		};
 		for (int i = 0; i < 6; i++) {
 			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, i), new Object[] {
 					new ItemStack(FoodInit.crops, 1, i)
+			});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, i), new Object[] {
+					"crop" + crop2[i]
 			});
 		}
 

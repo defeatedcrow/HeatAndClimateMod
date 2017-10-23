@@ -1,5 +1,6 @@
 package defeatedcrow.hac.food.capability;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -16,7 +17,7 @@ public class DrinkItemCustomizer implements IDrinkCustomize {
 
 	@Override
 	public DrinkMilk getMilk() {
-		if (cont == null) {
+		if (DCUtil.isEmpty(cont)) {
 			return DrinkMilk.NONE;
 		}
 		NBTTagCompound tag = cont.getTagCompound();
@@ -30,7 +31,7 @@ public class DrinkItemCustomizer implements IDrinkCustomize {
 
 	@Override
 	public DrinkSugar getSugar() {
-		if (cont == null) {
+		if (DCUtil.isEmpty(cont)) {
 			return DrinkSugar.NONE;
 		}
 		NBTTagCompound tag = cont.getTagCompound();

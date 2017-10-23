@@ -28,6 +28,11 @@ public class MachineInit {
 
 	// tier 2
 
+	public static Block shaft3_s;
+	public static Block shaft3_l;
+	public static Block shaft3_t_a;
+	public static Block shaft3_t_b;
+
 	public static Block fauset;
 	public static Block IBC;
 

@@ -49,9 +49,13 @@ public class TileAdapterPanel extends DCTileEntity {
 	}
 
 	TileEntity targetTile() {
-		if (pairPos != null && ((pos.getX() >> 4) == (pairPos.getX() >> 4))
-				&& ((pos.getZ() >> 4) == (pairPos.getZ() >> 4)))
-			return world.getTileEntity(pairPos);
+		if (pairPos != null && world.isBlockLoaded(pairPos)) {
+			int xrad = (pos.getX() >> 4) - (pairPos.getX() >> 4);
+			int zrad = (pos.getZ() >> 4) - (pairPos.getZ() >> 4);
+			if (xrad * xrad + zrad * zrad <= 25) {
+				return world.getTileEntity(pairPos);
+			}
+		}
 		return null;
 	}
 

@@ -1,6 +1,5 @@
 package defeatedcrow.hac.main.event;
 
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
@@ -17,26 +16,30 @@ public class AnvilMoldEvent {
 
 	@SubscribeEvent
 	public void onAnvilUpdate(AnvilUpdateEvent event) {
+
 		ItemStack left = event.getLeft();
 		ItemStack right = event.getRight();
 		ItemStack ret = event.getOutput();
 		/* Moldのレシピ登録 */
 		if (!DCUtil.isEmpty(right)) {
-
+			// DCLogger.infoLog("anvil event");
 			if (right.getItem() instanceof IPressMold && DCUtil.isEmpty(ret)) {
+				// DCLogger.infoLog("anvil event2");
 				IPressMold mold = (IPressMold) right.copy().getItem();
-				if (!DCUtil.isEmpty(mold.getOutput(right))) {
-					// DCLogger.debugLog("anvil event cycle");
+				if (DCUtil.isEmpty(mold.getOutput(right))) {
+					// DCLogger.infoLog("anvil event3");
 					ItemStack next = mold.setOutput(right, left, 0);
 					if (!DCUtil.isEmpty(next)) {
+						// DCLogger.infoLog("anvil event4");
 						event.setOutput(next);
 						event.setCost(1);
+						event.setMaterialCost(1);
 					}
 				}
 			} else if (!DCUtil.isEmpty(left) && left.getItem() instanceof IPressMold
 					&& right.getItem() == Items.IRON_INGOT && DCUtil.isEmpty(ret)) {
 				// recipeの変更
-				DCLogger.debugLog("anvil event cycle");
+				// DCLogger.debugLog("anvil event cycle");
 				IPressMold mold = (IPressMold) left.copy().getItem();
 				ItemStack output = mold.getOutput(left);
 				if (!DCUtil.isEmpty(output)) {
@@ -45,6 +48,7 @@ public class AnvilMoldEvent {
 					if (!DCUtil.isEmpty(next)) {
 						event.setOutput(next);
 						event.setCost(1);
+						event.setMaterialCost(1);
 					}
 				}
 			}
@@ -66,6 +70,7 @@ public class AnvilMoldEvent {
 					}
 					event.setOutput(next);
 					event.setCost(5);
+					event.setMaterialCost(1);
 				} else if (type == 1) {
 					Item tool = left.getItem();
 					if (Enchantments.EFFICIENCY.canApply(left)

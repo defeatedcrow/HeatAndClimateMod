@@ -517,7 +517,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 
 	// Override用
 	public double getLivingLimit() {
-		return 20;
+		return 100;
 	}
 
 	public double getGravity() {

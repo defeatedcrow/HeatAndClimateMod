@@ -17,6 +17,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
@@ -262,7 +263,14 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 		inv.readFromNBT(tag);
 
-		display.readFromNBT(tag);
+		NBTTagList nbttaglist = tag.getTagList("DispItems", 10);
+		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
+			byte b0 = tag1.getByte("Slot");
+			if (b0 >= 0 && b0 < this.getSizeInventory()) {
+				display.setInventorySlotContents(b0, new ItemStack(tag1));
+			}
+		}
 
 		this.currentProgressTime = tag.getInteger("BurnTime");
 	}
@@ -276,7 +284,16 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		// アイテムの書き込み
 		inv.writeToNBT(tag);
 
-		display.writeToNBT(tag);
+		NBTTagList nbttaglist = new NBTTagList();
+		for (int i = 0; i < this.getSizeInventory(); ++i) {
+			if (!DCUtil.isEmpty(getStackInSlot(i))) {
+				NBTTagCompound tag1 = new NBTTagCompound();
+				tag1.setByte("Slot", (byte) i);
+				getStackInSlot(i).writeToNBT(tag1);
+				nbttaglist.appendTag(tag1);
+			}
+		}
+		tag.setTag("DispItems", nbttaglist);
 
 		return tag;
 	}
@@ -290,7 +307,16 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		// アイテムの書き込み
 		inv.writeToNBT(tag);
 
-		display.writeToNBT(tag);
+		NBTTagList nbttaglist = new NBTTagList();
+		for (int i = 0; i < this.getSizeInventory(); ++i) {
+			if (!DCUtil.isEmpty(getStackInSlot(i))) {
+				NBTTagCompound tag1 = new NBTTagCompound();
+				tag1.setByte("Slot", (byte) i);
+				getStackInSlot(i).writeToNBT(tag1);
+				nbttaglist.appendTag(tag1);
+			}
+		}
+		tag.setTag("DispItems", nbttaglist);
 
 		return tag;
 	}
@@ -301,7 +327,14 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 		inv.readFromNBT(tag);
 
-		display.readFromNBT(tag);
+		NBTTagList nbttaglist = tag.getTagList("DispItems", 10);
+		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
+			byte b0 = tag1.getByte("Slot");
+			if (b0 >= 0 && b0 < this.getSizeInventory()) {
+				display.setInventorySlotContents(b0, new ItemStack(tag1));
+			}
+		}
 
 		this.currentProgressTime = tag.getInteger("BurnTime");
 	}

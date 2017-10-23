@@ -28,12 +28,16 @@ import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileRedBox;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_L_SUS;
+import defeatedcrow.hac.machine.block.TileShaft_L_Steel;
 import defeatedcrow.hac.machine.block.TileShaft_S;
 import defeatedcrow.hac.machine.block.TileShaft_S_SUS;
+import defeatedcrow.hac.machine.block.TileShaft_S_Steel;
 import defeatedcrow.hac.machine.block.TileShaft_TA;
 import defeatedcrow.hac.machine.block.TileShaft_TA_SUS;
+import defeatedcrow.hac.machine.block.TileShaft_TA_Steel;
 import defeatedcrow.hac.machine.block.TileShaft_TB;
 import defeatedcrow.hac.machine.block.TileShaft_TB_SUS;
+import defeatedcrow.hac.machine.block.TileShaft_TB_Steel;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.block.TileWaterPump;
@@ -71,6 +75,10 @@ import defeatedcrow.hac.machine.client.SUS_TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.S_CrankTESR;
 import defeatedcrow.hac.machine.client.S_ShaftTESR;
 import defeatedcrow.hac.machine.client.SpinningMachineTESR;
+import defeatedcrow.hac.machine.client.Steel_L_ShaftTESR;
+import defeatedcrow.hac.machine.client.Steel_S_ShaftTESR;
+import defeatedcrow.hac.machine.client.Steel_TA_ShaftTESR;
+import defeatedcrow.hac.machine.client.Steel_TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.StoneMillTESR;
 import defeatedcrow.hac.machine.client.TA_ShaftTESR;
 import defeatedcrow.hac.machine.client.TB_ShaftTESR;
@@ -143,6 +151,10 @@ public class MachineClientProxy {
 		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
 		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
 		ClientRegistry.registerTileEntity(TileGasBurner.class, "dcs_te_gas_burner", new GasBurnerTESR());
+		ClientRegistry.registerTileEntity(TileShaft_S_Steel.class, "dcs_te_shaft_s_steel", new Steel_S_ShaftTESR());
+		ClientRegistry.registerTileEntity(TileShaft_L_Steel.class, "dcs_te_shaft_l_steel", new Steel_L_ShaftTESR());
+		ClientRegistry.registerTileEntity(TileShaft_TA_Steel.class, "dcs_te_shaft_ta_steel", new Steel_TA_ShaftTESR());
+		ClientRegistry.registerTileEntity(TileShaft_TB_Steel.class, "dcs_te_shaft_tb_steel", new Steel_TB_ShaftTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -169,6 +181,14 @@ public class MachineClientProxy {
 				0);
 		instance.regTETorqueBlock(MachineInit.shaft2_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_sus", "machine",
 				0);
+		instance.regTETorqueBlock(MachineInit.shaft3_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_steel", "machine",
+				0);
+		instance.regTETorqueBlock(MachineInit.shaft3_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_steel", "machine",
+				0);
+		instance.regTETorqueBlock(MachineInit.shaft3_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_steel",
+				"machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft3_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_steel",
+				"machine", 0);
 		instance.regTETorqueBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_ID, "dcs_device_gearbox_sus", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_ID, "dcs_device_boiler_turbine",
 				"machine", 0);

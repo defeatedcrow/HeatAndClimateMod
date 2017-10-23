@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.block.device;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
@@ -9,6 +12,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.translation.I18n;
 
 public class TileShitirin extends TileNormalChamber {
 
@@ -52,6 +56,23 @@ public class TileShitirin extends TileNormalChamber {
 	@Override
 	public String getName() {
 		return "dcs.gui.device.shitirin";
+	}
+
+	@Override
+	public boolean isSuitableClimate() {
+		return currentClimate > DCHeatTier.HOT.getID();
+	}
+
+	@Override
+	public List<String> climateSuitableMassage() {
+		List<String> list = new ArrayList<String>();
+		if (isSuitableClimate()) {
+			list.add(I18n.translateToLocal("dcs.gui.message.suitable"));
+		} else {
+			list.add(I18n.translateToLocal("dcs.gui.message.require.airflow"));
+			list.add(I18n.translateToLocal("dcs.gui.message.require.airflow2"));
+		}
+		return list;
 	}
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */

@@ -24,7 +24,7 @@ public class EntityGhostBullet extends EntityBulletDC {
 
 	@Override
 	public double getLivingLimit() {
-		return 10;
+		return 50;
 	}
 
 	@Override

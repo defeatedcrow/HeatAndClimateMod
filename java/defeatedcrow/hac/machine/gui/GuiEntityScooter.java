@@ -60,6 +60,7 @@ public class GuiEntityScooter extends GuiContainer {
 
 	@Override
 	public void drawScreen(int x, int y, float par3) {
+		this.drawDefaultBackground();
 		super.drawScreen(x, y, par3);
 
 		ArrayList<String> list = new ArrayList<String>();
@@ -82,6 +83,7 @@ public class GuiEntityScooter extends GuiContainer {
 		}
 
 		this.drawHoveringText(list, x, y);
+		this.renderHoveredToolTip(x, y);
 	}
 
 	protected void renderFluid(FluidStack fluid, int amo, int x, int y, int width, int height) {

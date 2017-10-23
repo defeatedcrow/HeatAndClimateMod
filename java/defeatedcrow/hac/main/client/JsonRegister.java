@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.client;
 
+import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
@@ -163,6 +164,22 @@ public class JsonRegister {
 		if (MAIN_INSTANCE.active) {
 			for (int i = 0; i <= meta; i++) {
 				MAIN_INSTANCE.checkAndBuildJsonCube(block, domein, name, dir, i, true);
+			}
+		}
+	}
+
+	static void regSidedCube(ISidedTexture block, String domein, String name, String dir, int meta) {
+		if (MAIN_INSTANCE.active) {
+			for (int i = 0; i <= meta; i++) {
+				MAIN_INSTANCE.checkAndBuildSidedCube(block, domein, name, dir, i, true);
+			}
+		}
+	}
+
+	static void regCross(ISidedTexture block, String domein, String name, String dir, int meta) {
+		if (MAIN_INSTANCE.active) {
+			for (int i = 0; i <= meta; i++) {
+				MAIN_INSTANCE.checkAndBuildJsonCross(block, domein, name, dir, i, true);
 			}
 		}
 	}

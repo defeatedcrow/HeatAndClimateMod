@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.block.device;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
@@ -12,6 +15,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.translation.I18n;
 
 public class TileNormalChamber extends TileChamberBase {
 
@@ -37,17 +41,18 @@ public class TileNormalChamber extends TileChamberBase {
 
 			if (this.currentBurnTime == 0) {
 				if (!DCUtil.isEmpty(getStackInSlot(0)) && getFuel(this.getStackInSlot(0)) > 0) {
-					ItemStack cont = this.getStackInSlot(0).getItem().getContainerItem(this.getStackInSlot(0));
+					ItemStack copy = getStackInSlot(0).copy();
+					ItemStack cont = copy.getItem().getContainerItem(copy);
 					if (DCUtil.isEmpty(cont)) {
-						cont = DCFluidUtil.getEmptyCont(this.getStackInSlot(0));
+						cont = DCFluidUtil.getEmptyCont(copy);
 					}
 					if (DCUtil.isEmpty(cont)) {
 						cont = new ItemStack(MainInit.miscDust, 1, 5); // 灰が出る
 					}
 					boolean flag = false;
 					if (this.canInsertResult(cont) > 0) {
-						this.currentBurnTime = getBurnTime(this.getStackInSlot(0));
-						this.maxBurnTime = getBurnTime(this.getStackInSlot(0));
+						this.currentBurnTime = getFuel(copy);
+						this.maxBurnTime = getFuel(copy);
 						this.decrStackSize(0, 1);
 						this.insertResult(cont);
 						this.markDirty();
@@ -135,6 +140,23 @@ public class TileNormalChamber extends TileChamberBase {
 	@Override
 	public boolean isEmpty() {
 		return invs.isEmpty();
+	}
+
+	@Override
+	public boolean isSuitableClimate() {
+		return currentClimate == DCHeatTier.SMELTING.getID();
+	}
+
+	@Override
+	public List<String> climateSuitableMassage() {
+		List<String> list = new ArrayList<String>();
+		if (isSuitableClimate()) {
+			list.add(I18n.translateToLocal("dcs.gui.message.suitable"));
+		} else {
+			list.add(I18n.translateToLocal("dcs.gui.message.require.wind"));
+			list.add(I18n.translateToLocal("dcs.gui.message.require.wind2"));
+		}
+		return list;
 	}
 
 }

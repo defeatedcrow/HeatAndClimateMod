@@ -52,6 +52,8 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	private int loadCount = 5;
 	private int lastInT = 0;
 
+	public float requireTorque = 30.0F;
+
 	@Override
 	public void updateTile() {
 		super.updateTile();
@@ -62,6 +64,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 			loadCount--;
 		} else {
 			active = isActiveMachine();
+			reduceCoolant();
 		}
 
 		for (int i = 0; i < 6; i++) {
@@ -107,11 +110,8 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	}
 
 	public boolean isActiveMachine() {
-		if (this.prevTorque > 30.0F) {
-			if (current != null && current.getHeat() == DCHeatTier.ABSOLUTE)
-				return true;
-			else
-				return hasCoolant();
+		if (this.prevTorque > requireTorque) {
+			return isSuitableClimate();
 		}
 		return false;
 	}
@@ -119,8 +119,13 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	public boolean hasCoolant() {
 		if (inputT.getFluidType() != null)
 			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MachineInit.nitrogen))
-				return inputT.drain(10, true) != null;
+				return inputT.drain(10, false) != null;
 		return false;
+	}
+
+	public void reduceCoolant() {
+		if (hasCoolant())
+			inputT.drain(10, true);
 	}
 
 	public int isActiveSlot(int num) {
@@ -312,6 +317,20 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	@Override
 	public float maxSpeed() {
 		return 90.0F;
+	}
+
+	public boolean isSuitableClimate() {
+		if (current != null && current.getHeat() == DCHeatTier.ABSOLUTE)
+			return true;
+		else
+			return hasCoolant();
+	}
+
+	public String climateSuitableMassage() {
+		if (isSuitableClimate()) {
+			return "dcs.gui.message.suitableclimate";
+		}
+		return "dcs.gui.message.require.absolute";
 	}
 
 	/* Packet,NBT */

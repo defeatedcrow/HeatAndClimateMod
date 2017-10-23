@@ -22,6 +22,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -68,10 +69,10 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			if (!DCUtil.isEmpty(inv.getStackInSlot(0)) && moveF >= MAX_MOVE) {
 				inv.setInventorySlotContents(1, inv.getStackInSlot(0).copy());
 				onSmelting();
-				inv.setInventorySlotContents(0, ItemStack.EMPTY);
+				inv.removeStackFromSlot(0);
 				moveF = 0;
 				prevMoveF = 0;
-				flag = true;
+				this.markDirty();
 			}
 		} else {
 			if (moveB < MAX_MOVE) {
@@ -80,7 +81,6 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			} else {
 				// 送り出し
 				releaseItem();
-
 			}
 		}
 
@@ -92,6 +92,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			// 吸引処理
 			insertItem();
 		} else {
+
 			if (moveF < MAX_MOVE) {
 				prevMoveF = moveF;
 				moveF++;
@@ -105,12 +106,13 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		if (moveB != prevMoveB || moveF != prevMoveF) {
 			sendPacket = true;
 		} else if (lastHasItem) {
-			if (DCUtil.isEmpty(inv.getStackInSlot(1))) {
+			if (DCUtil.isEmpty(inv.getStackInSlot(1)) && DCUtil.isEmpty(inv.getStackInSlot(0))) {
 				sendPacket = true;
 				lastHasItem = false;
 			}
-		} else if (!DCUtil.isEmpty(inv.getStackInSlot(1)) && !lastHasItem) {
+		} else if (!DCUtil.isEmpty(inv.getStackInSlot(1)) || DCUtil.isEmpty(inv.getStackInSlot(0))) {
 			lastHasItem = true;
+			sendPacket = true;
 		}
 
 		if (sendPacket) {
@@ -204,7 +206,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 				TileConveyor tConv = (TileConveyor) target;
 				if (DCUtil.isEmpty(tConv.getStackInSlot(0))) {
 					tConv.setInventorySlotContents(0, inv.getStackInSlot(1).copy());
-					inv.setInventorySlotContents(1, ItemStack.EMPTY);
+					this.decrStackSize(1, 1);
 					target.markDirty();
 					this.markDirty();
 					flag = true;
@@ -214,7 +216,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 				for (int i = 0; i < tInv.getSlots(); i++) {
 					if (DCUtil.isEmpty(tInv.insertItem(i, inv.getStackInSlot(1).copy(), true))) {
 						ItemStack ret = tInv.insertItem(i, inv.getStackInSlot(1).copy(), false);
-						inv.setInventorySlotContents(1, ItemStack.EMPTY);
+						this.decrStackSize(1, 1);
 						flag = true;
 						target.markDirty();
 						this.markDirty();
@@ -229,7 +231,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			EntityItem drop = new EntityItem(world, next.getX() + 0.5D, next.getY() + 0.5D, next.getZ() + 0.5D,
 					inv.getStackInSlot(1).copy());
 			if (world.spawnEntity(drop)) {
-				inv.setInventorySlotContents(1, ItemStack.EMPTY);
+				this.decrStackSize(1, 1);
 				this.markDirty();
 				flag = true;
 			}
@@ -282,26 +284,13 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-
-		inv.readFromNBT(tag);
-
-		this.moveF = tag.getInteger("FowCount");
-		this.moveB = tag.getInteger("BackCount");
-		this.prevMoveF = tag.getInteger("PrevFowCount");
-		this.prevMoveB = tag.getInteger("PrevBackCount");
+		setNBT(tag);
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
-		// 燃焼時間や調理時間などの書き込み
-		tag.setInteger("FowCount", this.moveF);
-		tag.setInteger("BackCount", this.moveB);
-		tag.setInteger("PrevFowCount", this.prevMoveF);
-		tag.setInteger("PrevBackCount", this.prevMoveB);
-
-		// アイテムの書き込み
-		inv.writeToNBT(tag);
+		getNBT(tag);
 
 		return tag;
 	}
@@ -316,7 +305,17 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		tag.setInteger("PrevBackCount", this.prevMoveB);
 
 		// アイテムの書き込み
-		inv.writeToNBT(tag);
+		NBTTagList nbttaglist = new NBTTagList();
+
+		for (int i = 0; i < this.getSizeInventory(); ++i) {
+			if (getStackInSlot(i) != null) {
+				NBTTagCompound tag1 = new NBTTagCompound();
+				tag1.setByte("Slot", (byte) i);
+				getStackInSlot(i).writeToNBT(tag1);
+				nbttaglist.appendTag(tag1);
+			}
+		}
+		tag.setTag("InvItems", nbttaglist);
 		return tag;
 	}
 

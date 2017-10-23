@@ -97,6 +97,22 @@ public class MachineRecipes {
 				'W', new ItemStack(Blocks.IRON_BARS, 1, 0)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft3_s, 1, 0), new Object[] {
+				"X", "Y", "X", 'X', "ingotSteel", 'Y', "gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft3_l, 1, 0), new Object[] {
+				" X", "XY", 'X', new ItemStack(MachineInit.shaft3_s, 1, 0), 'Y', "gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft3_t_a, 1, 0), new Object[] {
+				" X ", "XY ", " X ", 'X', new ItemStack(MachineInit.shaft3_s, 1, 0), 'Y', "gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft3_t_b, 1, 0), new Object[] {
+				" X ", "XYX", 'X', new ItemStack(MachineInit.shaft3_s, 1, 0), 'Y', "gearSteel"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft2_s, 1, 0), new Object[] {
 				"X", "Y", "X", 'X', "ingotSUS", 'Y', "gearSteel"
 		});

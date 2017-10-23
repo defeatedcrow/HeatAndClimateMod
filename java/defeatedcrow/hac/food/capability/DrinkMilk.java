@@ -1,5 +1,6 @@
 package defeatedcrow.hac.food.capability;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -8,18 +9,10 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
 public enum DrinkMilk {
-	NONE(
-			0,
-			1.0F),
-	MILK(
-			1,
-			1.5F),
-	CREAM(
-			2,
-			2.0F),
-	SOY(
-			3,
-			2.0F);
+	NONE(0, 1.0F),
+	MILK(1, 1.5F),
+	CREAM(2, 2.0F),
+	SOY(3, 2.0F);
 
 	public final float effect;
 	public final int id;
@@ -47,7 +40,7 @@ public enum DrinkMilk {
 	}
 
 	public static DrinkMilk isMilkItem(ItemStack item) {
-		if (item == null || item.getItem() == null) {
+		if (DCUtil.isEmpty(item)) {
 			return NONE;
 		} else {
 			if (item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {

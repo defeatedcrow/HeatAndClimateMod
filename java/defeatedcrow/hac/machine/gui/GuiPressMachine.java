@@ -36,12 +36,14 @@ public class GuiPressMachine extends GuiContainer {
 
 	@Override
 	public void drawScreen(int x, int y, float partialTicks) {
+		this.drawDefaultBackground();
 		super.drawScreen(x, y, partialTicks);
 		if (isPointInRegion(41, 12, 58, 58, x, y)) {
 			ArrayList<String> list1 = new ArrayList<String>();
 			list1.add("Required Items");
 			this.drawHoveringText(list1, x, y - 12, fontRenderer);
 		}
+		this.renderHoveredToolTip(x, y);
 	}
 
 	@Override

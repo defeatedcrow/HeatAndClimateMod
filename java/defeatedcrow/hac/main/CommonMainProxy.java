@@ -206,8 +206,6 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void addSidedBlock(Block block, String name, int max) {}
 
-	public void addTBBlock(Block block, String name, int max) {}
-
 	public void addCropBlock(Block block, String name, int max) {}
 
 	/**

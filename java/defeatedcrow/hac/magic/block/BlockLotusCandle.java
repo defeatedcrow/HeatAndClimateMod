@@ -1,5 +1,7 @@
 package defeatedcrow.hac.magic.block;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -37,8 +39,9 @@ public class BlockLotusCandle extends BlockContainer {
 	}
 
 	@Override
-	public boolean isCollidable() {
-		return false;
+	@Nullable
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 
 	@Override

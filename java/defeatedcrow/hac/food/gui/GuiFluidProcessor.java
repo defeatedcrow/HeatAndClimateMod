@@ -44,7 +44,7 @@ public class GuiFluidProcessor extends GuiContainer {
 		if (this.isPointInRegion(-20, 4, 20, 20, mouseX, mouseY)) {
 			List<String> list = new ArrayList<String>();
 			if (processor != null) {
-				list.add(I18n.translateToLocal(processor.notSuitableMassage()));
+				list.add(I18n.translateToLocal(processor.climateSuitableMassage()));
 			}
 			if (!list.isEmpty()) {
 				this.drawHoveringText(list, mouseX - this.guiLeft, mouseY - this.guiTop);
@@ -54,6 +54,7 @@ public class GuiFluidProcessor extends GuiContainer {
 
 	@Override
 	public void drawScreen(int x, int y, float par3) {
+		this.drawDefaultBackground();
 		super.drawScreen(x, y, par3);
 
 		ArrayList<String> list = new ArrayList<String>();
@@ -87,6 +88,7 @@ public class GuiFluidProcessor extends GuiContainer {
 		}
 
 		this.drawHoveringText(list, x, y);
+		this.renderHoveredToolTip(x, y);
 	}
 
 	@Override

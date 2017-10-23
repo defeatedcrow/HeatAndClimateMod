@@ -75,12 +75,12 @@ public class EntityMagneticHover extends EntityScooter {
 				if (this.motionY > 0F) {
 					this.motionY *= 0.75D;
 				}
-				this.motionY -= 0.02D;
+				this.motionY -= 0.01D;
 			}
 		}
 
-		if (motionY < -0.1D) {
-			this.motionY -= 0.1D;
+		if (motionY < -0.05D) {
+			this.motionY -= 0.05D;
 		}
 	}
 
@@ -132,7 +132,7 @@ public class EntityMagneticHover extends EntityScooter {
 		AxisAlignedBB aabb = this.getEntityBoundingBox().grow(0.5D);
 		int i = MathHelper.floor(aabb.minX);
 		int j = MathHelper.ceil(aabb.maxX);
-		int k = MathHelper.floor(aabb.minY - 1.0D);
+		int k = MathHelper.floor(aabb.minY - 1.5D);
 		int l = MathHelper.ceil(aabb.minY);
 		int i1 = MathHelper.floor(aabb.minZ);
 		int j1 = MathHelper.ceil(aabb.maxZ);
@@ -148,7 +148,7 @@ public class EntityMagneticHover extends EntityScooter {
 						mpos.setPos(k1, l1, i2);
 						IBlockState state = this.world.getBlockState(mpos);
 
-						if (state.getMaterial() == Material.WATER && state.getBoundingBox(world, mpos) != null) {
+						if (state.getMaterial() == Material.WATER) {
 							double d = state.getBoundingBox(world, mpos).maxY + mpos.getY();
 							if (posY < d + 1D) {
 								flag2 = true;

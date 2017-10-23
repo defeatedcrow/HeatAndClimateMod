@@ -173,7 +173,7 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 	}
 
 	@Override
-	public String notSuitableMassage() {
+	public String climateSuitableMassage() {
 		if (current == null)
 			return "dcs.gui.message.nullclimate";
 		else {

@@ -46,6 +46,13 @@ public class GuiSpinning extends GuiContainer {
 		this.drawTexturedModalRect(i + 78, j + 34, 176, 0, l, 12);
 	}
 
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		this.drawDefaultBackground();
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		this.renderHoveredToolTip(mouseX, mouseY);
+	}
+
 	private int getCookProgressScaled(int pixels) {
 		int i = this.mill.getField(0);
 		int j = this.mill.getField(1);
