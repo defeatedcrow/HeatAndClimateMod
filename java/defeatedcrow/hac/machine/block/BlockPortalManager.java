@@ -41,7 +41,7 @@ public class BlockPortalManager extends BlockTorqueBase {
 				if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 					ItemStack held = player.getHeldItem(hand);
 					if (!DCUtil.isEmpty(held)
-							&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+							&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
 						DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
 					} else {
 						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());

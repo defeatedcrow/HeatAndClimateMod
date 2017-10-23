@@ -131,15 +131,26 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 		return DCHeatTier.getTypeByID(currentClimate);
 	}
 
+	public int getFuel(ItemStack item) {
+		return getBurnTime(item);
+	}
+
 	/* === 燃焼判定 === */
 
 	public static int getBurnTime(ItemStack item) {
 		int i = TileEntityFurnace.getItemBurnTime(item);
-		int ret = i / 4;
-		if (ret > 0 && ret < 50) {
-			ret = 50;
+		int i2 = item.getItem().getItemBurnTime(item);
+		if (i2 > 0) {
+			int ret2 = i2 / 4;
+			if (ret2 > 0 && ret2 < 50)
+				ret2 = 50;
+			return ret2;
+		} else {
+			int ret = i / 4;
+			if (ret > 0 && ret < 50)
+				ret = 50;
+			return ret;
 		}
-		return ret;
 	}
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */
@@ -315,7 +326,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)

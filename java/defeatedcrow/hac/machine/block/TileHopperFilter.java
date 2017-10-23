@@ -220,6 +220,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
 		inv.setInventorySlotContents(i, stack);
+		this.markDirty();
 	}
 
 	@Override
@@ -351,7 +352,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)

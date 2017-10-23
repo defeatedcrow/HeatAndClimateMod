@@ -149,12 +149,14 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
+				|| capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY ? (T) this : null;
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
+				|| capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ? (T) this : null;
 	}
 }

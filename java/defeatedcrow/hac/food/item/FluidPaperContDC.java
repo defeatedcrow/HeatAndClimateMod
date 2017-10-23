@@ -12,13 +12,13 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.FluidTankProperties;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 /**
  * 空容器にPAPERを返却するコンテナアイテム
  */
-public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
+public class FluidPaperContDC implements IFluidHandlerItem, ICapabilityProvider {
 
 	protected final ItemStack container;
 
@@ -145,13 +145,18 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY ? (T) this : null;
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ? (T) this : null;
+	}
+
+	@Override
+	public ItemStack getContainer() {
+		return container;
 	}
 
 }

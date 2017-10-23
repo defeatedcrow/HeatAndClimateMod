@@ -576,14 +576,14 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)
 				return (T) handlerTop;
 			else
 				return (T) handlerSide;
-		} else if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+		} else if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.UP)
 				return (T) inputT;
 			else

@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.event;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
@@ -17,6 +18,8 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -67,9 +70,13 @@ public class AltTooltipEvent {
 
 					// tool tier
 					if (tI instanceof ItemTool) {
-						int tier = ((ItemTool) tI).getHarvestLevel(target, null, player, null);
-						String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
-						event.getToolTip().add(ret);
+						Set<String> classes = tI.getToolClasses(target);
+						if (!classes.isEmpty()) {
+							String className = classes.iterator().next();
+							int tier = ((ItemTool) tI).getHarvestLevel(target, className, player, null);
+							String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
+							event.getToolTip().add(ret);
+						}
 					}
 
 					// climate reg
@@ -85,6 +92,18 @@ public class AltTooltipEvent {
 						String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": Heat " + regH + "/ Cold "
 								+ regC;
 						event.getToolTip().add(ret);
+					}
+
+					// universal bucket
+					if (tI instanceof UniversalBucket) {
+						UniversalBucket bucket = (UniversalBucket) tI;
+						FluidStack f = bucket.getFluid(target);
+						if (f != null && f.getFluid() != null) {
+							String fName = f.getFluid().getName();
+							int temp = f.getFluid().getTemperature();
+							event.getToolTip().add(fName);
+							event.getToolTip().add("Temp: " + temp);
+						}
 					}
 				}
 			}

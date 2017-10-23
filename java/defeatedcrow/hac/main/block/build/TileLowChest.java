@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.block.build;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
@@ -12,14 +13,12 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
@@ -127,34 +126,14 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = new ItemStack(tag1);
-			}
-		}
+		inv.readFromNBT(tag);
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound tag1 = new NBTTagCompound();
-				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
-				nbttaglist.appendTag(tag1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		inv.writeToNBT(tag);
 		return tag;
 	}
 
@@ -162,17 +141,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	public NBTTagCompound getNBT(NBTTagCompound tag) {
 		super.getNBT(tag);
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-				nbttagcompound1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(nbttagcompound1);
-				nbttaglist.appendTag(nbttagcompound1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		inv.writeToNBT(tag);
 		return tag;
 	}
 
@@ -180,17 +149,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = nbttagcompound1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = new ItemStack(nbttagcompound1);
-			}
-		}
+		inv.readFromNBT(tag);
 	}
 
 	@Override
@@ -213,7 +172,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	/* ========== 以下、IInventoryのメソッド ========== */
 
-	public ItemStack[] inv = new ItemStack[this.getSizeInventory()];
+	public DCInventory inv = new DCInventory(this.getSizeInventory());
 
 	// スロット数
 	@Override
@@ -224,50 +183,18 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	// インベントリ内の任意のスロットにあるアイテムを取得
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		if (i < getSizeInventory())
-			return this.inv[i];
-		else
-			return ItemStack.EMPTY;
+		return inv.getStackInSlot(i);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return ItemStack.EMPTY;
-		if (!DCUtil.isEmpty(inv[i])) {
-			ItemStack itemstack;
-
-			if (this.inv[i].getCount() <= num) {
-				itemstack = this.inv[i].copy();
-				this.inv[i] = ItemStack.EMPTY;
-				return itemstack;
-			} else {
-				itemstack = this.inv[i].splitStack(num);
-				if (this.inv[i].getCount() == 0) {
-					this.inv[i] = ItemStack.EMPTY;
-				} else {
-					this.markDirty();
-				}
-				return itemstack;
-			}
-		} else
-			return ItemStack.EMPTY;
+		return inv.decrStackSize(i, num);
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return;
-		else {
-			this.inv[i] = stack;
-
-			if (!DCUtil.isEmpty(stack) && stack.getCount() > this.getInventoryStackLimit()) {
-				stack.setCount(this.getInventoryStackLimit());
-			}
-
-			this.markDirty();
-		}
+		inv.setInventorySlotContents(i, stack);
 	}
 
 	// インベントリの名前
@@ -314,50 +241,16 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	// 追加メソッド
 	public static int isItemStackable(ItemStack target, ItemStack current) {
-		if (DCUtil.isEmpty(target) || DCUtil.isEmpty(current))
-			return 0;
-
-		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
-				&& ItemStack.areItemStackTagsEqual(target, current)) {
-			int i = current.getCount() + target.getCount();
-			if (i > current.getMaxStackSize())
-				return current.getMaxStackSize() - current.getCount();
-			return target.getCount();
-		}
-
-		return 0;
+		return DCInventory.isItemStackable(target, current);
 	}
 
 	public void incrStackInSlot(int i, ItemStack input) {
-		if (i < this.getSizeInventory()) {
-			if (!DCUtil.isEmpty(input)) {
-				if (!DCUtil.isEmpty(inv[i])) {
-					if (this.inv[i].getItem() == input.getItem() && this.inv[i].getMetadata() == input.getMetadata()) {
-						DCUtil.addStackSize(inv[i], input.getCount());
-						if (this.inv[i].getCount() > this.getInventoryStackLimit()) {
-							this.inv[i].setCount(getInventoryStackLimit());
-						}
-					}
-				} else {
-					this.setInventorySlotContents(i, input);
-				}
-			}
-		}
-
-		this.markDirty();
+		inv.incrStackInSlot(i, input);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		i = MathHelper.clamp(i, 0, this.getSizeInventory() - 1);
-		if (i < inv.length) {
-			if (!DCUtil.isEmpty(inv[i])) {
-				ItemStack itemstack = this.inv[i].copy();
-				this.inv[i] = ItemStack.EMPTY;
-				return itemstack;
-			}
-		}
-		return ItemStack.EMPTY;
+		return inv.removeStackFromSlot(i);
 	}
 
 	@Override
@@ -375,9 +268,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < this.inv.length; ++i) {
-			this.inv[i] = ItemStack.EMPTY;
-		}
+		inv.clear();
 	}
 
 	@Override
@@ -412,13 +303,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	@Override
 	public boolean isEmpty() {
-		boolean ret = true;
-		for (int i = 0; i < this.inv.length; ++i) {
-			if (!DCUtil.isEmpty(inv[i])) {
-				ret = false;
-			}
-		}
-		return ret;
+		return inv.isEmpty();
 	}
 
 }

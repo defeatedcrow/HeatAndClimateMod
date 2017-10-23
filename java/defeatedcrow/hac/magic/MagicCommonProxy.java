@@ -36,7 +36,7 @@ import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.magic.proj.EntityProjSilver;
 import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
-import defeatedcrow.hac.main.worldgen.DCRegistryUtil;
+import defeatedcrow.hac.main.util.DCRegistryUtil;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MagicCommonProxy {

@@ -17,7 +17,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -37,7 +37,7 @@ public class ItemIBC extends DCItemBlock {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
-		IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+		IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		if (cont != null && cont.getTankProperties() != null) {
 			FluidStack f = cont.getTankProperties()[0].getContents();
 			if (f != null && f.getFluid() != null) {
@@ -73,7 +73,7 @@ public class ItemIBC extends DCItemBlock {
 
 		@Override
 		public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-			if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			if (capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY) {
 				return true;
 			} else {
 				return false;
@@ -82,7 +82,7 @@ public class ItemIBC extends DCItemBlock {
 
 		@Override
 		public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-			if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			if (capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY) {
 				return (T) new FluidItemBlockWrapper(cont, 128000, "Tank");
 			} else {
 				return null;

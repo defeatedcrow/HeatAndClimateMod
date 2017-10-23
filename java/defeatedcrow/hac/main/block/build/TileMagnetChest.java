@@ -2,7 +2,6 @@ package defeatedcrow.hac.main.block.build;
 
 import java.util.List;
 
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.SoundEvents;
@@ -40,7 +39,7 @@ public class TileMagnetChest extends TileLowChest {
 					if (drop != null && !DCUtil.isEmpty(drop.getItem())) {
 						ItemStack copy = drop.getItem().copy();
 						int slot = canInsertSlot(copy);
-						DCLogger.debugLog("slot: " + slot);
+						// DCLogger.debugLog("slot: " + slot);
 						if (slot > -1) {
 							int i = 0;
 							if (DCUtil.isEmpty(getStackInSlot(slot))) {

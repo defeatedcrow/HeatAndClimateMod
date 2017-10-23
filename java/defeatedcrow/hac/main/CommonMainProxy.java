@@ -82,7 +82,7 @@ import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
-import defeatedcrow.hac.main.worldgen.DCRegistryUtil;
+import defeatedcrow.hac.main.util.DCRegistryUtil;
 import defeatedcrow.hac.main.worldgen.WorldGenAltOres2;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;

@@ -12,7 +12,6 @@ import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
-import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -42,6 +41,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.wrappers.BlockLiquidWrapper;
 import net.minecraftforge.fluids.capability.wrappers.FluidBlockWrapper;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -305,18 +305,15 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandlerItem) {
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (dummy != null && dummy.getTankProperties() != null) {
@@ -334,12 +331,12 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 				fc = dummy.drain(rem, false);
 				if (fc != null && fc.amount <= rem) {
 					FluidStack fill = null;
-					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).drain(rem, true);
-						ret = in2;
+					if (in.getItem() instanceof IFluidHandlerItem) {
+						fill = ((IFluidHandlerItem) in2.getItem()).drain(rem, true);
+						ret = ((IFluidHandlerItem) in2.getItem()).getContainer();
 					} else {
 						fill = dummy.drain(rem, true);
-						ret = in2;
+						ret = dummy.getContainer();
 					}
 
 					if (fill != null
@@ -366,18 +363,15 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandlerItem) {
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
@@ -400,12 +394,12 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			if (b) {
 				FluidStack drain = tank.drain(rem, false);
 				int fill = 0;
-				if (in.getItem() instanceof IFluidHandler) {
-					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-					ret = in2;
+				if (in.getItem() instanceof IFluidHandlerItem) {
+					fill = ((IFluidHandlerItem) in2.getItem()).fill(drain, true);
+					ret = ((IFluidHandlerItem) in2.getItem()).getContainer();
 				} else {
 					fill = dummy.fill(drain, true);
-					ret = in2;
+					ret = dummy.getContainer();
 				}
 
 				if (fill > 0 && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
@@ -453,14 +447,6 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 								drop.setDead();
 							}
 							return true;
-						}
-					}
-				} else if (entity instanceof EntityCow) {
-					EntityCow cow = (EntityCow) entity;
-					if (MainInit.milk != null && !cow.isChild()) {
-						FluidStack milk = new FluidStack(MainInit.milk, 10);
-						if (inputT.fill(milk, false) > 0) {
-							inputT.fill(milk, true);
 						}
 					}
 				}
@@ -538,7 +524,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if (!DCUtil.isEmpty(stack))
-			return stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			return stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		return false;
 	}
 
@@ -679,9 +665,9 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return (T) inputT;
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)

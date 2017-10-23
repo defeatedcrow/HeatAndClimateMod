@@ -57,7 +57,7 @@ import defeatedcrow.hac.food.entity.StewVegiEntity;
 import defeatedcrow.hac.food.entity.SugarPieEntity;
 import defeatedcrow.hac.food.entity.ToastBreadEntity;
 import defeatedcrow.hac.food.entity.YakitoriStickEntity;
-import defeatedcrow.hac.main.worldgen.DCRegistryUtil;
+import defeatedcrow.hac.main.util.DCRegistryUtil;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class FoodCommonProxy {

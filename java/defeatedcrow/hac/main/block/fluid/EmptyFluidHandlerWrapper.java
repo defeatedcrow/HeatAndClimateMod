@@ -5,10 +5,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.capability.FluidTankProperties;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
-/* 無限にfillできるダミータンク
- * 液体破棄用 */
+/*
+ * 無限にfillできるダミータンク
+ * 液体破棄用
+ */
 public class EmptyFluidHandlerWrapper extends DCTank {
 
 	public EmptyFluidHandlerWrapper() {
@@ -73,12 +76,10 @@ public class EmptyFluidHandlerWrapper extends DCTank {
 	}
 
 	@Override
-	public void setAmount(int par1) {
-	}
+	public void setAmount(int par1) {}
 
 	@Override
-	public void setFluidById(int par1) {
-	}
+	public void setFluidById(int par1) {}
 
 	@Override
 	public int fill(FluidStack get, boolean doFill) {
@@ -93,39 +94,13 @@ public class EmptyFluidHandlerWrapper extends DCTank {
 		return null;
 	}
 
-	/* property */
-
-	@Override
-	public FluidStack getContents() {
-		return null;
-	}
-
-	@Override
-	public boolean canFill() {
-		return true;
-	}
-
-	@Override
-	public boolean canDrain() {
-		return false;
-	}
-
-	@Override
-	public boolean canFillFluidType(FluidStack get) {
-		return get != null;
-	}
-
-	@Override
-	public boolean canDrainFluidType(FluidStack get) {
-		return get != null;
-	}
-
 	/* Handler */
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
 		return new IFluidTankProperties[] {
-				this };
+				new FluidTankProperties(fluid, capacity)
+		};
 	}
 
 	@Override

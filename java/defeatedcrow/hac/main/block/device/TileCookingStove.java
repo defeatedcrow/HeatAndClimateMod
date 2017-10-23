@@ -41,7 +41,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 			this.checkSideTank();
 
 			if (this.currentBurnTime == 0) {
-				FluidStack f = inputT.getContents();
+				FluidStack f = inputT.getFluid();
 				if (f != null && f.getFluid() != null && inputT.getFluidAmount() > 0) {
 					int i = getBurnTime(f.getFluid());
 					if (i > 0) {
@@ -158,9 +158,9 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return (T) inputT;
-		else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return null;
 		return super.getCapability(capability, facing);
 	}

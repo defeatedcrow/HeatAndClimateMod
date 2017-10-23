@@ -164,7 +164,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 					Entity entity = (Entity) list.get(i);
 					if (DCUtil.isEmpty(inv.getStackInSlot(0)) && entity != null && entity instanceof EntityItem) {
 						EntityItem drop = (EntityItem) entity;
-						if (drop.getItem() != null && drop.getItem().getCount() > 0) {
+						if (!DCUtil.isEmpty(drop.getItem())) {
 							inv.setInventorySlotContents(0, drop.getItem().splitStack(1));
 							moveF = 0;
 							prevMoveF = 0;
@@ -429,6 +429,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
 		inv.setInventorySlotContents(i, stack);
+		this.markDirty();
 	}
 
 	// インベントリ内のスタック限界値
@@ -521,7 +522,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)

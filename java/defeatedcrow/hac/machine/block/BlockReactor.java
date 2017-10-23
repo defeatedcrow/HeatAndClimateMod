@@ -50,7 +50,7 @@ public class BlockReactor extends BlockTorqueBase {
 					if (heldItem.getItem() instanceof IWrenchDC) {
 
 						return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
-					} else if (heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+					} else if (heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 						DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
 						return true;
 					}

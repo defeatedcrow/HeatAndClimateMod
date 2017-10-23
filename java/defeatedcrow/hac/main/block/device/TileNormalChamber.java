@@ -10,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 
@@ -37,7 +36,7 @@ public class TileNormalChamber extends TileChamberBase {
 			}
 
 			if (this.currentBurnTime == 0) {
-				if (DCUtil.isEmpty(getStackInSlot(0)) && getBurnTime(this.getStackInSlot(0)) > 0) {
+				if (!DCUtil.isEmpty(getStackInSlot(0)) && getFuel(this.getStackInSlot(0)) > 0) {
 					ItemStack cont = this.getStackInSlot(0).getItem().getContainerItem(this.getStackInSlot(0));
 					if (DCUtil.isEmpty(cont)) {
 						cont = DCFluidUtil.getEmptyCont(this.getStackInSlot(0));
@@ -75,12 +74,9 @@ public class TileNormalChamber extends TileChamberBase {
 		}
 	}
 
-	public static int getBurnTime(ItemStack item) {
-		int i = TileEntityFurnace.getItemBurnTime(item);
-		int ret = i / 4;
-		if (ret > 0 && ret < 50)
-			ret = 50;
-		return ret;
+	@Override
+	public int getFuel(ItemStack item) {
+		return getBurnTime(item);
 	}
 
 	protected int canInsertResult(ItemStack item) {

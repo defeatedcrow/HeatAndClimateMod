@@ -62,10 +62,11 @@ public class TileVillageChest extends TileLowChest {
 										j = this.isItemStackable(ins, this.getStackInSlot(slot));
 									}
 									if (j > 0) {
-										DCLogger.debugLog("ins" + j);
+										DCLogger.debugLog("village chest ins" + j);
 										this.incrStackInSlot(slot, ins);
 										this.markDirty();
 										inv.decrStackSize(i, j);
+										inv.markDirty();
 									}
 								}
 							}
