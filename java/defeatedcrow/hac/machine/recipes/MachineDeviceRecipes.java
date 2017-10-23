@@ -311,10 +311,10 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerReactorRecipes.addRecipe(r7, DCHeatTier.SMELTING);
 
 			// Fe ハーバーボッシュ
-			IReactorRecipe r8 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 600), null,
-					DCHeatTier.KILN, 0, new ItemStack(Blocks.IRON_ORE, 1, 0),
-					new FluidStack(MachineInit.hydrogen, 1000), null, new Object[] {});
-			RecipeAPI.registerReactorRecipes.addRecipe(r8, DCHeatTier.KILN);
+			// IReactorRecipe r8 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 600), null,
+			// DCHeatTier.KILN, 0, new ItemStack(Blocks.IRON_ORE, 1, 0),
+			// new FluidStack(MachineInit.hydrogen, 1000), null, new Object[] {});
+			// RecipeAPI.registerReactorRecipes.addRecipe(r8, DCHeatTier.KILN);
 
 			IReactorRecipe r19 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 600), null,
 					DCHeatTier.KILN, 0, new ItemStack(MainInit.ores, 1, 5), new FluidStack(MachineInit.hydrogen, 1000),

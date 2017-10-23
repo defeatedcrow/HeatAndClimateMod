@@ -184,15 +184,15 @@ public class MainMaterialRegister {
 
 		MainInit.cropCont = new BlockCropCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_crop", 10);
 		DCMaterial.registerBlock(MainInit.cropCont, ClimateCore.PACKAGE_BASE + "_cont_crop", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addTBBlock(MainInit.cropCont, "cont_crop", 10);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropCont, "cont_crop", 10);
 
 		MainInit.dropCont = new BlockEnemyCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_metal", 4);
 		DCMaterial.registerBlock(MainInit.dropCont, ClimateCore.PACKAGE_BASE + "_cont_metal", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addTBBlock(MainInit.dropCont, "cont_metal", 4);
+		ClimateMain.proxy.addSidedBlock(MainInit.dropCont, "cont_metal", 4);
 
 		MainInit.miscCont = new BlockMiscCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_misc", 3);
 		DCMaterial.registerBlock(MainInit.miscCont, ClimateCore.PACKAGE_BASE + "_cont_misc", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addTBBlock(MainInit.miscCont, "cont_misc", 3);
+		ClimateMain.proxy.addSidedBlock(MainInit.miscCont, "cont_misc", 3);
 
 		MainInit.cardboard = new BlockCardboard(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cardboard", 5);
 		DCMaterial.registerBlock(MainInit.cardboard, ClimateCore.PACKAGE_BASE + "_cont_cardboard", ClimateMain.MOD_ID);
@@ -204,7 +204,7 @@ public class MainMaterialRegister {
 
 		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 8);
 		DCMaterial.registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addTBBlock(MainInit.cropBasket, "cont_basket", 8);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 8);
 	}
 
 	static void regJsonBlock() {

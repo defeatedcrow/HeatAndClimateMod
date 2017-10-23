@@ -1,5 +1,6 @@
 package defeatedcrow.hac.food.capability;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -34,7 +35,7 @@ public enum DrinkSugar {
 	}
 
 	public static DrinkSugar isSugarItem(ItemStack item) {
-		if (item == null || item.getItem() == null)
+		if (DCUtil.isEmpty(item))
 			return NONE;
 		else {
 

@@ -81,8 +81,7 @@ public class PortalManagerTESR extends DCTorqueTESRBase {
 	}
 
 	@Override
-	public void renderTileEntityFast(TileTorqueBase te, double x, double y, double z, float partialTicks,
-			int destroyStage, float partial, net.minecraft.client.renderer.BufferBuilder buffer) {
+	public void render(TileTorqueBase te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		int i = 0;
 		if (te instanceof TilePortalManager && ((TilePortalManager) te).active) {
 			i = 1;

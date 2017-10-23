@@ -770,6 +770,10 @@ tile.dcs_device_spinning_machine_0.name=Spinning Machine
 tile.dcs_device_portal_manager_0.name=Transfer Portal
 tile.dcs_device_adapter_item_0.name=Item Sending Panel
 tile.dcs_device_acceptor_item_0.name=Item Accepting Panel
+tile.dcs_device_shaft_s_steel_0.name=Steel Shaft(I)
+tile.dcs_device_shaft_l_steel_0.name=Steel Shaft(L)
+tile.dcs_device_shaft_ta_steel_0.name=Steel Shaft(T-A)
+tile.dcs_device_shaft_tb_steel_0.name=Steel Shaft(T-B)
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -1018,6 +1022,12 @@ dcs.gui.message.pottery.toocold=Too cold
 dcs.gui.message.pottery.toohot=Too hot
 dcs.gui.message.steel.toocold=Too cold
 dcs.gui.message.suitableclimate=Suitable Climate
+dcs.gui.message.suitable=Suitable Climate
+dcs.gui.message.require.airflow=Airflow is blocked.
+dcs.gui.message.require.airflow2=Reduce surrounding blocks.
+dcs.gui.message.require.wind=This device needs the wind.
+dcs.gui.message.require.wind2=Use the bellow or the fan.
+dcs.gui.message.require.absolute=This device needs the ABSOLUTE temp or the liquid nitrogen.
 
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.

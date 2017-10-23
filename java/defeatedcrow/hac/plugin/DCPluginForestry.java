@@ -37,23 +37,23 @@ public class DCPluginForestry {
 		if (ModuleConfig.food) {
 
 			Item mulch = Item.REGISTRY.getObject(new ResourceLocation("forestry", "mulch"));
-			Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizercompound"));
+			Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizer_compound"));
 			Fluid seed = FluidRegistry.getFluid("seed.oil");
 			Fluid juice = FluidRegistry.getFluid("juice");
 			Fluid honey = FluidRegistry.getFluid("for.honey");
 			Fluid bio = FluidRegistry.getFluid("biomass");
 
-			if (mulch == null || fer == null || seed == null || juice == null)
+			if (mulch == null || seed == null || juice == null)
 				return;
 
 			// squeeze
 			NonNullList<ItemStack> l1 = NonNullList.create();
 			l1.add(new ItemStack(FoodInit.crops, 1, 3));
-			RecipeManagers.squeezerManager.addRecipe(10, l1, new FluidStack(juice, 100), new ItemStack(mulch), 10);
+			RecipeManagers.squeezerManager.addRecipe(10, l1, new FluidStack(juice, 200), new ItemStack(mulch), 10);
 
 			NonNullList<ItemStack> l2 = NonNullList.create();
 			l2.add(new ItemStack(FoodInit.crops, 1, 4));
-			RecipeManagers.squeezerManager.addRecipe(20, l2, new FluidStack(juice, 50), new ItemStack(mulch), 10);
+			RecipeManagers.squeezerManager.addRecipe(20, l2, new FluidStack(juice, 100), new ItemStack(mulch), 10);
 
 			NonNullList<ItemStack> l3 = NonNullList.create();
 			l3.add(new ItemStack(FoodInit.crops, 1, 5));
@@ -61,11 +61,11 @@ public class DCPluginForestry {
 
 			NonNullList<ItemStack> l4 = NonNullList.create();
 			l4.add(new ItemStack(FoodInit.crops, 1, 6));
-			RecipeManagers.squeezerManager.addRecipe(10, l4, new FluidStack(juice, 300), new ItemStack(mulch), 10);
+			RecipeManagers.squeezerManager.addRecipe(10, l4, new FluidStack(juice, 400), new ItemStack(mulch), 10);
 
 			NonNullList<ItemStack> l5 = NonNullList.create();
 			l5.add(new ItemStack(FoodInit.crops, 1, 7));
-			RecipeManagers.squeezerManager.addRecipe(10, l5, new FluidStack(FoodInit.oil, 100), new ItemStack(mulch),
+			RecipeManagers.squeezerManager.addRecipe(10, l5, new FluidStack(FoodInit.oil, 200), new ItemStack(mulch),
 					10);
 
 			NonNullList<ItemStack> l6 = NonNullList.create();
@@ -168,7 +168,7 @@ public class DCPluginForestry {
 
 			}
 
-			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyedSlice"));
+			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyed_slice"));
 
 			if (slice != null) {
 				DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),

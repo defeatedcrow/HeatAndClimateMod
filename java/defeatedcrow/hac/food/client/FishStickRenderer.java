@@ -68,7 +68,7 @@ public class FishStickRenderer extends DCRenderFoodBase<FishStickEntity> {
 
 			GlStateManager.scale(0.8F, 0.8F, 0.8F);
 			GlStateManager.rotate(360F - entity.rotationYaw, 0.0F, 1.0F, 0.0F);
-			GlStateManager.rotate(45F, 0.0F, 0.0F, 1.0F);
+			GlStateManager.rotate(-45F, 0.0F, 0.0F, 1.0F);
 			GlStateManager.translate(0F, 0F, i * 0.042F - 0.021F);
 
 			GlStateManager.pushAttrib();

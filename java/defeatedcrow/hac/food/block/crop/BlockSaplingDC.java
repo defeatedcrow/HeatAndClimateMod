@@ -3,6 +3,8 @@ package defeatedcrow.hac.food.block.crop;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateCropBase;
@@ -49,8 +51,9 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 	}
 
 	@Override
-	public boolean isCollidable() {
-		return false;
+	@Nullable
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 
 	@Override

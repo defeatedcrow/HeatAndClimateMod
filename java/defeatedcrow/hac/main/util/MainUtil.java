@@ -8,6 +8,8 @@ import net.minecraft.util.EnumHand;
 
 public class MainUtil {
 
+	public static final String BR = System.getProperty("line.separator");
+
 	public static final String[] DYES = {
 			"dyeWhite", "dyeOrange", "dyeMagenda", "dyeLightblue", "dyeYellow", "dyeLime", "dyePink", "dyeGray",
 			"dyeLightGray", "dyeCyan", "dyePurple", "dyeBlue", "dyeBrown", "dyeGreen", "dyeRed", "dyeBlack",

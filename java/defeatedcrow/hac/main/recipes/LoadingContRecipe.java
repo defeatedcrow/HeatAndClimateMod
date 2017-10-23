@@ -17,8 +17,10 @@ public class LoadingContRecipe {
 				new ItemStack(Items.COAL, 8, 1)
 		};
 		for (int i = 0; i < logs.length; i++) {
+			ItemStack c2 = logs[i].copy();
+			c2.setCount(1);
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.logCont, 1, i), new Object[] {
-					"XXX", "X X", "XXX", 'X', logs[i]
+					"XXX", "X X", "XXX", 'X', c2
 			});
 
 			DCRecipe.addShapelessRecipe(res.getRecipeName(), logs[i], new Object[] {
@@ -34,8 +36,11 @@ public class LoadingContRecipe {
 				new ItemStack(MainInit.bakedApple, 8, 0), new ItemStack(Items.BAKED_POTATO, 8, 0)
 		};
 		for (int i = 0; i < crops.length; i++) {
+			ItemStack c2 = crops[i].copy();
+			c2.setCount(1);
+
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cropCont, 1, i), new Object[] {
-					"XXX", "X X", "XXX", 'X', crops[i]
+					"XXX", "X X", "XXX", 'X', c2
 			});
 
 			DCRecipe.addShapelessRecipe(res.getRecipeName(), crops[i], new Object[] {
@@ -48,8 +53,11 @@ public class LoadingContRecipe {
 				new ItemStack(Items.LEATHER, 8, 0), new ItemStack(Items.RABBIT_HIDE, 8, 0)
 		};
 		for (int i = 0; i < misc.length; i++) {
+			ItemStack c2 = misc[i].copy();
+			c2.setCount(1);
+
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.miscCont, 1, i), new Object[] {
-					"XXX", "X X", "XXX", 'X', misc[i]
+					"XXX", "X X", "XXX", 'X', c2
 			});
 
 			DCRecipe.addShapelessRecipe(res.getRecipeName(), misc[i], new Object[] {
@@ -63,8 +71,11 @@ public class LoadingContRecipe {
 				new ItemStack(Items.GUNPOWDER, 8, 0)
 		};
 		for (int i = 0; i < enemy.length; i++) {
+			ItemStack c2 = enemy[i].copy();
+			c2.setCount(1);
+
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dropCont, 1, i), new Object[] {
-					"XXX", "X X", "XXX", 'X', enemy[i]
+					"XXX", "X X", "XXX", 'X', c2
 			});
 
 			DCRecipe.addShapelessRecipe(res.getRecipeName(), enemy[i], new Object[] {
@@ -77,8 +88,11 @@ public class LoadingContRecipe {
 				new ItemStack(Items.CHICKEN, 8, 0), new ItemStack(Items.MUTTON, 8, 0), new ItemStack(Items.EGG, 8, 0)
 		};
 		for (int i = 0; i < meat.length; i++) {
+			ItemStack c2 = meat[i].copy();
+			c2.setCount(1);
+
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cardboard, 1, i), new Object[] {
-					"XXX", "X X", "XXX", 'X', meat[i]
+					"XXX", "X X", "XXX", 'X', c2
 			});
 
 			DCRecipe.addShapelessRecipe(res.getRecipeName(), meat[i], new Object[] {
@@ -91,8 +105,11 @@ public class LoadingContRecipe {
 				new ItemStack(MainInit.foodMaterials, 8, 1), new ItemStack(MainInit.foodMaterials, 8, 2)
 		};
 		for (int i = 0; i < dust.length; i++) {
+			ItemStack c2 = dust[i].copy();
+			c2.setCount(1);
+
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBags, 1, i), new Object[] {
-					"XXX", "X X", "XXX", 'X', dust[i]
+					"XXX", "X X", "XXX", 'X', c2
 			});
 
 			DCRecipe.addShapelessRecipe(res.getRecipeName(), dust[i], new Object[] {
@@ -101,7 +118,7 @@ public class LoadingContRecipe {
 		}
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cardboard, 1, 5), new Object[] {
-				"XXX", "X X", "XXX", 'X', new ItemStack(Blocks.WOOL, 8, 32767)
+				"XXX", "X X", "XXX", 'X', new ItemStack(Blocks.WOOL, 1, 32767)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 8, 0), new Object[] {

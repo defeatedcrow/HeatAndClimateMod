@@ -24,7 +24,7 @@ public class EntityShotgunBullet extends EntityBulletDC {
 
 	@Override
 	public double getLivingLimit() {
-		return 3;
+		return 20;
 	}
 
 	@Override

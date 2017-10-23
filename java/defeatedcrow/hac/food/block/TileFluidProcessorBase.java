@@ -26,7 +26,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -165,18 +165,15 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandlerItem) {
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (dummy != null && dummy.getTankProperties() != null) {
@@ -194,13 +191,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				fc = dummy.drain(rem, false);
 				if (fc != null && fc.amount <= rem) {
 					FluidStack fill = null;
-					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).drain(rem, true);
-						ret = in2;
-					} else {
-						fill = dummy.drain(rem, true);
-						ret = in2;
-					}
+					fill = dummy.drain(rem, true);
+					ret = dummy.getContainer();
 
 					if (fill != null
 							&& (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
@@ -226,18 +218,15 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandlerItem) {
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
@@ -260,13 +249,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			if (b) {
 				FluidStack drain = tank.drain(rem, false);
 				int fill = 0;
-				if (in.getItem() instanceof IFluidHandler) {
-					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-					ret = in2;
-				} else {
-					fill = dummy.fill(drain, true);
-					ret = in2;
-				}
+				fill = dummy.fill(drain, true);
+				ret = dummy.getContainer();
 
 				if (fill > 0 && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
 					loose = true;
@@ -301,7 +285,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// 気候の適合性
 	public abstract boolean isSuitableClimate();
 
-	public abstract String notSuitableMassage();
+	public abstract String climateSuitableMassage();
 
 	public int canInsertResult(ItemStack item, int s1, int s2) {
 		int ret = 0;
@@ -444,11 +428,11 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		if (i == 0 || i == 2) {
 			if (DCUtil.isEmpty(stack))
 				return false;
-			IFluidHandler cont = null;
-			if (stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-				cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			} else if (stack.getItem() instanceof IFluidHandler) {
-				cont = (IFluidHandler) stack.getItem();
+			IFluidHandlerItem cont = null;
+			if (stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+				cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+			} else if (stack.getItem() instanceof IFluidHandlerItem) {
+				cont = (IFluidHandlerItem) stack.getItem();
 			}
 			return cont != null;
 		} else if (i > 3 && i < 7)

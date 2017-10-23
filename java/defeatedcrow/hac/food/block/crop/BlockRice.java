@@ -3,6 +3,9 @@ package defeatedcrow.hac.food.block.crop;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateCropBase;
@@ -18,6 +21,8 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockRice extends ClimateCropBase implements ITexturePath {
 
+	protected static final AxisAlignedBB BUD_AABB = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.5D, 0.875D);
+
 	public BlockRice(String s) {
 		super(Material.PLANTS, s, 3);
 		setSoundType(SoundType.PLANT);
@@ -27,12 +32,14 @@ public class BlockRice extends ClimateCropBase implements ITexturePath {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return CROP_AABB;
+		int i = DCState.getInt(state, DCState.STAGE4);
+		return i < 2 ? BUD_AABB : CROP_AABB;
 	}
 
 	@Override
-	public boolean isCollidable() {
-		return false;
+	@Nullable
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 
 	@Override

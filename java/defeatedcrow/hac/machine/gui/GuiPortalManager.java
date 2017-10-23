@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiPortalManager extends GuiContainer {
 	private static final ResourceLocation TEXTURE = new ResourceLocation("dcs_climate",
 			"textures/gui/portal_manager_gui.png");
+	private static final ResourceLocation iconTex = new ResourceLocation("dcs_climate", "textures/gui/gui_icons.png");
 	private final TilePortalManager tile;
 	private final InventoryPlayer playerInventory;
 
@@ -59,6 +60,13 @@ public class GuiPortalManager extends GuiContainer {
 			}
 		}
 
+		this.mc.getTextureManager().bindTexture(iconTex);
+		if (tile.isSuitableClimate()) {
+			this.drawTexturedModalRect(i - 20, j + 4, 48, 0, 20, 20);
+		} else {
+			this.drawTexturedModalRect(i - 20, j + 4, 48, 20, 20, 20);
+		}
+
 		if (!tile.inputT.isEmpty()) {
 			int in = this.tile.getField(6);
 			int inAmo = 50 * this.tile.getField(7) / 5000;
@@ -68,6 +76,7 @@ public class GuiPortalManager extends GuiContainer {
 
 	@Override
 	public void drawScreen(int x, int y, float par3) {
+		this.drawDefaultBackground();
 		super.drawScreen(x, y, par3);
 
 		ArrayList<String> list = new ArrayList<String>();
@@ -87,7 +96,26 @@ public class GuiPortalManager extends GuiContainer {
 			}
 		}
 
+		if (this.isPointInRegion(45, 20, 108, 18, x, y)) {
+			if (tile != null) {
+				list.add("Input Card");
+			}
+		}
+
+		if (this.isPointInRegion(45, 50, 108, 18, x, y)) {
+			if (tile != null) {
+				list.add("Output Card");
+			}
+		}
+
+		if (this.isPointInRegion(-20, 4, 20, 20, x, y)) {
+			if (tile != null) {
+				list.add(I18n.translateToLocal(tile.climateSuitableMassage()));
+			}
+		}
+
 		this.drawHoveringText(list, x, y);
+		this.renderHoveredToolTip(x, y);
 	}
 
 	protected void renderFluid(int id, int amo, int x, int y, int width, int height) {

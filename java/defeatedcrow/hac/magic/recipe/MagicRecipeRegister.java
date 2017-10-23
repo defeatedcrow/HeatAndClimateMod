@@ -244,13 +244,21 @@ public class MagicRecipeRegister {
 
 		if (ModuleConfig.food) {
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.lotusCandle, 1, 0), new Object[] {
-					"XXX", "XYX", "XXX", 'X', new ItemStack(FoodInit.petals, 1, 0), 'Y', "ingotGold"
+					"XXX", "XYX", "XXX", 'X', new ItemStack(FoodInit.petals, 1, 0), 'Y', "nuggetGold"
+			});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.petals, 8, 0), new Object[] {
+					new ItemStack(MagicInit.lotusCandle, 1, 0)
 			});
 
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.lotusCandleBlack, 1, 0),
 					new Object[] {
-							"XXX", "XYX", "XXX", 'X', new ItemStack(FoodInit.petals, 1, 1), 'Y', "ingotGold"
+							"XXX", "XYX", "XXX", 'X', new ItemStack(FoodInit.petals, 1, 1), 'Y', "nuggetGold"
 					});
+
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.petals, 8, 1), new Object[] {
+					new ItemStack(MagicInit.lotusCandleBlack, 1, 0)
+			});
 		}
 
 		// advanced

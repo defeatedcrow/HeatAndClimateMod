@@ -167,24 +167,12 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	public List<ItemStack> getInputs() {
-		List<ItemStack> ret = new ArrayList<ItemStack>();
-		for (int i = 9; i < 13; i++) {
-			if (DCUtil.isEmpty(inventory.getStackInSlot(i))) {
-				ret.add(inventory.getStackInSlot(i));
-			}
-		}
-		return ret;
+		return inventory.getInputs(9, 12);
 	}
 
 	@Override
 	public List<ItemStack> getOutputs() {
-		List<ItemStack> ret = new ArrayList<ItemStack>();
-		for (int i = 13; i < 17; i++) {
-			if (DCUtil.isEmpty(inventory.getStackInSlot(i))) {
-				ret.add(inventory.getStackInSlot(i));
-			}
-		}
-		return ret;
+		return inventory.getOutputs(13, 16);
 	}
 
 	/* Reactor */
@@ -202,16 +190,16 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			// 液体スロットの処理
 			this.processFluidSlots();
 
-			// DCLogger.debugLog("current torque: " + prevTorque);
+			// DCLogger.infoLog("current torque: " + prevTorque);
 			// if (current != null) {
-			// DCLogger.debugLog("current heat: " + current.getHeat());
+			// DCLogger.infoLog("current heat: " + current.getHeat());
 			// } else {
-			// DCLogger.debugLog("no climate");
+			// DCLogger.infoLog("no climate");
 			// }
 			// if (currentRecipe != null) {
-			// DCLogger.debugLog("has recipe");
+			// DCLogger.infoLog("has recipe");
 			// } else {
-			// DCLogger.debugLog("no recipe");
+			// DCLogger.infoLog("no recipe");
 			// }
 		}
 		super.updateTile();
@@ -364,19 +352,19 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 			boolean b1 = currentRecipe.matches(ins, inf1, inf2);
 			// if (b1) {
-			// DCLogger.debugLog("input mutch");
+			// DCLogger.infoLog("input mutch");
 			// }
 			boolean b2 = currentRecipe.matchOutput(outs, outf1, outf2, 4);
 			// if (b2) {
-			// DCLogger.debugLog("output mutch");
+			// DCLogger.infoLog("output mutch");
 			// }
 			boolean b3 = currentRecipe.matchCatalyst(cat);
 			// if (b3) {
-			// DCLogger.debugLog("catalyst mutch");
+			// DCLogger.infoLog("catalyst mutch");
 			// }
 			boolean b4 = currentRecipe.additionalRequire(world, pos);
 			// if (b4) {
-			// DCLogger.debugLog("additional requier mutch");
+			// DCLogger.infoLog("additional requier mutch");
 			// }
 			if (b1 && b2 && b3 && b4)
 				return true;
@@ -443,44 +431,46 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 			// 3: item required
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
-			for (int i = 9; i < 13; i++) {
-				ItemStack slot = inventory.getStackInSlot(i);
-				if (slot != null) {
-					boolean inRecipe = false;
-					Iterator<Object> req = required.iterator();
+			if (!required.isEmpty()) {
+				for (int i = 9; i < 13; i++) {
+					ItemStack slot = inventory.getStackInSlot(i);
+					if (!DCUtil.isEmpty(slot)) {
+						boolean inRecipe = false;
+						Iterator<Object> req = required.iterator();
 
-					// 4スロットについて、要求材料の数だけ回す
-					while (req.hasNext()) {
-						boolean match = false;
-						Object next = req.next();
-						int count = 1;
+						// 4スロットについて、要求材料の数だけ回す
+						while (req.hasNext()) {
+							boolean match = false;
+							Object next = req.next();
+							int count = 1;
 
-						if (next instanceof ItemStack) {
-							count = ((ItemStack) next).getCount();
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false)
-									&& slot.getCount() >= count;
-						} else if (next instanceof ArrayList) {
-							ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
-							if (list != null && !list.isEmpty()) {
-								for (ItemStack item : list) {
-									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.getCount() > 0;
-									if (f) {
-										match = true;
+							if (next instanceof ItemStack) {
+								count = ((ItemStack) next).getCount();
+								match = OreDictionary.itemMatches((ItemStack) next, slot, false)
+										&& slot.getCount() >= count;
+							} else if (next instanceof ArrayList) {
+								ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
+								if (list != null && !list.isEmpty()) {
+									for (ItemStack item : list) {
+										boolean f = OreDictionary.itemMatches(item, slot, false) && slot.getCount() > 0;
+										if (f) {
+											match = true;
+										}
 									}
 								}
 							}
+
+							if (match) {
+								inRecipe = true;
+								required.remove(next);
+								this.decrStackSize(i, 1);
+								break;
+							}
 						}
 
-						if (match) {
-							inRecipe = true;
-							required.remove(next);
-							this.decrStackSize(i, 1);
-							break;
+						if (!inRecipe) {
+							break;// 中断
 						}
-					}
-
-					if (!inRecipe) {
-						break;// 中断
 					}
 				}
 			}
@@ -659,6 +649,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 				return (T) handlerTank3;
 			else if (facing == this.tankSide4.face)
 				return (T) handlerTank4;
+			else
+				return facing == EnumFacing.DOWN ? (T) handlerTank3 : (T) handlerTank1;
 		}
 		return super.getCapability(capability, facing);
 	}

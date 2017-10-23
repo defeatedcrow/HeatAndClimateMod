@@ -1,20 +1,10 @@
 package defeatedcrow.hac.food;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
-import defeatedcrow.hac.food.block.crop.BlockCoffee;
-import defeatedcrow.hac.food.block.crop.BlockCotton;
-import defeatedcrow.hac.food.block.crop.BlockLeavesLemon;
-import defeatedcrow.hac.food.block.crop.BlockLeavesOlive;
-import defeatedcrow.hac.food.block.crop.BlockOnion;
-import defeatedcrow.hac.food.block.crop.BlockRice;
-import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
-import defeatedcrow.hac.food.block.crop.BlockSpinach;
-import defeatedcrow.hac.food.block.crop.BlockTomato;
 import defeatedcrow.hac.food.client.AppleTartRenderer;
 import defeatedcrow.hac.food.client.BeefStickRenderer;
 import defeatedcrow.hac.food.client.CakeButterRenderer;
@@ -145,15 +135,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class FoodClientProxy {
 
 	public static void loadConst() {
-		JsonBakery.instance.addTex(BlockRice.getTexList());
-		JsonBakery.instance.addTex(BlockOnion.getTexList());
-		JsonBakery.instance.addTex(BlockSpinach.getTexList());
-		JsonBakery.instance.addTex(BlockTomato.getTexList());
-		JsonBakery.instance.addTex(BlockCotton.getTexList());
-		JsonBakery.instance.addTex(BlockCoffee.getTexList());
-		JsonBakery.instance.addTex(BlockLeavesLemon.getTexList());
-		JsonBakery.instance.addTex(BlockLeavesOlive.getTexList());
-		JsonBakery.instance.addTex(BlockSaplingDC.getTexList());
+
 	}
 
 	public static void loadEntity() {

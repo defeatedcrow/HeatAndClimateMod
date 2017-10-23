@@ -83,15 +83,15 @@ public class FoodInitRegister {
 
 		FoodInit.cropTomato = new BlockTomato(ClimateCore.PACKAGE_BASE + "_crop_tomato");
 		DCMaterial.registerBlock(FoodInit.cropTomato, ClimateCore.PACKAGE_BASE + "_crop_tomato", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addCropBlock(FoodInit.cropTomato, "crop_tomato", 7);
+		ClimateMain.proxy.addCropBlock(FoodInit.cropTomato, "crop_tomato", 15);
 
 		FoodInit.cropCoffee = new BlockCoffee(ClimateCore.PACKAGE_BASE + "_crop_coffee");
 		DCMaterial.registerBlock(FoodInit.cropCoffee, ClimateCore.PACKAGE_BASE + "_crop_coffee", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addCropBlock(FoodInit.cropCoffee, "crop_coffee", 7);
+		ClimateMain.proxy.addCropBlock(FoodInit.cropCoffee, "crop_coffee", 15);
 
 		FoodInit.cropCotton = new BlockCotton(ClimateCore.PACKAGE_BASE + "_crop_cotton");
 		DCMaterial.registerBlock(FoodInit.cropCotton, ClimateCore.PACKAGE_BASE + "_crop_cotton", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addCropBlock(FoodInit.cropCotton, "crop_cotton", 7);
+		ClimateMain.proxy.addCropBlock(FoodInit.cropCotton, "crop_cotton", 15);
 
 		FoodInit.leavesLemon = new BlockLeavesLemon(ClimateCore.PACKAGE_BASE + "_leaves_lemon");
 		DCMaterial.registerBlock(FoodInit.leavesLemon, ClimateCore.PACKAGE_BASE + "_leaves_lemon", ClimateMain.MOD_ID);

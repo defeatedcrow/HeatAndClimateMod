@@ -25,7 +25,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.oredict.OreDictionary;
 
 /**
@@ -117,18 +117,15 @@ public class TileTeaPot extends TileFluidProcessorBase {
 		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
-		IFluidHandler dummy = null;
+		IFluidHandlerItem dummy = null;
 		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
 		if (in.getTagCompound() != null) {
 			in2.setTagCompound(in.getTagCompound().copy());
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
-			dummy = (IFluidHandler) in2.getItem();
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+		} else if (in.getItem() instanceof IFluidHandlerItem) {
+			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
 		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
@@ -151,13 +148,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 			if (b) {
 				FluidStack drain = tank.drain(rem, false);
 				int fill = 0;
-				if (in.getItem() instanceof IFluidHandler) {
-					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-					ret = in2;
-				} else {
-					fill = dummy.fill(drain, true);
-					ret = in2;
-				}
+				fill = dummy.fill(drain, true);
+				ret = dummy.getContainer();
 
 				if (!DCUtil.isEmpty(ret)) {
 					// Customize
@@ -306,7 +298,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 	}
 
 	@Override
-	public String notSuitableMassage() {
+	public String climateSuitableMassage() {
 		if (current == null)
 			return "dcs.gui.message.nullclimate";
 		else

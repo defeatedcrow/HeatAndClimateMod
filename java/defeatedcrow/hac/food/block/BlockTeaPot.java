@@ -36,6 +36,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -164,13 +165,12 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	public static boolean onActivateDCTank(TileTeaPot tile, ItemStack item, World world, IBlockState state,
 			EnumFacing side, EntityPlayer player) {
 		if (!DCUtil.isEmpty(item) && tile != null
-				&& item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)
+				&& item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)
 				&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 			ItemStack copy = new ItemStack(item.getItem(), 1, item.getItemDamage());
 			if (item.getTagCompound() != null)
 				copy.setTagCompound(item.getTagCompound());
-			IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-			IFluidHandler dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			IFluidHandlerItem dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 			IFluidHandler intank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
 			IFluidHandler outtank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 					EnumFacing.DOWN);
@@ -188,7 +188,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 				// input
 				if (f1 != null && dc_in.fill(f1, false) == max) {
 					FluidStack fill = dummy.drain(max, true);
-					ret = copy;
+					ret = dummy.getContainer();
 					if (fill != null && fill.amount == max) {
 						dc_in.fill(fill, true);
 						success = true;

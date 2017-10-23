@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.block.device;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -134,6 +136,10 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	public int getFuel(ItemStack item) {
 		return getBurnTime(item);
 	}
+
+	public abstract boolean isSuitableClimate();
+
+	public abstract List<String> climateSuitableMassage();
 
 	/* === 燃焼判定 === */
 

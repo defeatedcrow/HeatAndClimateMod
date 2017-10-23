@@ -52,8 +52,7 @@ public class FreezerTESR extends DCTorqueTESRBase {
 	}
 
 	@Override
-	public void renderTileEntityFast(TileTorqueBase te, double x, double y, double z, float partialTicks,
-			int destroyStage, float partial, net.minecraft.client.renderer.BufferBuilder buffer) {
+	public void render(TileTorqueBase te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
 		DCTileModelBase model = this.getModel(te);
 		if (model == null)
 			return;

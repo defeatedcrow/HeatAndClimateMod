@@ -3,6 +3,8 @@ package defeatedcrow.hac.food.block.crop;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
@@ -31,8 +33,9 @@ public class BlockCotton extends ClimateDoubleCropBase implements ITexturePath {
 	}
 
 	@Override
-	public boolean isCollidable() {
-		return false;
+	@Nullable
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 
 	@Override

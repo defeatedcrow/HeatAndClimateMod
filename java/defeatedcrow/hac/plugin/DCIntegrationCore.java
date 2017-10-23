@@ -47,24 +47,6 @@ public class DCIntegrationCore {
 
 		DCPluginFluid.load();
 
-		if (loadedBoP) {
-			try {
-				DCPluginBoP.loadInit();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: BiomesOPlenty");
-			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomesOPlenty");
-			}
-		}
-
-		if (loadedForestry) {
-			try {
-				DCPluginForestry.loadInit();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: forestry");
-			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: forestry");
-			}
-		}
-
 		if (loadedMekanism) {
 			try {
 				DCPluginMekanism.sendIMC();
@@ -103,6 +85,24 @@ public class DCIntegrationCore {
 	}
 
 	public static void loadPost() {
+
+		if (loadedBoP) {
+			try {
+				DCPluginBoP.loadInit();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: BiomesOPlenty");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomesOPlenty");
+			}
+		}
+
+		if (loadedForestry) {
+			try {
+				DCPluginForestry.loadInit();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: forestry");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: forestry");
+			}
+		}
 
 		try {
 			MobResistantData.load();

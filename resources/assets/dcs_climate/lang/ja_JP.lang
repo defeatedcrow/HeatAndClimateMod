@@ -748,6 +748,10 @@ tile.dcs_device_spinning_machine_0.name=ガラ紡機
 tile.dcs_device_portal_manager_0.name=転送ポータル
 tile.dcs_device_adapter_item_0.name=アイテム送信パネル
 tile.dcs_device_acceptor_item_0.name=アイテム受信パネル
+tile.dcs_device_shaft_s_steel_0.name=鋼鉄のシャフト(I型)
+tile.dcs_device_shaft_l_steel_0.name=鋼鉄のシャフト(L型)
+tile.dcs_device_shaft_ta_steel_0.name=鋼鉄のシャフト(T-A型)
+tile.dcs_device_shaft_tb_steel_0.name=鋼鉄のシャフト(T-B型)
 
 tile.dcs_crop_rice_0.name=稲
 tile.dcs_crop_rice_1.name=稲
@@ -995,6 +999,12 @@ dcs.gui.message.pottery.toocold=温度が低すぎます
 dcs.gui.message.pottery.toohot=温度が高すぎます
 dcs.gui.message.steel.toocold=温度が低すぎます
 dcs.gui.message.suitableclimate=適温
+dcs.gui.message.suitable=適した気候
+dcs.gui.message.require.airflow=通気が遮断されています
+dcs.gui.message.require.airflow2=周囲のブロックを減らしてみよう
+dcs.gui.message.require.wind=通気WINDが必要です
+dcs.gui.message.require.wind2=ふいごを利用して風を送り込んでみよう
+dcs.gui.message.require.absolute=気温ABSOLUTEまたは液体窒素が必要です
 
 death.attack.dcs_heat=%1$sはこんがり焼き上がった。
 death.attack.dcs_cold=%1$sはシャーベットになった。
