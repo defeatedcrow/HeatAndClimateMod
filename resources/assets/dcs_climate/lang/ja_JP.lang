@@ -691,6 +691,7 @@ tile.dcs_device_biomeglass_1.name=バイオームグラス(ジャングル)
 tile.dcs_device_biomeglass_2.name=バイオームグラス(砂漠)
 tile.dcs_device_biomeglass_3.name=バイオームグラス(氷原)
 tile.dcs_time_cage_0.name=時の蝶の標本
+tile.dcs_build_chandelier_0.name=石膏のシャンデリア
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪

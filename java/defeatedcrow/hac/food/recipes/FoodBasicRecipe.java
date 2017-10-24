@@ -174,11 +174,15 @@ public class FoodBasicRecipe {
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
-				"foodPastry", "dustSugar", "cropBerry"
+				"foodPastry", "dustSugar", "cropCherry"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
 				"foodPastry", "dustSugar", "cropPeach"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
+				"foodPastry", "dustSugar", "cropOrange"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.pastrySquare, 1, 6), new Object[] {
