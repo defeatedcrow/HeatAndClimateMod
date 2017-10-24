@@ -17,6 +17,7 @@ import defeatedcrow.hac.main.block.build.BlockAwning;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockCarbideLamp;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
+import defeatedcrow.hac.main.block.build.BlockChandelier;
 import defeatedcrow.hac.main.block.build.BlockClayBricks;
 import defeatedcrow.hac.main.block.build.BlockCoolantPackage;
 import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
@@ -443,6 +444,13 @@ public class MainMaterialRegister {
 		DCMaterial.registerBlock(MainInit.hedgeWinter, ClimateCore.PACKAGE_BASE + "_hedge_winter", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.hedgeWinter), "dcs_climate", "dcs_hedge_winter",
 				"crop", 15, false);
+
+		MainInit.chandelierGypsum = new BlockChandelier("dcs_build_chandelier")
+				.setUnlocalizedName("dcs_build_chandelier");
+		DCMaterial.registerBlock(MainInit.chandelierGypsum, ClimateCore.PACKAGE_BASE + "_build_chandelier",
+				ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.chandelierGypsum), "dcs_climate",
+				"dcs_build_chandelier", "build", 0, false);
 	}
 
 	static void regDeviceBlock() {

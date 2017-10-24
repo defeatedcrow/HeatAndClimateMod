@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "dcs_climate:build/dcs_build_chandelier" }
+    }
+}

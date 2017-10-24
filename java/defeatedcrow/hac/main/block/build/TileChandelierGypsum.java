@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.block.build;
 
-public class TileChandelierGypsum {
+import net.minecraft.tileentity.TileEntity;
+
+public class TileChandelierGypsum extends TileEntity {
 
 }

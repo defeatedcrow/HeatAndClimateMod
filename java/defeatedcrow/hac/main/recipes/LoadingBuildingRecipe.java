@@ -236,6 +236,10 @@ public class LoadingBuildingRecipe {
 				"YX", 'X', new ItemStack(MainInit.chalLamp, 1, 3), 'Y', "ingotCopper"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chandelierGypsum, 1, 0), new Object[] {
+				" Z ", "XYX", " X ", 'X', "gemGypsum", 'Y', new ItemStack(MainInit.chalLamp, 1, 2), 'Z', "ingotCopper"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableMarble, 1, 0), new Object[] {
 				"XXX", " X ", " X ", 'X', new ItemStack(MainInit.gemBlock, 1, 6)
 		});
