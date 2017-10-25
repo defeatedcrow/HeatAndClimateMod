@@ -37,7 +37,7 @@ public class DCRecipeCoFH {
 					new FluidStack(DCPluginCoFH.tree, 100), DCPluginCoFH.tar);
 
 			ThermalExpansionHelper.addRefineryRecipe(5000, new FluidStack(FoodInit.oil, 100),
-					new FluidStack(DCPluginCoFH.naphtha, 100), new ItemStack(MachineInit.reagent, 1, 1));
+					new FluidStack(DCPluginCoFH.naphtha, 50), new ItemStack(MachineInit.reagent, 1, 1));
 		}
 	}
 }

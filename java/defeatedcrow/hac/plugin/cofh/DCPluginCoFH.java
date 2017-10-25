@@ -76,7 +76,7 @@ public class DCPluginCoFH {
 			FluidDictionaryDC.registerFluidDic(naphtha, "naphtha");
 			MainAPIManager.fuelRegister.registerFuel("refined_oil", 100);
 		}
-		refined = FluidRegistry.getFluid("fuel");
+		refined = FluidRegistry.getFluid("refined_fuel");
 		if (refined != null) {
 			DCPluginFluid.registerPotion(refined, MobEffects.RESISTANCE);
 			FluidDictionaryDC.registerFluidDic(refined, "refined");
