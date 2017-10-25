@@ -1,5 +1,7 @@
 package defeatedcrow.hac.machine.block;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.energy.IWrenchDC;
@@ -26,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCatapult extends BlockTorqueBase {
 
-	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 0.75D, 0.75D, 0.75D);
+	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1D, 0.5D, 1D);
 
 	public BlockCatapult(String s) {
 		super(Material.ROCK, s, 0);
@@ -127,8 +129,9 @@ public class BlockCatapult extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean isCollidable() {
-		return false;
+	@Nullable
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 
 }
