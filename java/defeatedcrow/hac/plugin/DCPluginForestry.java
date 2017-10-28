@@ -1,6 +1,7 @@
 package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.api.damage.DamageAPI;
+import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
@@ -224,6 +225,22 @@ public class DCPluginForestry {
 		}
 
 		DamageAPI.resistantData.registerEntityResistant(EntityButterfly.class, 2.0F, 2.0F);
+
+		// HaC側のレシピ
+
+		if (ModuleConfig.machine && ModuleConfig.r_mill) {
+			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
+					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropChestnut");
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
+					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropWalnut");
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
+					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropHazelnut");
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
+					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropAlmond");
+		}
 
 	}
 

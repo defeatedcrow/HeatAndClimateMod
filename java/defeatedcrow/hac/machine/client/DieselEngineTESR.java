@@ -3,20 +3,22 @@ package defeatedcrow.hac.machine.client;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.machine.client.model.ModelSteamTurbine;
+import defeatedcrow.hac.machine.client.model.ModelOilEngine;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class BoilerTurbineTESR extends DCTorqueTESRBase {
+public class DieselEngineTESR extends DCTorqueTESRBase {
 
-	private static final DCTileModelBase MODEL = new ModelSteamTurbine();
+	private static final DCTileModelBase MODEL = new ModelOilEngine();
 
 	@Override
 	protected String getTexPass(int i) {
-		return "dcs_climate:textures/tiles/steam_boiler_turbine.png";
+		return "dcs_climate:textures/tiles/oil_engine.png";
 	}
 
 	@Override
@@ -62,6 +64,33 @@ public class BoilerTurbineTESR extends DCTorqueTESRBase {
 		GlStateManager.rotate(y, 0.0F, 1.0F, 0.0F);
 
 		model.render(rot, speed, tick);
+	}
+
+	@Override
+	public void render(TileTorqueBase te, double x, double y, double z, float partialTicks, int destroyStage,
+			float alpha) {
+		DCTileModelBase model = this.getModel(te);
+		if (model == null) {
+			return;
+		}
+		float speed = te.prevSpeed + (te.currentSpeed - te.prevSpeed) * partialTicks;
+		float rot = te.prevRotation + (te.currentRotation - te.prevRotation) * partialTicks;
+
+		int r = MathHelper.floor(rot);
+		r = r & 1;
+
+		this.bindTexture(new ResourceLocation(getTexPass(0)));
+
+		GlStateManager.pushMatrix();
+		GlStateManager.enableRescaleNormal();
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F + 0.0125F * r, (float) z + 0.5F);
+		GlStateManager.scale(1.0F, -1.0F, -1.0F);
+
+		this.render(te, model, rot, speed, partialTicks);
+
+		GlStateManager.disableRescaleNormal();
+		GlStateManager.popMatrix();
 	}
 
 }

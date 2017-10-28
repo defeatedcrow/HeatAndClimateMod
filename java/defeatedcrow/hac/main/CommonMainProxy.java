@@ -9,6 +9,7 @@ import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
+import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePortalManager;
@@ -17,6 +18,7 @@ import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.entity.EntityScooter;
+import defeatedcrow.hac.machine.gui.ContainerDieselEngine;
 import defeatedcrow.hac.machine.gui.ContainerEntityScooter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
@@ -25,6 +27,7 @@ import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.machine.gui.ContainerSpinning;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
+import defeatedcrow.hac.machine.gui.GuiDieselEngine;
 import defeatedcrow.hac.machine.gui.GuiEntityScooter;
 import defeatedcrow.hac.machine.gui.GuiHopperFilter;
 import defeatedcrow.hac.machine.gui.GuiHopperFluid;
@@ -273,6 +276,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerSpinning((TileSpinningMachine) tile, player.inventory);
 		if (tile instanceof TilePortalManager)
 			return new ContainerPortalManager((TilePortalManager) tile, player);
+		if (tile instanceof TileDieselEngine)
+			return new ContainerDieselEngine((TileDieselEngine) tile, player.inventory);
 		return null;
 	}
 
@@ -315,6 +320,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiSpinning((TileSpinningMachine) tile, player.inventory);
 		if (tile instanceof TilePortalManager)
 			return new GuiPortalManager((TilePortalManager) tile, player);
+		if (tile instanceof TileDieselEngine)
+			return new GuiDieselEngine((TileDieselEngine) tile, player.inventory);
 		return null;
 	}
 

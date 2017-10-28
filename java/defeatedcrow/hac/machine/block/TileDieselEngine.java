@@ -1,10 +1,19 @@
-package defeatedcrow.hac.main.block.device;
+package defeatedcrow.hac.machine.block;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.core.base.DCTileEntity;
+import defeatedcrow.hac.api.energy.ITorqueProvider;
+import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.base.ITagGetter;
+import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -18,6 +27,7 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
@@ -26,48 +36,94 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileCookingStove extends DCTileEntity implements ITagGetter, IInventory {
+public class TileDieselEngine extends TileTorqueBase
+		implements ITorqueProvider, ITorqueReceiver, ITagGetter, IInventory {
 
 	public DCTank inputT = new DCTank(5000);
 
 	protected int currentBurnTime = 0;
 	protected int maxBurnTime = 1;
-	protected int currentClimate = DCHeatTier.SMELTING.getID();
+	protected int currentClimate = DCHeatTier.NORMAL.getID();
+
+	@Override
+	public float maxTorque() {
+		return 512.0F;
+	}
+
+	@Override
+	public float getGearTier() {
+		return 64.0F;
+	}
+
+	public boolean isActive() {
+		return this.currentBurnTime > 0;
+	}
+
+	public int getCurrentBurnTime() {
+		return this.currentBurnTime;
+	}
+
+	public int getMaxBurnTime() {
+		return this.maxBurnTime;
+	}
+
+	public void setCurrentBurnTime(int i) {
+		this.currentBurnTime = i;
+	}
+
+	public void setMaxBurnTime(int i) {
+		this.maxBurnTime = i;
+	}
 
 	@Override
 	public void updateTile() {
+		currentClimate = ClimateAPI.calculator.getAverageTemp(world, getPos()).getID();
+
 		if (!getWorld().isRemote) {
 
 			this.checkSideTank();
 
-			if (this.currentBurnTime == 0) {
-				FluidStack f = inputT.getFluid();
-				if (f != null && f.getFluid() != null && inputT.getFluidAmount() > 0) {
-					int i = getBurnTime(f.getFluid());
-					if (i > 0) {
-						this.currentBurnTime = i;
-						this.maxBurnTime = i;
-						inputT.drain(1, true);
-						this.markDirty();
+			IBlockState state = world.getBlockState(pos);
+			if (!DCState.getBool(state, DCState.POWERED) && isSuitableClimate()) {
+
+				if (this.currentBurnTime == 0) {
+					FluidStack f = inputT.getFluid();
+					if (f != null && f.getFluid() != null && inputT.getFluidAmount() >= 10) {
+						int i = getBurnTime(f.getFluid());
+						if (i > 0) {
+							this.currentBurnTime = i;
+							this.maxBurnTime = i;
+							inputT.drain(10, true);
+
+							this.markDirty();
+						}
 					}
+				} else if (this.currentBurnTime > 0) {
+					this.currentBurnTime--;
+					this.currentTorque += 128.0F;
+					if (currentTorque > maxTorque()) {
+						currentTorque = maxTorque();
+					}
+				} else {
+					this.currentBurnTime = 0;
 				}
 			}
 
-			if (BlockCookingStove.isLit(getWorld(), getPos()) != this.isActive()) {
-				BlockCookingStove.changeLitState(getWorld(), getPos(), isActive());
+			// provider
+			for (EnumFacing side : getOutputSide()) {
+				this.provideTorque(world, getPos().offset(side), side, false);
 			}
 		}
+
 		super.updateTile();
 	}
 
-	@Override
-	public void onTickUpdate() {}
+	/* 燃焼判定 */
 
-	@Override
-	protected void onServerUpdate() {
-		if (this.currentBurnTime > 0 && BlockCookingStove.isPower(getWorld(), getPos())) {
-			this.currentBurnTime--;
-		}
+	public static int getBurnTime(Fluid fluid) {
+		String s = fluid.getName();
+		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
+		return burn;
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
@@ -82,7 +138,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof TileCookingStove)
+			if (tile != null && !(tile instanceof TileDieselEngine)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
@@ -105,44 +161,81 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		}
 	}
 
-	public boolean isActive() {
-		return this.currentBurnTime > 0;
+	@Override
+	public List<EnumFacing> getOutputSide() {
+		List<EnumFacing> ret = Lists.newArrayList();
+		ret.add(getBaseSide());
+		return ret;
 	}
 
-	public int getCurrentBurnTime() {
-		return this.currentBurnTime;
+	@Override
+	public float getAmount() {
+		return this.getCurrentTorque();
 	}
 
-	public int getMaxBurnTime() {
-		return this.maxBurnTime;
+	@Override
+	public boolean canProvideTorque(World world, BlockPos outputPos, EnumFacing output) {
+		TileEntity tile = world.getTileEntity(outputPos);
+		float amo = getAmount();
+		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F)
+			return ((ITorqueReceiver) tile).canReceiveTorque(amo, output.getOpposite());
+		return false;
 	}
 
-	public int getCurrentHeatID() {
-		return this.currentClimate;
+	@Override
+	public float provideTorque(World world, BlockPos outputPos, EnumFacing output, boolean sim) {
+		float amo = this.getCurrentTorque();
+		if (canProvideTorque(world, outputPos, output)) {
+			ITorqueReceiver target = (ITorqueReceiver) world.getTileEntity(outputPos);
+			float ret = target.receiveTorque(amo, output, sim);
+			return ret;
+		}
+		return 0;
 	}
 
-	public void setCurrentBurnTime(int i) {
-		this.currentBurnTime = i;
+	@Override
+	public boolean isInputSide(EnumFacing side) {
+		return side == getBaseSide().getOpposite();
 	}
 
-	public void setMaxBurnTime(int i) {
-		this.maxBurnTime = i;
+	@Override
+	public boolean isOutputSide(EnumFacing side) {
+		return getOutputSide().contains(side);
 	}
 
-	public void setCurrentHeatID(int i) {
-		this.currentClimate = i;
+	@Override
+	public boolean canReceiveTorque(float amount, EnumFacing side) {
+		IBlockState state = world.getBlockState(pos);
+		if (DCState.getBool(state, DCState.POWERED))
+			return false;
+		if (this.currentTorque >= this.maxTorque())
+			return false;
+		return this.isInputSide(side);
 	}
 
-	public DCHeatTier getCurrentHeatTier() {
-		return DCHeatTier.getTypeByID(currentClimate);
+	@Override
+	public float receiveTorque(float amount, EnumFacing side, boolean sim) {
+		float f = maxTorque() - currentTorque;
+		float ret = Math.min(amount, f);
+		if (!sim) {
+			currentTorque += ret;
+		}
+		return ret;
 	}
 
-	/* 燃焼判定 */
+	/* Climateチェック */
+	public boolean isSuitableClimate() {
+		return currentClimate > DCHeatTier.FROSTBITE.getID();
+	}
 
-	public static int getBurnTime(Fluid fluid) {
-		String s = fluid.getName();
-		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
-		return burn;
+	public List<String> climateSuitableMassage() {
+		List<String> list = new ArrayList<String>();
+		if (isSuitableClimate()) {
+			list.add(I18n.translateToLocal("dcs.gui.message.suitableclimate"));
+		} else {
+			list.add(I18n.translateToLocal("dcs.gui.message.pottery.toocold"));
+		}
+		return list;
 	}
 
 	/* NBT, Packet */
@@ -237,11 +330,11 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		this.readFromNBT(pkt.getNbtCompound());
 	}
 
-	/* fieldがIInventoryにしかないとかいうクソ仕様のため、GUI表示用にダミーInventoryをつける。インベントリは実際無い */
+	/* GUI表示用にダミーInventoryをつける。インベントリは実際無い */
 
 	@Override
 	public String getName() {
-		return "dcs.gui.device.fuel_stove";
+		return "dcs.gui.device.diesel_engine";
 	}
 
 	@Override
@@ -304,10 +397,8 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		case 1:
 			return this.maxBurnTime;
 		case 2:
-			return this.currentClimate;
-		case 3:
 			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		case 4:
+		case 3:
 			return this.inputT.getFluidAmount();
 		default:
 			return 0;
@@ -324,12 +415,9 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 			this.maxBurnTime = value;
 			break;
 		case 2:
-			this.currentClimate = value;
-			break;
-		case 3:
 			inputT.setFluidById(value);
 			break;
-		case 4:
+		case 3:
 			this.inputT.setAmount(value);
 			break;
 		default:
@@ -339,7 +427,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public int getFieldCount() {
-		return 5;
+		return 4;
 	}
 
 	@Override

@@ -753,6 +753,7 @@ tile.dcs_device_shaft_s_steel_0.name=鋼鉄のシャフト(I型)
 tile.dcs_device_shaft_l_steel_0.name=鋼鉄のシャフト(L型)
 tile.dcs_device_shaft_ta_steel_0.name=鋼鉄のシャフト(T-A型)
 tile.dcs_device_shaft_tb_steel_0.name=鋼鉄のシャフト(T-B型)
+tile.dcs_device_diesel_engine_0.name=ディーゼル機関
 
 tile.dcs_crop_rice_0.name=稲
 tile.dcs_crop_rice_1.name=稲

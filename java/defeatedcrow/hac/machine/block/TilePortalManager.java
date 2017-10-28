@@ -85,7 +85,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null
+			if (tile != null && !(tile instanceof TilePortalManager)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());

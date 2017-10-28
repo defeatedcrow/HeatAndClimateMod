@@ -58,6 +58,7 @@ public class MachineInit {
 	public static Block motor; // FU/RF -> Torque
 	public static Block dynamo; // Torque -> FU/RF
 	public static Block converter; // EU/RF -> FU
+	public static Block dieselEngine; // fluid -> Torque
 
 	public static Block waterPump;
 	public static Block pressMachine;

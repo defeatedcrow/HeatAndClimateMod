@@ -173,7 +173,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 				boolean b = false;
 				for (int i = 0; i < target.getSlots(); i++) {
 					ItemStack item = target.extractItem(i, 1, true);
-					if (!DCUtil.isEmpty(item)) {
+					if (!DCUtil.isEmpty(item) && this.isItemValidForSlot(0, item)) {
 						ItemStack cur = this.getStackInSlot(0);
 						if (this.isItemStackable(item, cur) > 0) {
 							this.incrStackInSlot(0, item);

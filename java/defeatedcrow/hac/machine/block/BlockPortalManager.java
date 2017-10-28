@@ -13,12 +13,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -42,7 +44,9 @@ public class BlockPortalManager extends BlockTorqueBase {
 					ItemStack held = player.getHeldItem(hand);
 					if (!DCUtil.isEmpty(held)
 							&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
-						DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player))
+							world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
+									2.0F);
 					} else {
 						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 					}

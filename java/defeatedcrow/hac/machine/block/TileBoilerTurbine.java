@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
@@ -15,6 +16,7 @@ import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -22,6 +24,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -55,43 +58,43 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			DCHeatTier heat = ClimateAPI.calculator.getAverageTemp(world, pos);
 			currentClimate = heat.getID();
 
-			// 燃焼処理
-			boolean f = false;
-			int red = this.getRequiredWater(heat);
-			if (red > 0) {
-				// 水を減らす
-				FluidStack flu = inputT.getFluid();
-				if (flu != null && flu.getFluid() == FluidRegistry.WATER && inputT.getFluidAmount() > red) {
-					inputT.drain(red, true);
-					f = true;
+			IBlockState state = world.getBlockState(getPos());
+			if (!DCState.getBool(state, DCState.POWERED)) {
+
+				// 燃焼処理
+				boolean f = false;
+				int red = this.getRequiredWater(heat);
+				if (red > 0) {
+					// 水を減らす
+					FluidStack flu = inputT.getFluid();
+					if (flu != null && flu.getFluid() == FluidRegistry.WATER && inputT.getFluidAmount() > red) {
+						inputT.drain(red, true);
+						f = true;
+					}
 				}
+
+				if (f) {
+					this.currentBurnTime = 1;
+					world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.15F, 0.7F);
+				} else {
+					this.currentBurnTime = 0;
+				}
+
+				if (currentBurnTime > 0) {
+					this.currentTorque += this.getProvideTorque(heat);
+				}
+
+				// provider
+				for (EnumFacing side : getOutputSide()) {
+					this.provideTorque(world, getPos().offset(side), side, false);
+				}
+
+				// DCLogger.debugLog("current torque: " + currentTorque);
+				// DCLogger.debugLog("sent torque: " + prevTorque);
+				// DCLogger.debugLog("current burntime: " + currentBurnTime);
+				// DCLogger.debugLog("current temp: " + currentClimate);
+
 			}
-
-			if (f) {
-				this.currentBurnTime = 1;
-			} else {
-				this.currentBurnTime = 0;
-			}
-
-			if (currentBurnTime > 0) {
-				this.currentTorque += this.getProvideTorque(heat);
-			}
-
-			// provider
-			for (EnumFacing side : getOutputSide()) {
-				this.provideTorque(world, getPos().offset(side), side, false);
-			}
-
-			// DCLogger.debugLog("current torque: " + currentTorque);
-			// DCLogger.debugLog("sent torque: " + prevTorque);
-			// DCLogger.debugLog("current burntime: " + currentBurnTime);
-			// DCLogger.debugLog("current temp: " + currentClimate);
-
-			// 外見更新
-			// if (BlockBoilerTurbine.isLit(getWorld(), getPos()) != this.isActive()) {
-			// BlockBoilerTurbine.changeLitState(getWorld(), getPos(), isActive());
-			// }
-
 		}
 
 	}

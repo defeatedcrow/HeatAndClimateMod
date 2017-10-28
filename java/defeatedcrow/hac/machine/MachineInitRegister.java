@@ -10,6 +10,7 @@ import defeatedcrow.hac.machine.block.BlockCatapult;
 import defeatedcrow.hac.machine.block.BlockConveyor;
 import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockCreativeBox;
+import defeatedcrow.hac.machine.block.BlockDieselEngine;
 import defeatedcrow.hac.machine.block.BlockDynamo;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFauset;
@@ -222,6 +223,9 @@ public class MachineInitRegister {
 		MachineInit.burner = new BlockGasBurner(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
 		registerTierBlock(MachineInit.burner, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
 
+		MachineInit.dieselEngine = new BlockDieselEngine(ClimateCore.PACKAGE_BASE + "_device_diesel_engine");
+		registerTierBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_BASE + "_device_diesel_engine", 3);
+
 		MachineInit.motorMinecart = new ItemMinecartMotor()
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_minecart");
 		DCMaterial.registerItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_BASE + "_motor_minecart",
@@ -333,6 +337,7 @@ public class MachineInitRegister {
 		if (ModuleConfig.machine_advanced) {
 			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
 			MachineInit.burner.setCreativeTab(ClimateMain.machine);
+			MachineInit.dieselEngine.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.moldAluminium.setCreativeTab(ClimateMain.machine);
 			MachineInit.moldAlloy.setCreativeTab(ClimateMain.machine);
