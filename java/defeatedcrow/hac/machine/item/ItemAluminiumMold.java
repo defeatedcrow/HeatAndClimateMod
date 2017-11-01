@@ -48,9 +48,9 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		if (stack != null) {
+		if (!DCUtil.isEmpty(stack)) {
 			ItemStack output = this.getOutput(stack);
-			if (output != null) {
+			if (!DCUtil.isEmpty(output)) {
 				tooltip.add(TextFormatting.BOLD.toString() + "Output: " + output.getDisplayName());
 			} else {
 				tooltip.add("Please register an item on the anvil.");
@@ -61,7 +61,7 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
-		return stack != null && stack.getItemDamage() > 0;
+		return !DCUtil.isEmpty(stack) && stack.getItemDamage() > 0;
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 
 	@Override
 	public ItemStack getOutput(ItemStack mold) {
-		if (mold != null) {
+		if (!DCUtil.isEmpty(mold)) {
 			int m = mold.getItemDamage();
 			if (m == 1)
 				return new ItemStack(MachineInit.synthetic, 2, 0);

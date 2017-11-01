@@ -103,11 +103,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 							1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 					if (!flag) {
-						--ammo.stackSize;
-
-						if (ammo.stackSize == 0) {
-							player.inventory.deleteStack(ammo);
-						}
+						DCUtil.reduceAndDeleteStack(ammo, 1);
 					}
 
 					player.addStat(StatList.getObjectUseStats(this));

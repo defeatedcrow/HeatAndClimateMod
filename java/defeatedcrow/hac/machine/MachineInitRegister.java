@@ -3,12 +3,14 @@ package defeatedcrow.hac.machine;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.machine.block.BlockAdapterPanel;
 import defeatedcrow.hac.machine.block.BlockBoilerTurbine;
 import defeatedcrow.hac.machine.block.BlockCatapult;
 import defeatedcrow.hac.machine.block.BlockConveyor;
 import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockCreativeBox;
+import defeatedcrow.hac.machine.block.BlockDieselEngine;
 import defeatedcrow.hac.machine.block.BlockDynamo;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFauset;
@@ -28,12 +30,16 @@ import defeatedcrow.hac.machine.block.BlockReactor;
 import defeatedcrow.hac.machine.block.BlockRedBox;
 import defeatedcrow.hac.machine.block.BlockShaft_L;
 import defeatedcrow.hac.machine.block.BlockShaft_L_SUS;
+import defeatedcrow.hac.machine.block.BlockShaft_L_Steel;
 import defeatedcrow.hac.machine.block.BlockShaft_S;
 import defeatedcrow.hac.machine.block.BlockShaft_S_SUS;
+import defeatedcrow.hac.machine.block.BlockShaft_S_Steel;
 import defeatedcrow.hac.machine.block.BlockShaft_TA;
 import defeatedcrow.hac.machine.block.BlockShaft_TA_SUS;
+import defeatedcrow.hac.machine.block.BlockShaft_TA_Steel;
 import defeatedcrow.hac.machine.block.BlockShaft_TB;
 import defeatedcrow.hac.machine.block.BlockShaft_TB_SUS;
+import defeatedcrow.hac.machine.block.BlockShaft_TB_Steel;
 import defeatedcrow.hac.machine.block.BlockSpinningMachine;
 import defeatedcrow.hac.machine.block.BlockStoneMill;
 import defeatedcrow.hac.machine.block.BlockWaterPump;
@@ -59,7 +65,6 @@ import defeatedcrow.hac.machine.item.ItemSynthetic;
 import defeatedcrow.hac.machine.item.ItemTorqueChecker;
 import defeatedcrow.hac.machine.item.plating.ItemPlatingChrome;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
@@ -67,6 +72,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineInitRegister {
@@ -122,6 +128,18 @@ public class MachineInitRegister {
 
 		MachineInit.watermill = new BlockWatermill(ClimateCore.PACKAGE_BASE + "_device_watermill");
 		registerTierBlock(MachineInit.watermill, ClimateCore.PACKAGE_BASE + "_device_watermill", 2);
+
+		MachineInit.shaft3_s = new BlockShaft_S_Steel(ClimateCore.PACKAGE_BASE + "_device_shaft_s_steel");
+		registerTierBlock(MachineInit.shaft3_s, ClimateCore.PACKAGE_BASE + "_device_shaft_s_steel", 2);
+
+		MachineInit.shaft3_l = new BlockShaft_L_Steel(ClimateCore.PACKAGE_BASE + "_device_shaft_l_steel");
+		registerTierBlock(MachineInit.shaft3_l, ClimateCore.PACKAGE_BASE + "_device_shaft_l_steel", 2);
+
+		MachineInit.shaft3_t_a = new BlockShaft_TA_Steel(ClimateCore.PACKAGE_BASE + "_device_shaft_ta_steel");
+		registerTierBlock(MachineInit.shaft3_t_a, ClimateCore.PACKAGE_BASE + "_device_shaft_ta_steel", 2);
+
+		MachineInit.shaft3_t_b = new BlockShaft_TB_Steel(ClimateCore.PACKAGE_BASE + "_device_shaft_tb_steel");
+		registerTierBlock(MachineInit.shaft3_t_b, ClimateCore.PACKAGE_BASE + "_device_shaft_tb_steel", 2);
 
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
 		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 2);
@@ -204,6 +222,9 @@ public class MachineInitRegister {
 
 		MachineInit.burner = new BlockGasBurner(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
 		registerTierBlock(MachineInit.burner, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
+
+		MachineInit.dieselEngine = new BlockDieselEngine(ClimateCore.PACKAGE_BASE + "_device_diesel_engine");
+		registerTierBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_BASE + "_device_diesel_engine", 3);
 
 		MachineInit.motorMinecart = new ItemMinecartMotor()
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_minecart");
@@ -309,6 +330,7 @@ public class MachineInitRegister {
 		if (ModuleConfig.machine_advanced) {
 			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
 			MachineInit.burner.setCreativeTab(ClimateMain.machine);
+			MachineInit.dieselEngine.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.moldAluminium.setCreativeTab(ClimateMain.machine);
 			MachineInit.moldAlloy.setCreativeTab(ClimateMain.machine);
@@ -340,8 +362,8 @@ public class MachineInitRegister {
 		FluidRegistry.registerFluid(MachineInit.hydrogen);
 		MachineInit.hydrogenBlock = new DCFluidBlockBase(MachineInit.hydrogen, "hydrogen_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen");
-		MainMaterialRegister.registerBlock(MachineInit.hydrogenBlock,
-				ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen");
+		DCMaterialReg.registerBlock(MachineInit.hydrogenBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen",
+				ClimateMain.MOD_ID);
 		MachineInit.hydrogen.setBlock(MachineInit.hydrogenBlock);
 
 		MachineInit.ammonia = new Fluid("dcs.ammonia",
@@ -352,7 +374,8 @@ public class MachineInitRegister {
 		FluidRegistry.registerFluid(MachineInit.ammonia);
 		MachineInit.ammoniaBlock = new DCFluidBlockBase(MachineInit.ammonia, "ammonia_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia");
-		MainMaterialRegister.registerBlock(MachineInit.ammoniaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia");
+		DCMaterialReg.registerBlock(MachineInit.ammoniaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia",
+				ClimateMain.MOD_ID);
 		MachineInit.ammonia.setBlock(MachineInit.ammoniaBlock);
 
 		MachineInit.nitricAcid = new Fluid("dcs.nitric_acid",
@@ -363,8 +386,8 @@ public class MachineInitRegister {
 		FluidRegistry.registerFluid(MachineInit.nitricAcid);
 		MachineInit.nitricAcidBlock = new DCFluidBlockBase(MachineInit.nitricAcid, "nitric_acid_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid");
-		MainMaterialRegister.registerBlock(MachineInit.nitricAcidBlock,
-				ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid");
+		DCMaterialReg.registerBlock(MachineInit.nitricAcidBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid",
+				ClimateMain.MOD_ID);
 		MachineInit.nitricAcid.setBlock(MachineInit.nitricAcidBlock);
 
 		MachineInit.sulfuricAcid = new Fluid("dcs.sulfuric_acid",
@@ -375,8 +398,8 @@ public class MachineInitRegister {
 		FluidRegistry.registerFluid(MachineInit.sulfuricAcid);
 		MachineInit.sulfuricAcidBlock = new DCFluidBlockBase(MachineInit.sulfuricAcid, "sulfuric_acid_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid");
-		MainMaterialRegister.registerBlock(MachineInit.sulfuricAcidBlock,
-				ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid");
+		DCMaterialReg.registerBlock(MachineInit.sulfuricAcidBlock,
+				ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", ClimateMain.MOD_ID);
 		MachineInit.sulfuricAcid.setBlock(MachineInit.sulfuricAcidBlock);
 
 		MachineInit.fuelGas = new Fluid("dcs.fuel_gas",
@@ -387,7 +410,8 @@ public class MachineInitRegister {
 		FluidRegistry.registerFluid(MachineInit.fuelGas);
 		MachineInit.fuelGasBlock = new DCFluidBlockBase(MachineInit.fuelGas, "fuel_gas_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas");
-		MainMaterialRegister.registerBlock(MachineInit.fuelGasBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas");
+		DCMaterialReg.registerBlock(MachineInit.fuelGasBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas",
+				ClimateMain.MOD_ID);
 		MachineInit.fuelGas.setBlock(MachineInit.fuelGasBlock);
 
 		MachineInit.fuelOil = new Fluid("dcs.fuel_oil",
@@ -397,7 +421,8 @@ public class MachineInitRegister {
 		FluidRegistry.registerFluid(MachineInit.fuelOil);
 		MachineInit.fuelOilBlock = new DCFluidBlockBase(MachineInit.fuelOil, "fuel_oil_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil");
-		MainMaterialRegister.registerBlock(MachineInit.fuelOilBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil");
+		DCMaterialReg.registerBlock(MachineInit.fuelOilBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil",
+				ClimateMain.MOD_ID);
 		MachineInit.fuelOil.setBlock(MachineInit.fuelOilBlock);
 
 		MachineInit.nitrogen = new Fluid("dcs.nitrogen",
@@ -408,8 +433,8 @@ public class MachineInitRegister {
 		FluidRegistry.registerFluid(MachineInit.nitrogen);
 		MachineInit.nitrogenBlock = new DCFluidBlockBase(MachineInit.nitrogen, "nitrogen_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen");
-		MainMaterialRegister.registerBlock(MachineInit.nitrogenBlock,
-				ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen");
+		DCMaterialReg.registerBlock(MachineInit.nitrogenBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen",
+				ClimateMain.MOD_ID);
 		MachineInit.nitrogen.setBlock(MachineInit.nitrogenBlock);
 
 		// bucket
@@ -425,9 +450,9 @@ public class MachineInitRegister {
 	}
 
 	public static void registerTierBlock(Block block, String name, int i) {
-		Block reg = block.setRegistryName(name);
-		GameRegistry.register(reg);
-		GameRegistry.register(new ItemBlockHighTier(reg, i));
+		Block reg = block.setRegistryName(ClimateMain.MOD_ID, name);
+		ForgeRegistries.BLOCKS.register(reg);
+		ForgeRegistries.ITEMS.register(new ItemBlockHighTier(reg, i));
 	}
 
 }

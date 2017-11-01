@@ -20,12 +20,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -45,9 +47,10 @@ public class BlockReactor extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity tile = world.getTileEntity(pos);
 		if (player != null && tile != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(heldItem)) {
 				if (heldItem.getItem() instanceof IWrenchDC) {
 					// achievement
@@ -56,7 +59,9 @@ public class BlockReactor extends BlockTorqueBase {
 					}
 					return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
 				} else if (heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-					DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+					if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+						world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
+					}
 					return true;
 				}
 			}
@@ -65,7 +70,7 @@ public class BlockReactor extends BlockTorqueBase {
 			}
 			return true;
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
 	}
 
 	// 設置時にはプレイヤーの方を向いている方が自然なので

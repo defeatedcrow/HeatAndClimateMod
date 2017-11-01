@@ -72,10 +72,10 @@ public class DCPluginCoFH {
 			DCPluginFluid.registerPotion(naphtha, MobEffects.HASTE);
 			FluidDictionaryDC.registerFluidDic(naphtha, "naphtha");
 		}
-		refined = FluidRegistry.getFluid("fuel");
+		refined = FluidRegistry.getFluid("refined_fuel");
 		if (refined != null) {
 			DCPluginFluid.registerPotion(refined, MobEffects.RESISTANCE);
-			FluidDictionaryDC.registerFluidDic(refined, "refined");
+			FluidDictionaryDC.registerFluidDic(refined, "fuel");
 		}
 
 		// other fluid

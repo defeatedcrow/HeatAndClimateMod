@@ -29,6 +29,8 @@ public class DCFuelHandler implements IFuelHandler {
 					return 1600;
 				else if (i == 1)
 					return 800;
+				else if (i == 9)
+					return 6400;
 				else
 					return 0;
 			}

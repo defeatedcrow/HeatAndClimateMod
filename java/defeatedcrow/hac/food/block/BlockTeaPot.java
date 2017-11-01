@@ -12,6 +12,7 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.capability.DrinkMilk;
@@ -57,35 +58,40 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TileTeaPot) {
 				TileTeaPot pot = (TileTeaPot) tile;
-				if (onActivateDCTank(pot, heldItem, world, state, side, player)) {
-					return true;
-				} else if (DrinkMilk.isMilkItem(heldItem) != DrinkMilk.NONE) {
-					DrinkMilk milk = DrinkMilk.isMilkItem(heldItem);
-					if (pot.setMilk(milk)) {
-						if (!player.capabilities.isCreativeMode && heldItem.stackSize-- <= 0) {
-							heldItem = null;
+				ItemStack held = player.getHeldItem(hand);
+				if (!DCUtil.isEmpty(held)) {
+					if (onActivateDCTank(pot, held, world, state, side, player))
+						return true;
+					else if (DrinkMilk.isMilkItem(held) != DrinkMilk.NONE) {
+						DrinkMilk milk = DrinkMilk.isMilkItem(held);
+						if (pot.setMilk(milk)) {
+							if (!player.capabilities.isCreativeMode) {
+								DCUtil.reduceAndDeleteStack(held, 1);
+							}
+							DCLogger.debugLog("Success to put milk: " + milk);
+							DCLogger.debugLog("Milk Count: " + pot.getMilkCount());
+							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
+									2.0F);
 						}
-						DCLogger.debugLog("Success to put milk: " + milk);
-						DCLogger.debugLog("Milk Count: " + pot.getMilkCount());
-						world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
-					}
-					return true;
-				} else if (DrinkSugar.isSugarItem(heldItem) != DrinkSugar.NONE) {
-					DrinkSugar sugar = DrinkSugar.isSugarItem(heldItem);
-					if (pot.setSugar(sugar)) {
-						if (!player.capabilities.isCreativeMode && heldItem.stackSize-- <= 0) {
-							heldItem = null;
+						return true;
+					} else if (DrinkSugar.isSugarItem(held) != DrinkSugar.NONE) {
+						DrinkSugar sugar = DrinkSugar.isSugarItem(held);
+						if (pot.setSugar(sugar)) {
+							if (!player.capabilities.isCreativeMode) {
+								DCUtil.reduceAndDeleteStack(held, 1);
+							}
+							DCLogger.debugLog("Success to put sugar: " + sugar);
+							DCLogger.debugLog("Sugar Count: " + pot.getSugarCount());
+							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
+									2.0F);
 						}
-						DCLogger.debugLog("Success to put sugar: " + sugar);
-						DCLogger.debugLog("Sugar Count: " + pot.getSugarCount());
-						world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
+						return true;
 					}
-					return true;
 				}
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 			}
@@ -165,10 +171,11 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 			EnumFacing side, EntityPlayer player) {
 		if (item != null && tile != null && item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)
 				&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
-			ItemStack copy = new ItemStack(item.getItem(), 1, item.getItemDamage());
-			if (item.getTagCompound() != null)
-				copy.setTagCompound(item.getTagCompound());
-			IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+			ItemStack copy = item.copy();
+			if (item.stackSize > 1) {
+				copy.stackSize = 1;
+			}
+			// IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 			IFluidHandler dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 			IFluidHandler intank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
 			IFluidHandler outtank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
@@ -186,24 +193,33 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 				boolean success = false;
 				// input
 				if (f1 != null && dc_in.fill(f1, false) == max) {
-					FluidStack fill = dummy.drain(max, true);
-					ret = copy;
-					if (ret.stackSize <= 0) {
-						ret = null;
-					}
+					FluidStack fill = dummy.drain(max, false);
+
 					if (fill != null && fill.amount == max) {
+						dummy.drain(max, true);
+						ret = copy;
+						if (ret.stackSize <= 0) {
+							ret = null;
+						}
 						dc_in.fill(fill, true);
 						success = true;
 					}
 				}
 				// output
 				else if (f1 == null && dc_out.drain(max, false) != null) {
-					int drain = dummy.fill(dc_out.drain(max, false), true);
-					ret = copy;
-					if (ret.stackSize <= 0) {
-						ret = null;
+					int drain = dummy.fill(dc_out.drain(max, false), false);
+					if (drain == max) {
+						dummy.fill(dc_out.drain(max, false), true);
+						ret = copy;
+						if (ret.stackSize <= 0) {
+							ret = null;
+						}
+
+						dc_out.drain(drain, true);
+						success = true;
 					}
-					if (ret != null) {
+
+					if (!DCUtil.isEmpty(ret)) {
 						DCLogger.debugLog("check1");
 						if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
 							DCLogger.debugLog("check2");
@@ -227,19 +243,15 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 							}
 						}
 					}
-					if (drain == max) {
-						dc_out.drain(drain, true);
-						success = true;
-					}
 				}
 
 				if (success) {
-					if (item.stackSize-- <= 0) {
-						item = null;
+					if (!player.capabilities.isCreativeMode) {
+						DCUtil.reduceAndDeleteStack(item, 1);
 					}
 					tile.markDirty();
 					player.inventory.markDirty();
-					if (ret != null) {
+					if (!DCUtil.isEmpty(ret)) {
 						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret);
 						world.spawnEntityInWorld(drop);
 					}

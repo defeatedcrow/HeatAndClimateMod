@@ -28,6 +28,11 @@ public class MachineInit {
 
 	// tier 2
 
+	public static Block shaft3_s;
+	public static Block shaft3_l;
+	public static Block shaft3_t_a;
+	public static Block shaft3_t_b;
+
 	public static Block fauset;
 	public static Block IBC;
 
@@ -53,6 +58,7 @@ public class MachineInit {
 	public static Block motor; // FU/RF -> Torque
 	public static Block dynamo; // Torque -> FU/RF
 	public static Block converter; // EU/RF -> FU
+	public static Block dieselEngine; // fluid -> Torque
 
 	public static Block waterPump;
 	public static Block pressMachine;

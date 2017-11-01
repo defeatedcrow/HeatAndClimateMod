@@ -10,6 +10,7 @@ import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
+import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePortalManager;
@@ -18,6 +19,7 @@ import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.entity.EntityScooter;
+import defeatedcrow.hac.machine.gui.ContainerDieselEngine;
 import defeatedcrow.hac.machine.gui.ContainerEntityScooter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
@@ -26,6 +28,7 @@ import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.machine.gui.ContainerSpinning;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
+import defeatedcrow.hac.machine.gui.GuiDieselEngine;
 import defeatedcrow.hac.machine.gui.GuiEntityScooter;
 import defeatedcrow.hac.machine.gui.GuiHopperFilter;
 import defeatedcrow.hac.machine.gui.GuiHopperFluid;
@@ -37,6 +40,7 @@ import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.magic.MagicCommonProxy;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
+import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
@@ -84,6 +88,7 @@ import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
+import defeatedcrow.hac.main.util.DCRegistryUtil;
 import defeatedcrow.hac.main.worldgen.WorldGenAltOres2;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
@@ -91,11 +96,8 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionType;
 import net.minecraft.stats.Achievement;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -103,6 +105,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonMainProxy implements IGuiHandler {
@@ -117,38 +120,23 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadPotion() {
 		MainInit.gravity = new PotionGravityDC();
-		GameRegistry.register(MainInit.gravity, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.gravity"));
-		MainInit.gravityType = new PotionType("dcs.gravity", new PotionEffect[] {
-				new PotionEffect(MainInit.gravity, 1800, 0)
-		});
-		GameRegistry.register(MainInit.gravityType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.gravity"));
+		DCRegistryUtil.addPotion(MainInit.gravity, MainInit.gravityType, "gravity");
 
 		MainInit.bird = new PotionBirdDC();
-		GameRegistry.register(MainInit.bird, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.bird"));
-		MainInit.birdType = new PotionType("dcs.bird", new PotionEffect[] {
-				new PotionEffect(MainInit.bird, 3600, 0)
-		});
-		GameRegistry.register(MainInit.birdType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.bird"));
+		DCRegistryUtil.addPotion(MainInit.bird, MainInit.birdType, "bird");
 
 		MainInit.ocean = new PotionOceanDC();
-		GameRegistry.register(MainInit.ocean, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.ocean"));
-		MainInit.oceanType = new PotionType("dcs.ocean", new PotionEffect[] {
-				new PotionEffect(MainInit.ocean, 3600, 0)
-		});
-		GameRegistry.register(MainInit.oceanType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.ocean"));
+		DCRegistryUtil.addPotion(MainInit.ocean, MainInit.oceanType, "ocean");
 
 		MainInit.heavyboots = new PotionHeavyBootsDC();
-		GameRegistry.register(MainInit.heavyboots, new ResourceLocation(ClimateMain.MOD_ID, "dcs.potion.heavyboots"));
-		MainInit.heavybootsType = new PotionType("dcs.heavyboots", new PotionEffect[] {
-				new PotionEffect(MainInit.heavyboots, 3600, 0)
-		});
-		GameRegistry.register(MainInit.heavybootsType, new ResourceLocation(ClimateMain.MOD_ID, "dcs.heavyboots"));
+		DCRegistryUtil.addPotion(MainInit.heavyboots, MainInit.heavybootsType, "heavyboots");
 	}
 
 	public void loadEnchantment() {
 
 		MainInit.venom = new EnchantmentVenom();
-		GameRegistry.register(MainInit.venom, new ResourceLocation(ClimateMain.MOD_ID, "dcs.venom"));
+		ForgeRegistries.ENCHANTMENTS
+				.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
 
 	}
 
@@ -221,6 +209,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer");
 		GameRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane");
 		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
+		GameRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum");
 
 		FoodCommonProxy.loadTE();
 		MachineCommonProxy.loadTE();
@@ -305,6 +294,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerSpinning((TileSpinningMachine) tile, player.inventory);
 		if (tile instanceof TilePortalManager)
 			return new ContainerPortalManager((TilePortalManager) tile, player);
+		if (tile instanceof TileDieselEngine)
+			return new ContainerDieselEngine((TileDieselEngine) tile, player.inventory);
 		return null;
 	}
 
@@ -347,6 +338,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiSpinning((TileSpinningMachine) tile, player.inventory);
 		if (tile instanceof TilePortalManager)
 			return new GuiPortalManager((TilePortalManager) tile, player);
+		if (tile instanceof TileDieselEngine)
+			return new GuiDieselEngine((TileDieselEngine) tile, player.inventory);
 		return null;
 	}
 

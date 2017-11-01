@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import org.lwjgl.opengl.GL11;
 
 import defeatedcrow.hac.api.blockstate.EnumSide;
+import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.main.packet.DCMainPacket;
@@ -29,6 +31,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiReactor extends GuiContainer {
 	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate", "textures/gui/reactor_gui.png");
+	private static final ResourceLocation iconTex = new ResourceLocation("dcs_climate", "textures/gui/gui_icons.png");
+
 	/** The player inventory bound to this GUI. */
 	private final InventoryPlayer playerInventory;
 	private final TileReactor machine;
@@ -173,9 +177,12 @@ public class GuiReactor extends GuiContainer {
 			renderFluid(in, inAmo, i + 133, j + 50, 12, 40);
 		}
 
-		if (this.machine.getHeat() != null) {
-			int cl = machine.getHeat().getID() * 6 + 6;
-			this.drawTexturedModalRect(i + 7, j + 99, 0, 202, cl, 4);
+		this.mc.getTextureManager().bindTexture(iconTex);
+		this.drawTexturedModalRect(i + 12, j + 92, 0, 16, 40, 6);
+		IClimate clm = ClimateAPI.register.getClimateFromInt(machine.getField(2));
+		if (clm != null) {
+			int cl = clm.getHeat().getID() * 3;
+			this.drawTexturedModalRect(i + 13 + cl, j + 89, 1, 25, 5, 10);
 		}
 	}
 

@@ -1,19 +1,20 @@
 package defeatedcrow.hac.main.block.device;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.base.ClimateReceiverLockable;
+import defeatedcrow.hac.core.base.DCInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
@@ -34,17 +35,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
+		invs.readFromNBT(tag);
 
 		this.currentBurnTime = tag.getInteger("BurnTime");
 		this.maxBurnTime = tag.getInteger("MaxTime");
@@ -62,17 +53,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 		tag.setByte("Climate", (byte) this.currentClimate);
 
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound tag1 = new NBTTagCompound();
-				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
-				nbttaglist.appendTag(tag1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		invs.writeToNBT(tag);
 		// DCLogger.debugLog("write " + this.currentBurnTime + ", " + this.maxBurnTime + ", " +
 		// this.currentClimate);
 		return tag;
@@ -87,17 +68,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 		tag.setByte("Climate", (byte) this.currentClimate);
 
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-				nbttagcompound1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(nbttagcompound1);
-				nbttaglist.appendTag(nbttagcompound1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		invs.writeToNBT(tag);
 		return tag;
 	}
 
@@ -105,17 +76,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[this.getSizeInventory()];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = nbttagcompound1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-			}
-		}
+		invs.readFromNBT(tag);
 
 		this.currentBurnTime = tag.getInteger("BurnTime");
 		this.maxBurnTime = tag.getInteger("MaxTime");
@@ -172,6 +133,14 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 		return DCHeatTier.getTypeByID(currentClimate);
 	}
 
+	public int getFuel(ItemStack item) {
+		return getBurnTime(item);
+	}
+
+	public abstract boolean isSuitableClimate();
+
+	public abstract List<String> climateSuitableMassage();
+
 	/* === 燃焼判定 === */
 
 	public static int getBurnTime(ItemStack item) {
@@ -184,6 +153,8 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	}
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */
+
+	protected DCInventory invs = new DCInventory(4);
 
 	protected int[] slotsTop() {
 		return new int[] {
@@ -208,8 +179,6 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 		};
 	};
 
-	public ItemStack[] inv = new ItemStack[this.getSizeInventory()];
-
 	// スロット数
 	@Override
 	public int getSizeInventory() {
@@ -219,46 +188,18 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 	// インベントリ内の任意のスロットにあるアイテムを取得
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		if (i < getSizeInventory())
-			return this.inv[i];
-		else
-			return null;
+		return invs.getStackInSlot(i);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return null;
-		if (this.inv[i] != null) {
-			ItemStack itemstack;
-
-			if (this.inv[i].stackSize <= num) {
-				itemstack = this.inv[i];
-				this.inv[i] = null;
-				return itemstack;
-			} else {
-				itemstack = this.inv[i].splitStack(num);
-				if (this.inv[i].stackSize == 0) {
-					this.inv[i] = null;
-				}
-				return itemstack;
-			}
-		} else
-			return null;
+		return invs.decrStackSize(i, num);
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return;
-		else {
-			this.inv[i] = stack;
-
-			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-				stack.stackSize = this.getInventoryStackLimit();
-			}
-		}
+		invs.setInventorySlotContents(i, stack);
 	}
 
 	// インベントリの名前
@@ -328,48 +269,16 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	// 追加メソッド
 	public static int isItemStackable(ItemStack target, ItemStack current) {
-		if (target == null || current == null)
-			return 0;
-
-		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
-				&& ItemStack.areItemStackTagsEqual(target, current)) {
-			int i = current.stackSize + target.stackSize;
-			if (i > current.getMaxStackSize()) {
-				i = current.getMaxStackSize() - current.stackSize;
-				return i;
-			}
-			return target.stackSize;
-		}
-
-		return 0;
+		return DCInventory.isItemStackable(target, current);
 	}
 
 	public void incrStackInSlot(int i, ItemStack input) {
-		if (i < this.getSizeInventory() && input != null) {
-			if (this.inv[i] != null) {
-				if (this.inv[i].getItem() == input.getItem() && this.inv[i].getMetadata() == input.getMetadata()) {
-					this.inv[i].stackSize += input.stackSize;
-					if (this.inv[i].stackSize > this.getInventoryStackLimit()) {
-						this.inv[i].stackSize = this.getInventoryStackLimit();
-					}
-				}
-			} else {
-				this.setInventorySlotContents(i, input);
-			}
-		}
+		invs.incrStackInSlot(i, input);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		i = MathHelper.clamp_int(i, 0, this.getSizeInventory() - 1);
-		if (i < inv.length) {
-			if (this.inv[i] != null) {
-				ItemStack itemstack = this.inv[i];
-				this.inv[i] = null;
-				return itemstack;
-			}
-		}
-		return null;
+		return invs.removeStackFromSlot(i);
 	}
 
 	@Override
@@ -407,9 +316,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < this.inv.length; ++i) {
-			this.inv[i] = null;
-		}
+		invs.clear();
 	}
 
 	@Override
@@ -423,7 +330,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)

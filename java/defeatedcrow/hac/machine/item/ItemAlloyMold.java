@@ -5,6 +5,7 @@ import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
@@ -46,9 +47,9 @@ public class ItemAlloyMold extends DCItem implements IPressMold {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		if (stack != null) {
+		if (!DCUtil.isEmpty(stack)) {
 			ItemStack output = this.getOutput(stack);
-			if (output != null) {
+			if (!DCUtil.isEmpty(output)) {
 				tooltip.add(TextFormatting.BOLD.toString() + "Output: " + output.getDisplayName());
 				if (ClimateCore.isDebug) {
 					tooltip.add(TextFormatting.BOLD.toString() + "Recipe ID: " + this.getRecipeNumber(stack));
@@ -72,7 +73,7 @@ public class ItemAlloyMold extends DCItem implements IPressMold {
 
 	@Override
 	public ItemStack getOutput(ItemStack mold) {
-		if (mold != null) {
+		if (!DCUtil.isEmpty(mold)) {
 			int m = mold.getItemDamage();
 			if (m == 0)
 				return new ItemStack(MachineInit.catalyst, 1, 0);
@@ -94,7 +95,7 @@ public class ItemAlloyMold extends DCItem implements IPressMold {
 	@Override
 	public List<ItemStack> getInputs(ItemStack mold) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
-		if (mold != null) {
+		if (!DCUtil.isEmpty(mold)) {
 			if (mold.getItemDamage() == 0) {
 				list.add(new ItemStack(MainInit.oreDust, 2, 2));
 				list.add(new ItemStack(MainInit.oreDust, 1, 11));

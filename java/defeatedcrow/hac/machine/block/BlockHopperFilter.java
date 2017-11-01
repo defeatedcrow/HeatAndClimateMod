@@ -110,10 +110,12 @@ public class BlockHopperFilter extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile != null && tile instanceof TileHopperFilter) {
-			if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+		if (player != null) {
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile != null && tile instanceof TileHopperFilter) {
+				if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				}
 			}
 		}
 		return true;

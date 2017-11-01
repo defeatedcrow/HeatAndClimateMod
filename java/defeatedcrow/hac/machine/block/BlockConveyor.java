@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.SoundType;
@@ -59,15 +60,18 @@ public class BlockConveyor extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null && heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
-			TileEntity tile = world.getTileEntity(pos);
-			// achievement
-			if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {
+				TileEntity tile = world.getTileEntity(pos);
+				// achievement
+				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
+					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+				}
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
 	}
 
 	@Override

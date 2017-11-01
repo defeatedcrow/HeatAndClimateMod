@@ -29,78 +29,78 @@ public class DCArmorMaterial {
 			DC_TITANIUM
 	};
 
-	public static DCMaterial getMaterial(ItemArmor.ArmorMaterial mat) {
+	public static DCMaterialEnum getMaterial(ItemArmor.ArmorMaterial mat) {
 		if (mat == DC_LINEN)
-			return DCMaterial.LINEN;
+			return DCMaterialEnum.LINEN;
 		if (mat == DC_CLOTH)
-			return DCMaterial.CLOTH;
+			return DCMaterialEnum.CLOTH;
 		if (mat == DC_BRASS)
-			return DCMaterial.BRASS;
+			return DCMaterialEnum.BRASS;
 		if (mat == DC_STEEL)
-			return DCMaterial.STEEL;
+			return DCMaterialEnum.STEEL;
 		if (mat == DC_CHALCEDONY)
-			return DCMaterial.CHALCEDONY;
+			return DCMaterialEnum.CHALCEDONY;
 		if (mat == DC_SAPPHIRE)
-			return DCMaterial.SAPPHIRE;
+			return DCMaterialEnum.SAPPHIRE;
 		if (mat == DC_TITANIUM)
-			return DCMaterial.TITANIUM;
+			return DCMaterialEnum.TITANIUM;
 		if (mat == DC_SYNTHETIC)
-			return DCMaterial.SYNTHETIC;
+			return DCMaterialEnum.SYNTHETIC;
 		return null;
 	}
 
 	public static void load() {
-		DCArmorMaterial.DC_LINEN = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.LINEN.name,
-				"dcs_" + DCMaterial.LINEN.name, DCMaterial.LINEN.armorDur, DCMaterial.LINEN.reduceDam,
-				DCMaterial.LINEN.enchant, DCMaterial.LINEN.sound, DCMaterial.LINEN.toughness);
+		DCArmorMaterial.DC_LINEN = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.LINEN.name,
+				"dcs_" + DCMaterialEnum.LINEN.name, DCMaterialEnum.LINEN.armorDur, DCMaterialEnum.LINEN.reduceDam,
+				DCMaterialEnum.LINEN.enchant, DCMaterialEnum.LINEN.sound, DCMaterialEnum.LINEN.toughness);
 		DCArmorMaterial.DC_LINEN.customCraftingMaterial = MainInit.repairPutty;
 
-		DCArmorMaterial.DC_CLOTH = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.CLOTH.name,
-				"dcs_" + DCMaterial.CLOTH.name, DCMaterial.CLOTH.armorDur, DCMaterial.CLOTH.reduceDam,
-				DCMaterial.CLOTH.enchant, DCMaterial.CLOTH.sound, DCMaterial.CLOTH.toughness);
+		DCArmorMaterial.DC_CLOTH = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.CLOTH.name,
+				"dcs_" + DCMaterialEnum.CLOTH.name, DCMaterialEnum.CLOTH.armorDur, DCMaterialEnum.CLOTH.reduceDam,
+				DCMaterialEnum.CLOTH.enchant, DCMaterialEnum.CLOTH.sound, DCMaterialEnum.CLOTH.toughness);
 		DCArmorMaterial.DC_CLOTH.customCraftingMaterial = MainInit.repairPutty;
 
-		DCArmorMaterial.DC_BRASS = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.BRASS.name,
-				"dcs_" + DCMaterial.BRASS.name, DCMaterial.BRASS.armorDur, DCMaterial.BRASS.reduceDam,
-				DCMaterial.BRASS.enchant, DCMaterial.BRASS.sound, DCMaterial.BRASS.toughness);
+		DCArmorMaterial.DC_BRASS = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.BRASS.name,
+				"dcs_" + DCMaterialEnum.BRASS.name, DCMaterialEnum.BRASS.armorDur, DCMaterialEnum.BRASS.reduceDam,
+				DCMaterialEnum.BRASS.enchant, DCMaterialEnum.BRASS.sound, DCMaterialEnum.BRASS.toughness);
 		DCArmorMaterial.DC_BRASS.customCraftingMaterial = MainInit.repairPutty;
 
-		DCArmorMaterial.DC_STEEL = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.STEEL.name,
-				"dcs_" + DCMaterial.STEEL.name, DCMaterial.STEEL.armorDur, DCMaterial.STEEL.reduceDam,
-				DCMaterial.STEEL.enchant, DCMaterial.STEEL.sound, DCMaterial.STEEL.toughness);
+		DCArmorMaterial.DC_STEEL = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.STEEL.name,
+				"dcs_" + DCMaterialEnum.STEEL.name, DCMaterialEnum.STEEL.armorDur, DCMaterialEnum.STEEL.reduceDam,
+				DCMaterialEnum.STEEL.enchant, DCMaterialEnum.STEEL.sound, DCMaterialEnum.STEEL.toughness);
 		DCArmorMaterial.DC_STEEL.customCraftingMaterial = MainInit.repairPutty;
 
-		DCArmorMaterial.DC_CHALCEDONY = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.CHALCEDONY.name,
-				"dcs_" + DCMaterial.CHALCEDONY.name, DCMaterial.CHALCEDONY.armorDur, DCMaterial.CHALCEDONY.reduceDam,
-				DCMaterial.CHALCEDONY.enchant, DCMaterial.CHALCEDONY.sound, DCMaterial.CHALCEDONY.toughness);
+		DCArmorMaterial.DC_CHALCEDONY = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.CHALCEDONY.name,
+				"dcs_" + DCMaterialEnum.CHALCEDONY.name, DCMaterialEnum.CHALCEDONY.armorDur, DCMaterialEnum.CHALCEDONY.reduceDam,
+				DCMaterialEnum.CHALCEDONY.enchant, DCMaterialEnum.CHALCEDONY.sound, DCMaterialEnum.CHALCEDONY.toughness);
 		DCArmorMaterial.DC_CHALCEDONY.customCraftingMaterial = MainInit.repairPutty;
 
-		DCArmorMaterial.DC_SAPPHIRE = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.SAPPHIRE.name,
-				"dcs_" + DCMaterial.SAPPHIRE.name, DCMaterial.SAPPHIRE.armorDur, DCMaterial.SAPPHIRE.reduceDam,
-				DCMaterial.SAPPHIRE.enchant, DCMaterial.SAPPHIRE.sound, DCMaterial.SAPPHIRE.toughness);
+		DCArmorMaterial.DC_SAPPHIRE = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.SAPPHIRE.name,
+				"dcs_" + DCMaterialEnum.SAPPHIRE.name, DCMaterialEnum.SAPPHIRE.armorDur, DCMaterialEnum.SAPPHIRE.reduceDam,
+				DCMaterialEnum.SAPPHIRE.enchant, DCMaterialEnum.SAPPHIRE.sound, DCMaterialEnum.SAPPHIRE.toughness);
 		DCArmorMaterial.DC_SAPPHIRE.customCraftingMaterial = MainInit.repairPutty;
 
-		DCArmorMaterial.DC_SYNTHETIC = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.SYNTHETIC.name,
-				"dcs_" + DCMaterial.SYNTHETIC.name, DCMaterial.SYNTHETIC.armorDur, DCMaterial.SYNTHETIC.reduceDam,
-				DCMaterial.SYNTHETIC.enchant, DCMaterial.SYNTHETIC.sound, DCMaterial.SYNTHETIC.toughness);
+		DCArmorMaterial.DC_SYNTHETIC = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.SYNTHETIC.name,
+				"dcs_" + DCMaterialEnum.SYNTHETIC.name, DCMaterialEnum.SYNTHETIC.armorDur, DCMaterialEnum.SYNTHETIC.reduceDam,
+				DCMaterialEnum.SYNTHETIC.enchant, DCMaterialEnum.SYNTHETIC.sound, DCMaterialEnum.SYNTHETIC.toughness);
 		DCArmorMaterial.DC_SYNTHETIC.customCraftingMaterial = MainInit.repairPutty;
 
-		DCArmorMaterial.DC_TITANIUM = EnumHelper.addArmorMaterial("dcs_" + DCMaterial.TITANIUM.name,
-				"dcs_" + DCMaterial.TITANIUM.name, DCMaterial.TITANIUM.armorDur, DCMaterial.TITANIUM.reduceDam,
-				DCMaterial.TITANIUM.enchant, DCMaterial.TITANIUM.sound, DCMaterial.TITANIUM.toughness);
+		DCArmorMaterial.DC_TITANIUM = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.TITANIUM.name,
+				"dcs_" + DCMaterialEnum.TITANIUM.name, DCMaterialEnum.TITANIUM.armorDur, DCMaterialEnum.TITANIUM.reduceDam,
+				DCMaterialEnum.TITANIUM.enchant, DCMaterialEnum.TITANIUM.sound, DCMaterialEnum.TITANIUM.toughness);
 		DCArmorMaterial.DC_TITANIUM.customCraftingMaterial = MainInit.repairPutty;
 
 		// 耐性登録
-		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_LINEN, DCMaterial.LINEN.prevHeat,
-				DCMaterial.LINEN.prevCold);
-		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_CLOTH, DCMaterial.CLOTH.prevHeat,
-				DCMaterial.CLOTH.prevCold);
-		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_SYNTHETIC, DCMaterial.SYNTHETIC.prevHeat,
-				DCMaterial.SYNTHETIC.prevCold);
+		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN.prevHeat,
+				DCMaterialEnum.LINEN.prevCold);
+		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH.prevHeat,
+				DCMaterialEnum.CLOTH.prevCold);
+		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC.prevHeat,
+				DCMaterialEnum.SYNTHETIC.prevCold);
 		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_CHALCEDONY, 1.0F);
 		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_SAPPHIRE, 0.5F);
-		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_TITANIUM, DCMaterial.TITANIUM.prevHeat,
-				DCMaterial.TITANIUM.prevCold);
+		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_TITANIUM, DCMaterialEnum.TITANIUM.prevHeat,
+				DCMaterialEnum.TITANIUM.prevCold);
 	}
 
 }

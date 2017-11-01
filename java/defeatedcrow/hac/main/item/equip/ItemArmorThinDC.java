@@ -11,14 +11,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.client.base.ModelThinBiped;
-import defeatedcrow.hac.main.util.DCMaterial;
+import defeatedcrow.hac.main.util.DCMaterialEnum;
 
 public class ItemArmorThinDC extends ItemArmor implements ITexturePath {
 
 	private final String tex;
-	private final DCMaterial material;
+	private final DCMaterialEnum material;
 
-	public ItemArmorThinDC(ArmorMaterial m, DCMaterial mat, EntityEquipmentSlot slot, String t) {
+	public ItemArmorThinDC(ArmorMaterial m, DCMaterialEnum mat, EntityEquipmentSlot slot, String t) {
 		super(m, 2, slot);
 		material = mat;
 		tex = t;

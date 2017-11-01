@@ -6,6 +6,7 @@ import java.util.List;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -105,8 +106,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
 			for (int i = 4; i < 7; i++) {
-				ItemStack slot = this.inv[i];
-				if (slot != null) {
+				ItemStack slot = this.getStackInSlot(i);
+				if (!DCUtil.isEmpty(slot)) {
 					boolean inRecipe = false;
 					Iterator<Object> req = required.iterator();
 

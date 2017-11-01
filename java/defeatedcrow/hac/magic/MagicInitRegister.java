@@ -1,6 +1,7 @@
 package defeatedcrow.hac.magic;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.magic.block.BlockBiomeGlass;
 import defeatedcrow.hac.magic.block.BlockElestial;
 import defeatedcrow.hac.magic.block.BlockIceCluster;
@@ -31,7 +32,6 @@ import defeatedcrow.hac.magic.item.ItemMagicalBadge;
 import defeatedcrow.hac.magic.item.ItemMagicalPendant;
 import defeatedcrow.hac.magic.item.ItemSilverDagger;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -74,23 +74,27 @@ public class MagicInitRegister {
 
 	static void loadBlocks() {
 		MagicInit.clusterIce = new BlockIceCluster(ClimateCore.PACKAGE_BASE + "_cluster_ice");
-		MainMaterialRegister.registerBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_BASE + "_cluster_ice");
+		DCMaterialReg.registerBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_BASE + "_cluster_ice",
+				ClimateMain.MOD_ID);
 
 		MagicInit.infernalFlame = new BlockInfernalFlame(ClimateCore.PACKAGE_BASE + "_infernal_flame");
-		MainMaterialRegister.registerBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_BASE + "_infernal_flame");
+		DCMaterialReg.registerBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_BASE + "_infernal_flame",
+				ClimateMain.MOD_ID);
 
 		MagicInit.elestial = new BlockElestial(Material.GLASS, ClimateCore.PACKAGE_BASE + "_ore_elestial");
-		MainMaterialRegister.registerBlock(MagicInit.elestial, ClimateCore.PACKAGE_BASE + "_ore_elestial");
+		DCMaterialReg.registerBlock(MagicInit.elestial, ClimateCore.PACKAGE_BASE + "_ore_elestial", ClimateMain.MOD_ID);
 
 		MagicInit.lotusCandle = new BlockLotusCandle(ClimateCore.PACKAGE_BASE + "_lotus_candle_white", false);
-		MainMaterialRegister.registerBlock(MagicInit.lotusCandle, ClimateCore.PACKAGE_BASE + "_lotus_candle_white");
+		DCMaterialReg.registerBlock(MagicInit.lotusCandle, ClimateCore.PACKAGE_BASE + "_lotus_candle_white",
+				ClimateMain.MOD_ID);
 
 		MagicInit.lotusCandleBlack = new BlockLotusCandle(ClimateCore.PACKAGE_BASE + "_lotus_candle_black", true);
-		MainMaterialRegister.registerBlock(MagicInit.lotusCandleBlack,
-				ClimateCore.PACKAGE_BASE + "_lotus_candle_black");
+		DCMaterialReg.registerBlock(MagicInit.lotusCandleBlack, ClimateCore.PACKAGE_BASE + "_lotus_candle_black",
+				ClimateMain.MOD_ID);
 
 		MagicInit.biomeOrb = new BlockBiomeGlass(ClimateCore.PACKAGE_BASE + "_device_biomeglass");
-		MainMaterialRegister.registerBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_BASE + "_device_biomeglass");
+		DCMaterialReg.registerBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_BASE + "_device_biomeglass",
+				ClimateMain.MOD_ID);
 
 		MagicInit.maceSun = new BlockMaceLight(ClimateCore.PACKAGE_BASE + "_magicmace_light");
 		MagicInit.maceSun.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_light");
@@ -133,7 +137,7 @@ public class MagicInitRegister {
 		GameRegistry.register(new ItemBlockMaceGlory(MagicInit.maceGlory));
 
 		MagicInit.timeCage = new BlockTimeCage(ClimateCore.PACKAGE_BASE + "_time_cage");
-		MainMaterialRegister.registerBlock(MagicInit.timeCage, ClimateCore.PACKAGE_BASE + "_time_cage");
+		DCMaterialReg.registerBlock(MagicInit.timeCage, ClimateCore.PACKAGE_BASE + "_time_cage", ClimateMain.MOD_ID);
 	}
 
 	static void loadCreativeTab() {

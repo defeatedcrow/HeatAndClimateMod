@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
+import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.energy.TileTorqueLockable;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerPressMachine;
@@ -43,11 +44,12 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	}
 
 	private int getMatchSlot(ItemStack item, ItemStack[] list) {
-		if (item == null || item.getItem() == null)
+		if (DCUtil.isEmpty(item))
 			return -1;
 		for (int i = 0; i < 9; i++) {
-			ItemStack check = inv[i + 2];
-			if (check == null || check.getItem() == null) {
+			int i2 = i + 2;
+			ItemStack check = inv.getStackInSlot(i2);
+			if (DCUtil.isEmpty(check)) {
 				continue;
 			} else if (DCUtil.isIntegratedItem(check, item, false)) {
 				if (check.stackSize >= item.stackSize)
@@ -99,25 +101,25 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				// レシピ処理
 				ItemStack output = null;
 				ItemStack moldItem = this.getStackInSlot(0);
-				if (moldItem != null && moldItem.getItem() != null && moldItem.getItem() instanceof IPressMold) {
+				if (!DCUtil.isEmpty(moldItem) && moldItem.getItem() instanceof IPressMold) {
 					IPressMold mold = (IPressMold) moldItem.getItem();
 					output = mold.getOutput(moldItem);
 				}
 
-				if (output != null && canIncrStack(output, 1)) {
+				if (!DCUtil.isEmpty(output) && canIncrStack(output, 1)) {
 					ItemStack[] reqs = new ItemStack[9];
 					ItemStack[] rets = new ItemStack[9];
 					int[] reduce = new int[9];
 					int countQ = 0;
 					int countR = 0;
 					for (int i = 0; i < 9; i++) {
-						if (display[i] != null) {
-							reqs[i] = display[i];
-							countQ += display[i].stackSize;
+						if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
+							reqs[i] = display.getStackInSlot(i);
+							countQ += display.getStackInSlot(i).stackSize;
 						}
-						if (inv[i + 2] != null) {
-							rets[i] = inv[i + 2];
-							countR += inv[i + 2].stackSize;
+						if (!DCUtil.isEmpty(inv.getStackInSlot(i + 2))) {
+							rets[i] = inv.getStackInSlot(i + 2);
+							countR += inv.getStackInSlot(i + 2).stackSize;
 						}
 					}
 
@@ -137,10 +139,10 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 					// ぴったりなくなった
 					if (flag && countQ == 0) {
-						if (this.inv[1] == null) {
-							this.inv[1] = output;
+						if (DCUtil.isEmpty(inv.getStackInSlot(1))) {
+							this.inv.setInventorySlotContents(1, output);
 						} else {
-							this.inv[1].stackSize += output.stackSize;
+							DCUtil.addStackSize(inv.getStackInSlot(1), output.stackSize);
 						}
 						for (int k = 0; k < 9; k++) {
 							int red = reduce[k];
@@ -161,31 +163,29 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			ItemStack moldItem = this.getStackInSlot(0);
 			int prevCount = 0;
 			for (int i = 0; i < 9; i++) {
-				if (this.display[i] != null) {
-					prevCount += display[i].stackSize;
+				if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
+					prevCount += display.getStackInSlot(i).stackSize;
 				}
 			}
-			if (moldItem != null && moldItem.getItem() != null && moldItem.getItem() instanceof IPressMold) {
+			if (!DCUtil.isEmpty(moldItem) && moldItem.getItem() instanceof IPressMold) {
 				IPressMold mold = (IPressMold) moldItem.getItem();
 				List<ItemStack> reqs = mold.getInputs(moldItem);
 				if (!reqs.isEmpty()) {
 					for (int i = 0; i < reqs.size(); i++) {
-						display[i] = reqs.get(i);
+						display.setInventorySlotContents(i, reqs.get(i));
+						;
 					}
 				} else {
-					for (int i = 0; i < 9; i++) {
-						this.display[i] = null;
-					}
+					display.clear();
 				}
 			} else {
-				for (int i = 0; i < 9; i++) {
-					this.display[i] = null;
-				}
+				display.clear();
 			}
 			int postCount = 0;
 			for (int i = 0; i < 9; i++) {
-				if (this.display[i] != null) {
-					postCount += display[i].stackSize;
+				if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
+					postCount += display.getStackInSlot(i).stackSize;
+					;
 				}
 			}
 			if (prevCount != postCount) {
@@ -261,27 +261,14 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[11];
+		inv.readFromNBT(tag);
 
+		NBTTagList nbttaglist = tag.getTagList("DispItems", 10);
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
-
-		NBTTagList nbttaglist2 = tag.getTagList("DispItems", 10);
-		this.display = new ItemStack[9];
-
-		for (int i = 0; i < nbttaglist2.tagCount(); ++i) {
-			NBTTagCompound tag2 = nbttaglist2.getCompoundTagAt(i);
-			byte b0 = tag2.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.display.length) {
-				this.display[b0] = ItemStack.loadItemStackFromNBT(tag2);
+			if (b0 >= 0 && b0 < this.getSizeInventory()) {
+				display.setInventorySlotContents(b0, ItemStack.loadItemStackFromNBT(tag1));
 			}
 		}
 
@@ -295,27 +282,18 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		tag.setInteger("BurnTime", this.currentProgressTime);
 
 		// アイテムの書き込み
+		inv.writeToNBT(tag);
+
 		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
+		for (int i = 0; i < this.getSizeInventory(); ++i) {
+			if (!DCUtil.isEmpty(getStackInSlot(i))) {
 				NBTTagCompound tag1 = new NBTTagCompound();
 				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
+				getStackInSlot(i).writeToNBT(tag1);
 				nbttaglist.appendTag(tag1);
 			}
 		}
-		tag.setTag("InvItems", nbttaglist);
-
-		NBTTagList nbttaglist2 = new NBTTagList();
-		for (int i = 0; i < display.length; ++i) {
-			if (display[i] != null) {
-				NBTTagCompound tag2 = new NBTTagCompound();
-				tag2.setByte("Slot", (byte) i);
-				display[i].writeToNBT(tag2);
-				nbttaglist2.appendTag(tag2);
-			}
-		}
-		tag.setTag("DispItems", nbttaglist2);
+		tag.setTag("DispItems", nbttaglist);
 
 		return tag;
 	}
@@ -327,27 +305,19 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		tag.setInteger("BurnTime", this.currentProgressTime);
 
 		// アイテムの書き込み
+		inv.writeToNBT(tag);
+
 		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
+		for (int i = 0; i < this.getSizeInventory(); ++i) {
+			if (!DCUtil.isEmpty(getStackInSlot(i))) {
 				NBTTagCompound tag1 = new NBTTagCompound();
 				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
+				getStackInSlot(i).writeToNBT(tag1);
 				nbttaglist.appendTag(tag1);
 			}
 		}
-		tag.setTag("InvItems", nbttaglist);
+		tag.setTag("DispItems", nbttaglist);
 
-		NBTTagList nbttaglist2 = new NBTTagList();
-		for (int i = 0; i < display.length; ++i) {
-			if (display[i] != null) {
-				NBTTagCompound tag2 = new NBTTagCompound();
-				tag2.setByte("Slot", (byte) i);
-				display[i].writeToNBT(tag2);
-				nbttaglist2.appendTag(tag2);
-			}
-		}
-		tag.setTag("DispItems", nbttaglist2);
 		return tag;
 	}
 
@@ -355,27 +325,14 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[11];
+		inv.readFromNBT(tag);
 
+		NBTTagList nbttaglist = tag.getTagList("DispItems", 10);
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
-
-		NBTTagList nbttaglist2 = tag.getTagList("DispItems", 10);
-		this.display = new ItemStack[9];
-
-		for (int i = 0; i < nbttaglist2.tagCount(); ++i) {
-			NBTTagCompound tag2 = nbttaglist2.getCompoundTagAt(i);
-			byte b0 = tag2.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.display.length) {
-				this.display[b0] = ItemStack.loadItemStackFromNBT(tag2);
+			if (b0 >= 0 && b0 < this.getSizeInventory()) {
+				display.setInventorySlotContents(b0, ItemStack.loadItemStackFromNBT(tag1));
 			}
 		}
 
@@ -437,14 +394,14 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		};
 	};
 
-	public ItemStack[] inv = new ItemStack[11];
-	public ItemStack[] display = new ItemStack[9];
+	public DCInventory inv = new DCInventory(11);
+	public DCInventory display = new DCInventory(9);
 
 	public List<ItemStack> getInputs() {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
 		for (int i = 2; i < 11; i++) {
-			if (inv[i] != null) {
-				ret.add(inv[i]);
+			if (!DCUtil.isEmpty(inv.getStackInSlot(i))) {
+				ret.add(inv.getStackInSlot(i));
 			}
 		}
 		return ret;
@@ -452,8 +409,8 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	public List<ItemStack> getOutputs() {
 		List<ItemStack> ret = new ArrayList<ItemStack>();
-		if (inv[1] != null) {
-			ret.add(inv[1]);
+		if (!DCUtil.isEmpty(inv.getStackInSlot(1))) {
+			ret.add(inv.getStackInSlot(1));
 		}
 		return ret;
 	}
@@ -462,22 +419,22 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	private void reduceReqItem(int slot, int amo) {
 		if (slot < 0 || slot > 8 || amo <= 0)
 			return;
-		ItemStack target = inv[slot + 2];
-		if (target != null) {
+		ItemStack target = inv.getStackInSlot(slot + 2);
+		if (!DCUtil.isEmpty(target)) {
 			ItemStack ret = target.getItem().getContainerItem(target);
-			if (ret != null) {
-				ret.stackSize = amo;
+			if (!DCUtil.isEmpty(ret)) {
+				ret.stackSize = (amo);
 				if (amo >= target.stackSize) {
-					inv[slot + 2] = ret;
+					inv.setInventorySlotContents(slot + 2, ret);
 				} else {
-					target.stackSize -= amo;
+					DCUtil.reduceStackSize(target, amo);
 					for (int i = 0; i < 9; i++) {
 						if (i == slot) {
 							continue;
 						}
 						int a = incrStackSize(i + 2, ret);
 						if (a < ret.stackSize) {
-							ret.stackSize -= a;
+							DCUtil.reduceStackSize(ret, a);
 						} else {
 							break;
 						}
@@ -485,9 +442,10 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				}
 			} else {
 				if (target.stackSize <= amo) {
-					inv[slot + 2] = null;
+					inv.setInventorySlotContents(slot + 2, null);
+					;
 				} else {
-					inv[slot + 2].stackSize -= amo;
+					DCUtil.reduceStackSize(inv.getStackInSlot(slot + 2), amo);
 				}
 			}
 		}
@@ -495,34 +453,22 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	private boolean canIncrStack(ItemStack incr, int slot) {
 		ItemStack check = getStackInSlot(slot);
-		if (check == null || incr == null)
-			return true;
-		else if (incr.getItem() == check.getItem() && incr.getItemDamage() == check.getItemDamage())
-			return incr.stackSize + check.stackSize <= 64;
-		else
-			return false;
+		return DCUtil.isEmpty(check) || DCUtil.isStackable(incr, check);
 	}
 
 	public int incrStackSize(int i, ItemStack get) {
-		if (i < 0 || i >= this.getSizeInventory() || get == null)
+		if (i < 0 || i >= this.getSizeInventory() || DCUtil.isEmpty(get))
 			return 0;
-		if (this.getStackInSlot(i) != null) {
-			if (getStackInSlot(i).getItem() != get.getItem()
-					|| getStackInSlot(i).getItemDamage() != get.getItemDamage())
-				return 0;
-			int ret = 64 - this.getStackInSlot(i).stackSize;
-
-			if (ret >= get.stackSize) {
-				this.getStackInSlot(i).stackSize += get.stackSize;
-				return get.stackSize;
-			} else {
-				this.getStackInSlot(i).stackSize = 64;
-				return ret;
+		if (DCUtil.isSameItem(get, inv.getStackInSlot(i), true)) {
+			int i1 = inv.getStackInSlot(i).stackSize + get.stackSize;
+			if (i1 > inv.getStackInSlot(i).getMaxStackSize()) {
+				i1 = inv.getStackInSlot(i).getMaxStackSize() - inv.getStackInSlot(i).stackSize;
+				return i1;
 			}
-		} else {
-			this.setInventorySlotContents(i, get);
 			return get.stackSize;
 		}
+
+		return 0;
 	}
 
 	@Override
@@ -533,48 +479,26 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	// インベントリ内の任意のスロットにあるアイテムを取得
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		if (i >= 0 && i < getSizeInventory())
-			if (i < 11)
-				return this.inv[i];
-			else
-				return this.display[i - 11];
+		if (i < 11)
+			return inv.getStackInSlot(i);
 		else
-			return null;
+			return display.getStackInSlot(i - 11);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return null;
-		if (this.getStackInSlot(i) != null) {
-			ItemStack itemstack;
-
-			if (this.getStackInSlot(i).stackSize <= num) {
-				itemstack = this.getStackInSlot(i);
-				this.setInventorySlotContents(i, null);
-				return itemstack;
-			} else {
-				itemstack = this.getStackInSlot(i).splitStack(num);
-				if (this.getStackInSlot(i).stackSize == 0) {
-					this.setInventorySlotContents(i, null);
-				}
-				return itemstack;
-			}
-		} else
-			return null;
+		if (i < 11)
+			return inv.decrStackSize(i, num);
+		else
+			return display.decrStackSize(i - 11, num);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		i = MathHelper.clamp_int(i, 0, this.getSizeInventory() - 1);
-		if (i < inv.length) {
-			if (this.getStackInSlot(i) != null) {
-				ItemStack itemstack = this.getStackInSlot(i);
-				this.setInventorySlotContents(i, null);
-				return itemstack;
-			}
-		}
-		return null;
+		if (i < 11)
+			return inv.removeStackFromSlot(i);
+		else
+			return display.removeStackFromSlot(i - 11);
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
@@ -584,17 +508,9 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			return;
 		else {
 			if (i < 11) {
-				this.inv[i] = stack;
-
-				if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-					stack.stackSize = this.getInventoryStackLimit();
-				}
+				inv.setInventorySlotContents(i, stack);
 			} else {
-				this.display[i - 11] = stack;
-
-				if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-					stack.stackSize = this.getInventoryStackLimit();
-				}
+				display.setInventorySlotContents(i - 11, stack);
 			}
 
 		}
@@ -626,7 +542,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if (i == 0)
-			return stack != null && stack.getItem() != null && stack.getItem() instanceof IPressMold;
+			return !DCUtil.isEmpty(stack) && stack.getItem() instanceof IPressMold;
 		else if (i == 1 || i > 10)
 			return false;
 		else
@@ -706,7 +622,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)

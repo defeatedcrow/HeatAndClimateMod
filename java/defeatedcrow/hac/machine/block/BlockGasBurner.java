@@ -43,8 +43,9 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.worldObj.isRemote && player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
 			TileEntity tile = world.getTileEntity(pos);
 			if (!player.isSneaking() && tile instanceof TileGasBurner && hand == EnumHand.MAIN_HAND) {
 				boolean flag = false;
@@ -54,6 +55,8 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 						FluidStack f = cont.drain(1000, false);
 						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid().getName())) {
 							if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+								world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
+										2.0F);
 								flag = true;
 							}
 						}

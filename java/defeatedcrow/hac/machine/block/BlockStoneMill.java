@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.achievement.AcvHelper;
@@ -35,17 +36,21 @@ public class BlockStoneMill extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TileTorqueProcessor) {
-			if (heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
-				((TileTorqueProcessor) tile).rotateFace();
-			} else if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
-				if (((TileTorqueProcessor) tile).isActive()) {
-					// achievement
-					if (!player.hasAchievement(AchievementClimate.MACHINE_USING)) {
-						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_USING);
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			TileEntity tile = world.getTileEntity(pos);
+			ItemStack heldItem = player.getHeldItem(hand);
+
+			if (tile instanceof TileTorqueProcessor) {
+				if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {
+					((TileTorqueProcessor) tile).rotateFace();
+				} else if (!player.worldObj.isRemote && hand == EnumHand.MAIN_HAND) {
+					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+					if (((TileTorqueProcessor) tile).isActive()) {
+						// achievement
+						if (!player.hasAchievement(AchievementClimate.MACHINE_USING)) {
+							AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_USING);
+						}
 					}
 				}
 			}
@@ -79,8 +84,9 @@ public class BlockStoneMill extends BlockTorqueBase {
 		if (tile != null && tile instanceof ITagGetter) {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag = ((ITagGetter) tile).getNBT(tag);
-			if (tag != null)
+			if (tag != null) {
 				drop.setTagCompound(tag);
+			}
 		}
 
 		if (!world.isRemote) {

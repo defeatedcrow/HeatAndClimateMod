@@ -75,12 +75,12 @@ public class EntityMagneticHover extends EntityScooter {
 				if (this.motionY > 0F) {
 					this.motionY *= 0.75D;
 				}
-				this.motionY -= 0.02D;
+				this.motionY -= 0.01D;
 			}
 		}
 
-		if (motionY < -0.1D) {
-			this.motionY -= 0.1D;
+		if (motionY < -0.05D) {
+			this.motionY -= 0.05D;
 		}
 	}
 
@@ -116,8 +116,7 @@ public class EntityMagneticHover extends EntityScooter {
 		String s = fluid.getName();
 		if (FluidDictionaryDC.matchFluid(fluid, MachineInit.nitrogen))
 			return 120;
-		else if (fluid.getName().contains("coolant") || fluid.getName().contains("cryotheum")
-				|| fluid.getName().contains("ice"))
+		else if (fluid.getTemperature() < 100)
 			return 60;
 		return 0;
 	}
@@ -129,7 +128,7 @@ public class EntityMagneticHover extends EntityScooter {
 
 	@Override
 	protected Status getUnderGround() {
-		AxisAlignedBB aabb = this.getEntityBoundingBox().expandXyz(0.5D);
+		AxisAlignedBB aabb = this.getEntityBoundingBox().expandXyz(1.0D);
 		int i = MathHelper.floor_double(aabb.minX);
 		int j = MathHelper.ceiling_double_int(aabb.maxX);
 		int k = MathHelper.floor_double(aabb.minY - 1.0D);

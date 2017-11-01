@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -80,11 +81,10 @@ public class BlockSink extends DCTileBlock {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		if (isFull) {
+		if (isFull)
 			return AABB_DOUBLE;
-		} else {
+		else
 			return AABB_HALF;
-		}
 	}
 
 	@Override
@@ -98,10 +98,11 @@ public class BlockSink extends DCTileBlock {
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
-			if (tile instanceof TileSink && heldItem != null
-					&& heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+			ItemStack held = player.getHeldItem(hand);
+			if (tile instanceof TileSink && !DCUtil.isEmpty(held)
+					&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 				if (!player.worldObj.isRemote) {
-					DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
+					DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player);
 				}
 				player.playSound(SoundEvents.ITEM_BUCKET_EMPTY, 1.0F, 1.0F);
 				return true;

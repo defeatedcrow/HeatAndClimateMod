@@ -54,6 +54,7 @@ public class MainCreativeTabRegister {
 		MainInit.chestMarble.setCreativeTab(ClimateMain.build);
 		MainInit.chestWood.setCreativeTab(ClimateMain.build);
 		MainInit.flowerPot.setCreativeTab(ClimateMain.build);
+		MainInit.chandelierGypsum.setCreativeTab(ClimateMain.build);
 
 		// device
 		MainInit.chamber.setCreativeTab(ClimateMain.machine);

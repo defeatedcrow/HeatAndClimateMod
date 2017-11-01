@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.client.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.main.block.device.TileChamberBase;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -14,6 +17,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiNormalChamber extends GuiContainer {
 	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
 			"textures/gui/chamber_normal_gui.png");
+	private static final ResourceLocation iconTex = new ResourceLocation("dcs_climate", "textures/gui/gui_icons.png");
+
 	/** The player inventory bound to this GUI. */
 	private final InventoryPlayer playerInventory;
 	private final TileChamberBase chamber;
@@ -30,6 +35,28 @@ public class GuiNormalChamber extends GuiContainer {
 		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
 		this.fontRendererObj.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8,
 				this.ySize - 96 + 2, 4210752);
+	}
+
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		super.drawScreen(mouseX, mouseY, partialTicks);
+
+		List<String> list = new ArrayList<String>();
+		if (this.isPointInRegion(-20, 4, 20, 20, mouseX, mouseY)) {
+			if (chamber != null) {
+				list.addAll(chamber.climateSuitableMassage());
+			}
+		}
+		if (this.isPointInRegion(75, 23, 26, 26, mouseX, mouseY)) {
+			if (chamber != null && chamber.isActive()) {
+				DCHeatTier h = DCHeatTier.getTypeByID(chamber.getCurrentHeatID());
+				list.add(h.toString());
+			}
+		}
+
+		if (!list.isEmpty()) {
+			this.drawHoveringText(list, mouseX, mouseY);
+		}
 	}
 
 	@Override
@@ -50,6 +77,14 @@ public class GuiNormalChamber extends GuiContainer {
 
 		int l = this.getCookProgressScaled(32);
 		this.drawTexturedModalRect(i + 72, j + 51, 202, 0, 32 - l, 3);
+
+		// airflow data
+		this.mc.getTextureManager().bindTexture(iconTex);
+		if (chamber.isSuitableClimate()) {
+			this.drawTexturedModalRect(i - 20, j + 4, 48, 0, 20, 20);
+		} else {
+			this.drawTexturedModalRect(i - 20, j + 4, 48, 20, 20, 20);
+		}
 	}
 
 	private int getCookProgressScaled(int pixels) {

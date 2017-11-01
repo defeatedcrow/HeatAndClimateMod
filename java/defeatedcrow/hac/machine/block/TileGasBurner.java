@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine.block;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.main.api.ISideTankChecker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import net.minecraft.tileentity.TileEntity;
@@ -10,7 +11,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-public class TileGasBurner extends TileCookingStove {
+public class TileGasBurner extends TileCookingStove implements ISideTankChecker {
 
 	@Override
 	public void updateTile() {
@@ -34,7 +35,8 @@ public class TileGasBurner extends TileCookingStove {
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
-	private void checkSideTank() {
+	@Override
+	public void checkSideTank() {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			int cap = inputT.getCapacity();
 			int amo = inputT.getFluidAmount();
@@ -45,7 +47,7 @@ public class TileGasBurner extends TileCookingStove {
 			}
 
 			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
-			if (tile != null
+			if (tile != null && !(tile instanceof ISideTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());

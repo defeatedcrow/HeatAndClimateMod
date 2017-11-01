@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.core.util.DCPotion;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.capability.DrinkItemCustomizer;
@@ -124,21 +125,26 @@ public class ItemSilverCup extends FoodItemBase {
 
 	// カラなら飲食できない
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
-		IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-		if (cont != null && cont.getTankProperties() != null) {
-			FluidStack f = cont.getTankProperties()[0].getContents();
-			if (f != null)
-				return super.onItemRightClick(item, world, player, hand);
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemIn, World world, EntityPlayer player, EnumHand hand) {
+		if (player != null) {
+			ItemStack item = player.getHeldItem(hand);
+			if (!DCUtil.isEmpty(item)) {
+				IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+				if (cont != null && cont.getTankProperties() != null) {
+					FluidStack f = cont.getTankProperties()[0].getContents();
+					if (f != null)
+						return super.onItemRightClick(item, world, player, hand);
+				}
+			}
 		}
-		return new ActionResult(EnumActionResult.FAIL, item);
+		return new ActionResult(EnumActionResult.FAIL, itemIn);
 	}
 
 	// potion の取得方法が違う
 	@Override
 	public boolean addEffects(ItemStack stack, World worldIn, EntityLivingBase living) {
-		if (!worldIn.isRemote && stack != null) {
-			if (stack == null || stack.getItem() == null || stack.getItem() != this)
+		if (!worldIn.isRemote && !DCUtil.isEmpty(stack)) {
+			if (stack.getItem() != this)
 				return false;
 			else {
 				IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);

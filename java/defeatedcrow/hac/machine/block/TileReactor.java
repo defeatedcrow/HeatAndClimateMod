@@ -164,7 +164,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if (i == 0 || i == 2 || i == 4 || i == 6) {
-			if (stack == null)
+			if (DCUtil.isEmpty(stack))
 				return false;
 			IFluidHandler cont = null;
 			if (stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
@@ -181,10 +181,10 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	public int canInsertResult(ItemStack item, int s1, int s2) {
 		int ret = 0;
-		if (item == null || item.getItem() == null || item.stackSize == 0)
+		if (DCUtil.isEmpty(item))
 			return -1;
 		for (int i = s1; i < s2; i++) {
-			if (this.getStackInSlot(i) == null) {
+			if (DCUtil.isEmpty(inventory.getStackInSlot(i))) {
 				ret = item.stackSize;
 			} else {
 				ret = this.isItemStackable(item, this.getStackInSlot(i));
@@ -197,24 +197,12 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	public List<ItemStack> getInputs() {
-		List<ItemStack> ret = new ArrayList<ItemStack>();
-		for (int i = 9; i < 13; i++) {
-			if (inv[i] != null) {
-				ret.add(inv[i]);
-			}
-		}
-		return ret;
+		return inventory.getInputs(9, 12);
 	}
 
 	@Override
 	public List<ItemStack> getOutputs() {
-		List<ItemStack> ret = new ArrayList<ItemStack>();
-		for (int i = 13; i < 17; i++) {
-			if (inv[i] != null) {
-				ret.add(inv[i]);
-			}
-		}
-		return ret;
+		return inventory.getOutputs(13, 16);
 	}
 
 	/* Reactor */
@@ -232,16 +220,16 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			// 液体スロットの処理
 			this.processFluidSlots();
 
-			// DCLogger.debugLog("current torque: " + prevTorque);
+			// DCLogger.infoLog("current torque: " + prevTorque);
 			// if (current != null) {
-			// DCLogger.debugLog("current heat: " + current.getHeat());
+			// DCLogger.infoLog("current heat: " + current.getHeat());
 			// } else {
-			// DCLogger.debugLog("no climate");
+			// DCLogger.infoLog("no climate");
 			// }
 			// if (currentRecipe != null) {
-			// DCLogger.debugLog("has recipe");
+			// DCLogger.infoLog("has recipe");
 			// } else {
-			// DCLogger.debugLog("no recipe");
+			// DCLogger.infoLog("no recipe");
 			// }
 		}
 		super.updateTile();
@@ -264,20 +252,17 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	protected boolean onFillTank(DCTank tank, int slot1, int slot2) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
-		if (in == null)
+		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
 		IFluidHandler dummy = null;
-		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
-		if (in.getTagCompound() != null) {
-			in2.setTagCompound(in.getTagCompound().copy());
+		ItemStack in2 = in.copy();
+		if (in.stackSize > 1) {
+			in2.stackSize = 1;
 		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
 			dummy = (IFluidHandler) in2.getItem();
 		}
 
@@ -296,17 +281,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 				fc = dummy.drain(rem, false);
 				if (fc != null && fc.amount <= rem) {
 					FluidStack fill = null;
-					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).drain(rem, true);
-						ret = in2;
-					} else {
-						fill = dummy.drain(rem, true);
-						ret = in2;
-					}
-
-					if (ret.stackSize <= 0) {
-						ret = null;
-					}
+					fill = dummy.drain(rem, true);
+					ret = in2;
 
 					if (fill != null && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
 						loose = true;
@@ -328,20 +304,17 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	protected boolean onDrainTank(DCTank tank, int slot1, int slot2, boolean flag) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
-		if (in == null)
+		if (DCUtil.isEmpty(in))
 			return false;
 
-		IFluidHandler cont = null;
 		IFluidHandler dummy = null;
-		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
-		if (in.getTagCompound() != null) {
-			in2.setTagCompound(in.getTagCompound().copy());
+		ItemStack in2 = in.copy();
+		if (in.stackSize > 1) {
+			in2.stackSize = 1;
 		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
-			cont = in.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		} else if (in.getItem() instanceof IFluidHandler) {
-			cont = (IFluidHandler) in.getItem();
 			dummy = (IFluidHandler) in2.getItem();
 		}
 
@@ -365,17 +338,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			if (b) {
 				FluidStack drain = tank.drain(rem, false);
 				int fill = 0;
-				if (in.getItem() instanceof IFluidHandler) {
-					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-					ret = in2;
-				} else {
-					fill = dummy.fill(drain, true);
-					ret = in2;
-				}
-
-				if (ret.stackSize <= 0) {
-					ret = null;
-				}
+				fill = dummy.fill(drain, true);
+				ret = in2;
 
 				if (fill > 0 && this.canInsertResult(ret, slot2, slot2 + 1) != 0) {
 					loose = true;
@@ -418,19 +382,19 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 			boolean b1 = currentRecipe.matches(ins, inf1, inf2);
 			// if (b1) {
-			// DCLogger.debugLog("input mutch");
+			// DCLogger.infoLog("input mutch");
 			// }
 			boolean b2 = currentRecipe.matchOutput(outs, outf1, outf2, 4);
 			// if (b2) {
-			// DCLogger.debugLog("output mutch");
+			// DCLogger.infoLog("output mutch");
 			// }
 			boolean b3 = currentRecipe.matchCatalyst(cat);
 			// if (b3) {
-			// DCLogger.debugLog("catalyst mutch");
+			// DCLogger.infoLog("catalyst mutch");
 			// }
 			boolean b4 = currentRecipe.additionalRequire(worldObj, pos);
 			// if (b4) {
-			// DCLogger.debugLog("additional requier mutch");
+			// DCLogger.infoLog("additional requier mutch");
 			// }
 			if (b1 && b2 && b3 && b4)
 				return true;
@@ -497,43 +461,46 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 			// 3: item required
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
-			for (int i = 9; i < 13; i++) {
-				ItemStack slot = this.inv[i];
-				if (slot != null) {
-					boolean inRecipe = false;
-					Iterator<Object> req = required.iterator();
+			if (!required.isEmpty()) {
+				for (int i = 9; i < 13; i++) {
+					ItemStack slot = inventory.getStackInSlot(i);
+					if (!DCUtil.isEmpty(slot)) {
+						boolean inRecipe = false;
+						Iterator<Object> req = required.iterator();
 
-					// 4スロットについて、要求材料の数だけ回す
-					while (req.hasNext()) {
-						boolean match = false;
-						Object next = req.next();
-						int count = 1;
+						// 4スロットについて、要求材料の数だけ回す
+						while (req.hasNext()) {
+							boolean match = false;
+							Object next = req.next();
+							int count = 1;
 
-						if (next instanceof ItemStack) {
-							count = ((ItemStack) next).stackSize;
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot.stackSize >= count;
-						} else if (next instanceof ArrayList) {
-							ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
-							if (list != null && !list.isEmpty()) {
-								for (ItemStack item : list) {
-									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.stackSize > 0;
-									if (f) {
-										match = true;
+							if (next instanceof ItemStack) {
+								count = ((ItemStack) next).stackSize;
+								match = OreDictionary.itemMatches((ItemStack) next, slot, false)
+										&& slot.stackSize >= count;
+							} else if (next instanceof ArrayList) {
+								ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
+								if (list != null && !list.isEmpty()) {
+									for (ItemStack item : list) {
+										boolean f = OreDictionary.itemMatches(item, slot, false) && slot.stackSize > 0;
+										if (f) {
+											match = true;
+										}
 									}
 								}
 							}
+
+							if (match) {
+								inRecipe = true;
+								required.remove(next);
+								this.decrStackSize(i, 1);
+								break;
+							}
 						}
 
-						if (match) {
-							inRecipe = true;
-							required.remove(next);
-							this.decrStackSize(i, 1);
-							break;
+						if (!inRecipe) {
+							break;// 中断
 						}
-					}
-
-					if (!inRecipe) {
-						break;// 中断
 					}
 				}
 			}
@@ -546,11 +513,11 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 				outputT2.fill(outF2, true);
 			}
 
-			if (out != null) {
+			if (!DCUtil.isEmpty(out)) {
 				this.insertResult(out);
 			}
 
-			if (sec != null && worldObj.rand.nextInt(100) < chance) {
+			if (!DCUtil.isEmpty(sec) && worldObj.rand.nextInt(100) < chance) {
 				this.insertResult(sec);
 			}
 
@@ -571,7 +538,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			} else {
 				int size = this.isItemStackable(item, this.getStackInSlot(i));
 				if (this.isItemStackable(item, this.getStackInSlot(i)) > 0) {
-					this.getStackInSlot(i).stackSize += size;
+					DCUtil.addStackSize(this.getStackInSlot(i), size);
 					return size;
 				}
 			}
@@ -703,7 +670,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			if (facing == this.tankSide1.face)
 				return (T) handlerTank1;
 			else if (facing == this.tankSide2.face)
@@ -712,6 +679,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 				return (T) handlerTank3;
 			else if (facing == this.tankSide4.face)
 				return (T) handlerTank4;
+			else
+				return facing == EnumFacing.DOWN ? (T) handlerTank3 : (T) handlerTank1;
 		}
 		return super.getCapability(capability, facing);
 	}

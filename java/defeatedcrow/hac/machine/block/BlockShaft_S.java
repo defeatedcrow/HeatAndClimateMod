@@ -54,15 +54,18 @@ public class BlockShaft_S extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null && heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
-			TileEntity tile = world.getTileEntity(pos);
-			// achievement
-			if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
+				TileEntity tile = world.getTileEntity(pos);
+				// achievement
+				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
+					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+				}
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
 	}
 
 	@Override

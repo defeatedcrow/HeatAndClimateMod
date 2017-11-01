@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "flag=false,type=0": { "model": "dcs_climate:cont/dcs_cont_cardboard0" },
+        "flag=true,type=0": { "model": "dcs_climate:cont/dcs_cont_cardboard0", "y": 90 },
+        "flag=false,type=1": { "model": "dcs_climate:cont/dcs_cont_cardboard1" },
+        "flag=true,type=1": { "model": "dcs_climate:cont/dcs_cont_cardboard1", "y": 90 },
+        "flag=false,type=2": { "model": "dcs_climate:cont/dcs_cont_cardboard2" },
+        "flag=true,type=2": { "model": "dcs_climate:cont/dcs_cont_cardboard2", "y": 90 },
+        "flag=false,type=3": { "model": "dcs_climate:cont/dcs_cont_cardboard3" },
+        "flag=true,type=3": { "model": "dcs_climate:cont/dcs_cont_cardboard3", "y": 90 },
+        "flag=false,type=4": { "model": "dcs_climate:cont/dcs_cont_cardboard4" },
+        "flag=true,type=4": { "model": "dcs_climate:cont/dcs_cont_cardboard4", "y": 90 },
+        "flag=false,type=5": { "model": "dcs_climate:cont/dcs_cont_cardboard5" },
+        "flag=true,type=5": { "model": "dcs_climate:cont/dcs_cont_cardboard5", "y": 90 },
+        "flag=false,type=6": { "model": "dcs_climate:cont/dcs_cont_cardboard5" },
+        "flag=true,type=6": { "model": "dcs_climate:cont/dcs_cont_cardboard5", "y": 90 },
+        "flag=false,type=7": { "model": "dcs_climate:cont/dcs_cont_cardboard5" },
+        "flag=true,type=7": { "model": "dcs_climate:cont/dcs_cont_cardboard5", "y": 90 }
+    }
+}

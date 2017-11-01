@@ -1,6 +1,6 @@
 package defeatedcrow.hac.main.event;
 
-import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -20,37 +20,39 @@ public class AnvilMoldEvent {
 		ItemStack right = event.getRight();
 		ItemStack ret = event.getOutput();
 		/* Moldのレシピ登録 */
-		if (right != null) {
+		if (!DCUtil.isEmpty(right)) {
 
-			if (right.getItem() instanceof IPressMold && ret == null) {
+			if (right.getItem() instanceof IPressMold && DCUtil.isEmpty(ret)) {
 				IPressMold mold = (IPressMold) right.copy().getItem();
-				if (mold.getOutput(right) == null) {
+				if (DCUtil.isEmpty(mold.getOutput(right))) {
 					// DCLogger.debugLog("anvil event cycle");
 					ItemStack next = mold.setOutput(right, left, 0);
-					if (next != null) {
+					if (!DCUtil.isEmpty(next)) {
 						event.setOutput(next);
 						event.setCost(1);
+						event.setMaterialCost(1);
 					}
 				}
-			} else if (left != null && left.getItem() instanceof IPressMold && right.getItem() == Items.IRON_INGOT
-					&& ret == null) {
+			} else if (!DCUtil.isEmpty(left) && left.getItem() instanceof IPressMold
+					&& right.getItem() == Items.IRON_INGOT && DCUtil.isEmpty(ret)) {
 				// recipeの変更
-				DCLogger.debugLog("anvil event cycle");
+				// DCLogger.debugLog("anvil event cycle");
 				IPressMold mold = (IPressMold) left.copy().getItem();
 				ItemStack output = mold.getOutput(left);
-				if (output != null) {
+				if (!DCUtil.isEmpty(output)) {
 					int num = mold.getRecipeNumber(left) + 1;
 					ItemStack next = mold.setOutput(left, output, num);
-					if (next != null) {
+					if (!DCUtil.isEmpty(next)) {
 						event.setOutput(next);
 						event.setCost(1);
+						event.setMaterialCost(1);
 					}
 				}
 			}
 
 			/* リペアパテの設定 */
-			else if (left != null && left.getItem().isDamageable() && right.getItem() == MainInit.repairPutty
-					&& ret == null) {
+			else if (!DCUtil.isEmpty(left) && left.getItem().isDamageable() && right.getItem() == MainInit.repairPutty
+					&& DCUtil.isEmpty(ret)) {
 				int dam = left.getItemDamage();
 				int type = right.getItemDamage();
 				int count = right.stackSize;
@@ -65,6 +67,7 @@ public class AnvilMoldEvent {
 					}
 					event.setOutput(next);
 					event.setCost(5);
+					event.setMaterialCost(1);
 				} else if (type == 1) {
 					Item tool = left.getItem();
 					if (Enchantments.EFFICIENCY.canApply(left)

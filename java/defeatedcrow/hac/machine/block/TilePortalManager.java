@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
+import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.energy.TileTorqueLockable;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
@@ -14,6 +15,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.gui.ContainerPortalManager;
 import defeatedcrow.hac.machine.item.ItemAdapterCard;
+import defeatedcrow.hac.main.api.ISideTankChecker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -21,13 +23,11 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
@@ -40,7 +40,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class TilePortalManager extends TileTorqueLockable implements ITorqueReceiver, ISidedInventory {
+public class TilePortalManager extends TileTorqueLockable
+		implements ITorqueReceiver, ISidedInventory, ISideTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -77,7 +78,8 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
-	private void checkSideTank() {
+	@Override
+	public void checkSideTank() {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			int cap = inputT.getCapacity();
 			int amo = inputT.getFluidAmount();
@@ -88,7 +90,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 			}
 
 			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
-			if (tile != null
+			if (tile != null && !(tile instanceof ISideTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
@@ -195,12 +197,12 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 						// itemを送る
 						for (int i = 0; i < input.getSlots(); i++) {
 							ItemStack item = input.extractItem(i, 1, true);
-							if (item != null && item.stackSize > 0) {
+							if (!DCUtil.isEmpty(item)) {
 								ItemStack ins = item.copy();
 								ins.stackSize = 1;
 								for (int j = 0; j < output.getSlots(); j++) {
 									ItemStack ret = output.insertItem(j, ins, false);
-									if (ret == null) {
+									if (DCUtil.isEmpty(ret)) {
 										input.extractItem(i, 1, false);
 										inT.markDirty();
 										outT.markDirty();
@@ -320,23 +322,26 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		return 90.0F;
 	}
 
+	public boolean isSuitableClimate() {
+		if (current != null && current.getHeat() == DCHeatTier.ABSOLUTE)
+			return true;
+		else
+			return hasCoolant();
+	}
+
+	public String climateSuitableMassage() {
+		if (isSuitableClimate())
+			return "dcs.gui.message.suitableclimate";
+		return "dcs.gui.message.require.absolute";
+	}
+
 	/* Packet,NBT */
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[12];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
+		inv.readFromNBT(tag);
 
 		inputT = inputT.readFromNBT(tag, "Tank");
 	}
@@ -347,16 +352,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		// 燃焼時間や調理時間などの書き込み
 
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound tag1 = new NBTTagCompound();
-				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
-				nbttaglist.appendTag(tag1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		inv.writeToNBT(tag);
 
 		inputT.writeToNBT(tag, "Tank");
 		return tag;
@@ -368,16 +364,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		// 燃焼時間や調理時間などの書き込み
 
 		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound tag1 = new NBTTagCompound();
-				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
-				nbttaglist.appendTag(tag1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		inv.writeToNBT(tag);
 
 		inputT.writeToNBT(tag, "Tank");
 		return tag;
@@ -387,17 +374,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[12];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
+		inv.readFromNBT(tag);
 
 		inputT = inputT.readFromNBT(tag, "Tank");
 
@@ -463,38 +440,26 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		};
 	};
 
-	public ItemStack[] inv = new ItemStack[12];
+	public DCInventory inv = new DCInventory(12);
 
 	private boolean canIncrStack(ItemStack incr, int slot) {
 		ItemStack check = getStackInSlot(slot);
-		if (check == null || incr == null)
-			return true;
-		else if (incr.getItem() == check.getItem() && incr.getItemDamage() == check.getItemDamage())
-			return incr.stackSize + check.stackSize <= 64;
-		else
-			return false;
+		return DCUtil.isEmpty(check) || DCUtil.isStackable(incr, check);
 	}
 
 	public int incrStackSize(int i, ItemStack get) {
-		if (i < 0 || i >= this.getSizeInventory() || get == null)
+		if (i < 0 || i >= this.getSizeInventory() || DCUtil.isEmpty(get))
 			return 0;
-		if (this.getStackInSlot(i) != null) {
-			if (getStackInSlot(i).getItem() != get.getItem()
-					|| getStackInSlot(i).getItemDamage() != get.getItemDamage())
-				return 0;
-			int ret = 64 - this.getStackInSlot(i).stackSize;
-
-			if (ret >= get.stackSize) {
-				this.getStackInSlot(i).stackSize += get.stackSize;
-				return get.stackSize;
-			} else {
-				this.getStackInSlot(i).stackSize = 64;
-				return ret;
+		if (DCUtil.isSameItem(get, inv.getStackInSlot(i), true)) {
+			int i1 = inv.getStackInSlot(i).stackSize + get.stackSize;
+			if (i1 > inv.getStackInSlot(i).getMaxStackSize()) {
+				i1 = inv.getStackInSlot(i).getMaxStackSize() - inv.getStackInSlot(i).stackSize;
+				return i1;
 			}
-		} else {
-			this.setInventorySlotContents(i, get);
 			return get.stackSize;
 		}
+
+		return 0;
 	}
 
 	@Override
@@ -503,62 +468,26 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	}
 
 	// インベントリ内の任意のスロットにあるアイテムを取得
+
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		if (i >= 0 && i < getSizeInventory())
-			return this.inv[i];
-		else
-			return null;
+		return inv.getStackInSlot(i);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return null;
-		if (this.getStackInSlot(i) != null) {
-			ItemStack itemstack;
-
-			if (this.getStackInSlot(i).stackSize <= num) {
-				itemstack = this.getStackInSlot(i);
-				this.setInventorySlotContents(i, null);
-				return itemstack;
-			} else {
-				itemstack = this.getStackInSlot(i).splitStack(num);
-				if (this.getStackInSlot(i).stackSize == 0) {
-					this.setInventorySlotContents(i, null);
-				}
-				return itemstack;
-			}
-		} else
-			return null;
+		return inv.decrStackSize(i, num);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		i = MathHelper.clamp_int(i, 0, this.getSizeInventory() - 1);
-		if (i < inv.length) {
-			if (this.getStackInSlot(i) != null) {
-				ItemStack itemstack = this.getStackInSlot(i);
-				this.setInventorySlotContents(i, null);
-				return itemstack;
-			}
-		}
-		return null;
+		return inv.removeStackFromSlot(i);
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return;
-		else {
-			this.inv[i] = stack;
-
-			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-				stack.stackSize = this.getInventoryStackLimit();
-			}
-
-		}
+		inv.setInventorySlotContents(i, stack);
 	}
 
 	// インベントリ内のスタック限界値
@@ -622,9 +551,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < 12; ++i) {
-			this.setInventorySlotContents(i, null);
-		}
+		inv.clear();
 	}
 
 	// インベントリの名前
@@ -694,9 +621,9 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return (T) handlerFluid;
-		else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return null;
 		return super.getCapability(capability, facing);
 	}

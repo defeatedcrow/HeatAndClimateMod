@@ -58,9 +58,9 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		if (stack != null && stack.hasTagCompound()) {
+		if (!DCUtil.isEmpty(stack) && stack.hasTagCompound()) {
 			ItemStack output = this.getOutput(stack);
-			if (output != null) {
+			if (!DCUtil.isEmpty(output)) {
 				tooltip.add(TextFormatting.BOLD.toString() + "Output: " + output.getDisplayName());
 				if (ClimateCore.isDebug) {
 					tooltip.add(TextFormatting.BOLD.toString() + "Recipe ID: " + this.getRecipeNumber(stack));
@@ -74,12 +74,12 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
-		return stack != null && stack.hasTagCompound();
+		return !DCUtil.isEmpty(stack) && stack.hasTagCompound();
 	}
 
 	@Override
 	public ItemStack setOutput(ItemStack mold, ItemStack output, int num) {
-		if (output != null && mold != null && mold.getItem() instanceof IPressMold) {
+		if (!DCUtil.isEmpty(output) && !DCUtil.isEmpty(mold) && mold.getItem() instanceof IPressMold) {
 			ItemStack next = new ItemStack(mold.getItem(), mold.stackSize, mold.getItemDamage());
 			IPressMold mol = (IPressMold) next.getItem();
 			ItemStack current = mol.getOutput(mold);

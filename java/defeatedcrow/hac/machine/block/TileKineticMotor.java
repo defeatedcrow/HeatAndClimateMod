@@ -80,18 +80,18 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 
 			// DCLogger.debugLog("*** Kinetic Motor ***");
 			// DCLogger.debugLog("send: " + send);
-			// // RFが優先で減る
-			// float lim1 = send * EnergyConvertRate.rateVsRF;
-			// lim1 = Math.min(cashedRF, lim1);
-			// float add1 = lim1 / EnergyConvertRate.rateVsRF;
-			// this.cashedRF -= lim1;
-			// send -= add1;
+			// RFが優先で減る
+			float lim1 = send * EnergyConvertRate.rateVsRF;
+			lim1 = Math.min(cashedRF, lim1);
+			float add1 = lim1 / EnergyConvertRate.rateVsRF;
+			this.cashedRF -= lim1;
+			send -= add1;
 			// DCLogger.debugLog("RF use: " + lim1);
-			//
-			// // RFが優先で減る
-			// float lim2 = send * EnergyConvertRate.rateVsFU;
-			// lim2 = Math.min(cashedFU, lim2);
-			// this.cashedFU -= lim2;
+
+			// RFが優先で減る
+			float lim2 = send * EnergyConvertRate.rateVsFU;
+			lim2 = Math.min(cashedFU, lim2);
+			this.cashedFU -= lim2;
 			// DCLogger.debugLog("FU use: " + lim2);
 
 		}

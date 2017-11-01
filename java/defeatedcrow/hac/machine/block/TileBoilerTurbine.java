@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
@@ -13,6 +14,7 @@ import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.main.api.ISideTankChecker;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -31,7 +33,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory {
+public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory, ISideTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -55,42 +57,47 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			DCHeatTier heat = ClimateAPI.calculator.getAverageTemp(worldObj, pos);
 			currentClimate = heat.getID();
 
-			// 燃焼処理
-			boolean f = false;
-			int red = this.getRequiredWater(heat);
-			if (red > 0) {
-				// 水を減らす
-				FluidStack flu = inputT.getContents();
-				if (flu != null && flu.getFluid() == FluidRegistry.WATER && inputT.getFluidAmount() > red) {
-					inputT.drain(red, true);
-					f = true;
+			IBlockState state = worldObj.getBlockState(getPos());
+			if (!DCState.getBool(state, DCState.POWERED)) {
+
+				// 燃焼処理
+				boolean f = false;
+				int red = this.getRequiredWater(heat);
+				if (red > 0) {
+					// 水を減らす
+					FluidStack flu = inputT.getContents();
+					if (flu != null && flu.getFluid() == FluidRegistry.WATER && inputT.getFluidAmount() > red) {
+						inputT.drain(red, true);
+						f = true;
+					}
 				}
+
+				if (f) {
+					this.currentBurnTime = 1;
+				} else {
+					this.currentBurnTime = 0;
+				}
+
+				if (currentBurnTime > 0) {
+					this.currentTorque += this.getProvideTorque(heat);
+				}
+
+				// provider
+				for (EnumFacing side : getOutputSide()) {
+					this.provideTorque(worldObj, getPos().offset(side), side, false);
+				}
+
+				// DCLogger.debugLog("current torque: " + currentTorque);
+				// DCLogger.debugLog("sent torque: " + prevTorque);
+				// DCLogger.debugLog("current burntime: " + currentBurnTime);
+				// DCLogger.debugLog("current temp: " + currentClimate);
+
+				// 外見更新
+				// if (BlockBoilerTurbine.isLit(getWorld(), getPos()) != this.isActive()) {
+				// BlockBoilerTurbine.changeLitState(getWorld(), getPos(), isActive());
+				// }
+
 			}
-
-			if (f) {
-				this.currentBurnTime = 1;
-			} else {
-				this.currentBurnTime = 0;
-			}
-
-			if (currentBurnTime > 0) {
-				this.currentTorque += this.getProvideTorque(heat);
-			}
-
-			// provider
-			for (EnumFacing side : getOutputSide()) {
-				this.provideTorque(worldObj, getPos().offset(side), side, false);
-			}
-
-			// DCLogger.debugLog("current torque: " + currentTorque);
-			// DCLogger.debugLog("sent torque: " + prevTorque);
-			// DCLogger.debugLog("current burntime: " + currentBurnTime);
-			// DCLogger.debugLog("current temp: " + currentClimate);
-
-			// 外見更新
-			// if (BlockBoilerTurbine.isLit(getWorld(), getPos()) != this.isActive()) {
-			// BlockBoilerTurbine.changeLitState(getWorld(), getPos(), isActive());
-			// }
 
 		}
 
@@ -184,7 +191,8 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
-	private void checkSideTank() {
+	@Override
+	public void checkSideTank() {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			int cap = inputT.getCapacity();
 			int amo = inputT.getFluidAmount();
@@ -195,7 +203,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			}
 
 			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
-			if (tile != null
+			if (tile != null && !(tile instanceof ISideTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
@@ -279,9 +287,9 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return (T) inputT;
-		else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return null;
 		return super.getCapability(capability, facing);
 	}
@@ -400,7 +408,8 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
+		return getWorld().getTileEntity(this.pos) != this
+				? false
 				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 

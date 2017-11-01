@@ -17,6 +17,8 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -85,6 +87,18 @@ public class AltTooltipEvent {
 						String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": Heat " + regH + "/ Cold "
 								+ regC;
 						event.getToolTip().add(ret);
+					}
+
+					// universal bucket
+					if (tI instanceof UniversalBucket) {
+						UniversalBucket bucket = (UniversalBucket) tI;
+						FluidStack f = bucket.getFluid(target);
+						if (f != null && f.getFluid() != null) {
+							String fName = f.getFluid().getName();
+							int temp = f.getFluid().getTemperature();
+							event.getToolTip().add(fName);
+							event.getToolTip().add("Temp: " + temp + "K");
+						}
 					}
 				}
 			}

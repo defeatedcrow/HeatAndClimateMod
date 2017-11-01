@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.client.JsonBakery;
@@ -13,17 +14,11 @@ import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
 import defeatedcrow.hac.main.CommonMainProxy;
+import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
-import defeatedcrow.hac.main.block.container.BlockCardboard;
-import defeatedcrow.hac.main.block.container.BlockCropBasket;
-import defeatedcrow.hac.main.block.container.BlockCropCont;
-import defeatedcrow.hac.main.block.container.BlockDustBag;
-import defeatedcrow.hac.main.block.container.BlockEnemyCont;
-import defeatedcrow.hac.main.block.container.BlockLogCont;
-import defeatedcrow.hac.main.block.container.BlockMiscCont;
 import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
@@ -35,6 +30,7 @@ import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.block.fluid.FluidUtil;
 import defeatedcrow.hac.main.client.block.TESRBellow;
+import defeatedcrow.hac.main.client.block.TESRChandelier;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
 import defeatedcrow.hac.main.client.block.TESRMagnetChest;
 import defeatedcrow.hac.main.client.block.TESRMetalChest;
@@ -93,13 +89,6 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void loadConst() {
-		JsonBakery.instance.addTex(BlockLogCont.getTexList());
-		JsonBakery.instance.addTex(BlockCropCont.getTexList());
-		JsonBakery.instance.addTex(BlockEnemyCont.getTexList());
-		JsonBakery.instance.addTex(BlockMiscCont.getTexList());
-		JsonBakery.instance.addTex(BlockCardboard.getTexList());
-		JsonBakery.instance.addTex(BlockCropBasket.getTexList());
-		JsonBakery.instance.addTex(BlockDustBag.getTexList());
 		JsonBakery.instance.addTex(FluidUtil.getTexList());
 
 		List<String> particles = new ArrayList<String>();
@@ -163,6 +152,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		ClientRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
 		ClientRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
 		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
+		ClientRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum", new TESRChandelier());
 
 		FoodClientProxy.loadTE();
 		MachineClientProxy.loadTE();
@@ -179,23 +169,18 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void addSidedBlock(Block block, String name, int max) {
-		JsonRegister.MAIN_INSTANCE.regBakedBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
+		JsonRegister.regSidedCube(((ISidedTexture) block), ClimateCore.PACKAGE_ID,
+				ClimateCore.PACKAGE_BASE + "_" + name, "cont", max);
+		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
 				"cont", max);
-		JsonBakery.instance.regDummySidedModel(block);
-	}
-
-	@Override
-	public void addTBBlock(Block block, String name, int max) {
-		JsonRegister.MAIN_INSTANCE.regBakedBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
-				"cont", max);
-		JsonBakery.instance.regDummyTBModel(block);
 	}
 
 	@Override
 	public void addCropBlock(Block block, String name, int max) {
-		JsonRegister.MAIN_INSTANCE.regBakedBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
+		JsonRegister.regCross(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
 				"crop", max);
-		JsonBakery.instance.regDummyCropModel(block);
+		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
+				"crop", max);
 	}
 
 	/**

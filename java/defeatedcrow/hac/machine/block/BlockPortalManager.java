@@ -15,12 +15,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -35,16 +37,22 @@ public class BlockPortalManager extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TilePortalManager) {
-			if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
-				ItemStack held = player.getHeldItem(hand);
-				if (!DCUtil.isEmpty(held)
-						&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
-					DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player);
-				} else {
-					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile instanceof TilePortalManager) {
+				if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+					ItemStack held = player.getHeldItem(hand);
+					if (!DCUtil.isEmpty(held)
+							&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+							world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
+									2.0F);
+						}
+					} else {
+						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+					}
 				}
 			}
 		}

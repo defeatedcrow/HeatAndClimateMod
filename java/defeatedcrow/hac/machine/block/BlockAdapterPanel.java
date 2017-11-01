@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -53,24 +54,28 @@ public class BlockAdapterPanel extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null && heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
-			TileEntity tile = world.getTileEntity(pos);
-			// achievement
-			if (!world.isRemote && tile != null)
-				if (tile instanceof TileAcceptorPanel) {
-					lastPos = pos;
-					String mes1 = "Stored this coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
-					player.addChatMessage(new TextComponentString(mes1));
-				} else if (lastPos != null && tile instanceof TileAdapterPanel) {
-					((TileAdapterPanel) tile).setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos.getZ()));
-					String mes2 = "Registered the coordinate: " + lastPos.getX() + ", " + lastPos.getY() + ", "
-							+ lastPos.getZ();
-					player.addChatMessage(new TextComponentString(mes2));
-					lastPos = null;
-				}
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {
+				TileEntity tile = world.getTileEntity(pos);
+				// achievement
+				if (!world.isRemote && tile != null)
+					if (tile instanceof TileAcceptorPanel) {
+						lastPos = pos;
+						String mes1 = "Stored this coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
+						player.addChatMessage(new TextComponentString(mes1));
+					} else if (lastPos != null && tile instanceof TileAdapterPanel) {
+						((TileAdapterPanel) tile)
+								.setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos.getZ()));
+						String mes2 = "Registered the coordinate: " + lastPos.getX() + ", " + lastPos.getY() + ", "
+								+ lastPos.getZ();
+						player.addChatMessage(new TextComponentString(mes2));
+						lastPos = null;
+					}
+			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.item.ores;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -119,11 +120,7 @@ public class ItemGems extends DCItem {
 						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
-					--stack.stackSize;
-
-					if (stack.stackSize == 0) {
-						player.inventory.deleteStack(stack);
-					}
+					DCUtil.reduceAndDeleteStack(stack, 1);
 				}
 
 				player.addStat(StatList.getObjectUseStats(this));
@@ -135,7 +132,7 @@ public class ItemGems extends DCItem {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
-		if (ModuleConfig.magic && stack != null && stack.getItem() == this && stack.getItemDamage() == 2)
+		if (ModuleConfig.magic && !DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)
 			return playerHasCharm(player)
 					? new ActionResult(EnumActionResult.SUCCESS, stack)
 					: new ActionResult(EnumActionResult.PASS, stack);
@@ -159,7 +156,7 @@ public class ItemGems extends DCItem {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = player.inventory.getStackInSlot(i);
-				if (check != null && check.getItem() != null && check.getItem() == MagicInit.pendant) {
+				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
 					int m = check.getMetadata();
 					if (m == 14) {
 						hasCharm = true;

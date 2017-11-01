@@ -134,7 +134,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 			IBlockState crop = world.getBlockState(pos);
 			int stage = state.getValue(DCState.STAGE8);
 			ItemStack held2 = player.inventory.getCurrentItem();
-			if (held2 != null && held2.getItem() == Items.DYE && held2.getItemDamage() == 15 && held2.stackSize > 1) {
+			if (!DCUtil.isEmpty(held) && held2.getItem() == Items.DYE && held2.getItemDamage() == 15) {
 				ItemDye.applyBonemeal(held2, world, pos, player);
 				return true;
 			} else if (stage > 3) {
@@ -304,7 +304,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 						// summer
 						next = stage + 1;
 					} else if (stage < 3 && season < 3) {
-						if (stage == 0 && world.rand.nextInt(30) == 0) {
+						if (world.rand.nextInt(30) == 0) {
 							state.withProperty(BLACK, true);
 						}
 						next = stage + 1;

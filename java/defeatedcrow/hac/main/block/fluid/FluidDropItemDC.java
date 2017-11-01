@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.block.fluid;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -32,18 +33,18 @@ public class FluidDropItemDC implements IFluidHandler, ICapabilityProvider {
 	@Nullable
 	public FluidStack getFluid() {
 		Fluid fluid = FluidRegistry.getFluid(contain);
-		if (fluid != null) {
+		if (fluid != null)
 			return new FluidStack(fluid, 200);
-		}
 		return null;
 	}
 
-	protected void setFluid(FluidStack fluid) {
-	}
+	protected void setFluid(FluidStack fluid) {}
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
-		return new FluidTankProperties[] { new FluidTankProperties(getFluid(), 200) };
+		return new FluidTankProperties[] {
+				new FluidTankProperties(getFluid(), 200)
+		};
 	}
 
 	@Override
@@ -53,22 +54,19 @@ public class FluidDropItemDC implements IFluidHandler, ICapabilityProvider {
 
 	@Override
 	public FluidStack drain(FluidStack resource, boolean doDrain) {
-		if (resource == null || resource.amount < 200 || !resource.isFluidEqual(getFluid())) {
+		if (resource == null || resource.amount < 200 || !resource.isFluidEqual(getFluid()))
 			return null;
-		}
 		return drain(resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(int maxDrain, boolean doDrain) {
-		if (maxDrain < 200) {
+		if (maxDrain < 200)
 			return null;
-		}
 
 		FluidStack contained = getFluid();
-		if (contained == null || !canDrainFluidType(contained)) {
+		if (contained == null || !canDrainFluidType(contained))
 			return null;
-		}
 
 		final int drainAmount = 200;
 
@@ -91,7 +89,7 @@ public class FluidDropItemDC implements IFluidHandler, ICapabilityProvider {
 	}
 
 	protected void setContainerToEmpty() {
-		container.stackSize--;
+		DCUtil.reduceStackSize(container, 1);
 	}
 
 	@Override

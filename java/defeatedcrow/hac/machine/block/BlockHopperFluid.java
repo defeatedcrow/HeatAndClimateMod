@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -22,6 +23,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -30,6 +32,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -111,12 +114,18 @@ public class BlockHopperFluid extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity tile = world.getTileEntity(pos);
-		if (!world.isRemote && tile != null && tile instanceof TileHopperFluid) {
-			if (player != null && hand == EnumHand.MAIN_HAND) {
-				if (!DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
-					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (!world.isRemote && tile != null && tile instanceof TileHopperFluid) {
+				if (player != null && hand == EnumHand.MAIN_HAND) {
+					if (!DCUtil.isEmpty(heldItem)
+							&& !DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+					} else {
+						world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
+					}
 				}
 			}
 		}

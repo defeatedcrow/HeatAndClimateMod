@@ -8,7 +8,9 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.energy.TileTorqueLockable;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +30,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
@@ -61,17 +62,17 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		boolean flag = false;
 		boolean flag2 = false;
 		// Bがさき
-		if (inv[1] == null) {
+		if (DCUtil.isEmpty(inv.getStackInSlot(1))) {
 			moveB = 0;
 			prevMoveB = 0;
 
-			if (inv[0] != null && moveF >= MAX_MOVE) {
-				inv[1] = inv[0].copy();
+			if (!DCUtil.isEmpty(inv.getStackInSlot(0)) && moveF >= MAX_MOVE) {
+				inv.setInventorySlotContents(1, inv.getStackInSlot(0).copy());
 				onSmelting();
-				inv[0] = null;
+				inv.removeStackFromSlot(0);
 				moveF = 0;
 				prevMoveF = 0;
-				flag = true;
+				this.markDirty();
 			}
 		} else {
 			if (moveB < MAX_MOVE) {
@@ -80,18 +81,18 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			} else {
 				// 送り出し
 				releaseItem();
-
 			}
 		}
 
 		// つぎにF
-		if (inv[0] == null) {
+		if (DCUtil.isEmpty(inv.getStackInSlot(0))) {
 			moveF = 0;
 			prevMoveF = 0;
 
 			// 吸引処理
 			insertItem();
 		} else {
+
 			if (moveF < MAX_MOVE) {
 				prevMoveF = moveF;
 				moveF++;
@@ -105,12 +106,13 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		if (moveB != prevMoveB || moveF != prevMoveF) {
 			sendPacket = true;
 		} else if (lastHasItem) {
-			if (inv[1] == null) {
+			if (DCUtil.isEmpty(inv.getStackInSlot(1)) && DCUtil.isEmpty(inv.getStackInSlot(0))) {
 				sendPacket = true;
 				lastHasItem = false;
 			}
-		} else if (inv[1] != null && !lastHasItem) {
+		} else if (!DCUtil.isEmpty(inv.getStackInSlot(1)) || DCUtil.isEmpty(inv.getStackInSlot(0))) {
 			lastHasItem = true;
+			sendPacket = true;
 		}
 
 		if (sendPacket) {
@@ -129,7 +131,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	private int stay1 = 0;
 
 	protected boolean insertItem() {
-		if (inv[0] != null)
+		if (!DCUtil.isEmpty(inv.getStackInSlot(0)))
 			return false;
 		if (stay1 < 0) {
 			EnumFacing side = getBaseSide().getOpposite();
@@ -140,8 +142,8 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 				IItemHandler tInv = target.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 						EnumFacing.DOWN);
 				for (int i = 0; i < tInv.getSlots(); i++) {
-					if (tInv.extractItem(i, 1, true) != null) {
-						inv[0] = tInv.extractItem(i, 1, false).copy();
+					if (!DCUtil.isEmpty(tInv.extractItem(i, 1, true))) {
+						inv.setInventorySlotContents(0, tInv.extractItem(i, 1, false).copy());
 						// DCLogger.debugLog("convayor inserting:" + inv[0].getDisplayName() + ", size:" +
 						// inv[0].stackSize);
 						target.markDirty();
@@ -150,7 +152,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 					}
 				}
 			}
-			if (inv[0] == null) {
+			if (DCUtil.isEmpty(inv.getStackInSlot(0))) {
 				double x1 = getPos().getX() - 0D;
 				double x2 = getPos().getX() + 1D;
 				double y1 = getPos().getY() - 1D;
@@ -162,14 +164,14 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 
 				for (int i = 0; i < list.size(); ++i) {
 					Entity entity = (Entity) list.get(i);
-					if (inv[0] == null && entity != null && entity instanceof EntityItem) {
+					if (DCUtil.isEmpty(inv.getStackInSlot(0)) && entity != null && entity instanceof EntityItem) {
 						EntityItem drop = (EntityItem) entity;
-						if (drop.getEntityItem() != null && drop.getEntityItem().stackSize > 0) {
-							inv[0] = drop.getEntityItem().splitStack(1);
+						if (!DCUtil.isEmpty(drop.getEntityItem())) {
+							inv.setInventorySlotContents(0, drop.getEntityItem().splitStack(1));
 							moveF = 0;
 							prevMoveF = 0;
 							this.markDirty();
-							if (drop.getEntityItem() == null || drop.getEntityItem().stackSize <= 0) {
+							if (DCUtil.isEmpty(drop.getEntityItem())) {
 								drop.setDead();
 							}
 							// DCLogger.debugLog("convayor drop picking item:" + inv[0].getDisplayName() + ", size:"
@@ -180,7 +182,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 				}
 			}
 
-			if (inv[0] == null) {
+			if (DCUtil.isEmpty(inv.getStackInSlot(0))) {
 				stay1 = 3;
 			}
 		} else {
@@ -192,7 +194,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	private int stay2 = 0;
 
 	protected boolean releaseItem() {
-		if (inv[1] == null)
+		if (DCUtil.isEmpty(inv.getStackInSlot(1)))
 			return false;
 		boolean flag = false;
 		EnumFacing side = getBaseSide();
@@ -202,9 +204,9 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			if (target instanceof TileConveyor) {
 				skip = true;
 				TileConveyor tConv = (TileConveyor) target;
-				if (tConv.inv[0] == null) {
-					tConv.inv[0] = inv[1].copy();
-					inv[1] = null;
+				if (DCUtil.isEmpty(tConv.getStackInSlot(0))) {
+					tConv.setInventorySlotContents(0, inv.getStackInSlot(1).copy());
+					this.decrStackSize(1, 1);
 					target.markDirty();
 					this.markDirty();
 					flag = true;
@@ -212,9 +214,9 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			} else {
 				IItemHandler tInv = target.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
 				for (int i = 0; i < tInv.getSlots(); i++) {
-					if (tInv.insertItem(i, inv[1].copy(), true) == null) {
-						ItemStack ret = tInv.insertItem(i, inv[1].copy(), false);
-						inv[1] = null;
+					if (DCUtil.isEmpty(tInv.insertItem(i, inv.getStackInSlot(1).copy(), true))) {
+						ItemStack ret = tInv.insertItem(i, inv.getStackInSlot(1).copy(), false);
+						this.decrStackSize(1, 1);
 						flag = true;
 						target.markDirty();
 						this.markDirty();
@@ -224,12 +226,12 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			}
 			skip = true;
 		}
-		if (!flag && inv[1] != null && !skip) {
+		if (!flag && !DCUtil.isEmpty(inv.getStackInSlot(1)) && !skip) {
 			BlockPos next = getPos().offset(side);
 			EntityItem drop = new EntityItem(worldObj, next.getX() + 0.5D, next.getY() + 0.5D, next.getZ() + 0.5D,
-					inv[1].copy());
+					inv.getStackInSlot(1).copy());
 			if (worldObj.spawnEntityInWorld(drop)) {
-				inv[1] = null;
+				this.decrStackSize(1, 1);
 				this.markDirty();
 				flag = true;
 			}
@@ -238,22 +240,22 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	}
 
 	protected void onSmelting() {
-		if (inv[1] != null && current != null) {
-			ItemStack target = inv[1].copy();
+		if (!DCUtil.isEmpty(inv.getStackInSlot(1)) && current != null) {
+			ItemStack target = inv.getStackInSlot(1).copy();
 			IClimateSmelting recipe = RecipeAPI.registerSmelting.getRecipe(current, target);
 			if (recipe != null) {
 				ItemStack ret = recipe.getOutput();
 				worldObj.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D,
 						getPos().getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
-				inv[1] = ret;
+				inv.setInventorySlotContents(1, ret);
 				// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
 			} else if (current.getAirflow() == DCAirflow.TIGHT && current.getHeat().getID() > DCHeatTier.KILN.getID()) {
-				ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(inv[1]);
-				if (burnt != null) {
+				ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(inv.getStackInSlot(1));
+				if (!DCUtil.isEmpty(burnt)) {
 					worldObj.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D,
 							getPos().getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F,
 							0.85F);
-					inv[1] = burnt;
+					inv.setInventorySlotContents(1, burnt);
 					// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
 				}
 			}
@@ -282,45 +284,13 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[11];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
-
-		this.moveF = tag.getInteger("FowCount");
-		this.moveB = tag.getInteger("BackCount");
-		this.prevMoveF = tag.getInteger("PrevFowCount");
-		this.prevMoveB = tag.getInteger("PrevBackCount");
+		setNBT(tag);
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
-		// 燃焼時間や調理時間などの書き込み
-		tag.setInteger("FowCount", this.moveF);
-		tag.setInteger("BackCount", this.moveB);
-		tag.setInteger("PrevFowCount", this.prevMoveF);
-		tag.setInteger("PrevBackCount", this.prevMoveB);
-
-		// アイテムの書き込み
-		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
-				NBTTagCompound tag1 = new NBTTagCompound();
-				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
-				nbttaglist.appendTag(tag1);
-			}
-		}
-		tag.setTag("InvItems", nbttaglist);
+		getNBT(tag);
 
 		return tag;
 	}
@@ -336,11 +306,12 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 
 		// アイテムの書き込み
 		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < inv.length; ++i) {
-			if (inv[i] != null) {
+
+		for (int i = 0; i < this.getSizeInventory(); ++i) {
+			if (getStackInSlot(i) != null) {
 				NBTTagCompound tag1 = new NBTTagCompound();
 				tag1.setByte("Slot", (byte) i);
-				inv[i].writeToNBT(tag1);
+				getStackInSlot(i).writeToNBT(tag1);
 				nbttaglist.appendTag(tag1);
 			}
 		}
@@ -352,17 +323,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 
-		NBTTagList nbttaglist = tag.getTagList("InvItems", 10);
-		this.inv = new ItemStack[11];
-
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = tag1.getByte("Slot");
-
-			if (b0 >= 0 && b0 < this.inv.length) {
-				this.inv[b0] = ItemStack.loadItemStackFromNBT(tag1);
-			}
-		}
+		inv.readFromNBT(tag);
 
 		this.moveF = tag.getInteger("FowCount");
 		this.moveB = tag.getInteger("BackCount");
@@ -408,28 +369,28 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		};
 	};
 
-	public ItemStack[] inv = new ItemStack[2];
+	public DCInventory inv = new DCInventory(2);
 
 	public ItemStack getInput() {
-		return inv[0];
+		return inv.getStackInSlot(0);
 	}
 
 	public ItemStack getOutput() {
-		return inv[1];
+		return inv.getStackInSlot(1);
 	}
 
 	private boolean canIncrStack(ItemStack incr, int slot) {
 		ItemStack check = getStackInSlot(slot);
-		if (check == null)
+		if (DCUtil.isEmpty(check))
 			return true;
 		else
 			return false;
 	}
 
 	public int incrStackSize(int i, ItemStack get) {
-		if (i < 0 || i >= this.getSizeInventory() || get == null)
+		if (i < 0 || i >= this.getSizeInventory() || DCUtil.isEmpty(get))
 			return 0;
-		if (this.getStackInSlot(i) != null)
+		if (!DCUtil.isEmpty(this.getStackInSlot(i)))
 			return 0;
 		else {
 			if (get.stackSize > 1) {
@@ -450,59 +411,24 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	// インベントリ内の任意のスロットにあるアイテムを取得
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		if (i >= 0 && i < 2)
-			return this.inv[i];
-		else
-			return null;
+		return inv.getStackInSlot(i);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return null;
-		if (this.getStackInSlot(i) != null) {
-			ItemStack itemstack;
-
-			if (this.getStackInSlot(i).stackSize <= num) {
-				itemstack = this.getStackInSlot(i);
-				this.setInventorySlotContents(i, null);
-				return itemstack;
-			} else {
-				itemstack = this.getStackInSlot(i).splitStack(num);
-				if (this.getStackInSlot(i).stackSize == 0) {
-					this.setInventorySlotContents(i, null);
-				}
-				return itemstack;
-			}
-		} else
-			return null;
+		return inv.decrStackSize(i, num);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		i = MathHelper.clamp_int(i, 0, this.getSizeInventory() - 1);
-		if (i < inv.length) {
-			if (this.getStackInSlot(i) != null) {
-				ItemStack itemstack = this.getStackInSlot(i);
-				this.setInventorySlotContents(i, null);
-				return itemstack;
-			}
-		}
-		return null;
+		return inv.removeStackFromSlot(i);
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
 	@Override
 	public void setInventorySlotContents(int i, ItemStack stack) {
-		if (i < 0 || i >= this.getSizeInventory())
-			return;
-		else {
-			this.inv[i] = stack;
-
-			if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-				stack.stackSize = this.getInventoryStackLimit();
-			}
-		}
+		inv.setInventorySlotContents(i, stack);
+		this.markDirty();
 	}
 
 	// インベントリ内のスタック限界値
@@ -514,7 +440,8 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
+		return getWorld().getTileEntity(this.pos) != this
+				? false
 				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
@@ -529,7 +456,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if (i == 0)
-			return stack != null && stack.getItem() != null;
+			return !DCUtil.isEmpty(stack);
 		else
 			return false;
 	}
@@ -549,8 +476,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 
 	@Override
 	public void clear() {
-		inv[0] = null;
-		inv[1] = null;
+		inv.clear();
 	}
 
 	// インベントリの名前
@@ -573,7 +499,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	// ホッパーからアイテムを入れられるかどうか
 	@Override
 	public boolean canInsertItem(int index, ItemStack itemStack, EnumFacing direction) {
-		return this.isItemValidForSlot(index, itemStack) && inv[0] == null;
+		return this.isItemValidForSlot(index, itemStack) && DCUtil.isEmpty(inv.getStackInSlot(0));
 	}
 
 	// 隣接するホッパーにアイテムを送れるかどうか
@@ -596,7 +522,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)

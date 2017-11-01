@@ -4,6 +4,7 @@ import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -72,7 +73,7 @@ public class ItemRepairPutty extends DCItem {
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (player != null && stack != null && stack.getItem() != null && stack.getItemDamage() == 2) {
+		if (player != null && stack != null && !DCUtil.isEmpty(stack) && stack.getItemDamage() == 2) {
 			IBlockState state = world.getBlockState(pos);
 			if (state != null && state.getBlock() instanceof BlockColored) {
 				if (!world.isRemote) {
@@ -81,7 +82,7 @@ public class ItemRepairPutty extends DCItem {
 					world.setBlockState(pos, state.withProperty(BlockColored.COLOR, EnumDyeColor.WHITE), 3);
 				}
 				if (!player.capabilities.isCreativeMode) {
-					--stack.stackSize;
+					DCUtil.reduceStackSize(stack, 1);
 				}
 				return EnumActionResult.SUCCESS;
 			}
@@ -99,7 +100,7 @@ public class ItemRepairPutty extends DCItem {
 
 			if (!entitysheep.getSheared() && entitysheep.getFleeceColor() != enumdyecolor) {
 				entitysheep.setFleeceColor(enumdyecolor);
-				--stack.stackSize;
+				DCUtil.reduceStackSize(stack, 1);
 			}
 			return true;
 		} else

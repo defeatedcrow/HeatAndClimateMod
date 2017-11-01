@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.food.block.BlockDish;
 import defeatedcrow.hac.food.block.BlockPotteryPot;
 import defeatedcrow.hac.food.block.BlockSteelPot;
@@ -44,13 +45,11 @@ import defeatedcrow.hac.food.item.SquarePastryItem;
 import defeatedcrow.hac.food.item.StewBowlItem;
 import defeatedcrow.hac.food.item.StickFoodsItem;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class FoodInitRegister {
 
@@ -71,128 +70,137 @@ public class FoodInitRegister {
 
 	static void loadBlocks() {
 		FoodInit.cropRice = new BlockRice(ClimateCore.PACKAGE_BASE + "_crop_rice");
-		MainMaterialRegister.registerBlock(FoodInit.cropRice, ClimateCore.PACKAGE_BASE + "_crop_rice");
+		DCMaterialReg.registerBlock(FoodInit.cropRice, ClimateCore.PACKAGE_BASE + "_crop_rice", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addCropBlock(FoodInit.cropRice, "crop_rice", 3);
 
 		FoodInit.cropOnion = new BlockOnion(ClimateCore.PACKAGE_BASE + "_crop_onion");
-		MainMaterialRegister.registerBlock(FoodInit.cropOnion, ClimateCore.PACKAGE_BASE + "_crop_onion");
+		DCMaterialReg.registerBlock(FoodInit.cropOnion, ClimateCore.PACKAGE_BASE + "_crop_onion", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addCropBlock(FoodInit.cropOnion, "crop_onion", 3);
 
 		FoodInit.cropSpinach = new BlockSpinach(ClimateCore.PACKAGE_BASE + "_crop_spinach");
-		MainMaterialRegister.registerBlock(FoodInit.cropSpinach, ClimateCore.PACKAGE_BASE + "_crop_spinach");
+		DCMaterialReg.registerBlock(FoodInit.cropSpinach, ClimateCore.PACKAGE_BASE + "_crop_spinach",
+				ClimateMain.MOD_ID);
 		ClimateMain.proxy.addCropBlock(FoodInit.cropSpinach, "crop_spinach", 3);
 
 		FoodInit.cropTomato = new BlockTomato(ClimateCore.PACKAGE_BASE + "_crop_tomato");
-		MainMaterialRegister.registerBlock(FoodInit.cropTomato, ClimateCore.PACKAGE_BASE + "_crop_tomato");
-		ClimateMain.proxy.addCropBlock(FoodInit.cropTomato, "crop_tomato", 7);
+		DCMaterialReg.registerBlock(FoodInit.cropTomato, ClimateCore.PACKAGE_BASE + "_crop_tomato", ClimateMain.MOD_ID);
+		ClimateMain.proxy.addCropBlock(FoodInit.cropTomato, "crop_tomato", 15);
 
 		FoodInit.cropCoffee = new BlockCoffee(ClimateCore.PACKAGE_BASE + "_crop_coffee");
-		MainMaterialRegister.registerBlock(FoodInit.cropCoffee, ClimateCore.PACKAGE_BASE + "_crop_coffee");
-		ClimateMain.proxy.addCropBlock(FoodInit.cropCoffee, "crop_coffee", 7);
+		DCMaterialReg.registerBlock(FoodInit.cropCoffee, ClimateCore.PACKAGE_BASE + "_crop_coffee", ClimateMain.MOD_ID);
+		ClimateMain.proxy.addCropBlock(FoodInit.cropCoffee, "crop_coffee", 15);
 
 		FoodInit.cropCotton = new BlockCotton(ClimateCore.PACKAGE_BASE + "_crop_cotton");
-		MainMaterialRegister.registerBlock(FoodInit.cropCotton, ClimateCore.PACKAGE_BASE + "_crop_cotton");
-		ClimateMain.proxy.addCropBlock(FoodInit.cropCotton, "crop_cotton", 7);
+		DCMaterialReg.registerBlock(FoodInit.cropCotton, ClimateCore.PACKAGE_BASE + "_crop_cotton", ClimateMain.MOD_ID);
+		ClimateMain.proxy.addCropBlock(FoodInit.cropCotton, "crop_cotton", 15);
 
 		FoodInit.leavesLemon = new BlockLeavesLemon(ClimateCore.PACKAGE_BASE + "_leaves_lemon");
-		MainMaterialRegister.registerBlock(FoodInit.leavesLemon, ClimateCore.PACKAGE_BASE + "_leaves_lemon");
+		DCMaterialReg.registerBlock(FoodInit.leavesLemon, ClimateCore.PACKAGE_BASE + "_leaves_lemon",
+				ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(FoodInit.leavesLemon, "leaves_lemon", 3);
 
 		FoodInit.leavesOlive = new BlockLeavesOlive(ClimateCore.PACKAGE_BASE + "_leaves_olive");
-		MainMaterialRegister.registerBlock(FoodInit.leavesOlive, ClimateCore.PACKAGE_BASE + "_leaves_olive");
+		DCMaterialReg.registerBlock(FoodInit.leavesOlive, ClimateCore.PACKAGE_BASE + "_leaves_olive",
+				ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(FoodInit.leavesOlive, "leaves_olive", 3);
 
 		FoodInit.leavesTea = new BlockLeavesTea(ClimateCore.PACKAGE_BASE + "_leaves_tea");
-		MainMaterialRegister.registerBlock(FoodInit.leavesTea, ClimateCore.PACKAGE_BASE + "_leaves_tea");
+		DCMaterialReg.registerBlock(FoodInit.leavesTea, ClimateCore.PACKAGE_BASE + "_leaves_tea", ClimateMain.MOD_ID);
 
 		FoodInit.saplings = new BlockSaplingDC(ClimateCore.PACKAGE_BASE + "_crop_sapling");
-		MainMaterialRegister.registerBlock(FoodInit.saplings, ClimateCore.PACKAGE_BASE + "_crop_sapling");
+		DCMaterialReg.registerBlock(FoodInit.saplings, ClimateCore.PACKAGE_BASE + "_crop_sapling", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addCropBlock(FoodInit.saplings, "crop_sapling", 2);
 
 		FoodInit.potteryPot = new BlockPotteryPot(ClimateCore.PACKAGE_BASE + "_device_pottery_pot");
-		MainMaterialRegister.registerBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_BASE + "_device_pottery_pot");
+		DCMaterialReg.registerBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_BASE + "_device_pottery_pot",
+				ClimateMain.MOD_ID);
 
 		FoodInit.steelPot = new BlockSteelPot(ClimateCore.PACKAGE_BASE + "_device_steel_pot");
-		MainMaterialRegister.registerBlock(FoodInit.steelPot, ClimateCore.PACKAGE_BASE + "_device_steel_pot");
+		DCMaterialReg.registerBlock(FoodInit.steelPot, ClimateCore.PACKAGE_BASE + "_device_steel_pot",
+				ClimateMain.MOD_ID);
 
 		FoodInit.teaPot = new BlockTeaPot(ClimateCore.PACKAGE_BASE + "_device_tea_pot");
-		MainMaterialRegister.registerBlock(FoodInit.teaPot, ClimateCore.PACKAGE_BASE + "_device_tea_pot");
+		DCMaterialReg.registerBlock(FoodInit.teaPot, ClimateCore.PACKAGE_BASE + "_device_tea_pot", ClimateMain.MOD_ID);
 
 		FoodInit.dish = new BlockDish(ClimateCore.PACKAGE_BASE + "_build_dish", 1);
-		MainMaterialRegister.registerBlock(FoodInit.dish, ClimateCore.PACKAGE_BASE + "_build_dish");
+		DCMaterialReg.registerBlock(FoodInit.dish, ClimateCore.PACKAGE_BASE + "_build_dish", ClimateMain.MOD_ID);
 
 		FoodInit.cropLotus = new BlockLotus(ClimateCore.PACKAGE_BASE + "_crop_lotus", 15)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus");
-		MainMaterialRegister.registerBlock(FoodInit.cropLotus, ClimateCore.PACKAGE_BASE + "_crop_lotus");
+		DCMaterialReg.registerBlock(FoodInit.cropLotus, ClimateCore.PACKAGE_BASE + "_crop_lotus", ClimateMain.MOD_ID);
 	}
 
 	static void loadItems() {
 
 		FoodInit.crops = new ItemDCCrops(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
-		GameRegistry.register(FoodInit.crops.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_crops"));
+		DCMaterialReg.registerItem(FoodInit.crops, ClimateCore.PACKAGE_BASE + "_food_crops", ClimateMain.MOD_ID);
 
 		FoodInit.seeds = new ItemDCSeeds(6).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_seeds");
-		GameRegistry.register(FoodInit.seeds.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_seeds"));
+		DCMaterialReg.registerItem(FoodInit.seeds, ClimateCore.PACKAGE_BASE + "_food_seeds", ClimateMain.MOD_ID);
 
 		FoodInit.teaLeaves = new ItemTeaLeaves(2).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_leaves");
-		GameRegistry.register(FoodInit.teaLeaves.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_leaves"));
+		DCMaterialReg.registerItem(FoodInit.teaLeaves, ClimateCore.PACKAGE_BASE + "_food_leaves", ClimateMain.MOD_ID);
 
 		FoodInit.petals = new ItemLotusPetal().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_petals");
-		GameRegistry.register(FoodInit.petals.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_petals"));
+		DCMaterialReg.registerItem(FoodInit.petals, ClimateCore.PACKAGE_BASE + "_food_petals", ClimateMain.MOD_ID);
 
 		FoodInit.dairy = new ItemDairy().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_dairy");
-		GameRegistry.register(FoodInit.dairy.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_dairy"));
+		DCMaterialReg.registerItem(FoodInit.dairy, ClimateCore.PACKAGE_BASE + "_food_dairy", ClimateMain.MOD_ID);
 
 		FoodInit.meat = new ItemMeatMaterials().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_meat");
-		GameRegistry.register(FoodInit.meat.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_meat"));
+		DCMaterialReg.registerItem(FoodInit.meat, ClimateCore.PACKAGE_BASE + "_food_meat", ClimateMain.MOD_ID);
 
 		FoodInit.pastry = new ItemPastry().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_pastry");
-		GameRegistry.register(FoodInit.pastry.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_pastry"));
+		DCMaterialReg.registerItem(FoodInit.pastry, ClimateCore.PACKAGE_BASE + "_food_pastry", ClimateMain.MOD_ID);
 	}
 
 	static void loadFoods() {
 		FoodInit.bread = new RoundBreadItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_bread");
-		GameRegistry.register(FoodInit.bread.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_bread"));
+		DCMaterialReg.registerItem(FoodInit.bread, ClimateCore.PACKAGE_BASE + "_food_bread", ClimateMain.MOD_ID);
 
 		FoodInit.sticks = new StickFoodsItem(true).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_stick");
-		GameRegistry.register(FoodInit.sticks.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_stick"));
+		DCMaterialReg.registerItem(FoodInit.sticks, ClimateCore.PACKAGE_BASE + "_food_stick", ClimateMain.MOD_ID);
 
 		FoodInit.pastryRound = new RoundPastryItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_tart");
-		GameRegistry.register(FoodInit.pastryRound.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_tart"));
+		DCMaterialReg.registerItem(FoodInit.pastryRound, ClimateCore.PACKAGE_BASE + "_food_tart", ClimateMain.MOD_ID);
 
 		FoodInit.pastrySquare = new SquarePastryItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_pie");
-		GameRegistry.register(FoodInit.pastrySquare.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_pie"));
+		DCMaterialReg.registerItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_BASE + "_food_pie", ClimateMain.MOD_ID);
 
 		FoodInit.sandwich = new SandwichItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_sandwich");
-		GameRegistry.register(FoodInit.sandwich.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_sandwich"));
+		DCMaterialReg.registerItem(FoodInit.sandwich, ClimateCore.PACKAGE_BASE + "_food_sandwich", ClimateMain.MOD_ID);
 
 		FoodInit.clubsandwich = new ClubSandItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_clubsand");
-		GameRegistry.register(FoodInit.clubsandwich.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_clubsand"));
+		DCMaterialReg.registerItem(FoodInit.clubsandwich, ClimateCore.PACKAGE_BASE + "_food_clubsand",
+				ClimateMain.MOD_ID);
 
 		FoodInit.ricebowl = new RiceBowlItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_rice");
-		GameRegistry.register(FoodInit.ricebowl.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_rice"));
+		DCMaterialReg.registerItem(FoodInit.ricebowl, ClimateCore.PACKAGE_BASE + "_food_rice", ClimateMain.MOD_ID);
 
 		FoodInit.cupSilver = new ItemSilverCup(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_teacup");
-		GameRegistry.register(FoodInit.cupSilver.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_teacup"));
+		DCMaterialReg.registerItem(FoodInit.cupSilver, ClimateCore.PACKAGE_BASE + "_food_teacup", ClimateMain.MOD_ID);
 
 		FoodInit.steakplate = new EmptyPlateItem(false)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_steakplate_item");
-		GameRegistry.register(FoodInit.steakplate.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_steakplate_item"));
+		DCMaterialReg.registerItem(FoodInit.steakplate, ClimateCore.PACKAGE_BASE + "_food_steakplate_item",
+				ClimateMain.MOD_ID);
 
 		FoodInit.plateMeal = new PlateMeatItem(true).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_plate_meat");
-		GameRegistry.register(FoodInit.plateMeal.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_plate_meat"));
+		DCMaterialReg.registerItem(FoodInit.plateMeal, ClimateCore.PACKAGE_BASE + "_food_plate_meat",
+				ClimateMain.MOD_ID);
 
 		FoodInit.plateSoup = new PlateSoupItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_plate_soup");
-		GameRegistry.register(FoodInit.plateSoup.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_plate_soup"));
+		DCMaterialReg.registerItem(FoodInit.plateSoup, ClimateCore.PACKAGE_BASE + "_food_plate_soup",
+				ClimateMain.MOD_ID);
 
 		FoodInit.bowlSoup = new StewBowlItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_bowl_stew");
-		GameRegistry.register(FoodInit.bowlSoup.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_bowl_stew"));
+		DCMaterialReg.registerItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_BASE + "_food_bowl_stew", ClimateMain.MOD_ID);
 
 		FoodInit.salad = new SaladItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_salad");
-		GameRegistry.register(FoodInit.salad.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_salad"));
+		DCMaterialReg.registerItem(FoodInit.salad, ClimateCore.PACKAGE_BASE + "_food_salad", ClimateMain.MOD_ID);
 
 		FoodInit.cake = new CakeItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_cake");
-		GameRegistry.register(FoodInit.cake.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_cake"));
+		DCMaterialReg.registerItem(FoodInit.cake, ClimateCore.PACKAGE_BASE + "_food_cake", ClimateMain.MOD_ID);
 	}
 
 	public static void loadFluids() {
@@ -204,7 +212,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.oil);
 		FoodInit.oilBlock = new DCFluidBlockBase(FoodInit.oil, "seedoil_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_oil");
-		MainMaterialRegister.registerBlock(FoodInit.oilBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_oil");
+		DCMaterialReg.registerBlock(FoodInit.oilBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_oil",
+				ClimateMain.MOD_ID);
 		FoodInit.oil.setBlock(FoodInit.oilBlock);
 
 		FoodInit.greenTea = new Fluid("dcs.green_tea",
@@ -214,7 +223,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.greenTea);
 		FoodInit.greenTeaBlock = new DCFluidBlockBase(FoodInit.greenTea, "greentea_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_greentea");
-		MainMaterialRegister.registerBlock(FoodInit.greenTeaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_greentea");
+		DCMaterialReg.registerBlock(FoodInit.greenTeaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_greentea",
+				ClimateMain.MOD_ID);
 		FoodInit.greenTea.setBlock(FoodInit.greenTeaBlock);
 
 		FoodInit.blackTea = new Fluid("dcs.black_tea",
@@ -224,7 +234,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.blackTea);
 		FoodInit.blackTeaBlock = new DCFluidBlockBase(FoodInit.blackTea, "blacktea_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea");
-		MainMaterialRegister.registerBlock(FoodInit.blackTeaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea");
+		DCMaterialReg.registerBlock(FoodInit.blackTeaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea",
+				ClimateMain.MOD_ID);
 		FoodInit.blackTea.setBlock(FoodInit.blackTeaBlock);
 
 		FoodInit.coffee = new Fluid("dcs.black_coffee",
@@ -234,7 +245,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.coffee);
 		FoodInit.coffeeBlock = new DCFluidBlockBase(FoodInit.coffee, "coffee_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_coffee");
-		MainMaterialRegister.registerBlock(FoodInit.coffeeBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_coffee");
+		DCMaterialReg.registerBlock(FoodInit.coffeeBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_coffee",
+				ClimateMain.MOD_ID);
 		FoodInit.coffee.setBlock(FoodInit.coffeeBlock);
 
 		FoodInit.cream = new Fluid("dcs.milk_cream",
@@ -244,7 +256,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.cream);
 		FoodInit.creamBlock = new DCFluidBlockBase(FoodInit.cream, "cream_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_cream");
-		MainMaterialRegister.registerBlock(FoodInit.creamBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_cream");
+		DCMaterialReg.registerBlock(FoodInit.creamBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_cream",
+				ClimateMain.MOD_ID);
 		FoodInit.cream.setBlock(FoodInit.creamBlock);
 
 		FoodInit.tomatoJuice = new Fluid("dcs.vegetable_juice",
@@ -254,7 +267,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.tomatoJuice);
 		FoodInit.tomatoBlock = new DCFluidBlockBase(FoodInit.tomatoJuice, "vegetable_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable");
-		MainMaterialRegister.registerBlock(FoodInit.tomatoBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable");
+		DCMaterialReg.registerBlock(FoodInit.tomatoBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable",
+				ClimateMain.MOD_ID);
 		FoodInit.tomatoJuice.setBlock(FoodInit.tomatoBlock);
 
 		FoodInit.stock = new Fluid("dcs.stock",
@@ -264,7 +278,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.stock);
 		FoodInit.stockBlock = new DCFluidBlockBase(FoodInit.stock, "stock_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_stock");
-		MainMaterialRegister.registerBlock(FoodInit.stockBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_stock");
+		DCMaterialReg.registerBlock(FoodInit.stockBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_stock",
+				ClimateMain.MOD_ID);
 		FoodInit.stock.setBlock(FoodInit.stockBlock);
 
 		FoodInit.blackLiquor = new Fluid("dcs.black_liquor",
@@ -274,8 +289,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.blackLiquor);
 		FoodInit.blackLiquorBlock = new DCFluidBlockBase(FoodInit.blackLiquor, "black_liquor_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_black_liquor");
-		MainMaterialRegister.registerBlock(FoodInit.blackLiquorBlock,
-				ClimateCore.PACKAGE_BASE + "_fluidblock_black_liquor");
+		DCMaterialReg.registerBlock(FoodInit.blackLiquorBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_black_liquor",
+				ClimateMain.MOD_ID);
 		FoodInit.blackLiquor.setBlock(FoodInit.blackLiquorBlock);
 
 		FoodInit.hotSpring = new Fluid("dcs.hotspring",
@@ -285,7 +300,8 @@ public class FoodInitRegister {
 		FluidRegistry.registerFluid(FoodInit.hotSpring);
 		FoodInit.hotSpringBlock = new DCFluidBlockBase(FoodInit.hotSpring, "hotspring_still")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_hotspring");
-		MainMaterialRegister.registerBlock(FoodInit.hotSpringBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_hotspring");
+		DCMaterialReg.registerBlock(FoodInit.hotSpringBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_hotspring",
+				ClimateMain.MOD_ID);
 		FoodInit.hotSpring.setBlock(FoodInit.hotSpringBlock);
 
 		// bucket
@@ -302,14 +318,15 @@ public class FoodInitRegister {
 		// fluid item
 		FoodInit.dropOil = new ItemFluidDrop("olive", "dcs.seed_oil")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_drop_oil");
-		GameRegistry.register(FoodInit.dropOil.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_drop_oil"));
+		DCMaterialReg.registerItem(FoodInit.dropOil, ClimateCore.PACKAGE_BASE + "_food_drop_oil", ClimateMain.MOD_ID);
 
 		FoodInit.dropCream = new ItemFluidDrop("cream", "dcs.milk_cream")
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_drop_cream");
-		GameRegistry.register(FoodInit.dropCream.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_drop_cream"));
+		DCMaterialReg.registerItem(FoodInit.dropCream, ClimateCore.PACKAGE_BASE + "_food_drop_cream",
+				ClimateMain.MOD_ID);
 
 		FoodInit.paperPack = new ItemFluidPack().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_pack");
-		GameRegistry.register(FoodInit.paperPack.setRegistryName(ClimateCore.PACKAGE_BASE + "_food_pack"));
+		DCMaterialReg.registerItem(FoodInit.paperPack, ClimateCore.PACKAGE_BASE + "_food_pack", ClimateMain.MOD_ID);
 
 		// heat tier
 		ClimateAPI.registerBlock.registerHeatBlock(FoodInit.coffeeBlock, 32767, DCHeatTier.HOT);

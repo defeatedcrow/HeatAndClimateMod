@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.event;
 import java.util.Random;
 
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
@@ -32,7 +33,7 @@ public class OnMiningEventDC {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = event.getEntityPlayer().inventory.getStackInSlot(i);
-				if (check != null && check.getItem() != null && check.getItem() == MagicInit.pendant) {
+				if (!DCUtil.isEmpty(check) && check.getItem() != null && check.getItem() == MagicInit.pendant) {
 					int m = check.getMetadata();
 					if (m == 9) {
 						hasCharm = true;
@@ -54,7 +55,7 @@ public class OnMiningEventDC {
 			IBlockState state = event.getState();
 			ItemStack held = event.getHarvester().getHeldItemMainhand();
 			int level = event.getFortuneLevel() + 1;
-			if (state == null || held == null)
+			if (state == null || DCUtil.isEmpty(held))
 				return;
 
 			if (state.getBlock() == Blocks.TALLGRASS && held.getItem() instanceof ItemShears) {

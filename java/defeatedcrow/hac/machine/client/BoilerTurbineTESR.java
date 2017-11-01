@@ -3,21 +3,20 @@ package defeatedcrow.hac.machine.client;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.machine.client.model.ModelBoilerTurbine;
+import defeatedcrow.hac.machine.client.model.ModelSteamTurbine;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class BoilerTurbineTESR extends DCTorqueTESRBase {
 
-	private static final DCTileModelBase MODEL = new ModelBoilerTurbine();
+	private static final DCTileModelBase MODEL = new ModelSteamTurbine();
 
 	@Override
 	protected String getTexPass(int i) {
-		return "dcs_climate:textures/tiles/steam_turbine.png";
+		return "dcs_climate:textures/tiles/steam_boiler_turbine.png";
 	}
 
 	@Override
@@ -33,27 +32,26 @@ public class BoilerTurbineTESR extends DCTorqueTESRBase {
 		float y = 0F;
 		float z = 0F;
 
-		if (te != null && te.prevTorque > 0F) {
-			this.bindTexture(new ResourceLocation("dcs_climate:textures/tiles/steam_turbine_active.png"));
-		}
-
 		switch (base) {
 		case DOWN:
+			y = -90F;
 			x = 90F;
 			break;
 		case UP:
+			y = -90F;
 			x = -90F;
 			break;
 		case NORTH:
-			y = 180F;
-			break;
-		case SOUTH:
-			break;
-		case EAST:
 			y = -90F;
 			break;
-		case WEST:
+		case SOUTH:
 			y = 90F;
+			break;
+		case EAST:
+			y = 0F;
+			break;
+		case WEST:
+			y = 180F;
 			break;
 		default:
 			break;

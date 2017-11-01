@@ -2,7 +2,7 @@ package defeatedcrow.hac.main.item.equip;
 
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.util.DCMaterial;
+import defeatedcrow.hac.main.util.DCMaterialEnum;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -14,9 +14,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemArmorHat extends ItemArmor implements ITexturePath {
 
 	private final String tex;
-	private final DCMaterial material;
+	private final DCMaterialEnum material;
 
-	public ItemArmorHat(ArmorMaterial m, DCMaterial mat, EntityEquipmentSlot slot, String t) {
+	public ItemArmorHat(ArmorMaterial m, DCMaterialEnum mat, EntityEquipmentSlot slot, String t) {
 		super(m, 2, slot);
 		material = mat;
 		tex = t;

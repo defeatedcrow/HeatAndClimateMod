@@ -59,7 +59,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 
 	@Override
 	public boolean isRecipeMaterial() {
-		IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(inv[0]);
+		IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(inventory.getStackInSlot(0));
 		return recipe != null;
 	}
 

@@ -12,6 +12,7 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
@@ -38,18 +39,19 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null && !world.isRemote && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
+			ItemStack held = player.getHeldItem(hand);
 			if (tile != null && tile instanceof TilePotteryPot) {
-				if (player.isSneaking() && heldItem == null) {
+				if (player.isSneaking() && DCUtil.isEmpty(held)) {
 					int type = DCState.getInt(state, DCState.TYPE4);
 					boolean f = ((TilePotteryPot) tile).hasCap();
 					boolean next = !f;
 					DCLogger.debugLog("pottery type " + f + "->" + next);
 					((TilePotteryPot) tile).setCap(next);
 				} else {
-					if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player))
+					if (!DCUtil.isEmpty(held) && DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player))
 						return true;
 					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				}

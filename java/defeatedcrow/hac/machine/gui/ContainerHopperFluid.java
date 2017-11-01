@@ -1,6 +1,8 @@
 package defeatedcrow.hac.machine.gui;
 
 import defeatedcrow.hac.machine.block.TileHopperFluid;
+import defeatedcrow.hac.main.client.gui.SlotDCTile;
+import defeatedcrow.hac.main.client.gui.SlotInvalid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -17,8 +19,8 @@ public class ContainerHopperFluid extends Container {
 		this.playerInv = player.inventory;
 		chest.openInventory(player);
 
-		this.addSlotToContainer(new Slot(chest, 0, 73, 18));
-		this.addSlotToContainer(new Slot(chest, 1, 73, 54));
+		this.addSlotToContainer(new SlotDCTile(chest, 0, 73, 18));
+		this.addSlotToContainer(new SlotInvalid(chest, 1, 73, 54));
 
 		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {

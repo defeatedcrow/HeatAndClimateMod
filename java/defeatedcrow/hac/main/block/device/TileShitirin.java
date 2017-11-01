@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.block.device;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
@@ -7,9 +10,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.translation.I18n;
 
 public class TileShitirin extends TileNormalChamber {
 
@@ -40,13 +43,9 @@ public class TileShitirin extends TileNormalChamber {
 
 	/* === 燃焼判定 === */
 
-	public static int getBurnTime(ItemStack item) {
-		int i = TileEntityFurnace.getItemBurnTime(item);
-		int ret = i * 2;
-		if (ret > 0 && ret < 50) {
-			ret = 50;
-		}
-		return ret;
+	@Override
+	public int getFuel(ItemStack item) {
+		return getBurnTime(item) * 4;
 	}
 
 	@Override
@@ -57,6 +56,23 @@ public class TileShitirin extends TileNormalChamber {
 	@Override
 	public String getName() {
 		return "dcs.gui.device.shitirin";
+	}
+
+	@Override
+	public boolean isSuitableClimate() {
+		return currentClimate > DCHeatTier.HOT.getID();
+	}
+
+	@Override
+	public List<String> climateSuitableMassage() {
+		List<String> list = new ArrayList<String>();
+		if (isSuitableClimate()) {
+			list.add(I18n.translateToLocal("dcs.gui.message.suitable"));
+		} else {
+			list.add(I18n.translateToLocal("dcs.gui.message.require.airflow"));
+			list.add(I18n.translateToLocal("dcs.gui.message.require.airflow2"));
+		}
+		return list;
 	}
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */

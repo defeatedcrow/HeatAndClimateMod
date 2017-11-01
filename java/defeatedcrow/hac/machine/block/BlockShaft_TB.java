@@ -24,12 +24,12 @@ import net.minecraft.world.World;
 public class BlockShaft_TB extends BlockTorqueBase {
 
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-	protected static final AxisAlignedBB AABB_AXIS_X1 = new AxisAlignedBB(0.0D, 0.25D, 0.25D, 0.5D, 0.75D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Y1 = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.5D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Z1 = new AxisAlignedBB(0.25D, 0.25D, 0.0D, 0.75D, 0.75D, 0.5D);
-	protected static final AxisAlignedBB AABB_AXIS_X2 = new AxisAlignedBB(0.5D, 0.25D, 0.25D, 1.0D, 0.75D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Y2 = new AxisAlignedBB(0.25D, 0.5D, 0.25D, 0.75D, 1.0D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Z2 = new AxisAlignedBB(0.25D, 0.25D, 0.5D, 0.75D, 0.75D, 1.0D);
+	protected static final AxisAlignedBB AABB_AXIS_X1 = new AxisAlignedBB(0.0D, 0.375D, 0.375D, 0.5D, 0.625D, 0.625D);
+	protected static final AxisAlignedBB AABB_AXIS_Y1 = new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 0.5D, 0.625D);
+	protected static final AxisAlignedBB AABB_AXIS_Z1 = new AxisAlignedBB(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 0.5D);
+	protected static final AxisAlignedBB AABB_AXIS_X2 = new AxisAlignedBB(0.5D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
+	protected static final AxisAlignedBB AABB_AXIS_Y2 = new AxisAlignedBB(0.375D, 0.5D, 0.375D, 0.625D, 1.0D, 0.625D);
+	protected static final AxisAlignedBB AABB_AXIS_Z2 = new AxisAlignedBB(0.375D, 0.375D, 0.5D, 0.625D, 0.625D, 1.0D);
 
 	public BlockShaft_TB(String s) {
 		super(Material.ROCK, s, 0);
@@ -57,15 +57,18 @@ public class BlockShaft_TB extends BlockTorqueBase {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null && heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
-			TileEntity tile = world.getTileEntity(pos);
-			// achievement
-			if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-				AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
+				TileEntity tile = world.getTileEntity(pos);
+				// achievement
+				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
+					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
+				}
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
+		return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
 	}
 
 	@Override

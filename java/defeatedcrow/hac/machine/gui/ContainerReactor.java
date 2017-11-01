@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine.gui;
 
 import defeatedcrow.hac.machine.block.TileReactor;
+import defeatedcrow.hac.main.client.gui.SlotDCTile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -22,13 +23,13 @@ public class ContainerReactor extends Container {
 		this.machine = tile;
 		this.player = playerInv;
 
-		this.addSlotToContainer(new Slot(tile, 0, 26, 18));
+		this.addSlotToContainer(new SlotDCTile(tile, 0, 26, 18));
 		this.addSlotToContainer(new SlotOutput(tile, 1, 26, 44));
-		this.addSlotToContainer(new Slot(tile, 2, 66, 18));
+		this.addSlotToContainer(new SlotDCTile(tile, 2, 66, 18));
 		this.addSlotToContainer(new SlotOutput(tile, 3, 66, 44));
-		this.addSlotToContainer(new Slot(tile, 4, 108, 48));
+		this.addSlotToContainer(new SlotDCTile(tile, 4, 108, 48));
 		this.addSlotToContainer(new SlotOutput(tile, 5, 108, 74));
-		this.addSlotToContainer(new Slot(tile, 6, 148, 48));
+		this.addSlotToContainer(new SlotDCTile(tile, 6, 148, 48));
 		this.addSlotToContainer(new SlotOutput(tile, 7, 148, 74));
 
 		this.addSlotToContainer(new Slot(tile, 8, 98, 13));
