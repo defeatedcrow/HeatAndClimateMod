@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiNormalChamber extends GuiContainer {
 	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
-			"textures/gui/chamber_normal_gui.png");
+			"textures/gui/chamber_main_gui.png");
 	private static final ResourceLocation iconTex = new ResourceLocation("dcs_climate", "textures/gui/gui_icons.png");
 
 	/** The player inventory bound to this GUI. */

@@ -164,32 +164,32 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadEntity() {
-		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + "entity.main.cution", 90,
+		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + ".main.cution", 90,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityFlowerPot.class, ClimateCore.PACKAGE_BASE + "entity.main.flowerpot", 92,
+		EntityRegistry.registerModEntity(EntityFlowerPot.class, ClimateCore.PACKAGE_BASE + ".main.flowerpot", 92,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityIronBolt.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_bolt", 91,
+		EntityRegistry.registerModEntity(EntityIronBolt.class, ClimateCore.PACKAGE_BASE + ".main.bullet_bolt", 91,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityIronBullet.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_iron",
-				93, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityIronBullet.class, ClimateCore.PACKAGE_BASE + ".main.bullet_iron", 93,
+				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntitySilverBullet.class,
-				ClimateCore.PACKAGE_BASE + "entity.main.bullet_silver", 94, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntitySilverBullet.class, ClimateCore.PACKAGE_BASE + ".main.bullet_silver", 94,
+				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityShotgunBullet.class,
-				ClimateCore.PACKAGE_BASE + "entity.main.bullet_shotgun", 95, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityShotgunBullet.class, ClimateCore.PACKAGE_BASE + ".main.bullet_shotgun",
+				95, ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityGhostBullet.class, ClimateCore.PACKAGE_BASE + "entity.main.bullet_ghost",
-				96, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityGhostBullet.class, ClimateCore.PACKAGE_BASE + ".main.bullet_ghost", 96,
+				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityDynamite.class, ClimateCore.PACKAGE_BASE + "entity.main.dynamite_red",
-				98, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityDynamite.class, ClimateCore.PACKAGE_BASE + ".main.dynamite_red", 98,
+				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityDynamiteBlue.class,
-				ClimateCore.PACKAGE_BASE + "entity.main.dynamite_blue", 99, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityDynamiteBlue.class, ClimateCore.PACKAGE_BASE + ".main.dynamite_blue", 99,
+				ClimateMain.instance, 128, 5, true);
 
 		FoodCommonProxy.loadEntity();
 		MachineCommonProxy.loadEntity();

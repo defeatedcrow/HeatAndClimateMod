@@ -58,7 +58,7 @@ public class EntityMagneticHover extends EntityScooter {
 		if (rider != null) {
 			rider.fallDistance = 0.0F;
 		}
-		if (this.status == Status.ON_TILE || this.status == Status.IN_TILE) {
+		if (this.onGround || this.status == Status.ON_TILE || this.status == Status.IN_TILE) {
 			if (this.motionY < 0F) {
 				this.motionY *= 0.5D;
 			}
@@ -69,14 +69,10 @@ public class EntityMagneticHover extends EntityScooter {
 			}
 			this.motionY += 0.02D;
 		} else {
-			if (this.onGround) {
-				this.motionY *= 0.5D;
-			} else {
-				if (this.motionY > 0F) {
-					this.motionY *= 0.75D;
-				}
-				this.motionY -= 0.01D;
+			if (this.motionY > 0F) {
+				this.motionY *= 0.75D;
 			}
+			this.motionY -= 0.01D;
 		}
 
 		if (motionY < -0.05D) {

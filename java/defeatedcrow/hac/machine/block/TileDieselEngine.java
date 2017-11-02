@@ -46,6 +46,8 @@ public class TileDieselEngine extends TileTorqueBase
 	protected int maxBurnTime = 1;
 	protected int currentClimate = DCHeatTier.NORMAL.getID();
 
+	private int lastInT = 0;
+
 	@Override
 	public float maxTorque() {
 		return 512.0F;
@@ -161,6 +163,24 @@ public class TileDieselEngine extends TileTorqueBase
 				}
 			}
 		}
+
+		// boolean flag = false;
+		// if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
+		// flag = true;
+		// lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
+		// }
+		//
+		// if (flag) {
+		// if (!this.hasWorldObj())
+		// return;
+		// @SuppressWarnings("unchecked")
+		// List<EntityPlayer> list = this.getWorld().playerEntities;
+		// for (EntityPlayer player : list) {
+		// if (player instanceof EntityPlayerMP) {
+		// ((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+		// }
+		// }
+		// }
 	}
 
 	@Override

@@ -58,6 +58,7 @@ public class TilePortalManager extends TileTorqueLockable
 
 	private int loadCount = 5;
 	private int lastInT = 0;
+	public float requireTorque = 30.0F;
 
 	@Override
 	public void updateTile() {
@@ -69,6 +70,7 @@ public class TilePortalManager extends TileTorqueLockable
 			loadCount--;
 		} else {
 			active = isActiveMachine();
+			reduceCoolant();
 		}
 
 		for (int i = 0; i < 6; i++) {
@@ -115,19 +117,22 @@ public class TilePortalManager extends TileTorqueLockable
 	}
 
 	public boolean isActiveMachine() {
-		if (this.prevTorque > 30.0F) {
-			if (current != null && current.getHeat() == DCHeatTier.ABSOLUTE)
-				return true;
-			else
-				return hasCoolant();
-		}
+		if (this.prevTorque > requireTorque)
+			return isSuitableClimate();
 		return false;
+	}
+
+	public void reduceCoolant() {
+		if (hasCoolant()) {
+			inputT.drain(10, true);
+		}
 	}
 
 	public boolean hasCoolant() {
 		if (inputT.getFluidType() != null)
-			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MachineInit.nitrogen))
-				return inputT.drain(10, true) != null;
+			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MachineInit.nitrogen)
+					|| inputT.getFluidType().getTemperature() < 100)
+				return inputT.drain(10, false) != null;
 		return false;
 	}
 

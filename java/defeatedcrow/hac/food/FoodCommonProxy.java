@@ -71,124 +71,124 @@ public class FoodCommonProxy {
 	}
 
 	public static void loadEntity() {
-		EntityRegistry.registerModEntity(RoundBreadEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.r_bread", 1,
+		EntityRegistry.registerModEntity(RoundBreadEntity.class, ClimateCore.PACKAGE_BASE + ".food.r_bread", 1,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SquareBreadEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.s_bread", 2,
-				ClimateMain.instance, 128, 5, true);
-
-		EntityRegistry.registerModEntity(FishStickEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.fish_stick", 3,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(YakitoriStickEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.yakitori_stick", 4, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(PorkStickEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pork_stick", 5,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(BeefStickEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.beef_stick", 6,
+		EntityRegistry.registerModEntity(SquareBreadEntity.class, ClimateCore.PACKAGE_BASE + ".food.s_bread", 2,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityTeaCupSilver.class, ClimateCore.PACKAGE_BASE + "entity.food.cup_silver",
-				7, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntityTeaCupWhite.class, ClimateCore.PACKAGE_BASE + "entity.food.cup_white", 8,
+		EntityRegistry.registerModEntity(FishStickEntity.class, ClimateCore.PACKAGE_BASE + ".food.fish_stick", 3,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(YakitoriStickEntity.class, ClimateCore.PACKAGE_BASE + ".food.yakitori_stick",
+				4, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PorkStickEntity.class, ClimateCore.PACKAGE_BASE + ".food.pork_stick", 5,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(BeefStickEntity.class, ClimateCore.PACKAGE_BASE + ".food.beef_stick", 6,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(AppleTartEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.tart_apple", 9,
+		EntityRegistry.registerModEntity(EntityTeaCupSilver.class, ClimateCore.PACKAGE_BASE + ".food.cup_silver", 7,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(LemonTartEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.tart_lemon", 10,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SpinachQuicheEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.quiche_spinach", 11, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(PotatoQuicheEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.quiche_potato", 12, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SugarPieEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pie_sugar", 13,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(MeatPieEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pie_meat", 14,
+		EntityRegistry.registerModEntity(EntityTeaCupWhite.class, ClimateCore.PACKAGE_BASE + ".food.cup_white", 8,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(ToastBreadEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.toast", 15,
+		EntityRegistry.registerModEntity(AppleTartEntity.class, ClimateCore.PACKAGE_BASE + ".food.tart_apple", 9,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EntitySandwich.class, ClimateCore.PACKAGE_BASE + "entity.food.sandwich_apple",
-				16, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(EggSandwichEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.sandwich_egg",
-				17, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(LemonSandwichEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.sandwich_lemon", 18, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SaladSandwichEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.sandwich_salad", 19, ClimateMain.instance, 128, 5, true);
-
-		EntityRegistry.registerModEntity(EntityRiceBowl.class, ClimateCore.PACKAGE_BASE + "entity.food.rice_bowl", 20,
+		EntityRegistry.registerModEntity(LemonTartEntity.class, ClimateCore.PACKAGE_BASE + ".food.tart_lemon", 10,
 				ClimateMain.instance, 128, 5, true);
-
-		EntityRegistry.registerModEntity(EmptyPlateEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.empty_steakplate", 21, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(BeefPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.plate_beef", 22,
+		EntityRegistry.registerModEntity(SpinachQuicheEntity.class, ClimateCore.PACKAGE_BASE + ".food.quiche_spinach",
+				11, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PotatoQuicheEntity.class, ClimateCore.PACKAGE_BASE + ".food.quiche_potato", 12,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(PorkPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.plate_pork", 23,
+		EntityRegistry.registerModEntity(SugarPieEntity.class, ClimateCore.PACKAGE_BASE + ".food.pie_sugar", 13,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(ChickenPlateEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.plate_chicken", 24, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(FishPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.plate_fish", 25,
-				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(PotatoPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.plate_potato",
-				26, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SoupPlateEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.soup_tomato",
-				27, ClimateMain.instance, 128, 5, true);
-
-		EntityRegistry.registerModEntity(ChocolatePieEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.pie_chocolate", 28, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(FruitPieEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pie_fruit", 29,
+		EntityRegistry.registerModEntity(MeatPieEntity.class, ClimateCore.PACKAGE_BASE + ".food.pie_meat", 14,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityTumbler.class, ClimateCore.PACKAGE_BASE + "entity.food.tumbler", 30,
+		EntityRegistry.registerModEntity(ToastBreadEntity.class, ClimateCore.PACKAGE_BASE + ".food.toast", 15,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntitySandwich.class, ClimateCore.PACKAGE_BASE + ".food.sandwich_apple", 16,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EggSandwichEntity.class, ClimateCore.PACKAGE_BASE + ".food.sandwich_egg", 17,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(LemonSandwichEntity.class, ClimateCore.PACKAGE_BASE + ".food.sandwich_lemon",
+				18, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SaladSandwichEntity.class, ClimateCore.PACKAGE_BASE + ".food.sandwich_salad",
+				19, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(EntityRiceBowl.class, ClimateCore.PACKAGE_BASE + ".food.rice_bowl", 20,
 				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityRiceMushroom.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.rice_mushroom", 31, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EmptyPlateEntity.class, ClimateCore.PACKAGE_BASE + ".food.empty_steakplate",
+				21, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(BeefPlateEntity.class, ClimateCore.PACKAGE_BASE + ".food.plate_beef", 22,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PorkPlateEntity.class, ClimateCore.PACKAGE_BASE + ".food.plate_pork", 23,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(ChickenPlateEntity.class, ClimateCore.PACKAGE_BASE + ".food.plate_chicken", 24,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(FishPlateEntity.class, ClimateCore.PACKAGE_BASE + ".food.plate_fish", 25,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PotatoPlateEntity.class, ClimateCore.PACKAGE_BASE + ".food.plate_potato", 26,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SoupPlateEntity.class, ClimateCore.PACKAGE_BASE + ".food.soup_tomato", 27,
+				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(ClubSandwichSEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.clubsand_square", 32, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(ClubSandwichREntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.clubsand_round", 33, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(ChocolatePieEntity.class, ClimateCore.PACKAGE_BASE + ".food.pie_chocolate", 28,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(FruitPieEntity.class, ClimateCore.PACKAGE_BASE + ".food.pie_fruit", 29,
+				ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(StewVegiEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_vegi", 34,
+		EntityRegistry.registerModEntity(EntityTumbler.class, ClimateCore.PACKAGE_BASE + ".food.tumbler", 30,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewEggEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_egg", 35,
+
+		EntityRegistry.registerModEntity(EntityRiceMushroom.class, ClimateCore.PACKAGE_BASE + ".food.rice_mushroom", 31,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewTomatoEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_tomato",
-				36, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewCongeeEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_congee",
-				37, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewPumpukinEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.stew_pumpkin", 38, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewBorschtEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_borscht",
-				39, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewMushroomEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.stew_mushroom", 40, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewPurpleEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_purple",
-				41, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(MuttonStickEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.mutton_stick",
-				42, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SquidStickEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.squid_stick",
-				43, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(MooncakeEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.moon_cake", 44,
+
+		EntityRegistry.registerModEntity(ClubSandwichSEntity.class, ClimateCore.PACKAGE_BASE + ".food.clubsand_square",
+				32, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(ClubSandwichREntity.class, ClimateCore.PACKAGE_BASE + ".food.clubsand_round",
+				33, ClimateMain.instance, 128, 5, true);
+
+		EntityRegistry.registerModEntity(StewVegiEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_vegi", 34,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewLotusrootEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.stew_lotusroot", 45, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(StewSquidEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.stew_squid", 46,
+		EntityRegistry.registerModEntity(StewEggEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_egg", 35,
 				ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(PizzaTomatoEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.pizza_tomato",
-				47, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SaladGreenEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.salad_green",
-				48, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SaladLotusrootEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.salad_lotusroot", 49, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(SaladPotatoEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.salad_potato",
-				50, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(CakeButterEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.cake_butter",
-				51, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(CakeChocolateEntity.class,
-				ClimateCore.PACKAGE_BASE + "entity.food.cake_chocolate", 52, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(CakeCoffeeEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.cake_coffee",
-				53, ClimateMain.instance, 128, 5, true);
-		EntityRegistry.registerModEntity(CakeLemonEntity.class, ClimateCore.PACKAGE_BASE + "entity.food.cake_lemon", 54,
+		EntityRegistry.registerModEntity(StewTomatoEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_tomato", 36,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewCongeeEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_congee", 37,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewPumpukinEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_pumpkin", 38,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewBorschtEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_borscht", 39,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewMushroomEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_mushroom", 40,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewPurpleEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_purple", 41,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(MuttonStickEntity.class, ClimateCore.PACKAGE_BASE + ".food.mutton_stick", 42,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SquidStickEntity.class, ClimateCore.PACKAGE_BASE + ".food.squid_stick", 43,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(MooncakeEntity.class, ClimateCore.PACKAGE_BASE + ".food.moon_cake", 44,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewLotusrootEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_lotusroot",
+				45, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(StewSquidEntity.class, ClimateCore.PACKAGE_BASE + ".food.stew_squid", 46,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(PizzaTomatoEntity.class, ClimateCore.PACKAGE_BASE + ".food.pizza_tomato", 47,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SaladGreenEntity.class, ClimateCore.PACKAGE_BASE + ".food.salad_green", 48,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SaladLotusrootEntity.class, ClimateCore.PACKAGE_BASE + ".food.salad_lotusroot",
+				49, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(SaladPotatoEntity.class, ClimateCore.PACKAGE_BASE + ".food.salad_potato", 50,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(CakeButterEntity.class, ClimateCore.PACKAGE_BASE + ".food.cake_butter", 51,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(CakeChocolateEntity.class, ClimateCore.PACKAGE_BASE + ".food.cake_chocolate",
+				52, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(CakeCoffeeEntity.class, ClimateCore.PACKAGE_BASE + ".food.cake_coffee", 53,
+				ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(CakeLemonEntity.class, ClimateCore.PACKAGE_BASE + ".food.cake_lemon", 54,
 				ClimateMain.instance, 128, 5, true);
 	}
 

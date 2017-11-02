@@ -100,14 +100,14 @@ public class MachineCommonProxy {
 	}
 
 	public static void loadEntity() {
-		EntityRegistry.registerModEntity(EntityMinecartMotor.class,
-				ClimateCore.PACKAGE_BASE + "entity.machine.motor_cart", 80, ClimateMain.instance, 128, 5, true);
+		EntityRegistry.registerModEntity(EntityMinecartMotor.class, ClimateCore.PACKAGE_BASE + ".machine.motor_cart",
+				80, ClimateMain.instance, 128, 5, true);
 
-		EntityRegistry.registerModEntity(EntityScooter.class, ClimateCore.PACKAGE_BASE + "entity.machine.motor_scooter",
-				81, ClimateMain.instance, 128, 1, true);
+		EntityRegistry.registerModEntity(EntityScooter.class, ClimateCore.PACKAGE_BASE + ".machine.motor_scooter", 81,
+				ClimateMain.instance, 128, 1, true);
 
 		EntityRegistry.registerModEntity(EntityMagneticHover.class,
-				ClimateCore.PACKAGE_BASE + "entity.machine.magnetic_hover", 82, ClimateMain.instance, 128, 1, true);
+				ClimateCore.PACKAGE_BASE + ".machine.magnetic_hover", 82, ClimateMain.instance, 128, 1, true);
 
 	}
 

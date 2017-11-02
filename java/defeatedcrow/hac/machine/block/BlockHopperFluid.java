@@ -121,10 +121,11 @@ public class BlockHopperFluid extends BlockContainer {
 			if (!world.isRemote && tile != null && tile instanceof TileHopperFluid) {
 				if (player != null && hand == EnumHand.MAIN_HAND) {
 					if (!DCUtil.isEmpty(heldItem)
-							&& !DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
-						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
-					} else {
+							&& DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
 						world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
+					} else {
+						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+
 					}
 				}
 			}

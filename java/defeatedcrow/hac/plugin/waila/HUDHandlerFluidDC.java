@@ -3,13 +3,10 @@ package defeatedcrow.hac.plugin.waila;
 import java.util.List;
 
 import defeatedcrow.hac.core.base.DCLockableTE;
-import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.base.DCTileEntity;
-import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.energy.TileTorqueLockable;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
-import defeatedcrow.hac.machine.block.BlockHopperFluid;
 import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
@@ -39,12 +36,8 @@ public class HUDHandlerFluidDC extends HUDHandlerBase {
 		if (!config.getConfig("dcs_climate.showfluid") || accessor.getBlock() == null)
 			return currenttip;
 
-		if (!BlockTorqueBase.class.isInstance(accessor.getBlock()) && !DCTileBlock.class.isInstance(accessor.getBlock())
-				&& !BlockHopperFluid.class.isInstance(accessor.getBlock()))
-			return currenttip;
-
 		if (accessor.getNBTData() != null && accessor.getNBTData().hasKey("DCTank")) {
-			NBTTagList list = accessor.getNBTData().getTagList("Tank", 10);
+			NBTTagList list = accessor.getNBTData().getTagList("DCTank", 10);
 			NBTTagCompound nbt2 = list.getCompoundTagAt(0);
 			if (!nbt2.hasKey("Empty")) {
 				FluidStack fluid = FluidStack.loadFluidStackFromNBT(nbt2);
