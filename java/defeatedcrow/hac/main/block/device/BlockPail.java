@@ -1,14 +1,12 @@
-package defeatedcrow.hac.machine.block;
+package defeatedcrow.hac.main.block.device;
 
 import java.util.Random;
 
-import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,21 +22,20 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockIBC extends DCTileBlock {
+public class BlockPail extends DCTileBlock {
 
-	public BlockIBC(String s) {
+	public BlockPail(String s) {
 		super(Material.CLAY, s, 0);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileIBC();
+		return new TilePail();
 	}
 
 	@Override
@@ -49,14 +46,14 @@ public class BlockIBC extends DCTileBlock {
 			if (hand == EnumHand.MAIN_HAND) {
 
 				TileEntity tile = world.getTileEntity(pos);
-				if (!world.isRemote && tile instanceof TileIBC) {
+				if (!world.isRemote && tile instanceof TilePail) {
 					if (!DCUtil.isEmpty(heldItem)) {
 						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
 							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
 									2.0F);
 						}
 					} else {
-						FluidStack f = ((TileIBC) tile).inputT.getFluid();
+						FluidStack f = ((TilePail) tile).inputT.getFluid();
 						if (f != null) {
 							String name = f.getLocalizedName();
 							int i = f.amount;
@@ -98,31 +95,6 @@ public class BlockIBC extends DCTileBlock {
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
-	public static void changeLitState(World world, BlockPos pos, boolean f) {
-		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() == MachineInit.IBC) {
-			if (f) {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 3);
-			} else {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 3);
-			}
-		}
-	}
-
-	public static boolean isLit(IBlockAccess world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() != MachineInit.IBC)
-			return false;
-		int meta = state.getBlock().getMetaFromState(state) & 3;
-		return meta > 0;
-	}
-
-	@Override
-	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		int meta = this.getMetaFromState(state) & 3;
-		return meta == 1 ? 15 : 0;
-	}
-
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
@@ -139,8 +111,8 @@ public class BlockIBC extends DCTileBlock {
 	}
 
 	private int calcRedstone(TileEntity te) {
-		if (te != null && te instanceof TileIBC) {
-			TileIBC ibc = (TileIBC) te;
+		if (te != null && te instanceof TilePail) {
+			TilePail ibc = (TilePail) te;
 			DCTank tank = ibc.inputT;
 			float amo = tank.getFluidAmount() * 15.0F / tank.getCapacity();
 			int lit = MathHelper.floor(amo);

@@ -17,6 +17,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
+@Deprecated
 public class WorldGenAltOres implements IWorldGenerator {
 
 	private static int sedPar = WorldGenConfig.depositGen[0];

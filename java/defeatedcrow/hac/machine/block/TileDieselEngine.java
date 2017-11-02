@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -11,12 +12,14 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
+import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.main.api.ISidedTankChecker;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,83 +27,34 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory {
+public class TileDieselEngine extends TileTorqueBase
+		implements ITorqueProvider, ITorqueReceiver, ITagGetter, IInventory, ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
-	// process
-	public int currentBurnTime = 0;
-	public int maxBurnTime = -1;
+	protected int currentBurnTime = 0;
+	protected int maxBurnTime = 1;
 	protected int currentClimate = DCHeatTier.NORMAL.getID();
 
-	private int lastTier = 0;
-	private int lastBurn = 0;
-
 	@Override
-	public void updateTile() {
-		super.updateTile();
-
-		if (!world.isRemote) {
-			// 水の取り込み
-			this.checkSideTank();
-
-			// HeatTier更新
-			DCHeatTier heat = ClimateAPI.calculator.getAverageTemp(world, pos);
-			currentClimate = heat.getID();
-
-			IBlockState state = world.getBlockState(getPos());
-			if (!DCState.getBool(state, DCState.POWERED)) {
-
-				// 燃焼処理
-				boolean f = false;
-				int red = this.getRequiredWater(heat);
-				if (red > 0) {
-					// 水を減らす
-					FluidStack flu = inputT.getFluid();
-					if (flu != null && flu.getFluid() == FluidRegistry.WATER && inputT.getFluidAmount() > red) {
-						inputT.drain(red, true);
-						f = true;
-					}
-				}
-
-				if (f) {
-					this.currentBurnTime = 1;
-					world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.15F, 0.7F);
-				} else {
-					this.currentBurnTime = 0;
-				}
-
-				if (currentBurnTime > 0) {
-					this.currentTorque += this.getProvideTorque(heat);
-				}
-
-				// provider
-				for (EnumFacing side : getOutputSide()) {
-					this.provideTorque(world, getPos().offset(side), side, false);
-				}
-
-				// DCLogger.debugLog("current torque: " + currentTorque);
-				// DCLogger.debugLog("sent torque: " + prevTorque);
-				// DCLogger.debugLog("current burntime: " + currentBurnTime);
-				// DCLogger.debugLog("current temp: " + currentClimate);
-
-			}
-		}
-
+	public float maxTorque() {
+		return 512.0F;
 	}
 
 	@Override
-	protected void onServerUpdate() {}
+	public float getGearTier() {
+		return 64.0F;
+	}
 
 	public boolean isActive() {
 		return this.currentBurnTime > 0;
@@ -123,71 +77,59 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	@Override
-	public float maxTorque() {
-		return 128.0F;
-	}
+	public void updateTile() {
+		currentClimate = ClimateAPI.calculator.getAverageTemp(world, getPos()).getID();
 
-	@Override
-	public float getGearTier() {
-		return 16.0F;
+		if (!getWorld().isRemote) {
+
+			this.checkSideTank();
+
+			IBlockState state = world.getBlockState(pos);
+			if (!DCState.getBool(state, DCState.POWERED) && isSuitableClimate()) {
+
+				if (this.currentBurnTime == 0) {
+					FluidStack f = inputT.getFluid();
+					if (f != null && f.getFluid() != null && inputT.getFluidAmount() >= 10) {
+						int i = getBurnTime(f.getFluid());
+						if (i > 0) {
+							this.currentBurnTime = i;
+							this.maxBurnTime = i;
+							inputT.drain(10, true);
+
+							this.markDirty();
+						}
+					}
+				} else if (this.currentBurnTime > 0) {
+					this.currentBurnTime--;
+					this.currentTorque += 128.0F;
+					if (currentTorque > maxTorque()) {
+						currentTorque = maxTorque();
+					}
+				} else {
+					this.currentBurnTime = 0;
+				}
+			}
+
+			// provider
+			for (EnumFacing side : getOutputSide()) {
+				this.provideTorque(world, getPos().offset(side), side, false);
+			}
+		}
+
+		super.updateTile();
 	}
 
 	/* 燃焼判定 */
 
-	public int getRequiredWater(DCHeatTier tier) {
-		switch (tier) {
-		case OVEN:
-			return 1;
-		case KILN:
-			return 10;
-		case SMELTING:
-			return 20;
-		case UHT:
-			return 50;
-		default:
-			return 0;
-		}
-	}
-
-	public int getBurnTime() {
-		FluidStack f = inputT.getFluid();
-		if (f != null && f.getFluid() != null && inputT.getFluidAmount() > 0) {
-			if (f.getFluid() == FluidRegistry.WATER) {
-				DCHeatTier tier = DCHeatTier.getTypeByID(currentClimate);
-				switch (tier) {
-				case OVEN:
-					return 20;
-				case KILN:
-					return 4;
-				case SMELTING:
-					return 2;
-				case UHT:
-					return 1;
-				default:
-					return 0;
-				}
-			}
-		}
-		return 0;
-	}
-
-	public float getProvideTorque(DCHeatTier tier) {
-		switch (tier) {
-		case OVEN:
-			return 8.0F;
-		case KILN:
-			return 32.0F;
-		case SMELTING:
-			return 64.0F;
-		case UHT:
-			return 128.0F;
-		default:
-			return 0F;
-		}
+	public static int getBurnTime(Fluid fluid) {
+		String s = fluid.getName();
+		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
+		return burn;
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
-	private void checkSideTank() {
+	@Override
+	public void checkSideTank() {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			int cap = inputT.getCapacity();
 			int amo = inputT.getFluidAmount();
@@ -198,13 +140,13 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null
+			if (tile != null && !(tile instanceof ISidedTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
 				if (tank != null && tank.getTankProperties() != null) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
-					if (target != null && target.getFluid() != null && target.getFluid() == FluidRegistry.WATER) {
+					if (target != null && target.getFluid() != null && getBurnTime(target.getFluid()) > 0) {
 						int i = Math.min(mov, cap - amo);
 						FluidStack ret = tank.drain(i, false);
 						int fill = inputT.fill(ret, false);
@@ -219,22 +161,6 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 				}
 			}
 		}
-	}
-
-	protected void onProcess() {
-
-	}
-
-	/* ITorqueProvider */
-
-	@Override
-	public boolean isInputSide(EnumFacing side) {
-		return false;
-	}
-
-	@Override
-	public boolean isOutputSide(EnumFacing side) {
-		return getOutputSide().contains(side);
 	}
 
 	@Override
@@ -252,7 +178,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	@Override
 	public boolean canProvideTorque(World world, BlockPos outputPos, EnumFacing output) {
 		TileEntity tile = world.getTileEntity(outputPos);
-		float amo = this.getCurrentTorque();
+		float amo = getAmount();
 		if (tile != null && tile instanceof ITorqueReceiver && amo > 0F)
 			return ((ITorqueReceiver) tile).canReceiveTorque(amo, output.getOpposite());
 		return false;
@@ -267,6 +193,51 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			return ret;
 		}
 		return 0;
+	}
+
+	@Override
+	public boolean isInputSide(EnumFacing side) {
+		return side == getBaseSide().getOpposite();
+	}
+
+	@Override
+	public boolean isOutputSide(EnumFacing side) {
+		return getOutputSide().contains(side);
+	}
+
+	@Override
+	public boolean canReceiveTorque(float amount, EnumFacing side) {
+		IBlockState state = world.getBlockState(pos);
+		if (DCState.getBool(state, DCState.POWERED))
+			return false;
+		if (this.currentTorque >= this.maxTorque())
+			return false;
+		return this.isInputSide(side);
+	}
+
+	@Override
+	public float receiveTorque(float amount, EnumFacing side, boolean sim) {
+		float f = maxTorque() - currentTorque;
+		float ret = Math.min(amount, f);
+		if (!sim) {
+			currentTorque += ret;
+		}
+		return ret;
+	}
+
+	/* Climateチェック */
+	public boolean isSuitableClimate() {
+		return currentClimate > DCHeatTier.FROSTBITE.getID();
+	}
+
+	public List<String> climateSuitableMassage() {
+		List<String> list = new ArrayList<String>();
+		if (isSuitableClimate()) {
+			list.add(I18n.translateToLocal("dcs.gui.message.suitableclimate"));
+		} else {
+			list.add(I18n.translateToLocal("dcs.gui.message.pottery.toocold"));
+		}
+		return list;
 	}
 
 	/* NBT, Packet */
@@ -361,11 +332,11 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 		this.readFromNBT(pkt.getNbtCompound());
 	}
 
-	/* fieldがIInventoryにしかないとかいうクソ仕様のため、GUI表示用にダミーInventoryをつける。インベントリは実際無い */
+	/* GUI表示用にダミーInventoryをつける。インベントリは実際無い */
 
 	@Override
 	public String getName() {
-		return "dcs.gui.device.boiler_turbine";
+		return "dcs.gui.device.diesel_engine";
 	}
 
 	@Override
@@ -380,17 +351,17 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		return ItemStack.EMPTY;
+		return null;
 	}
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		return ItemStack.EMPTY;
+		return null;
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		return ItemStack.EMPTY;
+		return null;
 	}
 
 	@Override
@@ -403,8 +374,10 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
-				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+		if (getWorld().getTileEntity(this.pos) != this || player == null)
+			return false;
+		else
+			return Math.sqrt(player.getDistanceSq(pos)) < 256D;
 	}
 
 	@Override
@@ -426,10 +399,8 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 		case 1:
 			return this.maxBurnTime;
 		case 2:
-			return this.currentClimate;
-		case 3:
 			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		case 4:
+		case 3:
 			return this.inputT.getFluidAmount();
 		default:
 			return 0;
@@ -446,12 +417,9 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			this.maxBurnTime = value;
 			break;
 		case 2:
-			this.currentClimate = value;
-			break;
-		case 3:
 			inputT.setFluidById(value);
 			break;
-		case 4:
+		case 3:
 			this.inputT.setAmount(value);
 			break;
 		default:
@@ -461,7 +429,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public int getFieldCount() {
-		return 5;
+		return 4;
 	}
 
 	@Override

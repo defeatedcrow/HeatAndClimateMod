@@ -4,25 +4,22 @@ import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.machine.MachineInit;
-import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -43,10 +40,8 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
-			ItemStack heldItem = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {
-				TileEntity tile = world.getTileEntity(pos);
-			}
+			TileEntity tile = world.getTileEntity(pos);
+			ItemStack held = player.getHeldItem(hand);
 		}
 		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
@@ -71,40 +66,36 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 	}
 
 	// 見た目の更新
-	public static void changeLitState(World world, BlockPos pos, boolean f) {
-		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() == MachineInit.boilerTurbine) {
-			if (f) {
-				world.setBlockState(pos, state.withProperty(DCState.POWERED, true), 3);
-				world.notifyNeighborsOfStateChange(pos, MachineInit.redbox, true);
-			} else {
-				world.setBlockState(pos, state.withProperty(DCState.POWERED, false), 3);
-				world.notifyNeighborsOfStateChange(pos, MachineInit.redbox, true);
+	@Override
+	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+		if (!world.isRemote) {
+			boolean flag = world.isBlockPowered(pos);
+
+			if (flag || block.getDefaultState().canProvidePower()) {
+				if (flag != state.getValue(DCState.POWERED).booleanValue()) {
+					world.setBlockState(pos, state.withProperty(DCState.POWERED, Boolean.valueOf(flag)), 2);
+					float f = state.getValue(DCState.POWERED).booleanValue() ? 0.6F : 0.5F;
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
+							f);
+				}
 			}
 		}
-	}
-
-	public static boolean isLit(IBlockAccess world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() != MachineInit.boilerTurbine)
-			return false;
-		return DCState.getBool(state, DCState.POWERED);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (state != null && DCState.getBool(state, DCState.POWERED)) {
+		if (state != null && !DCState.getBool(state, DCState.POWERED)) {
 			for (int i = 0; i < 5; i++) {
-				EnumFacing face = DCState.getSide(state, DCState.SIDE).getFacing().getOpposite().rotateY();
-				double x = pos.getX() + 0.5D;
-				double y = pos.getY() + 0.75D;
-				double z = pos.getZ() + 0.5D;
-				double dx = rand.nextDouble() * face.getFrontOffsetX() * 0.05D;
-				double dy = rand.nextDouble() * 0.5D;
-				double dz = rand.nextDouble() * face.getFrontOffsetZ() * 0.05D;
-				Particle cloud = new ParticleCloudDC.Factory().createParticle(0, world, x, y, z, dx, dy, dz, null);
-				FMLClientHandler.instance().getClient().effectRenderer.addEffect(cloud);
+				EnumFacing face = DCState.getSide(state, DCState.SIDE).getFacing();
+				double x = pos.getX() + 0.5D - face.getFrontOffsetX() * 0.25D - face.getFrontOffsetZ() * 0.25D;
+				double y = pos.getY() + 1.0D;
+				double z = pos.getZ() + 0.5D - face.getFrontOffsetZ() * 0.25D - face.getFrontOffsetX() * 0.25D;
+				double dx = 0.0D;
+				double dy = 0.0D;
+				double dz = 0.0D;
+
+				world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
 			}
 		}
 	}

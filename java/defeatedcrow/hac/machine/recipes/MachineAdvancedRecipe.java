@@ -191,6 +191,12 @@ public class MachineAdvancedRecipe {
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.platingChrome, 1, 9), new Object[] {
 				"X  ", "YYY", "Z Z", 'X', "string", 'Y', "plankWood", 'Z', "ingotIron"
 		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dieselEngine, 1, 0), new Object[] {
+				"WXW", "WYW", "ZZZ", 'X', new ItemStack(MachineInit.IBC, 1, 0), 'Y',
+				new ItemStack(MachineInit.machimeMaterials, 1, 3), 'W', new ItemStack(Blocks.PISTON, 1, 0), 'Z',
+				"ingotSUS"
+		});
 	}
 
 }

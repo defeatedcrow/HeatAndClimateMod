@@ -775,6 +775,7 @@ tile.dcs_device_shaft_s_steel_0.name=Steel Shaft(I)
 tile.dcs_device_shaft_l_steel_0.name=Steel Shaft(L)
 tile.dcs_device_shaft_ta_steel_0.name=Steel Shaft(T-A)
 tile.dcs_device_shaft_tb_steel_0.name=Steel Shaft(T-B)
+tile.dcs_device_diesel_engine_0.name=Diesel Engine
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -1017,6 +1018,7 @@ dcs.gui.device.reactor=Chemical Reactor
 dcs.gui.device.spinning=Spinning Machine
 dcs.gui.device.portalmanager=Transfer Portal
 dcs.gui.device.gas_burner=Gas Burner
+dcs.gui.device.diesel_engine=Diesel Engine
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold

@@ -8,6 +8,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
+/**
+ * HaC鉱脈は生成座標決定に再現性がある<br>
+ * OreGenPosはチャンク毎にどの位置にどの鉱脈が生成されるかを扱う
+ */
 public class OreGenPos {
 
 	private static int sedP = WorldGenConfig.depositGen[0];
