@@ -995,6 +995,7 @@ dcs.gui.device.reactor=化学反応槽
 dcs.gui.device.spinning=紡績機
 dcs.gui.device.portalmanager=転送ポータル
 dcs.gui.device.gas_burner=ガスバーナー
+dcs.gui.device.diesel_engine=ディーゼル機関
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます

@@ -1018,6 +1018,7 @@ dcs.gui.device.reactor=Chemical Reactor
 dcs.gui.device.spinning=Spinning Machine
 dcs.gui.device.portalmanager=Transfer Portal
 dcs.gui.device.gas_burner=Gas Burner
+dcs.gui.device.diesel_engine=Diesel Engine
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold

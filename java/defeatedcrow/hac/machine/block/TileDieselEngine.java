@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +38,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileDieselEngine extends TileTorqueBase
-		implements ITorqueProvider, ITorqueReceiver, ITagGetter, IInventory {
+		implements ITorqueProvider, ITorqueReceiver, ITagGetter, IInventory, ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -127,7 +128,8 @@ public class TileDieselEngine extends TileTorqueBase
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
-	private void checkSideTank() {
+	@Override
+	public void checkSideTank() {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			int cap = inputT.getCapacity();
 			int amo = inputT.getFluidAmount();
@@ -138,7 +140,7 @@ public class TileDieselEngine extends TileTorqueBase
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof TileDieselEngine)
+			if (tile != null && !(tile instanceof ISidedTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());

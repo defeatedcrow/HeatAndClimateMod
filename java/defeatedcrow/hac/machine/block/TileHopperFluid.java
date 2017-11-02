@@ -307,9 +307,9 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			return false;
 
 		IFluidHandlerItem dummy = null;
-		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
-		if (in.getTagCompound() != null) {
-			in2.setTagCompound(in.getTagCompound().copy());
+		ItemStack in2 = in.copy();
+		if (in2.getCount() > 1) {
+			in2.setCount(1);
 		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
@@ -359,9 +359,9 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			return false;
 
 		IFluidHandlerItem dummy = null;
-		ItemStack in2 = new ItemStack(in.getItem(), 1, in.getItemDamage());
-		if (in.getTagCompound() != null) {
-			in2.setTagCompound(in.getTagCompound().copy());
+		ItemStack in2 = in.copy();
+		if (in2.getCount() > 1) {
+			in2.setCount(1);
 		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);

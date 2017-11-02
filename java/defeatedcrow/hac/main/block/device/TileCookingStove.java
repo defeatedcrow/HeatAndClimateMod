@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +27,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileCookingStove extends DCTileEntity implements ITagGetter, IInventory {
+public class TileCookingStove extends DCTileEntity implements ITagGetter, IInventory, ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -71,7 +72,8 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
-	private void checkSideTank() {
+	@Override
+	public void checkSideTank() {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			int cap = inputT.getCapacity();
 			int amo = inputT.getFluidAmount();
@@ -82,7 +84,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof TileCookingStove)
+			if (tile != null && !(tile instanceof ISidedTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
