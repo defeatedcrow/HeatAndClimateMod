@@ -19,6 +19,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -34,12 +35,13 @@ public class AdvancedHUDEvent {
 
 	private int climate = 0;
 	private int count = 20;
+	private int biomeID = 0;
 
 	public static boolean enable = MainCoreConfig.enableAdvHUD;
 
-	public static boolean hasAcv = ClimateCore.isDebug;
+	public static boolean hasAcv = true;
 
-	public static boolean active = true;
+	public static boolean active = false;
 
 	@SubscribeEvent
 	public void doRender(RenderGameOverlayEvent.Post event) {
@@ -74,6 +76,8 @@ public class AdvancedHUDEvent {
 								if (id != null) {
 									climate = id.getClimateInt();
 								}
+								Biome b = world.provider.getBiomeForCoords(pos);
+								biomeID = b.getIdForBiome(b);
 							}
 						}
 
@@ -106,6 +110,11 @@ public class AdvancedHUDEvent {
 						String temp = clm.getHeat().toString();
 						String hum = clm.getHumidity().toString();
 						String air = clm.getAirflow().toString();
+
+						Biome biome = Biome.getBiomeForId(biomeID);
+						if (biome != null) {
+							fr.drawString(biome.getBiomeName(), x + 15, y + 5, 0xFFFFFF, true);
+						}
 
 						fr.drawString(temp, x + 10, y + 15, clm.getHeat().getColorInt(), true);
 						fr.drawString(hum, x + 10, y + 25, clm.getHumidity().getColorInt(), true);

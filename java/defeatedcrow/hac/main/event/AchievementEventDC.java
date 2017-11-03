@@ -45,7 +45,7 @@ public class AchievementEventDC {
 							prev += p;
 						}
 					}
-					if (prev >= 3.0F) {
+					if (prev >= 2.0F) {
 						AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_ARMOR);
 					}
 				}
