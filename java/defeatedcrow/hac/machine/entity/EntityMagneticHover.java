@@ -5,7 +5,6 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.player.EntityPlayer;
@@ -127,7 +126,7 @@ public class EntityMagneticHover extends EntityScooter {
 		AxisAlignedBB aabb = this.getEntityBoundingBox().grow(1.0D);
 		int i = MathHelper.floor(aabb.minX);
 		int j = MathHelper.ceil(aabb.maxX);
-		int k = MathHelper.floor(aabb.minY - 1.0D);
+		int k = MathHelper.floor(aabb.minY);
 		int l = MathHelper.ceil(aabb.minY);
 		int i1 = MathHelper.floor(aabb.minZ);
 		int j1 = MathHelper.ceil(aabb.maxZ);
@@ -143,7 +142,7 @@ public class EntityMagneticHover extends EntityScooter {
 						mpos.setPos(k1, l1, i2);
 						IBlockState state = this.world.getBlockState(mpos);
 
-						if (state.getMaterial() == Material.WATER) {
+						if (state.getMaterial().isLiquid()) {
 							double d = state.getBoundingBox(world, mpos).maxY + mpos.getY();
 							if (posY < d + 1D) {
 								flag2 = true;
@@ -171,7 +170,7 @@ public class EntityMagneticHover extends EntityScooter {
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (!this.world.isRemote && !this.isDead && !this.isBeingRidden()) {
 			if (this.isEntityInvulnerable(source)) {
-				this.setDead();
+				return false;
 			} else if (source instanceof EntityDamageSource && !source.isProjectile()
 					&& ((EntityDamageSource) source).getTrueSource() instanceof EntityPlayer) {
 				ItemStack itemstack = new ItemStack(MachineInit.magneticHover, 1, 0);
