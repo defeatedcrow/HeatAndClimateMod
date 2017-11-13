@@ -14,6 +14,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -164,6 +165,17 @@ public class BlockOres extends DCSimpleBlock {
 			ret.add(add);
 		}
 		return ret;
+	}
+
+	@Override
+	public void getDrops(NonNullList<ItemStack> list, IBlockAccess world, BlockPos pos, IBlockState state,
+			int fortune) {
+		super.getDrops(list, world, pos, state, fortune);
+		List<ItemStack> ret = this.getDrops(world, pos, state, fortune);
+
+		if (ret != null && !ret.isEmpty()) {
+			list.addAll(ret);
+		}
 	}
 
 	@Override

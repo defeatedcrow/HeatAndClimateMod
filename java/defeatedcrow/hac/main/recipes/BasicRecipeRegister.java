@@ -76,6 +76,15 @@ public class BasicRecipeRegister {
 				new ItemStack(Blocks.SAND, 1, 32767), new ItemStack(Items.DYE, 1, 15), "dustAsh", "dustPresscake",
 		});
 
+		// ウール
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 1, 0), new Object[] {
+				"XXX", "XXX", "XXX", 'X', "dustChrysotile"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 1, 0), new Object[] {
+				"XXX", "XXX", "XXX", 'X', "cropCotton"
+		});
+
 		// アルミ関連
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Items.BUCKET, 1, 0), new Object[] {
 				"X X", " X ", 'X', "ingotAluminium"

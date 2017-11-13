@@ -210,9 +210,9 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.dustBags, ClimateCore.PACKAGE_BASE + "_cont_bags", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 3);
 
-		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 8);
+		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 9);
 		DCMaterialReg.registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 8);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 9);
 	}
 
 	static void regJsonBlock() {
@@ -550,11 +550,11 @@ public class MainMaterialRegister {
 		MainInit.gems = new ItemGems(18).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		DCMaterialReg.registerItem(MainInit.gems, ClimateCore.PACKAGE_BASE + "_gem", ClimateMain.MOD_ID);
 
-		MainInit.miscDust = new ItemMiscDust(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
+		MainInit.miscDust = new ItemMiscDust(11).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		DCMaterialReg.registerItem(MainInit.miscDust, ClimateCore.PACKAGE_BASE + "_miscdust", ClimateMain.MOD_ID);
 
 		// tools
-		MainInit.materials = new ItemMiscs(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
+		MainInit.materials = new ItemMiscs(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
 		DCMaterialReg.registerItem(MainInit.materials, ClimateCore.PACKAGE_BASE + "_material", ClimateMain.MOD_ID);
 
 		MainInit.stoneYagen = new ItemStoneYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_stone");

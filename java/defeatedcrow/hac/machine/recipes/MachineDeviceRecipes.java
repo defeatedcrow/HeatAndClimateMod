@@ -164,6 +164,8 @@ public class MachineDeviceRecipes {
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 9), "gemApatite");
 
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 11), "gemSerpentine");
+
 			// ingot粉砕
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 0), "ingotCopper");
 
@@ -256,6 +258,7 @@ public class MachineDeviceRecipes {
 					new ItemStack(Blocks.HAY_BLOCK, 1, 0));
 			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 2, 1), 1,
 					new ItemStack(MainInit.cropBasket, 1, 5));
+			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 1, 8), 4, "dustAsbest");
 		}
 	}
 
