@@ -85,6 +85,7 @@ item.dcs_miscdust_sulfur.name=硫黄の粉
 item.dcs_miscdust_garnet.name=ガーネットの粉
 item.dcs_miscdust_borax.name=ホウ砂
 item.dcs_miscdust_apatite.name=アパタイトの粉
+item.dcs_miscdust_chrysotile.name=白石綿
 item.dcs_expgem_exp.name=EXPジェム
 
 item.dcs_material_string_linen.name=亜麻糸
@@ -95,6 +96,8 @@ item.dcs_material_spindle_wood.name=木の回転子
 item.dcs_material_spindle_brass.name=真鍮の回転子
 item.dcs_material_spindle_alloy.name=合金の回転子
 item.dcs_material_spindle_steel.name=鋼の回転子
+item.dcs_material_string_chrysotile.name=石綿糸
+item.dcs_material_cloth_chrysotile.name=石綿布
 item.dcs_mechanical_induction_motor.name=誘導モーター部品
 item.dcs_mechanical_alternator.name=オルタネーター
 item.dcs_mechanical_enginepart.name=エンジン部品
@@ -552,6 +555,7 @@ tile.dcs_cont_basket_cotton.name=綿花のバスケット
 tile.dcs_cont_basket_lemon.name=レモンのバスケット
 tile.dcs_cont_basket_olive.name=オリーブのバスケット
 tile.dcs_cont_basket_tea.name=茶葉のバスケット
+tile.dcs_cont_basket_lotus.name=蓮の実のバスケット
 
 tile.dcs_build_selenite_normal.name=セレナイトガラス
 tile.dcs_build_selenite_light.name=セレナイトランプガラス

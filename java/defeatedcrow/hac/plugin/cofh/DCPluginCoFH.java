@@ -2,7 +2,6 @@ package defeatedcrow.hac.plugin.cofh;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.climate.recipe.ReactorRecipe;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
@@ -40,7 +39,7 @@ public class DCPluginCoFH {
 			loadDCRecipes();
 		}
 
-		if (Loader.isModLoaded("thermalexpansion") && ClimateCore.isDebug) {
+		if (Loader.isModLoaded("thermalexpansion")) {
 			DCRecipeCoFH.loadFuels();
 			DCRecipeCoFH.loadRecipes();
 		}

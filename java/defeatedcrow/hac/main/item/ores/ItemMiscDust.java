@@ -26,7 +26,8 @@ public class ItemMiscDust extends DCItem {
 			"sulfur",
 			"garnet",
 			"apatite",
-			"borax"
+			"borax",
+			"chrysotile"
 	};
 
 	public ItemMiscDust(int max) {

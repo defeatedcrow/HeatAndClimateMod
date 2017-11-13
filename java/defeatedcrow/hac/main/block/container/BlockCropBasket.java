@@ -3,6 +3,9 @@ package defeatedcrow.hac.main.block.container;
 import java.util.ArrayList;
 import java.util.List;
 
+import defeatedcrow.hac.api.placeable.IRapidCollectables;
+import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -11,9 +14,6 @@ import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.placeable.IRapidCollectables;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
-import defeatedcrow.hac.core.base.ITexturePath;
 
 public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
@@ -35,15 +35,18 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 				"cotton",
 				"lemon",
 				"olive",
-				"tea" };
+				"tea",
+				"lotus"
+		};
 		return name;
 	}
 
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 15;
-		if (m > 8)
-			m = 8;
+		if (m > maxMeta) {
+			m = maxMeta;
+		}
 		String b = "dcs_climate:blocks/cont/basket";
 		switch (side) {
 		case 0:
@@ -79,8 +82,9 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 15;
-		if (m > 8)
-			m = 8;
+		if (m > maxMeta) {
+			m = maxMeta;
+		}
 		String b = "dcs_climate:items/block/cont/";
 		return b + "basket_" + getNameSuffix()[m];
 	}

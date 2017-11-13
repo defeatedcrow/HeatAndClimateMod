@@ -93,6 +93,7 @@ item.dcs_miscdust_sulfur.name=Sulfur Dust
 item.dcs_miscdust_garnet.name=Garnet Sand
 item.dcs_miscdust_borax.name=Borax
 item.dcs_miscdust_apatite.name=Apatite Dust
+item.dcs_miscdust_chrysotile.name=Chrysotile
 item.dcs_expgem_exp.name=EXP Gem
 
 ## materials
@@ -104,6 +105,8 @@ item.dcs_material_spindle_wood.name=Wooden Spindle
 item.dcs_material_spindle_brass.name=Brass Spindle
 item.dcs_material_spindle_alloy.name=Alloy Spindle
 item.dcs_material_spindle_steel.name=Steel Spindle
+item.dcs_material_string_chrysotile.name=Chrysotile String
+item.dcs_material_cloth_chrysotile.name=Chrysotile Cloth
 item.dcs_mechanical_induction_motor.name=Induction motor
 item.dcs_mechanical_alternator.name=Alternator
 item.dcs_mechanical_enginepart.name=Engine Part
@@ -573,6 +576,7 @@ tile.dcs_cont_basket_cotton.name=Cotton Flower Basket
 tile.dcs_cont_basket_lemon.name=Lemon Basket
 tile.dcs_cont_basket_olive.name=Olive Basket
 tile.dcs_cont_basket_tea.name=Tea Leaves Basket
+tile.dcs_cont_basket_lotus.name=Lotus Seed Basket
 
 ## building blocks
 tile.dcs_build_selenite_normal.name=Selenite Glass

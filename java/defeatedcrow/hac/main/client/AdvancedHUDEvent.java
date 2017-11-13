@@ -105,7 +105,7 @@ public class AdvancedHUDEvent {
 						int offsetY = MainCoreConfig.iconY;
 						int x = offsetX;
 						int y = event.getResolution().getScaledHeight() + offsetY;
-						drawTexturedModalRect(x, y, iw, 0, iw + 16, 64);
+						drawTexturedModalRect(x, y, iw, 0, 16, 64);
 
 						String temp = clm.getHeat().toString();
 						String hum = clm.getHumidity().toString();

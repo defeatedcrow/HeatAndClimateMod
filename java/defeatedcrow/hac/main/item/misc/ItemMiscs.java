@@ -15,7 +15,9 @@ public class ItemMiscs extends DCItem {
 			"spindle_wood",
 			"spindle_brass",
 			"spindle_alloy",
-			"spindle_steel"
+			"spindle_steel",
+			"string_chrysotile",
+			"cloth_chrysotile"
 	};
 
 	public ItemMiscs(int max) {

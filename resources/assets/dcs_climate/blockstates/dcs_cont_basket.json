@@ -9,7 +9,7 @@
         "type=6": { "model": "dcs_climate:cont/dcs_cont_basket6" },
         "type=7": { "model": "dcs_climate:cont/dcs_cont_basket7" },
         "type=8": { "model": "dcs_climate:cont/dcs_cont_basket8" },
-        "type=9": { "model": "dcs_climate:cont/dcs_cont_basket4" },
+        "type=9": { "model": "dcs_climate:cont/dcs_cont_basket9" },
         "type=10": { "model": "dcs_climate:cont/dcs_cont_basket4" },
         "type=11": { "model": "dcs_climate:cont/dcs_cont_basket4" },
         "type=12": { "model": "dcs_climate:cont/dcs_cont_basket4" },

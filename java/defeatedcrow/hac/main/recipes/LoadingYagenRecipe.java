@@ -12,147 +12,188 @@ public class LoadingYagenRecipe {
 	public static void add(RecipeResourcesMain res) {
 		// ore -> dust
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 0), new Object[] {
-				"toolNormalYagen", "oreCopper"
+				"toolNormalYagen",
+				"oreCopper"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 1), new Object[] {
-				"toolNormalYagen", "oreZinc"
+				"toolNormalYagen",
+				"oreZinc"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 2), new Object[] {
-				"toolNormalYagen", "oreNickel"
+				"toolNormalYagen",
+				"oreNickel"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 3), new Object[] {
-				"toolNormalYagen", "oreSilver"
+				"toolNormalYagen",
+				"oreSilver"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 4), new Object[] {
-				"toolNormalYagen", "oreGold"
+				"toolNormalYagen",
+				"oreGold"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 5), new Object[] {
-				"toolNormalYagen", "oreIron"
+				"toolNormalYagen",
+				"oreIron"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 7), new Object[] {
-				"toolNormalYagen", "oreMagnetite"
+				"toolNormalYagen",
+				"oreMagnetite"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 8), new Object[] {
-				"toolNormalYagen", "oreTin"
+				"toolNormalYagen",
+				"oreTin"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 2), new Object[] {
-				"toolNormalYagen", "oreLime"
+				"toolNormalYagen",
+				"oreLime"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 12), new Object[] {
-				"toolNormalYagen", "oreBismuth"
+				"toolNormalYagen",
+				"oreBismuth"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 8), new Object[] {
-				"toolNormalYagen", "oreSalt"
+				"toolNormalYagen",
+				"oreSalt"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 9), new Object[] {
-				"toolNormalYagen", "oreNiter"
+				"toolNormalYagen",
+				"oreNiter"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 10), new Object[] {
-				"toolNormalYagen", "oreSulfur"
+				"toolNormalYagen",
+				"oreSulfur"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 11), new Object[] {
-				"toolNormalYagen", "oreSchorl"
+				"toolNormalYagen",
+				"oreSchorl"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 12), new Object[] {
-				"toolNormalYagen", "oreSerpentine"
+				"toolNormalYagen",
+				"oreSerpentine"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 14), new Object[] {
-				"toolNormalYagen", "oreGarnet"
+				"toolNormalYagen",
+				"oreGarnet"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 16), new Object[] {
-				"toolNormalYagen", "oreAlminium"
+				"toolNormalYagen",
+				"oreAlminium"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 16), new Object[] {
-				"toolNormalYagen", "oreAlminum"
+				"toolNormalYagen",
+				"oreAlminum"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gems, 1, 15), new Object[] {
-				"toolNormalYagen", "oreTitanium"
+				"toolNormalYagen",
+				"oreTitanium"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 9), new Object[] {
-				"toolNormalYagen", "oreApatite"
+				"toolNormalYagen",
+				"oreApatite"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 6), new Object[] {
-				"toolNormalYagen", "gemNiter"
+				"toolNormalYagen",
+				"gemNiter"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 7), new Object[] {
-				"toolNormalYagen", "gemSulfur"
+				"toolNormalYagen",
+				"gemSulfur"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
-				"toolNormalYagen", "gemChalcedony"
+				"toolNormalYagen",
+				"gemChalcedony"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
-				"toolNormalYagen", "gemQuartz"
+				"toolNormalYagen",
+				"gemQuartz"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 8), new Object[] {
-				"toolNormalYagen", "gemGarnet"
+				"toolNormalYagen",
+				"gemGarnet"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 11), new Object[] {
-				"toolNormalYagen", "gemBauxite"
+				"toolNormalYagen",
+				"gemBauxite"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 12), new Object[] {
-				"toolNormalYagen", "gemBismuth"
+				"toolNormalYagen",
+				"gemBismuth"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 1, 10), new Object[] {
-				"toolNormalYagen", "gemRutile"
+				"toolNormalYagen",
+				"gemRutile"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 9), new Object[] {
-				"toolNormalYagen", "gemApatite"
+				"toolNormalYagen",
+				"gemApatite"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 11), new Object[] {
+				"toolNormalYagen",
+				"gemSerpentine"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
-				"toolNormalYagen", new ItemStack(Items.COAL, 1, 0)
+				"toolNormalYagen",
+				new ItemStack(Items.COAL, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Items.DYE, 5, 15), new Object[] {
-				"toolNormalYagen", new ItemStack(Items.BONE, 1, 0)
+				"toolNormalYagen",
+				new ItemStack(Items.BONE, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Items.BLAZE_POWDER, 3, 0), new Object[] {
-				"toolNormalYagen", new ItemStack(Items.BLAZE_ROD, 1, 0)
+				"toolNormalYagen",
+				new ItemStack(Items.BLAZE_ROD, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.foodMaterials, 1, 0), new Object[] {
-				"toolNormalYagen", "gemSalt"
+				"toolNormalYagen",
+				"gemSalt"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.foodMaterials, 1, 1), new Object[] {
-				"toolNormalYagen", "cropWheat"
+				"toolNormalYagen",
+				"cropWheat"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Items.BLAZE_POWDER, 1, 0), new Object[] {
-				"toolNormalYagen", new ItemStack(Blocks.MAGMA, 1, 0)
+				"toolNormalYagen",
+				new ItemStack(Blocks.MAGMA, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 2, 3), new Object[] {
-				"toolNormalYagen", "logWood"
+				"toolNormalYagen",
+				"logWood"
 		});
 	}
 

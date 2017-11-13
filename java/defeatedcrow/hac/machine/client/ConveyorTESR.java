@@ -31,9 +31,8 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 	@Override
 	public void renderTileEntityAt(TileTorqueBase te, double x, double y, double z, float partialTicks,
 			int destroyStage) {
-		if (te == null) {
+		if (te == null)
 			return;
-		}
 		ItemStack in = null;
 		ItemStack out = null;
 		float moveF = 0F;
@@ -55,9 +54,8 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 			face = tile.getBaseSide();
 		}
 		moveF = fF;
-		moveF /= 8.0F;
 		moveB = fB;
-		moveB /= 8.0F;
+		moveB += 8.0F;
 		float rot = 0F;
 		if (face == EnumFacing.SOUTH || face == EnumFacing.NORTH) {
 			rot = 90F;
@@ -65,8 +63,8 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 
 		if (in != null) {
 
-			float offX = face.getFrontOffsetX() * (moveF - 1.0F) * 0.5F;
-			float offZ = face.getFrontOffsetZ() * (moveF - 1.0F) * 0.5F;
+			float offX = face.getFrontOffsetX() * moveF * 0.0625F;
+			float offZ = face.getFrontOffsetZ() * moveF * 0.0625F;
 
 			GlStateManager.pushMatrix();
 			GlStateManager.enableRescaleNormal();
@@ -85,8 +83,8 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 
 		if (out != null) {
 
-			float offX = face.getFrontOffsetX() * moveB * 0.5F;
-			float offZ = face.getFrontOffsetZ() * moveB * 0.5F;
+			float offX = face.getFrontOffsetX() * moveB * 0.0625F;
+			float offZ = face.getFrontOffsetZ() * moveB * 0.0625F;
 
 			GlStateManager.pushMatrix();
 			GlStateManager.enableRescaleNormal();
