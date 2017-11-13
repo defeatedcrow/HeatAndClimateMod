@@ -61,6 +61,14 @@ public class LoadingToolRecipe {
 				" X ", "XYX", " X ", 'Y', "gearIron", 'X', "ingotSteel"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.materials, 1, 8), new Object[] {
+				"XXX", "XYX", "XXX", 'X', "dustChrysotile", 'Y', "stickWood"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.materials, 1, 9), new Object[] {
+				" X ", "X X", " X ", 'X', new ItemStack(MainInit.materials, 1, 8)
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
 				" X ", "XYX", "XXX", 'X', new ItemStack(Blocks.COBBLESTONE, 1, 0), 'Y',
 				new ItemStack(MainInit.materials, 1, 4)

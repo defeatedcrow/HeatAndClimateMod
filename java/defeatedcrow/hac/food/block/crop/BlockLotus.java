@@ -248,6 +248,11 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	}
 
 	@Override
+	public IBlockState setGroundState(IBlockState state) {
+		return state.withProperty(DCState.STAGE8, 0);
+	}
+
+	@Override
 	public boolean isSuitableClimate(IClimate climate, IBlockState thisState) {
 		if (climate == null || thisState == null || thisState.getBlock() != this)
 			return false;

@@ -17,7 +17,8 @@ public class ItemMiscDust extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"coal", "crystal", "lime", "wood", "presscake", "ash", "niter", "sulfur", "garnet", "apatite", "borax"
+			"coal", "crystal", "lime", "wood", "presscake", "ash", "niter", "sulfur", "garnet", "apatite", "borax",
+			"chrysotile"
 	};
 
 	public ItemMiscDust(int max) {
@@ -37,6 +38,12 @@ public class ItemMiscDust extends DCItem {
 	 * 3: 木
 	 * 4: 油かす
 	 * 5: 灰
+	 * 6: 硝石
+	 * 7: 硫黄
+	 * 8: ガーネット
+	 * 9: アパタイト
+	 * 10: ホウ砂
+	 * 11: 石綿
 	 */
 	@Override
 	public String[] getNameSuffix() {

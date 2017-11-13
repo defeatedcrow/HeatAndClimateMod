@@ -168,6 +168,8 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustGarnet", new ItemStack(MainInit.miscDust, 1, 8));
 		OreDictionary.registerOre("dustApatite", new ItemStack(MainInit.miscDust, 1, 9));
 		OreDictionary.registerOre("dustBorax", new ItemStack(MainInit.miscDust, 1, 10));
+		OreDictionary.registerOre("dustChrysotile", new ItemStack(MainInit.miscDust, 1, 11));
+		OreDictionary.registerOre("dustAsbest", new ItemStack(MainInit.miscDust, 1, 11));
 
 		// material
 		OreDictionary.registerOre("itemString", new ItemStack(MainInit.materials, 1, 0));
@@ -183,6 +185,9 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gearAlloy", new ItemStack(MainInit.materials, 1, 6));
 		OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.materials, 1, 6));
 		OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.materials, 1, 7));
+		OreDictionary.registerOre("string", new ItemStack(MainInit.materials, 1, 8));
+		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.materials, 1, 9));
+		OreDictionary.registerOre("itemAsbestCloth", new ItemStack(MainInit.materials, 1, 9));
 		OreDictionary.registerOre("blockGlass", new ItemStack(MainInit.syntheticBlock, 1, 32767));
 
 		// tool

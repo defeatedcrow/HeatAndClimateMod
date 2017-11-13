@@ -127,6 +127,10 @@ public class LoadingYagenRecipe {
 				"toolNormalYagen", "gemApatite"
 		});
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 11), new Object[] {
+				"toolNormalYagen", "gemSerpentine"
+		});
+
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
 				"toolNormalYagen", new ItemStack(Items.COAL, 1, 0)
 		});

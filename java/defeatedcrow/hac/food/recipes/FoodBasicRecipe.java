@@ -375,6 +375,14 @@ public class FoodBasicRecipe {
 			});
 		}
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cropBasket, 1, 9), new Object[] {
+				"XXX", "X X", "XXX", 'X', "cropLotusSeed"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.crops, 8, 10), new Object[] {
+				new ItemStack(MainInit.cropBasket, 1, 9)
+		});
+
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.paperPack, 4, 1), new Object[] {
 				new ItemStack(FoodInit.paperPack, 1, 0), new ItemStack(FoodInit.paperPack, 1, 0),
 				new ItemStack(FoodInit.paperPack, 1, 0), new ItemStack(FoodInit.paperPack, 1, 0),

@@ -8,14 +8,8 @@ public class ItemMiscs extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"string_linen",
-			"string_cotton",
-			"cloth_linen",
-			"cloth_cotton",
-			"spindle_wood",
-			"spindle_brass",
-			"spindle_alloy",
-			"spindle_steel"
+			"string_linen", "string_cotton", "cloth_linen", "cloth_cotton", "spindle_wood", "spindle_brass",
+			"spindle_alloy", "spindle_steel", "string_chrysotile", "cloth_chrysotile"
 	};
 
 	public ItemMiscs(int max) {

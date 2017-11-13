@@ -61,22 +61,21 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	protected void onServerUpdate() {
 		boolean flag = false;
 		boolean flag2 = false;
+		prevMoveB = moveB;
+		prevMoveF = moveF;
 		// Bがさき
 		if (DCUtil.isEmpty(inv.getStackInSlot(1))) {
 			moveB = 0;
-			prevMoveB = 0;
 
 			if (!DCUtil.isEmpty(inv.getStackInSlot(0)) && moveF >= MAX_MOVE) {
 				inv.setInventorySlotContents(1, inv.getStackInSlot(0).copy());
 				onSmelting();
 				inv.removeStackFromSlot(0);
 				moveF = 0;
-				prevMoveF = 0;
 				this.markDirty();
 			}
 		} else {
 			if (moveB < MAX_MOVE) {
-				prevMoveB = moveB;
 				moveB++;
 			} else {
 				// 送り出し
@@ -87,17 +86,14 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		// つぎにF
 		if (DCUtil.isEmpty(inv.getStackInSlot(0))) {
 			moveF = 0;
-			prevMoveF = 0;
 
 			// 吸引処理
 			insertItem();
 		} else {
 
 			if (moveF < MAX_MOVE) {
-				prevMoveF = moveF;
 				moveF++;
 			} else {
-				prevMoveF = MAX_MOVE;
 				moveF = MAX_MOVE;
 			}
 		}
@@ -243,8 +239,8 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		if (!DCUtil.isEmpty(inv.getStackInSlot(1)) && current != null) {
 			ItemStack target = inv.getStackInSlot(1).copy();
 			IClimateSmelting recipe = RecipeAPI.registerSmelting.getRecipe(current, target);
-			if (recipe != null) {
-				ItemStack ret = recipe.getOutput();
+			if (recipe != null && !DCUtil.isEmpty(recipe.getOutput())) {
+				ItemStack ret = recipe.getOutput().copy();
 				world.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D,
 						getPos().getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
 				inv.setInventorySlotContents(1, ret);
@@ -252,10 +248,11 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			} else if (current.getAirflow() == DCAirflow.TIGHT && current.getHeat().getID() > DCHeatTier.KILN.getID()) {
 				ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(inv.getStackInSlot(1));
 				if (!DCUtil.isEmpty(burnt)) {
+					ItemStack ret = burnt.copy();
 					world.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D,
 							getPos().getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F,
 							0.85F);
-					inv.setInventorySlotContents(1, burnt);
+					inv.setInventorySlotContents(1, ret);
 					// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
 				}
 			}
