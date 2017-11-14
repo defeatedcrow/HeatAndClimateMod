@@ -1,6 +1,5 @@
 package defeatedcrow.hac.main.block.ores;
 
-import java.util.List;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
@@ -144,8 +143,9 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+	public void getDrops(NonNullList<ItemStack> list, IBlockAccess world, BlockPos pos, IBlockState state,
+			int fortune) {
+		super.getDrops(list, world, pos, state, fortune);
 		int meta = this.getMetaFromState(state);
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
@@ -162,19 +162,7 @@ public class BlockOres extends DCSimpleBlock {
 		}
 
 		if (!DCUtil.isEmpty(add)) {
-			ret.add(add);
-		}
-		return ret;
-	}
-
-	@Override
-	public void getDrops(NonNullList<ItemStack> list, IBlockAccess world, BlockPos pos, IBlockState state,
-			int fortune) {
-		super.getDrops(list, world, pos, state, fortune);
-		List<ItemStack> ret = this.getDrops(world, pos, state, fortune);
-
-		if (ret != null && !ret.isEmpty()) {
-			list.addAll(ret);
+			list.add(add);
 		}
 	}
 
