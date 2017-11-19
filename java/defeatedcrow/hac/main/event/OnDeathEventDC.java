@@ -1,7 +1,10 @@
 package defeatedcrow.hac.main.event;
 
+import java.util.Map;
+
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
@@ -61,6 +64,7 @@ public class OnDeathEventDC {
 			if (!flag) {
 				if (player.getDisplayNameString().equals("defeatedcrow") || ClimateCore.isDebug) {
 					if (source.isFireDamage() || source == DamageSourceClimate.climateHeatDamage) {
+						DCLogger.infoLog("defeatedcrow dies.");
 						ItemStack chicken = new ItemStack(FoodInit.sticks, 1, 3);
 						EntityItem drop = new EntityItem(player.world, player.posX, player.posY, player.posZ, chicken);
 						player.world.spawnEntity(drop);
@@ -78,24 +82,43 @@ public class OnDeathEventDC {
 		if (living == null)
 			return;
 
-		/* Projectileでの一撃必殺 */
-		if (!living.world.isRemote && living.world.rand.nextBoolean()) {
-			if (living instanceof EntitySquid) {
-				if (source.getTrueSource() != null && source.getTrueSource() instanceof EntityPlayer) {
-					if (dam > living.getMaxHealth()) {
+		if (dam >= living.getMaxHealth()) {
+			/* Projectileでの一撃必殺 */
+			if (!living.world.isRemote && living.world.rand.nextBoolean()) {
+				if (living instanceof EntitySquid) {
+					if (source.getTrueSource() != null && source.getTrueSource() instanceof EntityPlayer) {
 						ItemStack squid = new ItemStack(FoodInit.meat, 1, 2);
 						EntityItem drop = new EntityItem(living.world, living.posX, living.posY, living.posZ, squid);
 						living.world.spawnEntity(drop);
 					}
-				}
-			} else if (living instanceof EntityAnimal) {
-				if (source.getTrueSource() != null && source.getTrueSource() instanceof EntityPlayer) {
-					if (dam > living.getMaxHealth()) {
+				} else if (living instanceof EntityAnimal) {
+					if (source.getTrueSource() != null && source.getTrueSource() instanceof EntityPlayer) {
 						ItemStack vis = new ItemStack(FoodInit.meat, 1, 0);
 						EntityItem drop = new EntityItem(living.world, living.posX, living.posY, living.posZ, vis);
 						living.world.spawnEntity(drop);
 					}
 				}
+			}
+		}
+
+		if (dam >= living.getHealth()) {
+			Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
+			boolean amu = false;
+			if (!map.isEmpty()) {
+				for (ItemStack item : map.values()) {
+					if (item.getItem() == MagicInit.amulet && item.getItemDamage() == 3) {
+						amu = true;
+					}
+				}
+			}
+
+			if (amu) {
+				DCLogger.infoLog("on amulet process");
+				living.fallDistance = 0.0F;
+				living.setHealth(living.getMaxHealth() * 0.5F);
+				living.world.playSound(null, living.getPosition(), Blocks.GLASS.getSoundType().getBreakSound(),
+						SoundCategory.PLAYERS, 1.0F, 0.75F);
+				event.setCanceled(true);
 			}
 		}
 	}

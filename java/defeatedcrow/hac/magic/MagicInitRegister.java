@@ -24,6 +24,7 @@ import defeatedcrow.hac.magic.block.ItemBlockMaceIce;
 import defeatedcrow.hac.magic.block.ItemBlockMaceLight;
 import defeatedcrow.hac.magic.block.ItemBlockMaceMoon;
 import defeatedcrow.hac.magic.block.ItemBlockMaceOcean;
+import defeatedcrow.hac.magic.item.ItemAmulet;
 import defeatedcrow.hac.magic.item.ItemEXPGem;
 import defeatedcrow.hac.magic.item.ItemMaceCore;
 import defeatedcrow.hac.magic.item.ItemMaceHandle;
@@ -72,6 +73,9 @@ public class MagicInitRegister {
 
 		MagicInit.expGem = new ItemEXPGem().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_expgem");
 		DCMaterialReg.registerItem(MagicInit.expGem, ClimateCore.PACKAGE_BASE + "_expgem", ClimateMain.MOD_ID);
+
+		MagicInit.amulet = new ItemAmulet(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_amulet");
+		DCMaterialReg.registerItem(MagicInit.amulet, ClimateCore.PACKAGE_BASE + "_jewel_amulet", ClimateMain.MOD_ID);
 	}
 
 	static void loadBlocks() {
@@ -145,6 +149,7 @@ public class MagicInitRegister {
 	static void loadCreativeTab() {
 		MagicInit.pendant.setCreativeTab(ClimateMain.tool);
 		MagicInit.badge.setCreativeTab(ClimateMain.tool);
+		MagicInit.amulet.setCreativeTab(ClimateMain.tool);
 
 		MagicInit.daggerSilver.setCreativeTab(ClimateMain.tool);
 		MagicInit.daggerMagic.setCreativeTab(ClimateMain.tool);

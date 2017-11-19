@@ -267,7 +267,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = tag1.getByte("Slot");
-			if (b0 >= 0 && b0 < this.getSizeInventory()) {
+			if (b0 >= 0 && b0 < display.getSizeInventory()) {
 				display.setInventorySlotContents(b0, new ItemStack(tag1));
 			}
 		}
@@ -285,11 +285,11 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		inv.writeToNBT(tag);
 
 		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < this.getSizeInventory(); ++i) {
-			if (!DCUtil.isEmpty(getStackInSlot(i))) {
+		for (int i = 0; i < display.getSizeInventory(); ++i) {
+			if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
 				NBTTagCompound tag1 = new NBTTagCompound();
 				tag1.setByte("Slot", (byte) i);
-				getStackInSlot(i).writeToNBT(tag1);
+				display.getStackInSlot(i).writeToNBT(tag1);
 				nbttaglist.appendTag(tag1);
 			}
 		}
@@ -308,11 +308,11 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		inv.writeToNBT(tag);
 
 		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < this.getSizeInventory(); ++i) {
-			if (!DCUtil.isEmpty(getStackInSlot(i))) {
+		for (int i = 0; i < display.getSizeInventory(); ++i) {
+			if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
 				NBTTagCompound tag1 = new NBTTagCompound();
 				tag1.setByte("Slot", (byte) i);
-				getStackInSlot(i).writeToNBT(tag1);
+				display.getStackInSlot(i).writeToNBT(tag1);
 				nbttaglist.appendTag(tag1);
 			}
 		}
@@ -331,7 +331,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 			NBTTagCompound tag1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = tag1.getByte("Slot");
-			if (b0 >= 0 && b0 < this.getSizeInventory()) {
+			if (b0 >= 0 && b0 < display.getSizeInventory()) {
 				display.setInventorySlotContents(b0, new ItemStack(tag1));
 			}
 		}
@@ -367,17 +367,17 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	protected int[] slotsBottom() {
 		return new int[] {
-				1
+				1, 11
 		};
 	};
 
 	protected int[] slotsSides() {
 		return new int[] {
-				1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+				1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
 		};
 	};
 
-	public DCInventory inv = new DCInventory(11);
+	public DCInventory inv = new DCInventory(12);
 	public DCInventory display = new DCInventory(9);
 
 	public List<ItemStack> getInputs() {
@@ -405,30 +405,56 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		ItemStack target = inv.getStackInSlot(slot + 2);
 		if (!DCUtil.isEmpty(target)) {
 			ItemStack ret = target.getItem().getContainerItem(target);
-			if (!DCUtil.isEmpty(ret)) {
-				ret.setCount(amo);
-				if (amo >= target.getCount()) {
-					inv.setInventorySlotContents(slot + 2, ret);
-				} else {
-					DCUtil.reduceStackSize(target, amo);
-					for (int i = 0; i < 9; i++) {
-						if (i == slot) {
-							continue;
-						}
-						int a = incrStackSize(i + 2, ret);
-						if (a < ret.getCount()) {
-							DCUtil.reduceStackSize(ret, a);
-						} else {
-							break;
-						}
-					}
-				}
-			} else {
+			if (DCUtil.isEmpty(ret)) {
 				if (target.getCount() <= amo) {
 					inv.setInventorySlotContents(slot + 2, ItemStack.EMPTY);
-					;
 				} else {
 					DCUtil.reduceStackSize(inv.getStackInSlot(slot + 2), amo);
+				}
+			}
+			ret.setCount(amo);
+
+			boolean b = target.getItem().isDamageable();
+			if (!DCUtil.isEmpty(ret) && !b) {
+				int red = 0;
+				if (this.getStackInSlot(11).isEmpty()) {
+					red = amo;
+					this.setInventorySlotContents(11, ret);
+				} else if (this.canIncrStack(ret, 11)) {
+					red = this.incrStackSize(11, ret);
+					if (red > 0) {
+						getStackInSlot(11).grow(red);
+					}
+				}
+				if (red > 0) {
+					DCUtil.reduceStackSize(target, red);
+					amo -= red;
+					if (red >= amo) {
+						ret = ItemStack.EMPTY;
+					} else {
+						ret.setCount(amo);
+					}
+				}
+			}
+
+			if (amo > 0) {
+				if (!DCUtil.isEmpty(ret)) {
+					if (amo >= target.getCount()) {
+						inv.setInventorySlotContents(slot + 2, ret);
+					} else {
+						DCUtil.reduceStackSize(target, amo);
+						for (int i = 0; i < 9; i++) {
+							if (i == slot) {
+								continue;
+							}
+							int a = incrStackSize(i + 2, ret);
+							if (a < ret.getCount()) {
+								DCUtil.reduceStackSize(ret, a);
+							} else {
+								break;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -456,32 +482,32 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	@Override
 	public int getSizeInventory() {
-		return 20;
+		return 21;
 	}
 
 	// インベントリ内の任意のスロットにあるアイテムを取得
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		if (i < 11)
+		if (i < 12)
 			return inv.getStackInSlot(i);
 		else
-			return display.getStackInSlot(i - 11);
+			return display.getStackInSlot(i - 12);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int i, int num) {
-		if (i < 11)
+		if (i < 12)
 			return inv.decrStackSize(i, num);
 		else
-			return display.decrStackSize(i - 11, num);
+			return display.decrStackSize(i - 12, num);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int i) {
-		if (i < 11)
+		if (i < 12)
 			return inv.removeStackFromSlot(i);
 		else
-			return display.removeStackFromSlot(i - 11);
+			return display.removeStackFromSlot(i - 12);
 	}
 
 	// インベントリ内のスロットにアイテムを入れる
@@ -490,10 +516,10 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		if (i < 0 || i >= this.getSizeInventory())
 			return;
 		else {
-			if (i < 11) {
+			if (i < 12) {
 				inv.setInventorySlotContents(i, stack);
 			} else {
-				display.setInventorySlotContents(i - 11, stack);
+				display.setInventorySlotContents(i - 12, stack);
 			}
 
 		}
@@ -526,7 +552,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if (i == 0)
 			return !DCUtil.isEmpty(stack) && stack.getItem() instanceof IPressMold;
-		else if (i == 1 || i > 10)
+		else if (i == 1 || i > 11)
 			return false;
 		else
 			return true;
@@ -557,7 +583,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < 20; ++i) {
+		for (int i = 0; i < 21; ++i) {
 			this.setInventorySlotContents(i, null);
 		}
 	}
@@ -588,7 +614,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 	// 隣接するホッパーにアイテムを送れるかどうか
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (index != 1)
+		if (index != 1 && index != 11)
 			return false;
 
 		return true;

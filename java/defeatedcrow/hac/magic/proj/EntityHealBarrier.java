@@ -4,8 +4,6 @@ import javax.annotation.Nullable;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -43,22 +41,20 @@ public class EntityHealBarrier extends EntityMobBarrier {
 
 			if (entity != null && entity instanceof EntityLivingBase) {
 				EntityLivingBase liv = (EntityLivingBase) entity;
-				if (liv instanceof EntityTameable || liv instanceof EntityPlayer || liv instanceof EntityHorse) {
-					if (!liv.isPotionActive(MobEffects.REGENERATION)) {
-						liv.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 0));
-					}
-					if (liv.isPotionActive(MobEffects.POISON)) {
-						liv.removePotionEffect(MobEffects.POISON);
-					}
-					if (liv.isPotionActive(MobEffects.WITHER)) {
-						liv.removePotionEffect(MobEffects.WITHER);
-					}
-					if (liv.isPotionActive(MobEffects.NAUSEA)) {
-						liv.removePotionEffect(MobEffects.NAUSEA);
-					}
-					if (liv.isPotionActive(MobEffects.BLINDNESS)) {
-						liv.removePotionEffect(MobEffects.BLINDNESS);
-					}
+				if (!liv.isPotionActive(MobEffects.REGENERATION)) {
+					liv.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 0));
+				}
+				if (liv.isPotionActive(MobEffects.POISON)) {
+					liv.removePotionEffect(MobEffects.POISON);
+				}
+				if (liv.isPotionActive(MobEffects.WITHER)) {
+					liv.removePotionEffect(MobEffects.WITHER);
+				}
+				if (liv.isPotionActive(MobEffects.NAUSEA)) {
+					liv.removePotionEffect(MobEffects.NAUSEA);
+				}
+				if (liv.isPotionActive(MobEffects.BLINDNESS)) {
+					liv.removePotionEffect(MobEffects.BLINDNESS);
 				}
 			}
 		} else {
