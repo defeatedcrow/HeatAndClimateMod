@@ -545,6 +545,76 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		}));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.amulet, 1, 0), new Object[] {
+				"XX",
+				"YZ",
+				"ZY",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemQuartz",
+				'Z',
+				"gemChalcedonyWhite"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.amulet, 1, 1), new Object[] {
+				"XX",
+				"YZ",
+				"WY",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemGarnet",
+				'Z',
+				"gemMalachite",
+				'W',
+				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.amulet, 1, 1), new Object[] {
+				"XX",
+				"YZ",
+				"WY",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemRuby",
+				'Z',
+				"gemMalachite",
+				'W',
+				"gemPeridot"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.amulet, 1, 2), new Object[] {
+				"XX",
+				"YZ",
+				"WY",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemSchorl",
+				'Z',
+				"gemSerpentine",
+				'W',
+				"dustIron"
+		}));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MagicInit.amulet, 1, 3), new Object[] {
+				"XX",
+				"YZ",
+				"WV",
+				'X',
+				"ingotSilver",
+				'Y',
+				"gemClam",
+				'Z',
+				"gemSapphire",
+				'W',
+				"gemCelestite",
+				'V',
+				"gemLapis"
+		}));
+
 		// elestial
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MagicInit.elestial, 1, 0), DCHeatTier.KILN, null, null,
 				false, new ItemStack(MainInit.gemBlock, 1, 8));

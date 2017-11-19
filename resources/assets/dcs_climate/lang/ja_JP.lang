@@ -378,6 +378,10 @@ item.dcs_jewel_badge_almandine.name=アルマンディンのバッジ
 item.dcs_jewel_badge_elestial.name=エレスチャルのバッジ
 item.dcs_jewel_badge_rutile.name=ルチルのバッジ
 item.dcs_jewel_badge_bismuth.name=ビスマスのバッジ
+item.dcs_jewel_amulet_crystal.name=水晶のアミュレット
+item.dcs_jewel_amulet_rose.name=旅人のアミュレット
+item.dcs_jewel_amulet_black.name=防衛のアミュレット
+item.dcs_jewel_amulet_star.name=夜空のアミュレット
 
 item.dcs_dagger_silver.name=銀の投げナイフ
 item.dcs_dagger_magic_0.name=宝石剣 (対空)
@@ -932,6 +936,10 @@ dcs.tip.dagger.12=単体:着弾点に雷を落とし、雷雲を呼ぶ
 dcs.tip.dagger.13=単体:着弾点にワープする
 dcs.tip.dagger.14=範囲:着弾点付近のダイヤブロックの数に応じて、スカルン鉱脈を召喚する
 dcs.tip.dagger.15=範囲:着弾点に風車小屋を生成する
+dcs.tip.amulet.0=浄化のお守り
+dcs.tip.amulet.1=旅のお守り
+dcs.tip.amulet.2=防衛のお守り
+dcs.tip.amulet.3=星空のお守り
 
 dcs.tip.shitirin.description=
 dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック
@@ -981,6 +989,10 @@ dcs.comment.badge.13=攻撃対象の敵を消去する
 dcs.comment.badge.14=スニーク中の近接攻撃が範囲攻撃になる
 dcs.comment.badge.15=Xキーで光のオーブを設置する
 dcs.comment.badge.16=Xキーで登録座標のブロックを遠隔使用する
+dcs.comment.amulet.0=悪性ポーション効果にかからなくなる
+dcs.comment.amulet.1=気候や地形から受けるダメージを軽減する
+dcs.comment.amulet.2=モブから受けるダメージを軽減し、与えるダメージを増加する
+dcs.comment.amulet.3=死亡するとその場で復活する
 
 dcs_climate.smelting=気候変化レシピ
 dcs_climate.recipe=気候クラフトレシピ

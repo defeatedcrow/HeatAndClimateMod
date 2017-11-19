@@ -392,6 +392,10 @@ item.dcs_jewel_badge_olivine.name=Olivine Badge
 item.dcs_jewel_badge_elestial.name=Elestial Badge
 item.dcs_jewel_badge_rutile.name=Rutile Badge
 item.dcs_jewel_badge_bismuth.name=Bismuth Badge
+item.dcs_jewel_amulet_crystal.name=Amulet of Crystal
+item.dcs_jewel_amulet_rose.name=Amulet of Journey
+item.dcs_jewel_amulet_black.name=Amulet of Guardian
+item.dcs_jewel_amulet_star.name=Amulet of Starry Sky
 
 tile.dcs_magicmace_light_0.name=Magical Mace (Light)
 tile.dcs_magicmace_ice_0.name=Magical Mace (Ice)
@@ -955,6 +959,10 @@ dcs.tip.dagger.12=(Area Effect) Summon Thunderbolt
 dcs.tip.dagger.13=(Unit Effect) Warp to the impact point
 dcs.tip.dagger.14=(Area Effect) Summon Skarn (require some diamond blocks near the impact point)
 dcs.tip.dagger.15=(Area Effect) Summon Windmill
+dcs.tip.amulet.0=Bad Potion Protection
+dcs.tip.amulet.1=Travel Safety
+dcs.tip.amulet.2=Combat
+dcs.tip.amulet.3=Immortality
 
 dcs.tip.shitirin.description=It's the japanese charcoal stove.
 dcs.tip.teapot=Right-click to this block with flavor items.
@@ -1004,6 +1012,10 @@ dcs.comment.badge.13=Delete the attack target enemy
 dcs.comment.badge.14=Expand the melee attack area when player is sneaking
 dcs.comment.badge.15=Place a light orb by charm key (default X)
 dcs.comment.badge.16=Use block remotely by charm key (default X)
+dcs.comment.amulet.0=Prevent bad potion effect
+dcs.comment.amulet.1=Prevent damage from climate or block
+dcs.comment.amulet.2=Reduce taken damage from mobs
+dcs.comment.amulet.3=Prevent from death
 
 dcs_climate.smelting=Climate Smelting
 dcs_climate.recipe=Climate Crafting

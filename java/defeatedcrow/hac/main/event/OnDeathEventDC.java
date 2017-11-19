@@ -1,7 +1,10 @@
 package defeatedcrow.hac.main.event;
 
+import java.util.Map;
+
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.entity.EntityLivingBase;
@@ -79,23 +82,42 @@ public class OnDeathEventDC {
 			return;
 
 		/* Projectileでの一撃必殺 */
-		if (!living.worldObj.isRemote && living.worldObj.rand.nextBoolean()) {
-			if (living instanceof EntitySquid) {
-				if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
-					if (dam > living.getMaxHealth()) {
+		if (dam > living.getMaxHealth()) {
+			if (!living.worldObj.isRemote && living.worldObj.rand.nextBoolean()) {
+				if (living instanceof EntitySquid) {
+					if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
+
 						ItemStack squid = new ItemStack(FoodInit.meat, 1, 2);
 						EntityItem drop = new EntityItem(living.worldObj, living.posX, living.posY, living.posZ, squid);
 						living.worldObj.spawnEntityInWorld(drop);
 					}
-				}
-			} else if (living instanceof EntityAnimal) {
-				if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
-					if (dam > living.getMaxHealth()) {
+				} else if (living instanceof EntityAnimal) {
+					if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
 						ItemStack vis = new ItemStack(FoodInit.meat, 1, 0);
 						EntityItem drop = new EntityItem(living.worldObj, living.posX, living.posY, living.posZ, vis);
 						living.worldObj.spawnEntityInWorld(drop);
 					}
 				}
+			}
+		}
+
+		if (dam >= living.getHealth()) {
+			Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
+			boolean amu = false;
+			if (!map.isEmpty()) {
+				for (ItemStack item : map.values()) {
+					if (item.getItem() == MagicInit.amulet && item.getItemDamage() == 3) {
+						amu = true;
+					}
+				}
+			}
+
+			if (amu) {
+				living.fallDistance = 0.0F;
+				living.setHealth(living.getMaxHealth() * 0.5F);
+				living.worldObj.playSound(null, living.getPosition(), Blocks.GLASS.getSoundType().getBreakSound(),
+						SoundCategory.PLAYERS, 1.0F, 0.75F);
+				event.setCanceled(true);
 			}
 		}
 	}
