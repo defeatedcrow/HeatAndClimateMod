@@ -36,8 +36,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 2;
 	public static final int MOD_MINOR = 0;
-	public static final int MOD_BUILD = 5;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.0.1,)";
+	public static final int MOD_BUILD = 6;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.0.4,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;

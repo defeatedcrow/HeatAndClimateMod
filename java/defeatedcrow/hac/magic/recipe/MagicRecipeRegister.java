@@ -238,6 +238,27 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 0), new Object[] {
+				"XX", "YZ", "ZY", 'X', "ingotSilver", 'Y', "gemQuartz", 'Z', "gemChalcedonyWhite"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 1), new Object[] {
+				"XX", "YZ", "WY", 'X', "ingotSilver", 'Y', "gemGarnet", 'Z', "gemMalachite", 'W', "gemPeridot"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 1), new Object[] {
+				"XX", "YZ", "WY", 'X', "ingotSilver", 'Y', "gemRuby", 'Z', "gemMalachite", 'W', "gemPeridot"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 2), new Object[] {
+				"XX", "YZ", "WY", 'X', "ingotSilver", 'Y', "gemSchorl", 'Z', "gemSerpentine", 'W', "dustIron"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 3), new Object[] {
+				"XX", "YZ", "WV", 'X', "ingotSilver", 'Y', "gemClam", 'Z', "gemSapphire", 'W', "gemCelestite", 'V',
+				"gemLapis"
+		});
+
 		// elestial
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MagicInit.elestial, 1, 0), DCHeatTier.KILN, null, null,
 				false, new ItemStack(MainInit.gemBlock, 1, 8));

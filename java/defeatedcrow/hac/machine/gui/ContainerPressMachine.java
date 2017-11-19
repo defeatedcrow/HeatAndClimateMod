@@ -26,13 +26,15 @@ public class ContainerPressMachine extends Container {
 
 		this.addSlotToContainer(new SlotOutput(tile, 1, 136, 24));
 
+		this.addSlotToContainer(new SlotOutput(tile, 11, 136, 44));
+
 		for (int c = 0; c < 9; ++c) {
 			this.addSlotToContainer(new Slot(tile, c + 2, 8 + c * 18, 75));
 		}
 
 		for (int a = 0; a < 3; ++a) {
 			for (int b = 0; b < 3; ++b) {
-				this.addSlotToContainer(new SlotDisplay(tile, b + a * 3 + 11, 44 + b * 18, 15 + a * 18));
+				this.addSlotToContainer(new SlotDisplay(tile, b + a * 3 + 12, 44 + b * 18, 15 + a * 18));
 			}
 		}
 
@@ -89,10 +91,10 @@ public class ContainerPressMachine extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < 12) {
-				if (!this.mergeItemStack(itemstack1, 20, 46, true))
+				if (!this.mergeItemStack(itemstack1, 21, 46, true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
-			} else if (index > 19) {
+			} else if (index > 21) {
 				if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
 					if (!this.mergeItemStack(itemstack1, 2, 11, false))
 						return ItemStack.EMPTY;

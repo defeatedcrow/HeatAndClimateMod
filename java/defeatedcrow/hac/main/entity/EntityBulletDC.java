@@ -223,6 +223,10 @@ public class EntityBulletDC extends Entity implements IProjectile {
 
 			if (raytraceresult != null) {
 				vec3d = new Vec3d(raytraceresult.hitVec.x, raytraceresult.hitVec.y, raytraceresult.hitVec.z);
+
+				if (raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK && !getIsGhost()) {
+					this.onHitBlock(raytraceresult);
+				}
 			}
 
 			List<Entity> list = this.findEntityOnPath(vec3d1, vec3d);
@@ -241,10 +245,10 @@ public class EntityBulletDC extends Entity implements IProjectile {
 							raytraceresult = null;
 						}
 					}
+				}
 
-					if (raytraceresult != null) {
-						this.onHit(raytraceresult);
-					}
+				if (raytraceresult != null) {
+					this.onHit(raytraceresult);
 				}
 			}
 
@@ -377,7 +381,11 @@ public class EntityBulletDC extends Entity implements IProjectile {
 					this.setDead();
 				}
 			}
-		} else if (!this.getIsGhost()) {
+		}
+	}
+
+	protected void onHitBlock(RayTraceResult raytraceResultIn) {
+		if (raytraceResultIn.typeOfHit == RayTraceResult.Type.BLOCK) {
 			BlockPos blockpos = raytraceResultIn.getBlockPos();
 			this.xTile = blockpos.getX();
 			this.yTile = blockpos.getY();

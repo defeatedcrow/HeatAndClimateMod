@@ -51,22 +51,24 @@ public class LivingMainEventDC {
 
 	public void onPlayerUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
-		if (entity != null && entity instanceof EntityPlayer && !entity.isRiding()) {
-			EntityPlayer player = (EntityPlayer) event.getEntity();
-			if (player.isPotionActive(MainInit.ocean) && player.isInWater()) {
-				// bird potion
-				player.setAir(300);
-			}
-			if (player.isPotionActive(MainInit.bird)) {
-				// bird potion
-				player.fallDistance = 0.0F;
-			}
-			if (MainCoreConfig.pendant_schorl) {
-				if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10))
-						&& player.isPotionActive(MobEffects.SPEED)) {
-					player.stepHeight = 1.0F;
-				} else {
-					player.stepHeight = 0.6F;
+		if (entity != null && !entity.isRiding()) {
+			if (entity instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) event.getEntity();
+				if (player.isPotionActive(MainInit.ocean) && player.isInWater()) {
+					// bird potion
+					player.setAir(300);
+				}
+				if (player.isPotionActive(MainInit.bird)) {
+					// bird potion
+					player.fallDistance = 0.0F;
+				}
+				if (MainCoreConfig.pendant_schorl) {
+					if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10))
+							&& player.isPotionActive(MobEffects.SPEED)) {
+						player.stepHeight = 1.0F;
+					} else {
+						player.stepHeight = 0.6F;
+					}
 				}
 			}
 		}

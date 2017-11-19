@@ -8,6 +8,7 @@ public class MagicInit {
 	// charms
 	public static Item pendant;
 	public static Item badge;
+	public static Item amulet;
 
 	public static Item daggerSilver;
 	public static Item daggerMagic;

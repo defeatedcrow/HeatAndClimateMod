@@ -296,6 +296,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	public boolean grow(World world, BlockPos pos, IBlockState state) {
 		if (state != null && state.getBlock() == this) {
 			int stage = state.getValue(DCState.STAGE8);
+			boolean black = state.getValue(BLACK);
 			boolean water = this.isInWater(world, pos);
 			if (water) {
 				if (stage < 7) {
@@ -311,8 +312,8 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 						// summer
 						next = stage + 1;
 					} else if (stage < 3 && season < 3) {
-						if (world.rand.nextInt(30) == 0) {
-							state.withProperty(BLACK, true);
+						if (world.rand.nextInt(50) == 0) {
+							black = true;
 						}
 						next = stage + 1;
 					} else if (stage > 1 && season == 3) {
@@ -320,7 +321,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 					}
 
 					if (next > stage) {
-						IBlockState newstate = state.withProperty(DCState.STAGE8, next);
+						IBlockState newstate = state.withProperty(DCState.STAGE8, next).withProperty(BLACK, black);
 						return world.setBlockState(pos, newstate, 2);
 					}
 				}
@@ -430,8 +431,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	public IBlockState getStateFromMeta(int meta) {
 		int i = meta & 7;
 		boolean j = meta > 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE8, i);
-		state.withProperty(BLACK, j);
+		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE8, i).withProperty(BLACK, j);
 		return state;
 	}
 
