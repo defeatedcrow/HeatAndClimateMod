@@ -18,6 +18,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -153,10 +154,16 @@ public class BlockOres2 extends DCSimpleBlock {
 
 		ItemStack add = ItemStack.EMPTY;
 		int par = 5 + fortune * 5;
-		if (rand.nextInt(50) < par) {
-			switch (meta) {
-			case 6:
+		if (rand.nextInt(100) < par) {
+			if (meta == 6)
 				add = new ItemStack(MainInit.gems, 1, 13);
+			else if (meta == 7) {
+				Biome biome = world.getBiome(pos);
+				if (biome.getRainfall() > 0.8F) {
+					add = new ItemStack(MainInit.gems, 1, 19);
+				} else {
+					add = new ItemStack(MainInit.gems, 1, 20);
+				}
 			}
 		}
 

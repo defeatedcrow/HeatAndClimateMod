@@ -52,6 +52,7 @@ public class FoodInit {
 	public static Block cropCoffee;
 	public static Block cropCotton;
 	public static Block cropLotus;
+	public static Block cropHerb;
 
 	public static Block leavesOlive;
 	public static Block leavesLemon;

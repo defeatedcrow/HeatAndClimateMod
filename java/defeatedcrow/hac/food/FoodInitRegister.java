@@ -11,6 +11,7 @@ import defeatedcrow.hac.food.block.BlockSteelPot;
 import defeatedcrow.hac.food.block.BlockTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockCoffee;
 import defeatedcrow.hac.food.block.crop.BlockCotton;
+import defeatedcrow.hac.food.block.crop.BlockHerb;
 import defeatedcrow.hac.food.block.crop.BlockLeavesLemon;
 import defeatedcrow.hac.food.block.crop.BlockLeavesOlive;
 import defeatedcrow.hac.food.block.crop.BlockLeavesTea;
@@ -128,6 +129,10 @@ public class FoodInitRegister {
 		FoodInit.cropLotus = new BlockLotus(ClimateCore.PACKAGE_BASE + "_crop_lotus", 15)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus");
 		DCMaterialReg.registerBlock(FoodInit.cropLotus, ClimateCore.PACKAGE_BASE + "_crop_lotus", ClimateMain.MOD_ID);
+
+		FoodInit.cropHerb = new BlockHerb(ClimateCore.PACKAGE_BASE + "_crop_herb");
+		DCMaterialReg.registerBlock(FoodInit.cropHerb, ClimateCore.PACKAGE_BASE + "_crop_herb", ClimateMain.MOD_ID);
+		ClimateMain.proxy.addCropBlock(FoodInit.cropHerb, "crop_herb", 3);
 	}
 
 	static void loadItems() {
@@ -135,7 +140,7 @@ public class FoodInitRegister {
 		FoodInit.crops = new ItemDCCrops(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
 		DCMaterialReg.registerItem(FoodInit.crops, ClimateCore.PACKAGE_BASE + "_food_crops", ClimateMain.MOD_ID);
 
-		FoodInit.seeds = new ItemDCSeeds(6).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_seeds");
+		FoodInit.seeds = new ItemDCSeeds(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_seeds");
 		DCMaterialReg.registerItem(FoodInit.seeds, ClimateCore.PACKAGE_BASE + "_food_seeds", ClimateMain.MOD_ID);
 
 		FoodInit.teaLeaves = new ItemTeaLeaves(2).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_leaves");
@@ -385,6 +390,7 @@ public class FoodInitRegister {
 		FoodInit.cropCoffee.setCreativeTab(ClimateMain.food);
 		FoodInit.cropCotton.setCreativeTab(ClimateMain.food);
 		FoodInit.cropLotus.setCreativeTab(ClimateMain.food);
+		FoodInit.cropHerb.setCreativeTab(ClimateMain.food);
 
 		FoodInit.leavesOlive.setCreativeTab(ClimateMain.food);
 		FoodInit.leavesLemon.setCreativeTab(ClimateMain.food);

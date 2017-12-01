@@ -51,10 +51,10 @@ public class MagicInitRegister {
 	}
 
 	static void loadItems() {
-		MagicInit.pendant = new ItemMagicalPendant(16).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_pendant");
+		MagicInit.pendant = new ItemMagicalPendant(18).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_pendant");
 		DCMaterialReg.registerItem(MagicInit.pendant, ClimateCore.PACKAGE_BASE + "_jewel_pendant", ClimateMain.MOD_ID);
 
-		MagicInit.badge = new ItemMagicalBadge(16).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_badge");
+		MagicInit.badge = new ItemMagicalBadge(18).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_badge");
 		DCMaterialReg.registerItem(MagicInit.badge, ClimateCore.PACKAGE_BASE + "_jewel_badge", ClimateMain.MOD_ID);
 
 		MagicInit.daggerSilver = new ItemSilverDagger().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dagger_silver");
@@ -74,7 +74,7 @@ public class MagicInitRegister {
 		MagicInit.expGem = new ItemEXPGem().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_expgem");
 		DCMaterialReg.registerItem(MagicInit.expGem, ClimateCore.PACKAGE_BASE + "_expgem", ClimateMain.MOD_ID);
 
-		MagicInit.amulet = new ItemAmulet(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_amulet");
+		MagicInit.amulet = new ItemAmulet(4).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_amulet");
 		DCMaterialReg.registerItem(MagicInit.amulet, ClimateCore.PACKAGE_BASE + "_jewel_amulet", ClimateMain.MOD_ID);
 	}
 

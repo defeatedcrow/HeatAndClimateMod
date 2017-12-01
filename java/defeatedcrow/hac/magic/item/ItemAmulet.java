@@ -38,8 +38,9 @@ public class ItemAmulet extends DCItem implements IJewelAmulet {
 			"crystal", /* 状態異常耐性 */
 			"rose", /* 気候・火炎耐性 */
 			"black", /* 反撃 */
-			"star",
-			/* 復活 */ };
+			"star", /* 復活 */
+			"moon"
+			/* 保護者 */ };
 
 	public ItemAmulet(int max) {
 		super();
@@ -201,7 +202,7 @@ public class ItemAmulet extends DCItem implements IJewelAmulet {
 		int meta = charm.getMetadata();
 		if (meta == 2) {
 			if (target.isEntityUndead() || target instanceof EntityEnderman)
-				return 1.5F;
+				return 2.0F;
 		}
 		return 1.0F;
 	}

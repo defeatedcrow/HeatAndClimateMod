@@ -28,7 +28,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MainInit.gems, 1, 0), new ItemStack(MainInit.gems, 1, 1),
 				new ItemStack(MainInit.gems, 1, 2), "gemQuartz", "gemSapphire", "gemMalachite", "gemCelestite",
 				"gemClam", "gemLapis", "gemDiamond", "gemSchorl", "gemSerpentine", "gemOlivine", "gemGarnet",
-				new ItemStack(MagicInit.elestial, 1, 0), "gemRutile", "gemBismuth"
+				new ItemStack(MagicInit.elestial, 1, 0), "gemRutile", "gemBismuth", "gemJadeite", "gemMoonstone"
 		};
 		for (int i = 0; i < gems.length; i++) {
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, i), new Object[] {
@@ -124,6 +124,11 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 8), new Object[] {
+				"XYW", " Z ", 'X', "gemMoonstone", 'Y', "gemQuartz", 'W', "gemLapis", 'Z',
+				new ItemStack(MagicInit.daggerSilver)
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 9), new Object[] {
 				"X", "Y", "Z", 'X', "gemQuartz", 'Y', "gemLapis", 'Z', new ItemStack(MagicInit.daggerSilver)
 		});
@@ -134,6 +139,10 @@ public class MagicRecipeRegister {
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 11), new Object[] {
 				"X", "Y", "Z", 'X', "gemMalachite", 'Y', "gemLapis", 'Z', new ItemStack(MagicInit.daggerSilver)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 11), new Object[] {
+				"X", "Y", "Z", 'X', "gemJadeite", 'Y', "gemLapis", 'Z', new ItemStack(MagicInit.daggerSilver)
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 12), new Object[] {
@@ -170,6 +179,10 @@ public class MagicRecipeRegister {
 				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemLapis", 'Z', "gemCelestite", 'W', "blockElestial"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 1), new Object[] {
+				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemLapis", 'Z', "gemMoonstone", 'W', "blockElestial"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 3), new Object[] {
 				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', new ItemStack(MainInit.gems, 1, 0), 'Z',
 				new ItemStack(Blocks.PACKED_ICE, 1, 0), 'W', "blockElestial"
@@ -196,6 +209,10 @@ public class MagicRecipeRegister {
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 7), new Object[] {
 				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemDiamond", 'Z', "gemCelestite", 'W', "blockElestial"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 7), new Object[] {
+				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemDiamond", 'Z', "gemJadeite", 'W', "blockElestial"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceSun, 1, 0), new Object[] {
@@ -257,6 +274,15 @@ public class MagicRecipeRegister {
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 3), new Object[] {
 				"XX", "YZ", "WV", 'X', "ingotSilver", 'Y', "gemClam", 'Z', "gemSapphire", 'W', "gemCelestite", 'V',
 				"gemLapis"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 3), new Object[] {
+				"XX", "YZ", "WV", 'X', "ingotSilver", 'Y', "gemClam", 'Z', "gemSapphire", 'W', "gemMoonstone", 'V',
+				"gemLapis"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 4), new Object[] {
+				"XX", "YZ", "ZV", 'X', "ingotSilver", 'Y', "gemBismuth", 'Z', "gemMoonstone", 'V', "gemMalachite"
 		});
 
 		// elestial

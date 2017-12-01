@@ -14,6 +14,7 @@ public class DCToolMaterial {
 	public static Item.ToolMaterial DC_CHALCEDONY;
 	public static Item.ToolMaterial DC_SAPPHIRE;
 	public static Item.ToolMaterial DC_TITANIUM;
+	public static Item.ToolMaterial DC_GARNET;
 
 	public static Item.ToolMaterial getToolMaterial(int i) {
 
@@ -31,6 +32,8 @@ public class DCToolMaterial {
 			return DCToolMaterial.DC_SAPPHIRE;
 		if (i == 6)
 			return DCToolMaterial.DC_TITANIUM;
+		if (i == 7)
+			return DCToolMaterial.DC_GARNET;
 		return null;
 	}
 
@@ -49,6 +52,8 @@ public class DCToolMaterial {
 			return DCMaterialEnum.SAPPHIRE;
 		if (i == 6)
 			return DCMaterialEnum.TITANIUM;
+		if (i == 7)
+			return DCMaterialEnum.GARNET;
 		return null;
 	}
 
@@ -89,6 +94,11 @@ public class DCToolMaterial {
 				DCMaterialEnum.TITANIUM.harvestTier, DCMaterialEnum.TITANIUM.duration,
 				DCMaterialEnum.TITANIUM.efficiency, DCMaterialEnum.TITANIUM.attackDam, DCMaterialEnum.TITANIUM.enchant);
 		DCToolMaterial.DC_TITANIUM.setRepairItem(DCMaterialEnum.TITANIUM.repairItem);
+
+		DCToolMaterial.DC_GARNET = EnumHelper.addToolMaterial("dcs_" + DCMaterialEnum.GARNET.name,
+				DCMaterialEnum.GARNET.harvestTier, DCMaterialEnum.GARNET.duration, DCMaterialEnum.GARNET.efficiency,
+				DCMaterialEnum.GARNET.attackDam, DCMaterialEnum.GARNET.enchant);
+		DCToolMaterial.DC_GARNET.setRepairItem(DCMaterialEnum.GARNET.repairItem);
 	}
 
 }

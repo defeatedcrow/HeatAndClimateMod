@@ -137,8 +137,9 @@ public class ItemSilverCup extends FoodItemBase {
 						return super.onItemRightClick(world, player, hand);
 				}
 			}
+			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 		}
-		return new ActionResult(EnumActionResult.FAIL, ItemStack.EMPTY);
+		return new ActionResult<ItemStack>(EnumActionResult.FAIL, ItemStack.EMPTY);
 	}
 
 	// potion の取得方法が違う

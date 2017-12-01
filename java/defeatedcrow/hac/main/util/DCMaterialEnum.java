@@ -58,7 +58,11 @@ public enum DCMaterialEnum {
 	// 耐暑性特化で耐久高め
 	SYNTHETIC(12, "synthetic", 3.0F, new int[] {
 			3, 5, 4, 2
-	}, 1, 240, 3.0F, 15, 3.0F, 1.0F, new ItemStack(MachineInit.synthetic, 1, 1), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
+	}, 1, 240, 3.0F, 15, 3.0F, 1.0F, new ItemStack(MachineInit.synthetic, 1, 1), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
+	// ほぼ真鍮と同程度
+	GARNET(11, "garnet", 2.0F, new int[] {
+			3, 6, 5, 2
+	}, 2, 480, 6.0F, 18, 0.5F, 0.5F, new ItemStack(MainInit.gems, 1, 14), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
 
 	public final String name;
 	public final int id;

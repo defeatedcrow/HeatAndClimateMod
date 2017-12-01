@@ -58,8 +58,10 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			"almandine", /* ノックバック防止 */
 			"elestial", /* カルセドニー投げ */
 			"rutile", /* 爆発耐性 */
-			"bismuth"
-			/* ツールがゆっくり回復 */ };
+			"bismuth", /* ツールがゆっくり回復 */
+			"jadeite", /* 動物と仲良く */
+			"moonstone"
+			/* 矢の弾速UP */ };
 
 	public ItemMagicalPendant(int max) {
 		super();
@@ -96,6 +98,8 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			return CharmType.DEFFENCE;
 		case 7:
 		case 9:
+		case 17:
+		case 18:
 			return CharmType.SPECIAL;
 		case 8:
 			return CharmType.TOOL;

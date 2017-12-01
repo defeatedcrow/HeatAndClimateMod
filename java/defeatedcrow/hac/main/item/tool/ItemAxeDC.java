@@ -1,14 +1,14 @@
 package defeatedcrow.hac.main.item.tool;
 
-import net.minecraft.item.ItemAxe;
 import defeatedcrow.hac.core.base.ITexturePath;
+import net.minecraft.item.ItemAxe;
 
 public class ItemAxeDC extends ItemAxe implements ITexturePath {
 
 	private final String tex;
 
 	public ItemAxeDC(ToolMaterial m, String t) {
-		super(m, m.getDamageVsEntity() + 2.0F, -3.0F);
+		super(m, m.getAttackDamage() + 2.0F, -3.0F);
 		tex = t;
 	}
 

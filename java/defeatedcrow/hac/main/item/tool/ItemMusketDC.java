@@ -6,8 +6,11 @@ import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.entity.EntityBulletDC;
+import defeatedcrow.hac.main.entity.EntityCrowBullet;
+import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
+import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -39,7 +42,6 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 		return "dcs_climate:items/tool/musket";
 	}
 
-	@Override
 	public ItemStack findAmmo(EntityPlayer player) {
 		if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
 			return player.getHeldItem(EnumHand.OFF_HAND);
@@ -152,6 +154,15 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 							break;
 						case SILVER:
 							entityarrow = new EntitySilverBullet(world, player);
+							break;
+						case LIGHT:
+							entityarrow = new EntityLightBullet(world, player);
+							break;
+						case EXTINCTION:
+							entityarrow = new EntityExtinctionBullet(world, player);
+							break;
+						case CROW:
+							entityarrow = new EntityCrowBullet(world, player);
 							break;
 						default:
 							break;

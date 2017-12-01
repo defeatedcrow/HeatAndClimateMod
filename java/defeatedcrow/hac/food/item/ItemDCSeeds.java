@@ -20,7 +20,7 @@ public class ItemDCSeeds extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"rice", "onion", "spinach", "tomato", "coffee", "cotton", "lotus"
+			"rice", "onion", "spinach", "tomato", "coffee", "cotton", "lotus", "herb"
 	};
 
 	public ItemDCSeeds(int max) {
@@ -88,6 +88,8 @@ public class ItemDCSeeds extends DCItem {
 			return FoodInit.cropCotton;
 		case 6:
 			return FoodInit.cropLotus;
+		case 7:
+			return FoodInit.cropHerb;
 		default:
 			return FoodInit.cropRice;
 		}

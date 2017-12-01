@@ -16,17 +16,28 @@ import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.passive.AbstractHorse;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -34,6 +45,90 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 // 主にclient側のプレイヤー操作にかかわるもの
 public class LivingMainEventDC {
+
+	@SubscribeEvent
+	public void onJoin(EntityJoinWorldEvent event) {
+		Entity entity = event.getEntity();
+		if (entity != null && entity instanceof EntityArrow) {
+			EntityArrow arrow = (EntityArrow) entity;
+			if (arrow.shootingEntity instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) arrow.shootingEntity;
+				boolean hasCharm = false;
+				for (int i = 9; i < 18; i++) {
+					ItemStack check = player.inventory.getStackInSlot(i);
+					if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
+						int m = check.getMetadata();
+						if (m == 18) {
+							hasCharm = true;
+						}
+					}
+				}
+
+				if (hasCharm) {
+					arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 5.0F, 0.0F);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onInteract(PlayerInteractEvent.EntityInteractSpecific event) {
+		EntityPlayer player = event.getEntityPlayer();
+		Entity target = event.getTarget();
+		if (player != null && target != null && !player.world.isRemote) {
+			boolean hasCharm = false;
+			for (int i = 9; i < 18; i++) {
+				ItemStack check = player.inventory.getStackInSlot(i);
+				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
+					int m = check.getMetadata();
+					if (m == 17) {
+						hasCharm = true;
+					}
+				}
+			}
+
+			if (hasCharm) {
+				if (target instanceof EntityTameable) {
+					EntityTameable animal = (EntityTameable) target;
+					if (player.getHeldItem(event.getHand()).getItem() == Items.APPLE && !animal.isTamed()) {
+						animal.setTamedBy(player);
+						animal.setHealth(animal.getMaxHealth());
+						animal.setAttackTarget((EntityLivingBase) null);
+						animal.getEntityWorld().setEntityState(animal, (byte) 7);
+						playTameEffect(animal);
+						if (animal instanceof EntityWolf) {
+							((EntityWolf) animal).getAISit().setSitting(true);
+						} else if (animal instanceof EntityOcelot) {
+							((EntityOcelot) animal).getAISit().setSitting(true);
+							((EntityOcelot) animal).setTameSkin(1 + animal.getEntityWorld().rand.nextInt(3));
+						}
+						event.setCancellationResult(EnumActionResult.SUCCESS);
+					}
+				} else if (target instanceof AbstractHorse) {
+					AbstractHorse horse = (AbstractHorse) target;
+					if (player.getHeldItem(event.getHand()).getItem() == Items.APPLE && !horse.isTame()) {
+						horse.increaseTemper(100);
+						event.setCancellationResult(EnumActionResult.SUCCESS);
+					}
+				}
+			}
+		}
+	}
+
+	private void playTameEffect(Entity animal) {
+		EnumParticleTypes enumparticletypes = EnumParticleTypes.HEART;
+
+		for (int i = 0; i < 7; ++i) {
+			double d0 = animal.getEntityWorld().rand.nextGaussian() * 0.02D;
+			double d1 = animal.getEntityWorld().rand.nextGaussian() * 0.02D;
+			double d2 = animal.getEntityWorld().rand.nextGaussian() * 0.02D;
+			animal.getEntityWorld().spawnParticle(enumparticletypes,
+					animal.posX + animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F - animal.width,
+					animal.posY + 0.5D + animal.getEntityWorld().rand.nextFloat() * animal.height,
+					animal.posZ + animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F - animal.width, d0, d1,
+					d2);
+		}
+	}
 
 	@SubscribeEvent
 	public void onEvent(LivingEvent.LivingUpdateEvent event) {

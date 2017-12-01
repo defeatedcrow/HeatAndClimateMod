@@ -19,7 +19,7 @@ public class ItemSwordDC extends ItemSword implements ITexturePath {
 	public ItemSwordDC(ToolMaterial m, String t, boolean b) {
 		super(m);
 		tex = t;
-		this.attackDam = 1.0F + m.getDamageVsEntity();
+		this.attackDam = 1.0F + m.getAttackDamage();
 		this.isShort = b;
 	}
 

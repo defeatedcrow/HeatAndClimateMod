@@ -43,11 +43,14 @@ public class ItemGems extends DCItem {
 	 * 15: ルチル
 	 * 16: ボーキサイト
 	 * 17: ビスマス,
-	 * 18: アパタイト
+	 * 18: アパタイト,
+	 * 19: 翡翠
+	 * 20: 月長石
 	 */
 	private static String[] names = {
 			"chal_blue", "chal_red", "chal_white", "gypsum", "sapphire", "malachite", "celestite", "clam", "salt",
-			"niter", "sulfur", "schorl", "serpentine", "olivine", "almandine", "rutile", "bauxite", "bismuth", "apatite"
+			"niter", "sulfur", "schorl", "serpentine", "olivine", "almandine", "rutile", "bauxite", "bismuth",
+			"apatite", "jadeite", "moonstone"
 	};
 
 	public ItemGems(int max) {
@@ -94,7 +97,7 @@ public class ItemGems extends DCItem {
 			if (!DCUtil.isEmpty(stack) && flag) {
 				if (!world.isRemote) {
 					EntityProjWhiteSpit entityarrow = new EntityProjWhiteSpit(world, living);
-					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
+					entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
 					world.spawnEntity(entityarrow);
 				}
 

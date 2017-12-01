@@ -13,6 +13,8 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.CustomExplosion;
+import defeatedcrow.hac.main.worldgen.OreGenPos;
+import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -49,7 +51,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
@@ -80,8 +84,10 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			"almandine", /* 敵の強制除去 */
 			"elestial", /* 範囲攻撃 */
 			"rutile", /* 光源設置 */
-			"bismuth"
-			/* Block遠隔使用 */ };
+			"bismuth", /* Block遠隔使用 */
+			"jadeite", /* 鉱脈索敵 */
+			"moonstone"
+			/* 攻撃対象の書き換え */ };
 
 	public ItemMagicalBadge(int max) {
 		super();
@@ -117,6 +123,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		case 12:
 		case 15:
 		case 16:
+		case 17:
 			return CharmType.KEY;
 		case 8:
 		case 9:
@@ -326,6 +333,36 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				IBlockState set = MainInit.lightOrb.getDefaultState();
 				if (cur.getMaterial().isReplaceable() && player.world.setBlockState(p, set))
 					return true;
+			} else if (meta == 17) {
+				int x = MathHelper.floor(player.posX);
+				int y = MathHelper.floor(player.posY);
+				int z = MathHelper.floor(player.posZ);
+				BlockPos p = new BlockPos(x, y + 1, z);
+				ChunkPos c = new ChunkPos(p);
+				OreVein[] veins = OreGenPos.INSTANCE.getVeins(c.x, c.z, player.world);
+				OreVein ret = null;
+				int yd = 256;
+				for (int i = 0; i < 3; i++) {
+					if (veins[i] != null) {
+						int dist = veins[i].pos.getY() - y;
+						if (dist < 0) {
+							dist *= -1;
+						}
+						if (dist < yd) {
+							ret = veins[i];
+							yd = dist;
+						}
+					}
+				}
+				if (ret != null) {
+					player.sendMessage(new TextComponentString("== Nearest ore vein detected! =="));
+					player.sendMessage(new TextComponentString("Type: " + ret.type.name()));
+					player.sendMessage(new TextComponentString(
+							"Pos: " + ret.pos.getX() + ", " + ret.pos.getY() + ", " + ret.pos.getZ()));
+				} else {
+					player.sendMessage(new TextComponentString("== No ore vein detected in this chank =="));
+				}
+				return true;
 			}
 		}
 		return false;
@@ -419,7 +456,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		if (meta == 14) {
 			if (player != null && player.isSneaking() && target != null && !source.isExplosion()
 					&& !source.isProjectile()) {
-				AxisAlignedBB aabb = target.getEntityBoundingBox().expand(5.0D, 0D, 5.0D);
+				AxisAlignedBB aabb = target.getEntityBoundingBox().grow(5.0D, 0D, 5.0D);
 				List<EntityLiving> list = player.world.getEntitiesWithinAABB(EntityLiving.class, aabb);
 				if (list.isEmpty())
 					return false;
@@ -429,6 +466,28 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					}
 				}
 				return true;
+			}
+		}
+		if (meta == 18) {
+			if (player != null && target instanceof EntityLiving) {
+				AxisAlignedBB aabb = target.getEntityBoundingBox().grow(8.0D, 2.0D, 8.0D);
+				List<EntityLiving> list = player.world.getEntitiesWithinAABB(EntityLiving.class, aabb);
+				if (list.isEmpty())
+					return false;
+				else {
+					double d = 256.0D;
+					EntityLivingBase entity = null;
+					for (EntityLiving liv : list) {
+						double d2 = liv.getDistanceSq(target);
+						if (d2 > 0.5D && d2 < d) {
+							d = d2;
+							entity = liv;
+						}
+					}
+					if (entity != null) {
+						((EntityLiving) target).setAttackTarget(entity);
+					}
+				}
 			}
 		}
 		return false;

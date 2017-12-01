@@ -35,7 +35,7 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 	public ItemScytheDC(ToolMaterial m, String t) {
 		super(m);
 		tex = t;
-		this.attackDam = 3.0F + m.getDamageVsEntity();
+		this.attackDam = 3.0F + m.getAttackDamage();
 		this.range = m.getHarvestLevel();
 	}
 
@@ -76,7 +76,7 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack stack, IBlockState state) {
+	public float getDestroySpeed(ItemStack stack, IBlockState state) {
 		Block block = state.getBlock();
 		Material material = state.getMaterial();
 		return material != Material.PLANTS && material != Material.VINE && material != Material.CORAL
@@ -94,7 +94,7 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 				for (int y = -1; y < 2; y++) {
 					BlockPos p1 = pos.add(x, y, z);
 					IBlockState target = world.getBlockState(p1);
-					if (getStrVsBlock(stack, target) >= 5.0F && !(target.getBlock() instanceof BlockStem)) {
+					if (getDestroySpeed(stack, target) >= 5.0F && !(target.getBlock() instanceof BlockStem)) {
 
 						boolean flag = true;
 						if (target.getBlock() instanceof IGrowable) {

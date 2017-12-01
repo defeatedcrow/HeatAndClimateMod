@@ -320,6 +320,10 @@ public class FoodBasicRecipe {
 				new ItemStack(FoodInit.crops, 1, 8), new ItemStack(Blocks.SAPLING, 1, 0)
 		});
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 7), new Object[] {
+				new ItemStack(FoodInit.crops, 1, 9)
+		});
+
 		// seeds another recipes
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 0), new Object[] {
 				new ItemStack(Items.WHEAT_SEEDS, 1, 0), "gemChalcedony"
@@ -359,6 +363,10 @@ public class FoodBasicRecipe {
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 2), new Object[] {
 				new ItemStack(Blocks.SAPLING, 1, 0), "gemChalcedony"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 7), new Object[] {
+				"blockTallGrass", "gemChalcedony"
 		});
 
 		String[] crops = new String[] {
