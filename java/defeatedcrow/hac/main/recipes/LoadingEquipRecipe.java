@@ -14,7 +14,7 @@ public class LoadingEquipRecipe {
 	public static void add(RecipeResourcesMain res) {
 		String[] name = {
 				"ingotBrass", "ingotSteel", "ingotSilver", "ingotNickelsilver", "gemChalcedony", "gemSapphire",
-				"ingotTitanium"
+				"ingotTitanium", "gemGarnet"
 		};
 		for (int i = 0; i < name.length; i++) {
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcPickaxe[i], 1, 0), new Object[] {
@@ -44,6 +44,10 @@ public class LoadingEquipRecipe {
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[2], 1, 0), new Object[] {
 				" X ", "  X", "YYX", 'X', "gemChalcedony", 'Y', "stickWood"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[3], 1, 0), new Object[] {
+				" X ", "  X", "YYX", 'X', "gemGarnet", 'Y', "stickWood"
 		});
 
 		String[] name2 = {
@@ -151,6 +155,24 @@ public class LoadingEquipRecipe {
 				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 8, 4), new Object[] {
 						"X", "Y", "Z", 'X', "ingotBismuth", 'Y', new ItemStack(MachineInit.reagent, 1, 8), 'Z',
 						"ingotBrass"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 8, 5), new Object[] {
+						"X", "Y", "Z", 'X', "dustPhosphorus", 'Y', "dustSulfur", 'Z', "ingotBrass"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 4, 5), new Object[] {
+						"X", "Y", "Z", 'X', "dustGlowstone", 'Y', "gemRutile", 'Z', "ingotBrass"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 8, 6), new Object[] {
+						"X", "Y", "Z", 'X', new ItemStack(MachineInit.reagent, 1, 12), 'Y',
+						new ItemStack(MachineInit.reagent, 1, 8), 'Z', "ingotBrass"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 4, 7), new Object[] {
+						" X ", "VYV", " Z ", 'X', "gemSchorl", 'Y', new ItemStack(Items.CHICKEN, 1, 0), 'Z',
+						"ingotBrass", 'V', "leather"
 				});
 			}
 		}

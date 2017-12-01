@@ -110,11 +110,11 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		float f = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
 		float f1 = -MathHelper.sin(pitch * 0.017453292F);
 		float f2 = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-		this.setThrowableHeading(f, f1, f2, velocity, inaccuracy);
+		this.shoot(f, f1, f2, velocity, inaccuracy);
 	}
 
 	@Override
-	public void setThrowableHeading(double x, double y, double z, float velocity, float inaccuracy) {
+	public void shoot(double x, double y, double z, float velocity, float inaccuracy) {
 		float f = MathHelper.sqrt(x * x + y * y + z * z);
 		x = x / f;
 		y = y / f;
@@ -229,10 +229,11 @@ public class EntityBulletDC extends Entity implements IProjectile {
 				}
 			}
 
+			raytraceresult = null;
 			List<Entity> list = this.findEntityOnPath(vec3d1, vec3d);
 			if (!list.isEmpty()) {
 				for (Entity entity : list) {
-					if (entity != null) {
+					if (entity != null && entity != this.shootingEntity) {
 						raytraceresult = new RayTraceResult(entity);
 					}
 

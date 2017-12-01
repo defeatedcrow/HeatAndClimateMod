@@ -137,11 +137,11 @@ public class MainInit {
 	public static Item scope;
 	public static Item entityScope;
 
-	public static Item[] dcAxe = new Item[7];
-	public static Item[] dcPickaxe = new Item[7];
-	public static Item[] dcSpade = new Item[7];
-	public static Item[] dcSword = new Item[7];
-	public static Item[] dcScythe = new Item[3];
+	public static Item[] dcAxe = new Item[8];
+	public static Item[] dcPickaxe = new Item[8];
+	public static Item[] dcSpade = new Item[8];
+	public static Item[] dcSword = new Item[8];
+	public static Item[] dcScythe = new Item[4];
 
 	// armor
 	public static Item[] brassArmor = new Item[4];

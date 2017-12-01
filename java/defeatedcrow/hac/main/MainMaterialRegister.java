@@ -547,7 +547,7 @@ public class MainMaterialRegister {
 		MainInit.oreDust = new ItemOreDusts(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		DCMaterialReg.registerItem(MainInit.oreDust, ClimateCore.PACKAGE_BASE + "_oredust", ClimateMain.MOD_ID);
 
-		MainInit.gems = new ItemGems(18).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(20).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		DCMaterialReg.registerItem(MainInit.gems, ClimateCore.PACKAGE_BASE + "_gem", ClimateMain.MOD_ID);
 
 		MainInit.miscDust = new ItemMiscDust(11).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
@@ -591,9 +591,9 @@ public class MainMaterialRegister {
 
 	static void registerEquip() {
 		String[] name = {
-				"brass", "steel", "silver", "nickelsilver", "chalcedony", "sapphire", "titanium"
+				"brass", "steel", "silver", "nickelsilver", "chalcedony", "sapphire", "titanium", "garnet"
 		};
-		for (int j = 0; j < 7; j++) {
+		for (int j = 0; j < 8; j++) {
 			DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 			MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]);
@@ -601,7 +601,7 @@ public class MainMaterialRegister {
 					ClimateMain.MOD_ID);
 		}
 
-		for (int j = 0; j < 7; j++) {
+		for (int j = 0; j < 8; j++) {
 			MainInit.dcPickaxe[j] = new ItemPickaxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]);
@@ -609,7 +609,7 @@ public class MainMaterialRegister {
 					ClimateMain.MOD_ID);
 		}
 
-		for (int j = 0; j < 7; j++) {
+		for (int j = 0; j < 8; j++) {
 			MainInit.dcSpade[j] = new ItemSpadeDC(DCToolMaterial.getToolMaterial(j), name[j])
 					.setCreativeTab(ClimateMain.tool)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]);
@@ -637,6 +637,11 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerItem(MainInit.dcSword[6], ClimateCore.PACKAGE_BASE + "_sword_" + name[6],
 				ClimateMain.MOD_ID);
 
+		MainInit.dcSword[7] = new ItemSwordDC(DCToolMaterial.getToolMaterial(7), name[7], true)
+				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[7]);
+		DCMaterialReg.registerItem(MainInit.dcSword[7], ClimateCore.PACKAGE_BASE + "_sword_" + name[7],
+				ClimateMain.MOD_ID);
+
 		MainInit.dcScythe[0] = new ItemScytheDC(DCToolMaterial.getToolMaterial(0), "brass")
 				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_brass");
 		DCMaterialReg.registerItem(MainInit.dcScythe[0], ClimateCore.PACKAGE_BASE + "_scythe_brass",
@@ -652,13 +657,18 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerItem(MainInit.dcScythe[2], ClimateCore.PACKAGE_BASE + "_scythe_chalcedony",
 				ClimateMain.MOD_ID);
 
+		MainInit.dcScythe[3] = new ItemScytheDC(DCToolMaterial.getToolMaterial(7), "garnet")
+				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_garnet");
+		DCMaterialReg.registerItem(MainInit.dcScythe[3], ClimateCore.PACKAGE_BASE + "_scythe_garnet",
+				ClimateMain.MOD_ID);
+
 		MainInit.crossbow = new ItemCrossbowDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crossbow");
 		DCMaterialReg.registerItem(MainInit.crossbow, ClimateCore.PACKAGE_BASE + "_crossbow", ClimateMain.MOD_ID);
 
 		MainInit.gun = new ItemMusketDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_musket");
 		DCMaterialReg.registerItem(MainInit.gun, ClimateCore.PACKAGE_BASE + "_musket", ClimateMain.MOD_ID);
 
-		MainInit.cartridge = new ItemBullets(4).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
+		MainInit.cartridge = new ItemBullets(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
 		DCMaterialReg.registerItem(MainInit.cartridge, ClimateCore.PACKAGE_BASE + "_cartridge", ClimateMain.MOD_ID);
 
 		String[] type = {

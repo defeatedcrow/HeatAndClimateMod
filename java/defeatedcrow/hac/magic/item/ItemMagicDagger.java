@@ -122,7 +122,7 @@ public class ItemMagicDagger extends DCItem {
 			if (!DCUtil.isEmpty(stack) || flag) {
 				if (!world.isRemote) {
 					EntityProjBase entityarrow = getEntity(metadata, world, player);
-					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
+					entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
 					world.spawnEntity(entityarrow);
 				}
 

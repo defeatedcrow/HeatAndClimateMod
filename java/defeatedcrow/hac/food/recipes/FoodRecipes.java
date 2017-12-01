@@ -59,6 +59,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesOlive);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesTea);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLotus);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropHerb);
 	}
 
 	public static void loadOres() {

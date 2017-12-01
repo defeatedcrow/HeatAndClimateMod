@@ -33,7 +33,7 @@ public class ItemBlockMaceLight extends ItemBlockMace {
 			if (hasAcv || flag) {
 				if (!world.isRemote) {
 					EntityProjLightSpit entityarrow = new EntityProjLightSpit(world, player);
-					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
+					entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
 					world.spawnEntity(entityarrow);
 				}
 

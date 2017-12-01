@@ -62,12 +62,17 @@ import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.enchant.EnchantmentVenom;
+import defeatedcrow.hac.main.entity.EntityCrowBalloon;
+import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
+import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
+import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBolt;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
+import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import defeatedcrow.hac.main.event.AchievementEventDC;
@@ -174,6 +179,16 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addEntity(EntityDynamite.class, "main", "dynamite_red");
 
 		DCRegistryUtil.addEntity(EntityDynamiteBlue.class, "main", "dynamite_blue");
+
+		DCRegistryUtil.addEntity(EntityLightBullet.class, "main", "bullet_light", 1);
+
+		DCRegistryUtil.addEntity(EntityExtinctionBullet.class, "main", "bullet_extinction", 1);
+
+		DCRegistryUtil.addEntity(EntityCrowBullet.class, "main", "bullet_balloon", 1);
+
+		DCRegistryUtil.addEntity(EntityCrowBalloon.class, "main", "balloon_crow");
+
+		DCRegistryUtil.addEntity(EntityFlowerPot.class, "main", "flowerpot");
 
 		FoodCommonProxy.loadEntity();
 		MachineCommonProxy.loadEntity();

@@ -3,6 +3,7 @@ package defeatedcrow.hac.plugin;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.cofh.DCPluginCoFH;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 
 public class DCIntegrationCore {
@@ -110,6 +111,8 @@ public class DCIntegrationCore {
 		} catch (Exception e) {
 			DCLogger.infoLog("dcs_climate", "Failed to load mob resistant data");
 		}
+
+		FMLCommonHandler.instance().resetClientRecipeBook();
 	}
 
 }
