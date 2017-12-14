@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
@@ -54,6 +56,12 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 
 	@Override
 	public int getProcessTime() {
+		if (current != null) {
+			if (current.getHeat() == DCHeatTier.OVEN)
+				return 100;
+			else if (current.getHeat().getTier() > DCHeatTier.OVEN.getTier())
+				return 40;
+		}
 		return 200;
 	}
 
@@ -65,8 +73,13 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
-		if (currentRecipe == null) {
+		if (currentRecipe == null && current != null) {
 			currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
+			if (currentRecipe == null && current.getHeat().getTier() > 0) {
+				IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1),
+						current.getHumidity(), current.getAirflow());
+				currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(clm2, ins, inf);
+			}
 			return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 3);
 		} else {
 			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {
@@ -88,6 +101,11 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		FluidStack outf = outputT.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
 		currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
+		if (currentRecipe == null && current.getHeat().getTier() > 0) {
+			IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current.getHumidity(),
+					current.getAirflow());
+			currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(clm2, ins, inf);
+		}
 		return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 3);
 	}
 

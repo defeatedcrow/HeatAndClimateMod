@@ -302,6 +302,11 @@ public class MachineInitRegister {
 		MachineInit.catapult.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperFilter.setCreativeTab(ClimateMain.machine);
 
+		MachineInit.shaft3_s.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft3_l.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft3_t_a.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft3_t_b.setCreativeTab(ClimateMain.machine);
+
 		MachineInit.fauset.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);

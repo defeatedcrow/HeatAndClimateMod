@@ -194,9 +194,9 @@ public class ItemAmulet extends DCItem implements IJewelAmulet {
 		int meta = charm.getMetadata();
 		if (meta == 2) {
 			if (target.isEntityUndead() || target instanceof EntityEnderman)
-				return 1.5F;
+				return 2.0F;
 		}
-		return 1.0F;
+		return 0.0F;
 	}
 
 	@Override
