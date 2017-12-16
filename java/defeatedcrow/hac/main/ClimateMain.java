@@ -15,6 +15,8 @@ import defeatedcrow.hac.main.config.MainConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
+import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
+import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -36,7 +38,7 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 2;
 	public static final int MOD_MINOR = 1;
-	public static final int MOD_BUILD = 0;
+	public static final int MOD_BUILD = 1;
 	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.1.0,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
@@ -69,6 +71,7 @@ public class ClimateMain {
 		MainConfig.INSTANCE.load(event.getModConfigurationDirectory());
 		// api
 		MainAPIManager.fuelRegister = new DCFluidFuelRegister();
+		MainAPIManager.veinRegister = VeinTableRegister.INSTANCE;
 		MainAPIManager.isLoaded = true;
 
 		// integration
@@ -112,6 +115,11 @@ public class ClimateMain {
 		// Recipes
 		proxy.loadRecipes();
 		DCIntegrationCore.INSTANCE.loadPost();
+
+		// json
+		VeinTableJsonHelper.pre();
+
+		VeinTableJsonHelper.post();
 
 		// date
 		month = CAL.get(CAL.MONTH);

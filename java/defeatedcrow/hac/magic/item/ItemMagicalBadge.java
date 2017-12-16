@@ -546,43 +546,43 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	}
 
 	public static EnchantmentData getEnchantment(EntityLivingBase entity) {
-		EnchantmentData data = new EnchantmentData(Enchantments.UNBREAKING, 0);
+		EnchantmentData data = new EnchantmentData(Enchantments.UNBREAKING, 1);
 
 		if (entity instanceof EntityZombie) {
-			data = new EnchantmentData(Enchantments.SHARPNESS, 0);
+			data = new EnchantmentData(Enchantments.SHARPNESS, 1);
 		}
 		if (entity instanceof EntitySkeleton) {
-			data = new EnchantmentData(Enchantments.POWER, 0);
+			data = new EnchantmentData(Enchantments.POWER, 1);
 		}
 		if (entity instanceof EntityCreeper) {
-			data = new EnchantmentData(Enchantments.EFFICIENCY, 0);
+			data = new EnchantmentData(Enchantments.EFFICIENCY, 1);
 		}
 		if (entity instanceof EntitySpider) {
-			data = new EnchantmentData(Enchantments.FEATHER_FALLING, 0);
+			data = new EnchantmentData(Enchantments.FEATHER_FALLING, 1);
 		}
 		if (entity instanceof EntityEnderman) {
-			data = new EnchantmentData(Enchantments.LOOTING, 0);
+			data = new EnchantmentData(Enchantments.LOOTING, 1);
 		}
 		if (entity instanceof EntitySlime) {
-			data = new EnchantmentData(Enchantments.PROTECTION, 0);
+			data = new EnchantmentData(Enchantments.PROTECTION, 1);
 		}
 		if (entity instanceof EntityWitch) {
-			data = new EnchantmentData(Enchantments.PROJECTILE_PROTECTION, 0);
+			data = new EnchantmentData(Enchantments.PROJECTILE_PROTECTION, 1);
 		}
 		if (entity instanceof EntityBlaze) {
-			data = new EnchantmentData(Enchantments.FLAME, 0);
+			data = new EnchantmentData(Enchantments.FLAME, 1);
 		}
 		if (entity instanceof EntityGhast) {
-			data = new EnchantmentData(Enchantments.INFINITY, 0);
+			data = new EnchantmentData(Enchantments.INFINITY, 1);
 		}
 		if (entity instanceof EntityGuardian) {
-			data = new EnchantmentData(Enchantments.AQUA_AFFINITY, 0);
+			data = new EnchantmentData(Enchantments.AQUA_AFFINITY, 1);
 		}
 		if (entity instanceof EntityPigZombie) {
-			data = new EnchantmentData(Enchantments.FIRE_ASPECT, 0);
+			data = new EnchantmentData(Enchantments.FIRE_ASPECT, 1);
 		}
 		if (entity instanceof EntityMagmaCube) {
-			data = new EnchantmentData(Enchantments.FIRE_PROTECTION, 0);
+			data = new EnchantmentData(Enchantments.FIRE_PROTECTION, 1);
 		}
 		return data;
 	}

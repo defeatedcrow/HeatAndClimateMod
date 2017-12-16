@@ -90,8 +90,9 @@ public class BlockMarkingPanel extends Block {
 	}
 
 	@Override
-	public boolean isCollidable() {
-		return false;
+	@Nullable
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 
 	@Override

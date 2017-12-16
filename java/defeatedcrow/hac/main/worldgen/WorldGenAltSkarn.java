@@ -1,9 +1,12 @@
 package defeatedcrow.hac.main.worldgen;
 
+import java.util.List;
 import java.util.Random;
 
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.orevein.EnumVein;
+import defeatedcrow.hac.main.api.orevein.OreSet;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -94,7 +97,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 				}
 
 				if (rr > 0) {
-					BlockSet b1 = this.getBlockSet1(y, f, world.rand);
+					OreSet b1 = this.getBlockSet1(y, f, world.rand);
 					BlockSet b2 = this.getBlockSet2(y, f, world.rand);
 					// forに変更
 					for (int x = posX - rr; x <= posX + rr; x++) {
@@ -107,10 +110,10 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 								double dist = Math.sqrt(x1 * x1 + z1 * z1);
 								if (rr > 2 && dist < rr - 2) {
 									if (b1 != null) {
-										if ((b1.equals(ZINC) || b1.equals(TIN)) && world.rand.nextInt(20) == 1) {
-											world.setBlockState(p, BISMUTH.getState(), 2);
+										if (b1.hasSecondOre() && world.rand.nextInt(100) < b1.getSecondChance()) {
+											world.setBlockState(p, b1.getSecondOre().getState(), 2);
 										} else {
-											world.setBlockState(p, b1.getState(), 2);
+											world.setBlockState(p, b1.getOre().getState(), 2);
 										}
 									}
 								} else if (dist < rr) {
@@ -149,53 +152,52 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		return false;
 	}
 
-	private BlockSet getBlockSet1(int y, int f, Random rand) {
+	private OreSet getBlockSet1(int y, int f, Random rand) {
 		int f2 = rand.nextInt(3);
 		if (y < 12 + f2)
 			// 最下層: 溶岩と花崗岩のレンズ状のかたまり
-			return LAVA;
+			return new OreSet(100, LAVA);
 		else if (y < 14 + f2)
 			// 最下層: 花崗岩
-			return AIR;
+			return new OreSet(100, AIR);
 		else if (y < 17 + f2)
 			// 最下層: 花崗岩
-			return STONE_1;
+			return new OreSet(100, STONE_1);
 		else if (y > 50 + f2) {
 			// 最上層: 石灰岩と大理石
 			if (y > 58 + f2)
-				return LIME;
+				return new OreSet(100, LIME);
 			else
-				return MARBLE;
+				return new OreSet(100, MARBLE);
 		} else {
+			VeinTable table = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN);
+			VeinTable table2 = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN_UNDER);
+			if (table == null || table2 == null) {
+				return new OreSet(100, STONE_2);
+			}
 			// 中層: 下から、磁鉄鉱/金/閃緑岩、黄鉄鉱/黄銅鉱/錫石/他MOD鉱/石、閃亜鉛鉱/錫石/赤鉄鉱/大理石
 			if (y < 28) {
-				int i = rand.nextInt(3);
-				if (i == 0)
-					return IRON_2;
-				else if (i == 1)
-					return GOLD;
-				else
-					return STONE_2;
-			} else if (y < 40) {
-				int i = rand.nextInt(4);
-				if (i == 0)
-					return IRON_1;
-				else if (i == 1)
-					return COPPER;
-				else if (i == 2)
-					return TIN;
-				else
-					return STONE_2;
+				List<OreSet> list = table2.getOreTable1();
+				int i1 = rand.nextInt(table2.tableCount1);
+				int i2 = 0;
+				for (OreSet set : list) {
+					i2 += set.getWeight();
+					if (i2 >= i1) {
+						return set;
+					}
+				}
+				return new OreSet(100, STONE_2);
 			} else {
-				int i = rand.nextInt(4);
-				if (i == 0)
-					return IRON_0;
-				else if (i == 1)
-					return COPPER;
-				else if (i == 2)
-					return ZINC;
-				else
-					return MARBLE;
+				List<OreSet> list = table.getOreTable1();
+				int i1 = rand.nextInt(table.tableCount1);
+				int i2 = 0;
+				for (OreSet set : list) {
+					i2 += set.getWeight();
+					if (i2 >= i1) {
+						return set;
+					}
+				}
+				return new OreSet(100, MARBLE);
 			}
 		}
 	}
