@@ -15,6 +15,7 @@ import defeatedcrow.hac.main.config.MainConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
+import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
@@ -114,6 +115,11 @@ public class ClimateMain {
 		// Recipes
 		proxy.loadRecipes();
 		DCIntegrationCore.INSTANCE.loadPost();
+
+		// json
+		VeinTableJsonHelper.pre();
+
+		VeinTableJsonHelper.post();
 
 		// date
 		month = CAL.get(CAL.MONTH);

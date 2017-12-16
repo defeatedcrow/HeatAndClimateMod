@@ -88,9 +88,18 @@ public class VeinTableRegister implements IVeinTableRegister {
 		sk.addOreToTable1(new OreSet(30, new BlockSet(MainInit.ores, 6)),
 				new OreSet(30, new BlockSet(MainInit.ores, 8), new BlockSet(MainInit.ores_2, 9), 5),
 				new OreSet(20, new BlockSet(MainInit.ores, 4)), new OreSet(20, new BlockSet(MainInit.ores_2, 4)));
-		sk.addOreToTable2(new OreSet(40, new BlockSet(MainInit.ores, 5)),
-				new OreSet(40, new BlockSet(Blocks.GOLD_ORE, 0)), new OreSet(20, new BlockSet(Blocks.STONE, 3)));
+		sk.addOreToTable1(new OreSet(30, new BlockSet(MainInit.ores, 6)),
+				new OreSet(30, new BlockSet(MainInit.ores, 8), new BlockSet(MainInit.ores_2, 9), 5),
+				new OreSet(20, new BlockSet(MainInit.ores, 1)), new OreSet(20, new BlockSet(MainInit.ores_2, 4)));
 		list.add(sk);
+
+		VeinTable sku = new VeinTable(EnumVein.SKARN_UNDER, new OreSet(100, new BlockSet(MainInit.ores_2, 0)),
+				new OreSet(100, new BlockSet(MainInit.gemBlock, 6)));
+		sku.addOreToTable2(new OreSet(40, new BlockSet(MainInit.ores, 5)),
+				new OreSet(40, new BlockSet(Blocks.GOLD_ORE, 0)), new OreSet(20, new BlockSet(Blocks.STONE, 5)));
+		sku.addOreToTable2(new OreSet(40, new BlockSet(MainInit.ores, 5)),
+				new OreSet(40, new BlockSet(Blocks.GOLD_ORE, 0)), new OreSet(20, new BlockSet(Blocks.STONE, 5)));
+		list.add(sku);
 	}
 
 	public VeinTable getTable(EnumVein vein) {

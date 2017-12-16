@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.main.api.orevein.EnumVein;
 import defeatedcrow.hac.main.api.orevein.IVeinTable;
@@ -64,15 +67,18 @@ public class VeinTable implements IVeinTable {
 
 	@Override
 	public List<OreSet> getOreTable1() {
-		return table1;
+		List<OreSet> ret = ImmutableList.copyOf(table1);
+		return ret;
 	}
 
 	@Override
 	public List<OreSet> getOreTable2() {
 		if (table2.isEmpty()) {
-			return table1;
+			List<OreSet> ret = ImmutableList.copyOf(table1);
+			return ret;
 		}
-		return table2;
+		List<OreSet> ret = ImmutableList.copyOf(table2);
+		return ret;
 	}
 
 	@Override
@@ -110,6 +116,42 @@ public class VeinTable implements IVeinTable {
 			BlockSet set2 = new BlockSet(block, meta);
 			table2.add(new OreSet(weight, set, set2, secondChance));
 			tableCount2 += weight;
+		}
+	}
+
+	@Override
+	public void removeOreFromTable1(Block block, int meta) {
+		if (block != null) {
+			BlockSet set = new BlockSet(block, meta);
+			List<OreSet> removes = Lists.newArrayList();
+			for (OreSet target : table1) {
+				if (target.getOre().equals(set)) {
+					removes.add(target);
+				}
+			}
+
+			for (OreSet del : removes) {
+				table1.remove(del);
+				tableCount1 -= del.getWeight();
+			}
+		}
+	}
+
+	@Override
+	public void removeOreFromTable2(Block block, int meta) {
+		if (block != null) {
+			BlockSet set = new BlockSet(block, meta);
+			List<OreSet> removes = Lists.newArrayList();
+			for (OreSet target : table2) {
+				if (target.getOre().equals(set)) {
+					removes.add(target);
+				}
+			}
+
+			for (OreSet del : removes) {
+				table2.remove(del);
+				tableCount2 -= del.getWeight();
+			}
 		}
 	}
 

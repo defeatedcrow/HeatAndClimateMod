@@ -171,13 +171,14 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 				return new OreSet(100, MARBLE);
 		} else {
 			VeinTable table = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN);
-			if (table == null) {
+			VeinTable table2 = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN_UNDER);
+			if (table == null || table2 == null) {
 				return new OreSet(100, STONE_2);
 			}
 			// 中層: 下から、磁鉄鉱/金/閃緑岩、黄鉄鉱/黄銅鉱/錫石/他MOD鉱/石、閃亜鉛鉱/錫石/赤鉄鉱/大理石
 			if (y < 28) {
-				List<OreSet> list = table.getOreTable2();
-				int i1 = rand.nextInt(table.tableCount2);
+				List<OreSet> list = table2.getOreTable1();
+				int i1 = rand.nextInt(table2.tableCount1);
 				int i2 = 0;
 				for (OreSet set : list) {
 					i2 += set.getWeight();

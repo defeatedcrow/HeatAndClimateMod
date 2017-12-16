@@ -40,4 +40,8 @@ public interface IVeinTable {
 
 	void addOreToTable2(int weight, Block block, int meta, Block secondBlock, int secondMeta, int secondChance);
 
+	void removeOreFromTable1(Block block, int meta);
+
+	void removeOreFromTable2(Block block, int meta);
+
 }
