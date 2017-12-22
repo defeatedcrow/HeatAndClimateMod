@@ -95,8 +95,8 @@ public class VeinTableRegister implements IVeinTableRegister {
 
 		VeinTable sku = new VeinTable(EnumVein.SKARN_UNDER, new OreSet(100, new BlockSet(MainInit.ores_2, 0)),
 				new OreSet(100, new BlockSet(MainInit.gemBlock, 6)));
-		sku.addOreToTable2(new OreSet(40, new BlockSet(MainInit.ores, 5)),
-				new OreSet(40, new BlockSet(Blocks.GOLD_ORE, 0)), new OreSet(20, new BlockSet(Blocks.STONE, 5)));
+		sku.addOreToTable2(new OreSet(50, new BlockSet(MainInit.ores, 5)),
+				new OreSet(40, new BlockSet(Blocks.GOLD_ORE, 0)), new OreSet(10, new BlockSet(Blocks.STONE, 5)));
 		sku.addOreToTable2(new OreSet(40, new BlockSet(MainInit.ores, 5)),
 				new OreSet(40, new BlockSet(Blocks.GOLD_ORE, 0)), new OreSet(20, new BlockSet(Blocks.STONE, 5)));
 		list.add(sku);
