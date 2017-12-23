@@ -83,7 +83,7 @@ public class VeinTableJsonHelper {
 						Map<String, Double> get = (Map<String, Double>) value;
 						for (Entry<String, Double> ore : get.entrySet()) {
 							if (ore != null && ore.getKey() != null && ore.getValue() != null) {
-								int i1 = MathHelper.absFloor(ore.getValue());
+								int i1 = MathHelper.floor(ore.getValue());
 								INSTANCE.registerOre(table, ore.getKey(), i1);
 							}
 						}
