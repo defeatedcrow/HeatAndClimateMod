@@ -73,10 +73,6 @@ public class VeinTable implements IVeinTable {
 
 	@Override
 	public List<OreSet> getOreTable2() {
-		if (table2.isEmpty()) {
-			List<OreSet> ret = ImmutableList.copyOf(table1);
-			return ret;
-		}
 		List<OreSet> ret = ImmutableList.copyOf(table2);
 		return ret;
 	}
