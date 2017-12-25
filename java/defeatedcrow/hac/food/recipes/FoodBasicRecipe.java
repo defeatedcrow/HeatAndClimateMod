@@ -284,7 +284,7 @@ public class FoodBasicRecipe {
 
 		// yagen
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.dropOil, 1, 0), new Object[] {
+		DCRecipe.addShapelessNBTRecipe(res.getRecipeName(), new ItemStack(FoodInit.dropOil, 1, 0), new Object[] {
 				"toolNormalYagen", "cropOlive", "cropOlive"
 		});
 

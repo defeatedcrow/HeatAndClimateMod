@@ -26,8 +26,8 @@ public class DCPluginTanpopo {
 
 			OreDictionary.registerOre("cropFluff", new ItemStack(fluff, 1, 0));
 
-			DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(MainInit.materials, 1, 1),
-					new Object[] {
+			DCRecipe.addShapedNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(),
+					new ItemStack(MainInit.materials, 1, 1), new Object[] {
 							"XXX", "XYX", "XXX", 'X', "cropFluff", 'Y', "stickWood"
 					});
 
