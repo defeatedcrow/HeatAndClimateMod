@@ -172,19 +172,19 @@ public class DCPluginForestry {
 			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyed_slice"));
 
 			if (slice != null) {
-				DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),
+				DCRecipe.addShapedNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),
 						new Object[] {
 								"XXX", "XYX", "XXX", 'Y', new ItemStack(FoodInit.bread, 1, 1), 'X', "dropHoney"
 						});
 
-				DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),
+				DCRecipe.addShapedNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),
 						new Object[] {
 								"XXX", "XYX", "XXX", 'Y', new ItemStack(FoodInit.bread, 1, 3), 'X', "dropHoney"
 						});
 			}
 
 			if (fer != null) {
-				DCRecipe.addShapelessRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(fer, 1, 0),
+				DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(fer, 1, 0),
 						new Object[] {
 								"dustPresscake", "dustAsh", new ItemStack(Items.DYE, 1, 15)
 						});

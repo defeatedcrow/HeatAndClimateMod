@@ -69,7 +69,7 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 2), new ItemStack(Items.QUARTZ), 0.25F,
 					"oreChalcedonyWhite");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 4), new ItemStack(MainInit.gems, 1, 4),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 4), new ItemStack(MainInit.gems, 1, 4),
 					0.2F, "oreSapphire");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2),
@@ -78,25 +78,25 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 8), new ItemStack(MainInit.gems, 1, 8),
 					0.5F, "oreSalt");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 9), new ItemStack(MainInit.gems, 1, 9),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 9), new ItemStack(MainInit.gems, 1, 9),
 					0.5F, "oreNiter");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 10), new ItemStack(MainInit.gems, 1, 10),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 10), new ItemStack(MainInit.gems, 1, 10),
 					0.5F, "oreSulfur");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 8),
 					new ItemStack(MainInit.oreDust, 1, 8), 0.25F, "oreTin");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 11), new ItemStack(MainInit.gems, 1, 11),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 11), new ItemStack(MainInit.gems, 1, 11),
 					0.2F, "oreSchorl");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 4, 12), new ItemStack(MainInit.gems, 1, 13),
 					0.05F, "oreSerpentine");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 1, 14), new ItemStack(MainInit.gems, 1, 14),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 14), new ItemStack(MainInit.gems, 1, 14),
 					0.2F, "oreGarnet");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 10),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 10),
 					new ItemStack(MainInit.gems, 1, 15), 0.2F, "oreTitanium");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 11),
@@ -105,22 +105,22 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 11),
 					new ItemStack(MainInit.oreDust, 1, 11), 0.5F, "oreAluminum");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 12),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 12),
 					new ItemStack(MainInit.oreDust, 1, 1), 0.75F, "oreBismuth");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 9),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 2, 9),
 					new ItemStack(MainInit.gems, 1, 18), 0.5F, "oreApatite");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 13),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 13),
 					new ItemStack(MainInit.oreDust, 1, 3), 0.25F, "oreLead");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.QUARTZ, 1, 0), new ItemStack(Items.QUARTZ, 1, 0),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.QUARTZ, 2, 0), new ItemStack(Items.QUARTZ, 1, 0),
 					0.2F, "oreQuartz");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.EMERALD, 1, 0), new ItemStack(Items.EMERALD, 1, 0),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.EMERALD, 2, 0), new ItemStack(Items.EMERALD, 1, 0),
 					0.2F, "oreEmerald");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DIAMOND, 1, 0), new ItemStack(Items.DIAMOND, 1, 0),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DIAMOND, 2, 0), new ItemStack(Items.DIAMOND, 1, 0),
 					0.2F, "oreDiamond");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 3, 4), new ItemStack(MainInit.oreDust, 1, 0),
@@ -129,7 +129,7 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.REDSTONE, 4, 0),
 					new ItemStack(MainInit.oreDust, 1, 9), 0.5F, "oreRedstone");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.COAL, 2, 0), new ItemStack(MainInit.miscDust, 1, 0),
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.COAL, 3, 0), new ItemStack(MainInit.miscDust, 1, 0),
 					0.5F, "oreCoal");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 0), new ItemStack(MainInit.oreDust, 1, 11),
@@ -201,7 +201,7 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 5, 15), new ItemStack(Items.DYE, 2, 15), 0.5F,
 					"bone");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.SUGAR, 2, 0), new ItemStack(Items.SUGAR, 1, 0), 0.5F,
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.SUGAR, 3, 0), new ItemStack(Items.SUGAR, 1, 0), 0.5F,
 					"sugarcane");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 0), null, 0.0F,

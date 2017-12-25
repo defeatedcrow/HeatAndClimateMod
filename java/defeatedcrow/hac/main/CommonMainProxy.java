@@ -116,7 +116,7 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadMaterial() {
 		MainMaterialRegister.load();
-		GameRegistry.registerFuelHandler(new DCFuelHandler());
+		// GameRegistry.registerFuelHandler(new DCFuelHandler());
 		MainCreativeTabRegister.load();
 	}
 
