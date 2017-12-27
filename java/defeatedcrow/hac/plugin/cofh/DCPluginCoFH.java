@@ -157,10 +157,6 @@ public class DCPluginCoFH {
 					DCHeatTier.SMELTING);
 		}
 
-		RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 2, 9), null,
-				null, null, DCHeatTier.UHT, 0, null, null, null, new Object[] {
-						"fuelCoke", "dustLime"
-				}), DCHeatTier.UHT);
 	}
 
 }

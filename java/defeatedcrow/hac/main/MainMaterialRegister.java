@@ -13,6 +13,7 @@ import defeatedcrow.hac.food.FoodInitRegister;
 import defeatedcrow.hac.machine.MachineInitRegister;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.magic.MagicInitRegister;
+import defeatedcrow.hac.main.block.FuelItemBlock;
 import defeatedcrow.hac.main.block.build.BlockAwning;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockCarbideLamp;
@@ -98,6 +99,7 @@ import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.DCMaterialEnum;
 import defeatedcrow.hac.main.util.DCToolMaterial;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -186,7 +188,10 @@ public class MainMaterialRegister {
 
 	static void registerSidedBlock() {
 		MainInit.logCont = new BlockLogCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_log", 6);
-		DCMaterialReg.registerBlock(MainInit.logCont, ClimateCore.PACKAGE_BASE + "_cont_log", ClimateMain.MOD_ID);
+		int[] f = {
+				1600, 1600, 1600, 1600, 1600, 1600, 14400
+		};
+		registerBlock(MainInit.logCont, ClimateCore.PACKAGE_BASE + "_cont_log", ClimateMain.MOD_ID, f);
 		ClimateMain.proxy.addSidedBlock(MainInit.logCont, "cont_log", 6);
 
 		MainInit.cropCont = new BlockCropCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_crop", 10);
@@ -785,6 +790,12 @@ public class MainMaterialRegister {
 
 		DCArmorMaterial.load();
 		DCToolMaterial.load();
+	}
+
+	static void registerBlock(Block block, String name, String modid, int[] fuel) {
+		Block reg = block.setRegistryName(modid, name);
+		ForgeRegistries.BLOCKS.register(reg);
+		ForgeRegistries.ITEMS.register(new FuelItemBlock(reg, fuel));
 	}
 
 	private static void registerHarvestLevel() {

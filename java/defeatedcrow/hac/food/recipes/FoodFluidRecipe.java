@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.climate.recipe.FluidCraftRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -322,6 +323,13 @@ public class FoodFluidRecipe {
 			regBoilrecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000), null, null, false,
 					new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 							"cropKelp"
+					});
+		}
+
+		if (ModuleConfig.machine_advanced && ModuleConfig.r_reactor) {
+			RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(MachineInit.fuelGas, 500),
+					DCHeatTier.NORMAL, null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
+							"gemCarbide"
 					});
 		}
 
