@@ -151,6 +151,10 @@ public class LoadingYagenRecipe {
 				"toolNormalYagen", "cropWheat"
 		});
 
+		DCRecipe.addShapelessNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.foodMaterials, 1, 2), new Object[] {
+				"toolNormalYagen", "seedRice"
+		});
+
 		DCRecipe.addShapelessNBTRecipe(res.getRecipeName(), new ItemStack(Items.BLAZE_POWDER, 1, 0), new Object[] {
 				"toolNormalYagen", new ItemStack(Blocks.MAGMA, 1, 0)
 		});

@@ -138,6 +138,9 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.oreDust, 1, 11),
 					0.25F, new ItemStack(Blocks.SAND, 1, 1));
 
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 4, 2),
+					new ItemStack(MainInit.miscDust, 1, 9), 1F, new ItemStack(Blocks.BONE_BLOCK, 1, 0));
+
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 0), new ItemStack(Items.COAL, 1, 0));
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), "gemQuartz");
