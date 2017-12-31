@@ -60,6 +60,10 @@ public class LoadingOreRecipe {
 				"dustTin", "dustTin"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
+				"XXX", "XXX", "XXX", 'X', "dustBronze"
+		});
+
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 				"dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron",
 				"dustGraphite"
