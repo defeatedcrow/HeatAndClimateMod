@@ -25,7 +25,8 @@ public class ItemDCSeeds extends DCItem {
 			"tomato",
 			"coffee",
 			"cotton",
-			"lotus"
+			"lotus",
+			"herb"
 	};
 
 	public ItemDCSeeds(int max) {
@@ -91,6 +92,8 @@ public class ItemDCSeeds extends DCItem {
 			return FoodInit.cropCotton;
 		case 6:
 			return FoodInit.cropLotus;
+		case 7:
+			return FoodInit.cropHerb;
 		default:
 			return FoodInit.cropRice;
 		}

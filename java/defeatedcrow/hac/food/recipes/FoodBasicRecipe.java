@@ -546,6 +546,15 @@ public class FoodBasicRecipe {
 				"gemChalcedony"
 		});
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 7), new Object[] {
+				new ItemStack(FoodInit.crops, 1, 9)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 7), new Object[] {
+				"blockTallGrass",
+				"gemChalcedony"
+		});
+
 		String[] crops = new String[] {
 				"cropRice",
 				"cropOnion",

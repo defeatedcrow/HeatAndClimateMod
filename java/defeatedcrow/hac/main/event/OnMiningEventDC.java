@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +16,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -58,8 +60,10 @@ public class OnMiningEventDC {
 			if (state == null || DCUtil.isEmpty(held))
 				return;
 
-			if (state.getBlock() == Blocks.TALLGRASS && held.getItem() instanceof ItemShears) {
-				if (rand.nextFloat() < 0.25F * level) {
+			float f = event.getWorld().rand.nextFloat();
+			if (state.getBlock() instanceof BlockBush
+					&& (held.getItem() instanceof ItemShears || held.getItem() instanceof ItemSword)) {
+				if (f < 0.10F * level) {
 					event.getDrops().add(new ItemStack(FoodInit.crops, 1, 9));
 				}
 			}

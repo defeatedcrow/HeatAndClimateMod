@@ -269,6 +269,7 @@ item.dcs_food_seeds_tomato.name=Tomato Seeds
 item.dcs_food_seeds_coffee.name=Coffee Seeds
 item.dcs_food_seeds_cotton.name=Cotton Seeds
 item.dcs_food_seeds_lotus.name=Lotus Root
+item.dcs_food_seeds_herb.name=Herb Seeds
 item.dcs_food_petals_lotus.name=Lotus Petal
 item.dcs_food_petals_black.name=Black Petal
 
@@ -851,6 +852,10 @@ tile.dcs_crop_lotus_12.name=Lotus Block
 tile.dcs_crop_lotus_13.name=Lotus Block
 tile.dcs_crop_lotus_14.name=Lotus Block
 tile.dcs_crop_lotus_15.name=Lotus Block
+tile.dcs_crop_herb_1.name=Herb Plant
+tile.dcs_crop_herb_2.name=Herb Plant
+tile.dcs_crop_herb_3.name=Herb Plant
+tile.dcs_crop_herb_4.name=Herb Plant
 
 dcs_te_normal_chamber.name=Combustion Chamber
 dcs_te_shitirin.name=Shichirin

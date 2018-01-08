@@ -59,6 +59,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesOlive);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesTea);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLotus);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropHerb);
 	}
 
 	public static void loadOres() {
@@ -86,6 +87,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("seedCoffee", new ItemStack(FoodInit.seeds, 1, 4));
 		OreDictionary.registerOre("seedCotton", new ItemStack(FoodInit.seeds, 1, 5));
 		OreDictionary.registerOre("seedLotus", new ItemStack(FoodInit.seeds, 1, 6));
+		OreDictionary.registerOre("seedHerb", new ItemStack(FoodInit.seeds, 1, 7));
 		OreDictionary.registerOre("saplingLemon", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("saplingOlive", new ItemStack(FoodInit.saplings, 1, 1));

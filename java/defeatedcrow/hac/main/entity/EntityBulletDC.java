@@ -8,7 +8,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 
-import defeatedcrow.hac.core.ClimateCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -69,7 +68,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		this.xTile = -1;
 		this.yTile = -1;
 		this.zTile = -1;
-		this.damage = ClimateCore.isDebug ? 16.0D : 12.0D;
+		this.damage = 32.0D;
 		if (this.getIsRangedAttack()) {
 			this.setSize(2.0F, 2.0F);
 		} else {
