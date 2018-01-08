@@ -63,6 +63,10 @@ public class FoodBasicRecipe {
 
 		// materials
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.dropCream, 2, 0), new Object[] {
+				"bucketMilk"
+		});
+
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.meat, 1, 1), new Object[] {
 				"foodViscera"
 		});

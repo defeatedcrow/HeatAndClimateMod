@@ -61,6 +61,19 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 				return new ItemStack(FoodInit.crops, 1, 8);
 			else if (block == FoodInit.cropLotus)
 				return new ItemStack(FoodInit.crops, 1, 10);
+			else if (block == FoodInit.saplings) {
+				int meta = accessor.getMetadata();
+				switch (meta) {
+				case 0:
+					return new ItemStack(FoodInit.saplings, 1, 0);
+				case 1:
+					return new ItemStack(FoodInit.saplings, 1, 1);
+				case 2:
+					return new ItemStack(FoodInit.saplings, 1, 2);
+				default:
+					return new ItemStack(FoodInit.saplings, 1, 0);
+				}
+			}
 		}
 
 		return ItemStack.EMPTY;
@@ -148,6 +161,7 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 		registrar.registerStackProvider(provider, FoodInit.leavesLemon.getClass());
 		registrar.registerStackProvider(provider, FoodInit.leavesOlive.getClass());
 		registrar.registerStackProvider(provider, FoodInit.leavesTea.getClass());
+		registrar.registerStackProvider(provider, FoodInit.saplings.getClass());
 
 		registrar.registerBodyProvider(provider, ClimateCropBase.class);
 		registrar.registerBodyProvider(provider, ClimateDoubleCropBase.class);
