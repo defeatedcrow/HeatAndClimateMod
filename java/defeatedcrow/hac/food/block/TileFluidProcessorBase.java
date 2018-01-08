@@ -180,7 +180,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
-			int max = dummy.getTankProperties()[0].getCapacity();
+			int max = Math.min(dummy.getTankProperties()[0].getCapacity(), tank.getCapacity());
 			FluidStack fc = dummy.drain(max, false);
 			// 流入の場合
 			if (fc != null && fc.amount > 0 && tank.canFillTarget(fc)) {
@@ -189,13 +189,13 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				boolean b = false;
 				int rem = tank.getCapacity() - tank.getFluidAmount();
 				fc = dummy.drain(rem, false);
-				if (fc != null && fc.amount <= rem) {
+				if (fc != null) {
 					FluidStack fill = null;
 					fill = dummy.drain(rem, true);
 					ret = dummy.getContainer();
 
 					if (fill != null
-							&& (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
+							&& (DCUtil.isEmpty(ret) || DCUtil.isEmpty(out) || this.isItemStackable(ret, out) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -223,7 +223,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		if (in2.getCount() > 1) {
 			in2.setCount(1);
 		}
-		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		} else if (in.getItem() instanceof IFluidHandlerItem) {
 			dummy = (IFluidHandlerItem) in2.getItem();
@@ -232,6 +232,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
+			FluidStack send = tank.getFluid();
 
 			int max = dummy.getTankProperties()[0].getCapacity();
 			FluidStack fc = dummy.drain(max, false);
@@ -239,7 +240,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			int rem = max;
 			if (fc == null || fc.amount == 0) {
 				b = true;
-			} else {
+			} else if (tank.getFluidType() == fc.getFluid()) {
 				rem = max - fc.amount;
 				if (tank.getFluidAmount() <= rem) {
 					b = true;
@@ -252,7 +253,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				fill = dummy.fill(drain, true);
 				ret = dummy.getContainer();
 
-				if (fill > 0 && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
+				if (fill > 0 && (DCUtil.isEmpty(ret) || DCUtil.isEmpty(out) || this.isItemStackable(ret, out) > 0)) {
 					loose = true;
 					tank.drain(fill, true);
 				}
