@@ -234,6 +234,9 @@ public class MachineRecipes {
 		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));
 		OreDictionary.registerOre("dustPhosphorus", new ItemStack(MachineInit.reagent, 1, 10));
 		OreDictionary.registerOre("fuelCoke", new ItemStack(MachineInit.reagent, 1, 13));
+		OreDictionary.registerOre("blockFuelCoke", new ItemStack(MachineInit.fuelCont, 1, 0));
+		OreDictionary.registerOre("blockCarbide", new ItemStack(MachineInit.fuelCont, 1, 1));
+
 	}
 
 }

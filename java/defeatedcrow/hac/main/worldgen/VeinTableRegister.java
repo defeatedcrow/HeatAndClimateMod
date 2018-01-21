@@ -34,7 +34,8 @@ public class VeinTableRegister implements IVeinTableRegister {
 		sand.addOreToTable1(new OreSet(40, new BlockSet(MainInit.ores_2, 1)),
 				new OreSet(30, new BlockSet(MainInit.ores_2, 2)), new OreSet(30, new BlockSet(MainInit.ores_2, 0)));
 		sand.addOreToTable2(new OreSet(40, new BlockSet(MainInit.ores_2, 1)),
-				new OreSet(30, new BlockSet(MainInit.ores_2, 10)), new OreSet(30, new BlockSet(MainInit.ores_2, 0)));
+				new OreSet(30, new BlockSet(MainInit.ores_2, 10)), new OreSet(30, new BlockSet(MainInit.ores_2, 0)),
+				new OreSet(30, new BlockSet(MainInit.ores_2, 2)));
 		list.add(sand);
 
 		VeinTable bx = new VeinTable(EnumVein.BAUXITE, new OreSet(100, new BlockSet(Blocks.STONE, 1)),

@@ -25,12 +25,12 @@ public class FoodFluidRecipe {
 
 	static void loadFluidRecipes() {
 
-		regNonFoodrecipe(null, null, 0F, new FluidStack(FoodInit.hotSpring, 1000), DCHeatTier.OVEN, null, null, false,
+		regNonFoodrecipe(null, null, 0F, new FluidStack(FoodInit.hotSpring, 1000), DCHeatTier.HOT, null, null, false,
 				new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						"dustSalt"
 				});
 
-		regNonFoodrecipe(null, null, 0F, new FluidStack(FoodInit.hotSpring, 1000), DCHeatTier.OVEN, null, null, false,
+		regNonFoodrecipe(null, null, 0F, new FluidStack(FoodInit.hotSpring, 1000), DCHeatTier.HOT, null, null, false,
 				new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						"dustSulfur"
 				});
