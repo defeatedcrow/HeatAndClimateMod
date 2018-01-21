@@ -33,10 +33,10 @@ public class MachineDeviceRecipes {
 
 	static void loadClimateRecipe() {
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1, 0), DCHeatTier.SMELTING, null,
-				DCAirflow.TIGHT, false, "blockFuelCoke");
+				DCAirflow.TIGHT, false, "blockCoal");
 
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1, 1), DCHeatTier.UHT, DCHumidity.DRY,
-				DCAirflow.TIGHT, false, new ItemStack(MachineInit.fuelCont, 1, 0));
+				DCAirflow.TIGHT, false, "blockFuelCoke");
 	}
 
 	static void loadMachineRecipe() {
