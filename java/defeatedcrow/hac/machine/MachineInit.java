@@ -112,4 +112,6 @@ public class MachineInit {
 	public static Item magneticHover;
 
 	public static Item platingChrome;
+
+	public static Block fuelCont;
 }

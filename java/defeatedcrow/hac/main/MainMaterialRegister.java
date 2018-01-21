@@ -792,7 +792,7 @@ public class MainMaterialRegister {
 		DCToolMaterial.load();
 	}
 
-	static void registerBlock(Block block, String name, String modid, int[] fuel) {
+	public static void registerBlock(Block block, String name, String modid, int[] fuel) {
 		Block reg = block.setRegistryName(modid, name);
 		ForgeRegistries.BLOCKS.register(reg);
 		ForgeRegistries.ITEMS.register(new FuelItemBlock(reg, fuel));

@@ -128,6 +128,7 @@ item.dcs_reagent_gem_carbide.name=Carbide
 item.dcs_reagent_bottle_phosphorus.name=Phosphorus
 item.dcs_reagent_bottle_phosphoric_acid.name=Phosphoric Acid
 item.dcs_reagent_bottle_ammonium_phosphate.name=Ammonium Phosphate
+item.dcs_reagent_gem_coke.name=Fuel Coke
 item.dcs_catalyst_silver.name=Nickel Catalyst
 item.dcs_catalyst_titanium.name=Titanium Catalyst
 item.dcs_catalyst_bismuth.name=Bismuth Catalyst
@@ -597,6 +598,8 @@ tile.dcs_cont_basket_lemon.name=Lemon Basket
 tile.dcs_cont_basket_olive.name=Olive Basket
 tile.dcs_cont_basket_tea.name=Tea Leaves Basket
 tile.dcs_cont_basket_lotus.name=Lotus Seed Basket
+tile.dcs_cont_fuel_coke.name=Fuel Coke Container
+tile.dcs_cont_fuel_carbide.name=Carbide Container
 
 ## building blocks
 tile.dcs_build_selenite_normal.name=Selenite Glass

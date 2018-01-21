@@ -249,12 +249,12 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
 		MainAPIManager.fuelRegister.registerFuel("bio.ethanol", 100);
 		MainAPIManager.fuelRegister.registerFuel("biomass", 60);
-		MainAPIManager.fuelRegister.registerFuel("fusionfueldt", 120);
-		MainAPIManager.fuelRegister.registerFuel("ethene", 100);
+		MainAPIManager.fuelRegister.registerFuel("fusionfueldt", 150);
+		MainAPIManager.fuelRegister.registerFuel("ethene", 120);
 		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
 
-		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 120);
-		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 150);
+		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 150);
+		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 120);
 
 		// dic
 		FluidDictionaryDC.registerFluidDic(MachineInit.hydrogen, "hydrogen");

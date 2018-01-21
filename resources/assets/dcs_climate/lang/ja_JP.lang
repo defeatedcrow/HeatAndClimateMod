@@ -119,6 +119,7 @@ item.dcs_reagent_gem_carbide.name=カーバイド
 item.dcs_reagent_bottle_phosphorus.name=リン
 item.dcs_reagent_bottle_phosphoric_acid.name=リン酸
 item.dcs_reagent_bottle_ammonium_phosphate.name=リン酸アンモニウム
+item.dcs_reagent_gem_coke.name=コークス
 item.dcs_catalyst_silver.name=ニッケル触媒
 item.dcs_catalyst_titanium.name=チタン触媒
 item.dcs_catalyst_bismuth.name=ビスマス触媒
@@ -576,6 +577,8 @@ tile.dcs_cont_basket_lemon.name=レモンのバスケット
 tile.dcs_cont_basket_olive.name=オリーブのバスケット
 tile.dcs_cont_basket_tea.name=茶葉のバスケット
 tile.dcs_cont_basket_lotus.name=蓮の実のバスケット
+tile.dcs_cont_fuel_coke.name=コークスのコンテナ
+tile.dcs_cont_fuel_carbide.name=カーバイドのコンテナ
 
 tile.dcs_build_selenite_normal.name=セレナイトガラス
 tile.dcs_build_selenite_light.name=セレナイトランプガラス
