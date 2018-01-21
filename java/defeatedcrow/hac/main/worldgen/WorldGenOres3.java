@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 import defeatedcrow.hac.api.climate.BlockSet;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.orevein.OreSet;
@@ -23,7 +22,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 // 新型
 public class WorldGenOres3 implements IWorldGenerator {
 
-	private static final boolean debug = ClimateCore.isDebug;
+	private static final boolean debug = false;
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,

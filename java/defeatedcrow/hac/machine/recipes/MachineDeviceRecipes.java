@@ -33,10 +33,10 @@ public class MachineDeviceRecipes {
 
 	static void loadClimateRecipe() {
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1, 0), DCHeatTier.SMELTING, null,
-				DCAirflow.TIGHT, false, new ItemStack(Blocks.COAL_BLOCK, 1, 0));
+				DCAirflow.TIGHT, false, "blockCoal");
 
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1, 1), DCHeatTier.UHT, DCHumidity.DRY,
-				DCAirflow.TIGHT, false, new ItemStack(MachineInit.fuelCont, 1, 0));
+				DCAirflow.TIGHT, false, "blockFuelCoke");
 	}
 
 	static void loadMachineRecipe() {
@@ -420,6 +420,13 @@ public class MachineDeviceRecipes {
 							new ItemStack(MachineInit.reagent, 1, 1)
 					});
 			RecipeAPI.registerReactorRecipes.addRecipe(r18, DCHeatTier.OVEN);
+
+			// 硝石
+			IReactorRecipe r38 = new ReactorRecipe(new ItemStack(MainInit.miscDust, 1, 6), null, null, null,
+					DCHeatTier.OVEN, 0, null, new FluidStack(MachineInit.nitricAcid, 200), null, new Object[] {
+							"dustAlkali"
+					});
+			RecipeAPI.registerReactorRecipes.addRecipe(r38, DCHeatTier.OVEN);
 
 			// コークス
 
