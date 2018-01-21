@@ -157,28 +157,6 @@ public class MachineRecipes {
 				"gearSteel"
 		});
 
-		/* == items == */
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.torqueChecker, 1, 0), new Object[] {
-				"XXX", "YZY", " X ", 'X', "ingotSteel", 'Y', new ItemStack(Blocks.GLASS_PANE, 1, 0), 'Z', "dustRedstone"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.mold, 4, 0), new Object[] {
-				"XYX", 'X', "ingotIron", 'Y', "ingotSteel"
-		});
-
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.mold, 1, 0), new Object[] {
-				new ItemStack(MachineInit.mold, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 0), new Object[] {
-				"XZX", "YZY", "XZX", 'X', "ingotCopper", 'Y', new ItemStack(Blocks.IRON_BARS, 1, 0), 'Z', "ingotIron"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 1), new Object[] {
-				"XYX", "YZY", "XYX", 'X', "ingotSteel", 'Y', "ingotCopper", 'Z', "ingotMagnet"
-		});
-
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.conveyor, 8, 0), new Object[] {
 				"XYX", 'X', "ingotSteel", 'Y', "gearSteel"
 		});
@@ -205,6 +183,44 @@ public class MachineRecipes {
 				new ItemStack(MachineInit.IBC, 1, 0), 'V', new ItemStack(MachineInit.gearbox2, 1, 0),
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.fuelCont, 1, 0), new Object[] {
+				"XXX", "XXX", "XXX", 'X', "fuelCoke"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.fuelCont, 1, 1), new Object[] {
+				"XXX", "XXX", "XXX", 'X', "gemCarbide"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 1, 13), new Object[] {
+				new ItemStack(MachineInit.fuelCont, 1, 0)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 1, 9), new Object[] {
+				new ItemStack(MachineInit.fuelCont, 1, 1)
+		});
+
+		/* == items == */
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.torqueChecker, 1, 0), new Object[] {
+				"XXX", "YZY", " X ", 'X', "ingotSteel", 'Y', new ItemStack(Blocks.GLASS_PANE, 1, 0), 'Z', "dustRedstone"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.mold, 4, 0), new Object[] {
+				"XYX", 'X', "ingotIron", 'Y', "ingotSteel"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.mold, 1, 0), new Object[] {
+				new ItemStack(MachineInit.mold, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 0), new Object[] {
+				"XZX", "YZY", "XZX", 'X', "ingotCopper", 'Y', new ItemStack(Blocks.IRON_BARS, 1, 0), 'Z', "ingotIron"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 1), new Object[] {
+				"XYX", "YZY", "XYX", 'X', "ingotSteel", 'Y', "ingotCopper", 'Z', "ingotMagnet"
+		});
+
 	}
 
 	public static void loadOres() {
@@ -217,6 +233,7 @@ public class MachineRecipes {
 		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
 		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));
 		OreDictionary.registerOre("dustPhosphorus", new ItemStack(MachineInit.reagent, 1, 10));
+		OreDictionary.registerOre("fuelCoke", new ItemStack(MachineInit.reagent, 1, 13));
 	}
 
 }

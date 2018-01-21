@@ -11,13 +11,13 @@ public class ItemReagents extends DCItem {
 	private static String[] names = {
 			"drop_coaltar", "drop_glycerine", "drop_synthetic", "dust_alkali", "dust_ammonium_nitrate",
 			"dust_nitrocellulose", "bottle_nitroglycerin", "bottle_carbon_black", "smokeless_gunpowder", "gem_carbide",
-			"bottle_phosphorus", "bottle_phosphoric_acid", "bottle_ammonium_phosphate"
+			"bottle_phosphorus", "bottle_phosphoric_acid", "bottle_ammonium_phosphate", "gem_coke"
 	};
 
 	private static String[] tex_names = {
 			"drop_coaltar", "drop_glycerine", "drop_synthetic", "white_powder_bottle", "white_powder_bottle",
 			"white_powder_bottle", "orange_water_bottle", "black_water_bottle", "dust_smokeless", "gem_carbide",
-			"red_powder_bottle", "clear_water_bottle", "white_powder_bottle"
+			"red_powder_bottle", "clear_water_bottle", "white_powder_bottle", "gem_coke"
 	};
 
 	public ItemReagents() {
@@ -52,7 +52,9 @@ public class ItemReagents extends DCItem {
 		else if (i == 1)
 			return 800;
 		else if (i == 9)
-			return 6400;
+			return 12800;
+		else if (i == 13)
+			return 5400;
 		else
 			return 0;
 	}

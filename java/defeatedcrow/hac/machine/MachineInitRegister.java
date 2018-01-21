@@ -49,6 +49,7 @@ import defeatedcrow.hac.machine.block.BlockWindmill_L;
 import defeatedcrow.hac.machine.block.ItemAdapterPanel;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
+import defeatedcrow.hac.machine.block.cont.BlockFuelCont;
 import defeatedcrow.hac.machine.item.ItemAdapterCard;
 import defeatedcrow.hac.machine.item.ItemAlloyMold;
 import defeatedcrow.hac.machine.item.ItemAluminiumMold;
@@ -65,6 +66,7 @@ import defeatedcrow.hac.machine.item.ItemSynthetic;
 import defeatedcrow.hac.machine.item.ItemTorqueChecker;
 import defeatedcrow.hac.machine.item.plating.ItemPlatingChrome;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
@@ -226,6 +228,14 @@ public class MachineInitRegister {
 		MachineInit.dieselEngine = new BlockDieselEngine(ClimateCore.PACKAGE_BASE + "_device_diesel_engine");
 		registerTierBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_BASE + "_device_diesel_engine", 3);
 
+		MachineInit.fuelCont = new BlockFuelCont(ClimateCore.PACKAGE_BASE + "_cont_fuel");
+		MainMaterialRegister.registerBlock(MachineInit.fuelCont, ClimateCore.PACKAGE_BASE + "_cont_fuel",
+				ClimateMain.MOD_ID, new int[] {
+						54000, 128000
+				});
+		ClimateMain.proxy.addSidedBlock(MachineInit.fuelCont, "cont_fuel", 1);
+
+		// entity
 		MachineInit.motorMinecart = new ItemMinecartMotor()
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_minecart");
 		DCMaterialReg.registerItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_BASE + "_motor_minecart",
@@ -357,6 +367,8 @@ public class MachineInitRegister {
 			MachineInit.scooter.setCreativeTab(ClimateMain.machine);
 			MachineInit.magneticHover.setCreativeTab(ClimateMain.machine);
 			MachineInit.platingChrome.setCreativeTab(ClimateMain.machine);
+
+			MachineInit.fuelCont.setCreativeTab(ClimateMain.machine);
 		}
 	}
 

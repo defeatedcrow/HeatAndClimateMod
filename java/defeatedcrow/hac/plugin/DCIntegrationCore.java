@@ -15,6 +15,7 @@ public class DCIntegrationCore {
 	public static boolean loadedBoP = false;
 	public static boolean loadedTanpopo = false;
 	public static boolean loadedJEI = false;
+	public static boolean loadedBC = false;
 
 	private DCIntegrationCore() {}
 
@@ -36,6 +37,9 @@ public class DCIntegrationCore {
 		}
 		if (Loader.isModLoaded("schr0tanpopo")) {
 			loadedTanpopo = true;
+		}
+		if (Loader.isModLoaded("buildcraftenergy") && ModuleConfig.bc) {
+			loadedBC = true;
 		}
 	}
 
@@ -101,6 +105,15 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: forestry");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: forestry");
+			}
+		}
+
+		if (loadedBC) {
+			try {
+				DCPluginBuildcraft.loadInit();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: buildcraftenergy");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: buildcraftenergy");
 			}
 		}
 
