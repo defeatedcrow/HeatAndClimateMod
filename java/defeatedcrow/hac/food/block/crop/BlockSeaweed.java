@@ -239,8 +239,7 @@ public class BlockSeaweed extends Block
 
 	protected boolean isSoil(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		boolean soil = state.getMaterial() == Material.GROUND || state.getMaterial() == Material.GRASS
-				|| state.getMaterial() == Material.SAND || state.getBlock() == this;
+		boolean soil = state.isSideSolid(world, pos, EnumFacing.UP) || state.getBlock() == this;
 		return soil;
 	}
 
