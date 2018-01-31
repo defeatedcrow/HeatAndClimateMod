@@ -221,8 +221,7 @@ public class EntityScooter extends Entity implements IInventory {
 	}
 
 	public int getBurnTime(Fluid fluid) {
-		String s = fluid.getName();
-		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
+		int burn = MainAPIManager.fuelRegister.getBurningTime(fluid);
 		return burn;
 	}
 

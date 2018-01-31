@@ -148,7 +148,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.cartridge, ClimateCore.PACKAGE_ID, "dcs_cartridge", "equip", 7);
 
 		MAIN_INSTANCE.regSimpleItem(MainInit.linenUnder, ClimateCore.PACKAGE_ID, "dcs_leggins_linen", "equip", 0);
-		MAIN_INSTANCE.regSimpleItem(MainInit.linenCourt, ClimateCore.PACKAGE_ID, "dcs_plate_linen", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.linenCoat, ClimateCore.PACKAGE_ID, "dcs_plate_linen", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.clothUnder, ClimateCore.PACKAGE_ID, "dcs_leggins_cloth", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.workerSuit, ClimateCore.PACKAGE_ID, "dcs_leggins_worker", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.blackSuit, ClimateCore.PACKAGE_ID, "dcs_leggins_black", "equip", 0);
@@ -158,6 +158,11 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.hoodie, ClimateCore.PACKAGE_ID, "dcs_plate_hoodie", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.leatherHat, ClimateCore.PACKAGE_ID, "dcs_hat_leather", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cottonHat, ClimateCore.PACKAGE_ID, "dcs_hat_cotton", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.woolWear, ClimateCore.PACKAGE_ID, "dcs_wear_wool", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.furWear, ClimateCore.PACKAGE_ID, "dcs_wear_fue", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.woolBoots, ClimateCore.PACKAGE_ID, "dcs_boots_wool", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.peaCoat, ClimateCore.PACKAGE_ID, "dcs_plate_peacoat", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.hoodieB, ClimateCore.PACKAGE_ID, "dcs_plate_hoodie_black", "equip", 0);
 	}
 
 	static void regCube(ITexturePath block, String domein, String name, String dir, int meta) {

@@ -71,6 +71,7 @@ import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorHat;
 import defeatedcrow.hac.main.item.equip.ItemArmorHoodie;
 import defeatedcrow.hac.main.item.equip.ItemArmorThinDC;
+import defeatedcrow.hac.main.item.equip.ItemArmorWool;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
 import defeatedcrow.hac.main.item.misc.ItemMiscs;
@@ -718,10 +719,10 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerItem(MainInit.linenUnder, ClimateCore.PACKAGE_BASE + "_leggins_linen",
 				ClimateMain.MOD_ID);
 
-		MainInit.linenCourt = new ItemArmorThinDC(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
+		MainInit.linenCoat = new ItemArmorThinDC(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
 				EntityEquipmentSlot.CHEST, "linen").setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_linen");
-		DCMaterialReg.registerItem(MainInit.linenCourt, ClimateCore.PACKAGE_BASE + "_coat_linen", ClimateMain.MOD_ID);
+		DCMaterialReg.registerItem(MainInit.linenCoat, ClimateCore.PACKAGE_BASE + "_coat_linen", ClimateMain.MOD_ID);
 
 		MainInit.clothUnder = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
 				EntityEquipmentSlot.LEGS, "cloth").setCreativeTab(ClimateMain.tool)
@@ -756,6 +757,16 @@ public class MainMaterialRegister {
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie_white");
 		DCMaterialReg.registerItem(MainInit.hoodie, ClimateCore.PACKAGE_BASE + "_hoodie_white", ClimateMain.MOD_ID);
 
+		MainInit.hoodieB = new ItemArmorHoodie(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+				EntityEquipmentSlot.CHEST, "black").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie_black");
+		DCMaterialReg.registerItem(MainInit.hoodieB, ClimateCore.PACKAGE_BASE + "_hoodie_black", ClimateMain.MOD_ID);
+
+		MainInit.peaCoat = new ItemArmorHoodie(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+				EntityEquipmentSlot.CHEST, "pea").setCreativeTab(ClimateMain.tool)
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_peacoat_black");
+		DCMaterialReg.registerItem(MainInit.peaCoat, ClimateCore.PACKAGE_BASE + "_peacoat_black", ClimateMain.MOD_ID);
+
 		MainInit.leatherHat = new ItemArmorHat(ArmorMaterial.LEATHER, DCMaterialEnum.LINEN, EntityEquipmentSlot.HEAD,
 				"leather").setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hat_leather");
@@ -764,6 +775,18 @@ public class MainMaterialRegister {
 		MainInit.cottonHat = new ItemArmorHat(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.HEAD,
 				"cotton").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hat_cotton");
 		DCMaterialReg.registerItem(MainInit.cottonHat, ClimateCore.PACKAGE_BASE + "_hat_cotton", ClimateMain.MOD_ID);
+
+		MainInit.woolWear = new ItemArmorWool(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.HEAD,
+				"wool").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wear_wool");
+		DCMaterialReg.registerItem(MainInit.woolWear, ClimateCore.PACKAGE_BASE + "_wear_wool", ClimateMain.MOD_ID);
+
+		MainInit.furWear = new ItemArmorWool(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.HEAD,
+				"fur").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wear_fur");
+		DCMaterialReg.registerItem(MainInit.furWear, ClimateCore.PACKAGE_BASE + "_wear_fur", ClimateMain.MOD_ID);
+
+		MainInit.woolBoots = new ItemArmorWool(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.FEET,
+				"boots").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_boots_wool");
+		DCMaterialReg.registerItem(MainInit.woolBoots, ClimateCore.PACKAGE_BASE + "_boots_wool", ClimateMain.MOD_ID);
 
 		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0))
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wrench_brass");

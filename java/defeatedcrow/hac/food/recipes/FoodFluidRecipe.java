@@ -9,7 +9,6 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
-import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -121,6 +120,11 @@ public class FoodFluidRecipe {
 		regBoilrecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000), null, null, false,
 				new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						"foodAnyMeat", "cropHerb", "listAllveggie"
+				});
+
+		regBoilrecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000), null, null, false,
+				new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"cropSeaweed"
 				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FluidRegistry.WATER, 1000),
@@ -281,6 +285,11 @@ public class FoodFluidRecipe {
 						"cropTomato", "foodRice", "fishSquid"
 				});
 
+		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 10), null, 0F, null, null, null, false,
+				new FluidStack(FoodInit.stock, 1000), new Object[] {
+						"cropSeaweed", "foodRice"
+				});
+
 		regBoilrecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, null, null, false,
 				new FluidStack(FoodInit.coffee, 1000), new Object[] {
 						"dustSugar", "foodCream", "foodAgar"
@@ -301,6 +310,11 @@ public class FoodFluidRecipe {
 						"dustSugar", "cropLemon", "foodGelatine"
 				});
 
+		regBoilrecipe(new ItemStack(FoodInit.cake, 3, 5), null, 0F, null, null, null, false,
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"dustSugar", "foodCustard"
+				});
+
 		if (MainInit.milk != null) {
 			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null, null, null, false,
 					new FluidStack(MainInit.milk, 1000), new Object[] {
@@ -314,17 +328,10 @@ public class FoodFluidRecipe {
 					});
 		}
 
-		if (!DCIntegrationCore.loadedBoP) {
-			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 3), null, 0F, null,
-					DCHeatTier.COLD, DCHumidity.DRY, null, false, null, new Object[] {
-							"cropSeaweed"
-					});
-
-			regBoilrecipe(null, null, 0F, new FluidStack(FoodInit.stock, 1000), null, null, false,
-					new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-							"cropKelp"
-					});
-		}
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 3), null, 0F, null, DCHeatTier.COLD,
+				DCHumidity.DRY, null, false, null, new Object[] {
+						"cropSeaweed"
+				});
 
 		if (ModuleConfig.machine_advanced && ModuleConfig.r_reactor) {
 			RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(MachineInit.fuelGas, 500),

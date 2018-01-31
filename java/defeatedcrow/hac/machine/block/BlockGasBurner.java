@@ -53,7 +53,7 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
-						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid().getName())) {
+						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid())) {
 							if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
 								world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
 										2.0F);

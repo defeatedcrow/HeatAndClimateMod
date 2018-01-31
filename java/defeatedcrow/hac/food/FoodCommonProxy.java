@@ -9,11 +9,13 @@ import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.CakeButterEntity;
 import defeatedcrow.hac.food.entity.CakeChocolateEntity;
 import defeatedcrow.hac.food.entity.CakeCoffeeEntity;
+import defeatedcrow.hac.food.entity.CakeCreamEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
 import defeatedcrow.hac.food.entity.ChickenPlateEntity;
 import defeatedcrow.hac.food.entity.ChocolatePieEntity;
 import defeatedcrow.hac.food.entity.ClubSandwichREntity;
 import defeatedcrow.hac.food.entity.ClubSandwichSEntity;
+import defeatedcrow.hac.food.entity.CustardPieEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
 import defeatedcrow.hac.food.entity.EmptyPlateEntity;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
@@ -35,6 +37,7 @@ import defeatedcrow.hac.food.entity.PorkPlateEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.PotatoPlateEntity;
 import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
+import defeatedcrow.hac.food.entity.RoundBreadCreamEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
 import defeatedcrow.hac.food.entity.SaladGreenEntity;
 import defeatedcrow.hac.food.entity.SaladLotusrootEntity;
@@ -51,6 +54,7 @@ import defeatedcrow.hac.food.entity.StewLotusrootEntity;
 import defeatedcrow.hac.food.entity.StewMushroomEntity;
 import defeatedcrow.hac.food.entity.StewPumpukinEntity;
 import defeatedcrow.hac.food.entity.StewPurpleEntity;
+import defeatedcrow.hac.food.entity.StewSeaweedEntity;
 import defeatedcrow.hac.food.entity.StewSquidEntity;
 import defeatedcrow.hac.food.entity.StewTomatoEntity;
 import defeatedcrow.hac.food.entity.StewVegiEntity;
@@ -90,6 +94,8 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(ChocolatePieEntity.class, "food", "pie_chocolate");
 		DCRegistryUtil.addEntity(FruitPieEntity.class, "food", "pie_fruit");
 		DCRegistryUtil.addEntity(PizzaTomatoEntity.class, "food", "pizza_tomato");
+		DCRegistryUtil.addEntity(RoundBreadCreamEntity.class, "food", "r_bread_cream");
+		DCRegistryUtil.addEntity(CustardPieEntity.class, "food", "pie_custard");
 
 		DCRegistryUtil.addEntity(ToastBreadEntity.class, "food", "toast");
 		DCRegistryUtil.addEntity(EntitySandwich.class, "food", "sandwich_apple");
@@ -123,6 +129,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(MooncakeEntity.class, "food", "moon_cake");
 		DCRegistryUtil.addEntity(StewLotusrootEntity.class, "food", "stew_lotusroot");
 		DCRegistryUtil.addEntity(StewSquidEntity.class, "food", "stew_squid");
+		DCRegistryUtil.addEntity(StewSeaweedEntity.class, "food", "stew_seaweed");
 
 		DCRegistryUtil.addEntity(SaladGreenEntity.class, "food", "salad_green");
 		DCRegistryUtil.addEntity(SaladLotusrootEntity.class, "food", "salad_lotusroot");
@@ -131,6 +138,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(CakeChocolateEntity.class, "food", "cake_chocolate");
 		DCRegistryUtil.addEntity(CakeCoffeeEntity.class, "food", "cake_coffee");
 		DCRegistryUtil.addEntity(CakeLemonEntity.class, "food", "cake_lemon");
+		DCRegistryUtil.addEntity(CakeCreamEntity.class, "food", "cake_bakedcream");
 	}
 
 }

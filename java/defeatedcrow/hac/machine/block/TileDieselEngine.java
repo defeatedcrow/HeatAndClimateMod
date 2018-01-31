@@ -122,8 +122,7 @@ public class TileDieselEngine extends TileTorqueBase
 	/* 燃焼判定 */
 
 	public static int getBurnTime(Fluid fluid) {
-		String s = fluid.getName();
-		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
+		int burn = MainAPIManager.fuelRegister.getBurningTime(fluid);
 		return burn;
 	}
 

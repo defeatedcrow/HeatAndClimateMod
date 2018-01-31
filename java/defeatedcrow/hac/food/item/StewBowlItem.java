@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.entity.StewLotusrootEntity;
 import defeatedcrow.hac.food.entity.StewMushroomEntity;
 import defeatedcrow.hac.food.entity.StewPumpukinEntity;
 import defeatedcrow.hac.food.entity.StewPurpleEntity;
+import defeatedcrow.hac.food.entity.StewSeaweedEntity;
 import defeatedcrow.hac.food.entity.StewSquidEntity;
 import defeatedcrow.hac.food.entity.StewTomatoEntity;
 import defeatedcrow.hac.food.entity.StewVegiEntity;
@@ -35,7 +36,7 @@ public class StewBowlItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 9;
+		return 10;
 	}
 
 	@Override
@@ -51,7 +52,8 @@ public class StewBowlItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"vegi", "egg", "congee", "tomato", "pumpkin", "borscht", "mushroom", "purple", "lotusroot", "squid"
+				"vegi", "egg", "congee", "tomato", "pumpkin", "borscht", "mushroom", "purple", "lotusroot", "squid",
+				"seaweed"
 		};
 		return s;
 	}
@@ -78,6 +80,8 @@ public class StewBowlItem extends FoodItemBase {
 			ret = new StewLotusrootEntity(world, x, y, z, player);
 		} else if (i == 9) {
 			ret = new StewSquidEntity(world, x, y, z, player);
+		} else if (i == 10) {
+			ret = new StewSeaweedEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		DCLogger.debugLog("individual " + ret.getIndividual());

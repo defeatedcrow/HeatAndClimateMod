@@ -47,6 +47,7 @@ import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
+import defeatedcrow.hac.main.client.model.ModelWoolWear;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
@@ -88,6 +89,8 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	private static final ModelHat hatModel = new ModelHat(0);
 	private static final ModelHoodie hoodieModel = new ModelHoodie(0);
+	private static final ModelWoolWear woolModel = new ModelWoolWear(0);
+	private static final ModelWoolWear woolHatModel = new ModelWoolWear(3);
 
 	@Override
 	public void loadConst() {
@@ -247,10 +250,14 @@ public class ClientMainProxy extends CommonMainProxy {
 	@Override
 	public net.minecraft.client.model.ModelBiped getArmorModel(int slot) {
 		switch (slot) {
-		case 3:
+		case 0:
 			return hatModel;
-		case 2:
+		case 1:
 			return hoodieModel;
+		case 2:
+			return woolHatModel;
+		case 3:
+			return woolModel;
 		default:
 			return null;
 		}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "stage=0": { "model": "dcs_climate:crop/dcs_crop_seaweed0" },
+        "stage=1": { "model": "dcs_climate:crop/dcs_crop_seaweed1" },
+        "stage=2": { "model": "dcs_climate:crop/dcs_crop_seaweed2" },
+        "stage=3": { "model": "dcs_climate:crop/dcs_crop_seaweed3" }
+    }
+}

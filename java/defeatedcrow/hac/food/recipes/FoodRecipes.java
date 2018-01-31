@@ -58,6 +58,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesTea);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLotus);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropHerb);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropSeaweed);
 	}
 
 	public static void loadOres() {
@@ -86,6 +87,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("seedCotton", new ItemStack(FoodInit.seeds, 1, 5));
 		OreDictionary.registerOre("seedLotus", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("seedHerb", new ItemStack(FoodInit.seeds, 1, 7));
+		OreDictionary.registerOre("cropSeaweed", new ItemStack(FoodInit.seeds, 1, 8));
 		OreDictionary.registerOre("saplingLemon", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("saplingOlive", new ItemStack(FoodInit.saplings, 1, 1));
@@ -121,7 +123,7 @@ public class FoodRecipes {
 	}
 
 	static void loadFuelData() {
-		MainAPIManager.fuelRegister.registerFuel("dcs.seed_oil", 60);
-		MainAPIManager.fuelRegister.registerFuel("dcs.black_liquor", 60);
+		MainAPIManager.fuelRegister.registerFuel(FoodInit.oil, 60);
+		MainAPIManager.fuelRegister.registerFuel(FoodInit.blackLiquor, 60);
 	}
 }

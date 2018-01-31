@@ -86,31 +86,19 @@ public class ModelHat extends ModelThinBiped {
 			float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 
-		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+		setAngle(top, this.bipedHead);
+		setAngle(brim, this.bipedHead);
+		setAngle(face, this.bipedHead);
+	}
 
-		this.top.rotateAngleY = netHeadYaw / (180F / (float) Math.PI);
-		this.brim.rotateAngleY = netHeadYaw / (180F / (float) Math.PI);
-		this.face.rotateAngleY = netHeadYaw / (180F / (float) Math.PI);
+	private void setAngle(ModelRenderer m1, ModelRenderer m2) {
+		m1.rotationPointX = m2.rotationPointX;
+		m1.rotationPointY = m2.rotationPointY;
+		m1.rotationPointZ = m2.rotationPointZ;
 
-		if (flag) {
-			this.top.rotateAngleX = -((float) Math.PI / 4F);
-			this.brim.rotateAngleX = -((float) Math.PI / 4F);
-			this.face.rotateAngleX = -((float) Math.PI / 4F);
-		} else {
-			this.top.rotateAngleX = headPitch * 0.017453292F;
-			this.brim.rotateAngleX = headPitch * 0.017453292F;
-			this.face.rotateAngleX = headPitch * 0.017453292F;
-		}
-
-		if (this.isSneak) {
-			this.top.rotationPointY = 1.0F;
-			this.brim.rotationPointY = 1.0F;
-			this.face.rotationPointY = 1.0F;
-		} else {
-			this.top.rotationPointY = 0.0F;
-			this.brim.rotationPointY = 0.0F;
-			this.face.rotationPointY = 0.0F;
-		}
+		m1.rotateAngleX = m2.rotateAngleX;
+		m1.rotateAngleY = m2.rotateAngleY;
+		m1.rotateAngleZ = m2.rotateAngleZ;
 	}
 
 	@Override

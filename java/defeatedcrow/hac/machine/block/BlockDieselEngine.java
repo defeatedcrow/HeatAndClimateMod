@@ -61,7 +61,7 @@ public class BlockDieselEngine extends BlockTorqueBase {
 					IFluidHandler cont = held.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
-						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid().getName())) {
+						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid())) {
 							if (!world.isRemote
 									&& DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player)) {
 								world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,

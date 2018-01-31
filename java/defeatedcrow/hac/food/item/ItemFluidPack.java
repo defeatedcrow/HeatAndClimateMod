@@ -21,11 +21,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemFluidPack extends DCItem {
 
 	private static String[] names = {
-			"empty", "water", "milk", "cream", "oil"
+			"empty", "water", "milk", "cream", "oil", "vegi"
 	};
 
 	public static final String[] FLUIDS = {
-			"empty", "water", "milk", "dcs.milk_cream", "dcs.seed_oil"
+			"empty", "water", "milk", "dcs.milk_cream", "dcs.seed_oil", "dcs.vegetable_juice"
 	};
 
 	public ItemFluidPack() {
@@ -46,7 +46,7 @@ public class ItemFluidPack extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 4;
+		return 5;
 	}
 
 	@Override
@@ -89,8 +89,8 @@ public class ItemFluidPack extends DCItem {
 
 		String s = "";
 		int i = stack.getItemDamage();
-		if (i > 4) {
-			i = 4;
+		if (i > 5) {
+			i = 5;
 		}
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
@@ -103,8 +103,8 @@ public class ItemFluidPack extends DCItem {
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 4) {
-			meta = 4;
+		if (meta > 5) {
+			meta = 5;
 		}
 		return FLUIDS[meta];
 	}

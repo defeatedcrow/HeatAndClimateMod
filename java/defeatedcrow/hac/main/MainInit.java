@@ -150,7 +150,7 @@ public class MainInit {
 	public static Item[] sapphireArmor = new Item[4];
 
 	public static Item linenUnder;
-	public static Item linenCourt;
+	public static Item linenCoat;
 	public static Item clothUnder;
 
 	public static Item workerSuit;
@@ -159,6 +159,11 @@ public class MainInit {
 	public static Item leatherHat;
 	public static Item cottonHat;
 
+	public static Item woolWear;
+	public static Item furWear;
+	public static Item woolBoots;
+	public static Item peaCoat;
+
 	/* weapon advanced */
 
 	public static Item[] titaniumArmor = new Item[4];
@@ -166,6 +171,7 @@ public class MainInit {
 	public static Item combatDress;
 	public static Item trackSuit;
 	public static Item hoodie;
+	public static Item hoodieB;
 
 	public static Item crossbow;
 	public static Item gun;
