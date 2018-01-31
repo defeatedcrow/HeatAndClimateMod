@@ -7,6 +7,7 @@ import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class MachineRecipes {
@@ -220,6 +221,11 @@ public class MachineRecipes {
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 1), new Object[] {
 				"XYX", "YZY", "XYX", 'X', "ingotSteel", 'Y', "ingotCopper", 'Z', "ingotMagnet"
 		});
+
+		/* == Smelting == */
+
+		GameRegistry.addSmelting(new ItemStack(Blocks.COAL_BLOCK, 1, 0), new ItemStack(MachineInit.fuelCont, 1, 0),
+				0.0F);
 
 	}
 

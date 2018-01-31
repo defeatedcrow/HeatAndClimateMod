@@ -79,8 +79,7 @@ public class TileGasBurner extends TileCookingStove implements ISidedTankChecker
 
 	public static int getBurnTime(Fluid fluid) {
 		if (fluid != null && fluid.isGaseous()) {
-			String s = fluid.getName();
-			int burn = MainAPIManager.fuelRegister.getBurningTime(s);
+			int burn = MainAPIManager.fuelRegister.getBurningTime(fluid);
 			return burn;
 		}
 		return 0;

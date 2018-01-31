@@ -32,7 +32,7 @@ public class MachineDeviceRecipes {
 	}
 
 	static void loadClimateRecipe() {
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1, 0), DCHeatTier.SMELTING, null,
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1, 0), DCHeatTier.KILN, null,
 				DCAirflow.TIGHT, false, "blockCoal");
 
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1, 1), DCHeatTier.UHT, DCHumidity.DRY,
@@ -454,7 +454,7 @@ public class MachineDeviceRecipes {
 			IReactorRecipe r33 = new ReactorRecipe(new ItemStack(MachineInit.fuelCont, 1, 0),
 					new ItemStack(MachineInit.reagent, 4, 0), null, null, DCHeatTier.KILN, 1F, null, null, null,
 					new Object[] {
-							new ItemStack(Blocks.COAL_BLOCK, 1, 0)
+							"blockCoal"
 					});
 			RecipeAPI.registerReactorRecipes.addRecipe(r33, DCHeatTier.KILN);
 
@@ -475,7 +475,7 @@ public class MachineDeviceRecipes {
 
 			IReactorRecipe r37 = new ReactorRecipe(new ItemStack(MachineInit.fuelCont, 1, 1), null, null, null,
 					DCHeatTier.UHT, 0, null, null, null, new Object[] {
-							new ItemStack(MachineInit.fuelCont, 1, 0), "dustLime"
+							"blockFuelCoke", "dustLime"
 					});
 			RecipeAPI.registerReactorRecipes.addRecipe(r37, DCHeatTier.UHT);
 

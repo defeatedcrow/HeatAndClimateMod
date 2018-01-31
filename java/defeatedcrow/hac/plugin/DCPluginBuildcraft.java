@@ -5,13 +5,17 @@ import buildcraft.api.fuels.BuildcraftFuelRegistry;
 import buildcraft.api.mj.MjAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -33,6 +37,14 @@ public class DCPluginBuildcraft {
 		Fluid denseoil = FluidRegistry.getFluid("oil_dense");
 		Fluid dist = FluidRegistry.getFluid("oil_distilled");
 		Fluid residue = FluidRegistry.getFluid("oil_residue");
+
+		Item wax = Item.REGISTRY.getObject(new ResourceLocation("buildcrafttransport:waterproof"));
+		if (wax != null) {
+			DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(wax, 1, 0),
+					new Object[] {
+							new ItemStack(MachineInit.reagent, 1, 0)
+					});
+		}
 
 		if (black == null || gas == null || fuel == null || dense == null || residue == null)
 			return;

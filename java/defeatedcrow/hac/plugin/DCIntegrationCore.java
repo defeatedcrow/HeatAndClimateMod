@@ -78,6 +78,15 @@ public class DCIntegrationCore {
 			}
 		}
 
+		if (loadedBoP) {
+			try {
+				DCPluginBoP.loadInit();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: BiomesOPlenty");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomesOPlenty");
+			}
+		}
+
 		if (loadedJEI) {
 			try {
 				DCPluginJeiMain.load();
@@ -89,15 +98,6 @@ public class DCIntegrationCore {
 	}
 
 	public static void loadPost() {
-
-		if (loadedBoP) {
-			try {
-				DCPluginBoP.loadInit();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: BiomesOPlenty");
-			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomesOPlenty");
-			}
-		}
 
 		if (loadedForestry) {
 			try {

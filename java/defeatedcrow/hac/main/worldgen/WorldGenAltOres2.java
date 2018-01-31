@@ -17,6 +17,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 // 新型
+@Deprecated
 public class WorldGenAltOres2 implements IWorldGenerator {
 
 	private static final boolean debug = false;

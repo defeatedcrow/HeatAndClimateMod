@@ -82,9 +82,9 @@ public class GuiNormalChamber extends GuiContainer {
 		// airflow data
 		this.mc.getTextureManager().bindTexture(iconTex);
 		if (chamber.isSuitableClimate()) {
-			this.drawTexturedModalRect(i - 20, j + 4, 48, 0, 20, 20);
+			this.drawTexturedModalRect(i - 20, j + 4, 48, 40, 20, 20);
 		} else {
-			this.drawTexturedModalRect(i - 20, j + 4, 48, 20, 20, 20);
+			this.drawTexturedModalRect(i - 20, j + 4, 48, 60, 20, 20);
 		}
 	}
 

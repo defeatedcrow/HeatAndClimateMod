@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.CakeButterEntity;
 import defeatedcrow.hac.food.entity.CakeChocolateEntity;
 import defeatedcrow.hac.food.entity.CakeCoffeeEntity;
+import defeatedcrow.hac.food.entity.CakeCreamEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -28,7 +29,7 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 4;
+		return 5;
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class CakeItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"butter_raw", "butter", "chocolate", "coffeejelly", "lemonjelly"
+				"butter_raw", "butter", "chocolate", "coffeejelly", "lemonjelly", "bakedcream"
 		};
 		return s;
 	}
@@ -64,6 +65,9 @@ public class CakeItem extends FoodItemBase {
 		}
 		if (i == 4) {
 			ret = new CakeLemonEntity(world, x, y, z, player);
+		}
+		if (i == 5) {
+			ret = new CakeCreamEntity(world, x, y, z, player);
 		}
 		return ret;
 	}

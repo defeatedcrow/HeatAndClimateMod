@@ -5,6 +5,7 @@ import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -79,7 +80,7 @@ public class LoadingEquipRecipe {
 				"XXX", "XXX", "X X", 'X', "itemLinenCloth"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.linenCourt, 1, 0), new Object[] {
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.linenCoat, 1, 0), new Object[] {
 				"X X", "XXX", "XXX", 'X', "itemLinenCloth"
 		});
 
@@ -105,6 +106,30 @@ public class LoadingEquipRecipe {
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cottonHat, 1, 0), new Object[] {
 				"XXX", "XYX", 'X', "itemCottonCloth", 'Y', "string"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.hoodieB, 1, 0), new Object[] {
+				"XYX", "XXX", "XXX", 'X', "itemCottonCloth", 'Y', "dyeBlack"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.hoodieB, 1, 0), new Object[] {
+				new ItemStack(MainInit.hoodie, 1, 0), "dyeBlack"
+		});
+
+		DCRecipe.addShapedNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.peaCoat, 1, 0), new Object[] {
+				"Y Y", "YXY", "YXY", 'X', "itemCottonCloth", 'Y', new ItemStack(Blocks.WOOL, 1, 32767)
+		});
+
+		DCRecipe.addShapedNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.woolBoots, 1, 0), new Object[] {
+				"Y Y", "X X", 'X', "itemLeather", 'Y', new ItemStack(Blocks.WOOL, 1, 32767)
+		});
+
+		DCRecipe.addShapedNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.woolWear, 1, 0), new Object[] {
+				"YYY", "YXY", 'X', "itemCottonCloth", 'Y', new ItemStack(Blocks.WOOL, 1, 32767)
+		});
+
+		DCRecipe.addShapedNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.furWear, 1, 0), new Object[] {
+				"YYY", "YXY", 'X', "itemCottonCloth", 'Y', new ItemStack(Items.RABBIT_HIDE, 1, 0)
 		});
 
 		if (ModuleConfig.machine_advanced) {

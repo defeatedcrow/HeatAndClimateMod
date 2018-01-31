@@ -93,7 +93,7 @@ public class EntityDynamite extends Entity {
 		Iterable<BlockPos> list = BlockPos.getAllInBox(min, max);
 		for (BlockPos p : list) {
 			IBlockState state = world.getBlockState(p);
-			if (!world.isAirBlock(p)) {
+			if (p.getY() > 1 && !world.isAirBlock(p)) {
 				if (state.getMaterial() == Material.WATER) {
 					if (world.rand.nextInt(32) == 0) {
 						LootContext.Builder lootcontext$builder = new LootContext.Builder((WorldServer) this.world);

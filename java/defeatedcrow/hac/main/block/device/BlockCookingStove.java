@@ -52,7 +52,7 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 					IFluidHandler cont = held.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
-						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid().getName())) {
+						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid())) {
 							if (DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player)) {
 								flag = true;
 							}
