@@ -42,8 +42,6 @@ public class OnMiningEventDC {
 					}
 				}
 			}
-
-			event.setNewSpeed(event.getOriginalSpeed());
 			if (hasCharm) {
 				event.setNewSpeed(event.getNewSpeed() * 1.2F + 2.0F);
 				event.setCanceled(false);
