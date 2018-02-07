@@ -23,7 +23,7 @@ public class ModelWoolWear extends ModelThinBiped {
 	ModelRenderer leftarm;
 
 	public ModelWoolWear(int b) {
-		this(0.5F, b);
+		this(0.65F, b);
 	}
 
 	public ModelWoolWear(float f, int b) {
@@ -52,11 +52,11 @@ public class ModelWoolWear extends ModelThinBiped {
 		boots4.setRotationPoint(2F, 12F, 0F);
 
 		wool1 = new ModelRenderer(this, 16, 3);
-		wool1.addBox(-2.5F, 7F, -2.5F, 5, 2, 5, f1);
+		wool1.addBox(-2.5F, 6F, -2.5F, 5, 2, 5, f1);
 		wool1.setRotationPoint(-2F, 12F, 0F);
 
 		wool2 = new ModelRenderer(this, 16, 3);
-		wool2.addBox(-2.5F, 7F, -2.5F, 5, 2, 5, f1);
+		wool2.addBox(-2.5F, 6F, -2.5F, 5, 2, 5, f1);
 		wool2.setRotationPoint(2F, 12F, 0F);
 
 		hat = new ModelRenderer(this, 0, 18);
@@ -141,16 +141,6 @@ public class ModelWoolWear extends ModelThinBiped {
 		setAngle(boots4, this.bipedLeftLeg);
 		setAngle(wool1, this.bipedRightLeg);
 		setAngle(wool2, this.bipedLeftLeg);
-	}
-
-	private void setAngle(ModelRenderer m1, ModelRenderer m2) {
-		m1.rotationPointX = m2.rotationPointX;
-		m1.rotationPointY = m2.rotationPointY;
-		m1.rotationPointZ = m2.rotationPointZ;
-
-		m1.rotateAngleX = m2.rotateAngleX;
-		m1.rotateAngleY = m2.rotateAngleY;
-		m1.rotateAngleZ = m2.rotateAngleZ;
 	}
 
 	@Override

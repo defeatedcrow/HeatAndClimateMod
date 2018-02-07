@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.util;
 
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
@@ -60,9 +61,13 @@ public enum DCMaterialEnum {
 			3, 5, 4, 2
 	}, 1, 240, 3.0F, 15, 3.0F, 1.0F, new ItemStack(MachineInit.synthetic, 1, 1), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
 	// ほぼ真鍮と同程度
-	GARNET(11, "garnet", 2.0F, new int[] {
+	GARNET(13, "garnet", 2.0F, new int[] {
 			3, 6, 5, 2
-	}, 2, 480, 6.0F, 18, 0.5F, 0.5F, new ItemStack(MainInit.gems, 1, 14), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F);
+	}, 2, 480, 6.0F, 18, 0.5F, 0.5F, new ItemStack(MainInit.gems, 1, 14), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F),
+	// 防寒着
+	WOOL(14, "wool", 3.0F, new int[] {
+			1, 2, 2, 1
+	}, 1, 72, 0.0F, 10, 1.0F, 3.0F, new ItemStack(Blocks.WOOL, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
 
 	public final String name;
 	public final int id;

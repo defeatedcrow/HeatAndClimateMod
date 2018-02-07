@@ -16,9 +16,10 @@ public class DCArmorMaterial {
 	public static ItemArmor.ArmorMaterial DC_CHALCEDONY;
 	public static ItemArmor.ArmorMaterial DC_TITANIUM;
 	public static ItemArmor.ArmorMaterial DC_SYNTHETIC;
+	public static ItemArmor.ArmorMaterial DC_WOOL;
 
 	public static final ItemArmor.ArmorMaterial[] VAR = {
-			DC_BRASS, DC_STEEL, DC_CHALCEDONY, DC_SAPPHIRE, DC_LINEN, DC_CLOTH, DC_SYNTHETIC, DC_TITANIUM
+			DC_BRASS, DC_STEEL, DC_CHALCEDONY, DC_SAPPHIRE, DC_LINEN, DC_CLOTH, DC_TITANIUM, DC_SYNTHETIC, DC_WOOL
 	};
 
 	public static DCMaterialEnum getMaterial(ItemArmor.ArmorMaterial mat) {
@@ -38,6 +39,8 @@ public class DCArmorMaterial {
 			return DCMaterialEnum.TITANIUM;
 		if (mat == DC_SYNTHETIC)
 			return DCMaterialEnum.SYNTHETIC;
+		if (mat == DC_WOOL)
+			return DCMaterialEnum.WOOL;
 		return null;
 	}
 
@@ -86,6 +89,11 @@ public class DCArmorMaterial {
 				DCMaterialEnum.TITANIUM.toughness);
 		DCArmorMaterial.DC_TITANIUM.repairMaterial = DCMaterialEnum.TITANIUM.repairItem;
 
+		DCArmorMaterial.DC_WOOL = EnumHelper.addArmorMaterial("dcs_" + DCMaterialEnum.WOOL.name,
+				"dcs_" + DCMaterialEnum.WOOL.name, DCMaterialEnum.WOOL.armorDur, DCMaterialEnum.WOOL.reduceDam,
+				DCMaterialEnum.WOOL.enchant, DCMaterialEnum.WOOL.sound, DCMaterialEnum.WOOL.toughness);
+		DCArmorMaterial.DC_WOOL.repairMaterial = DCMaterialEnum.WOOL.repairItem;
+
 		// 耐性登録
 		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN.prevHeat,
 				DCMaterialEnum.LINEN.prevCold);
@@ -97,6 +105,8 @@ public class DCArmorMaterial {
 		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_SAPPHIRE, 0.5F);
 		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_TITANIUM, DCMaterialEnum.TITANIUM.prevHeat,
 				DCMaterialEnum.TITANIUM.prevCold);
+		DamageAPI.armorRegister.registerMaterial(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL.prevHeat,
+				DCMaterialEnum.WOOL.prevCold);
 	}
 
 }
