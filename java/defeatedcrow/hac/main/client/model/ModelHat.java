@@ -91,16 +91,6 @@ public class ModelHat extends ModelThinBiped {
 		setAngle(face, this.bipedHead);
 	}
 
-	private void setAngle(ModelRenderer m1, ModelRenderer m2) {
-		m1.rotationPointX = m2.rotationPointX;
-		m1.rotationPointY = m2.rotationPointY;
-		m1.rotationPointZ = m2.rotationPointZ;
-
-		m1.rotateAngleX = m2.rotateAngleX;
-		m1.rotateAngleY = m2.rotateAngleY;
-		m1.rotateAngleZ = m2.rotateAngleZ;
-	}
-
 	@Override
 	public void setModelAttributes(ModelBase model) {
 		super.setModelAttributes(model);

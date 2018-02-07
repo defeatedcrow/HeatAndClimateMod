@@ -192,11 +192,11 @@ public class MachineRecipes {
 				"XXX", "XXX", "XXX", 'X', "gemCarbide"
 		});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 1, 13), new Object[] {
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 9, 13), new Object[] {
 				new ItemStack(MachineInit.fuelCont, 1, 0)
 		});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 1, 9), new Object[] {
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 9, 9), new Object[] {
 				new ItemStack(MachineInit.fuelCont, 1, 1)
 		});
 
