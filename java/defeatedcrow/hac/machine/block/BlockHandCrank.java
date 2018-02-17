@@ -28,7 +28,7 @@ public class BlockHandCrank extends BlockTorqueBase {
 
 	// 手回し式
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
@@ -47,7 +47,7 @@ public class BlockHandCrank extends BlockTorqueBase {
 				return true;
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 }

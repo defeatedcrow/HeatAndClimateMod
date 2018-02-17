@@ -14,7 +14,6 @@ import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.SquidStickEntity;
 import defeatedcrow.hac.food.entity.YakitoriStickEntity;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -138,7 +137,7 @@ public class StickFoodsItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

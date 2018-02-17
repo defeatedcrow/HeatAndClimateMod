@@ -5,8 +5,10 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.main.entity.EntityCution;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -15,7 +17,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +27,6 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -35,7 +35,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockSofaBase extends Block {
+public class BlockSofaBase extends BlockDC {
 
 	/* 左右のチェック */
 	public static final PropertyBool LEFT = PropertyBool.create("left");
@@ -52,8 +52,7 @@ public class BlockSofaBase extends Block {
 	private boolean isSmallAABB = false;
 
 	public BlockSofaBase(String s) {
-		super(Material.CLAY);
-		this.setUnlocalizedName(s);
+		super(Material.CLAY, s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.fullBlock = false;
@@ -69,7 +68,7 @@ public class BlockSofaBase extends Block {
 
 	// すわる
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, AABB_FULL);
@@ -152,7 +151,7 @@ public class BlockSofaBase extends Block {
 	}
 
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
+	public void getCollisionBoxList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
 			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
 		state = state.getActualState(worldIn, pos);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_HALF);
@@ -215,9 +214,10 @@ public class BlockSofaBase extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
-			list.add(new ItemStack(this, 1, 0));
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	// 設置・破壊処理

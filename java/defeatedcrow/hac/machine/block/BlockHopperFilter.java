@@ -5,18 +5,18 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
+import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.core.base.ITagGetter;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -30,7 +30,6 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -38,11 +37,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockHopperFilter extends BlockContainer {
+public class BlockHopperFilter extends BlockContainerDC {
 
 	public BlockHopperFilter(String s) {
-		super(Material.ROCK);
-		this.setUnlocalizedName(s);
+		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
@@ -95,7 +93,7 @@ public class BlockHopperFilter extends BlockContainer {
 	}
 
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
+	public void getCollisionBoxList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
 			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
 		state = state.getActualState(worldIn, pos);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, BASE_AABB);
@@ -106,14 +104,14 @@ public class BlockHopperFilter extends BlockContainer {
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
-			list.add(new ItemStack(this, 1, 0));
-		}
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			TileEntity tile = world.getTileEntity(pos);
@@ -132,9 +130,9 @@ public class BlockHopperFilter extends BlockContainer {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		EnumFacing face = facing.getOpposite();
 		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face))
 				.withProperty(DCState.POWERED, Boolean.valueOf(true));
@@ -198,7 +196,7 @@ public class BlockHopperFilter extends BlockContainer {
 	}
 
 	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos from) {
+	public void onNeighborChange(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos from) {
 		this.updateState(worldIn, pos, state);
 	}
 

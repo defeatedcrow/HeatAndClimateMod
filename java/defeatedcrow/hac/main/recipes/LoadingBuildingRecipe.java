@@ -170,7 +170,7 @@ public class LoadingBuildingRecipe {
 		}
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 1, 6), new Object[] {
-				"dustLime", "blockTallgrass", "cropSeaweed"
+				"dustLime", "blockTallGrass", "cropSeaweed"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 1, 6), new Object[] {

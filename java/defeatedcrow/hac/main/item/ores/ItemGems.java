@@ -80,7 +80,7 @@ public class ItemGems extends DCItem {
 	/* gemぶっぱ */
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		return EnumActionResult.FAIL;
 	}
@@ -116,7 +116,7 @@ public class ItemGems extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
 		ItemStack stack = player.getHeldItem(hand);
 		if (ModuleConfig.magic && !DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)

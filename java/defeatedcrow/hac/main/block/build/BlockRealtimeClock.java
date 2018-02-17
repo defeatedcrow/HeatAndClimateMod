@@ -4,8 +4,8 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.main.ClimateMain;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -22,7 +22,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockRealtimeClock extends BlockContainer {
+public class BlockRealtimeClock extends BlockContainerDC {
 
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
@@ -30,8 +30,7 @@ public class BlockRealtimeClock extends BlockContainer {
 	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0D, 0D, 0D, 0.125D, 1D, 1D);
 
 	public BlockRealtimeClock(Material m, String s) {
-		super(m);
-		this.setUnlocalizedName(s);
+		super(m, s);
 		this.setHardness(0.5F);
 		this.setResistance(15.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH));
@@ -43,7 +42,7 @@ public class BlockRealtimeClock extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null && player.world.isRemote) {
 			Calendar cal = Calendar.getInstance();
@@ -68,9 +67,9 @@ public class BlockRealtimeClock extends BlockContainer {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		state = state.withProperty(DCState.FACING, placer.getHorizontalFacing().getOpposite());
 		return state;
 	}

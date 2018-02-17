@@ -39,9 +39,9 @@ public class BlockConveyor extends BlockTorqueBase {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
 			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite()));
@@ -55,7 +55,7 @@ public class BlockConveyor extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
@@ -63,7 +63,7 @@ public class BlockConveyor extends BlockTorqueBase {
 				TileEntity tile = world.getTileEntity(pos);
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

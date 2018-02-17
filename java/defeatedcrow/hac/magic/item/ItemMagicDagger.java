@@ -24,7 +24,6 @@ import defeatedcrow.hac.magic.proj.EntityProjSapW;
 import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.main.entity.EntityProjBase;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -107,7 +106,7 @@ public class ItemMagicDagger extends DCItem {
 	/* 雪玉に似た動作をする */
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		return EnumActionResult.FAIL;
 	}
@@ -181,7 +180,7 @@ public class ItemMagicDagger extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
 		return new ActionResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
@@ -221,7 +220,7 @@ public class ItemMagicDagger extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String s = "";
 		int meta = stack.getMetadata();
 		if (ClimateCore.proxy.isShiftKeyDown()) {

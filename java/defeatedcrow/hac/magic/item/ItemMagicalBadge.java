@@ -17,7 +17,6 @@ import defeatedcrow.hac.main.worldgen.OreGenPos;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
@@ -135,7 +134,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String s = "";
 		int meta = stack.getMetadata();
 		if (ClimateCore.proxy.isShiftKeyDown()) {
@@ -157,7 +156,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack stack = player.getHeldItem(hand);

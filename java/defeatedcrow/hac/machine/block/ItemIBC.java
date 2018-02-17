@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.main.block.fluid.FluidItemBlockWrapper;
 import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -35,7 +34,7 @@ public class ItemIBC extends DCItemBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
 		IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		if (cont != null && cont.getTankProperties() != null) {

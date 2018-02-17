@@ -8,7 +8,6 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -46,8 +45,8 @@ public class ItemBlockMaceOcean extends ItemBlockMace {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
-		super.addInformation(stack, world, tooltip, flag);
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
+		super.addInformation2(stack, world, tooltip);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Require to be underwater");
 		}

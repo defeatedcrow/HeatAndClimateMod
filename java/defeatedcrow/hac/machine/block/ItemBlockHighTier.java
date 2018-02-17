@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.machine.MachineTier;
 import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -29,13 +28,13 @@ public class ItemBlockHighTier extends DCItemBlock {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			boolean hasAcv = MachineTier.canHandleTier(player, tier);
 			boolean flag = player.capabilities.isCreativeMode;
 			if (hasAcv || flag) {
-				super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
+				super.onItemUse2(player, world, pos, hand, facing, hitX, hitY, hitZ);
 			} else {
 				return EnumActionResult.PASS;
 			}
@@ -45,7 +44,7 @@ public class ItemBlockHighTier extends DCItemBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier " + tier);
 	}
 

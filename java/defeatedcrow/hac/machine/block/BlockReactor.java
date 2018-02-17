@@ -42,7 +42,7 @@ public class BlockReactor extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
@@ -51,7 +51,7 @@ public class BlockReactor extends BlockTorqueBase {
 				if (!DCUtil.isEmpty(heldItem)) {
 					if (heldItem.getItem() instanceof IWrenchDC) {
 
-						return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+						return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 					} else if (heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player))
 							world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
@@ -65,14 +65,14 @@ public class BlockReactor extends BlockTorqueBase {
 				return true;
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	// 設置時にはプレイヤーの方を向いている方が自然なので
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		// achievement
 		if (placer != null && !placer.world.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;

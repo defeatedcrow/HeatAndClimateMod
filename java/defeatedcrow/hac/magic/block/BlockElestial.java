@@ -52,7 +52,7 @@ public class BlockElestial extends DCSimpleBlock implements ITexturePath {
 
 	// debug用一時処置
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (ClimateCore.isDebug) {
 			return true;

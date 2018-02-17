@@ -1,14 +1,16 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.core.util.DCUtil;
-import net.minecraft.block.BlockContainer;
+import defeatedcrow.hac.core.base.BlockContainerDC;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -17,7 +19,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /*
  * トルク系装置のBlockクラスに似ているが、使い方が違う
  */
-public class BlockFauset extends BlockContainer {
+public class BlockFauset extends BlockContainerDC {
 
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0.3125D, 0.0D, 0.5D, 0.6875D, 0.75D, 1.0D);
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0.3125D, 0.0D, 0.0D, 0.6875D, 0.75D, 0.5D);
@@ -38,8 +39,7 @@ public class BlockFauset extends BlockContainer {
 	protected static final AxisAlignedBB AABB_DOWN = new AxisAlignedBB(0.3125D, 0.0D, 0.3125D, 0.6875D, 1.0D, 0.6875D);
 
 	public BlockFauset(String s) {
-		super(Material.ROCK);
-		this.setUnlocalizedName(s);
+		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
@@ -50,7 +50,7 @@ public class BlockFauset extends BlockContainer {
 
 	/* GUIは持たない。 */
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote && hand == EnumHand.MAIN_HAND) {
 			boolean power = DCState.getBool(state, DCState.POWERED);
@@ -88,10 +88,10 @@ public class BlockFauset extends BlockContainer {
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
-			list.add(new ItemStack(this, 1, 0));
-		}
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	@Override
@@ -114,9 +114,9 @@ public class BlockFauset extends BlockContainer {
 
 	// 設置・破壊処理
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (facing == EnumFacing.UP) {
 			facing = EnumFacing.DOWN;
 		}

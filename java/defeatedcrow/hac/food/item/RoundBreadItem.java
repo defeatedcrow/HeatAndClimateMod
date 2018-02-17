@@ -12,7 +12,6 @@ import defeatedcrow.hac.food.entity.RoundBreadCreamEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
 import defeatedcrow.hac.food.entity.ToastBreadEntity;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -95,7 +94,7 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

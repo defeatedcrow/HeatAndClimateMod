@@ -26,6 +26,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class DCPluginForestry {
 
@@ -189,6 +190,11 @@ public class DCPluginForestry {
 						new Object[] {
 								"dustPresscake", "dustAsh", new ItemStack(Items.DYE, 1, 15)
 						});
+
+				DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(fer, 1, 0),
+						new Object[] {
+								"dustPlant", "dustAsh", new ItemStack(Items.DYE, 1, 15)
+						});
 			}
 
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
@@ -230,17 +236,39 @@ public class DCPluginForestry {
 		// HaC側のレシピ
 
 		if (ModuleConfig.machine && ModuleConfig.r_mill) {
-			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
-					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropChestnut");
+			if (OreDictionary.doesOreNameExist("cropChestnut")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
+						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropChestnut");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
-					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropWalnut");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
+						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0),
+						"cropChestnut");
+			}
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
-					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropHazelnut");
+			if (OreDictionary.doesOreNameExist("cropWalnut")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
+						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropWalnut");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
-					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropAlmond");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
+						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropWalnut");
+			}
+
+			if (OreDictionary.doesOreNameExist("cropHazelnut")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
+						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropHazelnut");
+
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
+						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0),
+						"cropHazelnut");
+			}
+
+			if (OreDictionary.doesOreNameExist("cropAlmond")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
+						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropAlmond");
+
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
+						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropAlmond");
+			}
 		}
 
 	}

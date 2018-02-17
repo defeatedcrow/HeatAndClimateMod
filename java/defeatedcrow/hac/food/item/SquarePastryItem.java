@@ -14,7 +14,6 @@ import defeatedcrow.hac.food.entity.FruitPieEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
 import defeatedcrow.hac.food.entity.MooncakeEntity;
 import defeatedcrow.hac.food.entity.SugarPieEntity;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -123,7 +122,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

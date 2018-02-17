@@ -1,25 +1,25 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.List;
 import java.util.Random;
+
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.core.util.DCUtil;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCoolantPackage extends Block implements ITexturePath, INameSuffix, IHeatTile {
+public class BlockCoolantPackage extends BlockDC implements ITexturePath, INameSuffix, IHeatTile {
 
 	protected static final AxisAlignedBB AABB_MAIN = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.1875D, 0.875D);
 
@@ -35,8 +35,7 @@ public class BlockCoolantPackage extends Block implements ITexturePath, INameSuf
 	public final int maxMeta;
 
 	public BlockCoolantPackage(String s) {
-		super(Material.CLOTH);
-		this.setUnlocalizedName(s);
+		super(Material.CLOTH, s);
 		this.setHardness(0.2F);
 		this.setResistance(1.0F);
 		this.setSoundType(SoundType.CLOTH);
@@ -62,10 +61,10 @@ public class BlockCoolantPackage extends Block implements ITexturePath, INameSuf
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
-			list.add(new ItemStack(this, 1, 0));
-		}
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	@Override

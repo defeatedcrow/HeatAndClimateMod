@@ -20,7 +20,7 @@ public class MachineAdvancedRecipe {
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.crusher, 1, 0), new Object[] {
 				" Y ", "XZX", "XXX", 'X', "ingotSUS", 'Y', new ItemStack(Blocks.HOPPER, 1, 0), 'Z',
-				new ItemStack(MachineInit.machimeMaterials, 1, 1)
+				new ItemStack(MachineInit.machimeMaterials, 1, 0)
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.rotaryBlade, 1, 0), new Object[] {

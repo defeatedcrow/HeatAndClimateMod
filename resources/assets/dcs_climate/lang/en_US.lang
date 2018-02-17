@@ -663,6 +663,7 @@ tile.dcs_build_build_mosaic_blue.name=Blue Mosaic Block
 tile.dcs_build_build_mosaic_yellow.name=Yellow Mosaic Block
 tile.dcs_build_build_mosaic_black.name=Black Mosaic Block
 tile.dcs_build_build_road.name=Road Block
+tile.dcs_build_build_plaster.name=Plaster Block
 tile.dcs_build_challamp_cube_blue.name=Blue Chalcedony Lamp
 tile.dcs_build_challamp_cube_red.name=Red Chalcedony Lamp
 tile.dcs_build_challamp_cube_white.name=White Chalcedony Lamp
@@ -967,6 +968,8 @@ fluid.dcs.nitrogen=Nitrogen
 tile.dcs_fluidblock_nitrogen_0.name=Nitrogen
 fluid.dcs.lemonade=Lemonade
 tile.dcs_fluidblock_lemonade_0.name=Lemonade
+fluid.dcs.ethanol=Ethanol
+tile.dcs_fluidblock_ethanol_0.name=Ethanol
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)

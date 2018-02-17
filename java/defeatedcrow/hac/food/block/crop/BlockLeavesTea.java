@@ -11,21 +11,16 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, IShearable {
 
@@ -81,10 +76,10 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
-			list.add(new ItemStack(this, 1, 1));
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = super.getSubItemList();
+		list.add(new ItemStack(this, 1, 1));
+		return list;
 	}
 
 	/* IShearable */

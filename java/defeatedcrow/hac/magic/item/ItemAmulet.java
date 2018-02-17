@@ -11,7 +11,6 @@ import defeatedcrow.hac.api.magic.IJewelAmulet;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -69,7 +68,7 @@ public class ItemAmulet extends DCItem implements IJewelAmulet {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String s = "";
 		int meta = stack.getMetadata();
 		if (ClimateCore.proxy.isShiftKeyDown()) {
