@@ -74,7 +74,7 @@ public class BlockSofaBase extends Block {
 		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, AABB_FULL);
 			if (list.isEmpty()) {
-				double y1 = isSmallAABB ? 0.45D : 0.30D;
+				double y1 = isSmallAABB ? 0.45D : 0.25D;
 				EntityCution cution = new EntityCution(world, pos.getX() + 0.5D, pos.getY() + y1, pos.getZ() + 0.5D);
 				world.spawnEntity(cution);
 				if (player.isRiding()) {

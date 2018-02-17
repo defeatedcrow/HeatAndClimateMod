@@ -31,6 +31,7 @@ public class ModuleConfig {
 	public static boolean r_spinning = true;
 	public static boolean r_fluid = true;
 	public static boolean r_reactor = true;
+	public static boolean r_crusher = true;
 
 	public void load(Configuration cfg) {
 
@@ -69,6 +70,7 @@ public class ModuleConfig {
 			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
 			Property fluid = cfg.get("recipe setting", "EnableCookingPanRecipe", r_fluid);
 			Property reactor = cfg.get("recipe setting", "EnableReactorRecipe", r_reactor);
+			Property crusher = cfg.get("recipe setting", "EnableHammerMillRecipe", r_crusher);
 
 			machine = machine_b.getBoolean();
 			magic = magic_b.getBoolean();
@@ -91,6 +93,7 @@ public class ModuleConfig {
 			r_spinning = spinning.getBoolean();
 			r_fluid = fluid.getBoolean();
 			r_reactor = reactor.getBoolean();
+			r_crusher = crusher.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

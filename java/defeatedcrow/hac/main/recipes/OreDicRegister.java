@@ -172,6 +172,11 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustBorax", new ItemStack(MainInit.miscDust, 1, 10));
 		OreDictionary.registerOre("dustChrysotile", new ItemStack(MainInit.miscDust, 1, 11));
 		OreDictionary.registerOre("dustAsbest", new ItemStack(MainInit.miscDust, 1, 11));
+		OreDictionary.registerOre("dustBlan", new ItemStack(MainInit.foodDust, 1, 0));
+		OreDictionary.registerOre("dustPlant", new ItemStack(MainInit.foodDust, 1, 1));
+		OreDictionary.registerOre("dropMolasses", new ItemStack(MainInit.foodDust, 1, 2));
+		OreDictionary.registerOre("dustMalt", new ItemStack(MainInit.foodDust, 1, 3));
+		OreDictionary.registerOre("foodMalt", new ItemStack(MainInit.foodDust, 1, 3));
 
 		// material
 		OreDictionary.registerOre("itemString", new ItemStack(MainInit.materials, 1, 0));
@@ -202,6 +207,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("foodFlour", new ItemStack(MainInit.foodMaterials, 1, 1));
 		OreDictionary.registerOre("dustFlour", new ItemStack(MainInit.foodMaterials, 1, 1));
 		OreDictionary.registerOre("foodRice", new ItemStack(MainInit.foodMaterials, 1, 2));
+		OreDictionary.registerOre("dustStarch", new ItemStack(MainInit.foodMaterials, 1, 3));
 
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));

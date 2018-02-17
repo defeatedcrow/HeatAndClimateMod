@@ -15,9 +15,11 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
+import defeatedcrow.hac.machine.block.TileRollerCrusher;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.entity.EntityScooter;
+import defeatedcrow.hac.machine.gui.ContainerCrusher;
 import defeatedcrow.hac.machine.gui.ContainerDieselEngine;
 import defeatedcrow.hac.machine.gui.ContainerEntityScooter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
@@ -27,6 +29,7 @@ import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.machine.gui.ContainerSpinning;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
+import defeatedcrow.hac.machine.gui.GuiCrusher;
 import defeatedcrow.hac.machine.gui.GuiDieselEngine;
 import defeatedcrow.hac.machine.gui.GuiEntityScooter;
 import defeatedcrow.hac.machine.gui.GuiHopperFilter;
@@ -43,6 +46,7 @@ import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
+import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
@@ -209,6 +213,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane");
 		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		GameRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum");
+		GameRegistry.registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock");
 
 		FoodCommonProxy.loadTE();
 		MachineCommonProxy.loadTE();
@@ -294,6 +299,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerPortalManager((TilePortalManager) tile, player);
 		if (tile instanceof TileDieselEngine)
 			return new ContainerDieselEngine((TileDieselEngine) tile, player.inventory);
+		if (tile instanceof TileRollerCrusher)
+			return new ContainerCrusher((TileRollerCrusher) tile, player.inventory);
 		return null;
 	}
 
@@ -338,6 +345,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiPortalManager((TilePortalManager) tile, player);
 		if (tile instanceof TileDieselEngine)
 			return new GuiDieselEngine((TileDieselEngine) tile, player.inventory);
+		if (tile instanceof TileRollerCrusher)
+			return new GuiCrusher((TileRollerCrusher) tile, player.inventory);
 		return null;
 	}
 

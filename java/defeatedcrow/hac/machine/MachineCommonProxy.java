@@ -1,6 +1,8 @@
 package defeatedcrow.hac.machine;
 
+import defeatedcrow.hac.machine.block.TileAcceptorFluidPanel;
 import defeatedcrow.hac.machine.block.TileAcceptorPanel;
+import defeatedcrow.hac.machine.block.TileAdapterFluidPanel;
 import defeatedcrow.hac.machine.block.TileAdapterPanel;
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
 import defeatedcrow.hac.machine.block.TileCatapult;
@@ -25,6 +27,7 @@ import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileRedBox;
+import defeatedcrow.hac.machine.block.TileRollerCrusher;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_L_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_L_Steel;
@@ -89,12 +92,15 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TilePortalManager.class, "dcs_te_portal_manager");
 		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
 		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
+		GameRegistry.registerTileEntity(TileAdapterFluidPanel.class, "dcs_te_adapter_fluid");
+		GameRegistry.registerTileEntity(TileAcceptorFluidPanel.class, "dcs_te_acceptor_fluid");
 		GameRegistry.registerTileEntity(TileGasBurner.class, "dcs_te_gas_burner");
 		GameRegistry.registerTileEntity(TileShaft_S_Steel.class, "dcs_te_shaft_s_steel");
 		GameRegistry.registerTileEntity(TileShaft_L_Steel.class, "dcs_te_shaft_l_steel");
 		GameRegistry.registerTileEntity(TileShaft_TA_Steel.class, "dcs_te_shaft_ta_steel");
 		GameRegistry.registerTileEntity(TileShaft_TB_Steel.class, "dcs_te_shaft_tb_steel");
 		GameRegistry.registerTileEntity(TileDieselEngine.class, "dcs_te_diesel_engine");
+		GameRegistry.registerTileEntity(TileRollerCrusher.class, "dcs_te_crusher");
 	}
 
 	public static void loadEntity() {

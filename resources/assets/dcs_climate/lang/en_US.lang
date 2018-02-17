@@ -96,6 +96,10 @@ item.dcs_miscdust_garnet.name=Garnet Sand
 item.dcs_miscdust_borax.name=Borax
 item.dcs_miscdust_apatite.name=Apatite Dust
 item.dcs_miscdust_chrysotile.name=Chrysotile
+item.dcs_fooddust_bran.name=Bran
+item.dcs_fooddust_plant.name=Plant Dust
+item.dcs_fooddust_molasses.name=Molasses
+item.dcs_fooddust_malt.name=Malt
 item.dcs_expgem_exp.name=EXP Gem
 
 ## materials
@@ -138,6 +142,8 @@ item.dcs_synthetic_cloth.name=Synthetic Cloth
 item.dcs_synthetic_plate.name=Synthetic Plate
 item.dcs_gemcore_portal.name=Transfer Core
 item.dcs_gemcore_feather.name=Butterfly's Wing
+item.dcs_rotaryblade_sus.name=SUS Hammer Plate
+item.dcs_rotaryblade_titanium.name=Titanium Hammer Plate
 
 item.dcs_flowerpot_white.name=White Flower Pot
 item.dcs_flowerpot_brown.name=Brown Flower Pot
@@ -146,6 +152,7 @@ item.dcs_flowerpot_brown.name=Brown Flower Pot
 item.dcs_food_materials_salt.name=Salt
 item.dcs_food_materials_flour.name=Flour
 item.dcs_food_materials_rice.name=Rice
+item.dcs_food_materials_starch.name=Starch
 item.dcs_food_leaves_coffee.name=Roasted Coffee Beans
 item.dcs_food_leaves_tea_green.name=Green Tea Leaves
 item.dcs_food_leaves_tea_black.name=Black Tea Leaves
@@ -166,6 +173,7 @@ item.dcs_food_pack_water.name=Water Pack
 item.dcs_food_pack_cream.name=Cream Pack
 item.dcs_food_pack_oil.name=Seed Oil Pack
 item.dcs_food_pack_vegi.name=Vegetable Juice Pack
+item.dcs_food_pack_lemon.name=Lemonade Pack
 item.dcs_food_pack_empty.name=Empty Paper Pack
 
 item.dcs_food_itemfood_baked_apple.name=Baked Apple
@@ -675,6 +683,10 @@ tile.dcs_table_marble_0.name=Marble Table
 tile.dcs_table_gypsum_0.name=Gypsum Table
 tile.dcs_table_wood_0.name=Wooden Table
 tile.dcs_table_darkwood_0.name=Dark Wooden Table
+tile.dcs_squaretable_wood_0.name=Wooden Square Table
+tile.dcs_squaretable_marble_0.name=Marble Square Table
+tile.dcs_squaretable_checker_0.name=Checker Square Table
+tile.dcs_squaretable_black_0.name=Black Square Table
 tile.dcs_carpet_red_0.name=Carpet Wood (Red)
 tile.dcs_carpet_white_0.name=Carpet Wood (White)
 tile.dcs_carpet_gray_0.name=Carpet Wood (Black)
@@ -682,6 +694,14 @@ tile.dcs_sofa_black_0.name=Sofa (Black)
 tile.dcs_sofa_red_0.name=Sofa (Red)
 tile.dcs_stool_black_0.name=Stool (Black)
 tile.dcs_stool_red_0.name=Stool (Red)
+tile.dcs_chair_wood_0.name=Wooden Chair
+tile.dcs_chair_marble_0.name=Marble Chair
+tile.dcs_chair_checker_0.name=Checker Chair
+tile.dcs_chair_black_0.name=Black Chair
+tile.dcs_wallshelf_wood_0.name=Wood Wall Shelf
+tile.dcs_wallshelf_marble_0.name=Marble Wall Shelf
+tile.dcs_wallshelf_checker_0.name=Checker Wall Shelf
+tile.dcs_wallshelf_black_0.name=Black Wall Shelf
 tile.dcs_build_walllamp_0.name=Blue Wall Lamp
 tile.dcs_build_walllamp_1.name=Red Wall Lamp
 tile.dcs_build_walllamp_2.name=White Wall Lamp
@@ -752,6 +772,9 @@ tile.dcs_device_biomeglass_2.name=Biome Cube(Desert)
 tile.dcs_device_biomeglass_3.name=Biome Cube(Ice)
 tile.dcs_time_cage_0.name=Butterfly of Time Flow
 tile.dcs_build_chandelier_0.name=Gypsum Chandelier
+tile.dcs_build_chandelier_0.name=Real Time Clock
+item.dcs_door_marble_item.name=Marble Door
+item.dcs_door_steel_item.name=Steel Door
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -774,6 +797,8 @@ tile.dcs_device_steel_pot_0.name=Steel Pot
 tile.dcs_device_tea_pot_0.name=Tea Pot
 tile.dcs_device_lowchest_marble_0.name=Marble Low Chest
 tile.dcs_device_lowchest_wood_0.name=Wooden Low Chest
+tile.dcs_device_lowchest_checker_0.name=Checker Low Chest
+tile.dcs_device_lowchest_black_0.name=Black Low Chest
 tile.dcs_device_chest_metal_0.name=Metal Chest
 tile.dcs_device_chest_magnet_0.name=Magnet Chest
 tile.dcs_device_chest_village_0.name=Villager Chest
@@ -810,11 +835,14 @@ tile.dcs_device_spinning_machine_0.name=Spinning Machine
 tile.dcs_device_portal_manager_0.name=Transfer Portal
 tile.dcs_device_adapter_item_0.name=Item Sending Panel
 tile.dcs_device_acceptor_item_0.name=Item Accepting Panel
+tile.dcs_device_adapter_fluid_0.name=Fluid Sending Panel
+tile.dcs_device_acceptor_fluid_0.name=Fluid Accepting Panel
 tile.dcs_device_shaft_s_steel_0.name=Steel Shaft(I)
 tile.dcs_device_shaft_l_steel_0.name=Steel Shaft(L)
 tile.dcs_device_shaft_ta_steel_0.name=Steel Shaft(T-A)
 tile.dcs_device_shaft_tb_steel_0.name=Steel Shaft(T-B)
 tile.dcs_device_diesel_engine_0.name=Diesel Engine
+tile.dcs_device_crusher_0.name=Hammer Mill
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -937,6 +965,8 @@ fluid.dcs.fuel_oil=Fuel Oil
 tile.dcs_fluidblock_fuel_oil_0.name=Fuel Oil
 fluid.dcs.nitrogen=Nitrogen
 tile.dcs_fluidblock_nitrogen_0.name=Nitrogen
+fluid.dcs.lemonade=Lemonade
+tile.dcs_fluidblock_lemonade_0.name=Lemonade
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
@@ -1080,6 +1110,7 @@ dcs.gui.device.spinning=Spinning Machine
 dcs.gui.device.portalmanager=Transfer Portal
 dcs.gui.device.gas_burner=Gas Burner
 dcs.gui.device.diesel_engine=Diesel Engine
+dcs.gui.device.crusher=Hammer Mill
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold

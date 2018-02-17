@@ -8,9 +8,8 @@ public class ItemFoodMaterials extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"salt",
-			"flour",
-			"rice" };
+			"salt", "flour", "rice", "starch"
+	};
 
 	public ItemFoodMaterials(int max) {
 		super();

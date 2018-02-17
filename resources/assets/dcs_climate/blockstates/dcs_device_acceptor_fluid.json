@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "powered=false,side=north":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_off", "y": 180, "uvlock": false  },
+        "powered=true,side=north":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_on", "y": 180, "uvlock": false  },
+        "powered=false,side=south":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_off"},
+        "powered=true,side=south":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_on"},
+        "powered=false,side=west":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_off", "y": 90, "uvlock": false  },
+        "powered=true,side=west":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_on", "y": 90, "uvlock": false },
+        "powered=false,side=east":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_off", "y": 270, "uvlock": false  },
+        "powered=true,side=east":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_on", "y": 270, "uvlock": false },
+        "powered=false,side=up":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_off", "x": 90, "uvlock": false  },
+        "powered=true,side=up":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_on", "x": 90, "uvlock": false  },
+        "powered=false,side=down":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_off", "x": 270, "uvlock": false  },
+        "powered=true,side=down":  { "model": "dcs_climate:machine/dcs_device_acceptor_fluid_on", "x": 270, "uvlock": false  }
+    }
+}

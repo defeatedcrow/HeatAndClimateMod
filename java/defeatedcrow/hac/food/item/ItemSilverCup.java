@@ -193,7 +193,7 @@ public class ItemSilverCup extends FoodItemBase {
 		return false;
 	}
 
-	public List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
+	public static List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if (fluid != null) {
 			if (fluid == FoodInit.greenTea) {
@@ -208,6 +208,8 @@ public class ItemSilverCup extends FoodItemBase {
 				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(1200 * (dirF + ampF)), 0));
 			} else if (fluid == FoodInit.blackLiquor) {
 				ret.add(new PotionEffect(MobEffects.POISON, MathHelper.ceil(300 * dirF), ampF));
+			} else if (fluid == FoodInit.lemon) {
+				ret.add(new PotionEffect(MobEffects.JUMP_BOOST, MathHelper.ceil(1200 * dirF), ampF));
 			} else if (fluid == FluidRegistry.WATER) {
 				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceil(300 * dirF), ampF));
 			} else if (fluid == FluidRegistry.LAVA) {

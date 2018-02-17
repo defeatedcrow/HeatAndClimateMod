@@ -62,7 +62,8 @@ public class DCPluginForestry {
 
 			NonNullList<ItemStack> l4 = NonNullList.create();
 			l4.add(new ItemStack(FoodInit.crops, 1, 6));
-			RecipeManagers.squeezerManager.addRecipe(10, l4, new FluidStack(juice, 400), new ItemStack(mulch), 10);
+			RecipeManagers.squeezerManager.addRecipe(10, l4, new FluidStack(FoodInit.lemon, 400), new ItemStack(mulch),
+					10);
 
 			NonNullList<ItemStack> l5 = NonNullList.create();
 			l5.add(new ItemStack(FoodInit.crops, 1, 7));

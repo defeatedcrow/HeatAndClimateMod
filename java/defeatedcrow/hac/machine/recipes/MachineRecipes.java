@@ -20,6 +20,9 @@ public class MachineRecipes {
 			MachineAdvancedRecipe.load(res);
 		}
 		MachineDeviceRecipes.load();
+		if (ModuleConfig.r_crusher) {
+			MachineCrusherRecipe.load();
+		}
 	}
 
 	static void loadBasicRecipe() {

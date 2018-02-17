@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top_rh",
+    "textures": {
+        "bottom": "dcs_climate:blocks/build/door_marble_lower",
+        "top": "dcs_climate:blocks/build/door_marble_upper"
+    }
+}
