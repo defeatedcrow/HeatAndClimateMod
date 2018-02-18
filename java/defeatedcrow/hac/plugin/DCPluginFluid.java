@@ -119,7 +119,7 @@ public class DCPluginFluid {
 		Fluid f16 = FluidRegistry.getFluid("seed.oil");
 		registerPotion(f16, MobEffects.HASTE);
 		if (f16 != null) {
-			FluidDictionaryDC.registerFluidDic(f16, "plantoil");
+			FluidDictionaryDC.registerFluidDic(f16, "plant_oil");
 		}
 
 		Fluid f17 = FluidRegistry.getFluid("for.honey");
@@ -128,7 +128,7 @@ public class DCPluginFluid {
 		Fluid f18 = FluidRegistry.getFluid("bio.ethanol");
 		registerPotion(f18, MobEffects.BLINDNESS);
 		if (f18 != null) {
-			FluidDictionaryDC.registerFluidDic(f18, "fueloil");
+			FluidDictionaryDC.registerFluidDic(f18, "ethanol");
 		}
 
 		Fluid f33 = FluidRegistry.getFluid("biomass");
@@ -244,6 +244,9 @@ public class DCPluginFluid {
 		Fluid f44 = FluidRegistry.getFluid("dcs.nitrogen");
 		registerPotion(f44, DCInit.prevFreeze);
 
+		Fluid f45 = FluidRegistry.getFluid("dcs.ethanol");
+		registerPotion(f45, MobEffects.HASTE);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
@@ -255,15 +258,17 @@ public class DCPluginFluid {
 
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 150);
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 120);
+		MainAPIManager.fuelRegister.registerFuel("dcs.ethanol", 60);
 
 		// dic
 		FluidDictionaryDC.registerFluidDic(MachineInit.hydrogen, "hydrogen");
 		FluidDictionaryDC.registerFluidDic(MachineInit.nitricAcid, "nitricacid");
 		FluidDictionaryDC.registerFluidDic(MachineInit.sulfuricAcid, "sulfuricacid");
 		FluidDictionaryDC.registerFluidDic(MachineInit.ammonia, "ammonia");
-		FluidDictionaryDC.registerFluidDic(MachineInit.fuelOil, "fueloil");
-		FluidDictionaryDC.registerFluidDic(FoodInit.oil, "plantoil");
+		FluidDictionaryDC.registerFluidDic(MachineInit.fuelOil, "fuel_oil");
+		FluidDictionaryDC.registerFluidDic(FoodInit.oil, "plant_oil");
 		FluidDictionaryDC.registerFluidDic(MachineInit.nitrogen, "nitrogen");
+		FluidDictionaryDC.registerFluidDic(MachineInit.ethanol, "ethanol");
 	}
 
 	public static void registerPotion(Fluid f, Potion p) {

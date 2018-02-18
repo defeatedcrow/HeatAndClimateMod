@@ -240,7 +240,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 2);
 		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 5);
 
-		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 5);
+		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 6);
 
 		// block
 
@@ -419,6 +419,25 @@ public class FoodClientProxy {
 		ModelLoader.setCustomStateMapper(FoodInit.stockBlock, new StateMapperBase() {
 			final ModelResourceLocation fluidModel = new ModelResourceLocation(
 					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_stock", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.lemonBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(FoodInit.lemonBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {

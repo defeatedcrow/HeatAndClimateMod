@@ -27,6 +27,7 @@ public class DCPluginJeiMain {
 		DCsJEIPluginLists.crops.add(new ItemStack(FoodInit.cropRice, 1, 3));
 		DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.reactor, 1, 0));
 		DCsJEIPluginLists.spinning.add(new ItemStack(MachineInit.spinning, 1, 0));
+		DCsJEIPluginLists.crusher.add(new ItemStack(MachineInit.crusher, 1, 0));
 
 	}
 

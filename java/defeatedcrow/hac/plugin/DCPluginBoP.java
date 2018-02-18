@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.core.climate.recipe.SpinningRecipe;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
@@ -68,7 +69,17 @@ public class DCPluginBoP {
 			if (DCIntegrationCore.loadedForestry && wax != null) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F,
 						new ItemStack(BOPItems.honeycomb, 1, 0));
+
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F,
+						new ItemStack(MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPItems.honeycomb, 1, 0));
 			}
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2),
+					new ItemStack(MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null,
+					new ItemStack(MachineInit.rotaryBlade, 1, 0), "plantWildrice");
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F,
+					new ItemStack(MachineInit.rotaryBlade, 1, 1), new ItemStack(BOPBlocks.stone_formations, 1, 0));
 		}
 
 		if (ModuleConfig.machine && ModuleConfig.r_spinning) {

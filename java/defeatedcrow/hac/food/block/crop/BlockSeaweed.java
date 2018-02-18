@@ -19,6 +19,7 @@ import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.config.CoreConfigDC;
+import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -29,7 +30,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -44,7 +44,6 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -54,15 +53,14 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockSeaweed extends Block
+public class BlockSeaweed extends BlockDC
 		implements ISidedTexture, INameSuffix, IClimateCrop, IGrowable, IRapidCollectables {
 
 	protected Random cropRand = new Random();
 
 	public BlockSeaweed(String s, int max) {
-		super(Material.WATER);
+		super(Material.WATER, s);
 		this.setSoundType(SoundType.PLANT);
-		this.setUnlocalizedName(s);
 		this.setTickRandomly(true);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0)
 				.withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
@@ -110,9 +108,10 @@ public class BlockSeaweed extends Block
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
-			list.add(new ItemStack(this, 1, 0));
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = super.getSubItemList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	@Override
@@ -122,14 +121,14 @@ public class BlockSeaweed extends Block
 
 	@Override
 	@Nullable
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 
 	/* Block動作 */
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			IBlockState crop = world.getBlockState(pos);
@@ -143,11 +142,6 @@ public class BlockSeaweed extends Block
 			}
 		}
 		return false;
-	}
-
-	@Override
-	public void onBlockClicked(World world, BlockPos pos, EntityPlayer player) {
-		super.onBlockClicked(world, pos, player);
 	}
 
 	@Override
@@ -194,7 +188,7 @@ public class BlockSeaweed extends Block
 	}
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		this.checkAndDropBlock(world, pos, state);
 	}
 

@@ -79,7 +79,7 @@ public class DCPluginCoFH {
 		if (refined != null) {
 			DCPluginFluid.registerPotion(refined, MobEffects.RESISTANCE);
 			FluidDictionaryDC.registerFluidDic(refined, "refined");
-			MainAPIManager.fuelRegister.registerFuel("fuel", 120);
+			MainAPIManager.fuelRegister.registerFuel("refined_fuel", 120);
 		}
 
 		// other fluid

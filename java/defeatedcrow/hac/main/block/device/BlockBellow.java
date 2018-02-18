@@ -32,7 +32,7 @@ public class BlockBellow extends BlockTorqueBase implements IAirflowTile {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			TileEntity tile = world.getTileEntity(pos);
@@ -49,7 +49,7 @@ public class BlockBellow extends BlockTorqueBase implements IAirflowTile {
 				return true;
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override
@@ -70,9 +70,9 @@ public class BlockBellow extends BlockTorqueBase implements IAirflowTile {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
 			if (placer.rotationPitch < -75.0F) {

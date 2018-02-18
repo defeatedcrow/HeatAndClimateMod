@@ -58,7 +58,7 @@ public class BasicRecipeRegister {
 				new ItemStack(MainInit.repairPutty, 1, 2)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.STAINED_HARDENED_CLAY, 8, 0), new Object[] {
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.HARDENED_CLAY, 8, 0), new Object[] {
 				"XXX", "XYX", "XXX", 'X', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 32767), 'Y',
 				new ItemStack(MainInit.repairPutty, 1, 2)
 		});
@@ -74,6 +74,14 @@ public class BasicRecipeRegister {
 		// 土
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.DIRT, 1, 0), new Object[] {
 				new ItemStack(Blocks.SAND, 1, 32767), new ItemStack(Items.DYE, 1, 15), "dustAsh", "dustPresscake",
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.DIRT, 1, 0), new Object[] {
+				new ItemStack(Blocks.SAND, 1, 32767), new ItemStack(Items.DYE, 1, 15), "dustAsh", "dustPlant",
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.MYCELIUM, 1, 0), new Object[] {
+				new ItemStack(Blocks.DIRT, 1, 0), "dustBlan",
 		});
 
 		// ウール

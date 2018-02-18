@@ -23,6 +23,8 @@ public class MainCoreConfig {
 	public static boolean pendant_schorl = true;
 	public static boolean pendant_clam = true;
 
+	public static String timeZone = "Asia/Tokyo";
+
 	public void load(Configuration cfg) {
 
 		try {
@@ -59,6 +61,9 @@ public class MainCoreConfig {
 			Property p_schorl = cfg.get("item setting", "Enable Schorl Pendant Effect", pendant_schorl,
 					"Enable effect of schorl pendant.");
 
+			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
+			// "Set the time zone for Realtime Clock.");
+
 			enableAdvHUD = hud_icon.getBoolean();
 			iconX = hud_x.getInt();
 			iconY = hud_y.getInt();
@@ -70,6 +75,12 @@ public class MainCoreConfig {
 			steel = noSteel.getBoolean();
 			lead = noLead.getBoolean();
 			pendant_schorl = p_schorl.getBoolean();
+			// timeZone = zone.getString();
+
+			// TimeZone tz = TimeZone.getTimeZone(timeZone);
+			// if (tz != null) {
+			// ClimateMain.CAL.setTimeZone(tz);
+			// }
 
 		} catch (Exception e) {
 			e.printStackTrace();

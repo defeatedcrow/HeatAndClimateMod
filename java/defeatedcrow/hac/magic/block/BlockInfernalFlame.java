@@ -1,17 +1,18 @@
 package defeatedcrow.hac.magic.block;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
-import defeatedcrow.hac.core.util.DCUtil;
-import net.minecraft.block.BlockContainer;
+import defeatedcrow.hac.core.base.BlockContainerDC;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -19,7 +20,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -28,12 +28,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockInfernalFlame extends BlockContainer implements IHeatTile {
+public class BlockInfernalFlame extends BlockContainerDC implements IHeatTile {
 
 	public BlockInfernalFlame(String s) {
-		super(Material.FIRE);
+		super(Material.FIRE, s);
 		this.setSoundType(SoundType.SNOW);
-		this.setUnlocalizedName(s);
 		this.setTickRandomly(true);
 		this.setLightLevel(1.0F);
 	}
@@ -98,7 +97,7 @@ public class BlockInfernalFlame extends BlockContainer implements IHeatTile {
 
 	@Override
 	@Nullable
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 
@@ -128,9 +127,10 @@ public class BlockInfernalFlame extends BlockContainer implements IHeatTile {
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
-			list.add(new ItemStack(this, 1, 0));
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	@Override

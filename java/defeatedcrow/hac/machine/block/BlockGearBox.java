@@ -32,19 +32,19 @@ public class BlockGearBox extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	// redstone
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
 

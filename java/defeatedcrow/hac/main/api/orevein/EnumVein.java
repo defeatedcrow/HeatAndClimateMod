@@ -3,8 +3,8 @@ package defeatedcrow.hac.main.api.orevein;
 public enum EnumVein {
 	HIGH_SEDIMENT(0, 5),
 	SEDIMENT(1, 5),
-	SAND_SEDIMENT(2, 3),
-	BAUXITE(3, 3),
+	SAND_SEDIMENT(2, 4),
+	BAUXITE(3, 4),
 	KIESLAGER(4, 4),
 	QUARTZ(5, 5),
 	UNDERLAVA(6, 3),

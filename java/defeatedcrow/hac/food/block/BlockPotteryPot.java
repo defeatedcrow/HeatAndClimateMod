@@ -14,14 +14,12 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -35,7 +33,7 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null && !world.isRemote && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
@@ -60,12 +58,6 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TilePotteryPot();
-	}
-
-	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
-			list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override

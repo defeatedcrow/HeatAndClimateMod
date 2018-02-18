@@ -1,12 +1,14 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.placeable.ISidedTexture;
+import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.base.ISidedRenderingBlock;
-import defeatedcrow.hac.core.util.DCUtil;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -14,7 +16,6 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,7 +23,6 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 // doubleなし
-public abstract class BlockSlabBase extends Block implements ISidedTexture, INameSuffix, ISidedRenderingBlock {
+public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, INameSuffix, ISidedRenderingBlock {
 
 	public static final PropertyBool SIDE = PropertyBool.create("side");
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 7);
@@ -47,8 +47,7 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	public static final String CL_TEX = "dcs_climate:blocks/clear";
 
 	public BlockSlabBase(Material m, String s, int max, boolean glass) {
-		super(m);
-		this.setUnlocalizedName(s);
+		super(m, s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(SIDE, false).withProperty(TYPE, 0));
@@ -83,9 +82,9 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand)
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand)
 				.withProperty(SIDE, false);
 		if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5D))
 			return state;
@@ -202,11 +201,12 @@ public abstract class BlockSlabBase extends Block implements ISidedTexture, INam
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn()))
-			for (int i = 0; i < maxMeta + 1; i++) {
-				list.add(new ItemStack(this, 1, i));
-			}
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		for (int i = 0; i < maxMeta + 1; i++) {
+			list.add(new ItemStack(this, 1, i));
+		}
+		return list;
 	}
 
 	@SideOnly(Side.CLIENT)

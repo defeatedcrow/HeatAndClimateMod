@@ -293,6 +293,17 @@ public class FoodInitRegister {
 				ClimateMain.MOD_ID);
 		FoodInit.stock.setBlock(FoodInit.stockBlock);
 
+		FoodInit.lemon = new Fluid("dcs.lemonade",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/lemon_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/lemon_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".lemonade");
+		FluidRegistry.registerFluid(FoodInit.lemon);
+		FoodInit.lemonBlock = new DCFluidBlockBase(FoodInit.lemon, "lemon_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade");
+		DCMaterialReg.registerBlock(FoodInit.lemonBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade",
+				ClimateMain.MOD_ID);
+		FoodInit.stock.setBlock(FoodInit.lemonBlock);
+
 		FoodInit.blackLiquor = new Fluid("dcs.black_liquor",
 				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/black_liquor_still"),
 				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/black_liquor_still"))
@@ -325,6 +336,7 @@ public class FoodInitRegister {
 		FluidRegistry.addBucketForFluid(FoodInit.blackLiquor);
 		FluidRegistry.addBucketForFluid(FoodInit.hotSpring);
 		FluidRegistry.addBucketForFluid(FoodInit.stock);
+		FluidRegistry.addBucketForFluid(FoodInit.lemon);
 
 		// fluid item
 		FoodInit.dropOil = new ItemFluidDrop("olive", "dcs.seed_oil")

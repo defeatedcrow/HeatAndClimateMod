@@ -50,7 +50,7 @@ public class LoadingToolRecipe {
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.materials, 1, 7), new Object[] {
-				" X ", "XYX", " X ", 'Y', "gearBrass", 'X', "ingotSteel"
+				" X ", "XYX", " X ", 'Y', "gearWood", 'X', "ingotSteel"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.materials, 1, 6), new Object[] {
@@ -58,7 +58,7 @@ public class LoadingToolRecipe {
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.materials, 1, 7), new Object[] {
-				" X ", "XYX", " X ", 'Y', "gearIron", 'X', "ingotSteel"
+				" X ", "XYX", " X ", 'Y', "gearStone", 'X', "ingotSteel"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.materials, 1, 8), new Object[] {

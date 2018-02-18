@@ -1,12 +1,16 @@
 package defeatedcrow.hac.main.client;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
+import net.minecraft.block.BlockDoor;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 
 public class JsonRegister {
 
@@ -22,8 +26,9 @@ public class JsonRegister {
 	static void regItems() {
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreIngot, ClimateCore.PACKAGE_ID, "dcs_ore_ingot", "ores", 15);
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreDust, ClimateCore.PACKAGE_ID, "dcs_ore_dust", "ores", 13);
-		MAIN_INSTANCE.regSimpleItem(MainInit.gems, ClimateCore.PACKAGE_ID, "dcs_ore_gem", "ores", 20);
-		MAIN_INSTANCE.regSimpleItem(MainInit.miscDust, ClimateCore.PACKAGE_ID, "dcs_misc_dust", "ores", 11);
+		MAIN_INSTANCE.regSimpleItem(MainInit.gems, ClimateCore.PACKAGE_ID, "dcs_ore_gem", "ores", 21);
+		MAIN_INSTANCE.regSimpleItem(MainInit.miscDust, ClimateCore.PACKAGE_ID, "dcs_misc_dust", "ores", 12);
+		MAIN_INSTANCE.regSimpleItem(MainInit.foodDust, ClimateCore.PACKAGE_ID, "dcs_food_dust", "food", 3);
 		MAIN_INSTANCE.regSimpleItem(MainInit.stoneYagen, ClimateCore.PACKAGE_ID, "dcs_stone_yagen", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.brassYagen, ClimateCore.PACKAGE_ID, "dcs_brass_yagen", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.materials, ClimateCore.PACKAGE_ID, "dcs_material", "tool", 9);
@@ -31,10 +36,12 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.wrench, ClimateCore.PACKAGE_ID, "dcs_wrench", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.bakedApple, ClimateCore.PACKAGE_ID, "dcs_baked_apple", "food", 4);
 		MAIN_INSTANCE.regSimpleItem(MainInit.repairPutty, ClimateCore.PACKAGE_ID, "dcs_repair_putty", "tool", 2);
-		MAIN_INSTANCE.regSimpleItem(MainInit.foodMaterials, ClimateCore.PACKAGE_ID, "dcs_food_materials", "food", 2);
+		MAIN_INSTANCE.regSimpleItem(MainInit.foodMaterials, ClimateCore.PACKAGE_ID, "dcs_food_materials", "food", 3);
 		MAIN_INSTANCE.regSimpleItem(MainInit.flowerPot, ClimateCore.PACKAGE_ID, "dcs_flowerpot_white", "build", 1);
 		MAIN_INSTANCE.regSimpleItem(MainInit.scope, ClimateCore.PACKAGE_ID, "dcs_thermal_scope", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.entityScope, ClimateCore.PACKAGE_ID, "dcs_entity_scope", "tool", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorMarble, ClimateCore.PACKAGE_ID, "dcs_door_marble", "build", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorSteel, ClimateCore.PACKAGE_ID, "dcs_door_steel", "build", 0);
 
 		if (DCIntegrationCore.loadedForestry) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.circuit, ClimateCore.PACKAGE_ID, "dcs_plugin_circuit", "device", 0);
@@ -52,7 +59,7 @@ public class JsonRegister {
 		regCube((ITexturePath) MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
 		regCube((ITexturePath) MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 2);
 		regCube((ITexturePath) MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 2);
-		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 5);
+		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 6);
 		regCube((ITexturePath) MainInit.syntheticBlock, ClimateCore.PACKAGE_ID, "dcs_build_synthetic_glass", "build",
 				15);
 
@@ -64,7 +71,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 2);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.chalLamp, ClimateCore.PACKAGE_ID, "dcs_build_challamp", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 2);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 5);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 6);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.wallLamp, ClimateCore.PACKAGE_ID, "dcs_build_walllamp", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.awning, ClimateCore.PACKAGE_ID, "dcs_build_awning", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.plate, ClimateCore.PACKAGE_ID, "dcs_build_plate", "build", 1);
@@ -103,6 +110,17 @@ public class JsonRegister {
 		MAIN_INSTANCE.regTEBlock(MainInit.windvane, ClimateCore.PACKAGE_ID, "dcs_device_windvane", "device", 0);
 		MAIN_INSTANCE.regTEBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_ID, "dcs_device_stevenson_screen",
 				"machine", 0);
+
+		// door
+		ModelLoader.setCustomStateMapper(MainInit.doorMarble,
+				(new StateMap.Builder()).ignore(BlockDoor.POWERED).build());
+		ModelLoader.setCustomStateMapper(MainInit.doorSteel,
+				(new StateMap.Builder()).ignore(BlockDoor.POWERED).build());
+
+		ModelLoader.setCustomStateMapper(MainInit.realtimeClock,
+				(new StateMap.Builder()).ignore(DCState.FACING).build());
+		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock), ClimateCore.PACKAGE_ID,
+				"dcs_device_realtimeclock", "device", 0);
 	}
 
 	static void regTools() {

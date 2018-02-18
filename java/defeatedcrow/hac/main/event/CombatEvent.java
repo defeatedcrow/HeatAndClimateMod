@@ -21,6 +21,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 // 戦闘関連
@@ -71,23 +72,35 @@ public class CombatEvent {
 	public void onAttackEvent(LivingAttackEvent event) {
 		EntityLivingBase target = event.getEntityLiving();
 		DamageSource source = event.getSource();
-		if (target != null && source.getTrueSource() != null && source.getTrueSource() instanceof EntityTameable) {
-			EntityTameable living = (EntityTameable) source.getTrueSource();
+		if (target != null && source.getTrueSource() != null) {
+			if (source.getTrueSource() instanceof EntityTameable) {
+				EntityTameable living = (EntityTameable) source.getTrueSource();
 
-			Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
-			boolean amu = false;
-			if (!map.isEmpty()) {
-				for (ItemStack item : map.values()) {
-					if (item.getItem() == MagicInit.amulet && item.getItemDamage() == 4) {
-						amu = true;
+				Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
+				boolean amu = false;
+				if (!map.isEmpty()) {
+					for (ItemStack item : map.values()) {
+						if (item.getItem() == MagicInit.amulet && item.getItemDamage() == 4) {
+							amu = true;
+						}
 					}
 				}
-			}
 
-			if (amu && living.getOwner() instanceof EntityPlayer) {
-				DCLogger.infoLog("on amulet process");
-				target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) living.getOwner()),
-						event.getAmount());
+				if (amu && living.getOwner() instanceof EntityPlayer) {
+					DCLogger.infoLog("on amulet process");
+					target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) living.getOwner()),
+							event.getAmount());
+					event.setCanceled(true);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerAttackEvent(AttackEntityEvent event) {
+		EntityPlayer player = event.getEntityPlayer();
+		if (player != null && !player.world.isRemote) {
+			if (DCUtil.hasItemInTopSlots(player, new ItemStack(MagicInit.pendant, 1, 19))) {
 				event.setCanceled(true);
 			}
 		}

@@ -108,7 +108,7 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	public enum DropTable {
-		GYPSUM(MainInit.gems, 1, 3, true),
+		GYPSUM(MainInit.gems, 2, 3, true),
 		HEMATITE(MainInit.oreDust, 1, 5, true),
 		CHAL_B(MainInit.gems, 1, 0, true),
 		SAPPIRE(MainInit.gems, 1, 4, true),

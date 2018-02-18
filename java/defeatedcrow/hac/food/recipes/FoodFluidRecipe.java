@@ -89,6 +89,47 @@ public class FoodFluidRecipe {
 						"itemLeather"
 				});
 
+		// 醸造
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 500),
+				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"dustStarch", "foodMalt"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 300),
+				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"dustSugar", "foodMalt"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 200),
+				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"cropPotato", "foodMalt"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 100),
+				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"foodFlour", "foodMalt"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 200),
+				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"foodRice", "foodMalt"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 100),
+				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+						"dropMolasses", "foodMalt"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 3), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null,
+				false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"cropWheat"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 9, 3), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null,
+				false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						new ItemStack(Blocks.HAY_BLOCK, 1, 0)
+				});
+
 	}
 
 	static void loadCookingRecipes() {
@@ -100,6 +141,16 @@ public class FoodFluidRecipe {
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.tomatoJuice, 200),
 				DCHeatTier.OVEN, null, null, false, null, new Object[] {
 						"listAllveggie"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.lemon, 200), DCHeatTier.HOT,
+				null, null, false, null, new Object[] {
+						"cropLemon", "dustSugar"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FoodInit.lemon, 200), DCHeatTier.HOT,
+				null, null, false, null, new Object[] {
+						"cropLemon", "dropHoney"
 				});
 
 		regBoilrecipe(null, null, 0F, new FluidStack(FoodInit.coffee, 1000), null, null, false,

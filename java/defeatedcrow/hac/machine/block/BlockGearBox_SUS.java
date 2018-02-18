@@ -25,9 +25,9 @@ public class BlockGearBox_SUS extends BlockGearBox {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		// achievement
 		if (placer != null && !placer.world.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;
@@ -38,7 +38,7 @@ public class BlockGearBox_SUS extends BlockGearBox {
 	// redstone
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
 

@@ -46,11 +46,12 @@ public class ItemGems extends DCItem {
 	 * 18: アパタイト,
 	 * 19: 翡翠
 	 * 20: 月長石
+	 * 21: リシア輝石
 	 */
 	private static String[] names = {
 			"chal_blue", "chal_red", "chal_white", "gypsum", "sapphire", "malachite", "celestite", "clam", "salt",
 			"niter", "sulfur", "schorl", "serpentine", "olivine", "almandine", "rutile", "bauxite", "bismuth",
-			"apatite", "jadeite", "moonstone"
+			"apatite", "jadeite", "moonstone", "kunzite"
 	};
 
 	public ItemGems(int max) {
@@ -80,7 +81,7 @@ public class ItemGems extends DCItem {
 	/* gemぶっぱ */
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		return EnumActionResult.FAIL;
 	}
@@ -116,7 +117,7 @@ public class ItemGems extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
 		ItemStack stack = player.getHeldItem(hand);
 		if (ModuleConfig.magic && !DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)

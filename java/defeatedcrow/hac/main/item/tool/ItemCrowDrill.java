@@ -56,7 +56,7 @@ public class ItemCrowDrill extends DCItem {
 
 	// criative 穴掘り機能
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		// creativeチェック
 		ItemStack stack = player.getHeldItem(hand);

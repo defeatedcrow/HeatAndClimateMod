@@ -50,7 +50,7 @@ public class ItemDCSeeds extends DCItem {
 	/* IPlantable */
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		if (player == null || DCUtil.isEmpty(player.getHeldItem(hand)))
 			return EnumActionResult.FAIL;

@@ -19,7 +19,6 @@ import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
 import defeatedcrow.hac.food.entity.EntityTumbler;
 import defeatedcrow.hac.plugin.DrinkPotionType;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -193,7 +192,7 @@ public class ItemSilverCup extends FoodItemBase {
 		return false;
 	}
 
-	public List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
+	public static List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if (fluid != null) {
 			if (fluid == FoodInit.greenTea) {
@@ -208,6 +207,8 @@ public class ItemSilverCup extends FoodItemBase {
 				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(1200 * (dirF + ampF)), 0));
 			} else if (fluid == FoodInit.blackLiquor) {
 				ret.add(new PotionEffect(MobEffects.POISON, MathHelper.ceil(300 * dirF), ampF));
+			} else if (fluid == FoodInit.lemon) {
+				ret.add(new PotionEffect(MobEffects.JUMP_BOOST, MathHelper.ceil(1200 * dirF), ampF));
 			} else if (fluid == FluidRegistry.WATER) {
 				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceil(300 * dirF), ampF));
 			} else if (fluid == FluidRegistry.LAVA) {
@@ -227,7 +228,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 
 		IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);

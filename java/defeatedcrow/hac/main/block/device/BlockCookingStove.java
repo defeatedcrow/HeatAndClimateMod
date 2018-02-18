@@ -14,7 +14,6 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -22,7 +21,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -40,7 +38,7 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
@@ -74,13 +72,6 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileCookingStove();
-	}
-
-	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
-			list.add(new ItemStack(this, 1, 0));
-		}
 	}
 
 	@Override

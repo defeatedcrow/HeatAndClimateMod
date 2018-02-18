@@ -10,7 +10,6 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.IPressMold;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -57,7 +56,7 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		if (!DCUtil.isEmpty(stack) && stack.hasTagCompound()) {
 			ItemStack output = this.getOutput(stack);
 			if (!DCUtil.isEmpty(output)) {

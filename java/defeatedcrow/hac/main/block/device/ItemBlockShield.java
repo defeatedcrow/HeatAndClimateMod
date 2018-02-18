@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.DCItemBlock;
 import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
@@ -23,7 +22,7 @@ public class ItemBlockShield extends DCItemBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String name = "NONE";
 		if (stack.hasTagCompound()) {
 			NBTTagCompound tag = stack.getTagCompound();

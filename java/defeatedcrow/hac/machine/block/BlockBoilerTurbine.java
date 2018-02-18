@@ -37,20 +37,20 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack held = player.getHeldItem(hand);
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	// 設置時にはプレイヤーの方を向いている方が自然なので
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
 			if (placer.rotationPitch < -75.0F) {
@@ -67,7 +67,7 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 
 	// 見た目の更新
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
@@ -66,7 +65,7 @@ public class ItemIngots extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, World world, List<String> tooltip) {
 		int i = stack.getItemDamage();
 		if (i >= 0 && i <= maxMeta) {
 			int tier = Metal.VALUES[i].tier;

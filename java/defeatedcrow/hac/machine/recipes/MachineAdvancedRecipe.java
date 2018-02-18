@@ -13,9 +13,22 @@ public class MachineAdvancedRecipe {
 
 	public static void load(RecipeResourcesMain res) {
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
-				"YXX", "ZXX", "WWW", 'X', new ItemStack(MachineInit.IBC, 1, 0), 'Y',
-				new ItemStack(MachineInit.gearbox2, 1, 0), 'Z', new ItemStack(MachineInit.machimeMaterials, 1, 1), 'W',
-				"ingotSUS"
+				"YXX", "ZXX", "WVW", 'X', new ItemStack(MachineInit.IBC, 1, 0), 'Y',
+				new ItemStack(MachineInit.gearbox2, 1, 0), 'Z', new ItemStack(MachineInit.machimeMaterials, 1, 0), 'W',
+				"ingotSUS", 'V', "gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.crusher, 1, 0), new Object[] {
+				" Y ", "XZX", "XXX", 'X', "ingotSUS", 'Y', new ItemStack(Blocks.HOPPER, 1, 0), 'Z',
+				new ItemStack(MachineInit.machimeMaterials, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.rotaryBlade, 1, 0), new Object[] {
+				" Y ", "XZX", " Y ", 'X', "ingotSUS", 'Y', new ItemStack(Blocks.IRON_BARS, 1, 0), 'Z', "gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.rotaryBlade, 1, 1), new Object[] {
+				" Y ", "XZX", " Y ", 'X', "ingotTitanium", 'Y', new ItemStack(Blocks.IRON_BARS, 1, 0), 'Z', "gearSteel"
 		});
 
 		if (ModuleConfig.food) {
@@ -81,6 +94,15 @@ public class MachineAdvancedRecipe {
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.acceptorPanel, 1, 0), new Object[] {
 				"XXX", " Y ", "ZWZ", 'X', "blockGlass", 'Y', "gemBismuth", 'Z', "gemQuartz", 'W', "gearSteel"
 		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterFluidPanel, 1, 0), new Object[] {
+				"XXX", " Y ", "ZWZ", 'X', "blockGlass", 'Y', "gemBismuth", 'Z', "gemSchorl", 'W', "bucketEmpty"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.acceptorFluidPanel, 1, 0),
+				new Object[] {
+						"XXX", " Y ", "ZWZ", 'X', "blockGlass", 'Y', "gemBismuth", 'Z', "gemQuartz", 'W', "bucketEmpty"
+				});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.wirelessPortal, 1, 0), new Object[] {
 				"WXW", "VYV", "WZW", 'X', new ItemStack(MachineInit.gemcore, 1, 0), 'Y',

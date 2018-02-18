@@ -50,15 +50,15 @@ public class BlockLowChest extends DCTileBlock {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		state = state.withProperty(DCState.FACING, placer.getHorizontalFacing().getOpposite());
 		return state;
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);

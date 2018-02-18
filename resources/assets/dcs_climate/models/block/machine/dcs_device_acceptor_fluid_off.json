@@ -1,0 +1,7 @@
+{
+    "parent": "dcs_climate:block/machine/dcs_device_adapter_base",
+    "textures": {
+        "base": "dcs_climate:blocks/machine/bismuth_panel_fluidinput_off",
+        "core": "dcs_climate:blocks/machine/bismuth_panel_crystal"
+    }
+}

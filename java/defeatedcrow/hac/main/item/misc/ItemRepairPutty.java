@@ -7,7 +7,6 @@ import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,7 +55,7 @@ public class ItemRepairPutty extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, World world, List<String> tooltip) {
 		if (stack != null) {
 			int m = stack.getItemDamage();
 			if (m == 0) {
@@ -70,7 +69,7 @@ public class ItemRepairPutty extends DCItem {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
 		if (player != null && !DCUtil.isEmpty(stack) && stack.getItemDamage() == 2) {

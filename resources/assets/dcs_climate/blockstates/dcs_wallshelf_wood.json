@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north":  { "model": "dcs_climate:device/dcs_wallshelf_wood" },
+        "facing=south":  { "model": "dcs_climate:device/dcs_wallshelf_wood", "y": 180, "uvlock": true  },
+        "facing=west":  { "model": "dcs_climate:device/dcs_wallshelf_wood", "y": 270, "uvlock": true  },
+        "facing=east":  { "model": "dcs_climate:device/dcs_wallshelf_wood", "y": 90, "uvlock": true  }
+    }
+}

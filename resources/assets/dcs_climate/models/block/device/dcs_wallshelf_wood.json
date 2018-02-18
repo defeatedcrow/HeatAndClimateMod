@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/device/dcs_wallshelf_base",
+    "textures": {
+        "base": "blocks/planks_oak",
+        "face": "blocks/planks_oak",
+        "handle": "dcs_climate:blocks/ores/oreblock_brass"
+    }
+}

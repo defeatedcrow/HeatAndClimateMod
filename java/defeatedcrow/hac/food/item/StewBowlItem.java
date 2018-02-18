@@ -19,7 +19,6 @@ import defeatedcrow.hac.food.entity.StewSeaweedEntity;
 import defeatedcrow.hac.food.entity.StewSquidEntity;
 import defeatedcrow.hac.food.entity.StewTomatoEntity;
 import defeatedcrow.hac.food.entity.StewVegiEntity;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -100,7 +99,7 @@ public class StewBowlItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

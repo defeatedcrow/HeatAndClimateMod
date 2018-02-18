@@ -78,6 +78,7 @@ public class MachineInit {
 	public static Fluid fuelOil;
 	public static Fluid fuelGas;
 	public static Fluid nitrogen;
+	public static Fluid ethanol;
 
 	public static Block hydrogenBlock;
 	public static Block ammoniaBlock;
@@ -86,6 +87,7 @@ public class MachineInit {
 	public static Block fuelOilBlock;
 	public static Block fuelGasBlock;
 	public static Block nitrogenBlock;
+	public static Block ethanolBlock;
 
 	public static Item reagent;
 	public static Item synthetic;
@@ -95,15 +97,19 @@ public class MachineInit {
 	public static Item moldAlloy;
 	public static Item moldAluminium;
 	public static Item adapterCard;
+	public static Item rotaryBlade;
 
 	public static Block energyTank;
 	public static Block adapterPanel;
 	public static Block acceptorPanel;
+	public static Block adapterFluidPanel;
+	public static Block acceptorFluidPanel;
 	public static Block wirelessPortal;
 
 	public static Block reactor;
 	public static Block freezer;
 	public static Block burner;
+	public static Block crusher;
 
 	public static Item dynamite;
 

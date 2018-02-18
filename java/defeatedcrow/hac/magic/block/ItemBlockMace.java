@@ -9,7 +9,6 @@ import com.google.common.collect.Multimap;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import net.minecraft.block.Block;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
@@ -53,7 +52,7 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		if (player != null && !player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
@@ -67,7 +66,7 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		if (player != null && !player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
 			if (this.isActive(stack)) {
@@ -134,7 +133,7 @@ public abstract class ItemBlockMace extends DCItemBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		int d = this.getNBTDamage(stack);
 		tooltip.add("Energy: " + d + "/ 640");
 		if (ClimateCore.proxy.isShiftKeyDown()) {

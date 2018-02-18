@@ -8,7 +8,6 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.proj.EntityProjSilver;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -36,7 +35,7 @@ public class ItemSilverDagger extends DCItem {
 	/* 雪玉に似た動作をする */
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		return EnumActionResult.FAIL;
 	}
@@ -71,7 +70,7 @@ public class ItemSilverDagger extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
 		return new ActionResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
@@ -104,7 +103,7 @@ public class ItemSilverDagger extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "DISPOSABLE");
 	}
 

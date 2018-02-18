@@ -18,6 +18,7 @@ import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
+import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
 import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
@@ -29,6 +30,7 @@ import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.block.fluid.FluidUtil;
+import defeatedcrow.hac.main.client.block.TESRAnalogClock;
 import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRChandelier;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
@@ -162,6 +164,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		ClientRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
 		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		ClientRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum", new TESRChandelier());
+		ClientRegistry.registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock", new TESRAnalogClock());
 
 		FoodClientProxy.loadTE();
 		MachineClientProxy.loadTE();

@@ -16,6 +16,7 @@ import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -119,8 +120,10 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 2, 9),
 					new ItemStack(MainInit.gems, 1, 18), 0.5F, "oreApatite");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 13),
-					new ItemStack(MainInit.oreDust, 1, 3), 0.25F, "oreLead");
+			if (OreDictionary.doesOreNameExist("oreLead")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 13),
+						new ItemStack(MainInit.oreDust, 1, 3), 0.25F, "oreLead");
+			}
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.QUARTZ, 2, 0), new ItemStack(Items.QUARTZ, 1, 0),
 					0.2F, "oreQuartz");
@@ -167,6 +170,8 @@ public class MachineDeviceRecipes {
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 1), "cropWheat");
 
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 3), "cropPotato");
+
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 10), "gemRutile");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 11), "gemBauxite");
@@ -176,6 +181,9 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 9), "gemApatite");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 11), "gemSerpentine");
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 1, EnumDyeColor.CYAN.getDyeDamage()),
+					"gemMalachite");
 
 			// ingot粉砕
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 0), "ingotCopper");
@@ -324,11 +332,12 @@ public class MachineDeviceRecipes {
 					new Object[] {});
 			RecipeAPI.registerReactorRecipes.addRecipe(r7, DCHeatTier.SMELTING);
 
-			// Fe ハーバーボッシュ
-			// IReactorRecipe r8 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 600), null,
-			// DCHeatTier.KILN, 0, new ItemStack(Blocks.IRON_ORE, 1, 0),
-			// new FluidStack(MachineInit.hydrogen, 1000), null, new Object[] {});
-			// RecipeAPI.registerReactorRecipes.addRecipe(r8, DCHeatTier.KILN);
+			// Bz エタノール脱水
+			IReactorRecipe r8 = new ReactorRecipe(null, null, new FluidStack(MachineInit.fuelGas, 1000), null,
+					DCHeatTier.KILN, 0, new ItemStack(MachineInit.catalyst, 1, 3),
+					new FluidStack(MachineInit.ethanol, 1000), new FluidStack(MachineInit.sulfuricAcid, 500),
+					new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(r8, DCHeatTier.KILN);
 
 			IReactorRecipe r19 = new ReactorRecipe(null, null, new FluidStack(MachineInit.ammonia, 500), null,
 					DCHeatTier.KILN, 0, new ItemStack(MainInit.ores, 1, 5), new FluidStack(MachineInit.hydrogen, 1000),
@@ -600,6 +609,7 @@ public class MachineDeviceRecipes {
 					new FluidStack(FluidRegistry.WATER, 100), null, new Object[] {
 							"dustApatite", "sand", "fuelCoke"
 					});
+
 		}
 	}
 

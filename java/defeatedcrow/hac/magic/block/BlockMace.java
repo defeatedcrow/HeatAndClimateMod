@@ -1,17 +1,18 @@
 package defeatedcrow.hac.magic.block;
 
+import java.util.List;
 import java.util.Random;
+
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +23,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -47,7 +47,7 @@ public abstract class BlockMace extends DCTileBlock {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			world.setBlockToAir(pos);
@@ -101,14 +101,14 @@ public abstract class BlockMace extends DCTileBlock {
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
-			ItemStack stack = new ItemStack(this, 1, 0);
-			NBTTagCompound tag = new NBTTagCompound();
-			tag.setInteger("dcs.mace.energy", 640);
-			stack.setTagCompound(tag);
-			list.add(stack);
-		}
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		ItemStack stack = new ItemStack(this, 1, 0);
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("dcs.mace.energy", 640);
+		stack.setTagCompound(tag);
+		list.add(stack);
+		return list;
 	}
 
 	// particleのON/OFF

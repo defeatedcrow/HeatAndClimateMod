@@ -39,15 +39,18 @@ public class MainInit {
 	public static Block halfSlab2;
 	public static Block builds;
 	public static Block plate;
+	public static Block syntheticBlock;
+
 	public static Block fenceGypsum;
 	public static Block fenceMarble;
 	public static Block fenceSerpentine;
 	public static Block fenceBedrock;
-	public static Block syntheticBlock;
+
 	public static Block fenceAluminium;
 	public static Block fenceNet;
 	public static Block fenceGlass;
 	public static Block fenceLadder;
+
 	public static Block awning;
 	public static Block lampCarbide;
 	public static Block lampGas;
@@ -92,10 +95,18 @@ public class MainInit {
 	public static Block tableGypsum;
 	public static Block tableWood;
 	public static Block tableDark;
+	public static Block squaretableWood;
+	public static Block squaretableMarble;
+	public static Block squaretableChecker;
+	public static Block squaretableBlack;
 	public static Block stoolBlack;
 	public static Block stoolRed;
 	public static Block sofaBlack;
 	public static Block sofaRed;
+	public static Block chairWood;
+	public static Block chairMarble;
+	public static Block chairChecker;
+	public static Block chairBlack;
 
 	public static Block carpetRed;
 	public static Block carpetWhite;
@@ -106,9 +117,23 @@ public class MainInit {
 
 	public static Block chestMarble;
 	public static Block chestWood;
+	public static Block chestChecker;
+	public static Block chestBlack;
 	public static Block chestMetal;
 	public static Block chestMagnet;
 	public static Block chestVillage;
+
+	public static Block wallshelfMarble;
+	public static Block wallshelfWood;
+	public static Block wallshelfChecker;
+	public static Block wallshelfBlack;
+
+	public static Block doorMarble;
+	public static Block doorSteel;
+	public static Item itemDoorMarble;
+	public static Item itemDoorSteel;
+
+	public static Block realtimeClock;
 
 	// device
 	public static Block chamber;
@@ -126,6 +151,7 @@ public class MainInit {
 	public static Item gems;
 	public static Item miscDust;
 	public static Item materials;
+	public static Item foodDust;
 
 	// tool
 	public static Item stoneYagen;

@@ -153,7 +153,7 @@ public class BlockOres2 extends DCSimpleBlock {
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
 		ItemStack add = ItemStack.EMPTY;
-		int par = 5 + fortune * 5;
+		int par = 3 + fortune * 3;
 		if (rand.nextInt(100) < par) {
 			if (meta == 6)
 				add = new ItemStack(MainInit.gems, 1, 13);
@@ -164,7 +164,8 @@ public class BlockOres2 extends DCSimpleBlock {
 				} else {
 					add = new ItemStack(MainInit.gems, 1, 20);
 				}
-			}
+			} else if (meta == 11)
+				add = new ItemStack(MainInit.gems, 1, 21);
 		}
 
 		if (!DCUtil.isEmpty(add)) {

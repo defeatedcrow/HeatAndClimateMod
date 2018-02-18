@@ -11,7 +11,6 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -50,7 +49,7 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		if (!DCUtil.isEmpty(stack)) {
 			ItemStack output = this.getOutput(stack);
 			if (!DCUtil.isEmpty(output)) {

@@ -34,7 +34,7 @@ public class BlockPortalManager extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);

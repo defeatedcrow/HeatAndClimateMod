@@ -32,7 +32,7 @@ public class BlockAcvShield extends DCTileBlock {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			TileEntity tile = world.getTileEntity(pos);
@@ -50,7 +50,7 @@ public class BlockAcvShield extends DCTileBlock {
 				return true;
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

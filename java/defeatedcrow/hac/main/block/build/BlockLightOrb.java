@@ -1,22 +1,22 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import defeatedcrow.hac.core.util.DCUtil;
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -25,7 +25,7 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLightOrb extends Block {
+public class BlockLightOrb extends BlockDC {
 
 	protected static final AxisAlignedBB AABB_PANEL = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 0.75D, 0.75D, 0.75D);
 
@@ -33,8 +33,7 @@ public class BlockLightOrb extends Block {
 	public final int maxMeta;
 
 	public BlockLightOrb(String s) {
-		super(Material.CIRCUITS);
-		this.setUnlocalizedName(s);
+		super(Material.CIRCUITS, s);
 		this.setHardness(0.1F);
 		this.setResistance(5.0F);
 		this.setLightLevel(1.0F);
@@ -77,10 +76,10 @@ public class BlockLightOrb extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (DCUtil.machCreativeTab(tab, getCreativeTabToDisplayOn())) {
-			list.add(new ItemStack(this, 1, 0));
-		}
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	@Override
@@ -90,7 +89,7 @@ public class BlockLightOrb extends Block {
 
 	@Override
 	@Nullable
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 

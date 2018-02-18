@@ -2,6 +2,7 @@
     "parent": "dcs_climate:block/device/dcs_lowchest_base",
     "textures": {
         "base": "dcs_climate:blocks/ores/gemblock_marble",
+        "face": "dcs_climate:blocks/ores/gemblock_marble",
         "handle": "dcs_climate:blocks/ores/oreblock_brass"
     }
 }

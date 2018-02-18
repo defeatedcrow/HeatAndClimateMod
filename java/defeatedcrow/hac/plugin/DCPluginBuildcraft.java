@@ -69,8 +69,10 @@ public class DCPluginBuildcraft {
 		if (BCModules.ENERGY.isLoaded()) {
 			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.hydrogen, 8 * MjAPI.MJ, 1200);
 			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelGas, 8 * MjAPI.MJ, 2000);
-			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelOil, 5 * MjAPI.MJ, 12000);
+			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelOil, 5 * MjAPI.MJ, 16000);
 			BuildcraftFuelRegistry.fuel.addFuel(FoodInit.blackLiquor, 2 * MjAPI.MJ, 20000);
+			BuildcraftFuelRegistry.fuel.addFuel(FoodInit.oil, 4 * MjAPI.MJ, 10000);
+			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.ethanol, 6 * MjAPI.MJ, 4000);
 		}
 
 		if (ModuleConfig.machine && ModuleConfig.machine_advanced) {
