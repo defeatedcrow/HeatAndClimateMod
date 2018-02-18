@@ -664,10 +664,10 @@ public class MainMaterialRegister {
 		MainInit.oreDust = new ItemOreDusts(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		DCMaterialReg.registerItem(MainInit.oreDust, ClimateCore.PACKAGE_BASE + "_oredust", ClimateMain.MOD_ID);
 
-		MainInit.gems = new ItemGems(20).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(21).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		DCMaterialReg.registerItem(MainInit.gems, ClimateCore.PACKAGE_BASE + "_gem", ClimateMain.MOD_ID);
 
-		MainInit.miscDust = new ItemMiscDust(11).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
+		MainInit.miscDust = new ItemMiscDust(12).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		DCMaterialReg.registerItem(MainInit.miscDust, ClimateCore.PACKAGE_BASE + "_miscdust", ClimateMain.MOD_ID);
 
 		MainInit.foodDust = new ItemFoodDust(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fooddust");

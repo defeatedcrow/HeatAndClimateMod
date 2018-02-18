@@ -18,7 +18,7 @@ public class ItemMiscDust extends DCItem {
 
 	private static String[] names = {
 			"coal", "crystal", "lime", "wood", "presscake", "ash", "niter", "sulfur", "garnet", "apatite", "borax",
-			"chrysotile"
+			"chrysotile", "mica"
 	};
 
 	public ItemMiscDust(int max) {
@@ -44,6 +44,7 @@ public class ItemMiscDust extends DCItem {
 	 * 9: アパタイト
 	 * 10: ホウ砂
 	 * 11: 石綿
+	 * 12: 雲母
 	 */
 	@Override
 	public String[] getNameSuffix() {

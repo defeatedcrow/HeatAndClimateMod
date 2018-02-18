@@ -40,6 +40,28 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 
 	private final int maxMeta;
 
+	/*
+	 * 0: 青カルセドニー
+	 * 1: 赤カルセドニー
+	 * 2: 白カルセドニー
+	 * 3: 石英
+	 * 4: サファイア
+	 * 5: マラカイト
+	 * 6: セレスタイト
+	 * 7: ハマグリ
+	 * 8: ラピス
+	 * 9: ダイヤ
+	 * 10: ショール
+	 * 11: 蛇紋石
+	 * 12: カンラン石
+	 * 13: アルマンディン
+	 * 14: エレスチャル
+	 * 15: ルチル
+	 * 16: ビスマス,
+	 * 17: 翡翠
+	 * 18: 月長石
+	 * 19: リシア輝石
+	 */
 	private static String[] names = {
 			"chal_blue", /* 水耐性 */
 			"chal_red", /* 火耐性 */
@@ -59,8 +81,9 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			"rutile", /* 爆発耐性 */
 			"bismuth", /* ツールがゆっくり回復 */
 			"jadeite", /* 動物と仲良く */
-			"moonstone"
-			/* 矢の弾速UP */ };
+			"moonstone", /* 矢の弾速UP */
+			"kunzite"
+			/* 攻撃抑制 */ };
 
 	public ItemMagicalPendant(int max) {
 		super();
@@ -103,6 +126,7 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 		case 8:
 			return CharmType.TOOL;
 		case 12:
+		case 19:
 			return CharmType.ATTACK;
 		default:
 			return CharmType.CONSTANT;
@@ -141,6 +165,9 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 			int r = 2 + itemRand.nextInt(3);
 			EntityXPOrb orb = new EntityXPOrb(player.world, target.posX, target.posY, target.posZ, r);
 			player.world.spawnEntity(orb);
+		}
+		if (meta == 19) {
+			damage = 0F;
 		}
 		return false;
 	}

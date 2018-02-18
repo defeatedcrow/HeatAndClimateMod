@@ -28,7 +28,8 @@ public class MagicRecipeRegister {
 				new ItemStack(MainInit.gems, 1, 0), new ItemStack(MainInit.gems, 1, 1),
 				new ItemStack(MainInit.gems, 1, 2), "gemQuartz", "gemSapphire", "gemMalachite", "gemCelestite",
 				"gemClam", "gemLapis", "gemDiamond", "gemSchorl", "gemSerpentine", "gemOlivine", "gemGarnet",
-				new ItemStack(MagicInit.elestial, 1, 0), "gemRutile", "gemBismuth", "gemJadeite", "gemMoonstone"
+				new ItemStack(MagicInit.elestial, 1, 0), "gemRutile", "gemBismuth", "gemJadeite", "gemMoonstone",
+				"gemKunzite"
 		};
 		for (int i = 0; i < gems.length; i++) {
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, i), new Object[] {

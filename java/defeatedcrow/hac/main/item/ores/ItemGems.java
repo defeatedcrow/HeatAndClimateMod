@@ -46,11 +46,12 @@ public class ItemGems extends DCItem {
 	 * 18: アパタイト,
 	 * 19: 翡翠
 	 * 20: 月長石
+	 * 21: リシア輝石
 	 */
 	private static String[] names = {
 			"chal_blue", "chal_red", "chal_white", "gypsum", "sapphire", "malachite", "celestite", "clam", "salt",
 			"niter", "sulfur", "schorl", "serpentine", "olivine", "almandine", "rutile", "bauxite", "bismuth",
-			"apatite", "jadeite", "moonstone"
+			"apatite", "jadeite", "moonstone", "kunzite"
 	};
 
 	public ItemGems(int max) {

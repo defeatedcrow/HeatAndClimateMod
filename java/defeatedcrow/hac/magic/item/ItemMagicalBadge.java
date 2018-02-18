@@ -66,6 +66,28 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 
 	private final float maxCount = 128;
 
+	/*
+	 * 0: 青カルセドニー
+	 * 1: 赤カルセドニー
+	 * 2: 白カルセドニー
+	 * 3: 石英
+	 * 4: サファイア
+	 * 5: マラカイト
+	 * 6: セレスタイト
+	 * 7: ハマグリ
+	 * 8: ラピス
+	 * 9: ダイヤ
+	 * 10: ショール
+	 * 11: 蛇紋石
+	 * 12: カンラン石
+	 * 13: アルマンディン
+	 * 14: エレスチャル
+	 * 15: ルチル
+	 * 16: ビスマス,
+	 * 17: 翡翠
+	 * 18: 月長石
+	 * 19: リシア輝石
+	 */
 	private static String[] names = {
 			"chal_blue", /* 水属性追撃 */
 			"chal_red", /* 火属性追撃 */
@@ -85,8 +107,9 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			"rutile", /* 光源設置 */
 			"bismuth", /* Block遠隔使用 */
 			"jadeite", /* 鉱脈索敵 */
-			"moonstone"
-			/* 攻撃対象の書き換え */ };
+			"moonstone", /* 攻撃対象の書き換え */
+			"kunzite"
+			/* 敵消去 */ };
 
 	public ItemMagicalBadge(int max) {
 		super();
@@ -126,6 +149,7 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			return CharmType.KEY;
 		case 8:
 		case 9:
+		case 19:
 			return CharmType.TOOL;
 		default:
 			return CharmType.ATTACK;
@@ -496,7 +520,10 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	public boolean onToolUsing(EntityPlayer player, BlockPos pos, IBlockState state, ItemStack charm) {
 		int meta = charm.getMetadata();
 		if (player.isSneaking() && !player.world.isRemote && state != null) {
+			boolean silk = false;
+
 			if (meta == 9) {
+				silk = DCUtil.hasItemInTopSlots(player, new ItemStack(this, 1, 19));
 				// 一括破壊
 				ItemStack hold = player.getHeldItemMainhand();
 				BlockPos min = pos.add(-5, -5, -5);
@@ -512,13 +539,22 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 							&& target.getBlock().getMetaFromState(target) == state.getBlock().getMetaFromState(state)
 							&& !target.getBlock().hasTileEntity(target)) {
 						// 同Block同Metadata
-						target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
+						if (silk && target.getBlock().canSilkHarvest(player.world, p, target, player)) {
+							ItemStack item = new ItemStack(target.getBlock(), 1,
+									target.getBlock().getMetaFromState(target));
+							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D,
+									p.getZ() + 0.5D, item);
+							player.world.spawnEntity(drop);
+						} else {
+							target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
+						}
 						player.world.setBlockToAir(p);
 						flag = true;
 					}
 				}
 				return flag;
 			} else if (meta == 8) {
+				silk = DCUtil.hasItemInTopSlots(player, new ItemStack(this, 1, 19));
 				// 範囲破壊
 				ItemStack hold = player.getHeldItemMainhand();
 				String tool = state.getBlock().getHarvestTool(state);
@@ -533,12 +569,27 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					}
 					IBlockState block = player.world.getBlockState(p);
 					if (!block.getBlock().hasTileEntity(block)) {
-						block.getBlock().harvestBlock(player.world, player, p, block, null, hold);
+						if (silk && block.getBlock().canSilkHarvest(player.world, p, block, player)) {
+							ItemStack item = new ItemStack(block.getBlock(), 1,
+									block.getBlock().getMetaFromState(block));
+							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D,
+									p.getZ() + 0.5D, item);
+							player.world.spawnEntity(drop);
+						} else {
+							block.getBlock().harvestBlock(player.world, player, p, block, null, hold);
+						}
 						player.world.setBlockToAir(p);
 						flag = true;
 					}
 				}
 				return flag;
+			} else if (meta == 19 && state.getBlock().canSilkHarvest(player.world, pos, state, player)) {
+				ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
+				EntityItem drop = new EntityItem(player.world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
+						item);
+				player.world.spawnEntity(drop);
+				player.world.setBlockToAir(pos);
+				return true;
 			}
 		}
 		return false;
