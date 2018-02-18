@@ -22,7 +22,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -383,8 +382,9 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			ItemStack out = currentRecipe.getOutput();
 			ItemStack sec = currentRecipe.getSecondary();
 			ItemStack tert = currentRecipe.getTertialy();
-			float chance1 = MathHelper.ceil(currentRecipe.getSecondaryChance() * 100);
-			float chance2 = MathHelper.ceil(currentRecipe.getTertialyChance() * 100);
+			float chance0 = currentRecipe.getChance() * 100;
+			float chance1 = currentRecipe.getSecondaryChance() * 100;
+			float chance2 = currentRecipe.getTertialyChance() * 100;
 			FluidStack outF1 = currentRecipe.getOutputFluid();
 
 			// 1: output fluid check
@@ -406,7 +406,9 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 				outputT1.fill(outF1, true);
 			}
 
-			if (!DCUtil.isEmpty(out)) {
+			world.rand.nextInt(100);
+
+			if (!DCUtil.isEmpty(out) && world.rand.nextInt(100) < chance0) {
 				this.insertResult(out);
 			}
 

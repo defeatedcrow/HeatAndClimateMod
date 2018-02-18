@@ -577,7 +577,7 @@ public class MainMaterialRegister {
 
 		MainInit.doorSteel = new BlockDoorDC(ClimateCore.PACKAGE_BASE + "_door_steel", Material.ROCK);
 		DCMaterialReg.registerBlock(MainInit.doorSteel, ClimateCore.PACKAGE_BASE + "_door_steel", ClimateMain.MOD_ID);
-		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.doorSteel), "dcs_steel", "dcs_door_steel",
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.doorSteel), "dcs_climate", "dcs_door_steel",
 				"build", 0, true);
 
 		MainInit.itemDoorSteel = new ItemDoorDC(MainInit.doorSteel)

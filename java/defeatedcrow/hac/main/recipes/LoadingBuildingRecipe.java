@@ -128,15 +128,15 @@ public class LoadingBuildingRecipe {
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.bricks, 4, 0), new Object[] {
-				"XX", "XX", 'X', new ItemStack(MainInit.gemBlock, 4, 3)
+				"XX", "XX", 'X', new ItemStack(MainInit.gemBlock, 1, 3)
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.bricks, 4, 1), new Object[] {
-				"XX", "XX", 'X', new ItemStack(MainInit.gemBlock, 4, 6)
+				"XX", "XX", 'X', new ItemStack(MainInit.gemBlock, 1, 6)
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.bricks, 4, 2), new Object[] {
-				"XX", "XX", 'X', new ItemStack(MainInit.ores_2, 4, 0)
+				"XX", "XX", 'X', new ItemStack(MainInit.ores_2, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 1, 0), new Object[] {
