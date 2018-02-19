@@ -58,11 +58,11 @@ public abstract class ItemBlockMace extends DCItemBlock {
 			ItemStack stack = player.getHeldItem(hand);
 			if (this.isActive(stack)) {
 				int amo = this.getNBTDamage(stack);
-				this.onItemRightClick(world, player, hand);
+				this.onItemRightClick2(world, player, hand);
 				return EnumActionResult.SUCCESS;
 			}
 		}
-		return super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
+		return super.onItemUse2(player, world, pos, hand, facing, hitX, hitY, hitZ);
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public abstract class ItemBlockMace extends DCItemBlock {
 			}
 			return new ActionResult(EnumActionResult.SUCCESS, stack);
 		}
-		return super.onItemRightClick(world, player, hand);
+		return super.onItemRightClick2(world, player, hand);
 	}
 
 	protected abstract void doUsingEffect(ItemStack stack, EntityPlayer player, World world);

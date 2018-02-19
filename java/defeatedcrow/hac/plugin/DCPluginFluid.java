@@ -166,10 +166,10 @@ public class DCPluginFluid {
 		Fluid f24 = FluidRegistry.getFluid("bline");
 		registerPotion(f24, MobEffects.RESISTANCE);
 
-		Fluid f25 = FluidRegistry.getFluid("chlorine");
+		Fluid f25 = FluidRegistry.getFluid("liquidchlorine");
 		registerPotion(f25, MobEffects.LEVITATION);
 
-		Fluid f26 = FluidRegistry.getFluid("sulfurdioxidegas");
+		Fluid f26 = FluidRegistry.getFluid("liquidsulfurdioxide");
 		registerPotion(f26, MobEffects.WEAKNESS);
 		if (f26 != null) {
 			Block b26 = f26.getBlock();
@@ -178,7 +178,7 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f27 = FluidRegistry.getFluid("sulfurtrioxidegas");
+		Fluid f27 = FluidRegistry.getFluid("liquidsulfurtrioxide");
 		registerPotion(f27, MobEffects.WITHER);
 		if (f27 != null) {
 			Block b27 = f27.getBlock();
@@ -187,13 +187,13 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f28 = FluidRegistry.getFluid("sodium");
+		Fluid f28 = FluidRegistry.getFluid("liquidsodium");
 		registerPotion(f28, MobEffects.INSTANT_DAMAGE);
 
-		Fluid f29 = FluidRegistry.getFluid("lithium");
+		Fluid f29 = FluidRegistry.getFluid("liquidlithium");
 		registerPotion(f29, MobEffects.INSTANT_DAMAGE);
 
-		Fluid f30 = FluidRegistry.getFluid("fusionfueldt");
+		Fluid f30 = FluidRegistry.getFluid("liquidfusionfuel");
 		registerPotion(f30, MobEffects.INVISIBILITY);
 
 		Fluid f31 = FluidRegistry.getFluid("sulfuricacid");
@@ -206,7 +206,7 @@ public class DCPluginFluid {
 		}
 
 		Fluid f32 = FluidRegistry.getFluid("steam");
-		registerPotion(f32, MobEffects.MINING_FATIGUE);
+		registerPotion(f32, DCInit.prevFreeze);
 		if (f32 != null) {
 			Block b32 = f32.getBlock();
 			if (b32 != null) {
@@ -220,7 +220,7 @@ public class DCPluginFluid {
 		Fluid f36 = FluidRegistry.getFluid("creosote");
 		registerPotion(f36, MobEffects.NAUSEA);
 
-		Fluid f37 = FluidRegistry.getFluid("oxigen");
+		Fluid f37 = FluidRegistry.getFluid("liquidoxygen");
 		registerPotion(f37, MobEffects.WATER_BREATHING);
 
 		Fluid f38 = FluidRegistry.getFluid("dcs.hydrogen");
@@ -252,8 +252,7 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
 		MainAPIManager.fuelRegister.registerFuel("bio.ethanol", 100);
 		MainAPIManager.fuelRegister.registerFuel("biomass", 60);
-		MainAPIManager.fuelRegister.registerFuel("fusionfueldt", 150);
-		MainAPIManager.fuelRegister.registerFuel("ethene", 120);
+		MainAPIManager.fuelRegister.registerFuel("liquidethene", 120);
 		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
 
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 150);

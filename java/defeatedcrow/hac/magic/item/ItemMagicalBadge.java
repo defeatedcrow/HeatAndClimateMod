@@ -161,9 +161,13 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String s = "";
 		int meta = stack.getMetadata();
+		int dur = this.getNBTDamage(stack);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.comment.badge." + meta));
 		} else {
+			int a = (int) (maxCount - dur);
+			int b = (int) maxCount;
+			tooltip.add("Energy: " + a + "/" + b);
 			tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.tip.badge." + meta));
 			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
 		}

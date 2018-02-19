@@ -118,6 +118,10 @@ public class MachineAdvancedRecipe {
 				"ZXZ", "WYW", "ZXZ", 'W', "gemSapphire", 'X', "gemCelestite", 'Y', "gemClam", 'Z', "obsidian"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
+				"ZXZ", "WYW", "ZXZ", 'W', "gemSapphire", 'X', "gemMoonstone", 'Y', "dustMica", 'Z', "obsidian"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterCard, 1, 0), new Object[] {
 				"ZXZ", " Y ", 'X', "gemBismuth", 'Y', "blockGlass", 'Z', "gemQuartz"
 		});
