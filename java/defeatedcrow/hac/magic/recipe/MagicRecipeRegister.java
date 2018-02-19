@@ -172,6 +172,10 @@ public class MagicRecipeRegister {
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 0), new Object[] {
+				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemChalcedonyRed", 'Z', "gemRutile", 'W', "blockElestial"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 0), new Object[] {
 				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', new ItemStack(MainInit.gems, 1, 1), 'Z',
 				new ItemStack(Items.ENDER_EYE, 1, 0), 'W', "blockElestial"
 		});
@@ -184,13 +188,13 @@ public class MagicRecipeRegister {
 				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemLapis", 'Z', "gemMoonstone", 'W', "blockElestial"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 2), new Object[] {
+				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemSapphire", 'Z', "gemSchorl", 'W', "blockElestial"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 3), new Object[] {
 				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', new ItemStack(MainInit.gems, 1, 0), 'Z',
 				new ItemStack(Blocks.PACKED_ICE, 1, 0), 'W', "blockElestial"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 2), new Object[] {
-				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemSapphire", 'Z', "gemSchorl", 'W', "blockElestial"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 4), new Object[] {
@@ -198,9 +202,18 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 4), new Object[] {
+				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemPeridot", 'Z',
+				new ItemStack(Items.PRISMARINE_CRYSTALS, 1, 0), 'W', "blockElestial"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 5), new Object[] {
 				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "gemGarnet", 'Z', new ItemStack(MainInit.gems, 1, 1), 'W',
 				"blockElestial"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 5), new Object[] {
+				"XYX", "ZWZ", "XYX", 'X', "ingotGold", 'Y', "dustBlaze", 'Z', "dustPhosphorus", 'W', "blockElestial"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 6), new Object[] {

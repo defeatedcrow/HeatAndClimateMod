@@ -15,6 +15,7 @@ public class DCRecipeCoFH {
 	static void loadFuels() {
 		addCompressionFuel(MachineInit.fuelOil.getName(), 800000);
 		addCompressionFuel(MachineInit.fuelGas.getName(), 1000000);
+		addCompressionFuel(MachineInit.ethanol.getName(), 200000);
 		addCompressionFuel(FoodInit.blackLiquor.getName(), 100000);
 		addCompressionFuel(FoodInit.oil.getName(), 200000);
 	}

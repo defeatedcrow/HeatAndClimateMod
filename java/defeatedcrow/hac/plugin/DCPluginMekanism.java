@@ -1,6 +1,9 @@
 package defeatedcrow.hac.plugin;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import mekanism.api.gas.GasRegistry;
@@ -10,6 +13,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 public class DCPluginMekanism {
@@ -19,7 +25,12 @@ public class DCPluginMekanism {
 	private DCPluginMekanism() {}
 
 	public static void load() {
-
+		Fluid e = FluidRegistry.getFluid("liquidethene");
+		if (e != null) {
+			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0F, new FluidStack(e, 1000), null, DCHeatTier.KILN,
+					new ItemStack(MachineInit.catalyst, 1, 1), new FluidStack(MachineInit.ethanol, 1000),
+					new FluidStack(MachineInit.sulfuricAcid, 500), new Object[] {});
+		}
 	}
 
 	public static void sendIMC() {
