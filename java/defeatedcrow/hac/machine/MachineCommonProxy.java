@@ -23,6 +23,10 @@ import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
+import defeatedcrow.hac.machine.block.TileMonitorFluid;
+import defeatedcrow.hac.machine.block.TileMonitorRF;
+import defeatedcrow.hac.machine.block.TileMonitorRedStone;
+import defeatedcrow.hac.machine.block.TileMonitorTorque;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
@@ -101,6 +105,10 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileShaft_TB_Steel.class, "dcs_te_shaft_tb_steel");
 		GameRegistry.registerTileEntity(TileDieselEngine.class, "dcs_te_diesel_engine");
 		GameRegistry.registerTileEntity(TileRollerCrusher.class, "dcs_te_crusher");
+		GameRegistry.registerTileEntity(TileMonitorRedStone.class, "dcs_te_monitor_rs");
+		GameRegistry.registerTileEntity(TileMonitorTorque.class, "dcs_te_monitor_torque");
+		GameRegistry.registerTileEntity(TileMonitorRF.class, "dcs_te_monitor_rf");
+		GameRegistry.registerTileEntity(TileMonitorFluid.class, "dcs_te_monitor_fluid");
 	}
 
 	public static void loadEntity() {

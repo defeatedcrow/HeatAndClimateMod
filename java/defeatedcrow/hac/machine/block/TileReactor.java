@@ -30,7 +30,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -232,7 +231,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		}
 		if (in.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 			dummy = in2.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
-		} else if (in.getItem() instanceof IFluidHandler) {
+		} else if (in.getItem() instanceof IFluidHandlerItem) {
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 

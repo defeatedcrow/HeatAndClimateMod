@@ -138,6 +138,25 @@ public class MachineAdvancedRecipe {
 				"X", "Y", 'X', "bucketEmpty", 'Y', new ItemStack(MachineInit.adapterCard, 1, 1)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorRS, 1, 0), new Object[] {
+				"X", "Y", "Z", 'X', new ItemStack(Blocks.REDSTONE_LAMP, 1, 0), 'Y', "gemBismuth", 'Z',
+				new ItemStack(Blocks.REDSTONE_TORCH, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorFluid, 1, 0), new Object[] {
+				"X", "Y", "Z", 'X', new ItemStack(Blocks.REDSTONE_LAMP, 1, 0), 'Y', "gemBismuth", 'Z',
+				new ItemStack(Items.BUCKET, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorTorque, 1, 0), new Object[] {
+				"X", "Y", "Z", 'X', new ItemStack(Blocks.REDSTONE_LAMP, 1, 0), 'Y', "gemBismuth", 'Z', "gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorRF, 1, 0), new Object[] {
+				"X", "Y", "Z", 'X', new ItemStack(Blocks.REDSTONE_LAMP, 1, 0), 'Y', "gemBismuth", 'Z',
+				new ItemStack(MachineInit.machimeMaterials, 1, 1)
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dynamite, 3, 0), new Object[] {
 				"WWW", "XYZ", "WWW", 'X', new ItemStack(MachineInit.reagent, 1, 6), 'Y',
 				new ItemStack(MachineInit.reagent, 1, 6), 'Z', new ItemStack(MachineInit.reagent, 1, 5), 'W', "paper"

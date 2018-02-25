@@ -11,5 +11,6 @@ public class DCMainPacket {
 	public static void init() {
 		INSTANCE.registerMessage(MHandlerReactorButton.class, MessageReactorButton.class, 0, Side.SERVER);
 		INSTANCE.registerMessage(MHandlerBiomeGlass.class, MessageBiomeGlass.class, 1, Side.CLIENT);
+		INSTANCE.registerMessage(MHandlerMonitor.class, MessageMonitor.class, 2, Side.CLIENT);
 	}
 }

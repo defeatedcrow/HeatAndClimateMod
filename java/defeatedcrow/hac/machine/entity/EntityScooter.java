@@ -14,7 +14,9 @@ import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
@@ -34,6 +36,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
@@ -129,10 +132,21 @@ public class EntityScooter extends Entity implements IInventory {
 		EntityPlayer rider = null;
 		boolean stop = false;
 
-		if (brake || this.getPassengers().isEmpty() || !(this.getPassengers().get(0) instanceof EntityPlayer)) {
-			stop = true;
-		} else if (!this.getPassengers().isEmpty() && this.getPassengers().get(0) instanceof EntityPlayer) {
+		if (!this.getPassengers().isEmpty() && this.getPassengers().get(0) instanceof EntityPlayer) {
 			rider = (EntityPlayer) this.getPassengers().get(0);
+		}
+
+		if (brake || rider == null) {
+			stop = true;
+		}
+
+		if (rider == null) {
+			if (!this.getPassengers().isEmpty()) {
+				this.getPassengers().get(0).dismountRidingEntity();
+			}
+			if (this.getPassengers().size() > 1) {
+				this.getPassengers().get(1).dismountRidingEntity();
+			}
 		}
 
 		// 向き決定
@@ -185,8 +199,7 @@ public class EntityScooter extends Entity implements IInventory {
 		// collision
 		this.doBlockCollisions();
 		List<Entity> list = this.world.getEntitiesInAABBexcluding(this,
-				this.getEntityBoundingBox().expand(0.2D, -0.01D, 0.2D),
-				EntitySelectors.<Entity>getTeamCollisionPredicate(this));
+				this.getEntityBoundingBox().expand(0.2D, 0.5D, 0.2D), EntitySelectors.IS_STANDALONE);
 
 		if (!list.isEmpty()) {
 			boolean flag = !this.world.isRemote && !(this.getControllingPassenger() instanceof EntityPlayer);
@@ -194,8 +207,12 @@ public class EntityScooter extends Entity implements IInventory {
 			for (int j = 0; j < list.size(); ++j) {
 				Entity entity = list.get(j);
 
-				if (!entity.isPassenger(this)) {
-					this.applyEntityCollision(entity);
+				if (!entity.isPassenger(this) && entity instanceof EntityLivingBase) {
+					if (rider != null && this.getPassengers().size() < 2) {
+						entity.startRiding(this);
+					} else {
+						this.applyEntityCollision(entity);
+					}
 				}
 			}
 		}
@@ -443,6 +460,8 @@ public class EntityScooter extends Entity implements IInventory {
 		this.lerpSteps = 5;
 	}
 
+	/* 騎乗 */
+
 	@Override
 	@Nullable
 	public Entity getControllingPassenger() {
@@ -457,7 +476,7 @@ public class EntityScooter extends Entity implements IInventory {
 			player.openGui(ClimateMain.instance, id, world, getPosition().getX(), getPosition().getY(),
 					getPosition().getZ());
 			return true;
-		} else if (this.isBeingRidden())
+		} else if (this.isBeingRidden() && this.getPassengers().size() < 2)
 			return true;
 		else {
 			if (!this.world.isRemote) {
@@ -467,6 +486,59 @@ public class EntityScooter extends Entity implements IInventory {
 			return true;
 		}
 	}
+
+	@Override
+	public void updatePassenger(Entity passenger) {
+		if (this.isPassenger(passenger) && passenger != this.getControllingPassenger()) {
+			float f = 0.0F;
+			float f1 = (float) ((this.isDead ? 0.01D : this.getMountedYOffset()) + passenger.getYOffset());
+
+			if (this.getPassengers().size() > 1) {
+				int i = this.getPassengers().indexOf(passenger);
+
+				if (i == 0) {
+					f = 0.2F;
+				} else {
+					f = -0.6F;
+				}
+
+				if (passenger instanceof EntityAnimal) {
+					f = (float) (f + 0.2D);
+				}
+			}
+
+			Vec3d vec3d = (new Vec3d(f, 0.0D, 0.0D))
+					.rotateYaw(-this.rotationYaw * 0.017453292F - ((float) Math.PI / 2F));
+			passenger.setPosition(this.posX + vec3d.x, this.posY + f1, this.posZ + vec3d.z);
+			passenger.rotationYaw = this.rotationYaw;
+			passenger.setRotationYawHead(this.rotationYaw);
+			this.applyYawToEntity(passenger);
+		} else {
+			super.updatePassenger(passenger);
+		}
+	}
+
+	protected void applyYawToEntity(Entity entityToUpdate) {
+		entityToUpdate.setRenderYawOffset(this.rotationYaw);
+		float f = MathHelper.wrapDegrees(entityToUpdate.rotationYaw - this.rotationYaw);
+		float f1 = MathHelper.clamp(f, -105.0F, 105.0F);
+		entityToUpdate.prevRotationYaw += f1 - f;
+		entityToUpdate.rotationYaw += f1 - f;
+		entityToUpdate.setRotationYawHead(entityToUpdate.rotationYaw);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void applyOrientationToEntity(Entity entityToUpdate) {
+		this.applyYawToEntity(entityToUpdate);
+	}
+
+	@Override
+	protected boolean canFitPassenger(Entity passenger) {
+		return this.getPassengers().size() < 2;
+	}
+
+	/* Attack */
 
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
