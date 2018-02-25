@@ -1,9 +1,5 @@
 package defeatedcrow.hac.plugin.cofh;
 
-import cofh.redstoneflux.api.IEnergyConnection;
-import cofh.redstoneflux.api.IEnergyProvider;
-import cofh.redstoneflux.api.IEnergyReceiver;
-import cofh.redstoneflux.api.IEnergyStorage;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
@@ -15,18 +11,39 @@ public class RFDeviceHelper {
 	private RFDeviceHelper() {}
 
 	public static boolean isRFConnector(TileEntity tile) {
-		return tile instanceof IEnergyConnection || tile instanceof IEnergyStorage;
+		return tile instanceof cofh.redstoneflux.api.IEnergyConnection
+				|| tile instanceof cofh.redstoneflux.api.IEnergyStorage;
+	}
+
+	public static boolean isRFStorage(TileEntity tile) {
+		return tile instanceof cofh.redstoneflux.api.IEnergyStorage;
+	}
+
+	public static int getStorageAmount(TileEntity tile) {
+		if (tile instanceof cofh.redstoneflux.api.IEnergyStorage) {
+			cofh.redstoneflux.api.IEnergyStorage storage = (cofh.redstoneflux.api.IEnergyStorage) tile;
+			return storage.getEnergyStored();
+		}
+		return 0;
+	}
+
+	public static int getStorageMax(TileEntity tile) {
+		if (tile instanceof cofh.redstoneflux.api.IEnergyStorage) {
+			cofh.redstoneflux.api.IEnergyStorage storage = (cofh.redstoneflux.api.IEnergyStorage) tile;
+			return storage.getMaxEnergyStored();
+		}
+		return 0;
 	}
 
 	public static boolean isRFReceiver(TileEntity tile) {
-		return tile instanceof IEnergyReceiver;
+		return tile instanceof cofh.redstoneflux.api.IEnergyReceiver;
 	}
 
 	public static int inputEnergy(EnumFacing dir, TileEntity tile, int amount, boolean simulate) {
 		int ret = 0;
 
 		if (isRFReceiver(tile)) {
-			IEnergyReceiver handler = (IEnergyReceiver) tile;
+			cofh.redstoneflux.api.IEnergyReceiver handler = (cofh.redstoneflux.api.IEnergyReceiver) tile;
 
 			if (handler.canConnectEnergy(dir)) {
 				ret = handler.receiveEnergy(dir, amount, simulate);
@@ -37,14 +54,14 @@ public class RFDeviceHelper {
 	}
 
 	public static boolean isRFProvider(TileEntity tile) {
-		return tile instanceof IEnergyProvider;
+		return tile instanceof cofh.redstoneflux.api.IEnergyProvider;
 	}
 
 	public static int extractEnergy(EnumFacing dir, TileEntity tile, int amount, boolean simulate) {
 		int ret = 0;
 
 		if (isRFProvider(tile)) {
-			IEnergyProvider handler = (IEnergyProvider) tile;
+			cofh.redstoneflux.api.IEnergyProvider handler = (cofh.redstoneflux.api.IEnergyProvider) tile;
 
 			if (handler.canConnectEnergy(dir)) {
 				ret = handler.extractEnergy(dir, amount, simulate);
@@ -52,6 +69,26 @@ public class RFDeviceHelper {
 		}
 
 		return ret;
+	}
+
+	public static boolean isRFHandler(TileEntity tile) {
+		return tile instanceof cofh.redstoneflux.api.IEnergyHandler;
+	}
+
+	public static int getHandlerAmount(TileEntity tile, EnumFacing side) {
+		if (tile instanceof cofh.redstoneflux.api.IEnergyHandler) {
+			cofh.redstoneflux.api.IEnergyHandler storage = (cofh.redstoneflux.api.IEnergyHandler) tile;
+			return storage.getEnergyStored(side);
+		}
+		return 0;
+	}
+
+	public static int getHandlerMax(TileEntity tile, EnumFacing side) {
+		if (tile instanceof cofh.redstoneflux.api.IEnergyHandler) {
+			cofh.redstoneflux.api.IEnergyHandler storage = (cofh.redstoneflux.api.IEnergyHandler) tile;
+			return storage.getMaxEnergyStored(side);
+		}
+		return 0;
 	}
 
 }

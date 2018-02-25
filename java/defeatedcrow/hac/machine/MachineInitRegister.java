@@ -25,6 +25,10 @@ import defeatedcrow.hac.machine.block.BlockHopperFilter;
 import defeatedcrow.hac.machine.block.BlockHopperFluid;
 import defeatedcrow.hac.machine.block.BlockIBC;
 import defeatedcrow.hac.machine.block.BlockKineticMotor;
+import defeatedcrow.hac.machine.block.BlockMonitorFluid;
+import defeatedcrow.hac.machine.block.BlockMonitorRF;
+import defeatedcrow.hac.machine.block.BlockMonitorRedStone;
+import defeatedcrow.hac.machine.block.BlockMonitorTorque;
 import defeatedcrow.hac.machine.block.BlockPortalManager;
 import defeatedcrow.hac.machine.block.BlockPressMachine;
 import defeatedcrow.hac.machine.block.BlockReactor;
@@ -51,6 +55,7 @@ import defeatedcrow.hac.machine.block.BlockWindmill_L;
 import defeatedcrow.hac.machine.block.ItemAdapterPanel;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
+import defeatedcrow.hac.machine.block.ItemMonitor;
 import defeatedcrow.hac.machine.block.cont.BlockFuelCont;
 import defeatedcrow.hac.machine.item.ItemAdapterCard;
 import defeatedcrow.hac.machine.item.ItemAlloyMold;
@@ -255,6 +260,28 @@ public class MachineInitRegister {
 				});
 		ClimateMain.proxy.addSidedBlock(MachineInit.fuelCont, "cont_fuel", 1);
 
+		MachineInit.monitorRS = new BlockMonitorRedStone(ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
+		MachineInit.monitorRS.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
+		ForgeRegistries.BLOCKS.register(MachineInit.monitorRS);
+		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorRS));
+
+		MachineInit.monitorTorque = new BlockMonitorTorque(ClimateCore.PACKAGE_BASE + "_device_monitor_torque");
+		MachineInit.monitorTorque.setRegistryName(ClimateMain.MOD_ID,
+				ClimateCore.PACKAGE_BASE + "_device_monitor_torque");
+		ForgeRegistries.BLOCKS.register(MachineInit.monitorTorque);
+		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorTorque));
+
+		MachineInit.monitorRF = new BlockMonitorRF(ClimateCore.PACKAGE_BASE + "_device_monitor_rf");
+		MachineInit.monitorRF.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_rf");
+		ForgeRegistries.BLOCKS.register(MachineInit.monitorRF);
+		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorRF));
+
+		MachineInit.monitorFluid = new BlockMonitorFluid(ClimateCore.PACKAGE_BASE + "_device_monitor_fluid");
+		MachineInit.monitorFluid.setRegistryName(ClimateMain.MOD_ID,
+				ClimateCore.PACKAGE_BASE + "_device_monitor_fluid");
+		ForgeRegistries.BLOCKS.register(MachineInit.monitorFluid);
+		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorFluid));
+
 		// entity
 		MachineInit.motorMinecart = new ItemMinecartMotor()
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_minecart");
@@ -383,6 +410,7 @@ public class MachineInitRegister {
 			MachineInit.catalyst.setCreativeTab(ClimateMain.machine);
 			MachineInit.gemcore.setCreativeTab(ClimateMain.tool);
 			MachineInit.rotaryBlade.setCreativeTab(ClimateMain.machine);
+			MachineInit.platingChrome.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.adapterPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.acceptorPanel.setCreativeTab(ClimateMain.machine);
@@ -390,11 +418,15 @@ public class MachineInitRegister {
 			MachineInit.acceptorFluidPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.wirelessPortal.setCreativeTab(ClimateMain.machine);
 			MachineInit.adapterCard.setCreativeTab(ClimateMain.machine);
+			MachineInit.monitorRS.setCreativeTab(ClimateMain.machine);
+			MachineInit.monitorTorque.setCreativeTab(ClimateMain.machine);
+			MachineInit.monitorRF.setCreativeTab(ClimateMain.machine);
+			MachineInit.monitorFluid.setCreativeTab(ClimateMain.machine);
+
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);
 			MachineInit.scooter.setCreativeTab(ClimateMain.machine);
 			MachineInit.magneticHover.setCreativeTab(ClimateMain.machine);
-			MachineInit.platingChrome.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.fuelCont.setCreativeTab(ClimateMain.cont);
 		}

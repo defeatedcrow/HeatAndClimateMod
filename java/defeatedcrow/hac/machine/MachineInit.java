@@ -111,6 +111,11 @@ public class MachineInit {
 	public static Block burner;
 	public static Block crusher;
 
+	public static Block monitorRS;
+	public static Block monitorFluid;
+	public static Block monitorTorque;
+	public static Block monitorRF;
+
 	public static Item dynamite;
 
 	public static Item motorMinecart;

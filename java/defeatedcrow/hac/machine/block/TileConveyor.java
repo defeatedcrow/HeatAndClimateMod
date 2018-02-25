@@ -47,15 +47,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	public boolean lastHasItem = false;
 	public static final int MAX_MOVE = 8;
 
-	@Override
-	public void updateTile() {
-		super.updateTile();
-	}
-
-	@Override
-	public void onTickUpdate() {
-
-	}
+	private int count = 5;
 
 	@Override
 	protected void onServerUpdate() {
@@ -98,27 +90,31 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			}
 		}
 
-		boolean sendPacket = false;
-		if (moveB != prevMoveB || moveF != prevMoveF) {
-			sendPacket = true;
-		} else if (lastHasItem) {
-			if (DCUtil.isEmpty(inv.getStackInSlot(1)) && DCUtil.isEmpty(inv.getStackInSlot(0))) {
+		if (count > 0) {
+			count--;
+		} else {
+			boolean sendPacket = false;
+			if (moveB != prevMoveB || moveF != prevMoveF) {
 				sendPacket = true;
-				lastHasItem = false;
+			} else if (lastHasItem) {
+				if (DCUtil.isEmpty(inv.getStackInSlot(1)) && DCUtil.isEmpty(inv.getStackInSlot(0))) {
+					sendPacket = true;
+					lastHasItem = false;
+				}
+			} else if (!DCUtil.isEmpty(inv.getStackInSlot(1)) || DCUtil.isEmpty(inv.getStackInSlot(0))) {
+				lastHasItem = true;
+				sendPacket = true;
 			}
-		} else if (!DCUtil.isEmpty(inv.getStackInSlot(1)) || DCUtil.isEmpty(inv.getStackInSlot(0))) {
-			lastHasItem = true;
-			sendPacket = true;
-		}
 
-		if (sendPacket) {
-			if (!this.hasWorld())
-				return;
-			@SuppressWarnings("unchecked")
-			List<EntityPlayer> list = this.getWorld().playerEntities;
-			for (EntityPlayer player : list) {
-				if (player instanceof EntityPlayerMP) {
-					((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+			if (sendPacket) {
+				if (!this.hasWorld())
+					return;
+				@SuppressWarnings("unchecked")
+				List<EntityPlayer> list = this.getWorld().playerEntities;
+				for (EntityPlayer player : list) {
+					if (player instanceof EntityPlayerMP) {
+						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+					}
 				}
 			}
 		}

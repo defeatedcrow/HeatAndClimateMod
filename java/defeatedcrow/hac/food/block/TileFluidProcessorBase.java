@@ -11,8 +11,9 @@ import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageFluidProcessor;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
@@ -114,15 +115,11 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			}
 
 			if (flag) {
-				if (!this.hasWorld())
-					return;
-				@SuppressWarnings("unchecked")
-				List<EntityPlayer> list = this.getWorld().playerEntities;
-				for (EntityPlayer player : list) {
-					if (player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-					}
-				}
+				int f1 = inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
+				int f2 = outputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT.getFluidType());
+				int a1 = inputT.getFluidAmount();
+				int a2 = outputT.getFluidAmount();
+				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, f1, a1, f2, a2));
 			}
 		}
 	}

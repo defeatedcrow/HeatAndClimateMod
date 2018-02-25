@@ -848,6 +848,10 @@ tile.dcs_device_shaft_ta_steel_0.name=Steel Shaft(T-A)
 tile.dcs_device_shaft_tb_steel_0.name=Steel Shaft(T-B)
 tile.dcs_device_diesel_engine_0.name=Diesel Engine
 tile.dcs_device_crusher_0.name=Hammer Mill
+tile.dcs_device_monitor_rs_0.name=Remote RS Lamp
+tile.dcs_device_monitor_fluid_0.name=Remote Fluid Monitor
+tile.dcs_device_monitor_torque_0.name=Remote Torque Monitor
+tile.dcs_device_monitor_rf_0.name=Remote RF Monitor
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant

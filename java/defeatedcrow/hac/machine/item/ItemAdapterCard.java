@@ -95,8 +95,7 @@ public class ItemAdapterCard extends DCItem {
 			if (!DCUtil.isEmpty(held) && tile != null) {
 				if (getCardType(held.getItemDamage()) == CardType.ITEM
 						&& tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing)) {
-					String mes1 = "Stored the inventory coordinate: " + pos.getX() + ", " + pos.getY() + ", "
-							+ pos.getZ();
+					String mes1 = "Stored inventory coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
 					player.sendMessage(new TextComponentString(mes1));
 
 					NBTTagCompound tag = held.getTagCompound();
@@ -115,8 +114,7 @@ public class ItemAdapterCard extends DCItem {
 					return EnumActionResult.SUCCESS;
 				} else if (getCardType(held.getItemDamage()) == CardType.FLUID
 						&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing)) {
-					String mes1 = "Stored the fluidtank coordinate: " + pos.getX() + ", " + pos.getY() + ", "
-							+ pos.getZ();
+					String mes1 = "Stored fluidtank coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
 					player.sendMessage(new TextComponentString(mes1));
 
 					NBTTagCompound tag = held.getTagCompound();

@@ -25,6 +25,10 @@ import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
+import defeatedcrow.hac.machine.block.TileMonitorFluid;
+import defeatedcrow.hac.machine.block.TileMonitorRF;
+import defeatedcrow.hac.machine.block.TileMonitorRedStone;
+import defeatedcrow.hac.machine.block.TileMonitorTorque;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
@@ -66,6 +70,7 @@ import defeatedcrow.hac.machine.client.IBCTESR;
 import defeatedcrow.hac.machine.client.KineticMotorTESR;
 import defeatedcrow.hac.machine.client.L_ShaftTESR;
 import defeatedcrow.hac.machine.client.L_WindmillTESR;
+import defeatedcrow.hac.machine.client.MonitorTESR;
 import defeatedcrow.hac.machine.client.PortalManagerTESR;
 import defeatedcrow.hac.machine.client.PressMachineTESR;
 import defeatedcrow.hac.machine.client.ReactorTESR;
@@ -165,6 +170,10 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileShaft_TB_Steel.class, "dcs_te_shaft_tb_steel", new Steel_TB_ShaftTESR());
 		ClientRegistry.registerTileEntity(TileDieselEngine.class, "dcs_te_diesel_engine", new DieselEngineTESR());
 		ClientRegistry.registerTileEntity(TileRollerCrusher.class, "dcs_te_crusher", new CrusherTESR());
+		GameRegistry.registerTileEntity(TileMonitorRedStone.class, "dcs_te_monitor_rs");
+		ClientRegistry.registerTileEntity(TileMonitorTorque.class, "dcs_te_monitor_torque", new MonitorTESR());
+		ClientRegistry.registerTileEntity(TileMonitorRF.class, "dcs_te_monitor_rf", new MonitorTESR());
+		ClientRegistry.registerTileEntity(TileMonitorFluid.class, "dcs_te_monitor_fluid", new MonitorTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -259,6 +268,12 @@ public class MachineClientProxy {
 		instance.regSimpleItem(MachineInit.magneticHover, ClimateCore.PACKAGE_ID, "dcs_magnetic_hover", "device", 0);
 		instance.regSimpleItem(MachineInit.platingChrome, ClimateCore.PACKAGE_ID, "dcs_coating_tool", "misc", 9);
 		instance.regSimpleItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_ID, "dcs_rotaryblade", "device", 1);
+		instance.regSimpleBlock(MachineInit.monitorRS, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rs", "machine", 0);
+		instance.regSimpleBlock(MachineInit.monitorTorque, ClimateCore.PACKAGE_ID, "dcs_device_monitor_torque",
+				"machine", 0);
+		instance.regSimpleBlock(MachineInit.monitorRF, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rf", "machine", 0);
+		instance.regSimpleBlock(MachineInit.monitorFluid, ClimateCore.PACKAGE_ID, "dcs_device_monitor_fluid", "machine",
+				0);
 
 		// fluid
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.hydrogenBlock), new ItemMeshDefinition() {

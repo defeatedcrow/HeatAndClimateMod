@@ -107,7 +107,7 @@ public class MachineCrusherRecipe {
 				new ItemStack(MainInit.oreDust, 1, 9), 0.25F, new ItemStack(MainInit.oreDust, 1, 10), 0.05F, null, ti,
 				"oreMagnetite");
 
-		if (OreDictionary.doesOreNameExist("dustCobalt")) {
+		if (!OreDictionary.getOres("dustCobalt").isEmpty()) {
 			ItemStack cob = OreDictionary.getOres("dustCobalt").get(0);
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 2),
 					new ItemStack(MainInit.oreDust, 1, 5), 0.25F, cob, 0.05F, null, ti, "oreNickel");
@@ -125,7 +125,7 @@ public class MachineCrusherRecipe {
 				new ItemStack(MainInit.oreDust, 1, 4), 0.25F, null, 0F, new FluidStack(MachineInit.sulfuricAcid, 50),
 				ti, "oreSilver");
 
-		if (OreDictionary.doesOreNameExist("gemRuby")) {
+		if (!OreDictionary.getOres("gemRuby").isEmpty()) {
 			ItemStack gem = OreDictionary.getOres("gemRuby").get(0);
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 11),
 					new ItemStack(Items.CLAY_BALL, 1, 0), 0.25F, gem, 0.03F, null, ti, "oreAluminum");
@@ -165,7 +165,7 @@ public class MachineCrusherRecipe {
 				new ItemStack(MainInit.oreDust, 1, 10), 0.1F, new ItemStack(MainInit.gems, 1, 11), 0.03F, null, ti,
 				"oreTin");
 
-		if (OreDictionary.doesOreNameExist("gemAmethyst")) {
+		if (!OreDictionary.getOres("gemAmethyst").isEmpty()) {
 			ItemStack gem = OreDictionary.getOres("gemAmethyst").get(0);
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 3, 11),
 					new ItemStack(MainInit.gems, 1, 21), 0.03F, gem, 0.03F, null, ti, "oreSchorl");
@@ -178,7 +178,7 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 3, 12), new ItemStack(MainInit.oreDust, 1, 2),
 				0.25F, new ItemStack(MainInit.gems, 1, 13), 0.1F, null, ti, "oreSerpentine");
 
-		if (OreDictionary.doesOreNameExist("dustManganese")) {
+		if (!OreDictionary.getOres("dustManganese").isEmpty()) {
 			ItemStack gem = OreDictionary.getOres("dustManganese").get(0);
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 3, 14),
 					new ItemStack(MainInit.gems, 1, 20), 0.1F, gem, 0.03F, null, ti, "oreGarnet");
@@ -200,15 +200,15 @@ public class MachineCrusherRecipe {
 				new ItemStack(MainInit.miscDust, 1, 6), 0.5F, new ItemStack(Items.DYE, 1, 15), 0.5F, null, ti,
 				"oreApatite");
 
-		if (OreDictionary.doesOreNameExist("oreLead")) {
+		if (!OreDictionary.getOres("oreLead").isEmpty()) {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 13),
 					new ItemStack(MainInit.oreDust, 1, 1), 0.25F, new ItemStack(MainInit.oreDust, 1, 3), 0.1F, null, ti,
 					"oreLead");
 		}
 
-		if (OreDictionary.doesOreNameExist("oreOsmium")) {
+		if (!OreDictionary.getOres("dustOsmium").isEmpty()) {
 			ItemStack os = OreDictionary.getOres("dustOsmium").get(0);
-			if (OreDictionary.doesOreNameExist("dustIridium")) {
+			if (!OreDictionary.getOres("dustIridium").isEmpty()) {
 				ItemStack gem = OreDictionary.getOres("dustIridium").get(0);
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(os.getItem(), 3, os.getItemDamage()), gem, 0.1F,
 						null, 0F, null, ti, "oreOsmium");
@@ -300,7 +300,7 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DYE, 1, EnumDyeColor.GREEN.getDyeDamage()), ti,
 				"gemMalachite");
 
-		if (OreDictionary.doesOreNameExist("dustLithium")) {
+		if (!OreDictionary.getOres("dustLithium").isEmpty()) {
 			ItemStack dust = OreDictionary.getOres("dustLithium").get(0);
 			RecipeAPI.registerCrushers.addRecipe(dust, ti, "gemKunzite");
 		}

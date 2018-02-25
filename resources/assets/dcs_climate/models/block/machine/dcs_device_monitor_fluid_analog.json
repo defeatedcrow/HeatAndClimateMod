@@ -1,0 +1,33 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/machine/monitor_fluid_bar",
+        "panel": "dcs_climate:blocks/machine/monitor_fluid",
+        "base": "dcs_climate:blocks/machine/chamber_b"
+    },
+    "elements": [
+        {   "from": [ 4, 1, 15 ],
+            "to": [ 12, 15, 16 ],
+            "faces": {
+                "down":  { "uv": [ 4, 15, 12, 16 ], "texture": "#panel", "cullface": "down" },
+                "up":    { "uv": [ 4, 0, 12, 1 ], "texture": "#panel", "cullface": "up" },
+                "north": { "uv": [ 4, 1, 12, 15 ], "texture": "#panel", "cullface": "north" },
+                "south": { "uv": [ 4, 1, 12, 15 ], "texture": "#panel", "cullface": "south" },
+                "west":  { "uv": [ 15, 1, 16, 15 ], "texture": "#panel", "cullface": "west" },
+                "east":  { "uv": [ 0, 1, 1, 15 ], "texture": "#panel", "cullface": "east" }
+            }
+        },
+        {   "from": [ 7, 2, 16 ],
+            "to": [ 9, 14, 20 ],
+            "faces": {
+                "down":  { "uv": [ 7, 6, 9, 10 ], "texture": "#base", "cullface": "down" },
+                "up":    { "uv": [ 7, 6, 9, 10 ], "texture": "#base", "cullface": "up" },
+                "north": { "uv": [ 7, 2, 9, 14 ], "texture": "#base", "cullface": "north" },
+                "south": { "uv": [ 7, 2, 9, 14 ], "texture": "#base", "cullface": "south" },
+                "west":  { "uv": [ 6, 2, 10, 14 ], "texture": "#base", "cullface": "west" },
+                "east":  { "uv": [ 6, 2, 10, 14 ], "texture": "#base", "cullface": "east" }
+            }
+        }
+    ]
+}

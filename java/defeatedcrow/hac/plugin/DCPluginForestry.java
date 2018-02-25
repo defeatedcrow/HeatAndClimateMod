@@ -236,7 +236,7 @@ public class DCPluginForestry {
 		// HaC側のレシピ
 
 		if (ModuleConfig.machine && ModuleConfig.r_mill) {
-			if (OreDictionary.doesOreNameExist("cropChestnut")) {
+			if (!OreDictionary.getOres("cropChestnut").isEmpty()) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
 						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropChestnut");
 
@@ -245,7 +245,7 @@ public class DCPluginForestry {
 						"cropChestnut");
 			}
 
-			if (OreDictionary.doesOreNameExist("cropWalnut")) {
+			if (!OreDictionary.getOres("cropWalnut").isEmpty()) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
 						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropWalnut");
 
@@ -253,7 +253,7 @@ public class DCPluginForestry {
 						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropWalnut");
 			}
 
-			if (OreDictionary.doesOreNameExist("cropHazelnut")) {
+			if (!OreDictionary.getOres("cropHazelnut").isEmpty()) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
 						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropHazelnut");
 
@@ -262,7 +262,7 @@ public class DCPluginForestry {
 						"cropHazelnut");
 			}
 
-			if (OreDictionary.doesOreNameExist("cropAlmond")) {
+			if (!OreDictionary.getOres("cropAlmond").isEmpty()) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
 						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropAlmond");
 

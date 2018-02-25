@@ -826,6 +826,10 @@ tile.dcs_device_shaft_ta_steel_0.name=鋼鉄のシャフト(T-A型)
 tile.dcs_device_shaft_tb_steel_0.name=鋼鉄のシャフト(T-B型)
 tile.dcs_device_diesel_engine_0.name=ディーゼル機関
 tile.dcs_device_crusher_0.name=ハンマーミル
+tile.dcs_device_monitor_rs_0.name=遠隔レッドストーンランプ
+tile.dcs_device_monitor_fluid_0.name=遠隔液体モニター
+tile.dcs_device_monitor_torque_0.name=遠隔トルクモニター
+tile.dcs_device_monitor_rf_0.name=遠隔RFモニター
 
 tile.dcs_crop_rice_0.name=稲
 tile.dcs_crop_rice_1.name=稲
