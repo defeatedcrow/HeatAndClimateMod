@@ -44,7 +44,7 @@ public class ModelSteamTurbine extends DCTileModelBase {
 		beltbox.mirror = true;
 		setRotation(beltbox, 0F, 0F, 0F);
 		back = new ModelRenderer(this, 46, 48);
-		back.addBox(-7F, 0F, -4F, 1, 8, 8);
+		back.addBox(-7F, -4F, -4F, 1, 8, 8);
 		back.setRotationPoint(0F, 0F, 0F);
 		back.setTextureSize(64, 64);
 		back.mirror = true;

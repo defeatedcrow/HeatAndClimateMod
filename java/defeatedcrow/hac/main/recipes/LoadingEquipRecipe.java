@@ -5,6 +5,7 @@ import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,7 +15,7 @@ public class LoadingEquipRecipe {
 	public static void add(RecipeResourcesMain res) {
 		String[] name = {
 				"ingotBrass", "ingotSteel", "ingotSilver", "ingotNickelsilver", "gemChalcedony", "gemSapphire",
-				"ingotTitanium"
+				"ingotTitanium", "gemGarnet"
 		};
 		for (int i = 0; i < name.length; i++) {
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcPickaxe[i], 1, 0), new Object[] {
@@ -46,6 +47,10 @@ public class LoadingEquipRecipe {
 				" X ", "  X", "YYX", 'X', "gemChalcedony", 'Y', "stickWood"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[3], 1, 0), new Object[] {
+				" X ", "  X", "YYX", 'X', "gemGarnet", 'Y', "stickWood"
+		});
+
 		String[] name2 = {
 				"ingotBrass", "ingotSteel", "gemChalcedony", "gemSapphire", "ingotTitanium"
 		};
@@ -75,7 +80,7 @@ public class LoadingEquipRecipe {
 				"XXX", "XXX", "X X", 'X', "itemLinenCloth"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.linenCourt, 1, 0), new Object[] {
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.linenCoat, 1, 0), new Object[] {
 				"X X", "XXX", "XXX", 'X', "itemLinenCloth"
 		});
 
@@ -101,6 +106,30 @@ public class LoadingEquipRecipe {
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cottonHat, 1, 0), new Object[] {
 				"XXX", "XYX", 'X', "itemCottonCloth", 'Y', "string"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.hoodieB, 1, 0), new Object[] {
+				"XYX", "XXX", "XXX", 'X', "itemCottonCloth", 'Y', "dyeBlack"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.hoodieB, 1, 0), new Object[] {
+				new ItemStack(MainInit.hoodie, 1, 0), "dyeBlack"
+		});
+
+		DCRecipe.addShapedNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.peaCoat, 1, 0), new Object[] {
+				"Y Y", "YXY", "YXY", 'X', "itemCottonCloth", 'Y', new ItemStack(Blocks.WOOL, 1, 32767)
+		});
+
+		DCRecipe.addShapedNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.woolBoots, 1, 0), new Object[] {
+				"Y Y", "X X", 'X', "itemLeather", 'Y', new ItemStack(Blocks.WOOL, 1, 32767)
+		});
+
+		DCRecipe.addShapedNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.woolWear, 1, 0), new Object[] {
+				"YYY", "YXY", 'X', "itemCottonCloth", 'Y', new ItemStack(Blocks.WOOL, 1, 32767)
+		});
+
+		DCRecipe.addShapedNBTRecipe(res.getRecipeName(), new ItemStack(MainInit.furWear, 1, 0), new Object[] {
+				"YYY", "YXY", 'X', "itemCottonCloth", 'Y', new ItemStack(Items.RABBIT_HIDE, 1, 0)
 		});
 
 		if (ModuleConfig.machine_advanced) {
@@ -151,6 +180,24 @@ public class LoadingEquipRecipe {
 				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 8, 4), new Object[] {
 						"X", "Y", "Z", 'X', "ingotBismuth", 'Y', new ItemStack(MachineInit.reagent, 1, 8), 'Z',
 						"ingotBrass"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 8, 5), new Object[] {
+						"X", "Y", "Z", 'X', "dustPhosphorus", 'Y', "dustSulfur", 'Z', "ingotBrass"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 4, 5), new Object[] {
+						"X", "Y", "Z", 'X', "dustGlowstone", 'Y', "gemRutile", 'Z', "ingotBrass"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 8, 6), new Object[] {
+						"X", "Y", "Z", 'X', new ItemStack(MachineInit.reagent, 1, 12), 'Y',
+						new ItemStack(MachineInit.reagent, 1, 8), 'Z', "ingotBrass"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cartridge, 4, 7), new Object[] {
+						" X ", "VYV", " Z ", 'X', "gemSchorl", 'Y', new ItemStack(Items.CHICKEN, 1, 0), 'Z',
+						"ingotBrass", 'V', "leather"
 				});
 			}
 		}

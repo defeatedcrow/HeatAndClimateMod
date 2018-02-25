@@ -2,8 +2,11 @@ package defeatedcrow.hac.magic.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.proj.EntityProjChalB;
 import defeatedcrow.hac.magic.proj.EntityProjChalR;
 import defeatedcrow.hac.magic.proj.EntityProjChalW;
@@ -20,9 +23,6 @@ import defeatedcrow.hac.magic.proj.EntityProjSapR;
 import defeatedcrow.hac.magic.proj.EntityProjSapW;
 import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
-import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 import defeatedcrow.hac.main.entity.EntityProjBase;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -106,8 +106,8 @@ public class ItemMagicDagger extends DCItem {
 	/* 雪玉に似た動作をする */
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		return EnumActionResult.FAIL;
 	}
 
@@ -118,7 +118,7 @@ public class ItemMagicDagger extends DCItem {
 			boolean flag = player.capabilities.isCreativeMode;
 			int metadata = stack.getItemDamage();
 
-			if (stack != null || flag) {
+			if (!DCUtil.isEmpty(stack) || flag) {
 				if (!world.isRemote) {
 					EntityProjBase entityarrow = getEntity(metadata, world, player);
 					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
@@ -130,18 +130,10 @@ public class ItemMagicDagger extends DCItem {
 						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
-					--stack.stackSize;
-
-					if (stack.stackSize == 0) {
-						player.inventory.deleteStack(stack);
-					}
+					DCUtil.reduceStackSize(stack, 1);
 				}
 
 				player.addStat(StatList.getObjectUseStats(this));
-
-				if (!player.worldObj.isRemote && !player.hasAchievement(AchievementClimate.MAGIC_DAGGER)) {
-					AcvHelper.addMachineAcievement(player, AchievementClimate.MAGIC_DAGGER);
-				}
 
 			}
 		}
@@ -188,11 +180,9 @@ public class ItemMagicDagger extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		if (!AcvHelper.hasMagicMaster(player) && !ClimateCore.isDebug)
-			return new ActionResult(EnumActionResult.FAIL, stack);
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
-		return new ActionResult(EnumActionResult.SUCCESS, stack);
+		return new ActionResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
 
 	@Override
@@ -230,7 +220,7 @@ public class ItemMagicDagger extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String s = "";
 		int meta = stack.getMetadata();
 		if (ClimateCore.proxy.isShiftKeyDown()) {
@@ -242,9 +232,6 @@ public class ItemMagicDagger extends DCItem {
 			}
 		} else {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
-		}
-		if (player != null && !ClimateMain.proxy.hasAchivement(player, AchievementClimate.MAGIC_MASTER)) {
-			tooltip.add(TextFormatting.RED.toString() + I18n.translateToLocal("dcs.tip.require_achievement"));
 		}
 	}
 

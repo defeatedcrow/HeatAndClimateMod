@@ -7,7 +7,7 @@ import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
-import defeatedcrow.hac.main.api.ISideTankChecker;
+import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +27,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileCookingStove extends DCTileEntity implements ITagGetter, IInventory, ISideTankChecker {
+public class TileCookingStove extends DCTileEntity implements ITagGetter, IInventory, ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -42,7 +42,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 			this.checkSideTank();
 
 			if (this.currentBurnTime == 0) {
-				FluidStack f = inputT.getContents();
+				FluidStack f = inputT.getFluid();
 				if (f != null && f.getFluid() != null && inputT.getFluidAmount() > 0) {
 					int i = getBurnTime(f.getFluid());
 					if (i > 0) {
@@ -84,7 +84,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 			}
 
 			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISideTankChecker)
+			if (tile != null && !(tile instanceof ISidedTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
@@ -142,8 +142,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	/* 燃焼判定 */
 
 	public static int getBurnTime(Fluid fluid) {
-		String s = fluid.getName();
-		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
+		int burn = MainAPIManager.fuelRegister.getBurningTime(fluid);
 		return burn;
 	}
 
@@ -160,9 +159,9 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return (T) inputT;
-		else if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return null;
 		return super.getCapability(capability, facing);
 	}

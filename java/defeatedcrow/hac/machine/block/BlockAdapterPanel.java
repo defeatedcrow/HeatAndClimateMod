@@ -2,8 +2,6 @@ package defeatedcrow.hac.machine.block;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -53,8 +51,8 @@ public class BlockAdapterPanel extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {
@@ -75,7 +73,7 @@ public class BlockAdapterPanel extends BlockTorqueBase {
 					}
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override
@@ -139,10 +137,10 @@ public class BlockAdapterPanel extends BlockTorqueBase {
 		if (state.getBlock() instanceof BlockAdapterPanel) {
 			if (f) {
 				world.setBlockState(pos, state.withProperty(DCState.POWERED, true), 3);
-				world.notifyBlockOfStateChange(pos, state.getBlock());
+				world.notifyNeighborsOfStateChange(pos, state.getBlock());
 			} else {
 				world.setBlockState(pos, state.withProperty(DCState.POWERED, false), 3);
-				world.notifyBlockOfStateChange(pos, state.getBlock());
+				world.notifyNeighborsOfStateChange(pos, state.getBlock());
 			}
 		}
 	}

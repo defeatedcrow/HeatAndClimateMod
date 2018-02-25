@@ -22,6 +22,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -46,19 +47,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	public boolean lastHasItem = false;
 	public static final int MAX_MOVE = 8;
 
-	@Override
-	public void updateTile() {
-		super.updateTile();
-		// DCLogger.infoLog(
-		// "slot 0:" + (DCUtil.isEmpty(inv.getStackInSlot(0)) ? "EMPTY" : inv.getStackInSlot(0).toString()));
-		// DCLogger.infoLog(
-		// "slot 1:" + (DCUtil.isEmpty(inv.getStackInSlot(1)) ? "EMPTY" : inv.getStackInSlot(1).toString()));
-	}
-
-	@Override
-	public void onTickUpdate() {
-
-	}
+	private int count = 5;
 
 	@Override
 	protected void onServerUpdate() {
@@ -69,6 +58,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		// Bがさき
 		if (DCUtil.isEmpty(inv.getStackInSlot(1))) {
 			moveB = 0;
+
 			if (!DCUtil.isEmpty(inv.getStackInSlot(0)) && moveF >= MAX_MOVE) {
 				inv.setInventorySlotContents(1, inv.getStackInSlot(0).copy());
 				onSmelting();
@@ -88,6 +78,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		// つぎにF
 		if (DCUtil.isEmpty(inv.getStackInSlot(0))) {
 			moveF = 0;
+
 			// 吸引処理
 			insertItem();
 		} else {
@@ -99,28 +90,32 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			}
 		}
 
-		boolean sendPacket = false;
-		if (moveB != prevMoveB || moveF != prevMoveF) {
-			sendPacket = true;
-		}
-		if (lastHasItem) {
-			if (DCUtil.isEmpty(inv.getStackInSlot(1)) && DCUtil.isEmpty(inv.getStackInSlot(0))) {
-				sendPacket = true;
-				lastHasItem = false;
-			}
-		} else if (!DCUtil.isEmpty(inv.getStackInSlot(1)) || !DCUtil.isEmpty(inv.getStackInSlot(0))) {
-			lastHasItem = true;
-			sendPacket = true;
-		}
+		if (count > 0) {
+			count--;
+		} else {
 
-		if (sendPacket) {
-			if (!this.hasWorldObj())
-				return;
-			@SuppressWarnings("unchecked")
-			List<EntityPlayer> list = this.getWorld().playerEntities;
-			for (EntityPlayer player : list) {
-				if (player instanceof EntityPlayerMP) {
-					((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+			boolean sendPacket = false;
+			if (moveB != prevMoveB || moveF != prevMoveF) {
+				sendPacket = true;
+			} else if (lastHasItem) {
+				if (DCUtil.isEmpty(inv.getStackInSlot(1)) && DCUtil.isEmpty(inv.getStackInSlot(0))) {
+					sendPacket = true;
+					lastHasItem = false;
+				}
+			} else if (!DCUtil.isEmpty(inv.getStackInSlot(1)) || DCUtil.isEmpty(inv.getStackInSlot(0))) {
+				lastHasItem = true;
+				sendPacket = true;
+			}
+
+			if (sendPacket) {
+				if (!this.hasWorldObj())
+					return;
+				@SuppressWarnings("unchecked")
+				List<EntityPlayer> list = this.getWorld().playerEntities;
+				for (EntityPlayer player : list) {
+					if (player instanceof EntityPlayerMP) {
+						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+					}
 				}
 			}
 		}
@@ -166,6 +161,8 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 						EntityItem drop = (EntityItem) entity;
 						if (!DCUtil.isEmpty(drop.getEntityItem())) {
 							inv.setInventorySlotContents(0, drop.getEntityItem().splitStack(1));
+							moveF = 0;
+							prevMoveF = 0;
 							this.markDirty();
 							if (DCUtil.isEmpty(drop.getEntityItem())) {
 								drop.setDead();
@@ -198,6 +195,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		boolean skip = false;
 		if (target != null && target.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP)) {
 			if (target instanceof TileConveyor) {
+				skip = true;
 				TileConveyor tConv = (TileConveyor) target;
 				if (DCUtil.isEmpty(tConv.getStackInSlot(0))) {
 					tConv.setInventorySlotContents(0, inv.getStackInSlot(1).copy());
@@ -212,7 +210,6 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 					if (DCUtil.isEmpty(tInv.insertItem(i, inv.getStackInSlot(1).copy(), true))) {
 						ItemStack ret = tInv.insertItem(i, inv.getStackInSlot(1).copy(), false);
 						this.decrStackSize(1, 1);
-						skip = true;
 						flag = true;
 						target.markDirty();
 						this.markDirty();
@@ -248,10 +245,11 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			} else if (current.getAirflow() == DCAirflow.TIGHT && current.getHeat().getID() > DCHeatTier.KILN.getID()) {
 				ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(inv.getStackInSlot(1));
 				if (!DCUtil.isEmpty(burnt)) {
+					ItemStack ret = burnt.copy();
 					worldObj.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D,
 							getPos().getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F,
 							0.85F);
-					inv.setInventorySlotContents(1, burnt.copy());
+					inv.setInventorySlotContents(1, ret);
 					// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
 				}
 			}
@@ -301,8 +299,17 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		tag.setInteger("PrevBackCount", this.prevMoveB);
 
 		// アイテムの書き込み
-		inv.writeToNBT(tag);
+		NBTTagList nbttaglist = new NBTTagList();
 
+		for (int i = 0; i < this.getSizeInventory(); ++i) {
+			if (getStackInSlot(i) != null) {
+				NBTTagCompound tag1 = new NBTTagCompound();
+				tag1.setByte("Slot", (byte) i);
+				getStackInSlot(i).writeToNBT(tag1);
+				nbttaglist.appendTag(tag1);
+			}
+		}
+		tag.setTag("InvItems", nbttaglist);
 		return tag;
 	}
 

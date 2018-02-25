@@ -15,15 +15,53 @@ public class MachineAdvancedRecipe {
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
 				"YXX",
 				"ZXX",
-				"WWW",
+				"WVW",
 				'X',
 				new ItemStack(MachineInit.IBC, 1, 0),
 				'Y',
 				new ItemStack(MachineInit.gearbox2, 1, 0),
 				'Z',
-				new ItemStack(MachineInit.machimeMaterials, 1, 1),
+				new ItemStack(MachineInit.machimeMaterials, 1, 0),
 				'W',
-				"ingotSUS"
+				"ingotSUS",
+				'V',
+				"gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.crusher, 1, 0), new Object[] {
+				" Y ",
+				"XZX",
+				"XXX",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(Blocks.HOPPER, 1, 0),
+				'Z',
+				new ItemStack(MachineInit.machimeMaterials, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.rotaryBlade, 1, 0), new Object[] {
+				" Y ",
+				"XZX",
+				" Y ",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(Blocks.IRON_BARS, 1, 0),
+				'Z',
+				"gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.rotaryBlade, 1, 1), new Object[] {
+				" Y ",
+				"XZX",
+				" Y ",
+				'X',
+				"ingotTitanium",
+				'Y',
+				new ItemStack(Blocks.IRON_BARS, 1, 0),
+				'Z',
+				"gearSteel"
 		});
 
 		if (ModuleConfig.food) {
@@ -146,6 +184,35 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterFluidPanel, 1, 0), new Object[] {
+				"XXX",
+				" Y ",
+				"ZWZ",
+				'X',
+				"blockGlass",
+				'Y',
+				"gemBismuth",
+				'Z',
+				"gemSchorl",
+				'W',
+				"bucketEmpty"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.acceptorFluidPanel, 1, 0),
+				new Object[] {
+						"XXX",
+						" Y ",
+						"ZWZ",
+						'X',
+						"blockGlass",
+						'Y',
+						"gemBismuth",
+						'Z',
+						"gemQuartz",
+						'W',
+						"bucketEmpty"
+				});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.wirelessPortal, 1, 0), new Object[] {
 				"WXW",
 				"VYV",
@@ -188,6 +255,20 @@ public class MachineAdvancedRecipe {
 				"obsidian"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
+				"ZXZ",
+				"WYW",
+				"ZXZ",
+				'W',
+				"gemSapphire",
+				'X',
+				"gemMoonstone",
+				'Y',
+				"dustMica",
+				'Z',
+				"obsidian"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterCard, 1, 0), new Object[] {
 				"ZXZ",
 				" Y ",
@@ -226,6 +307,54 @@ public class MachineAdvancedRecipe {
 				"bucketEmpty",
 				'Y',
 				new ItemStack(MachineInit.adapterCard, 1, 1)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorRS, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				new ItemStack(Blocks.REDSTONE_LAMP, 1, 0),
+				'Y',
+				"gemBismuth",
+				'Z',
+				new ItemStack(Blocks.REDSTONE_TORCH, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorFluid, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				new ItemStack(Blocks.REDSTONE_LAMP, 1, 0),
+				'Y',
+				"gemBismuth",
+				'Z',
+				new ItemStack(Items.BUCKET, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorTorque, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				new ItemStack(Blocks.REDSTONE_LAMP, 1, 0),
+				'Y',
+				"gemBismuth",
+				'Z',
+				"gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorRF, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				new ItemStack(Blocks.REDSTONE_LAMP, 1, 0),
+				'Y',
+				"gemBismuth",
+				'Z',
+				new ItemStack(MachineInit.machimeMaterials, 1, 1)
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dynamite, 3, 0), new Object[] {

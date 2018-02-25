@@ -23,7 +23,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -251,7 +250,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 		if (currentRecipe != null) {
 			ItemStack out = currentRecipe.getOutput();
 			ItemStack sec = currentRecipe.getSecondary();
-			float chance = MathHelper.ceiling_float_int(currentRecipe.getSecondaryChance() * 100);
+			float chance = currentRecipe.getSecondaryChance() * 100;
 			FluidStack inF = currentRecipe.getInputFluid();
 			FluidStack outF = currentRecipe.getOutputFluid();
 
@@ -317,7 +316,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 	}
 
 	@Override
-	public String notSuitableMassage() {
+	public String climateSuitableMassage() {
 		if (current == null)
 			return "dcs.gui.message.nullclimate";
 		else

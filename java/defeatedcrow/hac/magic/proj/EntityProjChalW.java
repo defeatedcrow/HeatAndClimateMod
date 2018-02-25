@@ -48,7 +48,8 @@ public class EntityProjChalW extends EntityProjBase {
 
 	@Override
 	protected DamageSource getHitSource(Entity target) {
-		return this.shootingEntity == null ? DamageSource.causeIndirectMagicDamage(this, this)
+		return this.shootingEntity == null
+				? DamageSource.causeIndirectMagicDamage(this, this)
 				: DamageSource.causeIndirectMagicDamage(this, this.shootingEntity);
 	}
 

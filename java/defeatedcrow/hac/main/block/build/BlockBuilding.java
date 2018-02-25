@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -21,7 +22,7 @@ import net.minecraft.world.World;
 public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
 	public BlockBuilding(Material m, String s) {
-		super(m, s, 5, false);
+		super(m, s, 6, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
 		this.setResistance(30.0F);
@@ -37,7 +38,7 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public int getMaxMeta() {
-		return 5;
+		return 6;
 	}
 
 	private static String[] names = {
@@ -46,7 +47,8 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 			"mosaic_blue",
 			"mosaic_yellow",
 			"mosaic_black",
-			"road"
+			"road",
+			"plaster"
 	};
 
 	@Override
@@ -70,7 +72,7 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public boolean isCollectable(ItemStack item) {
-		return item != null && item.getItem() != null && item.getItem() instanceof ItemPickaxe;
+		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemPickaxe;
 	}
 
 	@Override

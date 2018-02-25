@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.BlockContainer;
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.core.base.BlockContainerDC;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -18,16 +18,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockLotusCandle extends BlockContainer {
+public class BlockLotusCandle extends BlockContainerDC {
 
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.5D, 0.875D);
 
 	public final boolean black;
 
 	public BlockLotusCandle(String s, boolean b) {
-		super(Material.GLASS);
+		super(Material.GLASS, s);
 		this.setSoundType(SoundType.GLASS);
-		this.setUnlocalizedName(s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.setLightLevel(0.4F);
@@ -41,7 +40,7 @@ public class BlockLotusCandle extends BlockContainer {
 
 	@Override
 	@Nullable
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 
@@ -61,8 +60,10 @@ public class BlockLotusCandle extends BlockContainer {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
 		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	@Override

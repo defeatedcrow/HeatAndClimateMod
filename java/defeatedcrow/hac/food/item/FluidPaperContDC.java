@@ -2,6 +2,7 @@ package defeatedcrow.hac.food.item;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -13,7 +14,6 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.FluidTankProperties;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
-import defeatedcrow.hac.food.FoodInit;
 
 /**
  * 空容器にPAPERを返却するコンテナアイテム
@@ -33,16 +33,14 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 		int meta = container.getItemDamage();
 		String name = ItemFluidPack.getFluidName(meta);
 		Fluid fluid = FluidRegistry.getFluid(name);
-		if (fluid != null) {
+		if (fluid != null)
 			return new FluidStack(fluid, 250);
-		}
 		return null;
 	}
 
 	protected void setFluid(FluidStack resource) {
-		if (container.stackSize != 1 || resource == null || !canFillFluidType(resource)) {
+		if (container.stackSize != 1 || resource == null || !canFillFluidType(resource))
 			return;
-		}
 		int meta = 0;
 		if (resource.getFluid() == FluidRegistry.WATER) {
 			meta = 1;
@@ -54,23 +52,23 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 			meta = 2;
 		}
 
-		if (meta == 0) {
+		if (meta == 0)
 			return;
-		}
 
 		container.setItemDamage(meta);
 	}
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
-		return new FluidTankProperties[] { new FluidTankProperties(getFluid(), 250) };
+		return new FluidTankProperties[] {
+				new FluidTankProperties(getFluid(), 250)
+		};
 	}
 
 	@Override
 	public int fill(FluidStack resource, boolean doFill) {
-		if (container.stackSize != 1 || resource == null || resource.amount < 250 || !canFillFluidType(resource)) {
+		if (container.stackSize != 1 || resource == null || resource.amount < 250 || !canFillFluidType(resource))
 			return 0;
-		}
 
 		int fillAmo = 250;
 		int meta = 0;
@@ -84,9 +82,8 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 			meta = 2;
 		}
 
-		if (meta == 0) {
+		if (meta == 0)
 			return 0;
-		}
 
 		if (doFill) {
 			container.setItemDamage(meta);
@@ -97,22 +94,19 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 
 	@Override
 	public FluidStack drain(FluidStack resource, boolean doDrain) {
-		if (container.stackSize != 1 || resource == null || resource.amount < 250 || !resource.isFluidEqual(getFluid())) {
+		if (container.stackSize != 1 || resource == null || resource.amount < 250 || !resource.isFluidEqual(getFluid()))
 			return null;
-		}
 		return drain(resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(int maxDrain, boolean doDrain) {
-		if (container.stackSize != 1 || maxDrain < 250) {
+		if (container.stackSize != 1 || maxDrain < 250)
 			return null;
-		}
 
 		FluidStack contained = getFluid();
-		if (contained == null || !canDrainFluidType(contained)) {
+		if (contained == null || !canDrainFluidType(contained))
 			return null;
-		}
 
 		final int drainAmount = 250;
 		FluidStack drained = contained.copy();
@@ -126,9 +120,8 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 	}
 
 	public boolean canFillFluidType(FluidStack fluid) {
-		if (container.getItemDamage() > 0) {
+		if (container.getItemDamage() > 0)
 			return false;
-		}
 		return true;
 	}
 
@@ -149,6 +142,10 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY ? (T) this : null;
+	}
+
+	public ItemStack getContainer() {
+		return container;
 	}
 
 }

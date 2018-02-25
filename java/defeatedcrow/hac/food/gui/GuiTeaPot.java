@@ -54,7 +54,7 @@ public class GuiTeaPot extends GuiContainer {
 		if (this.isPointInRegion(-20, 4, 20, 20, mouseX, mouseY)) {
 			List<String> list = new ArrayList<String>();
 			if (pot != null) {
-				list.add(I18n.translateToLocal(pot.notSuitableMassage()));
+				list.add(I18n.translateToLocal(pot.climateSuitableMassage()));
 			}
 			if (!list.isEmpty()) {
 				this.drawHoveringText(list, mouseX - this.guiLeft, mouseY - this.guiTop);
@@ -98,6 +98,7 @@ public class GuiTeaPot extends GuiContainer {
 
 	@Override
 	public void drawScreen(int x, int y, float par3) {
+		this.drawDefaultBackground();
 		super.drawScreen(x, y, par3);
 
 		ArrayList<String> list = new ArrayList<String>();

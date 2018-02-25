@@ -3,6 +3,9 @@ package defeatedcrow.hac.main.block.build;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.core.base.BlockDC;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -10,7 +13,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -24,7 +26,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockTableBase extends Block {
+public class BlockTableBase extends BlockDC {
 
 	/* 接続方式はFenceと同じ */
 	public static final PropertyBool NORTH = PropertyBool.create("north");
@@ -37,8 +39,7 @@ public class BlockTableBase extends Block {
 	protected final boolean isFull;
 
 	public BlockTableBase(String s, boolean full) {
-		super(Material.CLAY);
-		this.setUnlocalizedName(s);
+		super(Material.CLAY, s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.fullBlock = false;
@@ -95,10 +96,7 @@ public class BlockTableBase extends Block {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				NORTH,
-				EAST,
-				WEST,
-				SOUTH
+				NORTH, EAST, WEST, SOUTH
 		});
 	}
 
@@ -139,8 +137,10 @@ public class BlockTableBase extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
 		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	// 設置・破壊処理

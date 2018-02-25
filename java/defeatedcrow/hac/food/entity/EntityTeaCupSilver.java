@@ -23,14 +23,14 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class EntityTeaCupSilver extends DCEntityBase {
 
-	protected static final DataParameter<String> FLUID = EntityDataManager.<String> createKey(EntityTeaCupSilver.class,
+	protected static final DataParameter<String> FLUID = EntityDataManager.<String>createKey(EntityTeaCupSilver.class,
 			DataSerializers.STRING);
 	protected static final DataParameter<Integer> AMOUNT = EntityDataManager
-			.<Integer> createKey(EntityTeaCupSilver.class, DataSerializers.VARINT);
+			.<Integer>createKey(EntityTeaCupSilver.class, DataSerializers.VARINT);
 
-	protected static final DataParameter<Byte> MILK = EntityDataManager.<Byte> createKey(EntityTeaCupSilver.class,
+	protected static final DataParameter<Byte> MILK = EntityDataManager.<Byte>createKey(EntityTeaCupSilver.class,
 			DataSerializers.BYTE);
-	protected static final DataParameter<Byte> SUGAR = EntityDataManager.<Byte> createKey(EntityTeaCupSilver.class,
+	protected static final DataParameter<Byte> SUGAR = EntityDataManager.<Byte>createKey(EntityTeaCupSilver.class,
 			DataSerializers.BYTE);
 
 	public EntityTeaCupSilver(World worldIn) {

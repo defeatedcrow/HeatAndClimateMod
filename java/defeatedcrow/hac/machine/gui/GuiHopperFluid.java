@@ -60,6 +60,7 @@ public class GuiHopperFluid extends GuiContainer {
 
 	@Override
 	public void drawScreen(int x, int y, float par3) {
+		this.drawDefaultBackground();
 		super.drawScreen(x, y, par3);
 
 		ArrayList<String> list = new ArrayList<String>();

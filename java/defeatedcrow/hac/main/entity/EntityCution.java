@@ -23,8 +23,9 @@ public class EntityCution extends Entity {
 
 	public EntityCution(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		this(worldIn, posX, posY, posZ);
-		if (player != null)
+		if (player != null) {
 			this.rotationYaw = player.rotationYaw;
+		}
 	}
 
 	int count = 20;
@@ -47,15 +48,12 @@ public class EntityCution extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {
-	}
+	protected void entityInit() {}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
-	}
+	protected void readEntityFromNBT(NBTTagCompound compound) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
-	}
+	protected void writeEntityToNBT(NBTTagCompound compound) {}
 
 }

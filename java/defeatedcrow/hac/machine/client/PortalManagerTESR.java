@@ -16,7 +16,8 @@ public class PortalManagerTESR extends DCTorqueTESRBase {
 
 	@Override
 	protected String getTexPass(int i) {
-		return i == 0 ? "dcs_climate:textures/tiles/portalmanager_off.png"
+		return i == 0
+				? "dcs_climate:textures/tiles/portalmanager_off.png"
 				: "dcs_climate:textures/tiles/portalmanager_on.png";
 	}
 

@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.machine.block.TileReactor;
@@ -32,7 +33,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiReactor extends GuiContainer {
 	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate", "textures/gui/reactor_gui.png");
 	private static final ResourceLocation iconTex = new ResourceLocation("dcs_climate", "textures/gui/gui_icons.png");
-
 	/** The player inventory bound to this GUI. */
 	private final InventoryPlayer playerInventory;
 	private final TileReactor machine;
@@ -61,6 +61,7 @@ public class GuiReactor extends GuiContainer {
 
 	@Override
 	public void drawScreen(int x, int y, float partialTicks) {
+		this.drawDefaultBackground();
 		super.drawScreen(x, y, partialTicks);
 		ArrayList<String> list = new ArrayList<String>();
 		// if (ClimateCore.isDebug) {
@@ -132,6 +133,14 @@ public class GuiReactor extends GuiContainer {
 		}
 		if (isPointInRegion(150, 39, 12, 6, x, y)) {
 			list.add(s4);
+		}
+
+		if (isPointInRegion(12, 90, 40, 10, x, y)) {
+			IClimate clm = ClimateAPI.register.getClimateFromInt(machine.getField(2));
+			if (clm != null) {
+				DCHeatTier h = clm.getHeat();
+				list.add(h.toString());
+			}
 		}
 
 		this.drawHoveringText(list, x, y);

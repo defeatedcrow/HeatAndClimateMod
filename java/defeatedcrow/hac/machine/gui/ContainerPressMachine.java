@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -98,12 +99,9 @@ public class ContainerPressMachine extends Container {
 					if (!this.mergeItemStack(itemstack1, 2, 11, false))
 						return null;
 				}
-			} else
-				return null;
+			}
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 

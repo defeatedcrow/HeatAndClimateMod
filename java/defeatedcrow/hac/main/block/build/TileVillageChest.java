@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.block.build;
 import java.util.List;
 
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -45,7 +46,7 @@ public class TileVillageChest extends TileLowChest {
 					for (int i = 0; i < inv.getSizeInventory(); i++) {
 						ItemStack item = inv.getStackInSlot(i);
 						// canAbondonItems()とisFarmItemInInventory()をキープし続ける
-						if (item != null) {
+						if (!DCUtil.isEmpty(item)) {
 							int count = item.getItem() == Items.BREAD ? 6 : 30;
 							// DCLogger.debugLog("villager slot" + i + ":" + item.getDisplayName() + "x" +
 							// item.stackSize);
@@ -55,16 +56,17 @@ public class TileVillageChest extends TileLowChest {
 								int slot = canInsertSlot(ins);
 								if (slot > -1) {
 									int j = 0;
-									if (this.getStackInSlot(slot) == null) {
+									if (DCUtil.isEmpty(getStackInSlot(slot))) {
 										j = ins.stackSize;
 									} else {
 										j = this.isItemStackable(ins, this.getStackInSlot(slot));
 									}
 									if (j > 0) {
-										DCLogger.debugLog("ins" + j);
+										DCLogger.debugLog("village chest ins" + j);
 										this.incrStackInSlot(slot, ins);
 										this.markDirty();
 										inv.decrStackSize(i, j);
+										inv.markDirty();
 									}
 								}
 							}
@@ -78,12 +80,12 @@ public class TileVillageChest extends TileLowChest {
 	}
 
 	protected int canInsertSlot(ItemStack stack) {
-		if (stack == null)
+		if (DCUtil.isEmpty(stack))
 			return -1;
 
 		for (int i = 0; i < this.getSizeInventory(); i++) {
 			ItemStack cur = this.getStackInSlot(i);
-			if (cur == null)
+			if (DCUtil.isEmpty(cur))
 				return i;
 			else {
 				int ret = this.isItemStackable(stack, cur);

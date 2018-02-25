@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TESRIceCluster extends TileEntitySpecialRenderer<TileIceCluster> {
 
 	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate",
-			"textures/entity/magic/butterfly_cage.png");
+			"textures/entity/magic/crystal_ice.png");
 	private static final ModelCluster MODEL = new ModelCluster();
 
 	@Override

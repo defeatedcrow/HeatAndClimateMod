@@ -104,11 +104,6 @@ public class ParticleCloudDC extends Particle {
 		if (motionY > 1.00D) {
 			motionY = 1.00D;
 		}
-
-		if (this.isCollided) {
-			this.motionX *= 0.7D;
-			this.motionZ *= 0.7D;
-		}
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -1,9 +1,6 @@
 package defeatedcrow.hac.food.block;
 
-import java.util.List;
 import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCAirflow;
@@ -17,9 +14,7 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -38,8 +33,8 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null && !world.isRemote && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack held = player.getHeldItem(hand);
@@ -63,11 +58,6 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TilePotteryPot();
-	}
-
-	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override

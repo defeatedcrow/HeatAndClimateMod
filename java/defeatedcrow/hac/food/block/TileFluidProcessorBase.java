@@ -11,8 +11,9 @@ import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageFluidProcessor;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
@@ -114,15 +115,11 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			}
 
 			if (flag) {
-				if (!this.hasWorldObj())
-					return;
-				@SuppressWarnings("unchecked")
-				List<EntityPlayer> list = this.getWorld().playerEntities;
-				for (EntityPlayer player : list) {
-					if (player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-					}
-				}
+				int f1 = inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
+				int f2 = outputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT.getFluidType());
+				int a1 = inputT.getFluidAmount();
+				int a2 = outputT.getFluidAmount();
+				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, f1, a1, f2, a2));
 			}
 		}
 	}
@@ -290,7 +287,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// 気候の適合性
 	public abstract boolean isSuitableClimate();
 
-	public abstract String notSuitableMassage();
+	public abstract String climateSuitableMassage();
 
 	public int canInsertResult(ItemStack item, int s1, int s2) {
 		int ret = 0;
@@ -448,7 +445,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if (i == 0 || i == 2) {
-			if (stack == null)
+			if (DCUtil.isEmpty(stack))
 				return false;
 			IFluidHandler cont = null;
 			if (stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {

@@ -178,7 +178,16 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	/* === 追加メソッド === */
 
 	public static int isItemStackable(ItemStack target, ItemStack current) {
-		return DCInventory.isItemStackable(target, current);
+		if (DCUtil.isSameItem(target, current, true)) {
+			int i = current.stackSize + target.stackSize;
+			if (i > current.getMaxStackSize()) {
+				i = current.getMaxStackSize() - current.stackSize;
+				return i;
+			}
+			return target.stackSize;
+		}
+
+		return 0;
 	}
 
 	public void incrStackInSlot(int i, ItemStack input) {

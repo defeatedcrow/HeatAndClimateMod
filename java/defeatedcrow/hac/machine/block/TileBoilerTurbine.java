@@ -14,9 +14,9 @@ import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
-import defeatedcrow.hac.main.api.ISideTankChecker;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,6 +24,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -33,7 +34,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory, ISideTankChecker {
+public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -65,7 +66,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 				int red = this.getRequiredWater(heat);
 				if (red > 0) {
 					// 水を減らす
-					FluidStack flu = inputT.getContents();
+					FluidStack flu = inputT.getFluid();
 					if (flu != null && flu.getFluid() == FluidRegistry.WATER && inputT.getFluidAmount() > red) {
 						inputT.drain(red, true);
 						f = true;
@@ -74,6 +75,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 				if (f) {
 					this.currentBurnTime = 1;
+					worldObj.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.15F, 0.7F);
 				} else {
 					this.currentBurnTime = 0;
 				}
@@ -92,13 +94,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 				// DCLogger.debugLog("current burntime: " + currentBurnTime);
 				// DCLogger.debugLog("current temp: " + currentClimate);
 
-				// 外見更新
-				// if (BlockBoilerTurbine.isLit(getWorld(), getPos()) != this.isActive()) {
-				// BlockBoilerTurbine.changeLitState(getWorld(), getPos(), isActive());
-				// }
-
 			}
-
 		}
 
 	}
@@ -154,7 +150,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	public int getBurnTime() {
-		FluidStack f = inputT.getContents();
+		FluidStack f = inputT.getFluid();
 		if (f != null && f.getFluid() != null && inputT.getFluidAmount() > 0) {
 			if (f.getFluid() == FluidRegistry.WATER) {
 				DCHeatTier tier = DCHeatTier.getTypeByID(currentClimate);
@@ -191,8 +187,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
-	@Override
-	public void checkSideTank() {
+	private void checkSideTank() {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			int cap = inputT.getCapacity();
 			int amo = inputT.getFluidAmount();
@@ -203,7 +198,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			}
 
 			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISideTankChecker)
+			if (tile != null
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());

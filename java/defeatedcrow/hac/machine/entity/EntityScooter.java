@@ -14,6 +14,8 @@ import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
@@ -33,6 +35,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
@@ -127,10 +130,21 @@ public class EntityScooter extends Entity implements IInventory {
 		EntityPlayer rider = null;
 		boolean stop = false;
 
-		if (brake || this.getPassengers().isEmpty() || !(this.getPassengers().get(0) instanceof EntityPlayer)) {
-			stop = true;
-		} else if (!this.getPassengers().isEmpty() && this.getPassengers().get(0) instanceof EntityPlayer) {
+		if (!this.getPassengers().isEmpty() && this.getPassengers().get(0) instanceof EntityPlayer) {
 			rider = (EntityPlayer) this.getPassengers().get(0);
+		}
+
+		if (brake || rider == null) {
+			stop = true;
+		}
+
+		if (rider == null) {
+			if (!this.getPassengers().isEmpty()) {
+				this.getPassengers().get(0).dismountRidingEntity();
+			}
+			if (this.getPassengers().size() > 1) {
+				this.getPassengers().get(1).dismountRidingEntity();
+			}
 		}
 
 		// 向き決定
@@ -183,8 +197,7 @@ public class EntityScooter extends Entity implements IInventory {
 		// collision
 		this.doBlockCollisions();
 		List<Entity> list = this.worldObj.getEntitiesInAABBexcluding(this,
-				this.getEntityBoundingBox().expand(0.2D, -0.01D, 0.2D),
-				EntitySelectors.<Entity>getTeamCollisionPredicate(this));
+				this.getEntityBoundingBox().expand(0.2D, 0.5D, 0.2D), EntitySelectors.IS_STANDALONE);
 
 		if (!list.isEmpty()) {
 			boolean flag = !this.worldObj.isRemote && !(this.getControllingPassenger() instanceof EntityPlayer);
@@ -192,8 +205,12 @@ public class EntityScooter extends Entity implements IInventory {
 			for (int j = 0; j < list.size(); ++j) {
 				Entity entity = list.get(j);
 
-				if (!entity.isPassenger(this)) {
-					this.applyEntityCollision(entity);
+				if (!entity.isPassenger(this) && entity instanceof EntityLivingBase) {
+					if (rider != null && this.getPassengers().size() < 2) {
+						entity.startRiding(this);
+					} else {
+						this.applyEntityCollision(entity);
+					}
 				}
 			}
 		}
@@ -219,8 +236,7 @@ public class EntityScooter extends Entity implements IInventory {
 	}
 
 	public int getBurnTime(Fluid fluid) {
-		String s = fluid.getName();
-		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
+		int burn = MainAPIManager.fuelRegister.getBurningTime(fluid);
 		return burn;
 	}
 
@@ -307,7 +323,7 @@ public class EntityScooter extends Entity implements IInventory {
 
 			if (this.currentBurnTime == 0) {
 
-				FluidStack f = tank.getContents();
+				FluidStack f = tank.getFluid();
 				if (f != null && f.getFluid() != null && tank.getFluidAmount() > 0) {
 					int i = getBurnTime(f.getFluid());
 					if (i > 0) {
@@ -359,7 +375,7 @@ public class EntityScooter extends Entity implements IInventory {
 
 	public FluidStack getBucketTag() {
 		ItemStack bu = this.getStackInSlot(2);
-		if (bu != null) {
+		if (!DCUtil.isEmpty(bu)) {
 			NBTTagCompound tag = bu.getTagCompound();
 			if (tag != null) {
 				tag = new NBTTagCompound();
@@ -442,6 +458,8 @@ public class EntityScooter extends Entity implements IInventory {
 		this.lerpSteps = 5;
 	}
 
+	/* 騎乗 */
+
 	@Override
 	@Nullable
 	public Entity getControllingPassenger() {
@@ -450,13 +468,13 @@ public class EntityScooter extends Entity implements IInventory {
 	}
 
 	@Override
-	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
+	public boolean processInitialInteract(EntityPlayer player, ItemStack held, @Nullable EnumHand hand) {
 		if (player.isSneaking()) {
 			int id = this.getEntityId();
 			player.openGui(ClimateMain.instance, id, worldObj, getPosition().getX(), getPosition().getY(),
 					getPosition().getZ());
 			return true;
-		} else if (this.isBeingRidden())
+		} else if (this.isBeingRidden() && this.getPassengers().size() < 2)
 			return true;
 		else {
 			if (!this.worldObj.isRemote) {
@@ -468,8 +486,61 @@ public class EntityScooter extends Entity implements IInventory {
 	}
 
 	@Override
+	public void updatePassenger(Entity passenger) {
+		if (this.isPassenger(passenger) && passenger != this.getControllingPassenger()) {
+			float f = 0.0F;
+			float f1 = (float) ((this.isDead ? 0.01D : this.getMountedYOffset()) + passenger.getYOffset());
+
+			if (this.getPassengers().size() > 1) {
+				int i = this.getPassengers().indexOf(passenger);
+
+				if (i == 0) {
+					f = 0.2F;
+				} else {
+					f = -0.6F;
+				}
+
+				if (passenger instanceof EntityAnimal) {
+					f = (float) (f + 0.2D);
+				}
+			}
+
+			Vec3d vec3d = (new Vec3d(f, 0.0D, 0.0D))
+					.rotateYaw(-this.rotationYaw * 0.017453292F - ((float) Math.PI / 2F));
+			passenger.setPosition(this.posX + vec3d.xCoord, this.posY + f1, this.posZ + vec3d.zCoord);
+			passenger.rotationYaw = this.rotationYaw;
+			passenger.setRotationYawHead(this.rotationYaw);
+			this.applyYawToEntity(passenger);
+		} else {
+			super.updatePassenger(passenger);
+		}
+	}
+
+	protected void applyYawToEntity(Entity entityToUpdate) {
+		entityToUpdate.setRenderYawOffset(this.rotationYaw);
+		float f = MathHelper.wrapDegrees(entityToUpdate.rotationYaw - this.rotationYaw);
+		float f1 = MathHelper.clamp_float(f, -105.0F, 105.0F);
+		entityToUpdate.prevRotationYaw += f1 - f;
+		entityToUpdate.rotationYaw += f1 - f;
+		entityToUpdate.setRotationYawHead(entityToUpdate.rotationYaw);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void applyOrientationToEntity(Entity entityToUpdate) {
+		this.applyYawToEntity(entityToUpdate);
+	}
+
+	@Override
+	protected boolean canFitPassenger(Entity passenger) {
+		return this.getPassengers().size() < 2;
+	}
+
+	/* Attack */
+
+	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (!this.worldObj.isRemote && !this.isDead && !this.isBeingRidden()) {
+		if (!this.worldObj.isRemote && !this.isDead && this.getControllingPassenger() instanceof EntityPlayer) {
 			if (this.isEntityInvulnerable(source)) {
 				this.setDead();
 			} else if (source instanceof EntityDamageSource && !source.isProjectile()
@@ -658,20 +729,11 @@ public class EntityScooter extends Entity implements IInventory {
 				fc = dummy.drain(rem, false);
 				if (fc != null && fc.amount <= rem) {
 					FluidStack fill = null;
-					if (in.getItem() instanceof IFluidHandler) {
-						fill = ((IFluidHandler) in2.getItem()).drain(rem, true);
-						ret = in2;
-					} else {
-						fill = dummy.drain(rem, true);
-						ret = in2;
-					}
-
-					if (ret.stackSize <= 0) {
-						ret = null;
-					}
+					fill = dummy.drain(rem, true);
+					ret = in2;
 
 					if (fill != null
-							&& (DCUtil.isEmpty(ret) || this.isItemStackable(ret, this.getStackInSlot(slot2)) > 0)) {
+							&& (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -681,7 +743,6 @@ public class EntityScooter extends Entity implements IInventory {
 			if (loose) {
 				this.decrStackSize(slot1, 1);
 				this.incrStackInSlot(slot2, ret);
-				this.markDirty();
 				return true;
 			}
 		}
@@ -725,19 +786,10 @@ public class EntityScooter extends Entity implements IInventory {
 			if (b) {
 				FluidStack drain = tank.drain(rem, false);
 				int fill = 0;
-				if (in.getItem() instanceof IFluidHandler) {
-					fill = ((IFluidHandler) in2.getItem()).fill(drain, true);
-					ret = in2;
-				} else {
-					fill = dummy.fill(drain, true);
-					ret = in2;
-				}
+				fill = dummy.fill(drain, true);
+				ret = in2;
 
-				if (ret.stackSize <= 0) {
-					ret = null;
-				}
-
-				if (fill > 0 && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, this.getStackInSlot(slot2)) > 0)) {
+				if (fill > 0 && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
 					loose = true;
 					tank.drain(fill, true);
 				}
@@ -746,7 +798,6 @@ public class EntityScooter extends Entity implements IInventory {
 			if (loose) {
 				this.decrStackSize(slot1, 1);
 				this.incrStackInSlot(slot2, ret);
-				this.markDirty();
 				return true;
 			}
 		}
@@ -756,9 +807,9 @@ public class EntityScooter extends Entity implements IInventory {
 	/* ==== inventory ==== */
 
 	public static int isItemStackable(ItemStack target, ItemStack current) {
-		if (target == null)
+		if (DCUtil.isEmpty(target))
 			return 0;
-		else if (current == null)
+		else if (DCUtil.isEmpty(current))
 			return target.stackSize;
 
 		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata()
@@ -775,12 +826,12 @@ public class EntityScooter extends Entity implements IInventory {
 	}
 
 	public void incrStackInSlot(int i, ItemStack input) {
-		if (i < this.getSizeInventory() && input != null) {
-			if (this.getStackInSlot(i) != null) {
+		if (i < this.getSizeInventory() && !DCUtil.isEmpty(input)) {
+			if (!DCUtil.isEmpty(this.getStackInSlot(i))) {
 				if (this.getStackInSlot(i).getItem() == input.getItem()
 						&& this.getStackInSlot(i).getMetadata() == input.getMetadata()
 						&& ItemStack.areItemStackTagsEqual(this.getStackInSlot(i), input)) {
-					this.getStackInSlot(i).stackSize += input.stackSize;
+					DCUtil.addStackSize(this.getStackInSlot(i), input.stackSize);
 					if (this.getStackInSlot(i).stackSize > this.getInventoryStackLimit()) {
 						this.getStackInSlot(i).stackSize = this.getInventoryStackLimit();
 					}
@@ -793,7 +844,7 @@ public class EntityScooter extends Entity implements IInventory {
 
 	@Override
 	public int getSizeInventory() {
-		return inv.getSizeInventory() + 3;
+		return inv.getSizeInventory() + tankSlot.getSizeInventory();
 	}
 
 	@Override
@@ -837,6 +888,7 @@ public class EntityScooter extends Entity implements IInventory {
 	@Override
 	public void markDirty() {
 		inv.markDirty();
+		tankSlot.markDirty();
 	}
 
 	@Override
@@ -906,6 +958,7 @@ public class EntityScooter extends Entity implements IInventory {
 	@Override
 	public void clear() {
 		inv.clear();
+		tankSlot.clear();
 	}
 
 	IItemHandler handler = new InvWrapper(this.inv);

@@ -3,10 +3,11 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.core.util.DCPotion;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
@@ -21,6 +22,7 @@ import defeatedcrow.hac.plugin.DrinkPotionType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -125,7 +127,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	// カラなら飲食できない
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemIn, World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		if (player != null) {
 			ItemStack item = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(item)) {
@@ -133,17 +135,18 @@ public class ItemSilverCup extends FoodItemBase {
 				if (cont != null && cont.getTankProperties() != null) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
 					if (f != null)
-						return super.onItemRightClick(item, world, player, hand);
+						return super.onItemRightClick2(world, player, hand);
 				}
 			}
+			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 		}
-		return new ActionResult(EnumActionResult.FAIL, itemIn);
+		return new ActionResult<ItemStack>(EnumActionResult.FAIL, null);
 	}
 
 	// potion の取得方法が違う
 	@Override
-	public boolean addEffects(ItemStack stack, World worldIn, EntityLivingBase living) {
-		if (!worldIn.isRemote && !DCUtil.isEmpty(stack)) {
+	public boolean addEffects(ItemStack stack, World world, EntityLivingBase living) {
+		if (!world.isRemote && !DCUtil.isEmpty(stack)) {
 			if (stack.getItem() != this)
 				return false;
 			else {
@@ -190,25 +193,28 @@ public class ItemSilverCup extends FoodItemBase {
 		return false;
 	}
 
-	public List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
+	public static List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if (fluid != null) {
 			if (fluid == FoodInit.greenTea) {
-				ret.add(new PotionEffect(DCPotion.haste, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.HASTE, MathHelper.ceiling_float_int(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.blackTea) {
-				ret.add(new PotionEffect(DCPotion.registance, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.RESISTANCE, MathHelper.ceiling_float_int(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.coffee) {
-				ret.add(new PotionEffect(DCPotion.night_vision, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.NIGHT_VISION, MathHelper.ceiling_float_int(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.oil) {
-				ret.add(new PotionEffect(DCPotion.speed, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.SPEED, MathHelper.ceiling_float_int(1200 * dirF), ampF));
 			} else if (fluid == FoodInit.stock) {
-				ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * (dirF + ampF)), 0));
+				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceiling_float_int(1200 * (dirF + ampF)),
+						0));
 			} else if (fluid == FoodInit.blackLiquor) {
-				ret.add(new PotionEffect(DCPotion.poison, MathHelper.ceiling_float_int(300 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.POISON, MathHelper.ceiling_float_int(300 * dirF), ampF));
+			} else if (fluid == FoodInit.lemon) {
+				ret.add(new PotionEffect(MobEffects.JUMP_BOOST, MathHelper.ceiling_float_int(1200 * dirF), ampF));
 			} else if (fluid == FluidRegistry.WATER) {
-				ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceiling_float_int(300 * dirF), ampF));
 			} else if (fluid == FluidRegistry.LAVA) {
-				ret.add(new PotionEffect(DCPotion.fire_reg, MathHelper.ceiling_float_int(1200 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceiling_float_int(1200 * dirF), ampF));
 			} else if (DrinkPotionType.isRegistered(fluid)) {
 				Potion potion = DrinkPotionType.getPotion(fluid);
 				if (potion != null) {
@@ -216,7 +222,7 @@ public class ItemSilverCup extends FoodItemBase {
 					ret.add(new PotionEffect(potion, MathHelper.ceiling_float_int(duration), ampF));
 				}
 			} else {
-				ret.add(new PotionEffect(DCPotion.regeneration, MathHelper.ceiling_float_int(300 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceiling_float_int(300 * dirF), ampF));
 			}
 		}
 		return ret;
@@ -224,7 +230,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 
 		IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);

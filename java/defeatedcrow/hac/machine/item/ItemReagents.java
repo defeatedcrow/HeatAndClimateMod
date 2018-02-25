@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine.item;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.item.ItemStack;
 
 public class ItemReagents extends DCItem {
 
@@ -20,7 +21,8 @@ public class ItemReagents extends DCItem {
 			"gem_carbide",
 			"bottle_phosphorus",
 			"bottle_phosphoric_acid",
-			"bottle_ammonium_phosphate"
+			"bottle_ammonium_phosphate",
+			"gem_coke"
 	};
 
 	private static String[] tex_names = {
@@ -36,7 +38,8 @@ public class ItemReagents extends DCItem {
 			"gem_carbide",
 			"red_powder_bottle",
 			"clear_water_bottle",
-			"white_powder_bottle"
+			"white_powder_bottle",
+			"gem_coke"
 	};
 
 	public ItemReagents() {
@@ -61,6 +64,20 @@ public class ItemReagents extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	public static int getItemBurnTime(ItemStack stack) {
+		int i = stack.getMetadata();
+		if (i == 0)
+			return 1600;
+		else if (i == 1)
+			return 800;
+		else if (i == 9)
+			return 12800;
+		else if (i == 13)
+			return 5400;
+		else
+			return 0;
 	}
 
 }

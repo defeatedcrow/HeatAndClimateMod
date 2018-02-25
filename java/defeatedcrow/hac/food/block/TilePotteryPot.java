@@ -16,7 +16,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -114,7 +113,7 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		if (currentRecipe != null) {
 			ItemStack out = currentRecipe.getOutput();
 			ItemStack sec = currentRecipe.getSecondary();
-			float chance = MathHelper.ceiling_float_int(currentRecipe.getSecondaryChance() * 100);
+			float chance = currentRecipe.getSecondaryChance() * 100;
 			FluidStack inF = currentRecipe.getInputFluid();
 			FluidStack outF = currentRecipe.getOutputFluid();
 
@@ -138,8 +137,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 						if (next instanceof ItemStack) {
 							count = ((ItemStack) next).stackSize;
 							match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot.stackSize >= count;
-						} else if (next instanceof ArrayList) {
-							ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
+						} else if (next instanceof List) {
+							List<ItemStack> list = new ArrayList<ItemStack>((List<ItemStack>) next);
 							if (list != null && !list.isEmpty()) {
 								for (ItemStack item : list) {
 									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.stackSize > 0;
@@ -168,11 +167,11 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 				outputT.fill(outF, true);
 			}
 
-			if (out != null) {
+			if (!DCUtil.isEmpty(out)) {
 				this.insertResult(out, 7, 9);
 			}
 
-			if (sec != null && worldObj.rand.nextInt(100) < chance) {
+			if (!DCUtil.isEmpty(sec) && worldObj.rand.nextInt(100) < chance) {
 				this.insertResult(sec, 7, 9);
 			}
 
@@ -190,7 +189,7 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 	}
 
 	@Override
-	public String notSuitableMassage() {
+	public String climateSuitableMassage() {
 		if (current == null)
 			return "dcs.gui.message.nullclimate";
 		else {

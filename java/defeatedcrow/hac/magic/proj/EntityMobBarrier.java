@@ -32,8 +32,9 @@ public class EntityMobBarrier extends Entity {
 
 	public EntityMobBarrier(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		this(worldIn, posX, posY, posZ);
-		if (player != null)
+		if (player != null) {
 			this.rotationYaw = player.rotationYaw;
+		}
 	}
 
 	/* Tick処理 */
@@ -69,12 +70,11 @@ public class EntityMobBarrier extends Entity {
 
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (source != null && source.getSourceOfDamage() != null) {
-			if (source.getSourceOfDamage() instanceof EntityPlayer) {
+		if (source != null && source.getEntity() != null) {
+			if (source.getEntity() instanceof EntityPlayer)
 				return false;
-			} else {
+			else
 				return true;
-			}
 		}
 		return false;
 	}
@@ -82,9 +82,8 @@ public class EntityMobBarrier extends Entity {
 	@Override
 	@Nullable
 	public AxisAlignedBB getCollisionBox(Entity entity) {
-		if (entity != null && entity instanceof IMob) {
+		if (entity != null && entity instanceof IMob)
 			return this.getEntityBoundingBox();
-		}
 		return null;
 	}
 
@@ -95,8 +94,7 @@ public class EntityMobBarrier extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {
-	}
+	protected void entityInit() {}
 
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound tag) {

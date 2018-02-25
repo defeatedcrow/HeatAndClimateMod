@@ -18,6 +18,7 @@ import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
+import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
 import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
@@ -29,6 +30,7 @@ import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.block.fluid.FluidUtil;
+import defeatedcrow.hac.main.client.block.TESRAnalogClock;
 import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRChandelier;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
@@ -41,37 +43,40 @@ import defeatedcrow.hac.main.client.block.TESRThermometer;
 import defeatedcrow.hac.main.client.block.TESRVillageChest;
 import defeatedcrow.hac.main.client.block.TESRWindVane;
 import defeatedcrow.hac.main.client.entity.BoltRenderer;
+import defeatedcrow.hac.main.client.entity.RenderEntityBalloon;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
+import defeatedcrow.hac.main.client.model.ModelWoolWear;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleFlameDC;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
+import defeatedcrow.hac.main.entity.EntityCrowBalloon;
+import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
+import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBolt;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
+import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import defeatedcrow.hac.main.event.AltTooltipEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.stats.Achievement;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -86,6 +91,8 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	private static final ModelHat hatModel = new ModelHat(0);
 	private static final ModelHoodie hoodieModel = new ModelHoodie(0);
+	private static final ModelWoolWear woolModel = new ModelWoolWear(0);
+	private static final ModelWoolWear woolHatModel = new ModelWoolWear(3);
 
 	@Override
 	public void loadConst() {
@@ -130,6 +137,10 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityGhostBullet.class, BoltRenderer.class);
 		registRender(EntityDynamite.class, RenderEntityDynamite.class);
 		registRender(EntityDynamiteBlue.class, RenderEntityDynamite.class);
+		registRender(EntityLightBullet.class, BoltRenderer.class);
+		registRender(EntityExtinctionBullet.class, BoltRenderer.class);
+		registRender(EntityCrowBullet.class, BoltRenderer.class);
+		registRender(EntityCrowBalloon.class, RenderEntityBalloon.class);
 
 		FoodClientProxy.loadEntity();
 		MachineClientProxy.loadEntity();
@@ -153,6 +164,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		ClientRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
 		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		ClientRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum", new TESRChandelier());
+		ClientRegistry.registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock", new TESRAnalogClock());
 
 		FoodClientProxy.loadTE();
 		MachineClientProxy.loadTE();
@@ -241,19 +253,17 @@ public class ClientMainProxy extends CommonMainProxy {
 	@Override
 	public net.minecraft.client.model.ModelBiped getArmorModel(int slot) {
 		switch (slot) {
-		case 3:
+		case 0:
 			return hatModel;
-		case 2:
+		case 1:
 			return hoodieModel;
+		case 2:
+			return woolHatModel;
+		case 3:
+			return woolModel;
 		default:
 			return null;
 		}
-	}
-
-	@Override
-	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
-		return player != null && player instanceof EntityPlayerSP
-				&& ((EntityPlayerSP) player).getStatFileWriter().hasAchievementUnlocked(acv);
 	}
 
 	@Override

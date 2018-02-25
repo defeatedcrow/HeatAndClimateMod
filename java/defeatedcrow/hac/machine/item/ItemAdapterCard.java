@@ -2,6 +2,8 @@ package defeatedcrow.hac.machine.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -87,8 +89,8 @@ public class ItemAdapterCard extends DCItem {
 	// NBT
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		if (player != null && !world.isRemote && player.isSneaking()) {
 			ItemStack held = player.getHeldItem(hand);
 			IBlockState state = world.getBlockState(pos);
@@ -176,7 +178,7 @@ public class ItemAdapterCard extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		if (!DCUtil.isEmpty(stack) && stack.hasTagCompound()) {
 			int dim = getDim(stack);
 			BlockPos pos = getPos(stack);

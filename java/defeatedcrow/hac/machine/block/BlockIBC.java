@@ -3,19 +3,19 @@ package defeatedcrow.hac.machine.block;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -43,8 +43,8 @@ public class BlockIBC extends DCTileBlock {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
 			if (hand == EnumHand.MAIN_HAND) {
@@ -73,8 +73,10 @@ public class BlockIBC extends DCTileBlock {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
 		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	@Override
@@ -96,6 +98,25 @@ public class BlockIBC extends DCTileBlock {
 	@SideOnly(Side.CLIENT)
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+	}
+
+	public static void changeLitState(World world, BlockPos pos, boolean f) {
+		IBlockState state = world.getBlockState(pos);
+		if (state.getBlock() == MachineInit.IBC) {
+			if (f) {
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1), 3);
+			} else {
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 0), 3);
+			}
+		}
+	}
+
+	public static boolean isLit(IBlockAccess world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		if (state.getBlock() != MachineInit.IBC)
+			return false;
+		int meta = state.getBlock().getMetaFromState(state) & 3;
+		return meta > 0;
 	}
 
 	@Override

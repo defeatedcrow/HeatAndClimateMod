@@ -29,9 +29,8 @@ public class TileFan extends TileTorqueBase implements ITorqueReceiver, IClimate
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		if (this.currentTorque >= this.maxTorque()) {
+		if (this.currentTorque >= this.maxTorque())
 			return false;
-		}
 		return this.isInputSide(side.getOpposite());
 	}
 
@@ -96,13 +95,12 @@ public class TileFan extends TileTorqueBase implements ITorqueReceiver, IClimate
 
 	@Override
 	public DCAirflow getAirflow(BlockPos target) {
-		if (this.currentTorque > 5.5F) {
+		if (this.currentTorque > 5.5F)
 			return DCAirflow.WIND;
-		} else if (this.currentTorque > 1.0F) {
+		else if (this.currentTorque > 1.0F)
 			return DCAirflow.FLOW;
-		} else {
+		else
 			return DCAirflow.TIGHT;
-		}
 	}
 
 	@Override

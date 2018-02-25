@@ -23,10 +23,4 @@ public class CreativeTabClimateBuild extends CreativeTabs {
 		return Item.getItemFromBlock(MainInit.bricks);
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getIconItemDamage() {
-		return 0;
-	}
-
 }

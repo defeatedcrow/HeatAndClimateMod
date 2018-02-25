@@ -90,11 +90,6 @@ public class ParticleOrb extends Particle {
 		this.motionX *= 0.96D;
 		this.motionY *= 0.96D;
 		this.motionZ *= 0.96D;
-
-		if (this.isCollided) {
-			this.motionX *= 0.7D;
-			this.motionZ *= 0.7D;
-		}
 	}
 
 	@SideOnly(Side.CLIENT)

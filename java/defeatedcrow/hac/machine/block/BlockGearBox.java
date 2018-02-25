@@ -1,12 +1,9 @@
 package defeatedcrow.hac.machine.block;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -35,25 +32,19 @@ public class BlockGearBox extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
-			if (heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
-				TileEntity tile = world.getTileEntity(pos);
-				// achievement
-				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
-				}
-			}
+			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	// redstone
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
 

@@ -3,9 +3,10 @@ package defeatedcrow.hac.main.block.build;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -14,7 +15,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -32,7 +32,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockMetalLadder extends Block {
+public class BlockMetalLadder extends BlockDC {
 
 	/* 左右のチェック */
 	public static final PropertyBool CLAMP = PropertyBool.create("clamp");
@@ -44,14 +44,43 @@ public class BlockMetalLadder extends Block {
 	public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.75D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 
 	public BlockMetalLadder(String s) {
-		super(Material.CLAY);
-		this.setUnlocalizedName(s);
+		super(Material.CLAY, s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
 				.withProperty(CLAMP, false).withProperty(UPPER, false));
+	}
+
+	@Override
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (!player.worldObj.isRemote && player != null) {
+			ItemStack held = player.getHeldItem(hand);
+			if (!DCUtil.isEmpty(held) && held.getItem() == Item.getItemFromBlock(this)) {
+				BlockPos target = null;
+				for (int i = 1; i < 16; i++) {
+					BlockPos check = pos.up(i);
+					if (hitY < 0.5F) {
+						check = pos.down(i);
+					}
+					if (world.getBlockState(check).getBlock().isReplaceable(world, check)) {
+						target = check;
+						break;
+					}
+				}
+				if (target != null) {
+					EnumFacing face = DCState.getFace(state, DCState.FACING);
+					IBlockState set = this.getDefaultState().withProperty(DCState.FACING, face);
+					world.setBlockState(target, set, 3);
+					DCUtil.reduceStackSize(held, 1);
+					return true;
+
+				}
+			}
+		}
+		return true;
 	}
 
 	// additional state
@@ -72,36 +101,6 @@ public class BlockMetalLadder extends Block {
 					worldIn.isAirBlock(pos.up()));
 		}
 		return state.withProperty(CLAMP, false).withProperty(UPPER, false);
-	}
-
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack item, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!player.worldObj.isRemote && player != null) {
-			ItemStack held = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(held) && held.getItem() == Item.getItemFromBlock(this)) {
-				BlockPos target = null;
-				for (int i = 1; i < 16; i++) {
-					BlockPos check = pos.up(i);
-					if (hitY < 0.5F) {
-						check = pos.down(i);
-					}
-					if (world.getBlockState(check).getBlock().isReplaceable(world, check)) {
-						target = check;
-						break;
-					}
-				}
-				if (target != null) {
-					EnumFacing face = DCState.getFace(state, DCState.FACING);
-					IBlockState set = this.getDefaultState().withProperty(DCState.FACING, face);
-					world.setBlockState(target, set, 3);
-					DCUtil.reduceAndDeleteStack(held, 1);
-					return true;
-
-				}
-			}
-		}
-		return true;
 	}
 
 	@Override
@@ -201,15 +200,17 @@ public class BlockMetalLadder extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
 		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	// 設置・破壊処理
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
-		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
 			state = state.withProperty(DCState.FACING, face);

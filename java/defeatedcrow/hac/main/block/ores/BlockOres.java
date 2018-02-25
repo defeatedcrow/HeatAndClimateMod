@@ -3,8 +3,11 @@ package defeatedcrow.hac.main.block.ores;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -122,7 +125,7 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	public enum DropTable {
-		GYPSUM(MainInit.gems, 1, 3, true),
+		GYPSUM(MainInit.gems, 2, 3, true),
 		HEMATITE(MainInit.oreDust, 1, 5, true),
 		CHAL_B(MainInit.gems, 1, 0, true),
 		SAPPIRE(MainInit.gems, 1, 4, true),
@@ -171,7 +174,8 @@ public class BlockOres extends DCSimpleBlock {
 
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+		List<ItemStack> list = Lists.newArrayList();
+		list.addAll(super.getDrops(world, pos, state, fortune));
 		int meta = this.getMetaFromState(state);
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
@@ -187,10 +191,11 @@ public class BlockOres extends DCSimpleBlock {
 			}
 		}
 
-		if (add != null) {
-			ret.add(add);
+		if (!DCUtil.isEmpty(add)) {
+			list.add(add);
 		}
-		return ret;
+
+		return list;
 	}
 
 	@Override
@@ -199,6 +204,6 @@ public class BlockOres extends DCSimpleBlock {
 		int meta = DCState.getInt(state, DCState.TYPE16);
 		if (meta >= 0)
 			return new ItemStack(this, 1, meta);
-		return getItem(world, pos, state);
+		return super.getPickBlock(state, target, world, pos, player);
 	}
 }

@@ -48,7 +48,8 @@ public class EntityProjSilver extends EntityProjBase {
 
 	@Override
 	protected DamageSource getHitSource(Entity target) {
-		return this.shootingEntity == null ? DamageSource.causeArrowDamage(this, this)
+		return this.shootingEntity == null
+				? DamageSource.causeArrowDamage(this, this)
 				: DamageSource.causeArrowDamage(this, this.shootingEntity);
 	}
 

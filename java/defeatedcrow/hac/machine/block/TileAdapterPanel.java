@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.base.DCTileEntity;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -48,9 +49,12 @@ public class TileAdapterPanel extends DCTileEntity {
 	}
 
 	TileEntity targetTile() {
-		if (pairPos != null && ((pos.getX() >> 4) == (pairPos.getX() >> 4))
-				&& ((pos.getZ() >> 4) == (pairPos.getZ() >> 4)))
-			return worldObj.getTileEntity(pairPos);
+		if (pairPos != null && worldObj.isBlockLoaded(pairPos)) {
+			int xrad = (pos.getX() >> 4) - (pairPos.getX() >> 4);
+			int zrad = (pos.getZ() >> 4) - (pairPos.getZ() >> 4);
+			if (xrad * xrad + zrad * zrad <= 25)
+				return worldObj.getTileEntity(pairPos);
+		}
 		return null;
 	}
 
@@ -82,12 +86,12 @@ public class TileAdapterPanel extends DCTileEntity {
 					boolean b = false;
 					for (int i = 0; i < target.getSlots(); i++) {
 						ItemStack item = target.extractItem(i, 1, true);
-						if (item != null && item.stackSize > 0) {
+						if (!DCUtil.isEmpty(item)) {
 							ItemStack ins = item.copy();
 							ins.stackSize = 1;
 							for (int j = 0; j < panelInv.getSlots(); j++) {
 								ItemStack ret = panelInv.insertItem(j, ins, false);
-								if (ret == null) {
+								if (DCUtil.isEmpty(ret)) {
 									target.extractItem(i, 1, false);
 									panel.targetTile().markDirty();
 									tile.markDirty();

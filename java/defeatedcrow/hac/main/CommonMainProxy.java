@@ -1,6 +1,5 @@
 package defeatedcrow.hac.main;
 
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileTeaPot;
@@ -16,9 +15,11 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
+import defeatedcrow.hac.machine.block.TileRollerCrusher;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.entity.EntityScooter;
+import defeatedcrow.hac.machine.gui.ContainerCrusher;
 import defeatedcrow.hac.machine.gui.ContainerDieselEngine;
 import defeatedcrow.hac.machine.gui.ContainerEntityScooter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
@@ -28,6 +29,7 @@ import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.machine.gui.ContainerSpinning;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
+import defeatedcrow.hac.machine.gui.GuiCrusher;
 import defeatedcrow.hac.machine.gui.GuiDieselEngine;
 import defeatedcrow.hac.machine.gui.GuiEntityScooter;
 import defeatedcrow.hac.machine.gui.GuiHopperFilter;
@@ -44,6 +46,7 @@ import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
+import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
@@ -63,13 +66,17 @@ import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.enchant.EnchantmentVenom;
+import defeatedcrow.hac.main.entity.EntityCrowBalloon;
+import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
+import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBolt;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
+import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import defeatedcrow.hac.main.event.AchievementEventDC;
@@ -77,7 +84,6 @@ import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.CombatEvent;
 import defeatedcrow.hac.main.event.DCLootEvent;
 import defeatedcrow.hac.main.event.LivingMainEventDC;
-import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
 import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
@@ -89,14 +95,14 @@ import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.util.DCRegistryUtil;
-import defeatedcrow.hac.main.worldgen.WorldGenAltOres2;
+import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
+import defeatedcrow.hac.main.worldgen.WorldGenOres3;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.stats.Achievement;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -104,7 +110,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -133,7 +138,6 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadEnchantment() {
-
 		MainInit.venom = new EnchantmentVenom();
 		ForgeRegistries.ENCHANTMENTS
 				.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
@@ -164,32 +168,31 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadEntity() {
-		EntityRegistry.registerModEntity(EntityCution.class, ClimateCore.PACKAGE_BASE + ".main.cution", 90,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityCution.class, "main", "cution");
 
-		EntityRegistry.registerModEntity(EntityFlowerPot.class, ClimateCore.PACKAGE_BASE + ".main.flowerpot", 92,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityIronBolt.class, "main", "bullet_bolt", 1);
 
-		EntityRegistry.registerModEntity(EntityIronBolt.class, ClimateCore.PACKAGE_BASE + ".main.bullet_bolt", 91,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityIronBullet.class, "main", "bullet_iron", 1);
 
-		EntityRegistry.registerModEntity(EntityIronBullet.class, ClimateCore.PACKAGE_BASE + ".main.bullet_iron", 93,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntitySilverBullet.class, "main", "bullet_silver", 1);
 
-		EntityRegistry.registerModEntity(EntitySilverBullet.class, ClimateCore.PACKAGE_BASE + ".main.bullet_silver", 94,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityShotgunBullet.class, "main", "bullet_shot", 1);
 
-		EntityRegistry.registerModEntity(EntityShotgunBullet.class, ClimateCore.PACKAGE_BASE + ".main.bullet_shotgun",
-				95, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityGhostBullet.class, "main", "bullet_ghost", 1);
 
-		EntityRegistry.registerModEntity(EntityGhostBullet.class, ClimateCore.PACKAGE_BASE + ".main.bullet_ghost", 96,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityDynamite.class, "main", "dynamite_red");
 
-		EntityRegistry.registerModEntity(EntityDynamite.class, ClimateCore.PACKAGE_BASE + ".main.dynamite_red", 98,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityDynamiteBlue.class, "main", "dynamite_blue");
 
-		EntityRegistry.registerModEntity(EntityDynamiteBlue.class, ClimateCore.PACKAGE_BASE + ".main.dynamite_blue", 99,
-				ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityLightBullet.class, "main", "bullet_light", 1);
+
+		DCRegistryUtil.addEntity(EntityExtinctionBullet.class, "main", "bullet_extinction", 1);
+
+		DCRegistryUtil.addEntity(EntityCrowBullet.class, "main", "bullet_balloon", 1);
+
+		DCRegistryUtil.addEntity(EntityCrowBalloon.class, "main", "balloon_crow");
+
+		DCRegistryUtil.addEntity(EntityFlowerPot.class, "main", "flowerpot");
 
 		FoodCommonProxy.loadEntity();
 		MachineCommonProxy.loadEntity();
@@ -210,6 +213,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane");
 		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		GameRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum");
+		GameRegistry.registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock");
 
 		FoodCommonProxy.loadTE();
 		MachineCommonProxy.loadTE();
@@ -218,16 +222,15 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadWorldGen() {
 		// gen
+		VeinTableRegister.INSTANCE.registerVeins();
 		WorldGenWindmill.initLoot();
-		GameRegistry.registerWorldGenerator(new WorldGenAltOres2(), 2);
+		GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
 		GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
 		GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
 
 	}
 
 	public void addSidedBlock(Block block, String name, int max) {}
-
-	public void addTBBlock(Block block, String name, int max) {}
 
 	public void addCropBlock(Block block, String name, int max) {}
 
@@ -245,7 +248,7 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new OnMiningEventDC());
 		MinecraftForge.EVENT_BUS.register(new OnDeathEventDC());
 		MinecraftForge.EVENT_BUS.register(new OnJumpEventDC());
-		MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
+		// MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
 		MinecraftForge.EVENT_BUS.register(new AchievementEventDC());
 		MinecraftForge.EVENT_BUS.register(new LivingMainEventDC());
 		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
@@ -296,6 +299,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerPortalManager((TilePortalManager) tile, player);
 		if (tile instanceof TileDieselEngine)
 			return new ContainerDieselEngine((TileDieselEngine) tile, player.inventory);
+		if (tile instanceof TileRollerCrusher)
+			return new ContainerCrusher((TileRollerCrusher) tile, player.inventory);
 		return null;
 	}
 
@@ -340,15 +345,13 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiPortalManager((TilePortalManager) tile, player);
 		if (tile instanceof TileDieselEngine)
 			return new GuiDieselEngine((TileDieselEngine) tile, player.inventory);
+		if (tile instanceof TileRollerCrusher)
+			return new GuiCrusher((TileRollerCrusher) tile, player.inventory);
 		return null;
 	}
 
 	public net.minecraft.client.model.ModelBiped getArmorModel(int slot) {
 		return null;
-	}
-
-	public boolean hasAchivement(EntityPlayer player, Achievement acv) {
-		return player != null && player.hasAchievement(acv);
 	}
 
 	public boolean isForwardKeyDown() {

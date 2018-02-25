@@ -1,6 +1,10 @@
 package defeatedcrow.hac.main.event;
 
+import java.util.Map;
+
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -8,11 +12,16 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 // 戦闘関連
@@ -55,6 +64,44 @@ public class CombatEvent {
 					living.addPotionEffect(eff);
 					DCLogger.infoLog("convat event : poison");
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onAttackEvent(LivingAttackEvent event) {
+		EntityLivingBase target = event.getEntityLiving();
+		DamageSource source = event.getSource();
+		if (target != null && source.getEntity() != null) {
+			if (source.getEntity() instanceof EntityTameable) {
+				EntityTameable living = (EntityTameable) source.getEntity();
+
+				Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
+				boolean amu = false;
+				if (!map.isEmpty()) {
+					for (ItemStack item : map.values()) {
+						if (item.getItem() == MagicInit.amulet && item.getItemDamage() == 4) {
+							amu = true;
+						}
+					}
+				}
+
+				if (amu && living.getOwner() instanceof EntityPlayer) {
+					DCLogger.infoLog("on amulet process");
+					target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) living.getOwner()),
+							event.getAmount());
+					event.setCanceled(true);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerAttackEvent(AttackEntityEvent event) {
+		EntityPlayer player = event.getEntityPlayer();
+		if (player != null && !player.worldObj.isRemote) {
+			if (DCUtil.hasItemInTopSlots(player, new ItemStack(MagicInit.pendant, 1, 19))) {
+				event.setCanceled(true);
 			}
 		}
 	}

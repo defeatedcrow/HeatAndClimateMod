@@ -26,9 +26,7 @@ public class ItemRepairPutty extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"putty",
-			"abrasive",
-			"soap"
+			"putty", "abrasive", "soap"
 	};
 
 	public ItemRepairPutty() {
@@ -57,7 +55,7 @@ public class ItemRepairPutty extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, World world, List<String> tooltip) {
 		if (stack != null) {
 			int m = stack.getItemDamage();
 			if (m == 0) {
@@ -71,9 +69,10 @@ public class ItemRepairPutty extends DCItem {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (player != null && stack != null && !DCUtil.isEmpty(stack) && stack.getItemDamage() == 2) {
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (player != null && !DCUtil.isEmpty(stack) && stack.getItemDamage() == 2) {
 			IBlockState state = world.getBlockState(pos);
 			if (state != null && state.getBlock() instanceof BlockColored) {
 				if (!world.isRemote) {
@@ -92,7 +91,7 @@ public class ItemRepairPutty extends DCItem {
 	}
 
 	@Override
-	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target,
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target,
 			EnumHand hand) {
 		if (target != null && target instanceof EntitySheep) {
 			EntitySheep entitysheep = (EntitySheep) target;

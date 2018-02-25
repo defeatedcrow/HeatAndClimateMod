@@ -43,7 +43,10 @@ public class ItemGems extends DCItem {
 	 * 15: ルチル
 	 * 16: ボーキサイト
 	 * 17: ビスマス,
-	 * 18: アパタイト
+	 * 18: アパタイト,
+	 * 19: 翡翠
+	 * 20: 月長石
+	 * 21: リシア輝石
 	 */
 	private static String[] names = {
 			"chal_blue",
@@ -64,7 +67,10 @@ public class ItemGems extends DCItem {
 			"rutile",
 			"bauxite",
 			"bismuth",
-			"apatite"
+			"apatite",
+			"jadeite",
+			"moonstone",
+			"kunzite"
 	};
 
 	public ItemGems(int max) {
@@ -94,8 +100,8 @@ public class ItemGems extends DCItem {
 	/* gemぶっぱ */
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		return EnumActionResult.FAIL;
 	}
 
@@ -108,7 +114,7 @@ public class ItemGems extends DCItem {
 			int i = this.getMaxItemUseDuration(stack) - timeLeft;
 			flag = i > 15;
 
-			if (stack != null && flag) {
+			if (!DCUtil.isEmpty(stack) && flag) {
 				if (!world.isRemote) {
 					EntityProjWhiteSpit entityarrow = new EntityProjWhiteSpit(world, living);
 					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
@@ -120,7 +126,7 @@ public class ItemGems extends DCItem {
 						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
-					DCUtil.reduceAndDeleteStack(stack, 1);
+					DCUtil.reduceStackSize(stack, 1);
 				}
 
 				player.addStat(StatList.getObjectUseStats(this));
@@ -130,8 +136,9 @@ public class ItemGems extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
+		ItemStack stack = player.getHeldItem(hand);
 		if (ModuleConfig.magic && !DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)
 			return playerHasCharm(player)
 					? new ActionResult(EnumActionResult.SUCCESS, stack)
@@ -146,7 +153,7 @@ public class ItemGems extends DCItem {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		if (stack != null && stack.getItem() == this && stack.getItemDamage() == 2)
+		if (!DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)
 			return EnumAction.BOW;
 		return EnumAction.NONE;
 	}

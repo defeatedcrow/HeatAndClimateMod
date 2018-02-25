@@ -1,0 +1,7 @@
+{
+    "parent": "dcs_climate:block/build/dcs_chair_base",
+    "textures": {
+        "top": "dcs_climate:blocks/build/sofa_red_side",
+        "base": "blocks/planks_oak"
+    }
+}

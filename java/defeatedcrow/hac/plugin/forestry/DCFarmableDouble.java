@@ -34,7 +34,7 @@ public class DCFarmableDouble implements IFarmable {
 	@Override
 	public boolean isGermling(ItemStack item) {
 		ItemStack seed = crop.getSeedItem(crop.getDefaultState());
-		if (item != null && item.getItem() != null)
+		if (!DCUtil.isEmpty(item))
 			return DCUtil.isSameItem(seed, item, false);
 		return false;
 	}

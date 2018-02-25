@@ -18,7 +18,6 @@ public class GuiNormalChamber extends GuiContainer {
 	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
 			"textures/gui/chamber_main_gui.png");
 	private static final ResourceLocation iconTex = new ResourceLocation("dcs_climate", "textures/gui/gui_icons.png");
-
 	/** The player inventory bound to this GUI. */
 	private final InventoryPlayer playerInventory;
 	private final TileChamberBase chamber;
@@ -39,6 +38,7 @@ public class GuiNormalChamber extends GuiContainer {
 
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		this.drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 
 		List<String> list = new ArrayList<String>();
@@ -81,9 +81,9 @@ public class GuiNormalChamber extends GuiContainer {
 		// airflow data
 		this.mc.getTextureManager().bindTexture(iconTex);
 		if (chamber.isSuitableClimate()) {
-			this.drawTexturedModalRect(i - 20, j + 4, 48, 0, 20, 20);
+			this.drawTexturedModalRect(i - 20, j + 4, 48, 40, 20, 20);
 		} else {
-			this.drawTexturedModalRect(i - 20, j + 4, 48, 20, 20, 20);
+			this.drawTexturedModalRect(i - 20, j + 4, 48, 60, 20, 20);
 		}
 	}
 

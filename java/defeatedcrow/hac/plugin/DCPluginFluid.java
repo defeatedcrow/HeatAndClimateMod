@@ -119,7 +119,7 @@ public class DCPluginFluid {
 		Fluid f16 = FluidRegistry.getFluid("seed.oil");
 		registerPotion(f16, MobEffects.HASTE);
 		if (f16 != null) {
-			FluidDictionaryDC.registerFluidDic(f16, "plantoil");
+			FluidDictionaryDC.registerFluidDic(f16, "plant_oil");
 		}
 
 		Fluid f17 = FluidRegistry.getFluid("for.honey");
@@ -128,7 +128,7 @@ public class DCPluginFluid {
 		Fluid f18 = FluidRegistry.getFluid("bio.ethanol");
 		registerPotion(f18, MobEffects.BLINDNESS);
 		if (f18 != null) {
-			FluidDictionaryDC.registerFluidDic(f18, "fueloil");
+			FluidDictionaryDC.registerFluidDic(f18, "ethanol");
 		}
 
 		Fluid f33 = FluidRegistry.getFluid("biomass");
@@ -169,7 +169,7 @@ public class DCPluginFluid {
 		Fluid f25 = FluidRegistry.getFluid("chlorine");
 		registerPotion(f25, MobEffects.LEVITATION);
 
-		Fluid f26 = FluidRegistry.getFluid("sulfurdioxidegas");
+		Fluid f26 = FluidRegistry.getFluid("sulfurdioxide");
 		registerPotion(f26, MobEffects.WEAKNESS);
 		if (f26 != null) {
 			Block b26 = f26.getBlock();
@@ -178,7 +178,7 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f27 = FluidRegistry.getFluid("sulfurtrioxidegas");
+		Fluid f27 = FluidRegistry.getFluid("sulfurtrioxide");
 		registerPotion(f27, MobEffects.WITHER);
 		if (f27 != null) {
 			Block b27 = f27.getBlock();
@@ -193,7 +193,7 @@ public class DCPluginFluid {
 		Fluid f29 = FluidRegistry.getFluid("lithium");
 		registerPotion(f29, MobEffects.INSTANT_DAMAGE);
 
-		Fluid f30 = FluidRegistry.getFluid("fusionfueldt");
+		Fluid f30 = FluidRegistry.getFluid("fusionfuel");
 		registerPotion(f30, MobEffects.INVISIBILITY);
 
 		Fluid f31 = FluidRegistry.getFluid("sulfuricacid");
@@ -206,7 +206,7 @@ public class DCPluginFluid {
 		}
 
 		Fluid f32 = FluidRegistry.getFluid("steam");
-		registerPotion(f32, MobEffects.MINING_FATIGUE);
+		registerPotion(f32, DCInit.prevFreeze);
 		if (f32 != null) {
 			Block b32 = f32.getBlock();
 			if (b32 != null) {
@@ -220,7 +220,7 @@ public class DCPluginFluid {
 		Fluid f36 = FluidRegistry.getFluid("creosote");
 		registerPotion(f36, MobEffects.NAUSEA);
 
-		Fluid f37 = FluidRegistry.getFluid("oxigen");
+		Fluid f37 = FluidRegistry.getFluid("oxygen");
 		registerPotion(f37, MobEffects.WATER_BREATHING);
 
 		Fluid f38 = FluidRegistry.getFluid("dcs.hydrogen");
@@ -244,26 +244,30 @@ public class DCPluginFluid {
 		Fluid f44 = FluidRegistry.getFluid("dcs.nitrogen");
 		registerPotion(f44, DCInit.prevFreeze);
 
+		Fluid f45 = FluidRegistry.getFluid("dcs.ethanol");
+		registerPotion(f45, MobEffects.HASTE);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
 		MainAPIManager.fuelRegister.registerFuel("bio.ethanol", 100);
 		MainAPIManager.fuelRegister.registerFuel("biomass", 60);
-		MainAPIManager.fuelRegister.registerFuel("fusionfueldt", 120);
-		MainAPIManager.fuelRegister.registerFuel("ethene", 100);
+		MainAPIManager.fuelRegister.registerFuel("ethene", 120);
 		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
 
-		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 120);
-		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 150);
+		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 150);
+		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 120);
+		MainAPIManager.fuelRegister.registerFuel("dcs.ethanol", 60);
 
 		// dic
 		FluidDictionaryDC.registerFluidDic(MachineInit.hydrogen, "hydrogen");
 		FluidDictionaryDC.registerFluidDic(MachineInit.nitricAcid, "nitricacid");
 		FluidDictionaryDC.registerFluidDic(MachineInit.sulfuricAcid, "sulfuricacid");
 		FluidDictionaryDC.registerFluidDic(MachineInit.ammonia, "ammonia");
-		FluidDictionaryDC.registerFluidDic(MachineInit.fuelOil, "fueloil");
-		FluidDictionaryDC.registerFluidDic(FoodInit.oil, "plantoil");
+		FluidDictionaryDC.registerFluidDic(MachineInit.fuelOil, "fuel_oil");
+		FluidDictionaryDC.registerFluidDic(FoodInit.oil, "plant_oil");
 		FluidDictionaryDC.registerFluidDic(MachineInit.nitrogen, "nitrogen");
+		FluidDictionaryDC.registerFluidDic(MachineInit.ethanol, "ethanol");
 	}
 
 	public static void registerPotion(Fluid f, Potion p) {

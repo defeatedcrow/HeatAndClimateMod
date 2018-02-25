@@ -164,7 +164,6 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	protected int[] slotsBottom() {
 		return new int[] {
-				0,
 				1,
 				2,
 				3
@@ -173,6 +172,7 @@ public abstract class TileChamberBase extends ClimateReceiverLockable implements
 
 	protected int[] slotsSides() {
 		return new int[] {
+				0,
 				1,
 				2,
 				3

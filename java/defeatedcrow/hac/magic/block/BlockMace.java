@@ -3,7 +3,7 @@ package defeatedcrow.hac.magic.block;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
@@ -13,7 +13,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -48,8 +47,8 @@ public abstract class BlockMace extends DCTileBlock {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			world.setBlockToAir(pos);
 		}
@@ -102,12 +101,14 @@ public abstract class BlockMace extends DCTileBlock {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
 		ItemStack stack = new ItemStack(this, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("dcs.mace.energy", 640);
 		stack.setTagCompound(tag);
 		list.add(stack);
+		return list;
 	}
 
 	// particleのON/OFF

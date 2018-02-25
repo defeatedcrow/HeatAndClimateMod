@@ -1,5 +1,6 @@
 package defeatedcrow.hac.plugin.cofh;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
@@ -15,6 +16,7 @@ public class DCRecipeCoFH {
 	static void loadFuels() {
 		addCompressionFuel(MachineInit.fuelOil.getName(), 800000);
 		addCompressionFuel(MachineInit.fuelGas.getName(), 1000000);
+		addCompressionFuel(MachineInit.ethanol.getName(), 200000);
 		addCompressionFuel(FoodInit.blackLiquor.getName(), 100000);
 		addCompressionFuel(FoodInit.oil.getName(), 200000);
 	}
@@ -78,7 +80,7 @@ public class DCRecipeCoFH {
 	}
 
 	private static void addCrucibleRecipe(int energy, ItemStack input, FluidStack output) {
-		if (input != null && output != null) {
+		if (!DCUtil.isEmpty(input) && output != null) {
 
 			NBTTagCompound toSend = new NBTTagCompound();
 
@@ -102,7 +104,7 @@ public class DCRecipeCoFH {
 			toSend.setTag("input", new NBTTagCompound());
 			toSend.setTag("output", new NBTTagCompound());
 
-			if (outputItem != null) {
+			if (!DCUtil.isEmpty(outputItem)) {
 				toSend.setTag("secondaryOutput", new NBTTagCompound());
 				outputItem.writeToNBT(toSend.getCompoundTag("secondaryOutput"));
 			}
@@ -124,7 +126,7 @@ public class DCRecipeCoFH {
 		input.writeToNBT(toSend.getCompoundTag("input"));
 		out.writeToNBT(toSend.getCompoundTag("primaryOutput"));
 
-		if (sec != null) {
+		if (!DCUtil.isEmpty(sec)) {
 			toSend.setTag("secondaryOutput", new NBTTagCompound());
 			sec.writeToNBT(toSend.getCompoundTag("secondaryOutput"));
 			toSend.setInteger("secondaryChance", chance);

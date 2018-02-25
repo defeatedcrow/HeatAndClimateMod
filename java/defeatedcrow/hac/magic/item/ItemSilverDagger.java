@@ -2,6 +2,12 @@ package defeatedcrow.hac.magic.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.proj.EntityProjSilver;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -18,9 +24,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
-import defeatedcrow.hac.magic.proj.EntityProjSilver;
 
 public class ItemSilverDagger extends DCItem {
 
@@ -32,8 +35,8 @@ public class ItemSilverDagger extends DCItem {
 	/* 雪玉に似た動作をする */
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		return EnumActionResult.FAIL;
 	}
 
@@ -45,7 +48,7 @@ public class ItemSilverDagger extends DCItem {
 
 			// int i = this.getMaxItemUseDuration(stack) - timeLeft;
 
-			if (stack != null || flag) {
+			if (!DCUtil.isEmpty(stack) || flag) {
 				if (!world.isRemote) {
 					EntityProjSilver entityarrow = new EntityProjSilver(world, living);
 					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
@@ -57,11 +60,7 @@ public class ItemSilverDagger extends DCItem {
 						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
-					--stack.stackSize;
-
-					if (stack.stackSize == 0) {
-						player.inventory.deleteStack(stack);
-					}
+					DCUtil.reduceStackSize(stack, 1);
 				}
 
 				player.addStat(StatList.getObjectUseStats(this));
@@ -71,9 +70,9 @@ public class ItemSilverDagger extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
-		return new ActionResult(EnumActionResult.SUCCESS, stack);
+		return new ActionResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
 
 	@Override
@@ -104,7 +103,7 @@ public class ItemSilverDagger extends DCItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "DISPOSABLE");
 	}
 

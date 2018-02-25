@@ -36,7 +36,7 @@ public class ItemArmorHoodie extends ItemArmor implements ITexturePath {
 	@SideOnly(Side.CLIENT)
 	public net.minecraft.client.model.ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack,
 			EntityEquipmentSlot armorSlot, net.minecraft.client.model.ModelBiped _default) {
-		net.minecraft.client.model.ModelBiped next = ClimateMain.proxy.getArmorModel(armorSlot.getIndex());
+		net.minecraft.client.model.ModelBiped next = ClimateMain.proxy.getArmorModel(1);
 		if (next != null) {
 			next.setModelAttributes(_default);
 			return next;

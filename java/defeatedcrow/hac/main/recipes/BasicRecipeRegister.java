@@ -27,39 +27,21 @@ public class BasicRecipeRegister {
 	static void loadAnotherRecipes(RecipeResourcesMain res) {
 		// 火打ち石のアナザー
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
-				new ItemStack(MainInit.ores, 1, 4),
-				"gemChalcedony"
+				new ItemStack(MainInit.ores, 1, 4), "gemChalcedony"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
-				new ItemStack(MainInit.ores, 1, 4),
-				new ItemStack(Items.FLINT)
+				new ItemStack(MainInit.ores, 1, 4), new ItemStack(Items.FLINT)
 		});
 
 		// 矢
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Items.ARROW, 8, 0), new Object[] {
-				"X",
-				"Y",
-				"Z",
-				'X',
-				"gemChalcedony",
-				'Y',
-				"stickWood",
-				'Z',
-				"feather"
+				"X", "Y", "Z", 'X', "gemChalcedony", 'Y', "stickWood", 'Z', "feather"
 		});
 
 		// ブレイズロッド救済用
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Items.BLAZE_ROD, 1, 0), new Object[] {
-				"XXX",
-				"YYY",
-				"ZZZ",
-				'X',
-				"dustCrystal",
-				'Y',
-				"dustBlaze",
-				'Z',
-				"dustSulfur"
+				"XXX", "YYY", "ZZZ", 'X', "dustCrystal", 'Y', "dustBlaze", 'Z', "dustSulfur"
 		});
 
 		// 変換
@@ -72,105 +54,60 @@ public class BasicRecipeRegister {
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.GLASS, 8, 0), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				new ItemStack(Blocks.STAINED_GLASS, 1, 32767),
-				'Y',
+				"XXX", "XYX", "XXX", 'X', new ItemStack(Blocks.STAINED_GLASS, 1, 32767), 'Y',
 				new ItemStack(MainInit.repairPutty, 1, 2)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.STAINED_HARDENED_CLAY, 8, 0), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 32767),
-				'Y',
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.HARDENED_CLAY, 8, 0), new Object[] {
+				"XXX", "XYX", "XXX", 'X', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 32767), 'Y',
 				new ItemStack(MainInit.repairPutty, 1, 2)
 		});
 
 		for (int i = 0; i < 16; i++) {
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.STAINED_HARDENED_CLAY, 8, i),
 					new Object[] {
-							"XXX",
-							"XYX",
-							"XXX",
-							'X',
-							new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 0),
-							'Y',
+							"XXX", "XYX", "XXX", 'X', new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, 0), 'Y',
 							MainUtil.DYES[i]
 					});
 		}
 
-		// ウール
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 1, 0), new Object[] {
-				"XXX",
-				"XXX",
-				"XXX",
-				'X',
-				"dustChrysotile"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 1, 0), new Object[] {
-				"XXX",
-				"XXX",
-				"XXX",
-				'X',
-				"cropCotton"
-		});
-
 		// 土
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.DIRT, 1, 0), new Object[] {
-				new ItemStack(Blocks.SAND, 1, 32767),
-				new ItemStack(Items.DYE, 1, 15),
-				"dustAsh",
-				"dustPresscake",
+				new ItemStack(Blocks.SAND, 1, 32767), new ItemStack(Items.DYE, 1, 15), "dustAsh", "dustPresscake",
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.DIRT, 1, 0), new Object[] {
+				new ItemStack(Blocks.SAND, 1, 32767), new ItemStack(Items.DYE, 1, 15), "dustAsh", "dustPlant",
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.MYCELIUM, 1, 0), new Object[] {
+				new ItemStack(Blocks.DIRT, 1, 0), "dustBlan",
+		});
+
+		// ウール
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 1, 0), new Object[] {
+				"XXX", "XXX", "XXX", 'X', "dustChrysotile"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 1, 0), new Object[] {
+				"XXX", "XXX", "XXX", 'X', "cropCotton"
 		});
 
 		// アルミ関連
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Items.BUCKET, 1, 0), new Object[] {
-				"X X",
-				" X ",
-				'X',
-				"ingotAluminium"
+				"X X", " X ", 'X', "ingotAluminium"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.PISTON, 1, 0), new Object[] {
-				"XXX",
-				"YZY",
-				"YWY",
-				'X',
-				"plankWood",
-				'Y',
-				"cobblestone",
-				'Z',
-				"ingotAluminium",
-				'W',
-				"dustRedstone"
+				"XXX", "YZY", "YWY", 'X', "plankWood", 'Y', "cobblestone", 'Z', "ingotAluminium", 'W', "dustRedstone"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.HOPPER, 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				" X ",
-				'X',
-				"ingotAluminium",
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
+				"X X", "XYX", " X ", 'X', "ingotAluminium", 'Y', new ItemStack(Blocks.CHEST, 1, 0)
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.TRIPWIRE_HOOK, 1, 0), new Object[] {
-				"X",
-				"Y",
-				"Z",
-				'X',
-				"ingotAluminium",
-				'Y',
-				"stickWood",
-				'Z',
-				"plankWood"
+				"X", "Y", "Z", 'X', "ingotAluminium", 'Y', "stickWood", 'Z', "plankWood"
 		});
 	}
 }

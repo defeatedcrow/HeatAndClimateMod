@@ -16,18 +16,21 @@ public class AnvilMoldEvent {
 
 	@SubscribeEvent
 	public void onAnvilUpdate(AnvilUpdateEvent event) {
+
 		ItemStack left = event.getLeft();
 		ItemStack right = event.getRight();
 		ItemStack ret = event.getOutput();
 		/* Moldのレシピ登録 */
 		if (!DCUtil.isEmpty(right)) {
-
+			// DCLogger.infoLog("anvil event");
 			if (right.getItem() instanceof IPressMold && DCUtil.isEmpty(ret)) {
+				// DCLogger.infoLog("anvil event2");
 				IPressMold mold = (IPressMold) right.copy().getItem();
 				if (DCUtil.isEmpty(mold.getOutput(right))) {
-					// DCLogger.debugLog("anvil event cycle");
+					// DCLogger.infoLog("anvil event3");
 					ItemStack next = mold.setOutput(right, left, 0);
 					if (!DCUtil.isEmpty(next)) {
+						// DCLogger.infoLog("anvil event4");
 						event.setOutput(next);
 						event.setCost(1);
 						event.setMaterialCost(1);

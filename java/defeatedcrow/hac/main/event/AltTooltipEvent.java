@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.event;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
@@ -69,9 +70,13 @@ public class AltTooltipEvent {
 
 					// tool tier
 					if (tI instanceof ItemTool) {
-						int tier = ((ItemTool) tI).getToolMaterial().getHarvestLevel();
-						String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
-						event.getToolTip().add(ret);
+						Set<String> classes = tI.getToolClasses(target);
+						if (!classes.isEmpty()) {
+							String className = classes.iterator().next();
+							int tier = ((ItemTool) tI).getHarvestLevel(target, className, player, null);
+							String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
+							event.getToolTip().add(ret);
+						}
 					}
 
 					// climate reg
@@ -97,7 +102,7 @@ public class AltTooltipEvent {
 							String fName = f.getFluid().getName();
 							int temp = f.getFluid().getTemperature();
 							event.getToolTip().add(fName);
-							event.getToolTip().add("Temp: " + temp + "K");
+							event.getToolTip().add("Temp: " + temp);
 						}
 					}
 				}

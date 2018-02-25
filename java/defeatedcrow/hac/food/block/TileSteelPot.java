@@ -16,7 +16,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -113,7 +112,7 @@ public class TileSteelPot extends TileFluidProcessorBase {
 		if (currentRecipe != null) {
 			ItemStack out = currentRecipe.getOutput();
 			ItemStack sec = currentRecipe.getSecondary();
-			float chance = MathHelper.ceiling_float_int(currentRecipe.getSecondaryChance() * 100);
+			float chance = currentRecipe.getSecondaryChance() * 100;
 			FluidStack inF = currentRecipe.getInputFluid();
 			FluidStack outF = currentRecipe.getOutputFluid();
 
@@ -167,11 +166,11 @@ public class TileSteelPot extends TileFluidProcessorBase {
 				outputT.fill(outF, true);
 			}
 
-			if (out != null) {
+			if (!DCUtil.isEmpty(out)) {
 				this.insertResult(out, 7, 9);
 			}
 
-			if (sec != null && worldObj.rand.nextInt(100) < chance) {
+			if (!DCUtil.isEmpty(sec) && worldObj.rand.nextInt(100) < chance) {
 				this.insertResult(sec, 7, 9);
 			}
 
@@ -188,7 +187,7 @@ public class TileSteelPot extends TileFluidProcessorBase {
 	}
 
 	@Override
-	public String notSuitableMassage() {
+	public String climateSuitableMassage() {
 		if (current == null)
 			return "dcs.gui.message.nullclimate";
 		else

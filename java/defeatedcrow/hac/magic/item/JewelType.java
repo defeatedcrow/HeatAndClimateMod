@@ -18,7 +18,10 @@ public enum JewelType {
 	OLIVINE("olivine", "olivine"),
 	ELESTIAL("elestial", "elestial"),
 	RUTILE("rutile", "rutile"),
-	BISMUTH("bismuth", "bismuth");
+	BISMUTH("bismuth", "bismuth"),
+	JADEITE("jadeite", "jadeite"),
+	MOONSTONE("moonstone", "moonstone"),
+	KUNZITE("kunzite", "kunzite");
 
 	private final String name;
 	private final String tex;

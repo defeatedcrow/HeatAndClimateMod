@@ -3,15 +3,17 @@ package defeatedcrow.hac.machine.item.plating;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.item.IPlatingTool;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -48,7 +50,7 @@ public abstract class ItemPlatingBase extends DCItem implements IPlatingTool {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		if (!DCUtil.isEmpty(stack)) {
 			int meta = stack.getItemDamage();
 			if (getEnchantments(meta) != null && getEnchantments(meta).length > 0) {

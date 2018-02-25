@@ -3,6 +3,7 @@ package defeatedcrow.hac.machine.client;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.core.client.base.DCTorqueTESRBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.TileConveyor;
 import defeatedcrow.hac.machine.client.model.ModelConveyor;
 import net.minecraft.client.Minecraft;
@@ -54,14 +55,13 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 			face = tile.getBaseSide();
 		}
 		moveF = fF;
-		moveB = fB;
-		moveB += 8.0F;
+		moveB = 8.0F + fB;
 		float rot = 0F;
 		if (face == EnumFacing.SOUTH || face == EnumFacing.NORTH) {
 			rot = 90F;
 		}
 
-		if (in != null) {
+		if (!DCUtil.isEmpty(in)) {
 
 			float offX = face.getFrontOffsetX() * moveF * 0.0625F;
 			float offZ = face.getFrontOffsetZ() * moveF * 0.0625F;
@@ -81,7 +81,7 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 			GlStateManager.popMatrix();
 		}
 
-		if (out != null) {
+		if (!DCUtil.isEmpty(out)) {
 
 			float offX = face.getFrontOffsetX() * moveB * 0.0625F;
 			float offZ = face.getFrontOffsetZ() * moveB * 0.0625F;

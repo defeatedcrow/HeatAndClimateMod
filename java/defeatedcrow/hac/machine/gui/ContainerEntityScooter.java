@@ -1,7 +1,7 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.entity.EntityScooter;
-import defeatedcrow.hac.main.client.gui.SlotDCTile;
 import defeatedcrow.hac.main.client.gui.SlotInvalid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -24,8 +24,9 @@ public class ContainerEntityScooter extends Container {
 		entity = entityIn;
 		this.player = playerIn.inventory;
 
-		this.addSlotToContainer(new SlotDCTile(entity, 0, 19, 16));
+		this.addSlotToContainer(new Slot(entity, 0, 19, 16));
 		this.addSlotToContainer(new SlotInvalid(entity, 1, 19, 52));
+		// this.addSlotToContainer(new SlotDisplay(entity, 2, 19, 70));
 
 		for (int c = 0; c < 6; ++c) {
 			this.addSlotToContainer(new Slot(entity, c + 3, 61 + c * 18, 16));
@@ -98,9 +99,7 @@ public class ContainerEntityScooter extends Container {
 					return null;
 			}
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 

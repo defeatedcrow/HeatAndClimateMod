@@ -16,7 +16,7 @@ import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
-import defeatedcrow.hac.main.api.ISideTankChecker;
+import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,15 +38,13 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileDieselEngine extends TileTorqueBase
-		implements ITorqueProvider, ITorqueReceiver, ITagGetter, IInventory, ISideTankChecker {
+		implements ITorqueProvider, ITorqueReceiver, ITagGetter, IInventory, ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
 	protected int currentBurnTime = 0;
 	protected int maxBurnTime = 1;
 	protected int currentClimate = DCHeatTier.NORMAL.getID();
-
-	private int lastInT = 0;
 
 	@Override
 	public float maxTorque() {
@@ -124,8 +122,7 @@ public class TileDieselEngine extends TileTorqueBase
 	/* 燃焼判定 */
 
 	public static int getBurnTime(Fluid fluid) {
-		String s = fluid.getName();
-		int burn = MainAPIManager.fuelRegister.getBurningTime(s);
+		int burn = MainAPIManager.fuelRegister.getBurningTime(fluid);
 		return burn;
 	}
 
@@ -142,7 +139,7 @@ public class TileDieselEngine extends TileTorqueBase
 			}
 
 			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISideTankChecker)
+			if (tile != null && !(tile instanceof ISidedTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
@@ -163,24 +160,6 @@ public class TileDieselEngine extends TileTorqueBase
 				}
 			}
 		}
-
-		// boolean flag = false;
-		// if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
-		// flag = true;
-		// lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
-		// }
-		//
-		// if (flag) {
-		// if (!this.hasWorldObj())
-		// return;
-		// @SuppressWarnings("unchecked")
-		// List<EntityPlayer> list = this.getWorld().playerEntities;
-		// for (EntityPlayer player : list) {
-		// if (player instanceof EntityPlayerMP) {
-		// ((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-		// }
-		// }
-		// }
 	}
 
 	@Override

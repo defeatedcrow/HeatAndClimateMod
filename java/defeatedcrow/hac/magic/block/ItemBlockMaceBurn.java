@@ -2,6 +2,8 @@ package defeatedcrow.hac.magic.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -10,7 +12,7 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.main.achievement.AcvHelper;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -40,8 +42,8 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 
 	@Override
 	protected void doUsingEffect(ItemStack stack, EntityPlayer player, World world) {
-		if (stack != null && player != null) {
-			boolean hasAcv = AcvHelper.hasMagicMaster(player);
+		if (!DCUtil.isEmpty(stack) && player != null) {
+			boolean hasAcv = true;
 			boolean flag = player.capabilities.isCreativeMode;
 
 			if (hasAcv || flag) {
@@ -73,14 +75,14 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 						IClimateSmelting recipe = RecipeAPI.registerSmelting.getRecipe(clm, target);
 						if (recipe != null) {
 							ItemStack ret = recipe.getOutput();
-							if (ret != null) {
+							if (!DCUtil.isEmpty(ret)) {
 								EntityItem drop = new EntityItem(world, p1.getX() + 0.5D, p1.getY() + 0.5D,
 										p1.getZ() + 0.5D, ret);
 								if (ret.getItem() instanceof ItemBlock) {
 									Block put = ((ItemBlock) ret.getItem()).getBlock();
 									IBlockState next = put.getStateFromMeta(ret.getItemDamage());
 									world.setBlockState(p1, next);
-									world.notifyBlockOfStateChange(p1, put);
+									world.notifyNeighborsOfStateChange(p1, put);
 								} else {
 									world.setBlockToAir(p1);
 									drop.motionY = 0.025D;
@@ -94,14 +96,14 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 							}
 						} else {
 							ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(target);
-							if (burnt != null) {
+							if (!DCUtil.isEmpty(burnt)) {
 								EntityItem drop2 = new EntityItem(world, p1.getX() + 0.5D, p1.getY() + 0.5D,
 										p1.getZ() + 0.5D, new ItemStack(burnt.getItem(), 1, burnt.getItemDamage()));
 								if (burnt.getItem() instanceof ItemBlock) {
 									Block put = ((ItemBlock) burnt.getItem()).getBlock();
 									IBlockState next = put.getStateFromMeta(burnt.getItemDamage());
 									world.setBlockState(p1, next);
-									world.notifyBlockOfStateChange(p1, put);
+									world.notifyNeighborsOfStateChange(p1, put);
 								} else {
 									world.setBlockToAir(p1);
 									drop2.motionY = 0.025D;
@@ -133,8 +135,8 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		super.addInformation(stack, player, tooltip, advanced);
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
+		super.addInformation2(stack, world, tooltip);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Require high temperature");
 		}

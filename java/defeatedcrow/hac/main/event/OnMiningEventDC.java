@@ -35,13 +35,14 @@ public class OnMiningEventDC {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = event.getEntityPlayer().inventory.getStackInSlot(i);
-				if (!DCUtil.isEmpty(check) && check.getItem() != null && check.getItem() == MagicInit.pendant) {
+				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
 					int m = check.getMetadata();
 					if (m == 9) {
 						hasCharm = true;
 					}
 				}
 			}
+
 			if (hasCharm) {
 				event.setNewSpeed(event.getNewSpeed() * 1.2F + 2.0F);
 				event.setCanceled(false);
@@ -57,7 +58,6 @@ public class OnMiningEventDC {
 			int level = event.getFortuneLevel() + 1;
 			if (state == null || DCUtil.isEmpty(held))
 				return;
-
 			float f = event.getWorld().rand.nextFloat();
 			if (state.getBlock() instanceof BlockBush
 					&& (held.getItem() instanceof ItemShears || held.getItem() instanceof ItemSword)) {
@@ -75,7 +75,7 @@ public class OnMiningEventDC {
 		EntityPlayer player = event.getEntityPlayer();
 		BlockPos pos = event.getPos();
 		ItemStack stack = event.getItemStack();
-		if (player != null && stack != null) {
+		if (player != null && !DCUtil.isEmpty(stack)) {
 			if (stack.getItem() instanceof ItemScytheDC) {
 				if (!player.worldObj.isRemote) {
 					boolean b = false;
@@ -103,8 +103,8 @@ public class OnMiningEventDC {
 
 			} else if (player.isSneaking() && stack.getItem() instanceof ItemPickaxe) {
 				ItemPickaxe pic = (ItemPickaxe) stack.getItem();
-				if (pos.getY() > 1 && pic.getToolMaterial().getHarvestLevel() >= 4) {
-					IBlockState state = event.getWorld().getBlockState(pos);
+				IBlockState state = event.getWorld().getBlockState(pos);
+				if (pos.getY() > 1 && pic.getHarvestLevel(stack, "pickaxe", player, state) >= 4) {
 					if (state != null && state.getBlock() == Blocks.BEDROCK) {
 						ItemStack item = new ItemStack(Blocks.BEDROCK);
 						EntityItem drop = new EntityItem(event.getWorld(), pos.getX() + 0.5D, pos.getY() + 0.5D,

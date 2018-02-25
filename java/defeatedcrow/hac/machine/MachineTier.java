@@ -1,15 +1,11 @@
 package defeatedcrow.hac.machine;
 
-import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.entity.player.EntityPlayer;
 
 public enum MachineTier {
-	Tier1(
-			1),
-	Tier2(
-			2),
-	Tier3(
-			3);
+	Tier1(1),
+	Tier2(2),
+	Tier3(3);
 
 	private final int id;
 
@@ -35,7 +31,7 @@ public enum MachineTier {
 			return false;
 		}
 		if (i > 2) {
-			return AcvHelper.hasMachineMaster(player);
+			return true;
 		} else {
 			return true;
 		}

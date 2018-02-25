@@ -3,10 +3,11 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.core.util.DCPotion;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
 import defeatedcrow.hac.food.entity.MuttonStickEntity;
@@ -16,6 +17,7 @@ import defeatedcrow.hac.food.entity.YakitoriStickEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
@@ -138,14 +140,14 @@ public class StickFoodsItem extends FoodItemBase {
 	public List<PotionEffect> getPotionEffect(int meta) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if ((meta & 1) == 0) {
-			ret.add(new PotionEffect(DCPotion.hunger, 300, 0));
+			ret.add(new PotionEffect(MobEffects.HUNGER, 300, 0));
 		}
 		return ret;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

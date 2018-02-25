@@ -32,9 +32,8 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 			if (!nbt2.hasKey("Empty")) {
 				FluidStack fluid = FluidStack.loadFluidStackFromNBT(nbt2);
 				return fluid;
-			} else {
+			} else
 				return null;
-			}
 		}
 		return null;
 	}
@@ -58,14 +57,14 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
 		return new FluidTankProperties[] {
-				new FluidTankProperties(getFluid(), capacity) };
+				new FluidTankProperties(getFluid(), capacity)
+		};
 	}
 
 	@Override
 	public int fill(FluidStack resource, boolean doFill) {
-		if (container.stackSize != 1 || resource == null || resource.amount <= 0 || !canFillFluidType(resource)) {
+		if (container.stackSize != 1 || resource == null || resource.amount <= 0 || !canFillFluidType(resource))
 			return 0;
-		}
 
 		FluidStack contained = getFluid();
 		if (contained == null) {
@@ -96,23 +95,19 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 
 	@Override
 	public FluidStack drain(FluidStack resource, boolean doDrain) {
-		if (container.stackSize != 1 || resource == null || resource.amount <= 0
-				|| !resource.isFluidEqual(getFluid())) {
+		if (container.stackSize != 1 || resource == null || resource.amount <= 0 || !resource.isFluidEqual(getFluid()))
 			return null;
-		}
 		return drain(resource.amount, doDrain);
 	}
 
 	@Override
 	public FluidStack drain(int maxDrain, boolean doDrain) {
-		if (container.stackSize != 1 || maxDrain <= 0) {
+		if (container.stackSize != 1 || maxDrain <= 0)
 			return null;
-		}
 
 		FluidStack contained = getFluid();
-		if (contained == null || contained.amount <= 0 || !canDrainFluidType(contained)) {
+		if (contained == null || contained.amount <= 0 || !canDrainFluidType(contained))
 			return null;
-		}
 
 		final int drainAmount = Math.min(contained.amount, maxDrain);
 

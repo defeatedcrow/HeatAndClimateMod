@@ -9,7 +9,6 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
-import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,9 +33,8 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		if (this.currentTorque >= this.maxTorque()) {
+		if (this.currentTorque >= this.maxTorque())
 			return false;
-		}
 		return this.isInputSide(side.getOpposite());
 	}
 
@@ -72,8 +70,8 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 		// 気候チェック
 		if (!worldObj.isRemote) {
 			DCHeatTier heat = getUnderHeat();
-			DCHumidity hum = ClimateAPI.calculator.getHumidity(worldObj, pos, CoreConfigDC.humRange, false);
-			DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos, CoreConfigDC.airRange, false);
+			DCHumidity hum = ClimateAPI.calculator.getHumidity(worldObj, pos, 1, false);
+			DCAirflow air = ClimateAPI.calculator.getAirflow(worldObj, pos, 1, false);
 
 			int code = (air.getID() << 6) + (hum.getID() << 4) + heat.getID();
 			current = ClimateAPI.register.getClimateFromInt(code);
@@ -114,8 +112,9 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 		if (tag.hasKey("dcs.climateInt")) {
 			int ic = tag.getInteger("dcs.climateInt");
 			IClimate clm = ClimateAPI.register.getClimateFromInt(ic);
-			if (clm != null)
+			if (clm != null) {
 				current = clm;
+			}
 		}
 	}
 

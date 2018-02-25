@@ -4,6 +4,7 @@ import java.util.Map;
 
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
@@ -37,7 +38,7 @@ public class OnDeathEventDC {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = player.inventory.getStackInSlot(i);
-				if (check != null && check.getItem() != null && check.getItem() == MagicInit.pendant) {
+				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
 					int m = check.getMetadata();
 					if (m == 7) {
 						hasCharm = true;
@@ -63,6 +64,7 @@ public class OnDeathEventDC {
 			if (!flag) {
 				if (player.getDisplayNameString().equals("defeatedcrow") || ClimateCore.isDebug) {
 					if (source.isFireDamage() || source == DamageSourceClimate.climateHeatDamage) {
+						DCLogger.infoLog("defeatedcrow dies.");
 						ItemStack chicken = new ItemStack(FoodInit.sticks, 1, 3);
 						EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY, player.posZ,
 								chicken);
@@ -81,12 +83,11 @@ public class OnDeathEventDC {
 		if (living == null)
 			return;
 
-		/* Projectileでの一撃必殺 */
-		if (dam > living.getMaxHealth()) {
+		if (dam >= living.getMaxHealth()) {
+			/* Projectileでの一撃必殺 */
 			if (!living.worldObj.isRemote && living.worldObj.rand.nextBoolean()) {
 				if (living instanceof EntitySquid) {
 					if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
-
 						ItemStack squid = new ItemStack(FoodInit.meat, 1, 2);
 						EntityItem drop = new EntityItem(living.worldObj, living.posX, living.posY, living.posZ, squid);
 						living.worldObj.spawnEntityInWorld(drop);
@@ -113,6 +114,7 @@ public class OnDeathEventDC {
 			}
 
 			if (amu) {
+				DCLogger.infoLog("on amulet process");
 				living.fallDistance = 0.0F;
 				living.setHealth(living.getMaxHealth() * 0.5F);
 				living.worldObj.playSound(null, living.getPosition(), Blocks.GLASS.getSoundType().getBreakSound(),

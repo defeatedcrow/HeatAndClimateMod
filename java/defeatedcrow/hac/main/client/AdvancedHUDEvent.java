@@ -55,14 +55,9 @@ public class AdvancedHUDEvent {
 						active = true;
 						count = 10;
 
-						// if (!hasAcv) {
-						// if (player instanceof EntityPlayerSP) {
-						// if (((EntityPlayerSP) player).getStatFileWriter()
-						// .hasAchievementUnlocked(AchievementClimate.CLIMATE_MASTER)) {
-						// hasAcv = true;
-						// }
-						// }
-						// }
+						if (!hasAcv) {
+							hasAcv = true;
+						}
 
 						/* 10Fごとに使用データを更新 */
 

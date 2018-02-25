@@ -2,7 +2,7 @@ package defeatedcrow.hac.main.block.build;
 
 import java.util.List;
 
-import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -31,18 +31,18 @@ public class TileMagnetChest extends TileLowChest {
 			double x2 = pos.getX() + 3.0D;
 			double y2 = pos.getY() + 3.0D;
 			double z2 = pos.getZ() + 3.0D;
-			List<EntityItem> list = this.worldObj.<EntityItem> getEntitiesWithinAABB(EntityItem.class,
+			List<EntityItem> list = this.worldObj.<EntityItem>getEntitiesWithinAABB(EntityItem.class,
 					new AxisAlignedBB(x1, y1, z1, x2, y2, z2), EntitySelectors.IS_ALIVE);
 
 			if (!list.isEmpty()) {
 				for (EntityItem drop : list) {
-					if (drop != null && drop.getEntityItem() != null) {
+					if (drop != null && !DCUtil.isEmpty(drop.getEntityItem())) {
 						ItemStack copy = drop.getEntityItem().copy();
 						int slot = canInsertSlot(copy);
-						DCLogger.debugLog("slot: " + slot);
+						// DCLogger.debugLog("slot: " + slot);
 						if (slot > -1) {
 							int i = 0;
-							if (this.getStackInSlot(slot) == null) {
+							if (DCUtil.isEmpty(getStackInSlot(slot))) {
 								i = copy.stackSize;
 							} else {
 								i = this.isItemStackable(copy, this.getStackInSlot(slot));
@@ -50,8 +50,8 @@ public class TileMagnetChest extends TileLowChest {
 							if (i > 0) {
 								this.incrStackInSlot(slot, drop.getEntityItem());
 								this.markDirty();
-								copy.stackSize -= i;
-								if (copy != null && copy.stackSize > 0) {
+								DCUtil.reduceStackSize(copy, 1);
+								if (!DCUtil.isEmpty(copy) && copy.stackSize > 0) {
 									drop.setEntityItemStack(copy);
 								} else {
 									drop.setDead();
@@ -67,19 +67,17 @@ public class TileMagnetChest extends TileLowChest {
 	}
 
 	protected int canInsertSlot(ItemStack stack) {
-		if (stack == null) {
+		if (DCUtil.isEmpty(stack))
 			return -1;
-		}
 
 		for (int i = 0; i < this.getSizeInventory(); i++) {
 			ItemStack cur = this.getStackInSlot(i);
-			if (cur == null) {
+			if (DCUtil.isEmpty(cur))
 				return i;
-			} else {
+			else {
 				int ret = this.isItemStackable(stack, cur);
-				if (ret > 0) {
+				if (ret > 0)
 					return i;
-				}
 			}
 		}
 		return -1;

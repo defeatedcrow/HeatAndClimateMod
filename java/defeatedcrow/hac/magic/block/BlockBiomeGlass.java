@@ -2,24 +2,21 @@ package defeatedcrow.hac.magic.block;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageBiomeGlass;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
@@ -34,14 +31,13 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockBiomeGlass extends Block {
+public class BlockBiomeGlass extends BlockDC {
 
 	// Type上限
 	public final int maxMeta;
 
 	public BlockBiomeGlass(String s) {
-		super(Material.GLASS);
-		this.setUnlocalizedName(s);
+		super(Material.GLASS, s);
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.GLASS);
@@ -85,10 +81,12 @@ public class BlockBiomeGlass extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
 		for (int i = 0; i < maxMeta + 1; i++) {
 			list.add(new ItemStack(this, 1, i));
 		}
+		return list;
 	}
 
 	@Override
@@ -141,16 +139,15 @@ public class BlockBiomeGlass extends Block {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.POWERED,
-				DCState.TYPE4
+				DCState.POWERED, DCState.TYPE4
 		});
 	}
 
 	// biome shape
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null && AcvHelper.hasMagicMaster(player)) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
 			this.changePowerState(world, pos);
 			world.playSound(null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.8F, 2.0F);
 		}

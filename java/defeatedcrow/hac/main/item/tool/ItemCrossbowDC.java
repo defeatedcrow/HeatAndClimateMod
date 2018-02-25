@@ -14,6 +14,8 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
@@ -31,7 +33,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 		return "dcs_climate:items/tool/crossbow_iron";
 	}
 
-	private ItemStack findAmmo(EntityPlayer player) {
+	public ItemStack findAmmo(EntityPlayer player) {
 		if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
 			return player.getHeldItem(EnumHand.OFF_HAND);
 		else if (this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)))
@@ -49,6 +51,22 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 	}
 
 	@Override
+	public ActionResult<ItemStack> onItemRightClick(ItemStack item, World worldIn, EntityPlayer playerIn,
+			EnumHand handIn) {
+		ItemStack itemstack = playerIn.getHeldItem(handIn);
+		boolean flag = !DCUtil.isEmpty(findAmmo(playerIn));
+
+		if (!playerIn.capabilities.isCreativeMode && !flag)
+			return flag
+					? new ActionResult(EnumActionResult.PASS, itemstack)
+					: new ActionResult(EnumActionResult.FAIL, itemstack);
+		else {
+			playerIn.setActiveHand(handIn);
+			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
+		}
+	}
+
+	@Override
 	protected boolean isArrow(@Nullable ItemStack stack) {
 		return !DCUtil.isEmpty(stack) && stack.getItem() == MainInit.cartridge && stack.getItemDamage() == 0;
 	}
@@ -62,12 +80,10 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 			ItemStack ammo = this.findAmmo(player);
 
 			int i = this.getMaxItemUseDuration(stack) - timeLeft;
-			i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, world, (EntityPlayer) living, i,
-					ammo != null || flag);
 			if (i < 0)
 				return;
 
-			if (ammo != null || flag) {
+			if (!DCUtil.isEmpty(ammo) || flag) {
 
 				float f = getArrowVelocity(i);
 
@@ -103,7 +119,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 							1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 					if (!flag) {
-						DCUtil.reduceAndDeleteStack(ammo, 1);
+						DCUtil.reduceStackSize(ammo, 1);
 					}
 
 					player.addStat(StatList.getObjectUseStats(this));

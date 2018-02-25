@@ -6,8 +6,6 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -32,7 +30,7 @@ public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stackIn, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
+	public EnumActionResult onItemUse(ItemStack item, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (player != null && !world.isRemote && player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
@@ -40,11 +38,6 @@ public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 			if (!DCUtil.isEmpty(stack) && tile != null && tile.getBlock() instanceof BlockTorqueBase) {
 				EnumFacing face = tile.getValue(DCState.SIDE).getFacing();
 				world.setBlockState(pos, tile.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite())));
-
-				// achievement
-				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
-				}
 
 				return EnumActionResult.SUCCESS;
 			}

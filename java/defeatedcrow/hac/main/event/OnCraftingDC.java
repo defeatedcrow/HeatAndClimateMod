@@ -1,16 +1,13 @@
 package defeatedcrow.hac.main.event;
 
-import defeatedcrow.hac.core.DCInit;
-import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.magic.block.ItemBlockMace;
-import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class OnCraftingDC {
 
@@ -18,24 +15,17 @@ public class OnCraftingDC {
 	public void onCraftingEvent(PlayerEvent.ItemCraftedEvent event) {
 
 		EntityPlayer player = event.player;
-		IInventory craftMatrix = event.craftMatrix;
+		IInventory matrix = event.craftMatrix;
 		ItemStack craft = event.crafting;
 
-		// achievement
-		if (craft != null) {
-			if (player != null) {
-				if (craft.getItem() == DCInit.climate_checker) {
-					AcvHelper.addClimateAcievement(player, AchievementClimate.CLIMATE_CHECKER);
-				} else if (craft.getItem() == MainInit.materials) {
-					if (craft.getItemDamage() == 5) {
-						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_GEAR);
-					} else if (craft.getItemDamage() == 6) {
-						AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_ALLOY);
+		if (craft != null && matrix != null) {
+			if (craft.getItem() instanceof ItemArmor) {
+				int count = 0;
+				for (int i = 0; i < matrix.getSizeInventory(); i++) {
+					ItemStack check = matrix.getStackInSlot(i);
+					if (!DCUtil.isEmpty(check)) {
+						int[] ids = OreDictionary.getOreIDs(check);
 					}
-				} else if (craft.getItem() == MagicInit.daggerSilver) {
-					AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_KNIFE);
-				} else if (craft.getItem() instanceof ItemBlockMace) {
-					AcvHelper.addMagicAcievement(player, AchievementClimate.MAGIC_MACE);
 				}
 			}
 		}

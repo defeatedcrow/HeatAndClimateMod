@@ -25,11 +25,13 @@ public class ModuleConfig {
 	public static boolean ic2 = true;
 	public static boolean bop = true;
 	public static boolean cofh = true;
+	public static boolean bc = true;
 
 	public static boolean r_mill = true;
 	public static boolean r_spinning = true;
 	public static boolean r_fluid = true;
 	public static boolean r_reactor = true;
+	public static boolean r_crusher = true;
 
 	public void load(Configuration cfg) {
 
@@ -62,11 +64,13 @@ public class ModuleConfig {
 			Property ic2_b = cfg.get("plugin setting", "IndustrialCraft2Plugin", ic2);
 			Property bop_b = cfg.get("plugin setting", "BiomesOPlentyPlugin", bop);
 			Property cofh_b = cfg.get("plugin setting", "CoFHPlugin", bop);
+			Property bc_b = cfg.get("plugin setting", "BuildcraftPlugin", bc);
 
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
 			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
 			Property fluid = cfg.get("recipe setting", "EnableCookingPanRecipe", r_fluid);
 			Property reactor = cfg.get("recipe setting", "EnableReactorRecipe", r_reactor);
+			Property crusher = cfg.get("recipe setting", "EnableHammerMillRecipe", r_crusher);
 
 			machine = machine_b.getBoolean();
 			magic = magic_b.getBoolean();
@@ -83,11 +87,13 @@ public class ModuleConfig {
 			ic2 = ic2_b.getBoolean();
 			bop = bop_b.getBoolean();
 			cofh = cofh_b.getBoolean();
+			bc = bc_b.getBoolean();
 
 			r_mill = mill.getBoolean();
 			r_spinning = spinning.getBoolean();
 			r_fluid = fluid.getBoolean();
 			r_reactor = reactor.getBoolean();
+			r_crusher = crusher.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

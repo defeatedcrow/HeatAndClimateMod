@@ -26,7 +26,7 @@ public class DCPluginBamboo {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 2),
 				new ItemStack(BambooItems.RICE_SEED));
 
-		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 1, 0), 4,
+		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.materials, 1, 0), 2,
 				new ItemStack(BambooItems.STRAW));
 	}
 

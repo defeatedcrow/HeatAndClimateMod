@@ -45,9 +45,8 @@ public class TileCrank_S extends TileTorqueBase implements ITorqueReceiver, ICra
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		if (this.currentTorque >= this.maxTorque()) {
+		if (this.currentTorque >= this.maxTorque())
 			return false;
-		}
 		return this.isInputSide(side.getOpposite());
 	}
 

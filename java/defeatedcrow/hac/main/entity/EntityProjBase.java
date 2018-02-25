@@ -153,7 +153,7 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 	}
 
 	protected void dropAsItem() {
-		if (!worldObj.isRemote && this.getDropStack() != null) {
+		if (!worldObj.isRemote) {
 			ItemStack item = this.getDropStack();
 			if (!DCUtil.isEmpty(item)) {
 				EntityItem drop = new EntityItem(worldObj, posX, posY + 0.15D, posZ, item);

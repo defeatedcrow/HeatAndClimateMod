@@ -2,6 +2,8 @@ package defeatedcrow.hac.main.item.entity;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityItem;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
@@ -55,7 +57,7 @@ public class ItemFlowerPot extends DCEntityItem {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

@@ -3,8 +3,11 @@ package defeatedcrow.hac.main.block.ores;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -17,6 +20,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -173,23 +177,33 @@ public class BlockOres2 extends DCSimpleBlock {
 
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+		List<ItemStack> list = Lists.newArrayList();
+		list.addAll(super.getDrops(world, pos, state, fortune));
 		int meta = this.getMetaFromState(state);
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
 		ItemStack add = null;
-		int par = 5 + fortune * 5;
-		if (rand.nextInt(50) < par) {
-			switch (meta) {
-			case 6:
+		int par = 3 + fortune * 3;
+		if (rand.nextInt(100) < par) {
+			if (meta == 6) {
 				add = new ItemStack(MainInit.gems, 1, 13);
+			} else if (meta == 7) {
+				Biome biome = world.getBiome(pos);
+				if (biome.getRainfall() > 0.8F) {
+					add = new ItemStack(MainInit.gems, 1, 19);
+				} else {
+					add = new ItemStack(MainInit.gems, 1, 20);
+				}
+			} else if (meta == 11) {
+				add = new ItemStack(MainInit.gems, 1, 21);
 			}
 		}
 
-		if (add != null) {
-			ret.add(add);
+		if (!DCUtil.isEmpty(add)) {
+			list.add(add);
 		}
-		return ret;
+
+		return list;
 	}
 
 	@Override
@@ -198,6 +212,6 @@ public class BlockOres2 extends DCSimpleBlock {
 		int meta = DCState.getInt(state, DCState.TYPE16);
 		if (meta >= 0)
 			return new ItemStack(this, 1, meta);
-		return getItem(world, pos, state);
+		return super.getPickBlock(state, target, world, pos, player);
 	}
 }

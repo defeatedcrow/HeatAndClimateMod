@@ -15,7 +15,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.gui.ContainerPortalManager;
 import defeatedcrow.hac.machine.item.ItemAdapterCard;
-import defeatedcrow.hac.main.api.ISideTankChecker;
+import defeatedcrow.hac.main.api.ISidedTankChecker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -41,7 +41,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class TilePortalManager extends TileTorqueLockable
-		implements ITorqueReceiver, ISidedInventory, ISideTankChecker {
+		implements ITorqueReceiver, ISidedInventory, ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -58,6 +58,7 @@ public class TilePortalManager extends TileTorqueLockable
 
 	private int loadCount = 5;
 	private int lastInT = 0;
+
 	public float requireTorque = 30.0F;
 
 	@Override
@@ -92,7 +93,7 @@ public class TilePortalManager extends TileTorqueLockable
 			}
 
 			TileEntity tile = worldObj.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISideTankChecker)
+			if (tile != null && !(tile instanceof ISidedTankChecker)
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
@@ -122,18 +123,17 @@ public class TilePortalManager extends TileTorqueLockable
 		return false;
 	}
 
+	public boolean hasCoolant() {
+		if (inputT.getFluidType() != null)
+			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MachineInit.nitrogen))
+				return inputT.drain(10, false) != null;
+		return false;
+	}
+
 	public void reduceCoolant() {
 		if (hasCoolant()) {
 			inputT.drain(10, true);
 		}
-	}
-
-	public boolean hasCoolant() {
-		if (inputT.getFluidType() != null)
-			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MachineInit.nitrogen)
-					|| inputT.getFluidType().getTemperature() < 100)
-				return inputT.drain(10, false) != null;
-		return false;
 	}
 
 	public int isActiveSlot(int num) {

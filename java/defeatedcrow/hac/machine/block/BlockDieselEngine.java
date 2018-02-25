@@ -2,8 +2,6 @@ package defeatedcrow.hac.machine.block;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.energy.IWrenchDC;
@@ -51,8 +49,8 @@ public class BlockDieselEngine extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack held = player.getHeldItem(hand);
@@ -63,7 +61,7 @@ public class BlockDieselEngine extends BlockTorqueBase {
 					IFluidHandler cont = held.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
-						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid().getName())) {
+						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid())) {
 							if (!world.isRemote
 									&& DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player)) {
 								world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
@@ -73,7 +71,7 @@ public class BlockDieselEngine extends BlockTorqueBase {
 						}
 					}
 				} else if (held.getItem() instanceof IWrenchDC)
-					return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
+					return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 				else {
 					if (!world.isRemote) {
 						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
@@ -91,7 +89,7 @@ public class BlockDieselEngine extends BlockTorqueBase {
 	}
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
 
@@ -108,9 +106,9 @@ public class BlockDieselEngine extends BlockTorqueBase {
 
 	// 設置時にはプレイヤーの方を向いている方が自然なので
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
-		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		// achievement
 		if (placer != null && !placer.worldObj.isRemote && placer instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) placer;

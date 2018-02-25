@@ -2,6 +2,8 @@ package defeatedcrow.hac.food.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.FoodEntityBase;
@@ -13,6 +15,7 @@ import defeatedcrow.hac.food.entity.StewLotusrootEntity;
 import defeatedcrow.hac.food.entity.StewMushroomEntity;
 import defeatedcrow.hac.food.entity.StewPumpukinEntity;
 import defeatedcrow.hac.food.entity.StewPurpleEntity;
+import defeatedcrow.hac.food.entity.StewSeaweedEntity;
 import defeatedcrow.hac.food.entity.StewSquidEntity;
 import defeatedcrow.hac.food.entity.StewTomatoEntity;
 import defeatedcrow.hac.food.entity.StewVegiEntity;
@@ -32,7 +35,7 @@ public class StewBowlItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 9;
+		return 10;
 	}
 
 	@Override
@@ -57,7 +60,8 @@ public class StewBowlItem extends FoodItemBase {
 				"mushroom",
 				"purple",
 				"lotusroot",
-				"squid"
+				"squid",
+				"seaweed"
 		};
 		return s;
 	}
@@ -84,6 +88,8 @@ public class StewBowlItem extends FoodItemBase {
 			ret = new StewLotusrootEntity(world, x, y, z, player);
 		} else if (i == 9) {
 			ret = new StewSquidEntity(world, x, y, z, player);
+		} else if (i == 10) {
+			ret = new StewSeaweedEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		DCLogger.debugLog("individual " + ret.getIndividual());
@@ -102,7 +108,7 @@ public class StewBowlItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

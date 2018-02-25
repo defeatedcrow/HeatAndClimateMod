@@ -26,7 +26,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -431,7 +430,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		if (currentRecipe != null) {
 			ItemStack out = currentRecipe.getOutput();
 			ItemStack sec = currentRecipe.getSecondary();
-			float chance = MathHelper.ceiling_float_int(currentRecipe.getSecondaryChance() * 100);
+			float chance = currentRecipe.getSecondaryChance() * 100;
 			FluidStack inF1 = currentRecipe.getInputFluid();
 			FluidStack inF2 = currentRecipe.getSubInputFluid();
 			FluidStack outF1 = currentRecipe.getOutputFluid();

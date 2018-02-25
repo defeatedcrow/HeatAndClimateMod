@@ -1,16 +1,15 @@
 package defeatedcrow.hac.main.client.gui;
 
+import defeatedcrow.hac.core.client.base.ContainerBaseDC;
+import defeatedcrow.hac.main.block.device.TileChamberBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.main.block.device.TileChamberBase;
 
-public class ContainerNormalChamber extends Container {
+public class ContainerNormalChamber extends ContainerBaseDC {
 
 	public final TileChamberBase chamber;
 	public final InventoryPlayer player;
@@ -25,9 +24,9 @@ public class ContainerNormalChamber extends Container {
 
 		this.addSlotToContainer(new Slot(cham, 0, 80, 58));
 
-		this.addSlotToContainer(new Slot(cham, 1, 134, 21));
-		this.addSlotToContainer(new Slot(cham, 2, 134, 39));
-		this.addSlotToContainer(new Slot(cham, 3, 134, 57));
+		this.addSlotToContainer(new SlotInvalid(cham, 1, 134, 21));
+		this.addSlotToContainer(new SlotInvalid(cham, 2, 134, 39));
+		this.addSlotToContainer(new SlotInvalid(cham, 3, 134, 57));
 
 		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {
@@ -83,37 +82,18 @@ public class ContainerNormalChamber extends Container {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack itemstack = null;
-		Slot slot = this.inventorySlots.get(index);
+	protected int inputMinIndex() {
+		return 0;
+	}
 
-		if (slot != null && slot.getHasStack()) {
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
+	@Override
+	protected int inputMaxIndex() {
+		return 2;
+	}
 
-			if (index == 0) {
-				if (!this.mergeItemStack(itemstack1, 1, 36, true)) {
-					return null;
-				}
-				slot.onSlotChange(itemstack1, itemstack);
-			} else if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
-				return null;
-			}
-
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
-				slot.onSlotChanged();
-			}
-
-			if (itemstack1.stackSize == itemstack.stackSize) {
-				return null;
-			}
-
-			slot.onPickupFromSlot(playerIn, itemstack1);
-		}
-
-		return itemstack;
+	@Override
+	protected int slotIndex() {
+		return 3;
 	}
 
 }

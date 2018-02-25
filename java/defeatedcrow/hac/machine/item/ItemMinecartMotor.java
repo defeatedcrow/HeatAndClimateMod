@@ -2,6 +2,8 @@ package defeatedcrow.hac.machine.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
@@ -126,11 +128,11 @@ public class ItemMinecartMotor extends DCItem {
 	 * Called when a Block is right-clicked with this Item
 	 */
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos,
-			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse2(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand,
+			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		IBlockState iblockstate = worldIn.getBlockState(pos);
 
-		if (!BlockRailBase.isRailBlock(iblockstate))
+		if (!BlockRailBase.isRailBlock(iblockstate) || playerIn == null)
 			return EnumActionResult.FAIL;
 		else {
 			if (!worldIn.isRemote) {
@@ -147,22 +149,23 @@ public class ItemMinecartMotor extends DCItem {
 
 				EntityMinecart entityminecart = new EntityMinecartMotor(worldIn, pos.getX() + 0.5D,
 						pos.getY() + 0.0625D + d0, pos.getZ() + 0.5D);
+				ItemStack stack = playerIn.getHeldItem(hand);
 
 				if (stack.hasDisplayName()) {
 					entityminecart.setCustomNameTag(stack.getDisplayName());
 				}
 
 				worldIn.spawnEntityInWorld(entityminecart);
+				stack.splitStack(1);
 			}
 
-			--stack.stackSize;
 			return EnumActionResult.SUCCESS;
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

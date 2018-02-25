@@ -23,10 +23,4 @@ public class CreativeTabClimateMachine extends CreativeTabs {
 		return MainInit.wrench;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getIconItemDamage() {
-		return 0;
-	}
-
 }

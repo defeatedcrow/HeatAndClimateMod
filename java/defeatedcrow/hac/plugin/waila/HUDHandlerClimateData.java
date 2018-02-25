@@ -13,7 +13,7 @@ import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
-import mcp.mobius.waila.addons.HUDHandlerBase;
+import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
@@ -28,7 +28,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 // climate data
-public class HUDHandlerClimateData extends HUDHandlerBase {
+public class HUDHandlerClimateData extends HUDHandlerBlocks {
 
 	static final List<BlockSet> targetHeatList = Lists.newArrayList();
 	static final List<BlockSet> targetHumList = Lists.newArrayList();
@@ -61,6 +61,19 @@ public class HUDHandlerClimateData extends HUDHandlerBase {
 				return new ItemStack(FoodInit.crops, 1, 8);
 			else if (block == FoodInit.cropLotus)
 				return new ItemStack(FoodInit.crops, 1, 10);
+			else if (block == FoodInit.saplings) {
+				int meta = accessor.getMetadata();
+				switch (meta) {
+				case 0:
+					return new ItemStack(FoodInit.saplings, 1, 0);
+				case 1:
+					return new ItemStack(FoodInit.saplings, 1, 1);
+				case 2:
+					return new ItemStack(FoodInit.saplings, 1, 2);
+				default:
+					return new ItemStack(FoodInit.saplings, 1, 0);
+				}
+			}
 		}
 
 		return null;
@@ -148,6 +161,7 @@ public class HUDHandlerClimateData extends HUDHandlerBase {
 		registrar.registerStackProvider(provider, FoodInit.leavesLemon.getClass());
 		registrar.registerStackProvider(provider, FoodInit.leavesOlive.getClass());
 		registrar.registerStackProvider(provider, FoodInit.leavesTea.getClass());
+		registrar.registerStackProvider(provider, FoodInit.saplings.getClass());
 
 		registrar.registerBodyProvider(provider, ClimateCropBase.class);
 		registrar.registerBodyProvider(provider, ClimateDoubleCropBase.class);

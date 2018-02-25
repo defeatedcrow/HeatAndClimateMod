@@ -1,0 +1,131 @@
+package defeatedcrow.hac.main.block.device;
+
+import java.util.List;
+import java.util.Random;
+
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.fluid.DCFluidUtil;
+import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class BlockPail extends DCTileBlock {
+
+	public BlockPail(String s) {
+		super(Material.CLAY, s, 0);
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TilePail();
+	}
+
+	@Override
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (player != null) {
+			ItemStack heldItem = player.getHeldItem(hand);
+			if (hand == EnumHand.MAIN_HAND) {
+
+				TileEntity tile = world.getTileEntity(pos);
+				if (!world.isRemote && tile instanceof TilePail) {
+					if (!DCUtil.isEmpty(heldItem)) {
+						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
+							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
+									2.0F);
+						}
+					} else {
+						FluidStack f = ((TilePail) tile).inputT.getFluid();
+						if (f != null) {
+							String name = f.getLocalizedName();
+							int i = f.amount;
+							String mes1 = "Stored Fluid: " + name + " " + i + "mB";
+							player.addChatMessage(new TextComponentString(mes1));
+						}
+					}
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
+	}
+
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		// block側の気候処理は無し
+	}
+
+	@Override
+	public boolean onClimateChange(World world, BlockPos pos, IBlockState state, IClimate clm) {
+		return false;
+	}
+
+	@Override
+	public int damageDropped(IBlockState state) {
+		return 0;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+		return calcRedstone(worldIn.getTileEntity(pos));
+	}
+
+	private int calcRedstone(TileEntity te) {
+		if (te != null && te instanceof TilePail) {
+			TilePail ibc = (TilePail) te;
+			DCTank tank = ibc.inputT;
+			float amo = tank.getFluidAmount() * 15.0F / tank.getCapacity();
+			int lit = MathHelper.floor_float(amo);
+			return lit;
+		}
+		return 0;
+	}
+
+	@Override
+	public boolean hasComparatorInputOverride(IBlockState state) {
+		return true;
+	}
+
+}

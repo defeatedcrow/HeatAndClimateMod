@@ -14,10 +14,10 @@ public class DCRegistryUtil {
 
 	public static void addPotion(Potion potion, PotionType type, String name) {
 		ForgeRegistries.POTIONS.register(potion.setRegistryName(ClimateMain.MOD_ID, "dcs.potion." + name));
-		type = new PotionType("dcs.potiontype" + name, new PotionEffect[] {
+		type = new PotionType("dcs." + name, new PotionEffect[] {
 				new PotionEffect(potion, potion.isBadEffect() ? 1800 : 3600, 0)
 		});
-		ForgeRegistries.POTION_TYPES.register(type.setRegistryName(ClimateMain.MOD_ID, "dcs.potiontype." + name));
+		ForgeRegistries.POTION_TYPES.register(type.setRegistryName(ClimateMain.MOD_ID, "dcs." + name));
 	}
 
 	public static void addEntity(Class<? extends Entity> regClass, String domein, String name) {

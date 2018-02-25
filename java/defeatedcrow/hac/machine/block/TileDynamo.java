@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.Optional.Method;
 
 @Optional.InterfaceList({
-		@Optional.Interface(iface = "cofh.api.energy.IEnergyProvider", modid = "CoFHAPI|energy"),
+		@Optional.Interface(iface = "cofh.api.energy.IEnergyProvider", modid = "cofhcore"),
 })
 public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.api.energy.IEnergyProvider {
 
@@ -102,7 +102,7 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 						float ret = sendFU / faces.size();
 						int amo = MathHelper.floor_float(ret);
 						sto.receiveEnergy(amo, false);
-					} else if (ModAPIManager.INSTANCE.hasAPI("CoFHAPI|energy")) {
+					} else if (ModAPIManager.INSTANCE.hasAPI("cofhcore")) {
 						if (RFDeviceHelper.isRFReceiver(target)) {
 							float ret = sendRF / faces.size();
 							int amo = MathHelper.floor_float(ret);
@@ -116,7 +116,7 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "cofhcore")
 	public int getEnergyStored(EnumFacing face) {
 		if (!faces.contains(face)) {
 			faces.add(face);
@@ -128,7 +128,7 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "cofhcore")
 	public int getMaxEnergyStored(EnumFacing face) {
 		float sendRF = maxTorque() * EnergyConvertRate.rateVsRF;
 		int amo = MathHelper.floor_float(sendRF);
@@ -136,13 +136,13 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "cofhcore")
 	public boolean canConnectEnergy(EnumFacing face) {
 		return isOutputSide(face);
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "cofhcore")
 	public int extractEnergy(EnumFacing face, int amo, boolean sim) {
 		TileEntity target = worldObj.getTileEntity(pos.offset(face));
 		if (target == null || RFDeviceHelper.isRFReceiver(target))

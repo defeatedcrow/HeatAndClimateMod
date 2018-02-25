@@ -8,144 +8,73 @@ import net.minecraft.util.EnumHand;
 
 public class MainUtil {
 
+	public static final String BR = System.getProperty("line.separator");
+
 	public static final String[] DYES = {
-			"dyeWhite",
-			"dyeOrange",
-			"dyeMagenda",
-			"dyeLightblue",
-			"dyeYellow",
-			"dyeLime",
-			"dyePink",
-			"dyeGray",
-			"dyeLightGray",
-			"dyeCyan",
-			"dyePurple",
-			"dyeBlue",
-			"dyeBrown",
-			"dyeGreen",
-			"dyeRed",
-			"dyeBlack",
+			"dyeWhite", "dyeOrange", "dyeMagenda", "dyeLightblue", "dyeYellow", "dyeLime", "dyePink", "dyeGray",
+			"dyeLightGray", "dyeCyan", "dyePurple", "dyeBlue", "dyeBrown", "dyeGreen", "dyeRed", "dyeBlack",
 	};
 
 	public static final int[][][] MATRIX = new int[][][] {
 			{
 					{
-							0,
-							0,
-							-1
-					},
-					{
-							0,
-							0,
-							1
+							0, 0, -1
+					}, {
+							0, 0, 1
 					}
-			},
-			{
+			}, {
 					{
-							-1,
-							0,
-							0
-					},
-					{
-							1,
-							0,
-							0
+							-1, 0, 0
+					}, {
+							1, 0, 0
 					}
-			},
-			{
+			}, {
 					{
-							-1,
-							-1,
-							0
-					},
-					{
-							1,
-							0,
-							0
+							-1, -1, 0
+					}, {
+							1, 0, 0
 					}
-			},
-			{
+			}, {
 					{
-							-1,
-							0,
-							0
-					},
-					{
-							1,
-							-1,
-							0
+							-1, 0, 0
+					}, {
+							1, -1, 0
 					}
-			},
-			{
+			}, {
 					{
-							0,
-							0,
-							-1
-					},
-					{
-							0,
-							-1,
-							1
+							0, 0, -1
+					}, {
+							0, -1, 1
 					}
-			},
-			{
+			}, {
 					{
-							0,
-							-1,
-							-1
-					},
-					{
-							0,
-							0,
-							1
+							0, -1, -1
+					}, {
+							0, 0, 1
 					}
-			},
-			{
+			}, {
 					{
-							0,
-							0,
-							1
-					},
-					{
-							1,
-							0,
-							0
+							0, 0, 1
+					}, {
+							1, 0, 0
 					}
-			},
-			{
+			}, {
 					{
-							0,
-							0,
-							1
-					},
-					{
-							-1,
-							0,
-							0
+							0, 0, 1
+					}, {
+							-1, 0, 0
 					}
-			},
-			{
+			}, {
 					{
-							0,
-							0,
-							-1
-					},
-					{
-							-1,
-							0,
-							0
+							0, 0, -1
+					}, {
+							-1, 0, 0
 					}
-			},
-			{
+			}, {
 					{
-							0,
-							0,
-							-1
-					},
-					{
-							1,
-							0,
-							0
+							0, 0, -1
+					}, {
+							1, 0, 0
 					}
 			}
 	};

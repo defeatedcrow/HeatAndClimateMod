@@ -2,9 +2,6 @@ package defeatedcrow.hac.plugin.waila;
 
 import java.util.List;
 
-import defeatedcrow.hac.core.base.DCLockableTE;
-import defeatedcrow.hac.core.base.DCTileEntity;
-import defeatedcrow.hac.core.energy.TileTorqueLockable;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.machine.block.TileDieselEngine;
@@ -12,7 +9,7 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
-import mcp.mobius.waila.addons.HUDHandlerBase;
+import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
@@ -28,7 +25,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-public class HUDHandlerFluidDC extends HUDHandlerBase {
+public class HUDHandlerFluidDC extends HUDHandlerBlocks {
 
 	@Override
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
@@ -56,7 +53,7 @@ public class HUDHandlerFluidDC extends HUDHandlerBase {
 	@Override
 	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world,
 			BlockPos pos) {
-		if (te instanceof DCLockableTE || te instanceof DCTileEntity || te instanceof TileTorqueLockable) {
+		if (te.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
 			IFluidHandler tank = te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
 			if (tank != null && tank instanceof DCTank)
 				return ((DCTank) tank).writeToNBT(tag, "DCTank");

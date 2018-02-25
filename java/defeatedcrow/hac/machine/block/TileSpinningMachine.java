@@ -150,5 +150,4 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueP
 	public String getGuiID() {
 		return "dcs.gui.device.spinning_machine";
 	}
-
 }

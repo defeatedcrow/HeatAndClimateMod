@@ -428,35 +428,30 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				if (target.stackSize <= amo) {
 					inv.setInventorySlotContents(slot + 2, null);
 				} else {
-					DCUtil.reduceAndDeleteStack(inv.getStackInSlot(slot + 2), amo);
+					DCUtil.reduceStackSize(inv.getStackInSlot(slot + 2), amo);
 				}
-			} else {
-				ret.stackSize = amo;
+			}
+			ret.stackSize = (amo);
 
-				boolean b = target.getItem().isDamageable();
-				if (!DCUtil.isEmpty(ret) && !b) {
-					int red = 0;
-					if (this.getStackInSlot(11) == null) {
-						red = amo;
-						this.setInventorySlotContents(11, ret);
-					} else if (this.canIncrStack(ret, 11)) {
-						red = this.incrStackSize(11, ret);
-						if (red > 0) {
-							getStackInSlot(11).stackSize += red;
-						}
-					}
+			boolean b = target.getItem().isDamageable();
+			if (!DCUtil.isEmpty(ret) && !b) {
+				int red = 0;
+				if (DCUtil.isEmpty(this.getStackInSlot(11))) {
+					red = amo;
+					this.setInventorySlotContents(11, ret);
+				} else if (this.canIncrStack(ret, 11)) {
+					red = this.incrStackSize(11, ret);
 					if (red > 0) {
-						if (target.stackSize <= red) {
-							inv.setInventorySlotContents(slot + 2, null);
-						} else {
-							DCUtil.reduceAndDeleteStack(inv.getStackInSlot(slot + 2), red);
-						}
-						amo -= red;
-						if (red >= amo) {
-							ret = null;
-						} else {
-							ret.stackSize = amo;
-						}
+						DCUtil.addStackSize(getStackInSlot(11), red);
+					}
+				}
+				if (red > 0) {
+					DCUtil.reduceStackSize(target, red);
+					amo -= red;
+					if (red >= amo) {
+						ret = null;
+					} else {
+						ret.stackSize = amo;
 					}
 				}
 			}
@@ -466,14 +461,14 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 					if (amo >= target.stackSize) {
 						inv.setInventorySlotContents(slot + 2, ret);
 					} else {
-						DCUtil.reduceAndDeleteStack(target, amo);
+						DCUtil.reduceStackSize(target, amo);
 						for (int i = 0; i < 9; i++) {
 							if (i == slot) {
 								continue;
 							}
 							int a = incrStackSize(i + 2, ret);
 							if (a < ret.stackSize) {
-								DCUtil.reduceAndDeleteStack(ret, a);
+								DCUtil.reduceStackSize(ret, a);
 							} else {
 								break;
 							}

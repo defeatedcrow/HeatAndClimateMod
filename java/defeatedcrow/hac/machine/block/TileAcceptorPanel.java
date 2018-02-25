@@ -55,7 +55,7 @@ public class TileAcceptorPanel extends DCTileEntity {
 	@Override
 	public boolean hasCapability(net.minecraftforge.common.capabilities.Capability<?> capability,
 			net.minecraft.util.EnumFacing facing) {
-		if (isActive() && targetTile() != null)
+		if (isActive() && targetTile() != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return targetTile().hasCapability(capability, getSide().face.getOpposite());
 
 		return false;

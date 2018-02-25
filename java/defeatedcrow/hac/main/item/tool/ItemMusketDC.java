@@ -6,8 +6,11 @@ import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.entity.EntityBulletDC;
+import defeatedcrow.hac.main.entity.EntityCrowBullet;
+import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
+import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -39,7 +42,7 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 		return "dcs_climate:items/tool/musket";
 	}
 
-	private ItemStack findAmmo(EntityPlayer player) {
+	public ItemStack findAmmo(EntityPlayer player) {
 		if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
 			return player.getHeldItem(EnumHand.OFF_HAND);
 		else if (this.isArrow(player.getHeldItem(EnumHand.MAIN_HAND)))
@@ -72,21 +75,21 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World worldIn, EntityPlayer playerIn,
-			EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(ItemStack item, World worldIn, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
 		if (!DCUtil.isEmpty(stack)) {
 			NBTTagCompound tag = stack.getTagCompound();
 			if (tag == null) {
 				tag = new NBTTagCompound();
 			}
 			if (tag.hasKey("bulletType")) {
-				playerIn.setActiveHand(hand);
+				player.setActiveHand(hand);
 				return new ActionResult(EnumActionResult.SUCCESS, stack);
 			} else {
-				worldIn.playSound((EntityPlayer) null, playerIn.posX, playerIn.posY, playerIn.posZ,
+				worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
 						SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.NEUTRAL, 1.0F,
 						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
-				ItemStack ammo = this.findAmmo(playerIn);
+				ItemStack ammo = this.findAmmo(player);
 				boolean flag = ammo != null;
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0) {
 					tag.setInteger("bulletType", 1);
@@ -96,11 +99,8 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 					int meta = ammo.getItemDamage();
 					tag.setInteger("bulletType", meta);
 					stack.setTagCompound(tag);
-					if (!playerIn.capabilities.isCreativeMode) {
-						--ammo.stackSize;
-						if (ammo.stackSize == 0) {
-							playerIn.inventory.deleteStack(ammo);
-						}
+					if (!player.capabilities.isCreativeMode) {
+						DCUtil.reduceStackSize(ammo, 1);
 					}
 					return new ActionResult(EnumActionResult.SUCCESS, stack);
 				} else
@@ -154,6 +154,15 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 							break;
 						case SILVER:
 							entityarrow = new EntitySilverBullet(world, player);
+							break;
+						case LIGHT:
+							entityarrow = new EntityLightBullet(world, player);
+							break;
+						case EXTINCTION:
+							entityarrow = new EntityExtinctionBullet(world, player);
+							break;
+						case CROW:
+							entityarrow = new EntityCrowBullet(world, player);
 							break;
 						default:
 							break;

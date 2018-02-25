@@ -9,7 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.boss.EntityDragonPart;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityMinecart;
@@ -123,7 +123,7 @@ public class CustomExplosion extends Explosion {
 						flag = false;
 					} else if (entity instanceof EntityPlayer) {
 						flag = false;
-					} else if (entity instanceof EntityDragonPart) {
+					} else if (entity instanceof EntityDragon) {
 						damage *= 2.0F;
 					} else if (!entity.onGround) {
 						damage *= 10.0F;

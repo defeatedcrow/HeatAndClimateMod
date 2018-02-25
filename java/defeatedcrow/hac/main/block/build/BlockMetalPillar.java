@@ -3,6 +3,9 @@ package defeatedcrow.hac.main.block.build;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.core.base.BlockDC;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -10,13 +13,13 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -24,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockMetalPillar extends Block {
+public class BlockMetalPillar extends BlockDC {
 
 	/* 左右のチェック */
 	// public static final PropertyBool NORTH = PropertyBool.create("north");
@@ -36,8 +39,7 @@ public class BlockMetalPillar extends Block {
 			EnumFacing.Axis.class);
 
 	public BlockMetalPillar(String s) {
-		super(Material.CLAY);
-		this.setUnlocalizedName(s);
+		super(Material.CLAY, s);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.fullBlock = false;
@@ -106,15 +108,17 @@ public class BlockMetalPillar extends Block {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
 		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 	// 設置・破壊処理
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
-		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (facing == EnumFacing.DOWN || facing == EnumFacing.UP) {
 			EnumFacing face = placer.getHorizontalFacing();
 			state = state.withProperty(AXIS, EnumFacing.Axis.Y);

@@ -1,7 +1,8 @@
 package defeatedcrow.hac.machine;
 
-import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.machine.block.TileAcceptorFluidPanel;
 import defeatedcrow.hac.machine.block.TileAcceptorPanel;
+import defeatedcrow.hac.machine.block.TileAdapterFluidPanel;
 import defeatedcrow.hac.machine.block.TileAdapterPanel;
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
 import defeatedcrow.hac.machine.block.TileCatapult;
@@ -22,10 +23,15 @@ import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
+import defeatedcrow.hac.machine.block.TileMonitorFluid;
+import defeatedcrow.hac.machine.block.TileMonitorRF;
+import defeatedcrow.hac.machine.block.TileMonitorRedStone;
+import defeatedcrow.hac.machine.block.TileMonitorTorque;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.machine.block.TileRedBox;
+import defeatedcrow.hac.machine.block.TileRollerCrusher;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_L_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_L_Steel;
@@ -47,8 +53,7 @@ import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
-import defeatedcrow.hac.main.ClimateMain;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import defeatedcrow.hac.main.util.DCRegistryUtil;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MachineCommonProxy {
@@ -91,23 +96,27 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TilePortalManager.class, "dcs_te_portal_manager");
 		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
 		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
+		GameRegistry.registerTileEntity(TileAdapterFluidPanel.class, "dcs_te_adapter_fluid");
+		GameRegistry.registerTileEntity(TileAcceptorFluidPanel.class, "dcs_te_acceptor_fluid");
 		GameRegistry.registerTileEntity(TileGasBurner.class, "dcs_te_gas_burner");
 		GameRegistry.registerTileEntity(TileShaft_S_Steel.class, "dcs_te_shaft_s_steel");
 		GameRegistry.registerTileEntity(TileShaft_L_Steel.class, "dcs_te_shaft_l_steel");
 		GameRegistry.registerTileEntity(TileShaft_TA_Steel.class, "dcs_te_shaft_ta_steel");
 		GameRegistry.registerTileEntity(TileShaft_TB_Steel.class, "dcs_te_shaft_tb_steel");
 		GameRegistry.registerTileEntity(TileDieselEngine.class, "dcs_te_diesel_engine");
+		GameRegistry.registerTileEntity(TileRollerCrusher.class, "dcs_te_crusher");
+		GameRegistry.registerTileEntity(TileMonitorRedStone.class, "dcs_te_monitor_rs");
+		GameRegistry.registerTileEntity(TileMonitorTorque.class, "dcs_te_monitor_torque");
+		GameRegistry.registerTileEntity(TileMonitorRF.class, "dcs_te_monitor_rf");
+		GameRegistry.registerTileEntity(TileMonitorFluid.class, "dcs_te_monitor_fluid");
 	}
 
 	public static void loadEntity() {
-		EntityRegistry.registerModEntity(EntityMinecartMotor.class, ClimateCore.PACKAGE_BASE + ".machine.motor_cart",
-				80, ClimateMain.instance, 128, 5, true);
+		DCRegistryUtil.addEntity(EntityMinecartMotor.class, "machine", "motor_cart");
 
-		EntityRegistry.registerModEntity(EntityScooter.class, ClimateCore.PACKAGE_BASE + ".machine.motor_scooter", 81,
-				ClimateMain.instance, 128, 1, true);
+		DCRegistryUtil.addEntity(EntityScooter.class, "machine", "motor_scooter", 1);
 
-		EntityRegistry.registerModEntity(EntityMagneticHover.class,
-				ClimateCore.PACKAGE_BASE + ".machine.magnetic_hover", 82, ClimateMain.instance, 128, 1, true);
+		DCRegistryUtil.addEntity(EntityMagneticHover.class, "machine", "magnetic_hover", 1);
 
 	}
 

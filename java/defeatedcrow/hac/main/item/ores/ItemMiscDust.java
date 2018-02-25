@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.item.ores;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
@@ -27,7 +28,8 @@ public class ItemMiscDust extends DCItem {
 			"garnet",
 			"apatite",
 			"borax",
-			"chrysotile"
+			"chrysotile",
+			"mica"
 	};
 
 	public ItemMiscDust(int max) {
@@ -47,6 +49,13 @@ public class ItemMiscDust extends DCItem {
 	 * 3: 木
 	 * 4: 油かす
 	 * 5: 灰
+	 * 6: 硝石
+	 * 7: 硫黄
+	 * 8: ガーネット
+	 * 9: アパタイト
+	 * 10: ホウ砂
+	 * 11: 石綿
+	 * 12: 雲母
 	 */
 	@Override
 	public String[] getNameSuffix() {
@@ -63,10 +72,10 @@ public class ItemMiscDust extends DCItem {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = player.getHeldItem(hand);
-		if (heldItem == null)
+		if (DCUtil.isEmpty(heldItem))
 			return EnumActionResult.FAIL;
 
 		if (heldItem.getItemDamage() == 4 && ItemDye.applyBonemeal(heldItem, world, pos, player)) {

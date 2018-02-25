@@ -5,7 +5,6 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -19,7 +18,8 @@ public class ItemTorqueChecker extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"steel" };
+			"steel"
+	};
 
 	public ItemTorqueChecker() {
 		super();
@@ -28,8 +28,8 @@ public class ItemTorqueChecker extends DCItem {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		if (world != null && !world.isRemote) {
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile != null && tile instanceof TileTorqueBase) {

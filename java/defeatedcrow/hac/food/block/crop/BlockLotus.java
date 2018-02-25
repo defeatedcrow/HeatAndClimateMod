@@ -18,6 +18,7 @@ import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.config.CoreConfigDC;
+import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -30,7 +31,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,15 +55,14 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable {
+public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable {
 
 	public static final PropertyBool BLACK = PropertyBool.create("black");
 
 	protected Random cropRand = new Random();
 
 	public BlockLotus(String s, int max) {
-		super(Material.WATER);
-		this.setUnlocalizedName(s);
+		super(Material.WATER, s);
 		this.setTickRandomly(true);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK, false)
 				.withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
@@ -110,8 +109,10 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = super.getSubItemList();
 		list.add(new ItemStack(this, 1, 3));
+		return list;
 	}
 
 	@Override
@@ -121,21 +122,21 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 
 	@Override
 	@Nullable
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 
 	/* Block動作 */
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			IBlockState crop = world.getBlockState(pos);
 			int stage = state.getValue(DCState.STAGE8);
-			ItemStack held2 = player.inventory.getCurrentItem();
-			if (!DCUtil.isEmpty(held) && held2.getItem() == Items.DYE && held2.getItemDamage() == 15) {
-				ItemDye.applyBonemeal(held2, world, pos, player);
+			ItemStack held = player.inventory.getCurrentItem();
+			if (!DCUtil.isEmpty(held) && held.getItem() == Items.DYE && held.getItemDamage() == 15) {
+				ItemDye.applyBonemeal(held, world, pos, player);
 				return true;
 			} else if (stage > 3) {
 				player.playSound(SoundEvents.BLOCK_GRASS_PLACE, 1.0F, 1.0F);
@@ -143,11 +144,6 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 			}
 		}
 		return false;
-	}
-
-	@Override
-	public void onBlockClicked(World world, BlockPos pos, EntityPlayer player) {
-		super.onBlockClicked(world, pos, player);
 	}
 
 	@Override
@@ -195,7 +191,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	}
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block) {
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		world.scheduleBlockUpdate(pos, block, 10, 0);
 	}
 
@@ -246,6 +242,11 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	}
 
 	@Override
+	public IBlockState setGroundState(IBlockState state) {
+		return state.withProperty(DCState.STAGE8, 0);
+	}
+
+	@Override
 	public boolean isSuitableClimate(IClimate climate, IBlockState thisState) {
 		if (climate == null || thisState == null || thisState.getBlock() != this)
 			return false;
@@ -289,6 +290,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	public boolean grow(World world, BlockPos pos, IBlockState state) {
 		if (state != null && state.getBlock() == this) {
 			int stage = state.getValue(DCState.STAGE8);
+			boolean black = state.getValue(BLACK);
 			boolean water = this.isInWater(world, pos);
 			if (water) {
 				if (stage < 7) {
@@ -304,8 +306,8 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 						// summer
 						next = stage + 1;
 					} else if (stage < 3 && season < 3) {
-						if (world.rand.nextInt(30) == 0) {
-							state.withProperty(BLACK, true);
+						if (world.rand.nextInt(50) == 0) {
+							black = true;
 						}
 						next = stage + 1;
 					} else if (stage > 1 && season == 3) {
@@ -313,7 +315,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 					}
 
 					if (next > stage) {
-						IBlockState newstate = state.withProperty(DCState.STAGE8, next);
+						IBlockState newstate = state.withProperty(DCState.STAGE8, next).withProperty(BLACK, black);
 						return world.setBlockState(pos, newstate, 2);
 					}
 				}
@@ -423,8 +425,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 	public IBlockState getStateFromMeta(int meta) {
 		int i = meta & 7;
 		boolean j = meta > 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE8, i);
-		state.withProperty(BLACK, j);
+		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE8, i).withProperty(BLACK, j);
 		return state;
 	}
 
@@ -466,7 +467,7 @@ public class BlockLotus extends Block implements INameSuffix, IClimateCrop, IRap
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		if (this.getSeedItem(state) != null)
+		if (!DCUtil.isEmpty(getSeedItem(state)))
 			return this.getSeedItem(state).getItem();
 		else
 			return null;

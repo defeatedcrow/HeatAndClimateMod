@@ -21,7 +21,9 @@ public class MainCreativeTabRegister {
 
 		// building
 		MainInit.bricks.setCreativeTab(ClimateMain.build);
+		MainInit.builds.setCreativeTab(ClimateMain.build);
 		MainInit.selenite.setCreativeTab(ClimateMain.build);
+		MainInit.clayBricks.setCreativeTab(ClimateMain.build);
 		MainInit.stairsGlass.setCreativeTab(ClimateMain.build);
 		MainInit.stairsGypsum.setCreativeTab(ClimateMain.build);
 		MainInit.stairsMarble.setCreativeTab(ClimateMain.build);
@@ -33,28 +35,6 @@ public class MainCreativeTabRegister {
 		MainInit.fenceMarble.setCreativeTab(ClimateMain.build);
 		MainInit.fenceSerpentine.setCreativeTab(ClimateMain.build);
 		MainInit.fenceBedrock.setCreativeTab(ClimateMain.build);
-		MainInit.awning.setCreativeTab(ClimateMain.build);
-		MainInit.builds.setCreativeTab(ClimateMain.build);
-		MainInit.achievementShield.setCreativeTab(ClimateMain.build);
-
-		// furniture
-		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
-		MainInit.wallLamp.setCreativeTab(ClimateMain.build);
-		MainInit.tableMarble.setCreativeTab(ClimateMain.build);
-		MainInit.tableGypsum.setCreativeTab(ClimateMain.build);
-		MainInit.tableWood.setCreativeTab(ClimateMain.build);
-		MainInit.tableDark.setCreativeTab(ClimateMain.build);
-		MainInit.stoolBlack.setCreativeTab(ClimateMain.build);
-		MainInit.stoolRed.setCreativeTab(ClimateMain.build);
-		MainInit.sofaBlack.setCreativeTab(ClimateMain.build);
-		MainInit.sofaRed.setCreativeTab(ClimateMain.build);
-		MainInit.carpetRed.setCreativeTab(ClimateMain.build);
-		MainInit.carpetWhite.setCreativeTab(ClimateMain.build);
-		MainInit.carpetGray.setCreativeTab(ClimateMain.build);
-		MainInit.chestMarble.setCreativeTab(ClimateMain.build);
-		MainInit.chestWood.setCreativeTab(ClimateMain.build);
-		MainInit.flowerPot.setCreativeTab(ClimateMain.build);
-		MainInit.chandelierGypsum.setCreativeTab(ClimateMain.build);
 
 		// device
 		MainInit.chamber.setCreativeTab(ClimateMain.machine);
@@ -71,6 +51,7 @@ public class MainCreativeTabRegister {
 		MainInit.oreIngot.setCreativeTab(ClimateCore.climate);
 		MainInit.gems.setCreativeTab(ClimateCore.climate);
 		MainInit.miscDust.setCreativeTab(ClimateCore.climate);
+		MainInit.foodDust.setCreativeTab(ClimateCore.climate);
 		MainInit.materials.setCreativeTab(ClimateCore.climate);
 
 		// tool
@@ -99,7 +80,45 @@ public class MainCreativeTabRegister {
 			MainInit.fenceGlass.setCreativeTab(ClimateMain.build);
 			MainInit.fenceLadder.setCreativeTab(ClimateMain.build);
 			MainInit.syntheticBlock.setCreativeTab(ClimateMain.build);
-			MainInit.clayBricks.setCreativeTab(ClimateMain.build);
+
+			MainInit.awning.setCreativeTab(ClimateMain.build);
+			// MainInit.achievementShield.setCreativeTab(ClimateMain.build);
+
+			// furniture
+			MainInit.chalLamp.setCreativeTab(ClimateMain.build);
+			MainInit.wallLamp.setCreativeTab(ClimateMain.build);
+			MainInit.tableMarble.setCreativeTab(ClimateMain.build);
+			MainInit.tableGypsum.setCreativeTab(ClimateMain.build);
+			MainInit.tableWood.setCreativeTab(ClimateMain.build);
+			MainInit.tableDark.setCreativeTab(ClimateMain.build);
+			MainInit.squaretableWood.setCreativeTab(ClimateMain.build);
+			MainInit.squaretableMarble.setCreativeTab(ClimateMain.build);
+			MainInit.squaretableChecker.setCreativeTab(ClimateMain.build);
+			MainInit.squaretableBlack.setCreativeTab(ClimateMain.build);
+			MainInit.stoolBlack.setCreativeTab(ClimateMain.build);
+			MainInit.stoolRed.setCreativeTab(ClimateMain.build);
+			MainInit.sofaBlack.setCreativeTab(ClimateMain.build);
+			MainInit.sofaRed.setCreativeTab(ClimateMain.build);
+			MainInit.chairWood.setCreativeTab(ClimateMain.build);
+			MainInit.chairMarble.setCreativeTab(ClimateMain.build);
+			MainInit.chairChecker.setCreativeTab(ClimateMain.build);
+			MainInit.chairBlack.setCreativeTab(ClimateMain.build);
+			MainInit.carpetRed.setCreativeTab(ClimateMain.build);
+			MainInit.carpetWhite.setCreativeTab(ClimateMain.build);
+			MainInit.carpetGray.setCreativeTab(ClimateMain.build);
+			MainInit.chestMarble.setCreativeTab(ClimateMain.build);
+			MainInit.chestWood.setCreativeTab(ClimateMain.build);
+			MainInit.chestChecker.setCreativeTab(ClimateMain.build);
+			MainInit.chestBlack.setCreativeTab(ClimateMain.build);
+			MainInit.wallshelfMarble.setCreativeTab(ClimateMain.build);
+			MainInit.wallshelfWood.setCreativeTab(ClimateMain.build);
+			MainInit.wallshelfChecker.setCreativeTab(ClimateMain.build);
+			MainInit.wallshelfBlack.setCreativeTab(ClimateMain.build);
+
+			MainInit.flowerPot.setCreativeTab(ClimateMain.build);
+			MainInit.chandelierGypsum.setCreativeTab(ClimateMain.build);
+			MainInit.itemDoorMarble.setCreativeTab(ClimateMain.build);
+			MainInit.itemDoorSteel.setCreativeTab(ClimateMain.build);
 
 			// furniture
 			MainInit.chestMetal.setCreativeTab(ClimateMain.build);
@@ -108,6 +127,8 @@ public class MainCreativeTabRegister {
 			MainInit.sinkMetal.setCreativeTab(ClimateMain.build);
 			MainInit.sinkChest.setCreativeTab(ClimateMain.build);
 			MainInit.plate.setCreativeTab(ClimateMain.build);
+			MainInit.realtimeClock.setCreativeTab(ClimateMain.build);
+
 			if (ModuleConfig.machine_advanced) {
 				MainInit.lampCarbide.setCreativeTab(ClimateMain.build);
 				MainInit.lampGas.setCreativeTab(ClimateMain.build);
@@ -116,13 +137,14 @@ public class MainCreativeTabRegister {
 			}
 
 			// cont
-			MainInit.logCont.setCreativeTab(ClimateMain.build);
-			MainInit.cropCont.setCreativeTab(ClimateMain.build);
-			MainInit.dropCont.setCreativeTab(ClimateMain.build);
-			MainInit.miscCont.setCreativeTab(ClimateMain.build);
-			MainInit.cardboard.setCreativeTab(ClimateMain.build);
-			MainInit.cropBasket.setCreativeTab(ClimateMain.build);
-			MainInit.dustBags.setCreativeTab(ClimateMain.build);
+			MainInit.logCont.setCreativeTab(ClimateMain.cont);
+			MainInit.cropCont.setCreativeTab(ClimateMain.cont);
+			MainInit.dropCont.setCreativeTab(ClimateMain.cont);
+			MainInit.miscCont.setCreativeTab(ClimateMain.cont);
+			MainInit.cardboard.setCreativeTab(ClimateMain.cont);
+			MainInit.cropBasket.setCreativeTab(ClimateMain.cont);
+			MainInit.dustBags.setCreativeTab(ClimateMain.cont);
+
 			MainInit.hedgeSpring.setCreativeTab(ClimateMain.build);
 			MainInit.hedgeSummer.setCreativeTab(ClimateMain.build);
 			MainInit.hedgeAutumn.setCreativeTab(ClimateMain.build);

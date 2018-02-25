@@ -28,6 +28,7 @@ public class DCPluginIC2 {
 		Recipes.semiFluidGenerator.addFluid("dcs.black_liquor", 1, 1.2D);
 		Recipes.semiFluidGenerator.addFluid("dcs.fuel_oil", 1, 1.5D);
 		Recipes.semiFluidGenerator.addFluid("dcs.fuel_gas", 1, 2.0D);
+		Recipes.semiFluidGenerator.addFluid("dcs.ethanol", 1, 1.2D);
 
 		// recipe registering
 
@@ -102,7 +103,7 @@ public class DCPluginIC2 {
 		if (ModuleConfig.food) {
 			NBTTagCompound tag3 = new NBTTagCompound();
 			tag3.setInteger("extractor", 2000);
-			Recipes.extractor.addRecipe(new RecipeInputOreDict("cropOlive", 4), null, false, new ItemStack[] {
+			Recipes.extractor.addRecipe(new RecipeInputOreDict("cropOlive", 1), null, false, new ItemStack[] {
 					new ItemStack(FoodInit.dropOil, 1, 0)
 			});
 

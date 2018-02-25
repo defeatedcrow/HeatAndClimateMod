@@ -1,6 +1,8 @@
 package defeatedcrow.hac.food.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
+import defeatedcrow.hac.main.client.gui.SlotInvalid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -23,13 +25,13 @@ public class ContainerFluidProcessor extends Container {
 
 		// 液体系
 		this.addSlotToContainer(new Slot(tile, 0, 19, 18));
-		this.addSlotToContainer(new Slot(tile, 1, 19, 54));
+		this.addSlotToContainer(new SlotInvalid(tile, 1, 19, 54));
 		this.addSlotToContainer(new Slot(tile, 2, 140, 18));
-		this.addSlotToContainer(new Slot(tile, 3, 140, 54));
+		this.addSlotToContainer(new SlotInvalid(tile, 3, 140, 54));
 
 		for (int i = 0; i < 3; i++) {
 			this.addSlotToContainer(new Slot(tile, 4 + i, 57, 18 + 18 * i));
-			this.addSlotToContainer(new Slot(tile, 7 + i, 102, 18 + 18 * i));
+			this.addSlotToContainer(new SlotInvalid(tile, 7 + i, 102, 18 + 18 * i));
 		}
 
 		for (int k = 0; k < 3; ++k) {
@@ -96,9 +98,7 @@ public class ContainerFluidProcessor extends Container {
 			} else if (!this.mergeItemStack(itemstack1, 0, lim, false))
 				return null;
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 

@@ -1,13 +1,12 @@
 package defeatedcrow.hac.main.client.gui;
 
+import defeatedcrow.hac.core.client.base.ContainerBaseDC;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
 
-public class ContainerLowChest extends Container {
+public class ContainerLowChest extends ContainerBaseDC {
 
 	public final TileLowChest tile;
 	public final InventoryPlayer playerInv;
@@ -42,41 +41,24 @@ public class ContainerLowChest extends Container {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack itemstack = null;
-		Slot slot = this.inventorySlots.get(index);
-		int lim = tile.getSizeInventory();
-
-		if (slot != null && slot.getHasStack()) {
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
-
-			if (index < lim) {
-				if (!this.mergeItemStack(itemstack1, lim, this.inventorySlots.size(), true))
-					return null;
-				slot.onSlotChange(itemstack1, itemstack);
-			} else if (!this.mergeItemStack(itemstack1, 0, lim, false))
-				return null;
-
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
-				slot.onSlotChanged();
-			}
-
-			if (itemstack1.stackSize == itemstack.stackSize)
-				return null;
-
-			slot.onPickupFromSlot(playerIn, itemstack1);
-		}
-
-		return itemstack;
-	}
-
-	@Override
 	public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);
 		this.tile.closeInventory(player);
+	}
+
+	@Override
+	protected int inputMinIndex() {
+		return 0;
+	}
+
+	@Override
+	protected int inputMaxIndex() {
+		return tile.getSizeInventory();
+	}
+
+	@Override
+	protected int slotIndex() {
+		return tile.getSizeInventory();
 	}
 
 }

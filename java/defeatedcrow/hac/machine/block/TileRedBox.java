@@ -32,8 +32,7 @@ public class TileRedBox extends TileTorqueBase implements ICrankReceiver {
 	}
 
 	@Override
-	public void setMaxPressed(boolean flag) {
-	}
+	public void setMaxPressed(boolean flag) {}
 
 	@Override
 	public float maxTorque() {

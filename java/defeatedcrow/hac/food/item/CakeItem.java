@@ -2,12 +2,15 @@ package defeatedcrow.hac.food.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.CakeButterEntity;
 import defeatedcrow.hac.food.entity.CakeChocolateEntity;
 import defeatedcrow.hac.food.entity.CakeCoffeeEntity;
+import defeatedcrow.hac.food.entity.CakeCreamEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +28,7 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 4;
+		return 5;
 	}
 
 	@Override
@@ -45,7 +48,8 @@ public class CakeItem extends FoodItemBase {
 				"butter",
 				"chocolate",
 				"coffeejelly",
-				"lemonjelly"
+				"lemonjelly",
+				"bakedcream"
 		};
 		return s;
 	}
@@ -66,6 +70,9 @@ public class CakeItem extends FoodItemBase {
 		if (i == 4) {
 			ret = new CakeLemonEntity(world, x, y, z, player);
 		}
+		if (i == 5) {
+			ret = new CakeCreamEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
@@ -81,7 +88,7 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

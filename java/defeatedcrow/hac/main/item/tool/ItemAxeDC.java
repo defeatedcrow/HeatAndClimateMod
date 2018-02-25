@@ -1,7 +1,7 @@
 package defeatedcrow.hac.main.item.tool;
 
-import net.minecraft.item.ItemAxe;
 import defeatedcrow.hac.core.base.ITexturePath;
+import net.minecraft.item.ItemAxe;
 
 public class ItemAxeDC extends ItemAxe implements ITexturePath {
 

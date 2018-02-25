@@ -13,7 +13,10 @@ public class ItemBullets extends DCItem {
 			"normal",
 			"shot",
 			"silver",
-			"ghost"
+			"ghost",
+			"light",
+			"extinction",
+			"crow"
 	};
 
 	public ItemBullets(int max) {
@@ -41,7 +44,7 @@ public class ItemBullets extends DCItem {
 	}
 
 	public static Type getType(int meta) {
-		meta = MathHelper.clamp_int(meta, 0, 4);
+		meta = MathHelper.clamp_int(meta, 0, 7);
 		return values[meta];
 	}
 
@@ -50,7 +53,10 @@ public class ItemBullets extends DCItem {
 			Type.NORMAL,
 			Type.SHOT,
 			Type.SILVER,
-			Type.GHOST
+			Type.GHOST,
+			Type.LIGHT,
+			Type.EXTINCTION,
+			Type.CROW
 	};
 
 	public enum Type {
@@ -58,8 +64,10 @@ public class ItemBullets extends DCItem {
 		NORMAL,
 		SILVER,
 		SHOT,
-		GHOST;
-
+		GHOST,
+		LIGHT,
+		EXTINCTION,
+		CROW;
 	}
 
 }

@@ -2,12 +2,14 @@ package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import defeatedcrow.hac.plugin.forestry.DCFarmable;
 import defeatedcrow.hac.plugin.forestry.DCFarmableDouble;
 import forestry.api.farming.Farmables;
@@ -23,9 +25,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class DCPluginForestry {
 
@@ -33,12 +33,12 @@ public class DCPluginForestry {
 
 	private DCPluginForestry() {}
 
-	public static void load() {
+	public static void loadInit() {
 
 		if (ModuleConfig.food) {
 
 			Item mulch = Item.REGISTRY.getObject(new ResourceLocation("forestry", "mulch"));
-			Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizerCompound"));
+			Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizer_compound"));
 			Fluid seed = FluidRegistry.getFluid("seed.oil");
 			Fluid juice = FluidRegistry.getFluid("juice");
 			Fluid honey = FluidRegistry.getFluid("for.honey");
@@ -62,7 +62,7 @@ public class DCPluginForestry {
 
 			RecipeManagers.squeezerManager.addRecipe(10, new ItemStack[] {
 					new ItemStack(FoodInit.crops, 1, 6)
-			}, new FluidStack(juice, 300), new ItemStack(mulch), 10);
+			}, new FluidStack(FoodInit.lemon, 300), new ItemStack(mulch), 10);
 
 			RecipeManagers.squeezerManager.addRecipe(10, new ItemStack[] {
 					new ItemStack(FoodInit.crops, 1, 7)
@@ -168,36 +168,46 @@ public class DCPluginForestry {
 
 			}
 
-			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyedSlice"));
+			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyed_slice"));
 
 			if (slice != null) {
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(slice, 4, 0), new Object[] {
-						"XXX",
-						"XYX",
-						"XXX",
-						'Y',
-						new ItemStack(FoodInit.bread, 1, 1),
-						'X',
-						"dropHoney"
-				}));
+				DCRecipe.addShapedNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),
+						new Object[] {
+								"XXX",
+								"XYX",
+								"XXX",
+								'Y',
+								new ItemStack(FoodInit.bread, 1, 1),
+								'X',
+								"dropHoney"
+						});
 
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(slice, 4, 0), new Object[] {
-						"XXX",
-						"XYX",
-						"XXX",
-						'Y',
-						new ItemStack(FoodInit.bread, 1, 3),
-						'X',
-						"dropHoney"
-				}));
+				DCRecipe.addShapedNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(slice, 4, 0),
+						new Object[] {
+								"XXX",
+								"XYX",
+								"XXX",
+								'Y',
+								new ItemStack(FoodInit.bread, 1, 3),
+								'X',
+								"dropHoney"
+						});
 			}
 
 			if (fer != null) {
-				GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(fer, 1, 0), new Object[] {
-						"dustPresscake",
-						"dustAsh",
-						new ItemStack(Items.DYE, 1, 15)
-				}));
+				DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(fer, 1, 0),
+						new Object[] {
+								"dustPresscake",
+								"dustAsh",
+								new ItemStack(Items.DYE, 1, 15)
+						});
+
+				DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(fer, 1, 0),
+						new Object[] {
+								"dustPlant",
+								"dustAsh",
+								new ItemStack(Items.DYE, 1, 15)
+						});
 			}
 
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
@@ -214,7 +224,7 @@ public class DCPluginForestry {
 				FuelManager.bronzeEngineFuel.put(black, new EngineBronzeFuel(black, 30, 2500, 1));
 			}
 
-			Fluid liq = MachineInit.fuelGas;
+			Fluid liq = MachineInit.fuelOil;
 			if (liq != null) {
 				FuelManager.bronzeEngineFuel.put(liq, new EngineBronzeFuel(liq, 40, 4000, 1));
 			}
@@ -222,6 +232,11 @@ public class DCPluginForestry {
 			Fluid gas = MachineInit.fuelGas;
 			if (gas != null) {
 				FuelManager.bronzeEngineFuel.put(gas, new EngineBronzeFuel(gas, 60, 2500, 1));
+			}
+
+			Fluid et = MachineInit.ethanol;
+			if (et != null) {
+				FuelManager.bronzeEngineFuel.put(et, new EngineBronzeFuel(et, 50, 3000, 1));
 			}
 
 			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropRice));
@@ -240,17 +255,39 @@ public class DCPluginForestry {
 		// HaC側のレシピ
 
 		if (ModuleConfig.machine && ModuleConfig.r_mill) {
-			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
-					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropChestnut");
+			if (OreDictionary.doesOreNameExist("cropChestnut")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
+						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropChestnut");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
-					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropWalnut");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
+						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0),
+						"cropChestnut");
+			}
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
-					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropHazelnut");
+			if (OreDictionary.doesOreNameExist("cropWalnut")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0),
+						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropWalnut");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
-					new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropAlmond");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
+						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropWalnut");
+			}
+
+			if (OreDictionary.doesOreNameExist("cropHazelnut")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
+						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropHazelnut");
+
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
+						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0),
+						"cropHazelnut");
+			}
+
+			if (OreDictionary.doesOreNameExist("cropAlmond")) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0),
+						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropAlmond");
+
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
+						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropAlmond");
+			}
 		}
 
 	}

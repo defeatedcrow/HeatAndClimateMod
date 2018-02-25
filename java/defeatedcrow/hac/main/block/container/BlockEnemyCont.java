@@ -3,6 +3,12 @@ package defeatedcrow.hac.main.block.container;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.api.placeable.IRapidCollectables;
+import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -12,9 +18,6 @@ import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import defeatedcrow.hac.api.placeable.IRapidCollectables;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
-import defeatedcrow.hac.core.base.ITexturePath;
 
 public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
@@ -33,15 +36,17 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 				"bone",
 				"spider",
 				"ender",
-				"powder" };
+				"powder"
+		};
 		return name;
 	}
 
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 15;
-		if (m > 4)
+		if (m > 4) {
 			m = 4;
+		}
 		String b = "dcs_climate:blocks/cont/";
 		switch (side) {
 		case 0:
@@ -73,8 +78,9 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 15;
-		if (m > 4)
+		if (m > 4) {
 			m = 4;
+		}
 		String b = "dcs_climate:items/block/cont/";
 		return b + "metalbox_" + getNameSuffix()[m];
 	}
@@ -83,7 +89,7 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 
 	@Override
 	public boolean isCollectable(ItemStack item) {
-		return item != null && item.getItem() != null && item.getItem() instanceof ItemSpade;
+		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemSpade;
 	}
 
 	@Override
@@ -93,7 +99,8 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 
 	@Override
 	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
-		List<ItemStack> list = this.getDrops(world, pos, state, 0);
+		List<ItemStack> list = Lists.newArrayList();
+		list.addAll(this.getDrops(world, pos, state, 0));
 		for (ItemStack item : list) {
 			double x = player.posX;
 			double y = player.posY + 0.25D;

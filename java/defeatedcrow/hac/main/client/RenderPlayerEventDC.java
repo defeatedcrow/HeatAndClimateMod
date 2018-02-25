@@ -129,82 +129,11 @@ public class RenderPlayerEventDC {
 					}
 				}
 			}
-			// if ((player.getHeldItemMainhand() != null && player.getHeldItemMainhand().getItem() == MainInit.scope)
-			// || (player.getHeldItemOffhand() != null
-			// && player.getHeldItemOffhand().getItem() == MainInit.scope)) {
-			// World world = player.worldObj;
-			//
-			// GlStateManager.pushMatrix();
-			// GlStateManager.translate((int) x, (int) y, (int) z);
-			// GlStateManager.rotate(0.0F, 0.0F, 1.0F, 0.0F);
-			// GlStateManager.enableBlend();
-			// GlStateManager.disableLighting();
-			// GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-			// GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-			// GlStateManager.DestFactor.ZERO);
-			//
-			// int i = 15728880;
-			// int j = i % 65536;
-			// int k = i / 65536;
-			// OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
-			//
-			// GlStateManager.color(1.0F, 1.0F, 1.0F, 0.75F);
-			//
-			// for (int x1 = -8; x1 <= 8; x1++) {
-			// for (int z1 = -8; z1 <= 8; z1++) {
-			// for (int y1 = -2; y1 <= 3; y1++) {
-			// BlockPos pos2 = new BlockPos(x + x1, y + y1, z + z1);
-			// IBlockState state = world.getBlockState(pos2);
-			//
-			// if (state.getBlock() instanceof IHeatTile) {
-			// IBlockState s2 = world.getBlockState(pos2.up());
-			// if (!s2.getBlock().isSideSolid(s2, world, pos2.up(), EnumFacing.DOWN)) {
-			// DCHeatTier h1 = ((IHeatTile) state.getBlock()).getHeatTier(world, pos2.up(), pos2);
-			// if (h1 != DCHeatTier.NORMAL) {
-			// event.getRenderer().bindTexture(new ResourceLocation(ClimateCore.PACKAGE_ID,
-			// "textures/gui/icon_" + name[h1.getID()] + ".png"));
-			// GlStateManager.translate(x1, y1, z1);
-			// PANEL_MODEL.render(0.0625F, null);
-			// GlStateManager.translate(-x1, -y1, -z1);
-			// }
-			// }
-			// } else {
-			// DCHeatTier h1 = ClimateAPI.registerBlock.getHeatTier(state.getBlock(),
-			// state.getBlock().getMetaFromState(state));
-			// if (h1 != DCHeatTier.NORMAL) {
-			// IBlockState s2 = world.getBlockState(pos2.up());
-			// if (!s2.getBlock().isSideSolid(s2, world, pos2.up(), EnumFacing.DOWN)) {
-			// event.getRenderer().bindTexture(new ResourceLocation(ClimateCore.PACKAGE_ID,
-			// "textures/gui/icon_" + name[h1.getID()] + ".png"));
-			// GlStateManager.translate(x1, y1, z1);
-			// PANEL_MODEL.render(0.0625F, null);
-			// GlStateManager.translate(-x1, -y1, -z1);
-			// }
-			// }
-			// }
-			// }
-			// }
-			// }
-			//
-			// GlStateManager.enableLighting();
-			// GlStateManager.disableBlend();
-			// GlStateManager.popMatrix();
-			// }
 		}
 	}
 
 	private static String[] name = {
-			"absolute",
-			"frostbite",
-			"cold",
-			"cool",
-			"normal",
-			"warm",
-			"hot",
-			"oven",
-			"kiln",
-			"smelting",
-			"uht",
+			"absolute", "frostbite", "cold", "cool", "normal", "warm", "hot", "oven", "kiln", "smelting", "uht",
 			"inforno"
 	};
 

@@ -91,10 +91,6 @@ public class ParticleFallingStar extends Particle {
 		if (this.motionY < -2.0D) {
 			this.motionY = -2.0D;
 		}
-
-		if (this.isCollided) {
-			this.setExpired();
-		}
 	}
 
 	@SideOnly(Side.CLIENT)

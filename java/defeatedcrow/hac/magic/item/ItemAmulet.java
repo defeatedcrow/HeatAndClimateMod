@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.IJewelAmulet;
 import defeatedcrow.hac.core.ClimateCore;
@@ -23,6 +25,7 @@ import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,8 +37,9 @@ public class ItemAmulet extends DCItem implements IJewelAmulet {
 			"crystal", /* 状態異常耐性 */
 			"rose", /* 気候・火炎耐性 */
 			"black", /* 反撃 */
-			"star",
-			/* 復活 */ };
+			"star", /* 復活 */
+			"moon"
+			/* 保護者 */ };
 
 	public ItemAmulet(int max) {
 		super();
@@ -64,7 +68,7 @@ public class ItemAmulet extends DCItem implements IJewelAmulet {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String s = "";
 		int meta = stack.getMetadata();
 		if (ClimateCore.proxy.isShiftKeyDown()) {
@@ -84,16 +88,17 @@ public class ItemAmulet extends DCItem implements IJewelAmulet {
 		if (!(target instanceof EntityPlayer)) {
 			ItemStack off = target.getItemStackFromSlot(EntityEquipmentSlot.OFFHAND);
 			ItemStack ret = stack.copy();
+			ret.stackSize = 1;
 			if (DCUtil.isEmpty(off)) {
 				target.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, ret);
-				DCUtil.reduceAndDeleteStack(stack, 1);
+				DCUtil.reduceStackSize(stack, 1);
 				return true;
 			} else {
 				if (!target.worldObj.isRemote) {
 					target.entityDropItem(off, 0.25F);
 				}
 				target.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, ret);
-				DCUtil.reduceAndDeleteStack(stack, 1);
+				DCUtil.reduceStackSize(stack, 1);
 				return true;
 			}
 		}
@@ -196,7 +201,7 @@ public class ItemAmulet extends DCItem implements IJewelAmulet {
 			if (target.isEntityUndead() || target instanceof EntityEnderman)
 				return 2.0F;
 		}
-		return 0.0F;
+		return 1.0F;
 	}
 
 	@Override

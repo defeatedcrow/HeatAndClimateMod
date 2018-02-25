@@ -30,13 +30,13 @@ public class TileWatermill extends TileTorqueBase implements ITorqueProvider {
 				IBlockState upper = worldObj.getBlockState(getWaterCheckPos().up());
 				if ((under.getMaterial().blocksMovement() || under.getMaterial().isLiquid())
 						&& (upper.getMaterial().blocksMovement() || upper.getMaterial().isLiquid())) {
-					flow = getGearTier() * 0.5F;
+					flow = getGearTier();
 				}
 			} else if (state.getBlock() instanceof BlockFluidClassic) {
 				BlockFluidClassic flu = (BlockFluidClassic) state.getBlock();
 				if (flu.getDensity(worldObj, getWaterCheckPos()) > 0
 						&& flu.isFlowingVertically(worldObj, getWaterCheckPos())) {
-					flow = getGearTier() * 0.5F;
+					flow = getGearTier();
 				}
 			}
 
@@ -46,7 +46,7 @@ public class TileWatermill extends TileTorqueBase implements ITorqueProvider {
 				if (sec.getBlock() instanceof BlockLiquid && sec2.getBlock() instanceof BlockLiquid) {
 					if (sec.getValue(BlockLiquid.LEVEL) > sec2.getValue(BlockLiquid.LEVEL)) {
 						float f = (15.0F - sec.getValue(BlockLiquid.LEVEL)) / 15.0F;
-						flow = getGearTier() * 0.5F * f;
+						flow = getGearTier() * f;
 					}
 				} else if (sec.getBlock() instanceof BlockFluidClassic
 						&& sec2.getBlock() instanceof BlockFluidClassic) {
@@ -54,7 +54,7 @@ public class TileWatermill extends TileTorqueBase implements ITorqueProvider {
 					if (flu.getDensity(worldObj, pos.down()) > 0) {
 						if (sec.getValue(BlockFluidBase.LEVEL) > sec2.getValue(BlockFluidBase.LEVEL)) {
 							float f = (15.0F - sec.getValue(BlockLiquid.LEVEL)) / 15.0F;
-							flow = getGearTier() * 0.5F * f;
+							flow = getGearTier() * f;
 						}
 					}
 				}
@@ -77,7 +77,7 @@ public class TileWatermill extends TileTorqueBase implements ITorqueProvider {
 
 	@Override
 	public float getGearTier() {
-		return 16.0F;
+		return 32.0F;
 	}
 
 	@Override

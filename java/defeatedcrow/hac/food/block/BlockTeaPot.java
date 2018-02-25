@@ -1,9 +1,6 @@
 package defeatedcrow.hac.food.block;
 
-import java.util.List;
 import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCAirflow;
@@ -21,11 +18,9 @@ import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -57,41 +52,37 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.worldObj.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
+			ItemStack held = player.getHeldItem(hand);
 			if (tile instanceof TileTeaPot) {
 				TileTeaPot pot = (TileTeaPot) tile;
-				ItemStack held = player.getHeldItem(hand);
-				if (!DCUtil.isEmpty(held)) {
-					if (onActivateDCTank(pot, held, world, state, side, player))
-						return true;
-					else if (DrinkMilk.isMilkItem(held) != DrinkMilk.NONE) {
-						DrinkMilk milk = DrinkMilk.isMilkItem(held);
-						if (pot.setMilk(milk)) {
-							if (!player.capabilities.isCreativeMode) {
-								DCUtil.reduceAndDeleteStack(held, 1);
-							}
-							DCLogger.debugLog("Success to put milk: " + milk);
-							DCLogger.debugLog("Milk Count: " + pot.getMilkCount());
-							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
-									2.0F);
+				if (onActivateDCTank(pot, held, world, state, side, player))
+					return true;
+				else if (DrinkMilk.isMilkItem(held) != DrinkMilk.NONE) {
+					DrinkMilk milk = DrinkMilk.isMilkItem(held);
+					if (pot.setMilk(milk)) {
+						if (!player.capabilities.isCreativeMode) {
+							DCUtil.reduceStackSize(held, 1);
 						}
-						return true;
-					} else if (DrinkSugar.isSugarItem(held) != DrinkSugar.NONE) {
-						DrinkSugar sugar = DrinkSugar.isSugarItem(held);
-						if (pot.setSugar(sugar)) {
-							if (!player.capabilities.isCreativeMode) {
-								DCUtil.reduceAndDeleteStack(held, 1);
-							}
-							DCLogger.debugLog("Success to put sugar: " + sugar);
-							DCLogger.debugLog("Sugar Count: " + pot.getSugarCount());
-							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
-									2.0F);
-						}
-						return true;
+						DCLogger.debugLog("Success to put milk: " + milk);
+						DCLogger.debugLog("Milk Count: " + pot.getMilkCount());
+						world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 					}
+					return true;
+				} else if (DrinkSugar.isSugarItem(held) != DrinkSugar.NONE) {
+					DrinkSugar sugar = DrinkSugar.isSugarItem(held);
+					if (pot.setSugar(sugar)) {
+						if (!player.capabilities.isCreativeMode) {
+							DCUtil.reduceStackSize(held, 1);
+						}
+						DCLogger.debugLog("Success to put sugar: " + sugar);
+						DCLogger.debugLog("Sugar Count: " + pot.getSugarCount());
+						world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
+					}
+					return true;
 				}
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 			}
@@ -102,11 +93,6 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileTeaPot();
-	}
-
-	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list) {
-		list.add(new ItemStack(this, 1, 0));
 	}
 
 	@Override
@@ -247,7 +233,10 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 
 				if (success) {
 					if (!player.capabilities.isCreativeMode) {
-						DCUtil.reduceAndDeleteStack(item, 1);
+						item.stackSize--;
+						if (item.stackSize <= 0) {
+							item = null;
+						}
 					}
 					tile.markDirty();
 					player.inventory.markDirty();

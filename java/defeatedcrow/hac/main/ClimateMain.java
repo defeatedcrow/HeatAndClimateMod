@@ -10,12 +10,13 @@ package defeatedcrow.hac.main;
 import java.util.Calendar;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
+import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
+import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -35,10 +36,10 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
-	public static final int MOD_MEJOR = 1;
-	public static final int MOD_MINOR = 6;
-	public static final int MOD_BUILD = 6;
-	public static final String MOD_DEPENDENCIES = "required-after:Forge@[12.18.3.2185,);required-after:dcs_climate|lib@[1.6.3,)";
+	public static final int MOD_MEJOR = 2;
+	public static final int MOD_MINOR = 2;
+	public static final int MOD_BUILD = 2;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.2.0,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
@@ -50,6 +51,7 @@ public class ClimateMain {
 	public static final CreativeTabs machine = new CreativeTabClimateMachine(MOD_ID + "_machine");
 	public static final CreativeTabs food = new CreativeTabClimateFood(MOD_ID + "_food");
 	public static final CreativeTabs build = new CreativeTabClimateBuild(MOD_ID + "_build");
+	public static final CreativeTabs cont = new CreativeTabClimateContainer(MOD_ID + "_container");
 
 	public static final Calendar CAL = Calendar.getInstance();
 	public static int month = 0;
@@ -70,6 +72,7 @@ public class ClimateMain {
 		MainConfig.INSTANCE.load(event.getModConfigurationDirectory());
 		// api
 		MainAPIManager.fuelRegister = new DCFluidFuelRegister();
+		MainAPIManager.veinRegister = VeinTableRegister.INSTANCE;
 		MainAPIManager.isLoaded = true;
 
 		// integration
@@ -86,10 +89,12 @@ public class ClimateMain {
 		// enchant
 		proxy.loadEnchantment();
 		// achievement
-		AchievementClimate.load();
+		// AchievementClimate.load();
 		OreDicRegister.load();
 		// loader
 		DCChunkloadContoroller.getInstance().preInit();
+
+		DCIntegrationCore.INSTANCE.loadPre();
 	}
 
 	@EventHandler
@@ -103,14 +108,19 @@ public class ClimateMain {
 		// other things
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 
-		DCIntegrationCore.INSTANCE.loadIMC();
+		DCIntegrationCore.INSTANCE.loadInit();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		// Recipes
 		proxy.loadRecipes();
-		DCIntegrationCore.INSTANCE.load();
+		DCIntegrationCore.INSTANCE.loadPost();
+
+		// json
+		VeinTableJsonHelper.pre();
+
+		VeinTableJsonHelper.post();
 
 		// date
 		month = CAL.get(CAL.MONTH);

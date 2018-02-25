@@ -1,11 +1,8 @@
 package defeatedcrow.hac.machine.block;
 
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.main.achievement.AchievementClimate;
-import defeatedcrow.hac.main.achievement.AcvHelper;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -31,19 +28,15 @@ public class BlockCreativeBox extends BlockTorqueBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			@Nullable ItemStack heldItemIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
-			if (heldItem != null && heldItem.getItem() instanceof IWrenchDC) {
+			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {
 				TileEntity tile = world.getTileEntity(pos);
-				// achievement
-				if (!player.hasAchievement(AchievementClimate.MACHINE_CHANGE)) {
-					AcvHelper.addMachineAcievement(player, AchievementClimate.MACHINE_CHANGE);
-				}
 			}
 		}
-		return super.onBlockActivated(world, pos, state, player, hand, heldItemIn, side, hitX, hitY, hitZ);
+		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 }

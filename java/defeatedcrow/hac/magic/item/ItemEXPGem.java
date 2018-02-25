@@ -2,8 +2,11 @@ package defeatedcrow.hac.magic.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -47,20 +50,24 @@ public class ItemEXPGem extends DCItem {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		if (!player.capabilities.isCreativeMode) {
-			--stack.stackSize;
-		}
-		if (!world.isRemote) {
-			player.addExperienceLevel(10);
-		}
-		return new ActionResult(EnumActionResult.SUCCESS, stack);
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
+		if (player != null) {
+			ItemStack stack = player.getHeldItem(hand);
+			if (!player.capabilities.isCreativeMode) {
+				DCUtil.reduceStackSize(stack, 1);
+			}
+			if (!world.isRemote) {
+				player.addExperienceLevel(10);
+			}
+			return new ActionResult(EnumActionResult.SUCCESS, stack);
+		} else
+			return super.onItemRightClick2(world, player, hand);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		if (stack != null) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
+		if (!DCUtil.isEmpty(stack)) {
 			int m = stack.getItemDamage();
 			if (m == 0) {
 				tooltip.add(I18n.translateToLocal("dcs.tip.exp_gem.description"));

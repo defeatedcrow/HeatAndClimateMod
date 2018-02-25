@@ -36,11 +36,10 @@ public class RedBoxTESR extends DCTorqueTESRBase {
 
 	@Override
 	protected String getTexPass(int i) {
-		if (i < 8) {
+		if (i < 8)
 			return "dcs_climate:textures/tiles/redstonebox_dark.png";
-		} else {
+		else
 			return "dcs_climate:textures/tiles/redstonebox_lit.png";
-		}
 	}
 
 	private static final DCTileModelBase MODEL = new ModelGearBox();

@@ -1,7 +1,7 @@
 package defeatedcrow.hac.machine.gui;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
-import defeatedcrow.hac.main.client.gui.SlotDCTile;
 import defeatedcrow.hac.main.client.gui.SlotInvalid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -19,7 +19,7 @@ public class ContainerHopperFluid extends Container {
 		this.playerInv = player.inventory;
 		chest.openInventory(player);
 
-		this.addSlotToContainer(new SlotDCTile(chest, 0, 73, 18));
+		this.addSlotToContainer(new Slot(chest, 0, 73, 18));
 		this.addSlotToContainer(new SlotInvalid(chest, 1, 73, 54));
 
 		for (int k = 0; k < 3; ++k) {
@@ -55,9 +55,7 @@ public class ContainerHopperFluid extends Container {
 			} else if (!this.mergeItemStack(itemstack1, 0, lim, false))
 				return null;
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
+			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
 			}
 

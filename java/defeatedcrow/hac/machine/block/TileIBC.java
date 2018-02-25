@@ -61,7 +61,7 @@ public class TileIBC extends DCTileEntity implements ITagGetter {
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (facing != null && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
 			return (T) inputT;
 		return super.getCapability(capability, facing);
 	}

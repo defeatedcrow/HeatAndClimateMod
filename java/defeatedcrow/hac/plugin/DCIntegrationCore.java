@@ -13,6 +13,10 @@ public class DCIntegrationCore {
 	public static boolean loadedMekanism = false;
 	public static boolean loadedCoFH = false;
 	public static boolean loadedBoP = false;
+	public static boolean loadedTanpopo = false;
+	public static boolean loadedJEI = false;
+	public static boolean loadedBC = false;
+	public static boolean loadedIC2 = false;
 
 	private DCIntegrationCore() {}
 
@@ -23,42 +27,67 @@ public class DCIntegrationCore {
 		if (Loader.isModLoaded("Mekanism") && ModuleConfig.mek) {
 			loadedMekanism = true;
 		}
-		if (Loader.isModLoaded("cofhcore") && Loader.isModLoaded("thermalfoundation") && ModuleConfig.cofh) {
+		if (Loader.isModLoaded("cofhcore") && ModuleConfig.cofh) {
 			loadedCoFH = true;
 		}
 		if (Loader.isModLoaded("BiomesOPlenty") && ModuleConfig.bop) {
 			loadedBoP = true;
 		}
+		if (Loader.isModLoaded("JEI")) {
+			loadedJEI = true;
+		}
+		if (Loader.isModLoaded("schr0tanpopo")) {
+			loadedTanpopo = true;
+		}
+		if (Loader.isModLoaded("buildcraftenergy") && ModuleConfig.bc) {
+			loadedBC = true;
+		}
+		if (Loader.isModLoaded("IC2") && ModuleConfig.ic2) {
+			loadedIC2 = true;
+		}
 	}
 
-	public static void load() {
+	public static void loadPre() {
+
+	}
+
+	public static void loadInit() {
 
 		DCPluginFluid.load();
 
-		if (Loader.isModLoaded("BiomesOPlenty") && ModuleConfig.bop) {
+		if (loadedMekanism) {
 			try {
-				DCPluginBoP.load();
+				DCPluginMekanism.sendIMC();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: Mekanism");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Mekanism");
+			}
+		}
+
+		if (loadedCoFH) {
+			try {
+				DCPluginCoFH.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: cofh");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: cofh");
+			}
+		}
+
+		if (loadedTanpopo) {
+			try {
+				DCPluginTanpopo.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: schr0tanpopo");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: schr0tanpopo");
+			}
+		}
+
+		if (loadedBoP) {
+			try {
+				DCPluginBoP.loadInit();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: BiomesOPlenty");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomesOPlenty");
-			}
-		}
-
-		if (loadedForestry && ModuleConfig.ffm) {
-			try {
-				DCPluginForestry.load();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: forestry");
-			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: forestry");
-			}
-		}
-
-		if (Loader.isModLoaded("IC2") && ModuleConfig.ic2) {
-			try {
-				DCPluginIC2.load();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: IC2");
-			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: IC2");
 			}
 		}
 
@@ -71,16 +100,16 @@ public class DCIntegrationCore {
 			}
 		}
 
-		if (Loader.isModLoaded("schr0tanpopo")) {
+		if (loadedIC2) {
 			try {
-				DCPluginTanpopo.load();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: schr0tanpopo");
+				DCPluginIC2.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: IC2");
 			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: schr0tanpopo");
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: IC2");
 			}
 		}
 
-		if (Loader.isModLoaded("JEI")) {
+		if (loadedJEI) {
 			try {
 				DCPluginJeiMain.load();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: JEI");
@@ -90,22 +119,32 @@ public class DCIntegrationCore {
 		}
 	}
 
-	public static void loadIMC() {
-		if (loadedMekanism && ModuleConfig.mek) {
+	public static void loadPost() {
+
+		if (loadedForestry) {
 			try {
-				DCPluginMekanism.sendIMC();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: Mekanism");
+				DCPluginForestry.loadInit();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: forestry");
 			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Mekanism");
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: forestry");
 			}
 		}
 
-		if (loadedCoFH && ModuleConfig.cofh) {
+		if (loadedBC) {
 			try {
-				DCPluginCoFH.load();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: cofh");
+				DCPluginBuildcraft.loadInit();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: buildcraftenergy");
 			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: cofh");
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: buildcraftenergy");
+			}
+		}
+
+		if (loadedMekanism) {
+			try {
+				DCPluginMekanism.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: Mekanism");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Mekanism");
 			}
 		}
 
@@ -115,6 +154,8 @@ public class DCIntegrationCore {
 		} catch (Exception e) {
 			DCLogger.infoLog("dcs_climate", "Failed to load mob resistant data");
 		}
+
+		// FMLCommonHandler.instance().resetClientRecipeBook();
 	}
 
 }

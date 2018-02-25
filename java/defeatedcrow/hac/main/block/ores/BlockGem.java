@@ -3,6 +3,8 @@ package defeatedcrow.hac.main.block.ores;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IThermalInsulationBlock;
@@ -10,6 +12,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -65,7 +68,7 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 
 	@Override
 	public boolean isCollectable(ItemStack item) {
-		return item != null && item.getItem() != null && item.getItem() instanceof ItemPickaxe;
+		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemPickaxe;
 	}
 
 	@Override
@@ -75,7 +78,8 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 
 	@Override
 	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
-		List<ItemStack> list = this.getDrops(world, pos, state, 0);
+		List<ItemStack> list = Lists.newArrayList();
+		list.addAll(this.getDrops(world, pos, state, 0));
 		for (ItemStack item : list) {
 			double x = player.posX;
 			double y = player.posY + 0.25D;

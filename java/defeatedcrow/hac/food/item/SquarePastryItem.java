@@ -3,10 +3,13 @@ package defeatedcrow.hac.food.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.ChocolatePieEntity;
+import defeatedcrow.hac.food.entity.CustardPieEntity;
 import defeatedcrow.hac.food.entity.FruitPieEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
 import defeatedcrow.hac.food.entity.MooncakeEntity;
@@ -28,7 +31,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 9;
+		return 11;
 	}
 
 	@Override
@@ -53,7 +56,9 @@ public class SquarePastryItem extends FoodItemBase {
 				"fruit_raw",
 				"fruit_baked",
 				"mooncake_raw",
-				"mooncake_baked"
+				"mooncake_baked",
+				"cream_raw",
+				"cream_baked"
 		};
 		return s;
 	}
@@ -83,6 +88,10 @@ public class SquarePastryItem extends FoodItemBase {
 		case 9:
 			ret = new MooncakeEntity(world, x, y, z, player);
 			break;
+		case 10:
+		case 11:
+			ret = new CustardPieEntity(world, x, y, z, player);
+			break;
 		default:
 			ret = new SugarPieEntity(world, x, y, z, player);
 		}
@@ -103,6 +112,7 @@ public class SquarePastryItem extends FoodItemBase {
 			return 8;
 		case 3:
 		case 9:
+		case 11:
 			return 10;
 		default:
 			return 1;
@@ -122,7 +132,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
 	}
 

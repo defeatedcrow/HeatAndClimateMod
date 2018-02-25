@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.Optional.Method;
 
 @Optional.InterfaceList({
-		@Optional.Interface(iface = "cofh.api.energy.IEnergyReceiver", modid = "CoFHAPI|energy"),
+		@Optional.Interface(iface = "cofh.api.energy.IEnergyReceiver", modid = "cofhcore"),
 })
 public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider, cofh.api.energy.IEnergyReceiver {
 
@@ -183,27 +183,27 @@ public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider,
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "cofhcore")
 	public int getEnergyStored(EnumFacing face) {
 		int ret = cashedRF;
 		return ret;
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "cofhcore")
 	public int getMaxEnergyStored(EnumFacing face) {
 		int ret = getMaxCashRF();
 		return ret;
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "cofhcore")
 	public boolean canConnectEnergy(EnumFacing face) {
 		return face != this.getBaseSide();
 	}
 
 	@Override
-	@Method(modid = "CoFHAPI|energy")
+	@Method(modid = "cofhcore")
 	public int receiveEnergy(EnumFacing face, int amo, boolean sim) {
 		if (canConnectEnergy(face)) {
 			int get = this.getMaxCashRF() - cashedRF;

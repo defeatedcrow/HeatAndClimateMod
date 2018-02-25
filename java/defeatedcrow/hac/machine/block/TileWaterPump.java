@@ -41,7 +41,7 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 		}
 
 		if (!worldObj.isRemote) {
-			currentProgressTime += MathHelper.floor_float(prevTorque);
+			currentProgressTime += MathHelper.floor_double(prevTorque);
 			int limit = currentProgressTime / 32;
 			int ret = currentProgressTime % 32;
 			// DCLogger.debugLog("count: " + count + ", ret " + ret);
@@ -122,9 +122,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 		int level = state.getValue(BlockLiquid.LEVEL).intValue();
 		if (state.getMaterial() == Material.WATER) {
 			FluidStack get = new FluidStack(FluidRegistry.WATER, 1000);
-			if (inputT.fill(get, false) > 0) {
+			if (inputT.fill(get, false) > 0)
 				return inputT.fill(get, true);
-			}
 		} else if (state.getMaterial() == Material.LAVA) {
 			FluidStack get = new FluidStack(FluidRegistry.LAVA, 1000);
 			if (level == 0) {
@@ -138,14 +137,14 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 				BlockPos next = tPos;
 				int l2 = level;
 
-				if (inputT.fill(get, false) <= 0) {
+				if (inputT.fill(get, false) <= 0)
 					return 0;
-				}
 				for (int count = 0; count < 8; count++) {
 					int[] ofs = {
 							0,
 							0,
-							0 };
+							0
+					};
 					for (EnumFacing f2 : EnumFacing.VALUES) {
 						if (f2 == EnumFacing.DOWN) {
 							continue; // 真下方向は探らない
@@ -158,7 +157,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 								ofs = new int[] {
 										f2.getFrontOffsetX(),
 										f2.getFrontOffsetY(),
-										f2.getFrontOffsetZ() };
+										f2.getFrontOffsetZ()
+								};
 								l2 = s2.getValue(BlockLiquid.LEVEL).intValue();
 								// DCLogger.debugLog(
 								// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] + "),
@@ -168,7 +168,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 								ofs = new int[] {
 										f2.getFrontOffsetX(),
 										f2.getFrontOffsetY(),
-										f2.getFrontOffsetZ() };
+										f2.getFrontOffsetZ()
+								};
 								l2 = s2.getValue(BlockLiquid.LEVEL).intValue();
 								// DCLogger.debugLog(
 								// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] + "),
@@ -180,7 +181,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 									ofs = new int[] {
 											f2.getFrontOffsetX(),
 											f2.getFrontOffsetY() + 1,
-											f2.getFrontOffsetZ() };
+											f2.getFrontOffsetZ()
+									};
 									l2 = s3.getValue(BlockLiquid.LEVEL);
 									// DCLogger.debugLog(
 									// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] +
@@ -218,18 +220,16 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 		int level = state.getValue(BlockFluidBase.LEVEL).intValue();
 		Fluid fluid = flu.getFluid();
 		boolean gas = flu.getFluid().getDensity() < 0;
-		if (fluid == null) {
+		if (fluid == null)
 			return 0;
-		}
 		FluidStack get = new FluidStack(fluid, 1000);
 
 		if (flu.isSourceBlock(worldObj, tPos)) {
 			if (inputT.fill(get, false) > 0) {
 				flu.drain(worldObj, tPos, true);
 				return inputT.fill(get, true);
-			} else {
+			} else
 				return 0;
-			}
 		} else {
 			// 隣接チェック
 			// 8ブロック先までは探る
@@ -250,7 +250,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 								ofs = new int[] {
 										f2.getFrontOffsetX(),
 										f2.getFrontOffsetY(),
-										f2.getFrontOffsetZ() };
+										f2.getFrontOffsetZ()
+								};
 								l2 = flu2.getQuantaValue(worldObj, p2);
 								// DCLogger.debugLog(
 								// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] + "),
@@ -260,7 +261,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 								ofs = new int[] {
 										f2.getFrontOffsetX(),
 										f2.getFrontOffsetY(),
-										f2.getFrontOffsetZ() };
+										f2.getFrontOffsetZ()
+								};
 								l2 = flu2.getQuantaValue(worldObj, p2);
 								// DCLogger.debugLog(
 								// "c" + count + ", (" + ofs[0] + " " + ofs[1] + " " + ofs[2] + "),
@@ -274,7 +276,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 										ofs = new int[] {
 												f2.getFrontOffsetX(),
 												f2.getFrontOffsetY() + (gas ? -1 : 1),
-												f2.getFrontOffsetZ() };
+												f2.getFrontOffsetZ()
+										};
 										l2 = flu3.getQuantaValue(worldObj, p3);
 										// DCLogger.debugLog("c" + count + ", (" + ofs[0] + " " +
 										// ofs[1] + " " + ofs[2]
@@ -325,9 +328,8 @@ public class TileWaterPump extends TileTorqueBase implements ITorqueReceiver {
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		if (this.currentTorque >= this.maxTorque()) {
+		if (this.currentTorque >= this.maxTorque())
 			return false;
-		}
 		return this.isInputSide(side.getOpposite());
 	}
 
