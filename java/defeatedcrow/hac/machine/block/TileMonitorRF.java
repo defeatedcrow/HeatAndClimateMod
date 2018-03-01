@@ -12,7 +12,7 @@ public class TileMonitorRF extends TileMonitorBase {
 	}
 
 	@Override
-	@Method(modid = "redstoneflux")
+	@Method(modid = "cofhcore")
 	protected boolean updateAmount() {
 		TileEntity target = worldObj.getTileEntity(getPairPos());
 		if (target != null && RFDeviceHelper.isRFHandler(target)) {
