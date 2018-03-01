@@ -49,9 +49,6 @@ public class MainCoreConfig {
 			Property vsEU = cfg.get("plugin setting", "Conversion rate vs EU", rateVsEU,
 					"Set the amount of conversion rate as EU/torque.");
 
-			Property vsFU = cfg.get("plugin setting", "Conversion rate vs FU", rateVsFU,
-					"Set the amount of conversion rate as FU/torque.");
-
 			Property noSteel = cfg.get("item setting", "Enable Steel Recipe", steel,
 					"Enable the climate recipe for smelting the steel block.");
 
@@ -70,7 +67,7 @@ public class MainCoreConfig {
 
 			rateVsRF = vsRF.getDouble();
 			rateVsEU = vsEU.getDouble();
-			rateVsFU = vsFU.getDouble();
+			rateVsFU = vsRF.getDouble();
 
 			steel = noSteel.getBoolean();
 			lead = noLead.getBoolean();
