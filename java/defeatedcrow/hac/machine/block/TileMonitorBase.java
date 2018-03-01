@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class TileMonitorBase extends DCTileEntity implements ITagGetter {
+public class TileMonitorBase extends DCTileEntity implements ITagGetter {
 
 	// pair
 	protected BlockPos pairPos = null;
@@ -104,7 +104,9 @@ public abstract class TileMonitorBase extends DCTileEntity implements ITagGetter
 		}
 	}
 
-	protected abstract boolean updateAmount();
+	protected boolean updateAmount() {
+		return false;
+	}
 
 	// NBT
 
