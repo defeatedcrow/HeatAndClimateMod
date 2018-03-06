@@ -204,7 +204,7 @@ public class TilePortalManager extends TileTorqueLockable
 							ItemStack item = input.extractItem(i, 1, true);
 							if (!DCUtil.isEmpty(item)) {
 								ItemStack ins = item.copy();
-								ins.stackSize = 1;
+								DCUtil.setSize(ins, 1);
 								for (int j = 0; j < output.getSlots(); j++) {
 									ItemStack ret = output.insertItem(j, ins, false);
 									if (DCUtil.isEmpty(ret)) {
@@ -456,12 +456,12 @@ public class TilePortalManager extends TileTorqueLockable
 		if (i < 0 || i >= this.getSizeInventory() || DCUtil.isEmpty(get))
 			return 0;
 		if (DCUtil.isSameItem(get, inv.getStackInSlot(i), true)) {
-			int i1 = inv.getStackInSlot(i).stackSize + get.stackSize;
-			if (i1 > inv.getStackInSlot(i).getMaxStackSize()) {
+			int i1 = DCUtil.getSize(getStackInSlot(i)) + DCUtil.getSize(get);
+			if (!DCUtil.isEmpty(getStackInSlot(i)) && i1 > inv.getStackInSlot(i).getMaxStackSize()) {
 				i1 = inv.getStackInSlot(i).getMaxStackSize() - inv.getStackInSlot(i).stackSize;
 				return i1;
 			}
-			return get.stackSize;
+			return DCUtil.getSize(get);
 		}
 
 		return 0;

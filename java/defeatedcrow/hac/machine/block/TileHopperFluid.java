@@ -12,13 +12,14 @@ import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
@@ -83,15 +84,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			}
 
 			if (flag) {
-				if (!this.hasWorldObj())
-					return;
-				@SuppressWarnings("unchecked")
-				List<EntityPlayer> list = this.getWorld().playerEntities;
-				for (EntityPlayer player : list) {
-					if (player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-					}
-				}
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos,
+						FluidIDRegisterDC.getID(inputT.getFluidType()), inputT.getFluidAmount()));
 			}
 		} else {
 			cooldown--;
@@ -119,7 +113,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 					ItemStack item = inv.getStackInSlot(1);
 					if (!DCUtil.isEmpty(item)) {
 						ItemStack ins = item.copy();
-						ins.stackSize = 1;
+						DCUtil.setSize(ins, 1);
 						for (int j = 0; j < target.getSlots(); j++) {
 							ItemStack ret = target.insertItem(j, ins, false);
 							if (DCUtil.isEmpty(ret)) {
@@ -448,14 +442,13 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 
 	public static int isItemStackable(ItemStack target, ItemStack current) {
 		if (DCUtil.isSameItem(target, current, true)) {
-			int i = current.stackSize + target.stackSize;
-			if (i > current.getMaxStackSize()) {
-				i = current.getMaxStackSize() - current.stackSize;
+			int i = DCUtil.getSize(current) + DCUtil.getSize(target);
+			if (!DCUtil.isEmpty(current) && i > current.getMaxStackSize()) {
+				i = current.getMaxStackSize() - DCUtil.getSize(current);
 				return i;
 			}
-			return target.stackSize;
+			return DCUtil.getSize(target);
 		}
-
 		return 0;
 	}
 

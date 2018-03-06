@@ -828,6 +828,7 @@ tile.dcs_device_creative_box_0.name=Creative Torque Block
 tile.dcs_device_conveyor_0.name=Conveyor Belt
 tile.dcs_device_catapult_0.name=Catapult
 tile.dcs_device_hopper_filter_0.name=Filter Hopper
+tile.dcs_device_hopper_gold_0.name=Golden Filter Hopper
 tile.dcs_device_hopper_fluid_0.name=Fluid Hopper
 tile.dcs_device_thermometer_0.name=Galileo Thermometer
 tile.dcs_device_windvane_0.name=Wind vane
@@ -1169,6 +1170,7 @@ lingering_potion.effect.dcs.heavyboots=Lingering Potion of Iron Boots
 
 #enchantment
 enchantment.dcs.venom=Venom Arrow
+enchantment.dcs.robber=Highway Robber
 
 #acievement
 achievement.dcs.climate_master=Climate Watcher

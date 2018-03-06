@@ -49,13 +49,13 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		for (int i = 0; i < 9; i++) {
 			int i2 = i + 2;
 			ItemStack check = inv.getStackInSlot(i2);
-			if (DCUtil.isEmpty(check)) {
+			if (DCUtil.isEmpty(check) || DCUtil.isEmpty(item)) {
 				continue;
 			} else if (DCUtil.isIntegratedItem(check, item, false)) {
-				if (check.stackSize >= item.stackSize)
+				if (DCUtil.getSize(check) >= DCUtil.getSize(item))
 					return i; // 一致
 			} else if (item.getItem().isDamageable() && item.getItem() == check.getItem() && item.getItemDamage() > 0) {
-				if (check.stackSize >= item.stackSize)
+				if (DCUtil.getSize(check) >= DCUtil.getSize(item))
 					return i; // damageableの場合、ダメージ値を問わない
 			} else {
 				int[] tarDic = OreDictionary.getOreIDs(check);
@@ -65,12 +65,12 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 						for (int b = 0; b < itemDic.length; b++) {
 							if (tarDic[a] == itemDic[b]) {
 								// 同一の辞書IDを持っている
-								if (check.stackSize >= item.stackSize)
+								if (DCUtil.getSize(check) >= DCUtil.getSize(item))
 									return i; // 強制的に辞書レシピ化
 							} else if (itemDic[b] == OreDictionary.getOreID("dustIron")) {
 								// iron dust のみの特例措置
 								if (tarDic[a] == OreDictionary.getOreID("dustMagnetite")) {
-									if (check.stackSize >= item.stackSize)
+									if (DCUtil.getSize(check) >= DCUtil.getSize(item))
 										return i; // 強制的に辞書レシピ化
 								}
 							}
@@ -106,7 +106,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 					output = mold.getOutput(moldItem);
 				}
 
-				if (!DCUtil.isEmpty(output) && canIncrStack(output, 1)) {
+				if (!DCUtil.isEmpty(output) && inv.canIncr(1, output) > 0) {
 					ItemStack[] reqs = new ItemStack[9];
 					ItemStack[] rets = new ItemStack[9];
 					int[] reduce = new int[9];
@@ -130,8 +130,8 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 							ItemStack target = reqs[j];
 							int slo = getMatchSlot(target, rets);
 							if (slo >= 0) {
-								reduce[slo] += target.stackSize;
-								countQ -= target.stackSize;
+								reduce[slo] += DCUtil.getSize(target);
+								countQ -= DCUtil.getSize(target);
 								flag = true;
 							}
 						}
@@ -142,7 +142,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 						if (DCUtil.isEmpty(inv.getStackInSlot(1))) {
 							this.inv.setInventorySlotContents(1, output);
 						} else {
-							DCUtil.addStackSize(inv.getStackInSlot(1), output.stackSize);
+							DCUtil.addStackSize(inv.getStackInSlot(1), DCUtil.getSize(output));
 						}
 						for (int k = 0; k < 9; k++) {
 							int red = reduce[k];
@@ -163,9 +163,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			ItemStack moldItem = this.getStackInSlot(0);
 			int prevCount = 0;
 			for (int i = 0; i < 9; i++) {
-				if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
-					prevCount += display.getStackInSlot(i).stackSize;
-				}
+				prevCount += DCUtil.getSize(inv.getStackInSlot(i));
 			}
 			if (!DCUtil.isEmpty(moldItem) && moldItem.getItem() instanceof IPressMold) {
 				IPressMold mold = (IPressMold) moldItem.getItem();
@@ -173,7 +171,6 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				if (!reqs.isEmpty()) {
 					for (int i = 0; i < reqs.size(); i++) {
 						display.setInventorySlotContents(i, reqs.get(i));
-						;
 					}
 				} else {
 					display.clear();
@@ -183,10 +180,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			}
 			int postCount = 0;
 			for (int i = 0; i < 9; i++) {
-				if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
-					postCount += display.getStackInSlot(i).stackSize;
-					;
-				}
+				postCount += DCUtil.getSize(inv.getStackInSlot(i));
 			}
 			if (prevCount != postCount) {
 				this.markDirty();
@@ -196,21 +190,6 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		}
 
 	}
-
-	// @Override
-	// public void onTickUpdate() {
-	// super.onTickUpdate();
-	// if (!worldObj.isRemote) {
-	// if (prevRotation >= 220 && !flag) {
-	// worldObj.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_ANVIL_BREAK,
-	// SoundCategory.BLOCKS, 0.85F, 0.25F);
-	// flag = true;
-	// }
-	// if (flag && prevRotation < 220) {
-	// flag = false;
-	// }
-	// }
-	// }
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
@@ -431,19 +410,13 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 					DCUtil.reduceStackSize(inv.getStackInSlot(slot + 2), amo);
 				}
 			}
-			ret.stackSize = (amo);
+			DCUtil.reduceStackSize(ret, amo);
 
 			boolean b = target.getItem().isDamageable();
 			if (!DCUtil.isEmpty(ret) && !b) {
 				int red = 0;
-				if (DCUtil.isEmpty(this.getStackInSlot(11))) {
-					red = amo;
-					this.setInventorySlotContents(11, ret);
-				} else if (this.canIncrStack(ret, 11)) {
-					red = this.incrStackSize(11, ret);
-					if (red > 0) {
-						DCUtil.addStackSize(getStackInSlot(11), red);
-					}
+				if (inv.canIncr(11, ret) > 0) {
+					red = inv.incrStackInSlot(11, ret);
 				}
 				if (red > 0) {
 					DCUtil.reduceStackSize(target, red);
@@ -451,7 +424,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 					if (red >= amo) {
 						ret = null;
 					} else {
-						ret.stackSize = amo;
+						DCUtil.setSize(ret, amo);
 					}
 				}
 			}
@@ -466,7 +439,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 							if (i == slot) {
 								continue;
 							}
-							int a = incrStackSize(i + 2, ret);
+							int a = inv.incrStackInSlot(i + 2, ret);
 							if (a < ret.stackSize) {
 								DCUtil.reduceStackSize(ret, a);
 							} else {
@@ -477,26 +450,6 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 				}
 			}
 		}
-	}
-
-	private boolean canIncrStack(ItemStack incr, int slot) {
-		ItemStack check = getStackInSlot(slot);
-		return DCUtil.isEmpty(check) || DCUtil.isStackable(incr, check);
-	}
-
-	public int incrStackSize(int i, ItemStack get) {
-		if (i < 0 || i >= this.getSizeInventory() || DCUtil.isEmpty(get))
-			return 0;
-		if (DCUtil.isSameItem(get, inv.getStackInSlot(i), true)) {
-			int i1 = inv.getStackInSlot(i).stackSize + get.stackSize;
-			if (i1 > inv.getStackInSlot(i).getMaxStackSize()) {
-				i1 = inv.getStackInSlot(i).getMaxStackSize() - inv.getStackInSlot(i).stackSize;
-				return i1;
-			}
-			return get.stackSize;
-		}
-
-		return 0;
 	}
 
 	@Override

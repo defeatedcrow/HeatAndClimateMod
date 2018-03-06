@@ -1,16 +1,14 @@
 package defeatedcrow.hac.machine.block;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
@@ -39,15 +37,8 @@ public class TileIBC extends DCTileEntity implements ITagGetter {
 			}
 
 			if (flag) {
-				if (!this.hasWorldObj())
-					return;
-				@SuppressWarnings("unchecked")
-				List<EntityPlayer> list = this.getWorld().playerEntities;
-				for (EntityPlayer player : list) {
-					if (player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-					}
-				}
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos,
+						FluidIDRegisterDC.getID(inputT.getFluidType()), inputT.getFluidAmount()));
 			}
 		}
 	}

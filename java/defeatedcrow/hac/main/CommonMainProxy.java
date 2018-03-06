@@ -66,6 +66,7 @@ import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.enchant.EnchantmentRobber;
 import defeatedcrow.hac.main.enchant.EnchantmentVenom;
 import defeatedcrow.hac.main.entity.EntityCrowBalloon;
 import defeatedcrow.hac.main.entity.EntityCrowBullet;
@@ -142,6 +143,10 @@ public class CommonMainProxy implements IGuiHandler {
 		MainInit.venom = new EnchantmentVenom();
 		ForgeRegistries.ENCHANTMENTS
 				.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
+
+		MainInit.robber = new EnchantmentRobber();
+		ForgeRegistries.ENCHANTMENTS
+				.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
 
 	}
 

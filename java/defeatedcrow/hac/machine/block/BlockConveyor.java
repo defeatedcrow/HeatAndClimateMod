@@ -9,6 +9,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -93,6 +94,41 @@ public class BlockConveyor extends BlockTorqueBase {
 			return AABB_NS;
 
 		}
+	}
+
+	@Override
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		if (!world.isRemote) {
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile != null && tile instanceof TileConveyor) {
+				TileConveyor conv = (TileConveyor) tile;
+
+				ItemStack drop1 = conv.getStackInSlot(0);
+				if (!DCUtil.isEmpty(drop1)) {
+					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D,
+							pos.getZ() + 0.5D, drop1);
+					float f3 = 0.05F;
+					entityitem.motionX = (float) world.rand.nextGaussian() * f3;
+					entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
+					entityitem.motionZ = (float) world.rand.nextGaussian() * f3;
+					world.spawnEntityInWorld(entityitem);
+				}
+
+				ItemStack drop2 = conv.getStackInSlot(1);
+				if (!DCUtil.isEmpty(drop2)) {
+					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D,
+							pos.getZ() + 0.5D, drop2);
+					float f3 = 0.05F;
+					entityitem.motionX = (float) world.rand.nextGaussian() * f3;
+					entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
+					entityitem.motionZ = (float) world.rand.nextGaussian() * f3;
+					world.spawnEntityInWorld(entityitem);
+				}
+			}
+
+		}
+		world.updateComparatorOutputLevel(pos, state.getBlock());
+		super.breakBlock(world, pos, state);
 	}
 
 }

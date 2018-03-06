@@ -190,7 +190,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 					FluidStack fill = dummy.drain(rem, true);
 					ret = in2;
 
-					if (ret.stackSize <= 0) {
+					if (DCUtil.getSize(ret) <= 0) {
 						ret = null;
 					}
 
@@ -214,7 +214,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	protected boolean onDrainTank(DCTank tank, int slot1, int slot2, boolean flag) {
 		ItemStack in = this.getStackInSlot(slot1);
 		ItemStack out = this.getStackInSlot(slot2);
-		if (in == null)
+		if (DCUtil.isEmpty(in))
 			return false;
 
 		IFluidHandler dummy = null;
@@ -250,7 +250,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				int fill = dummy.fill(drain, true);
 				ret = in2;
 
-				if (ret.stackSize <= 0) {
+				if (DCUtil.getSize(ret) <= 0) {
 					ret = null;
 				}
 

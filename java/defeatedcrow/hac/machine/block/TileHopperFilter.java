@@ -40,10 +40,14 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	private int cooldown = -1;
 	private int lastCount = 0;
 
+	public int getCoolTime() {
+		return 4;
+	}
+
 	@Override
 	public void onServerUpdate() {
 		if (cooldown <= 0) {
-			cooldown = 5;
+			cooldown = getCoolTime();
 			if (isActive()) {
 				extractItem();
 				if (!suctionItem()) {
@@ -85,7 +89,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 					boolean b = false;
 					for (int i = 0; i < this.getSizeInventory(); i++) {
 						ItemStack item = inv.getStackInSlot(i);
-						if (!DCUtil.isEmpty(item)) {
+						if (!DCUtil.isEmpty(item) && DCUtil.getSize(item) > 1) {
 							ItemStack ins = item.copy();
 							ins.stackSize = 1;
 							for (int j = 0; j < target.getSlots(); j++) {
@@ -158,7 +162,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 							ItemStack cur = this.getStackInSlot(j);
 							int count = this.isItemStackable(ins, cur);
 							if (count > 0) {
-								ins.stackSize = count;
+								DCUtil.setSize(ins, count);
 								this.incrStackInSlot(j, ins);
 								drop.getEntityItem().splitStack(count);
 								this.markDirty();
@@ -179,14 +183,13 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	public static int isItemStackable(ItemStack target, ItemStack current) {
 		if (DCUtil.isSameItem(target, current, true)) {
-			int i = current.stackSize + target.stackSize;
-			if (i > current.getMaxStackSize()) {
-				i = current.getMaxStackSize() - current.stackSize;
+			int i = DCUtil.getSize(current) + DCUtil.getSize(target);
+			if (!DCUtil.isEmpty(current) && i > current.getMaxStackSize()) {
+				i = current.getMaxStackSize() - DCUtil.getSize(current);
 				return i;
 			}
-			return target.stackSize;
+			return DCUtil.getSize(target);
 		}
-
 		return 0;
 	}
 

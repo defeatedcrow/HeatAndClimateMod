@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.api.recipe.IMillRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -96,7 +97,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 					}
 					int i3 = this.insertResult(cont);
 					if (in2 instanceof ItemStack) {
-						int red = ((ItemStack) in2).stackSize;
+						int red = DCUtil.getSize((ItemStack) in2);
 						this.decrStackSize(0, red);
 					} else {
 						this.decrStackSize(0, 1);
