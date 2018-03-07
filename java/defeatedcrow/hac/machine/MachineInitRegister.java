@@ -400,6 +400,7 @@ public class MachineInitRegister {
 
 		MachineInit.hopperFilter.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperGold.setCreativeTab(ClimateMain.machine);
+		MachineInit.hopperFilterG.setCreativeTab(ClimateMain.machine);
 		MachineInit.conveyor.setCreativeTab(ClimateMain.machine);
 		MachineInit.fauset.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
