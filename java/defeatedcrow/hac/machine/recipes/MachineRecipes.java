@@ -178,6 +178,18 @@ public class MachineRecipes {
 				"Z", "Y", 'Y', new ItemStack(Blocks.HOPPER, 1, 0), 'Z', new ItemStack(Blocks.IRON_BARS, 1, 0)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.hopperGold, 1, 0), new Object[] {
+				" X ", "XYX", " X ", 'X', "ingotGold", 'Y', new ItemStack(Blocks.HOPPER, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.hopperFilterG, 1, 0), new Object[] {
+				" X ", "XYX", " X ", 'X', "ingotGold", 'Y', new ItemStack(MachineInit.hopperFilter, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.hopperFilterG, 1, 0), new Object[] {
+				"Z", "Y", 'Y', new ItemStack(MachineInit.hopperFilter, 1, 0), 'Z', new ItemStack(Blocks.IRON_BARS, 1, 0)
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.hopperFluid, 1, 0), new Object[] {
 				"X X", "XYX", " X ", 'X', "ingotNickelsilver", 'Y', new ItemStack(Blocks.CHEST, 1, 0)
 		});

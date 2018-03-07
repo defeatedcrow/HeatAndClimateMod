@@ -15,6 +15,7 @@ public abstract class TileMaceBase extends ClimateReceiveTile implements ITagGet
 
 	private boolean lastActive = false;
 	public int currentEnergy = 0;
+	public int enchant = 0;
 
 	public void setEnergy(int i) {
 		currentEnergy = i;
@@ -22,6 +23,14 @@ public abstract class TileMaceBase extends ClimateReceiveTile implements ITagGet
 
 	public int getEnergy() {
 		return currentEnergy;
+	}
+
+	public int getEnchant() {
+		return enchant;
+	}
+
+	public void setEnchant(int i) {
+		enchant = i;
 	}
 
 	@Override
@@ -49,12 +58,14 @@ public abstract class TileMaceBase extends ClimateReceiveTile implements ITagGet
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		this.currentEnergy = tag.getInteger("dcs.mace.energy");
+		this.enchant = tag.getInteger("dcs.mace.enchant");
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
 		tag.setInteger("dcs.mace.energy", this.currentEnergy);
+		tag.setInteger("dcs.mace.enchant", this.enchant);
 		return tag;
 	}
 
@@ -62,6 +73,7 @@ public abstract class TileMaceBase extends ClimateReceiveTile implements ITagGet
 	public NBTTagCompound getNBT(NBTTagCompound tag) {
 		super.getNBT(tag);
 		tag.setInteger("dcs.mace.energy", this.currentEnergy);
+		tag.setInteger("dcs.mace.enchant", this.enchant);
 		return tag;
 	}
 
@@ -69,6 +81,7 @@ public abstract class TileMaceBase extends ClimateReceiveTile implements ITagGet
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
 		this.currentEnergy = tag.getInteger("dcs.mace.energy");
+		this.enchant = tag.getInteger("dcs.mace.enchant");
 	}
 
 	@Override

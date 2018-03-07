@@ -153,11 +153,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		if (DCUtil.isEmpty(item))
 			return -1;
 		for (int i = s1; i < s2; i++) {
-			if (DCUtil.isEmpty(inventory.getStackInSlot(i))) {
-				ret = item.getCount();
-			} else {
-				ret = this.isItemStackable(item, this.getStackInSlot(i));
-			}
+			ret = inventory.canIncr(i, item);
 			if (ret > 0)
 				return ret;
 		}
@@ -501,16 +497,9 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		if (DCUtil.isEmpty(item))
 			return 0;
 		for (int i = 13; i < this.getSizeInventory(); i++) {
-			if (DCUtil.isEmpty(getStackInSlot(i))) {
-				this.incrStackInSlot(i, item.copy());
-				return item.getCount();
-			} else {
-				int size = this.isItemStackable(item, this.getStackInSlot(i));
-				if (this.isItemStackable(item, this.getStackInSlot(i)) > 0) {
-					DCUtil.addStackSize(this.getStackInSlot(i), size);
-					return size;
-				}
-			}
+			int ret = inventory.incrStackInSlot(i, item);
+			if (ret > 0)
+				return ret;
 		}
 		return 0;
 	}

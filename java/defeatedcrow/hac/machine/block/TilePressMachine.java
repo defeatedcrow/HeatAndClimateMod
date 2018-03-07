@@ -49,7 +49,7 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 		for (int i = 0; i < 9; i++) {
 			int i2 = i + 2;
 			ItemStack check = inv.getStackInSlot(i2);
-			if (DCUtil.isEmpty(check)) {
+			if (DCUtil.isEmpty(check) || DCUtil.isEmpty(item)) {
 				continue;
 			} else if (DCUtil.isIntegratedItem(check, item, false)) {
 				if (check.getCount() >= item.getCount())

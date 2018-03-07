@@ -12,13 +12,17 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -51,7 +55,7 @@ public class CombatEvent {
 							if (d1 < range * range) {
 								// 成功
 								newDam *= 2.0F;
-								DCLogger.infoLog("convat event : stelth");
+								// DCLogger.infoLog("convat event : stelth");
 								event.setAmount(newDam);
 							}
 						}
@@ -62,7 +66,27 @@ public class CombatEvent {
 				if (venom > 0) {
 					PotionEffect eff = new PotionEffect(MobEffects.WITHER, 100, venom);
 					living.addPotionEffect(eff);
-					DCLogger.infoLog("convat event : poison");
+					// DCLogger.infoLog("convat event : poison");
+				}
+
+				int robber = EnchantmentHelper.getEnchantmentLevel(MainInit.robber, ownerLiv.getHeldItemMainhand());
+				if (robber > 0 && living.world.rand.nextInt(100) < robber * 20) {
+					for (int i = 0; i < EntityEquipmentSlot.values().length; i++) {
+						ItemStack item = living.getItemStackFromSlot(EntityEquipmentSlot.values()[i]);
+						if (!DCUtil.isEmpty(item)) {
+							EntityItem drop = new EntityItem(ownerLiv.world, living.posX, living.posY, living.posZ,
+									item.copy());
+							drop.motionY += 0.3D;
+							if (ownerLiv.world.spawnEntity(drop)) {
+								living.setItemStackToSlot(EntityEquipmentSlot.values()[i], null);
+								ownerLiv.world.playSound(null, ownerLiv.posX, ownerLiv.posY, ownerLiv.posZ,
+										SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.5F,
+										1.0F / (ownerLiv.world.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+								break;
+							}
+						}
+					}
+					// DCLogger.infoLog("convat event : robber");
 				}
 			}
 		}

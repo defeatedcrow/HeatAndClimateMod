@@ -9,9 +9,11 @@ import com.google.common.collect.Multimap;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,6 +22,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
@@ -73,7 +76,12 @@ public abstract class ItemBlockMace extends DCItemBlock {
 				int amo = this.getNBTDamage(stack);
 				this.doUsingEffect(stack, player, world);
 
-				amo -= 10;
+				int e1 = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack);
+
+				amo -= MathHelper.ceil(10F / (e1 + 1));
+				if (amo < 0) {
+					amo = 0;
+				}
 				if (amo < 0) {
 					amo = 0;
 				}

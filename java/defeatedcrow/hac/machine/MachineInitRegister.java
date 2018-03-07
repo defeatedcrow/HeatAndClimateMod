@@ -22,7 +22,9 @@ import defeatedcrow.hac.machine.block.BlockGearBox_SUS;
 import defeatedcrow.hac.machine.block.BlockHandCrank;
 import defeatedcrow.hac.machine.block.BlockHeatExchanger;
 import defeatedcrow.hac.machine.block.BlockHopperFilter;
+import defeatedcrow.hac.machine.block.BlockHopperFilterG;
 import defeatedcrow.hac.machine.block.BlockHopperFluid;
+import defeatedcrow.hac.machine.block.BlockHopperGold;
 import defeatedcrow.hac.machine.block.BlockIBC;
 import defeatedcrow.hac.machine.block.BlockKineticMotor;
 import defeatedcrow.hac.machine.block.BlockMonitorFluid;
@@ -162,6 +164,15 @@ public class MachineInitRegister {
 		MachineInit.hopperFilter = new BlockHopperFilter(ClimateCore.PACKAGE_BASE + "_device_hopper_filter");
 		registerTierBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_BASE + "_device_hopper_filter", 2);
 		ClimateMain.proxy.regTEJson(MachineInit.hopperFilter, "dcs_climate", "dcs_device_hopper_filter", "machine");
+
+		MachineInit.hopperGold = new BlockHopperGold(ClimateCore.PACKAGE_BASE + "_device_hopper_gold");
+		registerTierBlock(MachineInit.hopperGold, ClimateCore.PACKAGE_BASE + "_device_hopper_gold", 2);
+		ClimateMain.proxy.regTEJson(MachineInit.hopperGold, "dcs_climate", "dcs_device_hopper_gold", "machine");
+
+		MachineInit.hopperFilterG = new BlockHopperFilterG(ClimateCore.PACKAGE_BASE + "_device_hopper_filter_gold");
+		registerTierBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_BASE + "_device_hopper_filter_gold", 2);
+		ClimateMain.proxy.regTEJson(MachineInit.hopperFilterG, "dcs_climate", "dcs_device_hopper_filter_gold",
+				"machine");
 
 		MachineInit.fauset = new BlockFauset(ClimateCore.PACKAGE_BASE + "_device_fauset");
 		registerTierBlock(MachineInit.fauset, ClimateCore.PACKAGE_BASE + "_device_fauset", 2);
@@ -387,6 +398,8 @@ public class MachineInitRegister {
 		MachineInit.freezer.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.hopperFilter.setCreativeTab(ClimateMain.machine);
+		MachineInit.hopperGold.setCreativeTab(ClimateMain.machine);
+		MachineInit.hopperFilterG.setCreativeTab(ClimateMain.machine);
 		MachineInit.conveyor.setCreativeTab(ClimateMain.machine);
 		MachineInit.fauset.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
