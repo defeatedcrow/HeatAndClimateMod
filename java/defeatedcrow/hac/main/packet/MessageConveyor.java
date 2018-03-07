@@ -1,8 +1,5 @@
 package defeatedcrow.hac.main.packet;
 
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.StandardCharsets;
@@ -11,6 +8,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 // biome reset
@@ -44,14 +42,7 @@ public class MessageConveyor implements IMessage {
 		this.z = buf.readInt();
 		i1 = buf.readByte();
 		m1 = buf.readShort();
-		int l1 = buf.readInt();
-		ByteBuf nb1 = buf.readBytes(l1);
-		try {
-			CharBuffer cb1 = dec.decode(ByteBuffer.wrap(nb1.array()));
-			n1 = cb1.toString();
-		} catch (CharacterCodingException e) {
-			e.printStackTrace();
-		}
+		n1 = ByteBufUtils.readUTF8String(buf);
 	}
 
 	// write
@@ -62,9 +53,6 @@ public class MessageConveyor implements IMessage {
 		buf.writeInt(z);
 		buf.writeByte(i1);
 		buf.writeShort(m1);
-		byte[] nb1 = n1.getBytes(StandardCharsets.UTF_8);
-		int l1 = nb1.length;
-		buf.writeInt(l1);
-		buf.writeBytes(nb1);
+		ByteBufUtils.writeUTF8String(buf, n1);
 	}
 }

@@ -27,7 +27,7 @@ public class MHandlerConveyor implements IMessageHandler<MessageConveyor, IMessa
 			short im1 = message.m1;
 			String name1 = message.n1;
 			Item item1 = ForgeRegistries.ITEMS.getValue(new ResourceLocation(name1));
-			ItemStack ret1 = item1 == null ? null : new ItemStack(item1, 1, im1);
+			ItemStack ret1 = item1 == null ? ItemStack.EMPTY : new ItemStack(item1, 1, im1);
 			BlockPos pos = new BlockPos(x, y, z);
 			TileEntity tile = player.world.getTileEntity(pos);
 			if (tile instanceof TileConveyor) {
