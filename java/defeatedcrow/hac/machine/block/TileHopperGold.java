@@ -1,6 +1,6 @@
 package defeatedcrow.hac.machine.block;
 
-public class TileHopperFilterG extends TileHopperFilter {
+public class TileHopperGold extends TileHopperFilter {
 
 	@Override
 	public int getCoolTime() {
@@ -9,6 +9,11 @@ public class TileHopperFilterG extends TileHopperFilter {
 
 	@Override
 	protected boolean suctionDrop() {
+		return false;
+	}
+
+	@Override
+	public boolean isFilterd() {
 		return false;
 	}
 

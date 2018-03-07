@@ -39,6 +39,7 @@ public class MachineInit {
 	public static Block conveyor;
 	public static Block hopperFilter;
 	public static Block hopperFluid;
+	public static Block hopperFilterG;
 	public static Block hopperGold;
 
 	public static Block watermill;

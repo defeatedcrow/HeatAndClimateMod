@@ -6,7 +6,7 @@
         "top": "dcs_climate:blocks/machine/hopper_gold_top",
         "side": "dcs_climate:blocks/machine/hopper_gold_outside",
         "inside": "dcs_climate:blocks/machine/hopper_gold_inside",
-        "filter": "dcs_climate:blocks/machine/ironplate_gold_mesh"
+        "filter": "dcs_climate:blocks/build/glass_selenite"
     },
     "elements": [
         {   "from": [ 2, 14, 2 ],

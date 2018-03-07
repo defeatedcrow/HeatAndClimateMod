@@ -24,6 +24,7 @@ import defeatedcrow.hac.machine.block.TileHeatExchanger;
 import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFilterG;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
+import defeatedcrow.hac.machine.block.TileHopperGold;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TileMonitorFluid;
@@ -152,7 +153,8 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileConveyor.class, "dcs_te_conveyor", new ConveyorTESR());
 		ClientRegistry.registerTileEntity(TileCatapult.class, "dcs_te_catapult", new CatapultTESR());
 		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
-		GameRegistry.registerTileEntity(TileHopperFilterG.class, "dcs_te_hopper_gold");
+		GameRegistry.registerTileEntity(TileHopperGold.class, "dcs_te_hopper_gold");
+		GameRegistry.registerTileEntity(TileHopperFilterG.class, "dcs_te_hopper_filter_gold");
 		ClientRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid", new HopperFluidTESR());
 		ClientRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill", new WatermillTESR());
 		ClientRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
