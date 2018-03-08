@@ -13,9 +13,11 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -166,6 +168,10 @@ public abstract class BlockMace extends DCTileBlock {
 					int d = stack.getTagCompound().getInteger("dcs.mace.energy");
 					((TileMaceBase) tile).setEnergy(d);
 				}
+				int e1 = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack);
+				if (e1 > 0) {
+					((TileMaceBase) tile).setEnchant(e1);
+				}
 			}
 		}
 	}
@@ -181,6 +187,10 @@ public abstract class BlockMace extends DCTileBlock {
 			int d = ((TileMaceBase) tile).getEnergy();
 			tag.setInteger("dcs.mace.energy", d);
 			drop.setTagCompound(tag);
+			int e = ((TileMaceBase) tile).getEnchant();
+			if (e > 0) {
+				drop.addEnchantment(Enchantments.UNBREAKING, e);
+			}
 		}
 
 		if (!world.isRemote) {

@@ -226,6 +226,7 @@ public class MainInit {
 
 	public static Enchantment venom;
 	public static Enchantment corrosion;
+	public static Enchantment robber;
 
 	// plugin
 	public static Item circuit;

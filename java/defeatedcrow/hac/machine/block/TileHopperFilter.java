@@ -40,10 +40,18 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	private int cooldown = -1;
 	private int lastCount = 0;
 
+	public int getCoolTime() {
+		return 4;
+	}
+
+	public boolean isFilterd() {
+		return true;
+	}
+
 	@Override
 	public void onServerUpdate() {
 		if (cooldown <= 0) {
-			cooldown = 5;
+			cooldown = getCoolTime();
 			if (isActive()) {
 				extractItem();
 				if (!suctionItem()) {
@@ -85,7 +93,8 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 					boolean b = false;
 					for (int i = 0; i < this.getSizeInventory(); i++) {
 						ItemStack item = inv.getStackInSlot(i);
-						if (!DCUtil.isEmpty(item)) {
+						int min = isFilterd() ? 1 : 0;
+						if (!DCUtil.isEmpty(item) && DCUtil.getSize(item) > min) {
 							ItemStack ins = item.copy();
 							ins.setCount(1);
 							for (int j = 0; j < target.getSlots(); j++) {
@@ -132,7 +141,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		return false;
 	}
 
-	private boolean suctionDrop() {
+	protected boolean suctionDrop() {
 		double x1 = getPos().getX() - 0D;
 		double x2 = getPos().getX() + 1D;
 		double y1 = getPos().getY() + 0.5D;

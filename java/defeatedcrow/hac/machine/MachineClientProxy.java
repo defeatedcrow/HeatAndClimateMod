@@ -22,7 +22,9 @@ import defeatedcrow.hac.machine.block.TileGearBox_SUS;
 import defeatedcrow.hac.machine.block.TileHandCrank;
 import defeatedcrow.hac.machine.block.TileHeatExchanger;
 import defeatedcrow.hac.machine.block.TileHopperFilter;
+import defeatedcrow.hac.machine.block.TileHopperFilterG;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
+import defeatedcrow.hac.machine.block.TileHopperGold;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TileMonitorFluid;
@@ -151,6 +153,8 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileConveyor.class, "dcs_te_conveyor", new ConveyorTESR());
 		ClientRegistry.registerTileEntity(TileCatapult.class, "dcs_te_catapult", new CatapultTESR());
 		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
+		GameRegistry.registerTileEntity(TileHopperGold.class, "dcs_te_hopper_gold");
+		GameRegistry.registerTileEntity(TileHopperFilterG.class, "dcs_te_hopper_filter_gold");
 		ClientRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid", new HopperFluidTESR());
 		ClientRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill", new WatermillTESR());
 		ClientRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
@@ -229,6 +233,9 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.conveyor, ClimateCore.PACKAGE_ID, "dcs_device_conveyor", "machine", 0);
 		instance.regSimpleBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter", "machine",
 				0);
+		instance.regSimpleBlock(MachineInit.hopperGold, ClimateCore.PACKAGE_ID, "dcs_device_hopper_gold", "machine", 0);
+		instance.regSimpleBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter_gold",
+				"machine", 0);
 		instance.regTETorqueBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine",
 				0);
 		instance.regTETorqueBlock(MachineInit.watermill, ClimateCore.PACKAGE_ID, "dcs_device_watermill", "machine", 0);
