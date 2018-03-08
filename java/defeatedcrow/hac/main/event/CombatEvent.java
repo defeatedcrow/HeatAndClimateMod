@@ -78,7 +78,7 @@ public class CombatEvent {
 									item.copy());
 							drop.motionY += 0.3D;
 							if (ownerLiv.world.spawnEntity(drop)) {
-								living.setItemStackToSlot(EntityEquipmentSlot.values()[i], null);
+								living.setItemStackToSlot(EntityEquipmentSlot.values()[i], ItemStack.EMPTY);
 								ownerLiv.world.playSound(null, ownerLiv.posX, ownerLiv.posY, ownerLiv.posZ,
 										SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.5F,
 										1.0F / (ownerLiv.world.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
