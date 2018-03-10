@@ -233,6 +233,8 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.conveyor, ClimateCore.PACKAGE_ID, "dcs_device_conveyor", "machine", 0);
 		instance.regSimpleBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter", "machine",
 				0);
+		instance.regSimpleBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter_gold",
+				"machine", 0);
 		instance.regSimpleBlock(MachineInit.hopperGold, ClimateCore.PACKAGE_ID, "dcs_device_hopper_gold", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine",
 				0);

@@ -29,15 +29,18 @@ public class MHandlerSingleTank implements IMessageHandler<MessageSingleTank, IM
 			int amo1 = message.amo1;
 			BlockPos pos = new BlockPos(x, y, z);
 			TileEntity tile = player.worldObj.getTileEntity(pos);
-			IFluidHandler handler = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
-			if (handler != null && handler instanceof DCTank) {
-				DCTank tank = (DCTank) handler;
-				Fluid f1 = FluidIDRegisterDC.getFluid(id1);
-				if (f1 != null) {
-					FluidStack stack1 = new FluidStack(f1, amo1);
-					tank.setFluid(stack1);
-				} else {
-					tank.setFluid(null);
+			if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
+				IFluidHandler handler = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
+						EnumFacing.UP);
+				if (handler != null && handler instanceof DCTank) {
+					DCTank tank = (DCTank) handler;
+					Fluid f1 = FluidIDRegisterDC.getFluid(id1);
+					if (f1 != null) {
+						FluidStack stack1 = new FluidStack(f1, amo1);
+						tank.setFluid(stack1);
+					} else {
+						tank.setFluid(null);
+					}
 				}
 			}
 		}
