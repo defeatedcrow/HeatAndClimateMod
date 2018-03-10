@@ -151,6 +151,7 @@ public class BlockOres2 extends DCSimpleBlock {
 		super.getDrops(list, world, pos, state, fortune);
 		int meta = this.getMetaFromState(state);
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
+		Biome biome = world instanceof World ? ((World) world).getBiomeForCoordsBody(pos) : world.getBiome(pos);
 
 		ItemStack add = ItemStack.EMPTY;
 		int par = 3 + fortune * 3;
@@ -158,7 +159,6 @@ public class BlockOres2 extends DCSimpleBlock {
 			if (meta == 6)
 				add = new ItemStack(MainInit.gems, 1, 13);
 			else if (meta == 7) {
-				Biome biome = world.getBiome(pos);
 				if (biome.getRainfall() > 0.8F) {
 					add = new ItemStack(MainInit.gems, 1, 19);
 				} else {
