@@ -759,6 +759,7 @@ tile.dcs_device_realtimeclock_0.name=リアルタイム時計
 item.dcs_door_marble_item.name=大理石のドア
 item.dcs_door_steel_item.name=鋼鉄のドア
 tile.dcs_build_chandelier_0.name=石膏のシャンデリア
+tile.dcs_build_curtain_0.name=カーテン
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪

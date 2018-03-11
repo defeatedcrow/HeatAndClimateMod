@@ -31,12 +31,12 @@ public class MHandlerFluidProcessor implements IMessageHandler<MessageFluidProce
 			if (tile instanceof TileFluidProcessorBase) {
 				TileFluidProcessorBase te = (TileFluidProcessorBase) tile;
 				Fluid f1 = FluidIDRegisterDC.getFluid(id1);
-				if (f1 == null) {
+				if (f1 != null) {
 					FluidStack stack1 = new FluidStack(f1, amo1);
 					te.inputT.setFluid(stack1);
 				}
 				Fluid f2 = FluidIDRegisterDC.getFluid(id2);
-				if (f2 == null) {
+				if (f2 != null) {
 					FluidStack stack2 = new FluidStack(f2, amo2);
 					te.outputT.setFluid(stack2);
 				}

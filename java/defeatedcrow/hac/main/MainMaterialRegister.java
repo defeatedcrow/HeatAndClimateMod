@@ -21,6 +21,7 @@ import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockChandelier;
 import defeatedcrow.hac.main.block.build.BlockClayBricks;
 import defeatedcrow.hac.main.block.build.BlockCoolantPackage;
+import defeatedcrow.hac.main.block.build.BlockCurtain;
 import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockDoorDC;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
@@ -594,6 +595,12 @@ public class MainMaterialRegister {
 				ClimateCore.PACKAGE_BASE + "_device_realtimeclock");
 		DCMaterialReg.registerBlock(MainInit.realtimeClock, ClimateCore.PACKAGE_BASE + "_device_realtimeclock",
 				ClimateMain.MOD_ID);
+
+		MainInit.curtainWhite = new BlockCurtain("dcs_build_curtain").setUnlocalizedName("dcs_build_curtain");
+		DCMaterialReg.registerBlock(MainInit.curtainWhite, ClimateCore.PACKAGE_BASE + "_build_curtain",
+				ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.curtainWhite), "dcs_climate", "dcs_build_curtain",
+				"build", 0, true);
 	}
 
 	static void regDeviceBlock() {

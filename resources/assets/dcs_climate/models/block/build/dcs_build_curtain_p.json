@@ -1,0 +1,55 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/build/canvas_cotton",
+        "base": "dcs_climate:blocks/build/panel_wood",
+        "cloth": "dcs_climate:blocks/build/canvas_cotton"
+    },
+    "elements": [
+        {   "from": [ 0, -1, 0 ],
+            "to": [ 4, 2, 4 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 4, 4 ], "texture": "#cloth", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 4, 4 ], "texture": "#cloth", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 4, 3 ], "texture": "#cloth", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 4, 3 ], "texture": "#cloth", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 4, 3 ], "texture": "#cloth", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 4, 3 ], "texture": "#cloth", "cullface": "east" }
+            }
+        },
+        {   "from": [ 0, 5, 0 ],
+            "to": [ 4, 15, 4 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 4, 4 ], "texture": "#cloth", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 4, 4 ], "texture": "#cloth", "cullface": "up" },
+                "north": { "uv": [ 0, 6, 4, 16 ], "texture": "#cloth", "cullface": "north" },
+                "south": { "uv": [ 0, 6, 4, 16 ], "texture": "#cloth", "cullface": "south" },
+                "west":  { "uv": [ 0, 6, 4, 16 ], "texture": "#cloth", "cullface": "west" },
+                "east":  { "uv": [ 0, 6, 4, 16 ], "texture": "#cloth", "cullface": "east" }
+            }
+        },
+        {   "from": [ 0.5, 2, 0.5 ],
+            "to": [ 3.5, 5, 3.5 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 3, 3 ], "texture": "#cloth", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 3, 3 ], "texture": "#cloth", "cullface": "up" },
+                "north": { "uv": [ 0, 3, 3, 6 ], "texture": "#cloth", "cullface": "north" },
+                "south": { "uv": [ 0, 3, 3, 6 ], "texture": "#cloth", "cullface": "south" },
+                "west":  { "uv": [ 0, 3, 3, 6 ], "texture": "#cloth", "cullface": "west" },
+                "east":  { "uv": [ 0, 3, 3, 6 ], "texture": "#cloth", "cullface": "east" }
+            }
+        },
+        {   "from": [ 0, 13, 0.5 ],
+            "to": [ 16, 14, 1.5 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 1 ], "texture": "#base", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 1 ], "texture": "#base", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 1 ], "texture": "#base", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 1 ], "texture": "#base", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 1, 1 ], "texture": "#base", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 1, 1 ], "texture": "#base", "cullface": "east" }
+            }
+        }
+    ]
+}

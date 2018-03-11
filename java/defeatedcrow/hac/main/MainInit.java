@@ -108,6 +108,8 @@ public class MainInit {
 	public static Block chairChecker;
 	public static Block chairBlack;
 
+	public static Block curtainWhite;
+
 	public static Block carpetRed;
 	public static Block carpetWhite;
 	public static Block carpetGray;
