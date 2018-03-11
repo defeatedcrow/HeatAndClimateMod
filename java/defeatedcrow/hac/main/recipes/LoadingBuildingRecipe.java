@@ -408,6 +408,10 @@ public class LoadingBuildingRecipe {
 							"XX", "XX", 'X', new ItemStack(MainInit.clayBricks, 1, i)
 					});
 		}
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.curtainWhite, 1, 0), new Object[] {
+				"XX", "YY", "YY", 'X', "stickWood", 'Y', "itemCloth"
+		});
 	}
 
 	public static void advanced(RecipeResourcesMain res) {

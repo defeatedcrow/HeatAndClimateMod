@@ -37,10 +37,16 @@ public class DCFluidBlockBase extends BlockFluidClassic
 		implements ITexturePath, IHeatTile, IHumidityTile, IAirflowTile {
 
 	protected final String name;
+	protected boolean canDisplace = false;
 
 	public DCFluidBlockBase(Fluid fluid, String n) {
 		super(fluid, Material.WATER);
 		name = n;
+	}
+
+	public DCFluidBlockBase setCanDisplace() {
+		canDisplace = true;
+		return this;
 	}
 
 	@Override
@@ -143,8 +149,7 @@ public class DCFluidBlockBase extends BlockFluidClassic
 				if (this.getFluid() == MachineInit.nitrogen)
 					return true;
 			}
-		}
-		if (state.getMaterial().isLiquid())
+		} else if (state.getMaterial().isLiquid())
 			return state.getBlock().getMetaFromState(state) > 7;
 		return super.canDisplace(world, pos);
 	}
@@ -177,5 +182,4 @@ public class DCFluidBlockBase extends BlockFluidClassic
 		}
 		super.flowIntoBlock(world, pos, meta);
 	}
-
 }

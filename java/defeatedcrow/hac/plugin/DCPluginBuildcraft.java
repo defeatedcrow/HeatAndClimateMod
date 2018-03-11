@@ -1,6 +1,7 @@
 package defeatedcrow.hac.plugin;
 
 import buildcraft.api.BCModules;
+import buildcraft.api.facades.FacadeAPI;
 import buildcraft.api.fuels.BuildcraftFuelRegistry;
 import buildcraft.api.mj.MjAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -26,7 +27,7 @@ public class DCPluginBuildcraft {
 
 	private DCPluginBuildcraft() {}
 
-	public static void loadInit() {
+	public static void loadPost() {
 
 		Fluid black = FluidRegistry.getFluid("oil");
 		Fluid gas = FluidRegistry.getFluid("fuel_gaseous");
@@ -114,4 +115,24 @@ public class DCPluginBuildcraft {
 
 	}
 
+	public static void loadInit() {
+		FacadeAPI.disableBlock(FoodInit.blackLiquorBlock);
+		FacadeAPI.disableBlock(FoodInit.blackTeaBlock);
+		FacadeAPI.disableBlock(FoodInit.coffeeBlock);
+		FacadeAPI.disableBlock(FoodInit.creamBlock);
+		FacadeAPI.disableBlock(FoodInit.greenTeaBlock);
+		FacadeAPI.disableBlock(FoodInit.hotSpringBlock);
+		FacadeAPI.disableBlock(FoodInit.lemonBlock);
+		FacadeAPI.disableBlock(FoodInit.oilBlock);
+		FacadeAPI.disableBlock(FoodInit.stockBlock);
+		FacadeAPI.disableBlock(FoodInit.tomatoBlock);
+		FacadeAPI.disableBlock(MachineInit.ethanolBlock);
+		FacadeAPI.disableBlock(MachineInit.ammoniaBlock);
+		FacadeAPI.disableBlock(MachineInit.fuelGasBlock);
+		FacadeAPI.disableBlock(MachineInit.fuelOilBlock);
+		FacadeAPI.disableBlock(MachineInit.hydrogenBlock);
+		FacadeAPI.disableBlock(MachineInit.nitricAcidBlock);
+		FacadeAPI.disableBlock(MachineInit.nitrogenBlock);
+		FacadeAPI.disableBlock(MachineInit.sulfuricAcidBlock);
+	}
 }

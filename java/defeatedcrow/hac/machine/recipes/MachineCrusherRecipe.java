@@ -48,6 +48,9 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, null, 0F,
 				new FluidStack(FoodInit.oil, 100), sus, "dustBlan");
 
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, null, 0F,
+				new FluidStack(FoodInit.oil, 50), sus, new ItemStack(Items.WHEAT_SEEDS, 1, 0));
+
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.SUGAR, 4, 0), new ItemStack(MainInit.foodDust, 1, 2),
 				0.5F, new ItemStack(MainInit.foodDust, 1, 1), 0.5F, null, sus, "sugarcane");
 

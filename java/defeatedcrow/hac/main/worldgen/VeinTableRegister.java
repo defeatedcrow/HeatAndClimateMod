@@ -21,11 +21,11 @@ public class VeinTableRegister implements IVeinTableRegister {
 	public void registerVeins() {
 		VeinTable sed = new VeinTable(EnumVein.SEDIMENT, new OreSet(100, new BlockSet(MainInit.ores, 0)),
 				new OreSet(100, new BlockSet(MainInit.ores, 1)));
-		sed.addOreToTable1(new OreSet(40, new BlockSet(MainInit.ores, 1)),
-				new OreSet(40, new BlockSet(MainInit.ores, 0)), new OreSet(30, new BlockSet(Blocks.COAL_ORE, 0)),
+		sed.addOreToTable1(new OreSet(30, new BlockSet(MainInit.ores, 1)),
+				new OreSet(50, new BlockSet(MainInit.ores, 0)), new OreSet(30, new BlockSet(Blocks.COAL_ORE, 0)),
 				new OreSet(20, new BlockSet(Blocks.STONE, 3), new BlockSet(MainInit.ores, 2), 40));
-		sed.addOreToTable2(new OreSet(40, new BlockSet(MainInit.ores, 1)),
-				new OreSet(40, new BlockSet(MainInit.ores, 0)), new OreSet(30, new BlockSet(Blocks.COAL_ORE, 0)),
+		sed.addOreToTable2(new OreSet(30, new BlockSet(MainInit.ores, 1)),
+				new OreSet(50, new BlockSet(MainInit.ores, 0)), new OreSet(30, new BlockSet(Blocks.COAL_ORE, 0)),
 				new OreSet(20, new BlockSet(Blocks.STONE, 3), new BlockSet(MainInit.ores, 2), 40));
 		list.add(sed);
 
@@ -38,7 +38,7 @@ public class VeinTableRegister implements IVeinTableRegister {
 				new OreSet(30, new BlockSet(MainInit.ores_2, 2)));
 		list.add(sand);
 
-		VeinTable bx = new VeinTable(EnumVein.BAUXITE, new OreSet(100, new BlockSet(Blocks.STONE, 1)),
+		VeinTable bx = new VeinTable(EnumVein.BAUXITE, new OreSet(100, new BlockSet(MainInit.ores_2, 10)),
 				new OreSet(100, new BlockSet(MainInit.ores_2, 10)));
 		bx.addOreToTable1(new OreSet(30, new BlockSet(Blocks.STONE, 1)),
 				new OreSet(70, new BlockSet(MainInit.ores_2, 10)));
