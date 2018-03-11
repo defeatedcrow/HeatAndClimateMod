@@ -128,6 +128,7 @@ public class MainCreativeTabRegister {
 			MainInit.sinkChest.setCreativeTab(ClimateMain.build);
 			MainInit.plate.setCreativeTab(ClimateMain.build);
 			MainInit.realtimeClock.setCreativeTab(ClimateMain.build);
+			MainInit.curtainWhite.setCreativeTab(ClimateMain.build);
 
 			if (ModuleConfig.machine_advanced) {
 				MainInit.lampCarbide.setCreativeTab(ClimateMain.build);

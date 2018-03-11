@@ -22,6 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.world.BlockEvent.CreateFluidSourceEvent;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -121,6 +122,14 @@ public class OnMiningEventDC {
 					}
 				}
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void canCreateSource(CreateFluidSourceEvent event) {
+		IBlockState fluid = event.getWorld().getBlockState(event.getPos());
+		if (fluid.getBlock() == FoodInit.hotSpringBlock) {
+			event.setResult(Result.ALLOW);
 		}
 	}
 

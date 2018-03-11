@@ -780,6 +780,7 @@ tile.dcs_build_chandelier_0.name=Gypsum Chandelier
 tile.dcs_build_chandelier_0.name=Real Time Clock
 item.dcs_door_marble_item.name=Marble Door
 item.dcs_door_steel_item.name=Steel Door
+tile.dcs_build_curtain_0.name=Curtain
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber

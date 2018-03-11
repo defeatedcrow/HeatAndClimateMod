@@ -112,6 +112,8 @@ public class MainInit {
 	public static Block carpetWhite;
 	public static Block carpetGray;
 
+	public static Block curtainWhite;
+
 	public static Block sinkMetal;
 	public static Block sinkChest;
 

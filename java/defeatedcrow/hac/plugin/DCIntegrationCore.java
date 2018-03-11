@@ -60,6 +60,15 @@ public class DCIntegrationCore {
 			}
 		}
 
+		if (loadedBC) {
+			try {
+				DCPluginBuildcraft.loadInit();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: buildcraftenergy");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: buildcraftenergy");
+			}
+		}
+
 		if (loadedCoFH) {
 			try {
 				DCPluginCoFH.load();
@@ -110,7 +119,7 @@ public class DCIntegrationCore {
 
 		if (loadedBC) {
 			try {
-				DCPluginBuildcraft.loadInit();
+				DCPluginBuildcraft.loadPost();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod plugin: buildcraftenergy");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: buildcraftenergy");

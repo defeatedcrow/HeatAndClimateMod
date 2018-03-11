@@ -44,6 +44,9 @@ public class FoodRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 8, 0), new ItemStack(MainInit.miscDust, 1, 4),
 				0.25F, new ItemStack(MainInit.cropBasket, 1, 7));
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
+				0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
+
 	}
 
 	static void loadCropData() {
