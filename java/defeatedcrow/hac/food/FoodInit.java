@@ -58,6 +58,7 @@ public class FoodInit {
 	public static Block leavesOlive;
 	public static Block leavesLemon;
 	public static Block leavesTea;
+	public static Block leavesMorus;
 	public static Block saplings;
 	public static Block logs;
 

@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 
 public class EntityProjIceSpit extends EntityProjBase {
 
+	public float damage = 8.0F;
+
 	public EntityProjIceSpit(World worldIn) {
 		super(worldIn);
 	}
@@ -40,7 +42,7 @@ public class EntityProjIceSpit extends EntityProjBase {
 
 	@Override
 	protected float getHitDamage(Entity target, float speed) {
-		float f = 8.0F + this.world.rand.nextFloat();
+		float f = damage + this.world.rand.nextFloat();
 		if (target != null && target instanceof EntityLivingBase) {
 			EntityLivingBase liv = (EntityLivingBase) target;
 			if (liv.isImmuneToFire()) {

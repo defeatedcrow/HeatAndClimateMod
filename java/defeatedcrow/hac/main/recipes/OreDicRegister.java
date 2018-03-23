@@ -181,6 +181,27 @@ public class OreDicRegister {
 		OreDictionary.registerOre("foodMalt", new ItemStack(MainInit.foodDust, 1, 3));
 
 		// material
+		OreDictionary.registerOre("itemString", new ItemStack(MainInit.clothes, 1, 0));
+		OreDictionary.registerOre("itemString", new ItemStack(MainInit.clothes, 1, 1));
+		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 0));
+		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 1));
+		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.clothes, 1, 2));
+		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.clothes, 1, 3));
+		OreDictionary.registerOre("itemLinenCloth", new ItemStack(MainInit.clothes, 1, 2));
+		OreDictionary.registerOre("itemCottonCloth", new ItemStack(MainInit.clothes, 1, 3));
+		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 4));
+		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.clothes, 1, 5));
+		OreDictionary.registerOre("itemAsbestCloth", new ItemStack(MainInit.clothes, 1, 5));
+		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 6));
+		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.clothes, 1, 7));
+		OreDictionary.registerOre("itemSilkCloth", new ItemStack(MainInit.clothes, 1, 7));
+		OreDictionary.registerOre("stringMagic", new ItemStack(MainInit.clothes, 1, 8));
+		OreDictionary.registerOre("itemMagicCloth", new ItemStack(MainInit.clothes, 1, 9));
+		OreDictionary.registerOre("gearWood", new ItemStack(MainInit.gears, 1, 0));
+		OreDictionary.registerOre("gearBrass", new ItemStack(MainInit.gears, 1, 1));
+		OreDictionary.registerOre("gearAlloy", new ItemStack(MainInit.gears, 1, 2));
+		OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.gears, 1, 2));
+		OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.gears, 1, 3));
 		OreDictionary.registerOre("itemString", new ItemStack(MainInit.materials, 1, 0));
 		OreDictionary.registerOre("itemString", new ItemStack(MainInit.materials, 1, 1));
 		OreDictionary.registerOre("string", new ItemStack(MainInit.materials, 1, 0));

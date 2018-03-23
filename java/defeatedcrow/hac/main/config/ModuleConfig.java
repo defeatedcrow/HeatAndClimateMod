@@ -20,6 +20,9 @@ public class ModuleConfig {
 	public static boolean build_advanced = true;
 	public static boolean weapon_advanced = true;
 
+	public static boolean village = true;
+	public static boolean agri = true;
+
 	public static boolean ffm = true;
 	public static boolean mek = true;
 	public static boolean ic2 = true;
@@ -52,6 +55,8 @@ public class ModuleConfig {
 			Property machine_b = cfg.get("module setting", "EnableMachineModule", machine);
 			Property magic_b = cfg.get("module setting", "EnableMagicModule", magic);
 			Property food_b = cfg.get("module setting", "EnableFoodModule", food);
+			Property village_b = cfg.get("module setting", "EnableVillager", village);
+			Property agri_b = cfg.get("module setting", "EnableCraftingCropRecipe", agri);
 
 			Property machine_a = cfg.get("module setting", "EnableAdvancedMachine", machine_advanced);
 			Property magic_a = cfg.get("module setting", "EnableAdvancedMagic", magic_advanced);
@@ -75,6 +80,8 @@ public class ModuleConfig {
 			machine = machine_b.getBoolean();
 			magic = magic_b.getBoolean();
 			food = food_b.getBoolean();
+			village = village_b.getBoolean();
+			agri = agri_b.getBoolean();
 
 			machine_advanced = machine_a.getBoolean();
 			magic_advanced = magic_a.getBoolean();

@@ -52,7 +52,10 @@ public class MainCreativeTabRegister {
 		MainInit.gems.setCreativeTab(ClimateCore.climate);
 		MainInit.miscDust.setCreativeTab(ClimateCore.climate);
 		MainInit.foodDust.setCreativeTab(ClimateCore.climate);
-		MainInit.materials.setCreativeTab(ClimateCore.climate);
+		// MainInit.materials.setCreativeTab(ClimateCore.climate);
+		MainInit.silkworm.setCreativeTab(ClimateMain.cloth);
+		MainInit.gears.setCreativeTab(ClimateMain.machine);
+		MainInit.clothes.setCreativeTab(ClimateMain.cloth);
 
 		// tool
 		MainInit.stoneYagen.setCreativeTab(ClimateMain.tool);

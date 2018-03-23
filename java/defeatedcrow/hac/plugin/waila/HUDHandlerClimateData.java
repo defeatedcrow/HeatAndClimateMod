@@ -71,7 +71,7 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 				case 2:
 					return new ItemStack(FoodInit.saplings, 1, 2);
 				default:
-					return new ItemStack(FoodInit.saplings, 1, 0);
+					return new ItemStack(FoodInit.saplings, 1, 3);
 				}
 			}
 		}
@@ -161,6 +161,7 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 		registrar.registerStackProvider(provider, FoodInit.leavesLemon.getClass());
 		registrar.registerStackProvider(provider, FoodInit.leavesOlive.getClass());
 		registrar.registerStackProvider(provider, FoodInit.leavesTea.getClass());
+		registrar.registerStackProvider(provider, FoodInit.leavesMorus.getClass());
 		registrar.registerStackProvider(provider, FoodInit.saplings.getClass());
 
 		registrar.registerBodyProvider(provider, ClimateCropBase.class);

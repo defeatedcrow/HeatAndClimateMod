@@ -60,16 +60,21 @@ public class WorldGenWindmill implements IWorldGenerator {
 	public boolean generateWindmill(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
 
-		pRandom = new Random(world.getSeed() + chunkX + chunkZ * 31);
+		pRandom = new Random(world.getSeed()
+				+ chunkX + chunkZ
+						* 31);
 
 		int genDim1 = world.provider.getDimension();
-		if ((genDim1 == 1 || genDim1 == -1))
+		if ((genDim1 == 1
+				|| genDim1 == -1))
 			return false;
 
-		if (chunkX > 3000 || chunkZ > 3000)
+		if (chunkX > 3000
+				|| chunkZ > 3000)
 			// あまり遠いと生成しない
 			return false;
-		if (chunkX < -3000 || chunkZ < -3000)
+		if (chunkX < -3000
+				|| chunkZ < -3000)
 			// あまり遠いと生成しない
 			return false;
 
@@ -79,9 +84,13 @@ public class WorldGenWindmill implements IWorldGenerator {
 		int posX = chunkX << 4;
 		int posZ = chunkZ << 4;
 
-		posX += 6 + pRandom.nextInt(4);
-		posZ += 6 + pRandom.nextInt(4);
-		if (isForced && forceX != 0 & forceZ != 0) {
+		posX += 6
+				+ pRandom.nextInt(4);
+		posZ += 6
+				+ pRandom.nextInt(4);
+		if (isForced
+				&& forceX != 0
+						& forceZ != 0) {
 			posX = forceX;
 			posZ = forceZ;
 		}
@@ -92,14 +101,16 @@ public class WorldGenWindmill implements IWorldGenerator {
 		if (world.villageCollection.getNearestVillage(pos, 6) != null)
 			return false;
 
-		if (isForced || BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS)
+		if (isForced
+				|| BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS)
 				|| BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY)) {
 			// 高度選定
 			int h = -1;
 			for (int y = 2; y < 255; y++) {
 				BlockPos p1 = new BlockPos(posX, y, posZ);
-				if (!isReplaceable(world, p1) && isReplaceable(world, p1.up())
-						&& (world.canSeeSky(p1.up()) || world.getBlockState(p1).getMaterial() == Material.GRASS)) {
+				if (!isReplaceable(world, p1)
+						&& isReplaceable(world, p1.up()) && (world.canSeeSky(p1.up())
+								|| world.getBlockState(p1).getMaterial() == Material.GRASS)) {
 					h = y;
 					break;
 				}
@@ -111,13 +122,18 @@ public class WorldGenWindmill implements IWorldGenerator {
 				int adj = 0;
 				for (int i = -2; i < 3; i++) {
 					for (int j = -2; j < 3; j++) {
-						BlockPos c1 = new BlockPos(posX + i, h, posZ + j);
-						if (!isReplaceable(world, c1.up(2)) || isReplaceable(world, c1.down(2))) {
+						BlockPos c1 = new BlockPos(posX
+								+ i, h,
+								posZ
+										+ j);
+						if (!isReplaceable(world, c1.up(2))
+								|| isReplaceable(world, c1.down(2))) {
 							i1 += 1;
 						} else {
 							if (isReplaceable(world, c1.down())) {
 								adj += -1;
-							} else if (!isReplaceable(world, c1) && !isReplaceable(world, c1.up())) {
+							} else if (!isReplaceable(world, c1)
+									&& !isReplaceable(world, c1.up())) {
 								adj += 1;
 							}
 						}
@@ -132,7 +148,8 @@ public class WorldGenWindmill implements IWorldGenerator {
 						h += 1;
 					}
 
-					DCLogger.debugLog("Windmill House target pos2: " + posX + ", " + h + "," + posZ);
+					DCLogger.debugLog("Windmill House target pos2: "
+							+ posX + ", " + h + "," + posZ);
 					BlockPos main = new BlockPos(posX, h, posZ);
 					generate(world, main);
 					return true;
@@ -190,19 +207,32 @@ public class WorldGenWindmill implements IWorldGenerator {
 		IBlockState strO = Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST);
 		for (int k3 = 0; k3 < 3; k3++) {
 			IBlockState logY = Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
-			world.setBlockState(pos.add(-2, 4 + k3, -2), logY, 2);
-			world.setBlockState(pos.add(-2, 4 + k3, 2), logY, 2);
-			world.setBlockState(pos.add(2, 4 + k3, -2), logY, 2);
-			world.setBlockState(pos.add(2, 4 + k3, 2), logY, 2);
+			world.setBlockState(pos.add(-2, 4
+					+ k3, -2), logY, 2);
+			world.setBlockState(pos.add(-2, 4
+					+ k3, 2), logY, 2);
+			world.setBlockState(pos.add(2, 4
+					+ k3, -2), logY, 2);
+			world.setBlockState(pos.add(2, 4
+					+ k3, 2), logY, 2);
 			for (int i3 = -1; i3 < 2; i3++) {
-				world.setBlockState(pos.add(i3, 4 + k3, -2), Blocks.PLANKS.getDefaultState(), 2);
-				world.setBlockState(pos.add(i3, 4 + k3, 2), Blocks.PLANKS.getDefaultState(), 2);
-				world.setBlockState(pos.add(2, 4 + k3, i3), Blocks.PLANKS.getDefaultState(), 2);
+				world.setBlockState(pos.add(i3, 4
+						+ k3, -2), Blocks.PLANKS.getDefaultState(), 2);
+				world.setBlockState(pos.add(i3, 4
+						+ k3, 2), Blocks.PLANKS.getDefaultState(), 2);
+				world.setBlockState(pos.add(2, 4
+						+ k3, i3), Blocks.PLANKS.getDefaultState(), 2);
 
-				world.setBlockState(pos.add(-8 + k3, 1 + k3, i3), strO, 2);
+				world.setBlockState(pos.add(-8
+						+ k3,
+						1
+								+ k3,
+						i3), strO, 2);
 			}
-			world.setBlockState(pos.add(-2, 4 + k3, -1), Blocks.PLANKS.getDefaultState(), 2);
-			world.setBlockState(pos.add(-2, 4 + k3, 1), Blocks.PLANKS.getDefaultState(), 2);
+			world.setBlockState(pos.add(-2, 4
+					+ k3, -1), Blocks.PLANKS.getDefaultState(), 2);
+			world.setBlockState(pos.add(-2, 4
+					+ k3, 1), Blocks.PLANKS.getDefaultState(), 2);
 		}
 		world.setBlockState(pos.add(-2, 4, 0),
 				Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.FACING, EnumFacing.EAST)
@@ -245,9 +275,10 @@ public class WorldGenWindmill implements IWorldGenerator {
 
 		// 内装
 		for (int i4 = 0; i4 < 3; i4++) {
-			world.setBlockState(pos.add(-1, 1 + i4, -2), Blocks.PLANKS.getDefaultState(), 2);
-			world.setBlockState(pos.add(-1, 1 + i4, -1),
-					Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH), 2);
+			world.setBlockState(pos.add(-1, 1
+					+ i4, -2), Blocks.PLANKS.getDefaultState(), 2);
+			world.setBlockState(pos.add(-1, 1
+					+ i4, -1), Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH), 2);
 		}
 
 		world.setBlockState(pos.add(-1, 6, 0), MainInit.wallLamp.getDefaultState()
@@ -280,7 +311,8 @@ public class WorldGenWindmill implements IWorldGenerator {
 		world.setBlockState(pos.add(2, 1, -2),
 				Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, EnumFacing.WEST), 2);
 		TileEntity chest = world.getTileEntity(pos.add(2, 1, -2));
-		if (chest != null && chest instanceof TileEntityChest) {
+		if (chest != null
+				&& chest instanceof TileEntityChest) {
 			for (int l = 0; l < 27; l++) {
 				int r = pRandom.nextInt(80);
 				if (r < loot.size()) {
@@ -297,8 +329,10 @@ public class WorldGenWindmill implements IWorldGenerator {
 			return true;
 		int i = WorldGenConfig.windmillGen;
 		pRandom.nextFloat();
-		float r = pRandom.nextFloat() * 1000;
-		if (r > 0 && r < i)
+		float r = pRandom.nextFloat()
+				* 1000;
+		if (r > 0
+				&& r < i)
 			// SkarnGenPoint.addPos(chunkX, chunkZ);
 			return true;
 		return false;
@@ -306,7 +340,8 @@ public class WorldGenWindmill implements IWorldGenerator {
 
 	public boolean isReplaceable(World world, BlockPos pos) {
 		net.minecraft.block.state.IBlockState state = world.getBlockState(pos);
-		return state.getBlock().isAir(state, world, pos) || state.getMaterial().isReplaceable();
+		return state.getBlock().isAir(state, world, pos)
+				|| state.getMaterial().isReplaceable();
 	}
 
 	public static List<ItemStack> loot = new ArrayList<ItemStack>();
@@ -333,12 +368,12 @@ public class WorldGenWindmill implements IWorldGenerator {
 		loot.add(new ItemStack(MainInit.gems, 8, 3));
 		loot.add(new ItemStack(MainInit.wrench, 1, 0));
 		loot.add(new ItemStack(MainInit.wrench, 1, 0));
-		loot.add(new ItemStack(MainInit.materials, 2, 2));
-		loot.add(new ItemStack(MainInit.materials, 2, 3));
-		loot.add(new ItemStack(MainInit.materials, 1, 4));
-		loot.add(new ItemStack(MainInit.materials, 1, 4));
-		loot.add(new ItemStack(MainInit.materials, 1, 5));
-		loot.add(new ItemStack(MainInit.materials, 1, 5));
+		loot.add(new ItemStack(MainInit.clothes, 2, 2));
+		loot.add(new ItemStack(MainInit.clothes, 2, 3));
+		loot.add(new ItemStack(MainInit.gears, 1, 1));
+		loot.add(new ItemStack(MainInit.gears, 1, 1));
+		loot.add(new ItemStack(MainInit.gears, 1, 2));
+		loot.add(new ItemStack(MainInit.gears, 1, 2));
 		loot.add(new ItemStack(MainInit.bakedApple, 3, 2));
 		loot.add(new ItemStack(MainInit.bakedApple, 3, 3));
 		loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));

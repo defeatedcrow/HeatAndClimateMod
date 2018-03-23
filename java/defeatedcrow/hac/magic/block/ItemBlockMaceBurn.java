@@ -42,14 +42,19 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 
 	@Override
 	protected void doUsingEffect(ItemStack stack, EntityPlayer player, World world) {
-		if (!DCUtil.isEmpty(stack) && player != null) {
+		if (!DCUtil.isEmpty(stack)
+				&& player != null) {
 			boolean hasAcv = true;
 			boolean flag = player.capabilities.isCreativeMode;
 
-			if (hasAcv || flag) {
+			if (hasAcv
+					|| flag) {
 				if (!world.isRemote) {
 					// 自身の炎上
-					player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600, 0));
+					int i = 1
+							+ magicSuitCount(player);
+					player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600
+							* i, 0));
 					if (world instanceof WorldServer) {
 						((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, player.posX, player.posY,
 								player.posZ, 16, 0.75D, 0.75D, 0.75D, 0.5D, new int[0]);
@@ -67,7 +72,8 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 					for (BlockPos p1 : itr) {
 						IBlockState st = world.getBlockState(p1);
 						int meta = st.getBlock().damageDropped(st);
-						if (world.isAirBlock(p1) || st.getMaterial() == Material.WATER || st.getBlock() == Blocks.DIRT
+						if (world.isAirBlock(p1)
+								|| st.getMaterial() == Material.WATER || st.getBlock() == Blocks.DIRT
 								|| st.getBlock() == Blocks.GRASS) {
 							continue;
 						}
@@ -76,8 +82,13 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 						if (recipe != null) {
 							ItemStack ret = recipe.getOutput();
 							if (!DCUtil.isEmpty(ret)) {
-								EntityItem drop = new EntityItem(world, p1.getX() + 0.5D, p1.getY() + 0.5D,
-										p1.getZ() + 0.5D, ret);
+								EntityItem drop = new EntityItem(world, p1.getX()
+										+ 0.5D,
+										p1.getY()
+												+ 0.5D,
+										p1.getZ()
+												+ 0.5D,
+										ret);
 								if (ret.getItem() instanceof ItemBlock) {
 									Block put = ((ItemBlock) ret.getItem()).getBlock();
 									IBlockState next = put.getStateFromMeta(ret.getItemDamage());
@@ -89,16 +100,25 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 									world.spawnEntity(drop);
 								}
 								if (world instanceof WorldServer) {
-									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() + 0.5D,
-											p1.getY() + 0.5D, p1.getZ() + 0.5D, 8, 0.75D, 0.75D, 0.75D, 0.5D,
-											new int[0]);
+									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX()
+											+ 0.5D,
+											p1.getY()
+													+ 0.5D,
+											p1.getZ()
+													+ 0.5D,
+											8, 0.75D, 0.75D, 0.75D, 0.5D, new int[0]);
 								}
 							}
 						} else {
 							ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(target);
 							if (!DCUtil.isEmpty(burnt)) {
-								EntityItem drop2 = new EntityItem(world, p1.getX() + 0.5D, p1.getY() + 0.5D,
-										p1.getZ() + 0.5D, new ItemStack(burnt.getItem(), 1, burnt.getItemDamage()));
+								EntityItem drop2 = new EntityItem(world, p1.getX()
+										+ 0.5D,
+										p1.getY()
+												+ 0.5D,
+										p1.getZ()
+												+ 0.5D,
+										new ItemStack(burnt.getItem(), 1, burnt.getItemDamage()));
 								if (burnt.getItem() instanceof ItemBlock) {
 									Block put = ((ItemBlock) burnt.getItem()).getBlock();
 									IBlockState next = put.getStateFromMeta(burnt.getItemDamage());
@@ -110,9 +130,13 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 									world.spawnEntity(drop2);
 								}
 								if (world instanceof WorldServer) {
-									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() + 0.5D,
-											p1.getY() + 0.0D, p1.getZ() + 0.5D, 8, 0.75D, 0.75D, 0.75D, 0.05D,
-											new int[0]);
+									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX()
+											+ 0.5D,
+											p1.getY()
+													+ 0.0D,
+											p1.getZ()
+													+ 0.5D,
+											8, 0.75D, 0.75D, 0.75D, 0.05D, new int[0]);
 								}
 							}
 						}
@@ -122,9 +146,17 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 				}
 
 				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP,
-						SoundCategory.PLAYERS, 0.65F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+						SoundCategory.PLAYERS, 0.65F, 1.0F
+								/ (itemRand.nextFloat()
+										* 0.4F
+										+ 1.2F)
+								+ 0.5F);
 				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH,
-						SoundCategory.PLAYERS, 0.65F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+						SoundCategory.PLAYERS, 0.65F, 1.0F
+								/ (itemRand.nextFloat()
+										* 0.4F
+										+ 1.2F)
+								+ 0.5F);
 
 			} else {
 				world.playSound(player, player.posX, player.posY, player.posZ,
@@ -138,7 +170,8 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		super.addInformation2(stack, world, tooltip);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Require high temperature");
+			tooltip.add(TextFormatting.YELLOW.toString()
+					+ "Require high temperature");
 		}
 	}
 

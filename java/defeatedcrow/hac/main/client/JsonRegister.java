@@ -32,6 +32,9 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.stoneYagen, ClimateCore.PACKAGE_ID, "dcs_stone_yagen", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.brassYagen, ClimateCore.PACKAGE_ID, "dcs_brass_yagen", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.materials, ClimateCore.PACKAGE_ID, "dcs_material", "tool", 9);
+		MAIN_INSTANCE.regSimpleItem(MainInit.gears, ClimateCore.PACKAGE_ID, "dcs_gear", "tool", 3);
+		MAIN_INSTANCE.regSimpleItem(MainInit.clothes, ClimateCore.PACKAGE_ID, "dcs_cloth", "tool", 9);
+		MAIN_INSTANCE.regSimpleItem(MainInit.silkworm, ClimateCore.PACKAGE_ID, "dcs_silkworm", "tool", 3);
 		MAIN_INSTANCE.regSimpleItem(MainInit.crowDrill, ClimateCore.PACKAGE_ID, "dcs_crow_drill", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.wrench, ClimateCore.PACKAGE_ID, "dcs_wrench", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.bakedApple, ClimateCore.PACKAGE_ID, "dcs_baked_apple", "food", 4);
@@ -181,6 +184,10 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.woolBoots, ClimateCore.PACKAGE_ID, "dcs_boots_wool", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.peaCoat, ClimateCore.PACKAGE_ID, "dcs_plate_peacoat", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.hoodieB, ClimateCore.PACKAGE_ID, "dcs_plate_hoodie_black", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.blackCoat, ClimateCore.PACKAGE_ID, "dcs_plate_silk", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.clothCoat, ClimateCore.PACKAGE_ID, "dcs_plate_cloth", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.magicUnder, ClimateCore.PACKAGE_ID, "dcs_leggins_magic", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.magicCoat, ClimateCore.PACKAGE_ID, "dcs_plate_magic", "equip", 0);
 	}
 
 	static void regCube(ITexturePath block, String domein, String name, String dir, int meta) {

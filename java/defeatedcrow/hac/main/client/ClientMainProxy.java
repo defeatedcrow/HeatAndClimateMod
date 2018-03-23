@@ -49,6 +49,7 @@ import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
+import defeatedcrow.hac.main.client.model.ModelOvercoat;
 import defeatedcrow.hac.main.client.model.ModelWoolWear;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
@@ -93,6 +94,8 @@ public class ClientMainProxy extends CommonMainProxy {
 	private static final ModelHoodie hoodieModel = new ModelHoodie(0);
 	private static final ModelWoolWear woolModel = new ModelWoolWear(0);
 	private static final ModelWoolWear woolHatModel = new ModelWoolWear(3);
+	private static final ModelOvercoat coatModel = new ModelOvercoat(0);
+	private static final ModelOvercoat coatModel2 = new ModelOvercoat(1);
 
 	@Override
 	public void loadConst() {
@@ -181,18 +184,18 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void addSidedBlock(Block block, String name, int max) {
-		JsonRegister.regSidedCube(((ISidedTexture) block), ClimateCore.PACKAGE_ID,
-				ClimateCore.PACKAGE_BASE + "_" + name, "cont", max);
-		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
-				"cont", max);
+		JsonRegister.regSidedCube(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE
+				+ "_" + name, "cont", max);
+		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE
+				+ "_" + name, "cont", max);
 	}
 
 	@Override
 	public void addCropBlock(Block block, String name, int max) {
-		JsonRegister.regCross(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
-				"crop", max);
-		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
-				"crop", max);
+		JsonRegister.regCross(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE
+				+ "_" + name, "crop", max);
+		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE
+				+ "_" + name, "crop", max);
 	}
 
 	/**
@@ -202,16 +205,17 @@ public class ClientMainProxy extends CommonMainProxy {
 	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {
 		int m = 0;
 		if (max == 0) {
-			ModelLoader.setCustomModelResourceLocation(item, m,
-					new ModelResourceLocation(domein + ":" + dir + "/" + name, "inventory"));
+			ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein
+					+ ":" + dir + "/" + name, "inventory"));
 		} else {
-			while (m < max + 1) {
+			while (m < max
+					+ 1) {
 				if (f) {
-					ModelLoader.setCustomModelResourceLocation(item, m,
-							new ModelResourceLocation(domein + ":" + dir + "/" + name + m, "inventory"));
+					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein
+							+ ":" + dir + "/" + name + m, "inventory"));
 				} else {
-					ModelLoader.setCustomModelResourceLocation(item, m,
-							new ModelResourceLocation(domein + ":" + dir + "/" + name, "inventory"));
+					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein
+							+ ":" + dir + "/" + name, "inventory"));
 				}
 				m++;
 			}
@@ -223,8 +227,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(DCState.TYPE4).build());
 		// ModelBakery.registerItemVariants(Item.getItemFromBlock(block), new
 		// ModelResourceLocation(domein + ":" + name));
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation(domein + ":" + dir + "/" + name, "inventory"));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(domein
+				+ ":" + dir + "/" + name, "inventory"));
 	}
 
 	// ruby氏に無限に感謝
@@ -241,7 +245,8 @@ public class ClientMainProxy extends CommonMainProxy {
 				try {
 					return render.getConstructor(manager.getClass()).newInstance(manager);
 				} catch (Exception e) {
-					DCLogger.infoLog("dcs_climate", "failed to register entity render: " + cls.getName());
+					DCLogger.infoLog("dcs_climate", "failed to register entity render: "
+							+ cls.getName());
 					e.printStackTrace();
 				}
 				return null;
@@ -261,6 +266,10 @@ public class ClientMainProxy extends CommonMainProxy {
 			return woolHatModel;
 		case 3:
 			return woolModel;
+		case 4:
+			return coatModel;
+		case 5:
+			return coatModel2;
 		default:
 			return null;
 		}

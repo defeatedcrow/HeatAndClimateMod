@@ -4,11 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import defeatedcrow.hac.api.climate.ClimateAPI;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
-import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
@@ -42,19 +37,18 @@ public class ItemBlockMaceFlower extends ItemBlockMace {
 
 			if (hasAcv || flag) {
 				if (!world.isRemote) {
+					int i = 3 + magicSuitCount(player);
 					// 成長
-					IClimate clm = ClimateAPI.register.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL,
-							DCAirflow.TIGHT);
 					// 5x5x3 の範囲
 					BlockPos pos = player.getPosition();
-					BlockPos min = new BlockPos(pos.add(-3, -1, -3));
-					BlockPos max = new BlockPos(pos.add(3, 1, 3));
+					BlockPos min = new BlockPos(pos.add(-i, -1, -i));
+					BlockPos max = new BlockPos(pos.add(i, 1, i));
 					Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 					for (BlockPos p1 : itr) {
 						IBlockState st = world.getBlockState(p1);
 						int meta = st.getBlock().getMetaFromState(st);
-						if (world.isAirBlock(p1) || st.getMaterial() == Material.WATER || st.getBlock() == Blocks.DIRT
-								|| st.getBlock() == Blocks.GRASS) {
+						if (world.isAirBlock(p1) || st.getMaterial() == Material.WATER || st
+								.getBlock() == Blocks.DIRT || st.getBlock() == Blocks.GRASS) {
 							continue;
 						}
 						if (st.getBlock() instanceof IGrowable) {
@@ -62,14 +56,13 @@ public class ItemBlockMaceFlower extends ItemBlockMace {
 							if (pl.canUseBonemeal(world, itemRand, p1, st) && pl.canGrow(world, p1, st, false)) {
 								pl.grow(world, itemRand, p1, st);
 								if (world instanceof WorldServer) {
-									((WorldServer) world).spawnParticle(EnumParticleTypes.VILLAGER_HAPPY,
-											p1.getX() + 0.5D, p1.getY() + 0.5D, p1.getZ() + 0.5D, 8, 0.5D, 0.5D, 0.5D,
-											0.5D, new int[0]);
+									((WorldServer) world).spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, p1.getX() +
+											0.5D, p1.getY() + 0.5D, p1.getZ() + 0.5D, 8, 0.5D, 0.5D, 0.5D, 0.5D,
+											new int[0]);
 								}
 							}
 						}
 					}
-
 				}
 
 				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP,

@@ -35,9 +35,10 @@ public class ItemBlockMaceGlory extends ItemBlockMace {
 					List<EntityPlayer> list = world.playerEntities;
 					for (EntityPlayer target : list) {
 						if (target != null && target.isEntityAlive()) {
-							target.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2400, 1));
-							target.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 2400, 1));
-							target.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 2400, 1));
+							int i = 1 + magicSuitCount(player);
+							target.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2400 * i, i));
+							target.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 2400 * i, i));
+							target.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 2400 * i, i));
 						}
 					}
 				}

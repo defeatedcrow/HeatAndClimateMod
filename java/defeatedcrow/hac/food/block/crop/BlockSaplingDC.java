@@ -70,7 +70,7 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		case 2:
 			return b + "tea";
 		default:
-			return b + "tea";
+			return b + "morus";
 		}
 	}
 
@@ -95,7 +95,7 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		case 2:
 			return b + "tea";
 		default:
-			return b + "tea";
+			return b + "morus";
 		}
 	}
 
@@ -117,6 +117,7 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		list.add(new ItemStack(this, 1, 0));
 		list.add(new ItemStack(this, 1, 1));
 		list.add(new ItemStack(this, 1, 2));
+		list.add(new ItemStack(this, 1, 3));
 		return list;
 	}
 
@@ -154,12 +155,17 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 				// lemon
 				IBlockState leaves = FoodInit.leavesLemon.getDefaultState().withProperty(DCState.STAGE4, 0)
 						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
-				gen = new WorldGenDCTree(true, leaves);
+				gen = new WorldGenDCTree(true, leaves, 5);
 			} else if (meta == 1) {
 				// olive
 				IBlockState leaves = FoodInit.leavesOlive.getDefaultState().withProperty(DCState.STAGE4, 0)
 						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
-				gen = new WorldGenDCTree(true, leaves);
+				gen = new WorldGenDCTree(true, leaves, 5);
+			} else if (meta == 3) {
+				// olive
+				IBlockState leaves = FoodInit.leavesMorus.getDefaultState().withProperty(DCState.STAGE4, 0)
+						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				gen = new WorldGenDCTree(true, leaves, 3);
 			}
 
 			if (gen != null) {
