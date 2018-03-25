@@ -147,6 +147,14 @@ public class LoadingToolRecipe {
 				new ItemStack(MainInit.clothes, 1, 4)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 7), new Object[] {
+				" X ",
+				"X X",
+				" X ",
+				'X',
+				new ItemStack(MainInit.clothes, 1, 6)
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
 				" X ",
 				"XYX",

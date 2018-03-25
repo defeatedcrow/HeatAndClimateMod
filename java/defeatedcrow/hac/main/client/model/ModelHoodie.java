@@ -107,11 +107,11 @@ public class ModelHoodie extends ModelThinBiped {
 			float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 
-		setAngle(headH, this.bipedHead);
-		setAngle(hoodH, this.bipedBody);
-		setAngle(bodyH, this.bipedBody);
-		setAngle(rightArmH, this.bipedRightArm);
-		setAngle(leftArmH, this.bipedLeftArm);
+		setAngle(headH, this.head);
+		setAngle(bodyH, this.body);
+		setAngle(hoodH, this.body);
+		setAngle(rightArmH, this.rightArm);
+		setAngle(leftArmH, this.leftArm);
 	}
 
 	@Override

@@ -158,6 +158,9 @@ item.dcs_silkworm_silk_moth.name=蚕の成虫
 
 item.dcs_flowerpot_white.name=白の花瓶
 item.dcs_flowerpot_brown.name=茶色の花瓶
+item.dcs_big_cushion_gray.name=モブをダメにするクッション(灰)
+item.dcs_big_cushion_brown.name=モブをダメにするクッション(茶)
+
 
 item.dcs_food_materials_salt.name=食塩
 item.dcs_food_materials_flour.name=小麦粉
@@ -223,6 +226,8 @@ item.dcs_food_tart_spinach_raw.name=生のほうれんそうのキッシュ
 item.dcs_food_tart_spinach_baked.name=ほうれんそうのキッシュ
 item.dcs_food_tart_potato_raw.name=生のポテトと魚のキッシュ
 item.dcs_food_tart_potato_baked.name=ポテトと魚のキッシュ
+item.dcs_food_tart_crostata_raw.name=生のクロスタータ
+item.dcs_food_tart_crostata_baked.name=クロスタータ
 item.dcs_food_pie_sugar_raw.name=生のシュガーペイストリー
 item.dcs_food_pie_sugar_baked.name=シュガーペイストリー
 item.dcs_food_pie_meat_raw.name=生のミートパイ
@@ -400,6 +405,8 @@ item.dcs_coat_trench.name=トレンチコート
 item.dcs_coat_black.name=フロックコート
 item.dcs_coat_magic.name=魔導のローブ
 item.dcs_leggins_magic.name=魔導の服
+item.dcs_gemboots_blue.name=宝石のブーツ(青)
+item.dcs_gemboots_green.name=宝石のブーツ(緑)
 
 item.dcs_jewel_pendant_chal_blue.name=青玉髄のペンダント
 item.dcs_jewel_pendant_chal_red.name=紅玉髄のペンダント
@@ -785,6 +792,22 @@ item.dcs_door_marble_item.name=大理石のドア
 item.dcs_door_steel_item.name=鋼鉄のドア
 tile.dcs_build_chandelier_0.name=石膏のシャンデリア
 tile.dcs_build_curtain_0.name=カーテン
+tile.dcs_build_linoleum_15.name=白のリノリウム
+tile.dcs_build_linoleum_14.name=オレンジのリノリウム
+tile.dcs_build_linoleum_13.name=マゼンタのリノリウム
+tile.dcs_build_linoleum_12.name=ライトブルーのリノリウム
+tile.dcs_build_linoleum_11.name=黄色のリノリウム
+tile.dcs_build_linoleum_10.name=ライムのリノリウム
+tile.dcs_build_linoleum_9.name=ピンクのリノリウム
+tile.dcs_build_linoleum_8.name=グレーのリノリウム
+tile.dcs_build_linoleum_7.name=シルバーのリノリウム
+tile.dcs_build_linoleum_6.name=シアンのリノリウム
+tile.dcs_build_linoleum_5.name=紫のリノリウム
+tile.dcs_build_linoleum_4.name=青のリノリウム
+tile.dcs_build_linoleum_3.name=茶色のリノリウム
+tile.dcs_build_linoleum_2.name=緑のリノリウム
+tile.dcs_build_linoleum_1.name=赤のリノリウム
+tile.dcs_build_linoleum_0.name=黒のリノリウム
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪
@@ -1183,7 +1206,7 @@ enchantment.dcs.robber=追い剥ぎ
 
 #villager
 entity.Villager.dcs_trader=貿易商人
-entity.Villager.dcs_agri_resercher=農業研究家
+entity.Villager.dcs_agri_researcher=農業研究家
 entity.Villager.dcs_engineer=機械技師
 
 #achievement

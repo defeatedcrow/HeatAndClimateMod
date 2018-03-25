@@ -26,25 +26,17 @@ public class ItemBlockMaceBird extends ItemBlockMace {
 
 	@Override
 	protected void doUsingEffect(ItemStack stack, EntityPlayer player, World world) {
-		if (!DCUtil.isEmpty(stack)
-				&& player != null) {
+		if (!DCUtil.isEmpty(stack) && player != null) {
 			boolean hasAcv = true;
 			boolean flag = player.capabilities.isCreativeMode;
 
-			if (hasAcv
-					|| flag) {
+			if (hasAcv || flag) {
 				if (!player.world.isRemote) {
-					int i = 1
-							+ magicSuitCount(player);
-					player.addPotionEffect(new PotionEffect(MainInit.bird, 3600
-							* i, 0));
+					int i = 1 + magicSuitCount(player);
+					player.addPotionEffect(new PotionEffect(MainInit.bird, 3600 * i, 0));
 				}
 				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP,
-						SoundCategory.PLAYERS, 0.65F, 1.0F
-								/ (itemRand.nextFloat()
-										* 0.4F
-										+ 1.2F)
-								+ 0.5F);
+						SoundCategory.PLAYERS, 0.65F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 			} else {
 				world.playSound(player, player.posX, player.posY, player.posZ,
@@ -58,8 +50,7 @@ public class ItemBlockMaceBird extends ItemBlockMace {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		super.addInformation2(stack, world, tooltip);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.YELLOW.toString()
-					+ "Require the wind");
+			tooltip.add(TextFormatting.YELLOW.toString() + "Require the wind");
 		}
 	}
 

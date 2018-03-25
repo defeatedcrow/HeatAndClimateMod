@@ -31,18 +31,18 @@ public class ModelOvercoat extends ModelThinBiped {
 
 	public ModelOvercoat(int b) {
 		this(0.5F, b);
+	}
+
+	public ModelOvercoat(float f, int b) {
+		this(f, 0.0F, 64, 64, b);
 		if (b == 1) {
 			isShort = true;
 		}
 	}
 
-	public ModelOvercoat(float f, int b) {
-		this(f, 0.0F, 64, 64, b);
-	}
-
 	public ModelOvercoat(float f1, float f2, int i3, int i4, int s) {
-		super(1);
-		slot = 1;
+		super(s);
+		slot = s;
 		textureWidth = i3;
 		textureHeight = i4;
 		headH = new ModelRenderer(this, 0, 0);
@@ -121,25 +121,13 @@ public class ModelOvercoat extends ModelThinBiped {
 
 		if (this.isChild) {
 			float f = 2.0F;
-			GlStateManager.scale(1.5F
-					/ f,
-					1.5F
-							/ f,
-					1.5F
-							/ f);
-			GlStateManager.translate(0.0F, 16.0F
-					* f7, 0.0F);
+			GlStateManager.scale(1.5F / f, 1.5F / f, 1.5F / f);
+			GlStateManager.translate(0.0F, 16.0F * f7, 0.0F);
 			this.headH.render(f7);
 			GlStateManager.popMatrix();
 			GlStateManager.pushMatrix();
-			GlStateManager.scale(1.0F
-					/ f,
-					1.0F
-							/ f,
-					1.0F
-							/ f);
-			GlStateManager.translate(0.0F, 24.0F
-					* f7, 0.0F);
+			GlStateManager.scale(1.0F / f, 1.0F / f, 1.0F / f);
+			GlStateManager.translate(0.0F, 24.0F * f7, 0.0F);
 			this.bodyH.render(f7);
 			this.rightarmH.render(f7);
 			this.leftarmH.render(f7);
@@ -173,36 +161,33 @@ public class ModelOvercoat extends ModelThinBiped {
 			float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 
-		setAngle(headH, this.bipedHead);
-		setAngle(bodyH, this.bipedBody);
-		setAngle(backH, this.bipedBody);
-		setAngle(rightarmH, this.bipedRightArm);
-		setAngle(leftarmH, this.bipedLeftArm);
-		setAngle(rightlegH, this.bipedRightLeg);
-		setAngle(leftlegH, this.bipedLeftLeg);
-		setAngle(middlelegH, this.bipedLeftLeg);
-		setAngle(rightleg2H, this.bipedRightLeg);
-		setAngle(leftleg2H, this.bipedLeftLeg);
+		setAngle(headH, this.head);
+		setAngle(bodyH, this.body);
+		setAngle(backH, this.body);
+		setAngle(rightarmH, this.rightArm);
+		setAngle(leftarmH, this.leftArm);
+		setAngle(rightlegH, this.rightLeg);
+		setAngle(leftlegH, this.leftLeg);
+		setAngle(middlelegH, this.leftLeg);
+		setAngle(rightleg2H, this.rightLeg);
+		setAngle(leftleg2H, this.leftLeg);
 
 		if (this.isRiding) {
-			rightlegH.rotateAngleX = bipedRightLeg.rotateAngleX;
-			leftlegH.rotateAngleX = bipedLeftLeg.rotateAngleX;
-			middlelegH.rotateAngleX = bipedLeftLeg.rotateAngleX;
+			rightlegH.rotateAngleX = rightLeg.rotateAngleX;
+			leftlegH.rotateAngleX = leftLeg.rotateAngleX;
+			middlelegH.rotateAngleX = leftLeg.rotateAngleX;
 			rightlegH.rotateAngleY = 0F;
 			leftlegH.rotateAngleY = 0F;
 			middlelegH.rotateAngleY = 0F;
 		} else {
-			rightlegH.rotateAngleX = bipedRightLeg.rotateAngleX
-					* 0.5F;
-			leftlegH.rotateAngleX = bipedLeftLeg.rotateAngleX
-					* 0.5F;
+			rightlegH.rotateAngleX = rightLeg.rotateAngleX * 0.5F;
+			leftlegH.rotateAngleX = leftLeg.rotateAngleX * 0.5F;
 			middlelegH.rotateAngleX = 0F;
-			middlelegH.rotateAngleY = -bipedLeftLeg.rotateAngleX;
+			middlelegH.rotateAngleY = -leftLeg.rotateAngleX;
 		}
 
 		middlelegH.rotationPointX = 0F;
-		backH.rotateAngleX = bodyH.rotateAngleX
-				+ 0.75F;
+		backH.rotateAngleX = bodyH.rotateAngleX + 0.75F;
 	}
 
 	@Override

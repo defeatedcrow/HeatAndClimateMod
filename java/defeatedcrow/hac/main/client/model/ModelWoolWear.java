@@ -132,15 +132,15 @@ public class ModelWoolWear extends ModelThinBiped {
 			float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 
-		setAngle(hat, this.bipedHead);
-		setAngle(rightarm, this.bipedRightArm);
-		setAngle(leftarm, this.bipedLeftArm);
-		setAngle(boots1, this.bipedRightLeg);
-		setAngle(boots2, this.bipedLeftLeg);
-		setAngle(boots3, this.bipedRightLeg);
-		setAngle(boots4, this.bipedLeftLeg);
-		setAngle(wool1, this.bipedRightLeg);
-		setAngle(wool2, this.bipedLeftLeg);
+		setAngle(hat, this.head);
+		setAngle(rightarm, this.rightArm);
+		setAngle(leftarm, this.leftArm);
+		setAngle(boots1, this.rightLeg);
+		setAngle(boots2, this.leftLeg);
+		setAngle(boots3, this.rightLeg);
+		setAngle(boots4, this.leftLeg);
+		setAngle(wool1, this.rightLeg);
+		setAngle(wool2, this.leftLeg);
 	}
 
 	@Override

@@ -79,7 +79,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 3));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("listAllrootveggie", new ItemStack(FoodInit.seeds, 1, 6));
-		OreDictionary.registerOre("listAllFluit", new ItemStack(FoodInit.crops, 1, 11));
+		OreDictionary.registerOre("listAllfluit", new ItemStack(FoodInit.crops, 1, 11));
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("cropLotusSeed", new ItemStack(FoodInit.crops, 1, 10));

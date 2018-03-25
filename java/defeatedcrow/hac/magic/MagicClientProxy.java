@@ -105,10 +105,10 @@ public class MagicClientProxy {
 		ClientRegistry.registerTileEntity(TileMaceIce.class, "dcs_te_magicmace_ice", new TESRMaceIce());
 		ClientRegistry.registerTileEntity(TileMaceOcean.class, "dcs_te_magicmace_ocean", new TESRMaceOcean());
 		ClientRegistry.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn", new TESRMaceBurn());
-		ClientRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower",
-				new TESRMaceFlower().setNoFrame());
-		ClientRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory",
-				new TESRMaceGlory().setNoFrame());
+		ClientRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower", new TESRMaceFlower()
+				.setNoFrame());
+		ClientRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory", new TESRMaceGlory()
+				.setNoFrame());
 
 		ClientRegistry.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage", new TESRTimeCage());
 	}
@@ -124,6 +124,8 @@ public class MagicClientProxy {
 		instance.regSimpleItem(MagicInit.maceStarItem, ClimateCore.PACKAGE_ID, "dcs_macecore", "magic", 7);
 		instance.regSimpleItem(MagicInit.expGem, ClimateCore.PACKAGE_ID, "dcs_expgem", "magic", 0);
 		instance.regSimpleItem(MagicInit.amulet, ClimateCore.PACKAGE_ID, "dcs_jewel_amulet", "equip", 4);
+		instance.regSimpleItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_ID, "dcs_gemboots_blue", "equip", 0);
+		instance.regSimpleItem(MagicInit.gemBootsFish, ClimateCore.PACKAGE_ID, "dcs_gemboots_green", "equip", 0);
 
 		// block
 		instance.regTEBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_ID, "dcs_cluster_ice", "magic", 0);

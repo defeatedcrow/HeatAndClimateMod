@@ -41,6 +41,7 @@ public class MainInit {
 	public static Block builds;
 	public static Block plate;
 	public static Block syntheticBlock;
+	public static Block linoleum;
 
 	public static Block fenceGypsum;
 	public static Block fenceMarble;
@@ -137,6 +138,8 @@ public class MainInit {
 	public static Item itemDoorSteel;
 
 	public static Block realtimeClock;
+
+	public static Item cushionGray;
 
 	// device
 	public static Block chamber;

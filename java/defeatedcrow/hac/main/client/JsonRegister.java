@@ -45,6 +45,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.entityScope, ClimateCore.PACKAGE_ID, "dcs_entity_scope", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorMarble, ClimateCore.PACKAGE_ID, "dcs_door_marble", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorSteel, ClimateCore.PACKAGE_ID, "dcs_door_steel", "build", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, ClimateCore.PACKAGE_ID, "dcs_big_cushion", "build", 1);
 
 		if (DCIntegrationCore.loadedForestry) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.circuit, ClimateCore.PACKAGE_ID, "dcs_plugin_circuit", "device", 0);
@@ -65,6 +66,7 @@ public class JsonRegister {
 		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 6);
 		regCube((ITexturePath) MainInit.syntheticBlock, ClimateCore.PACKAGE_ID, "dcs_build_synthetic_glass", "build",
 				15);
+		regCube((ITexturePath) MainInit.linoleum, ClimateCore.PACKAGE_ID, "dcs_build_linoleum", "build", 15);
 
 		MAIN_INSTANCE.regSimpleBlock(MainInit.ores, ClimateCore.PACKAGE_ID, "dcs_ore_stone", "ores", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.ores_2, ClimateCore.PACKAGE_ID, "dcs_ore2_stone", "ores", 12);
@@ -75,6 +77,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.chalLamp, ClimateCore.PACKAGE_ID, "dcs_build_challamp", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 2);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 6);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.linoleum, ClimateCore.PACKAGE_ID, "dcs_build_linoleum", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.wallLamp, ClimateCore.PACKAGE_ID, "dcs_build_walllamp", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.awning, ClimateCore.PACKAGE_ID, "dcs_build_awning", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.plate, ClimateCore.PACKAGE_ID, "dcs_build_plate", "build", 1);
@@ -115,13 +118,13 @@ public class JsonRegister {
 				"machine", 0);
 
 		// door
-		ModelLoader.setCustomStateMapper(MainInit.doorMarble,
-				(new StateMap.Builder()).ignore(BlockDoor.POWERED).build());
-		ModelLoader.setCustomStateMapper(MainInit.doorSteel,
-				(new StateMap.Builder()).ignore(BlockDoor.POWERED).build());
+		ModelLoader.setCustomStateMapper(MainInit.doorMarble, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
+				.build());
+		ModelLoader.setCustomStateMapper(MainInit.doorSteel, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
+				.build());
 
-		ModelLoader.setCustomStateMapper(MainInit.realtimeClock,
-				(new StateMap.Builder()).ignore(DCState.FACING).build());
+		ModelLoader.setCustomStateMapper(MainInit.realtimeClock, (new StateMap.Builder()).ignore(DCState.FACING)
+				.build());
 		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock), ClimateCore.PACKAGE_ID,
 				"dcs_device_realtimeclock", "device", 0);
 	}
@@ -129,7 +132,14 @@ public class JsonRegister {
 	static void regTools() {
 
 		String[] name = {
-				"brass", "steel", "silver", "nickelsilver", "chalcedony", "sapphire", "titanium", "garnet"
+				"brass",
+				"steel",
+				"silver",
+				"nickelsilver",
+				"chalcedony",
+				"sapphire",
+				"titanium",
+				"garnet"
 		};
 		for (int j = 0; j < name.length; j++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip", 0);
@@ -141,23 +151,29 @@ public class JsonRegister {
 					0);
 		}
 		String[] type = {
-				"met", "plate", "leggins", "boots"
+				"met",
+				"plate",
+				"leggins",
+				"boots"
 		};
 		for (int i = 0; i < 4; i++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_brass",
 					"equip", 0);
 			MAIN_INSTANCE.regSimpleItem(MainInit.steelArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_steel",
 					"equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.chalcArmor[i], ClimateCore.PACKAGE_ID,
-					"dcs_" + type[i] + "_chalcedony", "equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.sapphireArmor[i], ClimateCore.PACKAGE_ID,
-					"dcs_" + type[i] + "_sapphire", "equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_ID,
-					"dcs_" + type[i] + "_titanium", "equip", 0);
+			MAIN_INSTANCE.regSimpleItem(MainInit.chalcArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
+					"_chalcedony", "equip", 0);
+			MAIN_INSTANCE.regSimpleItem(MainInit.sapphireArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
+					"_sapphire", "equip", 0);
+			MAIN_INSTANCE.regSimpleItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
+					"_titanium", "equip", 0);
 		}
 
 		String[] name2 = {
-				"brass", "steel", "chalcedony", "garnet"
+				"brass",
+				"steel",
+				"chalcedony",
+				"garnet"
 		};
 		for (int j = 0; j < name2.length; j++) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.dcScythe[j], ClimateCore.PACKAGE_ID, "dcs_scythe_" + name[j], "equip",

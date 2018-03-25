@@ -68,6 +68,8 @@ import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.enchant.EnchantmentRobber;
 import defeatedcrow.hac.main.enchant.EnchantmentVenom;
+import defeatedcrow.hac.main.entity.EntityBigCushion;
+import defeatedcrow.hac.main.entity.EntityBigCushionBrown;
 import defeatedcrow.hac.main.entity.EntityCrowBalloon;
 import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
@@ -147,12 +149,12 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadEnchantment() {
 		MainInit.venom = new EnchantmentVenom();
-		ForgeRegistries.ENCHANTMENTS
-				.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID,
+				"dcs.enchantment.venom"));
 
 		MainInit.robber = new EnchantmentRobber();
-		ForgeRegistries.ENCHANTMENTS
-				.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID,
+				"dcs.enchantment.robber"));
 
 	}
 
@@ -307,6 +309,10 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addEntity(EntityCrowBalloon.class, "main", "balloon_crow");
 
 		DCRegistryUtil.addEntity(EntityFlowerPot.class, "main", "flowerpot");
+
+		DCRegistryUtil.addEntity(EntityBigCushion.class, "main", "big_cushion");
+
+		DCRegistryUtil.addEntity(EntityBigCushionBrown.class, "main", "big_cushion_brown");
 
 		FoodCommonProxy.loadEntity();
 		MachineCommonProxy.loadEntity();

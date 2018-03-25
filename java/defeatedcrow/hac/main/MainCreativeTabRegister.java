@@ -83,6 +83,7 @@ public class MainCreativeTabRegister {
 			MainInit.fenceGlass.setCreativeTab(ClimateMain.build);
 			MainInit.fenceLadder.setCreativeTab(ClimateMain.build);
 			MainInit.syntheticBlock.setCreativeTab(ClimateMain.build);
+			MainInit.linoleum.setCreativeTab(ClimateMain.build);
 
 			MainInit.awning.setCreativeTab(ClimateMain.build);
 			MainInit.achievementShield.setCreativeTab(ClimateMain.build);
@@ -119,6 +120,7 @@ public class MainCreativeTabRegister {
 			MainInit.wallshelfBlack.setCreativeTab(ClimateMain.build);
 
 			MainInit.flowerPot.setCreativeTab(ClimateMain.build);
+			MainInit.cushionGray.setCreativeTab(ClimateMain.build);
 			MainInit.chandelierGypsum.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorMarble.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorSteel.setCreativeTab(ClimateMain.build);
