@@ -42,4 +42,8 @@ public class MagicInit {
 	public static Item biomecard;
 	public static Block biomeOrb;
 
+	// equip
+	public static Item gemBootsBird;
+	public static Item gemBootsFish;
+
 }

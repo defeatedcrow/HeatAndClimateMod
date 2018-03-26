@@ -68,6 +68,8 @@ import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.enchant.EnchantmentRobber;
 import defeatedcrow.hac.main.enchant.EnchantmentVenom;
+import defeatedcrow.hac.main.entity.EntityBigCushion;
+import defeatedcrow.hac.main.entity.EntityBigCushionBrown;
 import defeatedcrow.hac.main.entity.EntityCrowBalloon;
 import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
@@ -97,12 +99,16 @@ import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.util.DCRegistryUtil;
+import defeatedcrow.hac.main.villager.HaCTrade;
+import defeatedcrow.hac.main.villager.HaCTradeData;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenOres3;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.EntityVillager.ITradeList;
+import net.minecraft.entity.passive.EntityVillager.PriceInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -114,6 +120,8 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 
 public class CommonMainProxy implements IGuiHandler {
 
@@ -141,12 +149,114 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadEnchantment() {
 		MainInit.venom = new EnchantmentVenom();
-		ForgeRegistries.ENCHANTMENTS
-				.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID,
+				"dcs.enchantment.venom"));
 
 		MainInit.robber = new EnchantmentRobber();
-		ForgeRegistries.ENCHANTMENTS
-				.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID,
+				"dcs.enchantment.robber"));
+
+	}
+
+	public void loadVillager() {
+		MainInit.agri = new VillagerProfession("dcs_climate:agri_researcher",
+				"dcs_climate:textures/models/agri_researcher.png",
+				"dcs_climate:textures/models/zombie_agri_researcher.png");
+		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.agri);
+
+		MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
+				"dcs_climate:textures/models/agri_researcher.png",
+				"dcs_climate:textures/models/zombie_agri_researcher.png");
+		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
+
+		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png",
+				"dcs_climate:textures/models/zombie_trader.png");
+		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.trader);
+
+		// HaCCrops
+		VillagerCareer agriList = new VillagerCareer(MainInit.agri, "dcs_agri_researcher");
+		// Gems, Clothes, Furnitures
+		VillagerCareer traderList = new VillagerCareer(MainInit.trader, "dcs_trader");
+		// machines
+		VillagerCareer machineList = new VillagerCareer(MainInit.engineer, "dcs_engineer");
+
+		HaCTradeData.init();
+
+		agriList.addTrade(1, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3))
+		});
+
+		agriList.addTrade(2, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3))
+		});
+
+		agriList.addTrade(3, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3))
+		});
+
+		agriList.addTrade(4, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3))
+		});
+
+		agriList.addTrade(5, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3))
+		});
+
+		traderList.addTrade(1, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3))
+		});
+
+		traderList.addTrade(2, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3))
+		});
+
+		traderList.addTrade(3, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3))
+		});
+
+		traderList.addTrade(4, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3))
+		});
+
+		traderList.addTrade(5, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3))
+		});
+
+		machineList.addTrade(1, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3))
+		});
+
+		machineList.addTrade(2, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+		});
+
+		machineList.addTrade(3, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+		});
+
+		machineList.addTrade(4, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+		});
+
+		machineList.addTrade(5, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3))
+		});
 
 	}
 
@@ -199,6 +309,10 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addEntity(EntityCrowBalloon.class, "main", "balloon_crow");
 
 		DCRegistryUtil.addEntity(EntityFlowerPot.class, "main", "flowerpot");
+
+		DCRegistryUtil.addEntity(EntityBigCushion.class, "main", "big_cushion");
+
+		DCRegistryUtil.addEntity(EntityBigCushionBrown.class, "main", "big_cushion_brown");
 
 		FoodCommonProxy.loadEntity();
 		MachineCommonProxy.loadEntity();

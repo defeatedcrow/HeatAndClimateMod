@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.worldgen;
 
 import java.util.Random;
 
+import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
@@ -10,21 +11,22 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
 
 public class WorldGenDCTree extends WorldGenAbstractTree {
 	private static final IBlockState LOG = Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT,
 			BlockPlanks.EnumType.OAK);
 	private final IBlockState LEAF;
+	private final int H;
 
-	public WorldGenDCTree(boolean notify, IBlockState leaf) {
+	public WorldGenDCTree(boolean notify, IBlockState leaf, int i) {
 		super(notify);
 		LEAF = leaf;
+		H = i;
 	}
 
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos) {
-		int i = rand.nextInt(3) + 5;
+		int i = rand.nextInt(3) + H;
 
 		boolean flag = true;
 

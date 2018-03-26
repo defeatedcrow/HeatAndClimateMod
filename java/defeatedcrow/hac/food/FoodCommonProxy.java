@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.entity.ChickenPlateEntity;
 import defeatedcrow.hac.food.entity.ChocolatePieEntity;
 import defeatedcrow.hac.food.entity.ClubSandwichREntity;
 import defeatedcrow.hac.food.entity.ClubSandwichSEntity;
+import defeatedcrow.hac.food.entity.CrostataTartEntity;
 import defeatedcrow.hac.food.entity.CustardPieEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
 import defeatedcrow.hac.food.entity.EmptyPlateEntity;
@@ -89,6 +90,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(LemonTartEntity.class, "food", "tart_lemon");
 		DCRegistryUtil.addEntity(SpinachQuicheEntity.class, "food", "quiche_spinach");
 		DCRegistryUtil.addEntity(PotatoQuicheEntity.class, "food", "quiche_potato");
+		DCRegistryUtil.addEntity(CrostataTartEntity.class, "food", "tart_crostata");
 		DCRegistryUtil.addEntity(SugarPieEntity.class, "food", "pie_sugar");
 		DCRegistryUtil.addEntity(MeatPieEntity.class, "food", "pie_meat");
 		DCRegistryUtil.addEntity(ChocolatePieEntity.class, "food", "pie_chocolate");
@@ -139,6 +141,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(CakeCoffeeEntity.class, "food", "cake_coffee");
 		DCRegistryUtil.addEntity(CakeLemonEntity.class, "food", "cake_lemon");
 		DCRegistryUtil.addEntity(CakeCreamEntity.class, "food", "cake_bakedcream");
+
 	}
 
 }

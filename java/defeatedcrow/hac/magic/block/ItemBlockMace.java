@@ -8,6 +8,8 @@ import com.google.common.collect.Multimap;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -57,7 +59,8 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	@Override
 	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
-		if (player != null && !player.isSneaking()) {
+		if (player != null
+				&& !player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
 			if (this.isActive(stack)) {
 				int amo = this.getNBTDamage(stack);
@@ -70,7 +73,8 @@ public abstract class ItemBlockMace extends DCItemBlock {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
-		if (player != null && !player.isSneaking()) {
+		if (player != null
+				&& !player.isSneaking()) {
 			ItemStack stack = player.getHeldItem(hand);
 			if (this.isActive(stack)) {
 				int amo = this.getNBTDamage(stack);
@@ -78,7 +82,9 @@ public abstract class ItemBlockMace extends DCItemBlock {
 
 				int e1 = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack);
 
-				amo -= MathHelper.ceil(10F / (e1 + 1));
+				amo -= MathHelper.ceil(10F
+						/ (e1
+								+ 1));
 				if (amo < 0) {
 					amo = 0;
 				}
@@ -101,6 +107,24 @@ public abstract class ItemBlockMace extends DCItemBlock {
 
 	protected abstract void doUsingEffect(ItemStack stack, EntityPlayer player, World world);
 
+	protected int magicSuitCount(EntityPlayer player) {
+		if (player != null) {
+			int i = 0;
+			for (ItemStack armor : player.getArmorInventoryList()) {
+				if (!DCUtil.isEmpty(armor)) {
+					if (armor.getItem() == MainInit.magicCoat) {
+						i++;
+					}
+					if (armor.getItem() == MainInit.magicUnder) {
+						i++;
+					}
+				}
+			}
+			return i;
+		}
+		return 0;
+	}
+
 	/* item damage */
 
 	@Override
@@ -111,7 +135,9 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	@Override
 	public double getDurabilityForDisplay(ItemStack stack) {
 		int i = this.getNBTDamage(stack);
-		return (640.0D - i) / 640.0D;
+		return (640.0D
+				- i)
+				/ 640.0D;
 	}
 
 	public int getNBTDamage(ItemStack stack) {
@@ -143,12 +169,14 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		int d = this.getNBTDamage(stack);
-		tooltip.add("Energy: " + d + "/ 640");
+		tooltip.add("Energy: "
+				+ d + "/ 640");
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString()
 					+ "For energy charge, please place in the appropriate environment.");
 		} else {
-			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
+			tooltip.add(TextFormatting.RESET.toString()
+					+ I18n.translateToLocal("dcs.tip.shift"));
 		}
 	}
 }

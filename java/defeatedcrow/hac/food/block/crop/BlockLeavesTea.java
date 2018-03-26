@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -38,24 +40,30 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
-		int m = meta > 0 ? 1 : 0;
+		int m = meta > 0 ? 1
+				: 0;
 		String b = "dcs_climate:blocks/crop/";
-		return b + "tea_" + m;
+		return b
+				+ "tea_" + m;
 	}
 
 	public static List<String> getTexList() {
 		List<String> list = new ArrayList<String>();
 		String b = "dcs_climate:blocks/crop/";
-		list.add(b + "tea_0");
-		list.add(b + "tea_1");
+		list.add(b
+				+ "tea_0");
+		list.add(b
+				+ "tea_1");
 		return list;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
-		int m = meta > 0 ? 1 : 0;
+		int m = meta > 0 ? 1
+				: 0;
 		String b = "dcs_climate:items/block/crop/";
-		return b + "tea_" + m;
+		return b
+				+ "tea_" + m;
 	}
 
 	@Override
@@ -77,7 +85,7 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 
 	@Override
 	public List<ItemStack> getSubItemList() {
-		List<ItemStack> list = super.getSubItemList();
+		List<ItemStack> list = Lists.newArrayList();
 		list.add(new ItemStack(this, 1, 1));
 		return list;
 	}
@@ -100,7 +108,8 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 	public boolean isSuitablePlace(World world, BlockPos pos, IBlockState state) {
 		if (state == null)
 			return false;
-		return state.getMaterial() == Material.GRASS || state.getMaterial() == Material.GROUND;
+		return state.getMaterial() == Material.GRASS
+				|| state.getMaterial() == Material.GROUND;
 	}
 
 	@Override
@@ -118,7 +127,8 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 
 	@Override
 	public boolean grow(World world, BlockPos pos, IBlockState thisState) {
-		if (thisState != null && thisState.getBlock() instanceof ClimateCropBase) {
+		if (thisState != null
+				&& thisState.getBlock() instanceof ClimateCropBase) {
 			GrowingStage stage = this.getCurrentStage(thisState);
 			if (stage == GrowingStage.DEAD) {
 				world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);

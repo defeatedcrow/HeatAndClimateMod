@@ -155,5 +155,4 @@ public class ItemGems extends DCItem {
 		}
 		return false;
 	}
-
 }

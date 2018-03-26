@@ -3,6 +3,6 @@
         "stage=0": { "model": "dcs_climate:crop/dcs_crop_sapling0" },
         "stage=1": { "model": "dcs_climate:crop/dcs_crop_sapling1" },
         "stage=2": { "model": "dcs_climate:crop/dcs_crop_sapling2" },
-        "stage=3": { "model": "dcs_climate:crop/dcs_crop_sapling2" }
+        "stage=3": { "model": "dcs_climate:crop/dcs_crop_sapling3" }
     }
 }

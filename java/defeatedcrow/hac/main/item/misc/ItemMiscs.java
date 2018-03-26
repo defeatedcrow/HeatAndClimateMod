@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.item.misc;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 
+@Deprecated
 public class ItemMiscs extends DCItem {
 
 	private final int maxMeta;
@@ -28,8 +29,9 @@ public class ItemMiscs extends DCItem {
 	 * 2: 亜麻布
 	 * 3: 木綿布
 	 * 4: 木の回転体
-	 * 5: 合金の回転体
-	 * 6: 鋼の回転体
+	 * 5: 真鍮の回転体
+	 * 6: 合金の回転体
+	 * 7: 鋼の回転体
 	 */
 	@Override
 	public String[] getNameSuffix() {

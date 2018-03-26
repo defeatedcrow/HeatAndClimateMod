@@ -35,7 +35,8 @@ public class DCPluginMekanism {
 
 	public static void sendIMC() {
 		Item bio = Item.REGISTRY.getObject(new ResourceLocation("mekanism", "biofuel"));
-		if (bio != null && ModuleConfig.food) {
+		if (bio != null
+				&& ModuleConfig.food) {
 			NBTTagCompound crop0 = new NBTTagCompound();
 			crop0.setTag("input", new ItemStack(FoodInit.crops, 1, 0).writeToNBT(new NBTTagCompound()));
 			crop0.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
@@ -117,7 +118,7 @@ public class DCPluginMekanism {
 		// crusher
 
 		NBTTagCompound cotton = new NBTTagCompound();
-		cotton.setTag("input", new ItemStack(MainInit.materials, 1, 3).writeToNBT(new NBTTagCompound()));
+		cotton.setTag("input", new ItemStack(MainInit.clothes, 1, 3).writeToNBT(new NBTTagCompound()));
 		cotton.setTag("output", new ItemStack(Items.STRING, 4, 1).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("Mekanism", "CrusherRecipe", cotton);
 

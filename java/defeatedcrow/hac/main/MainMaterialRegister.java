@@ -30,6 +30,7 @@ import defeatedcrow.hac.main.block.build.BlockGlassPlastic;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockIronPlate;
 import defeatedcrow.hac.main.block.build.BlockLightOrb;
+import defeatedcrow.hac.main.block.build.BlockLinoleum;
 import defeatedcrow.hac.main.block.build.BlockLowChest;
 import defeatedcrow.hac.main.block.build.BlockMagnetChest;
 import defeatedcrow.hac.main.block.build.BlockMarkingPanel;
@@ -71,17 +72,22 @@ import defeatedcrow.hac.main.block.ores.BlockMetal;
 import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
 import defeatedcrow.hac.main.block.plant.BlockHedge;
+import defeatedcrow.hac.main.item.entity.ItemCushionGray;
 import defeatedcrow.hac.main.item.entity.ItemFlowerPot;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorHat;
 import defeatedcrow.hac.main.item.equip.ItemArmorHoodie;
+import defeatedcrow.hac.main.item.equip.ItemArmorOvercoat;
 import defeatedcrow.hac.main.item.equip.ItemArmorThinDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorWool;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
+import defeatedcrow.hac.main.item.misc.ItemClothN;
 import defeatedcrow.hac.main.item.misc.ItemFoodDust;
+import defeatedcrow.hac.main.item.misc.ItemGearN;
 import defeatedcrow.hac.main.item.misc.ItemMiscs;
 import defeatedcrow.hac.main.item.misc.ItemRepairPutty;
+import defeatedcrow.hac.main.item.misc.ItemSilkworm;
 import defeatedcrow.hac.main.item.ores.ItemCircuitChal;
 import defeatedcrow.hac.main.item.ores.ItemGems;
 import defeatedcrow.hac.main.item.ores.ItemIngots;
@@ -162,6 +168,10 @@ public class MainMaterialRegister {
 		MainInit.builds = new BlockBuilding(Material.ROCK, ClimateCore.PACKAGE_BASE + "_build_build");
 		DCMaterialReg.registerBlock(MainInit.builds, ClimateCore.PACKAGE_BASE + "_build_build", ClimateMain.MOD_ID);
 
+		MainInit.linoleum = new BlockLinoleum(Material.WOOD, ClimateCore.PACKAGE_BASE + "_build_linoleum");
+		DCMaterialReg.registerBlock(MainInit.linoleum, ClimateCore.PACKAGE_BASE + "_build_linoleum",
+				ClimateMain.MOD_ID);
+
 		MainInit.selenite = new BlockGlassSelenite(ClimateCore.PACKAGE_BASE + "_build_selenite", 2);
 		DCMaterialReg.registerBlock(MainInit.selenite, ClimateCore.PACKAGE_BASE + "_build_selenite",
 				ClimateMain.MOD_ID);
@@ -196,7 +206,13 @@ public class MainMaterialRegister {
 	static void registerSidedBlock() {
 		MainInit.logCont = new BlockLogCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_log", 6);
 		int[] f = {
-				1600, 1600, 1600, 1600, 1600, 1600, 14400
+				1600,
+				1600,
+				1600,
+				1600,
+				1600,
+				1600,
+				14400
 		};
 		registerBlock(MainInit.logCont, ClimateCore.PACKAGE_BASE + "_cont_log", ClimateMain.MOD_ID, f);
 		ClimateMain.proxy.addSidedBlock(MainInit.logCont, "cont_log", 6);
@@ -222,9 +238,9 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.dustBags, ClimateCore.PACKAGE_BASE + "_cont_bags", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 3);
 
-		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 9);
+		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 11);
 		DCMaterialReg.registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 9);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 11);
 	}
 
 	static void regJsonBlock() {
@@ -291,8 +307,8 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceMarble), "dcs_climate", "dcs_fence_marble",
 				"build", 15, false);
 
-		MainInit.fenceSerpentine = new BlockFenceBase("dcs_fence_serpentine")
-				.setUnlocalizedName("dcs_fence_serpentine");
+		MainInit.fenceSerpentine = new BlockFenceBase("dcs_fence_serpentine").setUnlocalizedName(
+				"dcs_fence_serpentine");
 		DCMaterialReg.registerBlock(MainInit.fenceSerpentine, ClimateCore.PACKAGE_BASE + "_fence_serpentine",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceSerpentine), "dcs_climate",
@@ -315,22 +331,22 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceSteel), "dcs_climate", "dcs_fence_steel",
 				"build", 15, false);
 
-		MainInit.fenceNetSteel = new BlockMetalFenceBase("dcs_fence_net_steel", false)
-				.setUnlocalizedName("dcs_fence_net_steel");
+		MainInit.fenceNetSteel = new BlockMetalFenceBase("dcs_fence_net_steel", false).setUnlocalizedName(
+				"dcs_fence_net_steel");
 		DCMaterialReg.registerBlock(MainInit.fenceNetSteel, ClimateCore.PACKAGE_BASE + "_fence_net_steel",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceNetSteel), "dcs_climate",
 				"dcs_fence_net_steel", "build", 3, false);
 
-		MainInit.fenceLadderSteel = new BlockMetalLadder("dcs_fence_ladder_steel")
-				.setUnlocalizedName("dcs_fence_ladder_steel");
+		MainInit.fenceLadderSteel = new BlockMetalLadder("dcs_fence_ladder_steel").setUnlocalizedName(
+				"dcs_fence_ladder_steel");
 		DCMaterialReg.registerBlock(MainInit.fenceLadderSteel, ClimateCore.PACKAGE_BASE + "_fence_ladder_steel",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceLadderSteel), "dcs_climate",
 				"dcs_fence_ladder_steel", "build", 3, false);
 
-		MainInit.fenceAluminium = new BlockMetalFenceBase("dcs_fence_aluminium", false)
-				.setUnlocalizedName("dcs_fence_aluminium");
+		MainInit.fenceAluminium = new BlockMetalFenceBase("dcs_fence_aluminium", false).setUnlocalizedName(
+				"dcs_fence_aluminium");
 		DCMaterialReg.registerBlock(MainInit.fenceAluminium, ClimateCore.PACKAGE_BASE + "_fence_aluminium",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceAluminium), "dcs_climate",
@@ -559,8 +575,8 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.hedgeWinter), "dcs_climate", "dcs_hedge_winter",
 				"crop", 15, false);
 
-		MainInit.chandelierGypsum = new BlockChandelier("dcs_build_chandelier")
-				.setUnlocalizedName("dcs_build_chandelier");
+		MainInit.chandelierGypsum = new BlockChandelier("dcs_build_chandelier").setUnlocalizedName(
+				"dcs_build_chandelier");
 		DCMaterialReg.registerBlock(MainInit.chandelierGypsum, ClimateCore.PACKAGE_BASE + "_build_chandelier",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.chandelierGypsum), "dcs_climate",
@@ -571,8 +587,8 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.doorMarble), "dcs_climate", "dcs_door_marble",
 				"build", 0, true);
 
-		MainInit.itemDoorMarble = new ItemDoorDC(MainInit.doorMarble)
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_door_marble_item");
+		MainInit.itemDoorMarble = new ItemDoorDC(MainInit.doorMarble).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+				"_door_marble_item");
 		MainInit.itemDoorMarble.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_door_marble_item");
 		ForgeRegistries.ITEMS.register(MainInit.itemDoorMarble);
 
@@ -581,13 +597,13 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.doorSteel), "dcs_climate", "dcs_door_steel",
 				"build", 0, true);
 
-		MainInit.itemDoorSteel = new ItemDoorDC(MainInit.doorSteel)
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_door_steel_item");
+		MainInit.itemDoorSteel = new ItemDoorDC(MainInit.doorSteel).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+				"_door_steel_item");
 		MainInit.itemDoorSteel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_door_steel_item");
 		ForgeRegistries.ITEMS.register(MainInit.itemDoorSteel);
 
-		MainInit.realtimeClock = new BlockRealtimeClock(Material.GROUND,
-				ClimateCore.PACKAGE_BASE + "_device_realtimeclock");
+		MainInit.realtimeClock = new BlockRealtimeClock(Material.GROUND, ClimateCore.PACKAGE_BASE +
+				"_device_realtimeclock");
 		DCMaterialReg.registerBlock(MainInit.realtimeClock, ClimateCore.PACKAGE_BASE + "_device_realtimeclock",
 				ClimateMain.MOD_ID);
 
@@ -646,8 +662,8 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_BASE + "_device_chest_magnet",
 				ClimateMain.MOD_ID);
 
-		MainInit.chestVillage = new BlockVillageChest(Material.IRON,
-				ClimateCore.PACKAGE_BASE + "_device_chest_village");
+		MainInit.chestVillage = new BlockVillageChest(Material.IRON, ClimateCore.PACKAGE_BASE +
+				"_device_chest_village");
 		DCMaterialReg.registerBlock(MainInit.chestVillage, ClimateCore.PACKAGE_BASE + "_device_chest_village",
 				ClimateMain.MOD_ID);
 
@@ -656,8 +672,8 @@ public class MainMaterialRegister {
 		ForgeRegistries.BLOCKS.register(MainInit.bellow);
 		ForgeRegistries.ITEMS.register(new ItemBlockHighTier(MainInit.bellow, 1));
 
-		MainInit.achievementShield = new BlockAcvShield(Material.GROUND, "dcs_build_shield", 2)
-				.setUnlocalizedName("dcs_build_shield");
+		MainInit.achievementShield = new BlockAcvShield(Material.GROUND, "dcs_build_shield", 2).setUnlocalizedName(
+				"dcs_build_shield");
 		MainInit.achievementShield.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_build_shield");
 		ForgeRegistries.BLOCKS.register(MainInit.achievementShield);
 		ForgeRegistries.ITEMS.register(new ItemBlockShield(MainInit.achievementShield));
@@ -684,6 +700,15 @@ public class MainMaterialRegister {
 		MainInit.materials = new ItemMiscs(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
 		DCMaterialReg.registerItem(MainInit.materials, ClimateCore.PACKAGE_BASE + "_material", ClimateMain.MOD_ID);
 
+		MainInit.gears = new ItemGearN(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spindle");
+		DCMaterialReg.registerItem(MainInit.gears, ClimateCore.PACKAGE_BASE + "_spindle", ClimateMain.MOD_ID);
+
+		MainInit.clothes = new ItemClothN(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_misc");
+		DCMaterialReg.registerItem(MainInit.clothes, ClimateCore.PACKAGE_BASE + "_misc", ClimateMain.MOD_ID);
+
+		MainInit.silkworm = new ItemSilkworm(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_silkworm");
+		DCMaterialReg.registerItem(MainInit.silkworm, ClimateCore.PACKAGE_BASE + "_silkworm", ClimateMain.MOD_ID);
+
 		MainInit.stoneYagen = new ItemStoneYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_stone");
 		DCMaterialReg.registerItem(MainInit.stoneYagen, ClimateCore.PACKAGE_BASE + "_yagen_stone", ClimateMain.MOD_ID);
 
@@ -697,6 +722,9 @@ public class MainMaterialRegister {
 		MainInit.flowerPot = new ItemFlowerPot().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_flowerpot");
 		DCMaterialReg.registerItem(MainInit.flowerPot, ClimateCore.PACKAGE_BASE + "_flowerpot", ClimateMain.MOD_ID);
 
+		MainInit.cushionGray = new ItemCushionGray().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_big_cushion");
+		DCMaterialReg.registerItem(MainInit.cushionGray, ClimateCore.PACKAGE_BASE + "_big_cushion", ClimateMain.MOD_ID);
+
 		MainInit.scope = new ItemThermalScope().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_thermal_scope");
 		DCMaterialReg.registerItem(MainInit.scope, ClimateCore.PACKAGE_BASE + "_thermal_scope", ClimateMain.MOD_ID);
 
@@ -706,8 +734,8 @@ public class MainMaterialRegister {
 	}
 
 	static void registerFood() {
-		MainInit.foodMaterials = new ItemFoodMaterials(3)
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_materials");
+		MainInit.foodMaterials = new ItemFoodMaterials(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+				"_food_materials");
 		DCMaterialReg.registerItem(MainInit.foodMaterials, ClimateCore.PACKAGE_BASE + "_food_materials",
 				ClimateMain.MOD_ID);
 
@@ -718,74 +746,77 @@ public class MainMaterialRegister {
 
 	static void registerEquip() {
 		String[] name = {
-				"brass", "steel", "silver", "nickelsilver", "chalcedony", "sapphire", "titanium", "garnet"
+				"brass",
+				"steel",
+				"silver",
+				"nickelsilver",
+				"chalcedony",
+				"sapphire",
+				"titanium",
+				"garnet"
 		};
 		for (int j = 0; j < 8; j++) {
 			DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
-			MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
-					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]);
+			MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j]).setCreativeTab(
+					ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]);
 			DCMaterialReg.registerItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_BASE + "_axe_" + name[j],
 					ClimateMain.MOD_ID);
 		}
 
 		for (int j = 0; j < 8; j++) {
-			MainInit.dcPickaxe[j] = new ItemPickaxeDC(DCToolMaterial.getToolMaterial(j), name[j])
-					.setCreativeTab(ClimateMain.tool)
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]);
+			MainInit.dcPickaxe[j] = new ItemPickaxeDC(DCToolMaterial.getToolMaterial(j), name[j]).setCreativeTab(
+					ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]);
 			DCMaterialReg.registerItem(MainInit.dcPickaxe[j], ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j],
 					ClimateMain.MOD_ID);
 		}
 
 		for (int j = 0; j < 8; j++) {
-			MainInit.dcSpade[j] = new ItemSpadeDC(DCToolMaterial.getToolMaterial(j), name[j])
-					.setCreativeTab(ClimateMain.tool)
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]);
+			MainInit.dcSpade[j] = new ItemSpadeDC(DCToolMaterial.getToolMaterial(j), name[j]).setCreativeTab(
+					ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]);
 			DCMaterialReg.registerItem(MainInit.dcSpade[j], ClimateCore.PACKAGE_BASE + "_spade_" + name[j],
 					ClimateMain.MOD_ID);
 		}
 
 		for (int j = 0; j < 4; j++) {
-			MainInit.dcSword[j] = new ItemSwordDC(DCToolMaterial.getToolMaterial(j), name[j], false)
-					.setCreativeTab(ClimateMain.tool)
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]);
+			MainInit.dcSword[j] = new ItemSwordDC(DCToolMaterial.getToolMaterial(j), name[j], false).setCreativeTab(
+					ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]);
 			DCMaterialReg.registerItem(MainInit.dcSword[j], ClimateCore.PACKAGE_BASE + "_sword_" + name[j],
 					ClimateMain.MOD_ID);
 		}
 		for (int j = 4; j < 6; j++) {
-			MainInit.dcSword[j] = new ItemSwordDC(DCToolMaterial.getToolMaterial(j), name[j], true)
-					.setCreativeTab(ClimateMain.tool)
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]);
+			MainInit.dcSword[j] = new ItemSwordDC(DCToolMaterial.getToolMaterial(j), name[j], true).setCreativeTab(
+					ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[j]);
 			DCMaterialReg.registerItem(MainInit.dcSword[j], ClimateCore.PACKAGE_BASE + "_sword_" + name[j],
 					ClimateMain.MOD_ID);
 		}
 
-		MainInit.dcSword[6] = new ItemSwordDC(DCToolMaterial.getToolMaterial(6), name[6], false)
-				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[6]);
+		MainInit.dcSword[6] = new ItemSwordDC(DCToolMaterial.getToolMaterial(6), name[6], false).setCreativeTab(
+				ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[6]);
 		DCMaterialReg.registerItem(MainInit.dcSword[6], ClimateCore.PACKAGE_BASE + "_sword_" + name[6],
 				ClimateMain.MOD_ID);
 
-		MainInit.dcSword[7] = new ItemSwordDC(DCToolMaterial.getToolMaterial(7), name[7], true)
-				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[7]);
+		MainInit.dcSword[7] = new ItemSwordDC(DCToolMaterial.getToolMaterial(7), name[7], true).setCreativeTab(
+				ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[7]);
 		DCMaterialReg.registerItem(MainInit.dcSword[7], ClimateCore.PACKAGE_BASE + "_sword_" + name[7],
 				ClimateMain.MOD_ID);
 
-		MainInit.dcScythe[0] = new ItemScytheDC(DCToolMaterial.getToolMaterial(0), "brass")
-				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_brass");
+		MainInit.dcScythe[0] = new ItemScytheDC(DCToolMaterial.getToolMaterial(0), "brass").setCreativeTab(
+				ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_brass");
 		DCMaterialReg.registerItem(MainInit.dcScythe[0], ClimateCore.PACKAGE_BASE + "_scythe_brass",
 				ClimateMain.MOD_ID);
 
-		MainInit.dcScythe[1] = new ItemScytheDC(DCToolMaterial.getToolMaterial(1), "steel")
-				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_steel");
+		MainInit.dcScythe[1] = new ItemScytheDC(DCToolMaterial.getToolMaterial(1), "steel").setCreativeTab(
+				ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_steel");
 		DCMaterialReg.registerItem(MainInit.dcScythe[1], ClimateCore.PACKAGE_BASE + "_scythe_steel",
 				ClimateMain.MOD_ID);
 
-		MainInit.dcScythe[2] = new ItemScytheDC(DCToolMaterial.getToolMaterial(4), "chalcedony")
-				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_chalcedony");
+		MainInit.dcScythe[2] = new ItemScytheDC(DCToolMaterial.getToolMaterial(4), "chalcedony").setCreativeTab(
+				ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_chalcedony");
 		DCMaterialReg.registerItem(MainInit.dcScythe[2], ClimateCore.PACKAGE_BASE + "_scythe_chalcedony",
 				ClimateMain.MOD_ID);
 
-		MainInit.dcScythe[3] = new ItemScytheDC(DCToolMaterial.getToolMaterial(7), "garnet")
-				.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_garnet");
+		MainInit.dcScythe[3] = new ItemScytheDC(DCToolMaterial.getToolMaterial(7), "garnet").setCreativeTab(
+				ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_garnet");
 		DCMaterialReg.registerItem(MainInit.dcScythe[3], ClimateCore.PACKAGE_BASE + "_scythe_garnet",
 				ClimateMain.MOD_ID);
 
@@ -799,117 +830,143 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerItem(MainInit.cartridge, ClimateCore.PACKAGE_BASE + "_cartridge", ClimateMain.MOD_ID);
 
 		String[] type = {
-				"met", "plate", "leggins", "boots"
+				"met",
+				"plate",
+				"leggins",
+				"boots"
 		};
 		for (int i = 0; i < 4; i++) {
 			EntityEquipmentSlot slot = DCUtil.SLOTS[i];
 			MainInit.brassArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_BRASS, DCMaterialEnum.BRASS, slot, "brass")
-					.setCreativeTab(ClimateMain.tool)
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_brass");
+					.setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] +
+							"_brass");
 			DCMaterialReg.registerItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_brass",
 					ClimateMain.MOD_ID);
 
 			MainInit.steelArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_STEEL, DCMaterialEnum.STEEL, slot, "steel")
-					.setCreativeTab(ClimateMain.tool)
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_steel");
+					.setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] +
+							"_steel");
 			DCMaterialReg.registerItem(MainInit.steelArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_steel",
 					ClimateMain.MOD_ID);
 
 			MainInit.chalcArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY, slot,
-					"chalcedony").setCreativeTab(ClimateMain.tool)
-							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_chalcedony");
+					"chalcedony").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" +
+							type[i] + "_chalcedony");
 			DCMaterialReg.registerItem(MainInit.chalcArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_chalcedony",
 					ClimateMain.MOD_ID);
 
 			MainInit.sapphireArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_SAPPHIRE, DCMaterialEnum.SAPPHIRE, slot,
-					"sapphire").setCreativeTab(ClimateMain.tool)
-							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_sapphire");
-			DCMaterialReg.registerItem(MainInit.sapphireArmor[i],
-					ClimateCore.PACKAGE_BASE + "_" + type[i] + "_sapphire", ClimateMain.MOD_ID);
+					"sapphire").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" +
+							type[i] + "_sapphire");
+			DCMaterialReg.registerItem(MainInit.sapphireArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] +
+					"_sapphire", ClimateMain.MOD_ID);
 
 			MainInit.titaniumArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_TITANIUM, DCMaterialEnum.TITANIUM, slot,
-					"titanium").setCreativeTab(ClimateMain.tool)
-							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium");
-			DCMaterialReg.registerItem(MainInit.titaniumArmor[i],
-					ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium", ClimateMain.MOD_ID);
+					"titanium").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" +
+							type[i] + "_titanium");
+			DCMaterialReg.registerItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] +
+					"_titanium", ClimateMain.MOD_ID);
 		}
 
 		MainInit.linenUnder = new ItemArmorThinDC(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
-				EntityEquipmentSlot.LEGS, "linen").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_linen");
+				EntityEquipmentSlot.LEGS, "linen").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_leggins_linen");
 		DCMaterialReg.registerItem(MainInit.linenUnder, ClimateCore.PACKAGE_BASE + "_leggins_linen",
 				ClimateMain.MOD_ID);
 
 		MainInit.linenCoat = new ItemArmorThinDC(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
-				EntityEquipmentSlot.CHEST, "linen").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_linen");
+				EntityEquipmentSlot.CHEST, "linen").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_coat_linen");
 		DCMaterialReg.registerItem(MainInit.linenCoat, ClimateCore.PACKAGE_BASE + "_coat_linen", ClimateMain.MOD_ID);
 
 		MainInit.clothUnder = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
-				EntityEquipmentSlot.LEGS, "cloth").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_cloth");
+				EntityEquipmentSlot.LEGS, "cloth").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_leggins_cloth");
 		DCMaterialReg.registerItem(MainInit.clothUnder, ClimateCore.PACKAGE_BASE + "_leggins_cloth",
 				ClimateMain.MOD_ID);
 
+		MainInit.clothCoat = new ItemArmorOvercoat(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+				EntityEquipmentSlot.CHEST, "trench").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_coat_trench");
+		DCMaterialReg.registerItem(MainInit.clothCoat, ClimateCore.PACKAGE_BASE + "_coat_trench", ClimateMain.MOD_ID);
+
 		MainInit.workerSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
-				EntityEquipmentSlot.LEGS, "worker").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_worker");
+				EntityEquipmentSlot.LEGS, "worker").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_leggins_worker");
 		DCMaterialReg.registerItem(MainInit.workerSuit, ClimateCore.PACKAGE_BASE + "_leggins_worker",
 				ClimateMain.MOD_ID);
 
 		MainInit.blackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
-				EntityEquipmentSlot.LEGS, "suit").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_suit");
+				EntityEquipmentSlot.LEGS, "suit").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_leggins_suit");
 		DCMaterialReg.registerItem(MainInit.blackSuit, ClimateCore.PACKAGE_BASE + "_leggins_suit", ClimateMain.MOD_ID);
 
+		MainInit.blackCoat = new ItemArmorOvercoat(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+				EntityEquipmentSlot.CHEST, "black").setShort().setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_coat_black");
+		DCMaterialReg.registerItem(MainInit.blackCoat, ClimateCore.PACKAGE_BASE + "_coat_black", ClimateMain.MOD_ID);
+
 		MainInit.trackSuit = new ItemArmorThinDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
-				EntityEquipmentSlot.LEGS, "tracksuit").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_track");
+				EntityEquipmentSlot.LEGS, "tracksuit").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_leggins_track");
 		DCMaterialReg.registerItem(MainInit.trackSuit, ClimateCore.PACKAGE_BASE + "_leggins_track", ClimateMain.MOD_ID);
 
 		MainInit.combatDress = new ItemArmorThinDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
-				EntityEquipmentSlot.LEGS, "combatdress").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_combatdress");
+				EntityEquipmentSlot.LEGS, "combatdress").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_leggins_combatdress");
 		DCMaterialReg.registerItem(MainInit.combatDress, ClimateCore.PACKAGE_BASE + "_leggins_combatdress",
 				ClimateMain.MOD_ID);
 
 		MainInit.hoodie = new ItemArmorHoodie(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.CHEST,
-				"white").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie_white");
+				"white").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+						"_hoodie_white");
 		DCMaterialReg.registerItem(MainInit.hoodie, ClimateCore.PACKAGE_BASE + "_hoodie_white", ClimateMain.MOD_ID);
 
 		MainInit.hoodieB = new ItemArmorHoodie(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
-				EntityEquipmentSlot.CHEST, "black").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie_black");
+				EntityEquipmentSlot.CHEST, "black").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_hoodie_black");
 		DCMaterialReg.registerItem(MainInit.hoodieB, ClimateCore.PACKAGE_BASE + "_hoodie_black", ClimateMain.MOD_ID);
 
 		MainInit.peaCoat = new ItemArmorHoodie(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL, EntityEquipmentSlot.CHEST,
-				"pea").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_peacoat_black");
+				"pea").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+						"_peacoat_black");
 		DCMaterialReg.registerItem(MainInit.peaCoat, ClimateCore.PACKAGE_BASE + "_peacoat_black", ClimateMain.MOD_ID);
 
+		MainInit.magicUnder = new ItemArmorThinDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+				EntityEquipmentSlot.LEGS, "magic").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_leggins_magic");
+		DCMaterialReg.registerItem(MainInit.magicUnder, ClimateCore.PACKAGE_BASE + "_leggins_magic",
+				ClimateMain.MOD_ID);
+
+		MainInit.magicCoat = new ItemArmorOvercoat(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+				EntityEquipmentSlot.CHEST, "magic").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_coat_magic");
+		DCMaterialReg.registerItem(MainInit.magicCoat, ClimateCore.PACKAGE_BASE + "_coat_magic", ClimateMain.MOD_ID);
+
 		MainInit.leatherHat = new ItemArmorHat(ArmorMaterial.LEATHER, DCMaterialEnum.LINEN, EntityEquipmentSlot.HEAD,
-				"leather").setCreativeTab(ClimateMain.tool)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hat_leather");
+				"leather").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+						"_hat_leather");
 		DCMaterialReg.registerItem(MainInit.leatherHat, ClimateCore.PACKAGE_BASE + "_hat_leather", ClimateMain.MOD_ID);
 
 		MainInit.cottonHat = new ItemArmorHat(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.HEAD,
-				"cotton").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hat_cotton");
+				"cotton").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+						"_hat_cotton");
 		DCMaterialReg.registerItem(MainInit.cottonHat, ClimateCore.PACKAGE_BASE + "_hat_cotton", ClimateMain.MOD_ID);
 
 		MainInit.woolWear = new ItemArmorWool(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL, EntityEquipmentSlot.HEAD,
-				"wool").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wear_wool");
+				"wool").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wear_wool");
 		DCMaterialReg.registerItem(MainInit.woolWear, ClimateCore.PACKAGE_BASE + "_wear_wool", ClimateMain.MOD_ID);
 
 		MainInit.furWear = new ItemArmorWool(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL, EntityEquipmentSlot.HEAD,
-				"fur").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wear_fur");
+				"fur").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wear_fur");
 		DCMaterialReg.registerItem(MainInit.furWear, ClimateCore.PACKAGE_BASE + "_wear_fur", ClimateMain.MOD_ID);
 
 		MainInit.woolBoots = new ItemArmorWool(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL, EntityEquipmentSlot.FEET,
-				"boots").setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_boots_wool");
+				"boots").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_boots_wool");
 		DCMaterialReg.registerItem(MainInit.woolBoots, ClimateCore.PACKAGE_BASE + "_boots_wool", ClimateMain.MOD_ID);
 
-		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0))
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wrench_brass");
+		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0)).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_wrench_brass");
 		DCMaterialReg.registerItem(MainInit.wrench, ClimateCore.PACKAGE_BASE + "_wrench", ClimateMain.MOD_ID);
 
 	}

@@ -59,14 +59,16 @@ public class DCPluginBoP {
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(BOPBlocks.plant_1, 1, 0));
 
 		// machine
-		if (ModuleConfig.machine && ModuleConfig.r_mill) {
+		if (ModuleConfig.machine
+				&& ModuleConfig.r_mill) {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "plantWildrice");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F,
 					new ItemStack(BOPBlocks.stone_formations, 1, 0));
 
 			Item wax = Item.REGISTRY.getObject(new ResourceLocation("forestry", "beeswax"));
-			if (DCIntegrationCore.loadedForestry && wax != null) {
+			if (DCIntegrationCore.loadedForestry
+					&& wax != null) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F,
 						new ItemStack(BOPItems.honeycomb, 1, 0));
 
@@ -82,14 +84,16 @@ public class DCPluginBoP {
 					new ItemStack(MachineInit.rotaryBlade, 1, 1), new ItemStack(BOPBlocks.stone_formations, 1, 0));
 		}
 
-		if (ModuleConfig.machine && ModuleConfig.r_spinning) {
+		if (ModuleConfig.machine
+				&& ModuleConfig.r_spinning) {
 			RecipeAPI.registerSpinningRecipes
-					.addRecipe(new SpinningRecipe(new ItemStack(MainInit.materials, 1, 0), 2, "plantFlax"));
+					.addRecipe(new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 2, "plantFlax"));
 		}
 
 		DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(),
 				new ItemStack(MainInit.foodMaterials, 1, 2), new Object[] {
-						"toolNormalYagen", "plantWildrice"
+						"toolNormalYagen",
+						"plantWildrice"
 				});
 
 	}

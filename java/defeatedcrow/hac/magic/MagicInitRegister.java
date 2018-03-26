@@ -25,6 +25,7 @@ import defeatedcrow.hac.magic.block.ItemBlockMaceLight;
 import defeatedcrow.hac.magic.block.ItemBlockMaceMoon;
 import defeatedcrow.hac.magic.block.ItemBlockMaceOcean;
 import defeatedcrow.hac.magic.item.ItemAmulet;
+import defeatedcrow.hac.magic.item.ItemArmorGemBoots;
 import defeatedcrow.hac.magic.item.ItemEXPGem;
 import defeatedcrow.hac.magic.item.ItemMaceCore;
 import defeatedcrow.hac.magic.item.ItemMaceHandle;
@@ -34,7 +35,10 @@ import defeatedcrow.hac.magic.item.ItemMagicalPendant;
 import defeatedcrow.hac.magic.item.ItemSilverDagger;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.util.DCArmorMaterial;
+import defeatedcrow.hac.main.util.DCMaterialEnum;
 import net.minecraft.block.material.Material;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class MagicInitRegister {
@@ -76,6 +80,18 @@ public class MagicInitRegister {
 
 		MagicInit.amulet = new ItemAmulet(4).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_amulet");
 		DCMaterialReg.registerItem(MagicInit.amulet, ClimateCore.PACKAGE_BASE + "_jewel_amulet", ClimateMain.MOD_ID);
+
+		MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
+				EntityEquipmentSlot.FEET, "blue").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_gemboots_blue");
+		DCMaterialReg.registerItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_BASE + "_gemboots_blue",
+				ClimateMain.MOD_ID);
+
+		MagicInit.gemBootsFish = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
+				EntityEquipmentSlot.FEET, "green").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
+						ClimateCore.PACKAGE_BASE + "_gemboots_green");
+		DCMaterialReg.registerItem(MagicInit.gemBootsFish, ClimateCore.PACKAGE_BASE + "_gemboots_green",
+				ClimateMain.MOD_ID);
 	}
 
 	static void loadBlocks() {

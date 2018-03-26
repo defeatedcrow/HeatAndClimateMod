@@ -31,7 +31,9 @@ public class ItemBlockMaceIce extends ItemBlockMace {
 
 			if (hasAcv || flag) {
 				if (!world.isRemote) {
+					int i = 1 + magicSuitCount(player);
 					EntityProjIceSpit entityarrow = new EntityProjIceSpit(world, player);
+					entityarrow.damage = 4.0F + 4.0F * i;
 					entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
 					world.spawnEntity(entityarrow);
 				}
