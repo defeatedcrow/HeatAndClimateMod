@@ -179,6 +179,9 @@ public class MainInit {
 	public static Item[] dcSword = new Item[8];
 	public static Item[] dcScythe = new Item[4];
 
+	public static Item earthSpade;
+	public static Item earthRake;
+
 	// armor
 	public static Item[] brassArmor = new Item[4];
 	public static Item[] steelArmor = new Item[4];

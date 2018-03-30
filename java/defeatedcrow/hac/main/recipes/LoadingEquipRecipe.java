@@ -105,6 +105,24 @@ public class LoadingEquipRecipe {
 				"stickWood"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.earthSpade, 1, 0), new Object[] {
+				"YYX",
+				'X',
+				"gemMalachite",
+				'Y',
+				"stickWood"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.earthRake, 1, 0), new Object[] {
+				"  X",
+				"YYX",
+				"  X",
+				'X',
+				"gemMalachite",
+				'Y',
+				"stickWood"
+		});
+
 		String[] name2 = {
 				"ingotBrass",
 				"ingotSteel",

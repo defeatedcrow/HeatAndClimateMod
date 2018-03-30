@@ -59,6 +59,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesLemon);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesOlive);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesTea);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesMorus);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLotus);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropHerb);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropSeaweed);

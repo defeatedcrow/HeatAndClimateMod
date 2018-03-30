@@ -157,8 +157,8 @@ item.dcs_silkworm_silk_moth.name=Silkmoth
 
 item.dcs_flowerpot_white.name=White Flower Pot
 item.dcs_flowerpot_brown.name=Brown Flower Pot
-item.dcs_big_cushion_gray.name=Gray Big Cushion
-item.dcs_big_cushion_brown.name=Brown Big Cushion
+item.dcs_big_cushion_gray.name=Gray Big Cushion for the Lazy Mobs
+item.dcs_big_cushion_brown.name=Brown Big Cushion for the Lazy Mobs
 
 ## foods
 item.dcs_food_materials_salt.name=Salt
@@ -343,6 +343,8 @@ item.dcs_scythe_brass.name=Bras Scythe
 item.dcs_scythe_steel.name=Steel Scythe
 item.dcs_scythe_chalcedony.name=Chalcedony Scythe
 item.dcs_scythe_garnet.name=Garnet Scythe
+item.dcs_spade_earth.name=Spade of the Earth
+item.dcs_rake_earth.name=Rake of the Earth
 
 ## weapons
 item.dcs_sword_brass.name=Brass Sword
@@ -1369,5 +1371,5 @@ entity.dcs.machine.motor_cart.name=Motorized Cart
 entity.dcs.machine.motor_scooter.name=Scooter
 entity.dcs.machine.magnetic_hover.name=Magnetic Hovercraft
 entity.dcs.main.balloon_crow.name=Defeatedcrow Balloon
-entity.dcs.main.big_cushion.name=Gray Big Cushion
-entity.dcs.main.big_cushion_brown.name=Brown Big Cushion
+entity.dcs.main.big_cushion.name=Gray Big Cushion for the lazy mobs
+entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs

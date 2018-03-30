@@ -258,10 +258,28 @@ public class LoadingBuildingRecipe {
 				new ItemStack(Blocks.GLASS)
 		});
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 1, 1), new Object[] {
+				"dyeRed",
+				new ItemStack(MainInit.builds, 1, 0),
+				"dustBorax"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 1, 2), new Object[] {
+				"dyeBlue",
+				new ItemStack(MainInit.builds, 1, 0),
+				"dustBorax"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 1, 3), new Object[] {
+				"dyeYellow",
+				new ItemStack(MainInit.builds, 1, 0),
+				"dustBorax"
+		});
+
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 1, 4), new Object[] {
 				"dyeBlack",
 				new ItemStack(MainInit.builds, 1, 0),
-				new ItemStack(Blocks.GLASS)
+				"dustBorax"
 		});
 
 		if (ModuleConfig.machine) {

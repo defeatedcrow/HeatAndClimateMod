@@ -228,6 +228,9 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.oreDust, 1, 11),
 				1F, null, 0F, null, ti, new ItemStack(Blocks.SAND, 1, 1));
 
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				2), 1F, new ItemStack(MainInit.miscDust, 1, 10), 0.1F, null, ti, new ItemStack(Blocks.SAND, 1, 0));
+
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 4, 2), new ItemStack(MainInit.miscDust, 1,
 				9), 1F, new ItemStack(MainInit.miscDust, 1, 6), 0.5F, null, ti, new ItemStack(Blocks.BONE_BLOCK, 1, 0));
 

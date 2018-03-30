@@ -601,6 +601,11 @@ public class FoodBasicRecipe {
 				"gemChalcedony"
 		});
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 3), new Object[] {
+				new ItemStack(Blocks.SAPLING, 1, 4),
+				"gemChalcedony"
+		});
+
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 7), new Object[] {
 				"blockTallGrass",
 				"gemChalcedony"
