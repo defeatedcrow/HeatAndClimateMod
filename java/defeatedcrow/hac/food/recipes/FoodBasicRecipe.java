@@ -112,6 +112,28 @@ public class FoodBasicRecipe {
 				new ItemStack(MainInit.plate, 1, 0)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(FoodInit.silkwormBox, 1, 0), new Object[] {
+				"XXX",
+				"XZX",
+				"YYY",
+				'X',
+				"stickWood",
+				'Y',
+				"plankWood",
+				'Z',
+				"string"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.silkworm, 8, 0), new Object[] {
+				new ItemStack(MainInit.silkworm, 1, 3),
+				new ItemStack(MainInit.silkworm, 1, 3),
+				"paper"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.silkworm, 1, 3), new Object[] {
+				new ItemStack(MainInit.silkworm, 1, 2)
+		});
+
 		// materials
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.dropCream, 2, 0), new Object[] {

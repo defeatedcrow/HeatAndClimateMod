@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
@@ -153,26 +154,25 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 			WorldGenerator gen = null;
 			if (meta == 0) {
 				// lemon
-				IBlockState leaves = FoodInit.leavesLemon.getDefaultState().withProperty(DCState.STAGE4, 0)
-						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				IBlockState leaves = FoodInit.leavesLemon.getDefaultState().withProperty(DCState.STAGE4,
+						0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
 				gen = new WorldGenDCTree(true, leaves, 5);
 			} else if (meta == 1) {
 				// olive
-				IBlockState leaves = FoodInit.leavesOlive.getDefaultState().withProperty(DCState.STAGE4, 0)
-						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				IBlockState leaves = FoodInit.leavesOlive.getDefaultState().withProperty(DCState.STAGE4,
+						0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
 				gen = new WorldGenDCTree(true, leaves, 5);
 			} else if (meta == 3) {
 				// olive
-				IBlockState leaves = FoodInit.leavesMorus.getDefaultState().withProperty(DCState.STAGE4, 0)
-						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				IBlockState leaves = FoodInit.leavesMorus.getDefaultState().withProperty(DCState.STAGE4,
+						0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
 				gen = new WorldGenDCTree(true, leaves, 3);
 			}
 
 			if (gen != null) {
 				if (gen.generate(world, cropRand, pos)) {
-					world.setBlockState(pos,
-							Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK),
-							3);
+					world.setBlockState(pos, Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT,
+							BlockPlanks.EnumType.OAK), 3);
 				}
 			} else {
 				IBlockState leaves = FoodInit.leavesTea.getDefaultState();
@@ -203,6 +203,17 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		if (state.getBlock() != this)
 			return getDefaultState();
 		return state;
+	}
+
+	@Override
+	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.COOL);
+		ret.add(DCHeatTier.COLD);
+		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.HOT);
+		ret.add(DCHeatTier.WARM);
+		return ret;
 	}
 
 }

@@ -40,15 +40,20 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class TilePortalManager extends TileTorqueLockable
-		implements ITorqueReceiver, ISidedInventory, ISidedTankChecker {
+public class TilePortalManager extends TileTorqueLockable implements ITorqueReceiver, ISidedInventory,
+		ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
 	public boolean active = true;
 
 	public int[] activeSlot = {
-			0, 0, 0, 0, 0, 0
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
 	};
 
 	private int loadCount = 5;
@@ -88,14 +93,14 @@ public class TilePortalManager extends TileTorqueLockable
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISidedTankChecker)
-					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+			if (tile != null && !(tile instanceof ISidedTankChecker) && tile.hasCapability(
+					CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
-				if (tank != null && tank.getTankProperties() != null) {
+				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
-					if (target != null && target.getFluid() != null
-							&& FluidDictionaryDC.matchFluid(target.getFluid(), MachineInit.nitrogen)) {
+					if (target != null && target.getFluid() != null && FluidDictionaryDC.matchFluid(target.getFluid(),
+							MachineInit.nitrogen)) {
 						int i = Math.min(mov, cap - amo);
 						FluidStack ret = tank.drain(i, false);
 						int fill = inputT.fill(ret, false);
@@ -135,19 +140,19 @@ public class TilePortalManager extends TileTorqueLockable
 		ItemStack in = this.getStackInSlot(num);
 		ItemStack out = this.getStackInSlot(num + 6);
 		int dim = world.provider.getDimension();
-		if (!DCUtil.isEmpty(in) && !DCUtil.isEmpty(out) && in.getItem() instanceof ItemAdapterCard
-				&& out.getItem() instanceof ItemAdapterCard) {
+		if (!DCUtil.isEmpty(in) && !DCUtil.isEmpty(out) && in.getItem() instanceof ItemAdapterCard &&
+				out.getItem() instanceof ItemAdapterCard) {
 			boolean a = false;
 			boolean b = false;
 			ItemAdapterCard card1 = (ItemAdapterCard) in.getItem();
 			ItemAdapterCard card2 = (ItemAdapterCard) out.getItem();
 			if (card1.getCardType(in.getItemDamage()) == card2.getCardType(out.getItemDamage())) {
-				if (card1.getAccessType(in.getItemDamage()) == ItemAdapterCard.AccessType.INPUT
-						&& card1.getPos(in) != null && card1.getDim(in) == dim) {
+				if (card1.getAccessType(in.getItemDamage()) == ItemAdapterCard.AccessType.INPUT && card1.getPos(
+						in) != null && card1.getDim(in) == dim) {
 					a = true;
 				}
-				if (card2.getAccessType(out.getItemDamage()) == ItemAdapterCard.AccessType.OUTPUT
-						&& card2.getPos(out) != null && card2.getDim(out) == dim) {
+				if (card2.getAccessType(out.getItemDamage()) == ItemAdapterCard.AccessType.OUTPUT && card2.getPos(
+						out) != null && card2.getDim(out) == dim) {
 					b = true;
 				}
 				if (a && b) {
@@ -164,8 +169,8 @@ public class TilePortalManager extends TileTorqueLockable
 	public boolean onTransferSlot(int num) {
 		ItemStack in = this.getStackInSlot(num);
 		ItemStack out = this.getStackInSlot(num + 6);
-		if (!DCUtil.isEmpty(in) && !DCUtil.isEmpty(out) && in.getItem() instanceof ItemAdapterCard
-				&& out.getItem() instanceof ItemAdapterCard) {
+		if (!DCUtil.isEmpty(in) && !DCUtil.isEmpty(out) && in.getItem() instanceof ItemAdapterCard &&
+				out.getItem() instanceof ItemAdapterCard) {
 			ItemAdapterCard card1 = (ItemAdapterCard) in.getItem();
 			ItemAdapterCard card2 = (ItemAdapterCard) out.getItem();
 			TileEntity inT = null;
@@ -187,9 +192,9 @@ public class TilePortalManager extends TileTorqueLockable
 				}
 			}
 			if (inT != null && outT != null) {
-				if (card1.getCardType(in.getItemDamage()) == ItemAdapterCard.CardType.ITEM
-						&& inT.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f1)
-						&& outT.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f2)) {
+				if (card1.getCardType(in.getItemDamage()) == ItemAdapterCard.CardType.ITEM && inT.hasCapability(
+						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f1) && outT.hasCapability(
+								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f2)) {
 					IItemHandler input = inT.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f1);
 					IItemHandler output = outT.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f2);
 					if (input != null && output != null) {
@@ -212,9 +217,9 @@ public class TilePortalManager extends TileTorqueLockable
 							}
 						}
 					}
-				} else if (card1.getCardType(in.getItemDamage()) == ItemAdapterCard.CardType.FLUID
-						&& inT.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f1)
-						&& outT.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f2)) {
+				} else if (card1.getCardType(in.getItemDamage()) == ItemAdapterCard.CardType.FLUID && inT.hasCapability(
+						CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f1) && outT.hasCapability(
+								CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f2)) {
 					IFluidHandler intank = inT.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f1);
 					IFluidHandler outtank = outT.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f2);
 					if (intank != null && outtank != null) {
@@ -403,19 +408,41 @@ public class TilePortalManager extends TileTorqueLockable
 
 	protected int[] slotsTop() {
 		return new int[] {
-				0, 1, 2, 3, 4, 5
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
 		};
 	};
 
 	protected int[] slotsBottom() {
 		return new int[] {
-				6, 7, 8, 9, 10, 11
+				6,
+				7,
+				8,
+				9,
+				10,
+				11
 		};
 	};
 
 	protected int[] slotsSides() {
 		return new int[] {
-				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
 		};
 	};
 

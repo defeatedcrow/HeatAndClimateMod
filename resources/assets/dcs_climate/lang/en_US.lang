@@ -894,6 +894,7 @@ tile.dcs_device_monitor_rs_0.name=Remote RS Lamp
 tile.dcs_device_monitor_fluid_0.name=Remote Fluid Monitor
 tile.dcs_device_monitor_torque_0.name=Remote Torque Monitor
 tile.dcs_device_monitor_rf_0.name=Remote RF Monitor
+tile.dcs_device_silkworm_box_0.name=Silkworm Rearing Box
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -1177,6 +1178,7 @@ dcs.gui.device.portalmanager=Transfer Portal
 dcs.gui.device.gas_burner=Gas Burner
 dcs.gui.device.diesel_engine=Diesel Engine
 dcs.gui.device.crusher=Hammer Mill
+dcs.gui.device.silkworm_box=Silkworm Rearing Box
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold

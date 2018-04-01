@@ -883,6 +883,7 @@ tile.dcs_device_monitor_rs_0.name=遠隔レッドストーンランプ
 tile.dcs_device_monitor_fluid_0.name=遠隔液体モニター
 tile.dcs_device_monitor_torque_0.name=遠隔トルクモニター
 tile.dcs_device_monitor_rf_0.name=遠隔RFモニター
+tile.dcs_device_silkworm_box_0.name=蚕の飼育箱
 
 tile.dcs_crop_rice_0.name=稲
 tile.dcs_crop_rice_1.name=稲
@@ -1165,6 +1166,7 @@ dcs.gui.device.portalmanager=転送ポータル
 dcs.gui.device.gas_burner=ガスバーナー
 dcs.gui.device.diesel_engine=ディーゼル機関
 dcs.gui.device.crusher=ハンマーミル
+dcs.gui.device.silkworm_box=蚕の飼育箱
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.food;
 
 import defeatedcrow.hac.food.block.TilePotteryPot;
+import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
@@ -71,6 +72,7 @@ public class FoodCommonProxy {
 		GameRegistry.registerTileEntity(TilePotteryPot.class, "dcs_te_pottery_pot");
 		GameRegistry.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot");
 		GameRegistry.registerTileEntity(TileTeaPot.class, "dcs_te_tea_pot");
+		GameRegistry.registerTileEntity(TileSilkwormBox.class, "dcs_te_silkworm_box");
 	}
 
 	public static void loadEntity() {

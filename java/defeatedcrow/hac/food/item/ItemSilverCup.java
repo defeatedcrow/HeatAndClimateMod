@@ -71,7 +71,9 @@ public class ItemSilverCup extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"silver", "white", "glass"
+				"silver",
+				"white",
+				"glass"
 		};
 		return s;
 	}
@@ -151,7 +153,7 @@ public class ItemSilverCup extends FoodItemBase {
 				IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY,
 						null);
 				IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-				if (cont != null && cont.getTankProperties() != null) {
+				if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
 					float dirF = 1.0F;
 					int ampF = 0;
@@ -233,7 +235,7 @@ public class ItemSilverCup extends FoodItemBase {
 		IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 
-		if (cont != null && cont.getTankProperties() != null && drink != null) {
+		if (cont != null && cont.getTankProperties() != null && drink != null && cont.getTankProperties().length > 0) {
 			FluidStack f = cont.getTankProperties()[0].getContents();
 			float dirF = 1.0F + drink.getMilk().effect;
 			int ampF = drink.getSugar().effect;

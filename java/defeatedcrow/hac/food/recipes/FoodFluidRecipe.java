@@ -151,7 +151,9 @@ public class FoodFluidRecipe {
 
 		regNonFoodrecipe(new ItemStack(MainInit.clothes, 1, 6), null, 0F, null, DCHeatTier.OVEN, null, null, false,
 				new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-						new ItemStack(MainInit.silkworm, 4, 2)
+						new ItemStack(MainInit.silkworm, 1, 2),
+						new ItemStack(MainInit.silkworm, 1, 2),
+						new ItemStack(MainInit.silkworm, 1, 2)
 				});
 
 		regNonFoodrecipe(new ItemStack(MainInit.clothes, 1, 8), null, 0F, null, DCHeatTier.OVEN, null, null, false,

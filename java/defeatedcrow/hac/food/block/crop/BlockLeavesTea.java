@@ -17,6 +17,7 @@ import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -40,30 +41,24 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
-		int m = meta > 0 ? 1
-				: 0;
+		int m = meta > 0 ? 1 : 0;
 		String b = "dcs_climate:blocks/crop/";
-		return b
-				+ "tea_" + m;
+		return b + "tea_" + m;
 	}
 
 	public static List<String> getTexList() {
 		List<String> list = new ArrayList<String>();
 		String b = "dcs_climate:blocks/crop/";
-		list.add(b
-				+ "tea_0");
-		list.add(b
-				+ "tea_1");
+		list.add(b + "tea_0");
+		list.add(b + "tea_1");
 		return list;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
-		int m = meta > 0 ? 1
-				: 0;
+		int m = meta > 0 ? 1 : 0;
 		String b = "dcs_climate:items/block/crop/";
-		return b
-				+ "tea_" + m;
+		return b + "tea_" + m;
 	}
 
 	@Override
@@ -102,14 +97,23 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 		return Arrays.asList(new ItemStack(this, 1, 0));
 	}
 
+	@Override
+	protected ItemStack getSilkTouchDrop(IBlockState state) {
+		return new ItemStack(this, 1, 0);
+	}
+
+	@Override
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+		return true;
+	}
+
 	/* ClimateCrop */
 
 	@Override
 	public boolean isSuitablePlace(World world, BlockPos pos, IBlockState state) {
 		if (state == null)
 			return false;
-		return state.getMaterial() == Material.GRASS
-				|| state.getMaterial() == Material.GROUND;
+		return state.getMaterial() == Material.GRASS || state.getMaterial() == Material.GROUND;
 	}
 
 	@Override
@@ -127,8 +131,7 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 
 	@Override
 	public boolean grow(World world, BlockPos pos, IBlockState thisState) {
-		if (thisState != null
-				&& thisState.getBlock() instanceof ClimateCropBase) {
+		if (thisState != null && thisState.getBlock() instanceof ClimateCropBase) {
 			GrowingStage stage = this.getCurrentStage(thisState);
 			if (stage == GrowingStage.DEAD) {
 				world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);

@@ -18,6 +18,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -40,8 +41,8 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 		setHardness(0.0F);
 		setResistance(3.0F);
 		setLightOpacity(1);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0)
-				.withProperty(DECAYABLE, false).withProperty(CHECK_DECAY, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0).withProperty(DECAYABLE,
+				false).withProperty(CHECK_DECAY, false));
 	}
 
 	/* leavesの挙動 */
@@ -82,6 +83,16 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
 		return Arrays.asList(new ItemStack(this, 1, 0));
+	}
+
+	@Override
+	protected ItemStack getSilkTouchDrop(IBlockState state) {
+		return new ItemStack(this, 1, 0);
+	}
+
+	@Override
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+		return true;
 	}
 
 	@Override
@@ -163,14 +174,14 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 					for (int x1 = -i; x1 <= i; ++x1) {
 						for (int y1 = -i; y1 <= i; ++y1) {
 							for (int z1 = -i; z1 <= i; ++z1) {
-								IBlockState iblockstate = world
-										.getBlockState(blockpos$mutableblockpos.setPos(x + x1, y + y1, z + z1));
+								IBlockState iblockstate = world.getBlockState(blockpos$mutableblockpos.setPos(x + x1,
+										y + y1, z + z1));
 								Block block = iblockstate.getBlock();
 
-								if (!block.canSustainLeaves(iblockstate, world,
-										blockpos$mutableblockpos.setPos(x + x1, y + y1, z + z1))) {
-									if (block.isLeaves(iblockstate, world,
-											blockpos$mutableblockpos.setPos(x + x1, y + y1, z + z1))) {
+								if (!block.canSustainLeaves(iblockstate, world, blockpos$mutableblockpos.setPos(x + x1,
+										y + y1, z + z1))) {
+									if (block.isLeaves(iblockstate, world, blockpos$mutableblockpos.setPos(x + x1, y +
+											y1, z + z1))) {
 										this.surroundings[(x1 + r2) * r1 + (y1 + r2) * area + z1 + r2] = -2;
 									} else {
 										this.surroundings[(x1 + r2) * r1 + (y1 + r2) * area + z1 + r2] = -1;
@@ -203,8 +214,8 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 											this.surroundings[(j3 + r2) * r1 + (k3 + r2 + 1) * area + l3 + r2] = i3;
 										}
 
-										if (this.surroundings[(j3 + r2) * r1 + (k3 + r2) * area
-												+ (l3 + r2 - 1)] == -2) {
+										if (this.surroundings[(j3 + r2) * r1 + (k3 + r2) * area + (l3 + r2 -
+												1)] == -2) {
 											this.surroundings[(j3 + r2) * r1 + (k3 + r2) * area + (l3 + r2 - 1)] = i3;
 										}
 
@@ -256,8 +267,8 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 		int i = meta & 3;
 		boolean d = (meta & 4) > 0;
 		boolean c = (meta & 8) > 0;
-		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE4, i).withProperty(DECAYABLE, d)
-				.withProperty(CHECK_DECAY, c);
+		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE4, i).withProperty(DECAYABLE,
+				d).withProperty(CHECK_DECAY, c);
 		return state;
 	}
 
@@ -286,7 +297,8 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.STAGE4,
 				DECAYABLE,
-				CHECK_DECAY });
+				CHECK_DECAY
+		});
 	}
 
 	@Override

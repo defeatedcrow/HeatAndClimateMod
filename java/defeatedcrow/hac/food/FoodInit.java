@@ -44,6 +44,7 @@ public class FoodInit {
 	public static Block steelPot;
 	public static Block teaPot;
 	public static Block dish;
+	public static Block silkwormBox;
 
 	public static Block cropRice;
 	public static Block cropOnion;

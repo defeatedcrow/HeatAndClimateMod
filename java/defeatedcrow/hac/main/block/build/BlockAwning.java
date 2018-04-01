@@ -37,8 +37,8 @@ public class BlockAwning extends BlockDC {
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.CLOTH);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(DCState.TYPE4, 0));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(
+				DCState.TYPE4, 0));
 		this.maxMeta = 3;
 		this.fullBlock = false;
 		this.lightOpacity = 0;
@@ -154,7 +154,8 @@ public class BlockAwning extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING, DCState.TYPE4
+				DCState.FACING,
+				DCState.TYPE4
 		});
 	}
 

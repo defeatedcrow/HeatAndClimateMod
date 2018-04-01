@@ -36,7 +36,7 @@ public class BlockOres2 extends DCSimpleBlock {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT;
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 
 	@Override
@@ -60,7 +60,22 @@ public class BlockOres2 extends DCSimpleBlock {
 	}
 
 	private int[] harvestL = new int[] {
-			1, 1, 2, 2, 2, 3, 2, 2, 2, 2, 1, 3, 0, 0, 0, 0
+			1,
+			1,
+			2,
+			2,
+			2,
+			3,
+			2,
+			2,
+			2,
+			2,
+			1,
+			3,
+			0,
+			0,
+			0,
+			0
 	};
 
 	/* Drop Itemの管理 */
@@ -136,9 +151,22 @@ public class BlockOres2 extends DCSimpleBlock {
 
 	private DropTable getTable(int meta) {
 		DropTable[] table = {
-				DropTable.NONE, DropTable.SALT, DropTable.NITER, DropTable.SULFER, DropTable.NONE, DropTable.SCHORL,
-				DropTable.SERPENTINE, DropTable.ALMANDINE, DropTable.NONE, DropTable.NONE, DropTable.BAUXITE,
-				DropTable.RUTILE, DropTable.NONE, DropTable.NONE, DropTable.NONE, DropTable.NONE
+				DropTable.NONE,
+				DropTable.SALT,
+				DropTable.NITER,
+				DropTable.SULFER,
+				DropTable.NONE,
+				DropTable.SCHORL,
+				DropTable.SERPENTINE,
+				DropTable.ALMANDINE,
+				DropTable.NONE,
+				DropTable.NONE,
+				DropTable.BAUXITE,
+				DropTable.RUTILE,
+				DropTable.NONE,
+				DropTable.NONE,
+				DropTable.NONE,
+				DropTable.NONE
 		};
 		if (meta < 16)
 			return table[meta];
