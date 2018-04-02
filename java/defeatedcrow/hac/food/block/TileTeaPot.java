@@ -135,7 +135,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 			dummy = (IFluidHandler) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null
+				&& dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = null;
 

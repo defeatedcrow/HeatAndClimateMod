@@ -168,8 +168,8 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 					EnumFacing.DOWN);
 
 			// dummyを使った検証
-			if (dummy != null && dummy.getTankProperties() != null && intank instanceof DCTank
-					&& outtank instanceof DCTank) {
+			if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0
+					&& intank instanceof DCTank && outtank instanceof DCTank) {
 				int max = dummy.getTankProperties()[0].getCapacity();
 				FluidStack f1 = dummy.drain(max, false);
 				DCTank dc_in = (DCTank) intank;

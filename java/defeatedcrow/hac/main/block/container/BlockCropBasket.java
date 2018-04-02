@@ -39,7 +39,9 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 				"lemon",
 				"olive",
 				"tea",
-				"lotus"
+				"lotus",
+				"mulberry",
+				"cocoon"
 		};
 		return name;
 	}
@@ -47,8 +49,8 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 15;
-		if (m > 9) {
-			m = 9;
+		if (m > 11) {
+			m = 11;
 		}
 		String b = "dcs_climate:blocks/cont/basket";
 		switch (side) {
@@ -85,8 +87,8 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 15;
-		if (m > 9) {
-			m = 9;
+		if (m > 11) {
+			m = 11;
 		}
 		String b = "dcs_climate:items/block/cont/";
 		return b + "basket_" + getNameSuffix()[m];

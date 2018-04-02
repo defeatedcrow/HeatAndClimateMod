@@ -9,6 +9,8 @@ import net.minecraft.world.World;
 
 public class EntityProjLightSpit extends EntityProjBase {
 
+	public float damage = 10.0F;
+
 	public EntityProjLightSpit(World worldIn) {
 		super(worldIn);
 	}
@@ -35,7 +37,7 @@ public class EntityProjLightSpit extends EntityProjBase {
 
 	@Override
 	protected float getHitDamage(Entity target, float speed) {
-		float f = 10.0F + this.worldObj.rand.nextFloat();
+		float f = damage + this.worldObj.rand.nextFloat();
 		if (target != null && target instanceof EntityLivingBase) {
 			EntityLivingBase liv = (EntityLivingBase) target;
 			if (liv.isEntityUndead()) {

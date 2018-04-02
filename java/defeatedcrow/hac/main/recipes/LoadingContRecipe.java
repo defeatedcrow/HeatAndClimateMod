@@ -171,6 +171,18 @@ public class LoadingContRecipe {
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.WOOL, 8, 0), new Object[] {
 				new ItemStack(MainInit.cardboard, 1, 5)
 		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.cropBasket, 1, 11), new Object[] {
+				"XXX",
+				"X X",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.silkworm, 1, 2)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.silkworm, 8, 2), new Object[] {
+				new ItemStack(MainInit.cropBasket, 1, 11)
+		});
 	}
 
 }

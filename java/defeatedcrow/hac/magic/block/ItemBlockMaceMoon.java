@@ -62,7 +62,8 @@ public class ItemBlockMaceMoon extends ItemBlockMace {
 					if (player.isPotionActive(MobEffects.WEAKNESS)) {
 						player.removePotionEffect(MobEffects.WEAKNESS);
 					}
-					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 1));
+					int i = 1 + magicSuitCount(player);
+					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600 * i, i));
 				}
 
 				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP,

@@ -7,12 +7,14 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.food.block.BlockDish;
 import defeatedcrow.hac.food.block.BlockPotteryPot;
+import defeatedcrow.hac.food.block.BlockSilkwormBox;
 import defeatedcrow.hac.food.block.BlockSteelPot;
 import defeatedcrow.hac.food.block.BlockTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockCoffee;
 import defeatedcrow.hac.food.block.crop.BlockCotton;
 import defeatedcrow.hac.food.block.crop.BlockHerb;
 import defeatedcrow.hac.food.block.crop.BlockLeavesLemon;
+import defeatedcrow.hac.food.block.crop.BlockLeavesMorus;
 import defeatedcrow.hac.food.block.crop.BlockLeavesOlive;
 import defeatedcrow.hac.food.block.crop.BlockLeavesTea;
 import defeatedcrow.hac.food.block.crop.BlockLotus;
@@ -109,9 +111,14 @@ public class FoodInitRegister {
 		FoodInit.leavesTea = new BlockLeavesTea(ClimateCore.PACKAGE_BASE + "_leaves_tea");
 		DCMaterialReg.registerBlock(FoodInit.leavesTea, ClimateCore.PACKAGE_BASE + "_leaves_tea", ClimateMain.MOD_ID);
 
+		FoodInit.leavesMorus = new BlockLeavesMorus(ClimateCore.PACKAGE_BASE + "_leaves_morus");
+		DCMaterialReg.registerBlock(FoodInit.leavesMorus, ClimateCore.PACKAGE_BASE + "_leaves_morus",
+				ClimateMain.MOD_ID);
+		ClimateMain.proxy.addSidedBlock(FoodInit.leavesMorus, "leaves_morus", 3);
+
 		FoodInit.saplings = new BlockSaplingDC(ClimateCore.PACKAGE_BASE + "_crop_sapling");
 		DCMaterialReg.registerBlock(FoodInit.saplings, ClimateCore.PACKAGE_BASE + "_crop_sapling", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addCropBlock(FoodInit.saplings, "crop_sapling", 2);
+		ClimateMain.proxy.addCropBlock(FoodInit.saplings, "crop_sapling", 3);
 
 		FoodInit.potteryPot = new BlockPotteryPot(ClimateCore.PACKAGE_BASE + "_device_pottery_pot");
 		DCMaterialReg.registerBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_BASE + "_device_pottery_pot",
@@ -126,6 +133,10 @@ public class FoodInitRegister {
 
 		FoodInit.dish = new BlockDish(ClimateCore.PACKAGE_BASE + "_build_dish", 1);
 		DCMaterialReg.registerBlock(FoodInit.dish, ClimateCore.PACKAGE_BASE + "_build_dish", ClimateMain.MOD_ID);
+
+		FoodInit.silkwormBox = new BlockSilkwormBox(ClimateCore.PACKAGE_BASE + "_device_silkworm_box");
+		DCMaterialReg.registerBlock(FoodInit.silkwormBox, ClimateCore.PACKAGE_BASE + "_device_silkworm_box",
+				ClimateMain.MOD_ID);
 
 		FoodInit.cropLotus = new BlockLotus(ClimateCore.PACKAGE_BASE + "_crop_lotus", 15)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus");
@@ -143,7 +154,7 @@ public class FoodInitRegister {
 
 	static void loadItems() {
 
-		FoodInit.crops = new ItemDCCrops(10).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
+		FoodInit.crops = new ItemDCCrops(11).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
 		DCMaterialReg.registerItem(FoodInit.crops, ClimateCore.PACKAGE_BASE + "_food_crops", ClimateMain.MOD_ID);
 
 		FoodInit.seeds = new ItemDCSeeds(8).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_seeds");
@@ -400,6 +411,7 @@ public class FoodInitRegister {
 		FoodInit.potteryPot.setCreativeTab(ClimateMain.food);
 		FoodInit.steelPot.setCreativeTab(ClimateMain.food);
 		FoodInit.teaPot.setCreativeTab(ClimateMain.food);
+		FoodInit.silkwormBox.setCreativeTab(ClimateMain.cloth);
 
 		FoodInit.cropRice.setCreativeTab(ClimateMain.food);
 		FoodInit.cropOnion.setCreativeTab(ClimateMain.food);
@@ -414,6 +426,7 @@ public class FoodInitRegister {
 		FoodInit.leavesOlive.setCreativeTab(ClimateMain.food);
 		FoodInit.leavesLemon.setCreativeTab(ClimateMain.food);
 		FoodInit.leavesTea.setCreativeTab(ClimateMain.food);
+		FoodInit.leavesMorus.setCreativeTab(ClimateMain.food);
 		FoodInit.saplings.setCreativeTab(ClimateMain.food);
 
 		FoodInit.dish.setCreativeTab(ClimateMain.build);

@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
+import defeatedcrow.hac.food.entity.CrostataTartEntity;
 import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
@@ -29,12 +30,12 @@ public class RoundPastryItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 7;
+		return 9;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp_int(0, meta, 1);
+		int i = MathHelper.clamp_int(meta, 0, 9);
 		String s = "items/food/tart_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -52,7 +53,9 @@ public class RoundPastryItem extends FoodItemBase {
 				"spinach_raw",
 				"spinach_baked",
 				"potato_raw",
-				"potato_baked"
+				"potato_baked",
+				"crostata_raw",
+				"crostata_baked"
 		};
 		return s;
 	}
@@ -78,6 +81,10 @@ public class RoundPastryItem extends FoodItemBase {
 		case 7:
 			ret = new PotatoQuicheEntity(world, x, y, z, player);
 			break;
+		case 8:
+		case 9:
+			ret = new CrostataTartEntity(world, x, y, z, player);
+			break;
 		default:
 			ret = new AppleTartEntity(world, x, y, z, player);
 		}
@@ -95,6 +102,7 @@ public class RoundPastryItem extends FoodItemBase {
 		case 3:
 		case 5:
 		case 7:
+		case 9:
 			return 10;
 		default:
 			return 1;

@@ -151,6 +151,32 @@ public class FoodFluidRecipe {
 						new ItemStack(Blocks.HAY_BLOCK, 1, 0)
 				});
 
+		regNonFoodrecipe(new ItemStack(MainInit.gems, 1, 3), null, 0F, null, DCHeatTier.NORMAL, null, null, false,
+				new FluidStack(MachineInit.sulfuricAcid, 200), new Object[] {
+						"dustLime"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.clothes, 1, 6), null, 0F, null, DCHeatTier.OVEN, null, null, false,
+				new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						new ItemStack(MainInit.silkworm, 1, 2),
+						new ItemStack(MainInit.silkworm, 1, 2),
+						new ItemStack(MainInit.silkworm, 1, 2)
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.clothes, 1, 8), null, 0F, null, DCHeatTier.OVEN, null, null, false,
+				new FluidStack(FoodInit.hotSpring, 1000), new Object[] {
+						new ItemStack(MainInit.clothes, 1, 6),
+						"dustSilver",
+						"dustMica"
+				});
+
+		regNonFoodrecipe(new ItemStack(MainInit.clothes, 1, 9), null, 0F, null, DCHeatTier.OVEN, null, null, false,
+				new FluidStack(FoodInit.hotSpring, 1000), new Object[] {
+						new ItemStack(MainInit.clothes, 1, 7),
+						new ItemStack(Items.CHORUS_FRUIT, 1, 0),
+						new ItemStack(Items.GHAST_TEAR, 1, 0)
+				});
+
 	}
 
 	static void loadCookingRecipes() {

@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north,type=0":  { "model": "dcs_climate:device/dcs_device_silkworm_box", "y": 180 },
+        "facing=north,type=1":  { "model": "dcs_climate:device/dcs_device_silkworm_box2", "y": 180 },
+        "facing=north,type=2":  { "model": "dcs_climate:device/dcs_device_silkworm_box", "y": 180 },
+        "facing=north,type=3":  { "model": "dcs_climate:device/dcs_device_silkworm_box2", "y": 180 },
+        "facing=south,type=0":  { "model": "dcs_climate:device/dcs_device_silkworm_box" },
+        "facing=south,type=1":  { "model": "dcs_climate:device/dcs_device_silkworm_box2" },
+        "facing=south,type=2":  { "model": "dcs_climate:device/dcs_device_silkworm_box" },
+        "facing=south,type=3":  { "model": "dcs_climate:device/dcs_device_silkworm_box2" },
+        "facing=west,type=0":  { "model": "dcs_climate:device/dcs_device_silkworm_box", "y": 90 },
+        "facing=west,type=1":  { "model": "dcs_climate:device/dcs_device_silkworm_box2", "y": 90 },
+        "facing=west,type=2":  { "model": "dcs_climate:device/dcs_device_silkworm_box", "y": 90 },
+        "facing=west,type=3":  { "model": "dcs_climate:device/dcs_device_silkworm_box2", "y": 90 },
+        "facing=east,type=0":  { "model": "dcs_climate:device/dcs_device_silkworm_box", "y": 270 },
+        "facing=east,type=1":  { "model": "dcs_climate:device/dcs_device_silkworm_box2", "y": 270 },
+        "facing=east,type=2":  { "model": "dcs_climate:device/dcs_device_silkworm_box", "y": 270 },
+        "facing=east,type=3":  { "model": "dcs_climate:device/dcs_device_silkworm_box2", "y": 270 }
+    }
+}

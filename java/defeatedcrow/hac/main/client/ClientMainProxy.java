@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.client.JsonBakery;
+import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.food.FoodClientProxy;
 import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.machine.client.GasBurnerTESR;
@@ -44,17 +45,22 @@ import defeatedcrow.hac.main.client.block.TESRVillageChest;
 import defeatedcrow.hac.main.client.block.TESRWindVane;
 import defeatedcrow.hac.main.client.entity.BoltRenderer;
 import defeatedcrow.hac.main.client.entity.RenderEntityBalloon;
+import defeatedcrow.hac.main.client.entity.RenderEntityBigCushion;
+import defeatedcrow.hac.main.client.entity.RenderEntityBigCushionB;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
+import defeatedcrow.hac.main.client.model.ModelOvercoat;
 import defeatedcrow.hac.main.client.model.ModelWoolWear;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleFlameDC;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
+import defeatedcrow.hac.main.entity.EntityBigCushion;
+import defeatedcrow.hac.main.entity.EntityBigCushionBrown;
 import defeatedcrow.hac.main.entity.EntityCrowBalloon;
 import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
@@ -93,6 +99,9 @@ public class ClientMainProxy extends CommonMainProxy {
 	private static final ModelHoodie hoodieModel = new ModelHoodie(0);
 	private static final ModelWoolWear woolModel = new ModelWoolWear(0);
 	private static final ModelWoolWear woolHatModel = new ModelWoolWear(3);
+	private static final ModelOvercoat coatModel = new ModelOvercoat(0);
+	private static final ModelOvercoat coatModel2 = new ModelOvercoat(1);
+	private static final ModelThinBiped thinModel = new ModelThinBiped(0.40F, 3);
 
 	@Override
 	public void loadConst() {
@@ -141,6 +150,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityExtinctionBullet.class, BoltRenderer.class);
 		registRender(EntityCrowBullet.class, BoltRenderer.class);
 		registRender(EntityCrowBalloon.class, RenderEntityBalloon.class);
+		registRender(EntityBigCushion.class, RenderEntityBigCushion.class);
+		registRender(EntityBigCushionBrown.class, RenderEntityBigCushionB.class);
 
 		FoodClientProxy.loadEntity();
 		MachineClientProxy.loadEntity();
@@ -261,6 +272,12 @@ public class ClientMainProxy extends CommonMainProxy {
 			return woolHatModel;
 		case 3:
 			return woolModel;
+		case 4:
+			return coatModel;
+		case 5:
+			return coatModel2;
+		case 6:
+			return thinModel;
 		default:
 			return null;
 		}

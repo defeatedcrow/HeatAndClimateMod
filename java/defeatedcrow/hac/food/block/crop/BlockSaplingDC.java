@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
@@ -70,7 +71,7 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		case 2:
 			return b + "tea";
 		default:
-			return b + "tea";
+			return b + "morus";
 		}
 	}
 
@@ -95,7 +96,7 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		case 2:
 			return b + "tea";
 		default:
-			return b + "tea";
+			return b + "morus";
 		}
 	}
 
@@ -117,6 +118,7 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		list.add(new ItemStack(this, 1, 0));
 		list.add(new ItemStack(this, 1, 1));
 		list.add(new ItemStack(this, 1, 2));
+		list.add(new ItemStack(this, 1, 3));
 		return list;
 	}
 
@@ -154,12 +156,17 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 				// lemon
 				IBlockState leaves = FoodInit.leavesLemon.getDefaultState().withProperty(DCState.STAGE4, 0)
 						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
-				gen = new WorldGenDCTree(true, leaves);
+				gen = new WorldGenDCTree(true, leaves, 5);
 			} else if (meta == 1) {
 				// olive
 				IBlockState leaves = FoodInit.leavesOlive.getDefaultState().withProperty(DCState.STAGE4, 0)
 						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
-				gen = new WorldGenDCTree(true, leaves);
+				gen = new WorldGenDCTree(true, leaves, 5);
+			} else if (meta == 3) {
+				// olive
+				IBlockState leaves = FoodInit.leavesMorus.getDefaultState().withProperty(DCState.STAGE4, 0)
+						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				gen = new WorldGenDCTree(true, leaves, 3);
 			}
 
 			if (gen != null) {
@@ -197,6 +204,17 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		if (state.getBlock() != this)
 			return getDefaultState();
 		return state;
+	}
+
+	@Override
+	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.COOL);
+		ret.add(DCHeatTier.COLD);
+		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.HOT);
+		ret.add(DCHeatTier.WARM);
+		return ret;
 	}
 
 }

@@ -18,6 +18,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -92,6 +93,16 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 
 	@Override
 	public boolean isLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return true;
+	}
+
+	@Override
+	protected ItemStack createStackedBlock(IBlockState state) {
+		return new ItemStack(this, 1, 0);
+	}
+
+	@Override
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 		return true;
 	}
 
@@ -286,7 +297,8 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.STAGE4,
 				DECAYABLE,
-				CHECK_DECAY });
+				CHECK_DECAY
+		});
 	}
 
 	@Override

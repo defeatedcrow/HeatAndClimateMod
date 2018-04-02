@@ -32,7 +32,8 @@ public class ItemBlockMaceBird extends ItemBlockMace {
 
 			if (hasAcv || flag) {
 				if (!player.worldObj.isRemote) {
-					player.addPotionEffect(new PotionEffect(MainInit.bird, 3600, 0));
+					int i = 1 + magicSuitCount(player);
+					player.addPotionEffect(new PotionEffect(MainInit.bird, 3600 * i, 0));
 				}
 				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP,
 						SoundCategory.PLAYERS, 0.65F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);

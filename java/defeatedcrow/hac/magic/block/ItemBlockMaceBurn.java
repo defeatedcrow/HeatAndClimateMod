@@ -49,7 +49,8 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 			if (hasAcv || flag) {
 				if (!world.isRemote) {
 					// 自身の炎上
-					player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600, 0));
+					int i = 1 + magicSuitCount(player);
+					player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600 * i, 0));
 					if (world instanceof WorldServer) {
 						((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, player.posX, player.posY,
 								player.posZ, 16, 0.75D, 0.75D, 0.75D, 0.5D, new int[0]);

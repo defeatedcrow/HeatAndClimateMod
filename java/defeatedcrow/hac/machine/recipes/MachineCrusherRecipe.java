@@ -228,7 +228,7 @@ public class MachineCrusherRecipe {
 				0.25F, new ItemStack(MainInit.gems, 1, 21), 0.03F, null, ti, "oreEmerald");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DIAMOND, 3, 0), new ItemStack(MainInit.gems, 1, 13),
-				0.1F, new ItemStack(MainInit.miscDust, 1, 12), 0.05F, null, ti, "oreDiamond");
+				0.1F, new ItemStack(MainInit.miscDust, 1, 12), 0.1F, null, ti, "oreDiamond");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DYE, 8, 4), new ItemStack(MainInit.oreDust, 1, 0), 1F,
 				new ItemStack(MainInit.gems, 1, 20), 0.03F, null, ti, "oreLapis");
@@ -244,6 +244,10 @@ public class MachineCrusherRecipe {
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.oreDust, 1, 11),
 				1F, null, 0F, null, ti, new ItemStack(Blocks.SAND, 1, 1));
+
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 1, 0),
+				new ItemStack(MainInit.miscDust, 1, 2), 1F, new ItemStack(MainInit.miscDust, 1, 10), 0.1F, null, ti,
+				new ItemStack(Blocks.SAND, 1, 0));
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 4, 2),
 				new ItemStack(MainInit.miscDust, 1, 9), 1F, new ItemStack(MainInit.miscDust, 1, 6), 0.5F, null, ti,
@@ -309,7 +313,14 @@ public class MachineCrusherRecipe {
 		}
 
 		// 以下バニラ
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), ti, "cobblestone");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), ti,
+				new ItemStack(Blocks.COBBLESTONE, 1, 0));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(Items.QUARTZ, 1, 0),
+				0.03F, ti, new ItemStack(Blocks.STONE, 1, 1));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0),
+				new ItemStack(MainInit.miscDust, 1, 12), 0.03F, ti, new ItemStack(Blocks.STONE, 1, 3));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(MainInit.gems, 1, 20),
+				0.03F, ti, new ItemStack(Blocks.STONE, 1, 5));
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(Items.FLINT, 1, 0), 1.0F,
 				ti, new ItemStack(Blocks.GRAVEL, 1, 0));

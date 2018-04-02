@@ -202,7 +202,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
-				if (tank != null && tank.getTankProperties() != null) {
+				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
 					if (target != null && target.getFluid() != null && target.getFluid() == FluidRegistry.WATER) {
 						int i = Math.min(mov, cap - amo);

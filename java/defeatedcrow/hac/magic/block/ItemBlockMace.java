@@ -8,6 +8,8 @@ import com.google.common.collect.Multimap;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -96,6 +98,24 @@ public abstract class ItemBlockMace extends DCItemBlock {
 	}
 
 	protected abstract void doUsingEffect(ItemStack stack, EntityPlayer player, World world);
+
+	protected int magicSuitCount(EntityPlayer player) {
+		if (player != null) {
+			int i = 0;
+			for (ItemStack armor : player.getArmorInventoryList()) {
+				if (!DCUtil.isEmpty(armor)) {
+					if (armor.getItem() == MainInit.magicCoat) {
+						i++;
+					}
+					if (armor.getItem() == MainInit.magicUnder) {
+						i++;
+					}
+				}
+			}
+			return i;
+		}
+		return 0;
+	}
 
 	/* item damage */
 

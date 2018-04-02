@@ -86,7 +86,7 @@ public class ItemSilverCup extends FoodItemBase {
 		DrinkSugar sugar = DrinkSugar.NONE;
 		IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		IDrinkCustomize drink = item.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-		if (cont != null && cont.getTankProperties() != null) {
+		if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 			f = cont.getTankProperties()[0].getContents();
 		}
 		if (drink != null) {
@@ -132,7 +132,7 @@ public class ItemSilverCup extends FoodItemBase {
 			ItemStack item = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(item)) {
 				IFluidHandler cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
-				if (cont != null && cont.getTankProperties() != null) {
+				if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
 					if (f != null)
 						return super.onItemRightClick2(world, player, hand);
@@ -152,7 +152,7 @@ public class ItemSilverCup extends FoodItemBase {
 			else {
 				IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 				IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-				if (cont != null && cont.getTankProperties() != null) {
+				if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
 					float dirF = 1.0F;
 					int ampF = 0;
@@ -235,7 +235,7 @@ public class ItemSilverCup extends FoodItemBase {
 		IFluidHandler cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
 		IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 
-		if (cont != null && cont.getTankProperties() != null && drink != null) {
+		if (cont != null && cont.getTankProperties() != null && drink != null && cont.getTankProperties().length > 0) {
 			FluidStack f = cont.getTankProperties()[0].getContents();
 			float dirF = 1.0F + drink.getMilk().effect;
 			int ampF = drink.getSugar().effect;

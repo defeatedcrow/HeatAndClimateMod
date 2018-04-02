@@ -24,7 +24,7 @@ public class ModelHat extends ModelThinBiped {
 	public int slot;
 
 	public ModelHat(int b) {
-		this(0.35F, b);
+		this(0.55F, b);
 	}
 
 	public ModelHat(float f, int b) {

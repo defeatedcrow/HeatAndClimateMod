@@ -59,6 +59,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesLemon);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesOlive);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesTea);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesMorus);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLotus);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropHerb);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropSeaweed);
@@ -73,11 +74,13 @@ public class FoodRecipes {
 		OreDictionary.registerOre("cropCotton", new ItemStack(FoodInit.crops, 1, 5));
 		OreDictionary.registerOre("cropLemon", new ItemStack(FoodInit.crops, 1, 6));
 		OreDictionary.registerOre("cropOlive", new ItemStack(FoodInit.crops, 1, 7));
+		OreDictionary.registerOre("cropMulberry", new ItemStack(FoodInit.crops, 1, 11));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 1));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 2));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 3));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("listAllrootveggie", new ItemStack(FoodInit.seeds, 1, 6));
+		OreDictionary.registerOre("listAllfluit", new ItemStack(FoodInit.crops, 1, 11));
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("cropLotusSeed", new ItemStack(FoodInit.crops, 1, 10));
@@ -97,6 +100,8 @@ public class FoodRecipes {
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 1));
 		OreDictionary.registerOre("saplingTea", new ItemStack(FoodInit.saplings, 1, 2));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 2));
+		OreDictionary.registerOre("saplingMorus", new ItemStack(FoodInit.saplings, 1, 3));
+		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 3));
 
 		OreDictionary.registerOre("bucketWater", new ItemStack(FoodInit.paperPack, 1, 1));
 		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 2));

@@ -45,10 +45,12 @@ public class ItemBlockMaceFlower extends ItemBlockMace {
 					// 成長
 					IClimate clm = ClimateAPI.register.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL,
 							DCAirflow.TIGHT);
+					int i = 3 + magicSuitCount(player);
+					// 成長
 					// 5x5x3 の範囲
 					BlockPos pos = player.getPosition();
-					BlockPos min = new BlockPos(pos.add(-3, -1, -3));
-					BlockPos max = new BlockPos(pos.add(3, 1, 3));
+					BlockPos min = new BlockPos(pos.add(-i, -1, -i));
+					BlockPos max = new BlockPos(pos.add(i, 1, i));
 					Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 					for (BlockPos p1 : itr) {
 						IBlockState st = world.getBlockState(p1);

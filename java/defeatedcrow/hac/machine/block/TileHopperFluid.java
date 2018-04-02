@@ -193,7 +193,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 		TileEntity tile = worldObj.getTileEntity(getPos().up());
 		if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
 			IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
-			if (tank != null && tank.getTankProperties() != null) {
+			if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 				FluidStack target = tank.getTankProperties()[0].getContents();
 				if (target != null && target.getFluid() != null) {
 					int i = Math.min(mov, cap - amo);
@@ -252,7 +252,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 
 		if (state != null && state.getBlock() != null && state.getBlock() instanceof BlockLiquid) {
 			IFluidHandler tank = new BlockLiquidWrapper((BlockLiquid) state.getBlock(), worldObj, pos.up());
-			if (tank != null && tank.getTankProperties() != null) {
+			if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 				FluidStack target = tank.getTankProperties()[0].getContents();
 				if (target != null && target.getFluid() != null) {
 					int i = Math.min(mov, cap - amo);
@@ -311,7 +311,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			dummy = (IFluidHandler) in2.getItem();
 		}
 
-		if (dummy != null && dummy.getTankProperties() != null) {
+		if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = null;
 
@@ -363,7 +363,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			dummy = (IFluidHandler) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null
+				&& dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = null;
 

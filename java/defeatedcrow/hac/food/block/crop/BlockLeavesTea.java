@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -94,6 +95,16 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 		return Arrays.asList(new ItemStack(this, 1, 0));
 	}
 
+	@Override
+	protected ItemStack createStackedBlock(IBlockState state) {
+		return new ItemStack(this, 1, 0);
+	}
+
+	@Override
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+		return true;
+	}
+
 	/* ClimateCrop */
 
 	@Override
@@ -108,11 +119,10 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 		if (thisState == null)
 			return GrowingStage.DEAD;
 		else {
-			if (DCState.getInt(thisState, DCState.STAGE4) > 0) {
+			if (DCState.getInt(thisState, DCState.STAGE4) > 0)
 				return GrowingStage.GROWN;
-			} else {
+			else
 				return GrowingStage.YOUNG;
-			}
 		}
 	}
 
@@ -123,9 +133,9 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 			if (stage == GrowingStage.DEAD) {
 				world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
 				return false;
-			} else if (stage == GrowingStage.GROWN) {
+			} else if (stage == GrowingStage.GROWN)
 				return false;
-			} else {
+			else {
 				if (DCState.getInt(thisState, DCState.STAGE4) == 0) {
 					IBlockState next = this.getDefaultState().withProperty(DCState.STAGE4, 1);
 					return world.setBlockState(pos, next, 3);

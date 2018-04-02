@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 
 public class MainInit {
 	private MainInit() {}
@@ -40,6 +41,7 @@ public class MainInit {
 	public static Block builds;
 	public static Block plate;
 	public static Block syntheticBlock;
+	public static Block linoleum;
 
 	public static Block fenceGypsum;
 	public static Block fenceMarble;
@@ -136,6 +138,7 @@ public class MainInit {
 	public static Item itemDoorSteel;
 
 	public static Block realtimeClock;
+	public static Item cushionGray;
 
 	// device
 	public static Block chamber;
@@ -152,8 +155,12 @@ public class MainInit {
 	public static Item oreIngot;
 	public static Item gems;
 	public static Item miscDust;
+	@Deprecated
 	public static Item materials;
 	public static Item foodDust;
+	public static Item silkworm;
+	public static Item gears;
+	public static Item clothes;
 
 	// tool
 	public static Item stoneYagen;
@@ -171,6 +178,9 @@ public class MainInit {
 	public static Item[] dcSword = new Item[8];
 	public static Item[] dcScythe = new Item[4];
 
+	public static Item earthSpade;
+	public static Item earthRake;
+
 	// armor
 	public static Item[] brassArmor = new Item[4];
 	public static Item[] steelArmor = new Item[4];
@@ -180,6 +190,10 @@ public class MainInit {
 	public static Item linenUnder;
 	public static Item linenCoat;
 	public static Item clothUnder;
+	public static Item clothCoat;
+	public static Item magicUnder;
+	public static Item magicCoat;
+	public static Item blackCoat;
 
 	public static Item workerSuit;
 	public static Item blackSuit;
@@ -229,6 +243,10 @@ public class MainInit {
 	public static Enchantment venom;
 	public static Enchantment corrosion;
 	public static Enchantment robber;
+
+	public static VillagerProfession trader;
+	public static VillagerProfession agri;
+	public static VillagerProfession engineer;
 
 	// plugin
 	public static Item circuit;

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.food;
 
 import defeatedcrow.hac.food.block.TilePotteryPot;
+import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
@@ -15,6 +16,7 @@ import defeatedcrow.hac.food.entity.ChickenPlateEntity;
 import defeatedcrow.hac.food.entity.ChocolatePieEntity;
 import defeatedcrow.hac.food.entity.ClubSandwichREntity;
 import defeatedcrow.hac.food.entity.ClubSandwichSEntity;
+import defeatedcrow.hac.food.entity.CrostataTartEntity;
 import defeatedcrow.hac.food.entity.CustardPieEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
 import defeatedcrow.hac.food.entity.EmptyPlateEntity;
@@ -70,6 +72,7 @@ public class FoodCommonProxy {
 		GameRegistry.registerTileEntity(TilePotteryPot.class, "dcs_te_pottery_pot");
 		GameRegistry.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot");
 		GameRegistry.registerTileEntity(TileTeaPot.class, "dcs_te_tea_pot");
+		GameRegistry.registerTileEntity(TileSilkwormBox.class, "dcs_te_silkworm_box");
 	}
 
 	public static void loadEntity() {
@@ -89,6 +92,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(LemonTartEntity.class, "food", "tart_lemon");
 		DCRegistryUtil.addEntity(SpinachQuicheEntity.class, "food", "quiche_spinach");
 		DCRegistryUtil.addEntity(PotatoQuicheEntity.class, "food", "quiche_potato");
+		DCRegistryUtil.addEntity(CrostataTartEntity.class, "food", "tart_crostata");
 		DCRegistryUtil.addEntity(SugarPieEntity.class, "food", "pie_sugar");
 		DCRegistryUtil.addEntity(MeatPieEntity.class, "food", "pie_meat");
 		DCRegistryUtil.addEntity(ChocolatePieEntity.class, "food", "pie_chocolate");
