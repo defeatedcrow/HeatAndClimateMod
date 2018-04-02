@@ -183,6 +183,8 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.crossbow, ClimateCore.PACKAGE_ID, "dcs_crossbow_iron", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.gun, ClimateCore.PACKAGE_ID, "dcs_musket_steel", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cartridge, ClimateCore.PACKAGE_ID, "dcs_cartridge", "equip", 7);
+		MAIN_INSTANCE.regSimpleItem(MainInit.earthSpade, ClimateCore.PACKAGE_ID, "dcs_spade_earth", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.earthRake, ClimateCore.PACKAGE_ID, "dcs_rake_earth", "equip", 0);
 
 		MAIN_INSTANCE.regSimpleItem(MainInit.linenUnder, ClimateCore.PACKAGE_ID, "dcs_leggins_linen", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.linenCoat, ClimateCore.PACKAGE_ID, "dcs_plate_linen", "equip", 0);

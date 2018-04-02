@@ -6,6 +6,7 @@ import java.util.Random;
 
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.orevein.OreSet;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
@@ -352,17 +353,22 @@ public class WorldGenOres3 implements IWorldGenerator {
 						BlockPos p = new BlockPos(x, y, z);
 						Block block = world.getBlockState(p).getBlock();
 						double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
-						boolean b = world.getBlockState(p.up(1)).getMaterial() == Material.WATER
-								|| world.getBlockState(p.up(2)).getMaterial() == Material.WATER;
-						if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r && b) {
-							int height = p.getY() - pos.getY();
-							OreSet add = gen[height];
-							if (isPlaceable(block)) {
-								int j = world.rand.nextInt(100);
-								if (add.hasSecondOre() && j < add.getSecondChance()) {
-									world.setBlockState(p, add.getSecondOre().getState(), 4);
-								} else {
-									world.setBlockState(p, add.getOre().getState(), 4);
+						boolean b1 = world.getBlockState(p.up(1)).getMaterial() == Material.WATER;
+						boolean b2 = world.getBlockState(p.up(2)).getMaterial() == Material.WATER;
+						if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r) {
+							if (b1 || b2) {
+								int height = p.getY() - pos.getY();
+								OreSet add = gen[height];
+								if (isPlaceable(block)) {
+									int j = world.rand.nextInt(100);
+									if (add.hasSecondOre() && j < add.getSecondChance()) {
+										world.setBlockState(p, add.getSecondOre().getState(), 4);
+										if (b1) {
+											world.setBlockState(p.up(), FoodInit.cropSeaweed.getDefaultState());
+										}
+									} else {
+										world.setBlockState(p, add.getOre().getState(), 4);
+									}
 								}
 							}
 						}

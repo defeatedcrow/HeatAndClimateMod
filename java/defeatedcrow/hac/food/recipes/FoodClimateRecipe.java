@@ -106,6 +106,13 @@ public class FoodClimateRecipe {
 		p_tart.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(p_tart, DCHeatTier.OVEN);
 
+		ClimateSmelting c_tart = new ClimateSmelting(new ItemStack(FoodInit.pastryRound, 1, 9), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastryRound, 1, 8));
+		c_tart.requiredHeat().add(DCHeatTier.SMELTING);
+		c_tart.requiredHum().add(DCHumidity.NORMAL);
+		c_tart.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(c_tart, DCHeatTier.OVEN);
+
 		ClimateSmelting s_pie = new ClimateSmelting(new ItemStack(FoodInit.pastrySquare, 1, 1), null, DCHeatTier.OVEN,
 				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.pastrySquare, 1, 0));
 		s_pie.requiredHeat().add(DCHeatTier.SMELTING);

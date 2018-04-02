@@ -2,10 +2,13 @@ package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
+import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
+import defeatedcrow.hac.food.gui.ContainerSilkwormBox;
 import defeatedcrow.hac.food.gui.ContainerTeaPot;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
+import defeatedcrow.hac.food.gui.GuiSilkwormBox;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
@@ -422,6 +425,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerDieselEngine((TileDieselEngine) tile, player.inventory);
 		if (tile instanceof TileRollerCrusher)
 			return new ContainerCrusher((TileRollerCrusher) tile, player.inventory);
+		if (tile instanceof TileSilkwormBox)
+			return new ContainerSilkwormBox((TileSilkwormBox) tile, player.inventory);
 		return null;
 	}
 
@@ -468,6 +473,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiDieselEngine((TileDieselEngine) tile, player.inventory);
 		if (tile instanceof TileRollerCrusher)
 			return new GuiCrusher((TileRollerCrusher) tile, player.inventory);
+		if (tile instanceof TileSilkwormBox)
+			return new GuiSilkwormBox((TileSilkwormBox) tile, player.inventory);
 		return null;
 	}
 

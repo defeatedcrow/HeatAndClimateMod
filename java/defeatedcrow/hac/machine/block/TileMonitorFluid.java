@@ -15,11 +15,12 @@ public class TileMonitorFluid extends TileMonitorBase {
 	@Override
 	protected boolean updateAmount() {
 		TileEntity target = world.getTileEntity(getPairPos());
-		if (target != null
-				&& target.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, getSide().getFacing())) {
+		if (target != null && target.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
+				getSide().getFacing())) {
 			IFluidHandler tank = target.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 					getSide().getFacing());
-			if (tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
+			if (tank.getTankProperties() != null && tank.getTankProperties().length > 0 &&
+					tank.getTankProperties().length > 0) {
 				amountMax = tank.getTankProperties()[0].getCapacity();
 				FluidStack cont = tank.drain((int) amountMax, false);
 				amount = cont == null ? 0 : cont.amount;

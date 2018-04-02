@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.food.block.BlockDish;
 import defeatedcrow.hac.food.block.BlockPotteryPot;
+import defeatedcrow.hac.food.block.BlockSilkwormBox;
 import defeatedcrow.hac.food.block.BlockSteelPot;
 import defeatedcrow.hac.food.block.BlockTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockCoffee;
@@ -133,8 +134,12 @@ public class FoodInitRegister {
 		FoodInit.dish = new BlockDish(ClimateCore.PACKAGE_BASE + "_build_dish", 1);
 		DCMaterialReg.registerBlock(FoodInit.dish, ClimateCore.PACKAGE_BASE + "_build_dish", ClimateMain.MOD_ID);
 
-		FoodInit.cropLotus = new BlockLotus(ClimateCore.PACKAGE_BASE + "_crop_lotus", 15)
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus");
+		FoodInit.silkwormBox = new BlockSilkwormBox(ClimateCore.PACKAGE_BASE + "_device_silkworm_box");
+		DCMaterialReg.registerBlock(FoodInit.silkwormBox, ClimateCore.PACKAGE_BASE + "_device_silkworm_box",
+				ClimateMain.MOD_ID);
+
+		FoodInit.cropLotus = new BlockLotus(ClimateCore.PACKAGE_BASE + "_crop_lotus", 15).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_crop_lotus");
 		DCMaterialReg.registerBlock(FoodInit.cropLotus, ClimateCore.PACKAGE_BASE + "_crop_lotus", ClimateMain.MOD_ID);
 
 		FoodInit.cropHerb = new BlockHerb(ClimateCore.PACKAGE_BASE + "_crop_herb");
@@ -197,8 +202,8 @@ public class FoodInitRegister {
 		FoodInit.cupSilver = new ItemSilverCup(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_teacup");
 		DCMaterialReg.registerItem(FoodInit.cupSilver, ClimateCore.PACKAGE_BASE + "_food_teacup", ClimateMain.MOD_ID);
 
-		FoodInit.steakplate = new EmptyPlateItem(false)
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_steakplate_item");
+		FoodInit.steakplate = new EmptyPlateItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+				"_food_steakplate_item");
 		DCMaterialReg.registerItem(FoodInit.steakplate, ClimateCore.PACKAGE_BASE + "_food_steakplate_item",
 				ClimateMain.MOD_ID);
 
@@ -222,112 +227,109 @@ public class FoodInitRegister {
 
 	public static void loadFluids() {
 		// fluid
-		FoodInit.oil = new Fluid("dcs.seed_oil",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/seedoil_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/seedoil_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".seed_oil");
+		FoodInit.oil = new Fluid("dcs.seed_oil", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/seedoil_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/seedoil_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".seed_oil");
 		FluidRegistry.registerFluid(FoodInit.oil);
-		FoodInit.oilBlock = new DCFluidBlockBase(FoodInit.oil, "seedoil_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_oil");
+		FoodInit.oilBlock = new DCFluidBlockBase(FoodInit.oil, "seedoil_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_oil");
 		DCMaterialReg.registerBlock(FoodInit.oilBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_oil",
 				ClimateMain.MOD_ID);
 		FoodInit.oil.setBlock(FoodInit.oilBlock);
 
-		FoodInit.greenTea = new Fluid("dcs.green_tea",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/greentea_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/greentea_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".green_tea").setTemperature(350);
+		FoodInit.greenTea = new Fluid("dcs.green_tea", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/greentea_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/greentea_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+								".green_tea").setTemperature(350);
 		FluidRegistry.registerFluid(FoodInit.greenTea);
-		FoodInit.greenTeaBlock = new DCFluidBlockBase(FoodInit.greenTea, "greentea_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_greentea");
+		FoodInit.greenTeaBlock = new DCFluidBlockBase(FoodInit.greenTea, "greentea_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_greentea");
 		DCMaterialReg.registerBlock(FoodInit.greenTeaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_greentea",
 				ClimateMain.MOD_ID);
 		FoodInit.greenTea.setBlock(FoodInit.greenTeaBlock);
 
-		FoodInit.blackTea = new Fluid("dcs.black_tea",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/blacktea_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/blacktea_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".black_tea").setTemperature(350);
+		FoodInit.blackTea = new Fluid("dcs.black_tea", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/blacktea_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/blacktea_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+								".black_tea").setTemperature(350);
 		FluidRegistry.registerFluid(FoodInit.blackTea);
-		FoodInit.blackTeaBlock = new DCFluidBlockBase(FoodInit.blackTea, "blacktea_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea");
+		FoodInit.blackTeaBlock = new DCFluidBlockBase(FoodInit.blackTea, "blacktea_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea");
 		DCMaterialReg.registerBlock(FoodInit.blackTeaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_blacktea",
 				ClimateMain.MOD_ID);
 		FoodInit.blackTea.setBlock(FoodInit.blackTeaBlock);
 
-		FoodInit.coffee = new Fluid("dcs.black_coffee",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/coffee_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/coffee_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".black_coffee").setTemperature(350);
+		FoodInit.coffee = new Fluid("dcs.black_coffee", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/coffee_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/coffee_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+								".black_coffee").setTemperature(350);
 		FluidRegistry.registerFluid(FoodInit.coffee);
-		FoodInit.coffeeBlock = new DCFluidBlockBase(FoodInit.coffee, "coffee_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_coffee");
+		FoodInit.coffeeBlock = new DCFluidBlockBase(FoodInit.coffee, "coffee_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_coffee");
 		DCMaterialReg.registerBlock(FoodInit.coffeeBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_coffee",
 				ClimateMain.MOD_ID);
 		FoodInit.coffee.setBlock(FoodInit.coffeeBlock);
 
-		FoodInit.cream = new Fluid("dcs.milk_cream",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/cream_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/cream_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".milk_cream");
+		FoodInit.cream = new Fluid("dcs.milk_cream", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/cream_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/cream_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".milk_cream");
 		FluidRegistry.registerFluid(FoodInit.cream);
-		FoodInit.creamBlock = new DCFluidBlockBase(FoodInit.cream, "cream_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_cream");
+		FoodInit.creamBlock = new DCFluidBlockBase(FoodInit.cream, "cream_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_cream");
 		DCMaterialReg.registerBlock(FoodInit.creamBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_cream",
 				ClimateMain.MOD_ID);
 		FoodInit.cream.setBlock(FoodInit.creamBlock);
 
-		FoodInit.tomatoJuice = new Fluid("dcs.vegetable_juice",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/vegetable_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/vegetable_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".vegetable_juice");
+		FoodInit.tomatoJuice = new Fluid("dcs.vegetable_juice", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/vegetable_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/vegetable_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+								".vegetable_juice");
 		FluidRegistry.registerFluid(FoodInit.tomatoJuice);
-		FoodInit.tomatoBlock = new DCFluidBlockBase(FoodInit.tomatoJuice, "vegetable_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable");
+		FoodInit.tomatoBlock = new DCFluidBlockBase(FoodInit.tomatoJuice, "vegetable_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable");
 		DCMaterialReg.registerBlock(FoodInit.tomatoBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_vegetable",
 				ClimateMain.MOD_ID);
 		FoodInit.tomatoJuice.setBlock(FoodInit.tomatoBlock);
 
-		FoodInit.stock = new Fluid("dcs.stock",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/stock_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/stock_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".stock").setTemperature(350);
+		FoodInit.stock = new Fluid("dcs.stock", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/stock_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/stock_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+								".stock").setTemperature(350);
 		FluidRegistry.registerFluid(FoodInit.stock);
-		FoodInit.stockBlock = new DCFluidBlockBase(FoodInit.stock, "stock_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_stock");
+		FoodInit.stockBlock = new DCFluidBlockBase(FoodInit.stock, "stock_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_stock");
 		DCMaterialReg.registerBlock(FoodInit.stockBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_stock",
 				ClimateMain.MOD_ID);
 		FoodInit.stock.setBlock(FoodInit.stockBlock);
 
-		FoodInit.lemon = new Fluid("dcs.lemonade",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/lemon_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/lemon_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".lemonade");
+		FoodInit.lemon = new Fluid("dcs.lemonade", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/lemon_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/lemon_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".lemonade");
 		FluidRegistry.registerFluid(FoodInit.lemon);
-		FoodInit.lemonBlock = new DCFluidBlockBase(FoodInit.lemon, "lemon_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade");
+		FoodInit.lemonBlock = new DCFluidBlockBase(FoodInit.lemon, "lemon_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade");
 		DCMaterialReg.registerBlock(FoodInit.lemonBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade",
 				ClimateMain.MOD_ID);
 		FoodInit.stock.setBlock(FoodInit.lemonBlock);
 
-		FoodInit.blackLiquor = new Fluid("dcs.black_liquor",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/black_liquor_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/black_liquor_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".black_liquor");
+		FoodInit.blackLiquor = new Fluid("dcs.black_liquor", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/black_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/black_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+								".black_liquor");
 		FluidRegistry.registerFluid(FoodInit.blackLiquor);
-		FoodInit.blackLiquorBlock = new DCFluidBlockBase(FoodInit.blackLiquor, "black_liquor_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_black_liquor");
+		FoodInit.blackLiquorBlock = new DCFluidBlockBase(FoodInit.blackLiquor, "black_liquor_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_black_liquor");
 		DCMaterialReg.registerBlock(FoodInit.blackLiquorBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_black_liquor",
 				ClimateMain.MOD_ID);
 		FoodInit.blackLiquor.setBlock(FoodInit.blackLiquorBlock);
 
-		FoodInit.hotSpring = new Fluid("dcs.hotspring",
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/hotspring_still"),
-				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/hotspring_still"))
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".hotspring").setTemperature(350);
+		FoodInit.hotSpring = new Fluid("dcs.hotspring", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/hotspring_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/hotspring_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+								".hotspring").setTemperature(350);
 		FluidRegistry.registerFluid(FoodInit.hotSpring);
-		FoodInit.hotSpringBlock = new DCFluidBlockBase(FoodInit.hotSpring, "hotspring_still")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_hotspring");
+		FoodInit.hotSpringBlock = new DCFluidBlockBase(FoodInit.hotSpring, "hotspring_still").setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_fluidblock_hotspring");
 		DCMaterialReg.registerBlock(FoodInit.hotSpringBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_hotspring",
 				ClimateMain.MOD_ID);
 		FoodInit.hotSpring.setBlock(FoodInit.hotSpringBlock);
@@ -345,12 +347,12 @@ public class FoodInitRegister {
 		FluidRegistry.addBucketForFluid(FoodInit.lemon);
 
 		// fluid item
-		FoodInit.dropOil = new ItemFluidDrop("olive", "dcs.seed_oil")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_drop_oil");
+		FoodInit.dropOil = new ItemFluidDrop("olive", "dcs.seed_oil").setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+				"_food_drop_oil");
 		DCMaterialReg.registerItem(FoodInit.dropOil, ClimateCore.PACKAGE_BASE + "_food_drop_oil", ClimateMain.MOD_ID);
 
-		FoodInit.dropCream = new ItemFluidDrop("cream", "dcs.milk_cream")
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_drop_cream");
+		FoodInit.dropCream = new ItemFluidDrop("cream", "dcs.milk_cream").setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+				"_food_drop_cream");
 		DCMaterialReg.registerItem(FoodInit.dropCream, ClimateCore.PACKAGE_BASE + "_food_drop_cream",
 				ClimateMain.MOD_ID);
 
@@ -406,6 +408,7 @@ public class FoodInitRegister {
 		FoodInit.potteryPot.setCreativeTab(ClimateMain.food);
 		FoodInit.steelPot.setCreativeTab(ClimateMain.food);
 		FoodInit.teaPot.setCreativeTab(ClimateMain.food);
+		FoodInit.silkwormBox.setCreativeTab(ClimateMain.cloth);
 
 		FoodInit.cropRice.setCreativeTab(ClimateMain.food);
 		FoodInit.cropOnion.setCreativeTab(ClimateMain.food);

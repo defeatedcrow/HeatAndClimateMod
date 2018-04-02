@@ -3,6 +3,7 @@ package defeatedcrow.hac.food;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.food.block.TilePotteryPot;
+import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.client.AppleTartRenderer;
@@ -138,6 +139,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -214,6 +216,7 @@ public class FoodClientProxy {
 		ClientRegistry.registerTileEntity(TilePotteryPot.class, "dcs_te_pottery_pot", new TESRPotteryPot());
 		ClientRegistry.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot", new TESRSteelPot());
 		ClientRegistry.registerTileEntity(TileTeaPot.class, "dcs_te_tea_pot", new TESRTeaPot());
+		GameRegistry.registerTileEntity(TileSilkwormBox.class, "dcs_te_silkworm_box");
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -256,6 +259,7 @@ public class FoodClientProxy {
 		instance.regTEBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_ID, "dcs_device_pottery_pot", "machine", 0);
 		instance.regTEBlock(FoodInit.steelPot, ClimateCore.PACKAGE_ID, "dcs_device_steel_pot", "machine", 0);
 		instance.regTEBlock(FoodInit.teaPot, ClimateCore.PACKAGE_ID, "dcs_device_tea_pot", "machine", 0);
+		instance.regSimpleBlock(FoodInit.silkwormBox, ClimateCore.PACKAGE_ID, "dcs_device_silkworm_box", "device", 0);
 
 		// fluid
 
@@ -449,8 +453,8 @@ public class FoodClientProxy {
 			}
 		});
 
-		ModelLoader.setCustomStateMapper(FoodInit.cropLotus, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL)
-				.build());
+		ModelLoader.setCustomStateMapper(FoodInit.cropLotus, (new StateMap.Builder()).ignore(
+				BlockFluidBase.LEVEL).build());
 		ModelBakery.registerItemVariants(Item.getItemFromBlock(FoodInit.cropLotus), new ModelResourceLocation(
 				"dcs_climate:dcs_crop_lotus"));
 		for (int i = 0; i < 16; i++) {
@@ -458,8 +462,8 @@ public class FoodClientProxy {
 					new ModelResourceLocation("dcs_climate:crop/dcs_crop_lotus", "inventory"));
 		}
 
-		ModelLoader.setCustomStateMapper(FoodInit.cropSeaweed, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL)
-				.build());
+		ModelLoader.setCustomStateMapper(FoodInit.cropSeaweed, (new StateMap.Builder()).ignore(
+				BlockFluidBase.LEVEL).build());
 		ModelBakery.registerItemVariants(Item.getItemFromBlock(FoodInit.cropSeaweed), new ModelResourceLocation(
 				"dcs_climate:dcs_crop_seaweed"));
 	}

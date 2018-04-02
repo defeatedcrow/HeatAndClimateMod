@@ -37,7 +37,7 @@ public class ItemIBC extends DCItemBlock {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
 		IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
-		if (cont != null && cont.getTankProperties() != null) {
+		if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 			FluidStack f = cont.getTankProperties()[0].getContents();
 			if (f != null && f.getFluid() != null) {
 				tooltip.add(TextFormatting.BOLD.toString() + "CONTAINED FLUID");

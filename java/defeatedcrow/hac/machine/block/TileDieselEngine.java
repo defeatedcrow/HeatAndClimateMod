@@ -37,8 +37,8 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileDieselEngine extends TileTorqueBase
-		implements ITorqueProvider, ITorqueReceiver, ITagGetter, IInventory, ISidedTankChecker {
+public class TileDieselEngine extends TileTorqueBase implements ITorqueProvider, ITorqueReceiver, ITagGetter,
+		IInventory, ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -139,11 +139,11 @@ public class TileDieselEngine extends TileTorqueBase
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISidedTankChecker)
-					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+			if (tile != null && !(tile instanceof ISidedTankChecker) && tile.hasCapability(
+					CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
-				if (tank != null && tank.getTankProperties() != null) {
+				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
 					if (target != null && target.getFluid() != null && getBurnTime(target.getFluid()) > 0) {
 						int i = Math.min(mov, cap - amo);

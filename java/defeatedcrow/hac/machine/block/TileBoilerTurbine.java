@@ -198,11 +198,11 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null
-					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+			if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
+					face.getOpposite())) {
 				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
 						face.getOpposite());
-				if (tank != null && tank.getTankProperties() != null) {
+				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
 					if (target != null && target.getFluid() != null && target.getFluid() == FluidRegistry.WATER) {
 						int i = Math.min(mov, cap - amo);
@@ -403,8 +403,8 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
-				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+		return getWorld().getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D,
+				this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
 	@Override

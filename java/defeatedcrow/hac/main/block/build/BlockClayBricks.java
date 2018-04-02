@@ -8,11 +8,8 @@ import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.EnumDyeColor;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockClayBricks extends DCSimpleBlock implements ITexturePath, IThermalInsulationBlock {
 
@@ -56,12 +53,6 @@ public class BlockClayBricks extends DCSimpleBlock implements ITexturePath, IThe
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override

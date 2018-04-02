@@ -157,8 +157,8 @@ item.dcs_silkworm_silk_moth.name=Silkmoth
 
 item.dcs_flowerpot_white.name=White Flower Pot
 item.dcs_flowerpot_brown.name=Brown Flower Pot
-item.dcs_big_cushion_gray.name=Gray Big Cushion
-item.dcs_big_cushion_brown.name=Brown Big Cushion
+item.dcs_big_cushion_gray.name=Gray Big Cushion for the Lazy Mobs
+item.dcs_big_cushion_brown.name=Brown Big Cushion for the Lazy Mobs
 
 ## foods
 item.dcs_food_materials_salt.name=Salt
@@ -343,6 +343,8 @@ item.dcs_scythe_brass.name=Bras Scythe
 item.dcs_scythe_steel.name=Steel Scythe
 item.dcs_scythe_chalcedony.name=Chalcedony Scythe
 item.dcs_scythe_garnet.name=Garnet Scythe
+item.dcs_spade_earth.name=Spade of the Earth
+item.dcs_rake_earth.name=Rake of the Earth
 
 ## weapons
 item.dcs_sword_brass.name=Brass Sword
@@ -892,6 +894,7 @@ tile.dcs_device_monitor_rs_0.name=Remote RS Lamp
 tile.dcs_device_monitor_fluid_0.name=Remote Fluid Monitor
 tile.dcs_device_monitor_torque_0.name=Remote Torque Monitor
 tile.dcs_device_monitor_rf_0.name=Remote RF Monitor
+tile.dcs_device_silkworm_box_0.name=Silkworm Rearing Box
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -1175,6 +1178,7 @@ dcs.gui.device.portalmanager=Transfer Portal
 dcs.gui.device.gas_burner=Gas Burner
 dcs.gui.device.diesel_engine=Diesel Engine
 dcs.gui.device.crusher=Hammer Mill
+dcs.gui.device.silkworm_box=Silkworm Rearing Box
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold
@@ -1369,5 +1373,5 @@ entity.dcs.machine.motor_cart.name=Motorized Cart
 entity.dcs.machine.motor_scooter.name=Scooter
 entity.dcs.machine.magnetic_hover.name=Magnetic Hovercraft
 entity.dcs.main.balloon_crow.name=Defeatedcrow Balloon
-entity.dcs.main.big_cushion.name=Gray Big Cushion
-entity.dcs.main.big_cushion_brown.name=Brown Big Cushion
+entity.dcs.main.big_cushion.name=Gray Big Cushion for the lazy mobs
+entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs

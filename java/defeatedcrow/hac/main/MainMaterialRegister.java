@@ -102,8 +102,10 @@ import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemEntityScope;
 import defeatedcrow.hac.main.item.tool.ItemMusketDC;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
+import defeatedcrow.hac.main.item.tool.ItemRakeEarth;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.item.tool.ItemSpadeDC;
+import defeatedcrow.hac.main.item.tool.ItemSpadeEarth;
 import defeatedcrow.hac.main.item.tool.ItemStoneYagen;
 import defeatedcrow.hac.main.item.tool.ItemSwordDC;
 import defeatedcrow.hac.main.item.tool.ItemThermalScope;
@@ -819,6 +821,14 @@ public class MainMaterialRegister {
 				ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_garnet");
 		DCMaterialReg.registerItem(MainInit.dcScythe[3], ClimateCore.PACKAGE_BASE + "_scythe_garnet",
 				ClimateMain.MOD_ID);
+
+		MainInit.earthSpade = new ItemSpadeEarth().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_spade_earth");
+		DCMaterialReg.registerItem(MainInit.earthSpade, ClimateCore.PACKAGE_BASE + "_spade_earth", ClimateMain.MOD_ID);
+
+		MainInit.earthRake = new ItemRakeEarth().setCreativeTab(ClimateMain.tool).setUnlocalizedName(
+				ClimateCore.PACKAGE_BASE + "_rake_earth");
+		DCMaterialReg.registerItem(MainInit.earthRake, ClimateCore.PACKAGE_BASE + "_rake_earth", ClimateMain.MOD_ID);
 
 		MainInit.crossbow = new ItemCrossbowDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crossbow");
 		DCMaterialReg.registerItem(MainInit.crossbow, ClimateCore.PACKAGE_BASE + "_crossbow", ClimateMain.MOD_ID);

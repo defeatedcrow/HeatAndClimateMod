@@ -85,8 +85,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			}
 
 			if (flag) {
-				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos,
-						FluidIDRegisterDC.getID(inputT.getFluidType()), inputT.getFluidAmount()));
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, FluidIDRegisterDC.getID(
+						inputT.getFluidType()), inputT.getFluidAmount()));
 			}
 		} else {
 			cooldown--;
@@ -194,7 +194,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 		TileEntity tile = world.getTileEntity(getPos().up());
 		if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
 			IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
-			if (tank != null && tank.getTankProperties() != null) {
+			if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 				FluidStack target = tank.getTankProperties()[0].getContents();
 				if (target != null && target.getFluid() != null) {
 					int i = Math.min(mov, cap - amo);
@@ -253,7 +253,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 
 		if (state != null && state.getBlock() != null && state.getBlock() instanceof BlockLiquid) {
 			IFluidHandler tank = new BlockLiquidWrapper((BlockLiquid) state.getBlock(), world, pos.up());
-			if (tank != null && tank.getTankProperties() != null) {
+			if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 				FluidStack target = tank.getTankProperties()[0].getContents();
 				if (target != null && target.getFluid() != null) {
 					int i = Math.min(mov, cap - amo);
@@ -329,8 +329,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 					fill = dummy.drain(rem, true);
 					ret = dummy.getContainer();
 
-					if (fill != null
-							&& (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
+					if (fill != null && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(
+							slot2)) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -614,7 +614,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 
 	protected int[] slotsSides() {
 		return new int[] {
-				0, 1
+				0,
+				1
 		};
 	};
 
