@@ -6,8 +6,10 @@ import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,6 +49,11 @@ public class OnMiningEventDC {
 			if (hasCharm) {
 				event.setNewSpeed(event.getNewSpeed() * 1.2F + 2.0F);
 				event.setCanceled(false);
+			} else {
+				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER)
+						&& event.getEntityPlayer().isPotionActive(MainInit.ocean)) {
+					event.setNewSpeed(event.getNewSpeed() * 2.0F);
+				}
 			}
 		}
 	}
