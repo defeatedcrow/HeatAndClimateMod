@@ -311,7 +311,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (dummy != null && dummy.getTankProperties() != null) {
+		if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
@@ -363,7 +363,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
+				dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 

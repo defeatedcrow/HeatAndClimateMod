@@ -86,7 +86,7 @@ public class ItemSilverCup extends FoodItemBase {
 		DrinkSugar sugar = DrinkSugar.NONE;
 		IFluidHandlerItem cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		IDrinkCustomize drink = item.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-		if (cont != null && cont.getTankProperties() != null) {
+		if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 			f = cont.getTankProperties()[0].getContents();
 		}
 		if (drink != null) {
@@ -132,7 +132,7 @@ public class ItemSilverCup extends FoodItemBase {
 			ItemStack item = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(item)) {
 				IFluidHandlerItem cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
-				if (cont != null && cont.getTankProperties() != null) {
+				if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
 					if (f != null)
 						return super.onItemRightClick(world, player, hand);

@@ -474,8 +474,8 @@ public class EntityScooter extends Entity implements IInventory {
 	public boolean processInitialInteract(EntityPlayer player, @Nullable EnumHand hand) {
 		if (player.isSneaking()) {
 			int id = this.getEntityId();
-			player.openGui(ClimateMain.instance, id, world, getPosition().getX(), getPosition().getY(), getPosition()
-					.getZ());
+			player.openGui(ClimateMain.instance, id, world, getPosition().getX(), getPosition().getY(),
+					getPosition().getZ());
 			return true;
 		} else if (this.isBeingRidden() && this.getPassengers().size() < 2)
 			return true;
@@ -546,8 +546,8 @@ public class EntityScooter extends Entity implements IInventory {
 		if (!this.world.isRemote && !this.isDead && this.getControllingPassenger() instanceof EntityPlayer) {
 			if (this.isEntityInvulnerable(source)) {
 				this.setDead();
-			} else if (source instanceof EntityDamageSource && !source.isProjectile() && ((EntityDamageSource) source)
-					.getTrueSource() instanceof EntityPlayer) {
+			} else if (source instanceof EntityDamageSource && !source.isProjectile() &&
+					((EntityDamageSource) source).getTrueSource() instanceof EntityPlayer) {
 				int m = getColorID();
 				ItemStack itemstack = new ItemStack(MachineInit.scooter, 1, m);
 
@@ -717,7 +717,7 @@ public class EntityScooter extends Entity implements IInventory {
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (dummy != null && dummy.getTankProperties() != null) {
+		if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
@@ -770,7 +770,8 @@ public class EntityScooter extends Entity implements IInventory {
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
+				dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
@@ -817,8 +818,8 @@ public class EntityScooter extends Entity implements IInventory {
 		else if (DCUtil.isEmpty(current))
 			return target.getCount();
 
-		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata() && ItemStack
-				.areItemStackTagsEqual(target, current)) {
+		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata() &&
+				ItemStack.areItemStackTagsEqual(target, current)) {
 			int i = current.getCount() + target.getCount();
 			if (i > current.getMaxStackSize()) {
 				i = current.getMaxStackSize() - current.getCount();
@@ -833,8 +834,9 @@ public class EntityScooter extends Entity implements IInventory {
 	public void incrStackInSlot(int i, ItemStack input) {
 		if (i < this.getSizeInventory() && !DCUtil.isEmpty(input)) {
 			if (!DCUtil.isEmpty(this.getStackInSlot(i))) {
-				if (this.getStackInSlot(i).getItem() == input.getItem() && this.getStackInSlot(i).getMetadata() == input
-						.getMetadata() && ItemStack.areItemStackTagsEqual(this.getStackInSlot(i), input)) {
+				if (this.getStackInSlot(i).getItem() == input.getItem() && this.getStackInSlot(
+						i).getMetadata() == input.getMetadata() && ItemStack.areItemStackTagsEqual(this.getStackInSlot(
+								i), input)) {
 					DCUtil.addStackSize(this.getStackInSlot(i), input.getCount());
 					if (this.getStackInSlot(i).getCount() > this.getInventoryStackLimit()) {
 						this.getStackInSlot(i).setCount(this.getInventoryStackLimit());
