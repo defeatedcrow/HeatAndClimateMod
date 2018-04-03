@@ -136,7 +136,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
+				dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
@@ -220,8 +221,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 		} else {
 			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {
 				int outAmo = currentRecipe.getOutputFluid() == null ? 0 : currentRecipe.getOutputFluid().amount;
-				return currentRecipe.matchOutput(outs, outf, 0)
-						&& outputT.getFluidAmount() + outAmo <= outputT.getCapacity();
+				return currentRecipe.matchOutput(outs, outf, 0) && outputT.getFluidAmount() +
+						outAmo <= outputT.getCapacity();
 			}
 		}
 		return false;
@@ -272,8 +273,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 						if (next instanceof ItemStack) {
 							count = ((ItemStack) next).getCount();
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false)
-									&& slot.getCount() >= count;
+							match = OreDictionary.itemMatches((ItemStack) next, slot, false) &&
+									slot.getCount() >= count;
 						} else if (next instanceof ArrayList) {
 							ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
 							if (list != null && !list.isEmpty()) {
@@ -328,21 +329,32 @@ public class TileTeaPot extends TileFluidProcessorBase {
 	@Override
 	protected int[] slotsTop() {
 		return new int[] {
-				0, 2, 4, 5, 6
+				0,
+				2,
+				4,
+				5,
+				6
 		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
 		return new int[] {
-				1, 3
+				1,
+				3
 		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
 		return new int[] {
-				0, 1, 2, 3, 4, 5, 6
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
 		};
 	};
 

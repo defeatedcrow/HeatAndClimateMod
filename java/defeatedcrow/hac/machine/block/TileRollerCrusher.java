@@ -130,21 +130,32 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 	@Override
 	protected int[] slotsTop() {
 		return new int[] {
-				0, 1, 6
+				0,
+				1,
+				6
 		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
 		return new int[] {
-				2, 3, 4, 5
+				2,
+				3,
+				4,
+				5
 		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
 		return new int[] {
-				0, 1, 2, 3, 4, 5, 6
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
 		};
 	};
 
@@ -227,7 +238,7 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (dummy != null && dummy.getTankProperties() != null) {
+		if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
@@ -279,7 +290,8 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
+				dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = null;
 

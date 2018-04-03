@@ -156,9 +156,9 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	 */
 	public static boolean onActivateDCTank(TileTeaPot tile, ItemStack item, World world, IBlockState state,
 			EnumFacing side, EntityPlayer player) {
-		if (!DCUtil.isEmpty(item) && tile != null
-				&& item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)
-				&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+		if (!DCUtil.isEmpty(item) && tile != null && item.hasCapability(
+				CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile.hasCapability(
+						CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 			ItemStack copy = new ItemStack(item.getItem(), 1, item.getItemDamage());
 			if (item.getTagCompound() != null)
 				copy.setTagCompound(item.getTagCompound());
@@ -168,8 +168,8 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 					EnumFacing.DOWN);
 
 			// dummyを使った検証
-			if (dummy != null && dummy.getTankProperties() != null && intank instanceof DCTank
-					&& outtank instanceof DCTank) {
+			if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0 &&
+					intank instanceof DCTank && outtank instanceof DCTank) {
 				int max = dummy.getTankProperties()[0].getCapacity();
 				FluidStack f1 = dummy.drain(max, false);
 				DCTank dc_in = (DCTank) intank;

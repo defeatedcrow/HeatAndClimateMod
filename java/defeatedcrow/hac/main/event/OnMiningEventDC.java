@@ -6,8 +6,10 @@ import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,6 +49,11 @@ public class OnMiningEventDC {
 			if (hasCharm) {
 				event.setNewSpeed(event.getNewSpeed() * 1.2F + 2.0F);
 				event.setCanceled(false);
+			} else {
+				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER) &&
+						event.getEntityPlayer().isPotionActive(MainInit.ocean)) {
+					event.setNewSpeed(event.getNewSpeed() * 2.0F);
+				}
 			}
 		}
 	}
@@ -60,8 +67,8 @@ public class OnMiningEventDC {
 			if (state == null || DCUtil.isEmpty(held))
 				return;
 			float f = event.getWorld().rand.nextFloat();
-			if (state.getBlock() instanceof BlockBush
-					&& (held.getItem() instanceof ItemShears || held.getItem() instanceof ItemSword)) {
+			if (state.getBlock() instanceof BlockBush && (held.getItem() instanceof ItemShears ||
+					held.getItem() instanceof ItemSword)) {
 				if (f < 0.10F * level) {
 					event.getDrops().add(new ItemStack(FoodInit.crops, 1, 9));
 				}
@@ -117,8 +124,8 @@ public class OnMiningEventDC {
 							event.setUseBlock(Result.ALLOW);
 						}
 						player.world.playSound(player, player.posX, player.posY, player.posZ,
-								SoundEvents.BLOCK_STONE_BREAK, SoundCategory.PLAYERS, 1.5F,
-								1.0F / (player.world.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+								SoundEvents.BLOCK_STONE_BREAK, SoundCategory.PLAYERS, 1.5F, 1.0F /
+										(player.world.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 					}
 				}
 			}

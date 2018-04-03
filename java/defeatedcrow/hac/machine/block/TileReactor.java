@@ -112,21 +112,52 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	@Override
 	protected int[] slotsTop() {
 		return new int[] {
-				0, 2, 4, 6, 8, 9, 10, 11, 12
+				0,
+				2,
+				4,
+				6,
+				8,
+				9,
+				10,
+				11,
+				12
 		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
 		return new int[] {
-				1, 3, 5, 7, 13, 14, 15, 16
+				1,
+				3,
+				5,
+				7,
+				13,
+				14,
+				15,
+				16
 		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
 		return new int[] {
-				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
 		};
 	};
 
@@ -231,7 +262,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (dummy != null && dummy.getTankProperties() != null) {
+		if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
@@ -283,7 +314,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
+				dummy.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = null;
 
@@ -441,8 +473,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 							if (next instanceof ItemStack) {
 								count = ((ItemStack) next).getCount();
-								match = OreDictionary.itemMatches((ItemStack) next, slot, false)
-										&& slot.getCount() >= count;
+								match = OreDictionary.itemMatches((ItemStack) next, slot, false) &&
+										slot.getCount() >= count;
 							} else if (next instanceof ArrayList) {
 								ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
 								if (list != null && !list.isEmpty()) {

@@ -3,6 +3,7 @@ package defeatedcrow.hac.food.recipes;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -568,70 +569,72 @@ public class FoodBasicRecipe {
 		});
 
 		// seeds another recipes
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 0), new Object[] {
-				new ItemStack(Items.WHEAT_SEEDS, 1, 0),
-				"gemChalcedony"
-		});
+		if (ModuleConfig.agri) {
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 0), new Object[] {
+					new ItemStack(Items.WHEAT_SEEDS, 1, 0),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 1), new Object[] {
-				new ItemStack(Items.POTATO, 1, 0),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 1), new Object[] {
+					new ItemStack(Items.POTATO, 1, 0),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 2), new Object[] {
-				new ItemStack(Items.CARROT, 1, 0),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 2), new Object[] {
+					new ItemStack(Items.CARROT, 1, 0),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 3), new Object[] {
-				new ItemStack(Items.BEETROOT, 1, 0),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 3), new Object[] {
+					new ItemStack(Items.BEETROOT, 1, 0),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 4), new Object[] {
-				new ItemStack(Items.DYE, 1, 3),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 4), new Object[] {
+					new ItemStack(Items.DYE, 1, 3),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 5), new Object[] {
-				new ItemStack(Items.REEDS, 1, 0),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 5), new Object[] {
+					new ItemStack(Items.REEDS, 1, 0),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 6), new Object[] {
-				new ItemStack(Blocks.WATERLILY, 1, 0),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 6), new Object[] {
+					new ItemStack(Blocks.WATERLILY, 1, 0),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 8), new Object[] {
-				new ItemStack(Items.MELON_SEEDS, 1, 0),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 8), new Object[] {
+					new ItemStack(Items.MELON_SEEDS, 1, 0),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 0), new Object[] {
-				new ItemStack(Blocks.SAPLING, 1, 1),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 0), new Object[] {
+					new ItemStack(Blocks.SAPLING, 1, 1),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 1), new Object[] {
-				new ItemStack(Blocks.SAPLING, 1, 2),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 1), new Object[] {
+					new ItemStack(Blocks.SAPLING, 1, 2),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 2), new Object[] {
-				new ItemStack(Blocks.SAPLING, 1, 0),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 2), new Object[] {
+					new ItemStack(Blocks.SAPLING, 1, 0),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 3), new Object[] {
-				new ItemStack(Blocks.SAPLING, 1, 4),
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.saplings, 1, 3), new Object[] {
+					new ItemStack(Blocks.SAPLING, 1, 4),
+					"gemChalcedony"
+			});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 7), new Object[] {
-				"blockTallGrass",
-				"gemChalcedony"
-		});
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 7), new Object[] {
+					"blockTallGrass",
+					"gemChalcedony"
+			});
+		}
 
 		String[] crops = new String[] {
 				"cropRice",

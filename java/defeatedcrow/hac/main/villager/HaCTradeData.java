@@ -50,13 +50,17 @@ public class HaCTradeData {
 
 		AGRI2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.paperPack, 4, 4), 3));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.bread, 3, 0), 1));
+		AGRI2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.bread, 3, 0), 1));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, new ItemStack(Items.DYE, 8, 15), 2));
+		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomSapling(1), 0));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomSapling(1), 0));
 		AGRI2.add(new HaCTradeData(TradeType.SELL, new ItemStack(FoodInit.teaLeaves, 4, 2), 1));
 		AGRI2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.foodDust, 4, 2), 0));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomSeed(1), 0));
 
 		TRADE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 3), 2));
+		TRADE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 3), 2));
+		TRADE1.add(new HaCTradeData(TradeType.SELL, MainUtil.getRandomGem(1), 2));
 		TRADE1.add(new HaCTradeData(TradeType.SELL, MainUtil.getRandomGem(1), 2));
 		TRADE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.dustBags, 1, 3), 0));
 		TRADE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.bakedApple, 4, 3), 2));
@@ -70,7 +74,9 @@ public class HaCTradeData {
 		TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.squaretableMarble, 1, 0), 4));
 		TRADE2.add(new HaCTradeData(TradeType.SELL, MainUtil.getRandomGem2(1), 4));
 
-		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.silkworm, 8, 0), 5));
+		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.silkworm, 9, 0), 5));
+		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.silkworm, 9, 0), 5));
+		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 6), 4));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 6), 4));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.synthetic, 1, 0), 4));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomGem2(1), 5));
@@ -95,12 +101,14 @@ public class HaCTradeData {
 		MACHINE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.miscDust, 8, 2), 1));
 		MACHINE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.fenceLadderSteel, 8, 0), 2));
 		MACHINE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.gears, 1, 0), 1));
+		MACHINE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.gears, 1, 0), 1));
 		MACHINE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlock, 1, 6), 2));
 
 		MACHINE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.shaft3_s, 1, 0), 3));
 		MACHINE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.IBC, 1, 0), 7));
 		MACHINE2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MachineInit.fuelCont, 1, 1), 0));
 		MACHINE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.gun, 1, 0), 10));
+		MACHINE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.reagent, 16, 8), 4));
 		MACHINE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.reagent, 16, 8), 4));
 		MACHINE2.add(new HaCTradeData(TradeType.SELL, MainUtil.getGem(15), 0));
 		MACHINE2.add(new HaCTradeData(TradeType.SELL, MainUtil.getGem(16), 0));
