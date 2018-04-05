@@ -1114,7 +1114,7 @@ public class LoadingBuildingRecipe {
 						"dustPlant",
 						"foodOil",
 						"dustLime",
-						MainUtil.DYES[i]
+						MainUtil.DYES[15 - i]
 				});
 			}
 
