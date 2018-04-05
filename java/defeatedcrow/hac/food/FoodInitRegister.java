@@ -310,7 +310,7 @@ public class FoodInitRegister {
 				ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade");
 		DCMaterialReg.registerBlock(FoodInit.lemonBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade",
 				ClimateMain.MOD_ID);
-		FoodInit.stock.setBlock(FoodInit.lemonBlock);
+		FoodInit.lemon.setBlock(FoodInit.lemonBlock);
 
 		FoodInit.blackLiquor = new Fluid("dcs.black_liquor", new ResourceLocation(ClimateCore.PACKAGE_ID,
 				"blocks/fluid/black_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
