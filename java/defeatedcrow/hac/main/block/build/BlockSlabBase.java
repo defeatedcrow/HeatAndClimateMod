@@ -84,8 +84,8 @@ public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, IN
 	@Override
 	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand)
-				.withProperty(SIDE, false);
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand).withProperty(
+				SIDE, false);
 		if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5D))
 			return state;
 		else
@@ -180,7 +180,8 @@ public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, IN
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				SIDE, TYPE
+				SIDE,
+				TYPE
 		});
 	}
 

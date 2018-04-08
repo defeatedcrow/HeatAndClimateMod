@@ -41,8 +41,8 @@ public class BlockBiomeGlass extends BlockDC {
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.GLASS);
-		this.setDefaultState(
-				this.blockState.getBaseState().withProperty(DCState.TYPE4, 0).withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.TYPE4, 0).withProperty(DCState.POWERED,
+				false));
 		this.maxMeta = 3;
 		this.fullBlock = false;
 		this.lightOpacity = 0;
@@ -139,7 +139,8 @@ public class BlockBiomeGlass extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.POWERED, DCState.TYPE4
+				DCState.POWERED,
+				DCState.TYPE4
 		});
 	}
 
@@ -239,6 +240,14 @@ public class BlockBiomeGlass extends BlockDC {
 			int k = c.getBiomeArray()[j << 4 | i] & 255;
 			c.getBiomeArray()[j << 4 | i] = (byte) (biomeId & 255);
 		}
+	}
+
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 }

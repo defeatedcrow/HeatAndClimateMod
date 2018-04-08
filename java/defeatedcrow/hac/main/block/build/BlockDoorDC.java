@@ -124,8 +124,8 @@ public class BlockDoorDC extends BlockDoor {
 			} else {
 				boolean flag = worldIn.isBlockPowered(pos) || worldIn.isBlockPowered(blockpos1);
 
-				if (blockIn != this && (flag || blockIn.getDefaultState().canProvidePower())
-						&& flag != iblockstate1.getValue(POWERED).booleanValue()) {
+				if (blockIn != this && (flag || blockIn.getDefaultState().canProvidePower()) &&
+						flag != iblockstate1.getValue(POWERED).booleanValue()) {
 					worldIn.setBlockState(blockpos1, iblockstate1.withProperty(POWERED, Boolean.valueOf(flag)), 2);
 
 					if (flag != state.getValue(OPEN).booleanValue()) {
@@ -136,6 +136,15 @@ public class BlockDoorDC extends BlockDoor {
 				}
 			}
 		}
+	}
+
+	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 }

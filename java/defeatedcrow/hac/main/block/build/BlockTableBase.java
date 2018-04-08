@@ -44,8 +44,8 @@ public class BlockTableBase extends BlockDC {
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(SOUTH, false)
-				.withProperty(WEST, false).withProperty(EAST, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(SOUTH,
+				false).withProperty(WEST, false).withProperty(EAST, false));
 		isFull = full;
 	}
 
@@ -58,24 +58,24 @@ public class BlockTableBase extends BlockDC {
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		return state.withProperty(NORTH, Boolean.valueOf(this.canConnectTo(worldIn, pos.north())))
-				.withProperty(EAST, Boolean.valueOf(this.canConnectTo(worldIn, pos.east())))
-				.withProperty(SOUTH, Boolean.valueOf(this.canConnectTo(worldIn, pos.south())))
-				.withProperty(WEST, Boolean.valueOf(this.canConnectTo(worldIn, pos.west())));
+		return state.withProperty(NORTH, Boolean.valueOf(this.canConnectTo(worldIn, pos.north()))).withProperty(EAST,
+				Boolean.valueOf(this.canConnectTo(worldIn, pos.east()))).withProperty(SOUTH, Boolean.valueOf(
+						this.canConnectTo(worldIn, pos.south()))).withProperty(WEST, Boolean.valueOf(this.canConnectTo(
+								worldIn, pos.west())));
 	}
 
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
 		switch (rot) {
 		case CLOCKWISE_180:
-			return state.withProperty(NORTH, state.getValue(SOUTH)).withProperty(EAST, state.getValue(WEST))
-					.withProperty(SOUTH, state.getValue(NORTH)).withProperty(WEST, state.getValue(EAST));
+			return state.withProperty(NORTH, state.getValue(SOUTH)).withProperty(EAST, state.getValue(
+					WEST)).withProperty(SOUTH, state.getValue(NORTH)).withProperty(WEST, state.getValue(EAST));
 		case COUNTERCLOCKWISE_90:
-			return state.withProperty(NORTH, state.getValue(EAST)).withProperty(EAST, state.getValue(SOUTH))
-					.withProperty(SOUTH, state.getValue(WEST)).withProperty(WEST, state.getValue(NORTH));
+			return state.withProperty(NORTH, state.getValue(EAST)).withProperty(EAST, state.getValue(
+					SOUTH)).withProperty(SOUTH, state.getValue(WEST)).withProperty(WEST, state.getValue(NORTH));
 		case CLOCKWISE_90:
-			return state.withProperty(NORTH, state.getValue(WEST)).withProperty(EAST, state.getValue(NORTH))
-					.withProperty(SOUTH, state.getValue(EAST)).withProperty(WEST, state.getValue(SOUTH));
+			return state.withProperty(NORTH, state.getValue(WEST)).withProperty(EAST, state.getValue(
+					NORTH)).withProperty(SOUTH, state.getValue(EAST)).withProperty(WEST, state.getValue(SOUTH));
 		default:
 			return state;
 		}
@@ -96,7 +96,10 @@ public class BlockTableBase extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				NORTH, EAST, WEST, SOUTH
+				NORTH,
+				EAST,
+				WEST,
+				SOUTH
 		});
 	}
 
@@ -180,6 +183,15 @@ public class BlockTableBase extends BlockDC {
 			return b == this ? super.shouldSideBeRendered(state, world, pos, side) : true;
 		} else
 			return true;
+	}
+
+	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 }

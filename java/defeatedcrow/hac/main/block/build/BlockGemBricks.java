@@ -27,7 +27,9 @@ public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, IRapi
 	}
 
 	private static String[] names = {
-			"gypsum", "marble", "lime"
+			"gypsum",
+			"marble",
+			"lime"
 	};
 
 	@Override

@@ -4,9 +4,12 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockChalcedonyLamp extends DCSimpleBlock {
 
@@ -41,7 +44,8 @@ public class BlockChalcedonyLamp extends DCSimpleBlock {
 				"pendant_blue",
 				"pendant_red",
 				"pendant_white",
-				"pendant_wood" };
+				"pendant_wood"
+		};
 		return name;
 	}
 
@@ -69,6 +73,22 @@ public class BlockChalcedonyLamp extends DCSimpleBlock {
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
+	}
+
+	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
+			EnumFacing side) {
+		return true;
 	}
 
 }
