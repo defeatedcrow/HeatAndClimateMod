@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.base.DCSimpleBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -24,7 +25,8 @@ public class BlockIronPlate extends DCSimpleBlock {
 	public String[] getNameSuffix() {
 		String[] name = {
 				"iron",
-				"mesh" };
+				"mesh"
+		};
 		return name;
 	}
 
@@ -40,6 +42,14 @@ public class BlockIronPlate extends DCSimpleBlock {
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
 		return false;
 	}
 

@@ -96,7 +96,10 @@ public class BlockTableBase extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				NORTH, EAST, WEST, SOUTH
+				NORTH,
+				EAST,
+				WEST,
+				SOUTH
 		});
 	}
 
@@ -180,6 +183,14 @@ public class BlockTableBase extends BlockDC {
 			return b == this ? super.shouldSideBeRendered(state, world, pos, side) : true;
 		} else
 			return true;
+	}
+
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 }

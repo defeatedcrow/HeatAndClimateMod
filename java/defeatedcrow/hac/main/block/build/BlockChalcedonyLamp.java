@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -41,19 +42,19 @@ public class BlockChalcedonyLamp extends DCSimpleBlock {
 				"pendant_blue",
 				"pendant_red",
 				"pendant_white",
-				"pendant_wood" };
+				"pendant_wood"
+		};
 		return name;
 	}
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		if (state.getValue(DCState.TYPE16) > 11) {
+		if (state.getValue(DCState.TYPE16) > 11)
 			return AABB_MIDDLE;
-		} else if (state.getValue(DCState.TYPE16) > 7) {
+		else if (state.getValue(DCState.TYPE16) > 7)
 			return AABB_SMALL;
-		} else {
+		else
 			return AABB_FULL;
-		}
 	}
 
 	@Override
@@ -68,6 +69,14 @@ public class BlockChalcedonyLamp extends DCSimpleBlock {
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
 		return false;
 	}
 

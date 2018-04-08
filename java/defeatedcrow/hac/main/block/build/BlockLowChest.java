@@ -90,4 +90,12 @@ public class BlockLowChest extends DCTileBlock {
 		return Container.calcRedstone(worldIn.getTileEntity(pos));
 	}
 
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
+	}
+
 }

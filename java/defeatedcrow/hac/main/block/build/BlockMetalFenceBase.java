@@ -112,7 +112,9 @@ public class BlockMetalFenceBase extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING, UPPER, UNDER
+				DCState.FACING,
+				UPPER,
+				UNDER
 		});
 	}
 
@@ -224,6 +226,14 @@ public class BlockMetalFenceBase extends BlockDC {
 	public int getMetaFromState(IBlockState state) {
 		int i = 5 - state.getValue(DCState.FACING).getIndex();
 		return i;
+	}
+
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 }

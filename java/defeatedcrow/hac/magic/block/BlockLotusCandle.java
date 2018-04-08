@@ -13,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -74,6 +75,14 @@ public class BlockLotusCandle extends BlockContainerDC {
 	@Override
 	public float getEnchantPowerBonus(World world, BlockPos pos) {
 		return black ? 15 : 3;
+	}
+
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 }

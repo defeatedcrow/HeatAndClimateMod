@@ -312,6 +312,12 @@ public class MachineCrusherRecipe {
 			RecipeAPI.registerCrushers.addRecipe(dust, ti, "gemKunzite");
 		}
 
+		if (!OreDictionary.getOres("dustObsidian").isEmpty()) {
+			ItemStack dust = OreDictionary.getOres("dustObsidian").get(0).copy();
+			dust.stackSize = 2;
+			RecipeAPI.registerCrushers.addRecipe(dust, new ItemStack(MainInit.miscDust, 1, 1), 1F, ti, "obsidian");
+		}
+
 		// 以下バニラ
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), ti,
 				new ItemStack(Blocks.COBBLESTONE, 1, 0));
