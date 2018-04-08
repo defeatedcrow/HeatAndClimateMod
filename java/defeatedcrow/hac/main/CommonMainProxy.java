@@ -104,6 +104,7 @@ import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.util.DCRegistryUtil;
 import defeatedcrow.hac.main.villager.HaCTrade;
 import defeatedcrow.hac.main.villager.HaCTradeData;
+import defeatedcrow.hac.main.villager.VillagerCreationHaCAgri;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenOres3;
@@ -123,6 +124,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 
@@ -162,6 +164,11 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadVillager() {
+
+		VillagerCreationHaCAgri.registerVillageComponents();
+		VillagerCreationHaCAgri villageHandler = new VillagerCreationHaCAgri();
+		VillagerRegistry.instance().registerVillageCreationHandler(villageHandler);
+
 		MainInit.agri = new VillagerProfession("dcs_climate:agri_researcher",
 				"dcs_climate:textures/models/agri_researcher.png",
 				"dcs_climate:textures/models/zombie_agri_researcher.png");

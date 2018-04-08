@@ -52,9 +52,8 @@ public class BlockCurtain extends BlockDC {
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.CLOTH);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(DCState.POWERED, false).withProperty(DCState.FLAG, false)
-				.withProperty(DCState.DOUBLE, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(
+				DCState.POWERED, false).withProperty(DCState.FLAG, false).withProperty(DCState.DOUBLE, false));
 		this.maxMeta = 0;
 	}
 
@@ -89,15 +88,15 @@ public class BlockCurtain extends BlockDC {
 					st = st.withProperty(DCState.FLAG, !p);
 					world.setBlockState(pos.up(i), st);
 					world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-							SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F,
-							world.rand.nextFloat() * 0.1F + 0.9F);
+							SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F +
+									0.9F);
 				} else {
 					boolean p = DCState.getBool(state, DCState.POWERED);
 					st = st.withProperty(DCState.POWERED, !p);
 					world.setBlockState(pos.up(i), st);
 					world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-							SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F,
-							world.rand.nextFloat() * 0.1F + 0.9F);
+							SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F +
+									0.9F);
 				}
 			}
 		}
@@ -122,6 +121,15 @@ public class BlockCurtain extends BlockDC {
 
 	@Override
 	public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		return false;
+	}
+
+	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
 		return false;
 	}
 
@@ -203,7 +211,10 @@ public class BlockCurtain extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING, DCState.DOUBLE, DCState.FLAG, DCState.POWERED
+				DCState.FACING,
+				DCState.DOUBLE,
+				DCState.FLAG,
+				DCState.POWERED
 		});
 	}
 

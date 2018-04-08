@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.BlockStairs;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -71,7 +72,10 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 	@Override
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		if (isGlass)
-			return false;
+			if (world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+				return true;
+			else
+				return false;
 
 		return super.doesSideBlockRendering(state, world, pos, face);
 	}

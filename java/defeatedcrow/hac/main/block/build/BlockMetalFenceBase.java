@@ -49,8 +49,8 @@ public class BlockMetalFenceBase extends BlockDC {
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(UPPER, false).withProperty(UNDER, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(
+				UPPER, false).withProperty(UNDER, false));
 		translusent = b;
 	}
 
@@ -99,11 +99,11 @@ public class BlockMetalFenceBase extends BlockDC {
 			return super.withMirror(state, mirrorIn);
 		switch (mirrorIn) {
 		case LEFT_RIGHT:
-			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(UPPER, state.getValue(UNDER))
-					.withProperty(UNDER, state.getValue(UPPER));
+			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(UPPER, state.getValue(
+					UNDER)).withProperty(UNDER, state.getValue(UPPER));
 		case FRONT_BACK:
-			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(UNDER, state.getValue(UPPER))
-					.withProperty(UPPER, state.getValue(UNDER));
+			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(UNDER, state.getValue(
+					UPPER)).withProperty(UPPER, state.getValue(UNDER));
 		default:
 			return super.withMirror(state, mirrorIn);
 		}
@@ -112,7 +112,9 @@ public class BlockMetalFenceBase extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING, UPPER, UNDER
+				DCState.FACING,
+				UPPER,
+				UNDER
 		});
 	}
 
@@ -224,6 +226,15 @@ public class BlockMetalFenceBase extends BlockDC {
 	public int getMetaFromState(IBlockState state) {
 		int i = 5 - state.getValue(DCState.FACING).getIndex();
 		return i;
+	}
+
+	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 }

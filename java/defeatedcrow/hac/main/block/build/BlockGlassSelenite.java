@@ -3,6 +3,10 @@ package defeatedcrow.hac.main.block.build;
 import java.util.ArrayList;
 import java.util.List;
 
+import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ISidedRenderingBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,10 +17,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.DCSimpleBlock;
-import defeatedcrow.hac.core.base.ISidedRenderingBlock;
-import defeatedcrow.hac.core.base.ITexturePath;
 
 public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, ISidedRenderingBlock {
 
@@ -33,7 +33,8 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, I
 		String[] name = {
 				"normal",
 				"light",
-				"half" };
+				"half"
+		};
 		return name;
 	}
 
@@ -137,6 +138,15 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, I
 
 	@Override
 	public boolean isRendered(EnumFacing face, IBlockState state) {
+		return false;
+	}
+
+	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
 		return false;
 	}
 
