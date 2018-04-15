@@ -221,7 +221,7 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 		ForgeRegistry registry = (ForgeRegistry) ForgeRegistries.VILLAGER_PROFESSIONS;
 		int id = registry.getID(MainInit.agri);
 		int id2 = registry.getID(MainInit.engineer);
-		return id < 0 || id2 < 0 ? currentVillagerProfession : currentVillagerProfession < 4 ? id : id2;
+		return id < 0 ? currentVillagerProfession : id;
 	}
 
 }

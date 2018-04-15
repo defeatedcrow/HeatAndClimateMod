@@ -28,24 +28,24 @@ public class DCRecipeCoFH {
 		}
 
 		// refinary
-		if (DCPluginCoFH.naphtha != null && DCPluginCoFH.tree != null && DCPluginCoFH.tar != null
-				&& DCPluginCoFH.rogin != null) {
+		if (DCPluginCoFH.naphtha != null && DCPluginCoFH.tree != null && DCPluginCoFH.tar != null &&
+				DCPluginCoFH.rogin != null) {
 			addRefineryRecipe(5000, new FluidStack(MachineInit.fuelOil, 100), new FluidStack(DCPluginCoFH.naphtha, 100),
-					DCPluginCoFH.tar);
+					DCPluginCoFH.tar, 70);
 
 			addRefineryRecipe(5000, new FluidStack(FoodInit.blackLiquor, 100), new FluidStack(DCPluginCoFH.tree, 100),
-					DCPluginCoFH.tar);
+					DCPluginCoFH.tar, 70);
 
 			addRefineryRecipe(5000, new FluidStack(FoodInit.oil, 100), new FluidStack(DCPluginCoFH.naphtha, 50),
-					new ItemStack(MachineInit.reagent, 1, 1));
+					new ItemStack(MachineInit.reagent, 1, 1), 70);
 		}
 
 		// pulvarizer
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 0), new ItemStack(MainInit.gems, 2, 3),
-				new ItemStack(MainInit.gems, 1, 6), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 0), new ItemStack(MainInit.gems, 2, 3), new ItemStack(
+				MainInit.gems, 1, 6), 10);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 2), new ItemStack(MainInit.gems, 2, 0),
-				new ItemStack(MainInit.gems, 1, 4), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 2), new ItemStack(MainInit.gems, 2, 0), new ItemStack(
+				MainInit.gems, 1, 4), 10);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 5), new ItemStack(MainInit.oreDust, 2, 7),
 				new ItemStack(MainInit.oreDust, 1, 9), 25);
@@ -94,7 +94,8 @@ public class DCRecipeCoFH {
 		}
 	}
 
-	private static void addRefineryRecipe(int energy, FluidStack input, FluidStack output, ItemStack outputItem) {
+	private static void addRefineryRecipe(int energy, FluidStack input, FluidStack output, ItemStack outputItem,
+			int chance) {
 		if (input != null && output != null) {
 
 			NBTTagCompound toSend = new NBTTagCompound();
@@ -106,6 +107,7 @@ public class DCRecipeCoFH {
 			if (!outputItem.isEmpty()) {
 				toSend.setTag("secondaryOutput", new NBTTagCompound());
 				outputItem.writeToNBT(toSend.getCompoundTag("secondaryOutput"));
+				toSend.setInteger("secondaryChance", chance);
 			}
 
 			input.writeToNBT(toSend.getCompoundTag("input"));

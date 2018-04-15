@@ -186,6 +186,12 @@ item.dcs_food_pack_cream.name=Cream Pack
 item.dcs_food_pack_oil.name=Seed Oil Pack
 item.dcs_food_pack_vegi.name=Vegetable Juice Pack
 item.dcs_food_pack_lemon.name=Lemonade Pack
+item.dcs_food_pack_mazai.name=Absinthe Pack
+item.dcs_food_pack_greentea.name=Green Tea Pack
+item.dcs_food_pack_tea.name=Black Tea Pack
+item.dcs_food_pack_coffee.name=Coffee Pack
+item.dcs_food_pack_stock.name=Stock Pack
+item.dcs_food_pack_ethanol.name=Ethanol Pack
 item.dcs_food_pack_empty.name=Empty Paper Pack
 
 item.dcs_food_itemfood_baked_apple.name=Baked Apple
@@ -280,6 +286,10 @@ item.dcs_food_cake_chocolate.name=Chocolate Cake
 item.dcs_food_cake_coffeejelly.name=Coffee Jelly
 item.dcs_food_cake_lemonjelly.name=Lemon Jelly
 item.dcs_food_cake_bakedcream.name=Baked Custard
+item.dcs_food_cake_berryjelly.name=Berry Jelly
+item.dcs_food_cake_kuzujelly.name=Kuzumochi
+item.dcs_food_cake_egg_cocotte_raw.name=Raw Eggs en Cocotte
+item.dcs_food_cake_egg_cocotte_baked.name=Eggs en Cocotte
 
 ## crops
 item.dcs_food_crops_rice.name=Rice Plant
@@ -1030,6 +1040,8 @@ fluid.dcs.lemonade=Lemonade
 tile.dcs_fluidblock_lemonade_0.name=Lemonade
 fluid.dcs.ethanol=Ethanol
 tile.dcs_fluidblock_ethanol_0.name=Ethanol
+fluid.dcs.mazai=Absinthe
+tile.dcs_fluidblock_mazai_0.name=Absinthe
 
 ## massage
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
@@ -1362,6 +1374,10 @@ entity.dcs.food.cake_coffee.name=Coffee Jelly
 entity.dcs.food.cake_lemon.name=Lemon Jelly
 entity.dcs.food.cake_bakedcream.name=Baked Custard
 entity.dcs.food.cake_lemon.name=Lemon Jelly
+entity.dcs.food.cake_berryjelly.name=Berry Jelly
+entity.dcs.food.cake_kuzujelly.name=Kuzumochi
+entity.dcs.food.cake_egg_cocotte_raw.name=Raw Eggs en Cocotte
+entity.dcs.food.cake_gg_cocotte_baked.name=Eggs en Cocotte
 entity.dcs.food.stew_seaweed.name=Seaweed Congee
 entity.dcs.food.pie_cream.name=Custard Pie
 entity.dcs.food.r_bread_cream.name=Cream Bread

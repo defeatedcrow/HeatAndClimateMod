@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.food.FoodCommonProxy;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileTeaPot;
@@ -69,6 +70,7 @@ import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.enchant.EnchantmentRobber;
 import defeatedcrow.hac.main.enchant.EnchantmentVenom;
 import defeatedcrow.hac.main.entity.EntityBigCushion;
@@ -105,6 +107,7 @@ import defeatedcrow.hac.main.util.DCRegistryUtil;
 import defeatedcrow.hac.main.villager.HaCTrade;
 import defeatedcrow.hac.main.villager.HaCTradeData;
 import defeatedcrow.hac.main.villager.VillagerCreationHaCAgri;
+import defeatedcrow.hac.main.worldgen.MazaiLakeGen;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenOres3;
@@ -358,7 +361,8 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
 		GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
 		GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
-
+		if (WorldGenConfig.mazaiLake && FoodInit.mazaiBlock != null)
+			GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);
 	}
 
 	public void addSidedBlock(Block block, String name, int max) {}

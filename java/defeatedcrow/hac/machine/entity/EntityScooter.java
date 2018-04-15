@@ -543,7 +543,7 @@ public class EntityScooter extends Entity implements IInventory {
 
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (!this.world.isRemote && !this.isDead && this.getControllingPassenger() instanceof EntityPlayer) {
+		if (!this.world.isRemote && !this.isDead && !(this.getControllingPassenger() instanceof EntityPlayer)) {
 			if (this.isEntityInvulnerable(source)) {
 				this.setDead();
 			} else if (source instanceof EntityDamageSource && !source.isProjectile() &&

@@ -23,8 +23,6 @@ public class MainCoreConfig {
 	public static boolean pendant_schorl = true;
 	public static boolean pendant_clam = true;
 
-	public static String timeZone = "Asia/Tokyo";
-
 	public void load(Configuration cfg) {
 
 		try {

@@ -87,25 +87,23 @@ public class DCPluginBuildcraft {
 
 			// Ni 水蒸気改質
 			RecipeAPI.registerReactorRecipes.addRecipe(tar, null, 0F, new FluidStack(dist, 500), null, DCHeatTier.KILN,
-					new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(residue, 500),
-					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
+					new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(residue, 500), new FluidStack(
+							FluidRegistry.WATER, 500), new Object[] {});
 
 			// Pt 炭化水素ガス
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
-					new FluidStack(MachineInit.fuelGas, 1000), new FluidStack(dense, 100), DCHeatTier.SMELTING,
-					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(dist, 500),
-					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
+					MachineInit.fuelGas, 1000), new FluidStack(dense, 100), DCHeatTier.SMELTING, new ItemStack(
+							MachineInit.catalyst, 1, 3), new FluidStack(dist, 500), new FluidStack(FluidRegistry.WATER,
+									500), new Object[] {});
 
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
-					new FluidStack(MachineInit.fuelGas, 1000), null, DCHeatTier.SMELTING,
-					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(fuel, 500),
-					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
+					MachineInit.fuelGas, 1000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1, 3),
+					new FluidStack(fuel, 500), new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
 
 			// Pt 水素化
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
-					new FluidStack(MachineInit.fuelGas, 2000), null, DCHeatTier.SMELTING,
-					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(fuel, 500),
-					new FluidStack(MachineInit.hydrogen, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
+					MachineInit.fuelGas, 2000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1, 3),
+					new FluidStack(fuel, 500), new FluidStack(MachineInit.hydrogen, 500), new Object[] {});
 
 			// Ni 水素
 			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0F, new FluidStack(MachineInit.hydrogen, 1000), null,
@@ -126,6 +124,7 @@ public class DCPluginBuildcraft {
 		FacadeAPI.disableBlock(FoodInit.oilBlock);
 		FacadeAPI.disableBlock(FoodInit.stockBlock);
 		FacadeAPI.disableBlock(FoodInit.tomatoBlock);
+		FacadeAPI.disableBlock(FoodInit.mazaiBlock);
 		FacadeAPI.disableBlock(MachineInit.ethanolBlock);
 		FacadeAPI.disableBlock(MachineInit.ammoniaBlock);
 		FacadeAPI.disableBlock(MachineInit.fuelGasBlock);

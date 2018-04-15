@@ -33,14 +33,19 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class DCFluidBlockBase extends BlockFluidClassic
-		implements ITexturePath, IHeatTile, IHumidityTile, IAirflowTile {
+public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath, IHeatTile, IHumidityTile,
+		IAirflowTile {
 
 	protected final String name;
 	protected boolean canDisplace = false;
 
 	public DCFluidBlockBase(Fluid fluid, String n) {
 		super(fluid, Material.WATER);
+		name = n;
+	}
+
+	public DCFluidBlockBase(Fluid fluid, String n, Material mat) {
+		super(fluid, mat);
 		name = n;
 	}
 

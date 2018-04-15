@@ -25,8 +25,8 @@ public class CustardPieEntity extends FoodEntityBase {
 	@Override
 	protected ItemStack[] drops() {
 		return new ItemStack[] {
-				new ItemStack(FoodInit.pastrySquare, 1, 8),
-				new ItemStack(FoodInit.pastrySquare, 1, 9)
+				new ItemStack(FoodInit.pastrySquare, 1, 10),
+				new ItemStack(FoodInit.pastrySquare, 1, 11)
 		};
 	}
 }

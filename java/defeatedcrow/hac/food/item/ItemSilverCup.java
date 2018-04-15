@@ -28,6 +28,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -166,6 +167,12 @@ public class ItemSilverCup extends FoodItemBase {
 						Fluid milk = FluidRegistry.getFluid("milk");
 						if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
 							living.clearActivePotions();
+						} else if (f.getFluid() == FoodInit.mazai) {
+							living.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 2, 0));
+							living.heal(30.0F);
+							if (world.rand.nextInt(100) == 0) {
+								living.attackEntityFrom(DamageSource.GENERIC, 20.0F);
+							}
 						} else {
 							List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
 							if (effects.isEmpty())
@@ -197,25 +204,7 @@ public class ItemSilverCup extends FoodItemBase {
 	public static List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if (fluid != null) {
-			if (fluid == FoodInit.greenTea) {
-				ret.add(new PotionEffect(MobEffects.HASTE, MathHelper.ceil(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.blackTea) {
-				ret.add(new PotionEffect(MobEffects.RESISTANCE, MathHelper.ceil(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.coffee) {
-				ret.add(new PotionEffect(MobEffects.NIGHT_VISION, MathHelper.ceil(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.oil) {
-				ret.add(new PotionEffect(MobEffects.SPEED, MathHelper.ceil(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.stock) {
-				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(1200 * (dirF + ampF)), 0));
-			} else if (fluid == FoodInit.blackLiquor) {
-				ret.add(new PotionEffect(MobEffects.POISON, MathHelper.ceil(300 * dirF), ampF));
-			} else if (fluid == FoodInit.lemon) {
-				ret.add(new PotionEffect(MobEffects.JUMP_BOOST, MathHelper.ceil(1200 * dirF), ampF));
-			} else if (fluid == FluidRegistry.WATER) {
-				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceil(300 * dirF), ampF));
-			} else if (fluid == FluidRegistry.LAVA) {
-				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(1200 * dirF), ampF));
-			} else if (DrinkPotionType.isRegistered(fluid)) {
+			if (DrinkPotionType.isRegistered(fluid)) {
 				Potion potion = DrinkPotionType.getPotion(fluid);
 				if (potion != null) {
 					float duration = potion.isBadEffect() ? 600 * dirF : 1200 * dirF;
@@ -243,6 +232,8 @@ public class ItemSilverCup extends FoodItemBase {
 				Fluid milk = FluidRegistry.getFluid("milk");
 				if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
 					tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
+				} else if (f.getFluid() == FoodInit.mazai) {
+					tooltip.add(TextFormatting.RED.toString() + "Powerful but dangerous!");
 				} else {
 					List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
 					if (!effects.isEmpty()) {
