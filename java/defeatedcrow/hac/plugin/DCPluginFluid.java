@@ -223,6 +223,8 @@ public class DCPluginFluid {
 		Fluid f37 = FluidRegistry.getFluid("liquidoxygen");
 		registerPotion(f37, MobEffects.WATER_BREATHING);
 
+		// dcs
+
 		Fluid f38 = FluidRegistry.getFluid("dcs.hydrogen");
 		registerPotion(f38, MobEffects.SPEED);
 

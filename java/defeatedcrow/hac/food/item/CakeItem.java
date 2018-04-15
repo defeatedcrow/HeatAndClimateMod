@@ -7,10 +7,13 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.CakeBerryEntity;
 import defeatedcrow.hac.food.entity.CakeButterEntity;
 import defeatedcrow.hac.food.entity.CakeChocolateEntity;
+import defeatedcrow.hac.food.entity.CakeCocotteEntity;
 import defeatedcrow.hac.food.entity.CakeCoffeeEntity;
 import defeatedcrow.hac.food.entity.CakeCreamEntity;
+import defeatedcrow.hac.food.entity.CakeKuzuEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,12 +31,12 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 5;
+		return 9;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 2);
+		int i = MathHelper.clamp(meta, 0, 9);
 		String s = "items/food/cake_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -44,7 +47,16 @@ public class CakeItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"butter_raw", "butter", "chocolate", "coffeejelly", "lemonjelly", "bakedcream"
+				"butter_raw",
+				"butter",
+				"chocolate",
+				"coffeejelly",
+				"lemonjelly",
+				"bakedcream",
+				"berryjelly",
+				"kuzujelly",
+				"egg_cocotte_raw",
+				"egg_cocotte_baked"
 		};
 		return s;
 	}
@@ -68,12 +80,25 @@ public class CakeItem extends FoodItemBase {
 		if (i == 5) {
 			ret = new CakeCreamEntity(world, x, y, z, player);
 		}
+		if (i == 6) {
+			ret = new CakeBerryEntity(world, x, y, z, player);
+		}
+		if (i == 7) {
+			ret = new CakeKuzuEntity(world, x, y, z, player);
+		}
+		if (i == 8) {
+			ret = new CakeCocotteEntity(world, x, y, z, player);
+			ret.setRAW(true);
+		}
+		if (i == 9) {
+			ret = new CakeCocotteEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta == 0 ? 2 : 10;
+		return meta == 0 || meta == 8 ? 2 : 10;
 	}
 
 	@Override

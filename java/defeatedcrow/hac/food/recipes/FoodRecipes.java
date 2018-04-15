@@ -3,15 +3,19 @@ package defeatedcrow.hac.food.recipes;
 import defeatedcrow.hac.api.cultivate.CropAPI;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
+import defeatedcrow.hac.plugin.DCPluginFluid;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class FoodRecipes {
@@ -30,6 +34,7 @@ public class FoodRecipes {
 		}
 		loadCropData();
 		loadFuelData();
+		loadDrinkData();
 	}
 
 	static void loadMillRecipe() {
@@ -81,6 +86,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("listAllrootveggie", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("listAllfluit", new ItemStack(FoodInit.crops, 1, 11));
+		OreDictionary.registerOre("listAllberry", new ItemStack(FoodInit.crops, 1, 11));
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("cropLotusSeed", new ItemStack(FoodInit.crops, 1, 10));
@@ -133,5 +139,17 @@ public class FoodRecipes {
 	static void loadFuelData() {
 		MainAPIManager.fuelRegister.registerFuel(FoodInit.oil, 60);
 		MainAPIManager.fuelRegister.registerFuel(FoodInit.blackLiquor, 60);
+	}
+
+	static void loadDrinkData() {
+		DCPluginFluid.registerPotion(FoodInit.greenTea, MobEffects.HASTE);
+		DCPluginFluid.registerPotion(FoodInit.blackTea, MobEffects.RESISTANCE);
+		DCPluginFluid.registerPotion(FoodInit.coffee, MobEffects.NIGHT_VISION);
+		DCPluginFluid.registerPotion(FoodInit.cream, DCInit.prevFreeze);
+		DCPluginFluid.registerPotion(FoodInit.oil, MobEffects.SPEED);
+		DCPluginFluid.registerPotion(FoodInit.stock, MobEffects.FIRE_RESISTANCE);
+		DCPluginFluid.registerPotion(FoodInit.lemon, MobEffects.JUMP_BOOST);
+		DCPluginFluid.registerPotion(FoodInit.blackLiquor, MobEffects.POISON);
+		DCPluginFluid.registerPotion(FluidRegistry.LAVA, MobEffects.FIRE_RESISTANCE);
 	}
 }

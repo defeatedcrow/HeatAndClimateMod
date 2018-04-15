@@ -203,6 +203,13 @@ public class FoodClimateRecipe {
 		cake.requiredHum().add(DCHumidity.NORMAL);
 		cake.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(cake, DCHeatTier.OVEN);
+
+		ClimateSmelting cocotte = new ClimateSmelting(new ItemStack(FoodInit.cake, 1, 9), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.cake, 1, 8));
+		cocotte.requiredHeat().add(DCHeatTier.SMELTING);
+		cocotte.requiredHum().add(DCHumidity.NORMAL);
+		cocotte.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(cocotte, DCHeatTier.OVEN);
 	}
 
 }

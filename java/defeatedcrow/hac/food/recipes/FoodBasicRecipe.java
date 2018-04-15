@@ -511,6 +511,11 @@ public class FoodBasicRecipe {
 				"foodCream"
 		});
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.cake, 1, 8), new Object[] {
+				"egg",
+				"cropSpinach"
+		});
+
 		// yagen
 
 		DCRecipe.addShapelessNBTRecipe(res.getRecipeName(), new ItemStack(FoodInit.dropOil, 1, 0), new Object[] {
@@ -634,6 +639,7 @@ public class FoodBasicRecipe {
 					"blockTallGrass",
 					"gemChalcedony"
 			});
+
 		}
 
 		String[] crops = new String[] {

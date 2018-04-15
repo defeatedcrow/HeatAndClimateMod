@@ -71,8 +71,9 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 
 	@Override
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
 		if (isGlass)
-			if (world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 				return true;
 			else
 				return false;

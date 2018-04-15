@@ -23,15 +23,17 @@ public class WorldGenConfig {
 
 	public static int windmillGen = 50;
 
+	public static boolean mazaiLake = true;
+
 	public void load(Configuration cfg) {
 
 		try {
 			cfg.load();
 
 			cfg.addCustomCategoryComment("world setting", "This setting is for world gen.");
-			cfg.addCustomCategoryComment("ore gen setting",
-					"This setting is for ore gen. " + BR + "Please set probability as parsentage (0 - 100)." + BR
-							+ "If you set 0, those ore deposits will not be generated.");
+			cfg.addCustomCategoryComment("ore gen setting", "This setting is for ore gen. " + BR +
+					"Please set probability as parsentage (0 - 100)." + BR +
+					"If you set 0, those ore deposits will not be generated.");
 
 			Property sed_ore = cfg.get("ore gen setting", "Sedimentary Gen Probability", depositGen[0],
 					"Generate in High-altitude of mountain. 1-100%");
@@ -53,6 +55,9 @@ public class WorldGenConfig {
 
 			Property windmill = cfg.get("world setting", "Windmill Gen Probability", windmillGen,
 					"Generate in Forest or Plain. 0.1-100.0% (default: 5.0%)");
+
+			Property mazai = cfg.get("world setting", "Mana Liqueur Lake Gen", mazaiLake,
+					"Enable genaration the mana liqueur lake in nether biome.");
 
 			int s = sed_ore.getInt();
 			if (s < 0 || s > 100) {
@@ -90,6 +95,7 @@ public class WorldGenConfig {
 			depositGen[4] = g;
 			skarnGen = sk;
 			windmillGen = wm;
+			mazaiLake = mazai.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

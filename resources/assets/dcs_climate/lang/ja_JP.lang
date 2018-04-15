@@ -187,6 +187,12 @@ item.dcs_food_pack_cream.name=生クリームパック
 item.dcs_food_pack_oil.name=植物油パック
 item.dcs_food_pack_vegi.name=野菜ジュースパック
 item.dcs_food_pack_lemon.name=レモネードパック
+item.dcs_food_pack_mazai.name=魔剤パック
+item.dcs_food_pack_greentea.name=緑茶パック
+item.dcs_food_pack_tea.name=紅茶パック
+item.dcs_food_pack_coffee.name=コーヒーパック
+item.dcs_food_pack_stock.name=スープストックパック
+item.dcs_food_pack_ethanol.name=酒パック
 item.dcs_food_pack_empty.name=紙パック
 
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
@@ -281,6 +287,10 @@ item.dcs_food_cake_chocolate.name=チョコケーキ
 item.dcs_food_cake_coffeejelly.name=コーヒーゼリー
 item.dcs_food_cake_lemonjelly.name=レモンゼリー
 item.dcs_food_cake_bakedcream.name=カスタードプリン
+item.dcs_food_cake_berryjelly.name=ベリー水ようかん
+item.dcs_food_cake_kuzujelly.name=くず餅
+item.dcs_food_cake_egg_cocotte_raw.name=生の卵のココット
+item.dcs_food_cake_egg_cocotte_baked.name=卵のココット
 
 item.dcs_food_crops_rice.name=稲束
 item.dcs_food_crops_onion.name=玉ねぎ
@@ -1018,6 +1028,8 @@ fluid.dcs.lemonade=レモネード
 tile.dcs_fluidblock_lemonade_0.name=レモネード
 fluid.dcs.ethanol=エタノール
 tile.dcs_fluidblock_ethanol_0.name=エタノール
+fluid.dcs.mazai=魔剤
+tile.dcs_fluidblock_mazai_0.name=魔剤
 
 ## message
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)

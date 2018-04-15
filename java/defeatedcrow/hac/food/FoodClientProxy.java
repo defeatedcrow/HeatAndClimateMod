@@ -10,6 +10,7 @@ import defeatedcrow.hac.food.client.AppleTartRenderer;
 import defeatedcrow.hac.food.client.BeefStickRenderer;
 import defeatedcrow.hac.food.client.CakeButterRenderer;
 import defeatedcrow.hac.food.client.CakeChocolateRenderer;
+import defeatedcrow.hac.food.client.CakeCocotteRenderer;
 import defeatedcrow.hac.food.client.ChocolatePieRenderer;
 import defeatedcrow.hac.food.client.ClubSandwichRRenderer;
 import defeatedcrow.hac.food.client.ClubSandwichSRenderer;
@@ -20,8 +21,10 @@ import defeatedcrow.hac.food.client.CustardPieRenderer;
 import defeatedcrow.hac.food.client.EmptyPlateRenderer;
 import defeatedcrow.hac.food.client.FishStickRenderer;
 import defeatedcrow.hac.food.client.FruitPieRenderer;
+import defeatedcrow.hac.food.client.JellyBerryRenderer;
 import defeatedcrow.hac.food.client.JellyCoffeeRenderer;
 import defeatedcrow.hac.food.client.JellyCreamRenderer;
+import defeatedcrow.hac.food.client.JellyKuzuRenderer;
 import defeatedcrow.hac.food.client.JellyLemonRenderer;
 import defeatedcrow.hac.food.client.LemonTartRenderer;
 import defeatedcrow.hac.food.client.MeatPieRenderer;
@@ -70,10 +73,13 @@ import defeatedcrow.hac.food.client.YakitoriStickRenderer;
 import defeatedcrow.hac.food.entity.AppleTartEntity;
 import defeatedcrow.hac.food.entity.BeefPlateEntity;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
+import defeatedcrow.hac.food.entity.CakeBerryEntity;
 import defeatedcrow.hac.food.entity.CakeButterEntity;
 import defeatedcrow.hac.food.entity.CakeChocolateEntity;
+import defeatedcrow.hac.food.entity.CakeCocotteEntity;
 import defeatedcrow.hac.food.entity.CakeCoffeeEntity;
 import defeatedcrow.hac.food.entity.CakeCreamEntity;
+import defeatedcrow.hac.food.entity.CakeKuzuEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
 import defeatedcrow.hac.food.entity.ChickenPlateEntity;
 import defeatedcrow.hac.food.entity.ChocolatePieEntity;
@@ -210,6 +216,9 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(RoundBreadCreamEntity.class, RoundBreadCreamRenderer.class);
 		ClientMainProxy.registRender(StewSeaweedEntity.class, StewSeaweedRenderer.class);
 		ClientMainProxy.registRender(CrostataTartEntity.class, CrostataTartRenderer.class);
+		ClientMainProxy.registRender(CakeBerryEntity.class, JellyBerryRenderer.class);
+		ClientMainProxy.registRender(CakeKuzuEntity.class, JellyKuzuRenderer.class);
+		ClientMainProxy.registRender(CakeCocotteEntity.class, CakeCocotteRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -244,9 +253,9 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.plateSoup, ClimateCore.PACKAGE_ID, "dcs_food_plate_potato", "food", 3);
 		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 10);
 		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 2);
-		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 5);
+		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 9);
 
-		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 6);
+		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 12);
 
 		// block
 
@@ -446,6 +455,25 @@ public class FoodClientProxy {
 		ModelLoader.setCustomStateMapper(FoodInit.lemonBlock, new StateMapperBase() {
 			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
 					ClimateCore.PACKAGE_BASE + "_fluidblock_lemonade", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.mazaiBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_mazai", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(FoodInit.mazaiBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_mazai", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
