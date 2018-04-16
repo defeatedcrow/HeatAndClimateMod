@@ -138,6 +138,7 @@ public class FoodBasicRecipe {
 		// materials
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.dropCream, 2, 0), new Object[] {
+				"toolNormalYagen",
 				"bucketMilk"
 		});
 
