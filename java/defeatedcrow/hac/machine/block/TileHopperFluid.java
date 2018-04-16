@@ -208,33 +208,40 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 					}
 				}
 			}
-		} else if (inputT.isEmpty() || inputT.getFluidType().getName().equalsIgnoreCase("milk")) {
+		} else {
 			Fluid milk = FluidRegistry.getFluid("milk");
-			FluidStack get = null;
-			if (milk != null) {
-				get = new FluidStack(milk, 50);
-			} else {
-				get = new FluidStack(FoodInit.cream, 10);
+			boolean b = true;
+			if (milk == null) {
+				b = false;
+				milk = FoodInit.cream;
 			}
-			boolean flag = false;
-			if (get != null) {
-				AxisAlignedBB bb = new AxisAlignedBB(pos.add(-2, -1, -2), pos.add(3, 2, 3));
-				List<Entity> entities = worldObj.getEntitiesWithinAABB(EntityCow.class, bb);
-				if (!entities.isEmpty()) {
-					for (Entity e : entities) {
-						if (e instanceof EntityCow) {
-							int fill = inputT.fill(get, false);
-							if (fill > 0) {
-								inputT.fill(get, true);
-								this.markDirty();
-								flag = true;
+			if (inputT.isEmpty() || inputT.getFluidType() == milk) {
+				FluidStack get = null;
+				if (b) {
+					get = new FluidStack(milk, 50);
+				} else {
+					get = new FluidStack(FoodInit.cream, 10);
+				}
+				boolean flag = false;
+				if (get != null) {
+					AxisAlignedBB bb = new AxisAlignedBB(pos.add(-2, -1, -2), pos.add(3, 2, 3));
+					List<Entity> entities = worldObj.getEntitiesWithinAABB(EntityCow.class, bb);
+					if (!entities.isEmpty()) {
+						for (Entity e : entities) {
+							if (e instanceof EntityCow) {
+								int fill = inputT.fill(get, false);
+								if (fill > 0) {
+									inputT.fill(get, true);
+									this.markDirty();
+									flag = true;
+								}
 							}
 						}
 					}
-				}
 
-				if (flag)
-					return true;
+					if (flag)
+						return true;
+				}
 			}
 		}
 		return false;

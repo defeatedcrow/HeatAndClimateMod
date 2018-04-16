@@ -117,6 +117,13 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: JEI");
 			}
 		}
+
+		try {
+			MobResistantData.load();
+			DCLogger.infoLog("dcs_climate", "Successfully loaded mob resistant data");
+		} catch (Exception e) {
+			DCLogger.infoLog("dcs_climate", "Failed to load mob resistant data");
+		}
 	}
 
 	public static void loadPost() {
@@ -146,13 +153,6 @@ public class DCIntegrationCore {
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Mekanism");
 			}
-		}
-
-		try {
-			MobResistantData.load();
-			DCLogger.infoLog("dcs_climate", "Successfully loaded mob resistant data");
-		} catch (Exception e) {
-			DCLogger.infoLog("dcs_climate", "Failed to load mob resistant data");
 		}
 
 		// FMLCommonHandler.instance().resetClientRecipeBook();

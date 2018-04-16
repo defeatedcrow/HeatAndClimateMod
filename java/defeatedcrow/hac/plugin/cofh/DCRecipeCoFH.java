@@ -32,13 +32,13 @@ public class DCRecipeCoFH {
 		if (DCPluginCoFH.naphtha != null && DCPluginCoFH.tree != null && DCPluginCoFH.tar != null
 				&& DCPluginCoFH.rogin != null) {
 			addRefineryRecipe(5000, new FluidStack(MachineInit.fuelOil, 100), new FluidStack(DCPluginCoFH.naphtha, 100),
-					DCPluginCoFH.tar);
+					DCPluginCoFH.tar, 70);
 
 			addRefineryRecipe(5000, new FluidStack(FoodInit.blackLiquor, 100), new FluidStack(DCPluginCoFH.tree, 100),
-					DCPluginCoFH.tar);
+					DCPluginCoFH.tar, 70);
 
 			addRefineryRecipe(5000, new FluidStack(FoodInit.oil, 100), new FluidStack(DCPluginCoFH.naphtha, 50),
-					new ItemStack(MachineInit.reagent, 1, 1));
+					new ItemStack(MachineInit.reagent, 1, 1), 70);
 		}
 
 		// pulvarizer
@@ -95,7 +95,8 @@ public class DCRecipeCoFH {
 		}
 	}
 
-	private static void addRefineryRecipe(int energy, FluidStack input, FluidStack output, ItemStack outputItem) {
+	private static void addRefineryRecipe(int energy, FluidStack input, FluidStack output, ItemStack outputItem,
+			int chance) {
 		if (input != null && output != null) {
 
 			NBTTagCompound toSend = new NBTTagCompound();

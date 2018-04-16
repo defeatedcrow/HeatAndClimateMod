@@ -22,6 +22,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
@@ -39,7 +40,13 @@ public class ItemFluidPack extends DCItem {
 			"cream",
 			"oil",
 			"vegi",
-			"lemon"
+			"lemon",
+			"mazai",
+			"greentea",
+			"tea",
+			"coffee",
+			"stock",
+			"ethanol"
 	};
 
 	public static final String[] FLUIDS = {
@@ -49,7 +56,13 @@ public class ItemFluidPack extends DCItem {
 			"dcs.milk_cream",
 			"dcs.seed_oil",
 			"dcs.vegetable_juice",
-			"dcs.lemonade"
+			"dcs.lemonade",
+			"dcs.mazai",
+			"dcs.green_tea",
+			"dcs.black_tea",
+			"dcs.black_coffee",
+			"dcs.stock",
+			"dcs.ethanol"
 	};
 
 	public ItemFluidPack() {
@@ -70,7 +83,7 @@ public class ItemFluidPack extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 6;
+		return 12;
 	}
 
 	@Override
@@ -95,6 +108,8 @@ public class ItemFluidPack extends DCItem {
 		int i = stack.getMetadata();
 		if (i == 4)
 			return 1600;
+		else if (i == 12)
+			return 1600;
 		else
 			return 0;
 	}
@@ -112,22 +127,39 @@ public class ItemFluidPack extends DCItem {
 
 		String s = "";
 		int i = stack.getItemDamage();
-		if (i > 6) {
-			i = 6;
+		if (i > 12) {
+			i = 12;
 		}
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
 		if (f != null) {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid: " + f.getLocalizedName(new FluidStack(f, 200)));
 			tooltip.add(TextFormatting.YELLOW.toString() + "Amount: " + 250);
+			Fluid milk = FluidRegistry.getFluid("milk");
+			if ((milk != null && f == milk) || f == FoodInit.tomatoJuice) {
+				tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
+			} else if (f == FoodInit.mazai) {
+				tooltip.add(TextFormatting.RED.toString() + "Powerful but dangerous!");
+			} else {
+				List<PotionEffect> effects = ItemSilverCup.getPotionEffect(f, 1F, 0);
+				if (!effects.isEmpty()) {
+					PotionEffect eff = effects.get(0);
+					if (eff != null && eff.getPotion() != null) {
+						String effName = I18n.translateToLocal(eff.getEffectName());
+						effName += " " + I18n.translateToLocal("potion.potency." + eff.getAmplifier()).trim();
+						effName += " (" + Potion.getPotionDurationString(eff, 1.0F) + ")";
+						tooltip.add(TextFormatting.AQUA.toString() + effName);
+					}
+				}
+			}
 		} else {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid is empty: " + FLUIDS[i]);
 		}
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 6) {
-			meta = 6;
+		if (meta > 12) {
+			meta = 12;
 		}
 		return FLUIDS[meta];
 	}

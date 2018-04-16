@@ -54,6 +54,7 @@ import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 public class FoodInitRegister {
 
@@ -337,6 +338,22 @@ public class FoodInitRegister {
 				ClimateMain.MOD_ID);
 		FoodInit.hotSpring.setBlock(FoodInit.hotSpringBlock);
 
+		FoodInit.mazai = new Fluid("dcs.mazai",
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/mazai_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/mazai_still")) {
+			@Override
+			public boolean doesVaporize(FluidStack fluid) {
+				return false;
+			}
+		}.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".mazai").setLuminosity(15).setViscosity(1200).setDensity(1200)
+				.setTemperature(270);
+		FluidRegistry.registerFluid(FoodInit.mazai);
+		FoodInit.mazaiBlock = new DCFluidBlockBase(FoodInit.mazai, "mazai_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_mazai");
+		DCMaterialReg.registerBlock(FoodInit.mazaiBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_mazai",
+				ClimateMain.MOD_ID);
+		FoodInit.mazai.setBlock(FoodInit.mazaiBlock);
+
 		// bucket
 		FluidRegistry.addBucketForFluid(FoodInit.oil);
 		FluidRegistry.addBucketForFluid(FoodInit.greenTea);
@@ -348,6 +365,7 @@ public class FoodInitRegister {
 		FluidRegistry.addBucketForFluid(FoodInit.hotSpring);
 		FluidRegistry.addBucketForFluid(FoodInit.stock);
 		FluidRegistry.addBucketForFluid(FoodInit.lemon);
+		FluidRegistry.addBucketForFluid(FoodInit.mazai);
 
 		// fluid item
 		FoodInit.dropOil = new ItemFluidDrop("olive", "dcs.seed_oil")

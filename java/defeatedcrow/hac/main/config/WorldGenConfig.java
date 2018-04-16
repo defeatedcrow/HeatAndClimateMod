@@ -23,6 +23,8 @@ public class WorldGenConfig {
 
 	public static int windmillGen = 50;
 
+	public static boolean mazaiLake = true;
+
 	public void load(Configuration cfg) {
 
 		try {
@@ -53,6 +55,9 @@ public class WorldGenConfig {
 
 			Property windmill = cfg.get("world setting", "Windmill Gen Probability", windmillGen,
 					"Generate in Forest or Plain. 0.1-100.0% (default: 5.0%)");
+
+			Property mazai = cfg.get("world setting", "Mana Liqueur Lake Gen", mazaiLake,
+					"Enable genaration the mana liqueur lake in nether biome.");
 
 			int s = sed_ore.getInt();
 			if (s < 0 || s > 100) {
@@ -90,6 +95,7 @@ public class WorldGenConfig {
 			depositGen[4] = g;
 			skarnGen = sk;
 			windmillGen = wm;
+			mazaiLake = mazai.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

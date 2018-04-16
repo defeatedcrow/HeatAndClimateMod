@@ -196,26 +196,7 @@ public class ItemSilverCup extends FoodItemBase {
 	public static List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if (fluid != null) {
-			if (fluid == FoodInit.greenTea) {
-				ret.add(new PotionEffect(MobEffects.HASTE, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.blackTea) {
-				ret.add(new PotionEffect(MobEffects.RESISTANCE, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.coffee) {
-				ret.add(new PotionEffect(MobEffects.NIGHT_VISION, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.oil) {
-				ret.add(new PotionEffect(MobEffects.SPEED, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-			} else if (fluid == FoodInit.stock) {
-				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceiling_float_int(1200 * (dirF + ampF)),
-						0));
-			} else if (fluid == FoodInit.blackLiquor) {
-				ret.add(new PotionEffect(MobEffects.POISON, MathHelper.ceiling_float_int(300 * dirF), ampF));
-			} else if (fluid == FoodInit.lemon) {
-				ret.add(new PotionEffect(MobEffects.JUMP_BOOST, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-			} else if (fluid == FluidRegistry.WATER) {
-				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceiling_float_int(300 * dirF), ampF));
-			} else if (fluid == FluidRegistry.LAVA) {
-				ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceiling_float_int(1200 * dirF), ampF));
-			} else if (DrinkPotionType.isRegistered(fluid)) {
+			if (DrinkPotionType.isRegistered(fluid)) {
 				Potion potion = DrinkPotionType.getPotion(fluid);
 				if (potion != null) {
 					float duration = potion.isBadEffect() ? 600 * dirF : 1200 * dirF;
