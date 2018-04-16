@@ -467,6 +467,20 @@ public class FoodFluidRecipe {
 						"foodGelatine"
 		});
 
+		regBoilrecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+				FluidRegistry.WATER, 1000), new Object[] {
+						"dustSugar",
+						"listApple",
+						"foodAgar"
+		});
+
+		regBoilrecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+				FluidRegistry.WATER, 1000), new Object[] {
+						"dustSugar",
+						"listApple",
+						"foodGelatine"
+		});
+
 		regBoilrecipe(new ItemStack(FoodInit.cake, 3, 7), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
 						"dustSugar",
