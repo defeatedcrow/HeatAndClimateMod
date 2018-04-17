@@ -2,7 +2,6 @@ package defeatedcrow.hac.food.item;
 
 import javax.annotation.Nullable;
 
-import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -41,16 +40,7 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 	protected void setFluid(FluidStack resource) {
 		if (container.stackSize != 1 || resource == null || !canFillFluidType(resource))
 			return;
-		int meta = 0;
-		if (resource.getFluid() == FluidRegistry.WATER) {
-			meta = 1;
-		} else if (resource.getFluid() == FoodInit.cream) {
-			meta = 3;
-		} else if (resource.getFluid() == FoodInit.oil) {
-			meta = 4;
-		} else if (resource.getFluid().getName().contains("milk")) {
-			meta = 2;
-		}
+		int meta = ItemFluidPack.getMetaFromFluid(resource.getFluid());
 
 		if (meta == 0)
 			return;
@@ -71,16 +61,7 @@ public class FluidPaperContDC implements IFluidHandler, ICapabilityProvider {
 			return 0;
 
 		int fillAmo = 250;
-		int meta = 0;
-		if (resource.getFluid() == FluidRegistry.WATER) {
-			meta = 1;
-		} else if (resource.getFluid() == FoodInit.cream) {
-			meta = 3;
-		} else if (resource.getFluid() == FoodInit.oil) {
-			meta = 4;
-		} else if (resource.getFluid().getName().contains("milk")) {
-			meta = 2;
-		}
+		int meta = ItemFluidPack.getMetaFromFluid(resource.getFluid());
 
 		if (meta == 0)
 			return 0;

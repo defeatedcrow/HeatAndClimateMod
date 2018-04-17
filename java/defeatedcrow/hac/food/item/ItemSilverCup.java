@@ -28,6 +28,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -165,6 +166,14 @@ public class ItemSilverCup extends FoodItemBase {
 						Fluid milk = FluidRegistry.getFluid("milk");
 						if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
 							living.clearActivePotions();
+							return false;
+						} else if (f.getFluid() == FoodInit.mazai) {
+							living.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 2, 0));
+							living.heal(30.0F);
+							if (world.rand.nextInt(100) == 0) {
+								living.attackEntityFrom(DamageSource.generic, 20.0F);
+							}
+							return false;
 						} else {
 							List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
 							if (effects.isEmpty())
@@ -224,6 +233,8 @@ public class ItemSilverCup extends FoodItemBase {
 				Fluid milk = FluidRegistry.getFluid("milk");
 				if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
 					tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
+				} else if (f.getFluid() == FoodInit.mazai) {
+					tooltip.add(TextFormatting.RED.toString() + "Powerful but dangerous!");
 				} else {
 					List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
 					if (!effects.isEmpty()) {

@@ -8,9 +8,11 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
@@ -18,6 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
@@ -136,7 +139,7 @@ public class ItemFluidPack extends DCItem {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid: " + f.getLocalizedName(new FluidStack(f, 200)));
 			tooltip.add(TextFormatting.YELLOW.toString() + "Amount: " + 250);
 			Fluid milk = FluidRegistry.getFluid("milk");
-			if ((milk != null && f == milk) || f == FoodInit.tomatoJuice) {
+			if (i == 2 || f == FoodInit.tomatoJuice) {
 				tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
 			} else if (f == FoodInit.mazai) {
 				tooltip.add(TextFormatting.RED.toString() + "Powerful but dangerous!");
@@ -167,6 +170,36 @@ public class ItemFluidPack extends DCItem {
 	public static Fluid getFluid(int meta) {
 		String name = getFluidName(meta);
 		return FluidRegistry.getFluid(name);
+	}
+
+	public static int getMetaFromFluid(Fluid fluid) {
+		int meta = 0;
+		if (fluid == FluidRegistry.WATER) {
+			meta = 1;
+		} else if (fluid.getName().contains("milk")) {
+			meta = 2;
+		} else if (fluid == FoodInit.cream) {
+			meta = 3;
+		} else if (fluid == FoodInit.oil) {
+			meta = 4;
+		} else if (fluid == FoodInit.tomatoJuice) {
+			meta = 5;
+		} else if (fluid == FoodInit.lemon) {
+			meta = 6;
+		} else if (fluid == FoodInit.mazai) {
+			meta = 7;
+		} else if (fluid == FoodInit.greenTea) {
+			meta = 8;
+		} else if (fluid == FoodInit.blackTea) {
+			meta = 9;
+		} else if (fluid == FoodInit.coffee) {
+			meta = 10;
+		} else if (fluid == FoodInit.stock) {
+			meta = 11;
+		} else if (fluid == MachineInit.ethanol) {
+			meta = 12;
+		}
+		return meta;
 	}
 
 	/* 飲用効果 */
@@ -219,6 +252,14 @@ public class ItemFluidPack extends DCItem {
 			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 1F, 1);
 			if (meta == 2 || fluid == FoodInit.tomatoJuice) {
 				living.clearActivePotions();
+				return false;
+			} else if (fluid == FoodInit.mazai) {
+				living.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 2, 0));
+				living.heal(30.0F);
+				if (worldIn.rand.nextInt(100) == 0) {
+					living.attackEntityFrom(DamageSource.generic, 20.0F);
+				}
+				return false;
 			} else if (effects.isEmpty())
 				return false;
 			for (PotionEffect get : effects) {
