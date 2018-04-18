@@ -31,7 +31,7 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 5;
+		return 9;
 	}
 
 	@Override

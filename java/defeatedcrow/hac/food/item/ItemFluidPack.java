@@ -176,7 +176,7 @@ public class ItemFluidPack extends DCItem {
 		int meta = 0;
 		if (fluid == FluidRegistry.WATER) {
 			meta = 1;
-		} else if (fluid.getName().contains("milk")) {
+		} else if (fluid.getName().equalsIgnoreCase("milk")) {
 			meta = 2;
 		} else if (fluid == FoodInit.cream) {
 			meta = 3;
