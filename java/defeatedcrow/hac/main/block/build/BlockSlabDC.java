@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 public class BlockSlabDC extends BlockSlabBase {
 
 	public BlockSlabDC() {
-		super(Material.GLASS, "dcs_build_slab", 4, true);
+		super(Material.GLASS, "dcs_build_slab", 5, true);
 	}
 
 	@Override
@@ -15,7 +15,8 @@ public class BlockSlabDC extends BlockSlabBase {
 				"glass",
 				"marble",
 				"serpentine",
-				"bedrock"
+				"bedrock",
+				"dirtbrick"
 		};
 		return name;
 	}

@@ -47,8 +47,18 @@ public class SquarePastryItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"sugar_raw", "sugar_baked", "meat_raw", "meat_baked", "choco_raw", "choco_baked", "fruit_raw",
-				"fruit_baked", "mooncake_raw", "mooncake_baked", "cream_raw", "cream_baked"
+				"sugar_raw",
+				"sugar_baked",
+				"meat_raw",
+				"meat_baked",
+				"choco_raw",
+				"choco_baked",
+				"fruit_raw",
+				"fruit_baked",
+				"mooncake_raw",
+				"mooncake_baked",
+				"cream_raw",
+				"cream_baked"
 		};
 		return s;
 	}
@@ -97,15 +107,18 @@ public class SquarePastryItem extends FoodItemBase {
 		switch (meta) {
 		case 1:
 			return 6;
-		case 5:
-		case 7:
-			return 8;
 		case 3:
+			return 14;
+		case 5:
+			return 9;
+		case 7:
+			return 9;
 		case 9:
+			return 12;
 		case 11:
-			return 10;
+			return 12;
 		default:
-			return 1;
+			return 0;
 		}
 	}
 

@@ -67,6 +67,7 @@ import defeatedcrow.hac.main.block.device.BlockWindVane;
 import defeatedcrow.hac.main.block.device.ItemBlockShield;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
+import defeatedcrow.hac.main.block.ores.BlockDusts2;
 import defeatedcrow.hac.main.block.ores.BlockGem;
 import defeatedcrow.hac.main.block.ores.BlockMetal;
 import defeatedcrow.hac.main.block.ores.BlockOres;
@@ -161,6 +162,10 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock",
 				ClimateMain.MOD_ID);
 
+		MainInit.dustBlock_2 = new BlockDusts2(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock2", 1);
+		DCMaterialReg.registerBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_BASE + "_ore_dustblock2",
+				ClimateMain.MOD_ID);
+
 		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 12);
 		DCMaterialReg.registerBlock(MainInit.gemBlock, ClimateCore.PACKAGE_BASE + "_ore_gemblock", ClimateMain.MOD_ID);
 
@@ -174,7 +179,7 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.linoleum, ClimateCore.PACKAGE_BASE + "_build_linoleum",
 				ClimateMain.MOD_ID);
 
-		MainInit.selenite = new BlockGlassSelenite(ClimateCore.PACKAGE_BASE + "_build_selenite", 2);
+		MainInit.selenite = new BlockGlassSelenite(ClimateCore.PACKAGE_BASE + "_build_selenite", 3);
 		DCMaterialReg.registerBlock(MainInit.selenite, ClimateCore.PACKAGE_BASE + "_build_selenite",
 				ClimateMain.MOD_ID);
 
@@ -251,22 +256,22 @@ public class MainMaterialRegister {
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.clayBricks, "dcs_climate", "dcs_build_claybrick", "build");
 
-		MainInit.stairsGlass = new BlockStairsBase(MainInit.selenite.getDefaultState(), "build/glass_stairs", true)
-				.setUnlocalizedName("dcs_stairs_glass");
+		MainInit.stairsGlass = new BlockStairsBase(MainInit.selenite.getDefaultState(), "build/glass_stairs",
+				true).setUnlocalizedName("dcs_stairs_glass");
 		DCMaterialReg.registerBlock(MainInit.stairsGlass, ClimateCore.PACKAGE_BASE + "_stairs_glass",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsGlass), "dcs_climate", "dcs_stairs_glass",
 				"build", 15, false);
 
-		MainInit.stairsGypsum = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_gypsum", false)
-				.setUnlocalizedName("dcs_stairs_gypsum");
+		MainInit.stairsGypsum = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_gypsum",
+				false).setUnlocalizedName("dcs_stairs_gypsum");
 		DCMaterialReg.registerBlock(MainInit.stairsGypsum, ClimateCore.PACKAGE_BASE + "_stairs_gypsum",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsGypsum), "dcs_climate", "dcs_stairs_gypsum",
 				"build", 15, false);
 
-		MainInit.stairsMarble = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_marble", false)
-				.setUnlocalizedName("dcs_stairs_marble");
+		MainInit.stairsMarble = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_marble",
+				false).setUnlocalizedName("dcs_stairs_marble");
 		DCMaterialReg.registerBlock(MainInit.stairsMarble, ClimateCore.PACKAGE_BASE + "_stairs_marble",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsMarble), "dcs_climate", "dcs_stairs_marble",
@@ -279,17 +284,24 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsSerpentine), "dcs_climate",
 				"dcs_stairs_serpentine", "build", 15, false);
 
-		MainInit.stairsBedrock = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_bedrock", false)
-				.setUnlocalizedName("dcs_stairs_bedrock");
+		MainInit.stairsBedrock = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_bedrock",
+				false).setUnlocalizedName("dcs_stairs_bedrock");
 		DCMaterialReg.registerBlock(MainInit.stairsBedrock, ClimateCore.PACKAGE_BASE + "_stairs_bedrock",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsBedrock), "dcs_climate",
 				"dcs_stairs_bedrock", "build", 15, false);
 
+		MainInit.stairsDirtbrick = new BlockStairsBase(MainInit.ores.getDefaultState(), "build/build_dirtbrick",
+				false).setUnlocalizedName("dcs_stairs_dirtbrick");
+		DCMaterialReg.registerBlock(MainInit.stairsDirtbrick, ClimateCore.PACKAGE_BASE + "_stairs_dirtbrick",
+				ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsDirtbrick), "dcs_climate",
+				"dcs_stairs_dirtbrick", "build", 15, false);
+
 		MainInit.halfSlab = new BlockSlabDC();
 		DCMaterialReg.registerBlock(MainInit.halfSlab, ClimateCore.PACKAGE_BASE + "_build_slab", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab), "dcs_climate", "dcs_build_slab",
-				"build", 4, true);
+				"build", 5, true);
 
 		MainInit.halfSlab2 = new BlockSlabChal();
 		DCMaterialReg.registerBlock(MainInit.halfSlab2, ClimateCore.PACKAGE_BASE + "_build_slab_chal",
@@ -847,15 +859,15 @@ public class MainMaterialRegister {
 		};
 		for (int i = 0; i < 4; i++) {
 			EntityEquipmentSlot slot = DCUtil.SLOTS[i];
-			MainInit.brassArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_BRASS, DCMaterialEnum.BRASS, slot, "brass")
-					.setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] +
-							"_brass");
+			MainInit.brassArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_BRASS, DCMaterialEnum.BRASS, slot,
+					"brass").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" +
+							type[i] + "_brass");
 			DCMaterialReg.registerItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_brass",
 					ClimateMain.MOD_ID);
 
-			MainInit.steelArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_STEEL, DCMaterialEnum.STEEL, slot, "steel")
-					.setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] +
-							"_steel");
+			MainInit.steelArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_STEEL, DCMaterialEnum.STEEL, slot,
+					"steel").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" +
+							type[i] + "_steel");
 			DCMaterialReg.registerItem(MainInit.steelArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_steel",
 					ClimateMain.MOD_ID);
 

@@ -113,6 +113,22 @@ public class LoadingBuildingRecipe {
 				new ItemStack(MainInit.gemBlock, 1, 12)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stairsDirtbrick, 4, 0), new Object[] {
+				"X  ",
+				"XX ",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.builds, 1, 7)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stairsDirtbrick, 4, 0), new Object[] {
+				"  X",
+				" XX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.builds, 1, 7)
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.halfSlab, 6, 1), new Object[] {
 				"XXX",
 				'X',
@@ -141,6 +157,12 @@ public class LoadingBuildingRecipe {
 				"XXX",
 				'X',
 				new ItemStack(MainInit.gemBlock, 1, 12)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.halfSlab, 6, 5), new Object[] {
+				"XXX",
+				'X',
+				new ItemStack(MainInit.builds, 1, 7)
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.halfSlab2, 6, 0), new Object[] {
@@ -305,6 +327,17 @@ public class LoadingBuildingRecipe {
 				"dustLime",
 				"cropWheat",
 				"cropSeaweed"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 4, 7), new Object[] {
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(MainInit.dustBlock_2, 1, 0)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock_2, 1, 0), new Object[] {
+				new ItemStack(MainInit.builds, 1, 7)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gemBlock, 1, 3), new Object[] {

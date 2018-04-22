@@ -44,8 +44,15 @@ public class RoundBreadItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"roundbread_raw", "roundbread_baked", "squarebread_raw", "squarebread_baked", "butter_toast_raw",
-				"butter_toast_baked", "pizza_tomato_raw", "pizza_tomato_baked", "roundbread_cream"
+				"roundbread_raw",
+				"roundbread_baked",
+				"squarebread_raw",
+				"squarebread_baked",
+				"butter_toast_raw",
+				"butter_toast_baked",
+				"pizza_tomato_raw",
+				"pizza_tomato_baked",
+				"roundbread_cream"
 		};
 		return s;
 	}
@@ -78,11 +85,24 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		if (meta == 7)
+		switch (meta) {
+		case 0:
+		case 2:
+		case 4:
+		case 6:
+			return 0;
+		case 1:
+			return 7;
+		case 3:
+			return 7;
+		case 5:
+			return 6;
+		case 7:
+			return 14;
+		case 8:
 			return 10;
-		if (meta == 8)
-			return 8;
-		return (meta & 1) == 0 ? 0 : 6;
+		}
+		return 0;
 	}
 
 	@Override

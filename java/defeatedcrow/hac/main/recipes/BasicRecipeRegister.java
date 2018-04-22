@@ -49,6 +49,18 @@ public class BasicRecipeRegister {
 				"feather"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Items.ARROW, 4, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				"gemChalcedony",
+				'Y',
+				"stickWood",
+				'Z',
+				"paper"
+		});
+
 		// ブレイズロッド救済用
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Items.BLAZE_ROD, 1, 0), new Object[] {
 				"XXX",

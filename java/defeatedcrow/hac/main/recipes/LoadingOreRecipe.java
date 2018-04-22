@@ -10,113 +10,263 @@ public class LoadingOreRecipe {
 	public static void add(RecipeResourcesMain res) {
 		// dust -> dustBlock
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 0), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustCopper"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustCopper"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 1), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustZinc"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustZinc"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 2), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustNickel"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustNickel"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustIron"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustIron"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 3), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustSilver"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustSilver"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 8), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustTin"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustTin"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustAluminium"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustAluminium"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustAluminum"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustAluminum"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 14), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustBismuth"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustBismuth"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 4), new Object[] {
-				"dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustZinc",
-				"dustZinc", "dustZinc"
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustZinc",
+				"dustZinc",
+				"dustZinc"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 6), new Object[] {
-				"dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustNickel",
-				"dustNickel", "dustZinc"
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustNickel",
+				"dustNickel",
+				"dustZinc"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
-				"dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustCopper", "dustCopper",
-				"dustTin", "dustTin"
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustTin",
+				"dustTin"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
-				"XXX", "XXX", "XXX", 'X', "dustBronze"
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"dustBronze"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
-				"dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
 				"dustGraphite"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
-				"dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite",
-				"dustMagnetite", "dustMagnetite", "dustGraphite"
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustGraphite"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
-				"dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
 				"dustCoal"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
-				"dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite",
-				"dustMagnetite", "dustMagnetite", "dustCoal"
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustCoal"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 7), new Object[] {
-				"dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite",
-				"dustMagnetite", "gemCelestite", "dustLime"
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"gemCelestite",
+				"dustLime"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
-				"dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustIron", "dustChromium", "dustChromium",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustChromium",
+				"dustChromium",
 				"dustNickel"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
-				"dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite", "dustMagnetite",
-				"dustChromium", "dustChromium", "dustNickel"
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustChromium",
+				"dustChromium",
+				"dustNickel"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 11), new Object[] {
-				"dustGold", "dustGold", "dustGold", "dustGold", "dustGold", "dustGold", "dustGold", "dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
+				"dustGold",
 				"dustGold"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
-				"dustTitanium", "dustTitanium", "dustTitanium", "dustTitanium", "dustTitanium", "dustTitanium",
-				"dustTitanium", "dustAluminium", "dustChromium"
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustAluminium",
+				"dustChromium"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
-				"dustTitanium", "dustTitanium", "dustTitanium", "dustTitanium", "dustTitanium", "dustTitanium",
-				"dustTitanium", "dustAluminum", "dustChromium"
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustTitanium",
+				"dustAluminum",
+				"dustChromium"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 15), new Object[] {
-				"dustBismuth", "dustBismuth", "gemCelestite", "dustCopper", "dustCopper", "dustCopper", "dustLime",
-				"dustLime", "dustLime"
+				"dustBismuth",
+				"dustBismuth",
+				"gemCelestite",
+				"dustCopper",
+				"dustCopper",
+				"dustCopper",
+				"dustLime",
+				"dustLime",
+				"dustLime"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock_2, 8, 1), new Object[] {
+				"dustCrystal",
+				"dustCrystal",
+				"dustCrystal",
+				"dustCrystal",
+				"dustCrystal",
+				"dustCrystal",
+				"dustCrystal",
+				"dustCrystal",
+				"dustBorax"
 		});
 
 		// dustBlock -> dust
@@ -160,10 +310,28 @@ public class LoadingOreRecipe {
 				new ItemStack(MainInit.dustBlock, 1, 14)
 		});
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 8, 1), new Object[] {
+				new ItemStack(MainInit.dustBlock_2, 1, 1)
+		});
+
 		// ingot <-> metalBlock
 		String[] metal = {
-				"Copper", "Zinc", "Nickel", "Silver", "Brass", "Steel", "Nickelsilver", "Magnet", "Tin", "Bronze",
-				"SUS", "Titanium", "Aluminium", "Bismuth", "BSCCO", "Lead"
+				"Copper",
+				"Zinc",
+				"Nickel",
+				"Silver",
+				"Brass",
+				"Steel",
+				"Nickelsilver",
+				"Magnet",
+				"Tin",
+				"Bronze",
+				"SUS",
+				"Titanium",
+				"Aluminium",
+				"Bismuth",
+				"BSCCO",
+				"Lead"
 		};
 		for (int i = 0; i < metal.length; i++) {
 			ingotRecipe(new ItemStack(MainInit.metalBlock, 1, i), new ItemStack(MainInit.oreIngot, 9, i), metal[i]);
@@ -183,7 +351,11 @@ public class LoadingOreRecipe {
 		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 11), new ItemStack(MainInit.gems, 4, 14), "Garnet");
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
-				"XXX", "XXX", "XXX", 'X', new ItemStack(MainInit.gemBlock, 1, 2)
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.gemBlock, 1, 2)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gemBlock, 9, 2), new Object[] {
@@ -191,7 +363,10 @@ public class LoadingOreRecipe {
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gemBlock, 4, 12), new Object[] {
-				"XX", "XX", 'X', new ItemStack(Blocks.BEDROCK, 1, 0)
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(Blocks.BEDROCK, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.BEDROCK, 1, 0), new Object[] {
@@ -201,7 +376,11 @@ public class LoadingOreRecipe {
 
 	static void ingotRecipe(ItemStack block, ItemStack ingot, String name) {
 		DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), block, new Object[] {
-				"XXX", "XXX", "XXX", 'X', "ingot" + name
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				"ingot" + name
 		});
 
 		DCRecipe.addShapelessRecipe(RecipeResourcesMain.MAIN.getRecipeName(), ingot, new Object[] {
@@ -211,7 +390,10 @@ public class LoadingOreRecipe {
 
 	static void gemRecipe(ItemStack block, ItemStack gem, String name) {
 		DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), block, new Object[] {
-				"XX", "XX", 'X', "gem" + name
+				"XX",
+				"XX",
+				'X',
+				"gem" + name
 		});
 
 		DCRecipe.addShapelessRecipe(RecipeResourcesMain.MAIN.getRecipeName(), gem, new Object[] {

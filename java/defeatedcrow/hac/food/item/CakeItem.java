@@ -98,7 +98,29 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta == 0 || meta == 8 ? 2 : 10;
+		switch (meta) {
+		case 0:
+			return 0;
+		case 1:
+			return 10;
+		case 2:
+			return 12;
+		case 3:
+			return 8;
+		case 4:
+			return 8;
+		case 5:
+			return 9;
+		case 6:
+			return 9;
+		case 7:
+			return 9;
+		case 8:
+			return 0;
+		case 9:
+			return 10;
+		}
+		return 0;
 	}
 
 	@Override

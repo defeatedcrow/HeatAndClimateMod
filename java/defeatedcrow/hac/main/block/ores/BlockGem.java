@@ -30,8 +30,19 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 	}
 
 	private static String[] names = {
-			"chal_blue", "chal_red", "chal_white", "gypsum", "sapphire", "salt", "marble", "schorl", "compressed",
-			"serpentine", "olivine", "almandine", "bedrock"
+			"chal_blue",
+			"chal_red",
+			"chal_white",
+			"gypsum",
+			"sapphire",
+			"salt",
+			"marble",
+			"schorl",
+			"compressed",
+			"serpentine",
+			"olivine",
+			"almandine",
+			"bedrock"
 	};
 
 	@Override

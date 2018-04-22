@@ -16,6 +16,7 @@ public class MainInit {
 	public static Block ores;
 	public static Block ores_2;
 	public static Block dustBlock;
+	public static Block dustBlock_2;
 	public static Block gemBlock;
 	public static Block metalBlock;
 
@@ -36,6 +37,7 @@ public class MainInit {
 	public static Block stairsMarble;
 	public static Block stairsSerpentine;
 	public static Block stairsBedrock;
+	public static Block stairsDirtbrick;
 	public static Block halfSlab;
 	public static Block halfSlab2;
 	public static Block builds;
