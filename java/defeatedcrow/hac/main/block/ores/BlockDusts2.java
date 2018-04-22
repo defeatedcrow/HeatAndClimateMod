@@ -1,8 +1,6 @@
-package defeatedcrow.hac.main.block.build;
+package defeatedcrow.hac.main.block.ores;
 
-import java.util.List;
-
-import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
@@ -12,44 +10,37 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
+public class BlockDusts2 extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
-	public BlockBuilding(Material m, String s) {
-		super(m, s, 7, false);
+	public BlockDusts2(Material m, String s, int max) {
+		super(m, s, max, true);
 		this.setTickRandomly(true);
-		this.setHardness(3.0F);
-		this.setResistance(30.0F);
+		this.setHardness(1.5F);
+		this.setResistance(15.0F);
 	}
 
 	@Override
-	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
-		int meta = DCState.getInt(state, DCState.TYPE16);
-		if (meta == 5)
-			return side != EnumFacing.UP;
-		return true;
+	public boolean onClimateChange(World world, BlockPos pos, IBlockState state, IClimate clm) {
+		if (clm == null)
+			return false;
+		return super.onClimateChange(world, pos, state, clm);
 	}
 
 	@Override
-	public int getMaxMeta() {
-		return 7;
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+		super.onBlockAdded(world, pos, state);
+		world.scheduleUpdate(pos, this, this.tickRate(world));
 	}
 
 	private static String[] names = {
-			"concrete",
-			"mosaic_red",
-			"mosaic_blue",
-			"mosaic_yellow",
-			"mosaic_black",
-			"road",
-			"plaster",
-			"dirtbrick"
+			"dirt",
+			"crystal"
 	};
 
 	@Override
@@ -59,10 +50,10 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		if (meta > getMaxMeta()) {
-			meta = getMaxMeta();
+		if (meta >= names.length) {
+			meta = names.length - 1;
 		}
-		String s = "blocks/build/build_" + names[meta];
+		String s = "blocks/ores/dustblock_" + names[meta];
 		if (f) {
 			s = "textures/" + s;
 		}
@@ -73,7 +64,7 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public boolean isCollectable(ItemStack item) {
-		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemPickaxe;
+		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemSpade;
 	}
 
 	@Override
@@ -83,7 +74,8 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
-		List<ItemStack> list = this.getDrops(world, pos, state, 0);
+		NonNullList<ItemStack> list = NonNullList.create();
+		this.getDrops(list, world, pos, state, 0);
 		for (ItemStack item : list) {
 			double x = player.posX;
 			double y = player.posY + 0.25D;

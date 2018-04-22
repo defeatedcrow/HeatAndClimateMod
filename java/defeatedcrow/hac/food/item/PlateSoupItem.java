@@ -44,7 +44,10 @@ public class PlateSoupItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"potato_raw", "potato_baked", "tomato_raw", "tomato_baked"
+				"potato_raw",
+				"potato_baked",
+				"tomato_raw",
+				"tomato_baked"
 		};
 		return s;
 	}
@@ -67,12 +70,21 @@ public class PlateSoupItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return (meta & 1) == 0 ? 0 : 6;
+		switch (meta) {
+		case 0:
+		case 2:
+			return 0;
+		case 1:
+			return 12;
+		case 3:
+			return 12;
+		}
+		return 0;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 1.0F;
+		return (meta & 1) == 0 ? 0F : 0.5F;
 	}
 
 	@Override

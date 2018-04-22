@@ -167,12 +167,14 @@ public class ItemSilverCup extends FoodItemBase {
 						Fluid milk = FluidRegistry.getFluid("milk");
 						if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
 							living.clearActivePotions();
+							return false;
 						} else if (f.getFluid() == FoodInit.mazai) {
 							living.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 2, 0));
 							living.heal(30.0F);
 							if (world.rand.nextInt(100) == 0) {
 								living.attackEntityFrom(DamageSource.GENERIC, 20.0F);
 							}
+							return false;
 						} else {
 							List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
 							if (effects.isEmpty())

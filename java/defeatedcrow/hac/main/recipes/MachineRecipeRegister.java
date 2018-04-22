@@ -181,6 +181,24 @@ public class MachineRecipeRegister {
 				DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.gemBlock, 1, 3));
 		sele.requiredAir().add(DCAirflow.NORMAL);
 		RecipeAPI.registerSmelting.addRecipe(sele, DCHeatTier.KILN);
+
+		ClimateSmelting cry = new ClimateSmelting(new ItemStack(MainInit.selenite, 1, 3), null, DCHeatTier.KILN, null,
+				DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.dustBlock_2, 1, 1));
+		cry.requiredAir().add(DCAirflow.NORMAL);
+		RecipeAPI.registerSmelting.addRecipe(cry, DCHeatTier.KILN);
+
+		ClimateSmelting dirt = new ClimateSmelting(new ItemStack(MainInit.dustBlock_2, 1, 0), null, DCHeatTier.OVEN,
+				DCHumidity.DRY, null, 0, false, new ItemStack(Blocks.DIRT, 1, 0));
+		RecipeAPI.registerSmelting.addRecipe(dirt, DCHeatTier.OVEN);
+
+		ClimateSmelting dirt2 = new ClimateSmelting(new ItemStack(Blocks.SAND, 1, 0), null, DCHeatTier.SMELTING,
+				DCHumidity.DRY, null, 0, false, new ItemStack(MainInit.dustBlock_2, 1, 0));
+		RecipeAPI.registerSmelting.addRecipe(dirt2, DCHeatTier.SMELTING);
+
+		ClimateSmelting dirt3 = new ClimateSmelting(new ItemStack(Blocks.DIRT, 1, 0), null, DCHeatTier.WARM,
+				DCHumidity.WET, null, 0, false, new ItemStack(MainInit.dustBlock_2, 1, 0));
+		dirt3.requiredHum().add(DCHumidity.UNDERWATER);
+		RecipeAPI.registerSmelting.addRecipe(dirt3, DCHeatTier.WARM);
 	}
 
 	static void loadSmelting() {
@@ -208,6 +226,8 @@ public class MachineRecipeRegister {
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 13), new ItemStack(MainInit.oreIngot, 1, 15), 0.1F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.gemBlock, 1, 3), new ItemStack(MainInit.selenite, 1, 0), 0.15F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock_2, 1, 1), new ItemStack(MainInit.selenite, 1, 3),
+				0.15F);
 
 		// gems
 		GameRegistry.addSmelting(new ItemStack(Items.FLINT, 1, 0), new ItemStack(MainInit.gems, 1, 1), 0.2F);

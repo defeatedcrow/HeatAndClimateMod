@@ -45,7 +45,13 @@ public class PlateMeatItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"beef_raw", "beef_baked", "pork_raw", "pork_baked", "chicken_raw", "chicken_baked", "fish_raw",
+				"beef_raw",
+				"beef_baked",
+				"pork_raw",
+				"pork_baked",
+				"chicken_raw",
+				"chicken_baked",
+				"fish_raw",
 				"fish_baked"
 		};
 		return s;
@@ -73,7 +79,22 @@ public class PlateMeatItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return (meta & 1) == 0 ? 0 : 14;
+		switch (meta) {
+		case 0:
+		case 2:
+		case 4:
+		case 6:
+			return 0;
+		case 1:
+			return 20;
+		case 3:
+			return 14;
+		case 5:
+			return 14;
+		case 7:
+			return 16;
+		}
+		return 0;
 	}
 
 	@Override

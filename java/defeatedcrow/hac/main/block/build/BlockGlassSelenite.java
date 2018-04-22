@@ -33,7 +33,8 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, I
 		String[] name = {
 				"normal",
 				"light",
-				"half"
+				"half",
+				"crystal"
 		};
 		return name;
 	}
@@ -48,6 +49,8 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, I
 			return "dcs_climate:blocks/build/glass_light";
 		case 2:
 			return "dcs_climate:blocks/build/glass_half";
+		case 3:
+			return "dcs_climate:blocks/build/glass_crystal";
 		default:
 			return "dcs_climate:blocks/build/glass_half";
 		}
@@ -113,6 +116,8 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, I
 			return "dcs_climate:blocks/build/glass_light";
 		case 2:
 			return "dcs_climate:blocks/build/glass_half";
+		case 3:
+			return "dcs_climate:blocks/build/glass_crystal";
 		default:
 			return "dcs_climate:blocks/build/glass_half";
 		}

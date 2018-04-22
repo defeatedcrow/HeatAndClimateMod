@@ -43,7 +43,10 @@ public class SandwichItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"apple", "egg", "lemon", "salad"
+				"apple",
+				"egg",
+				"lemon",
+				"salad"
 		};
 		return s;
 	}
@@ -66,7 +69,7 @@ public class SandwichItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta + 6;
+		return meta * 2 + 6;
 	}
 
 	@Override

@@ -16,6 +16,7 @@ public class MainCreativeTabRegister {
 		MainInit.ores.setCreativeTab(ClimateCore.climate);
 		MainInit.ores_2.setCreativeTab(ClimateCore.climate);
 		MainInit.dustBlock.setCreativeTab(ClimateCore.climate);
+		MainInit.dustBlock_2.setCreativeTab(ClimateCore.climate);
 		MainInit.gemBlock.setCreativeTab(ClimateCore.climate);
 		MainInit.metalBlock.setCreativeTab(ClimateCore.climate);
 
@@ -29,6 +30,7 @@ public class MainCreativeTabRegister {
 		MainInit.stairsMarble.setCreativeTab(ClimateMain.build);
 		MainInit.stairsSerpentine.setCreativeTab(ClimateMain.build);
 		MainInit.stairsBedrock.setCreativeTab(ClimateMain.build);
+		MainInit.stairsDirtbrick.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab2.setCreativeTab(ClimateMain.build);
 		MainInit.fenceGypsum.setCreativeTab(ClimateMain.build);

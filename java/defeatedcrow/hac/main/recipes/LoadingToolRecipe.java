@@ -94,7 +94,7 @@ public class LoadingToolRecipe {
 				"XYX",
 				" X ",
 				'Y',
-				"gearBrass",
+				"gearWood",
 				'X',
 				"ingotNickelsilver"
 		});
@@ -114,7 +114,7 @@ public class LoadingToolRecipe {
 				"XYX",
 				" X ",
 				'Y',
-				"gearIron",
+				"gearStone",
 				'X',
 				"ingotNickelsilver"
 		});

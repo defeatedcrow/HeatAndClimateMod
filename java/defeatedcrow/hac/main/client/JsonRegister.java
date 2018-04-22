@@ -59,11 +59,12 @@ public class JsonRegister {
 
 	static void regBlocks() {
 		regCube((ITexturePath) MainInit.dustBlock, ClimateCore.PACKAGE_ID, "dcs_ore_dustblock", "ores", 15);
+		regCube((ITexturePath) MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 1);
 		regCube((ITexturePath) MainInit.metalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_metalblock", "ores", 15);
 		regCube((ITexturePath) MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
-		regCube((ITexturePath) MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 2);
+		regCube((ITexturePath) MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		regCube((ITexturePath) MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 2);
-		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 6);
+		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 7);
 		regCube((ITexturePath) MainInit.syntheticBlock, ClimateCore.PACKAGE_ID, "dcs_build_synthetic_glass", "build",
 				15);
 		regCube((ITexturePath) MainInit.linoleum, ClimateCore.PACKAGE_ID, "dcs_build_linoleum", "build", 15);
@@ -71,12 +72,13 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.ores, ClimateCore.PACKAGE_ID, "dcs_ore_stone", "ores", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.ores_2, ClimateCore.PACKAGE_ID, "dcs_ore2_stone", "ores", 12);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock, ClimateCore.PACKAGE_ID, "dcs_ore_dustblock", "ores", 15);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 1);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.metalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_metalblock", "ores", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 2);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.chalLamp, ClimateCore.PACKAGE_ID, "dcs_build_challamp", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 2);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 6);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 7);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.linoleum, ClimateCore.PACKAGE_ID, "dcs_build_linoleum", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.wallLamp, ClimateCore.PACKAGE_ID, "dcs_build_walllamp", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.awning, ClimateCore.PACKAGE_ID, "dcs_build_awning", "build", 3);
@@ -118,13 +120,13 @@ public class JsonRegister {
 				"machine", 0);
 
 		// door
-		ModelLoader.setCustomStateMapper(MainInit.doorMarble, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
-				.build());
-		ModelLoader.setCustomStateMapper(MainInit.doorSteel, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
-				.build());
+		ModelLoader.setCustomStateMapper(MainInit.doorMarble, (new StateMap.Builder()).ignore(
+				BlockDoor.POWERED).build());
+		ModelLoader.setCustomStateMapper(MainInit.doorSteel, (new StateMap.Builder()).ignore(
+				BlockDoor.POWERED).build());
 
-		ModelLoader.setCustomStateMapper(MainInit.realtimeClock, (new StateMap.Builder()).ignore(DCState.FACING)
-				.build());
+		ModelLoader.setCustomStateMapper(MainInit.realtimeClock, (new StateMap.Builder()).ignore(
+				DCState.FACING).build());
 		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock), ClimateCore.PACKAGE_ID,
 				"dcs_device_realtimeclock", "device", 0);
 	}

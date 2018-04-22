@@ -51,7 +51,16 @@ public class StewBowlItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"vegi", "egg", "congee", "tomato", "pumpkin", "borscht", "mushroom", "purple", "lotusroot", "squid",
+				"vegi",
+				"egg",
+				"congee",
+				"tomato",
+				"pumpkin",
+				"borscht",
+				"mushroom",
+				"purple",
+				"lotusroot",
+				"squid",
 				"seaweed"
 		};
 		return s;
@@ -89,7 +98,31 @@ public class StewBowlItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 8;
+		switch (meta) {
+		case 0:
+			return 10;
+		case 1:
+			return 8;
+		case 2:
+			return 11;
+		case 3:
+			return 11;
+		case 4:
+			return 13;
+		case 5:
+			return 14;
+		case 6:
+			return 13;
+		case 7:
+			return 16;
+		case 8:
+			return 11;
+		case 9:
+			return 16;
+		case 10:
+			return 11;
+		}
+		return 0;
 	}
 
 	@Override

@@ -42,7 +42,9 @@ public class SaladItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"green", "potato", "lotusroot"
+				"green",
+				"potato",
+				"lotusroot"
 		};
 		return s;
 	}
@@ -62,7 +64,7 @@ public class SaladItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 12;
+		return meta == 2 ? 8 : 12;
 	}
 
 	@Override

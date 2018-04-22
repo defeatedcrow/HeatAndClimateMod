@@ -42,7 +42,8 @@ public class ClubSandItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"square", "round"
+				"square",
+				"round"
 		};
 		return s;
 	}
@@ -61,12 +62,12 @@ public class ClubSandItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 12;
+		return 16;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.25F;
+		return 0.3F;
 	}
 
 	@Override
