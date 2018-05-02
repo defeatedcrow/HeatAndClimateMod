@@ -1,7 +1,1 @@
-{
-    "parent":"dcs_climate:block/build/dcs_brickbase",
-    "textures":{
-        "base":"blocks/hardened_clay_stained_lime",
-        "overray":"dcs_climate:blocks/build/overray_brick"
-    }
-}
+{"parent":"dcs_climate:block/dcs_cube_all","textures":{"all":"dcs_climate:blocks/build/build_claybricks_lime"}}

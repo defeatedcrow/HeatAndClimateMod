@@ -107,6 +107,7 @@ import defeatedcrow.hac.main.util.DCRegistryUtil;
 import defeatedcrow.hac.main.villager.HaCTrade;
 import defeatedcrow.hac.main.villager.HaCTradeData;
 import defeatedcrow.hac.main.villager.VillagerCreationHaCAgri;
+import defeatedcrow.hac.main.worldgen.CaravanGenEvent;
 import defeatedcrow.hac.main.worldgen.MazaiLakeGen;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
@@ -389,6 +390,7 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
 		MinecraftForge.EVENT_BUS.register(new CombatEvent());
 		MinecraftForge.EVENT_BUS.register(new DCLootEvent());
+		MinecraftForge.EVENT_BUS.register(new CaravanGenEvent());
 
 		DCMainPacket.init();
 	}

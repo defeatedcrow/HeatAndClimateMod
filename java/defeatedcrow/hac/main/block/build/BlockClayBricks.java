@@ -1,6 +1,5 @@
 package defeatedcrow.hac.main.block.build;
 
-import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IThermalInsulationBlock;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
@@ -48,7 +47,7 @@ public class BlockClayBricks extends DCSimpleBlock implements ITexturePath, IThe
 		if (meta >= 16) {
 			meta = 15;
 		}
-		String s = "blocks/build/bricks_" + EnumDyeColor.byMetadata(meta);
+		String s = "blocks/build/build_claybricks_" + EnumDyeColor.byMetadata(meta);
 		if (f) {
 			s = "textures/" + s;
 		}
@@ -57,7 +56,6 @@ public class BlockClayBricks extends DCSimpleBlock implements ITexturePath, IThe
 
 	@Override
 	public int getReductionAmount(World world, BlockPos pos, IBlockState state) {
-		int meta = DCState.getInt(state, DCState.TYPE16);
-		return meta == 0 ? -1 : 0;
+		return -1;
 	}
 }

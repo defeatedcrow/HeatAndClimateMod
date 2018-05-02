@@ -746,7 +746,7 @@ public class LoadingBuildingRecipe {
 				"XXX",
 				"Y Y",
 				'X',
-				"ingotAluminium",
+				"ingotAluminum",
 				'Y',
 				"stickWood"
 		});

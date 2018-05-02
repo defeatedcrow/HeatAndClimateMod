@@ -14,6 +14,7 @@ import defeatedcrow.hac.main.client.AdvancedHUDEvent;
 import defeatedcrow.hac.main.client.particle.ParticleTempColor;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.util.MainUtil;
+import defeatedcrow.hac.main.worldgen.CaravanGenPos;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
@@ -37,8 +38,10 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -122,11 +125,29 @@ public class LivingMainEventDC {
 			double d0 = animal.getEntityWorld().rand.nextGaussian() * 0.02D;
 			double d1 = animal.getEntityWorld().rand.nextGaussian() * 0.02D;
 			double d2 = animal.getEntityWorld().rand.nextGaussian() * 0.02D;
-			animal.getEntityWorld().spawnParticle(enumparticletypes,
-					animal.posX + animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F - animal.width,
-					animal.posY + 0.5D + animal.getEntityWorld().rand.nextFloat() * animal.height,
-					animal.posZ + animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F - animal.width, d0, d1,
-					d2);
+			animal.getEntityWorld().spawnParticle(enumparticletypes, animal.posX +
+					animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F - animal.width, animal.posY + 0.5D +
+							animal.getEntityWorld().rand.nextFloat() * animal.height, animal.posZ +
+									animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F - animal.width, d0,
+					d1, d2);
+		}
+	}
+
+	@SubscribeEvent
+	public void onSpawn(LivingSpawnEvent.CheckSpawn event) {
+		EntityLivingBase living = event.getEntityLiving();
+		if (living instanceof IMob && event.getY() > 65 && event.getY() < 85) {
+			int cx = (int) event.getX() >> 4;
+			int cz = (int) event.getZ() >> 4;
+			int num = CaravanGenPos.getCaravanPartNum(cx, cz, living.getEntityWorld());
+			if (num > -1) {
+				int cx2 = (num % 3) + cx - 1;
+				int cz2 = (num / 3) + cz - 1;
+				if (CaravanGenPos.canGenerateBiome(cx2, cz2, living.getEntityWorld()) && !CaravanGenPos.isDupe(cx2, cz2,
+						living.getEntityWorld())) {
+					event.setResult(Result.DENY);
+				}
+			}
 		}
 	}
 
@@ -158,8 +179,8 @@ public class LivingMainEventDC {
 					player.fallDistance = 0.0F;
 				}
 				if (MainCoreConfig.pendant_schorl) {
-					if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10))
-							&& player.isPotionActive(MobEffects.SPEED)) {
+					if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10)) && player.isPotionActive(
+							MobEffects.SPEED)) {
 						player.stepHeight = 1.0F;
 					} else {
 						player.stepHeight = 0.6F;
@@ -259,10 +280,9 @@ public class LivingMainEventDC {
 			EntityPlayer player = (EntityPlayer) entity;
 			World world = player.world;
 
-			if ((!DCUtil.isEmpty(player.getHeldItemMainhand())
-					&& player.getHeldItemMainhand().getItem() == MainInit.scope)
-					|| (!DCUtil.isEmpty(player.getHeldItemOffhand())
-							&& player.getHeldItemOffhand().getItem() == MainInit.scope)) {
+			if ((!DCUtil.isEmpty(player.getHeldItemMainhand()) &&
+					player.getHeldItemMainhand().getItem() == MainInit.scope) || (!DCUtil.isEmpty(
+							player.getHeldItemOffhand()) && player.getHeldItemOffhand().getItem() == MainInit.scope)) {
 
 				EnumFacing face = player.getHorizontalFacing();
 				BlockPos pos = player.getPosition().offset(face, 2);
