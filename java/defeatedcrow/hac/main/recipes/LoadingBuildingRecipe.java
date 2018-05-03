@@ -336,6 +336,40 @@ public class LoadingBuildingRecipe {
 				new ItemStack(MainInit.dustBlock_2, 1, 0)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 4, 7), new Object[] {
+				"XX",
+				"XX",
+				'X',
+				new ItemStack(MainInit.dustBlock_2, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 2, 8), new Object[] {
+				"XY",
+				"YX",
+				'X',
+				new ItemStack(Blocks.STONE, 1, 3),
+				'Y',
+				"gemFlint"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 2, 9), new Object[] {
+				"XY",
+				"YX",
+				'X',
+				new ItemStack(Blocks.STONE, 1, 5),
+				'Y',
+				"gemFlint"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 2, 10), new Object[] {
+				"XY",
+				"YX",
+				'X',
+				new ItemStack(Blocks.STONE, 1, 1),
+				'Y',
+				"gemFlint"
+		});
+
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock_2, 1, 0), new Object[] {
 				new ItemStack(MainInit.builds, 1, 7)
 		});
@@ -746,7 +780,7 @@ public class LoadingBuildingRecipe {
 				"XXX",
 				"Y Y",
 				'X',
-				"ingotAluminium",
+				"ingotAluminum",
 				'Y',
 				"stickWood"
 		});

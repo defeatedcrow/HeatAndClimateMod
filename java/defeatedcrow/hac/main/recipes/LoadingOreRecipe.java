@@ -310,7 +310,7 @@ public class LoadingOreRecipe {
 				new ItemStack(MainInit.dustBlock, 1, 14)
 		});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 8, 1), new Object[] {
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
 				new ItemStack(MainInit.dustBlock_2, 1, 1)
 		});
 
@@ -328,7 +328,7 @@ public class LoadingOreRecipe {
 				"Bronze",
 				"SUS",
 				"Titanium",
-				"Aluminium",
+				"Aluminum",
 				"Bismuth",
 				"BSCCO",
 				"Lead"

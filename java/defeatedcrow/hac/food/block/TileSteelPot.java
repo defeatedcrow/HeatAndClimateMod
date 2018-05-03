@@ -57,10 +57,16 @@ public class TileSteelPot extends TileFluidProcessorBase {
 	@Override
 	public int getProcessTime() {
 		if (current != null) {
-			if (current.getHeat() == DCHeatTier.KILN)
-				return 8;
-			else if (current.getHeat().getTier() > DCHeatTier.KILN.getTier())
-				return 4;
+			DCHeatTier tier = current.getHeat();
+			int i = tier.getTier();
+			if (i < 0) {
+				i *= -1;
+			}
+			int ret = 20 - i * 4;
+			if (ret < 0) {
+				ret = 4;
+			}
+			return ret;
 		}
 		return 20;
 	}
@@ -84,8 +90,8 @@ public class TileSteelPot extends TileFluidProcessorBase {
 		} else {
 			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {
 				int outAmo = currentRecipe.getOutputFluid() == null ? 0 : currentRecipe.getOutputFluid().amount;
-				return currentRecipe.matchOutput(outs, outf, 3)
-						&& outputT.getFluidAmount() + outAmo <= outputT.getCapacity();
+				return currentRecipe.matchOutput(outs, outf, 3) && outputT.getFluidAmount() +
+						outAmo <= outputT.getCapacity();
 			}
 		}
 		return false;
@@ -136,8 +142,8 @@ public class TileSteelPot extends TileFluidProcessorBase {
 
 						if (next instanceof ItemStack) {
 							count = ((ItemStack) next).getCount();
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false)
-									&& slot.getCount() >= count;
+							match = OreDictionary.itemMatches((ItemStack) next, slot, false) &&
+									slot.getCount() >= count;
 						} else if (next instanceof ArrayList) {
 							ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
 							if (list != null && !list.isEmpty()) {

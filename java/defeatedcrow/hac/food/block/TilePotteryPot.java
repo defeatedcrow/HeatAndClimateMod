@@ -57,12 +57,14 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 	@Override
 	public int getProcessTime() {
 		if (current != null) {
-			if (current.getHeat() == DCHeatTier.OVEN)
-				return 100;
-			else if (current.getHeat().getTier() > DCHeatTier.OVEN.getTier())
-				return 40;
+			DCHeatTier tier = current.getHeat();
+			int i = tier.getTier();
+			if (i < 0) {
+				i *= -1;
+			}
+			return 100 - i * 10;
 		}
-		return 200;
+		return 100;
 	}
 
 	@Override
@@ -84,8 +86,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		} else {
 			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {
 				int outAmo = currentRecipe.getOutputFluid() == null ? 0 : currentRecipe.getOutputFluid().amount;
-				return currentRecipe.matchOutput(outs, outf, 3)
-						&& outputT.getFluidAmount() + outAmo <= outputT.getCapacity();
+				return currentRecipe.matchOutput(outs, outf, 3) && outputT.getFluidAmount() +
+						outAmo <= outputT.getCapacity();
 			}
 		}
 		return false;
@@ -137,8 +139,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 
 						if (next instanceof ItemStack) {
 							count = ((ItemStack) next).getCount();
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false)
-									&& slot.getCount() >= count;
+							match = OreDictionary.itemMatches((ItemStack) next, slot, false) &&
+									slot.getCount() >= count;
 						} else if (next instanceof List) {
 							List<ItemStack> list = new ArrayList<ItemStack>((List<ItemStack>) next);
 							if (list != null && !list.isEmpty()) {
@@ -186,8 +188,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 	@Override
 	public boolean isSuitableClimate() {
 		// potteryは高温に耐えられない
-		return current != null && current.getHeat().getTier() <= DCHeatTier.OVEN.getTier()
-				&& current.getHeat().getTier() > DCHeatTier.FROSTBITE.getTier();
+		return current != null && current.getHeat().getTier() <= DCHeatTier.OVEN.getTier() &&
+				current.getHeat().getTier() > DCHeatTier.FROSTBITE.getTier();
 	}
 
 	@Override

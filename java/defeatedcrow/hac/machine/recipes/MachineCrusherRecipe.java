@@ -82,6 +82,15 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DYE, 6, 15), new ItemStack(MainInit.miscDust, 1, 9),
 				1.0F, null, 0F, null, sus, "bone");
 
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(MainInit.miscDust, 1,
+				3), 0.5F, null, sus, "treeSapling");
+
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(MainInit.miscDust, 1,
+				3), 0.5F, null, sus, "treeLeaves");
+
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0.0F, null, sus,
+				"blockTallGrass");
+
 		// Titanium
 		ItemStack ti = new ItemStack(MachineInit.rotaryBlade, 1, 1);
 

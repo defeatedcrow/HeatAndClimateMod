@@ -158,7 +158,7 @@ public class BasicRecipeRegister {
 				"X X",
 				" X ",
 				'X',
-				"ingotAluminium"
+				"ingotAluminum"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.PISTON, 1, 0), new Object[] {
@@ -170,7 +170,7 @@ public class BasicRecipeRegister {
 				'Y',
 				"cobblestone",
 				'Z',
-				"ingotAluminium",
+				"ingotAluminum",
 				'W',
 				"dustRedstone"
 		});
@@ -180,7 +180,7 @@ public class BasicRecipeRegister {
 				"XYX",
 				" X ",
 				'X',
-				"ingotAluminium",
+				"ingotAluminum",
 				'Y',
 				new ItemStack(Blocks.CHEST, 1, 0)
 		});
@@ -190,7 +190,7 @@ public class BasicRecipeRegister {
 				"Y",
 				"Z",
 				'X',
-				"ingotAluminium",
+				"ingotAluminum",
 				'Y',
 				"stickWood",
 				'Z',
