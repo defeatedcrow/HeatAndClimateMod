@@ -16,7 +16,7 @@
     "updateUrl":"",
     "version":"1.12.1_2.4.9",
     "requiredMods":[
-      "Minecraft Forge1.12.2-14.23.1.2555+", "HeatAndClimateLib-1.12.2_4.5+"
+      "Minecraft Forge1.12.2-14.23.1.2555+", "HeatAndClimateLib-1.12.2_4.4+"
     ]
   }
 ]

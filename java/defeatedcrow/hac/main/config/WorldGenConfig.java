@@ -23,7 +23,7 @@ public class WorldGenConfig {
 
 	public static int windmillGen = 50;
 
-	public static int caravanGen = 3;
+	public static int caravanGen = 2;
 
 	public static boolean mazaiLake = true;
 
@@ -59,7 +59,7 @@ public class WorldGenConfig {
 					"Generate in Forest or Plain. 0.1-100.0% (default: 5.0%)");
 
 			Property caravan = cfg.get("world setting", "Caravanserai Gen Probability", caravanGen,
-					"Generate in Desert or Savanna. 0.1-100.0% (default: 3.0%)");
+					"Generate in Desert or Savanna. 0.1-100.0% (default: 0.02%)");
 
 			Property mazai = cfg.get("world setting", "Mana Liqueur Lake Gen", mazaiLake,
 					"Enable genaration the mana liqueur lake in nether biome.");

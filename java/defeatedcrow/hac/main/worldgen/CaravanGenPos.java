@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.worldgen;
 
 import java.util.Random;
 
+import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
@@ -71,8 +72,9 @@ public class CaravanGenPos {
 		Random rand = new Random(seed);
 		rand.nextInt(1000);
 		rand.nextInt(1000);
+		rand.nextInt(1000);
 		int r = rand.nextInt(1000);
-		if (r < 10) { // WorldGenConfig.caravanGen) {
+		if (r < WorldGenConfig.caravanGen) {
 			return true;
 		}
 		return false;
@@ -81,8 +83,8 @@ public class CaravanGenPos {
 	public static int[] getRoomNum(int cx, int cz, World world) {
 		long seed = world.getSeed() + cx + cz * 31;
 		Random rand = new Random(seed);
-		rand.nextInt(3);
-		rand.nextInt(3);
+		rand.nextInt(4);
+		rand.nextInt(4);
 		int[] r = new int[4];
 		r[0] = rand.nextInt(4);
 		r[1] = rand.nextInt(4);
