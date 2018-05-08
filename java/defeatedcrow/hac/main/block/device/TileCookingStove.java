@@ -61,16 +61,6 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		super.updateTile();
 	}
 
-	@Override
-	public void onTickUpdate() {}
-
-	@Override
-	protected void onServerUpdate() {
-		if (this.currentBurnTime > 0 && BlockCookingStove.isPower(getWorld(), getPos())) {
-			this.currentBurnTime--;
-		}
-	}
-
 	/* 隣接tankから燃料液体を吸い取る */
 	@Override
 	public void checkSideTank() {

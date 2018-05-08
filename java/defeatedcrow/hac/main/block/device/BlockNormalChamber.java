@@ -12,15 +12,18 @@ import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -116,6 +119,39 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 			return false;
 		int meta = state.getBlock().getMetaFromState(state) & 3;
 		return meta == 1;
+	}
+
+	public static boolean isPower(IBlockAccess world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		if (state.getBlock() != MainInit.fuelStove)
+			return false;
+		int meta = state.getBlock().getMetaFromState(state) & 2;
+		return meta == 0;
+	}
+
+	// redstone
+
+	@Override
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+		if (!world.isRemote) {
+			boolean flag = world.isBlockPowered(pos);
+
+			if (flag || block.getDefaultState().canProvidePower()) {
+				int m = DCState.getInt(state, DCState.TYPE4);
+				int lit = m & 1;
+				boolean flag2 = m == 1;
+				boolean power = (m & 2) == 0;
+				if (flag && !power) {
+					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit + 2), 2);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
+							0.6F);
+				} else if (!flag && power) {
+					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit), 2);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
+							0.5F);
+				}
+			}
+		}
 	}
 
 	@Override

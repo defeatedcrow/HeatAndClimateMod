@@ -7,11 +7,13 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.base.DCSidedBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -31,16 +33,31 @@ public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCo
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"sugar", "salt", "flour", "rice"
+				"sugar",
+				"salt",
+				"flour",
+				"rice",
+				"starch"
 		};
 		return name;
 	}
 
+	public static ItemStack[] containedItem() {
+		ItemStack[] ret = new ItemStack[5];
+		ret[0] = new ItemStack(Items.SUGAR, 8);
+		ret[1] = new ItemStack(MainInit.foodMaterials, 8, 0);
+		ret[2] = new ItemStack(MainInit.foodMaterials, 8, 1);
+		ret[3] = new ItemStack(MainInit.foodMaterials, 8, 2);
+		ret[4] = new ItemStack(MainInit.foodMaterials, 8, 3);
+
+		return ret;
+	}
+
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
-		int m = meta & 3;
-		if (m > 3)
-			m = 3;
+		int m = meta & 7;
+		if (m > 4)
+			m = 4;
 		String b = "dcs_climate:blocks/cont/bags";
 		switch (side) {
 		case 0:
@@ -70,7 +87,9 @@ public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCo
 
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
-		int m = meta & 3;
+		int m = meta & 7;
+		if (m > 4)
+			m = 4;
 		String b = "dcs_climate:items/block/cont/";
 		return b + "bags_" + getNameSuffix()[m];
 	}

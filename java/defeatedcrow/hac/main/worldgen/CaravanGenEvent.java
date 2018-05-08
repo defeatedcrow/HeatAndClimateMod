@@ -64,7 +64,7 @@ public class CaravanGenEvent {
 			CaravanType type = CaravanType.getType(s2.getBlock());
 			int num = CaravanGenPos.getCaravanPartNum(cx, cz, world);
 
-			if (num >= 0) {
+			if (num >= 0 && season != null) {
 				if (type == CaravanType.STANDBY || type == CaravanType.UNINIT) {
 					if (num == 4) {
 						Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 16);
@@ -135,20 +135,18 @@ public class CaravanGenEvent {
 					}
 					DCLogger.infoLog("Caravanserai Updated: " + cx + ", " + cz);
 					world.setBlockState(pos.add(7, -4, 7), Blocks.DIAMOND_BLOCK.getDefaultState(), 2);
-				} else if (getSeason(s1) != season) {
-					if (type != CaravanType.BROKEN) {
-						Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 32);
-						if (village != null) {
-							DCLogger.infoLog("Caravanserai Stand-By: " + cx + ", " + cz);
-							world.setBlockState(pos.add(7, -4, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
-						} else {
-							DCLogger.infoLog("Broken Caravanserai: " + cx + ", " + cz);
-							world.setBlockState(pos.add(7, -4, 7), Blocks.LAPIS_BLOCK.getDefaultState(), 2);
-						}
+				} else if (type != CaravanType.BROKEN && getSeason(s1) != season) {
+					Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 32);
+					if (village != null) {
+						DCLogger.infoLog("Caravanserai Stand-By: " + cx + ", " + cz);
+						world.setBlockState(pos.add(7, -4, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
+					} else {
+						DCLogger.infoLog("Broken Caravanserai: " + cx + ", " + cz);
+						world.setBlockState(pos.add(7, -4, 7), Blocks.LAPIS_BLOCK.getDefaultState(), 2);
 					}
-					world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(
-							DCState.TYPE16, season.id), 2);
 				}
+				world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(DCState.TYPE16,
+						season.id), 2);
 			}
 		}
 	}
@@ -302,7 +300,7 @@ public class CaravanGenEvent {
 				}
 			}
 		}
-		return EnumSeason.SPRING;
+		return null;
 	}
 
 }

@@ -878,6 +878,7 @@ tile.dcs_device_catapult_0.name=カタパルト
 tile.dcs_device_hopper_filter_0.name=フィルターホッパー
 tile.dcs_device_hopper_gold_0.name=金のホッパー
 tile.dcs_device_hopper_filter_gold_0.name=金のフィルターホッパー
+tile.dcs_device_hopper_silver_0.name=圧縮ホッパー
 tile.dcs_device_hopper_fluid_0.name=液体ホッパー
 tile.dcs_device_thermometer_0.name=温度計
 tile.dcs_device_windvane_0.name=風見鶏

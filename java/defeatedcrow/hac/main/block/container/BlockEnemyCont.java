@@ -12,6 +12,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -31,9 +32,24 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"rotten", "bone", "spider", "ender", "powder"
+				"rotten",
+				"bone",
+				"spider",
+				"ender",
+				"powder"
 		};
 		return name;
+	}
+
+	public static ItemStack[] containedItem() {
+		ItemStack[] ret = new ItemStack[5];
+		ret[0] = new ItemStack(Items.ROTTEN_FLESH, 8);
+		ret[1] = new ItemStack(Items.BONE, 8);
+		ret[2] = new ItemStack(Items.SPIDER_EYE, 8);
+		ret[3] = new ItemStack(Items.ENDER_EYE, 8);
+		ret[3] = new ItemStack(Items.GUNPOWDER, 8);
+
+		return ret;
 	}
 
 	@Override

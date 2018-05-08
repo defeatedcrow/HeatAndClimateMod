@@ -890,6 +890,7 @@ tile.dcs_device_hopper_filter_0.name=Filter Hopper
 tile.dcs_device_hopper_gold_0.name=Golden Hopper
 tile.dcs_device_hopper_filter_gold_0.name=Golden Filter Hopper
 tile.dcs_device_hopper_fluid_0.name=Fluid Hopper
+tile.dcs_device_hopper_silver_0.name=Compression Hopper
 tile.dcs_device_thermometer_0.name=Galileo Thermometer
 tile.dcs_device_windvane_0.name=Wind vane
 tile.dcs_device_watermill_0.name=Watermill

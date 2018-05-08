@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -29,9 +30,18 @@ public class BlockFuelCont extends DCSimpleBlock implements ITexturePath, IRapid
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"coke", "carbide"
+				"coke",
+				"carbide"
 		};
 		return name;
+	}
+
+	public static ItemStack[] containedItem() {
+		ItemStack[] ret = new ItemStack[2];
+		ret[0] = new ItemStack(MachineInit.reagent, 8, 13);
+		ret[1] = new ItemStack(MachineInit.reagent, 8, 9);
+
+		return ret;
 	}
 
 	@Override

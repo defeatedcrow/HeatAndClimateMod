@@ -7,6 +7,8 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -29,10 +31,38 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"rice", "onion", "spinach", "tomato", "coffee", "cotton", "lemon", "olive", "tea", "lotus", "mulberry",
+				"rice",
+				"onion",
+				"spinach",
+				"tomato",
+				"coffee",
+				"cotton",
+				"lemon",
+				"olive",
+				"tea",
+				"lotus",
+				"mulberry",
 				"cocoon"
 		};
 		return name;
+	}
+
+	public static ItemStack[] containedItem() {
+		ItemStack[] ret = new ItemStack[12];
+		ret[0] = new ItemStack(FoodInit.crops, 8);
+		ret[1] = new ItemStack(FoodInit.crops, 8, 1);
+		ret[2] = new ItemStack(FoodInit.crops, 8, 2);
+		ret[3] = new ItemStack(FoodInit.crops, 8, 3);
+		ret[4] = new ItemStack(FoodInit.crops, 8, 4);
+		ret[5] = new ItemStack(FoodInit.crops, 8, 5);
+		ret[6] = new ItemStack(FoodInit.crops, 8, 6);
+		ret[7] = new ItemStack(FoodInit.crops, 8, 7);
+		ret[8] = new ItemStack(FoodInit.crops, 8, 8);
+		ret[9] = new ItemStack(FoodInit.crops, 8, 10);
+		ret[10] = new ItemStack(FoodInit.crops, 8, 11);
+		ret[11] = new ItemStack(MainInit.silkworm, 8, 2);
+
+		return ret;
 	}
 
 	@Override

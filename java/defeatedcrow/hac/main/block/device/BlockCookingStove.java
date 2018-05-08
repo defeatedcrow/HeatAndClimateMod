@@ -15,13 +15,11 @@ import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -45,8 +43,8 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 			if (!player.isSneaking() && tile instanceof TileCookingStove) {
 				boolean flag = false;
 				ItemStack held = player.getHeldItem(hand);
-				if (!DCUtil.isEmpty(held)
-						&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+				if (!DCUtil.isEmpty(held) && held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY,
+						side)) {
 					IFluidHandler cont = held.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
@@ -61,9 +59,6 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				}
 				return true;
-			} else {
-				this.changePowerState(world, pos);
-				world.playSound(null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.8F, 2.0F);
 			}
 		}
 		return true;
@@ -123,34 +118,12 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 		}
 	}
 
-	public static void changePowerState(World world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() == MainInit.fuelStove) {
-			int m = DCState.getInt(state, DCState.TYPE4);
-			int lit = m & 1;
-			boolean power = (m & 2) == 0;
-			if (power) {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit + 2), 3);
-			} else {
-				world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit), 3);
-			}
-		}
-	}
-
 	public static boolean isLit(IBlockAccess world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() != MainInit.fuelStove)
 			return false;
 		int meta = state.getBlock().getMetaFromState(state) & 1;
 		return meta == 1;
-	}
-
-	public static boolean isPower(IBlockAccess world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() != MainInit.fuelStove)
-			return false;
-		int meta = state.getBlock().getMetaFromState(state) & 2;
-		return meta == 0;
 	}
 
 	@Override

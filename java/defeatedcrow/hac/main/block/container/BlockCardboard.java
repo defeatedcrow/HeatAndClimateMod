@@ -12,6 +12,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -31,9 +33,26 @@ public class BlockCardboard extends DCSidedBlock implements ITexturePath, IRapid
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"beef", "pork", "chicken", "sheep", "egg", "wool"
+				"beef",
+				"pork",
+				"chicken",
+				"sheep",
+				"egg",
+				"wool"
 		};
 		return name;
+	}
+
+	public static ItemStack[] containedItem() {
+		ItemStack[] ret = new ItemStack[6];
+		ret[0] = new ItemStack(Items.BEEF, 8);
+		ret[1] = new ItemStack(Items.PORKCHOP, 8);
+		ret[2] = new ItemStack(Items.CHICKEN, 8);
+		ret[3] = new ItemStack(Items.MUTTON, 8);
+		ret[4] = new ItemStack(Items.EGG, 8);
+		ret[5] = new ItemStack(Blocks.WOOL, 8);
+
+		return ret;
 	}
 
 	@Override

@@ -95,7 +95,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			minZ = 3;
 		}
 
-		for (int y = -10; y < 20; y++) {
+		for (int y = -10; y < 40; y++) {
 			for (int x = minX; x < maxX; x++) {
 				for (int z = minZ; z < maxZ; z++) {
 					BlockPos pos = new BlockPos(px + x, py + y, pz + z);
