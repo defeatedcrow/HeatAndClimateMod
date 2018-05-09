@@ -83,6 +83,19 @@ public class FoodBasicRecipe {
 				new ItemStack(Items.PAPER, 1, 0)
 		});
 
+		// 中身リセット
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.potteryPot, 1, 0), new Object[] {
+				new ItemStack(FoodInit.potteryPot, 1, 0)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.steelPot, 1, 0), new Object[] {
+				new ItemStack(FoodInit.steelPot, 1, 0)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.teaPot, 1, 0), new Object[] {
+				new ItemStack(FoodInit.teaPot, 1, 0)
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(FoodInit.dish, 1, 0), new Object[] {
 				"XXX",
 				" X ",

@@ -241,9 +241,9 @@ public class MainMaterialRegister {
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.cardboard, "cont_cardboard", 5);
 
-		MainInit.dustBags = new BlockDustBag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_bags", 3);
+		MainInit.dustBags = new BlockDustBag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_bags", 5);
 		DCMaterialReg.registerBlock(MainInit.dustBags, ClimateCore.PACKAGE_BASE + "_cont_bags", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 3);
+		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 5);
 
 		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 11);
 		DCMaterialReg.registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket", ClimateMain.MOD_ID);

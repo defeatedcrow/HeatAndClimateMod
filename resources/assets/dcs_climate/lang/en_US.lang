@@ -645,6 +645,8 @@ tile.dcs_cont_bags_sugar.name=Sugar Bags
 tile.dcs_cont_bags_salt.name=Salt Bags
 tile.dcs_cont_bags_flour.name=Flour Bags
 tile.dcs_cont_bags_rice.name=Rice Bags
+tile.dcs_cont_bags_starch.name=Starch Bags
+tile.dcs_cont_bags_seed.name=Wheat Seeds Bags
 tile.dcs_cont_basket_rice.name=Rice Plant Basket
 tile.dcs_cont_basket_onion.name=Onion Basket
 tile.dcs_cont_basket_spinach.name=Spinach Basket
@@ -659,6 +661,8 @@ tile.dcs_cont_basket_mulberry.name=Mulberry Basket
 tile.dcs_cont_basket_cocoon.name=Cocoon Basket
 tile.dcs_cont_fuel_coke.name=Fuel Coke Container
 tile.dcs_cont_fuel_carbide.name=Carbide Container
+tile.dcs_cont_fuel_smokeless.name=Smokeless Powder Container
+tile.dcs_cont_fuel_synthetic.name=Synthetic Drop Container
 
 ## building blocks
 tile.dcs_build_selenite_normal.name=Selenite Glass

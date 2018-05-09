@@ -499,12 +499,36 @@ public class MachineRecipes {
 				"gemCarbide"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.fuelCont, 1, 2), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(MachineInit.reagent, 1, 8)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.fuelCont, 1, 3), new Object[] {
+				"XXX",
+				"XXX",
+				"XXX",
+				'X',
+				new ItemStack(MachineInit.reagent, 1, 2)
+		});
+
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 9, 13), new Object[] {
 				new ItemStack(MachineInit.fuelCont, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 9, 9), new Object[] {
 				new ItemStack(MachineInit.fuelCont, 1, 1)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 9, 8), new Object[] {
+				new ItemStack(MachineInit.fuelCont, 1, 2)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 9, 2), new Object[] {
+				new ItemStack(MachineInit.fuelCont, 1, 3)
 		});
 
 		/* == items == */

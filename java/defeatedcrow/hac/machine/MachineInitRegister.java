@@ -273,9 +273,11 @@ public class MachineInitRegister {
 		MainMaterialRegister.registerBlock(MachineInit.fuelCont, ClimateCore.PACKAGE_BASE + "_cont_fuel",
 				ClimateMain.MOD_ID, new int[] {
 						54000,
-						128000
+						128000,
+						0,
+						0
 				});
-		ClimateMain.proxy.addSidedBlock(MachineInit.fuelCont, "cont_fuel", 1);
+		ClimateMain.proxy.addSidedBlock(MachineInit.fuelCont, "cont_fuel", 3);
 
 		MachineInit.monitorRS = new BlockMonitorRedStone(ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
 		MachineInit.monitorRS.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_rs");

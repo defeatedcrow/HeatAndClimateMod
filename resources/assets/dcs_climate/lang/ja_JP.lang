@@ -635,6 +635,8 @@ tile.dcs_cont_bags_sugar.name=砂糖袋
 tile.dcs_cont_bags_salt.name=塩袋
 tile.dcs_cont_bags_flour.name=小麦粉袋
 tile.dcs_cont_bags_rice.name=米袋
+tile.dcs_cont_bags_starch.name=スターチ袋
+tile.dcs_cont_bags_seed.name=種袋
 tile.dcs_cont_basket_rice.name=稲のバスケット
 tile.dcs_cont_basket_onion.name=玉ねぎのバスケット
 tile.dcs_cont_basket_spinach.name=ほうれんそうのバスケット
@@ -649,6 +651,8 @@ tile.dcs_cont_basket_mulberry.name=マルベリーのバスケット
 tile.dcs_cont_basket_cocoon.name=繭玉のバスケット
 tile.dcs_cont_fuel_coke.name=コークスのコンテナ
 tile.dcs_cont_fuel_carbide.name=カーバイドのコンテナ
+tile.dcs_cont_fuel_smokeless.name=無煙火薬のコンテナ
+tile.dcs_cont_fuel_synthetic.name=合成樹脂のコンテナ
 
 tile.dcs_build_selenite_normal.name=セレナイトガラス
 tile.dcs_build_selenite_light.name=セレナイトランプガラス

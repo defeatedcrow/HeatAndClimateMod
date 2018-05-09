@@ -96,11 +96,15 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		}
 
 		for (int y = -10; y < 40; y++) {
-			for (int x = minX; x < maxX; x++) {
-				for (int z = minZ; z < maxZ; z++) {
+			for (int x = 0; x < 16; x++) {
+				for (int z = 0; z < 16; z++) {
 					BlockPos pos = new BlockPos(px + x, py + y, pz + z);
 					IBlockState set = getPartBase(num, x, y, z, rand);
-					world.setBlockState(pos, set, 2);
+					if (x >= minX && x < maxX && z >= minZ && z < maxZ) {
+						world.setBlockState(pos, set, 2);
+					} else {
+						world.setBlockToAir(pos);
+					}
 				}
 			}
 		}
