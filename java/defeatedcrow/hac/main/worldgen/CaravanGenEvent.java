@@ -133,21 +133,24 @@ public class CaravanGenEvent {
 							}
 						}
 					}
-					DCLogger.infoLog("Caravanserai Updated: " + cx + ", " + cz);
+					DCLogger.debugLog("Caravanserai Updated: " + cx + ", " + cz);
 					world.setBlockState(pos.add(7, -4, 7), Blocks.DIAMOND_BLOCK.getDefaultState(), 2);
 				} else if (getSeason(s1) != season) {
 					Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 32);
 					if (village != null) {
-						DCLogger.infoLog("Caravanserai Stand-By: " + cx + ", " + cz);
+						DCLogger.debugLog("Caravanserai Stand-By: " + cx + ", " + cz);
 						world.setBlockState(pos.add(7, -4, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
 					} else {
-						DCLogger.infoLog("Broken Caravanserai: " + cx + ", " + cz);
+						DCLogger.debugLog("Broken Caravanserai: " + cx + ", " + cz);
 						world.setBlockState(pos.add(7, -4, 7), Blocks.LAPIS_BLOCK.getDefaultState(), 2);
 					}
 					world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(
 							DCState.TYPE16, season.id), 2);
 				}
 
+			} else if (getSeason(s1) != null && type == CaravanType.BROKEN) {
+				IBlockState set = world.getBlockState(pos.add(8, -5, 8));
+				world.setBlockState(pos.add(8, -4, 8), set, 2);
 			}
 		}
 	}

@@ -37,7 +37,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 				} else {
 					generatePart(num, rand, cx, cz, world);
 				}
-				DCLogger.infoLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2);
+				DCLogger.debugLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2);
 			}
 		}
 	}
@@ -102,7 +102,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 					IBlockState set = getPartBase(num, x, y, z, rand);
 					if (x >= minX && x < maxX && z >= minZ && z < maxZ) {
 						world.setBlockState(pos, set, 2);
-					} else {
+					} else if (y > 0) {
 						world.setBlockToAir(pos);
 					}
 				}
