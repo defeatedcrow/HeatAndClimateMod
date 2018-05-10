@@ -336,13 +336,6 @@ public class LoadingBuildingRecipe {
 				new ItemStack(MainInit.dustBlock_2, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 4, 7), new Object[] {
-				"XX",
-				"XX",
-				'X',
-				new ItemStack(MainInit.dustBlock_2, 1, 0)
-		});
-
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.builds, 2, 8), new Object[] {
 				"XY",
 				"YX",

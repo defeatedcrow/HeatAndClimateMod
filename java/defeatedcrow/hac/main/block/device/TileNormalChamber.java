@@ -74,7 +74,7 @@ public class TileNormalChamber extends TileChamberBase {
 
 	@Override
 	protected void onServerUpdate() {
-		if (this.currentBurnTime > 0) {
+		if (this.currentBurnTime > 0 && BlockNormalChamber.isPower(getWorld(), getPos())) {
 			this.currentBurnTime--;
 		}
 	}

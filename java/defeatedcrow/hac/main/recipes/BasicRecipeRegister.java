@@ -197,6 +197,11 @@ public class BasicRecipeRegister {
 				"plankWood"
 		});
 
+		// なんでバニラにねぇのこれ
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(Items.PRISMARINE_SHARD, 9, 0), new Object[] {
+				new ItemStack(Blocks.PRISMARINE, 1, 0)
+		});
+
 		// マテリアル変換
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 0), new Object[] {
 				new ItemStack(MainInit.materials, 1, 0)

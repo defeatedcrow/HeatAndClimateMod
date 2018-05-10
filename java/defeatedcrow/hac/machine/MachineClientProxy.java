@@ -25,6 +25,7 @@ import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFilterG;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileHopperGold;
+import defeatedcrow.hac.machine.block.TileHopperSilver;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TileMonitorFluid;
@@ -155,6 +156,7 @@ public class MachineClientProxy {
 		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
 		GameRegistry.registerTileEntity(TileHopperGold.class, "dcs_te_hopper_gold");
 		GameRegistry.registerTileEntity(TileHopperFilterG.class, "dcs_te_hopper_filter_gold");
+		GameRegistry.registerTileEntity(TileHopperSilver.class, "dcs_te_hopper_silver");
 		ClientRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid", new HopperFluidTESR());
 		ClientRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill", new WatermillTESR());
 		ClientRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
@@ -236,6 +238,8 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.hopperGold, ClimateCore.PACKAGE_ID, "dcs_device_hopper_gold", "machine", 0);
 		instance.regSimpleBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter_gold",
 				"machine", 0);
+		instance.regSimpleBlock(MachineInit.hopperSilver, ClimateCore.PACKAGE_ID, "dcs_device_hopper_silver", "machine",
+				0);
 		instance.regTETorqueBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine",
 				0);
 		instance.regTETorqueBlock(MachineInit.watermill, ClimateCore.PACKAGE_ID, "dcs_device_watermill", "machine", 0);
@@ -284,8 +288,8 @@ public class MachineClientProxy {
 
 		// fluid
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.hydrogenBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -293,8 +297,8 @@ public class MachineClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(MachineInit.hydrogenBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -303,8 +307,8 @@ public class MachineClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.ammoniaBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -312,8 +316,8 @@ public class MachineClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(MachineInit.ammoniaBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -322,8 +326,8 @@ public class MachineClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.fuelGasBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -331,8 +335,8 @@ public class MachineClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(MachineInit.fuelGasBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -341,8 +345,8 @@ public class MachineClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.fuelOilBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -350,8 +354,8 @@ public class MachineClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(MachineInit.fuelOilBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -361,8 +365,8 @@ public class MachineClientProxy {
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.nitricAcidBlock),
 				new ItemMeshDefinition() {
-					final ModelResourceLocation fluidModel = new ModelResourceLocation(
-							ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid", "fluid");
+					final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+							ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid", "fluid");
 
 					@Override
 					public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -370,8 +374,8 @@ public class MachineClientProxy {
 					}
 				});
 		ModelLoader.setCustomStateMapper(MachineInit.nitricAcidBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -381,8 +385,8 @@ public class MachineClientProxy {
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.sulfuricAcidBlock),
 				new ItemMeshDefinition() {
-					final ModelResourceLocation fluidModel = new ModelResourceLocation(
-							ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", "fluid");
+					final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+							ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", "fluid");
 
 					@Override
 					public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -390,8 +394,8 @@ public class MachineClientProxy {
 					}
 				});
 		ModelLoader.setCustomStateMapper(MachineInit.sulfuricAcidBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -400,8 +404,8 @@ public class MachineClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.nitrogenBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -409,8 +413,8 @@ public class MachineClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(MachineInit.nitrogenBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -419,8 +423,8 @@ public class MachineClientProxy {
 		});
 
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.ethanolBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol", "fluid");
 
 			@Override
 			public ModelResourceLocation getModelLocation(ItemStack stack) {
@@ -428,8 +432,8 @@ public class MachineClientProxy {
 			}
 		});
 		ModelLoader.setCustomStateMapper(MachineInit.ethanolBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol", "fluid");
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
+					ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol", "fluid");
 
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {

@@ -23,6 +23,7 @@ import defeatedcrow.hac.machine.block.TileHopperFilter;
 import defeatedcrow.hac.machine.block.TileHopperFilterG;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileHopperGold;
+import defeatedcrow.hac.machine.block.TileHopperSilver;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TileMonitorFluid;
@@ -91,6 +92,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
 		GameRegistry.registerTileEntity(TileHopperGold.class, "dcs_te_hopper_gold");
 		GameRegistry.registerTileEntity(TileHopperFilterG.class, "dcs_te_hopper_filter_gold");
+		GameRegistry.registerTileEntity(TileHopperSilver.class, "dcs_te_hopper_silver");
 		GameRegistry.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid");
 		GameRegistry.registerTileEntity(TileWatermill.class, "dcs_te_watermill");
 		GameRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo");

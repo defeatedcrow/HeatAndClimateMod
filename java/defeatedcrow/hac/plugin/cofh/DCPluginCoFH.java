@@ -102,12 +102,12 @@ public class DCPluginCoFH {
 	static void loadDCRecipes() {
 		if (tar != null && coal != null && crude != null) {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 0), null,
-					new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0, new ItemStack(
+					new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0.5F, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(coal, 200), new FluidStack(FluidRegistry.WATER,
 									100), new Object[] {}), DCHeatTier.KILN);
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 7), null,
-					new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0, new ItemStack(
+					new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0.5F, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 100), null, new Object[] {
 									tar
 					}), DCHeatTier.KILN);
@@ -120,7 +120,7 @@ public class DCPluginCoFH {
 
 		if (tree != null && resin != null && rogin != null) {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(rogin, null, new FluidStack(
-					MachineInit.fuelOil, 200), null, DCHeatTier.KILN, 0, new ItemStack(MachineInit.catalyst, 1, 0),
+					MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0.5F, new ItemStack(MachineInit.catalyst, 1, 0),
 					new FluidStack(resin, 200), null, new Object[] {}), DCHeatTier.KILN);
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 1), null,

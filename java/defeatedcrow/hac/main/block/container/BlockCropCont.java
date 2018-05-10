@@ -7,10 +7,13 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -29,10 +32,36 @@ public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapid
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"apple", "potato", "carrot", "pumpkin", "melon", "cactus", "reed", "wart", "cocoa", "baked_apple",
+				"apple",
+				"potato",
+				"carrot",
+				"pumpkin",
+				"melon",
+				"cactus",
+				"reed",
+				"wart",
+				"cocoa",
+				"baked_apple",
 				"baked_potato"
 		};
 		return name;
+	}
+
+	public static ItemStack[] containedItem() {
+		ItemStack[] ret = new ItemStack[11];
+		ret[0] = new ItemStack(Items.APPLE, 8);
+		ret[1] = new ItemStack(Items.POTATO, 8);
+		ret[2] = new ItemStack(Items.CARROT, 8);
+		ret[3] = new ItemStack(Blocks.PUMPKIN, 8);
+		ret[4] = new ItemStack(Blocks.MELON_BLOCK, 8);
+		ret[5] = new ItemStack(Blocks.CACTUS, 8);
+		ret[6] = new ItemStack(Items.REEDS, 8);
+		ret[7] = new ItemStack(Items.NETHER_WART, 8);
+		ret[8] = new ItemStack(Items.DYE, 8, 3);
+		ret[9] = new ItemStack(MainInit.bakedApple, 8);
+		ret[10] = new ItemStack(Items.BAKED_POTATO, 8);
+
+		return ret;
 	}
 
 	@Override

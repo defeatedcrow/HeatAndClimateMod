@@ -36,7 +36,7 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInventory {
 
-	private DCInventory inv = new DCInventory(5);
+	protected DCInventory inv = new DCInventory(5);
 	private int cooldown = -1;
 	private int lastCount = 0;
 
@@ -64,7 +64,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	}
 
 	@Nullable
-	private EnumFacing getCurrentFacing() {
+	protected EnumFacing getCurrentFacing() {
 		IBlockState state = this.world.getBlockState(pos);
 		if (state != null && state.getBlock() instanceof BlockHopperFilter) {
 			EnumSide side = DCState.getSide(state, DCState.SIDE);
@@ -82,7 +82,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		return true;
 	}
 
-	private boolean extractItem() {
+	protected boolean extractItem() {
 		EnumFacing face = getCurrentFacing();
 		if (face != null) {
 			TileEntity tile = world.getTileEntity(pos.offset(face));
@@ -114,7 +114,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		return false;
 	}
 
-	private boolean suctionItem() {
+	protected boolean suctionItem() {
 		EnumFacing face = getCurrentFacing() == EnumFacing.UP ? EnumFacing.DOWN : EnumFacing.UP;
 		TileEntity tile = world.getTileEntity(pos.offset(face));
 		if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
@@ -334,7 +334,12 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	protected int[] slotsSides() {
 		return new int[] {
-				0, 1, 2, 3, 4, 5
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
 		};
 	};
 

@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class MainUtil {
 
@@ -54,8 +55,7 @@ public class MainUtil {
 	}
 
 	public static ItemStack getRandomGem2(int i) {
-		int meta = 4
-				+ DCUtil.rand.nextInt(17);
+		int meta = 4 + DCUtil.rand.nextInt(17);
 		return new ItemStack(MainInit.gems, i, meta);
 	}
 
@@ -245,16 +245,14 @@ public class MainUtil {
 	};
 
 	public static boolean isPlayerHeldItem(Item item, EntityPlayer player) {
-		if (item == null
-				|| player == null)
+		if (item == null || player == null)
 			return false;
 
 		return isPlayerHeldItem(new ItemStack(item, 1, 0), player);
 	}
 
 	public static boolean isPlayerHeldItem(ItemStack item, EntityPlayer player) {
-		if (DCUtil.isEmpty(item)
-				|| player == null)
+		if (DCUtil.isEmpty(item) || player == null)
 			return false;
 
 		if (player.getHeldItem(EnumHand.MAIN_HAND) != null) {
@@ -266,6 +264,26 @@ public class MainUtil {
 				return true;
 		}
 
+		return false;
+	}
+
+	public static boolean hasSameDic(ItemStack item, ItemStack check) {
+		if (!DCUtil.isEmpty(item) && !DCUtil.isEmpty(check)) {
+			int[] ids = OreDictionary.getOreIDs(check);
+			int[] ids2 = OreDictionary.getOreIDs(item);
+			if (ids.length < 1 || ids2.length < 1) {
+				return false;
+			}
+			for (int id : ids) {
+				for (int id2 : ids2) {
+					if (id == id2) {
+						String s = OreDictionary.getOreName(id);
+						if (!s.contains("All") && !s.contains("dye") && !s.contains("list"))
+							return true;
+					}
+				}
+			}
+		}
 		return false;
 	}
 

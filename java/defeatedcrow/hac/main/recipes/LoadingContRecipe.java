@@ -141,7 +141,9 @@ public class LoadingContRecipe {
 				new ItemStack(Items.SUGAR, 8, 0),
 				new ItemStack(MainInit.foodMaterials, 8, 0),
 				new ItemStack(MainInit.foodMaterials, 8, 1),
-				new ItemStack(MainInit.foodMaterials, 8, 2)
+				new ItemStack(MainInit.foodMaterials, 8, 2),
+				new ItemStack(MainInit.foodMaterials, 8, 3),
+				new ItemStack(Items.WHEAT_SEEDS, 8)
 		};
 		for (int i = 0; i < dust.length; i++) {
 			ItemStack c2 = dust[i].copy();

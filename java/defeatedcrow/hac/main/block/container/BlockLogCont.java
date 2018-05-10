@@ -12,6 +12,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -31,9 +33,28 @@ public class BlockLogCont extends DCSidedBlock implements ITexturePath, IRapidCo
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"oak", "spruce", "birch", "jungle", "acacia", "dark", "charcoal"
+				"oak",
+				"spruce",
+				"birch",
+				"jungle",
+				"acacia",
+				"dark",
+				"charcoal"
 		};
 		return name;
+	}
+
+	public static ItemStack[] containedItem() {
+		ItemStack[] ret = new ItemStack[7];
+		ret[0] = new ItemStack(Blocks.LOG, 8, 0);
+		ret[1] = new ItemStack(Blocks.LOG, 8, 1);
+		ret[2] = new ItemStack(Blocks.LOG, 8, 2);
+		ret[3] = new ItemStack(Blocks.LOG, 8, 3);
+		ret[4] = new ItemStack(Blocks.LOG2, 8, 0);
+		ret[5] = new ItemStack(Blocks.LOG2, 8, 1);
+		ret[6] = new ItemStack(Items.COAL, 8, 1);
+
+		return ret;
 	}
 
 	@Override
