@@ -105,19 +105,19 @@ public class FoodFluidRecipe {
 				});
 
 		// 醸造
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 500),
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 300),
 				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						"dustStarch",
 						"foodMalt"
 				});
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 300),
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 200),
 				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						"dustSugar",
 						"foodMalt"
 				});
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 200),
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 150),
 				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						"cropPotato",
 						"foodMalt"
@@ -129,7 +129,7 @@ public class FoodFluidRecipe {
 						"foodMalt"
 				});
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 200),
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MachineInit.ethanol, 150),
 				DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
 						"foodRice",
 						"foodMalt"

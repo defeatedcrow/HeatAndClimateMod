@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -13,14 +14,25 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
 
-public class ItemDCSeeds extends DCItem {
+public class ItemDCSeeds extends DCItem implements IPlantable {
 
 	private final int maxMeta;
 
 	private static String[] names = {
-			"rice", "onion", "spinach", "tomato", "coffee", "cotton", "lotus", "herb", "seaweed"
+			"rice",
+			"onion",
+			"spinach",
+			"tomato",
+			"coffee",
+			"cotton",
+			"lotus",
+			"herb",
+			"seaweed"
 	};
 
 	public ItemDCSeeds(int max) {
@@ -95,6 +107,27 @@ public class ItemDCSeeds extends DCItem {
 		default:
 			return FoodInit.cropRice;
 		}
+	}
+
+	/**
+	 * Be careful!
+	 * I do not guarantee the operation of the following parts. Use at your own risk.
+	 *
+	 * @author defeatedcrow
+	 */
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		return state.getMaterial() == Material.WATER ? EnumPlantType.Plains : EnumPlantType.Crop;
+	}
+
+	@Override
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		if (!(state.getBlock() instanceof IClimateCrop))
+			return FoodInit.cropRice.getDefaultState();
+		return state;
 	}
 
 }
