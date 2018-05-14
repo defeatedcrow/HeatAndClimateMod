@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -40,9 +41,45 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 	}
 
 	private static String[] names = {
-			"copper", "zinc", "nickel", "silver", "brass", "steel", "nickelsilver", "magnet", "tin", "bronze", "sus",
-			"gold", "titanium", "aluminium", "bismuth", "bscco"
+			"copper",
+			"zinc",
+			"nickel",
+			"silver",
+			"brass",
+			"steel",
+			"nickelsilver",
+			"magnet",
+			"tin",
+			"bronze",
+			"sus",
+			"gold",
+			"titanium",
+			"aluminium",
+			"bismuth",
+			"bscco"
 	};
+
+	public static ItemStack[] containedItem() {
+		ItemStack[] ret = new ItemStack[16];
+		ret[0] = new ItemStack(MainInit.oreDust, 9, 0);
+		ret[1] = new ItemStack(MainInit.oreDust, 9, 1);
+		ret[2] = new ItemStack(MainInit.oreDust, 9, 2);
+		ret[3] = new ItemStack(MainInit.oreDust, 9, 3);
+		ret[4] = ItemStack.EMPTY;
+		ret[5] = ItemStack.EMPTY;
+		ret[6] = ItemStack.EMPTY;
+		ret[7] = ItemStack.EMPTY;
+		ret[8] = new ItemStack(MainInit.oreDust, 9, 8);
+		ret[9] = ItemStack.EMPTY;
+		ret[10] = ItemStack.EMPTY;
+		ret[11] = new ItemStack(MainInit.oreDust, 9, 4);
+		ret[12] = ItemStack.EMPTY;
+		ret[13] = new ItemStack(MainInit.oreDust, 9, 11);
+		ret[14] = new ItemStack(MainInit.oreDust, 9, 12);
+		ret[15] = ItemStack.EMPTY;
+
+		return ret;
+	}
 
 	@Override
 	public String[] getNameSuffix() {

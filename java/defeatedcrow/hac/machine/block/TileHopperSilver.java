@@ -4,6 +4,7 @@ import java.util.List;
 
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.machine.block.cont.BlockFuelCont;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
@@ -12,6 +13,7 @@ import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
+import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -169,8 +171,14 @@ public class TileHopperSilver extends TileHopperFilter {
 					}
 				}
 				return null;
-			} else if (name.contains("fuelCoke")) {
-				return new ReturnPair(new ItemStack(MachineInit.fuelCont), 9);
+			}
+		}
+
+		ItemStack[] dust = BlockDusts.containedItem();
+		for (int i = 0; i < dust.length; i++) {
+			ItemStack check = dust[i];
+			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
+				return new ReturnPair(new ItemStack(MainInit.dustBlock, 1, i), 9);
 			}
 		}
 
@@ -227,6 +235,14 @@ public class TileHopperSilver extends TileHopperFilter {
 			ItemStack check = cont7[i7];
 			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
 				return new ReturnPair(new ItemStack(MainInit.miscCont, 1, i7), 8);
+			}
+		}
+
+		ItemStack[] cont8 = BlockFuelCont.containedItem();
+		for (int i8 = 0; i8 < cont8.length; i8++) {
+			ItemStack check = cont8[i8];
+			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
+				return new ReturnPair(new ItemStack(MachineInit.fuelCont, 1, i8), 9);
 			}
 		}
 

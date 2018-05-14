@@ -3,9 +3,11 @@ package defeatedcrow.hac.main.client;
 import org.lwjgl.opengl.GL11;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.climate.WeatherChecker;
+import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -105,6 +107,10 @@ public class AdvancedHUDEvent {
 						String temp = clm.getHeat().toString();
 						String hum = clm.getHumidity().toString();
 						String air = clm.getAirflow().toString();
+
+						EnumSeason season = DCTimeHelper.getSeasonEnum(world);
+						int day = DCTimeHelper.getDay(world);
+						fr.drawString(season.name() + " " + day, x + 5, y - 8, season.color.getColorValue(), true);
 
 						Biome biome = Biome.getBiomeForId(biomeID);
 						if (biome != null) {

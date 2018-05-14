@@ -440,7 +440,7 @@ public class MachineRecipes {
 				"Z",
 				"Y",
 				'Y',
-				new ItemStack(MachineInit.hopperFilter, 1, 0),
+				new ItemStack(MachineInit.hopperGold, 1, 0),
 				'Z',
 				new ItemStack(Blocks.IRON_BARS, 1, 0)
 		});
