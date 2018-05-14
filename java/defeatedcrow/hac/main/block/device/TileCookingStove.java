@@ -131,6 +131,13 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	/* 燃焼判定 */
 
+	@Override
+	protected void onServerUpdate() {
+		if (this.currentBurnTime > 0 && BlockCookingStove.isPower(getWorld(), getPos())) {
+			this.currentBurnTime--;
+		}
+	}
+
 	public static int getBurnTime(Fluid fluid) {
 		int burn = MainAPIManager.fuelRegister.getBurningTime(fluid);
 		return burn;

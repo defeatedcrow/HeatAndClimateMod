@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -48,10 +49,10 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 			TileEntity tile = world.getTileEntity(pos);
 			if (!player.isSneaking() && tile instanceof TileGasBurner && hand == EnumHand.MAIN_HAND) {
 				boolean flag = false;
-				if (!DCUtil.isEmpty(heldItem)
-						&& heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
-					IFluidHandlerItem cont = heldItem
-							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
+				if (!DCUtil.isEmpty(heldItem) && heldItem.hasCapability(
+						CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+					IFluidHandlerItem cont = heldItem.getCapability(
+							CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
 						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid())) {
@@ -67,9 +68,6 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				}
 				return true;
-			} else {
-				this.changePowerState(world, pos);
-				world.playSound(null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.8F, 2.0F);
 			}
 		}
 		return true;
@@ -162,6 +160,31 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 		IBlockState state = world.getBlockState(pos);
 		int meta = DCState.getInt(state, DCState.TYPE4);
 		return meta == 0 || meta == 1;
+	}
+
+	// redstone
+
+	@Override
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+		if (!world.isRemote) {
+			boolean flag = world.isBlockPowered(pos);
+
+			if (flag || block.getDefaultState().canProvidePower()) {
+				int m = DCState.getInt(state, DCState.TYPE4);
+				int lit = m & 1;
+				boolean flag2 = m == 1;
+				boolean power = (m & 2) != 0;
+				if (flag && !power) {
+					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit + 2), 3);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
+							0.6F);
+				} else if (!flag && power) {
+					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit), 3);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
+							0.5F);
+				}
+			}
+		}
 	}
 
 	@Override

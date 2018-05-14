@@ -10,16 +10,18 @@ import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -87,7 +89,7 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 	@Override
 	public DCHeatTier getHeatTier(World world, BlockPos from, BlockPos to) {
 		IBlockState state = world.getBlockState(to);
-		int meta = this.getMetaFromState(state);
+		int meta = DCState.getInt(state, DCState.TYPE4);
 		if ((meta & 3) == 1 && (to.equals(from.down()) || to.equals(from.down(2))))
 			return DCHeatTier.SMELTING;
 		return DCHeatTier.NORMAL;
@@ -107,8 +109,8 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 
 	public static void changeLitState(World world, BlockPos pos, boolean f) {
 		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() == MainInit.fuelStove) {
-			int m = DCState.getInt(state, DCState.TYPE4);
+		int m = DCState.getInt(state, DCState.TYPE4);
+		if (m >= 0) {
 			int power = m & 2;
 			if (f) {
 				world.setBlockState(pos, state.withProperty(DCState.TYPE4, 1 + power), 3);
@@ -118,12 +120,55 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 		}
 	}
 
+	public static void changePowerState(World world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		int m = DCState.getInt(state, DCState.TYPE4);
+		if (m >= 0) {
+			int lit = m & 1;
+			boolean power = (m & 2) == 0;
+			if (power) {
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit + 2), 3);
+			} else {
+				world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit), 3);
+			}
+		}
+	}
+
 	public static boolean isLit(IBlockAccess world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		if (state.getBlock() != MainInit.fuelStove)
-			return false;
-		int meta = state.getBlock().getMetaFromState(state) & 1;
-		return meta == 1;
+		int meta = DCState.getInt(state, DCState.TYPE4);
+		return meta == 1 || meta == 3;
+	}
+
+	public static boolean isPower(IBlockAccess world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		int meta = DCState.getInt(state, DCState.TYPE4);
+		return meta == 0 || meta == 1;
+	}
+
+	// redstone
+
+	@Override
+	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+		if (!world.isRemote) {
+			boolean flag = world.isBlockPowered(pos);
+
+			if (flag || block.getDefaultState().canProvidePower()) {
+				int m = DCState.getInt(state, DCState.TYPE4);
+				int lit = m & 1;
+				boolean flag2 = m == 1;
+				boolean power = (m & 2) != 0;
+				if (flag && !power) {
+					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit + 2), 3);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
+							0.6F);
+				} else if (!flag && power) {
+					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit), 3);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
+							0.5F);
+				}
+			}
+		}
 	}
 
 	@Override
