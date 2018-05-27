@@ -9,6 +9,8 @@ import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.plugin.DCIntegrationCore;
+import defeatedcrow.hac.plugin.tan.DCThirstHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -252,6 +254,11 @@ public class ItemFluidPack extends DCItem {
 			int meta = stack.getMetadata();
 			Fluid fluid = getFluid(meta);
 			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 1F, 1);
+
+			if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
+				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
+			}
+
 			if (meta == 2 || fluid == FoodInit.tomatoJuice) {
 				living.clearActivePotions();
 				return false;
@@ -262,23 +269,23 @@ public class ItemFluidPack extends DCItem {
 					living.attackEntityFrom(DamageSource.GENERIC, 20.0F);
 				}
 				return false;
-			} else if (effects.isEmpty()) {
-				return false;
-			}
-			for (PotionEffect get : effects) {
-				if (get != null && get.getPotion() != null) {
-					Potion por = get.getPotion();
-					if (por == null)
-						continue;
-					int amp = get.getAmplifier();
-					int dur = get.getDuration();
-					if (living.isPotionActive(get.getPotion())) {
-						PotionEffect check = living.getActivePotionEffect(por);
-						dur += check.getDuration();
+			} else if (!effects.isEmpty()) {
+				for (PotionEffect get : effects) {
+					if (get != null && get.getPotion() != null) {
+						Potion por = get.getPotion();
+						if (por == null)
+							continue;
+						int amp = get.getAmplifier();
+						int dur = get.getDuration();
+						if (living.isPotionActive(get.getPotion())) {
+							PotionEffect check = living.getActivePotionEffect(por);
+							dur += check.getDuration();
+						}
+						living.addPotionEffect(new PotionEffect(get.getPotion(), dur, amp));
 					}
-					living.addPotionEffect(new PotionEffect(get.getPotion(), dur, amp));
 				}
 			}
+
 			return true;
 		}
 		return false;

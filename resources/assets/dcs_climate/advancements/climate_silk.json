@@ -1,0 +1,40 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_leggins_suit"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.climate_silk.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.climate_silk.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "dcs_climate:climate_wear2",
+  "rewards": {
+        "experience": 50
+  },
+  "criteria": {
+        "silk_suit": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_leggins_suit"
+                    }
+                ]
+            }
+        },
+        "silk_coat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_coat_black"
+                    }
+                ]
+            }
+        }
+    }
+}

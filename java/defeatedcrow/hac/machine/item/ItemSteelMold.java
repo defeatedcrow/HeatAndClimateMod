@@ -64,10 +64,12 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				if (ClimateCore.isDebug) {
 					tooltip.add(TextFormatting.BOLD.toString() + "Recipe ID: " + this.getRecipeNumber(stack));
 				}
-			} else {
-				tooltip.add("Please register an item on the anvil.");
 			}
+		} else {
+			tooltip.add("Please register an item on the anvil.");
 		}
+		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+		tooltip.add("Use on the press machine.");
 	}
 
 	@Override

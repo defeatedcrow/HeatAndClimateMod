@@ -24,6 +24,7 @@ public class JsonRegister {
 	}
 
 	static void regItems() {
+		MAIN_INSTANCE.regSimpleItem(MainInit.iconItem, ClimateCore.PACKAGE_ID, "dcs_icons", "misc", 2);
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreIngot, ClimateCore.PACKAGE_ID, "dcs_ore_ingot", "ores", 15);
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreDust, ClimateCore.PACKAGE_ID, "dcs_ore_dust", "ores", 13);
 		MAIN_INSTANCE.regSimpleItem(MainInit.gems, ClimateCore.PACKAGE_ID, "dcs_ore_gem", "ores", 21);

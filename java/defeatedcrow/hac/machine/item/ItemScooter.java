@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -40,7 +41,10 @@ public class ItemScooter extends DCEntityItem {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"orange", "blue", "white", "black"
+				"orange",
+				"blue",
+				"white",
+				"black"
 		};
 		return s;
 	}
@@ -63,6 +67,15 @@ public class ItemScooter extends DCEntityItem {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add("Placeable as an Entity");
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("Fuel: fluid fuel (ex. seed oil)");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("Sneaking + Right-click: GUI opens.");
+			tooltip.add("Two-seater available");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 
 }

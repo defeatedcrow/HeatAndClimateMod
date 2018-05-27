@@ -1,9 +1,5 @@
 package defeatedcrow.hac.main;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.DCMaterialReg;
@@ -84,6 +80,7 @@ import defeatedcrow.hac.main.item.equip.ItemArmorWool;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
 import defeatedcrow.hac.main.item.misc.ItemClothN;
+import defeatedcrow.hac.main.item.misc.ItemDCIcon;
 import defeatedcrow.hac.main.item.misc.ItemFoodDust;
 import defeatedcrow.hac.main.item.misc.ItemGearN;
 import defeatedcrow.hac.main.item.misc.ItemMiscs;
@@ -117,13 +114,9 @@ import defeatedcrow.hac.main.util.DCToolMaterial;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class MainMaterialRegister {
@@ -632,13 +625,7 @@ public class MainMaterialRegister {
 		MainInit.chamber = new BlockNormalChamber(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chamber", 1);
 		MainInit.chamber.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_chamber");
 		ForgeRegistries.BLOCKS.register(MainInit.chamber);
-		ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.chamber) {
-			@Override
-			public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip,
-					ITooltipFlag flag) {
-				tooltip.add(TextFormatting.BOLD.toString() + "Tier 1");
-			}
-		});
+		ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.chamber));
 
 		MainInit.shitirin = new BlockShitirin(Material.CLAY, ClimateCore.PACKAGE_BASE + "_device_shitirin", 1);
 		MainInit.shitirin.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_shitirin");
@@ -648,13 +635,7 @@ public class MainMaterialRegister {
 		MainInit.fuelStove = new BlockCookingStove(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_fuelstove", 3);
 		MainInit.fuelStove.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_fuelstove");
 		ForgeRegistries.BLOCKS.register(MainInit.fuelStove);
-		ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.fuelStove) {
-			@Override
-			public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip,
-					ITooltipFlag flag) {
-				tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
-			}
-		});
+		ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.fuelStove));
 
 		MainInit.thermometer = new BlockThermometer(ClimateCore.PACKAGE_BASE + "_device_thermometer");
 		DCMaterialReg.registerBlock(MainInit.thermometer, ClimateCore.PACKAGE_BASE + "_device_thermometer",
@@ -694,6 +675,10 @@ public class MainMaterialRegister {
 	}
 
 	static void registerItems() {
+		// title
+		MainInit.iconItem = new ItemDCIcon().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_icons");
+		DCMaterialReg.registerItem(MainInit.iconItem, ClimateCore.PACKAGE_BASE + "_icons", ClimateMain.MOD_ID);
+
 		// ores
 		MainInit.oreIngot = new ItemIngots(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		DCMaterialReg.registerItem(MainInit.oreIngot, ClimateCore.PACKAGE_BASE + "_ingot", ClimateMain.MOD_ID);

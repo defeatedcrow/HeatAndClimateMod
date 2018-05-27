@@ -59,6 +59,8 @@ public class ItemAlloyMold extends DCItem implements IPressMold {
 			} else {
 				tooltip.add("Please register an item on the anvil.");
 			}
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("Use on the press machine.");
 		}
 	}
 

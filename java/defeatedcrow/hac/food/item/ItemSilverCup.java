@@ -18,7 +18,9 @@ import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
 import defeatedcrow.hac.food.entity.EntityTumbler;
+import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.DrinkPotionType;
+import defeatedcrow.hac.plugin.tan.DCThirstHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -164,6 +166,10 @@ public class ItemSilverCup extends FoodItemBase {
 						ampF += drink.getSugar().effect;
 					}
 					if (f != null && f.getFluid() != null) {
+						if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
+							DCThirstHelper.onDrink((EntityPlayer) living, f.getFluid());
+						}
+
 						Fluid milk = FluidRegistry.getFluid("milk");
 						if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
 							living.clearActivePotions();
@@ -177,25 +183,27 @@ public class ItemSilverCup extends FoodItemBase {
 							return false;
 						} else {
 							List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
-							if (effects.isEmpty())
-								return false;
-							for (PotionEffect get : effects) {
-								if (get != null && get.getPotion() != null) {
-									Potion por = get.getPotion();
-									if (por == null) {
-										continue;
+							if (!effects.isEmpty()) {
+								for (PotionEffect get : effects) {
+									if (get != null && get.getPotion() != null) {
+										Potion por = get.getPotion();
+										if (por == null) {
+											continue;
+										}
+										int amp = get.getAmplifier();
+										int dur = get.getDuration();
+										if (living.isPotionActive(get.getPotion())) {
+											PotionEffect check = living.getActivePotionEffect(por);
+											dur += check.getDuration();
+										}
+										living.addPotionEffect(new PotionEffect(get.getPotion(), dur, amp));
 									}
-									int amp = get.getAmplifier();
-									int dur = get.getDuration();
-									if (living.isPotionActive(get.getPotion())) {
-										PotionEffect check = living.getActivePotionEffect(por);
-										dur += check.getDuration();
-									}
-									living.addPotionEffect(new PotionEffect(get.getPotion(), dur, amp));
 								}
 							}
 						}
+
 						return true;
+
 					}
 				}
 			}

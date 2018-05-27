@@ -37,7 +37,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityBulletDC extends Entity implements IProjectile {
 	private static final Predicate<Entity> ARROW_TARGETS = Predicates.and(new Predicate[] {
-			EntitySelectors.NOT_SPECTATING, EntitySelectors.IS_ALIVE, new Predicate<Entity>() {
+			EntitySelectors.NOT_SPECTATING,
+			EntitySelectors.IS_ALIVE,
+			new Predicate<Entity>() {
 				@Override
 				public boolean apply(@Nullable Entity p_apply_1_) {
 					return p_apply_1_.canBeCollidedWith();
@@ -183,8 +185,8 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		if (iblockstate.getMaterial() != Material.AIR && !this.getIsGhost()) {
 			AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox(this.world, blockpos);
 
-			if (axisalignedbb != Block.NULL_AABB
-					&& axisalignedbb.offset(blockpos).contains(new Vec3d(this.posX, this.posY, this.posZ))) {
+			if (axisalignedbb != Block.NULL_AABB && axisalignedbb.offset(blockpos).contains(new Vec3d(this.posX,
+					this.posY, this.posZ))) {
 				this.inGround = true;
 			}
 		}
@@ -236,12 +238,12 @@ public class EntityBulletDC extends Entity implements IProjectile {
 						raytraceresult = new RayTraceResult(entity);
 					}
 
-					if (raytraceresult != null && raytraceresult.entityHit != null
-							&& raytraceresult.entityHit instanceof EntityPlayer) {
+					if (raytraceresult != null && raytraceresult.entityHit != null &&
+							raytraceresult.entityHit instanceof EntityPlayer) {
 						EntityPlayer entityplayer = (EntityPlayer) raytraceresult.entityHit;
 
-						if (this.shootingEntity instanceof EntityPlayer
-								&& !((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer)) {
+						if (this.shootingEntity instanceof EntityPlayer &&
+								!((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer)) {
 							raytraceresult = null;
 						}
 					}
@@ -337,6 +339,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 					dam *= 2;
 				} else {
 					damagesource = DamageSource.causeIndirectDamage(this, (EntityLivingBase) this.shootingEntity);
+					damagesource = damagesource.setProjectile();
 				}
 			} else {
 				damagesource = DamageSource.causeIndirectMagicDamage(this, null);
@@ -356,8 +359,8 @@ public class EntityBulletDC extends Entity implements IProjectile {
 						float f1 = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
 
 						if (f1 > 0.0F) {
-							living.addVelocity(this.motionX * this.knockbackStrength * 0.6D / f1, 0.1D,
-									this.motionZ * this.knockbackStrength * 0.6D / f1);
+							living.addVelocity(this.motionX * this.knockbackStrength * 0.6D / f1, 0.1D, this.motionZ *
+									this.knockbackStrength * 0.6D / f1);
 						}
 					}
 
@@ -368,10 +371,10 @@ public class EntityBulletDC extends Entity implements IProjectile {
 
 					this.arrowHit(living);
 
-					if (this.shootingEntity != null && living != this.shootingEntity && living instanceof EntityPlayer
-							&& this.shootingEntity instanceof EntityPlayerMP) {
-						((EntityPlayerMP) this.shootingEntity).connection
-								.sendPacket(new SPacketChangeGameState(6, 0.0F));
+					if (this.shootingEntity != null && living != this.shootingEntity &&
+							living instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP) {
+						((EntityPlayerMP) this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6,
+								0.0F));
 					}
 				}
 
@@ -396,8 +399,8 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			this.motionX = ((float) (raytraceResultIn.hitVec.x - this.posX));
 			this.motionY = ((float) (raytraceResultIn.hitVec.y - this.posY));
 			this.motionZ = ((float) (raytraceResultIn.hitVec.z - this.posZ));
-			float f2 = MathHelper
-					.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+			float f2 = MathHelper.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ *
+					this.motionZ);
 			this.posX -= this.motionX / f2 * 0.05D;
 			this.posY -= this.motionY / f2 * 0.05D;
 			this.posZ -= this.motionZ / f2 * 0.05D;
@@ -416,8 +419,8 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	protected List<Entity> findEntityOnPath(Vec3d start, Vec3d end) {
 		Entity entity = null;
 		List<Entity> ret = Lists.newArrayList();
-		List<Entity> list = this.world.getEntitiesInAABBexcluding(this,
-				this.getEntityBoundingBox().expand(this.motionX, this.motionY, this.motionZ).grow(1.0D), ARROW_TARGETS);
+		List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox().expand(this.motionX,
+				this.motionY, this.motionZ).grow(1.0D), ARROW_TARGETS);
 		if (list.contains(shootingEntity)) {
 			list.remove(shootingEntity);
 		}

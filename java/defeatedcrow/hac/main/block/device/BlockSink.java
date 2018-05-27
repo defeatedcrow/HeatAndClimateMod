@@ -2,13 +2,17 @@ package defeatedcrow.hac.main.block.device;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -19,6 +23,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -100,8 +105,8 @@ public class BlockSink extends DCTileBlock {
 		if (player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack held = player.getHeldItem(hand);
-			if (tile instanceof TileSink && !DCUtil.isEmpty(held)
-					&& held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+			if (tile instanceof TileSink && !DCUtil.isEmpty(held) && held.hasCapability(
+					CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
 				if (!player.world.isRemote) {
 					DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player);
 				}
@@ -110,6 +115,19 @@ public class BlockSink extends DCTileBlock {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("Non-powered device");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("This device erases the flowing fluid.");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 
 }

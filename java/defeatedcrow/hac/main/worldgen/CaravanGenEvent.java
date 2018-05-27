@@ -136,7 +136,14 @@ public class CaravanGenEvent {
 					DCLogger.debugLog("Caravanserai Updated: " + cx + ", " + cz);
 					world.setBlockState(pos.add(7, -4, 7), Blocks.DIAMOND_BLOCK.getDefaultState(), 2);
 				} else if (getSeason(s1) != season) {
-					Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 32);
+					Village village = null;
+					List<Village> villages = world.getVillageCollection().getVillageList();
+					for (Village v : villages) {
+						if (v.getCenter().distanceSq(pos.add(7, 0, 7)) < 32D * 32D) {
+							village = v;
+							break;
+						}
+					}
 					if (village != null) {
 						DCLogger.debugLog("Caravanserai Stand-By: " + cx + ", " + cz);
 						world.setBlockState(pos.add(7, -4, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
@@ -148,9 +155,26 @@ public class CaravanGenEvent {
 							DCState.TYPE16, season.id), 2);
 				}
 
-			} else if (getSeason(s1) != null && type == CaravanType.BROKEN) {
-				IBlockState set = world.getBlockState(pos.add(8, -5, 8));
-				world.setBlockState(pos.add(8, -4, 8), set, 2);
+			} else if (type == CaravanType.BROKEN) {
+				if (world.getBlockState(pos.add(7, -4, 7)).getBlock() == Blocks.LAPIS_BLOCK) {
+					Village village = null;
+					List<Village> villages = world.getVillageCollection().getVillageList();
+					for (Village v : villages) {
+						if (v.getCenter().distanceSq(pos.add(7, 0, 7)) < 32D * 32D) {
+							village = v;
+							break;
+						}
+					}
+					if (village != null) {
+						DCLogger.debugLog("Caravanserai Reconstructed: " + cx + ", " + cz);
+						world.setBlockState(pos.add(7, -4, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
+						world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(
+								DCState.TYPE16, season.id), 2);
+					}
+				} else {
+					IBlockState set = world.getBlockState(pos.add(8, -5, 8));
+					world.setBlockState(pos.add(8, -4, 8), set, 2);
+				}
 			}
 		}
 	}

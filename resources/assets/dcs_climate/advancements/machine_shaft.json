@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_device_shaft_s"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.machine_shaft.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.machine_shaft.description"
+    }
+  },
+  "parent": "dcs_climate:machine_wrench",
+  "criteria": {
+        "shaft_blass": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_device_shaft_s"
+                    }
+                ]
+            }
+        }
+    }
+}

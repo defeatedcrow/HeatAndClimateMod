@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_device_chamber"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.metal_chamber.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.metal_chamber.description"
+    }
+  },
+  "parent": "dcs_climate:metal_blaze",
+  "criteria": {
+        "dcs_chamber": {
+            "trigger": "minecraft:placed_block",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_device_chamber"
+                    }
+                ]
+            }
+        }
+    }
+}

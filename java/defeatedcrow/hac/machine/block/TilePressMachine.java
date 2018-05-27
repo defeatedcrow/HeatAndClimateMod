@@ -185,7 +185,6 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 			for (int i = 0; i < 9; i++) {
 				if (!DCUtil.isEmpty(display.getStackInSlot(i))) {
 					postCount += display.getStackInSlot(i).getCount();
-					;
 				}
 			}
 			if (prevCount != postCount) {
@@ -361,19 +360,38 @@ public class TilePressMachine extends TileTorqueLockable implements ITorqueRecei
 
 	protected int[] slotsTop() {
 		return new int[] {
-				2, 3, 4, 5, 6, 7, 8, 9, 10
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10
 		};
 	};
 
 	protected int[] slotsBottom() {
 		return new int[] {
-				1, 11
+				1,
+				11
 		};
 	};
 
 	protected int[] slotsSides() {
 		return new int[] {
-				1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11
 		};
 	};
 

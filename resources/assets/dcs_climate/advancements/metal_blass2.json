@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_ore_metalblock",
+      "data": 4
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.metal_blass2.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.metal_blass2.description"
+    }
+  },
+  "parent": "dcs_climate:metal_blass1",
+  "criteria": {
+        "get_blass": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_ore_metalblock",
+                        "data": 4
+                    }
+                ]
+            }
+        }
+    }
+}

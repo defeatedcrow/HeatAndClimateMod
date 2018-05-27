@@ -1,0 +1,261 @@
+{
+	"display": {
+		"icon": {
+			"item": "dcs_climate:dcs_jewel_pendant",
+			"data": 0
+		},
+		"title": {
+			"translate": "advancements.dcs_climate.magic_pendant.title"
+		},
+		"description": {
+			"translate": "advancements.dcs_climate.magic_pendant.description"
+		}
+	},
+	"parent": "dcs_climate:magic_gem",
+	"criteria": {
+		"pendant_chalcedony1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 0
+                    }
+                ]
+            }
+        },
+        "pendant_chalcedony2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 1
+                    }
+                ]
+            }
+        },
+        "pendant_chalcedony3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 2
+                    }
+                ]
+            }
+        },
+        "pendant_quartz": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 3
+                    }
+                ]
+            }
+        },
+        "pendant_sapphire": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 4
+                    }
+                ]
+            }
+        },
+        "pendant_malachite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 5
+                    }
+                ]
+            }
+        },
+        "pendant_celestite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 6
+                    }
+                ]
+            }
+        },
+        "pendant_clam": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 7
+                    }
+                ]
+            }
+        },
+        "pendant_lapis": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 8
+                    }
+                ]
+            }
+        },
+        "pendant_diamond": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 9
+                    }
+                ]
+            }
+        },
+        "pendant_schorl": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 10
+                    }
+                ]
+            }
+        },
+        "pendant_serpentine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 11
+                    }
+                ]
+            }
+        },
+        "pendant_peridot": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 12
+                    }
+                ]
+            }
+        },
+        "pendant_almandine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 13
+                    }
+                ]
+            }
+        },
+        "pendant_elestial": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 14
+                    }
+                ]
+            }
+        },
+        "pendant_rutile": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 15
+                    }
+                ]
+            }
+        },
+        "pendant_bismuth": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 16
+                    }
+                ]
+            }
+        },
+        "pendant_jadeite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 17
+                    }
+                ]
+            }
+        },
+        "pendant_moonstone": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 18
+                    }
+                ]
+            }
+        },
+        "pendant_kunzite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_jewel_pendant",
+                    "data": 19
+                    }
+                ]
+            }
+        }
+    },
+	"requirements": [
+		[
+			"pendant_chalcedony1",
+			"pendant_chalcedony2",
+            "pendant_chalcedony3",
+            "pendant_quartz",
+            "pendant_sapphire",
+            "pendant_malachite",
+            "pendant_celestite",
+            "pendant_clam",
+            "pendant_lapis",
+            "pendant_diamond",
+            "pendant_schorl",
+            "pendant_serpentine",
+            "pendant_peridot",
+            "pendant_almandine",
+            "pendant_elestial",
+            "pendant_rutile",
+            "pendant_bismuth",
+            "pendant_jadeite",
+            "pendant_moonstone",
+            "pendant_kunzite"
+		]
+	]
+}

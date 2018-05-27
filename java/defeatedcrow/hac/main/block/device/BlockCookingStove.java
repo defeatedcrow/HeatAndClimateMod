@@ -1,11 +1,15 @@
 package defeatedcrow.hac.main.block.device;
 
+import java.util.List;
 import java.util.Random;
+
+import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -14,6 +18,7 @@ import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -23,6 +28,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
@@ -179,6 +185,24 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("Fuel: fluid fuel (ex. seed oil)");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
+			tooltip.add("HeatTier: " + TextFormatting.RED.toString() + "SMWLTING");
+			tooltip.add("Area: only upper side coordinate");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("This tile drains fluid from the adjacent fluid tank.");
+			tooltip.add("RS signal: Turn off this device.");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 
 }

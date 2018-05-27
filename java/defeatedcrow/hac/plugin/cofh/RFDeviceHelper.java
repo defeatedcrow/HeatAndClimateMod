@@ -11,8 +11,8 @@ public class RFDeviceHelper {
 	private RFDeviceHelper() {}
 
 	public static boolean isRFConnector(TileEntity tile) {
-		return tile instanceof cofh.redstoneflux.api.IEnergyConnection
-				|| tile instanceof cofh.redstoneflux.api.IEnergyStorage;
+		return tile instanceof cofh.redstoneflux.api.IEnergyConnection ||
+				tile instanceof cofh.redstoneflux.api.IEnergyStorage;
 	}
 
 	public static boolean isRFStorage(TileEntity tile) {

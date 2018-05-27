@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_device_stonemill"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.machine_stonemill.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.machine_stonemill.description"
+    }
+  },
+  "parent": "dcs_climate:machine_gear",
+  "criteria": {
+        "dcs_stonemill": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_device_stonemill"
+                    }
+                ]
+            }
+        }
+    }
+}

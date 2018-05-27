@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_device_heat_exchanger"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.metal_exchanger.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.metal_exchanger.description"
+    }
+  },
+  "parent": "dcs_climate:metal_tier2",
+  "criteria": {
+        "dcs_heat_exchanger": {
+            "trigger": "minecraft:placed_block",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_device_heat_exchanger"
+                    }
+                ]
+            }
+        }
+    }
+}

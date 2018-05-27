@@ -1,0 +1,81 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_ore_metalblock",
+      "data": 5
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.metal_tier2.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.metal_tier2.description"
+    }
+  },
+  "parent": "dcs_climate:metal_chamber",
+  "criteria": {
+        "silver": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_ore_metalblock",
+                        "data": 3
+                    }
+                ]
+            }
+        },
+        "steel": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_ore_metalblock",
+                        "data": 5
+                    }
+                ]
+            }
+        },
+        "nickelsilver": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_ore_metalblock",
+                        "data": 6
+                    }
+                ]
+            }
+        },
+        "aluminium": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_ore_metalblock",
+                        "data": 12
+                    }
+                ]
+            }
+        },
+        "nickel": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_ore_metalblock",
+                        "data": 2
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "silver",
+            "steel",
+            "nickelsilver",
+            "aluminium",
+            "nickel"
+        ]
+    ]
+}

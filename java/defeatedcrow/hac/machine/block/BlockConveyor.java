@@ -1,13 +1,19 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.energy.IWrenchDC;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -105,8 +112,8 @@ public class BlockConveyor extends BlockTorqueBase {
 
 				ItemStack drop1 = conv.getStackInSlot(0);
 				if (!DCUtil.isEmpty(drop1)) {
-					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D,
-							pos.getZ() + 0.5D, drop1);
+					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
+							0.5D, drop1);
 					float f3 = 0.05F;
 					entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 					entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -116,8 +123,8 @@ public class BlockConveyor extends BlockTorqueBase {
 
 				ItemStack drop2 = conv.getStackInSlot(1);
 				if (!DCUtil.isEmpty(drop2)) {
-					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D,
-							pos.getZ() + 0.5D, drop2);
+					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
+							0.5D, drop2);
 					float f3 = 0.05F;
 					entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 					entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -129,6 +136,24 @@ public class BlockConveyor extends BlockTorqueBase {
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("Non-powered device");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
+			tooltip.add("Item transport: 1 item/16t");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("Climate smelting the item on top.");
+			tooltip.add(TextFormatting.RED.toString() + "SMELTING+" + TextFormatting.GRAY.toString() + " and " +
+					TextFormatting.DARK_BLUE.toString() + "TIGHT" + TextFormatting.GRAY.toString() +
+					": Vanilla smelting the item on top.");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 
 }

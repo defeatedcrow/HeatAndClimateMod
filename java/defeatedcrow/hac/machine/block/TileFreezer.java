@@ -66,9 +66,9 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 		if (!world.isRemote) {
 			float f = this.prevTorque;
 			current = DCHeatTier.NORMAL;
-			if (f > 60.0F) {
+			if (f > 63.0F) {
 				current = DCHeatTier.ABSOLUTE;
-			} else if (f > 30.0F) {
+			} else if (f > 31.0F) {
 				current = DCHeatTier.FROSTBITE;
 			} else if (f > 5.0F) {
 				current = DCHeatTier.COLD;

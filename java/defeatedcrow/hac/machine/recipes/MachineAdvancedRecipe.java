@@ -74,7 +74,7 @@ public class MachineAdvancedRecipe {
 					'Y',
 					new ItemStack(MachineInit.gearbox2, 1, 0),
 					'Z',
-					new ItemStack(MachineInit.machimeMaterials, 1, 1),
+					new ItemStack(MachineInit.machimeMaterials, 1, 0),
 					'W',
 					"ingotSUS"
 			});

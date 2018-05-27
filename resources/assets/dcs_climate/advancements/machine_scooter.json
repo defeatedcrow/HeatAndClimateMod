@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_motor_scooter"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.machine_scooter.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.machine_scooter.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "dcs_climate:machine_reactor",
+  "rewards": {
+        "experience": 100
+  },
+  "criteria": {
+        "dcs_scooter": {
+            "trigger": "minecraft:summoned_entity",
+            "conditions": {
+                "entity": {
+                    "type": "dcs_climate:dcs.machine.motor_scooter"
+                }
+            }
+        }
+    }
+}

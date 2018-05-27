@@ -1,10 +1,14 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.List;
 import java.util.Random;
+
+import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.energy.IWrenchDC;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
@@ -15,6 +19,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,6 +33,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -62,8 +68,8 @@ public class BlockDieselEngine extends BlockTorqueBase {
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
 						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid())) {
-							if (!world.isRemote
-									&& DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player)) {
+							if (!world.isRemote && DCFluidUtil.onActivateDCTank(tile, held, world, state, side,
+									player)) {
 								world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
 										2.0F);
 							}
@@ -193,6 +199,22 @@ public class BlockDieselEngine extends BlockTorqueBase {
 
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, dy, 0.0D, new int[0]);
 			}
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("Fuel: fluid fuel (ex. seed oil)");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
+			tooltip.add("128.0F torque/s");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("This tile absorbs fluid from the adjacent fluid tank.");
+			tooltip.add("RS signal: Turn off this device.");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
 

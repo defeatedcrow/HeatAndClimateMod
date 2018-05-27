@@ -59,6 +59,8 @@ public abstract class ItemPlatingBase extends DCItem implements IPlatingTool {
 					tooltip.add(TextFormatting.AQUA.toString() + enc.getTranslatedName(1));
 				}
 			}
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("Use on the anvil.");
 		}
 	}
 

@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_magicmace_bird"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.magic_mace2.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.magic_mace2.description"
+    },
+    "frame": "goal"
+  },
+  "parent": "dcs_climate:magic_mace",
+  "criteria": {
+        "bird_effect": {
+            "trigger": "minecraft:effects_changed",
+            "conditions": {
+                "effects": {
+                    "dcs_climate:dcs.potion.bird": {}
+                }
+            }
+        }
+    }
+}

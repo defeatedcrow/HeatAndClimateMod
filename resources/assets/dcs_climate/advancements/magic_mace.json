@@ -1,0 +1,108 @@
+{
+	"display": {
+		"icon": {
+			"item": "dcs_climate:dcs_magicmace_light"
+		},
+		"title": {
+			"translate": "advancements.dcs_climate.magic_mace.title"
+		},
+		"description": {
+			"translate": "advancements.dcs_climate.magic_mace.description"
+		}
+	},
+	"parent": "dcs_climate:magic_elestial",
+	"criteria": {
+		"mace_light": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_magicmace_light"
+                    }
+                ]
+            }
+        },
+        "mace_moon": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_magicmace_moon"
+                    }
+                ]
+            }
+        },
+        "mace_bird": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_magicmace_bird"
+                    }
+                ]
+            }
+        },
+        "mace_ocean": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_magicmace_ocean"
+                    }
+                ]
+            }
+        },
+        "mace_ice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_magicmace_ice"
+                    }
+                ]
+            }
+        },
+        "mace_burn": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_magicmace_burn"
+                    }
+                ]
+            }
+        },
+        "mace_flower": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_magicmace_flower"
+                    }
+                ]
+            }
+        },
+        "mace_glory": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_magicmace_glory"
+                    }
+                ]
+            }
+        }
+    },
+	"requirements": [
+		[
+			"mace_light",
+			"mace_moon",
+			"mace_bird",
+			"mace_ocean",
+			"mace_ice",
+			"mace_burn",
+			"mace_flower",
+			"mace_glory"
+		]
+	]
+}

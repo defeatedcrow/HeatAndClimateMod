@@ -257,6 +257,6 @@ public class MainInit {
 
 	public static Fluid milk;
 
-	public static Item manju;
+	public static Item iconItem;
 
 }

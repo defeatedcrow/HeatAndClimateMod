@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -28,8 +29,13 @@ public class ItemAdapterPanel extends DCItemBlock {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 3");
-		tooltip.add(TextFormatting.AQUA.toString() + "Require cooling");
-		tooltip.add(TextFormatting.AQUA.toString() + "Require pairing between sender and acceptor");
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("HeatTier: " + TextFormatting.BLUE.toString() + "COOL-");
+			tooltip.add("Require pairing between sender and acceptor");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 
 }

@@ -296,7 +296,7 @@ public class FoodFluidRecipe {
 				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1, 0), null, 0F, null, DCHeatTier.WARM,
-				DCHumidity.WET, null, false, new FluidStack(FoodInit.cream, 1000), new Object[] {
+				DCHumidity.WET, null, false, new FluidStack(FoodInit.cream, 500), new Object[] {
 						"dustSalt"
 				});
 

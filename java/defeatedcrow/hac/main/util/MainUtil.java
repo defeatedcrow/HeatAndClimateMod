@@ -17,8 +17,8 @@ public class MainUtil {
 	public static final String[] DYES = {
 			"dyeWhite",
 			"dyeOrange",
-			"dyeMagenda",
-			"dyeLightblue",
+			"dyeMagenta",
+			"dyeLightBlue",
 			"dyeYellow",
 			"dyeLime",
 			"dyePink",

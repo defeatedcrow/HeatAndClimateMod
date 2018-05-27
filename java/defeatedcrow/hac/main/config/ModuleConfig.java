@@ -29,6 +29,8 @@ public class ModuleConfig {
 	public static boolean bop = true;
 	public static boolean cofh = true;
 	public static boolean bc = true;
+	public static boolean mce = true;
+	public static boolean tan = true;
 
 	public static boolean r_mill = true;
 	public static boolean r_spinning = true;
@@ -41,16 +43,15 @@ public class ModuleConfig {
 		try {
 			cfg.load();
 
-			cfg.addCustomCategoryComment("module setting",
-					"This setting is for module parmission. " + BR
-							+ "If you set false, that module will not add recipes and creative tab items." + BR
-							+ "Please understand that you can not delete item/block registrations by this setting.");
+			cfg.addCustomCategoryComment("module setting", "This setting is for module parmission. " + BR +
+					"If you set false, that module will not add recipes and creative tab items." + BR +
+					"Please understand that you can not delete item/block registrations by this setting.");
 
-			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin installation parmission. " + BR
-					+ "If you set false, that plugin will be disabled.");
+			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin installation parmission. " + BR +
+					"If you set false, that plugin will be disabled.");
 
-			cfg.addCustomCategoryComment("recipe setting", "This setting is for recipe registration parmission. " + BR
-					+ "If you set false, that recipe will be removed.");
+			cfg.addCustomCategoryComment("recipe setting", "This setting is for recipe registration parmission. " + BR +
+					"If you set false, that recipe will be removed.");
 
 			Property machine_b = cfg.get("module setting", "EnableMachineModule", machine);
 			Property magic_b = cfg.get("module setting", "EnableMagicModule", magic);
@@ -70,6 +71,8 @@ public class ModuleConfig {
 			Property bop_b = cfg.get("plugin setting", "BiomesOPlentyPlugin", bop);
 			Property cofh_b = cfg.get("plugin setting", "CoFHPlugin", bop);
 			Property bc_b = cfg.get("plugin setting", "BuildcraftPlugin", bc);
+			Property mce_b = cfg.get("plugin setting", "MCEconomyPlugin", mce);
+			Property tan_b = cfg.get("plugin setting", "ToughAsNailsPlugin", tan);
 
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
 			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
@@ -95,6 +98,8 @@ public class ModuleConfig {
 			bop = bop_b.getBoolean();
 			cofh = cofh_b.getBoolean();
 			bc = bc_b.getBoolean();
+			mce = mce_b.getBoolean();
+			tan = tan_b.getBoolean();
 
 			r_mill = mill.getBoolean();
 			r_spinning = spinning.getBoolean();
