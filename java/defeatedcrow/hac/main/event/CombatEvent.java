@@ -48,8 +48,8 @@ public class CombatEvent {
 						if (living.getAttackingEntity() == null) {
 							double d1 = living.getPosition().distanceSq(ownerLiv.getPosition().getX(),
 									mob.getPosition().getY(), ownerLiv.getPosition().getZ());
-							IAttributeInstance iattributeinstance = mob
-									.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE);
+							IAttributeInstance iattributeinstance = mob.getEntityAttribute(
+									SharedMonsterAttributes.FOLLOW_RANGE);
 							double range = iattributeinstance == null ? 16.0D : iattributeinstance.getAttributeValue();
 							// in FOLLOW_RANGE
 							if (d1 < range * range) {
@@ -80,8 +80,8 @@ public class CombatEvent {
 							if (ownerLiv.world.spawnEntity(drop)) {
 								living.setItemStackToSlot(EntityEquipmentSlot.values()[i], ItemStack.EMPTY);
 								ownerLiv.world.playSound(null, ownerLiv.posX, ownerLiv.posY, ownerLiv.posZ,
-										SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.5F,
-										1.0F / (ownerLiv.world.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+										SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.5F, 1.0F /
+												(ownerLiv.world.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 								break;
 							}
 						}

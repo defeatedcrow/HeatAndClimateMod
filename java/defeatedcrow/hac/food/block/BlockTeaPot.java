@@ -1,11 +1,15 @@
 package defeatedcrow.hac.food.block;
 
+import java.util.List;
 import java.util.Random;
+
+import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCTank;
@@ -18,6 +22,7 @@ import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -29,6 +34,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
@@ -235,6 +241,19 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("Climate required by recipe.");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
+			tooltip.add("Recipe product fluid");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 
 }

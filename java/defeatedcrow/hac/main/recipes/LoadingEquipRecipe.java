@@ -224,7 +224,7 @@ public class LoadingEquipRecipe {
 				"XXX",
 				"X X",
 				'X',
-				"itemCottonCloth",
+				"itemSilkCloth",
 				'Y',
 				"dyeBlack"
 		});

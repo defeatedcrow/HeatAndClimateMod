@@ -1,0 +1,86 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_leggins_cloth"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.climate_wear2.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.climate_wear2.description"
+    }
+  },
+  "parent": "dcs_climate:climate_wear",
+  "criteria": {
+        "cotton_hat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_hat_cotton"
+                    }
+                ]
+            }
+        },
+        "cotton_leggins": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_leggins_cloth"
+                    }
+                ]
+            }
+        },
+        "trench_coat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_coat_trench"
+                    }
+                ]
+            }
+        },
+        "hoodie_w": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_hoodie_white"
+                    }
+                ]
+            }
+        },
+        "hoodie_b": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_hoodie_black"
+                    }
+                ]
+            }
+        },
+        "worker_suit": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_leggins_worker"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "cotton_hat",
+            "cotton_leggins",
+            "trench_coat",
+            "hoodie_w",
+            "hoodie_b",
+            "worker_suit"
+        ]
+    ]
+}

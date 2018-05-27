@@ -1,0 +1,225 @@
+{
+	"display": {
+		"icon": {
+			"item": "dcs_climate:dcs_gem",
+			"data": 4
+		},
+		"title": {
+			"translate": "advancements.dcs_climate.magic_gem.title"
+		},
+		"description": {
+			"translate": "advancements.dcs_climate.magic_gem.description"
+		}
+	},
+	"parent": "dcs_climate:core",
+	"criteria": {
+		"dcs_chalcedony1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 0
+                    }
+                ]
+            }
+        },
+        "dcs_chalcedony2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 1
+                    }
+                ]
+            }
+        },
+        "dcs_chalcedony3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 2
+                    }
+                ]
+            }
+        },
+        "dcs_sapphire": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 4
+                    }
+                ]
+            }
+        },
+        "dcs_malachite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 5
+                    }
+                ]
+            }
+        },
+        "dcs_celestite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 6
+                    }
+                ]
+            }
+        },
+        "dcs_clam": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 7
+                    }
+                ]
+            }
+        },
+        "dcs_schorl": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 11
+                    }
+                ]
+            }
+        },
+        "dcs_serpentine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 12
+                    }
+                ]
+            }
+        },
+        "dcs_peridot": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 13
+                    }
+                ]
+            }
+        },
+        "dcs_almandine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 14
+                    }
+                ]
+            }
+        },
+        "dcs_rutile": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 15
+                    }
+                ]
+            }
+        },
+        "dcs_bismuth": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 17
+                    }
+                ]
+            }
+        },
+        "dcs_apatite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 18
+                    }
+                ]
+            }
+        },
+        "dcs_jadeite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 19
+                    }
+                ]
+            }
+        },
+        "dcs_moonstone": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 20
+                    }
+                ]
+            }
+        },
+        "dcs_kunzite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_gem",
+                    "data": 21
+                    }
+                ]
+            }
+        }
+    },
+	"requirements": [
+		[
+			"dcs_chalcedony1",
+			"dcs_chalcedony2",
+            "dcs_chalcedony3",
+            "dcs_sapphire",
+            "dcs_malachite",
+            "dcs_celestite",
+            "dcs_clam",
+            "dcs_schorl",
+            "dcs_serpentine",
+            "dcs_peridot",
+            "dcs_almandine",
+            "dcs_rutile",
+            "dcs_bismuth",
+            "dcs_apatite",
+            "dcs_jadeite",
+            "dcs_moonstone",
+            "dcs_kunzite"
+		]
+	]
+}

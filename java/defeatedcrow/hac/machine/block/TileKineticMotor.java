@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.Optional.Method;
 
 @Optional.InterfaceList({
-		@Optional.Interface(iface = "cofh.redstoneflux.api.IEnergyReceiver", modid = "redstoneflux"),
+		@Optional.Interface(iface = "cofh.redstoneflux.api.IEnergyReceiver", modid = "redstoneflux")
 })
 public class TileKineticMotor extends TileTorqueBase implements ITorqueProvider, cofh.redstoneflux.api.IEnergyReceiver {
 

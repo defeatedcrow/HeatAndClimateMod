@@ -2,9 +2,12 @@ package defeatedcrow.hac.magic.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.packet.DCMainPacket;
@@ -14,6 +17,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.SoundEvents;
@@ -24,6 +28,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -248,6 +253,18 @@ public class BlockBiomeGlass extends BlockDC {
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 			return true;
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("This device change the surrounding biome.");
+			tooltip.add("Right-click: Turn on/off this device.");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 
 }

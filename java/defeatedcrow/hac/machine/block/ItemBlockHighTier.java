@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.machine.MachineTier;
 import net.minecraft.block.Block;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -46,6 +47,7 @@ public class ItemBlockHighTier extends DCItemBlock {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier " + tier);
+		block.addInformation(stack, world, tooltip, ITooltipFlag.TooltipFlags.NORMAL);
 	}
 
 }

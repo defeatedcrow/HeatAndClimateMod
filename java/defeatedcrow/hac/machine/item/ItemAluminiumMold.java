@@ -58,6 +58,8 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 				tooltip.add("Please register an item on the anvil.");
 			}
 		}
+		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+		tooltip.add("Use on the press machine.");
 	}
 
 	@Override
@@ -69,14 +71,14 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 	@Override
 	public ItemStack setOutput(ItemStack mold, ItemStack output, int num) {
 		int meta = -1;
-		if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1, 0), false)
-				|| matchOreName(output, "string")) {
+		if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1, 0), false) || matchOreName(output,
+				"string")) {
 			meta = 1;
-		} else if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1, 2), false)
-				|| DCUtil.isSameItem(output, new ItemStack(Blocks.GLASS_PANE), false)) {
+		} else if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1, 2), false) || DCUtil.isSameItem(
+				output, new ItemStack(Blocks.GLASS_PANE), false)) {
 			meta = 2;
-		} else if (DCUtil.isSameItem(output, new ItemStack(MainInit.syntheticBlock, 1, 8), false)
-				|| DCUtil.isSameItem(output, new ItemStack(Blocks.GLASS), false)) {
+		} else if (DCUtil.isSameItem(output, new ItemStack(MainInit.syntheticBlock, 1, 8), false) || DCUtil.isSameItem(
+				output, new ItemStack(Blocks.GLASS), false)) {
 			meta = 3;
 		}
 		if (meta > 0) {

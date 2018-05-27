@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.main.ClimateMain;
@@ -17,6 +18,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -32,6 +34,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -43,8 +46,8 @@ public class BlockHopperFilter extends BlockContainerDC {
 		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
-				.withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(
+				DCState.POWERED, false));
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -134,8 +137,8 @@ public class BlockHopperFilter extends BlockContainerDC {
 			int meta, EntityLivingBase placer, EnumHand hand) {
 		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		EnumFacing face = facing.getOpposite();
-		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face))
-				.withProperty(DCState.POWERED, Boolean.valueOf(true));
+		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face)).withProperty(
+				DCState.POWERED, Boolean.valueOf(true));
 	}
 
 	@Override
@@ -222,8 +225,8 @@ public class BlockHopperFilter extends BlockContainerDC {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
-				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(
+				DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -246,9 +249,26 @@ public class BlockHopperFilter extends BlockContainerDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE, DCState.POWERED
+				DCState.SIDE,
+				DCState.POWERED
 		});
 
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("Non-powered device");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
+			tooltip.add("Item transport: 1 item/4t");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("One item remains in the each slot.");
+			tooltip.add("It works like an item filter.");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 
 }

@@ -1,0 +1,44 @@
+{
+	"display": {
+		"icon": {
+			"item": "dcs_climate:dcs_misc"
+		},
+		"title": {
+			"translate": "advancements.dcs_climate.climate_strings.title"
+		},
+		"description": {
+			"translate": "advancements.dcs_climate.climate_strings.description"
+		}
+	},
+	"parent": "dcs_climate:climate_damage",
+	"criteria": {
+        "linen_string": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_misc",
+                    "data": 0
+                    }
+                ]
+            }
+        },
+        "cotton_string": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_misc",
+                    "data": 1
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "linen_string",
+            "cotton_string"
+        ]
+    ]
+}

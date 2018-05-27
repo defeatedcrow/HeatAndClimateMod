@@ -16,8 +16,22 @@ public class ItemIngots extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"copper", "zinc", "nickel", "silver", "brass", "steel", "nickelsilver", "magnet", "tin", "bronze", "sus",
-			"titanium", "aluminium", "bismuth", "bscco", "lead"
+			"copper",
+			"zinc",
+			"nickel",
+			"silver",
+			"brass",
+			"steel",
+			"nickelsilver",
+			"magnet",
+			"tin",
+			"bronze",
+			"sus",
+			"titanium",
+			"aluminium",
+			"bismuth",
+			"bscco",
+			"lead"
 	};
 
 	public ItemIngots(int max) {
@@ -84,7 +98,7 @@ public class ItemIngots extends DCItem {
 	public enum Metal {
 		COPPER("copper", 1),
 		ZINC("zinc", 1),
-		NICKEL("nickel", 1),
+		NICKEL("nickel", 2),
 		SILVER("silver", 2),
 		BRASS("brass", 1),
 		STEEL("steel", 2),
@@ -108,8 +122,22 @@ public class ItemIngots extends DCItem {
 		}
 
 		public static final Metal[] VALUES = {
-				COPPER, ZINC, NICKEL, SILVER, BRASS, STEEL, NICKELSILVER, MAGNET, TIN, BRONZE, SUS, TITANIUM, ALUMINIUM,
-				BISMUTH, BSCCO, LEAD
+				COPPER,
+				ZINC,
+				NICKEL,
+				SILVER,
+				BRASS,
+				STEEL,
+				NICKELSILVER,
+				MAGNET,
+				TIN,
+				BRONZE,
+				SUS,
+				TITANIUM,
+				ALUMINIUM,
+				BISMUTH,
+				BSCCO,
+				LEAD
 		};
 	}
 

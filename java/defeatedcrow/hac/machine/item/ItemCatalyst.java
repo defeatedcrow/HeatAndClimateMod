@@ -1,7 +1,17 @@
 package defeatedcrow.hac.machine.item;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemCatalyst extends DCItem {
 
@@ -36,6 +46,16 @@ public class ItemCatalyst extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
+		if (!DCUtil.isEmpty(stack) && stack.hasTagCompound()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("Product from by the press machine.");
+			tooltip.add("An appropriate mold is required for processing.");
+		}
 	}
 
 }

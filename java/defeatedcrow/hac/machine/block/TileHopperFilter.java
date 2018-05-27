@@ -32,7 +32,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import net.minecraftforge.items.wrapper.InvWrapper;
 
 public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInventory {
 
@@ -98,8 +98,9 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 							ItemStack ins = item.copy();
 							ins.setCount(1);
 							for (int j = 0; j < target.getSlots(); j++) {
-								ItemStack ret = target.insertItem(j, ins, false);
+								ItemStack ret = target.insertItem(j, ins, true);
 								if (DCUtil.isEmpty(ret)) {
+									target.insertItem(j, ins, false);
 									this.decrStackSize(i, 1);
 									this.markDirty();
 									tile.markDirty();
@@ -349,8 +350,8 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	}
 
 	@Override
-	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
-		return this.isItemValidForSlot(index, itemStackIn);
+	public boolean canInsertItem(int index, ItemStack itemStack, EnumFacing direction) {
+		return this.isItemValidForSlot(index, itemStack);
 	}
 
 	@Override
@@ -360,19 +361,12 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		return false;
 	}
 
-	IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
-	IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
-	IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
+	IItemHandler handler = new InvWrapper(this);
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			if (facing == EnumFacing.DOWN)
-				return (T) handlerBottom;
-			else if (facing == EnumFacing.UP)
-				return (T) handlerTop;
-			else
-				return (T) handlerSide;
+			return (T) handler;
 		return super.getCapability(capability, facing);
 	}
 

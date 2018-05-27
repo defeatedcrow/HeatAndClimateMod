@@ -12,7 +12,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
-import net.minecraftforge.fml.common.ModAPIManager;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.Optional.Method;
 
@@ -78,7 +78,7 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 					if (target != null) {
 						if (target.hasCapability(CapabilityEnergy.ENERGY, face.getOpposite())) {
 							faces.add(face);
-						} else if (ModAPIManager.INSTANCE.hasAPI("CoFHAPI|energy")) {
+						} else if (Loader.isModLoaded("redstoneflux")) {
 							if (RFDeviceHelper.isRFReceiver(target)) {
 								faces.add(face);
 							}
@@ -102,7 +102,7 @@ public class TileDynamo extends TileTorqueBase implements ITorqueReceiver, cofh.
 						float ret = sendFU / faces.size();
 						int amo = MathHelper.floor(ret);
 						sto.receiveEnergy(amo, false);
-					} else if (ModAPIManager.INSTANCE.hasAPI("redstoneflux")) {
+					} else if (Loader.isModLoaded("redstoneflux")) {
 						if (RFDeviceHelper.isRFReceiver(target)) {
 							float ret = sendRF / faces.size();
 							int amo = MathHelper.floor(ret);

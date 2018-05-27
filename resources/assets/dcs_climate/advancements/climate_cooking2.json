@@ -1,0 +1,93 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_food_stick",
+      "data": 3
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.climate_cooking2.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.climate_cooking2.description"
+    }
+  },
+  "parent": "dcs_climate:climate_cooking1",
+  "criteria": {
+        "stick_fish": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_stick",
+                        "data": 1
+                    }
+                ]
+            }
+        },
+        "stick_yakitori": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_stick",
+                        "data": 3
+                    }
+                ]
+            }
+        },
+        "stick_pork": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_stick",
+                        "data": 5
+                    }
+                ]
+            }
+        },
+        "stick_beef": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_stick",
+                        "data": 7
+                    }
+                ]
+            }
+        },
+        "stick_mutton": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_stick",
+                        "data": 9
+                    }
+                ]
+            }
+        },
+        "stick_squid": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_stick",
+                        "data": 11
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "stick_fish",
+            "stick_yakitori",
+            "stick_pork",
+            "stick_beef",
+            "stick_mutton",
+            "stick_squid"
+        ]
+    ]
+}

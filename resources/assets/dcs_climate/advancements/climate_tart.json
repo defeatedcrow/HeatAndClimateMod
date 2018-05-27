@@ -1,0 +1,26 @@
+{
+	"display": {
+		"icon": {
+			"item": "dcs_climate:dcs_food_tart",
+			"data": 1
+		},
+		"title": {
+			"translate": "advancements.dcs_climate.climate_tart.title"
+		},
+		"description": {
+			"translate": "advancements.dcs_climate.climate_tart.description"
+		},
+		"frame": "goal"
+	},
+	"parent": "dcs_climate:climate_cooking2",
+	"criteria": {
+		"tart_apple": {
+			"trigger": "minecraft:summoned_entity",
+			"conditions": {
+				"entity": {
+					"type": "dcs_climate:dcs.food.tart_apple"
+				}
+			}
+		}
+	}
+}

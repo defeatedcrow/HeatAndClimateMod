@@ -495,7 +495,7 @@ public class MagicRecipeRegister {
 				'X',
 				"ingotGold",
 				'Y',
-				"gemPeridot",
+				"gemJadeite",
 				'Z',
 				new ItemStack(Items.PRISMARINE_CRYSTALS, 1, 0),
 				'W',

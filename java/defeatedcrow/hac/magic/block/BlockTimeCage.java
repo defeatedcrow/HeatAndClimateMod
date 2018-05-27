@@ -1,20 +1,29 @@
 package defeatedcrow.hac.magic.block;
 
+import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller.IChunkBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
 
@@ -78,5 +87,16 @@ public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 			return true;
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add("The chunk loader device.");
+		} else {
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+		}
 	}
 }

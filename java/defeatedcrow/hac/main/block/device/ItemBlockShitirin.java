@@ -24,6 +24,7 @@ public class ItemBlockShitirin extends DCItemBlock {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 1");
 		tooltip.add(I18n.translateToLocal("dcs.tip.shitirin.description"));
+		super.addInformation2(stack, world, tooltip);
 	}
 
 }
