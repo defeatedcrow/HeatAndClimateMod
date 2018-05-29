@@ -168,12 +168,9 @@ public class CaravanGenEvent {
 					if (village != null) {
 						DCLogger.debugLog("Caravanserai Reconstructed: " + cx + ", " + cz);
 						world.setBlockState(pos.add(7, -4, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
-						world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(
-								DCState.TYPE16, season.id), 2);
 					}
-				} else {
-					IBlockState set = world.getBlockState(pos.add(8, -5, 8));
-					world.setBlockState(pos.add(8, -4, 8), set, 2);
+					world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(
+							DCState.TYPE16, season.id), 2);
 				}
 			}
 		}

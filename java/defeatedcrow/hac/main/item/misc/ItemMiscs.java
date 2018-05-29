@@ -1,7 +1,16 @@
 package defeatedcrow.hac.main.item.misc;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Deprecated
 public class ItemMiscs extends DCItem {
@@ -9,8 +18,16 @@ public class ItemMiscs extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"string_linen", "string_cotton", "cloth_linen", "cloth_cotton", "spindle_wood", "spindle_brass",
-			"spindle_alloy", "spindle_steel", "string_chrysotile", "cloth_chrysotile"
+			"string_linen",
+			"string_cotton",
+			"cloth_linen",
+			"cloth_cotton",
+			"spindle_wood",
+			"spindle_brass",
+			"spindle_alloy",
+			"spindle_steel",
+			"string_chrysotile",
+			"cloth_chrysotile"
 	};
 
 	public ItemMiscs(int max) {
@@ -45,6 +62,13 @@ public class ItemMiscs extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
+		tooltip.add(TextFormatting.RED.toString() + TextFormatting.BOLD.toString() + "DEPRECATED ITEM");
+		tooltip.add("Convert to a new item with a single craft.");
 	}
 
 }

@@ -1,8 +1,13 @@
 package defeatedcrow.hac.plugin;
 
+import buildcraft.api.BCModules;
+import buildcraft.api.facades.FacadeAPI;
+import buildcraft.api.fuels.BuildcraftFuelRegistry;
+import buildcraft.api.mj.MjAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -63,14 +68,14 @@ public class DCPluginBuildcraft {
 		DCPluginFluid.registerPotion(dist, MobEffects.HUNGER);
 		DCPluginFluid.registerPotion(residue, MobEffects.BLINDNESS);
 
-		// if (BCModules.ENERGY.isLoaded()) {
-		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.hydrogen, 8 * MjAPI.MJ, 1200);
-		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelGas, 8 * MjAPI.MJ, 2000);
-		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelOil, 5 * MjAPI.MJ, 16000);
-		// BuildcraftFuelRegistry.fuel.addFuel(FoodInit.blackLiquor, 2 * MjAPI.MJ, 20000);
-		// BuildcraftFuelRegistry.fuel.addFuel(FoodInit.oil, 4 * MjAPI.MJ, 10000);
-		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.ethanol, 6 * MjAPI.MJ, 4000);
-		// }
+		if (BCModules.ENERGY.isLoaded()) {
+			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.hydrogen, 8 * MjAPI.MJ, 1200);
+			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelGas, 8 * MjAPI.MJ, 2000);
+			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelOil, 5 * MjAPI.MJ, 16000);
+			BuildcraftFuelRegistry.fuel.addFuel(FoodInit.blackLiquor, 2 * MjAPI.MJ, 20000);
+			BuildcraftFuelRegistry.fuel.addFuel(FoodInit.oil, 4 * MjAPI.MJ, 10000);
+			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.ethanol, 6 * MjAPI.MJ, 4000);
+		}
 
 		if (ModuleConfig.machine && ModuleConfig.machine_advanced) {
 
@@ -110,24 +115,24 @@ public class DCPluginBuildcraft {
 	}
 
 	public static void loadInit() {
-		// FacadeAPI.disableBlock(FoodInit.blackLiquorBlock);
-		// FacadeAPI.disableBlock(FoodInit.blackTeaBlock);
-		// FacadeAPI.disableBlock(FoodInit.coffeeBlock);
-		// FacadeAPI.disableBlock(FoodInit.creamBlock);
-		// FacadeAPI.disableBlock(FoodInit.greenTeaBlock);
-		// FacadeAPI.disableBlock(FoodInit.hotSpringBlock);
-		// FacadeAPI.disableBlock(FoodInit.lemonBlock);
-		// FacadeAPI.disableBlock(FoodInit.oilBlock);
-		// FacadeAPI.disableBlock(FoodInit.stockBlock);
-		// FacadeAPI.disableBlock(FoodInit.tomatoBlock);
-		// FacadeAPI.disableBlock(FoodInit.mazaiBlock);
-		// FacadeAPI.disableBlock(MachineInit.ethanolBlock);
-		// FacadeAPI.disableBlock(MachineInit.ammoniaBlock);
-		// FacadeAPI.disableBlock(MachineInit.fuelGasBlock);
-		// FacadeAPI.disableBlock(MachineInit.fuelOilBlock);
-		// FacadeAPI.disableBlock(MachineInit.hydrogenBlock);
-		// FacadeAPI.disableBlock(MachineInit.nitricAcidBlock);
-		// FacadeAPI.disableBlock(MachineInit.nitrogenBlock);
-		// FacadeAPI.disableBlock(MachineInit.sulfuricAcidBlock);
+		FacadeAPI.disableBlock(FoodInit.blackLiquorBlock);
+		FacadeAPI.disableBlock(FoodInit.blackTeaBlock);
+		FacadeAPI.disableBlock(FoodInit.coffeeBlock);
+		FacadeAPI.disableBlock(FoodInit.creamBlock);
+		FacadeAPI.disableBlock(FoodInit.greenTeaBlock);
+		FacadeAPI.disableBlock(FoodInit.hotSpringBlock);
+		FacadeAPI.disableBlock(FoodInit.lemonBlock);
+		FacadeAPI.disableBlock(FoodInit.oilBlock);
+		FacadeAPI.disableBlock(FoodInit.stockBlock);
+		FacadeAPI.disableBlock(FoodInit.tomatoBlock);
+		FacadeAPI.disableBlock(FoodInit.mazaiBlock);
+		FacadeAPI.disableBlock(MachineInit.ethanolBlock);
+		FacadeAPI.disableBlock(MachineInit.ammoniaBlock);
+		FacadeAPI.disableBlock(MachineInit.fuelGasBlock);
+		FacadeAPI.disableBlock(MachineInit.fuelOilBlock);
+		FacadeAPI.disableBlock(MachineInit.hydrogenBlock);
+		FacadeAPI.disableBlock(MachineInit.nitricAcidBlock);
+		FacadeAPI.disableBlock(MachineInit.nitrogenBlock);
+		FacadeAPI.disableBlock(MachineInit.sulfuricAcidBlock);
 	}
 }
