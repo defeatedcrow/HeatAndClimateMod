@@ -1,5 +1,5 @@
 # HeatAndClimateMod
-A Mod for Minecraft 1.12.1
+A Mod for Minecraft 1.12.2
 
 ## Project Site
 Please visit my new wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
@@ -9,13 +9,17 @@ Please visit my new wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
 
 ## Current operating environment:
 - Minecraft 1.12.1  
-- MinecraftForge 14.22.1.2478+  
+- MinecraftForge 14.23.3.2655+  
 - [HeatAndClimateLib](https://github.com/defeatedcrow/HeatAndClimateLib)
    
 ## Licenses
-- Code：MMPL-1.0  (full text is included as License.txt)  
-- Resource：CC-BY-NC 4.0
-- About the secondary users<br> - Paid use of these mods is prohibited. 権利者であるdefeatedcrowを除き、一切の営利目的での利用を禁止します。<br> - You can include these mods to your ModPack. 利用者は当ModをModPackに同梱できます。<br> - You can distribute these mods for your server users. サーバー管理者はサーバー利用者に対して当Modを配布することが出来ます。<br>
+- This mod is distributed under the following license: CC-BY-NC-SA 4.0
+ https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+The SA clause of the license is excluded in the following cases:
+- When used to creating add-ons or plugins for this mod (as your MinecraftJE mod).
+- When this mod is bundled with modpack for MinecraftJE.
+- When you take the game playing videos of MinecraftJE that introduced this mod.
 
 ## Caution!
 1. This mod is still a work-in-progress. Don't expect everything to work perfectly. Please be careful! <br> 当modは開発途中です。正常に動作しない場合がありますので、ご了承の上でご利用下さい。<br>
