@@ -64,8 +64,8 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	public BlockLotus(String s, int max) {
 		super(Material.WATER, s);
 		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK, false)
-				.withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK,
+				false).withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
 	}
 
 	public boolean isInWater(IBlockAccess world, BlockPos pos) {
@@ -74,8 +74,8 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 			IBlockState target = world.getBlockState(pos.offset(face));
 			if (target.getBlock() instanceof BlockLiquid && target.getMaterial() == Material.WATER) {
 
-			} else if (target.getBlock() != this
-					&& !target.getBlock().isSideSolid(target, world, pos.offset(face), face.getOpposite())) {
+			} else if (target.getBlock() != this && !target.getBlock().isSideSolid(target, world, pos.offset(face),
+					face.getOpposite())) {
 				ret = false;
 			}
 		}
@@ -378,6 +378,7 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 		ret.add(DCHeatTier.NORMAL);
 		ret.add(DCHeatTier.WARM);
 		ret.add(DCHeatTier.HOT);
+		ret.add(DCHeatTier.BOIL);
 		return ret;
 	}
 
@@ -448,7 +449,9 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.STAGE8, BLACK, BlockFluidBase.LEVEL
+				DCState.STAGE8,
+				BLACK,
+				BlockFluidBase.LEVEL
 		});
 	}
 

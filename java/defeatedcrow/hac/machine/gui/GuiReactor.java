@@ -188,7 +188,7 @@ public class GuiReactor extends GuiContainer {
 		}
 
 		this.mc.getTextureManager().bindTexture(iconTex);
-		this.drawTexturedModalRect(i + 12, j + 92, 0, 16, 40, 6);
+		this.drawTexturedModalRect(i + 12, j + 92, 0, 16, 46, 7);
 		IClimate clm = ClimateAPI.register.getClimateFromInt(machine.getField(2));
 		if (clm != null) {
 			int cl = clm.getHeat().getID() * 3;
@@ -220,8 +220,8 @@ public class GuiReactor extends GuiContainer {
 				} else {
 					n = machine.getField(11) + 1;
 				}
-				mc.getSoundHandler()
-						.playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+				mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK,
+						1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 0, (byte) n));
 			}
 			if (isPointInRegion(69, 9, 12, 6, x, y)) {
@@ -230,8 +230,8 @@ public class GuiReactor extends GuiContainer {
 				} else {
 					n = machine.getField(12) + 1;
 				}
-				mc.getSoundHandler()
-						.playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+				mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK,
+						1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 1, (byte) n));
 			}
 			if (isPointInRegion(110, 39, 12, 6, x, y)) {
@@ -240,8 +240,8 @@ public class GuiReactor extends GuiContainer {
 				} else {
 					n = machine.getField(13) + 1;
 				}
-				mc.getSoundHandler()
-						.playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+				mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK,
+						1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 2, (byte) n));
 			}
 			if (isPointInRegion(150, 39, 12, 6, x, y)) {
@@ -250,8 +250,8 @@ public class GuiReactor extends GuiContainer {
 				} else {
 					n = machine.getField(14) + 1;
 				}
-				mc.getSoundHandler()
-						.playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+				mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK,
+						1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 3, (byte) n));
 			}
 		}

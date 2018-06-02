@@ -5,12 +5,14 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.ItemStack;
 
 public class FoodClimateRecipe {
 
 	public static void load() {
 		loadClimateRecipes();
+		loadSmeltingRecipe();
 	}
 
 	static void loadClimateRecipes() {
@@ -210,6 +212,13 @@ public class FoodClimateRecipe {
 		cocotte.requiredHum().add(DCHumidity.NORMAL);
 		cocotte.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(cocotte, DCHeatTier.OVEN);
+
+	}
+
+	private static void loadSmeltingRecipe() {
+		ClimateSmelting lotuscrop = new ClimateSmelting(new ItemStack(MainInit.bakedApple, 1, 5), null, DCHeatTier.BOIL,
+				DCHumidity.UNDERWATER, null, 0F, false, new ItemStack(FoodInit.crops, 1, 10));
+		RecipeAPI.registerSmelting.addRecipe(lotuscrop, DCHeatTier.BOIL);
 	}
 
 }

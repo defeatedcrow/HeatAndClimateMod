@@ -96,7 +96,7 @@ public class BlockCoffee extends ClimateDoubleCropBase implements ITexturePath {
 		ret.add(DCHeatTier.NORMAL);
 		ret.add(DCHeatTier.WARM);
 		ret.add(DCHeatTier.HOT);
-		ret.add(DCHeatTier.OVEN);
+		ret.add(DCHeatTier.BOIL);
 		return ret;
 	}
 

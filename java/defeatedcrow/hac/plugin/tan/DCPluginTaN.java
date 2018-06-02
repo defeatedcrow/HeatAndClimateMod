@@ -77,7 +77,7 @@ public class DCPluginTaN {
 		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 7, DCHeatTier.OVEN);
 		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 9, DCHeatTier.OVEN);
 		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 11, DCHeatTier.OVEN);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 13, DCHeatTier.HOT);
+		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 13, DCHeatTier.BOIL);
 		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 15, DCHeatTier.HOT);
 		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.temperature_coil, 9, DCHeatTier.OVEN);
 		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.temperature_coil, 8, DCHeatTier.COLD);

@@ -96,6 +96,7 @@ public class BlockHerb extends ClimateCropBase implements ITexturePath {
 		ret.add(DCHeatTier.COOL);
 		ret.add(DCHeatTier.NORMAL);
 		ret.add(DCHeatTier.WARM);
+		ret.add(DCHeatTier.HOT);
 		return ret;
 	}
 

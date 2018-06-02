@@ -21,10 +21,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ParticleTempColor extends Particle {
 
 	public static final String TEMP_TEX = new String("dcs_climate:textures/particles/particle_temp.png");
-	private static final VertexFormat VERTEX_FORMAT = (new VertexFormat()).addElement(DefaultVertexFormats.POSITION_3F)
-			.addElement(DefaultVertexFormats.TEX_2F).addElement(DefaultVertexFormats.COLOR_4UB)
-			.addElement(DefaultVertexFormats.TEX_2S).addElement(DefaultVertexFormats.NORMAL_3B)
-			.addElement(DefaultVertexFormats.PADDING_1B);
+	private static final VertexFormat VERTEX_FORMAT = (new VertexFormat()).addElement(
+			DefaultVertexFormats.POSITION_3F).addElement(DefaultVertexFormats.TEX_2F).addElement(
+					DefaultVertexFormats.COLOR_4UB).addElement(DefaultVertexFormats.TEX_2S).addElement(
+							DefaultVertexFormats.NORMAL_3B).addElement(DefaultVertexFormats.PADDING_1B);
 	private TextureManager textureManager;
 
 	protected ParticleTempColor(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, int colorR,
@@ -37,7 +37,7 @@ public class ParticleTempColor extends Particle {
 		this.particleGreen = colorG / 255.0F;
 		this.particleBlue = colorB / 255.0F;
 		this.particleAlpha = 0.85F;
-		this.particleMaxAge = 20;
+		this.particleMaxAge = 30;
 		this.particleScale = 1.0F;
 
 		this.textureManager = Minecraft.getMinecraft().getTextureManager();
@@ -75,18 +75,14 @@ public class ParticleTempColor extends Particle {
 		GlStateManager.disableLighting();
 		RenderHelper.disableStandardItemLighting();
 		worldRendererIn.begin(7, VERTEX_FORMAT);
-		worldRendererIn.pos(fx - 0.30D, fy + 0.565D, fz + 0.30D).tex(fU, fV)
-				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
-				.normal(0.0F, 1.0F, 0.0F).endVertex();
-		worldRendererIn.pos(fx - 0.30D, fy + 0.565D, fz - 0.30D).tex(fU, fv)
-				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
-				.normal(0.0F, 1.0F, 0.0F).endVertex();
-		worldRendererIn.pos(fx + 0.30D, fy + 0.565D, fz - 0.30D).tex(fu, fv)
-				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
-				.normal(0.0F, 1.0F, 0.0F).endVertex();
-		worldRendererIn.pos(fx + 0.30D, fy + 0.565D, fz + 0.30D).tex(fu, fV)
-				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
-				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - 0.30D, fy + 0.565D, fz + 0.30D).tex(fU, fV).color(this.particleRed, this.particleGreen,
+				this.particleBlue, this.particleAlpha).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - 0.30D, fy + 0.565D, fz - 0.30D).tex(fU, fv).color(this.particleRed, this.particleGreen,
+				this.particleBlue, this.particleAlpha).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + 0.30D, fy + 0.565D, fz - 0.30D).tex(fu, fv).color(this.particleRed, this.particleGreen,
+				this.particleBlue, this.particleAlpha).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + 0.30D, fy + 0.565D, fz + 0.30D).tex(fu, fV).color(this.particleRed, this.particleGreen,
+				this.particleBlue, this.particleAlpha).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
 		Tessellator.getInstance().draw();
 		GlStateManager.enableLighting();
 	}

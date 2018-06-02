@@ -15,11 +15,7 @@
         "dcs_chamber": {
             "trigger": "minecraft:placed_block",
             "conditions": {
-                "items": [
-                    {
-                        "item": "dcs_climate:dcs_device_chamber"
-                    }
-                ]
+                "block": "dcs_climate:dcs_device_chamber"
             }
         }
     }

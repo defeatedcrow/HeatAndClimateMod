@@ -43,9 +43,9 @@ public class TileTeaPot extends TileFluidProcessorBase {
 	@Override
 	public int getProcessTime() {
 		if (current != null) {
-			if (current.getHeat() == DCHeatTier.KILN)
+			if (current.getHeat() == DCHeatTier.BOIL)
 				return 8;
-			else if (current.getHeat().getTier() > DCHeatTier.KILN.getTier())
+			else if (current.getHeat().getTier() > DCHeatTier.BOIL.getTier())
 				return 4;
 		}
 		return 20;

@@ -15,11 +15,7 @@
         "dcs_heat_exchanger": {
             "trigger": "minecraft:placed_block",
             "conditions": {
-                "items": [
-                    {
-                        "item": "dcs_climate:dcs_device_heat_exchanger"
-                    }
-                ]
+                "block": "dcs_climate:dcs_device_heat_exchanger"
             }
         }
     }

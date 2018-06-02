@@ -89,7 +89,7 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 				DCHeatTier heat = ((TileChamberBase) t).getCurrentHeatTier();
 				return heat;
 			}
-			return DCHeatTier.HOT;
+			return DCHeatTier.BOIL;
 		}
 		return DCHeatTier.NORMAL;
 	}
@@ -202,7 +202,7 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 			tooltip.add("Fuel: solid fuel (ex. coal)");
 			tooltip.add("Airflow: " + TextFormatting.AQUA.toString() + "WIND");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("HeatTier: " + TextFormatting.RED.toString() + "SMWLTING");
+			tooltip.add("HeatTier: " + TextFormatting.RED.toString() + "SMELTING");
 			tooltip.add("The temperature varies with airflow.");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add("Give winds by bellows or fans.");

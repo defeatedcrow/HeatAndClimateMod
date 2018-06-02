@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -89,8 +90,8 @@ public class AltTooltipEvent {
 						regC = DamageAPI.armorRegister.getColdPreventAmount(mat);
 					}
 					if (regH != 0 || regC != 0) {
-						String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": Heat " + regH + "/ Cold "
-								+ regC;
+						String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": Heat " + regH +
+								"/ Cold " + regC;
 						event.getToolTip().add(ret);
 					}
 
@@ -101,8 +102,9 @@ public class AltTooltipEvent {
 						if (f != null && f.getFluid() != null) {
 							String fName = f.getFluid().getName();
 							int temp = f.getFluid().getTemperature();
+							DCHeatTier tier = DCHeatTier.getTypeByTemperature(temp);
 							event.getToolTip().add(fName);
-							event.getToolTip().add("Temp: " + temp);
+							event.getToolTip().add("Temp: " + temp + " / " + tier);
 						}
 					}
 				}
