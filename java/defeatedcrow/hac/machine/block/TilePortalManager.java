@@ -328,7 +328,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	}
 
 	public boolean isSuitableClimate() {
-		if (current != null && current.getHeat() == DCHeatTier.ABSOLUTE)
+		if (current != null && current.getHeat().getTier() <= DCHeatTier.CRYOGENIC.getTier())
 			return true;
 		else
 			return hasCoolant();

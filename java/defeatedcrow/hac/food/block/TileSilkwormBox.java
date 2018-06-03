@@ -101,7 +101,7 @@ public class TileSilkwormBox extends ClimateReceiverLockable implements ISidedIn
 		if (current != null) {
 			boolean air = current.getAirflow() != DCAirflow.TIGHT;
 			boolean temp = current.getHeat().getTier() > DCHeatTier.COOL.getTier() &&
-					current.getHeat().getTier() < DCHeatTier.OVEN.getTier();
+					current.getHeat().getTier() < DCHeatTier.BOIL.getTier();
 			boolean leaves = !DCUtil.isEmpty(getStackInSlot(0));
 			return air && temp && leaves;
 		}

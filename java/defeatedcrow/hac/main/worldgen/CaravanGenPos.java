@@ -9,7 +9,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.BiomeDictionary;
 
 /**
- * キャラバンスライの生成座標<br>
+ * キャラバンサライの生成座標<br>
  * 生成に成功した場合、チャンクのNBTに情報をセーブする
  */
 public class CaravanGenPos {
@@ -99,11 +99,11 @@ public class CaravanGenPos {
 			byte biomeID = chunk.getBiomeArray()[7 << 4 | 7];
 			Biome biome = Biome.getBiome(biomeID);
 			if (biome != null) {
-				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY);
-				boolean b2 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA);
-				boolean b3 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) || BiomeDictionary.hasType(
+				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary.hasType(
+						biome, BiomeDictionary.Type.SAVANNA);
+				boolean b2 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) || BiomeDictionary.hasType(
 						biome, BiomeDictionary.Type.MOUNTAIN);
-				return (b1 || b2) && !b3;
+				return b1 && !b2;
 			}
 		}
 		return false;

@@ -44,7 +44,7 @@ public class DCPluginFluid {
 		if (f4 != null) {
 			Block b4 = f4.getBlock();
 			if (b4 != null) {
-				ClimateAPI.registerBlock.registerAirBlock(b4, 32767, DCAirflow.NORMAL);
+				ClimateAPI.registerBlock.registerAirBlock(b4, 32767, DCAirflow.FLOW);
 			}
 		}
 
@@ -52,7 +52,7 @@ public class DCPluginFluid {
 		if (f5 != null) {
 			Block b5 = f5.getBlock();
 			if (b5 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b5, 32767, DCHeatTier.OVEN);
+				ClimateAPI.registerBlock.registerHeatBlock(b5, 32767, DCHeatTier.BOIL);
 				ClimateAPI.registerBlock.registerAirBlock(b5, 32767, DCAirflow.NORMAL);
 			}
 		}
@@ -67,7 +67,7 @@ public class DCPluginFluid {
 		if (f8 != null) {
 			Block b8 = f8.getBlock();
 			if (b8 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b8, 32767, DCHeatTier.HOT);
+				ClimateAPI.registerBlock.registerHeatBlock(b8, 32767, DCHeatTier.BOIL);
 			}
 		}
 
@@ -75,7 +75,7 @@ public class DCPluginFluid {
 		if (f9 != null) {
 			Block b9 = f9.getBlock();
 			if (b9 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b9, 32767, DCHeatTier.HOT);
+				ClimateAPI.registerBlock.registerHeatBlock(b9, 32767, DCHeatTier.BOIL);
 			}
 		}
 
@@ -87,7 +87,7 @@ public class DCPluginFluid {
 		if (f11 != null) {
 			Block b11 = f11.getBlock();
 			if (b11 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b11, 32767, DCHeatTier.KILN);
+				ClimateAPI.registerBlock.registerHeatBlock(b11, 32767, DCHeatTier.OVEN);
 			}
 		}
 
@@ -210,7 +210,7 @@ public class DCPluginFluid {
 		if (f32 != null) {
 			Block b32 = f32.getBlock();
 			if (b32 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b32, 32767, DCHeatTier.OVEN);
+				ClimateAPI.registerBlock.registerHeatBlock(b32, 32767, DCHeatTier.BOIL);
 			}
 		}
 

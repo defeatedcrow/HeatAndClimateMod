@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
@@ -40,8 +41,8 @@ public class ItemMonitor extends DCItemBlock {
 			ItemStack held = player.getHeldItem(hand);
 			IBlockState state = world.getBlockState(pos);
 			if (!world.isRemote && !DCUtil.isEmpty(held)) {
-				String mes1 = "Stored coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ", "
-						+ facing;
+				String mes1 = "Stored coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ", " +
+						facing;
 				player.sendMessage(new TextComponentString(mes1));
 
 				NBTTagCompound tag = held.getTagCompound();
@@ -72,13 +73,21 @@ public class ItemMonitor extends DCItemBlock {
 			BlockPos pos = getPos(stack);
 			EnumFacing face = getFacing(stack);
 			if (pos != null && face != null) {
-				tooltip.add(TextFormatting.BOLD.toString() + "Stored data");
+				tooltip.add(TextFormatting.BOLD.toString() + "=== Stored Data ===");
 				tooltip.add("Dim: " + dim);
 				tooltip.add("Pos: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ());
 				tooltip.add("Side: " + face);
 			}
+		}
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+			tooltip.add("Require registering target coordinate.");
+			tooltip.add("Held this item and right-click the coordinate of target machine.");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
+			tooltip.add("Display data of target device");
+			tooltip.add("RS comparator output");
 		} else {
-			tooltip.add(TextFormatting.AQUA.toString() + "Please register target tile by right-click with sneaking.");
+			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
 

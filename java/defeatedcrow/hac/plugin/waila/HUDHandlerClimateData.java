@@ -20,6 +20,7 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import mcp.mobius.waila.api.SpecialChars;
 import mcp.mobius.waila.cbcore.LangUtil;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -121,8 +122,8 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 				if (growthValue < 100.0) {
 					currenttip.add(String.format("%s : %.0f %%", LangUtil.translateG("hud.msg.growth"), growthValue));
 				} else {
-					currenttip.add(String.format("%s : %s", LangUtil.translateG("hud.msg.growth"),
-							LangUtil.translateG("hud.msg.mature")));
+					currenttip.add(String.format("%s : %s", LangUtil.translateG("hud.msg.growth"), LangUtil.translateG(
+							"hud.msg.mature")));
 				}
 			} else if (ClimateDoubleCropBase.class.isInstance(block)) {
 				ClimateDoubleCropBase crop = (ClimateDoubleCropBase) block;
@@ -131,9 +132,17 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 				if (growthValue < 100.0) {
 					currenttip.add(String.format("%s : %.0f %%", LangUtil.translateG("hud.msg.growth"), growthValue));
 				} else {
-					currenttip.add(String.format("%s : %s", LangUtil.translateG("hud.msg.growth"),
-							LangUtil.translateG("hud.msg.mature")));
+					currenttip.add(String.format("%s : %s", LangUtil.translateG("hud.msg.growth"), LangUtil.translateG(
+							"hud.msg.mature")));
 				}
+			}
+		}
+
+		if (config.getConfig("dcs_climate.showvanillafarmland")) {
+			if (BlockFarmland.class.isInstance(block)) {
+				int stage = meta & 7;
+				float wetValue = (stage / 7.0F) * 100.0F;
+				currenttip.add(String.format("%s : %.0f %%", LangUtil.translateG("Moisture"), wetValue));
 			}
 		}
 
@@ -149,6 +158,7 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 	public static void register(IWailaRegistrar registrar) {
 		registrar.addConfig("HeatAndClimate", "dcs_climate.showclimate", true);
 		registrar.addConfig("HeatAndClimate", "dcs_climate.showcrops", true);
+		registrar.addConfig("HeatAndClimate", "dcs_climate.showvanillafarmland", true);
 
 		HUDHandlerClimateData provider = new HUDHandlerClimateData();
 
@@ -166,6 +176,8 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 
 		registrar.registerBodyProvider(provider, ClimateCropBase.class);
 		registrar.registerBodyProvider(provider, ClimateDoubleCropBase.class);
+
+		registrar.registerBodyProvider(provider, BlockFarmland.class);
 
 		targetHeatList.addAll(ClimateAPI.registerBlock.getHeatList().keySet());
 		if (!targetHeatList.isEmpty()) {

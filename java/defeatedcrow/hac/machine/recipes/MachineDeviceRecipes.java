@@ -422,18 +422,18 @@ public class MachineDeviceRecipes {
 
 			// ニトロ
 			IReactorRecipe r17 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 5), null, null, null,
-					DCHeatTier.OVEN, 0, null, new FluidStack(MachineInit.nitricAcid, 200), new FluidStack(
+					DCHeatTier.HOT, 0, null, new FluidStack(MachineInit.nitricAcid, 200), new FluidStack(
 							MachineInit.sulfuricAcid, 200), new Object[] {
 									"cropCotton"
 					});
-			RecipeAPI.registerReactorRecipes.addRecipe(r17, DCHeatTier.OVEN);
+			RecipeAPI.registerReactorRecipes.addRecipe(r17, DCHeatTier.HOT);
 
 			IReactorRecipe r18 = new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 6), null, null, null,
-					DCHeatTier.OVEN, 0, null, new FluidStack(MachineInit.nitricAcid, 200), new FluidStack(
+					DCHeatTier.HOT, 0, null, new FluidStack(MachineInit.nitricAcid, 200), new FluidStack(
 							MachineInit.sulfuricAcid, 200), new Object[] {
 									new ItemStack(MachineInit.reagent, 1, 1)
 					});
-			RecipeAPI.registerReactorRecipes.addRecipe(r18, DCHeatTier.OVEN);
+			RecipeAPI.registerReactorRecipes.addRecipe(r18, DCHeatTier.HOT);
 
 			// 硝石
 			IReactorRecipe r38 = new ReactorRecipe(new ItemStack(MainInit.miscDust, 1, 6), null, null, null,
@@ -554,12 +554,12 @@ public class MachineDeviceRecipes {
 			});
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1, 11), null, 0, null, null,
-					DCHeatTier.KILN, null, new FluidStack(FluidRegistry.WATER, 100), null, new Object[] {
+					DCHeatTier.OVEN, null, new FluidStack(FluidRegistry.WATER, 100), null, new Object[] {
 							new ItemStack(MachineInit.reagent, 1, 10)
 					});
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1, 12), null, 0, null, null,
-					DCHeatTier.NORMAL, null, new FluidStack(MachineInit.ammonia, 100), null, new Object[] {
+					DCHeatTier.OVEN, null, new FluidStack(MachineInit.ammonia, 100), null, new Object[] {
 							new ItemStack(MachineInit.reagent, 1, 11)
 					});
 

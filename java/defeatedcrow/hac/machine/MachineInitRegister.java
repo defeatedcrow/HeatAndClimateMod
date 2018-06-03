@@ -553,7 +553,7 @@ public class MachineInitRegister {
 		FluidRegistry.addBucketForFluid(MachineInit.nitrogen);
 		FluidRegistry.addBucketForFluid(MachineInit.ethanol);
 
-		ClimateAPI.registerBlock.registerHeatBlock(MachineInit.nitrogenBlock, 32767, DCHeatTier.FROSTBITE);
+		ClimateAPI.registerBlock.registerHeatBlock(MachineInit.nitrogenBlock, 32767, DCHeatTier.CRYOGENIC);
 	}
 
 	public static void registerTierBlock(Block block, String name, int i) {

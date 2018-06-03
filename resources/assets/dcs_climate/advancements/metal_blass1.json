@@ -16,12 +16,8 @@
         "place_dustblock": {
             "trigger": "minecraft:placed_block",
             "conditions": {
-                "items": [
-                    {
-                        "item": "dcs_climate:dcs_ore_dustblock",
-                        "data": 4
-                    }
-                ]
+                "block": "dcs_climate:dcs_ore_dustblock",
+                "data": 4
             }
         }
     }

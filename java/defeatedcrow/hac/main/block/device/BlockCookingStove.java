@@ -195,7 +195,7 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add("Fuel: fluid fuel (ex. seed oil)");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("HeatTier: " + TextFormatting.RED.toString() + "SMWLTING");
+			tooltip.add("HeatTier: " + TextFormatting.RED.toString() + "SMELTING");
 			tooltip.add("Area: only upper side coordinate");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add("This tile drains fluid from the adjacent fluid tank.");

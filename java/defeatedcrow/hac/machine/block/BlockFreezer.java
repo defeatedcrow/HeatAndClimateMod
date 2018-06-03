@@ -95,8 +95,8 @@ public class BlockFreezer extends BlockTorqueBase implements IHeatTile {
 			tooltip.add("Stage2: 32.0+ torque/s");
 			tooltip.add("Stage3: 64.0+ torque/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("Stage1 HeatTier: " + TextFormatting.BLUE.toString() + "COLD");
-			tooltip.add("Stage2 HeatTier: " + TextFormatting.BLUE.toString() + "FROSTBITE");
+			tooltip.add("Stage1 HeatTier: " + TextFormatting.BLUE.toString() + "FROSTBITE");
+			tooltip.add("Stage2 HeatTier: " + TextFormatting.BLUE.toString() + "CRYOGENIC");
 			tooltip.add("Stage3 HeatTier: " + TextFormatting.BLUE.toString() + "ABSOLUTE");
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");

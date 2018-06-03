@@ -127,7 +127,7 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add("HeatTier: " + TextFormatting.BLUE.toString() + "COLD" + TextFormatting.GRAY.toString() +
-					" ~ " + TextFormatting.RED.toString() + "OVEN");
+					" ~ " + TextFormatting.RED.toString() + "BOIL");
 			tooltip.add("Climate required by recipe.");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add("Recipe product item");

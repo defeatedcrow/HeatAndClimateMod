@@ -738,7 +738,7 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerItem(MainInit.foodMaterials, ClimateCore.PACKAGE_BASE + "_food_materials",
 				ClimateMain.MOD_ID);
 
-		MainInit.bakedApple = new ItemDCFoods(4, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
+		MainInit.bakedApple = new ItemDCFoods(5, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		DCMaterialReg.registerItem(MainInit.bakedApple, ClimateCore.PACKAGE_BASE + "_food_itemfood",
 				ClimateMain.MOD_ID);
 	}

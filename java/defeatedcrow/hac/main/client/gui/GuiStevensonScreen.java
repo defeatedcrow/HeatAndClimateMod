@@ -36,8 +36,8 @@ public class GuiStevensonScreen extends GuiContainer {
 		if (t.getWorld() != null) {
 			World world = t.getWorld();
 			Biome biome = world.getBiomeForCoordsBody(t.getPos());
-			boolean snow = biome.isSnowyBiome()
-					|| (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) && t.getPos().getY() > 100);
+			boolean snow = biome.isSnowyBiome() || (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) &&
+					t.getPos().getY() > 100);
 			boolean dry = !biome.canRain() && !biome.isSnowyBiome();
 			if (world.getRainStrength(1.0F) > 0.2F) {
 				if (dry) {
@@ -139,15 +139,21 @@ public class GuiStevensonScreen extends GuiContainer {
 			DCHumidity hum = climate.getHumidity();
 			DCAirflow air = climate.getAirflow();
 
-			int x2 = 20 * temp.getID();
-			this.drawTexturedModalRect(i + 89, j + 85, x2, 167, 20, 3);
-			this.drawTexturedModalRect(i + 109, j + 85, x2, 167, 20, 3);
+			if (temp.getID() > 6) {
+				int x2 = 20 * temp.getID() - 140;
+				this.drawTexturedModalRect(i + 89, j + 85, x2, 171, 20, 3);
+				this.drawTexturedModalRect(i + 109, j + 85, x2, 171, 20, 3);
+			} else {
+				int x2 = 20 * temp.getID();
+				this.drawTexturedModalRect(i + 89, j + 85, x2, 167, 20, 3);
+				this.drawTexturedModalRect(i + 109, j + 85, x2, 167, 20, 3);
+			}
 
 			int x3 = 40 * hum.getID();
-			this.drawTexturedModalRect(i + 89, j + 102, x3, 171, 40, 3);
+			this.drawTexturedModalRect(i + 89, j + 102, x3, 175, 40, 3);
 
 			int x4 = 40 * air.getID();
-			this.drawTexturedModalRect(i + 89, j + 119, x4, 175, 40, 3);
+			this.drawTexturedModalRect(i + 89, j + 119, x4, 179, 40, 3);
 		}
 
 	}

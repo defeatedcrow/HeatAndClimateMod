@@ -69,9 +69,9 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 			if (f > 63.0F) {
 				current = DCHeatTier.ABSOLUTE;
 			} else if (f > 31.0F) {
-				current = DCHeatTier.FROSTBITE;
+				current = DCHeatTier.CRYOGENIC;
 			} else if (f > 5.0F) {
-				current = DCHeatTier.COLD;
+				current = DCHeatTier.FROSTBITE;
 			}
 		}
 	}

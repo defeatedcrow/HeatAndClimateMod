@@ -200,6 +200,7 @@ item.dcs_food_itemfood_boiled_egg.name=ゆで卵
 item.dcs_food_itemfood_jerky.name=ジャーキー
 item.dcs_food_itemfood_boiled_sausage.name=ソーセージ
 item.dcs_food_itemfood_baked_squid.name=焼きイカ
+item.dcs_food_itemfood_boiled_lotus_crop.name=ゆでた蓮の実
 item.dcs_food_bread_roundbread_raw.name=パン生地
 item.dcs_food_bread_roundbread_baked.name=丸パン
 item.dcs_food_bread_squarebread_raw.name=型入り生地

@@ -11,6 +11,8 @@ import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -71,6 +73,11 @@ public abstract class ItemPlatingBase extends DCItem implements IPlatingTool {
 			return i < max;
 		else if (enc.canApply(target))
 			return true;
+		else if (target.getItem().isDamageable() && !(target.getItem() instanceof ItemArmor) &&
+				enc.type == EnumEnchantmentType.DIGGER)
+			return true;
+		else if (target.getItem().isDamageable() && enc.type == EnumEnchantmentType.BREAKABLE)
+			return true;
 		return false;
 	}
 
@@ -107,12 +114,8 @@ public abstract class ItemPlatingBase extends DCItem implements IPlatingTool {
 			if (canAddEnchantment(target, enc)) {
 				int i = EnchantmentHelper.getEnchantmentLevel(enc, ret);
 				int max = enc.getMaxLevel();
-				if (i > 0 && i < max) {
+				if (i < max) {
 					map.put(enc, i + 1);
-				} else {
-					if (enc.canApply(ret)) {
-						map.put(enc, 1);
-					}
 				}
 			}
 		}

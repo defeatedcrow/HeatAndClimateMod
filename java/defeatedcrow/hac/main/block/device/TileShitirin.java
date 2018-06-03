@@ -32,7 +32,7 @@ public class TileShitirin extends TileNormalChamber {
 			if (air.getID() > 0) {
 				this.currentClimate = DCHeatTier.OVEN.getID();
 			} else {
-				this.currentClimate = DCHeatTier.HOT.getID();
+				this.currentClimate = DCHeatTier.BOIL.getID();
 			}
 
 			if (BlockShitirin.isLit(getWorld(), getPos()) != this.isActive()) {
