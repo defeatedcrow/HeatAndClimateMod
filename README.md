@@ -5,7 +5,7 @@ A Mod for Minecraft 1.12.2
 Please visit my new wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
 
 ## Introduction
-- This is a mod being developed by @defeatedcrow. This mod requires HeatAndClimateLib.<br>  このmodはdefeatedcrowが作成する、HeatAndClimateLibを利用したMinecraft用Modです。HeatAndClimateLibを前提Modとして要求します。<br> 現在の開発環境はMC1.12.1です。
+This is a mod being developed by @defeatedcrow. This mod requires HeatAndClimateLib.<br>  このmodはdefeatedcrowが作成する、HeatAndClimateLibを利用したMinecraft用Modです。HeatAndClimateLibを前提Modとして要求します。<br> 現在の開発環境はMC1.12.1です。
 
 ## Current operating environment:
 - Minecraft 1.12.1  
@@ -13,7 +13,8 @@ Please visit my new wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
 - [HeatAndClimateLib](https://github.com/defeatedcrow/HeatAndClimateLib)
    
 ## Licenses
-- This mod is distributed under the following license: CC-BY-NC-SA 4.0
+このmodは以下のライセンスの元で公開されます。 <br>
+ This mod is distributed under the following license: CC-BY-NC-SA 4.0 <br>
  https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 
 The SA clause of the license is excluded in the following cases:
