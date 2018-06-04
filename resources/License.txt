@@ -1,12 +1,24 @@
 Copyright (c) defeatedcrow, 2016
 URL:http://defeatedcrow.jp/modwiki/Mainpage
-All of defeatedcrow's mods are distributed under the terms of the following licenses.
 
-This mod is distributed under the following license: CC-BY-NC-SA 4.0
-https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+このmodは以下のライセンスの元で公開されます。 <br>
+This mod is distributed under the following license:
+#Code: All Rights Reserved
+Permissions
+- ソースコードを改変したり、あなたのmodプロジェクトに利用することができます。
+  You can fork, modify, or use the code in your project.
+- このmodの非改変パッケージをmodpackに同梱したり、マルチプレイサーバー内で再配布することができます
+  You can redistribute this mod's unmodified package to modpack or multiplayer server.
 
-The SA clause of the license is excluded in the following cases:
-1. When used to creating add-ons or plugins for this mod (as your MinecraftJE mod).
-2. When this mod is bundled with modpack for MinecraftJE.
-3. When you take the game playing videos of MinecraftJE that introduced this mod.
+Conditions
+- 著作権者の表示 Copyright notice
+- 商用利用禁止 Commercial use prohibition
 
+Limitations
+- このmodは「現状のまま」提供され、一切の動作を保証しません。
+  This mod is provided "as is" without warranty of any kind.
+- 作者および著作権者は、いかなる場合でも、このmodの使用その他によって生じる責任を負いません。
+  In any case, the author or copyright holder is not responsible for any claims, damages or other liabilities arising out of this mod or its use.
+
+#Assets: CC-BY-NC-SA 4.0 <br>
+ https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
