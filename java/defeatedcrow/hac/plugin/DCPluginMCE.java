@@ -820,22 +820,25 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.windmill_l, 1, 0), 2500);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.handcrank, 1, 0), 2000);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft_l, 1, 0), 1600);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft_s, 1, 0), 4250);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft_s, 1, 0), 1600);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft_l, 1, 0), 4250);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft_t_a, 1, 0), 5850);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft_t_b, 1, 0), 5850);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft_x, 1, 0), 7450);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.gearbox, 1, 0), 8450);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft2_l, 1, 0), 4250);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft2_s, 1, 0), 10950);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft2_s, 1, 0), 4250);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft2_l, 1, 0), 10950);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft2_t_a, 1, 0), 15200);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft2_t_b, 1, 0), 15200);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft2_x, 1, 0), 19450);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.gearbox2, 1, 0), 15050);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft3_l, 1, 0), 3650);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft3_s, 1, 0), 9750);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft3_s, 1, 0), 3650);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft3_l, 1, 0), 9750);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft3_t_a, 1, 0), 13400);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft3_t_b, 1, 0), 13400);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.shaft3_t_b, 1, 0), 17050);
 
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.fan, 1, 0), 3200);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.spinning, 1, 0), 2600);
@@ -886,6 +889,7 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.monitorRF, 1, 0), 6100);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.monitorFluid, 1, 0), 2000);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.monitorTorque, 1, 0), 4280);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.monitorItem, 1, 0), 1800);
 
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.motorMinecart, 1, 0), 19000);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.scooter, 1, 0), 23600);

@@ -27,6 +27,7 @@ import defeatedcrow.hac.machine.block.TileHopperSilver;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
 import defeatedcrow.hac.machine.block.TileMonitorFluid;
+import defeatedcrow.hac.machine.block.TileMonitorInventory;
 import defeatedcrow.hac.machine.block.TileMonitorRF;
 import defeatedcrow.hac.machine.block.TileMonitorRedStone;
 import defeatedcrow.hac.machine.block.TileMonitorTorque;
@@ -47,6 +48,9 @@ import defeatedcrow.hac.machine.block.TileShaft_TA_Steel;
 import defeatedcrow.hac.machine.block.TileShaft_TB;
 import defeatedcrow.hac.machine.block.TileShaft_TB_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_TB_Steel;
+import defeatedcrow.hac.machine.block.TileShaft_X;
+import defeatedcrow.hac.machine.block.TileShaft_X_SUS;
+import defeatedcrow.hac.machine.block.TileShaft_X_Steel;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.block.TileWaterPump;
@@ -68,6 +72,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileShaft_L.class, "dcs_te_shaft_l");
 		GameRegistry.registerTileEntity(TileShaft_TA.class, "dcs_te_shaft_ta");
 		GameRegistry.registerTileEntity(TileShaft_TB.class, "dcs_te_shaft_tb");
+		GameRegistry.registerTileEntity(TileShaft_X.class, "dcs_te_shaft_x");
 		GameRegistry.registerTileEntity(TileGearBox.class, "dcs_te_gearbox");
 		GameRegistry.registerTileEntity(TileCrank_S.class, "dcs_te_crank_s");
 		GameRegistry.registerTileEntity(TileHandCrank.class, "dcs_te_handcrank");
@@ -81,6 +86,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileShaft_L_SUS.class, "dcs_te_shaft_l_sus");
 		GameRegistry.registerTileEntity(TileShaft_TA_SUS.class, "dcs_te_shaft_ta_sus");
 		GameRegistry.registerTileEntity(TileShaft_TB_SUS.class, "dcs_te_shaft_tb_sus");
+		GameRegistry.registerTileEntity(TileShaft_X_SUS.class, "dcs_te_shaft_x_sus");
 		GameRegistry.registerTileEntity(TileGearBox_SUS.class, "dcs_te_gearbox_sus");
 		GameRegistry.registerTileEntity(TileBoilerTurbine.class, "dcs_te_boiler_turbine");
 		GameRegistry.registerTileEntity(TileKineticMotor.class, "dcs_te_kinetic_motor");
@@ -109,12 +115,14 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileShaft_L_Steel.class, "dcs_te_shaft_l_steel");
 		GameRegistry.registerTileEntity(TileShaft_TA_Steel.class, "dcs_te_shaft_ta_steel");
 		GameRegistry.registerTileEntity(TileShaft_TB_Steel.class, "dcs_te_shaft_tb_steel");
+		GameRegistry.registerTileEntity(TileShaft_X_Steel.class, "dcs_te_shaft_x_steel");
 		GameRegistry.registerTileEntity(TileDieselEngine.class, "dcs_te_diesel_engine");
 		GameRegistry.registerTileEntity(TileRollerCrusher.class, "dcs_te_crusher");
 		GameRegistry.registerTileEntity(TileMonitorRedStone.class, "dcs_te_monitor_rs");
 		GameRegistry.registerTileEntity(TileMonitorTorque.class, "dcs_te_monitor_torque");
 		GameRegistry.registerTileEntity(TileMonitorRF.class, "dcs_te_monitor_rf");
 		GameRegistry.registerTileEntity(TileMonitorFluid.class, "dcs_te_monitor_fluid");
+		GameRegistry.registerTileEntity(TileMonitorInventory.class, "dcs_te_monitor_item");
 	}
 
 	public static void loadEntity() {

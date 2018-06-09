@@ -6,22 +6,25 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelShaft_TB extends DCTileModelBase {
+public class ModelShaft_X extends DCTileModelBase {
 	// fields
 	ModelRenderer pad1;
 	ModelRenderer pad2;
 	ModelRenderer pad3;
+	ModelRenderer pad4;
 	ModelRenderer shaft1;
 	ModelRenderer shaft2;
 	ModelRenderer shaftcube1;
 	ModelRenderer shaftcube2;
 	ModelRenderer shaftcube3;
+	ModelRenderer shaftcube4;
 	ModelRenderer joint;
 	ModelRenderer gear1;
 	ModelRenderer gear2;
 	ModelRenderer gear3;
+	ModelRenderer gear4;
 
-	public ModelShaft_TB() {
+	public ModelShaft_X() {
 		textureWidth = 64;
 		textureHeight = 64;
 
@@ -43,6 +46,12 @@ public class ModelShaft_TB extends DCTileModelBase {
 		pad3.setTextureSize(64, 32);
 		pad3.mirror = true;
 		setRotation(pad3, 0F, 0F, 0F);
+		pad4 = new ModelRenderer(this, 32, 32);
+		pad4.addBox(-3F, 7F, -3F, 6, 1, 6);
+		pad4.setRotationPoint(0F, 0F, 0F);
+		pad4.setTextureSize(64, 32);
+		pad4.mirror = true;
+		setRotation(pad4, 0F, 0F, 0F);
 		shaft1 = new ModelRenderer(this, 0, 8);
 		shaft1.addBox(-0.5F, -7F, -0.5F, 1, 7, 1);
 		shaft1.setRotationPoint(0F, 0F, 0F);
@@ -73,6 +82,12 @@ public class ModelShaft_TB extends DCTileModelBase {
 		shaftcube3.setTextureSize(64, 32);
 		shaftcube3.mirror = true;
 		setRotation(shaftcube3, 0F, 0F, 0F);
+		shaftcube4 = new ModelRenderer(this, 6, 8);
+		shaftcube4.addBox(-1.5F, 3F, -1.5F, 3, 4, 3);
+		shaftcube4.setRotationPoint(0F, 0F, 0F);
+		shaftcube4.setTextureSize(64, 32);
+		shaftcube4.mirror = true;
+		setRotation(shaftcube4, 0F, 0F, 0F);
 		joint = new ModelRenderer(this, 47, 8);
 		joint.addBox(-0.5F, -1F, -1F, 1, 2, 2);
 		joint.setRotationPoint(0F, 0F, 0F);
@@ -97,6 +112,12 @@ public class ModelShaft_TB extends DCTileModelBase {
 		gear3.setTextureSize(64, 32);
 		gear3.mirror = true;
 		setRotation(gear3, 0F, -1.570796F, 0F);
+		gear4 = new ModelRenderer(this, 0, 18);
+		gear4.addBox(-2.5F, 2F, -2.5F, 5, 1, 5);
+		gear4.setRotationPoint(0F, 0F, 0F);
+		gear4.setTextureSize(64, 32);
+		gear4.mirror = true;
+		setRotation(gear4, 0F, 0F, 0F);
 	}
 
 	@Override
@@ -105,15 +126,18 @@ public class ModelShaft_TB extends DCTileModelBase {
 		pad1.render(0.0625F);
 		pad2.render(0.0625F);
 		pad3.render(0.0625F);
+		pad4.render(0.0625F);
 		shaft1.render(0.0625F);
 		shaft2.render(0.0625F);
 		shaftcube1.render(0.0625F);
 		shaftcube2.render(0.0625F);
 		shaftcube3.render(0.0625F);
+		shaftcube4.render(0.0625F);
 		joint.render(0.0625F);
 		gear1.render(0.0625F);
 		gear2.render(0.0625F);
 		gear3.render(0.0625F);
+		gear4.render(0.0625F);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -129,9 +153,12 @@ public class ModelShaft_TB extends DCTileModelBase {
 		float f2 = (float) (rot * Math.PI / 180F);// f * 0.01745329F;
 		float f3 = f2 * 0.5F;
 
-		shaftcube1.rotateAngleY = f2;
-		shaft1.rotateAngleY = f2;
-		gear1.rotateAngleY = f3;
+		shaftcube1.rotateAngleY = -f2;
+		shaft1.rotateAngleY = -f2;
+		gear1.rotateAngleY = -f2;
+
+		shaftcube4.rotateAngleY = f3;
+		gear4.rotateAngleY = f3;
 
 		shaftcube2.rotateAngleX = -f3;
 		shaft2.rotateAngleX = -f3;

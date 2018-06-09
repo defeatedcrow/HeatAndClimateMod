@@ -121,7 +121,7 @@ public class BlockHedge extends BlockFence {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT;
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 
 	@Override

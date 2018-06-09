@@ -36,8 +36,8 @@ public class AnvilMoldEvent {
 						event.setMaterialCost(1);
 					}
 				}
-			} else if (!DCUtil.isEmpty(left) && left.getItem() instanceof IPressMold
-					&& right.getItem() == Items.IRON_INGOT && DCUtil.isEmpty(ret)) {
+			} else if (!DCUtil.isEmpty(left) && left.getItem() instanceof IPressMold &&
+					right.getItem() == Items.IRON_INGOT && DCUtil.isEmpty(ret)) {
 				// recipeの変更
 				// DCLogger.debugLog("anvil event cycle");
 				IPressMold mold = (IPressMold) left.copy().getItem();
@@ -54,8 +54,8 @@ public class AnvilMoldEvent {
 			}
 
 			/* リペアパテの設定 */
-			else if (!DCUtil.isEmpty(left) && left.getItem().isDamageable() && right.getItem() == MainInit.repairPutty
-					&& DCUtil.isEmpty(ret)) {
+			else if (!DCUtil.isEmpty(left) && left.getItem().isDamageable() &&
+					right.getItem() == MainInit.repairPutty && DCUtil.isEmpty(ret)) {
 				int dam = left.getItemDamage();
 				int type = right.getItemDamage();
 				int count = right.getCount();
@@ -70,18 +70,18 @@ public class AnvilMoldEvent {
 					}
 					event.setOutput(next);
 					event.setCost(5);
-					event.setMaterialCost(1);
+					event.setMaterialCost(count);
 				} else if (type == 1) {
 					Item tool = left.getItem();
-					if (Enchantments.EFFICIENCY.canApply(left)
-							&& EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, left) == 0) {
+					if (Enchantments.EFFICIENCY.canApply(left) && EnchantmentHelper.getEnchantmentLevel(
+							Enchantments.EFFICIENCY, left) == 0) {
 						ItemStack next = left.copy();
 						next.addEnchantment(Enchantments.EFFICIENCY, 1);
 						event.setOutput(next);
 						event.setCost(1);
 						event.setMaterialCost(1);
-					} else if (Enchantments.SHARPNESS.canApply(left)
-							&& EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, left) == 0) {
+					} else if (Enchantments.SHARPNESS.canApply(left) && EnchantmentHelper.getEnchantmentLevel(
+							Enchantments.SHARPNESS, left) == 0) {
 						ItemStack next = left.copy();
 						next.addEnchantment(Enchantments.SHARPNESS, 1);
 						event.setOutput(next);

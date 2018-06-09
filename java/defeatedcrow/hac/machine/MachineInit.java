@@ -18,6 +18,7 @@ public class MachineInit {
 	public static Block shaft_l;
 	public static Block shaft_t_a;
 	public static Block shaft_t_b;
+	public static Block shaft_x;
 	public static Block gearbox;
 
 	public static Block piston;
@@ -32,6 +33,7 @@ public class MachineInit {
 	public static Block shaft3_l;
 	public static Block shaft3_t_a;
 	public static Block shaft3_t_b;
+	public static Block shaft3_x;
 
 	public static Block fauset;
 	public static Block IBC;
@@ -55,6 +57,7 @@ public class MachineInit {
 	public static Block shaft2_l;
 	public static Block shaft2_t_a;
 	public static Block shaft2_t_b;
+	public static Block shaft2_x;
 	public static Block gearbox2;
 
 	public static Block boilerTurbine; // Climate -> Torque
@@ -118,6 +121,7 @@ public class MachineInit {
 	public static Block monitorFluid;
 	public static Block monitorTorque;
 	public static Block monitorRF;
+	public static Block monitorItem;
 
 	public static Item dynamite;
 

@@ -24,8 +24,8 @@ public class TileMonitorFluid extends TileMonitorBase {
 				amountMax = tank.getTankProperties()[0].getCapacity();
 				FluidStack cont = tank.drain((int) amountMax, false);
 				amount = cont == null ? 0 : cont.amount;
+				return true;
 			}
-			return true;
 		}
 		return false;
 	}
