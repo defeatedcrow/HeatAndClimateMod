@@ -74,6 +74,16 @@ public class MachineRecipes {
 				"gearBrass"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft_x, 1, 0), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'X',
+				new ItemStack(MachineInit.shaft_s, 1, 0),
+				'Y',
+				"gearBrass"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.piston, 1, 0), new Object[] {
 				" X ",
 				"YZY",
@@ -265,6 +275,16 @@ public class MachineRecipes {
 				"gearSteel"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft3_x, 1, 0), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'X',
+				new ItemStack(MachineInit.shaft3_s, 1, 0),
+				'Y',
+				"gearSteel"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft2_s, 1, 0), new Object[] {
 				"X",
 				"Y",
@@ -303,6 +323,16 @@ public class MachineRecipes {
 				"gearSteel"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.shaft2_x, 1, 0), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'X',
+				new ItemStack(MachineInit.shaft2_s, 1, 0),
+				'Y',
+				"gearSteel"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.gearbox2, 1, 0), new Object[] {
 				"ZXZ",
 				"XYX",
@@ -313,18 +343,6 @@ public class MachineRecipes {
 				"gearSteel",
 				'Z',
 				"ingotSUS"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.waterPump, 1, 0), new Object[] {
-				"XYX",
-				"XZX",
-				"XYX",
-				'X',
-				"ingotNickelsilver",
-				'Y',
-				new ItemStack(Blocks.IRON_BARS, 1, 0),
-				'Z',
-				"gearAlloy"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.boilerTurbine, 1, 0), new Object[] {
@@ -339,43 +357,6 @@ public class MachineRecipes {
 				new ItemStack(MachineInit.IBC, 1, 0),
 				'W',
 				new ItemStack(MachineInit.heatPump, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.pressMachine, 1, 0), new Object[] {
-				"XYX",
-				"X X",
-				"XZX",
-				'X',
-				"ingotSUS",
-				'Y',
-				"gearSteel",
-				'Z',
-				new ItemStack(Blocks.ANVIL, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.motor, 1, 0), new Object[] {
-				"YZW",
-				"XXX",
-				'X',
-				"ingotSUS",
-				'Y',
-				new ItemStack(MachineInit.shaft2_s, 1, 0),
-				'Z',
-				"gearSteel",
-				'W',
-				new ItemStack(MachineInit.machimeMaterials, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dynamo, 1, 0), new Object[] {
-				"XZX",
-				" Y ",
-				"XZX",
-				'X',
-				"ingotSUS",
-				'Y',
-				new ItemStack(MachineInit.machimeMaterials, 1, 1),
-				'Z',
-				"gearSteel"
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.conveyor, 8, 0), new Object[] {
@@ -465,22 +446,6 @@ public class MachineRecipes {
 				"ingotNickelsilver",
 				'Y',
 				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.freezer, 1, 0), new Object[] {
-				"WZ ",
-				"WYV",
-				"XXX",
-				'X',
-				"ingotSUS",
-				'Y',
-				new ItemStack(Blocks.END_ROD, 1, 0),
-				'Z',
-				"bucketWater",
-				'W',
-				new ItemStack(MachineInit.IBC, 1, 0),
-				'V',
-				new ItemStack(MachineInit.gearbox2, 1, 0),
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.fuelCont, 1, 0), new Object[] {

@@ -44,6 +44,7 @@ import defeatedcrow.hac.main.block.build.BlockVillageChest;
 import defeatedcrow.hac.main.block.build.BlockWallLamp;
 import defeatedcrow.hac.main.block.build.BlockWallShelf;
 import defeatedcrow.hac.main.block.build.ItemDoorDC;
+import defeatedcrow.hac.main.block.build.ItemLowChest;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
@@ -504,48 +505,45 @@ public class MainMaterialRegister {
 
 		MainInit.chestMarble = new BlockLowChest(Material.WOOD, ClimateCore.PACKAGE_BASE + "_device_lowchest_marble",
 				true);
-		DCMaterialReg.registerBlock(MainInit.chestMarble, ClimateCore.PACKAGE_BASE + "_device_lowchest_marble",
+		registerChestBlock(MainInit.chestMarble, ClimateCore.PACKAGE_BASE + "_device_lowchest_marble",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.chestMarble, "dcs_climate", "dcs_device_lowchest_marble", "device");
 
 		MainInit.chestWood = new BlockLowChest(Material.WOOD, ClimateCore.PACKAGE_BASE + "_device_lowchest_wood", true);
-		DCMaterialReg.registerBlock(MainInit.chestWood, ClimateCore.PACKAGE_BASE + "_device_lowchest_wood",
-				ClimateMain.MOD_ID);
+		registerChestBlock(MainInit.chestWood, ClimateCore.PACKAGE_BASE + "_device_lowchest_wood", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.chestWood, "dcs_climate", "dcs_device_lowchest_wood", "device");
 
 		MainInit.chestChecker = new BlockLowChest(Material.WOOD, ClimateCore.PACKAGE_BASE + "_device_lowchest_checker",
 				true);
-		DCMaterialReg.registerBlock(MainInit.chestChecker, ClimateCore.PACKAGE_BASE + "_device_lowchest_checker",
+		registerChestBlock(MainInit.chestChecker, ClimateCore.PACKAGE_BASE + "_device_lowchest_checker",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.chestChecker, "dcs_climate", "dcs_device_lowchest_checker", "device");
 
 		MainInit.chestBlack = new BlockLowChest(Material.WOOD, ClimateCore.PACKAGE_BASE + "_device_lowchest_black",
 				true);
-		DCMaterialReg.registerBlock(MainInit.chestBlack, ClimateCore.PACKAGE_BASE + "_device_lowchest_black",
+		registerChestBlock(MainInit.chestBlack, ClimateCore.PACKAGE_BASE + "_device_lowchest_black",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.chestBlack, "dcs_climate", "dcs_device_lowchest_black", "device");
 
 		MainInit.wallshelfMarble = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_marble",
 				true);
-		DCMaterialReg.registerBlock(MainInit.wallshelfMarble, ClimateCore.PACKAGE_BASE + "_wallshelf_marble",
+		registerChestBlock(MainInit.wallshelfMarble, ClimateCore.PACKAGE_BASE + "_wallshelf_marble",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.wallshelfMarble, "dcs_climate", "dcs_wallshelf_marble", "device");
 
 		MainInit.wallshelfWood = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_wood", true);
-		DCMaterialReg.registerBlock(MainInit.wallshelfWood, ClimateCore.PACKAGE_BASE + "_wallshelf_wood",
-				ClimateMain.MOD_ID);
+		registerChestBlock(MainInit.wallshelfWood, ClimateCore.PACKAGE_BASE + "_wallshelf_wood", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.wallshelfWood, "dcs_climate", "dcs_wallshelf_wood", "device");
 
 		MainInit.wallshelfChecker = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_checker",
 				true);
-		DCMaterialReg.registerBlock(MainInit.wallshelfChecker, ClimateCore.PACKAGE_BASE + "_wallshelf_checker",
+		registerChestBlock(MainInit.wallshelfChecker, ClimateCore.PACKAGE_BASE + "_wallshelf_checker",
 				ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.wallshelfChecker, "dcs_climate", "dcs_wallshelf_checker", "device");
 
 		MainInit.wallshelfBlack = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_black",
 				true);
-		DCMaterialReg.registerBlock(MainInit.wallshelfBlack, ClimateCore.PACKAGE_BASE + "_wallshelf_black",
-				ClimateMain.MOD_ID);
+		registerChestBlock(MainInit.wallshelfBlack, ClimateCore.PACKAGE_BASE + "_wallshelf_black", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regTEJson(MainInit.wallshelfBlack, "dcs_climate", "dcs_wallshelf_black", "device");
 
 		MainInit.sinkMetal = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_half", false);
@@ -650,16 +648,14 @@ public class MainMaterialRegister {
 				ClimateMain.MOD_ID);
 
 		MainInit.chestMetal = new BlockMetalChest(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chest_metal");
-		DCMaterialReg.registerBlock(MainInit.chestMetal, ClimateCore.PACKAGE_BASE + "_device_chest_metal",
-				ClimateMain.MOD_ID);
+		registerChestBlock(MainInit.chestMetal, ClimateCore.PACKAGE_BASE + "_device_chest_metal", ClimateMain.MOD_ID);
 
 		MainInit.chestMagnet = new BlockMagnetChest(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chest_magnet");
-		DCMaterialReg.registerBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_BASE + "_device_chest_magnet",
-				ClimateMain.MOD_ID);
+		registerChestBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_BASE + "_device_chest_magnet", ClimateMain.MOD_ID);
 
 		MainInit.chestVillage = new BlockVillageChest(Material.IRON, ClimateCore.PACKAGE_BASE +
 				"_device_chest_village");
-		DCMaterialReg.registerBlock(MainInit.chestVillage, ClimateCore.PACKAGE_BASE + "_device_chest_village",
+		registerChestBlock(MainInit.chestVillage, ClimateCore.PACKAGE_BASE + "_device_chest_village",
 				ClimateMain.MOD_ID);
 
 		MainInit.bellow = new BlockBellow(ClimateCore.PACKAGE_BASE + "_device_bellow");
@@ -1003,6 +999,12 @@ public class MainMaterialRegister {
 		Block reg = block.setRegistryName(modid, name);
 		ForgeRegistries.BLOCKS.register(reg);
 		ForgeRegistries.ITEMS.register(new FuelItemBlock(reg, fuel));
+	}
+
+	public static void registerChestBlock(Block block, String name, String modid) {
+		Block reg = block.setRegistryName(modid, name);
+		ForgeRegistries.BLOCKS.register(reg);
+		ForgeRegistries.ITEMS.register(new ItemLowChest(reg));
 	}
 
 	private static void registerHarvestLevel() {

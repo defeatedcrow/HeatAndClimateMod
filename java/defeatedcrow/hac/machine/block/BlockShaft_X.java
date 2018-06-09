@@ -27,17 +27,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockShaft_L extends BlockTorqueBase {
+public class BlockShaft_X extends BlockTorqueBase {
 
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-	protected static final AxisAlignedBB AABB_AXIS_X1 = new AxisAlignedBB(0.0D, 0.25D, 0.25D, 0.75D, 0.75D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Y1 = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.75D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Z1 = new AxisAlignedBB(0.25D, 0.25D, 0.0D, 0.75D, 0.75D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_X2 = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 1.0D, 0.75D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Y2 = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 0.75D, 1.0D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Z2 = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 0.75D, 0.75D, 1.0D);
+	protected static final AxisAlignedBB AABB_AXIS_X = new AxisAlignedBB(0.0D, 0.25D, 0.25D, 1.0D, 0.75D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_Y = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1.0D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_Z = new AxisAlignedBB(0.25D, 0.25D, 0.0D, 0.75D, 0.75D, 1.0D);
 
-	public BlockShaft_L(String s) {
+	public BlockShaft_X(String s) {
 		super(Material.ROCK, s, 0);
 		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
@@ -45,7 +42,7 @@ public class BlockShaft_L extends BlockTorqueBase {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileShaft_L();
+		return new TileShaft_X();
 	}
 
 	@Override
@@ -74,17 +71,17 @@ public class BlockShaft_L extends BlockTorqueBase {
 		if (DCState.hasProperty(state, DCState.SIDE)) {
 			switch (DCState.getSide(state, DCState.SIDE)) {
 			case DOWN:
-				return AABB_AXIS_Y1;
+				return AABB_AXIS_Y;
 			case UP:
-				return AABB_AXIS_Y2;
-			case WEST:
-				return AABB_AXIS_X1;
+				return AABB_AXIS_Y;
 			case EAST:
-				return AABB_AXIS_X2;
+				return AABB_AXIS_X;
+			case WEST:
+				return AABB_AXIS_X;
 			case NORTH:
-				return AABB_AXIS_Z1;
+				return AABB_AXIS_Z;
 			case SOUTH:
-				return AABB_AXIS_Z2;
+				return AABB_AXIS_Z;
 			default:
 				return AABB_FULL;
 			}

@@ -12,6 +12,72 @@ import net.minecraft.item.ItemStack;
 public class MachineAdvancedRecipe {
 
 	public static void load(RecipeResourcesMain res) {
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.freezer, 1, 0), new Object[] {
+				"WZ ",
+				"WYV",
+				"XXX",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(Blocks.END_ROD, 1, 0),
+				'Z',
+				"bucketWater",
+				'W',
+				new ItemStack(MachineInit.IBC, 1, 0),
+				'V',
+				new ItemStack(MachineInit.gearbox2, 1, 0),
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.pressMachine, 1, 0), new Object[] {
+				"XYX",
+				"X X",
+				"XZX",
+				'X',
+				"ingotSUS",
+				'Y',
+				"gearSteel",
+				'Z',
+				new ItemStack(Blocks.ANVIL, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.motor, 1, 0), new Object[] {
+				"YZW",
+				"XXX",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(MachineInit.shaft2_s, 1, 0),
+				'Z',
+				"gearSteel",
+				'W',
+				new ItemStack(MachineInit.machimeMaterials, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dynamo, 1, 0), new Object[] {
+				"XZX",
+				" Y ",
+				"XZX",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(MachineInit.machimeMaterials, 1, 1),
+				'Z',
+				"gearSteel"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.waterPump, 1, 0), new Object[] {
+				"XYX",
+				"XZX",
+				"XYX",
+				'X',
+				"ingotNickelsilver",
+				'Y',
+				new ItemStack(Blocks.IRON_BARS, 1, 0),
+				'Z',
+				"gearAlloy"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
 				"YXX",
 				"ZXX",
@@ -353,7 +419,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorRF, 1, 0), new Object[] {
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorItem, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -362,7 +428,7 @@ public class MachineAdvancedRecipe {
 				'Y',
 				"gemBismuth",
 				'Z',
-				new ItemStack(MachineInit.machimeMaterials, 1, 1)
+				new ItemStack(Blocks.CHEST, 1, 0)
 		});
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dynamite, 3, 0), new Object[] {

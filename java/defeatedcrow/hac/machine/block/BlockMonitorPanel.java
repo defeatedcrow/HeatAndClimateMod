@@ -17,6 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -130,9 +131,9 @@ public abstract class BlockMonitorPanel extends BlockTorqueBase {
 
 	protected int calcRedstone(TileEntity tile) {
 		if (tile != null && tile instanceof TileMonitorBase) {
-			float amo = ((TileMonitorBase) tile).getCurrentAmount();
+			float amo = ((TileMonitorBase) tile).getGauge();
 			if (amo > 0) {
-				return 15;
+				return MathHelper.ceil(amo * 15);
 			}
 		}
 		return 0;

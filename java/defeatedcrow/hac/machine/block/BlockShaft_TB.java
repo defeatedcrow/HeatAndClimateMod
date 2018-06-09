@@ -30,12 +30,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockShaft_TB extends BlockTorqueBase {
 
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-	protected static final AxisAlignedBB AABB_AXIS_X1 = new AxisAlignedBB(0.0D, 0.25D, 0.25D, 0.5D, 0.75D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Y1 = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.5D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Z1 = new AxisAlignedBB(0.25D, 0.25D, 0.0D, 0.75D, 0.75D, 0.5D);
-	protected static final AxisAlignedBB AABB_AXIS_X2 = new AxisAlignedBB(0.5D, 0.25D, 0.25D, 1.0D, 0.75D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Y2 = new AxisAlignedBB(0.25D, 0.5D, 0.25D, 0.75D, 1.0D, 0.75D);
-	protected static final AxisAlignedBB AABB_AXIS_Z2 = new AxisAlignedBB(0.25D, 0.25D, 0.5D, 0.75D, 0.75D, 1.0D);
+	protected static final AxisAlignedBB AABB_AXIS_X1 = new AxisAlignedBB(0.0D, 0.25D, 0.25D, 0.75D, 0.75D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_Y1 = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.75D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_Z1 = new AxisAlignedBB(0.25D, 0.25D, 0.0D, 0.75D, 0.75D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_X2 = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 1.0D, 0.75D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_Y2 = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 0.75D, 1.0D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_Z2 = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 0.75D, 0.75D, 1.0D);
 
 	public BlockShaft_TB(String s) {
 		super(Material.ROCK, s, 0);

@@ -69,7 +69,7 @@ public class MonitorTESR extends DCTESRBase {
 				order = 1;
 			}
 
-			String sa = amo == 0 ? "---.-" : String.format("%1$.1f", amo);
+			String sa = tile.amountString();
 			String so = "";
 			switch (order) {
 			case 1:
@@ -101,7 +101,7 @@ public class MonitorTESR extends DCTESRBase {
 			String s = TextFormatting.BOLD.toString() + sa;
 			font.drawString(s, -font.getStringWidth(s) / 2, 0, 0xFFFFFF);
 			String s2 = TextFormatting.BOLD.toString() + so + su;
-			font.drawString(s2, 4, 8, 0xFFFFFF);
+			font.drawString(s2, -font.getStringWidth(s2) / 2, 8, 0xFFFFFF);
 
 			GlStateManager.depthMask(true);
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

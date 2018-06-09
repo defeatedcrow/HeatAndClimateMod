@@ -29,6 +29,7 @@ import defeatedcrow.hac.machine.block.BlockHopperSilver;
 import defeatedcrow.hac.machine.block.BlockIBC;
 import defeatedcrow.hac.machine.block.BlockKineticMotor;
 import defeatedcrow.hac.machine.block.BlockMonitorFluid;
+import defeatedcrow.hac.machine.block.BlockMonitorInventory;
 import defeatedcrow.hac.machine.block.BlockMonitorRF;
 import defeatedcrow.hac.machine.block.BlockMonitorRedStone;
 import defeatedcrow.hac.machine.block.BlockMonitorTorque;
@@ -49,6 +50,9 @@ import defeatedcrow.hac.machine.block.BlockShaft_TA_Steel;
 import defeatedcrow.hac.machine.block.BlockShaft_TB;
 import defeatedcrow.hac.machine.block.BlockShaft_TB_SUS;
 import defeatedcrow.hac.machine.block.BlockShaft_TB_Steel;
+import defeatedcrow.hac.machine.block.BlockShaft_X;
+import defeatedcrow.hac.machine.block.BlockShaft_X_SUS;
+import defeatedcrow.hac.machine.block.BlockShaft_X_Steel;
 import defeatedcrow.hac.machine.block.BlockSpinningMachine;
 import defeatedcrow.hac.machine.block.BlockStoneMill;
 import defeatedcrow.hac.machine.block.BlockWaterPump;
@@ -120,6 +124,9 @@ public class MachineInitRegister {
 		MachineInit.shaft_t_b = new BlockShaft_TB(ClimateCore.PACKAGE_BASE + "_device_shaft_tb");
 		registerTierBlock(MachineInit.shaft_t_b, ClimateCore.PACKAGE_BASE + "_device_shaft_tb", 1);
 
+		MachineInit.shaft_x = new BlockShaft_X(ClimateCore.PACKAGE_BASE + "_device_shaft_x");
+		registerTierBlock(MachineInit.shaft_x, ClimateCore.PACKAGE_BASE + "_device_shaft_x", 1);
+
 		MachineInit.gearbox = new BlockGearBox(ClimateCore.PACKAGE_BASE + "_device_gearbox");
 		registerTierBlock(MachineInit.gearbox, ClimateCore.PACKAGE_BASE + "_device_gearbox", 2);
 
@@ -149,6 +156,9 @@ public class MachineInitRegister {
 
 		MachineInit.shaft3_t_b = new BlockShaft_TB_Steel(ClimateCore.PACKAGE_BASE + "_device_shaft_tb_steel");
 		registerTierBlock(MachineInit.shaft3_t_b, ClimateCore.PACKAGE_BASE + "_device_shaft_tb_steel", 2);
+
+		MachineInit.shaft3_x = new BlockShaft_X_Steel(ClimateCore.PACKAGE_BASE + "_device_shaft_x_steel");
+		registerTierBlock(MachineInit.shaft3_x, ClimateCore.PACKAGE_BASE + "_device_shaft_x_steel", 2);
 
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
 		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 2);
@@ -207,6 +217,9 @@ public class MachineInitRegister {
 
 		MachineInit.shaft2_t_b = new BlockShaft_TB_SUS(ClimateCore.PACKAGE_BASE + "_device_shaft_tb_sus");
 		registerTierBlock(MachineInit.shaft2_t_b, ClimateCore.PACKAGE_BASE + "_device_shaft_tb_sus", 3);
+
+		MachineInit.shaft2_x = new BlockShaft_X_SUS(ClimateCore.PACKAGE_BASE + "_device_shaft_x_sus");
+		registerTierBlock(MachineInit.shaft2_x, ClimateCore.PACKAGE_BASE + "_device_shaft_x_sus", 3);
 
 		MachineInit.gearbox2 = new BlockGearBox_SUS(ClimateCore.PACKAGE_BASE + "_device_gearbox_sus");
 		registerTierBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_BASE + "_device_gearbox_sus", 2);
@@ -301,6 +314,11 @@ public class MachineInitRegister {
 		ForgeRegistries.BLOCKS.register(MachineInit.monitorFluid);
 		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorFluid));
 
+		MachineInit.monitorItem = new BlockMonitorInventory(ClimateCore.PACKAGE_BASE + "_device_monitor_item");
+		MachineInit.monitorItem.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_item");
+		ForgeRegistries.BLOCKS.register(MachineInit.monitorItem);
+		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorItem));
+
 		// entity
 		MachineInit.motorMinecart = new ItemMinecartMotor().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 				"_motor_minecart");
@@ -375,22 +393,23 @@ public class MachineInitRegister {
 		MachineInit.handcrank.setCreativeTab(ClimateMain.machine);
 		MachineInit.watermill.setCreativeTab(ClimateMain.machine);
 		MachineInit.boilerTurbine.setCreativeTab(ClimateMain.machine);
-		MachineInit.motor.setCreativeTab(ClimateMain.machine);
-		MachineInit.dynamo.setCreativeTab(ClimateMain.machine);
 		MachineInit.creativeBox.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.shaft_s.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft_l.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft_t_a.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft_t_b.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft_x.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_s.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_l.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_t_a.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_t_b.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft3_x.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_s.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_l.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_t_a.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_t_b.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft2_x.setCreativeTab(ClimateMain.machine);
 		MachineInit.gearbox.setCreativeTab(ClimateMain.machine);
 		MachineInit.gearbox2.setCreativeTab(ClimateMain.machine);
 		MachineInit.piston.setCreativeTab(ClimateMain.machine);
@@ -401,9 +420,6 @@ public class MachineInitRegister {
 		MachineInit.redbox.setCreativeTab(ClimateMain.machine);
 		MachineInit.catapult.setCreativeTab(ClimateMain.machine);
 		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
-		MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
-		MachineInit.pressMachine.setCreativeTab(ClimateMain.machine);
-		MachineInit.freezer.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.hopperFilter.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperGold.setCreativeTab(ClimateMain.machine);
@@ -417,17 +433,25 @@ public class MachineInitRegister {
 		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
 		MachineInit.machimeMaterials.setCreativeTab(ClimateCore.climate);
 		MachineInit.mold.setCreativeTab(ClimateMain.machine);
+		MachineInit.reagent.setCreativeTab(ClimateMain.machine);
+
+		MachineInit.fuelCont.setCreativeTab(ClimateMain.cont);
 
 		if (ModuleConfig.machine_advanced) {
-			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
-			MachineInit.crusher.setCreativeTab(ClimateMain.machine);
 			MachineInit.burner.setCreativeTab(ClimateMain.machine);
 			MachineInit.dieselEngine.setCreativeTab(ClimateMain.machine);
+			MachineInit.motor.setCreativeTab(ClimateMain.machine);
+			MachineInit.dynamo.setCreativeTab(ClimateMain.machine);
+
+			MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
+			MachineInit.pressMachine.setCreativeTab(ClimateMain.machine);
+			MachineInit.freezer.setCreativeTab(ClimateMain.machine);
+			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
+			MachineInit.crusher.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.moldAluminium.setCreativeTab(ClimateMain.machine);
 			MachineInit.moldAlloy.setCreativeTab(ClimateMain.machine);
 
-			MachineInit.reagent.setCreativeTab(ClimateMain.machine);
 			MachineInit.synthetic.setCreativeTab(ClimateMain.machine);
 			MachineInit.catalyst.setCreativeTab(ClimateMain.machine);
 			MachineInit.gemcore.setCreativeTab(ClimateMain.tool);
@@ -444,13 +468,11 @@ public class MachineInitRegister {
 			MachineInit.monitorTorque.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorRF.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorFluid.setCreativeTab(ClimateMain.machine);
+			MachineInit.monitorItem.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);
 			MachineInit.scooter.setCreativeTab(ClimateMain.machine);
-			MachineInit.magneticHover.setCreativeTab(ClimateMain.machine);
-
-			MachineInit.fuelCont.setCreativeTab(ClimateMain.cont);
 		}
 	}
 

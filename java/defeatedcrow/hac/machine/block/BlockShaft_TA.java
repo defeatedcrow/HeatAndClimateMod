@@ -30,9 +30,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockShaft_TA extends BlockTorqueBase {
 
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-	protected static final AxisAlignedBB AABB_AXIS_X = new AxisAlignedBB(0.0D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
-	protected static final AxisAlignedBB AABB_AXIS_Y = new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
-	protected static final AxisAlignedBB AABB_AXIS_Z = new AxisAlignedBB(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
+	protected static final AxisAlignedBB AABB_AXIS_X = new AxisAlignedBB(0.0D, 0.25D, 0.25D, 1.0D, 0.75D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_Y = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1.0D, 0.75D);
+	protected static final AxisAlignedBB AABB_AXIS_Z = new AxisAlignedBB(0.25D, 0.25D, 0.0D, 0.75D, 0.75D, 1.0D);
 
 	public BlockShaft_TA(String s) {
 		super(Material.ROCK, s, 0);
