@@ -69,7 +69,7 @@ public class MonitorTESR extends DCTESRBase {
 				order = 1;
 			}
 
-			String sa = tile.amountString();
+			String sa = tile.amountString(amo);
 			String so = "";
 			switch (order) {
 			case 1:

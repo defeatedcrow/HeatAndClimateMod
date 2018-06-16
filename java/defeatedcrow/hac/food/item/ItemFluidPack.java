@@ -162,6 +162,16 @@ public class ItemFluidPack extends DCItem {
 		} else {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid is empty: " + FLUIDS[i]);
 		}
+
+		if (FluidRegistry.getFluid("milk") != null) {
+			if (i == 2) {
+				tooltip.add("Collect from cow with Fluid Hopper.");
+			}
+		} else {
+			if (i == 3) {
+				tooltip.add("Collect from cow with Fluid Hopper.");
+			}
+		}
 	}
 
 	public static String getFluidName(int meta) {
