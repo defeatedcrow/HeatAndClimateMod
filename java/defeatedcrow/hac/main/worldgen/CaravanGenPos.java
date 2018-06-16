@@ -14,6 +14,8 @@ import net.minecraftforge.common.BiomeDictionary;
  */
 public class CaravanGenPos {
 
+	public static Chunk chunk = null;
+
 	public static boolean isDupe(int cx, int cz, World world) {
 		int count = 0;
 		for (int x = -3; x < 4; x++) {

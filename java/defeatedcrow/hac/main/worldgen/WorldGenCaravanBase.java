@@ -34,9 +34,11 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 					!CaravanGenPos.isDupe(cx2, cz2, world)) {
 				if (num == 4) {
 					generateCore(rand, cx, cz, world);
+					CaravanGenPos.chunk = prov.getLoadedChunk(cx, cz);
 				} else {
 					generatePart(num, rand, cx, cz, world);
 				}
+
 				DCLogger.debugLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2);
 			}
 		}
