@@ -19,7 +19,7 @@ public class TESRThermometer extends DCTESRBase {
 		int type = 0;
 		int face = 0;
 		float f = 0.0F;
-		float[] points = new float[10];
+		float[] points = new float[12];
 
 		if (te.hasWorld() && te instanceof TileThermometer) {
 			int meta = te.getBlockMetadata();

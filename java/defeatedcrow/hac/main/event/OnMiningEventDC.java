@@ -48,11 +48,10 @@ public class OnMiningEventDC {
 
 			if (hasCharm) {
 				event.setNewSpeed(event.getNewSpeed() * 1.2F + 2.0F);
-				event.setCanceled(false);
 			} else {
 				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER) &&
 						event.getEntityPlayer().isPotionActive(MainInit.ocean)) {
-					event.setNewSpeed(event.getNewSpeed() * 2.0F);
+					event.setNewSpeed(event.getNewSpeed() * 2.0F + 1.0F);
 				}
 			}
 		}

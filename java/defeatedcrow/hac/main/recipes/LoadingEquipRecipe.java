@@ -325,7 +325,7 @@ public class LoadingEquipRecipe {
 				"YYY",
 				"YXY",
 				'X',
-				"itemCottonCloth",
+				"itemCloth",
 				'Y',
 				new ItemStack(Blocks.WOOL, 1, 32767)
 		});
@@ -334,7 +334,7 @@ public class LoadingEquipRecipe {
 				"YYY",
 				"YXY",
 				'X',
-				"itemCottonCloth",
+				"itemCloth",
 				'Y',
 				new ItemStack(Items.RABBIT_HIDE, 1, 0)
 		});
