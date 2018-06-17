@@ -13,8 +13,8 @@ public class TileMonitorInventory extends TileMonitorBase {
 	}
 
 	@Override
-	public String amountString() {
-		return amount == 0 ? "-----" : String.format("%1$.0f", amount);
+	public String amountString(float amo) {
+		return amo == 0 ? "----" : String.format("%1$.0f", amo);
 	}
 
 	@Override

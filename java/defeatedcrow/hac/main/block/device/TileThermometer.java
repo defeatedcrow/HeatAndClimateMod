@@ -5,8 +5,8 @@ import defeatedcrow.hac.core.base.ClimateReceiveTile;
 
 public class TileThermometer extends ClimateReceiveTile {
 
-	public float[] floats = new float[12];
-	public float[] lastFloats = new float[12];
+	public float[] floats = new float[14];
+	public float[] lastFloats = new float[14];
 
 	@Override
 	public void onTickUpdate() {
