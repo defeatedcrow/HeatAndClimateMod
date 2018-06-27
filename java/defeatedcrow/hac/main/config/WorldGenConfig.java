@@ -1,5 +1,11 @@
 package defeatedcrow.hac.main.config;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -10,6 +16,12 @@ public class WorldGenConfig {
 	public static final WorldGenConfig INSTANCE = new WorldGenConfig();
 	private final String BR = System.getProperty("line.separator");
 
+	public static String[] blocknames = new String[] {
+			"minecraft:dirt:32767",
+			"ModID:sampleBlock:sampleMeta"
+	};
+	public static final List<BlockSet> disables = Lists.newArrayList();
+
 	// ore
 	public static int[] depositGen = new int[] {
 			35,
@@ -17,6 +29,15 @@ public class WorldGenConfig {
 			15,
 			100,
 			30
+	};
+
+	public static int[] radGen = new int[] {
+			5,
+			4,
+			4,
+			5,
+			3,
+			4
 	};
 
 	public static int skarnGen = 5;
@@ -36,6 +57,8 @@ public class WorldGenConfig {
 			cfg.addCustomCategoryComment("ore gen setting", "This setting is for ore gen. " + BR +
 					"Please set probability as parsentage (0 - 100)." + BR +
 					"If you set 0, those ore deposits will not be generated.");
+			cfg.addCustomCategoryComment("ore block setting", "This setting is for ore gen. " + BR +
+					"If you set false, those ore block will not be generated.");
 
 			Property sed_ore = cfg.get("ore gen setting", "Sedimentary Gen Probability", depositGen[0],
 					"Generate in High-altitude of mountain. 1-100%");
@@ -49,8 +72,20 @@ public class WorldGenConfig {
 			Property lava_ore = cfg.get("ore gen setting", "Magnetite Gen Probability", depositGen[3],
 					"Generate in deep-underground. 1-100%");
 
-			Property geode_ore = cfg.get("ore gen setting", "Geode Gen Probability", depositGen[4],
+			Property geode_rad = cfg.get("ore gen setting", "Geode Gen Probability", depositGen[4],
 					"Generate in deep-underground. 1-100%");
+
+			Property sed_rad = cfg.get("ore gen setting", "Sedimentary Gen Radius", radGen[0]);
+
+			Property s_sed_rad = cfg.get("ore gen setting", "SandSedimentary Gen Radius", radGen[1]);
+
+			Property char_rad = cfg.get("ore gen setting", "Chalcopyrite Gen Radius", radGen[2]);
+
+			Property vein_rad = cfg.get("ore gen setting", "Quartz Vein Gen Radius", radGen[3]);
+
+			Property lava_rad = cfg.get("ore gen setting", "Magnetite Gen Radius", radGen[4]);
+
+			Property geode_ore = cfg.get("ore gen setting", "Geode Gen Radius", radGen[5]);
 
 			Property skarn_ore = cfg.get("ore gen setting", "Skarn Gen Probability", skarnGen,
 					"Generate in Forest or Plain. 0.1-100.0% (default: 0.5%)");
@@ -63,6 +98,9 @@ public class WorldGenConfig {
 
 			Property mazai = cfg.get("world setting", "Mana Liqueur Lake Gen", mazaiLake,
 					"Enable genaration the mana liqueur lake in nether biome.");
+
+			Property b_gen = cfg.get("ore gen setting", "Blockgen Disable List", blocknames,
+					"Please add block registry names you want exclude from HaC vain generation.");
 
 			int s = sed_ore.getInt();
 			if (s < 0 || s > 100) {
@@ -84,6 +122,32 @@ public class WorldGenConfig {
 			if (g < 0 || g > 100) {
 				g = 0;
 			}
+
+			int s2 = sed_rad.getInt();
+			if (s2 < 0 || s2 > 100) {
+				s2 = 0;
+			}
+			int ss2 = s_sed_rad.getInt();
+			if (ss2 < 0 || ss2 > 100) {
+				ss2 = 0;
+			}
+			int c2 = char_rad.getInt();
+			if (c2 < 0 || c2 > 100) {
+				c2 = 0;
+			}
+			int v2 = vein_rad.getInt();
+			if (v2 < 0 || v2 > 100) {
+				v2 = 0;
+			}
+			int l2 = lava_rad.getInt();
+			if (l2 < 0 || l2 > 100) {
+				l2 = 0;
+			}
+			int g2 = geode_rad.getInt();
+			if (g2 < 0 || g2 > 100) {
+				g2 = 0;
+			}
+
 			int sk = skarn_ore.getInt();
 			if (sk < 0 || sk > 1000) {
 				sk = 0;
@@ -102,10 +166,17 @@ public class WorldGenConfig {
 			depositGen[2] = v;
 			depositGen[3] = l;
 			depositGen[4] = g;
+			radGen[0] = s2;
+			radGen[1] = ss2;
+			radGen[2] = c2;
+			radGen[3] = v2;
+			radGen[4] = l2;
+			radGen[5] = g2;
 			skarnGen = sk;
 			windmillGen = wm;
 			caravanGen = cs;
 			mazaiLake = mazai.getBoolean();
+			blocknames = b_gen.getStringList();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,6 +184,10 @@ public class WorldGenConfig {
 			cfg.save();
 		}
 
+	}
+
+	public static void leadBlockNames() {
+		disables.addAll(MainUtil.getListFromStrings(blocknames, "OreGen Invalid List"));
 	}
 
 }

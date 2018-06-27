@@ -1,7 +1,6 @@
 /**
  * Copyright (c) defeatedcrow, 2016
  * URL:http://defeatedcrow.jp/modwiki/Mainpage
- * defeatedcrow's mods are distributed under the terms of the Minecraft Mod Public License 1.0, or MMPL.
  * Please check the License.txt included in the package file of this Mod.
  */
 
@@ -12,7 +11,9 @@ import java.util.Calendar;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
@@ -127,6 +128,9 @@ public class ClimateMain {
 		VeinTableJsonHelper.pre();
 
 		VeinTableJsonHelper.post();
+
+		MainCoreConfig.INSTANCE.leadBlockNames();
+		WorldGenConfig.INSTANCE.leadBlockNames();
 
 		// date
 		month = CAL.get(CAL.MONTH);

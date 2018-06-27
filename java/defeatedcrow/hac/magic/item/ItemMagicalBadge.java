@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
@@ -12,6 +13,7 @@ import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.util.CustomExplosion;
 import defeatedcrow.hac.main.worldgen.OreGenPos;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
@@ -192,8 +194,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				int meta = stack.getMetadata();
 				if (!world.isRemote) {
 					if (meta == 7 || meta == 16) {
-						if (pos.getY() > 0 && pos.getY() < 254 && world.isAirBlock(pos.up())
-								&& world.isAirBlock(pos.up(2))) {
+						if (pos.getY() > 0 && pos.getY() < 254 && world.isAirBlock(pos.up()) && world.isAirBlock(pos.up(
+								2))) {
 							NBTTagCompound tag = stack.getTagCompound();
 							if (tag == null) {
 								tag = new NBTTagCompound();
@@ -384,8 +386,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				if (ret != null) {
 					player.sendMessage(new TextComponentString("== Nearest ore vein detected! =="));
 					player.sendMessage(new TextComponentString("Type: " + ret.type.name()));
-					player.sendMessage(new TextComponentString(
-							"Pos: " + ret.pos.getX() + ", " + ret.pos.getY() + ", " + ret.pos.getZ()));
+					player.sendMessage(new TextComponentString("Pos: " + ret.pos.getX() + ", " + ret.pos.getY() + ", " +
+							ret.pos.getZ()));
 				} else {
 					player.sendMessage(new TextComponentString("== No ore vein detected in this chank =="));
 				}
@@ -466,8 +468,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 		}
 		if (meta == 10) {
 			if (player != null && target != null && !source.isExplosion() && source.isProjectile()) {
-				CustomExplosion explosion = new CustomExplosion(player.world, player, player, target.posX,
-						target.posY + 0.25D, target.posZ, 3F, CustomExplosion.Type.Silk, true);
+				CustomExplosion explosion = new CustomExplosion(player.world, player, player, target.posX, target.posY +
+						0.25D, target.posZ, 3F, CustomExplosion.Type.Silk, true);
 				explosion.doExplosion();
 				player.world.addWeatherEffect(new EntityLightningBolt(player.world, target.posX, target.posY - 0.25D,
 						target.posZ, !player.isSneaking()));
@@ -481,8 +483,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			}
 		}
 		if (meta == 14) {
-			if (player != null && player.isSneaking() && target != null && !source.isExplosion()
-					&& !source.isProjectile()) {
+			if (player != null && player.isSneaking() && target != null && !source.isExplosion() &&
+					!source.isProjectile()) {
 				AxisAlignedBB aabb = target.getEntityBoundingBox().grow(5.0D, 0D, 5.0D);
 				List<EntityLiving> list = player.world.getEntitiesWithinAABB(EntityLiving.class, aabb);
 				if (list.isEmpty())
@@ -527,6 +529,10 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 			boolean silk = false;
 
 			if (meta == 9) {
+				BlockSet set = new BlockSet(state.getBlock(), state.getBlock().getMetaFromState(state));
+				if (MainCoreConfig.disables.contains(set)) {
+					return false;
+				}
 				silk = DCUtil.hasItemInTopSlots(player, new ItemStack(this, 1, 19));
 				// 一括破壊
 				ItemStack hold = player.getHeldItemMainhand();
@@ -539,15 +545,15 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 						continue;
 					}
 					IBlockState target = player.world.getBlockState(p);
-					if (target.equals(state)
-							&& target.getBlock().getMetaFromState(target) == state.getBlock().getMetaFromState(state)
-							&& !target.getBlock().hasTileEntity(target)) {
+					if (target.equals(state) && target.getBlock().getMetaFromState(
+							target) == state.getBlock().getMetaFromState(state) && !target.getBlock().hasTileEntity(
+									target)) {
 						// 同Block同Metadata
 						if (silk && target.getBlock().canSilkHarvest(player.world, p, target, player)) {
-							ItemStack item = new ItemStack(target.getBlock(), 1,
-									target.getBlock().getMetaFromState(target));
-							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D,
-									p.getZ() + 0.5D, item);
+							ItemStack item = new ItemStack(target.getBlock(), 1, target.getBlock().getMetaFromState(
+									target));
+							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() +
+									0.5D, item);
 							player.world.spawnEntity(drop);
 						} else {
 							target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
@@ -574,10 +580,10 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					IBlockState block = player.world.getBlockState(p);
 					if (!block.getBlock().hasTileEntity(block)) {
 						if (silk && block.getBlock().canSilkHarvest(player.world, p, block, player)) {
-							ItemStack item = new ItemStack(block.getBlock(), 1,
-									block.getBlock().getMetaFromState(block));
-							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D,
-									p.getZ() + 0.5D, item);
+							ItemStack item = new ItemStack(block.getBlock(), 1, block.getBlock().getMetaFromState(
+									block));
+							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() +
+									0.5D, item);
 							player.world.spawnEntity(drop);
 						} else {
 							block.getBlock().harvestBlock(player.world, player, p, block, null, hold);

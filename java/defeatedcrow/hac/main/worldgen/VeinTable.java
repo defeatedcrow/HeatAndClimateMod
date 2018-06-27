@@ -81,7 +81,7 @@ public class VeinTable implements IVeinTable {
 	public void addOreToTable1(int weight, Block block, int meta) {
 		if (block != null && weight > 0) {
 			BlockSet set = new BlockSet(block, meta);
-			table1.add(new OreSet(weight, set));
+			table1.add(new OreSetDC(weight, set));
 			tableCount1 += weight;
 		}
 	}
@@ -90,7 +90,7 @@ public class VeinTable implements IVeinTable {
 	public void addOreToTable2(int weight, Block block, int meta) {
 		if (block != null && weight > 0) {
 			BlockSet set = new BlockSet(block, meta);
-			table2.add(new OreSet(weight, set));
+			table2.add(new OreSetDC(weight, set));
 			tableCount2 += weight;
 		}
 	}
@@ -100,7 +100,7 @@ public class VeinTable implements IVeinTable {
 		if (block != null && secondBlock != null && weight > 0) {
 			BlockSet set = new BlockSet(block, meta);
 			BlockSet set2 = new BlockSet(block, meta);
-			table1.add(new OreSet(weight, set, set2, secondChance));
+			table1.add(new OreSetDC(weight, set, set2, secondChance));
 			tableCount1 += weight;
 		}
 	}
@@ -110,7 +110,7 @@ public class VeinTable implements IVeinTable {
 		if (block != null && secondBlock != null && weight > 0) {
 			BlockSet set = new BlockSet(block, meta);
 			BlockSet set2 = new BlockSet(block, meta);
-			table2.add(new OreSet(weight, set, set2, secondChance));
+			table2.add(new OreSetDC(weight, set, set2, secondChance));
 			tableCount2 += weight;
 		}
 	}
