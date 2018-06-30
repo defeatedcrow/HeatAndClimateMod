@@ -26,6 +26,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -46,8 +47,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 
-	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.125D, 0.125D, 0.125D, 0.875D, 0.875D,
-			0.875D);
+	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.125D, 0.125D, 0.125D, 0.875D, 0.875D, 0.875D);
 
 	public BlockTeaPot(String s) {
 		super(Material.CLAY, s, 0);
@@ -254,6 +254,16 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
+	}
+
+	@Override
+	public boolean hasComparatorInputOverride(IBlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+		return Container.calcRedstone(worldIn.getTileEntity(pos));
 	}
 
 }

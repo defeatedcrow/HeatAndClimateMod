@@ -41,12 +41,12 @@ public class BlockMonitorRedStone extends BlockMonitorPanel {
 	}
 
 	@Override
-	public int getWeakPower(IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		return state.getValue(DCState.POWERED) ? 15 : 0;
 	}
 
 	@Override
-	public int getStrongPower(IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+	public int getStrongPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		return state.getValue(DCState.POWERED) ? 15 : 0;
 	}
 
