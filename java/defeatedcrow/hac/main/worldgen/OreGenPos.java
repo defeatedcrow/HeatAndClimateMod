@@ -77,11 +77,11 @@ public class OreGenPos {
 		Biome biome3 = world.getBiome(pos3);
 		if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SANDY)) && rand3 < sedP) {
 			ret[2] = getVeinFromSeed(world, pos3, EnumVein.SAND_SEDIMENT, seed);
-		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SAVANNA)
-				|| BiomeDictionary.hasType(biome3, BiomeDictionary.Type.JUNGLE)) && rand3 < sedP) {
+		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(biome3,
+				BiomeDictionary.Type.JUNGLE)) && rand3 < sedP) {
 			ret[2] = getVeinFromSeed(world, pos3, EnumVein.BAUXITE, seed);
-		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.MOUNTAIN)
-				|| BiomeDictionary.hasType(biome3, BiomeDictionary.Type.HILLS)) && rand3 < sedP) {
+		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.MOUNTAIN) || BiomeDictionary.hasType(biome3,
+				BiomeDictionary.Type.HILLS)) && rand3 < sedP) {
 			ret[2] = getVeinFromSeed(world, pos3, EnumVein.SEDIMENT, seed);
 		}
 
@@ -101,7 +101,7 @@ public class OreGenPos {
 		if (world != null && pos != null && type != null) {
 			Random rand = new Random(seed);
 			rand.nextInt();
-			int round = type.range + rand.nextInt(4);
+			int round = getRange(type) + rand.nextInt(3);
 			int[] set = new int[round];
 			for (int i = 0; i < round; i++) {
 				set[i] = rand.nextInt(20);
@@ -123,6 +123,35 @@ public class OreGenPos {
 			pos = p;
 			round = r;
 			rands = s;
+		}
+	}
+
+	private int getRange(EnumVein vein) {
+		switch (vein) {
+		case BAUXITE:
+			return WorldGenConfig.radGen[1];
+		case GEODE:
+			return WorldGenConfig.radGen[5];
+		case GUANO:
+			return WorldGenConfig.radGen[2];
+		case HIGH_SEDIMENT:
+			return WorldGenConfig.radGen[0];
+		case KIESLAGER:
+			return WorldGenConfig.radGen[2];
+		case QUARTZ:
+			return WorldGenConfig.radGen[3];
+		case SAND_SEDIMENT:
+			return WorldGenConfig.radGen[1];
+		case SEDIMENT:
+			return WorldGenConfig.radGen[0];
+		case SKARN:
+			return vein.range;
+		case SKARN_UNDER:
+			return vein.range;
+		case UNDERLAVA:
+			return WorldGenConfig.radGen[4];
+		default:
+			return WorldGenConfig.radGen[0];
 		}
 	}
 
