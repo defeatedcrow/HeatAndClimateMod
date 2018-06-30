@@ -1,5 +1,11 @@
 package defeatedcrow.hac.main.config;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -22,6 +28,14 @@ public class MainCoreConfig {
 	public static boolean lead = false;
 	public static boolean pendant_schorl = true;
 	public static boolean pendant_clam = true;
+
+	public static String[] blocknames = new String[] {
+			"minecraft:stone:32767",
+			"minecraft:dirt:32767",
+			"minecraft:bedrock:32767",
+			"ModID:sampleBlock:sampleMeta"
+	};
+	public static final List<BlockSet> disables = Lists.newArrayList();
 
 	public void load(Configuration cfg) {
 
@@ -56,6 +70,9 @@ public class MainCoreConfig {
 			Property p_schorl = cfg.get("item setting", "Enable Schorl Pendant Effect", pendant_schorl,
 					"Enable effect of schorl pendant.");
 
+			Property b_dia = cfg.get("item setting", "Diamond Badge Disable List", blocknames,
+					"Please add block registry names you want exclude from diamond badge effect.");
+
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
 
@@ -72,6 +89,8 @@ public class MainCoreConfig {
 			pendant_schorl = p_schorl.getBoolean();
 			// timeZone = zone.getString();
 
+			blocknames = b_dia.getStringList();
+
 			// TimeZone tz = TimeZone.getTimeZone(timeZone);
 			// if (tz != null) {
 			// ClimateMain.CAL.setTimeZone(tz);
@@ -83,6 +102,10 @@ public class MainCoreConfig {
 			cfg.save();
 		}
 
+	}
+
+	public static void leadBlockNames() {
+		disables.addAll(MainUtil.getListFromStrings(blocknames, "DiamondBadge Invalid List"));
 	}
 
 }

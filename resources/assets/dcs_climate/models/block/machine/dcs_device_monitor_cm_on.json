@@ -2,8 +2,8 @@
     "parent": "block/block",
     "ambientocclusion": true,
     "textures": {
-        "particle": "dcs_climate:blocks/machine/monitor_rs_on",
-        "panel": "dcs_climate:blocks/machine/monitor_rs_on",
+        "particle": "dcs_climate:blocks/machine/monitor_cm_on",
+        "panel": "dcs_climate:blocks/machine/monitor_cm_on",
         "base": "dcs_climate:blocks/machine/monitor_base"
     },
     "elements": [
@@ -22,7 +22,7 @@
         {   "from": [ 5, 5, 15 ],
             "to": [ 11, 11, 16 ],
             "faces": {
-                "down":  { "uv": [ 5, 0, 11, 2 ], "texture": "#base", "cullface": "down" },
+                "down":  { "uv": [ 5, 0, 11, 1 ], "texture": "#base", "cullface": "down" },
                 "up":    { "uv": [ 5, 15, 11, 16 ], "texture": "#base", "cullface": "up" },
                 "north": { "uv": [ 5, 5, 11, 11 ], "texture": "#base", "cullface": "north" },
                 "south": { "uv": [ 5, 5, 11, 11 ], "texture": "#base", "cullface": "south" },

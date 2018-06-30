@@ -42,7 +42,12 @@ public class VeinTableJsonHelper {
 						modid = n2[0];
 						itemName = n2[1];
 						if (n2.length > 2) {
-							Integer m = Integer.parseInt(n2[2]);
+							Integer m = null;
+							try {
+								m = Integer.parseInt(n2[2]);
+							} catch (NumberFormatException e) {
+								DCLogger.debugLog("Tried to parse non Integer target: " + n2[2]);
+							}
 							if (m != null && m >= 0) {
 								meta = m;
 							}
@@ -57,9 +62,11 @@ public class VeinTableJsonHelper {
 
 			Block block = Block.REGISTRY.getObject(new ResourceLocation(modid, itemName));
 			if (block != null && block != Blocks.AIR) {
-				DCLogger.infoLog("register target oregen data from json: " + modid + ":" + itemName + ", " + meta
-						+ " ; weight" + i + " ; " + table.vein);
+				DCLogger.infoLog("register target oregen data from json: " + modid + ":" + itemName + ", " + meta +
+						" ; weight" + i + " ; " + table.vein);
 				table.addOreToTable1(i, block, meta);
+			} else {
+				DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
 			}
 		}
 	}

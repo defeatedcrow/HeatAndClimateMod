@@ -80,8 +80,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		}
 		int r = 2 + f;
 
-		if (isForced || (!BiomeDictionary.hasType(biome, BiomeDictionary.Type.WET)
-				&& BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST))) {
+		if (isForced || (!BiomeDictionary.hasType(biome, BiomeDictionary.Type.WET) && BiomeDictionary.hasType(biome,
+				BiomeDictionary.Type.FOREST))) {
 			for (int y = 1; y < 80; y++) {
 				// world.setBlockState(pos.up(y), Blocks.STONE.getDefaultState(), 2);
 				int r2 = y / 4;
@@ -156,24 +156,24 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		int f2 = rand.nextInt(3);
 		if (y < 12 + f2)
 			// 最下層: 溶岩と花崗岩のレンズ状のかたまり
-			return new OreSet(100, LAVA);
+			return new OreSetDC(100, LAVA);
 		else if (y < 14 + f2)
 			// 最下層: 花崗岩
-			return new OreSet(100, AIR);
+			return new OreSetDC(100, AIR);
 		else if (y < 17 + f2)
 			// 最下層: 花崗岩
-			return new OreSet(100, STONE_1);
+			return new OreSetDC(100, STONE_1);
 		else if (y > 50 + f2) {
 			// 最上層: 石灰岩と大理石
 			if (y > 58 + f2)
-				return new OreSet(100, LIME);
+				return new OreSetDC(100, LIME, false);
 			else
-				return new OreSet(100, MARBLE);
+				return new OreSetDC(100, MARBLE, false);
 		} else {
 			VeinTable table = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN);
 			VeinTable table2 = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN_UNDER);
 			if (table == null || table2 == null) {
-				return new OreSet(100, IRON_2);
+				return new OreSetDC(100, IRON_2);
 			}
 			// 中層: 下から、磁鉄鉱/金/閃緑岩、黄鉄鉱/黄銅鉱/錫石/他MOD鉱/石、閃亜鉛鉱/錫石/赤鉄鉱/大理石
 			if (y < 28) {
@@ -186,7 +186,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 						return set;
 					}
 				}
-				return new OreSet(100, STONE_2);
+				return new OreSetDC(100, STONE_2);
 			} else {
 				List<OreSet> list = table.getOreTable1();
 				int i1 = rand.nextInt(table.tableCount1);
@@ -197,7 +197,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 						return set;
 					}
 				}
-				return new OreSet(100, MARBLE);
+				return new OreSetDC(100, MARBLE, false);
 			}
 		}
 	}
@@ -258,6 +258,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	private static final BlockSet STONE_0 = new BlockSet(Blocks.STONE, 0);
 	private static final BlockSet STONE_1 = new BlockSet(Blocks.STONE, 1);
 	private static final BlockSet STONE_2 = new BlockSet(Blocks.STONE, 3);
+	private static final BlockSet STONE_3 = new BlockSet(Blocks.STONE, 5);
+	private static final BlockSet SAND = new BlockSet(Blocks.SANDSTONE, 0);
 
 	private static final BlockSet LIME = new BlockSet(MainInit.ores_2, 0);
 	private static final BlockSet MARBLE = new BlockSet(MainInit.gemBlock, 6);

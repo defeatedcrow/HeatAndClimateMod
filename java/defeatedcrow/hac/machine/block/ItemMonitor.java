@@ -83,9 +83,15 @@ public class ItemMonitor extends DCItemBlock {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add("Require registering target coordinate.");
 			tooltip.add("Held this item and right-click the coordinate of target machine.");
+
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("Display data of target device");
-			tooltip.add("RS comparator output");
+			if (block instanceof BlockMonitorRedStone || block instanceof BlockMonitorComparator) {
+				tooltip.add("RS signal output");
+			} else {
+				tooltip.add("Display data of target device");
+				tooltip.add("RS comparator output");
+			}
+
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

@@ -28,6 +28,7 @@ import defeatedcrow.hac.machine.block.TileHopperGold;
 import defeatedcrow.hac.machine.block.TileHopperSilver;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
+import defeatedcrow.hac.machine.block.TileMonitorComparator;
 import defeatedcrow.hac.machine.block.TileMonitorFluid;
 import defeatedcrow.hac.machine.block.TileMonitorInventory;
 import defeatedcrow.hac.machine.block.TileMonitorRF;
@@ -191,6 +192,7 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileMonitorRF.class, "dcs_te_monitor_rf", new MonitorTESR());
 		ClientRegistry.registerTileEntity(TileMonitorFluid.class, "dcs_te_monitor_fluid", new MonitorTESR());
 		ClientRegistry.registerTileEntity(TileMonitorInventory.class, "dcs_te_monitor_item", new MonitorTESR());
+		GameRegistry.registerTileEntity(TileMonitorComparator.class, "dcs_te_monitor_cm");
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -302,6 +304,7 @@ public class MachineClientProxy {
 				0);
 		instance.regSimpleBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine",
 				0);
+		instance.regSimpleBlock(MachineInit.monitorCM, ClimateCore.PACKAGE_ID, "dcs_device_monitor_cm", "machine", 0);
 
 		// fluid
 		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.hydrogenBlock), new ItemMeshDefinition() {

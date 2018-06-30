@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 public class LoadingToolRecipe {
 
 	public static void add(RecipeResourcesMain res) {
+		// clothes
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 0), new Object[] {
 				"XXX",
 				"XYX",

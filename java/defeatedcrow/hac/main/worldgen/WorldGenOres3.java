@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.orevein.OreSet;
+import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -132,7 +133,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = vein.round;
+		int r = WorldGenConfig.radGen[0];
 		int h = r - 1;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -175,7 +176,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 								if (add.hasSecondOre() && j < add.getSecondChance()) {
 									world.setBlockState(p, add.getSecondOre().getState(), 4);
 								} else {
-									if (add.getOre().equals(STONE_2) && j > 90) {
+									if (add.getOre().equals(CHAL_B) && j > 90) {
 										world.setBlockState(p, SAPPHIRE.getState(), 4);
 									} else {
 										world.setBlockState(p, add.getOre().getState(), 4);
@@ -199,7 +200,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = vein.round;
+		int r = WorldGenConfig.radGen[1];
 		int h = r - 1;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -264,7 +265,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = vein.round;
+		int r = WorldGenConfig.radGen[1];
 		int h = r / 2;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -388,7 +389,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = vein.round;
+		int r = WorldGenConfig.radGen[2];
 		int h = r - 1;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -456,7 +457,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = vein.round;
+		int r = WorldGenConfig.radGen[3];
 		int h = r;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -525,7 +526,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = vein.round;
+		int r = WorldGenConfig.radGen[4];
 		int h = r - 1;
 		int[] rands = vein.rands;
 
@@ -590,7 +591,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int h = vein.round;
+		int h = WorldGenConfig.radGen[5];
 		// 球状に生成
 		for (int x = pos.getX() - h; x <= pos.getX() + h; x++) {
 			for (int z = pos.getZ() - h; z <= pos.getZ() + h; z++) {
@@ -657,50 +658,6 @@ public class WorldGenOres3 implements IWorldGenerator {
 		}
 	}
 
-	private static final BlockSet AIR = new BlockSet(Blocks.AIR, 0);
-
-	private static final BlockSet LAVA = new BlockSet(Blocks.LAVA, 0);
-	private static final BlockSet STONE_0 = new BlockSet(Blocks.STONE, 0);
-	private static final BlockSet STONE_1 = new BlockSet(Blocks.STONE, 1);
-	private static final BlockSet STONE_2 = new BlockSet(Blocks.STONE, 3);
-	private static final BlockSet STONE_3 = new BlockSet(Blocks.STONE, 5);
-	private static final BlockSet GRAVEL = new BlockSet(Blocks.GRAVEL, 0);
-
-	private static final BlockSet LIME = new BlockSet(MainInit.ores_2, 0);
-	private static final BlockSet MARBLE = new BlockSet(MainInit.gemBlock, 6);
-	private static final BlockSet GYPSUM = new BlockSet(MainInit.ores, 0);
-	private static final BlockSet CALC_B = new BlockSet(MainInit.ores, 2);
-	private static final BlockSet CALC_W = new BlockSet(MainInit.ores, 9);
-
-	private static final BlockSet IRON_0 = new BlockSet(MainInit.ores, 1);
-	private static final BlockSet IRON_1 = new BlockSet(MainInit.ores, 4);
-	private static final BlockSet IRON_2 = new BlockSet(MainInit.ores, 5);
-	private static final BlockSet IRON_3 = new BlockSet(MainInit.ores, 15);
-
-	private static final BlockSet GOLD = new BlockSet(Blocks.GOLD_ORE, 0);
-	private static final BlockSet COAL = new BlockSet(Blocks.COAL_ORE, 0);
-
-	private static final BlockSet COPPER = new BlockSet(MainInit.ores, 6);
-	private static final BlockSet ZINC = new BlockSet(MainInit.ores, 8);
-	private static final BlockSet TIN = new BlockSet(MainInit.ores_2, 4);
-	private static final BlockSet BISMUTH = new BlockSet(MainInit.ores_2, 9);
-	private static final BlockSet NICKEL_1 = new BlockSet(MainInit.ores, 7);
-	private static final BlockSet NICKEL_2 = new BlockSet(MainInit.ores_2, 8);
-
+	private static final BlockSet CHAL_B = new BlockSet(MainInit.ores, 2);
 	private static final BlockSet SAPPHIRE = new BlockSet(MainInit.ores, 3);
-	private static final BlockSet CRYSTAL = new BlockSet(MainInit.ores, 10);
-	private static final BlockSet SALT = new BlockSet(MainInit.ores_2, 1);
-	private static final BlockSet NITER = new BlockSet(MainInit.ores_2, 2);
-	private static final BlockSet SULFUR = new BlockSet(MainInit.ores_2, 3);
-	private static final BlockSet SCHORL = new BlockSet(MainInit.ores_2, 5);
-	private static final BlockSet SERPENTINE = new BlockSet(MainInit.ores_2, 6);
-	private static final BlockSet ALMANDINE = new BlockSet(MainInit.ores_2, 7);
-	private static final BlockSet BAUXITE = new BlockSet(MainInit.ores_2, 10);
-	private static final BlockSet RUTILE = new BlockSet(MainInit.ores_2, 11);
-	private static final BlockSet CALC_GOLD = new BlockSet(MainInit.ores, 11);
-	private static final BlockSet CALC_SILV = new BlockSet(MainInit.ores, 12);
-	private static final BlockSet CALC_DIA = new BlockSet(MainInit.ores, 13);
-	private static final BlockSet CALC_EME = new BlockSet(MainInit.ores, 14);
-	private static final BlockSet GUANO = new BlockSet(MainInit.ores_2, 12);
-
 }

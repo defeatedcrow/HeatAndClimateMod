@@ -1,13 +1,8 @@
 package defeatedcrow.hac.plugin;
 
-import buildcraft.api.BCModules;
-import buildcraft.api.facades.FacadeAPI;
-import buildcraft.api.fuels.BuildcraftFuelRegistry;
-import buildcraft.api.mj.MjAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
-import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -68,14 +63,14 @@ public class DCPluginBuildcraft {
 		DCPluginFluid.registerPotion(dist, MobEffects.HUNGER);
 		DCPluginFluid.registerPotion(residue, MobEffects.BLINDNESS);
 
-		if (BCModules.ENERGY.isLoaded()) {
-			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.hydrogen, 8 * MjAPI.MJ, 1200);
-			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelGas, 8 * MjAPI.MJ, 2000);
-			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelOil, 5 * MjAPI.MJ, 16000);
-			BuildcraftFuelRegistry.fuel.addFuel(FoodInit.blackLiquor, 2 * MjAPI.MJ, 20000);
-			BuildcraftFuelRegistry.fuel.addFuel(FoodInit.oil, 4 * MjAPI.MJ, 10000);
-			BuildcraftFuelRegistry.fuel.addFuel(MachineInit.ethanol, 6 * MjAPI.MJ, 4000);
-		}
+		// if (BCModules.ENERGY.isLoaded()) {
+		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.hydrogen, 8 * MjAPI.MJ, 1200);
+		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelGas, 8 * MjAPI.MJ, 2000);
+		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelOil, 5 * MjAPI.MJ, 16000);
+		// BuildcraftFuelRegistry.fuel.addFuel(FoodInit.blackLiquor, 2 * MjAPI.MJ, 20000);
+		// BuildcraftFuelRegistry.fuel.addFuel(FoodInit.oil, 4 * MjAPI.MJ, 10000);
+		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.ethanol, 6 * MjAPI.MJ, 4000);
+		// }
 
 		if (ModuleConfig.machine && ModuleConfig.machine_advanced) {
 
@@ -88,23 +83,25 @@ public class DCPluginBuildcraft {
 
 			// Ni 水蒸気改質
 			RecipeAPI.registerReactorRecipes.addRecipe(tar, null, 0F, new FluidStack(dist, 500), null, DCHeatTier.KILN,
-					new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(residue, 500), new FluidStack(
-							FluidRegistry.WATER, 500), new Object[] {});
+					new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(residue, 500),
+					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
 
 			// Pt 炭化水素ガス
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
-					MachineInit.fuelGas, 1000), new FluidStack(dense, 100), DCHeatTier.SMELTING, new ItemStack(
-							MachineInit.catalyst, 1, 3), new FluidStack(dist, 500), new FluidStack(FluidRegistry.WATER,
-									500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
+					new FluidStack(MachineInit.fuelGas, 1000), new FluidStack(dense, 100), DCHeatTier.SMELTING,
+					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(dist, 500),
+					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
 
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
-					MachineInit.fuelGas, 1000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1, 3),
-					new FluidStack(fuel, 500), new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
+					new FluidStack(MachineInit.fuelGas, 1000), null, DCHeatTier.SMELTING,
+					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(fuel, 500),
+					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
 
 			// Pt 水素化
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
-					MachineInit.fuelGas, 2000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1, 3),
-					new FluidStack(fuel, 500), new FluidStack(MachineInit.hydrogen, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
+					new FluidStack(MachineInit.fuelGas, 2000), null, DCHeatTier.SMELTING,
+					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(fuel, 500),
+					new FluidStack(MachineInit.hydrogen, 500), new Object[] {});
 
 			// Ni 水素
 			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0F, new FluidStack(MachineInit.hydrogen, 1000), null,
@@ -115,24 +112,24 @@ public class DCPluginBuildcraft {
 	}
 
 	public static void loadInit() {
-		FacadeAPI.disableBlock(FoodInit.blackLiquorBlock);
-		FacadeAPI.disableBlock(FoodInit.blackTeaBlock);
-		FacadeAPI.disableBlock(FoodInit.coffeeBlock);
-		FacadeAPI.disableBlock(FoodInit.creamBlock);
-		FacadeAPI.disableBlock(FoodInit.greenTeaBlock);
-		FacadeAPI.disableBlock(FoodInit.hotSpringBlock);
-		FacadeAPI.disableBlock(FoodInit.lemonBlock);
-		FacadeAPI.disableBlock(FoodInit.oilBlock);
-		FacadeAPI.disableBlock(FoodInit.stockBlock);
-		FacadeAPI.disableBlock(FoodInit.tomatoBlock);
-		FacadeAPI.disableBlock(FoodInit.mazaiBlock);
-		FacadeAPI.disableBlock(MachineInit.ethanolBlock);
-		FacadeAPI.disableBlock(MachineInit.ammoniaBlock);
-		FacadeAPI.disableBlock(MachineInit.fuelGasBlock);
-		FacadeAPI.disableBlock(MachineInit.fuelOilBlock);
-		FacadeAPI.disableBlock(MachineInit.hydrogenBlock);
-		FacadeAPI.disableBlock(MachineInit.nitricAcidBlock);
-		FacadeAPI.disableBlock(MachineInit.nitrogenBlock);
-		FacadeAPI.disableBlock(MachineInit.sulfuricAcidBlock);
+		// FacadeAPI.disableBlock(FoodInit.blackLiquorBlock);
+		// FacadeAPI.disableBlock(FoodInit.blackTeaBlock);
+		// FacadeAPI.disableBlock(FoodInit.coffeeBlock);
+		// FacadeAPI.disableBlock(FoodInit.creamBlock);
+		// FacadeAPI.disableBlock(FoodInit.greenTeaBlock);
+		// FacadeAPI.disableBlock(FoodInit.hotSpringBlock);
+		// FacadeAPI.disableBlock(FoodInit.lemonBlock);
+		// FacadeAPI.disableBlock(FoodInit.oilBlock);
+		// FacadeAPI.disableBlock(FoodInit.stockBlock);
+		// FacadeAPI.disableBlock(FoodInit.tomatoBlock);
+		// FacadeAPI.disableBlock(FoodInit.mazaiBlock);
+		// FacadeAPI.disableBlock(MachineInit.ethanolBlock);
+		// FacadeAPI.disableBlock(MachineInit.ammoniaBlock);
+		// FacadeAPI.disableBlock(MachineInit.fuelGasBlock);
+		// FacadeAPI.disableBlock(MachineInit.fuelOilBlock);
+		// FacadeAPI.disableBlock(MachineInit.hydrogenBlock);
+		// FacadeAPI.disableBlock(MachineInit.nitricAcidBlock);
+		// FacadeAPI.disableBlock(MachineInit.nitrogenBlock);
+		// FacadeAPI.disableBlock(MachineInit.sulfuricAcidBlock);
 	}
 }

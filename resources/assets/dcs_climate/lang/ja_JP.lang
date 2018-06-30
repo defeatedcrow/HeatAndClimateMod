@@ -908,6 +908,7 @@ tile.dcs_device_shaft_x_steel_0.name=鋼鉄のシャフト(X型)
 tile.dcs_device_diesel_engine_0.name=ディーゼル機関
 tile.dcs_device_crusher_0.name=ハンマーミル
 tile.dcs_device_monitor_rs_0.name=遠隔レッドストーンランプ
+tile.dcs_device_monitor_cm_0.name=遠隔コンパレータランプ
 tile.dcs_device_monitor_fluid_0.name=遠隔液体モニター
 tile.dcs_device_monitor_torque_0.name=遠隔トルクモニター
 tile.dcs_device_monitor_rf_0.name=遠隔RFモニター

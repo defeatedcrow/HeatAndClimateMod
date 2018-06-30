@@ -1,7 +1,6 @@
 /**
  * Copyright (c) defeatedcrow, 2016
  * URL:http://defeatedcrow.jp/modwiki/Mainpage
- * defeatedcrow's mods are distributed under the terms of the Minecraft Mod Public License 1.0, or MMPL.
  * Please check the License.txt included in the package file of this Mod.
  */
 
@@ -12,7 +11,9 @@ import java.util.Calendar;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
@@ -39,8 +40,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 2;
 	public static final int MOD_MINOR = 5;
-	public static final int MOD_BUILD = 3;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.5.2,)";
+	public static final int MOD_BUILD = 4;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.5.4,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
@@ -105,6 +106,9 @@ public class ClimateMain {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		// config
+		MainCoreConfig.INSTANCE.leadBlockNames();
+		WorldGenConfig.INSTANCE.leadBlockNames();
 
 		// WorldGen
 		proxy.loadWorldGen();

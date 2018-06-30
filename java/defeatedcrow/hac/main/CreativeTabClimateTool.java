@@ -20,7 +20,7 @@ public class CreativeTabClimateTool extends CreativeTabs {
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(MainInit.dcPickaxe[0]);
+		return new ItemStack(MainInit.crowDrill);
 	}
 
 }
