@@ -166,9 +166,9 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		else if (y > 50 + f2) {
 			// 最上層: 石灰岩と大理石
 			if (y > 58 + f2)
-				return new OreSetDC(100, LIME);
+				return new OreSetDC(100, LIME, false);
 			else
-				return new OreSetDC(100, MARBLE);
+				return new OreSetDC(100, MARBLE, false);
 		} else {
 			VeinTable table = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN);
 			VeinTable table2 = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN_UNDER);
@@ -197,7 +197,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 						return set;
 					}
 				}
-				return new OreSetDC(100, MARBLE);
+				return new OreSetDC(100, MARBLE, false);
 			}
 		}
 	}
@@ -258,6 +258,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	private static final BlockSet STONE_0 = new BlockSet(Blocks.STONE, 0);
 	private static final BlockSet STONE_1 = new BlockSet(Blocks.STONE, 1);
 	private static final BlockSet STONE_2 = new BlockSet(Blocks.STONE, 3);
+	private static final BlockSet STONE_3 = new BlockSet(Blocks.STONE, 5);
+	private static final BlockSet SAND = new BlockSet(Blocks.SANDSTONE, 0);
 
 	private static final BlockSet LIME = new BlockSet(MainInit.ores_2, 0);
 	private static final BlockSet MARBLE = new BlockSet(MainInit.gemBlock, 6);

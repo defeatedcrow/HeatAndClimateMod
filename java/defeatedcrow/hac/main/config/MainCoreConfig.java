@@ -30,7 +30,9 @@ public class MainCoreConfig {
 	public static boolean pendant_clam = true;
 
 	public static String[] blocknames = new String[] {
+			"minecraft:stone:32767",
 			"minecraft:dirt:32767",
+			"minecraft:bedrock:32767",
 			"ModID:sampleBlock:sampleMeta"
 	};
 	public static final List<BlockSet> disables = Lists.newArrayList();

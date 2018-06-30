@@ -40,8 +40,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 2;
 	public static final int MOD_MINOR = 5;
-	public static final int MOD_BUILD = 3;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.5.2,)";
+	public static final int MOD_BUILD = 4;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.5.4,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
@@ -106,6 +106,9 @@ public class ClimateMain {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		// config
+		MainCoreConfig.INSTANCE.leadBlockNames();
+		WorldGenConfig.INSTANCE.leadBlockNames();
 
 		// WorldGen
 		proxy.loadWorldGen();
@@ -128,9 +131,6 @@ public class ClimateMain {
 		VeinTableJsonHelper.pre();
 
 		VeinTableJsonHelper.post();
-
-		MainCoreConfig.INSTANCE.leadBlockNames();
-		WorldGenConfig.INSTANCE.leadBlockNames();
 
 		// date
 		month = CAL.get(CAL.MONTH);

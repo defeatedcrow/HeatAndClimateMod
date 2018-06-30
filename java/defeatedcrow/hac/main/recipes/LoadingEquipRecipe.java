@@ -13,168 +13,171 @@ import net.minecraft.item.ItemStack;
 public class LoadingEquipRecipe {
 
 	public static void add(RecipeResourcesMain res) {
-		String[] name = {
-				"ingotBrass",
-				"ingotSteel",
-				"ingotSilver",
-				"ingotNickelsilver",
-				"gemChalcedony",
-				"gemSapphire",
-				"ingotTitanium",
-				"gemGarnet"
-		};
-		for (int i = 0; i < name.length; i++) {
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcPickaxe[i], 1, 0), new Object[] {
+		if (ModuleConfig.tool) {
+			String[] name = {
+					"ingotBrass",
+					"ingotSteel",
+					"ingotSilver",
+					"ingotNickelsilver",
+					"gemChalcedony",
+					"gemSapphire",
+					"ingotTitanium",
+					"gemGarnet"
+			};
+			for (int i = 0; i < name.length; i++) {
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcPickaxe[i], 1, 0), new Object[] {
+						"  X",
+						"YYX",
+						"  X",
+						'X',
+						name[i],
+						'Y',
+						"stickWood"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcAxe[i], 1, 0), new Object[] {
+						" XX",
+						"YYX",
+						"   ",
+						'X',
+						name[i],
+						'Y',
+						"stickWood"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcSpade[i], 1, 0), new Object[] {
+						"   ",
+						"YYX",
+						"   ",
+						'X',
+						name[i],
+						'Y',
+						"stickWood"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcSword[i], 1, 0), new Object[] {
+						"   ",
+						"YXX",
+						"   ",
+						'X',
+						name[i],
+						'Y',
+						"stickWood"
+				});
+			}
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[0], 1, 0), new Object[] {
+					" X ",
+					"  X",
+					"YYX",
+					'X',
+					"ingotBrass",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[1], 1, 0), new Object[] {
+					" X ",
+					"  X",
+					"YYX",
+					'X',
+					"ingotSteel",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[2], 1, 0), new Object[] {
+					" X ",
+					"  X",
+					"YYX",
+					'X',
+					"gemChalcedony",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[3], 1, 0), new Object[] {
+					" X ",
+					"  X",
+					"YYX",
+					'X',
+					"gemGarnet",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.earthSpade, 1, 0), new Object[] {
+					"YYX",
+					'X',
+					"gemMalachite",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.earthRake, 1, 0), new Object[] {
 					"  X",
 					"YYX",
 					"  X",
 					'X',
-					name[i],
+					"gemMalachite",
 					'Y',
 					"stickWood"
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcAxe[i], 1, 0), new Object[] {
-					" XX",
-					"YYX",
-					"   ",
-					'X',
-					name[i],
-					'Y',
-					"stickWood"
-			});
+			String[] name2 = {
+					"ingotBrass",
+					"ingotSteel",
+					"gemChalcedony",
+					"gemSapphire",
+					"ingotTitanium"
+			};
+			Item[][] armor = {
+					MainInit.brassArmor,
+					MainInit.steelArmor,
+					MainInit.chalcArmor,
+					MainInit.sapphireArmor,
+					MainInit.titaniumArmor
+			};
+			for (int i = 0; i < name2.length; i++) {
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(armor[i][0], 1, 0), new Object[] {
+						"XXX",
+						"XYX",
+						'X',
+						name2[i],
+						'Y',
+						"itemCloth"
+				});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcSpade[i], 1, 0), new Object[] {
-					"   ",
-					"YYX",
-					"   ",
-					'X',
-					name[i],
-					'Y',
-					"stickWood"
-			});
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(armor[i][1], 1, 0), new Object[] {
+						"X X",
+						"XYX",
+						"XXX",
+						'X',
+						name2[i],
+						'Y',
+						"itemCloth"
+				});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcSword[i], 1, 0), new Object[] {
-					"   ",
-					"YXX",
-					"   ",
-					'X',
-					name[i],
-					'Y',
-					"stickWood"
-			});
-		}
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(armor[i][2], 1, 0), new Object[] {
+						"XYX",
+						"X X",
+						"X X",
+						'X',
+						name2[i],
+						'Y',
+						"itemCloth"
+				});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[0], 1, 0), new Object[] {
-				" X ",
-				"  X",
-				"YYX",
-				'X',
-				"ingotBrass",
-				'Y',
-				"stickWood"
-		});
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(armor[i][3], 1, 0), new Object[] {
+						"X X",
+						"XYX",
+						'X',
+						name2[i],
+						'Y',
+						"itemCloth"
+				});
+			}
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[1], 1, 0), new Object[] {
-				" X ",
-				"  X",
-				"YYX",
-				'X',
-				"ingotSteel",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[2], 1, 0), new Object[] {
-				" X ",
-				"  X",
-				"YYX",
-				'X',
-				"gemChalcedony",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dcScythe[3], 1, 0), new Object[] {
-				" X ",
-				"  X",
-				"YYX",
-				'X',
-				"gemGarnet",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.earthSpade, 1, 0), new Object[] {
-				"YYX",
-				'X',
-				"gemMalachite",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.earthRake, 1, 0), new Object[] {
-				"  X",
-				"YYX",
-				"  X",
-				'X',
-				"gemMalachite",
-				'Y',
-				"stickWood"
-		});
-
-		String[] name2 = {
-				"ingotBrass",
-				"ingotSteel",
-				"gemChalcedony",
-				"gemSapphire",
-				"ingotTitanium"
-		};
-		Item[][] armor = {
-				MainInit.brassArmor,
-				MainInit.steelArmor,
-				MainInit.chalcArmor,
-				MainInit.sapphireArmor,
-				MainInit.titaniumArmor
-		};
-		for (int i = 0; i < name2.length; i++) {
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(armor[i][0], 1, 0), new Object[] {
-					"XXX",
-					"XYX",
-					'X',
-					name2[i],
-					'Y',
-					"itemCloth"
-			});
-
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(armor[i][1], 1, 0), new Object[] {
-					"X X",
-					"XYX",
-					"XXX",
-					'X',
-					name2[i],
-					'Y',
-					"itemCloth"
-			});
-
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(armor[i][2], 1, 0), new Object[] {
-					"XYX",
-					"X X",
-					"X X",
-					'X',
-					name2[i],
-					'Y',
-					"itemCloth"
-			});
-
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(armor[i][3], 1, 0), new Object[] {
-					"X X",
-					"XYX",
-					'X',
-					name2[i],
-					'Y',
-					"itemCloth"
-			});
 		}
 
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.linenUnder, 1, 0), new Object[] {

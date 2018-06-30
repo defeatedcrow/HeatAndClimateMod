@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.client.renderer.block.statemap.StateMap;
@@ -135,60 +136,65 @@ public class JsonRegister {
 
 	static void regTools() {
 
-		String[] name = {
-				"brass",
-				"steel",
-				"silver",
-				"nickelsilver",
-				"chalcedony",
-				"sapphire",
-				"titanium",
-				"garnet"
-		};
-		for (int j = 0; j < name.length; j++) {
-			MAIN_INSTANCE.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.dcPickaxe[j], ClimateCore.PACKAGE_ID, "dcs_pickaxe_" + name[j],
-					"equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.dcSpade[j], ClimateCore.PACKAGE_ID, "dcs_spade_" + name[j], "equip",
-					0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.dcSword[j], ClimateCore.PACKAGE_ID, "dcs_sword_" + name[j], "equip",
-					0);
-		}
-		String[] type = {
-				"met",
-				"plate",
-				"leggins",
-				"boots"
-		};
-		for (int i = 0; i < 4; i++) {
-			MAIN_INSTANCE.regSimpleItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_brass",
-					"equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.steelArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_steel",
-					"equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.chalcArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
-					"_chalcedony", "equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.sapphireArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
-					"_sapphire", "equip", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
-					"_titanium", "equip", 0);
-		}
+		if (ModuleConfig.tool) {
+			String[] name = {
+					"brass",
+					"steel",
+					"silver",
+					"nickelsilver",
+					"chalcedony",
+					"sapphire",
+					"titanium",
+					"garnet"
+			};
+			for (int j = 0; j < name.length; j++) {
+				MAIN_INSTANCE.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip",
+						0);
+				MAIN_INSTANCE.regSimpleItem(MainInit.dcPickaxe[j], ClimateCore.PACKAGE_ID, "dcs_pickaxe_" + name[j],
+						"equip", 0);
+				MAIN_INSTANCE.regSimpleItem(MainInit.dcSpade[j], ClimateCore.PACKAGE_ID, "dcs_spade_" + name[j],
+						"equip", 0);
+				MAIN_INSTANCE.regSimpleItem(MainInit.dcSword[j], ClimateCore.PACKAGE_ID, "dcs_sword_" + name[j],
+						"equip", 0);
+			}
+			String[] type = {
+					"met",
+					"plate",
+					"leggins",
+					"boots"
+			};
+			for (int i = 0; i < 4; i++) {
+				MAIN_INSTANCE.regSimpleItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_brass",
+						"equip", 0);
+				MAIN_INSTANCE.regSimpleItem(MainInit.steelArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_steel",
+						"equip", 0);
+				MAIN_INSTANCE.regSimpleItem(MainInit.chalcArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
+						"_chalcedony", "equip", 0);
+				MAIN_INSTANCE.regSimpleItem(MainInit.sapphireArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
+						"_sapphire", "equip", 0);
+				MAIN_INSTANCE.regSimpleItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] +
+						"_titanium", "equip", 0);
+			}
 
-		String[] name2 = {
-				"brass",
-				"steel",
-				"chalcedony",
-				"garnet"
-		};
-		for (int j = 0; j < name2.length; j++) {
-			MAIN_INSTANCE.regSimpleItem(MainInit.dcScythe[j], ClimateCore.PACKAGE_ID, "dcs_scythe_" + name[j], "equip",
-					0);
+			String[] name2 = {
+					"brass",
+					"steel",
+					"chalcedony",
+					"garnet"
+			};
+			for (int j = 0; j < name2.length; j++) {
+				MAIN_INSTANCE.regSimpleItem(MainInit.dcScythe[j], ClimateCore.PACKAGE_ID, "dcs_scythe_" + name[j],
+						"equip", 0);
+			}
+
+			MAIN_INSTANCE.regSimpleItem(MainInit.earthSpade, ClimateCore.PACKAGE_ID, "dcs_spade_earth", "equip", 0);
+			MAIN_INSTANCE.regSimpleItem(MainInit.earthRake, ClimateCore.PACKAGE_ID, "dcs_rake_earth", "equip", 0);
+
 		}
 
 		MAIN_INSTANCE.regSimpleItem(MainInit.crossbow, ClimateCore.PACKAGE_ID, "dcs_crossbow_iron", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.gun, ClimateCore.PACKAGE_ID, "dcs_musket_steel", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cartridge, ClimateCore.PACKAGE_ID, "dcs_cartridge", "equip", 7);
-		MAIN_INSTANCE.regSimpleItem(MainInit.earthSpade, ClimateCore.PACKAGE_ID, "dcs_spade_earth", "equip", 0);
-		MAIN_INSTANCE.regSimpleItem(MainInit.earthRake, ClimateCore.PACKAGE_ID, "dcs_rake_earth", "equip", 0);
 
 		MAIN_INSTANCE.regSimpleItem(MainInit.linenUnder, ClimateCore.PACKAGE_ID, "dcs_leggins_linen", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.linenCoat, ClimateCore.PACKAGE_ID, "dcs_plate_linen", "equip", 0);

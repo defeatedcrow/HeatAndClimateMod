@@ -914,6 +914,7 @@ tile.dcs_device_shaft_x_steel_0.name=Steel Shaft(X)
 tile.dcs_device_diesel_engine_0.name=Diesel Engine
 tile.dcs_device_crusher_0.name=Hammer Mill
 tile.dcs_device_monitor_rs_0.name=Remote RS Lamp
+tile.dcs_device_monitor_cm_0.name=Remote Comparator Lamp
 tile.dcs_device_monitor_fluid_0.name=Remote Fluid Monitor
 tile.dcs_device_monitor_torque_0.name=Remote Torque Monitor
 tile.dcs_device_monitor_rf_0.name=Remote RF Monitor

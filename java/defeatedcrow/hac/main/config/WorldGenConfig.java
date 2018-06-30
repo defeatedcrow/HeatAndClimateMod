@@ -57,8 +57,6 @@ public class WorldGenConfig {
 			cfg.addCustomCategoryComment("ore gen setting", "This setting is for ore gen. " + BR +
 					"Please set probability as parsentage (0 - 100)." + BR +
 					"If you set 0, those ore deposits will not be generated.");
-			cfg.addCustomCategoryComment("ore block setting", "This setting is for ore gen. " + BR +
-					"If you set false, those ore block will not be generated.");
 
 			Property sed_ore = cfg.get("ore gen setting", "Sedimentary Gen Probability", depositGen[0],
 					"Generate in High-altitude of mountain. 1-100%");
@@ -72,12 +70,13 @@ public class WorldGenConfig {
 			Property lava_ore = cfg.get("ore gen setting", "Magnetite Gen Probability", depositGen[3],
 					"Generate in deep-underground. 1-100%");
 
-			Property geode_rad = cfg.get("ore gen setting", "Geode Gen Probability", depositGen[4],
+			Property geode_ore = cfg.get("ore gen setting", "Geode Gen Probability", depositGen[4],
 					"Generate in deep-underground. 1-100%");
 
 			Property sed_rad = cfg.get("ore gen setting", "Sedimentary Gen Radius", radGen[0]);
 
-			Property s_sed_rad = cfg.get("ore gen setting", "SandSedimentary Gen Radius", radGen[1]);
+			Property s_sed_rad = cfg.get("ore gen setting", "SandSedimentary Gen Radius", radGen[1],
+					"Generate in High-altitude of sandy mountain. 1-100%");
 
 			Property char_rad = cfg.get("ore gen setting", "Chalcopyrite Gen Radius", radGen[2]);
 
@@ -85,7 +84,7 @@ public class WorldGenConfig {
 
 			Property lava_rad = cfg.get("ore gen setting", "Magnetite Gen Radius", radGen[4]);
 
-			Property geode_ore = cfg.get("ore gen setting", "Geode Gen Radius", radGen[5]);
+			Property geode_rad = cfg.get("ore gen setting", "Geode Gen Radius", radGen[5]);
 
 			Property skarn_ore = cfg.get("ore gen setting", "Skarn Gen Probability", skarnGen,
 					"Generate in Forest or Plain. 0.1-100.0% (default: 0.5%)");
@@ -124,28 +123,28 @@ public class WorldGenConfig {
 			}
 
 			int s2 = sed_rad.getInt();
-			if (s2 < 0 || s2 > 100) {
-				s2 = 0;
+			if (s2 < 0 || s2 > 10) {
+				s2 = 2;
 			}
 			int ss2 = s_sed_rad.getInt();
-			if (ss2 < 0 || ss2 > 100) {
-				ss2 = 0;
+			if (ss2 < 0 || ss2 > 10) {
+				ss2 = 2;
 			}
 			int c2 = char_rad.getInt();
-			if (c2 < 0 || c2 > 100) {
-				c2 = 0;
+			if (c2 < 0 || c2 > 10) {
+				c2 = 2;
 			}
 			int v2 = vein_rad.getInt();
-			if (v2 < 0 || v2 > 100) {
-				v2 = 0;
+			if (v2 < 0 || v2 > 10) {
+				v2 = 2;
 			}
 			int l2 = lava_rad.getInt();
-			if (l2 < 0 || l2 > 100) {
-				l2 = 0;
+			if (l2 < 0 || l2 > 10) {
+				l2 = 2;
 			}
 			int g2 = geode_rad.getInt();
-			if (g2 < 0 || g2 > 100) {
-				g2 = 0;
+			if (g2 < 0 || g2 > 10) {
+				g2 = 2;
 			}
 
 			int sk = skarn_ore.getInt();

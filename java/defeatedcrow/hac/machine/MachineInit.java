@@ -118,6 +118,7 @@ public class MachineInit {
 	public static Block crusher;
 
 	public static Block monitorRS;
+	public static Block monitorCM;
 	public static Block monitorFluid;
 	public static Block monitorTorque;
 	public static Block monitorRF;

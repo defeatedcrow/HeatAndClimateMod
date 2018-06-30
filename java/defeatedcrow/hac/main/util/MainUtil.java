@@ -12,6 +12,7 @@ import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -184,7 +185,12 @@ public class MainUtil {
 						String[] n2 = name.split(":");
 						if (n2 != null && n2.length > 0) {
 							if (n2.length > 2) {
-								Integer m = Integer.parseInt(n2[2]);
+								Integer m = null;
+								try {
+									m = Integer.parseInt(n2[2]);
+								} catch (NumberFormatException e) {
+									DCLogger.debugLog("Tried to parse non Integer target: " + n2[2]);
+								}
 								if (m != null && m >= 0) {
 									meta = m;
 								}
@@ -200,10 +206,12 @@ public class MainUtil {
 					}
 
 					Block block = Block.REGISTRY.getObject(new ResourceLocation(modid, itemName));
-					if (block != null) {
+					if (block != null && block != Blocks.AIR) {
 						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName + ", " + meta);
 						BlockSet set = new BlockSet(block, meta);
 						list.add(set);
+					} else {
+						DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
 					}
 				}
 			}

@@ -26,6 +26,7 @@ import defeatedcrow.hac.machine.block.TileHopperGold;
 import defeatedcrow.hac.machine.block.TileHopperSilver;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileKineticMotor;
+import defeatedcrow.hac.machine.block.TileMonitorComparator;
 import defeatedcrow.hac.machine.block.TileMonitorFluid;
 import defeatedcrow.hac.machine.block.TileMonitorInventory;
 import defeatedcrow.hac.machine.block.TileMonitorRF;
@@ -123,6 +124,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileMonitorRF.class, "dcs_te_monitor_rf");
 		GameRegistry.registerTileEntity(TileMonitorFluid.class, "dcs_te_monitor_fluid");
 		GameRegistry.registerTileEntity(TileMonitorInventory.class, "dcs_te_monitor_item");
+		GameRegistry.registerTileEntity(TileMonitorComparator.class, "dcs_te_monitor_cm");
 	}
 
 	public static void loadEntity() {

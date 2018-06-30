@@ -379,475 +379,6 @@ public class LoadingBuildingRecipe {
 				new ItemStack(MainInit.bricks, 1, 2)
 		});
 
-		Object[] chal = new Object[] {
-				new ItemStack(MainInit.gemBlock, 1, 0),
-				new ItemStack(MainInit.gemBlock, 1, 1),
-				new ItemStack(MainInit.gemBlock, 1, 2)
-		};
-		for (int i = 0; i < 3; i++) {
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, i), new Object[] {
-					"X",
-					"Y",
-					'X',
-					chal[i],
-					'Y',
-					"dustRedstone"
-			});
-
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 4 + i), new Object[] {
-					" X ",
-					"XYX",
-					" X ",
-					'X',
-					new ItemStack(Blocks.GLASS, 1, 0),
-					'Y',
-					new ItemStack(MainInit.chalLamp, 1, i)
-			});
-
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 8 + i), new Object[] {
-					"Z",
-					"Y",
-					'Y',
-					"ingotCopper",
-					'Z',
-					new ItemStack(MainInit.chalLamp, 1, i)
-			});
-
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 12 + i), new Object[] {
-					"Y",
-					"Z",
-					'Y',
-					"ingotCopper",
-					'Z',
-					new ItemStack(MainInit.chalLamp, 1, i)
-			});
-		}
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 3), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'X',
-				"plankWood",
-				'Y',
-				new ItemStack(MainInit.chalLamp, 1, 2)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 7), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'X',
-				new ItemStack(Blocks.GLASS, 1, 0),
-				'Y',
-				new ItemStack(MainInit.chalLamp, 1, 3)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 11), new Object[] {
-				"X",
-				"Y",
-				'X',
-				new ItemStack(MainInit.chalLamp, 1, 3),
-				'Y',
-				"ingotCopper"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 15), new Object[] {
-				"Y",
-				"X",
-				'X',
-				new ItemStack(MainInit.chalLamp, 1, 3),
-				'Y',
-				"ingotCopper"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallLamp, 1, 0), new Object[] {
-				"YX",
-				'X',
-				new ItemStack(MainInit.chalLamp, 1, 0),
-				'Y',
-				"ingotCopper"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallLamp, 1, 1), new Object[] {
-				"YX",
-				'X',
-				new ItemStack(MainInit.chalLamp, 1, 1),
-				'Y',
-				"ingotCopper"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallLamp, 1, 2), new Object[] {
-				"YX",
-				'X',
-				new ItemStack(MainInit.chalLamp, 1, 2),
-				'Y',
-				"ingotCopper"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallLamp, 1, 3), new Object[] {
-				"YX",
-				'X',
-				new ItemStack(MainInit.chalLamp, 1, 3),
-				'Y',
-				"ingotCopper"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chandelierGypsum, 1, 0), new Object[] {
-				" Z ",
-				"XYX",
-				" X ",
-				'X',
-				"gemGypsum",
-				'Y',
-				new ItemStack(MainInit.chalLamp, 1, 2),
-				'Z',
-				"ingotCopper"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableMarble, 1, 0), new Object[] {
-				"XXX",
-				" X ",
-				" X ",
-				'X',
-				new ItemStack(MainInit.gemBlock, 1, 6)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableGypsum, 1, 0), new Object[] {
-				"XXX",
-				" X ",
-				" X ",
-				'X',
-				new ItemStack(MainInit.gemBlock, 1, 3)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableWood, 1, 0), new Object[] {
-				"XXX",
-				" X ",
-				" X ",
-				'X',
-				new ItemStack(Blocks.PLANKS, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableDark, 1, 0), new Object[] {
-				"XXX",
-				" X ",
-				" X ",
-				'X',
-				new ItemStack(Blocks.PLANKS, 1, 5)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.squaretableWood, 1, 0), new Object[] {
-				"XXX",
-				"X X",
-				'X',
-				"plankWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.squaretableMarble, 1, 0), new Object[] {
-				"XXX",
-				"X X",
-				'X',
-				"blockMarble"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.squaretableChecker, 1, 0), new Object[] {
-				"XXX",
-				"X X",
-				'X',
-				"blockGypsum"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.squaretableBlack, 1, 0), new Object[] {
-				"XXX",
-				"X X",
-				'X',
-				new ItemStack(MainInit.gemBlock, 1, 12)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.carpetRed, 1, 0), new Object[] {
-				"X",
-				"Y",
-				'X',
-				new ItemStack(Blocks.CARPET, 1, 14),
-				'Y',
-				"plankWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.carpetWhite, 1, 0), new Object[] {
-				"X",
-				"Y",
-				'X',
-				new ItemStack(Blocks.CARPET, 1, 0),
-				'Y',
-				"plankWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.carpetGray, 1, 0), new Object[] {
-				"X",
-				"Y",
-				'X',
-				new ItemStack(Blocks.CARPET, 1, 15),
-				'Y',
-				"plankWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.sofaBlack, 1, 0), new Object[] {
-				" X ",
-				"YYY",
-				"ZZZ",
-				'X',
-				"dyeBlack",
-				'Y',
-				"itemCloth",
-				'Z',
-				new ItemStack(Blocks.WOOL, 1, 32767)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.sofaRed, 1, 0), new Object[] {
-				" X ",
-				"YYY",
-				"ZZZ",
-				'X',
-				"dyeRed",
-				'Y',
-				"itemCloth",
-				'Z',
-				new ItemStack(Blocks.WOOL, 1, 32767)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stoolBlack, 1, 0), new Object[] {
-				"X",
-				"Y",
-				"Z",
-				'X',
-				"dyeBlack",
-				'Y',
-				"itemCloth",
-				'Z',
-				"blockMarble"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stoolRed, 1, 0), new Object[] {
-				"X",
-				"Y",
-				"Z",
-				'X',
-				"dyeRed",
-				'Y',
-				"itemCloth",
-				'Z',
-				"plankWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chairWood, 1, 0), new Object[] {
-				"  X",
-				"XYX",
-				"X X",
-				'X',
-				"plankWood",
-				'Y',
-				"itemCloth"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chairMarble, 1, 0), new Object[] {
-				"  X",
-				"XYX",
-				"X X",
-				'X',
-				"blockMarble",
-				'Y',
-				"itemCloth"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chairChecker, 1, 0), new Object[] {
-				"  X",
-				"XYX",
-				"X X",
-				'X',
-				"blockGypsum",
-				'Y',
-				"itemCloth"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chairBlack, 1, 0), new Object[] {
-				"  X",
-				"XYX",
-				"X X",
-				'X',
-				new ItemStack(MainInit.gemBlock, 1, 12),
-				'Y',
-				"itemCloth"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestMarble, 1, 0), new Object[] {
-				"XXX",
-				" Y ",
-				"XXX",
-				'X',
-				"blockMarble",
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestWood, 1, 0), new Object[] {
-				"XXX",
-				" Y ",
-				"XXX",
-				'X',
-				"plankWood",
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestChecker, 1, 0), new Object[] {
-				"XXX",
-				" Y ",
-				"XXX",
-				'X',
-				"blockGypsum",
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestBlack, 1, 0), new Object[] {
-				"XXX",
-				" Y ",
-				"XXX",
-				'X',
-				new ItemStack(MainInit.gemBlock, 1, 12),
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallshelfMarble, 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				"X X",
-				'X',
-				"blockMarble",
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallshelfWood, 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				"X X",
-				'X',
-				"plankWood",
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallshelfChecker, 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				"X X",
-				'X',
-				"blockGypsum",
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallshelfBlack, 1, 0), new Object[] {
-				"X X",
-				"XYX",
-				"X X",
-				'X',
-				new ItemStack(MainInit.gemBlock, 1, 12),
-				'Y',
-				new ItemStack(Blocks.CHEST, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 0), new Object[] {
-				"XXX",
-				"Y Y",
-				'X',
-				"plankWood",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 1), new Object[] {
-				"XXX",
-				"Y Y",
-				'X',
-				"ingotAluminum",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 1), new Object[] {
-				"XXX",
-				"Y Y",
-				'X',
-				"ingotIron",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 2), new Object[] {
-				"XXX",
-				"Y Y",
-				'X',
-				"itemLinenCloth",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 3), new Object[] {
-				"XXX",
-				"Y Y",
-				'X',
-				"itemCottonCloth",
-				'Y',
-				"stickWood"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.flowerPot, 1, 0), new Object[] {
-				" X ",
-				"X X",
-				"XXX",
-				'X',
-				"gemChalcedony"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.flowerPot, 1, 1), new Object[] {
-				" X ",
-				"X X",
-				"XXX",
-				'X',
-				new ItemStack(Blocks.HARDENED_CLAY, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.itemDoorMarble, 2, 0), new Object[] {
-				"XX",
-				"XX",
-				"XX",
-				'X',
-				"blockMarble"
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.itemDoorSteel, 2, 0), new Object[] {
-				"XX",
-				"YY",
-				"XX",
-				'X',
-				"ingotSteel",
-				'Y',
-				new ItemStack(Blocks.IRON_BARS, 1, 0)
-		});
-
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.realtimeClock, 1, 0), new Object[] {
-				"X",
-				"Y",
-				'X',
-				"gemSapphire",
-				'Y',
-				new ItemStack(Items.CLOCK, 1, 0)
-		});
-
 		for (int i = 0; i < 16; i++) {
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clayBricks, 4, i), new Object[] {
 					"XX",
@@ -865,19 +396,492 @@ public class LoadingBuildingRecipe {
 					});
 		}
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.curtainWhite, 1, 0), new Object[] {
-				"XX",
-				"YY",
-				"YY",
-				'X',
-				"stickWood",
-				'Y',
-				"itemCloth"
-		});
 	}
 
 	public static void advanced(RecipeResourcesMain res) {
 		if (ModuleConfig.build_advanced) {
+
+			Object[] chal = new Object[] {
+					new ItemStack(MainInit.gemBlock, 1, 0),
+					new ItemStack(MainInit.gemBlock, 1, 1),
+					new ItemStack(MainInit.gemBlock, 1, 2)
+			};
+			for (int i = 0; i < 3; i++) {
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, i), new Object[] {
+						"X",
+						"Y",
+						'X',
+						chal[i],
+						'Y',
+						"dustRedstone"
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 4 + i), new Object[] {
+						" X ",
+						"XYX",
+						" X ",
+						'X',
+						new ItemStack(Blocks.GLASS, 1, 0),
+						'Y',
+						new ItemStack(MainInit.chalLamp, 1, i)
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 8 + i), new Object[] {
+						"Z",
+						"Y",
+						'Y',
+						"ingotCopper",
+						'Z',
+						new ItemStack(MainInit.chalLamp, 1, i)
+				});
+
+				DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 12 + i),
+						new Object[] {
+								"Y",
+								"Z",
+								'Y',
+								"ingotCopper",
+								'Z',
+								new ItemStack(MainInit.chalLamp, 1, i)
+						});
+			}
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 3), new Object[] {
+					" X ",
+					"XYX",
+					" X ",
+					'X',
+					"plankWood",
+					'Y',
+					new ItemStack(MainInit.chalLamp, 1, 2)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 7), new Object[] {
+					" X ",
+					"XYX",
+					" X ",
+					'X',
+					new ItemStack(Blocks.GLASS, 1, 0),
+					'Y',
+					new ItemStack(MainInit.chalLamp, 1, 3)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 11), new Object[] {
+					"X",
+					"Y",
+					'X',
+					new ItemStack(MainInit.chalLamp, 1, 3),
+					'Y',
+					"ingotCopper"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chalLamp, 1, 15), new Object[] {
+					"Y",
+					"X",
+					'X',
+					new ItemStack(MainInit.chalLamp, 1, 3),
+					'Y',
+					"ingotCopper"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallLamp, 1, 0), new Object[] {
+					"YX",
+					'X',
+					new ItemStack(MainInit.chalLamp, 1, 0),
+					'Y',
+					"ingotCopper"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallLamp, 1, 1), new Object[] {
+					"YX",
+					'X',
+					new ItemStack(MainInit.chalLamp, 1, 1),
+					'Y',
+					"ingotCopper"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallLamp, 1, 2), new Object[] {
+					"YX",
+					'X',
+					new ItemStack(MainInit.chalLamp, 1, 2),
+					'Y',
+					"ingotCopper"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallLamp, 1, 3), new Object[] {
+					"YX",
+					'X',
+					new ItemStack(MainInit.chalLamp, 1, 3),
+					'Y',
+					"ingotCopper"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chandelierGypsum, 1, 0), new Object[] {
+					" Z ",
+					"XYX",
+					" X ",
+					'X',
+					"gemGypsum",
+					'Y',
+					new ItemStack(MainInit.chalLamp, 1, 2),
+					'Z',
+					"ingotCopper"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableMarble, 1, 0), new Object[] {
+					"XXX",
+					" X ",
+					" X ",
+					'X',
+					new ItemStack(MainInit.gemBlock, 1, 6)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableGypsum, 1, 0), new Object[] {
+					"XXX",
+					" X ",
+					" X ",
+					'X',
+					new ItemStack(MainInit.gemBlock, 1, 3)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableWood, 1, 0), new Object[] {
+					"XXX",
+					" X ",
+					" X ",
+					'X',
+					new ItemStack(Blocks.PLANKS, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.tableDark, 1, 0), new Object[] {
+					"XXX",
+					" X ",
+					" X ",
+					'X',
+					new ItemStack(Blocks.PLANKS, 1, 5)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.squaretableWood, 1, 0), new Object[] {
+					"XXX",
+					"X X",
+					'X',
+					"plankWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.squaretableMarble, 1, 0),
+					new Object[] {
+							"XXX",
+							"X X",
+							'X',
+							"blockMarble"
+					});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.squaretableChecker, 1, 0),
+					new Object[] {
+							"XXX",
+							"X X",
+							'X',
+							"blockGypsum"
+					});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.squaretableBlack, 1, 0), new Object[] {
+					"XXX",
+					"X X",
+					'X',
+					new ItemStack(MainInit.gemBlock, 1, 12)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.carpetRed, 1, 0), new Object[] {
+					"X",
+					"Y",
+					'X',
+					new ItemStack(Blocks.CARPET, 1, 14),
+					'Y',
+					"plankWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.carpetWhite, 1, 0), new Object[] {
+					"X",
+					"Y",
+					'X',
+					new ItemStack(Blocks.CARPET, 1, 0),
+					'Y',
+					"plankWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.carpetGray, 1, 0), new Object[] {
+					"X",
+					"Y",
+					'X',
+					new ItemStack(Blocks.CARPET, 1, 15),
+					'Y',
+					"plankWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.sofaBlack, 1, 0), new Object[] {
+					" X ",
+					"YYY",
+					"ZZZ",
+					'X',
+					"dyeBlack",
+					'Y',
+					"itemCloth",
+					'Z',
+					new ItemStack(Blocks.WOOL, 1, 32767)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.sofaRed, 1, 0), new Object[] {
+					" X ",
+					"YYY",
+					"ZZZ",
+					'X',
+					"dyeRed",
+					'Y',
+					"itemCloth",
+					'Z',
+					new ItemStack(Blocks.WOOL, 1, 32767)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stoolBlack, 1, 0), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"dyeBlack",
+					'Y',
+					"itemCloth",
+					'Z',
+					"blockMarble"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stoolRed, 1, 0), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"dyeRed",
+					'Y',
+					"itemCloth",
+					'Z',
+					"plankWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chairWood, 1, 0), new Object[] {
+					"  X",
+					"XYX",
+					"X X",
+					'X',
+					"plankWood",
+					'Y',
+					"itemCloth"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chairMarble, 1, 0), new Object[] {
+					"  X",
+					"XYX",
+					"X X",
+					'X',
+					"blockMarble",
+					'Y',
+					"itemCloth"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chairChecker, 1, 0), new Object[] {
+					"  X",
+					"XYX",
+					"X X",
+					'X',
+					"blockGypsum",
+					'Y',
+					"itemCloth"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chairBlack, 1, 0), new Object[] {
+					"  X",
+					"XYX",
+					"X X",
+					'X',
+					new ItemStack(MainInit.gemBlock, 1, 12),
+					'Y',
+					"itemCloth"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestMarble, 1, 0), new Object[] {
+					"XXX",
+					" Y ",
+					"XXX",
+					'X',
+					"blockMarble",
+					'Y',
+					new ItemStack(Blocks.CHEST, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestWood, 1, 0), new Object[] {
+					"XXX",
+					" Y ",
+					"XXX",
+					'X',
+					"plankWood",
+					'Y',
+					new ItemStack(Blocks.CHEST, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestChecker, 1, 0), new Object[] {
+					"XXX",
+					" Y ",
+					"XXX",
+					'X',
+					"blockGypsum",
+					'Y',
+					new ItemStack(Blocks.CHEST, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestBlack, 1, 0), new Object[] {
+					"XXX",
+					" Y ",
+					"XXX",
+					'X',
+					new ItemStack(MainInit.gemBlock, 1, 12),
+					'Y',
+					new ItemStack(Blocks.CHEST, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallshelfMarble, 1, 0), new Object[] {
+					"X X",
+					"XYX",
+					"X X",
+					'X',
+					"blockMarble",
+					'Y',
+					new ItemStack(Blocks.CHEST, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallshelfWood, 1, 0), new Object[] {
+					"X X",
+					"XYX",
+					"X X",
+					'X',
+					"plankWood",
+					'Y',
+					new ItemStack(Blocks.CHEST, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallshelfChecker, 1, 0), new Object[] {
+					"X X",
+					"XYX",
+					"X X",
+					'X',
+					"blockGypsum",
+					'Y',
+					new ItemStack(Blocks.CHEST, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.wallshelfBlack, 1, 0), new Object[] {
+					"X X",
+					"XYX",
+					"X X",
+					'X',
+					new ItemStack(MainInit.gemBlock, 1, 12),
+					'Y',
+					new ItemStack(Blocks.CHEST, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 0), new Object[] {
+					"XXX",
+					"Y Y",
+					'X',
+					"plankWood",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 1), new Object[] {
+					"XXX",
+					"Y Y",
+					'X',
+					"ingotAluminum",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 1), new Object[] {
+					"XXX",
+					"Y Y",
+					'X',
+					"ingotIron",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 2), new Object[] {
+					"XXX",
+					"Y Y",
+					'X',
+					"itemLinenCloth",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.awning, 1, 3), new Object[] {
+					"XXX",
+					"Y Y",
+					'X',
+					"itemCottonCloth",
+					'Y',
+					"stickWood"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.flowerPot, 1, 0), new Object[] {
+					" X ",
+					"X X",
+					"XXX",
+					'X',
+					"gemChalcedony"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.flowerPot, 1, 1), new Object[] {
+					" X ",
+					"X X",
+					"XXX",
+					'X',
+					new ItemStack(Blocks.HARDENED_CLAY, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.itemDoorMarble, 2, 0), new Object[] {
+					"XX",
+					"XX",
+					"XX",
+					'X',
+					"blockMarble"
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.itemDoorSteel, 2, 0), new Object[] {
+					"XX",
+					"YY",
+					"XX",
+					'X',
+					"ingotSteel",
+					'Y',
+					new ItemStack(Blocks.IRON_BARS, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.realtimeClock, 1, 0), new Object[] {
+					"X",
+					"Y",
+					'X',
+					"gemSapphire",
+					'Y',
+					new ItemStack(Items.CLOCK, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.curtainWhite, 1, 0), new Object[] {
+					"XX",
+					"YY",
+					"YY",
+					'X',
+					"stickWood",
+					'Y',
+					"itemCloth"
+			});
 
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chestMetal, 1, 0), new Object[] {
 					"XXX",

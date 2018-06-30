@@ -395,6 +395,18 @@ public class MachineAdvancedRecipe {
 				new ItemStack(Blocks.REDSTONE_TORCH, 1, 0)
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorCM, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				new ItemStack(Blocks.REDSTONE_LAMP, 1, 0),
+				'Y',
+				"gemBismuth",
+				'Z',
+				new ItemStack(Blocks.LEVER, 1, 0)
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorFluid, 1, 0), new Object[] {
 				"X",
 				"Y",

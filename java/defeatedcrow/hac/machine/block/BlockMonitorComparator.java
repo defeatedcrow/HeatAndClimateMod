@@ -10,15 +10,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockMonitorRedStone extends BlockMonitorPanel {
+public class BlockMonitorComparator extends BlockMonitorPanel {
 
-	public BlockMonitorRedStone(String s) {
+	public BlockMonitorComparator(String s) {
 		super(s);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileMonitorRedStone();
+		return new TileMonitorComparator();
 	}
 
 	/* === RS === */
