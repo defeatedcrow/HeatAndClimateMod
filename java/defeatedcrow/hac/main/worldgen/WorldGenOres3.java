@@ -9,7 +9,6 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.orevein.OreSet;
-import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -133,7 +132,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = WorldGenConfig.radGen[0];
+		int r = vein.round;
 		int h = r - 1;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -176,7 +175,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 								if (add.hasSecondOre() && j < add.getSecondChance()) {
 									world.setBlockState(p, add.getSecondOre().getState(), 4);
 								} else {
-									if (add.getOre().equals(CHAL_B) && j > 90) {
+									if ((add.getOre().equals(CHAL_B) || add.getSecondOre().equals(CHAL_B)) && j > 90) {
 										world.setBlockState(p, SAPPHIRE.getState(), 4);
 									} else {
 										world.setBlockState(p, add.getOre().getState(), 4);
@@ -200,7 +199,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = WorldGenConfig.radGen[1];
+		int r = vein.round;
 		int h = r - 1;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -265,7 +264,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = WorldGenConfig.radGen[1];
+		int r = vein.round;
 		int h = r / 2;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -389,7 +388,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = WorldGenConfig.radGen[2];
+		int r = vein.round;
 		int h = r - 1;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -457,7 +456,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = WorldGenConfig.radGen[3];
+		int r = vein.round;
 		int h = r;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
@@ -526,7 +525,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int r = WorldGenConfig.radGen[4];
+		int r = vein.round;
 		int h = r - 1;
 		int[] rands = vein.rands;
 
@@ -591,7 +590,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			return;
 		}
 		BlockPos pos = vein.pos;
-		int h = WorldGenConfig.radGen[5];
+		int h = vein.round;
 		// 球状に生成
 		for (int x = pos.getX() - h; x <= pos.getX() + h; x++) {
 			for (int z = pos.getZ() - h; z <= pos.getZ() + h; z++) {

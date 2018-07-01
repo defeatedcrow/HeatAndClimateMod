@@ -42,12 +42,12 @@ public class BlockMonitorComparator extends BlockMonitorPanel {
 
 	@Override
 	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		return state.getValue(DCState.POWERED) ? 15 : 0;
+		return state.getValue(DCState.POWERED) ? calcRedstone(world.getTileEntity(pos)) : 0;
 	}
 
 	@Override
 	public int getStrongPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		return state.getValue(DCState.POWERED) ? 15 : 0;
+		return state.getValue(DCState.POWERED) ? calcRedstone(world.getTileEntity(pos)) : 0;
 	}
 
 	@Override

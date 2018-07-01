@@ -87,16 +87,26 @@ public class TileMonitorBase extends DCTileEntity implements ITagGetter {
 		return 10;
 	}
 
+	boolean next = false;
+
 	@Override
 	public void updateTile() {
 		super.updateTile();
 		if (!world.isRemote && isActive()) {
+			last = amount;
+
 			if (!updateAmount()) {
 				amount = 0F;
 				amountMax = 0F;
 			}
 
-			DCMainPacket.INSTANCE.sendToAll(new MessageMonitor(pos, amount, amountMax));
+			DCMainPacket.INSTANCE.sendToAll(new MessageMonitor(pos, amount, amountMax, last));
+
+			if (next) {
+				world.notifyNeighborsOfStateChange(pos, getBlockType(), true);
+			} else if (last != amount) {
+				next = true;
+			}
 
 			boolean on = amount > 0;
 			IBlockState state = world.getBlockState(getPos());
