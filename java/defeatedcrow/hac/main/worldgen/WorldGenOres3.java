@@ -175,7 +175,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 								if (add.hasSecondOre() && j < add.getSecondChance()) {
 									world.setBlockState(p, add.getSecondOre().getState(), 4);
 								} else {
-									if (add.getOre().equals(CHAL_B) && j > 90) {
+									if ((add.getOre().equals(CHAL_B) || add.getSecondOre().equals(CHAL_B)) && j > 90) {
 										world.setBlockState(p, SAPPHIRE.getState(), 4);
 									} else {
 										world.setBlockState(p, add.getOre().getState(), 4);

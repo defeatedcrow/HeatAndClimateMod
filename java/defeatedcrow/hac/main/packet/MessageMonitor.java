@@ -12,15 +12,17 @@ public class MessageMonitor implements IMessage {
 	public int z;
 	public float amo;
 	public float max;
+	public float last;
 
 	public MessageMonitor() {}
 
-	public MessageMonitor(BlockPos pos, float f1, float f2) {
+	public MessageMonitor(BlockPos pos, float f1, float f2, float f3) {
 		this.x = pos.getX();
 		this.y = pos.getY();
 		this.z = pos.getZ();
 		amo = f1;
 		max = f2;
+		last = f3;
 	}
 
 	// read
@@ -31,6 +33,7 @@ public class MessageMonitor implements IMessage {
 		this.z = buf.readInt();
 		amo = buf.readFloat();
 		max = buf.readFloat();
+		last = buf.readFloat();
 	}
 
 	// write
@@ -41,5 +44,6 @@ public class MessageMonitor implements IMessage {
 		buf.writeInt(z);
 		buf.writeFloat(amo);
 		buf.writeFloat(max);
+		buf.writeFloat(last);
 	}
 }

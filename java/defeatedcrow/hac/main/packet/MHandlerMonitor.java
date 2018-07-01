@@ -21,6 +21,7 @@ public class MHandlerMonitor implements IMessageHandler<MessageMonitor, IMessage
 			int z = message.z;
 			float amo = message.amo;
 			float max = message.max;
+			float last = message.last;
 			BlockPos pos = new BlockPos(x, y, z);
 			TileEntity tile = player.world.getTileEntity(pos);
 			if (tile instanceof TileMonitorBase) {
