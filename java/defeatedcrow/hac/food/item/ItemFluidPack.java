@@ -144,7 +144,7 @@ public class ItemFluidPack extends DCItem {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Amount: " + 250);
 			Fluid milk = FluidRegistry.getFluid("milk");
 			if (i == 2 || f == FoodInit.tomatoJuice) {
-				tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
+				tooltip.add(TextFormatting.AQUA.toString() + "Clear all potion effects.");
 			} else if (f == FoodInit.mazai) {
 				tooltip.add(TextFormatting.RED.toString() + "Powerful but dangerous!");
 			} else {

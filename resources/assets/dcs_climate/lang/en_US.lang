@@ -1058,7 +1058,29 @@ tile.dcs_fluidblock_ethanol_0.name=Ethanol
 fluid.dcs.mazai=Absinthe
 tile.dcs_fluidblock_mazai_0.name=Absinthe
 
-## massage
+## message
+dcs.tip.heat=HeatTier
+dcs.tip.hum=Humidity
+dcs.tip.air=Airflow
+dcs.tip.climate=Climate
+dcs.tip.item=Item
+dcs.tip.fluid=Fluid
+dcs.tip.torque=Torque
+dcs.tip.amount=Amount
+dcs.tip.output=Output
+dcs.tip.input=Input
+dcs.tip.recipe=Recipe
+dcs.tip.range=Range
+dcs.tip.stage=Stage
+dcs.tip.fuel=Fuel
+dcs.tip.rs=RS-Signal
+dcs.tip.transport=Transport
+
+dcs.tip.spring=SPRING
+dcs.tip.summer=SUMMER
+dcs.tip.autumn=AUTUMN
+dcs.tip.winter=WINTER
+
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
 dcs_climate.tip.durability=Max Durability
 dcs_climate.tip.harvestlevel=Harvest Level
@@ -1139,6 +1161,13 @@ dcs.tip.repair_putty.description=On Anvil: Recover the durability of tool
 dcs.tip.abrasive.description=On Anvil: Add the Efficiency or Sharpness Enchantment to a tool
 dcs.tip.soap.description=On Anvil: Decolorize leather armors
 dcs.tip.acv_shield=Place and click: Force unlock of the achievement of the owner player.
+
+dcs.tip.block.non_powered=Non-powered device
+dcs.tip.block.require_recipe_climate=Climate required by recipe.
+dcs.tip.block.qutput_item=Recipe product item
+dcs.tip.block.qutput_fluid=Recipe product fluid
+dcs.tip.block.turn_off=Turn off this device.
+
 
 dcs.comment.pendant.0=Reduce ice & water damage
 dcs.comment.pendant.1=Reduce heat damage
