@@ -109,6 +109,7 @@ import defeatedcrow.hac.main.villager.HaCTradeData;
 import defeatedcrow.hac.main.villager.VillagerCreationHaCAgri;
 import defeatedcrow.hac.main.worldgen.CaravanGenEvent;
 import defeatedcrow.hac.main.worldgen.MazaiLakeGen;
+import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenOres3;
@@ -173,18 +174,13 @@ public class CommonMainProxy implements IGuiHandler {
 		VillagerCreationHaCAgri villageHandler = new VillagerCreationHaCAgri();
 		VillagerRegistry.instance().registerVillageCreationHandler(villageHandler);
 
-		MainInit.agri = new VillagerProfession("dcs_climate:agri_researcher",
-				"dcs_climate:textures/models/agri_researcher.png",
-				"dcs_climate:textures/models/zombie_agri_researcher.png");
+		MainInit.agri = new VillagerProfession("dcs_climate:agri_researcher", "dcs_climate:textures/models/agri_researcher.png", "dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.agri);
 
-		MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
-				"dcs_climate:textures/models/agri_researcher.png",
-				"dcs_climate:textures/models/zombie_agri_researcher.png");
+		MainInit.engineer = new VillagerProfession("dcs_climate:engineer", "dcs_climate:textures/models/agri_researcher.png", "dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
 
-		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png",
-				"dcs_climate:textures/models/zombie_trader.png");
+		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png", "dcs_climate:textures/models/zombie_trader.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.trader);
 
 		// HaCCrops
@@ -357,13 +353,19 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadWorldGen() {
 		// gen
-		VeinTableRegister.INSTANCE.registerVeins();
 		WorldGenWindmill.initLoot();
 		GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
 		GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
 		GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
 		if (WorldGenConfig.mazaiLake && FoodInit.mazaiBlock != null)
 			GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);
+	}
+
+	public void loadWorldGenPost() {
+		VeinTableRegister.INSTANCE.registerVeins();
+		VeinTableJsonHelper.pre();
+		VeinTableJsonHelper.post();
+
 	}
 
 	public void addSidedBlock(Block block, String name, int max) {}

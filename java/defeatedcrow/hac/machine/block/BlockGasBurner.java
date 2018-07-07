@@ -17,9 +17,11 @@ import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -207,13 +209,13 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("Fuel: gaseous fuel (ex. fuel gas)");
+			tooltip.add(EnumFixedName.FUEL_GAS.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("HeatTier: " + TextFormatting.RED.toString() + "UHT");
-			tooltip.add("Area: only upper side coordinate");
+			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.RED.toString() + "UHT");
+			tooltip.add(EnumFixedName.RANGE.getLocalizedName() + ": " + I18n.format("dcs.tip.upper_only"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add("This tile absorbs fluid from the adjacent fluid tank.");
-			tooltip.add("RS signal: Turn off this device.");
+			tooltip.add(EnumFixedName.DRAIN_SIDED_TANK.getLocalizedName());
+			tooltip.add(EnumFixedName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

@@ -8,6 +8,7 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -55,7 +56,7 @@ public class BlockCreativeBox extends BlockTorqueBase {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add("CREATIVE MODE ONLY!");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("128.0F torque/s");
+			tooltip.add(EnumFixedName.TORQUE.getLocalizedName() + ": 128.0F torque/s");
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

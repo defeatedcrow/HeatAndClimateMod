@@ -182,9 +182,9 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 		int meta = charm.getMetadata();
 		if (player.isSneaking() && !player.world.isRemote && state != null) {
 			if (meta == 8) {
-				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() - 2,
-						(double) pos.getZ() - 5, (double) pos.getX() + 5, (double) pos.getY() + 3,
-						(double) pos.getZ() + 5);
+				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() -
+						2, (double) pos.getZ() - 5, (double) pos.getX() + 5, (double) pos.getY() +
+								3, (double) pos.getZ() + 5);
 				List<EntityItem> drops = player.world.getEntitiesWithinAABB(EntityItem.class, aabb);
 				for (EntityItem drop : drops) {
 					drop.setPosition(player.posX, player.posY + 0.5D, player.posZ);

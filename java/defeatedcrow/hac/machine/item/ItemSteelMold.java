@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.IPressMold;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -66,10 +67,10 @@ public class ItemSteelMold extends DCItem implements IPressMold {
 				}
 			}
 		} else {
-			tooltip.add("Please register an item on the anvil.");
+			tooltip.add(I18n.format("dcs.tip.mold1"));
 		}
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-		tooltip.add("Use on the press machine.");
+		tooltip.add(I18n.format("dcs.tip.mold2"));
 	}
 
 	@Override

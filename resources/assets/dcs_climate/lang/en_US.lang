@@ -1058,7 +1058,7 @@ tile.dcs_fluidblock_ethanol_0.name=Ethanol
 fluid.dcs.mazai=Absinthe
 tile.dcs_fluidblock_mazai_0.name=Absinthe
 
-## message
+## tip
 dcs.tip.heat=HeatTier
 dcs.tip.hum=Humidity
 dcs.tip.air=Airflow
@@ -1074,12 +1074,80 @@ dcs.tip.range=Range
 dcs.tip.stage=Stage
 dcs.tip.fuel=Fuel
 dcs.tip.rs=RS-Signal
+dcs.tip.comparator=RS-Comparator
 dcs.tip.transport=Transport
+dcs.tip.non_powered=Non-powered device
+dcs.tip.require_recipe_climate=Climate required by recipe.
+dcs.tip.water_consumption=Water Consumption
+dcs.tip.output_item=Recipe product item
+dcs.tip.output_fluid=Recipe product fluid
+dcs.tip.turn_off=Turn off this device.
+dcs.tip.drain_sided_tank=This device drains water from the adjacent fluid tank.
+dcs.tip.placeable_entity=Placeable as an Entity
+dcs.tip.fuel_s=solid fuel (ex. coal)
+dcs.tip.fuel_f=fluid fuel (ex. seed oil)
+dcs.tip.fuel_g=gaseous fuel (ex. fuel gas)
+dcs.tip.right_click=Right-click
+dcs.tip.pairing=Require registering target coordinate. \n(Held this item and right-click the coordinate of target machine.)
+dcs.tip.on_anvil=Use on the anvil.
 
-dcs.tip.spring=SPRING
-dcs.tip.summer=SUMMER
-dcs.tip.autumn=AUTUMN
-dcs.tip.winter=WINTER
+dcs.tip.clear_potion=Clear all potion effects.
+dcs.tip.danger_drink=Powerful but dangerous!
+dcs.tip.correct_from_cow=Collect from cow with Fluid Hopper.
+dcs.tip.upper_only=only upper side coordinate
+dcs.tip.forward_only=only forward side coordinate
+dcs.tip.catapult=Torque input extends the flight distance.
+dcs.tip.catapult2=This device will blow off the stepped creatures.
+dcs.tip.conveyor=Climate smelting the item on top.
+dcs.tip.conveyor2=Vanilla smelting the item on top.
+dcs.tip.dynamo=Input Torque x Convarsion Rate RF/s
+dcs.tip.dynamo2=Both RF and FU can be output.
+dcs.tip.gearbox=This tile convergess the torque energy from several directions.
+dcs.tip.exchanger=This device refers the directly below tile temperature, and expand it.
+dcs.tip.hopper_f=One item remains in the each slot. It works like an item filter.
+dcs.tip.hopper_flu1=Fill and drain the inserted fluid item.
+dcs.tip.hopper_flu2=Transport liquid from top to bottom.
+dcs.tip.hopper_flu3=When it's at the feet of a cow, it milk the cow.
+dcs.tip.hopper_s=This device compress some items to block. (ex. 9 ingots -> 1 metal block)
+dcs.tip.portal1= HeatTier or liquid nitrogen
+dcs.tip.portal2=Adapter card with registered coordinates.
+dcs.tip.portal3=This device transport item or fluid between two registered coordinates.
+dcs.tip.press1=Recipe Registered mold (by processing an empty mold and product item with the anvil.)
+dcs.tip.press2=Automatic crafted item
+dcs.tip.press3=Some product items are available only from special molds.
+dcs.tip.reactor=Some recipes require a catalyst. (It will not be consumed.)
+dcs.tip.crusher=Hammer plate item required by recipe. (It will not be consumed.)
+dcs.tip.watermill=Contact with water flow. (Rotate clockwise)
+dcs.tip.pump1=Pump up the under fluid source.
+dcs.tip.pump2=Automatic transfer to upper fluid tank
+dcs.tip.pump3=It looks for a source of water flow.
+dcs.tip.windmill=Maximum output when facing west.
+dcs.tip.adapter=Require pairing between sender and acceptor.
+dcs.tip.monitor=Display data of target device.
+dcs.tip.adaptercard=Please register target tile by right-click with sneaking.
+dcs.tip.mold1=Please register an item on the anvil.
+dcs.tip.mold2=Use on the press machine.
+dcs.tip.catalyst1=Product from by the press machine.
+dcs.tip.catalyst2=An appropriate mold is required for processing.
+dcs.tip.scooter1=Sneaking + Right-click: GUI opens.
+dcs.tip.scooter2=Two-seater available
+dcs.tip.scooter3=Fuel: nitrogen fluid
+dcs.tip.synthetic1=Fuel: nitrogen fluid
+dcs.tip.synthetic2=Fuel: nitrogen fluid
+dcs.tip.biomeglass=This device change the surrounding biome.
+dcs.tip.biomeglass2=This device change the surrounding biome.
+dcs.tip.chamber=The temperature varies with airflow.
+dcs.tip.chamber2=Give winds by bellows or fans.
+dcs.tip.shitirin.description=It's the japanese charcoal stove.
+dcs.tip.sink=This device erases the flowing fluid.
+dcs.tip.teapot=Right-click to this block with flavor items.
+dcs.tip.teapot.milk=ex. milk pack, cream pack
+dcs.tip.teapot.sugar=ex. sugar
+dcs.tip.exp_gem.description=Use by right click
+dcs.tip.repair_putty.description=On Anvil: Recover the durability of tool
+dcs.tip.abrasive.description=On Anvil: Add the Efficiency or Sharpness Enchantment to a tool
+dcs.tip.soap.description=On Anvil: Decolorize leather armors
+dcs.tip.acv_shield=Place and click: Force unlock of the achievement of the owner player.
 
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
 dcs_climate.tip.durability=Max Durability
@@ -1148,26 +1216,8 @@ dcs.tip.amulet.2=Combat
 dcs.tip.amulet.3=Immortality
 dcs.tip.amulet.4=Substitute
 
-dcs.tip.shitirin.description=It's the japanese charcoal stove.
-dcs.tip.teapot=Right-click to this block with flavor items.
-dcs.tip.teapot.milk=ex. milk pack, cream pack
-dcs.tip.teapot.sugar=ex. sugar
-
 dcs.tip.shift=Lshift Key: expand tooltip
 dcs.tip.require_achievement=Require the achievement for using!
-
-dcs.tip.exp_gem.description=Use by right click
-dcs.tip.repair_putty.description=On Anvil: Recover the durability of tool
-dcs.tip.abrasive.description=On Anvil: Add the Efficiency or Sharpness Enchantment to a tool
-dcs.tip.soap.description=On Anvil: Decolorize leather armors
-dcs.tip.acv_shield=Place and click: Force unlock of the achievement of the owner player.
-
-dcs.tip.block.non_powered=Non-powered device
-dcs.tip.block.require_recipe_climate=Climate required by recipe.
-dcs.tip.block.qutput_item=Recipe product item
-dcs.tip.block.qutput_fluid=Recipe product fluid
-dcs.tip.block.turn_off=Turn off this device.
-
 
 dcs.comment.pendant.0=Reduce ice & water damage
 dcs.comment.pendant.1=Reduce heat damage
@@ -1215,6 +1265,7 @@ dcs.comment.amulet.2=Reduce taken damage from mobs
 dcs.comment.amulet.3=Prevent from death
 dcs.comment.amulet.4=The attack is deemed by the tamer
 
+## message
 dcs_climate.smelting=Climate Smelting
 dcs_climate.recipe=Climate Crafting
 dcs.gui.device.chamber=Combustion Chamber GUI
@@ -1251,7 +1302,7 @@ dcs.gui.message.require.absolute=This device needs the ABSOLUTE temp or the liqu
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.
 
-#potion
+## potion
 dcs.potion.gravity=Gravity
 potion.effect.dcs.gravity=Potion of Gravity
 splash_potion.effect.dcs.gravity=Splash Potion of Gravity
@@ -1272,16 +1323,16 @@ potion.effect.dcs.heavyboots=Iron Boots
 splash_potion.effect.dcs.heavyboots=Splash Potion of Iron Boots
 lingering_potion.effect.dcs.heavyboots=Lingering Potion of Iron Boots
 
-#enchantment
+## enchantment
 enchantment.dcs.venom=Venom Arrow
 enchantment.dcs.robber=Highway Robber
 
-#villager
+## villager
 entity.Villager.dcs_trader=Merchant
 entity.Villager.dcs_agri_researcher=Agricultural Researcher
 entity.Villager.dcs_engineer=Mechanical Engineer
 
-#entities
+## entities
 entity.dcs.food.r_bread.name=Round Bread
 entity.dcs.food.s_bread.name=Plain Bread
 entity.dcs.food.fish_stick.name=Fish Skewers
@@ -1357,7 +1408,7 @@ entity.dcs.main.balloon_crow.name=Defeatedcrow Balloon
 entity.dcs.main.big_cushion.name=Gray Big Cushion for the lazy mobs
 entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs
 
-#advancements
+## advancements
 advancements.dcs_climate.core.title=Heat and Climate
 advancements.dcs_climate.climate_damage.description=Let's play with Heat and Climate!
 advancements.dcs_climate.climate_damage.title=Dangerous temperature

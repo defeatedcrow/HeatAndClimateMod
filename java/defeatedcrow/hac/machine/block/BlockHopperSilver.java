@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.util.EnumFixedName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -29,11 +31,12 @@ public class BlockHopperSilver extends BlockHopperFilter {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("Non-powered device");
+			tooltip.add(EnumFixedName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("Item transport: 8 item/8t");
+			tooltip.add(EnumFixedName.ITEM.getLocalizedName() + EnumFixedName.TRANSPORT.getLocalizedName() +
+					": 8 item/8t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add("This device compress some items to block. (ex. 9 ingots -> 1 metal block)");
+			tooltip.add(I18n.format("dcs.tip.hopper_s"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

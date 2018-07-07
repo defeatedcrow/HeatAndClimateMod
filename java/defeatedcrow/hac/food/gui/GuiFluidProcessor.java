@@ -14,9 +14,9 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -24,8 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiFluidProcessor extends GuiContainer {
-	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
-			"textures/gui/fluidprocessor_gui.png");
+	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate", "textures/gui/fluidprocessor_gui.png");
 
 	private final InventoryPlayer playerInventory;
 	private final TileFluidProcessorBase processor;
@@ -38,13 +37,13 @@ public class GuiFluidProcessor extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String s = I18n.translateToLocal(this.processor.getName());
+		String s = I18n.format(this.processor.getName());
 		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 2, 4210752);
 
 		if (this.isPointInRegion(-20, 4, 20, 20, mouseX, mouseY)) {
 			List<String> list = new ArrayList<String>();
 			if (processor != null) {
-				list.add(I18n.translateToLocal(processor.climateSuitableMassage()));
+				list.add(I18n.format(processor.climateSuitableMassage()));
 			}
 			if (!list.isEmpty()) {
 				this.drawHoveringText(list, mouseX - this.guiLeft, mouseY - this.guiTop);

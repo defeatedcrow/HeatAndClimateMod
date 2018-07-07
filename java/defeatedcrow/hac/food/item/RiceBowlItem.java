@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntityRiceMushroom;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -41,7 +42,8 @@ public class RiceBowlItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"boiled", "mushroom"
+				"boiled",
+				"mushroom"
 		};
 		return s;
 	}
@@ -70,7 +72,7 @@ public class RiceBowlItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add("Placeable as an Entity");
+		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

@@ -8,9 +8,11 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -51,10 +53,10 @@ public class BlockWindmill extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("Airflow: " + TextFormatting.AQUA.toString() + "FLOW+");
-			tooltip.add("Westward setting is a good choice.");
+			tooltip.add(EnumFixedName.AIR + ": " + TextFormatting.AQUA.toString() + "FLOW+");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add("1 ~ 8.0F torque/s");
+			tooltip.add(I18n.format("dcs.tip.windmill"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

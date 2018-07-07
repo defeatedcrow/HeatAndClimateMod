@@ -9,8 +9,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.BiomeDictionary;
 
 /**
- * キャラバンサライの生成座標<br>
- * 生成に成功した場合、チャンクのNBTに情報をセーブする
+ * キャラバンサライの生成座標
  */
 public class CaravanGenPos {
 
@@ -18,8 +17,8 @@ public class CaravanGenPos {
 
 	public static boolean isDupe(int cx, int cz, World world) {
 		int count = 0;
-		for (int x = -3; x < 4; x++) {
-			for (int z = -3; z < 4; z++) {
+		for (int x = -8; x < 9; x++) {
+			for (int z = -8; z < 9; z++) {
 				if (canGeneratePos(cx + x, cz + z, world)) {
 					count++;
 				}

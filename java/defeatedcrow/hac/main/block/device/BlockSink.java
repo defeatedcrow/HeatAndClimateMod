@@ -10,8 +10,10 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -122,9 +124,9 @@ public class BlockSink extends DCTileBlock {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("Non-powered device");
+			tooltip.add(EnumFixedName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add("This device erases the flowing fluid.");
+			tooltip.add(I18n.format("dcs.tip.sink"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

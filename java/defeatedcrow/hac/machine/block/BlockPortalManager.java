@@ -11,9 +11,11 @@ import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -96,8 +98,8 @@ public class BlockPortalManager extends BlockTorqueBase {
 		}
 
 		if (!world.isRemote) {
-			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-					drop);
+			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
+					0.5D, drop);
 			float f3 = 0.05F;
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -124,15 +126,17 @@ public class BlockPortalManager extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("HeatTier " + TextFormatting.BLUE.toString() + "ABSOLUTE" + TextFormatting.GRAY.toString() +
-					" or liquid nitrogen");
-			tooltip.add("Torque: 32.0F /s");
-			tooltip.add("Adapter card with registered coordinates.");
+			tooltip.add(TextFormatting.BLUE.toString() + "ABSOLUTE" + TextFormatting.GRAY.toString() + I18n.format(
+					"dcs.tip.portal1"));
+			tooltip.add(EnumFixedName.TORQUE.getLocalizedName() + ": 32.0F /s");
+			tooltip.add(I18n.format("dcs.tip.portal2"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("Item transport: 1 item/5t");
-			tooltip.add("Fluid transport: 200 mB/5t");
+			tooltip.add(EnumFixedName.ITEM.getLocalizedName() + EnumFixedName.TRANSPORT.getLocalizedName() +
+					": 1 item/5t");
+			tooltip.add(EnumFixedName.FLUID.getLocalizedName() + EnumFixedName.TRANSPORT.getLocalizedName() +
+					": 200 mB/5t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add("This device transport item or fluid between two registered coordinates.");
+			tooltip.add(I18n.format("dcs.tip.portal3"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

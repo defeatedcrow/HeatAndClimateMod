@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +17,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -26,7 +26,9 @@ public class ItemRepairPutty extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"putty", "abrasive", "soap"
+			"putty",
+			"abrasive",
+			"soap"
 	};
 
 	public ItemRepairPutty() {
@@ -59,11 +61,11 @@ public class ItemRepairPutty extends DCItem {
 		if (stack != null) {
 			int m = stack.getItemDamage();
 			if (m == 0) {
-				tooltip.add(I18n.translateToLocal("dcs.tip.repair_putty.description"));
+				tooltip.add(I18n.format("dcs.tip.repair_putty.description"));
 			} else if (m == 1) {
-				tooltip.add(I18n.translateToLocal("dcs.tip.abrasive.description"));
+				tooltip.add(I18n.format("dcs.tip.abrasive.description"));
 			} else if (m == 2) {
-				tooltip.add(I18n.translateToLocal("dcs.tip.soap.description"));
+				tooltip.add(I18n.format("dcs.tip.soap.description"));
 			}
 		}
 	}

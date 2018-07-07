@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import defeatedcrow.hac.plugin.EnergyConvertRate;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -78,11 +79,11 @@ public class BlockKineticMotor extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("RF: " + EnergyConvertRate.rateVsRF / 20.0F + " /t");
+			tooltip.add(EnergyConvertRate.rateVsRF / 20.0F + " RF/t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("Input RF / Convarsion Rate RF/s");
+			tooltip.add("Input RF/" + EnergyConvertRate.rateVsRF + " RF/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add("RS signal: Turn off this device.");
+			tooltip.add(EnumFixedName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

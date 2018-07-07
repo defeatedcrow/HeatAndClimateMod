@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.entity.CakeCoffeeEntity;
 import defeatedcrow.hac.food.entity.CakeCreamEntity;
 import defeatedcrow.hac.food.entity.CakeKuzuEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -131,7 +132,7 @@ public class CakeItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add("Placeable as an Entity");
+		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

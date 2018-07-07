@@ -10,9 +10,11 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -143,14 +145,15 @@ public class BlockConveyor extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("Non-powered device");
+			tooltip.add(EnumFixedName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("Item transport: 1 item/16t");
+			tooltip.add(EnumFixedName.ITEM.getLocalizedName() + EnumFixedName.TRANSPORT.getLocalizedName() +
+					": 1 item/16t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add("Climate smelting the item on top.");
+			tooltip.add(I18n.format("dcs.tip.conveyor"));
 			tooltip.add(TextFormatting.RED.toString() + "SMELTING+" + TextFormatting.GRAY.toString() + " and " +
-					TextFormatting.DARK_BLUE.toString() + "TIGHT" + TextFormatting.GRAY.toString() +
-					": Vanilla smelting the item on top.");
+					TextFormatting.DARK_BLUE.toString() + "TIGHT" + TextFormatting.GRAY.toString() + ": " + I18n.format(
+							"dcs.tip.conveyor2"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

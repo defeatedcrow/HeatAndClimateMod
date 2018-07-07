@@ -11,6 +11,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -55,11 +56,11 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 			if (!DCUtil.isEmpty(output)) {
 				tooltip.add(TextFormatting.BOLD.toString() + "Output: " + output.getDisplayName());
 			} else {
-				tooltip.add("Please register an item on the anvil.");
+				tooltip.add(I18n.format("dcs.tip.mold1"));
 			}
 		}
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-		tooltip.add("Use on the press machine.");
+		tooltip.add(I18n.format("dcs.tip.mold2"));
 	}
 
 	@Override

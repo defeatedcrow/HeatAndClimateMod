@@ -18,9 +18,11 @@ import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
 import defeatedcrow.hac.food.entity.EntityTumbler;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.DrinkPotionType;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,7 +38,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -241,23 +242,23 @@ public class ItemSilverCup extends FoodItemBase {
 			if (f != null && f.getFluid() != null) {
 				Fluid milk = FluidRegistry.getFluid("milk");
 				if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
-					tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
+					tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));
 				} else if (f.getFluid() == FoodInit.mazai) {
-					tooltip.add(TextFormatting.RED.toString() + "Powerful but dangerous!");
+					tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));
 				} else {
 					List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
 					if (!effects.isEmpty()) {
 						PotionEffect eff = effects.get(0);
 						if (eff != null && eff.getPotion() != null) {
-							String effName = I18n.translateToLocal(eff.getEffectName());
-							effName += " " + I18n.translateToLocal("potion.potency." + eff.getAmplifier()).trim();
+							String effName = I18n.format(eff.getEffectName());
+							effName += " " + I18n.format("potion.potency." + eff.getAmplifier()).trim();
 							effName += " (" + Potion.getPotionDurationString(eff, 1.0F) + ")";
 							tooltip.add(TextFormatting.AQUA.toString() + effName);
 						}
 					}
 				}
 				if (ClimateCore.proxy.isShiftKeyDown()) {
-					tooltip.add("Placeable as an Entity");
+					tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
 					tooltip.add(TextFormatting.BOLD.toString() + "= CONTAINED FLUID =");
 					tooltip.add("Fluid: " + f.getLocalizedName());
 					tooltip.add("Amount: " + f.amount);
@@ -282,7 +283,7 @@ public class ItemSilverCup extends FoodItemBase {
 						}
 					}
 					tooltip.add(TextFormatting.BOLD.toString() + mes);
-					tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
+					tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
 				}
 			} else {
 				tooltip.add(TextFormatting.BOLD.toString() + "EMPTY");

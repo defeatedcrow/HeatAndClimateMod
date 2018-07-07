@@ -8,16 +8,15 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiSilkwormBox extends GuiContainer {
-	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
-			"textures/gui/silkworm_box_gui.png");
+	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate", "textures/gui/silkworm_box_gui.png");
 	private static final ResourceLocation iconTex = new ResourceLocation("dcs_climate", "textures/gui/gui_icons.png");
 	private final InventoryPlayer playerInventory;
 	private final TileSilkwormBox processor;
@@ -31,7 +30,7 @@ public class GuiSilkwormBox extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String s = I18n.translateToLocal(this.processor.getName());
+		String s = I18n.format(this.processor.getName());
 		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 3, 4210752);
 	}
 
@@ -49,19 +48,19 @@ public class GuiSilkwormBox extends GuiContainer {
 
 			if (this.isPointInRegion(-20, 4, 20, 20, x, y)) {
 				if (clm.getHeat().getTier() < DCHeatTier.NORMAL.getTier()) {
-					list.add(I18n.translateToLocal("dcs.gui.message.pottery.toocold"));
+					list.add(I18n.format("dcs.gui.message.pottery.toocold"));
 				} else if (clm.getHeat().getTier() > DCHeatTier.HOT.getTier()) {
-					list.add(I18n.translateToLocal("dcs.gui.message.pottery.toohot"));
+					list.add(I18n.format("dcs.gui.message.pottery.toohot"));
 				} else {
-					list.add(I18n.translateToLocal("dcs.gui.message.suitableclimate"));
+					list.add(I18n.format("dcs.gui.message.suitableclimate"));
 				}
 			}
 
 			if (this.isPointInRegion(-20, 25, 20, 20, x, y)) {
 				if (clm.getAirflow() == DCAirflow.TIGHT) {
-					list.add(I18n.translateToLocal("dcs.gui.message.require.airflow"));
+					list.add(I18n.format("dcs.gui.message.require.airflow"));
 				} else {
-					list.add(I18n.translateToLocal("dcs.gui.message.suitable"));
+					list.add(I18n.format("dcs.gui.message.suitable"));
 				}
 			}
 		}

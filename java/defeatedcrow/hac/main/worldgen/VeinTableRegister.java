@@ -8,7 +8,10 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.orevein.EnumVein;
 import defeatedcrow.hac.main.api.orevein.IVeinTable;
 import defeatedcrow.hac.main.api.orevein.IVeinTableRegister;
+import defeatedcrow.hac.main.api.orevein.VeinTable;
+import defeatedcrow.hac.main.api.orevein.VeinTableRegisterEvent;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.common.MinecraftForge;
 
 public class VeinTableRegister implements IVeinTableRegister {
 
@@ -27,14 +30,14 @@ public class VeinTableRegister implements IVeinTableRegister {
 				new OreSetDC(20, new BlockSet(Blocks.STONE, 3), new BlockSet(MainInit.ores, 2), 40));
 		list.add(sed);
 
-		VeinTable sand = new VeinTable(EnumVein.SAND_SEDIMENT, new OreSetDC(100, new BlockSet(MainInit.ores_2, 0), SAND), new OreSetDC(100, new BlockSet(MainInit.ores_2, 0), SAND));
-		sand.addOreToTable1(new OreSetDC(40, new BlockSet(MainInit.ores_2, 1), SAND),
+		VeinTable sand = new VeinTable(EnumVein.SAND_SEDIMENT, new OreSetDC(100, new BlockSet(MainInit.ores_2, 0), SAND), new OreSetDC(100, new BlockSet(MainInit.ores_2, 2), SAND));
+		sand.addOreToTable1(new OreSetDC(30, new BlockSet(MainInit.ores_2, 1), SAND),
+				new OreSetDC(30, new BlockSet(MainInit.ores_2, 10), SAND),
 				new OreSetDC(30, new BlockSet(MainInit.ores_2, 2), SAND),
 				new OreSetDC(30, new BlockSet(MainInit.ores_2, 0), SAND));
-		sand.addOreToTable2(new OreSetDC(40, new BlockSet(MainInit.ores_2, 1)),
-				new OreSetDC(30, new BlockSet(MainInit.ores_2, 10), SAND),
+		sand.addOreToTable2(new OreSetDC(30, new BlockSet(MainInit.ores_2, 1)),
 				new OreSetDC(30, new BlockSet(MainInit.ores_2, 0), SAND),
-				new OreSetDC(30, new BlockSet(MainInit.ores_2, 2), SAND));
+				new OreSetDC(40, new BlockSet(MainInit.ores_2, 2), SAND));
 		list.add(sand);
 
 		VeinTable bx = new VeinTable(EnumVein.BAUXITE, new OreSetDC(100, new BlockSet(MainInit.ores_2, 10), STONE3), new OreSetDC(100, new BlockSet(MainInit.ores_2, 10), STONE3));
@@ -115,6 +118,10 @@ public class VeinTableRegister implements IVeinTableRegister {
 		sku.addOreToTable2(new OreSetDC(50, new BlockSet(MainInit.ores, 5)),
 				new OreSetDC(40, new BlockSet(Blocks.GOLD_ORE, 0)), new OreSetDC(10, new BlockSet(Blocks.STONE, 5)));
 		list.add(sku);
+
+		// event
+		VeinTableRegisterEvent event = new VeinTableRegisterEvent(INSTANCE);
+		MinecraftForge.EVENT_BUS.post(event);
 	}
 
 	public VeinTable getTable(EnumVein vein) {

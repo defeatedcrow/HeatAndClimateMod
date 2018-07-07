@@ -9,8 +9,10 @@ import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +29,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
@@ -140,20 +141,21 @@ public class ItemFluidPack extends DCItem {
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
 		if (f != null) {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid: " + f.getLocalizedName(new FluidStack(f, 200)));
-			tooltip.add(TextFormatting.YELLOW.toString() + "Amount: " + 250);
+			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.FLUID.getLocalizedName() + ": " +
+					f.getLocalizedName(new FluidStack(f, 200)));
+			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.AMOUNT.getLocalizedName() + ": " + 250);
 			Fluid milk = FluidRegistry.getFluid("milk");
 			if (i == 2 || f == FoodInit.tomatoJuice) {
-				tooltip.add(TextFormatting.AQUA.toString() + "Clear all potion effects.");
+				tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));
 			} else if (f == FoodInit.mazai) {
-				tooltip.add(TextFormatting.RED.toString() + "Powerful but dangerous!");
+				tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));
 			} else {
 				List<PotionEffect> effects = ItemSilverCup.getPotionEffect(f, 1F, 0);
 				if (!effects.isEmpty()) {
 					PotionEffect eff = effects.get(0);
 					if (eff != null && eff.getPotion() != null) {
-						String effName = I18n.translateToLocal(eff.getEffectName());
-						effName += " " + I18n.translateToLocal("potion.potency." + eff.getAmplifier()).trim();
+						String effName = I18n.format(eff.getEffectName());
+						effName += " " + I18n.format("potion.potency." + eff.getAmplifier()).trim();
 						effName += " (" + Potion.getPotionDurationString(eff, 1.0F) + ")";
 						tooltip.add(TextFormatting.AQUA.toString() + effName);
 					}
@@ -165,11 +167,11 @@ public class ItemFluidPack extends DCItem {
 
 		if (FluidRegistry.getFluid("milk") != null) {
 			if (i == 2) {
-				tooltip.add("Collect from cow with Fluid Hopper.");
+				tooltip.add(I18n.format("dcs.tip.correct_from_cow"));
 			}
 		} else {
 			if (i == 3) {
-				tooltip.add("Collect from cow with Fluid Hopper.");
+				tooltip.add(I18n.format("dcs.tip.correct_from_cow"));
 			}
 		}
 	}

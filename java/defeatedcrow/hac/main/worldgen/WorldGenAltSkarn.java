@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.orevein.EnumVein;
 import defeatedcrow.hac.main.api.orevein.OreSet;
+import defeatedcrow.hac.main.api.orevein.VeinTable;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

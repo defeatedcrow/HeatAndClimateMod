@@ -14,9 +14,11 @@ import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -137,10 +139,10 @@ public class BlockRollerCrusher extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("Torque: 512.0F /cycle");
-			tooltip.add("Hammer plate item required by recipe. (It will not be consumed.)");
+			tooltip.add(EnumFixedName.TORQUE.getLocalizedName() + ": 512.0F /cycle");
+			tooltip.add(I18n.format("dcs.tip.crusher"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("Recipe product item");
+			tooltip.add(EnumFixedName.OUTPUT_ITEM.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

@@ -17,12 +17,23 @@ public enum EnumFixedName {
 	RACIPE("dcs.tip.racipe"),
 	STAGE("dcs.tip.stage"),
 	FUEL("dcs.tip.fuel"),
+	FUEL_SOLID("dcs.tip.fuel_s"),
+	FUEL_FLUID("dcs.tip.fuel_f"),
+	FUEL_GAS("dcs.tip.fuel_g"),
 	RS("dcs.tip.rs"),
+	COMPARATOR("dcs.tip.comparator"),
 	TRANSPORT("dcs.tip.transport"),
-	SPRING("dcs.tip.spring"),
-	SUMMER("dcs.tip.summer"),
-	AUTUMN("dcs.tip.autumn"),
-	WINTER("dcs.tip.winter");
+	NON_POWERED("dcs.tip.non_powered"),
+	WATER_CONSUMPTION("dcs.tip.water_consumption"),
+	REQUIRE_CLIMATE("dcs.tip.require_recipe_climate"),
+	OUTPUT_ITEM("dcs.tip.output_item"),
+	OUTPUT_FLUID("dcs.tip.output_fluid"),
+	PLACEABLE_ENTITY("dcs.tip.placeable_entity"),
+	TURN_OFF("dcs.tip.turn_off"),
+	DRAIN_SIDED_TANK("dcs.tip.drain_sided_tank"),
+	RIGHT_CLICK("dcs.tip.right_click"),
+	PAIRING("dcs.tip.pairing"),
+	ON_ANVIL("dcs.tip.on_anvil");
 
 	private final String name;
 

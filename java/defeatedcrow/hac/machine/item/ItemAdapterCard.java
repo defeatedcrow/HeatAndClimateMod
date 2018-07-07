@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,7 +30,10 @@ public class ItemAdapterCard extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"item_input", "item_output", "fluid_input", "fluid_output"
+			"item_input",
+			"item_output",
+			"fluid_input",
+			"fluid_output"
 	};
 
 	public ItemAdapterCard() {
@@ -93,8 +97,8 @@ public class ItemAdapterCard extends DCItem {
 			IBlockState state = world.getBlockState(pos);
 			TileEntity tile = world.getTileEntity(pos);
 			if (!DCUtil.isEmpty(held) && tile != null) {
-				if (getCardType(held.getItemDamage()) == CardType.ITEM
-						&& tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing)) {
+				if (getCardType(held.getItemDamage()) == CardType.ITEM && tile.hasCapability(
+						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing)) {
 					String mes1 = "Stored inventory coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
 					player.sendMessage(new TextComponentString(mes1));
 
@@ -112,8 +116,8 @@ public class ItemAdapterCard extends DCItem {
 					held.setTagCompound(tag);
 
 					return EnumActionResult.SUCCESS;
-				} else if (getCardType(held.getItemDamage()) == CardType.FLUID
-						&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing)) {
+				} else if (getCardType(held.getItemDamage()) == CardType.FLUID && tile.hasCapability(
+						CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing)) {
 					String mes1 = "Stored fluidtank coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
 					player.sendMessage(new TextComponentString(mes1));
 
@@ -185,7 +189,7 @@ public class ItemAdapterCard extends DCItem {
 				tooltip.add("Side: " + face);
 			}
 		} else {
-			tooltip.add(TextFormatting.AQUA.toString() + "Please register target tile by right-click with sneaking.");
+			tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.adaptercard"));
 		}
 	}
 
