@@ -357,19 +357,22 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadWorldGen() {
 		// gen
-		WorldGenWindmill.initLoot();
-		GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
-		GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
-		GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
-		if (WorldGenConfig.mazaiLake && FoodInit.mazaiBlock != null)
-			GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);
+		if (ModuleConfig.world) {
+			WorldGenWindmill.initLoot();
+			GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
+			GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
+			GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
+			if (WorldGenConfig.mazaiLake && FoodInit.mazaiBlock != null)
+				GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);
+		}
 	}
 
 	public void loadWorldGenPost() {
-		VeinTableRegister.INSTANCE.registerVeins();
-		VeinTableJsonHelper.pre();
-		VeinTableJsonHelper.post();
-
+		if (ModuleConfig.world) {
+			VeinTableRegister.INSTANCE.registerVeins();
+			VeinTableJsonHelper.pre();
+			VeinTableJsonHelper.post();
+		}
 	}
 
 	public void addSidedBlock(Block block, String name, int max) {}
@@ -396,7 +399,9 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
 		MinecraftForge.EVENT_BUS.register(new CombatEvent());
 		MinecraftForge.EVENT_BUS.register(new DCLootEvent());
-		MinecraftForge.EVENT_BUS.register(new CaravanGenEvent());
+		if (ModuleConfig.world) {
+			MinecraftForge.EVENT_BUS.register(new CaravanGenEvent());
+		}
 
 		DCMainPacket.init();
 	}
