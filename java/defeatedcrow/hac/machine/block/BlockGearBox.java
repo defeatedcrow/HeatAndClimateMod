@@ -78,7 +78,7 @@ public class BlockGearBox extends BlockTorqueBase {
 			tooltip.add("Max Torque: 128.0F");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.gearbox"));
-			tooltip.add(EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(EnumFixedName.RS.getLocalizedName() + ": " + EnumFixedName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

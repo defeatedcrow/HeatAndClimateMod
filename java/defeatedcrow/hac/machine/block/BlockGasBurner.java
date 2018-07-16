@@ -215,7 +215,7 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 			tooltip.add(EnumFixedName.RANGE.getLocalizedName() + ": " + I18n.format("dcs.tip.upper_only"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(EnumFixedName.DRAIN_SIDED_TANK.getLocalizedName());
-			tooltip.add(EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(EnumFixedName.RS.getLocalizedName() + ": " + EnumFixedName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.material.Material;
@@ -72,11 +73,10 @@ public class ItemMinecartMotor extends DCItem {
 			double d2 = source.getZ() + enumfacing.getFrontOffsetZ() * 1.125D;
 			BlockPos blockpos = source.getBlockPos().offset(enumfacing);
 			IBlockState iblockstate = world.getBlockState(blockpos);
-			BlockRailBase.EnumRailDirection blockrailbase$enumraildirection = iblockstate
-					.getBlock() instanceof BlockRailBase
-							? (BlockRailBase.EnumRailDirection) iblockstate
-									.getValue(((BlockRailBase) iblockstate.getBlock()).getShapeProperty())
-							: BlockRailBase.EnumRailDirection.NORTH_SOUTH;
+			BlockRailBase.EnumRailDirection blockrailbase$enumraildirection = iblockstate.getBlock() instanceof BlockRailBase ?
+					(BlockRailBase.EnumRailDirection) iblockstate.getValue(
+							((BlockRailBase) iblockstate.getBlock()).getShapeProperty()) :
+					BlockRailBase.EnumRailDirection.NORTH_SOUTH;
 			double d3;
 
 			if (BlockRailBase.isRailBlock(iblockstate)) {
@@ -86,16 +86,15 @@ public class ItemMinecartMotor extends DCItem {
 					d3 = 0.1D;
 				}
 			} else {
-				if (iblockstate.getMaterial() != Material.AIR
-						|| !BlockRailBase.isRailBlock(world.getBlockState(blockpos.down())))
+				if (iblockstate.getMaterial() != Material.AIR || !BlockRailBase.isRailBlock(world.getBlockState(
+						blockpos.down())))
 					return this.behaviourDefaultDispenseItem.dispense(source, stack);
 
 				IBlockState iblockstate1 = world.getBlockState(blockpos.down());
-				BlockRailBase.EnumRailDirection blockrailbase$enumraildirection1 = iblockstate1
-						.getBlock() instanceof BlockRailBase
-								? (BlockRailBase.EnumRailDirection) iblockstate1
-										.getValue(((BlockRailBase) iblockstate1.getBlock()).getShapeProperty())
-								: BlockRailBase.EnumRailDirection.NORTH_SOUTH;
+				BlockRailBase.EnumRailDirection blockrailbase$enumraildirection1 = iblockstate1.getBlock() instanceof BlockRailBase ?
+						(BlockRailBase.EnumRailDirection) iblockstate1.getValue(
+								((BlockRailBase) iblockstate1.getBlock()).getShapeProperty()) :
+						BlockRailBase.EnumRailDirection.NORTH_SOUTH;
 
 				if (enumfacing != EnumFacing.DOWN && blockrailbase$enumraildirection1.isAscending()) {
 					d3 = -0.4D;
@@ -136,19 +135,18 @@ public class ItemMinecartMotor extends DCItem {
 			return EnumActionResult.FAIL;
 		else {
 			if (!worldIn.isRemote) {
-				BlockRailBase.EnumRailDirection blockrailbase$enumraildirection = iblockstate
-						.getBlock() instanceof BlockRailBase
-								? (BlockRailBase.EnumRailDirection) iblockstate
-										.getValue(((BlockRailBase) iblockstate.getBlock()).getShapeProperty())
-								: BlockRailBase.EnumRailDirection.NORTH_SOUTH;
+				BlockRailBase.EnumRailDirection blockrailbase$enumraildirection = iblockstate.getBlock() instanceof BlockRailBase ?
+						(BlockRailBase.EnumRailDirection) iblockstate.getValue(
+								((BlockRailBase) iblockstate.getBlock()).getShapeProperty()) :
+						BlockRailBase.EnumRailDirection.NORTH_SOUTH;
 				double d0 = 0.0D;
 
 				if (blockrailbase$enumraildirection.isAscending()) {
 					d0 = 0.5D;
 				}
 
-				EntityMinecart entityminecart = new EntityMinecartMotor(worldIn, pos.getX() + 0.5D,
-						pos.getY() + 0.0625D + d0, pos.getZ() + 0.5D);
+				EntityMinecart entityminecart = new EntityMinecartMotor(worldIn, pos.getX() + 0.5D, pos.getY() +
+						0.0625D + d0, pos.getZ() + 0.5D);
 				ItemStack stack = playerIn.getHeldItem(hand);
 
 				if (stack.hasDisplayName()) {
@@ -166,7 +164,7 @@ public class ItemMinecartMotor extends DCItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add("Placeable as an Entity");
+		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

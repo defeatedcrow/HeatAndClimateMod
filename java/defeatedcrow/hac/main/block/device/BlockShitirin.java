@@ -75,7 +75,7 @@ public class BlockShitirin extends BlockNormalChamber {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.RED.toString() + "OVEN");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(EnumFixedName.RS.getLocalizedName() + ": " + EnumFixedName.TURN_OFF.getLocalizedName());
 			tooltip.add(I18n.format("dcs.tip.shitirin.description"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");

@@ -69,10 +69,10 @@ public class ItemMagneticHover extends DCEntityItem {
 		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			I18n.format("dcs.tip.scooter3");
+			tooltip.add(I18n.format("dcs.tip.scooter3"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			I18n.format("dcs.tip.scooter1");
-			I18n.format("dcs.tip.scooter2");
+			tooltip.add(I18n.format("dcs.tip.scooter1"));
+			tooltip.add(I18n.format("dcs.tip.scooter2"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

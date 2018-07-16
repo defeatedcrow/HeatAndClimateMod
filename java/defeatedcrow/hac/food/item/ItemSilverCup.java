@@ -27,6 +27,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -60,6 +61,16 @@ public class ItemSilverCup extends FoodItemBase {
 	@Override
 	public int getMaxMeta() {
 		return 2;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 32;
+	}
+
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.DRINK;
 	}
 
 	@Override

@@ -19,7 +19,7 @@ public class TESRThermometer extends DCTESRBase {
 		int type = 0;
 		int face = 0;
 		float f = 0.0F;
-		float[] points = new float[12];
+		float[] points = new float[14];
 
 		if (te.hasWorld() && te instanceof TileThermometer) {
 			int meta = te.getBlockMetadata();
@@ -40,7 +40,7 @@ public class TESRThermometer extends DCTESRBase {
 				f = 90F;
 			}
 
-			for (int id = 1; id < 11; id++) {
+			for (int id = 1; id < 13; id++) {
 				int i = id - 1;
 				points[i] = meter.lastFloats[id] + (meter.floats[id] - meter.lastFloats[id]) * partialTicks;
 			}

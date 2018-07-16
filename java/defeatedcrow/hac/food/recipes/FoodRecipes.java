@@ -43,13 +43,16 @@ public class FoodRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
 				0.25F, new ItemStack(FoodInit.seeds, 2, 5));
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.foodDust, 1, 4),
+				0.25F, new ItemStack(FoodInit.seeds, 2, 9));
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
-				0.25F, new ItemStack(FoodInit.crops, 1, 7));
+				0.25F, "cropOlive");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 8, 0), new ItemStack(MainInit.miscDust, 1, 4),
 				0.25F, new ItemStack(MainInit.cropBasket, 1, 7));
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 5),
 				0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
 
 	}
@@ -68,6 +71,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLotus);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropHerb);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropSeaweed);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropSoy);
 	}
 
 	public static void loadOres() {
@@ -80,15 +84,20 @@ public class FoodRecipes {
 		OreDictionary.registerOre("cropLemon", new ItemStack(FoodInit.crops, 1, 6));
 		OreDictionary.registerOre("cropOlive", new ItemStack(FoodInit.crops, 1, 7));
 		OreDictionary.registerOre("cropMulberry", new ItemStack(FoodInit.crops, 1, 11));
+		OreDictionary.registerOre("cropGreenSoybeans", new ItemStack(FoodInit.crops, 1, 12));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 1));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 2));
+		OreDictionary.registerOre("listAllgreenveggie", new ItemStack(FoodInit.crops, 1, 2));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 3));
+		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 12));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("listAllrootveggie", new ItemStack(FoodInit.seeds, 1, 6));
+		OreDictionary.registerOre("listAllfluit", new ItemStack(FoodInit.crops, 1, 6));
 		OreDictionary.registerOre("listAllfluit", new ItemStack(FoodInit.crops, 1, 11));
 		OreDictionary.registerOre("listAllberry", new ItemStack(FoodInit.crops, 1, 11));
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
+		OreDictionary.registerOre("listAllspice", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("cropLotusSeed", new ItemStack(FoodInit.crops, 1, 10));
 		OreDictionary.registerOre("cropLotusRoot", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("seedRice", new ItemStack(FoodInit.seeds, 1, 0));
@@ -100,6 +109,9 @@ public class FoodRecipes {
 		OreDictionary.registerOre("seedLotus", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("seedHerb", new ItemStack(FoodInit.seeds, 1, 7));
 		OreDictionary.registerOre("cropSeaweed", new ItemStack(FoodInit.seeds, 1, 8));
+		OreDictionary.registerOre("cropSoybean", new ItemStack(FoodInit.seeds, 1, 9));
+		OreDictionary.registerOre("cropSoy", new ItemStack(FoodInit.seeds, 1, 9));
+		OreDictionary.registerOre("seedSoybean", new ItemStack(FoodInit.seeds, 1, 9));
 		OreDictionary.registerOre("saplingLemon", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("saplingOlive", new ItemStack(FoodInit.saplings, 1, 1));
@@ -111,21 +123,29 @@ public class FoodRecipes {
 
 		OreDictionary.registerOre("bucketWater", new ItemStack(FoodInit.paperPack, 1, 1));
 		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 2));
+		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 13));
 
 		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.paperPack, 1, 3));
+		OreDictionary.registerOre("listAllheavycream", new ItemStack(FoodInit.paperPack, 1, 3));
 		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.dropCream, 1, 0));
 		OreDictionary.registerOre("foodOil", new ItemStack(FoodInit.paperPack, 1, 4));
 		OreDictionary.registerOre("foodOil", new ItemStack(FoodInit.dropOil, 1, 0));
 		OreDictionary.registerOre("foodButter", new ItemStack(FoodInit.dairy, 1, 0));
 		OreDictionary.registerOre("foodCheese", new ItemStack(FoodInit.dairy, 1, 1));
 		OreDictionary.registerOre("foodCustard", new ItemStack(FoodInit.dairy, 1, 2));
+		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.dairy, 1, 3));
+		OreDictionary.registerOre("foodButter", new ItemStack(FoodInit.dairy, 1, 4));
+		OreDictionary.registerOre("listAllheavycream", new ItemStack(FoodInit.dairy, 1, 3));
 		OreDictionary.registerOre("foodViscera", new ItemStack(FoodInit.meat, 1, 0));
 		OreDictionary.registerOre("foodRennet", new ItemStack(FoodInit.meat, 1, 1));
 		OreDictionary.registerOre("foodSquid", new ItemStack(FoodInit.meat, 1, 2));
 		OreDictionary.registerOre("fishSquid", new ItemStack(FoodInit.meat, 1, 2));
 		OreDictionary.registerOre("foodAgar", new ItemStack(FoodInit.meat, 1, 3));
 		OreDictionary.registerOre("foodGelatine", new ItemStack(FoodInit.meat, 1, 4));
+		OreDictionary.registerOre("foodAnyMeat", new ItemStack(FoodInit.meat, 1, 5));
+		OreDictionary.registerOre("listAllmeatraw", new ItemStack(FoodInit.meat, 1, 5));
 		OreDictionary.registerOre("foodPastry", new ItemStack(FoodInit.pastry, 1, 0));
+		OreDictionary.registerOre("foodDough", new ItemStack(FoodInit.bread, 1, 0));
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 2));
@@ -151,5 +171,6 @@ public class FoodRecipes {
 		DCPluginFluid.registerPotion(FoodInit.lemon, MobEffects.JUMP_BOOST);
 		DCPluginFluid.registerPotion(FoodInit.blackLiquor, MobEffects.POISON);
 		DCPluginFluid.registerPotion(FluidRegistry.LAVA, MobEffects.FIRE_RESISTANCE);
+		DCPluginFluid.registerPotion(FoodInit.soyMilk, MobEffects.INSTANT_HEALTH);
 	}
 }

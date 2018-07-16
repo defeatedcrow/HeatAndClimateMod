@@ -8,7 +8,12 @@ public class ItemFoodDust extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"bran", "plant", "molasses", "malt"
+			"bran",
+			"plant",
+			"molasses",
+			"malt",
+			"defatted_soy",
+			"soy_pulp"
 	};
 
 	public ItemFoodDust(int max) {
@@ -26,6 +31,8 @@ public class ItemFoodDust extends DCItem {
 	 * 1: 繊維くず
 	 * 2: 廃糖蜜
 	 * 3: 麦芽
+	 * 4: 脱脂大豆
+	 * 5: おから
 	 */
 	@Override
 	public String[] getNameSuffix() {

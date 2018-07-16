@@ -71,26 +71,26 @@ public class MainUtil {
 	public static ItemStack getCrop(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 11)
-			meta = 11;
+		if (meta > 12)
+			meta = 12;
 		return new ItemStack(FoodInit.crops, 1, meta);
 	}
 
 	public static ItemStack getRandomCrop(int i) {
-		int meta = DCUtil.rand.nextInt(12);
+		int meta = DCUtil.rand.nextInt(13);
 		return new ItemStack(FoodInit.crops, i, meta);
 	}
 
 	public static ItemStack getSeed(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 8)
-			meta = 8;
+		if (meta > 9)
+			meta = 9;
 		return new ItemStack(FoodInit.seeds, 1, meta);
 	}
 
 	public static ItemStack getRandomSeed(int i) {
-		int meta = DCUtil.rand.nextInt(9);
+		int meta = DCUtil.rand.nextInt(10);
 		return new ItemStack(FoodInit.seeds, i, meta);
 	}
 
@@ -116,7 +116,7 @@ public class MainUtil {
 	}
 
 	public static ItemStack getRandomBag(int i) {
-		int meta = DCUtil.rand.nextInt(3);
+		int meta = DCUtil.rand.nextInt(7);
 		return new ItemStack(MainInit.dustBags, i, meta);
 	}
 
@@ -126,7 +126,7 @@ public class MainUtil {
 	}
 
 	public static ItemStack getRandomSapling(int i) {
-		int meta = DCUtil.rand.nextInt(3);
+		int meta = DCUtil.rand.nextInt(4);
 		return new ItemStack(FoodInit.saplings, i, meta);
 	}
 

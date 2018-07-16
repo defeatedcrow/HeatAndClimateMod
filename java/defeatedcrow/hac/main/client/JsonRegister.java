@@ -15,8 +15,7 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class JsonRegister {
 
-	protected static final JsonRegisterHelper MAIN_INSTANCE = new JsonRegisterHelper(
-			"E:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources");
+	protected static final JsonRegisterHelper MAIN_INSTANCE = new JsonRegisterHelper("E:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources");
 
 	public static void load() {
 		regItems();
@@ -30,7 +29,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreDust, ClimateCore.PACKAGE_ID, "dcs_ore_dust", "ores", 13);
 		MAIN_INSTANCE.regSimpleItem(MainInit.gems, ClimateCore.PACKAGE_ID, "dcs_ore_gem", "ores", 21);
 		MAIN_INSTANCE.regSimpleItem(MainInit.miscDust, ClimateCore.PACKAGE_ID, "dcs_misc_dust", "ores", 12);
-		MAIN_INSTANCE.regSimpleItem(MainInit.foodDust, ClimateCore.PACKAGE_ID, "dcs_food_dust", "food", 3);
+		MAIN_INSTANCE.regSimpleItem(MainInit.foodDust, ClimateCore.PACKAGE_ID, "dcs_food_dust", "food", 5);
 		MAIN_INSTANCE.regSimpleItem(MainInit.stoneYagen, ClimateCore.PACKAGE_ID, "dcs_stone_yagen", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.brassYagen, ClimateCore.PACKAGE_ID, "dcs_brass_yagen", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.materials, ClimateCore.PACKAGE_ID, "dcs_material", "tool", 9);
@@ -39,7 +38,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.silkworm, ClimateCore.PACKAGE_ID, "dcs_silkworm", "tool", 3);
 		MAIN_INSTANCE.regSimpleItem(MainInit.crowDrill, ClimateCore.PACKAGE_ID, "dcs_crow_drill", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.wrench, ClimateCore.PACKAGE_ID, "dcs_wrench", "tool", 0);
-		MAIN_INSTANCE.regSimpleItem(MainInit.bakedApple, ClimateCore.PACKAGE_ID, "dcs_baked_apple", "food", 5);
+		MAIN_INSTANCE.regSimpleItem(MainInit.bakedApple, ClimateCore.PACKAGE_ID, "dcs_baked_apple", "food", 6);
 		MAIN_INSTANCE.regSimpleItem(MainInit.repairPutty, ClimateCore.PACKAGE_ID, "dcs_repair_putty", "tool", 2);
 		MAIN_INSTANCE.regSimpleItem(MainInit.foodMaterials, ClimateCore.PACKAGE_ID, "dcs_food_materials", "food", 3);
 		MAIN_INSTANCE.regSimpleItem(MainInit.flowerPot, ClimateCore.PACKAGE_ID, "dcs_flowerpot_white", "build", 1);
@@ -132,6 +131,15 @@ public class JsonRegister {
 				DCState.FACING).build());
 		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock), ClimateCore.PACKAGE_ID,
 				"dcs_device_realtimeclock", "device", 0);
+
+		ModelLoader.setCustomStateMapper(MainInit.realtimeClock_L, (new StateMap.Builder()).ignore(
+				DCState.FACING).build());
+		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock_L), ClimateCore.PACKAGE_ID,
+				"dcs_device_realtimeclock_l", "device", 0);
+
+		ModelLoader.setCustomStateMapper(MainInit.mcClock_L, (new StateMap.Builder()).ignore(DCState.FACING).build());
+		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.mcClock_L), ClimateCore.PACKAGE_ID,
+				"dcs_device_mcclock_l", "device", 0);
 	}
 
 	static void regTools() {

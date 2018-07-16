@@ -184,7 +184,8 @@ public class BlockFauset extends BlockContainerDC {
 			tooltip.add(EnumFixedName.FLUID.getLocalizedName() + " " + EnumFixedName.TRANSPORT.getLocalizedName() +
 					": 200 mB/t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(EnumFixedName.RIGHT_CLICK.getLocalizedName() + ": " +
+					EnumFixedName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

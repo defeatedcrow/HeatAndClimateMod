@@ -55,6 +55,7 @@ public class FoodInit {
 	public static Block cropLotus;
 	public static Block cropHerb;
 	public static Block cropSeaweed;
+	public static Block cropSoy;
 
 	public static Block leavesOlive;
 	public static Block leavesLemon;
@@ -74,6 +75,7 @@ public class FoodInit {
 	public static Fluid stock;
 	public static Fluid lemon;
 	public static Fluid mazai;
+	public static Fluid soyMilk;
 
 	public static Block oilBlock;
 	public static Block greenTeaBlock;
@@ -86,5 +88,6 @@ public class FoodInit {
 	public static Block stockBlock;
 	public static Block lemonBlock;
 	public static Block mazaiBlock;
+	public static Block soyMilkBlock;
 
 }

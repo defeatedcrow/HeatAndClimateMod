@@ -52,7 +52,8 @@ public class ItemFluidPack extends DCItem {
 			"tea",
 			"coffee",
 			"stock",
-			"ethanol"
+			"ethanol",
+			"soy_milk"
 	};
 
 	public static final String[] FLUIDS = {
@@ -68,8 +69,8 @@ public class ItemFluidPack extends DCItem {
 			"dcs.black_tea",
 			"dcs.black_coffee",
 			"dcs.stock",
-			"dcs.ethanol"
-
+			"dcs.ethanol",
+			"dcs.soy_milk"
 	};
 
 	public ItemFluidPack() {
@@ -90,7 +91,7 @@ public class ItemFluidPack extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 12;
+		return 13;
 	}
 
 	@Override
@@ -135,8 +136,8 @@ public class ItemFluidPack extends DCItem {
 
 		String s = "";
 		int i = stack.getItemDamage();
-		if (i > 12) {
-			i = 12;
+		if (i > 13) {
+			i = 13;
 		}
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
@@ -145,7 +146,7 @@ public class ItemFluidPack extends DCItem {
 					f.getLocalizedName(new FluidStack(f, 200)));
 			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.AMOUNT.getLocalizedName() + ": " + 250);
 			Fluid milk = FluidRegistry.getFluid("milk");
-			if (i == 2 || f == FoodInit.tomatoJuice) {
+			if (i == 2 || i == 13 || f == FoodInit.tomatoJuice) {
 				tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));
 			} else if (f == FoodInit.mazai) {
 				tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));
@@ -177,8 +178,8 @@ public class ItemFluidPack extends DCItem {
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 12) {
-			meta = 12;
+		if (meta > 13) {
+			meta = 13;
 		}
 		return FLUIDS[meta];
 	}
@@ -214,6 +215,8 @@ public class ItemFluidPack extends DCItem {
 			meta = 11;
 		} else if (fluid == MachineInit.ethanol) {
 			meta = 12;
+		} else if (fluid == FoodInit.soyMilk) {
+			meta = 13;
 		}
 		return meta;
 	}
@@ -271,7 +274,7 @@ public class ItemFluidPack extends DCItem {
 				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
 			}
 
-			if (meta == 2 || fluid == FoodInit.tomatoJuice) {
+			if (meta == 2 || meta == 13 || fluid == FoodInit.tomatoJuice) {
 				living.clearActivePotions();
 				return false;
 			} else if (fluid == FoodInit.mazai) {

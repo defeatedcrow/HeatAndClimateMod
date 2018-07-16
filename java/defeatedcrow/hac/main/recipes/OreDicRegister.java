@@ -236,9 +236,10 @@ public class OreDicRegister {
 		OreDictionary.registerOre("foodRice", new ItemStack(MainInit.foodMaterials, 1, 2));
 		OreDictionary.registerOre("dustStarch", new ItemStack(MainInit.foodMaterials, 1, 3));
 
+		OreDictionary.registerOre("foodSausage", new ItemStack(MainInit.bakedApple, 1, 3));
+
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));
-		// ConvertTargetList.addExclusing(new ItemStack(MainInit.materials, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.clothes, 1, 1));
 
 		/* バニラ補足 */

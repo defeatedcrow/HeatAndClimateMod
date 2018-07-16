@@ -480,6 +480,7 @@ public class MachineInitRegister {
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);
 			MachineInit.scooter.setCreativeTab(ClimateMain.machine);
+			MachineInit.magneticHover.setCreativeTab(ClimateMain.machine);
 		}
 	}
 

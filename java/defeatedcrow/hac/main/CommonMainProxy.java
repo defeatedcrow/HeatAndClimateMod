@@ -48,9 +48,11 @@ import defeatedcrow.hac.magic.MagicCommonProxy;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
+import defeatedcrow.hac.main.block.build.TileMCClock_L;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock;
+import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
 import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
@@ -345,6 +347,8 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		GameRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum");
 		GameRegistry.registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock");
+		GameRegistry.registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l");
+		GameRegistry.registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l");
 
 		FoodCommonProxy.loadTE();
 		MachineCommonProxy.loadTE();

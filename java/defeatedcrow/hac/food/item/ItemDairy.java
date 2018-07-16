@@ -10,11 +10,14 @@ public class ItemDairy extends DCFoodItem {
 	private static String[] names = {
 			"butter",
 			"cheese",
-			"custard" };
+			"custard",
+			"whip",
+			"margarine"
+	};
 
 	public ItemDairy() {
 		super(false);
-		maxMeta = 2;
+		maxMeta = 4;
 	}
 
 	@Override
@@ -48,7 +51,7 @@ public class ItemDairy extends DCFoodItem {
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.5F;
+		return 0.1F;
 	}
 
 }

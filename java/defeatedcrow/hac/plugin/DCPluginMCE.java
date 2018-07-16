@@ -892,7 +892,7 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.monitorItem, 1, 0), 1800);
 
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.motorMinecart, 1, 0), 19000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.scooter, 1, 0), 23600);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.scooter, 1, 32767), 23600);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.magneticHover, 1, 0), 46000);
 
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.mold, 1, 0), 400);

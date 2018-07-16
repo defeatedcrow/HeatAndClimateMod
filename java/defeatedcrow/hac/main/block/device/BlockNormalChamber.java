@@ -209,7 +209,7 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 			tooltip.add(I18n.format("dcs.tip.chamber"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.chamber2"));
-			tooltip.add(EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(EnumFixedName.RS.getLocalizedName() + ": " + EnumFixedName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

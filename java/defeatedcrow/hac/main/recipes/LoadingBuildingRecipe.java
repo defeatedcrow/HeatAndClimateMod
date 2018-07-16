@@ -873,6 +873,26 @@ public class LoadingBuildingRecipe {
 					new ItemStack(Items.CLOCK, 1, 0)
 			});
 
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.realtimeClock_L, 1, 0), new Object[] {
+					" X ",
+					"XYX",
+					" X ",
+					'X',
+					"ingotSteel",
+					'Y',
+					new ItemStack(MainInit.realtimeClock, 1, 0)
+			});
+
+			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.mcClock_L, 1, 0), new Object[] {
+					" X ",
+					"XYX",
+					" X ",
+					'X',
+					"ingotGold",
+					'Y',
+					new ItemStack(MainInit.realtimeClock, 1, 0)
+			});
+
 			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.curtainWhite, 1, 0), new Object[] {
 					"XX",
 					"YY",
