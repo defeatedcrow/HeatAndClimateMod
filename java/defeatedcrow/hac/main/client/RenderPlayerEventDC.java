@@ -19,15 +19,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderPlayerEventDC {
 
-	private static final ResourceLocation WING_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
-			"textures/entity/magic/magical_wings.png");
-	private static final ResourceLocation TAIL_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
-			"textures/entity/magic/magical_fishtail.png");
+	private static final ResourceLocation WING_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID, "textures/entity/magic/magical_wings.png");
+	private static final ResourceLocation TAIL_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID, "textures/entity/magic/magical_fishtail.png");
 	private static final ModelMagicalWing MODEL = new ModelMagicalWing();
 	private static final ModelPanel PANEL_MODEL = new ModelPanel();
 
-	private int lastDurB = 0;
-	private int lastDurO = 0;
+	private float durB = 0;
+	private float lastDurB = 0;
+	private float durO;
+	private float lastDurO = 0;
 
 	@SubscribeEvent
 	public void renderWings(RenderPlayerEvent.Post event) {
@@ -49,16 +49,16 @@ public class RenderPlayerEventDC {
 					if (effB.getDuration() < 0) {
 						player.removeActivePotionEffect(MainInit.bird);
 					} else {
-						int dur = effB.getDuration() & 7;
-						boolean b = (effB.getDuration() & 8) == 8;
 						float angle = 8.0F;
+
 						if (jump || forward) {
-							angle = lastDurB * 1.0F + (dur - lastDurB) * partial;
-							if (b) {
-								angle = 7.0F - angle;
-							}
+							lastDurB = durB;
+							durB = player.world.getWorldTime() % 16;
+							durB /= 8F;
+							float fb = this.interpolateRotation(lastDurB, durB, partial);
+							double sin = Math.sin(fb * Math.PI);
+							angle = (float) (sin * 8.0F);
 						}
-						lastDurB = dur;
 
 						GlStateManager.pushMatrix();
 						GlStateManager.translate((float) x, (float) y, (float) z);
@@ -92,16 +92,15 @@ public class RenderPlayerEventDC {
 					if (effO.getDuration() < 0) {
 						player.removeActivePotionEffect(MainInit.ocean);
 					} else {
-						int dur = effO.getDuration() & 7;
-						boolean b = (effO.getDuration() & 8) == 0;
 						float angle = 4.0F;
 						if (forward) {
-							angle = lastDurO * 1.0F + (dur - lastDurO) * partial;
-							if (b) {
-								angle = 8.0F - angle;
-							}
+							lastDurO = durO;
+							durO = player.world.getWorldTime() % 16;
+							durO /= 8F;
+							float fb = this.interpolateRotation(lastDurB, durB, partial);
+							double sin = Math.sin(fb * Math.PI);
+							angle = (float) (sin * 4.0F);
 						}
-						lastDurO = dur;
 
 						GlStateManager.pushMatrix();
 						GlStateManager.translate((float) x, (float) y, (float) z);
@@ -133,7 +132,17 @@ public class RenderPlayerEventDC {
 	}
 
 	private static String[] name = {
-			"absolute", "frostbite", "cold", "cool", "normal", "warm", "hot", "oven", "kiln", "smelting", "uht",
+			"absolute",
+			"frostbite",
+			"cold",
+			"cool",
+			"normal",
+			"warm",
+			"hot",
+			"oven",
+			"kiln",
+			"smelting",
+			"uht",
 			"inforno"
 	};
 

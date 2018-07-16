@@ -54,6 +54,11 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	private int lastBurn = 0;
 
 	@Override
+	public int getMaxTickCount() {
+		return 1;
+	}
+
+	@Override
 	public boolean isInputSide(EnumFacing side) {
 		return side == getBaseSide().rotateY().getOpposite();
 	}

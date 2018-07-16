@@ -225,7 +225,7 @@ public class LivingMainEventDC {
 		if (entity != null && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntity();
 			if (!player.isRiding()) {
-				if (player.isPotionActive(MainInit.ocean) && player.isInWater()) {
+				if (MainCoreConfig.ocean_effect && player.isPotionActive(MainInit.ocean) && player.isInWater()) {
 					// ocean potion
 					if (ClimateCore.proxy.isJumpKeyDown()) {
 						player.motionY += 0.15D;
@@ -242,12 +242,16 @@ public class LivingMainEventDC {
 						Vec3d vec3d = player.getLookVec();
 						double d = Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ);
 						double d1 = Math.sqrt(vec3d.x * vec3d.x + vec3d.z * vec3d.z);
-						if (d < 1.0D) {
+						double df = 1.0D;
+						if (player.isPotionActive(MobEffects.SPEED)) {
+							df += player.getActivePotionEffect(MobEffects.SPEED).getAmplifier() * 0.5D;
+						}
+						if (d < df) {
 							player.motionX += vec3d.x * 0.1D;
 							player.motionZ += vec3d.z * 0.1D;
 						}
 					}
-				} else if (player.isPotionActive(MainInit.bird)) {
+				} else if (MainCoreConfig.bird_effect && player.isPotionActive(MainInit.bird)) {
 					// bird potion
 					if (!player.isInWater() && !player.isElytraFlying()) {
 						if (ClimateCore.proxy.isJumpKeyDown()) {
@@ -262,9 +266,13 @@ public class LivingMainEventDC {
 							Vec3d vec3d = player.getLookVec();
 							double d = Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ);
 							double d1 = Math.sqrt(vec3d.x * vec3d.x + vec3d.z * vec3d.z);
-							if (d < 1.0D) {
-								player.motionX += vec3d.x * 0.05D;
-								player.motionZ += vec3d.z * 0.05D;
+							double df = 1.0D;
+							if (player.isPotionActive(MobEffects.SPEED)) {
+								df += player.getActivePotionEffect(MobEffects.SPEED).getAmplifier() * 0.5D;
+							}
+							if (d < df) {
+								player.motionX += vec3d.x * 0.05D * df;
+								player.motionZ += vec3d.z * 0.05D * df;
 							}
 						}
 					}

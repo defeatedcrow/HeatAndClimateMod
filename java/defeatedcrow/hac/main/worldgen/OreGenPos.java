@@ -20,6 +20,7 @@ public class OreGenPos {
 	private static int veinP = WorldGenConfig.depositGen[2];
 	private static int lavaP = WorldGenConfig.depositGen[3];
 	private static int vugsP = WorldGenConfig.depositGen[4];
+	private static int sSedP = WorldGenConfig.depositGen[5];
 
 	public static final OreGenPos INSTANCE = new OreGenPos();
 
@@ -75,7 +76,7 @@ public class OreGenPos {
 		BlockPos pos3 = new BlockPos(x3, y3, z3);
 		int rand3 = rand.nextInt(100);
 		Biome biome3 = world.getBiome(pos3);
-		if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SANDY)) && rand3 < sedP) {
+		if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SANDY)) && rand3 < sSedP) {
 			ret[2] = getVeinFromSeed(world, pos3, EnumVein.SAND_SEDIMENT, seed);
 		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(biome3,
 				BiomeDictionary.Type.JUNGLE)) && rand3 < sedP) {

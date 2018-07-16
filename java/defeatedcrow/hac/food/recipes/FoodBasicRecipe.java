@@ -535,6 +535,22 @@ public class FoodBasicRecipe {
 				"cropSpinach"
 		});
 
+		// soymeats
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.sandwich, 2, 3), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 3),
+				"cropSpinach",
+				"cropOnion",
+				new ItemStack(FoodInit.meat, 1, 5)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.clubsandwich, 1, 1), new Object[] {
+				new ItemStack(FoodInit.bread, 1, 1),
+				"listAllveggie",
+				"cropTomato",
+				new ItemStack(FoodInit.meat, 1, 5)
+		});
+
 		// yagen
 
 		DCRecipe.addShapelessNBTRecipe(res.getRecipeName(), new ItemStack(FoodInit.dropOil, 1, 0), new Object[] {
@@ -590,6 +606,10 @@ public class FoodBasicRecipe {
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 7), new Object[] {
 				new ItemStack(FoodInit.crops, 1, 9)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 9), new Object[] {
+				new ItemStack(FoodInit.crops, 1, 12)
 		});
 
 		// seeds another recipes
@@ -659,6 +679,11 @@ public class FoodBasicRecipe {
 					"gemChalcedony"
 			});
 
+			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 1, 9), new Object[] {
+					new ItemStack(Items.PUMPKIN_SEEDS, 1, 0),
+					"gemChalcedony"
+			});
+
 		}
 
 		String[] crops = new String[] {
@@ -708,6 +733,18 @@ public class FoodBasicRecipe {
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.crops, 8, 11), new Object[] {
 				new ItemStack(MainInit.cropBasket, 1, 10)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBags, 1, 6), new Object[] {
+				"XXX",
+				"X X",
+				"XXX",
+				'X',
+				"cropSoybean"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.seeds, 8, 9), new Object[] {
+				new ItemStack(MainInit.dustBags, 1, 6)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.paperPack, 4, 1), new Object[] {

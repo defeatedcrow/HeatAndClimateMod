@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityItem;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -39,7 +40,8 @@ public class ItemFlowerPot extends DCEntityItem {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"white", "brown"
+				"white",
+				"brown"
 		};
 		return s;
 	}
@@ -57,7 +59,7 @@ public class ItemFlowerPot extends DCEntityItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add("Placeable as an Entity");
+		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

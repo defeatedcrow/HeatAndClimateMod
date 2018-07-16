@@ -14,9 +14,11 @@ import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -200,14 +202,14 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.BOLD.toString() + "Tier 1");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("Fuel: solid fuel (ex. coal)");
-			tooltip.add("Airflow: " + TextFormatting.AQUA.toString() + "WIND");
+			tooltip.add(EnumFixedName.FUEL_SOLID.getLocalizedName());
+			tooltip.add(EnumFixedName.AIR.getLocalizedName() + ": " + TextFormatting.AQUA.toString() + "WIND");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("HeatTier: " + TextFormatting.RED.toString() + "SMELTING");
-			tooltip.add("The temperature varies with airflow.");
+			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.RED.toString() + "SMELTING");
+			tooltip.add(I18n.format("dcs.tip.chamber"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add("Give winds by bellows or fans.");
-			tooltip.add("RS signal: Turn off this device.");
+			tooltip.add(I18n.format("dcs.tip.chamber2"));
+			tooltip.add(EnumFixedName.RS.getLocalizedName() + ": " + EnumFixedName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

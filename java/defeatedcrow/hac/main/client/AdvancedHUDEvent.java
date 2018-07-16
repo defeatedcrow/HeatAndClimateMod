@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.util.DCTimeHelper;
@@ -32,8 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class AdvancedHUDEvent {
 
 	public static final AdvancedHUDEvent INSTANCE = new AdvancedHUDEvent();
-	public static final ResourceLocation TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
-			"textures/gui/hud_climate_adv.png");
+	public static final ResourceLocation TEX = new ResourceLocation(ClimateCore.PACKAGE_ID, "textures/gui/hud_climate_adv.png");
 
 	private int climate = 0;
 	private int count = 20;
@@ -108,9 +108,12 @@ public class AdvancedHUDEvent {
 						String hum = clm.getHumidity().toString();
 						String air = clm.getAirflow().toString();
 
-						EnumSeason season = DCTimeHelper.getSeasonEnum(world);
-						int day = DCTimeHelper.getDay(world);
-						fr.drawString(season.name() + " " + day, x + 5, y - 8, season.color.getColorValue(), true);
+						if (CoreConfigDC.enableSeasonEffect) {
+							EnumSeason season = DCTimeHelper.getSeasonEnum(world);
+							int day = DCTimeHelper.getDay(world);
+							fr.drawString(season.getName() + " " + day, x + 5, y - 8, season.color.getColorValue(),
+									true);
+						}
 
 						Biome biome = Biome.getBiomeForId(biomeID);
 						if (biome != null) {

@@ -7,8 +7,10 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -81,17 +83,16 @@ public class ItemMonitor extends DCItemBlock {
 		}
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add("Require registering target coordinate.");
-			tooltip.add("Held this item and right-click the coordinate of target machine.");
+			tooltip.add(EnumFixedName.PAIRING.getLocalizedName());
 
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			if (block instanceof BlockMonitorRedStone || block instanceof BlockMonitorComparator) {
-				tooltip.add("RS signal output");
+				tooltip.add(EnumFixedName.RS.getLocalizedName() + " " + EnumFixedName.OUTPUT.getLocalizedName());
 			} else {
-				tooltip.add("Display data of target device");
-				tooltip.add("RS comparator output");
+				tooltip.add(I18n.format("dcs.tip.monitor"));
+				tooltip.add(EnumFixedName.COMPARATOR.getLocalizedName() + " " +
+						EnumFixedName.OUTPUT.getLocalizedName());
 			}
-
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

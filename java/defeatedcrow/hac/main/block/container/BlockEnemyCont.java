@@ -36,18 +36,20 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 				"bone",
 				"spider",
 				"ender",
-				"powder"
+				"powder",
+				"blaze"
 		};
 		return name;
 	}
 
 	public static ItemStack[] containedItem() {
-		ItemStack[] ret = new ItemStack[5];
+		ItemStack[] ret = new ItemStack[6];
 		ret[0] = new ItemStack(Items.ROTTEN_FLESH, 8);
 		ret[1] = new ItemStack(Items.BONE, 8);
 		ret[2] = new ItemStack(Items.SPIDER_EYE, 8);
-		ret[3] = new ItemStack(Items.ENDER_EYE, 8);
-		ret[3] = new ItemStack(Items.GUNPOWDER, 8);
+		ret[3] = new ItemStack(Items.ENDER_PEARL, 8);
+		ret[4] = new ItemStack(Items.GUNPOWDER, 8);
+		ret[5] = new ItemStack(Items.BLAZE_ROD, 8);
 
 		return ret;
 	}
@@ -55,8 +57,8 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 15;
-		if (m > 4)
-			m = 4;
+		if (m > 5)
+			m = 5;
 		String b = "dcs_climate:blocks/cont/";
 		switch (side) {
 		case 0:
@@ -88,8 +90,8 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 15;
-		if (m > 4)
-			m = 4;
+		if (m > 5)
+			m = 5;
 		String b = "dcs_climate:items/block/cont/";
 		return b + "metalbox_" + getNameSuffix()[m];
 	}

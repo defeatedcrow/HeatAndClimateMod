@@ -42,13 +42,14 @@ public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapid
 				"wart",
 				"cocoa",
 				"baked_apple",
-				"baked_potato"
+				"baked_potato",
+				"beet"
 		};
 		return name;
 	}
 
 	public static ItemStack[] containedItem() {
-		ItemStack[] ret = new ItemStack[11];
+		ItemStack[] ret = new ItemStack[12];
 		ret[0] = new ItemStack(Items.APPLE, 8);
 		ret[1] = new ItemStack(Items.POTATO, 8);
 		ret[2] = new ItemStack(Items.CARROT, 8);
@@ -60,6 +61,7 @@ public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapid
 		ret[8] = new ItemStack(Items.DYE, 8, 3);
 		ret[9] = new ItemStack(MainInit.bakedApple, 8);
 		ret[10] = new ItemStack(Items.BAKED_POTATO, 8);
+		ret[11] = new ItemStack(Items.BEETROOT, 8);
 
 		return ret;
 	}
@@ -67,9 +69,9 @@ public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapid
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 15;
-		if (m > 10)
-			m = 10;
-		boolean f = m > 8;
+		if (m > 11)
+			m = 11;
+		boolean f = m > 8 && m < 11;
 		String b = "dcs_climate:blocks/cont/";
 		if (f) {
 			switch (side) {
@@ -124,8 +126,8 @@ public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapid
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 15;
-		if (m > 10)
-			m = 10;
+		if (m > 11)
+			m = 11;
 		String b = "dcs_climate:items/block/cont/";
 		return b + "cropbox_" + getNameSuffix()[m];
 	}

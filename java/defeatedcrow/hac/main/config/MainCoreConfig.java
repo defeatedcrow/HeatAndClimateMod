@@ -28,6 +28,8 @@ public class MainCoreConfig {
 	public static boolean lead = false;
 	public static boolean pendant_schorl = true;
 	public static boolean pendant_clam = true;
+	public static boolean bird_effect = true;
+	public static boolean ocean_effect = true;
 
 	public static String[] blocknames = new String[] {
 			"minecraft:stone:32767",
@@ -73,6 +75,12 @@ public class MainCoreConfig {
 			Property b_dia = cfg.get("item setting", "Diamond Badge Disable List", blocknames,
 					"Please add block registry names you want exclude from diamond badge effect.");
 
+			Property p_bird = cfg.get("item setting", "Enable Wing Potion Effect", bird_effect,
+					"Enable effect of Wing Blessing potion.");
+
+			Property p_ocean = cfg.get("item setting", "Enable Ocean Potion Effect", ocean_effect,
+					"Enable effect of Ocean Blessing potion.");
+
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
 
@@ -87,6 +95,8 @@ public class MainCoreConfig {
 			steel = noSteel.getBoolean();
 			lead = noLead.getBoolean();
 			pendant_schorl = p_schorl.getBoolean();
+			bird_effect = p_bird.getBoolean();
+			ocean_effect = p_ocean.getBoolean();
 			// timeZone = zone.getString();
 
 			blocknames = b_dia.getStringList();

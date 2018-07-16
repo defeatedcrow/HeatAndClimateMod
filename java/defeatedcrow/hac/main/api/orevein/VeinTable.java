@@ -1,4 +1,4 @@
-package defeatedcrow.hac.main.worldgen;
+package defeatedcrow.hac.main.api.orevein;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
-import defeatedcrow.hac.main.api.orevein.EnumVein;
-import defeatedcrow.hac.main.api.orevein.IVeinTable;
-import defeatedcrow.hac.main.api.orevein.OreSet;
+import defeatedcrow.hac.main.worldgen.OreSetDC;
 import net.minecraft.block.Block;
 
 public class VeinTable implements IVeinTable {

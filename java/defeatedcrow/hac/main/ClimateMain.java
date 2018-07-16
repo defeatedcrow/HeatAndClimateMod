@@ -17,7 +17,6 @@ import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
-import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
@@ -40,8 +39,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 2;
 	public static final int MOD_MINOR = 5;
-	public static final int MOD_BUILD = 4;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.5.4,)";
+	public static final int MOD_BUILD = 5;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.5.5,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy", serverSide = "defeatedcrow.hac.main.CommonMainProxy")
 	public static CommonMainProxy proxy;
@@ -127,10 +126,8 @@ public class ClimateMain {
 		proxy.loadRecipes();
 		DCIntegrationCore.INSTANCE.loadPost();
 
-		// json
-		VeinTableJsonHelper.pre();
-
-		VeinTableJsonHelper.post();
+		// WorldGen
+		proxy.loadWorldGenPost();
 
 		// date
 		month = CAL.get(CAL.MONTH);

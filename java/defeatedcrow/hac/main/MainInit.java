@@ -140,6 +140,8 @@ public class MainInit {
 	public static Item itemDoorSteel;
 
 	public static Block realtimeClock;
+	public static Block realtimeClock_L;
+	public static Block mcClock_L;
 
 	public static Item cushionGray;
 

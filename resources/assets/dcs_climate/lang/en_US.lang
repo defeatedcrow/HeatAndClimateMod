@@ -96,6 +96,8 @@ item.dcs_fooddust_bran.name=Bran
 item.dcs_fooddust_plant.name=Plant Dust
 item.dcs_fooddust_molasses.name=Molasses
 item.dcs_fooddust_malt.name=Malt
+item.dcs_fooddust_defatted_soy.name=Defatted Soy
+item.dcs_fooddust_soy_pulp.name=Soy Pulp
 item.dcs_expgem_exp.name=EXP Gem
 
 ## materials
@@ -167,12 +169,15 @@ item.dcs_food_drop_cream.name=Cream Drop
 item.dcs_food_dairy_butter.name=Butter
 item.dcs_food_dairy_cheese.name=Cheese
 item.dcs_food_dairy_custard.name=Custard
+item.dcs_food_dairy_whip.name=Vegetable Whipped Cream
+item.dcs_food_dairy_margarine.name=Margarine
 item.dcs_food_pastry_raw.name=Pastry
 item.dcs_food_meat_viscera.name=Viscera
 item.dcs_food_meat_rennet.name=Rennet
 item.dcs_food_meat_raw_squid.name=Raw Squid
 item.dcs_food_meat_agar.name=Agar
 item.dcs_food_meat_gelatine.name=Gelatine
+item.dcs_food_meat_soymeat.name=Soymeat
 
 item.dcs_food_pack_milk.name=Milk Pack
 item.dcs_food_pack_water.name=Water Pack
@@ -186,6 +191,7 @@ item.dcs_food_pack_tea.name=Black Tea Pack
 item.dcs_food_pack_coffee.name=Coffee Pack
 item.dcs_food_pack_stock.name=Stock Pack
 item.dcs_food_pack_ethanol.name=Ethanol Pack
+item.dcs_food_pack_soy_milk.name=Soy Milk Pack
 item.dcs_food_pack_empty.name=Empty Paper Pack
 
 item.dcs_food_itemfood_baked_apple.name=Baked Apple
@@ -194,6 +200,7 @@ item.dcs_food_itemfood_jerky.name=Jerky
 item.dcs_food_itemfood_boiled_sausage.name=Boiled Sausage
 item.dcs_food_itemfood_baked_squid.name=Cooked Squid
 item.dcs_food_itemfood_boiled_lotus_crop.name=Boiled Lotus Seeds
+item.dcs_food_itemfood_boiled_young_soy.name=Edamame
 item.dcs_food_bread_roundbread_raw.name=Dough
 item.dcs_food_bread_roundbread_baked.name=Round Bread
 item.dcs_food_bread_squarebread_raw.name=Molded Dough
@@ -299,6 +306,7 @@ item.dcs_food_crops_tea.name=Tea Leaves
 item.dcs_food_crops_herb.name=Herb Leaves
 item.dcs_food_crops_lotus_seed.name=Lotus Seeds
 item.dcs_food_crops_mulberry.name=Mulberry
+item.dcs_food_crops_young_soy.name=Green Soy beans
 item.dcs_food_seeds_rice.name=Rice Seeds
 item.dcs_food_seeds_onion.name=Onion Seeds
 item.dcs_food_seeds_spinach.name=Spinach Seeds
@@ -308,6 +316,7 @@ item.dcs_food_seeds_cotton.name=Cotton Seeds
 item.dcs_food_seeds_lotus.name=Lotus Root
 item.dcs_food_seeds_herb.name=Herb Seeds
 item.dcs_food_seeds_seaweed.name=Seaweed
+item.dcs_food_seeds_soy.name=Soy Beans
 item.dcs_food_petals_lotus.name=Lotus Petal
 item.dcs_food_petals_black.name=Black Petal
 
@@ -622,11 +631,13 @@ tile.dcs_cont_crop_wart.name=Wart Box
 tile.dcs_cont_crop_cocoa.name=Cocoa Box
 tile.dcs_cont_crop_baked_apple.name=Baked Apple Box
 tile.dcs_cont_crop_baked_potato.name=Baked Potato Box
+tile.dcs_cont_crop_beet.name=Beets Container
 tile.dcs_cont_metal_rotten.name=Rotten Flesh Box
 tile.dcs_cont_metal_bone.name=Bone Box
 tile.dcs_cont_metal_spider.name=Spider Eye Box
 tile.dcs_cont_metal_ender.name=Ender Pearl Box
 tile.dcs_cont_metal_powder.name=Gunpowder Box
+tile.dcs_cont_metal_blaze.name=Blaze Rod Container
 tile.dcs_cont_misc_clay.name=Clay Box
 tile.dcs_cont_misc_fish.name=Fish Box
 tile.dcs_cont_misc_leather.name=Leather Box
@@ -643,6 +654,7 @@ tile.dcs_cont_bags_flour.name=Flour Bags
 tile.dcs_cont_bags_rice.name=Rice Bags
 tile.dcs_cont_bags_starch.name=Starch Bags
 tile.dcs_cont_bags_seed.name=Wheat Seeds Bags
+tile.dcs_cont_bags_soy.name=Soy Beans Bag
 tile.dcs_cont_basket_rice.name=Rice Plant Basket
 tile.dcs_cont_basket_onion.name=Onion Basket
 tile.dcs_cont_basket_spinach.name=Spinach Basket
@@ -820,6 +832,8 @@ tile.dcs_device_biomeglass_3.name=Biome Cube(Ice)
 tile.dcs_time_cage_0.name=Butterfly of Time Flow
 tile.dcs_build_chandelier_0.name=Gypsum Chandelier
 tile.dcs_device_realtimeclock_0.name=Real Time Clock
+tile.dcs_device_realtimeclock_l_0.name=Real Time Big Clock
+tile.dcs_device_mcclock_l_0.name=Big Clock
 item.dcs_door_marble_item.name=Marble Door
 item.dcs_door_steel_item.name=Steel Door
 tile.dcs_build_curtain_0.name=Curtain
@@ -1000,6 +1014,14 @@ tile.dcs_crop_seaweed_0.name=Herb Plant
 tile.dcs_crop_seaweed_1.name=Herb Plant
 tile.dcs_crop_seaweed_2.name=Herb Plant
 tile.dcs_crop_seaweed_3.name=Herb Plant
+tile.dcs_crop_soy_0.name=Soy Plant
+tile.dcs_crop_soy_1.name=Soy Plant
+tile.dcs_crop_soy_2.name=Soy Plant
+tile.dcs_crop_soy_3.name=Soy Plant
+tile.dcs_crop_soy_4.name=Soy Plant
+tile.dcs_crop_soy_5.name=Soy Plant
+tile.dcs_crop_soy_6.name=Soy Plant
+tile.dcs_crop_soy_7.name=Soy Plant
 
 dcs_te_normal_chamber.name=Combustion Chamber
 dcs_te_shitirin.name=Shichirin
@@ -1057,8 +1079,102 @@ fluid.dcs.ethanol=Ethanol
 tile.dcs_fluidblock_ethanol_0.name=Ethanol
 fluid.dcs.mazai=Absinthe
 tile.dcs_fluidblock_mazai_0.name=Absinthe
+fluid.dcs.soy_milk=Soy Milk
+tile.dcs_fluidblock_soy_milk_0.name=Soy Milk
 
-## massage
+## tip
+dcs.tip.heat=HeatTier
+dcs.tip.hum=Humidity
+dcs.tip.air=Airflow
+dcs.tip.climate=Climate
+dcs.tip.item=Item
+dcs.tip.fluid=Fluid
+dcs.tip.torque=Torque
+dcs.tip.amount=Amount
+dcs.tip.output=Output
+dcs.tip.input=Input
+dcs.tip.recipe=Recipe
+dcs.tip.range=Range
+dcs.tip.stage=Stage
+dcs.tip.fuel=Fuel
+dcs.tip.rs=RS-Signal
+dcs.tip.comparator=RS-Comparator
+dcs.tip.transport=Transport
+dcs.tip.non_powered=Non-powered device
+dcs.tip.require_recipe_climate=Climate required by recipe.
+dcs.tip.water_consumption=Water Consumption
+dcs.tip.output_item=Recipe product item
+dcs.tip.output_fluid=Recipe product fluid
+dcs.tip.turn_off=Turn off this device.
+dcs.tip.drain_sided_tank=This device drains water from the adjacent fluid tank.
+dcs.tip.placeable_entity=Placeable as an Entity
+dcs.tip.fuel_s=solid fuel (ex. coal)
+dcs.tip.fuel_f=fluid fuel (ex. seed oil)
+dcs.tip.fuel_g=gaseous fuel (ex. fuel gas)
+dcs.tip.right_click=Right-click
+dcs.tip.pairing=Require registering target coordinate. (Held this item and right-click the coordinate of target machine.)
+dcs.tip.on_anvil=Use on the anvil.
+
+dcs.tip.clear_potion=Clear all potion effects.
+dcs.tip.danger_drink=Powerful but dangerous!
+dcs.tip.correct_from_cow=Collect from cow with Fluid Hopper.
+dcs.tip.upper_only=only upper side coordinate
+dcs.tip.forward_only=only forward side coordinate
+dcs.tip.catapult=Torque input extends the flight distance.
+dcs.tip.catapult2=This device will blow off the stepped creatures.
+dcs.tip.conveyor=Climate smelting the item on top.
+dcs.tip.conveyor2=Vanilla smelting the item on top.
+dcs.tip.dynamo=Input Torque x Convarsion Rate RF/s
+dcs.tip.dynamo2=Both RF and FU can be output.
+dcs.tip.gearbox=This tile converges the torque energy from several directions.
+dcs.tip.exchanger=This device refers the directly below tile temperature, and expand it.
+dcs.tip.hopper_f=One item remains in the each slot. It works like an item filter.
+dcs.tip.hopper_flu1=Fill and drain the inserted fluid item.
+dcs.tip.hopper_flu2=Transport liquid from top to bottom.
+dcs.tip.hopper_flu3=When it's at the feet of a cow, it milk the cow.
+dcs.tip.hopper_s=This device compress some items to block. (ex. 9 ingots -> 1 metal block)
+dcs.tip.portal1= HeatTier or liquid nitrogen
+dcs.tip.portal2=Adapter card with registered coordinates.
+dcs.tip.portal3=This device transport item or fluid between two registered coordinates.
+dcs.tip.press1=Recipe Registered mold (by processing an empty mold and product item with the anvil.)
+dcs.tip.press2=Automatic crafted item
+dcs.tip.press3=Some product items are available only from special molds.
+dcs.tip.reactor=Some recipes require a catalyst. (It will not be consumed.)
+dcs.tip.crusher=Hammer plate item required by recipe. (It will not be consumed.)
+dcs.tip.watermill=Contact with water flow. (Rotate clockwise)
+dcs.tip.pump1=Pump up the under fluid source.
+dcs.tip.pump2=Automatic transfer to upper fluid tank
+dcs.tip.pump3=It looks for a source of water flow.
+dcs.tip.windmill=Maximum output when facing west.
+dcs.tip.adapter=Require pairing sender and acceptor coordinate by right-clock with wrench.
+dcs.tip.monitor=Display data of target device.
+dcs.tip.adaptercard=Please register target tile by right-click with sneaking.
+dcs.tip.mold1=Please register an item on the anvil.
+dcs.tip.mold2=Use on the press machine.
+dcs.tip.catalyst1=Product from by the press machine.
+dcs.tip.catalyst2=An appropriate mold is required for processing.
+dcs.tip.scooter1=Sneaking and Right-click: GUI opens.
+dcs.tip.scooter2=Two-seater available
+dcs.tip.scooter3=Fuel: nitrogen fluid
+dcs.tip.synthetic1=Process with the press machine.
+dcs.tip.synthetic2=An appropriate mold is required for processing.
+dcs.tip.biomeglass=This device change the surrounding biome.
+dcs.tip.biomeglass2=Right-click: Turn off this device and restore the biome.
+dcs.tip.chamber=The temperature varies with airflow.
+dcs.tip.chamber2=Give winds by bellows or fans.
+dcs.tip.shitirin.description=It's the japanese charcoal stove.
+dcs.tip.sink=This device erases the flowing fluid.
+dcs.tip.teapot=Right-click to this block with flavor items.
+dcs.tip.teapot.milk=ex. milk pack, cream pack
+dcs.tip.teapot.sugar=ex. sugar
+dcs.tip.exp_gem.description=Use by right click
+dcs.tip.repair_putty.description=On Anvil: Recover the durability of tool
+dcs.tip.abrasive.description=On Anvil: Add the Efficiency or Sharpness Enchantment to a tool
+dcs.tip.soap.description=On Anvil: Decolorize leather armors
+dcs.tip.acv_shield=Place and click: Force unlock of the achievement of the owner player.
+dcs.tip.v_chest=Collect surplus items of surrounding villagers.
+dcs.tip.l_clock=Right-Click with wrench: Change scale.
+
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
 dcs_climate.tip.durability=Max Durability
 dcs_climate.tip.harvestlevel=Harvest Level
@@ -1126,19 +1242,8 @@ dcs.tip.amulet.2=Combat
 dcs.tip.amulet.3=Immortality
 dcs.tip.amulet.4=Substitute
 
-dcs.tip.shitirin.description=It's the japanese charcoal stove.
-dcs.tip.teapot=Right-click to this block with flavor items.
-dcs.tip.teapot.milk=ex. milk pack, cream pack
-dcs.tip.teapot.sugar=ex. sugar
-
 dcs.tip.shift=Lshift Key: expand tooltip
 dcs.tip.require_achievement=Require the achievement for using!
-
-dcs.tip.exp_gem.description=Use by right click
-dcs.tip.repair_putty.description=On Anvil: Recover the durability of tool
-dcs.tip.abrasive.description=On Anvil: Add the Efficiency or Sharpness Enchantment to a tool
-dcs.tip.soap.description=On Anvil: Decolorize leather armors
-dcs.tip.acv_shield=Place and click: Force unlock of the achievement of the owner player.
 
 dcs.comment.pendant.0=Reduce ice & water damage
 dcs.comment.pendant.1=Reduce heat damage
@@ -1186,6 +1291,7 @@ dcs.comment.amulet.2=Reduce taken damage from mobs
 dcs.comment.amulet.3=Prevent from death
 dcs.comment.amulet.4=The attack is deemed by the tamer
 
+## message
 dcs_climate.smelting=Climate Smelting
 dcs_climate.recipe=Climate Crafting
 dcs.gui.device.chamber=Combustion Chamber GUI
@@ -1222,37 +1328,41 @@ dcs.gui.message.require.absolute=This device needs the ABSOLUTE temp or the liqu
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.
 
-#potion
+## potion
 dcs.potion.gravity=Gravity
 potion.effect.dcs.gravity=Potion of Gravity
 splash_potion.effect.dcs.gravity=Splash Potion of Gravity
 lingering_potion.effect.dcs.gravity=Lingering Potion of Gravity
+tipped_arrow.effect.dcs.gravity=Arrow of Gravity
 
 dcs.potion.bird=Wing Blessing
 potion.effect.dcs.bird=Potion of Wing Blessing
 splash_potion.effect.dcs.bird=Splash Potion of Wing Blessing
 lingering_potion.effect.dcs.bird=Lingering Potion of Wing Blessing
+tipped_arrow.effect.dcs.bird=Arrow of Wing Blessing
 
 dcs.potion.ocean=Sea Blessing
 potion.effect.dcs.ocean=Potion of Sea Blessing
 splash_potion.effect.dcs.ocean=Splash Potion of Sea Blessing
 lingering_potion.effect.dcs.ocean=Lingering Potion of Sea Blessing
+tipped_arrow.effect.dcs.ocean=Arrow of Sea Blessing
 
 dcs.potion.heavyboots=Iron Boots
 potion.effect.dcs.heavyboots=Iron Boots
 splash_potion.effect.dcs.heavyboots=Splash Potion of Iron Boots
 lingering_potion.effect.dcs.heavyboots=Lingering Potion of Iron Boots
+tipped_arrow.effect.dcs.heavyboots=Arrow of Iron Boots
 
-#enchantment
+## enchantment
 enchantment.dcs.venom=Venom Arrow
 enchantment.dcs.robber=Highway Robber
 
-#villager
+## villager
 entity.Villager.dcs_trader=Merchant
 entity.Villager.dcs_agri_researcher=Agricultural Researcher
 entity.Villager.dcs_engineer=Mechanical Engineer
 
-#entities
+## entities
 entity.dcs.food.r_bread.name=Round Bread
 entity.dcs.food.s_bread.name=Plain Bread
 entity.dcs.food.fish_stick.name=Fish Skewers
@@ -1328,7 +1438,7 @@ entity.dcs.main.balloon_crow.name=Defeatedcrow Balloon
 entity.dcs.main.big_cushion.name=Gray Big Cushion for the lazy mobs
 entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs
 
-#advancements
+## advancements
 advancements.dcs_climate.core.title=Heat and Climate
 advancements.dcs_climate.climate_damage.description=Let's play with Heat and Climate!
 advancements.dcs_climate.climate_damage.title=Dangerous temperature

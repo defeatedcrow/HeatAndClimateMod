@@ -36,46 +36,9 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 	private int lastOutT1 = 0;
 	private int lastBurn = 0;
 
-	private int tickCount = 1;
-
 	@Override
-	protected void onServerUpdate() {
-		if (current != null) {
-			if (tickCount <= 0) {
-				tickCount = 1;
-				// 完了処理
-				if (this.maxBurnTime > 0) {
-					if (this.currentBurnTime >= this.maxBurnTime) {
-						// レシピ進行の再チェック
-						if (this.isRecipeMaterial()) {
-							if (this.onProcess()) {
-								this.currentBurnTime = 0;
-								this.maxBurnTime = 0;
-								this.markDirty();
-							}
-						} else {
-							// 一致しないためリセット
-							this.currentBurnTime = 0;
-							this.maxBurnTime = 0;
-						}
-					} else {
-						// レシピ進行の再チェック
-						if (this.isRecipeMaterial()) {
-							this.currentBurnTime += this.prevTorque;
-						} else {
-							// 一致しないためリセット
-							this.currentBurnTime = 0;
-							this.maxBurnTime = 0;
-						}
-					}
-				} else if (this.canStartProcess()) {
-					// レシピ開始可能かどうか
-					this.maxBurnTime = this.getProcessTime();
-				}
-			} else {
-				tickCount--;
-			}
-		}
+	public int getMaxTickCount() {
+		return 1;
 	}
 
 	@Override

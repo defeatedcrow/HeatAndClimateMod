@@ -125,7 +125,7 @@ public class ModelMagicalWing extends ModelBase {
 	public void setRotationAngles(float scale, Entity entity, boolean open, float angle) {
 		super.setRotationAngles(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale, entity);
 
-		float wingF = (angle + 4.0F) / 12.0F;
+		float wingF = (angle + 10.0F) / 18.0F;
 		left1.rotateAngleY = wingF * 1.396263F;
 		left2.rotateAngleY = wingF * 1.396263F;
 		left3.rotateAngleY = wingF * 1.396263F;

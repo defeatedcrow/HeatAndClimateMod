@@ -11,10 +11,10 @@
         "type=8": { "model": "dcs_climate:cont/dcs_cont_crop8" },
         "type=9": { "model": "dcs_climate:cont/dcs_cont_crop9" },
         "type=10": { "model": "dcs_climate:cont/dcs_cont_crop10" },
-        "type=11": { "model": "dcs_climate:cont/dcs_cont_crop10" },
-        "type=12": { "model": "dcs_climate:cont/dcs_cont_crop10" },
-        "type=13": { "model": "dcs_climate:cont/dcs_cont_crop10" },
-        "type=14": { "model": "dcs_climate:cont/dcs_cont_crop10" },
-        "type=15": { "model": "dcs_climate:cont/dcs_cont_crop10" }
+        "type=11": { "model": "dcs_climate:cont/dcs_cont_crop11" },
+        "type=12": { "model": "dcs_climate:cont/dcs_cont_crop11" },
+        "type=13": { "model": "dcs_climate:cont/dcs_cont_crop11" },
+        "type=14": { "model": "dcs_climate:cont/dcs_cont_crop11" },
+        "type=15": { "model": "dcs_climate:cont/dcs_cont_crop11" }
     }
 }

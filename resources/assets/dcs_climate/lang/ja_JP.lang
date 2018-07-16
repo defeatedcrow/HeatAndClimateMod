@@ -94,6 +94,8 @@ item.dcs_fooddust_bran.name=ブラン
 item.dcs_fooddust_plant.name=植物くず
 item.dcs_fooddust_molasses.name=糖蜜
 item.dcs_fooddust_malt.name=麦芽
+item.dcs_fooddust_defatted_soy.name=脱脂大豆
+item.dcs_fooddust_soy_pulp.name=おから
 item.dcs_expgem_exp.name=EXPジェム
 
 item.dcs_material_string_linen.name=亜麻糸(旧)
@@ -174,12 +176,15 @@ item.dcs_food_drop_cream.name=生クリームのドロップ
 item.dcs_food_dairy_butter.name=バター
 item.dcs_food_dairy_cheese.name=チーズ
 item.dcs_food_dairy_custard.name=カスタード
+item.dcs_food_dairy_whip.name=植物性ホイップ
+item.dcs_food_dairy_margarine.name=マーガリン
 item.dcs_food_pastry_raw.name=ペイストリー生地
 item.dcs_food_meat_viscera.name=内臓
 item.dcs_food_meat_rennet.name=レンネット
 item.dcs_food_meat_raw_squid.name=イカ
 item.dcs_food_meat_agar.name=寒天
 item.dcs_food_meat_gelatine.name=ゼラチン
+item.dcs_food_meat_soymeat.name=大豆肉
 
 item.dcs_food_pack_milk.name=牛乳パック
 item.dcs_food_pack_water.name=水パック
@@ -193,6 +198,7 @@ item.dcs_food_pack_tea.name=紅茶パック
 item.dcs_food_pack_coffee.name=コーヒーパック
 item.dcs_food_pack_stock.name=スープストックパック
 item.dcs_food_pack_ethanol.name=酒パック
+item.dcs_food_pack_soy_milk.name=豆乳パック
 item.dcs_food_pack_empty.name=紙パック
 
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
@@ -201,6 +207,7 @@ item.dcs_food_itemfood_jerky.name=ジャーキー
 item.dcs_food_itemfood_boiled_sausage.name=ソーセージ
 item.dcs_food_itemfood_baked_squid.name=焼きイカ
 item.dcs_food_itemfood_boiled_lotus_crop.name=ゆでた蓮の実
+item.dcs_food_itemfood_boiled_young_soy.name=ゆでた枝豆
 item.dcs_food_bread_roundbread_raw.name=パン生地
 item.dcs_food_bread_roundbread_baked.name=丸パン
 item.dcs_food_bread_squarebread_raw.name=型入り生地
@@ -305,6 +312,7 @@ item.dcs_food_crops_tea.name=茶葉
 item.dcs_food_crops_herb.name=香草
 item.dcs_food_crops_lotus_seed.name=蓮の実
 item.dcs_food_crops_mulberry.name=マルベリー
+item.dcs_food_crops_young_soy.name=枝豆
 item.dcs_food_seeds_rice.name=稲籾
 item.dcs_food_seeds_onion.name=玉ねぎの種
 item.dcs_food_seeds_spinach.name=ほうれんそうの種
@@ -314,6 +322,7 @@ item.dcs_food_seeds_cotton.name=綿花の種
 item.dcs_food_seeds_lotus.name=蓮根
 item.dcs_food_seeds_herb.name=ハーブの種
 item.dcs_food_seeds_seaweed.name=海藻
+item.dcs_food_seeds_soy.name=大豆
 item.dcs_food_petals_lotus.name=蓮の花びら
 item.dcs_food_petals_black.name=黒蓮の花びら
 
@@ -617,11 +626,13 @@ tile.dcs_cont_crop_wart.name=ネザーウォート箱
 tile.dcs_cont_crop_cocoa.name=カカオ箱
 tile.dcs_cont_crop_baked_apple.name=焼きリンゴ箱
 tile.dcs_cont_crop_baked_potato.name=ベイクドポテト箱
+tile.dcs_cont_crop_beet.name=ビート箱
 tile.dcs_cont_metal_rotten.name=腐肉コンテナ
 tile.dcs_cont_metal_bone.name=骨コンテナ
 tile.dcs_cont_metal_spider.name=蜘蛛の目コンテナ
 tile.dcs_cont_metal_ender.name=エンダーパールコンテナ
 tile.dcs_cont_metal_powder.name=火薬コンテナ
+tile.dcs_cont_metal_blaze.name=ブレイズロッドコンテナ
 tile.dcs_cont_misc_clay.name=粘土コンテナ
 tile.dcs_cont_misc_fish.name=魚コンテナ
 tile.dcs_cont_misc_leather.name=革コンテナ
@@ -638,6 +649,7 @@ tile.dcs_cont_bags_flour.name=小麦粉袋
 tile.dcs_cont_bags_rice.name=米袋
 tile.dcs_cont_bags_starch.name=スターチ袋
 tile.dcs_cont_bags_seed.name=種袋
+tile.dcs_cont_bags_soy.name=大豆袋
 tile.dcs_cont_basket_rice.name=稲のバスケット
 tile.dcs_cont_basket_onion.name=玉ねぎのバスケット
 tile.dcs_cont_basket_spinach.name=ほうれんそうのバスケット
@@ -814,6 +826,8 @@ tile.dcs_device_biomeglass_2.name=バイオームグラス(砂漠)
 tile.dcs_device_biomeglass_3.name=バイオームグラス(氷原)
 tile.dcs_time_cage_0.name=時の蝶の標本
 tile.dcs_device_realtimeclock_0.name=リアルタイム時計
+tile.dcs_device_realtimeclock_l_0.name=リアルタイム大時計
+tile.dcs_device_mcclock_l_0.name=大時計の針
 item.dcs_door_marble_item.name=大理石のドア
 item.dcs_door_steel_item.name=鋼鉄のドア
 tile.dcs_build_chandelier_0.name=石膏のシャンデリア
@@ -993,6 +1007,14 @@ tile.dcs_crop_seaweed_0.name=海藻
 tile.dcs_crop_seaweed_1.name=海藻
 tile.dcs_crop_seaweed_2.name=海藻
 tile.dcs_crop_seaweed_3.name=海藻
+tile.dcs_crop_soy_0.name=大豆の苗
+tile.dcs_crop_soy_1.name=大豆の苗
+tile.dcs_crop_soy_2.name=大豆の苗
+tile.dcs_crop_soy_3.name=大豆の苗
+tile.dcs_crop_soy_4.name=大豆の苗
+tile.dcs_crop_soy_5.name=大豆の苗
+tile.dcs_crop_soy_6.name=大豆の苗
+tile.dcs_crop_soy_7.name=大豆の苗
 
 dcs_te_normal_chamber.name=燃焼チャンバー
 dcs_te_shitirin.name=七輪
@@ -1050,8 +1072,107 @@ fluid.dcs.ethanol=エタノール
 tile.dcs_fluidblock_ethanol_0.name=エタノール
 fluid.dcs.mazai=魔剤
 tile.dcs_fluidblock_mazai_0.name=魔剤
+fluid.dcs.soy_milk=豆乳
+tile.dcs_fluidblock_soy_milk_0.name=豆乳
 
-## message
+## tip
+dcs.tip.heat=HeatTier
+dcs.tip.hum=Humidity
+dcs.tip.air=Airflow
+dcs.tip.climate=Climate
+dcs.tip.item=アイテム
+dcs.tip.fluid=液体
+dcs.tip.torque=トルク
+dcs.tip.amount=量
+dcs.tip.output=出力
+dcs.tip.input=入力
+dcs.tip.recipe=レシピ
+dcs.tip.range=範囲
+dcs.tip.stage=Stage
+dcs.tip.fuel=燃料
+dcs.tip.rs=RS信号
+dcs.tip.comparator=コンパレータ
+dcs.tip.transport=輸送
+dcs.tip.non_powered=トルク動力不要
+dcs.tip.require_recipe_climate=レシピに合った気候が必要です。
+dcs.tip.water_consumption=水を消費
+dcs.tip.output_item=完成品
+dcs.tip.output_fluid=完成品(液体)
+dcs.tip.turn_off=マシンをOFFにする
+dcs.tip.drain_sided_tank=隣接する液体タンクから液体を取り込みます。
+dcs.tip.placeable_entity=エンティティとして設置できます。
+dcs.tip.fuel_s=固形燃料 (ex. 石炭)
+dcs.tip.fuel_f=液体燃料 (ex. 植物油)
+dcs.tip.fuel_g=ガス燃料 (ex. 燃料ガス)
+dcs.tip.right_click=右クリック
+dcs.tip.pairing=リンク先の座標登録が必要です。 (アイテムを手に持って、対象のマシンをスニーク右クリックする)
+dcs.tip.on_anvil=金床で使用します。
+
+dcs.tip.clear_potion=すべてのポーション効果を解除。
+dcs.tip.danger_drink=全回復 (ときどき即死)
+dcs.tip.correct_from_cow=近くにいる牛から液体ホッパーで集める。
+dcs.tip.upper_only=真上のブロックのみ
+dcs.tip.forward_only=前方のブロックのみ
+dcs.tip.catapult=トルク入力により飛距離がアップします。
+dcs.tip.catapult2=上に乗ったモブを飛ばします。
+dcs.tip.conveyor=流れているアイテムを気候精錬します。
+dcs.tip.conveyor2=流れているアイテムをバニラ精錬します。
+dcs.tip.dynamo=入力トルク x 変換レート RF/s
+dcs.tip.dynamo2=RFまたはFUを出力します。
+dcs.tip.gearbox=入力方向から受け取ったトルクを束ねて出力します。
+dcs.tip.exchanger=真下にあるブロックの温度を受け、赤面から拡散します。
+dcs.tip.hopper_f=各スロットにアイテムが1個ずつ残り、アイテムフィルターのように機能います。
+dcs.tip.hopper_flu1=液体容器アイテムを充填または開封します。
+dcs.tip.hopper_flu2=真上の液体タンクから真下の液体タンクに液体を輸送します。
+dcs.tip.hopper_flu3=近くに牛がいる時、ミルクやクリームを集めます。
+dcs.tip.hopper_s=圧縮レシピのあるアイテムをコンテナに圧縮します。 (ex. 9 インゴット -> 1 金属ブロック)
+dcs.tip.portal1= または液体窒素のどちらかが必要です。
+dcs.tip.portal2=座標登録済みのアダプターカードが必要です。
+dcs.tip.portal3=転送カードの登録座標間でアイテム・液体の輸送を行います。
+dcs.tip.press1=レシピが登録された金型 (金床でレシピを登録した金型、またはプリセットレシピのある金型)
+dcs.tip.press2=自動クラフトされた完成品アイテム
+dcs.tip.press3=一部のアイテムの作成はプリセットレシピのある金型が必要です。
+dcs.tip.reactor=一部のレシピは触媒アイテムが必要です。 (触媒アイテムは消費されません。)
+dcs.tip.crusher=レシピに合ったハンマープレートが必要です。 (ハンマープレートは消費されません。)
+dcs.tip.watermill=側面または真下の水流で動作します。 (時計回り方向のみ)
+dcs.tip.pump1=下にある液体源ブロックを回収します。
+dcs.tip.pump2=真上に接続している液体タンクへ液体を輸送します。
+dcs.tip.pump3=下にある水流から水源ブロックを検索して回収します。
+dcs.tip.windmill=西向きに設置したときに出力が上昇します。
+dcs.tip.adapter=2つのパネルをレンチで右クリックすることでペアリングする必要があります。
+dcs.tip.monitor=登録先のブロックの情報を表示します。
+dcs.tip.adaptercard=手に持ってブロックをスニーク右クリックして対象の座標を登録します。
+dcs.tip.mold1=金床でアイテムを登録すると、そのアイテムのレシピの金型になります。
+dcs.tip.mold2=プレスマシンで使用します。
+dcs.tip.catalyst1=プレスマシンで作成します。
+dcs.tip.catalyst2=作成には、対応するプリセットレシピの登録された合金金型が必要です。
+dcs.tip.scooter1=スニーク右クリック: GUIを開く
+dcs.tip.scooter2=二人乗りOK
+dcs.tip.scooter3=燃料: 液体窒素
+dcs.tip.synthetic1=プレスマシンでのみ作成可能
+dcs.tip.synthetic2=作成には、対応するレシピの登録されたアルミ金型が必要です。
+dcs.tip.biomeglass=周囲のバイオームを書き換えます。
+dcs.tip.biomeglass2=右クリックでOFFにすると、もとのバイオームに戻ります。
+dcs.tip.chamber=ブロックの通気性によって温度が変動します。
+dcs.tip.chamber2=ふいごやファンを使って風を与えてください。
+dcs.tip.sink=流し込まれた液体を消去します。
+dcs.tip.v_chest=近くにいる村人の荷物がいっぱいの時、余剰アイテムを回収します。
+dcs.tip.l_clock=レンチで右クリック: 大きさを変更します。
+
+dcs.tip.shitirin.description=
+dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック
+dcs.tip.teapot.milk=例: 牛乳入り容器、生クリーム入り容器
+dcs.tip.teapot.sugar=例: 砂糖、蜂蜜
+
+dcs.tip.shift=Lshiftキー: 詳細を表示
+dcs.tip.require_achievement=取扱いに実績が必要!
+
+dcs.tip.exp_gem.description=右クリックで使用する
+dcs.tip.repair_putty.description=金床: ツールの耐久度を回復する
+dcs.tip.abrasive.description=金床: ツールにEfficiencyまたはSharpnessを付与する
+dcs.tip.soap.description=金床: 革防具の色を落とす
+dcs.tip.acv_shield=設置して右クリック: プレイヤーの実績を強制的に開放できる。
+
 dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)
 dcs_climate.tip.durability=最大耐久値
 dcs_climate.tip.harvestlevel=採掘レベル
@@ -1119,20 +1240,6 @@ dcs.tip.amulet.2=防衛のお守り
 dcs.tip.amulet.3=星空のお守り
 dcs.tip.amulet.4=代行のお守り
 
-dcs.tip.shitirin.description=
-dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック
-dcs.tip.teapot.milk=例: 牛乳入り容器、生クリーム入り容器
-dcs.tip.teapot.sugar=例: 砂糖、蜂蜜
-
-dcs.tip.shift=Lshiftキー: 詳細を表示
-dcs.tip.require_achievement=取扱いに実績が必要!
-
-dcs.tip.exp_gem.description=右クリックで使用する
-dcs.tip.repair_putty.description=金床: ツールの耐久度を回復する
-dcs.tip.abrasive.description=金床: ツールにEfficiencyまたはSharpnessを付与する
-dcs.tip.soap.description=金床: 革防具の色を落とす
-dcs.tip.acv_shield=設置して右クリック: プレイヤーの実績を強制的に開放できる。
-
 dcs.comment.pendant.0=水と氷ダメージを軽減する
 dcs.comment.pendant.1=炎と高熱ダメージを軽減する
 dcs.comment.pendant.2=全てのダメージを少し軽減する
@@ -1179,6 +1286,7 @@ dcs.comment.amulet.2=モブから受けるダメージを軽減し、与える�
 dcs.comment.amulet.3=死亡するとその場で復活する
 dcs.comment.amulet.4=ペットが攻撃した時、オーナーの攻撃として扱われる
 
+## message
 dcs_climate.smelting=気候変化レシピ
 dcs_climate.recipe=気候クラフトレシピ
 dcs.gui.device.chamber=燃焼チャンバー
@@ -1215,7 +1323,7 @@ dcs.gui.message.require.absolute=気温ABSOLUTEまたは液体窒素が必要で
 death.attack.dcs_heat=%1$sはこんがり焼き上がった。
 death.attack.dcs_cold=%1$sはシャーベットになった。
 
-#potion
+## potion
 dcs.potion.gravity=重力
 potion.effect.dcs.gravity=重力のポーション
 splash_potion.effect.dcs.gravity=重力のスプラッシュポーション
@@ -1236,16 +1344,16 @@ potion.effect.dcs.heavyboots=ヘビーブーツ
 splash_potion.effect.dcs.heavyboots=ヘビーブーツのスプラッシュポーション
 lingering_potion.effect.dcs.heavyboots=ヘビーブーツの残留ポーション
 
-#enchantment
+## enchantment
 enchantment.dcs.venom=毒矢
 enchantment.dcs.robber=追い剥ぎ
 
-#villager
+## villager
 entity.Villager.dcs_trader=貿易商人
 entity.Villager.dcs_agri_researcher=農業研究家
 entity.Villager.dcs_engineer=機械技師
 
-#advancement
+## advancement
 advancements.dcs_climate.core.title=Heat and Climate
 advancements.dcs_climate.core.description=気候を利用して遊ぼう!
 advancements.dcs_climate.climate_damage.title=危険な温度

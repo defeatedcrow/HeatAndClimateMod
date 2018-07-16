@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.orevein.OreSet;
+import defeatedcrow.hac.main.api.orevein.VeinTable;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

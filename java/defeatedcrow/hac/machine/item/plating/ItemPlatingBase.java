@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.item.IPlatingTool;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -62,7 +63,7 @@ public abstract class ItemPlatingBase extends DCItem implements IPlatingTool {
 				}
 			}
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add("Use on the anvil.");
+			tooltip.add(EnumFixedName.ON_ANVIL.getLocalizedName());
 		}
 	}
 

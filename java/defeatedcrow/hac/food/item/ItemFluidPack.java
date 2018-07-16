@@ -9,8 +9,10 @@ import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +29,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
@@ -51,7 +52,8 @@ public class ItemFluidPack extends DCItem {
 			"tea",
 			"coffee",
 			"stock",
-			"ethanol"
+			"ethanol",
+			"soy_milk"
 	};
 
 	public static final String[] FLUIDS = {
@@ -67,8 +69,8 @@ public class ItemFluidPack extends DCItem {
 			"dcs.black_tea",
 			"dcs.black_coffee",
 			"dcs.stock",
-			"dcs.ethanol"
-
+			"dcs.ethanol",
+			"dcs.soy_milk"
 	};
 
 	public ItemFluidPack() {
@@ -89,7 +91,7 @@ public class ItemFluidPack extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 12;
+		return 13;
 	}
 
 	@Override
@@ -134,26 +136,27 @@ public class ItemFluidPack extends DCItem {
 
 		String s = "";
 		int i = stack.getItemDamage();
-		if (i > 12) {
-			i = 12;
+		if (i > 13) {
+			i = 13;
 		}
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
 		if (f != null) {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid: " + f.getLocalizedName(new FluidStack(f, 200)));
-			tooltip.add(TextFormatting.YELLOW.toString() + "Amount: " + 250);
+			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.FLUID.getLocalizedName() + ": " +
+					f.getLocalizedName(new FluidStack(f, 200)));
+			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.AMOUNT.getLocalizedName() + ": " + 250);
 			Fluid milk = FluidRegistry.getFluid("milk");
-			if (i == 2 || f == FoodInit.tomatoJuice) {
-				tooltip.add(TextFormatting.AQUA.toString() + "clear all potion effects.");
+			if (i == 2 || i == 13 || f == FoodInit.tomatoJuice) {
+				tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));
 			} else if (f == FoodInit.mazai) {
-				tooltip.add(TextFormatting.RED.toString() + "Powerful but dangerous!");
+				tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));
 			} else {
 				List<PotionEffect> effects = ItemSilverCup.getPotionEffect(f, 1F, 0);
 				if (!effects.isEmpty()) {
 					PotionEffect eff = effects.get(0);
 					if (eff != null && eff.getPotion() != null) {
-						String effName = I18n.translateToLocal(eff.getEffectName());
-						effName += " " + I18n.translateToLocal("potion.potency." + eff.getAmplifier()).trim();
+						String effName = I18n.format(eff.getEffectName());
+						effName += " " + I18n.format("potion.potency." + eff.getAmplifier()).trim();
 						effName += " (" + Potion.getPotionDurationString(eff, 1.0F) + ")";
 						tooltip.add(TextFormatting.AQUA.toString() + effName);
 					}
@@ -165,18 +168,18 @@ public class ItemFluidPack extends DCItem {
 
 		if (FluidRegistry.getFluid("milk") != null) {
 			if (i == 2) {
-				tooltip.add("Collect from cow with Fluid Hopper.");
+				tooltip.add(I18n.format("dcs.tip.correct_from_cow"));
 			}
 		} else {
 			if (i == 3) {
-				tooltip.add("Collect from cow with Fluid Hopper.");
+				tooltip.add(I18n.format("dcs.tip.correct_from_cow"));
 			}
 		}
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 12) {
-			meta = 12;
+		if (meta > 13) {
+			meta = 13;
 		}
 		return FLUIDS[meta];
 	}
@@ -212,6 +215,8 @@ public class ItemFluidPack extends DCItem {
 			meta = 11;
 		} else if (fluid == MachineInit.ethanol) {
 			meta = 12;
+		} else if (fluid == FoodInit.soyMilk) {
+			meta = 13;
 		}
 		return meta;
 	}
@@ -269,7 +274,7 @@ public class ItemFluidPack extends DCItem {
 				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
 			}
 
-			if (meta == 2 || fluid == FoodInit.tomatoJuice) {
+			if (meta == 2 || meta == 13 || fluid == FoodInit.tomatoJuice) {
 				living.clearActivePotions();
 				return false;
 			} else if (fluid == FoodInit.mazai) {

@@ -47,7 +47,8 @@ public class LoadingContRecipe {
 				new ItemStack(Items.NETHER_WART, 8, 0),
 				new ItemStack(Items.DYE, 8, EnumDyeColor.BROWN.getDyeDamage()),
 				new ItemStack(MainInit.bakedApple, 8, 0),
-				new ItemStack(Items.BAKED_POTATO, 8, 0)
+				new ItemStack(Items.BAKED_POTATO, 8, 0),
+				new ItemStack(Items.BEETROOT, 8, 0)
 		};
 		for (int i = 0; i < crops.length; i++) {
 			ItemStack c2 = crops[i].copy();
@@ -94,7 +95,8 @@ public class LoadingContRecipe {
 				new ItemStack(Items.BONE, 8, 0),
 				new ItemStack(Items.SPIDER_EYE, 8, 0),
 				new ItemStack(Items.ENDER_PEARL, 8, 0),
-				new ItemStack(Items.GUNPOWDER, 8, 0)
+				new ItemStack(Items.GUNPOWDER, 8, 0),
+				new ItemStack(Items.BLAZE_ROD, 8, 0)
 		};
 		for (int i = 0; i < enemy.length; i++) {
 			ItemStack c2 = enemy[i].copy();

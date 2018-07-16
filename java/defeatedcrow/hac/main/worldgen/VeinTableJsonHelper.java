@@ -17,6 +17,7 @@ import com.google.gson.stream.JsonWriter;
 
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.api.orevein.EnumVein;
+import defeatedcrow.hac.main.api.orevein.VeinTable;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;

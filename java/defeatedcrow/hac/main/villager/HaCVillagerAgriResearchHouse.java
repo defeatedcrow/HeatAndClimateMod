@@ -92,8 +92,8 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 			List<StructureComponent> list, Random rand, int minX, int minY, int minZ, EnumFacing facing, int type) {
 		StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(minX, minY, minZ, 0, 0, 0, 11, 7,
 				11, facing);
-		return StructureComponent.findIntersecting(list, box) != null ? null : new HaCVillagerAgriResearchHouse(start,
-				type, rand, box, facing);
+		return StructureComponent.findIntersecting(list, box) != null ? null :
+				new HaCVillagerAgriResearchHouse(start, type, rand, box, facing);
 	}
 
 	@Override
@@ -118,12 +118,11 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 		IBlockState planks = this.getBiomeSpecificBlockState(Blocks.PLANKS.getDefaultState());
 		IBlockState log = this.getBiomeSpecificBlockState(Blocks.LOG.getDefaultState());
 		IBlockState fence = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
+		IBlockState dirt = this.getBiomeSpecificBlockState(Blocks.DIRT.getDefaultState());
 		this.fillWithBlocks(world, box, 0, 0, 0, 11, 7, 11, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(),
 				false);
-		this.fillWithBlocks(world, box, 0, -1, 0, 11, -1, 11, Blocks.DIRT.getDefaultState(),
-				Blocks.DIRT.getDefaultState(), false);
-		this.fillWithBlocks(world, box, 2, 0, 6, 8, 0, 10, Blocks.DIRT.getDefaultState(), Blocks.DIRT.getDefaultState(),
-				false);
+		this.fillWithBlocks(world, box, 0, -1, 0, 11, -1, 11, dirt, dirt, false);
+		this.fillWithBlocks(world, box, 2, 0, 6, 8, 0, 10, dirt, dirt, false);
 		this.fillWithBlocks(world, box, 3, 0, 7, 7, 0, 9, Blocks.FARMLAND.getDefaultState(),
 				Blocks.FARMLAND.getDefaultState(), false);
 		this.setBlockState(world, Blocks.WATER.getDefaultState(), 7, 0, 6, box);

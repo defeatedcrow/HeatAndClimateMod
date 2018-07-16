@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.main.block.fluid.FluidDropItemDC;
+import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
@@ -59,8 +60,9 @@ public class ItemFluidDrop extends DCItem {
 		String s = "";
 		Fluid f = FluidRegistry.getFluid(contain);
 		if (f != null) {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid: " + f.getLocalizedName(new FluidStack(f, 200)));
-			tooltip.add(TextFormatting.YELLOW.toString() + "Amount: " + 200);
+			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.FLUID.getLocalizedName() + ": " +
+					f.getLocalizedName(new FluidStack(f, 200)));
+			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.AMOUNT.getLocalizedName() + ": " + 200);
 		} else {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid is empty: " + contain);
 		}

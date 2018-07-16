@@ -28,7 +28,8 @@ public class WorldGenConfig {
 			50,
 			15,
 			100,
-			30
+			30,
+			35
 	};
 
 	public static int[] radGen = new int[] {
@@ -73,10 +74,12 @@ public class WorldGenConfig {
 			Property geode_ore = cfg.get("ore gen setting", "Geode Gen Probability", depositGen[4],
 					"Generate in deep-underground. 1-100%");
 
+			Property s_sed_ore = cfg.get("ore gen setting", "SandSedimentary Gen Probability", depositGen[5],
+					"Generate in High-altitude of sandy mountain. 1-100%");
+
 			Property sed_rad = cfg.get("ore gen setting", "Sedimentary Gen Radius", radGen[0]);
 
-			Property s_sed_rad = cfg.get("ore gen setting", "SandSedimentary Gen Radius", radGen[1],
-					"Generate in High-altitude of sandy mountain. 1-100%");
+			Property s_sed_rad = cfg.get("ore gen setting", "SandSedimentary Gen Radius", radGen[1]);
 
 			Property char_rad = cfg.get("ore gen setting", "Chalcopyrite Gen Radius", radGen[2]);
 
@@ -120,6 +123,10 @@ public class WorldGenConfig {
 			int g = geode_ore.getInt();
 			if (g < 0 || g > 100) {
 				g = 0;
+			}
+			int ss = s_sed_ore.getInt();
+			if (ss < 0 || ss > 100) {
+				ss = 0;
 			}
 
 			int s2 = sed_rad.getInt();
@@ -165,6 +172,7 @@ public class WorldGenConfig {
 			depositGen[2] = v;
 			depositGen[3] = l;
 			depositGen[4] = g;
+			depositGen[5] = ss;
 			radGen[0] = s2;
 			radGen[1] = ss2;
 			radGen[2] = c2;
