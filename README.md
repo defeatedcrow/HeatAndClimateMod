@@ -5,7 +5,7 @@ A Mod for Minecraft 1.12.2
 Please visit my new wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
 
 ## Introduction
-- This is a mod being developed by @defeatedcrow. This mod requires HeatAndClimateLib.<br>  このmodはdefeatedcrowが作成する、HeatAndClimateLibを利用したMinecraft用Modです。HeatAndClimateLibを前提Modとして要求します。<br> 現在の開発環境はMC1.12.1です。
+This is a mod being developed by @defeatedcrow. This mod requires HeatAndClimateLib.<br>  このmodはdefeatedcrowが作成する、HeatAndClimateLibを利用したMinecraft用Modです。HeatAndClimateLibを前提Modとして要求します。<br> 現在の開発環境はMC1.12.1です。
 
 ## Current operating environment:
 - Minecraft 1.12.1  
@@ -52,4 +52,4 @@ This mod is distributed under the following license:
  -  Automatic addition of ore dictionary recipes. 自動的に鉱石辞書に変換・追加する機能。(FluidityFoodstuffsから移植)<br>
 
 <br>
-(c) defeatedcrow 2016
+Copyright (c) defeatedcrow 2016-
