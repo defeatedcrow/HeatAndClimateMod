@@ -4,4 +4,6 @@ I thank authors of each language files.
 zh_CN, en_US:
 TartaricAcid
 
+zh_TW
+ckhomo
 
