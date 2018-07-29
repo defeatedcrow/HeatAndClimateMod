@@ -49,7 +49,7 @@ public class MachineRecipeRegister {
 			// iron
 			ClimateSmelting iron = new ClimateSmelting(new ItemStack(Blocks.IRON_BLOCK, 1, 0), null, DCHeatTier.KILN, null, DCAirflow.TIGHT, 0F, false, new ItemStack(MainInit.dustBlock, 1, 5));
 			iron.requiredHeat().remove(DCHeatTier.SMELTING);
-			RecipeAPI.registerSmelting.addRecipe(iron, DCHeatTier.KILN);
+			RecipeAPI.registerSmelting.addRecipe(iron);
 		} else {
 			RecipeAPI.registerSmelting.addRecipe(new ItemStack(Blocks.IRON_BLOCK, 1, 0), DCHeatTier.KILN, null,
 					DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
@@ -129,36 +129,36 @@ public class MachineRecipeRegister {
 		// log
 		for (int i = 0; i < 6; i++) {
 			ClimateSmelting recipe = new ClimateSmelting(new ItemStack(MainInit.logCont, 1, 6), null, DCHeatTier.KILN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.logCont, 1, i));
-			RecipeAPI.registerSmelting.addRecipe(recipe, DCHeatTier.KILN);
+			RecipeAPI.registerSmelting.addRecipe(recipe);
 		}
 
 		// burnt crops
 		ClimateSmelting apple = new ClimateSmelting(new ItemStack(MainInit.cropCont, 1, 9), null, DCHeatTier.OVEN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.cropCont, 1, 0));
 		apple.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(apple, DCHeatTier.OVEN);
+		RecipeAPI.registerSmelting.addRecipe(apple);
 
 		ClimateSmelting potato = new ClimateSmelting(new ItemStack(MainInit.cropCont, 1, 10), null, DCHeatTier.OVEN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.cropCont, 1, 1));
 		potato.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(potato, DCHeatTier.OVEN);
+		RecipeAPI.registerSmelting.addRecipe(potato);
 
 		// 焼くと骨に、煮ると皮になる
 		ClimateSmelting flesh1 = new ClimateSmelting(new ItemStack(MainInit.dropCont, 1, 1), null, DCHeatTier.KILN, DCHumidity.DRY, null, 0, false, new ItemStack(MainInit.dropCont, 1, 0));
 		flesh1.requiredHum().add(DCHumidity.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(flesh1, DCHeatTier.OVEN);
+		RecipeAPI.registerSmelting.addRecipe(flesh1);
 
 		ClimateSmelting flesh2 = new ClimateSmelting(new ItemStack(MainInit.miscCont, 1, 2), null, DCHeatTier.KILN, DCHumidity.WET, null, 0, false, new ItemStack(MainInit.dropCont, 1, 0));
 		flesh2.requiredHum().add(DCHumidity.UNDERWATER);
-		RecipeAPI.registerSmelting.addRecipe(flesh2, DCHeatTier.OVEN);
+		RecipeAPI.registerSmelting.addRecipe(flesh2);
 
 		// AMTにもあった、火薬と粘土の互換
 		ClimateSmelting powder = new ClimateSmelting(new ItemStack(MainInit.miscCont, 1, 0), null, DCHeatTier.HOT, DCHumidity.WET, null, 0, false, new ItemStack(MainInit.dropCont, 1, 4));
 		powder.requiredHum().add(DCHumidity.UNDERWATER);
-		RecipeAPI.registerSmelting.addRecipe(powder, DCHeatTier.HOT);
+		RecipeAPI.registerSmelting.addRecipe(powder);
 
 		ClimateSmelting clay = new ClimateSmelting(new ItemStack(MainInit.dropCont, 1, 4), null, DCHeatTier.HOT, DCHumidity.DRY, DCAirflow.NORMAL, 0, false, new ItemStack(MainInit.miscCont, 1, 0));
 		clay.requiredAir().add(DCAirflow.FLOW);
 		clay.requiredAir().add(DCAirflow.WIND);
-		RecipeAPI.registerSmelting.addRecipe(clay, DCHeatTier.HOT);
+		RecipeAPI.registerSmelting.addRecipe(clay);
 
 	}
 
@@ -166,25 +166,25 @@ public class MachineRecipeRegister {
 		// 建材
 		ClimateSmelting marble = new ClimateSmelting(new ItemStack(MainInit.gemBlock, 1, 6), null, DCHeatTier.KILN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.ores_2, 1, 0));
 		marble.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(marble, DCHeatTier.KILN);
+		RecipeAPI.registerSmelting.addRecipe(marble);
 
 		ClimateSmelting sele = new ClimateSmelting(new ItemStack(MainInit.selenite, 1, 0), null, DCHeatTier.KILN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.gemBlock, 1, 3));
 		sele.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(sele, DCHeatTier.KILN);
+		RecipeAPI.registerSmelting.addRecipe(sele);
 
 		ClimateSmelting cry = new ClimateSmelting(new ItemStack(MainInit.selenite, 1, 3), null, DCHeatTier.KILN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.dustBlock_2, 1, 1));
 		cry.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(cry, DCHeatTier.KILN);
+		RecipeAPI.registerSmelting.addRecipe(cry);
 
 		ClimateSmelting dirt = new ClimateSmelting(new ItemStack(MainInit.dustBlock_2, 1, 0), null, DCHeatTier.OVEN, DCHumidity.DRY, null, 0, false, new ItemStack(Blocks.DIRT, 1, 0));
-		RecipeAPI.registerSmelting.addRecipe(dirt, DCHeatTier.OVEN);
+		RecipeAPI.registerSmelting.addRecipe(dirt);
 
 		ClimateSmelting dirt2 = new ClimateSmelting(new ItemStack(Blocks.SAND, 1, 0), null, DCHeatTier.SMELTING, DCHumidity.DRY, null, 0, false, new ItemStack(MainInit.dustBlock_2, 1, 0));
-		RecipeAPI.registerSmelting.addRecipe(dirt2, DCHeatTier.SMELTING);
+		RecipeAPI.registerSmelting.addRecipe(dirt2);
 
 		ClimateSmelting dirt3 = new ClimateSmelting(new ItemStack(Blocks.DIRT, 1, 0), null, DCHeatTier.WARM, DCHumidity.WET, null, 0, false, new ItemStack(MainInit.dustBlock_2, 1, 0));
 		dirt3.requiredHum().add(DCHumidity.UNDERWATER);
-		RecipeAPI.registerSmelting.addRecipe(dirt3, DCHeatTier.WARM);
+		RecipeAPI.registerSmelting.addRecipe(dirt3);
 	}
 
 	static void loadSmelting() {
