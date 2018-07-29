@@ -25,7 +25,7 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 
 @JEIPlugin
-public class DCsJEIPlugin2 implements IModPlugin {
+public class DCsJeiPlugin2 implements IModPlugin {
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
