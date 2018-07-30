@@ -18,31 +18,31 @@ public class ModelMeatStick extends DCFoodModelBase {
 	public ModelMeatStick(boolean baked) {
 		super(baked);
 
-		textureWidth = 64;
+		textureWidth = 32;
 		textureHeight = 32;
 
 		stick = new ModelRenderer(this, 0, 0);
 		stick.addBox(-0.5F, -8F, -0.5F, 1, 16, 1);
 		stick.setRotationPoint(0F, -8F, 0F);
-		stick.setTextureSize(64, 32);
+		stick.setTextureSize(32, 32);
 		stick.mirror = true;
 		setRotation(stick, 0F, 0F, 0F);
 		meat1 = new ModelRenderer(this, 6, 0);
 		meat1.addBox(-3F, 1F, -1F, 6, 4, 2);
 		meat1.setRotationPoint(0F, -8F, 0F);
-		meat1.setTextureSize(64, 32);
+		meat1.setTextureSize(32, 32);
 		meat1.mirror = true;
 		setRotation(meat1, -0.0349066F, 0.0698132F, 0F);
 		meat2 = new ModelRenderer(this, 6, 0);
 		meat2.addBox(-3F, -3F, -1F, 6, 4, 2);
 		meat2.setRotationPoint(0F, -8F, 0F);
-		meat2.setTextureSize(64, 32);
+		meat2.setTextureSize(32, 32);
 		meat2.mirror = true;
 		setRotation(meat2, 0.0174533F, -0.0349066F, 0F);
 		meat3 = new ModelRenderer(this, 6, 0);
 		meat3.addBox(-3F, -7F, -1F, 6, 4, 2);
 		meat3.setRotationPoint(0F, -8F, 0F);
-		meat3.setTextureSize(64, 32);
+		meat3.setTextureSize(32, 32);
 		meat3.mirror = true;
 		setRotation(meat3, -0.0349066F, 0.0523599F, 0F);
 	}

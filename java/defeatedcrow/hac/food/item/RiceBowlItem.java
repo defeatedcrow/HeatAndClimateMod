@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.EntityRiceBall;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntityRiceMushroom;
 import defeatedcrow.hac.main.util.EnumFixedName;
@@ -26,12 +27,12 @@ public class RiceBowlItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 1;
+		return 2;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 2);
 		String s = "items/food/rice_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/rice_" + s;
@@ -43,7 +44,8 @@ public class RiceBowlItem extends FoodItemBase {
 	public String[] getNameSuffix() {
 		String[] s = {
 				"boiled",
-				"mushroom"
+				"mushroom",
+				"ball"
 		};
 		return s;
 	}
@@ -55,7 +57,10 @@ public class RiceBowlItem extends FoodItemBase {
 		switch (i) {
 		case 1:
 			ret = new EntityRiceMushroom(world, x, y, z, player);
+		case 2:
+			ret = new EntityRiceBall(world, x, y, z, player);
 		}
+
 		return ret;
 	}
 

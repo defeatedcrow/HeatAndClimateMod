@@ -39,6 +39,7 @@ import defeatedcrow.hac.food.client.PlatePotatoRenderer;
 import defeatedcrow.hac.food.client.PlateTomatoRenderer;
 import defeatedcrow.hac.food.client.PorkStickRenderer;
 import defeatedcrow.hac.food.client.PotatoQuicheRenderer;
+import defeatedcrow.hac.food.client.RiceBallRenderer;
 import defeatedcrow.hac.food.client.RiceBowlRenderer;
 import defeatedcrow.hac.food.client.RiceMushroomRenderer;
 import defeatedcrow.hac.food.client.RoundBreadCreamRenderer;
@@ -49,6 +50,8 @@ import defeatedcrow.hac.food.client.SaladPotatoRenderer;
 import defeatedcrow.hac.food.client.SandwichAppleRenderer;
 import defeatedcrow.hac.food.client.SandwichEggRenderer;
 import defeatedcrow.hac.food.client.SandwichSaladRenderer;
+import defeatedcrow.hac.food.client.SimmeredGomokuRenderer;
+import defeatedcrow.hac.food.client.SimmeredSoyRenderer;
 import defeatedcrow.hac.food.client.SpinachQuicheRenderer;
 import defeatedcrow.hac.food.client.SquareBreadRenderer;
 import defeatedcrow.hac.food.client.SquidStickRenderer;
@@ -89,6 +92,7 @@ import defeatedcrow.hac.food.entity.CrostataTartEntity;
 import defeatedcrow.hac.food.entity.CustardPieEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
 import defeatedcrow.hac.food.entity.EmptyPlateEntity;
+import defeatedcrow.hac.food.entity.EntityRiceBall;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntityRiceMushroom;
 import defeatedcrow.hac.food.entity.EntitySandwich;
@@ -114,6 +118,8 @@ import defeatedcrow.hac.food.entity.SaladGreenEntity;
 import defeatedcrow.hac.food.entity.SaladLotusrootEntity;
 import defeatedcrow.hac.food.entity.SaladPotatoEntity;
 import defeatedcrow.hac.food.entity.SaladSandwichEntity;
+import defeatedcrow.hac.food.entity.SimmeredGomokuEntity;
+import defeatedcrow.hac.food.entity.SimmeredSoyEntity;
 import defeatedcrow.hac.food.entity.SoupPlateEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
@@ -219,6 +225,9 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(CakeBerryEntity.class, JellyBerryRenderer.class);
 		ClientMainProxy.registRender(CakeKuzuEntity.class, JellyKuzuRenderer.class);
 		ClientMainProxy.registRender(CakeCocotteEntity.class, CakeCocotteRenderer.class);
+		ClientMainProxy.registRender(EntityRiceBall.class, RiceBallRenderer.class);
+		ClientMainProxy.registRender(SimmeredSoyEntity.class, SimmeredSoyRenderer.class);
+		ClientMainProxy.registRender(SimmeredGomokuEntity.class, SimmeredGomokuRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -247,12 +256,12 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_ID, "dcs_food_pie", "food", 11);
 		instance.regSimpleItem(FoodInit.sandwich, ClimateCore.PACKAGE_ID, "dcs_food_sandwich", "food", 3);
 		instance.regSimpleItem(FoodInit.clubsandwich, ClimateCore.PACKAGE_ID, "dcs_food_clubsand", "food", 1);
-		instance.regSimpleItem(FoodInit.ricebowl, ClimateCore.PACKAGE_ID, "dcs_food_rice_bowl", "food", 1);
+		instance.regSimpleItem(FoodInit.ricebowl, ClimateCore.PACKAGE_ID, "dcs_food_rice_bowl", "food", 2);
 		instance.regSimpleItem(FoodInit.steakplate, ClimateCore.PACKAGE_ID, "dcs_food_empty_plate", "food", 0);
 		instance.regSimpleItem(FoodInit.plateMeal, ClimateCore.PACKAGE_ID, "dcs_food_plate_meat", "food", 7);
 		instance.regSimpleItem(FoodInit.plateSoup, ClimateCore.PACKAGE_ID, "dcs_food_plate_potato", "food", 3);
 		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 10);
-		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 2);
+		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 4);
 		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 9);
 
 		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 13);

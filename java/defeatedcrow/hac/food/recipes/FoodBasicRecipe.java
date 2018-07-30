@@ -440,45 +440,51 @@ public class FoodBasicRecipe {
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.clubsandwich, 2, 0), new Object[] {
 				new ItemStack(FoodInit.bread, 1, 3),
-				"listAllveggie",
+				"listAllgreenveggie",
 				"cropTomato",
 				new ItemStack(Items.COOKED_BEEF, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.clubsandwich, 2, 1), new Object[] {
 				new ItemStack(FoodInit.bread, 1, 1),
-				"listAllveggie",
+				"listAllgreenveggie",
 				"cropTomato",
 				new ItemStack(Items.COOKED_FISH, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.salad, 1, 0), new Object[] {
-				"cropSpinach",
-				"cropTomato",
-				"listAllveggie"
-		});
-
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.salad, 1, 0), new Object[] {
-				"cropCabagge",
-				"cropTomato",
-				"listAllveggie"
-		});
-
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.salad, 1, 0), new Object[] {
-				"cropLettuce",
+				"listAllgreenveggie",
 				"cropTomato",
 				"listAllveggie"
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.salad, 1, 1), new Object[] {
 				"egg",
-				"listAllveggie",
+				"listAllgreenveggie",
 				new ItemStack(Items.BAKED_POTATO, 1, 0)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.salad, 1, 2), new Object[] {
 				"cropLotusRoot",
 				"cropCarrot"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.salad, 2, 3), new Object[] {
+				"cropSoybean",
+				"cropSeaweed"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.salad, 2, 4), new Object[] {
+				new ItemStack(Items.CHICKEN, 1, 0),
+				"cropSoybean",
+				new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0),
+				"cropCarrot",
+				"listAllrootveggie"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.ricebowl, 1, 2), new Object[] {
+				new ItemStack(FoodInit.ricebowl, 1, 0),
+				"dustSalt"
 		});
 
 		ItemStack[] meats = {
@@ -539,16 +545,24 @@ public class FoodBasicRecipe {
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.sandwich, 2, 3), new Object[] {
 				new ItemStack(FoodInit.bread, 1, 3),
-				"cropSpinach",
+				"listAllgreenveggie",
 				"cropOnion",
 				new ItemStack(FoodInit.meat, 1, 5)
 		});
 
 		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.clubsandwich, 1, 1), new Object[] {
 				new ItemStack(FoodInit.bread, 1, 1),
-				"listAllveggie",
+				"listAllgreenveggie",
 				"cropTomato",
 				new ItemStack(FoodInit.meat, 1, 5)
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.salad, 2, 4), new Object[] {
+				new ItemStack(FoodInit.meat, 1, 5),
+				"cropSoybean",
+				new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0),
+				"cropCarrot",
+				"listAllrootveggie"
 		});
 
 		// yagen

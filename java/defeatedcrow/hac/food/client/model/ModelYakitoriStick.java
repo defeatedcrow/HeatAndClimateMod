@@ -19,37 +19,37 @@ public class ModelYakitoriStick extends DCFoodModelBase {
 	public ModelYakitoriStick(boolean baked) {
 		super(baked);
 
-		textureWidth = 64;
+		textureWidth = 32;
 		textureHeight = 32;
 
 		stick = new ModelRenderer(this, 0, 0);
 		stick.addBox(-0.5F, -8F, -0.5F, 1, 16, 1);
 		stick.setRotationPoint(0F, -8F, 0F);
-		stick.setTextureSize(64, 32);
+		stick.setTextureSize(32, 32);
 		stick.mirror = true;
 		setRotation(stick, 0F, 0F, 0F);
 		chicken1 = new ModelRenderer(this, 6, 0);
 		chicken1.addBox(-2F, 2F, -2F, 4, 3, 4);
 		chicken1.setRotationPoint(0F, -8F, 0F);
-		chicken1.setTextureSize(64, 32);
+		chicken1.setTextureSize(32, 32);
 		chicken1.mirror = true;
 		setRotation(chicken1, 0.0523599F, 0.2617994F, 0F);
 		chicken2 = new ModelRenderer(this, 6, 0);
 		chicken2.addBox(-2F, -1F, -2F, 4, 3, 4);
 		chicken2.setRotationPoint(0F, -8F, 0F);
-		chicken2.setTextureSize(64, 32);
+		chicken2.setTextureSize(32, 32);
 		chicken2.mirror = true;
 		setRotation(chicken2, -0.0698132F, -0.0523599F, 0F);
 		chicken3 = new ModelRenderer(this, 6, 0);
 		chicken3.addBox(-2F, -4F, -2F, 4, 3, 4);
 		chicken3.setRotationPoint(0F, -8F, 0F);
-		chicken3.setTextureSize(64, 32);
+		chicken3.setTextureSize(32, 32);
 		chicken3.mirror = true;
 		setRotation(chicken3, 0F, 0.2094395F, 0F);
 		chicken4 = new ModelRenderer(this, 6, 0);
 		chicken4.addBox(-2F, -7F, -2F, 4, 3, 4);
 		chicken4.setRotationPoint(0F, -8F, 0F);
-		chicken4.setTextureSize(64, 32);
+		chicken4.setTextureSize(32, 32);
 		chicken4.mirror = true;
 		setRotation(chicken4, 0F, -0.1745329F, 0F);
 	}

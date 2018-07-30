@@ -10,6 +10,8 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.SaladGreenEntity;
 import defeatedcrow.hac.food.entity.SaladLotusrootEntity;
 import defeatedcrow.hac.food.entity.SaladPotatoEntity;
+import defeatedcrow.hac.food.entity.SimmeredGomokuEntity;
+import defeatedcrow.hac.food.entity.SimmeredSoyEntity;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,13 +29,17 @@ public class SaladItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 2;
+		return 4;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 2);
-		String s = "items/food/salad_" + this.getNameSuffix()[i];
+		int i = MathHelper.clamp(0, meta, 4);
+		String s = "items/food/";
+		if (i < 2)
+			s += "salad_" + this.getNameSuffix()[i];
+		else
+			s += "simmered_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
 		}
@@ -45,7 +51,9 @@ public class SaladItem extends FoodItemBase {
 		String[] s = {
 				"green",
 				"potato",
-				"lotusroot"
+				"lotusroot",
+				"soy",
+				"gomoku"
 		};
 		return s;
 	}
@@ -60,12 +68,18 @@ public class SaladItem extends FoodItemBase {
 		if (i == 2) {
 			ret = new SaladLotusrootEntity(world, x, y, z, player);
 		}
+		if (i == 3) {
+			ret = new SimmeredSoyEntity(world, x, y, z, player);
+		}
+		if (i == 4) {
+			ret = new SimmeredGomokuEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta == 2 ? 8 : 12;
+		return meta == 2 || meta == 3 ? 8 : 12;
 	}
 
 	@Override

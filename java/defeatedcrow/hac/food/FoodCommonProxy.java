@@ -23,6 +23,7 @@ import defeatedcrow.hac.food.entity.CrostataTartEntity;
 import defeatedcrow.hac.food.entity.CustardPieEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
 import defeatedcrow.hac.food.entity.EmptyPlateEntity;
+import defeatedcrow.hac.food.entity.EntityRiceBall;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntityRiceMushroom;
 import defeatedcrow.hac.food.entity.EntitySandwich;
@@ -48,6 +49,8 @@ import defeatedcrow.hac.food.entity.SaladGreenEntity;
 import defeatedcrow.hac.food.entity.SaladLotusrootEntity;
 import defeatedcrow.hac.food.entity.SaladPotatoEntity;
 import defeatedcrow.hac.food.entity.SaladSandwichEntity;
+import defeatedcrow.hac.food.entity.SimmeredGomokuEntity;
+import defeatedcrow.hac.food.entity.SimmeredSoyEntity;
 import defeatedcrow.hac.food.entity.SoupPlateEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
@@ -114,6 +117,7 @@ public class FoodCommonProxy {
 
 		DCRegistryUtil.addEntity(EntityRiceBowl.class, "food", "rice_bowl");
 		DCRegistryUtil.addEntity(EntityRiceMushroom.class, "food", "rice_mushroom");
+		DCRegistryUtil.addEntity(EntityRiceBall.class, "food", "rice_ball");
 
 		DCRegistryUtil.addEntity(EmptyPlateEntity.class, "food", "empty_steakplate");
 		DCRegistryUtil.addEntity(BeefPlateEntity.class, "food", "plate_beef");
@@ -141,6 +145,9 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(SaladGreenEntity.class, "food", "salad_green");
 		DCRegistryUtil.addEntity(SaladLotusrootEntity.class, "food", "salad_lotusroot");
 		DCRegistryUtil.addEntity(SaladPotatoEntity.class, "food", "salad_potato");
+		DCRegistryUtil.addEntity(SimmeredSoyEntity.class, "food", "simmered_soy");
+		DCRegistryUtil.addEntity(SimmeredGomokuEntity.class, "food", "simmered_gomoku");
+
 		DCRegistryUtil.addEntity(CakeButterEntity.class, "food", "cake_butter");
 		DCRegistryUtil.addEntity(CakeChocolateEntity.class, "food", "cake_chocolate");
 		DCRegistryUtil.addEntity(CakeCoffeeEntity.class, "food", "cake_coffee");
