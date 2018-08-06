@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -93,16 +94,19 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && !DCState.getBool(state, DCState.POWERED)) {
-			for (int i = 0; i < 5; i++) {
-				EnumFacing face = DCState.getSide(state, DCState.SIDE).getFacing();
-				double x = pos.getX() + 0.5D - face.getFrontOffsetX() * 0.25D - face.getFrontOffsetZ() * 0.25D;
-				double y = pos.getY() + 1.0D;
-				double z = pos.getZ() + 0.5D - face.getFrontOffsetZ() * 0.25D - face.getFrontOffsetX() * 0.25D;
-				double dx = 0.0D;
-				double dy = 0.0D;
-				double dz = 0.0D;
+			int c = ClimateMain.proxy.getParticleCount();
+			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+				for (int i = 0; i < 5; i++) {
+					EnumFacing face = DCState.getSide(state, DCState.SIDE).getFacing();
+					double x = pos.getX() + 0.5D - face.getFrontOffsetX() * 0.25D - face.getFrontOffsetZ() * 0.25D;
+					double y = pos.getY() + 1.0D;
+					double z = pos.getZ() + 0.5D - face.getFrontOffsetZ() * 0.25D - face.getFrontOffsetX() * 0.25D;
+					double dx = 0.0D;
+					double dy = 0.0D;
+					double dz = 0.0D;
 
-				world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
+					world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
+				}
 			}
 		}
 	}

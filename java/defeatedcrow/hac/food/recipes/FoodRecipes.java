@@ -35,6 +35,7 @@ public class FoodRecipes {
 		loadCropData();
 		loadFuelData();
 		loadDrinkData();
+
 	}
 
 	static void loadMillRecipe() {
@@ -173,4 +174,5 @@ public class FoodRecipes {
 		DCPluginFluid.registerPotion(FluidRegistry.LAVA, MobEffects.FIRE_RESISTANCE);
 		DCPluginFluid.registerPotion(FoodInit.soyMilk, MobEffects.INSTANT_HEALTH);
 	}
+
 }

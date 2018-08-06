@@ -26,6 +26,7 @@ public class YakitoriStickEntity extends FoodEntityBase {
 	protected ItemStack[] drops() {
 		return new ItemStack[] {
 				new ItemStack(FoodInit.sticks, 1, 2),
-				new ItemStack(FoodInit.sticks, 1, 3) };
+				new ItemStack(FoodInit.sticks, 1, 3)
+		};
 	}
 }

@@ -187,12 +187,15 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && BlockNormalChamber.isLit(world, pos)) {
-			EnumFacing face = DCState.getFace(state, DCState.FACING).getOpposite();
-			double x = pos.getX() + 0.5D + face.getFrontOffsetX() * 0.5D + rand.nextDouble() * 0.15D;
-			double y = pos.getY() + 0.25D + rand.nextDouble() * 0.15D;
-			double z = pos.getZ() + 0.5D + face.getFrontOffsetZ() * 0.5D + rand.nextDouble() * 0.15D;
+			int c = ClimateMain.proxy.getParticleCount();
+			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+				EnumFacing face = DCState.getFace(state, DCState.FACING).getOpposite();
+				double x = pos.getX() + 0.5D + face.getFrontOffsetX() * 0.5D + rand.nextDouble() * 0.15D;
+				double y = pos.getY() + 0.25D + rand.nextDouble() * 0.15D;
+				double z = pos.getZ() + 0.5D + face.getFrontOffsetZ() * 0.5D + rand.nextDouble() * 0.15D;
 
-			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+			}
 		}
 	}
 

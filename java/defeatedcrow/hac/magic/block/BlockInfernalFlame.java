@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -83,8 +84,8 @@ public class BlockInfernalFlame extends BlockContainerDC implements IHeatTile {
 			} else {
 				for (int y = 1; y < 4; y++) {
 					BlockPos p3 = p2.up(y);
-					if (world.getBlockState(p3).getBlock().isReplaceable(world, p3)
-							&& world.getBlockState(p3).getMaterial() != Material.FIRE) {
+					if (world.getBlockState(p3).getBlock().isReplaceable(world, p3) && world.getBlockState(
+							p3).getMaterial() != Material.FIRE) {
 						world.setBlockState(p3, Blocks.FIRE.getDefaultState(), 2);
 						count++;
 						break;
@@ -146,7 +147,8 @@ public class BlockInfernalFlame extends BlockContainerDC implements IHeatTile {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (world.isRemote) {
+		int c = ClimateMain.proxy.getParticleCount();
+		if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
 			if (rand.nextInt(24) == 0) {
 				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, SoundEvents.BLOCK_FIRE_AMBIENT,
 						SoundCategory.BLOCKS, 1.0F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.3F, false);

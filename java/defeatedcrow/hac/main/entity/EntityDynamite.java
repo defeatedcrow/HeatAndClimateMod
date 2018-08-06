@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.loot.LootContext;
@@ -69,12 +70,11 @@ public class EntityDynamite extends Entity {
 					count = 3;
 
 					if (!this.world.isRemote) {
-						CustomExplosion explosion = new CustomExplosion(world, this, placer, posX, posY, posZ, 4.0F,
-								CustomExplosion.Type.Silk, true);
+						CustomExplosion explosion = new CustomExplosion(world, this, placer, posX, posY, posZ, 4.0F, CustomExplosion.Type.Silk, true);
 						explosion.doExplosion();
-						this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F,
-								1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-						doBlockDestroy(3);
+						this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F +
+								0.9F));
+						doBlockDestroy(3, explosion);
 					}
 				} else {
 					world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D,
@@ -86,7 +86,7 @@ public class EntityDynamite extends Entity {
 		}
 	}
 
-	protected void doBlockDestroy(int range) {
+	protected void doBlockDestroy(int range, Explosion exp) {
 		BlockPos pos = this.getPosition();
 		BlockPos min = pos.add(-range, -range, -range);
 		BlockPos max = pos.add(range, range, range);
@@ -99,9 +99,9 @@ public class EntityDynamite extends Entity {
 						LootContext.Builder lootcontext$builder = new LootContext.Builder((WorldServer) this.world);
 						lootcontext$builder.withLuck(0.0F);
 
-						for (ItemStack itemstack : this.world.getLootTableManager()
-								.getLootTableFromLocation(LootTableList.GAMEPLAY_FISHING)
-								.generateLootForPools(this.rand, lootcontext$builder.build())) {
+						for (ItemStack itemstack : this.world.getLootTableManager().getLootTableFromLocation(
+								LootTableList.GAMEPLAY_FISHING).generateLootForPools(this.rand,
+										lootcontext$builder.build())) {
 							double d0 = p.getX() + 0.5D;
 							double d1 = p.getY() + 0.5D;
 							double d2 = p.getZ() + 0.5D;
@@ -111,11 +111,11 @@ public class EntityDynamite extends Entity {
 						}
 					}
 
-				} else {
+				} else if (this.canExplosionDestroyBlock(exp, world, pos, world.getBlockState(pos), 4F)) {
 					if (isSilk() && state.getBlock().canSilkHarvest(world, p, state, null)) {
 						ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
-						EntityItem drop = new EntityItem(world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() + 0.5D,
-								item);
+						EntityItem drop = new EntityItem(world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() +
+								0.5D, item);
 						world.spawnEntity(drop);
 					} else {
 						state.getBlock().dropBlockAsItem(world, p, state, 0);

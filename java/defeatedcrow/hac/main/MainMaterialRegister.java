@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.core.base.DCItemBlock;
+import defeatedcrow.hac.core.event.DispenseEntityItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInitRegister;
 import defeatedcrow.hac.machine.MachineInitRegister;
@@ -142,6 +143,8 @@ public class MainMaterialRegister {
 		FoodInitRegister.load();
 		MachineInitRegister.load();
 		MagicInitRegister.load();
+
+		registerDispense();
 	}
 
 	static void registerBlocks() {
@@ -984,6 +987,10 @@ public class MainMaterialRegister {
 			DCMaterialReg.registerItem(MainInit.metalMaterials, ClimateCore.PACKAGE_BASE + "_metal",
 					ClimateMain.MOD_ID);
 		}
+	}
+
+	static void registerDispense() {
+		DispenseEntityItem.getInstance().dispenceList.add(MainInit.cushionGray);
 	}
 
 	static void registerMaterialEnum() {

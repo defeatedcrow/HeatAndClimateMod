@@ -137,15 +137,18 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && BlockSteelPot.isLit(world, pos)) {
-			if (rand.nextFloat() < 0.25F) {
-				double x = pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
-				double y = pos.getY() + 0.75D + rand.nextDouble() * 0.25D;
-				double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
-				double dx = rand.nextDouble() * 0.05D;
-				double dy = rand.nextDouble() * 0.05D;
-				double dz = rand.nextDouble() * 0.05D;
+			int c = ClimateMain.proxy.getParticleCount();
+			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+				if (rand.nextFloat() < 0.25F) {
+					double x = pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
+					double y = pos.getY() + 0.75D + rand.nextDouble() * 0.25D;
+					double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
+					double dx = rand.nextDouble() * 0.05D;
+					double dy = rand.nextDouble() * 0.05D;
+					double dz = rand.nextDouble() * 0.05D;
 
-				world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
+					world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
+				}
 			}
 		}
 	}

@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -112,7 +113,8 @@ public class BlockIceCluster extends BlockContainerDC implements IHeatTile {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (world.isRemote) {
+		int c = ClimateMain.proxy.getParticleCount();
+		if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
 			double x = pos.getX() + rand.nextDouble();
 			double y = pos.getY() + 0.25D + rand.nextDouble();
 			double z = pos.getZ() + rand.nextDouble();

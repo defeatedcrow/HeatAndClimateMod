@@ -298,4 +298,19 @@ public class ClientMainProxy extends CommonMainProxy {
 	public boolean isSneakKeyDown() {
 		return Minecraft.getMinecraft().gameSettings.keyBindSneak.isKeyDown();
 	}
+
+	@Override
+	public int getParticleCount() {
+		int i = Minecraft.getMinecraft().gameSettings.particleSetting;
+		switch (i) {
+		case 0:
+			return 4;
+		case 1:
+			return 12;
+		case 2:
+			return 0;
+		default:
+			return 10;
+		}
+	}
 }

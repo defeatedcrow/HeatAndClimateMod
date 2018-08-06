@@ -14,6 +14,7 @@ import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
@@ -83,16 +84,19 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && state.getBlock() == this && this.stack.getFluid() != null) {
-			int temp = this.stack.getFluid().getTemperature();
-			if (temp > 320 && rand.nextFloat() < 0.25F) {
-				double x = pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
-				double y = pos.getY() + 0.85D + rand.nextDouble() * 0.25D;
-				double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
-				double dx = 0D;
-				double dy = 0D;
-				double dz = 0D;
-				Particle cloud = new ParticleCloudDC.Factory().createParticle(0, world, x, y, z, dx, dy, dz, null);
-				FMLClientHandler.instance().getClient().effectRenderer.addEffect(cloud);
+			int c = ClimateMain.proxy.getParticleCount();
+			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+				int temp = this.stack.getFluid().getTemperature();
+				if (temp > 320) {
+					double x = pos.getX() + 0.5D + rand.nextDouble() * 0.25D;
+					double y = pos.getY() + 0.85D + rand.nextDouble() * 0.25D;
+					double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.25D;
+					double dx = 0D;
+					double dy = 0D;
+					double dz = 0D;
+					Particle cloud = new ParticleCloudDC.Factory().createParticle(0, world, x, y, z, dx, dy, dz, null);
+					FMLClientHandler.instance().getClient().effectRenderer.addEffect(cloud);
+				}
 			}
 		}
 	}

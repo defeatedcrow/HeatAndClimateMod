@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.block.material.Material;
@@ -58,11 +59,14 @@ public class BlockShitirin extends BlockNormalChamber {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && BlockShitirin.isLit(world, pos)) {
-			double x = pos.getX() + 0.5D + rand.nextDouble() * 0.15D;
-			double y = pos.getY() + 0.75D + rand.nextDouble() * 0.15D;
-			double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.15D;
+			int c = ClimateMain.proxy.getParticleCount();
+			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+				double x = pos.getX() + 0.5D + rand.nextDouble() * 0.15D;
+				double y = pos.getY() + 0.75D + rand.nextDouble() * 0.15D;
+				double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.15D;
 
-			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+			}
 		}
 	}
 

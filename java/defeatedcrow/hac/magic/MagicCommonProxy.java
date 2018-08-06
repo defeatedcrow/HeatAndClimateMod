@@ -64,9 +64,9 @@ public class MagicCommonProxy {
 		DCRegistryUtil.addEntity(EntityProjBarrier.class, "magic", "circle_1");
 		DCRegistryUtil.addEntity(EntityHealBarrier.class, "magic", "circle_2");
 
-		DCRegistryUtil.addEntity(EntityProjLightSpit.class, "magic", "proj_light");
-		DCRegistryUtil.addEntity(EntityProjIceSpit.class, "magic", "proj_ice");
-		DCRegistryUtil.addEntity(EntityProjWhiteSpit.class, "magic", "proj_white");
+		DCRegistryUtil.addEntity(EntityProjLightSpit.class, "magic", "proj_light", 1);
+		DCRegistryUtil.addEntity(EntityProjIceSpit.class, "magic", "proj_ice", 1);
+		DCRegistryUtil.addEntity(EntityProjWhiteSpit.class, "magic", "proj_white", 1);
 	}
 
 	public static void loadTE() {

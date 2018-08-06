@@ -5,6 +5,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCMaterialReg;
+import defeatedcrow.hac.core.event.DispenseEntityItem;
 import defeatedcrow.hac.food.block.BlockDish;
 import defeatedcrow.hac.food.block.BlockPotteryPot;
 import defeatedcrow.hac.food.block.BlockSilkwormBox;
@@ -71,6 +72,7 @@ public class FoodInitRegister {
 
 		if (ModuleConfig.food) {
 			loadCreativeTab();
+			registerDispense();
 		}
 	}
 
@@ -442,6 +444,23 @@ public class FoodInitRegister {
 		FoodInit.saplings.setCreativeTab(ClimateMain.food);
 
 		FoodInit.dish.setCreativeTab(ClimateMain.build);
+	}
+
+	static void registerDispense() {
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.bowlSoup);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.bread);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.cake);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.clubsandwich);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.cupSilver);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.pastrySquare);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.pastryRound);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.plateMeal);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.plateSoup);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.salad);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.ricebowl);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.sandwich);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.steakplate);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.sticks);
 	}
 
 }

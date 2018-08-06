@@ -514,4 +514,8 @@ public class CommonMainProxy implements IGuiHandler {
 		return false;
 	}
 
+	public int getParticleCount() {
+		return 0;
+	}
+
 }

@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine.entity;
 
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.BlockRailPowered;
@@ -25,8 +26,8 @@ import net.minecraft.world.World;
 
 public class EntityMinecartMotor extends EntityMinecartEmpty {
 
-	private static final DataParameter<Boolean> POWERED = EntityDataManager
-			.<Boolean>createKey(EntityMinecartMotor.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(
+			EntityMinecartMotor.class, DataSerializers.BOOLEAN);
 	private int fuel;
 
 	public EntityMinecartMotor(World worldIn) {
@@ -65,18 +66,18 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 	public void onUpdate() {
 		super.onUpdate();
 
-		if (this.rand.nextInt(4) == 0) {
-			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 0.75D
-					- Math.cos(rotationYaw * 0.017453292F) * 0.3D;
-			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 0.75D
-					- Math.sin(rotationYaw * 0.017453292F) * 0.3D;
+		int c = ClimateMain.proxy.getParticleCount();
+		if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 0.75D - Math.cos(rotationYaw * 0.017453292F) *
+					0.3D;
+			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 0.75D - Math.sin(rotationYaw * 0.017453292F) *
+					0.3D;
 			this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, px, this.posY + 0.45D, pz, 0.0D, 0.0D, 0.0D,
 					new int[0]);
 		}
 	}
 
 	@Override
-	@SuppressWarnings("incomplete-switch")
 	protected void moveAlongTrack(BlockPos pos, IBlockState state) {
 		this.fallDistance = 0.0F;
 		Vec3d vec3d = this.getPos(this.posX, this.posY, this.posZ);
@@ -110,6 +111,7 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 		case ASCENDING_SOUTH:
 			this.motionZ -= slopeAdjustment;
 			++this.posY;
+		default:
 		}
 
 		int[][] aint = MainUtil.MATRIX[blockrailbase$enumraildirection.getMetadata()];
@@ -189,11 +191,11 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 		this.setPosition(this.posX, this.posY, this.posZ);
 		this.moveMinecartOnRail(pos);
 
-		if (aint[0][1] != 0 && MathHelper.floor(this.posX) - pos.getX() == aint[0][0]
-				&& MathHelper.floor(this.posZ) - pos.getZ() == aint[0][2]) {
+		if (aint[0][1] != 0 && MathHelper.floor(this.posX) - pos.getX() == aint[0][0] && MathHelper.floor(this.posZ) -
+				pos.getZ() == aint[0][2]) {
 			this.setPosition(this.posX, this.posY + aint[0][1], this.posZ);
-		} else if (aint[1][1] != 0 && MathHelper.floor(this.posX) - pos.getX() == aint[1][0]
-				&& MathHelper.floor(this.posZ) - pos.getZ() == aint[1][2]) {
+		} else if (aint[1][1] != 0 && MathHelper.floor(this.posX) - pos.getX() == aint[1][0] && MathHelper.floor(
+				this.posZ) - pos.getZ() == aint[1][2]) {
 			this.setPosition(this.posX, this.posY + aint[1][1], this.posZ);
 		}
 

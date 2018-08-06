@@ -42,6 +42,7 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 		return "dcs_climate:items/tool/musket";
 	}
 
+	@Override
 	public ItemStack findAmmo(EntityPlayer player) {
 		if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
 			return player.getHeldItem(EnumHand.OFF_HAND);
@@ -87,10 +88,10 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 				return new ActionResult(EnumActionResult.SUCCESS, stack);
 			} else {
 				worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-						SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.NEUTRAL, 1.0F,
-						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+						SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() *
+								0.4F + 1.2F) + 0.5F);
 				ItemStack ammo = this.findAmmo(player);
-				boolean flag = ammo != null;
+				boolean flag = !DCUtil.isEmpty(ammo);
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0) {
 					tag.setInteger("bulletType", 1);
 					stack.setTagCompound(tag);
@@ -194,8 +195,8 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 					}
 
 					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-							SoundEvents.ENTITY_FIREWORK_BLAST, SoundCategory.NEUTRAL, 1.0F,
-							1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+							SoundEvents.ENTITY_FIREWORK_BLAST, SoundCategory.NEUTRAL, 1.0F, 1.0F /
+									(itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 					player.addStat(StatList.getObjectUseStats(this));
 				}

@@ -471,8 +471,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 				CustomExplosion explosion = new CustomExplosion(player.world, player, player, target.posX, target.posY +
 						0.25D, target.posZ, 3F, CustomExplosion.Type.Silk, true);
 				explosion.doExplosion();
-				player.world.addWeatherEffect(new EntityLightningBolt(player.world, target.posX, target.posY - 0.25D,
-						target.posZ, !player.isSneaking()));
+				player.world.addWeatherEffect(new EntityLightningBolt(player.world, target.posX, target.posY -
+						0.25D, target.posZ, !player.isSneaking()));
 				return true;
 			}
 		}
@@ -544,6 +544,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					if (p.getY() < 0 || p.getY() > 255) {
 						continue;
 					}
+					if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
+						continue;
 					IBlockState target = player.world.getBlockState(p);
 					if (target.equals(state) && target.getBlock().getMetaFromState(
 							target) == state.getBlock().getMetaFromState(state) && !target.getBlock().hasTileEntity(
@@ -577,6 +579,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					if (p.getY() < 0 || p.getY() > 255) {
 						continue;
 					}
+					if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
+						continue;
 					IBlockState block = player.world.getBlockState(p);
 					if (!block.getBlock().hasTileEntity(block)) {
 						if (silk && block.getBlock().canSilkHarvest(player.world, p, block, player)) {
@@ -593,10 +597,11 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					}
 				}
 				return flag;
-			} else if (meta == 19 && state.getBlock().canSilkHarvest(player.world, pos, state, player)) {
+			} else if (meta == 19 && player.canPlayerEdit(pos, EnumFacing.UP, charm) && state.getBlock().canSilkHarvest(
+					player.world, pos, state, player)) {
 				ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
-				EntityItem drop = new EntityItem(player.world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-						item);
+				EntityItem drop = new EntityItem(player.world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
+						0.5D, item);
 				player.world.spawnEntity(drop);
 				player.world.setBlockToAir(pos);
 				return true;

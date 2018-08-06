@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
@@ -41,12 +42,15 @@ public class EntityMagneticHover extends EntityScooter {
 
 	@Override
 	protected void addParticle() {
-		if (this.getPowered() && this.rand.nextInt(4) == 0) {
-			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 1D + world.rand.nextDouble() * 0.5D;
-			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 1D + world.rand.nextDouble() * 0.5D;
-			Particle p = new ParticleBlink.Factory().createParticle(0, world, px, posY + 0.25D, pz, 0.0D, 0.0D, 0.0D,
-					new int[0]);
-			FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
+		if (this.getPowered()) {
+			int c = ClimateMain.proxy.getParticleCount();
+			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+				double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 1D + world.rand.nextDouble() * 0.5D;
+				double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 1D + world.rand.nextDouble() * 0.5D;
+				Particle p = new ParticleBlink.Factory().createParticle(0, world, px, posY + 0.25D, pz, 0.0D, 0.0D,
+						0.0D, new int[0]);
+				FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
+			}
 		}
 	}
 
@@ -171,8 +175,8 @@ public class EntityMagneticHover extends EntityScooter {
 		if (!this.world.isRemote && !this.isDead && !this.isBeingRidden()) {
 			if (this.isEntityInvulnerable(source)) {
 				return false;
-			} else if (source instanceof EntityDamageSource && !source.isProjectile()
-					&& ((EntityDamageSource) source).getTrueSource() instanceof EntityPlayer) {
+			} else if (source instanceof EntityDamageSource && !source.isProjectile() &&
+					((EntityDamageSource) source).getTrueSource() instanceof EntityPlayer) {
 				ItemStack itemstack = new ItemStack(MachineInit.magneticHover, 1, 0);
 
 				NBTTagCompound tag = new NBTTagCompound();

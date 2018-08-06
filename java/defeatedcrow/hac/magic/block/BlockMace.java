@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -125,13 +126,17 @@ public abstract class BlockMace extends DCTileBlock {
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (world.isRemote && state != null && (state.getBlock().getMetaFromState(state) & 3) != 0) {
-			double x = pos.getX() + rand.nextDouble();
-			double y = pos.getY() + 1.0D + rand.nextDouble();
-			double z = pos.getZ() + rand.nextDouble();
+			int c = ClimateMain.proxy.getParticleCount();
+			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+				double x = pos.getX() + rand.nextDouble();
+				double y = pos.getY() + 1.0D + rand.nextDouble();
+				double z = pos.getZ() + rand.nextDouble();
 
-			Particle p = new ParticleBlink.Factory().createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
-			FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
+				Particle p = new ParticleBlink.Factory().createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D,
+						new int[0]);
+				FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
 
+			}
 		}
 	}
 
@@ -194,8 +199,8 @@ public abstract class BlockMace extends DCTileBlock {
 		}
 
 		if (!world.isRemote) {
-			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-					drop);
+			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
+					0.5D, drop);
 			float f3 = 0.05F;
 			entityitem.motionX = (float) this.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) this.rand.nextGaussian() * f3 + 0.25F;

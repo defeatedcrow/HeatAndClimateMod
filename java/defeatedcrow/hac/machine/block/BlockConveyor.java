@@ -16,6 +16,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,8 +35,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockConveyor extends BlockTorqueBase {
 
-	protected static final AxisAlignedBB AABB_NS = new AxisAlignedBB(0.125D, 0.25D, 0.0D, 0.875D, 0.5D, 1.0D);
-	protected static final AxisAlignedBB AABB_EW = new AxisAlignedBB(0.0D, 0.25D, 0.125D, 1.0D, 0.5D, 0.875D);
+	protected static final AxisAlignedBB AABB_NS = new AxisAlignedBB(0.125D, 0.25D, 0.0D, 0.875D, 0.375D, 1.0D);
+	protected static final AxisAlignedBB AABB_EW = new AxisAlignedBB(0.0D, 0.25D, 0.125D, 1.0D, 0.375D, 0.875D);
 
 	public BlockConveyor(String s) {
 		super(Material.ROCK, s, 0);
@@ -102,6 +103,32 @@ public class BlockConveyor extends BlockTorqueBase {
 		default:
 			return AABB_NS;
 
+		}
+	}
+
+	@Override
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+		if (entity != null) {
+			if (!(entity instanceof EntityItem) || !world.isRemote) {
+				EnumFacing face = DCState.getSide(state, DCState.SIDE).face;
+				double mX = entity.motionX + face.getFrontOffsetX() * 0.1D;
+				if (mX > 0.035D) {
+					mX = 0.035D;
+				}
+				if (mX < -0.035D) {
+					mX = -0.035D;
+				}
+				double mZ = entity.motionZ + face.getFrontOffsetZ() * 0.1D;
+				if (mZ > 0.035D) {
+					mZ = 0.035D;
+				}
+				if (mZ < -0.035D) {
+					mZ = -0.035D;
+				}
+
+				entity.motionX = mX;
+				entity.motionZ = mZ;
+			}
 		}
 	}
 

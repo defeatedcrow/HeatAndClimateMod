@@ -23,6 +23,7 @@ public class MachineRecipeRegister {
 		loadVanillaRecipes();
 		loadSmelting();
 		registerClimate();
+
 	}
 
 	static void loadOreRecipes() {

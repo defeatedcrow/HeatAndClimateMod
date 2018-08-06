@@ -19,6 +19,7 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -112,10 +113,11 @@ public class OnMiningEventDC {
 				ItemPickaxe pic = (ItemPickaxe) stack.getItem();
 				IBlockState state = event.getWorld().getBlockState(pos);
 				if (pos.getY() > 1 && pic.getHarvestLevel(stack, "pickaxe", player, state) >= 4) {
-					if (state != null && state.getBlock() == Blocks.BEDROCK) {
+					if (state != null && state.getBlock() == Blocks.BEDROCK && player.canPlayerEdit(pos, EnumFacing.UP,
+							stack)) {
 						ItemStack item = new ItemStack(Blocks.BEDROCK);
-						EntityItem drop = new EntityItem(event.getWorld(), pos.getX() + 0.5D, pos.getY() + 0.5D,
-								pos.getZ() + 0.5D, item);
+						EntityItem drop = new EntityItem(event.getWorld(), pos.getX() + 0.5D, pos.getY() +
+								0.5D, pos.getZ() + 0.5D, item);
 						if (!event.getWorld().isRemote) {
 							event.getWorld().setBlockToAir(pos);
 							event.getWorld().spawnEntity(drop);

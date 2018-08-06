@@ -109,8 +109,8 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		EnumFacing side = getBaseSide().getOpposite();
 		TileEntity target = world.getTileEntity(getPos().offset(side));
 		// DOWNからの搬出を偽装
-		if (target != null && !(target instanceof TileConveyor)
-				&& target.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
+		if (target != null && !(target instanceof TileConveyor) && target.hasCapability(
+				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
 			IItemHandler tInv = target.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 			for (int i = 0; i < tInv.getSlots(); i++) {
 				ItemStack c = tInv.extractItem(i, 1, true);
@@ -184,8 +184,11 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		}
 		if (!flag && !DCUtil.isEmpty(inv.getStackInSlot(0)) && !skip) {
 			BlockPos next = getPos().offset(side);
-			EntityItem drop = new EntityItem(world, next.getX() + 0.5D, next.getY() + 0.5D, next.getZ() + 0.5D,
-					inv.getStackInSlot(0).copy());
+			EntityItem drop = new EntityItem(world, next.getX() + 0.5D, next.getY() + 0.5D, next.getZ() +
+					0.5D, inv.getStackInSlot(0).copy());
+			drop.motionX = 0.0D;
+			drop.motionY = 0.0D;
+			drop.motionZ = 0.0D;
 			if (world.spawnEntity(drop)) {
 				inv.setInventorySlotContents(0, ItemStack.EMPTY);
 				this.markDirty();
@@ -201,8 +204,8 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			IClimateSmelting recipe = RecipeAPI.registerSmelting.getRecipe(current, target);
 			if (recipe != null && !DCUtil.isEmpty(recipe.getOutput())) {
 				ItemStack ret = recipe.getOutput().copy();
-				world.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D,
-						getPos().getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
+				world.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D, getPos().getZ() +
+						0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
 				inv.setInventorySlotContents(0, ret);
 				// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
 			} else if (current.getAirflow() == DCAirflow.TIGHT && current.getHeat().getID() > DCHeatTier.KILN.getID()) {
@@ -302,7 +305,8 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 
 	protected int[] slotsBottom() {
 		return new int[] {
-				0, 1
+				0,
+				1
 		};
 	};
 
@@ -383,8 +387,8 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	// par1EntityPlayerがTileEntityを使えるかどうか
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
-		return getWorld().getTileEntity(this.pos) != this ? false
-				: player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+		return getWorld().getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D,
+				this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
 	@Override

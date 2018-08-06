@@ -164,7 +164,7 @@ public class MainUtil {
 				for (int id2 : ids2) {
 					if (id == id2) {
 						String s = OreDictionary.getOreName(id);
-						if (!s.contains("All") && !s.contains("dye") && !s.contains("list"))
+						if (!s.contains("All") && !s.contains("dye") && !s.contains("list") && !s.contains("Any"))
 							return true;
 					}
 				}

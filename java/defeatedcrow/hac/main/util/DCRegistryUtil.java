@@ -24,7 +24,7 @@ public class DCRegistryUtil {
 	public static void addEntity(Class<? extends Entity> regClass, String domein, String name) {
 		String regName = "dcs." + domein + "." + name;
 		EntityRegistry.registerModEntity(new ResourceLocation(ClimateMain.MOD_ID, regName), regClass, regName, counter,
-				ClimateMain.instance, 128, 10, true);
+				ClimateMain.instance, 128, 5, true);
 		counter++;
 	}
 
