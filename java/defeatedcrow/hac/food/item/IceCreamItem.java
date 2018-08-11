@@ -7,36 +7,40 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.EntityRiceBall;
-import defeatedcrow.hac.food.entity.EntityRiceBallSeaweed;
-import defeatedcrow.hac.food.entity.EntityRiceBowl;
-import defeatedcrow.hac.food.entity.EntityRiceMushroom;
+import defeatedcrow.hac.food.entity.IceCreamBerryEntity;
+import defeatedcrow.hac.food.entity.IceCreamCookieEntity;
+import defeatedcrow.hac.food.entity.IceCreamEntity;
+import defeatedcrow.hac.food.entity.IceCreamKinakoEntity;
+import defeatedcrow.hac.food.entity.IceCreamLemonEntity;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class RiceBowlItem extends FoodItemBase {
+public class IceCreamItem extends FoodItemBase {
 
-	public RiceBowlItem(boolean isWolfFood) {
+	public IceCreamItem(boolean isWolfFood) {
 		super(isWolfFood);
 	}
 
 	@Override
 	public int getMaxMeta() {
-		return 3;
+		return 4;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 3);
-		String s = "items/food/rice_" + this.getNameSuffix()[i];
+		int i = MathHelper.clamp(0, meta, 4);
+		String s = "items/food/icecream";
+		s += "_" + this.getNameSuffix()[i];
 		if (f) {
-			s = "textures/rice_" + s;
+			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
 	}
@@ -44,10 +48,11 @@ public class RiceBowlItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"boiled",
-				"mushroom",
-				"ball",
-				"ball_seaweed"
+				"milk",
+				"kinako",
+				"berry",
+				"lemon",
+				"cookie"
 		};
 		return s;
 	}
@@ -55,16 +60,26 @@ public class RiceBowlItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new EntityRiceBowl(world, x, y, z, player);
-		switch (i) {
-		case 1:
-			ret = new EntityRiceMushroom(world, x, y, z, player);
-		case 2:
-			ret = new EntityRiceBall(world, x, y, z, player);
-		case 3:
-			ret = new EntityRiceBallSeaweed(world, x, y, z, player);
+		FoodEntityBase ret = new IceCreamEntity(world, x, y, z, player);
+		if (i == 1) {
+			ret = new IceCreamKinakoEntity(world, x, y, z, player);
 		}
+		if (i == 2) {
+			ret = new IceCreamBerryEntity(world, x, y, z, player);
+		}
+		if (i == 3) {
+			ret = new IceCreamLemonEntity(world, x, y, z, player);
+		}
+		if (i == 4) {
+			ret = new IceCreamCookieEntity(world, x, y, z, player);
+		}
+		return ret;
+	}
 
+	@Override
+	public List<PotionEffect> getPotionEffect(int meta) {
+		List<PotionEffect> ret = super.getPotionEffect(meta);
+		ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(600), 0));
 		return ret;
 	}
 
@@ -75,7 +90,7 @@ public class RiceBowlItem extends FoodItemBase {
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.8F;
+		return 0.25F;
 	}
 
 	@Override

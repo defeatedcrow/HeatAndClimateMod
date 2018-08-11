@@ -49,9 +49,28 @@ public class ItemGems extends DCItem {
 	 * 21: リシア輝石
 	 */
 	private static String[] names = {
-			"chal_blue", "chal_red", "chal_white", "gypsum", "sapphire", "malachite", "celestite", "clam", "salt",
-			"niter", "sulfur", "schorl", "serpentine", "olivine", "almandine", "rutile", "bauxite", "bismuth",
-			"apatite", "jadeite", "moonstone", "kunzite"
+			"chal_blue",
+			"chal_red",
+			"chal_white",
+			"gypsum",
+			"sapphire",
+			"malachite",
+			"celestite",
+			"clam",
+			"salt",
+			"niter",
+			"sulfur",
+			"schorl",
+			"serpentine",
+			"olivine",
+			"almandine",
+			"rutile",
+			"bauxite",
+			"bismuth",
+			"apatite",
+			"jadeite",
+			"moonstone",
+			"kunzite"
 	};
 
 	public ItemGems(int max) {
@@ -93,9 +112,8 @@ public class ItemGems extends DCItem {
 			boolean flag = player.capabilities.isCreativeMode;
 
 			int i = this.getMaxItemUseDuration(stack) - timeLeft;
-			flag = i > 15;
 
-			if (!DCUtil.isEmpty(stack) && flag) {
+			if (!DCUtil.isEmpty(stack) && (flag || i > 15)) {
 				if (!world.isRemote) {
 					EntityProjWhiteSpit entityarrow = new EntityProjWhiteSpit(world, living);
 					entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
@@ -103,8 +121,8 @@ public class ItemGems extends DCItem {
 				}
 
 				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-						SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F,
-						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+						SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() *
+								0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
 					DCUtil.reduceStackSize(stack, 1);
@@ -121,8 +139,8 @@ public class ItemGems extends DCItem {
 		player.setActiveHand(hand);
 		ItemStack stack = player.getHeldItem(hand);
 		if (ModuleConfig.magic && !DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)
-			return playerHasCharm(player) ? new ActionResult(EnumActionResult.SUCCESS, stack)
-					: new ActionResult(EnumActionResult.PASS, stack);
+			return playerHasCharm(player) ? new ActionResult(EnumActionResult.SUCCESS, stack) :
+					new ActionResult(EnumActionResult.PASS, stack);
 		return new ActionResult(EnumActionResult.PASS, stack);
 	}
 

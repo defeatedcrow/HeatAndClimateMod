@@ -547,6 +547,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
 						continue;
 					IBlockState target = player.world.getBlockState(p);
+					if (!target.getBlock().canHarvestBlock(player.world, p, player))
+						continue;
 					if (target.equals(state) && target.getBlock().getMetaFromState(
 							target) == state.getBlock().getMetaFromState(state) && !target.getBlock().hasTileEntity(
 									target)) {
@@ -582,6 +584,8 @@ public class ItemMagicalBadge extends DCItem implements IJewelCharm {
 					if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
 						continue;
 					IBlockState block = player.world.getBlockState(p);
+					if (!block.getBlock().canHarvestBlock(player.world, p, player))
+						continue;
 					if (!block.getBlock().hasTileEntity(block)) {
 						if (silk && block.getBlock().canSilkHarvest(player.world, p, block, player)) {
 							ItemStack item = new ItemStack(block.getBlock(), 1, block.getBlock().getMetaFromState(
