@@ -8,7 +8,16 @@ public class ItemMaceCore extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"light", "moon", "bird", "ice", "ocean", "burn", "flower", "glory"
+			"light",
+			"moon",
+			"bird",
+			"ice",
+			"ocean",
+			"burn",
+			"flower",
+			"glory",
+			"dry",
+			"impact"
 	};
 
 	public ItemMaceCore(int max) {

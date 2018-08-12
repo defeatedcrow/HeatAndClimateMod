@@ -21,6 +21,11 @@ import defeatedcrow.hac.food.client.CustardPieRenderer;
 import defeatedcrow.hac.food.client.EmptyPlateRenderer;
 import defeatedcrow.hac.food.client.FishStickRenderer;
 import defeatedcrow.hac.food.client.FruitPieRenderer;
+import defeatedcrow.hac.food.client.IcecreamBerryRenderer;
+import defeatedcrow.hac.food.client.IcecreamCookieRenderer;
+import defeatedcrow.hac.food.client.IcecreamKinakoRenderer;
+import defeatedcrow.hac.food.client.IcecreamLemonRenderer;
+import defeatedcrow.hac.food.client.IcecreamMilkRenderer;
 import defeatedcrow.hac.food.client.JellyBerryRenderer;
 import defeatedcrow.hac.food.client.JellyCoffeeRenderer;
 import defeatedcrow.hac.food.client.JellyCreamRenderer;
@@ -40,6 +45,7 @@ import defeatedcrow.hac.food.client.PlateTomatoRenderer;
 import defeatedcrow.hac.food.client.PorkStickRenderer;
 import defeatedcrow.hac.food.client.PotatoQuicheRenderer;
 import defeatedcrow.hac.food.client.RiceBallRenderer;
+import defeatedcrow.hac.food.client.RiceBallSeaweedRenderer;
 import defeatedcrow.hac.food.client.RiceBowlRenderer;
 import defeatedcrow.hac.food.client.RiceMushroomRenderer;
 import defeatedcrow.hac.food.client.RoundBreadCreamRenderer;
@@ -93,6 +99,7 @@ import defeatedcrow.hac.food.entity.CustardPieEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
 import defeatedcrow.hac.food.entity.EmptyPlateEntity;
 import defeatedcrow.hac.food.entity.EntityRiceBall;
+import defeatedcrow.hac.food.entity.EntityRiceBallSeaweed;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntityRiceMushroom;
 import defeatedcrow.hac.food.entity.EntitySandwich;
@@ -102,6 +109,11 @@ import defeatedcrow.hac.food.entity.EntityTumbler;
 import defeatedcrow.hac.food.entity.FishPlateEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
 import defeatedcrow.hac.food.entity.FruitPieEntity;
+import defeatedcrow.hac.food.entity.IceCreamBerryEntity;
+import defeatedcrow.hac.food.entity.IceCreamCookieEntity;
+import defeatedcrow.hac.food.entity.IceCreamEntity;
+import defeatedcrow.hac.food.entity.IceCreamKinakoEntity;
+import defeatedcrow.hac.food.entity.IceCreamLemonEntity;
 import defeatedcrow.hac.food.entity.LemonSandwichEntity;
 import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
@@ -228,6 +240,12 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(EntityRiceBall.class, RiceBallRenderer.class);
 		ClientMainProxy.registRender(SimmeredSoyEntity.class, SimmeredSoyRenderer.class);
 		ClientMainProxy.registRender(SimmeredGomokuEntity.class, SimmeredGomokuRenderer.class);
+		ClientMainProxy.registRender(EntityRiceBallSeaweed.class, RiceBallSeaweedRenderer.class);
+		ClientMainProxy.registRender(IceCreamEntity.class, IcecreamMilkRenderer.class);
+		ClientMainProxy.registRender(IceCreamKinakoEntity.class, IcecreamKinakoRenderer.class);
+		ClientMainProxy.registRender(IceCreamBerryEntity.class, IcecreamBerryRenderer.class);
+		ClientMainProxy.registRender(IceCreamLemonEntity.class, IcecreamLemonRenderer.class);
+		ClientMainProxy.registRender(IceCreamCookieEntity.class, IcecreamCookieRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -256,13 +274,14 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_ID, "dcs_food_pie", "food", 11);
 		instance.regSimpleItem(FoodInit.sandwich, ClimateCore.PACKAGE_ID, "dcs_food_sandwich", "food", 3);
 		instance.regSimpleItem(FoodInit.clubsandwich, ClimateCore.PACKAGE_ID, "dcs_food_clubsand", "food", 1);
-		instance.regSimpleItem(FoodInit.ricebowl, ClimateCore.PACKAGE_ID, "dcs_food_rice_bowl", "food", 2);
+		instance.regSimpleItem(FoodInit.ricebowl, ClimateCore.PACKAGE_ID, "dcs_food_rice_bowl", "food", 3);
 		instance.regSimpleItem(FoodInit.steakplate, ClimateCore.PACKAGE_ID, "dcs_food_empty_plate", "food", 0);
 		instance.regSimpleItem(FoodInit.plateMeal, ClimateCore.PACKAGE_ID, "dcs_food_plate_meat", "food", 7);
 		instance.regSimpleItem(FoodInit.plateSoup, ClimateCore.PACKAGE_ID, "dcs_food_plate_potato", "food", 3);
 		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 10);
 		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 4);
 		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 9);
+		instance.regSimpleItem(FoodInit.icecream, ClimateCore.PACKAGE_ID, "dcs_food_icecream", "food", 4);
 
 		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 13);
 

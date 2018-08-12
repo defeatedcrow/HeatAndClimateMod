@@ -2,6 +2,8 @@ package defeatedcrow.hac.main.block.device;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.core.base.ClimateReceiveTile;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileWindVane extends ClimateReceiveTile {
 
@@ -64,6 +66,12 @@ public class TileWindVane extends ClimateReceiveTile {
 		}
 
 		lastPower = windPower;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public double getMaxRenderDistanceSquared() {
+		return 16384.0D;
 	}
 
 }

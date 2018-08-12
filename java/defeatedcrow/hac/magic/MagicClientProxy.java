@@ -8,9 +8,11 @@ import defeatedcrow.hac.magic.block.TileLotusCandle;
 import defeatedcrow.hac.magic.block.TileLotusCandleBlack;
 import defeatedcrow.hac.magic.block.TileMaceBird;
 import defeatedcrow.hac.magic.block.TileMaceBurn;
+import defeatedcrow.hac.magic.block.TileMaceDry;
 import defeatedcrow.hac.magic.block.TileMaceFlower;
 import defeatedcrow.hac.magic.block.TileMaceGlory;
 import defeatedcrow.hac.magic.block.TileMaceIce;
+import defeatedcrow.hac.magic.block.TileMaceImpact;
 import defeatedcrow.hac.magic.block.TileMaceLight;
 import defeatedcrow.hac.magic.block.TileMaceMoon;
 import defeatedcrow.hac.magic.block.TileMaceOcean;
@@ -28,9 +30,11 @@ import defeatedcrow.hac.magic.client.TESRLotusCandle;
 import defeatedcrow.hac.magic.client.TESRMace;
 import defeatedcrow.hac.magic.client.TESRMaceBird;
 import defeatedcrow.hac.magic.client.TESRMaceBurn;
+import defeatedcrow.hac.magic.client.TESRMaceDry;
 import defeatedcrow.hac.magic.client.TESRMaceFlower;
 import defeatedcrow.hac.magic.client.TESRMaceGlory;
 import defeatedcrow.hac.magic.client.TESRMaceIce;
+import defeatedcrow.hac.magic.client.TESRMaceImpact;
 import defeatedcrow.hac.magic.client.TESRMaceMoon;
 import defeatedcrow.hac.magic.client.TESRMaceOcean;
 import defeatedcrow.hac.magic.client.TESRTimeCage;
@@ -105,10 +109,13 @@ public class MagicClientProxy {
 		ClientRegistry.registerTileEntity(TileMaceIce.class, "dcs_te_magicmace_ice", new TESRMaceIce());
 		ClientRegistry.registerTileEntity(TileMaceOcean.class, "dcs_te_magicmace_ocean", new TESRMaceOcean());
 		ClientRegistry.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn", new TESRMaceBurn());
-		ClientRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower", new TESRMaceFlower()
-				.setNoFrame());
-		ClientRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory", new TESRMaceGlory()
-				.setNoFrame());
+		ClientRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower",
+				new TESRMaceFlower().setNoFrame());
+		ClientRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory",
+				new TESRMaceGlory().setNoFrame());
+		ClientRegistry.registerTileEntity(TileMaceDry.class, "dcs_te_magicmace_drought", new TESRMaceDry());
+		ClientRegistry.registerTileEntity(TileMaceImpact.class, "dcs_te_magicmace_impact",
+				new TESRMaceImpact().setNoFrame());
 
 		ClientRegistry.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage", new TESRTimeCage());
 	}
@@ -121,7 +128,7 @@ public class MagicClientProxy {
 		instance.regSimpleItem(MagicInit.daggerSilver, ClimateCore.PACKAGE_ID, "dcs_dagger_silver", "magic", 0);
 		instance.regSimpleItem(MagicInit.daggerMagic, ClimateCore.PACKAGE_ID, "dcs_dagger_magic", "magic", 15);
 		instance.regSimpleItem(MagicInit.macehandle, ClimateCore.PACKAGE_ID, "dcs_mace_handle", "magic", 0);
-		instance.regSimpleItem(MagicInit.maceStarItem, ClimateCore.PACKAGE_ID, "dcs_macecore", "magic", 7);
+		instance.regSimpleItem(MagicInit.maceStarItem, ClimateCore.PACKAGE_ID, "dcs_macecore", "magic", 9);
 		instance.regSimpleItem(MagicInit.expGem, ClimateCore.PACKAGE_ID, "dcs_expgem", "magic", 0);
 		instance.regSimpleItem(MagicInit.amulet, ClimateCore.PACKAGE_ID, "dcs_jewel_amulet", "equip", 4);
 		instance.regSimpleItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_ID, "dcs_gemboots_blue", "equip", 0);
@@ -144,6 +151,8 @@ public class MagicClientProxy {
 		instance.regTEBlock(MagicInit.maceBurn, ClimateCore.PACKAGE_ID, "dcs_magicmace_burn", "magic", 0);
 		instance.regTEBlock(MagicInit.maceFlower, ClimateCore.PACKAGE_ID, "dcs_magicmace_flower", "magic", 0);
 		instance.regTEBlock(MagicInit.maceGlory, ClimateCore.PACKAGE_ID, "dcs_magicmace_glory", "magic", 0);
+		instance.regTEBlock(MagicInit.maceDrought, ClimateCore.PACKAGE_ID, "dcs_magicmace_drought", "magic", 0);
+		instance.regTEBlock(MagicInit.maceImpact, ClimateCore.PACKAGE_ID, "dcs_magicmace_impact", "magic", 0);
 	}
 
 }

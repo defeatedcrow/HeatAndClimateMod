@@ -572,6 +572,48 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 8), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemRutile",
+				'Z',
+				"gemPeridot",
+				'W',
+				"blockElestial"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 8), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemRutile",
+				'Z',
+				"gemTopaz",
+				'W',
+				"blockElestial"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 9), new Object[] {
+				"XYX",
+				"ZWZ",
+				"XYX",
+				'X',
+				"ingotGold",
+				'Y',
+				"gemSchorl",
+				'Z',
+				"gemBismuth",
+				'W',
+				"blockElestial"
+		});
+
 		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceSun, 1, 0), new Object[] {
 				"X",
 				"Y",
@@ -640,6 +682,24 @@ public class MagicRecipeRegister {
 				"Y",
 				'X',
 				new ItemStack(MagicInit.maceStarItem, 1, 7),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceDrought, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 8),
+				'Y',
+				new ItemStack(MagicInit.macehandle, 1, 0)
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceImpact, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(MagicInit.maceStarItem, 1, 9),
 				'Y',
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});

@@ -9,18 +9,22 @@ import defeatedcrow.hac.magic.block.BlockInfernalFlame;
 import defeatedcrow.hac.magic.block.BlockLotusCandle;
 import defeatedcrow.hac.magic.block.BlockMaceBird;
 import defeatedcrow.hac.magic.block.BlockMaceBurn;
+import defeatedcrow.hac.magic.block.BlockMaceDry;
 import defeatedcrow.hac.magic.block.BlockMaceFlower;
 import defeatedcrow.hac.magic.block.BlockMaceGlory;
 import defeatedcrow.hac.magic.block.BlockMaceIce;
+import defeatedcrow.hac.magic.block.BlockMaceImpact;
 import defeatedcrow.hac.magic.block.BlockMaceLight;
 import defeatedcrow.hac.magic.block.BlockMaceMoon;
 import defeatedcrow.hac.magic.block.BlockMaceOcean;
 import defeatedcrow.hac.magic.block.BlockTimeCage;
 import defeatedcrow.hac.magic.block.ItemBlockMaceBird;
 import defeatedcrow.hac.magic.block.ItemBlockMaceBurn;
+import defeatedcrow.hac.magic.block.ItemBlockMaceDry;
 import defeatedcrow.hac.magic.block.ItemBlockMaceFlower;
 import defeatedcrow.hac.magic.block.ItemBlockMaceGlory;
 import defeatedcrow.hac.magic.block.ItemBlockMaceIce;
+import defeatedcrow.hac.magic.block.ItemBlockMaceImpact;
 import defeatedcrow.hac.magic.block.ItemBlockMaceLight;
 import defeatedcrow.hac.magic.block.ItemBlockMaceMoon;
 import defeatedcrow.hac.magic.block.ItemBlockMaceOcean;
@@ -72,7 +76,7 @@ public class MagicInitRegister {
 		MagicInit.macehandle = new ItemMaceHandle(0).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mace_handle");
 		DCMaterialReg.registerItem(MagicInit.macehandle, ClimateCore.PACKAGE_BASE + "_mace_handle", ClimateMain.MOD_ID);
 
-		MagicInit.maceStarItem = new ItemMaceCore(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_macecore");
+		MagicInit.maceStarItem = new ItemMaceCore(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_macecore");
 		DCMaterialReg.registerItem(MagicInit.maceStarItem, ClimateCore.PACKAGE_BASE + "_macecore", ClimateMain.MOD_ID);
 
 		MagicInit.expGem = new ItemEXPGem().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_expgem");
@@ -81,15 +85,13 @@ public class MagicInitRegister {
 		MagicInit.amulet = new ItemAmulet(4).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_amulet");
 		DCMaterialReg.registerItem(MagicInit.amulet, ClimateCore.PACKAGE_BASE + "_jewel_amulet", ClimateMain.MOD_ID);
 
-		MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
-				EntityEquipmentSlot.FEET, "blue").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
-						ClimateCore.PACKAGE_BASE + "_gemboots_blue");
+		MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY, EntityEquipmentSlot.FEET, "blue").setCreativeTab(
+				ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_blue");
 		DCMaterialReg.registerItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_BASE + "_gemboots_blue",
 				ClimateMain.MOD_ID);
 
-		MagicInit.gemBootsFish = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
-				EntityEquipmentSlot.FEET, "green").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(
-						ClimateCore.PACKAGE_BASE + "_gemboots_green");
+		MagicInit.gemBootsFish = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY, EntityEquipmentSlot.FEET, "green").setCreativeTab(
+				ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_green");
 		DCMaterialReg.registerItem(MagicInit.gemBootsFish, ClimateCore.PACKAGE_BASE + "_gemboots_green",
 				ClimateMain.MOD_ID);
 	}
@@ -158,6 +160,16 @@ public class MagicInitRegister {
 		ForgeRegistries.BLOCKS.register(MagicInit.maceGlory);
 		ForgeRegistries.ITEMS.register(new ItemBlockMaceGlory(MagicInit.maceGlory));
 
+		MagicInit.maceDrought = new BlockMaceDry(ClimateCore.PACKAGE_BASE + "_magicmace_drought");
+		MagicInit.maceDrought.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_drought");
+		ForgeRegistries.BLOCKS.register(MagicInit.maceDrought);
+		ForgeRegistries.ITEMS.register(new ItemBlockMaceDry(MagicInit.maceDrought));
+
+		MagicInit.maceImpact = new BlockMaceImpact(ClimateCore.PACKAGE_BASE + "_magicmace_impact");
+		MagicInit.maceImpact.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_impact");
+		ForgeRegistries.BLOCKS.register(MagicInit.maceImpact);
+		ForgeRegistries.ITEMS.register(new ItemBlockMaceImpact(MagicInit.maceImpact));
+
 		MagicInit.timeCage = new BlockTimeCage(ClimateCore.PACKAGE_BASE + "_time_cage");
 		DCMaterialReg.registerBlock(MagicInit.timeCage, ClimateCore.PACKAGE_BASE + "_time_cage", ClimateMain.MOD_ID);
 	}
@@ -180,6 +192,8 @@ public class MagicInitRegister {
 		MagicInit.maceBurn.setCreativeTab(ClimateMain.tool);
 		MagicInit.maceFlower.setCreativeTab(ClimateMain.tool);
 		MagicInit.maceGlory.setCreativeTab(ClimateMain.tool);
+		MagicInit.maceDrought.setCreativeTab(ClimateMain.tool);
+		MagicInit.maceImpact.setCreativeTab(ClimateMain.tool);
 
 		MagicInit.elestial.setCreativeTab(ClimateCore.climate);
 		MagicInit.expGem.setCreativeTab(ClimateCore.climate);

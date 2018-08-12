@@ -59,6 +59,7 @@ import defeatedcrow.hac.machine.block.TileStoneMill;
 import defeatedcrow.hac.machine.block.TileWaterPump;
 import defeatedcrow.hac.machine.block.TileWatermill;
 import defeatedcrow.hac.machine.block.TileWindmill;
+import defeatedcrow.hac.machine.block.TileWindmill_EX;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
 import defeatedcrow.hac.machine.client.BoilerTurbineTESR;
 import defeatedcrow.hac.machine.client.CatapultTESR;
@@ -67,6 +68,7 @@ import defeatedcrow.hac.machine.client.CreativeBoxTESR;
 import defeatedcrow.hac.machine.client.CrusherTESR;
 import defeatedcrow.hac.machine.client.DieselEngineTESR;
 import defeatedcrow.hac.machine.client.DynamoTESR;
+import defeatedcrow.hac.machine.client.EX_WindmillTESR;
 import defeatedcrow.hac.machine.client.FanTESR;
 import defeatedcrow.hac.machine.client.FreezerTESR;
 import defeatedcrow.hac.machine.client.GasBurnerTESR;
@@ -193,6 +195,7 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileMonitorFluid.class, "dcs_te_monitor_fluid", new MonitorTESR());
 		ClientRegistry.registerTileEntity(TileMonitorInventory.class, "dcs_te_monitor_item", new MonitorTESR());
 		GameRegistry.registerTileEntity(TileMonitorComparator.class, "dcs_te_monitor_cm");
+		ClientRegistry.registerTileEntity(TileWindmill_EX.class, "dcs_te_windmill_ex", new EX_WindmillTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -200,6 +203,8 @@ public class MachineClientProxy {
 
 		instance.regTETorqueBlock(MachineInit.windmill, ClimateCore.PACKAGE_ID, "dcs_device_windmill", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_ID, "dcs_device_windmill_l", "machine",
+				0);
+		instance.regTETorqueBlock(MachineInit.windmill_ex, ClimateCore.PACKAGE_ID, "dcs_device_windmill_ex", "machine",
 				0);
 		instance.regTETorqueBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l", "machine", 0);

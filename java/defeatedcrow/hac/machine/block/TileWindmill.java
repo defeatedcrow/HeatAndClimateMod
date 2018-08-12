@@ -14,6 +14,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
@@ -22,7 +24,7 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 		if (!world.isRemote) {
 			// Airflowチェック
 			DCAirflow air = ClimateAPI.calculator.getAirflow(world, pos);
-			float wind = getGearTier() * 0.25F;
+			float wind = getGearTier() * 0.125F;
 			switch (air) {
 			case NORMAL:
 				wind *= 0.5F;
@@ -50,7 +52,7 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 
 	@Override
 	public float getGearTier() {
-		return 4.0F;
+		return 8.0F;
 	}
 
 	@Override
@@ -93,6 +95,12 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 	@Override
 	public boolean isOutputSide(EnumFacing side) {
 		return getOutputSide().contains(side);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public double getMaxRenderDistanceSquared() {
+		return 16384.0D;
 	}
 
 }

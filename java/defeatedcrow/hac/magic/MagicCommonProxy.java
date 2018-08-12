@@ -6,9 +6,11 @@ import defeatedcrow.hac.magic.block.TileLotusCandle;
 import defeatedcrow.hac.magic.block.TileLotusCandleBlack;
 import defeatedcrow.hac.magic.block.TileMaceBird;
 import defeatedcrow.hac.magic.block.TileMaceBurn;
+import defeatedcrow.hac.magic.block.TileMaceDry;
 import defeatedcrow.hac.magic.block.TileMaceFlower;
 import defeatedcrow.hac.magic.block.TileMaceGlory;
 import defeatedcrow.hac.magic.block.TileMaceIce;
+import defeatedcrow.hac.magic.block.TileMaceImpact;
 import defeatedcrow.hac.magic.block.TileMaceLight;
 import defeatedcrow.hac.magic.block.TileMaceMoon;
 import defeatedcrow.hac.magic.block.TileMaceOcean;
@@ -83,6 +85,8 @@ public class MagicCommonProxy {
 		GameRegistry.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn");
 		GameRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower");
 		GameRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory");
+		GameRegistry.registerTileEntity(TileMaceDry.class, "dcs_te_magicmace_drought");
+		GameRegistry.registerTileEntity(TileMaceImpact.class, "dcs_te_magicmace_impact");
 
 		GameRegistry.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage");
 	}

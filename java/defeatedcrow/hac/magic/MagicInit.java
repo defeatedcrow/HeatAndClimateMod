@@ -34,6 +34,8 @@ public class MagicInit {
 	public static Block maceBurn;
 	public static Block maceFlower;
 	public static Block maceGlory;
+	public static Block maceDrought;
+	public static Block maceImpact;
 
 	// advanced
 	public static Block lotusCandleBlack;

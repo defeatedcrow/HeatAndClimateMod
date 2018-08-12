@@ -24,6 +24,7 @@ import defeatedcrow.hac.food.entity.CustardPieEntity;
 import defeatedcrow.hac.food.entity.EggSandwichEntity;
 import defeatedcrow.hac.food.entity.EmptyPlateEntity;
 import defeatedcrow.hac.food.entity.EntityRiceBall;
+import defeatedcrow.hac.food.entity.EntityRiceBallSeaweed;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntityRiceMushroom;
 import defeatedcrow.hac.food.entity.EntitySandwich;
@@ -33,6 +34,11 @@ import defeatedcrow.hac.food.entity.EntityTumbler;
 import defeatedcrow.hac.food.entity.FishPlateEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
 import defeatedcrow.hac.food.entity.FruitPieEntity;
+import defeatedcrow.hac.food.entity.IceCreamBerryEntity;
+import defeatedcrow.hac.food.entity.IceCreamCookieEntity;
+import defeatedcrow.hac.food.entity.IceCreamEntity;
+import defeatedcrow.hac.food.entity.IceCreamKinakoEntity;
+import defeatedcrow.hac.food.entity.IceCreamLemonEntity;
 import defeatedcrow.hac.food.entity.LemonSandwichEntity;
 import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.MeatPieEntity;
@@ -118,6 +124,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(EntityRiceBowl.class, "food", "rice_bowl");
 		DCRegistryUtil.addEntity(EntityRiceMushroom.class, "food", "rice_mushroom");
 		DCRegistryUtil.addEntity(EntityRiceBall.class, "food", "rice_ball");
+		DCRegistryUtil.addEntity(EntityRiceBallSeaweed.class, "food", "rice_ball_seaweed");
 
 		DCRegistryUtil.addEntity(EmptyPlateEntity.class, "food", "empty_steakplate");
 		DCRegistryUtil.addEntity(BeefPlateEntity.class, "food", "plate_beef");
@@ -156,6 +163,12 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(CakeBerryEntity.class, "food", "cake_berry");
 		DCRegistryUtil.addEntity(CakeKuzuEntity.class, "food", "cake_kuzu");
 		DCRegistryUtil.addEntity(CakeCocotteEntity.class, "food", "cake_cocotte");
+
+		DCRegistryUtil.addEntity(IceCreamEntity.class, "food", "icecream_milk");
+		DCRegistryUtil.addEntity(IceCreamKinakoEntity.class, "food", "icecream_kinako");
+		DCRegistryUtil.addEntity(IceCreamBerryEntity.class, "food", "icecream_berry");
+		DCRegistryUtil.addEntity(IceCreamLemonEntity.class, "food", "icecream_lemon");
+		DCRegistryUtil.addEntity(IceCreamCookieEntity.class, "food", "icecream_cookie");
 
 	}
 

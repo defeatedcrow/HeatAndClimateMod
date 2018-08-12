@@ -142,10 +142,6 @@ public class ModelIcecream extends DCFoodModelBase {
 			float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 		icecream.render(0.0625F);
-		berry1.render(0.0625F);
-		berry2.render(0.0625F);
-		biscui1.render(0.0625F);
-		biscui2.render(0.0625F);
 	}
 
 	public void renderGlass() {
@@ -163,6 +159,16 @@ public class ModelIcecream extends DCFoodModelBase {
 
 	public void renderSauce() {
 		sauce.render(0.0625F);
+	}
+
+	public void renderTop() {
+		berry1.render(0.0625F);
+		berry2.render(0.0625F);
+	}
+
+	public void renderBiscuit() {
+		biscui1.render(0.0625F);
+		biscui2.render(0.0625F);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

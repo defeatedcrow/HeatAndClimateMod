@@ -487,6 +487,12 @@ public class FoodBasicRecipe {
 				"dustSalt"
 		});
 
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.ricebowl, 1, 3), new Object[] {
+				new ItemStack(FoodInit.ricebowl, 1, 0),
+				"dustSalt",
+				"cropSeaweed"
+		});
+
 		ItemStack[] meats = {
 				new ItemStack(Items.BEEF),
 				new ItemStack(Items.PORKCHOP),
@@ -563,6 +569,12 @@ public class FoodBasicRecipe {
 				new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0),
 				"cropCarrot",
 				"listAllrootveggie"
+		});
+
+		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.icecream, 1, 1), new Object[] {
+				new ItemStack(FoodInit.icecream, 1, 0),
+				"cropSoybean",
+				"dropMolasses"
 		});
 
 		// yagen

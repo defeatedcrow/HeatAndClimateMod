@@ -59,6 +59,7 @@ import defeatedcrow.hac.machine.block.BlockStoneMill;
 import defeatedcrow.hac.machine.block.BlockWaterPump;
 import defeatedcrow.hac.machine.block.BlockWatermill;
 import defeatedcrow.hac.machine.block.BlockWindmill;
+import defeatedcrow.hac.machine.block.BlockWindmill_EX;
 import defeatedcrow.hac.machine.block.BlockWindmill_L;
 import defeatedcrow.hac.machine.block.ItemAdapterPanel;
 import defeatedcrow.hac.machine.block.ItemBlockHighTier;
@@ -111,7 +112,10 @@ public class MachineInitRegister {
 		registerTierBlock(MachineInit.windmill, ClimateCore.PACKAGE_BASE + "_device_windmill", 1);
 
 		MachineInit.windmill_l = new BlockWindmill_L(ClimateCore.PACKAGE_BASE + "_device_windmill_l");
-		registerTierBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_BASE + "_device_windmill_l", 1);
+		registerTierBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_BASE + "_device_windmill_l", 2);
+
+		MachineInit.windmill_ex = new BlockWindmill_EX(ClimateCore.PACKAGE_BASE + "_device_windmill_ex");
+		registerTierBlock(MachineInit.windmill_ex, ClimateCore.PACKAGE_BASE + "_device_windmill_ex", 3);
 
 		MachineInit.shaft_s = new BlockShaft_S(ClimateCore.PACKAGE_BASE + "_device_shaft_s");
 		registerTierBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_BASE + "_device_shaft_s", 1);
@@ -396,6 +400,7 @@ public class MachineInitRegister {
 	static void loadCreativeTab() {
 		MachineInit.windmill.setCreativeTab(ClimateMain.machine);
 		MachineInit.windmill_l.setCreativeTab(ClimateMain.machine);
+		MachineInit.windmill_ex.setCreativeTab(ClimateMain.machine);
 		MachineInit.handcrank.setCreativeTab(ClimateMain.machine);
 		MachineInit.watermill.setCreativeTab(ClimateMain.machine);
 		MachineInit.boilerTurbine.setCreativeTab(ClimateMain.machine);

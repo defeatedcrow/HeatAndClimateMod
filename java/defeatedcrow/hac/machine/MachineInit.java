@@ -46,6 +46,7 @@ public class MachineInit {
 	public static Block hopperSilver;
 
 	public static Block watermill;
+	public static Block windmill_ex;
 
 	public static Block stonemill;
 	public static Block heatPump;
