@@ -233,8 +233,8 @@ public class FoodInitRegister {
 		FoodInit.cake = new CakeItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_cake");
 		DCMaterialReg.registerItem(FoodInit.cake, ClimateCore.PACKAGE_BASE + "_food_cake", ClimateMain.MOD_ID);
 
-		FoodInit.icecream = new IceCreamItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_iceream");
-		DCMaterialReg.registerItem(FoodInit.icecream, ClimateCore.PACKAGE_BASE + "_food_iceream", ClimateMain.MOD_ID);
+		FoodInit.icecream = new IceCreamItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_icecream");
+		DCMaterialReg.registerItem(FoodInit.icecream, ClimateCore.PACKAGE_BASE + "_food_icecream", ClimateMain.MOD_ID);
 	}
 
 	public static void loadFluids() {

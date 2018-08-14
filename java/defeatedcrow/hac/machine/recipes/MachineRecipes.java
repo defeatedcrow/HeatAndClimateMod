@@ -159,6 +159,18 @@ public class MachineRecipes {
 				"ZYZ",
 				"XZX",
 				'X',
+				"logWood",
+				'Y',
+				new ItemStack(MachineInit.windmill_l, 1, 0),
+				'Z',
+				"ingotSUS"
+		});
+
+		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.windmill_ex, 1, 0), new Object[] {
+				"XZX",
+				"ZYZ",
+				"XZX",
+				'X',
 				new ItemStack(Blocks.IRON_BARS, 1, 0),
 				'Y',
 				new ItemStack(MachineInit.windmill_l, 1, 0),

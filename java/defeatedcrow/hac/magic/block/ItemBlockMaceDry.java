@@ -33,18 +33,18 @@ public class ItemBlockMaceDry extends ItemBlockMace {
 
 			if (hasAcv || flag) {
 				if (!world.isRemote) {
-					int i = 3 + magicSuitCount(player);
+					int i = 5 + magicSuitCount(player);
 					// 成長
 					// 5x5x3 の範囲
 					BlockPos pos = player.getPosition();
-					BlockPos min = new BlockPos(pos.add(-i, -1, -i));
-					BlockPos max = new BlockPos(pos.add(i, 1, i));
+					BlockPos min = new BlockPos(pos.add(-i, -2, -i));
+					BlockPos max = new BlockPos(pos.add(i, 2, i));
 					Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 					for (BlockPos p1 : itr) {
 						IBlockState st = world.getBlockState(p1);
 						int meta = st.getBlock().getMetaFromState(st);
 						if (st.getBlock() == Blocks.WATER || st.getBlock() == Blocks.FLOWING_WATER) {
-							world.setBlockToAir(p1);
+							world.setBlockState(p1, Blocks.AIR.getDefaultState(), 2);
 						}
 					}
 				}

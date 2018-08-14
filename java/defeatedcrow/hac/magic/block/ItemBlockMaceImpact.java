@@ -33,7 +33,7 @@ public class ItemBlockMaceImpact extends ItemBlockMace {
 
 			if (hasAcv || flag) {
 				if (!world.isRemote) {
-					int i = 6 + magicSuitCount(player);
+					int i = 6 + magicSuitCount(player) * 2;
 					// 成長
 					AxisAlignedBB aabb = player.getEntityBoundingBox().grow(i, 1D, i);
 					List<EntityLiving> list = world.getEntitiesWithinAABB(EntityLiving.class, aabb);
@@ -41,10 +41,13 @@ public class ItemBlockMaceImpact extends ItemBlockMace {
 						for (EntityLiving liv : list) {
 							if (!(liv instanceof EntityTameable)) {
 								double dx = player.posX - liv.posX;
-								dx *= 0.25D;
+								double ax = Math.abs(dx);
+								dx /= ax;
 								double dz = player.posZ - liv.posZ;
-								dz *= 0.25D;
-								liv.knockBack(player, 2.0F, dx, dz);
+								double az = Math.abs(dz);
+								dz /= az;
+								liv.motionY += 0.05D;
+								liv.knockBack(player, 3.0F, dx, dz);
 							}
 						}
 				}

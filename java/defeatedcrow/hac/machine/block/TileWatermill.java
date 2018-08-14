@@ -145,4 +145,12 @@ public class TileWatermill extends TileTorqueBase implements ITorqueProvider {
 		return 16384.0D;
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
+		net.minecraft.util.math.AxisAlignedBB bb = INFINITE_EXTENT_AABB;
+		bb = new net.minecraft.util.math.AxisAlignedBB(getPos().add(-1, -1, -1), getPos().add(1, 1, 1));
+		return bb;
+	}
+
 }
