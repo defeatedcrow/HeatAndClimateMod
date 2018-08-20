@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "blockSapphire"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_gem",
+  "count": 4,
+  "data": 4
+ }
+}

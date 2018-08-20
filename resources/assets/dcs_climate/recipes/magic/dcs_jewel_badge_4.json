@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " Y ",
+  "X X",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemSapphire"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_jewel_badge",
+  "count": 1,
+  "data": 4
+ }
+}

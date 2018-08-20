@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "toolNormalYagen"
+  },
+  {
+   "item": "minecraft:bone",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "minecraft:dye",
+  "count": 5,
+  "data": 15
+ }
+}

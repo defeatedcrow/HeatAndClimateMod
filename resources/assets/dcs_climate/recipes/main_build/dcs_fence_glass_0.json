@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "XYX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotAluminium"
+  },
+  "Y": {
+   "item": "minecraft:glass",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_fence_glass",
+  "count": 6,
+  "data": 0
+ }
+}

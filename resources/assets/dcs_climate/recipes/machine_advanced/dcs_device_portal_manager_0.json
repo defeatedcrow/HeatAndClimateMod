@@ -1,0 +1,35 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "WXW",
+  "VYV",
+  "WZW"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_gemcore",
+   "data": 0
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_mechanical",
+   "data": 0
+  },
+  "Z": {
+   "item": "dcs_climate:dcs_device_gearbox_sus",
+   "data": 0
+  },
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  },
+  "V": {
+   "type": "forge:ore_dict",
+   "ore": "ingotBSCCO"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_portal_manager",
+  "count": 1,
+  "data": 0
+ }
+}

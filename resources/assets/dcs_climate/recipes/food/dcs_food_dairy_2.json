@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodCream"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "egg"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustFlour"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_dairy",
+  "count": 1,
+  "data": 2
+ }
+}

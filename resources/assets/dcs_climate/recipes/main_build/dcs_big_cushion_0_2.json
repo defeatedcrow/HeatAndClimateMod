@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "YYY",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "itemCloth"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "cropCotton"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_big_cushion",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y",
+  "Z"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:redstone_lamp",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemBismuth"
+  },
+  "Z": {
+   "item": "minecraft:lever",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_monitor_cm",
+  "count": 1,
+  "data": 0
+ }
+}

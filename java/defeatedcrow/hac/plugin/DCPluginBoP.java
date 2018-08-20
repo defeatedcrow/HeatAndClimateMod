@@ -6,12 +6,10 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.core.climate.recipe.SpinningRecipe;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
-import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -62,36 +60,36 @@ public class DCPluginBoP {
 		if (ModuleConfig.machine && ModuleConfig.r_mill) {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "plantWildrice");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F, new ItemStack(
-					BOPBlocks.stone_formations, 1, 0));
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F,
+					new ItemStack(BOPBlocks.stone_formations, 1, 0));
 
 			Item wax = Item.REGISTRY.getObject(new ResourceLocation("forestry", "beeswax"));
 			if (DCIntegrationCore.loadedForestry && wax != null) {
-				RecipeAPI.registerMills.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
-						BOPItems.honeycomb, 1, 0));
+				RecipeAPI.registerMills.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F,
+						new ItemStack(BOPItems.honeycomb, 1, 0));
 
-				RecipeAPI.registerCrushers.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
-						MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPItems.honeycomb, 1, 0));
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F,
+						new ItemStack(MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPItems.honeycomb, 1, 0));
 			}
 
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
-					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
-							MachineInit.rotaryBlade, 1, 0), "plantWildrice");
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2),
+					new ItemStack(MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null,
+					new ItemStack(MachineInit.rotaryBlade, 1, 0), "plantWildrice");
 
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F, new ItemStack(
-					MachineInit.rotaryBlade, 1, 1), new ItemStack(BOPBlocks.stone_formations, 1, 0));
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F,
+					new ItemStack(MachineInit.rotaryBlade, 1, 1), new ItemStack(BOPBlocks.stone_formations, 1, 0));
 		}
 
 		if (ModuleConfig.machine && ModuleConfig.r_spinning) {
-			RecipeAPI.registerSpinningRecipes.addRecipe(new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 2,
-					"plantFlax"));
+			RecipeAPI.registerSpinningRecipes.addRecipe(
+					new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 2, "plantFlax"));
 		}
 
-		DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(MainInit.foodMaterials,
-				1, 2), new Object[] {
-						"toolNormalYagen",
-						"plantWildrice"
-		});
+		// DCRecipe.jsonShapelessRecipe(RecipeResourcesMain.MAIN.getRecipeName(),
+		// new ItemStack(MainInit.foodMaterials, 1, 2), new Object[] {
+		// "toolNormalYagen",
+		// "plantWildrice"
+		// });
 
 	}
 

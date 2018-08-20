@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "YY",
+  "XX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  },
+  "Y": {
+   "item": "minecraft:iron_bars",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_door_steel_item",
+  "count": 2,
+  "data": 0
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_metal",
+   "data": 1
+  }
+ ],
+ "result": {
+  "item": "minecraft:bone",
+  "count": 8,
+  "data": 0
+ }
+}

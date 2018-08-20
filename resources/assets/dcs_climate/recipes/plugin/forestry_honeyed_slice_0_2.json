@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "Y": {
+   "item": "dcs_climate:dcs_food_bread",
+   "data": 3
+  },
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dropHoney"
+  }
+ },
+ "result": {
+  "item": "forestry:honeyed_slice",
+  "count": 4,
+  "data": 0
+ }
+}

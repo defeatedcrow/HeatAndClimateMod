@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " Z ",
+  "XYX",
+  " Z "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:gold_ingot",
+   "data": 0
+  },
+  "Y": {
+   "item": "minecraft:redstone",
+   "data": 0
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedony"
+  }
+ },
+ "result": {
+  "item": "dcs_lib:dcs_checker",
+  "count": 1,
+  "data": 0
+ }
+}

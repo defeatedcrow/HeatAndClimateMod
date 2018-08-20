@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "YYY"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:sapling",
+   "data": 2
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_hedge_autumn",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "YY",
+  "XX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_pillar_steel",
+  "count": 6,
+  "data": 0
+ }
+}

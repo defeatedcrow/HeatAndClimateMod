@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotNickelsilver"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_dagger_silver",
+  "count": 3,
+  "data": 0
+ }
+}

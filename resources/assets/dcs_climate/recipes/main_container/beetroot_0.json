@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_crop",
+   "data": 11
+  }
+ ],
+ "result": {
+  "item": "minecraft:beetroot",
+  "count": 8,
+  "data": 0
+ }
+}

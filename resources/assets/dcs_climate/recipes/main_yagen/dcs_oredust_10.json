@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "toolNormalYagen"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemRutile"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_oredust",
+  "count": 1,
+  "data": 10
+ }
+}

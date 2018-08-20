@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_silkworm",
+   "data": 2
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_silkworm",
+  "count": 1,
+  "data": 3
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X X",
+  " Y "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_build_plate",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_food_steakplate_item",
+  "count": 3,
+  "data": 0
+ }
+}

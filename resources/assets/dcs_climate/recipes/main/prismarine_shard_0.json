@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:prismarine",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "minecraft:prismarine_shard",
+  "count": 9,
+  "data": 0
+ }
+}

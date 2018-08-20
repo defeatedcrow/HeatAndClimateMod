@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X X",
+  "XYX",
+  "X X"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_fence_ladder_steel",
+  "count": 6,
+  "data": 0
+ }
+}

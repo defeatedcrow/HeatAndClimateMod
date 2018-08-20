@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_desiccant",
+   "data": 3
+  }
+ ],
+ "result": {
+  "item": "minecraft:dye",
+  "count": 1,
+  "data": 15
+ }
+}

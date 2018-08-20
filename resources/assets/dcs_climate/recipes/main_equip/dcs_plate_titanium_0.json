@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X X",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotTitanium"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "itemCloth"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_plate_titanium",
+  "count": 1,
+  "data": 0
+ }
+}

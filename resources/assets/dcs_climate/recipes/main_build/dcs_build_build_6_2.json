@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustLime"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropWheat"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropSeaweed"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_build_build",
+  "count": 1,
+  "data": 6
+ }
+}

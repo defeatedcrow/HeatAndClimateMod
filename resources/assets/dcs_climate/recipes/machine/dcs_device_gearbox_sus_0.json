@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "ZXZ",
+  "XYX",
+  "ZXZ"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gearAlloy"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearSteel"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSUS"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_gearbox_sus",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -47,7 +47,7 @@ public class MagicRecipeRegister {
 				"gemKunzite"
 		};
 		for (int i = 0; i < gems.length; i++) {
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, i), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, i), new Object[] {
 					" X ",
 					"X X",
 					" Y ",
@@ -57,7 +57,7 @@ public class MagicRecipeRegister {
 					gems[i]
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, i), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, i), new Object[] {
 					" X ",
 					"X X",
 					" Y ",
@@ -67,7 +67,7 @@ public class MagicRecipeRegister {
 					gems[i]
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, i), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, i), new Object[] {
 					" Y ",
 					"X X",
 					" X ",
@@ -77,7 +77,7 @@ public class MagicRecipeRegister {
 					gems[i]
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, i), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, i), new Object[] {
 					" Y ",
 					"X X",
 					" X ",
@@ -88,7 +88,7 @@ public class MagicRecipeRegister {
 			});
 		}
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, 12), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, 12), new Object[] {
 				" X ",
 				"X X",
 				" Y ",
@@ -98,7 +98,7 @@ public class MagicRecipeRegister {
 				"gemPeridot"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, 12), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.pendant, 1, 12), new Object[] {
 				" X ",
 				"X X",
 				" Y ",
@@ -108,7 +108,7 @@ public class MagicRecipeRegister {
 				"gemPeridot"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, 12), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, 12), new Object[] {
 				" Y ",
 				"X X",
 				" X ",
@@ -118,7 +118,7 @@ public class MagicRecipeRegister {
 				"gemPeridot"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, 12), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, 12), new Object[] {
 				" Y ",
 				"X X",
 				" X ",
@@ -128,16 +128,16 @@ public class MagicRecipeRegister {
 				"gemPeridot"
 		});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, 7), new Object[] {
+		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, 7), new Object[] {
 				new ItemStack(MagicInit.badge, 1, 7)
 		});
 
-		DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, 16), new Object[] {
+		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MagicInit.badge, 1, 16), new Object[] {
 				new ItemStack(MagicInit.badge, 1, 16)
 		});
 
 		// dagger
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerSilver, 3, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerSilver, 3, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -146,7 +146,7 @@ public class MagicRecipeRegister {
 				"stickWood"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerSilver, 3, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerSilver, 3, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -155,7 +155,7 @@ public class MagicRecipeRegister {
 				"stickWood"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -167,7 +167,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 4), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 4), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -179,7 +179,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 2), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -191,7 +191,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 1), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -203,7 +203,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 5), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 5), new Object[] {
 				"XYW",
 				" Z ",
 				'X',
@@ -216,7 +216,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 3), new Object[] {
 				"XYW",
 				" Z ",
 				'X',
@@ -229,7 +229,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 6), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 6), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -241,7 +241,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 7), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 7), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -253,7 +253,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 8), new Object[] {
 				"XYW",
 				" Z ",
 				'X',
@@ -266,7 +266,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 8), new Object[] {
 				"XYW",
 				" Z ",
 				'X',
@@ -279,7 +279,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 9), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 9), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -291,7 +291,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 10), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 10), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -303,7 +303,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 11), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 11), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -315,7 +315,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 11), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 11), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -327,7 +327,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 12), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 12), new Object[] {
 				"XYW",
 				" Z ",
 				'X',
@@ -340,7 +340,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 13), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 13), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -352,7 +352,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 14), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 14), new Object[] {
 				"XYW",
 				" Z ",
 				'X',
@@ -365,7 +365,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.daggerSilver)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 15), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.daggerMagic, 1, 15), new Object[] {
 				"XYW",
 				" Z ",
 				'X',
@@ -380,7 +380,7 @@ public class MagicRecipeRegister {
 
 		// mace
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.macehandle, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.macehandle, 1, 0), new Object[] {
 				"  X",
 				" Y ",
 				"X  ",
@@ -390,7 +390,7 @@ public class MagicRecipeRegister {
 				"ingotSilver"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 0), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -404,7 +404,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 0), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -418,7 +418,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 1), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -432,7 +432,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 1), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -446,7 +446,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 2), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -460,7 +460,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 3), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -474,7 +474,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 4), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 4), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -488,7 +488,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 4), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 4), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -502,7 +502,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 5), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 5), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -516,7 +516,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 5), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 5), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -530,7 +530,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 6), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 6), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -544,7 +544,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 7), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 7), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -558,7 +558,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 7), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 7), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -572,7 +572,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 8), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -586,7 +586,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 8), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -600,7 +600,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 9), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceStarItem, 1, 9), new Object[] {
 				"XYX",
 				"ZWZ",
 				"XYX",
@@ -614,7 +614,7 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceSun, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceSun, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -623,7 +623,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceMoon, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceMoon, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -632,7 +632,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceBird, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceBird, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -641,7 +641,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceIce, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceIce, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -650,7 +650,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceOcean, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceOcean, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -659,7 +659,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceBurn, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceBurn, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -668,7 +668,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceFlower, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceFlower, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -677,7 +677,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceGlory, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceGlory, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -686,7 +686,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceDrought, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceDrought, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -695,7 +695,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceImpact, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.maceImpact, 1, 0), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -704,7 +704,7 @@ public class MagicRecipeRegister {
 				new ItemStack(MagicInit.macehandle, 1, 0)
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 0), new Object[] {
 				"XX",
 				"YZ",
 				"ZY",
@@ -716,7 +716,7 @@ public class MagicRecipeRegister {
 				"gemChalcedonyWhite"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 1), new Object[] {
 				"XX",
 				"YZ",
 				"WY",
@@ -730,7 +730,7 @@ public class MagicRecipeRegister {
 				"gemPeridot"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 1), new Object[] {
 				"XX",
 				"YZ",
 				"WY",
@@ -744,7 +744,7 @@ public class MagicRecipeRegister {
 				"gemPeridot"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 2), new Object[] {
 				"XX",
 				"YZ",
 				"WY",
@@ -758,7 +758,7 @@ public class MagicRecipeRegister {
 				"dustIron"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 3), new Object[] {
 				"XX",
 				"YZ",
 				"WV",
@@ -774,7 +774,7 @@ public class MagicRecipeRegister {
 				"gemLapis"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 3), new Object[] {
 				"XX",
 				"YZ",
 				"WV",
@@ -790,7 +790,7 @@ public class MagicRecipeRegister {
 				"gemLapis"
 		});
 
-		DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 4), new Object[] {
+		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.amulet, 1, 4), new Object[] {
 				"XX",
 				"YZ",
 				"ZV",
@@ -809,7 +809,7 @@ public class MagicRecipeRegister {
 				false, new ItemStack(MainInit.gemBlock, 1, 8));
 
 		if (ModuleConfig.food) {
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.lotusCandle, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.lotusCandle, 1, 0), new Object[] {
 					"XXX",
 					"XYX",
 					"XXX",
@@ -819,11 +819,11 @@ public class MagicRecipeRegister {
 					"nuggetGold"
 			});
 
-			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.petals, 8, 0), new Object[] {
+			DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.petals, 8, 0), new Object[] {
 					new ItemStack(MagicInit.lotusCandle, 1, 0)
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.lotusCandleBlack, 1, 0),
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.lotusCandleBlack, 1, 0),
 					new Object[] {
 							"XXX",
 							"XYX",
@@ -834,14 +834,14 @@ public class MagicRecipeRegister {
 							"nuggetGold"
 					});
 
-			DCRecipe.addShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.petals, 8, 1), new Object[] {
+			DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(FoodInit.petals, 8, 1), new Object[] {
 					new ItemStack(MagicInit.lotusCandleBlack, 1, 0)
 			});
 		}
 
 		// advanced
 		if (ModuleConfig.magic_advanced) {
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.biomeOrb, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.biomeOrb, 1, 0), new Object[] {
 					"XYX",
 					"YZY",
 					"XYX",
@@ -853,7 +853,7 @@ public class MagicRecipeRegister {
 					new ItemStack(MagicInit.maceStarItem, 1, 0)
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.biomeOrb, 1, 1), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.biomeOrb, 1, 1), new Object[] {
 					"XYX",
 					"YZY",
 					"XYX",
@@ -865,7 +865,7 @@ public class MagicRecipeRegister {
 					new ItemStack(MagicInit.maceStarItem, 1, 6)
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.biomeOrb, 1, 2), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.biomeOrb, 1, 2), new Object[] {
 					"XYX",
 					"YZY",
 					"XYX",
@@ -877,7 +877,7 @@ public class MagicRecipeRegister {
 					new ItemStack(MagicInit.maceStarItem, 1, 5)
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.biomeOrb, 1, 3), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.biomeOrb, 1, 3), new Object[] {
 					"XYX",
 					"YZY",
 					"XYX",
@@ -889,7 +889,7 @@ public class MagicRecipeRegister {
 					new ItemStack(MagicInit.maceStarItem, 1, 3)
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.timeCage, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.timeCage, 1, 0), new Object[] {
 					"XYX",
 					"YZY",
 					"XYX",
@@ -901,7 +901,7 @@ public class MagicRecipeRegister {
 					new ItemStack(MachineInit.gemcore, 1, 1)
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.gemBootsBird, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.gemBootsBird, 1, 0), new Object[] {
 					"XYX",
 					"XZX",
 					'X',
@@ -912,7 +912,7 @@ public class MagicRecipeRegister {
 					"ingotSilver"
 			});
 
-			DCRecipe.addShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.gemBootsFish, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MagicInit.gemBootsFish, 1, 0), new Object[] {
 					"XYX",
 					"XZX",
 					'X',

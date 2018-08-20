@@ -1,0 +1,46 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustBismuth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustBismuth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemCelestite"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustLime"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustLime"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustLime"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_ore_dustblock",
+  "count": 1,
+  "data": 15
+ }
+}

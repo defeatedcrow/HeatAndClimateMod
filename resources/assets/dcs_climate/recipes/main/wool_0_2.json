@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XXX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "cropCotton"
+  }
+ },
+ "result": {
+  "item": "minecraft:wool",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "ZXZ",
+  " Y "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemBismuth"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "blockGlass"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "gemSchorl"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_adapter_card",
+  "count": 1,
+  "data": 1
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_misc",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "minecraft:clay_ball",
+  "count": 8,
+  "data": 0
+ }
+}

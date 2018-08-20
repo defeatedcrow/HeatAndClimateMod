@@ -17,6 +17,12 @@ public class FoodClimateRecipe {
 
 	static void loadClimateRecipes() {
 
+		ClimateSmelting pizza = new ClimateSmelting(new ItemStack(FoodInit.bread, 1, 7), null, DCHeatTier.OVEN, DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.bread, 1, 6));
+		pizza.requiredHeat().add(DCHeatTier.SMELTING);
+		pizza.requiredHum().add(DCHumidity.NORMAL);
+		pizza.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(pizza);
+
 		ClimateSmelting toast = new ClimateSmelting(new ItemStack(FoodInit.bread, 1, 5), null, DCHeatTier.OVEN, DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.bread, 1, 4));
 		toast.requiredHeat().add(DCHeatTier.SMELTING);
 		toast.requiredHum().add(DCHumidity.NORMAL);

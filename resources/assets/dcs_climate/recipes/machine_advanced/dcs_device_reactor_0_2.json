@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "YXX",
+  "ZXX",
+  "WWW"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_device_steel_pot",
+   "data": 0
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_device_gearbox_sus",
+   "data": 0
+  },
+  "Z": {
+   "item": "dcs_climate:dcs_mechanical",
+   "data": 0
+  },
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSUS"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_reactor",
+  "count": 1,
+  "data": 0
+ }
+}

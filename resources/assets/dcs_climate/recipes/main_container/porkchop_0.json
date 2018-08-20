@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_cardboard",
+   "data": 1
+  }
+ ],
+ "result": {
+  "item": "minecraft:porkchop",
+  "count": 8,
+  "data": 0
+ }
+}

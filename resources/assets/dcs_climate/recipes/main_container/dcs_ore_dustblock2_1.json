@@ -1,0 +1,46 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustBorax"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_ore_dustblock2",
+  "count": 8,
+  "data": 1
+ }
+}

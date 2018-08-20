@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_build_selenite",
+   "data": 0
+  },
+  "Y": {
+   "item": "minecraft:glowstone_dust",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_selenite",
+  "count": 8,
+  "data": 1
+ }
+}

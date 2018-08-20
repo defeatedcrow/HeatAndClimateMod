@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:stained_hardened_clay",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "dyeLime"
+  }
+ },
+ "result": {
+  "item": "minecraft:stained_hardened_clay",
+  "count": 8,
+  "data": 5
+ }
+}

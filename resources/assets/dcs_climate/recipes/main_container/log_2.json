@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_log",
+   "data": 2
+  }
+ ],
+ "result": {
+  "item": "minecraft:log",
+  "count": 8,
+  "data": 2
+ }
+}

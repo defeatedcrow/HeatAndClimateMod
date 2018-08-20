@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_device_conveyor",
+   "data": 0
+  },
+  "Y": {
+   "item": "minecraft:piston",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_catapult",
+  "count": 1,
+  "data": 0
+ }
+}

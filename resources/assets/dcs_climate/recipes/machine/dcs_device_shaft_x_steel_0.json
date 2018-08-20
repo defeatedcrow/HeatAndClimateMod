@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "XYX",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_device_shaft_s_steel",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_shaft_x_steel",
+  "count": 1,
+  "data": 0
+ }
+}

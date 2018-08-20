@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustPlant"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodOil"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustLime"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dyeBrown"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_build_linoleum",
+  "count": 4,
+  "data": 3
+ }
+}

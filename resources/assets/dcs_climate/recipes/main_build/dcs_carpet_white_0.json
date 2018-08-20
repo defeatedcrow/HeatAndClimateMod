@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:carpet",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_carpet_white",
+  "count": 1,
+  "data": 0
+ }
+}

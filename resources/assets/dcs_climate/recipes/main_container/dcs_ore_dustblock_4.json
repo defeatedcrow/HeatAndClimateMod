@@ -1,0 +1,46 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustCopper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustZinc"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustZinc"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustZinc"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_ore_dustblock",
+  "count": 1,
+  "data": 4
+ }
+}

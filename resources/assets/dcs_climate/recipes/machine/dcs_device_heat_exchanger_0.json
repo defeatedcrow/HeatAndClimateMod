@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "WZW",
+  "YYY"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotCopper"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  },
+  "Z": {
+   "item": "dcs_climate:dcs_device_fan",
+   "data": 0
+  },
+  "W": {
+   "item": "minecraft:iron_bars",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_heat_exchanger",
+  "count": 1,
+  "data": 0
+ }
+}

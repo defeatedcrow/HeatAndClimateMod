@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "X X",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:mutton",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_cont_cardboard",
+  "count": 1,
+  "data": 3
+ }
+}

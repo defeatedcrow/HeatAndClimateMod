@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " Y ",
+  "XZX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSUS"
+  },
+  "Y": {
+   "item": "minecraft:hopper",
+   "data": 0
+  },
+  "Z": {
+   "item": "dcs_climate:dcs_mechanical",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_crusher",
+  "count": 1,
+  "data": 0
+ }
+}

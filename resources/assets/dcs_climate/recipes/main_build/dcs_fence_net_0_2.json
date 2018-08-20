@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "XYX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotAluminum"
+  },
+  "Y": {
+   "item": "minecraft:iron_bars",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_fence_net",
+  "count": 6,
+  "data": 0
+ }
+}

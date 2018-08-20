@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dyeYellow"
+  },
+  {
+   "item": "dcs_climate:dcs_build_build",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustBorax"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_build_build",
+  "count": 1,
+  "data": 3
+ }
+}

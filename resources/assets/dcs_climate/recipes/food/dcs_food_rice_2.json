@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_food_rice",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustSalt"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_rice",
+  "count": 1,
+  "data": 2
+ }
+}

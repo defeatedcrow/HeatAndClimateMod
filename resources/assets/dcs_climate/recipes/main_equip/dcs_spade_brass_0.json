@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "   ",
+  "YYX",
+  "   "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotBrass"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_spade_brass",
+  "count": 1,
+  "data": 0
+ }
+}

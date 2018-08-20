@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_reagent",
+   "data": 8
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_cartridge",
+  "count": 8,
+  "data": 3
+ }
+}

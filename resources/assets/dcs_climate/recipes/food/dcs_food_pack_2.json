@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_food_pack",
+   "data": 0
+  },
+  {
+   "item": "dcs_climate:dcs_food_pack",
+   "data": 0
+  },
+  {
+   "item": "dcs_climate:dcs_food_pack",
+   "data": 0
+  },
+  {
+   "item": "dcs_climate:dcs_food_pack",
+   "data": 0
+  },
+  {
+   "item": "minecraft:milk_bucket",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_pack",
+  "count": 4,
+  "data": 2
+ }
+}

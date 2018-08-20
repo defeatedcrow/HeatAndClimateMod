@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:chicken",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropSoybean"
+  },
+  {
+   "item": "minecraft:brown_mushroom",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropCarrot"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllrootveggie"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_salad",
+  "count": 2,
+  "data": 4
+ }
+}

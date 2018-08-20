@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_crop",
+   "data": 8
+  }
+ ],
+ "result": {
+  "item": "minecraft:dye",
+  "count": 8,
+  "data": 3
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " Y ",
+  "XZX",
+  " Y "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotTitanium"
+  },
+  "Y": {
+   "item": "minecraft:iron_bars",
+   "data": 0
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "gearSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_rotaryblade",
+  "count": 1,
+  "data": 1
+ }
+}

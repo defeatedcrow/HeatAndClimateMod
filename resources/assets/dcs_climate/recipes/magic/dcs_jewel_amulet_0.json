@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "YZ",
+  "ZY"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemQuartz"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedonyWhite"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_jewel_amulet",
+  "count": 1,
+  "data": 0
+ }
+}

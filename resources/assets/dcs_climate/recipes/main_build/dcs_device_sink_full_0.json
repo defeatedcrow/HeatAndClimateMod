@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_device_sink_half",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_device_sink_full",
+  "count": 1,
+  "data": 0
+ }
+}

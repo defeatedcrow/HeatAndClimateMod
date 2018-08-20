@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "ZYW",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSUS"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearSteel"
+  },
+  "Z": {
+   "item": "dcs_climate:dcs_device_ibc",
+   "data": 0
+  },
+  "W": {
+   "item": "dcs_climate:dcs_device_heat_exchanger",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_boiler_turbine",
+  "count": 1,
+  "data": 0
+ }
+}

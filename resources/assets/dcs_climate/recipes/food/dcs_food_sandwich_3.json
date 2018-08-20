@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_food_bread",
+   "data": 3
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropSpinach"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropOnion"
+  },
+  {
+   "item": "minecraft:cooked_porkchop",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_sandwich",
+  "count": 2,
+  "data": 3
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_reagent",
+   "data": 8
+  }
+ ],
+ "result": {
+  "item": "minecraft:gunpowder",
+  "count": 4,
+  "data": 0
+ }
+}

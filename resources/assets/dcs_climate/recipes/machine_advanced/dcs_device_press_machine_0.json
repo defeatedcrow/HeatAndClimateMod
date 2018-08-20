@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "X X",
+  "XZX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSUS"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearSteel"
+  },
+  "Z": {
+   "item": "minecraft:anvil",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_press_machine",
+  "count": 1,
+  "data": 0
+ }
+}

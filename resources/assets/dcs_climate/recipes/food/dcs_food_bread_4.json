@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_food_bread",
+   "data": 3
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodButter"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_bread",
+  "count": 3,
+  "data": 4
+ }
+}

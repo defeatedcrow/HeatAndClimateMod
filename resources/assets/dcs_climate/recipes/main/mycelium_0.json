@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:dirt",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustBlan"
+  }
+ ],
+ "result": {
+  "item": "minecraft:mycelium",
+  "count": 1,
+  "data": 0
+ }
+}

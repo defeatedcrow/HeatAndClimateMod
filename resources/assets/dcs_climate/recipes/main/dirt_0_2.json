@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:sand",
+   "data": 32767
+  },
+  {
+   "item": "minecraft:dye",
+   "data": 15
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustAsh"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustPlant"
+  }
+ ],
+ "result": {
+  "item": "minecraft:dirt",
+  "count": 1,
+  "data": 0
+ }
+}

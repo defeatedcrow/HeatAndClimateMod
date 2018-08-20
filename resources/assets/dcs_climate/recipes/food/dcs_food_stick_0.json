@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  },
+  {
+   "item": "minecraft:fish",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_stick",
+  "count": 1,
+  "data": 0
+ }
+}

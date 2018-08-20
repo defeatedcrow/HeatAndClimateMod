@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XZX",
+  "ZYZ",
+  "XZX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearAlloy"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_watermill",
+  "count": 1,
+  "data": 0
+ }
+}

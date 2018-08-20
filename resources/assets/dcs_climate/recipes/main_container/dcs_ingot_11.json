@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "blockTitanium"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_ingot",
+  "count": 9,
+  "data": 11
+ }
+}

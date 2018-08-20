@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "  X",
+  "YYX",
+  "  X"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemMalachite"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_rake_earth",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y",
+  "Z"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemSchorl"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemLapis"
+  },
+  "Z": {
+   "item": "dcs_climate:dcs_dagger_silver",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_dagger_magic",
+  "count": 1,
+  "data": 10
+ }
+}

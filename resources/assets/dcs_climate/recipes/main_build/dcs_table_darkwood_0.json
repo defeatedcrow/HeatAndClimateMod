@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  " X ",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:planks",
+   "data": 5
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_table_darkwood",
+  "count": 1,
+  "data": 0
+ }
+}

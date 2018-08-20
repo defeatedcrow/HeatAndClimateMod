@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:cobblestone",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_yagen_stone",
+  "count": 1,
+  "data": 0
+ }
+}

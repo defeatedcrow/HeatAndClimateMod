@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XXX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_reagent",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_cont_fuel",
+  "count": 1,
+  "data": 3
+ }
+}

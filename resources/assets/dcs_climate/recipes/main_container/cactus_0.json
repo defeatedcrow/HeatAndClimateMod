@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_crop",
+   "data": 5
+  }
+ ],
+ "result": {
+  "item": "minecraft:cactus",
+  "count": 8,
+  "data": 0
+ }
+}

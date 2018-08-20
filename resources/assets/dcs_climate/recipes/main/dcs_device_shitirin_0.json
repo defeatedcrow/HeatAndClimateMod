@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "Y": {
+   "item": "minecraft:furnace",
+   "data": 0
+  },
+  "X": {
+   "item": "minecraft:clay_ball",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_shitirin",
+  "count": 1,
+  "data": 0
+ }
+}

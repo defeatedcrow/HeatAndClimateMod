@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_device_tea_pot",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_device_tea_pot",
+  "count": 1,
+  "data": 0
+ }
+}

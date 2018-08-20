@@ -1,0 +1,35 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "WZ ",
+  "WYV",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSUS"
+  },
+  "Y": {
+   "item": "minecraft:end_rod",
+   "data": 0
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "bucketWater"
+  },
+  "W": {
+   "item": "dcs_climate:dcs_device_ibc",
+   "data": 0
+  },
+  "V": {
+   "item": "dcs_climate:dcs_device_gearbox_sus",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_freezer",
+  "count": 1,
+  "data": 0
+ }
+}

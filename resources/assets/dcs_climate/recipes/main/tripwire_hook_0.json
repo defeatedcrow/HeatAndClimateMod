@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y",
+  "Z"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotAluminum"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  }
+ },
+ "result": {
+  "item": "minecraft:tripwire_hook",
+  "count": 1,
+  "data": 0
+ }
+}

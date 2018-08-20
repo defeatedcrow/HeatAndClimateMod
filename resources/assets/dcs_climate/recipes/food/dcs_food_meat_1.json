@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodViscera"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_meat",
+  "count": 1,
+  "data": 1
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "XYX",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:glass",
+   "data": 0
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_build_challamp",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_challamp",
+  "count": 1,
+  "data": 4
+ }
+}

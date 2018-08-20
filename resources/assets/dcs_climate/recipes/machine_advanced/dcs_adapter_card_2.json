@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "bucketEmpty"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_adapter_card",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_adapter_card",
+  "count": 1,
+  "data": 2
+ }
+}

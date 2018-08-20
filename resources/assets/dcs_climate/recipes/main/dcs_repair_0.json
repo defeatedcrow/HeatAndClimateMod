@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:slime_ball",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustIron"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_repair",
+  "count": 1,
+  "data": 0
+ }
+}

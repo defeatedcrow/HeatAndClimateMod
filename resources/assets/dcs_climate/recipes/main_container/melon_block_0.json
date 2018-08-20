@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_crop",
+   "data": 4
+  }
+ ],
+ "result": {
+  "item": "minecraft:melon_block",
+  "count": 8,
+  "data": 0
+ }
+}

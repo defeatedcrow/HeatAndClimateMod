@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XXX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_ore_gemblock",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_ore_gemblock",
+  "count": 1,
+  "data": 8
+ }
+}

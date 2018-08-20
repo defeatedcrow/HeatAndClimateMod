@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "  X",
+  " XX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_ore_gemblock",
+   "data": 9
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_stairs_serpentine",
+  "count": 4,
+  "data": 0
+ }
+}

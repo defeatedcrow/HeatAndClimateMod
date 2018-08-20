@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XZX",
+  "ZYZ",
+  "XZX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearBrass"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_fan",
+  "count": 1,
+  "data": 0
+ }
+}

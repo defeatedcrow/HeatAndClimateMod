@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "YZ",
+  "WY"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemGarnet"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "gemMalachite"
+  },
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "gemPeridot"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_jewel_amulet",
+  "count": 1,
+  "data": 1
+ }
+}

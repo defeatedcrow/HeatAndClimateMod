@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_misc",
+   "data": 2
+  }
+ ],
+ "result": {
+  "item": "minecraft:leather",
+  "count": 8,
+  "data": 0
+ }
+}

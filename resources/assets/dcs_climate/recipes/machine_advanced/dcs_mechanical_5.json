@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "ZXZ",
+  "X X",
+  "ZXZ"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotBSCCO"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotTitanium"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_mechanical",
+  "count": 1,
+  "data": 5
+ }
+}

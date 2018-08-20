@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "X X",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:paper",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_food_pack",
+  "count": 4,
+  "data": 0
+ }
+}

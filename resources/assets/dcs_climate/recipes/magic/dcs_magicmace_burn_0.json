@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_macecore",
+   "data": 5
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_mace_handle",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_magicmace_burn",
+  "count": 1,
+  "data": 0
+ }
+}

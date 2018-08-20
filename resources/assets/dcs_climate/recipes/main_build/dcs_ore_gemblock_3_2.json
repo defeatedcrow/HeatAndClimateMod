@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_build_bricks",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_ore_gemblock",
+  "count": 1,
+  "data": 3
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XXX",
+  "X X"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "itemCottonCloth"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_leggins_cloth",
+  "count": 1,
+  "data": 0
+ }
+}

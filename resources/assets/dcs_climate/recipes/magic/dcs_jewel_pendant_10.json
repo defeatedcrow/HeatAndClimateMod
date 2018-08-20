@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "X X",
+  " Y "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemSchorl"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_jewel_pendant",
+  "count": 1,
+  "data": 10
+ }
+}

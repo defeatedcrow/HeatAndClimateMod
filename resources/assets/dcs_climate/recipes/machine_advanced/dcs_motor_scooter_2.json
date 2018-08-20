@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "WYW",
+  "Z Z"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:saddle",
+   "data": 0
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_mechanical",
+   "data": 3
+  },
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "gearSteel"
+  },
+  "Z": {
+   "item": "dcs_climate:dcs_mechanical",
+   "data": 4
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_motor_scooter",
+  "count": 1,
+  "data": 2
+ }
+}

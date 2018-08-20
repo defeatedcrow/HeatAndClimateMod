@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X X",
+  "X X",
+  "YZW"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSUS"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearSteel"
+  },
+  "Z": {
+   "item": "minecraft:flint_and_steel",
+   "data": 0
+  },
+  "W": {
+   "item": "dcs_climate:dcs_device_ibc",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_gas_burner",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "XZX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "stringMagic"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_macecore",
+   "data": 4
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_gemboots_green",
+  "count": 1,
+  "data": 0
+ }
+}

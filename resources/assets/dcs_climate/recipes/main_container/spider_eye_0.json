@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_metal",
+   "data": 2
+  }
+ ],
+ "result": {
+  "item": "minecraft:spider_eye",
+  "count": 8,
+  "data": 0
+ }
+}

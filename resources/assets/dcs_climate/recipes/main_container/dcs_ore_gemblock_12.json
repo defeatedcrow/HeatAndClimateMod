@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "XX"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:bedrock",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_ore_gemblock",
+  "count": 4,
+  "data": 12
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "XX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_ore_dustblock2",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_build",
+  "count": 4,
+  "data": 7
+ }
+}

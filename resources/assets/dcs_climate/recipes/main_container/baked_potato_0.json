@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_crop",
+   "data": 10
+  }
+ ],
+ "result": {
+  "item": "minecraft:baked_potato",
+  "count": 8,
+  "data": 0
+ }
+}

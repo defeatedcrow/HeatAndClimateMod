@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "Y",
+  "X"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_reagent",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "minecraft:torch",
+  "count": 6,
+  "data": 0
+ }
+}

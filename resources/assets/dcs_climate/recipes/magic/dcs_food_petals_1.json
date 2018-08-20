@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_lotus_candle_black",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_petals",
+  "count": 8,
+  "data": 1
+ }
+}

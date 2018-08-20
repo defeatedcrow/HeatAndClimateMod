@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodPastry"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropPotato"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropOnion"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodFish"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodCustard"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodCheese"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_tart",
+  "count": 1,
+  "data": 6
+ }
+}

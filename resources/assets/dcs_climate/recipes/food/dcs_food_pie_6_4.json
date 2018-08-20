@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodPastry"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustSugar"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropOrange"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_pie",
+  "count": 1,
+  "data": 6
+ }
+}

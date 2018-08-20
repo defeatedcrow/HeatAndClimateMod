@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "YYY",
+  "ZZZ"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "dustBlaze"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "dustSulfur"
+  }
+ },
+ "result": {
+  "item": "minecraft:blaze_rod",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotNickelsilver"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "dustTitanium"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_alloy_mold",
+  "count": 1,
+  "data": 1
+ }
+}

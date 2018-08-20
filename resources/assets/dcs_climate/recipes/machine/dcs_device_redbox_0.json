@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearAlloy"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_redbox",
+  "count": 1,
+  "data": 0
+ }
+}

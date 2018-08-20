@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XXX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dustAluminium"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_ore_dustblock",
+  "count": 1,
+  "data": 13
+ }
+}

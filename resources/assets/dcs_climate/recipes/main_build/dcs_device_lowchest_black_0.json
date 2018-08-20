@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  " Y ",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_ore_gemblock",
+   "data": 12
+  },
+  "Y": {
+   "item": "minecraft:chest",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_lowchest_black",
+  "count": 1,
+  "data": 0
+ }
+}

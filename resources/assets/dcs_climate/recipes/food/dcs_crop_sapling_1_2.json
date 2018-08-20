@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:sapling",
+   "data": 2
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedony"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_crop_sapling",
+  "count": 1,
+  "data": 1
+ }
+}

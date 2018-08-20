@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:paper",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustLime"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_desiccant",
+  "count": 1,
+  "data": 0
+ }
+}

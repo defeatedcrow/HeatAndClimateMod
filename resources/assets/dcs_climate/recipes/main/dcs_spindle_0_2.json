@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_material",
+   "data": 4
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_spindle",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "X X",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedony"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_flowerpot",
+  "count": 1,
+  "data": 0
+ }
+}

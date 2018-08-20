@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_build_bricks",
+   "data": 2
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_ore2_stone",
+  "count": 1,
+  "data": 0
+ }
+}

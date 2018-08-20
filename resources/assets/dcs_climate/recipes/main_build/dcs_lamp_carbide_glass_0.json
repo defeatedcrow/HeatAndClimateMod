@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "YZY",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "blockGlass"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "gemCarbide"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_lamp_carbide_glass",
+  "count": 1,
+  "data": 0
+ }
+}

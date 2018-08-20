@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "XX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_ore2_stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_bricks",
+  "count": 4,
+  "data": 2
+ }
+}

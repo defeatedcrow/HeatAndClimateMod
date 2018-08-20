@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XZX",
+  "XYX",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "Y": {
+   "item": "minecraft:chest",
+   "data": 0
+  },
+  "Z": {
+   "item": "minecraft:iron_bars",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_hopper_filter",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_ore_gemblock",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_slab_chal",
+  "count": 6,
+  "data": 2
+ }
+}

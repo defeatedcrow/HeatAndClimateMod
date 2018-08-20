@@ -1,0 +1,21 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_mold",
+  "count": 4,
+  "data": 0
+ }
+}

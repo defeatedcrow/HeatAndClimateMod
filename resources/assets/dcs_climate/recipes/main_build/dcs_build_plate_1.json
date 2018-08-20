@@ -1,0 +1,17 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X X"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:iron_bars",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_plate",
+  "count": 2,
+  "data": 1
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "  X",
+  "XYX",
+  "X X"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "blockMarble"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "itemCloth"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_chair_marble",
+  "count": 1,
+  "data": 0
+ }
+}

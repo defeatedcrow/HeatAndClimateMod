@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "VYV",
+  " Z "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemSchorl"
+  },
+  "Y": {
+   "item": "minecraft:chicken",
+   "data": 0
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotBrass"
+  },
+  "V": {
+   "type": "forge:ore_dict",
+   "ore": "leather"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_cartridge",
+  "count": 4,
+  "data": 7
+ }
+}

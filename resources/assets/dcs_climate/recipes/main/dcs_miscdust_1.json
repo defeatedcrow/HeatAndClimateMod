@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_ore_dustblock2",
+   "data": 1
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_miscdust",
+  "count": 1,
+  "data": 1
+ }
+}

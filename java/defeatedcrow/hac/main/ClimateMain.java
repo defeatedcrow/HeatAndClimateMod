@@ -9,6 +9,7 @@ package defeatedcrow.hac.main;
 import java.util.Calendar;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.recipe.RecipeJsonMaker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
 import defeatedcrow.hac.main.config.MainCoreConfig;
@@ -101,6 +102,7 @@ public class ClimateMain {
 		DCChunkloadContoroller.getInstance().preInit();
 
 		DCIntegrationCore.INSTANCE.loadPre();
+
 	}
 
 	@EventHandler
@@ -123,6 +125,7 @@ public class ClimateMain {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		// Recipes
+		RecipeJsonMaker.flag = false;
 		proxy.loadRecipes();
 		DCIntegrationCore.INSTANCE.loadPost();
 

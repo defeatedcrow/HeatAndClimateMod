@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:paper",
+   "data": 0
+  },
+  {
+   "item": "dcs_climate:dcs_reagent",
+   "data": 4
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "bucketWater"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_coolant",
+  "count": 1,
+  "data": 0
+ }
+}
