@@ -10,6 +10,7 @@ import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -17,7 +18,6 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.UniversalBucket;
@@ -65,7 +65,7 @@ public class AltTooltipEvent {
 					// まず耐久値
 					if (tI.isDamageable() && target.getMetadata() == 0) {
 						int max = target.getMaxDamage();
-						String ret = I18n.translateToLocal("dcs_climate.tip.durability") + ": " + max;
+						String ret = I18n.format("dcs_climate.tip.durability") + ": " + max;
 						event.getToolTip().add(ret);
 					}
 
@@ -75,7 +75,7 @@ public class AltTooltipEvent {
 						if (!classes.isEmpty()) {
 							String className = classes.iterator().next();
 							int tier = ((ItemTool) tI).getHarvestLevel(target, className, player, null);
-							String ret = I18n.translateToLocal("dcs_climate.tip.harvestlevel") + ": " + tier;
+							String ret = I18n.format("dcs_climate.tip.harvestlevel") + ": " + tier;
 							event.getToolTip().add(ret);
 						}
 					}
@@ -90,8 +90,7 @@ public class AltTooltipEvent {
 						regC = DamageAPI.armorRegister.getColdPreventAmount(mat);
 					}
 					if (regH != 0 || regC != 0) {
-						String ret = I18n.translateToLocal("dcs_climate.tip.resistance") + ": Heat " + regH +
-								"/ Cold " + regC;
+						String ret = I18n.format("dcs_climate.tip.resistance") + ": Heat " + regH + "/ Cold " + regC;
 						event.getToolTip().add(ret);
 					}
 

@@ -1,26 +1,22 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "X",
-  "Y",
-  "Z"
+  "YXY",
+  "YXY",
+  "Y Y"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "itemLeather"
+   "ore": "stringMagic"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
-  },
-  "Z": {
-   "type": "forge:ore_dict",
-   "ore": "ingotIron"
+   "ore": "itemMagicCloth"
   }
  },
  "result": {
-  "item": "minecraft:saddle",
+  "item": "dcs_climate:dcs_leggins_magic",
   "count": 1,
   "data": 0
  }

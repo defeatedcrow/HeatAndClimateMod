@@ -98,11 +98,11 @@ public class MachineInitRegister {
 	private MachineInitRegister() {}
 
 	public static void load() {
-		loadBlocks();
-		loadItems();
-		loadFluids();
-
 		if (ModuleConfig.machine) {
+			loadBlocks();
+			loadItems();
+			loadFluids();
+
 			loadCreativeTab();
 		}
 	}
@@ -229,64 +229,6 @@ public class MachineInitRegister {
 		MachineInit.gearbox2 = new BlockGearBox_SUS(ClimateCore.PACKAGE_BASE + "_device_gearbox_sus");
 		registerTierBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_BASE + "_device_gearbox_sus", 2);
 
-		MachineInit.burner = new BlockGasBurner(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
-		registerTierBlock(MachineInit.burner, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
-
-		MachineInit.boilerTurbine = new BlockBoilerTurbine(ClimateCore.PACKAGE_BASE + "_device_boiler_turbine");
-		registerTierBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_BASE + "_device_boiler_turbine", 3);
-
-		MachineInit.dieselEngine = new BlockDieselEngine(ClimateCore.PACKAGE_BASE + "_device_diesel_engine");
-		registerTierBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_BASE + "_device_diesel_engine", 3);
-
-		MachineInit.motor = new BlockKineticMotor(ClimateCore.PACKAGE_BASE + "_device_kinetic_motor");
-		registerTierBlock(MachineInit.motor, ClimateCore.PACKAGE_BASE + "_device_kinetic_motor", 3);
-
-		MachineInit.dynamo = new BlockDynamo(ClimateCore.PACKAGE_BASE + "_device_dynamo");
-		registerTierBlock(MachineInit.dynamo, ClimateCore.PACKAGE_BASE + "_device_dynamo", 3);
-
-		MachineInit.reactor = new BlockReactor(ClimateCore.PACKAGE_BASE + "_device_reactor");
-		registerTierBlock(MachineInit.reactor, ClimateCore.PACKAGE_BASE + "_device_reactor", 3);
-
-		MachineInit.crusher = new BlockRollerCrusher(ClimateCore.PACKAGE_BASE + "_device_crusher");
-		registerTierBlock(MachineInit.crusher, ClimateCore.PACKAGE_BASE + "_device_crusher", 3);
-
-		MachineInit.freezer = new BlockFreezer(ClimateCore.PACKAGE_BASE + "_device_freezer");
-		registerTierBlock(MachineInit.freezer, ClimateCore.PACKAGE_BASE + "_device_freezer", 3);
-
-		MachineInit.pressMachine = new BlockPressMachine(ClimateCore.PACKAGE_BASE + "_device_press_machine");
-		registerTierBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_BASE + "_device_press_machine", 3);
-
-		MachineInit.creativeBox = new BlockCreativeBox(ClimateCore.PACKAGE_BASE + "_device_creative_box");
-		registerTierBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_BASE + "_device_creative_box", 3);
-
-		MachineInit.adapterPanel = new BlockAdapterPanel(ClimateCore.PACKAGE_BASE + "_device_adapter_item", false);
-		MachineInit.adapterPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_adapter_item");
-		ForgeRegistries.BLOCKS.register(MachineInit.adapterPanel);
-		ForgeRegistries.ITEMS.register(new ItemAdapterPanel(MachineInit.adapterPanel));
-
-		MachineInit.acceptorPanel = new BlockAdapterPanel(ClimateCore.PACKAGE_BASE + "_device_acceptor_item", true);
-		MachineInit.acceptorPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
-				"_device_acceptor_item");
-		ForgeRegistries.BLOCKS.register(MachineInit.acceptorPanel);
-		ForgeRegistries.ITEMS.register(new ItemAdapterPanel(MachineInit.acceptorPanel));
-
-		MachineInit.adapterFluidPanel = new BlockAdapterFluidPanel(ClimateCore.PACKAGE_BASE +
-				"_device_adapter_fluid", false);
-		MachineInit.adapterFluidPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
-				"_device_adapter_fluid");
-		ForgeRegistries.BLOCKS.register(MachineInit.adapterFluidPanel);
-		ForgeRegistries.ITEMS.register(new ItemAdapterPanel(MachineInit.adapterFluidPanel));
-
-		MachineInit.acceptorFluidPanel = new BlockAdapterFluidPanel(ClimateCore.PACKAGE_BASE +
-				"_device_acceptor_fluid", true);
-		MachineInit.acceptorFluidPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
-				"_device_acceptor_fluid");
-		ForgeRegistries.BLOCKS.register(MachineInit.acceptorFluidPanel);
-		ForgeRegistries.ITEMS.register(new ItemAdapterPanel(MachineInit.acceptorFluidPanel));
-
-		MachineInit.wirelessPortal = new BlockPortalManager(ClimateCore.PACKAGE_BASE + "_device_portal_manager");
-		registerTierBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_BASE + "_device_portal_manager", 3);
-
 		MachineInit.fuelCont = new BlockFuelCont(ClimateCore.PACKAGE_BASE + "_cont_fuel");
 		MainMaterialRegister.registerBlock(MachineInit.fuelCont, ClimateCore.PACKAGE_BASE + "_cont_fuel",
 				ClimateMain.MOD_ID, new int[] {
@@ -297,53 +239,115 @@ public class MachineInitRegister {
 				});
 		ClimateMain.proxy.addSidedBlock(MachineInit.fuelCont, "cont_fuel", 3);
 
-		MachineInit.monitorRS = new BlockMonitorRedStone(ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
-		MachineInit.monitorRS.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
-		ForgeRegistries.BLOCKS.register(MachineInit.monitorRS);
-		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorRS));
+		MachineInit.boilerTurbine = new BlockBoilerTurbine(ClimateCore.PACKAGE_BASE + "_device_boiler_turbine");
+		registerTierBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_BASE + "_device_boiler_turbine", 3);
 
-		MachineInit.monitorCM = new BlockMonitorComparator(ClimateCore.PACKAGE_BASE + "_device_monitor_cm");
-		MachineInit.monitorCM.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_cm");
-		ForgeRegistries.BLOCKS.register(MachineInit.monitorCM);
-		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorCM));
+		if (ModuleConfig.machine_advanced) {
 
-		MachineInit.monitorTorque = new BlockMonitorTorque(ClimateCore.PACKAGE_BASE + "_device_monitor_torque");
-		MachineInit.monitorTorque.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
-				"_device_monitor_torque");
-		ForgeRegistries.BLOCKS.register(MachineInit.monitorTorque);
-		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorTorque));
+			MachineInit.burner = new BlockGasBurner(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
+			registerTierBlock(MachineInit.burner, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
 
-		MachineInit.monitorRF = new BlockMonitorRF(ClimateCore.PACKAGE_BASE + "_device_monitor_rf");
-		MachineInit.monitorRF.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_rf");
-		ForgeRegistries.BLOCKS.register(MachineInit.monitorRF);
-		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorRF));
+			MachineInit.dieselEngine = new BlockDieselEngine(ClimateCore.PACKAGE_BASE + "_device_diesel_engine");
+			registerTierBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_BASE + "_device_diesel_engine", 3);
 
-		MachineInit.monitorFluid = new BlockMonitorFluid(ClimateCore.PACKAGE_BASE + "_device_monitor_fluid");
-		MachineInit.monitorFluid.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
-				"_device_monitor_fluid");
-		ForgeRegistries.BLOCKS.register(MachineInit.monitorFluid);
-		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorFluid));
+			MachineInit.motor = new BlockKineticMotor(ClimateCore.PACKAGE_BASE + "_device_kinetic_motor");
+			registerTierBlock(MachineInit.motor, ClimateCore.PACKAGE_BASE + "_device_kinetic_motor", 3);
 
-		MachineInit.monitorItem = new BlockMonitorInventory(ClimateCore.PACKAGE_BASE + "_device_monitor_item");
-		MachineInit.monitorItem.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_item");
-		ForgeRegistries.BLOCKS.register(MachineInit.monitorItem);
-		ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorItem));
+			MachineInit.dynamo = new BlockDynamo(ClimateCore.PACKAGE_BASE + "_device_dynamo");
+			registerTierBlock(MachineInit.dynamo, ClimateCore.PACKAGE_BASE + "_device_dynamo", 3);
 
-		// entity
-		MachineInit.motorMinecart = new ItemMinecartMotor().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
-				"_motor_minecart");
-		DCMaterialReg.registerItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_BASE + "_motor_minecart",
-				ClimateMain.MOD_ID);
+			MachineInit.reactor = new BlockReactor(ClimateCore.PACKAGE_BASE + "_device_reactor");
+			registerTierBlock(MachineInit.reactor, ClimateCore.PACKAGE_BASE + "_device_reactor", 3);
 
-		MachineInit.scooter = new ItemScooter().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_scooter");
-		DCMaterialReg.registerItem(MachineInit.scooter, ClimateCore.PACKAGE_BASE + "_motor_scooter",
-				ClimateMain.MOD_ID);
+			MachineInit.crusher = new BlockRollerCrusher(ClimateCore.PACKAGE_BASE + "_device_crusher");
+			registerTierBlock(MachineInit.crusher, ClimateCore.PACKAGE_BASE + "_device_crusher", 3);
 
-		MachineInit.magneticHover = new ItemMagneticHover().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
-				"_magnetic_hover");
-		DCMaterialReg.registerItem(MachineInit.magneticHover, ClimateCore.PACKAGE_BASE + "_magnetic_hover",
-				ClimateMain.MOD_ID);
+			MachineInit.freezer = new BlockFreezer(ClimateCore.PACKAGE_BASE + "_device_freezer");
+			registerTierBlock(MachineInit.freezer, ClimateCore.PACKAGE_BASE + "_device_freezer", 3);
 
+			MachineInit.pressMachine = new BlockPressMachine(ClimateCore.PACKAGE_BASE + "_device_press_machine");
+			registerTierBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_BASE + "_device_press_machine", 3);
+
+			MachineInit.creativeBox = new BlockCreativeBox(ClimateCore.PACKAGE_BASE + "_device_creative_box");
+			registerTierBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_BASE + "_device_creative_box", 3);
+
+			MachineInit.adapterPanel = new BlockAdapterPanel(ClimateCore.PACKAGE_BASE + "_device_adapter_item", false);
+			MachineInit.adapterPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
+					"_device_adapter_item");
+			ForgeRegistries.BLOCKS.register(MachineInit.adapterPanel);
+			ForgeRegistries.ITEMS.register(new ItemAdapterPanel(MachineInit.adapterPanel));
+
+			MachineInit.acceptorPanel = new BlockAdapterPanel(ClimateCore.PACKAGE_BASE + "_device_acceptor_item", true);
+			MachineInit.acceptorPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
+					"_device_acceptor_item");
+			ForgeRegistries.BLOCKS.register(MachineInit.acceptorPanel);
+			ForgeRegistries.ITEMS.register(new ItemAdapterPanel(MachineInit.acceptorPanel));
+
+			MachineInit.adapterFluidPanel = new BlockAdapterFluidPanel(ClimateCore.PACKAGE_BASE +
+					"_device_adapter_fluid", false);
+			MachineInit.adapterFluidPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
+					"_device_adapter_fluid");
+			ForgeRegistries.BLOCKS.register(MachineInit.adapterFluidPanel);
+			ForgeRegistries.ITEMS.register(new ItemAdapterPanel(MachineInit.adapterFluidPanel));
+
+			MachineInit.acceptorFluidPanel = new BlockAdapterFluidPanel(ClimateCore.PACKAGE_BASE +
+					"_device_acceptor_fluid", true);
+			MachineInit.acceptorFluidPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
+					"_device_acceptor_fluid");
+			ForgeRegistries.BLOCKS.register(MachineInit.acceptorFluidPanel);
+			ForgeRegistries.ITEMS.register(new ItemAdapterPanel(MachineInit.acceptorFluidPanel));
+
+			MachineInit.wirelessPortal = new BlockPortalManager(ClimateCore.PACKAGE_BASE + "_device_portal_manager");
+			registerTierBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_BASE + "_device_portal_manager", 3);
+
+			MachineInit.monitorRS = new BlockMonitorRedStone(ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
+			MachineInit.monitorRS.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
+			ForgeRegistries.BLOCKS.register(MachineInit.monitorRS);
+			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorRS));
+
+			MachineInit.monitorCM = new BlockMonitorComparator(ClimateCore.PACKAGE_BASE + "_device_monitor_cm");
+			MachineInit.monitorCM.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_cm");
+			ForgeRegistries.BLOCKS.register(MachineInit.monitorCM);
+			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorCM));
+
+			MachineInit.monitorTorque = new BlockMonitorTorque(ClimateCore.PACKAGE_BASE + "_device_monitor_torque");
+			MachineInit.monitorTorque.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
+					"_device_monitor_torque");
+			ForgeRegistries.BLOCKS.register(MachineInit.monitorTorque);
+			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorTorque));
+
+			MachineInit.monitorRF = new BlockMonitorRF(ClimateCore.PACKAGE_BASE + "_device_monitor_rf");
+			MachineInit.monitorRF.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_rf");
+			ForgeRegistries.BLOCKS.register(MachineInit.monitorRF);
+			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorRF));
+
+			MachineInit.monitorFluid = new BlockMonitorFluid(ClimateCore.PACKAGE_BASE + "_device_monitor_fluid");
+			MachineInit.monitorFluid.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
+					"_device_monitor_fluid");
+			ForgeRegistries.BLOCKS.register(MachineInit.monitorFluid);
+			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorFluid));
+
+			MachineInit.monitorItem = new BlockMonitorInventory(ClimateCore.PACKAGE_BASE + "_device_monitor_item");
+			MachineInit.monitorItem.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
+					"_device_monitor_item");
+			ForgeRegistries.BLOCKS.register(MachineInit.monitorItem);
+			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorItem));
+
+			// entity
+			MachineInit.motorMinecart = new ItemMinecartMotor().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+					"_motor_minecart");
+			DCMaterialReg.registerItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_BASE + "_motor_minecart",
+					ClimateMain.MOD_ID);
+
+			MachineInit.scooter = new ItemScooter().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_scooter");
+			DCMaterialReg.registerItem(MachineInit.scooter, ClimateCore.PACKAGE_BASE + "_motor_scooter",
+					ClimateMain.MOD_ID);
+
+			MachineInit.magneticHover = new ItemMagneticHover().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+					"_magnetic_hover");
+			DCMaterialReg.registerItem(MachineInit.magneticHover, ClimateCore.PACKAGE_BASE + "_magnetic_hover",
+					ClimateMain.MOD_ID);
+		}
 	}
 
 	static void loadItems() {
@@ -351,17 +355,6 @@ public class MachineInitRegister {
 				"_mechanical");
 		DCMaterialReg.registerItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_BASE + "_mechanical",
 				ClimateMain.MOD_ID);
-
-		MachineInit.mold = new ItemSteelMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mold");
-		DCMaterialReg.registerItem(MachineInit.mold, ClimateCore.PACKAGE_BASE + "_mold", ClimateMain.MOD_ID);
-
-		MachineInit.moldAluminium = new ItemAluminiumMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
-				"_aluminium_mold");
-		DCMaterialReg.registerItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_BASE + "_aluminium_mold",
-				ClimateMain.MOD_ID);
-
-		MachineInit.moldAlloy = new ItemAlloyMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_alloy_mold");
-		DCMaterialReg.registerItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_BASE + "_alloy_mold", ClimateMain.MOD_ID);
 
 		MachineInit.torqueChecker = new ItemTorqueChecker().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 				"_torque_checker");
@@ -371,30 +364,50 @@ public class MachineInitRegister {
 		MachineInit.reagent = new ItemReagents().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_reagent");
 		DCMaterialReg.registerItem(MachineInit.reagent, ClimateCore.PACKAGE_BASE + "_reagent", ClimateMain.MOD_ID);
 
-		MachineInit.synthetic = new ItemSynthetic().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_synthetic");
-		DCMaterialReg.registerItem(MachineInit.synthetic, ClimateCore.PACKAGE_BASE + "_synthetic", ClimateMain.MOD_ID);
+		MachineInit.mold = new ItemSteelMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mold");
+		DCMaterialReg.registerItem(MachineInit.mold, ClimateCore.PACKAGE_BASE + "_mold", ClimateMain.MOD_ID);
 
-		MachineInit.catalyst = new ItemCatalyst().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_catalyst");
-		DCMaterialReg.registerItem(MachineInit.catalyst, ClimateCore.PACKAGE_BASE + "_catalyst", ClimateMain.MOD_ID);
+		if (ModuleConfig.machine_advanced) {
 
-		MachineInit.gemcore = new ItemGemCore().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemcore");
-		DCMaterialReg.registerItem(MachineInit.gemcore, ClimateCore.PACKAGE_BASE + "_gemcore", ClimateMain.MOD_ID);
+			MachineInit.moldAluminium = new ItemAluminiumMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+					"_aluminium_mold");
+			DCMaterialReg.registerItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_BASE + "_aluminium_mold",
+					ClimateMain.MOD_ID);
 
-		MachineInit.adapterCard = new ItemAdapterCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_adapter_card");
-		DCMaterialReg.registerItem(MachineInit.adapterCard, ClimateCore.PACKAGE_BASE + "_adapter_card",
-				ClimateMain.MOD_ID);
+			MachineInit.moldAlloy = new ItemAlloyMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_alloy_mold");
+			DCMaterialReg.registerItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_BASE + "_alloy_mold",
+					ClimateMain.MOD_ID);
 
-		MachineInit.dynamite = new ItemDynamite().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dynamite");
-		DCMaterialReg.registerItem(MachineInit.dynamite, ClimateCore.PACKAGE_BASE + "_dynamite", ClimateMain.MOD_ID);
+			MachineInit.synthetic = new ItemSynthetic().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_synthetic");
+			DCMaterialReg.registerItem(MachineInit.synthetic, ClimateCore.PACKAGE_BASE + "_synthetic",
+					ClimateMain.MOD_ID);
 
-		MachineInit.platingChrome = new ItemPlatingChrome().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
-				"_coating_tool");
-		DCMaterialReg.registerItem(MachineInit.platingChrome, ClimateCore.PACKAGE_BASE + "_coating_tool",
-				ClimateMain.MOD_ID);
+			MachineInit.catalyst = new ItemCatalyst().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_catalyst");
+			DCMaterialReg.registerItem(MachineInit.catalyst, ClimateCore.PACKAGE_BASE + "_catalyst",
+					ClimateMain.MOD_ID);
 
-		MachineInit.rotaryBlade = new ItemRotaryBlade().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_rotaryblade");
-		DCMaterialReg.registerItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_BASE + "_rotaryblade",
-				ClimateMain.MOD_ID);
+			MachineInit.gemcore = new ItemGemCore().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemcore");
+			DCMaterialReg.registerItem(MachineInit.gemcore, ClimateCore.PACKAGE_BASE + "_gemcore", ClimateMain.MOD_ID);
+
+			MachineInit.adapterCard = new ItemAdapterCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+					"_adapter_card");
+			DCMaterialReg.registerItem(MachineInit.adapterCard, ClimateCore.PACKAGE_BASE + "_adapter_card",
+					ClimateMain.MOD_ID);
+
+			MachineInit.dynamite = new ItemDynamite().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dynamite");
+			DCMaterialReg.registerItem(MachineInit.dynamite, ClimateCore.PACKAGE_BASE + "_dynamite",
+					ClimateMain.MOD_ID);
+
+			MachineInit.platingChrome = new ItemPlatingChrome().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+					"_coating_tool");
+			DCMaterialReg.registerItem(MachineInit.platingChrome, ClimateCore.PACKAGE_BASE + "_coating_tool",
+					ClimateMain.MOD_ID);
+
+			MachineInit.rotaryBlade = new ItemRotaryBlade().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
+					"_rotaryblade");
+			DCMaterialReg.registerItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_BASE + "_rotaryblade",
+					ClimateMain.MOD_ID);
+		}
 	}
 
 	static void loadCreativeTab() {

@@ -1,26 +1,22 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "XZX",
-  "ZYZ",
-  "XZX"
+  "Y Y",
+  "YXY",
+  "YYY"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "logWood"
+   "ore": "dyeBlack"
   },
   "Y": {
-   "item": "dcs_climate:dcs_device_windmill_l",
-   "data": 0
-  },
-  "Z": {
    "type": "forge:ore_dict",
-   "ore": "ingotSUS"
+   "ore": "itemSilkCloth"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_device_windmill_ex",
+  "item": "dcs_climate:dcs_coat_black",
   "count": 1,
   "data": 0
  }

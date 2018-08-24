@@ -461,6 +461,27 @@ public class FoodFluidRecipe {
 						"foodRice"
 				});
 
+		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 11), null, 0F, null, null, null, false,
+				new FluidStack(FoodInit.stock, 1000), new Object[] {
+						"listAllgreenveggie",
+						"cropSeaweed",
+						"foodMiso"
+				});
+
+		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 11), null, 0F, null, null, null, false,
+				new FluidStack(FoodInit.stock, 1000), new Object[] {
+						"foodFirmtofu",
+						"cropSeaweed",
+						"foodMiso"
+				});
+
+		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 12), null, 0F, null, null, null, false,
+				new FluidStack(FoodInit.stock, 1000), new Object[] {
+						"foodViscera",
+						"listAllrootveggie",
+						"foodMiso"
+				});
+
 		regBoilrecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, null, null, false,
 				new FluidStack(FoodInit.coffee, 1000), new Object[] {
 						"dustSugar",
@@ -553,6 +574,33 @@ public class FoodFluidRecipe {
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 5), null, 0F, null, DCHeatTier.OVEN,
 				null, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
 						new ItemStack(MainInit.foodDust, 1, 4)
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 6), new ItemStack(FoodInit.meat, 1, 7),
+				0.5F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 200),
+				new Object[] {
+						"cropSoybean",
+						"dustSalt",
+						"foodMalt"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 7), null, 0F, null, DCHeatTier.WARM,
+				DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						new ItemStack(MainInit.foodDust, 1, 4),
+						"dustSalt",
+						"foodMalt"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 8), null, 0F, null, DCHeatTier.OVEN,
+				null, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"cropSoybean",
+						"dustSugar"
+				});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1, 8), null, 0F, null, DCHeatTier.OVEN,
+				null, null, false, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
+						"cropBean",
+						"dustSugar"
 				});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.icecream, 3, 0), null, 0F, null,

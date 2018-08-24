@@ -13,12 +13,15 @@ public class ItemMeatMaterials extends DCItem {
 			"raw_squid",
 			"agar",
 			"gelatine",
-			"soymeat"
+			"soymeat",
+			"miso",
+			"soysauce",
+			"siroan"
 	};
 
 	public ItemMeatMaterials() {
 		super();
-		maxMeta = 5;
+		maxMeta = 8;
 	}
 
 	@Override

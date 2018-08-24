@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "Y Y",
+  "YXY",
+  "YXY"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "stringMagic"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "itemMagicCloth"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_coat_magic",
+  "count": 1,
+  "data": 0
+ }
+}

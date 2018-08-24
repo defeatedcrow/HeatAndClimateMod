@@ -1,22 +1,21 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  " X ",
-  "XYX",
-  " X "
+  "YYY",
+  "YXY"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotIron"
+   "ore": "itemCloth"
   },
   "Y": {
-   "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "item": "minecraft:wool",
+   "data": 32767
   }
  },
  "result": {
-  "item": "minecraft:compass",
+  "item": "dcs_climate:dcs_wear_wool",
   "count": 1,
   "data": 0
  }

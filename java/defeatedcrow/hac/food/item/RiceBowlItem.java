@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.EntityRiceBall;
+import defeatedcrow.hac.food.entity.EntityRiceBallMiso;
 import defeatedcrow.hac.food.entity.EntityRiceBallSeaweed;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntityRiceMushroom;
@@ -28,12 +29,12 @@ public class RiceBowlItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 3;
+		return 4;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 3);
+		int i = MathHelper.clamp(0, meta, 4);
 		String s = "items/food/rice_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/rice_" + s;
@@ -47,7 +48,8 @@ public class RiceBowlItem extends FoodItemBase {
 				"boiled",
 				"mushroom",
 				"ball",
-				"ball_seaweed"
+				"ball_seaweed",
+				"ball_miso"
 		};
 		return s;
 	}
@@ -59,10 +61,15 @@ public class RiceBowlItem extends FoodItemBase {
 		switch (i) {
 		case 1:
 			ret = new EntityRiceMushroom(world, x, y, z, player);
+			break;
 		case 2:
 			ret = new EntityRiceBall(world, x, y, z, player);
+			break;
 		case 3:
 			ret = new EntityRiceBallSeaweed(world, x, y, z, player);
+			break;
+		case 4:
+			ret = new EntityRiceBallMiso(world, x, y, z, player);
 		}
 
 		return ret;

@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 public class LoadingOreRecipe {
 	public static void add(RecipeResourcesMain res) {
 		// dust -> dustBlock
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 0), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -17,7 +17,7 @@ public class LoadingOreRecipe {
 				"dustCopper"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 1), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -25,7 +25,7 @@ public class LoadingOreRecipe {
 				"dustZinc"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 2), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -33,7 +33,7 @@ public class LoadingOreRecipe {
 				"dustNickel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -41,7 +41,7 @@ public class LoadingOreRecipe {
 				"dustIron"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 3), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -49,7 +49,7 @@ public class LoadingOreRecipe {
 				"dustSilver"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 8), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -57,7 +57,7 @@ public class LoadingOreRecipe {
 				"dustTin"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -65,7 +65,7 @@ public class LoadingOreRecipe {
 				"dustAluminium"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -73,7 +73,7 @@ public class LoadingOreRecipe {
 				"dustAluminum"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 14), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 14), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -81,7 +81,7 @@ public class LoadingOreRecipe {
 				"dustBismuth"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 4), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 4), new Object[] {
 				"dustCopper",
 				"dustCopper",
 				"dustCopper",
@@ -93,7 +93,7 @@ public class LoadingOreRecipe {
 				"dustZinc"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 6), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 6), new Object[] {
 				"dustCopper",
 				"dustCopper",
 				"dustCopper",
@@ -105,7 +105,7 @@ public class LoadingOreRecipe {
 				"dustZinc"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
 				"dustCopper",
 				"dustCopper",
 				"dustCopper",
@@ -117,7 +117,7 @@ public class LoadingOreRecipe {
 				"dustTin"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -125,7 +125,7 @@ public class LoadingOreRecipe {
 				"dustBronze"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 				"dustIron",
 				"dustIron",
 				"dustIron",
@@ -137,7 +137,7 @@ public class LoadingOreRecipe {
 				"dustGraphite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 				"dustMagnetite",
 				"dustMagnetite",
 				"dustMagnetite",
@@ -149,7 +149,7 @@ public class LoadingOreRecipe {
 				"dustGraphite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 				"dustIron",
 				"dustIron",
 				"dustIron",
@@ -161,7 +161,7 @@ public class LoadingOreRecipe {
 				"dustCoal"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 				"dustMagnetite",
 				"dustMagnetite",
 				"dustMagnetite",
@@ -173,7 +173,7 @@ public class LoadingOreRecipe {
 				"dustCoal"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 7), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 7), new Object[] {
 				"dustMagnetite",
 				"dustMagnetite",
 				"dustMagnetite",
@@ -185,7 +185,7 @@ public class LoadingOreRecipe {
 				"dustLime"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
 				"dustIron",
 				"dustIron",
 				"dustIron",
@@ -197,7 +197,7 @@ public class LoadingOreRecipe {
 				"dustNickel"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
 				"dustMagnetite",
 				"dustMagnetite",
 				"dustMagnetite",
@@ -209,7 +209,7 @@ public class LoadingOreRecipe {
 				"dustNickel"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 11), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 11), new Object[] {
 				"dustGold",
 				"dustGold",
 				"dustGold",
@@ -221,7 +221,7 @@ public class LoadingOreRecipe {
 				"dustGold"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
 				"dustTitanium",
 				"dustTitanium",
 				"dustTitanium",
@@ -233,7 +233,7 @@ public class LoadingOreRecipe {
 				"dustChromium"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
 				"dustTitanium",
 				"dustTitanium",
 				"dustTitanium",
@@ -245,7 +245,7 @@ public class LoadingOreRecipe {
 				"dustChromium"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock, 1, 15), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 15), new Object[] {
 				"dustBismuth",
 				"dustBismuth",
 				"gemCelestite",
@@ -257,7 +257,7 @@ public class LoadingOreRecipe {
 				"dustLime"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.dustBlock_2, 8, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock_2, 8, 1), new Object[] {
 				"dustCrystal",
 				"dustCrystal",
 				"dustCrystal",
@@ -270,47 +270,47 @@ public class LoadingOreRecipe {
 		});
 
 		// dustBlock -> dust
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 0), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 0)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 1), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 1)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 2), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 2)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 3), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 3)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 5), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 5)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 7), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 7), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 7)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 8), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 8), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 8)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 4), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 4), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 11)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 11), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 11), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 13)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.oreDust, 9, 12), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 12), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 14)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
 				new ItemStack(MainInit.dustBlock_2, 1, 1)
 		});
 
@@ -350,7 +350,7 @@ public class LoadingOreRecipe {
 		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 10), new ItemStack(MainInit.gems, 4, 13), "Olivine");
 		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 11), new ItemStack(MainInit.gems, 4, 14), "Garnet");
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -358,24 +358,24 @@ public class LoadingOreRecipe {
 				new ItemStack(MainInit.gemBlock, 1, 2)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.gemBlock, 9, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gemBlock, 9, 2), new Object[] {
 				new ItemStack(MainInit.gemBlock, 1, 8)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gemBlock, 4, 12), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 4, 12), new Object[] {
 				"XX",
 				"XX",
 				'X',
 				new ItemStack(Blocks.BEDROCK, 1, 0)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(Blocks.BEDROCK, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Blocks.BEDROCK, 1, 0), new Object[] {
 				new ItemStack(MainInit.gemBlock, 1, 12)
 		});
 	}
 
 	static void ingotRecipe(ItemStack block, ItemStack ingot, String name) {
-		DCRecipe.jsonShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), block, new Object[] {
+		DCRecipe.jsonShapedRecipe("main", block, new Object[] {
 				"XXX",
 				"XXX",
 				"XXX",
@@ -383,20 +383,20 @@ public class LoadingOreRecipe {
 				"ingot" + name
 		});
 
-		DCRecipe.jsonShapelessRecipe(RecipeResourcesMain.MAIN.getRecipeName(), ingot, new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", ingot, new Object[] {
 				"block" + name
 		});
 	}
 
 	static void gemRecipe(ItemStack block, ItemStack gem, String name) {
-		DCRecipe.jsonShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), block, new Object[] {
+		DCRecipe.jsonShapedRecipe("main", block, new Object[] {
 				"XX",
 				"XX",
 				'X',
 				"gem" + name
 		});
 
-		DCRecipe.jsonShapelessRecipe(RecipeResourcesMain.MAIN.getRecipeName(), gem, new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", gem, new Object[] {
 				"block" + name
 		});
 	}

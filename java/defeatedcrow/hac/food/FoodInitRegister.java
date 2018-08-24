@@ -41,6 +41,7 @@ import defeatedcrow.hac.food.item.ItemMeatMaterials;
 import defeatedcrow.hac.food.item.ItemPastry;
 import defeatedcrow.hac.food.item.ItemSilverCup;
 import defeatedcrow.hac.food.item.ItemTeaLeaves;
+import defeatedcrow.hac.food.item.MochiItem;
 import defeatedcrow.hac.food.item.PlateMeatItem;
 import defeatedcrow.hac.food.item.PlateSoupItem;
 import defeatedcrow.hac.food.item.RiceBowlItem;
@@ -51,6 +52,7 @@ import defeatedcrow.hac.food.item.SandwichItem;
 import defeatedcrow.hac.food.item.SquarePastryItem;
 import defeatedcrow.hac.food.item.StewBowlItem;
 import defeatedcrow.hac.food.item.StickFoodsItem;
+import defeatedcrow.hac.food.item.WagashiItem;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -65,13 +67,12 @@ public class FoodInitRegister {
 
 	public static void load() {
 		DrinkCapabilityHandler.register();
-
-		loadBlocks();
-		loadItems();
-		loadFluids();
-		loadFoods();
-
 		if (ModuleConfig.food) {
+			loadBlocks();
+			loadItems();
+			loadFluids();
+			loadFoods();
+
 			loadCreativeTab();
 			registerDispense();
 		}
@@ -208,6 +209,9 @@ public class FoodInitRegister {
 		FoodInit.ricebowl = new RiceBowlItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_rice");
 		DCMaterialReg.registerItem(FoodInit.ricebowl, ClimateCore.PACKAGE_BASE + "_food_rice", ClimateMain.MOD_ID);
 
+		FoodInit.mochi = new MochiItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_mochi");
+		DCMaterialReg.registerItem(FoodInit.mochi, ClimateCore.PACKAGE_BASE + "_food_mochi", ClimateMain.MOD_ID);
+
 		FoodInit.cupSilver = new ItemSilverCup(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_teacup");
 		DCMaterialReg.registerItem(FoodInit.cupSilver, ClimateCore.PACKAGE_BASE + "_food_teacup", ClimateMain.MOD_ID);
 
@@ -235,6 +239,9 @@ public class FoodInitRegister {
 
 		FoodInit.icecream = new IceCreamItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_icecream");
 		DCMaterialReg.registerItem(FoodInit.icecream, ClimateCore.PACKAGE_BASE + "_food_icecream", ClimateMain.MOD_ID);
+
+		FoodInit.wagashi = new WagashiItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_wagashi");
+		DCMaterialReg.registerItem(FoodInit.wagashi, ClimateCore.PACKAGE_BASE + "_food_wagashi", ClimateMain.MOD_ID);
 	}
 
 	public static void loadFluids() {
@@ -402,6 +409,7 @@ public class FoodInitRegister {
 		FoodInit.clubsandwich.setCreativeTab(ClimateMain.food);
 
 		FoodInit.ricebowl.setCreativeTab(ClimateMain.food);
+		FoodInit.mochi.setCreativeTab(ClimateMain.food);
 
 		FoodInit.plateMeal.setCreativeTab(ClimateMain.food);
 		FoodInit.plateSoup.setCreativeTab(ClimateMain.food);
@@ -409,6 +417,7 @@ public class FoodInitRegister {
 		FoodInit.salad.setCreativeTab(ClimateMain.food);
 		FoodInit.cake.setCreativeTab(ClimateMain.food);
 		FoodInit.icecream.setCreativeTab(ClimateMain.food);
+		FoodInit.wagashi.setCreativeTab(ClimateMain.food);
 
 		FoodInit.crops.setCreativeTab(ClimateMain.food);
 		FoodInit.seeds.setCreativeTab(ClimateMain.food);

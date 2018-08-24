@@ -37,6 +37,10 @@ public class MainCreativeTabRegister {
 		MainInit.fenceMarble.setCreativeTab(ClimateMain.build);
 		MainInit.fenceSerpentine.setCreativeTab(ClimateMain.build);
 		MainInit.fenceBedrock.setCreativeTab(ClimateMain.build);
+		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
+		MainInit.wallLamp.setCreativeTab(ClimateMain.build);
+		MainInit.desiccant.setCreativeTab(ClimateMain.build);
+		MainInit.freezepack.setCreativeTab(ClimateMain.build);
 
 		// device
 		MainInit.chamber.setCreativeTab(ClimateMain.machine);
@@ -86,13 +90,10 @@ public class MainCreativeTabRegister {
 			MainInit.fenceLadder.setCreativeTab(ClimateMain.build);
 			MainInit.syntheticBlock.setCreativeTab(ClimateMain.build);
 			MainInit.linoleum.setCreativeTab(ClimateMain.build);
-
 			MainInit.awning.setCreativeTab(ClimateMain.build);
 			MainInit.achievementShield.setCreativeTab(ClimateMain.build);
 
 			// furniture
-			MainInit.chalLamp.setCreativeTab(ClimateMain.build);
-			MainInit.wallLamp.setCreativeTab(ClimateMain.build);
 			MainInit.tableMarble.setCreativeTab(ClimateMain.build);
 			MainInit.tableGypsum.setCreativeTab(ClimateMain.build);
 			MainInit.tableWood.setCreativeTab(ClimateMain.build);
@@ -139,27 +140,23 @@ public class MainCreativeTabRegister {
 			MainInit.mcClock_L.setCreativeTab(ClimateMain.build);
 			MainInit.curtainWhite.setCreativeTab(ClimateMain.build);
 
-			if (ModuleConfig.machine_advanced) {
-				MainInit.lampCarbide.setCreativeTab(ClimateMain.build);
-				MainInit.lampGas.setCreativeTab(ClimateMain.build);
-				MainInit.desiccant.setCreativeTab(ClimateMain.build);
-				MainInit.freezepack.setCreativeTab(ClimateMain.build);
-			}
-
-			// cont
-			MainInit.logCont.setCreativeTab(ClimateMain.cont);
-			MainInit.cropCont.setCreativeTab(ClimateMain.cont);
-			MainInit.dropCont.setCreativeTab(ClimateMain.cont);
-			MainInit.miscCont.setCreativeTab(ClimateMain.cont);
-			MainInit.cardboard.setCreativeTab(ClimateMain.cont);
-			MainInit.cropBasket.setCreativeTab(ClimateMain.cont);
-			MainInit.dustBags.setCreativeTab(ClimateMain.cont);
+			MainInit.lampCarbide.setCreativeTab(ClimateMain.build);
+			MainInit.lampGas.setCreativeTab(ClimateMain.build);
 
 			MainInit.hedgeSpring.setCreativeTab(ClimateMain.build);
 			MainInit.hedgeSummer.setCreativeTab(ClimateMain.build);
 			MainInit.hedgeAutumn.setCreativeTab(ClimateMain.build);
 			MainInit.hedgeWinter.setCreativeTab(ClimateMain.build);
 		}
+
+		// cont
+		MainInit.logCont.setCreativeTab(ClimateMain.cont);
+		MainInit.cropCont.setCreativeTab(ClimateMain.cont);
+		MainInit.dropCont.setCreativeTab(ClimateMain.cont);
+		MainInit.miscCont.setCreativeTab(ClimateMain.cont);
+		MainInit.cardboard.setCreativeTab(ClimateMain.cont);
+		MainInit.cropBasket.setCreativeTab(ClimateMain.cont);
+		MainInit.dustBags.setCreativeTab(ClimateMain.cont);
 
 		if (ModuleConfig.weapon_advanced) {
 			MainInit.cartridge.setCreativeTab(ClimateMain.tool);

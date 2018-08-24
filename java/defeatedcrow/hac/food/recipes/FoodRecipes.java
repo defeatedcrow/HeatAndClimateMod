@@ -145,8 +145,13 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodGelatine", new ItemStack(FoodInit.meat, 1, 4));
 		OreDictionary.registerOre("foodAnyMeat", new ItemStack(FoodInit.meat, 1, 5));
 		OreDictionary.registerOre("listAllmeatraw", new ItemStack(FoodInit.meat, 1, 5));
+		OreDictionary.registerOre("foodMiso", new ItemStack(FoodInit.meat, 1, 6));
+		OreDictionary.registerOre("foodSoysauce", new ItemStack(FoodInit.meat, 1, 7));
+		OreDictionary.registerOre("foodSiroanko", new ItemStack(FoodInit.meat, 1, 8));
 		OreDictionary.registerOre("foodPastry", new ItemStack(FoodInit.pastry, 1, 0));
 		OreDictionary.registerOre("foodDough", new ItemStack(FoodInit.bread, 1, 0));
+		OreDictionary.registerOre("foodRicebowl", new ItemStack(FoodInit.ricebowl, 1, 0));
+		OreDictionary.registerOre("foodRicecake", new ItemStack(FoodInit.mochi, 1, 1));
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 2));

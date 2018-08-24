@@ -6,6 +6,7 @@
 
 package defeatedcrow.hac.main;
 
+import java.nio.file.Paths;
 import java.util.Calendar;
 
 import defeatedcrow.hac.core.ClimateCore;
@@ -103,6 +104,9 @@ public class ClimateMain {
 
 		DCIntegrationCore.INSTANCE.loadPre();
 
+		RecipeJsonMaker.canUse = false;
+		RecipeJsonMaker.canDeprecate = false;
+		RecipeJsonMaker.dir = Paths.get("");
 	}
 
 	@EventHandler
@@ -124,8 +128,7 @@ public class ClimateMain {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		// Recipes
-		RecipeJsonMaker.flag = false;
+		// Recipesyu
 		proxy.loadRecipes();
 		DCIntegrationCore.INSTANCE.loadPost();
 

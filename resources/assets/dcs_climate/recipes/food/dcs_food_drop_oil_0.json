@@ -3,19 +3,19 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "dustPresscake"
+   "ore": "toolNormalYagen"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustAsh"
+   "ore": "cropOlive"
   },
   {
-   "item": "minecraft:dye",
-   "data": 15
+   "type": "forge:ore_dict",
+   "ore": "cropOlive"
   }
  ],
  "result": {
-  "item": "forestry:fertilizer_compound",
+  "item": "dcs_climate:dcs_food_drop_oil",
   "count": 1,
   "data": 0
  }

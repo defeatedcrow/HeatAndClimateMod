@@ -191,6 +191,18 @@ public class FoodClimateRecipe {
 		cocotte.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(cocotte);
 
+		ClimateSmelting gohei = new ClimateSmelting(new ItemStack(FoodInit.sticks, 1, 13), null, DCHeatTier.OVEN, DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.sticks, 1, 12));
+		gohei.requiredHeat().add(DCHeatTier.SMELTING);
+		gohei.requiredHum().add(DCHumidity.NORMAL);
+		gohei.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(gohei);
+
+		ClimateSmelting mochi = new ClimateSmelting(new ItemStack(FoodInit.mochi, 1, 1), null, DCHeatTier.OVEN, DCHumidity.DRY, null, 0F, false, new ItemStack(FoodInit.mochi, 1, 0));
+		mochi.requiredHeat().add(DCHeatTier.SMELTING);
+		mochi.requiredHum().add(DCHumidity.NORMAL);
+		mochi.requiredHum().add(DCHumidity.WET);
+		RecipeAPI.registerSmelting.addRecipe(mochi);
+
 	}
 
 	private static void loadSmeltingRecipe() {

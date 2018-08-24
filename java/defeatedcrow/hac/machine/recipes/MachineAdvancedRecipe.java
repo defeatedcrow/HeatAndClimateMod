@@ -13,7 +13,7 @@ public class MachineAdvancedRecipe {
 
 	public static void load(RecipeResourcesMain res) {
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.freezer, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.freezer, 1, 0), new Object[] {
 				"WZ ",
 				"WYV",
 				"XXX",
@@ -29,7 +29,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.gearbox2, 1, 0),
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.pressMachine, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.pressMachine, 1, 0), new Object[] {
 				"XYX",
 				"X X",
 				"XZX",
@@ -41,7 +41,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(Blocks.ANVIL, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.motor, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.motor, 1, 0), new Object[] {
 				"YZW",
 				"XXX",
 				'X',
@@ -54,7 +54,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.machimeMaterials, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dynamo, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.dynamo, 1, 0), new Object[] {
 				"XZX",
 				" Y ",
 				"XZX",
@@ -66,7 +66,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.waterPump, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.waterPump, 1, 0), new Object[] {
 				"XYX",
 				"XZX",
 				"XYX",
@@ -78,7 +78,7 @@ public class MachineAdvancedRecipe {
 				"gearAlloy"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
 				"YXX",
 				"ZXX",
 				"WVW",
@@ -94,7 +94,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.crusher, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.crusher, 1, 0), new Object[] {
 				" Y ",
 				"XZX",
 				"XXX",
@@ -106,7 +106,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.machimeMaterials, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.rotaryBlade, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.rotaryBlade, 1, 0), new Object[] {
 				" Y ",
 				"XZX",
 				" Y ",
@@ -118,7 +118,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.rotaryBlade, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.rotaryBlade, 1, 1), new Object[] {
 				" Y ",
 				"XZX",
 				" Y ",
@@ -131,7 +131,7 @@ public class MachineAdvancedRecipe {
 		});
 
 		if (ModuleConfig.food) {
-			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
 					"YXX",
 					"ZXX",
 					"WWW",
@@ -146,7 +146,7 @@ public class MachineAdvancedRecipe {
 			});
 		}
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.synthetic, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.synthetic, 1, 1), new Object[] {
 				" X ",
 				"X X",
 				" X ",
@@ -154,16 +154,16 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.synthetic, 1, 0)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.reagent, 1, 8), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.reagent, 1, 8), new Object[] {
 				new ItemStack(MachineInit.reagent, 1, 5),
 				new ItemStack(MachineInit.reagent, 1, 6)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(Items.GUNPOWDER, 4, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(Items.GUNPOWDER, 4, 0), new Object[] {
 				new ItemStack(MachineInit.reagent, 1, 8)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
 				"XYX",
 				'X',
 				"ingotAluminium",
@@ -171,7 +171,7 @@ public class MachineAdvancedRecipe {
 				"ingotSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
 				"XYX",
 				'X',
 				"ingotAluminum",
@@ -179,7 +179,7 @@ public class MachineAdvancedRecipe {
 				"ingotSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAlloy, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 0), new Object[] {
 				"XYX",
 				'X',
 				"ingotNickelsilver",
@@ -187,7 +187,7 @@ public class MachineAdvancedRecipe {
 				"dustNickel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAlloy, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 1), new Object[] {
 				"XYX",
 				'X',
 				"ingotNickelsilver",
@@ -195,7 +195,7 @@ public class MachineAdvancedRecipe {
 				"dustTitanium"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAlloy, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 2), new Object[] {
 				"XYX",
 				'X',
 				"ingotNickelsilver",
@@ -203,7 +203,7 @@ public class MachineAdvancedRecipe {
 				"dustBismuth"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAlloy, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 3), new Object[] {
 				"XYX",
 				'X',
 				"ingotNickelsilver",
@@ -211,26 +211,26 @@ public class MachineAdvancedRecipe {
 				"dustBlaze"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAluminium, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 1), new Object[] {
 				new ItemStack(MachineInit.moldAluminium, 1, 0),
 				"string"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAluminium, 1, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 2), new Object[] {
 				new ItemStack(MachineInit.moldAluminium, 1, 0),
 				new ItemStack(Blocks.GLASS_PANE, 1, 0)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAluminium, 1, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 3), new Object[] {
 				new ItemStack(MachineInit.moldAluminium, 1, 0),
 				"blockGlass"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
 				new ItemStack(MachineInit.moldAluminium, 1, 32767)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterPanel, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.adapterPanel, 1, 0), new Object[] {
 				"XXX",
 				" Y ",
 				"ZWZ",
@@ -244,7 +244,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.acceptorPanel, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.acceptorPanel, 1, 0), new Object[] {
 				"XXX",
 				" Y ",
 				"ZWZ",
@@ -258,22 +258,21 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterFluidPanel, 1, 0),
-				new Object[] {
-						"XXX",
-						" Y ",
-						"ZWZ",
-						'X',
-						"blockGlass",
-						'Y',
-						"gemBismuth",
-						'Z',
-						"gemSchorl",
-						'W',
-						"bucketEmpty"
-				});
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.adapterFluidPanel, 1, 0), new Object[] {
+				"XXX",
+				" Y ",
+				"ZWZ",
+				'X',
+				"blockGlass",
+				'Y',
+				"gemBismuth",
+				'Z',
+				"gemSchorl",
+				'W',
+				"bucketEmpty"
+		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.acceptorFluidPanel, 1, 0),
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.acceptorFluidPanel, 1, 0),
 				new Object[] {
 						"XXX",
 						" Y ",
@@ -288,7 +287,7 @@ public class MachineAdvancedRecipe {
 						"bucketEmpty"
 				});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.wirelessPortal, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.wirelessPortal, 1, 0), new Object[] {
 				"WXW",
 				"VYV",
 				"WZW",
@@ -304,7 +303,7 @@ public class MachineAdvancedRecipe {
 				"ingotBSCCO"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.gemcore, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.gemcore, 1, 0), new Object[] {
 				"ZXZ",
 				"XYX",
 				"ZXZ",
@@ -316,7 +315,7 @@ public class MachineAdvancedRecipe {
 				"gemSchorl"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
 				"ZXZ",
 				"WYW",
 				"ZXZ",
@@ -330,7 +329,7 @@ public class MachineAdvancedRecipe {
 				"obsidian"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
 				"ZXZ",
 				"WYW",
 				"ZXZ",
@@ -344,7 +343,7 @@ public class MachineAdvancedRecipe {
 				"obsidian"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterCard, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.adapterCard, 1, 0), new Object[] {
 				"ZXZ",
 				" Y ",
 				'X',
@@ -355,7 +354,7 @@ public class MachineAdvancedRecipe {
 				"gemQuartz"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterCard, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.adapterCard, 1, 1), new Object[] {
 				"ZXZ",
 				" Y ",
 				'X',
@@ -366,7 +365,7 @@ public class MachineAdvancedRecipe {
 				"gemSchorl"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterCard, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.adapterCard, 1, 2), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -375,7 +374,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.adapterCard, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.adapterCard, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.adapterCard, 1, 3), new Object[] {
 				"X",
 				"Y",
 				'X',
@@ -384,7 +383,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.adapterCard, 1, 1)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorRS, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.monitorRS, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -396,7 +395,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(Blocks.REDSTONE_TORCH, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorCM, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.monitorCM, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -408,7 +407,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(Blocks.LEVER, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorFluid, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.monitorFluid, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -420,7 +419,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(Items.BUCKET, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorTorque, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.monitorTorque, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -432,7 +431,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.monitorItem, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.monitorItem, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -444,7 +443,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(Blocks.CHEST, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dynamite, 3, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.dynamite, 3, 0), new Object[] {
 				"WWW",
 				"XYZ",
 				"WWW",
@@ -458,7 +457,7 @@ public class MachineAdvancedRecipe {
 				"paper"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dynamite, 3, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.dynamite, 3, 1), new Object[] {
 				"WWW",
 				"XYZ",
 				"WWW",
@@ -472,7 +471,7 @@ public class MachineAdvancedRecipe {
 				"paper"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.burner, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.burner, 1, 0), new Object[] {
 				"X X",
 				"X X",
 				"YZW",
@@ -487,7 +486,7 @@ public class MachineAdvancedRecipe {
 		});
 
 		// アナザー
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
 				"Y",
 				"X",
 				'X',
@@ -496,7 +495,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.reagent, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(Blocks.TORCH, 6, 0), new Object[] {
 				"Y",
 				"X",
 				'X',
@@ -506,7 +505,7 @@ public class MachineAdvancedRecipe {
 		});
 
 		// エンジン!
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 2), new Object[] {
 				"XXX",
 				"XYX",
 				"XXX",
@@ -516,7 +515,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 2), new Object[] {
 				"XXX",
 				"XYX",
 				"XXX",
@@ -526,7 +525,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 3), new Object[] {
 				"XZX",
 				"ZYZ",
 				"XZX",
@@ -538,7 +537,7 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 4),
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 4),
 				new Object[] {
 						new ItemStack(MachineInit.reagent, 1, 2),
 						new ItemStack(MachineInit.reagent, 1, 7),
@@ -546,7 +545,7 @@ public class MachineAdvancedRecipe {
 						"dustSulfur"
 				});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.machimeMaterials, 1, 5), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 5), new Object[] {
 				"ZXZ",
 				"X X",
 				"ZXZ",
@@ -556,12 +555,12 @@ public class MachineAdvancedRecipe {
 				"ingotTitanium"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.motorMinecart, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.motorMinecart, 1, 0), new Object[] {
 				new ItemStack(MachineInit.machimeMaterials, 1, 3),
 				new ItemStack(Items.MINECART, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.scooter, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.scooter, 1, 2), new Object[] {
 				" X ",
 				"WYW",
 				"Z Z",
@@ -575,27 +574,27 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.machimeMaterials, 1, 4)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.scooter, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.scooter, 1, 0), new Object[] {
 				new ItemStack(MachineInit.scooter, 1, 32767),
 				"dyeOrange"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.scooter, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.scooter, 1, 1), new Object[] {
 				new ItemStack(MachineInit.scooter, 1, 32767),
 				"dyeBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.scooter, 1, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.scooter, 1, 2), new Object[] {
 				new ItemStack(MachineInit.scooter, 1, 32767),
 				"dyeWhite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MachineInit.scooter, 1, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.scooter, 1, 3), new Object[] {
 				new ItemStack(MachineInit.scooter, 1, 32767),
 				"dyeBlack"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.magneticHover, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.magneticHover, 1, 0), new Object[] {
 				" X ",
 				"WYW",
 				"Z Z",
@@ -609,7 +608,7 @@ public class MachineAdvancedRecipe {
 				new ItemStack(MachineInit.machimeMaterials, 1, 5)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.platingChrome, 1, 9), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.platingChrome, 1, 9), new Object[] {
 				"X  ",
 				"YYY",
 				"Z Z",
@@ -621,7 +620,7 @@ public class MachineAdvancedRecipe {
 				"ingotIron"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MachineInit.dieselEngine, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.dieselEngine, 1, 0), new Object[] {
 				"WXW",
 				"WYW",
 				"ZZZ",

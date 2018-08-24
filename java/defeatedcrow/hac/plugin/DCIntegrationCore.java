@@ -116,6 +116,10 @@ public class DCIntegrationCore {
 			}
 		}
 
+	}
+
+	public static void loadPost() {
+
 		if (loadedJEI) {
 			try {
 				DCPluginJeiMain.load();
@@ -124,9 +128,6 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: JEI");
 			}
 		}
-	}
-
-	public static void loadPost() {
 
 		if (loadedForestry) {
 			try {

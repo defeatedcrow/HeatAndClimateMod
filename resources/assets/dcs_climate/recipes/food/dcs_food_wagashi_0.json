@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodRicecake"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropSoybean"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustSugar"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_wagashi",
+  "count": 1,
+  "data": 0
+ }
+}

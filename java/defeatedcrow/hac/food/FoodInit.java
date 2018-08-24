@@ -16,6 +16,7 @@ public class FoodInit {
 	public static Item clubsandwich;
 
 	public static Item ricebowl;
+	public static Item mochi;
 
 	public static Item plateMeal;
 	public static Item plateSoup;
@@ -23,6 +24,7 @@ public class FoodInit {
 	public static Item salad;
 	public static Item cake;
 	public static Item icecream;
+	public static Item wagashi;
 
 	public static Item crops;
 	public static Item seeds;

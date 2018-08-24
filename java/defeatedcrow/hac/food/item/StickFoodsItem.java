@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
+import defeatedcrow.hac.food.entity.GoheiStickEntity;
 import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.SquidStickEntity;
@@ -34,12 +35,12 @@ public class StickFoodsItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 11;
+		return 13;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 13);
 		String s = "items/food/stick_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -61,7 +62,9 @@ public class StickFoodsItem extends FoodItemBase {
 				"mutton_raw",
 				"mutton_cooked",
 				"squid_raw",
-				"squid_cooked"
+				"squid_cooked",
+				"gohei_raw",
+				"gohei_cooked"
 		};
 		return s;
 	}
@@ -95,6 +98,10 @@ public class StickFoodsItem extends FoodItemBase {
 		case 11:
 			ret = new SquidStickEntity(world, x, y, z, player);
 			break;
+		case 12:
+		case 13:
+			ret = new GoheiStickEntity(world, x, y, z, player);
+			break;
 		default:
 			ret = new FishStickEntity(world, x, y, z, player);
 		}
@@ -121,6 +128,8 @@ public class StickFoodsItem extends FoodItemBase {
 			return 11;
 		case 11:
 			return 9;
+		case 13:
+			return 8;
 		default:
 			return 1;
 		}

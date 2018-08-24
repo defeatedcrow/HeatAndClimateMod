@@ -14,7 +14,7 @@ public class LoadingToolRecipe {
 
 	public static void add(RecipeResourcesMain res) {
 		// clothes
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 0), new Object[] {
 				"XXX",
 				"XYX",
 				"XXX",
@@ -24,7 +24,7 @@ public class LoadingToolRecipe {
 				"stickWood"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 0), new Object[] {
 				"XXX",
 				"XYX",
 				"XXX",
@@ -34,7 +34,7 @@ public class LoadingToolRecipe {
 				"stickWood"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 1), new Object[] {
 				"XXX",
 				"XYX",
 				"XXX",
@@ -44,7 +44,7 @@ public class LoadingToolRecipe {
 				"stickWood"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 1), new Object[] {
 				"XXX",
 				"XYX",
 				"XXX",
@@ -54,7 +54,7 @@ public class LoadingToolRecipe {
 				"stickWood"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 2), new Object[] {
 				" X ",
 				"X X",
 				" X ",
@@ -62,7 +62,7 @@ public class LoadingToolRecipe {
 				new ItemStack(MainInit.clothes, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 3), new Object[] {
 				" X ",
 				"X X",
 				" X ",
@@ -70,7 +70,7 @@ public class LoadingToolRecipe {
 				new ItemStack(MainInit.clothes, 1, 1)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gears, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 0), new Object[] {
 				" X ",
 				"XYX",
 				" X ",
@@ -80,7 +80,7 @@ public class LoadingToolRecipe {
 				new ItemStack(Items.STICK, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gears, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 1), new Object[] {
 				" X ",
 				"XYX",
 				" X ",
@@ -90,7 +90,7 @@ public class LoadingToolRecipe {
 				"ingotBrass"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gears, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 2), new Object[] {
 				" X ",
 				"XYX",
 				" X ",
@@ -100,7 +100,7 @@ public class LoadingToolRecipe {
 				"ingotNickelsilver"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gears, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 3), new Object[] {
 				" X ",
 				"XYX",
 				" X ",
@@ -110,7 +110,7 @@ public class LoadingToolRecipe {
 				"ingotSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gears, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 2), new Object[] {
 				" X ",
 				"XYX",
 				" X ",
@@ -120,7 +120,7 @@ public class LoadingToolRecipe {
 				"ingotNickelsilver"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.gears, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 3), new Object[] {
 				" X ",
 				"XYX",
 				" X ",
@@ -130,7 +130,7 @@ public class LoadingToolRecipe {
 				"ingotSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 4), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 4), new Object[] {
 				"XXX",
 				"XYX",
 				"XXX",
@@ -140,7 +140,7 @@ public class LoadingToolRecipe {
 				"stickWood"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 5), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 5), new Object[] {
 				" X ",
 				"X X",
 				" X ",
@@ -148,7 +148,7 @@ public class LoadingToolRecipe {
 				new ItemStack(MainInit.clothes, 1, 4)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.clothes, 1, 7), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 7), new Object[] {
 				" X ",
 				"X X",
 				" X ",
@@ -156,7 +156,7 @@ public class LoadingToolRecipe {
 				new ItemStack(MainInit.clothes, 1, 6)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
 				" X ",
 				"XYX",
 				"XXX",
@@ -166,7 +166,7 @@ public class LoadingToolRecipe {
 				"gearWood"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.brassYagen, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.brassYagen, 1, 0), new Object[] {
 				" X ",
 				"XYX",
 				"XXX",
@@ -176,7 +176,7 @@ public class LoadingToolRecipe {
 				"gearWood"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(DCInit.climate_checker, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(DCInit.climate_checker, 1, 0), new Object[] {
 				" Z ",
 				"XYX",
 				" Z ",
@@ -188,7 +188,7 @@ public class LoadingToolRecipe {
 				"gemChalcedony"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.stevenson_screen, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.stevenson_screen, 1, 0), new Object[] {
 				"XZX",
 				"ZYZ",
 				"XZX",
@@ -200,7 +200,7 @@ public class LoadingToolRecipe {
 				"dyeWhite"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.thermometer, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.thermometer, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -212,7 +212,7 @@ public class LoadingToolRecipe {
 				new ItemStack(Blocks.GLASS)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.windvane, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {
 				" X ",
 				"XYX",
 				" X ",
@@ -222,7 +222,7 @@ public class LoadingToolRecipe {
 				new ItemStack(DCInit.climate_checker)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.chamber, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.chamber, 1, 0), new Object[] {
 				"ZXZ",
 				"XYX",
 				"ZXZ",
@@ -234,7 +234,7 @@ public class LoadingToolRecipe {
 				"ingotBrass"
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.shitirin, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.shitirin, 1, 0), new Object[] {
 				"XXX",
 				"XYX",
 				"XXX",
@@ -244,7 +244,7 @@ public class LoadingToolRecipe {
 				new ItemStack(Items.CLAY_BALL, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.fuelStove, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.fuelStove, 1, 0), new Object[] {
 				"XYX",
 				"XZX",
 				"XWX",
@@ -258,7 +258,7 @@ public class LoadingToolRecipe {
 				new ItemStack(Items.BUCKET, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.bellow, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.bellow, 1, 0), new Object[] {
 				"XYX",
 				"XZX",
 				"XWX",
@@ -272,23 +272,23 @@ public class LoadingToolRecipe {
 				new ItemStack(Blocks.PISTON, 1, 0)
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.repairPutty, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 0), new Object[] {
 				new ItemStack(Items.SLIME_BALL, 1, 0),
 				"dustIron"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
 				new ItemStack(Items.CLAY_BALL, 1, 0),
 				"dustGarnet"
 		});
 
-		DCRecipe.jsonShapelessRecipe(res.getRecipeName(), new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
 				"dustClay",
 				"dustGarnet"
 		});
 
 		if (ModuleConfig.machine) {
-			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.scope, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
 					"X",
 					"Y",
 					"Z",
@@ -300,7 +300,7 @@ public class LoadingToolRecipe {
 					"ingotSteel"
 			});
 
-			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
 					"X",
 					"Y",
 					"Z",
@@ -312,7 +312,7 @@ public class LoadingToolRecipe {
 					"ingotSteel"
 			});
 		} else {
-			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.scope, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
 					"X",
 					"Y",
 					"Z",
@@ -324,7 +324,7 @@ public class LoadingToolRecipe {
 					"ingotSteel"
 			});
 
-			DCRecipe.jsonShapedRecipe(res.getRecipeName(), new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
 					"X",
 					"Y",
 					"Z",

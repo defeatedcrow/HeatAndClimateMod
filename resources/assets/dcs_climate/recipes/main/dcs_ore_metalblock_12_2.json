@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "XX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemAluminum"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_ore_metalblock",
+  "count": 1,
+  "data": 12
+ }
+}

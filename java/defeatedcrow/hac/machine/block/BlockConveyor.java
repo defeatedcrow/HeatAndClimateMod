@@ -109,7 +109,7 @@ public class BlockConveyor extends BlockTorqueBase {
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (entity != null) {
-			if (!(entity instanceof EntityItem) || !world.isRemote) {
+			if (!(entity instanceof EntityItem) && entity.posY > pos.getY() + 0.20D) {
 				EnumFacing face = DCState.getSide(state, DCState.SIDE).face;
 				double mX = entity.motionX + face.getFrontOffsetX() * 0.1D;
 				if (mX > 0.035D) {
@@ -126,8 +126,23 @@ public class BlockConveyor extends BlockTorqueBase {
 					mZ = -0.035D;
 				}
 
-				entity.motionX = mX;
-				entity.motionZ = mZ;
+				double dX = 0D;
+				if (face.rotateY().getFrontOffsetX() != 0 && entity.posX < pos.getX() + 0.4D) {
+					dX = 0.035D;
+				}
+				if (face.rotateY().getFrontOffsetX() != 0 && entity.posX > pos.getX() + 0.6D) {
+					dX = -0.035D;
+				}
+				double dZ = 0D;
+				if (face.rotateY().getFrontOffsetZ() != 0 && entity.posZ < pos.getZ() + 0.4D) {
+					dZ = 0.035D;
+				}
+				if (face.rotateY().getFrontOffsetZ() != 0 && entity.posZ > pos.getZ() + 0.6D) {
+					dZ = -0.035D;
+				}
+
+				entity.motionX = mX + dX;
+				entity.motionZ = mZ + dZ;
 			}
 		}
 	}
@@ -177,6 +192,7 @@ public class BlockConveyor extends BlockTorqueBase {
 			tooltip.add(EnumFixedName.ITEM.getLocalizedName() + EnumFixedName.TRANSPORT.getLocalizedName() +
 					": 1 item/16t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add(I18n.format("dcs.tip.conveyor3"));
 			tooltip.add(I18n.format("dcs.tip.conveyor"));
 			tooltip.add(TextFormatting.RED.toString() + "SMELTING+" + TextFormatting.GRAY.toString() + " and " +
 					TextFormatting.DARK_BLUE.toString() + "TIGHT" + TextFormatting.GRAY.toString() + ": " + I18n.format(
