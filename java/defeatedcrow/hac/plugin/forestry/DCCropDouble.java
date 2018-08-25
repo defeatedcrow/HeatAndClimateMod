@@ -1,6 +1,5 @@
 package defeatedcrow.hac.plugin.forestry;
 
-import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import forestry.api.farming.ICrop;
@@ -49,10 +48,9 @@ public class DCCropDouble implements ICrop {
 				ClimateDoubleCropBase crop = (ClimateDoubleCropBase) cropB;
 				ret.addAll(crop.getCropItems(target, 0));
 
-				PacketFXSignal packet = new PacketFXSignal(VisualFXType.BLOCK_BREAK, SoundFXType.BLOCK_BREAK, pos,
-						target);
+				PacketFXSignal packet = new PacketFXSignal(VisualFXType.BLOCK_BREAK, SoundFXType.BLOCK_BREAK, pos, target);
 				NetworkUtil.sendNetworkPacket(packet, pos, world);
-				IBlockState next = target.withProperty(DCState.STAGE8, 4);
+				IBlockState next = crop.setGroundState(target);
 				world.setBlockState(pos, next, 2);
 			}
 		}
@@ -62,7 +60,8 @@ public class DCCropDouble implements ICrop {
 	@Override
 	public String toString() {
 		return String.format("HeatAndClimate [ position: [ %s ]; block: %s]", new Object[] {
-				pos.toString(), state
+				pos.toString(),
+				state
 		});
 	}
 
