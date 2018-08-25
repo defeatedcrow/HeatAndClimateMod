@@ -1,7 +1,5 @@
 package defeatedcrow.hac.magic.recipe;
 
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
@@ -12,6 +10,7 @@ import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class MagicRecipeRegister {
@@ -805,8 +804,7 @@ public class MagicRecipeRegister {
 		});
 
 		// elestial
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MagicInit.elestial, 1, 0), DCHeatTier.KILN, null, null,
-				false, new ItemStack(MainInit.gemBlock, 1, 8));
+		GameRegistry.addSmelting(new ItemStack(MainInit.gemBlock, 1, 8), new ItemStack(MagicInit.elestial, 1, 0), 0.5F);
 
 		if (ModuleConfig.food) {
 			DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.lotusCandle, 1, 0), new Object[] {

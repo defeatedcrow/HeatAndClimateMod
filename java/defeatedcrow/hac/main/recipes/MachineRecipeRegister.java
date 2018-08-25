@@ -165,18 +165,6 @@ public class MachineRecipeRegister {
 
 	static void loadBuildRecipes() {
 		// 建材
-		ClimateSmelting marble = new ClimateSmelting(new ItemStack(MainInit.gemBlock, 1, 6), null, DCHeatTier.KILN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.ores_2, 1, 0));
-		marble.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(marble);
-
-		ClimateSmelting sele = new ClimateSmelting(new ItemStack(MainInit.selenite, 1, 0), null, DCHeatTier.KILN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.gemBlock, 1, 3));
-		sele.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(sele);
-
-		ClimateSmelting cry = new ClimateSmelting(new ItemStack(MainInit.selenite, 1, 3), null, DCHeatTier.KILN, null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.dustBlock_2, 1, 1));
-		cry.requiredAir().add(DCAirflow.NORMAL);
-		RecipeAPI.registerSmelting.addRecipe(cry);
-
 		ClimateSmelting dirt = new ClimateSmelting(new ItemStack(MainInit.dustBlock_2, 1, 0), null, DCHeatTier.OVEN, DCHumidity.DRY, null, 0, false, new ItemStack(Blocks.DIRT, 1, 0));
 		RecipeAPI.registerSmelting.addRecipe(dirt);
 
