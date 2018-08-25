@@ -31,6 +31,11 @@ public class BlockLogCont extends DCSidedBlock implements ITexturePath, IRapidCo
 	}
 
 	@Override
+	public int tickRate(World world) {
+		return 40;
+	}
+
+	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
 				"oak",

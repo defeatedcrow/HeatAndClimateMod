@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.main.entity.EntityBulletDC;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.passive.EntityTameable;
@@ -40,15 +41,20 @@ public class EntityProjBarrier extends EntityMobBarrier {
 
 		// 接触判定
 		if (!world.isRemote) {
-			List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this,
-					this.getEntityBoundingBox().grow(1.0D));
+			List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().grow(
+					1.0D));
 			if (list != null && !list.isEmpty()) {
 				for (int i = 0; i < list.size(); i++) {
 					Entity entity = list.get(i);
 					if (entity != null) {
 						if (entity instanceof IProjectile) {
 							Entity shooter = null;
-							if (entity instanceof EntityArrow) {
+							if (entity instanceof EntityBulletDC) {
+								EntityBulletDC arrow = (EntityBulletDC) entity;
+								if (arrow.shootingEntity != null) {
+									shooter = arrow.shootingEntity;
+								}
+							} else if (entity instanceof EntityArrow) {
 								EntityArrow arrow = (EntityArrow) entity;
 								if (arrow.shootingEntity != null) {
 									shooter = arrow.shootingEntity;
@@ -65,8 +71,7 @@ public class EntityProjBarrier extends EntityMobBarrier {
 								}
 							}
 
-							if (shooter != null
-									&& (shooter instanceof EntityPlayer || shooter instanceof EntityTameable)) {
+							if (shooter instanceof EntityPlayer || shooter instanceof EntityTameable) {
 
 							} else {
 								entity.setDead();

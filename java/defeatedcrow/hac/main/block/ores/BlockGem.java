@@ -96,11 +96,6 @@ public class BlockGem extends DCSimpleBlock implements ITexturePath, IRapidColle
 	}
 
 	@Override
-	public int tickRate(World world) {
-		return 120;
-	}
-
-	@Override
 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		super.updateTick(worldIn, pos, state, rand);
 		if (!worldIn.isRemote && state != null && state.getBlock() != null) {

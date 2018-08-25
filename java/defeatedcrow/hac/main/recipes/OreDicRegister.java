@@ -7,7 +7,6 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -179,6 +178,8 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dropMolasses", new ItemStack(MainInit.foodDust, 1, 2));
 		OreDictionary.registerOre("dustMalt", new ItemStack(MainInit.foodDust, 1, 3));
 		OreDictionary.registerOre("foodMalt", new ItemStack(MainInit.foodDust, 1, 3));
+		OreDictionary.registerOre("foodSoypulp", new ItemStack(MainInit.foodDust, 1, 5));
+		OreDictionary.registerOre("foodFlour", new ItemStack(MainInit.foodDust, 1, 5));
 
 		// material
 		OreDictionary.registerOre("itemString", new ItemStack(MainInit.clothes, 1, 0));
@@ -203,25 +204,6 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.gears, 1, 2));
 		OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.gears, 1, 3));
 
-		/*
-		 * OreDictionary.registerOre("itemString", new ItemStack(MainInit.materials, 1, 0));
-		 * OreDictionary.registerOre("itemString", new ItemStack(MainInit.materials, 1, 1));
-		 * OreDictionary.registerOre("string", new ItemStack(MainInit.materials, 1, 0));
-		 * OreDictionary.registerOre("string", new ItemStack(MainInit.materials, 1, 1));
-		 * OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.materials, 1, 2));
-		 * OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.materials, 1, 3));
-		 * OreDictionary.registerOre("itemLinenCloth", new ItemStack(MainInit.materials, 1, 2));
-		 * OreDictionary.registerOre("itemCottonCloth", new ItemStack(MainInit.materials, 1, 3));
-		 * OreDictionary.registerOre("gearWood", new ItemStack(MainInit.materials, 1, 4));
-		 * OreDictionary.registerOre("gearBrass", new ItemStack(MainInit.materials, 1, 5));
-		 * OreDictionary.registerOre("gearAlloy", new ItemStack(MainInit.materials, 1, 6));
-		 * OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.materials, 1, 6));
-		 * OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.materials, 1, 7));
-		 * OreDictionary.registerOre("string", new ItemStack(MainInit.materials, 1, 8));
-		 * OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.materials, 1, 9));
-		 * OreDictionary.registerOre("itemAsbestCloth", new ItemStack(MainInit.materials, 1, 9));
-		 */
-
 		OreDictionary.registerOre("blockGlass", new ItemStack(MainInit.syntheticBlock, 1, 32767));
 
 		// tool
@@ -241,6 +223,8 @@ public class OreDicRegister {
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.clothes, 1, 1));
+		ConvertTargetList.addExclusing(new ItemStack(MainInit.foodMaterials, 1, 1));
+		ConvertTargetList.addExclusing(new ItemStack(MainInit.builds, 1, 6));
 
 		/* バニラ補足 */
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 0));
@@ -252,7 +236,5 @@ public class OreDicRegister {
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 1));
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 3));
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
-
-		OreDictionary.registerOre("cropBeetroot", new ItemStack(Items.BEETROOT, 1, 0));
 	}
 }

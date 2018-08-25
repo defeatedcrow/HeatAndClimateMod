@@ -124,13 +124,22 @@ public class FoodRecipes {
 
 		OreDictionary.registerOre("bucketWater", new ItemStack(FoodInit.paperPack, 1, 1));
 		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 2));
-		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 13));
-
 		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.paperPack, 1, 3));
 		OreDictionary.registerOre("listAllheavycream", new ItemStack(FoodInit.paperPack, 1, 3));
 		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.dropCream, 1, 0));
 		OreDictionary.registerOre("foodOil", new ItemStack(FoodInit.paperPack, 1, 4));
+		OreDictionary.registerOre("foodOliveoil", new ItemStack(FoodInit.paperPack, 1, 4));
 		OreDictionary.registerOre("foodOil", new ItemStack(FoodInit.dropOil, 1, 0));
+		OreDictionary.registerOre("foodVegetablejuice", new ItemStack(FoodInit.paperPack, 1, 5));
+		OreDictionary.registerOre("foodLemonaide", new ItemStack(FoodInit.paperPack, 1, 6));
+		OreDictionary.registerOre("foodAbsince", new ItemStack(FoodInit.paperPack, 1, 7));
+		OreDictionary.registerOre("foodGreentea", new ItemStack(FoodInit.paperPack, 1, 8));
+		OreDictionary.registerOre("foodTea", new ItemStack(FoodInit.paperPack, 1, 9));
+		OreDictionary.registerOre("foodCoffee", new ItemStack(FoodInit.paperPack, 1, 10));
+		OreDictionary.registerOre("foodStock", new ItemStack(FoodInit.paperPack, 1, 11));
+		OreDictionary.registerOre("foodLiquor", new ItemStack(FoodInit.paperPack, 1, 12));
+		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 13));
+
 		OreDictionary.registerOre("foodButter", new ItemStack(FoodInit.dairy, 1, 0));
 		OreDictionary.registerOre("foodCheese", new ItemStack(FoodInit.dairy, 1, 1));
 		OreDictionary.registerOre("foodCustard", new ItemStack(FoodInit.dairy, 1, 2));
@@ -140,7 +149,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodViscera", new ItemStack(FoodInit.meat, 1, 0));
 		OreDictionary.registerOre("foodRennet", new ItemStack(FoodInit.meat, 1, 1));
 		OreDictionary.registerOre("foodSquid", new ItemStack(FoodInit.meat, 1, 2));
-		OreDictionary.registerOre("fishSquid", new ItemStack(FoodInit.meat, 1, 2));
+		OreDictionary.registerOre("foodCalamariraw", new ItemStack(FoodInit.meat, 1, 2));
 		OreDictionary.registerOre("foodAgar", new ItemStack(FoodInit.meat, 1, 3));
 		OreDictionary.registerOre("foodGelatine", new ItemStack(FoodInit.meat, 1, 4));
 		OreDictionary.registerOre("foodAnyMeat", new ItemStack(FoodInit.meat, 1, 5));

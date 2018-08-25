@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCollectables {
 
 	public BlockDustBag(Material m, String s, int max) {
-		super(m, s, max, true);
+		super(m, s, max, false);
 		this.setSoundType(SoundType.CLOTH);
 		this.setTickRandomly(true);
 		this.setHardness(0.5F);

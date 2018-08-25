@@ -28,6 +28,11 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 	}
 
 	@Override
+	public int tickRate(World world) {
+		return 40;
+	}
+
+	@Override
 	public boolean onClimateChange(World world, BlockPos pos, IBlockState state, IClimate clm) {
 		if (clm != null && clm.getHumidity() == DCHumidity.UNDERWATER)
 			return false;
