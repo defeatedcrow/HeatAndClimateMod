@@ -326,9 +326,14 @@ public class CommonMainProxy implements IGuiHandler {
 
 		DCRegistryUtil.addEntity(EntityBigCushionBrown.class, "main", "big_cushion_brown");
 
-		FoodCommonProxy.loadEntity();
-		MachineCommonProxy.loadEntity();
-		MagicCommonProxy.loadEntity();
+		if (ModuleConfig.food)
+			FoodCommonProxy.loadEntity();
+
+		if (ModuleConfig.machine)
+			MachineCommonProxy.loadEntity();
+
+		if (ModuleConfig.magic)
+			MagicCommonProxy.loadEntity();
 	}
 
 	public void loadTE() {
@@ -350,9 +355,14 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l");
 		GameRegistry.registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l");
 
-		FoodCommonProxy.loadTE();
-		MachineCommonProxy.loadTE();
-		MagicCommonProxy.loadTE();
+		if (ModuleConfig.food)
+			FoodCommonProxy.loadTE();
+
+		if (ModuleConfig.machine)
+			MachineCommonProxy.loadTE();
+
+		if (ModuleConfig.magic)
+			MagicCommonProxy.loadTE();
 	}
 
 	public void loadWorldGen() {

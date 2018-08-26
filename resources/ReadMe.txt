@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 2.5.8 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 2.5.9 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1888,6 +1888,10 @@ Y = 各種宝石
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○2.5.9
+　修正
+　　・module.cfgでモジュールをオフにするとクラッシュしてしまう
 
 ○2.5.8
 　新規

@@ -63,6 +63,7 @@ import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleFlameDC;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.entity.EntityBigCushion;
 import defeatedcrow.hac.main.entity.EntityBigCushionBrown;
 import defeatedcrow.hac.main.entity.EntityCrowBalloon;
@@ -133,9 +134,14 @@ public class ClientMainProxy extends CommonMainProxy {
 		super.loadMaterial();
 		JsonRegister.load();
 
-		FoodClientProxy.regJson(JsonRegister.MAIN_INSTANCE);
-		MachineClientProxy.regJson(JsonRegister.MAIN_INSTANCE);
-		MagicClientProxy.regJson(JsonRegister.MAIN_INSTANCE);
+		if (ModuleConfig.food)
+			FoodClientProxy.regJson(JsonRegister.MAIN_INSTANCE);
+
+		if (ModuleConfig.machine)
+			MachineClientProxy.regJson(JsonRegister.MAIN_INSTANCE);
+
+		if (ModuleConfig.magic)
+			MagicClientProxy.regJson(JsonRegister.MAIN_INSTANCE);
 	}
 
 	@Override
@@ -157,9 +163,14 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityBigCushion.class, RenderEntityBigCushion.class);
 		registRender(EntityBigCushionBrown.class, RenderEntityBigCushionB.class);
 
-		FoodClientProxy.loadEntity();
-		MachineClientProxy.loadEntity();
-		MagicClientProxy.loadEntity();
+		if (ModuleConfig.food)
+			FoodClientProxy.loadEntity();
+
+		if (ModuleConfig.machine)
+			MachineClientProxy.loadEntity();
+
+		if (ModuleConfig.magic)
+			MagicClientProxy.loadEntity();
 	}
 
 	@Override
@@ -183,9 +194,14 @@ public class ClientMainProxy extends CommonMainProxy {
 		ClientRegistry.registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l", new TESRLargeClock());
 		ClientRegistry.registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l", new TESRMCClock());
 
-		FoodClientProxy.loadTE();
-		MachineClientProxy.loadTE();
-		MagicClientProxy.loadTE();
+		if (ModuleConfig.food)
+			FoodClientProxy.loadTE();
+
+		if (ModuleConfig.machine)
+			MachineClientProxy.loadTE();
+
+		if (ModuleConfig.magic)
+			MagicClientProxy.loadTE();
 	}
 
 	@Override
@@ -198,6 +214,8 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void addSidedBlock(Block block, String name, int max) {
+		if (block == null)
+			return;
 		JsonRegister.regSidedCube(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" +
 				name, "cont", max);
 		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
@@ -206,6 +224,8 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void addCropBlock(Block block, String name, int max) {
+		if (block == null)
+			return;
 		JsonRegister.regCross(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
 				"crop", max);
 		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
@@ -217,6 +237,8 @@ public class ClientMainProxy extends CommonMainProxy {
 	 */
 	@Override
 	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {
+		if (item == null)
+			return;
 		int m = 0;
 		if (max == 0) {
 			ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir + "/" +
@@ -237,6 +259,8 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void regTEJson(Block block, String domein, String name, String dir) {
+		if (block == null)
+			return;
 		ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(DCState.TYPE4).build());
 		// ModelBakery.registerItemVariants(Item.getItemFromBlock(block), new
 		// ModelResourceLocation(domein + ":" + name));

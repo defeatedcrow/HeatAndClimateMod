@@ -1015,7 +1015,9 @@ public class MainMaterialRegister {
 	}
 
 	static void registerDispense() {
-		DispenseEntityItem.getInstance().dispenceList.add(MainInit.cushionGray);
+		if (ModuleConfig.build_advanced) {
+			DispenseEntityItem.getInstance().dispenceList.add(MainInit.cushionGray);
+		}
 	}
 
 	static void registerMaterialEnum() {

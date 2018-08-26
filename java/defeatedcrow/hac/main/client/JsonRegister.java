@@ -122,24 +122,27 @@ public class JsonRegister {
 				"machine", 0);
 
 		// door
-		ModelLoader.setCustomStateMapper(MainInit.doorMarble, (new StateMap.Builder()).ignore(
-				BlockDoor.POWERED).build());
-		ModelLoader.setCustomStateMapper(MainInit.doorSteel, (new StateMap.Builder()).ignore(
-				BlockDoor.POWERED).build());
+		if (ModuleConfig.build_advanced) {
+			ModelLoader.setCustomStateMapper(MainInit.doorMarble, (new StateMap.Builder()).ignore(
+					BlockDoor.POWERED).build());
+			ModelLoader.setCustomStateMapper(MainInit.doorSteel, (new StateMap.Builder()).ignore(
+					BlockDoor.POWERED).build());
 
-		ModelLoader.setCustomStateMapper(MainInit.realtimeClock, (new StateMap.Builder()).ignore(
-				DCState.FACING).build());
-		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock), ClimateCore.PACKAGE_ID,
-				"dcs_device_realtimeclock", "device", 0);
+			ModelLoader.setCustomStateMapper(MainInit.realtimeClock, (new StateMap.Builder()).ignore(
+					DCState.FACING).build());
+			MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock), ClimateCore.PACKAGE_ID,
+					"dcs_device_realtimeclock", "device", 0);
 
-		ModelLoader.setCustomStateMapper(MainInit.realtimeClock_L, (new StateMap.Builder()).ignore(
-				DCState.FACING).build());
-		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock_L), ClimateCore.PACKAGE_ID,
-				"dcs_device_realtimeclock_l", "device", 0);
+			ModelLoader.setCustomStateMapper(MainInit.realtimeClock_L, (new StateMap.Builder()).ignore(
+					DCState.FACING).build());
+			MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.realtimeClock_L), ClimateCore.PACKAGE_ID,
+					"dcs_device_realtimeclock_l", "device", 0);
 
-		ModelLoader.setCustomStateMapper(MainInit.mcClock_L, (new StateMap.Builder()).ignore(DCState.FACING).build());
-		MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.mcClock_L), ClimateCore.PACKAGE_ID,
-				"dcs_device_mcclock_l", "device", 0);
+			ModelLoader.setCustomStateMapper(MainInit.mcClock_L, (new StateMap.Builder()).ignore(
+					DCState.FACING).build());
+			MAIN_INSTANCE.regSimpleItem(Item.getItemFromBlock(MainInit.mcClock_L), ClimateCore.PACKAGE_ID,
+					"dcs_device_mcclock_l", "device", 0);
+		}
 	}
 
 	static void regTools() {
