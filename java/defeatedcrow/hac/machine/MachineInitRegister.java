@@ -242,6 +242,9 @@ public class MachineInitRegister {
 		MachineInit.boilerTurbine = new BlockBoilerTurbine(ClimateCore.PACKAGE_BASE + "_device_boiler_turbine");
 		registerTierBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_BASE + "_device_boiler_turbine", 3);
 
+		MachineInit.creativeBox = new BlockCreativeBox(ClimateCore.PACKAGE_BASE + "_device_creative_box");
+		registerTierBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_BASE + "_device_creative_box", 3);
+
 		if (ModuleConfig.machine_advanced) {
 
 			MachineInit.burner = new BlockGasBurner(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_gas_burner", 3);
@@ -267,9 +270,6 @@ public class MachineInitRegister {
 
 			MachineInit.pressMachine = new BlockPressMachine(ClimateCore.PACKAGE_BASE + "_device_press_machine");
 			registerTierBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_BASE + "_device_press_machine", 3);
-
-			MachineInit.creativeBox = new BlockCreativeBox(ClimateCore.PACKAGE_BASE + "_device_creative_box");
-			registerTierBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_BASE + "_device_creative_box", 3);
 
 			MachineInit.adapterPanel = new BlockAdapterPanel(ClimateCore.PACKAGE_BASE + "_device_adapter_item", false);
 			MachineInit.adapterPanel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE +
