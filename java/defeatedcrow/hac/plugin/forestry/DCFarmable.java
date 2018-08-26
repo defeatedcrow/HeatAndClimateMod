@@ -1,6 +1,5 @@
 package defeatedcrow.hac.plugin.forestry;
 
-import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import forestry.api.farming.ICrop;
@@ -22,7 +21,7 @@ public class DCFarmable implements IFarmable {
 
 	@Override
 	public ICrop getCropAt(World world, BlockPos pos, IBlockState state) {
-		if (crop.getCurrentStage(state) == GrowingStage.GROWN)
+		if (state instanceof ClimateCropBase)
 			return new DCCrop(world, pos, state);
 		return null;
 	}

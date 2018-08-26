@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import forestry.api.farming.ICrop;
@@ -36,8 +37,8 @@ public class DCCrop implements ICrop {
 
 	protected boolean isCrop(World world, BlockPos pos) {
 		if (state.getBlock() instanceof IClimateCrop) {
-			IBlockState grown = ((IClimateCrop) state.getBlock()).getGrownState();
-			return world.getBlockState(pos) == grown;
+			GrowingStage stage = ((IClimateCrop) state.getBlock()).getCurrentStage(state);
+			return stage == GrowingStage.GROWN;
 		}
 		return false;
 	}
