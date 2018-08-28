@@ -2,7 +2,6 @@ package defeatedcrow.hac.machine;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraftforge.fluids.Fluid;
 
 public class MachineInit {
 
@@ -36,6 +35,7 @@ public class MachineInit {
 	public static Block shaft3_x;
 
 	public static Block fauset;
+	public static Block fauset_sus;
 	public static Block IBC;
 
 	public static Block conveyor;
@@ -77,24 +77,6 @@ public class MachineInit {
 	public static Block creativeBox;
 
 	// advanced
-
-	public static Fluid hydrogen;
-	public static Fluid ammonia;
-	public static Fluid nitricAcid;
-	public static Fluid sulfuricAcid;
-	public static Fluid fuelOil;
-	public static Fluid fuelGas;
-	public static Fluid nitrogen;
-	public static Fluid ethanol;
-
-	public static Block hydrogenBlock;
-	public static Block ammoniaBlock;
-	public static Block nitricAcidBlock;
-	public static Block sulfuricAcidBlock;
-	public static Block fuelOilBlock;
-	public static Block fuelGasBlock;
-	public static Block nitrogenBlock;
-	public static Block ethanolBlock;
 
 	public static Item reagent;
 	public static Item synthetic;

@@ -186,26 +186,26 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(FoodInit.meat, 1, 5), 60);
 
 		// fluid
-		MCEconomyAPI.addPurchaseFluid(FoodInit.oil, 0.08); // 80
-		MCEconomyAPI.addPurchaseFluid(FoodInit.cream, 0.2); // 200
-		MCEconomyAPI.addPurchaseFluid(FoodInit.greenTea, 0.03); // 30
-		MCEconomyAPI.addPurchaseFluid(FoodInit.blackTea, 0.03); // 30
-		MCEconomyAPI.addPurchaseFluid(FoodInit.coffee, 0.03); // 30
-		MCEconomyAPI.addPurchaseFluid(FoodInit.lemon, 0.005); // 5
-		MCEconomyAPI.addPurchaseFluid(FoodInit.stock, 0.1); // 100
-		MCEconomyAPI.addPurchaseFluid(FoodInit.tomatoJuice, 0.02); // 20
-		MCEconomyAPI.addPurchaseFluid(FoodInit.mazai, 0.3); // 300
-		MCEconomyAPI.addPurchaseFluid(FoodInit.hotSpring, 0.001); // 1
-		MCEconomyAPI.addPurchaseFluid(FoodInit.blackLiquor, 0.01); // 10
+		MCEconomyAPI.addPurchaseFluid(MainInit.oil, 0.08); // 80
+		MCEconomyAPI.addPurchaseFluid(MainInit.cream, 0.2); // 200
+		MCEconomyAPI.addPurchaseFluid(MainInit.greenTea, 0.03); // 30
+		MCEconomyAPI.addPurchaseFluid(MainInit.blackTea, 0.03); // 30
+		MCEconomyAPI.addPurchaseFluid(MainInit.coffee, 0.03); // 30
+		MCEconomyAPI.addPurchaseFluid(MainInit.lemon, 0.005); // 5
+		MCEconomyAPI.addPurchaseFluid(MainInit.stock, 0.1); // 100
+		MCEconomyAPI.addPurchaseFluid(MainInit.tomatoJuice, 0.02); // 20
+		MCEconomyAPI.addPurchaseFluid(MainInit.mazai, 0.3); // 300
+		MCEconomyAPI.addPurchaseFluid(MainInit.hotSpring, 0.001); // 1
+		MCEconomyAPI.addPurchaseFluid(MainInit.blackLiquor, 0.01); // 10
 
-		MCEconomyAPI.addPurchaseFluid(MachineInit.fuelOil, 0.12); // 120
-		MCEconomyAPI.addPurchaseFluid(MachineInit.fuelGas, 0.09); // 90
-		MCEconomyAPI.addPurchaseFluid(MachineInit.hydrogen, 0.08); // 80
-		MCEconomyAPI.addPurchaseFluid(MachineInit.ammonia, 0.2); // 200
-		MCEconomyAPI.addPurchaseFluid(MachineInit.nitricAcid, 0.25); // 250
-		MCEconomyAPI.addPurchaseFluid(MachineInit.sulfuricAcid, 0.05); // 50
-		MCEconomyAPI.addPurchaseFluid(MachineInit.nitrogen, 0.15); // 150
-		MCEconomyAPI.addPurchaseFluid(MachineInit.ethanol, 0.06); // 60
+		MCEconomyAPI.addPurchaseFluid(MainInit.fuelOil, 0.12); // 120
+		MCEconomyAPI.addPurchaseFluid(MainInit.fuelGas, 0.09); // 90
+		MCEconomyAPI.addPurchaseFluid(MainInit.hydrogen, 0.08); // 80
+		MCEconomyAPI.addPurchaseFluid(MainInit.ammonia, 0.2); // 200
+		MCEconomyAPI.addPurchaseFluid(MainInit.nitricAcid, 0.25); // 250
+		MCEconomyAPI.addPurchaseFluid(MainInit.sulfuricAcid, 0.05); // 50
+		MCEconomyAPI.addPurchaseFluid(MainInit.nitrogen, 0.15); // 150
+		MCEconomyAPI.addPurchaseFluid(MainInit.ethanol, 0.06); // 60
 
 		MCEconomyAPI.addPurchaseItem(new ItemStack(FoodInit.dropCream, 1, 0), 30);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(FoodInit.dropOil, 1, 0), 20);

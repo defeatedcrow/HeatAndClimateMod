@@ -2,8 +2,8 @@
     "parent": "block/block",
     "ambientocclusion": true,
     "textures": {
-        "particle": "dcs_climate:blocks/ores/oreblock_nickelsilver",
-        "base": "dcs_climate:blocks/ores/oreblock_nickelsilver"
+        "particle": "dcs_climate:blocks/ores/oreblock_sus",
+        "base": "dcs_climate:blocks/ores/oreblock_sus"
     },
     "elements": [
         {   "from": [ 6, 15, 6 ],
@@ -39,8 +39,8 @@
                 "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#base", "cullface": "east" }
             }
         },
-        {   "from": [ 7.5, 7.5, 9.5 ],
-            "to": [ 13, 8.5, 11.5 ],
+        {   "from": [ 7.5, 3, 9.5 ],
+            "to": [ 8.5, 8.5, 11.5 ],
             "faces": {
                 "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#base", "cullface": "down" },
                 "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#base", "cullface": "up" },

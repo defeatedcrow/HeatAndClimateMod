@@ -12,9 +12,8 @@ import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
@@ -109,7 +108,7 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (entity != null && entity instanceof EntityLivingBase && !world.isRemote) {
 			EntityLivingBase living = (EntityLivingBase) entity;
-			if (this.getFluid() != null && this.getFluid() == FoodInit.hotSpring) {
+			if (this.getFluid() != null && this.getFluid() == MainInit.hotSpring) {
 				Collection<PotionEffect> effs = living.getActivePotionEffects();
 				if (effs.isEmpty())
 					return;
@@ -132,7 +131,7 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() instanceof BlockLiquid) {
 			if (state.getMaterial() == Material.WATER) {
-				if (this.getFluid() == MachineInit.nitrogen)
+				if (this.getFluid() == MainInit.nitrogen)
 					return true;
 			}
 		} else if (state.getMaterial().isLiquid())
@@ -145,7 +144,7 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() instanceof BlockLiquid) {
 			if (state.getMaterial() == Material.WATER) {
-				if (this.getFluid() == MachineInit.nitrogen)
+				if (this.getFluid() == MainInit.nitrogen)
 					return true;
 			}
 		}
@@ -160,7 +159,7 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 		IBlockState state = world.getBlockState(pos);
 		if (state.getBlock() instanceof BlockLiquid) {
 			if (state.getMaterial() == Material.WATER) {
-				if (this.getFluid() == MachineInit.nitrogen) {
+				if (this.getFluid() == MainInit.nitrogen) {
 					world.setBlockState(pos, Blocks.ICE.getDefaultState(), 3);
 					return;
 				}

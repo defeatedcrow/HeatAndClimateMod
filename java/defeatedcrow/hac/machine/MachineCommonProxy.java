@@ -13,6 +13,7 @@ import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileDynamo;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFauset;
+import defeatedcrow.hac.machine.block.TileFauset_SUS;
 import defeatedcrow.hac.machine.block.TileFreezer;
 import defeatedcrow.hac.machine.block.TileGasBurner;
 import defeatedcrow.hac.machine.block.TileGearBox;
@@ -82,6 +83,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileRedBox.class, "dcs_te_redbox");
 		GameRegistry.registerTileEntity(TileFan.class, "dcs_te_fan");
 		GameRegistry.registerTileEntity(TileFauset.class, "dcs_te_fauset");
+		GameRegistry.registerTileEntity(TileFauset_SUS.class, "dcs_te_fauset_sus");
 		GameRegistry.registerTileEntity(TileIBC.class, "dcs_te_ibc");
 		GameRegistry.registerTileEntity(TileHeatExchanger.class, "dcs_te_heatexchanger");
 		GameRegistry.registerTileEntity(TileShaft_S_SUS.class, "dcs_te_shaft_s_sus");

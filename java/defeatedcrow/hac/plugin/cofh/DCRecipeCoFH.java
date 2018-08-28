@@ -1,6 +1,5 @@
 package defeatedcrow.hac.plugin.cofh;
 
-import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.ItemStack;
@@ -13,11 +12,11 @@ import net.minecraftforge.fml.common.event.FMLInterModComms;
 public class DCRecipeCoFH {
 
 	static void loadFuels() {
-		addCompressionFuel(MachineInit.fuelOil.getName(), 800000);
-		addCompressionFuel(MachineInit.fuelGas.getName(), 1000000);
-		addCompressionFuel(MachineInit.ethanol.getName(), 200000);
-		addCompressionFuel(FoodInit.blackLiquor.getName(), 100000);
-		addCompressionFuel(FoodInit.oil.getName(), 200000);
+		addCompressionFuel(MainInit.fuelOil.getName(), 800000);
+		addCompressionFuel(MainInit.fuelGas.getName(), 1000000);
+		addCompressionFuel(MainInit.ethanol.getName(), 200000);
+		addCompressionFuel(MainInit.blackLiquor.getName(), 100000);
+		addCompressionFuel(MainInit.oil.getName(), 200000);
 	}
 
 	static void loadRecipes() {
@@ -30,22 +29,22 @@ public class DCRecipeCoFH {
 		// refinary
 		if (DCPluginCoFH.naphtha != null && DCPluginCoFH.tree != null && DCPluginCoFH.tar != null &&
 				DCPluginCoFH.rogin != null) {
-			addRefineryRecipe(5000, new FluidStack(MachineInit.fuelOil, 200), new FluidStack(DCPluginCoFH.naphtha, 100),
+			addRefineryRecipe(5000, new FluidStack(MainInit.fuelOil, 200), new FluidStack(DCPluginCoFH.naphtha, 100),
 					DCPluginCoFH.tar, 70);
 
-			addRefineryRecipe(5000, new FluidStack(FoodInit.blackLiquor, 200), new FluidStack(DCPluginCoFH.tree, 100),
+			addRefineryRecipe(5000, new FluidStack(MainInit.blackLiquor, 200), new FluidStack(DCPluginCoFH.tree, 100),
 					DCPluginCoFH.tar, 70);
 
-			addRefineryRecipe(5000, new FluidStack(FoodInit.oil, 200), new FluidStack(DCPluginCoFH.naphtha, 50),
+			addRefineryRecipe(5000, new FluidStack(MainInit.oil, 200), new FluidStack(DCPluginCoFH.naphtha, 50),
 					new ItemStack(MachineInit.reagent, 1, 1), 70);
 		}
 
 		// pulvarizer
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 0), new ItemStack(MainInit.gems, 2, 3), new ItemStack(
-				MainInit.gems, 1, 6), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 0), new ItemStack(MainInit.gems, 2, 3),
+				new ItemStack(MainInit.gems, 1, 6), 10);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 2), new ItemStack(MainInit.gems, 2, 0), new ItemStack(
-				MainInit.gems, 1, 4), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 2), new ItemStack(MainInit.gems, 2, 0),
+				new ItemStack(MainInit.gems, 1, 4), 10);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 5), new ItemStack(MainInit.oreDust, 2, 7),
 				new ItemStack(MainInit.oreDust, 1, 9), 25);

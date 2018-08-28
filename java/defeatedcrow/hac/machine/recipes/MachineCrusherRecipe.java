@@ -33,26 +33,26 @@ public class MachineCrusherRecipe {
 				"cropRice");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(FoodInit.seeds, 1, 4),
-				new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, 0F, new FluidStack(FoodInit.tomatoJuice, 100), sus,
+				new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, 0F, new FluidStack(MainInit.tomatoJuice, 100), sus,
 				"cropCoffee");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, null, 0F,
-				new FluidStack(FoodInit.lemon, 250), sus, "cropLemon");
+				new FluidStack(MainInit.lemon, 250), sus, "cropLemon");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, null, 0F,
-				new FluidStack(FoodInit.oil, 400), sus, "cropOlive");
+				new FluidStack(MainInit.oil, 400), sus, "cropOlive");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, null, 0F,
-				new FluidStack(FoodInit.oil, 200), sus, "seedCotton");
+				new FluidStack(MainInit.oil, 200), sus, "seedCotton");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 4), null, 0F, null, 0F,
-				new FluidStack(FoodInit.oil, 200), sus, "cropSoybean");
+				new FluidStack(MainInit.oil, 200), sus, "cropSoybean");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, null, 0F,
-				new FluidStack(FoodInit.oil, 100), sus, "dustBlan");
+				new FluidStack(MainInit.oil, 100), sus, "dustBlan");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, null, 0F,
-				new FluidStack(FoodInit.oil, 50), sus, new ItemStack(Items.WHEAT_SEEDS, 1, 0));
+				new FluidStack(MainInit.oil, 50), sus, new ItemStack(Items.WHEAT_SEEDS, 1, 0));
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.SUGAR, 4, 0), new ItemStack(MainInit.foodDust, 1, 2),
 				0.5F, new ItemStack(MainInit.foodDust, 1, 1), 0.5F, null, sus, "sugarcane");
@@ -101,17 +101,17 @@ public class MachineCrusherRecipe {
 		ItemStack ti = new ItemStack(MachineInit.rotaryBlade, 1, 1);
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 0), new ItemStack(MainInit.gems, 1, 5),
-				0.1F, new ItemStack(MainInit.oreDust, 1, 4), 0.1F, new FluidStack(MachineInit.sulfuricAcid, 50), ti,
+				0.1F, new ItemStack(MainInit.oreDust, 1, 4), 0.1F, new FluidStack(MainInit.sulfuricAcid, 50), ti,
 				"oreCopper");
 
 		if (MainCoreConfig.lead) {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 1),
 					new ItemStack(MainInit.oreDust, 1, 13), 0.25F, new ItemStack(MainInit.oreDust, 1, 3), 0.1F,
-					new FluidStack(MachineInit.sulfuricAcid, 50), ti, "oreZinc");
+					new FluidStack(MainInit.sulfuricAcid, 50), ti, "oreZinc");
 		} else {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 1),
 					new ItemStack(MainInit.oreDust, 1, 5), 0.25F, new ItemStack(MainInit.oreDust, 1, 3), 0.1F,
-					new FluidStack(MachineInit.sulfuricAcid, 50), ti, "oreZinc");
+					new FluidStack(MainInit.sulfuricAcid, 50), ti, "oreZinc");
 		}
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 5),
@@ -137,8 +137,8 @@ public class MachineCrusherRecipe {
 				"oreGold");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 3),
-				new ItemStack(MainInit.oreDust, 1, 4), 0.25F, null, 0F, new FluidStack(MachineInit.sulfuricAcid, 50),
-				ti, "oreSilver");
+				new ItemStack(MainInit.oreDust, 1, 4), 0.25F, null, 0F, new FluidStack(MainInit.sulfuricAcid, 50), ti,
+				"oreSilver");
 
 		if (!OreDictionary.getOres("gemRuby").isEmpty()) {
 			ItemStack gem = OreDictionary.getOres("gemRuby").get(0);
@@ -174,7 +174,7 @@ public class MachineCrusherRecipe {
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 3, 10),
 				new ItemStack(Items.BLAZE_POWDER, 1, 0), 0.1F, new ItemStack(Items.GLOWSTONE_DUST, 1, 0), 0.05F,
-				new FluidStack(MachineInit.sulfuricAcid, 50), ti, "oreSulfur");
+				new FluidStack(MainInit.sulfuricAcid, 50), ti, "oreSulfur");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 8),
 				new ItemStack(MainInit.oreDust, 1, 10), 0.1F, new ItemStack(MainInit.gems, 1, 11), 0.03F, null, ti,

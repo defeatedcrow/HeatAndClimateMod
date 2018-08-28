@@ -2,7 +2,6 @@ package defeatedcrow.hac.food;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraftforge.fluids.Fluid;
 
 public class FoodInit {
 
@@ -66,31 +65,5 @@ public class FoodInit {
 	public static Block leavesMorus;
 	public static Block saplings;
 	public static Block logs;
-
-	public static Fluid oil;
-	public static Fluid greenTea;
-	public static Fluid blackTea;
-	public static Fluid coffee;
-	public static Fluid cream;
-	public static Fluid tomatoJuice;
-	public static Fluid blackLiquor;
-	public static Fluid hotSpring;
-	public static Fluid stock;
-	public static Fluid lemon;
-	public static Fluid mazai;
-	public static Fluid soyMilk;
-
-	public static Block oilBlock;
-	public static Block greenTeaBlock;
-	public static Block blackTeaBlock;
-	public static Block coffeeBlock;
-	public static Block creamBlock;
-	public static Block tomatoBlock;
-	public static Block blackLiquorBlock;
-	public static Block hotSpringBlock;
-	public static Block stockBlock;
-	public static Block lemonBlock;
-	public static Block mazaiBlock;
-	public static Block soyMilkBlock;
 
 }

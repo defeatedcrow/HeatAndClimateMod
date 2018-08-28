@@ -1,8 +1,7 @@
 package defeatedcrow.hac.plugin.tan;
 
 import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.plugin.DrinkPotionType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -67,37 +66,37 @@ public class DCThirstHelper {
 			if (f == null) {
 				return RAW;
 			} else {
-				if (f == FoodInit.blackTea)
+				if (f == MainInit.blackTea)
 					return TEA;
-				if (f == FoodInit.greenTea)
+				if (f == MainInit.greenTea)
 					return TEA;
-				if (f == FoodInit.coffee)
+				if (f == MainInit.coffee)
 					return TEA;
-				if (f == FoodInit.lemon)
+				if (f == MainInit.lemon)
 					return TEA;
-				if (f == FoodInit.stock)
+				if (f == MainInit.stock)
 					return TEA;
-				if (f == FoodInit.tomatoJuice)
+				if (f == MainInit.tomatoJuice)
 					return TEA;
-				if (f == FoodInit.hotSpring)
+				if (f == MainInit.hotSpring)
 					return RAW;
-				if (f == FoodInit.cream)
+				if (f == MainInit.cream)
 					return RAW;
-				if (f == FoodInit.mazai)
+				if (f == MainInit.mazai)
 					return ETHANOL;
-				if (f == FoodInit.blackLiquor)
+				if (f == MainInit.blackLiquor)
 					return RISK;
-				if (f == FoodInit.oil)
+				if (f == MainInit.oil)
 					return RAW;
-				if (f == MachineInit.ethanol)
+				if (f == MainInit.ethanol)
 					return ETHANOL;
-				if (f == MachineInit.ammonia)
+				if (f == MainInit.ammonia)
 					return RISK;
-				if (f == MachineInit.nitricAcid)
+				if (f == MainInit.nitricAcid)
 					return RISK;
-				if (f == MachineInit.sulfuricAcid)
+				if (f == MainInit.sulfuricAcid)
 					return RISK;
-				if (f == MachineInit.nitrogen)
+				if (f == MainInit.nitrogen)
 					return RISK;
 
 				Potion p = DrinkPotionType.getPotion(f);

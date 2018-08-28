@@ -1,9 +1,9 @@
 package defeatedcrow.hac.food.client;
 
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
-import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.client.model.ModelTumbler;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -36,7 +36,7 @@ public class TumblerRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 			renderFluid(f, x, y, z, entity.rotationYaw, partialTicks, 0.98F, false);
 		}
 		if (entity.getMilk() != 0) {
-			renderFluid(FoodInit.cream, x, y, z, entity.rotationYaw, partialTicks, 0.5F, true);
+			renderFluid(MainInit.cream, x, y, z, entity.rotationYaw, partialTicks, 0.5F, true);
 		}
 		super.doRender(entity, x, y + 0.125D, z, yaw, partialTicks);
 	}
@@ -58,9 +58,7 @@ public class TumblerRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 		TextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(fluid.getStill().toString());
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-				GlStateManager.DestFactor.ZERO);
+		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		GlStateManager.translate((float) x, (float) y, (float) z);
 		float f2 = 0.625F;
 		float f = 0.156F;

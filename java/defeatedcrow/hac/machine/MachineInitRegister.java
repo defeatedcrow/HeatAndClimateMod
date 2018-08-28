@@ -1,7 +1,5 @@
 package defeatedcrow.hac.machine;
 
-import defeatedcrow.hac.api.climate.ClimateAPI;
-import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.machine.block.BlockAdapterFluidPanel;
@@ -15,6 +13,7 @@ import defeatedcrow.hac.machine.block.BlockDieselEngine;
 import defeatedcrow.hac.machine.block.BlockDynamo;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFauset;
+import defeatedcrow.hac.machine.block.BlockFauset_SUS;
 import defeatedcrow.hac.machine.block.BlockFreezer;
 import defeatedcrow.hac.machine.block.BlockGasBurner;
 import defeatedcrow.hac.machine.block.BlockGearBox;
@@ -84,13 +83,9 @@ import defeatedcrow.hac.machine.item.ItemTorqueChecker;
 import defeatedcrow.hac.machine.item.plating.ItemPlatingChrome;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainMaterialRegister;
-import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class MachineInitRegister {
@@ -187,8 +182,7 @@ public class MachineInitRegister {
 
 		MachineInit.hopperFilterG = new BlockHopperFilterG(ClimateCore.PACKAGE_BASE + "_device_hopper_filter_gold");
 		registerTierBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_BASE + "_device_hopper_filter_gold", 2);
-		ClimateMain.proxy.regTEJson(MachineInit.hopperFilterG, "dcs_climate", "dcs_device_hopper_filter_gold",
-				"machine");
+		ClimateMain.proxy.regTEJson(MachineInit.hopperFilterG, "dcs_climate", "dcs_device_hopper_filter_gold", "machine");
 
 		MachineInit.hopperSilver = new BlockHopperSilver(ClimateCore.PACKAGE_BASE + "_device_hopper_silver");
 		registerTierBlock(MachineInit.hopperSilver, ClimateCore.PACKAGE_BASE + "_device_hopper_silver", 2);
@@ -196,6 +190,9 @@ public class MachineInitRegister {
 
 		MachineInit.fauset = new BlockFauset(ClimateCore.PACKAGE_BASE + "_device_fauset");
 		registerTierBlock(MachineInit.fauset, ClimateCore.PACKAGE_BASE + "_device_fauset", 2);
+
+		MachineInit.fauset_sus = new BlockFauset_SUS(ClimateCore.PACKAGE_BASE + "_device_fauset_sus");
+		registerTierBlock(MachineInit.fauset_sus, ClimateCore.PACKAGE_BASE + "_device_fauset_sus", 3);
 
 		MachineInit.IBC = new BlockIBC(ClimateCore.PACKAGE_BASE + "_device_ibc");
 		MachineInit.IBC.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_ibc");
@@ -230,13 +227,13 @@ public class MachineInitRegister {
 		registerTierBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_BASE + "_device_gearbox_sus", 2);
 
 		MachineInit.fuelCont = new BlockFuelCont(ClimateCore.PACKAGE_BASE + "_cont_fuel");
-		MainMaterialRegister.registerBlock(MachineInit.fuelCont, ClimateCore.PACKAGE_BASE + "_cont_fuel",
-				ClimateMain.MOD_ID, new int[] {
+		MainMaterialRegister.registerBlock(MachineInit.fuelCont, ClimateCore.PACKAGE_BASE +
+				"_cont_fuel", ClimateMain.MOD_ID, new int[] {
 						54000,
 						128000,
 						0,
 						0
-				});
+		});
 		ClimateMain.proxy.addSidedBlock(MachineInit.fuelCont, "cont_fuel", 3);
 
 		MachineInit.boilerTurbine = new BlockBoilerTurbine(ClimateCore.PACKAGE_BASE + "_device_boiler_turbine");
@@ -336,30 +333,30 @@ public class MachineInitRegister {
 			// entity
 			MachineInit.motorMinecart = new ItemMinecartMotor().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 					"_motor_minecart");
-			DCMaterialReg.registerItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_BASE + "_motor_minecart",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_BASE +
+					"_motor_minecart", ClimateMain.MOD_ID);
 
 			MachineInit.scooter = new ItemScooter().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_scooter");
-			DCMaterialReg.registerItem(MachineInit.scooter, ClimateCore.PACKAGE_BASE + "_motor_scooter",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.scooter, ClimateCore.PACKAGE_BASE +
+					"_motor_scooter", ClimateMain.MOD_ID);
 
 			MachineInit.magneticHover = new ItemMagneticHover().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 					"_magnetic_hover");
-			DCMaterialReg.registerItem(MachineInit.magneticHover, ClimateCore.PACKAGE_BASE + "_magnetic_hover",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.magneticHover, ClimateCore.PACKAGE_BASE +
+					"_magnetic_hover", ClimateMain.MOD_ID);
 		}
 	}
 
 	static void loadItems() {
 		MachineInit.machimeMaterials = new ItemMachineMaterial(5).setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 				"_mechanical");
-		DCMaterialReg.registerItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_BASE + "_mechanical",
-				ClimateMain.MOD_ID);
+		DCMaterialReg.registerItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_BASE +
+				"_mechanical", ClimateMain.MOD_ID);
 
 		MachineInit.torqueChecker = new ItemTorqueChecker().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 				"_torque_checker");
-		DCMaterialReg.registerItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_BASE + "_torque_checker",
-				ClimateMain.MOD_ID);
+		DCMaterialReg.registerItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_BASE +
+				"_torque_checker", ClimateMain.MOD_ID);
 
 		MachineInit.reagent = new ItemReagents().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_reagent");
 		DCMaterialReg.registerItem(MachineInit.reagent, ClimateCore.PACKAGE_BASE + "_reagent", ClimateMain.MOD_ID);
@@ -371,42 +368,42 @@ public class MachineInitRegister {
 
 			MachineInit.moldAluminium = new ItemAluminiumMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 					"_aluminium_mold");
-			DCMaterialReg.registerItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_BASE + "_aluminium_mold",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_BASE +
+					"_aluminium_mold", ClimateMain.MOD_ID);
 
 			MachineInit.moldAlloy = new ItemAlloyMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_alloy_mold");
-			DCMaterialReg.registerItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_BASE + "_alloy_mold",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_BASE +
+					"_alloy_mold", ClimateMain.MOD_ID);
 
 			MachineInit.synthetic = new ItemSynthetic().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_synthetic");
-			DCMaterialReg.registerItem(MachineInit.synthetic, ClimateCore.PACKAGE_BASE + "_synthetic",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.synthetic, ClimateCore.PACKAGE_BASE +
+					"_synthetic", ClimateMain.MOD_ID);
 
 			MachineInit.catalyst = new ItemCatalyst().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_catalyst");
-			DCMaterialReg.registerItem(MachineInit.catalyst, ClimateCore.PACKAGE_BASE + "_catalyst",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.catalyst, ClimateCore.PACKAGE_BASE +
+					"_catalyst", ClimateMain.MOD_ID);
 
 			MachineInit.gemcore = new ItemGemCore().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemcore");
 			DCMaterialReg.registerItem(MachineInit.gemcore, ClimateCore.PACKAGE_BASE + "_gemcore", ClimateMain.MOD_ID);
 
 			MachineInit.adapterCard = new ItemAdapterCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 					"_adapter_card");
-			DCMaterialReg.registerItem(MachineInit.adapterCard, ClimateCore.PACKAGE_BASE + "_adapter_card",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.adapterCard, ClimateCore.PACKAGE_BASE +
+					"_adapter_card", ClimateMain.MOD_ID);
 
 			MachineInit.dynamite = new ItemDynamite().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dynamite");
-			DCMaterialReg.registerItem(MachineInit.dynamite, ClimateCore.PACKAGE_BASE + "_dynamite",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.dynamite, ClimateCore.PACKAGE_BASE +
+					"_dynamite", ClimateMain.MOD_ID);
 
 			MachineInit.platingChrome = new ItemPlatingChrome().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 					"_coating_tool");
-			DCMaterialReg.registerItem(MachineInit.platingChrome, ClimateCore.PACKAGE_BASE + "_coating_tool",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.platingChrome, ClimateCore.PACKAGE_BASE +
+					"_coating_tool", ClimateMain.MOD_ID);
 
 			MachineInit.rotaryBlade = new ItemRotaryBlade().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
 					"_rotaryblade");
-			DCMaterialReg.registerItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_BASE + "_rotaryblade",
-					ClimateMain.MOD_ID);
+			DCMaterialReg.registerItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_BASE +
+					"_rotaryblade", ClimateMain.MOD_ID);
 		}
 	}
 
@@ -451,6 +448,7 @@ public class MachineInitRegister {
 		MachineInit.hopperSilver.setCreativeTab(ClimateMain.machine);
 		MachineInit.conveyor.setCreativeTab(ClimateMain.machine);
 		MachineInit.fauset.setCreativeTab(ClimateMain.machine);
+		MachineInit.fauset_sus.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
 
@@ -504,89 +502,6 @@ public class MachineInitRegister {
 
 	static void loadFluids() {
 
-		MachineInit.hydrogen = new Fluid("dcs.hydrogen", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/hydrogen_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/hydrogen_still")).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + ".hydrogen").setDensity(-1000).setViscosity(300).setGaseous(true);
-		FluidRegistry.registerFluid(MachineInit.hydrogen);
-		MachineInit.hydrogenBlock = new DCFluidBlockBase(MachineInit.hydrogen, "hydrogen_still").setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen");
-		DCMaterialReg.registerBlock(MachineInit.hydrogenBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen",
-				ClimateMain.MOD_ID);
-		MachineInit.hydrogen.setBlock(MachineInit.hydrogenBlock);
-
-		MachineInit.ammonia = new Fluid("dcs.ammonia", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/ammonia_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/ammonia_still")).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + ".ammonia").setDensity(-1000).setViscosity(300).setGaseous(true);
-		FluidRegistry.registerFluid(MachineInit.ammonia);
-		MachineInit.ammoniaBlock = new DCFluidBlockBase(MachineInit.ammonia, "ammonia_still").setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia");
-		DCMaterialReg.registerBlock(MachineInit.ammoniaBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia",
-				ClimateMain.MOD_ID);
-		MachineInit.ammonia.setBlock(MachineInit.ammoniaBlock);
-
-		MachineInit.nitricAcid = new Fluid("dcs.nitric_acid", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/nitric_acid_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/nitric_acid_still")).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + ".nitric_acid").setDensity(1200).setViscosity(1200);
-		FluidRegistry.registerFluid(MachineInit.nitricAcid);
-		MachineInit.nitricAcidBlock = new DCFluidBlockBase(MachineInit.nitricAcid, "nitric_acid_still").setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid");
-		DCMaterialReg.registerBlock(MachineInit.nitricAcidBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid",
-				ClimateMain.MOD_ID);
-		MachineInit.nitricAcid.setBlock(MachineInit.nitricAcidBlock);
-
-		MachineInit.sulfuricAcid = new Fluid("dcs.sulfuric_acid", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/sulfuric_acid_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/sulfuric_acid_still")).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + ".sulfuric_acid").setDensity(1200).setViscosity(1200);
-		FluidRegistry.registerFluid(MachineInit.sulfuricAcid);
-		MachineInit.sulfuricAcidBlock = new DCFluidBlockBase(MachineInit.sulfuricAcid, "sulfuric_acid_still").setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid");
-		DCMaterialReg.registerBlock(MachineInit.sulfuricAcidBlock, ClimateCore.PACKAGE_BASE +
-				"_fluidblock_sulfuric_acid", ClimateMain.MOD_ID);
-		MachineInit.sulfuricAcid.setBlock(MachineInit.sulfuricAcidBlock);
-
-		MachineInit.fuelGas = new Fluid("dcs.fuel_gas", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/fuel_gas_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/fuel_gas_still")).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + ".fuel_gas").setDensity(-500).setViscosity(300).setGaseous(true);
-		FluidRegistry.registerFluid(MachineInit.fuelGas);
-		MachineInit.fuelGasBlock = new DCFluidBlockBase(MachineInit.fuelGas, "fuel_gas_still").setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas");
-		DCMaterialReg.registerBlock(MachineInit.fuelGasBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas",
-				ClimateMain.MOD_ID);
-		MachineInit.fuelGas.setBlock(MachineInit.fuelGasBlock);
-
-		MachineInit.fuelOil = new Fluid("dcs.fuel_oil", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/fuel_oil_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/fuel_oil_still")).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + ".fuel_oil").setDensity(800).setViscosity(1500);
-		FluidRegistry.registerFluid(MachineInit.fuelOil);
-		MachineInit.fuelOilBlock = new DCFluidBlockBase(MachineInit.fuelOil, "fuel_oil_still").setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil");
-		DCMaterialReg.registerBlock(MachineInit.fuelOilBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil",
-				ClimateMain.MOD_ID);
-		MachineInit.fuelOil.setBlock(MachineInit.fuelOilBlock);
-
-		MachineInit.nitrogen = new Fluid("dcs.nitrogen", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/nitrogen_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/nitrogen_still")).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + ".nitrogen").setDensity(1100).setViscosity(1100).setTemperature(77);
-		FluidRegistry.registerFluid(MachineInit.nitrogen);
-		MachineInit.nitrogenBlock = new DCFluidBlockBase(MachineInit.nitrogen, "nitrogen_still").setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen");
-		DCMaterialReg.registerBlock(MachineInit.nitrogenBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen",
-				ClimateMain.MOD_ID);
-		MachineInit.nitrogen.setBlock(MachineInit.nitrogenBlock);
-
-		MachineInit.ethanol = new Fluid("dcs.ethanol", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/ethanol_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/ethanol_still")).setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + ".ethanol");
-		FluidRegistry.registerFluid(MachineInit.ethanol);
-		MachineInit.ethanolBlock = new DCFluidBlockBase(MachineInit.ethanol, "ethanol_still").setUnlocalizedName(
-				ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol");
-		DCMaterialReg.registerBlock(MachineInit.ethanolBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol",
-				ClimateMain.MOD_ID);
-		MachineInit.ethanol.setBlock(MachineInit.ethanolBlock);
-
-		// bucket
-		FluidRegistry.addBucketForFluid(MachineInit.hydrogen);
-		FluidRegistry.addBucketForFluid(MachineInit.ammonia);
-		FluidRegistry.addBucketForFluid(MachineInit.nitricAcid);
-		FluidRegistry.addBucketForFluid(MachineInit.sulfuricAcid);
-		FluidRegistry.addBucketForFluid(MachineInit.fuelGas);
-		FluidRegistry.addBucketForFluid(MachineInit.fuelOil);
-		FluidRegistry.addBucketForFluid(MachineInit.nitrogen);
-		FluidRegistry.addBucketForFluid(MachineInit.ethanol);
-
-		ClimateAPI.registerBlock.registerHeatBlock(MachineInit.nitrogenBlock, 32767, DCHeatTier.CRYOGENIC);
 	}
 
 	public static void registerTierBlock(Block block, String name, int i) {

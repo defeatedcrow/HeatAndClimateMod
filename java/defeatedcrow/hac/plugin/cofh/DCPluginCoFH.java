@@ -102,54 +102,53 @@ public class DCPluginCoFH {
 	static void loadDCRecipes() {
 		if (tar != null && coal != null && crude != null) {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 0), null,
-					new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0.5F, new ItemStack(
+					new FluidStack(MainInit.fuelOil, 100), null, DCHeatTier.KILN, 0.5F, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(coal, 200), new FluidStack(FluidRegistry.WATER,
 									100), new Object[] {}), DCHeatTier.KILN);
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 7), null,
-					new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0.5F, new ItemStack(
+					new FluidStack(MainInit.fuelOil, 100), null, DCHeatTier.KILN, 0.5F, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 100), null, new Object[] {
 									tar
 					}), DCHeatTier.KILN);
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 0), null,
-					new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0, new ItemStack(
-							MachineInit.catalyst, 1, 0), new FluidStack(crude, 200), null, new Object[] {}),
-					DCHeatTier.KILN);
+					new FluidStack(MainInit.fuelOil, 100), null, DCHeatTier.KILN, 0, new ItemStack(MachineInit.catalyst,
+							1, 0), new FluidStack(crude, 200), null, new Object[] {}), DCHeatTier.KILN);
 		}
 
 		if (tree != null && resin != null && rogin != null) {
-			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(rogin, null, new FluidStack(
-					MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0.5F, new ItemStack(MachineInit.catalyst, 1, 0),
-					new FluidStack(resin, 200), null, new Object[] {}), DCHeatTier.KILN);
+			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(rogin, null, new FluidStack(MainInit.fuelOil,
+					100), null, DCHeatTier.KILN, 0.5F, new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(resin,
+							200), null, new Object[] {}), DCHeatTier.KILN);
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MachineInit.reagent, 1, 1), null,
-					new FluidStack(MachineInit.fuelOil, 100), null, DCHeatTier.KILN, 0, new ItemStack(
-							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 200), null, new Object[] {
+					new FluidStack(MainInit.fuelOil, 100), null, DCHeatTier.KILN, 0, new ItemStack(MachineInit.catalyst,
+							1, 0), new FluidStack(FluidRegistry.WATER, 200), null, new Object[] {
 									rogin
 					}), DCHeatTier.KILN);
 		}
 
 		if (naphtha != null && refined != null) {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MainInit.miscDust, 1, 7), null,
-					new FluidStack(MachineInit.fuelGas, 400), null, DCHeatTier.SMELTING, 0, new ItemStack(
+					new FluidStack(MainInit.fuelGas, 400), null, DCHeatTier.SMELTING, 0, new ItemStack(
 							MachineInit.catalyst, 1, 3), new FluidStack(naphtha, 200), new FluidStack(
 									FluidRegistry.WATER, 200), new Object[] {}), DCHeatTier.SMELTING);
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(new ItemStack(MainInit.miscDust, 1, 7), null,
-					new FluidStack(MachineInit.fuelGas, 800), null, DCHeatTier.SMELTING, 0, new ItemStack(
-							MachineInit.catalyst, 1, 3), new FluidStack(naphtha, 200), new FluidStack(
-									MachineInit.hydrogen, 200), new Object[] {}), DCHeatTier.SMELTING);
+					new FluidStack(MainInit.fuelGas, 800), null, DCHeatTier.SMELTING, 0, new ItemStack(
+							MachineInit.catalyst, 1, 3), new FluidStack(naphtha, 200), new FluidStack(MainInit.hydrogen,
+									200), new Object[] {}), DCHeatTier.SMELTING);
 
-			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(null, null, new FluidStack(MachineInit.fuelGas,
+			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(null, null, new FluidStack(MainInit.fuelGas,
 					400), null, DCHeatTier.SMELTING, 0, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
-							refined, 200), new FluidStack(FluidRegistry.WATER, 200), new Object[] {}),
-					DCHeatTier.SMELTING);
+							refined, 200), new FluidStack(FluidRegistry.WATER, 200),
+					new Object[] {}), DCHeatTier.SMELTING);
 
-			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(null, null, new FluidStack(MachineInit.fuelGas,
+			RecipeAPI.registerReactorRecipes.addRecipe(new ReactorRecipe(null, null, new FluidStack(MainInit.fuelGas,
 					800), null, DCHeatTier.SMELTING, 0, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
-							refined, 200), new FluidStack(MachineInit.hydrogen, 200), new Object[] {}),
-					DCHeatTier.SMELTING);
+							refined, 200), new FluidStack(MainInit.hydrogen, 200),
+					new Object[] {}), DCHeatTier.SMELTING);
 		}
 
 	}

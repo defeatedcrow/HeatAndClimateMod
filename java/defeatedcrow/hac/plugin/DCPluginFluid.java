@@ -6,8 +6,6 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.block.Block;
@@ -262,14 +260,14 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("dcs.ethanol", 60);
 
 		// dic
-		FluidDictionaryDC.registerFluidDic(MachineInit.hydrogen, "hydrogen");
-		FluidDictionaryDC.registerFluidDic(MachineInit.nitricAcid, "nitricacid");
-		FluidDictionaryDC.registerFluidDic(MachineInit.sulfuricAcid, "sulfuricacid");
-		FluidDictionaryDC.registerFluidDic(MachineInit.ammonia, "ammonia");
-		FluidDictionaryDC.registerFluidDic(MachineInit.fuelOil, "fuel_oil");
-		FluidDictionaryDC.registerFluidDic(FoodInit.oil, "plant_oil");
-		FluidDictionaryDC.registerFluidDic(MachineInit.nitrogen, "nitrogen");
-		FluidDictionaryDC.registerFluidDic(MachineInit.ethanol, "ethanol");
+		FluidDictionaryDC.registerFluidDic(MainInit.hydrogen, "hydrogen");
+		FluidDictionaryDC.registerFluidDic(MainInit.nitricAcid, "nitricacid");
+		FluidDictionaryDC.registerFluidDic(MainInit.sulfuricAcid, "sulfuricacid");
+		FluidDictionaryDC.registerFluidDic(MainInit.ammonia, "ammonia");
+		FluidDictionaryDC.registerFluidDic(MainInit.fuelOil, "fuel_oil");
+		FluidDictionaryDC.registerFluidDic(MainInit.oil, "plant_oil");
+		FluidDictionaryDC.registerFluidDic(MainInit.nitrogen, "nitrogen");
+		FluidDictionaryDC.registerFluidDic(MainInit.ethanol, "ethanol");
 	}
 
 	public static void registerPotion(Fluid f, Potion p) {

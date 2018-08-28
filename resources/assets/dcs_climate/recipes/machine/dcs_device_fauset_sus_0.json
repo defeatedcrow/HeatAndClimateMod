@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " Z ",
+  "XYX",
+  "X  "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSUS"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_device_fauset",
+   "data": 0
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "bucketWater"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_fauset_sus",
+  "count": 1,
+  "data": 0
+ }
+}

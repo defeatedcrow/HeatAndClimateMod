@@ -911,6 +911,7 @@ tile.dcs_device_chest_village_0.name=村人のチェスト
 tile.dcs_device_sink_half_0.name=ハーフ流し台
 tile.dcs_device_sink_full_0.name=流し台
 tile.dcs_device_fauset_0.name=蛇口
+tile.dcs_device_fauset_sus_0.name=無限水源蛇口
 tile.dcs_device_ibc_0.name=IBCタンク
 tile.dcs_device_heat_exchanger_0.name=熱交換器
 tile.dcs_device_fuelstove_0.name=液体燃料コンロ

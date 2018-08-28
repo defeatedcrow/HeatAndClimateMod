@@ -10,8 +10,8 @@ import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.BlockLiquid;
@@ -85,8 +85,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			}
 
 			if (flag) {
-				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, FluidIDRegisterDC.getID(
-						inputT.getFluidType()), inputT.getFluidAmount()));
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos,
+						FluidIDRegisterDC.getID(inputT.getFluidType()), inputT.getFluidAmount()));
 			}
 		} else {
 			cooldown--;
@@ -107,8 +107,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 		if (face != null) {
 			TileEntity tile = world.getTileEntity(pos.offset(face));
 			if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite())) {
-				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
-						face.getOpposite());
+				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite());
 				if (target != null) {
 					boolean b = false;
 					ItemStack item = inv.getStackInSlot(1);
@@ -214,14 +213,14 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			boolean b = true;
 			if (milk == null) {
 				b = false;
-				milk = FoodInit.cream;
+				milk = MainInit.cream;
 			}
 			if (inputT.isEmpty() || inputT.getFluidType() == milk) {
 				FluidStack get = null;
 				if (b) {
 					get = new FluidStack(milk, 50);
 				} else {
-					get = new FluidStack(FoodInit.cream, 10);
+					get = new FluidStack(MainInit.cream, 10);
 				}
 				boolean flag = false;
 				if (get != null) {
@@ -336,8 +335,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 					fill = dummy.drain(rem, true);
 					ret = dummy.getContainer();
 
-					if (fill != null && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv.getStackInSlot(
-							slot2)) > 0)) {
+					if (fill != null && (DCUtil.isEmpty(ret) ||
+							this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}

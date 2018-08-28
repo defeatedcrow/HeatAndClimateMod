@@ -2,7 +2,7 @@ package defeatedcrow.hac.main.worldgen;
 
 import java.util.Random;
 
-import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -44,18 +44,18 @@ public class MazaiLakeGen implements IWorldGenerator {
 							if (rand.nextBoolean()) {
 								world.setBlockState(pos.add(x, 0, z), Blocks.OBSIDIAN.getDefaultState(), 2);
 							} else {
-								world.setBlockState(pos.add(x, 0, z), FoodInit.mazaiBlock.getDefaultState(), 2);
+								world.setBlockState(pos.add(x, 0, z), MainInit.mazaiBlock.getDefaultState(), 2);
 								world.setBlockState(pos.add(x, -1, z), Blocks.OBSIDIAN.getDefaultState(), 2);
 							}
 						} else {
 							world.setBlockState(pos.add(x, 1, z), Blocks.AIR.getDefaultState(), 2);
 							world.setBlockState(pos.add(x, 2, z), Blocks.AIR.getDefaultState(), 2);
-							world.setBlockState(pos.add(x, 0, z), FoodInit.mazaiBlock.getDefaultState(), 2);
+							world.setBlockState(pos.add(x, 0, z), MainInit.mazaiBlock.getDefaultState(), 2);
 							if (rand.nextBoolean()) {
 								world.setBlockState(pos.add(x, -1, z), Blocks.OBSIDIAN.getDefaultState(), 2);
 								world.setBlockState(pos.add(x, 3, z), Blocks.AIR.getDefaultState(), 2);
 							} else {
-								world.setBlockState(pos.add(x, -1, z), FoodInit.mazaiBlock.getDefaultState(), 2);
+								world.setBlockState(pos.add(x, -1, z), MainInit.mazaiBlock.getDefaultState(), 2);
 								world.setBlockState(pos.add(x, -2, z), Blocks.OBSIDIAN.getDefaultState(), 2);
 							}
 						}

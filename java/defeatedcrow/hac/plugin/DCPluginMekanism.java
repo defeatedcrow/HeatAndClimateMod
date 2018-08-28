@@ -28,15 +28,14 @@ public class DCPluginMekanism {
 		Fluid e = FluidRegistry.getFluid("liquidethene");
 		if (e != null) {
 			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0F, new FluidStack(e, 1000), null, DCHeatTier.KILN,
-					new ItemStack(MachineInit.catalyst, 1, 1), new FluidStack(MachineInit.ethanol, 1000),
-					new FluidStack(MachineInit.sulfuricAcid, 500), new Object[] {});
+					new ItemStack(MachineInit.catalyst, 1, 1), new FluidStack(MainInit.ethanol, 1000),
+					new FluidStack(MainInit.sulfuricAcid, 500), new Object[] {});
 		}
 	}
 
 	public static void sendIMC() {
 		Item bio = Item.REGISTRY.getObject(new ResourceLocation("mekanism", "biofuel"));
-		if (bio != null
-				&& ModuleConfig.food) {
+		if (bio != null && ModuleConfig.food) {
 			NBTTagCompound crop0 = new NBTTagCompound();
 			crop0.setTag("input", new ItemStack(FoodInit.crops, 1, 0).writeToNBT(new NBTTagCompound()));
 			crop0.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
@@ -178,36 +177,36 @@ public class DCPluginMekanism {
 
 		NBTTagCompound ore4_zinc = new NBTTagCompound();
 		ore4_zinc.setTag("input", new ItemStack(MainInit.ores, 1, 8).writeToNBT(new NBTTagCompound()));
-		ore4_zinc.setTag("gasType",
-				new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(new NBTTagCompound()));
+		ore4_zinc.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(
+				new NBTTagCompound()));
 		ore4_zinc.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 1).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("Mekanism", "ChemicalInjectionChamberRecipe", ore4_zinc);
 
 		NBTTagCompound ore4_nickel = new NBTTagCompound();
 		ore4_nickel.setTag("input", new ItemStack(MainInit.ores, 1, 7).writeToNBT(new NBTTagCompound()));
-		ore4_nickel.setTag("gasType",
-				new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(new NBTTagCompound()));
+		ore4_nickel.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(
+				new NBTTagCompound()));
 		ore4_nickel.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 5).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("Mekanism", "ChemicalInjectionChamberRecipe", ore4_nickel);
 
 		NBTTagCompound ore4_nickel2 = new NBTTagCompound();
 		ore4_nickel2.setTag("input", new ItemStack(MainInit.ores_2, 1, 8).writeToNBT(new NBTTagCompound()));
-		ore4_nickel2.setTag("gasType",
-				new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(new NBTTagCompound()));
+		ore4_nickel2.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(
+				new NBTTagCompound()));
 		ore4_nickel2.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 5).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("Mekanism", "ChemicalInjectionChamberRecipe", ore4_nickel2);
 
 		NBTTagCompound crystal_zinc = new NBTTagCompound();
 		crystal_zinc.setTag("input", new ItemStack(MainInit.metalMaterials, 1, 3).writeToNBT(new NBTTagCompound()));
-		crystal_zinc.setTag("gasType",
-				new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(new NBTTagCompound()));
+		crystal_zinc.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(
+				new NBTTagCompound()));
 		crystal_zinc.setTag("output", new ItemStack(MainInit.metalMaterials, 1, 1).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("Mekanism", "ChemicalInjectionChamberRecipe", crystal_zinc);
 
 		NBTTagCompound crystal_nickel = new NBTTagCompound();
 		crystal_nickel.setTag("input", new ItemStack(MainInit.metalMaterials, 1, 7).writeToNBT(new NBTTagCompound()));
-		crystal_nickel.setTag("gasType",
-				new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(new NBTTagCompound()));
+		crystal_nickel.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000).write(
+				new NBTTagCompound()));
 		crystal_nickel.setTag("output", new ItemStack(MainInit.metalMaterials, 1, 5).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("Mekanism", "ChemicalInjectionChamberRecipe", crystal_nickel);
 

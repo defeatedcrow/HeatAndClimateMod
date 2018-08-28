@@ -41,43 +41,48 @@ public class EntityProjBarrier extends EntityMobBarrier {
 
 		// 接触判定
 		if (!world.isRemote) {
-			List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().grow(
-					1.0D));
+			List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().grow(1.0D));
 			if (list != null && !list.isEmpty()) {
 				for (int i = 0; i < list.size(); i++) {
 					Entity entity = list.get(i);
 					if (entity != null) {
-						if (entity instanceof IProjectile) {
-							Entity shooter = null;
-							if (entity instanceof EntityBulletDC) {
-								EntityBulletDC arrow = (EntityBulletDC) entity;
-								if (arrow.shootingEntity != null) {
-									shooter = arrow.shootingEntity;
-								}
-							} else if (entity instanceof EntityArrow) {
-								EntityArrow arrow = (EntityArrow) entity;
-								if (arrow.shootingEntity != null) {
-									shooter = arrow.shootingEntity;
-								}
-							} else if (entity instanceof EntityThrowable) {
-								EntityThrowable arrow = (EntityThrowable) entity;
-								if (arrow.getThrower() != null) {
-									shooter = arrow.getThrower();
-								}
-							} else if (entity instanceof EntityFireball) {
-								EntityFireball arrow = (EntityFireball) entity;
-								if (arrow.shootingEntity != null) {
-									shooter = arrow.shootingEntity;
-								}
+						boolean flag = false;
+						Entity shooter = null;
+						if (entity instanceof EntityBulletDC) {
+							EntityBulletDC arrow = (EntityBulletDC) entity;
+							if (arrow.shootingEntity != null) {
+								shooter = arrow.shootingEntity;
 							}
+							flag = true;
+						} else if (entity instanceof EntityArrow) {
+							EntityArrow arrow = (EntityArrow) entity;
+							if (arrow.shootingEntity != null) {
+								shooter = arrow.shootingEntity;
+							}
+							flag = true;
+						} else if (entity instanceof EntityThrowable) {
+							EntityThrowable arrow = (EntityThrowable) entity;
+							if (arrow.getThrower() != null) {
+								shooter = arrow.getThrower();
+							}
+							flag = true;
+						} else if (entity instanceof EntityFireball) {
+							EntityFireball arrow = (EntityFireball) entity;
+							if (arrow.shootingEntity != null) {
+								shooter = arrow.shootingEntity;
+							}
+							flag = true;
+						} else if (entity instanceof IProjectile) {
+							flag = true;
+						}
 
-							if (shooter instanceof EntityPlayer || shooter instanceof EntityTameable) {
-
-							} else {
+						if (flag) {
+							if (!(shooter instanceof EntityPlayer) && !(shooter instanceof EntityTameable)) {
 								entity.setDead();
 							}
 						}
 					}
+
 				}
 			}
 		}

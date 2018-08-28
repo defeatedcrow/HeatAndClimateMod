@@ -2,8 +2,8 @@
     "parent": "block/block",
     "ambientocclusion": true,
     "textures": {
-        "particle": "dcs_climate:blocks/ores/oreblock_sus",
-        "base": "dcs_climate:blocks/ores/oreblock_sus"
+        "particle": "dcs_climate:blocks/ores/oreblock_nickelsilver",
+        "base": "dcs_climate:blocks/ores/oreblock_nickelsilver"
     },
     "elements": [
         {   "from": [ 6, 4, -1 ],
