@@ -917,6 +917,7 @@ tile.dcs_device_chest_village_0.name=Villager Chest
 tile.dcs_device_sink_half_0.name=Sink (Half)
 tile.dcs_device_sink_full_0.name=Sink
 tile.dcs_device_fauset_0.name=Fauset
+tile.dcs_device_fauset_sus_0.name=Infinity Water Fauset
 tile.dcs_device_ibc_0.name=IBC Container
 tile.dcs_device_heat_exchanger_0.name=Heat Exchanger
 tile.dcs_device_fuelstove_0.name=Fluid Fuel Stove

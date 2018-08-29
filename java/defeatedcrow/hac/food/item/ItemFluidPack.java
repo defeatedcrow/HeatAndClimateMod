@@ -7,8 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
@@ -146,9 +145,9 @@ public class ItemFluidPack extends DCItem {
 					f.getLocalizedName(new FluidStack(f, 200)));
 			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.AMOUNT.getLocalizedName() + ": " + 250);
 			Fluid milk = FluidRegistry.getFluid("milk");
-			if (i == 2 || i == 13 || f == FoodInit.tomatoJuice) {
+			if (i == 2 || i == 13 || f == MainInit.tomatoJuice) {
 				tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));
-			} else if (f == FoodInit.mazai) {
+			} else if (f == MainInit.mazai) {
 				tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));
 			} else {
 				List<PotionEffect> effects = ItemSilverCup.getPotionEffect(f, 1F, 0);
@@ -195,27 +194,27 @@ public class ItemFluidPack extends DCItem {
 			meta = 1;
 		} else if (fluid.getName().equalsIgnoreCase("milk")) {
 			meta = 2;
-		} else if (fluid == FoodInit.cream) {
+		} else if (fluid == MainInit.cream) {
 			meta = 3;
-		} else if (fluid == FoodInit.oil) {
+		} else if (fluid == MainInit.oil) {
 			meta = 4;
-		} else if (fluid == FoodInit.tomatoJuice) {
+		} else if (fluid == MainInit.tomatoJuice) {
 			meta = 5;
-		} else if (fluid == FoodInit.lemon) {
+		} else if (fluid == MainInit.lemon) {
 			meta = 6;
-		} else if (fluid == FoodInit.mazai) {
+		} else if (fluid == MainInit.mazai) {
 			meta = 7;
-		} else if (fluid == FoodInit.greenTea) {
+		} else if (fluid == MainInit.greenTea) {
 			meta = 8;
-		} else if (fluid == FoodInit.blackTea) {
+		} else if (fluid == MainInit.blackTea) {
 			meta = 9;
-		} else if (fluid == FoodInit.coffee) {
+		} else if (fluid == MainInit.coffee) {
 			meta = 10;
-		} else if (fluid == FoodInit.stock) {
+		} else if (fluid == MainInit.stock) {
 			meta = 11;
-		} else if (fluid == MachineInit.ethanol) {
+		} else if (fluid == MainInit.ethanol) {
 			meta = 12;
-		} else if (fluid == FoodInit.soyMilk) {
+		} else if (fluid == MainInit.soyMilk) {
 			meta = 13;
 		}
 		return meta;
@@ -242,9 +241,8 @@ public class ItemFluidPack extends DCItem {
 		int meta = stack.getMetadata();
 		if (living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
-			worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-					SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F +
-							0.9F);
+			worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() *
+					0.1F + 0.9F);
 			this.addEffects(stack, worldIn, living);
 			this.dropContainerItem(worldIn, stack, living);
 			DCUtil.reduceStackSize(stack, 1);
@@ -274,10 +272,10 @@ public class ItemFluidPack extends DCItem {
 				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
 			}
 
-			if (meta == 2 || meta == 13 || fluid == FoodInit.tomatoJuice) {
+			if (meta == 2 || meta == 13 || fluid == MainInit.tomatoJuice) {
 				living.clearActivePotions();
 				return false;
-			} else if (fluid == FoodInit.mazai) {
+			} else if (fluid == MainInit.mazai) {
 				living.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 2, 0));
 				living.heal(30.0F);
 				if (world.rand.nextInt(100) == 0) {

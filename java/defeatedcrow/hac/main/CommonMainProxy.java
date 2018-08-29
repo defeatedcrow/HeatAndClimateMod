@@ -1,7 +1,6 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.food.FoodCommonProxy;
-import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileTeaPot;
@@ -95,6 +94,7 @@ import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.CombatEvent;
 import defeatedcrow.hac.main.event.DCLootEvent;
 import defeatedcrow.hac.main.event.LivingMainEventDC;
+import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
 import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
@@ -161,12 +161,10 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadEnchantment() {
 		MainInit.venom = new EnchantmentVenom();
-		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID,
-				"dcs.enchantment.venom"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
 
 		MainInit.robber = new EnchantmentRobber();
-		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID,
-				"dcs.enchantment.robber"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
 
 	}
 
@@ -176,13 +174,18 @@ public class CommonMainProxy implements IGuiHandler {
 		VillagerCreationHaCAgri villageHandler = new VillagerCreationHaCAgri();
 		VillagerRegistry.instance().registerVillageCreationHandler(villageHandler);
 
-		MainInit.agri = new VillagerProfession("dcs_climate:agri_researcher", "dcs_climate:textures/models/agri_researcher.png", "dcs_climate:textures/models/zombie_agri_researcher.png");
+		MainInit.agri = new VillagerProfession("dcs_climate:agri_researcher",
+				"dcs_climate:textures/models/agri_researcher.png",
+				"dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.agri);
 
-		MainInit.engineer = new VillagerProfession("dcs_climate:engineer", "dcs_climate:textures/models/agri_researcher.png", "dcs_climate:textures/models/zombie_agri_researcher.png");
+		MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
+				"dcs_climate:textures/models/agri_researcher.png",
+				"dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
 
-		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png", "dcs_climate:textures/models/zombie_trader.png");
+		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png",
+				"dcs_climate:textures/models/zombie_trader.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.trader);
 
 		// HaCCrops
@@ -372,7 +375,7 @@ public class CommonMainProxy implements IGuiHandler {
 			GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
 			GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
 			GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
-			if (WorldGenConfig.mazaiLake && FoodInit.mazaiBlock != null)
+			if (WorldGenConfig.mazaiLake && MainInit.mazaiBlock != null)
 				GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);
 		}
 	}
@@ -403,12 +406,14 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new OnMiningEventDC());
 		MinecraftForge.EVENT_BUS.register(new OnDeathEventDC());
 		MinecraftForge.EVENT_BUS.register(new OnJumpEventDC());
-		// MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
 		MinecraftForge.EVENT_BUS.register(new AchievementEventDC());
 		MinecraftForge.EVENT_BUS.register(new LivingMainEventDC());
 		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
 		MinecraftForge.EVENT_BUS.register(new CombatEvent());
 		MinecraftForge.EVENT_BUS.register(new DCLootEvent());
+		if (ModuleConfig.magic) {
+			MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
+		}
 		if (ModuleConfig.world) {
 			MinecraftForge.EVENT_BUS.register(new CaravanGenEvent());
 		}

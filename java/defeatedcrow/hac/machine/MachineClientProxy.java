@@ -15,6 +15,7 @@ import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileDynamo;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFauset;
+import defeatedcrow.hac.machine.block.TileFauset_SUS;
 import defeatedcrow.hac.machine.block.TileFreezer;
 import defeatedcrow.hac.machine.block.TileGasBurner;
 import defeatedcrow.hac.machine.block.TileGearBox;
@@ -112,15 +113,7 @@ import defeatedcrow.hac.machine.client.X_ShaftTESR;
 import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
-import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.ClientMainProxy;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.StateMapperBase;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -150,6 +143,7 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileRedBox.class, "dcs_te_redbox", new RedBoxTESR());
 		ClientRegistry.registerTileEntity(TileFan.class, "dcs_te_fan", new FanTESR());
 		GameRegistry.registerTileEntity(TileFauset.class, "dcs_te_fauset");
+		GameRegistry.registerTileEntity(TileFauset_SUS.class, "dcs_te_fauset_sus");
 		ClientRegistry.registerTileEntity(TileIBC.class, "dcs_te_ibc", new IBCTESR());
 		ClientRegistry.registerTileEntity(TileHeatExchanger.class, "dcs_te_heatexchanger", new HeatExchangerTESR());
 		ClientRegistry.registerTileEntity(TileShaft_S_SUS.class, "dcs_te_shaft_s_sus", new SUS_S_ShaftTESR());
@@ -174,8 +168,7 @@ public class MachineClientProxy {
 		ClientRegistry.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
 		ClientRegistry.registerTileEntity(TileReactor.class, "dcs_te_reactor", new ReactorTESR());
 		ClientRegistry.registerTileEntity(TileFreezer.class, "dcs_te_freezer", new FreezerTESR());
-		ClientRegistry.registerTileEntity(TileSpinningMachine.class, "dcs_te_spinning_machine",
-				new SpinningMachineTESR());
+		ClientRegistry.registerTileEntity(TileSpinningMachine.class, "dcs_te_spinning_machine", new SpinningMachineTESR());
 		ClientRegistry.registerTileEntity(TilePortalManager.class, "dcs_te_portal_manager", new PortalManagerTESR());
 		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
 		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
@@ -202,10 +195,8 @@ public class MachineClientProxy {
 		// block
 
 		instance.regTETorqueBlock(MachineInit.windmill, ClimateCore.PACKAGE_ID, "dcs_device_windmill", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_ID, "dcs_device_windmill_l", "machine",
-				0);
-		instance.regTETorqueBlock(MachineInit.windmill_ex, ClimateCore.PACKAGE_ID, "dcs_device_windmill_ex", "machine",
-				0);
+		instance.regTETorqueBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_ID, "dcs_device_windmill_l", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.windmill_ex, ClimateCore.PACKAGE_ID, "dcs_device_windmill_ex", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta", "machine", 0);
@@ -217,254 +208,72 @@ public class MachineClientProxy {
 		instance.regTETorqueBlock(MachineInit.stonemill, ClimateCore.PACKAGE_ID, "dcs_device_stonemill", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.fan, ClimateCore.PACKAGE_ID, "dcs_device_fan", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.redbox, ClimateCore.PACKAGE_ID, "dcs_device_redbox", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.heatPump, ClimateCore.PACKAGE_ID, "dcs_device_heat_exchanger", "machine",
-				0);
+		instance.regTETorqueBlock(MachineInit.heatPump, ClimateCore.PACKAGE_ID, "dcs_device_heat_exchanger", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft2_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_sus", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft2_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_sus", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.shaft2_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_sus", "machine",
-				0);
-		instance.regTETorqueBlock(MachineInit.shaft2_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_sus", "machine",
-				0);
+		instance.regTETorqueBlock(MachineInit.shaft2_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_sus", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft2_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_sus", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft2_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x_sus", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.shaft3_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_steel", "machine",
-				0);
-		instance.regTETorqueBlock(MachineInit.shaft3_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_steel", "machine",
-				0);
-		instance.regTETorqueBlock(MachineInit.shaft3_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_steel",
-				"machine", 0);
-		instance.regTETorqueBlock(MachineInit.shaft3_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_steel",
-				"machine", 0);
-		instance.regTETorqueBlock(MachineInit.shaft3_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x_steel", "machine",
-				0);
+		instance.regTETorqueBlock(MachineInit.shaft3_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_steel", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft3_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_steel", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft3_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_steel", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft3_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_steel", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft3_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x_steel", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_ID, "dcs_device_gearbox_sus", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_ID, "dcs_device_boiler_turbine",
-				"machine", 0);
+		instance.regTETorqueBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_ID, "dcs_device_boiler_turbine", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.motor, ClimateCore.PACKAGE_ID, "dcs_device_kinetic_motor", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_ID, "dcs_device_press_machine",
-				"machine", 0);
+		instance.regTETorqueBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_ID, "dcs_device_press_machine", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.waterPump, ClimateCore.PACKAGE_ID, "dcs_device_water_pump", "machine", 0);
 		instance.regTEBlock(MachineInit.IBC, ClimateCore.PACKAGE_ID, "dcs_device_ibc", "machine", 0);
 		instance.regSimpleBlock(MachineInit.fauset, ClimateCore.PACKAGE_ID, "dcs_device_fauset", "machine", 0);
+		instance.regSimpleBlock(MachineInit.fauset_sus, ClimateCore.PACKAGE_ID, "dcs_device_fauset_sus", "machine", 0);
 
-		instance.regSimpleItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_ID, "dcs_device_mechanical", "machine",
-				5);
+		instance.regSimpleItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_ID, "dcs_device_mechanical", "machine", 5);
 		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
-		instance.regSimpleItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_ID, "dcs_device_torque_checker_steel",
-				"machine", 0);
-		instance.regTETorqueBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_ID, "dcs_device_creative_box", "machine",
-				0);
+		instance.regSimpleItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_ID, "dcs_device_torque_checker_steel", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_ID, "dcs_device_creative_box", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.catapult, ClimateCore.PACKAGE_ID, "dcs_device_catapult", "machine", 0);
 		instance.regSimpleBlock(MachineInit.conveyor, ClimateCore.PACKAGE_ID, "dcs_device_conveyor", "machine", 0);
-		instance.regSimpleBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter", "machine",
-				0);
+		instance.regSimpleBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter", "machine", 0);
 		instance.regSimpleBlock(MachineInit.hopperGold, ClimateCore.PACKAGE_ID, "dcs_device_hopper_gold", "machine", 0);
-		instance.regSimpleBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter_gold",
-				"machine", 0);
-		instance.regSimpleBlock(MachineInit.hopperSilver, ClimateCore.PACKAGE_ID, "dcs_device_hopper_silver", "machine",
-				0);
-		instance.regTETorqueBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine",
-				0);
+		instance.regSimpleBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter_gold", "machine", 0);
+		instance.regSimpleBlock(MachineInit.hopperSilver, ClimateCore.PACKAGE_ID, "dcs_device_hopper_silver", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.watermill, ClimateCore.PACKAGE_ID, "dcs_device_watermill", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.dynamo, ClimateCore.PACKAGE_ID, "dcs_device_dynamo", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.reactor, ClimateCore.PACKAGE_ID, "dcs_device_reactor", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.freezer, ClimateCore.PACKAGE_ID, "dcs_device_freezer", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.spinning, ClimateCore.PACKAGE_ID, "dcs_device_spinning_machine",
-				"machine", 0);
-		instance.regTETorqueBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_ID, "dcs_device_portal_manager",
-				"machine", 0);
+		instance.regTETorqueBlock(MachineInit.spinning, ClimateCore.PACKAGE_ID, "dcs_device_spinning_machine", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_ID, "dcs_device_portal_manager", "machine", 0);
 		instance.regTEBlock(MachineInit.burner, ClimateCore.PACKAGE_ID, "dcs_device_gas_burner", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_ID, "dcs_device_diesel_engine",
-				"machine", 0);
+		instance.regTETorqueBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_ID, "dcs_device_diesel_engine", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.crusher, ClimateCore.PACKAGE_ID, "dcs_device_crusher", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 13);
 		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 2);
 		instance.regSimpleItem(MachineInit.catalyst, ClimateCore.PACKAGE_ID, "dcs_misc_catalyst", "misc", 3);
 		instance.regSimpleItem(MachineInit.gemcore, ClimateCore.PACKAGE_ID, "dcs_misc_gemcore", "misc", 1);
-		instance.regSimpleItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_ID, "dcs_device_mold_aluminium",
-				"machine", 3);
+		instance.regSimpleItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_ID, "dcs_device_mold_aluminium", "machine", 3);
 		instance.regSimpleItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_ID, "dcs_device_mold_alloy", "machine", 3);
-		instance.regSimpleItem(MachineInit.adapterCard, ClimateCore.PACKAGE_ID, "dcs_device_adapter_card", "machine",
-				3);
+		instance.regSimpleItem(MachineInit.adapterCard, ClimateCore.PACKAGE_ID, "dcs_device_adapter_card", "machine", 3);
 		instance.regSimpleItem(MachineInit.dynamite, ClimateCore.PACKAGE_ID, "dcs_tool_dynamite", "tool", 1);
 
-		instance.regSimpleBlock(MachineInit.adapterPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_item", "machine",
-				0);
-		instance.regSimpleBlock(MachineInit.acceptorPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_item",
-				"machine", 0);
-		instance.regSimpleBlock(MachineInit.adapterFluidPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_fluid",
-				"machine", 0);
-		instance.regSimpleBlock(MachineInit.acceptorFluidPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_fluid",
-				"machine", 0);
+		instance.regSimpleBlock(MachineInit.adapterPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_item", "machine", 0);
+		instance.regSimpleBlock(MachineInit.acceptorPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_item", "machine", 0);
+		instance.regSimpleBlock(MachineInit.adapterFluidPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_fluid", "machine", 0);
+		instance.regSimpleBlock(MachineInit.acceptorFluidPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_fluid", "machine", 0);
 		instance.regSimpleItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_ID, "dcs_motor_minecart", "device", 0);
 		instance.regSimpleItem(MachineInit.scooter, ClimateCore.PACKAGE_ID, "dcs_motor_scooter", "device", 3);
 		instance.regSimpleItem(MachineInit.magneticHover, ClimateCore.PACKAGE_ID, "dcs_magnetic_hover", "device", 0);
 		instance.regSimpleItem(MachineInit.platingChrome, ClimateCore.PACKAGE_ID, "dcs_coating_tool", "misc", 9);
 		instance.regSimpleItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_ID, "dcs_rotaryblade", "device", 1);
 		instance.regSimpleBlock(MachineInit.monitorRS, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rs", "machine", 0);
-		instance.regSimpleBlock(MachineInit.monitorTorque, ClimateCore.PACKAGE_ID, "dcs_device_monitor_torque",
-				"machine", 0);
+		instance.regSimpleBlock(MachineInit.monitorTorque, ClimateCore.PACKAGE_ID, "dcs_device_monitor_torque", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorRF, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rf", "machine", 0);
-		instance.regSimpleBlock(MachineInit.monitorFluid, ClimateCore.PACKAGE_ID, "dcs_device_monitor_fluid", "machine",
-				0);
-		instance.regSimpleBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine",
-				0);
+		instance.regSimpleBlock(MachineInit.monitorFluid, ClimateCore.PACKAGE_ID, "dcs_device_monitor_fluid", "machine", 0);
+		instance.regSimpleBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorCM, ClimateCore.PACKAGE_ID, "dcs_device_monitor_cm", "machine", 0);
 
-		// fluid
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.hydrogenBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen", "fluid");
-
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return fluidModel;
-			}
-		});
-		ModelLoader.setCustomStateMapper(MachineInit.hydrogenBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_hydrogen", "fluid");
-
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
-
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.ammoniaBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia", "fluid");
-
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return fluidModel;
-			}
-		});
-		ModelLoader.setCustomStateMapper(MachineInit.ammoniaBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_ammonia", "fluid");
-
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
-
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.fuelGasBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas", "fluid");
-
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return fluidModel;
-			}
-		});
-		ModelLoader.setCustomStateMapper(MachineInit.fuelGasBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_gas", "fluid");
-
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
-
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.fuelOilBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil", "fluid");
-
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return fluidModel;
-			}
-		});
-		ModelLoader.setCustomStateMapper(MachineInit.fuelOilBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_fuel_oil", "fluid");
-
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
-
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.nitricAcidBlock),
-				new ItemMeshDefinition() {
-					final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-							ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid", "fluid");
-
-					@Override
-					public ModelResourceLocation getModelLocation(ItemStack stack) {
-						return fluidModel;
-					}
-				});
-		ModelLoader.setCustomStateMapper(MachineInit.nitricAcidBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_nitric_acid", "fluid");
-
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
-
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.sulfuricAcidBlock),
-				new ItemMeshDefinition() {
-					final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-							ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", "fluid");
-
-					@Override
-					public ModelResourceLocation getModelLocation(ItemStack stack) {
-						return fluidModel;
-					}
-				});
-		ModelLoader.setCustomStateMapper(MachineInit.sulfuricAcidBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_sulfuric_acid", "fluid");
-
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
-
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.nitrogenBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen", "fluid");
-
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return fluidModel;
-			}
-		});
-		ModelLoader.setCustomStateMapper(MachineInit.nitrogenBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_nitrogen", "fluid");
-
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
-
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MachineInit.ethanolBlock), new ItemMeshDefinition() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol", "fluid");
-
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return fluidModel;
-			}
-		});
-		ModelLoader.setCustomStateMapper(MachineInit.ethanolBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(ClimateMain.MOD_ID + ":" +
-					ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol", "fluid");
-
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
 	}
 
 }

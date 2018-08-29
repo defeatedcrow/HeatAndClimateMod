@@ -12,9 +12,9 @@ import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.gui.ContainerPortalManager;
 import defeatedcrow.hac.machine.item.ItemAdapterCard;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.ISidedTankChecker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -93,14 +93,13 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISidedTankChecker) && tile.hasCapability(
-					CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
-				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-						face.getOpposite());
+			if (tile != null && !(tile instanceof ISidedTankChecker) &&
+					tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite());
 				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
-					if (target != null && target.getFluid() != null && FluidDictionaryDC.matchFluid(target.getFluid(),
-							MachineInit.nitrogen)) {
+					if (target != null && target.getFluid() != null &&
+							FluidDictionaryDC.matchFluid(target.getFluid(), MainInit.nitrogen)) {
 						int i = Math.min(mov, cap - amo);
 						FluidStack ret = tank.drain(i, false);
 						int fill = inputT.fill(ret, false);
@@ -126,7 +125,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 	public boolean hasCoolant() {
 		if (inputT.getFluidType() != null)
-			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MachineInit.nitrogen))
+			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MainInit.nitrogen))
 				return inputT.drain(10, false) != null;
 		return false;
 	}
@@ -147,12 +146,12 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 			ItemAdapterCard card1 = (ItemAdapterCard) in.getItem();
 			ItemAdapterCard card2 = (ItemAdapterCard) out.getItem();
 			if (card1.getCardType(in.getItemDamage()) == card2.getCardType(out.getItemDamage())) {
-				if (card1.getAccessType(in.getItemDamage()) == ItemAdapterCard.AccessType.INPUT && card1.getPos(
-						in) != null && card1.getDim(in) == dim) {
+				if (card1.getAccessType(in.getItemDamage()) == ItemAdapterCard.AccessType.INPUT &&
+						card1.getPos(in) != null && card1.getDim(in) == dim) {
 					a = true;
 				}
-				if (card2.getAccessType(out.getItemDamage()) == ItemAdapterCard.AccessType.OUTPUT && card2.getPos(
-						out) != null && card2.getDim(out) == dim) {
+				if (card2.getAccessType(out.getItemDamage()) == ItemAdapterCard.AccessType.OUTPUT &&
+						card2.getPos(out) != null && card2.getDim(out) == dim) {
 					b = true;
 				}
 				if (a && b) {
@@ -192,9 +191,9 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 				}
 			}
 			if (inT != null && outT != null) {
-				if (card1.getCardType(in.getItemDamage()) == ItemAdapterCard.CardType.ITEM && inT.hasCapability(
-						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f1) && outT.hasCapability(
-								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f2)) {
+				if (card1.getCardType(in.getItemDamage()) == ItemAdapterCard.CardType.ITEM &&
+						inT.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f1) &&
+						outT.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f2)) {
 					IItemHandler input = inT.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f1);
 					IItemHandler output = outT.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f2);
 					if (input != null && output != null) {
@@ -217,9 +216,9 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 							}
 						}
 					}
-				} else if (card1.getCardType(in.getItemDamage()) == ItemAdapterCard.CardType.FLUID && inT.hasCapability(
-						CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f1) && outT.hasCapability(
-								CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f2)) {
+				} else if (card1.getCardType(in.getItemDamage()) == ItemAdapterCard.CardType.FLUID &&
+						inT.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f1) &&
+						outT.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f2)) {
 					IFluidHandler intank = inT.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f1);
 					IFluidHandler outtank = outT.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f2);
 					if (intank != null && outtank != null) {
@@ -667,7 +666,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		}
 
 		public boolean canFillFluidType(FluidStack fluid) {
-			if (fluid != null && FluidDictionaryDC.matchFluid(fluid.getFluid(), MachineInit.nitrogen))
+			if (fluid != null && FluidDictionaryDC.matchFluid(fluid.getFluid(), MainInit.nitrogen))
 				return false;
 			return true;
 		}

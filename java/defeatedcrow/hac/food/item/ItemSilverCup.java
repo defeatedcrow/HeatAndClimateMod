@@ -9,7 +9,6 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.capability.DrinkItemCustomizer;
 import defeatedcrow.hac.food.capability.DrinkMilk;
@@ -18,6 +17,7 @@ import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
 import defeatedcrow.hac.food.entity.EntityTumbler;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.DrinkPotionType;
@@ -165,8 +165,7 @@ public class ItemSilverCup extends FoodItemBase {
 			if (stack.getItem() != this)
 				return false;
 			else {
-				IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY,
-						null);
+				IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 				IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 				if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
@@ -183,10 +182,10 @@ public class ItemSilverCup extends FoodItemBase {
 						}
 
 						Fluid milk = FluidRegistry.getFluid("milk");
-						if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
+						if ((milk != null && f.getFluid() == milk) || f.getFluid() == MainInit.tomatoJuice) {
 							living.clearActivePotions();
 							return false;
-						} else if (f.getFluid() == FoodInit.mazai) {
+						} else if (f.getFluid() == MainInit.mazai) {
 							living.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 2, 0));
 							living.heal(30.0F);
 							if (world.rand.nextInt(100) == 0) {
@@ -252,9 +251,9 @@ public class ItemSilverCup extends FoodItemBase {
 			int ampF = drink.getSugar().effect;
 			if (f != null && f.getFluid() != null) {
 				Fluid milk = FluidRegistry.getFluid("milk");
-				if ((milk != null && f.getFluid() == milk) || f.getFluid() == FoodInit.tomatoJuice) {
+				if ((milk != null && f.getFluid() == milk) || f.getFluid() == MainInit.tomatoJuice) {
 					tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));
-				} else if (f.getFluid() == FoodInit.mazai) {
+				} else if (f.getFluid() == MainInit.mazai) {
 					tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));
 				} else {
 					List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);

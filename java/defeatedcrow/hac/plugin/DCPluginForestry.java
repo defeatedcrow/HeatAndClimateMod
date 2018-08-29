@@ -60,12 +60,12 @@ public class DCPluginForestry {
 
 			NonNullList<ItemStack> l4 = NonNullList.create();
 			l4.add(new ItemStack(FoodInit.crops, 1, 6));
-			RecipeManagers.squeezerManager.addRecipe(10, l4, new FluidStack(FoodInit.lemon, 400), new ItemStack(mulch),
+			RecipeManagers.squeezerManager.addRecipe(10, l4, new FluidStack(MainInit.lemon, 400), new ItemStack(mulch),
 					10);
 
 			NonNullList<ItemStack> l5 = NonNullList.create();
 			l5.add(new ItemStack(FoodInit.crops, 1, 7));
-			RecipeManagers.squeezerManager.addRecipe(10, l5, new FluidStack(FoodInit.oil, 200), new ItemStack(mulch),
+			RecipeManagers.squeezerManager.addRecipe(10, l5, new FluidStack(MainInit.oil, 200), new ItemStack(mulch),
 					10);
 
 			NonNullList<ItemStack> l6 = NonNullList.create();
@@ -206,22 +206,22 @@ public class DCPluginForestry {
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
 			FuelManager.fermenterFuel.put(oilcake, new FermenterFuel(oilcake, 48, 200));
 
-			Fluid oil = FoodInit.oil;
+			Fluid oil = MainInit.oil;
 			if (oil != null) {
 				FuelManager.bronzeEngineFuel.put(oil, new EngineBronzeFuel(oil, 30, 2500, 1));
 			}
 
-			Fluid black = FoodInit.blackLiquor;
+			Fluid black = MainInit.blackLiquor;
 			if (black != null) {
 				FuelManager.bronzeEngineFuel.put(black, new EngineBronzeFuel(black, 30, 2500, 1));
 			}
 
-			Fluid liq = MachineInit.fuelGas;
+			Fluid liq = MainInit.fuelGas;
 			if (liq != null) {
 				FuelManager.bronzeEngineFuel.put(liq, new EngineBronzeFuel(liq, 40, 4000, 1));
 			}
 
-			Fluid gas = MachineInit.fuelGas;
+			Fluid gas = MainInit.fuelGas;
 			if (gas != null) {
 				FuelManager.bronzeEngineFuel.put(gas, new EngineBronzeFuel(gas, 60, 2500, 1));
 			}
@@ -247,7 +247,7 @@ public class DCPluginForestry {
 						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropChestnut");
 
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
-						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0),
+						new FluidStack(MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0),
 						"cropChestnut");
 			}
 
@@ -256,7 +256,7 @@ public class DCPluginForestry {
 						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropWalnut");
 
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
-						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropWalnut");
+						new FluidStack(MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropWalnut");
 			}
 
 			if (!OreDictionary.getOres("cropHazelnut").isEmpty()) {
@@ -264,7 +264,7 @@ public class DCPluginForestry {
 						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropHazelnut");
 
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
-						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0),
+						new FluidStack(MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0),
 						"cropHazelnut");
 			}
 
@@ -273,7 +273,7 @@ public class DCPluginForestry {
 						new ItemStack(MainInit.miscDust, 1, 4), 0.25F, "cropAlmond");
 
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F,
-						new FluidStack(FoodInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropAlmond");
+						new FluidStack(MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropAlmond");
 			}
 		}
 

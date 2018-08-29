@@ -224,6 +224,18 @@ public class MachineRecipes {
 				"gearAlloy"
 		});
 
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.fauset_sus, 1, 0), new Object[] {
+				" Z ",
+				"XYX",
+				"X  ",
+				'X',
+				"ingotSUS",
+				'Y',
+				new ItemStack(MachineInit.fauset, 1, 0),
+				'Z',
+				"bucketWater"
+		});
+
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.IBC, 1, 0), new Object[] {
 				"ZXZ",
 				"YYY",
@@ -560,8 +572,8 @@ public class MachineRecipes {
 
 		/* == Smelting == */
 
-		GameRegistry.addSmelting(new ItemStack(Blocks.COAL_BLOCK, 1, 0), new ItemStack(MachineInit.fuelCont, 1, 0),
-				0.0F);
+		GameRegistry.addSmelting(new ItemStack(Blocks.COAL_BLOCK, 1, 0), new ItemStack(MachineInit.fuelCont, 1,
+				0), 0.0F);
 
 	}
 

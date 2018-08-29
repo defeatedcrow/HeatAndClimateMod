@@ -172,21 +172,21 @@ public class FoodRecipes {
 	}
 
 	static void loadFuelData() {
-		MainAPIManager.fuelRegister.registerFuel(FoodInit.oil, 60);
-		MainAPIManager.fuelRegister.registerFuel(FoodInit.blackLiquor, 60);
+		MainAPIManager.fuelRegister.registerFuel(MainInit.oil, 60);
+		MainAPIManager.fuelRegister.registerFuel(MainInit.blackLiquor, 60);
 	}
 
 	static void loadDrinkData() {
-		DCPluginFluid.registerPotion(FoodInit.greenTea, MobEffects.HASTE);
-		DCPluginFluid.registerPotion(FoodInit.blackTea, MobEffects.RESISTANCE);
-		DCPluginFluid.registerPotion(FoodInit.coffee, MobEffects.NIGHT_VISION);
-		DCPluginFluid.registerPotion(FoodInit.cream, DCInit.prevFreeze);
-		DCPluginFluid.registerPotion(FoodInit.oil, MobEffects.SPEED);
-		DCPluginFluid.registerPotion(FoodInit.stock, MobEffects.FIRE_RESISTANCE);
-		DCPluginFluid.registerPotion(FoodInit.lemon, MobEffects.JUMP_BOOST);
-		DCPluginFluid.registerPotion(FoodInit.blackLiquor, MobEffects.POISON);
+		DCPluginFluid.registerPotion(MainInit.greenTea, MobEffects.HASTE);
+		DCPluginFluid.registerPotion(MainInit.blackTea, MobEffects.RESISTANCE);
+		DCPluginFluid.registerPotion(MainInit.coffee, MobEffects.NIGHT_VISION);
+		DCPluginFluid.registerPotion(MainInit.cream, DCInit.prevFreeze);
+		DCPluginFluid.registerPotion(MainInit.oil, MobEffects.SPEED);
+		DCPluginFluid.registerPotion(MainInit.stock, MobEffects.FIRE_RESISTANCE);
+		DCPluginFluid.registerPotion(MainInit.lemon, MobEffects.JUMP_BOOST);
+		DCPluginFluid.registerPotion(MainInit.blackLiquor, MobEffects.POISON);
 		DCPluginFluid.registerPotion(FluidRegistry.LAVA, MobEffects.FIRE_RESISTANCE);
-		DCPluginFluid.registerPotion(FoodInit.soyMilk, MobEffects.INSTANT_HEALTH);
+		DCPluginFluid.registerPotion(MainInit.soyMilk, MobEffects.INSTANT_HEALTH);
 	}
 
 }

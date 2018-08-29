@@ -261,4 +261,47 @@ public class MainInit {
 
 	public static Item iconItem;
 
+	// fluid
+	public static Fluid oil;
+	public static Fluid greenTea;
+	public static Fluid blackTea;
+	public static Fluid coffee;
+	public static Fluid cream;
+	public static Fluid tomatoJuice;
+	public static Fluid blackLiquor;
+	public static Fluid hotSpring;
+	public static Fluid stock;
+	public static Fluid lemon;
+	public static Fluid mazai;
+	public static Fluid soyMilk;
+	public static Fluid hydrogen;
+	public static Fluid ammonia;
+	public static Fluid nitricAcid;
+	public static Fluid sulfuricAcid;
+	public static Fluid fuelOil;
+	public static Fluid fuelGas;
+	public static Fluid nitrogen;
+	public static Fluid ethanol;
+
+	public static Block oilBlock;
+	public static Block greenTeaBlock;
+	public static Block blackTeaBlock;
+	public static Block coffeeBlock;
+	public static Block creamBlock;
+	public static Block tomatoBlock;
+	public static Block blackLiquorBlock;
+	public static Block hotSpringBlock;
+	public static Block stockBlock;
+	public static Block lemonBlock;
+	public static Block mazaiBlock;
+	public static Block soyMilkBlock;
+	public static Block hydrogenBlock;
+	public static Block ammoniaBlock;
+	public static Block nitricAcidBlock;
+	public static Block sulfuricAcidBlock;
+	public static Block fuelOilBlock;
+	public static Block fuelGasBlock;
+	public static Block nitrogenBlock;
+	public static Block ethanolBlock;
+
 }
