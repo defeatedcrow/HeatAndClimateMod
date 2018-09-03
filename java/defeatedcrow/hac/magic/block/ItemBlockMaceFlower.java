@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -47,8 +48,8 @@ public class ItemBlockMaceFlower extends ItemBlockMace {
 					for (BlockPos p1 : itr) {
 						IBlockState st = world.getBlockState(p1);
 						int meta = st.getBlock().getMetaFromState(st);
-						if (world.isAirBlock(p1) || st.getMaterial() == Material.WATER || st
-								.getBlock() == Blocks.DIRT || st.getBlock() == Blocks.GRASS) {
+						if (world.isAirBlock(p1) || st.getMaterial() == Material.WATER ||
+								st.getBlock() == Blocks.DIRT || st.getBlock() == Blocks.GRASS) {
 							continue;
 						}
 						if (st.getBlock() instanceof IGrowable) {
@@ -57,20 +58,19 @@ public class ItemBlockMaceFlower extends ItemBlockMace {
 								pl.grow(world, itemRand, p1, st);
 								if (world instanceof WorldServer) {
 									((WorldServer) world).spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, p1.getX() +
-											0.5D, p1.getY() + 0.5D, p1.getZ() + 0.5D, 8, 0.5D, 0.5D, 0.5D, 0.5D,
-											new int[0]);
+											0.5D, p1.getY() + 0.5D, p1.getZ() +
+													0.5D, 8, 0.5D, 0.5D, 0.5D, 0.5D, new int[0]);
 								}
 							}
 						}
 					}
 				}
 
-				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP,
-						SoundCategory.PLAYERS, 0.65F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.65F, 1.0F /
+						(itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 			} else {
-				world.playSound(player, player.posX, player.posY, player.posZ,
-						SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE, SoundCategory.PLAYERS, 0.65F, 1.0F);
+				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE, SoundCategory.PLAYERS, 0.65F, 1.0F);
 			}
 		}
 	}
@@ -80,7 +80,8 @@ public class ItemBlockMaceFlower extends ItemBlockMace {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		super.addInformation2(stack, world, tooltip);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Require normal temperature and wet climate");
+			tooltip.add(I18n.format("dcs.tip.mace2") + " " + I18n.format("dcs.tip.mace.req.flower"));
+			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.tip.mace.flower"));
 		}
 	}
 

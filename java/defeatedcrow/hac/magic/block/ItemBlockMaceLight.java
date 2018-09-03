@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.proj.EntityProjLightSpit;
 import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -38,12 +39,11 @@ public class ItemBlockMaceLight extends ItemBlockMace {
 					world.spawnEntity(entityarrow);
 				}
 
-				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP,
-						SoundCategory.PLAYERS, 0.65F, 2.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.65F, 2.0F /
+						(itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 			} else {
-				world.playSound(player, player.posX, player.posY, player.posZ,
-						SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE, SoundCategory.PLAYERS, 0.65F, 1.0F);
+				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE, SoundCategory.PLAYERS, 0.65F, 1.0F);
 			}
 		}
 	}
@@ -53,7 +53,8 @@ public class ItemBlockMaceLight extends ItemBlockMace {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		super.addInformation2(stack, world, tooltip);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Require the brightness");
+			tooltip.add(I18n.format("dcs.tip.mace2") + " " + I18n.format("dcs.tip.mace.req.light"));
+			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.tip.mace.light"));
 		}
 	}
 

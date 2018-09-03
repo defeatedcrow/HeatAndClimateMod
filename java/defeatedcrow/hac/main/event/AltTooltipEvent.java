@@ -7,6 +7,7 @@ import java.util.Set;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
+import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -21,6 +22,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.UniversalBucket;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -58,6 +60,12 @@ public class AltTooltipEvent {
 						if (m == 4) {
 							flag = true;
 						}
+					}
+				}
+
+				if (Loader.isModLoaded("baubles") && !flag) {
+					if (DCPluginBaubles.hasBaublesCharm(player, new ItemStack(MagicInit.pendant, 1, 4))) {
+						flag = true;
 					}
 				}
 

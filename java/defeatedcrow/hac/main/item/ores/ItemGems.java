@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.item.ores;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
@@ -19,6 +20,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Loader;
 
 public class ItemGems extends DCItem {
 
@@ -120,9 +122,8 @@ public class ItemGems extends DCItem {
 					world.spawnEntity(entityarrow);
 				}
 
-				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-						SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() *
-								0.4F + 1.2F) + 0.5F);
+				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F /
+						(itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
 					DCUtil.reduceStackSize(stack, 1);
@@ -139,8 +140,8 @@ public class ItemGems extends DCItem {
 		player.setActiveHand(hand);
 		ItemStack stack = player.getHeldItem(hand);
 		if (ModuleConfig.magic && !DCUtil.isEmpty(stack) && stack.getItem() == this && stack.getItemDamage() == 2)
-			return playerHasCharm(player) ? new ActionResult(EnumActionResult.SUCCESS, stack) :
-					new ActionResult(EnumActionResult.PASS, stack);
+			return playerHasCharm(player) ? new ActionResult(EnumActionResult.SUCCESS, stack) : new ActionResult(
+					EnumActionResult.PASS, stack);
 		return new ActionResult(EnumActionResult.PASS, stack);
 	}
 
@@ -159,13 +160,11 @@ public class ItemGems extends DCItem {
 	private boolean playerHasCharm(EntityPlayer player) {
 		if (player != null) {
 			boolean hasCharm = false;
-			for (int i = 9; i < 18; i++) {
-				ItemStack check = player.inventory.getStackInSlot(i);
-				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
-					int m = check.getMetadata();
-					if (m == 14) {
-						hasCharm = true;
-					}
+			if (DCUtil.hasItemInTopSlots(player, new ItemStack(MagicInit.pendant, 1, 14))) {
+				hasCharm = true;
+			} else if (Loader.isModLoaded("baubles")) {
+				if (DCPluginBaubles.hasBaublesCharm(player, new ItemStack(MagicInit.pendant, 1, 14))) {
+					hasCharm = true;
 				}
 			}
 			if (hasCharm)

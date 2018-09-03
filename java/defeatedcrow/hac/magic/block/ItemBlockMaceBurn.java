@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -53,14 +54,12 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 					int i = 1 + magicSuitCount(player);
 					player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3600 * i, 0));
 					if (world instanceof WorldServer) {
-						((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, player.posX, player.posY,
-								player.posZ, 16, 0.75D, 0.75D, 0.75D, 0.5D, new int[0]);
+						((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, player.posX, player.posY, player.posZ, 16, 0.75D, 0.75D, 0.75D, 0.5D, new int[0]);
 					}
 
 					// if (player.isSneaking()) {
 					// 精錬
-					IClimate clm = ClimateAPI.register.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL,
-							DCAirflow.TIGHT);
+					IClimate clm = ClimateAPI.register.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL, DCAirflow.TIGHT);
 					// 5x5x5 の範囲
 					BlockPos pos = player.getPosition();
 					BlockPos min = new BlockPos(pos.add(-3, -2, -3));
@@ -93,9 +92,9 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 									world.spawnEntity(drop);
 								}
 								if (world instanceof WorldServer) {
-									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() + 0.5D,
-											p1.getY() + 0.5D, p1.getZ() + 0.5D, 8, 0.75D, 0.75D, 0.75D, 0.5D,
-											new int[0]);
+									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() +
+											0.5D, p1.getY() + 0.5D, p1.getZ() +
+													0.5D, 8, 0.75D, 0.75D, 0.75D, 0.5D, new int[0]);
 								}
 							}
 						} else {
@@ -114,9 +113,9 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 									world.spawnEntity(drop2);
 								}
 								if (world instanceof WorldServer) {
-									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() + 0.5D,
-											p1.getY() + 0.0D, p1.getZ() + 0.5D, 8, 0.75D, 0.75D, 0.75D, 0.05D,
-											new int[0]);
+									((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, p1.getX() +
+											0.5D, p1.getY() + 0.0D, p1.getZ() +
+													0.5D, 8, 0.75D, 0.75D, 0.75D, 0.05D, new int[0]);
 								}
 							}
 						}
@@ -125,14 +124,13 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 
 				}
 
-				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP,
-						SoundCategory.PLAYERS, 0.65F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
-				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH,
-						SoundCategory.PLAYERS, 0.65F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.65F, 1.0F /
+						(itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 0.65F, 1.0F /
+						(itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 			} else {
-				world.playSound(player, player.posX, player.posY, player.posZ,
-						SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE, SoundCategory.PLAYERS, 0.65F, 1.0F);
+				world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE, SoundCategory.PLAYERS, 0.65F, 1.0F);
 			}
 		}
 	}
@@ -142,7 +140,8 @@ public class ItemBlockMaceBurn extends ItemBlockMace {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		super.addInformation2(stack, world, tooltip);
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Require high temperature");
+			tooltip.add(I18n.format("dcs.tip.mace2") + " " + I18n.format("dcs.tip.mace.req.burn"));
+			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.tip.mace.burn"));
 		}
 	}
 

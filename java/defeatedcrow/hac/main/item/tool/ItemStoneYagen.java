@@ -1,11 +1,8 @@
 package defeatedcrow.hac.main.item.tool;
 
-import java.util.Random;
-
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class ItemStoneYagen extends DCItem {
@@ -50,10 +47,8 @@ public class ItemStoneYagen extends DCItem {
 	@Override
 	public ItemStack getContainerItem(ItemStack stack) {
 		if (!DCUtil.isEmpty(stack) && stack.getItem() == this) {
-			Random rand = Item.itemRand;
 			ItemStack copy = stack.copy();
-			boolean flag = copy.attemptDamageItem(1, rand, null);
-			return flag ? ItemStack.EMPTY : copy;
+			return copy;
 		}
 		return stack;
 	}
