@@ -1209,12 +1209,16 @@ dcs.tip.soap.description=On Anvil: Decolorize leather armors
 dcs.tip.acv_shield=Place and click: Force unlock of the achievement of the owner player.
 dcs.tip.v_chest=Collect surplus items of surrounding villagers.
 dcs.tip.l_clock=Right-Click with wrench: Change scale.
+dcs.tip.dynamite=CAUTION! It explodes in the range of 7x7x7.
+dcs.tip.dynamite2=Used underwater: Dynamite fishing
 
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
 dcs_climate.tip.durability=Max Durability
 dcs_climate.tip.harvestlevel=Harvest Level
 dcs_climate.tip.resistance=Climate Resistance
 
+dcs.tip.allcharm=This item works in top slots of player inventory.
+dcs.tip.amulet=This item works in creature or player inventory.
 dcs.tip.pendant.0=Water & Cold Protection
 dcs.tip.pendant.1=Heat Protection
 dcs.tip.pendant.2=Damage Reduction
@@ -1325,6 +1329,29 @@ dcs.comment.amulet.1=Prevent damage from climate or block
 dcs.comment.amulet.2=Reduce taken damage from mobs
 dcs.comment.amulet.3=Prevent from death
 dcs.comment.amulet.4=The attack is deemed by the tamer
+
+dcs.tip.mace=For energy charge, please place in the appropriate environment.
+dcs.tip.mace2=Required Environment:
+dcs.tip.mace.req.bird=WIND Airflow
+dcs.tip.mace.req.burn=SMELTING+ Temp
+dcs.tip.mace.req.dry=DRY Hum
+dcs.tip.mace.req.flower=WET Hum and NORMAL~WARM Temp
+dcs.tip.mace.req.glory=On a diamond block
+dcs.tip.mace.req.ice=COLD- Temp
+dcs.tip.mace.req.impact=Under the rain
+dcs.tip.mace.req.light=14F+ lighting
+dcs.tip.mace.req.moon=Under the starrry sky
+dcs.tip.mace.req.ocean=Under the water
+dcs.tip.mace.bird=Effect: Add bird potion effect to the player
+dcs.tip.mace.burn=Effect: Smelter blocks around the player
+dcs.tip.mace.dry=Effect: Dry the water around the player
+dcs.tip.mace.flower=Effect: Grow plants around the player
+dcs.tip.mace.glory=Effect: Strengthen all players in the world
+dcs.tip.mace.ice=Effect: Fire ice grains
+dcs.tip.mace.impact=Effect: Blow off mobs around the player
+dcs.tip.mace.light=Effect: Fire the ray
+dcs.tip.mace.moon=Effect: Heal the player and remove bad potion effects
+dcs.tip.mace.ocean=Effect: Add ocean potion effect to the player
 
 ## message
 dcs_climate.smelting=Climate Smelting

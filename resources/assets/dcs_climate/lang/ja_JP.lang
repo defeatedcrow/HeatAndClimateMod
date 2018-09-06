@@ -1193,6 +1193,8 @@ dcs.tip.chamber2=ふいごやファンを使って風を与えてください。
 dcs.tip.sink=流し込まれた液体を消去します。
 dcs.tip.v_chest=近くにいる村人の荷物がいっぱいの時、余剰アイテムを回収します。
 dcs.tip.l_clock=レンチで右クリック: 大きさを変更します。
+dcs.tip.dynamite=注意! 7x7x7の爆発を起こします。
+dcs.tip.dynamite2=水中で使用すると、魚をドロップします。(ダイナマイト漁)
 
 dcs.tip.shitirin.description=
 dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック
@@ -1213,6 +1215,8 @@ dcs_climate.tip.durability=最大耐久値
 dcs_climate.tip.harvestlevel=採掘レベル
 dcs_climate.tip.resistance=気候耐性
 
+dcs.tip.allcharm=プレイヤーインベントリの最上段に置くと効果を発揮します。
+dcs.tip.amulet=モブやプレイヤーインベントリの中に置くと効果を発揮します。
 dcs.tip.pendant.0=水と氷の守り
 dcs.tip.pendant.1=火の守り
 dcs.tip.pendant.2=傷の守り
@@ -1320,6 +1324,29 @@ dcs.comment.amulet.1=気候や地形から受けるダメージを軽減する
 dcs.comment.amulet.2=モブから受けるダメージを軽減し、与えるダメージを増加する
 dcs.comment.amulet.3=死亡するとその場で復活する
 dcs.comment.amulet.4=ペットが攻撃した時、オーナーの攻撃として扱われる
+
+dcs.tip.mace=エネルギーをチャージするには、適切な環境にブロックとして設置して下さい。
+dcs.tip.mace2=必要な環境:
+dcs.tip.mace.req.bird=WINDの通気
+dcs.tip.mace.req.burn=SMELTING以上の温度
+dcs.tip.mace.req.dry=DRYの湿度
+dcs.tip.mace.req.flower=WETの湿度と、NORMAL~WARMの温度
+dcs.tip.mace.req.glory=ダイヤモンドブロックの上
+dcs.tip.mace.req.ice=COLD以下の温度
+dcs.tip.mace.req.impact=雨にさらす
+dcs.tip.mace.req.light=14F以上の明かり
+dcs.tip.mace.req.moon=晴れている夜空の下
+dcs.tip.mace.req.ocean=水の中
+dcs.tip.mace.bird=効果: 使用者に鳥の加護を与える
+dcs.tip.mace.burn=効果: 周囲のブロックを精錬する
+dcs.tip.mace.dry=効果: 周囲の水を干上がらせる
+dcs.tip.mace.flower=効果: 周囲の植物を育てる
+dcs.tip.mace.glory=効果: ワールドにいるすべてのプレイヤーを強化する
+dcs.tip.mace.ice=効果: 氷の粒を撃ち出す
+dcs.tip.mace.impact=効果: 周囲のEntityを吹き飛ばす
+dcs.tip.mace.light=効果: 光線を撃ち出す
+dcs.tip.mace.moon=効果: 使用者を癒やし、悪いポーション効果を解除する
+dcs.tip.mace.ocean=効果: 使用者に海の加護を与える
 
 ## message
 dcs_climate.smelting=気候変化レシピ

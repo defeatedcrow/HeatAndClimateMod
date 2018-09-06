@@ -27,7 +27,8 @@ public class TileFauset_SUS extends DCTileEntity {
 				return;
 			else {
 				TileEntity toTE = world.getTileEntity(getPos().down());
-				if (toTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
+				if (toTE != null &&
+						toTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
 					IFluidHandler outtank = toTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
 					if (outtank != null) {
 						int limit = 1000; // 1000mBずつ

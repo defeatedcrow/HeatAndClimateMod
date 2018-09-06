@@ -33,7 +33,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class AdvancedHUDEvent {
 
 	public static final AdvancedHUDEvent INSTANCE = new AdvancedHUDEvent();
-	public static final ResourceLocation TEX = new ResourceLocation(ClimateCore.PACKAGE_ID, "textures/gui/hud_climate_adv.png");
+	public static final ResourceLocation TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
+			"textures/gui/hud_climate_adv.png");
 
 	private int climate = 0;
 	private int count = 20;
@@ -111,8 +112,8 @@ public class AdvancedHUDEvent {
 						if (CoreConfigDC.enableSeasonEffect) {
 							EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 							int day = DCTimeHelper.getDay(world);
-							fr.drawString(season.getName() + " " + day, x + 5, y - 8, season.color.getColorValue(),
-									true);
+							fr.drawString(season.getName() + " " + day, x + 5, y -
+									8, season.color.getColorValue(), true);
 						}
 
 						Biome biome = Biome.getBiomeForId(biomeID);

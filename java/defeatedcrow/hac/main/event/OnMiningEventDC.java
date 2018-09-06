@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.event;
 import java.util.Random;
 
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
+import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
@@ -26,6 +27,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.CreateFluidSourceEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -44,6 +46,12 @@ public class OnMiningEventDC {
 					if (m == 9) {
 						hasCharm = true;
 					}
+				}
+			}
+
+			if (Loader.isModLoaded("baubles") && !hasCharm) {
+				if (DCPluginBaubles.hasBaublesCharm(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1, 9))) {
+					hasCharm = true;
 				}
 			}
 

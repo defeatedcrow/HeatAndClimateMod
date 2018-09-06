@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.ClimateMain;
@@ -41,6 +42,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -64,6 +66,11 @@ public class LivingMainEventDC {
 						if (m == 18) {
 							hasCharm = true;
 						}
+					}
+				}
+				if (Loader.isModLoaded("baubles") && !hasCharm) {
+					if (DCPluginBaubles.hasBaublesCharm(player, new ItemStack(MagicInit.pendant, 1, 18))) {
+						hasCharm = true;
 					}
 				}
 
@@ -128,8 +135,8 @@ public class LivingMainEventDC {
 			animal.getEntityWorld().spawnParticle(enumparticletypes, animal.posX +
 					animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F - animal.width, animal.posY + 0.5D +
 							animal.getEntityWorld().rand.nextFloat() * animal.height, animal.posZ +
-									animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F - animal.width, d0,
-					d1, d2);
+									animal.getEntityWorld().rand.nextFloat() * animal.width * 2.0F -
+									animal.width, d0, d1, d2);
 		}
 	}
 
@@ -143,8 +150,8 @@ public class LivingMainEventDC {
 			if (num > -1) {
 				int cx2 = (num % 3) + cx - 1;
 				int cz2 = (num / 3) + cz - 1;
-				if (CaravanGenPos.canGenerateBiome(cx2, cz2, living.getEntityWorld()) && !CaravanGenPos.isDupe(cx2, cz2,
-						living.getEntityWorld())) {
+				if (CaravanGenPos.canGenerateBiome(cx2, cz2, living.getEntityWorld()) &&
+						!CaravanGenPos.isDupe(cx2, cz2, living.getEntityWorld())) {
 					event.setResult(Result.DENY);
 				}
 			}
@@ -179,8 +186,8 @@ public class LivingMainEventDC {
 					player.fallDistance = 0.0F;
 				}
 				if (MainCoreConfig.pendant_schorl) {
-					if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10)) && player.isPotionActive(
-							MobEffects.SPEED)) {
+					if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10)) &&
+							player.isPotionActive(MobEffects.SPEED)) {
 						player.stepHeight = 1.0F;
 					} else {
 						player.stepHeight = 0.6F;
@@ -289,8 +296,9 @@ public class LivingMainEventDC {
 			World world = player.world;
 
 			if ((!DCUtil.isEmpty(player.getHeldItemMainhand()) &&
-					player.getHeldItemMainhand().getItem() == MainInit.scope) || (!DCUtil.isEmpty(
-							player.getHeldItemOffhand()) && player.getHeldItemOffhand().getItem() == MainInit.scope)) {
+					player.getHeldItemMainhand().getItem() == MainInit.scope) ||
+					(!DCUtil.isEmpty(player.getHeldItemOffhand()) &&
+							player.getHeldItemOffhand().getItem() == MainInit.scope)) {
 
 				EnumFacing face = player.getHorizontalFacing();
 				BlockPos pos = player.getPosition().offset(face, 2);
@@ -311,22 +319,19 @@ public class LivingMainEventDC {
 										double px = mpos.getX() + 0.5D;
 										double py = mpos.getY() + 0.5D;
 										double pz = mpos.getZ() + 0.5D;
-										Particle shock = new ParticleTempColor.Factory().createParticle(0, world, px,
-												py, pz, 0D, 0D, 0D, h1.getColor());
+										Particle shock = new ParticleTempColor.Factory().createParticle(0, world, px, py, pz, 0D, 0D, 0D, h1.getColor());
 										FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 									}
 								}
 							} else {
-								DCHeatTier h1 = ClimateAPI.registerBlock.getHeatTier(state.getBlock(),
-										state.getBlock().getMetaFromState(state));
+								DCHeatTier h1 = ClimateAPI.registerBlock.getHeatTier(state.getBlock(), state.getBlock().getMetaFromState(state));
 								if (h1 != DCHeatTier.NORMAL) {
 									IBlockState s2 = world.getBlockState(mpos.up());
 									if (!s2.getBlock().isSideSolid(s2, world, mpos.up(), EnumFacing.DOWN)) {
 										double px = mpos.getX() + 0.5D;
 										double py = mpos.getY() + 0.5D;
 										double pz = mpos.getZ() + 0.5D;
-										Particle shock = new ParticleTempColor.Factory().createParticle(0, world, px,
-												py, pz, 0D, 0D, 0D, h1.getColor());
+										Particle shock = new ParticleTempColor.Factory().createParticle(0, world, px, py, pz, 0D, 0D, 0D, h1.getColor());
 										FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 									}
 								}

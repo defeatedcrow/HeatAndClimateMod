@@ -6,11 +6,10 @@ import java.util.Random;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.core.base.DCSidedBlock;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.util.DCTimeHelper;
-import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.recipes.BlockContainerUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -39,11 +38,10 @@ public class CaravanGenEvent {
 
 	@SubscribeEvent
 	public void populate(PopulateChunkEvent.Post event) {
-		if (!event.isHasVillageGenerated() && CaravanGenPos.isSuitableChunk(event.getChunkX(), event.getChunkZ(),
-				event.getWorld())) {
+		if (!event.isHasVillageGenerated() &&
+				CaravanGenPos.isSuitableChunk(event.getChunkX(), event.getChunkZ(), event.getWorld())) {
 			WorldGenCaravanBase wgn = new WorldGenCaravanBase();
-			wgn.generate(event.getRand(), event.getChunkX(), event.getChunkZ(), event.getWorld(), event.getGen(),
-					event.getWorld().getChunkProvider());
+			wgn.generate(event.getRand(), event.getChunkX(), event.getChunkZ(), event.getWorld(), event.getGen(), event.getWorld().getChunkProvider());
 		}
 	}
 
@@ -81,8 +79,8 @@ public class CaravanGenEvent {
 							lla.setPosition(px + 3D, 69, pz);
 							world.spawnEntity(lla);
 						} else {
-							List<Entity> list = world.getEntitiesInAABBexcluding(null, new AxisAlignedBB(pos.add(-5, 0,
-									-5), pos.add(20, 1, 20)), EntitySelectors.IS_ALIVE);
+							List<Entity> list = world.getEntitiesInAABBexcluding(null, new AxisAlignedBB(
+									pos.add(-5, 0, -5), pos.add(20, 1, 20)), EntitySelectors.IS_ALIVE);
 							EntityVillager vil1 = null;
 							EntityVillager vil2 = null;
 							for (Entity e : list) {
@@ -151,8 +149,7 @@ public class CaravanGenEvent {
 						DCLogger.debugLog("Broken Caravanserai: " + cx + ", " + cz);
 						world.setBlockState(pos.add(7, -4, 7), Blocks.LAPIS_BLOCK.getDefaultState(), 2);
 					}
-					world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(
-							DCState.TYPE16, season.id), 2);
+					world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(DCState.TYPE16, season.id), 2);
 				}
 
 			} else if (type == CaravanType.BROKEN) {
@@ -169,8 +166,7 @@ public class CaravanGenEvent {
 						DCLogger.debugLog("Caravanserai Reconstructed: " + cx + ", " + cz);
 						world.setBlockState(pos.add(7, -4, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
 					}
-					world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(
-							DCState.TYPE16, season.id), 2);
+					world.setBlockState(pos.add(8, -4, 8), MainInit.gemBlock.getDefaultState().withProperty(DCState.TYPE16, season.id), 2);
 				}
 			}
 		}
@@ -187,7 +183,7 @@ public class CaravanGenEvent {
 		for (int x : i) {
 			BlockPos p1 = rotate(pos, x, 1, 8, face);
 			BlockPos p2 = rotate(pos, x + 1, 1, 8, face);
-			IBlockState cont = getRondomContainer2(rand);
+			IBlockState cont = BlockContainerUtil.INS.getRondomContainer2(rand);
 			world.setBlockState(p1, cont, 2);
 			world.setBlockState(p2, cont, 2);
 			if (rand.nextBoolean()) {
@@ -220,7 +216,7 @@ public class CaravanGenEvent {
 
 		for (int x = 5; x < 11; x++) {
 			BlockPos p3 = rotate(pos, x, 1, 9, face);
-			IBlockState cont = getRondomContainer1(rand);
+			IBlockState cont = BlockContainerUtil.INS.getRondomContainer1(rand);
 			world.setBlockState(p3, cont, 2);
 			if (rand.nextBoolean()) {
 				BlockPos p4 = rotate(pos, x, 2, 9, face);
@@ -228,54 +224,11 @@ public class CaravanGenEvent {
 			}
 			if (rand.nextBoolean()) {
 				BlockPos p4 = rotate(pos, x, 1, 8, face);
-				IBlockState cont2 = getRondomContainer1(rand);
+				IBlockState cont2 = BlockContainerUtil.INS.getRondomContainer1(rand);
 				world.setBlockState(p4, cont2, 2);
 			}
 		}
 
-	}
-
-	private IBlockState getRondomContainer1(Random rand) {
-		int r = rand.nextInt(20);
-		if (r == 19) {
-			return Blocks.REDSTONE_LAMP.getDefaultState();
-		} else if (r == 18) {
-			return Blocks.BOOKSHELF.getDefaultState();
-		} else if (r == 17) {
-			return Blocks.PUMPKIN.getDefaultState();
-		} else if (r == 16) {
-			return Blocks.JUKEBOX.getDefaultState();
-		} else if (r == 15) {
-			return Blocks.SPONGE.getDefaultState();
-		} else if (r == 14) {
-			return Blocks.CAULDRON.getDefaultState();
-		} else if (r == 13) {
-			return MachineInit.fuelCont.getDefaultState();
-		} else if (r > 8) {
-			r -= 9;
-			return MainInit.dustBags.getDefaultState().withProperty(DCState.TYPE8, r);
-		} else if (r > 5) {
-			r -= 5;
-			return MainInit.miscCont.getDefaultState().withProperty(DCState.TYPE16, r);
-		} else {
-			return MainInit.dropCont.getDefaultState().withProperty(DCState.TYPE16, r);
-		}
-	}
-
-	private IBlockState getRondomContainer2(Random rand) {
-		int r = rand.nextInt(12);
-		int r2 = rand.nextInt(3);
-		if (r2 == 1) {
-			if (r <= ((DCSimpleBlock) MainInit.cropCont).maxMeta)
-				return MainInit.cropCont.getDefaultState().withProperty(DCState.TYPE16, r);
-		} else if (r2 == 2) {
-			if (r <= ((DCSimpleBlock) MainInit.cropBasket).maxMeta)
-				return MainInit.cropBasket.getDefaultState().withProperty(DCState.TYPE16, r);
-		} else {
-			if (r / 2 <= ((DCSidedBlock) MainInit.cardboard).maxMeta)
-				return MainInit.cardboard.getDefaultState().withProperty(DCState.TYPE8, r / 2);
-		}
-		return Blocks.AIR.getDefaultState();
 	}
 
 	private BlockPos rotate(BlockPos pos, int x, int y, int z, EnumFacing face) {

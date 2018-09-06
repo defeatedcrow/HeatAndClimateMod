@@ -104,6 +104,7 @@ import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
+import defeatedcrow.hac.main.recipes.BlockContainerUtil;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
 import defeatedcrow.hac.main.util.DCRegistryUtil;
 import defeatedcrow.hac.main.villager.HaCTrade;
@@ -296,6 +297,8 @@ public class CommonMainProxy implements IGuiHandler {
 		if (ModuleConfig.magic) {
 			MagicRecipeRegister.load();
 		}
+
+		BlockContainerUtil.INS.init();
 	}
 
 	public void loadEntity() {

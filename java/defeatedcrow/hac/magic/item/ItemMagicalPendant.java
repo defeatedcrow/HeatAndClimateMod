@@ -10,10 +10,11 @@ import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -27,7 +28,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * インベントリの最上段に入れていると効果のあるアクセサリー類。
  * ペンダントは常時系or防御系効果を持ち、耐久値の概念がない。
  */
-public class ItemMagicalPendant extends DCItem implements IJewelCharm {
+public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 
 	private final int maxMeta;
 
@@ -182,9 +182,9 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 		int meta = charm.getMetadata();
 		if (player.isSneaking() && !player.world.isRemote && state != null) {
 			if (meta == 8) {
-				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() -
-						2, (double) pos.getZ() - 5, (double) pos.getX() + 5, (double) pos.getY() +
-								3, (double) pos.getZ() + 5);
+				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() - 2,
+						(double) pos.getZ() - 5, (double) pos.getX() + 5, (double) pos.getY() + 3, (double) pos.getZ() +
+								5);
 				List<EntityItem> drops = player.world.getEntitiesWithinAABB(EntityItem.class, aabb);
 				for (EntityItem drop : drops) {
 					drop.setPosition(player.posX, player.posY + 0.5D, player.posZ);
@@ -291,11 +291,13 @@ public class ItemMagicalPendant extends DCItem implements IJewelCharm {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String s = "";
 		int meta = stack.getMetadata();
+		tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.tip.pendant." + meta));
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.comment.pendant." + meta));
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add(I18n.format("dcs.tip.allcharm"));
+			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.pendant." + meta));
 		} else {
-			tooltip.add(TextFormatting.YELLOW.toString() + I18n.translateToLocal("dcs.tip.pendant." + meta));
-			tooltip.add(TextFormatting.RESET.toString() + I18n.translateToLocal("dcs.tip.shift"));
+			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
 		}
 	}
 }
