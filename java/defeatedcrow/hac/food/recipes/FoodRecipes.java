@@ -41,20 +41,20 @@ public class FoodRecipes {
 	static void loadMillRecipe() {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), "seedRice");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
-				0.25F, new ItemStack(FoodInit.seeds, 2, 5));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				4), 0.25F, new ItemStack(FoodInit.seeds, 2, 5));
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.foodDust, 1, 4),
-				0.25F, new ItemStack(FoodInit.seeds, 2, 9));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.foodDust, 1,
+				4), 0.25F, new ItemStack(FoodInit.seeds, 2, 9));
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 4),
-				0.25F, "cropOlive");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				4), 0.25F, "cropOlive");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 8, 0), new ItemStack(MainInit.miscDust, 1, 4),
-				0.25F, new ItemStack(MainInit.cropBasket, 1, 7));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 8, 0), new ItemStack(MainInit.miscDust, 1,
+				4), 0.25F, new ItemStack(MainInit.cropBasket, 1, 7));
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1, 5),
-				0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				5), 0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
 
 	}
 

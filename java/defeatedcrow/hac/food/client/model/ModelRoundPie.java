@@ -16,19 +16,19 @@ public class ModelRoundPie extends DCFoodModelBase {
 	public ModelRoundPie(boolean baked) {
 		super(baked);
 
-		textureWidth = 64;
-		textureHeight = 32;
+		textureWidth = 32;
+		textureHeight = 16;
 
 		raw = new ModelRenderer(this, 0, 0);
 		raw.addBox(-4F, 7F, -3F, 6, 1, 6);
 		raw.setRotationPoint(0F, -8F, 0F);
-		raw.setTextureSize(64, 32);
+		raw.setTextureSize(32, 16);
 		raw.mirror = true;
 		setRotation(raw, 0F, 0F, 0F);
 		bake = new ModelRenderer(this, 0, 0);
 		bake.addBox(-4F, 4F, -3F, 6, 4, 6);
 		bake.setRotationPoint(0F, -8F, 0F);
-		bake.setTextureSize(64, 32);
+		bake.setTextureSize(32, 16);
 		bake.mirror = true;
 		setRotation(bake, 0F, 0F, 0F);
 	}
