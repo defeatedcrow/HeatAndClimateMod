@@ -40,13 +40,14 @@ public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCo
 				"rice",
 				"starch",
 				"seed",
-				"soy"
+				"soy",
+				"riceseed"
 		};
 		return name;
 	}
 
 	public static ItemStack[] containedItem() {
-		ItemStack[] ret = new ItemStack[7];
+		ItemStack[] ret = new ItemStack[8];
 		ret[0] = new ItemStack(Items.SUGAR, 8);
 		ret[1] = new ItemStack(MainInit.foodMaterials, 8, 0);
 		ret[2] = new ItemStack(MainInit.foodMaterials, 8, 1);
@@ -54,6 +55,7 @@ public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCo
 		ret[4] = new ItemStack(MainInit.foodMaterials, 8, 3);
 		ret[5] = new ItemStack(Items.WHEAT_SEEDS, 8);
 		ret[6] = new ItemStack(FoodInit.seeds, 8, 9);
+		ret[7] = new ItemStack(FoodInit.seeds, 8, 0);
 
 		return ret;
 	}
@@ -61,8 +63,6 @@ public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCo
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 7;
-		if (m > 6)
-			m = 6;
 		String b = "dcs_climate:blocks/cont/bags";
 		switch (side) {
 		case 0:
@@ -87,6 +87,8 @@ public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCo
 		list.add(b + "_t_rice");
 		list.add(b + "_t_starch");
 		list.add(b + "_t_seed");
+		list.add(b + "_t_soy");
+		list.add(b + "_t_riceseed");
 		list.add(b + "_s");
 		list.add(b + "_b");
 		return list;
@@ -95,8 +97,6 @@ public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCo
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 7;
-		if (m > 6)
-			m = 6;
 		String b = "dcs_climate:items/block/cont/";
 		return b + "bags_" + getNameSuffix()[m];
 	}

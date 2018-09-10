@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.worldgen;
 import java.util.Random;
 
 import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
+import defeatedcrow.hac.food.block.crop.BlockSaplingDC2;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
@@ -13,14 +14,21 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class WorldGenDCTree extends WorldGenAbstractTree {
-	private static final IBlockState LOG = Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT,
-			BlockPlanks.EnumType.OAK);
+	private final IBlockState LOG;
 	private final IBlockState LEAF;
 	private final int H;
 
 	public WorldGenDCTree(boolean notify, IBlockState leaf, int i) {
 		super(notify);
 		LEAF = leaf;
+		LOG = Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK);
+		H = i;
+	}
+
+	public WorldGenDCTree(boolean notify, IBlockState leaf, IBlockState log, int i) {
+		super(notify);
+		LEAF = leaf;
+		LOG = log;
 		H = i;
 	}
 
@@ -33,13 +41,16 @@ public class WorldGenDCTree extends WorldGenAbstractTree {
 		if (pos.getY() >= 1 && pos.getY() + i + 1 <= 256) {
 			for (int j = pos.getY(); j <= pos.getY() + 1 + i; ++j) {
 				int k = 1;
+				if (H > 5) {
+					k++;
+				}
 
 				if (j == pos.getY()) {
-					k = 0;
+					k -= 1;
 				}
 
 				if (j >= pos.getY() + 1 + i - 2) {
-					k = 2;
+					k += 1;
 				}
 
 				BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
@@ -66,9 +77,13 @@ public class WorldGenDCTree extends WorldGenAbstractTree {
 				if (pos.getY() < world.getHeight() - i - 1) {
 					state.getBlock().onPlantGrow(state, world, down, pos);
 
-					for (int i2 = pos.getY() - 3 + i; i2 <= pos.getY() + i; ++i2) {
+					int ki = (H < 6) ? 0 : 1;
+					for (int i2 = pos.getY() - 3 - ki + i; i2 <= pos.getY() + i; ++i2) {
 						int k2 = i2 - (pos.getY() + i);
-						int l2 = 1 - k2 / 2;
+						int l2 = 1 - k2;
+						if (l2 > 2 + ki) {
+							l2 = 2 + ki;
+						}
 
 						for (int i3 = pos.getX() - l2; i3 <= pos.getX() + l2; ++i3) {
 							int j1 = i3 - pos.getX();
@@ -80,8 +95,7 @@ public class WorldGenDCTree extends WorldGenAbstractTree {
 									BlockPos blockpos = new BlockPos(i3, i2, k1);
 									IBlockState state2 = world.getBlockState(blockpos);
 
-									if (state2.getBlock().isAir(state2, world, blockpos)
-											|| state2.getBlock().isAir(state2, world, blockpos)) {
+									if (state2.getBlock().isAir(state2, world, blockpos)) {
 										this.setBlockAndNotifyAdequately(world, blockpos, LEAF);
 									}
 								}
@@ -93,8 +107,8 @@ public class WorldGenDCTree extends WorldGenAbstractTree {
 						BlockPos upN = pos.up(j2);
 						IBlockState state2 = world.getBlockState(upN);
 
-						if (state2.getBlock().isAir(state2, world, upN)
-								|| state2.getBlock().isLeaves(state2, world, upN)) {
+						if (state2.getBlock().isAir(state2, world, upN) ||
+								state2.getBlock().isLeaves(state2, world, upN)) {
 							this.setBlockAndNotifyAdequately(world, pos.up(j2), LOG);
 						}
 					}
@@ -111,6 +125,7 @@ public class WorldGenDCTree extends WorldGenAbstractTree {
 
 	@Override
 	protected boolean canGrowInto(Block block) {
-		return (block instanceof BlockSaplingDC) ? true : super.canGrowInto(block);
+		return (block instanceof BlockSaplingDC) || (block instanceof BlockSaplingDC2) ? true :
+				super.canGrowInto(block);
 	}
 }

@@ -2,17 +2,13 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "minecraft:wheat_seeds",
-   "data": 0
-  },
-  {
-   "type": "forge:ore_dict",
-   "ore": "gemChalcedony"
+   "item": "dcs_climate:dcs_cont_bags",
+   "data": 7
   }
  ],
  "result": {
   "item": "dcs_climate:dcs_food_seeds",
-  "count": 1,
+  "count": 8,
   "data": 0
  }
 }

@@ -21,10 +21,8 @@ import net.minecraftforge.common.IPlantable;
 
 public class EntityFlowerPot extends DCEntityBase {
 
-	private static final DataParameter<ItemStack> FLOWER = EntityDataManager.<ItemStack>createKey(EntityFlowerPot.class,
-			DataSerializers.ITEM_STACK);
-	private static final DataParameter<Boolean> COLOR = EntityDataManager.<Boolean>createKey(EntityFlowerPot.class,
-			DataSerializers.BOOLEAN);
+	private static final DataParameter<ItemStack> FLOWER = EntityDataManager.<ItemStack>createKey(EntityFlowerPot.class, DataSerializers.ITEM_STACK);
+	private static final DataParameter<Boolean> COLOR = EntityDataManager.<Boolean>createKey(EntityFlowerPot.class, DataSerializers.BOOLEAN);
 
 	public EntityFlowerPot(World worldIn) {
 		super(worldIn);

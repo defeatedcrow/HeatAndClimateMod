@@ -14,7 +14,7 @@
         "flag=true,type=5": { "model": "dcs_climate:cont/dcs_cont_bags5", "y": 90 },
         "flag=false,type=6": { "model": "dcs_climate:cont/dcs_cont_bags6" },
         "flag=true,type=6": { "model": "dcs_climate:cont/dcs_cont_bags6", "y": 90 },
-        "flag=false,type=7": { "model": "dcs_climate:cont/dcs_cont_bags6" },
-        "flag=true,type=7": { "model": "dcs_climate:cont/dcs_cont_bags6", "y": 90 }
+        "flag=false,type=7": { "model": "dcs_climate:cont/dcs_cont_bags7" },
+        "flag=true,type=7": { "model": "dcs_climate:cont/dcs_cont_bags7", "y": 90 }
     }
 }

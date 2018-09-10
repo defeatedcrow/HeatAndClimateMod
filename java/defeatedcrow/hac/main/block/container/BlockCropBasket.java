@@ -42,13 +42,15 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 				"tea",
 				"lotus",
 				"mulberry",
-				"cocoon"
+				"cocoon",
+				"garlic",
+				"lettuce"
 		};
 		return name;
 	}
 
 	public static ItemStack[] containedItem() {
-		ItemStack[] ret = new ItemStack[12];
+		ItemStack[] ret = new ItemStack[14];
 		ret[0] = new ItemStack(FoodInit.crops, 8);
 		ret[1] = new ItemStack(FoodInit.crops, 8, 1);
 		ret[2] = new ItemStack(FoodInit.crops, 8, 2);
@@ -61,6 +63,8 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 		ret[9] = new ItemStack(FoodInit.crops, 8, 10);
 		ret[10] = new ItemStack(FoodInit.crops, 8, 11);
 		ret[11] = new ItemStack(MainInit.silkworm, 8, 2);
+		ret[12] = new ItemStack(FoodInit.crops, 8, 14);
+		ret[13] = new ItemStack(FoodInit.crops, 8, 15);
 
 		return ret;
 	}
@@ -68,8 +72,8 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 15;
-		if (m > 11)
-			m = 11;
+		if (m > 13)
+			m = 13;
 		String b = "dcs_climate:blocks/cont/basket";
 		switch (side) {
 		case 0:
@@ -105,8 +109,8 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 15;
-		if (m > 11)
-			m = 11;
+		if (m > 13)
+			m = 13;
 		String b = "dcs_climate:items/block/cont/";
 		return b + "basket_" + getNameSuffix()[m];
 	}

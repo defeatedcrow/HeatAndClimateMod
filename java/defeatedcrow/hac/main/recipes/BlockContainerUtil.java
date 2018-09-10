@@ -145,7 +145,7 @@ public class BlockContainerUtil {
 		ItemStack[] cont6 = BlockLogCont.containedItem();
 		for (int i6 = 0; i6 < cont6.length; i6++) {
 			ItemStack check = cont6[i6];
-			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
+			if (DCUtil.isSameItem(item, check, false)) {
 				return INS.new ReturnPair(new ItemStack(MainInit.logCont, 1, i6), 8);
 			}
 		}
@@ -205,9 +205,7 @@ public class BlockContainerUtil {
 		cont1.add(Blocks.ANVIL.getDefaultState());
 		cont1.add(Blocks.DISPENSER.getDefaultState());
 		if (MachineInit.fuelCont != null && ModuleConfig.machine) {
-			for (int i = 0; i < ((DCSimpleBlock) MachineInit.fuelCont).maxMeta; i++) {
-				cont1.add(MachineInit.fuelCont.getDefaultState().withProperty(DCState.TYPE16, i));
-			}
+			cont1.add(MachineInit.fuelCont.getDefaultState().withProperty(DCState.TYPE16, 0));
 		}
 		if (MainInit.miscCont != null) {
 			for (int i = 0; i < ((DCSimpleBlock) MainInit.miscCont).maxMeta; i++) {
@@ -233,6 +231,16 @@ public class BlockContainerUtil {
 		if (MainInit.cardboard != null) {
 			for (int i = 0; i < ((DCSidedBlock) MainInit.cardboard).maxMeta; i++) {
 				cont2.add(MainInit.cardboard.getDefaultState().withProperty(DCState.TYPE8, i));
+			}
+		}
+		if (MainInit.dustBags != null) {
+			for (int i = 0; i < ((DCSidedBlock) MainInit.dustBags).maxMeta; i++) {
+				cont2.add(MainInit.dustBags.getDefaultState().withProperty(DCState.TYPE8, i));
+			}
+		}
+		if (MainInit.cropJute != null) {
+			for (int i = 0; i < ((DCSimpleBlock) MainInit.cropJute).maxMeta; i++) {
+				cont2.add(MainInit.cropJute.getDefaultState().withProperty(DCState.TYPE16, i));
 			}
 		}
 	}

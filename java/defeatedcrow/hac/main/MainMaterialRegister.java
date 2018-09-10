@@ -54,6 +54,7 @@ import defeatedcrow.hac.main.block.build.ItemLowChest;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
+import defeatedcrow.hac.main.block.container.BlockCropJutebag;
 import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
@@ -992,13 +993,17 @@ public class MainMaterialRegister {
 				"_cont_cardboard", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.cardboard, "cont_cardboard", 5);
 
-		MainInit.dustBags = new BlockDustBag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_bags", 6);
+		MainInit.dustBags = new BlockDustBag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_bags", 7);
 		DCMaterialReg.registerBlock(MainInit.dustBags, ClimateCore.PACKAGE_BASE + "_cont_bags", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 6);
+		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 7);
 
-		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 11);
+		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 13);
 		DCMaterialReg.registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 11);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 13);
+
+		MainInit.cropJute = new BlockCropJutebag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_jutebag", 3);
+		DCMaterialReg.registerBlock(MainInit.cropJute, ClimateCore.PACKAGE_BASE + "_cont_jutebag", ClimateMain.MOD_ID);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropJute, "cont_jutebag", 3);
 
 	}
 

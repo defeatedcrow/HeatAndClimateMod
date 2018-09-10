@@ -58,12 +58,20 @@ public class FoodInit {
 	public static Block cropHerb;
 	public static Block cropSeaweed;
 	public static Block cropSoy;
+	public static Block cropGarlic;
+	public static Block cropChili;
+	public static Block cropLettuce;
+	public static Block cropBean;
 
 	public static Block leavesOlive;
 	public static Block leavesLemon;
 	public static Block leavesTea;
 	public static Block leavesMorus;
+	public static Block leavesWalnut;
+	public static Block leavesDates;
+	public static Block leavesDatesCrop;
 	public static Block saplings;
+	public static Block saplings2;
 	public static Block logs;
 
 }

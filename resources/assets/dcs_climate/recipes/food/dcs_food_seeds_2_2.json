@@ -2,8 +2,12 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
+   "item": "minecraft:carrot",
+   "data": 0
+  },
+  {
    "type": "forge:ore_dict",
-   "ore": "cropSpinach"
+   "ore": "gemChalcedony"
   }
  ],
  "result": {

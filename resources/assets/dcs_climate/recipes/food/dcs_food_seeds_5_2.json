@@ -2,8 +2,12 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
+   "item": "minecraft:reeds",
+   "data": 0
+  },
+  {
    "type": "forge:ore_dict",
-   "ore": "cropCotton"
+   "ore": "gemChalcedony"
   }
  ],
  "result": {

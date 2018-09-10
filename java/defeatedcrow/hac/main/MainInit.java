@@ -23,6 +23,7 @@ public class MainInit {
 	// cont
 	public static Block logCont;
 	public static Block cropCont;
+	public static Block cropJute;
 	public static Block dropCont;
 	public static Block miscCont;
 	public static Block cardboard;

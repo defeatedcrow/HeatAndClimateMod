@@ -20,7 +20,12 @@ public class ItemDCCrops extends DCFoodItem {
 			"herb",
 			"lotus_seed",
 			"mulberry",
-			"young_soy"
+			"young_soy",
+			"chili",
+			"garlic",
+			"lettuce",
+			"walnut",
+			"dates"
 	};
 
 	public ItemDCCrops(int max) {
@@ -51,9 +56,11 @@ public class ItemDCCrops extends DCFoodItem {
 	public int getFoodAmo(int meta) {
 		switch (meta) {
 		case 3:
+		case 17:
 			return 5;
 		case 10:
 		case 11:
+		case 15:
 			return 3;
 		case 1:
 		case 2:

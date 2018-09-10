@@ -156,6 +156,7 @@ public class MainCreativeTabRegister {
 		MainInit.miscCont.setCreativeTab(ClimateMain.cont);
 		MainInit.cardboard.setCreativeTab(ClimateMain.cont);
 		MainInit.cropBasket.setCreativeTab(ClimateMain.cont);
+		MainInit.cropJute.setCreativeTab(ClimateMain.cont);
 		MainInit.dustBags.setCreativeTab(ClimateMain.cont);
 
 		if (ModuleConfig.weapon_advanced) {

@@ -2,8 +2,12 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
+   "item": "minecraft:wheat_seeds",
+   "data": 0
+  },
+  {
    "type": "forge:ore_dict",
-   "ore": "cropRice"
+   "ore": "gemChalcedony"
   }
  ],
  "result": {

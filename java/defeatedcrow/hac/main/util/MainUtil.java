@@ -77,7 +77,7 @@ public class MainUtil {
 	}
 
 	public static ItemStack getRandomCrop(int i) {
-		int meta = DCUtil.rand.nextInt(13);
+		int meta = DCUtil.rand.nextInt(18);
 		return new ItemStack(FoodInit.crops, i, meta);
 	}
 
@@ -90,7 +90,7 @@ public class MainUtil {
 	}
 
 	public static ItemStack getRandomSeed(int i) {
-		int meta = DCUtil.rand.nextInt(10);
+		int meta = DCUtil.rand.nextInt(14);
 		return new ItemStack(FoodInit.seeds, i, meta);
 	}
 

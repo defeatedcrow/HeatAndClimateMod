@@ -2,8 +2,12 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
+   "item": "minecraft:beetroot",
+   "data": 0
+  },
+  {
    "type": "forge:ore_dict",
-   "ore": "cropTomato"
+   "ore": "gemChalcedony"
   }
  ],
  "result": {

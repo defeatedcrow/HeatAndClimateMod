@@ -70,8 +70,10 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 			return b + "olive";
 		case 2:
 			return b + "tea";
-		default:
+		case 3:
 			return b + "morus";
+		default:
+			return b + "lemon";
 		}
 	}
 
@@ -95,8 +97,10 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 			return b + "olive";
 		case 2:
 			return b + "tea";
-		default:
+		case 3:
 			return b + "morus";
+		default:
+			return b + "lemon";
 		}
 	}
 
@@ -154,25 +158,21 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 			WorldGenerator gen = null;
 			if (meta == 0) {
 				// lemon
-				IBlockState leaves = FoodInit.leavesLemon.getDefaultState().withProperty(DCState.STAGE4,
-						0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				IBlockState leaves = FoodInit.leavesLemon.getDefaultState().withProperty(DCState.STAGE4, 0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
 				gen = new WorldGenDCTree(true, leaves, 5);
 			} else if (meta == 1) {
 				// olive
-				IBlockState leaves = FoodInit.leavesOlive.getDefaultState().withProperty(DCState.STAGE4,
-						0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				IBlockState leaves = FoodInit.leavesOlive.getDefaultState().withProperty(DCState.STAGE4, 0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
 				gen = new WorldGenDCTree(true, leaves, 5);
 			} else if (meta == 3) {
 				// olive
-				IBlockState leaves = FoodInit.leavesMorus.getDefaultState().withProperty(DCState.STAGE4,
-						0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
-				gen = new WorldGenDCTree(true, leaves, 3);
+				IBlockState leaves = FoodInit.leavesMorus.getDefaultState().withProperty(DCState.STAGE4, 0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				gen = new WorldGenDCTree(true, leaves, 4);
 			}
 
 			if (gen != null) {
 				if (gen.generate(world, cropRand, pos)) {
-					world.setBlockState(pos, Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT,
-							BlockPlanks.EnumType.OAK), 3);
+					world.setBlockState(pos, Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK), 3);
 				}
 			} else {
 				IBlockState leaves = FoodInit.leavesTea.getDefaultState();

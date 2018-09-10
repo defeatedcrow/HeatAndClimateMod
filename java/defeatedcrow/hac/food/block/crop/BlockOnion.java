@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.food.FoodInit;
@@ -73,7 +74,10 @@ public class BlockOnion extends ClimateCropBase implements ITexturePath {
 
 	@Override
 	public ItemStack getSeedItem(IBlockState thisState) {
-		int i = 1 + cropRand.nextInt(2);
+		int i = 1;
+		if (this.getCurrentStage(thisState) == GrowingStage.GROWN) {
+			i = 1 + cropRand.nextInt(2);
+		}
 		return new ItemStack(FoodInit.seeds, i, 1);
 	}
 
