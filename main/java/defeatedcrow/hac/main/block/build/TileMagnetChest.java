@@ -31,8 +31,8 @@ public class TileMagnetChest extends TileLowChest {
 			double x2 = pos.getX() + 3.0D;
 			double y2 = pos.getY() + 3.0D;
 			double z2 = pos.getZ() + 3.0D;
-			List<EntityItem> list = this.world.<EntityItem>getEntitiesWithinAABB(EntityItem.class,
-					new AxisAlignedBB(x1, y1, z1, x2, y2, z2), EntitySelectors.IS_ALIVE);
+			List<EntityItem> list = this.world.<EntityItem>getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(x1,
+					y1, z1, x2, y2, z2), EntitySelectors.IS_ALIVE);
 
 			if (!list.isEmpty()) {
 				for (EntityItem drop : list) {
@@ -50,7 +50,7 @@ public class TileMagnetChest extends TileLowChest {
 							if (i > 0) {
 								this.incrStackInSlot(slot, drop.getItem());
 								this.markDirty();
-								DCUtil.reduceStackSize(copy, 1);
+								DCUtil.reduceStackSize(copy, i);
 								if (!DCUtil.isEmpty(copy) && copy.getCount() > 0) {
 									drop.setItem(copy);
 								} else {
