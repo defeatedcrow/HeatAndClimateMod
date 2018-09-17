@@ -18,7 +18,7 @@ public class ItemNoEntityFoods extends DCFoodItem {
 
 	public ItemNoEntityFoods() {
 		super(false);
-		maxMeta = 3;
+		maxMeta = 2;
 	}
 
 	@Override

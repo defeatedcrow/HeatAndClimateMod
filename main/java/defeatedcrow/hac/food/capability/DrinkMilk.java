@@ -48,27 +48,29 @@ public enum DrinkMilk {
 				FluidStack f = cont.getTankProperties()[0].getContents();
 				if (f != null && f.getFluid() != null) {
 					String name = FluidRegistry.getFluidName(f.getFluid());
-					if (name.contains("soy")) {
+					if (name.contains("soy") || name.contains("Soy")) {
 						return SOY;
-					} else if (name.contains("cream")) {
+					} else if (name.contains("cream") || name.contains("Cream")) {
 						return CREAM;
-					} else if (name.contains("milk")) {
+					} else if (name.contains("milk") || name.contains("Milk")) {
 						return MILK;
 					}
 				}
 			}
 			int[] ids = OreDictionary.getOreIDs(item);
+			DrinkMilk ret = DrinkMilk.NONE;
 			for (int i : ids) {
 				String name = OreDictionary.getOreName(i);
 				if (name.contains("soy") || name.contains("Soy")) {
-					return SOY;
+					ret = SOY;
 				} else if (name.contains("cream") || name.contains("Cream")) {
-					return CREAM;
+					ret = CREAM;
 				} else if (name.contains("milk") || name.contains("Milk")) {
-					return MILK;
+					if (ret != SOY)
+						ret = MILK;
 				}
 			}
-			return NONE;
+			return ret;
 		}
 	}
 }

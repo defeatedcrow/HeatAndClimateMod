@@ -226,6 +226,13 @@ public class FoodFluidRecipe {
 						new ItemStack(Blocks.RED_MUSHROOM, 1, 0)
 		});
 
+		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1,
+				6), null, 0F, null, DCHeatTier.SMELTING, null, null, false, new FluidStack(FluidRegistry.WATER,
+						1000), new Object[] {
+								"dustSalt",
+								"dustLime"
+		});
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
 				1), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
 						1000), new Object[] {
@@ -243,6 +250,7 @@ public class FoodFluidRecipe {
 	}
 
 	static void loadCookingRecipes() {
+		// materials
 		if (MainInit.milk != null) {
 			RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(MainInit.cream,
 					200), DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.milk, 1000), (Object[]) null);
@@ -280,6 +288,8 @@ public class FoodFluidRecipe {
 				MainInit.soyMilk, 1000), new Object[] {
 						"dustSalt"
 		});
+
+		// tea
 
 		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.coffee, 1000), null, null, false, new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
@@ -324,6 +334,8 @@ public class FoodFluidRecipe {
 		salt2.requiredHum().add(DCHumidity.NORMAL);
 		salt2.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerFluidRecipes.addRecipe(salt2, DCHeatTier.BOIL);
+
+		// food
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 1,
 				2), null, 0F, null, DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
@@ -394,6 +406,14 @@ public class FoodFluidRecipe {
 						500), new Object[] {
 								"dustSalt",
 								"bucketWater"
+		});
+
+		// cooking
+
+		regBoilrecipe(new ItemStack(FoodInit.bread, 1, 9), null, 0F, null, null, null, false, null, new Object[] {
+				"bread",
+				"egg",
+				"bucketMilk"
 		});
 
 		regBoilrecipe(new ItemStack(FoodInit.ricebowl, 1, 0), null, 0F, null, null, null, false, new FluidStack(
@@ -525,6 +545,113 @@ public class FoodFluidRecipe {
 						"foodMiso"
 		});
 
+		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 13), null, 0F, null, null, null, false, null, new Object[] {
+				new ItemStack(Items.COOKED_BEEF),
+				"cropChilipepper",
+				"cropBean"
+		});
+
+		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 14), null, 0F, null, null, null, false, new FluidStack(
+				MainInit.oil, 1000), new Object[] {
+						"cropMushroom",
+						"cropChilipepper",
+						"cropGarlic"
+		});
+
+		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 15), null, 0F, null, null, null, false, new FluidStack(
+				MainInit.oil, 200), new Object[] {
+						new ItemStack(FoodInit.deepFry, 1, 1),
+						"cropChilipepper",
+						"cropHerb"
+		});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.salad, 2,
+				7), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, null, new Object[] {
+						"cropSoybean",
+						"cropRice"
+		});
+
+		if (MainInit.milk != null) {
+			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+					MainInit.milk, 1000), new Object[] {
+							new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0),
+							new ItemStack(Blocks.RED_MUSHROOM, 1, 0),
+							"foodButter"
+			});
+
+			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 7), null, 0F, null, null, null, false, new FluidStack(
+					MainInit.milk, 1000), new Object[] {
+							"cropOnion",
+							new ItemStack(Items.CHORUS_FRUIT, 1, 0)
+			});
+		}
+
+		// frying
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
+				0), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] {
+								new ItemStack(Items.PORKCHOP),
+								"foodFlour",
+								"egg"
+		});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
+				1), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] {
+								new ItemStack(Items.CHICKEN),
+								"foodFlour"
+		});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
+				2), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] {
+								"foodFish",
+								"foodFlour",
+								"egg"
+		});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
+				2), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] {
+								"listAllfishraw",
+								"foodFlour",
+								"egg"
+		});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
+				3), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] {
+								"cropBean",
+								"cropOnion",
+								"cropGarlic"
+		});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.snack, 1,
+				0), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] {
+								"cropPotato",
+								"dustSalt"
+		});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.snack, 1,
+				2), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] {
+								"cropPotato",
+								"foodFlour",
+								"bread"
+		});
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.snack, 1,
+				3), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] {
+								"cropPumpkin",
+								"foodFlour",
+								"bread"
+		});
+
+		// sweets
+
 		regBoilrecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 				MainInit.coffee, 1000), new Object[] {
 						"dustSugar",
@@ -594,20 +721,24 @@ public class FoodFluidRecipe {
 						"dropMolasses"
 		});
 
-		if (MainInit.milk != null) {
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null, null, null, false, new FluidStack(
-					MainInit.milk, 1000), new Object[] {
-							new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0),
-							new ItemStack(Blocks.RED_MUSHROOM, 1, 0),
-							"foodButter"
-			});
+		regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 0), null, 0F, null, null, null, false, new FluidStack(
+				FluidRegistry.WATER, 200), new Object[] {
+						"egg",
+						"dustSugar",
+						"foodGelatine"
+		});
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 7), null, 0F, null, null, null, false, new FluidStack(
-					MainInit.milk, 1000), new Object[] {
-							"cropOnion",
-							new ItemStack(Items.CHORUS_FRUIT, 1, 0)
-			});
-		}
+		regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 2), null, 0F, null, null, null, false, null, new Object[] {
+				"listAllnut",
+				"dustSugar",
+				"foodButter"
+		});
+
+		regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 2), null, 0F, null, null, null, false, null, new Object[] {
+				"listAllnut",
+				"dropMolasses",
+				"foodButter"
+		});
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
 				3), null, 0F, null, DCHeatTier.COLD, DCHumidity.DRY, null, false, null, new Object[] {

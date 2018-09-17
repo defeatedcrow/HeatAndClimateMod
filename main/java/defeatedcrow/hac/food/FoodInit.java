@@ -27,6 +27,7 @@ public class FoodInit {
 	public static Item wagashi;
 	public static Item snack;
 	public static Item deepFry;
+	public static Item setMeal;
 
 	public static Item crops;
 	public static Item seeds;

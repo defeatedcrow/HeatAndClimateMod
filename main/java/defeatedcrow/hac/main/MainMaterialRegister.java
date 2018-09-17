@@ -239,7 +239,7 @@ public class MainMaterialRegister {
 		MainInit.miscDust = new ItemMiscDust(12).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		DCMaterialReg.registerItem(MainInit.miscDust, ClimateCore.PACKAGE_BASE + "_miscdust", ClimateMain.MOD_ID);
 
-		MainInit.foodDust = new ItemFoodDust(5).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fooddust");
+		MainInit.foodDust = new ItemFoodDust(6).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fooddust");
 		DCMaterialReg.registerItem(MainInit.foodDust, ClimateCore.PACKAGE_BASE + "_fooddust", ClimateMain.MOD_ID);
 
 		// tools

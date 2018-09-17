@@ -8,11 +8,19 @@
   {
    "type": "forge:ore_dict",
    "ore": "cropCarrot"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodSoysauce"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropChilipepper"
   }
  ],
  "result": {
   "item": "dcs_climate:dcs_food_salad",
-  "count": 1,
+  "count": 2,
   "data": 2
  }
 }

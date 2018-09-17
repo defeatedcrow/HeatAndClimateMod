@@ -7,11 +7,15 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.PancakeEntity;
+import defeatedcrow.hac.food.entity.PitaBreadEntity;
 import defeatedcrow.hac.food.entity.PizzaTomatoEntity;
 import defeatedcrow.hac.food.entity.RoundBreadCreamEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
 import defeatedcrow.hac.food.entity.ToastBreadEntity;
+import defeatedcrow.hac.food.entity.ToastFrenchEntity;
+import defeatedcrow.hac.food.entity.ToastGarlicEntity;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,12 +33,12 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 13;
+		return 15;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 13);
+		int i = MathHelper.clamp(0, meta, 15);
 		String s = "items/food/" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -58,7 +62,9 @@ public class RoundBreadItem extends FoodItemBase {
 				"garlic_toast_raw",
 				"garlic_toast_baked",
 				"pita_bread_raw",
-				"pita_bread_baked"
+				"pita_bread_baked",
+				"pancake_raw",
+				"pancake_baked"
 		};
 		return s;
 	}
@@ -82,6 +88,18 @@ public class RoundBreadItem extends FoodItemBase {
 		if (i == 8) {
 			ret = new RoundBreadCreamEntity(world, x, y, z, player);
 		}
+		if (i == 9) {
+			ret = new ToastFrenchEntity(world, x, y, z, player);
+		}
+		if (i == 10 || i == 11) {
+			ret = new ToastGarlicEntity(world, x, y, z, player);
+		}
+		if (i == 12 || i == 13) {
+			ret = new PitaBreadEntity(world, x, y, z, player);
+		}
+		if (i == 14 || i == 15) {
+			ret = new PancakeEntity(world, x, y, z, player);
+		}
 
 		if ((i & 1) == 0) {
 			ret.setRAW(true);
@@ -103,6 +121,7 @@ public class RoundBreadItem extends FoodItemBase {
 		case 13:
 			return 7;
 		case 11:
+		case 15:
 			return 8;
 		case 5:
 		case 10:

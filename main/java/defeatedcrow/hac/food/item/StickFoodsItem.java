@@ -11,6 +11,7 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
 import defeatedcrow.hac.food.entity.GoheiStickEntity;
+import defeatedcrow.hac.food.entity.MarshmallowStick;
 import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.SquidStickEntity;
@@ -104,6 +105,10 @@ public class StickFoodsItem extends FoodItemBase {
 		case 13:
 			ret = new GoheiStickEntity(world, x, y, z, player);
 			break;
+		case 14:
+		case 15:
+			ret = new MarshmallowStick(world, x, y, z, player);
+			break;
 		default:
 			ret = new FishStickEntity(world, x, y, z, player);
 		}
@@ -132,6 +137,8 @@ public class StickFoodsItem extends FoodItemBase {
 			return 9;
 		case 13:
 			return 8;
+		case 14:
+			return 2;
 		case 15:
 			return 6;
 		default:
@@ -153,7 +160,7 @@ public class StickFoodsItem extends FoodItemBase {
 	@Override
 	public List<PotionEffect> getPotionEffect(int meta) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
-		if ((meta & 1) == 0) {
+		if ((meta & 1) == 0 && meta != 14) {
 			ret.add(new PotionEffect(MobEffects.HUNGER, 300, 0));
 		}
 		return ret;

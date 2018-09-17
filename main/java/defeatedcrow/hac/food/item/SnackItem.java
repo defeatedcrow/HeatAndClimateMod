@@ -7,10 +7,12 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.EggSandwichEntity;
-import defeatedcrow.hac.food.entity.EntitySandwich;
-import defeatedcrow.hac.food.entity.LemonSandwichEntity;
-import defeatedcrow.hac.food.entity.SaladSandwichEntity;
+import defeatedcrow.hac.food.entity.MealCroquettePotatoEntity;
+import defeatedcrow.hac.food.entity.MealCroquettePumpkinEntity;
+import defeatedcrow.hac.food.entity.MealFalafelSandEntity;
+import defeatedcrow.hac.food.entity.MealFishAndChipsEntity;
+import defeatedcrow.hac.food.entity.MealFriedPotatoEntity;
+import defeatedcrow.hac.food.entity.MealShawarmaEntity;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,11 +46,11 @@ public class SnackItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"fryed_potato",
+				"fried_potato",
 				"fish_and_chips",
 				"croquette_potato",
 				"croquette_pumpkin",
-				"sawarma",
+				"shawarma",
 				"falafel_sandwich"
 		};
 		return s;
@@ -57,27 +59,33 @@ public class SnackItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new EntitySandwich(world, x, y, z, player);
+		FoodEntityBase ret = new MealFriedPotatoEntity(world, x, y, z, player);
 		if (i == 1) {
-			ret = new EggSandwichEntity(world, x, y, z, player);
+			ret = new MealFishAndChipsEntity(world, x, y, z, player);
 		}
 		if (i == 2) {
-			ret = new LemonSandwichEntity(world, x, y, z, player);
+			ret = new MealCroquettePotatoEntity(world, x, y, z, player);
 		}
 		if (i == 3) {
-			ret = new SaladSandwichEntity(world, x, y, z, player);
+			ret = new MealCroquettePumpkinEntity(world, x, y, z, player);
+		}
+		if (i == 4) {
+			ret = new MealShawarmaEntity(world, x, y, z, player);
+		}
+		if (i == 5) {
+			ret = new MealFalafelSandEntity(world, x, y, z, player);
 		}
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta * 2 + 6;
+		return 12;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.25F;
+		return 0.4F;
 	}
 
 	@Override

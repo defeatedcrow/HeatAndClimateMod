@@ -9,8 +9,11 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.StewBorschtEntity;
+import defeatedcrow.hac.food.entity.StewChiliEntity;
 import defeatedcrow.hac.food.entity.StewCongeeEntity;
 import defeatedcrow.hac.food.entity.StewEggEntity;
+import defeatedcrow.hac.food.entity.StewGarlicOilEntity;
+import defeatedcrow.hac.food.entity.StewLazijiEntity;
 import defeatedcrow.hac.food.entity.StewLotusrootEntity;
 import defeatedcrow.hac.food.entity.StewMisosoupEntity;
 import defeatedcrow.hac.food.entity.StewMotsuEntity;
@@ -102,6 +105,12 @@ public class StewBowlItem extends FoodItemBase {
 			ret = new StewMisosoupEntity(world, x, y, z, player);
 		} else if (i == 12) {
 			ret = new StewMotsuEntity(world, x, y, z, player);
+		} else if (i == 13) {
+			ret = new StewChiliEntity(world, x, y, z, player);
+		} else if (i == 14) {
+			ret = new StewGarlicOilEntity(world, x, y, z, player);
+		} else if (i == 15) {
+			ret = new StewLazijiEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		DCLogger.debugLog("individual " + ret.getIndividual());
@@ -136,6 +145,12 @@ public class StewBowlItem extends FoodItemBase {
 		case 11:
 			return 12;
 		case 12:
+			return 16;
+		case 13:
+			return 16;
+		case 14:
+			return 12;
+		case 15:
 			return 16;
 		}
 		return 0;

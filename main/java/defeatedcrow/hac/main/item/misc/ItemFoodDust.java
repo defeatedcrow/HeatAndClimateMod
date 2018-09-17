@@ -13,7 +13,8 @@ public class ItemFoodDust extends DCItem {
 			"molasses",
 			"malt",
 			"defatted_soy",
-			"soy_pulp"
+			"soy_pulp",
+			"baking_soda"
 	};
 
 	public ItemFoodDust(int max) {
@@ -33,6 +34,7 @@ public class ItemFoodDust extends DCItem {
 	 * 3: 麦芽
 	 * 4: 脱脂大豆
 	 * 5: おから
+	 * 6: 重曹
 	 */
 	@Override
 	public String[] getNameSuffix() {

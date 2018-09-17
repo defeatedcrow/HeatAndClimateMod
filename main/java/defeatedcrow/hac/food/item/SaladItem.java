@@ -10,7 +10,9 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.SaladGreenEntity;
 import defeatedcrow.hac.food.entity.SaladLotusrootEntity;
 import defeatedcrow.hac.food.entity.SaladPotatoEntity;
+import defeatedcrow.hac.food.entity.SimmeredBeansEntity;
 import defeatedcrow.hac.food.entity.SimmeredGomokuEntity;
+import defeatedcrow.hac.food.entity.SimmeredNattoEntity;
 import defeatedcrow.hac.food.entity.SimmeredSoyEntity;
 import defeatedcrow.hac.food.entity.SimmeredSpinachEntity;
 import defeatedcrow.hac.main.util.EnumFixedName;
@@ -80,6 +82,12 @@ public class SaladItem extends FoodItemBase {
 		}
 		if (i == 5) {
 			ret = new SimmeredSpinachEntity(world, x, y, z, player);
+		}
+		if (i == 6) {
+			ret = new SimmeredBeansEntity(world, x, y, z, player);
+		}
+		if (i == 7) {
+			ret = new SimmeredNattoEntity(world, x, y, z, player);
 		}
 		return ret;
 	}

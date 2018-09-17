@@ -7,10 +7,10 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.EggSandwichEntity;
-import defeatedcrow.hac.food.entity.EntitySandwich;
-import defeatedcrow.hac.food.entity.LemonSandwichEntity;
-import defeatedcrow.hac.food.entity.SaladSandwichEntity;
+import defeatedcrow.hac.food.entity.FriedChickenEntity;
+import defeatedcrow.hac.food.entity.FriedFalafelEntity;
+import defeatedcrow.hac.food.entity.FriedFishEntity;
+import defeatedcrow.hac.food.entity.FriedPorkEntity;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,15 +55,15 @@ public class DeepFryItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new EntitySandwich(world, x, y, z, player);
+		FoodEntityBase ret = new FriedPorkEntity(world, x, y, z, player);
 		if (i == 1) {
-			ret = new EggSandwichEntity(world, x, y, z, player);
+			ret = new FriedChickenEntity(world, x, y, z, player);
 		}
 		if (i == 2) {
-			ret = new LemonSandwichEntity(world, x, y, z, player);
+			ret = new FriedFishEntity(world, x, y, z, player);
 		}
 		if (i == 3) {
-			ret = new SaladSandwichEntity(world, x, y, z, player);
+			ret = new FriedFalafelEntity(world, x, y, z, player);
 		}
 		return ret;
 	}

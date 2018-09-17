@@ -26,6 +26,7 @@ public class ToastBreadEntity extends FoodEntityBase {
 	protected ItemStack[] drops() {
 		return new ItemStack[] {
 				new ItemStack(FoodInit.bread, 1, 4),
-				new ItemStack(FoodInit.bread, 1, 5) };
+				new ItemStack(FoodInit.bread, 1, 5)
+		};
 	}
 }

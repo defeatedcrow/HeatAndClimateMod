@@ -186,6 +186,9 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodDough", new ItemStack(FoodInit.bread, 1, 0));
 		OreDictionary.registerOre("foodRicebowl", new ItemStack(FoodInit.ricebowl, 1, 0));
 		OreDictionary.registerOre("foodRicecake", new ItemStack(FoodInit.mochi, 1, 1));
+		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 1));
+		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 3));
+		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 13));
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 2));
@@ -194,6 +197,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllveggie", new ItemStack(Items.POTATO, 1, 0));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(Items.BEETROOT, 1, 0));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(Blocks.PUMPKIN, 1, 0));
+		OreDictionary.registerOre("bread", new ItemStack(Items.BREAD, 1, 0));
 	}
 
 	static void loadFuelData() {

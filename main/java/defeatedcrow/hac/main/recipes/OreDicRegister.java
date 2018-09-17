@@ -180,6 +180,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("foodMalt", new ItemStack(MainInit.foodDust, 1, 3));
 		OreDictionary.registerOre("foodSoypulp", new ItemStack(MainInit.foodDust, 1, 5));
 		OreDictionary.registerOre("foodFlour", new ItemStack(MainInit.foodDust, 1, 5));
+		OreDictionary.registerOre("foodBakingSoda", new ItemStack(MainInit.foodDust, 1, 6));
 
 		// material
 		OreDictionary.registerOre("itemString", new ItemStack(MainInit.clothes, 1, 0));
