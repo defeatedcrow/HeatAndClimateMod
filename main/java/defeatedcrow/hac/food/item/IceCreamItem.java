@@ -13,12 +13,15 @@ import defeatedcrow.hac.food.entity.IceCreamEntity;
 import defeatedcrow.hac.food.entity.IceCreamKinakoEntity;
 import defeatedcrow.hac.food.entity.IceCreamLemonEntity;
 import defeatedcrow.hac.main.util.EnumFixedName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.StringUtils;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -97,6 +100,10 @@ public class IceCreamItem extends FoodItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		PotionEffect eff = new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(600));
+		String effName = I18n.format(MobEffects.FIRE_RESISTANCE.getName());
+		effName += " (" + StringUtils.ticksToElapsedTime(600) + ")";
+		tooltip.add(TextFormatting.AQUA.toString() + effName);
 	}
 
 }

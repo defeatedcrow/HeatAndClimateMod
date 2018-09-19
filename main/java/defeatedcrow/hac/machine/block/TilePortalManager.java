@@ -1,7 +1,5 @@
 package defeatedcrow.hac.machine.block;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
@@ -11,13 +9,16 @@ import defeatedcrow.hac.core.energy.TileTorqueLockable;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.core.packet.HaCPacket;
+import defeatedcrow.hac.core.packet.MessageClimateUpdate;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerPortalManager;
 import defeatedcrow.hac.machine.item.ItemAdapterCard;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.ISidedTankChecker;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
@@ -58,6 +59,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 	private int loadCount = 5;
 	private int lastInT = 0;
+	private int lastHeat = 0;
 
 	public float requireTorque = 30.0F;
 
@@ -72,12 +74,44 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		} else {
 			active = isActiveMachine();
 			reduceCoolant();
+
+			if (!world.isRemote) {
+				if (active) {
+					// 処理
+					for (int i = 0; i < 6; i++) {
+						if (activeSlot[i] > 0) {
+							onTransferSlot(i);
+						}
+					}
+				}
+
+				// packet
+				boolean flag = false;
+				if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
+					flag = true;
+					lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
+				}
+
+				if (flag) {
+					DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos,
+							FluidIDRegisterDC.getID(inputT.getFluidType()), inputT.getFluidAmount()));
+				}
+
+				boolean flag2 = false;
+				if (current != null && current.getHeat().getID() != lastHeat) {
+					flag2 = true;
+					lastHeat = current.getHeat().getID();
+				}
+
+				if (flag2) {
+					HaCPacket.INSTANCE.sendToAll(new MessageClimateUpdate(pos, lastHeat));
+				}
+			}
 		}
 
 		for (int i = 0; i < 6; i++) {
 			activeSlot[i] = isActiveSlot(i);
 		}
-
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
@@ -125,7 +159,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 	public boolean hasCoolant() {
 		if (inputT.getFluidType() != null)
-			if (FluidDictionaryDC.matchFluid(inputT.getFluidType(), MainInit.nitrogen))
+			if (inputT.getFluidType().getTemperature() < 130)
 				return inputT.drain(10, false) != null;
 		return false;
 	}
@@ -248,34 +282,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	protected void onServerUpdate() {
 		super.onServerUpdate();
 		if (tickCount <= 0) {
-			tickCount = 5;
-			if (active) {
-				// 処理
-				for (int i = 0; i < 6; i++) {
-					if (activeSlot[i] > 0) {
-						onTransferSlot(i);
-					}
-				}
-			}
-
-			// packet
-			boolean flag = false;
-			if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
-				flag = true;
-				lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
-			}
-
-			if (flag) {
-				if (!this.hasWorld())
-					return;
-				@SuppressWarnings("unchecked")
-				List<EntityPlayer> list = this.getWorld().playerEntities;
-				for (EntityPlayer player : list) {
-					if (player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-					}
-				}
-			}
+			tickCount = 20;
 
 		} else {
 			tickCount--;
@@ -669,7 +676,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		}
 
 		public boolean canFillFluidType(FluidStack fluid) {
-			if (fluid != null && FluidDictionaryDC.matchFluid(fluid.getFluid(), MainInit.nitrogen))
+			if (fluid != null && fluid.getFluid().getTemperature() < 130)
 				return false;
 			return true;
 		}

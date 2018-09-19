@@ -24,6 +24,7 @@ item.dcs_coating_tool_poison.name=Poison Coating Tool
 item.dcs_coating_tool_borax.name=Borax Coating Tool
 item.dcs_coating_tool_plastic.name=Plastic Coating Tool
 item.dcs_coating_tool_lure.name=Handmade Lure
+item.dcs_slotcard_chalcedony.name=Device Slot Panel
 
 ## metals
 item.dcs_ingot_copper.name=Copper Ingot
@@ -1288,6 +1289,7 @@ dcs.tip.v_chest=Collect surplus items of surrounding villagers.
 dcs.tip.l_clock=Right-Click with wrench: Change scale.
 dcs.tip.dynamite=CAUTION! It explodes in the range of 7x7x7.
 dcs.tip.dynamite2=Used underwater: Dynamite fishing
+dcs.tip.slotpanel=This item will work as an empty input slot in the recipe devices of HaC.
 
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
 dcs_climate.tip.durability=Max Durability

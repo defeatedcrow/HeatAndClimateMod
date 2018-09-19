@@ -87,6 +87,7 @@ public class MachineInit {
 	public static Item moldAluminium;
 	public static Item adapterCard;
 	public static Item rotaryBlade;
+	public static Item slotCard;
 
 	public static Block energyTank;
 	public static Block adapterPanel;

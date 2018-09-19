@@ -304,6 +304,30 @@ public class LoadingBuildingRecipe {
 				"dustBorax"
 		});
 
+		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 1), new Object[] {
+				"dyeRed",
+				new ItemStack(Blocks.CONCRETE, 1, 32767),
+				"dustBorax"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 2), new Object[] {
+				"dyeBlue",
+				new ItemStack(Blocks.CONCRETE, 1, 32767),
+				"dustBorax"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 3), new Object[] {
+				"dyeYellow",
+				new ItemStack(Blocks.CONCRETE, 1, 32767),
+				"dustBorax"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 4), new Object[] {
+				"dyeBlack",
+				new ItemStack(Blocks.CONCRETE, 1, 32767),
+				"dustBorax"
+		});
+
 		if (ModuleConfig.machine) {
 			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 5), new Object[] {
 					"gravel",

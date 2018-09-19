@@ -77,6 +77,7 @@ import defeatedcrow.hac.machine.item.ItemMinecartMotor;
 import defeatedcrow.hac.machine.item.ItemReagents;
 import defeatedcrow.hac.machine.item.ItemRotaryBlade;
 import defeatedcrow.hac.machine.item.ItemScooter;
+import defeatedcrow.hac.machine.item.ItemSlotCard;
 import defeatedcrow.hac.machine.item.ItemSteelMold;
 import defeatedcrow.hac.machine.item.ItemSynthetic;
 import defeatedcrow.hac.machine.item.ItemTorqueChecker;
@@ -364,6 +365,9 @@ public class MachineInitRegister {
 		MachineInit.mold = new ItemSteelMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mold");
 		DCMaterialReg.registerItem(MachineInit.mold, ClimateCore.PACKAGE_BASE + "_mold", ClimateMain.MOD_ID);
 
+		MachineInit.slotCard = new ItemSlotCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_slotcard");
+		DCMaterialReg.registerItem(MachineInit.slotCard, ClimateCore.PACKAGE_BASE + "_slotcard", ClimateMain.MOD_ID);
+
 		if (ModuleConfig.machine_advanced) {
 
 			MachineInit.moldAluminium = new ItemAluminiumMold().setUnlocalizedName(ClimateCore.PACKAGE_BASE +
@@ -456,6 +460,7 @@ public class MachineInitRegister {
 		MachineInit.machimeMaterials.setCreativeTab(ClimateCore.climate);
 		MachineInit.mold.setCreativeTab(ClimateMain.machine);
 		MachineInit.reagent.setCreativeTab(ClimateMain.machine);
+		MachineInit.slotCard.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.fuelCont.setCreativeTab(ClimateMain.cont);
 

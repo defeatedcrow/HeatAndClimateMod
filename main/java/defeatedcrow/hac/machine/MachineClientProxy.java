@@ -257,6 +257,7 @@ public class MachineClientProxy {
 		instance.regSimpleItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_ID, "dcs_device_mold_alloy", "machine", 3);
 		instance.regSimpleItem(MachineInit.adapterCard, ClimateCore.PACKAGE_ID, "dcs_device_adapter_card", "machine", 3);
 		instance.regSimpleItem(MachineInit.dynamite, ClimateCore.PACKAGE_ID, "dcs_tool_dynamite", "tool", 1);
+		instance.regSimpleItem(MachineInit.slotCard, ClimateCore.PACKAGE_ID, "dcs_tool_slotcard", "machine", 0);
 
 		instance.regSimpleBlock(MachineInit.adapterPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_item", "machine", 0);
 		instance.regSimpleBlock(MachineInit.acceptorPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_item", "machine", 0);

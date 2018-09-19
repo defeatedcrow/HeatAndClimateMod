@@ -272,8 +272,8 @@ public class MachineAdvancedRecipe {
 				"bucketEmpty"
 		});
 
-		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.acceptorFluidPanel, 1, 0),
-				new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.acceptorFluidPanel, 1,
+				0), new Object[] {
 						"XXX",
 						" Y ",
 						"ZWZ",
@@ -285,7 +285,7 @@ public class MachineAdvancedRecipe {
 						"gemQuartz",
 						'W',
 						"bucketEmpty"
-				});
+		});
 
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.wirelessPortal, 1, 0), new Object[] {
 				"WXW",
@@ -419,6 +419,18 @@ public class MachineAdvancedRecipe {
 				new ItemStack(Items.BUCKET, 1, 0)
 		});
 
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.monitorRF, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				new ItemStack(Blocks.REDSTONE_LAMP, 1, 0),
+				'Y',
+				"gemBismuth",
+				'Z',
+				new ItemStack(MachineInit.machimeMaterials, 1, 1)
+		});
+
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.monitorTorque, 1, 0), new Object[] {
 				"X",
 				"Y",
@@ -537,13 +549,13 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 4),
-				new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1,
+				4), new Object[] {
 						new ItemStack(MachineInit.reagent, 1, 2),
 						new ItemStack(MachineInit.reagent, 1, 7),
 						"slimeball",
 						"dustSulfur"
-				});
+		});
 
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 5), new Object[] {
 				"ZXZ",

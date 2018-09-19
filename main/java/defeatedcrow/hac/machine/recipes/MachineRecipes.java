@@ -570,6 +570,11 @@ public class MachineRecipes {
 				"ingotMagnet"
 		});
 
+		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.slotCard, 1, 0), new Object[] {
+				"paper",
+				"gemChalcedony"
+		});
+
 		/* == Smelting == */
 
 		GameRegistry.addSmelting(new ItemStack(Blocks.COAL_BLOCK, 1, 0), new ItemStack(MachineInit.fuelCont, 1,

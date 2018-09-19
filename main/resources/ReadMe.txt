@@ -1,13 +1,13 @@
-﻿#### Heat&Climate Mod 2.6.1 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 2.6.2 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
 
 ・Minecraft1.12.2
 
-・MincraftForge 1.12.2-14.23.3.2655 以上
+・MincraftForge 1.12.2-14.23.3.2705 以上
 
-・HeatAndClimateLib 1.12.2_2.6.0 以上
+・HeatAndClimateLib 1.12.2_2.6.2 以上
 
 ForgeのRecommended更新により、要求Forgeのバージョンを引き上げました。
 直近のForgeにしかない機能が入っているので、下位互換はありません。ご注意ください。
@@ -610,6 +610,11 @@ W = IBCタンク
 
 　トルクマシンを右クリックすると、現在流れているトルク流量が分かるアイテムです。
 　検証用にどうぞ。
+
+○スロットパネル
+
+　レシピマシンのinputスロットに入れておくと、空スロットとして振る舞います。
+　ホッパーなどでアイテムを入れたくないスロットをパネルで埋めておけます。
 
 
 ○トルクマシンのTierについて

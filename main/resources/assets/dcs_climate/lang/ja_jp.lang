@@ -23,6 +23,7 @@ item.dcs_coating_tool_poison.name=毒加工剤
 item.dcs_coating_tool_borax.name=ホウ酸コート剤
 item.dcs_coating_tool_plastic.name=樹脂コート剤
 item.dcs_coating_tool_lure.name=手作りルアー
+item.dcs_slotcard_chalcedony.name=スロットパネル
 
 item.dcs_ingot_copper.name=銅インゴット
 item.dcs_ingot_zinc.name=亜鉛インゴット
@@ -1272,6 +1273,7 @@ dcs.tip.v_chest=近くにいる村人の荷物がいっぱいの時、余剰ア�
 dcs.tip.l_clock=レンチで右クリック: 大きさを変更します。
 dcs.tip.dynamite=注意! 7x7x7の爆発を起こします。
 dcs.tip.dynamite2=水中で使用すると、魚をドロップします。(ダイナマイト漁)
+dcs.tip.slotpanel=レシピマシンのinputスロットに置くと、空のスロットとして認識されます。
 
 dcs.tip.shitirin.description=
 dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック

@@ -56,6 +56,9 @@ public class FoodRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
 				5), 0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0), new ItemStack(MainInit.miscDust, 1,
+				4), 0.25F, "cropWalnut");
+
 	}
 
 	static void loadCropData() {
@@ -114,7 +117,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllfruit", new ItemStack(FoodInit.crops, 1, 17));
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
-		OreDictionary.registerOre("listAllspice", new ItemStack(FoodInit.crops, 1, 9));
+		OreDictionary.registerOre("listAllherb", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("cropLotusSeed", new ItemStack(FoodInit.crops, 1, 10));
 		OreDictionary.registerOre("cropLotusRoot", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("seedRice", new ItemStack(FoodInit.seeds, 1, 0));
