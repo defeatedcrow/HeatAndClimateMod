@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "bread"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodSausage"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "egg"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropMushroom"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropTomato"
+  },
+  {
+   "item": "dcs_climate:dcs_food_salad",
+   "data": 6
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_setmeal",
+  "count": 1,
+  "data": 0
+ }
+}

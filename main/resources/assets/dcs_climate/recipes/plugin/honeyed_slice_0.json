@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "bread"
+  },
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dropHoney"
+  }
+ },
+ "result": {
+  "item": "forestry:honeyed_slice",
+  "count": 4,
+  "data": 0
+ }
+}
