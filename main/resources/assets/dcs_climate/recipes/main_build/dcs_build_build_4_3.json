@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "dyeYellow"
+   "ore": "dyeBlack"
   },
   {
    "item": "minecraft:concrete",
@@ -17,6 +17,6 @@
  "result": {
   "item": "dcs_climate:dcs_build_build",
   "count": 1,
-  "data": 3
+  "data": 4
  }
 }

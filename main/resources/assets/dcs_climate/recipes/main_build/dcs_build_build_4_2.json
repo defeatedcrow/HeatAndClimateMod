@@ -6,8 +6,8 @@
    "ore": "dyeBlack"
   },
   {
-   "item": "minecraft:concrete",
-   "data": 32767
+   "item": "dcs_climate:dcs_build_build",
+   "data": 0
   },
   {
    "type": "forge:ore_dict",

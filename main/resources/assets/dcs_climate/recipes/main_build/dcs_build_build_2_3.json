@@ -11,7 +11,7 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustBorax"
+   "ore": "blockGlass"
   }
  ],
  "result": {

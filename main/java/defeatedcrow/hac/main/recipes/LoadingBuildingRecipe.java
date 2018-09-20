@@ -280,6 +280,12 @@ public class LoadingBuildingRecipe {
 				new ItemStack(Blocks.GLASS)
 		});
 
+		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 4), new Object[] {
+				"dyeBlack",
+				new ItemStack(MainInit.builds, 1, 0),
+				new ItemStack(Blocks.GLASS)
+		});
+
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 1), new Object[] {
 				"dyeRed",
 				new ItemStack(MainInit.builds, 1, 0),
@@ -307,25 +313,25 @@ public class LoadingBuildingRecipe {
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 1), new Object[] {
 				"dyeRed",
 				new ItemStack(Blocks.CONCRETE, 1, 32767),
-				"dustBorax"
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 2), new Object[] {
 				"dyeBlue",
 				new ItemStack(Blocks.CONCRETE, 1, 32767),
-				"dustBorax"
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 3), new Object[] {
 				"dyeYellow",
 				new ItemStack(Blocks.CONCRETE, 1, 32767),
-				"dustBorax"
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 4), new Object[] {
 				"dyeBlack",
 				new ItemStack(Blocks.CONCRETE, 1, 32767),
-				"dustBorax"
+				"blockGlass"
 		});
 
 		if (ModuleConfig.machine) {

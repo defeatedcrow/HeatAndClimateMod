@@ -44,19 +44,23 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 	private Block getRandomCropType(Random rand) {
 		switch (rand.nextInt(10)) {
 		case 0:
-		case 1:
 			return FoodInit.cropOnion;
-		case 2:
-		case 3:
+		case 1:
 			return FoodInit.cropSpinach;
-		case 4:
+		case 2:
 			return FoodInit.cropTomato;
-		case 5:
+		case 3:
 			return FoodInit.cropCotton;
-		case 6:
+		case 4:
 			return FoodInit.cropCoffee;
+		case 5:
+			return FoodInit.cropLettuce;
+		case 6:
+			return FoodInit.cropBean;
 		case 7:
-			return FoodInit.cropHerb;
+			return FoodInit.cropChili;
+		case 8:
+			return FoodInit.cropGarlic;
 		default:
 			return FoodInit.cropRice;
 		}
@@ -90,10 +94,9 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 
 	public static HaCVillagerAgriResearchHouse createPiece(StructureVillagePieces.Start start,
 			List<StructureComponent> list, Random rand, int minX, int minY, int minZ, EnumFacing facing, int type) {
-		StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(minX, minY, minZ, 0, 0, 0, 11, 7,
-				11, facing);
-		return StructureComponent.findIntersecting(list, box) != null ? null :
-				new HaCVillagerAgriResearchHouse(start, type, rand, box, facing);
+		StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(minX, minY, minZ, 0, 0, 0, 11, 7, 11, facing);
+		return StructureComponent.findIntersecting(list, box) != null ? null : new HaCVillagerAgriResearchHouse(start,
+				type, rand, box, facing);
 	}
 
 	@Override
@@ -109,22 +112,17 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 		}
 
 		IBlockState cobble = this.getBiomeSpecificBlockState(Blocks.COBBLESTONE.getDefaultState());
-		IBlockState stair1 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(
-				BlockStairs.FACING, EnumFacing.NORTH));
-		IBlockState stair2 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(
-				BlockStairs.FACING, EnumFacing.SOUTH));
-		IBlockState stair3 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(
-				BlockStairs.FACING, EnumFacing.WEST));
+		IBlockState stair1 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH));
+		IBlockState stair2 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.SOUTH));
+		IBlockState stair3 = this.getBiomeSpecificBlockState(Blocks.OAK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST));
 		IBlockState planks = this.getBiomeSpecificBlockState(Blocks.PLANKS.getDefaultState());
 		IBlockState log = this.getBiomeSpecificBlockState(Blocks.LOG.getDefaultState());
 		IBlockState fence = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
 		IBlockState dirt = this.getBiomeSpecificBlockState(Blocks.DIRT.getDefaultState());
-		this.fillWithBlocks(world, box, 0, 0, 0, 11, 7, 11, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(),
-				false);
+		this.fillWithBlocks(world, box, 0, 0, 0, 11, 7, 11, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		this.fillWithBlocks(world, box, 0, -1, 0, 11, -1, 11, dirt, dirt, false);
 		this.fillWithBlocks(world, box, 2, 0, 6, 8, 0, 10, dirt, dirt, false);
-		this.fillWithBlocks(world, box, 3, 0, 7, 7, 0, 9, Blocks.FARMLAND.getDefaultState(),
-				Blocks.FARMLAND.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 3, 0, 7, 7, 0, 9, Blocks.FARMLAND.getDefaultState(), Blocks.FARMLAND.getDefaultState(), false);
 		this.setBlockState(world, Blocks.WATER.getDefaultState(), 7, 0, 6, box);
 		this.fillWithBlocks(world, box, 2, 1, 6, 2, 1, 10, fence, fence, false);
 		this.fillWithBlocks(world, box, 8, 1, 6, 8, 1, 10, fence, fence, false);
@@ -205,10 +203,8 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 4, 1, 1, box);
 		this.setBlockState(world, MainInit.chalLamp.getDefaultState().withProperty(DCState.TYPE16, 11), 3, 2, 1, box);
 
-		this.setBlockState(world, MainInit.chestVillage.getDefaultState().withProperty(DCState.FACING, EnumFacing.WEST),
-				9, 1, 1, box);
-		this.setBlockState(world, MainInit.chairWood.getDefaultState().withProperty(DCState.FACING, EnumFacing.WEST), 9,
-				1, 3, box);
+		this.setBlockState(world, MainInit.chestVillage.getDefaultState().withProperty(DCState.FACING, EnumFacing.WEST), 9, 1, 1, box);
+		this.setBlockState(world, MainInit.chairWood.getDefaultState().withProperty(DCState.FACING, EnumFacing.WEST), 9, 1, 3, box);
 		this.setBlockState(world, MainInit.tableWood.getDefaultState(), 8, 1, 3, box);
 
 		this.spawnVillagers(world, box, 4, 1, 2, 2);

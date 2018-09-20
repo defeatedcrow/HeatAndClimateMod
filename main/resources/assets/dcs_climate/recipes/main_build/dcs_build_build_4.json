@@ -10,8 +10,8 @@
    "data": 0
   },
   {
-   "type": "forge:ore_dict",
-   "ore": "dustBorax"
+   "item": "minecraft:glass",
+   "data": 0
   }
  ],
  "result": {
