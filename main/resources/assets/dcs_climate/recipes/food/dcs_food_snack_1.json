@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_food_snack",
+   "data": 0
+  },
+  {
+   "item": "dcs_climate:dcs_food_frying",
+   "data": 2
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_snack",
+  "count": 2,
+  "data": 1
+ }
+}

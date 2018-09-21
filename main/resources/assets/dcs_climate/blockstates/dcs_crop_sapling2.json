@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "stage=0": { "model": "dcs_climate:crop/dcs_crop_sapling20" },
+        "stage=1": { "model": "dcs_climate:crop/dcs_crop_sapling21" },
+        "stage=2": { "model": "dcs_climate:crop/dcs_crop_sapling21" },
+        "stage=3": { "model": "dcs_climate:crop/dcs_crop_sapling21" }
+    }
+}
