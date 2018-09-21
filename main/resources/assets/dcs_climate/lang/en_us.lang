@@ -305,7 +305,7 @@ item.dcs_food_bowl_stew_misosoup.name=Miso Soup
 item.dcs_food_bowl_stew_motsu.name=Simmered Giblets
 item.dcs_food_bowl_stew_chili.name=Chili
 item.dcs_food_bowl_stew_garlic_oil.name=Garlic Mushrooms
-item.dcs_food_bowl_stew_laziji.name=Laziji
+item.dcs_food_bowl_stew_laziji.name=La zi ji
 item.dcs_food_clubsand_square.name=Beef Club Sandwich
 item.dcs_food_clubsand_round.name=Fish Club Sandwich
 item.dcs_food_salad_green.name=Green Salad
@@ -1642,7 +1642,7 @@ entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs
 
 ## advancements
 advancements.dcs_climate.core.title=Heat and Climate
-advancements.dcs_climate.climate_damage.description=Let's play with Heat and Climate!
+advancements.dcs_climate.core.description=Let's play with Heat and Climate!
 advancements.dcs_climate.climate_damage.title=Dangerous temperature
 advancements.dcs_climate.climate_damage.description=High or low temperature will damage creatures.
 advancements.dcs_climate.climate_strings.title=Clothing materials
