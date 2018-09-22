@@ -85,9 +85,9 @@ public class WorldGenDCPalmTree extends WorldGenAbstractTree {
 							for (int k1 = pos.getZ() - 2; k1 <= pos.getZ() + 2; ++k1) {
 								int z1 = k1 - pos.getZ();
 
+								BlockPos blockpos = mutable.setPos(i3, i2, k1);
 								if (y1 == -1) {
 									if ((x1 == 0 && Math.abs(z1) == 1) || (z1 == 0 && Math.abs(x1) == 1)) {
-										BlockPos blockpos = mutable.setPos(i3, i2, k1);
 										IBlockState state2 = world.getBlockState(blockpos);
 
 										if (state2.getBlock().isAir(state2, world, blockpos)) {
@@ -97,7 +97,6 @@ public class WorldGenDCPalmTree extends WorldGenAbstractTree {
 								} else if (y1 == 0) {
 									if ((Math.abs(x1) == 2 && Math.abs(z1) == 2) || Math.abs(z1) == 0 ||
 											Math.abs(x1) == 0) {
-										BlockPos blockpos = mutable.setPos(i3, i2, k1);
 										IBlockState state2 = world.getBlockState(blockpos);
 
 										if (state2.getBlock().isAir(state2, world, blockpos)) {
@@ -106,7 +105,6 @@ public class WorldGenDCPalmTree extends WorldGenAbstractTree {
 									}
 								} else if (y1 == 1) {
 									if (Math.abs(x1) == Math.abs(z1) && (Math.abs(x1) < 2 || Math.abs(z1) < 2)) {
-										BlockPos blockpos = mutable.setPos(i3, i2, k1);
 										IBlockState state2 = world.getBlockState(blockpos);
 
 										if (state2.getBlock().isAir(state2, world, blockpos)) {
@@ -116,7 +114,6 @@ public class WorldGenDCPalmTree extends WorldGenAbstractTree {
 								} else if (y1 == 2) {
 									if ((Math.abs(x1) == 1 && Math.abs(z1) == 0) || (Math.abs(x1) == 0 &&
 											Math.abs(z1) == 1)) {
-										BlockPos blockpos = mutable.setPos(i3, i2, k1);
 										IBlockState state2 = world.getBlockState(blockpos);
 
 										if (state2.getBlock().isAir(state2, world, blockpos)) {
