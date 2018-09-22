@@ -15,6 +15,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
+import defeatedcrow.hac.main.block.container.BlockCropJutebag;
 import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
@@ -163,6 +164,14 @@ public class BlockContainerUtil {
 			ItemStack check = cont8[i8];
 			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
 				return INS.new ReturnPair(new ItemStack(MachineInit.fuelCont, 1, i8), 9);
+			}
+		}
+
+		ItemStack[] cont9 = BlockCropJutebag.containedItem();
+		for (int i9 = 0; i9 < cont9.length; i9++) {
+			ItemStack check = cont9[i9];
+			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
+				return INS.new ReturnPair(new ItemStack(MainInit.cropJute, 1, i9), 9);
 			}
 		}
 

@@ -12,14 +12,17 @@ public class ToastFrenchEntity extends FoodEntityBase {
 
 	public ToastFrenchEntity(World worldIn) {
 		super(worldIn);
+		this.setSize(0.5F, 0.1F);
 	}
 
 	public ToastFrenchEntity(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(0.5F, 0.1F);
 	}
 
 	public ToastFrenchEntity(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(0.5F, 0.1F);
 	}
 
 	@Override

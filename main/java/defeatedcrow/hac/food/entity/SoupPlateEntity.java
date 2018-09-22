@@ -16,14 +16,17 @@ public class SoupPlateEntity extends FoodEntityBase {
 
 	public SoupPlateEntity(World worldIn) {
 		super(worldIn);
+		this.setSize(0.75F, 0.25F);
 	}
 
 	public SoupPlateEntity(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(0.75F, 0.25F);
 	}
 
 	public SoupPlateEntity(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(0.75F, 0.25F);
 	}
 
 	@Override

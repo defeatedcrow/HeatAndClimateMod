@@ -13,8 +13,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class StewMotsuRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
-	private static final ResourceLocation BOWL_TEX = new ResourceLocation("dcs_climate", "textures/entity/food/stewbowl_base.png");
-	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate", "textures/entity/food/stew_motsu.png");
+	private static final ResourceLocation BOWL_TEX = new ResourceLocation("dcs_climate",
+			"textures/entity/food/stewbowl_base.png");
+	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate",
+			"textures/entity/food/stew_motsu.png");
 	private static final ModelStewBowl MODEL = new ModelStewBowl(false);
 
 	public StewMotsuRenderer(RenderManager renderManager) {
@@ -30,7 +32,7 @@ public class StewMotsuRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y + 0.0625F, (float) z);
-		GlStateManager.scale(-1.0F, -1.0F, 1.0F);
+		GlStateManager.scale(-0.75F, -1.0F, 0.75F);
 
 		float rotX = -entity.rotationPitch;
 		float rotY = entity.rotationYaw;
@@ -49,7 +51,7 @@ public class StewMotsuRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y + 0.0625F, (float) z);
-		GlStateManager.scale(-1.0F, -1.0F, 1.0F);
+		GlStateManager.scale(-0.75F, -1.0F, 0.75F);
 
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);
@@ -63,11 +65,9 @@ public class StewMotsuRenderer extends DCRenderFoodBase<FoodEntityBase> {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y + 0.0625F, (float) z);
 		GlStateManager.enableBlend();
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-				GlStateManager.DestFactor.ZERO);
+		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
-		GlStateManager.scale(-1.0F, -1.0F, 1.0F);
+		GlStateManager.scale(-0.75F, -1.0F, 0.75F);
 
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);
