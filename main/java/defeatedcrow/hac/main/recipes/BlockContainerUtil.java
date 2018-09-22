@@ -171,7 +171,7 @@ public class BlockContainerUtil {
 		for (int i9 = 0; i9 < cont9.length; i9++) {
 			ItemStack check = cont9[i9];
 			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
-				return INS.new ReturnPair(new ItemStack(MainInit.cropJute, 1, i9), 9);
+				return INS.new ReturnPair(new ItemStack(MainInit.cropJute, 1, i9), 8);
 			}
 		}
 
