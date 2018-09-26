@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 2.6.3 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 2.6.4 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1939,6 +1939,10 @@ Y = 各種宝石
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○2.6.4
+　変更
+　　・果樹の葉にバイオームカラーを適用
 
 ○2.6.3
 　修正

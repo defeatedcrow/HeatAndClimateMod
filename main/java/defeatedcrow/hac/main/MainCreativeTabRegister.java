@@ -33,10 +33,16 @@ public class MainCreativeTabRegister {
 		MainInit.stairsDirtbrick.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab2.setCreativeTab(ClimateMain.build);
+		MainInit.halfSlab3.setCreativeTab(ClimateMain.build);
 		MainInit.fenceGypsum.setCreativeTab(ClimateMain.build);
 		MainInit.fenceMarble.setCreativeTab(ClimateMain.build);
 		MainInit.fenceSerpentine.setCreativeTab(ClimateMain.build);
 		MainInit.fenceBedrock.setCreativeTab(ClimateMain.build);
+		MainInit.roofSlate.setCreativeTab(ClimateMain.build);
+		MainInit.roofSlateRed.setCreativeTab(ClimateMain.build);
+		MainInit.roofSlateGreen.setCreativeTab(ClimateMain.build);
+		MainInit.roofSlateBrown.setCreativeTab(ClimateMain.build);
+
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
 		MainInit.wallLamp.setCreativeTab(ClimateMain.build);
 		MainInit.desiccant.setCreativeTab(ClimateMain.build);

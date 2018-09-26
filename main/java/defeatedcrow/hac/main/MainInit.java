@@ -41,10 +41,15 @@ public class MainInit {
 	public static Block stairsDirtbrick;
 	public static Block halfSlab;
 	public static Block halfSlab2;
+	public static Block halfSlab3;
 	public static Block builds;
 	public static Block plate;
 	public static Block syntheticBlock;
 	public static Block linoleum;
+	public static Block roofSlate;
+	public static Block roofSlateRed;
+	public static Block roofSlateBrown;
+	public static Block roofSlateGreen;
 
 	public static Block fenceGypsum;
 	public static Block fenceMarble;

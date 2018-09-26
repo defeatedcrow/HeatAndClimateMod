@@ -43,6 +43,7 @@ import defeatedcrow.hac.main.block.build.BlockRealtimeClock;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.BlockSlabChal;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
+import defeatedcrow.hac.main.block.build.BlockSlabSlate;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
 import defeatedcrow.hac.main.block.build.BlockTableBase;
@@ -236,7 +237,7 @@ public class MainMaterialRegister {
 		MainInit.gems = new ItemGems(21).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		DCMaterialReg.registerItem(MainInit.gems, ClimateCore.PACKAGE_BASE + "_gem", ClimateMain.MOD_ID);
 
-		MainInit.miscDust = new ItemMiscDust(12).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
+		MainInit.miscDust = new ItemMiscDust(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		DCMaterialReg.registerItem(MainInit.miscDust, ClimateCore.PACKAGE_BASE + "_miscdust", ClimateMain.MOD_ID);
 
 		MainInit.foodDust = new ItemFoodDust(6).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fooddust");
@@ -310,37 +311,37 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.syntheticBlock, ClimateCore.PACKAGE_BASE +
 				"_build_synthetic_glass", ClimateMain.MOD_ID);
 
-		MainInit.stairsGlass = new BlockStairsBase(MainInit.selenite.getDefaultState(), "build/glass_stairs",
-				true).setUnlocalizedName("dcs_stairs_glass");
+		MainInit.stairsGlass = new BlockStairsBase(MainInit.selenite.getDefaultState(), "build/glass_stairs", true,
+				false).setUnlocalizedName("dcs_stairs_glass");
 		DCMaterialReg.registerBlock(MainInit.stairsGlass, ClimateCore.PACKAGE_BASE +
 				"_stairs_glass", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsGlass), "dcs_climate", "dcs_stairs_glass", "build", 15, false);
 
-		MainInit.stairsGypsum = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_gypsum",
+		MainInit.stairsGypsum = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_gypsum", false,
 				false).setUnlocalizedName("dcs_stairs_gypsum");
 		DCMaterialReg.registerBlock(MainInit.stairsGypsum, ClimateCore.PACKAGE_BASE +
 				"_stairs_gypsum", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsGypsum), "dcs_climate", "dcs_stairs_gypsum", "build", 15, false);
 
-		MainInit.stairsMarble = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_marble",
+		MainInit.stairsMarble = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_marble", false,
 				false).setUnlocalizedName("dcs_stairs_marble");
 		DCMaterialReg.registerBlock(MainInit.stairsMarble, ClimateCore.PACKAGE_BASE +
 				"_stairs_marble", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsMarble), "dcs_climate", "dcs_stairs_marble", "build", 15, false);
 
 		MainInit.stairsSerpentine = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_serpentine",
-				false).setUnlocalizedName("dcs_stairs_serpentine");
+				false, false).setUnlocalizedName("dcs_stairs_serpentine");
 		DCMaterialReg.registerBlock(MainInit.stairsSerpentine, ClimateCore.PACKAGE_BASE +
 				"_stairs_serpentine", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsSerpentine), "dcs_climate", "dcs_stairs_serpentine", "build", 15, false);
 
-		MainInit.stairsBedrock = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_bedrock",
+		MainInit.stairsBedrock = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_bedrock", false,
 				false).setUnlocalizedName("dcs_stairs_bedrock");
 		DCMaterialReg.registerBlock(MainInit.stairsBedrock, ClimateCore.PACKAGE_BASE +
 				"_stairs_bedrock", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.stairsBedrock), "dcs_climate", "dcs_stairs_bedrock", "build", 15, false);
 
-		MainInit.stairsDirtbrick = new BlockStairsBase(MainInit.ores.getDefaultState(), "build/build_dirtbrick",
+		MainInit.stairsDirtbrick = new BlockStairsBase(MainInit.ores.getDefaultState(), "build/build_dirtbrick", false,
 				false).setUnlocalizedName("dcs_stairs_dirtbrick");
 		DCMaterialReg.registerBlock(MainInit.stairsDirtbrick, ClimateCore.PACKAGE_BASE +
 				"_stairs_dirtbrick", ClimateMain.MOD_ID);
@@ -354,6 +355,11 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.halfSlab2, ClimateCore.PACKAGE_BASE +
 				"_build_slab_chal", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab2), "dcs_climate", "dcs_build_slab_chal", "build", 6, true);
+
+		MainInit.halfSlab3 = new BlockSlabSlate();
+		DCMaterialReg.registerBlock(MainInit.halfSlab3, ClimateCore.PACKAGE_BASE +
+				"_build_slab_slate", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.halfSlab3), "dcs_climate", "dcs_build_slab_slate", "build", 3, true);
 
 		MainInit.fenceGypsum = new BlockFenceBase("dcs_fence_gypsum").setUnlocalizedName("dcs_fence_gypsum");
 		DCMaterialReg.registerBlock(MainInit.fenceGypsum, ClimateCore.PACKAGE_BASE +
@@ -375,6 +381,29 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.fenceBedrock, ClimateCore.PACKAGE_BASE +
 				"_fence_bedrock", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.fenceBedrock), "dcs_climate", "dcs_fence_bedrock", "build", 15, false);
+
+		MainInit.roofSlate = new BlockStairsBase(MainInit.builds.getDefaultState(), "ores/gemblock_bedrock", false,
+				true).setUnlocalizedName("dcs_roof_slate");
+		DCMaterialReg.registerBlock(MainInit.roofSlate, ClimateCore.PACKAGE_BASE + "_roof_slate", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.roofSlate), "dcs_climate", "dcs_roof_slate", "build", 15, false);
+
+		MainInit.roofSlateRed = new BlockStairsBase(MainInit.builds.getDefaultState(), "ores/gemblock_bedrock", false,
+				true).setUnlocalizedName("dcs_roof_slate_red");
+		DCMaterialReg.registerBlock(MainInit.roofSlateRed, ClimateCore.PACKAGE_BASE +
+				"_roof_slate_red", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.roofSlateRed), "dcs_climate", "dcs_roof_slate_red", "build", 15, false);
+
+		MainInit.roofSlateGreen = new BlockStairsBase(MainInit.builds.getDefaultState(), "ores/gemblock_bedrock", false,
+				true).setUnlocalizedName("dcs_roof_slate_green");
+		DCMaterialReg.registerBlock(MainInit.roofSlateGreen, ClimateCore.PACKAGE_BASE +
+				"_roof_slate_green", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.roofSlateGreen), "dcs_climate", "dcs_roof_slate_green", "build", 15, false);
+
+		MainInit.roofSlateBrown = new BlockStairsBase(MainInit.builds.getDefaultState(), "ores/gemblock_bedrock", false,
+				true).setUnlocalizedName("dcs_roof_slate_brown");
+		DCMaterialReg.registerBlock(MainInit.roofSlateBrown, ClimateCore.PACKAGE_BASE +
+				"_roof_slate_brown", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item.getItemFromBlock(MainInit.roofSlateBrown), "dcs_climate", "dcs_roof_slate_brown", "build", 15, false);
 
 		MainInit.chalLamp = new BlockChalcedonyLamp(ClimateCore.PACKAGE_BASE + "_build_challamp", 15);
 		DCMaterialReg.registerBlock(MainInit.chalLamp, ClimateCore.PACKAGE_BASE +
