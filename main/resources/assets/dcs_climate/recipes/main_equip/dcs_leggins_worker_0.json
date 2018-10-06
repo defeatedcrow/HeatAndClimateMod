@@ -1,20 +1,23 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  "XYX",
-  "XXX",
-  "X X"
- ],
- "key": {
-  "X": {
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "patternSuit"
+  },
+  {
    "type": "forge:ore_dict",
    "ore": "itemCottonCloth"
   },
-  "Y": {
+  {
    "type": "forge:ore_dict",
-   "ore": "dyeBlue"
+   "ore": "itemCottonCloth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_leggins_worker",
   "count": 1,

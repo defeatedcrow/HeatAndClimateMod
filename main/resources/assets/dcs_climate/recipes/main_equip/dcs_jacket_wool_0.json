@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "patternJacket"
+  },
+  {
+   "item": "minecraft:wool",
+   "data": 32767
+  },
+  {
+   "item": "minecraft:wool",
+   "data": 32767
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "string"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_jacket_wool",
+  "count": 1,
+  "data": 0
+ }
+}

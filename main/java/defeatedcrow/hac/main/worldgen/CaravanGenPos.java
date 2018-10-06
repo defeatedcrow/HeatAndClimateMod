@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.worldgen;
 import java.util.Random;
 
 import defeatedcrow.hac.main.config.WorldGenConfig;
+import net.minecraft.init.Biomes;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
@@ -19,12 +20,12 @@ public class CaravanGenPos {
 		int count = 0;
 		for (int x = -8; x < 9; x++) {
 			for (int z = -8; z < 9; z++) {
-				if (canGeneratePos(cx + x, cz + z, world)) {
+				if ((x > 0 || z > 0) && canGeneratePos(cx + x, cz + z, world)) {
 					count++;
 				}
 			}
 		}
-		return count > 1;
+		return count > 0;
 	}
 
 	public static boolean isAlreadyHasCaravan(int cx, int cz, World world) {
@@ -100,11 +101,12 @@ public class CaravanGenPos {
 			byte biomeID = chunk.getBiomeArray()[7 << 4 | 7];
 			Biome biome = Biome.getBiome(biomeID);
 			if (biome != null) {
-				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary.hasType(
-						biome, BiomeDictionary.Type.SAVANNA);
-				boolean b2 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) || BiomeDictionary.hasType(
-						biome, BiomeDictionary.Type.MOUNTAIN);
-				return b1 && !b2;
+				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) ||
+						BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA);
+				boolean b2 = !BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) &&
+						!BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) &&
+						biome != Biomes.SAVANNA_PLATEAU;
+				return b1 && b2;
 			}
 		}
 		return false;

@@ -68,6 +68,7 @@ public class MainCreativeTabRegister {
 		MainInit.silkworm.setCreativeTab(ClimateMain.cloth);
 		MainInit.gears.setCreativeTab(ClimateMain.machine);
 		MainInit.clothes.setCreativeTab(ClimateMain.cloth);
+		MainInit.patternPaper.setCreativeTab(ClimateMain.cloth);
 
 		// tool
 		MainInit.stoneYagen.setCreativeTab(ClimateMain.tool);

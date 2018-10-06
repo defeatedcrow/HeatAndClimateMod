@@ -36,10 +36,10 @@ public class DCPluginBuildcraft {
 
 		Item wax = Item.REGISTRY.getObject(new ResourceLocation("buildcrafttransport:waterproof"));
 		if (wax != null) {
-			DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(wax, 1, 0),
-					new Object[] {
+			DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(wax, 1,
+					0), new Object[] {
 							new ItemStack(MachineInit.reagent, 1, 0)
-					});
+			});
 		}
 
 		if (black == null || gas == null || fuel == null || dense == null || mixed == null || heavy == null ||
@@ -78,35 +78,33 @@ public class DCPluginBuildcraft {
 			ItemStack coke = new ItemStack(MachineInit.reagent, 1, 13);
 
 			// coke
-			RecipeAPI.registerReactorRecipes.addRecipe(coke, tar, 1.0F, null, null, DCHeatTier.KILN, null,
-					new FluidStack(residue, 1000), null, new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(coke, tar, 1.0F, null, null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(
+					residue, 1000), null, new Object[] {});
 
 			// Ni 水蒸気改質
-			RecipeAPI.registerReactorRecipes.addRecipe(tar, null, 0F, new FluidStack(dist, 500), null, DCHeatTier.KILN,
-					new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(residue, 500),
-					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(tar, null, 0F, new FluidStack(dist,
+					500), null, DCHeatTier.KILN, new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(residue,
+							500), new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
 
 			// Pt 炭化水素ガス
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
-					new FluidStack(MainInit.fuelGas, 1000), new FluidStack(dense, 100), DCHeatTier.SMELTING,
-					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(dist, 500),
-					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
+					MainInit.fuelGas, 1000), new FluidStack(dense, 100), DCHeatTier.SMELTING, new ItemStack(
+							MachineInit.catalyst, 1, 3), new FluidStack(dist, 500), new FluidStack(FluidRegistry.WATER,
+									500), new Object[] {});
 
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
-					new FluidStack(MainInit.fuelGas, 1000), null, DCHeatTier.SMELTING,
-					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(fuel, 500),
-					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
+					MainInit.fuelGas, 1000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1,
+							3), new FluidStack(fuel, 500), new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
 
 			// Pt 水素化
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F,
-					new FluidStack(MainInit.fuelGas, 2000), null, DCHeatTier.SMELTING,
-					new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(fuel, 500),
-					new FluidStack(MainInit.hydrogen, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), null, 0F, new FluidStack(
+					MainInit.fuelGas, 2000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1,
+							3), new FluidStack(fuel, 500), new FluidStack(MainInit.hydrogen, 500), new Object[] {});
 
 			// Ni 水素
-			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0F, new FluidStack(MainInit.hydrogen, 1000), null,
-					DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(gas, 500),
-					new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
+			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0F, new FluidStack(MainInit.hydrogen,
+					1000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(gas,
+							500), new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
 		}
 
 	}

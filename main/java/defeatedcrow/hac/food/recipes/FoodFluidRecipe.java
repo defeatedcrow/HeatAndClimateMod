@@ -233,6 +233,18 @@ public class FoodFluidRecipe {
 								"dustLime"
 		});
 
+		regNonFoodrecipe(new ItemStack(MainInit.miscDust, 1,
+				13), null, 0F, null, DCHeatTier.UHT, null, null, false, null, new Object[] {
+						"dustChrysotile",
+						"dustLime"
+		});
+
+		regNonFoodrecipe(new ItemStack(MainInit.miscDust, 1,
+				13), null, 0F, null, DCHeatTier.UHT, null, null, false, null, new Object[] {
+						"dustCrystal",
+						"dustLime"
+		});
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
 				1), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
 						1000), new Object[] {
@@ -808,7 +820,7 @@ public class FoodFluidRecipe {
 			DCHumidity hum, DCAirflow air, boolean cooling, FluidStack inF, Object... input) {
 		RecipeAPI.registerFluidRecipes.addRecipe(out, sec, chance, outF, heat, hum, air, cooling, inF, input);
 		if (ModuleConfig.machine)
-			RecipeAPI.registerReactorRecipes.addRecipe(out, sec, chance, outF, null, heat, null, inF, null, input);
+			RecipeAPI.registerReactorRecipes.addRecipe(out, sec, chance, outF, null, heat, (ItemStack) null, inF, null, input);
 	}
 
 	public static void regBoilrecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHumidity hum,

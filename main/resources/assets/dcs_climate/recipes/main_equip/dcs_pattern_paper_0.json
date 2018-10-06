@@ -1,22 +1,22 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "Y Y",
-  "YXY",
-  "YXY"
+  "XXX",
+  "XYX",
+  "X X"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "itemCottonCloth"
+   "ore": "paper"
   },
   "Y": {
-   "item": "minecraft:wool",
-   "data": 32767
+   "type": "forge:ore_dict",
+   "ore": "charcoal"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_peacoat_black",
+  "item": "dcs_climate:dcs_pattern_paper",
   "count": 1,
   "data": 0
  }

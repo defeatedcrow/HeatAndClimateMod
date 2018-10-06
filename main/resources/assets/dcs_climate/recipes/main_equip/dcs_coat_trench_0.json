@@ -1,20 +1,23 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  "X X",
-  "XYX",
-  "XYX"
- ],
- "key": {
-  "X": {
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "patternCoat"
+  },
+  {
    "type": "forge:ore_dict",
    "ore": "itemCottonCloth"
   },
-  "Y": {
+  {
    "type": "forge:ore_dict",
-   "ore": "leather"
+   "ore": "itemCottonCloth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "string"
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_coat_trench",
   "count": 1,

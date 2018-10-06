@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 public class BlockSlabSlate extends BlockSlabBase {
 
 	public BlockSlabSlate() {
-		super(Material.CLAY, "dcs_build_slab", 3, true);
+		super(Material.CLAY, "dcs_build_slab_slate", 3, true);
 	}
 
 	@Override

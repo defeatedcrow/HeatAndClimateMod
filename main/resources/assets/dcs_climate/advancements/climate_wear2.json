@@ -32,6 +32,46 @@
                 ]
             }
         },
+        "cotton_jacket": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_jacket_cloth"
+                    }
+                ]
+            }
+        },
+        "cotton_shirt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_shirt_cloth"
+                    }
+                ]
+            }
+        },
+        "cotton_pants": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_pants_cloth"
+                    }
+                ]
+            }
+        },
+        "cotton_skirt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_skirt_cloth"
+                    }
+                ]
+            }
+        },
         "trench_coat": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
@@ -52,16 +92,6 @@
                 ]
             }
         },
-        "hoodie_b": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "item": "dcs_climate:dcs_hoodie_black"
-                    }
-                ]
-            }
-        },
         "worker_suit": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
@@ -77,9 +107,12 @@
         [
             "cotton_hat",
             "cotton_leggins",
+            "cotton_jacket",
+            "cotton_shirt",
+            "cotton_pants",
+            "cotton_skirt",
             "trench_coat",
             "hoodie_w",
-            "hoodie_b",
             "worker_suit"
         ]
     ]
