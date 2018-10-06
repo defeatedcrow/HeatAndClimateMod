@@ -515,6 +515,8 @@ item.dcs_jacket_wool.name=カーディガン
 item.dcs_hoodie_mods.name=モッズコート
 item.dcs_pants_linen.name=リネンのパンツ
 item.dcs_pants_cloth.name=ジーンズパンツ
+item.dcs_skirt_linen.name=花柄のスカート
+item.dcs_skirt_cloth.name=ボックスプリーツのスカート
 
 item.dcs_jewel_pendant_chal_blue.name=青玉髄のペンダント
 item.dcs_jewel_pendant_chal_red.name=紅玉髄のペンダント

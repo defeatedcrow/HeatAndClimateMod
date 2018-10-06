@@ -510,8 +510,10 @@ item.dcs_jacket_linen.name=Linen Jacket
 item.dcs_jacket_cloth.name=Tailored Jacket
 item.dcs_jacket_wool.name=Knit Jacket
 item.dcs_hoodie_mods.name=Mods Coat
-item.dcs_pants_linen.name=Linen pants
-item.dcs_pants_cloth.name=Jeans pants
+item.dcs_pants_linen.name=Linen Pants
+item.dcs_pants_cloth.name=Jeans Pants
+item.dcs_skirt_linen.name=Flower Skirt
+item.dcs_skirt_cloth.name=Box Pleat Skirt
 
 ## jewels
 item.dcs_jewel_pendant_chal_blue.name=Chrysoprase Pendant
