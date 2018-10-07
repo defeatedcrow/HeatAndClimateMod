@@ -941,33 +941,40 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerItem(MainInit.linenUnder, ClimateCore.PACKAGE_BASE + "_leggins_linen", ClimateMain.MOD_ID);
 
-		MainInit.linenShirt = new ItemArmorShirt(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
-				EntityEquipmentSlot.LEGS, "shirt_linen").setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_shirt_linen");
-		DCMaterialReg.registerItem(MainInit.linenShirt, ClimateCore.PACKAGE_BASE + "_shirt_linen", ClimateMain.MOD_ID);
-
 		MainInit.linenCoat = new ItemArmorDC(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN, EntityEquipmentSlot.CHEST,
 				"coat_linen").setCreativeTab(ClimateMain.cloth)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_linen");
 		DCMaterialReg.registerItem(MainInit.linenCoat, ClimateCore.PACKAGE_BASE + "_coat_linen", ClimateMain.MOD_ID);
 
-		MainInit.linenJacket = new ItemArmorJacket(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
-				EntityEquipmentSlot.CHEST, "jacket_linen").setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jacket_linen");
-		DCMaterialReg
-				.registerItem(MainInit.linenJacket, ClimateCore.PACKAGE_BASE + "_jacket_linen", ClimateMain.MOD_ID);
+		if (ModuleConfig.clothes_advanced) {
 
-		MainInit.linenBottom = new ItemArmorPants(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
-				EntityEquipmentSlot.FEET, "pants_linen")
-						.setColorList(EnumDyeColor.ORANGE, EnumDyeColor.GRAY, EnumDyeColor.SILVER, EnumDyeColor.GREEN, EnumDyeColor.BLACK)
-						.setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pants_linen");
-		DCMaterialReg.registerItem(MainInit.linenBottom, ClimateCore.PACKAGE_BASE + "_pants_linen", ClimateMain.MOD_ID);
+			MainInit.linenShirt = new ItemArmorShirt(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
+					EntityEquipmentSlot.LEGS, "shirt_linen").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_shirt_linen");
+			DCMaterialReg
+					.registerItem(MainInit.linenShirt, ClimateCore.PACKAGE_BASE + "_shirt_linen", ClimateMain.MOD_ID);
 
-		MainInit.flowerSkirt = new ItemArmorSkirt(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
-				EntityEquipmentSlot.FEET, "skirt_linen").setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_skirt_linen");
-		DCMaterialReg.registerItem(MainInit.flowerSkirt, ClimateCore.PACKAGE_BASE + "_skirt_linen", ClimateMain.MOD_ID);
+			MainInit.linenJacket = new ItemArmorJacket(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
+					EntityEquipmentSlot.CHEST, "jacket_linen").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jacket_linen");
+			DCMaterialReg
+					.registerItem(MainInit.linenJacket, ClimateCore.PACKAGE_BASE + "_jacket_linen", ClimateMain.MOD_ID);
+
+			MainInit.linenBottom = new ItemArmorPants(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
+					EntityEquipmentSlot.FEET, "pants_linen")
+							.setColorList(EnumDyeColor.ORANGE, EnumDyeColor.GRAY, EnumDyeColor.SILVER, EnumDyeColor.GREEN, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pants_linen");
+			DCMaterialReg
+					.registerItem(MainInit.linenBottom, ClimateCore.PACKAGE_BASE + "_pants_linen", ClimateMain.MOD_ID);
+
+			MainInit.flowerSkirt = new ItemArmorSkirt(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN,
+					EntityEquipmentSlot.FEET, "skirt_linen").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_skirt_linen");
+			DCMaterialReg
+					.registerItem(MainInit.flowerSkirt, ClimateCore.PACKAGE_BASE + "_skirt_linen", ClimateMain.MOD_ID);
+
+		}
 
 		// cotton
 		MainInit.clothUnder = new ItemArmorDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.LEGS,
@@ -976,54 +983,62 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerItem(MainInit.clothUnder, ClimateCore.PACKAGE_BASE + "_leggins_cloth", ClimateMain.MOD_ID);
 
-		MainInit.clothShirt = new ItemArmorShirt(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
-				EntityEquipmentSlot.LEGS, "shirt_cloth")
-						.setColorList(EnumDyeColor.LIGHT_BLUE, EnumDyeColor.PINK, EnumDyeColor.PURPLE, EnumDyeColor.RED, EnumDyeColor.BLACK)
-						.setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_shirt_cloth");
-		DCMaterialReg.registerItem(MainInit.clothShirt, ClimateCore.PACKAGE_BASE + "_shirt_cloth", ClimateMain.MOD_ID);
-
 		MainInit.clothCoat = new ItemArmorOvercoat(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
 				EntityEquipmentSlot.CHEST, "trench").setCreativeTab(ClimateMain.cloth)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_trench");
 		DCMaterialReg.registerItem(MainInit.clothCoat, ClimateCore.PACKAGE_BASE + "_coat_trench", ClimateMain.MOD_ID);
 
-		MainInit.clothJacket = new ItemArmorJacket(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
-				EntityEquipmentSlot.CHEST, "jacket_cloth")
-						.setColorList(EnumDyeColor.GRAY, EnumDyeColor.BLUE, EnumDyeColor.BLACK)
-						.setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jacket_cloth");
-		DCMaterialReg
-				.registerItem(MainInit.clothJacket, ClimateCore.PACKAGE_BASE + "_jacket_cloth", ClimateMain.MOD_ID);
+		if (ModuleConfig.clothes_advanced) {
 
-		MainInit.hoodie = new ItemArmorHoodie(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.CHEST,
-				"hoodie").setColorList(EnumDyeColor.GRAY, EnumDyeColor.RED, EnumDyeColor.BLACK)
-						.setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie");
-		DCMaterialReg.registerItem(MainInit.hoodie, ClimateCore.PACKAGE_BASE + "_hoodie_white", ClimateMain.MOD_ID);
+			MainInit.clothShirt = new ItemArmorShirt(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+					EntityEquipmentSlot.LEGS, "shirt_cloth")
+							.setColorList(EnumDyeColor.LIGHT_BLUE, EnumDyeColor.PINK, EnumDyeColor.PURPLE, EnumDyeColor.RED, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_shirt_cloth");
+			DCMaterialReg
+					.registerItem(MainInit.clothShirt, ClimateCore.PACKAGE_BASE + "_shirt_cloth", ClimateMain.MOD_ID);
 
-		MainInit.clothBottom = new ItemArmorPants(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
-				EntityEquipmentSlot.FEET, "pants_cloth").setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pants_cloth");
-		DCMaterialReg.registerItem(MainInit.clothBottom, ClimateCore.PACKAGE_BASE + "_pants_cloth", ClimateMain.MOD_ID);
+			MainInit.clothJacket = new ItemArmorJacket(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+					EntityEquipmentSlot.CHEST, "jacket_cloth")
+							.setColorList(EnumDyeColor.GRAY, EnumDyeColor.BLUE, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jacket_cloth");
+			DCMaterialReg
+					.registerItem(MainInit.clothJacket, ClimateCore.PACKAGE_BASE + "_jacket_cloth", ClimateMain.MOD_ID);
 
-		MainInit.clothSkirt = new ItemArmorSkirt(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
-				EntityEquipmentSlot.FEET, "skirt_cloth")
-						.setColorList(EnumDyeColor.ORANGE, EnumDyeColor.CYAN, EnumDyeColor.PURPLE, EnumDyeColor.BLUE, EnumDyeColor.BROWN, EnumDyeColor.RED, EnumDyeColor.BLACK)
-						.setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_skirt_cloth");
-		DCMaterialReg.registerItem(MainInit.clothSkirt, ClimateCore.PACKAGE_BASE + "_skirt_cloth", ClimateMain.MOD_ID);
+			MainInit.hoodie = new ItemArmorHoodie(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+					EntityEquipmentSlot.CHEST, "hoodie")
+							.setColorList(EnumDyeColor.GRAY, EnumDyeColor.RED, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie");
+			DCMaterialReg.registerItem(MainInit.hoodie, ClimateCore.PACKAGE_BASE + "_hoodie_white", ClimateMain.MOD_ID);
+
+			MainInit.clothBottom = new ItemArmorPants(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+					EntityEquipmentSlot.FEET, "pants_cloth").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pants_cloth");
+			DCMaterialReg
+					.registerItem(MainInit.clothBottom, ClimateCore.PACKAGE_BASE + "_pants_cloth", ClimateMain.MOD_ID);
+
+			MainInit.clothSkirt = new ItemArmorSkirt(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+					EntityEquipmentSlot.FEET, "skirt_cloth")
+							.setColorList(EnumDyeColor.ORANGE, EnumDyeColor.CYAN, EnumDyeColor.PURPLE, EnumDyeColor.BLUE, EnumDyeColor.BROWN, EnumDyeColor.RED, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_skirt_cloth");
+			DCMaterialReg
+					.registerItem(MainInit.clothSkirt, ClimateCore.PACKAGE_BASE + "_skirt_cloth", ClimateMain.MOD_ID);
+
+			// worker
+			MainInit.workerSuit = new ItemArmorDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH,
+					EntityEquipmentSlot.LEGS, "leggins_worker").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_worker");
+			DCMaterialReg
+					.registerItem(MainInit.workerSuit, ClimateCore.PACKAGE_BASE + "_leggins_worker", ClimateMain.MOD_ID);
+
+		}
 
 		MainInit.cottonHat = new ItemArmorHat(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.HEAD,
 				"cotton").setCreativeTab(ClimateMain.cloth)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hat_cotton");
 		DCMaterialReg.registerItem(MainInit.cottonHat, ClimateCore.PACKAGE_BASE + "_hat_cotton", ClimateMain.MOD_ID);
-
-		// worker
-		MainInit.workerSuit = new ItemArmorDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.LEGS,
-				"leggins_worker").setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_worker");
-		DCMaterialReg
-				.registerItem(MainInit.workerSuit, ClimateCore.PACKAGE_BASE + "_leggins_worker", ClimateMain.MOD_ID);
 
 		// silk
 		MainInit.blackSuit = new ItemArmorDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.LEGS,
@@ -1041,22 +1056,29 @@ public class MainMaterialRegister {
 		// dress
 
 		// wool
-		MainInit.peaCoat = new ItemArmorHoodie(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL, EntityEquipmentSlot.CHEST,
-				"hoodie_pea").setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_peacoat_black");
-		DCMaterialReg.registerItem(MainInit.peaCoat, ClimateCore.PACKAGE_BASE + "_hoodie_pea", ClimateMain.MOD_ID);
 
-		MainInit.modsCoat = new ItemArmorHoodie(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL, EntityEquipmentSlot.CHEST,
-				"hoodie_mods").setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie_mods");
-		DCMaterialReg.registerItem(MainInit.modsCoat, ClimateCore.PACKAGE_BASE + "_hoodie_mods", ClimateMain.MOD_ID);
+		if (ModuleConfig.clothes_advanced) {
 
-		MainInit.woolJacket = new ItemArmorJacket(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL,
-				EntityEquipmentSlot.CHEST, "jacket_wool")
-						.setColorList(EnumDyeColor.ORANGE, EnumDyeColor.LIGHT_BLUE, EnumDyeColor.CYAN, EnumDyeColor.RED)
-						.setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jacket_wool");
-		DCMaterialReg.registerItem(MainInit.woolJacket, ClimateCore.PACKAGE_BASE + "_jacket_wool", ClimateMain.MOD_ID);
+			MainInit.peaCoat = new ItemArmorHoodie(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL,
+					EntityEquipmentSlot.CHEST, "hoodie_pea").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_peacoat_black");
+			DCMaterialReg.registerItem(MainInit.peaCoat, ClimateCore.PACKAGE_BASE + "_hoodie_pea", ClimateMain.MOD_ID);
+
+			MainInit.modsCoat = new ItemArmorHoodie(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL,
+					EntityEquipmentSlot.CHEST, "hoodie_mods").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_hoodie_mods");
+			DCMaterialReg
+					.registerItem(MainInit.modsCoat, ClimateCore.PACKAGE_BASE + "_hoodie_mods", ClimateMain.MOD_ID);
+
+			MainInit.woolJacket = new ItemArmorJacket(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL,
+					EntityEquipmentSlot.CHEST, "jacket_wool")
+							.setColorList(EnumDyeColor.ORANGE, EnumDyeColor.LIGHT_BLUE, EnumDyeColor.CYAN, EnumDyeColor.RED)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jacket_wool");
+			DCMaterialReg
+					.registerItem(MainInit.woolJacket, ClimateCore.PACKAGE_BASE + "_jacket_wool", ClimateMain.MOD_ID);
+
+		}
 
 		MainInit.woolWear = new ItemArmorWool(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL, EntityEquipmentSlot.HEAD,
 				"wool").setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wear_wool");
@@ -1071,32 +1093,44 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerItem(MainInit.woolBoots, ClimateCore.PACKAGE_BASE + "_boots_wool", ClimateMain.MOD_ID);
 
 		// synthetic
-		MainInit.trackSuit = new ItemArmorDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
-				EntityEquipmentSlot.LEGS, "leggins_tracksuit")
-						.setColorList(EnumDyeColor.PINK, EnumDyeColor.BLUE, EnumDyeColor.RED)
-						.setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_track");
-		DCMaterialReg.registerItem(MainInit.trackSuit, ClimateCore.PACKAGE_BASE + "_leggins_track", ClimateMain.MOD_ID);
+		if (ModuleConfig.clothes_advanced && ModuleConfig.machine) {
 
-		MainInit.combatDress = new ItemArmorDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
-				EntityEquipmentSlot.LEGS, "leggins_combatdress").setColorList(EnumDyeColor.ORANGE, EnumDyeColor.BLUE)
-						.setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_combatdress");
-		DCMaterialReg
-				.registerItem(MainInit.combatDress, ClimateCore.PACKAGE_BASE + "_leggins_combatdress", ClimateMain.MOD_ID);
+			MainInit.trackSuit = new ItemArmorDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+					EntityEquipmentSlot.LEGS, "leggins_tracksuit")
+							.setColorList(EnumDyeColor.PINK, EnumDyeColor.BLUE, EnumDyeColor.RED)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_track");
+			DCMaterialReg
+					.registerItem(MainInit.trackSuit, ClimateCore.PACKAGE_BASE + "_leggins_track", ClimateMain.MOD_ID);
+
+			MainInit.combatDress = new ItemArmorDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+					EntityEquipmentSlot.LEGS, "leggins_combatdress")
+							.setColorList(EnumDyeColor.ORANGE, EnumDyeColor.BLUE).setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_combatdress");
+			DCMaterialReg
+					.registerItem(MainInit.combatDress, ClimateCore.PACKAGE_BASE + "_leggins_combatdress", ClimateMain.MOD_ID);
+
+		}
 
 		// magic
-		MainInit.magicUnder = new ItemArmorDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
-				EntityEquipmentSlot.LEGS, "leggins_magic").setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK)
-						.setCreativeTab(ClimateMain.cloth)
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_magic");
-		DCMaterialReg
-				.registerItem(MainInit.magicUnder, ClimateCore.PACKAGE_BASE + "_leggins_magic", ClimateMain.MOD_ID);
 
-		MainInit.magicCoat = new ItemArmorOvercoat(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
-				EntityEquipmentSlot.CHEST, "magic").setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK)
-						.setCreativeTab(ClimateMain.cloth).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_magic");
-		DCMaterialReg.registerItem(MainInit.magicCoat, ClimateCore.PACKAGE_BASE + "_coat_magic", ClimateMain.MOD_ID);
+		if (ModuleConfig.clothes_advanced && ModuleConfig.magic) {
+
+			MainInit.magicUnder = new ItemArmorDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+					EntityEquipmentSlot.LEGS, "leggins_magic").setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_magic");
+			DCMaterialReg
+					.registerItem(MainInit.magicUnder, ClimateCore.PACKAGE_BASE + "_leggins_magic", ClimateMain.MOD_ID);
+
+			MainInit.magicCoat = new ItemArmorOvercoat(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+					EntityEquipmentSlot.CHEST, "magic").setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_magic");
+			DCMaterialReg
+					.registerItem(MainInit.magicCoat, ClimateCore.PACKAGE_BASE + "_coat_magic", ClimateMain.MOD_ID);
+
+		}
 
 		// other
 		MainInit.leatherHat = new ItemArmorHat(ArmorMaterial.LEATHER, DCMaterialEnum.LINEN, EntityEquipmentSlot.HEAD,

@@ -3,7 +3,6 @@ package defeatedcrow.hac.main.worldgen;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.build.BlockSlabBase;
 import net.minecraft.block.BlockBed;
@@ -30,9 +29,10 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		if (num > -1) {
 			int cx2 = (num % 3) + cx - 1;
 			int cz2 = (num / 3) + cz - 1;
-			DCLogger.infoLog("test1 Biome: x" + cx2 + ", z " + cz2 + ", " +
-					CaravanGenPos.canGenerateBiome(cx2, cz2, world));
-			DCLogger.infoLog("test1 Dupe: x" + cx2 + ", z " + cz2 + ", " + !CaravanGenPos.isDupe(cx2, cz2, world));
+			// DCLogger.infoLog("test1 Biome: x" + cx2 + ", z " + cz2 + ", " +
+			// CaravanGenPos.canGenerateBiome(cx2, cz2, world));
+			// DCLogger.infoLog("test1 DupeCheck: x" + cx2 + ", z " + cz2 + ", " + !CaravanGenPos.isDupe(cx2, cz2,
+			// world));
 			if (CaravanGenPos.canGenerateBiome(cx2, cz2, world) && !CaravanGenPos.isDupe(cx2, cz2, world)) {
 				if (num == 4) {
 					generateCore(rand, cx, cz, world);
@@ -41,7 +41,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 					generatePart(num, rand, cx, cz, world);
 				}
 
-				DCLogger.debugLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2);
+				// DCLogger.debugLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2);
 			}
 		}
 	}
@@ -309,7 +309,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			return door;
 		}
 		if (x == 3 && z == 2 && y == 2) {
-			IBlockState door = Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER);
+			IBlockState door = Blocks.OAK_DOOR.getDefaultState()
+					.withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER);
 			if (cz2 == -1) {
 				door = door.withProperty(BlockDoor.FACING, EnumFacing.SOUTH);
 			}
@@ -344,17 +345,20 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 					if (rand.nextBoolean()) {
 						return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
 					} else {
-						return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+						return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+								.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 					}
 				} else if (y < 8) {
-					return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+					return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+							.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 				} else if (y == 8) {
 					return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 				}
 			}
 			if (x > 2 && x < 12 && z > 2 && z < 12) {
 				if (y == 6) {
-					return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+					return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+							.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 				} else if (y == 7) {
 					return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 				}
@@ -368,24 +372,28 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 				if (rand.nextBoolean()) {
 					return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
 				} else {
-					return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+					return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+							.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 				}
 			} else if (y < 6) {
-				return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+				return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+						.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 			} else if (y == 6) {
 				return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 			}
 		}
 		if (x < 2 && z > 5 && z < 10) {
 			if (y == 5) {
-				return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+				return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+						.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 			} else if (y == 6) {
 				return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 			}
 		}
 		if (z < 2 && x > 5 && x < 10) {
 			if (y == 5) {
-				return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+				return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+						.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 			} else if (y == 6) {
 				return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 			}
@@ -474,10 +482,12 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 				if (rand.nextBoolean()) {
 					return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
 				} else {
-					return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+					return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+							.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 				}
 			} else if (y < 6) {
-				return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+				return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+						.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 			} else if (y == 6) {
 				return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 			}
@@ -485,7 +495,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 
 		if (z1 > 5 && z1 < 10) {
 			if (y == 5) {
-				return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+				return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+						.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 			} else if (y == 6) {
 				return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 			}
@@ -601,24 +612,28 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 				if (rand.nextBoolean()) {
 					return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
 				} else {
-					return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+					return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+							.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 				}
 			} else if (y < 6) {
-				return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+				return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+						.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 			} else if (y == 6) {
 				return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 			}
 		}
 		if (x1 < 2 && z1 > 5 && z1 < 10) {
 			if (y == 5) {
-				return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+				return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+						.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 			} else if (y == 6) {
 				return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 			}
 		}
 		if (x1 > 13 && z1 > 5 && z1 < 10) {
 			if (y == 5) {
-				return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+				return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+						.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 			} else if (y == 6) {
 				return MainInit.halfSlab.getDefaultState().withProperty(BlockSlabBase.TYPE, 5);
 			}
@@ -678,15 +693,18 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 	// 普通の寝室
 	private IBlockState getInterior0(int num, int x, int y, int z, Random rand, EnumFacing face) {
 		if ((x == 3 || x == 8 || x == 13) && z == 4 && y == 2) {
-			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1).withProperty(DCState.FACING, face.getOpposite());
+			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1).withProperty(DCState.FACING, face
+					.getOpposite());
 		}
 		if (z > 4 && z < 11) {
 			if ((x == 0 || x == 1 || x == 8 || x == 14 || x == 15) && y == 1) {
 				if (z == 8) {
-					return Blocks.BED.getDefaultState().withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT).withProperty(BlockBed.FACING, face);
+					return Blocks.BED.getDefaultState().withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT)
+							.withProperty(BlockBed.FACING, face);
 				}
 				if (z == 9) {
-					return Blocks.BED.getDefaultState().withProperty(BlockBed.PART, BlockBed.EnumPartType.HEAD).withProperty(BlockBed.FACING, face);
+					return Blocks.BED.getDefaultState().withProperty(BlockBed.PART, BlockBed.EnumPartType.HEAD)
+							.withProperty(BlockBed.FACING, face);
 				}
 			}
 			if ((x == 3 || x == 8 || x == 13) && z == 5 && y < 3) {
@@ -694,17 +712,20 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			}
 			if ((x == 2 || x == 7 || x == 12) && z == 5) {
 				if (y == 1) {
-					return Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER).withProperty(BlockDoor.FACING, face);
+					return Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER)
+							.withProperty(BlockDoor.FACING, face);
 				}
 				if (y == 2) {
-					return Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER).withProperty(BlockDoor.FACING, face);
+					return Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER)
+							.withProperty(BlockDoor.FACING, face);
 				}
 			}
 			if (x == 5 || x == 10) {
 				if (y < 3) {
 					return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
 				} else if (y < 6) {
-					return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+					return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+							.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 				}
 			}
 		}
@@ -714,7 +735,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 	// 倉庫
 	private IBlockState getInterior1(int num, int x, int y, int z, Random rand, EnumFacing face) {
 		if ((x == 3 || x == 8 || x == 13) && z == 4 && y == 2) {
-			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1).withProperty(DCState.FACING, face.getOpposite());
+			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1).withProperty(DCState.FACING, face
+					.getOpposite());
 		}
 		if (z > 4 && z < 11) {
 			if ((x == 3 || x == 8 || x == 13) && z == 5 && y < 3) {
@@ -722,17 +744,20 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			}
 			if ((x == 2 || x == 7 || x == 12) && z == 5) {
 				if (y == 1) {
-					return Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER).withProperty(BlockDoor.FACING, face);
+					return Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER)
+							.withProperty(BlockDoor.FACING, face);
 				}
 				if (y == 2) {
-					return Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER).withProperty(BlockDoor.FACING, face);
+					return Blocks.OAK_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER)
+							.withProperty(BlockDoor.FACING, face);
 				}
 			}
 			if (x == 5 || x == 10) {
 				if (y < 3) {
 					return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
 				} else if (y < 6) {
-					return Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
+					return Blocks.STAINED_HARDENED_CLAY.getDefaultState()
+							.withProperty(BlockColored.COLOR, EnumDyeColor.YELLOW);
 				}
 			}
 		}
@@ -742,7 +767,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 	// カフェ
 	private IBlockState getInterior2(int num, int x, int y, int z, Random rand, EnumFacing face) {
 		if ((x == 5 || x == 10) && z == 6 && y == 3) {
-			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1).withProperty(DCState.FACING, face);
+			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1)
+					.withProperty(DCState.FACING, face);
 		}
 		if ((x == 0 || x == 15) && z == 8 && y == 4) {
 			return MainInit.chandelierGypsum.getDefaultState();
@@ -792,7 +818,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 	// 店
 	private IBlockState getInterior3(int num, int x, int y, int z, Random rand, EnumFacing face) {
 		if ((x == 5 || x == 10) && z == 6 && y == 2) {
-			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1).withProperty(DCState.FACING, face);
+			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1)
+					.withProperty(DCState.FACING, face);
 		}
 		if (z == 9 && y == 1) {
 			switch (x) {

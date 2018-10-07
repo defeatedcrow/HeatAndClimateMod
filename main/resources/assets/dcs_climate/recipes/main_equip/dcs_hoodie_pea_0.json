@@ -15,7 +15,7 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "itemCottonCloth"
+   "ore": "itemCloth"
   }
  ],
  "result": {

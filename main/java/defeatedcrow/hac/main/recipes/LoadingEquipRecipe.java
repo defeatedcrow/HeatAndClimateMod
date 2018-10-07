@@ -414,7 +414,7 @@ public class LoadingEquipRecipe {
 				"patternHoodie",
 				new ItemStack(Blocks.WOOL, 1, 32767),
 				new ItemStack(Blocks.WOOL, 1, 32767),
-				"itemCottonCloth"
+				"itemCloth"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.modsCoat, 1, 0), new Object[] {
