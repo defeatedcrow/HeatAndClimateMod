@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -53,6 +54,12 @@ public class ItemSynthetic extends DCItem {
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 		tooltip.add(I18n.format("dcs.tip.synthetic1"));
 		tooltip.add(I18n.format("dcs.tip.synthetic2"));
+		if (!DCUtil.isEmpty(stack)) {
+			int m = stack.getItemDamage();
+			if (m == 0 || m == 1) {
+				tooltip.add("Add a enchantment to the crafted armor: PROJECTILE PROTECTION");
+			}
+		}
 	}
 
 }

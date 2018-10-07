@@ -7,6 +7,7 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -173,6 +174,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustChrysotile", new ItemStack(MainInit.miscDust, 1, 11));
 		OreDictionary.registerOre("dustAsbest", new ItemStack(MainInit.miscDust, 1, 11));
 		OreDictionary.registerOre("dustMica", new ItemStack(MainInit.miscDust, 1, 12));
+		OreDictionary.registerOre("gemSlate", new ItemStack(MainInit.miscDust, 1, 13));
 		OreDictionary.registerOre("dustBlan", new ItemStack(MainInit.foodDust, 1, 0));
 		OreDictionary.registerOre("dustPlant", new ItemStack(MainInit.foodDust, 1, 1));
 		OreDictionary.registerOre("dropMolasses", new ItemStack(MainInit.foodDust, 1, 2));
@@ -204,6 +206,16 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gearAlloy", new ItemStack(MainInit.gears, 1, 2));
 		OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.gears, 1, 2));
 		OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.gears, 1, 3));
+
+		OreDictionary.registerOre("patternSuit", new ItemStack(MainInit.patternPaper, 1, 0));
+		OreDictionary.registerOre("patternCoat", new ItemStack(MainInit.patternPaper, 1, 1));
+		OreDictionary.registerOre("patternJacket", new ItemStack(MainInit.patternPaper, 1, 2));
+		OreDictionary.registerOre("patternHoodie", new ItemStack(MainInit.patternPaper, 1, 3));
+		OreDictionary.registerOre("patternShirt", new ItemStack(MainInit.patternPaper, 1, 4));
+		OreDictionary.registerOre("patternpants", new ItemStack(MainInit.patternPaper, 1, 5));
+		OreDictionary.registerOre("patternSkirt", new ItemStack(MainInit.patternPaper, 1, 6));
+		OreDictionary.registerOre("patternBoots", new ItemStack(MainInit.patternPaper, 1, 7));
+		OreDictionary.registerOre("patternWear", new ItemStack(MainInit.patternPaper, 1, 8));
 
 		OreDictionary.registerOre("blockGlass", new ItemStack(MainInit.syntheticBlock, 1, 32767));
 
@@ -237,5 +249,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 1));
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 3));
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
+
+		OreDictionary.registerOre("charcoal", new ItemStack(Items.COAL, 1, 1));
 	}
 }

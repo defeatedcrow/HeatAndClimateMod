@@ -16,6 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModelHat extends ModelThinBiped {
 	ModelRenderer top;
 	ModelRenderer brim;
+	ModelRenderer brim2;
 	ModelRenderer face;
 
 	public boolean isSneak = false;
@@ -47,6 +48,9 @@ public class ModelHat extends ModelThinBiped {
 		face = new ModelRenderer(this, 0, 12);
 		face.addBox(-4F, -7F, -4F, 8, 7, 8, f1);
 		face.setRotationPoint(0.0F, 0.0F + f2, 0.0F);
+		brim2 = new ModelRenderer(this, 0, 48);
+		brim2.addBox(-5F, -6.5F, -5F, 10, 1, 10, f1);
+		brim2.setRotationPoint(0.0F, 0.0F + f2, 0.0F);
 
 	}
 
@@ -59,6 +63,7 @@ public class ModelHat extends ModelThinBiped {
 		// showModelをここでいじる
 		top.showModel = true;
 		brim.showModel = true;
+		brim2.showModel = true;
 		face.showModel = true;
 
 		if (this.isChild) {
@@ -67,6 +72,7 @@ public class ModelHat extends ModelThinBiped {
 			GlStateManager.translate(0.0F, 16.0F * f7, 0.0F);
 			this.top.render(f7);
 			this.brim.render(f7);
+			this.brim2.render(f7);
 			this.face.render(f7);
 		} else {
 			if (ent.isSneaking()) {
@@ -75,6 +81,7 @@ public class ModelHat extends ModelThinBiped {
 
 			this.top.render(f7);
 			this.brim.render(f7);
+			this.brim2.render(f7);
 			this.face.render(f7);
 		}
 
@@ -88,6 +95,7 @@ public class ModelHat extends ModelThinBiped {
 
 		setAngle(top, this.bipedHead);
 		setAngle(brim, this.bipedHead);
+		setAngle(brim2, this.bipedHead);
 		setAngle(face, this.bipedHead);
 	}
 
@@ -110,6 +118,7 @@ public class ModelHat extends ModelThinBiped {
 	public void setVisible(boolean invisible) {
 		this.top.showModel = invisible;
 		this.brim.showModel = invisible;
+		this.brim2.showModel = invisible;
 		this.face.showModel = invisible;
 	}
 

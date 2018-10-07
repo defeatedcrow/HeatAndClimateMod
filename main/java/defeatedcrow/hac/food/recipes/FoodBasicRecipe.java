@@ -1042,8 +1042,8 @@ public class FoodBasicRecipe {
 				"cropLettuce"
 		});
 
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 11), new Object[] {
-				new ItemStack(MainInit.cropBasket, 1, 15)
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 15), new Object[] {
+				new ItemStack(MainInit.cropBasket, 1, 13)
 		});
 
 		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.dustBags, 1, 6), new Object[] {

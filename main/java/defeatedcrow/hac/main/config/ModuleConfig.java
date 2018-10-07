@@ -21,6 +21,7 @@ public class ModuleConfig {
 	public static boolean food_advanced = true;
 	public static boolean build_advanced = true;
 	public static boolean weapon_advanced = true;
+	public static boolean clothes_advanced = true;
 
 	public static boolean village = true;
 	public static boolean agri = true;
@@ -45,15 +46,11 @@ public class ModuleConfig {
 		try {
 			cfg.load();
 
-			cfg.addCustomCategoryComment("module setting", "This setting is for module parmission. " + BR +
-					"If you set false, that module will not add recipes and creative tab items." + BR +
-					"Please understand that you can not delete item/block registrations by this setting.");
+			cfg.addCustomCategoryComment("module setting", "This setting is for module parmission. " + BR + "If you set false, that module will not add recipes and creative tab items." + BR + "Please understand that you can not delete item/block registrations by this setting.");
 
-			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin installation parmission. " + BR +
-					"If you set false, that plugin will be disabled.");
+			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin installation parmission. " + BR + "If you set false, that plugin will be disabled.");
 
-			cfg.addCustomCategoryComment("recipe setting", "This setting is for recipe registration parmission. " + BR +
-					"If you set false, that recipe will be removed.");
+			cfg.addCustomCategoryComment("recipe setting", "This setting is for recipe registration parmission. " + BR + "If you set false, that recipe will be removed.");
 
 			Property machine_b = cfg.get("module setting", "EnableMachineModule", machine);
 			Property magic_b = cfg.get("module setting", "EnableMagicModule", magic);
@@ -68,6 +65,7 @@ public class ModuleConfig {
 			Property food_a = cfg.get("module setting", "EnableAdvancedFood", food_advanced);
 			Property weapon_a = cfg.get("module setting", "EnableAdvancedWeapon", weapon_advanced);
 			Property build_a = cfg.get("module setting", "EnableAdvancedBuildingBlocks", build_advanced);
+			Property build_c = cfg.get("module setting", "EnableAdvancedClothes", clothes_advanced);
 
 			Property mek_b = cfg.get("plugin setting", "MekanismPlugin", mek);
 			Property for_b = cfg.get("plugin setting", "ForestryPlugin", ffm);
@@ -97,6 +95,7 @@ public class ModuleConfig {
 			food_advanced = food_a.getBoolean();
 			weapon_advanced = weapon_a.getBoolean();
 			build_advanced = build_a.getBoolean();
+			clothes_advanced = build_c.getBoolean();
 
 			mek = mek_b.getBoolean();
 			ffm = for_b.getBoolean();

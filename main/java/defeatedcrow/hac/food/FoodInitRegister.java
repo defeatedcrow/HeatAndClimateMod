@@ -128,27 +128,22 @@ public class FoodInitRegister {
 		FoodInit.leavesLemon = new BlockLeavesLemon(ClimateCore.PACKAGE_BASE + "_leaves_lemon");
 		DCMaterialReg.registerBlock(FoodInit.leavesLemon, ClimateCore.PACKAGE_BASE +
 				"_leaves_lemon", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(FoodInit.leavesLemon, "leaves_lemon", 3);
 
 		FoodInit.leavesOlive = new BlockLeavesOlive(ClimateCore.PACKAGE_BASE + "_leaves_olive");
 		DCMaterialReg.registerBlock(FoodInit.leavesOlive, ClimateCore.PACKAGE_BASE +
 				"_leaves_olive", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(FoodInit.leavesOlive, "leaves_olive", 3);
 
 		FoodInit.leavesMorus = new BlockLeavesMorus(ClimateCore.PACKAGE_BASE + "_leaves_morus");
 		DCMaterialReg.registerBlock(FoodInit.leavesMorus, ClimateCore.PACKAGE_BASE +
 				"_leaves_morus", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(FoodInit.leavesMorus, "leaves_morus", 3);
 
 		FoodInit.leavesWalnut = new BlockLeavesWalnut(ClimateCore.PACKAGE_BASE + "_leaves_walnut");
 		DCMaterialReg.registerBlock(FoodInit.leavesWalnut, ClimateCore.PACKAGE_BASE +
 				"_leaves_walnut", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(FoodInit.leavesWalnut, "leaves_walnut", 3);
 
 		FoodInit.leavesDates = new BlockLeavesDates(ClimateCore.PACKAGE_BASE + "_leaves_dates");
 		DCMaterialReg.registerBlock(FoodInit.leavesDates, ClimateCore.PACKAGE_BASE +
 				"_leaves_dates", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(FoodInit.leavesDates, "leaves_dates", 3);
 
 		FoodInit.leavesDatesCrop = new BlockLeavesDatesCrop(ClimateCore.PACKAGE_BASE + "_leaves_datescrop");
 		DCMaterialReg.registerBlock(FoodInit.leavesDatesCrop, ClimateCore.PACKAGE_BASE +

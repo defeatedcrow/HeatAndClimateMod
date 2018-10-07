@@ -425,6 +425,88 @@ public class LoadingBuildingRecipe {
 			});
 		}
 
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.halfSlab3, 3, 0), new Object[] {
+				"XXX",
+				'X',
+				"gemSlate"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.roofSlate, 3, 0), new Object[] {
+				"  X",
+				" X ",
+				"X  ",
+				'X',
+				"gemSlate"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.roofSlate, 3, 0), new Object[] {
+				"X  ",
+				" X ",
+				"  X",
+				'X',
+				"gemSlate"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.halfSlab3, 8, 1), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.halfSlab3, 1, 0),
+				'Y',
+				"dyeRed"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.halfSlab3, 8, 2), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.halfSlab3, 1, 0),
+				'Y',
+				"dyeGreen"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.halfSlab3, 8, 3), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.halfSlab3, 1, 0),
+				'Y',
+				"dyeBrown"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.roofSlateRed, 8, 0), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.roofSlate, 1, 0),
+				'Y',
+				"dyeRed"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.roofSlateGreen, 8, 0), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.roofSlate, 1, 0),
+				'Y',
+				"dyeGreen"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.roofSlateBrown, 8, 0), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.roofSlate, 1, 0),
+				'Y',
+				"dyeBrown"
+		});
+
 	}
 
 	public static void advanced(RecipeResourcesMain res) {

@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "  X",
+  " X ",
+  "X  "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemSlate"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_roof_slate",
+  "count": 3,
+  "data": 0
+ }
+}

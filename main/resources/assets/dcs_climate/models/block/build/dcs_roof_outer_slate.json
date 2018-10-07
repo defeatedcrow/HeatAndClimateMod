@@ -1,0 +1,7 @@
+{
+    "parent": "dcs_climate:block/build/dcs_roof_base_outer",
+    "textures": {
+        "base": "blocks/concrete_silver",
+        "roof": "dcs_climate:blocks/build/roof_slate"
+    }
+}

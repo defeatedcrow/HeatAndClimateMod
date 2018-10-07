@@ -17,11 +17,13 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 
 	public final String TEX;
 	public final boolean isGlass;
+	public final boolean isForcedRender;
 
-	public BlockStairsBase(IBlockState state, String name, boolean glass) {
+	public BlockStairsBase(IBlockState state, String name, boolean glass, boolean force) {
 		super(state);
 		TEX = "dcs_climate:blocks/" + name;
 		isGlass = glass;
+		isForcedRender = force;
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 	}
@@ -49,6 +51,10 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		BlockPos check = pos.offset(side);
 		IBlockState state2 = world.getBlockState(check);
+
+		if (isForcedRender) {
+			return true;
+		}
 
 		if (isGlass) {
 			if (state.getBlock() == this) {

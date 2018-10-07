@@ -140,7 +140,7 @@ public class BlockLeavesDates extends ClimateCropBase implements ITexturePath, I
 
 	@Override
 	public ItemStack getSeedItem(IBlockState thisState) {
-		return new ItemStack(FoodInit.saplings2, 1, 0);
+		return new ItemStack(FoodInit.saplings2, 1, 1);
 	}
 
 	@Override

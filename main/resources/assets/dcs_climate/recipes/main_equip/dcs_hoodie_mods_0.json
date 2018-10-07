@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "patternHoodie"
+  },
+  {
+   "item": "minecraft:wool",
+   "data": 32767
+  },
+  {
+   "item": "minecraft:wool",
+   "data": 32767
+  },
+  {
+   "item": "minecraft:rabbit_hide",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_hoodie_mods",
+  "count": 1,
+  "data": 0
+ }
+}

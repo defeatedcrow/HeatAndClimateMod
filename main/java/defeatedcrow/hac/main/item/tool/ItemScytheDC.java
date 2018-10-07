@@ -17,6 +17,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -66,10 +67,10 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 		Multimap<String, AttributeModifier> multimap = HashMultimap.<String, AttributeModifier>create();
 
 		if (slot == EntityEquipmentSlot.MAINHAND) {
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(),
-					new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", this.attackDam, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(),
-					new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.5D, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER,
+					"Weapon modifier", this.attackDam, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER,
+					"Weapon modifier", -2.5D, 0));
 		}
 
 		return multimap;
@@ -79,8 +80,8 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 	public float getDestroySpeed(ItemStack stack, IBlockState state) {
 		Block block = state.getBlock();
 		Material material = state.getMaterial();
-		return material != Material.PLANTS && material != Material.VINE && material != Material.CORAL
-				&& material != Material.LEAVES && material != Material.GOURD ? 1.0F : 15.0F;
+		return material != Material.PLANTS && material != Material.VINE && material != Material.CORAL && material != Material.LEAVES && material != Material.GOURD ?
+				1.0F : 15.0F;
 	}
 
 	@Override
@@ -94,6 +95,11 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 				for (int y = -1; y < 2; y++) {
 					BlockPos p1 = pos.add(x, y, z);
 					IBlockState target = world.getBlockState(p1);
+					ItemStack tool = stack.copy();
+					if (living.isSneaking()) {
+						tool = new ItemStack(Items.SHEARS);
+					}
+
 					if (getDestroySpeed(stack, target) >= 5.0F && !(target.getBlock() instanceof BlockStem)) {
 
 						boolean flag = true;
@@ -102,7 +108,7 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 						}
 
 						if (target.getBlock() instanceof IShearable) {
-							flag = !((IShearable) target.getBlock()).isShearable(stack, world, p1);
+							flag = !((IShearable) target.getBlock()).isShearable(tool, world, p1);
 						}
 
 						if (target.getBlock() == Blocks.PUMPKIN || target.getBlock() == Blocks.MELON_BLOCK) {
@@ -118,7 +124,7 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 
 						if (!flag) {
 							if (living != null && living instanceof EntityPlayer) {
-								target.getBlock().harvestBlock(world, (EntityPlayer) living, p1, target, null, stack);
+								target.getBlock().harvestBlock(world, (EntityPlayer) living, p1, target, null, tool);
 								target.getBlock().removedByPlayer(target, world, p1, (EntityPlayer) living, false);
 							} else {
 								target.getBlock().dropBlockAsItem(world, p1, target, 0);
@@ -141,5 +147,6 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
 		tooltip.add("Range: " + (this.range + 1));
+		tooltip.add("During sneaking, this will work as scissors.");
 	}
 }
