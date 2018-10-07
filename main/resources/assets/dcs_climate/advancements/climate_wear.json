@@ -72,6 +72,46 @@
                 ]
             }
         },
+        "linen_jacket": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_lacket_linen"
+                    }
+                ]
+            }
+        },
+        "linen_shirt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_shirt_linen"
+                    }
+                ]
+            }
+        },
+        "linen_pants": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_pants_linen"
+                    }
+                ]
+            }
+        },
+        "linen_skirt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_skirt_linen"
+                    }
+                ]
+            }
+        },
         "linen_coat": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
@@ -101,6 +141,10 @@
             "leather_boots",
             "leather_hat",
             "linen_leggins",
+            "linen_jacket",
+            "linen_shirt",
+            "linen_pants",
+            "linen_skirt",
             "linen_coat",
             "wool_boots"
         ]

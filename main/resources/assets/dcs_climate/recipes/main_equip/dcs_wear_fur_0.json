@@ -1,19 +1,23 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  "YYY",
-  "YXY"
- ],
- "key": {
-  "X": {
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
+   "ore": "patternWear"
   },
-  "Y": {
+  {
    "item": "minecraft:rabbit_hide",
    "data": 0
+  },
+  {
+   "item": "minecraft:rabbit_hide",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "string"
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_wear_fur",
   "count": 1,

@@ -6,20 +6,14 @@ import defeatedcrow.hac.main.util.DCMaterialEnum;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemArmorWool extends ItemArmor implements ITexturePath {
-
-	private final String tex;
-	private final DCMaterialEnum material;
+public class ItemArmorWool extends ItemArmorDC implements ITexturePath {
 
 	public ItemArmorWool(ArmorMaterial m, DCMaterialEnum mat, EntityEquipmentSlot slot, String t) {
-		super(m, 2, slot);
-		material = mat;
-		tex = t;
+		super(m, mat, slot, t);
 	}
 
 	@Override

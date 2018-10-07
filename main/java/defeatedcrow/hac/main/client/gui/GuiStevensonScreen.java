@@ -9,9 +9,9 @@ import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -60,7 +60,7 @@ public class GuiStevensonScreen extends GuiContainer {
 			return;
 
 		int adjX = this.xSize / 2;
-		String s = I18n.translateToLocal("dcs.gui.device.stevenson_screen");
+		String s = I18n.format("dcs.gui.device.stevenson_screen");
 		this.fontRenderer.drawString(s, adjX - this.fontRenderer.getStringWidth(s) / 2, 10, 4210752);
 
 		int date = DCTimeHelper.getDay(tile.getWorld());
@@ -75,8 +75,8 @@ public class GuiStevensonScreen extends GuiContainer {
 		int color = day ? 0x005050 : 0x500050;
 
 		int seasonColor = season.color.getColorValue();
-		this.fontRenderer.drawString(season.name(), adjX - 30 - this.fontRenderer.getStringWidth(season.name()) / 2, 22,
-				seasonColor);
+		this.fontRenderer.drawString(season.name(), adjX - 30 - this.fontRenderer.getStringWidth(season.name()) /
+				2, 22, seasonColor);
 
 		String s1 = date + " DAY";
 		this.fontRenderer.drawString(s1, adjX + 5 - this.fontRenderer.getStringWidth(s1) / 2, 22, 4210752);

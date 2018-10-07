@@ -9,7 +9,6 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-// ぼうし
 @SideOnly(Side.CLIENT)
 public class ModelOvercoat extends ModelThinBiped {
 	ModelRenderer headH;

@@ -1,19 +1,19 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  "Y Y",
-  "X X"
- ],
- "key": {
-  "X": {
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
    "type": "forge:ore_dict",
-   "ore": "itemLeather"
+   "ore": "patternBoots"
   },
-  "Y": {
+  {
    "item": "minecraft:wool",
    "data": 32767
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "itemLeather"
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_boots_wool",
   "count": 1,

@@ -1,20 +1,23 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  "XYX",
-  "XXX",
-  "X X"
- ],
- "key": {
-  "X": {
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "patternSuite"
+  },
+  {
    "type": "forge:ore_dict",
    "ore": "itemSilkCloth"
   },
-  "Y": {
+  {
    "type": "forge:ore_dict",
-   "ore": "dyeBlack"
+   "ore": "itemSilkCloth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "string"
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_leggins_suit",
   "count": 1,

@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -39,6 +40,7 @@ public class AdvancedHUDEvent {
 	private int climate = 0;
 	private int count = 20;
 	private int biomeID = 0;
+	private Biome biome = Biomes.PLAINS;
 
 	public static boolean enable = MainCoreConfig.enableAdvHUD;
 
@@ -75,6 +77,7 @@ public class AdvancedHUDEvent {
 									climate = id.getClimateInt();
 								}
 								Biome b = world.provider.getBiomeForCoords(pos);
+								biome = b;
 								biomeID = b.getIdForBiome(b);
 							}
 						}
@@ -86,7 +89,8 @@ public class AdvancedHUDEvent {
 
 					if (hasAcv) {
 						IClimate clm = ClimateAPI.register.getClimateFromInt(climate);
-						int we = WeatherChecker.getTempOffset(world.provider.getDimension(), false);
+						float tempF = biome.getTemperature(player.getPosition());
+						float we = WeatherChecker.getTempOffsetFloat(world.provider.getDimension(), false);
 
 						Minecraft.getMinecraft().getTextureManager().bindTexture(TEX);
 						FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
@@ -108,6 +112,9 @@ public class AdvancedHUDEvent {
 						String temp = clm.getHeat().toString();
 						String hum = clm.getHumidity().toString();
 						String air = clm.getAirflow().toString();
+						if (ClimateCore.isDebug) {
+							temp += " " + (tempF + we) + "F";
+						}
 
 						if (CoreConfigDC.enableSeasonEffect) {
 							EnumSeason season = DCTimeHelper.getSeasonEnum(world);

@@ -180,191 +180,311 @@ public class LoadingEquipRecipe {
 
 		}
 
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.linenUnder, 1, 0), new Object[] {
+		// pattern paper
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 0), new Object[] {
 				"XXX",
-				"XXX",
-				"X X",
-				'X',
-				"itemLinenCloth"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.linenCoat, 1, 0), new Object[] {
-				"X X",
-				"XXX",
-				"XXX",
-				'X',
-				"itemLinenCloth"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.hoodie, 1, 0), new Object[] {
-				"X X",
-				"XXX",
-				"XXX",
-				'X',
-				"itemCottonCloth"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.clothUnder, 1, 0), new Object[] {
-				"XXX",
-				"XXX",
-				"X X",
-				'X',
-				"itemCottonCloth"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.clothCoat, 1, 0), new Object[] {
-				"X X",
 				"XYX",
-				"XYX",
+				"X X",
 				'X',
-				"itemCottonCloth",
+				"paper",
 				'Y',
-				"leather"
+				"charcoal"
 		});
 
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.blackSuit, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 1), new Object[] {
+				"X X",
 				"XYX",
 				"XXX",
+				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 2), new Object[] {
+				"X X",
+				"XYX",
 				"X X",
 				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 3), new Object[] {
+				" X ",
+				"XYX",
+				"XXX",
+				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 4), new Object[] {
+				"XYX",
+				"XXX",
+				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 5), new Object[] {
+				"XYX",
+				"X X",
+				"X X",
+				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 6), new Object[] {
+				"XY",
+				"XX",
+				"XX",
+				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 6), new Object[] {
+				"YX",
+				"XX",
+				"XX",
+				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 7), new Object[] {
+				"X X",
+				"XYX",
+				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 8), new Object[] {
+				"XYX",
+				"X X",
+				'X',
+				"paper",
+				'Y',
+				"charcoal"
+		});
+
+		// cloth
+		// linen
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.linenUnder, 1, 0), new Object[] {
+				"patternSuit",
+				"itemLinenCloth",
+				"itemLinenCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.linenShirt, 1, 0), new Object[] {
+				"patternShirt",
+				"itemLinenCloth",
+				"itemLinenCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.linenJacket, 1, 0), new Object[] {
+				"patternjacket",
+				"itemLinenCloth",
+				"itemLinenCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.linenCoat, 1, 0), new Object[] {
+				"patternCoat",
+				"itemLinenCloth",
+				"itemLinenCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.linenBottom, 1, 0), new Object[] {
+				"patternPants",
+				"itemLinenCloth",
+				"itemLinenCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.flowerSkirt, 1, 0), new Object[] {
+				"patternSkirt",
+				"itemLinenCloth",
+				"itemLinenCloth",
+				"string"
+		});
+
+		// cotton
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.clothUnder, 1, 0), new Object[] {
+				"patternSuit",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.clothShirt, 1, 0), new Object[] {
+				"patternShirt",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.clothJacket, 1, 0), new Object[] {
+				"patternJacket",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.clothCoat, 1, 0), new Object[] {
+				"patternCoat",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.hoodie, 1, 0), new Object[] {
+				"patternHoodie",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.clothBottom, 1, 0), new Object[] {
+				"patternPants",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.clothSkirt, 1, 0), new Object[] {
+				"patternSkirt",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.cottonHat, 1, 0), new Object[] {
+				"patternWear",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"string"
+		});
+
+		// worker
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.workerSuit, 1, 0), new Object[] {
+				"patternSuit",
+				"itemCottonCloth",
+				"itemCottonCloth",
+				"ingotIron"
+		});
+
+		// silk
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.blackSuit, 1, 0), new Object[] {
+				"patternSuite",
 				"itemSilkCloth",
-				'Y',
-				"dyeBlack"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.workerSuit, 1, 0), new Object[] {
-				"XYX",
-				"XXX",
-				"X X",
-				'X',
-				"itemCottonCloth",
-				'Y',
-				"dyeBlue"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.leatherHat, 1, 0), new Object[] {
-				"XXX",
-				"XYX",
-				'X',
-				"itemLeather",
-				'Y',
+				"itemSilkCloth",
 				"string"
 		});
 
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.cottonHat, 1, 0), new Object[] {
-				"XXX",
-				"XYX",
-				'X',
-				"itemCottonCloth",
-				'Y',
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.blackCoat, 1, 0), new Object[] {
+				"patternCoat",
+				"itemSilkCloth",
+				"itemSilkCloth",
 				"string"
 		});
 
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.hoodieB, 1, 0), new Object[] {
-				"XYX",
-				"XXX",
-				"XXX",
-				'X',
-				"itemCottonCloth",
-				'Y',
-				"dyeBlack"
+		// wool
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.woolJacket, 1, 0), new Object[] {
+				"patternJacket",
+				new ItemStack(Blocks.WOOL, 1, 32767),
+				new ItemStack(Blocks.WOOL, 1, 32767),
+				"string"
 		});
 
-		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.hoodieB, 1, 0), new Object[] {
-				new ItemStack(MainInit.hoodie, 1, 0),
-				"dyeBlack"
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.peaCoat, 1, 0), new Object[] {
+				"patternHoodie",
+				new ItemStack(Blocks.WOOL, 1, 32767),
+				new ItemStack(Blocks.WOOL, 1, 32767),
+				"itemCottonCloth"
 		});
 
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.peaCoat, 1, 0), new Object[] {
-				"Y Y",
-				"YXY",
-				"YXY",
-				'X',
-				"itemCottonCloth",
-				'Y',
-				new ItemStack(Blocks.WOOL, 1, 32767)
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.blackCoat, 1, 0), new Object[] {
-				"Y Y",
-				"YXY",
-				"YYY",
-				'X',
-				"dyeBlack",
-				'Y',
-				"itemSilkCloth"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.magicUnder, 1, 0), new Object[] {
-				"YXY",
-				"YXY",
-				"Y Y",
-				'X',
-				"stringMagic",
-				'Y',
-				"itemMagicCloth"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.magicCoat, 1, 0), new Object[] {
-				"Y Y",
-				"YXY",
-				"YXY",
-				'X',
-				"stringMagic",
-				'Y',
-				"itemMagicCloth"
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.woolBoots, 1, 0), new Object[] {
-				"Y Y",
-				"X X",
-				'X',
-				"itemLeather",
-				'Y',
-				new ItemStack(Blocks.WOOL, 1, 32767)
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.woolWear, 1, 0), new Object[] {
-				"YYY",
-				"YXY",
-				'X',
-				"itemCloth",
-				'Y',
-				new ItemStack(Blocks.WOOL, 1, 32767)
-		});
-
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.furWear, 1, 0), new Object[] {
-				"YYY",
-				"YXY",
-				'X',
-				"itemCloth",
-				'Y',
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.modsCoat, 1, 0), new Object[] {
+				"patternHoodie",
+				new ItemStack(Blocks.WOOL, 1, 32767),
+				new ItemStack(Blocks.WOOL, 1, 32767),
 				new ItemStack(Items.RABBIT_HIDE, 1, 0)
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.woolBoots, 1, 0), new Object[] {
+				"patternBoots",
+				new ItemStack(Blocks.WOOL, 1, 32767),
+				"itemLeather"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.woolWear, 1, 0), new Object[] {
+				"patternWear",
+				new ItemStack(Blocks.WOOL, 1, 32767),
+				new ItemStack(Blocks.WOOL, 1, 32767),
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.furWear, 1, 0), new Object[] {
+				"patternWear",
+				new ItemStack(Items.RABBIT_HIDE, 1, 0),
+				new ItemStack(Items.RABBIT_HIDE, 1, 0),
+				"string"
+		});
+
+		// leather
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.leatherHat, 1, 0), new Object[] {
+				"patternWear",
+				"itemLeather",
+				"itemLeather",
+				"string"
+		});
+
+		// magic
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.magicUnder, 1, 0), new Object[] {
+				"patternSuit",
+				"itemMagicCloth",
+				"itemMagicCloth",
+				"stringMagic"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.magicCoat, 1, 0), new Object[] {
+				"patternCoat",
+				"itemMagicCloth",
+				"itemMagicCloth",
+				"stringMagic"
 		});
 
 		if (ModuleConfig.machine_advanced) {
 
-			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.trackSuit, 1, 0), new Object[] {
-					"XYX",
-					"XXX",
-					"X X",
-					'X',
+			DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.trackSuit, 1, 0), new Object[] {
+					"patternSuit",
 					"itemSyntheticCloth",
-					'Y',
-					"dyeBlack"
+					"itemSyntheticCloth",
+					"string"
 			});
 
-			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.combatDress, 1, 0), new Object[] {
-					"XYX",
-					"XXX",
-					"X X",
-					'X',
+			DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.combatDress, 1, 0), new Object[] {
+					"patternSuit",
 					"itemSyntheticCloth",
-					'Y',
-					"itemLeather"
+					"itemSyntheticCloth",
+					"ingotTitanium"
 			});
 		}
 
+		// gun
 		if (ModuleConfig.weapon_advanced) {
 			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.crossbow, 1, 0), new Object[] {
 					"X  ",

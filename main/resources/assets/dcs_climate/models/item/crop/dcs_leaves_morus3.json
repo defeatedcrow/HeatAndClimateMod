@@ -1,6 +1,1 @@
-{
-    "parent": "dcs_climate:block/dcs_cube_all",
-    "textures": {
-        "all": "dcs_climate:blocks/crop/morus_3"
-    }
-}
+{"parent":"dcs_climate:block/crop/dcs_leaves_morus3"}
