@@ -23,6 +23,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -47,6 +48,25 @@ public class MainUtil {
 			"dyeGreen",
 			"dyeRed",
 			"dyeBlack",
+	};
+
+	public static TextFormatting[] DYE_CHAT_COLOR = {
+			TextFormatting.WHITE,
+			TextFormatting.GOLD,
+			TextFormatting.LIGHT_PURPLE,
+			TextFormatting.AQUA,
+			TextFormatting.YELLOW,
+			TextFormatting.GREEN,
+			TextFormatting.LIGHT_PURPLE,
+			TextFormatting.DARK_GRAY,
+			TextFormatting.GRAY,
+			TextFormatting.DARK_AQUA,
+			TextFormatting.DARK_PURPLE,
+			TextFormatting.BLUE,
+			TextFormatting.DARK_RED,
+			TextFormatting.GREEN,
+			TextFormatting.RED,
+			TextFormatting.DARK_GRAY
 	};
 
 	public static ItemStack getIngot(int meta) {

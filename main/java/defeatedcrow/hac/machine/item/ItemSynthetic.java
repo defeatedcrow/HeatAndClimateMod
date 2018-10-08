@@ -21,7 +21,9 @@ public class ItemSynthetic extends DCItem {
 	private static String[] names = {
 			"string",
 			"cloth",
-			"plate"
+			"plate",
+			"leather",
+			"hide"
 	};
 
 	public ItemSynthetic() {
@@ -51,10 +53,10 @@ public class ItemSynthetic extends DCItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-		tooltip.add(I18n.format("dcs.tip.synthetic1"));
-		tooltip.add(I18n.format("dcs.tip.synthetic2"));
 		if (!DCUtil.isEmpty(stack)) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add(I18n.format("dcs.tip.synthetic1"));
+			tooltip.add(I18n.format("dcs.tip.synthetic2"));
 			int m = stack.getItemDamage();
 			if (m == 0 || m == 1) {
 				tooltip.add("Add a enchantment to the crafted armor: PROJECTILE PROTECTION");

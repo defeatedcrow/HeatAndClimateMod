@@ -116,7 +116,7 @@ public class FoodFluidRecipe {
 		regNonFoodrecipe(new ItemStack(FoodInit.meat, 1,
 				4), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
 						200), new Object[] {
-								"itemLeather"
+								new ItemStack(Items.LEATHER, 1, 0)
 		});
 
 		// 醸造
@@ -820,7 +820,8 @@ public class FoodFluidRecipe {
 			DCHumidity hum, DCAirflow air, boolean cooling, FluidStack inF, Object... input) {
 		RecipeAPI.registerFluidRecipes.addRecipe(out, sec, chance, outF, heat, hum, air, cooling, inF, input);
 		if (ModuleConfig.machine)
-			RecipeAPI.registerReactorRecipes.addRecipe(out, sec, chance, outF, null, heat, (ItemStack) null, inF, null, input);
+			RecipeAPI.registerReactorRecipes
+					.addRecipe(out, sec, chance, outF, null, heat, (ItemStack) null, inF, null, input);
 	}
 
 	public static void regBoilrecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHumidity hum,

@@ -107,7 +107,7 @@ public class MachineRecipes {
 				'Y',
 				"ingotBrass",
 				'Z',
-				"itemLeather"
+				"leather"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.gearbox, 1, 0), new Object[] {
@@ -588,6 +588,10 @@ public class MachineRecipes {
 		OreDictionary.registerOre("itemCloth", new ItemStack(MachineInit.synthetic, 1, 1));
 		OreDictionary.registerOre("itemSyntheticCloth", new ItemStack(MachineInit.synthetic, 1, 1));
 		OreDictionary.registerOre("blockGlass", new ItemStack(MachineInit.synthetic, 1, 2));
+		OreDictionary.registerOre("leather", new ItemStack(MachineInit.synthetic, 1, 3));
+		OreDictionary.registerOre("itemLeather", new ItemStack(MachineInit.synthetic, 1, 3));
+		OreDictionary.registerOre("hide", new ItemStack(MachineInit.synthetic, 1, 4));
+		OreDictionary.registerOre("rabbithide", new ItemStack(MachineInit.synthetic, 1, 4));
 		OreDictionary.registerOre("dustAlkali", new ItemStack(MachineInit.reagent, 1, 3));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
 		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));

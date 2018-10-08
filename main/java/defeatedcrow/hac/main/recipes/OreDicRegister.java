@@ -238,6 +238,9 @@ public class OreDicRegister {
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.clothes, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.foodMaterials, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.builds, 1, 6));
+		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 2));
+		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 3));
+		ConvertTargetList.addReplaceTarget(new ItemStack(Items.RABBIT_HIDE, 1, 6), "rabbithide");
 
 		/* バニラ補足 */
 		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 0));
@@ -251,5 +254,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
 
 		OreDictionary.registerOre("charcoal", new ItemStack(Items.COAL, 1, 1));
+
+		OreDictionary.registerOre("rabbithide", new ItemStack(Items.RABBIT_HIDE, 1, 0));
 	}
 }
