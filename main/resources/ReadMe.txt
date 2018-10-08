@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 2.6.4 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 2.6.5 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1951,6 +1951,13 @@ Y = 各種宝石
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○2.6.5
+　新規
+　　・合成皮革と合成ファー
+　　・アルミニウム金型2種追加
+　修正
+　　・起動時にReflectionHelperがクラッシュ #62
 
 ○2.6.4
 　新規

@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.IColorableArmor;
 import defeatedcrow.hac.main.util.DCMaterialEnum;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -20,9 +21,9 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.DyeUtils;
@@ -221,12 +222,10 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath, IColorableAr
 	}
 
 	public static String getChatColor(EnumDyeColor color) {
-		TextFormatting chat = ReflectionHelper.getPrivateValue(EnumDyeColor.class, color, "chatColor");
-		if (chat != null) {
-			return chat == TextFormatting.BLACK ? TextFormatting.DARK_GRAY.toString() : chat.toString();
-		} else {
-			return TextFormatting.GRAY.toString();
-		}
+		int meta = color.getMetadata();
+		meta = MathHelper.clamp(meta, 0, 15);
+		TextFormatting chat = MainUtil.DYE_CHAT_COLOR[meta];
+		return chat.toString();
 	}
 
 }

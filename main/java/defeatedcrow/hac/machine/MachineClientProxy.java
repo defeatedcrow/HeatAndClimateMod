@@ -174,7 +174,8 @@ public class MachineClientProxy {
 		ClientMainProxy.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
 		ClientMainProxy.registerTileEntity(TileReactor.class, "dcs_te_reactor", new ReactorTESR());
 		ClientMainProxy.registerTileEntity(TileFreezer.class, "dcs_te_freezer", new FreezerTESR());
-		ClientMainProxy.registerTileEntity(TileSpinningMachine.class, "dcs_te_spinning_machine", new SpinningMachineTESR());
+		ClientMainProxy
+				.registerTileEntity(TileSpinningMachine.class, "dcs_te_spinning_machine", new SpinningMachineTESR());
 		ClientMainProxy.registerTileEntity(TilePortalManager.class, "dcs_te_portal_manager", new PortalManagerTESR());
 		GameRegistry.registerTileEntity(TileAdapterPanel.class, new ResourceLocation(ClimateMain.MOD_ID,
 				"dcs_te_adapter_item"));
@@ -262,10 +263,10 @@ public class MachineClientProxy {
 		instance.regTETorqueBlock(MachineInit.crusher, ClimateCore.PACKAGE_ID, "dcs_device_crusher", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 13);
-		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 2);
+		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 4);
 		instance.regSimpleItem(MachineInit.catalyst, ClimateCore.PACKAGE_ID, "dcs_misc_catalyst", "misc", 3);
 		instance.regSimpleItem(MachineInit.gemcore, ClimateCore.PACKAGE_ID, "dcs_misc_gemcore", "misc", 1);
-		instance.regSimpleItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_ID, "dcs_device_mold_aluminium", "machine", 3);
+		instance.regSimpleItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_ID, "dcs_device_mold_aluminium", "machine", 5);
 		instance.regSimpleItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_ID, "dcs_device_mold_alloy", "machine", 3);
 		instance.regSimpleItem(MachineInit.adapterCard, ClimateCore.PACKAGE_ID, "dcs_device_adapter_card", "machine", 3);
 		instance.regSimpleItem(MachineInit.dynamite, ClimateCore.PACKAGE_ID, "dcs_tool_dynamite", "tool", 1);

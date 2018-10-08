@@ -16,7 +16,7 @@
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "itemLeather"
+   "ore": "leather"
   }
  },
  "result": {
