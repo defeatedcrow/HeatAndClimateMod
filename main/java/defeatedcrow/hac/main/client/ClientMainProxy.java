@@ -14,7 +14,6 @@ import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
-import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
@@ -92,7 +91,6 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -188,17 +186,15 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileShitirin.class, "dcs_te_shitirin", new TESRShitirin());
 		registerTileEntity(TileCookingStove.class, "dcs_te_fuel_stove", new TESRFuelStove());
 		registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen", new TESRStevensonScreen());
-		GameRegistry.registerTileEntity(TileLowChest.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_lowchest"));
+		GameRegistry.registerTileEntity(TileLowChest.class, "dcs_te_lowchest");
 		registerTileEntity(TileMetalChest.class, "dcs_te_metalchest", new TESRMetalChest());
 		registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest", new TESRMagnetChest());
 		registerTileEntity(TileVillageChest.class, "dcs_te_villagechest", new TESRVillageChest());
-		GameRegistry.registerTileEntity(TileSink.class, new ResourceLocation(ClimateMain.MOD_ID, "dcs_te_sink"));
+		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
 		registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
 		registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
 		registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
-		GameRegistry.registerTileEntity(TileAcvShield.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_acv_shield"));
+		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum", new TESRChandelier());
 		registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock", new TESRAnalogClock());
 		registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l", new TESRLargeClock());
@@ -216,7 +212,7 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	public static <T extends TileEntity> void registerTileEntity(Class<T> teClass, String id,
 			TileEntitySpecialRenderer<? super T> renderer) {
-		GameRegistry.registerTileEntity(teClass, new ResourceLocation(ClimateMain.MOD_ID, id));
+		GameRegistry.registerTileEntity(teClass, id);
 		ClientRegistry.bindTileEntitySpecialRenderer(teClass, renderer);
 	}
 

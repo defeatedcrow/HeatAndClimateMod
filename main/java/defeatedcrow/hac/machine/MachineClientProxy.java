@@ -113,9 +113,7 @@ import defeatedcrow.hac.machine.client.X_ShaftTESR;
 import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
-import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.ClientMainProxy;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -143,9 +141,8 @@ public class MachineClientProxy {
 		ClientMainProxy.registerTileEntity(TileStoneMill.class, "dcs_te_stonemill", new StoneMillTESR());
 		ClientMainProxy.registerTileEntity(TileRedBox.class, "dcs_te_redbox", new RedBoxTESR());
 		ClientMainProxy.registerTileEntity(TileFan.class, "dcs_te_fan", new FanTESR());
-		GameRegistry.registerTileEntity(TileFauset.class, new ResourceLocation(ClimateMain.MOD_ID, "dcs_te_fauset"));
-		GameRegistry.registerTileEntity(TileFauset_SUS.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_fauset_sus"));
+		GameRegistry.registerTileEntity(TileFauset.class, "dcs_te_fauset");
+		GameRegistry.registerTileEntity(TileFauset_SUS.class, "dcs_te_fauset_sus");
 		ClientMainProxy.registerTileEntity(TileIBC.class, "dcs_te_ibc", new IBCTESR());
 		ClientMainProxy.registerTileEntity(TileHeatExchanger.class, "dcs_te_heatexchanger", new HeatExchangerTESR());
 		ClientMainProxy.registerTileEntity(TileShaft_S_SUS.class, "dcs_te_shaft_s_sus", new SUS_S_ShaftTESR());
@@ -161,14 +158,10 @@ public class MachineClientProxy {
 		ClientMainProxy.registerTileEntity(TileCreativeBox.class, "dcs_te_creative", new CreativeBoxTESR());
 		ClientMainProxy.registerTileEntity(TileConveyor.class, "dcs_te_conveyor", new ConveyorTESR());
 		ClientMainProxy.registerTileEntity(TileCatapult.class, "dcs_te_catapult", new CatapultTESR());
-		GameRegistry.registerTileEntity(TileHopperFilter.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_hopper_filter"));
-		GameRegistry.registerTileEntity(TileHopperGold.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_hopper_gold"));
-		GameRegistry.registerTileEntity(TileHopperFilterG.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_hopper_filter_gold"));
-		GameRegistry.registerTileEntity(TileHopperSilver.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_hopper_silver"));
+		GameRegistry.registerTileEntity(TileHopperFilter.class, "dcs_te_hopper_filter");
+		GameRegistry.registerTileEntity(TileHopperGold.class, "dcs_te_hopper_gold");
+		GameRegistry.registerTileEntity(TileHopperFilterG.class, "dcs_te_hopper_filter_gold");
+		GameRegistry.registerTileEntity(TileHopperSilver.class, "dcs_te_hopper_silver");
 		ClientMainProxy.registerTileEntity(TileHopperFluid.class, "dcs_te_hopper_fluid", new HopperFluidTESR());
 		ClientMainProxy.registerTileEntity(TileWatermill.class, "dcs_te_watermill", new WatermillTESR());
 		ClientMainProxy.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
@@ -177,14 +170,10 @@ public class MachineClientProxy {
 		ClientMainProxy
 				.registerTileEntity(TileSpinningMachine.class, "dcs_te_spinning_machine", new SpinningMachineTESR());
 		ClientMainProxy.registerTileEntity(TilePortalManager.class, "dcs_te_portal_manager", new PortalManagerTESR());
-		GameRegistry.registerTileEntity(TileAdapterPanel.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_adapter_item"));
-		GameRegistry.registerTileEntity(TileAcceptorPanel.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_acceptor_item"));
-		GameRegistry.registerTileEntity(TileAdapterFluidPanel.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_adapter_fluid"));
-		GameRegistry.registerTileEntity(TileAcceptorFluidPanel.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_acceptor_fluid"));
+		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
+		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
+		GameRegistry.registerTileEntity(TileAdapterFluidPanel.class, "dcs_te_adapter_fluid");
+		GameRegistry.registerTileEntity(TileAcceptorFluidPanel.class, "dcs_te_acceptor_fluid");
 		ClientMainProxy.registerTileEntity(TileGasBurner.class, "dcs_te_gas_burner", new GasBurnerTESR());
 		ClientMainProxy.registerTileEntity(TileShaft_S_Steel.class, "dcs_te_shaft_s_steel", new Steel_S_ShaftTESR());
 		ClientMainProxy.registerTileEntity(TileShaft_L_Steel.class, "dcs_te_shaft_l_steel", new Steel_L_ShaftTESR());
@@ -193,14 +182,12 @@ public class MachineClientProxy {
 		ClientMainProxy.registerTileEntity(TileShaft_X_Steel.class, "dcs_te_shaft_x_steel", new Steel_X_ShaftTESR());
 		ClientMainProxy.registerTileEntity(TileDieselEngine.class, "dcs_te_diesel_engine", new DieselEngineTESR());
 		ClientMainProxy.registerTileEntity(TileRollerCrusher.class, "dcs_te_crusher", new CrusherTESR());
-		GameRegistry.registerTileEntity(TileMonitorRedStone.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_monitor_rs"));
+		GameRegistry.registerTileEntity(TileMonitorRedStone.class, "dcs_te_monitor_rs");
 		ClientMainProxy.registerTileEntity(TileMonitorTorque.class, "dcs_te_monitor_torque", new MonitorTESR());
 		ClientMainProxy.registerTileEntity(TileMonitorRF.class, "dcs_te_monitor_rf", new MonitorTESR());
 		ClientMainProxy.registerTileEntity(TileMonitorFluid.class, "dcs_te_monitor_fluid", new MonitorTESR());
 		ClientMainProxy.registerTileEntity(TileMonitorInventory.class, "dcs_te_monitor_item", new MonitorTESR());
-		GameRegistry.registerTileEntity(TileMonitorComparator.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_monitor_cm"));
+		GameRegistry.registerTileEntity(TileMonitorComparator.class, "dcs_te_monitor_cm");
 		ClientMainProxy.registerTileEntity(TileWindmill_EX.class, "dcs_te_windmill_ex", new EX_WindmillTESR());
 	}
 

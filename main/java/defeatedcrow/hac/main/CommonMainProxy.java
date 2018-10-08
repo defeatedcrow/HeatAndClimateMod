@@ -165,10 +165,12 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadEnchantment() {
 		MainInit.venom = new EnchantmentVenom();
-		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom
+				.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
 
 		MainInit.robber = new EnchantmentRobber();
-		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber
+				.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
 
 	}
 
@@ -348,38 +350,23 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadTE() {
-		GameRegistry.registerTileEntity(TileNormalChamber.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_chamber_normal"));
-		GameRegistry.registerTileEntity(TileShitirin.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_shitirin"));
-		GameRegistry.registerTileEntity(TileCookingStove.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_fuel_stove"));
-		GameRegistry.registerTileEntity(TileStevensonScreen.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_stevenson_screen"));
-		GameRegistry.registerTileEntity(TileLowChest.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_lowchest"));
-		GameRegistry.registerTileEntity(TileMetalChest.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_metalchest"));
-		GameRegistry.registerTileEntity(TileMagnetChest.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magnetchest"));
-		GameRegistry.registerTileEntity(TileVillageChest.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_villagechest"));
-		GameRegistry.registerTileEntity(TileSink.class, new ResourceLocation(ClimateMain.MOD_ID, "dcs_te_sink"));
-		GameRegistry.registerTileEntity(TileBellow.class, new ResourceLocation(ClimateMain.MOD_ID, "dcs_te_bellow"));
-		GameRegistry.registerTileEntity(TileThermometer.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_thermometer"));
-		GameRegistry.registerTileEntity(TileWindVane.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_windvane"));
-		GameRegistry.registerTileEntity(TileAcvShield.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_acv_shield"));
-		GameRegistry.registerTileEntity(TileChandelierGypsum.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_chandelier_gypsum"));
-		GameRegistry.registerTileEntity(TileRealtimeClock.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_realtime_clock"));
-		GameRegistry.registerTileEntity(TileRealtimeClock_L.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_realtime_clock_l"));
-		GameRegistry.registerTileEntity(TileMCClock_L.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_mc_clock_l"));
+		GameRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal");
+		GameRegistry.registerTileEntity(TileShitirin.class, "dcs_te_shitirin");
+		GameRegistry.registerTileEntity(TileCookingStove.class, "dcs_te_fuel_stove");
+		GameRegistry.registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen");
+		GameRegistry.registerTileEntity(TileLowChest.class, "dcs_te_lowchest");
+		GameRegistry.registerTileEntity(TileMetalChest.class, "dcs_te_metalchest");
+		GameRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest");
+		GameRegistry.registerTileEntity(TileVillageChest.class, "dcs_te_villagechest");
+		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
+		GameRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow");
+		GameRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer");
+		GameRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane");
+		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
+		GameRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum");
+		GameRegistry.registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock");
+		GameRegistry.registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l");
+		GameRegistry.registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();

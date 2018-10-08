@@ -86,7 +86,7 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 				2), false) || matchOreName(output, "leather")) {
 			meta = 4;
 		} else if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1,
-				2), false) || matchOreName(output, "hide")) {
+				2), false) || matchOreName(output, "rabbithide")) {
 			meta = 5;
 		}
 		if (meta > 0) {
