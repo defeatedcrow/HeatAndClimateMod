@@ -38,9 +38,7 @@ import defeatedcrow.hac.magic.proj.EntityProjSchB;
 import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.magic.proj.EntityProjSilver;
 import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
-import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCRegistryUtil;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MagicCommonProxy {
@@ -74,38 +72,23 @@ public class MagicCommonProxy {
 	}
 
 	public static void loadTE() {
-		GameRegistry.registerTileEntity(TileIceCluster.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_cluster_ice"));
-		GameRegistry.registerTileEntity(TileInfernalFlame.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_infernal_flame"));
-		GameRegistry.registerTileEntity(TileLotusCandle.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_lotus_candle"));
-		GameRegistry.registerTileEntity(TileLotusCandleBlack.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_lotus_candle_black"));
+		GameRegistry.registerTileEntity(TileIceCluster.class, "dcs_te_cluster_ice");
+		GameRegistry.registerTileEntity(TileInfernalFlame.class, "dcs_te_infernal_flame");
+		GameRegistry.registerTileEntity(TileLotusCandle.class, "dcs_te_lotus_candle");
+		GameRegistry.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black");
 
-		GameRegistry.registerTileEntity(TileMaceLight.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_light"));
-		GameRegistry.registerTileEntity(TileMaceMoon.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_moon"));
-		GameRegistry.registerTileEntity(TileMaceBird.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_bird"));
-		GameRegistry.registerTileEntity(TileMaceIce.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_ice"));
-		GameRegistry.registerTileEntity(TileMaceOcean.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_ocean"));
-		GameRegistry.registerTileEntity(TileMaceBurn.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_burn"));
-		GameRegistry.registerTileEntity(TileMaceFlower.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_flower"));
-		GameRegistry.registerTileEntity(TileMaceGlory.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_glory"));
-		GameRegistry.registerTileEntity(TileMaceDry.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_drought"));
-		GameRegistry.registerTileEntity(TileMaceImpact.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_magicmace_impact"));
+		GameRegistry.registerTileEntity(TileMaceLight.class, "dcs_te_magicmace_light");
+		GameRegistry.registerTileEntity(TileMaceMoon.class, "dcs_te_magicmace_moon");
+		GameRegistry.registerTileEntity(TileMaceBird.class, "dcs_te_magicmace_bird");
+		GameRegistry.registerTileEntity(TileMaceIce.class, "dcs_te_magicmace_ice");
+		GameRegistry.registerTileEntity(TileMaceOcean.class, "dcs_te_magicmace_ocean");
+		GameRegistry.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn");
+		GameRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower");
+		GameRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory");
+		GameRegistry.registerTileEntity(TileMaceDry.class, "dcs_te_magicmace_drought");
+		GameRegistry.registerTileEntity(TileMaceImpact.class, "dcs_te_magicmace_impact");
 
-		GameRegistry.registerTileEntity(TileTimeCage.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_time_cage"));
+		GameRegistry.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage");
 	}
 
 }
