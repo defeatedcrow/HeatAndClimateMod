@@ -79,7 +79,7 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 4), new ItemStack(MainInit.gems, 1,
 					4), 0.2F, "oreSapphire");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), new ItemStack(MainInit.gems, 1,
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 3, 2), new ItemStack(MainInit.gems, 1,
 					7), 0.05F, "oreLime");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 8), new ItemStack(MainInit.gems, 1,
@@ -180,8 +180,8 @@ public class MachineDeviceRecipes {
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 11), "gemSerpentine");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 1,
-					EnumDyeColor.CYAN.getDyeDamage()), "gemMalachite");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 1, EnumDyeColor.CYAN
+					.getDyeDamage()), "gemMalachite");
 
 			// ingot粉砕
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 0), "ingotCopper");

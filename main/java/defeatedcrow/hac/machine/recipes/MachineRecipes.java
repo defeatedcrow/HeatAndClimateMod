@@ -584,7 +584,6 @@ public class MachineRecipes {
 
 	public static void loadOres() {
 		OreDictionary.registerOre("string", new ItemStack(MachineInit.synthetic, 1, 0));
-		OreDictionary.registerOre("itemString", new ItemStack(MachineInit.synthetic, 1, 0));
 		OreDictionary.registerOre("itemCloth", new ItemStack(MachineInit.synthetic, 1, 1));
 		OreDictionary.registerOre("itemSyntheticCloth", new ItemStack(MachineInit.synthetic, 1, 1));
 		OreDictionary.registerOre("blockGlass", new ItemStack(MachineInit.synthetic, 1, 2));
