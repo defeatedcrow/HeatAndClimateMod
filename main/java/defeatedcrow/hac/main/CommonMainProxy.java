@@ -129,8 +129,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -287,11 +285,6 @@ public class CommonMainProxy implements IGuiHandler {
 	}
 
 	public void loadRecipes() {
-		// milk
-		Fluid milk = FluidRegistry.getFluid("milk");
-		if (milk != null) {
-			MainInit.milk = milk;
-		}
 
 		BasicRecipeRegister.load();
 		MachineRecipeRegister.load();

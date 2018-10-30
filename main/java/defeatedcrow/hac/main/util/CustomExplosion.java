@@ -49,7 +49,7 @@ public class CustomExplosion extends Explosion {
 
 	public CustomExplosion(World world, Entity source, EntityLivingBase ign, double posX, double posY, double posZ,
 			float sizeIn, Type t, boolean smoke) {
-		super(world, source, posX, posY, posZ, sizeIn, false, smoke);
+		super(world, ign, posX, posY, posZ, sizeIn, false, smoke);
 		this.worldObj = world;
 		this.type = t;
 		this.igniter = ign;
@@ -79,8 +79,8 @@ public class CustomExplosion extends Explosion {
 		int j2 = MathHelper.floor(this.expY + this.size + 1.0D);
 		k = MathHelper.floor(this.expZ - this.size - 1.0D);
 		int k2 = MathHelper.floor(this.expZ + this.size + 1.0D);
-		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this.bomb,
-				new AxisAlignedBB(i, j, k, i2, j2, k2));
+		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this.bomb, new AxisAlignedBB(i, j, k, i2, j2,
+				k2));
 		Vec3d vec3 = new Vec3d(this.expX, this.expY, this.expZ);
 
 		for (int i1 = 0; i1 < list.size(); ++i1) {
@@ -153,16 +153,16 @@ public class CustomExplosion extends Explosion {
 	 * Does the second part of the explosion (sound, particles, drop spawn)
 	 */
 	public void doExplosionEffect(boolean eff, boolean flame) {
-		this.worldObj.playSound((EntityPlayer) null, this.expX, this.expY, this.expZ,
-				SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F,
-				(1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
+		this.worldObj
+				.playSound((EntityPlayer) null, this.expX, this.expY, this.expZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.worldObj.rand
+						.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
 
 		if (this.size >= 2.0F && eff) {
-			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.expX, this.expY, this.expZ, 1.0D, 0.0D,
-					0.0D, new int[0]);
+			this.worldObj
+					.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.expX, this.expY, this.expZ, 1.0D, 0.0D, 0.0D, new int[0]);
 		} else {
-			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.expX, this.expY, this.expZ, 1.0D, 0.0D,
-					0.0D, new int[0]);
+			this.worldObj
+					.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.expX, this.expY, this.expZ, 1.0D, 0.0D, 0.0D, new int[0]);
 		}
 
 		// if (eff) {
@@ -196,8 +196,8 @@ public class CustomExplosion extends Explosion {
 
 		if (flame) {
 			for (BlockPos blockpos1 : this.getAffectedBlockPositions()) {
-				if (this.worldObj.getBlockState(blockpos1).getMaterial() == Material.AIR
-						&& this.worldObj.getBlockState(blockpos1.down()).isFullBlock() && this.rand.nextInt(3) == 0) {
+				if (this.worldObj.getBlockState(blockpos1).getMaterial() == Material.AIR && this.worldObj
+						.getBlockState(blockpos1.down()).isFullBlock() && this.rand.nextInt(3) == 0) {
 					this.worldObj.setBlockState(blockpos1, Blocks.FIRE.getDefaultState());
 				}
 			}

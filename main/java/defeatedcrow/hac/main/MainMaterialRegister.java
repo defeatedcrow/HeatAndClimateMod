@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.event.DispenseEntityItem;
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInitRegister;
 import defeatedcrow.hac.machine.MachineInitRegister;
@@ -82,7 +83,9 @@ import defeatedcrow.hac.main.block.plant.BlockHedge;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.item.entity.ItemCushionGray;
 import defeatedcrow.hac.main.item.entity.ItemFlowerPot;
+import defeatedcrow.hac.main.item.equip.ItemArmorCape;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
+import defeatedcrow.hac.main.item.equip.ItemArmorDress;
 import defeatedcrow.hac.main.item.equip.ItemArmorHat;
 import defeatedcrow.hac.main.item.equip.ItemArmorHoodie;
 import defeatedcrow.hac.main.item.equip.ItemArmorJacket;
@@ -930,6 +933,12 @@ public class MainMaterialRegister {
 								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium");
 				DCMaterialReg
 						.registerItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium", ClimateMain.MOD_ID);
+
+				MainInit.silverArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_SILVER, DCMaterialEnum.SILVER, slot,
+						"silver").setCreativeTab(ClimateMain.cloth)
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_silver");
+				DCMaterialReg
+						.registerItem(MainInit.silverArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_silver", ClimateMain.MOD_ID);
 			}
 
 		}
@@ -1053,12 +1062,22 @@ public class MainMaterialRegister {
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_black");
 		DCMaterialReg.registerItem(MainInit.blackCoat, ClimateCore.PACKAGE_BASE + "_coat_black", ClimateMain.MOD_ID);
 
-		// dress
-
-		// wool
-
 		if (ModuleConfig.clothes_advanced) {
+			// dress
+			MainInit.silkDress = new ItemArmorDress(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+					EntityEquipmentSlot.LEGS, "dress_silk").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dress_silk");
+			DCMaterialReg
+					.registerItem(MainInit.silkDress, ClimateCore.PACKAGE_BASE + "_dress_silk", ClimateMain.MOD_ID);
 
+			MainInit.silkCape = new ItemArmorCape(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+					EntityEquipmentSlot.HEAD, "cape_silk")
+							.setColorList(EnumDyeColor.YELLOW, EnumDyeColor.RED, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cape_silk");
+			DCMaterialReg.registerItem(MainInit.silkCape, ClimateCore.PACKAGE_BASE + "_cape_silk", ClimateMain.MOD_ID);
+
+			// wool
 			MainInit.peaCoat = new ItemArmorHoodie(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL,
 					EntityEquipmentSlot.CHEST, "hoodie_pea").setCreativeTab(ClimateMain.cloth)
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_peacoat_black");
@@ -1077,6 +1096,12 @@ public class MainMaterialRegister {
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jacket_wool");
 			DCMaterialReg
 					.registerItem(MainInit.woolJacket, ClimateCore.PACKAGE_BASE + "_jacket_wool", ClimateMain.MOD_ID);
+
+			MainInit.furCape = new ItemArmorCape(DCArmorMaterial.DC_WOOL, DCMaterialEnum.WOOL, EntityEquipmentSlot.HEAD,
+					"cape_fur").setColorList(EnumDyeColor.BLUE, EnumDyeColor.BROWN, EnumDyeColor.BLACK)
+							.setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cape_fur");
+			DCMaterialReg.registerItem(MainInit.furCape, ClimateCore.PACKAGE_BASE + "_cape_fur", ClimateMain.MOD_ID);
 
 		}
 
@@ -1439,6 +1464,34 @@ public class MainMaterialRegister {
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.stockBlock, 32767, DCHeatTier.HOT);
 		ClimateAPI.registerBlock.registerHumBlock(MainInit.stockBlock, 32767, DCHumidity.UNDERWATER);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.nitrogenBlock, 32767, DCHeatTier.CRYOGENIC);
+
+		// dic
+		FluidDictionaryDC.registerFluidDic(MainInit.hydrogen, "hydrogen");
+		FluidDictionaryDC.registerFluidDic(MainInit.nitricAcid, "nitricacid");
+		FluidDictionaryDC.registerFluidDic(MainInit.sulfuricAcid, "sulfuricacid");
+		FluidDictionaryDC.registerFluidDic(MainInit.ammonia, "ammonia");
+		FluidDictionaryDC.registerFluidDic(MainInit.fuelOil, "fuel_oil");
+		FluidDictionaryDC.registerFluidDic(MainInit.fuelGas, "fuel_gaseous");
+		FluidDictionaryDC.registerFluidDic(MainInit.oil, "seed_oil");
+		FluidDictionaryDC.registerFluidDic(MainInit.nitrogen, "nitrogen");
+		FluidDictionaryDC.registerFluidDic(MainInit.ethanol, "ethanol");
+		FluidDictionaryDC.registerFluidDic(MainInit.blackLiquor, "black_liquor");
+
+		FluidDictionaryDC.registerFluidDic(MainInit.greenTea, "greentea");
+		FluidDictionaryDC.registerFluidDic(MainInit.blackTea, "blacktea");
+		FluidDictionaryDC.registerFluidDic(MainInit.coffee, "coffee");
+		FluidDictionaryDC.registerFluidDic(MainInit.cream, "cream");
+		FluidDictionaryDC.registerFluidDic(MainInit.lemon, "lemonade");
+		FluidDictionaryDC.registerFluidDic(MainInit.tomatoJuice, "tomato");
+		FluidDictionaryDC.registerFluidDic(MainInit.mazai, "mazai");
+		FluidDictionaryDC.registerFluidDic(MainInit.hotSpring, "hot_spring");
+
+		// milk
+		Fluid milk = FluidRegistry.getFluid("milk");
+		if (milk != null) {
+			MainInit.milk = milk;
+			FluidDictionaryDC.registerFluidDic(milk, "milk");
+		}
 	}
 
 	static void registerIntegration() {

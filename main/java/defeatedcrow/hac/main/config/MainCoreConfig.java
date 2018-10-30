@@ -30,6 +30,7 @@ public class MainCoreConfig {
 	public static boolean pendant_clam = true;
 	public static boolean bird_effect = true;
 	public static boolean ocean_effect = true;
+	public static boolean armor_effect = false;
 
 	public static String[] blocknames = new String[] {
 			"minecraft:stone:32767",
@@ -48,38 +49,41 @@ public class MainCoreConfig {
 			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin with the other mods.");
 			cfg.addCustomCategoryComment("item setting", "This setting is for the items.");
 
-			Property hud_icon = cfg.get("render setting", "Advanced Info on HUD", enableAdvHUD,
-					"Enable display the advanced info on HUD.");
+			Property hud_icon = cfg
+					.get("render setting", "Climate HUD Info", enableAdvHUD, "Enable display the climate info on HUD.");
 
-			Property hud_x = cfg.get("render setting", "Advanced Info Offset X", iconX,
-					"Set the amount of Xoffset of the advanced info.");
+			Property hud_x = cfg
+					.get("render setting", "Climate HUD Info Offset X", iconX, "Set the amount of Xoffset of the climate info.");
 
-			Property hud_y = cfg.get("render setting", "Advanced Info Offset Y", iconY,
-					"Set the amount of Yoffset of the advanced info.");
+			Property hud_y = cfg
+					.get("render setting", "Climate HUD Info Offset Y", iconY, "Set the amount of Yoffset of the climate info.");
 
-			Property vsRF = cfg.get("plugin setting", "Conversion rate vs RF", rateVsRF,
-					"Set the amount of conversion rate as RF/torque.");
+			Property vsRF = cfg
+					.get("plugin setting", "Conversion rate vs RF", rateVsRF, "Set the amount of conversion rate as RF/torque.");
 
-			Property vsEU = cfg.get("plugin setting", "Conversion rate vs EU", rateVsEU,
-					"Set the amount of conversion rate as EU/torque.");
+			Property vsEU = cfg
+					.get("plugin setting", "Conversion rate vs EU", rateVsEU, "Set the amount of conversion rate as EU/torque.");
 
-			Property noSteel = cfg.get("item setting", "Enable Steel Recipe", steel,
-					"Enable the climate recipe for smelting the steel block.");
+			Property noSteel = cfg
+					.get("item setting", "Enable Steel Recipe", steel, "Enable the climate recipe for smelting the steel block.");
 
-			Property noLead = cfg.get("item setting", "Enable Lead Ingot", lead,
-					"Enable to add the lead dust and ingot.");
+			Property noLead = cfg
+					.get("item setting", "Enable Lead Ingot", lead, "Enable to add the lead dust and ingot.");
 
-			Property p_schorl = cfg.get("item setting", "Enable Schorl Pendant Effect", pendant_schorl,
-					"Enable effect of schorl pendant.");
+			Property p_schorl = cfg
+					.get("item setting", "Enable Schorl Pendant Effect", pendant_schorl, "Enable effect of schorl pendant.");
 
-			Property b_dia = cfg.get("item setting", "Diamond Badge Disable List", blocknames,
-					"Please add block registry names you want exclude from diamond badge effect.");
+			Property b_dia = cfg
+					.get("item setting", "Diamond Badge Disable List", blocknames, "Please add block registry names you want exclude from diamond badge effect.");
 
-			Property p_bird = cfg.get("item setting", "Enable Wing Potion Effect", bird_effect,
-					"Enable effect of Wing Blessing potion.");
+			Property p_bird = cfg
+					.get("item setting", "Enable Wing Potion Effect", bird_effect, "Enable effect of Wing Blessing potion.");
 
-			Property p_ocean = cfg.get("item setting", "Enable Ocean Potion Effect", ocean_effect,
-					"Enable effect of Ocean Blessing potion.");
+			Property p_ocean = cfg
+					.get("item setting", "Enable Ocean Potion Effect", ocean_effect, "Enable effect of Ocean Blessing potion.");
+
+			Property armor_e = cfg
+					.get("item setting", "Show Armor Enchantment Effect", armor_effect, "Enable rendering effect of enchanted HaC armor at wearing.");
 
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");

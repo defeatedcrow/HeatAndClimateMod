@@ -10,32 +10,47 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-public class TileFauset_SUS extends DCTileEntity {
+public class TileFaucet extends DCTileEntity {
 
 	@Override
-	public void updateTile() {
-		super.updateTile();
+	protected void onServerUpdate() {
+		super.onServerUpdate();
 		if (!world.isRemote) {
-			// 水が無限に出てくる
+			// 液体を流す
 			IBlockState state = world.getBlockState(getPos());
 			if (!DCState.getBool(state, DCState.POWERED))
 				return;
 			else {
+				EnumFacing face = DCState.getSide(state, DCState.SIDE).face;
+				TileEntity fromTE = world.getTileEntity(getPos().offset(face));
+				if (fromTE == null
+						|| !fromTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+					fromTE = world.getTileEntity(getPos().offset(face, 2));
+				}
 				TileEntity toTE = world.getTileEntity(getPos().down());
-				if (toTE != null &&
-						toTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
-					IFluidHandler outtank = toTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
-					if (outtank != null) {
-						int limit = 1000; // 1000mBずつ
+				if (fromTE != null && toTE != null
+						&& fromTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())
+						&& toTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
+					IFluidHandler intank = fromTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
+							face.getOpposite());
+					IFluidHandler outtank = toTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
+							EnumFacing.UP);
+					if (intank != null && outtank != null) {
+
+						int limit = 200; // 200mBまでしか送らない
+
 						// 引き出せる量
-						FluidStack get = new FluidStack(FluidRegistry.WATER, limit);
+						FluidStack get = intank.drain(limit, false);
+						if (get == null || get.getFluid() == null || get.amount == 0)
+							return;
+
 						int ret = outtank.fill(get, false);
 						if (ret > 0) {
+							intank.drain(ret, true);
 							outtank.fill(get, true);
 						}
 					}

@@ -197,6 +197,7 @@ public class MainInit {
 	public static Item[] steelArmor = new Item[4];
 	public static Item[] chalcArmor = new Item[4];
 	public static Item[] sapphireArmor = new Item[4];
+	public static Item[] silverArmor = new Item[4];
 
 	// clothes
 	// linen
@@ -234,7 +235,7 @@ public class MainInit {
 
 	// dress
 	public static Item silkDress;
-	public static Item silkHaori;
+	public static Item silkCape;
 	public static Item silkKimono;
 
 	public static Item silkSkirt;
@@ -250,6 +251,7 @@ public class MainInit {
 
 	public static Item woolWear;
 	public static Item furWear;
+	public static Item furCape;
 
 	// synthetic
 	public static Item blouson;

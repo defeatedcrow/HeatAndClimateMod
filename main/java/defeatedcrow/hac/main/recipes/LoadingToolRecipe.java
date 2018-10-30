@@ -77,7 +77,7 @@ public class LoadingToolRecipe {
 				'X',
 				"plankWood",
 				'Y',
-				new ItemStack(Items.STICK, 1, 0)
+				"stickWood"
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 1), new Object[] {
@@ -161,7 +161,7 @@ public class LoadingToolRecipe {
 				"XYX",
 				"XXX",
 				'X',
-				new ItemStack(Blocks.COBBLESTONE, 1, 0),
+				"cobblestone",
 				'Y',
 				"gearWood"
 		});
@@ -181,9 +181,9 @@ public class LoadingToolRecipe {
 				"XYX",
 				" Z ",
 				'X',
-				new ItemStack(Items.GOLD_INGOT, 1, 0),
+				"ingotGold",
 				'Y',
-				new ItemStack(Items.REDSTONE, 1, 0),
+				"dustRedstone",
 				'Z',
 				"gemChalcedony"
 		});
@@ -209,7 +209,7 @@ public class LoadingToolRecipe {
 				'Y',
 				new ItemStack(DCInit.climate_checker),
 				'Z',
-				new ItemStack(Blocks.GLASS)
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {

@@ -2,8 +2,8 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "minecraft:chicken",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllchickenraw"
   },
   {
    "type": "forge:ore_dict",

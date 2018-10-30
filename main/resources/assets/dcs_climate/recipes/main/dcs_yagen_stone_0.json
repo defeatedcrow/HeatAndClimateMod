@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:cobblestone",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "cobblestone"
   },
   "Y": {
    "type": "forge:ore_dict",

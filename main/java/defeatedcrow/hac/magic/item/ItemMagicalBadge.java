@@ -111,7 +111,7 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 			"jadeite", /* 鉱脈索敵 */
 			"moonstone", /* 攻撃対象の書き換え */
 			"kunzite"
-			/* 敵消去 */ };
+			/* シルクタッチ破壊 */ };
 
 	public ItemMagicalBadge(int max) {
 		super();
@@ -196,8 +196,8 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 				int meta = stack.getMetadata();
 				if (!world.isRemote) {
 					if (meta == 7 || meta == 16) {
-						if (pos.getY() > 0 && pos.getY() < 254 && world.isAirBlock(pos.up()) &&
-								world.isAirBlock(pos.up(2))) {
+						if (pos.getY() > 0 && pos.getY() < 254 && world.isAirBlock(pos.up()) && world.isAirBlock(pos
+								.up(2))) {
 							NBTTagCompound tag = stack.getTagCompound();
 							if (tag == null) {
 								tag = new NBTTagCompound();
@@ -328,7 +328,8 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 							if (player.world.isBlockLoaded(pos)) {
 								IBlockState state = player.world.getBlockState(pos);
 								if (state != null && state.getMaterial() != Material.AIR) {
-									state.getBlock().onBlockActivated(player.world, pos, state, player, EnumHand.MAIN_HAND, EnumFacing.NORTH, 0.5F, 0.5F, 0.5F);
+									state.getBlock()
+											.onBlockActivated(player.world, pos, state, player, EnumHand.MAIN_HAND, EnumFacing.NORTH, 0.5F, 0.5F, 0.5F);
 									return true;
 								}
 							}
@@ -387,8 +388,8 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 				if (ret != null) {
 					player.sendMessage(new TextComponentString("== Nearest ore vein detected! =="));
 					player.sendMessage(new TextComponentString("Type: " + ret.type.name()));
-					player.sendMessage(new TextComponentString("Pos: " + ret.pos.getX() + ", " + ret.pos.getY() + ", " +
-							ret.pos.getZ()));
+					player.sendMessage(new TextComponentString("Pos: " + ret.pos.getX() + ", " + ret.pos
+							.getY() + ", " + ret.pos.getZ()));
 				} else {
 					player.sendMessage(new TextComponentString("== No ore vein detected in this chank =="));
 				}
@@ -469,8 +470,8 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 		}
 		if (meta == 10) {
 			if (player != null && target != null && !source.isExplosion() && source.isProjectile()) {
-				CustomExplosion explosion = new CustomExplosion(player.world, player, player, target.posX, target.posY +
-						0.25D, target.posZ, 3F, CustomExplosion.Type.Silk, true);
+				CustomExplosion explosion = new CustomExplosion(player.world, player, player, target.posX,
+						target.posY + 0.25D, target.posZ, 3F, CustomExplosion.Type.Silk, true);
 				explosion.doExplosion();
 				player.world.addWeatherEffect(new EntityLightningBolt(player.world, target.posX, target.posY - 0.25D,
 						target.posZ, !player.isSneaking()));
@@ -484,8 +485,8 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 			}
 		}
 		if (meta == 14) {
-			if (player != null && player.isSneaking() && target != null && !source.isExplosion() &&
-					!source.isProjectile()) {
+			if (player != null && player.isSneaking() && target != null && !source.isExplosion() && !source
+					.isProjectile()) {
 				AxisAlignedBB aabb = target.getEntityBoundingBox().grow(5.0D, 0D, 5.0D);
 				List<EntityLiving> list = player.world.getEntitiesWithinAABB(EntityLiving.class, aabb);
 				if (list.isEmpty())
@@ -550,15 +551,18 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 					IBlockState target = player.world.getBlockState(p);
 					if (!target.getBlock().canHarvestBlock(player.world, p, player))
 						continue;
-					if (target.equals(state) &&
-							target.getBlock().getMetaFromState(target) == state.getBlock().getMetaFromState(state) &&
-							!target.getBlock().hasTileEntity(target)) {
+					if (target.equals(state) && target.getBlock().getMetaFromState(target) == state.getBlock()
+							.getMetaFromState(state) && !target.getBlock().hasTileEntity(target)) {
 						// 同Block同Metadata
 						if (silk && target.getBlock().canSilkHarvest(player.world, p, target, player)) {
-							ItemStack item = new ItemStack(target.getBlock(), 1,
-									target.getBlock().getMetaFromState(target));
-							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() +
-									0.5D, item);
+							ItemStack item = new ItemStack(target.getBlock(), 1, target.getBlock()
+									.getMetaFromState(target));
+							if (DCUtil.isEmpty(item)) {
+								item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, 0), state
+										.getBlock().quantityDropped(itemRand), state.getBlock().damageDropped(state));
+							}
+							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p
+									.getZ() + 0.5D, item);
 							player.world.spawnEntity(drop);
 						} else {
 							target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
@@ -589,10 +593,14 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 						continue;
 					if (!block.getBlock().hasTileEntity(block)) {
 						if (silk && block.getBlock().canSilkHarvest(player.world, p, block, player)) {
-							ItemStack item = new ItemStack(block.getBlock(), 1,
-									block.getBlock().getMetaFromState(block));
-							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() +
-									0.5D, item);
+							ItemStack item = new ItemStack(block.getBlock(), 1, block.getBlock()
+									.getMetaFromState(block));
+							if (DCUtil.isEmpty(item)) {
+								item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, fortune), state
+										.getBlock().quantityDropped(itemRand), state.getBlock().damageDropped(state));
+							}
+							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p
+									.getZ() + 0.5D, item);
 							player.world.spawnEntity(drop);
 						} else {
 							block.getBlock().harvestBlock(player.world, player, p, block, null, hold);
@@ -602,14 +610,20 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 					}
 				}
 				return flag;
-			} else if (meta == 19 && player.canPlayerEdit(pos, EnumFacing.UP, charm) &&
-					state.getBlock().canSilkHarvest(player.world, pos, state, player)) {
-				ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
-				EntityItem drop = new EntityItem(player.world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-						item);
-				player.world.spawnEntity(drop);
-				player.world.setBlockToAir(pos);
-				return true;
+			} else if (meta == 19) {
+				if (player.canPlayerEdit(pos, EnumFacing.UP, charm) && state.getBlock()
+						.canSilkHarvest(player.world, pos, state, player)) {
+					ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
+					if (DCUtil.isEmpty(item)) {
+						item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, 0), state.getBlock()
+								.quantityDropped(itemRand), state.getBlock().damageDropped(state));
+					}
+					EntityItem drop = new EntityItem(player.world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
+							.getZ() + 0.5D, item);
+					player.world.spawnEntity(drop);
+					player.world.setBlockToAir(pos);
+					return true;
+				}
 			}
 		}
 		return false;

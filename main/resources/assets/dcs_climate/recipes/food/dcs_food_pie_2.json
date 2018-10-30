@@ -7,7 +7,7 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "foodAnyMeat"
+   "ore": "listAllmeatraw"
   },
   {
    "type": "forge:ore_dict",

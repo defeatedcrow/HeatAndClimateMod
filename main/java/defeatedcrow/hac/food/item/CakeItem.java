@@ -1,5 +1,6 @@
 package defeatedcrow.hac.food.item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -17,10 +18,14 @@ import defeatedcrow.hac.food.entity.CakeKuzuEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
 import defeatedcrow.hac.food.entity.CakeToffeeEntity;
 import defeatedcrow.hac.main.util.EnumFixedName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -137,9 +142,22 @@ public class CakeItem extends FoodItemBase {
 	}
 
 	@Override
+	public List<PotionEffect> getPotionEffect(int meta) {
+		List<PotionEffect> ret = new ArrayList<PotionEffect>();
+		if (meta != 0 && meta != 8) {
+			ret.add(new PotionEffect(MobEffects.INSTANT_HEALTH, 1, 0));
+		}
+		return ret;
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		if (stack.getItemDamage() != 0 && stack.getItemDamage() != 8) {
+			String effName = I18n.format(MobEffects.INSTANT_HEALTH.getName());
+			tooltip.add(TextFormatting.AQUA.toString() + effName);
+		}
 	}
 
 }

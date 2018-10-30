@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.client.base.ModelThinBiped;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.IColorableArmor;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.util.DCMaterialEnum;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.client.model.ModelBiped;
@@ -125,6 +126,12 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath, IColorableAr
 				tooltip.add(s);
 			}
 		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack item) {
+		return MainCoreConfig.armor_effect;
 	}
 
 	// color

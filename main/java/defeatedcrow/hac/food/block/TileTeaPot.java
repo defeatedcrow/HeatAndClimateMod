@@ -136,8 +136,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
-				dummy.getTankProperties().length > 0) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null && dummy
+				.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
@@ -165,8 +165,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 					// DCLogger.debugLog("check1");
 					if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
 						// DCLogger.debugLog("check2");
-						IDrinkCustomize drink = ret.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY,
-								null);
+						IDrinkCustomize drink = ret
+								.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 						DrinkMilk milk = this.cap.getMilk();
 						DrinkSugar sugar = this.cap.getSugar();
 						if (drink.setMilk(milk)) {
@@ -213,16 +213,16 @@ public class TileTeaPot extends TileFluidProcessorBase {
 		if (currentRecipe == null && current != null) {
 			currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
 			if (currentRecipe == null && current.getHeat().getTier() > 0) {
-				IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1),
-						current.getHumidity(), current.getAirflow());
+				IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current
+						.getHumidity(), current.getAirflow());
 				currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(clm2, ins, inf);
 			}
 			return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 3);
 		} else {
 			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {
 				int outAmo = currentRecipe.getOutputFluid() == null ? 0 : currentRecipe.getOutputFluid().amount;
-				return currentRecipe.matchOutput(outs, outf, 0) && outputT.getFluidAmount() +
-						outAmo <= outputT.getCapacity();
+				return currentRecipe.matchOutput(outs, outf, 0) && outputT.getFluidAmount() + outAmo <= outputT
+						.getCapacity();
 			}
 		}
 		return false;
@@ -238,8 +238,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
 		currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
 		if (currentRecipe == null && current.getHeat().getTier() > 0) {
-			IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current.getHumidity(),
-					current.getAirflow());
+			IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current
+					.getHumidity(), current.getAirflow());
 			currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(clm2, ins, inf);
 		}
 		return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 0);
@@ -255,7 +255,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 			FluidStack outF = currentRecipe.getOutputFluid();
 
 			if (inF != null) {
-				inputT.drain(inF, true);
+				inputT.drain(inF.amount, true);
 			}
 
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
@@ -273,8 +273,8 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 						if (next instanceof ItemStack) {
 							count = ((ItemStack) next).getCount();
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false) &&
-									slot.getCount() >= count;
+							match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot
+									.getCount() >= count;
 						} else if (next instanceof ArrayList) {
 							ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
 							if (list != null && !list.isEmpty()) {

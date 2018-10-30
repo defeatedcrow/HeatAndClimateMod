@@ -226,6 +226,16 @@ public class MachineAdvancedRecipe {
 				"blockGlass"
 		});
 
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 4), new Object[] {
+				new ItemStack(MachineInit.moldAluminium, 1, 0),
+				"leather"
+		});
+
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 5), new Object[] {
+				new ItemStack(MachineInit.moldAluminium, 1, 0),
+				"rabbithide"
+		});
+
 		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 0), new Object[] {
 				new ItemStack(MachineInit.moldAluminium, 1, 32767)
 		});

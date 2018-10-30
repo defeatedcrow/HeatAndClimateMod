@@ -41,9 +41,9 @@ public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 2;
-	public static final int MOD_MINOR = 6;
-	public static final int MOD_BUILD = 7;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.6.5,)";
+	public static final int MOD_MINOR = 7;
+	public static final int MOD_BUILD = 0;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.7.0,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
 			serverSide = "defeatedcrow.hac.main.CommonMainProxy")
@@ -108,7 +108,7 @@ public class ClimateMain {
 
 		if (ClimateCore.isDebug) {
 			RecipeJsonMaker.canUse = false;
-			RecipeJsonMaker.canDeprecate = false;
+			RecipeJsonMaker.canDeprecate = true;
 			RecipeJsonMaker.dir = Paths
 					.get("E:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources\\assets\\dcs_climate\\recipes\\");
 		}

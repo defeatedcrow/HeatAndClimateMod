@@ -6,8 +6,8 @@
    "ore": "stickWood"
   },
   {
-   "item": "minecraft:chicken",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllchickenraw"
   }
  ],
  "result": {

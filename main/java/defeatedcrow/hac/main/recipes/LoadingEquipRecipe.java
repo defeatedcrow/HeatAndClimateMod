@@ -129,14 +129,16 @@ public class LoadingEquipRecipe {
 					"ingotSteel",
 					"gemChalcedony",
 					"gemSapphire",
-					"ingotTitanium"
+					"ingotTitanium",
+					"ingotSilver"
 			};
 			Item[][] armor = {
 					MainInit.brassArmor,
 					MainInit.steelArmor,
 					MainInit.chalcArmor,
 					MainInit.sapphireArmor,
-					MainInit.titaniumArmor
+					MainInit.titaniumArmor,
+					MainInit.silverArmor
 			};
 			for (int i = 0; i < name2.length; i++) {
 				DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(armor[i][0], 1, 0), new Object[] {
@@ -177,6 +179,44 @@ public class LoadingEquipRecipe {
 						"itemCloth"
 				});
 			}
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.silverArmor[0], 1, 0), new Object[] {
+					"XXX",
+					"XYX",
+					'X',
+					"ingotNickelsilver",
+					'Y',
+					"itemCloth"
+			});
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.silverArmor[1], 1, 0), new Object[] {
+					"X X",
+					"XYX",
+					"XXX",
+					'X',
+					"ingotNickelsilver",
+					'Y',
+					"itemCloth"
+			});
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.silverArmor[2], 1, 0), new Object[] {
+					"XYX",
+					"X X",
+					"X X",
+					'X',
+					"ingotNickelsilver",
+					'Y',
+					"itemCloth"
+			});
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.silverArmor[3], 1, 0), new Object[] {
+					"X X",
+					"XYX",
+					'X',
+					"ingotNickelsilver",
+					'Y',
+					"itemCloth"
+			});
 
 		}
 
@@ -389,7 +429,7 @@ public class LoadingEquipRecipe {
 
 		// silk
 		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.blackSuit, 1, 0), new Object[] {
-				"patternSuite",
+				"patternSuit",
 				"itemSilkCloth",
 				"itemSilkCloth",
 				"string"
@@ -400,6 +440,20 @@ public class LoadingEquipRecipe {
 				"itemSilkCloth",
 				"itemSilkCloth",
 				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.silkDress, 1, 0), new Object[] {
+				"patternSuit",
+				"itemSilkCloth",
+				"itemSilkCloth",
+				"stringMagic"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.silkCape, 1, 0), new Object[] {
+				"patternWear",
+				"itemSilkCloth",
+				"itemSilkCloth",
+				"stringMagic"
 		});
 
 		// wool
@@ -440,6 +494,13 @@ public class LoadingEquipRecipe {
 		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.furWear, 1, 0), new Object[] {
 				"patternWear",
 				"rabbithide",
+				"rabbithide",
+				"string"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.furCape, 1, 0), new Object[] {
+				"patternWear",
+				"leather",
 				"rabbithide",
 				"string"
 		});
