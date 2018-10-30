@@ -1,19 +1,23 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  "XXX",
-  "XYX"
- ],
- "key": {
-  "X": {
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
    "type": "forge:ore_dict",
-   "ore": "itemLeather"
+   "ore": "patternWear"
   },
-  "Y": {
+  {
+   "type": "forge:ore_dict",
+   "ore": "leather"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "leather"
+  },
+  {
    "type": "forge:ore_dict",
    "ore": "string"
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_hat_leather",
   "count": 1,

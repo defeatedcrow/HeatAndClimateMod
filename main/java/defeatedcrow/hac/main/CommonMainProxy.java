@@ -103,6 +103,7 @@ import defeatedcrow.hac.main.potion.PotionBirdDC;
 import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
+import defeatedcrow.hac.main.recipes.ArmorDyesRecipeDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.BlockContainerUtil;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
@@ -124,17 +125,17 @@ import net.minecraft.entity.passive.EntityVillager.PriceInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
+import net.minecraftforge.registries.GameData;
 
 public class CommonMainProxy implements IGuiHandler {
 
@@ -162,10 +163,12 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadEnchantment() {
 		MainInit.venom = new EnchantmentVenom();
-		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom
+				.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
 
 		MainInit.robber = new EnchantmentRobber();
-		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber
+				.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
 
 	}
 
@@ -180,23 +183,21 @@ public class CommonMainProxy implements IGuiHandler {
 				"dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.agri);
 
-		MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
-				"dcs_climate:textures/models/agri_researcher.png",
-				"dcs_climate:textures/models/zombie_agri_researcher.png");
-		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
+		if (ModuleConfig.machine) {
+			MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
+					"dcs_climate:textures/models/agri_researcher.png",
+					"dcs_climate:textures/models/zombie_agri_researcher.png");
+			ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
+		}
 
 		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png",
 				"dcs_climate:textures/models/zombie_trader.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.trader);
 
+		HaCTradeData.init();
+
 		// HaCCrops
 		VillagerCareer agriList = new VillagerCareer(MainInit.agri, "dcs_agri_researcher");
-		// Gems, Clothes, Furnitures
-		VillagerCareer traderList = new VillagerCareer(MainInit.trader, "dcs_trader");
-		// machines
-		VillagerCareer machineList = new VillagerCareer(MainInit.engineer, "dcs_engineer");
-
-		HaCTradeData.init();
 
 		agriList.addTrade(1, new ITradeList[] {
 				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
@@ -221,6 +222,9 @@ public class CommonMainProxy implements IGuiHandler {
 				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
 				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3))
 		});
+
+		// Gems, Clothes, Furnitures
+		VillagerCareer traderList = new VillagerCareer(MainInit.trader, "dcs_trader");
 
 		traderList.addTrade(1, new ITradeList[] {
 				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3))
@@ -249,39 +253,38 @@ public class CommonMainProxy implements IGuiHandler {
 				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3))
 		});
 
-		machineList.addTrade(1, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3))
-		});
+		if (ModuleConfig.machine) {
+			VillagerCareer machineList = new VillagerCareer(MainInit.engineer, "dcs_engineer");
 
-		machineList.addTrade(2, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
-		});
+			machineList.addTrade(1, new ITradeList[] {
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3))
+			});
 
-		machineList.addTrade(3, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
-		});
+			machineList.addTrade(2, new ITradeList[] {
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+			});
 
-		machineList.addTrade(4, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
-		});
+			machineList.addTrade(3, new ITradeList[] {
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+			});
 
-		machineList.addTrade(5, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3))
-		});
+			machineList.addTrade(4, new ITradeList[] {
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+			});
+
+			machineList.addTrade(5, new ITradeList[] {
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+					HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3))
+			});
+		}
 
 	}
 
 	public void loadRecipes() {
-		// milk
-		Fluid milk = FluidRegistry.getFluid("milk");
-		if (milk != null) {
-			MainInit.milk = milk;
-		}
 
 		BasicRecipeRegister.load();
 		MachineRecipeRegister.load();
@@ -299,6 +302,8 @@ public class CommonMainProxy implements IGuiHandler {
 		}
 
 		BlockContainerUtil.INS.init();
+		GameData.register_impl(new ArmorDyesRecipeDC().setRegistryName(new ResourceLocation(ClimateMain.MOD_ID,
+				"armorcolor")));
 	}
 
 	public void loadEntity() {
@@ -376,7 +381,9 @@ public class CommonMainProxy implements IGuiHandler {
 		if (ModuleConfig.world) {
 			WorldGenWindmill.initLoot();
 			GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
-			GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
+			if (ModuleConfig.machine) {
+				GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
+			}
 			GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
 			if (WorldGenConfig.mazaiLake && MainInit.mazaiBlock != null)
 				GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);

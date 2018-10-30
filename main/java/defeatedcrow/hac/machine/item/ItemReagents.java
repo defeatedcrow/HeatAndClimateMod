@@ -9,15 +9,39 @@ public class ItemReagents extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"drop_coaltar", "drop_glycerine", "drop_synthetic", "dust_alkali", "dust_ammonium_nitrate",
-			"dust_nitrocellulose", "bottle_nitroglycerin", "bottle_carbon_black", "smokeless_gunpowder", "gem_carbide",
-			"bottle_phosphorus", "bottle_phosphoric_acid", "bottle_ammonium_phosphate", "gem_coke"
+			"drop_coaltar",
+			"drop_glycerine",
+			"drop_synthetic",
+			"dust_alkali",
+			"dust_ammonium_nitrate",
+			"dust_nitrocellulose",
+			"bottle_nitroglycerin",
+			"bottle_carbon_black",
+			"smokeless_gunpowder",
+			"gem_carbide",
+			"bottle_phosphorus",
+			"bottle_phosphoric_acid",
+			"bottle_ammonium_phosphate",
+			"gem_coke",
+			"bottle_aromatic_compound"
 	};
 
 	private static String[] tex_names = {
-			"drop_coaltar", "drop_glycerine", "drop_synthetic", "white_powder_bottle", "white_powder_bottle",
-			"white_powder_bottle", "orange_water_bottle", "black_water_bottle", "dust_smokeless", "gem_carbide",
-			"red_powder_bottle", "clear_water_bottle", "white_powder_bottle", "gem_coke"
+			"drop_coaltar",
+			"drop_glycerine",
+			"drop_synthetic",
+			"white_powder_bottle",
+			"white_powder_bottle",
+			"white_powder_bottle",
+			"orange_water_bottle",
+			"black_water_bottle",
+			"dust_smokeless",
+			"gem_carbide",
+			"red_powder_bottle",
+			"clear_water_bottle",
+			"white_powder_bottle",
+			"gem_coke",
+			"orange_water_bottle"
 	};
 
 	public ItemReagents() {
@@ -47,7 +71,7 @@ public class ItemReagents extends DCItem {
 	@Override
 	public int getItemBurnTime(ItemStack stack) {
 		int i = stack.getMetadata();
-		if (i == 0)
+		if (i == 0 || i == 14)
 			return 1600;
 		else if (i == 1)
 			return 800;

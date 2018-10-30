@@ -78,15 +78,15 @@ public class OreGenPos {
 		Biome biome3 = world.getBiome(pos3);
 		if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SANDY)) && rand3 < sSedP) {
 			ret[2] = getVeinFromSeed(world, pos3, EnumVein.SAND_SEDIMENT, seed);
-		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SAVANNA) || BiomeDictionary.hasType(biome3,
-				BiomeDictionary.Type.JUNGLE)) && rand3 < sedP) {
+		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SAVANNA) || BiomeDictionary
+				.hasType(biome3, BiomeDictionary.Type.JUNGLE)) && rand3 < sedP) {
 			ret[2] = getVeinFromSeed(world, pos3, EnumVein.BAUXITE, seed);
-		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.MOUNTAIN) || BiomeDictionary.hasType(biome3,
-				BiomeDictionary.Type.HILLS)) && rand3 < sedP) {
+		} else if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.MOUNTAIN) || BiomeDictionary
+				.hasType(biome3, BiomeDictionary.Type.HILLS)) && rand3 < sedP) {
 			ret[2] = getVeinFromSeed(world, pos3, EnumVein.SEDIMENT, seed);
 		}
 
-		int y4 = 120 + rand.nextInt(60);
+		int y4 = 140 + rand.nextInt(60);
 		int x4 = x + 8 + rand.nextInt(8);
 		int z4 = z + 8 + rand.nextInt(8);
 		BlockPos pos4 = new BlockPos(x4, y4, z4);

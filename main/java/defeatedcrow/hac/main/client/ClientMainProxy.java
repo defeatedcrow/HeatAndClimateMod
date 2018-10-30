@@ -57,6 +57,7 @@ import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
 import defeatedcrow.hac.main.client.model.ModelOvercoat;
+import defeatedcrow.hac.main.client.model.ModelSkirt;
 import defeatedcrow.hac.main.client.model.ModelWoolWear;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
@@ -86,8 +87,10 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -106,7 +109,12 @@ public class ClientMainProxy extends CommonMainProxy {
 	private static final ModelWoolWear woolHatModel = new ModelWoolWear(3);
 	private static final ModelOvercoat coatModel = new ModelOvercoat(0);
 	private static final ModelOvercoat coatModel2 = new ModelOvercoat(1);
-	private static final ModelThinBiped thinModel = new ModelThinBiped(0.40F, 3);
+	private static final ModelOvercoat coatModel3 = new ModelOvercoat(0.40F, 2);
+	private static final ModelSkirt skirtModel = new ModelSkirt(3);
+	private static final ModelThinBiped thinBootsModel = new ModelThinBiped(0.40F, 3);
+	private static final ModelThinBiped legginsModel2 = new ModelThinBiped(0.45F, 2);
+	private static final ModelThinBiped bodyModel2 = new ModelThinBiped(0.60F, 1);
+	private static final ModelThinBiped bodyModel3 = new ModelThinBiped(1.05F, 1);
 
 	@Override
 	public void loadConst() {
@@ -175,24 +183,23 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	@Override
 	public void loadTE() {
-		ClientRegistry.registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal", new TESRNormalChamber());
-		ClientRegistry.registerTileEntity(TileShitirin.class, "dcs_te_shitirin", new TESRShitirin());
-		ClientRegistry.registerTileEntity(TileCookingStove.class, "dcs_te_fuel_stove", new TESRFuelStove());
-		ClientRegistry.registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen",
-				new TESRStevensonScreen());
+		registerTileEntity(TileNormalChamber.class, "dcs_te_chamber_normal", new TESRNormalChamber());
+		registerTileEntity(TileShitirin.class, "dcs_te_shitirin", new TESRShitirin());
+		registerTileEntity(TileCookingStove.class, "dcs_te_fuel_stove", new TESRFuelStove());
+		registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen", new TESRStevensonScreen());
 		GameRegistry.registerTileEntity(TileLowChest.class, "dcs_te_lowchest");
-		ClientRegistry.registerTileEntity(TileMetalChest.class, "dcs_te_metalchest", new TESRMetalChest());
-		ClientRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest", new TESRMagnetChest());
-		ClientRegistry.registerTileEntity(TileVillageChest.class, "dcs_te_villagechest", new TESRVillageChest());
+		registerTileEntity(TileMetalChest.class, "dcs_te_metalchest", new TESRMetalChest());
+		registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest", new TESRMagnetChest());
+		registerTileEntity(TileVillageChest.class, "dcs_te_villagechest", new TESRVillageChest());
 		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
-		ClientRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
-		ClientRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
-		ClientRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
+		registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
+		registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
+		registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
 		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
-		ClientRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum", new TESRChandelier());
-		ClientRegistry.registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock", new TESRAnalogClock());
-		ClientRegistry.registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l", new TESRLargeClock());
-		ClientRegistry.registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l", new TESRMCClock());
+		registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum", new TESRChandelier());
+		registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock", new TESRAnalogClock());
+		registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l", new TESRLargeClock());
+		registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l", new TESRMCClock());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();
@@ -202,6 +209,12 @@ public class ClientMainProxy extends CommonMainProxy {
 
 		if (ModuleConfig.magic)
 			MagicClientProxy.loadTE();
+	}
+
+	public static <T extends TileEntity> void registerTileEntity(Class<T> teClass, String id,
+			TileEntitySpecialRenderer<? super T> renderer) {
+		GameRegistry.registerTileEntity(teClass, id);
+		ClientRegistry.bindTileEntitySpecialRenderer(teClass, renderer);
 	}
 
 	@Override
@@ -216,20 +229,20 @@ public class ClientMainProxy extends CommonMainProxy {
 	public void addSidedBlock(Block block, String name, int max) {
 		if (block == null)
 			return;
-		JsonRegister.regSidedCube(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" +
-				name, "cont", max);
-		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
-				"cont", max);
+		JsonRegister
+				.regSidedCube(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name, "cont", max);
+		JsonRegister.MAIN_INSTANCE
+				.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name, "cont", max);
 	}
 
 	@Override
 	public void addCropBlock(Block block, String name, int max) {
 		if (block == null)
 			return;
-		JsonRegister.regCross(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
-				"crop", max);
-		JsonRegister.MAIN_INSTANCE.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name,
-				"crop", max);
+		JsonRegister
+				.regCross(((ISidedTexture) block), ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name, "crop", max);
+		JsonRegister.MAIN_INSTANCE
+				.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name, "crop", max);
 	}
 
 	/**
@@ -241,16 +254,16 @@ public class ClientMainProxy extends CommonMainProxy {
 			return;
 		int m = 0;
 		if (max == 0) {
-			ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir + "/" +
-					name, "inventory"));
+			ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(
+					domein + ":" + dir + "/" + name, "inventory"));
 		} else {
 			while (m < max + 1) {
 				if (f) {
-					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir +
-							"/" + name + m, "inventory"));
+					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(
+							domein + ":" + dir + "/" + name + m, "inventory"));
 				} else {
-					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(domein + ":" + dir +
-							"/" + name, "inventory"));
+					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(
+							domein + ":" + dir + "/" + name, "inventory"));
 				}
 				m++;
 			}
@@ -264,8 +277,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(DCState.TYPE4).build());
 		// ModelBakery.registerItemVariants(Item.getItemFromBlock(block), new
 		// ModelResourceLocation(domein + ":" + name));
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(domein +
-				":" + dir + "/" + name, "inventory"));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
+				domein + ":" + dir + "/" + name, "inventory"));
 	}
 
 	// ruby氏に無限に感謝
@@ -307,7 +320,17 @@ public class ClientMainProxy extends CommonMainProxy {
 		case 5:
 			return coatModel2;
 		case 6:
-			return thinModel;
+			return coatModel3;
+		case 7:
+			return skirtModel;
+		case 8:
+			return thinBootsModel;
+		case 9:
+			return bodyModel2;
+		case 10:
+			return legginsModel2;
+		case 11:
+			return bodyModel3;
 		default:
 			return null;
 		}

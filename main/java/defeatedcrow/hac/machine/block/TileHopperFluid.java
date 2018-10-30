@@ -65,13 +65,13 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 		if (cooldown <= 0) {
 			cooldown = 5;
 			if (isActive()) {
-				if (!extractFluid()) {
+				if (!extractFluid() && !extractEntityFluid()) {
 					extractItem();
 				}
 
 				processTank();
 
-				if (!suctionFluidBlock() && !suctionFluid()) {
+				if (!suctionFluidBlock() && !suctionFluid() && !suctionEntityFluid()) {
 					if (!suctionItem()) {
 						suctionDrop();
 					}
@@ -85,8 +85,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			}
 
 			if (flag) {
-				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos,
-						FluidIDRegisterDC.getID(inputT.getFluidType()), inputT.getFluidAmount()));
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, FluidIDRegisterDC.getID(inputT
+						.getFluidType()), inputT.getFluidAmount()));
 			}
 		} else {
 			cooldown--;
@@ -107,7 +107,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 		if (face != null) {
 			TileEntity tile = world.getTileEntity(pos.offset(face));
 			if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite())) {
-				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite());
+				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face
+						.getOpposite());
 				if (target != null) {
 					boolean b = false;
 					ItemStack item = inv.getStackInSlot(1);
@@ -141,7 +142,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 		TileEntity tile = world.getTileEntity(getPos().down());
 		if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
 			IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
-			if (tank != null) {
+			if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 				int i = Math.min(mov, amo);
 				FluidStack ret = new FluidStack(inputT.getFluidType(), i);
 				int fill = tank.fill(ret, false);
@@ -154,6 +155,39 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 				}
 			}
 		}
+		return false;
+	}
+
+	private boolean extractEntityFluid() {
+		int cap = inputT.getCapacity();
+		int amo = inputT.getFluidAmount();
+		int mov = flowrate; // 200mBずつ
+
+		if (inputT.isEmpty() || amo <= 0)
+			return false;
+
+		AxisAlignedBB bb = new AxisAlignedBB(pos.add(-1, 0, -1), pos.add(2, 2, 2));
+		List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, bb);
+		if (!entities.isEmpty()) {
+			for (Entity e : entities) {
+				if (e != null && e.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
+					IFluidHandler tank = e
+							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
+					if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
+						int i = Math.min(mov, amo);
+						FluidStack ret = new FluidStack(inputT.getFluidType(), i);
+						int fill = tank.fill(ret, false);
+						if (fill > 0) {
+							ret = inputT.drain(fill, true);
+							tank.fill(ret, true);
+							this.markDirty();
+							return true;
+						}
+					}
+				}
+			}
+		}
+
 		return false;
 	}
 
@@ -208,39 +242,53 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 					}
 				}
 			}
-		} else {
-			Fluid milk = FluidRegistry.getFluid("milk");
-			boolean b = true;
-			if (milk == null) {
-				b = false;
-				milk = MainInit.cream;
-			}
-			if (inputT.isEmpty() || inputT.getFluidType() == milk) {
-				FluidStack get = null;
-				if (b) {
-					get = new FluidStack(milk, 50);
-				} else {
-					get = new FluidStack(MainInit.cream, 10);
-				}
-				boolean flag = false;
-				if (get != null) {
-					AxisAlignedBB bb = new AxisAlignedBB(pos.add(-2, -1, -2), pos.add(3, 2, 3));
-					List<Entity> entities = world.getEntitiesWithinAABB(EntityCow.class, bb);
-					if (!entities.isEmpty()) {
-						for (Entity e : entities) {
-							if (e instanceof EntityCow) {
-								int fill = inputT.fill(get, false);
-								if (fill > 0) {
-									inputT.fill(get, true);
-									this.markDirty();
-									flag = true;
-								}
+		}
+		return false;
+	}
+
+	private boolean suctionEntityFluid() {
+		int cap = inputT.getCapacity();
+		int amo = inputT.getFluidAmount();
+		int mov = flowrate; // 200mBずつ
+
+		if (amo >= cap)
+			return false;
+
+		AxisAlignedBB bb = new AxisAlignedBB(pos.add(-1, 0, -1), pos.add(2, 2, 2));
+		List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, bb);
+		if (!entities.isEmpty()) {
+			for (Entity e : entities) {
+				if (e != null && e.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
+					IFluidHandler tank = e
+							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
+					if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
+						FluidStack target = tank.getTankProperties()[0].getContents();
+						if (target != null && target.getFluid() != null) {
+							int i = Math.min(mov, cap - amo);
+							FluidStack ret = tank.drain(i, false);
+							int fill = inputT.fill(ret, false);
+							if (fill > 0) {
+								ret = tank.drain(fill, true);
+								inputT.fill(ret, true);
+								this.markDirty();
+								return true;
 							}
 						}
 					}
+				} else if (e instanceof EntityCow) {
+					FluidStack target = null;
+					Fluid milk = FluidRegistry.getFluid("milk");
+					if (milk != null) {
+						target = new FluidStack(milk, 50);
+					} else {
+						target = new FluidStack(MainInit.cream, 10);
+					}
 
-					if (flag)
-						return true;
+					int fill = inputT.fill(target, false);
+					if (fill > 0) {
+						inputT.fill(target, true);
+						this.markDirty();
+					}
 				}
 			}
 		}
@@ -335,8 +383,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 					fill = dummy.drain(rem, true);
 					ret = dummy.getContainer();
 
-					if (fill != null && (DCUtil.isEmpty(ret) ||
-							this.isItemStackable(ret, inv.getStackInSlot(slot2)) > 0)) {
+					if (fill != null && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, inv
+							.getStackInSlot(slot2)) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -369,8 +417,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
-				dummy.getTankProperties().length > 0) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null && dummy
+				.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 

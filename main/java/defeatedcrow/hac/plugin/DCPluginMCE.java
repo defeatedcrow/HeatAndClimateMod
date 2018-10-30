@@ -419,7 +419,7 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.combatDress, 1, 0), 5500);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.blackCoat, 1, 0), 7000);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.hoodie, 1, 0), 800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.hoodieB, 1, 0), 800);
+		// MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.hoodieB, 1, 0), 800);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.peaCoat, 1, 0), 550);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.magicUnder, 1, 0), 12600);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.magicCoat, 1, 0), 12600);
@@ -856,7 +856,7 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.hopperGold, 1, 0), 18800);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.hopperSilver, 1, 0), 10100);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.fauset, 1, 0), 4500);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.faucet, 1, 0), 4500);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.IBC, 1, 0), 2100);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.hopperFluid, 1, 0), 2800);
 

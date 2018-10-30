@@ -1,22 +1,30 @@
 package defeatedcrow.hac.main.util;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.api.magic.IJewelAmulet;
+import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class MainUtil {
@@ -40,6 +48,25 @@ public class MainUtil {
 			"dyeGreen",
 			"dyeRed",
 			"dyeBlack",
+	};
+
+	public static TextFormatting[] DYE_CHAT_COLOR = {
+			TextFormatting.WHITE,
+			TextFormatting.GOLD,
+			TextFormatting.LIGHT_PURPLE,
+			TextFormatting.AQUA,
+			TextFormatting.YELLOW,
+			TextFormatting.GREEN,
+			TextFormatting.LIGHT_PURPLE,
+			TextFormatting.DARK_GRAY,
+			TextFormatting.GRAY,
+			TextFormatting.DARK_AQUA,
+			TextFormatting.DARK_PURPLE,
+			TextFormatting.BLUE,
+			TextFormatting.DARK_RED,
+			TextFormatting.GREEN,
+			TextFormatting.RED,
+			TextFormatting.DARK_GRAY
 	};
 
 	public static ItemStack getIngot(int meta) {
@@ -153,6 +180,46 @@ public class MainUtil {
 		return false;
 	}
 
+	public static boolean hasCharmItem(EntityLivingBase living, ItemStack charm) {
+		if (living == null || DCUtil.isEmpty(charm)) {
+			return false;
+		}
+		if (living instanceof EntityPlayer && charm.getItem() instanceof IJewelCharm) {
+			boolean hasCharm = false;
+			for (int i = 9; i < 18; i++) {
+				ItemStack check = ((EntityPlayer) living).inventory.getStackInSlot(i);
+				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
+					int m = check.getMetadata();
+					if (m == 9) {
+						hasCharm = true;
+					}
+				}
+			}
+
+			if (Loader.isModLoaded("baubles") && !hasCharm) {
+				if (DCPluginBaubles.hasBaublesCharm(((EntityPlayer) living), charm)) {
+					hasCharm = true;
+				}
+			}
+			return hasCharm;
+		} else if (charm.getItem() instanceof IJewelAmulet) {
+			Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
+			boolean hasCharm = false;
+			if (!map.isEmpty()) {
+				for (ItemStack item : map.values()) {
+					if (item.getItem() == charm.getItem() && item.getItemDamage() == charm.getItemDamage()) {
+						hasCharm = true;
+					}
+				}
+			}
+			if (living instanceof EntityPlayer && DCPluginBaubles.hasBaublesAmulet((EntityPlayer) living, charm)) {
+				hasCharm = true;
+			}
+			return hasCharm;
+		}
+		return false;
+	}
+
 	public static boolean hasSameDic(ItemStack item, ItemStack check) {
 		if (!DCUtil.isEmpty(item) && !DCUtil.isEmpty(check)) {
 			int[] ids = OreDictionary.getOreIDs(check);
@@ -168,6 +235,38 @@ public class MainUtil {
 							return true;
 					}
 				}
+			}
+		}
+		return false;
+	}
+
+	public static boolean hasDic(ItemStack item, String check) {
+		if (!DCUtil.isEmpty(item) && check != null) {
+			int[] ids2 = OreDictionary.getOreIDs(item);
+			if (ids2 == null || ids2.length < 1) {
+				return false;
+			}
+			for (int id2 : ids2) {
+				String s = OreDictionary.getOreName(id2);
+				if (s.equalsIgnoreCase(check))
+					return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean hasDicPart(String name, ItemStack item) {
+		if (name == null || DCUtil.isEmpty(item)) {
+			return false;
+		} else {
+			int[] ids2 = OreDictionary.getOreIDs(item);
+			if (ids2 == null || ids2.length < 1) {
+				return false;
+			}
+			for (int id2 : ids2) {
+				String s = OreDictionary.getOreName(id2);
+				if (s.contains(name))
+					return true;
 			}
 		}
 		return false;

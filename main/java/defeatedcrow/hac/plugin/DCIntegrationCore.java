@@ -19,6 +19,8 @@ public class DCIntegrationCore {
 	public static boolean loadedBC = false;
 	public static boolean loadedMCE = false;
 	public static boolean loadedTaN = false;
+	public static boolean loadedGVC = false;
+	public static boolean loadedEIO = false;
 
 	private DCIntegrationCore() {}
 
@@ -41,6 +43,9 @@ public class DCIntegrationCore {
 		if (Loader.isModLoaded("schr0tanpopo")) {
 			loadedTanpopo = true;
 		}
+		if (Loader.isModLoaded("hmggvc")) {
+			loadedGVC = true;
+		}
 		if (Loader.isModLoaded("mceconomy3") && ModuleConfig.mce) {
 			loadedMCE = true;
 		}
@@ -49,6 +54,9 @@ public class DCIntegrationCore {
 		}
 		if (Loader.isModLoaded("toughasnails") && ModuleConfig.tan) {
 			loadedTaN = true;
+		}
+		if (Loader.isModLoaded("enderio")) {
+			loadedEIO = true;
 		}
 	}
 
@@ -104,6 +112,17 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomesOPlenty");
 			} catch (Error e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: BiomesOPlenty");
+			}
+		}
+
+		if (loadedEIO) {
+			try {
+				DCPluginEIO.init();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod init plugin: EnderIO");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: EnderIO");
+			} catch (Error e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: EnderIO");
 			}
 		}
 
@@ -163,6 +182,15 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: ToughAsNails");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: ToughAsNails");
+			}
+		}
+
+		if (loadedGVC) {
+			try {
+				DCPluginGVC.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: hmggvc");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: hmggvc");
 			}
 		}
 

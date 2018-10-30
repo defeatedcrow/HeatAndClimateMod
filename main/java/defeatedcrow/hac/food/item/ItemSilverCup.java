@@ -165,7 +165,8 @@ public class ItemSilverCup extends FoodItemBase {
 			if (stack.getItem() != this)
 				return false;
 			else {
-				IFluidHandlerItem cont = stack.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+				IFluidHandlerItem cont = stack
+						.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 				IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 				if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
@@ -229,6 +230,9 @@ public class ItemSilverCup extends FoodItemBase {
 				Potion potion = DrinkPotionType.getPotion(fluid);
 				if (potion != null) {
 					float duration = potion.isBadEffect() ? 600 * dirF : 1200 * dirF;
+					if (potion == MobEffects.INSTANT_HEALTH || potion == MobEffects.INSTANT_DAMAGE) {
+						duration = 1F * dirF;
+					}
 					ret.add(new PotionEffect(potion, MathHelper.ceil(duration), ampF));
 				}
 			} else {

@@ -1,15 +1,32 @@
 package defeatedcrow.hac.main.item.misc;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemClothN extends DCItem {
 
 	private final int maxMeta;
 
 	private static String[] names = {
-			"string_linen", "string_cotton", "cloth_linen", "cloth_cotton", "string_chrysotile", "cloth_chrysotile",
-			"string_silk", "cloth_silk", "string_magic", "cloth_magic"
+			"string_linen",
+			"string_cotton",
+			"cloth_linen",
+			"cloth_cotton",
+			"string_chrysotile",
+			"cloth_chrysotile",
+			"string_silk",
+			"cloth_silk",
+			"string_magic",
+			"cloth_magic"
 	};
 
 	public ItemClothN(int max) {
@@ -48,4 +65,16 @@ public class ItemClothN extends DCItem {
 		return ClimateCore.PACKAGE_ID + ":" + s;
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
+		if (!DCUtil.isEmpty(stack)) {
+			int m = stack.getItemDamage();
+			if (m == 4 || m == 5) {
+				tooltip.add("Add a enchantment to the crafted armor: FIRE PROTECTION");
+			} else if (m == 8 || m == 9) {
+				tooltip.add("Add a enchantment to the crafted armor: BLAST PROTECTION");
+			}
+		}
+	}
 }

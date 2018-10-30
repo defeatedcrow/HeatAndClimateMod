@@ -34,8 +34,8 @@ public class MachineInit {
 	public static Block shaft3_t_b;
 	public static Block shaft3_x;
 
-	public static Block fauset;
-	public static Block fauset_sus;
+	public static Block faucet;
+	public static Block faucet_sus;
 	public static Block IBC;
 
 	public static Block conveyor;

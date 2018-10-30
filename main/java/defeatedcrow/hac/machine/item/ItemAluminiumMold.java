@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IPressMold;
@@ -26,7 +27,7 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 
 	public ItemAluminiumMold() {
 		super();
-		maxMeta = 3;
+		maxMeta = 5;
 	}
 
 	@Override
@@ -72,15 +73,21 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 	@Override
 	public ItemStack setOutput(ItemStack mold, ItemStack output, int num) {
 		int meta = -1;
-		if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1, 0), false) || matchOreName(output,
-				"string")) {
+		if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1,
+				0), false) || matchOreName(output, "string")) {
 			meta = 1;
-		} else if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1, 2), false) || DCUtil.isSameItem(
-				output, new ItemStack(Blocks.GLASS_PANE), false)) {
+		} else if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1, 2), false) || DCUtil
+				.isSameItem(output, new ItemStack(Blocks.GLASS_PANE), false)) {
 			meta = 2;
-		} else if (DCUtil.isSameItem(output, new ItemStack(MainInit.syntheticBlock, 1, 8), false) || DCUtil.isSameItem(
-				output, new ItemStack(Blocks.GLASS), false)) {
+		} else if (DCUtil.isSameItem(output, new ItemStack(MainInit.syntheticBlock, 1, 8), false) || DCUtil
+				.isSameItem(output, new ItemStack(Blocks.GLASS), false)) {
 			meta = 3;
+		} else if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1,
+				2), false) || matchOreName(output, "leather")) {
+			meta = 4;
+		} else if (DCUtil.isSameItem(output, new ItemStack(MachineInit.synthetic, 1,
+				2), false) || matchOreName(output, "rabbithide")) {
+			meta = 5;
 		}
 		if (meta > 0) {
 			ItemStack next = new ItemStack(mold.getItem(), mold.getCount(), meta);
@@ -99,6 +106,10 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 				return new ItemStack(MachineInit.synthetic, 4, 2);
 			else if (m == 3)
 				return new ItemStack(MainInit.syntheticBlock, 1, 0);
+			else if (m == 4)
+				return new ItemStack(MachineInit.synthetic, 1, 3);
+			else if (m == 5)
+				return new ItemStack(MachineInit.synthetic, 1, 4);
 		}
 		return null;
 	}
@@ -112,6 +123,12 @@ public class ItemAluminiumMold extends DCItem implements IPressMold {
 	public List<ItemStack> getInputs(ItemStack mold) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		list.add(new ItemStack(MachineInit.reagent, 1, 2));
+		if (mold.getItemDamage() == 4) {
+			list.add(new ItemStack(MainInit.clothes, 1, 2));
+		}
+		if (mold.getItemDamage() == 5) {
+			list.add(new ItemStack(FoodInit.crops, 1, 5));
+		}
 		return list;
 	}
 

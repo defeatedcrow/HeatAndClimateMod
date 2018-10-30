@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.main.entity.EntityBulletDC;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
@@ -41,7 +41,8 @@ public class EntityProjBarrier extends EntityMobBarrier {
 
 		// 接触判定
 		if (!world.isRemote) {
-			List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().grow(1.0D));
+			List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox()
+					.grow(1.0D));
 			if (list != null && !list.isEmpty()) {
 				for (int i = 0; i < list.size(); i++) {
 					Entity entity = list.get(i);
@@ -77,7 +78,7 @@ public class EntityProjBarrier extends EntityMobBarrier {
 						}
 
 						if (flag) {
-							if (!(shooter instanceof EntityPlayer) && !(shooter instanceof EntityTameable)) {
+							if (shooter instanceof IMob || shooter == null) {
 								entity.setDead();
 							}
 						}

@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_roof_slate",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "dyeRed"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_roof_slate_red",
+  "count": 8,
+  "data": 0
+ }
+}

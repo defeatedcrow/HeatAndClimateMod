@@ -218,12 +218,18 @@ public class DCPluginForestry {
 			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropRice));
 			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropOnion));
 			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropSpinach));
+			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropHerb));
+			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropBean));
+			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropChili));
+			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropGarlic));
+			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropLettuce));
 			Farmables.farmables.put("farmVegetables", new DCFarmableDouble(
 					(ClimateDoubleCropBase) FoodInit.cropTomato));
 			Farmables.farmables.put("farmVegetables", new DCFarmableDouble(
 					(ClimateDoubleCropBase) FoodInit.cropCoffee));
 			Farmables.farmables.put("farmVegetables", new DCFarmableDouble(
 					(ClimateDoubleCropBase) FoodInit.cropCotton));
+			Farmables.farmables.put("farmVegetables", new DCFarmableDouble((ClimateDoubleCropBase) FoodInit.cropSoy));
 		}
 
 		DamageAPI.resistantData.registerEntityResistant(EntityButterfly.class, 2.0F, 2.0F);

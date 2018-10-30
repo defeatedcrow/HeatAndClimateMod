@@ -89,8 +89,8 @@ public class ContainerCrusher extends Container {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 
-			if (index < 7) {
-				if (!this.mergeItemStack(itemstack1, 7, 42, true))
+			if (index < 8) {
+				if (!this.mergeItemStack(itemstack1, 8, 42, true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else {

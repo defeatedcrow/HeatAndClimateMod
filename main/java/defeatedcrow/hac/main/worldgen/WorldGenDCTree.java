@@ -93,8 +93,10 @@ public class WorldGenDCTree extends WorldGenAbstractTree {
 
 								if (Math.abs(j1) != l2 || Math.abs(l1) != l2 || rand.nextInt(2) != 0 && k2 != 0) {
 									BlockPos blockpos = new BlockPos(i3, i2, k1);
+									if (Math.abs(j1) + Math.abs(l1) > 4) {
+										continue;
+									}
 									IBlockState state2 = world.getBlockState(blockpos);
-
 									if (state2.getBlock().isAir(state2, world, blockpos)) {
 										this.setBlockAndNotifyAdequately(world, blockpos, LEAF);
 									}

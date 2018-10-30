@@ -1,5 +1,6 @@
 package defeatedcrow.hac.plugin.cofh;
 
+import cofh.api.util.ThermalExpansionHelper;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.ItemStack;
@@ -14,9 +15,12 @@ public class DCRecipeCoFH {
 	static void loadFuels() {
 		addCompressionFuel(MainInit.fuelOil.getName(), 800000);
 		addCompressionFuel(MainInit.fuelGas.getName(), 1000000);
-		addCompressionFuel(MainInit.ethanol.getName(), 200000);
+		addCompressionFuel(MainInit.ethanol.getName(), 400000);
 		addCompressionFuel(MainInit.blackLiquor.getName(), 100000);
 		addCompressionFuel(MainInit.oil.getName(), 200000);
+		addCompressionFuel(MainInit.hydrogen.getName(), 400000);
+		addCoolant(MainInit.ammonia.getName(), 1000000, 20);
+		addCoolant(MainInit.nitrogen.getName(), 1500000, 60);
 	}
 
 	static void loadRecipes() {
@@ -27,54 +31,63 @@ public class DCRecipeCoFH {
 		}
 
 		// refinary
-		if (DCPluginCoFH.naphtha != null && DCPluginCoFH.tree != null && DCPluginCoFH.tar != null &&
-				DCPluginCoFH.rogin != null) {
-			addRefineryRecipe(5000, new FluidStack(MainInit.fuelOil, 200), new FluidStack(DCPluginCoFH.naphtha, 100),
-					DCPluginCoFH.tar, 70);
+		if (DCPluginCoFH.naphtha != null && DCPluginCoFH.tree != null && DCPluginCoFH.tar != null && DCPluginCoFH.rogin != null) {
+			addRefineryRecipe(5000, new FluidStack(MainInit.fuelOil, 200), new FluidStack(DCPluginCoFH.naphtha,
+					100), DCPluginCoFH.tar, 70);
 
-			addRefineryRecipe(5000, new FluidStack(MainInit.blackLiquor, 200), new FluidStack(DCPluginCoFH.tree, 100),
-					DCPluginCoFH.tar, 70);
+			addRefineryRecipe(5000, new FluidStack(MainInit.blackLiquor, 200), new FluidStack(DCPluginCoFH.tree,
+					100), DCPluginCoFH.tar, 70);
 
-			addRefineryRecipe(5000, new FluidStack(MainInit.oil, 200), new FluidStack(DCPluginCoFH.naphtha, 50),
-					new ItemStack(MachineInit.reagent, 1, 1), 70);
+			addRefineryRecipe(5000, new FluidStack(MainInit.oil, 200), new FluidStack(DCPluginCoFH.naphtha,
+					50), new ItemStack(MachineInit.reagent, 1, 1), 70);
 		}
 
 		// pulvarizer
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 0), new ItemStack(MainInit.gems, 2, 3),
-				new ItemStack(MainInit.gems, 1, 6), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 0), new ItemStack(MainInit.gems, 2, 3), new ItemStack(
+				MainInit.gems, 1, 6), 10);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 2), new ItemStack(MainInit.gems, 2, 0),
-				new ItemStack(MainInit.gems, 1, 4), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 2), new ItemStack(MainInit.gems, 2, 0), new ItemStack(
+				MainInit.gems, 1, 4), 10);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 5), new ItemStack(MainInit.oreDust, 2, 7),
-				new ItemStack(MainInit.oreDust, 1, 9), 25);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 5), new ItemStack(MainInit.oreDust, 2,
+				7), new ItemStack(MainInit.oreDust, 1, 9), 25);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 8), new ItemStack(MainInit.oreDust, 2, 1),
-				new ItemStack(MainInit.oreDust, 1, 12), 25);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 8), new ItemStack(MainInit.oreDust, 2,
+				1), new ItemStack(MainInit.oreDust, 1, 12), 25);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 15), new ItemStack(MainInit.oreDust, 2, 7),
-				new ItemStack(MainInit.oreDust, 1, 9), 25);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores, 1, 15), new ItemStack(MainInit.oreDust, 2,
+				7), new ItemStack(MainInit.oreDust, 1, 9), 25);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores_2, 1, 6), new ItemStack(MainInit.gems, 2, 12),
-				new ItemStack(MainInit.gems, 1, 13), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores_2, 1, 6), new ItemStack(MainInit.gems, 2,
+				12), new ItemStack(MainInit.gems, 1, 13), 10);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores_2, 1, 7), new ItemStack(MainInit.gems, 2, 14),
-				new ItemStack(MainInit.gems, 1, 14), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores_2, 1, 7), new ItemStack(MainInit.gems, 2,
+				14), new ItemStack(MainInit.gems, 1, 14), 10);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores_2, 1, 9), new ItemStack(MainInit.oreDust, 2, 12),
-				new ItemStack(MainInit.oreDust, 1, 1), 25);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores_2, 1, 9), new ItemStack(MainInit.oreDust, 2,
+				12), new ItemStack(MainInit.oreDust, 1, 1), 25);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.ores_2, 1, 11), new ItemStack(MainInit.oreDust, 2, 10),
-				new ItemStack(MainInit.gems, 1, 15), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.ores_2, 1, 11), new ItemStack(MainInit.oreDust, 2,
+				10), new ItemStack(MainInit.gems, 1, 15), 10);
 	}
 
 	private static void addCompressionFuel(String name, int amount) {
 		NBTTagCompound toSend = new NBTTagCompound();
 
-		toSend.setString("fluidName", name);
+		toSend.setString("fluid", name);
 		toSend.setInteger("energy", amount);
 
-		FMLInterModComms.sendMessage("thermalexpansion", "addcompressionfuel", toSend);
+		FMLInterModComms.sendMessage("thermalexpansion", ThermalExpansionHelper.ADD_COMPRESSION_FUEL, toSend);
+	}
+
+	private static void addCoolant(String name, int amount, int factor) {
+		NBTTagCompound toSend = new NBTTagCompound();
+
+		toSend.setString("fluid", name);
+		toSend.setInteger("energy", amount);
+		toSend.setInteger("factor", factor);
+
+		FMLInterModComms.sendMessage("thermalexpansion", ThermalExpansionHelper.ADD_COOLANT, toSend);
 	}
 
 	private static void addCrucibleRecipe(int energy, ItemStack input, FluidStack output) {
@@ -89,7 +102,7 @@ public class DCRecipeCoFH {
 			input.writeToNBT(toSend.getCompoundTag("input"));
 			output.writeToNBT(toSend.getCompoundTag("output"));
 
-			FMLInterModComms.sendMessage("thermalexpansion", "addcruciblerecipe", toSend);
+			FMLInterModComms.sendMessage("thermalexpansion", ThermalExpansionHelper.ADD_CRUCIBLE_RECIPE, toSend);
 		}
 	}
 
@@ -112,7 +125,7 @@ public class DCRecipeCoFH {
 			input.writeToNBT(toSend.getCompoundTag("input"));
 			output.writeToNBT(toSend.getCompoundTag("output"));
 
-			FMLInterModComms.sendMessage("thermalexpansion", "addrefineryrecipe", toSend);
+			FMLInterModComms.sendMessage("thermalexpansion", ThermalExpansionHelper.ADD_REFINERY_RECIPE, toSend);
 		}
 	}
 
@@ -131,6 +144,6 @@ public class DCRecipeCoFH {
 			sec.writeToNBT(toSend.getCompoundTag("secondaryOutput"));
 			toSend.setInteger("secondaryChance", chance);
 		}
-		FMLInterModComms.sendMessage("thermalexpansion", "addpulverizerrecipe", toSend);
+		FMLInterModComms.sendMessage("thermalexpansion", ThermalExpansionHelper.ADD_PULVERIZER_RECIPE, toSend);
 	}
 }

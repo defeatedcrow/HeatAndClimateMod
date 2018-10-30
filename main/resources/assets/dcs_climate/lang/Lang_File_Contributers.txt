@@ -3,6 +3,11 @@ I thank authors of each language files.
 
 en_US
 TartaricAcid
+0999312
+
+zh_CN
+TartaricAcid
+0999312
 
 zh_CN
 TartaricAcid
@@ -10,4 +15,5 @@ TartaricAcid
 
 zh_TW
 ckhomo
+0999312
 

@@ -116,7 +116,7 @@ public class FoodFluidRecipe {
 		regNonFoodrecipe(new ItemStack(FoodInit.meat, 1,
 				4), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
 						200), new Object[] {
-								"itemLeather"
+								new ItemStack(Items.LEATHER, 1, 0)
 		});
 
 		// 醸造
@@ -233,6 +233,18 @@ public class FoodFluidRecipe {
 								"dustLime"
 		});
 
+		regNonFoodrecipe(new ItemStack(MainInit.miscDust, 1,
+				13), null, 0F, null, DCHeatTier.UHT, null, null, false, null, new Object[] {
+						"dustChrysotile",
+						"dustLime"
+		});
+
+		regNonFoodrecipe(new ItemStack(MainInit.miscDust, 1,
+				13), null, 0F, null, DCHeatTier.UHT, null, null, false, null, new Object[] {
+						"dustCrystal",
+						"dustLime"
+		});
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
 				1), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
 						1000), new Object[] {
@@ -308,7 +320,7 @@ public class FoodFluidRecipe {
 
 		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.stock, 1000), null, null, false, new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
-						"foodAnyMeat",
+						"listAllmeatraw",
 						"cropHerb",
 						"listAllveggie"
 		});
@@ -346,19 +358,19 @@ public class FoodFluidRecipe {
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 3,
 				2), null, 0F, null, DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
 						"dustSalt",
-						"foodAnyMeat"
+						"listAllmeatraw"
 		});
 
 		regBoilrecipe(new ItemStack(MainInit.bakedApple, 1, 1), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] {
-						new ItemStack(Items.EGG)
+						"egg"
 		});
 
 		regBoilrecipe(new ItemStack(MainInit.bakedApple, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] {
 						"dustSalt",
 						"cropHerb",
-						"foodAnyMeat"
+						"listAllmeatraw"
 		});
 
 		regBoilrecipe(new ItemStack(MainInit.bakedApple, 3, 3), null, 0F, null, null, null, false, new FluidStack(
@@ -424,13 +436,7 @@ public class FoodFluidRecipe {
 		regBoilrecipe(new ItemStack(FoodInit.ricebowl, 1, 1), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 200), new Object[] {
 						"foodRice",
-						new ItemStack(Blocks.BROWN_MUSHROOM)
-		});
-
-		regBoilrecipe(new ItemStack(FoodInit.ricebowl, 1, 1), null, 0F, null, null, null, false, new FluidStack(
-				FluidRegistry.WATER, 200), new Object[] {
-						"foodRice",
-						new ItemStack(Blocks.RED_MUSHROOM)
+						"listAllmushroom"
 		});
 
 		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 0), null, 0F, null, null, null, false, new FluidStack(
@@ -488,7 +494,7 @@ public class FoodFluidRecipe {
 		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 5), null, 0F, null, null, null, false, new FluidStack(
 				MainInit.stock, 1000), new Object[] {
 						"listAllveggie",
-						"foodAnyMeat",
+						"listAllmeatraw",
 						"cropBeetroot"
 		});
 
@@ -591,7 +597,7 @@ public class FoodFluidRecipe {
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
 				0), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
 						200), new Object[] {
-								new ItemStack(Items.PORKCHOP),
+								"listAllporkraw",
 								"foodFlour",
 								"egg"
 		});
@@ -599,7 +605,7 @@ public class FoodFluidRecipe {
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
 				1), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
 						200), new Object[] {
-								new ItemStack(Items.CHICKEN),
+								"listAllchickenraw",
 								"foodFlour"
 		});
 
@@ -808,7 +814,8 @@ public class FoodFluidRecipe {
 			DCHumidity hum, DCAirflow air, boolean cooling, FluidStack inF, Object... input) {
 		RecipeAPI.registerFluidRecipes.addRecipe(out, sec, chance, outF, heat, hum, air, cooling, inF, input);
 		if (ModuleConfig.machine)
-			RecipeAPI.registerReactorRecipes.addRecipe(out, sec, chance, outF, null, heat, null, inF, null, input);
+			RecipeAPI.registerReactorRecipes
+					.addRecipe(out, sec, chance, outF, null, heat, (ItemStack) null, inF, null, input);
 	}
 
 	public static void regBoilrecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHumidity hum,

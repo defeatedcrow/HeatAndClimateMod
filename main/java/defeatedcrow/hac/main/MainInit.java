@@ -41,10 +41,15 @@ public class MainInit {
 	public static Block stairsDirtbrick;
 	public static Block halfSlab;
 	public static Block halfSlab2;
+	public static Block halfSlab3;
 	public static Block builds;
 	public static Block plate;
 	public static Block syntheticBlock;
 	public static Block linoleum;
+	public static Block roofSlate;
+	public static Block roofSlateRed;
+	public static Block roofSlateBrown;
+	public static Block roofSlateGreen;
 
 	public static Block fenceGypsum;
 	public static Block fenceMarble;
@@ -192,34 +197,81 @@ public class MainInit {
 	public static Item[] steelArmor = new Item[4];
 	public static Item[] chalcArmor = new Item[4];
 	public static Item[] sapphireArmor = new Item[4];
+	public static Item[] silverArmor = new Item[4];
+
+	// clothes
+	// linen
+	public static Item linenCoat;
+	public static Item linenJacket;
 
 	public static Item linenUnder;
-	public static Item linenCoat;
-	public static Item clothUnder;
-	public static Item clothCoat;
-	public static Item magicUnder;
-	public static Item magicCoat;
-	public static Item blackCoat;
+	public static Item linenShirt;
 
+	public static Item linenBottom;
+	public static Item flowerSkirt;
+
+	// cotton
+	public static Item clothCoat;
+	public static Item clothJacket;
+	public static Item hoodie;
+
+	public static Item clothUnder;
+	public static Item clothShirt;
+
+	public static Item clothBottom;
+	public static Item clothSkirt;
+
+	public static Item cottonHat;
+
+	// worker
+	public static Item workerDress;
 	public static Item workerSuit;
+
+	public static Item workerWear;
+
+	// silk
+	public static Item blackCoat;
 	public static Item blackSuit;
 
-	public static Item leatherHat;
-	public static Item cottonHat;
+	// dress
+	public static Item silkDress;
+	public static Item silkCape;
+	public static Item silkKimono;
+
+	public static Item silkSkirt;
+
+	public static Item silkWear;
+
+	// wool
+	public static Item peaCoat;
+	public static Item modsCoat;
+	public static Item woolJacket;
+
+	public static Item woolBoots;
 
 	public static Item woolWear;
 	public static Item furWear;
-	public static Item woolBoots;
-	public static Item peaCoat;
+	public static Item furCape;
+
+	// synthetic
+	public static Item blouson;
+
+	public static Item trackSuit;
+	public static Item combatDress;
+
+	// magic
+	public static Item magicCoat;
+	public static Item magicUnder;
+
+	// leather
+	public static Item leatherHat;
+
+	// pattern
+	public static Item patternPaper;
 
 	/* weapon advanced */
 
 	public static Item[] titaniumArmor = new Item[4];
-
-	public static Item combatDress;
-	public static Item trackSuit;
-	public static Item hoodie;
-	public static Item hoodieB;
 
 	public static Item crossbow;
 	public static Item gun;

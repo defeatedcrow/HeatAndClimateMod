@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -38,21 +39,23 @@ public class OnDeathEventDC {
 		if (living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
 			boolean hasCharm = false;
-			for (int i = 9; i < 18; i++) {
-				ItemStack check = player.inventory.getStackInSlot(i);
-				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
-					int m = check.getMetadata();
-					if (m == 7) {
-						hasCharm = true;
+			if (ModuleConfig.magic) {
+				for (int i = 9; i < 18; i++) {
+					ItemStack check = player.inventory.getStackInSlot(i);
+					if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
+						int m = check.getMetadata();
+						if (m == 7) {
+							hasCharm = true;
+						}
 					}
 				}
-			}
 
-			if (Loader.isModLoaded("baubles") && !hasCharm) {
-				if (DCPluginBaubles.hasBaublesCharm(player, new ItemStack(MagicInit.pendant, 1, 7))) {
-					hasCharm = true;
-				} else if (DCPluginBaubles.hasBaublesAmulet(player, new ItemStack(MagicInit.amulet, 1, 3))) {
-					hasCharm = true;
+				if (Loader.isModLoaded("baubles") && !hasCharm) {
+					if (DCPluginBaubles.hasBaublesCharm(player, new ItemStack(MagicInit.pendant, 1, 7))) {
+						hasCharm = true;
+					} else if (DCPluginBaubles.hasBaublesAmulet(player, new ItemStack(MagicInit.amulet, 1, 3))) {
+						hasCharm = true;
+					}
 				}
 			}
 
@@ -64,7 +67,8 @@ public class OnDeathEventDC {
 					player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 1.25D, pos.getZ() + 0.5D);
 					player.fallDistance = 0.0F;
 					player.setHealth(10.0F);
-					player.world.playSound(player, pos, Blocks.GLASS.getSoundType().getBreakSound(), SoundCategory.PLAYERS, 1.0F, 0.75F);
+					player.world.playSound(player, pos, Blocks.GLASS.getSoundType()
+							.getBreakSound(), SoundCategory.PLAYERS, 1.0F, 0.75F);
 					event.setCanceled(true);
 					flag = true;
 				}
@@ -91,8 +95,8 @@ public class OnDeathEventDC {
 		if (living == null)
 			return;
 
-		if (dam >= living.getMaxHealth()) {
-			/* Projectileでの一撃必殺 */
+		if (dam >= living.getMaxHealth() && ModuleConfig.food) {
+			/* 一撃必殺 */
 			if (!living.world.isRemote && living.world.rand.nextBoolean()) {
 				if (living instanceof EntitySquid) {
 					if (source.getTrueSource() != null && source.getTrueSource() instanceof EntityPlayer) {
@@ -113,7 +117,7 @@ public class OnDeathEventDC {
 		if (dam >= living.getHealth()) {
 			Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
 			boolean amu = false;
-			if (!map.isEmpty()) {
+			if (!map.isEmpty() && ModuleConfig.magic) {
 				for (ItemStack item : map.values()) {
 					if (item.getItem() == MagicInit.amulet && item.getItemDamage() == 3) {
 						amu = true;
@@ -122,10 +126,11 @@ public class OnDeathEventDC {
 			}
 
 			if (amu) {
-				DCLogger.infoLog("on amulet process");
+				DCLogger.debugInfoLog("on amulet process");
 				living.fallDistance = 0.0F;
 				living.setHealth(living.getMaxHealth() * 0.5F);
-				living.world.playSound(null, living.getPosition(), Blocks.GLASS.getSoundType().getBreakSound(), SoundCategory.PLAYERS, 1.0F, 0.75F);
+				living.world.playSound(null, living.getPosition(), Blocks.GLASS.getSoundType()
+						.getBreakSound(), SoundCategory.PLAYERS, 1.0F, 0.75F);
 				event.setCanceled(true);
 			}
 		}

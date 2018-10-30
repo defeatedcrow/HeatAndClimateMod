@@ -62,7 +62,6 @@ import defeatedcrow.hac.magic.proj.EntityProjSchC;
 import defeatedcrow.hac.magic.proj.EntityProjSilver;
 import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
 import defeatedcrow.hac.main.client.ClientMainProxy;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -97,27 +96,23 @@ public class MagicClientProxy {
 	}
 
 	public static void loadTE() {
-		ClientRegistry.registerTileEntity(TileIceCluster.class, "dcs_te_cluster_ice", new TESRIceCluster());
-		ClientRegistry.registerTileEntity(TileInfernalFlame.class, "dcs_te_infernal_flame", new TESRInfernalFlame());
-		ClientRegistry.registerTileEntity(TileLotusCandle.class, "dcs_te_lotus_candle", new TESRLotusCandle());
-		ClientRegistry.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black",
-				new TESRLotusCandle());
+		ClientMainProxy.registerTileEntity(TileIceCluster.class, "dcs_te_cluster_ice", new TESRIceCluster());
+		ClientMainProxy.registerTileEntity(TileInfernalFlame.class, "dcs_te_infernal_flame", new TESRInfernalFlame());
+		ClientMainProxy.registerTileEntity(TileLotusCandle.class, "dcs_te_lotus_candle", new TESRLotusCandle());
+		ClientMainProxy.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black", new TESRLotusCandle());
 
-		ClientRegistry.registerTileEntity(TileMaceLight.class, "dcs_te_magicmace_light", new TESRMace());
-		ClientRegistry.registerTileEntity(TileMaceMoon.class, "dcs_te_magicmace_moon", new TESRMaceMoon().setNoFrame());
-		ClientRegistry.registerTileEntity(TileMaceBird.class, "dcs_te_magicmace_bird", new TESRMaceBird());
-		ClientRegistry.registerTileEntity(TileMaceIce.class, "dcs_te_magicmace_ice", new TESRMaceIce());
-		ClientRegistry.registerTileEntity(TileMaceOcean.class, "dcs_te_magicmace_ocean", new TESRMaceOcean());
-		ClientRegistry.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn", new TESRMaceBurn());
-		ClientRegistry.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower",
-				new TESRMaceFlower().setNoFrame());
-		ClientRegistry.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory",
-				new TESRMaceGlory().setNoFrame());
-		ClientRegistry.registerTileEntity(TileMaceDry.class, "dcs_te_magicmace_drought", new TESRMaceDry());
-		ClientRegistry.registerTileEntity(TileMaceImpact.class, "dcs_te_magicmace_impact",
-				new TESRMaceImpact().setNoFrame());
+		ClientMainProxy.registerTileEntity(TileMaceLight.class, "dcs_te_magicmace_light", new TESRMace());
+		ClientMainProxy.registerTileEntity(TileMaceMoon.class, "dcs_te_magicmace_moon", new TESRMaceMoon().setNoFrame());
+		ClientMainProxy.registerTileEntity(TileMaceBird.class, "dcs_te_magicmace_bird", new TESRMaceBird());
+		ClientMainProxy.registerTileEntity(TileMaceIce.class, "dcs_te_magicmace_ice", new TESRMaceIce());
+		ClientMainProxy.registerTileEntity(TileMaceOcean.class, "dcs_te_magicmace_ocean", new TESRMaceOcean());
+		ClientMainProxy.registerTileEntity(TileMaceBurn.class, "dcs_te_magicmace_burn", new TESRMaceBurn());
+		ClientMainProxy.registerTileEntity(TileMaceFlower.class, "dcs_te_magicmace_flower", new TESRMaceFlower().setNoFrame());
+		ClientMainProxy.registerTileEntity(TileMaceGlory.class, "dcs_te_magicmace_glory", new TESRMaceGlory().setNoFrame());
+		ClientMainProxy.registerTileEntity(TileMaceDry.class, "dcs_te_magicmace_drought", new TESRMaceDry());
+		ClientMainProxy.registerTileEntity(TileMaceImpact.class, "dcs_te_magicmace_impact", new TESRMaceImpact().setNoFrame());
 
-		ClientRegistry.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage", new TESRTimeCage());
+		ClientMainProxy.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage", new TESRTimeCage());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
