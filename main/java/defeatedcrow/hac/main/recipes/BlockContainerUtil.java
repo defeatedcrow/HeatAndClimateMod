@@ -67,6 +67,9 @@ public class BlockContainerUtil {
 		if (item.getItem() == Items.REDSTONE) {
 			return INS.new ReturnPair(new ItemStack(Blocks.REDSTONE_BLOCK), 9);
 		}
+		if (item.getItem() == Items.QUARTZ) {
+			return INS.new ReturnPair(new ItemStack(Blocks.QUARTZ_BLOCK), 4);
+		}
 
 		int[] ids = OreDictionary.getOreIDs(item);
 		for (int id : ids) {

@@ -134,13 +134,14 @@ public class WorldGenOres3 implements IWorldGenerator {
 		}
 		BlockPos pos = vein.pos;
 		int r = vein.round;
-		int h = r - 1;
+		int h = r;
+		int h2 = h / 2;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
 		for (int i = 0; i < h; i++) {
 			List<OreSet> list = new ArrayList<OreSet>();
 			int i1 = 0;
-			if (i > h / 2) {
+			if (i > h2) {
 				list = table.getOreTable1();
 				world.rand.nextInt(table.tableCount1);
 			} else {
@@ -201,7 +202,8 @@ public class WorldGenOres3 implements IWorldGenerator {
 		}
 		BlockPos pos = vein.pos;
 		int r = vein.round;
-		int h = r - 1;
+		int h = r;
+		int h2 = h / 2;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
 		for (int i = 0; i < h; i++) {
@@ -210,7 +212,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			} else {
 				List<OreSet> list = new ArrayList<OreSet>();
 				int i1 = 0;
-				if (i > h / 2) {
+				if (i > h2) {
 					list = table.getOreTable1();
 					world.rand.nextInt(table.tableCount1);
 				} else {
@@ -266,7 +268,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 		}
 		BlockPos pos = vein.pos;
 		int r = vein.round;
-		int h = r / 2;
+		int h = 1 + (r / 2);
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
 		for (int i = 0; i < h; i++) {
@@ -391,6 +393,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 		BlockPos pos = vein.pos;
 		int r = vein.round;
 		int h = r - 1;
+		int h2 = h / 2;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
 		for (int i = 0; i < h; i++) {
@@ -399,7 +402,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			} else {
 				List<OreSet> list = new ArrayList<OreSet>();
 				int i1 = 0;
-				if (i > h / 2) {
+				if (i > h2) {
 					list = table.getOreTable1();
 					world.rand.nextInt(table.tableCount1);
 				} else {
@@ -458,7 +461,8 @@ public class WorldGenOres3 implements IWorldGenerator {
 		}
 		BlockPos pos = vein.pos;
 		int r = vein.round;
-		int h = r;
+		int h = r + 1;
+		int h2 = h / 2;
 		int[] rands = vein.rands;
 		OreSet[] gen = new OreSet[h];
 		for (int i = 0; i < h; i++) {
@@ -469,7 +473,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			} else {
 				List<OreSet> list = new ArrayList<OreSet>();
 				int i1 = 0;
-				if (i > h / 2) {
+				if (i > h2) {
 					list = table.getOreTable1();
 					world.rand.nextInt(table.tableCount1);
 				} else {

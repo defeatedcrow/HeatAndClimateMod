@@ -1,22 +1,26 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  " Y ",
-  "XXX",
+  " Z ",
+  "XYX",
   "X  "
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotNickelsilver"
+   "ore": "ingotSUS"
   },
   "Y": {
+   "item": "dcs_climate:dcs_device_faucet",
+   "data": 0
+  },
+  "Z": {
    "type": "forge:ore_dict",
-   "ore": "gearAlloy"
+   "ore": "bucketWater"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_device_fauset",
+  "item": "dcs_climate:dcs_device_faucet_sus",
   "count": 1,
   "data": 0
  }

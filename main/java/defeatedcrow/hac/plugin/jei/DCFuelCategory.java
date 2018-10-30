@@ -21,7 +21,7 @@ public class DCFuelCategory implements IRecipeCategory {
 
 	public DCFuelCategory(IGuiHelper guiHelper) {
 		ResourceLocation location = new ResourceLocation("dcs_climate", "textures/gui/fuellist_gui_jei.png");
-		background = guiHelper.createDrawable(location, 40, 20, 100, 30);
+		background = guiHelper.createDrawable(location, 40, 20, 120, 30);
 	}
 
 	@Override

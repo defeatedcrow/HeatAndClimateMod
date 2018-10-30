@@ -214,7 +214,7 @@ public class MachineRecipes {
 				"ingotIron"
 		});
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.fauset, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.faucet, 1, 0), new Object[] {
 				" Y ",
 				"XXX",
 				"X  ",
@@ -224,14 +224,14 @@ public class MachineRecipes {
 				"gearAlloy"
 		});
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.fauset_sus, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.faucet_sus, 1, 0), new Object[] {
 				" Z ",
 				"XYX",
 				"X  ",
 				'X',
 				"ingotSUS",
 				'Y',
-				new ItemStack(MachineInit.fauset, 1, 0),
+				new ItemStack(MachineInit.faucet, 1, 0),
 				'Z',
 				"bucketWater"
 		});
@@ -596,6 +596,7 @@ public class MachineRecipes {
 		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));
 		OreDictionary.registerOre("dustPhosphorus", new ItemStack(MachineInit.reagent, 1, 10));
 		OreDictionary.registerOre("fuelCoke", new ItemStack(MachineInit.reagent, 1, 13));
+		OreDictionary.registerOre("aromaticcompound", new ItemStack(MachineInit.reagent, 1, 14));
 		OreDictionary.registerOre("blockFuelCoke", new ItemStack(MachineInit.fuelCont, 1, 0));
 		OreDictionary.registerOre("blockCarbide", new ItemStack(MachineInit.fuelCont, 1, 1));
 

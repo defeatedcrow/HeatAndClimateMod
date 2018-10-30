@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine.block;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
@@ -32,7 +33,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInventory {
 
@@ -65,12 +66,14 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Nullable
 	protected EnumFacing getCurrentFacing() {
-		IBlockState state = this.world.getBlockState(pos);
-		if (state != null && state.getBlock() instanceof BlockHopperFilter) {
-			EnumSide side = DCState.getSide(state, DCState.SIDE);
-			return side != null ? side.getFacing() : null;
+		if (this.world != null && this.pos != null) {
+			IBlockState state = this.world.getBlockState(pos);
+			if (state != null && state.getBlock() instanceof BlockHopperFilter) {
+				EnumSide side = DCState.getSide(state, DCState.SIDE);
+				return side != null ? side.getFacing() : null;
+			}
 		}
-		return null;
+		return EnumFacing.DOWN;
 	}
 
 	private boolean isActive() {
@@ -87,24 +90,29 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		if (face != null) {
 			TileEntity tile = world.getTileEntity(pos.offset(face));
 			if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite())) {
-				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
-						face.getOpposite());
+				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face
+						.getOpposite());
 				if (target != null) {
 					boolean b = false;
 					for (int i = 0; i < this.getSizeInventory(); i++) {
 						ItemStack item = inv.getStackInSlot(i);
 						int min = isFilterd() ? 1 : 0;
-						if (!DCUtil.isEmpty(item) && DCUtil.getSize(item) > min) {
-							ItemStack ins = item.copy();
-							ins.setCount(1);
-							for (int j = 0; j < target.getSlots(); j++) {
-								ItemStack ret = target.insertItem(j, ins, true);
-								if (DCUtil.isEmpty(ret)) {
-									target.insertItem(j, ins, false);
-									this.decrStackSize(i, 1);
-									this.markDirty();
-									tile.markDirty();
-									return true;
+						if (!DCUtil.isEmpty(item)) {
+							if (item.getItem().getItemStackLimit(item) == 1) {
+								min = 0;
+							}
+							if (DCUtil.getSize(item) > min) {
+								ItemStack ins = item.copy();
+								ins.setCount(1);
+								for (int j = 0; j < target.getSlots(); j++) {
+									ItemStack ret = target.insertItem(j, ins, true);
+									if (DCUtil.isEmpty(ret)) {
+										target.insertItem(j, ins, false);
+										this.decrStackSize(i, 1);
+										this.markDirty();
+										tile.markDirty();
+										return true;
+									}
 								}
 							}
 						}
@@ -351,17 +359,57 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Override
 	public boolean canInsertItem(int index, ItemStack itemStack, EnumFacing direction) {
-		return this.isItemValidForSlot(index, itemStack);
+		return this.isItemValidForSlot(index, itemStack) && direction != getCurrentFacing();
 	}
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (!DCUtil.isEmpty(inv.getStackInSlot(index)))
-			return true;
+		if (!DCUtil.isEmpty(stack)) {
+			return !isFilterd() || stack.getCount() > 1 || stack.getItem().getItemStackLimit(stack) == 1;
+		}
 		return false;
 	}
 
-	IItemHandler handler = new InvWrapper(this);
+	IItemHandler handler = new SidedInvWrapper(this, getCurrentFacing()) {
+		@Override
+		@Nonnull
+		public ItemStack extractItem(int slot, int amount, boolean simulate) {
+			if (amount <= 0)
+				return ItemStack.EMPTY;
+
+			int slot1 = getSlot(inv, slot, side);
+
+			if (slot1 == -1)
+				return ItemStack.EMPTY;
+
+			ItemStack stackInSlot = inv.getStackInSlot(slot1);
+
+			if (stackInSlot.isEmpty())
+				return ItemStack.EMPTY;
+
+			if (!inv.canExtractItem(slot1, stackInSlot, side))
+				return ItemStack.EMPTY;
+
+			int count = stackInSlot.getCount();
+			if (count > amount) {
+				count = amount;
+			} else {
+				if (stackInSlot.getItem().getItemStackLimit(stackInSlot) == 1) {
+					count = 1;
+				} else if (isFilterd()) {
+					count--;
+				}
+			}
+
+			ItemStack copy = stackInSlot.copy();
+			copy.setCount(count);
+			if (!simulate) {
+				ItemStack ret = inv.decrStackSize(slot1, count);
+				inv.markDirty();
+			}
+			return copy;
+		}
+	};
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {

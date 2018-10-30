@@ -72,6 +72,8 @@ public class ItemClothN extends DCItem {
 			int m = stack.getItemDamage();
 			if (m == 4 || m == 5) {
 				tooltip.add("Add a enchantment to the crafted armor: FIRE PROTECTION");
+			} else if (m == 8 || m == 9) {
+				tooltip.add("Add a enchantment to the crafted armor: BLAST PROTECTION");
 			}
 		}
 	}

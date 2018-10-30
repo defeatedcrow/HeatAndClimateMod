@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /*
  * トルク系装置のBlockクラスに似ているが、使い方が違う
  */
-public class BlockFauset_SUS extends BlockContainerDC {
+public class BlockFaucet extends BlockContainerDC {
 
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0.3125D, 0.0D, 0.5D, 0.6875D, 0.75D, 1.0D);
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0.3125D, 0.0D, 0.0D, 0.6875D, 0.75D, 0.5D);
@@ -44,11 +44,12 @@ public class BlockFauset_SUS extends BlockContainerDC {
 	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.0D, 0.0D, 0.3125D, 0.5D, 0.75D, 0.6875D);
 	protected static final AxisAlignedBB AABB_DOWN = new AxisAlignedBB(0.3125D, 0.0D, 0.3125D, 0.6875D, 1.0D, 0.6875D);
 
-	public BlockFauset_SUS(String s) {
+	public BlockFaucet(String s) {
 		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
+				.withProperty(DCState.POWERED, false));
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -63,7 +64,7 @@ public class BlockFauset_SUS extends BlockContainerDC {
 			world.setBlockState(pos, state2, 2);
 			world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 		}
-		return false;
+		return true;
 	}
 
 	@Override
@@ -138,8 +139,8 @@ public class BlockFauset_SUS extends BlockContainerDC {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean.valueOf((meta &
-				8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
+				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -170,7 +171,7 @@ public class BlockFauset_SUS extends BlockContainerDC {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileFauset_SUS();
+		return new TileFaucet();
 	}
 
 	@Override
@@ -180,10 +181,11 @@ public class BlockFauset_SUS extends BlockContainerDC {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(EnumFixedName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("WATER: 1000 mB/s");
+			tooltip.add(EnumFixedName.FLUID.getLocalizedName() + " " + EnumFixedName.TRANSPORT
+					.getLocalizedName() + ": 200 mB/t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(EnumFixedName.RIGHT_CLICK.getLocalizedName() + ": " +
-					EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(EnumFixedName.RIGHT_CLICK.getLocalizedName() + ": " + EnumFixedName.TURN_OFF
+					.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

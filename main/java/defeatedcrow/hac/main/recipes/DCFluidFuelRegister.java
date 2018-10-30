@@ -84,7 +84,7 @@ public class DCFluidFuelRegister implements IFluidFuelRegister {
 
 		@Override
 		public boolean content(Fluid f) {
-			return f.equals(fluid) || FluidDictionaryDC.matchFluid(fluid, f);
+			return f.equals(fluid) || FluidDictionaryDC.matchFluid(f, fluid);
 		}
 
 	}

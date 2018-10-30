@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.entity.BeefPlateEntity;
+import defeatedcrow.hac.food.entity.BigGarlicPlateEntity;
 import defeatedcrow.hac.food.entity.ChickenPlateEntity;
 import defeatedcrow.hac.food.entity.FishPlateEntity;
 import defeatedcrow.hac.food.entity.PorkPlateEntity;
@@ -30,7 +31,7 @@ public class PlateMeatItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 7;
+		return 9;
 	}
 
 	@Override
@@ -53,7 +54,9 @@ public class PlateMeatItem extends FoodItemBase {
 				"chicken_raw",
 				"chicken_baked",
 				"fish_raw",
-				"fish_baked"
+				"fish_baked",
+				"big_garlic_raw",
+				"big_garlic_baked"
 		};
 		return s;
 	}
@@ -70,6 +73,10 @@ public class PlateMeatItem extends FoodItemBase {
 		}
 		if (i == 6 || i == 7) {
 			ret = new FishPlateEntity(world, x, y, z, player);
+		}
+		if (i == 8 || i == 9) {
+			ret = new BigGarlicPlateEntity(world, x, y, z, player);
+			ret.setIndividual(world.rand.nextInt(32));
 		}
 
 		if ((i & 1) == 0) {
@@ -94,13 +101,15 @@ public class PlateMeatItem extends FoodItemBase {
 			return 14;
 		case 7:
 			return 16;
+		case 9:
+			return 20;
 		}
 		return 0;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 0.6F;
+		return meta == 9 ? 1.0F : (meta & 1) == 0 ? 0F : 0.6F;
 	}
 
 	@Override

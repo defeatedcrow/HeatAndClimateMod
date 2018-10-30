@@ -320,7 +320,7 @@ public class FoodFluidRecipe {
 
 		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.stock, 1000), null, null, false, new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
-						"foodAnyMeat",
+						"listAllmeatraw",
 						"cropHerb",
 						"listAllveggie"
 		});
@@ -358,19 +358,19 @@ public class FoodFluidRecipe {
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(MainInit.bakedApple, 3,
 				2), null, 0F, null, DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
 						"dustSalt",
-						"foodAnyMeat"
+						"listAllmeatraw"
 		});
 
 		regBoilrecipe(new ItemStack(MainInit.bakedApple, 1, 1), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] {
-						new ItemStack(Items.EGG)
+						"egg"
 		});
 
 		regBoilrecipe(new ItemStack(MainInit.bakedApple, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] {
 						"dustSalt",
 						"cropHerb",
-						"foodAnyMeat"
+						"listAllmeatraw"
 		});
 
 		regBoilrecipe(new ItemStack(MainInit.bakedApple, 3, 3), null, 0F, null, null, null, false, new FluidStack(
@@ -436,13 +436,7 @@ public class FoodFluidRecipe {
 		regBoilrecipe(new ItemStack(FoodInit.ricebowl, 1, 1), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 200), new Object[] {
 						"foodRice",
-						new ItemStack(Blocks.BROWN_MUSHROOM)
-		});
-
-		regBoilrecipe(new ItemStack(FoodInit.ricebowl, 1, 1), null, 0F, null, null, null, false, new FluidStack(
-				FluidRegistry.WATER, 200), new Object[] {
-						"foodRice",
-						new ItemStack(Blocks.RED_MUSHROOM)
+						"listAllmushroom"
 		});
 
 		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 0), null, 0F, null, null, null, false, new FluidStack(
@@ -500,7 +494,7 @@ public class FoodFluidRecipe {
 		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 5), null, 0F, null, null, null, false, new FluidStack(
 				MainInit.stock, 1000), new Object[] {
 						"listAllveggie",
-						"foodAnyMeat",
+						"listAllmeatraw",
 						"cropBeetroot"
 		});
 
@@ -603,7 +597,7 @@ public class FoodFluidRecipe {
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
 				0), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
 						200), new Object[] {
-								new ItemStack(Items.PORKCHOP),
+								"listAllporkraw",
 								"foodFlour",
 								"egg"
 		});
@@ -611,7 +605,7 @@ public class FoodFluidRecipe {
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
 				1), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
 						200), new Object[] {
-								new ItemStack(Items.CHICKEN),
+								"listAllchickenraw",
 								"foodFlour"
 		});
 

@@ -73,6 +73,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(PorkPlateEntity.class, "food", "plate_pork");
 		DCRegistryUtil.addEntity(ChickenPlateEntity.class, "food", "plate_chicken");
 		DCRegistryUtil.addEntity(FishPlateEntity.class, "food", "plate_fish");
+		DCRegistryUtil.addEntity(BigGarlicPlateEntity.class, "food", "plate_big_garlic");
 		DCRegistryUtil.addEntity(PotatoPlateEntity.class, "food", "plate_potato");
 		DCRegistryUtil.addEntity(SoupPlateEntity.class, "food", "soup_tomato");
 

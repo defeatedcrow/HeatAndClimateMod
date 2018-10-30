@@ -242,6 +242,8 @@ public class FoodClimateRecipe {
 
 		addFoodRecipe(new ItemStack(FoodInit.sticks, 1, 15), new ItemStack(FoodInit.sticks, 1, 14));
 
+		addFoodRecipe(new ItemStack(FoodInit.plateMeal, 1, 9), new ItemStack(FoodInit.plateMeal, 1, 8));
+
 	}
 
 	private static void addFoodRecipe(ItemStack in, ItemStack out) {

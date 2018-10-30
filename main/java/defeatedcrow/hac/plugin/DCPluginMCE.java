@@ -856,7 +856,7 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.hopperGold, 1, 0), 18800);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.hopperSilver, 1, 0), 10100);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.fauset, 1, 0), 4500);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.faucet, 1, 0), 4500);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.IBC, 1, 0), 2100);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.hopperFluid, 1, 0), 2800);
 

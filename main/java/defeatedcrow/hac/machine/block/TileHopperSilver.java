@@ -81,7 +81,8 @@ public class TileHopperSilver extends TileHopperFilter {
 		if (face != null) {
 			TileEntity tile = world.getTileEntity(pos.offset(face));
 			if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite())) {
-				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite());
+				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face
+						.getOpposite());
 				if (target != null) {
 					boolean b = false;
 					for (int i = 0; i < this.getSizeInventory(); i++) {

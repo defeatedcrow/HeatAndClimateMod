@@ -141,7 +141,7 @@ public class MachineCrusherRecipe {
 					1, 0), 0.25F, gem, 0.03F, null, ti, "oreAluminum");
 		} else {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 3, 11), new ItemStack(Items.CLAY_BALL,
-					1, 0), 0.25F, new ItemStack(MainInit.gems, 1, 3), 0.03F, null, ti, "oreAluminum");
+					1, 0), 0.25F, new ItemStack(MainInit.gems, 1, 4), 0.03F, null, ti, "oreAluminum");
 		}
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 3, 3), new ItemStack(MainInit.gems, 1,

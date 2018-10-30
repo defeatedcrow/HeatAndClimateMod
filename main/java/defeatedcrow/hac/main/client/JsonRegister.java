@@ -193,6 +193,8 @@ public class JsonRegister {
 						.regSimpleItem(MainInit.sapphireArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_sapphire", "equip", 0);
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_titanium", "equip", 0);
+				MAIN_INSTANCE
+						.regSimpleItem(MainInit.silverArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_silver", "equip", 0);
 			}
 
 			String[] name2 = {
@@ -244,6 +246,9 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.clothBottom, ClimateCore.PACKAGE_ID, "dcs_boots_pants_cloth", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.flowerSkirt, ClimateCore.PACKAGE_ID, "dcs_boots_skirt_linen", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.clothSkirt, ClimateCore.PACKAGE_ID, "dcs_boots_skirt_cloth", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.silkDress, ClimateCore.PACKAGE_ID, "dcs_leggins_dress_silk", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.silkCape, ClimateCore.PACKAGE_ID, "dcs_met_cape_silk", "equip", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.furCape, ClimateCore.PACKAGE_ID, "dcs_met_cape_fur", "equip", 0);
 	}
 
 	static void regFluids() {

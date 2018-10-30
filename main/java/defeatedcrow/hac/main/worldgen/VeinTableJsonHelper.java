@@ -63,9 +63,9 @@ public class VeinTableJsonHelper {
 
 			Block block = Block.REGISTRY.getObject(new ResourceLocation(modid, itemName));
 			if (block != null && block != Blocks.AIR) {
-				DCLogger.infoLog("register target oregen data from json: " + modid + ":" + itemName + ", " + meta +
-						" ; weight" + i + " ; " + table.vein);
+				DCLogger.infoLog("register target oregen data from json: " + modid + ":" + itemName + ", " + meta + " ; weight" + i + " ; " + table.vein);
 				table.addOreToTable1(i, block, meta);
+				table.addOreToTable2(i, block, meta);
 			} else {
 				DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
 			}
