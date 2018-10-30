@@ -109,12 +109,12 @@ public class ClientMainProxy extends CommonMainProxy {
 	private static final ModelWoolWear woolHatModel = new ModelWoolWear(3);
 	private static final ModelOvercoat coatModel = new ModelOvercoat(0);
 	private static final ModelOvercoat coatModel2 = new ModelOvercoat(1);
-	private static final ModelOvercoat coatModel3 = new ModelOvercoat(0.40F, 2);
+	private static final ModelOvercoat coatModel3 = new ModelOvercoat(0.45F, 2);
 	private static final ModelSkirt skirtModel = new ModelSkirt(3);
 	private static final ModelThinBiped thinBootsModel = new ModelThinBiped(0.40F, 3);
 	private static final ModelThinBiped legginsModel2 = new ModelThinBiped(0.45F, 2);
 	private static final ModelThinBiped bodyModel2 = new ModelThinBiped(0.60F, 1);
-	private static final ModelThinBiped bodyModel3 = new ModelThinBiped(1.05F, 1);
+	private static final ModelThinBiped bodyModel3 = new ModelThinBiped(1.1F, 1);
 
 	@Override
 	public void loadConst() {

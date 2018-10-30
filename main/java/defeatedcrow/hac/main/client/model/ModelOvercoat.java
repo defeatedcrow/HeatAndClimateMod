@@ -29,7 +29,7 @@ public class ModelOvercoat extends ModelThinBiped {
 	public boolean isShort = false;
 
 	public ModelOvercoat(int b) {
-		this(0.5F, b);
+		this(0.6F, b);
 	}
 
 	public ModelOvercoat(float f, int b) {
