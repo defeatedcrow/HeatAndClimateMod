@@ -380,15 +380,15 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			world.rand.nextInt(100);
 
 			if (!DCUtil.isEmpty(out) && world.rand.nextInt(100) < chance0) {
-				this.insertResult(out);
+				this.insertResult(out.copy());
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance1) {
-				this.insertResult(sec);
+				this.insertResult(sec.copy());
 			}
 
 			if (!DCUtil.isEmpty(tert) && world.rand.nextInt(100) < chance2) {
-				this.insertResult(tert);
+				this.insertResult(tert.copy());
 			}
 
 			this.markDirty();
@@ -404,13 +404,10 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 
 		int count = 0;
 		for (int i = 3; i < 6; i++) {
-			int size = inventory.incrStackInSlot(i, item);
+			int size = inventory.incrStackInSlot(i, item.copy());
 			if (size > 0) {
 				item.shrink(size);
 				count += size;
-			}
-			if (item.getCount() <= 0) {
-				return count;
 			}
 		}
 		return count;

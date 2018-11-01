@@ -183,11 +183,11 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 			}
 
 			if (!DCUtil.isEmpty(out)) {
-				this.insertResult(out, 7, 9);
+				this.insertResult(out.copy(), 7, 9);
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance) {
-				this.insertResult(sec, 7, 9);
+				this.insertResult(sec.copy(), 7, 9);
 			}
 
 			this.markDirty();
