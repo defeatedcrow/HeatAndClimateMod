@@ -520,11 +520,11 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			}
 
 			if (!DCUtil.isEmpty(out)) {
-				this.insertResult(out);
+				this.insertResult(out.copy());
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance) {
-				this.insertResult(sec);
+				this.insertResult(sec.copy());
 			}
 
 			this.markDirty();
@@ -540,13 +540,10 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 		int count = 0;
 		for (int i = 13; i < this.getSizeInventory(); i++) {
-			int size = inventory.incrStackInSlot(i, item);
+			int size = inventory.incrStackInSlot(i, item.copy());
 			if (size > 0) {
 				item.shrink(size);
 				count += size;
-			}
-			if (item.getCount() <= 0) {
-				return count;
 			}
 		}
 		return count;
