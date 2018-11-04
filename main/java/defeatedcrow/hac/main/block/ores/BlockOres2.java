@@ -19,6 +19,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -187,7 +188,7 @@ public class BlockOres2 extends DCSimpleBlock {
 			if (meta == 6)
 				add = new ItemStack(MainInit.gems, 1, 13);
 			else if (meta == 7) {
-				if (biome.getRainfall() > 0.8F) {
+				if (biome.getRainfall() > 0.8F || BiomeDictionary.hasType(biome, BiomeDictionary.Type.WET)) {
 					add = new ItemStack(MainInit.gems, 1, 19);
 				} else {
 					add = new ItemStack(MainInit.gems, 1, 20);

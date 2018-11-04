@@ -273,38 +273,38 @@ public class MachineCrusherRecipe {
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 13), ti, "ingotLead");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 0), ti, new ItemStack(Items.COAL, 1,
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 0), ti, new ItemStack(Items.COAL, 1,
 				0));
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), ti, "gemQuartz");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 1), ti, "gemQuartz");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), ti, "gemChalcedony");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 1), ti, "gemChalcedony");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 11), ti, "gemSapphire");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 11), ti, "gemSapphire");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 6, 3), ti, "logWood");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 6), ti, "gemNiter");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 6), ti, "gemNiter");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 7), ti, "gemSulfur");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 7), ti, "gemSulfur");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 8), ti, "gemGarnet");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 8), ti, "gemGarnet");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 10), ti, "gemRutile");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 10), ti, "gemRutile");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 11), ti, "gemBauxite");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 11), ti, "gemBauxite");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 12), ti, "gemBismuth");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 9), ti, "gemApatite");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 9), ti, "gemApatite");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 11), ti, "gemSerpentine");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 11), ti, "gemSerpentine");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DYE, 1, EnumDyeColor.GREEN
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DYE, 2, EnumDyeColor.GREEN
 				.getDyeDamage()), ti, "gemMalachite");
 
 		if (!OreDictionary.getOres("dustLithium").isEmpty()) {
-			ItemStack dust = OreDictionary.getOres("dustLithium").get(0);
+			ItemStack dust = OreDictionary.getOres("dustLithium").get(0).copy();
 			RecipeAPI.registerCrushers.addRecipe(dust, ti, "gemKunzite");
 		}
 
@@ -330,7 +330,7 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.GLOWSTONE_DUST, 4, 0), ti, new ItemStack(
 				Blocks.GLOWSTONE));
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.BLAZE_POWDER, 1, 0), ti, new ItemStack(Blocks.MAGMA));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.BLAZE_POWDER, 2, 0), ti, new ItemStack(Blocks.MAGMA));
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.ICE, 1, 0), null, 0.0F, ti, new ItemStack(
 				Blocks.PACKED_ICE));

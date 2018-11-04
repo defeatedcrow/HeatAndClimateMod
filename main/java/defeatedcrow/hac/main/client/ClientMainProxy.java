@@ -54,6 +54,7 @@ import defeatedcrow.hac.main.client.entity.RenderEntityBigCushionB;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
+import defeatedcrow.hac.main.client.model.ModelDress;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
 import defeatedcrow.hac.main.client.model.ModelOvercoat;
@@ -109,8 +110,9 @@ public class ClientMainProxy extends CommonMainProxy {
 	private static final ModelWoolWear woolHatModel = new ModelWoolWear(3);
 	private static final ModelOvercoat coatModel = new ModelOvercoat(0);
 	private static final ModelOvercoat coatModel2 = new ModelOvercoat(1);
-	private static final ModelOvercoat coatModel3 = new ModelOvercoat(0.45F, 2);
+	private static final ModelDress dressModel = new ModelDress(2);
 	private static final ModelSkirt skirtModel = new ModelSkirt(3);
+	private static final ModelDress shirtModel2 = new ModelDress(2).setShort();
 	private static final ModelThinBiped thinBootsModel = new ModelThinBiped(0.40F, 3);
 	private static final ModelThinBiped legginsModel2 = new ModelThinBiped(0.45F, 2);
 	private static final ModelThinBiped bodyModel2 = new ModelThinBiped(0.60F, 1);
@@ -320,7 +322,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		case 5:
 			return coatModel2;
 		case 6:
-			return coatModel3;
+			return dressModel;
 		case 7:
 			return skirtModel;
 		case 8:
@@ -331,6 +333,8 @@ public class ClientMainProxy extends CommonMainProxy {
 			return legginsModel2;
 		case 11:
 			return bodyModel3;
+		case 12:
+			return shirtModel2;
 		default:
 			return null;
 		}

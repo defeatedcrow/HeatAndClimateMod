@@ -255,6 +255,11 @@ public class BlockContainerUtil {
 				cont2.add(MainInit.cropJute.getDefaultState().withProperty(DCState.TYPE16, i));
 			}
 		}
+		if (MainInit.logCont != null) {
+			for (int i = 0; i < ((DCSidedBlock) MainInit.logCont).maxMeta; i++) {
+				cont2.add(MainInit.logCont.getDefaultState().withProperty(DCState.TYPE8, i));
+			}
+		}
 	}
 
 }
