@@ -196,7 +196,9 @@ public class OreDicRegister {
 		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 6));
 		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.clothes, 1, 7));
 		OreDictionary.registerOre("itemSilkCloth", new ItemStack(MainInit.clothes, 1, 7));
+		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 8));
 		OreDictionary.registerOre("stringMagic", new ItemStack(MainInit.clothes, 1, 8));
+		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.clothes, 1, 9));
 		OreDictionary.registerOre("itemMagicCloth", new ItemStack(MainInit.clothes, 1, 9));
 		OreDictionary.registerOre("gearWood", new ItemStack(MainInit.gears, 1, 0));
 		OreDictionary.registerOre("gearBrass", new ItemStack(MainInit.gears, 1, 1));

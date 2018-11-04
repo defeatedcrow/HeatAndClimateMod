@@ -266,6 +266,9 @@ public class DCPluginFluid {
 		Fluid f50 = FluidRegistry.getFluid("milk_sheep");
 		registerPotion(f50, MobEffects.REGENERATION);
 
+		Fluid f52 = FluidRegistry.getFluid("fuelium");
+		registerPotion(f52, MobEffects.HASTE);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
@@ -273,6 +276,7 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("biomass", 60);
 		MainAPIManager.fuelRegister.registerFuel("liquidethene", 120);
 		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
+		MainAPIManager.fuelRegister.registerFuel("fuelium", 100);
 
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 150);
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 120);

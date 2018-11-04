@@ -212,6 +212,8 @@ public class MachineDeviceRecipes {
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeLeaves");
 
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.clothes, 4, 1), "blockWool");
+
 			// 以下バニラ
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), null, 0F, "cobblestone");
 
@@ -536,21 +538,6 @@ public class MachineDeviceRecipes {
 					Blocks.STONE), null, 0, null, null, DCHeatTier.NORMAL, (ItemStack) null, new FluidStack(
 							FluidRegistry.WATER, 100), new FluidStack(FluidRegistry.LAVA, 100), new Object[] {});
 
-			// 合成
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1, 10), new ItemStack(
-					MainInit.gems, 1, 3), 1F, null, null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(
-							FluidRegistry.WATER, 100), null, new Object[] {
-									"dustApatite",
-									"sand",
-									"gemCoal"
-			});
-
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1,
-					11), null, 0, null, null, DCHeatTier.OVEN, (ItemStack) null, new FluidStack(FluidRegistry.WATER,
-							100), null, new Object[] {
-									new ItemStack(MachineInit.reagent, 1, 10)
-			});
-
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1,
 					12), null, 0, null, null, DCHeatTier.OVEN, (ItemStack) null, new FluidStack(MainInit.ammonia,
 							100), null, new Object[] {
@@ -624,14 +611,6 @@ public class MachineDeviceRecipes {
 					8), null, 0F, null, null, DCHeatTier.NORMAL, (ItemStack) null, new FluidStack(MainInit.fuelOil,
 							100), new FluidStack(FluidRegistry.WATER, 100), new Object[] {
 									new ItemStack(MachineInit.reagent, 1, 2)
-			});
-
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 2, 10), new ItemStack(
-					MainInit.gems, 1, 3), 1.0F, null, null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(
-							FluidRegistry.WATER, 100), null, new Object[] {
-									"dustApatite",
-									"sand",
-									"fuelCoke"
 			});
 
 			// food

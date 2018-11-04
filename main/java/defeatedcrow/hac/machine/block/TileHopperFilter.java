@@ -70,10 +70,22 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 			IBlockState state = this.world.getBlockState(pos);
 			if (state != null && state.getBlock() instanceof BlockHopperFilter) {
 				EnumSide side = DCState.getSide(state, DCState.SIDE);
-				return side != null ? side.getFacing() : null;
+				return side != null ? side.getFacing() : EnumFacing.DOWN;
 			}
 		}
 		return EnumFacing.DOWN;
+	}
+
+	@Nullable
+	protected EnumFacing getInsertSide() {
+		if (this.world != null && this.pos != null) {
+			IBlockState state = this.world.getBlockState(pos);
+			if (state != null && state.getBlock() instanceof BlockHopperFilter) {
+				EnumSide side = DCState.getSide(state, DCState.SIDE);
+				return side == EnumSide.UP ? EnumFacing.DOWN : EnumFacing.UP;
+			}
+		}
+		return EnumFacing.UP;
 	}
 
 	private boolean isActive() {
@@ -347,8 +359,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 				1,
 				2,
 				3,
-				4,
-				5
+				4
 		};
 	};
 
@@ -358,64 +369,37 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	}
 
 	@Override
-	public boolean canInsertItem(int index, ItemStack itemStack, EnumFacing direction) {
-		return this.isItemValidForSlot(index, itemStack) && direction != getCurrentFacing();
+	public boolean canInsertItem(int index, ItemStack itemStack, EnumFacing dir) {
+		return this.isItemValidForSlot(index, itemStack);
 	}
 
 	@Override
-	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+	public boolean canExtractItem(int index, ItemStack stack, EnumFacing dir) {
 		if (!DCUtil.isEmpty(stack)) {
 			return !isFilterd() || stack.getCount() > 1 || stack.getItem().getItemStackLimit(stack) == 1;
 		}
 		return false;
 	}
 
-	IItemHandler handler = new SidedInvWrapper(this, getCurrentFacing()) {
+	IItemHandler handler = new HopperInvWrapper(this, getCurrentFacing());
+	IItemHandler handler2 = new HopperInvWrapper(this, getCurrentFacing()) {
 		@Override
 		@Nonnull
-		public ItemStack extractItem(int slot, int amount, boolean simulate) {
-			if (amount <= 0)
-				return ItemStack.EMPTY;
-
-			int slot1 = getSlot(inv, slot, side);
-
-			if (slot1 == -1)
-				return ItemStack.EMPTY;
-
-			ItemStack stackInSlot = inv.getStackInSlot(slot1);
-
-			if (stackInSlot.isEmpty())
-				return ItemStack.EMPTY;
-
-			if (!inv.canExtractItem(slot1, stackInSlot, side))
-				return ItemStack.EMPTY;
-
-			int count = stackInSlot.getCount();
-			if (count > amount) {
-				count = amount;
-			} else {
-				if (stackInSlot.getItem().getItemStackLimit(stackInSlot) == 1) {
-					count = 1;
-				} else if (isFilterd()) {
-					count--;
-				}
-			}
-
-			ItemStack copy = stackInSlot.copy();
-			copy.setCount(count);
-			if (!simulate) {
-				ItemStack ret = inv.decrStackSize(slot1, count);
-				inv.markDirty();
-			}
-			return copy;
+		public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+			return stack;
 		}
 	};
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return (T) handler;
-		return super.getCapability(capability, facing);
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (facing == getCurrentFacing() || facing == getInsertSide()) {
+				return (T) handler2;
+			} else {
+				return (T) handler;
+			}
+		}
+		return null;
 	}
 
 	/* Packet,NBT */
@@ -490,6 +474,63 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	@Override
 	public boolean isEmpty() {
 		return inv.isEmpty();
+	}
+
+	private class HopperInvWrapper extends SidedInvWrapper {
+		private HopperInvWrapper(TileHopperFilter tile, EnumFacing side) {
+			super(tile, side);
+		}
+
+		@Override
+		@Nonnull
+		public ItemStack extractItem(int slot, int amount, boolean simulate) {
+			if (amount <= 0)
+				return ItemStack.EMPTY;
+
+			int slot1 = getSlot(inv, slot, side);
+
+			if (slot1 == -1)
+				return ItemStack.EMPTY;
+
+			ItemStack stackInSlot = inv.getStackInSlot(slot1);
+
+			if (stackInSlot.isEmpty())
+				return ItemStack.EMPTY;
+
+			if (!inv.canExtractItem(slot1, stackInSlot, side))
+				return ItemStack.EMPTY;
+
+			ItemStack copy2 = stackInSlot.copy();
+			int count = copy2.getCount();
+			if (count > amount) {
+				count = amount;
+			} else {
+				if (stackInSlot.getItem().getItemStackLimit(copy2) == 1) {
+					count = 1;
+				} else if (isFilterd()) {
+					count--;
+				}
+			}
+
+			if (count <= 0) {
+				return ItemStack.EMPTY;
+			}
+
+			if (simulate) {
+				if (stackInSlot.getCount() < count) {
+					return stackInSlot.copy();
+				} else {
+					ItemStack copy = stackInSlot.copy();
+					copy.setCount(count);
+					return copy;
+				}
+			} else {
+				int m = Math.min(stackInSlot.getCount(), count);
+				ItemStack ret = inv.decrStackSize(slot1, m);
+				inv.markDirty();
+				return ret;
+			}
+		}
 	}
 
 }

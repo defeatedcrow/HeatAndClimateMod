@@ -200,6 +200,11 @@ public class LoadingYagenRecipe {
 				"toolNormalYagen",
 				"logWood"
 		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(Items.FLINT, 1, 0), new Object[] {
+				"toolNormalYagen",
+				"gravel"
+		});
 	}
 
 }
