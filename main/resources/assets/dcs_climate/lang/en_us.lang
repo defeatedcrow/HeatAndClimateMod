@@ -34,6 +34,9 @@ item.dcs_pattern_paper_pants.name=Pattern Paper(Pants)
 item.dcs_pattern_paper_skirt.name=Pattern Paper(Skirt)
 item.dcs_pattern_paper_boots.name=Pattern Paper(Boots)
 item.dcs_pattern_paper_wear.name=Pattern Paper(Wear)
+item.dcs_tinder_tinder.name=Tinder
+item.dcs_tinder_fire.name=Burning Stick
+item.dcs_tinder_firestarter.name=Firestarter
 
 ## metals
 item.dcs_ingot_copper.name=Copper Ingot
@@ -441,6 +444,7 @@ item.dcs_scythe_brass.name=Bras Scythe
 item.dcs_scythe_steel.name=Steel Scythe
 item.dcs_scythe_chalcedony.name=Chalcedony Scythe
 item.dcs_scythe_garnet.name=Garnet Scythe
+item.dcs_scythe_stone.name=Stone Scythe
 item.dcs_spade_earth.name=Spade of the Earth
 item.dcs_rake_earth.name=Rake of the Earth
 
@@ -1330,6 +1334,8 @@ dcs.tip.dynamite=CAUTION! It explodes in the range of 7x7x7.
 dcs.tip.dynamite2=Used underwater: Dynamite fishing
 dcs.tip.slotpanel=This item will work as an empty input slot in the recipe devices of HaC.
 dcs.tip.cloth.color=Color Variations
+dcs.tip.tinder=Get a fire from a burning block or entity.
+dcs.tip.firestarter=Ignite the target block or entity.
 
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
 dcs_climate.tip.durability=Max Durability

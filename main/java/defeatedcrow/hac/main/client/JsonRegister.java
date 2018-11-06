@@ -56,6 +56,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorMarble, ClimateCore.PACKAGE_ID, "dcs_door_marble", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorSteel, ClimateCore.PACKAGE_ID, "dcs_door_steel", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, ClimateCore.PACKAGE_ID, "dcs_big_cushion", "build", 1);
+		MAIN_INSTANCE.regSimpleItem(MainInit.tinder, ClimateCore.PACKAGE_ID, "dcs_tinder", "tool", 2);
 
 		if (DCIntegrationCore.loadedForestry) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.circuit, ClimateCore.PACKAGE_ID, "dcs_plugin_circuit", "device", 0);
@@ -201,7 +202,8 @@ public class JsonRegister {
 					"brass",
 					"steel",
 					"chalcedony",
-					"garnet"
+					"garnet",
+					"stone"
 			};
 			for (int j = 0; j < name2.length; j++) {
 				MAIN_INSTANCE

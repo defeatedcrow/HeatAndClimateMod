@@ -80,6 +80,8 @@ public class MainCreativeTabRegister {
 		MainInit.scope.setCreativeTab(ClimateMain.tool);
 		MainInit.entityScope.setCreativeTab(ClimateMain.tool);
 
+		MainInit.tinder.setCreativeTab(ClimateMain.tool);
+
 		// food
 		MainInit.bakedApple.setCreativeTab(ClimateMain.food);
 		MainInit.foodMaterials.setCreativeTab(ClimateMain.food);

@@ -186,6 +186,11 @@ public class LoadingYagenRecipe {
 				"cropWheat"
 		});
 
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.foodMaterials, 1, 1), new Object[] {
+				"toolNormalYagen",
+				"seedWheat"
+		});
+
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.foodMaterials, 1, 2), new Object[] {
 				"toolNormalYagen",
 				"seedRice"

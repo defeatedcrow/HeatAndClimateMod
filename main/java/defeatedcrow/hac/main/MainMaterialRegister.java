@@ -125,6 +125,7 @@ import defeatedcrow.hac.main.item.tool.ItemSpadeEarth;
 import defeatedcrow.hac.main.item.tool.ItemStoneYagen;
 import defeatedcrow.hac.main.item.tool.ItemSwordDC;
 import defeatedcrow.hac.main.item.tool.ItemThermalScope;
+import defeatedcrow.hac.main.item.tool.ItemTinderDC;
 import defeatedcrow.hac.main.item.tool.ItemWrench;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.DCMaterialEnum;
@@ -135,6 +136,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
@@ -297,6 +299,9 @@ public class MainMaterialRegister {
 		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0))
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wrench_brass");
 		DCMaterialReg.registerItem(MainInit.wrench, ClimateCore.PACKAGE_BASE + "_wrench", ClimateMain.MOD_ID);
+
+		MainInit.tinder = new ItemTinderDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_tinder");
+		DCMaterialReg.registerItem(MainInit.tinder, ClimateCore.PACKAGE_BASE + "_tinder", ClimateMain.MOD_ID);
 	}
 
 	static void registerModuleBuilding() {
@@ -871,6 +876,11 @@ public class MainMaterialRegister {
 					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_garnet");
 			DCMaterialReg
 					.registerItem(MainInit.dcScythe[3], ClimateCore.PACKAGE_BASE + "_scythe_garnet", ClimateMain.MOD_ID);
+
+			MainInit.dcScythe[4] = new ItemScytheDC(ToolMaterial.STONE, "stone").setCreativeTab(ClimateMain.tool)
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_stone");
+			DCMaterialReg
+					.registerItem(MainInit.dcScythe[4], ClimateCore.PACKAGE_BASE + "_scythe_stone", ClimateMain.MOD_ID);
 
 			MainInit.earthSpade = new ItemSpadeEarth().setCreativeTab(ClimateMain.tool)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_earth");

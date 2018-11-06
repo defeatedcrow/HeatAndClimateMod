@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "string"
+  },
+  {
+   "item": "dcs_climate:dcs_tinder",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_tinder",
+  "count": 1,
+  "data": 2
+ }
+}

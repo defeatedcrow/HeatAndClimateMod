@@ -128,11 +128,11 @@ public class DCLootEvent {
 				LootTable loot = event.getTable();
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
-					pool.addEntry(new LootEntryItem(ingot, 15, 5, new LootFunction[] {
+					pool.addEntry(new LootEntryItem(ingot, 20, 5, new LootFunction[] {
 							new SetMetadata(new LootCondition[0], new RandomValueRange(4, 5)),
 							new SetCount(new LootCondition[0], new RandomValueRange(5, 8))
 					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_ingot_brass1"));
-					pool.addEntry(new LootEntryItem(gear, 10, 3, new LootFunction[] {
+					pool.addEntry(new LootEntryItem(gear, 15, 3, new LootFunction[] {
 							new SetMetadata(new LootCondition[0], new RandomValueRange(1)),
 							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
 					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gear_brass1"));
@@ -167,16 +167,16 @@ public class DCLootEvent {
 				LootTable loot = event.getTable();
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
-					pool.addEntry(new LootEntryItem(cloth, 20, 1, new LootFunction[] {
+					pool.addEntry(new LootEntryItem(cloth, 25, 1, new LootFunction[] {
 							new SetMetadata(new LootCondition[0], new RandomValueRange(6, 7)),
 							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
 					}, new LootCondition[0], ClimateMain.MOD_ID + ":forest_cloth_silk"));
 					if (ModuleConfig.clothes_advanced) {
-						pool.addEntry(new LootEntryItem(MainInit.blackSuit, 8, 1, new LootFunction[0],
+						pool.addEntry(new LootEntryItem(MainInit.blackSuit, 10, 1, new LootFunction[0],
 								new LootCondition[0], ClimateMain.MOD_ID + ":forest_suit"));
-						pool.addEntry(new LootEntryItem(MainInit.combatDress, 8, 1, new LootFunction[0],
+						pool.addEntry(new LootEntryItem(MainInit.combatDress, 10, 1, new LootFunction[0],
 								new LootCondition[0], ClimateMain.MOD_ID + ":forest_combat"));
-						pool.addEntry(new LootEntryItem(MainInit.modsCoat, 8, 1, new LootFunction[0],
+						pool.addEntry(new LootEntryItem(MainInit.modsCoat, 10, 1, new LootFunction[0],
 								new LootCondition[0], ClimateMain.MOD_ID + ":forest_mods"));
 					}
 					if (ModuleConfig.weapon_advanced) {
