@@ -6,12 +6,12 @@
    "ore": "patternWear"
   },
   {
-   "item": "minecraft:rabbit_hide",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "rabbithide"
   },
   {
-   "item": "minecraft:rabbit_hide",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "rabbithide"
   },
   {
    "type": "forge:ore_dict",

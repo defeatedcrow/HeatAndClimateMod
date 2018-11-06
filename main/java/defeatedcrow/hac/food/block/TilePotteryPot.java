@@ -78,16 +78,16 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		if (currentRecipe == null && current != null) {
 			currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
 			if (currentRecipe == null && current.getHeat().getTier() > 0) {
-				IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1),
-						current.getHumidity(), current.getAirflow());
+				IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current
+						.getHumidity(), current.getAirflow());
 				currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(clm2, ins, inf);
 			}
 			return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 3);
 		} else {
 			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {
 				int outAmo = currentRecipe.getOutputFluid() == null ? 0 : currentRecipe.getOutputFluid().amount;
-				return currentRecipe.matchOutput(outs, outf, 3) && outputT.getFluidAmount() +
-						outAmo <= outputT.getCapacity();
+				return currentRecipe.matchOutput(outs, outf, 3) && outputT.getFluidAmount() + outAmo <= outputT
+						.getCapacity();
 			}
 		}
 		return false;
@@ -104,8 +104,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
 		currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
 		if (currentRecipe == null && current.getHeat().getTier() > 0) {
-			IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current.getHumidity(),
-					current.getAirflow());
+			IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current
+					.getHumidity(), current.getAirflow());
 			currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(clm2, ins, inf);
 		}
 		return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 3);
@@ -120,51 +120,62 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 			FluidStack inF = currentRecipe.getInputFluid();
 			FluidStack outF = currentRecipe.getOutputFluid();
 
-			if (inF != null) {
-				inputT.drain(inF, true);
+			if (outF != null) {
+				int c1 = outputT.fill(outF, false);
+				if (c1 < outF.amount)
+					return false;
 			}
 
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
-			for (int i = 4; i < 7; i++) {
-				ItemStack slot = this.getStackInSlot(i);
-				if (!DCUtil.isEmpty(slot)) {
-					boolean inRecipe = false;
-					Iterator<Object> req = required.iterator();
+			if (!required.isEmpty()) {
+				for (int i = 4; i < 7; i++) {
+					ItemStack slot = this.getStackInSlot(i);
+					if (!DCUtil.isEmpty(slot)) {
+						boolean inRecipe = false;
+						Iterator<Object> req = required.iterator();
 
-					// 9スロットについて、要求材料の数だけ回す
-					while (req.hasNext()) {
-						boolean match = false;
-						Object next = req.next();
-						int count = 1;
+						// 9スロットについて、要求材料の数だけ回す
+						while (req.hasNext()) {
+							boolean match = false;
+							Object next = req.next();
+							int count = 1;
 
-						if (next instanceof ItemStack) {
-							count = ((ItemStack) next).getCount();
-							match = OreDictionary.itemMatches((ItemStack) next, slot, false) &&
-									slot.getCount() >= count;
-						} else if (next instanceof List) {
-							List<ItemStack> list = new ArrayList<ItemStack>((List<ItemStack>) next);
-							if (list != null && !list.isEmpty()) {
-								for (ItemStack item : list) {
-									boolean f = OreDictionary.itemMatches(item, slot, false) && slot.getCount() > 0;
-									if (f) {
-										match = true;
+							if (next instanceof ItemStack) {
+								count = ((ItemStack) next).getCount();
+								match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot
+										.getCount() >= count;
+							} else if (next instanceof List) {
+								List<ItemStack> list = new ArrayList<ItemStack>((List<ItemStack>) next);
+								if (list != null && !list.isEmpty()) {
+									for (ItemStack item : list) {
+										boolean f = OreDictionary.itemMatches(item, slot, false) && slot.getCount() > 0;
+										if (f) {
+											match = true;
+										}
 									}
 								}
 							}
+
+							if (match) {
+								inRecipe = true;
+								required.remove(next);
+								this.decrStackSize(i, 1);
+								break;
+							}
 						}
 
-						if (match) {
-							inRecipe = true;
-							required.remove(next);
-							this.decrStackSize(i, 1);
-							break;
+						if (!inRecipe) {
+							break;// 中断
 						}
-					}
-
-					if (!inRecipe) {
-						break;// 中断
 					}
 				}
+				if (!required.isEmpty()) {
+					return false;
+				}
+			}
+
+			if (inF != null) {
+				inputT.drain(inF.amount, true);
 			}
 
 			if (outF != null) {
@@ -172,11 +183,11 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 			}
 
 			if (!DCUtil.isEmpty(out)) {
-				this.insertResult(out, 7, 9);
+				this.insertResult(out.copy(), 7, 9);
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance) {
-				this.insertResult(sec, 7, 9);
+				this.insertResult(sec.copy(), 7, 9);
 			}
 
 			this.markDirty();
@@ -188,8 +199,8 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 	@Override
 	public boolean isSuitableClimate() {
 		// potteryは高温に耐えられない
-		return current != null && current.getHeat().getTier() <= DCHeatTier.BOIL.getTier() &&
-				current.getHeat().getTier() > DCHeatTier.FROSTBITE.getTier();
+		return current != null && current.getHeat().getTier() <= DCHeatTier.BOIL.getTier() && current.getHeat()
+				.getTier() > DCHeatTier.FROSTBITE.getTier();
 	}
 
 	@Override

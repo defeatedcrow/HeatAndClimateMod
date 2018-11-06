@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "powered=false,side=north":  { "model": "dcs_climate:machine/dcs_device_faucet_close" },
+        "powered=true,side=north":  { "model": "dcs_climate:machine/dcs_device_faucet_open" },
+        "powered=false,side=south":  { "model": "dcs_climate:machine/dcs_device_faucet_close", "y": 180, "uvlock": true  },
+        "powered=true,side=south":  { "model": "dcs_climate:machine/dcs_device_faucet_open", "y": 180, "uvlock": true },
+        "powered=false,side=west":  { "model": "dcs_climate:machine/dcs_device_faucet_close", "y": 270, "uvlock": true  },
+        "powered=true,side=west":  { "model": "dcs_climate:machine/dcs_device_faucet_open", "y": 270, "uvlock": true },
+        "powered=false,side=east":  { "model": "dcs_climate:machine/dcs_device_faucet_close", "y": 90, "uvlock": true  },
+        "powered=true,side=east":  { "model": "dcs_climate:machine/dcs_device_faucet_open", "y": 90, "uvlock": true },
+        "powered=false,side=up":  { "model": "dcs_climate:machine/dcs_device_faucet_s_close" },
+        "powered=true,side=up":  { "model": "dcs_climate:machine/dcs_device_faucet_s_open" },
+        "powered=false,side=down":  { "model": "dcs_climate:machine/dcs_device_faucet_s_close" },
+        "powered=true,side=down":  { "model": "dcs_climate:machine/dcs_device_faucet_s_open" }
+    }
+}

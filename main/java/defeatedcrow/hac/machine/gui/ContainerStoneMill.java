@@ -92,7 +92,7 @@ public class ContainerStoneMill extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < 3) {
-				if (!this.mergeItemStack(itemstack1, 2, 37, true))
+				if (!this.mergeItemStack(itemstack1, 3, 37, true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (!this.mergeItemStack(itemstack1, 0, 1, false))

@@ -11,6 +11,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -65,7 +66,7 @@ public class EntityProjCryL extends EntityProjBase {
 			if (entity.isEntityEqual(shootingEntity)) {
 				continue;
 			}
-			if (entity != null && entity instanceof EntityLiving) {
+			if (entity instanceof IMob) {
 				EntityLiving liv = (EntityLiving) entity;
 				livs.add(liv);
 			}

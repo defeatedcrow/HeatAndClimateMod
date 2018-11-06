@@ -67,6 +67,9 @@ public class BlockContainerUtil {
 		if (item.getItem() == Items.REDSTONE) {
 			return INS.new ReturnPair(new ItemStack(Blocks.REDSTONE_BLOCK), 9);
 		}
+		if (item.getItem() == Items.QUARTZ) {
+			return INS.new ReturnPair(new ItemStack(Blocks.QUARTZ_BLOCK), 4);
+		}
 
 		int[] ids = OreDictionary.getOreIDs(item);
 		for (int id : ids) {
@@ -250,6 +253,11 @@ public class BlockContainerUtil {
 		if (MainInit.cropJute != null) {
 			for (int i = 0; i < ((DCSimpleBlock) MainInit.cropJute).maxMeta; i++) {
 				cont2.add(MainInit.cropJute.getDefaultState().withProperty(DCState.TYPE16, i));
+			}
+		}
+		if (MainInit.logCont != null) {
+			for (int i = 0; i < ((DCSidedBlock) MainInit.logCont).maxMeta; i++) {
+				cont2.add(MainInit.logCont.getDefaultState().withProperty(DCState.TYPE8, i));
 			}
 		}
 	}

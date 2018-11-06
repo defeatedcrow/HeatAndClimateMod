@@ -247,6 +247,28 @@ public class DCPluginFluid {
 		Fluid f45 = FluidRegistry.getFluid("dcs.ethanol");
 		registerPotion(f45, MobEffects.HASTE);
 
+		Fluid f51 = FluidRegistry.getFluid("dcs.milk_cream");
+		registerPotion(f51, MobEffects.INSTANT_HEALTH);
+
+		// animania
+		Fluid f46 = FluidRegistry.getFluid("milk_holstein");
+		registerPotion(f46, MobEffects.REGENERATION);
+
+		Fluid f47 = FluidRegistry.getFluid("milk_friesian");
+		registerPotion(f47, MobEffects.REGENERATION);
+
+		Fluid f48 = FluidRegistry.getFluid("milk_jersey");
+		registerPotion(f48, MobEffects.REGENERATION);
+
+		Fluid f49 = FluidRegistry.getFluid("milk_goat");
+		registerPotion(f49, MobEffects.REGENERATION);
+
+		Fluid f50 = FluidRegistry.getFluid("milk_sheep");
+		registerPotion(f50, MobEffects.REGENERATION);
+
+		Fluid f52 = FluidRegistry.getFluid("fuelium");
+		registerPotion(f52, MobEffects.HASTE);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
@@ -254,20 +276,12 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("biomass", 60);
 		MainAPIManager.fuelRegister.registerFuel("liquidethene", 120);
 		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
+		MainAPIManager.fuelRegister.registerFuel("fuelium", 100);
 
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 150);
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 120);
 		MainAPIManager.fuelRegister.registerFuel("dcs.ethanol", 60);
 
-		// dic
-		FluidDictionaryDC.registerFluidDic(MainInit.hydrogen, "hydrogen");
-		FluidDictionaryDC.registerFluidDic(MainInit.nitricAcid, "nitricacid");
-		FluidDictionaryDC.registerFluidDic(MainInit.sulfuricAcid, "sulfuricacid");
-		FluidDictionaryDC.registerFluidDic(MainInit.ammonia, "ammonia");
-		FluidDictionaryDC.registerFluidDic(MainInit.fuelOil, "fuel_oil");
-		FluidDictionaryDC.registerFluidDic(MainInit.oil, "plant_oil");
-		FluidDictionaryDC.registerFluidDic(MainInit.nitrogen, "nitrogen");
-		FluidDictionaryDC.registerFluidDic(MainInit.ethanol, "ethanol");
 	}
 
 	public static void registerPotion(Fluid f, Potion p) {

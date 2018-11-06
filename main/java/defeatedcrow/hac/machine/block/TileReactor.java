@@ -319,8 +319,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
-				dummy.getTankProperties().length > 0) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null && dummy
+				.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = null;
 
@@ -452,16 +452,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 					return false;
 			}
 
-			// 2: input fluid
-			if (inF1 != null) {
-				inputT1.drain(inF1, true);
-			}
-
-			if (inF2 != null) {
-				inputT2.drain(inF2, true);
-			}
-
-			// 3: item required
+			// 2: item required
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
 			if (!required.isEmpty()) {
 				for (int i = 9; i < 13; i++) {
@@ -478,8 +469,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 							if (next instanceof ItemStack) {
 								count = ((ItemStack) next).getCount();
-								match = OreDictionary.itemMatches((ItemStack) next, slot, false) &&
-										slot.getCount() >= count;
+								match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot
+										.getCount() >= count;
 							} else if (next instanceof ArrayList) {
 								ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
 								if (list != null && !list.isEmpty()) {
@@ -505,6 +496,19 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 						}
 					}
 				}
+
+				if (!required.isEmpty()) {
+					return false;
+				}
+			}
+
+			// 3: input fluid
+			if (inF1 != null) {
+				inputT1.drain(inF1.amount, true);
+			}
+
+			if (inF2 != null) {
+				inputT2.drain(inF2.amount, true);
 			}
 
 			if (outF1 != null) {
@@ -516,11 +520,11 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			}
 
 			if (!DCUtil.isEmpty(out)) {
-				this.insertResult(out);
+				this.insertResult(out.copy());
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance) {
-				this.insertResult(sec);
+				this.insertResult(sec.copy());
 			}
 
 			this.markDirty();
@@ -533,12 +537,16 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	public int insertResult(ItemStack item) {
 		if (DCUtil.isEmpty(item))
 			return 0;
+
+		int count = 0;
 		for (int i = 13; i < this.getSizeInventory(); i++) {
-			int ret = inventory.incrStackInSlot(i, item);
-			if (ret > 0)
-				return ret;
+			int size = inventory.incrStackInSlot(i, item.copy());
+			if (size > 0) {
+				item.shrink(size);
+				count += size;
+			}
 		}
-		return 0;
+		return count;
 	}
 
 	@Override

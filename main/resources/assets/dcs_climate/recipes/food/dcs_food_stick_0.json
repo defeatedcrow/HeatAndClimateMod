@@ -6,8 +6,8 @@
    "ore": "stickWood"
   },
   {
-   "item": "minecraft:fish",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllfishraw"
   }
  ],
  "result": {

@@ -26,8 +26,6 @@ public class OnCraftingDC {
 		EntityPlayer player = event.player;
 		IInventory matrix = event.craftMatrix;
 		ItemStack craft = event.crafting;
-		int asbest = 0;
-		int synthetic = 0;
 
 		if (!DCUtil.isEmpty(craft)) {
 			if (craft.getItem() == MagicInit.badge) {
@@ -48,6 +46,9 @@ public class OnCraftingDC {
 					DCLogger.infoLog("current coount: " + count);
 				}
 			} else if (craft.getItem() instanceof ItemArmor) {
+				int asbest = 0;
+				int synthetic = 0;
+				int silk = 0;
 				for (int i = 0; i < matrix.getSizeInventory(); i++) {
 					ItemStack check = matrix.getStackInSlot(i);
 					if (MainUtil.hasDicPart("Synthetic", check)) {
@@ -56,14 +57,23 @@ public class OnCraftingDC {
 					if (MainUtil.hasDicPart("Asbest", check)) {
 						asbest++;
 					}
+					if (MainUtil.hasDicPart("Magic", check)) {
+						silk++;
+					}
 				}
 				if (synthetic > 0) {
 					Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(craft);
-					map.put(Enchantments.PROTECTION, synthetic);
+					map.put(Enchantments.PROJECTILE_PROTECTION, synthetic);
 					EnchantmentHelper.setEnchantments(map, craft);
-				} else if (asbest > 0) {
+				}
+				if (asbest > 0) {
 					Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(craft);
 					map.put(Enchantments.FIRE_ASPECT, asbest);
+					EnchantmentHelper.setEnchantments(map, craft);
+				}
+				if (silk > 0) {
+					Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(craft);
+					map.put(Enchantments.BLAST_PROTECTION, silk);
 					EnchantmentHelper.setEnchantments(map, craft);
 				}
 			}

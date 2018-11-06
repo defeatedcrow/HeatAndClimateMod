@@ -14,7 +14,6 @@ import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
-import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileLowChest;
@@ -55,6 +54,7 @@ import defeatedcrow.hac.main.client.entity.RenderEntityBigCushionB;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
+import defeatedcrow.hac.main.client.model.ModelDress;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
 import defeatedcrow.hac.main.client.model.ModelOvercoat;
@@ -92,7 +92,6 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -111,11 +110,13 @@ public class ClientMainProxy extends CommonMainProxy {
 	private static final ModelWoolWear woolHatModel = new ModelWoolWear(3);
 	private static final ModelOvercoat coatModel = new ModelOvercoat(0);
 	private static final ModelOvercoat coatModel2 = new ModelOvercoat(1);
-	private static final ModelOvercoat coatModel3 = new ModelOvercoat(0.35F, 2);
+	private static final ModelDress dressModel = new ModelDress(2);
 	private static final ModelSkirt skirtModel = new ModelSkirt(3);
+	private static final ModelDress shirtModel2 = new ModelDress(2).setShort();
 	private static final ModelThinBiped thinBootsModel = new ModelThinBiped(0.40F, 3);
 	private static final ModelThinBiped legginsModel2 = new ModelThinBiped(0.45F, 2);
 	private static final ModelThinBiped bodyModel2 = new ModelThinBiped(0.60F, 1);
+	private static final ModelThinBiped bodyModel3 = new ModelThinBiped(1.1F, 1);
 
 	@Override
 	public void loadConst() {
@@ -188,17 +189,15 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileShitirin.class, "dcs_te_shitirin", new TESRShitirin());
 		registerTileEntity(TileCookingStove.class, "dcs_te_fuel_stove", new TESRFuelStove());
 		registerTileEntity(TileStevensonScreen.class, "dcs_te_stevenson_screen", new TESRStevensonScreen());
-		GameRegistry.registerTileEntity(TileLowChest.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_lowchest"));
+		GameRegistry.registerTileEntity(TileLowChest.class, "dcs_te_lowchest");
 		registerTileEntity(TileMetalChest.class, "dcs_te_metalchest", new TESRMetalChest());
 		registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest", new TESRMagnetChest());
 		registerTileEntity(TileVillageChest.class, "dcs_te_villagechest", new TESRVillageChest());
-		GameRegistry.registerTileEntity(TileSink.class, new ResourceLocation(ClimateMain.MOD_ID, "dcs_te_sink"));
+		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
 		registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
 		registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
 		registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
-		GameRegistry.registerTileEntity(TileAcvShield.class, new ResourceLocation(ClimateMain.MOD_ID,
-				"dcs_te_acv_shield"));
+		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum", new TESRChandelier());
 		registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock", new TESRAnalogClock());
 		registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l", new TESRLargeClock());
@@ -216,7 +215,7 @@ public class ClientMainProxy extends CommonMainProxy {
 
 	public static <T extends TileEntity> void registerTileEntity(Class<T> teClass, String id,
 			TileEntitySpecialRenderer<? super T> renderer) {
-		GameRegistry.registerTileEntity(teClass, new ResourceLocation(ClimateMain.MOD_ID, id));
+		GameRegistry.registerTileEntity(teClass, id);
 		ClientRegistry.bindTileEntitySpecialRenderer(teClass, renderer);
 	}
 
@@ -323,7 +322,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		case 5:
 			return coatModel2;
 		case 6:
-			return coatModel3;
+			return dressModel;
 		case 7:
 			return skirtModel;
 		case 8:
@@ -332,6 +331,10 @@ public class ClientMainProxy extends CommonMainProxy {
 			return bodyModel2;
 		case 10:
 			return legginsModel2;
+		case 11:
+			return bodyModel3;
+		case 12:
+			return shirtModel2;
 		default:
 			return null;
 		}

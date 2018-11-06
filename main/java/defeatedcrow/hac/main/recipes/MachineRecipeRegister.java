@@ -238,7 +238,7 @@ public class MachineRecipeRegister {
 	static void loadVanillaRecipes() {
 		// ゆでたまご
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.bakedApple, 1,
-				1), DCHeatTier.BOIL, DCHumidity.UNDERWATER, null, false, new ItemStack(Items.EGG, 1, 0));
+				1), DCHeatTier.BOIL, DCHumidity.UNDERWATER, null, false, "egg");
 
 	}
 

@@ -7,12 +7,12 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:gold_ingot",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "ingotGold"
   },
   "Y": {
-   "item": "minecraft:redstone",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
   },
   "Z": {
    "type": "forge:ore_dict",

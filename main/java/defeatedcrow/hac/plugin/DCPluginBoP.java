@@ -11,6 +11,7 @@ import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -67,7 +68,7 @@ public class DCPluginBoP {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "plantWildrice");
 
 			Block stalagmite = Block.REGISTRY.getObject(new ResourceLocation("biomesoplenty", "stone_formations"));
-			if (stalagmite != null) {
+			if (stalagmite != null && stalagmite != Blocks.AIR) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F, new ItemStack(
 						stalagmite, 1, 0));
 

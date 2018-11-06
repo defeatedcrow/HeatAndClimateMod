@@ -253,8 +253,8 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
-				dummy.getTankProperties().length > 0) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null && dummy
+				.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = null;
 
@@ -380,15 +380,15 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			world.rand.nextInt(100);
 
 			if (!DCUtil.isEmpty(out) && world.rand.nextInt(100) < chance0) {
-				this.insertResult(out);
+				this.insertResult(out.copy());
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance1) {
-				this.insertResult(sec);
+				this.insertResult(sec.copy());
 			}
 
 			if (!DCUtil.isEmpty(tert) && world.rand.nextInt(100) < chance2) {
-				this.insertResult(tert);
+				this.insertResult(tert.copy());
 			}
 
 			this.markDirty();
@@ -401,12 +401,16 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 	public int insertResult(ItemStack item) {
 		if (DCUtil.isEmpty(item))
 			return 0;
+
+		int count = 0;
 		for (int i = 3; i < 6; i++) {
-			int size = inventory.incrStackInSlot(i, item);
-			if (size > 0)
-				return size;
+			int size = inventory.incrStackInSlot(i, item.copy());
+			if (size > 0) {
+				item.shrink(size);
+				count += size;
+			}
 		}
-		return 0;
+		return count;
 	}
 
 	@Override

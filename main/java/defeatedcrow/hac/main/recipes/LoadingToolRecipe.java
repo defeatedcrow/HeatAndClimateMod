@@ -14,15 +14,6 @@ public class LoadingToolRecipe {
 
 	public static void add(RecipeResourcesMain res) {
 		// clothes
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 0), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				new ItemStack(Blocks.TALLGRASS, 1, 1),
-				'Y',
-				"stickWood"
-		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 0), new Object[] {
 				"XXX",
@@ -77,7 +68,7 @@ public class LoadingToolRecipe {
 				'X',
 				"plankWood",
 				'Y',
-				new ItemStack(Items.STICK, 1, 0)
+				"stickWood"
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 1), new Object[] {
@@ -161,7 +152,7 @@ public class LoadingToolRecipe {
 				"XYX",
 				"XXX",
 				'X',
-				new ItemStack(Blocks.COBBLESTONE, 1, 0),
+				"cobblestone",
 				'Y',
 				"gearWood"
 		});
@@ -181,9 +172,9 @@ public class LoadingToolRecipe {
 				"XYX",
 				" Z ",
 				'X',
-				new ItemStack(Items.GOLD_INGOT, 1, 0),
+				"ingotGold",
 				'Y',
-				new ItemStack(Items.REDSTONE, 1, 0),
+				"dustRedstone",
 				'Z',
 				"gemChalcedony"
 		});
@@ -209,7 +200,7 @@ public class LoadingToolRecipe {
 				'Y',
 				new ItemStack(DCInit.climate_checker),
 				'Z',
-				new ItemStack(Blocks.GLASS)
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {
@@ -285,6 +276,37 @@ public class LoadingToolRecipe {
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
 				"dustClay",
 				"dustGarnet"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+				"stickWood",
+				"blockTallGrass"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+				"stickWood",
+				"dustPlant"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+				"stickWood",
+				"dustWood"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+				"stickWood",
+				"cropCotton"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+				"stickWood",
+				"feather"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 2), new Object[] {
+				"plankWood",
+				new ItemStack(MainInit.tinder, 1, 0),
+				"string"
 		});
 
 		if (ModuleConfig.machine) {

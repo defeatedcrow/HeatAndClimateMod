@@ -1,6 +1,9 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.List;
 import java.util.Random;
+
+import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
@@ -13,6 +16,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -147,6 +151,13 @@ public class BlockCarbideLamp extends BlockDC {
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 			return true;
 		return false;
+	}
+
+	@Override
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		list.add(new ItemStack(this, 1, 0));
+		return list;
 	}
 
 }

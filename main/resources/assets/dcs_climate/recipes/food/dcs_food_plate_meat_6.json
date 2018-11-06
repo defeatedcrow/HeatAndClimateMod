@@ -14,8 +14,8 @@
    "ore": "listAllveggie"
   },
   {
-   "item": "minecraft:fish",
-   "data": 32767
+   "type": "forge:ore_dict",
+   "ore": "listAllfishraw"
   }
  ],
  "result": {

@@ -42,14 +42,14 @@ public enum DCMaterialEnum {
 			2,
 			2,
 			1
-	}, 1, 256, 1.0F, 5, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 2), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
+	}, 1, 256, 1.0F, 5, 1.0F, 1.0F, new ItemStack(MainInit.oreIngot, 1, 2), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
 	// 主にアクセサリー用。実用に耐えうる金という感じ
 	SILVER(5, "silver", 2.0F, new int[] {
-			2,
-			5,
 			4,
-			2
-	}, 1, 256, 12.0F, 22, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 3), SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.5F),
+			8,
+			7,
+			4
+	}, 1, 256, 12.0F, 22, 1.0F, 1.0F, new ItemStack(MainInit.oreIngot, 1, 3), SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.5F),
 	// 普段使い用の金属。鉄の上位互換。
 	BRASS(6, "brass", 2.0F, new int[] {
 			3,
@@ -59,10 +59,10 @@ public enum DCMaterialEnum {
 	}, 2, 384, 6.0F, 10, 0.25F, 0.25F, new ItemStack(MainInit.oreIngot, 1, 4), SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F),
 	// 耐久値が高いが鉄より弱い
 	NICKELSILVER(7, "nickelsilver", 2.0F, new int[] {
-			2,
 			4,
-			4,
-			2
+			8,
+			7,
+			4
 	}, 2, 2400, 4.0F, 10, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 6), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
 	// 熱に弱いが他が強い
 	STEEL(8, "steel", 4.0F, new int[] {
@@ -84,13 +84,13 @@ public enum DCMaterialEnum {
 			8,
 			6,
 			3
-	}, 2, 1280, 7.0F, 18, 0.5F, 0.5F, new ItemStack(MainInit.gems, 1, 4), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F),
+	}, 2, 1280, 7.0F, 18, 1.0F, 1.0F, new ItemStack(MainInit.gems, 1, 4), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F),
 	// いいとこ取り性能、防御能力はそこそこ
 	TITANIUM(11, "titanium", 12.0F, new int[] {
-			4,
+			6,
 			10,
-			8,
-			4
+			9,
+			6
 	}, 4, 1440, 12.0F, 5, 0F, 0F, new ItemStack(MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
 	// 耐暑性特化で耐久高め
 	SYNTHETIC(12, "synthetic", 3.0F, new int[] {
@@ -137,8 +137,7 @@ public enum DCMaterialEnum {
 		reduceDam = def;
 		harvestTier = tier;
 		duration = dur;
-		armorDur = dur
-				/ 20;
+		armorDur = dur / 20;
 		efficiency = eff;
 		enchant = enc;
 		prevHeat = heat;

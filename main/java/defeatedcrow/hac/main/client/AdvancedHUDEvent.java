@@ -2,11 +2,11 @@ package defeatedcrow.hac.main.client;
 
 import org.lwjgl.opengl.GL11;
 
-import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.client.ClientClimateData;
 import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.main.config.MainCoreConfig;
@@ -37,7 +37,6 @@ public class AdvancedHUDEvent {
 	public static final ResourceLocation TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
 			"textures/gui/hud_climate_adv.png");
 
-	private int climate = 0;
 	private int count = 20;
 	private int biomeID = 0;
 	private Biome biome = Biomes.PLAINS;
@@ -71,11 +70,7 @@ public class AdvancedHUDEvent {
 							int py = MathHelper.floor(player.posY);
 							int pz = MathHelper.floor(player.posZ);
 							BlockPos pos = new BlockPos(px, py, pz);
-							if (pos != null && world.isAreaLoaded(pos.add(-2, -2, -2), pos.add(2, 2, 2))) {
-								IClimate id = ClimateAPI.calculator.getClimate(world, pos);
-								if (id != null) {
-									climate = id.getClimateInt();
-								}
+							if (pos != null) {
 								Biome b = world.provider.getBiomeForCoords(pos);
 								biome = b;
 								biomeID = b.getIdForBiome(b);
@@ -87,8 +82,8 @@ public class AdvancedHUDEvent {
 						count--;
 					}
 
-					if (hasAcv) {
-						IClimate clm = ClimateAPI.register.getClimateFromInt(climate);
+					if (hasAcv && ClientClimateData.INSTANCE.getClimate() != null) {
+						IClimate clm = ClientClimateData.INSTANCE.getClimate();
 						float tempF = biome.getTemperature(player.getPosition());
 						float we = WeatherChecker.getTempOffsetFloat(world.provider.getDimension(), false);
 
@@ -113,14 +108,14 @@ public class AdvancedHUDEvent {
 						String hum = clm.getHumidity().toString();
 						String air = clm.getAirflow().toString();
 						if (ClimateCore.isDebug) {
-							temp += " " + (tempF + we) + "F";
+							temp += String.format(" %.2f F", (tempF + we));
 						}
 
 						if (CoreConfigDC.enableSeasonEffect) {
 							EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 							int day = DCTimeHelper.getDay(world);
-							fr.drawString(season.getName() + " " + day, x + 5, y -
-									8, season.color.getColorValue(), true);
+							fr.drawString(season.getName() + " " + day, x + 5, y - 8, season.color
+									.getColorValue(), true);
 						}
 
 						Biome biome = Biome.getBiomeForId(biomeID);

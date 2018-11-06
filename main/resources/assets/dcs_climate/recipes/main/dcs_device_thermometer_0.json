@@ -15,8 +15,8 @@
    "data": 0
   },
   "Z": {
-   "item": "minecraft:glass",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "blockGlass"
   }
  },
  "result": {
