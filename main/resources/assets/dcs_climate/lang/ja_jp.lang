@@ -33,6 +33,9 @@ item.dcs_pattern_paper_pants.name=型紙(パンツ)
 item.dcs_pattern_paper_skirt.name=型紙(スカート)
 item.dcs_pattern_paper_boots.name=型紙(靴)
 item.dcs_pattern_paper_wear.name=型紙(ウェア)
+item.dcs_tinder_tinder.name=火口
+item.dcs_tinder_fire.name=火種
+item.dcs_tinder_firestarter.name=火起こし器
 
 item.dcs_ingot_copper.name=銅インゴット
 item.dcs_ingot_zinc.name=亜鉛インゴット
@@ -448,6 +451,7 @@ item.dcs_scythe_brass.name=真鍮の大鎌
 item.dcs_scythe_steel.name=鋼の大鎌
 item.dcs_scythe_chalcedony.name=玉髄の大鎌
 item.dcs_scythe_garnet.name=ガーネットの大鎌
+item.dcs_scythe_stone.name=石の大鎌
 
 item.dcs_sword_brass.name=真鍮の剣
 item.dcs_sword_steel.name=鋼の剣
@@ -1314,6 +1318,9 @@ dcs.tip.dynamite=注意! 7x7x7の爆発を起こします。
 dcs.tip.dynamite2=水中で使用すると、魚をドロップします。(ダイナマイト漁)
 dcs.tip.slotpanel=レシピマシンのinputスロットに置くと、空のスロットとして認識されます。
 dcs.tip.cloth.color=カラーバリエーション
+dcs.tip.tinder=高温のブロックや燃えているエンティティから火を移します。
+dcs.tip.firestarter=対象のブロックやエンティティに着火します。
+
 
 dcs.tip.shitirin.description=
 dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック

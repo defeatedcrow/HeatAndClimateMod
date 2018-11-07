@@ -1,5 +1,6 @@
 
 ## item
+## mod tools
 item.dcs_checker_normal.name=氣候檢查器
 item.dcs_creative_drill_normal.name=（創造模式專用）烏鴉鉆
 item.dcs_wrench_brass.name=黃銅扳手
@@ -33,7 +34,11 @@ item.dcs_pattern_paper_pants.name=服裝樣板（褲子）
 item.dcs_pattern_paper_skirt.name=服裝樣板（裙子）
 item.dcs_pattern_paper_boots.name=服裝樣板（靴子）
 item.dcs_pattern_paper_wear.name=服裝樣板（飾品）
+item.dcs_tinder_tinder.name=火種
+item.dcs_tinder_fire.name=火棍
+item.dcs_tinder_firestarter.name=起火器
 
+## metals
 item.dcs_ingot_copper.name=銅錠
 item.dcs_ingot_zinc.name=鋅錠
 item.dcs_ingot_silver.name=銀錠
@@ -80,9 +85,9 @@ item.dcs_gem_schorl.name=黑碧璽
 item.dcs_gem_serpentine.name=蛇紋石
 item.dcs_gem_olivine.name=橄欖石
 item.dcs_gem_almandine.name=石榴石
-item.dcs_gem_rutile.name=金紅石
-item.dcs_gem_bauxite.name=鋁土礦
 item.dcs_gem_bismuth.name=鉍晶體
+item.dcs_gem_bauxite.name=鋁土礦
+item.dcs_gem_rutile.name=金紅石
 item.dcs_gem_apatite.name=磷灰石
 item.dcs_gem_jadeite.name=翡翠
 item.dcs_gem_moonstone.name=月長石
@@ -110,16 +115,7 @@ item.dcs_fooddust_soy_pulp.name=豆渣
 item.dcs_fooddust_baking_soda.name=小蘇打
 item.dcs_expgem_exp.name=經驗寶石
 
-item.dcs_material_string_linen.name=亞麻線
-item.dcs_material_string_cotton.name=木棉線
-item.dcs_material_cloth_linen.name=亞麻布
-item.dcs_material_cloth_cotton.name=木棉布
-item.dcs_material_spindle_wood.name=木質碾盤
-item.dcs_material_spindle_brass.name=黃銅碾盤
-item.dcs_material_spindle_alloy.name=合金碾盤
-item.dcs_material_spindle_steel.name=鋼制碾盤
-item.dcs_material_string_chrysotile.name=石棉線
-item.dcs_material_cloth_chrysotile.name=石棉布
+## materials
 item.dcs_misc_string_linen.name=亞麻線
 item.dcs_misc_string_cotton.name=木棉線
 item.dcs_misc_cloth_linen.name=亞麻布
@@ -178,7 +174,7 @@ item.dcs_flowerpot_brown.name=棕色花瓶
 item.dcs_big_cushion_gray.name=大坐墊（灰）
 item.dcs_big_cushion_brown.name=大坐墊（棕）
 
-
+## foods
 item.dcs_food_materials_salt.name=食鹽
 item.dcs_food_materials_flour.name=面粉
 item.dcs_food_materials_rice.name=稻米
@@ -375,6 +371,7 @@ item.dcs_food_snack_falafel_sandwich.name=法拉費三明治
 item.dcs_food_setmeal_breakfast.name=西式早餐
 item.dcs_food_setmeal_japanese.name=日式早餐
 
+## crops
 item.dcs_food_crops_rice.name=水稻
 item.dcs_food_crops_onion.name=洋蔥
 item.dcs_food_crops_spinach.name=菠菜
@@ -410,6 +407,7 @@ item.dcs_food_seeds_lettuce.name=生菜種子
 item.dcs_food_petals_lotus.name=蓮花瓣
 item.dcs_food_petals_black.name=黑蓮花瓣
 
+## craft tools
 item.dcs_yagen_stone_normal.name=石質藥碾子
 item.dcs_yagen_brass_normal.name=青銅藥碾子
 
@@ -417,6 +415,7 @@ item.dcs_repair_putty.name=修補油灰
 item.dcs_repair_abrasive.name=磨石
 item.dcs_repair_soap.name=肥皂
 
+## mining tools
 item.dcs_axe_brass.name=黃銅斧
 item.dcs_axe_steel.name=鋼斧
 item.dcs_axe_silver.name=銀斧
@@ -441,14 +440,15 @@ item.dcs_spade_chalcedony.name=玉髓鏟
 item.dcs_spade_sapphire.name=藍寶石鏟
 item.dcs_spade_titanium.name=鈦鏟
 item.dcs_spade_garnet.name=石榴石鏟
-item.dcs_spade_earth.name=大地之鍬
-item.dcs_rake_earth.name=大地之耙
-
 item.dcs_scythe_brass.name=黃銅鐮刀
 item.dcs_scythe_steel.name=鋼鐮刀
 item.dcs_scythe_chalcedony.name=玉髓鐮刀
 item.dcs_scythe_garnet.name=石榴石鐮刀
+item.dcs_scythe_stone.name=Stone Scythe
+item.dcs_spade_earth.name=大地之鍬
+item.dcs_rake_earth.name=大地之耙
 
+## weapons
 item.dcs_sword_brass.name=黃銅劍
 item.dcs_sword_steel.name=鋼劍
 item.dcs_sword_silver.name=銀劍
@@ -471,6 +471,7 @@ item.dcs_cartridge_crow.name=誘餌氣球子彈
 item.dcs_dynamite_red.name=炸藥
 item.dcs_dynamite_blue.name=絹布炸藥
 
+## armors
 item.dcs_met_brass.name=黃銅頭盔
 item.dcs_met_steel.name=鋼頭盔
 item.dcs_met_chalcedony.name=玉髓頭盔
@@ -530,6 +531,7 @@ item.dcs_dress_silk.name=絲綢裙
 item.dcs_cape_silk.name=絲綢披肩
 item.dcs_cape_fur.name=毛皮圍巾
 
+## jewels
 item.dcs_jewel_pendant_chal_blue.name=青玉髓吊墜
 item.dcs_jewel_pendant_chal_red.name=紅玉髓吊墜
 item.dcs_jewel_pendant_chal_white.name=白玉髓吊墜
@@ -576,24 +578,6 @@ item.dcs_jewel_amulet_black.name=防護護身符
 item.dcs_jewel_amulet_star.name=夜空護身符
 item.dcs_jewel_amulet_moon.name=月女神護身符
 
-item.dcs_dagger_silver.name=銀制投刀
-item.dcs_dagger_magic_0.name=寶石劍（投擲）
-item.dcs_dagger_magic_1.name=寶石劍（爆炸）
-item.dcs_dagger_magic_2.name=寶石劍（冰）
-item.dcs_dagger_magic_3.name=寶石劍（極寒）
-item.dcs_dagger_magic_4.name=寶石劍（火）
-item.dcs_dagger_magic_5.name=寶石劍（煉獄）
-item.dcs_dagger_magic_6.name=寶石劍（重力）
-item.dcs_dagger_magic_7.name=寶石劍（漂浮）
-item.dcs_dagger_magic_8.name=寶石劍（錯亂）
-item.dcs_dagger_magic_9.name=寶石劍（防禦屏障）
-item.dcs_dagger_magic_10.name=寶石劍（投擲屏障）
-item.dcs_dagger_magic_11.name=寶石劍（生命屏障）
-item.dcs_dagger_magic_12.name=寶石劍（雷雨）
-item.dcs_dagger_magic_13.name=寶石劍（瞬間移動）
-item.dcs_dagger_magic_14.name=寶石劍（礦脈生成）
-item.dcs_dagger_magic_15.name=寶石劍（？？？）
-
 tile.dcs_magicmace_light_0.name=魔法權杖（陽光）
 tile.dcs_magicmace_ice_0.name=魔法權杖（冰）
 tile.dcs_magicmace_moon_0.name=魔法權杖（月光）
@@ -616,6 +600,25 @@ item.dcs_macecore_dry.name=護身符（幹燥）
 item.dcs_macecore_impact.name=護身符（沖擊）
 item.dcs_mace_handle_silver.name=權杖手柄
 
+item.dcs_dagger_silver.name=銀制投刀
+item.dcs_dagger_magic_0.name=寶石劍（投擲）
+item.dcs_dagger_magic_1.name=寶石劍（爆炸）
+item.dcs_dagger_magic_2.name=寶石劍（冰）
+item.dcs_dagger_magic_3.name=寶石劍（極寒）
+item.dcs_dagger_magic_4.name=寶石劍（火）
+item.dcs_dagger_magic_5.name=寶石劍（煉獄）
+item.dcs_dagger_magic_6.name=寶石劍（重力）
+item.dcs_dagger_magic_7.name=寶石劍（漂浮）
+item.dcs_dagger_magic_8.name=寶石劍（錯亂）
+item.dcs_dagger_magic_9.name=寶石劍（防禦屏障）
+item.dcs_dagger_magic_10.name=寶石劍（投擲屏障）
+item.dcs_dagger_magic_11.name=寶石劍（生命屏障）
+item.dcs_dagger_magic_12.name=寶石劍（雷雨）
+item.dcs_dagger_magic_13.name=寶石劍（瞬間移動）
+item.dcs_dagger_magic_14.name=寶石劍（礦脈生成）
+item.dcs_dagger_magic_15.name=寶石劍（？？？）
+
+# entities
 item.dcs_motor_minecart_white.name=推進礦車
 item.dcs_motor_scooter_orange.name=摩托車（橙）
 item.dcs_motor_scooter_blue.name=摩托車（藍）
@@ -623,6 +626,7 @@ item.dcs_motor_scooter_white.name=摩托車（白）
 item.dcs_motor_scooter_black.name=摩托車（黑）
 item.dcs_magnetic_hover_blue.name=超導磁懸浮氣墊船
 
+## plugin
 item.dcs_metal_oredust_zinc_dirty.name=臟鋅粉
 item.dcs_metal_shard_zinc.name=鋅碎片
 item.dcs_metal_chunk_zinc.name=鋅碎塊
@@ -633,7 +637,9 @@ item.dcs_metal_chunk_nickel.name=鎳碎塊
 item.dcs_metal_crystal_nickel.name=鎳晶體
 item.dcs_circuit_chalcedony.name=玉髓電子管
 
+
 ## block
+## ores
 tile.dcs_ore_stone_0.name=石膏石
 tile.dcs_ore_stone_1.name=赤鐵礦
 tile.dcs_ore_stone_2.name=藍色玉髓礦
@@ -650,6 +656,8 @@ tile.dcs_ore_stone_12.name=銀石英礦
 tile.dcs_ore_stone_13.name=鉆石石英礦
 tile.dcs_ore_stone_14.name=綠寶石石英礦
 tile.dcs_ore_stone_15.name=磁鐵石英礦
+tile.dcs_ore2_stone_6.name=蛇紋巖
+tile.dcs_ore2_stone_7.name=石榴石礦石
 tile.dcs_ore2_stone_0.name=石灰巖
 tile.dcs_ore2_stone_1.name=巖鹽
 tile.dcs_ore2_stone_2.name=硝石礦石
@@ -712,6 +720,7 @@ tile.dcs_gemblock_almandine.name=石榴石塊
 tile.dcs_gemblock_bedrock.name=建築用基巖塊
 tile.dcs_ore_elestial_normal.name=寶石塊
 
+## containers
 tile.dcs_cont_log_oak.name=裝箱橡木
 tile.dcs_cont_log_spruce.name=裝箱雲杉木
 tile.dcs_cont_log_birch.name=裝箱樺木
@@ -778,6 +787,7 @@ tile.dcs_cont_fuel_carbide.name=裝箱碳化物
 tile.dcs_cont_fuel_smokeless.name=裝箱無煙火藥
 tile.dcs_cont_fuel_synthetic.name=裝箱合成樹脂
 
+## building blocks
 tile.dcs_build_selenite_normal.name=透石膏玻璃
 tile.dcs_build_selenite_light.name=透石膏發光玻璃
 tile.dcs_build_selenite_half.name=透石膏遮光玻璃
@@ -804,11 +814,11 @@ tile.dcs_build_slab_white.name=白玉髄臺階
 tile.dcs_build_slab_blue_lit.name=藍玉髄燈臺階
 tile.dcs_build_slab_red_lit.name=紅玉髄燈臺階
 tile.dcs_build_slab_white_lit.name=白玉髄燈臺階
-tile.dcs_build_slab_wood_lit.name=木制燈臺階
 tile.dcs_build_slab_slate_gray.name=石板臺階
 tile.dcs_build_slab_slate_red.name=石板臺階（紅色）
 tile.dcs_build_slab_slate_green.name=石板臺階（綠色）
 tile.dcs_build_slab_slate_brown.name=石板臺階（棕色）
+tile.dcs_build_slab_wood_lit.name=木制燈臺階
 tile.dcs_fence_gypsum_0.name=石膏柵欄
 tile.dcs_fence_marble_0.name=大理石柵欄
 tile.dcs_fence_serpentine_0.name=蛇紋石柵欄
@@ -883,7 +893,6 @@ tile.dcs_build_plate_mesh.name=鐵網
 tile.dcs_build_dish_white.name=盤子
 tile.dcs_build_dish_silver.name=銀制盤子
 tile.dcs_build_markingpanel_0.name=道標
-tile.dcs_build_lightorb_0.name=輝光球
 tile.dcs_desiccant_red.name=幹燥劑
 tile.dcs_desiccant_yellow.name=弱幹燥劑
 tile.dcs_desiccant_green.name=濕幹燥劑
@@ -944,12 +953,12 @@ tile.dcs_device_biomeglass_1.name=生物群系玻璃（叢林）
 tile.dcs_device_biomeglass_2.name=生物群系玻璃（沙漠）
 tile.dcs_device_biomeglass_3.name=生物群系玻璃（冰原）
 tile.dcs_time_cage_0.name=時之蝶標本
+tile.dcs_build_chandelier_0.name=石膏吊燈
 tile.dcs_device_realtimeclock_0.name=實時時鐘
 tile.dcs_device_realtimeclock_l_0.name=大型實時時鐘
 tile.dcs_device_mcclock_l_0.name=大型時鐘
 item.dcs_door_marble_item.name=大理石門
 item.dcs_door_steel_item.name=鋼門
-tile.dcs_build_chandelier_0.name=石膏吊燈
 tile.dcs_build_curtain_0.name=窗簾
 tile.dcs_build_linoleum_15.name=白色油氈
 tile.dcs_build_linoleum_14.name=橙色油氈
@@ -968,6 +977,7 @@ tile.dcs_build_linoleum_2.name=綠色油氈
 tile.dcs_build_linoleum_1.name=紅色油氈
 tile.dcs_build_linoleum_0.name=黑色油氈
 
+## machines
 tile.dcs_device_chamber_0.name=燃燒室
 tile.dcs_device_shitirin_0.name=七輪
 tile.dcs_device_shaft_s_0.name=黃銅軸（I型）
@@ -997,8 +1007,13 @@ tile.dcs_device_chest_magnet_0.name=磁力箱子
 tile.dcs_device_chest_village_0.name=村民的箱子
 tile.dcs_device_sink_half_0.name=水槽（半塊）
 tile.dcs_device_sink_full_0.name=水槽
+<<<<<<< HEAD
 tile.dcs_device_faucet_0.name=蛇口
 tile.dcs_device_faucet_sus_0.name=無限水源蛇口
+=======
+tile.dcs_device_faucet_0.name=水龍頭
+tile.dcs_device_faucet_sus_0.name=無限水水龍頭
+>>>>>>> 1.12.1_develop
 tile.dcs_device_ibc_0.name=IBC水槽
 tile.dcs_device_heat_exchanger_0.name=熱交換器
 tile.dcs_device_fuelstove_0.name=液體燃料爐
@@ -1020,8 +1035,8 @@ tile.dcs_device_catapult_0.name=彈射器
 tile.dcs_device_hopper_filter_0.name=過濾漏鬥
 tile.dcs_device_hopper_gold_0.name=金漏鬥
 tile.dcs_device_hopper_filter_gold_0.name=金過濾漏鬥
-tile.dcs_device_hopper_silver_0.name=壓縮漏鬥
 tile.dcs_device_hopper_fluid_0.name=流體漏鬥
+tile.dcs_device_hopper_silver_0.name=壓縮漏鬥
 tile.dcs_device_thermometer_0.name=溫度計
 tile.dcs_device_windvane_0.name=風標
 tile.dcs_device_watermill_0.name=水車
@@ -1050,6 +1065,7 @@ tile.dcs_device_monitor_rf_0.name=遠程RF檢測器
 tile.dcs_device_monitor_item_0.name=遠程物品檢測器
 tile.dcs_device_silkworm_box_0.name=飼蠶箱
 
+## crops
 tile.dcs_crop_rice_0.name=水稻（1/4）
 tile.dcs_crop_rice_1.name=水稻（2/4）
 tile.dcs_crop_rice_2.name=水稻（3/4）
@@ -1094,12 +1110,12 @@ tile.dcs_leaves_olive_0.name=橄欖樹葉（1/4）
 tile.dcs_leaves_olive_1.name=橄欖樹葉（2/4）
 tile.dcs_leaves_olive_2.name=橄欖樹葉（3/4）
 tile.dcs_leaves_olive_3.name=橄欖樹葉（4/4）
-tile.dcs_leaves_tea_0.name=茶樹（1/2）
-tile.dcs_leaves_tea_1.name=茶樹（2/2）
 tile.dcs_leaves_morus_0.name=桑葉（1/4）
 tile.dcs_leaves_morus_1.name=桑葉（2/4）
 tile.dcs_leaves_morus_2.name=桑葉（3/4）
 tile.dcs_leaves_morus_3.name=桑葉（4/4）
+tile.dcs_leaves_tea_0.name=茶樹（1/2）
+tile.dcs_leaves_tea_1.name=茶樹（2/2）
 tile.dcs_crop_sapling_0.name=檸檬樹苗
 tile.dcs_crop_sapling_1.name=橄欖樹苗
 tile.dcs_crop_sapling_2.name=茶樹苗
@@ -1307,27 +1323,24 @@ dcs.tip.biomeglass=這個方塊會改變周圍的生物群系
 dcs.tip.biomeglass2=右鍵關閉並使周圍的生物群系變回原樣。
 dcs.tip.chamber=溫度隨Airflow變化
 dcs.tip.chamber2=使用風扇或者鼓風機以提供風
+dcs.tip.shitirin.description=這是壹種日式的炭火烤爐。
 dcs.tip.sink=清除流過的任何流體
+dcs.tip.teapot=使用調味品右擊來添加
+dcs.tip.teapot.milk=比如：牛奶盒，奶油盒
+dcs.tip.teapot.sugar=比如：砂糖，蜂蜜
+dcs.tip.exp_gem.description=右擊使用
+dcs.tip.repair_putty.description=鐵砧：恢復工具的耐久
+dcs.tip.abrasive.description=鐵砧：給予工具效率附魔或者鋒利附魔
+dcs.tip.soap.description=鐵砧：洗掉皮革護甲的顏色
+dcs.tip.acv_shield=放置後右擊：能夠讓玩家強制獲得該成就
 dcs.tip.v_chest=收集附近村民身上的物品。
 dcs.tip.l_clock=扳手右鍵：改變大小
 dcs.tip.dynamite=註意！會產生壹個7X7X7的大爆炸！
 dcs.tip.dynamite2=丟到水裏以炸魚。
 dcs.tip.slotpanel=這個物品放在輸入口的時候會自動識別為壹個空的格子。
 dcs.tip.cloth.color=顏色的變種
-
-dcs.tip.shitirin.description=這是壹種日式的炭火烤爐。
-dcs.tip.teapot=使用調味品右擊來添加
-dcs.tip.teapot.milk=比如：牛奶盒，奶油盒
-dcs.tip.teapot.sugar=比如：砂糖，蜂蜜
-
-dcs.tip.shift=按住左shift鍵展開物品提示
-dcs.tip.require_achievement=需要獲得相關成就才能使用！
-
-dcs.tip.exp_gem.description=右擊使用
-dcs.tip.repair_putty.description=鐵砧：恢復工具的耐久
-dcs.tip.abrasive.description=鐵砧：給予工具效率附魔或者鋒利附魔
-dcs.tip.soap.description=鐵砧：洗掉皮革護甲的顏色
-dcs.tip.acv_shield=放置後右擊：能夠讓玩家強制獲得該成就
+dcs.tip.tinder=從燃燒中的方塊或實體上取火。
+dcs.tip.firestarter=點燃目標方塊或實體。
 
 dcs.climate.tip.checker=右擊方塊可以查看Climate數值（範圍2）
 dcs_climate.tip.durability=最大耐久度
@@ -1400,6 +1413,12 @@ dcs.tip.amulet.2=防護護身
 dcs.tip.amulet.3=星空護身
 dcs.tip.amulet.4=代理護身
 
+<<<<<<< HEAD
+=======
+dcs.tip.shift=按住左shift鍵展開物品提示
+dcs.tip.require_achievement=需要獲得相關成就才能使用！
+
+>>>>>>> 1.12.1_develop
 dcs.comment.pendant.0=減少冰和水的傷害
 dcs.comment.pendant.1=減少炎熱環境的傷害
 dcs.comment.pendant.2=減免所有的傷害
@@ -1511,21 +1530,37 @@ dcs.potion.gravity=重力
 potion.effect.dcs.gravity=重力藥水
 splash_potion.effect.dcs.gravity=噴濺型重力藥水
 lingering_potion.effect.dcs.gravity=滯留型重力藥水
+<<<<<<< HEAD
+=======
+tipped_arrow.effect.dcs.gravity=重力之箭
+>>>>>>> 1.12.1_develop
 
 dcs.potion.bird=鳥之祝福
 potion.effect.dcs.bird=鳥之祝福藥水
 splash_potion.effect.dcs.bird=噴濺型鳥之祝福藥水
 lingering_potion.effect.dcs.bird=滯留型鳥之祝福藥水
+<<<<<<< HEAD
+=======
+tipped_arrow.effect.dcs.bird=鳥之祝福之箭
+>>>>>>> 1.12.1_develop
 
 dcs.potion.ocean=海之祝福
 potion.effect.dcs.ocean=海之祝福藥水
 splash_potion.effect.dcs.ocean=噴濺型海之祝福藥水
 lingering_potion.effect.dcs.ocean=滯留型海之祝福藥水
+<<<<<<< HEAD
+=======
+tipped_arrow.effect.dcs.ocean=海之祝福之箭
+>>>>>>> 1.12.1_develop
 
 dcs.potion.heavyboots=鐵靴
 potion.effect.dcs.heavyboots=鐵靴藥水
 splash_potion.effect.dcs.heavyboots=噴濺型鐵靴藥水
 lingering_potion.effect.dcs.heavyboots=滯留型鐵靴藥水
+<<<<<<< HEAD
+=======
+tipped_arrow.effect.dcs.heavyboots=鐵靴之箭
+>>>>>>> 1.12.1_develop
 
 ## enchantment
 enchantment.dcs.venom=毒矢
@@ -1536,7 +1571,149 @@ entity.Villager.dcs_trader=貿易商人
 entity.Villager.dcs_agri_researcher=農業研究員
 entity.Villager.dcs_engineer=機械技師
 
+<<<<<<< HEAD
 ## advancement
+=======
+## entities
+entity.dcs.food.r_bread.name=圓面包
+entity.dcs.food.s_bread.name=方形面包
+entity.dcs.food.toast.name=黃油吐司
+entity.dcs.food.pizza_tomato.name=瑪格麗特披薩
+entity.dcs.food.r_bread_cream.name=奶油面包
+entity.dcs.food.toast_french.name=法式吐司
+entity.dcs.food.toast_garlic.name=蒜香吐司
+entity.dcs.food.pita_bread.name=皮塔餅
+entity.dcs.food.pancake.name=松餅
+
+entity.dcs.food.fish_stick.name=魚串
+entity.dcs.food.yakitori_stick.name=雞肉串
+entity.dcs.food.pork_stick.name=豬肉串
+entity.dcs.food.beef_stick.name=牛肉串
+entity.dcs.food.mutton_stick.name=羊肉串
+entity.dcs.food.squid_stick.name=魷魚串
+entity.dcs.food.gohei_stick.name=五平餅
+entity.dcs.food.marshmallow_stick.name=棉花糖串
+
+entity.dcs.food.cup_silver.name=洋白銅杯子
+entity.dcs.food.cup_white.name=洋白銅杯子
+entity.dcs.food.tumbler.name=玻璃杯子
+
+entity.dcs.food.tart_apple.name=蘋果撻
+entity.dcs.food.tart_lemon.name=檸檬奶油撻
+entity.dcs.food.quiche_spinach.name=菠菜乳蛋餅
+entity.dcs.food.quiche_potato.name=洋蔥土豆餅
+entity.dcs.food.tart_crostata.name=果撻
+
+entity.dcs.food.pie_sugar.name=砂糖酥皮餅
+entity.dcs.food.pie_meat.name=肉餅
+entity.dcs.food.pie_chocolate.name=巧克力派
+entity.dcs.food.pie_fruit.name=水果派
+entity.dcs.food.moon_cake.name=月餅
+entity.dcs.food.pie_cream.name=卡仕達派
+
+entity.dcs.food.sandwich_apple.name=蘋果三明治
+entity.dcs.food.sandwich_egg.name=雞蛋三明治
+entity.dcs.food.sandwich_lemon.name=檸檬三明治
+entity.dcs.food.sandwich_salad.name=沙拉三明治
+entity.dcs.food.clubsand_square.name=牛肉俱樂部三明治
+entity.dcs.food.clubsand_round.name=魚肉俱樂部三明治
+
+entity.dcs.food.rice_bowl.name=米飯
+entity.dcs.food.rice_ball.name=鹽飯團
+entity.dcs.food.rice_ball_seaweed.name=海苔飯團
+entity.dcs.food.rice_ball.miso=味增飯團
+entity.dcs.food.rice_mushroom.name=蘑菇飯
+entity.dcs.food.mochi.name=烤餅
+
+entity.dcs.food.empty_steakplate.name=牛排盤子
+entity.dcs.food.plate_beef.name=牛排
+entity.dcs.food.plate_pork.name=豬排
+entity.dcs.food.plate_chicken.name=雞排
+entity.dcs.food.plate_fish.name=魚排
+entity.dcs.food.plate_big_garlic.name=蒜香牛排
+entity.dcs.food.plate_potato.name=黃油土豆
+
+entity.dcs.food.soup_tomato.name=鐵鍋燉番茄
+entity.dcs.food.stew_vegi.name=蔬菜湯
+entity.dcs.food.stew_egg.name=雞蛋湯
+entity.dcs.food.stew_tomato.name=番茄濃粥
+entity.dcs.food.stew_congee.name=濃粥
+entity.dcs.food.stew_pumpkin.name=南瓜湯
+entity.dcs.food.stew_borscht.name=羅宋湯
+entity.dcs.food.stew_mushroom.name=蘑菇湯
+entity.dcs.food.stew_purple.name=紫色湯
+entity.dcs.food.stew_lotusroot.name=蓮藕湯
+entity.dcs.food.stew_squid.name=魷魚湯
+entity.dcs.food.stew_seaweed.name=海帶濃粥
+entity.dcs.food.stew_misosoup.name=味噌湯
+entity.dcs.food.stew_motsu.name=味增燉內臟
+entity.dcs.food.stew_chili.name=辣醬湯
+entity.dcs.food.stew_garlic_oil.name=蒜香蘑菇煲
+entity.dcs.food.stew_laziji.name=辣子雞
+
+entity.dcs.food.salad_green.name=蔬菜沙拉
+entity.dcs.food.salad_potato.name=土豆沙拉
+entity.dcs.food.salad_lotusroot.name=蓮藕沙拉
+entity.dcs.food.simmered_soy.name=煮豆
+entity.dcs.food.simmered_gomoku.name=雞肉五目煮
+entity.dcs.food.simmered_spinach.name=菠菜拌味增
+entity.dcs.food.simmered_beans.name=烤豆子
+entity.dcs.food.simmered_natto.name=納豆
+
+entity.dcs.food.cake_butter.name=黃油蛋糕
+entity.dcs.food.cake_chocolate.name=巧克力蛋糕
+entity.dcs.food.cake_coffee.name=咖啡果凍
+entity.dcs.food.cake_lemon.name=檸檬果凍
+entity.dcs.food.cake_bakedcream.name=蛋奶凍布丁
+entity.dcs.food.cake_lemon.name=檸檬果凍
+entity.dcs.food.cake_berryjelly.name=漿果布丁
+entity.dcs.food.cake_kuzujelly.name=渣餅
+entity.dcs.food.cake_egg_cocotte_raw.name=生蛋砂鍋
+entity.dcs.food.cake_gg_cocotte_baked.name=雞蛋砂鍋
+
+entity.dcs.food.wagashi_kinako.name=黃豆餅
+entity.dcs.food.wagashi_isobe.name=醬油餅
+entity.dcs.food.wagashi_zunda.name=毛豆餅
+entity.dcs.food.wagashi_butter.name=黃油餅
+entity.dcs.food.wagashi_strawberry.name=草莓大福
+entity.dcs.food.wagashi_kurumi.name=柚子餅
+entity.dcs.food.wagashi_kurimanju.name=栗子饅頭
+entity.dcs.food.wagashi_nerikiri.name=點心
+
+entity.dcs.food.icecream_milk.name=牛奶冰泣淋
+entity.dcs.food.icecream_kinako.name=黑蜜冰泣淋
+entity.dcs.food.icecream_berry.name=莓果冰泣淩
+entity.dcs.food.icecream_lemon.name=檸檬冰泣淩
+entity.dcs.food.icecream_cookie.name=曲奇冰泣淩
+
+entity.dcs.food.fried_pork.name=炸豬排
+entity.dcs.food.fried_chicken.name=炸雞
+entity.dcs.food.fried_fish.name=炸魚
+entity.dcs.food.fried_falafel.name=法拉費丸子
+
+entity.dcs.food.fried_potato.name=炸薯條
+entity.dcs.food.fish_and_chips.name=炸魚薯條
+entity.dcs.food.croquette_potato.name=土豆可樂餅
+entity.dcs.food.croquette_pumpkin.name=南瓜可樂餅
+entity.dcs.food.shawarma.name=沙威瑪
+entity.dcs.food.falafel_sandwich.name=法拉費三明治
+
+entity.dcs.food.breakfast_b.name=西式早餐
+entity.dcs.food.breakfast_j.name=日式早餐
+
+entity.dcs.main.flowerpot.name=花盆
+entity.dcs.main.dynamite_red.name=炸藥
+entity.dcs.main.dynamite_blue.name=絹布炸藥
+entity.dcs.main.balloon_crow.name=Defeatedcrow氣球
+entity.dcs.machine.motor_cart.name=推進礦車
+entity.dcs.machine.motor_scooter.name=摩托車
+entity.dcs.machine.magnetic_hover.name=超導磁懸浮氣墊船
+entity.dcs.main.balloon_crow.name=Defeatedcrow氣球
+entity.dcs.main.big_cushion.name=為懶貨準備的灰色大坐墊
+entity.dcs.main.big_cushion_brown.name=為懶貨準備的棕色大坐墊
+
+## advancements
+>>>>>>> 1.12.1_develop
 advancements.dcs_climate.core.title=Heat and Climate
 advancements.dcs_climate.core.description=利用氣候來遊玩吧！
 advancements.dcs_climate.climate_damage.title=危險的溫度
@@ -1545,14 +1722,24 @@ advancements.dcs_climate.climate_strings.title=衣服的材料
 advancements.dcs_climate.climate_strings.description=制作亞麻線或木棉線。
 advancements.dcs_climate.climate_wear.title=舒適的衣物
 advancements.dcs_climate.climate_wear.description=穿上亞麻衣服或皮革衣服以抵禦氣候傷害。
+<<<<<<< HEAD
 advancements.dcs_climate.climate_wear2.title=更暖和的衣服
 advancements.dcs_climate.climate_wear2.description=穿上能抵禦更多氣候傷害的木棉衣服
 advancements.dcs_climate.climate_silk.title=紳士站立於荒野之上
 advancements.dcs_climate.climate_silk.description=得到黑色西裝和大衣
+=======
+>>>>>>> 1.12.1_develop
 advancements.dcs_climate.climate_cooking1.title=氣候冶煉
 advancements.dcs_climate.climate_cooking1.description=在高溫下放置生肉來烤肉（潛行+右鍵）
 advancements.dcs_climate.climate_cooking2.title=肉烤的很不錯啊~
 advancements.dcs_climate.climate_cooking2.description=拿回烤好的烤肉
+<<<<<<< HEAD
+=======
+advancements.dcs_climate.climate_wear2.title=更暖和的衣服
+advancements.dcs_climate.climate_wear2.description=穿上能抵禦更多氣候傷害的木棉衣服
+advancements.dcs_climate.climate_silk.title=紳士站立於荒野之上
+advancements.dcs_climate.climate_silk.description=得到黑色西裝和大衣
+>>>>>>> 1.12.1_develop
 advancements.dcs_climate.climate_cooking3.title=料理名人
 advancements.dcs_climate.climate_cooking3.description=烹調鍋是用來合成多種料理的方塊。
 advancements.dcs_climate.climate_tart.title=蘋果撻

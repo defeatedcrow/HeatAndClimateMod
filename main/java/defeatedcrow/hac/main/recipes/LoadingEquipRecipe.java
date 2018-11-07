@@ -106,6 +106,16 @@ public class LoadingEquipRecipe {
 					"stickWood"
 			});
 
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcScythe[4], 1, 0), new Object[] {
+					" X ",
+					"  X",
+					"YYX",
+					'X',
+					"cobblestone",
+					'Y',
+					"stickWood"
+			});
+
 			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.earthSpade, 1, 0), new Object[] {
 					"YYX",
 					'X',

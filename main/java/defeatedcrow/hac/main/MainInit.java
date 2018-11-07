@@ -177,6 +177,8 @@ public class MainInit {
 	public static Item stoneYagen;
 	public static Item brassYagen;
 	public static Item crowDrill;
+	public static Item tinder;
+	public static Item bucketClay;
 
 	public static Item repairPutty;
 	public static Item wrench;
@@ -187,7 +189,7 @@ public class MainInit {
 	public static Item[] dcPickaxe = new Item[8];
 	public static Item[] dcSpade = new Item[8];
 	public static Item[] dcSword = new Item[8];
-	public static Item[] dcScythe = new Item[4];
+	public static Item[] dcScythe = new Item[5];
 
 	public static Item earthSpade;
 	public static Item earthRake;
