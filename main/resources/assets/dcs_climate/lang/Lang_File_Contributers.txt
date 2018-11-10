@@ -9,11 +9,8 @@ zh_CN
 TartaricAcid
 0999312
 
-zh_CN
-TartaricAcid
-0999312
-
 zh_TW
 ckhomo
 0999312
+AileRozy
 
