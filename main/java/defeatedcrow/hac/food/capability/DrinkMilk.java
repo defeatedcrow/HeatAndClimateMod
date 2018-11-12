@@ -10,9 +10,9 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public enum DrinkMilk {
 	NONE(0, 1.0F),
-	MILK(1, 1.5F),
-	CREAM(2, 2.0F),
-	SOY(3, 2.0F);
+	MILK(1, 2.0F),
+	CREAM(2, 4.0F),
+	SOY(3, 3.0F);
 
 	public final float effect;
 	public final int id;

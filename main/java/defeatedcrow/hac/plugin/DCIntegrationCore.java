@@ -55,7 +55,7 @@ public class DCIntegrationCore {
 		if (Loader.isModLoaded("toughasnails") && ModuleConfig.tan) {
 			loadedTaN = true;
 		}
-		if (Loader.isModLoaded("enderio")) {
+		if (Loader.isModLoaded("enderio") && ModuleConfig.eio) {
 			loadedEIO = true;
 		}
 	}

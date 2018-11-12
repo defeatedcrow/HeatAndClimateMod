@@ -8,7 +8,7 @@ public enum DrinkSugar {
 	NONE(0, 0),
 	SUGAR(1, 1),
 	HONEY(2, 2),
-	MAPLE(3, 2);
+	MAPLE(3, 3);
 
 	public final int effect;
 	public final int id;

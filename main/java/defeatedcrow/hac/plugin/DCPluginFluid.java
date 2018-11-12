@@ -23,11 +23,9 @@ public class DCPluginFluid {
 	public static void load() {
 
 		// ic2
-		Fluid f1 = FluidRegistry.getFluid("ic2hydrogen");
-		registerPotion(f1, MobEffects.HASTE);
+		registerPotion(FluidRegistry.getFluid("ic2hydrogen"), MobEffects.HASTE);
 
-		Fluid f2 = FluidRegistry.getFluid("ic2oxygen");
-		registerPotion(f2, MobEffects.WATER_BREATHING);
+		registerPotion(FluidRegistry.getFluid("ic2oxygen"), MobEffects.WATER_BREATHING);
 
 		Fluid f3 = FluidRegistry.getFluid("ic2coolant");
 		if (f3 != null) {
@@ -55,11 +53,9 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f6 = FluidRegistry.getFluid("ic2biomass");
-		registerPotion(f6, MobEffects.NAUSEA);
+		registerPotion(FluidRegistry.getFluid("ic2biomass"), MobEffects.NAUSEA);
 
-		Fluid f7 = FluidRegistry.getFluid("ic2uu_matter");
-		registerPotion(f7, MobEffects.GLOWING);
+		registerPotion(FluidRegistry.getFluid("ic2uu_matter"), MobEffects.GLOWING);
 
 		Fluid f8 = FluidRegistry.getFluid("ic2hot_water");
 		if (f8 != null) {
@@ -77,8 +73,7 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f10 = FluidRegistry.getFluid("ic2weed_ex");
-		registerPotion(f10, MobEffects.POISON);
+		registerPotion(FluidRegistry.getFluid("ic2weed_ex"), MobEffects.POISON);
 
 		Fluid f11 = FluidRegistry.getFluid("ic2superheated_steam");
 		registerPotion(f11, MobEffects.SPEED);
@@ -99,8 +94,7 @@ public class DCPluginFluid {
 		}
 
 		// forestry
-		Fluid f13 = FluidRegistry.getFluid("juice");
-		registerPotion(f13, MobEffects.LUCK);
+		registerPotion(FluidRegistry.getFluid("juice"), MobEffects.LUCK);
 
 		Fluid f14 = FluidRegistry.getFluid("ice");
 		if (f14 != null) {
@@ -111,8 +105,7 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f15 = FluidRegistry.getFluid("honey");
-		registerPotion(f15, MobEffects.RESISTANCE);
+		registerPotion(FluidRegistry.getFluid("honey"), MobEffects.RESISTANCE);
 
 		Fluid f16 = FluidRegistry.getFluid("seed.oil");
 		registerPotion(f16, MobEffects.HASTE);
@@ -120,8 +113,7 @@ public class DCPluginFluid {
 			FluidDictionaryDC.registerFluidDic(f16, "plant_oil");
 		}
 
-		Fluid f17 = FluidRegistry.getFluid("for.honey");
-		registerPotion(f17, MobEffects.RESISTANCE);
+		registerPotion(FluidRegistry.getFluid("for.honey"), MobEffects.RESISTANCE);
 
 		Fluid f18 = FluidRegistry.getFluid("bio.ethanol");
 		registerPotion(f18, MobEffects.BLINDNESS);
@@ -129,8 +121,7 @@ public class DCPluginFluid {
 			FluidDictionaryDC.registerFluidDic(f18, "ethanol");
 		}
 
-		Fluid f33 = FluidRegistry.getFluid("biomass");
-		registerPotion(f33, MobEffects.NAUSEA);
+		registerPotion(FluidRegistry.getFluid("biomass"), MobEffects.NAUSEA);
 
 		Fluid f19 = FluidRegistry.getFluid("glass");
 		if (f19 != null) {
@@ -151,21 +142,16 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f21 = FluidRegistry.getFluid("blood");
-		registerPotion(f21, MobEffects.STRENGTH);
+		registerPotion(FluidRegistry.getFluid("blood"), MobEffects.STRENGTH);
 
-		Fluid f22 = FluidRegistry.getFluid("poison");
-		registerPotion(f22, MobEffects.WITHER);
+		registerPotion(FluidRegistry.getFluid("poison"), MobEffects.WITHER);
 
-		Fluid f23 = FluidRegistry.getFluid("hot_spring_water");
-		registerPotion(f23, MobEffects.RESISTANCE);
+		registerPotion(FluidRegistry.getFluid("hot_spring_water"), MobEffects.RESISTANCE);
 
 		// mek
-		Fluid f24 = FluidRegistry.getFluid("bline");
-		registerPotion(f24, MobEffects.RESISTANCE);
+		registerPotion(FluidRegistry.getFluid("brine"), MobEffects.RESISTANCE);
 
-		Fluid f25 = FluidRegistry.getFluid("liquidchlorine");
-		registerPotion(f25, MobEffects.LEVITATION);
+		registerPotion(FluidRegistry.getFluid("liquidchlorine"), MobEffects.LEVITATION);
 
 		Fluid f26 = FluidRegistry.getFluid("liquidsulfurdioxide");
 		registerPotion(f26, MobEffects.WEAKNESS);
@@ -185,14 +171,11 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f28 = FluidRegistry.getFluid("liquidsodium");
-		registerPotion(f28, MobEffects.INSTANT_DAMAGE);
+		registerPotion(FluidRegistry.getFluid("liquidsodium"), MobEffects.INSTANT_DAMAGE);
 
-		Fluid f29 = FluidRegistry.getFluid("liquidlithium");
-		registerPotion(f29, MobEffects.INSTANT_DAMAGE);
+		registerPotion(FluidRegistry.getFluid("liquidlithium"), MobEffects.INSTANT_DAMAGE);
 
-		Fluid f30 = FluidRegistry.getFluid("liquidfusionfuel");
-		registerPotion(f30, MobEffects.INVISIBILITY);
+		registerPotion(FluidRegistry.getFluid("liquidfusionfuel"), MobEffects.INVISIBILITY);
 
 		Fluid f31 = FluidRegistry.getFluid("sulfuricacid");
 		registerPotion(f31, MobEffects.MINING_FATIGUE);
@@ -212,62 +195,49 @@ public class DCPluginFluid {
 			}
 		}
 
-		Fluid f35 = FluidRegistry.getFluid("heavywater");
-		registerPotion(f35, MainInit.gravity);
+		registerPotion(FluidRegistry.getFluid("heavywater"), MainInit.gravity);
 
-		Fluid f36 = FluidRegistry.getFluid("creosote");
-		registerPotion(f36, MobEffects.NAUSEA);
+		registerPotion(FluidRegistry.getFluid("liquiddeuterium"), MainInit.heavyboots);
 
-		Fluid f37 = FluidRegistry.getFluid("liquidoxygen");
-		registerPotion(f37, MobEffects.WATER_BREATHING);
+		registerPotion(FluidRegistry.getFluid("liquidtritium"), MainInit.heavyboots);
+
+		registerPotion(FluidRegistry.getFluid("creosote"), MobEffects.NAUSEA);
+
+		registerPotion(FluidRegistry.getFluid("liquidoxygen"), MobEffects.WATER_BREATHING);
 
 		// dcs
+		registerPotion(FluidRegistry.getFluid("dcs.hydrogen"), MobEffects.SPEED);
 
-		Fluid f38 = FluidRegistry.getFluid("dcs.hydrogen");
-		registerPotion(f38, MobEffects.SPEED);
+		registerPotion(FluidRegistry.getFluid("dcs.ammonia"), MobEffects.LEVITATION);
 
-		Fluid f39 = FluidRegistry.getFluid("dcs.ammonia");
-		registerPotion(f39, MobEffects.LEVITATION);
+		registerPotion(FluidRegistry.getFluid("dcs.fuel_oil"), MobEffects.HASTE);
 
-		Fluid f40 = FluidRegistry.getFluid("dcs.fuel_oil");
-		registerPotion(f40, MobEffects.HASTE);
+		registerPotion(FluidRegistry.getFluid("dcs.fuel_gas"), MobEffects.STRENGTH);
 
-		Fluid f41 = FluidRegistry.getFluid("dcs.fuel_gas");
-		registerPotion(f41, MobEffects.STRENGTH);
+		registerPotion(FluidRegistry.getFluid("dcs.nitric_acid"), MobEffects.NAUSEA);
 
-		Fluid f42 = FluidRegistry.getFluid("dcs.nitric_acid");
-		registerPotion(f42, MobEffects.NAUSEA);
+		registerPotion(FluidRegistry.getFluid("dcs.sulfuric_acid"), MobEffects.POISON);
 
-		Fluid f43 = FluidRegistry.getFluid("dcs.sulfuric_acid");
-		registerPotion(f43, MobEffects.POISON);
+		registerPotion(FluidRegistry.getFluid("dcs.nitrogen"), DCInit.prevFreeze);
 
-		Fluid f44 = FluidRegistry.getFluid("dcs.nitrogen");
-		registerPotion(f44, DCInit.prevFreeze);
+		registerPotion(FluidRegistry.getFluid("dcs.ethanol"), MobEffects.HASTE);
 
-		Fluid f45 = FluidRegistry.getFluid("dcs.ethanol");
-		registerPotion(f45, MobEffects.HASTE);
+		registerPotion(FluidRegistry.getFluid("dcs.milk_cream"), MobEffects.INSTANT_HEALTH);
 
-		Fluid f51 = FluidRegistry.getFluid("dcs.milk_cream");
-		registerPotion(f51, MobEffects.INSTANT_HEALTH);
+		registerPotion(FluidRegistry.getFluid("dcs.hotspring"), MobEffects.REGENERATION);
 
 		// animania
-		Fluid f46 = FluidRegistry.getFluid("milk_holstein");
-		registerPotion(f46, MobEffects.REGENERATION);
+		registerPotion(FluidRegistry.getFluid("milk_holstein"), MobEffects.REGENERATION);
 
-		Fluid f47 = FluidRegistry.getFluid("milk_friesian");
-		registerPotion(f47, MobEffects.REGENERATION);
+		registerPotion(FluidRegistry.getFluid("milk_friesian"), MobEffects.REGENERATION);
 
-		Fluid f48 = FluidRegistry.getFluid("milk_jersey");
-		registerPotion(f48, MobEffects.REGENERATION);
+		registerPotion(FluidRegistry.getFluid("milk_jersey"), MobEffects.REGENERATION);
 
-		Fluid f49 = FluidRegistry.getFluid("milk_goat");
-		registerPotion(f49, MobEffects.REGENERATION);
+		registerPotion(FluidRegistry.getFluid("milk_goat"), MobEffects.REGENERATION);
 
-		Fluid f50 = FluidRegistry.getFluid("milk_sheep");
-		registerPotion(f50, MobEffects.REGENERATION);
+		registerPotion(FluidRegistry.getFluid("milk_sheep"), MobEffects.REGENERATION);
 
-		Fluid f52 = FluidRegistry.getFluid("fuelium");
-		registerPotion(f52, MobEffects.HASTE);
+		registerPotion(FluidRegistry.getFluid("fuelium"), MobEffects.HASTE);
 
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);

@@ -48,7 +48,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 
-	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.125D, 0.125D, 0.125D, 0.875D, 0.875D, 0.875D);
+	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.125D, 0.125D, 0.125D, 0.875D, 0.875D,
+			0.875D);
 
 	public BlockTeaPot(String s) {
 		super(Material.CLAY, s, 0);
@@ -67,9 +68,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 			ItemStack held = player.getHeldItem(hand);
 			if (tile instanceof TileTeaPot) {
 				TileTeaPot pot = (TileTeaPot) tile;
-				if (onActivateDCTank(pot, held, world, state, side, player)) {
-					return true;
-				} else if (DrinkMilk.isMilkItem(held) != DrinkMilk.NONE) {
+				if (DrinkMilk.isMilkItem(held) != DrinkMilk.NONE) {
 					DrinkMilk milk = DrinkMilk.isMilkItem(held);
 					if (pot.setMilk(milk)) {
 						if (!player.capabilities.isCreativeMode) {
@@ -90,6 +89,8 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 						DCLogger.debugLog("Sugar Count: " + pot.getSugarCount());
 						world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 					}
+					return true;
+				} else if (!DCUtil.isEmpty(held) && onActivateDCTank(pot, held, world, state, side, player)) {
 					return true;
 				}
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
@@ -163,20 +164,20 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	 */
 	public static boolean onActivateDCTank(TileTeaPot tile, ItemStack item, World world, IBlockState state,
 			EnumFacing side, EntityPlayer player) {
-		if (!DCUtil.isEmpty(item) && tile != null && item.hasCapability(
-				CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile.hasCapability(
-						CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
-			ItemStack copy = new ItemStack(item.getItem(), 1, item.getItemDamage());
-			if (item.getTagCompound() != null)
-				copy.setTagCompound(item.getTagCompound());
+		if (!DCUtil.isEmpty(item) && tile != null && item
+				.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile
+						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+			ItemStack copy = item.copy();
+			if (item.getCount() > 1)
+				copy.setCount(1);
 			IFluidHandlerItem dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 			IFluidHandler intank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
-			IFluidHandler outtank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-					EnumFacing.DOWN);
+			IFluidHandler outtank = tile
+					.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
 
 			// dummyを使った検証
-			if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0 &&
-					intank instanceof DCTank && outtank instanceof DCTank) {
+			if (dummy != null && dummy.getTankProperties() != null && dummy
+					.getTankProperties().length > 0 && intank instanceof DCTank && outtank instanceof DCTank) {
 				int max = dummy.getTankProperties()[0].getCapacity();
 				FluidStack f1 = dummy.drain(max, false);
 				DCTank dc_in = (DCTank) intank;
@@ -185,10 +186,11 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 				ItemStack ret = ItemStack.EMPTY;
 				boolean success = false;
 				// input
-				if (f1 != null && dc_in.fill(f1, false) == max) {
-					FluidStack fill = dummy.drain(max, true);
+				if (f1 != null && dc_in.fill(f1, false) > 0) {
+					int f2 = dc_in.fill(f1, false);
+					FluidStack fill = dummy.drain(f2, true);
 					ret = dummy.getContainer();
-					if (fill != null && fill.amount == max) {
+					if (fill != null && fill.amount > 0) {
 						dc_in.fill(fill, true);
 						success = true;
 					}
@@ -196,13 +198,13 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 				// output
 				else if (f1 == null && dc_out.drain(max, false) != null) {
 					int drain = dummy.fill(dc_out.drain(max, false), true);
-					ret = copy;
+					ret = dummy.getContainer();
 					if (!DCUtil.isEmpty(ret)) {
-						DCLogger.debugLog("check1");
+						// DCLogger.debugInfoLog("check1");
 						if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
-							DCLogger.debugLog("check2");
-							IDrinkCustomize drink = ret.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY,
-									null);
+							// DCLogger.debugInfoLog("check2");
+							IDrinkCustomize drink = ret
+									.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 							DrinkMilk milk = tile.cap.getMilk();
 							DrinkSugar sugar = tile.cap.getSugar();
 							if (drink.setMilk(milk)) {
@@ -221,7 +223,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 							}
 						}
 					}
-					if (drain == max) {
+					if (drain > 0) {
 						dc_out.drain(drain, true);
 						success = true;
 					}

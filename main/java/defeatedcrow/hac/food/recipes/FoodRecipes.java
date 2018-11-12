@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -15,8 +16,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.GameData;
 
 public class FoodRecipes {
 
@@ -36,6 +39,8 @@ public class FoodRecipes {
 		loadFuelData();
 		loadDrinkData();
 
+		GameData.register_impl(new DrinkCustomRecipeDC().setRegistryName(new ResourceLocation(ClimateMain.MOD_ID,
+				"drinkcustom")));
 	}
 
 	static void loadMillRecipe() {
@@ -167,6 +172,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodStock", new ItemStack(FoodInit.paperPack, 1, 11));
 		OreDictionary.registerOre("foodLiquor", new ItemStack(FoodInit.paperPack, 1, 12));
 		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 13));
+		OreDictionary.registerOre("bucketSoymilk", new ItemStack(FoodInit.paperPack, 1, 13));
 
 		OreDictionary.registerOre("foodButter", new ItemStack(FoodInit.dairy, 1, 0));
 		OreDictionary.registerOre("foodCheese", new ItemStack(FoodInit.dairy, 1, 1));

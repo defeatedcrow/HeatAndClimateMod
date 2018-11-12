@@ -56,6 +56,7 @@ public class ItemSilverCup extends FoodItemBase {
 	public ItemSilverCup(boolean isWolfFood) {
 		super(isWolfFood);
 		this.setMaxStackSize(1);
+		this.setAlwaysEdible();
 	}
 
 	@Override
@@ -172,7 +173,6 @@ public class ItemSilverCup extends FoodItemBase {
 					FluidStack f = cont.getTankProperties()[0].getContents();
 					float dirF = 1.0F;
 					int ampF = 0;
-
 					if (drink != null) {
 						dirF *= drink.getMilk().effect;
 						ampF += drink.getSugar().effect;
@@ -251,7 +251,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 		if (cont != null && cont.getTankProperties() != null && drink != null && cont.getTankProperties().length > 0) {
 			FluidStack f = cont.getTankProperties()[0].getContents();
-			float dirF = 1.0F + drink.getMilk().effect;
+			float dirF = 1.0F * drink.getMilk().effect;
 			int ampF = drink.getSugar().effect;
 			if (f != null && f.getFluid() != null) {
 				Fluid milk = FluidRegistry.getFluid("milk");

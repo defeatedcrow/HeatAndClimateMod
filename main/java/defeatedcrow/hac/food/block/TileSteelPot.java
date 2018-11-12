@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
@@ -79,14 +77,8 @@ public class TileSteelPot extends TileFluidProcessorBase {
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
-		if (currentRecipe == null && current != null) {
-			currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
-			if (currentRecipe == null && current.getHeat().getTier() > 0) {
-				IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current
-						.getHumidity(), current.getAirflow());
-				currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(clm2, ins, inf);
-			}
-			return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 3);
+		if (currentRecipe == null) {
+			return false;
 		} else {
 			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {
 				int outAmo = currentRecipe.getOutputFluid() == null ? 0 : currentRecipe.getOutputFluid().amount;
@@ -106,11 +98,6 @@ public class TileSteelPot extends TileFluidProcessorBase {
 		FluidStack outf = outputT.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
 		currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
-		if (currentRecipe == null && current.getHeat().getTier() > 0) {
-			IClimate clm2 = ClimateAPI.register.getClimateFromParam(current.getHeat().addTier(1), current
-					.getHumidity(), current.getAirflow());
-			currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(clm2, ins, inf);
-		}
 		return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 3);
 	}
 

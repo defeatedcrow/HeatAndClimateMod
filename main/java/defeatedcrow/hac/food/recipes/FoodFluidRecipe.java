@@ -361,14 +361,14 @@ public class FoodFluidRecipe {
 		FluidCraftRecipe salt = new FluidCraftRecipe(new ItemStack(MainInit.foodMaterials, 1, 0), null, null,
 				DCHeatTier.HOT, DCHumidity.DRY, null, 0, false, new FluidStack(FluidRegistry.WATER, 1000),
 				(Object[]) null);
-		RecipeAPI.registerFluidRecipes.addRecipe(salt, DCHeatTier.BOIL);
+		RecipeAPI.registerFluidRecipes.addRecipe(salt);
 
 		FluidCraftRecipe salt2 = new FluidCraftRecipe(new ItemStack(MainInit.foodMaterials, 1, 0), null, null,
 				DCHeatTier.OVEN, DCHumidity.DRY, null, 0, false, new FluidStack(FluidRegistry.WATER, 1000),
 				(Object[]) null);
 		salt2.requiredHum().add(DCHumidity.NORMAL);
 		salt2.requiredHum().add(DCHumidity.WET);
-		RecipeAPI.registerFluidRecipes.addRecipe(salt2, DCHeatTier.BOIL);
+		RecipeAPI.registerFluidRecipes.addRecipe(salt2);
 
 		// food
 
@@ -843,10 +843,10 @@ public class FoodFluidRecipe {
 
 	public static void regBoilrecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHumidity hum,
 			DCAirflow air, boolean cooling, FluidStack inF, Object... input) {
-		FluidCraftRecipe recipe = new FluidCraftRecipe(out, sec, outF, DCHeatTier.OVEN, hum, air, chance, true, inF,
+		FluidCraftRecipe recipe = new FluidCraftRecipe(out, sec, outF, DCHeatTier.OVEN, hum, air, chance, cooling, inF,
 				input);
 		recipe.requiredHeat().add(DCHeatTier.BOIL);
-		RecipeAPI.registerFluidRecipes.addRecipe(recipe, DCHeatTier.OVEN);
+		RecipeAPI.registerFluidRecipes.addRecipe(recipe);
 	}
 
 }

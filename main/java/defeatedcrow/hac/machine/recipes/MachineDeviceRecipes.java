@@ -544,6 +544,26 @@ public class MachineDeviceRecipes {
 									new ItemStack(MachineInit.reagent, 1, 11)
 			});
 
+			// 合成宝石
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(Items.QUARTZ, 1,
+					0), null, 0F, null, null, DCHeatTier.UHT, "gemQuartz", null, null, new Object[] {
+							"dustCrystal"
+			});
+
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems, 1,
+					4), null, 0F, null, null, DCHeatTier.UHT, "gemSapphire", null, null, new Object[] {
+							"dustAluminum",
+							"dustChromium",
+							"dustIron"
+			});
+
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems, 1,
+					14), null, 0F, null, null, DCHeatTier.UHT, "gemGarnet", null, null, new Object[] {
+							"dustCrystal",
+							"dustAluminum",
+							"dustIron"
+			});
+
 			// plating
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.platingChrome, 1,
 					0), null, 0F, null, null, DCHeatTier.NORMAL, (ItemStack) null, new FluidStack(MainInit.sulfuricAcid,

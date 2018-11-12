@@ -4,9 +4,15 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import codechicken.lib.math.MathHelper;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
+import defeatedcrow.hac.food.capability.DrinkItemCustomizer;
+import defeatedcrow.hac.food.capability.DrinkMilk;
+import defeatedcrow.hac.food.capability.DrinkSugar;
+import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.EnumFixedName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
@@ -25,14 +31,17 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -123,11 +132,6 @@ public class ItemFluidPack extends DCItem {
 	}
 
 	@Override
-	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
-		return new FluidPaperContDC(stack);
-	}
-
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		if (stack == null)
@@ -141,8 +145,32 @@ public class ItemFluidPack extends DCItem {
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
 		if (f != null) {
-			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.FLUID.getLocalizedName() + ": " +
-					f.getLocalizedName(new FluidStack(f, 200)));
+			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
+			float durF = 1.0F;
+			int ampF = 0;
+			if (drink != null) {
+				durF *= drink.getMilk().effect;
+				ampF += drink.getSugar().effect;
+			}
+
+			String mes = "";
+			mes += EnumFixedName.FLUID.getLocalizedName() + ": " + f.getLocalizedName(new FluidStack(f, 200));
+			if (drink != null) {
+				String mes2 = "";
+				if (drink.getMilk() != DrinkMilk.NONE) {
+					mes2 += drink.getMilk().toString();
+				}
+				if (drink.getSugar() != DrinkSugar.NONE) {
+					if (mes2.length() > 1) {
+						mes2 += ",";
+					}
+					mes2 += drink.getSugar().toString();
+				}
+				if (mes2.length() > 1) {
+					mes += " (" + mes2 + ")";
+				}
+			}
+			tooltip.add(TextFormatting.YELLOW.toString() + mes);
 			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.AMOUNT.getLocalizedName() + ": " + 250);
 			Fluid milk = FluidRegistry.getFluid("milk");
 			if (i == 2 || i == 13 || f == MainInit.tomatoJuice) {
@@ -150,7 +178,7 @@ public class ItemFluidPack extends DCItem {
 			} else if (f == MainInit.mazai) {
 				tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));
 			} else {
-				List<PotionEffect> effects = ItemSilverCup.getPotionEffect(f, 1F, 0);
+				List<PotionEffect> effects = ItemSilverCup.getPotionEffect(f, durF, ampF);
 				if (!effects.isEmpty()) {
 					PotionEffect eff = effects.get(0);
 					if (eff != null && eff.getPotion() != null) {
@@ -241,8 +269,8 @@ public class ItemFluidPack extends DCItem {
 		int meta = stack.getMetadata();
 		if (living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
-			worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() *
-					0.1F + 0.9F);
+			worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand
+					.nextFloat() * 0.1F + 0.9F);
 			this.addEffects(stack, worldIn, living);
 			this.dropContainerItem(worldIn, stack, living);
 			DCUtil.reduceStackSize(stack, 1);
@@ -267,6 +295,13 @@ public class ItemFluidPack extends DCItem {
 			int meta = stack.getMetadata();
 			Fluid fluid = getFluid(meta);
 			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 1F, 1);
+			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
+			float durF = 1.0F;
+			int ampF = 0;
+			if (drink != null) {
+				durF *= drink.getMilk().effect;
+				ampF += drink.getSugar().effect;
+			}
 
 			if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
 				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
@@ -288,8 +323,8 @@ public class ItemFluidPack extends DCItem {
 						Potion por = get.getPotion();
 						if (por == null)
 							continue;
-						int amp = get.getAmplifier();
-						int dur = get.getDuration();
+						int amp = get.getAmplifier() * ampF;
+						int dur = MathHelper.ceil(get.getDuration() * durF);
 						if (living.isPotionActive(get.getPotion())) {
 							PotionEffect check = living.getActivePotionEffect(por);
 							dur += check.getDuration();
@@ -321,6 +356,42 @@ public class ItemFluidPack extends DCItem {
 				EntityItem drop = new EntityItem(world, living.posX, living.posY + 0.25D, living.posZ, stack);
 				world.spawnEntity(drop);
 			}
+		}
+	}
+
+	/* fluid */
+
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
+		return this.new CapWrapper(stack);
+	}
+
+	private class CapWrapper implements ICapabilityProvider {
+
+		private final ItemStack cont;
+
+		private CapWrapper(ItemStack item) {
+			cont = item;
+		}
+
+		@Override
+		public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+			if (capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY)
+				return true;
+			else if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY)
+				return true;
+			else
+				return false;
+		}
+
+		@Override
+		public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+			if (capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY)
+				return (T) new FluidPaperContDC(cont);
+			else if (capability == DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY)
+				return (T) new DrinkItemCustomizer(cont);
+			else
+				return null;
 		}
 	}
 
