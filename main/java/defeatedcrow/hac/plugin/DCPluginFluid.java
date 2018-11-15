@@ -239,6 +239,26 @@ public class DCPluginFluid {
 
 		registerPotion(FluidRegistry.getFluid("fuelium"), MobEffects.HASTE);
 
+		// immersive engineering
+		registerPotion(FluidRegistry.getFluid("concrete"), MobEffects.SLOWNESS);
+
+		registerPotion(FluidRegistry.getFluid("ethanol"), MobEffects.HASTE);
+
+		registerPotion(FluidRegistry.getFluid("plantoil"), MobEffects.HASTE);
+
+		registerPotion(FluidRegistry.getFluid("biodiesel"), MobEffects.HASTE);
+
+		// immersive petroleum
+		registerPotion(FluidRegistry.getFluid("oil"), MobEffects.gravity);
+
+		registerPotion(FluidRegistry.getFluid("diesel"), MobEffects.HASTE);
+
+		registerPotion(FluidRegistry.getFluid("gasoline"), MobEffects.HASTE);
+
+		registerPotion(FluidRegistry.getFluid("lubricant"), MobEffects.SPEED);
+
+		registerPotion(FluidRegistry.getFluid("napalm"), MobEffects.FIRE_RESISTANCE);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
@@ -247,6 +267,9 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("liquidethene", 120);
 		MainAPIManager.fuelRegister.registerFuel("creosote", 60);
 		MainAPIManager.fuelRegister.registerFuel("fuelium", 100);
+		MainAPIManager.fuelRegister.registerFuel("biodiesel", 100);
+		MainAPIManager.fuelRegister.registerFuel("diesel", 100);
+		MainAPIManager.fuelRegister.registerFuel("gasoline", 120);
 
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 150);
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 120);
