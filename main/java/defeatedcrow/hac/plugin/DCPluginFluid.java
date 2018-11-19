@@ -259,6 +259,32 @@ public class DCPluginFluid {
 
 		registerPotion(FluidRegistry.getFluid("napalm"), MobEffects.FIRE_RESISTANCE);
 
+		// industrial foregoing
+		registerPotion(FluidRegistry.getFluid("essence"), MobEffects.gravity);
+
+		registerPotion(FluidRegistry.getFluid("meat"), MobEffects.REGENERATION);
+
+		registerPotion(FluidRegistry.getFluid("latex"), MobEffects.SLOWNESS);
+
+		registerPotion(FluidRegistry.getFluid("sewage"), MobEffects.POISON);
+
+		registerPotion(FluidRegistry.getFluid("sludge"), MobEffects.WITHER);
+
+		registerPotion(FluidRegistry.getFluid("biofuel"), MobEffects.HASTE);
+
+		registerPotion(FluidRegistry.getFluid("if.pink_slime"), MobEffects.GLOWING);
+
+		registerPotion(FluidRegistry.getFluid("if.protein"), MobEffects.RESISTANCE);
+
+		// actually additions
+		registerPotion(FluidRegistry.getFluid("canolaoil"), MobEffects.REGENERATION);
+
+		registerPotion(FluidRegistry.getFluid("refinedcanolaoil"), MobEffects.HASTE);
+
+		registerPotion(FluidRegistry.getFluid("crystaloil"), MobEffects.RESISTANCE);
+
+		registerPotion(FluidRegistry.getFluid("empoweredoil"), MobEffects.STRENGTH);
+
 		// fuel
 		MainAPIManager.fuelRegister.registerFuel("ic2biomass", 100);
 		MainAPIManager.fuelRegister.registerFuel("seed.oil", 60);
@@ -270,6 +296,11 @@ public class DCPluginFluid {
 		MainAPIManager.fuelRegister.registerFuel("biodiesel", 100);
 		MainAPIManager.fuelRegister.registerFuel("diesel", 100);
 		MainAPIManager.fuelRegister.registerFuel("gasoline", 120);
+		MainAPIManager.fuelRegister.registerFuel("biofuel", 100);
+		MainAPIManager.fuelRegister.registerFuel("canolaoil", 30);
+		MainAPIManager.fuelRegister.registerFuel("refinedcanolaoil", 60);
+		MainAPIManager.fuelRegister.registerFuel("crystaloil", 120);
+		MainAPIManager.fuelRegister.registerFuel("empoweredoil", 150);
 
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_oil", 150);
 		MainAPIManager.fuelRegister.registerFuel("dcs.fuel_gas", 120);
