@@ -11,7 +11,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.forestry.DCFarmable;
 import defeatedcrow.hac.plugin.forestry.DCFarmableDouble;
-import forestry.api.farming.Farmables;
+import forestry.api.core.ForestryAPI;
 import forestry.api.fuels.EngineBronzeFuel;
 import forestry.api.fuels.FermenterFuel;
 import forestry.api.fuels.FuelManager;
@@ -194,6 +194,7 @@ public class DCPluginForestry {
 
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
 			FuelManager.fermenterFuel.put(oilcake, new FermenterFuel(oilcake, 48, 200));
+			ForestryAPI.farmRegistry.registerFertilizer(oilcake, 200);
 
 			Fluid oil = MainInit.oil;
 			if (oil != null) {
@@ -215,21 +216,30 @@ public class DCPluginForestry {
 				FuelManager.bronzeEngineFuel.put(gas, new EngineBronzeFuel(gas, 60, 2500, 1));
 			}
 
-			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropRice));
-			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropOnion));
-			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropSpinach));
-			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropHerb));
-			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropBean));
-			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropChili));
-			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropGarlic));
-			Farmables.farmables.put("farmVegetables", new DCFarmable((ClimateCropBase) FoodInit.cropLettuce));
-			Farmables.farmables.put("farmVegetables", new DCFarmableDouble(
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropRice));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropOnion));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropSpinach));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropHerb));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropBean));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropChili));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropGarlic));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropLettuce));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmableDouble(
 					(ClimateDoubleCropBase) FoodInit.cropTomato));
-			Farmables.farmables.put("farmVegetables", new DCFarmableDouble(
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmableDouble(
 					(ClimateDoubleCropBase) FoodInit.cropCoffee));
-			Farmables.farmables.put("farmVegetables", new DCFarmableDouble(
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmableDouble(
 					(ClimateDoubleCropBase) FoodInit.cropCotton));
-			Farmables.farmables.put("farmVegetables", new DCFarmableDouble((ClimateDoubleCropBase) FoodInit.cropSoy));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmableDouble(
+					(ClimateDoubleCropBase) FoodInit.cropSoy));
 		}
 
 		DamageAPI.resistantData.registerEntityResistant(EntityButterfly.class, 2.0F, 2.0F);

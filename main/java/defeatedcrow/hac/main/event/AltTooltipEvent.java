@@ -7,6 +7,8 @@ import java.util.Set;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
+import defeatedcrow.hac.core.fluid.FluidDic;
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
@@ -108,6 +110,10 @@ public class AltTooltipEvent {
 						FluidStack f = bucket.getFluid(target);
 						if (f != null && f.getFluid() != null) {
 							String fName = f.getFluid().getName();
+							FluidDic dic = FluidDictionaryDC.getDic(f.getFluid());
+							if (dic != null) {
+								fName += " (" + dic.dicName + ")";
+							}
 							int temp = f.getFluid().getTemperature();
 							DCHeatTier tier = DCHeatTier.getTypeByTemperature(temp);
 							event.getToolTip().add(fName);

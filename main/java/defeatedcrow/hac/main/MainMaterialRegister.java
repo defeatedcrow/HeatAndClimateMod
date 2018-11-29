@@ -1492,16 +1492,12 @@ public class MainMaterialRegister {
 		FluidDictionaryDC.registerFluidDic(MainInit.coffee, "coffee");
 		FluidDictionaryDC.registerFluidDic(MainInit.cream, "cream");
 		FluidDictionaryDC.registerFluidDic(MainInit.lemon, "lemonade");
-		FluidDictionaryDC.registerFluidDic(MainInit.tomatoJuice, "tomato");
+		FluidDictionaryDC.registerFluidDic(MainInit.tomatoJuice, "vegetable");
 		FluidDictionaryDC.registerFluidDic(MainInit.mazai, "mazai");
 		FluidDictionaryDC.registerFluidDic(MainInit.hotSpring, "hot_spring");
+		FluidDictionaryDC.registerFluidDic(MainInit.stock, "stock");
+		FluidDictionaryDC.registerFluidDic(MainInit.soyMilk, "soymilk");
 
-		// milk
-		Fluid milk = FluidRegistry.getFluid("milk");
-		if (milk != null) {
-			MainInit.milk = milk;
-			FluidDictionaryDC.registerFluidDic(milk, "milk");
-		}
 	}
 
 	static void registerIntegration() {

@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.Calendar;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.recipe.RecipeJsonMaker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
@@ -22,6 +23,7 @@ import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -42,8 +44,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 2;
 	public static final int MOD_MINOR = 7;
-	public static final int MOD_BUILD = 3;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.7.0,)";
+	public static final int MOD_BUILD = 4;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.7.3,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
 			serverSide = "defeatedcrow.hac.main.CommonMainProxy")
@@ -116,6 +118,14 @@ public class ClimateMain {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+
+		// milk
+		Fluid milk = FluidRegistry.getFluid("milk");
+		if (milk != null) {
+			MainInit.milk = milk;
+			FluidDictionaryDC.registerFluidDic(milk, "milk");
+		}
+
 		// config
 		MainCoreConfig.INSTANCE.leadBlockNames();
 		WorldGenConfig.INSTANCE.leadBlockNames();

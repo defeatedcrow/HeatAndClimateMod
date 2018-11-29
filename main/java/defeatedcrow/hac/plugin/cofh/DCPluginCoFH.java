@@ -78,7 +78,7 @@ public class DCPluginCoFH {
 			DCPluginFluid.registerPotion(refined_bio, MobEffects.SPEED);
 			MainAPIManager.fuelRegister.registerFuel("refined_biofuel", 120);
 		}
-		Fluid biocrude = FluidRegistry.getFluid("biocrudel");
+		Fluid biocrude = FluidRegistry.getFluid("biocrude");
 		if (biocrude != null) {
 			DCPluginFluid.registerPotion(biocrude, MobEffects.SLOWNESS);
 			MainAPIManager.fuelRegister.registerFuel("biocrude", 60);

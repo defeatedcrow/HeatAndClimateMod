@@ -8,6 +8,7 @@ import crazypants.enderio.base.paint.PaintSourceValidator;
 import crazypants.enderio.base.recipe.IRecipeInput;
 import crazypants.enderio.base.recipe.ThingsRecipeInput;
 import crazypants.enderio.base.recipe.alloysmelter.AlloyRecipeManager;
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -28,6 +29,7 @@ public class DCPluginEIO {
 		if (hootch != null) {
 			DCPluginFluid.registerPotion(hootch, MobEffects.HASTE);
 			MainAPIManager.fuelRegister.registerFuel("hootch", 40);
+			FluidDictionaryDC.registerFluidDic(hootch, "ethanol");
 		}
 
 		Fluid fire = FluidRegistry.getFluid("fire_water");

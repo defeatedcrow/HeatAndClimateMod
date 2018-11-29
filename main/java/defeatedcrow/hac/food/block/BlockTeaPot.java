@@ -72,6 +72,12 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 					DrinkMilk milk = DrinkMilk.isMilkItem(held);
 					if (pot.setMilk(milk)) {
 						if (!player.capabilities.isCreativeMode) {
+							ItemStack cont = held.getItem().getContainerItem(held);
+							if (!DCUtil.isEmpty(cont)) {
+								EntityItem drop = new EntityItem(world, player.posX, player.posY, player.posZ, cont
+										.copy());
+								world.spawnEntity(drop);
+							}
 							DCUtil.reduceStackSize(held, 1);
 						}
 						DCLogger.debugLog("Success to put milk: " + milk);
@@ -83,6 +89,12 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 					DrinkSugar sugar = DrinkSugar.isSugarItem(held);
 					if (pot.setSugar(sugar)) {
 						if (!player.capabilities.isCreativeMode) {
+							ItemStack cont = held.getItem().getContainerItem(held);
+							if (!DCUtil.isEmpty(cont)) {
+								EntityItem drop = new EntityItem(world, player.posX, player.posY, player.posZ, cont
+										.copy());
+								world.spawnEntity(drop);
+							}
 							DCUtil.reduceStackSize(held, 1);
 						}
 						DCLogger.debugLog("Success to put sugar: " + sugar);
@@ -236,7 +248,8 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 					tile.markDirty();
 					player.inventory.markDirty();
 					if (!DCUtil.isEmpty(ret)) {
-						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret);
+						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret
+								.copy());
 						world.spawnEntity(drop);
 					}
 					return true;

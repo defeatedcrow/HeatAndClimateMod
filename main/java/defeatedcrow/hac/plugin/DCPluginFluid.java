@@ -23,7 +23,9 @@ public class DCPluginFluid {
 	public static void load() {
 
 		// ic2
-		registerPotion(FluidRegistry.getFluid("ic2hydrogen"), MobEffects.HASTE);
+		Fluid f1 = FluidRegistry.getFluid("ic2hydrogen");
+		registerPotion(f1, MobEffects.HASTE);
+		FluidDictionaryDC.registerFluidDic(f1, "hydrogen");
 
 		registerPotion(FluidRegistry.getFluid("ic2oxygen"), MobEffects.WATER_BREATHING);
 
@@ -63,6 +65,7 @@ public class DCPluginFluid {
 			if (b8 != null) {
 				ClimateAPI.registerBlock.registerHeatBlock(b8, 32767, DCHeatTier.BOIL);
 			}
+			FluidDictionaryDC.registerFluidDic(f8, "hot_spring");
 		}
 
 		Fluid f9 = FluidRegistry.getFluid("ic2hot_coolant");
@@ -110,7 +113,7 @@ public class DCPluginFluid {
 		Fluid f16 = FluidRegistry.getFluid("seed.oil");
 		registerPotion(f16, MobEffects.HASTE);
 		if (f16 != null) {
-			FluidDictionaryDC.registerFluidDic(f16, "plant_oil");
+			FluidDictionaryDC.registerFluidDic(f16, "seed_oil");
 		}
 
 		registerPotion(FluidRegistry.getFluid("for.honey"), MobEffects.RESISTANCE);
@@ -147,6 +150,7 @@ public class DCPluginFluid {
 		registerPotion(FluidRegistry.getFluid("poison"), MobEffects.WITHER);
 
 		registerPotion(FluidRegistry.getFluid("hot_spring_water"), MobEffects.RESISTANCE);
+		FluidDictionaryDC.registerFluidDic(FluidRegistry.getFluid("hot_spring_water"), "hot_spring");
 
 		// mek
 		registerPotion(FluidRegistry.getFluid("brine"), MobEffects.RESISTANCE);
@@ -183,6 +187,7 @@ public class DCPluginFluid {
 			Block b31 = f31.getBlock();
 			if (b31 != null) {
 				ClimateAPI.registerBlock.registerHumBlock(b31, 32767, DCHumidity.DRY);
+				FluidDictionaryDC.registerFluidDic(f31, "sulfuricacid");
 			}
 		}
 
@@ -204,6 +209,11 @@ public class DCPluginFluid {
 		registerPotion(FluidRegistry.getFluid("creosote"), MobEffects.NAUSEA);
 
 		registerPotion(FluidRegistry.getFluid("liquidoxygen"), MobEffects.WATER_BREATHING);
+
+		registerPotion(FluidRegistry.getFluid("liquidhydrogen"), MobEffects.HASTE);
+		FluidDictionaryDC.registerFluidDic(FluidRegistry.getFluid("liquidhydrogen"), "hydrogen");
+
+		FluidDictionaryDC.registerFluidDic(FluidRegistry.getFluid("liquidethene"), "fuel_gaseous");
 
 		// dcs
 		registerPotion(FluidRegistry.getFluid("dcs.hydrogen"), MobEffects.SPEED);
@@ -228,14 +238,19 @@ public class DCPluginFluid {
 
 		// animania
 		registerPotion(FluidRegistry.getFluid("milk_holstein"), MobEffects.REGENERATION);
+		FluidDictionaryDC.registerFluidDic(FluidRegistry.getFluid("milk_holstein"), "milk");
 
 		registerPotion(FluidRegistry.getFluid("milk_friesian"), MobEffects.REGENERATION);
+		FluidDictionaryDC.registerFluidDic(FluidRegistry.getFluid("milk_friesian"), "milk");
 
 		registerPotion(FluidRegistry.getFluid("milk_jersey"), MobEffects.REGENERATION);
+		FluidDictionaryDC.registerFluidDic(FluidRegistry.getFluid("milk_jersey"), "milk");
 
 		registerPotion(FluidRegistry.getFluid("milk_goat"), MobEffects.REGENERATION);
+		FluidDictionaryDC.registerFluidDic(FluidRegistry.getFluid("milk_goat"), "milk");
 
 		registerPotion(FluidRegistry.getFluid("milk_sheep"), MobEffects.REGENERATION);
+		FluidDictionaryDC.registerFluidDic(FluidRegistry.getFluid("milk_sheep"), "milk");
 
 		registerPotion(FluidRegistry.getFluid("fuelium"), MobEffects.HASTE);
 
