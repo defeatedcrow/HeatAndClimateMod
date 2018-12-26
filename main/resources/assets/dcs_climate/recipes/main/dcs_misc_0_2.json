@@ -1,20 +1,11 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  "XXX",
-  "XYX",
-  "XXX"
- ],
- "key": {
-  "X": {
-   "type": "forge:ore_dict",
-   "ore": "blockTallGrass"
-  },
-  "Y": {
-   "type": "forge:ore_dict",
-   "ore": "stickWood"
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_material",
+   "data": 0
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_misc",
   "count": 1,

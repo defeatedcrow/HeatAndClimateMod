@@ -36,7 +36,7 @@ public class MachineRecipes {
 				"gearBrass"
 		});
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft_s, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft_s, 8, 0), new Object[] {
 				"X",
 				"Y",
 				"X",
@@ -261,7 +261,7 @@ public class MachineRecipes {
 				new ItemStack(Blocks.IRON_BARS, 1, 0)
 		});
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft3_s, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft3_s, 8, 0), new Object[] {
 				"X",
 				"Y",
 				"X",
@@ -309,7 +309,7 @@ public class MachineRecipes {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft2_s, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft2_s, 8, 0), new Object[] {
 				"X",
 				"Y",
 				"X",

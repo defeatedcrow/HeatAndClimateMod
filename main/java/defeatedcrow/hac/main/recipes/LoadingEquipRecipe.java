@@ -442,7 +442,8 @@ public class LoadingEquipRecipe {
 				"patternSuit",
 				"itemSilkCloth",
 				"itemSilkCloth",
-				"string"
+				"string",
+				"dyeBlack"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.blackCoat, 1, 0), new Object[] {

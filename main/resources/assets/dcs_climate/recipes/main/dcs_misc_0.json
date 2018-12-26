@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:tallgrass",
-   "data": 1
+   "type": "forge:ore_dict",
+   "ore": "blockTallGrass"
   },
   "Y": {
    "type": "forge:ore_dict",

@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 2.7.2 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 2.7.5 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -7,7 +7,7 @@
 
 ・MincraftForge 1.12.2-14.23.3.2768 以上
 
-・HeatAndClimateLib 1.12.2_2.7.0 以上
+・HeatAndClimateLib 1.12.2_2.7.3 以上
 
 ForgeのRecommended更新により、要求Forgeのバージョンを引き上げました。
 直近のForgeにしかない機能が入っているので、下位互換はありません。ご注意ください。
@@ -1964,6 +1964,12 @@ Y = 各種宝石
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○2.7.5
+　変更
+　　・シャフトのクラフト作成数を8個に増やした
+　修正
+　　・ウェストコートを作成できない
 
 ○2.7.4
 　修正

@@ -6,12 +6,12 @@
    "ore": "plankWood"
   },
   {
-   "type": "forge:ore_dict",
-   "ore": "string"
-  },
-  {
    "item": "dcs_climate:dcs_tinder",
    "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "string"
   }
  ],
  "result": {
