@@ -19,6 +19,25 @@ public class MainCoreConfig {
 	public static boolean enableAdvHUD = true;
 	public static int iconX = 0;
 	public static int iconY = -48;
+	public static String tex1 = "textures/gui/hud_climate_normal.png";
+	public static String tex2 = "textures/gui/hud_climate_drought.png";
+	public static String tex3 = "textures/gui/hud_climate_rain.png";
+	public static boolean showBiome = true;
+	public static boolean showSeason = true;
+	public static boolean showDay = true;
+	public static boolean showClimate = true;
+	public static int[] offsetBiome = {
+			15,
+			5
+	};
+	public static int[] offsetSeason = {
+			5,
+			-8
+	};
+	public static int[] offsetClimate = {
+			10,
+			15
+	};
 
 	public static double rateVsRF = 10.0D;
 	public static double rateVsEU = 2.0D;
@@ -58,6 +77,26 @@ public class MainCoreConfig {
 			Property hud_y = cfg
 					.get("render setting", "Climate HUD Info Offset Y", iconY, "Set the amount of Yoffset of the climate info.");
 
+			Property hud_biome = cfg
+					.get("render setting", "Enable HUD Biome Name", showBiome, "Enable display the biome name on HUD.");
+
+			Property hud_season = cfg
+					.get("render setting", "Enable Season Name", showSeason, "Enable display the season name on HUD.");
+
+			Property hud_day = cfg.get("render setting", "Enable HUD Date", showDay, "Enable display the date on HUD.");
+
+			Property hud_climate = cfg
+					.get("render setting", "Enable HUD Climate Name", showClimate, "Enable display the climate parameter on HUD.");
+
+			Property off_biome = cfg
+					.get("render setting", "Offset HUD Biome Name", offsetBiome, "Set the amount of offset of the biome name in HUD.");
+
+			Property off_season = cfg
+					.get("render setting", "Offset HUD Season Name", offsetSeason, "Set the amount of offset of the season name in HUD.");
+
+			Property off_climate = cfg
+					.get("render setting", "Offset HUD Climate Name", offsetClimate, "Set the amount of offset of the climate parameter in HUD.");
+
 			Property vsRF = cfg
 					.get("plugin setting", "Conversion rate vs RF", rateVsRF, "Set the amount of conversion rate as RF/torque.");
 
@@ -91,6 +130,13 @@ public class MainCoreConfig {
 			enableAdvHUD = hud_icon.getBoolean();
 			iconX = hud_x.getInt();
 			iconY = hud_y.getInt();
+			showBiome = hud_biome.getBoolean();
+			showSeason = hud_season.getBoolean();
+			showDay = hud_day.getBoolean();
+			showClimate = hud_climate.getBoolean();
+			offsetBiome = off_biome.getIntList();
+			offsetSeason = off_season.getIntList();
+			offsetClimate = off_climate.getIntList();
 
 			rateVsRF = vsRF.getDouble();
 			rateVsEU = vsEU.getDouble();

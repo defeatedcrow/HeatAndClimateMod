@@ -34,8 +34,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class AdvancedHUDEvent {
 
 	public static final AdvancedHUDEvent INSTANCE = new AdvancedHUDEvent();
-	public static final ResourceLocation TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
-			"textures/gui/hud_climate_adv.png");
+	public static final ResourceLocation TEX1 = new ResourceLocation(ClimateCore.PACKAGE_ID, MainCoreConfig.tex1);
+	public static final ResourceLocation TEX2 = new ResourceLocation(ClimateCore.PACKAGE_ID, MainCoreConfig.tex2);
+	public static final ResourceLocation TEX3 = new ResourceLocation(ClimateCore.PACKAGE_ID, MainCoreConfig.tex3);
 
 	private int count = 20;
 	private int biomeID = 0;
@@ -69,11 +70,9 @@ public class AdvancedHUDEvent {
 							int px = MathHelper.floor(player.posX);
 							int py = MathHelper.floor(player.posY);
 							int pz = MathHelper.floor(player.posZ);
-							BlockPos pos = new BlockPos(px, py, pz);
+							BlockPos pos = player.getPosition(); // new BlockPos(px, py, pz);
 							if (pos != null) {
-								Biome b = world.provider.getBiomeForCoords(pos);
-								biome = b;
-								biomeID = b.getIdForBiome(b);
+								biome = world.provider.getBiomeForCoords(pos);
 							}
 						}
 
@@ -87,22 +86,23 @@ public class AdvancedHUDEvent {
 						float tempF = biome.getTemperature(player.getPosition());
 						float we = WeatherChecker.getTempOffsetFloat(world.provider.getDimension(), false);
 
-						Minecraft.getMinecraft().getTextureManager().bindTexture(TEX);
 						FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
 						GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 						GlStateManager.enableBlend();
 
 						int iw = 0;
 						if (we > 0) {
-							iw = 32;
+							Minecraft.getMinecraft().getTextureManager().bindTexture(TEX2);
 						} else if (we < 0) {
-							iw = 64;
+							Minecraft.getMinecraft().getTextureManager().bindTexture(TEX3);
+						} else {
+							Minecraft.getMinecraft().getTextureManager().bindTexture(TEX1);
 						}
 						int offsetX = MainCoreConfig.iconX;
 						int offsetY = MainCoreConfig.iconY;
 						int x = offsetX;
 						int y = event.getResolution().getScaledHeight() + offsetY;
-						drawTexturedModalRect(x, y, iw, 0, 16, 64);
+						drawTexturedModalRect(x, y, 0, 0, 48, 48);
 
 						String temp = clm.getHeat().toString();
 						String hum = clm.getHumidity().toString();
@@ -111,21 +111,35 @@ public class AdvancedHUDEvent {
 							temp += String.format(" %.2f F", (tempF + we));
 						}
 
-						if (CoreConfigDC.enableSeasonEffect) {
+						String s = "";
+						int color = 16383998;
+						if (CoreConfigDC.enableSeasonEffect && MainCoreConfig.showSeason) {
 							EnumSeason season = DCTimeHelper.getSeasonEnum(world);
+							s += season.getName();
+							color = season.color.getColorValue();
+						}
+						if (MainCoreConfig.showDay) {
 							int day = DCTimeHelper.getDay(world);
-							fr.drawString(season.getName() + " " + day, x + 5, y - 8, season.color
-									.getColorValue(), true);
+							s += " day" + day;
+						}
+						if (s.length() > 1) {
+							fr.drawString(s, x + MainCoreConfig.offsetSeason[0], y + MainCoreConfig.offsetSeason[1], color, true);
 						}
 
-						Biome biome = Biome.getBiomeForId(biomeID);
-						if (biome != null) {
-							fr.drawString(biome.getBiomeName(), x + 15, y + 5, 0xFFFFFF, true);
+						// Biome biome = Biome.getBiomeForId(biomeID);
+						if (biome != null && MainCoreConfig.showBiome) {
+							fr.drawString(biome
+									.getBiomeName(), x + MainCoreConfig.offsetBiome[0], y + MainCoreConfig.offsetBiome[1], 0xFFFFFF, true);
 						}
 
-						fr.drawString(temp, x + 10, y + 15, clm.getHeat().getColorInt(), true);
-						fr.drawString(hum, x + 10, y + 25, clm.getHumidity().getColorInt(), true);
-						fr.drawString(air, x + 10, y + 35, clm.getAirflow().getColorInt(), true);
+						if (MainCoreConfig.showClimate) {
+							fr.drawString(temp, x + MainCoreConfig.offsetClimate[0], y + MainCoreConfig.offsetClimate[1], clm
+									.getHeat().getColorInt(), true);
+							fr.drawString(hum, x + MainCoreConfig.offsetClimate[0], y + MainCoreConfig.offsetClimate[1] + 10, clm
+									.getHumidity().getColorInt(), true);
+							fr.drawString(air, x + MainCoreConfig.offsetClimate[0], y + MainCoreConfig.offsetClimate[1] + 20, clm
+									.getAirflow().getColorInt(), true);
+						}
 
 						GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 					}

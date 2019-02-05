@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 2.7.5 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 2.7.6 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1964,6 +1964,10 @@ Y = 各種宝石
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○2.7.6
+　変更
+　　・気候情報HUDを細かくカスタムできるコンフィグを追加
 
 ○2.7.5
 　変更
