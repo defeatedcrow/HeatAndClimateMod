@@ -13,8 +13,10 @@ public class MainCreativeTabRegister {
 	public static void load() {
 		// block
 		// ores
-		MainInit.ores.setCreativeTab(ClimateCore.climate);
-		MainInit.ores_2.setCreativeTab(ClimateCore.climate);
+		// MainInit.ores.setCreativeTab(ClimateCore.climate);
+		// MainInit.ores_2.setCreativeTab(ClimateCore.climate);
+		MainInit.oreNew.setCreativeTab(ClimateCore.climate);
+		MainInit.layerNew.setCreativeTab(ClimateCore.climate);
 		MainInit.dustBlock.setCreativeTab(ClimateCore.climate);
 		MainInit.dustBlock_2.setCreativeTab(ClimateCore.climate);
 		MainInit.gemBlock.setCreativeTab(ClimateCore.climate);
@@ -59,6 +61,7 @@ public class MainCreativeTabRegister {
 
 		// item
 		// ores
+		MainInit.oreItem.setCreativeTab(ClimateCore.climate);
 		MainInit.oreDust.setCreativeTab(ClimateCore.climate);
 		MainInit.oreIngot.setCreativeTab(ClimateCore.climate);
 		MainInit.gems.setCreativeTab(ClimateCore.climate);

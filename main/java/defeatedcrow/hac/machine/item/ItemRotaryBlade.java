@@ -8,12 +8,14 @@ public class ItemRotaryBlade extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"sus", "titanium"
+			"sus",
+			"titanium",
+			"screen"
 	};
 
 	public ItemRotaryBlade() {
 		super();
-		maxMeta = 1;
+		maxMeta = 2;
 	}
 
 	@Override

@@ -10,6 +10,11 @@ import net.minecraft.item.ItemStack;
 public class LoadingYagenRecipe {
 
 	public static void add(RecipeResourcesMain res) {
+		addOldOre();
+		addNewOre();
+	}
+
+	static void addOldOre() {
 		// ore -> dust
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 0), new Object[] {
 				"toolNormalYagen",
@@ -59,6 +64,16 @@ public class LoadingYagenRecipe {
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 12), new Object[] {
 				"toolNormalYagen",
 				"oreBismuth"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 13), new Object[] {
+				"toolNormalYagen",
+				"oreLead"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 14), new Object[] {
+				"toolNormalYagen",
+				"oreManganese"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.gems, 1, 8), new Object[] {
@@ -209,6 +224,58 @@ public class LoadingYagenRecipe {
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(Items.FLINT, 1, 0), new Object[] {
 				"toolNormalYagen",
 				"gravel"
+		});
+	}
+
+	static void addNewOre() {
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 0), new Object[] {
+				"toolNormalYagen",
+				"oreRed"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 1), new Object[] {
+				"toolNormalYagen",
+				"oreGreen"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 2), new Object[] {
+				"toolNormalYagen",
+				"oreBlue"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 3), new Object[] {
+				"toolNormalYagen",
+				"oreWhite"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 4), new Object[] {
+				"toolNormalYagen",
+				"oreBlack"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 5), new Object[] {
+				"toolNormalYagen",
+				"oreLargeRed"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 6), new Object[] {
+				"toolNormalYagen",
+				"oreLargeGreen"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 7), new Object[] {
+				"toolNormalYagen",
+				"oreLargeBlue"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 8), new Object[] {
+				"toolNormalYagen",
+				"oreLargeWhite"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreItem, 1, 9), new Object[] {
+				"toolNormalYagen",
+				"oreLargeBlack"
 		});
 	}
 

@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "Z",
+  "Y",
+  "X"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_device_shaft_s",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotBronze"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "leather"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_handcrank",
+  "count": 1,
+  "data": 0
+ }
+}

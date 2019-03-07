@@ -16,6 +16,7 @@ public class MachineRecipes {
 
 	public static void load() {
 		loadBasicRecipe();
+		loadAltRecipes();
 		if (ModuleConfig.machine_advanced) {
 			MachineAdvancedRecipe.load(res);
 		}
@@ -600,6 +601,54 @@ public class MachineRecipes {
 		OreDictionary.registerOre("blockFuelCoke", new ItemStack(MachineInit.fuelCont, 1, 0));
 		OreDictionary.registerOre("blockCarbide", new ItemStack(MachineInit.fuelCont, 1, 1));
 
+	}
+
+	static void loadAltRecipes() {
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MainInit.wrench, 1, 0), new Object[] {
+				"X X",
+				" Y ",
+				" X ",
+				'X',
+				"ingotBronze",
+				'Y',
+				"gearBrass"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft_s, 8, 0), new Object[] {
+				"X",
+				"Y",
+				"X",
+				'X',
+				"ingotBronze",
+				'Y',
+				"gearBrass"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.piston, 1, 0), new Object[] {
+				" X ",
+				"YZY",
+				" W ",
+				'X',
+				new ItemStack(MachineInit.shaft_s, 1, 0),
+				'Y',
+				"ingotBronze",
+				'Z',
+				"gearBrass",
+				'W',
+				"dustRedstone"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.handcrank, 1, 0), new Object[] {
+				"Z",
+				"Y",
+				"X",
+				'X',
+				new ItemStack(MachineInit.shaft_s, 1, 0),
+				'Y',
+				"ingotBronze",
+				'Z',
+				"leather"
+		});
 	}
 
 }
