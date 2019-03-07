@@ -130,16 +130,6 @@ public class MachineAdvancedRecipe {
 				"gearSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.rotaryBlade, 1, 2), new Object[] {
-				"XXX",
-				" Y ",
-				"XXX",
-				'X',
-				"ingotTitanium",
-				'Y',
-				new ItemStack(Blocks.IRON_BARS, 1, 0)
-		});
-
 		if (ModuleConfig.food) {
 			DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
 					"YXX",

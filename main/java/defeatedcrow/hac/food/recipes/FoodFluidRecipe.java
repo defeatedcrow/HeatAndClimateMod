@@ -73,19 +73,19 @@ public class FoodFluidRecipe {
 
 		regNonFoodrecipe(new ItemStack(MainInit.repairPutty, 1,
 				2), null, 0F, null, DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.oil,
-						100), new Object[] {
+						500), new Object[] {
 								"dustAsh"
 		});
 
 		regNonFoodrecipe(new ItemStack(MainInit.repairPutty, 1,
 				2), null, 0F, null, DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.oil,
-						100), new Object[] {
+						500), new Object[] {
 								"dustLime"
 		});
 
 		regNonFoodrecipe(new ItemStack(MainInit.repairPutty, 1,
 				2), null, 0F, null, DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.oil,
-						100), new Object[] {
+						500), new Object[] {
 								"dustAlkali"
 		});
 

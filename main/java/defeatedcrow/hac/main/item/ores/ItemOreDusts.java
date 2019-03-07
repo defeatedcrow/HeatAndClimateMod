@@ -21,8 +21,7 @@ public class ItemOreDusts extends DCItem {
 			"titanium",
 			"alumina",
 			"bismuth",
-			"lead",
-			"manganese"
+			"lead"
 	};
 
 	public ItemOreDusts(int max) {

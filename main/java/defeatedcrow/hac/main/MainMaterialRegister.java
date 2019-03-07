@@ -76,9 +76,7 @@ import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.block.ores.BlockDusts2;
 import defeatedcrow.hac.main.block.ores.BlockGem;
-import defeatedcrow.hac.main.block.ores.BlockLayerNew;
 import defeatedcrow.hac.main.block.ores.BlockMetal;
-import defeatedcrow.hac.main.block.ores.BlockOreNew;
 import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
 import defeatedcrow.hac.main.block.plant.BlockHedge;
@@ -111,7 +109,6 @@ import defeatedcrow.hac.main.item.ores.ItemGems;
 import defeatedcrow.hac.main.item.ores.ItemIngots;
 import defeatedcrow.hac.main.item.ores.ItemMetalMaterials;
 import defeatedcrow.hac.main.item.ores.ItemMiscDust;
-import defeatedcrow.hac.main.item.ores.ItemOreCrystal;
 import defeatedcrow.hac.main.item.ores.ItemOreDusts;
 import defeatedcrow.hac.main.item.tool.ItemAlloyYagen;
 import defeatedcrow.hac.main.item.tool.ItemAxeDC;
@@ -179,13 +176,6 @@ public class MainMaterialRegister {
 		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 12);
 		DCMaterialReg.registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone", ClimateMain.MOD_ID);
 
-		MainInit.oreNew = new BlockOreNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone_new", 9);
-		DCMaterialReg.registerBlock(MainInit.oreNew, ClimateCore.PACKAGE_BASE + "_ore_stone_new", ClimateMain.MOD_ID);
-
-		MainInit.layerNew = new BlockLayerNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_layer_stone_new", 6);
-		DCMaterialReg
-				.registerBlock(MainInit.layerNew, ClimateCore.PACKAGE_BASE + "_layer_stone_new", ClimateMain.MOD_ID);
-
 		MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 15);
 		DCMaterialReg
 				.registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock", ClimateMain.MOD_ID);
@@ -248,16 +238,13 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerItem(MainInit.iconItem, ClimateCore.PACKAGE_BASE + "_icons", ClimateMain.MOD_ID);
 
 		// ores
-		MainInit.oreItem = new ItemOreCrystal(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oreitem");
-		DCMaterialReg.registerItem(MainInit.oreItem, ClimateCore.PACKAGE_BASE + "_oreitem", ClimateMain.MOD_ID);
-
-		MainInit.oreIngot = new ItemIngots(16).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		DCMaterialReg.registerItem(MainInit.oreIngot, ClimateCore.PACKAGE_BASE + "_ingot", ClimateMain.MOD_ID);
 
-		MainInit.oreDust = new ItemOreDusts(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
+		MainInit.oreDust = new ItemOreDusts(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		DCMaterialReg.registerItem(MainInit.oreDust, ClimateCore.PACKAGE_BASE + "_oredust", ClimateMain.MOD_ID);
 
-		MainInit.gems = new ItemGems(22).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(21).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		DCMaterialReg.registerItem(MainInit.gems, ClimateCore.PACKAGE_BASE + "_gem", ClimateMain.MOD_ID);
 
 		MainInit.miscDust = new ItemMiscDust(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");

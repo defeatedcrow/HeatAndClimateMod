@@ -2,6 +2,6 @@
     "parent": "dcs_climate:block/dcs_ore",
     "textures": {
         "stone": "blocks/stone",
-        "ore": "dcs_climate:blocks/ores/ore_s_sulfur"
+        "ore": "dcs_climate:blocks/ores/ore_s_sulfer"
     }
 }

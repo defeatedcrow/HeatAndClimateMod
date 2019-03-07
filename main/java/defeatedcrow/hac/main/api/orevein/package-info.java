@@ -7,7 +7,7 @@
 /**
  * HaCMainModのAPIです。<br>
  */
-@API(apiVersion = "3.0.0", owner = "dcs_climate", provides = "DCsHaCAPI|orevein")
+@API(apiVersion = "2.0.0", owner = "dcs_climate", provides = "DCsHaCAPI|orevein")
 package defeatedcrow.hac.main.api.orevein;
 
 import net.minecraftforge.fml.common.API;

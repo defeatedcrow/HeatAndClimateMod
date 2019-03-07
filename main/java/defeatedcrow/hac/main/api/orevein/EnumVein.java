@@ -1,36 +1,28 @@
 package defeatedcrow.hac.main.api.orevein;
 
 public enum EnumVein {
-	RED(0, 5, 80),
-	GREEN(1, 4, 40),
-	BLUE(2, 4, 30),
-	WHITE(3, 4, 40),
-	BLACK(4, 3, 10),
-	HIGH_RED(5, 5, 140),
-	GUANO(8, 4, 50),
-	SKARN(9, 8, 50),
-	SKARN_UNDER(10, 8, 20);
+	HIGH_SEDIMENT(0, 5),
+	SEDIMENT(1, 5),
+	SAND_SEDIMENT(2, 4),
+	BAUXITE(3, 4),
+	KIESLAGER(4, 4),
+	QUARTZ(5, 5),
+	UNDERLAVA(6, 3),
+	GEODE(7, 4),
+	GUANO(8, 4),
+	SKARN(9, 8),
+	SKARN_UNDER(10, 8);
 
 	public static final EnumVein[] VALUES = {
-			RED,
-			GREEN,
-			BLUE,
-			WHITE,
-			BLACK,
-			HIGH_RED,
-			GUANO,
-			SKARN,
-			SKARN_UNDER
+			SEDIMENT, SAND_SEDIMENT, BAUXITE, KIESLAGER, QUARTZ, UNDERLAVA, GEODE, GUANO, SKARN, SKARN_UNDER
 	};
 
 	public final int id;
 	public final int range;
-	public final int height;
 
-	EnumVein(int i, int r, int h) {
+	EnumVein(int i, int r) {
 		id = i;
 		range = r;
-		height = h;
 	}
 
 	public static EnumVein getType(String name) {
@@ -39,6 +31,6 @@ public enum EnumVein {
 				return ret;
 			}
 		}
-		return WHITE;
+		return HIGH_SEDIMENT;
 	}
 }

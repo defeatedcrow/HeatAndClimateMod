@@ -81,8 +81,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		}
 		int r = 2 + f;
 
-		if (isForced || (!BiomeDictionary.hasType(biome, BiomeDictionary.Type.WET) && BiomeDictionary
-				.hasType(biome, BiomeDictionary.Type.FOREST))) {
+		if (isForced || (!BiomeDictionary.hasType(biome, BiomeDictionary.Type.WET) && BiomeDictionary.hasType(biome,
+				BiomeDictionary.Type.FOREST))) {
 			for (int y = 1; y < 80; y++) {
 				// world.setBlockState(pos.up(y), Blocks.STONE.getDefaultState(), 2);
 				int r2 = y / 4;
@@ -174,12 +174,12 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 			VeinTable table = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN);
 			VeinTable table2 = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN_UNDER);
 			if (table == null || table2 == null) {
-				return new OreSetDC(100, MARBLE);
+				return new OreSetDC(100, IRON_2);
 			}
-			// 中層: 下から、黒/白/RS、赤/青/緑/大理石
+			// 中層: 下から、磁鉄鉱/金/閃緑岩、黄鉄鉱/黄銅鉱/錫石/他MOD鉱/石、閃亜鉛鉱/錫石/赤鉄鉱/大理石
 			if (y < 28) {
-				List<OreSet> list = table2.getOreTable();
-				int i1 = rand.nextInt(table2.tableCount);
+				List<OreSet> list = table2.getOreTable1();
+				int i1 = rand.nextInt(table2.tableCount1);
 				int i2 = 0;
 				for (OreSet set : list) {
 					i2 += set.getWeight();
@@ -189,8 +189,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 				}
 				return new OreSetDC(100, STONE_2);
 			} else {
-				List<OreSet> list = table.getOreTable();
-				int i1 = rand.nextInt(table.tableCount);
+				List<OreSet> list = table.getOreTable1();
+				int i1 = rand.nextInt(table.tableCount1);
 				int i2 = 0;
 				for (OreSet set : list) {
 					i2 += set.getWeight();
@@ -221,7 +221,19 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 			// 中層
 			if (y < 30)
 				return STONE_1;
-			else
+			else if (y < 45) {
+				VeinTable table = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN);
+				List<OreSet> list = table.getOreTable2();
+				int i1 = rand.nextInt(table.tableCount2);
+				int i2 = 0;
+				for (OreSet set : list) {
+					i2 += set.getWeight();
+					if (i2 >= i1) {
+						return set.getOre();
+					}
+				}
+				return COPPER;
+			} else
 				return MARBLE;
 		}
 	}
@@ -250,7 +262,18 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	private static final BlockSet STONE_3 = new BlockSet(Blocks.STONE, 5);
 	private static final BlockSet SAND = new BlockSet(Blocks.SANDSTONE, 0);
 
-	private static final BlockSet LIME = new BlockSet(MainInit.layerNew, 1);
+	private static final BlockSet LIME = new BlockSet(MainInit.ores_2, 0);
 	private static final BlockSet MARBLE = new BlockSet(MainInit.gemBlock, 6);
+
+	private static final BlockSet IRON_0 = new BlockSet(MainInit.ores, 1);
+	private static final BlockSet IRON_1 = new BlockSet(MainInit.ores, 4);
+	private static final BlockSet IRON_2 = new BlockSet(MainInit.ores, 5);
+
+	private static final BlockSet GOLD = new BlockSet(Blocks.GOLD_ORE, 0);
+
+	private static final BlockSet COPPER = new BlockSet(MainInit.ores, 6);
+	private static final BlockSet ZINC = new BlockSet(MainInit.ores, 8);
+	private static final BlockSet TIN = new BlockSet(MainInit.ores_2, 4);
+	private static final BlockSet BISMUTH = new BlockSet(MainInit.ores_2, 9);
 
 }

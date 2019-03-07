@@ -1,20 +1,11 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  " X ",
-  "XYX",
-  " X "
- ],
- "key": {
-  "Y": {
-   "type": "forge:ore_dict",
-   "ore": "gearWood"
-  },
-  "X": {
-   "type": "forge:ore_dict",
-   "ore": "ingotBronze"
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_material",
+   "data": 5
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_spindle",
   "count": 1,

@@ -39,21 +39,6 @@ item.dcs_tinder_fire.name=Burning Stick
 item.dcs_tinder_firestarter.name=Firestarter
 
 ## metals
-item.dcs_oreitem_red_1.name=Chalcopyrite
-item.dcs_oreitem_green_1.name=Cassiterite
-item.dcs_oreitem_blue_1.name=Sphalerite
-item.dcs_oreitem_white_1.name=Pyrite
-item.dcs_oreitem_black_1.name=Oil Shale
-item.dcs_oreitem_red_2.name=Bauxite
-item.dcs_oreitem_green_2.name=Garnierite
-item.dcs_oreitem_blue_2.name=Galena
-item.dcs_oreitem_white_2.name=Gold
-item.dcs_oreitem_black_2.name=Magnetite
-item.dcs_oreitem_red_3.name=Rhodochrosite
-item.dcs_oreitem_green_3.name=Chromite
-item.dcs_oreitem_blue_3.name=Bismuthinite
-item.dcs_oreitem_white_3.name=Rutile
-item.dcs_oreitem_black_3.name=Silver
 item.dcs_ingot_copper.name=Copper Ingot
 item.dcs_ingot_zinc.name=Zinc Ingot
 item.dcs_ingot_silver.name=Silver Ingot
@@ -70,7 +55,6 @@ item.dcs_ingot_titanium.name=Titanium Ingot
 item.dcs_ingot_bismuth.name=Bismuth Ingot
 item.dcs_ingot_bscco.name=BSCCO Ingot
 item.dcs_ingot_lead.name=Lead Ingot
-item.dcs_ingot_manganese.name=manganese Ingot
 item.dcs_oredust_copper.name=Copper Dust
 item.dcs_oredust_zinc.name=Zinc Dust
 item.dcs_oredust_silver.name=Silver Dust
@@ -86,7 +70,6 @@ item.dcs_oredust_alumina.name=Aluminium Dust
 item.dcs_oredust_titanium.name=Titanium Dust
 item.dcs_oredust_bismuth.name=Bismuth Dust
 item.dcs_oredust_lead.name=Lead Dust
-item.dcs_oredust_manganese.name=Manganese Dust
 item.dcs_gem_chal_blue.name=Blue Chalcedony
 item.dcs_gem_chal_red.name=Red Chalcedony
 item.dcs_gem_chal_white.name=White Chalcedony
@@ -109,7 +92,6 @@ item.dcs_gem_apatite.name=Apatite
 item.dcs_gem_jadeite.name=jadeite
 item.dcs_gem_moonstone.name=Moonstone
 item.dcs_gem_kunzite.name=Kunzite
-item.dcs_gem_opal.name=Black Opal
 item.dcs_miscdust_coal.name=Coal Dust
 item.dcs_miscdust_crystal.name=Quartz Dust
 item.dcs_miscdust_lime.name=Lime Dust
@@ -182,7 +164,6 @@ item.dcs_gemcore_portal.name=Transfer Core
 item.dcs_gemcore_feather.name=Butterfly's Wing
 item.dcs_rotaryblade_sus.name=SUS Hammer Plate
 item.dcs_rotaryblade_titanium.name=Titanium Hammer Plate
-item.dcs_rotaryblade_screen.name=Titanium Screen Plate
 item.dcs_silkworm_silk_eggcard.name=Silkworm Egg Card
 item.dcs_silkworm_silk_worm.name=Silkworm
 item.dcs_silkworm_silk_cocoon.name=Silk Cocoon
@@ -659,25 +640,6 @@ item.dcs_circuit_chalcedony.name=Chalcedony Circuit
 
 ## block
 ## ores
-## new
-tile.dcs_layer_stone_new_0.name=Gypsum
-tile.dcs_layer_stone_new_1.name=Lime
-tile.dcs_layer_stone_new_2.name=Guano
-tile.dcs_layer_stone_new_3.name=Niter Ore
-tile.dcs_layer_stone_new_4.name=Sulfur Ore
-tile.dcs_layer_stone_new_5.name=Salt Ore
-tile.dcs_layer_stone_new_6.name=Serpentine Ore
-tile.dcs_ore_stone_new_0.name=Red Ore
-tile.dcs_ore_stone_new_1.name=Green Ore
-tile.dcs_ore_stone_new_2.name=Blue Ore
-tile.dcs_ore_stone_new_3.name=White Ore
-tile.dcs_ore_stone_new_4.name=Black Ore
-tile.dcs_ore_stone_new_5.name=Large Red Ore
-tile.dcs_ore_stone_new_6.name=Large Green Ore
-tile.dcs_ore_stone_new_7.name=Large Blue Ore
-tile.dcs_ore_stone_new_8.name=Large White Ore
-tile.dcs_ore_stone_new_9.name=Large Black Ore
-##old
 tile.dcs_ore_stone_0.name=Gypsum
 tile.dcs_ore_stone_1.name=Hematite
 tile.dcs_ore_stone_2.name=Blue Chalcedony Ore
@@ -709,7 +671,6 @@ tile.dcs_ore2_stone_9.name=Bismuthinite
 tile.dcs_ore2_stone_10.name=Bauxite
 tile.dcs_ore2_stone_11.name=Rutile Quartz Ore
 tile.dcs_ore2_stone_12.name=Guano
-
 tile.dcs_dustblock_copper.name=Copper Dust Block
 tile.dcs_dustblock_zinc.name=Zinc Dust Block
 tile.dcs_dustblock_nickel.name=Nickel Dust Block

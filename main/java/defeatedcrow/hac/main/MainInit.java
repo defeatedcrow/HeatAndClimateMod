@@ -13,17 +13,12 @@ public class MainInit {
 
 	// block
 	// ores
-	@Deprecated
 	public static Block ores;
-	@Deprecated
 	public static Block ores_2;
 	public static Block dustBlock;
 	public static Block dustBlock_2;
 	public static Block gemBlock;
 	public static Block metalBlock;
-
-	public static Block oreNew;
-	public static Block layerNew;
 
 	// cont
 	public static Block logCont;
@@ -167,7 +162,6 @@ public class MainInit {
 
 	// item
 	// ores
-	public static Item oreItem;
 	public static Item oreDust;
 	public static Item oreIngot;
 	public static Item gems;

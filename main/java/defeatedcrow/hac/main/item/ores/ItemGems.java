@@ -49,7 +49,6 @@ public class ItemGems extends DCItem {
 	 * 19: 翡翠
 	 * 20: 月長石
 	 * 21: リシア輝石
-	 * 22: ブラックオパール
 	 */
 	private static String[] names = {
 			"chal_blue",
@@ -73,8 +72,7 @@ public class ItemGems extends DCItem {
 			"apatite",
 			"jadeite",
 			"moonstone",
-			"kunzite",
-			"opal"
+			"kunzite"
 	};
 
 	public ItemGems(int max) {
@@ -124,8 +122,8 @@ public class ItemGems extends DCItem {
 					world.spawnEntity(entityarrow);
 				}
 
-				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
-						.nextFloat() * 0.4F + 1.2F) + 0.5F);
+				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F /
+						(itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
 					DCUtil.reduceStackSize(stack, 1);

@@ -81,16 +81,6 @@ public class LoadingToolRecipe {
 				"ingotBrass"
 		});
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 1), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearWood",
-				'X',
-				"ingotBronze"
-		});
-
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 2), new Object[] {
 				" X ",
 				"XYX",
@@ -223,16 +213,6 @@ public class LoadingToolRecipe {
 				new ItemStack(DCInit.climate_checker)
 		});
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'X',
-				"ingotBronze",
-				'Y',
-				new ItemStack(DCInit.climate_checker)
-		});
-
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.chamber, 1, 0), new Object[] {
 				"ZXZ",
 				"XYX",
@@ -243,18 +223,6 @@ public class LoadingToolRecipe {
 				"stickBlaze",
 				'Z',
 				"ingotBrass"
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.chamber, 1, 0), new Object[] {
-				"ZXZ",
-				"XYX",
-				"ZXZ",
-				'Y',
-				new ItemStack(Blocks.FURNACE, 1, 0),
-				'X',
-				"stickBlaze",
-				'Z',
-				"ingotBronze"
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.shitirin, 1, 0), new Object[] {
