@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "XYX",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotBronze"
+  },
+  "Y": {
+   "item": "dcs_lib:dcs_checker",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_windvane",
+  "count": 1,
+  "data": 0
+ }
+}

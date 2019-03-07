@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "ZXZ",
+  "XYX",
+  "ZXZ"
+ ],
+ "key": {
+  "Y": {
+   "item": "minecraft:furnace",
+   "data": 0
+  },
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "stickBlaze"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotBronze"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_chamber",
+  "count": 1,
+  "data": 0
+ }
+}

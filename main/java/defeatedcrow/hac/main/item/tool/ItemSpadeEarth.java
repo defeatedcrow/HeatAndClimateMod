@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.item.tool;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.main.util.DCToolMaterial;
 import net.minecraft.block.Block;
@@ -52,10 +53,13 @@ public class ItemSpadeEarth extends ItemSpade implements ITexturePath {
 								continue;
 							}
 							IBlockState target = world.getBlockState(p1);
+							if (target.getBlock().getHarvestLevel(target) > 2 && !ClimateCore.isDebug)
+								continue;
 							if (!target.getBlock().hasTileEntity(target)) {
 								if (living != null && living instanceof EntityPlayer) {
-									target.getBlock().harvestBlock(world, (EntityPlayer) living, p1, target, null,
-											stack);
+
+									target.getBlock()
+											.harvestBlock(world, (EntityPlayer) living, p1, target, null, stack);
 									target.getBlock().removedByPlayer(target, world, p1, (EntityPlayer) living, false);
 								} else {
 									target.getBlock().dropBlockAsItem(world, p1, target, 0);
@@ -99,8 +103,8 @@ public class ItemSpadeEarth extends ItemSpade implements ITexturePath {
 										continue;
 									}
 									IBlockState target = world.getBlockState(p1);
-									if (world.isAirBlock(p1) || target.getMaterial().isReplaceable() ||
-											target.getMaterial() == Material.PLANTS) {
+									if (world.isAirBlock(p1) || target.getMaterial().isReplaceable() || target
+											.getMaterial() == Material.PLANTS) {
 										world.setBlockState(p1, Blocks.DIRT.getDefaultState());
 									}
 								}
