@@ -21,8 +21,10 @@ import net.minecraftforge.common.IPlantable;
 
 public class EntityFlowerPot extends DCEntityBase {
 
-	private static final DataParameter<ItemStack> FLOWER = EntityDataManager.<ItemStack>createKey(EntityFlowerPot.class, DataSerializers.ITEM_STACK);
-	private static final DataParameter<Boolean> COLOR = EntityDataManager.<Boolean>createKey(EntityFlowerPot.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<ItemStack> FLOWER = EntityDataManager
+			.<ItemStack>createKey(EntityFlowerPot.class, DataSerializers.ITEM_STACK);
+	private static final DataParameter<Boolean> COLOR = EntityDataManager
+			.<Boolean>createKey(EntityFlowerPot.class, DataSerializers.BOOLEAN);
 
 	public EntityFlowerPot(World worldIn) {
 		super(worldIn);
@@ -99,7 +101,7 @@ public class EntityFlowerPot extends DCEntityBase {
 		super.writeEntityToNBT(compound);
 		ItemStack itemstack = this.dataManager.get(FLOWER);
 
-		if (itemstack != null) {
+		if (!DCUtil.isEmpty(itemstack)) {
 			compound.setTag("FlowerItem", itemstack.writeToNBT(new NBTTagCompound()));
 		}
 

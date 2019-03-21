@@ -14,6 +14,7 @@ import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.main.api.ISidedTankChecker;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -34,7 +35,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory {
+public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory, ISidedTankChecker {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -187,7 +188,8 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
-	private void checkSideTank() {
+	@Override
+	public void checkSideTank() {
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			int cap = inputT.getCapacity();
 			int amo = inputT.getFluidAmount();
@@ -198,10 +200,10 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-					face.getOpposite())) {
-				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-						face.getOpposite());
+			if (tile != null && !(tile instanceof ISidedTankChecker) && tile
+					.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
+						.getOpposite());
 				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
 					if (target != null && target.getFluid() != null && target.getFluid() == FluidRegistry.WATER) {
