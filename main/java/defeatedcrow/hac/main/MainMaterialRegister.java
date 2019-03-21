@@ -179,7 +179,7 @@ public class MainMaterialRegister {
 		MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 12);
 		DCMaterialReg.registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone", ClimateMain.MOD_ID);
 
-		MainInit.oreNew = new BlockOreNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone_new", 9);
+		MainInit.oreNew = new BlockOreNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone_new", 14);
 		DCMaterialReg.registerBlock(MainInit.oreNew, ClimateCore.PACKAGE_BASE + "_ore_stone_new", ClimateMain.MOD_ID);
 
 		MainInit.layerNew = new BlockLayerNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_layer_stone_new", 6);

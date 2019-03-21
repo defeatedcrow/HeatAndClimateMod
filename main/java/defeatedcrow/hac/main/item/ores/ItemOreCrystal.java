@@ -74,7 +74,7 @@ public class ItemOreCrystal extends DCItem {
 	public int getItemBurnTime(ItemStack stack) {
 		int i = stack.getMetadata();
 		if (i == 4)
-			return 800;
+			return 1600;
 		else
 			return 0;
 	}

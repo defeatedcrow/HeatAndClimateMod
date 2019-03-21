@@ -138,7 +138,7 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.5F;
+		return 0.2F;
 	}
 
 	@Override

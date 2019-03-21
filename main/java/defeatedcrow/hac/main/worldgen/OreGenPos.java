@@ -21,6 +21,7 @@ public class OreGenPos {
 	private static int whiteP = WorldGenConfig.depositGen[3];
 	private static int blackP = WorldGenConfig.depositGen[4];
 	private static int guanoP = WorldGenConfig.depositGen[5];
+	private static int netherP = WorldGenConfig.depositGen[6];
 
 	public static final OreGenPos INSTANCE = new OreGenPos();
 
@@ -49,7 +50,7 @@ public class OreGenPos {
 			ret[0] = getVeinFromSeed(world, pos1, EnumVein.BLACK, seed);
 		}
 
-		int y2 = 30 + rand.nextInt(30);
+		int y2 = 25 + rand.nextInt(30);
 
 		int x2 = x + 8 + rand.nextInt(8);
 		int z2 = z + 8 + rand.nextInt(8);
@@ -65,36 +66,38 @@ public class OreGenPos {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.BLUE, seed);
 			}
 		} else {
-			if ((BiomeDictionary.hasType(biome2, BiomeDictionary.Type.SWAMP) || BiomeDictionary
+			if (rand2 < redP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.SANDY) || BiomeDictionary
+					.hasType(biome2, BiomeDictionary.Type.DRY))) {
+				ret[1] = getVeinFromSeed(world, pos2, EnumVein.RED, seed);
+			}
+			if (rand2 < blueP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.SWAMP) || BiomeDictionary
 					.hasType(biome2, BiomeDictionary.Type.WATER) || BiomeDictionary
 							.hasType(biome2, BiomeDictionary.Type.SNOWY) || BiomeDictionary
-									.hasType(biome2, BiomeDictionary.Type.COLD)) && rand2 < blueP) {
+									.hasType(biome2, BiomeDictionary.Type.COLD))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.BLUE, seed);
 			}
-			if ((BiomeDictionary.hasType(biome2, BiomeDictionary.Type.FOREST) || BiomeDictionary
+			if (rand2 < greenP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.FOREST) || BiomeDictionary
 					.hasType(biome2, BiomeDictionary.Type.JUNGLE) || BiomeDictionary
 							.hasType(biome2, BiomeDictionary.Type.CONIFEROUS) || BiomeDictionary
-									.hasType(biome2, BiomeDictionary.Type.LUSH)) && rand2 < greenP) {
+									.hasType(biome2, BiomeDictionary.Type.LUSH))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.GREEN, seed);
 			}
-			if ((BiomeDictionary.hasType(biome2, BiomeDictionary.Type.PLAINS) || BiomeDictionary
-					.hasType(biome2, BiomeDictionary.Type.SAVANNA)) && rand2 < whiteP) {
+			if (rand2 < whiteP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.PLAINS) || BiomeDictionary
+					.hasType(biome2, BiomeDictionary.Type.SAVANNA))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.WHITE, seed);
 			}
 		}
 
-		int y3 = 80 + rand.nextInt(40);
+		int y3 = 85 + rand.nextInt(40);
 		int x3 = x + 8 + rand.nextInt(8);
 		int z3 = z + 8 + rand.nextInt(8);
 		BlockPos pos3 = new BlockPos(x3, y3, z3);
 		int rand3 = rand.nextInt(100);
 		Biome biome3 = world.getBiome(pos3);
-		if ((BiomeDictionary.hasType(biome3, BiomeDictionary.Type.SANDY) || BiomeDictionary
-				.hasType(biome2, BiomeDictionary.Type.DRY) || BiomeDictionary
-						.hasType(biome2, BiomeDictionary.Type.MESA) || BiomeDictionary
-								.hasType(biome2, BiomeDictionary.Type.MOUNTAIN) || BiomeDictionary
-										.hasType(biome2, BiomeDictionary.Type.HILLS)) && rand3 < redP) {
-			ret[2] = getVeinFromSeed(world, pos3, EnumVein.RED, seed);
+		if (rand3 < redP && (BiomeDictionary.hasType(biome3, BiomeDictionary.Type.MESA) || BiomeDictionary
+				.hasType(biome2, BiomeDictionary.Type.MOUNTAIN) || BiomeDictionary
+						.hasType(biome2, BiomeDictionary.Type.HILLS))) {
+			ret[2] = getVeinFromSeed(world, pos3, EnumVein.HIGH_RED, seed);
 		}
 
 		int y4 = 140 + rand.nextInt(60);
@@ -107,6 +110,28 @@ public class OreGenPos {
 			ret[3] = getVeinFromSeed(world, pos4, EnumVein.HIGH_RED, seed);
 		}
 		return ret;
+	}
+
+	public OreVein getNetherVeins(int cx, int cz, World world) {
+		long seed = world.getSeed() + cx + cz * 31;
+		Random rand = new Random(seed);
+		rand.nextInt();
+		rand.nextInt(100);
+		rand.nextInt(8);
+		int x = cx << 4;
+		int z = cz << 4;
+
+		int y1 = 25 + rand.nextInt(60);
+
+		int x1 = x + 8 + rand.nextInt(8);
+		int z1 = z + 8 + rand.nextInt(8);
+		BlockPos pos1 = new BlockPos(x1, y1, z1);
+		int rand1 = rand.nextInt(100);
+		if (rand1 < netherP) {
+			return getVeinFromSeed(world, pos1, EnumVein.NETHER, seed);
+		}
+
+		return null;
 	}
 
 	public OreVein getVeinFromSeed(World world, BlockPos pos, EnumVein type, long seed) {
@@ -157,6 +182,8 @@ public class OreGenPos {
 		case SKARN:
 			return vein.range;
 		case SKARN_UNDER:
+			return vein.range;
+		case NETHER:
 			return vein.range;
 		default:
 			return WorldGenConfig.radGen[0];

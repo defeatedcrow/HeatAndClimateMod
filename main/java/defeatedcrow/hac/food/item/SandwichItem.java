@@ -70,7 +70,7 @@ public class SandwichItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta * 2 + 6;
+		return meta * 2 + 4;
 	}
 
 	@Override

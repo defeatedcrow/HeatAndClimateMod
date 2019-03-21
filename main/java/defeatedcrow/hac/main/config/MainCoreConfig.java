@@ -44,12 +44,12 @@ public class MainCoreConfig {
 	public static double rateVsFU = 10.0D;
 
 	public static boolean steel = true;
-	public static boolean lead = false;
-	public static boolean pendant_schorl = true;
 	public static boolean pendant_clam = true;
 	public static boolean bird_effect = true;
 	public static boolean ocean_effect = true;
 	public static boolean armor_effect = false;
+
+	public static double gun_damage = 12.0D;
 
 	public static String[] blocknames = new String[] {
 			"minecraft:stone:32767",
@@ -106,14 +106,8 @@ public class MainCoreConfig {
 			Property noSteel = cfg
 					.get("item setting", "Enable Steel Recipe", steel, "Enable the climate recipe for smelting the steel block.");
 
-			Property noLead = cfg
-					.get("item setting", "Enable Lead Ingot", lead, "Enable to add the lead dust and ingot.");
-
-			Property p_schorl = cfg
-					.get("item setting", "Enable Schorl Pendant Effect", pendant_schorl, "Enable effect of schorl pendant.");
-
 			Property b_dia = cfg
-					.get("item setting", "Diamond Badge Disable List", blocknames, "Please add block registry names you want exclude from diamond badge effect.");
+					.get("item setting", "Diamond Badge Disable List", blocknames, "Please add block registry names you want exclude from red badge effect.");
 
 			Property p_bird = cfg
 					.get("item setting", "Enable Wing Potion Effect", bird_effect, "Enable effect of Wing Blessing potion.");
@@ -123,6 +117,9 @@ public class MainCoreConfig {
 
 			Property armor_e = cfg
 					.get("item setting", "Show Armor Enchantment Effect", armor_effect, "Enable rendering effect of enchanted HaC armor at wearing.");
+
+			Property gun_d = cfg
+					.get("item setting", "Gun Base Damage", gun_damage, "Set default damage amount of guns (brass bullet).");
 
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
@@ -137,14 +134,13 @@ public class MainCoreConfig {
 			offsetBiome = off_biome.getIntList();
 			offsetSeason = off_season.getIntList();
 			offsetClimate = off_climate.getIntList();
+			gun_damage = gun_d.getDouble();
 
 			rateVsRF = vsRF.getDouble();
 			rateVsEU = vsEU.getDouble();
 			rateVsFU = vsRF.getDouble();
 
 			steel = noSteel.getBoolean();
-			lead = noLead.getBoolean();
-			pendant_schorl = p_schorl.getBoolean();
 			bird_effect = p_bird.getBoolean();
 			ocean_effect = p_ocean.getBoolean();
 			// timeZone = zone.getString();

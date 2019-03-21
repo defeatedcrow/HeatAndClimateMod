@@ -61,9 +61,7 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
-			if (placer.rotationPitch < -75.0F) {
-				face = EnumFacing.UP;
-			} else if (placer.rotationPitch > 75.0F) {
+			if (placer.rotationPitch < -75.0F || placer.rotationPitch > 75.0F) {
 				face = EnumFacing.DOWN;
 			}
 			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite()));
@@ -83,8 +81,7 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 				if (flag != state.getValue(DCState.POWERED).booleanValue()) {
 					world.setBlockState(pos, state.withProperty(DCState.POWERED, Boolean.valueOf(flag)), 2);
 					float f = state.getValue(DCState.POWERED).booleanValue() ? 0.6F : 0.5F;
-					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
-							f);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
 				}
 			}
 		}

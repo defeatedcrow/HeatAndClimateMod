@@ -85,14 +85,14 @@ public class HaCTradeData {
 		TRADE3.add(new HaCTradeData(TradeType.BUY, MainUtil.getGem(4), 5));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, MainUtil.getGem(8), 5));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.cropBasket, 1, 11), 4));
-		TRADE3.add(new HaCTradeData(TradeType.SELL, MainUtil.getGem(7), 5));
+		TRADE3.add(new HaCTradeData(TradeType.SELL, MainUtil.getGem(22), 5));
 		TRADE3.add(new HaCTradeData(TradeType.SELL, MainUtil.getGem(21), 6));
 
 		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MagicInit.lotusCandleBlack, 1, 0), 8));
 		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MagicInit.biomeOrb, 1, 0), 3));
 		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MagicInit.biomeOrb, 1, 2), 6));
-		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MagicInit.pendant, 1, 3), 6));
-		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MagicInit.badge, 1, 8), 9));
+		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MagicInit.colorRing, 1, 1), 6));
+		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MagicInit.colorRing, 1, 4), 9));
 		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.chandelierGypsum, 1, 0), 6));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 6), 2));
 		TRADE4.add(new HaCTradeData(TradeType.SELL, MainUtil.getGem(19), 8));

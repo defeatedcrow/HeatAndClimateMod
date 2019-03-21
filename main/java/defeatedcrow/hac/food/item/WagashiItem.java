@@ -98,12 +98,12 @@ public class WagashiItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 12;
+		return 6;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.6F;
+		return 0.3F;
 	}
 
 	@Override

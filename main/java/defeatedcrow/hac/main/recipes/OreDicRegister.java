@@ -68,6 +68,11 @@ public class OreDicRegister {
 		OreDictionary.registerOre("oreLargeBlue", new ItemStack(MainInit.oreNew, 1, 7));
 		OreDictionary.registerOre("oreLargeWhite", new ItemStack(MainInit.oreNew, 1, 8));
 		OreDictionary.registerOre("oreLargeBlack", new ItemStack(MainInit.oreNew, 1, 9));
+		OreDictionary.registerOre("oreRed", new ItemStack(MainInit.oreNew, 1, 10));
+		OreDictionary.registerOre("oreLargeRed", new ItemStack(MainInit.oreNew, 1, 11));
+		OreDictionary.registerOre("oreBlack", new ItemStack(MainInit.oreNew, 1, 12));
+		OreDictionary.registerOre("oreLargeBlack", new ItemStack(MainInit.oreNew, 1, 13));
+		OreDictionary.registerOre("oreSulfur", new ItemStack(MainInit.oreNew, 1, 14));
 
 		OreDictionary.registerOre("oreGypsum", new ItemStack(MainInit.layerNew, 1, 0));
 		OreDictionary.registerOre("oreLime", new ItemStack(MainInit.layerNew, 1, 1));
@@ -162,6 +167,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gemMalachite", new ItemStack(MainInit.gems, 1, 5));
 		OreDictionary.registerOre("gemCelestite", new ItemStack(MainInit.gems, 1, 6));
 		OreDictionary.registerOre("gemClam", new ItemStack(MainInit.gems, 1, 7));
+		OreDictionary.registerOre("gemOpal", new ItemStack(MainInit.gems, 1, 7));
 		OreDictionary.registerOre("gemSalt", new ItemStack(MainInit.gems, 1, 8));
 		OreDictionary.registerOre("gemNiter", new ItemStack(MainInit.gems, 1, 9));
 		OreDictionary.registerOre("gemSulfur", new ItemStack(MainInit.gems, 1, 10));

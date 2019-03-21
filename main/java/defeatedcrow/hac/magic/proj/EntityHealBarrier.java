@@ -16,7 +16,7 @@ public class EntityHealBarrier extends EntityMobBarrier {
 
 	public EntityHealBarrier(World worldIn) {
 		super(worldIn);
-		this.setSize(6.0F, 3.0F);
+		this.setSize(8.0F, 3.0F);
 	}
 
 	public EntityHealBarrier(World worldIn, double posX, double posY, double posZ) {

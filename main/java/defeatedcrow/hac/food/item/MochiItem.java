@@ -60,12 +60,12 @@ public class MochiItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta == 0 ? 1 : 8;
+		return meta == 0 ? 1 : 6;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.4F;
+		return 0.5F;
 	}
 
 	@Override

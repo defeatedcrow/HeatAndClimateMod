@@ -186,7 +186,7 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 	@Override
 	public boolean isSuitableClimate() {
 		// potteryは高温に耐えられない
-		return current != null && current.getHeat().getTier() <= DCHeatTier.BOIL.getTier() && current.getHeat()
+		return current != null && current.getHeat().getTier() <= DCHeatTier.OVEN.getTier() && current.getHeat()
 				.getTier() > DCHeatTier.FROSTBITE.getTier();
 	}
 

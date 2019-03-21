@@ -352,14 +352,22 @@ public class LoadingOreRecipe {
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
 				"XXX",
-				"XXX",
+				"X X",
 				"XXX",
 				'X',
-				new ItemStack(MainInit.gemBlock, 1, 2)
+				"gemChalcedony"
+		});
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
+				"XXX",
+				"X X",
+				"XXX",
+				'X',
+				"gemQuartz"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gemBlock, 9, 2), new Object[] {
-				new ItemStack(MainInit.gemBlock, 1, 8)
+				new ItemStack(MainInit.gems, 8, 2)
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 4, 12), new Object[] {

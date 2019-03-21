@@ -6,14 +6,12 @@ import java.util.Map;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
-import defeatedcrow.hac.api.magic.IJewelAmulet;
 import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
-import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -80,18 +79,22 @@ public class MainUtil {
 	public static ItemStack getGem(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 21)
-			meta = 21;
+		if (meta > 22)
+			meta = 22;
 		return new ItemStack(MainInit.gems, 1, meta);
 	}
 
 	public static ItemStack getRandomGem(int i) {
-		int meta = DCUtil.rand.nextInt(22);
+		int meta = DCUtil.rand.nextInt(23);
+		if (meta == 7)
+			meta = 4;
 		return new ItemStack(MainInit.gems, i, meta);
 	}
 
 	public static ItemStack getRandomGem2(int i) {
-		int meta = 4 + DCUtil.rand.nextInt(17);
+		int meta = 4 + DCUtil.rand.nextInt(18);
+		if (meta == 7)
+			meta = 4;
 		return new ItemStack(MainInit.gems, i, meta);
 	}
 
@@ -157,6 +160,23 @@ public class MainUtil {
 		return new ItemStack(FoodInit.saplings, i, meta);
 	}
 
+	public static boolean removeBadPotion(EntityLivingBase liv) {
+		if (liv != null && !liv.getEntityWorld().isRemote) {
+			List<PotionEffect> remove = Lists.newArrayList();
+			for (PotionEffect p : liv.getActivePotionEffects()) {
+				if (p.getPotion().isBadEffect())
+					remove.add(p);
+			}
+
+			for (PotionEffect p2 : remove) {
+				liv.removeActivePotionEffect(p2.getPotion());
+			}
+			return !remove.isEmpty();
+		}
+
+		return false;
+	}
+
 	public static boolean isPlayerHeldItem(Item item, EntityPlayer player) {
 		if (item == null || player == null)
 			return false;
@@ -181,16 +201,16 @@ public class MainUtil {
 	}
 
 	public static boolean hasCharmItem(EntityLivingBase living, ItemStack charm) {
-		if (living == null || DCUtil.isEmpty(charm)) {
+		if (living == null || DCUtil.isEmpty(charm) || !(charm.getItem() instanceof IJewelCharm)) {
 			return false;
 		}
-		if (living instanceof EntityPlayer && charm.getItem() instanceof IJewelCharm) {
+		if (living instanceof EntityPlayer) {
 			boolean hasCharm = false;
 			for (int i = 9; i < 18; i++) {
 				ItemStack check = ((EntityPlayer) living).inventory.getStackInSlot(i);
-				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
+				if (!DCUtil.isEmpty(check) && check.getItem() == charm.getItem()) {
 					int m = check.getMetadata();
-					if (m == 9) {
+					if (m == charm.getItemDamage()) {
 						hasCharm = true;
 					}
 				}
@@ -202,8 +222,8 @@ public class MainUtil {
 				}
 			}
 			return hasCharm;
-		} else if (charm.getItem() instanceof IJewelAmulet) {
-			Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
+		} else {
+			Map<Integer, ItemStack> map = DCUtil.getMobCharm(living);
 			boolean hasCharm = false;
 			if (!map.isEmpty()) {
 				for (ItemStack item : map.values()) {
@@ -212,12 +232,55 @@ public class MainUtil {
 					}
 				}
 			}
-			if (living instanceof EntityPlayer && DCPluginBaubles.hasBaublesAmulet((EntityPlayer) living, charm)) {
-				hasCharm = true;
-			}
 			return hasCharm;
 		}
-		return false;
+	}
+
+	public static ItemStack getCharmItem(EntityLivingBase living, ItemStack item) {
+		if (living == null || DCUtil.isEmpty(item))
+			return ItemStack.EMPTY;
+
+		if (living instanceof EntityPlayer) {
+			for (int i = 9; i < 18; i++) {
+				ItemStack check = ((EntityPlayer) living).inventory.getStackInSlot(i);
+				if (!DCUtil.isEmpty(check) && OreDictionary.itemMatches(check, item, false)) {
+					return check;
+				}
+			}
+			if (Loader.isModLoaded("baubles")) {
+				for (ItemStack check : DCPluginBaubles.getBaublesCharm((EntityPlayer) living, null)) {
+					if (!DCUtil.isEmpty(check) && OreDictionary.itemMatches(check, item, false)) {
+						return check;
+					}
+				}
+			}
+		} else {
+			Map<Integer, ItemStack> charms = DCUtil.getMobCharm(living);
+			for (ItemStack check : charms.values()) {
+				if (!DCUtil.isEmpty(check) && OreDictionary.itemMatches(check, item, false)) {
+					return check;
+				}
+			}
+		}
+		return ItemStack.EMPTY;
+	}
+
+	public static float magicSuitEff(EntityPlayer player) {
+		if (player != null) {
+			float f = 1.0F;
+			for (ItemStack armor : player.getArmorInventoryList()) {
+				if (!DCUtil.isEmpty(armor)) {
+					if (armor.getItem() == MainInit.magicCoat) {
+						f += 0.25F;
+					}
+					if (armor.getItem() == MainInit.magicUnder) {
+						f += 0.25F;
+					}
+				}
+			}
+			return f;
+		}
+		return 1.0F;
 	}
 
 	public static boolean hasSameDic(ItemStack item, ItemStack check) {

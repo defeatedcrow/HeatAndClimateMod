@@ -45,7 +45,7 @@ public class ClimateMain {
 	public static final int MOD_MEJOR = 3;
 	public static final int MOD_MINOR = 0;
 	public static final int MOD_BUILD = 0;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[2.8.0,)";
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.0.0,)";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
 			serverSide = "defeatedcrow.hac.main.CommonMainProxy")
@@ -60,6 +60,7 @@ public class ClimateMain {
 	public static final CreativeTabs build = new CreativeTabClimateBuild(MOD_ID + "_build");
 	public static final CreativeTabs cont = new CreativeTabClimateContainer(MOD_ID + "_container");
 	public static final CreativeTabs cloth = new CreativeTabClimateEquips(MOD_ID + "_clothing");
+	public static final CreativeTabs magic = new CreativeTabClimateMagic(MOD_ID + "_magic");
 
 	public static final Calendar CAL = Calendar.getInstance();
 	public static int month = 0;

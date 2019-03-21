@@ -1,9 +1,6 @@
 package defeatedcrow.hac.main.event;
 
-import java.util.Map;
-
-import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
@@ -27,7 +24,6 @@ import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 // 戦闘関連
@@ -43,7 +39,7 @@ public class CombatEvent {
 			if (owner != null && owner instanceof EntityLivingBase && owner.isEntityAlive()) {
 				EntityLivingBase ownerLiv = (EntityLivingBase) owner;
 				// Invisible
-				if (ownerLiv.isPotionActive(MobEffects.INVISIBILITY)) {
+				if (ClimateCore.isDebug && ownerLiv.isPotionActive(MobEffects.INVISIBILITY)) {
 					if (living instanceof EntityLiving) {
 						EntityLiving mob = (EntityLiving) living;
 						// no AI target
@@ -100,30 +96,21 @@ public class CombatEvent {
 			if (source.getTrueSource() instanceof EntityTameable) {
 				EntityTameable living = (EntityTameable) source.getTrueSource();
 
-				Map<Integer, ItemStack> map = DCUtil.getAmulets(living);
-				boolean amu = false;
-				if (!map.isEmpty()) {
-					for (ItemStack item : map.values()) {
-						if (item.getItem() == MagicInit.amulet && item.getItemDamage() == 4) {
-							amu = true;
-						}
-					}
-				}
+				boolean amu = DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorBadge, 1, 3));
 				if (amu && living.getOwner() instanceof EntityPlayer) {
-					DCLogger.debugInfoLog("on amulet process");
 					target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) living.getOwner()), event
 							.getAmount());
 					event.setCanceled(true);
 				}
-			} else if (source.getTrueSource() instanceof EntityPlayer && !(target instanceof IMob)) {
-				EntityPlayer player = (EntityPlayer) source.getTrueSource();
-				if (player != null) {
-					if (DCUtil.hasItemInTopSlots(player, new ItemStack(MagicInit.pendant, 1, 19))) {
+			} else if (source.getTrueSource() instanceof EntityLivingBase) {
+				EntityLivingBase owner = (EntityLivingBase) source.getTrueSource();
+				if (owner != null) {
+					if (!(target instanceof IMob) && DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.pendant, 1,
+							19)) || DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1, 4))) {
 						event.setCanceled(true);
-					} else if (Loader.isModLoaded("baubles")) {
-						if (DCPluginBaubles.hasBaublesCharm(player, new ItemStack(MagicInit.pendant, 1, 19))) {
-							event.setCanceled(true);
-						}
+					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorBadge, 1, 3))) {
+						target.attackEntityFrom(DamageSource.causeMobDamage(target), event.getAmount());
+						event.setCanceled(true);
 					}
 				}
 			}

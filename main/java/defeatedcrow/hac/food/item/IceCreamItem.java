@@ -88,12 +88,12 @@ public class IceCreamItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta == 0 ? 6 : 8;
+		return meta == 0 ? 3 : 4;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.25F;
+		return 0.15F;
 	}
 
 	@Override

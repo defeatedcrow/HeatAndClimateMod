@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.FluidCraftRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.init.Blocks;
@@ -83,7 +84,7 @@ public class FoodFluidRecipe {
 								"dustLime"
 		});
 
-		regNonFoodrecipe(new ItemStack(MainInit.repairPutty, 1,
+		regNonFoodrecipe(new ItemStack(MainInit.repairPutty, 2,
 				2), null, 0F, null, DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.oil,
 						100), new Object[] {
 								"dustAlkali"
@@ -253,6 +254,11 @@ public class FoodFluidRecipe {
 		});
 
 		if (ModuleConfig.machine_advanced && ModuleConfig.r_reactor) {
+			RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(MainInit.fuelOil,
+					200), DCHeatTier.KILN, null, null, false, null, new Object[] {
+							"oreCrudeOil"
+			});
+
 			RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(MainInit.fuelGas,
 					500), DCHeatTier.NORMAL, null, null, false, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
 							"gemCarbide"
@@ -279,6 +285,48 @@ public class FoodFluidRecipe {
 					11), null, 0, null, DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER,
 							100), new Object[] {
 									new ItemStack(MachineInit.reagent, 1, 10)
+			});
+		}
+
+		if (ModuleConfig.magic) {
+			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
+					5), null, 0, null, DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] {
+									"dropBlue",
+									"dropBlue",
+									"dustRedstone"
+			});
+
+			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
+					6), null, 0, null, DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] {
+									"dropGreen",
+									"dropGreen",
+									"dustRedstone"
+			});
+
+			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
+					7), null, 0, null, DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] {
+									"dropRed",
+									"dropRed",
+									"dustRedstone"
+			});
+
+			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
+					8), null, 0, null, DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] {
+									"dropBlack",
+									"dropBlack",
+									"dustRedstone"
+			});
+
+			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
+					9), null, 0, null, DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] {
+									"dropWhite",
+									"dropWhite",
+									"dustRedstone"
 			});
 		}
 

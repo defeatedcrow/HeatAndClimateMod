@@ -14,15 +14,15 @@ import net.minecraft.world.World;
 
 public class EntityMobBarrier extends Entity {
 
-	private int totalAge = 0;
-	private int maxAge = 2400;
-	private final Random rand = new Random();
+	protected int totalAge = 0;
+	protected int maxAge = 2400;
+	protected final Random rand = new Random();
 
 	/* コンストラクタ */
 
 	public EntityMobBarrier(World worldIn) {
 		super(worldIn);
-		this.setSize(6.0F, 3.0F);
+		this.setSize(8.0F, 3.0F);
 	}
 
 	public EntityMobBarrier(World worldIn, double posX, double posY, double posZ) {

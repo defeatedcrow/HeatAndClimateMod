@@ -94,7 +94,7 @@ public class SaladItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta == 1 || meta == 4 ? 12 : 8;
+		return meta == 1 || meta == 4 ? 8 : 6;
 	}
 
 	@Override

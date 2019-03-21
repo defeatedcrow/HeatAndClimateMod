@@ -2,13 +2,13 @@
  "type": "forge:ore_shaped",
  "pattern": [
   "XXX",
-  "XXX",
+  "X X",
   "XXX"
  ],
  "key": {
   "X": {
-   "item": "dcs_climate:dcs_ore_gemblock",
-   "data": 2
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedony"
   }
  },
  "result": {

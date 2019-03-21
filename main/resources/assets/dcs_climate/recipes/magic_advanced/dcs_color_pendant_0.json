@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "ZZZ",
+  " Y ",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "extractBlue"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_color_pendant",
+  "count": 1,
+  "data": 0
+ }
+}

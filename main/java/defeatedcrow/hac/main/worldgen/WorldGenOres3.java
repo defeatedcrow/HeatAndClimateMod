@@ -23,6 +23,17 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 public class WorldGenOres3 implements IWorldGenerator {
 
 	private static final boolean debug = false;
+	private final boolean isForced;
+
+	public WorldGenOres3(boolean force) {
+		super();
+		isForced = force;
+	}
+
+	public WorldGenOres3() {
+		super();
+		isForced = false;
+	}
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
@@ -40,12 +51,17 @@ public class WorldGenOres3 implements IWorldGenerator {
 		int count = 4;
 
 		// 隣接チャンク分も生成する
-		if ((genDim1 != 1 && genDim1 != -1)) {
+		if (genDim1 == -1) {
+			OreVein vein = OreGenPos.INSTANCE.getNetherVeins(chunkX, chunkZ, world);
+			if (vein != null) {
+				generateNetherVein(world, vein, posX1, posZ1);
+			}
+		} else if ((genDim1 != 1 && genDim1 != -1)) {
 			OreVein[] veins = OreGenPos.INSTANCE.getVeins(chunkX, chunkZ, world);
 			if (veins != null) {
 				for (int i = 0; i < veins.length; i++) {
 					OreVein vein = veins[i];
-					if (vein != null) {
+					if (vein != null && (!isForced || vein.type != EnumVein.HIGH_RED)) {
 						if (vein.type == EnumVein.GUANO) {
 							generateGuano(world, vein, posX1, posZ1);
 						} else {
@@ -75,21 +91,12 @@ public class WorldGenOres3 implements IWorldGenerator {
 		return debug;
 	}
 
-	static boolean isPlaceable2(Block block) {
-		if (block == Blocks.STAINED_HARDENED_CLAY)
-			return true;
-		if (block == Blocks.HARDENED_CLAY)
-			return true;
-
-		return debug;
-	}
-
 	static boolean isPlaceable3(Block block) {
-		if (block == Blocks.SAND)
+		if (block == Blocks.GRAVEL)
 			return true;
-		if (block == Blocks.SANDSTONE)
+		if (block == Blocks.NETHERRACK)
 			return true;
-		if (block == Blocks.DIRT)
+		if (block == Blocks.SOUL_SAND)
 			return true;
 
 		return debug;
@@ -160,7 +167,82 @@ public class WorldGenOres3 implements IWorldGenerator {
 						double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
 						if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r) {
 							OreSet add = gen[h2];
-							if (isPlaceable(block)) {
+							if (isPlaceable(block) || isForced) {
+								int j = world.rand.nextInt(100);
+								if (add.hasSecondOre() && j < add.getSecondChance()) {
+									world.setBlockState(p, add.getSecondOre().getState(), 4);
+								} else {
+									world.setBlockState(p, add.getOre().getState(), 4);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public void generateNetherVein(World world, OreVein vein, int limX, int limZ) {
+		VeinTable table = VeinTableRegister.INSTANCE.getTable(vein.type);
+		if (table == null) {
+			return;
+		}
+		BlockPos pos = vein.pos;
+		int r = vein.round;
+		int h = r - 1;
+		int[] rands = vein.rands;
+		OreSet[] gen = new OreSet[h];
+		for (int i = 0; i < h; i++) {
+			List<OreSet> list = new ArrayList<OreSet>();
+			int i1 = 0;
+			list = table.getOreTable();
+			i1 = world.rand.nextInt(table.tableCount);
+
+			int i2 = 0;
+			for (OreSet set : list) {
+				i2 += set.getWeight();
+				if (i2 >= i1) {
+					gen[i] = set;
+					break;
+				}
+				if (gen[i] == null) {
+					gen[i] = list.get(0);
+				}
+			}
+		}
+
+		float sx = 0;
+		float sz = 0;
+		if (rands.length > 0) {
+			int i3 = rands[0];
+			if (i3 < 11) {
+				sx = i3 / 10F;
+				if ((i3 & 1) == 1) {
+					sx *= -1F;
+				}
+			} else {
+				i3 -= 10;
+				sz = i3 / 10F;
+				if ((i3 & 1) == 1) {
+					sz *= -1F;
+				}
+			}
+		}
+
+		for (int x = -r; x < +r; x++) {
+			for (int z = -r; z < +r; z++) {
+				for (int y = 0; y < h; y++) {
+					if (pos.getX() + x > limX && pos.getZ() + z > limZ) {
+
+						int offY = MathHelper.floor(sx * x) + MathHelper.floor(sz * z);
+						int h2 = y;
+
+						BlockPos p = new BlockPos(pos.getX() + x, pos.getY() + y + offY, pos.getZ() + z);
+						Block block = world.getBlockState(p).getBlock();
+						double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
+						if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r) {
+							OreSet add = gen[h2];
+							if (isPlaceable3(block) || isForced) {
 								int j = world.rand.nextInt(100);
 								if (add.hasSecondOre() && j < add.getSecondChance()) {
 									world.setBlockState(p, add.getSecondOre().getState(), 4);
@@ -221,7 +303,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 							if (b1 || b2) {
 								int height = p.getY() - pos.getY();
 								OreSet add = gen[height];
-								if (isPlaceable(block)) {
+								if (isPlaceable(block) || isForced) {
 									int j = world.rand.nextInt(100);
 									if (add.hasSecondOre() && j < add.getSecondChance()) {
 										world.setBlockState(p, add.getSecondOre().getState(), 4);

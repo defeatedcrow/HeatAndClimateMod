@@ -693,12 +693,6 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 14), 21300);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 15), 11500);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.amulet, 1, 0), 2620);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.amulet, 1, 1), 2750);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.amulet, 1, 2), 3270);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.amulet, 1, 3), 6720);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.amulet, 1, 4), 3600);
-
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.gemBootsBird, 1, 0), 27200);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.gemBootsFish, 1, 0), 31300);
 

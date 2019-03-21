@@ -600,7 +600,9 @@ public class MachineRecipes {
 		OreDictionary.registerOre("aromaticcompound", new ItemStack(MachineInit.reagent, 1, 14));
 		OreDictionary.registerOre("blockFuelCoke", new ItemStack(MachineInit.fuelCont, 1, 0));
 		OreDictionary.registerOre("blockCarbide", new ItemStack(MachineInit.fuelCont, 1, 1));
-
+		OreDictionary.registerOre("catalystBladeSUS", new ItemStack(MachineInit.rotaryBlade, 1, 0));
+		OreDictionary.registerOre("catalystBladeTitanium", new ItemStack(MachineInit.rotaryBlade, 1, 1));
+		OreDictionary.registerOre("catalystBladeScreen", new ItemStack(MachineInit.rotaryBlade, 1, 2));
 	}
 
 	static void loadAltRecipes() {

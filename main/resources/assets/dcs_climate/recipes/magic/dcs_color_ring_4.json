@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y",
+  "Z"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dustCrystal"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "dropWhite"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_color_ring",
+  "count": 1,
+  "data": 4
+ }
+}

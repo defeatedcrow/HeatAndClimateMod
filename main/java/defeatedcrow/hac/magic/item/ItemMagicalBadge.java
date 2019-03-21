@@ -8,6 +8,8 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -62,6 +64,7 @@ import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@Deprecated
 public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 
 	private final int maxMeta;
@@ -139,7 +142,7 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public CharmType getType(int meta) {
+	public CharmType getCharmType(int meta) {
 		switch (meta) {
 		case 6:
 		case 7:
@@ -156,6 +159,16 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 		default:
 			return CharmType.ATTACK;
 		}
+	}
+
+	@Override
+	public MagicType getType(int meta) {
+		return MagicType.BADGE;
+	}
+
+	@Override
+	public MagicColor getColor(int meta) {
+		return MagicColor.NONE;
 	}
 
 	@Override
@@ -277,18 +290,18 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public void constantEffect(EntityPlayer player, ItemStack charm) {
-		if (player != null && !DCUtil.isEmpty(charm) && !player.world.isRemote) {
+	public void constantEffect(EntityLivingBase owner, ItemStack charm) {
+		if (owner != null && !DCUtil.isEmpty(charm) && !owner.world.isRemote) {
 			int meta = charm.getMetadata();
 			if (meta == 6) {
-				if (!player.onGround && player.isSneaking()) {
-					if (player.motionY < 1.0F) {
-						player.motionY += 1.0D;
+				if (!owner.onGround && owner.isSneaking()) {
+					if (owner.motionY < 1.0F) {
+						owner.motionY += 1.0D;
 					} else {
-						player.motionY = 1.0D;
+						owner.motionY = 1.0D;
 					}
 
-					player.fallDistance = 0.0F;
+					owner.fallDistance = 0.0F;
 				}
 			}
 		}
@@ -444,10 +457,10 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public boolean onAttacking(EntityPlayer player, EntityLivingBase target, DamageSource source, float damage,
+	public boolean onAttacking(EntityLivingBase owner, EntityLivingBase target, DamageSource source, float damage,
 			ItemStack charm) {
 		int meta = charm.getMetadata();
-		if (player.isSneaking()) {
+		if (owner.isSneaking()) {
 			if (meta == 3) {
 				target.clearActivePotions();
 				return true;
@@ -462,33 +475,33 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 				EnchantmentData data = this.getEnchantment(target);
 				ItemStack ret = new ItemStack(Items.ENCHANTED_BOOK);
 				ItemEnchantedBook.addEnchantment(ret, data);
-				EntityItem drop = new EntityItem(player.world, target.posX, target.posY + 0.5D, target.posZ, ret);
+				EntityItem drop = new EntityItem(owner.world, target.posX, target.posY + 0.5D, target.posZ, ret);
 				drop.setDefaultPickupDelay();
-				player.world.spawnEntity(drop);
+				owner.world.spawnEntity(drop);
 				return true;
 			}
 		}
 		if (meta == 10) {
-			if (player != null && target != null && !source.isExplosion() && source.isProjectile()) {
-				CustomExplosion explosion = new CustomExplosion(player.world, player, player, target.posX,
+			if (owner != null && target != null && !source.isExplosion() && source.isProjectile()) {
+				CustomExplosion explosion = new CustomExplosion(owner.world, owner, owner, target.posX,
 						target.posY + 0.25D, target.posZ, 3F, CustomExplosion.Type.Silk, true);
 				explosion.doExplosion();
-				player.world.addWeatherEffect(new EntityLightningBolt(player.world, target.posX, target.posY - 0.25D,
-						target.posZ, !player.isSneaking()));
+				owner.world.addWeatherEffect(new EntityLightningBolt(owner.world, target.posX, target.posY - 0.25D,
+						target.posZ, !owner.isSneaking()));
 				return true;
 			}
 		}
 		if (meta == 13) {
-			if (player != null && target != null && !source.isExplosion() && target instanceof IMob) {
+			if (owner != null && target != null && !source.isExplosion() && target instanceof IMob) {
 				target.setDead();
 				return true;
 			}
 		}
 		if (meta == 14) {
-			if (player != null && player.isSneaking() && target != null && !source.isExplosion() && !source
+			if (owner != null && owner.isSneaking() && target != null && !source.isExplosion() && !source
 					.isProjectile()) {
 				AxisAlignedBB aabb = target.getEntityBoundingBox().grow(5.0D, 0D, 5.0D);
-				List<EntityLiving> list = player.world.getEntitiesWithinAABB(EntityLiving.class, aabb);
+				List<EntityLiving> list = owner.world.getEntitiesWithinAABB(EntityLiving.class, aabb);
 				if (list.isEmpty())
 					return false;
 				else {
@@ -500,9 +513,9 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 			}
 		}
 		if (meta == 18) {
-			if (player != null && target instanceof EntityLiving) {
+			if (owner != null && target instanceof EntityLiving) {
 				AxisAlignedBB aabb = target.getEntityBoundingBox().grow(8.0D, 2.0D, 8.0D);
-				List<EntityLiving> list = player.world.getEntitiesWithinAABB(EntityLiving.class, aabb);
+				List<EntityLiving> list = owner.world.getEntitiesWithinAABB(EntityLiving.class, aabb);
 				if (list.isEmpty())
 					return false;
 				else {
@@ -525,104 +538,115 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public boolean onToolUsing(EntityPlayer player, BlockPos pos, IBlockState state, ItemStack charm) {
-		int meta = charm.getMetadata();
-		if (player.isSneaking() && !player.world.isRemote && state != null) {
-			boolean silk = false;
+	public boolean onPlayerAttacking(EntityPlayer owner, EntityLivingBase target, DamageSource source, float damage,
+			ItemStack charm) {
+		return this.onAttacking(owner, target, source, damage, charm);
+	}
 
-			if (meta == 9) {
-				BlockSet set = new BlockSet(state.getBlock(), state.getBlock().getMetaFromState(state));
-				if (MainCoreConfig.disables.contains(set)) {
-					return false;
-				}
-				silk = DCUtil.hasItemInTopSlots(player, new ItemStack(this, 1, 19));
-				// 一括破壊
-				ItemStack hold = player.getHeldItemMainhand();
-				BlockPos min = pos.add(-5, -5, -5);
-				BlockPos max = pos.add(5, 5, 5);
-				Iterable<BlockPos> itr = pos.getAllInBox(min, max);
-				boolean flag = false;
-				for (BlockPos p : itr) {
-					if (p.getY() < 0 || p.getY() > 255) {
-						continue;
+	@Override
+	public boolean onToolUsing(EntityLivingBase owner, BlockPos pos, IBlockState state, ItemStack charm) {
+		int meta = charm.getMetadata();
+		if (owner instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) owner;
+			if (player.isSneaking() && !player.world.isRemote && state != null) {
+				boolean silk = false;
+
+				if (meta == 9) {
+					BlockSet set = new BlockSet(state.getBlock(), state.getBlock().getMetaFromState(state));
+					if (MainCoreConfig.disables.contains(set)) {
+						return false;
 					}
-					if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
-						continue;
-					IBlockState target = player.world.getBlockState(p);
-					if (!target.getBlock().canHarvestBlock(player.world, p, player))
-						continue;
-					if (target.equals(state) && target.getBlock().getMetaFromState(target) == state.getBlock()
-							.getMetaFromState(state) && !target.getBlock().hasTileEntity(target)) {
-						// 同Block同Metadata
-						if (silk && target.getBlock().canSilkHarvest(player.world, p, target, player)) {
-							ItemStack item = new ItemStack(target.getBlock(), 1, target.getBlock()
-									.getMetaFromState(target));
-							if (DCUtil.isEmpty(item)) {
-								item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, 0), state
-										.getBlock().quantityDropped(itemRand), state.getBlock().damageDropped(state));
-							}
-							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p
-									.getZ() + 0.5D, item);
-							player.world.spawnEntity(drop);
-						} else {
-							target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
+					silk = DCUtil.hasCharmItem(player, new ItemStack(this, 1, 19));
+					// 一括破壊
+					ItemStack hold = player.getHeldItemMainhand();
+					BlockPos min = pos.add(-5, -5, -5);
+					BlockPos max = pos.add(5, 5, 5);
+					Iterable<BlockPos> itr = pos.getAllInBox(min, max);
+					boolean flag = false;
+					for (BlockPos p : itr) {
+						if (p.getY() < 0 || p.getY() > 255) {
+							continue;
 						}
-						player.world.setBlockToAir(p);
-						flag = true;
-					}
-				}
-				return flag;
-			} else if (meta == 8) {
-				silk = DCUtil.hasItemInTopSlots(player, new ItemStack(this, 1, 19));
-				// 範囲破壊
-				ItemStack hold = player.getHeldItemMainhand();
-				String tool = state.getBlock().getHarvestTool(state);
-				int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, hold);
-				BlockPos min = new BlockPos(pos.add(-1, -1, -1));
-				BlockPos max = new BlockPos(pos.add(1, 1, 1));
-				Iterable<BlockPos> itr = pos.getAllInBox(min, max);
-				boolean flag = false;
-				for (BlockPos p : itr) {
-					if (p.getY() < 0 || p.getY() > 255) {
-						continue;
-					}
-					if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
-						continue;
-					IBlockState block = player.world.getBlockState(p);
-					if (!block.getBlock().canHarvestBlock(player.world, p, player))
-						continue;
-					if (!block.getBlock().hasTileEntity(block)) {
-						if (silk && block.getBlock().canSilkHarvest(player.world, p, block, player)) {
-							ItemStack item = new ItemStack(block.getBlock(), 1, block.getBlock()
-									.getMetaFromState(block));
-							if (DCUtil.isEmpty(item)) {
-								item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, fortune), state
-										.getBlock().quantityDropped(itemRand), state.getBlock().damageDropped(state));
+						if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
+							continue;
+						IBlockState target = player.world.getBlockState(p);
+						if (!target.getBlock().canHarvestBlock(player.world, p, player))
+							continue;
+						if (target.equals(state) && target.getBlock().getMetaFromState(target) == state.getBlock()
+								.getMetaFromState(state) && !target.getBlock().hasTileEntity(target)) {
+							// 同Block同Metadata
+							if (silk && target.getBlock().canSilkHarvest(player.world, p, target, player)) {
+								ItemStack item = new ItemStack(target.getBlock(), 1, target.getBlock()
+										.getMetaFromState(target));
+								if (DCUtil.isEmpty(item)) {
+									item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, 0), state
+											.getBlock().quantityDropped(itemRand), state.getBlock()
+													.damageDropped(state));
+								}
+								EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p
+										.getZ() + 0.5D, item);
+								player.world.spawnEntity(drop);
+							} else {
+								target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
 							}
-							EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p
-									.getZ() + 0.5D, item);
-							player.world.spawnEntity(drop);
-						} else {
-							block.getBlock().harvestBlock(player.world, player, p, block, null, hold);
+							player.world.setBlockToAir(p);
+							flag = true;
 						}
-						player.world.setBlockToAir(p);
-						flag = true;
 					}
-				}
-				return flag;
-			} else if (meta == 19) {
-				if (player.canPlayerEdit(pos, EnumFacing.UP, charm) && state.getBlock()
-						.canSilkHarvest(player.world, pos, state, player)) {
-					ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
-					if (DCUtil.isEmpty(item)) {
-						item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, 0), state.getBlock()
-								.quantityDropped(itemRand), state.getBlock().damageDropped(state));
+					return flag;
+				} else if (meta == 8) {
+					silk = DCUtil.hasCharmItem(player, new ItemStack(this, 1, 19));
+					// 範囲破壊
+					ItemStack hold = player.getHeldItemMainhand();
+					String tool = state.getBlock().getHarvestTool(state);
+					int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, hold);
+					BlockPos min = new BlockPos(pos.add(-1, -1, -1));
+					BlockPos max = new BlockPos(pos.add(1, 1, 1));
+					Iterable<BlockPos> itr = pos.getAllInBox(min, max);
+					boolean flag = false;
+					for (BlockPos p : itr) {
+						if (p.getY() < 0 || p.getY() > 255) {
+							continue;
+						}
+						if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
+							continue;
+						IBlockState block = player.world.getBlockState(p);
+						if (!block.getBlock().canHarvestBlock(player.world, p, player))
+							continue;
+						if (!block.getBlock().hasTileEntity(block)) {
+							if (silk && block.getBlock().canSilkHarvest(player.world, p, block, player)) {
+								ItemStack item = new ItemStack(block.getBlock(), 1, block.getBlock()
+										.getMetaFromState(block));
+								if (DCUtil.isEmpty(item)) {
+									item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, fortune),
+											state.getBlock().quantityDropped(itemRand), state.getBlock()
+													.damageDropped(state));
+								}
+								EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p
+										.getZ() + 0.5D, item);
+								player.world.spawnEntity(drop);
+							} else {
+								block.getBlock().harvestBlock(player.world, player, p, block, null, hold);
+							}
+							player.world.setBlockToAir(p);
+							flag = true;
+						}
 					}
-					EntityItem drop = new EntityItem(player.world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
-							.getZ() + 0.5D, item);
-					player.world.spawnEntity(drop);
-					player.world.setBlockToAir(pos);
-					return true;
+					return flag;
+				} else if (meta == 19) {
+					if (player.canPlayerEdit(pos, EnumFacing.UP, charm) && state.getBlock()
+							.canSilkHarvest(player.world, pos, state, player)) {
+						ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
+						if (DCUtil.isEmpty(item)) {
+							item = new ItemStack(state.getBlock().getItemDropped(state, itemRand, 0), state.getBlock()
+									.quantityDropped(itemRand), state.getBlock().damageDropped(state));
+						}
+						EntityItem drop = new EntityItem(player.world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
+								.getZ() + 0.5D, item);
+						player.world.spawnEntity(drop);
+						player.world.setBlockToAir(pos);
+						return true;
+					}
 				}
 			}
 		}

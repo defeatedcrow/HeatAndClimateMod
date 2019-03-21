@@ -1,12 +1,12 @@
 package defeatedcrow.hac.main.event;
 
 import java.util.List;
+import java.util.Map;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.ClimateMain;
@@ -17,6 +17,7 @@ import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.util.DCAdvancementUtil;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.MainUtil;
+import defeatedcrow.hac.main.util.portal.DCDimChangeHelper;
 import defeatedcrow.hac.main.worldgen.CaravanGenPos;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
@@ -35,11 +36,13 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -47,9 +50,9 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.client.FMLClientHandler;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -61,26 +64,11 @@ public class LivingMainEventDC {
 		Entity entity = event.getEntity();
 		if (entity != null && entity instanceof EntityArrow) {
 			EntityArrow arrow = (EntityArrow) entity;
-			if (arrow.shootingEntity instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) arrow.shootingEntity;
-				boolean hasCharm = false;
-				for (int i = 9; i < 18; i++) {
-					ItemStack check = player.inventory.getStackInSlot(i);
-					if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
-						int m = check.getMetadata();
-						if (m == 18) {
-							hasCharm = true;
-						}
-					}
-				}
-				if (Loader.isModLoaded("baubles") && !hasCharm) {
-					if (DCPluginBaubles.hasBaublesCharm(player, new ItemStack(MagicInit.pendant, 1, 18))) {
-						hasCharm = true;
-					}
-				}
 
-				if (hasCharm) {
-					arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 5.0F, 0.0F);
+			if (arrow.shootingEntity instanceof EntityLivingBase) {
+				EntityLivingBase liv = (EntityLivingBase) arrow.shootingEntity;
+				if (DCUtil.hasCharmItem(liv, new ItemStack(MagicInit.pendant, 1, 18))) {
+					arrow.shoot(liv, liv.rotationPitch, liv.rotationYaw, 0.0F, 5.0F, 0.0F);
 				}
 			}
 		}
@@ -91,18 +79,7 @@ public class LivingMainEventDC {
 		EntityPlayer player = event.getEntityPlayer();
 		Entity target = event.getTarget();
 		if (player != null && target != null && !player.world.isRemote) {
-			boolean hasCharm = false;
-			for (int i = 9; i < 18; i++) {
-				ItemStack check = player.inventory.getStackInSlot(i);
-				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
-					int m = check.getMetadata();
-					if (m == 17) {
-						hasCharm = true;
-					}
-				}
-			}
-
-			if (hasCharm) {
+			if (DCUtil.hasCharmItem(player, new ItemStack(MagicInit.pendant, 1, 17))) {
 				if (target instanceof EntityTameable) {
 					EntityTameable animal = (EntityTameable) target;
 					if (player.getHeldItem(event.getHand()).getItem() == Items.APPLE && !animal.isTamed()) {
@@ -189,17 +166,9 @@ public class LivingMainEventDC {
 					// bird potion
 					player.fallDistance = 0.0F;
 				}
-				if (MainCoreConfig.pendant_schorl) {
-					if (player.inventory.hasItemStack(new ItemStack(MagicInit.pendant, 1, 10)) && player
-							.isPotionActive(MobEffects.SPEED)) {
-						player.stepHeight = 1.0F;
-					} else {
-						player.stepHeight = 0.6F;
-					}
-				}
 
-				// advancement
 				if (!player.world.isRemote && player instanceof EntityPlayerMP) {
+					// advancement
 					boolean b1 = false;
 					boolean b2 = false;
 					for (ItemStack armor : player.inventory.armorInventory) {
@@ -219,6 +188,11 @@ public class LivingMainEventDC {
 					}
 					if (b2) {
 						DCAdvancementUtil.unlock(player, "climate_wear2");
+					}
+
+					// warp process
+					if (DCDimChangeHelper.INSTANCE.inWarpProcess(player)) {
+						DCDimChangeHelper.INSTANCE.warp(player);
 					}
 				}
 			}
@@ -368,6 +342,33 @@ public class LivingMainEventDC {
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void afterWarpDimEvent(PlayerChangedDimensionEvent event) {
+		EntityPlayer player = event.player;
+		if (player != null) {
+			Map<Integer, ItemStack> map = DCUtil.getPlayerCharm(player, null);
+			for (ItemStack charm : map.values()) {
+				if (!DCUtil.isEmpty(charm) && charm.getItem() == MagicInit.colorBadge && charm.getItemDamage() == 1) {
+					int dim = player.world.provider.getDimension();
+					String dimName = player.world.provider.getDimensionType().getName();
+					int x = MathHelper.floor(player.posX);
+					int y = MathHelper.floor(player.posY);
+					int z = MathHelper.floor(player.posZ);
+					NBTTagCompound tag = charm.getTagCompound();
+					if (tag == null) {
+						tag = new NBTTagCompound();
+					}
+					tag.setString("dcs.portal.dimname", dimName);
+					tag.setInteger("dcs.portal.dim", dim);
+					tag.setInteger("dcs.portal.x", x);
+					tag.setInteger("dcs.portal.y", y);
+					tag.setInteger("dcs.portal.z", z);
+					charm.setTagCompound(tag);
 				}
 			}
 		}

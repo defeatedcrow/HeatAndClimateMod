@@ -119,18 +119,18 @@ public class RoundBreadItem extends FoodItemBase {
 		case 1:
 		case 3:
 		case 13:
-			return 7;
+			return 6;
 		case 11:
 		case 15:
-			return 8;
+			return 7;
 		case 5:
 		case 10:
 			return 6;
 		case 7:
-			return 14;
+			return 10;
 		case 8:
 		case 9:
-			return 10;
+			return 8;
 		}
 		return 0;
 	}

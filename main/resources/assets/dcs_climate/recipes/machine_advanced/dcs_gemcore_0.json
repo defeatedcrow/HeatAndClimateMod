@@ -12,7 +12,7 @@
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "gemClam"
+   "ore": "gemOpal"
   },
   "Z": {
    "type": "forge:ore_dict",

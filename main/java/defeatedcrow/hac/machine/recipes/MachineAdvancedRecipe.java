@@ -330,7 +330,7 @@ public class MachineAdvancedRecipe {
 				'X',
 				"gemBismuth",
 				'Y',
-				"gemClam",
+				"gemOpal",
 				'Z',
 				"gemSchorl"
 		});
@@ -344,7 +344,7 @@ public class MachineAdvancedRecipe {
 				'X',
 				"gemCelestite",
 				'Y',
-				"gemClam",
+				"gemOpal",
 				'Z',
 				"obsidian"
 		});

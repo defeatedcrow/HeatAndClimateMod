@@ -2,14 +2,15 @@ package defeatedcrow.hac.main.api.orevein;
 
 public enum EnumVein {
 	RED(0, 5, 80),
-	GREEN(1, 4, 40),
-	BLUE(2, 4, 30),
-	WHITE(3, 4, 40),
+	GREEN(1, 4, 25),
+	BLUE(2, 4, 25),
+	WHITE(3, 4, 25),
 	BLACK(4, 3, 10),
 	HIGH_RED(5, 5, 140),
-	GUANO(8, 4, 50),
+	GUANO(8, 4, 25),
 	SKARN(9, 8, 50),
-	SKARN_UNDER(10, 8, 20);
+	SKARN_UNDER(10, 8, 20),
+	NETHER(11, 5, 25);
 
 	public static final EnumVein[] VALUES = {
 			RED,
@@ -20,7 +21,8 @@ public enum EnumVein {
 			HIGH_RED,
 			GUANO,
 			SKARN,
-			SKARN_UNDER
+			SKARN_UNDER,
+			NETHER
 	};
 
 	public final int id;

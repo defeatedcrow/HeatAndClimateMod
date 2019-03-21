@@ -3,7 +3,9 @@ package defeatedcrow.hac.main.block.ores;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -18,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLayerNew extends DCSimpleBlock {
+public class BlockLayerNew extends DCSimpleBlock implements ITexturePath {
 
 	private Random rand = new Random();
 
@@ -166,5 +168,27 @@ public class BlockLayerNew extends DCSimpleBlock {
 		if (meta >= 0)
 			return new ItemStack(this, 1, meta);
 		return super.getPickBlock(state, target, world, pos, player);
+	}
+
+	private static String[] names = {
+			"alabaster",
+			"lime",
+			"guano",
+			"niter",
+			"sulfur",
+			"salt",
+			"serpentine"
+	};
+
+	@Override
+	public String getTexPath(int meta, boolean f) {
+		if (meta >= names.length) {
+			meta = names.length - 1;
+		}
+		String s = "blocks/ores/ore_b_" + names[meta];
+		if (f) {
+			s = "textures/" + s;
+		}
+		return ClimateCore.PACKAGE_ID + ":" + s;
 	}
 }

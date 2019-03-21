@@ -150,7 +150,7 @@ public class DCLootEvent {
 							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
 					}, new LootCondition[0], ClimateMain.MOD_ID + ":jungle_cloth_magic"));
 					if (ModuleConfig.magic) {
-						pool.addEntry(new LootEntryItem(MagicInit.daggerSilver, 15, 5, new LootFunction[] {
+						pool.addEntry(new LootEntryItem(MagicInit.magicCard, 15, 3, new LootFunction[] {
 								new SetCount(new LootCondition[0], new RandomValueRange(5, 8))
 						}, new LootCondition[0], ClimateMain.MOD_ID + ":jungle_dagger_silver"));
 					}

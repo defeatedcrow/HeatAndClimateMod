@@ -42,6 +42,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@Deprecated
 public class ItemMagicDagger extends DCItem {
 
 	/*
@@ -125,9 +126,8 @@ public class ItemMagicDagger extends DCItem {
 					world.spawnEntity(entityarrow);
 				}
 
-				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-						SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F,
-						1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
+						.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 				if (!flag) {
 					DCUtil.reduceStackSize(stack, 1);

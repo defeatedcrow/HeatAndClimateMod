@@ -74,6 +74,13 @@ public class VeinTableRegister implements IVeinTableRegister {
 						10), new OreSetDC(40, new BlockSet(MainInit.oreNew, 4), new BlockSet(MainInit.oreNew, 9), 10));
 		list.add(skarn2);
 
+		VeinTable nether = new VeinTable(EnumVein.NETHER, new OreSetDC(100, new BlockSet(MainInit.oreNew, 10)));
+		nether.addOreToTable1(new OreSetDC(50, new BlockSet(MainInit.oreNew, 10), new BlockSet(MainInit.oreNew, 11),
+				5), new OreSetDC(50, new BlockSet(MainInit.oreNew, 12), new BlockSet(MainInit.oreNew, 13),
+						5), new OreSetDC(10, new BlockSet(MainInit.oreNew, 14)), new OreSetDC(5, new BlockSet(
+								MainInit.oreNew, 11)), new OreSetDC(5, new BlockSet(MainInit.oreNew, 13)));
+		list.add(nether);
+
 		// event
 		VeinTableRegisterEvent event = new VeinTableRegisterEvent(INSTANCE);
 		MinecraftForge.EVENT_BUS.post(event);

@@ -51,16 +51,16 @@ public class MachineDeviceRecipes {
 					8), 0.2F, "oreWhite");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 4), new ItemStack(MainInit.oreItem, 1,
 					9), 0.2F, "oreBlack");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 5), new ItemStack(MainInit.gems, 1,
-					1), 0.3F, "oreLargeRed");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 6), new ItemStack(MainInit.gems, 1,
-					5), 0.3F, "oreLargeGreen");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 7), new ItemStack(MainInit.gems, 1,
-					0), 0.3F, "oreLargeBlue");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 8), new ItemStack(MainInit.gems, 1,
-					2), 0.3F, "oreLargeWhite");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 9), new ItemStack(Items.COAL, 1,
-					0), 0.3F, "oreLargeBlack");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 5), new ItemStack(MainInit.oreItem, 1,
+					10), 0.1F, "oreLargeRed");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 6), new ItemStack(MainInit.oreItem, 1,
+					11), 0.1F, "oreLargeGreen");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 7), new ItemStack(MainInit.oreItem, 1,
+					12), 0.1F, "oreLargeBlue");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 8), new ItemStack(MainInit.oreItem, 1,
+					13), 0.1F, "oreLargeWhite");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 9), new ItemStack(MainInit.oreItem, 1,
+					14), 0.1F, "oreLargeBlack");
 
 			// old ores
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 0), "oreCopper");
@@ -71,12 +71,12 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 4), "oreGold");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 3), "oreSilver");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 14), "oreManganese");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 3), "oreGypsum");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 3, 3), "oreGypsum");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 0), "oreChalcedonyBlue");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 2), "oreChalcedonyWhite");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 4), "oreSapphire");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 3, 2), "oreLime");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 8), "oreSalt");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 3, 8), "oreSalt");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 9), "oreNiter");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 10), "oreSulfur");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 8), "oreTin");
@@ -94,7 +94,8 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DIAMOND, 2, 0), "oreDiamond");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 3, 4), "oreLapis");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.REDSTONE, 4, 0), "oreRedstone");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.COAL, 3, 0), "oreCoal");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.COAL, 2, 0), "oreCoal");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MachineInit.reagent, 2, 0), "oreCrudeOil");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 0), new ItemStack(MainInit.oreDust, 1,
 					11), 0.5F, new ItemStack(Blocks.RED_SANDSTONE, 1, 32767));
@@ -205,7 +206,7 @@ public class MachineDeviceRecipes {
 	static void loadReactorRecipe() {
 		if (ModuleConfig.r_reactor) {
 			// new ores 浮上選鉱
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 5), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 5), new ItemStack(
 					MainInit.oreItem, 1, 10), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -213,7 +214,7 @@ public class MachineDeviceRecipes {
 													"oreRed",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 6), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 6), new ItemStack(
 					MainInit.oreItem, 1, 11), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -221,7 +222,7 @@ public class MachineDeviceRecipes {
 													"oreGreen",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 7), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 7), new ItemStack(
 					MainInit.oreItem, 1, 12), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -229,7 +230,7 @@ public class MachineDeviceRecipes {
 													"oreBlue",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 8), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 8), new ItemStack(
 					MainInit.oreItem, 1, 13), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -237,7 +238,7 @@ public class MachineDeviceRecipes {
 													"oreWhite",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 9), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 9), new ItemStack(
 					MainInit.oreItem, 1, 14), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -245,7 +246,7 @@ public class MachineDeviceRecipes {
 													"oreBlack",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 10), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 10), new ItemStack(
 					MainInit.gems, 1, 21), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -253,7 +254,7 @@ public class MachineDeviceRecipes {
 													"oreLargeRed",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 11), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 11), new ItemStack(
 					MainInit.gems, 1, 19), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -261,7 +262,7 @@ public class MachineDeviceRecipes {
 													"oreLargeGreen",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 12), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 12), new ItemStack(
 					MainInit.gems, 1, 20), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -269,7 +270,7 @@ public class MachineDeviceRecipes {
 													"oreLargeBlue",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 13), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 13), new ItemStack(
 					MainInit.gems, 1, 6), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
@@ -277,7 +278,7 @@ public class MachineDeviceRecipes {
 													"oreLargeWhite",
 													"soap"
 			});
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1, 14), new ItemStack(
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 14), new ItemStack(
 					MainInit.gems, 1, 22), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,

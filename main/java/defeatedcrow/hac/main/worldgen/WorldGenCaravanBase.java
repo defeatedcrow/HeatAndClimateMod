@@ -25,6 +25,10 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 
 	@Override
 	public void generate(Random rand, int cx, int cz, World world, IChunkGenerator gen, IChunkProvider prov) {
+		int genDim1 = world.provider.getDimension();
+		if ((genDim1 != 0))
+			return;
+
 		int num = CaravanGenPos.getCaravanPartNum(cx, cz, world);
 		if (num > -1) {
 			int cx2 = (num % 3) + cx - 1;
@@ -50,7 +54,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		int px = cx << 4;
 		int pz = cz << 4;
 		int py = 68;
-		for (int y = -5; y < 40; y++) {
+		for (int y = -7; y < 40; y++) {
 			for (int x = 0; x < 16; x++) {
 				for (int z = 0; z < 16; z++) {
 					BlockPos pos = new BlockPos(px + x, py + y, pz + z);
@@ -195,10 +199,10 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 
 	private IBlockState getCoreState(int x, int y, int z, Random rand) {
 		if (y < -3) {
-			if (x == 7 && z == 7 && y == -4) {
+			if (x == 7 && z == 7 && y == -7) {
 				return Blocks.IRON_BLOCK.getDefaultState();
 			}
-			if (x == 8 && z == 8 && y == -4) {
+			if (x == 8 && z == 8 && y == -7) {
 				return MainInit.gemBlock.getDefaultState();
 			}
 			return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
@@ -280,10 +284,10 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 
 	private IBlockState getPartBase(int num, int x, int y, int z, Random rand) {
 		if (y < 0) {
-			if (x == 7 && z == 7 && y == -4) {
+			if (x == 7 && z == 7 && y == -7) {
 				return Blocks.IRON_BLOCK.getDefaultState();
 			}
-			if (x == 8 && z == 8 && y == -4) {
+			if (x == 8 && z == 8 && y == -7) {
 				return MainInit.gemBlock.getDefaultState();
 			}
 			return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);

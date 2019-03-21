@@ -10,8 +10,8 @@
    "ore": "stringMagic"
   },
   "Y": {
-   "item": "dcs_climate:dcs_macecore",
-   "data": 2
+   "type": "forge:ore_dict",
+   "ore": "cubeWhite"
   },
   "Z": {
    "type": "forge:ore_dict",

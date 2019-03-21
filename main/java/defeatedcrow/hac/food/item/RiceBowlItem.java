@@ -77,12 +77,12 @@ public class RiceBowlItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta == 0 ? 6 : 8;
+		return meta == 0 ? 5 : 6;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.8F;
+		return 0.4F;
 	}
 
 	@Override

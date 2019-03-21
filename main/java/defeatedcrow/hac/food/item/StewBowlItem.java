@@ -121,37 +121,37 @@ public class StewBowlItem extends FoodItemBase {
 	public int getFoodAmo(int meta) {
 		switch (meta) {
 		case 0:
-			return 10;
-		case 1:
 			return 8;
+		case 1:
+			return 6;
 		case 2:
-			return 11;
+			return 9;
 		case 3:
-			return 11;
+			return 9;
 		case 4:
-			return 13;
+			return 10;
 		case 5:
-			return 14;
+			return 12;
 		case 6:
-			return 13;
+			return 10;
 		case 7:
-			return 16;
+			return 12;
 		case 8:
-			return 11;
+			return 8;
 		case 9:
-			return 16;
+			return 12;
 		case 10:
-			return 11;
+			return 7;
 		case 11:
-			return 12;
+			return 9;
 		case 12:
-			return 16;
-		case 13:
-			return 16;
-		case 14:
 			return 12;
+		case 13:
+			return 12;
+		case 14:
+			return 8;
 		case 15:
-			return 16;
+			return 12;
 		}
 		return 0;
 	}

@@ -28,6 +28,11 @@ public class EntityGhostBullet extends EntityBulletDC {
 	}
 
 	@Override
+	public double getDamage() {
+		return this.damage * 0.8D;
+	}
+
+	@Override
 	public boolean getIsPenetrate() {
 		return true;
 	}

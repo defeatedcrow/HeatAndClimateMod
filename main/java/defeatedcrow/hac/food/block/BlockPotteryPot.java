@@ -128,8 +128,9 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "COLD" +
-					TextFormatting.GRAY.toString() + " ~ " + TextFormatting.RED.toString() + "BOIL");
+			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE
+					.toString() + "COLD" + TextFormatting.GRAY.toString() + " ~ " + TextFormatting.RED
+							.toString() + "OVEN");
 			tooltip.add(EnumFixedName.REQUIRE_CLIMATE.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add(EnumFixedName.OUTPUT_ITEM.getLocalizedName());

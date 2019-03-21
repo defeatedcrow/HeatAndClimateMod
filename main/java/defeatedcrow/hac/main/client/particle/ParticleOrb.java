@@ -29,7 +29,7 @@ public class ParticleOrb extends Particle {
 		this.flameScale = this.particleScale;
 		this.particleAlpha = 0.85F;
 		this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
-		this.particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D)) + 4;
+		this.particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D)) + 8;
 
 		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
 		TextureAtlasSprite sprite = texturemap.getAtlasSprite(ORB_TEX);
@@ -51,12 +51,10 @@ public class ParticleOrb extends Particle {
 		float f = (this.particleAge + partialTicks) / this.particleMaxAge;
 		this.particleScale = this.flameScale * (1.0F - f * f * 0.5F);
 		GlStateManager.enableBlend();
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-				GlStateManager.DestFactor.ZERO);
+		GlStateManager
+				.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.5F);
-		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY,
-				rotationXZ);
+		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
 		GlStateManager.disableBlend();
 	}
 

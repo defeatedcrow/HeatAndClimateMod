@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "YZY",
+  "XYX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_build_selenite",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemPeridot"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "cubeRed"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_biomeglass",
+  "count": 1,
+  "data": 2
+ }
+}

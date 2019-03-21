@@ -94,15 +94,15 @@ public class PlateMeatItem extends FoodItemBase {
 		case 6:
 			return 0;
 		case 1:
-			return 20;
+			return 10;
 		case 3:
-			return 14;
+			return 10;
 		case 5:
-			return 14;
+			return 10;
 		case 7:
-			return 16;
+			return 12;
 		case 9:
-			return 20;
+			return 16;
 		}
 		return 0;
 	}

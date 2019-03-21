@@ -101,11 +101,10 @@ public class CaravanGenPos {
 			byte biomeID = chunk.getBiomeArray()[7 << 4 | 7];
 			Biome biome = Biome.getBiome(biomeID);
 			if (biome != null) {
-				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) ||
-						BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA);
-				boolean b2 = !BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) &&
-						!BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) &&
-						biome != Biomes.SAVANNA_PLATEAU;
+				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary
+						.hasType(biome, BiomeDictionary.Type.SAVANNA);
+				boolean b2 = !BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) && !BiomeDictionary
+						.hasType(biome, BiomeDictionary.Type.MOUNTAIN) && biome != Biomes.SAVANNA_PLATEAU;
 				return b1 && b2;
 			}
 		}

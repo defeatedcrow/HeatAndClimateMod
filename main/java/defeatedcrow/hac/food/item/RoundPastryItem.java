@@ -100,15 +100,15 @@ public class RoundPastryItem extends FoodItemBase {
 	public int getFoodAmo(int meta) {
 		switch (meta) {
 		case 1:
-			return 12;
+			return 10;
 		case 3:
-			return 12;
+			return 10;
 		case 5:
-			return 16;
-		case 7:
-			return 16;
-		case 9:
 			return 12;
+		case 7:
+			return 12;
+		case 9:
+			return 10;
 		default:
 			return 0;
 		}

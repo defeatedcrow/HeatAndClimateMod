@@ -3,7 +3,6 @@ package defeatedcrow.hac.main.event;
 import java.util.Random;
 
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
-import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
@@ -27,7 +26,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.CreateFluidSourceEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -38,28 +36,12 @@ public class OnMiningEventDC {
 	@SubscribeEvent
 	public void preMining(PlayerEvent.BreakSpeed event) {
 		if (event.getEntityPlayer() != null) {
-			boolean hasCharm = false;
-			for (int i = 9; i < 18; i++) {
-				ItemStack check = event.getEntityPlayer().inventory.getStackInSlot(i);
-				if (!DCUtil.isEmpty(check) && check.getItem() == MagicInit.pendant) {
-					int m = check.getMetadata();
-					if (m == 9) {
-						hasCharm = true;
-					}
-				}
-			}
-
-			if (Loader.isModLoaded("baubles") && !hasCharm) {
-				if (DCPluginBaubles.hasBaublesCharm(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1, 9))) {
-					hasCharm = true;
-				}
-			}
-
-			if (hasCharm) {
+			if (DCUtil.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2)) || DCUtil
+					.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1, 9))) {
 				event.setNewSpeed(event.getNewSpeed() * 1.2F + 2.0F);
 			} else {
-				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER) &&
-						event.getEntityPlayer().isPotionActive(MainInit.ocean)) {
+				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER) && event.getEntityPlayer()
+						.isPotionActive(MainInit.ocean)) {
 					event.setNewSpeed(event.getNewSpeed() * 2.0F + 1.0F);
 				}
 			}
@@ -75,8 +57,8 @@ public class OnMiningEventDC {
 			if (state == null || DCUtil.isEmpty(held))
 				return;
 			float f = event.getWorld().rand.nextFloat();
-			if (state.getBlock() instanceof BlockBush && (held.getItem() instanceof ItemShears ||
-					held.getItem() instanceof ItemSword)) {
+			if (state.getBlock() instanceof BlockBush && (held.getItem() instanceof ItemShears || held
+					.getItem() instanceof ItemSword)) {
 				if (f < 0.10F * level) {
 					event.getDrops().add(new ItemStack(FoodInit.crops, 1, 9));
 				}
@@ -114,26 +96,28 @@ public class OnMiningEventDC {
 					}
 				}
 
-				player.world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.PLAYERS, 1.5F, 1.5F /
-						(player.world.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+				player.world
+						.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.PLAYERS, 1.5F, 1.5F / (player.world.rand
+								.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 			} else if (player.isSneaking() && stack.getItem() instanceof ItemPickaxe) {
 				ItemPickaxe pic = (ItemPickaxe) stack.getItem();
 				IBlockState state = event.getWorld().getBlockState(pos);
 				if (pos.getY() > 1 && pic.getHarvestLevel(stack, "pickaxe", player, state) >= 4) {
-					if (state != null && state.getBlock() == Blocks.BEDROCK &&
-							player.canPlayerEdit(pos, EnumFacing.UP, stack)) {
+					if (state != null && state.getBlock() == Blocks.BEDROCK && player
+							.canPlayerEdit(pos, EnumFacing.UP, stack)) {
 						ItemStack item = new ItemStack(Blocks.BEDROCK);
-						EntityItem drop = new EntityItem(event.getWorld(), pos.getX() + 0.5D, pos.getY() + 0.5D,
-								pos.getZ() + 0.5D, item);
+						EntityItem drop = new EntityItem(event.getWorld(), pos.getX() + 0.5D, pos.getY() + 0.5D, pos
+								.getZ() + 0.5D, item);
 						if (!event.getWorld().isRemote) {
 							event.getWorld().setBlockToAir(pos);
 							event.getWorld().spawnEntity(drop);
 							stack.damageItem(1, event.getEntityLiving());
 							event.setUseBlock(Result.ALLOW);
 						}
-						player.world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.PLAYERS, 1.5F, 1.0F /
-								(player.world.rand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+						player.world
+								.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.PLAYERS, 1.5F, 1.0F / (player.world.rand
+										.nextFloat() * 0.4F + 1.2F) + 0.5F);
 					}
 				}
 			}

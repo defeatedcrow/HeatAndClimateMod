@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemEmerald"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dropGreen"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_color",
+  "count": 1,
+  "data": 6
+ }
+}

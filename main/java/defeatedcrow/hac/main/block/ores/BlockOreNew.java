@@ -3,7 +3,9 @@ package defeatedcrow.hac.main.block.ores;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
+import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
@@ -18,11 +20,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockOreNew extends DCSimpleBlock {
+public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 
 	private Random rand = new Random();
 
@@ -66,11 +67,11 @@ public class BlockOreNew extends DCSimpleBlock {
 			3,
 			3,
 			3,
+			2,
 			3,
+			2,
 			3,
-			3,
-			3,
-			3,
+			2,
 			3
 	};
 
@@ -103,6 +104,11 @@ public class BlockOreNew extends DCSimpleBlock {
 		BLUE_2(MainInit.gems, 4, MainInit.gems, 19, true),
 		WHITE_2(MainInit.gems, 15, MainInit.gems, 6, true),
 		BLACK_2(MainInit.gems, 11, MainInit.gems, 22, true),
+		NETHER_RED_1(MainInit.gems, 1, MainInit.gems, 14, true),
+		NETHER_RED_2(MainInit.gems, 14, MainInit.gems, 21, true),
+		NETHER_BLACK_1(Items.COAL, 0, MainInit.gems, 11, true),
+		NETHER_BLACK_2(MainInit.gems, 11, MainInit.gems, 22, true),
+		NETHER_SULFUR(MainInit.gems, 9, Items.REDSTONE, 0, true),
 		NONE(null, 0, null, 0, false);
 
 		public Item dropItem;
@@ -132,11 +138,11 @@ public class BlockOreNew extends DCSimpleBlock {
 				DropTable.BLUE_2,
 				DropTable.WHITE_2,
 				DropTable.BLACK_2,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
+				DropTable.NETHER_RED_1,
+				DropTable.NETHER_RED_2,
+				DropTable.NETHER_BLACK_1,
+				DropTable.NETHER_BLACK_2,
+				DropTable.NETHER_SULFUR,
 				DropTable.NONE
 		};
 		if (meta < 16)
@@ -150,15 +156,11 @@ public class BlockOreNew extends DCSimpleBlock {
 		super.getDrops(list, world, pos, state, fortune);
 		int meta = this.getMetaFromState(state);
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
-		Biome biome = world instanceof World ? ((World) world).getBiomeForCoordsBody(pos) : world.getBiome(pos);
 
 		ItemStack add = ItemStack.EMPTY;
 		DropTable table = getTable(meta);
-		int par = 3 + fortune * 3;
-		int par2 = 20 + fortune * 20;
-		if (rand.nextInt(100) < par && table.secondary != null) {
-			add = new ItemStack(table.secondary, 1, table.secondaryMeta);
-		} else if (rand.nextInt(100) < par2 && table.dropItem != null) {
+		int par = 5 + fortune * 5;
+		if (rand.nextInt(100) < par && table.dropItem != null) {
 			add = new ItemStack(table.dropItem, 1, table.dropMeta);
 		}
 
@@ -174,5 +176,35 @@ public class BlockOreNew extends DCSimpleBlock {
 		if (meta >= 0)
 			return new ItemStack(this, 1, meta);
 		return super.getPickBlock(state, target, world, pos, player);
+	}
+
+	private static String[] names = {
+			"n2_red",
+			"n2_green",
+			"n2_blue",
+			"n2_white",
+			"n2_black",
+			"n1_red",
+			"n1_green",
+			"n1_blue",
+			"n1_white",
+			"n1_black",
+			"n2_red_n",
+			"n1_red_n",
+			"n2_black_n",
+			"n1_black_n",
+			"b_sulfur_n"
+	};
+
+	@Override
+	public String getTexPath(int meta, boolean f) {
+		if (meta >= names.length) {
+			meta = names.length - 1;
+		}
+		String s = "blocks/ores/ore_" + names[meta];
+		if (f) {
+			s = "textures/" + s;
+		}
+		return ClimateCore.PACKAGE_ID + ":" + s;
 	}
 }

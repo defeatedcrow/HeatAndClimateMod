@@ -1,6 +1,5 @@
 package defeatedcrow.hac.main.entity;
 
-import defeatedcrow.hac.core.ClimateCore;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 
@@ -8,7 +7,6 @@ public class EntityIronBolt extends EntityBulletDC {
 
 	public EntityIronBolt(World worldIn) {
 		super(worldIn);
-		this.damage = ClimateCore.isDebug ? 12.0D : 8.0D;
 	}
 
 	public EntityIronBolt(World worldIn, double x, double y, double z) {
@@ -17,6 +15,11 @@ public class EntityIronBolt extends EntityBulletDC {
 
 	public EntityIronBolt(World worldIn, EntityLivingBase shooter) {
 		super(worldIn, shooter);
+	}
+
+	@Override
+	public double getDamage() {
+		return this.damage * 0.5D;
 	}
 
 	@Override

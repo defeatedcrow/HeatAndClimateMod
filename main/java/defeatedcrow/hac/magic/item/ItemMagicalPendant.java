@@ -9,6 +9,8 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -36,6 +38,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * インベントリの最上段に入れていると効果のあるアクセサリー類。
  * ペンダントは常時系or防御系効果を持ち、耐久値の概念がない。
  */
+@Deprecated
 public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 
 	private final int maxMeta;
@@ -111,7 +114,7 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public CharmType getType(int meta) {
+	public CharmType getCharmType(int meta) {
 		switch (meta) {
 		case 0:
 		case 1:
@@ -131,6 +134,16 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 		default:
 			return CharmType.CONSTANT;
 		}
+	}
+
+	@Override
+	public MagicType getType(int meta) {
+		return MagicType.PENDANT;
+	}
+
+	@Override
+	public MagicColor getColor(int meta) {
+		return MagicColor.NONE;
 	}
 
 	@Override
@@ -158,13 +171,13 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public boolean onAttacking(EntityPlayer player, EntityLivingBase target, DamageSource source, float damage,
+	public boolean onAttacking(EntityLivingBase owner, EntityLivingBase target, DamageSource source, float damage,
 			ItemStack charm) {
 		int meta = charm.getMetadata();
-		if (meta == 12 && target != null && !player.world.isRemote) {
+		if (meta == 12 && target != null && !owner.world.isRemote) {
 			int r = 2 + itemRand.nextInt(3);
-			EntityXPOrb orb = new EntityXPOrb(player.world, target.posX, target.posY, target.posZ, r);
-			player.world.spawnEntity(orb);
+			EntityXPOrb orb = new EntityXPOrb(owner.world, target.posX, target.posY, target.posZ, r);
+			owner.world.spawnEntity(orb);
 		}
 		if (meta == 19) {
 			damage = 0F;
@@ -173,21 +186,26 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
+	public boolean onPlayerAttacking(EntityPlayer owner, EntityLivingBase target, DamageSource source, float damage,
+			ItemStack charm) {
+		return this.onAttacking(owner, target, source, damage, charm);
+	}
+
+	@Override
 	public boolean onDiffence(DamageSource source, EntityLivingBase target, float damage, ItemStack charm) {
 		return false;
 	}
 
 	@Override
-	public boolean onToolUsing(EntityPlayer player, BlockPos pos, IBlockState state, ItemStack charm) {
+	public boolean onToolUsing(EntityLivingBase owner, BlockPos pos, IBlockState state, ItemStack charm) {
 		int meta = charm.getMetadata();
-		if (player.isSneaking() && !player.world.isRemote && state != null) {
+		if (owner.isSneaking() && !owner.world.isRemote && state != null) {
 			if (meta == 8) {
-				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() - 2,
-						(double) pos.getZ() - 5, (double) pos.getX() + 5, (double) pos.getY() + 3, (double) pos.getZ() +
-								5);
-				List<EntityItem> drops = player.world.getEntitiesWithinAABB(EntityItem.class, aabb);
+				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() - 2, (double) pos
+						.getZ() - 5, (double) pos.getX() + 5, (double) pos.getY() + 3, (double) pos.getZ() + 5);
+				List<EntityItem> drops = owner.world.getEntitiesWithinAABB(EntityItem.class, aabb);
 				for (EntityItem drop : drops) {
-					drop.setPosition(player.posX, player.posY + 0.5D, player.posZ);
+					drop.setPosition(owner.posX, owner.posY + 0.5D, owner.posZ);
 				}
 			}
 		}
@@ -195,12 +213,12 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public void constantEffect(EntityPlayer player, ItemStack charm) {
+	public void constantEffect(EntityLivingBase owner, ItemStack charm) {
 		int meta = charm.getMetadata();
 
 		if (meta == 3) {
 			List<PotionEffect> removes = new ArrayList<PotionEffect>();
-			Collection<PotionEffect> target = player.getActivePotionEffects();
+			Collection<PotionEffect> target = owner.getActivePotionEffects();
 			for (PotionEffect check : target) {
 				Potion p = check.getPotion();
 				if (p != null && p.isBadEffect()) {
@@ -208,7 +226,7 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 				}
 			}
 			for (PotionEffect ret : removes) {
-				player.removePotionEffect(ret.getPotion());
+				owner.removePotionEffect(ret.getPotion());
 			}
 		}
 
@@ -237,7 +255,7 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 		}
 
 		if (eff != null) {
-			player.addPotionEffect(eff);
+			owner.addPotionEffect(eff);
 		}
 
 		if (meta == 16) {
@@ -250,7 +268,7 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 				cool = tag.getInteger("CharmCooldown");
 			}
 			if (cool < 0) {
-				ItemStack off = player.getHeldItemOffhand();
+				ItemStack off = owner.getHeldItemOffhand();
 				if (!DCUtil.isEmpty(off) && off.getItem().isDamageable()) {
 					int dam = off.getItemDamage();
 					if (dam > 0) {
