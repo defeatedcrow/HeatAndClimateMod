@@ -186,7 +186,7 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 	@Override
 	public boolean isSuitableClimate() {
 		// potteryは高温に耐えられない
-		return current != null && current.getHeat().getTier() <= DCHeatTier.OVEN.getTier() && current.getHeat()
+		return current != null && current.getHeat().getTier() < DCHeatTier.SMELTING.getTier() && current.getHeat()
 				.getTier() > DCHeatTier.FROSTBITE.getTier();
 	}
 
@@ -195,9 +195,9 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 		if (current == null)
 			return "dcs.gui.message.nullclimate";
 		else {
-			if (current.getHeat().getTier() > DCHeatTier.BOIL.getTier())
+			if (current.getHeat().getTier() > DCHeatTier.KILN.getTier())
 				return "dcs.gui.message.pottery.toohot";
-			else if (current.getHeat().getTier() <= DCHeatTier.FROSTBITE.getTier())
+			else if (current.getHeat().getTier() < DCHeatTier.COLD.getTier())
 				return "dcs.gui.message.pottery.toocold";
 			else
 				return "dcs.gui.message.suitableclimate";

@@ -130,7 +130,7 @@ public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE
 					.toString() + "COLD" + TextFormatting.GRAY.toString() + " ~ " + TextFormatting.RED
-							.toString() + "OVEN");
+							.toString() + "KILN");
 			tooltip.add(EnumFixedName.REQUIRE_CLIMATE.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add(EnumFixedName.OUTPUT_ITEM.getLocalizedName());
