@@ -1,0 +1,81 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_color_cube",
+      "data": 9
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.magic_cube.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.magic_cube.description"
+    }
+  },
+  "parent": "dcs_climate:magic_pendant",
+  "criteria": {
+        "cube_blue": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_color_cube",
+                    "data": 5
+                    }
+                ]
+            }
+        },
+        "cube_green": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_color_cube",
+                    "data": 6
+                    }
+                ]
+            }
+        },
+        "cube_red": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_color_cube",
+                    "data": 7
+                    }
+                ]
+            }
+        },
+        "cube_black": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_color_cube",
+                    "data": 8
+                    }
+                ]
+            }
+        },
+        "cube_white": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                    "item": "dcs_climate:dcs_color_cube",
+                    "data": 9
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "cube_blue",
+            "cube_green",
+            "cube_red",
+            "cube_black",
+            "cube_white"
+        ]
+    ]
+}

@@ -1,11 +1,17 @@
 package defeatedcrow.hac.magic.item;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.DCMaterialEnum;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +19,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -58,6 +65,18 @@ public class ItemArmorGemBoots extends ItemArmor implements ITexturePath {
 				player.addPotionEffect(new PotionEffect(MainInit.bird, 600, 0));
 			} else if (stack.getItem() == MagicInit.gemBootsFish && !player.isPotionActive(MainInit.ocean)) {
 				player.addPotionEffect(new PotionEffect(MainInit.ocean, 600, 0));
+			}
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flagIn) {
+		if (!DCUtil.isEmpty(stack)) {
+			if (stack.getItem() == MagicInit.gemBootsBird) {
+				tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.potion.bird"));
+			} else if (stack.getItem() == MagicInit.gemBootsFish) {
+				tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.potion.ocean"));
 			}
 		}
 	}

@@ -71,7 +71,6 @@ public class OnDeathEventDC {
 				}
 				player.fallDistance = 0.0F;
 				player.setHealth(10.0F);
-				player.world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.PLAYERS, 1.0F, 0.75F);
 				event.setCanceled(true);
 				flag = true;
 			}

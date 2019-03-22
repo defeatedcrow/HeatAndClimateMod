@@ -61,8 +61,10 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
-			if (placer.rotationPitch < -75.0F || placer.rotationPitch > 75.0F) {
+			if (placer.rotationPitch < -75.0F) {
 				face = EnumFacing.DOWN;
+			} else if (placer.rotationPitch > 75.0F) {
+				face = EnumFacing.UP;
 			}
 			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite()));
 		} else {

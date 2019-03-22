@@ -1,124 +1,124 @@
 {
 	"display": {
 		"icon": {
-			"item": "dcs_climate:dcs_color_pendant",
-			"data": 1
+			"item": "dcs_climate:dcs_color",
+			"data": 0
 		},
 		"title": {
-			"translate": "advancements.dcs_climate.magic_pendant.title"
+			"translate": "advancements.dcs_climate.magic_drop.title"
 		},
 		"description": {
-			"translate": "advancements.dcs_climate.magic_pendant.description"
+			"translate": "advancements.dcs_climate.magic_drop.description"
 		}
 	},
-	"parent": "dcs_climate:magic_drop",
+	"parent": "dcs_climate:magic_gem",
 	"criteria": {
-		"pendant_blue": {
+		"drop_blue": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_pendant",
+                    "item": "dcs_climate:dcs_color",
                     "data": 0
                     }
                 ]
             }
         },
-        "pendant_green": {
+        "drop_green": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_pendant",
+                    "item": "dcs_climate:dcs_color",
                     "data": 1
                     }
                 ]
             }
         },
-        "pendant_red": {
+        "drop_red": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_pendant",
+                    "item": "dcs_climate:dcs_color",
                     "data": 2
                     }
                 ]
             }
         },
-        "pendant_black": {
+        "drop_black": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_pendant",
+                    "item": "dcs_climate:dcs_color",
                     "data": 3
                     }
                 ]
             }
         },
-        "pendant_white": {
+        "drop_white": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_pendant",
+                    "item": "dcs_climate:dcs_color",
                     "data": 4
                     }
                 ]
             }
         },
-        "ring_blue": {
+        "drop_blue2": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_ring",
-                    "data": 0
+                    "item": "dcs_climate:dcs_color",
+                    "data": 5
                     }
                 ]
             }
         },
-        "ring_green": {
+        "drop_green2": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_ring",
-                    "data": 1
+                    "item": "dcs_climate:dcs_color",
+                    "data": 6
                     }
                 ]
             }
         },
-        "ring_red": {
+        "drop_red2": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_ring",
-                    "data": 2
+                    "item": "dcs_climate:dcs_color",
+                    "data": 7
                     }
                 ]
             }
         },
-        "ring_black": {
+        "drop_black2": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_ring",
-                    "data": 3
+                    "item": "dcs_climate:dcs_color",
+                    "data": 8
                     }
                 ]
             }
         },
-        "ring_white": {
+        "drop_white2": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                    "item": "dcs_climate:dcs_color_ring",
-                    "data": 4
+                    "item": "dcs_climate:dcs_color",
+                    "data": 9
                     }
                 ]
             }
@@ -126,16 +126,16 @@
     },
 	"requirements": [
 		[
-			"pendant_blue",
-			"pendant_green",
-            "pendant_red",
-            "pendant_black",
-            "pendant_white",
-            "ring_blue",
-            "ring_green",
-            "ring_red",
-            "ring_black",
-            "ring_white"
+			"drop_blue",
+			"drop_green",
+			"drop_red",
+			"drop_black",
+			"drop_white",
+			"drop_blue2",
+            "drop_green2",
+            "drop_red2",
+            "drop_black2",
+            "drop_white2"
 		]
 	]
 }

@@ -294,7 +294,7 @@ public class FoodFluidRecipe {
 							1000), new Object[] {
 									"dropBlue",
 									"dropBlue",
-									"dustRedstone"
+									"dustMica"
 			});
 
 			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
@@ -302,7 +302,7 @@ public class FoodFluidRecipe {
 							1000), new Object[] {
 									"dropGreen",
 									"dropGreen",
-									"dustRedstone"
+									"dustMica"
 			});
 
 			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
@@ -310,7 +310,7 @@ public class FoodFluidRecipe {
 							1000), new Object[] {
 									"dropRed",
 									"dropRed",
-									"dustRedstone"
+									"dustMica"
 			});
 
 			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
@@ -318,7 +318,7 @@ public class FoodFluidRecipe {
 							1000), new Object[] {
 									"dropBlack",
 									"dropBlack",
-									"dustRedstone"
+									"dustMica"
 			});
 
 			regNonFoodrecipe(new ItemStack(MagicInit.colorDrop, 1,
@@ -326,7 +326,7 @@ public class FoodFluidRecipe {
 							1000), new Object[] {
 									"dropWhite",
 									"dropWhite",
-									"dustRedstone"
+									"dustMica"
 			});
 		}
 

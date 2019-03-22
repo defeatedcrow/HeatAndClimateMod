@@ -148,7 +148,7 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 9), new ItemStack(Items.CLAY_BALL, 1,
 				0), 0.2F, new ItemStack(MainInit.gems, 1, 19), 0.05F, null, ti, "oreChrome");
 
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 1), new ItemStack(MainInit.gems, 1,
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 5), new ItemStack(MainInit.gems, 1,
 				3), 0.2F, new ItemStack(MainInit.oreDust, 1, 3), 0.03F, null, ti, "oreIron");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 4), new ItemStack(MainInit.miscDust, 1,
 				1), 0.2F, new ItemStack(Items.DIAMOND, 1, 0), 0.05F, null, ti, "oreGold");
@@ -268,11 +268,11 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(MainInit.gems, 1,
 				2), 0.03F, ti, new ItemStack(Blocks.COBBLESTONE, 1, 0));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(Items.QUARTZ, 1,
-				0), 0.03F, ti, new ItemStack(Blocks.STONE, 1, 1));
+				0), 0.04F, ti, new ItemStack(Blocks.STONE, 1, 1));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				12), 0.03F, ti, new ItemStack(Blocks.STONE, 1, 3));
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(MainInit.gems, 1,
-				20), 0.03F, ti, new ItemStack(Blocks.STONE, 1, 5));
+				12), 0.05F, ti, new ItemStack(Blocks.STONE, 1, 3));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				12), 0.05F, ti, new ItemStack(Blocks.STONE, 1, 5));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(Items.FLINT, 1,
 				0), 1.0F, ti, new ItemStack(Blocks.GRAVEL, 1, 0));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 4, 0), new ItemStack(MainInit.oreDust, 1,

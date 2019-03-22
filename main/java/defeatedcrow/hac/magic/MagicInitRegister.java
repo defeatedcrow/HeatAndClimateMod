@@ -114,13 +114,13 @@ public class MagicInitRegister {
 					.registerItem(MagicInit.maceStarItem, ClimateCore.PACKAGE_BASE + "_macecore", ClimateMain.MOD_ID);
 
 			MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
-					EntityEquipmentSlot.FEET, "blue").setCreativeTab(ClimateMain.cloth)
+					EntityEquipmentSlot.FEET, "blue").setCreativeTab(ClimateMain.magic)
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_blue");
 			DCMaterialReg
 					.registerItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_BASE + "_gemboots_blue", ClimateMain.MOD_ID);
 
 			MagicInit.gemBootsFish = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
-					EntityEquipmentSlot.FEET, "green").setCreativeTab(ClimateMain.cloth)
+					EntityEquipmentSlot.FEET, "green").setCreativeTab(ClimateMain.magic)
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_green");
 			DCMaterialReg
 					.registerItem(MagicInit.gemBootsFish, ClimateCore.PACKAGE_BASE + "_gemboots_green", ClimateMain.MOD_ID);

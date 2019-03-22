@@ -11,7 +11,7 @@
     },
     "frame": "goal"
   },
-  "parent": "dcs_climate:magic_elestial",
+  "parent": "dcs_climate:magic_cube",
   "criteria": {
         "spring": {
             "trigger": "minecraft:inventory_changed",

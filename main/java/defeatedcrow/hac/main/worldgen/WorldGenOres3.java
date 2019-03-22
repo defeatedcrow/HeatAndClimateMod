@@ -61,7 +61,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			if (veins != null) {
 				for (int i = 0; i < veins.length; i++) {
 					OreVein vein = veins[i];
-					if (vein != null && (!isForced || vein.type != EnumVein.HIGH_RED)) {
+					if (vein != null && (!isForced || vein.pos.getY() < 120)) {
 						if (vein.type == EnumVein.GUANO) {
 							generateGuano(world, vein, posX1, posZ1);
 						} else {
@@ -170,9 +170,9 @@ public class WorldGenOres3 implements IWorldGenerator {
 							if (isPlaceable(block) || isForced) {
 								int j = world.rand.nextInt(100);
 								if (add.hasSecondOre() && j < add.getSecondChance()) {
-									world.setBlockState(p, add.getSecondOre().getState(), 4);
+									world.setBlockState(p, add.getSecondOre().getState(), isForced ? 3 : 4);
 								} else {
-									world.setBlockState(p, add.getOre().getState(), 4);
+									world.setBlockState(p, add.getOre().getState(), isForced ? 3 : 4);
 								}
 							}
 						}
@@ -245,9 +245,9 @@ public class WorldGenOres3 implements IWorldGenerator {
 							if (isPlaceable3(block) || isForced) {
 								int j = world.rand.nextInt(100);
 								if (add.hasSecondOre() && j < add.getSecondChance()) {
-									world.setBlockState(p, add.getSecondOre().getState(), 4);
+									world.setBlockState(p, add.getSecondOre().getState(), isForced ? 3 : 4);
 								} else {
-									world.setBlockState(p, add.getOre().getState(), 4);
+									world.setBlockState(p, add.getOre().getState(), isForced ? 3 : 4);
 								}
 							}
 						}
@@ -306,12 +306,12 @@ public class WorldGenOres3 implements IWorldGenerator {
 								if (isPlaceable(block) || isForced) {
 									int j = world.rand.nextInt(100);
 									if (add.hasSecondOre() && j < add.getSecondChance()) {
-										world.setBlockState(p, add.getSecondOre().getState(), 4);
+										world.setBlockState(p, add.getSecondOre().getState(), isForced ? 3 : 4);
 										if (b1) {
 											world.setBlockState(p.up(), FoodInit.cropSeaweed.getDefaultState());
 										}
 									} else {
-										world.setBlockState(p, add.getOre().getState(), 4);
+										world.setBlockState(p, add.getOre().getState(), isForced ? 3 : 4);
 									}
 								}
 							}

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "dcs_climate:dcs_magicmace_bird"
+      "item": "dcs_climate:dcs_gemboots_blue"
     },
     "title": {
       "translate": "advancements.dcs_climate.magic_mace2.title"
@@ -11,7 +11,7 @@
     },
     "frame": "goal"
   },
-  "parent": "dcs_climate:magic_mace",
+  "parent": "dcs_climate:magic_card",
   "criteria": {
         "bird_effect": {
             "trigger": "minecraft:effects_changed",

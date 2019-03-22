@@ -33,11 +33,11 @@ public class BoilerTurbineTESR extends DCTorqueTESRBase {
 		float z = 0F;
 
 		switch (base) {
-		case DOWN:
+		case UP:
 			y = -90F;
 			x = 90F;
 			break;
-		case UP:
+		case DOWN:
 			y = -90F;
 			x = -90F;
 			break;
