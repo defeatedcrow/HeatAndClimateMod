@@ -11,6 +11,7 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.monster.EntitySlime;
@@ -152,7 +153,7 @@ public class OnDeathEventDC {
 	}
 
 	static int getDropMeta(EntityLivingBase living) {
-		if (living.getCreatureAttribute() == EnumCreatureAttribute.ILLAGER) {
+		if (living.getCreatureAttribute() == EnumCreatureAttribute.ILLAGER || living instanceof EntityEnderman) {
 			return 4;
 		} else if (living.isEntityUndead() || living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 			return 3;

@@ -28,7 +28,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
@@ -249,10 +248,10 @@ public class ItemColorCard extends DCItem {
 	}
 
 	private boolean onEffect_Red1(World world, EntityPlayer player, float f) {
-		int r = MathHelper.floor(4800 * f);
+		int r = MathHelper.floor(6000 * f);
 		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, r, 1));
 		player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, r, 1));
-		player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, r, 1));
+		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, r, 1));
 		return true;
 	}
 
@@ -277,26 +276,15 @@ public class ItemColorCard extends DCItem {
 	}
 
 	private boolean onEffect_White1(World world, EntityPlayer player, float f) {
-		int r = MathHelper.floor(4 * f);
-		AxisAlignedBB aabb = new AxisAlignedBB(player.posX - r, player.posY - 2D, player.posZ - r, player.posX + r,
-				player.posY + 2D, player.posZ + r);
-		List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
-		if (list.isEmpty())
-			return false;
-		else {
-			for (EntityLivingBase liv : list) {
-				if (liv instanceof IMob)
-					continue;
-				MainUtil.removeBadPotion(liv);
-				liv.heal(10.0F);
-				DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(liv.posX, liv.posY, liv.posZ));
-			}
-		}
+		IBlockState cur = player.world.getBlockState(player.getPosition().up());
+		IBlockState set = MainInit.lightOrb.getDefaultState();
+		if (cur.getMaterial().isReplaceable() && player.world.setBlockState(player.getPosition().up(), set))
+			return true;
 		return true;
 	}
 
 	private boolean onEffect_Blue2(World world, EntityPlayer player, float f) {
-		int r = MathHelper.floor(6000 * f);
+		int r = MathHelper.floor(12000 * f);
 		player.addPotionEffect(new PotionEffect(MainInit.ocean, r, 0));
 		return true;
 	}
@@ -308,20 +296,19 @@ public class ItemColorCard extends DCItem {
 		BlockPos p = new BlockPos(x, y + 1, z);
 		ChunkPos c = new ChunkPos(p);
 		OreVein[] veins = OreGenPos.INSTANCE.getVeins(c.x, c.z, player.world);
-
+		List<OreVein> list = Lists.newArrayList();
 		if (veins != null) {
-			List<OreVein> list = Lists.newArrayList();
 			for (OreVein v : veins) {
 				if (v != null)
 					list.add(v);
 			}
-			if (!list.isEmpty()) {
-				player.sendMessage(new TextComponentString("== Ore vein detected! =="));
-				for (OreVein v : list) {
-					player.sendMessage(new TextComponentString("* Type: " + v.type.name() + " *"));
-					player.sendMessage(new TextComponentString(" Pos: " + v.pos.getX() + ", " + v.pos
-							.getY() + ", " + v.pos.getZ()));
-				}
+		}
+		if (!list.isEmpty()) {
+			player.sendMessage(new TextComponentString("== Ore vein detected! =="));
+			for (OreVein v : list) {
+				player.sendMessage(new TextComponentString("* Type: " + v.type.name() + " *"));
+				player.sendMessage(new TextComponentString(" Pos: " + v.pos.getX() + ", " + v.pos.getY() + ", " + v.pos
+						.getZ()));
 			}
 		} else {
 			player.sendMessage(new TextComponentString("== No ore vein detected in this chank =="));
@@ -345,7 +332,7 @@ public class ItemColorCard extends DCItem {
 	}
 
 	private boolean onEffect_White2(World world, EntityPlayer player, float f) {
-		int r = MathHelper.floor(6000 * f);
+		int r = MathHelper.floor(12000 * f);
 		player.addPotionEffect(new PotionEffect(MainInit.bird, r, 0));
 		return true;
 	}

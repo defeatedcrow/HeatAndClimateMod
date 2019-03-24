@@ -12,6 +12,7 @@ import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
@@ -160,6 +161,11 @@ public class MainUtil {
 		return new ItemStack(FoodInit.saplings, i, meta);
 	}
 
+	public static ItemStack getRandomRing(int i) {
+		int meta = DCUtil.rand.nextInt(4);
+		return new ItemStack(MagicInit.colorRing, i, meta);
+	}
+
 	public static boolean removeBadPotion(EntityLivingBase liv) {
 		if (liv != null && !liv.getEntityWorld().isRemote) {
 			List<PotionEffect> remove = Lists.newArrayList();
@@ -271,10 +277,10 @@ public class MainUtil {
 			for (ItemStack armor : player.getArmorInventoryList()) {
 				if (!DCUtil.isEmpty(armor)) {
 					if (armor.getItem() == MainInit.magicCoat) {
-						f += 0.25F;
+						f += 0.5F;
 					}
 					if (armor.getItem() == MainInit.magicUnder) {
-						f += 0.25F;
+						f += 0.5F;
 					}
 				}
 			}

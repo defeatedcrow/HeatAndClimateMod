@@ -148,6 +148,13 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 9), new ItemStack(Items.CLAY_BALL, 1,
 				0), 0.2F, new ItemStack(MainInit.gems, 1, 19), 0.05F, null, ti, "oreChrome");
 
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 1), new ItemStack(Items.CLAY_BALL, 1,
+				0), 0.2F, new ItemStack(MainInit.gems, 1, 0), 0.1F, null, ti, "oreZinc");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 13), new ItemStack(Items.CLAY_BALL, 1,
+				0), 0.2F, new ItemStack(MainInit.gems, 1, 4), 0.05F, null, ti, "oreLead");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 12), new ItemStack(Items.CLAY_BALL, 1,
+				0), 0.2F, new ItemStack(MainInit.gems, 1, 6), 0.05F, null, ti, "oreBismuth");
+
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 5), new ItemStack(MainInit.gems, 1,
 				3), 0.2F, new ItemStack(MainInit.oreDust, 1, 3), 0.03F, null, ti, "oreIron");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 4), new ItemStack(MainInit.miscDust, 1,
@@ -157,9 +164,9 @@ public class MachineCrusherRecipe {
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MachineInit.reagent, 2, 0), new ItemStack(MainInit.miscDust,
 				1, 13), 0.2F, new ItemStack(MainInit.miscDust, 1, 7), 0.1F, null, ti, "oreCrudeOil");
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 11), new ItemStack(MainInit.miscDust, 1,
-				13), 0.2F, new ItemStack(Items.BLAZE_POWDER, 1, 0), 0.05F, null, ti, "oremagnesite");
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 14), new ItemStack(MainInit.miscDust, 1,
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 7), new ItemStack(MainInit.miscDust, 1,
+				13), 0.2F, new ItemStack(Items.BLAZE_POWDER, 1, 0), 0.05F, null, ti, "oreMagnetite");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 3), new ItemStack(MainInit.miscDust, 1,
 				13), 0.2F, new ItemStack(MainInit.gems, 1, 22), 0.05F, null, ti, "oreSilver");
 
 		// layer

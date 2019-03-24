@@ -37,7 +37,7 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
+		return BlockRenderLayer.SOLID;
 	}
 
 	@Override

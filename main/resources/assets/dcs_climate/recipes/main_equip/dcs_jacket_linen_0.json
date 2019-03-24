@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "patternjacket"
+   "ore": "patternJacket"
   },
   {
    "type": "forge:ore_dict",

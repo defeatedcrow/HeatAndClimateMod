@@ -31,7 +31,6 @@ public class MagicInit {
 	public static Block clusterIce;
 	public static Block infernalFlame;
 
-	@Deprecated
 	public static Block elestial;
 
 	// magical mace

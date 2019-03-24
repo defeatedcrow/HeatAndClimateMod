@@ -345,7 +345,7 @@ public class LoadingEquipRecipe {
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.linenJacket, 1, 0), new Object[] {
-				"patternjacket",
+				"patternJacket",
 				"itemLinenCloth",
 				"itemLinenCloth",
 				"string"

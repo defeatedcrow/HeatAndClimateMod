@@ -366,8 +366,8 @@ public class LoadingOreRecipe {
 				"gemQuartz"
 		});
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gemBlock, 9, 2), new Object[] {
-				new ItemStack(MainInit.gems, 8, 2)
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gems, 8, 2), new Object[] {
+				new ItemStack(MainInit.gemBlock, 1, 8)
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 4, 12), new Object[] {

@@ -7,11 +7,16 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -83,6 +88,15 @@ public class BlockLightOrb extends BlockDC {
 	}
 
 	@Override
+	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World worldIn, BlockPos pos) {
+		if (DCUtil.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), player)) {
+			return 10.0F;
+		} else {
+			return 0.0F;
+		}
+	}
+
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return AABB_PANEL;
 	}
@@ -107,15 +121,18 @@ public class BlockLightOrb extends BlockDC {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (state != null && state.getBlock() == this) {
-			double x = pos.getX() + 0.5D;
-			double y = pos.getY() + 0.5D;
-			double z = pos.getZ() + 0.5D;
-			double dx = 0D;
-			double dy = 0.01D;
-			double dz = 0D;
-			Particle cloud = new ParticleOrb.Factory().createParticle(0, world, x, y, z, dx, dy, dz, null);
-			FMLClientHandler.instance().getClient().effectRenderer.addEffect(cloud);
+		if (ModuleConfig.magic && DCUtil.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), ClimateCore.proxy
+				.getPlayer())) {
+			if (state != null && state.getBlock() == this) {
+				double x = pos.getX() + 0.5D;
+				double y = pos.getY() + 0.5D;
+				double z = pos.getZ() + 0.5D;
+				double dx = 0D;
+				double dy = 0.01D;
+				double dz = 0D;
+				Particle cloud = new ParticleOrb.Factory().createParticle(0, world, x, y, z, dx, dy, dz, null);
+				FMLClientHandler.instance().getClient().effectRenderer.addEffect(cloud);
+			}
 		}
 	}
 }
