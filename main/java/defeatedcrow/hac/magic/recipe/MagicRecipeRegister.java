@@ -1277,14 +1277,14 @@ public class MagicRecipeRegister {
 		ItemStack fi_spr = PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION, 1, 0), fish);
 		ItemStack fi_lng = PotionUtils.addPotionToItemStack(new ItemStack(Items.LINGERING_POTION, 1, 0), fish);
 
-		BrewingRecipeRegistry.addRecipe(awk, "dropBlue", bir);
-		BrewingRecipeRegistry.addRecipe(awk, "dropWhite", fi);
+		BrewingRecipeRegistry.addRecipe(awk, "dropWhite", bir);
+		BrewingRecipeRegistry.addRecipe(awk, "dropBlue", fi);
 
-		BrewingRecipeRegistry.addRecipe(awk_spr, "dropBlue", bir_spr);
-		BrewingRecipeRegistry.addRecipe(awk_spr, "dropWhite", fi_spr);
+		BrewingRecipeRegistry.addRecipe(awk_spr, "dropWhite", bir_spr);
+		BrewingRecipeRegistry.addRecipe(awk_spr, "dropBlue", fi_spr);
 
-		BrewingRecipeRegistry.addRecipe(awk_lng, "dropBlue", bir_lng);
-		BrewingRecipeRegistry.addRecipe(awk_lng, "dropWhite", fi_lng);
+		BrewingRecipeRegistry.addRecipe(awk_lng, "dropWhite", bir_lng);
+		BrewingRecipeRegistry.addRecipe(awk_lng, "dropBlue", fi_lng);
 
 		BrewingRecipeRegistry.addRecipe(bir, "gunpowder", bir_spr);
 		BrewingRecipeRegistry.addRecipe(fi, "gunpowder", fi_spr);
