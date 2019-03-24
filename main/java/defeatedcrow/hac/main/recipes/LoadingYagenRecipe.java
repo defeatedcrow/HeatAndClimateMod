@@ -56,9 +56,19 @@ public class LoadingYagenRecipe {
 				"oreTin"
 		});
 
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 9), new Object[] {
+				"toolNormalYagen",
+				"oreChromium"
+		});
+
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 10), new Object[] {
 				"toolNormalYagen",
 				"oreTitanium"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 11), new Object[] {
+				"toolNormalYagen",
+				"oreAluminum"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 12), new Object[] {
@@ -74,6 +84,11 @@ public class LoadingYagenRecipe {
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 14), new Object[] {
 				"toolNormalYagen",
 				"oreManganese"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 15), new Object[] {
+				"toolNormalYagen",
+				"oreMolybdenum"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.gems, 1, 8), new Object[] {

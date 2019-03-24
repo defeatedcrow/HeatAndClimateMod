@@ -36,8 +36,8 @@ public class ItemGems extends DCItem {
 	 * 6: セレスタイト
 	 * 7: ハマグリ
 	 * 8: 岩塩
-	 * 9: 硫黄
-	 * 10: 硝石
+	 * 9: 硝石
+	 * 10: 硫黄
 	 * 11: ショール
 	 * 12: 蛇紋石
 	 * 13: カンラン石
@@ -50,6 +50,7 @@ public class ItemGems extends DCItem {
 	 * 20: 月長石
 	 * 21: リシア輝石
 	 * 22: ブラックオパール
+	 * 23: 含油頁岩
 	 */
 	private static String[] names = {
 			"chal_blue",
@@ -74,7 +75,8 @@ public class ItemGems extends DCItem {
 			"jadeite",
 			"moonstone",
 			"kunzite",
-			"opal"
+			"opal",
+			"crude_oil"
 	};
 
 	public ItemGems(int max) {
@@ -173,5 +175,14 @@ public class ItemGems extends DCItem {
 				return true;
 		}
 		return false;
+	}
+
+	@Override
+	public int getItemBurnTime(ItemStack stack) {
+		int i = stack.getMetadata();
+		if (i == 23)
+			return 1600;
+		else
+			return 0;
 	}
 }

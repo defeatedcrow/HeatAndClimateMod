@@ -98,7 +98,7 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 		GREEN(MainInit.gems, 5, MainInit.gems, 13, true),
 		BLUE(MainInit.gems, 0, MainInit.gems, 4, true),
 		WHITE(MainInit.gems, 2, MainInit.gems, 15, true),
-		BLACK(Items.COAL, 0, MainInit.gems, 11, true),
+		BLACK(MainInit.gems, 23, MainInit.gems, 11, true),
 		RED_2(MainInit.gems, 14, MainInit.gems, 21, true),
 		GREEN_2(MainInit.gems, 13, MainInit.gems, 20, true),
 		BLUE_2(MainInit.gems, 4, MainInit.gems, 19, true),
@@ -106,9 +106,9 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 		BLACK_2(MainInit.gems, 11, MainInit.gems, 22, true),
 		NETHER_RED_1(MainInit.gems, 1, MainInit.gems, 14, true),
 		NETHER_RED_2(MainInit.gems, 14, MainInit.gems, 21, true),
-		NETHER_BLACK_1(Items.COAL, 0, MainInit.gems, 11, true),
+		NETHER_BLACK_1(MainInit.gems, 23, MainInit.gems, 11, true),
 		NETHER_BLACK_2(MainInit.gems, 11, MainInit.gems, 22, true),
-		NETHER_SULFUR(MainInit.gems, 9, Items.REDSTONE, 0, true),
+		NETHER_SULFUR(MainInit.gems, 10, Items.REDSTONE, 0, true),
 		NONE(null, 0, null, 0, false);
 
 		public Item dropItem;

@@ -254,10 +254,10 @@ public class MainMaterialRegister {
 		MainInit.oreIngot = new ItemIngots(16).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		DCMaterialReg.registerItem(MainInit.oreIngot, ClimateCore.PACKAGE_BASE + "_ingot", ClimateMain.MOD_ID);
 
-		MainInit.oreDust = new ItemOreDusts(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
+		MainInit.oreDust = new ItemOreDusts(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		DCMaterialReg.registerItem(MainInit.oreDust, ClimateCore.PACKAGE_BASE + "_oredust", ClimateMain.MOD_ID);
 
-		MainInit.gems = new ItemGems(22).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(23).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		DCMaterialReg.registerItem(MainInit.gems, ClimateCore.PACKAGE_BASE + "_gem", ClimateMain.MOD_ID);
 
 		MainInit.miscDust = new ItemMiscDust(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");

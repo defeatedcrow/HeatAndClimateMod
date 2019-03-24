@@ -22,7 +22,8 @@ public class ItemOreDusts extends DCItem {
 			"alumina",
 			"bismuth",
 			"lead",
-			"manganese"
+			"manganese",
+			"molybdenum"
 	};
 
 	public ItemOreDusts(int max) {
@@ -50,6 +51,8 @@ public class ItemOreDusts extends DCItem {
 	 * 11: アルミナ
 	 * 12: ビスマス
 	 * 13: 鉛
+	 * 14: マンガン
+	 * 15: モリブデン
 	 */
 	@Override
 	public String[] getNameSuffix() {

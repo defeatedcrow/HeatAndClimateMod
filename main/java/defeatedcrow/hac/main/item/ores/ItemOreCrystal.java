@@ -2,7 +2,6 @@ package defeatedcrow.hac.main.item.ores;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
-import net.minecraft.item.ItemStack;
 
 public class ItemOreCrystal extends DCItem {
 
@@ -38,23 +37,23 @@ public class ItemOreCrystal extends DCItem {
 
 	/*
 	 * Tier1
-	 * 0: 銅
-	 * 1: 錫石
-	 * 2: 閃亜鉛鉱
-	 * 3: 黃鉄鋼
-	 * 4: オイルシェール
+	 * 0: 銅 chalcopyrite
+	 * 1: 錫石 cassiterite
+	 * 2: 閃亜鉛鉱 sphalerite
+	 * 3: 赤鉄鋼 hematite
+	 * 4: 磁鉄鉱 magnetite
 	 * Tier2
-	 * 5: ボーキサイト
-	 * 6: 珪ニッケル
-	 * 7: 方鉛鉱
-	 * 8: 金
-	 * 9: 磁鉄鉱
+	 * 5: ボーキサイト bauxite
+	 * 6: 珪ニッケル garnierite
+	 * 7: 方鉛鉱 galena
+	 * 8: 金 gold
+	 * 9: 銀 argentite
 	 * Tier3
-	 * 10: 菱マンガン
-	 * 11: クロム
-	 * 12: ビスマス
-	 * 13: ルチル
-	 * 14: 銀
+	 * 10: 菱マンガン rhodochrosite
+	 * 11: クロム(ウヴァロバイト) chromite/uvarovite
+	 * 12: 輝蒼鉛鉱 bismuthinite
+	 * 13: 金紅石 rutile
+	 * 14: 輝水鉛鉱 molybdenite
 	 */
 	@Override
 	public String[] getNameSuffix() {
@@ -69,14 +68,4 @@ public class ItemOreCrystal extends DCItem {
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
 	}
-
-	@Override
-	public int getItemBurnTime(ItemStack stack) {
-		int i = stack.getMetadata();
-		if (i == 4)
-			return 1600;
-		else
-			return 0;
-	}
-
 }
