@@ -59,20 +59,20 @@ public enum DCMaterialEnum {
 	}, 2, 384, 6.0F, 10, 0.25F, 0.25F, new ItemStack(MainInit.oreIngot, 1, 4), SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F),
 	// 耐久値が高いが鉄より弱い
 	NICKELSILVER(7, "nickelsilver", 2.0F, new int[] {
+			3,
+			5,
 			4,
-			8,
-			7,
-			4
-	}, 2, 2400, 4.0F, 10, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 6), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
+			2
+	}, 2, 1200, 4.0F, 10, 0.5F, 0.5F, new ItemStack(MainInit.oreIngot, 1, 6), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
 	// 熱に弱いが他が強い
 	STEEL(8, "steel", 4.0F, new int[] {
 			6,
 			10,
 			8,
 			5
-	}, 3, 1080, 8.0F, 8, 0.25F, 0.25F, new ItemStack(MainInit.oreIngot, 1, 5), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F),
+	}, 3, 650, 8.0F, 5, 0.0F, 0.0F, new ItemStack(MainInit.oreIngot, 1, 5), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F),
 	// ピーキー性能
-	CHALCEDONY(9, "chalcedony", 6.0F, new int[] {
+	CHALCEDONY(9, "chalcedony", 8.0F, new int[] {
 			6,
 			12,
 			7,
@@ -85,13 +85,13 @@ public enum DCMaterialEnum {
 			6,
 			3
 	}, 2, 1280, 7.0F, 18, 1.0F, 1.0F, new ItemStack(MainInit.gems, 1, 4), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F),
-	// いいとこ取り性能、防御能力はそこそこ
-	TITANIUM(11, "titanium", 12.0F, new int[] {
-			6,
+	// 防御と耐久特化
+	TITANIUM(11, "titanium", 8.0F, new int[] {
+			7,
+			12,
 			10,
-			9,
 			6
-	}, 4, 1440, 12.0F, 5, 0F, 0F, new ItemStack(MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
+	}, 4, 1440, 8.0F, 5, 0F, 0F, new ItemStack(MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
 	// 耐暑性特化で耐久高め
 	SYNTHETIC(12, "synthetic", 3.0F, new int[] {
 			3,
@@ -112,7 +112,14 @@ public enum DCMaterialEnum {
 			2,
 			2,
 			1
-	}, 1, 72, 0.0F, 10, 1.0F, 3.0F, new ItemStack(Blocks.WOOL, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
+	}, 1, 72, 0.0F, 10, 1.0F, 3.0F, new ItemStack(Blocks.WOOL, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
+	// 耐久の低い攻性の金属素材
+	TOOLMETAL(15, "toolmetal", 15.0F, new int[] {
+			6,
+			10,
+			8,
+			5
+	}, 5, 720, 10.0F, 10, 0.0F, 0.0F, new ItemStack(MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F);
 
 	public final String name;
 	public final int id;

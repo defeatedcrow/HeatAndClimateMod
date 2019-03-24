@@ -57,22 +57,22 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 	}
 
 	private int[] harvestL = new int[] {
+			1,
+			1,
+			1,
+			1,
+			1,
 			2,
 			2,
 			2,
 			2,
 			2,
-			3,
-			3,
-			3,
-			3,
-			3,
+			1,
 			2,
-			3,
+			1,
 			2,
-			3,
-			2,
-			3
+			1,
+			1
 	};
 
 	/* Drop Itemの管理 */

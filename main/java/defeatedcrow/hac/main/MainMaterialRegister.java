@@ -1524,6 +1524,10 @@ public class MainMaterialRegister {
 			DCMaterialReg
 					.registerItem(MainInit.metalMaterials, ClimateCore.PACKAGE_BASE + "_metal", ClimateMain.MOD_ID);
 		}
+
+		// 自己連携
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.desiccant, 0, DCHumidity.DRY);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.freezepack, 0, DCHeatTier.COLD);
 	}
 
 	static void registerDispense() {
@@ -1555,6 +1559,7 @@ public class MainMaterialRegister {
 	private static void registerHarvestLevel() {
 		MainInit.ores.setHarvestLevel("pickaxe", 0);
 		MainInit.ores_2.setHarvestLevel("pickaxe", 0);
+		MainInit.oreNew.setHarvestLevel("pickaxe", 0);
 	}
 
 }
