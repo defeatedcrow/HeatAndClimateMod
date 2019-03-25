@@ -145,7 +145,7 @@ public class MagicRecipeRegister {
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 3), new Object[] {
 				"gemOpal",
-				"dustSilver",
+				"dustMolybdenum",
 				"blockElestial"
 		});
 

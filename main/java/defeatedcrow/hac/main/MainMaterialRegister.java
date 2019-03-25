@@ -1476,17 +1476,17 @@ public class MainMaterialRegister {
 		FluidRegistry.addBucketForFluid(MainInit.ethanol);
 
 		// heat tier
-		ClimateAPI.registerBlock.registerHeatBlock(MainInit.coffeeBlock, 32767, DCHeatTier.HOT);
-		ClimateAPI.registerBlock.registerHumBlock(MainInit.coffeeBlock, 32767, DCHumidity.UNDERWATER);
-		ClimateAPI.registerBlock.registerHeatBlock(MainInit.blackTeaBlock, 32767, DCHeatTier.HOT);
-		ClimateAPI.registerBlock.registerHumBlock(MainInit.blackTeaBlock, 32767, DCHumidity.UNDERWATER);
-		ClimateAPI.registerBlock.registerHeatBlock(MainInit.greenTeaBlock, 32767, DCHeatTier.HOT);
-		ClimateAPI.registerBlock.registerHumBlock(MainInit.greenTeaBlock, 32767, DCHumidity.UNDERWATER);
-		ClimateAPI.registerBlock.registerHeatBlock(MainInit.hotSpringBlock, 32767, DCHeatTier.HOT);
-		ClimateAPI.registerBlock.registerHumBlock(MainInit.hotSpringBlock, 32767, DCHumidity.UNDERWATER);
-		ClimateAPI.registerBlock.registerHeatBlock(MainInit.stockBlock, 32767, DCHeatTier.HOT);
-		ClimateAPI.registerBlock.registerHumBlock(MainInit.stockBlock, 32767, DCHumidity.UNDERWATER);
-		ClimateAPI.registerBlock.registerHeatBlock(MainInit.nitrogenBlock, 32767, DCHeatTier.CRYOGENIC);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.coffeeBlock, 0, DCHeatTier.HOT);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.coffeeBlock, 0, DCHumidity.UNDERWATER);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.blackTeaBlock, 0, DCHeatTier.HOT);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.blackTeaBlock, 0, DCHumidity.UNDERWATER);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.greenTeaBlock, 0, DCHeatTier.HOT);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.greenTeaBlock, 0, DCHumidity.UNDERWATER);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.hotSpringBlock, 0, DCHeatTier.HOT);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.hotSpringBlock, 0, DCHumidity.UNDERWATER);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.stockBlock, 0, DCHeatTier.HOT);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.stockBlock, 0, DCHumidity.UNDERWATER);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.nitrogenBlock, 0, DCHeatTier.CRYOGENIC);
 
 		// dic
 		FluidDictionaryDC.registerFluidDic(MainInit.hydrogen, "hydrogen");

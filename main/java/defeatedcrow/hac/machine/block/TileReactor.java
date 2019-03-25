@@ -420,7 +420,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		FluidStack outf2 = outputT2.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
 		ItemStack cat = this.getStackInSlot(8);
-		IReactorRecipe recipe = RecipeAPI.registerReactorRecipes.getRecipe(current.getHeat(), ins, inf1, inf2);
+		IReactorRecipe recipe = RecipeAPI.registerReactorRecipes.getRecipe(current.getHeat(), ins, inf1, inf2, cat);
 
 		if (recipe != null) {
 			currentRecipe = recipe;

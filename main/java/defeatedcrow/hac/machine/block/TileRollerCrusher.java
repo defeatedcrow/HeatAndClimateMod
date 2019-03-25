@@ -1,6 +1,7 @@
 package defeatedcrow.hac.machine.block;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -339,7 +340,7 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 		FluidStack outf1 = outputT1.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
 		ItemStack cat = this.getStackInSlot(6);
-		ICrusherRecipe recipe = RecipeAPI.registerCrushers.getRecipe(ins);
+		ICrusherRecipe recipe = RecipeAPI.registerCrushers.getRecipe(ins, cat);
 
 		if (recipe != null) {
 			currentRecipe = recipe;
@@ -368,7 +369,8 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			// 2: item required
 			ItemStack slot = inventory.getStackInSlot(0);
 			if (currentRecipe.matches(slot)) {
-				this.decrStackSize(0, 1);
+				int consume = consumeAmo(slot);
+				this.decrStackSize(0, consume);
 			} else {
 				return false;
 			}
@@ -395,6 +397,24 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			return true;
 		}
 		return false;
+	}
+
+	public int consumeAmo(ItemStack in) {
+		if (currentRecipe == null)
+			return -1;
+		ArrayList<ItemStack> required = new ArrayList<ItemStack>(currentRecipe.getProcessedInput());
+		if (!DCUtil.isEmpty(in) && !required.isEmpty()) {
+			Iterator<ItemStack> itr = required.iterator();
+			while (itr.hasNext()) {
+				ItemStack next = itr.next();
+				if (DCUtil.isIntegratedItem(in, next, false)) {
+					if (in.getCount() >= next.getCount()) {
+						return next.getCount();
+					}
+				}
+			}
+		}
+		return -1;
 	}
 
 	@Override

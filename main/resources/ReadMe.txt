@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.0.3_alpha for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.0.4_alpha for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1708,6 +1708,13 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.0.4
+　修正
+　　・石臼、粉砕機が材料のスタック数を認識できるようにした
+　　・粉砕機、化学反応槽がレシピの触媒を認識しない
+　EX
+　　・zn_tw.lang更新
 
 ○3.0.3
 　変更

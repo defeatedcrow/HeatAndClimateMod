@@ -68,6 +68,18 @@ public class DCPluginEIO {
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.thermometer, 1, 0));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.windvane, 1, 0));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.stevenson_screen, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.bellow, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.chamber, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.shitirin, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.lampCarbide, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.lampGas, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.lightOrb, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.markingPanel, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.realtimeClock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.realtimeClock_L, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.sinkChest, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.sinkMetal, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.stevenson_screen, 1, 0));
 
 		// recipe
 		// ores

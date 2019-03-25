@@ -1,11 +1,14 @@
 package defeatedcrow.hac.machine.block;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.api.recipe.IMillRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -83,7 +86,6 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 		if (recipe != null) {
 			List<ItemStack> outs = this.getOutputs();
 			if (recipe.matchOutput(outs, in, 2)) {
-				Object in2 = recipe.getInput();
 				ItemStack out = recipe.getOutput();
 				ItemStack sec = recipe.getSecondary();
 				ItemStack cont = recipe.getContainerItem(in);
@@ -95,18 +97,31 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 						int i2 = this.insertResult(sec);
 					}
 					int i3 = this.insertResult(cont);
-					if (in2 instanceof ItemStack) {
-						int red = ((ItemStack) in2).getCount();
-						this.decrStackSize(0, red);
-					} else {
-						this.decrStackSize(0, 1);
-					}
-
+					int con = consumeAmo(recipe, in);
+					this.decrStackSize(0, con);
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+
+	public int consumeAmo(IMillRecipe recipe, ItemStack in) {
+		if (recipe == null)
+			return -1;
+		ArrayList<ItemStack> required = new ArrayList<ItemStack>(recipe.getProcessedInput());
+		if (!DCUtil.isEmpty(in) && !required.isEmpty()) {
+			Iterator<ItemStack> itr = required.iterator();
+			while (itr.hasNext()) {
+				ItemStack next = itr.next();
+				if (DCUtil.isIntegratedItem(in, next, false)) {
+					if (in.getCount() >= next.getCount()) {
+						return next.getCount();
+					}
+				}
+			}
+		}
+		return -1;
 	}
 
 	/* inventory */
