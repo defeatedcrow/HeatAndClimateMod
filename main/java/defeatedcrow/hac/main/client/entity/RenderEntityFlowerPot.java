@@ -92,7 +92,7 @@ public class RenderEntityFlowerPot extends Render<EntityFlowerPot> {
 
 		IBlockState state = block.getStateFromMeta(meta);
 		if (block instanceof BlockDoublePlant) {
-			state.withProperty(BlockDoublePlant.HALF, BlockDoublePlant.EnumBlockHalf.UPPER);
+			state = state.withProperty(BlockDoublePlant.HALF, BlockDoublePlant.EnumBlockHalf.UPPER);
 		}
 		model = manager.getBlockModelShapes().getModelForState(state);
 

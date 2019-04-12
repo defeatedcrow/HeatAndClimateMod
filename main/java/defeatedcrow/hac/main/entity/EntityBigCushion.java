@@ -89,8 +89,8 @@ public class EntityBigCushion extends DCEntityBase {
 
 	@Override
 	protected void collideWithNearbyEntities() {
-		List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox().grow(0.25D),
-				EntitySelectors.IS_STANDALONE);
+		List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox()
+				.grow(0.25D), EntitySelectors.IS_STANDALONE);
 
 		if (!list.isEmpty()) {
 			for (int i = 0; i < list.size(); ++i) {

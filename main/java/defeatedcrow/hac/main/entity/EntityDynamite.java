@@ -68,17 +68,14 @@ public class EntityDynamite extends Entity {
 			if (!this.isDead) {
 				if (!this.world.isRemote && count == 10) {
 					count = 3;
-
-					if (!this.world.isRemote) {
-						CustomExplosion explosion = new CustomExplosion(world, this, placer, posX, posY, posZ, 4.0F, CustomExplosion.Type.Silk, true);
-						explosion.doExplosion();
-						this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F +
-								0.9F));
-						doBlockDestroy(3, explosion);
-					}
+					CustomExplosion explosion = new CustomExplosion(world, this, placer, posX, posY, posZ, 4.0F,
+							CustomExplosion.Type.Silk, true);
+					explosion.doExplosion();
+					this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.2F / (this.rand
+							.nextFloat() * 0.2F + 0.9F));
+					doBlockDestroy(3, explosion);
 				} else {
-					world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D,
-							new int[0]);
+					world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
 				}
 			}
 
@@ -99,9 +96,9 @@ public class EntityDynamite extends Entity {
 						LootContext.Builder lootcontext$builder = new LootContext.Builder((WorldServer) this.world);
 						lootcontext$builder.withLuck(0.0F);
 
-						for (ItemStack itemstack : this.world.getLootTableManager().getLootTableFromLocation(
-								LootTableList.GAMEPLAY_FISHING).generateLootForPools(this.rand,
-										lootcontext$builder.build())) {
+						for (ItemStack itemstack : this.world.getLootTableManager()
+								.getLootTableFromLocation(LootTableList.GAMEPLAY_FISHING)
+								.generateLootForPools(this.rand, lootcontext$builder.build())) {
 							double d0 = p.getX() + 0.5D;
 							double d1 = p.getY() + 0.5D;
 							double d2 = p.getZ() + 0.5D;
@@ -114,8 +111,8 @@ public class EntityDynamite extends Entity {
 				} else if (this.canExplosionDestroyBlock(exp, world, pos, world.getBlockState(pos), 4F)) {
 					if (isSilk() && state.getBlock().canSilkHarvest(world, p, state, null)) {
 						ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
-						EntityItem drop = new EntityItem(world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() +
-								0.5D, item);
+						EntityItem drop = new EntityItem(world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() + 0.5D,
+								item);
 						world.spawnEntity(drop);
 					} else {
 						state.getBlock().dropBlockAsItem(world, p, state, 0);

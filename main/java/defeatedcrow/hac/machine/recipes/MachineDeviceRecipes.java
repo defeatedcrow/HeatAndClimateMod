@@ -144,7 +144,6 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeSapling");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "blockTallGrass");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeLeaves");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.clothes, 4, 1), "blockWool");
 
 			// 以下バニラ
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), null, 0F, "cobblestone");
@@ -175,6 +174,7 @@ public class MachineDeviceRecipes {
 					Blocks.END_BRICKS, 1, 0));
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.STRING, 4, 0), null, 0F, new ItemStack(Blocks.WOOL, 1,
 					32767));
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.STRING, 4, 0), "blockWool");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), null, 0F, new ItemStack(
 					Blocks.STAINED_HARDENED_CLAY, 1, 32767));
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), null, 0F, new ItemStack(

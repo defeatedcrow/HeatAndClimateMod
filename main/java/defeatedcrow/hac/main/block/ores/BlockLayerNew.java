@@ -116,8 +116,8 @@ public class BlockLayerNew extends DCSimpleBlock implements ITexturePath {
 		GYPSUM(MainInit.gems, 3, MainInit.gems, 3, true),
 		LIME(MainInit.gems, 0, MainInit.gems, 0, false),
 		GUANO(MainInit.gems, 18, MainInit.gems, 18, true),
-		NITER(MainInit.gems, 10, MainInit.gems, 10, true),
-		SULFUR(MainInit.gems, 9, MainInit.gems, 9, true),
+		NITER(MainInit.gems, 9, MainInit.gems, 9, true),
+		SULFUR(MainInit.gems, 10, MainInit.gems, 10, true),
 		SALT(MainInit.gems, 8, MainInit.gems, 8, true),
 		SERPENTINE(MainInit.gems, 12, MainInit.gems, 12, true),
 		NONE(null, 0, null, 0, false);
