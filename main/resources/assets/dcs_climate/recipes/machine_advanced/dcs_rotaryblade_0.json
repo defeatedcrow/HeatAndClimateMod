@@ -8,7 +8,7 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotSUS"
+   "ore": "ingotStainlessSteel"
   },
   "Y": {
    "item": "minecraft:iron_bars",

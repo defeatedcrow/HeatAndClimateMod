@@ -61,6 +61,15 @@ public class FoodRecipes {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
 				5), 0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
 
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				5), 0.25F, new ItemStack(Items.BEETROOT_SEEDS, 8, 0));
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				5), 0.25F, new ItemStack(Items.MELON_SEEDS, 8, 0));
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				5), 0.25F, new ItemStack(Items.PUMPKIN_SEEDS, 8, 0));
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0), new ItemStack(MainInit.miscDust, 1,
 				4), 0.25F, "cropWalnut");
 

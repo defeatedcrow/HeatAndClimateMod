@@ -164,7 +164,7 @@ public class MachineRecipes {
 				'Y',
 				new ItemStack(MachineInit.windmill_l, 1, 0),
 				'Z',
-				"ingotSUS"
+				"ingotStainlessSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.watermill, 1, 0), new Object[] {
@@ -230,7 +230,7 @@ public class MachineRecipes {
 				"XYX",
 				"X  ",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				new ItemStack(MachineInit.faucet, 1, 0),
 				'Z',
@@ -315,7 +315,7 @@ public class MachineRecipes {
 				"Y",
 				"X",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				"gearSteel"
 		});
@@ -367,7 +367,7 @@ public class MachineRecipes {
 				'Y',
 				"gearSteel",
 				'Z',
-				"ingotSUS"
+				"ingotStainlessSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.boilerTurbine, 1, 0), new Object[] {
@@ -375,7 +375,7 @@ public class MachineRecipes {
 				"ZYW",
 				"XXX",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				"gearSteel",
 				'Z',

@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "blockTitanium"
+   "ore": "blockTitaniumAlloy"
   }
  ],
  "result": {

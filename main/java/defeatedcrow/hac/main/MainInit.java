@@ -20,7 +20,11 @@ public class MainInit {
 	public static Block dustBlock;
 	public static Block dustBlock_2;
 	public static Block gemBlock;
+	@Deprecated
 	public static Block metalBlock;
+	public static Block metalBlockNew;
+	public static Block metalBlockAlloy;
+	public static Block heatedMetalBlock;
 
 	public static Block oreNew;
 	public static Block layerNew;

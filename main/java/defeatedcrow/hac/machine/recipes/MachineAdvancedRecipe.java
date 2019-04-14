@@ -18,7 +18,7 @@ public class MachineAdvancedRecipe {
 				"WYV",
 				"XXX",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				new ItemStack(Blocks.END_ROD, 1, 0),
 				'Z',
@@ -34,7 +34,7 @@ public class MachineAdvancedRecipe {
 				"X X",
 				"XZX",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				"gearSteel",
 				'Z',
@@ -45,7 +45,7 @@ public class MachineAdvancedRecipe {
 				"YZW",
 				"XXX",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				new ItemStack(MachineInit.shaft2_s, 1, 0),
 				'Z',
@@ -59,7 +59,7 @@ public class MachineAdvancedRecipe {
 				" Y ",
 				"XZX",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				new ItemStack(MachineInit.machimeMaterials, 1, 1),
 				'Z',
@@ -89,7 +89,7 @@ public class MachineAdvancedRecipe {
 				'Z',
 				new ItemStack(MachineInit.machimeMaterials, 1, 0),
 				'W',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'V',
 				"gearSteel"
 		});
@@ -99,7 +99,7 @@ public class MachineAdvancedRecipe {
 				"XZX",
 				"XXX",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				new ItemStack(Blocks.HOPPER, 1, 0),
 				'Z',
@@ -111,7 +111,7 @@ public class MachineAdvancedRecipe {
 				"XZX",
 				" Y ",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				new ItemStack(Blocks.IRON_BARS, 1, 0),
 				'Z',
@@ -123,7 +123,7 @@ public class MachineAdvancedRecipe {
 				"XZX",
 				" Y ",
 				'X',
-				"ingotTitanium",
+				"ingotTitaniumAlloy",
 				'Y',
 				new ItemStack(Blocks.IRON_BARS, 1, 0),
 				'Z',
@@ -135,7 +135,7 @@ public class MachineAdvancedRecipe {
 				" Y ",
 				"XXX",
 				'X',
-				"ingotTitanium",
+				"ingotTitaniumAlloy",
 				'Y',
 				new ItemStack(Blocks.IRON_BARS, 1, 0)
 		});
@@ -152,7 +152,7 @@ public class MachineAdvancedRecipe {
 					'Z',
 					new ItemStack(MachineInit.machimeMaterials, 1, 0),
 					'W',
-					"ingotSUS"
+					"ingotStainlessSteel"
 			});
 		}
 
@@ -508,7 +508,7 @@ public class MachineAdvancedRecipe {
 				"X X",
 				"YZW",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				"gearSteel",
 				'Z',
@@ -562,7 +562,7 @@ public class MachineAdvancedRecipe {
 				"ZYZ",
 				"XZX",
 				'X',
-				"ingotSUS",
+				"ingotStainlessSteel",
 				'Y',
 				new ItemStack(MachineInit.machimeMaterials, 1, 2),
 				'Z',
@@ -584,7 +584,7 @@ public class MachineAdvancedRecipe {
 				'X',
 				"ingotBSCCO",
 				'Z',
-				"ingotTitanium"
+				"ingotTitaniumAlloy"
 		});
 
 		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.motorMinecart, 1, 0), new Object[] {
@@ -663,7 +663,7 @@ public class MachineAdvancedRecipe {
 				'W',
 				new ItemStack(Blocks.PISTON, 1, 0),
 				'Z',
-				"ingotSUS"
+				"ingotStainlessSteel"
 		});
 	}
 

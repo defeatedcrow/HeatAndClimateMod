@@ -18,6 +18,7 @@ import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
+import defeatedcrow.hac.main.recipes.DCHeatTreatmentRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
@@ -81,6 +82,7 @@ public class ClimateMain {
 		MainConfig.INSTANCE.load(event.getModConfigurationDirectory());
 		// api
 		MainAPIManager.fuelRegister = new DCFluidFuelRegister();
+		MainAPIManager.heatTreatmentRegister = new DCHeatTreatmentRegister();
 		MainAPIManager.veinRegister = VeinTableRegister.INSTANCE;
 		MainAPIManager.isLoaded = true;
 

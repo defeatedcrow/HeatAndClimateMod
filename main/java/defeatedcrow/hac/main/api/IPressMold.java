@@ -5,7 +5,7 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 
 /**
- * PressMachine用金型
+ * This API has only for the information display, and does not support the change of registered contents.
  */
 public interface IPressMold {
 

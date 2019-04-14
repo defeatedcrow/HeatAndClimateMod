@@ -22,4 +22,6 @@ public interface IFluidFuelRegister {
 
 	int getBurningTime(Fluid fluid);
 
+	void removeFuel(Fluid fluid);
+
 }

@@ -76,8 +76,11 @@ import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.block.ores.BlockDusts2;
 import defeatedcrow.hac.main.block.ores.BlockGem;
+import defeatedcrow.hac.main.block.ores.BlockHeatingMetal;
 import defeatedcrow.hac.main.block.ores.BlockLayerNew;
 import defeatedcrow.hac.main.block.ores.BlockMetal;
+import defeatedcrow.hac.main.block.ores.BlockMetalAlloy;
+import defeatedcrow.hac.main.block.ores.BlockMetalNew;
 import defeatedcrow.hac.main.block.ores.BlockOreNew;
 import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
@@ -190,13 +193,26 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock", ClimateMain.MOD_ID);
 
+		MainInit.metalBlockNew = new BlockMetalNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal_new", 7);
+		DCMaterialReg
+				.registerBlock(MainInit.metalBlockNew, ClimateCore.PACKAGE_BASE + "_ore_metal_new", ClimateMain.MOD_ID);
+
+		MainInit.metalBlockAlloy = new BlockMetalAlloy(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal_alloy", 8);
+		DCMaterialReg
+				.registerBlock(MainInit.metalBlockAlloy, ClimateCore.PACKAGE_BASE + "_ore_metal_alloy", ClimateMain.MOD_ID);
+
 		MainInit.dustBlock = new BlockDusts(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock", 15);
 		DCMaterialReg
 				.registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock", ClimateMain.MOD_ID);
 
-		MainInit.dustBlock_2 = new BlockDusts2(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock2", 1);
+		MainInit.dustBlock_2 = new BlockDusts2(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock2", 2);
 		DCMaterialReg
 				.registerBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_BASE + "_ore_dustblock2", ClimateMain.MOD_ID);
+
+		MainInit.heatedMetalBlock = new BlockHeatingMetal(Material.GROUND, ClimateCore.PACKAGE_BASE + "_heatingmetal",
+				11);
+		DCMaterialReg
+				.registerBlock(MainInit.heatedMetalBlock, ClimateCore.PACKAGE_BASE + "_ore_heatingmetal", ClimateMain.MOD_ID);
 
 		MainInit.gemBlock = new BlockGem(Material.ROCK, ClimateCore.PACKAGE_BASE + "_gemblock", 12);
 		DCMaterialReg.registerBlock(MainInit.gemBlock, ClimateCore.PACKAGE_BASE + "_ore_gemblock", ClimateMain.MOD_ID);
@@ -251,7 +267,7 @@ public class MainMaterialRegister {
 		MainInit.oreItem = new ItemOreCrystal(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oreitem");
 		DCMaterialReg.registerItem(MainInit.oreItem, ClimateCore.PACKAGE_BASE + "_oreitem", ClimateMain.MOD_ID);
 
-		MainInit.oreIngot = new ItemIngots(16).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(17).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		DCMaterialReg.registerItem(MainInit.oreIngot, ClimateCore.PACKAGE_BASE + "_ingot", ClimateMain.MOD_ID);
 
 		MainInit.oreDust = new ItemOreDusts(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");

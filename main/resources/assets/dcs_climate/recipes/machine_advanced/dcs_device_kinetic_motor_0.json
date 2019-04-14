@@ -7,7 +7,7 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotSUS"
+   "ore": "ingotStainlessSteel"
   },
   "Y": {
    "item": "dcs_climate:dcs_device_shaft_s_sus",

@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class LoadingOreRecipe {
@@ -31,14 +32,6 @@ public class LoadingOreRecipe {
 				"XXX",
 				'X',
 				"dustNickel"
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
-				"XXX",
-				"XXX",
-				"XXX",
-				'X',
-				"dustIron"
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 3), new Object[] {
@@ -269,6 +262,30 @@ public class LoadingOreRecipe {
 				"dustBorax"
 		});
 
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock_2, 1, 2), new Object[] {
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustIron",
+				"dustManganese",
+				"dustChromium",
+				"dustMolybdenum"
+		});
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock_2, 1, 2), new Object[] {
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustMagnetite",
+				"dustManganese",
+				"dustChromium",
+				"dustMolybdenum"
+		});
+
 		// dustBlock -> dust
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 0), new Object[] {
 				new ItemStack(MainInit.dustBlock, 1, 0)
@@ -314,30 +331,33 @@ public class LoadingOreRecipe {
 				new ItemStack(MainInit.dustBlock_2, 1, 1)
 		});
 
-		// ingot <-> metalBlock
-		String[] metal = {
-				"Copper",
-				"Zinc",
-				"Nickel",
-				"Silver",
-				"Brass",
-				"Steel",
-				"Nickelsilver",
-				"Magnet",
-				"Tin",
-				"Bronze",
-				"SUS",
-				"Titanium",
-				"Aluminum",
-				"Bismuth",
-				"BSCCO",
-				"Lead"
-		};
-		for (int i = 0; i < metal.length; i++) {
-			ingotRecipe(new ItemStack(MainInit.metalBlock, 1, i), new ItemStack(MainInit.oreIngot, 9, i), metal[i]);
-		}
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.IRON_INGOT), new Object[] {
+				new ItemStack(MainInit.heatedMetalBlock, 1, 2)
+		});
 
-		gemRecipe(new ItemStack(MainInit.metalBlock, 1, 12), new ItemStack(MainInit.oreIngot, 9, 12), "Aluminum");
+		// ingot <-> metalBlock
+		ingotRecipe(new ItemStack(MainInit.metalBlockNew, 1, 0), new ItemStack(MainInit.oreIngot, 9, 1), "Zinc");
+		ingotRecipe(new ItemStack(MainInit.metalBlockNew, 1, 1), new ItemStack(MainInit.oreIngot, 9, 0), "Copper");
+		ingotRecipe(new ItemStack(MainInit.metalBlockNew, 1, 2), new ItemStack(MainInit.oreIngot, 9, 8), "Tin");
+		ingotRecipe(new ItemStack(MainInit.metalBlockNew, 1, 3), new ItemStack(MainInit.oreIngot, 9, 15), "Lead");
+		ingotRecipe(new ItemStack(MainInit.metalBlockNew, 1, 4), new ItemStack(MainInit.oreIngot, 9, 12), "Aluminum");
+		ingotRecipe(new ItemStack(MainInit.metalBlockNew, 1, 5), new ItemStack(MainInit.oreIngot, 9, 2), "Nickel");
+		ingotRecipe(new ItemStack(MainInit.metalBlockNew, 1, 6), new ItemStack(MainInit.oreIngot, 9, 3), "Silver");
+		ingotRecipe(new ItemStack(MainInit.metalBlockNew, 1, 7), new ItemStack(MainInit.oreIngot, 9, 13), "Bismuth");
+
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 0), new ItemStack(MainInit.oreIngot, 9, 4), "Brass");
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 1), new ItemStack(MainInit.oreIngot, 9, 9), "Bronze");
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 2), new ItemStack(MainInit.oreIngot, 9, 5), "Steel");
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 3), new ItemStack(MainInit.oreIngot, 9,
+				6), "Nickelsilver");
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 4), new ItemStack(MainInit.oreIngot, 9,
+				17), "ToolSteel");
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 5), new ItemStack(MainInit.oreIngot, 9,
+				10), "StainlessSteel");
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 6), new ItemStack(MainInit.oreIngot, 9, 7), "Magnet");
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 7), new ItemStack(MainInit.oreIngot, 9,
+				11), "TitaniumAlloy");
+		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 8), new ItemStack(MainInit.oreIngot, 9, 14), "BSCCO");
 
 		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 0), new ItemStack(MainInit.gems, 4, 0), "ChalcedonyBlue");
 		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 1), new ItemStack(MainInit.gems, 4, 1), "ChalcedonyRed");

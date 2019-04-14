@@ -20,7 +20,7 @@
   },
   "W": {
    "type": "forge:ore_dict",
-   "ore": "ingotSUS"
+   "ore": "ingotStainlessSteel"
   }
  },
  "result": {

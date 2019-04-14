@@ -1,18 +1,27 @@
 package defeatedcrow.hac.main.block.ores;
 
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.api.IHeatTreatment;
+import defeatedcrow.hac.main.api.MainAPIManager;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -32,8 +41,31 @@ public class BlockDusts2 extends DCSimpleBlock implements ITexturePath, IRapidCo
 
 	@Override
 	public boolean onClimateChange(World world, BlockPos pos, IBlockState state, IClimate clm) {
-		if (clm == null)
-			return false;
+		if (clm != null) {
+			DCHeatTier heat = clm.getHeat();
+			DCHumidity hum = clm.getHumidity();
+			DCAirflow air = clm.getAirflow();
+			int meta = this.damageDropped(state);
+			ItemStack check = new ItemStack(this, 1, meta);
+			IHeatTreatment recipe = MainAPIManager.heatTreatmentRegister.getRecipe(check);
+			if (recipe != null) {
+				ItemStack output = recipe.getCurrentOutput(check, clm);
+				if (!DCUtil.isEmpty(output) && output.getItem() instanceof ItemBlock) {
+					Block ret = ((ItemBlock) output.getItem()).getBlock();
+					IBlockState retS = ret.getStateFromMeta(output.getMetadata());
+					if (world.setBlockState(pos, retS, 2)) {
+						world.notifyNeighborsOfStateChange(pos, ret, true);
+
+						// 効果音
+						if (playSEOnChanging(meta)) {
+							world.playSound(null, pos, getSE(meta), SoundCategory.BLOCKS, 0.8F, 2.0F);
+							DCLogger.debugLog("Heat Treatment: " + output.getDisplayName());
+						}
+						return true;
+					}
+				}
+			}
+		}
 		return super.onClimateChange(world, pos, state, clm);
 	}
 
@@ -45,7 +77,8 @@ public class BlockDusts2 extends DCSimpleBlock implements ITexturePath, IRapidCo
 
 	private static String[] names = {
 			"dirt",
-			"crystal"
+			"crystal",
+			"toolsteel"
 	};
 
 	@Override

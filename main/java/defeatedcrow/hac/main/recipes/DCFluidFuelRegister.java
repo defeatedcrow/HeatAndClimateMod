@@ -89,4 +89,17 @@ public class DCFluidFuelRegister implements IFluidFuelRegister {
 
 	}
 
+	@Override
+	public void removeFuel(Fluid fluid) {
+		IFluidFuel ret = null;
+		for (IFluidFuel f : list) {
+			if (f.content(fluid)) {
+				ret = f;
+			}
+		}
+		if (ret != null) {
+			list.remove(ret);
+		}
+	}
+
 }

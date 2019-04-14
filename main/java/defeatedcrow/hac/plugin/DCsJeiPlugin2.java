@@ -9,10 +9,14 @@ import defeatedcrow.hac.machine.gui.GuiSpinning;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IFluidFuel;
+import defeatedcrow.hac.main.api.IHeatTreatment;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.jei.DCFuelCategory;
 import defeatedcrow.hac.plugin.jei.DCFuelMaker;
 import defeatedcrow.hac.plugin.jei.DCFuelWrapper;
+import defeatedcrow.hac.plugin.jei.DCHeatTreatmentCategory;
+import defeatedcrow.hac.plugin.jei.DCHeatTreatmentMaker;
+import defeatedcrow.hac.plugin.jei.DCHeatTreatmentWrapper;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IJeiRuntime;
@@ -31,7 +35,7 @@ public class DCsJeiPlugin2 implements IModPlugin {
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		final IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 		final IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-		registry.addRecipeCategories(new DCFuelCategory(guiHelper));
+		registry.addRecipeCategories(new DCFuelCategory(guiHelper), new DCHeatTreatmentCategory(guiHelper));
 	}
 
 	@Override
@@ -39,12 +43,17 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		final IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 
 		registry.handleRecipes(IFluidFuel.class, recipe -> new DCFuelWrapper(recipe), "dcs_climate.fuel");
+		registry.handleRecipes(IHeatTreatment.class, recipe -> new DCHeatTreatmentWrapper(
+				recipe), "dcs_climate.treatment");
+
 		DCFuelMaker.register(registry);
+		DCHeatTreatmentMaker.register(registry);
 
 		registry.addRecipeCatalyst(new ItemStack(MainInit.fuelStove), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.burner), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.dieselEngine), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.scooter), "dcs_climate.fuel");
+		registry.addRecipeCatalyst(new ItemStack(MainInit.metalBlockAlloy, 1, 5), "dcs_climate.treatment");
 
 		if (ModuleConfig.machine) {
 			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] {

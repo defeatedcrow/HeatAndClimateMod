@@ -21,7 +21,7 @@ public class LoadingEquipRecipe {
 					"ingotNickelsilver",
 					"gemChalcedony",
 					"gemSapphire",
-					"ingotTitanium",
+					"ingotTitaniumAlloy",
 					"gemGarnet"
 			};
 			for (int i = 0; i < name.length; i++) {
@@ -139,7 +139,7 @@ public class LoadingEquipRecipe {
 					"ingotSteel",
 					"gemChalcedony",
 					"gemSapphire",
-					"ingotTitanium",
+					"ingotTitaniumAlloy",
 					"ingotSilver"
 			};
 			Item[][] armor = {

@@ -6,11 +6,14 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.energy.TileTorqueLockable;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.api.IHeatTreatment;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageConveyor;
 import net.minecraft.entity.Entity;
@@ -212,13 +215,21 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 		if (!DCUtil.isEmpty(inv.getStackInSlot(0)) && current != null) {
 			ItemStack target = inv.getStackInSlot(0).copy();
 			IClimateSmelting recipe = RecipeAPI.registerSmelting.getRecipe(current, target);
+			IHeatTreatment recipe2 = MainAPIManager.heatTreatmentRegister.getRecipe(target);
 			if (recipe != null && !DCUtil.isEmpty(recipe.getOutput())) {
 				ItemStack ret = recipe.getOutput().copy();
 				world.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D, getPos()
 						.getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
 				inv.setInventorySlotContents(0, ret);
 				// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
-			} else if (current.getAirflow() == DCAirflow.TIGHT && current.getHeat().getID() > DCHeatTier.KILN.getID()) {
+			} else if (recipe2 != null && !DCUtil.isEmpty(recipe2.getCurrentOutput(target, current))) {
+				ItemStack ret = recipe2.getCurrentOutput(target, current);
+				world.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D, getPos()
+						.getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
+				inv.setInventorySlotContents(0, ret);
+				// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
+			} else if (current.getHumidity() != DCHumidity.UNDERWATER && current
+					.getAirflow() == DCAirflow.TIGHT && current.getHeat().getID() > DCHeatTier.KILN.getID()) {
 				ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(target);
 				if (!DCUtil.isEmpty(burnt)) {
 					ItemStack ret = burnt.copy();

@@ -358,7 +358,12 @@ public class ItemColorCard extends DCItem {
 		int z = MathHelper.floor(player.posZ);
 		BlockPos p = new BlockPos(x, y + 1, z);
 		ChunkPos c = new ChunkPos(p);
-		gen.generate(world.rand, c.x, c.z, world, world.provider.createChunkGenerator(), world.getChunkProvider());
+		for (int i = -1; i < 2; i++) {
+			for (int j = -1; j < 2; j++) {
+				gen.generate(world.rand, c.x + i, c.z + j, world, world.provider.createChunkGenerator(), world
+						.getChunkProvider());
+			}
+		}
 		return true;
 	}
 

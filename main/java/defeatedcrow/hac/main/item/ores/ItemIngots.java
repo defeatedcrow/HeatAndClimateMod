@@ -32,7 +32,8 @@ public class ItemIngots extends DCItem {
 			"bismuth",
 			"bscco",
 			"lead",
-			"manganese"
+			"manganese",
+			"toolsteel"
 	};
 
 	public ItemIngots(int max) {
@@ -63,6 +64,7 @@ public class ItemIngots extends DCItem {
 	 * 14: BSCCO
 	 * 15: 鉛
 	 * 16: マンガン
+	 * 17: 工具鋼
 	 */
 	@Override
 	public String[] getNameSuffix() {
@@ -114,7 +116,8 @@ public class ItemIngots extends DCItem {
 		BISMUTH("bismuth", 1),
 		BSCCO("bscco", 3),
 		LEAD("lead", 1),
-		MANGANESE("manganese", 3);
+		MANGANESE("manganese", 3),
+		TOOLSTEEL("toolsteel", 3);
 
 		public String name;
 		public int tier;
@@ -141,7 +144,8 @@ public class ItemIngots extends DCItem {
 				BISMUTH,
 				BSCCO,
 				LEAD,
-				MANGANESE
+				MANGANESE,
+				TOOLSTEEL
 		};
 	}
 

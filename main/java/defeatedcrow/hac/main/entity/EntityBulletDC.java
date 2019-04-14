@@ -351,7 +351,8 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			if (entity.attackEntityFrom(damagesource, dam)) {
 				if (entity instanceof EntityLivingBase) {
 					EntityLivingBase living = (EntityLivingBase) entity;
-					living.hurtResistantTime = 0;
+					if (!this.getIsPenetrate())
+						living.hurtResistantTime = 0;
 
 					// ノックバック
 					if (this.knockbackStrength > 0) {

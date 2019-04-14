@@ -1,13 +1,19 @@
 package defeatedcrow.hac.main.recipes;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -29,100 +35,158 @@ public class MachineRecipeRegister {
 	static void loadOreRecipes() {
 		// 金属精錬。ごく一部はKILNでも焼けるが、ほとんどがSMELTを要求する。
 		// copper
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 0));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockNew, 1,
+				1), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 0));
 		// zinc
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				1), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 1));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockNew, 1,
+				0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 1));
+
 		// nickel
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				2), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 2));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockNew, 1,
+				5), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 2));
+
 		// silver
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				3), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 3));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockNew, 1,
+				6), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 3));
+
 		// brass
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				4), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 4));
-		// steel
-		if (MainCoreConfig.steel) {
-			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-					5), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
-			// iron
-			ClimateSmelting iron = new ClimateSmelting(new ItemStack(Blocks.IRON_BLOCK, 1, 0), null, DCHeatTier.KILN,
-					null, DCAirflow.TIGHT, 0F, false, new ItemStack(MainInit.dustBlock, 1, 5));
-			iron.requiredHeat().remove(DCHeatTier.SMELTING);
-			RecipeAPI.registerSmelting.addRecipe(iron);
-		} else {
-			RecipeAPI.registerSmelting.addRecipe(new ItemStack(Blocks.IRON_BLOCK, 1,
-					0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
-		}
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+				0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 4));
+
 		// nickelsilver
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				6), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 6));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+				3), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 6));
+
 		// magnet
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				7), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 7));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+				6), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 7));
 
 		// tin
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				8), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 8));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockNew, 1,
+				2), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 8));
 
 		// bronze
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				9), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 9));
-
-		// sus
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				10), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 10));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+				1), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 9));
 
 		// gold
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(Blocks.GOLD_BLOCK, 1,
 				0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 11));
 
-		// titanium
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				11), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 12));
-
 		// aluminium
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				12), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 13));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockNew, 1,
+				4), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 13));
 
 		// bismuth
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				13), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 14));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockNew, 1,
+				7), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 14));
 
 		// bscco
-		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlock, 1,
-				14), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 15));
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+				8), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 15));
 
-		// dust個別精錬
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 0),
-		// DCHeatTier.KILN, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 0));
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 1),
-		// DCHeatTier.KILN, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 1));
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 2),
-		// DCHeatTier.SMELTING, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 2));
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 3),
-		// DCHeatTier.SMELTING, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 3));
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(Items.GOLD_INGOT, 1, 0),
-		// DCHeatTier.KILN, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 4));
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(Items.IRON_INGOT, 1, 0),
-		// DCHeatTier.KILN, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 5));
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 5),
-		// DCHeatTier.SMELTING, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 6));
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 7),
-		// DCHeatTier.UHT, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 7));
-		// RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.oreIngot, 1, 8),
-		// DCHeatTier.KILN, null,
-		// DCAirflow.TIGHT, false, new ItemStack(MainInit.oreDust, 1, 8));
+		// 熱処理
+		if (MainCoreConfig.steel_hardmode) {
+
+			GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 5), new ItemStack(MainInit.heatedMetalBlock,
+					1, 2), 0.3F);
+			GameRegistry.addSmelting(new ItemStack(Blocks.IRON_BLOCK, 1, 0), new ItemStack(MainInit.heatedMetalBlock, 1,
+					2), 0F);
+
+			IClimate c1 = ClimateAPI.register
+					.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL, DCAirflow.TIGHT);
+			IClimate c2 = ClimateAPI.register
+					.getClimateFromParam(DCHeatTier.NORMAL, DCHumidity.UNDERWATER, DCAirflow.TIGHT);
+			IClimate c3 = ClimateAPI.register.getClimateFromParam(DCHeatTier.OVEN, DCHumidity.NORMAL, DCAirflow.TIGHT);
+			IClimate c4 = ClimateAPI.register.getClimateFromParam(DCHeatTier.UHT, DCHumidity.NORMAL, DCAirflow.TIGHT);
+
+			List<ItemStack> l1 = Lists.newArrayList();
+			l1.add(new ItemStack(MainInit.dustBlock, 1, 5));
+			l1.add(new ItemStack(MainInit.heatedMetalBlock, 1, 2));
+			HeatTreatment r1 = new HeatTreatment(l1, c1, new ItemStack(MainInit.heatedMetalBlock, 1, 0), c2,
+					new ItemStack(MainInit.heatedMetalBlock, 1, 1), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 2),
+					new ItemStack(MainInit.heatedMetalBlock, 1, 2));
+			r1.temp2.add(DCHeatTier.COOL);
+			r1.hum1.add(DCHumidity.DRY);
+			r1.hum3.add(DCHumidity.DRY);
+			r1.air1.add(DCAirflow.NORMAL);
+			r1.air2.add(DCAirflow.NORMAL);
+			r1.air3.add(DCAirflow.NORMAL);
+			MainAPIManager.heatTreatmentRegister.registerRecipe(r1);
+
+			List<ItemStack> l2 = Lists.newArrayList();
+			l2.add(new ItemStack(MainInit.dustBlock, 1, 10));
+			l2.add(new ItemStack(MainInit.heatedMetalBlock, 1, 5));
+			HeatTreatment r2 = new HeatTreatment(l2, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 3), c2,
+					new ItemStack(MainInit.heatedMetalBlock, 1, 4), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 5),
+					new ItemStack(MainInit.heatedMetalBlock, 1, 5));
+			r2.temp2.add(DCHeatTier.COOL);
+			r2.hum1.add(DCHumidity.DRY);
+			r2.hum3.add(DCHumidity.DRY);
+			r2.air1.add(DCAirflow.NORMAL);
+			r2.air2.add(DCAirflow.NORMAL);
+			r2.air3.add(DCAirflow.NORMAL);
+			MainAPIManager.heatTreatmentRegister.registerRecipe(r2);
+
+			List<ItemStack> l3 = Lists.newArrayList();
+			l3.add(new ItemStack(MainInit.dustBlock_2, 1, 2));
+			l3.add(new ItemStack(MainInit.heatedMetalBlock, 1, 11));
+			HeatTreatment r3 = new HeatTreatment(l3, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 9), c2,
+					new ItemStack(MainInit.heatedMetalBlock, 1, 10), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 4),
+					new ItemStack(MainInit.heatedMetalBlock, 1, 11));
+			r3.temp2.add(DCHeatTier.COOL);
+			r3.hum1.add(DCHumidity.DRY);
+			r3.hum3.add(DCHumidity.DRY);
+			r3.air1.add(DCAirflow.NORMAL);
+			r3.air2.add(DCAirflow.NORMAL);
+			r3.air3.add(DCAirflow.NORMAL);
+			MainAPIManager.heatTreatmentRegister.registerRecipe(r3);
+
+			List<ItemStack> l4 = Lists.newArrayList();
+			l4.add(new ItemStack(MainInit.dustBlock, 1, 12));
+			l4.add(new ItemStack(MainInit.heatedMetalBlock, 1, 8));
+			HeatTreatment r4 = new HeatTreatment(l4, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 6), c2,
+					new ItemStack(MainInit.heatedMetalBlock, 1, 7), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 7),
+					new ItemStack(MainInit.heatedMetalBlock, 1, 8));
+			r4.temp2.add(DCHeatTier.COOL);
+			r4.hum1.add(DCHumidity.DRY);
+			r4.hum3.add(DCHumidity.DRY);
+			r4.air1.add(DCAirflow.NORMAL);
+			r4.air2.add(DCAirflow.NORMAL);
+			r4.air3.add(DCAirflow.NORMAL);
+			MainAPIManager.heatTreatmentRegister.registerRecipe(r4);
+
+		} else {
+
+			GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 5), new ItemStack(Blocks.IRON_BLOCK, 1,
+					0), 0.3F);
+
+			// steel
+			if (MainCoreConfig.steel) {
+				RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+						2), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
+				// iron
+				ClimateSmelting iron = new ClimateSmelting(new ItemStack(Blocks.IRON_BLOCK, 1, 0), null,
+						DCHeatTier.KILN, null, DCAirflow.TIGHT, 0F, false, new ItemStack(MainInit.dustBlock, 1, 5));
+				iron.requiredHeat().remove(DCHeatTier.SMELTING);
+				RecipeAPI.registerSmelting.addRecipe(iron);
+			} else {
+				RecipeAPI.registerSmelting.addRecipe(new ItemStack(Blocks.IRON_BLOCK, 1,
+						0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
+			}
+
+			// sus
+			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+					5), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 10));
+
+			// toolsteel
+			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+					4), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock_2, 1, 2));
+
+			// titanium
+			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+					7), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 12));
+		}
 
 	}
 
@@ -193,19 +257,18 @@ public class MachineRecipeRegister {
 
 	static void loadSmelting() {
 		// KILNはバニラカマドに対応する
-		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 0), new ItemStack(MainInit.metalBlock, 1,
-				0), 0.3F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 1), new ItemStack(MainInit.metalBlock, 1,
+		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 0), new ItemStack(MainInit.metalBlockNew, 1,
 				1), 0.3F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 4), new ItemStack(MainInit.metalBlock, 1,
-				4), 0.3F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 5), new ItemStack(Blocks.IRON_BLOCK, 1, 0), 0.3F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 8), new ItemStack(MainInit.metalBlock, 1,
-				8), 0.3F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 9), new ItemStack(MainInit.metalBlock, 1,
-				9), 0.3F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 14), new ItemStack(MainInit.metalBlock, 1,
-				13), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 1), new ItemStack(MainInit.metalBlockNew, 1,
+				0), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 4), new ItemStack(MainInit.metalBlockAlloy, 1,
+				0), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 8), new ItemStack(MainInit.metalBlockNew, 1,
+				2), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 9), new ItemStack(MainInit.metalBlockAlloy, 1,
+				1), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 14), new ItemStack(MainInit.metalBlockNew, 1,
+				7), 0.3F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 0), new ItemStack(MainInit.oreIngot, 1, 0), 0.1F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.oreDust, 1, 1), new ItemStack(MainInit.oreIngot, 1, 1), 0.1F);
@@ -229,6 +292,7 @@ public class MachineRecipeRegister {
 		// GameRegistry.addSmelting(new ItemStack(MainInit.gems, 1, 12), new ItemStack(Items.ENDER_PEARL, 1, 0), 0.2F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.ores_2, 1, 0), new ItemStack(MainInit.gemBlock, 1, 6), 0.2F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.layerNew, 1, 1), new ItemStack(MainInit.gemBlock, 1, 6), 0.2F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.desiccant, 1, 3), new ItemStack(MainInit.desiccant, 1, 0), 0F);
 

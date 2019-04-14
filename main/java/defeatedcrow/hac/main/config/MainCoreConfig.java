@@ -43,6 +43,7 @@ public class MainCoreConfig {
 	public static double rateVsEU = 2.0D;
 	public static double rateVsFU = 10.0D;
 
+	public static boolean steel_hardmode = true;
 	public static boolean steel = true;
 	public static boolean pendant_clam = true;
 	public static boolean bird_effect = true;
@@ -121,6 +122,9 @@ public class MainCoreConfig {
 			Property gun_d = cfg
 					.get("item setting", "Gun Base Damage", gun_damage, "Set default damage amount of guns (brass bullet).");
 
+			Property metal_b = cfg
+					.get("item setting", "Enable HardMode Metallurgy", steel_hardmode, "Enable Heat Treatment Process for Metallurgy.");
+
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
 
@@ -135,6 +139,7 @@ public class MainCoreConfig {
 			offsetSeason = off_season.getIntList();
 			offsetClimate = off_climate.getIntList();
 			gun_damage = gun_d.getDouble();
+			steel_hardmode = metal_b.getBoolean();
 
 			rateVsRF = vsRF.getDouble();
 			rateVsEU = vsEU.getDouble();

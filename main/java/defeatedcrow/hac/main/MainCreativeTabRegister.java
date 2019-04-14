@@ -20,7 +20,10 @@ public class MainCreativeTabRegister {
 		MainInit.dustBlock.setCreativeTab(ClimateCore.climate);
 		MainInit.dustBlock_2.setCreativeTab(ClimateCore.climate);
 		MainInit.gemBlock.setCreativeTab(ClimateCore.climate);
-		MainInit.metalBlock.setCreativeTab(ClimateCore.climate);
+		// MainInit.metalBlock.setCreativeTab(ClimateCore.climate);
+		MainInit.metalBlockNew.setCreativeTab(ClimateCore.climate);
+		MainInit.metalBlockAlloy.setCreativeTab(ClimateCore.climate);
+		MainInit.heatedMetalBlock.setCreativeTab(ClimateCore.climate);
 
 		// building
 		MainInit.bricks.setCreativeTab(ClimateMain.build);

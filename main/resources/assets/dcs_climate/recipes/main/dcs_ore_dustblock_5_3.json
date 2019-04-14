@@ -3,39 +3,39 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "dustIron"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "dustIron"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "dustIron"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "dustIron"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "dustIron"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "dustIron"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "dustIron"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "dustIron"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustGraphite"
+   "ore": "dustCoal"
   }
  ],
  "result": {

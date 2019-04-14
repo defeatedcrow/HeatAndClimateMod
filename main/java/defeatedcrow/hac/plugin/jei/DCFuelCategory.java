@@ -11,8 +11,8 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.FluidStack;
 
 public class DCFuelCategory implements IRecipeCategory {
@@ -31,7 +31,7 @@ public class DCFuelCategory implements IRecipeCategory {
 
 	@Override
 	public String getTitle() {
-		return I18n.translateToLocal(getUid());
+		return I18n.format(getUid());
 	}
 
 	@Override
