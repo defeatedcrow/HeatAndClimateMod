@@ -19,13 +19,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemAlloyMold extends DCItem implements IPressMold {
+public class ItemToolMold extends DCItem implements IPressMold {
 
 	private final int maxMeta;
 
-	public ItemAlloyMold() {
+	public ItemToolMold() {
 		super();
-		maxMeta = 9;
+		maxMeta = 3;
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class ItemAlloyMold extends DCItem implements IPressMold {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		String s = "items/misc/mold_toolsteel";
+		String s = "items/misc/mold_alloy";
 		if (f) {
 			s = "textures/" + s;
 		}
@@ -88,18 +88,6 @@ public class ItemAlloyMold extends DCItem implements IPressMold {
 				return new ItemStack(MachineInit.catalyst, 1, 2);
 			else if (m == 3)
 				return new ItemStack(MachineInit.catalyst, 1, 3);
-			else if (m == 4)
-				return new ItemStack(MachineInit.machimeMaterials, 1, 2);
-			else if (m == 5)
-				return new ItemStack(MachineInit.machimeMaterials, 1, 5);
-			else if (m == 6)
-				return new ItemStack(MachineInit.machimeMaterials, 1, 6);
-			else if (m == 7)
-				return new ItemStack(MachineInit.machimeMaterials, 1, 7);
-			else if (m == 8)
-				return new ItemStack(MachineInit.machimeMaterials, 1, 8);
-			else if (m == 9)
-				return new ItemStack(MachineInit.machimeMaterials, 1, 9);
 		}
 		return null;
 	}
@@ -130,21 +118,6 @@ public class ItemAlloyMold extends DCItem implements IPressMold {
 				list.add(new ItemStack(MainInit.oreDust, 1, 10));
 				list.add(new ItemStack(MainInit.oreDust, 1, 11));
 				list.add(new ItemStack(MainInit.miscDust, 1, 1));
-			} else if (mold.getItemDamage() == 4) {
-				list.add(new ItemStack(MainInit.oreIngot, 8, 12));
-			} else if (mold.getItemDamage() == 5) {
-				list.add(new ItemStack(MainInit.oreIngot, 4, 14));
-				list.add(new ItemStack(MainInit.oreIngot, 4, 11));
-			} else if (mold.getItemDamage() == 6) {
-				list.add(new ItemStack(MainInit.gems, 1, 17));
-				list.add(new ItemStack(MainInit.gems, 1, 24));
-				list.add(new ItemStack(MainInit.oreIngot, 1, 15));
-			} else if (mold.getItemDamage() == 7) {
-				list.add(new ItemStack(MainInit.oreIngot, 1, 17));
-			} else if (mold.getItemDamage() == 8) {
-				list.add(new ItemStack(MainInit.oreIngot, 2, 17));
-			} else if (mold.getItemDamage() == 9) {
-				list.add(new ItemStack(MainInit.oreIngot, 4, 17));
 			}
 		}
 		return list;

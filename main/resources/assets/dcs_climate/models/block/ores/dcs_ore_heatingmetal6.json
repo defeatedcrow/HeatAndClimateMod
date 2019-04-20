@@ -1,1 +1,7 @@
-{"parent":"dcs_climate:block/dcs_cube_all","textures":{"all":"dcs_climate:blocks/ores/metal_titanium_heating"}}
+{
+    "parent": "dcs_climate:block/dcs_cube_lamp",
+    "textures": {
+        "inner": "dcs_climate:blocks/build/glass_selenite",
+        "glass": "dcs_climate:blocks/ores/metal_titanium_heating"
+    }
+}

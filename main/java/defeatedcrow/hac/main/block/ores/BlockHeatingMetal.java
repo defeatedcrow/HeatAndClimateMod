@@ -26,11 +26,15 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
 
@@ -161,6 +165,32 @@ public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IR
 				world.scheduleUpdate(pos, this, this.tickRate(world) + rand.nextInt(21));
 			}
 		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		if (state != null && inWater(world, pos)) {
+			int m = DCState.getInt(state, DCState.TYPE16);
+			if (m == 0 || m == 3 || m == 6 || m == 9) {
+				for (int i = 0; i < 5; i++) {
+					double x = pos.getX() + rand.nextDouble() * 1D;
+					double y = pos.getY() + 1.05D;
+					double z = pos.getZ() + rand.nextDouble() * 1D;
+					world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, x, y, z, 0.0D, 0.05D, 0.0D, new int[0]);
+				}
+			}
+		}
+	}
+
+	boolean inWater(World world, BlockPos pos) {
+		if (world != null && pos != null)
+			for (EnumFacing f : EnumFacing.VALUES) {
+				if (world.getBlockState(pos.offset(f)).getMaterial() == Material.WATER) {
+					return true;
+				}
+			}
+		return false;
 	}
 
 	public static BlockSet getFailureProduct(IBlockState state) {

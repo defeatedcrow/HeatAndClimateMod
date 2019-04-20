@@ -112,6 +112,7 @@ item.dcs_gem_moonstone.name=月長石
 item.dcs_gem_kunzite.name=クンツァイト
 item.dcs_gem_opal.name=ブラックオパール
 item.dcs_gem_crude_oil.name=含油頁岩
+item.dcs_gem_tausonite.name=チタン酸ストロンチウム
 item.dcs_miscdust_coal.name=石墨の粉
 item.dcs_miscdust_crystal.name=石英の粉
 item.dcs_miscdust_lime.name=石灰
@@ -159,12 +160,17 @@ item.dcs_spindle_wood.name=木の回転子
 item.dcs_spindle_brass.name=真鍮の回転子
 item.dcs_spindle_alloy.name=合金の回転子
 item.dcs_spindle_steel.name=鋼の回転子
+item.dcs_spindle_toolsteel.name=工具鋼の回転子
 item.dcs_mechanical_induction_motor.name=誘導モーター部品
 item.dcs_mechanical_alternator.name=オルタネーター
 item.dcs_mechanical_enginepart.name=エンジン部品
 item.dcs_mechanical_engine.name=エンジン
 item.dcs_mechanical_tire.name=タイヤ
 item.dcs_mechanical_sc_magnet.name=SC磁石
+item.dcs_mechanical_thermoelectric.name=熱電素子
+item.dcs_mechanical_blade_toolsteel.name=工具鋼の刃
+item.dcs_mechanical_gun_barrel.name=銃身
+item.dcs_mechanical_mortar_barrel.name=砲身
 item.dcs_reagent_drop_coaltar.name=コールタール
 item.dcs_reagent_drop_glycerine.name=グリセリン
 item.dcs_reagent_drop_synthetic.name=合成樹脂ドロップ
@@ -1345,6 +1351,7 @@ dcs.tip.slotpanel=レシピマシンのinputスロットに置くと、空のス
 dcs.tip.cloth.color=カラーバリエーション
 dcs.tip.tinder=高温のブロックや燃えているエンティティから火を移します。
 dcs.tip.firestarter=対象のブロックやエンティティに着火します。
+dcs.tip.pressmold.jei=この金型には、プレス機で使用できる以下のレシピが登録されています。
 
 dcs.tip.shitirin.description=
 dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック
@@ -1367,6 +1374,7 @@ dcs_climate.tip.resistance=気候耐性
 
 dcs_climate.fuel=液体燃料
 dcs_climate.treatment=金属熱処理
+dcs_climate.pressmold=プレス金型
 
 ## magic
 dcs.tip.allcharm=プレイヤーインベントリの最上段に置くと効果を発揮します。

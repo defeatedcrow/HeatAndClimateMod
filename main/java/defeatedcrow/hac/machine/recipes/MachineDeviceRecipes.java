@@ -567,6 +567,13 @@ public class MachineDeviceRecipes {
 							"dustIron"
 			});
 
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems, 1,
+					24), null, 0F, null, null, DCHeatTier.UHT, "gemDiamond", null, null, new Object[] {
+							"dustTitanium",
+							"dustBlaze",
+							"gemCelestite"
+			});
+
 			// plating
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.platingChrome, 1,
 					0), null, 0F, null, null, DCHeatTier.NORMAL, (ItemStack) null, new FluidStack(MainInit.sulfuricAcid,

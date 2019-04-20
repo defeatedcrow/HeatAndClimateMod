@@ -17,6 +17,10 @@ import defeatedcrow.hac.plugin.jei.DCFuelWrapper;
 import defeatedcrow.hac.plugin.jei.DCHeatTreatmentCategory;
 import defeatedcrow.hac.plugin.jei.DCHeatTreatmentMaker;
 import defeatedcrow.hac.plugin.jei.DCHeatTreatmentWrapper;
+import defeatedcrow.hac.plugin.jei.DCPressMoldCategory;
+import defeatedcrow.hac.plugin.jei.DCPressMoldMaker;
+import defeatedcrow.hac.plugin.jei.DCPressMoldWrapper;
+import defeatedcrow.hac.plugin.jei.MoldItem;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IJeiRuntime;
@@ -35,7 +39,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		final IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 		final IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-		registry.addRecipeCategories(new DCFuelCategory(guiHelper), new DCHeatTreatmentCategory(guiHelper));
+		registry.addRecipeCategories(new DCFuelCategory(guiHelper), new DCHeatTreatmentCategory(
+				guiHelper), new DCPressMoldCategory(guiHelper));
 	}
 
 	@Override
@@ -45,15 +50,18 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		registry.handleRecipes(IFluidFuel.class, recipe -> new DCFuelWrapper(recipe), "dcs_climate.fuel");
 		registry.handleRecipes(IHeatTreatment.class, recipe -> new DCHeatTreatmentWrapper(
 				recipe), "dcs_climate.treatment");
+		registry.handleRecipes(MoldItem.class, recipe -> new DCPressMoldWrapper(recipe), "dcs_climate.pressmold");
 
 		DCFuelMaker.register(registry);
 		DCHeatTreatmentMaker.register(registry);
+		DCPressMoldMaker.register(registry);
 
 		registry.addRecipeCatalyst(new ItemStack(MainInit.fuelStove), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.burner), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.dieselEngine), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.scooter), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MainInit.metalBlockAlloy, 1, 5), "dcs_climate.treatment");
+		registry.addRecipeCatalyst(new ItemStack(MachineInit.pressMachine, 1, 0), "dcs_climate.pressmold");
 
 		if (ModuleConfig.machine) {
 			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] {

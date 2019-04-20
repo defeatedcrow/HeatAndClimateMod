@@ -13,7 +13,11 @@ public class ItemMachineMaterial extends DCItem {
 			"enginepart",
 			"engine",
 			"tire",
-			"sc_magnet"
+			"sc_magnet",
+			"thermoelectric",
+			"blade_toolsteel",
+			"gun_barrel",
+			"mortar_barrel"
 	};
 
 	public ItemMachineMaterial(int max) {

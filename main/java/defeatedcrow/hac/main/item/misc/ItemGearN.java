@@ -8,7 +8,11 @@ public class ItemGearN extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"wood", "brass", "alloy", "steel"
+			"wood",
+			"brass",
+			"alloy",
+			"steel",
+			"toolsteel"
 	};
 
 	public ItemGearN(int max) {

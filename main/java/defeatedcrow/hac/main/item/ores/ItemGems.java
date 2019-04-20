@@ -51,6 +51,7 @@ public class ItemGems extends DCItem {
 	 * 21: リシア輝石
 	 * 22: ブラックオパール
 	 * 23: 含油頁岩
+	 * 24: チタン酸ストロンチウム
 	 */
 	private static String[] names = {
 			"chal_blue",
@@ -76,7 +77,8 @@ public class ItemGems extends DCItem {
 			"moonstone",
 			"kunzite",
 			"opal",
-			"crude_oil"
+			"crude_oil",
+			"tausonite"
 	};
 
 	public ItemGems(int max) {

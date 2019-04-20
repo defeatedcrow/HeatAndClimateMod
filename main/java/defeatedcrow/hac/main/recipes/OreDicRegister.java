@@ -211,6 +211,8 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gemSpodumene", new ItemStack(MainInit.gems, 1, 21));
 		OreDictionary.registerOre("gemOpal", new ItemStack(MainInit.gems, 1, 22));
 		OreDictionary.registerOre("gemCrudeOil", new ItemStack(MainInit.gems, 1, 23));
+		OreDictionary.registerOre("gemTausonite", new ItemStack(MainInit.gems, 1, 24));
+		OreDictionary.registerOre("gemDiamond", new ItemStack(MainInit.gems, 1, 24));
 
 		OreDictionary.registerOre("blockChalcedonyBlue", new ItemStack(MainInit.gemBlock, 1, 0));
 		OreDictionary.registerOre("blockChalcedonyRed", new ItemStack(MainInit.gemBlock, 1, 1));

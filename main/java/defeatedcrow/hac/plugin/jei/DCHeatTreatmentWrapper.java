@@ -192,7 +192,7 @@ public class DCHeatTreatmentWrapper implements IRecipeWrapper {
 			mc.fontRenderer.drawString("Within " + time1 + " tick", 35, 26, 0xFF9090, true);
 		if (!input3.isEmpty())
 			mc.fontRenderer.drawString("Within " + time2 + " tick", 35, 60, 0xFF9090, true);
-		mc.fontRenderer.drawString("Failure Products", 70, 105, 0xFF0000, true);
+		mc.fontRenderer.drawString("Failure Products", 70, 105, 0xFF0000, false);
 	}
 
 }

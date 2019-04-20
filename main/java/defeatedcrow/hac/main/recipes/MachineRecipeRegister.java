@@ -108,6 +108,7 @@ public class MachineRecipeRegister {
 					new ItemStack(MainInit.heatedMetalBlock, 1, 2));
 			r1.temp2.add(DCHeatTier.COOL);
 			r1.hum1.add(DCHumidity.DRY);
+			r1.hum2.add(DCHumidity.WET);
 			r1.hum3.add(DCHumidity.DRY);
 			r1.air1.add(DCAirflow.NORMAL);
 			r1.air2.add(DCAirflow.NORMAL);
@@ -122,6 +123,7 @@ public class MachineRecipeRegister {
 					new ItemStack(MainInit.heatedMetalBlock, 1, 5));
 			r2.temp2.add(DCHeatTier.COOL);
 			r2.hum1.add(DCHumidity.DRY);
+			r2.hum2.add(DCHumidity.WET);
 			r2.hum3.add(DCHumidity.DRY);
 			r2.air1.add(DCAirflow.NORMAL);
 			r2.air2.add(DCAirflow.NORMAL);
@@ -136,6 +138,7 @@ public class MachineRecipeRegister {
 					new ItemStack(MainInit.heatedMetalBlock, 1, 11));
 			r3.temp2.add(DCHeatTier.COOL);
 			r3.hum1.add(DCHumidity.DRY);
+			r3.hum2.add(DCHumidity.WET);
 			r3.hum3.add(DCHumidity.DRY);
 			r3.air1.add(DCAirflow.NORMAL);
 			r3.air2.add(DCAirflow.NORMAL);
@@ -150,6 +153,7 @@ public class MachineRecipeRegister {
 					new ItemStack(MainInit.heatedMetalBlock, 1, 8));
 			r4.temp2.add(DCHeatTier.COOL);
 			r4.hum1.add(DCHumidity.DRY);
+			r4.hum2.add(DCHumidity.WET);
 			r4.hum3.add(DCHumidity.DRY);
 			r4.air1.add(DCAirflow.NORMAL);
 			r4.air2.add(DCAirflow.NORMAL);

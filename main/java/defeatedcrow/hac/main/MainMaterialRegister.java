@@ -273,7 +273,7 @@ public class MainMaterialRegister {
 		MainInit.oreDust = new ItemOreDusts(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
 		DCMaterialReg.registerItem(MainInit.oreDust, ClimateCore.PACKAGE_BASE + "_oredust", ClimateMain.MOD_ID);
 
-		MainInit.gems = new ItemGems(23).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
+		MainInit.gems = new ItemGems(24).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		DCMaterialReg.registerItem(MainInit.gems, ClimateCore.PACKAGE_BASE + "_gem", ClimateMain.MOD_ID);
 
 		MainInit.miscDust = new ItemMiscDust(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
@@ -286,7 +286,7 @@ public class MainMaterialRegister {
 		MainInit.materials = new ItemMiscs(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
 		DCMaterialReg.registerItem(MainInit.materials, ClimateCore.PACKAGE_BASE + "_material", ClimateMain.MOD_ID);
 
-		MainInit.gears = new ItemGearN(3).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spindle");
+		MainInit.gears = new ItemGearN(4).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spindle");
 		DCMaterialReg.registerItem(MainInit.gears, ClimateCore.PACKAGE_BASE + "_spindle", ClimateMain.MOD_ID);
 
 		MainInit.clothes = new ItemClothN(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_misc");

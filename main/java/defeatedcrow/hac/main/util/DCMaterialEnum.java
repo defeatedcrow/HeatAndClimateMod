@@ -91,7 +91,7 @@ public enum DCMaterialEnum {
 			12,
 			10,
 			6
-	}, 4, 1440, 8.0F, 5, 0F, 0F, new ItemStack(MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
+	}, 4, 1800, 8.0F, 5, 0F, 0F, new ItemStack(MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
 	// 耐暑性特化で耐久高め
 	SYNTHETIC(12, "synthetic", 3.0F, new int[] {
 			3,
@@ -114,12 +114,12 @@ public enum DCMaterialEnum {
 			1
 	}, 1, 72, 0.0F, 10, 1.0F, 3.0F, new ItemStack(Blocks.WOOL, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
 	// 耐久の低い攻性の金属素材
-	TOOLMETAL(15, "toolmetal", 15.0F, new int[] {
+	TOOLMETAL(15, "toolmetal", 18.0F, new int[] {
 			6,
 			10,
 			8,
 			5
-	}, 5, 720, 10.0F, 10, 0.0F, 0.0F, new ItemStack(MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F);
+	}, 5, 720, 12.0F, 10, 0.0F, 0.0F, new ItemStack(MainInit.oreIngot, 1, 17), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F);
 
 	public final String name;
 	public final int id;

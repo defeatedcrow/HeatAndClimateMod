@@ -350,7 +350,7 @@ public class MachineInitRegister {
 	}
 
 	static void loadItems() {
-		MachineInit.machimeMaterials = new ItemMachineMaterial(5)
+		MachineInit.machimeMaterials = new ItemMachineMaterial(9)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mechanical");
 		DCMaterialReg
 				.registerItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_BASE + "_mechanical", ClimateMain.MOD_ID);
