@@ -112,6 +112,7 @@ item.dcs_gem_moonstone.name=月長石
 item.dcs_gem_kunzite.name=紫鋰輝石
 item.dcs_gem_opal.name=黑蛋白石
 item.dcs_gem_crude_oil.name=油頁岩
+item.dcs_gem_tausonite.name=鈦酸鍶
 item.dcs_miscdust_coal.name=煤粉
 item.dcs_miscdust_crystal.name=石英粉
 item.dcs_miscdust_lime.name=石灰
@@ -159,12 +160,17 @@ item.dcs_spindle_wood.name=木轉子
 item.dcs_spindle_brass.name=黃銅轉子
 item.dcs_spindle_alloy.name=合金轉子
 item.dcs_spindle_steel.name=鋼轉子
+item.dcs_spindle_toolsteel.name=工具鋼轉子
 item.dcs_mechanical_induction_motor.name=感應馬達部件
 item.dcs_mechanical_alternator.name=交流發電機
 item.dcs_mechanical_enginepart.name=引擎部件
 item.dcs_mechanical_engine.name=引擎
 item.dcs_mechanical_tire.name=輪胎
 item.dcs_mechanical_sc_magnet.name=超導磁鐵
+item.dcs_mechanical_thermoelectric.name=熱電材料
+item.dcs_mechanical_blade_toolsteel.name=工具鋼劍身
+item.dcs_mechanical_gun_barrel.name=槍身
+item.dcs_mechanical_mortar_barrel.name=砲身
 item.dcs_reagent_drop_coaltar.name=煤焦油
 item.dcs_reagent_drop_glycerine.name=甘油
 item.dcs_reagent_drop_synthetic.name=合成樹脂滴
@@ -1345,6 +1351,7 @@ dcs.tip.slotpanel=放置在配方機器輸入格的時候會識別為一個空�
 dcs.tip.cloth.color=顏色變種
 dcs.tip.tinder=從高溫的方塊或燃燒中的實體上取火
 dcs.tip.firestarter=使目標方塊或實體燃燒
+dcs.tip.pressmold.jei=此模具登記了以下可用在衝床的配方
 
 dcs.tip.shitirin.description=這是一種日式的炭火烤爐
 dcs.tip.teapot=把希望加入的道具拿在手上並對這個方塊右鍵
@@ -1367,6 +1374,7 @@ dcs_climate.tip.resistance=氣候耐性
 
 dcs_climate.fuel=液體燃料
 dcs_climate.treatment=金屬熱處理
+dcs_climate.pressmold=衝壓模具
 
 ## magic
 dcs.tip.allcharm=放置在玩家物品欄最上段發揮效果
