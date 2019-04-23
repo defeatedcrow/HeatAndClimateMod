@@ -42,25 +42,25 @@ public class MachineDeviceRecipes {
 		if (ModuleConfig.r_mill) {
 			// new ores
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 0), new ItemStack(MainInit.oreItem, 1,
-					5), 0.2F, "oreRed");
+					5), 0.15F, "oreRed");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 1), new ItemStack(MainInit.oreItem, 1,
-					6), 0.2F, "oreGreen");
+					6), 0.15F, "oreGreen");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 2), new ItemStack(MainInit.oreItem, 1,
-					7), 0.2F, "oreBlue");
+					7), 0.15F, "oreBlue");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 3), new ItemStack(MainInit.oreItem, 1,
-					8), 0.2F, "oreWhite");
+					8), 0.15F, "oreWhite");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 4), new ItemStack(MainInit.oreItem, 1,
-					9), 0.2F, "oreBlack");
+					9), 0.15F, "oreBlack");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 5), new ItemStack(MainInit.oreItem, 1,
-					10), 0.1F, "oreLargeRed");
+					10), 0.15F, "oreLargeRed");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 6), new ItemStack(MainInit.oreItem, 1,
-					11), 0.1F, "oreLargeGreen");
+					11), 0.15F, "oreLargeGreen");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 7), new ItemStack(MainInit.oreItem, 1,
-					12), 0.1F, "oreLargeBlue");
+					12), 0.15F, "oreLargeBlue");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 8), new ItemStack(MainInit.oreItem, 1,
-					13), 0.1F, "oreLargeWhite");
+					13), 0.15F, "oreLargeWhite");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreItem, 2, 9), new ItemStack(MainInit.oreItem, 1,
-					14), 0.1F, "oreLargeBlack");
+					14), 0.15F, "oreLargeBlack");
 
 			// old ores
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 0), "oreCopper");

@@ -212,7 +212,6 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gemOpal", new ItemStack(MainInit.gems, 1, 22));
 		OreDictionary.registerOre("gemCrudeOil", new ItemStack(MainInit.gems, 1, 23));
 		OreDictionary.registerOre("gemTausonite", new ItemStack(MainInit.gems, 1, 24));
-		OreDictionary.registerOre("gemDiamond", new ItemStack(MainInit.gems, 1, 24));
 
 		OreDictionary.registerOre("blockChalcedonyBlue", new ItemStack(MainInit.gemBlock, 1, 0));
 		OreDictionary.registerOre("blockChalcedonyRed", new ItemStack(MainInit.gemBlock, 1, 1));
@@ -277,6 +276,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("gearAlloy", new ItemStack(MainInit.gears, 1, 2));
 		OreDictionary.registerOre("gearNickelsilver", new ItemStack(MainInit.gears, 1, 2));
 		OreDictionary.registerOre("gearSteel", new ItemStack(MainInit.gears, 1, 3));
+		OreDictionary.registerOre("gearToolSteel", new ItemStack(MainInit.gears, 1, 4));
 
 		OreDictionary.registerOre("patternSuit", new ItemStack(MainInit.patternPaper, 1, 0));
 		OreDictionary.registerOre("patternCoat", new ItemStack(MainInit.patternPaper, 1, 1));

@@ -66,6 +66,50 @@ public class LoadingEquipRecipe {
 				});
 			}
 
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcPickaxe[8], 1, 0), new Object[] {
+					"  X",
+					"YYZ",
+					"  Z",
+					'X',
+					"bladeToolSteel",
+					'Y',
+					"ingotSteel",
+					'Z',
+					"ingotToolSteel"
+			});
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcAxe[8], 1, 0), new Object[] {
+					" XX",
+					"YYZ",
+					"   ",
+					'X',
+					"bladeToolSteel",
+					'Y',
+					"ingotSteel",
+					'Z',
+					"ingotToolSteel"
+			});
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcSpade[8], 1, 0), new Object[] {
+					"   ",
+					"YYX",
+					"   ",
+					'X',
+					"bladeToolSteel",
+					'Y',
+					"ingotSteel"
+			});
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcSword[8], 1, 0), new Object[] {
+					"   ",
+					"YXX",
+					"   ",
+					'X',
+					"bladeToolSteel",
+					'Y',
+					"ingotSteel"
+			});
+
 			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcScythe[0], 1, 0), new Object[] {
 					" X ",
 					"  X",
@@ -116,6 +160,18 @@ public class LoadingEquipRecipe {
 					"stickWood"
 			});
 
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcScythe[5], 1, 0), new Object[] {
+					" X ",
+					"  X",
+					"YYZ",
+					'X',
+					"bladeToolsteel",
+					'Y',
+					"ingotSteel",
+					'Z',
+					"ingotToolSteel"
+			});
+
 			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.earthSpade, 1, 0), new Object[] {
 					"YYX",
 					'X',
@@ -132,6 +188,16 @@ public class LoadingEquipRecipe {
 					"gemMalachite",
 					'Y',
 					"stickWood"
+			});
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.toolsteelRake, 1, 0), new Object[] {
+					"   ",
+					"YYX",
+					"  X",
+					'X',
+					"ingotToolSteel",
+					'Y',
+					"ingotSteel"
 			});
 
 			String[] name2 = {
@@ -582,13 +648,12 @@ public class LoadingEquipRecipe {
 			if (ModuleConfig.weapon_advanced) {
 
 				DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.gun, 1, 0), new Object[] {
-						"Y  ",
-						"ZY ",
-						" ZX",
+						"Y ",
+						"ZX",
 						'X',
 						new ItemStack(Items.FLINT_AND_STEEL, 1, 0),
 						'Y',
-						"ingotSteel",
+						"barrelGun",
 						'Z',
 						"plankWood"
 				});

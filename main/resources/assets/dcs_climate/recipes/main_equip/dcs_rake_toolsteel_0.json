@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "   ",
+  "YYX",
+  "  X"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotToolSteel"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_rake_toolsteel",
+  "count": 1,
+  "data": 0
+ }
+}

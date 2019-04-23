@@ -16,7 +16,7 @@
   },
   "W": {
    "type": "forge:ore_dict",
-   "ore": "gearSteel"
+   "ore": "gearToolSteel"
   },
   "Z": {
    "item": "dcs_climate:dcs_mechanical",

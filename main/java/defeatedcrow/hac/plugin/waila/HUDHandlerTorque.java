@@ -5,7 +5,9 @@ import java.util.List;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import defeatedcrow.hac.machine.block.BlockEntityPanel;
 import defeatedcrow.hac.machine.block.BlockMonitorPanel;
+import defeatedcrow.hac.machine.block.TileEntityPanel;
 import defeatedcrow.hac.machine.block.TileMonitorBase;
 import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -44,6 +46,19 @@ public class HUDHandlerTorque extends HUDHandlerBlocks {
 			boolean power = meta > 7;
 			currenttip.add(String.format("Torque Energy : %.2f", torque));
 			currenttip.add(String.format("Facing : %s", side.getFacing()));
+		} else if (BlockEntityPanel.class.isInstance(accessor.getBlock())) {
+			int s = meta & 7;
+			boolean power = meta > 7;
+			String type = "Item";
+			if (s == 0) {
+				type = "Player";
+			} else if (s == 1) {
+				type = "Monster";
+			} else if (s == 2) {
+				type = "Animal";
+			}
+			currenttip.add(String.format("Power : %b", power));
+			currenttip.add(String.format("Target : %s", type));
 		}
 
 		return currenttip;
@@ -64,5 +79,6 @@ public class HUDHandlerTorque extends HUDHandlerBlocks {
 		registrar.registerNBTProvider(provider, TileTorqueBase.class);
 		registrar.registerBodyProvider(provider, TileMonitorBase.class);
 		registrar.registerNBTProvider(provider, TileMonitorBase.class);
+		registrar.registerBodyProvider(provider, TileEntityPanel.class);
 	}
 }

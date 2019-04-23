@@ -1,23 +1,21 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "XXX",
-  "XYX",
-  "XXX"
+  "XYX"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotAluminum"
+   "ore": "ingotToolSteel"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "gearSteel"
+   "ore": "blockSteel"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_mechanical",
+  "item": "dcs_climate:dcs_alloy_mold",
   "count": 1,
-  "data": 2
+  "data": 8
  }
 }

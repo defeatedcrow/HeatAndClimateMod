@@ -7,7 +7,7 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotTitanium"
+   "ore": "ingotTitaniumAlloy"
   },
   "Y": {
    "type": "forge:ore_dict",

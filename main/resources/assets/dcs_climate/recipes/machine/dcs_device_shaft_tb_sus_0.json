@@ -11,7 +11,7 @@
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "gearSteel"
+   "ore": "gearToolSteel"
   }
  },
  "result": {

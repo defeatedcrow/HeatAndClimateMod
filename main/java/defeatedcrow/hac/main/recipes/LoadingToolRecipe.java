@@ -111,6 +111,16 @@ public class LoadingToolRecipe {
 				"ingotSteel"
 		});
 
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 4), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'Y',
+				"gearWood",
+				'X',
+				"ingotToolSteel"
+		});
+
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 2), new Object[] {
 				" X ",
 				"XYX",
@@ -129,6 +139,16 @@ public class LoadingToolRecipe {
 				"gearStone",
 				'X',
 				"ingotSteel"
+		});
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 4), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'Y',
+				"gearStone",
+				'X',
+				"ingotToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 4), new Object[] {
@@ -343,27 +363,25 @@ public class LoadingToolRecipe {
 
 		if (ModuleConfig.machine) {
 			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
-					"X",
-					"Y",
-					"Z",
+					"ZYZ",
+					" X ",
 					'X',
 					new ItemStack(DCInit.climate_checker, 1, 0),
 					'Y',
-					new ItemStack(MachineInit.torqueChecker, 1, 0),
+					new ItemStack(MachineInit.machimeMaterials, 1, 6),
 					'Z',
-					"ingotSteel"
+					new ItemStack(MainInit.selenite, 1, 2)
 			});
 
 			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
-					"X",
-					"Y",
-					"Z",
+					"ZYZ",
+					" X ",
 					'X',
-					"gemMalachite",
-					'Y',
 					new ItemStack(MachineInit.torqueChecker, 1, 0),
+					'Y',
+					new ItemStack(MachineInit.machimeMaterials, 1, 6),
 					'Z',
-					"ingotSteel"
+					new ItemStack(MainInit.selenite, 1, 2)
 			});
 		} else {
 			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {

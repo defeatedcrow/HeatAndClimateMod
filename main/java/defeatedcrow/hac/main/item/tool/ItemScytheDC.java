@@ -12,6 +12,7 @@ import net.minecraft.block.BlockStem;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -197,8 +198,8 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		tooltip.add("Destroy the surrounding grass and leaves.");
+		tooltip.add(I18n.format("dcs.tip.scythe1"));
 		tooltip.add("Range: " + (this.range + 1));
-		tooltip.add("During sneaking, this will work as scissors.");
+		tooltip.add(I18n.format("dcs.tip.scythe2"));
 	}
 }

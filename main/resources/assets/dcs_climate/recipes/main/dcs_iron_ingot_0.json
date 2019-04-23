@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_ore_heatingmetal",
+   "data": 2
+  }
+ ],
+ "result": {
+  "item": "minecraft:iron_ingot",
+  "count": 1,
+  "data": 0
+ }
+}

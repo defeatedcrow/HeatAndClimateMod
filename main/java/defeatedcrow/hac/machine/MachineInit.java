@@ -108,6 +108,8 @@ public class MachineInit {
 	public static Block monitorRF;
 	public static Block monitorItem;
 
+	public static Block entityPanel;
+
 	public static Item dynamite;
 
 	public static Item motorMinecart;

@@ -317,7 +317,7 @@ public class MachineRecipes {
 				'X',
 				"ingotStainlessSteel",
 				'Y',
-				"gearSteel"
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft2_l, 1, 0), new Object[] {
@@ -326,7 +326,7 @@ public class MachineRecipes {
 				'X',
 				new ItemStack(MachineInit.shaft2_s, 1, 0),
 				'Y',
-				"gearSteel"
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft2_t_a, 1, 0), new Object[] {
@@ -336,7 +336,7 @@ public class MachineRecipes {
 				'X',
 				new ItemStack(MachineInit.shaft2_s, 1, 0),
 				'Y',
-				"gearSteel"
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft2_t_b, 1, 0), new Object[] {
@@ -345,7 +345,7 @@ public class MachineRecipes {
 				'X',
 				new ItemStack(MachineInit.shaft2_s, 1, 0),
 				'Y',
-				"gearSteel"
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft2_x, 1, 0), new Object[] {
@@ -355,7 +355,7 @@ public class MachineRecipes {
 				'X',
 				new ItemStack(MachineInit.shaft2_s, 1, 0),
 				'Y',
-				"gearSteel"
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.gearbox2, 1, 0), new Object[] {
@@ -363,9 +363,9 @@ public class MachineRecipes {
 				"XYX",
 				"ZXZ",
 				'X',
-				"gearAlloy",
-				'Y',
 				"gearSteel",
+				'Y',
+				"gearToolSteel",
 				'Z',
 				"ingotStainlessSteel"
 		});
@@ -377,7 +377,7 @@ public class MachineRecipes {
 				'X',
 				"ingotStainlessSteel",
 				'Y',
-				"gearSteel",
+				"gearToolSteel",
 				'Z',
 				new ItemStack(MachineInit.IBC, 1, 0),
 				'W',
@@ -603,6 +603,9 @@ public class MachineRecipes {
 		OreDictionary.registerOre("catalystBladeSUS", new ItemStack(MachineInit.rotaryBlade, 1, 0));
 		OreDictionary.registerOre("catalystBladeTitanium", new ItemStack(MachineInit.rotaryBlade, 1, 1));
 		OreDictionary.registerOre("catalystBladeScreen", new ItemStack(MachineInit.rotaryBlade, 1, 2));
+		OreDictionary.registerOre("bladeToolSteel", new ItemStack(MachineInit.machimeMaterials, 1, 7));
+		OreDictionary.registerOre("barrelGun", new ItemStack(MachineInit.machimeMaterials, 1, 8));
+		OreDictionary.registerOre("barrelMortar", new ItemStack(MachineInit.machimeMaterials, 1, 9));
 	}
 
 	static void loadAltRecipes() {

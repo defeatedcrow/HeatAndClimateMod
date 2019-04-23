@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "  X",
+  "YYZ",
+  "  Z"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "bladeToolSteel"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotToolSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_pickaxe_toolsteel",
+  "count": 1,
+  "data": 0
+ }
+}

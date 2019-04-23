@@ -114,7 +114,7 @@ public enum DCMaterialEnum {
 			1
 	}, 1, 72, 0.0F, 10, 1.0F, 3.0F, new ItemStack(Blocks.WOOL, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
 	// 耐久の低い攻性の金属素材
-	TOOLMETAL(15, "toolmetal", 18.0F, new int[] {
+	TOOLMETAL(15, "toolmetal", 15.0F, new int[] {
 			6,
 			10,
 			8,

@@ -3,7 +3,7 @@
  "pattern": [
   "YXX",
   "ZXX",
-  "WWW"
+  "WVW"
  ],
  "key": {
   "X": {
@@ -11,7 +11,7 @@
    "data": 0
   },
   "Y": {
-   "item": "dcs_climate:dcs_device_gearbox_sus",
+   "item": "dcs_lib:dcs_checker",
    "data": 0
   },
   "Z": {
@@ -21,6 +21,10 @@
   "W": {
    "type": "forge:ore_dict",
    "ore": "ingotStainlessSteel"
+  },
+  "V": {
+   "type": "forge:ore_dict",
+   "ore": "gearToolSteel"
   }
  },
  "result": {

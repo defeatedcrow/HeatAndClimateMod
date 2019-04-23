@@ -1,5 +1,6 @@
 package defeatedcrow.hac.machine.recipes;
 
+import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
@@ -26,7 +27,7 @@ public class MachineAdvancedRecipe {
 				'W',
 				new ItemStack(MachineInit.IBC, 1, 0),
 				'V',
-				new ItemStack(MachineInit.gearbox2, 1, 0),
+				"gearToolSteel",
 		});
 
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.pressMachine, 1, 0), new Object[] {
@@ -36,7 +37,7 @@ public class MachineAdvancedRecipe {
 				'X',
 				"ingotStainlessSteel",
 				'Y',
-				"gearSteel",
+				"gearToolSteel",
 				'Z',
 				new ItemStack(Blocks.ANVIL, 1, 0)
 		});
@@ -49,7 +50,7 @@ public class MachineAdvancedRecipe {
 				'Y',
 				new ItemStack(MachineInit.shaft2_s, 1, 0),
 				'Z',
-				"gearSteel",
+				"gearToolSteel",
 				'W',
 				new ItemStack(MachineInit.machimeMaterials, 1, 0)
 		});
@@ -63,7 +64,7 @@ public class MachineAdvancedRecipe {
 				'Y',
 				new ItemStack(MachineInit.machimeMaterials, 1, 1),
 				'Z',
-				"gearSteel"
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.waterPump, 1, 0), new Object[] {
@@ -85,25 +86,27 @@ public class MachineAdvancedRecipe {
 				'X',
 				new ItemStack(MachineInit.IBC, 1, 0),
 				'Y',
-				new ItemStack(MachineInit.gearbox2, 1, 0),
+				new ItemStack(DCInit.climate_checker, 1, 0),
 				'Z',
 				new ItemStack(MachineInit.machimeMaterials, 1, 0),
 				'W',
 				"ingotStainlessSteel",
 				'V',
-				"gearSteel"
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.crusher, 1, 0), new Object[] {
 				" Y ",
-				"XZX",
+				"WZW",
 				"XXX",
 				'X',
 				"ingotStainlessSteel",
 				'Y',
 				new ItemStack(Blocks.HOPPER, 1, 0),
 				'Z',
-				new ItemStack(MachineInit.machimeMaterials, 1, 0)
+				new ItemStack(MachineInit.machimeMaterials, 1, 0),
+				'W',
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.rotaryBlade, 1, 0), new Object[] {
@@ -144,15 +147,17 @@ public class MachineAdvancedRecipe {
 			DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
 					"YXX",
 					"ZXX",
-					"WWW",
+					"WVW",
 					'X',
 					new ItemStack(FoodInit.steelPot, 1, 0),
 					'Y',
-					new ItemStack(MachineInit.gearbox2, 1, 0),
+					new ItemStack(DCInit.climate_checker, 1, 0),
 					'Z',
 					new ItemStack(MachineInit.machimeMaterials, 1, 0),
 					'W',
-					"ingotStainlessSteel"
+					"ingotStainlessSteel",
+					'V',
+					"gearToolSteel"
 			});
 		}
 
@@ -219,6 +224,54 @@ public class MachineAdvancedRecipe {
 				"ingotNickelsilver",
 				'Y',
 				"dustBlaze"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 4), new Object[] {
+				"XYX",
+				'X',
+				"ingotToolSteel",
+				'Y',
+				"blockAluminum"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 5), new Object[] {
+				"XYX",
+				'X',
+				"ingotToolSteel",
+				'Y',
+				"ingotBSCCO"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 6), new Object[] {
+				"XYX",
+				'X',
+				"ingotToolSteel",
+				'Y',
+				"ingotBismuth"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 7), new Object[] {
+				"XYX",
+				'X',
+				"ingotToolSteel",
+				'Y',
+				"ingotSteel"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 8), new Object[] {
+				"XYX",
+				'X',
+				"ingotToolSteel",
+				'Y',
+				"ingotStainlessSteel"
+		});
+
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 8), new Object[] {
+				"XYX",
+				'X',
+				"ingotToolSteel",
+				'Y',
+				"blockSteel"
 		});
 
 		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.moldAluminium, 1, 1), new Object[] {
@@ -316,7 +369,7 @@ public class MachineAdvancedRecipe {
 				'Y',
 				new ItemStack(MachineInit.machimeMaterials, 1, 0),
 				'Z',
-				new ItemStack(MachineInit.gearbox2, 1, 0),
+				"gearToolSteel",
 				'W',
 				"ingotSilver",
 				'V',
@@ -475,6 +528,18 @@ public class MachineAdvancedRecipe {
 				new ItemStack(Blocks.CHEST, 1, 0)
 		});
 
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.entityPanel, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Z",
+				'X',
+				new ItemStack(Blocks.REDSTONE_TORCH, 1, 0),
+				'Y',
+				new ItemStack(MachineInit.machimeMaterials, 1, 6),
+				'Z',
+				new ItemStack(Blocks.LIGHT_WEIGHTED_PRESSURE_PLATE, 1, 0)
+		});
+
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.dynamite, 3, 0), new Object[] {
 				"WWW",
 				"XYZ",
@@ -510,7 +575,7 @@ public class MachineAdvancedRecipe {
 				'X',
 				"ingotStainlessSteel",
 				'Y',
-				"gearSteel",
+				"gearToolSteel",
 				'Z',
 				new ItemStack(Items.FLINT_AND_STEEL, 1, 0),
 				'W',
@@ -537,26 +602,6 @@ public class MachineAdvancedRecipe {
 		});
 
 		// エンジン!
-		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 2), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				"ingotAluminium",
-				'Y',
-				"gearSteel"
-		});
-
-		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 2), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				"ingotAluminum",
-				'Y',
-				"gearSteel"
-		});
-
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 3), new Object[] {
 				"XZX",
 				"ZYZ",
@@ -566,7 +611,7 @@ public class MachineAdvancedRecipe {
 				'Y',
 				new ItemStack(MachineInit.machimeMaterials, 1, 2),
 				'Z',
-				"gearSteel"
+				"gearToolSteel"
 		});
 
 		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1,
@@ -575,16 +620,6 @@ public class MachineAdvancedRecipe {
 						new ItemStack(MachineInit.reagent, 1, 7),
 						"slimeball",
 						"dustSulfur"
-		});
-
-		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.machimeMaterials, 1, 5), new Object[] {
-				"ZXZ",
-				"X X",
-				"ZXZ",
-				'X',
-				"ingotBSCCO",
-				'Z',
-				"ingotTitaniumAlloy"
 		});
 
 		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.motorMinecart, 1, 0), new Object[] {
@@ -601,7 +636,7 @@ public class MachineAdvancedRecipe {
 				'Y',
 				new ItemStack(MachineInit.machimeMaterials, 1, 3),
 				'W',
-				"gearSteel",
+				"gearToolSteel",
 				'Z',
 				new ItemStack(MachineInit.machimeMaterials, 1, 4)
 		});
@@ -635,7 +670,7 @@ public class MachineAdvancedRecipe {
 				'Y',
 				new ItemStack(MachineInit.freezer, 1, 0),
 				'W',
-				"gearSteel",
+				"gearToolSteel",
 				'Z',
 				new ItemStack(MachineInit.machimeMaterials, 1, 5)
 		});

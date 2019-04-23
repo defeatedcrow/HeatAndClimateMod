@@ -12,7 +12,7 @@
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "gearSteel"
+   "ore": "gearToolSteel"
   },
   "Z": {
    "item": "minecraft:anvil",

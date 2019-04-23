@@ -2,7 +2,7 @@
  "type": "forge:ore_shaped",
  "pattern": [
   " Y ",
-  "XZX",
+  "WZW",
   "XXX"
  ],
  "key": {
@@ -17,6 +17,10 @@
   "Z": {
    "item": "dcs_climate:dcs_mechanical",
    "data": 0
+  },
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "gearToolSteel"
   }
  },
  "result": {

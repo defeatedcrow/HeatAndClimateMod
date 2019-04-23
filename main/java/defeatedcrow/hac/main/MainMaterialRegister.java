@@ -122,6 +122,7 @@ import defeatedcrow.hac.main.item.tool.ItemBullets;
 import defeatedcrow.hac.main.item.tool.ItemCrossbowDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemEntityScope;
+import defeatedcrow.hac.main.item.tool.ItemHoeDC;
 import defeatedcrow.hac.main.item.tool.ItemMusketDC;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
 import defeatedcrow.hac.main.item.tool.ItemRakeEarth;
@@ -831,9 +832,10 @@ public class MainMaterialRegister {
 					"chalcedony",
 					"sapphire",
 					"titanium",
-					"garnet"
+					"garnet",
+					"toolsteel"
 			};
-			for (int j = 0; j < 8; j++) {
+			for (int j = 0; j < 9; j++) {
 				DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 				MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
@@ -842,7 +844,7 @@ public class MainMaterialRegister {
 						.registerItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_BASE + "_axe_" + name[j], ClimateMain.MOD_ID);
 			}
 
-			for (int j = 0; j < 8; j++) {
+			for (int j = 0; j < 9; j++) {
 				MainInit.dcPickaxe[j] = new ItemPickaxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]);
@@ -850,7 +852,7 @@ public class MainMaterialRegister {
 						.registerItem(MainInit.dcPickaxe[j], ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j], ClimateMain.MOD_ID);
 			}
 
-			for (int j = 0; j < 8; j++) {
+			for (int j = 0; j < 9; j++) {
 				MainInit.dcSpade[j] = new ItemSpadeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]);
@@ -885,6 +887,12 @@ public class MainMaterialRegister {
 			DCMaterialReg
 					.registerItem(MainInit.dcSword[7], ClimateCore.PACKAGE_BASE + "_sword_" + name[7], ClimateMain.MOD_ID);
 
+			MainInit.dcSword[8] = new ItemSwordDC(DCToolMaterial.getToolMaterial(8), name[8], true).setToolsteel()
+					.setCreativeTab(ClimateMain.tool)
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_sword_" + name[8]);
+			DCMaterialReg
+					.registerItem(MainInit.dcSword[8], ClimateCore.PACKAGE_BASE + "_sword_" + name[8], ClimateMain.MOD_ID);
+
 			MainInit.dcScythe[0] = new ItemScytheDC(DCToolMaterial.getToolMaterial(0), "brass")
 					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_brass");
 			DCMaterialReg
@@ -911,6 +919,12 @@ public class MainMaterialRegister {
 			DCMaterialReg
 					.registerItem(MainInit.dcScythe[4], ClimateCore.PACKAGE_BASE + "_scythe_stone", ClimateMain.MOD_ID);
 
+			MainInit.dcScythe[5] = new ItemScytheDC(DCToolMaterial.getToolMaterial(8), "toolsteel")
+					.setCreativeTab(ClimateMain.tool)
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_scythe_toolsteel");
+			DCMaterialReg
+					.registerItem(MainInit.dcScythe[5], ClimateCore.PACKAGE_BASE + "_scythe_toolsteel", ClimateMain.MOD_ID);
+
 			MainInit.earthSpade = new ItemSpadeEarth().setCreativeTab(ClimateMain.tool)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_earth");
 			DCMaterialReg
@@ -920,6 +934,11 @@ public class MainMaterialRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_rake_earth");
 			DCMaterialReg
 					.registerItem(MainInit.earthRake, ClimateCore.PACKAGE_BASE + "_rake_earth", ClimateMain.MOD_ID);
+
+			MainInit.toolsteelRake = new ItemHoeDC(DCToolMaterial.getToolMaterial(8), "toolsteel")
+					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_rake_toolsteel");
+			DCMaterialReg
+					.registerItem(MainInit.toolsteelRake, ClimateCore.PACKAGE_BASE + "_rake_toolsteel", ClimateMain.MOD_ID);
 
 		}
 

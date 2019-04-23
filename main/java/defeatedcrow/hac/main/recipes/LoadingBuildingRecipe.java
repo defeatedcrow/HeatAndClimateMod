@@ -30,7 +30,17 @@ public class LoadingBuildingRecipe {
 				'X',
 				new ItemStack(MainInit.selenite, 1, 0),
 				'Y',
-				new ItemStack(MainInit.oreDust, 1, 3)
+				"dustSilver"
+		});
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.selenite, 8, 2), new Object[] {
+				"XXX",
+				"XYX",
+				"XXX",
+				'X',
+				new ItemStack(MainInit.selenite, 1, 0),
+				'Y',
+				"dustLead"
 		});
 
 		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsGlass, 4, 0), new Object[] {
@@ -253,7 +263,7 @@ public class LoadingBuildingRecipe {
 				"XX",
 				"XX",
 				'X',
-				new ItemStack(MainInit.ores_2, 1, 0)
+				"oreLime"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 0), new Object[] {
@@ -265,25 +275,25 @@ public class LoadingBuildingRecipe {
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 1), new Object[] {
 				"dyeRed",
 				new ItemStack(MainInit.builds, 1, 0),
-				new ItemStack(Blocks.GLASS)
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 2), new Object[] {
 				"dyeBlue",
 				new ItemStack(MainInit.builds, 1, 0),
-				new ItemStack(Blocks.GLASS)
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 3), new Object[] {
 				"dyeYellow",
 				new ItemStack(MainInit.builds, 1, 0),
-				new ItemStack(Blocks.GLASS)
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 4), new Object[] {
 				"dyeBlack",
 				new ItemStack(MainInit.builds, 1, 0),
-				new ItemStack(Blocks.GLASS)
+				"blockGlass"
 		});
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 1), new Object[] {
@@ -405,7 +415,7 @@ public class LoadingBuildingRecipe {
 				new ItemStack(MainInit.bricks, 1, 1)
 		});
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.ores_2, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.layerNew, 1, 1), new Object[] {
 				new ItemStack(MainInit.bricks, 1, 2)
 		});
 

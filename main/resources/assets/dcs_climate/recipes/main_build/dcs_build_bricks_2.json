@@ -6,8 +6,8 @@
  ],
  "key": {
   "X": {
-   "item": "dcs_climate:dcs_ore2_stone",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "oreLime"
   }
  },
  "result": {

@@ -11,6 +11,7 @@ import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockCreativeBox;
 import defeatedcrow.hac.machine.block.BlockDieselEngine;
 import defeatedcrow.hac.machine.block.BlockDynamo;
+import defeatedcrow.hac.machine.block.BlockEntityPanel;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFaucet;
 import defeatedcrow.hac.machine.block.BlockFaucet_SUS;
@@ -332,6 +333,9 @@ public class MachineInitRegister {
 			ForgeRegistries.BLOCKS.register(MachineInit.monitorItem);
 			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorItem));
 
+			MachineInit.entityPanel = new BlockEntityPanel(ClimateCore.PACKAGE_BASE + "_device_entity_panel");
+			registerTierBlock(MachineInit.entityPanel, ClimateCore.PACKAGE_BASE + "_device_entity_panel", 3);
+
 			// entity
 			MachineInit.motorMinecart = new ItemMinecartMotor()
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_motor_minecart");
@@ -498,6 +502,7 @@ public class MachineInitRegister {
 			MachineInit.monitorRF.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorFluid.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorItem.setCreativeTab(ClimateMain.machine);
+			MachineInit.entityPanel.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);

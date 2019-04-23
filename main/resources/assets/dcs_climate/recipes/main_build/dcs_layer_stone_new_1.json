@@ -7,8 +7,8 @@
   }
  ],
  "result": {
-  "item": "dcs_climate:dcs_ore2_stone",
+  "item": "dcs_climate:dcs_layer_stone_new",
   "count": 1,
-  "data": 0
+  "data": 1
  }
 }

@@ -1,23 +1,23 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "ZXZ",
-  "X X",
-  "ZXZ"
+  " X ",
+  "XYX",
+  " X "
  ],
  "key": {
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearStone"
+  },
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotBSCCO"
-  },
-  "Z": {
-   "type": "forge:ore_dict",
-   "ore": "ingotTitaniumAlloy"
+   "ore": "ingotToolSteel"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_mechanical",
+  "item": "dcs_climate:dcs_spindle",
   "count": 1,
-  "data": 5
+  "data": 4
  }
 }

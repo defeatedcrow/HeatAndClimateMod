@@ -23,8 +23,8 @@
    "data": 0
   },
   "V": {
-   "item": "dcs_climate:dcs_device_gearbox_sus",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "gearToolSteel"
   }
  },
  "result": {

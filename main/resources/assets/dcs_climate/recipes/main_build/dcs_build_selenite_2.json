@@ -11,8 +11,8 @@
    "data": 0
   },
   "Y": {
-   "item": "dcs_climate:dcs_oredust",
-   "data": 3
+   "type": "forge:ore_dict",
+   "ore": "dustSilver"
   }
  },
  "result": {

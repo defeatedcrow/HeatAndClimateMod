@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "ZYZ",
+  " Z "
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_gem",
+   "data": 24
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "cubeWhite"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_color_badge",
+  "count": 1,
+  "data": 4
+ }
+}

@@ -1,9 +1,8 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "Y  ",
-  "ZY ",
-  " ZX"
+  "Y ",
+  "ZX"
  ],
  "key": {
   "X": {
@@ -12,7 +11,7 @@
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "ingotSteel"
+   "ore": "barrelGun"
   },
   "Z": {
    "type": "forge:ore_dict",

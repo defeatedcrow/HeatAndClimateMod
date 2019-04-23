@@ -13,6 +13,7 @@ import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileCreativeBox;
 import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileDynamo;
+import defeatedcrow.hac.machine.block.TileEntityPanel;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFaucet;
 import defeatedcrow.hac.machine.block.TileFaucet_SUS;
@@ -189,6 +190,7 @@ public class MachineClientProxy {
 		ClientMainProxy.registerTileEntity(TileMonitorInventory.class, "dcs_te_monitor_item", new MonitorTESR());
 		GameRegistry.registerTileEntity(TileMonitorComparator.class, "dcs_te_monitor_cm");
 		ClientMainProxy.registerTileEntity(TileWindmill_EX.class, "dcs_te_windmill_ex", new EX_WindmillTESR());
+		GameRegistry.registerTileEntity(TileEntityPanel.class, "dcs_te_entity_panel");
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -274,6 +276,7 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.monitorFluid, ClimateCore.PACKAGE_ID, "dcs_device_monitor_fluid", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorCM, ClimateCore.PACKAGE_ID, "dcs_device_monitor_cm", "machine", 0);
+		instance.regSimpleBlock(MachineInit.entityPanel, ClimateCore.PACKAGE_ID, "dcs_device_entity_panel", "machine", 0);
 
 	}
 

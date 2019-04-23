@@ -1,22 +1,21 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "X",
-  "Y",
-  "Z"
+  "ZYZ",
+  " X "
  ],
  "key": {
   "X": {
-   "type": "forge:ore_dict",
-   "ore": "gemMalachite"
-  },
-  "Y": {
    "item": "dcs_climate:dcs_torque_checker",
    "data": 0
   },
+  "Y": {
+   "item": "dcs_climate:dcs_mechanical",
+   "data": 6
+  },
   "Z": {
-   "type": "forge:ore_dict",
-   "ore": "ingotSteel"
+   "item": "dcs_climate:dcs_build_selenite",
+   "data": 2
   }
  },
  "result": {

@@ -178,7 +178,8 @@ public class JsonRegister {
 					"chalcedony",
 					"sapphire",
 					"titanium",
-					"garnet"
+					"garnet",
+					"toolsteel"
 			};
 			for (int j = 0; j < name.length; j++) {
 				MAIN_INSTANCE
@@ -216,7 +217,8 @@ public class JsonRegister {
 					"steel",
 					"chalcedony",
 					"garnet",
-					"stone"
+					"stone",
+					"toolsteel"
 			};
 			for (int j = 0; j < name2.length; j++) {
 				MAIN_INSTANCE
@@ -225,6 +227,8 @@ public class JsonRegister {
 
 			MAIN_INSTANCE.regSimpleItem(MainInit.earthSpade, ClimateCore.PACKAGE_ID, "dcs_spade_earth", "equip", 0);
 			MAIN_INSTANCE.regSimpleItem(MainInit.earthRake, ClimateCore.PACKAGE_ID, "dcs_rake_earth", "equip", 0);
+			MAIN_INSTANCE
+					.regSimpleItem(MainInit.toolsteelRake, ClimateCore.PACKAGE_ID, "dcs_rake_toolsteel", "equip", 0);
 
 		}
 

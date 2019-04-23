@@ -38,7 +38,7 @@ public class CombatEvent {
 			Entity owner = ((EntityDamageSource) source).getTrueSource();
 			if (owner != null && owner instanceof EntityLivingBase && owner.isEntityAlive()) {
 				EntityLivingBase ownerLiv = (EntityLivingBase) owner;
-				// Invisible
+				// Invisible test
 				if (ClimateCore.isDebug && ownerLiv.isPotionActive(MobEffects.INVISIBILITY)) {
 					if (living instanceof EntityLiving) {
 						EntityLiving mob = (EntityLiving) living;
@@ -107,10 +107,17 @@ public class CombatEvent {
 				if (owner != null) {
 					if (!(target instanceof IMob) && DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.pendant, 1,
 							19)) || DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1, 4))) {
+						// white pendant
 						event.setCanceled(true);
 					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorBadge, 1, 3))) {
+						// black badge
 						target.attackEntityFrom(DamageSource.causeMobDamage(target), event.getAmount());
 						event.setCanceled(true);
+					} else if (!owner.getHeldItemMainhand().isEmpty()) {
+						// tool steel sword
+						if (owner.getHeldItemMainhand().getItem() == MainInit.dcSword[8]) {
+							event.getSource().setDamageBypassesArmor();
+						}
 					}
 				}
 			}

@@ -340,6 +340,68 @@ public class MagicRecipeRegister {
 					"ingotSilver"
 			});
 
+			if (ModuleConfig.machine_advanced) {
+				DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 0), new Object[] {
+						" X ",
+						"ZYZ",
+						" Z ",
+						'X',
+						new ItemStack(MainInit.gems, 1, 24),
+						'Y',
+						"cubeBlue",
+						'Z',
+						"ingotSilver"
+				});
+
+				DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 1), new Object[] {
+						" X ",
+						"ZYZ",
+						" Z ",
+						'X',
+						new ItemStack(MainInit.gems, 1, 24),
+						'Y',
+						"cubeGreen",
+						'Z',
+						"ingotSilver"
+				});
+
+				DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 2), new Object[] {
+						" X ",
+						"ZYZ",
+						" Z ",
+						'X',
+						new ItemStack(MainInit.gems, 1, 24),
+						'Y',
+						"cubeRed",
+						'Z',
+						"ingotSilver"
+				});
+
+				DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 3), new Object[] {
+						" X ",
+						"ZYZ",
+						" Z ",
+						'X',
+						new ItemStack(MainInit.gems, 1, 24),
+						'Y',
+						"cubeBlack",
+						'Z',
+						"ingotSilver"
+				});
+
+				DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 4), new Object[] {
+						" X ",
+						"ZYZ",
+						" Z ",
+						'X',
+						new ItemStack(MainInit.gems, 1, 24),
+						'Y',
+						"cubeWhite",
+						'Z',
+						"ingotSilver"
+				});
+			}
+
 			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard, 3, 0), new Object[] {
 					"paper",
 					"paper",

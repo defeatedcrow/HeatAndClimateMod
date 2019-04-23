@@ -26,7 +26,7 @@ public class EntityLightBullet extends EntityBulletDC {
 	protected void onHit(RayTraceResult trace) {
 		Entity entity = trace.entityHit;
 
-		if (entity != null) {
+		if (entity != null && entity != this.shootingEntity) {
 			if (!entity.isBurning()) {
 				entity.setFire(8);
 				onEffect(entity.getPosition());

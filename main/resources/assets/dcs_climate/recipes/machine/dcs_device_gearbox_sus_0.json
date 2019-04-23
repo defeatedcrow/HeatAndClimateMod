@@ -8,11 +8,11 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "gearAlloy"
+   "ore": "gearSteel"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "gearSteel"
+   "ore": "gearToolSteel"
   },
   "Z": {
    "type": "forge:ore_dict",
