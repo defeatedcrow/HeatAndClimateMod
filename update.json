@@ -4,10 +4,10 @@
     "3.0.4": "Mills became sensitive to the number of stacks of material.",
     "3.0.3": "Added more black ore products.",
     "3.0.2": "Revision of villager's trade.",
-    "3.0.1": "Some bug fixes."
-    "3.0.0": "Overhaul of ore and magic."
-    "2.7.7": "Small fix for block models."
-    "2.7.6": "Added config for customizing the player HUD."
+    "3.0.1": "Some bug fixes.",
+    "3.0.0": "Overhaul of ore and magic.",
+    "2.7.7": "Small fix for block models.",
+    "2.7.6": "Added config for customizing the player HUD.",
     "2.7.5": "Fixed some crafting recipes."
   },
   "1.10.2": {
@@ -15,7 +15,7 @@
   },
   "promos": {
     "1.12.2-latest": "3.0.4",
-    "1.12.2-recommended": "2.7.7"
+    "1.12.2-recommended": "2.7.7",
     "1.10.2-latest": "2.3.11",
     "1.10.2-recommended": "2.3.11"
   }
