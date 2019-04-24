@@ -11,8 +11,8 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
-import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
@@ -89,7 +89,8 @@ public class BlockLightOrb extends BlockDC {
 
 	@Override
 	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World worldIn, BlockPos pos) {
-		if (DCUtil.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), player)) {
+		if (DCUtil.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), player) || DCUtil
+				.isPlayerHeldItem(new ItemStack(MainInit.cartridge, 1, 5), player)) {
 			return 10.0F;
 		} else {
 			return 0.0F;
@@ -121,8 +122,8 @@ public class BlockLightOrb extends BlockDC {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (ModuleConfig.magic && DCUtil.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), ClimateCore.proxy
-				.getPlayer())) {
+		if (DCUtil.isPlayerHeldItem(new ItemStack(MainInit.cartridge, 1, 5), ClimateCore.proxy.getPlayer()) || DCUtil
+				.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), ClimateCore.proxy.getPlayer())) {
 			if (state != null && state.getBlock() == this) {
 				double x = pos.getX() + 0.5D;
 				double y = pos.getY() + 0.5D;
