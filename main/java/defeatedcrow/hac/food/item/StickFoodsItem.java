@@ -16,7 +16,7 @@ import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.SquidStickEntity;
 import defeatedcrow.hac.food.entity.YakitoriStickEntity;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -169,7 +169,7 @@ public class StickFoodsItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

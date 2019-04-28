@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityItem;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -59,7 +59,7 @@ public class ItemFlowerPot extends DCEntityItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

@@ -10,7 +10,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -179,12 +179,12 @@ public class BlockFaucet extends BlockContainerDC {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.NON_POWERED.getLocalizedName());
+			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(EnumFixedName.FLUID.getLocalizedName() + " " + EnumFixedName.TRANSPORT
+			tooltip.add(DCName.FLUID.getLocalizedName() + " " + DCName.TRANSPORT
 					.getLocalizedName() + ": 200 mB/t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(EnumFixedName.RIGHT_CLICK.getLocalizedName() + ": " + EnumFixedName.TURN_OFF
+			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + DCName.TURN_OFF
 					.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");

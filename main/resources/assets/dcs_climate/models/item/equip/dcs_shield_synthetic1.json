@@ -1,0 +1,25 @@
+{
+    "parent": "dcs_climate:item/equip/dcs_shield_synthetic0",
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [ -140, 220, 0 ],
+            "translation": [ 3, 0, 0 ],
+            "scale": [ 1.5, 1.5, 1.5 ]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [ -140, 220, 0 ],
+            "translation": [ 3, 0, 0 ],
+            "scale": [ 1.5, 1.5, 1.5 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 3, -10, 3 ],
+            "translation": [ -8, 2.5, 2],
+            "scale": [ 1.5, 1.5, 1.5 ]
+        },
+        "firstperson_lefthand": {
+            "rotation": [ 3, -10, 3 ],
+            "translation": [ -8, 2.5, 2],
+            "scale": [ 1.5, 1.5, 1.5 ]
+        }
+    }
+}

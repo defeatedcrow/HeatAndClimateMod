@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -83,15 +83,15 @@ public class ItemMonitor extends DCItemBlock {
 		}
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.PAIRING.getLocalizedName());
+			tooltip.add(DCName.PAIRING.getLocalizedName());
 
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			if (block instanceof BlockMonitorRedStone || block instanceof BlockMonitorComparator) {
-				tooltip.add(EnumFixedName.RS.getLocalizedName() + " " + EnumFixedName.OUTPUT.getLocalizedName());
+				tooltip.add(DCName.RS.getLocalizedName() + " " + DCName.OUTPUT.getLocalizedName());
 			} else {
 				tooltip.add(I18n.format("dcs.tip.monitor"));
-				tooltip.add(EnumFixedName.COMPARATOR.getLocalizedName() + " " +
-						EnumFixedName.OUTPUT.getLocalizedName());
+				tooltip.add(DCName.COMPARATOR.getLocalizedName() + " " +
+						DCName.OUTPUT.getLocalizedName());
 			}
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");

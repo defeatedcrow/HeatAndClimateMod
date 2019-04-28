@@ -1,7 +1,5 @@
 package defeatedcrow.hac.main.potion;
 
-import java.util.UUID;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
@@ -13,8 +11,8 @@ public class PotionHeavyBootsDC extends Potion {
 		super(false, 0xFFEE50);
 		this.setPotionName("dcs.potion.heavyboots");
 		this.setIconIndex(0, 1);
-		UUID id = UUID.fromString("BD6D692F-B923-4221-B2A8-3500022D2A9C");
-		this.registerPotionAttributeModifier(SharedMonsterAttributes.KNOCKBACK_RESISTANCE, id.toString(), 0.5D, 0);
+		this.registerPotionAttributeModifier(SharedMonsterAttributes.KNOCKBACK_RESISTANCE, DCAttributeUtil.NOCKBACK_MODIFIER
+				.toString(), 0.5D, 0);
 	}
 
 	@Override
@@ -29,8 +27,8 @@ public class PotionHeavyBootsDC extends Potion {
 
 	@Override
 	public int getStatusIconIndex() {
-		Minecraft.getMinecraft().getTextureManager()
-				.bindTexture(new ResourceLocation("dcs_climate:textures/gui/icons_potion.png"));
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(
+				"dcs_climate:textures/gui/icons_potion.png"));
 		return super.getStatusIconIndex();
 	}
 

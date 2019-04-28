@@ -8,7 +8,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityItem;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -63,7 +63,7 @@ public class ItemDynamite extends DCEntityItem {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 		tooltip.add(TextFormatting.RED.toString() + TextFormatting.BOLD.toString() + I18n.format("dcs.tip.dynamite"));
 		tooltip.add(I18n.format("dcs.tip.dynamite2"));
 	}

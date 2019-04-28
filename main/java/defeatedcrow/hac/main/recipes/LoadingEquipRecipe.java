@@ -200,6 +200,16 @@ public class LoadingEquipRecipe {
 					"ingotSteel"
 			});
 
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.shieldTitanium, 1, 0), new Object[] {
+					"XYX",
+					"XXX",
+					" X ",
+					'X',
+					"ingotTitaniumAlloy",
+					'Y',
+					"blockGlass"
+			});
+
 			String[] name2 = {
 					"ingotBrass",
 					"ingotSteel",
@@ -619,6 +629,27 @@ public class LoadingEquipRecipe {
 					"itemSyntheticCloth",
 					"itemSyntheticCloth",
 					"ingotTitanium"
+			});
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.shieldSynthetic, 1, 0), new Object[] {
+					"XYX",
+					"XXX",
+					" X ",
+					'X',
+					new ItemStack(MachineInit.synthetic, 1, 2),
+					'Y',
+					"ingotToolSteel"
+			});
+
+		} else {
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.shieldSynthetic, 1, 0), new Object[] {
+					"XYX",
+					"XXX",
+					" X ",
+					'X',
+					new ItemStack(MainInit.selenite, 1, 0),
+					'Y',
+					"ingotToolSteel"
 			});
 		}
 

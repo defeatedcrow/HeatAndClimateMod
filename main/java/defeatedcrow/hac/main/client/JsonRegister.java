@@ -229,6 +229,10 @@ public class JsonRegister {
 			MAIN_INSTANCE.regSimpleItem(MainInit.earthRake, ClimateCore.PACKAGE_ID, "dcs_rake_earth", "equip", 0);
 			MAIN_INSTANCE
 					.regSimpleItem(MainInit.toolsteelRake, ClimateCore.PACKAGE_ID, "dcs_rake_toolsteel", "equip", 0);
+			MAIN_INSTANCE
+					.regSimpleItem(MainInit.shieldSynthetic, ClimateCore.PACKAGE_ID, "dcs_shield_synthetic", "equip", 0);
+			MAIN_INSTANCE
+					.regSimpleItem(MainInit.shieldTitanium, ClimateCore.PACKAGE_ID, "dcs_shield_titanium", "equip", 0);
 
 		}
 

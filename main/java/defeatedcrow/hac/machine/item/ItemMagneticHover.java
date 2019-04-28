@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityItem;
 import defeatedcrow.hac.machine.entity.EntityMagneticHover;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -66,7 +66,7 @@ public class ItemMagneticHover extends DCEntityItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(I18n.format("dcs.tip.scooter3"));

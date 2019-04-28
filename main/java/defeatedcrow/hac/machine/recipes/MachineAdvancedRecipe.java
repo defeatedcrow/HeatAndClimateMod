@@ -266,7 +266,7 @@ public class MachineAdvancedRecipe {
 				"ingotStainlessSteel"
 		});
 
-		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.moldAlloy, 1, 9), new Object[] {
 				"XYX",
 				'X',
 				"ingotToolSteel",

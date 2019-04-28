@@ -121,6 +121,7 @@ import defeatedcrow.hac.main.item.tool.ItemAxeDC;
 import defeatedcrow.hac.main.item.tool.ItemBullets;
 import defeatedcrow.hac.main.item.tool.ItemCrossbowDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
+import defeatedcrow.hac.main.item.tool.ItemDCShield;
 import defeatedcrow.hac.main.item.tool.ItemEntityScope;
 import defeatedcrow.hac.main.item.tool.ItemHoeDC;
 import defeatedcrow.hac.main.item.tool.ItemMusketDC;
@@ -939,6 +940,16 @@ public class MainMaterialRegister {
 					.setCreativeTab(ClimateMain.tool).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_rake_toolsteel");
 			DCMaterialReg
 					.registerItem(MainInit.toolsteelRake, ClimateCore.PACKAGE_BASE + "_rake_toolsteel", ClimateMain.MOD_ID);
+
+			MainInit.shieldSynthetic = new ItemDCShield(DCToolMaterial.getToolMaterial(5), "synthetic")
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_shield_synthetic");
+			DCMaterialReg
+					.registerItem(MainInit.shieldSynthetic, ClimateCore.PACKAGE_BASE + "_shield_synthetic", ClimateMain.MOD_ID);
+
+			MainInit.shieldTitanium = new ItemDCShield(DCToolMaterial.getToolMaterial(6), "titanium")
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_shield_titanium");
+			DCMaterialReg
+					.registerItem(MainInit.shieldTitanium, ClimateCore.PACKAGE_BASE + "_shield_titanium", ClimateMain.MOD_ID);
 
 		}
 

@@ -15,7 +15,7 @@ import defeatedcrow.hac.food.entity.SimmeredGomokuEntity;
 import defeatedcrow.hac.food.entity.SimmeredNattoEntity;
 import defeatedcrow.hac.food.entity.SimmeredSoyEntity;
 import defeatedcrow.hac.food.entity.SimmeredSpinachEntity;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -105,7 +105,7 @@ public class SaladItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

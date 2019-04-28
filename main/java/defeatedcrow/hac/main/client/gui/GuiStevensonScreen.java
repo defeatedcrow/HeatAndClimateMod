@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -36,8 +37,8 @@ public class GuiStevensonScreen extends GuiContainer {
 		if (t.getWorld() != null) {
 			World world = t.getWorld();
 			Biome biome = world.getBiomeForCoordsBody(t.getPos());
-			boolean snow = biome.isSnowyBiome() || (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) &&
-					t.getPos().getY() > 100);
+			boolean snow = biome.isSnowyBiome() || (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) && t
+					.getPos().getY() > 100);
 			boolean dry = !biome.canRain() && !biome.isSnowyBiome();
 			if (world.getRainStrength(1.0F) > 0.2F) {
 				if (dry) {
@@ -75,8 +76,8 @@ public class GuiStevensonScreen extends GuiContainer {
 		int color = day ? 0x005050 : 0x500050;
 
 		int seasonColor = season.color.getColorValue();
-		this.fontRenderer.drawString(season.name(), adjX - 30 - this.fontRenderer.getStringWidth(season.name()) /
-				2, 22, seasonColor);
+		this.fontRenderer.drawString(season.name(), adjX - 30 - this.fontRenderer.getStringWidth(season
+				.name()) / 2, 22, seasonColor);
 
 		String s1 = date + " DAY";
 		this.fontRenderer.drawString(s1, adjX + 5 - this.fontRenderer.getStringWidth(s1) / 2, 22, 4210752);
@@ -88,13 +89,13 @@ public class GuiStevensonScreen extends GuiContainer {
 		String s3 = current.name;
 		this.fontRenderer.drawString(s3, adjX - this.fontRenderer.getStringWidth(s3) / 2, 60, 4210752);
 
-		String s4 = "TEMPERATURE";
+		String s4 = DCName.TEMP2.getLocalizedName();
 		this.fontRenderer.drawString(s4, adjX - 25 - this.fontRenderer.getStringWidth(s4) / 2, 80, 4210752);
 
-		String s5 = "HUMIDITY";
+		String s5 = DCName.HUM2.getLocalizedName();
 		this.fontRenderer.drawString(s5, adjX - 25 - this.fontRenderer.getStringWidth(s5) / 2, 97, 4210752);
 
-		String s6 = "AIRFLOW";
+		String s6 = DCName.AIR2.getLocalizedName();
 		this.fontRenderer.drawString(s6, adjX - 25 - this.fontRenderer.getStringWidth(s6) / 2, 114, 4210752);
 
 		if (climate != null) {

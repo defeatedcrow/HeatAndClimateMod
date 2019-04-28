@@ -13,7 +13,7 @@ import defeatedcrow.hac.food.capability.DrinkMilk;
 import defeatedcrow.hac.food.capability.DrinkSugar;
 import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
 import net.minecraft.client.resources.I18n;
@@ -154,7 +154,7 @@ public class ItemFluidPack extends DCItem {
 			}
 
 			String mes = "";
-			mes += EnumFixedName.FLUID.getLocalizedName() + ": " + f.getLocalizedName(new FluidStack(f, 200));
+			mes += DCName.FLUID.getLocalizedName() + ": " + f.getLocalizedName(new FluidStack(f, 200));
 			if (drink != null) {
 				String mes2 = "";
 				if (drink.getMilk() != DrinkMilk.NONE) {
@@ -171,7 +171,7 @@ public class ItemFluidPack extends DCItem {
 				}
 			}
 			tooltip.add(TextFormatting.YELLOW.toString() + mes);
-			tooltip.add(TextFormatting.YELLOW.toString() + EnumFixedName.AMOUNT.getLocalizedName() + ": " + 250);
+			tooltip.add(TextFormatting.YELLOW.toString() + DCName.AMOUNT.getLocalizedName() + ": " + 250);
 			Fluid milk = FluidRegistry.getFluid("milk");
 			if (i == 2 || i == 13 || f == MainInit.tomatoJuice) {
 				tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));

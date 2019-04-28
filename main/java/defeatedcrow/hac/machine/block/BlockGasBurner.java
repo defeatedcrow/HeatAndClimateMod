@@ -17,7 +17,7 @@ import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.api.MainAPIManager;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -209,13 +209,13 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.FUEL_GAS.getLocalizedName());
+			tooltip.add(DCName.FUEL_GAS.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.RED.toString() + "UHT");
-			tooltip.add(EnumFixedName.RANGE.getLocalizedName() + ": " + I18n.format("dcs.tip.upper_only"));
+			tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.RED.toString() + "UHT");
+			tooltip.add(DCName.RANGE.getLocalizedName() + ": " + I18n.format("dcs.tip.upper_only"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(EnumFixedName.DRAIN_SIDED_TANK.getLocalizedName());
-			tooltip.add(EnumFixedName.RS.getLocalizedName() + ": " + EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(DCName.DRAIN_SIDED_TANK.getLocalizedName());
+			tooltip.add(DCName.RS.getLocalizedName() + ": " + DCName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

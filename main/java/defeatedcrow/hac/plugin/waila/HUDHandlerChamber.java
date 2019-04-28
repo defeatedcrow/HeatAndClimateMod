@@ -12,6 +12,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
+import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -36,15 +37,15 @@ public class HUDHandlerChamber extends HUDHandlerBlocks {
 		Block block = accessor.getBlock();
 		int meta = accessor.getMetadata();
 
-		if (block == MainInit.chamber || block == MainInit.shitirin || block == MainInit.fuelStove
-				|| block == MachineInit.burner) {
+		if (block == MainInit.chamber || block == MainInit.shitirin || block == MainInit.fuelStove || block == MachineInit.burner) {
 			int burntime = accessor.getNBTData().getInteger("BurnTime");
 			byte tier = accessor.getNBTData().getByte("Climate");
 			if (burntime > 0) {
 				DCHeatTier heat = DCHeatTier.getTypeByID(tier);
-				currenttip.add(String.format("Temperature: %s", SpecialChars.GOLD + heat));
+				currenttip.add(String.format("%s: %s", DCName.TEMP2.getLocalizedName(), SpecialChars.GOLD + heat
+						.localize()));
 			} else {
-				currenttip.add(String.format("%s", "Stopping"));
+				currenttip.add(String.format("%s", DCName.STOPPING.getLocalizedName()));
 			}
 		}
 
@@ -53,27 +54,30 @@ public class HUDHandlerChamber extends HUDHandlerBlocks {
 			byte tier = accessor.getNBTData().getByte("dcs.heatID");
 			if (burntime > 0) {
 				DCHeatTier heat = DCHeatTier.getTypeByID(tier);
-				currenttip.add(String.format("Temperature: %s", SpecialChars.AQUA + heat));
+				currenttip.add(String.format("%s: %s", DCName.TEMP2.getLocalizedName(), SpecialChars.AQUA + heat
+						.localize()));
 			} else {
-				currenttip.add(String.format("%s", "Stopping"));
+				currenttip.add(String.format("%s", DCName.STOPPING.getLocalizedName()));
 			}
 		}
 
 		if (block == MainInit.bellow) {
 			float f = accessor.getNBTData().getFloat("dcs.pretoq");
 			if (f > 0) {
-				currenttip.add(String.format("Airflow: %s", SpecialChars.GREEN + DCAirflow.WIND));
+				currenttip.add(String.format("%s: %s", DCName.AIR2
+						.getLocalizedName(), SpecialChars.GREEN + DCAirflow.WIND.localize()));
 			} else {
-				currenttip.add(String.format("%s", "Stopping"));
+				currenttip.add(String.format("%s", DCName.STOPPING.getLocalizedName()));
 			}
 		}
 
 		if (block == MachineInit.fan) {
 			float f = accessor.getNBTData().getFloat("dcs.pretoq");
 			if (f > 5.5F) {
-				currenttip.add(String.format("Airflow: %s", SpecialChars.GREEN + DCAirflow.WIND));
+				currenttip.add(String.format("%s: %s", DCName.AIR2
+						.getLocalizedName(), SpecialChars.GREEN + DCAirflow.WIND.localize()));
 			} else {
-				currenttip.add(String.format("%s", "Stopping"));
+				currenttip.add(String.format("%s", DCName.STOPPING.getLocalizedName()));
 			}
 		}
 
@@ -82,9 +86,9 @@ public class HUDHandlerChamber extends HUDHandlerBlocks {
 			if (f > 31.5F) {
 				currenttip.add(String.format("Active: %s", SpecialChars.RED + "Stage 2"));
 			} else if (f > 5.5F) {
-				currenttip.add(String.format("Activew: %s", SpecialChars.GOLD + "Stage 1"));
+				currenttip.add(String.format("Active: %s", SpecialChars.GOLD + "Stage 1"));
 			} else {
-				currenttip.add(String.format("%s", "Stopping"));
+				currenttip.add(String.format("%s", DCName.STOPPING.getLocalizedName()));
 			}
 		}
 

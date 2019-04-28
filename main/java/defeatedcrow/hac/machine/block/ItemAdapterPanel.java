@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItemBlock;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -33,7 +33,7 @@ public class ItemAdapterPanel extends DCItemBlock {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 3");
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "COOL-");
+			tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "COOL-");
 			tooltip.add(I18n.format("dcs.tip.adapter"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");

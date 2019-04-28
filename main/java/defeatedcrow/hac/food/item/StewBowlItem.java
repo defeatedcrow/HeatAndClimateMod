@@ -24,7 +24,7 @@ import defeatedcrow.hac.food.entity.StewSeaweedEntity;
 import defeatedcrow.hac.food.entity.StewSquidEntity;
 import defeatedcrow.hac.food.entity.StewTomatoEntity;
 import defeatedcrow.hac.food.entity.StewVegiEntity;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -164,7 +164,7 @@ public class StewBowlItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

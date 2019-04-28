@@ -13,7 +13,7 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -151,12 +151,12 @@ public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile, IH
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.STAGE.getLocalizedName() + "1: 6.0+ torque/s");
-			tooltip.add(EnumFixedName.STAGE.getLocalizedName() + "2: 32.0+ torque/s");
+			tooltip.add(DCName.STAGE.getLocalizedName() + "1: 6.0+ torque/s");
+			tooltip.add(DCName.STAGE.getLocalizedName() + "2: 32.0+ torque/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(EnumFixedName.STAGE.getLocalizedName() + "1 " + EnumFixedName.HEAT.getLocalizedName() + ": " +
+			tooltip.add(DCName.STAGE.getLocalizedName() + "1 " + DCName.HEAT.getLocalizedName() + ": " +
 					TextFormatting.RED.toString() + "Tier ±1");
-			tooltip.add(EnumFixedName.STAGE.getLocalizedName() + "2 " + EnumFixedName.HEAT.getLocalizedName() + ": " +
+			tooltip.add(DCName.STAGE.getLocalizedName() + "2 " + DCName.HEAT.getLocalizedName() + ": " +
 					TextFormatting.RED.toString() + "Tier ±2");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.exchanger"));

@@ -481,6 +481,9 @@ item.dcs_spade_earth.name=Spade of the Earth
 item.dcs_rake_earth.name=Rake of the Earth
 item.dcs_rake_toolsteel.name=Tool Steel Rake
 
+item.dcs_shield_titanium.name=Titanium Alloy Shield
+item.dcs_shield_synthetic.name=Riot Shield
+
 ## weapons
 item.dcs_sword_brass.name=Brass Sword
 item.dcs_sword_steel.name=Steel Sword
@@ -1297,13 +1300,19 @@ tile.dcs_fluidblock_soy_milk_0.name=Soy Milk
 
 ## tip
 dcs.tip.heat=HeatTier
+dcs.tip.temp=Temperature
 dcs.tip.hum=Humidity
 dcs.tip.air=Airflow
+dcs.tip.temp2=TEMP
+dcs.tip.hum2=HUM
+dcs.tip.air2=AIR
 dcs.tip.climate=Climate
+dcs.tip.climate_r=Climate Resistant
 dcs.tip.item=Item
 dcs.tip.fluid=Fluid
 dcs.tip.torque=Torque
 dcs.tip.amount=Amount
+dcs.tip.empty=Empty
 dcs.tip.output=Output
 dcs.tip.input=Input
 dcs.tip.recipe=Recipe
@@ -1313,6 +1322,11 @@ dcs.tip.fuel=Fuel
 dcs.tip.rs=RS-Signal
 dcs.tip.comparator=RS-Comparator
 dcs.tip.transport=Transport
+dcs.tip.facing=Facing
+dcs.tip.burn_time=Burn Time
+dcs.tip.target=Target
+dcs.tip.power=Power
+dcs.tip.stopping=Stopping
 dcs.tip.non_powered=Non-powered device
 dcs.tip.require_recipe_climate=Climate required by recipe.
 dcs.tip.water_consumption=Water Consumption
@@ -1394,7 +1408,6 @@ dcs.tip.slotpanel=This item will work as an empty input slot in the recipe devic
 dcs.tip.cloth.color=Color Variations
 dcs.tip.tinder=Get a fire from a burning block or entity.
 dcs.tip.firestarter=Ignite the target block or entity.
-dcs.tip.pressmold.jei=This mold contains the following recipe for use in the press machine.
 dcs.tip.scythe1=Destroy the surrounding grass and leaves.
 dcs.tip.scythe2=During sneaking, this will work as scissors.
 dcs.tip.toolsteel.hoe1=Plow 3x3 ranged blocks.
@@ -1402,6 +1415,10 @@ dcs.tip.toolsteel.hoe2=Dismount a target riding entity.
 dcs.tip.toolsteel.tools=Consumes saturation and destroys 3x3 range blocks.
 dcs.tip.toolsteel.sword=Armor Bypass Damage
 dcs.tip.entitypanel=Change the target entity type.
+
+dcs.tip.heat_treatment_jei1=Within %d ticks
+dcs.tip.heat_treatment_jei2=Failure Products
+dcs.tip.pressmold.jei=This mold contains the following recipe for use in the press machine.
 
 dcs.climate.tip.checker=Can check the climate in the right-click position (range 2)
 dcs_climate.tip.durability=Max Durability

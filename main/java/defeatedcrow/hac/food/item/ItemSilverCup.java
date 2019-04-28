@@ -18,7 +18,7 @@ import defeatedcrow.hac.food.entity.EntityTeaCupSilver;
 import defeatedcrow.hac.food.entity.EntityTeaCupWhite;
 import defeatedcrow.hac.food.entity.EntityTumbler;
 import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.DrinkPotionType;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
@@ -272,7 +272,7 @@ public class ItemSilverCup extends FoodItemBase {
 					}
 				}
 				if (ClimateCore.proxy.isShiftKeyDown()) {
-					tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+					tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 					tooltip.add(TextFormatting.BOLD.toString() + "= CONTAINED FLUID =");
 					tooltip.add("Fluid: " + f.getLocalizedName());
 					tooltip.add("Amount: " + f.amount);

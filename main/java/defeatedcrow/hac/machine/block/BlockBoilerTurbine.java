@@ -10,7 +10,7 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -115,13 +115,13 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.HEAT.getLocalizedName() + ": " + TextFormatting.RED.toString() + "OVEN ~ UHT");
-			tooltip.add(EnumFixedName.WATER_CONSUMPTION.getLocalizedName() + ": " + "1 ~ 50 mB/s");
+			tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.RED.toString() + "OVEN ~ UHT");
+			tooltip.add(DCName.WATER_CONSUMPTION.getLocalizedName() + ": " + "1 ~ 50 mB/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(EnumFixedName.TORQUE.getLocalizedName() + ": 8.0F ~ 128.0F torque/s");
+			tooltip.add(DCName.TORQUE.getLocalizedName() + ": 8.0F ~ 128.0F torque/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(EnumFixedName.DRAIN_SIDED_TANK.getLocalizedName());
-			tooltip.add(EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(DCName.DRAIN_SIDED_TANK.getLocalizedName());
+			tooltip.add(DCName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

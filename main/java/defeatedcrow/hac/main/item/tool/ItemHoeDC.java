@@ -7,7 +7,7 @@ import com.google.common.collect.Multimap;
 
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -114,7 +114,7 @@ public class ItemHoeDC extends ItemHoe implements ITexturePath {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
 		tooltip.add(I18n.format("dcs.tip.toolsteel.hoe1"));
-		tooltip.add(EnumFixedName.RIGHT_CLICK.getLocalizedName() + ": " + I18n.format("dcs.tip.toolsteel.hoe2"));
+		tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + I18n.format("dcs.tip.toolsteel.hoe2"));
 	}
 
 }

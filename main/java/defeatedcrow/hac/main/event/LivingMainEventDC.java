@@ -151,6 +151,7 @@ public class LivingMainEventDC {
 		} else if (living instanceof IMob) {
 			this.onEnemyUpdate(event);
 		}
+		this.onLivingUpdate(event);
 	}
 
 	public void onPlayerUpdate(LivingEvent.LivingUpdateEvent event) {
@@ -195,6 +196,15 @@ public class LivingMainEventDC {
 						DCDimChangeHelper.INSTANCE.warp(player);
 					}
 				}
+			}
+		}
+	}
+
+	public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
+		EntityLivingBase entity = event.getEntityLiving();
+		if (entity != null && !entity.world.isRemote) {
+			if (entity.isPotionActive(MainInit.gravity) && entity.isInWater()) {
+				entity.motionY -= 0.1D * entity.getEntityAttribute(EntityLivingBase.SWIM_SPEED).getAttributeValue();
 			}
 		}
 	}
@@ -245,19 +255,6 @@ public class LivingMainEventDC {
 						player.motionY -= 0.15D;
 						if (player.motionY < -2.0D) {
 							player.motionY = -2.0D;
-						}
-					}
-					if (ClimateMain.proxy.isForwardKeyDown()) {
-						Vec3d vec3d = player.getLookVec();
-						double d = Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ);
-						double d1 = Math.sqrt(vec3d.x * vec3d.x + vec3d.z * vec3d.z);
-						double df = 1.0D;
-						if (player.isPotionActive(MobEffects.SPEED)) {
-							df += player.getActivePotionEffect(MobEffects.SPEED).getAmplifier() * 0.5D;
-						}
-						if (d < df) {
-							player.motionX += vec3d.x * 0.1D;
-							player.motionZ += vec3d.z * 0.1D;
 						}
 					}
 				} else if (MainCoreConfig.bird_effect && player.isPotionActive(MainInit.bird)) {

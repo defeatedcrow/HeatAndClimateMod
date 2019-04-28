@@ -1,0 +1,36 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "dcs_climate:items/tool/shield_titanium"
+    },
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [ -90, 270, -90 ],
+            "translation": [ 3, -2, 2.5 ],
+            "scale": [ 1.5, 1.5, 1.5 ]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [ -90, -270, 90 ],
+            "translation": [ 3, -2, 2.5 ],
+            "scale": [ 1.5, 1.5, 1.5 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, -15, -8 ],
+            "translation": [ -3, -4, 2],
+            "scale": [ 1.2, 1.2, 1.2 ]
+        },
+        "firstperson_lefthand": {
+            "rotation": [ 0, -15, -8 ],
+            "translation": [ -3, -4, 2],
+            "scale": [ 1.2, 1.2, 1.2 ]
+        }
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "blocking": 1
+            },
+            "model": "dcs_climate:item/equip/dcs_shield_titanium1"
+        }
+    ]
+}

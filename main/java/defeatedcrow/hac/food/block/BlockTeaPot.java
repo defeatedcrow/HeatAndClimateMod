@@ -20,7 +20,7 @@ import defeatedcrow.hac.food.capability.DrinkMilk;
 import defeatedcrow.hac.food.capability.DrinkSugar;
 import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -264,9 +264,9 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.REQUIRE_CLIMATE.getLocalizedName());
+			tooltip.add(DCName.REQUIRE_CLIMATE.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(EnumFixedName.OUTPUT_FLUID.getLocalizedName());
+			tooltip.add(DCName.OUTPUT_FLUID.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

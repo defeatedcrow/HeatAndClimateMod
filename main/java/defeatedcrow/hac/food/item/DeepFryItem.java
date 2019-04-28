@@ -11,7 +11,7 @@ import defeatedcrow.hac.food.entity.FriedChickenEntity;
 import defeatedcrow.hac.food.entity.FriedFalafelEntity;
 import defeatedcrow.hac.food.entity.FriedFishEntity;
 import defeatedcrow.hac.food.entity.FriedPorkEntity;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -81,7 +81,7 @@ public class DeepFryItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

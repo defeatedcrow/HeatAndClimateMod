@@ -17,7 +17,7 @@ import defeatedcrow.hac.food.entity.CakeCreamEntity;
 import defeatedcrow.hac.food.entity.CakeKuzuEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
 import defeatedcrow.hac.food.entity.CakeToffeeEntity;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -153,7 +153,7 @@ public class CakeItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 		if (stack.getItemDamage() != 0 && stack.getItemDamage() != 8) {
 			String effName = I18n.format(MobEffects.INSTANT_HEALTH.getName());
 			tooltip.add(TextFormatting.AQUA.toString() + effName);

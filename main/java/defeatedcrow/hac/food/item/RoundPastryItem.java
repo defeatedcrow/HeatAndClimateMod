@@ -13,7 +13,7 @@ import defeatedcrow.hac.food.entity.CrostataTartEntity;
 import defeatedcrow.hac.food.entity.LemonTartEntity;
 import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
 import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -128,7 +128,7 @@ public class RoundPastryItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

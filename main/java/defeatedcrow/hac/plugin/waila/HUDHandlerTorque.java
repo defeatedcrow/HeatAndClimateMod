@@ -9,6 +9,7 @@ import defeatedcrow.hac.machine.block.BlockEntityPanel;
 import defeatedcrow.hac.machine.block.BlockMonitorPanel;
 import defeatedcrow.hac.machine.block.TileEntityPanel;
 import defeatedcrow.hac.machine.block.TileMonitorBase;
+import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -37,15 +38,15 @@ public class HUDHandlerTorque extends HUDHandlerBlocks {
 			int s = meta & 7;
 			EnumSide side = EnumSide.fromIndex(s);
 			boolean power = meta > 7;
-			currenttip.add(String.format("Amount : %.1f", amount));
-			currenttip.add(String.format("Facing : %s", side.getFacing()));
+			currenttip.add(String.format(DCName.AMOUNT.getLocalizedName() + " : %.1f", amount));
+			currenttip.add(String.format(DCName.FACING.getLocalizedName() + " : %s", side.getFacing()));
 		} else if (BlockTorqueBase.class.isInstance(accessor.getBlock())) {
 			float torque = accessor.getNBTData().getFloat("dcs.pretoq");
 			int s = meta & 7;
 			EnumSide side = EnumSide.fromIndex(s);
 			boolean power = meta > 7;
-			currenttip.add(String.format("Torque Energy : %.2f", torque));
-			currenttip.add(String.format("Facing : %s", side.getFacing()));
+			currenttip.add(String.format(DCName.TORQUE.getLocalizedName() + " : %.2f", torque));
+			currenttip.add(String.format(DCName.FACING.getLocalizedName() + " : %s", side.getFacing()));
 		} else if (BlockEntityPanel.class.isInstance(accessor.getBlock())) {
 			int s = meta & 7;
 			boolean power = meta > 7;
@@ -57,8 +58,8 @@ public class HUDHandlerTorque extends HUDHandlerBlocks {
 			} else if (s == 2) {
 				type = "Animal";
 			}
-			currenttip.add(String.format("Power : %b", power));
-			currenttip.add(String.format("Target : %s", type));
+			currenttip.add(String.format(DCName.POWER.getLocalizedName() + " : %b", power));
+			currenttip.add(String.format(DCName.TARGET.getLocalizedName() + " : %s", type));
 		}
 
 		return currenttip;

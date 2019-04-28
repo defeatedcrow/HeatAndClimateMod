@@ -11,7 +11,7 @@ import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -128,12 +128,12 @@ public class BlockPortalManager extends BlockTorqueBase {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(TextFormatting.BLUE.toString() + "ABSOLUTE" + TextFormatting.GRAY.toString() + I18n.format(
 					"dcs.tip.portal1"));
-			tooltip.add(EnumFixedName.TORQUE.getLocalizedName() + ": 32.0F /s");
+			tooltip.add(DCName.TORQUE.getLocalizedName() + ": 32.0F /s");
 			tooltip.add(I18n.format("dcs.tip.portal2"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(EnumFixedName.ITEM.getLocalizedName() + EnumFixedName.TRANSPORT.getLocalizedName() +
+			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() +
 					": 1 item/5t");
-			tooltip.add(EnumFixedName.FLUID.getLocalizedName() + EnumFixedName.TRANSPORT.getLocalizedName() +
+			tooltip.add(DCName.FLUID.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() +
 					": 200 mB/5t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.portal3"));

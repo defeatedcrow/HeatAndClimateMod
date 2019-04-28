@@ -13,6 +13,7 @@ import defeatedcrow.hac.core.base.ClimateCropBase;
 import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -96,20 +97,24 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 			if (targetHeatList.contains(set)) {
 				DCHeatTier heat = ClimateAPI.registerBlock.getHeatTier(block, meta);
 				if (heat.getTier() < 0) {
-					currenttip.add(String.format("Temperature: %s", SpecialChars.AQUA + heat));
+					currenttip.add(String.format(DCName.HEAT.getLocalizedName() + ": %s", SpecialChars.AQUA + heat
+							.localize()));
 				} else {
-					currenttip.add(String.format("Temperature: %s", SpecialChars.GOLD + heat));
+					currenttip.add(String.format(DCName.HEAT.getLocalizedName() + ": %s", SpecialChars.GOLD + heat
+							.localize()));
 				}
 			}
 
 			if (targetHumList.contains(set)) {
 				DCHumidity hum = ClimateAPI.registerBlock.getHumidity(block, meta);
-				currenttip.add(String.format("Humidity: %s", SpecialChars.AQUA + hum));
+				currenttip.add(String.format(DCName.HUM.getLocalizedName() + ": %s", SpecialChars.AQUA + hum
+						.localize()));
 			}
 
 			if (targetAirList.contains(set)) {
 				DCAirflow air = ClimateAPI.registerBlock.getAirflow(block, meta);
-				currenttip.add(String.format("Airflow: %s", SpecialChars.GREEN + air));
+				currenttip.add(String.format(DCName.AIR.getLocalizedName() + ": %s", SpecialChars.GREEN + air
+						.localize()));
 			}
 		}
 
@@ -122,8 +127,8 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 				if (growthValue < 100.0) {
 					currenttip.add(String.format("%s : %.0f %%", LangUtil.translateG("hud.msg.growth"), growthValue));
 				} else {
-					currenttip.add(String.format("%s : %s", LangUtil.translateG("hud.msg.growth"), LangUtil.translateG(
-							"hud.msg.mature")));
+					currenttip.add(String.format("%s : %s", LangUtil.translateG("hud.msg.growth"), LangUtil
+							.translateG("hud.msg.mature")));
 				}
 			} else if (ClimateDoubleCropBase.class.isInstance(block)) {
 				ClimateDoubleCropBase crop = (ClimateDoubleCropBase) block;
@@ -132,8 +137,8 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 				if (growthValue < 100.0) {
 					currenttip.add(String.format("%s : %.0f %%", LangUtil.translateG("hud.msg.growth"), growthValue));
 				} else {
-					currenttip.add(String.format("%s : %s", LangUtil.translateG("hud.msg.growth"), LangUtil.translateG(
-							"hud.msg.mature")));
+					currenttip.add(String.format("%s : %s", LangUtil.translateG("hud.msg.growth"), LangUtil
+							.translateG("hud.msg.mature")));
 				}
 			}
 		}

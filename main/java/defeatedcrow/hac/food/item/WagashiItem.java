@@ -16,7 +16,7 @@ import defeatedcrow.hac.food.entity.WagashiKurumiEntity;
 import defeatedcrow.hac.food.entity.WagashiNerikiriEntity;
 import defeatedcrow.hac.food.entity.WagashiStrawberryEntity;
 import defeatedcrow.hac.food.entity.WagashiZundaEntity;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -116,7 +116,7 @@ public class WagashiItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 		String effName = I18n.format(MobEffects.INSTANT_HEALTH.getName());
 		tooltip.add(TextFormatting.AQUA.toString() + effName);
 	}

@@ -12,7 +12,7 @@ import defeatedcrow.hac.core.base.BlockDC;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageBiomeGlass;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -263,8 +263,8 @@ public class BlockBiomeGlass extends BlockDC {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.biomeglass"));
-			tooltip.add(EnumFixedName.RIGHT_CLICK.getLocalizedName() + ": " +
-					EnumFixedName.TURN_OFF.getLocalizedName());
+			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " +
+					DCName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.plugin.jei;
 
 import defeatedcrow.hac.main.api.IFluidFuel;
+import defeatedcrow.hac.main.util.DCName;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -28,7 +29,7 @@ public class DCFuelWrapper implements IRecipeWrapper {
 
 	@Override
 	public void drawInfo(Minecraft mc, int wid, int hei, int mouseX, int mouseY) {
-		String s = "Burntime: " + time + "s / mB";
+		String s = DCName.BURN_TIME.getLocalizedName() + ": " + time + "s / mB";
 		mc.fontRenderer.drawString(s, 40, 10, 0x000000, false);
 		if (fluid.getFluid().isGaseous(fluid)) {
 			mc.fontRenderer.drawString("GASEOUS", 40, 20, 0xFF5050, false);

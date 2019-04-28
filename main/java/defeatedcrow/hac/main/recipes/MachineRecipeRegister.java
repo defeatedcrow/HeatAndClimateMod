@@ -106,6 +106,7 @@ public class MachineRecipeRegister {
 			HeatTreatment r1 = new HeatTreatment(l1, c1, new ItemStack(MainInit.heatedMetalBlock, 1, 0), c2,
 					new ItemStack(MainInit.heatedMetalBlock, 1, 1), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 2),
 					new ItemStack(MainInit.heatedMetalBlock, 1, 2));
+			r1.temp1.add(DCHeatTier.UHT);
 			r1.temp2.add(DCHeatTier.COOL);
 			r1.hum1.add(DCHumidity.DRY);
 			r1.hum2.add(DCHumidity.WET);
@@ -121,6 +122,7 @@ public class MachineRecipeRegister {
 			HeatTreatment r2 = new HeatTreatment(l2, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 3), c2,
 					new ItemStack(MainInit.heatedMetalBlock, 1, 4), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 5),
 					new ItemStack(MainInit.heatedMetalBlock, 1, 5));
+			r2.temp1.add(DCHeatTier.INFERNO);
 			r2.temp2.add(DCHeatTier.COOL);
 			r2.hum1.add(DCHumidity.DRY);
 			r2.hum2.add(DCHumidity.WET);
@@ -136,6 +138,7 @@ public class MachineRecipeRegister {
 			HeatTreatment r3 = new HeatTreatment(l3, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 9), c2,
 					new ItemStack(MainInit.heatedMetalBlock, 1, 10), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 4),
 					new ItemStack(MainInit.heatedMetalBlock, 1, 11));
+			r3.temp1.add(DCHeatTier.INFERNO);
 			r3.temp2.add(DCHeatTier.COOL);
 			r3.hum1.add(DCHumidity.DRY);
 			r3.hum2.add(DCHumidity.WET);
@@ -151,6 +154,7 @@ public class MachineRecipeRegister {
 			HeatTreatment r4 = new HeatTreatment(l4, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 6), c2,
 					new ItemStack(MainInit.heatedMetalBlock, 1, 7), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 7),
 					new ItemStack(MainInit.heatedMetalBlock, 1, 8));
+			r3.temp1.add(DCHeatTier.INFERNO);
 			r4.temp2.add(DCHeatTier.COOL);
 			r4.hum1.add(DCHumidity.DRY);
 			r4.hum2.add(DCHumidity.WET);

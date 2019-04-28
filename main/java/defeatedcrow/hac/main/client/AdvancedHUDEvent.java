@@ -104,9 +104,9 @@ public class AdvancedHUDEvent {
 						int y = event.getResolution().getScaledHeight() + offsetY;
 						drawTexturedModalRect(x, y, 0, 0, 48, 48);
 
-						String temp = clm.getHeat().toString();
-						String hum = clm.getHumidity().toString();
-						String air = clm.getAirflow().toString();
+						String temp = clm.getHeat().localize();
+						String hum = clm.getHumidity().localize();
+						String air = clm.getAirflow().localize();
 						if (ClimateCore.isDebug) {
 							temp += String.format(" %.2f F", (tempF + we));
 						}

@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerEntities;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
@@ -35,7 +36,7 @@ public class HUDHandlerClimateMob extends HUDHandlerEntities {
 				cold += 2.0F;
 			}
 
-			currenttip.add(String.format("Climate Resistant : %.1f / %.1f", heat, cold));
+			currenttip.add(String.format("%s : %.1f / %.1f", DCName.CLIMATE_R.getLocalizedName(), heat, cold));
 		}
 
 		return currenttip;

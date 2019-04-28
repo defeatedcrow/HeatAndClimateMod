@@ -487,6 +487,9 @@ item.dcs_scythe_garnet.name=ガーネットの大鎌
 item.dcs_scythe_stone.name=石の大鎌
 item.dcs_scythe_toolsteel.name=工具鋼の大鎌
 
+item.dcs_shield_titanium.name=チタン合金の盾
+item.dcs_shield_synthetic.name=ライオットシールド
+
 item.dcs_sword_brass.name=真鍮の剣
 item.dcs_sword_steel.name=鋼の剣
 item.dcs_sword_silver.name=銀の剣

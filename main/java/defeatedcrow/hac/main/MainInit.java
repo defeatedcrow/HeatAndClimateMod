@@ -205,12 +205,17 @@ public class MainInit {
 	public static Item earthSpade;
 	public static Item earthRake;
 
+	public static Item shieldTitanium;
+	public static Item shieldSynthetic;
+
 	// armor
 	public static Item[] brassArmor = new Item[4];
 	public static Item[] steelArmor = new Item[4];
 	public static Item[] chalcArmor = new Item[4];
 	public static Item[] sapphireArmor = new Item[4];
 	public static Item[] silverArmor = new Item[4];
+
+	public static Item steelBoots;
 
 	// clothes
 	// linen

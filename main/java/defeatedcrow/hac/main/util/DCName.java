@@ -2,15 +2,21 @@ package defeatedcrow.hac.main.util;
 
 import net.minecraft.client.resources.I18n;
 
-public enum EnumFixedName {
+public enum DCName {
 	HEAT("dcs.tip.heat"),
+	TEMP("dcs.tip.temp"),
 	HUM("dcs.tip.hum"),
 	AIR("dcs.tip.air"),
+	TEMP2("dcs.tip.temp2"),
+	HUM2("dcs.tip.hum2"),
+	AIR2("dcs.tip.air2"),
 	CLIMATE("dcs.tip.climate"),
+	CLIMATE_R("dcs.tip.climate_r"),
 	ITEM("dcs.tip.item"),
 	FLUID("dcs.tip.fluid"),
 	TORQUE("dcs.tip.torque"),
 	AMOUNT("dcs.tip.amount"),
+	EMPTY("dcs.tip.empty"),
 	RANGE("dcs.tip.range"),
 	INPUT("dcs.tip.input"),
 	OUTPUT("dcs.tip.output"),
@@ -33,11 +39,16 @@ public enum EnumFixedName {
 	DRAIN_SIDED_TANK("dcs.tip.drain_sided_tank"),
 	RIGHT_CLICK("dcs.tip.right_click"),
 	PAIRING("dcs.tip.pairing"),
-	ON_ANVIL("dcs.tip.on_anvil");
+	ON_ANVIL("dcs.tip.on_anvil"),
+	BURN_TIME("dcs.tip.on_burn_time"),
+	STOPPING("dcs.tip.on_stopping"),
+	FACING("dcs.tip.on_facing"),
+	POWER("dcs.tip.on_power"),
+	TARGET("dcs.tip.on_target");
 
 	private final String name;
 
-	private EnumFixedName(String n) {
+	private DCName(String n) {
 		name = n;
 	}
 

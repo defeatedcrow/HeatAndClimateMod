@@ -331,7 +331,7 @@ public class LoadingOreRecipe {
 				new ItemStack(MainInit.dustBlock_2, 1, 1)
 		});
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.IRON_INGOT), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.IRON_INGOT, 9, 0), new Object[] {
 				new ItemStack(MainInit.heatedMetalBlock, 1, 2)
 		});
 

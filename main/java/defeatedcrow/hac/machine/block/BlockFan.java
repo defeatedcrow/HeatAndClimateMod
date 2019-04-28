@@ -12,7 +12,7 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -116,10 +116,10 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(EnumFixedName.TORQUE.getLocalizedName() + ": 6.0+ /s");
+			tooltip.add(DCName.TORQUE.getLocalizedName() + ": 6.0+ /s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(EnumFixedName.AIR.getLocalizedName() + ": " + TextFormatting.AQUA.toString() + "WIND");
-			tooltip.add(EnumFixedName.RANGE.getLocalizedName() + ": 3 x 3 x 3 blocks");
+			tooltip.add(DCName.AIR.getLocalizedName() + ": " + TextFormatting.AQUA.toString() + "WIND");
+			tooltip.add(DCName.RANGE.getLocalizedName() + ": 3 x 3 x 3 blocks");
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

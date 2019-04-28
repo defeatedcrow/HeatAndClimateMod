@@ -9,7 +9,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.machine.MachineInit;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -172,7 +172,7 @@ public class BlockEntityPanel extends BlockContainerDC {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(EnumFixedName.RIGHT_CLICK.getLocalizedName() + ": " + I18n.format("dcs.tip.entitypanel"));
+		tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + I18n.format("dcs.tip.entitypanel"));
 	}
 
 }

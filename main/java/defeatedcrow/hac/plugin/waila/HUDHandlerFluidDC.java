@@ -9,6 +9,7 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
+import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -39,8 +40,8 @@ public class HUDHandlerFluidDC extends HUDHandlerBlocks {
 			if (!nbt2.hasKey("Empty")) {
 				FluidStack fluid = FluidStack.loadFluidStackFromNBT(nbt2);
 				if (fluid != null && fluid.getFluid() != null) {
-					currenttip.add(String.format("Fluid : %s", fluid.getLocalizedName()));
-					currenttip.add(String.format("Amount : %d mB", fluid.amount));
+					currenttip.add(String.format(DCName.FLUID.getLocalizedName() + " : %s", fluid.getLocalizedName()));
+					currenttip.add(String.format(DCName.AMOUNT.getLocalizedName() + " : %d mB", fluid.amount));
 
 				}
 			}

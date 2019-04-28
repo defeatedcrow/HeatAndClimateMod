@@ -13,7 +13,7 @@ import defeatedcrow.hac.food.entity.BigGarlicPlateEntity;
 import defeatedcrow.hac.food.entity.ChickenPlateEntity;
 import defeatedcrow.hac.food.entity.FishPlateEntity;
 import defeatedcrow.hac.food.entity.PorkPlateEntity;
-import defeatedcrow.hac.main.util.EnumFixedName;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -115,7 +115,7 @@ public class PlateMeatItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(EnumFixedName.PLACEABLE_ENTITY.getLocalizedName());
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

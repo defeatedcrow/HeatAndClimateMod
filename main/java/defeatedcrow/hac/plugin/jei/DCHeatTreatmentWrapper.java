@@ -189,10 +189,10 @@ public class DCHeatTreatmentWrapper implements IRecipeWrapper {
 			}
 		}
 		if (!input2.isEmpty())
-			mc.fontRenderer.drawString("Within " + time1 + " tick", 35, 26, 0xFF9090, true);
+			mc.fontRenderer.drawString(String.format("dcs.tip.heat_treatment_jei1", time1), 35, 26, 0xFF9090, true);
 		if (!input3.isEmpty())
-			mc.fontRenderer.drawString("Within " + time2 + " tick", 35, 60, 0xFF9090, true);
-		mc.fontRenderer.drawString("Failure Products", 70, 105, 0xFF0000, false);
+			mc.fontRenderer.drawString(String.format("dcs.tip.heat_treatment_jei1", time2), 35, 60, 0xFF9090, true);
+		mc.fontRenderer.drawString(String.format("dcs.tip.heat_treatment_jei2"), 70, 105, 0xFF0000, false);
 	}
 
 }
