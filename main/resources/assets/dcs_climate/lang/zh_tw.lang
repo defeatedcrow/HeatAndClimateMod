@@ -487,6 +487,9 @@ item.dcs_scythe_garnet.name=石榴石大鐮刀
 item.dcs_scythe_stone.name=石頭大鐮刀
 item.dcs_scythe_toolsteel.name=工具鋼大鐮刀
 
+item.dcs_shield_titanium.name=鈦合金盾牌
+item.dcs_shield_synthetic.name=防暴盾牌
+
 item.dcs_sword_brass.name=黃銅劍
 item.dcs_sword_steel.name=鋼劍
 item.dcs_sword_silver.name=銀劍
