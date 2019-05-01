@@ -69,7 +69,7 @@ public class HaCTradeData {
 		TRADE2.add(new HaCTradeData(TradeType.BUY, MainUtil.getIngot(3), 5));
 		TRADE2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MagicInit.expGem, 1, 0), 2));
 		TRADE2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.clothes, 1, 2), 1));
-		TRADE2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlock, 1, 5), 2));
+		TRADE2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlockAlloy, 1, 2), 2));
 		TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.chairMarble, 1, 0), 3));
 		TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.squaretableMarble, 1, 0), 4));
 		TRADE2.add(new HaCTradeData(TradeType.SELL, MainUtil.getRandomGem2(1), 4));
@@ -96,12 +96,12 @@ public class HaCTradeData {
 		TRADE4.add(new HaCTradeData(TradeType.BUY, MainUtil.getIngot(3), 4));
 
 		MACHINE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.shaft_s, 1, 0), 2));
-		MACHINE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlock, 1, 4), 1));
+		MACHINE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlockAlloy, 1, 0), 1));
 		MACHINE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.miscDust, 8, 2), 1));
 		MACHINE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.fenceLadderSteel, 8, 0), 2));
 		MACHINE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.gears, 1, 0), 1));
 		MACHINE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.gears, 1, 0), 1));
-		MACHINE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlock, 1, 6), 2));
+		MACHINE1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlockAlloy, 1, 3), 2));
 
 		MACHINE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.shaft3_s, 1, 0), 10));
 		MACHINE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.IBC, 1, 0), 12));
@@ -116,7 +116,7 @@ public class HaCTradeData {
 		MACHINE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.dynamite, 4, 0), 9));
 		MACHINE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.scooter, 1, 0), 20));
 		MACHINE3.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomCoating(1), 8));
-		MACHINE3.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlock, 1, 10), 1));
+		MACHINE3.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlockAlloy, 1, 5), 1));
 		MACHINE3.add(new HaCTradeData(TradeType.SELL, new ItemStack(MachineInit.machimeMaterials, 1, 0), 0));
 		MACHINE3.add(new HaCTradeData(TradeType.SELL, new ItemStack(MachineInit.machimeMaterials, 1, 2), 0));
 		MACHINE3.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.gears, 4, 2), 1));

@@ -143,13 +143,15 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 										world.spawnEntity(entityitem);
 									}
 								}
-								target.getBlock().removedByPlayer(target, world, p1, null, false);
-							} else if (living != null && living instanceof EntityPlayer) {
+							} else if (living instanceof EntityPlayer) {
 								target.getBlock().harvestBlock(world, (EntityPlayer) living, p1, target, null, tool);
-								target.getBlock().removedByPlayer(target, world, p1, null, false);
 							} else {
 								target.getBlock().dropBlockAsItem(world, p1, target, 0);
-								target.getBlock().removedByPlayer(target, world, p1, null, false);
+							}
+							if (living instanceof EntityPlayer) {
+								target.getBlock().removedByPlayer(target, world, p1, (EntityPlayer) living, false);
+							} else {
+								world.setBlockToAir(p1);
 							}
 						}
 					}

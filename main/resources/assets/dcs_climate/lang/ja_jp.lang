@@ -620,8 +620,8 @@ tile.dcs_color_cube_w1.name=不活性な白キューブ
 tile.dcs_color_cube_u2.name=青の活性化キューブ
 tile.dcs_color_cube_g2.name=緑の活性化キューブ
 tile.dcs_color_cube_r2.name=赤の活性化キューブ
-tile.dcs_color_cube_w2.name=白の活性化キューブ
 tile.dcs_color_cube_b2.name=黒の活性化キューブ
+tile.dcs_color_cube_w2.name=白の活性化キューブ
 
 item.dcs_motor_minecart_white.name=原付トロッコ
 item.dcs_motor_scooter_orange.name=スクーター(オレンジ)
@@ -1361,7 +1361,6 @@ dcs.tip.slotpanel=レシピマシンのinputスロットに置くと、空のス
 dcs.tip.cloth.color=カラーバリエーション
 dcs.tip.tinder=高温のブロックや燃えているエンティティから火を移します。
 dcs.tip.firestarter=対象のブロックやエンティティに着火します。
-dcs.tip.pressmold.jei=この金型には、プレス機で使用できる以下のレシピが登録されています。
 dcs.tip.scythe1=植物や作物、葉ブロックを範囲破壊します。
 dcs.tip.scythe2=スニークに羊を右クリックすると、毛を刈り取ります。
 dcs.tip.toolsteel.hoe1=3x3の範囲の土を耕します。
@@ -1369,6 +1368,10 @@ dcs.tip.toolsteel.hoe2=騎乗中のエンティティを騎乗解除します。
 dcs.tip.toolsteel.tools=空腹度を消費し、ブロックを3x3の範囲で破壊します。
 dcs.tip.toolsteel.sword=防御力無視ダメージ
 dcs.tip.entitypanel=モードを切り替えます
+
+dcs.tip.heat_treatment_jei1=%d tick以内に処理を行う
+dcs.tip.heat_treatment_jei2=不良品
+dcs.tip.pressmold.jei=この金型には、プレス機で使用できる以下のレシピが登録されています。
 
 dcs.tip.shitirin.description=
 dcs.tip.teapot=添加したいアイテムを手に持ってこのブロックを右クリック

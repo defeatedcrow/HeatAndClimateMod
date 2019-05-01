@@ -108,6 +108,5 @@ public class VeinTableRegister implements IVeinTableRegister {
 	private static final BlockSet STONE3 = new BlockSet(Blocks.STONE, 5);
 
 	private static final BlockSet SAND = new BlockSet(Blocks.SANDSTONE, 0);
-	private static final BlockSet CHAL = new BlockSet(MainInit.ores, 9);
 
 }

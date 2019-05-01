@@ -90,17 +90,17 @@ public class DCPluginMekanism {
 		// enrichment
 
 		NBTTagCompound dust_zinc = new NBTTagCompound();
-		dust_zinc.setTag("input", new ItemStack(MainInit.ores, 1, 8).writeToNBT(new NBTTagCompound()));
+		dust_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		dust_zinc.setTag("output", new ItemStack(MainInit.oreDust, 2, 1).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "EnrichmentChamberRecipe", dust_zinc);
 
 		NBTTagCompound dust_nickel = new NBTTagCompound();
-		dust_nickel.setTag("input", new ItemStack(MainInit.ores, 1, 7).writeToNBT(new NBTTagCompound()));
+		dust_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
 		dust_nickel.setTag("output", new ItemStack(MainInit.oreDust, 2, 2).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "EnrichmentChamberRecipe", dust_nickel);
 
 		NBTTagCompound dust_nickel2 = new NBTTagCompound();
-		dust_nickel2.setTag("input", new ItemStack(MainInit.ores_2, 1, 8).writeToNBT(new NBTTagCompound()));
+		dust_nickel2.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		dust_nickel2.setTag("output", new ItemStack(MainInit.oreDust, 2, 2).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "EnrichmentChamberRecipe", dust_nickel2);
 
@@ -144,19 +144,19 @@ public class DCPluginMekanism {
 		// purification
 
 		NBTTagCompound ore3_zinc = new NBTTagCompound();
-		ore3_zinc.setTag("input", new ItemStack(MainInit.ores, 1, 8).writeToNBT(new NBTTagCompound()));
+		ore3_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		ore3_zinc.setTag("gasType", new GasStack(GasRegistry.getGas("oxygen"), 1000).write(new NBTTagCompound()));
 		ore3_zinc.setTag("output", new ItemStack(MainInit.metalMaterials, 3, 2).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "PurificationChamberRecipe", ore3_zinc);
 
 		NBTTagCompound ore3_nickel = new NBTTagCompound();
-		ore3_nickel.setTag("input", new ItemStack(MainInit.ores, 1, 7).writeToNBT(new NBTTagCompound()));
+		ore3_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
 		ore3_nickel.setTag("gasType", new GasStack(GasRegistry.getGas("oxygen"), 1000).write(new NBTTagCompound()));
 		ore3_nickel.setTag("output", new ItemStack(MainInit.metalMaterials, 3, 6).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "PurificationChamberRecipe", ore3_nickel);
 
 		NBTTagCompound ore3_nickel2 = new NBTTagCompound();
-		ore3_nickel2.setTag("input", new ItemStack(MainInit.ores_2, 1, 8).writeToNBT(new NBTTagCompound()));
+		ore3_nickel2.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		ore3_nickel2.setTag("gasType", new GasStack(GasRegistry.getGas("oxygen"), 1000).write(new NBTTagCompound()));
 		ore3_nickel2.setTag("output", new ItemStack(MainInit.metalMaterials, 3, 6).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "PurificationChamberRecipe", ore3_nickel2);
@@ -176,21 +176,21 @@ public class DCPluginMekanism {
 		// c_injection
 
 		NBTTagCompound ore4_zinc = new NBTTagCompound();
-		ore4_zinc.setTag("input", new ItemStack(MainInit.ores, 1, 8).writeToNBT(new NBTTagCompound()));
+		ore4_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		ore4_zinc.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000)
 				.write(new NBTTagCompound()));
 		ore4_zinc.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 1).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "ChemicalInjectionChamberRecipe", ore4_zinc);
 
 		NBTTagCompound ore4_nickel = new NBTTagCompound();
-		ore4_nickel.setTag("input", new ItemStack(MainInit.ores, 1, 7).writeToNBT(new NBTTagCompound()));
+		ore4_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
 		ore4_nickel.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000)
 				.write(new NBTTagCompound()));
 		ore4_nickel.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 5).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "ChemicalInjectionChamberRecipe", ore4_nickel);
 
 		NBTTagCompound ore4_nickel2 = new NBTTagCompound();
-		ore4_nickel2.setTag("input", new ItemStack(MainInit.ores_2, 1, 8).writeToNBT(new NBTTagCompound()));
+		ore4_nickel2.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		ore4_nickel2.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000)
 				.write(new NBTTagCompound()));
 		ore4_nickel2.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 5).writeToNBT(new NBTTagCompound()));

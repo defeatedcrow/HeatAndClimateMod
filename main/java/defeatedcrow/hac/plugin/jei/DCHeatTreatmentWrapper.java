@@ -12,6 +12,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -188,11 +189,12 @@ public class DCHeatTreatmentWrapper implements IRecipeWrapper {
 				mc.currentScreen.drawTexturedModalRect(baseX + a.getID() * 21, baseY + 80, a.getID() * 21, 178, 21, 3);
 			}
 		}
+		String s = I18n.format("dcs.tip.heat_treatment_jei1");
 		if (!input2.isEmpty())
-			mc.fontRenderer.drawString(String.format("dcs.tip.heat_treatment_jei1", time1), 35, 26, 0xFF9090, true);
+			mc.fontRenderer.drawString(String.format("Within %d ticks", time1), 35, 26, 0xFF5050, false);
 		if (!input3.isEmpty())
-			mc.fontRenderer.drawString(String.format("dcs.tip.heat_treatment_jei1", time2), 35, 60, 0xFF9090, true);
-		mc.fontRenderer.drawString(String.format("dcs.tip.heat_treatment_jei2"), 70, 105, 0xFF0000, false);
+			mc.fontRenderer.drawString(String.format("Within %d ticks", time2), 35, 60, 0xFF5050, false);
+		mc.fontRenderer.drawString(String.format(I18n.format("dcs.tip.heat_treatment_jei2")), 70, 105, 0xFF0000, false);
 	}
 
 }
