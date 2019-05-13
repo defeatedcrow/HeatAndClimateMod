@@ -154,8 +154,8 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.dropCream, ClimateCore.PACKAGE_ID, "dcs_food_drop_cream", "food", 0);
 		instance.regSimpleItem(FoodInit.bread, ClimateCore.PACKAGE_ID, "dcs_round_bread", "food", 15);
 		instance.regSimpleItem(FoodInit.sticks, ClimateCore.PACKAGE_ID, "dcs_stick_foods", "food", 15);
-		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 17);
-		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 13);
+		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 18);
+		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 14);
 		instance.regSimpleItem(FoodInit.petals, ClimateCore.PACKAGE_ID, "dcs_petals", "food", 1);
 		instance.regSimpleItem(FoodInit.cupSilver, ClimateCore.PACKAGE_ID, "dcs_food_teacup", "food", 2);
 		instance.regSimpleItem(FoodInit.dairy, ClimateCore.PACKAGE_ID, "dcs_food_dairy", "food", 4);
@@ -212,6 +212,12 @@ public class FoodClientProxy {
 				.build());
 		ModelBakery.registerItemVariants(Item.getItemFromBlock(FoodInit.cropSeaweed), new ModelResourceLocation(
 				"dcs_climate:dcs_crop_seaweed"));
+
+		for (int i = 0; i < 3; i++) {
+			ModelLoader.setCustomModelResourceLocation(Item
+					.getItemFromBlock(FoodInit.cropWisteria), i, new ModelResourceLocation(
+							"dcs_climate:crop/dcs_crop_wisteria" + i, "inventory"));
+		}
 
 		// leaves color
 		MinecraftForge.EVENT_BUS.register(new LeavesColorsDC());

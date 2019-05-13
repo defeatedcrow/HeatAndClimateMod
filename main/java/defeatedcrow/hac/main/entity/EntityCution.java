@@ -30,6 +30,11 @@ public class EntityCution extends Entity {
 	int count = 20;
 
 	@Override
+	public double getMountedYOffset() {
+		return 0D;
+	}
+
+	@Override
 	public void onUpdate() {
 		super.onUpdate();
 

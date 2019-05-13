@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.0.6 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.0.7 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1734,6 +1734,11 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.0.7
+　修正
+　　・一部GUIの表示
+　　・大鎌の動作を少し修正
 
 ○3.0.6
 　新規

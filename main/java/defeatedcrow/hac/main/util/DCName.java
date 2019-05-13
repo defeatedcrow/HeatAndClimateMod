@@ -40,11 +40,11 @@ public enum DCName {
 	RIGHT_CLICK("dcs.tip.right_click"),
 	PAIRING("dcs.tip.pairing"),
 	ON_ANVIL("dcs.tip.on_anvil"),
-	BURN_TIME("dcs.tip.on_burn_time"),
-	STOPPING("dcs.tip.on_stopping"),
-	FACING("dcs.tip.on_facing"),
-	POWER("dcs.tip.on_power"),
-	TARGET("dcs.tip.on_target");
+	BURN_TIME("dcs.tip.burn_time"),
+	STOPPING("dcs.tip.stopping"),
+	FACING("dcs.tip.facing"),
+	POWER("dcs.tip.power"),
+	TARGET("dcs.tip.target");
 
 	private final String name;
 

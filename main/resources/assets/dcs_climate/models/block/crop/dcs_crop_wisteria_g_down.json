@@ -1,0 +1,6 @@
+{
+    "parent":"block/cross",
+    "textures":{
+        "cross":"dcs_climate:blocks/crop/leaves_wisteria_u_s"
+     }
+}

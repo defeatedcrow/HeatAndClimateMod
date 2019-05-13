@@ -32,48 +32,46 @@ public class MainUtil {
 	public static final String BR = System.getProperty("line.separator");
 
 	public static final String[] DYES = {
-			"dyeWhite",
-			"dyeOrange",
-			"dyeMagenta",
-			"dyeLightBlue",
-			"dyeYellow",
-			"dyeLime",
-			"dyePink",
-			"dyeGray",
-			"dyeLightGray",
-			"dyeCyan",
-			"dyePurple",
-			"dyeBlue",
-			"dyeBrown",
-			"dyeGreen",
-			"dyeRed",
-			"dyeBlack",
-	};
+		"dyeWhite",
+		"dyeOrange",
+		"dyeMagenta",
+		"dyeLightBlue",
+		"dyeYellow",
+		"dyeLime",
+		"dyePink",
+		"dyeGray",
+		"dyeLightGray",
+		"dyeCyan",
+		"dyePurple",
+		"dyeBlue",
+		"dyeBrown",
+		"dyeGreen",
+		"dyeRed",
+		"dyeBlack", };
 
 	public static TextFormatting[] DYE_CHAT_COLOR = {
-			TextFormatting.WHITE,
-			TextFormatting.GOLD,
-			TextFormatting.LIGHT_PURPLE,
-			TextFormatting.AQUA,
-			TextFormatting.YELLOW,
-			TextFormatting.GREEN,
-			TextFormatting.LIGHT_PURPLE,
-			TextFormatting.DARK_GRAY,
-			TextFormatting.GRAY,
-			TextFormatting.DARK_AQUA,
-			TextFormatting.DARK_PURPLE,
-			TextFormatting.BLUE,
-			TextFormatting.DARK_RED,
-			TextFormatting.GREEN,
-			TextFormatting.RED,
-			TextFormatting.DARK_GRAY
-	};
+		TextFormatting.WHITE,
+		TextFormatting.GOLD,
+		TextFormatting.LIGHT_PURPLE,
+		TextFormatting.AQUA,
+		TextFormatting.YELLOW,
+		TextFormatting.GREEN,
+		TextFormatting.LIGHT_PURPLE,
+		TextFormatting.DARK_GRAY,
+		TextFormatting.GRAY,
+		TextFormatting.DARK_AQUA,
+		TextFormatting.DARK_PURPLE,
+		TextFormatting.BLUE,
+		TextFormatting.DARK_RED,
+		TextFormatting.GREEN,
+		TextFormatting.RED,
+		TextFormatting.DARK_GRAY };
 
 	public static ItemStack getIngot(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 15)
-			meta = 15;
+		if (meta > 17)
+			meta = 17;
 		return new ItemStack(MainInit.oreIngot, 1, meta);
 	}
 
@@ -102,34 +100,34 @@ public class MainUtil {
 	public static ItemStack getCrop(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 12)
-			meta = 12;
+		if (meta > 18)
+			meta = 18;
 		return new ItemStack(FoodInit.crops, 1, meta);
 	}
 
 	public static ItemStack getRandomCrop(int i) {
-		int meta = DCUtil.rand.nextInt(18);
+		int meta = DCUtil.rand.nextInt(19);
 		return new ItemStack(FoodInit.crops, i, meta);
 	}
 
 	public static ItemStack getSeed(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 9)
-			meta = 9;
+		if (meta > 14)
+			meta = 14;
 		return new ItemStack(FoodInit.seeds, 1, meta);
 	}
 
 	public static ItemStack getRandomSeed(int i) {
-		int meta = DCUtil.rand.nextInt(14);
+		int meta = DCUtil.rand.nextInt(15);
 		return new ItemStack(FoodInit.seeds, i, meta);
 	}
 
 	public static ItemStack getCloth(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 9)
-			meta = 9;
+		if (meta > 11)
+			meta = 11;
 		return new ItemStack(MainInit.clothes, 1, meta);
 	}
 
@@ -388,126 +386,15 @@ public class MainUtil {
 	}
 
 	public static final int[][][] MATRIX = new int[][][] {
-			{
-					{
-							0,
-							0,
-							-1
-					},
-					{
-							0,
-							0,
-							1
-					}
-			},
-			{
-					{
-							-1,
-							0,
-							0
-					},
-					{
-							1,
-							0,
-							0
-					}
-			},
-			{
-					{
-							-1,
-							-1,
-							0
-					},
-					{
-							1,
-							0,
-							0
-					}
-			},
-			{
-					{
-							-1,
-							0,
-							0
-					},
-					{
-							1,
-							-1,
-							0
-					}
-			},
-			{
-					{
-							0,
-							0,
-							-1
-					},
-					{
-							0,
-							-1,
-							1
-					}
-			},
-			{
-					{
-							0,
-							-1,
-							-1
-					},
-					{
-							0,
-							0,
-							1
-					}
-			},
-			{
-					{
-							0,
-							0,
-							1
-					},
-					{
-							1,
-							0,
-							0
-					}
-			},
-			{
-					{
-							0,
-							0,
-							1
-					},
-					{
-							-1,
-							0,
-							0
-					}
-			},
-			{
-					{
-							0,
-							0,
-							-1
-					},
-					{
-							-1,
-							0,
-							0
-					}
-			},
-			{
-					{
-							0,
-							0,
-							-1
-					},
-					{
-							1,
-							0,
-							0
-					}
-			}
-	};
+		{ { 0, 0, -1 }, { 0, 0, 1 } },
+		{ { -1, 0, 0 }, { 1, 0, 0 } },
+		{ { -1, -1, 0 }, { 1, 0, 0 } },
+		{ { -1, 0, 0 }, { 1, -1, 0 } },
+		{ { 0, 0, -1 }, { 0, -1, 1 } },
+		{ { 0, -1, -1 }, { 0, 0, 1 } },
+		{ { 0, 0, 1 }, { 1, 0, 0 } },
+		{ { 0, 0, 1 }, { -1, 0, 0 } },
+		{ { 0, 0, -1 }, { -1, 0, 0 } },
+		{ { 0, 0, -1 }, { 1, 0, 0 } } };
 
 }

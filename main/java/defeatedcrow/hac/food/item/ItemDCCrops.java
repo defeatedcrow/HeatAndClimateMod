@@ -25,7 +25,8 @@ public class ItemDCCrops extends DCFoodItem {
 			"garlic",
 			"lettuce",
 			"walnut",
-			"dates"
+			"dates",
+			"vine"
 	};
 
 	public ItemDCCrops(int max) {
@@ -67,6 +68,8 @@ public class ItemDCCrops extends DCFoodItem {
 		case 4:
 		case 6:
 			return 2;
+		case 18:
+			return 0;
 		default:
 			return 1;
 		}
@@ -74,7 +77,12 @@ public class ItemDCCrops extends DCFoodItem {
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.25F;
+		switch (meta) {
+		case 18:
+			return 0;
+		default:
+			return 0.25F;
+		}
 	}
 
 }

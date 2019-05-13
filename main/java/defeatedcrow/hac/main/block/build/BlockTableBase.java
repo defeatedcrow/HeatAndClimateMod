@@ -35,8 +35,10 @@ public class BlockTableBase extends BlockDC {
 	public static final PropertyBool WEST = PropertyBool.create("west");
 
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
+	protected static final AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D);
 
 	protected final boolean isFull;
+	protected boolean isHalf = false;
 
 	public BlockTableBase(String s, boolean full) {
 		super(Material.CLAY, s);
@@ -44,9 +46,14 @@ public class BlockTableBase extends BlockDC {
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(SOUTH,
-				false).withProperty(WEST, false).withProperty(EAST, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(SOUTH, false)
+				.withProperty(WEST, false).withProperty(EAST, false));
 		isFull = full;
+	}
+
+	public BlockTableBase setHalf() {
+		isHalf = true;
+		return this;
 	}
 
 	// additional state
@@ -58,24 +65,24 @@ public class BlockTableBase extends BlockDC {
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		return state.withProperty(NORTH, Boolean.valueOf(this.canConnectTo(worldIn, pos.north()))).withProperty(EAST,
-				Boolean.valueOf(this.canConnectTo(worldIn, pos.east()))).withProperty(SOUTH, Boolean.valueOf(
-						this.canConnectTo(worldIn, pos.south()))).withProperty(WEST, Boolean.valueOf(this.canConnectTo(
-								worldIn, pos.west())));
+		return state.withProperty(NORTH, Boolean.valueOf(this.canConnectTo(worldIn, pos.north())))
+				.withProperty(EAST, Boolean.valueOf(this.canConnectTo(worldIn, pos.east()))).withProperty(SOUTH, Boolean
+						.valueOf(this.canConnectTo(worldIn, pos.south()))).withProperty(WEST, Boolean.valueOf(this
+								.canConnectTo(worldIn, pos.west())));
 	}
 
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
 		switch (rot) {
 		case CLOCKWISE_180:
-			return state.withProperty(NORTH, state.getValue(SOUTH)).withProperty(EAST, state.getValue(
-					WEST)).withProperty(SOUTH, state.getValue(NORTH)).withProperty(WEST, state.getValue(EAST));
+			return state.withProperty(NORTH, state.getValue(SOUTH)).withProperty(EAST, state.getValue(WEST))
+					.withProperty(SOUTH, state.getValue(NORTH)).withProperty(WEST, state.getValue(EAST));
 		case COUNTERCLOCKWISE_90:
-			return state.withProperty(NORTH, state.getValue(EAST)).withProperty(EAST, state.getValue(
-					SOUTH)).withProperty(SOUTH, state.getValue(WEST)).withProperty(WEST, state.getValue(NORTH));
+			return state.withProperty(NORTH, state.getValue(EAST)).withProperty(EAST, state.getValue(SOUTH))
+					.withProperty(SOUTH, state.getValue(WEST)).withProperty(WEST, state.getValue(NORTH));
 		case CLOCKWISE_90:
-			return state.withProperty(NORTH, state.getValue(WEST)).withProperty(EAST, state.getValue(
-					NORTH)).withProperty(SOUTH, state.getValue(EAST)).withProperty(WEST, state.getValue(SOUTH));
+			return state.withProperty(NORTH, state.getValue(WEST)).withProperty(EAST, state.getValue(NORTH))
+					.withProperty(SOUTH, state.getValue(EAST)).withProperty(WEST, state.getValue(SOUTH));
 		default:
 			return state;
 		}
@@ -95,17 +102,12 @@ public class BlockTableBase extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				NORTH,
-				EAST,
-				WEST,
-				SOUTH
-		});
+		return new BlockStateContainer(this, new IProperty[] { NORTH, EAST, WEST, SOUTH });
 	}
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return AABB_FULL;
+		return isHalf ? AABB_HALF : AABB_FULL;
 	}
 
 	@Override
@@ -115,17 +117,17 @@ public class BlockTableBase extends BlockDC {
 
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return isFull;
+		return isFull && !isHalf;
 	}
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-		return isFull;
+		return isFull && !isHalf;
 	}
 
 	@Override
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
-		return side == EnumFacing.UP || isFull;
+		return (side == EnumFacing.UP && !isHalf) || isFull;
 	}
 
 	@Override

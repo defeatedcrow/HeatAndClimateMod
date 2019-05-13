@@ -23,6 +23,8 @@ public class ModuleConfig {
 	public static boolean weapon_advanced = true;
 	public static boolean clothes_advanced = true;
 
+	public static boolean delete_old = false;
+
 	public static boolean village = true;
 	public static boolean agri = true;
 
@@ -68,6 +70,9 @@ public class ModuleConfig {
 			Property build_a = cfg.get("module setting", "EnableAdvancedBuildingBlocks", build_advanced);
 			Property build_c = cfg.get("module setting", "EnableAdvancedClothes", clothes_advanced);
 
+			Property del_old = cfg
+					.get("module setting", "DisableOldMaterials", delete_old, "This mod leaves some deprecated items for world compatibility with older versions." + BR + "If you do not need them, please set it to true.");
+
 			Property mek_b = cfg.get("plugin setting", "MekanismPlugin", mek);
 			Property for_b = cfg.get("plugin setting", "ForestryPlugin", ffm);
 			Property ic2_b = cfg.get("plugin setting", "IndustrialCraft2Plugin", ic2);
@@ -98,6 +103,8 @@ public class ModuleConfig {
 			weapon_advanced = weapon_a.getBoolean();
 			build_advanced = build_a.getBoolean();
 			clothes_advanced = build_c.getBoolean();
+
+			delete_old = del_old.getBoolean();
 
 			mek = mek_b.getBoolean();
 			ffm = for_b.getBoolean();

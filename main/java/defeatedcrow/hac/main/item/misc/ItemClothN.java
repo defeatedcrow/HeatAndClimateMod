@@ -26,7 +26,9 @@ public class ItemClothN extends DCItem {
 			"string_silk",
 			"cloth_silk",
 			"string_magic",
-			"cloth_magic"
+			"cloth_magic",
+			"string_vine",
+			"cloth_vine"
 	};
 
 	public ItemClothN(int max) {

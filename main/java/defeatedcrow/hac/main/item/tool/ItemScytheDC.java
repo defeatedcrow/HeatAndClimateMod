@@ -29,6 +29,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -110,24 +111,24 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 						tool = new ItemStack(Items.SHEARS);
 					}
 
-					if (getDestroySpeed(stack, target) >= 5.0F && !(target.getBlock() instanceof BlockStem)) {
+					if (getDestroySpeed(stack, target) >= 3.0F && !(target.getBlock() instanceof BlockStem)) {
 
 						boolean flag = true;
-						if (target.getBlock() instanceof IGrowable) {
-							flag = ((IGrowable) target.getBlock()).canGrow(world, p1, target, false);
-						}
-
 						if (target.getBlock() instanceof IShearable) {
 							flag = !((IShearable) target.getBlock()).isShearable(tool, world, p1);
+						}
+
+						if (!(target.getBlock() instanceof BlockStem) && target.getBlock() instanceof IGrowable) {
+							flag = ((IGrowable) target.getBlock()).canGrow(world, p1, target, false);
 						}
 
 						if (target.getBlock() == Blocks.PUMPKIN || target.getBlock() == Blocks.MELON_BLOCK) {
 							flag = false;
 						}
 
-						if (target.getBlock() == Blocks.REEDS) {
+						if (target.getBlock() == Blocks.REEDS || target.getBlock() == Blocks.CACTUS) {
 							IBlockState under = world.getBlockState(p1.down());
-							if (under.getBlock() == Blocks.REEDS) {
+							if (under.getBlock() == target.getBlock()) {
 								flag = false;
 							}
 						}
@@ -137,6 +138,17 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 								List<ItemStack> drops = ((IShearable) target.getBlock()).onSheared(tool, world, p1, fl);
 								if (!world.isRemote) {
 									for (ItemStack i : drops) {
+										EntityItem entityitem = new EntityItem(world, p1.getX() + 0.5D, p1
+												.getY() + 0.5D, p1.getZ() + 0.5D, i);
+										entityitem.setDefaultPickupDelay();
+										world.spawnEntity(entityitem);
+									}
+								}
+							} else if (target.getBlock() instanceof IGrowable) {
+								NonNullList<ItemStack> l1 = NonNullList.create();
+								target.getBlock().getDrops(l1, world, p1, target, fl);
+								if (!world.isRemote) {
+									for (ItemStack i : l1) {
 										EntityItem entityitem = new EntityItem(world, p1.getX() + 0.5D, p1
 												.getY() + 0.5D, p1.getZ() + 0.5D, i);
 										entityitem.setDefaultPickupDelay();

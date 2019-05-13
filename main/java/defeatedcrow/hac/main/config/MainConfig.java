@@ -21,6 +21,9 @@ public class MainConfig {
 		File cfgFile3 = new File(file, "defeatedcrow/climate/main.cfg");
 		MainCoreConfig.INSTANCE.load(new Configuration(cfgFile3));
 
+		File cfgFile4 = new File(file, "defeatedcrow/climate/oredic.cfg");
+		OredicConfig.INSTANCE.load(new Configuration(cfgFile4));
+
 		VeinTableJsonHelper.setDir(file);
 	}
 

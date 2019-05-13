@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "itemCloth"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "bunchVine"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_stool_rattan",
+  "count": 1,
+  "data": 0
+ }
+}

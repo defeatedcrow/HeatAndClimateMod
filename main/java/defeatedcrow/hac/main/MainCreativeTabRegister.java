@@ -102,6 +102,7 @@ public class MainCreativeTabRegister {
 			MainInit.fenceAluminium.setCreativeTab(ClimateMain.build);
 			MainInit.fenceNet.setCreativeTab(ClimateMain.build);
 			MainInit.fenceGlass.setCreativeTab(ClimateMain.build);
+			MainInit.fenceRattan.setCreativeTab(ClimateMain.build);
 			MainInit.fenceLadder.setCreativeTab(ClimateMain.build);
 			MainInit.syntheticBlock.setCreativeTab(ClimateMain.build);
 			MainInit.linoleum.setCreativeTab(ClimateMain.build);
@@ -117,14 +118,17 @@ public class MainCreativeTabRegister {
 			MainInit.squaretableMarble.setCreativeTab(ClimateMain.build);
 			MainInit.squaretableChecker.setCreativeTab(ClimateMain.build);
 			MainInit.squaretableBlack.setCreativeTab(ClimateMain.build);
+			MainInit.squaretableRattan.setCreativeTab(ClimateMain.build);
 			MainInit.stoolBlack.setCreativeTab(ClimateMain.build);
 			MainInit.stoolRed.setCreativeTab(ClimateMain.build);
 			MainInit.sofaBlack.setCreativeTab(ClimateMain.build);
 			MainInit.sofaRed.setCreativeTab(ClimateMain.build);
+			MainInit.stoolRattan.setCreativeTab(ClimateMain.build);
 			MainInit.chairWood.setCreativeTab(ClimateMain.build);
 			MainInit.chairMarble.setCreativeTab(ClimateMain.build);
 			MainInit.chairChecker.setCreativeTab(ClimateMain.build);
 			MainInit.chairBlack.setCreativeTab(ClimateMain.build);
+			MainInit.chairRattan.setCreativeTab(ClimateMain.build);
 			MainInit.carpetRed.setCreativeTab(ClimateMain.build);
 			MainInit.carpetWhite.setCreativeTab(ClimateMain.build);
 			MainInit.carpetGray.setCreativeTab(ClimateMain.build);
@@ -132,10 +136,12 @@ public class MainCreativeTabRegister {
 			MainInit.chestWood.setCreativeTab(ClimateMain.build);
 			MainInit.chestChecker.setCreativeTab(ClimateMain.build);
 			MainInit.chestBlack.setCreativeTab(ClimateMain.build);
+			MainInit.chestRattan.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfMarble.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfWood.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfChecker.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfBlack.setCreativeTab(ClimateMain.build);
+			MainInit.wallshelfRattan.setCreativeTab(ClimateMain.build);
 
 			MainInit.flowerPot.setCreativeTab(ClimateMain.build);
 			MainInit.cushionGray.setCreativeTab(ClimateMain.build);

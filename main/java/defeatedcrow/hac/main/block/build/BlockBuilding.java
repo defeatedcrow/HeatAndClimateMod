@@ -13,7 +13,7 @@ import net.minecraft.world.IBlockAccess;
 public class BlockBuilding extends DCSimpleBlock implements ITexturePath {
 
 	public BlockBuilding(Material m, String s) {
-		super(m, s, 10, false);
+		super(m, s, 11, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
 		this.setResistance(30.0F);
@@ -29,22 +29,22 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath {
 
 	@Override
 	public int getMaxMeta() {
-		return 10;
+		return 11;
 	}
 
 	private static String[] names = {
-			"concrete",
-			"mosaic_red",
-			"mosaic_blue",
-			"mosaic_yellow",
-			"mosaic_black",
-			"road",
-			"plaster",
-			"dirtbrick",
-			"flintbrick",
-			"flintbrick_gray",
-			"flintbrick_red"
-	};
+		"concrete",
+		"mosaic_red",
+		"mosaic_blue",
+		"mosaic_yellow",
+		"mosaic_black",
+		"road",
+		"plaster",
+		"dirtbrick",
+		"flintbrick",
+		"flintbrick_gray",
+		"flintbrick_red",
+		"rattan" };
 
 	@Override
 	public String[] getNameSuffix() {

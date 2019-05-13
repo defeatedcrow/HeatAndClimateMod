@@ -37,7 +37,8 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 			"bean",
 			"chili",
 			"garlic",
-			"lettuce"
+			"lettuce",
+			"wisteria"
 	};
 
 	public ItemDCSeeds(int max) {
@@ -117,6 +118,8 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 			return FoodInit.cropGarlic;
 		case 13:
 			return FoodInit.cropLettuce;
+		case 14:
+			return FoodInit.cropWisteria;
 		default:
 			return FoodInit.cropRice;
 		}

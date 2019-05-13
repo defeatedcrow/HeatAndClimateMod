@@ -21,13 +21,13 @@
 
 
 *各鉱脈のタイプ名
-山岳の堆積岩脈:sediment
-砂漠の堆積岩脈:sand_sediment
-山岳・海洋の銅鉱石脈:kieslager
-石英脈:quartz
-溶岩地帯の地底鉱脈:underlava
-晶洞:geode
-ボーキサイト脈:bauxite
+赤(山岳・乾燥地帯):red
+赤(高山帯):high_red
+青(海・湿地・寒冷地):blue
+緑(森林):green
+白(平原・サバンナ):white
+黒(地底):black
+ネザー(ネザー):nether
 浜辺のグアノ脈:guano
 スカルン中層:skarn
 スカルン下層:skarn_under

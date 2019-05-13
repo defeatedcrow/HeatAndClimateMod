@@ -59,18 +59,18 @@ public class FoodRecipes {
 				4), 0.25F, new ItemStack(MainInit.cropBasket, 1, 7));
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				5), 0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
+				4), 0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				5), 0.25F, new ItemStack(Items.BEETROOT_SEEDS, 8, 0));
+				4), 0.25F, new ItemStack(Items.BEETROOT_SEEDS, 8, 0));
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				5), 0.25F, new ItemStack(Items.MELON_SEEDS, 8, 0));
+				4), 0.25F, new ItemStack(Items.MELON_SEEDS, 8, 0));
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				5), 0.25F, new ItemStack(Items.PUMPKIN_SEEDS, 8, 0));
+				4), 0.25F, new ItemStack(Items.PUMPKIN_SEEDS, 8, 0));
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0), new ItemStack(MainInit.miscDust, 1,
+		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
 				4), 0.25F, "cropWalnut");
 
 	}
@@ -96,6 +96,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropLettuce);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesWalnut);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesDatesCrop);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropWisteria);
 	}
 
 	public static void loadOres() {
@@ -114,6 +115,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("cropLettuce", new ItemStack(FoodInit.crops, 1, 15));
 		OreDictionary.registerOre("cropWalnut", new ItemStack(FoodInit.crops, 1, 16));
 		OreDictionary.registerOre("cropDate", new ItemStack(FoodInit.crops, 1, 17));
+		OreDictionary.registerOre("bunchVine", new ItemStack(FoodInit.crops, 1, 18));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 1));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 2));
 		OreDictionary.registerOre("listAllgreenveggie", new ItemStack(FoodInit.crops, 1, 2));
@@ -151,6 +153,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("seedChilipepper", new ItemStack(FoodInit.seeds, 1, 11));
 		OreDictionary.registerOre("seedGarlic", new ItemStack(FoodInit.seeds, 1, 12));
 		OreDictionary.registerOre("seedLettuce", new ItemStack(FoodInit.seeds, 1, 13));
+		OreDictionary.registerOre("seedWisteria", new ItemStack(FoodInit.seeds, 1, 14));
 		OreDictionary.registerOre("saplingLemon", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("saplingOlive", new ItemStack(FoodInit.saplings, 1, 1));
@@ -163,6 +166,9 @@ public class FoodRecipes {
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings2, 1, 0));
 		OreDictionary.registerOre("saplingDate", new ItemStack(FoodInit.saplings2, 1, 1));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings2, 1, 1));
+		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.cropWisteria, 1, 0));
+		OreDictionary.registerOre("saplingWisteria", new ItemStack(FoodInit.cropWisteria, 1, 32767));
+		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.cropWisteria, 1, 32767));
 
 		OreDictionary.registerOre("bucketWater", new ItemStack(FoodInit.paperPack, 1, 1));
 		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 2));
@@ -214,6 +220,9 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllveggie", new ItemStack(Items.BEETROOT, 1, 0));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(Blocks.PUMPKIN, 1, 0));
 		OreDictionary.registerOre("bread", new ItemStack(Items.BREAD, 1, 0));
+
+		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropWisteria, 1, 32767));
+		OreDictionary.registerOre("vineLeaves", new ItemStack(Blocks.VINE, 1, 0));
 	}
 
 	static void loadFuelData() {

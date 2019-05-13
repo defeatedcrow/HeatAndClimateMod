@@ -109,6 +109,7 @@ public class MainInit {
 	public static Block wallLamp;
 	public static Block chandelierGypsum;
 	public static Block chandelierChal;
+	public static Block chainCopper;
 
 	public static Block tableMarble;
 	public static Block tableGypsum;
@@ -126,7 +127,6 @@ public class MainInit {
 	public static Block chairMarble;
 	public static Block chairChecker;
 	public static Block chairBlack;
-
 	public static Block carpetRed;
 	public static Block carpetWhite;
 	public static Block carpetGray;
@@ -159,6 +159,14 @@ public class MainInit {
 	public static Block mcClock_L;
 
 	public static Item cushionGray;
+
+	// vine
+	public static Block fenceRattan;
+	public static Block squaretableRattan;
+	public static Block stoolRattan;
+	public static Block chairRattan;
+	public static Block chestRattan;
+	public static Block wallshelfRattan;
 
 	// device
 	public static Block chamber;

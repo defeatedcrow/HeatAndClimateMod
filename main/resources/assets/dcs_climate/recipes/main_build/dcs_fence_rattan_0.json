@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "XYX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "bunchVine"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_fence_rattan",
+  "count": 6,
+  "data": 0
+ }
+}

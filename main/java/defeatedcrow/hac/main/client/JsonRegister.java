@@ -41,9 +41,8 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.foodDust, ClimateCore.PACKAGE_ID, "dcs_food_dust", "food", 6);
 		MAIN_INSTANCE.regSimpleItem(MainInit.stoneYagen, ClimateCore.PACKAGE_ID, "dcs_stone_yagen", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.brassYagen, ClimateCore.PACKAGE_ID, "dcs_brass_yagen", "tool", 0);
-		MAIN_INSTANCE.regSimpleItem(MainInit.materials, ClimateCore.PACKAGE_ID, "dcs_material", "tool", 9);
 		MAIN_INSTANCE.regSimpleItem(MainInit.gears, ClimateCore.PACKAGE_ID, "dcs_gear", "tool", 4);
-		MAIN_INSTANCE.regSimpleItem(MainInit.clothes, ClimateCore.PACKAGE_ID, "dcs_cloth", "tool", 9);
+		MAIN_INSTANCE.regSimpleItem(MainInit.clothes, ClimateCore.PACKAGE_ID, "dcs_cloth", "tool", 11);
 		MAIN_INSTANCE.regSimpleItem(MainInit.patternPaper, ClimateCore.PACKAGE_ID, "dcs_pattern_paper", "tool", 8);
 		MAIN_INSTANCE.regSimpleItem(MainInit.silkworm, ClimateCore.PACKAGE_ID, "dcs_silkworm", "tool", 3);
 		MAIN_INSTANCE.regSimpleItem(MainInit.crowDrill, ClimateCore.PACKAGE_ID, "dcs_crow_drill", "tool", 0);
@@ -67,32 +66,32 @@ public class JsonRegister {
 					.regSimpleItem(MainInit.metalMaterials, ClimateCore.PACKAGE_ID, "dcs_plugin_metal_material", "device", 7);
 		}
 
+		if (!ModuleConfig.delete_old) {
+			MAIN_INSTANCE.regSimpleItem(MainInit.materials, ClimateCore.PACKAGE_ID, "dcs_material", "tool", 9);
+		}
+
 	}
 
 	static void regBlocks() {
 		regCube((ITexturePath) MainInit.dustBlock, ClimateCore.PACKAGE_ID, "dcs_ore_dustblock", "ores", 15);
 		regCube((ITexturePath) MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 2);
-		regCube((ITexturePath) MainInit.metalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_metalblock", "ores", 15);
 		regCube((ITexturePath) MainInit.metalBlockNew, ClimateCore.PACKAGE_ID, "dcs_ore_metal_new", "ores", 7);
 		regCube((ITexturePath) MainInit.metalBlockAlloy, ClimateCore.PACKAGE_ID, "dcs_ore_metal_alloy", "ores", 8);
 		regCube((ITexturePath) MainInit.heatedMetalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_heatingmetal", "ores", 11);
 		regCube((ITexturePath) MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
 		regCube((ITexturePath) MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		regCube((ITexturePath) MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 2);
-		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 10);
+		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 11);
 		regCube((ITexturePath) MainInit.syntheticBlock, ClimateCore.PACKAGE_ID, "dcs_build_synthetic_glass", "build", 15);
 		regCube((ITexturePath) MainInit.linoleum, ClimateCore.PACKAGE_ID, "dcs_build_linoleum", "build", 15);
 		regCube((ITexturePath) MainInit.clayBricks, ClimateCore.PACKAGE_ID, "dcs_build_claybrick", "build", 15);
 		regCube((ITexturePath) MainInit.oreNew, ClimateCore.PACKAGE_ID, "dcs_ore_stone_new", "ores", 14);
 		regCube((ITexturePath) MainInit.layerNew, ClimateCore.PACKAGE_ID, "dcs_layer_stone_new", "ores", 6);
 
-		MAIN_INSTANCE.regSimpleBlock(MainInit.ores, ClimateCore.PACKAGE_ID, "dcs_ore_stone", "ores", 15);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.ores_2, ClimateCore.PACKAGE_ID, "dcs_ore2_stone", "ores", 12);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.oreNew, ClimateCore.PACKAGE_ID, "dcs_ore_stone_new", "ores", 14);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.layerNew, ClimateCore.PACKAGE_ID, "dcs_layer_stone_new", "ores", 6);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock, ClimateCore.PACKAGE_ID, "dcs_ore_dustblock", "ores", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 2);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.metalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_metalblock", "ores", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.metalBlockNew, ClimateCore.PACKAGE_ID, "dcs_ore_metal_new", "ores", 7);
 		MAIN_INSTANCE
 				.regSimpleBlock(MainInit.metalBlockAlloy, ClimateCore.PACKAGE_ID, "dcs_ore_metal_alloy", "ores", 8);
@@ -102,19 +101,16 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.chalLamp, ClimateCore.PACKAGE_ID, "dcs_build_challamp", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 2);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 10);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 11);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.linoleum, ClimateCore.PACKAGE_ID, "dcs_build_linoleum", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.wallLamp, ClimateCore.PACKAGE_ID, "dcs_build_walllamp", "build", 3);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.awning, ClimateCore.PACKAGE_ID, "dcs_build_awning", "build", 3);
+
 		MAIN_INSTANCE.regSimpleBlock(MainInit.plate, ClimateCore.PACKAGE_ID, "dcs_build_plate", "build", 1);
-		MAIN_INSTANCE
-				.regSimpleBlock(MainInit.lampCarbide, ClimateCore.PACKAGE_ID, "dcs_lamp_carbide_lantern", "build", 0);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.lampGas, ClimateCore.PACKAGE_ID, "dcs_lamp_carbide_glass", "build", 0);
+
 		MAIN_INSTANCE
 				.regSimpleBlock(MainInit.markingPanel, ClimateCore.PACKAGE_ID, "dcs_build_markingpanel", "build", 0);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.lightOrb, ClimateCore.PACKAGE_ID, "dcs_build_lightorb", "build", 0);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.sinkMetal, ClimateCore.PACKAGE_ID, "dcs_device_sink_half", "device", 0);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.sinkChest, ClimateCore.PACKAGE_ID, "dcs_device_sink_full", "device", 0);
+
 		MAIN_INSTANCE
 				.regSimpleBlock(MainInit.syntheticBlock, ClimateCore.PACKAGE_ID, "dcs_build_synthetic_glass", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.clayBricks, ClimateCore.PACKAGE_ID, "dcs_build_claybrick", "build", 15);
@@ -125,18 +121,11 @@ public class JsonRegister {
 				.getItemFromBlock(MainInit.desiccant), ClimateCore.PACKAGE_ID, "dcs_desiccant", "build", 3);
 		MAIN_INSTANCE.regSimpleItem(Item
 				.getItemFromBlock(MainInit.freezepack), ClimateCore.PACKAGE_ID, "dcs_coolant", "build", 3);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeSpring, ClimateCore.PACKAGE_ID, "dcs_hedge_spring", "crop", 0);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeSummer, ClimateCore.PACKAGE_ID, "dcs_hedge_summer", "crop", 0);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeAutumn, ClimateCore.PACKAGE_ID, "dcs_hedge_autumn", "crop", 0);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeWinter, ClimateCore.PACKAGE_ID, "dcs_hedge_winter", "crop", 0);
 
 		MAIN_INSTANCE.regTEBlock(MainInit.chamber, ClimateCore.PACKAGE_ID, "dcs_device_chamber", "machine", 0);
 		MAIN_INSTANCE.regTEBlock(MainInit.shitirin, ClimateCore.PACKAGE_ID, "dcs_device_shitirin", "machine", 0);
 		MAIN_INSTANCE.regTEBlock(MainInit.fuelStove, ClimateCore.PACKAGE_ID, "dcs_device_fuelstove", "machine", 0);
-		MAIN_INSTANCE.regTEBlock(MainInit.chestMetal, ClimateCore.PACKAGE_ID, "dcs_device_chest_metal", "device", 0);
-		MAIN_INSTANCE.regTEBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_ID, "dcs_device_chest_magnet", "device", 0);
-		MAIN_INSTANCE
-				.regTEBlock(MainInit.chestVillage, ClimateCore.PACKAGE_ID, "dcs_device_chest_village", "device", 0);
+
 		MAIN_INSTANCE.regTETorqueBlock(MainInit.bellow, ClimateCore.PACKAGE_ID, "dcs_device_bellow", "device", 0);
 		MAIN_INSTANCE.regTEBlock(MainInit.thermometer, ClimateCore.PACKAGE_ID, "dcs_device_thermometer", "device", 0);
 		MAIN_INSTANCE.regTEBlock(MainInit.windvane, ClimateCore.PACKAGE_ID, "dcs_device_windvane", "device", 0);
@@ -145,10 +134,31 @@ public class JsonRegister {
 
 		// door
 		if (ModuleConfig.build_advanced) {
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.sinkMetal, ClimateCore.PACKAGE_ID, "dcs_device_sink_half", "device", 0);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.sinkChest, ClimateCore.PACKAGE_ID, "dcs_device_sink_full", "device", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.awning, ClimateCore.PACKAGE_ID, "dcs_build_awning", "build", 3);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.lampCarbide, ClimateCore.PACKAGE_ID, "dcs_lamp_carbide_lantern", "build", 0);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.lampGas, ClimateCore.PACKAGE_ID, "dcs_lamp_carbide_glass", "build", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeSpring, ClimateCore.PACKAGE_ID, "dcs_hedge_spring", "crop", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeSummer, ClimateCore.PACKAGE_ID, "dcs_hedge_summer", "crop", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeAutumn, ClimateCore.PACKAGE_ID, "dcs_hedge_autumn", "crop", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeWinter, ClimateCore.PACKAGE_ID, "dcs_hedge_winter", "crop", 0);
+
 			ModelLoader.setCustomStateMapper(MainInit.doorMarble, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
 					.build());
 			ModelLoader.setCustomStateMapper(MainInit.doorSteel, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
 					.build());
+
+			MAIN_INSTANCE
+					.regTEBlock(MainInit.chestMetal, ClimateCore.PACKAGE_ID, "dcs_device_chest_metal", "device", 0);
+			MAIN_INSTANCE
+					.regTEBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_ID, "dcs_device_chest_magnet", "device", 0);
+			MAIN_INSTANCE
+					.regTEBlock(MainInit.chestVillage, ClimateCore.PACKAGE_ID, "dcs_device_chest_village", "device", 0);
 
 			ModelLoader.setCustomStateMapper(MainInit.realtimeClock, (new StateMap.Builder()).ignore(DCState.FACING)
 					.build());
@@ -165,22 +175,28 @@ public class JsonRegister {
 			MAIN_INSTANCE.regSimpleItem(Item
 					.getItemFromBlock(MainInit.mcClock_L), ClimateCore.PACKAGE_ID, "dcs_device_mcclock_l", "device", 0);
 		}
+
+		if (!ModuleConfig.delete_old) {
+			regCube((ITexturePath) MainInit.metalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_metalblock", "ores", 15);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.ores, ClimateCore.PACKAGE_ID, "dcs_ore_stone", "ores", 15);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.ores_2, ClimateCore.PACKAGE_ID, "dcs_ore2_stone", "ores", 12);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.metalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_metalblock", "ores", 15);
+		}
 	}
 
 	static void regTools() {
 
 		if (ModuleConfig.tool) {
 			String[] name = {
-					"brass",
-					"steel",
-					"silver",
-					"nickelsilver",
-					"chalcedony",
-					"sapphire",
-					"titanium",
-					"garnet",
-					"toolsteel"
-			};
+				"brass",
+				"steel",
+				"silver",
+				"nickelsilver",
+				"chalcedony",
+				"sapphire",
+				"titanium",
+				"garnet",
+				"toolsteel" };
 			for (int j = 0; j < name.length; j++) {
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip", 0);
@@ -191,12 +207,7 @@ public class JsonRegister {
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.dcSword[j], ClimateCore.PACKAGE_ID, "dcs_sword_" + name[j], "equip", 0);
 			}
-			String[] type = {
-					"met",
-					"plate",
-					"leggins",
-					"boots"
-			};
+			String[] type = { "met", "plate", "leggins", "boots" };
 			for (int i = 0; i < 4; i++) {
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_brass", "equip", 0);
@@ -212,14 +223,7 @@ public class JsonRegister {
 						.regSimpleItem(MainInit.silverArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_silver", "equip", 0);
 			}
 
-			String[] name2 = {
-					"brass",
-					"steel",
-					"chalcedony",
-					"garnet",
-					"stone",
-					"toolsteel"
-			};
+			String[] name2 = { "brass", "steel", "chalcedony", "garnet", "stone", "toolsteel" };
 			for (int j = 0; j < name2.length; j++) {
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.dcScythe[j], ClimateCore.PACKAGE_ID, "dcs_scythe_" + name[j], "equip", 0);

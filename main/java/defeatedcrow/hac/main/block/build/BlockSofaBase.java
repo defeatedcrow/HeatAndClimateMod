@@ -41,7 +41,7 @@ public class BlockSofaBase extends BlockDC {
 	public static final PropertyBool LEFT = PropertyBool.create("left");
 	public static final PropertyBool RIGHT = PropertyBool.create("right");
 
-	protected static final AxisAlignedBB AABB_SMALL = new AxisAlignedBB(0.125D, 0.125D, 0.125D, 0.875D, 0.75D, 0.875D);
+	protected static final AxisAlignedBB AABB_SMALL = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.5D, 0.875D);
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D);
 	protected static final AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 	public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.5D, 0.75D, 1.0D, 1.0D, 1.0D);
@@ -57,8 +57,8 @@ public class BlockSofaBase extends BlockDC {
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(
-				LEFT, false).withProperty(RIGHT, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
+				.withProperty(LEFT, false).withProperty(RIGHT, false));
 	}
 
 	public BlockSofaBase setSmallAABB() {
@@ -73,7 +73,7 @@ public class BlockSofaBase extends BlockDC {
 		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, AABB_FULL);
 			if (list.isEmpty()) {
-				double y1 = isSmallAABB ? 0.45D : 0.25D;
+				double y1 = isSmallAABB ? 0.35D : 0.25D;
 				EntityCution cution = new EntityCution(world, pos.getX() + 0.5D, pos.getY() + y1, pos.getZ() + 0.5D);
 				world.spawnEntity(cution);
 				if (player.isRiding()) {
@@ -98,8 +98,8 @@ public class BlockSofaBase extends BlockDC {
 		if (face != null) {
 			BlockPos left = pos.offset(face.rotateYCCW());
 			BlockPos right = pos.offset(face.rotateY());
-			return state.withProperty(LEFT, Boolean.valueOf(this.canConnectTo(worldIn, left))).withProperty(RIGHT,
-					Boolean.valueOf(this.canConnectTo(worldIn, right)));
+			return state.withProperty(LEFT, Boolean.valueOf(this.canConnectTo(worldIn, left)))
+					.withProperty(RIGHT, Boolean.valueOf(this.canConnectTo(worldIn, right)));
 		}
 		return state.withProperty(LEFT, false).withProperty(RIGHT, false);
 	}
@@ -128,11 +128,11 @@ public class BlockSofaBase extends BlockDC {
 			return super.withMirror(state, mirrorIn);
 		switch (mirrorIn) {
 		case LEFT_RIGHT:
-			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(LEFT, state.getValue(
-					RIGHT)).withProperty(RIGHT, state.getValue(LEFT));
+			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(LEFT, state.getValue(RIGHT))
+					.withProperty(RIGHT, state.getValue(LEFT));
 		case FRONT_BACK:
-			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(RIGHT, state.getValue(
-					LEFT)).withProperty(LEFT, state.getValue(RIGHT));
+			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(RIGHT, state.getValue(LEFT))
+					.withProperty(LEFT, state.getValue(RIGHT));
 		default:
 			return super.withMirror(state, mirrorIn);
 		}
@@ -140,11 +140,7 @@ public class BlockSofaBase extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING,
-				LEFT,
-				RIGHT
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.FACING, LEFT, RIGHT });
 	}
 
 	@Override
@@ -155,6 +151,10 @@ public class BlockSofaBase extends BlockDC {
 	@Override
 	public void getCollisionBoxList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
 			List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
+		if (isSmallAABB) {
+			addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_SMALL);
+			return;
+		}
 		state = state.getActualState(worldIn, pos);
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_HALF);
 		EnumFacing face = DCState.getFace(state, DCState.FACING);

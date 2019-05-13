@@ -16,397 +16,371 @@ public class LoadingToolRecipe {
 		// clothes
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 0), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				"blockTallGrass",
-				'Y',
-				"stickWood"
-		});
+			"XXX",
+			"XYX",
+			"XXX",
+			'X',
+			"blockTallGrass",
+			'Y',
+			"stickWood" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 1), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				new ItemStack(Items.STRING, 1, 0),
-				'Y',
-				"stickWood"
-		});
+			"XXX",
+			"XYX",
+			"XXX",
+			'X',
+			new ItemStack(Items.STRING, 1, 0),
+			'Y',
+			"stickWood" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 1), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				"cropCotton",
-				'Y',
-				"stickWood"
-		});
+			"XXX",
+			"XYX",
+			"XXX",
+			'X',
+			"cropCotton",
+			'Y',
+			"stickWood" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 2), new Object[] {
-				" X ",
-				"X X",
-				" X ",
-				'X',
-				new ItemStack(MainInit.clothes, 1, 0)
-		});
+			" X ",
+			"X X",
+			" X ",
+			'X',
+			new ItemStack(MainInit.clothes, 1, 0) });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 3), new Object[] {
-				" X ",
-				"X X",
-				" X ",
-				'X',
-				new ItemStack(MainInit.clothes, 1, 1)
-		});
+			" X ",
+			"X X",
+			" X ",
+			'X',
+			new ItemStack(MainInit.clothes, 1, 1) });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 0), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'X',
-				"plankWood",
-				'Y',
-				"stickWood"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'X',
+			"plankWood",
+			'Y',
+			"stickWood" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 1), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearWood",
-				'X',
-				"ingotBrass"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'Y',
+			"gearWood",
+			'X',
+			"ingotBrass" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 1), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearWood",
-				'X',
-				"ingotBronze"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'Y',
+			"gearWood",
+			'X',
+			"ingotBronze" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 2), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearWood",
-				'X',
-				"ingotNickelsilver"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'Y',
+			"gearWood",
+			'X',
+			"ingotNickelsilver" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 3), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearWood",
-				'X',
-				"ingotSteel"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'Y',
+			"gearWood",
+			'X',
+			"ingotSteel" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 4), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearWood",
-				'X',
-				"ingotToolSteel"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'Y',
+			"gearWood",
+			'X',
+			"ingotToolSteel" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 2), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearStone",
-				'X',
-				"ingotNickelsilver"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'Y',
+			"gearStone",
+			'X',
+			"ingotNickelsilver" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 3), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearStone",
-				'X',
-				"ingotSteel"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'Y',
+			"gearStone",
+			'X',
+			"ingotSteel" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 4), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'Y',
-				"gearStone",
-				'X',
-				"ingotToolSteel"
-		});
+			" X ",
+			"XYX",
+			" X ",
+			'Y',
+			"gearStone",
+			'X',
+			"ingotToolSteel" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 4), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'X',
-				"dustChrysotile",
-				'Y',
-				"stickWood"
-		});
+			"XXX",
+			"XYX",
+			"XXX",
+			'X',
+			"dustChrysotile",
+			'Y',
+			"stickWood" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 5), new Object[] {
-				" X ",
-				"X X",
-				" X ",
-				'X',
-				new ItemStack(MainInit.clothes, 1, 4)
-		});
+			" X ",
+			"X X",
+			" X ",
+			'X',
+			new ItemStack(MainInit.clothes, 1, 4) });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 7), new Object[] {
-				" X ",
-				"X X",
-				" X ",
-				'X',
-				new ItemStack(MainInit.clothes, 1, 6)
-		});
+			" X ",
+			"X X",
+			" X ",
+			'X',
+			new ItemStack(MainInit.clothes, 1, 6) });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 10), new Object[] {
+			"XXX",
+			"XYX",
+			"XXX",
+			'X',
+			"bunchVine",
+			'Y',
+			"stickWood" });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 11), new Object[] {
+			" X ",
+			"X X",
+			" X ",
+			'X',
+			new ItemStack(MainInit.clothes, 1, 10) });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.stoneYagen, 1, 0), new Object[] {
-				" X ",
-				"XYX",
-				"XXX",
-				'X',
-				"cobblestone",
-				'Y',
-				"gearWood"
-		});
+			" X ",
+			"XYX",
+			"XXX",
+			'X',
+			"cobblestone",
+			'Y',
+			"gearWood" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.brassYagen, 1, 0), new Object[] {
-				" X ",
-				"XYX",
-				"XXX",
-				'X',
-				"ingotBrass",
-				'Y',
-				"gearWood"
-		});
+			" X ",
+			"XYX",
+			"XXX",
+			'X',
+			"ingotBrass",
+			'Y',
+			"gearWood" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(DCInit.climate_checker, 1, 0), new Object[] {
-				" Z ",
-				"XYX",
-				" Z ",
-				'X',
-				"ingotGold",
-				'Y',
-				"dustRedstone",
-				'Z',
-				"gemChalcedony"
-		});
+			" Z ",
+			"XYX",
+			" Z ",
+			'X',
+			"ingotGold",
+			'Y',
+			"dustRedstone",
+			'Z',
+			"gemChalcedony" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.stevenson_screen, 1, 0), new Object[] {
-				"XZX",
-				"ZYZ",
-				"XZX",
-				'X',
-				"plankWood",
-				'Y',
-				new ItemStack(DCInit.climate_checker),
-				'Z',
-				"dyeWhite"
-		});
+			"XZX",
+			"ZYZ",
+			"XZX",
+			'X',
+			"plankWood",
+			'Y',
+			new ItemStack(DCInit.climate_checker),
+			'Z',
+			"dyeWhite" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.thermometer, 1, 0), new Object[] {
+			"X",
+			"Y",
+			"Z",
+			'X',
+			"bucketWater",
+			'Y',
+			new ItemStack(DCInit.climate_checker),
+			'Z',
+			"blockGlass" });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {
+			" X ",
+			"XYX",
+			" X ",
+			'X',
+			"ingotBrass",
+			'Y',
+			new ItemStack(DCInit.climate_checker) });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {
+			" X ",
+			"XYX",
+			" X ",
+			'X',
+			"ingotBronze",
+			'Y',
+			new ItemStack(DCInit.climate_checker) });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.chamber, 1, 0), new Object[] {
+			"ZXZ",
+			"XYX",
+			"ZXZ",
+			'Y',
+			new ItemStack(Blocks.FURNACE, 1, 0),
+			'X',
+			"stickBlaze",
+			'Z',
+			"ingotBrass" });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.chamber, 1, 0), new Object[] {
+			"ZXZ",
+			"XYX",
+			"ZXZ",
+			'Y',
+			new ItemStack(Blocks.FURNACE, 1, 0),
+			'X',
+			"stickBlaze",
+			'Z',
+			"ingotBronze" });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.shitirin, 1, 0), new Object[] {
+			"XXX",
+			"XYX",
+			"XXX",
+			'Y',
+			new ItemStack(Blocks.FURNACE, 1, 0),
+			'X',
+			new ItemStack(Items.CLAY_BALL, 1, 0) });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.fuelStove, 1, 0), new Object[] {
+			"XYX",
+			"XZX",
+			"XWX",
+			'X',
+			"ingotSteel",
+			'Y',
+			new ItemStack(Items.FLINT_AND_STEEL, 1, 32767),
+			'Z',
+			new ItemStack(Blocks.FURNACE, 1, 0),
+			'W',
+			new ItemStack(Items.BUCKET, 1, 0) });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.bellow, 1, 0), new Object[] {
+			"XYX",
+			"XZX",
+			"XWX",
+			'X',
+			"ingotIron",
+			'Y',
+			"stickWood",
+			'Z',
+			"gearWood",
+			'W',
+			new ItemStack(Blocks.PISTON, 1, 0) });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 0), new Object[] {
+			new ItemStack(Items.SLIME_BALL, 1, 0),
+			"dustIron" });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
+			new ItemStack(Items.CLAY_BALL, 1, 0),
+			"dustGarnet" });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
+			"dustClay",
+			"dustGarnet" });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+			"stickWood",
+			"blockTallGrass" });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+			"stickWood",
+			"dustPlant" });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+			"stickWood",
+			"dustWood" });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+			"stickWood",
+			"cropCotton" });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+			"stickWood",
+			"feather" });
+
+		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 2), new Object[] {
+			"plankWood",
+			new ItemStack(MainInit.tinder, 1, 0),
+			"string" });
+
+		if (ModuleConfig.machine) {
+			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
+				"ZYZ",
+				" X ",
+				'X',
+				new ItemStack(DCInit.climate_checker, 1, 0),
+				'Y',
+				new ItemStack(MachineInit.machimeMaterials, 1, 6),
+				'Z',
+				new ItemStack(MainInit.selenite, 1, 2) });
+
+			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
+				"ZYZ",
+				" X ",
+				'X',
+				new ItemStack(MachineInit.torqueChecker, 1, 0),
+				'Y',
+				new ItemStack(MachineInit.machimeMaterials, 1, 6),
+				'Z',
+				new ItemStack(MainInit.selenite, 1, 2) });
+		} else {
+			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
 				'X',
-				"bucketWater",
+				new ItemStack(Blocks.GLASS_PANE, 1, 0),
 				'Y',
-				new ItemStack(DCInit.climate_checker),
+				new ItemStack(DCInit.climate_checker, 1, 0),
 				'Z',
-				"blockGlass"
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'X',
-				"ingotBrass",
-				'Y',
-				new ItemStack(DCInit.climate_checker)
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {
-				" X ",
-				"XYX",
-				" X ",
-				'X',
-				"ingotBronze",
-				'Y',
-				new ItemStack(DCInit.climate_checker)
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.chamber, 1, 0), new Object[] {
-				"ZXZ",
-				"XYX",
-				"ZXZ",
-				'Y',
-				new ItemStack(Blocks.FURNACE, 1, 0),
-				'X',
-				"stickBlaze",
-				'Z',
-				"ingotBrass"
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.chamber, 1, 0), new Object[] {
-				"ZXZ",
-				"XYX",
-				"ZXZ",
-				'Y',
-				new ItemStack(Blocks.FURNACE, 1, 0),
-				'X',
-				"stickBlaze",
-				'Z',
-				"ingotBronze"
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.shitirin, 1, 0), new Object[] {
-				"XXX",
-				"XYX",
-				"XXX",
-				'Y',
-				new ItemStack(Blocks.FURNACE, 1, 0),
-				'X',
-				new ItemStack(Items.CLAY_BALL, 1, 0)
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.fuelStove, 1, 0), new Object[] {
-				"XYX",
-				"XZX",
-				"XWX",
-				'X',
-				"ingotSteel",
-				'Y',
-				new ItemStack(Items.FLINT_AND_STEEL, 1, 32767),
-				'Z',
-				new ItemStack(Blocks.FURNACE, 1, 0),
-				'W',
-				new ItemStack(Items.BUCKET, 1, 0)
-		});
-
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.bellow, 1, 0), new Object[] {
-				"XYX",
-				"XZX",
-				"XWX",
-				'X',
-				"ingotIron",
-				'Y',
-				"stickWood",
-				'Z',
-				"gearWood",
-				'W',
-				new ItemStack(Blocks.PISTON, 1, 0)
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 0), new Object[] {
-				new ItemStack(Items.SLIME_BALL, 1, 0),
-				"dustIron"
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
-				new ItemStack(Items.CLAY_BALL, 1, 0),
-				"dustGarnet"
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
-				"dustClay",
-				"dustGarnet"
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
-				"stickWood",
-				"blockTallGrass"
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
-				"stickWood",
-				"dustPlant"
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
-				"stickWood",
-				"dustWood"
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
-				"stickWood",
-				"cropCotton"
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
-				"stickWood",
-				"feather"
-		});
-
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 2), new Object[] {
-				"plankWood",
-				new ItemStack(MainInit.tinder, 1, 0),
-				"string"
-		});
-
-		if (ModuleConfig.machine) {
-			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
-					"ZYZ",
-					" X ",
-					'X',
-					new ItemStack(DCInit.climate_checker, 1, 0),
-					'Y',
-					new ItemStack(MachineInit.machimeMaterials, 1, 6),
-					'Z',
-					new ItemStack(MainInit.selenite, 1, 2)
-			});
+				"ingotSteel" });
 
 			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
-					"ZYZ",
-					" X ",
-					'X',
-					new ItemStack(MachineInit.torqueChecker, 1, 0),
-					'Y',
-					new ItemStack(MachineInit.machimeMaterials, 1, 6),
-					'Z',
-					new ItemStack(MainInit.selenite, 1, 2)
-			});
-		} else {
-			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
-					"X",
-					"Y",
-					"Z",
-					'X',
-					new ItemStack(Blocks.GLASS_PANE, 1, 0),
-					'Y',
-					new ItemStack(DCInit.climate_checker, 1, 0),
-					'Z',
-					"ingotSteel"
-			});
-
-			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
-					"X",
-					"Y",
-					"Z",
-					'X',
-					"gemMalachite",
-					'Y',
-					new ItemStack(DCInit.climate_checker, 1, 0),
-					'Z',
-					"ingotSteel"
-			});
+				"X",
+				"Y",
+				"Z",
+				'X',
+				"gemMalachite",
+				'Y',
+				new ItemStack(DCInit.climate_checker, 1, 0),
+				'Z',
+				"ingotSteel" });
 		}
 	}
 

@@ -299,7 +299,6 @@ public class MachineRecipeRegister {
 		GameRegistry.addSmelting(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(Blocks.GLASS, 1, 0), 0.2F);
 		// GameRegistry.addSmelting(new ItemStack(MainInit.gems, 1, 12), new ItemStack(Items.ENDER_PEARL, 1, 0), 0.2F);
 
-		GameRegistry.addSmelting(new ItemStack(MainInit.ores_2, 1, 0), new ItemStack(MainInit.gemBlock, 1, 6), 0.2F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.layerNew, 1, 1), new ItemStack(MainInit.gemBlock, 1, 6), 0.2F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.desiccant, 1, 3), new ItemStack(MainInit.desiccant, 1, 0), 0F);

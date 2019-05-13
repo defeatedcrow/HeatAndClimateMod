@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  " Y ",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "bunchVine"
+  },
+  "Y": {
+   "item": "minecraft:chest",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_lowchest_rattan",
+  "count": 1,
+  "data": 0
+ }
+}
