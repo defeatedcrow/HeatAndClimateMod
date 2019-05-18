@@ -73,6 +73,7 @@ public class MainInit {
 	public static Block awning;
 	public static Block lampCarbide;
 	public static Block lampGas;
+	public static Block chain;
 	public static Block achievementShield;
 
 	public static Block fenceLadderSteel;

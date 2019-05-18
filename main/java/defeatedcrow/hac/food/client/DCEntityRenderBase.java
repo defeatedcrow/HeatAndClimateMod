@@ -27,7 +27,7 @@ public abstract class DCEntityRenderBase<T extends DCEntityBase> extends Render<
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y, (float) z);
-		GlStateManager.scale(-1.0F, -1.0F, 1.0F);
+		GlStateManager.scale(-getScale(), -getScale(), getScale());
 		this.bindTexture(tex);
 
 		float rotX = 0F;
@@ -52,5 +52,9 @@ public abstract class DCEntityRenderBase<T extends DCEntityBase> extends Render<
 	protected abstract ResourceLocation getFoodTexture();
 
 	protected abstract DCFoodModelBase getEntityModel();
+
+	protected float getScale() {
+		return 1.0F;
+	}
 
 }

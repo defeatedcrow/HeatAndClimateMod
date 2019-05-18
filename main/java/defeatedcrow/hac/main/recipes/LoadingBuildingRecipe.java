@@ -569,6 +569,28 @@ public class LoadingBuildingRecipe {
 				'Z',
 				"ingotCopper" });
 
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chandelierGypsum, 1, 1), new Object[] {
+				" Z ",
+				"XYX",
+				" X ",
+				'X',
+				"gemSalt",
+				'Y',
+				new ItemStack(MainInit.chalLamp, 1, 2),
+				'Z',
+				"ingotIron" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chandelierGypsum, 1, 2), new Object[] {
+				" Z ",
+				"XYX",
+				" X ",
+				'X',
+				"gemChalcedony",
+				'Y',
+				new ItemStack(MainInit.chalLamp, 1, 2),
+				'Z',
+				"ingotSteel" });
+
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.tableMarble, 1, 0), new Object[] {
 				"XXX",
 				" X ",
@@ -879,6 +901,24 @@ public class LoadingBuildingRecipe {
 				"itemCottonCloth",
 				'Y',
 				"stickWood" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chain, 1, 0), new Object[] {
+				"X",
+				"Y",
+				"Y",
+				'X',
+				"string",
+				'Y',
+				"ingotCopper" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chain, 1, 1), new Object[] {
+				"X",
+				"Y",
+				"Y",
+				'X',
+				"string",
+				'Y',
+				"ingotSteel" });
 
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.flowerPot, 1, 0), new Object[] {
 				" X ",

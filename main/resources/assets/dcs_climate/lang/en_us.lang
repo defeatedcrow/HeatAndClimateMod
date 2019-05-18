@@ -1029,6 +1029,8 @@ tile.dcs_device_biomeglass_2.name=Biome Cube (Desert)
 tile.dcs_device_biomeglass_3.name=Biome Cube (Ice)
 tile.dcs_time_cage_0.name=Butterfly of Time Flow
 tile.dcs_build_chandelier_0.name=Gypsum Chandelier
+tile.dcs_build_chandelier_1.name=Rock Salt Chandelier
+tile.dcs_build_chandelier_2.name=Chalcedony Chandelier
 tile.dcs_device_realtimeclock_0.name=Real Time Clock
 tile.dcs_device_realtimeclock_l_0.name=Real Time Big Clock
 tile.dcs_device_mcclock_l_0.name=Big Clock
@@ -1051,6 +1053,8 @@ tile.dcs_build_linoleum_3.name=Brown Linoleum
 tile.dcs_build_linoleum_2.name=Green Linoleum
 tile.dcs_build_linoleum_1.name=Red Linoleum
 tile.dcs_build_linoleum_0.name=Black Linoleum
+tile.dcs_build_chain_copper.name=Copper Chain
+tile.dcs_build_chain_steel.name=Steel Chain
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber

@@ -49,7 +49,7 @@ public class ModelOnigiri extends DCFoodModelBase {
 
 	@Override
 	public void render(float scale, FoodEntityBase entity) {
-		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale);
+		render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, scale * 0.75F);
 	}
 
 	@Override

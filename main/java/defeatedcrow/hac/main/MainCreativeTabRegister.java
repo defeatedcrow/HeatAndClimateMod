@@ -107,7 +107,7 @@ public class MainCreativeTabRegister {
 			MainInit.syntheticBlock.setCreativeTab(ClimateMain.build);
 			MainInit.linoleum.setCreativeTab(ClimateMain.build);
 			MainInit.awning.setCreativeTab(ClimateMain.build);
-			MainInit.achievementShield.setCreativeTab(ClimateMain.build);
+			MainInit.chain.setCreativeTab(ClimateMain.build);
 
 			// furniture
 			MainInit.tableMarble.setCreativeTab(ClimateMain.build);

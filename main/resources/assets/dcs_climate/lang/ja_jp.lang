@@ -1009,6 +1009,8 @@ tile.dcs_device_mcclock_l_0.name=大時計の針
 item.dcs_door_marble_item.name=大理石のドア
 item.dcs_door_steel_item.name=鋼鉄のドア
 tile.dcs_build_chandelier_0.name=石膏のシャンデリア
+tile.dcs_build_chandelier_1.name=岩塩のシャンデリア
+tile.dcs_build_chandelier_2.name=玉髄のシャンデリア
 tile.dcs_build_curtain_0.name=カーテン
 tile.dcs_build_linoleum_15.name=白のリノリウム
 tile.dcs_build_linoleum_14.name=オレンジのリノリウム
@@ -1026,6 +1028,8 @@ tile.dcs_build_linoleum_3.name=茶色のリノリウム
 tile.dcs_build_linoleum_2.name=緑のリノリウム
 tile.dcs_build_linoleum_1.name=赤のリノリウム
 tile.dcs_build_linoleum_0.name=黒のリノリウム
+tile.dcs_build_chain_copper.name=胴の鎖
+tile.dcs_build_chain_steel.name=鋼の鎖
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪

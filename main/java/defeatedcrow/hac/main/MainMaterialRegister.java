@@ -18,6 +18,7 @@ import defeatedcrow.hac.main.block.FuelItemBlock;
 import defeatedcrow.hac.main.block.build.BlockAwning;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockCarbideLamp;
+import defeatedcrow.hac.main.block.build.BlockChain;
 import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockChandelier;
 import defeatedcrow.hac.main.block.build.BlockClayBricks;
@@ -553,6 +554,11 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.awning), "dcs_climate", "dcs_build_awning", "build", 3, false);
 
+			MainInit.chain = new BlockChain(Material.CLAY, "dcs_build_chain").setUnlocalizedName("dcs_build_chain");
+			DCMaterialReg.registerBlock(MainInit.chain, ClimateCore.PACKAGE_BASE + "_build_chain", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.chain), "dcs_climate", "dcs_build_chain", "build", 1, true);
+
 			MainInit.tableMarble = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_marble", false);
 			DCMaterialReg
 					.registerBlock(MainInit.tableMarble, ClimateCore.PACKAGE_BASE + "_table_marble", ClimateMain.MOD_ID);
@@ -790,7 +796,7 @@ public class MainMaterialRegister {
 			DCMaterialReg
 					.registerBlock(MainInit.chandelierGypsum, ClimateCore.PACKAGE_BASE + "_build_chandelier", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.chandelierGypsum), "dcs_climate", "dcs_build_chandelier", "build", 0, false);
+					.getItemFromBlock(MainInit.chandelierGypsum), "dcs_climate", "dcs_build_chandelier", "build", 2, true);
 
 			MainInit.doorMarble = new BlockDoorDC(ClimateCore.PACKAGE_BASE + "_door_marble", Material.ROCK);
 			DCMaterialReg

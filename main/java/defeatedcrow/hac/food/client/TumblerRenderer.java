@@ -42,6 +42,11 @@ public class TumblerRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 	}
 
 	@Override
+	protected float getScale() {
+		return 0.5F;
+	}
+
+	@Override
 	protected ResourceLocation getFoodTexture() {
 		return RAW_TEX;
 	}
@@ -58,11 +63,12 @@ public class TumblerRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 		TextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(fluid.getStill().toString());
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		GlStateManager
+				.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		GlStateManager.translate((float) x, (float) y, (float) z);
-		float f2 = 0.625F;
-		float f = 0.156F;
-		float f3 = 0.156F;
+		float f2 = 0.375F;
+		float f = 0.075F;
+		float f3 = 0.075F;
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder vertexbuffer = tessellator.getBuffer();
 		if (isMilk) {

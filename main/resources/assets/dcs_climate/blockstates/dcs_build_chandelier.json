@@ -1,5 +1,20 @@
 {
     "variants": {
-        "normal": { "model": "dcs_climate:build/dcs_build_chandelier" }
+        "type=0": { "model": "dcs_climate:build/dcs_build_chandelier0" },
+        "type=1": { "model": "dcs_climate:build/dcs_build_chandelier1" },
+        "type=2": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=3": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=4": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=5": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=6": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=7": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=8": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=9": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=10": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=11": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=12": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=13": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=14": { "model": "dcs_climate:build/dcs_build_chandelier2" },
+        "type=15": { "model": "dcs_climate:build/dcs_build_chandelier2" }
     }
 }

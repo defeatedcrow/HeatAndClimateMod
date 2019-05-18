@@ -1,0 +1,6 @@
+{
+    "parent":"block/cross",
+    "textures":{
+        "cross":"dcs_climate:blocks/build/chain_copper"
+     }
+}

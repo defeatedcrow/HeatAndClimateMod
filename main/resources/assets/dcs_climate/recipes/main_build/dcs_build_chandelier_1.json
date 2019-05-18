@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " Z ",
+  "XYX",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemSalt"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_build_challamp",
+   "data": 2
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_chandelier",
+  "count": 1,
+  "data": 1
+ }
+}
