@@ -85,7 +85,7 @@ public class ModelChandelierSalt extends DCTileModelBase {
 		chain2.mirror = true;
 		setRotation(chain2, 0F, 0F, 0F);
 		lamp21 = new ModelRenderer(this, 6, 4);
-		lamp21.addBox(7F, 1F, -0.5F, 1, 2, 1);
+		lamp21.addBox(8F, 2F, -0.5F, 1, 2, 1);
 		lamp21.setRotationPoint(0F, 0F, 0F);
 		lamp21.setTextureSize(64, 32);
 		lamp21.mirror = true;
