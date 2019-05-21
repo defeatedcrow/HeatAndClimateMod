@@ -227,16 +227,15 @@ public class MachineInitRegister {
 		registerTierBlock(MachineInit.shaft2_x, ClimateCore.PACKAGE_BASE + "_device_shaft_x_sus", 3);
 
 		MachineInit.gearbox2 = new BlockGearBox_SUS(ClimateCore.PACKAGE_BASE + "_device_gearbox_sus");
-		registerTierBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_BASE + "_device_gearbox_sus", 2);
+		registerTierBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_BASE + "_device_gearbox_sus", 3);
 
 		MachineInit.fuelCont = new BlockFuelCont(ClimateCore.PACKAGE_BASE + "_cont_fuel");
 		MainMaterialRegister
 				.registerBlock(MachineInit.fuelCont, ClimateCore.PACKAGE_BASE + "_cont_fuel", ClimateMain.MOD_ID, new int[] {
-						54000,
-						128000,
-						0,
-						0
-		});
+					54000,
+					128000,
+					0,
+					0 });
 		ClimateMain.proxy.addSidedBlock(MachineInit.fuelCont, "cont_fuel", 3);
 
 		MachineInit.boilerTurbine = new BlockBoilerTurbine(ClimateCore.PACKAGE_BASE + "_device_boiler_turbine");

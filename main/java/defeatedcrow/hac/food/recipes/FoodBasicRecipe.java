@@ -536,7 +536,7 @@ public class FoodBasicRecipe {
 			"bread",
 			"foodSausage",
 			"egg",
-			"cropMushroom",
+			"listAllmushroom",
 			"cropTomato",
 			new ItemStack(FoodInit.salad, 1, 6), });
 
@@ -726,6 +726,9 @@ public class FoodBasicRecipe {
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.saplings2, 1, 1), new Object[] {
 			new ItemStack(FoodInit.crops, 1, 17),
 			new ItemStack(Blocks.SAPLING, 1, 0) });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 4, 18), new Object[] {
+			new ItemStack(MainInit.builds, 1, 11) });
 
 		// seeds another recipes
 		if (ModuleConfig.agri) {

@@ -170,7 +170,7 @@ public class MachineDeviceRecipes {
 					Blocks.NETHER_BRICK_STAIRS, 1, 0));
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.NETHERBRICK, 4, 0), null, 0F, new ItemStack(
 					Blocks.NETHER_BRICK_FENCE, 1, 0));
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.END_STONE, 4, 0), null, 0F, new ItemStack(
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.END_STONE, 1, 0), null, 0F, new ItemStack(
 					Blocks.END_BRICKS, 1, 0));
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.STRING, 4, 0), null, 0F, new ItemStack(Blocks.WOOL, 1,
 					32767));
@@ -205,7 +205,7 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 4, 6), 1, new ItemStack(
 					MainInit.cropBasket, 1, 11));
 			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 4, 10), 4, "bunchVine");
-			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 4, 10), 1, new ItemStack(
+			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 10), 1, new ItemStack(
 					MainInit.builds, 1, 11));
 		}
 	}

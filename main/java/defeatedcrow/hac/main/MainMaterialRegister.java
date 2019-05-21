@@ -1053,7 +1053,7 @@ public class MainMaterialRegister {
 
 		// clothes
 		MainInit.linenUnder = new ItemArmorDC(DCArmorMaterial.DC_LINEN, DCMaterialEnum.LINEN, EntityEquipmentSlot.LEGS,
-				"leggins_linen").setCreativeTab(ClimateMain.cloth)
+				"leggins_linen").setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK).setCreativeTab(ClimateMain.cloth)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_linen");
 		DCMaterialReg
 				.registerItem(MainInit.linenUnder, ClimateCore.PACKAGE_BASE + "_leggins_linen", ClimateMain.MOD_ID);
@@ -1095,7 +1095,7 @@ public class MainMaterialRegister {
 
 		// cotton
 		MainInit.clothUnder = new ItemArmorDC(DCArmorMaterial.DC_CLOTH, DCMaterialEnum.CLOTH, EntityEquipmentSlot.LEGS,
-				"leggins_cloth").setCreativeTab(ClimateMain.cloth)
+				"leggins_cloth").setColorList(EnumDyeColor.BLUE, EnumDyeColor.GREEN).setCreativeTab(ClimateMain.cloth)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_cloth");
 		DCMaterialReg
 				.registerItem(MainInit.clothUnder, ClimateCore.PACKAGE_BASE + "_leggins_cloth", ClimateMain.MOD_ID);

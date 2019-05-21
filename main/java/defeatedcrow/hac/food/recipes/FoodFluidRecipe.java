@@ -18,6 +18,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class FoodFluidRecipe {
 
+	public static boolean addEthanolRecipe = true;
+
 	public static void load() {
 		loadFluidRecipes();
 		loadCookingRecipes();
@@ -90,33 +92,35 @@ public class FoodFluidRecipe {
 						200), new Object[] { new ItemStack(Items.LEATHER, 1, 0) });
 
 		// 醸造
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
-				300), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
-						1000), new Object[] { "dustStarch", "foodMalt" });
+		if (addEthanolRecipe) {
+			regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
+					300), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] { "dustStarch", "foodMalt" });
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
-				200), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
-						1000), new Object[] { "dustSugar", "foodMalt" });
+			regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
+					200), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] { "dustSugar", "foodMalt" });
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
-				150), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
-						1000), new Object[] { "cropPotato", "foodMalt" });
+			regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
+					150), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] { "cropPotato", "foodMalt" });
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
-				100), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
-						1000), new Object[] { "cropWheat", "foodMalt" });
+			regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
+					100), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] { "cropWheat", "foodMalt" });
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
-				150), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
-						1000), new Object[] { "foodRice", "foodMalt" });
+			regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
+					150), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] { "foodRice", "foodMalt" });
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
-				100), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
-						1000), new Object[] { "dropMolasses", "foodMalt" });
+			regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
+					100), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] { "dropMolasses", "foodMalt" });
 
-		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
-				200), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
-						1000), new Object[] { "cropDate", "foodMalt" });
+			regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(MainInit.ethanol,
+					200), DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(FluidRegistry.WATER,
+							1000), new Object[] { "cropDate", "foodMalt" });
+		}
 
 		// 麦芽
 		regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1,

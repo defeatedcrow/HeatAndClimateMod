@@ -1028,7 +1028,7 @@ tile.dcs_build_linoleum_3.name=茶色のリノリウム
 tile.dcs_build_linoleum_2.name=緑のリノリウム
 tile.dcs_build_linoleum_1.name=赤のリノリウム
 tile.dcs_build_linoleum_0.name=黒のリノリウム
-tile.dcs_build_chain_copper.name=胴の鎖
+tile.dcs_build_chain_copper.name=銅の鎖
 tile.dcs_build_chain_steel.name=鋼の鎖
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー

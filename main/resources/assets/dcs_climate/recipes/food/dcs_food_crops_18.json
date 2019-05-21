@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_build_build",
+   "data": 11
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_crops",
+  "count": 4,
+  "data": 18
+ }
+}

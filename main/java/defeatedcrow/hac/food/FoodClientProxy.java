@@ -213,7 +213,7 @@ public class FoodClientProxy {
 		ModelBakery.registerItemVariants(Item.getItemFromBlock(FoodInit.cropSeaweed), new ModelResourceLocation(
 				"dcs_climate:dcs_crop_seaweed"));
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
 			ModelLoader.setCustomModelResourceLocation(Item
 					.getItemFromBlock(FoodInit.cropWisteria), i, new ModelResourceLocation(
 							"dcs_climate:crop/dcs_crop_wisteria" + i, "inventory"));

@@ -1,8 +1,8 @@
 {
   "display": {
     "icon": {
-      "item": "dcs_climate:dcs_ore_metalblock",
-      "data": 4
+      "item": "dcs_climate:dcs_ore_metal_alloy",
+      "data": 0
     },
     "title": {
       "translate": "advancements.dcs_climate.metal_blass2.title"
@@ -18,8 +18,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 4
+                        "item": "dcs_climate:dcs_ore_metal_alloy",
+                        "data": 0
                     }
                 ]
             }

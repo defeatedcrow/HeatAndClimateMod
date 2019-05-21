@@ -55,7 +55,7 @@ public class BlockWindmill extends BlockTorqueBase {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(DCName.AIR + ": " + TextFormatting.AQUA.toString() + "FLOW+");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("1 ~ 8.0F torque/s");
+			tooltip.add("1 ~ 4.0F torque/s");
 			tooltip.add(I18n.format("dcs.tip.windmill"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");

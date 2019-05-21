@@ -73,7 +73,7 @@ public class BlockWatermill extends BlockTorqueBase {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(I18n.format("dcs.tip.watermill"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add("32.0F torque/s");
+			tooltip.add("16.0F torque/s");
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

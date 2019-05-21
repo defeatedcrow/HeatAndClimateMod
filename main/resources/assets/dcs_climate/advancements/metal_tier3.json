@@ -1,8 +1,8 @@
 {
   "display": {
     "icon": {
-      "item": "dcs_climate:dcs_ore_metalblock",
-      "data": 10
+      "item": "dcs_climate:dcs_ore_metal_alloy",
+      "data": 5
     },
     "title": {
       "translate": "advancements.dcs_climate.metal_tier3.title"
@@ -19,8 +19,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 10
+                        "item": "dcs_climate:dcs_ore_metal_alloy",
+                        "data": 5
                     }
                 ]
             }
@@ -30,8 +30,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 11
+                        "item": "dcs_climate:dcs_ore_metal_alloy",
+                        "data": 7
                     }
                 ]
             }
@@ -41,8 +41,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 14
+                        "item": "dcs_climate:dcs_ore_metal_alloy",
+                        "data": 8
                     }
                 ]
             }
@@ -52,8 +52,19 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 7
+                        "item": "dcs_climate:dcs_ore_metal_alloy",
+                        "data": 6
+                    }
+                ]
+            }
+        },
+        "toolsteel": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_ore_metal_alloy",
+                        "data": 4
                     }
                 ]
             }
@@ -64,7 +75,8 @@
             "sus",
             "titanium",
             "bscco",
-            "magnet"
+            "magnet",
+            "toolsteel"
         ]
     ]
 }

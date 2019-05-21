@@ -1,8 +1,8 @@
 {
   "display": {
     "icon": {
-      "item": "dcs_climate:dcs_ore_metalblock",
-      "data": 5
+      "item": "dcs_climate:dcs_ore_metal_alloy",
+      "data": 2
     },
     "title": {
       "translate": "advancements.dcs_climate.metal_tier2.title"
@@ -18,8 +18,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 3
+                        "item": "dcs_climate:dcs_ore_metal_new",
+                        "data": 6
                     }
                 ]
             }
@@ -29,8 +29,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 5
+                        "item": "dcs_climate:dcs_ore_metal_alloy",
+                        "data": 2
                     }
                 ]
             }
@@ -40,8 +40,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 6
+                        "item": "dcs_climate:dcs_ore_metal_alloy",
+                        "data": 3
                     }
                 ]
             }
@@ -51,8 +51,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 12
+                        "item": "dcs_climate:dcs_ore_metal_new",
+                        "data": 4
                     }
                 ]
             }
@@ -62,8 +62,8 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_ore_metalblock",
-                        "data": 2
+                        "item": "dcs_climate:dcs_ore_metal_new",
+                        "data": 5
                     }
                 ]
             }

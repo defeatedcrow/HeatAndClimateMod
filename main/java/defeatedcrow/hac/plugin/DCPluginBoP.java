@@ -45,9 +45,9 @@ public class DCPluginBoP {
 		OreDictionary.registerOre("cropKelp", new ItemStack(BOPBlocks.seaweed, 1, 0));
 		OreDictionary.registerOre("listAllberry", new ItemStack(BOPItems.berries, 1, 0));
 
-		OreDictionary.registerOre("cropMushroom", new ItemStack(BOPBlocks.mushroom, 1, 1));
-		OreDictionary.registerOre("cropMushroom", new ItemStack(BOPBlocks.mushroom, 1, 2));
-		OreDictionary.registerOre("cropMushroom", new ItemStack(BOPBlocks.mushroom, 1, 4));
+		OreDictionary.registerOre("listAllmushroom", new ItemStack(BOPBlocks.mushroom, 1, 1));
+		OreDictionary.registerOre("listAllmushroom", new ItemStack(BOPBlocks.mushroom, 1, 2));
+		OreDictionary.registerOre("listAllmushroom", new ItemStack(BOPBlocks.mushroom, 1, 4));
 
 		OreDictionary.registerOre("vineLeaves", new ItemStack(BOPBlocks.flower_vine, 1, 0));
 		OreDictionary.registerOre("vineLeaves", new ItemStack(BOPBlocks.ivy, 1, 0));

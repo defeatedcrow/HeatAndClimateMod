@@ -275,6 +275,8 @@ public class OreDicRegister {
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 3));
 		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
 
+		OreDictionary.registerOre("egg", new ItemStack(Items.EGG));
+
 		// deprecated
 		if (!ModuleConfig.delete_old) {
 			OreDictionary.registerOre("oreGypsum", new ItemStack(MainInit.ores, 1, 0));
