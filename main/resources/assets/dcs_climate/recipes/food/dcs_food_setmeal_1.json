@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "foodRicebowl"
+   "ore": "foodBowlofrice"
   },
   {
    "item": "dcs_climate:dcs_food_bowl_stew",

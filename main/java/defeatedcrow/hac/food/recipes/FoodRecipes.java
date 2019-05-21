@@ -206,7 +206,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodSiroanko", new ItemStack(FoodInit.meat, 1, 8));
 		OreDictionary.registerOre("foodPastry", new ItemStack(FoodInit.pastry, 1, 0));
 		OreDictionary.registerOre("foodDough", new ItemStack(FoodInit.bread, 1, 0));
-		OreDictionary.registerOre("foodRicebowl", new ItemStack(FoodInit.ricebowl, 1, 0));
+		OreDictionary.registerOre("foodBowlofrice", new ItemStack(FoodInit.ricebowl, 1, 0));
 		OreDictionary.registerOre("foodRicecake", new ItemStack(FoodInit.mochi, 1, 1));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 1));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 3));

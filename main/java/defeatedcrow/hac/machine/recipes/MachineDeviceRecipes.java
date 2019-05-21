@@ -142,7 +142,7 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 14), "ingotMagnanese");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeSapling");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "blockTallGrass");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "blockTallgrass");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeLeaves");
 
 			// 以下バニラ
@@ -191,7 +191,7 @@ public class MachineDeviceRecipes {
 		// spinning machine
 		if (ModuleConfig.r_spinning) {
 			RecipeAPI.registerSpinningRecipes.addRecipe(new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 4,
-					"blockTallGrass"));
+					"blockTallgrass"));
 			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 1), 4, new ItemStack(
 					Items.STRING));
 			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 1), 4, "cropCotton");

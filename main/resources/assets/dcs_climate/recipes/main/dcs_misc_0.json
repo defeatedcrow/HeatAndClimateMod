@@ -8,7 +8,7 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "blockTallGrass"
+   "ore": "blockTallgrass"
   },
   "Y": {
    "type": "forge:ore_dict",

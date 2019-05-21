@@ -77,7 +77,7 @@ public class MachineCrusherRecipe {
 				3), 0.5F, sus, "treeSapling");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(MainInit.miscDust, 1,
 				3), 0.5F, sus, "treeLeaves");
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), sus, "blockTallGrass");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), sus, "blockTallgrass");
 
 		// new ores
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreItem, 3, 0), sus, "oreRed");

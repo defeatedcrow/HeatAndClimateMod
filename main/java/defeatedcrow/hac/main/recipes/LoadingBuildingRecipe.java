@@ -309,7 +309,7 @@ public class LoadingBuildingRecipe {
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 6), new Object[] {
 			"dustLime",
-			"blockTallGrass",
+			"blockTallgrass",
 			"cropSeaweed" });
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 6), new Object[] {

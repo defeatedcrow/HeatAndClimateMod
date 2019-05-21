@@ -260,11 +260,11 @@ public class OreDicRegister {
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 3));
 
 		/* バニラ補足 */
-		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 0));
-		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 1));
-		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.TALLGRASS, 1, 2));
-		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 2));
-		OreDictionary.registerOre("blockTallGrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 3));
+		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 0));
+		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 1));
+		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 2));
+		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 2));
+		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 3));
 
 		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.WHEAT_SEEDS, 1, 0));
 		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.MELON_SEEDS, 1, 0));

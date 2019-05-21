@@ -20,7 +20,7 @@ public class LoadingToolRecipe {
 			"XYX",
 			"XXX",
 			'X',
-			"blockTallGrass",
+			"blockTallgrass",
 			'Y',
 			"stickWood" });
 
@@ -316,7 +316,7 @@ public class LoadingToolRecipe {
 
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
 			"stickWood",
-			"blockTallGrass" });
+			"blockTallgrass" });
 
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
 			"stickWood",
