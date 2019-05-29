@@ -131,7 +131,8 @@ public class BlockSaplingDC2 extends ClimateCropBase implements ITexturePath, IP
 	public boolean isSuitablePlace(World world, BlockPos pos, IBlockState targetState) {
 		if (targetState == null)
 			return false;
-		return targetState.getMaterial() == Material.GRASS || targetState.getMaterial() == Material.GROUND;
+		return targetState.getMaterial() == Material.GRASS || targetState
+				.getMaterial() == Material.GROUND || targetState.getMaterial() == Material.SAND;
 	}
 
 	@Override
@@ -147,16 +148,20 @@ public class BlockSaplingDC2 extends ClimateCropBase implements ITexturePath, IP
 				return false;
 
 			int meta = thisState.getValue(DCState.STAGE4);
-			IBlockState log = Blocks.LOG2.getDefaultState().withProperty(BlockNewLog.VARIANT, BlockPlanks.EnumType.DARK_OAK);
+			IBlockState log = Blocks.LOG2.getDefaultState()
+					.withProperty(BlockNewLog.VARIANT, BlockPlanks.EnumType.DARK_OAK);
 			WorldGenerator gen = null;
 			if (meta == 0) {
 				// walnut
-				IBlockState leaves = FoodInit.leavesWalnut.getDefaultState().withProperty(DCState.STAGE4, 0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				IBlockState leaves = FoodInit.leavesWalnut.getDefaultState().withProperty(DCState.STAGE4, 0)
+						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
 				gen = new WorldGenDCTree(true, leaves, log, 6);
 			} else if (meta == 1) {
 				// walnut
-				IBlockState leaves = FoodInit.leavesDates.getDefaultState().withProperty(DCState.STAGE4, 0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
-				IBlockState leaves2 = FoodInit.leavesDatesCrop.getDefaultState().withProperty(DCState.STAGE4, 0).withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				IBlockState leaves = FoodInit.leavesDates.getDefaultState().withProperty(DCState.STAGE4, 0)
+						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
+				IBlockState leaves2 = FoodInit.leavesDatesCrop.getDefaultState().withProperty(DCState.STAGE4, 0)
+						.withProperty(BlockLeaves.DECAYABLE, Boolean.valueOf(true));
 				gen = new WorldGenDCPalmTree(true, leaves, leaves2, 6);
 				log = Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.JUNGLE);
 			}

@@ -67,7 +67,7 @@ public class HaCTradeData {
 		TRADE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.chalLamp, 1, 2), 3));
 
 		TRADE2.add(new HaCTradeData(TradeType.BUY, MainUtil.getIngot(3), 5));
-		TRADE2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MagicInit.expGem, 1, 0), 2));
+		TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MagicInit.expGem, 1, 0), 2));
 		TRADE2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.clothes, 1, 2), 1));
 		TRADE2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.metalBlockAlloy, 1, 2), 2));
 		TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.chairMarble, 1, 0), 3));

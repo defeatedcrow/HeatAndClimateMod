@@ -338,6 +338,7 @@ public class MainInit {
 	public static Item metalMaterials;
 
 	public static Fluid milk;
+	public static Block milkBlock;
 
 	public static Item iconItem;
 

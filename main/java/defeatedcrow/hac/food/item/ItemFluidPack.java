@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.capability.DrinkItemCustomizer;
@@ -48,38 +49,36 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemFluidPack extends DCItem {
 
 	private static String[] names = {
-			"empty",
-			"water",
-			"milk",
-			"cream",
-			"oil",
-			"vegi",
-			"lemon",
-			"mazai",
-			"greentea",
-			"tea",
-			"coffee",
-			"stock",
-			"ethanol",
-			"soy_milk"
-	};
+		"empty",
+		"water",
+		"milk",
+		"cream",
+		"oil",
+		"vegi",
+		"lemon",
+		"mazai",
+		"greentea",
+		"tea",
+		"coffee",
+		"stock",
+		"ethanol",
+		"soy_milk" };
 
 	public static final String[] FLUIDS = {
-			"empty",
-			"water",
-			"milk",
-			"dcs.milk_cream",
-			"dcs.seed_oil",
-			"dcs.vegetable_juice",
-			"dcs.lemonade",
-			"dcs.mazai",
-			"dcs.green_tea",
-			"dcs.black_tea",
-			"dcs.black_coffee",
-			"dcs.stock",
-			"dcs.ethanol",
-			"dcs.soy_milk"
-	};
+		"empty",
+		"water",
+		"dcs.raw_milk",
+		"dcs.milk_cream",
+		"dcs.seed_oil",
+		"dcs.vegetable_juice",
+		"dcs.lemonade",
+		"dcs.mazai",
+		"dcs.green_tea",
+		"dcs.black_tea",
+		"dcs.black_coffee",
+		"dcs.stock",
+		"dcs.ethanol",
+		"dcs.soy_milk" };
 
 	public ItemFluidPack() {
 		super();
@@ -193,7 +192,7 @@ public class ItemFluidPack extends DCItem {
 			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid is empty: " + FLUIDS[i]);
 		}
 
-		if (FluidRegistry.getFluid("milk") != null) {
+		if (FluidRegistry.getFluid("dcs.raw_milk") != null) {
 			if (i == 2) {
 				tooltip.add(I18n.format("dcs.tip.correct_from_cow"));
 			}
@@ -220,7 +219,7 @@ public class ItemFluidPack extends DCItem {
 		int meta = 0;
 		if (fluid == FluidRegistry.WATER) {
 			meta = 1;
-		} else if (fluid.getName().equalsIgnoreCase("milk")) {
+		} else if (fluid == MainInit.milk || FluidDictionaryDC.matchFluidName(fluid, "milk")) {
 			meta = 2;
 		} else if (fluid == MainInit.cream) {
 			meta = 3;

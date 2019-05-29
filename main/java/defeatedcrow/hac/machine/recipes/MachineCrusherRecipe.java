@@ -81,7 +81,7 @@ public class MachineCrusherRecipe {
 
 		// new ores
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreItem, 3, 0), sus, "oreRed");
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreItem, 3, 1), sus, "oregreen");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreItem, 3, 1), sus, "oreGreen");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreItem, 3, 2), sus, "oreBlue");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreItem, 3, 3), sus, "oreWhite");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreItem, 3, 4), sus, "oreBlack");
@@ -303,7 +303,7 @@ public class MachineCrusherRecipe {
 				Blocks.NETHER_BRICK_STAIRS, 1, 0));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.NETHERBRICK, 4, 0), null, 0F, ti, new ItemStack(
 				Blocks.NETHER_BRICK_FENCE, 1, 0));
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.END_STONE, 4, 0), null, 0F, ti, new ItemStack(
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.END_STONE, 1, 0), null, 0F, ti, new ItemStack(
 				Blocks.END_BRICKS, 1, 0));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.STRING, 4, 0), null, 0F, ti, new ItemStack(Blocks.WOOL,
 				1, 32767));

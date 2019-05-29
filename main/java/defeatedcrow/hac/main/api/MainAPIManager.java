@@ -9,6 +9,7 @@ public class MainAPIManager {
 	public static IFluidFuelRegister fuelRegister;
 	public static IVeinTableRegister veinRegister;
 	public static IHeatTreatmentRegister heatTreatmentRegister;
+	public static IDCInfoDataRegister infoRegister;
 
 	public static boolean isLoaded = false;
 }

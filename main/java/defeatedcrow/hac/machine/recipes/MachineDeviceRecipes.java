@@ -204,7 +204,7 @@ public class MachineDeviceRecipes {
 					MainInit.silkworm, 1, 2));
 			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 4, 6), 1, new ItemStack(
 					MainInit.cropBasket, 1, 11));
-			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 4, 10), 4, "bunchVine");
+			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 10), 4, "bunchVine");
 			RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 10), 1, new ItemStack(
 					MainInit.builds, 1, 11));
 		}

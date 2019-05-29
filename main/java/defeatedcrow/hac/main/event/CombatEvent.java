@@ -105,8 +105,8 @@ public class CombatEvent {
 			} else if (source.getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase owner = (EntityLivingBase) source.getTrueSource();
 				if (owner != null) {
-					if (!(target instanceof IMob) && DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.pendant, 1,
-							19)) || DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1, 4))) {
+					if (!(target instanceof IMob) && (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.pendant, 1,
+							19)) || DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1, 4)))) {
 						// white pendant
 						event.setCanceled(true);
 					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorBadge, 1, 3))) {

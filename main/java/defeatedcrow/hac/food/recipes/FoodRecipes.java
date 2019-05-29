@@ -197,6 +197,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllheavycream", new ItemStack(FoodInit.dairy, 1, 3));
 		OreDictionary.registerOre("foodViscera", new ItemStack(FoodInit.meat, 1, 0));
 		OreDictionary.registerOre("foodRennet", new ItemStack(FoodInit.meat, 1, 1));
+		OreDictionary.registerOre("foodSquid", new ItemStack(FoodInit.meat, 1, 2));
 		OreDictionary.registerOre("foodCalamariraw", new ItemStack(FoodInit.meat, 1, 2));
 		OreDictionary.registerOre("foodAgar", new ItemStack(FoodInit.meat, 1, 3));
 		OreDictionary.registerOre("foodGelatine", new ItemStack(FoodInit.meat, 1, 4));

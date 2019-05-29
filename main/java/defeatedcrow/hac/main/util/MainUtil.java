@@ -100,34 +100,34 @@ public class MainUtil {
 	public static ItemStack getCrop(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 18)
-			meta = 18;
+		if (meta > 19)
+			meta = 19;
 		return new ItemStack(FoodInit.crops, 1, meta);
 	}
 
 	public static ItemStack getRandomCrop(int i) {
-		int meta = DCUtil.rand.nextInt(19);
+		int meta = DCUtil.rand.nextInt(20);
 		return new ItemStack(FoodInit.crops, i, meta);
 	}
 
 	public static ItemStack getSeed(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 14)
-			meta = 14;
+		if (meta > 15)
+			meta = 15;
 		return new ItemStack(FoodInit.seeds, 1, meta);
 	}
 
 	public static ItemStack getRandomSeed(int i) {
-		int meta = DCUtil.rand.nextInt(15);
+		int meta = DCUtil.rand.nextInt(16);
 		return new ItemStack(FoodInit.seeds, i, meta);
 	}
 
 	public static ItemStack getCloth(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 11)
-			meta = 11;
+		if (meta > 13)
+			meta = 13;
 		return new ItemStack(MainInit.clothes, 1, meta);
 	}
 

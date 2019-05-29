@@ -22,6 +22,10 @@ public class DCPluginFluid {
 
 	public static void load() {
 
+		// milk
+		Fluid f0 = FluidRegistry.getFluid("milk");
+		FluidDictionaryDC.registerFluidDic(f0, "milk");
+
 		// ic2
 		Fluid f1 = FluidRegistry.getFluid("ic2hydrogen");
 		registerPotion(f1, MobEffects.HASTE);

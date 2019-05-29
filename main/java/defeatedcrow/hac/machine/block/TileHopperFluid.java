@@ -36,8 +36,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -276,13 +274,7 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 						}
 					}
 				} else if (e instanceof EntityCow) {
-					FluidStack target = null;
-					Fluid milk = FluidRegistry.getFluid("milk");
-					if (milk != null) {
-						target = new FluidStack(milk, 50);
-					} else {
-						target = new FluidStack(MainInit.cream, 10);
-					}
+					FluidStack target = new FluidStack(MainInit.milk, 50);
 
 					int fill = inputT.fill(target, false);
 					if (fill > 0) {
@@ -656,22 +648,15 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 	/* === SidedInventory === */
 
 	protected int[] slotsTop() {
-		return new int[] {
-				0
-		};
+		return new int[] { 0 };
 	};
 
 	protected int[] slotsBottom() {
-		return new int[] {
-				1
-		};
+		return new int[] { 1 };
 	};
 
 	protected int[] slotsSides() {
-		return new int[] {
-				0,
-				1
-		};
+		return new int[] { 0, 1 };
 	};
 
 	@Override

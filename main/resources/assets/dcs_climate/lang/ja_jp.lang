@@ -1289,6 +1289,8 @@ fluid.dcs.mazai=魔剤
 tile.dcs_fluidblock_mazai_0.name=魔剤
 fluid.dcs.soy_milk=豆乳
 tile.dcs_fluidblock_soy_milk_0.name=豆乳
+fluid.dcs.raw_milk=生乳
+tile.dcs_fluidblock_raw_milk_0.name=生乳
 
 ## tip
 dcs.tip.heat=HeatTier
@@ -1414,6 +1416,7 @@ dcs_climate.tip.resistance=気候耐性
 dcs_climate.fuel=液体燃料
 dcs_climate.treatment=金属熱処理
 dcs_climate.pressmold=プレス金型
+dcs_climate.info=説明書
 
 ## magic
 dcs.tip.allcharm=プレイヤーインベントリの最上段に置くと効果を発揮します。
@@ -1625,6 +1628,78 @@ advancements.dcs_climate.magic_biomeglass.description=バイオームグラス�
 enchantment.dcs_climate.dcs.enchantment.venom.desc=矢が当たった対象にウィザーポーションを与える
 enchantment.dcs_climate.dcs.enchantment.robber.desc=対象が持っているアイテムをドロップさせる
 
+
+## info description
+dcs.info.title.stone_r=赤の鉱物
+dcs.info.desc.stone_r=赤の鉱石は山岳、砂漠、ネザーに生成されます。
+dcs.info.title.stone_g=緑の鉱物
+dcs.info.desc.stone_g=緑の鉱石は森林の地下に生成されます。
+dcs.info.title.stone_u=青の鉱物
+dcs.info.desc.stone_u=青の鉱石は海、沼、寒冷地の地下に生成されます。
+dcs.info.title.stone_w=白の鉱物
+dcs.info.desc.stone_w=白の鉱石は平原、サバンナの地下に生成されます。
+dcs.info.title.stone_b=黒の鉱物
+dcs.info.desc.stone_b=黒の鉱石は地底、ネザーに生成されます。
+dcs.info.title.metal_dust=金属粉のブロック
+dcs.info.desc.metal_dust=ワールドに設置し、必要な温度と通気条件を満たすと精錬できます。(気候精錬)
+dcs.info.title.scythe=大鎌
+dcs.info.desc.scythe=範囲内の草を刈ったり、成長した作物だけを破壊します。右クリックでHaC作物を範囲収穫します。
+dcs.info.title.spade_earth=大地のシャベル
+dcs.info.desc.spade_earth=ブロック破壊時に周囲を整地します。また、右クリックで範囲内を土で埋め立てます。
+dcs.info.title.rake_earth=大地の熊手
+dcs.info.desc.rake_earth=3x3の範囲の土を道ブロックに変えます。
+dcs.info.title.chamber=燃焼チャンバー
+dcs.info.desc.chamber=燃焼チャンバーは設置環境のAIRFLOWによって温度が変わる熱源ブロックです。AIRFLOWがWINDのときに温度がSMELTINGまで上昇します。
+dcs.info.title.milk=生乳を集める
+dcs.info.desc.milk=ウシの近くに液体ホッパーを設置すると、液体ホッパーに生乳が貯まっていきます。
+dcs.info.title.silk=蚕の飼育
+dcs.info.desc.silk=飼育箱に蚕卵紙を入れると幼虫が誕生します。幼虫は桑の葉ブロックを食べながら成長して繭になります。
+dcs.info.title.silkegg=蚕卵紙
+dcs.info.desc.silkegg=蚕卵紙は村人の交易商人から購入できます。
+dcs.info.title.wrench=真鍮のスパナ
+dcs.info.desc.wrench=スパナはトルクマシンの向きを変えたり、一部のマシンのペアリングに使用されます。
+dcs.info.title.shaft=トルクマシンの入出力
+dcs.info.desc.shaft=赤い面が出力、青い面が入力です。赤と青の面を接触させると、トルクエネルギーが伝わります。
+dcs.info.title.conveyor=ベルトコンベヤ
+dcs.info.desc.conveyor=接続したインベントリからアイテムを輸送します。また、流れているアイテムを気候精錬します。
+dcs.info.title.exchanger=熱交換器
+dcs.info.desc.exchanger=真下にある熱源の温度を拡散します。入力されたトルクエネルギーに応じて、赤面の側の温度を上げ、青面の側の温度を下げます。
+dcs.info.title.scooter=スクーター
+dcs.info.desc.scooter=スニーク右クリックでインベントリを開き、燃料スロットに液体燃料を入れると速度が上がります。
+dcs.info.title.hover=超電導ホバークラフト
+dcs.info.desc.hover=スニーク右クリックでインベントリを開き、燃料スロットに液体窒素を入れると動作します。地形を無視して移動できます。
+dcs.info.title.coating=めっき剤
+dcs.info.desc.coating=金床でツールにエンチャントを付与します。既にエンチャントされている場合はレベルが上がります。同じアイテムに3回まで使用できます。
+dcs.info.title.cube_blue=青のキューブの活性化
+dcs.info.desc.cube_blue=青のキューブは、深い水の底に置かれていると活性化します。
+dcs.info.title.cube_green=緑のキューブの活性化
+dcs.info.desc.cube_green=緑のキューブは、周囲を花に囲まれた場所で活性化します。
+dcs.info.title.cube_red=赤のキューブの活性化
+dcs.info.desc.cube_red=赤のキューブは、UHT以上の温度の場所で活性化します。
+dcs.info.title.cube_black=黒のキューブの活性化
+dcs.info.desc.cube_black=黒のキューブは、暗い地低で活性化します。
+dcs.info.title.cube_white=白のキューブの活性化
+dcs.info.desc.cube_white=白のキューブは、雲より高い上空の空の下で活性化します。
+dcs.info.title.viscera=動物の内臓
+dcs.info.desc.viscera=動物をオーバーキルした時に、内臓をドロップします。
+dcs.info.title.squid=イカ
+dcs.info.desc.squid=イカを倒すか、釣りによって入手できます。
+dcs.info.title.food=Entity食べ物
+dcs.info.desc.food=生の状態のEntity食べ物は、高温の場所に置くと調理できます。
+dcs.info.title.cup=カップ
+dcs.info.desc.cup=カップは入れた液体を飲むことができます。砂糖やミルクとクラフトしてフレーバーを加えることもできます。
+dcs.info.title.asphalt=アスファルトブロック
+dcs.info.desc.asphalt=アスファルトブロックは、上にモンスターがスポーンしません。
+dcs.info.title.ladder=金属製のはしご
+dcs.info.desc.ladder=金属製のはしごは、壁がない場所にも設置することが出来ます。
+dcs.info.title.real_clock=リアルタイム時計
+dcs.info.desc.real_clock=現実の現在時刻が表示される時計です。
+dcs.info.title.curtain=カーテン
+dcs.info.desc.curtain=右クリックで開閉できます。開では光を通し、閉では遮光します。スニーク右クリックで表裏を切り替えます。
+dcs.info.title.flower_pot=花瓶
+dcs.info.desc.flower_pot=植物や苗木などを飾ることが出来るEntityです。
+dcs.info.title.cushion=モブをダメにするクッション
+dcs.info.desc.cushion=触れたモブを強制的に座らせます。
 
 ## deprecated items
 tile.dcs_metal_copper.name=銅ブロック

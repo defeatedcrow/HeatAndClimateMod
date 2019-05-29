@@ -14,50 +14,155 @@ public class OredicConfig {
 	private final String BR = System.getProperty("line.separator");
 	String[][] test = { {} };
 
-	public static String[][] ores = new String[][] { { "oreRed" }, { "oreGreen" }, { "oreBlue" }, { "oreWhite" }, {
-		"oreBlack" }, { "oreLargeRed" }, { "oreLargeGreen" }, { "oreLargeBlue" }, { "oreLargeWhite" }, {
-			"oreLargeBlack" }, { "oreRed" }, { "oreLargeRed" }, { "oreBlack" }, { "oreLargeBlack" }, { "oreSulfur" } };
+	public static String[][] ores = new String[][] {
+		{ "oreRed" },
+		{ "oreGreen" },
+		{ "oreBlue" },
+		{ "oreWhite" },
+		{ "oreBlack" },
+		{ "oreLargeRed" },
+		{ "oreLargeGreen" },
+		{ "oreLargeBlue" },
+		{ "oreLargeWhite" },
+		{ "oreLargeBlack" },
+		{ "oreRed" },
+		{ "oreLargeRed" },
+		{ "oreBlack" },
+		{ "oreLargeBlack" },
+		{ "oreSulfur" } };
 
-	public static String[][] layers = new String[][] { { "oreGypsum" }, { "oreLime" }, { "oreApatite" }, { "oreNiter" },
-		{ "oreSulfur" }, { "oreSalt" }, { "oreSerpentine" } };
+	public static String[][] layers = new String[][] {
+		{ "oreGypsum" },
+		{ "oreLime" },
+		{ "oreApatite" },
+		{ "oreNiter" },
+		{ "oreSulfur" },
+		{ "oreSalt" },
+		{ "oreSerpentine" } };
 
-	public static String[][] items = new String[][] { { "oreCopper" }, { "oreTin" }, { "oreZinc" }, { "oreIron" }, {
-		"oreMagnetite" }, { "oreAluminum" }, { "oreNickel" }, { "oreLead" }, { "oreGold" }, { "oreSilver" }, {
-			"oreManganese" }, { "oreChrome", "oreChromium" }, { "oreBismuth" }, { "oreTitanium" }, {
-				"oreMolybdenum" } };
+	public static String[][] items = new String[][] {
+		{ "oreCopper" },
+		{ "oreTin" },
+		{ "oreZinc" },
+		{ "oreIron" },
+		{ "oreMagnetite" },
+		{ "oreAluminum" },
+		{ "oreNickel" },
+		{ "oreLead" },
+		{ "oreGold" },
+		{ "oreSilver" },
+		{ "oreManganese" },
+		{ "oreChrome", "oreChromium" },
+		{ "oreBismuth" },
+		{ "oreTitanium" },
+		{ "oreMolybdenum" } };
 
-	public static String[][] ingots = new String[][] { { "ingotCopper" }, { "ingotZinc" }, { "ingotNickel" }, {
-		"ingotSilver" }, { "ingotBrass" }, { "ingotSteel" }, { "ingotNickelsilver" }, { "ingotMagnet" }, { "ingotTin" },
-		{ "ingotBronze" }, { "ingotSUS", "ingotStainlessSteel" }, { "ingotTitaniumAlloy" }, { "ingotAluminium",
-			"ingotAluminum" }, { "ingotBismuth" }, { "ingotBSCCO" }, { "ingotLead" }, { "ingotManganese" }, {
-				"ingotToolSteel" } };
+	public static String[][] ingots = new String[][] {
+		{ "ingotCopper" },
+		{ "ingotZinc" },
+		{ "ingotNickel" },
+		{ "ingotSilver" },
+		{ "ingotBrass" },
+		{ "ingotSteel" },
+		{ "ingotNickelsilver" },
+		{ "ingotMagnet" },
+		{ "ingotTin" },
+		{ "ingotBronze" },
+		{ "ingotSUS", "ingotStainlessSteel" },
+		{ "ingotTitaniumAlloy" },
+		{ "ingotAluminium", "ingotAluminum" },
+		{ "ingotBismuth" },
+		{ "ingotBSCCO" },
+		{ "ingotLead" },
+		{ "ingotManganese" },
+		{ "ingotToolSteel" } };
 
-	public static String[][] dusts = new String[][] { { "dustCopper" }, { "dustZinc" }, { "dustNickel" }, {
-		"dustSilver" }, { "dustGold" }, { "dustIron" }, { "dustSteel" }, { "dustMagnetite" }, { "dustTin" }, {
-			"dustChromium", "dyeGreen" }, { "dustTitanium" }, { "dustAluminium", "dustAluminum" }, { "dustBismuth" }, {
-				"dustLead" }, { "dustManganese" }, { "dustToolSteel" } };
+	public static String[][] dusts = new String[][] {
+		{ "dustCopper" },
+		{ "dustZinc" },
+		{ "dustNickel" },
+		{ "dustSilver" },
+		{ "dustGold" },
+		{ "dustIron" },
+		{ "dustSteel" },
+		{ "dustMagnetite" },
+		{ "dustTin" },
+		{ "dustChromium", "dyeGreen" },
+		{ "dustTitanium" },
+		{ "dustAluminium", "dustAluminum" },
+		{ "dustBismuth" },
+		{ "dustLead" },
+		{ "dustManganese" },
+		{ "dustMolybdenum" } };
 
-	public static String[][] metals = new String[][] { { "blockZinc" }, { "blockCopper" }, { "blockTin" }, {
-		"blockLead" }, { "blockAluminum" }, { "blockNickel" }, { "blockSilver" }, { "blockBismuth" } };
+	public static String[][] metals = new String[][] {
+		{ "blockZinc" },
+		{ "blockCopper" },
+		{ "blockTin" },
+		{ "blockLead" },
+		{ "blockAluminum" },
+		{ "blockNickel" },
+		{ "blockSilver" },
+		{ "blockBismuth" } };
 
-	public static String[][] alloys = new String[][] { { "blockBrass" }, { "blockBronze" }, { "blockSteel" }, {
-		"blockNickelsilver" }, { "blockToolSteel" }, { "blockSUS", "blockStainlessSteel" }, { "blockMagnet" }, {
-			"blockTitaniumAlloy" }, { "blockBSCCO" } };
+	public static String[][] alloys = new String[][] {
+		{ "blockBrass" },
+		{ "blockBronze" },
+		{ "blockSteel" },
+		{ "blockNickelsilver" },
+		{ "blockToolSteel" },
+		{ "blockSUS", "blockStainlessSteel" },
+		{ "blockMagnet" },
+		{ "blockTitaniumAlloy" },
+		{ "blockBSCCO" } };
 
-	public static String[][] gems = new String[][] { { "gemChalcedony", "gemChalcedonyBlue" }, { "gemChalcedony",
-		"gemChalcedonyRed" }, { "gemChalcedony", "gemChalcedonyWhite" }, { "gemGypsum" }, { "gemSapphire" }, {
-			"gemMalachite" }, { "gemCelestite" }, { "gemClam", "gemOpal" }, { "gemSalt" }, { "gemNiter" }, {
-				"gemSulfur" }, { "gemSchorl" }, { "gemSerpentine" }, { "gemPeridot", "gemOlivine" }, { "gemGarnet" }, {
-					"gemRutile" }, { "gemBauxite" }, { "gemBismuth" }, { "gemApatite" }, { "gemJadeite" }, {
-						"gemMoonstone" }, { "gemKunzite", "gemSpodumene" }, { "gemOpal" }, { "gemCrudeOil" }, {
-							"gemTausonite" } };
+	public static String[][] gems = new String[][] {
+		{ "gemChalcedony", "gemChalcedonyBlue" },
+		{ "gemChalcedony", "gemChalcedonyRed" },
+		{ "gemChalcedony", "gemChalcedonyWhite" },
+		{ "gemGypsum" },
+		{ "gemSapphire" },
+		{ "gemMalachite" },
+		{ "gemCelestite" },
+		{ "gemClam", "gemOpal" },
+		{ "gemSalt" },
+		{ "gemNiter" },
+		{ "gemSulfur" },
+		{ "gemSchorl" },
+		{ "gemSerpentine" },
+		{ "gemPeridot", "gemOlivine" },
+		{ "gemGarnet" },
+		{ "gemRutile" },
+		{ "gemBauxite" },
+		{ "gemBismuth" },
+		{ "gemApatite" },
+		{ "gemJadeite" },
+		{ "gemMoonstone" },
+		{ "gemKunzite", "gemSpodumene" },
+		{ "gemOpal" },
+		{ "gemCrudeOil" },
+		{ "gemTausonite" } };
 
-	public static String[][] gemb = new String[][] { { "blockChalcedonyBlue" }, { "blockChalcedonyRed" }, {
-		"blockChalcedonyWhite" }, { "blockGypsum" }, { "blockSaphhire" }, { "blockSalt" }, { "blockMarble" }, {
-			"blockSchorl" }, {}, { "blockSerpentine" }, { "blockOlivine" }, { "blockGarnet" } };
+	public static String[][] gemb = new String[][] {
+		{ "blockChalcedonyBlue" },
+		{ "blockChalcedonyRed" },
+		{ "blockChalcedonyWhite" },
+		{ "blockGypsum" },
+		{ "blockSaphhire" },
+		{ "blockSalt" },
+		{ "blockMarble" },
+		{ "blockSchorl" },
+		{},
+		{ "blockSerpentine" },
+		{ "blockOlivine" },
+		{ "blockGarnet" } };
 
-	public static String[][] gear = new String[][] { { "gearWood" }, { "gearBrass" }, { "gearAlloy",
-		"gearNickelsilver" }, { "gearSteel" }, { "gearToolSteel" } };
+	public static String[][] gear = new String[][] {
+		{ "gearWood" },
+		{ "gearBrass" },
+		{ "gearAlloy", "gearNickelsilver" },
+		{ "gearSteel" },
+		{ "gearToolSteel" } };
 
 	public void load(Configuration cfg) {
 
@@ -143,7 +248,7 @@ public class OredicConfig {
 		Property d12 = cfg.get("2_metals", "5_12_BismuthDust", dusts[12]);
 		Property d13 = cfg.get("2_metals", "5_13_LeadDust", dusts[13]);
 		Property d14 = cfg.get("2_metals", "5_14_ManganeseDust", dusts[14]);
-		Property d15 = cfg.get("2_metals", "5_15_MolybdenumDust", dusts[15]);
+		Property d15 = cfg.get("2_metals", "5_15__MolybdenumDust", dusts[15]);
 
 		Property m0 = cfg.get("2_metals", "6_00_ZincBlock", metals[0]);
 		Property m1 = cfg.get("2_metals", "6_01_CopperBlock", metals[1]);

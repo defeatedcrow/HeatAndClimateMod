@@ -559,7 +559,7 @@ public class LoadingEquipRecipe {
 				"patternSuit",
 				"itemSyntheticCloth",
 				"itemSyntheticCloth",
-				"ingotTitanium" });
+				"ingotTitaniumAlloy" });
 
 			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.shieldSynthetic, 1, 0), new Object[] {
 				"XYX",
@@ -602,7 +602,7 @@ public class LoadingEquipRecipe {
 				'Y',
 				"cobblestone" });
 
-			if (ModuleConfig.weapon_advanced) {
+			if (ModuleConfig.machine_advanced) {
 
 				DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.gun, 1, 0), new Object[] {
 					"Y ",

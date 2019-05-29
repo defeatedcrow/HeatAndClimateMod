@@ -3,6 +3,7 @@ package defeatedcrow.hac.plugin.jei;
 import defeatedcrow.hac.main.api.IFluidFuel;
 import defeatedcrow.hac.main.util.DCName;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fluids.FluidStack;
@@ -20,7 +21,7 @@ public class DCFuelWrapper implements IRecipeWrapper {
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		ingredients.setInput(FluidStack.class, fluid);
+		ingredients.setInput(VanillaTypes.FLUID, fluid);
 	}
 
 	public FluidStack getFluid() {

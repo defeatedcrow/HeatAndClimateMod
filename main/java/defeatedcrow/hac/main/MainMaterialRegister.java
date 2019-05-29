@@ -1530,6 +1530,16 @@ public class MainMaterialRegister {
 				.registerBlock(MainInit.ethanolBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_ethanol", ClimateMain.MOD_ID);
 		MainInit.ethanol.setBlock(MainInit.ethanolBlock);
 
+		MainInit.milk = new Fluid("dcs.raw_milk", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/raw_milk_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/raw_milk_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".raw_milk");
+		FluidRegistry.registerFluid(MainInit.milk);
+		MainInit.milkBlock = new DCFluidBlockBase(MainInit.milk, "raw_milk_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_raw_milk");
+		DCMaterialReg
+				.registerBlock(MainInit.milkBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_raw_milk", ClimateMain.MOD_ID);
+		MainInit.milk.setBlock(MainInit.milkBlock);
+
 		// bucket
 		FluidRegistry.addBucketForFluid(MainInit.oil);
 		FluidRegistry.addBucketForFluid(MainInit.greenTea);
@@ -1551,6 +1561,7 @@ public class MainMaterialRegister {
 		FluidRegistry.addBucketForFluid(MainInit.fuelOil);
 		FluidRegistry.addBucketForFluid(MainInit.nitrogen);
 		FluidRegistry.addBucketForFluid(MainInit.ethanol);
+		FluidRegistry.addBucketForFluid(MainInit.milk);
 
 		// heat tier
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.coffeeBlock, 0, DCHeatTier.HOT);
@@ -1587,6 +1598,7 @@ public class MainMaterialRegister {
 		FluidDictionaryDC.registerFluidDic(MainInit.hotSpring, "hot_spring");
 		FluidDictionaryDC.registerFluidDic(MainInit.stock, "stock");
 		FluidDictionaryDC.registerFluidDic(MainInit.soyMilk, "soymilk");
+		FluidDictionaryDC.registerFluidDic(MainInit.milk, "milk");
 
 	}
 

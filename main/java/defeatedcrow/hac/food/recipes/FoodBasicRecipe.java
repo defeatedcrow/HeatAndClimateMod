@@ -283,7 +283,7 @@ public class FoodBasicRecipe {
 			"foodPastry",
 			"cropPotato",
 			"cropOnion",
-			"foodFish",
+			"listAllfishraw",
 			"foodCustard",
 			"foodCheese" });
 

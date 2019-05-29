@@ -22,6 +22,7 @@ public class BasicRecipeRegister {
 		if (ModuleConfig.build_advanced) {
 			LoadingContRecipe.add(RecipeResourcesMain.MAIN);
 		}
+		DCInfoDataRegister.registerInfo();
 	}
 
 	static void loadAnotherRecipes(RecipeResourcesMain res) {

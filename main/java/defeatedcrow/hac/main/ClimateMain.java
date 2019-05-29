@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.util.Calendar;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.recipe.RecipeJsonMaker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
@@ -19,12 +18,12 @@ import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.DCHeatTreatmentRegister;
+import defeatedcrow.hac.main.recipes.DCInfoDataRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -85,6 +84,7 @@ public class ClimateMain {
 		MainAPIManager.fuelRegister = new DCFluidFuelRegister();
 		MainAPIManager.heatTreatmentRegister = new DCHeatTreatmentRegister();
 		MainAPIManager.veinRegister = VeinTableRegister.INSTANCE;
+		MainAPIManager.infoRegister = new DCInfoDataRegister();
 		MainAPIManager.isLoaded = true;
 
 		// integration
@@ -122,13 +122,6 @@ public class ClimateMain {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-
-		// milk
-		Fluid milk = FluidRegistry.getFluid("milk");
-		if (milk != null) {
-			MainInit.milk = milk;
-			FluidDictionaryDC.registerFluidDic(milk, "milk");
-		}
 
 		// config
 		MainCoreConfig.INSTANCE.leadBlockNames();

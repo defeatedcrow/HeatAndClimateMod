@@ -334,12 +334,6 @@ public class FoodFluidRecipe {
 				1), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(MainInit.cream,
 						1000), new Object[] { "foodRennet" });
 
-		if (MainInit.milk != null) {
-			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1,
-					1), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(MainInit.milk,
-							1000), new Object[] { "foodRennet" });
-		}
-
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1,
 				3), null, 0F, null, DCHeatTier.NORMAL, DCHumidity.WET, null, false, new FluidStack(MainInit.oil,
 						500), new Object[] { "dustSalt", "bucketWater" });
@@ -417,7 +411,7 @@ public class FoodFluidRecipe {
 			"cropBean" });
 
 		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 14), null, 0F, null, null, null, false, new FluidStack(
-				MainInit.oil, 1000), new Object[] { "cropMushroom", "cropChilipepper", "cropGarlic" });
+				MainInit.oil, 1000), new Object[] { "listAllmushroom", "cropChilipepper", "cropGarlic" });
 
 		regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 15), null, 0F, null, null, null, false, new FluidStack(
 				MainInit.oil, 200), new Object[] {

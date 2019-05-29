@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.capability.DrinkItemCustomizer;
@@ -43,7 +44,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
@@ -86,11 +86,7 @@ public class ItemSilverCup extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"silver",
-				"white",
-				"glass"
-		};
+		String[] s = { "silver", "white", "glass" };
 		return s;
 	}
 
@@ -182,8 +178,8 @@ public class ItemSilverCup extends FoodItemBase {
 							DCThirstHelper.onDrink((EntityPlayer) living, f.getFluid());
 						}
 
-						Fluid milk = FluidRegistry.getFluid("milk");
-						if ((milk != null && f.getFluid() == milk) || f.getFluid() == MainInit.tomatoJuice) {
+						if (FluidDictionaryDC.matchFluidName(f.getFluid(), "milk") || f
+								.getFluid() == MainInit.tomatoJuice || f.getFluid() == MainInit.soyMilk) {
 							living.clearActivePotions();
 							return false;
 						} else if (f.getFluid() == MainInit.mazai) {
@@ -254,8 +250,8 @@ public class ItemSilverCup extends FoodItemBase {
 			float dirF = 1.0F * drink.getMilk().effect;
 			int ampF = drink.getSugar().effect;
 			if (f != null && f.getFluid() != null) {
-				Fluid milk = FluidRegistry.getFluid("milk");
-				if ((milk != null && f.getFluid() == milk) || f.getFluid() == MainInit.tomatoJuice) {
+				if (FluidDictionaryDC.matchFluidName(f.getFluid(), "milk") || f.getFluid() == MainInit.tomatoJuice || f
+						.getFluid() == MainInit.soyMilk) {
 					tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));
 				} else if (f.getFluid() == MainInit.mazai) {
 					tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));

@@ -8,6 +8,7 @@ import defeatedcrow.hac.machine.gui.GuiReactor;
 import defeatedcrow.hac.machine.gui.GuiSpinning;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.IDCInfoData;
 import defeatedcrow.hac.main.api.IFluidFuel;
 import defeatedcrow.hac.main.api.IHeatTreatment;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -17,6 +18,9 @@ import defeatedcrow.hac.plugin.jei.DCFuelWrapper;
 import defeatedcrow.hac.plugin.jei.DCHeatTreatmentCategory;
 import defeatedcrow.hac.plugin.jei.DCHeatTreatmentMaker;
 import defeatedcrow.hac.plugin.jei.DCHeatTreatmentWrapper;
+import defeatedcrow.hac.plugin.jei.DCInfoCategory;
+import defeatedcrow.hac.plugin.jei.DCInfoDataMaker;
+import defeatedcrow.hac.plugin.jei.DCInfoWrapper;
 import defeatedcrow.hac.plugin.jei.DCPressMoldCategory;
 import defeatedcrow.hac.plugin.jei.DCPressMoldMaker;
 import defeatedcrow.hac.plugin.jei.DCPressMoldWrapper;
@@ -39,8 +43,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		final IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 		final IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-		registry.addRecipeCategories(new DCFuelCategory(guiHelper), new DCHeatTreatmentCategory(
-				guiHelper), new DCPressMoldCategory(guiHelper));
+		registry.addRecipeCategories(new DCInfoCategory(guiHelper), new DCFuelCategory(
+				guiHelper), new DCHeatTreatmentCategory(guiHelper), new DCPressMoldCategory(guiHelper));
 	}
 
 	@Override
@@ -51,10 +55,12 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		registry.handleRecipes(IHeatTreatment.class, recipe -> new DCHeatTreatmentWrapper(
 				recipe), "dcs_climate.treatment");
 		registry.handleRecipes(MoldItem.class, recipe -> new DCPressMoldWrapper(recipe), "dcs_climate.pressmold");
+		registry.handleRecipes(IDCInfoData.class, recipe -> new DCInfoWrapper(recipe), "dcs_climate.info");
 
 		DCFuelMaker.register(registry);
 		DCHeatTreatmentMaker.register(registry);
 		DCPressMoldMaker.register(registry);
+		DCInfoDataMaker.register(registry);
 
 		registry.addRecipeCatalyst(new ItemStack(MainInit.fuelStove), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.burner), "dcs_climate.fuel");
@@ -62,33 +68,23 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.scooter), "dcs_climate.fuel");
 		registry.addRecipeCatalyst(new ItemStack(MainInit.metalBlockAlloy, 1, 5), "dcs_climate.treatment");
 		registry.addRecipeCatalyst(new ItemStack(MachineInit.pressMachine, 1, 0), "dcs_climate.pressmold");
+		registry.addRecipeCatalyst(new ItemStack(MainInit.iconItem, 1, 0), "dcs_climate.info");
 
 		if (ModuleConfig.machine) {
-			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] {
-					"dcs_climate.mill"
-			});
+			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] { "dcs_climate.mill" });
 
-			registry.addRecipeClickArea(GuiSpinning.class, 80, 32, 16, 16, new String[] {
-					"dcs_climate.spinning"
-			});
+			registry.addRecipeClickArea(GuiSpinning.class, 80, 32, 16, 16, new String[] { "dcs_climate.spinning" });
 
-			registry.addRecipeClickArea(GuiReactor.class, 120, 18, 16, 16, new String[] {
-					"dcs_climate.reactor"
-			});
+			registry.addRecipeClickArea(GuiReactor.class, 120, 18, 16, 16, new String[] { "dcs_climate.reactor" });
 
-			registry.addRecipeClickArea(GuiCrusher.class, 80, 22, 12, 23, new String[] {
-					"dcs_climate.crusher"
-			});
+			registry.addRecipeClickArea(GuiCrusher.class, 80, 22, 12, 23, new String[] { "dcs_climate.crusher" });
 		}
 
 		if (ModuleConfig.food) {
 			registry.addRecipeClickArea(GuiFluidProcessor.class, 80, 35, 16, 16, new String[] {
-					"dcs_climate.fluidcraft"
-			});
+				"dcs_climate.fluidcraft" });
 
-			registry.addRecipeClickArea(GuiTeaPot.class, 80, 35, 16, 16, new String[] {
-					"dcs_climate.fluidcraft"
-			});
+			registry.addRecipeClickArea(GuiTeaPot.class, 80, 35, 16, 16, new String[] { "dcs_climate.fluidcraft" });
 		}
 	}
 

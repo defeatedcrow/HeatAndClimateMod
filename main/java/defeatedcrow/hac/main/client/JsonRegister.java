@@ -659,6 +659,25 @@ public class JsonRegister {
 				return fluidModel;
 			}
 		});
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(MainInit.milkBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_raw_milk", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(MainInit.milkBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_raw_milk", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
 	}
 
 	static void regCube(ITexturePath block, String domein, String name, String dir, int meta) {
