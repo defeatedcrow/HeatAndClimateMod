@@ -1697,7 +1697,7 @@ dcs.info.desc.real_clock=顯示現實的現在時間的時鐘。
 dcs.info.title.curtain=窗簾
 dcs.info.desc.curtain=右鍵可以開關。拉開時光線能通過、關上時能遮光。潛行右鍵可以切換正反面。
 dcs.info.title.flower_pot=花瓶
-dcs.info.desc.flower_pot=可以佈置職務或樹苗的實體。
+dcs.info.desc.flower_pot=可以佈置植物或樹苗的實體。
 dcs.info.title.cushion=生物碰到就不行了的坐墊
 dcs.info.desc.cushion=讓碰到的生物強制坐在上面。
 ## deprecated items
