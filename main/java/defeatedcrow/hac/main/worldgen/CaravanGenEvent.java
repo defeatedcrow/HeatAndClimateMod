@@ -188,13 +188,7 @@ public class CaravanGenEvent {
 	}
 
 	private void updateInterior0(World world, BlockPos pos, Random rand, EnumFacing face) {
-		int[] i = {
-				0,
-				3,
-				7,
-				11,
-				14
-		};
+		int[] i = { 0, 3, 7, 11, 14 };
 		for (int x : i) {
 			BlockPos p1 = rotate(pos, x, 1, 8, face);
 			BlockPos p2 = rotate(pos, x + 1, 1, 8, face);

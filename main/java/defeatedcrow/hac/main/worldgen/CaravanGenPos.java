@@ -72,10 +72,10 @@ public class CaravanGenPos {
 	public static boolean canGeneratePos(int cx, int cz, World world) {
 		long seed = world.getSeed() + cx + cz * 31;
 		Random rand = new Random(seed);
-		rand.nextInt(1000);
-		rand.nextInt(1000);
-		rand.nextInt(1000);
-		int r = rand.nextInt(1000);
+		rand.nextFloat();
+		rand.nextFloat();
+		rand.nextFloat();
+		float r = rand.nextFloat() * 10000F;
 		if (r < WorldGenConfig.caravanGen) {
 			return true;
 		}

@@ -2,6 +2,7 @@ package defeatedcrow.hac.food.block.crop;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -217,6 +218,16 @@ public class BlockSaplingDC2 extends ClimateCropBase implements ITexturePath, IP
 		ret.add(DCHumidity.NORMAL);
 		ret.add(DCHumidity.WET);
 		return ret;
+	}
+
+	@Override
+	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient) {
+		return true;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World world, Random rand, BlockPos pos, IBlockState state) {
+		return true;
 	}
 
 }

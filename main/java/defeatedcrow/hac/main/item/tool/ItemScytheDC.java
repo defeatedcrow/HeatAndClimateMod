@@ -9,6 +9,7 @@ import com.google.common.collect.Multimap;
 import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStem;
+import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -90,7 +91,7 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 	public float getDestroySpeed(ItemStack stack, IBlockState state) {
 		Block block = state.getBlock();
 		Material material = state.getMaterial();
-		return material != Material.PLANTS && material != Material.VINE && material != Material.CORAL && material != Material.LEAVES && material != Material.GOURD ?
+		return material != Material.PLANTS && material != Material.VINE && material != Material.CORAL && material != Material.LEAVES && material != Material.GOURD && material != Material.WEB ?
 				1.0F : 15.0F;
 	}
 
@@ -111,30 +112,54 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 						tool = new ItemStack(Items.SHEARS);
 					}
 
-					if (getDestroySpeed(stack, target) >= 3.0F && !(target.getBlock() instanceof BlockStem)) {
-
-						boolean flag = true;
+					if (getDestroySpeed(tool, target) > 1.0F && !(target.getBlock() instanceof BlockStem)) {
+						boolean flag = false;
 						if (target.getBlock() instanceof IShearable) {
-							flag = !((IShearable) target.getBlock()).isShearable(tool, world, p1);
+							if (((IShearable) target.getBlock()).isShearable(tool, world, p1))
+								flag = true;
 						}
 
-						if (!(target.getBlock() instanceof BlockStem) && target.getBlock() instanceof IGrowable) {
-							flag = ((IGrowable) target.getBlock()).canGrow(world, p1, target, false);
+						if (target.getBlock() instanceof IGrowable) {
+							if (!((IGrowable) target.getBlock()).canGrow(world, p1, target, false))
+								flag = true;
 						}
 
 						if (target.getBlock() == Blocks.PUMPKIN || target.getBlock() == Blocks.MELON_BLOCK) {
-							flag = false;
+							flag = true;
 						}
 
 						if (target.getBlock() == Blocks.REEDS || target.getBlock() == Blocks.CACTUS) {
 							IBlockState under = world.getBlockState(p1.down());
 							if (under.getBlock() == target.getBlock()) {
-								flag = false;
+								flag = true;
 							}
 						}
 
-						if (!flag) {
-							if (target.getBlock() instanceof IShearable) {
+						if (flag) {
+							if (target.getBlock() instanceof BlockTallGrass) {
+								if (living.isSneaking()) {
+									List<ItemStack> drops = ((IShearable) target.getBlock())
+											.onSheared(tool, world, p1, fl);
+									if (!world.isRemote) {
+										for (ItemStack i : drops) {
+											EntityItem entityitem = new EntityItem(world, p1.getX() + 0.5D, p1
+													.getY() + 0.5D, p1.getZ() + 0.5D, i);
+											entityitem.setDefaultPickupDelay();
+											world.spawnEntity(entityitem);
+										}
+									}
+								}
+								NonNullList<ItemStack> l1 = NonNullList.create();
+								target.getBlock().getDrops(l1, world, p1, target, fl);
+								if (!world.isRemote) {
+									for (ItemStack i : l1) {
+										EntityItem entityitem = new EntityItem(world, p1.getX() + 0.5D, p1
+												.getY() + 0.5D, p1.getZ() + 0.5D, i);
+										entityitem.setDefaultPickupDelay();
+										world.spawnEntity(entityitem);
+									}
+								}
+							} else if (target.getBlock() instanceof IShearable) {
 								List<ItemStack> drops = ((IShearable) target.getBlock()).onSheared(tool, world, p1, fl);
 								if (!world.isRemote) {
 									for (ItemStack i : drops) {

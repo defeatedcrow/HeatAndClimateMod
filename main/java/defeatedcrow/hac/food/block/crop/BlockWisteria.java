@@ -497,7 +497,8 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 			f = EnumFacing.UP;
 		}
 		for (EnumFacing f2 : EnumFacing.HORIZONTALS) {
-			if (!world.isAirBlock(pos.offset(f2)) && world.getBlockState(pos.offset(f2)).getBlock() != this) {
+			if (!world.isAirBlock(pos.offset(f2)) && world.getBlockState(pos.offset(f2)).getBlock() != this && !world
+					.getBlockState(pos.offset(f2)).getMaterial().isReplaceable()) {
 				f = f2;
 				break;
 			}

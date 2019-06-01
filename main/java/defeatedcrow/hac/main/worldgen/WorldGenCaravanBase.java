@@ -322,7 +322,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		}
 
 		if (x == 8 && z == 8 && y == 5) {
-			return Blocks.BIRCH_FENCE.getDefaultState();
+			return MainInit.chain.getDefaultState();
 		}
 		if (x == 8 && z == 8 && y == 4) {
 			return MainInit.chandelierGypsum.getDefaultState();

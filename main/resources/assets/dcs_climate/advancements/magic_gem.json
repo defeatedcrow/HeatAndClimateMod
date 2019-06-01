@@ -11,7 +11,7 @@
 			"translate": "advancements.dcs_climate.magic_gem.description"
 		}
 	},
-	"parent": "dcs_climate:core",
+	"parent": "dcs_climate:climate_color_ore",
 	"criteria": {
 		"dcs_chalcedony1": {
             "trigger": "minecraft:inventory_changed",

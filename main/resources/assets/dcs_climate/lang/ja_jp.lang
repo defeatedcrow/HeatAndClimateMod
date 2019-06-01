@@ -1569,6 +1569,8 @@ advancements.dcs_climate.climate_cooking3.description=調理鍋でさらに多�
 advancements.dcs_climate.climate_tart.title=りんごのタルト
 advancements.dcs_climate.climate_tart.description=気候精錬でいろいろな食べ物を焼ける
 
+advancements.dcs_climate.metal_color_ore.title=色の鉱石
+advancements.dcs_climate.metal_color_ore.description=バイオームによって異なる色の鉱石が生成される
 advancements.dcs_climate.metal_oredust.title=新しい金属
 advancements.dcs_climate.metal_oredust.description=銅と亜鉛の粉末を手に入れる
 advancements.dcs_climate.metal_blass1.title=合金を手に入れる

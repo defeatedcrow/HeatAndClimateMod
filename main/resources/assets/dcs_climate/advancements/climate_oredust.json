@@ -10,7 +10,7 @@
       "translate": "advancements.dcs_climate.metal_oredust.description"
     }
   },
-  "parent": "dcs_climate:core",
+  "parent": "dcs_climate:climate_color_ore",
   "criteria": {
         "dust_copper": {
             "trigger": "minecraft:inventory_changed",

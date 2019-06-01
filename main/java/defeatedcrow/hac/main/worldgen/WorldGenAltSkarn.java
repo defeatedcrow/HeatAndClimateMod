@@ -144,7 +144,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		if (!SkarnGenPoint.hasPos(chunkX, chunkZ)) {
 			int i = WorldGenConfig.skarnGen;
 			pRandom.nextFloat();
-			float r = pRandom.nextFloat() * 1000;
+			float r = pRandom.nextFloat() * 10000F;
 			if (r > 0 && r < i) {
 				SkarnGenPoint.addPos(chunkX, chunkZ);
 				return true;

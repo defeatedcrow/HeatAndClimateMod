@@ -15,7 +15,7 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "foodFish"
+   "ore": "listAllfishraw"
   },
   {
    "type": "forge:ore_dict",

@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "oreCrudeOil"
+   "ore": "gemCrudeOil"
   },
   {
    "type": "forge:ore_dict",

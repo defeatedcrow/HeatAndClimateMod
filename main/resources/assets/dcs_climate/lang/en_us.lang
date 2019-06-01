@@ -1746,6 +1746,8 @@ advancements.dcs_climate.climate_cooking3.description=Cooking pots are required 
 advancements.dcs_climate.climate_tart.title=Tasty apple tart
 advancements.dcs_climate.climate_tart.description=Bake an apple tart with climate smelting.
 
+advancements.dcs_climate.metal_color_ore.title=Color Ores
+advancements.dcs_climate.metal_color_ore.description=Each color ore spawns in the corresponding biome.
 advancements.dcs_climate.metal_oredust.title=New metals
 advancements.dcs_climate.metal_oredust.description=Get copper or zinc dusts.
 advancements.dcs_climate.metal_blass1.title=How to get the alloy (1)
@@ -1781,7 +1783,7 @@ advancements.dcs_climate.machine_crusher.title=Advanced grinding machine
 advancements.dcs_climate.machine_crusher.description=Hammer mill gets more product.
 advancements.dcs_climate.machine_scooter.title=Scooter journey
 advancements.dcs_climate.machine_scooter.description=Let's drive safely!
-advancements.dcs_climate.machine_musket.title=Masterstroke
+advancements.dcs_climate.machine_musket.title=Mastershot
 advancements.dcs_climate.machine_musket.description=Kill a skeleton with a gun from more than 100 meters
 
 advancements.dcs_climate.magic_gem.title=Mysterious jewel

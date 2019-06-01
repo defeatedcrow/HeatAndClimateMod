@@ -119,6 +119,7 @@ import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenOres3;
+import defeatedcrow.hac.main.worldgen.WorldGenSaplings;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -367,14 +368,20 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadWorldGen() {
 		// gen
 		if (ModuleConfig.world) {
-			WorldGenWindmill.initLoot();
 			GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
-			if (ModuleConfig.machine) {
-				GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 3);
+			if (WorldGenConfig.skarnGen > 0) {
+				GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 3);
 			}
-			GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 5);
-			if (WorldGenConfig.mazaiLake && MainInit.mazaiBlock != null)
+			if (ModuleConfig.machine) {
+				WorldGenWindmill.initLoot();
+				GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 10);
+			}
+			if (WorldGenConfig.mazaiLake && MainInit.mazaiBlock != null) {
 				GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);
+			}
+			if (ModuleConfig.food) {
+				GameRegistry.registerWorldGenerator(new WorldGenSaplings(false), 5);
+			}
 		}
 	}
 
