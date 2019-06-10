@@ -8,6 +8,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.orevein.EnumVein;
 import defeatedcrow.hac.main.api.orevein.OreSet;
 import defeatedcrow.hac.main.api.orevein.VeinTable;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -48,6 +49,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
+		if (!ModuleConfig.world)
+			return;
 
 		int genDim1 = world.provider.getDimension();
 		if ((genDim1 == 1 || genDim1 == -1))

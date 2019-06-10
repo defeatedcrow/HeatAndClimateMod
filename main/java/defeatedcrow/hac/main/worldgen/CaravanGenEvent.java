@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.recipes.BlockContainerUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -38,6 +39,8 @@ public class CaravanGenEvent {
 
 	@SubscribeEvent
 	public void populate(PopulateChunkEvent.Post event) {
+		if (!ModuleConfig.world)
+			return;
 		if (event.getWorld().provider.getDimension() == 0) {
 			if (!event.isHasVillageGenerated() && CaravanGenPos.isSuitableChunk(event.getChunkX(), event
 					.getChunkZ(), event.getWorld()) && CaravanGenPos.getCaravanPartNum(event.getChunkX(), event

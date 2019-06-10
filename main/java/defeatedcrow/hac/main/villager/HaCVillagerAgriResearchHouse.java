@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
@@ -42,29 +43,33 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 	}
 
 	private Block getRandomCropType(Random rand) {
-		switch (rand.nextInt(11)) {
-		case 0:
-			return FoodInit.cropOnion;
-		case 1:
-			return FoodInit.cropSpinach;
-		case 2:
-			return FoodInit.cropTomato;
-		case 3:
-			return FoodInit.cropCotton;
-		case 4:
-			return FoodInit.cropCoffee;
-		case 5:
-			return FoodInit.cropLettuce;
-		case 6:
-			return FoodInit.cropBean;
-		case 7:
-			return FoodInit.cropChili;
-		case 8:
-			return FoodInit.cropGarlic;
-		case 9:
-			return FoodInit.cropSoy;
-		default:
-			return FoodInit.cropRice;
+		if (ModuleConfig.food) {
+			switch (rand.nextInt(11)) {
+			case 0:
+				return FoodInit.cropOnion;
+			case 1:
+				return FoodInit.cropSpinach;
+			case 2:
+				return FoodInit.cropTomato;
+			case 3:
+				return FoodInit.cropCotton;
+			case 4:
+				return FoodInit.cropCoffee;
+			case 5:
+				return FoodInit.cropLettuce;
+			case 6:
+				return FoodInit.cropBean;
+			case 7:
+				return FoodInit.cropChili;
+			case 8:
+				return FoodInit.cropGarlic;
+			case 9:
+				return FoodInit.cropSoy;
+			default:
+				return FoodInit.cropRice;
+			}
+		} else {
+			return Blocks.WHEAT;
 		}
 	}
 
@@ -211,11 +216,13 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 4, 1, 1, box);
 		this.setBlockState(world, MainInit.chalLamp.getDefaultState().withProperty(DCState.TYPE16, 11), 3, 2, 1, box);
 
-		this.setBlockState(world, MainInit.chestVillage.getDefaultState()
-				.withProperty(DCState.FACING, EnumFacing.WEST), 9, 1, 1, box);
-		this.setBlockState(world, MainInit.chairWood.getDefaultState()
-				.withProperty(DCState.FACING, EnumFacing.WEST), 9, 1, 3, box);
-		this.setBlockState(world, MainInit.tableWood.getDefaultState(), 8, 1, 3, box);
+		if (ModuleConfig.build_advanced) {
+			this.setBlockState(world, MainInit.chestVillage.getDefaultState()
+					.withProperty(DCState.FACING, EnumFacing.WEST), 9, 1, 1, box);
+			this.setBlockState(world, MainInit.chairWood.getDefaultState()
+					.withProperty(DCState.FACING, EnumFacing.WEST), 9, 1, 3, box);
+			this.setBlockState(world, MainInit.tableWood.getDefaultState(), 8, 1, 3, box);
+		}
 
 		this.spawnVillagers(world, box, 4, 1, 2, 2);
 		return true;

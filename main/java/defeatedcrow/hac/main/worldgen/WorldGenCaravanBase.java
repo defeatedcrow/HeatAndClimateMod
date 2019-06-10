@@ -5,6 +5,7 @@ import java.util.Random;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.build.BlockSlabBase;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockColored;
@@ -774,46 +775,49 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1)
 					.withProperty(DCState.FACING, face);
 		}
-		if ((x == 0 || x == 15) && z == 8 && y == 4) {
-			return MainInit.chandelierGypsum.getDefaultState();
-		}
-		if (z == 9 && y == 1) {
-			switch (x) {
-			case 0:
-			case 4:
-			case 11:
-			case 15:
-				return MainInit.tableWood.getDefaultState();
-			default:
-				return Blocks.AIR.getDefaultState();
+		if (ModuleConfig.build_advanced) {
+			if ((x == 0 || x == 15) && z == 8 && y == 4) {
+				return MainInit.chandelierGypsum.getDefaultState();
 			}
-		}
-		if (z == 8 && y == 1) {
-			switch (x) {
-			case 2:
-			case 3:
-			case 12:
-			case 13:
-				return Blocks.AIR.getDefaultState();
-			case 1:
-				return MainInit.stoolRed.getDefaultState().withProperty(DCState.FACING, face.rotateY().getOpposite());
-			case 14:
-				return MainInit.stoolRed.getDefaultState().withProperty(DCState.FACING, face.rotateY());
-			default:
-				return MainInit.tableWood.getDefaultState();
+			if (z == 9 && y == 1) {
+				switch (x) {
+				case 0:
+				case 4:
+				case 11:
+				case 15:
+					return MainInit.tableWood.getDefaultState();
+				default:
+					return Blocks.AIR.getDefaultState();
+				}
 			}
-		}
-		if (z == 7 && y == 1) {
-			switch (x) {
-			case 5:
-			case 7:
-			case 9:
-				return MainInit.stoolRed.getDefaultState().withProperty(DCState.FACING, face.getOpposite());
-			case 0:
-			case 15:
-				return MainInit.tableWood.getDefaultState();
-			default:
-				return Blocks.AIR.getDefaultState();
+			if (z == 8 && y == 1) {
+				switch (x) {
+				case 2:
+				case 3:
+				case 12:
+				case 13:
+					return Blocks.AIR.getDefaultState();
+				case 1:
+					return MainInit.stoolRed.getDefaultState().withProperty(DCState.FACING, face.rotateY()
+							.getOpposite());
+				case 14:
+					return MainInit.stoolRed.getDefaultState().withProperty(DCState.FACING, face.rotateY());
+				default:
+					return MainInit.tableWood.getDefaultState();
+				}
+			}
+			if (z == 7 && y == 1) {
+				switch (x) {
+				case 5:
+				case 7:
+				case 9:
+					return MainInit.stoolRed.getDefaultState().withProperty(DCState.FACING, face.getOpposite());
+				case 0:
+				case 15:
+					return MainInit.tableWood.getDefaultState();
+				default:
+					return Blocks.AIR.getDefaultState();
+				}
 			}
 		}
 		return Blocks.AIR.getDefaultState();
@@ -832,7 +836,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 				return Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, face.getOpposite());
 			case 2:
 			case 13:
-				return MainInit.tableWood.getDefaultState();
+				if (ModuleConfig.build_advanced)
+					return MainInit.tableWood.getDefaultState();
 			default:
 				return Blocks.AIR.getDefaultState();
 			}
@@ -841,7 +846,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			switch (x) {
 			case 2:
 			case 13:
-				return MainInit.tableWood.getDefaultState();
+				if (ModuleConfig.build_advanced)
+					return MainInit.tableWood.getDefaultState();
 			default:
 				return Blocks.AIR.getDefaultState();
 			}
@@ -854,7 +860,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			case 13:
 			case 14:
 			case 15:
-				return MainInit.tableWood.getDefaultState();
+				if (ModuleConfig.build_advanced)
+					return MainInit.tableWood.getDefaultState();
 			default:
 				return Blocks.AIR.getDefaultState();
 			}

@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDoor;
@@ -53,6 +54,8 @@ public class WorldGenWindmill implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
+		if (!ModuleConfig.world)
+			return;
 		generateWindmill(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
 	}
 
@@ -159,6 +162,20 @@ public class WorldGenWindmill implements IWorldGenerator {
 
 		// 土台から
 		// brick
+		for (int i = -5; i < 0; i++) {
+			if (!isGround(world, pos.add(-3, i, -3))) {
+				world.setBlockState(pos.add(-3, i, -3), Blocks.BRICK_BLOCK.getDefaultState(), 2);
+			}
+			if (!isGround(world, pos.add(-3, i, 3))) {
+				world.setBlockState(pos.add(-3, i, 3), Blocks.BRICK_BLOCK.getDefaultState(), 2);
+			}
+			if (!isGround(world, pos.add(3, i, -3))) {
+				world.setBlockState(pos.add(3, i, -3), Blocks.BRICK_BLOCK.getDefaultState(), 2);
+			}
+			if (!isGround(world, pos.add(3, i, 3))) {
+				world.setBlockState(pos.add(3, i, 3), Blocks.BRICK_BLOCK.getDefaultState(), 2);
+			}
+		}
 		for (int i1 = -3; i1 < 4; i1++) {
 			for (int j1 = -3; j1 < 4; j1++) {
 				world.setBlockState(pos.add(i1, 0, j1), Blocks.BRICK_BLOCK.getDefaultState(), 2);
@@ -202,11 +219,16 @@ public class WorldGenWindmill implements IWorldGenerator {
 				world.setBlockState(pos.add(i3, 4 + k3, -2), Blocks.PLANKS.getDefaultState(), 2);
 				world.setBlockState(pos.add(i3, 4 + k3, 2), Blocks.PLANKS.getDefaultState(), 2);
 				world.setBlockState(pos.add(2, 4 + k3, i3), Blocks.PLANKS.getDefaultState(), 2);
-
-				world.setBlockState(pos.add(-8 + k3, 1 + k3, i3), strO, 2);
 			}
 			world.setBlockState(pos.add(-2, 4 + k3, -1), Blocks.PLANKS.getDefaultState(), 2);
 			world.setBlockState(pos.add(-2, 4 + k3, 1), Blocks.PLANKS.getDefaultState(), 2);
+		}
+		for (int k3 = 0; k3 < 4; k3++) {
+			for (int i3 = -1; i3 < 2; i3++) {
+				if (!isGround(world, pos.add(-9 + k3, k3, i3))) {
+					world.setBlockState(pos.add(-9 + k3, k3, i3), strO, 2);
+				}
+			}
 		}
 		world.setBlockState(pos.add(-2, 4, 0), Blocks.OAK_DOOR.getDefaultState()
 				.withProperty(BlockDoor.FACING, EnumFacing.EAST)
@@ -258,26 +280,27 @@ public class WorldGenWindmill implements IWorldGenerator {
 				.withProperty(DCState.FACING, EnumFacing.EAST).withProperty(DCState.TYPE4, 3), 2);
 
 		// マシン
-		world.setBlockState(pos.add(1, 4, 0), MachineInit.stonemill.getDefaultState(), 2);
-		if (pRandom.nextInt(8) > 0) {
-			world.setBlockState(pos.add(1, 5, 0), MachineInit.shaft_s.getDefaultState()
-					.withProperty(DCState.SIDE, EnumSide.UP), 2);
+		if (ModuleConfig.machine) {
+			world.setBlockState(pos.add(1, 4, 0), MachineInit.stonemill.getDefaultState(), 2);
+			if (pRandom.nextInt(8) > 0) {
+				world.setBlockState(pos.add(1, 5, 0), MachineInit.shaft_s.getDefaultState()
+						.withProperty(DCState.SIDE, EnumSide.UP), 2);
+			}
+			if (pRandom.nextInt(8) > 0) {
+				world.setBlockState(pos.add(1, 6, 0), MachineInit.shaft_s.getDefaultState()
+						.withProperty(DCState.SIDE, EnumSide.UP), 2);
+			}
+			world.setBlockState(pos.add(1, 7, 0), MachineInit.shaft_l.getDefaultState()
+					.withProperty(DCState.SIDE, EnumSide.EAST), 2);
+			TileEntity shaft = world.getTileEntity(pos.add(1, 7, 0));
+			if (shaft != null) {
+				((TileTorqueBase) shaft).setFaceSide(EnumFacing.SOUTH);
+			}
+			world.setBlockState(pos.add(2, 7, 0), MachineInit.gearbox.getDefaultState()
+					.withProperty(DCState.SIDE, EnumSide.EAST), 2);
+			world.setBlockState(pos.add(3, 7, 0), MachineInit.windmill_l.getDefaultState()
+					.withProperty(DCState.SIDE, EnumSide.WEST), 2);
 		}
-		if (pRandom.nextInt(8) > 0) {
-			world.setBlockState(pos.add(1, 6, 0), MachineInit.shaft_s.getDefaultState()
-					.withProperty(DCState.SIDE, EnumSide.UP), 2);
-		}
-		world.setBlockState(pos.add(1, 7, 0), MachineInit.shaft_l.getDefaultState()
-				.withProperty(DCState.SIDE, EnumSide.EAST), 2);
-		TileEntity shaft = world.getTileEntity(pos.add(1, 7, 0));
-		if (shaft != null) {
-			((TileTorqueBase) shaft).setFaceSide(EnumFacing.SOUTH);
-		}
-		world.setBlockState(pos.add(2, 7, 0), MachineInit.gearbox.getDefaultState()
-				.withProperty(DCState.SIDE, EnumSide.EAST), 2);
-		world.setBlockState(pos.add(3, 7, 0), MachineInit.windmill_l.getDefaultState()
-				.withProperty(DCState.SIDE, EnumSide.WEST), 2);
-
 		// 宝箱
 		world.setBlockState(pos.add(2, 1, -2), Blocks.CHEST.getDefaultState()
 				.withProperty(BlockChest.FACING, EnumFacing.WEST), 2);
@@ -315,10 +338,17 @@ public class WorldGenWindmill implements IWorldGenerator {
 				.getMaterial() == Material.LEAVES;
 	}
 
+	public boolean isGround(World world, BlockPos pos) {
+		net.minecraft.block.state.IBlockState state = world.getBlockState(pos);
+		if (state.getMaterial().isLiquid())
+			return false;
+		return state.getMaterial() == Material.GROUND || state.getMaterial() == Material.GRASS || state
+				.getMaterial() == Material.SAND;
+	}
+
 	public static List<ItemStack> loot = new ArrayList<ItemStack>();
 
 	public static void initLoot() {
-		loot.add(new ItemStack(MainInit.oreIngot, 2, 4));
 		loot.add(new ItemStack(MainInit.oreIngot, 3, 4));
 		loot.add(new ItemStack(MainInit.oreIngot, 3, 4));
 		loot.add(new ItemStack(MainInit.oreIngot, 3, 4));
@@ -327,6 +357,11 @@ public class WorldGenWindmill implements IWorldGenerator {
 		loot.add(new ItemStack(MainInit.oreIngot, 5, 4));
 		loot.add(new ItemStack(MainInit.oreIngot, 3, 3));
 		loot.add(new ItemStack(MainInit.oreIngot, 5, 3));
+		loot.add(new ItemStack(MainInit.oreIngot, 3, 3));
+		loot.add(new ItemStack(MainInit.oreIngot, 5, 3));
+		loot.add(new ItemStack(MainInit.oreIngot, 3, 5));
+		loot.add(new ItemStack(MainInit.oreIngot, 5, 5));
+		loot.add(new ItemStack(MainInit.oreIngot, 5, 6));
 		loot.add(new ItemStack(MainInit.oreIngot, 5, 6));
 		loot.add(new ItemStack(MainInit.oreDust, 6, 0));
 		loot.add(new ItemStack(MainInit.oreDust, 12, 0));
@@ -349,13 +384,17 @@ public class WorldGenWindmill implements IWorldGenerator {
 		loot.add(new ItemStack(MainInit.gears, 1, 2));
 		loot.add(new ItemStack(MainInit.bakedApple, 3, 2));
 		loot.add(new ItemStack(MainInit.bakedApple, 3, 3));
-		loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
-		loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
-		loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
-		loot.add(new ItemStack(MachineInit.shaft_l, 1, 0));
-		loot.add(new ItemStack(MainInit.linenBottom, 1, 0));
+		if (ModuleConfig.machine) {
+			loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
+			loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
+			loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
+			loot.add(new ItemStack(MachineInit.shaft_l, 1, 0));
+		}
+		loot.add(new ItemStack(MainInit.leatherHat, 1, 0));
 		loot.add(new ItemStack(MainInit.linenUnder, 1, 0));
-		loot.add(new ItemStack(MainInit.dcScythe[1], 1, 0));
+		if (ModuleConfig.tool) {
+			loot.add(new ItemStack(MainInit.dcScythe[1], 1, 0));
+		}
 	}
 
 }

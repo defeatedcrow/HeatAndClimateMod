@@ -5,6 +5,7 @@ import java.util.Random;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -39,6 +40,8 @@ public class WorldGenSaplings implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
+		if (!ModuleConfig.world)
+			return;
 		generateSapling(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
 	}
 
