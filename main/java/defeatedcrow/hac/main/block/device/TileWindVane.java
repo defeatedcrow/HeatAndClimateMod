@@ -50,7 +50,6 @@ public class TileWindVane extends ClimateReceiveTile {
 			}
 
 			float f2 = (f - lastSpeed) * 0.5F;
-			f2 += lastSpeed;
 			speed = f2;
 
 			float f1 = rot + speed;

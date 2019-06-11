@@ -8,6 +8,7 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.api.orevein.EnumVein;
 import defeatedcrow.hac.main.api.orevein.OreSet;
 import defeatedcrow.hac.main.api.orevein.VeinTable;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -307,7 +308,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 									int j = world.rand.nextInt(100);
 									if (add.hasSecondOre() && j < add.getSecondChance()) {
 										world.setBlockState(p, add.getSecondOre().getState(), isForced ? 3 : 4);
-										if (b1) {
+										if (b1 && ModuleConfig.food) {
 											world.setBlockState(p.up(), FoodInit.cropSeaweed.getDefaultState());
 										}
 									} else {

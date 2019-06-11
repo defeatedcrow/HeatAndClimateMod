@@ -323,10 +323,12 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		}
 
 		if (x == 8 && z == 8 && y == 5) {
-			return MainInit.chain.getDefaultState();
+			return ModuleConfig.build_advanced ? MainInit.chain.getDefaultState() : Blocks.ACACIA_FENCE
+					.getDefaultState();
 		}
 		if (x == 8 && z == 8 && y == 4) {
-			return MainInit.chandelierGypsum.getDefaultState();
+			return ModuleConfig.build_advanced ? MainInit.chandelierGypsum.getDefaultState() : MainInit.chalLamp
+					.getDefaultState().withProperty(DCState.TYPE16, 2);
 		}
 		if (x == 5 && z == 3 && y == 1) {
 			return MainInit.chalLamp.getDefaultState().withProperty(DCState.TYPE16, 9);
@@ -334,7 +336,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 
 		if (y == 0) {
 			if (x > 3 && x < 12 && z > 3 && z < 12) {
-				return MainInit.carpetRed.getDefaultState();
+				return ModuleConfig.build_advanced ? MainInit.carpetRed.getDefaultState() : Blocks.STAINED_HARDENED_CLAY
+						.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.RED);
 			} else if (x < 11 && z < 11) {
 				return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 10);
 			} else {
