@@ -1569,6 +1569,8 @@ advancements.dcs_climate.climate_cooking3.description=可以在調理鍋中處�
 advancements.dcs_climate.climate_tart.title=蘋果塔
 advancements.dcs_climate.climate_tart.description=用氣候精煉烤各種不同的食物
 
+advancements.dcs_climate.metal_color_ore.title=色彩礦石
+advancements.dcs_climate.metal_color_ore.description=依照生態域會生成不同色彩的礦石
 advancements.dcs_climate.metal_oredust.title=新的金屬
 advancements.dcs_climate.metal_oredust.description=入手銅粉和鋅粉
 advancements.dcs_climate.metal_blass1.title=合金是怎樣練成的
