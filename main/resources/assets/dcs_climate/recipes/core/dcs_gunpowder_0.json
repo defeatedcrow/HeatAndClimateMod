@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustGraphite"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustGraphite"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustGraphite"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemNiter"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemNiter"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemSulfur"
+  }
+ ],
+ "result": {
+  "item": "minecraft:gunpowder",
+  "count": 4,
+  "data": 0
+ }
+}

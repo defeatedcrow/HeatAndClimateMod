@@ -1,12 +1,10 @@
 package defeatedcrow.hac.main.util;
 
 import java.util.List;
-import java.util.Map;
 
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
-import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -22,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Loader;
@@ -204,40 +203,26 @@ public class MainUtil {
 		return false;
 	}
 
-	public static boolean hasCharmItem(EntityLivingBase living, ItemStack charm) {
-		if (living == null || DCUtil.isEmpty(charm) || !(charm.getItem() instanceof IJewelCharm)) {
-			return false;
-		}
-		if (living instanceof EntityPlayer) {
-			boolean hasCharm = false;
-			for (int i = 9; i < 18; i++) {
-				ItemStack check = ((EntityPlayer) living).inventory.getStackInSlot(i);
-				if (!DCUtil.isEmpty(check) && check.getItem() == charm.getItem()) {
-					int m = check.getMetadata();
-					if (m == charm.getItemDamage()) {
-						hasCharm = true;
-					}
-				}
-			}
+	public static int getCharmLevel(EntityLivingBase living, ItemStack item) {
+		if (living == null || DCUtil.isEmpty(item))
+			return 0;
 
-			if (Loader.isModLoaded("baubles") && !hasCharm) {
-				if (DCPluginBaubles.hasBaublesCharm(((EntityPlayer) living), charm)) {
-					hasCharm = true;
+		if (living instanceof EntityPlayer) {
+			NonNullList<ItemStack> charms = DCUtil.getPlayerCharm((EntityPlayer) living, null);
+			for (ItemStack check : charms) {
+				if (!DCUtil.isEmpty(check) && OreDictionary.itemMatches(check, item, false)) {
+					return check.getCount();
 				}
 			}
-			return hasCharm;
 		} else {
-			Map<Integer, ItemStack> map = DCUtil.getMobCharm(living);
-			boolean hasCharm = false;
-			if (!map.isEmpty()) {
-				for (ItemStack item : map.values()) {
-					if (item.getItem() == charm.getItem() && item.getItemDamage() == charm.getItemDamage()) {
-						hasCharm = true;
-					}
+			NonNullList<ItemStack> charms = DCUtil.getMobCharm(living);
+			for (ItemStack check : charms) {
+				if (!DCUtil.isEmpty(check) && OreDictionary.itemMatches(check, item, false)) {
+					return check.getCount();
 				}
 			}
-			return hasCharm;
 		}
+		return 0;
 	}
 
 	public static ItemStack getCharmItem(EntityLivingBase living, ItemStack item) {
@@ -259,8 +244,8 @@ public class MainUtil {
 				}
 			}
 		} else {
-			Map<Integer, ItemStack> charms = DCUtil.getMobCharm(living);
-			for (ItemStack check : charms.values()) {
+			NonNullList<ItemStack> charms = DCUtil.getMobCharm(living);
+			for (ItemStack check : charms) {
 				if (!DCUtil.isEmpty(check) && OreDictionary.itemMatches(check, item, false)) {
 					return check;
 				}

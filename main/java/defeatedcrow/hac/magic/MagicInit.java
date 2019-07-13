@@ -9,6 +9,7 @@ public class MagicInit {
 	public static Item colorDrop;
 
 	public static Item colorRing;
+	public static Item colorRing2;
 	public static Item colorPendant;
 	public static Item colorBadge;
 

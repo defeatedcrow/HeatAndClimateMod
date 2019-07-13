@@ -43,7 +43,7 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(meta, 0, 10);
+		int i = MathHelper.clamp(meta, 0, 11);
 		String s = "items/food/cake_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -54,18 +54,18 @@ public class CakeItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"butter_raw",
-				"butter",
-				"chocolate",
-				"coffeejelly",
-				"lemonjelly",
-				"bakedcream",
-				"berryjelly",
-				"kuzujelly",
-				"egg_cocotte_raw",
-				"egg_cocotte_baked",
-				"stickey_toffee_pudding"
-		};
+			"butter_raw",
+			"butter",
+			"chocolate",
+			"coffeejelly",
+			"lemonjelly",
+			"bakedcream",
+			"berryjelly",
+			"kuzujelly",
+			"egg_cocotte_raw",
+			"egg_cocotte_baked",
+			"stickey_toffee_pudding",
+			"pancake" };
 		return s;
 	}
 
@@ -115,6 +115,7 @@ public class CakeItem extends FoodItemBase {
 		case 1:
 			return 10;
 		case 2:
+		case 11:
 			return 12;
 		case 3:
 			return 8;

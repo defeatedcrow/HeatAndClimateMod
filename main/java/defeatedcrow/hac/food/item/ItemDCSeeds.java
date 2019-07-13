@@ -24,22 +24,22 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"rice",
-			"onion",
-			"spinach",
-			"tomato",
-			"coffee",
-			"cotton",
-			"lotus",
-			"herb",
-			"seaweed",
-			"soy",
-			"bean",
-			"chili",
-			"garlic",
-			"lettuce",
-			"wisteria"
-	};
+		"rice",
+		"onion",
+		"spinach",
+		"tomato",
+		"coffee",
+		"cotton",
+		"lotus",
+		"herb",
+		"seaweed",
+		"soy",
+		"bean",
+		"chili",
+		"garlic",
+		"lettuce",
+		"wisteria",
+		"ginger" };
 
 	public ItemDCSeeds(int max) {
 		super();
@@ -120,6 +120,8 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 			return FoodInit.cropLettuce;
 		case 14:
 			return FoodInit.cropWisteria;
+		case 15:
+			return FoodInit.cropGinger;
 		default:
 			return FoodInit.cropRice;
 		}

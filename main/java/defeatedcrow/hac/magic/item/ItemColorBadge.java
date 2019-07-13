@@ -46,17 +46,12 @@ public class ItemColorBadge extends CharmItemBase {
 	 * B: 偽装攻撃
 	 * W: 修復
 	 */
-	private static String[] names = {
-			"u1",
-			"g1",
-			"r1",
-			"b1",
-			"w1"
-	};
+	private static String[] names = { "u1", "g1", "r1", "b1", "w1" };
 
 	public ItemColorBadge() {
 		super();
 		maxMeta = 4;
+		this.setMaxStackSize(1);
 	}
 
 	@Override
@@ -157,6 +152,7 @@ public class ItemColorBadge extends CharmItemBase {
 			EntityPlayer player = (EntityPlayer) owner;
 			if (!player.world.isRemote && state != null) {
 				boolean silk = false;
+				int c = 1 + charm.getCount() * 3;
 				BlockSet set = new BlockSet(state.getBlock(), state.getBlock().getMetaFromState(state));
 				if (MainCoreConfig.disables.contains(set)) {
 					return false;
@@ -165,8 +161,8 @@ public class ItemColorBadge extends CharmItemBase {
 						.hasCharmItem(player, new ItemStack(MagicInit.colorPendant, 1, 2));
 				// 一括破壊
 				ItemStack hold = player.getHeldItemMainhand();
-				BlockPos min = pos.add(-5, -5, -5);
-				BlockPos max = pos.add(5, 5, 5);
+				BlockPos min = pos.add(-c, -c, -c);
+				BlockPos max = pos.add(c, c, c);
 				Iterable<BlockPos> itr = pos.getAllInBox(min, max);
 				boolean flag = false;
 				for (BlockPos p : itr) {
@@ -220,7 +216,7 @@ public class ItemColorBadge extends CharmItemBase {
 				if (!DCUtil.isEmpty(off) && off.getItem().isDamageable()) {
 					int dam = off.getItemDamage();
 					if (dam > 0) {
-						dam--;
+						dam -= charm.getCount();
 						off.setItemDamage(dam);
 					}
 				}
@@ -341,4 +337,7 @@ public class ItemColorBadge extends CharmItemBase {
 			tooltip.add(TextFormatting.RESET + warpDim + ", " + x + ", " + y + ", " + z);
 		}
 	}
+
+	// green
+
 }

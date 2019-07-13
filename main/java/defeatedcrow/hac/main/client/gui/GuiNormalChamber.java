@@ -7,9 +7,9 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.main.block.device.TileChamberBase;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -30,10 +30,10 @@ public class GuiNormalChamber extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String s = I18n.translateToLocal(this.chamber.getName());
+		String s = I18n.format(this.chamber.getName());
 		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
-		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2,
-				4210752);
+		this.fontRenderer.drawString(this.playerInventory.getDisplayName()
+				.getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
 	}
 
 	@Override

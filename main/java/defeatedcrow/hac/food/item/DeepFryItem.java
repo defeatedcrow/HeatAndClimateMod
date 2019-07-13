@@ -33,7 +33,7 @@ public class DeepFryItem extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 3);
+		int i = MathHelper.clamp(0, meta, 5);
 		String s = "items/food/frying_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -43,12 +43,7 @@ public class DeepFryItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"pork",
-				"chicken",
-				"fish",
-				"falafel"
-		};
+		String[] s = { "pork", "chicken", "fish", "falafel", "fishcake", "pork_ginger" };
 		return s;
 	}
 
@@ -70,7 +65,7 @@ public class DeepFryItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return meta * 2 + 6;
+		return 8;
 	}
 
 	@Override

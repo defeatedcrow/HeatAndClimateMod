@@ -38,7 +38,7 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 15);
+		int i = MathHelper.clamp(0, meta, 19);
 		String s = "items/food/" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -49,23 +49,26 @@ public class RoundBreadItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"roundbread_raw",
-				"roundbread_baked",
-				"squarebread_raw",
-				"squarebread_baked",
-				"butter_toast_raw",
-				"butter_toast_baked",
-				"pizza_tomato_raw",
-				"pizza_tomato_baked",
-				"roundbread_cream",
-				"french_toast",
-				"garlic_toast_raw",
-				"garlic_toast_baked",
-				"pita_bread_raw",
-				"pita_bread_baked",
-				"pancake_raw",
-				"pancake_baked"
-		};
+			"roundbread_raw",
+			"roundbread_baked",
+			"squarebread_raw",
+			"squarebread_baked",
+			"butter_toast_raw",
+			"butter_toast_baked",
+			"pizza_tomato_raw",
+			"pizza_tomato_baked",
+			"roundbread_cream",
+			"french_toast",
+			"garlic_toast_raw",
+			"garlic_toast_baked",
+			"pita_bread_raw",
+			"pita_bread_baked",
+			"pancake_raw",
+			"pancake_baked",
+			"walnut_bread_raw",
+			"walnut_bread_baked",
+			"gingerbreadman_raw",
+			"gingerbreadman_baked" };
 		return s;
 	}
 
@@ -115,13 +118,17 @@ public class RoundBreadItem extends FoodItemBase {
 		case 4:
 		case 6:
 		case 12:
+		case 16:
+		case 18:
 			return 0;
 		case 1:
 		case 3:
 		case 13:
+		case 17:
 			return 6;
 		case 11:
 		case 15:
+		case 19:
 			return 7;
 		case 5:
 		case 10:

@@ -7,15 +7,7 @@ import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityGuardian;
-import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
@@ -71,7 +63,7 @@ public class OnDeathEventDC {
 					player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 1.5D, pos.getZ() + 0.5D);
 				}
 				player.fallDistance = 0.0F;
-				player.setHealth(10.0F);
+				player.setHealth(6.0F + charm.getCount() * 5.0F);
 				event.setCanceled(true);
 				flag = true;
 			}
@@ -98,7 +90,7 @@ public class OnDeathEventDC {
 		if (!(living instanceof EntityPlayer) && dam >= living.getHealth()) {
 			if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorBadge, 1, 1)) || DCUtil
 					.hasCharmItem(living, new ItemStack(MagicInit.pendant, 1, 7))) {
-				DCLogger.debugInfoLog("on amulet process");
+				// DCLogger.debugInfoLog("on amulet process");
 				living.fallDistance = 0.0F;
 				living.setHealth(living.getMaxHealth() * 0.5F);
 				living.world.playSound(null, living
@@ -132,37 +124,6 @@ public class OnDeathEventDC {
 					}
 				}
 			}
-		}
-
-		if (ModuleConfig.magic && !living.world.isRemote && living instanceof IMob) {
-			boolean hasCharm = false;
-			if (source.getTrueSource() instanceof EntityLivingBase) {
-				EntityLivingBase liv2 = (EntityLivingBase) source.getTrueSource();
-				if (DCUtil.hasCharmItem(liv2, new ItemStack(MagicInit.colorRing, 1, 0))) {
-					hasCharm = true;
-				}
-			}
-			int m = hasCharm ? 5 : 1;
-			if (living.world.rand.nextInt(100) < m + level) {
-				int meta = getDropMeta(living);
-				ItemStack item1 = new ItemStack(MagicInit.colorDrop, 1, meta);
-				EntityItem drop = new EntityItem(living.world, living.posX, living.posY, living.posZ, item1);
-				event.getDrops().add(drop);
-			}
-		}
-	}
-
-	static int getDropMeta(EntityLivingBase living) {
-		if (living.getCreatureAttribute() == EnumCreatureAttribute.ILLAGER || living instanceof EntityEnderman) {
-			return 4;
-		} else if (living.isEntityUndead() || living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-			return 3;
-		} else if (living instanceof EntityCreeper || living instanceof EntityGhast || living instanceof EntityBlaze) {
-			return 2;
-		} else if (living instanceof EntitySlime || living instanceof EntityGuardian) {
-			return 0;
-		} else {
-			return 1;
 		}
 	}
 }

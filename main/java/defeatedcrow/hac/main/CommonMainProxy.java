@@ -44,6 +44,11 @@ import defeatedcrow.hac.machine.gui.GuiSpinning;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.magic.MagicCommonProxy;
+import defeatedcrow.hac.magic.client.gui.ContainerLivingDC;
+import defeatedcrow.hac.magic.client.gui.ContainerVillagerDC;
+import defeatedcrow.hac.magic.client.gui.GuiLivingDC;
+import defeatedcrow.hac.magic.client.gui.GuiVillagerDC;
+import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
@@ -104,6 +109,7 @@ import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.potion.PotionBirdDC;
 import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
+import defeatedcrow.hac.main.potion.PotionNimbleDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.recipes.ArmorDyesRecipeDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
@@ -123,6 +129,8 @@ import defeatedcrow.hac.main.worldgen.WorldGenSaplings;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;
 import net.minecraft.entity.passive.EntityVillager.PriceInfo;
 import net.minecraft.entity.player.EntityPlayer;
@@ -162,6 +170,9 @@ public class CommonMainProxy implements IGuiHandler {
 
 		MainInit.heavyboots = new PotionHeavyBootsDC();
 		DCRegistryUtil.addPotion(MainInit.heavyboots, MainInit.heavybootsType, "heavyboots");
+
+		MainInit.nimble = new PotionNimbleDC();
+		DCRegistryUtil.addPotion(MainInit.nimble, MainInit.nimbleType, "nimble");
 	}
 
 	public void loadEnchantment() {
@@ -418,6 +429,7 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new DCLootEvent());
 		if (ModuleConfig.magic) {
 			MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
+			MinecraftForge.EVENT_BUS.register(new MagicCommonEvent());
 		}
 		if (ModuleConfig.world) {
 			MinecraftForge.EVENT_BUS.register(new CaravanGenEvent());
@@ -432,6 +444,10 @@ public class CommonMainProxy implements IGuiHandler {
 			Entity entity = world.getEntityByID(ID);
 			if (entity instanceof EntityScooter)
 				return new ContainerEntityScooter((EntityScooter) entity, player);
+			if (entity instanceof EntityVillager)
+				return new ContainerVillagerDC((EntityVillager) entity, player);
+			if (entity instanceof EntityLiving)
+				return new ContainerLivingDC((EntityLiving) entity, player);
 		}
 		BlockPos pos = new BlockPos(x, y, z);
 		if (!world.isBlockLoaded(pos))
@@ -480,6 +496,10 @@ public class CommonMainProxy implements IGuiHandler {
 			Entity entity = world.getEntityByID(ID);
 			if (entity instanceof EntityScooter)
 				return new GuiEntityScooter((EntityScooter) entity, player);
+			if (entity instanceof EntityVillager)
+				return new GuiVillagerDC((EntityVillager) entity, player);
+			if (entity instanceof EntityLiving)
+				return new GuiLivingDC((EntityLiving) entity, player);
 		}
 		BlockPos pos = new BlockPos(x, y, z);
 		if (!world.isBlockLoaded(pos))

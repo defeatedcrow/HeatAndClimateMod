@@ -37,12 +37,13 @@ public class SaladItem extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 7);
-		String s = "items/food/";
-		if (i < 2)
+		int i = MathHelper.clamp(0, meta, 11);
+		String s = "items/food/" + this.getNameSuffix()[i];
+		if (i < 2 || i > 8) {
 			s += "salad_" + this.getNameSuffix()[i];
-		else
+		} else {
 			s += "simmered_" + this.getNameSuffix()[i];
+		}
 		if (f) {
 			s = "textures/" + s;
 		}
@@ -52,15 +53,18 @@ public class SaladItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"green",
-				"potato",
-				"lotusroot",
-				"soy",
-				"gomoku",
-				"spinach",
-				"beans",
-				"natto"
-		};
+			"green",
+			"potato",
+			"lotusroot",
+			"soy",
+			"gomoku",
+			"spinach",
+			"beans",
+			"natto",
+			"pumpkin",
+			"salmon",
+			"tofu",
+			"walnut" };
 		return s;
 	}
 

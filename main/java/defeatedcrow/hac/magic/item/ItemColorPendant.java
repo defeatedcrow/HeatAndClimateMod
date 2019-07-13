@@ -47,17 +47,12 @@ public class ItemColorPendant extends CharmItemBase {
 	 * B: 雷撃
 	 * W: 味方巻き込み防止
 	 */
-	private static String[] names = {
-			"u1",
-			"g1",
-			"r1",
-			"b1",
-			"w1"
-	};
+	private static String[] names = { "u1", "g1", "r1", "b1", "w1" };
 
 	public ItemColorPendant() {
 		super();
 		maxMeta = 4;
+		this.setMaxStackSize(1);
 	}
 
 	@Override
@@ -146,7 +141,7 @@ public class ItemColorPendant extends CharmItemBase {
 		if (getColor(charm.getItemDamage()) == MagicColor.BLACK) {
 			if (owner != null && target != null && !source.isExplosion() && source.isProjectile()) {
 				CustomExplosion explosion = new CustomExplosion(owner.world, owner, owner, target.posX,
-						target.posY + 0.25D, target.posZ, 1F, CustomExplosion.Type.Silk, true);
+						target.posY + 0.25D, target.posZ, charm.getCount(), CustomExplosion.Type.Silk, true);
 				explosion.doExplosion();
 				owner.world.addWeatherEffect(new EntityLightningBolt(owner.world, target.posX, target.posY - 0.25D,
 						target.posZ, true));
@@ -174,9 +169,10 @@ public class ItemColorPendant extends CharmItemBase {
 		if (owner != null && !DCUtil.isEmpty(charm) && !owner.world.isRemote) {
 			DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(owner.posX, owner.posY, owner.posZ));
 			if (getColor(charm.getItemDamage()) == MagicColor.BLUE) {
-				owner.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 600, 0));
-				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - 4D, owner.posY - 1D, owner.posZ - 4D,
-						owner.posX + 4D, owner.posY + 1D, owner.posZ + 4D);
+				owner.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 600 * charm.getCount(), 0));
+				double a = 4D + charm.getCount() * 2;
+				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a,
+						owner.posY + 2D, owner.posZ + a);
 				List<EntityMob> list = owner.world.getEntitiesWithinAABB(EntityMob.class, aabb);
 				if (list.isEmpty())
 					return false;
@@ -198,9 +194,11 @@ public class ItemColorPendant extends CharmItemBase {
 			} else if (getColor(charm.getItemDamage()) == MagicColor.GREEN) {
 				DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(owner.posX, owner.posY, owner.posZ));
 				MainUtil.removeBadPotion(owner);
-				owner.heal(2.0F);
-				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - 8D, owner.posY - 1D, owner.posZ - 8D,
-						owner.posX + 8D, owner.posY + 1D, owner.posZ + 8D);
+				float h = 2.0F * charm.getCount();
+				owner.heal(h);
+				double a = 8D + charm.getCount() * 4;
+				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a,
+						owner.posY + 2D, owner.posZ + a);
 				List<EntityLivingBase> list = owner.world.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
 				if (list.isEmpty())
 					return false;
@@ -209,7 +207,7 @@ public class ItemColorPendant extends CharmItemBase {
 						if (liv instanceof IMob)
 							continue;
 						MainUtil.removeBadPotion(liv);
-						liv.heal(2.0F);
+						liv.heal(h);
 						DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(liv.posX, liv.posY, liv.posZ));
 					}
 				}

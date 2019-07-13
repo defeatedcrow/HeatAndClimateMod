@@ -18,7 +18,7 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
-		return side == getBaseSide().rotateY();
+		return side.getAxis().isHorizontal() ? side == getBaseSide().rotateY() : side == getBaseSide();
 	}
 
 	@Override

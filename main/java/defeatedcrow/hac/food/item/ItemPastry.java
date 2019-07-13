@@ -7,11 +7,11 @@ public class ItemPastry extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "raw" };
+	private static String[] names = { "raw", "noodle" };
 
 	public ItemPastry() {
 		super();
-		maxMeta = 0;
+		maxMeta = 1;
 	}
 
 	@Override

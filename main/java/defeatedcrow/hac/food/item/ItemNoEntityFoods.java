@@ -18,20 +18,16 @@ public class ItemNoEntityFoods extends DCFoodItem {
 
 	private final int maxMeta;
 
-	private static String[] names = {
-			"marshmallow",
-			"date_and_nut",
-			"toffee"
-	};
+	private static String[] names = { "marshmallow", "date_and_nut", "toffee", "tofu", "smoked_salmon" };
 
 	public ItemNoEntityFoods() {
 		super(false);
-		maxMeta = 2;
+		maxMeta = 4;
 	}
 
 	@Override
 	public int getMaxMeta() {
-		return maxMeta;
+		return 2;
 	}
 
 	@Override

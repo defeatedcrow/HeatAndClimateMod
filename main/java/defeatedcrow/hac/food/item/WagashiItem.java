@@ -53,15 +53,15 @@ public class WagashiItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"kinako",
-				"isobe",
-				"zunda",
-				"butter",
-				"strawberry",
-				"kurumi",
-				"kurimanju",
-				"nerikiri"
-		};
+			"kinako",
+			"isobe",
+			"zunda",
+			"butter",
+			"strawberry",
+			"kurumi",
+			"kurimanju",
+			"nerikiri",
+			"abekawa" };
 		return s;
 	}
 

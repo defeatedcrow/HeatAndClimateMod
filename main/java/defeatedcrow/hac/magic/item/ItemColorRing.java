@@ -37,17 +37,12 @@ public class ItemColorRing extends CharmItemBase {
 	 * B: 暗視
 	 * W: スリップ無効/落下耐性
 	 */
-	private static String[] names = {
-			"u1",
-			"g1",
-			"r1",
-			"b1",
-			"w1"
-	};
+	private static String[] names = { "u1", "g1", "r1", "b1", "w1" };
 
 	public ItemColorRing() {
 		super();
 		maxMeta = 4;
+		this.setMaxStackSize(1);
 	}
 
 	@Override
@@ -113,7 +108,7 @@ public class ItemColorRing extends CharmItemBase {
 	@Override
 	public float reduceDamage(DamageSource source, ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.WHITE) {
-			return 1.0F;
+			return 1.0F * charm.getCount();
 		}
 		return 0;
 	}
@@ -144,8 +139,9 @@ public class ItemColorRing extends CharmItemBase {
 	public boolean onToolUsing(EntityLivingBase owner, BlockPos pos, IBlockState state, ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.GREEN) {
 			if (!owner.world.isRemote && state != null) {
-				AxisAlignedBB aabb = new AxisAlignedBB((double) pos.getX() - 5, (double) pos.getY() - 2, (double) pos
-						.getZ() - 5, (double) pos.getX() + 5, (double) pos.getY() + 3, (double) pos.getZ() + 5);
+				double a = 3 + charm.getCount() * 2;
+				AxisAlignedBB aabb = new AxisAlignedBB(pos.getX() - a, (double) pos.getY() - 2, pos.getZ() - a, pos
+						.getX() + a, (double) pos.getY() + 3, pos.getZ() + a);
 				List<EntityItem> drops = owner.world.getEntitiesWithinAABB(EntityItem.class, aabb);
 				for (EntityItem drop : drops) {
 					drop.setPosition(owner.posX, owner.posY + 0.5D, owner.posZ);
@@ -157,13 +153,17 @@ public class ItemColorRing extends CharmItemBase {
 
 	@Override
 	public void constantEffect(EntityLivingBase owner, ItemStack charm) {
+		int l = charm.getCount() - 1;
+		if (l < 0) {
+			l = 0;
+		}
 		if (getColor(charm.getItemDamage()) == MagicColor.RED) {
 			owner.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 205, 0));
-			owner.addPotionEffect(new PotionEffect(MainInit.heavyboots, 205, 0));
+			owner.addPotionEffect(new PotionEffect(MainInit.heavyboots, 205, l));
 		} else if (getColor(charm.getItemDamage()) == MagicColor.BLACK) {
 			owner.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 205, 0));
 		} else if (getColor(charm.getItemDamage()) == MagicColor.WHITE) {
-			owner.fallDistance = 0.0F;
+			owner.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 205, l));
 		}
 	}
 

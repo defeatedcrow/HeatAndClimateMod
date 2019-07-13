@@ -133,6 +133,7 @@ public class MagicClientProxy {
 		// item
 		instance.regSimpleItem(MagicInit.colorDrop, ClimateCore.PACKAGE_ID, "dcs_color", "magic", 9);
 		instance.regSimpleItem(MagicInit.colorRing, ClimateCore.PACKAGE_ID, "dcs_color_ring", "magic", 4);
+		instance.regSimpleItem(MagicInit.colorRing2, ClimateCore.PACKAGE_ID, "dcs_color_ring2", "magic", 4);
 		instance.regSimpleItem(MagicInit.colorPendant, ClimateCore.PACKAGE_ID, "dcs_color_pendant", "magic", 4);
 		instance.regSimpleItem(MagicInit.colorBadge, ClimateCore.PACKAGE_ID, "dcs_color_badge", "magic", 4);
 		instance.regSimpleItem(MagicInit.magicCard, ClimateCore.PACKAGE_ID, "dcs_magic_card", "magic", 14);

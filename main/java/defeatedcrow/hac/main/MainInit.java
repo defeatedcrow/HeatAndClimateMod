@@ -325,6 +325,9 @@ public class MainInit {
 	public static Potion heavyboots;
 	public static PotionType heavybootsType;
 
+	public static Potion nimble;
+	public static PotionType nimbleType;
+
 	public static Enchantment venom;
 	public static Enchantment corrosion;
 	public static Enchantment robber;

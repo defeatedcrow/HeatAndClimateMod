@@ -14,6 +14,7 @@ import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
+import defeatedcrow.hac.magic.event.MagicClientEvent;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
@@ -85,7 +86,6 @@ import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
-import defeatedcrow.hac.main.event.AltTooltipEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -228,9 +228,10 @@ public class ClientMainProxy extends CommonMainProxy {
 	@Override
 	public void loadInit() {
 		super.loadInit();
-		MinecraftForge.EVENT_BUS.register(new AltTooltipEvent());
-		MinecraftForge.EVENT_BUS.register(AdvancedHUDEvent.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(new RenderPlayerEventDC());
+		if (ModuleConfig.magic) {
+			MinecraftForge.EVENT_BUS.register(new MagicClientEvent());
+		}
 	}
 
 	@Override

@@ -8,26 +8,26 @@ public class ItemDCCrops extends DCFoodItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"rice",
-			"onion",
-			"spinach",
-			"tomato",
-			"coffee",
-			"cotton",
-			"lemon",
-			"olive",
-			"tea",
-			"herb",
-			"lotus_seed",
-			"mulberry",
-			"young_soy",
-			"chili",
-			"garlic",
-			"lettuce",
-			"walnut",
-			"dates",
-			"vine"
-	};
+		"rice",
+		"onion",
+		"spinach",
+		"tomato",
+		"coffee",
+		"cotton",
+		"lemon",
+		"olive",
+		"tea",
+		"herb",
+		"lotus_seed",
+		"mulberry",
+		"young_soy",
+		"chili",
+		"garlic",
+		"lettuce",
+		"walnut",
+		"dates",
+		"vine",
+		"ginger" };
 
 	public ItemDCCrops(int max) {
 		super(false);
@@ -67,6 +67,7 @@ public class ItemDCCrops extends DCFoodItem {
 		case 2:
 		case 4:
 		case 6:
+		case 19:
 			return 2;
 		case 18:
 			return 0;

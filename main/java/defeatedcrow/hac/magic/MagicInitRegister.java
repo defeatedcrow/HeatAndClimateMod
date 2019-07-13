@@ -35,6 +35,7 @@ import defeatedcrow.hac.magic.item.ItemColorCard;
 import defeatedcrow.hac.magic.item.ItemColorDrop;
 import defeatedcrow.hac.magic.item.ItemColorPendant;
 import defeatedcrow.hac.magic.item.ItemColorRing;
+import defeatedcrow.hac.magic.item.ItemColorRing2;
 import defeatedcrow.hac.magic.item.ItemEXPGem;
 import defeatedcrow.hac.magic.item.ItemMaceCore;
 import defeatedcrow.hac.magic.item.ItemMaceHandle;
@@ -81,6 +82,10 @@ public class MagicInitRegister {
 		DCMaterialReg.registerItem(MagicInit.badge, ClimateCore.PACKAGE_BASE + "_jewel_badge", ClimateMain.MOD_ID);
 
 		if (ModuleConfig.magic_advanced) {
+
+			MagicInit.colorRing2 = new ItemColorRing2().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_ring2");
+			DCMaterialReg
+					.registerItem(MagicInit.colorRing2, ClimateCore.PACKAGE_BASE + "_color_ring2", ClimateMain.MOD_ID);
 
 			MagicInit.colorPendant = new ItemColorPendant()
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_pendant");
@@ -230,6 +235,7 @@ public class MagicInitRegister {
 
 		if (ModuleConfig.magic_advanced) {
 
+			MagicInit.colorRing2.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorPendant.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorBadge.setCreativeTab(ClimateMain.magic);
 			MagicInit.magicCard.setCreativeTab(ClimateMain.magic);

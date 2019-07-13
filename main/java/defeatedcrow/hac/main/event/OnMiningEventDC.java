@@ -8,6 +8,7 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -38,11 +39,19 @@ public class OnMiningEventDC {
 		if (event.getEntityPlayer() != null) {
 			if (DCUtil.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2)) || DCUtil
 					.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1, 9))) {
-				event.setNewSpeed(event.getNewSpeed() * 1.2F + 2.0F);
+				float lv = 2.0F + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant,
+						1, 2)) + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1,
+								9));
+				lv *= 0.5F;
+				event.setNewSpeed(event.getNewSpeed() * lv);
 			} else {
 				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER) && event.getEntityPlayer()
 						.isPotionActive(MainInit.ocean)) {
-					event.setNewSpeed(event.getNewSpeed() * 2.0F + 1.0F);
+					if (event.getEntityPlayer().getActivePotionEffect(MainInit.ocean) != null) {
+						float lv = 1.0F + event.getEntityPlayer().getActivePotionEffect(MainInit.ocean)
+								.getAmplifier() * 1.0F;
+						event.setNewSpeed(event.getNewSpeed() * lv);
+					}
 				}
 			}
 		}
@@ -124,6 +133,7 @@ public class OnMiningEventDC {
 		}
 	}
 
+	// 無限水源化
 	@SubscribeEvent
 	public void canCreateSource(CreateFluidSourceEvent event) {
 		IBlockState fluid = event.getWorld().getBlockState(event.getPos());

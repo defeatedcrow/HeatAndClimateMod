@@ -187,6 +187,61 @@ public class MagicRecipeRegister {
 			'Z',
 			"ingotSilver" });
 
+		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 0), new Object[] {
+			"X",
+			"Y",
+			"Z",
+			'X',
+			"dustGold",
+			'Y',
+			"dropBlue",
+			'Z',
+			"ingotSilver" });
+
+		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 1), new Object[] {
+			"X",
+			"Y",
+			"Z",
+			'X',
+			"dustGold",
+			'Y',
+			"dropGreen",
+			'Z',
+			"ingotSilver" });
+
+		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 2), new Object[] {
+			"X",
+			"Y",
+			"Z",
+			'X',
+			"dustGold",
+			'Y',
+			"dropRed",
+			'Z',
+			"ingotSilver" });
+
+		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 3), new Object[] {
+			"X",
+			"Y",
+			"Z",
+			'X',
+			"dustGold",
+			'Y',
+			"dropBlack",
+			'Z',
+			"ingotSilver" });
+
+		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 4), new Object[] {
+			"X",
+			"Y",
+			"Z",
+			'X',
+			"dustGold",
+			'Y',
+			"dropWhite",
+			'Z',
+			"ingotSilver" });
+
 		// advanced
 		if (ModuleConfig.magic_advanced) {
 			// pendant
