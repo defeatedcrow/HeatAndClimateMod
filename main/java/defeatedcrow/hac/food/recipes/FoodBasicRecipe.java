@@ -824,7 +824,7 @@ public class FoodBasicRecipe {
 				"gemChalcedony" });
 
 			DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.seeds, 1, 15), new Object[] {
-				new ItemStack(Blocks.TALLGRASS, 1, 1),
+				new ItemStack(Blocks.RED_FLOWER, 1, 3),
 				"gemChalcedony" });
 
 			DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.saplings2, 1, 0), new Object[] {

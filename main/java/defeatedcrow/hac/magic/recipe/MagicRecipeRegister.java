@@ -1256,6 +1256,8 @@ public class MagicRecipeRegister {
 		PotionType awkward = PotionType.getPotionTypeForName("awkward");
 		PotionType bird = ForgeRegistries.POTION_TYPES.getValue(new ResourceLocation("dcs_climate", "dcs.bird"));
 		PotionType fish = ForgeRegistries.POTION_TYPES.getValue(new ResourceLocation("dcs_climate", "dcs.ocean"));
+		PotionType heavy = ForgeRegistries.POTION_TYPES.getValue(new ResourceLocation("dcs_climate", "dcs.heavyboots"));
+		PotionType nimble = ForgeRegistries.POTION_TYPES.getValue(new ResourceLocation("dcs_climate", "dcs.nimble"));
 		ItemStack awk = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM, 1, 0), awkward);
 		ItemStack awk_spr = PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION, 1, 0), awkward);
 		ItemStack awk_lng = PotionUtils.addPotionToItemStack(new ItemStack(Items.LINGERING_POTION, 1, 0), awkward);
@@ -1265,21 +1267,37 @@ public class MagicRecipeRegister {
 		ItemStack fi = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM, 1, 0), fish);
 		ItemStack fi_spr = PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION, 1, 0), fish);
 		ItemStack fi_lng = PotionUtils.addPotionToItemStack(new ItemStack(Items.LINGERING_POTION, 1, 0), fish);
+		ItemStack hv = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM, 1, 0), heavy);
+		ItemStack hv_spr = PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION, 1, 0), heavy);
+		ItemStack hv_lng = PotionUtils.addPotionToItemStack(new ItemStack(Items.LINGERING_POTION, 1, 0), heavy);
+		ItemStack nm = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM, 1, 0), nimble);
+		ItemStack nm_spr = PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION, 1, 0), nimble);
+		ItemStack nm_lng = PotionUtils.addPotionToItemStack(new ItemStack(Items.LINGERING_POTION, 1, 0), nimble);
 
 		BrewingRecipeRegistry.addRecipe(awk, "dropWhite", bir);
 		BrewingRecipeRegistry.addRecipe(awk, "dropBlue", fi);
+		BrewingRecipeRegistry.addRecipe(awk, "dropRed", nm);
+		BrewingRecipeRegistry.addRecipe(awk, "dropGreen", hv);
 
 		BrewingRecipeRegistry.addRecipe(awk_spr, "dropWhite", bir_spr);
 		BrewingRecipeRegistry.addRecipe(awk_spr, "dropBlue", fi_spr);
+		BrewingRecipeRegistry.addRecipe(awk_spr, "dropRed", nm_spr);
+		BrewingRecipeRegistry.addRecipe(awk_spr, "dropGreen", hv_spr);
 
 		BrewingRecipeRegistry.addRecipe(awk_lng, "dropWhite", bir_lng);
 		BrewingRecipeRegistry.addRecipe(awk_lng, "dropBlue", fi_lng);
+		BrewingRecipeRegistry.addRecipe(awk_lng, "dropRed", nm_lng);
+		BrewingRecipeRegistry.addRecipe(awk_lng, "dropGreen", hv_lng);
 
 		BrewingRecipeRegistry.addRecipe(bir, "gunpowder", bir_spr);
 		BrewingRecipeRegistry.addRecipe(fi, "gunpowder", fi_spr);
+		BrewingRecipeRegistry.addRecipe(nm, "gunpowder", nm_spr);
+		BrewingRecipeRegistry.addRecipe(hv, "gunpowder", hv_spr);
 
 		BrewingRecipeRegistry.addRecipe(bir_spr, new ItemStack(Items.DRAGON_BREATH), bir_lng);
 		BrewingRecipeRegistry.addRecipe(fi_spr, new ItemStack(Items.DRAGON_BREATH), fi_lng);
+		BrewingRecipeRegistry.addRecipe(nm_spr, new ItemStack(Items.DRAGON_BREATH), nm_lng);
+		BrewingRecipeRegistry.addRecipe(hv_spr, new ItemStack(Items.DRAGON_BREATH), hv_lng);
 	}
 
 }
