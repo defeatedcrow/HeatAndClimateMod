@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
+import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.config.MainCoreConfig;
@@ -203,15 +204,8 @@ public class ItemColorBadge extends CharmItemBase {
 	@Override
 	public void constantEffect(EntityLivingBase owner, ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.WHITE) {
-			int cool = 100;
-			NBTTagCompound tag = charm.getTagCompound();
-			if (tag == null) {
-				tag = new NBTTagCompound();
-			}
-			if (tag.hasKey("CharmCooldown")) {
-				cool = tag.getInteger("CharmCooldown");
-			}
-			if (cool < 0) {
+			long time = DCTimeHelper.time(owner.world);
+			if ((time & 31) == 0) {
 				ItemStack off = owner.getHeldItemOffhand();
 				if (!DCUtil.isEmpty(off) && off.getItem().isDamageable()) {
 					int dam = off.getItemDamage();
@@ -220,12 +214,7 @@ public class ItemColorBadge extends CharmItemBase {
 						off.setItemDamage(dam);
 					}
 				}
-				tag.setInteger("CharmCooldown", 100);
-			} else {
-				cool--;
-				tag.setInteger("CharmCooldown", cool);
 			}
-			charm.setTagCompound(tag);
 		}
 	}
 
@@ -337,7 +326,5 @@ public class ItemColorBadge extends CharmItemBase {
 			tooltip.add(TextFormatting.RESET + warpDim + ", " + x + ", " + y + ", " + z);
 		}
 	}
-
-	// green
 
 }

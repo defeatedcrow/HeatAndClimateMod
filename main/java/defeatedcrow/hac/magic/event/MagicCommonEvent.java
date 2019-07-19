@@ -32,7 +32,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -149,26 +148,23 @@ public class MagicCommonEvent {
 	public void afterWarpDimEvent(PlayerChangedDimensionEvent event) {
 		EntityPlayer player = event.player;
 		if (player != null) {
-			NonNullList<ItemStack> map = DCUtil.getPlayerCharm(player, null);
-			for (ItemStack charm : map) {
-				if (!DCUtil.isEmpty(charm) && charm.getItem() == MagicInit.colorBadge && charm.getItemDamage() == 1) {
-					int dim = player.world.provider.getDimension();
-					String dimName = player.world.provider.getDimensionType().getName();
-					int x = MathHelper.floor(player.posX);
-					int y = MathHelper.floor(player.posY);
-					int z = MathHelper.floor(player.posZ);
-					NBTTagCompound tag = charm.getTagCompound();
-					if (tag == null) {
-						tag = new NBTTagCompound();
-					}
-					tag.setString("dcs.portal.dimname", dimName);
-					tag.setInteger("dcs.portal.dim", dim);
-					tag.setInteger("dcs.portal.x", x);
-					tag.setInteger("dcs.portal.y", y);
-					tag.setInteger("dcs.portal.z", z);
-					charm.setTagCompound(tag);
-					break;
+			ItemStack charm = MainUtil.getCharmItem(player, new ItemStack(MagicInit.colorBadge, 1, 1));
+			if (!DCUtil.isEmpty(charm)) {
+				int dim = player.world.provider.getDimension();
+				String dimName = player.world.provider.getDimensionType().getName();
+				int x = MathHelper.floor(player.posX);
+				int y = MathHelper.floor(player.posY);
+				int z = MathHelper.floor(player.posZ);
+				NBTTagCompound tag = charm.getTagCompound();
+				if (tag == null) {
+					tag = new NBTTagCompound();
 				}
+				tag.setString("dcs.portal.dimname", dimName);
+				tag.setInteger("dcs.portal.dim", dim);
+				tag.setInteger("dcs.portal.x", x);
+				tag.setInteger("dcs.portal.y", y);
+				tag.setInteger("dcs.portal.z", z);
+				charm.setTagCompound(tag);
 			}
 		}
 	}
