@@ -356,11 +356,11 @@ public class FoodInitRegister {
 		FoodInit.wagashi.setCreativeTab(ClimateMain.food);
 		FoodInit.snack.setCreativeTab(ClimateMain.food);
 		FoodInit.deepFry.setCreativeTab(ClimateMain.food);
-		// FoodInit.dishBig.setCreativeTab(ClimateMain.food);
-		// FoodInit.dishSq.setCreativeTab(ClimateMain.food);
+		FoodInit.dishBig.setCreativeTab(ClimateMain.food);
+		FoodInit.dishSq.setCreativeTab(ClimateMain.food);
 		FoodInit.setMeal.setCreativeTab(ClimateMain.food);
-		// FoodInit.udon.setCreativeTab(ClimateMain.food);
-		// FoodInit.drink.setCreativeTab(ClimateMain.food);
+		FoodInit.udon.setCreativeTab(ClimateMain.food);
+		FoodInit.drink.setCreativeTab(ClimateMain.food);
 
 		FoodInit.nonEntity.setCreativeTab(ClimateMain.food);
 

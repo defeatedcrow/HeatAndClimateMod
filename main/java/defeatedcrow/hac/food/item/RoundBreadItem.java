@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.GingermanEntity;
 import defeatedcrow.hac.food.entity.PancakeEntity;
 import defeatedcrow.hac.food.entity.PitaBreadEntity;
 import defeatedcrow.hac.food.entity.PizzaTomatoEntity;
@@ -16,6 +17,7 @@ import defeatedcrow.hac.food.entity.SquareBreadEntity;
 import defeatedcrow.hac.food.entity.ToastBreadEntity;
 import defeatedcrow.hac.food.entity.ToastFrenchEntity;
 import defeatedcrow.hac.food.entity.ToastGarlicEntity;
+import defeatedcrow.hac.food.entity.WalnutBreadEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +35,7 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 15;
+		return 19;
 	}
 
 	@Override
@@ -102,6 +104,12 @@ public class RoundBreadItem extends FoodItemBase {
 		}
 		if (i == 14 || i == 15) {
 			ret = new PancakeEntity(world, x, y, z, player);
+		}
+		if (i == 16 || i == 17) {
+			ret = new WalnutBreadEntity(world, x, y, z, player);
+		}
+		if (i == 18 || i == 19) {
+			ret = new GingermanEntity(world, x, y, z, player);
 		}
 
 		if ((i & 1) == 0) {

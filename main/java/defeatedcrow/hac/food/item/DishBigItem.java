@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.FriedPorkEntity;
+import defeatedcrow.hac.food.entity.DishMaboEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,13 +47,14 @@ public class DishBigItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new FriedPorkEntity(world, x, y, z, player);
+		FoodEntityBase ret = new DishMaboEntity(world, x, y, z, player);
+		ret.setIndividual(world.rand.nextInt(32));
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 8;
+		return 12;
 	}
 
 	@Override

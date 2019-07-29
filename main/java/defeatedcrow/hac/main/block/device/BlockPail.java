@@ -50,8 +50,7 @@ public class BlockPail extends DCTileBlock {
 				if (!world.isRemote && tile instanceof TilePail) {
 					if (!DCUtil.isEmpty(heldItem)) {
 						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
-							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
-									2.0F);
+							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 						}
 					} else {
 						FluidStack f = ((TilePail) tile).inputT.getFluid();
@@ -94,7 +93,7 @@ public class BlockPail extends DCTileBlock {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+		return EnumBlockRenderType.MODEL;
 	}
 
 	@Override

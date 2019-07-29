@@ -11,6 +11,7 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.entity.PotatoPlateEntity;
 import defeatedcrow.hac.food.entity.SoupPlateEntity;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -43,12 +44,7 @@ public class PlateSoupItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"potato_raw",
-				"potato_baked",
-				"tomato_raw",
-				"tomato_baked"
-		};
+		String[] s = { "potato_raw", "potato_baked", "tomato_raw", "tomato_baked" };
 		return s;
 	}
 
@@ -90,7 +86,7 @@ public class PlateSoupItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add("Placeable as an Entity");
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

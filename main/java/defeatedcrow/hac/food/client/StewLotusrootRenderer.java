@@ -32,7 +32,7 @@ public class StewLotusrootRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y + 0.0625F, (float) z);
-		GlStateManager.scale(-0.75F, -1.0F, 0.75F);
+		GlStateManager.scale(-0.5F, -1.0F, 0.5F);
 
 		float rotX = -entity.rotationPitch;
 		float rotY = entity.rotationYaw;
@@ -51,7 +51,7 @@ public class StewLotusrootRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y + 0.0625F, (float) z);
-		GlStateManager.scale(-0.75F, -1.0F, 0.75F);
+		GlStateManager.scale(-0.5F, -1.0F, 0.5F);
 
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);
@@ -65,9 +65,10 @@ public class StewLotusrootRenderer extends DCRenderFoodBase<FoodEntityBase> {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y + 0.0625F, (float) z);
 		GlStateManager.enableBlend();
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		GlStateManager
+				.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
-		GlStateManager.scale(-0.75F, -1.0F, 0.75F);
+		GlStateManager.scale(-0.5F, -1.0F, 0.5F);
 
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);

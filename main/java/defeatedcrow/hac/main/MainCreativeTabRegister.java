@@ -61,6 +61,7 @@ public class MainCreativeTabRegister {
 		MainInit.thermometer.setCreativeTab(ClimateCore.climate);
 		MainInit.windvane.setCreativeTab(ClimateCore.climate);
 		MainInit.bellow.setCreativeTab(ClimateMain.machine);
+		MainInit.pail.setCreativeTab(ClimateMain.machine);
 
 		// item
 		// ores

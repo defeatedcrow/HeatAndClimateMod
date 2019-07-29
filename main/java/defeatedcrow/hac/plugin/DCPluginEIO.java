@@ -63,8 +63,8 @@ public class DCPluginEIO {
 		FluidFuelRegister.instance.addCoolant(MainInit.nitrogen, 0.015F);
 
 		// blacklist
-		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.ores, 1, 32767));
-		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.ores_2, 1, 32767));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.oreNew, 1, 32767));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.layerNew, 1, 32767));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.thermometer, 1, 0));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.windvane, 1, 0));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.stevenson_screen, 1, 0));

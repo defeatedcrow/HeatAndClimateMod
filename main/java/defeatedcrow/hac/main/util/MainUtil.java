@@ -139,7 +139,7 @@ public class MainUtil {
 	}
 
 	public static ItemStack getRandomBasket(int i) {
-		int meta = DCUtil.rand.nextInt(12);
+		int meta = DCUtil.rand.nextInt(15);
 		return new ItemStack(MainInit.cropBasket, i, meta);
 	}
 

@@ -52,7 +52,7 @@ public class ItemSpadeDC extends ItemSpade implements ITexturePath {
 			EnumFacing face;
 			EntityPlayer player = (EntityPlayer) living;
 			RayTraceResult ret = this.rayTrace(world, player, false);
-			if (ret.typeOfHit == RayTraceResult.Type.BLOCK) {
+			if (ret != null && ret.typeOfHit == RayTraceResult.Type.BLOCK) {
 				face = ret.sideHit;
 				List<BlockPos> list = getTargetPos(pos, face);
 				for (BlockPos p : list) {

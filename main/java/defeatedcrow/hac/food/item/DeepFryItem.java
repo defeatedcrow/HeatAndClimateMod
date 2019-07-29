@@ -10,7 +10,9 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.FriedChickenEntity;
 import defeatedcrow.hac.food.entity.FriedFalafelEntity;
 import defeatedcrow.hac.food.entity.FriedFishEntity;
+import defeatedcrow.hac.food.entity.FriedFishcakeEntity;
 import defeatedcrow.hac.food.entity.FriedPorkEntity;
+import defeatedcrow.hac.food.entity.FriedPorkGingerEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +30,7 @@ public class DeepFryItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 3;
+		return 5;
 	}
 
 	@Override
@@ -59,6 +61,12 @@ public class DeepFryItem extends FoodItemBase {
 		}
 		if (i == 3) {
 			ret = new FriedFalafelEntity(world, x, y, z, player);
+		}
+		if (i == 4) {
+			ret = new FriedFishcakeEntity(world, x, y, z, player);
+		}
+		if (i == 5) {
+			ret = new FriedPorkGingerEntity(world, x, y, z, player);
 		}
 		return ret;
 	}

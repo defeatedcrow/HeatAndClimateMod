@@ -137,6 +137,31 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(MealBreakfastBEntity.class, SetmealBreakfastRenderer.class);
 		ClientMainProxy.registRender(MealBreakfastJEntity.class, SetmealBreakfastJRenderer.class);
 		ClientMainProxy.registRender(BigGarlicPlateEntity.class, PlateBigGarlicRenderer.class);
+		ClientMainProxy.registRender(WalnutBreadEntity.class, WalnutBreadRenderer.class);
+		ClientMainProxy.registRender(GingermanEntity.class, GingermanRenderer.class);
+		ClientMainProxy.registRender(SimmeredPumpkinEntity.class, SimmeredPumpkinRenderer.class);
+		ClientMainProxy.registRender(SaladSalmonEntity.class, SaladSalmonRenderer.class);
+		ClientMainProxy.registRender(SaladTofuEntity.class, SaladTofuRenderer.class);
+		ClientMainProxy.registRender(SaladWalnutEntity.class, SaladWalnutRenderer.class);
+		ClientMainProxy.registRender(WagashiAbekawaEntity.class, WagashiAbekawaRenderer.class);
+		ClientMainProxy.registRender(DishCapreseEntity.class, DishCapreseRenderer.class);
+		ClientMainProxy.registRender(DishBruschettaEntity.class, DishBruschettaRenderer.class);
+		ClientMainProxy.registRender(DishSalmonEntity.class, DishSalmonRenderer.class);
+		ClientMainProxy.registRender(DishSushiEntity.class, DishSushiRenderer.class);
+		ClientMainProxy.registRender(DishSashimiEntity.class, DishSashimiRenderer.class);
+		ClientMainProxy.registRender(DishMisoniEntity.class, DishMisoniRenderer.class);
+		ClientMainProxy.registRender(DishTamagoEntity.class, DishTamagoRenderer.class);
+		ClientMainProxy.registRender(DishYakkoEntity.class, DishYakkoRenderer.class);
+		ClientMainProxy.registRender(DishMaboEntity.class, DishMaboRenderer.class);
+		ClientMainProxy.registRender(FriedFishcakeEntity.class, FriedFishcakeRenderer.class);
+		ClientMainProxy.registRender(FriedPorkGingerEntity.class, FriedPorkgingerRenderer.class);
+		ClientMainProxy.registRender(DrinkGingerEntity.class, DrinkGingerRenderer.class);
+		ClientMainProxy.registRender(DrinkKuzuEntity.class, DrinkKuzuRenderer.class);
+		ClientMainProxy.registRender(DrinkTomatoEntity.class, DrinkTomatoRenderer.class);
+		ClientMainProxy.registRender(CakeTowerEntity.class, PancakeTowerRenderer.class);
+		ClientMainProxy.registRender(UdonMeatEntity.class, UdonMeatRenderer.class);
+		ClientMainProxy.registRender(UdonSeaweedEntity.class, UdonSeaweedRenderer.class);
+		ClientMainProxy.registRender(UdonEggEntity.class, UdonEggRenderer.class);
 	}
 
 	public static void loadTE() {

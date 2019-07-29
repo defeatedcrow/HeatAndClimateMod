@@ -30,7 +30,7 @@ public class ContainerVillagerDC extends Container {
 		this.addSlotToContainer(new Slot(inv_liv, 1, 7, 63));
 
 		for (int j = 0; j < 4; ++j) {
-			this.addSlotToContainer(new Slot(inv_liv, j + 2, 79, 9 + j * 18));
+			this.addSlotToContainer(new Slot(inv_liv, 6 - j, 79, 9 + j * 18));
 		}
 
 		for (int k = 0; k < 3; ++k) {

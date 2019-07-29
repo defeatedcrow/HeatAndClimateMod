@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.event;
 
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,13 +33,13 @@ public class CombatEvent {
 				EntityLivingBase ownerLiv = (EntityLivingBase) owner;
 
 				int venom = EnchantmentHelper.getEnchantmentLevel(MainInit.venom, ownerLiv.getHeldItemMainhand());
-				if (venom > 0) {
+				if (MainCoreConfig.e_venom && venom > 0) {
 					PotionEffect eff = new PotionEffect(MobEffects.WITHER, 100, venom);
 					living.addPotionEffect(eff);
 				}
 
 				int robber = EnchantmentHelper.getEnchantmentLevel(MainInit.robber, ownerLiv.getHeldItemMainhand());
-				if (robber > 0 && living.world.rand.nextInt(100) < robber * 20) {
+				if (MainCoreConfig.e_robber && robber > 0 && living.world.rand.nextInt(100) < robber * 20) {
 					for (int i = 0; i < EntityEquipmentSlot.values().length; i++) {
 						ItemStack item = living.getItemStackFromSlot(EntityEquipmentSlot.values()[i]);
 						if (!DCUtil.isEmpty(item)) {

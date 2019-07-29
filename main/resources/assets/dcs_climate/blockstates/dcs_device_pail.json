@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "dcs_climate:device/dcs_device_pail" }
+    }
+}

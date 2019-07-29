@@ -177,6 +177,7 @@ public class MainInit {
 	public static Block bellow;
 	public static Block thermometer;
 	public static Block windvane;
+	public static Block pail;
 
 	// item
 	// ores

@@ -131,6 +131,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regTEBlock(MainInit.windvane, ClimateCore.PACKAGE_ID, "dcs_device_windvane", "device", 0);
 		MAIN_INSTANCE
 				.regTEBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_ID, "dcs_device_stevenson_screen", "machine", 0);
+		MAIN_INSTANCE.regTEBlock(MainInit.pail, ClimateCore.PACKAGE_ID, "dcs_device_pail", "machine", 0);
 
 		// door
 		if (ModuleConfig.build_advanced) {

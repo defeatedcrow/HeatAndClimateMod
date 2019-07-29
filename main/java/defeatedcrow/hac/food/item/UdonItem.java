@@ -7,7 +7,9 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.FriedPorkEntity;
+import defeatedcrow.hac.food.entity.UdonEggEntity;
+import defeatedcrow.hac.food.entity.UdonMeatEntity;
+import defeatedcrow.hac.food.entity.UdonSeaweedEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,18 +49,24 @@ public class UdonItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new FriedPorkEntity(world, x, y, z, player);
+		FoodEntityBase ret = new UdonMeatEntity(world, x, y, z, player);
+		if (i == 1) {
+			ret = new UdonSeaweedEntity(world, x, y, z, player);
+		}
+		if (i == 2) {
+			ret = new UdonEggEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 14;
+		return 10;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.25F;
+		return 0.3F;
 	}
 
 	@Override

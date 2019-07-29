@@ -7,7 +7,14 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.FriedPorkEntity;
+import defeatedcrow.hac.food.entity.DishBruschettaEntity;
+import defeatedcrow.hac.food.entity.DishCapreseEntity;
+import defeatedcrow.hac.food.entity.DishMisoniEntity;
+import defeatedcrow.hac.food.entity.DishSalmonEntity;
+import defeatedcrow.hac.food.entity.DishSashimiEntity;
+import defeatedcrow.hac.food.entity.DishSushiEntity;
+import defeatedcrow.hac.food.entity.DishTamagoEntity;
+import defeatedcrow.hac.food.entity.DishYakkoEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,13 +62,38 @@ public class DishItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new FriedPorkEntity(world, x, y, z, player);
+		FoodEntityBase ret = new DishCapreseEntity(world, x, y, z, player);
+		if (i == 1) {
+			ret = new DishBruschettaEntity(world, x, y, z, player);
+		}
+		if (i == 2) {
+			ret = new DishSalmonEntity(world, x, y, z, player);
+		}
+		if (i == 3) {
+			ret = new DishSushiEntity(world, x, y, z, player);
+		}
+		if (i == 4) {
+			ret = new DishSashimiEntity(world, x, y, z, player);
+			ret.setIndividual(world.rand.nextInt(32));
+		}
+		if (i == 5) {
+			ret = new DishMisoniEntity(world, x, y, z, player);
+		}
+		if (i == 6) {
+			ret = new DishTamagoEntity(world, x, y, z, player);
+		}
+		if (i == 7) {
+			ret = new DishYakkoEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		return 10;
+		if (meta == 3 || meta == 4 | meta == 5) {
+			return 10;
+		}
+		return 6;
 	}
 
 	@Override

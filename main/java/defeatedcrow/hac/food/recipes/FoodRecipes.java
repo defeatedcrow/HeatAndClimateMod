@@ -210,15 +210,16 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodSoysauce", new ItemStack(FoodInit.meat, 1, 7));
 		OreDictionary.registerOre("foodSiroanko", new ItemStack(FoodInit.meat, 1, 8));
 		OreDictionary.registerOre("foodPastry", new ItemStack(FoodInit.pastry, 1, 0));
+		OreDictionary.registerOre("foodNoodles", new ItemStack(FoodInit.pastry, 1, 1));
 		OreDictionary.registerOre("foodDough", new ItemStack(FoodInit.bread, 1, 0));
 		OreDictionary.registerOre("foodBowlofrice", new ItemStack(FoodInit.ricebowl, 1, 0));
 		OreDictionary.registerOre("foodRicecake", new ItemStack(FoodInit.mochi, 1, 1));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 1));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 3));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 13));
-		// OreDictionary.registerOre("foodTofu", new ItemStack(FoodInit.nonEntity, 1, 3));
-		// OreDictionary.registerOre("foodFirmtofu", new ItemStack(FoodInit.nonEntity, 1, 3));
-		// OreDictionary.registerOre("foodSmokedsalmon", new ItemStack(FoodInit.nonEntity, 1, 4));
+		OreDictionary.registerOre("foodTofu", new ItemStack(FoodInit.nonEntity, 1, 3));
+		OreDictionary.registerOre("foodFirmtofu", new ItemStack(FoodInit.nonEntity, 1, 3));
+		OreDictionary.registerOre("foodSmokedsalmon", new ItemStack(FoodInit.nonEntity, 1, 4));
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 2));

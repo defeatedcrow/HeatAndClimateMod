@@ -8,11 +8,14 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.FriedPorkEntity;
+import defeatedcrow.hac.food.entity.DrinkGingerEntity;
+import defeatedcrow.hac.food.entity.DrinkKuzuEntity;
+import defeatedcrow.hac.food.entity.DrinkTomatoEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
@@ -50,7 +53,13 @@ public class DrinkItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new FriedPorkEntity(world, x, y, z, player);
+		FoodEntityBase ret = new DrinkGingerEntity(world, x, y, z, player);
+		if (i == 1) {
+			ret = new DrinkKuzuEntity(world, x, y, z, player);
+		}
+		if (i == 2) {
+			ret = new DrinkTomatoEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
@@ -69,6 +78,16 @@ public class DrinkItem extends FoodItemBase {
 	@Override
 	public float getSaturation(int meta) {
 		return 0.2F;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 32;
+	}
+
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.DRINK;
 	}
 
 	@Override

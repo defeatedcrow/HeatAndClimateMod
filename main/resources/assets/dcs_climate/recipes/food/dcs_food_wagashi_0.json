@@ -8,10 +8,6 @@
   {
    "type": "forge:ore_dict",
    "ore": "cropSoybean"
-  },
-  {
-   "type": "forge:ore_dict",
-   "ore": "dustSugar"
   }
  ],
  "result": {

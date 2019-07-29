@@ -457,6 +457,14 @@ public class FoodFluidRecipe {
 				3), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
 						200), new Object[] { "cropBean", "cropOnion", "cropGarlic" });
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
+				4), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						200), new Object[] { "listAllfishraw", "cropPotato", "bucketMilk", "foodFlour", "egg" });
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.deepFry, 1,
+				5), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+						100), new Object[] { "listAllporkraw", "cropGinger", "foodSoysauce", "dustSugar" });
+
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.snack, 1,
 				0), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
 						200), new Object[] { "cropPotato", "dustSalt" });
@@ -513,6 +521,30 @@ public class FoodFluidRecipe {
 			"listAllnut",
 			"dropMolasses",
 			"foodButter" });
+
+		regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+				MainInit.soyMilk, 1000), new Object[] { "gemGypsum" });
+
+		regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+				MainInit.soyMilk, 1000), new Object[] { "dustLime" });
+
+		regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 4), null, 0F, null, null, null, false, null, new Object[] {
+			"foodSalmonraw",
+			"dustWood" });
+
+		regBoilrecipe(new ItemStack(FoodInit.dishSq, 2, 5), null, 0F, null, null, null, false, null, new Object[] {
+			"listAllfishraw",
+			"cropGinger",
+			"foodMiso" });
+
+		regBoilrecipe(new ItemStack(FoodInit.udon, 2, 0), null, 0F, null, null, null, false, new FluidStack(
+				MainInit.stock, 1000), new Object[] { "foodNoodles", "foodSoysauce", "listAllmeatraw" });
+
+		regBoilrecipe(new ItemStack(FoodInit.udon, 2, 1), null, 0F, null, null, null, false, new FluidStack(
+				MainInit.stock, 1000), new Object[] { "foodNoodles", "foodSoysauce", "cropSeaweed" });
+
+		regBoilrecipe(new ItemStack(FoodInit.udon, 2, 2), null, 0F, null, null, null, false, new FluidStack(
+				MainInit.stock, 1000), new Object[] { "foodNoodles", "foodSoysauce", "egg" });
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
 				3), null, 0F, null, DCHeatTier.COLD, DCHumidity.DRY, null, false, null, new Object[] { "cropSeaweed" });

@@ -30,6 +30,7 @@ import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
+import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
@@ -47,6 +48,7 @@ import defeatedcrow.hac.main.client.block.TESRMCClock;
 import defeatedcrow.hac.main.client.block.TESRMagnetChest;
 import defeatedcrow.hac.main.client.block.TESRMetalChest;
 import defeatedcrow.hac.main.client.block.TESRNormalChamber;
+import defeatedcrow.hac.main.client.block.TESRPail;
 import defeatedcrow.hac.main.client.block.TESRShitirin;
 import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
 import defeatedcrow.hac.main.client.block.TESRThermometer;
@@ -208,6 +210,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock", new TESRAnalogClock());
 		registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l", new TESRLargeClock());
 		registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l", new TESRMCClock());
+		registerTileEntity(TilePail.class, "dcs_te_pail", new TESRPail());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();

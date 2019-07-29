@@ -1,0 +1,23 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/machine/pail_side",
+        "bottom": "dcs_climate:blocks/machine/pail_bottom",
+        "side": "dcs_climate:blocks/machine/pail_side",
+        "top": "dcs_climate:blocks/machine/pail_top"
+    },
+    "elements": [
+        {   "from": [ 2, 0, 2 ],
+            "to": [ 14, 16, 14 ],
+            "faces": {
+                "down":  { "uv": [ 2, 2, 14, 14 ], "texture": "#bottom", "cullface": "down" },
+                "up":    { "uv": [ 2, 2, 14, 14 ], "texture": "#top", "cullface": "up" },
+                "north": { "uv": [ 2, 0, 14, 16 ], "texture": "#side", "cullface": "north" },
+                "south": { "uv": [ 2, 0, 14, 16 ], "texture": "#side", "cullface": "south" },
+                "west":  { "uv": [ 2, 0, 14, 16 ], "texture": "#side", "cullface": "west" },
+                "east":  { "uv": [ 2, 0, 14, 16 ], "texture": "#side", "cullface": "east" }
+            }
+        }
+    ]
+}

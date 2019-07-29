@@ -23,9 +23,14 @@ public class MainCoreConfig {
 	public static boolean steel_hardmode = true;
 	public static boolean steel = true;
 	public static boolean pendant_clam = true;
+
 	public static boolean bird_effect = true;
 	public static boolean ocean_effect = true;
 	public static boolean armor_effect = false;
+
+	public static boolean e_corrosion = true;
+	public static boolean e_robber = true;
+	public static boolean e_venom = true;
 
 	public static double gun_damage = 12.0D;
 
@@ -44,6 +49,7 @@ public class MainCoreConfig {
 			cfg.addCustomCategoryComment("render setting", "This setting is for such as display and model.");
 			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin with the other mods.");
 			cfg.addCustomCategoryComment("item setting", "This setting is for the items.");
+			cfg.addCustomCategoryComment("enchantment setting", "This setting is for the enchantment.");
 
 			Property vsRF = cfg
 					.get("plugin setting", "Conversion rate vs RF", rateVsRF, "Set the amount of conversion rate as RF/torque.");
@@ -72,6 +78,16 @@ public class MainCoreConfig {
 			Property metal_b = cfg
 					.get("item setting", "Enable HardMode Metallurgy", steel_hardmode, "Enable Heat Treatment Process for Metallurgy.");
 
+			// Property e_cor = cfg
+			// .get("enchantment setting", "Enable Corrosion", e_corrosion, "Enable effect of the Corrosion
+			// Enchantment.");
+
+			Property e_vem = cfg
+					.get("enchantment setting", "Enable Venom", e_venom, "Enable effect of the Venom Enchantment.");
+
+			Property e_rob = cfg
+					.get("enchantment setting", "Enable Robber", e_robber, "Enable effect of the Highway Robber Enchantment.");
+
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
 
@@ -86,6 +102,10 @@ public class MainCoreConfig {
 			bird_effect = p_bird.getBoolean();
 			ocean_effect = p_ocean.getBoolean();
 			// timeZone = zone.getString();
+
+			// e_corrosion = e_cor.getBoolean();
+			e_venom = e_vem.getBoolean();
+			e_robber = e_rob.getBoolean();
 
 			blocknames = b_dia.getStringList();
 

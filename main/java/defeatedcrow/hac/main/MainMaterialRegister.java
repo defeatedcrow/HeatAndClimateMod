@@ -66,6 +66,7 @@ import defeatedcrow.hac.main.block.device.BlockAcvShield;
 import defeatedcrow.hac.main.block.device.BlockBellow;
 import defeatedcrow.hac.main.block.device.BlockCookingStove;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
+import defeatedcrow.hac.main.block.device.BlockPail;
 import defeatedcrow.hac.main.block.device.BlockShitirin;
 import defeatedcrow.hac.main.block.device.BlockSink;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
@@ -73,6 +74,7 @@ import defeatedcrow.hac.main.block.device.BlockThermometer;
 import defeatedcrow.hac.main.block.device.BlockWindVane;
 import defeatedcrow.hac.main.block.device.ItemBlockShield;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
+import defeatedcrow.hac.main.block.device.ItemPail;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.block.ores.BlockDusts2;
@@ -266,6 +268,11 @@ public class MainMaterialRegister {
 		ForgeRegistries.BLOCKS.register(MainInit.bellow);
 		ForgeRegistries.ITEMS.register(new ItemBlockHighTier(MainInit.bellow, 1));
 
+		MainInit.pail = new BlockPail(ClimateCore.PACKAGE_BASE + "_device_pail");
+		MainInit.pail.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_pail");
+		ForgeRegistries.BLOCKS.register(MainInit.pail);
+		ForgeRegistries.ITEMS.register(new ItemPail(MainInit.pail));
+
 		// items
 
 		// title
@@ -370,29 +377,29 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsGlass), "dcs_climate", "dcs_stairs_glass", "build", 15, false);
 
-		MainInit.stairsGypsum = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_gypsum", false,
+		MainInit.stairsGypsum = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_gypsum", false,
 				false).setUnlocalizedName("dcs_stairs_gypsum");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsGypsum, ClimateCore.PACKAGE_BASE + "_stairs_gypsum", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsGypsum), "dcs_climate", "dcs_stairs_gypsum", "build", 15, false);
 
-		MainInit.stairsMarble = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_marble", false,
+		MainInit.stairsMarble = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_marble", false,
 				false).setUnlocalizedName("dcs_stairs_marble");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsMarble, ClimateCore.PACKAGE_BASE + "_stairs_marble", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsMarble), "dcs_climate", "dcs_stairs_marble", "build", 15, false);
 
-		MainInit.stairsSerpentine = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_serpentine",
+		MainInit.stairsSerpentine = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_serpentine",
 				false, false).setUnlocalizedName("dcs_stairs_serpentine");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsSerpentine, ClimateCore.PACKAGE_BASE + "_stairs_serpentine", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsSerpentine), "dcs_climate", "dcs_stairs_serpentine", "build", 15, false);
 
-		MainInit.stairsBedrock = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_bedrock", false,
-				false).setUnlocalizedName("dcs_stairs_bedrock");
+		MainInit.stairsBedrock = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_bedrock",
+				false, false).setUnlocalizedName("dcs_stairs_bedrock");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsBedrock, ClimateCore.PACKAGE_BASE + "_stairs_bedrock", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
@@ -1300,9 +1307,9 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.dustBags, ClimateCore.PACKAGE_BASE + "_cont_bags", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 7);
 
-		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 13);
+		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 14);
 		DCMaterialReg.registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 13);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 14);
 
 		MainInit.cropJute = new BlockCropJutebag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_jutebag", 3);
 		DCMaterialReg.registerBlock(MainInit.cropJute, ClimateCore.PACKAGE_BASE + "_cont_jutebag", ClimateMain.MOD_ID);
