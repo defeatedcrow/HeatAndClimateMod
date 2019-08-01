@@ -405,8 +405,8 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsBedrock), "dcs_climate", "dcs_stairs_bedrock", "build", 15, false);
 
-		MainInit.stairsDirtbrick = new BlockStairsBase(MainInit.ores.getDefaultState(), "build/build_dirtbrick", false,
-				false).setUnlocalizedName("dcs_stairs_dirtbrick");
+		MainInit.stairsDirtbrick = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "build/build_dirtbrick",
+				false, false).setUnlocalizedName("dcs_stairs_dirtbrick");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsDirtbrick, ClimateCore.PACKAGE_BASE + "_stairs_dirtbrick", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item

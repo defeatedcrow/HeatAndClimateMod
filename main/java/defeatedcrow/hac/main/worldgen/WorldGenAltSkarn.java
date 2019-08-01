@@ -15,6 +15,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -148,7 +149,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 			int i = WorldGenConfig.skarnGen;
 			pRandom.nextFloat();
 			float r = pRandom.nextFloat() * 10000F;
-			if (r > 0 && r < i) {
+			int ri = MathHelper.floor(r);
+			if (ri > 0 && ri < i) {
 				SkarnGenPoint.addPos(chunkX, chunkZ);
 				return true;
 			}

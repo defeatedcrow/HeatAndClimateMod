@@ -49,7 +49,7 @@ public class BlockDusts2 extends DCSimpleBlock implements ITexturePath, IRapidCo
 			ItemStack check = new ItemStack(this, 1, meta);
 			IHeatTreatment recipe = MainAPIManager.heatTreatmentRegister.getRecipe(check);
 			if (recipe != null) {
-				ItemStack output = recipe.getCurrentOutput(check, clm);
+				ItemStack output = recipe.getCurrentOutput(check, clm).getResult();
 				if (!DCUtil.isEmpty(output) && output.getItem() instanceof ItemBlock) {
 					Block ret = ((ItemBlock) output.getItem()).getBlock();
 					IBlockState retS = ret.getStateFromMeta(output.getMetadata());
@@ -75,11 +75,7 @@ public class BlockDusts2 extends DCSimpleBlock implements ITexturePath, IRapidCo
 		world.scheduleUpdate(pos, this, this.tickRate(world));
 	}
 
-	private static String[] names = {
-			"dirt",
-			"crystal",
-			"toolsteel"
-	};
+	private static String[] names = { "dirt", "crystal", "toolsteel" };
 
 	@Override
 	public String[] getNameSuffix() {

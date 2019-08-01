@@ -59,7 +59,7 @@ public class ItemSpadeDC extends ItemSpade implements ITexturePath {
 					if (player.canPlayerEdit(p, face, stack)) {
 						IBlockState block = player.world.getBlockState(p);
 						if (block.getBlock().canHarvestBlock(player.world, p, player) && !block.getBlock()
-								.hasTileEntity(block)) {
+								.hasTileEntity(block) && block.getBlockHardness(world, p) >= 0) {
 							block.getBlock().harvestBlock(world, player, p, block, null, stack);
 							world.setBlockToAir(p);
 						}

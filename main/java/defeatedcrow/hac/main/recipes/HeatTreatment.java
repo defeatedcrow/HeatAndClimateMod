@@ -11,6 +11,8 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.IHeatTreatment;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 
 public class HeatTreatment implements IHeatTreatment {
 
@@ -146,32 +148,33 @@ public class HeatTreatment implements IHeatTreatment {
 	}
 
 	@Override
-	public ItemStack getCurrentOutput(ItemStack in, IClimate climate) {
+	public ActionResult<ItemStack> getCurrentOutput(ItemStack in, IClimate climate) {
 		if (matchClimate1(climate))
 			for (ItemStack i1 : input1) {
 				if (DCUtil.isSameItem(in, i1, false)) {
 					if (!DCUtil.isEmpty(input2)) {
-						return input2.copy();
+						return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, input2.copy());
 					} else if (!DCUtil.isEmpty(input3)) {
-						return input3.copy();
+						return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, input3.copy());
 					} else if (!DCUtil.isEmpty(output)) {
-						return output.copy();
+						return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, output.copy());
 					}
 				}
 			}
 		if (matchClimate2(climate) && DCUtil.isSameItem(in, input2, false)) {
 			if (!DCUtil.isEmpty(input3)) {
-				return input3.copy();
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, input3.copy());
 			} else if (!DCUtil.isEmpty(output)) {
-				return output.copy();
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, output.copy());
 			}
 		}
 		if (matchClimate3(climate) && DCUtil.isSameItem(in, input3, false)) {
 			if (!DCUtil.isEmpty(output)) {
-				return output.copy();
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, output.copy());
 			}
 		}
-		return DCUtil.isEmpty(failure) ? ItemStack.EMPTY : failure;
+		return DCUtil.isEmpty(failure) ? new ActionResult<ItemStack>(EnumActionResult.FAIL, ItemStack.EMPTY) :
+				new ActionResult<ItemStack>(EnumActionResult.FAIL, failure);
 	}
 
 	@Override

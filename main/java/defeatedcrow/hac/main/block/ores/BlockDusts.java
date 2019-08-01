@@ -50,7 +50,7 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 			ItemStack check = new ItemStack(this, 1, meta);
 			IHeatTreatment recipe = MainAPIManager.heatTreatmentRegister.getRecipe(check);
 			if (recipe != null) {
-				ItemStack output = recipe.getCurrentOutput(check, clm);
+				ItemStack output = recipe.getCurrentOutput(check, clm).getResult();
 				if (!DCUtil.isEmpty(output) && output.getItem() instanceof ItemBlock) {
 					Block ret = ((ItemBlock) output.getItem()).getBlock();
 					IBlockState retS = ret.getStateFromMeta(output.getMetadata());
@@ -77,23 +77,22 @@ public class BlockDusts extends DCSimpleBlock implements ITexturePath, IRapidCol
 	}
 
 	private static String[] names = {
-			"copper",
-			"zinc",
-			"nickel",
-			"silver",
-			"brass",
-			"steel",
-			"nickelsilver",
-			"magnet",
-			"tin",
-			"bronze",
-			"sus",
-			"gold",
-			"titanium",
-			"aluminium",
-			"bismuth",
-			"bscco"
-	};
+		"copper",
+		"zinc",
+		"nickel",
+		"silver",
+		"brass",
+		"steel",
+		"nickelsilver",
+		"magnet",
+		"tin",
+		"bronze",
+		"sus",
+		"gold",
+		"titanium",
+		"aluminium",
+		"bismuth",
+		"bscco" };
 
 	public static ItemStack[] containedItem() {
 		ItemStack[] ret = new ItemStack[16];

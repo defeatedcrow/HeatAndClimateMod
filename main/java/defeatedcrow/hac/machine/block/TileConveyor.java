@@ -29,6 +29,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -222,11 +224,13 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 						.getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
 				inv.setInventorySlotContents(0, ret);
 				// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
-			} else if (recipe2 != null && !DCUtil.isEmpty(recipe2.getCurrentOutput(target, current))) {
-				ItemStack ret = recipe2.getCurrentOutput(target, current);
-				world.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D, getPos()
-						.getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
-				inv.setInventorySlotContents(0, ret);
+			} else if (recipe2 != null) {
+				ActionResult<ItemStack> ret = recipe2.getCurrentOutput(target, current);
+				if (ret.getType() == EnumActionResult.SUCCESS && !DCUtil.isEmpty(ret.getResult())) {
+					world.playSound((EntityPlayer) null, getPos().getX() + 0.5D, getPos().getY() + 0.5D, getPos()
+							.getZ() + 0.5D, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.25F, 0.85F);
+					inv.setInventorySlotContents(0, ret.getResult());
+				}
 				// DCLogger.debugLog("convayor smelting:" + inv[1].getDisplayName() + ", size:" + inv[1].stackSize);
 			} else if (current.getHumidity() != DCHumidity.UNDERWATER && current
 					.getAirflow() == DCAirflow.TIGHT && current.getHeat().getID() > DCHeatTier.KILN.getID()) {
@@ -318,22 +322,15 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	/* === inventory === */
 
 	protected int[] slotsTop() {
-		return new int[] {
-				0
-		};
+		return new int[] { 0 };
 	};
 
 	protected int[] slotsBottom() {
-		return new int[] {
-				0,
-				1
-		};
+		return new int[] { 0, 1 };
 	};
 
 	protected int[] slotsSides() {
-		return new int[] {
-				0
-		};
+		return new int[] { 0 };
 	};
 
 	public DCInventory inv = new DCInventory(2);
