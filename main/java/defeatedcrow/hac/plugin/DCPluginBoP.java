@@ -14,6 +14,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -88,6 +89,12 @@ public class DCPluginBoP {
 						MachineInit.rotaryBlade, 1, 1), new ItemStack(stalagmite, 1, 0));
 			}
 
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), new ItemStack(Items.SLIME_BALL, 1,
+					0), 0.25F, new ItemStack(BOPBlocks.mud, 1, 0));
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), new ItemStack(Items.SLIME_BALL,
+					1, 0), 0.25F, new ItemStack(MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPBlocks.mud, 1, 0));
+
 			Item wax = Item.REGISTRY.getObject(new ResourceLocation("forestry", "beeswax"));
 			if (DCIntegrationCore.loadedForestry && wax != null) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
@@ -97,9 +104,17 @@ public class DCPluginBoP {
 						MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPItems.honeycomb, 1, 0));
 			}
 
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropWildrice");
+
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
 					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
 							MachineInit.rotaryBlade, 1, 0), "cropWildrice");
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropBarlay");
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
+					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
+							MachineInit.rotaryBlade, 1, 0), "cropBarlay");
 
 		}
 
