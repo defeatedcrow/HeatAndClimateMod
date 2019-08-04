@@ -854,6 +854,7 @@ tile.dcs_cont_basket_mulberry.name=桑葚籃
 tile.dcs_cont_basket_cocoon.name=蠶繭籃
 tile.dcs_cont_basket_garlic.name=大蒜籃
 tile.dcs_cont_basket_lettuce.name=萵苣籃
+tile.dcs_cont_basket_ginger.name=薑籃
 tile.dcs_cont_jutebag_bean.name=四季豆袋
 tile.dcs_cont_jutebag_chili.name=辣椒袋
 tile.dcs_cont_jutebag_walnut.name=核桃袋
@@ -1146,6 +1147,7 @@ tile.dcs_device_monitor_rf_0.name=遠程RF監視屏
 tile.dcs_device_monitor_item_0.name=遠程物品監視屏
 tile.dcs_device_silkworm_box_0.name=蠶的繁殖箱
 tile.dcs_device_entity_panel_0.name=實體感應傳感器
+tile.dcs_device_pail_0.name=18公升方桶
 
 tile.dcs_crop_rice_0.name=水稻
 tile.dcs_crop_rice_1.name=水稻
