@@ -44,7 +44,7 @@ public class DrinkKuzuRenderer extends DCRenderFoodBase<FoodEntityBase> {
 		GlStateManager.popMatrix();
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) x, (float) y, (float) z);
+		GlStateManager.translate((float) x, (float) y + 0.125F, (float) z);
 		GlStateManager.enableBlend();
 		GlStateManager
 				.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
