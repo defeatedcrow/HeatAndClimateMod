@@ -175,7 +175,9 @@ public class FoodRecipes {
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.cropWisteria, 1, 32767));
 
 		OreDictionary.registerOre("bucketWater", new ItemStack(FoodInit.paperPack, 1, 1));
+		OreDictionary.registerOre("listAllwater", new ItemStack(FoodInit.paperPack, 1, 1));
 		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 2));
+		OreDictionary.registerOre("listAllmilk", new ItemStack(FoodInit.paperPack, 1, 2));
 		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.paperPack, 1, 3));
 		OreDictionary.registerOre("listAllheavycream", new ItemStack(FoodInit.paperPack, 1, 3));
 		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.dropCream, 1, 0));
@@ -192,6 +194,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodLiquor", new ItemStack(FoodInit.paperPack, 1, 12));
 		OreDictionary.registerOre("bucketMilk", new ItemStack(FoodInit.paperPack, 1, 13));
 		OreDictionary.registerOre("bucketSoymilk", new ItemStack(FoodInit.paperPack, 1, 13));
+		OreDictionary.registerOre("listAllmilk", new ItemStack(FoodInit.paperPack, 1, 13));
 
 		OreDictionary.registerOre("foodButter", new ItemStack(FoodInit.dairy, 1, 0));
 		OreDictionary.registerOre("foodCheese", new ItemStack(FoodInit.dairy, 1, 1));

@@ -311,6 +311,8 @@ public class MachineCrusherRecipe {
 				Blocks.STAINED_HARDENED_CLAY, 1, 32767));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), null, 0F, ti, new ItemStack(
 				Blocks.HARDENED_CLAY, 1, 0));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				1), 0.25F, null, ti, "dirt");
 	}
 
 }

@@ -44,7 +44,7 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 3;
 	public static final int MOD_MINOR = 1;
-	public static final int MOD_BUILD = 3;
+	public static final int MOD_BUILD = 4;
 	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.1.1,)";
 	public static final String UPDATE_JSON = "https://defeatedcrow.jp/version/heatandclimate.json";
 

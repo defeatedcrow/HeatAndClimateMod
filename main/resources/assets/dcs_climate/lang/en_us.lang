@@ -851,6 +851,7 @@ tile.dcs_cont_misc_clay.name=Clay Box
 tile.dcs_cont_misc_fish.name=Fish Box
 tile.dcs_cont_misc_leather.name=Leather Box
 tile.dcs_cont_misc_fur.name=Fur Box
+tile.dcs_cont_misc_feather.name=Feather Box
 tile.dcs_cont_cardboard_beef.name=Beef Box
 tile.dcs_cont_cardboard_pork.name=Pork Box
 tile.dcs_cont_cardboard_chicken.name=Chicken Box

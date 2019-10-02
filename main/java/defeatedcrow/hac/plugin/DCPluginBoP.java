@@ -1,5 +1,9 @@
 package defeatedcrow.hac.plugin;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import biomesoplenty.api.block.BOPBlocks;
 import biomesoplenty.api.item.BOPItems;
 import defeatedcrow.hac.api.climate.ClimateAPI;
@@ -78,7 +82,30 @@ public class DCPluginBoP {
 
 		// machine
 		if (ModuleConfig.machine && ModuleConfig.r_mill) {
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "plantWildrice");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropWildrice");
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
+					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
+							MachineInit.rotaryBlade, 1, 0), "cropWildrice");
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropBarlay");
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
+					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
+							MachineInit.rotaryBlade, 1, 0), "cropBarlay");
+
+			List<ItemStack> leaves = Lists.newArrayList();
+			leaves.add(new ItemStack(Blocks.WATERLILY, 1, 0));
+			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 10));
+			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 11));
+			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 12));
+			leaves.add(new ItemStack(BOPBlocks.waterlily, 1, 32767));
+			leaves.add(new ItemStack(BOPBlocks.coral, 1, 4));
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0.0F, leaves);
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(
+					MainInit.foodDust, 1, 1), 0.25F, new ItemStack(MachineInit.rotaryBlade, 1, 0), leaves);
 
 			Block stalagmite = Block.REGISTRY.getObject(new ResourceLocation("biomesoplenty", "stone_formations"));
 			if (stalagmite != null && stalagmite != Blocks.AIR) {
@@ -103,18 +130,6 @@ public class DCPluginBoP {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
 						MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPItems.honeycomb, 1, 0));
 			}
-
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropWildrice");
-
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
-					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
-							MachineInit.rotaryBlade, 1, 0), "cropWildrice");
-
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropBarlay");
-
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
-					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
-							MachineInit.rotaryBlade, 1, 0), "cropBarlay");
 
 		}
 

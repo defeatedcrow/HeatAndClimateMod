@@ -29,21 +29,17 @@ public class BlockMiscCont extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = {
-				"clay",
-				"fish",
-				"leather",
-				"fur"
-		};
+		String[] name = { "clay", "fish", "leather", "fur", "feather" };
 		return name;
 	}
 
 	public static ItemStack[] containedItem() {
-		ItemStack[] ret = new ItemStack[4];
+		ItemStack[] ret = new ItemStack[5];
 		ret[0] = new ItemStack(Items.CLAY_BALL, 8);
 		ret[1] = new ItemStack(Items.FISH, 8);
 		ret[2] = new ItemStack(Items.LEATHER, 8);
 		ret[3] = new ItemStack(Items.RABBIT_HIDE, 8);
+		ret[4] = new ItemStack(Items.FEATHER, 8);
 
 		return ret;
 	}
@@ -51,8 +47,8 @@ public class BlockMiscCont extends DCSimpleBlock implements ITexturePath, IRapid
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 15;
-		if (m > 3)
-			m = 3;
+		if (m > 4)
+			m = 4;
 		String b = "dcs_climate:blocks/cont/";
 		switch (side) {
 		case 0:
@@ -75,14 +71,15 @@ public class BlockMiscCont extends DCSimpleBlock implements ITexturePath, IRapid
 		list.add(b + "t_fish");
 		list.add(b + "t_leather");
 		list.add(b + "t_fur");
+		list.add(b + "t_feather");
 		return list;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 15;
-		if (m > 3)
-			m = 3;
+		if (m > 4)
+			m = 4;
 		String b = "dcs_climate:items/block/cont/";
 		return b + "metalbox_" + getNameSuffix()[m];
 	}

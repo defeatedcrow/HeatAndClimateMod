@@ -109,7 +109,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 						for (int z = posZ - rr; z <= posZ + rr; z++) {
 							BlockPos p = new BlockPos(x, y, z);
 							IBlockState block = world.getBlockState(p);
-							if (this.isPlaceable(block.getBlock())) {
+							if (this.isPlaceable(block.getBlock(), isForced)) {
 								int x1 = p.getX() - posX;
 								int z1 = p.getZ() - posZ;
 								double dist = Math.sqrt(x1 * x1 + z1 * z1);
@@ -231,7 +231,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		}
 	}
 
-	static boolean isPlaceable(Block block) {
+	static boolean isPlaceable(Block block, boolean b) {
 		if (block == Blocks.STONE)
 			return true;
 		if (block == Blocks.GRAVEL)
@@ -243,7 +243,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		if (block == Blocks.SAND)
 			return true;
 
-		return false;
+		return b;
 	}
 
 	private static final BlockSet AIR = new BlockSet(Blocks.AIR, 0);

@@ -1294,9 +1294,9 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.dropCont, ClimateCore.PACKAGE_BASE + "_cont_metal", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.dropCont, "cont_metal", 5);
 
-		MainInit.miscCont = new BlockMiscCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_misc", 3);
+		MainInit.miscCont = new BlockMiscCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_misc", 4);
 		DCMaterialReg.registerBlock(MainInit.miscCont, ClimateCore.PACKAGE_BASE + "_cont_misc", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.miscCont, "cont_misc", 3);
+		ClimateMain.proxy.addSidedBlock(MainInit.miscCont, "cont_misc", 4);
 
 		MainInit.cardboard = new BlockCardboard(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cardboard", 5);
 		DCMaterialReg

@@ -218,7 +218,9 @@ public class CommonMainProxy implements IGuiHandler {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)) });
 
-		agriList.addTrade(2, new ITradeList[] { HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)) });
+		agriList.addTrade(2, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)) });
 
 		agriList.addTrade(3, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
@@ -236,6 +238,7 @@ public class CommonMainProxy implements IGuiHandler {
 		VillagerCareer traderList = new VillagerCareer(MainInit.trader, "dcs_trader");
 
 		traderList.addTrade(1, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3)) });
 
 		traderList.addTrade(2, new ITradeList[] {
@@ -244,16 +247,17 @@ public class CommonMainProxy implements IGuiHandler {
 
 		traderList.addTrade(3, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)) });
 
 		traderList.addTrade(4, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)) });
 
 		traderList.addTrade(5, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
+
+		traderList.addTrade(6, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
 
@@ -278,6 +282,10 @@ public class CommonMainProxy implements IGuiHandler {
 
 			machineList.addTrade(5, new ITradeList[] {
 				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
+
+			machineList.addTrade(6, new ITradeList[] {
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
 				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
 		}
 

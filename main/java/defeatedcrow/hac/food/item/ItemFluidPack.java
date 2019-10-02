@@ -17,10 +17,12 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
@@ -34,7 +36,9 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -254,9 +258,34 @@ public class ItemFluidPack extends DCItem {
 	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		if (player != null) {
 			ItemStack item = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(item) && item.getItemDamage() > 0) {
-				player.setActiveHand(hand);
-				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+			/* 水のみ直接汲むことができる */
+			if (!DCUtil.isEmpty(item)) {
+				if (item.getItemDamage() == 0) {
+					RayTraceResult res = this.rayTrace(world, player, true);
+					if (res != null && res.typeOfHit == RayTraceResult.Type.BLOCK) {
+						BlockPos pos = res.getBlockPos();
+						if (world.isBlockModifiable(player, pos) && player.canPlayerEdit(pos
+								.offset(res.sideHit), res.sideHit, item)) {
+							IBlockState state = world.getBlockState(pos);
+							if (state.getBlock() == Blocks.WATER || state.getBlock() == Blocks.FLOWING_WATER) {
+								player.playSound(SoundEvents.ITEM_BUCKET_FILL, 0.75F, 1.25F);
+								if (!world.isRemote) {
+									EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D,
+											player.posZ, new ItemStack(this, 1, 1));
+									world.spawnEntity(drop);
+								}
+								if (!player.capabilities.isCreativeMode) {
+									DCUtil.redAndDel(item, 1);
+								}
+								return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+							}
+						}
+					}
+					return new ActionResult<ItemStack>(EnumActionResult.PASS, item);
+				} else {
+					player.setActiveHand(hand);
+					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+				}
 			}
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 		}
@@ -271,8 +300,10 @@ public class ItemFluidPack extends DCItem {
 			worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand
 					.nextFloat() * 0.1F + 0.9F);
 			this.addEffects(stack, worldIn, living);
-			this.dropContainerItem(worldIn, stack, living);
-			DCUtil.reduceStackSize(stack, 1);
+			if (!player.capabilities.isCreativeMode) {
+				this.dropContainerItem(worldIn, stack, living);
+				DCUtil.reduceStackSize(stack, 1);
+			}
 		}
 
 		return stack;
@@ -282,8 +313,10 @@ public class ItemFluidPack extends DCItem {
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target,
 			EnumHand hand) {
 		if (this.addEffects(stack, player.world, target)) {
-			this.dropContainerItem(player.world, stack, player);
-			DCUtil.reduceStackSize(stack, 1);
+			if (!player.capabilities.isCreativeMode) {
+				this.dropContainerItem(player.world, stack, player);
+				DCUtil.reduceStackSize(stack, 1);
+			}
 			return true;
 		}
 		return super.itemInteractionForEntity(stack, player, target, hand);

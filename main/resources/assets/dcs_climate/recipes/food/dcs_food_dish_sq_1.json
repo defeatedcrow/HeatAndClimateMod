@@ -12,10 +12,6 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "listAllherb"
-  },
-  {
-   "type": "forge:ore_dict",
    "ore": "foodSmokedsalmon"
   }
  ],

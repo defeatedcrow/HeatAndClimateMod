@@ -163,6 +163,26 @@ public class MainUtil {
 		return new ItemStack(MagicInit.colorRing, i, meta);
 	}
 
+	public static ItemStack getRandomLogCont(int i) {
+		int meta = DCUtil.rand.nextInt(6);
+		return new ItemStack(MainInit.logCont, i, meta);
+	}
+
+	public static ItemStack getRandomBuildingBlock(int i) {
+		int meta = DCUtil.rand.nextInt(4);
+		switch (meta) {
+		case 0:
+			return new ItemStack(MainInit.builds, i, 0);
+		case 1:
+			return new ItemStack(MainInit.gemBlock, i, 6);
+		case 2:
+			return new ItemStack(MainInit.gemBlock, i, 3);
+		default:
+			return new ItemStack(MainInit.layerNew, i, 1);
+		}
+
+	}
+
 	public static boolean removeBadPotion(EntityLivingBase liv) {
 		if (liv != null && !liv.getEntityWorld().isRemote) {
 			List<PotionEffect> remove = Lists.newArrayList();

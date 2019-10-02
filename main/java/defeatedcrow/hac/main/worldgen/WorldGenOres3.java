@@ -171,9 +171,9 @@ public class WorldGenOres3 implements IWorldGenerator {
 							if (isPlaceable(block) || isForced) {
 								int j = world.rand.nextInt(100);
 								if (add.hasSecondOre() && j < add.getSecondChance()) {
-									world.setBlockState(p, add.getSecondOre().getState(), isForced ? 3 : 4);
+									world.setBlockState(p, add.getSecondOre().getState(), isForced ? 3 : 2);
 								} else {
-									world.setBlockState(p, add.getOre().getState(), isForced ? 3 : 4);
+									world.setBlockState(p, add.getOre().getState(), isForced ? 3 : 2);
 								}
 							}
 						}

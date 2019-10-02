@@ -338,6 +338,10 @@ public class FoodFluidRecipe {
 				3), null, 0F, null, DCHeatTier.NORMAL, DCHumidity.WET, null, false, new FluidStack(MainInit.oil,
 						500), new Object[] { "dustSalt", "bucketWater" });
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 2,
+				4), null, 0F, null, DCHeatTier.HOT, null, null, false, new FluidStack(MainInit.oil,
+						1000), new Object[] { "foodCream" });
+
 		// cooking
 
 		regBoilrecipe(new ItemStack(FoodInit.bread, 1, 9), null, 0F, null, null, null, false, null, new Object[] {

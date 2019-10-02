@@ -826,6 +826,7 @@ tile.dcs_cont_misc_clay.name=粘土コンテナ
 tile.dcs_cont_misc_fish.name=魚コンテナ
 tile.dcs_cont_misc_leather.name=革コンテナ
 tile.dcs_cont_misc_fur.name=毛皮コンテナ
+tile.dcs_cont_misc_feather.name=羽根コンテナ
 tile.dcs_cont_cardboard_beef.name=牛肉箱
 tile.dcs_cont_cardboard_pork.name=豚肉箱
 tile.dcs_cont_cardboard_chicken.name=鶏肉箱

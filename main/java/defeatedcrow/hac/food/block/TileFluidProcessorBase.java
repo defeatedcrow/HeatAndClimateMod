@@ -109,10 +109,6 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				flag = true;
 				lastOutT = FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount();
 			}
-			if (this.maxBurnTime != lastBurn) {
-				flag = true;
-				lastBurn = this.maxBurnTime;
-			}
 
 			if (flag) {
 				int f1 = inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
@@ -121,6 +117,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				int a2 = outputT.getFluidAmount();
 				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, f1, a1, f2, a2));
 			}
+
+			count = 20;
 		}
 	}
 
@@ -191,8 +189,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 					fill = dummy.drain(rem, true);
 					ret = dummy.getContainer();
 
-					if (fill != null && (DCUtil.isEmpty(ret) || DCUtil.isEmpty(out) || this.isItemStackable(ret,
-							out) > 0)) {
+					if (fill != null && (DCUtil.isEmpty(ret) || DCUtil.isEmpty(out) || this
+							.isItemStackable(ret, out) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -226,8 +224,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
-				dummy.getTankProperties().length > 0) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null && dummy
+				.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 			FluidStack send = tank.getFluid();
@@ -333,38 +331,15 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	 */
 
 	protected int[] slotsTop() {
-		return new int[] {
-				0,
-				2,
-				4,
-				5,
-				6
-		};
+		return new int[] { 0, 2, 4, 5, 6 };
 	};
 
 	protected int[] slotsBottom() {
-		return new int[] {
-				1,
-				3,
-				7,
-				8,
-				9
-		};
+		return new int[] { 1, 3, 7, 8, 9 };
 	};
 
 	protected int[] slotsSides() {
-		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9
-		};
+		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 	};
 
 	public DCInventory inv = new DCInventory(this.getSizeInventory());
