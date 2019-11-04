@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:blaze_rod",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "stickBlaze"
   }
  },
  "result": {

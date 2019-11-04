@@ -50,6 +50,7 @@ public class MainCreativeTabRegister {
 
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
 		MainInit.wallLamp.setCreativeTab(ClimateMain.build);
+		MainInit.oilLamp.setCreativeTab(ClimateMain.build);
 		MainInit.desiccant.setCreativeTab(ClimateMain.build);
 		MainInit.freezepack.setCreativeTab(ClimateMain.build);
 
@@ -180,11 +181,13 @@ public class MainCreativeTabRegister {
 		MainInit.cropBasket.setCreativeTab(ClimateMain.cont);
 		MainInit.cropJute.setCreativeTab(ClimateMain.cont);
 		MainInit.dustBags.setCreativeTab(ClimateMain.cont);
+		MainInit.dustCake.setCreativeTab(ClimateMain.cont);
 
 		if (ModuleConfig.weapon_advanced) {
 			MainInit.cartridge.setCreativeTab(ClimateMain.tool);
 			MainInit.crossbow.setCreativeTab(ClimateMain.tool);
 			MainInit.gun.setCreativeTab(ClimateMain.tool);
+			MainInit.throwingArrow.setCreativeTab(ClimateMain.tool);
 		}
 
 		if (DCIntegrationCore.loadedForestry) {

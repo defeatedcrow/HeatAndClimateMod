@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.ICompressionRecipe;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -21,7 +22,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCollectables {
+public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCollectables, ICompressionRecipe {
 
 	public BlockDustBag(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -33,20 +34,43 @@ public class BlockDustBag extends DCSidedBlock implements ITexturePath, IRapidCo
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = {
-				"sugar",
-				"salt",
-				"flour",
-				"rice",
-				"starch",
-				"seed",
-				"soy",
-				"riceseed"
-		};
+		String[] name = { "sugar", "salt", "flour", "rice", "starch", "seed", "soy", "riceseed" };
 		return name;
 	}
 
-	public static ItemStack[] containedItem() {
+	@Override
+	public Object getInputDic(int i) {
+		switch (i) {
+		case 0:
+			return "dustSugar";
+		case 1:
+			return "dustSalt";
+		case 2:
+			return "foodFlour";
+		case 3:
+			return "foodRice";
+		case 4:
+			return "dustStarch";
+		case 5:
+			return new ItemStack(Items.WHEAT_SEEDS);
+		case 6:
+			return "cropSoybean";
+		case 7:
+			return "seedRice";
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack getOutputItem(int i) {
+		if (i >= 0 && i < containedItem().length) {
+			return containedItem()[i];
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack[] containedItem() {
 		ItemStack[] ret = new ItemStack[8];
 		ret[0] = new ItemStack(Items.SUGAR, 8);
 		ret[1] = new ItemStack(MainInit.foodMaterials, 8, 0);

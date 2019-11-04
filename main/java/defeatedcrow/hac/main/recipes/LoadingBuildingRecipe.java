@@ -1246,6 +1246,53 @@ public class LoadingBuildingRecipe {
 
 			}
 
+			if (ModuleConfig.food) {
+				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 0), new Object[] {
+					" X ",
+					"XZX",
+					" Y ",
+					'X',
+					"blockGlass",
+					'Y',
+					"plankWood",
+					'Z',
+					"dropFuel" });
+
+				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 1), new Object[] {
+					" X ",
+					"XZX",
+					" Y ",
+					'X',
+					"blockGlass",
+					'Y',
+					"ingotGold",
+					'Z',
+					"dropFuel" });
+
+				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 2), new Object[] {
+					" X ",
+					"XZX",
+					" Y ",
+					'X',
+					"blockGlass",
+					'Y',
+					"gemChalcedony",
+					'Z',
+					"dropFuel" });
+
+				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 3), new Object[] {
+					" X ",
+					"XZX",
+					" Y ",
+					'X',
+					"blockGlass",
+					'Y',
+					"blockSerpentine",
+					'Z',
+					"dropFuel" });
+
+			}
+
 			for (int i = 0; i < 16; i++) {
 				DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.linoleum, 4, i), new Object[] {
 					"plankWood",

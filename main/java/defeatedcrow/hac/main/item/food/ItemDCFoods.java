@@ -8,14 +8,14 @@ public class ItemDCFoods extends DCFoodItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"baked_apple",
-			"boiled_egg",
-			"jerky",
-			"boiled_sausage",
-			"baked_squid",
-			"boiled_lotus_crop",
-			"boiled_young_soy"
-	};
+		"baked_apple",
+		"boiled_egg",
+		"jerky",
+		"boiled_sausage",
+		"baked_squid",
+		"boiled_lotus_crop",
+		"boiled_young_soy",
+		"baked_prawn" };
 
 	public ItemDCFoods(int max, boolean f) {
 		super(f);
@@ -35,6 +35,7 @@ public class ItemDCFoods extends DCFoodItem {
 	 * 4: 焼きイカ
 	 * 5: ゆで蓮の実
 	 * 6: 湯で枝豆
+	 * 7: 焼きエビ
 	 */
 	@Override
 	public String[] getNameSuffix() {
@@ -59,6 +60,7 @@ public class ItemDCFoods extends DCFoodItem {
 		case 1:
 		case 2:
 		case 5:
+		case 7:
 			return 6;
 		case 3:
 		case 4:

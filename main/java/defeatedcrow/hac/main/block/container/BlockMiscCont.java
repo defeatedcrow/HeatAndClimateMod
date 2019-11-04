@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.api.ICompressionRecipe;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -18,7 +19,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockMiscCont extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
+public class BlockMiscCont extends DCSimpleBlock implements ITexturePath, IRapidCollectables, ICompressionRecipe {
 
 	public BlockMiscCont(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -33,7 +34,33 @@ public class BlockMiscCont extends DCSimpleBlock implements ITexturePath, IRapid
 		return name;
 	}
 
-	public static ItemStack[] containedItem() {
+	@Override
+	public Object getInputDic(int i) {
+		switch (i) {
+		case 0:
+			return new ItemStack(Items.CLAY_BALL);
+		case 1:
+			return new ItemStack(Items.FISH);
+		case 2:
+			return "leather";
+		case 3:
+			return "rabbithide";
+		case 4:
+			return "feather";
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack getOutputItem(int i) {
+		if (i >= 0 && i < containedItem().length) {
+			return containedItem()[i];
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack[] containedItem() {
 		ItemStack[] ret = new ItemStack[5];
 		ret[0] = new ItemStack(Items.CLAY_BALL, 8);
 		ret[1] = new ItemStack(Items.FISH, 8);

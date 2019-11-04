@@ -66,7 +66,14 @@ public class ItemFluidPack extends DCItem {
 		"coffee",
 		"stock",
 		"ethanol",
-		"soy_milk" };
+		"soy_milk",
+		"fuel_oil",
+		"sulfuric_acid",
+		"nitric_acid",
+		"fuel_gas",
+		"hydrogen",
+		"nitrogen",
+		"ammonia" };
 
 	public static final String[] FLUIDS = {
 		"empty",
@@ -82,7 +89,14 @@ public class ItemFluidPack extends DCItem {
 		"dcs.black_coffee",
 		"dcs.stock",
 		"dcs.ethanol",
-		"dcs.soy_milk" };
+		"dcs.soy_milk",
+		"dcs.fuel_oil",
+		"dcs.sulfuric_acid",
+		"dcs.nitric_acid",
+		"dcs.fuel_gas",
+		"dcs.hydrogen",
+		"dcs.nitrogen",
+		"dcs.ammonia" };
 
 	public ItemFluidPack() {
 		super();
@@ -102,7 +116,7 @@ public class ItemFluidPack extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 13;
+		return 20;
 	}
 
 	@Override
@@ -130,6 +144,10 @@ public class ItemFluidPack extends DCItem {
 			return 1600;
 		else if (i == 12)
 			return 1600;
+		else if (i == 14)
+			return 3200;
+		else if (i == 17)
+			return 3200;
 		else
 			return 0;
 	}
@@ -142,8 +160,8 @@ public class ItemFluidPack extends DCItem {
 
 		String s = "";
 		int i = stack.getItemDamage();
-		if (i > 13) {
-			i = 13;
+		if (i > getMaxMeta()) {
+			i = getMaxMeta();
 		}
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
@@ -208,8 +226,8 @@ public class ItemFluidPack extends DCItem {
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 13) {
-			meta = 13;
+		if (meta > 20) {
+			meta = 20;
 		}
 		return FLUIDS[meta];
 	}
@@ -247,6 +265,20 @@ public class ItemFluidPack extends DCItem {
 			meta = 12;
 		} else if (fluid == MainInit.soyMilk) {
 			meta = 13;
+		} else if (fluid == MainInit.fuelOil) {
+			meta = 14;
+		} else if (fluid == MainInit.sulfuricAcid) {
+			meta = 15;
+		} else if (fluid == MainInit.nitricAcid) {
+			meta = 16;
+		} else if (fluid == MainInit.fuelGas) {
+			meta = 17;
+		} else if (fluid == MainInit.hydrogen) {
+			meta = 18;
+		} else if (fluid == MainInit.nitrogen) {
+			meta = 19;
+		} else if (fluid == MainInit.ammonia) {
+			meta = 20;
 		}
 		return meta;
 	}

@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nonnull;
+
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
@@ -25,6 +27,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
@@ -166,5 +169,14 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 			}
 		}
 		super.flowIntoBlock(world, pos, meta);
+	}
+
+	// エラー対策
+	@Override
+	@Deprecated
+	@Nonnull
+	public IBlockState getStateFromMeta(int meta) {
+		int i = MathHelper.clamp(0, meta, 15);
+		return this.getDefaultState().withProperty(LEVEL, i);
 	}
 }

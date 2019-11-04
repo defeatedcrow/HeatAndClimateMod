@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:carrot",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "cropCarrot"
   }
  },
  "result": {

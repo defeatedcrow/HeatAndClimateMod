@@ -38,6 +38,7 @@ public class MainInit {
 	public static Block cardboard;
 	public static Block cropBasket;
 	public static Block dustBags;
+	public static Block dustCake;
 
 	// building
 	public static Block bricks;
@@ -111,6 +112,7 @@ public class MainInit {
 	public static Block chandelierGypsum;
 	public static Block chandelierChal;
 	public static Block chainCopper;
+	public static Block oilLamp;
 
 	public static Block tableMarble;
 	public static Block tableGypsum;
@@ -305,6 +307,7 @@ public class MainInit {
 	public static Item gun;
 	public static Item ignis;
 	public static Item cartridge;
+	public static Item throwingArrow;
 
 	public static Item gemShield;
 	public static Item riotShield;

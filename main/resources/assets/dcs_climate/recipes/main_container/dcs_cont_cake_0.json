@@ -7,13 +7,13 @@
  ],
  "key": {
   "X": {
-   "item": "dcs_climate:dcs_food_seeds",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "dustBran"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_cont_bags",
+  "item": "dcs_climate:dcs_cont_cake",
   "count": 1,
-  "data": 7
+  "data": 0
  }
 }

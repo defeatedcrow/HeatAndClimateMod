@@ -8,6 +8,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -17,10 +18,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketChangeGameState;
 import net.minecraft.util.DamageSource;
@@ -38,15 +41,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityBulletDC extends Entity implements IProjectile {
 	private static final Predicate<Entity> ARROW_TARGETS = Predicates.and(new Predicate[] {
-			EntitySelectors.NOT_SPECTATING,
-			EntitySelectors.IS_ALIVE,
-			new Predicate<Entity>() {
-				@Override
-				public boolean apply(@Nullable Entity p_apply_1_) {
-					return p_apply_1_.canBeCollidedWith();
-				}
+		EntitySelectors.NOT_SPECTATING,
+		EntitySelectors.IS_ALIVE,
+		new Predicate<Entity>() {
+			@Override
+			public boolean apply(@Nullable Entity p_apply_1_) {
+				return p_apply_1_.canBeCollidedWith();
 			}
-	});
+		} });
 	private int xTile;
 	private int yTile;
 	private int zTile;
@@ -63,6 +65,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	protected double damage;
 	/** The amount of knockback an arrow applies when it hits a mob. */
 	private int knockbackStrength;
+	protected int groundTimeLimit = 2;
 
 	public EntityBulletDC(World worldIn) {
 		super(worldIn);
@@ -198,7 +201,14 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			if (block == this.inTile && j == this.inData) {
 				++this.ticksInGround;
 
-				if (this.ticksInGround >= 2) {
+				if (this.ticksInGround >= groundTimeLimit) {
+					if (!world.isRemote && isDropable() && !DCUtil.isEmpty(getDrop())) {
+						EntityItem drop = new EntityItem(this.world, this.xTile, this.yTile, this.zTile, getDrop());
+						drop.motionX = -this.motionX * 0.05F;
+						drop.motionY = this.rand.nextFloat() * 0.1F;
+						drop.motionZ = -this.motionZ * 0.05F;
+						this.world.spawnEntity(drop);
+					}
 					this.setDead();
 				}
 			} else {
@@ -344,7 +354,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 				damagesource = DamageSource.causeIndirectMagicDamage(this, null);
 			}
 
-			if (getBulletType() == BulletType.BOLT) {
+			if (getBulletType() == BulletType.ARROW || getBulletType() == BulletType.BOLT) {
 				damagesource = damagesource.setProjectile();
 			}
 
@@ -549,6 +559,14 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		return false;
 	}
 
+	public boolean isDropable() {
+		return false;
+	}
+
+	public ItemStack getDrop() {
+		return ItemStack.EMPTY;
+	}
+
 	public BulletType getBulletType() {
 		return BulletType.BULLET;
 	}
@@ -556,6 +574,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	public enum BulletType {
 		BOLT,
 		BULLET,
-		SHOTGUN;
+		SHOTGUN,
+		ARROW;
 	}
 }

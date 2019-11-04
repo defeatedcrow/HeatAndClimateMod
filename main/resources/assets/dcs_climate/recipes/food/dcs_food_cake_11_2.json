@@ -2,20 +2,20 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "dcs_climate:dcs_food_bread",
-   "data": 15
+   "type": "forge:ore_dict",
+   "ore": "foodPancake"
   },
   {
-   "item": "dcs_climate:dcs_food_bread",
-   "data": 15
+   "type": "forge:ore_dict",
+   "ore": "foodPancake"
   },
   {
-   "item": "dcs_climate:dcs_food_bread",
-   "data": 15
+   "type": "forge:ore_dict",
+   "ore": "foodPancake"
   },
   {
-   "item": "dcs_climate:dcs_food_bread",
-   "data": 15
+   "type": "forge:ore_dict",
+   "ore": "foodPancake"
   },
   {
    "type": "forge:ore_dict",

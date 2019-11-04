@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.ICompressionRecipe;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -20,7 +21,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
+public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapidCollectables, ICompressionRecipe {
 
 	public BlockCropCont(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -32,23 +33,62 @@ public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapid
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"apple",
-				"potato",
-				"carrot",
-				"pumpkin",
-				"melon",
-				"cactus",
-				"reed",
-				"wart",
-				"cocoa",
-				"baked_apple",
-				"baked_potato",
-				"beet"
-		};
+			"apple",
+			"potato",
+			"carrot",
+			"pumpkin",
+			"melon",
+			"cactus",
+			"reed",
+			"wart",
+			"cocoa",
+			"baked_apple",
+			"baked_potato",
+			"beet" };
 		return name;
 	}
 
-	public static ItemStack[] containedItem() {
+	@Override
+	public Object getInputDic(int i) {
+		switch (i) {
+		case 0:
+			return "cropApple";
+		case 1:
+			return "cropPotato";
+		case 2:
+			return "cropCarrot";
+		case 3:
+			return "cropPumpukin";
+		case 4:
+			return "cropMelon";
+		case 5:
+			return "blockCactus";
+		case 6:
+			return "sugarcane";
+		case 7:
+			return "cropNetherWart";
+		case 8:
+			return "cropCocoa";
+		case 9:
+			return new ItemStack(MainInit.bakedApple);
+		case 10:
+			return new ItemStack(Items.BAKED_POTATO);
+		case 11:
+			return "cropBeetroot";
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack getOutputItem(int i) {
+		if (i >= 0 && i < containedItem().length) {
+			return containedItem()[i];
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack[] containedItem() {
 		ItemStack[] ret = new ItemStack[12];
 		ret[0] = new ItemStack(Items.APPLE, 8);
 		ret[1] = new ItemStack(Items.POTATO, 8);

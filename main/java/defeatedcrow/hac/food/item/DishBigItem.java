@@ -8,6 +8,10 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.DishMaboEntity;
+import defeatedcrow.hac.food.entity.DishNachosEntity;
+import defeatedcrow.hac.food.entity.DishOmericeEntity;
+import defeatedcrow.hac.food.entity.DishTacoEntity;
+import defeatedcrow.hac.food.entity.DishTacoriceEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +29,7 @@ public class DishBigItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 0;
+		return 4;
 	}
 
 	@Override
@@ -40,7 +44,7 @@ public class DishBigItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = { "mabo" };
+		String[] s = { "mabo", "omerice", "taco", "tacorice", "nachos" };
 		return s;
 	}
 
@@ -48,12 +52,27 @@ public class DishBigItem extends FoodItemBase {
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
 		FoodEntityBase ret = new DishMaboEntity(world, x, y, z, player);
+		if (i == 1) {
+			ret = new DishOmericeEntity(world, x, y, z, player);
+		}
+		if (i == 2) {
+			ret = new DishTacoEntity(world, x, y, z, player);
+		}
+		if (i == 3) {
+			ret = new DishTacoriceEntity(world, x, y, z, player);
+		}
+		if (i == 4) {
+			ret = new DishNachosEntity(world, x, y, z, player);
+		}
 		ret.setIndividual(world.rand.nextInt(32));
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
+		if (meta == 1 || meta == 4) {
+			return 8;
+		}
 		return 12;
 	}
 

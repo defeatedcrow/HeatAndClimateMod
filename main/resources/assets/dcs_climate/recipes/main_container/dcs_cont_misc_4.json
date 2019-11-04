@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:feather",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "feather"
   }
  },
  "result": {

@@ -602,6 +602,14 @@ public class LoadingEquipRecipe {
 				'Y',
 				"cobblestone" });
 
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.throwingArrow, 4, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				"ingotIron",
+				'Y',
+				"feather" });
+
 			if (ModuleConfig.machine_advanced) {
 
 				DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.gun, 1, 0), new Object[] {

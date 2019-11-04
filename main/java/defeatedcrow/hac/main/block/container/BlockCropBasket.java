@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.ICompressionRecipe;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -19,7 +20,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
+public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRapidCollectables, ICompressionRecipe {
 
 	public BlockCropBasket(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -49,7 +50,53 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 		return name;
 	}
 
-	public static ItemStack[] containedItem() {
+	@Override
+	public Object getInputDic(int i) {
+		switch (i) {
+		case 0:
+			return "cropRice";
+		case 1:
+			return "cropOnion";
+		case 2:
+			return "cropSpinach";
+		case 3:
+			return "cropTomato";
+		case 4:
+			return "cropCoffee";
+		case 5:
+			return "cropCotton";
+		case 6:
+			return "cropLemon";
+		case 7:
+			return "cropOlive";
+		case 8:
+			return "cropTea";
+		case 9:
+			return "cropLotusSeed";
+		case 10:
+			return "cropMulberry";
+		case 11:
+			return new ItemStack(MainInit.silkworm, 1, 2);
+		case 12:
+			return "cropgarlic";
+		case 13:
+			return "cropLettuce";
+		case 14:
+			return "cropGinger";
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack getOutputItem(int i) {
+		if (i >= 0 && i < containedItem().length) {
+			return containedItem()[i];
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack[] containedItem() {
 		ItemStack[] ret = new ItemStack[15];
 		ret[0] = new ItemStack(FoodInit.crops, 8);
 		ret[1] = new ItemStack(FoodInit.crops, 8, 1);

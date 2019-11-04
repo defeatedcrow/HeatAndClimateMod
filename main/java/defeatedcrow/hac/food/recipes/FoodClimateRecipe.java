@@ -244,9 +244,15 @@ public class FoodClimateRecipe {
 
 		addFoodRecipe(new ItemStack(FoodInit.bread, 1, 19), new ItemStack(FoodInit.bread, 1, 18));
 
+		addFoodRecipe(new ItemStack(FoodInit.bread, 1, 21), new ItemStack(FoodInit.bread, 1, 20));
+
 		addFoodRecipe(new ItemStack(FoodInit.sticks, 1, 15), new ItemStack(FoodInit.sticks, 1, 14));
 
 		addFoodRecipe(new ItemStack(FoodInit.plateMeal, 1, 9), new ItemStack(FoodInit.plateMeal, 1, 8));
+
+		addFoodRecipe(new ItemStack(FoodInit.plateSoup, 1, 5), new ItemStack(FoodInit.plateSoup, 1, 4));
+
+		addFoodRecipe(new ItemStack(FoodInit.plateSoup, 1, 7), new ItemStack(FoodInit.plateSoup, 1, 6));
 
 	}
 

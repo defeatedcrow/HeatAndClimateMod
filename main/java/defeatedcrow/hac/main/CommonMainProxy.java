@@ -97,6 +97,7 @@ import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
+import defeatedcrow.hac.main.entity.EntityThrowingArrow;
 import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.CombatEvent;
@@ -343,6 +344,8 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addEntity(EntityBigCushion.class, "main", "big_cushion");
 
 		DCRegistryUtil.addEntity(EntityBigCushionBrown.class, "main", "big_cushion_brown");
+
+		DCRegistryUtil.addEntity(EntityThrowingArrow.class, "main", "bullet_arrow", 1);
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadEntity();

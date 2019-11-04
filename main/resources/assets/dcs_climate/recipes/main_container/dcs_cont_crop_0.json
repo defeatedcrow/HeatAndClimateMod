@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:apple",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "cropApple"
   }
  },
  "result": {

@@ -2,9 +2,8 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "dcs_climate:dcs_food_bread",
-   "count": 1,
-   "data": 11
+   "type": "forge:ore_dict",
+   "ore": "foodGarlicbread"
   },
   {
    "type": "forge:ore_dict",

@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.base.DCSidedBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.api.ICompressionRecipe;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -20,7 +21,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockLogCont extends DCSidedBlock implements ITexturePath, IRapidCollectables {
+public class BlockLogCont extends DCSidedBlock implements ITexturePath, IRapidCollectables, ICompressionRecipe {
 
 	public BlockLogCont(Material m, String s, int max) {
 		super(m, s, max, true);
@@ -37,19 +38,30 @@ public class BlockLogCont extends DCSidedBlock implements ITexturePath, IRapidCo
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = {
-				"oak",
-				"spruce",
-				"birch",
-				"jungle",
-				"acacia",
-				"dark",
-				"charcoal"
-		};
+		String[] name = { "oak", "spruce", "birch", "jungle", "acacia", "dark", "charcoal" };
 		return name;
 	}
 
-	public static ItemStack[] containedItem() {
+	@Override
+	public Object getInputDic(int i) {
+		if (i >= 0 && i < containedItem().length) {
+			ItemStack ret = containedItem()[i];
+			ret.setCount(1);
+			return ret;
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack getOutputItem(int i) {
+		if (i >= 0 && i < containedItem().length) {
+			return containedItem()[i];
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack[] containedItem() {
 		ItemStack[] ret = new ItemStack[7];
 		ret[0] = new ItemStack(Blocks.LOG, 8, 0);
 		ret[1] = new ItemStack(Blocks.LOG, 8, 1);

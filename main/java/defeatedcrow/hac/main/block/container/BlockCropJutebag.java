@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.api.ICompressionRecipe;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -18,7 +19,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCropJutebag extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
+public class BlockCropJutebag extends DCSimpleBlock implements ITexturePath, IRapidCollectables, ICompressionRecipe {
 
 	public BlockCropJutebag(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -29,16 +30,35 @@ public class BlockCropJutebag extends DCSimpleBlock implements ITexturePath, IRa
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = {
-				"bean",
-				"chili",
-				"walnut",
-				"date"
-		};
+		String[] name = { "bean", "chili", "walnut", "date" };
 		return name;
 	}
 
-	public static ItemStack[] containedItem() {
+	@Override
+	public Object getInputDic(int i) {
+		switch (i) {
+		case 0:
+			return "cropBean";
+		case 1:
+			return "cropChilipepper";
+		case 2:
+			return "cropWalnut";
+		case 3:
+			return "cropDate";
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack getOutputItem(int i) {
+		if (i >= 0 && i < containedItem().length) {
+			return containedItem()[i];
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack[] containedItem() {
 		ItemStack[] ret = new ItemStack[4];
 		ret[0] = new ItemStack(FoodInit.seeds, 8, 10);
 		ret[1] = new ItemStack(FoodInit.crops, 8, 13);

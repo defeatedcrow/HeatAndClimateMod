@@ -193,11 +193,14 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustAsbest", new ItemStack(MainInit.miscDust, 1, 11));
 		OreDictionary.registerOre("dustMica", new ItemStack(MainInit.miscDust, 1, 12));
 		OreDictionary.registerOre("gemSlate", new ItemStack(MainInit.miscDust, 1, 13));
-		OreDictionary.registerOre("dustBlan", new ItemStack(MainInit.foodDust, 1, 0));
+		OreDictionary.registerOre("dustBran", new ItemStack(MainInit.foodDust, 1, 0));
 		OreDictionary.registerOre("dustPlant", new ItemStack(MainInit.foodDust, 1, 1));
 		OreDictionary.registerOre("dropMolasses", new ItemStack(MainInit.foodDust, 1, 2));
+		OreDictionary.registerOre("listAllsugar", new ItemStack(MainInit.foodDust, 1, 2));
 		OreDictionary.registerOre("dustMalt", new ItemStack(MainInit.foodDust, 1, 3));
 		OreDictionary.registerOre("foodMalt", new ItemStack(MainInit.foodDust, 1, 3));
+		OreDictionary.registerOre("dustSoycake", new ItemStack(MainInit.foodDust, 1, 4));
+		OreDictionary.registerOre("dustPresscake", new ItemStack(MainInit.foodDust, 1, 4));
 		OreDictionary.registerOre("foodSoypulp", new ItemStack(MainInit.foodDust, 1, 5));
 		OreDictionary.registerOre("foodFlour", new ItemStack(MainInit.foodDust, 1, 5));
 		OreDictionary.registerOre("foodBakingSoda", new ItemStack(MainInit.foodDust, 1, 6));

@@ -9,6 +9,7 @@ import crazypants.enderio.base.recipe.IRecipeInput;
 import crazypants.enderio.base.recipe.ThingsRecipeInput;
 import crazypants.enderio.base.recipe.alloysmelter.AlloyRecipeManager;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -63,8 +64,6 @@ public class DCPluginEIO {
 		FluidFuelRegister.instance.addCoolant(MainInit.nitrogen, 0.015F);
 
 		// blacklist
-		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.oreNew, 1, 32767));
-		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.layerNew, 1, 32767));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.thermometer, 1, 0));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.windvane, 1, 0));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.stevenson_screen, 1, 0));
@@ -80,6 +79,50 @@ public class DCPluginEIO {
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.sinkChest, 1, 0));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.sinkMetal, 1, 0));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.stevenson_screen, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.ammoniaBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.blackLiquorBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.blackTeaBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.blackLiquorBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.blackTeaBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.coffeeBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.creamBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.ethanolBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.fuelGasBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.fuelOilBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.greenTeaBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.hotSpringBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.hydrogenBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.lemonBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.mazaiBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.milkBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.nitricAcidBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.nitrogenBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.oilBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.soyMilkBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.sulfuricAcidBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.tomatoBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(MainInit.stockBlock, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 0));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 1));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 2));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 3));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 4));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 5));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 6));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 7));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 8));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 9));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 10));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 11));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 12));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 13));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 14));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 15));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 16));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 17));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 18));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 19));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 20));
 
 		// recipe
 		// ores

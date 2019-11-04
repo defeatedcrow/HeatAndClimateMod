@@ -88,6 +88,7 @@ import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
+import defeatedcrow.hac.main.entity.EntityThrowingArrow;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -178,6 +179,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityCrowBalloon.class, RenderEntityBalloon.class);
 		registRender(EntityBigCushion.class, RenderEntityBigCushion.class);
 		registRender(EntityBigCushionBrown.class, RenderEntityBigCushionB.class);
+		registRender(EntityThrowingArrow.class, BoltRenderer.class);
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadEntity();

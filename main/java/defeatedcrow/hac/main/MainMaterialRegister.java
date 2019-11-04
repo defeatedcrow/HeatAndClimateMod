@@ -41,6 +41,7 @@ import defeatedcrow.hac.main.block.build.BlockMetalChest;
 import defeatedcrow.hac.main.block.build.BlockMetalFenceBase;
 import defeatedcrow.hac.main.block.build.BlockMetalLadder;
 import defeatedcrow.hac.main.block.build.BlockMetalPillar;
+import defeatedcrow.hac.main.block.build.BlockOilLamp;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.BlockSlabChal;
@@ -61,6 +62,7 @@ import defeatedcrow.hac.main.block.container.BlockCropJutebag;
 import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
+import defeatedcrow.hac.main.block.container.BlockMiscCake;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
 import defeatedcrow.hac.main.block.device.BlockAcvShield;
 import defeatedcrow.hac.main.block.device.BlockBellow;
@@ -136,6 +138,7 @@ import defeatedcrow.hac.main.item.tool.ItemSpadeEarth;
 import defeatedcrow.hac.main.item.tool.ItemStoneYagen;
 import defeatedcrow.hac.main.item.tool.ItemSwordDC;
 import defeatedcrow.hac.main.item.tool.ItemThermalScope;
+import defeatedcrow.hac.main.item.tool.ItemThrowingArrow;
 import defeatedcrow.hac.main.item.tool.ItemTinderDC;
 import defeatedcrow.hac.main.item.tool.ItemWrench;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
@@ -334,7 +337,7 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerItem(MainInit.foodMaterials, ClimateCore.PACKAGE_BASE + "_food_materials", ClimateMain.MOD_ID);
 
-		MainInit.bakedApple = new ItemDCFoods(6, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
+		MainInit.bakedApple = new ItemDCFoods(7, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		DCMaterialReg
 				.registerItem(MainInit.bakedApple, ClimateCore.PACKAGE_BASE + "_food_itemfood", ClimateMain.MOD_ID);
 
@@ -488,6 +491,9 @@ public class MainMaterialRegister {
 		MainInit.wallLamp = new BlockWallLamp(ClimateCore.PACKAGE_BASE + "_build_walllamp");
 		DCMaterialReg
 				.registerBlock(MainInit.wallLamp, ClimateCore.PACKAGE_BASE + "_build_walllamp", ClimateMain.MOD_ID);
+
+		MainInit.oilLamp = new BlockOilLamp(ClimateCore.PACKAGE_BASE + "_build_oillamp");
+		DCMaterialReg.registerBlock(MainInit.oilLamp, ClimateCore.PACKAGE_BASE + "_build_oillamp", ClimateMain.MOD_ID);
 
 		MainInit.desiccant = new BlockDesiccantPackage(ClimateCore.PACKAGE_BASE + "_desiccant");
 		DCMaterialReg.registerBlock(MainInit.desiccant, ClimateCore.PACKAGE_BASE + "_desiccant", ClimateMain.MOD_ID);
@@ -1013,6 +1019,11 @@ public class MainMaterialRegister {
 
 			MainInit.cartridge = new ItemBullets(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
 			DCMaterialReg.registerItem(MainInit.cartridge, ClimateCore.PACKAGE_BASE + "_cartridge", ClimateMain.MOD_ID);
+
+			MainInit.throwingArrow = new ItemThrowingArrow()
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_throwing_arrow");
+			DCMaterialReg
+					.registerItem(MainInit.throwingArrow, ClimateCore.PACKAGE_BASE + "_throwing_arrow", ClimateMain.MOD_ID);
 		}
 
 		if (ModuleConfig.tool) {
@@ -1314,6 +1325,10 @@ public class MainMaterialRegister {
 		MainInit.cropJute = new BlockCropJutebag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_jutebag", 3);
 		DCMaterialReg.registerBlock(MainInit.cropJute, ClimateCore.PACKAGE_BASE + "_cont_jutebag", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.cropJute, "cont_jutebag", 3);
+
+		MainInit.dustCake = new BlockMiscCake(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cake", 4);
+		DCMaterialReg.registerBlock(MainInit.dustCake, ClimateCore.PACKAGE_BASE + "_cont_cake", ClimateMain.MOD_ID);
+		ClimateMain.proxy.addSidedBlock(MainInit.dustCake, "cont_cake", 4);
 
 	}
 

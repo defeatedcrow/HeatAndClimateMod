@@ -304,6 +304,8 @@ public class MachineRecipeRegister {
 		GameRegistry.addSmelting(new ItemStack(MainInit.desiccant, 1, 3), new ItemStack(MainInit.desiccant, 1, 0), 0F);
 
 		GameRegistry.addSmelting(new ItemStack(FoodInit.meat, 1, 2), new ItemStack(MainInit.bakedApple, 1, 4), 0.5F);
+
+		GameRegistry.addSmelting(new ItemStack(FoodInit.meat, 1, 9), new ItemStack(MainInit.bakedApple, 1, 7), 0.5F);
 	}
 
 	static void loadVanillaRecipes() {

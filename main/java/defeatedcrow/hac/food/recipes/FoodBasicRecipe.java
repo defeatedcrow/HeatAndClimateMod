@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.LoadingContRecipe;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -192,7 +193,7 @@ public class FoodBasicRecipe {
 			"cropHerb" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.bread, 1, 8), new Object[] {
-			new ItemStack(FoodInit.bread, 1, 1),
+			"bread",
 			"foodCustard" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.bread, 1, 10), new Object[] {
@@ -226,6 +227,25 @@ public class FoodBasicRecipe {
 			"foodButter",
 			"egg",
 			"cropGinger" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.bread, 2, 18), new Object[] {
+			"foodFlour",
+			"dustSugar",
+			"foodButter",
+			"egg",
+			"cropGinger" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.bread, 3, 20), new Object[] {
+			"cropCorn",
+			"dustLime",
+			"foodOil",
+			"bucketWater" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.bread, 3, 20), new Object[] {
+			"foodFlour",
+			"foodOil",
+			"dustSalt",
+			"bucketWater" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.sticks, 1, 2), new Object[] {
 			"stickWood",
@@ -263,6 +283,16 @@ public class FoodBasicRecipe {
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.sticks, 1, 14), new Object[] {
 			"stickWood",
 			"foodMarshmellows" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.sticks, 1, 16), new Object[] {
+			"foodViscera",
+			"cropGinger",
+			"cropGarlic" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.sticks, 1, 16), new Object[] {
+			"foodViscera",
+			"cropGinger",
+			"cropLemon" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.mochi, 1, 0), new Object[] { "foodBowlofrice" });
 
@@ -551,27 +581,65 @@ public class FoodBasicRecipe {
 			"cropTomato",
 			"foodCheese" });
 
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.plateSoup, 1, 4), new Object[] {
+			new ItemStack(FoodInit.steakplate, 1, 0),
+			"cropPotato",
+			"foodFlour",
+			"listAllmilk",
+			"foodCheese" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.plateSoup, 1, 4), new Object[] {
+			new ItemStack(FoodInit.steakplate, 1, 0),
+			"foodShrimpraw",
+			"foodFlour",
+			"listAllmilk",
+			"foodCheese" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.plateSoup, 1, 6), new Object[] {
+			new ItemStack(FoodInit.steakplate, 1, 0),
+			"foodShrimpraw",
+			"foodCalamariraw",
+			"foodRice",
+			"cropTomato",
+			"foodStock" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.plateSoup, 1, 6), new Object[] {
+			new ItemStack(FoodInit.steakplate, 1, 0),
+			"listAllchickenraw",
+			"foodRice",
+			"cropTomato",
+			"cropBean",
+			"foodStock" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.plateSoup, 1, 6), new Object[] {
+			new ItemStack(FoodInit.steakplate, 1, 0),
+			"listAllrabbitraw",
+			"foodRice",
+			"cropTomato",
+			"cropBean",
+			"foodStock" });
+
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.snack, 2, 1), new Object[] {
 			new ItemStack(FoodInit.snack, 1, 0),
 			new ItemStack(FoodInit.deepFry, 1, 2), });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.snack, 3, 4), new Object[] {
-			new ItemStack(FoodInit.bread, 1, 13),
-			new ItemStack(FoodInit.sticks, 1, 3),
+			"foodPita",
+			"listAllchickencooked",
 			"listAllgreenveggie" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.snack, 3, 4), new Object[] {
-			new ItemStack(FoodInit.bread, 1, 13),
-			new ItemStack(FoodInit.sticks, 1, 7),
+			"foodPita",
+			"listAllbeefcooked",
 			"listAllgreenveggie" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.snack, 3, 4), new Object[] {
-			new ItemStack(FoodInit.bread, 1, 13),
-			new ItemStack(FoodInit.sticks, 1, 9),
+			"foodPita",
+			"listAllmuttoncooked",
 			"listAllgreenveggie" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.snack, 3, 5), new Object[] {
-			new ItemStack(FoodInit.bread, 1, 13),
+			"foodPita",
 			new ItemStack(FoodInit.deepFry, 1, 3),
 			"listAllgreenveggie",
 			"cropTomato" });
@@ -605,7 +673,7 @@ public class FoodBasicRecipe {
 			"foodCheese" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.dishSq, 2, 1), new Object[] {
-			new ItemStack(FoodInit.bread, 1, 11),
+			"foodGarlicbread",
 			"cropTomato",
 			"foodSmokedsalmon" });
 
@@ -643,6 +711,37 @@ public class FoodBasicRecipe {
 			"cropGarlic",
 			"cropChilipepper",
 			"listAllbeefraw" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.dishBig, 2, 1), new Object[] {
+			"foodBowlofrice",
+			"egg",
+			"cropTomato",
+			"foodButter" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.dishBig, 2, 2), new Object[] {
+			"foodTortilla",
+			"cropLettuce",
+			"cropTomato",
+			"cropChilipepper",
+			"listAllmeatcooked" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.dishBig, 2, 3), new Object[] {
+			"foodBowlofrice",
+			"cropLettuce",
+			"cropTomato",
+			"cropChilipepper",
+			"listAllmeatcooked" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.dishBig, 2, 4), new Object[] {
+			"foodTortilla",
+			"foodCheese",
+			"cropTomato",
+			"cropChilipepper" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.dishBig, 2, 4), new Object[] {
+			"foodTortilla",
+			"foodCheese",
+			"foodChili" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.drink, 2, 0), new Object[] {
 			"bucketWater",
@@ -699,19 +798,19 @@ public class FoodBasicRecipe {
 			"foodButter" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.cake, 1, 11), new Object[] {
-			new ItemStack(FoodInit.bread, 1, 15),
-			new ItemStack(FoodInit.bread, 1, 15),
-			new ItemStack(FoodInit.bread, 1, 15),
-			new ItemStack(FoodInit.bread, 1, 15),
+			"foodPancake",
+			"foodPancake",
+			"foodPancake",
+			"foodPancake",
 			"foodButter",
 			"listAllheavycream",
 			"listAllberry" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.cake, 1, 11), new Object[] {
-			new ItemStack(FoodInit.bread, 1, 15),
-			new ItemStack(FoodInit.bread, 1, 15),
-			new ItemStack(FoodInit.bread, 1, 15),
-			new ItemStack(FoodInit.bread, 1, 15),
+			"foodPancake",
+			"foodPancake",
+			"foodPancake",
+			"foodPancake",
 			"foodButter",
 			"dropHoney",
 			"listAllberry" });
@@ -980,137 +1079,8 @@ public class FoodBasicRecipe {
 
 		}
 
-		String[] crops = new String[] {
-			"cropRice",
-			"cropOnion",
-			"cropSpinach",
-			"cropTomato",
-			"cropCoffee",
-			"cropCotton",
-			"cropLemon",
-			"cropOlive",
-			"cropTea" };
-		for (int i = 0; i < crops.length; i++) {
-			DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropBasket, 1, i), new Object[] {
-				"XXX",
-				"X X",
-				"XXX",
-				'X',
-				crops[i] });
-
-			DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, i), new Object[] {
-				new ItemStack(MainInit.cropBasket, 1, i) });
-		}
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropBasket, 1, 9), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropLotusSeed" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 10), new Object[] {
-			new ItemStack(MainInit.cropBasket, 1, 9) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropBasket, 1, 10), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropMulberry" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 11), new Object[] {
-			new ItemStack(MainInit.cropBasket, 1, 10) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropBasket, 1, 12), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropGarlic" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 14), new Object[] {
-			new ItemStack(MainInit.cropBasket, 1, 12) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropBasket, 1, 13), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropLettuce" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 15), new Object[] {
-			new ItemStack(MainInit.cropBasket, 1, 13) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropBasket, 1, 14), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropGinger" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 19), new Object[] {
-			new ItemStack(MainInit.cropBasket, 1, 14) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.dustBags, 1, 6), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropSoybean" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.seeds, 8, 9), new Object[] {
-			new ItemStack(MainInit.dustBags, 1, 6) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropJute, 1, 0), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropBean" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.seeds, 8, 10), new Object[] {
-			new ItemStack(MainInit.cropJute, 1, 0) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropJute, 1, 1), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropChilipepper" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 13), new Object[] {
-			new ItemStack(MainInit.cropJute, 1, 1) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropJute, 1, 2), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropWalnut" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 16), new Object[] {
-			new ItemStack(MainInit.cropJute, 1, 2) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.cropJute, 1, 3), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			"cropDate" });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.crops, 8, 17), new Object[] {
-			new ItemStack(MainInit.cropJute, 1, 3) });
-
-		DCRecipe.jsonShapedRecipe("food", new ItemStack(MainInit.dustBags, 1, 7), new Object[] {
-			"XXX",
-			"X X",
-			"XXX",
-			'X',
-			new ItemStack(FoodInit.seeds, 1, 0) });
-
-		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.seeds, 8, 0), new Object[] {
-			new ItemStack(MainInit.dustBags, 1, 7) });
+		LoadingContRecipe.addCompressionRecipe(MainInit.cropBasket, "food");
+		LoadingContRecipe.addCompressionRecipe(MainInit.cropJute, "food");
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.paperPack, 4, 1), new Object[] {
 			new ItemStack(FoodInit.paperPack, 1, 0),

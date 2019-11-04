@@ -2,8 +2,8 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "dcs_climate:dcs_ore_stone",
-   "data": 4
+   "item": "dcs_climate:dcs_oreitem",
+   "data": 3
   },
   {
    "type": "forge:ore_dict",

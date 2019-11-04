@@ -29,6 +29,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(SquidStickEntity.class, "food", "squid_stick");
 		DCRegistryUtil.addEntity(GoheiStickEntity.class, "food", "gohei_stick");
 		DCRegistryUtil.addEntity(MarshmallowStick.class, "food", "marshmallow_stick");
+		DCRegistryUtil.addEntity(MotuStickEntity.class, "food", "motu_stick");
 
 		DCRegistryUtil.addEntity(EntityTeaCupSilver.class, "food", "cup_silver");
 		DCRegistryUtil.addEntity(EntityTeaCupWhite.class, "food", "cup_white");
@@ -62,6 +63,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(PancakeEntity.class, "food", "pancake");
 		DCRegistryUtil.addEntity(WalnutBreadEntity.class, "food", "walnut_bread");
 		DCRegistryUtil.addEntity(GingermanEntity.class, "food", "gingerman");
+		DCRegistryUtil.addEntity(TortillaEntity.class, "food", "tortilla");
 
 		DCRegistryUtil.addEntity(EntityRiceBowl.class, "food", "rice_bowl");
 		DCRegistryUtil.addEntity(EntityRiceMushroom.class, "food", "rice_mushroom");
@@ -78,6 +80,8 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(BigGarlicPlateEntity.class, "food", "plate_big_garlic");
 		DCRegistryUtil.addEntity(PotatoPlateEntity.class, "food", "plate_potato");
 		DCRegistryUtil.addEntity(SoupPlateEntity.class, "food", "soup_tomato");
+		DCRegistryUtil.addEntity(PlateGratinEntity.class, "food", "plate_gratin");
+		DCRegistryUtil.addEntity(PlatePaellaEntity.class, "food", "plate_paella");
 
 		DCRegistryUtil.addEntity(StewVegiEntity.class, "food", "stew_vegi");
 		DCRegistryUtil.addEntity(StewEggEntity.class, "food", "stew_egg");
@@ -122,6 +126,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(FriedFalafelEntity.class, "food", "fried_falafel");
 		DCRegistryUtil.addEntity(FriedFishcakeEntity.class, "food", "fried_fishcake");
 		DCRegistryUtil.addEntity(FriedPorkGingerEntity.class, "food", "fried_porkginger");
+		DCRegistryUtil.addEntity(FriedPrawnEntity.class, "food", "fried_prawn");
 
 		DCRegistryUtil.addEntity(MealBreakfastBEntity.class, "food", "breakfast_b");
 		DCRegistryUtil.addEntity(MealBreakfastJEntity.class, "food", "breakfast_j");
@@ -163,6 +168,10 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(DishYakkoEntity.class, "food", "dish_yakko");
 
 		DCRegistryUtil.addEntity(DishMaboEntity.class, "food", "dish_mabo");
+		DCRegistryUtil.addEntity(DishOmericeEntity.class, "food", "dish_omerice");
+		DCRegistryUtil.addEntity(DishTacoEntity.class, "food", "dish_taco");
+		DCRegistryUtil.addEntity(DishTacoriceEntity.class, "food", "dish_tacorice");
+		DCRegistryUtil.addEntity(DishNachosEntity.class, "food", "dish_nachos");
 
 		DCRegistryUtil.addEntity(DrinkGingerEntity.class, "food", "drink_ginger");
 		DCRegistryUtil.addEntity(DrinkKuzuEntity.class, "food", "drink_kuzu");
