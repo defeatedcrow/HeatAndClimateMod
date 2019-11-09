@@ -34,6 +34,9 @@ public class MachineInit {
 	public static Block shaft3_t_b;
 	public static Block shaft3_x;
 
+	public static Block shaft_switch;
+	public static Block shaft3_switch;
+
 	public static Block faucet;
 	public static Block faucet_sus;
 	public static Block IBC;
@@ -51,6 +54,8 @@ public class MachineInit {
 	public static Block stonemill;
 	public static Block heatPump;
 	public static Block catapult;
+
+	public static Block oscillator;
 
 	// tier 3
 

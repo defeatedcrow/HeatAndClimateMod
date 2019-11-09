@@ -285,11 +285,13 @@ public class FoodBasicRecipe {
 			"foodMarshmellows" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.sticks, 1, 16), new Object[] {
+			"stickWood",
 			"foodViscera",
 			"cropGinger",
 			"cropGarlic" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.sticks, 1, 16), new Object[] {
+			"stickWood",
 			"foodViscera",
 			"cropGinger",
 			"cropLemon" });

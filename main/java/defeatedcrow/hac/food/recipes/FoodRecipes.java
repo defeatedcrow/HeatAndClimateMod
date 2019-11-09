@@ -251,7 +251,8 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 3));
 		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 5));
 		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 7));
-		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 8));
+		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 9));
+		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 17));
 		OreDictionary.registerOre("listAllfishcooked", new ItemStack(FoodInit.sticks, 1, 1));
 		OreDictionary.registerOre("listAllchickencooked", new ItemStack(FoodInit.sticks, 1, 3));
 		OreDictionary.registerOre("listAllporkcooked", new ItemStack(FoodInit.sticks, 1, 5));

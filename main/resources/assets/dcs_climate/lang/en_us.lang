@@ -1135,6 +1135,7 @@ tile.dcs_device_shaft_l_0.name=Brass Shaft(L)
 tile.dcs_device_shaft_ta_0.name=Brass Shaft(T-A)
 tile.dcs_device_shaft_tb_0.name=Brass Shaft(T-B)
 tile.dcs_device_shaft_x_0.name=Brass Shaft(X)
+tile.dcs_device_shaft_switch_0.name=Brass Switch Shaft
 tile.dcs_device_crank_s_0.name=Brass Crank
 tile.dcs_device_handcrank_0.name=Brass Handcrank
 tile.dcs_device_gearbox_0.name=Gear Box
@@ -1196,6 +1197,7 @@ tile.dcs_device_shaft_l_steel_0.name=Steel Shaft(L)
 tile.dcs_device_shaft_ta_steel_0.name=Steel Shaft(T-A)
 tile.dcs_device_shaft_tb_steel_0.name=Steel Shaft(T-B)
 tile.dcs_device_shaft_x_steel_0.name=Steel Shaft(X)
+tile.dcs_device_shaft_switch_steel_0.name=Steel Switch Shaft
 tile.dcs_device_diesel_engine_0.name=Diesel Engine
 tile.dcs_device_crusher_0.name=Hammer Mill
 tile.dcs_device_monitor_rs_0.name=Remote RS Lamp
@@ -1207,6 +1209,7 @@ tile.dcs_device_monitor_item_0.name=Remote Item Monitor
 tile.dcs_device_silkworm_box_0.name=Silkworm Rearing Box
 tile.dcs_device_entity_panel_0.name=Thermal Entity Sensor
 tile.dcs_device_pail_0.name=Pail
+tile.dcs_device_oscillator_0.name=RS Oscillator
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant

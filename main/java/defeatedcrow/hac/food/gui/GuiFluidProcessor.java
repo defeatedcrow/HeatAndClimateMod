@@ -1,5 +1,6 @@
 package defeatedcrow.hac.food.gui;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,9 @@ import org.lwjgl.opengl.GL11;
 
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageFluidSwitchButton;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,6 +20,7 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -24,7 +29,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiFluidProcessor extends GuiContainer {
-	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate", "textures/gui/fluidprocessor_gui.png");
+	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate",
+			"textures/gui/fluidprocessor_gui.png");
 
 	private final InventoryPlayer playerInventory;
 	private final TileFluidProcessorBase processor;
@@ -86,8 +92,29 @@ public class GuiFluidProcessor extends GuiContainer {
 			}
 		}
 
+		if (isPointInRegion(80, 14, 18, 16, x, y)) {
+			list.add("Switching Tanks");
+		}
+
 		this.drawHoveringText(list, x, y);
 		this.renderHoveredToolTip(x, y);
+	}
+
+	@Override
+	protected void mouseClicked(int x, int y, int mouseButton) throws IOException {
+		super.mouseClicked(x, y, mouseButton);
+		boolean flag = this.mc.gameSettings.keyBindPickBlock.isActiveAndMatches(mouseButton - 100);
+		if (mouseButton == 0 || mouseButton == 1 || flag) {
+			int i = x - this.guiLeft;
+			int j = y - this.guiTop;
+			if (isPointInRegion(80, 14, 18, 14, x, y)) {
+				if (!processor.inputT.isEmpty() && !processor.outputT.isEmpty()) {
+					mc.getSoundHandler().playSound(PositionedSoundRecord
+							.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+					DCMainPacket.INSTANCE.sendToServer(new MessageFluidSwitchButton(processor.getPos()));
+				}
+			}
+		}
 	}
 
 	@Override

@@ -34,6 +34,7 @@ import defeatedcrow.hac.machine.block.BlockMonitorInventory;
 import defeatedcrow.hac.machine.block.BlockMonitorRF;
 import defeatedcrow.hac.machine.block.BlockMonitorRedStone;
 import defeatedcrow.hac.machine.block.BlockMonitorTorque;
+import defeatedcrow.hac.machine.block.BlockOscillator;
 import defeatedcrow.hac.machine.block.BlockPortalManager;
 import defeatedcrow.hac.machine.block.BlockPressMachine;
 import defeatedcrow.hac.machine.block.BlockReactor;
@@ -45,6 +46,8 @@ import defeatedcrow.hac.machine.block.BlockShaft_L_Steel;
 import defeatedcrow.hac.machine.block.BlockShaft_S;
 import defeatedcrow.hac.machine.block.BlockShaft_S_SUS;
 import defeatedcrow.hac.machine.block.BlockShaft_S_Steel;
+import defeatedcrow.hac.machine.block.BlockShaft_Switch;
+import defeatedcrow.hac.machine.block.BlockShaft_Switch_Steel;
 import defeatedcrow.hac.machine.block.BlockShaft_TA;
 import defeatedcrow.hac.machine.block.BlockShaft_TA_SUS;
 import defeatedcrow.hac.machine.block.BlockShaft_TA_Steel;
@@ -129,6 +132,9 @@ public class MachineInitRegister {
 		MachineInit.shaft_x = new BlockShaft_X(ClimateCore.PACKAGE_BASE + "_device_shaft_x");
 		registerTierBlock(MachineInit.shaft_x, ClimateCore.PACKAGE_BASE + "_device_shaft_x", 1);
 
+		MachineInit.shaft_switch = new BlockShaft_Switch(ClimateCore.PACKAGE_BASE + "_device_shaft_switch");
+		registerTierBlock(MachineInit.shaft_switch, ClimateCore.PACKAGE_BASE + "_device_shaft_switch", 1);
+
 		MachineInit.gearbox = new BlockGearBox(ClimateCore.PACKAGE_BASE + "_device_gearbox");
 		registerTierBlock(MachineInit.gearbox, ClimateCore.PACKAGE_BASE + "_device_gearbox", 2);
 
@@ -161,6 +167,10 @@ public class MachineInitRegister {
 
 		MachineInit.shaft3_x = new BlockShaft_X_Steel(ClimateCore.PACKAGE_BASE + "_device_shaft_x_steel");
 		registerTierBlock(MachineInit.shaft3_x, ClimateCore.PACKAGE_BASE + "_device_shaft_x_steel", 2);
+
+		MachineInit.shaft3_switch = new BlockShaft_Switch_Steel(
+				ClimateCore.PACKAGE_BASE + "_device_shaft_switch_steel");
+		registerTierBlock(MachineInit.shaft3_switch, ClimateCore.PACKAGE_BASE + "_device_shaft_switch_steel", 2);
 
 		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
 		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 2);
@@ -210,6 +220,9 @@ public class MachineInitRegister {
 
 		MachineInit.heatPump = new BlockHeatExchanger(ClimateCore.PACKAGE_BASE + "_device_heat_exchanger");
 		registerTierBlock(MachineInit.heatPump, ClimateCore.PACKAGE_BASE + "_device_heat_exchanger", 2);
+
+		MachineInit.oscillator = new BlockOscillator(ClimateCore.PACKAGE_BASE + "_device_oscillator");
+		registerTierBlock(MachineInit.oscillator, ClimateCore.PACKAGE_BASE + "_device_oscillator", 2);
 
 		MachineInit.shaft2_s = new BlockShaft_S_SUS(ClimateCore.PACKAGE_BASE + "_device_shaft_s_sus");
 		registerTierBlock(MachineInit.shaft2_s, ClimateCore.PACKAGE_BASE + "_device_shaft_s_sus", 3);
@@ -429,11 +442,13 @@ public class MachineInitRegister {
 		MachineInit.shaft_t_a.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft_t_b.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft_x.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft_switch.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_s.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_l.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_t_a.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_t_b.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft3_x.setCreativeTab(ClimateMain.machine);
+		MachineInit.shaft3_switch.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_s.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_l.setCreativeTab(ClimateMain.machine);
 		MachineInit.shaft2_t_a.setCreativeTab(ClimateMain.machine);
@@ -502,6 +517,7 @@ public class MachineInitRegister {
 			MachineInit.monitorFluid.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorItem.setCreativeTab(ClimateMain.machine);
 			MachineInit.entityPanel.setCreativeTab(ClimateMain.machine);
+			MachineInit.oscillator.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);

@@ -79,6 +79,10 @@ public class MachineRecipes {
 			'Y',
 			"gearBrass" });
 
+		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.shaft_switch, 1, 0), new Object[] {
+			new ItemStack(MachineInit.shaft_s, 1, 0),
+			new ItemStack(Blocks.LEVER) });
+
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.piston, 1, 0), new Object[] {
 			" X ",
 			"YZY",
@@ -241,6 +245,17 @@ public class MachineRecipes {
 			'W',
 			new ItemStack(Blocks.IRON_BARS, 1, 0) });
 
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.oscillator, 1, 0), new Object[] {
+			"XYX",
+			"WYW",
+			"XYX",
+			'X',
+			"ingotSteel",
+			'Y',
+			"gearSteel",
+			'W',
+			"dustRedstone" });
+
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft3_s, 8, 0), new Object[] {
 			"X",
 			"Y",
@@ -283,6 +298,10 @@ public class MachineRecipes {
 			new ItemStack(MachineInit.shaft3_s, 1, 0),
 			'Y',
 			"gearSteel" });
+
+		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.shaft3_switch, 1, 0), new Object[] {
+			new ItemStack(MachineInit.shaft3_s, 1, 0),
+			new ItemStack(Blocks.LEVER) });
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft2_s, 8, 0), new Object[] {
 			"X",
