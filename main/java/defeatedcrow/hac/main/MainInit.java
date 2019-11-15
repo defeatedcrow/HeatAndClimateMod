@@ -157,6 +157,12 @@ public class MainInit {
 	public static Item itemDoorMarble;
 	public static Item itemDoorSteel;
 
+	public static Block bed;
+	public static Block bedWhite;
+	public static Block bedRattan;
+	public static Block bedFuton;
+	public static Item itemBed;
+
 	public static Block realtimeClock;
 	public static Block realtimeClock_L;
 	public static Block mcClock_L;

@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.event;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
@@ -9,6 +10,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.block.build.BlockBedDC;
 import defeatedcrow.hac.main.client.particle.ParticleTempColor;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.util.DCAdvancementUtil;
@@ -16,9 +18,11 @@ import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.util.portal.DCDimChangeHelper;
 import defeatedcrow.hac.main.worldgen.CaravanGenPos;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -28,14 +32,20 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.player.PlayerSetSpawnEvent;
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
+import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -58,6 +68,101 @@ public class LivingMainEventDC {
 				}
 			}
 		}
+	}
+
+	// @SubscribeEvent
+	public void trySleep(PlayerSleepInBedEvent event) {
+		if (event.getEntityPlayer() != null && event.getEntityPlayer().getEntityWorld().isBlockLoaded(event.getPos())) {
+			IBlockState state = event.getEntityPlayer().getEntityWorld().getBlockState(event.getPos());
+			if (state.getBlock() instanceof BlockBedDC) {
+				EnumFacing face = state.getValue(BlockHorizontal.FACING);
+				if (!event.getEntityPlayer().getEntityWorld().isRemote) {
+					if (event.getEntityPlayer().isPlayerSleeping() || !event.getEntityPlayer().isEntityAlive()) {
+						event.setResult(EntityPlayer.SleepResult.OTHER_PROBLEM);
+						return;
+					}
+
+					double d2 = 8.0D;
+					double d1 = 5.0D;
+					List<EntityMob> list = event.getEntityPlayer().getEntityWorld()
+							.<EntityMob>getEntitiesWithinAABB(EntityMob.class, new AxisAlignedBB(event.getPos()
+									.getX() - d1, event.getPos().getY() - d2, event.getPos().getZ() - d1, event.getPos()
+											.getX() + d1, event.getPos().getY() + d2, event.getPos()
+													.getZ() + d1), null);
+
+					if (!list.isEmpty()) {
+						event.setResult(EntityPlayer.SleepResult.NOT_SAFE);
+					}
+				}
+
+				if (event.getEntityPlayer().isRiding()) {
+					event.getEntityPlayer().dismountRidingEntity();
+				}
+
+				if (face != null) {
+					float f1 = 0.5F + face.getFrontOffsetX() * 0.4F;
+					float f = 0.5F + face.getFrontOffsetZ() * 0.4F;
+					event.getEntityPlayer().renderOffsetX = -1.8F * face.getFrontOffsetX();
+					event.getEntityPlayer().renderOffsetZ = -1.8F * face.getFrontOffsetZ();
+					event.getEntityPlayer().setPosition(event.getPos().getX() + f1, event.getPos()
+							.getY() + 0.6875F, event.getPos().getZ() + f);
+				} else {
+					event.getEntityPlayer().setPosition(event.getPos().getX() + 0.5F, event.getPos()
+							.getY() + 0.6875F, event.getPos().getZ() + 0.5F);
+				}
+
+				try {
+					Field f1 = ReflectionHelper.findField(EntityPlayer.class, "sleeping");
+					f1.setAccessible(true);
+					// Field f2 = ReflectionHelper.findField(EntityPlayer.class, "sleepTimer");
+					// f2.setAccessible(true);
+					f1.set(event.getEntityPlayer(), true);
+					// f2.set(event.getEntityPlayer(), 0);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				event.getEntityPlayer().bedLocation = event.getPos();
+				event.getEntityPlayer().motionX = 0.0D;
+				event.getEntityPlayer().motionY = 0.0D;
+				event.getEntityPlayer().motionZ = 0.0D;
+
+				if (!event.getEntityPlayer().world.isRemote) {
+					event.getEntityPlayer().world.updateAllPlayersSleepingFlag();
+				}
+
+				event.setResult(EntityPlayer.SleepResult.OK);
+				event.getEntityPlayer().getEntityData().setBoolean("doSleep", true);
+			}
+		}
+	}
+
+	// @SubscribeEvent
+	public void inBed(TickEvent.PlayerTickEvent event) {
+		if (event.phase == TickEvent.Phase.START && !event.player.world.isRemote && event.player.getEntityData()
+				.getBoolean("doSleep")) {
+			ReflectionHelper.setPrivateValue(EntityPlayer.class, event.player, false, "sleeping");
+		}
+
+		if (event.phase == TickEvent.Phase.END && !event.player.world.isRemote && event.player.getEntityData()
+				.getBoolean("doSleep")) {
+			ReflectionHelper.setPrivateValue(EntityPlayer.class, event.player, true, "sleeping");
+		}
+	}
+
+	@SubscribeEvent
+	public void onWakeUp(PlayerSetSpawnEvent event) {
+		if (event.getEntityPlayer() != null) {
+			IBlockState state = event.getEntityPlayer().getEntityWorld().getBlockState(event.getNewSpawn());
+			if (state.getBlock() instanceof BlockBedDC) {
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	// @SubscribeEvent
+	public void onWakeUp2(PlayerWakeUpEvent event) {
+		event.getEntityLiving().getEntityData().removeTag("doSleep");
 	}
 
 	@SubscribeEvent

@@ -9,6 +9,7 @@ import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
+import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -176,6 +177,20 @@ public class JsonRegister {
 					.build());
 			MAIN_INSTANCE.regSimpleItem(Item
 					.getItemFromBlock(MainInit.mcClock_L), ClimateCore.PACKAGE_ID, "dcs_device_mcclock_l", "device", 0);
+
+			ModelLoader.setCustomStateMapper(MainInit.bed, (new StateMap.Builder()).ignore(BlockBed.PART)
+					.ignore(BlockBed.OCCUPIED).ignore(BlockBed.FACING).build());
+			ModelLoader.setCustomStateMapper(MainInit.bedWhite, (new StateMap.Builder()).ignore(BlockBed.PART)
+					.ignore(BlockBed.OCCUPIED).ignore(BlockBed.FACING).build());
+			ModelLoader.setCustomStateMapper(MainInit.bedRattan, (new StateMap.Builder()).ignore(BlockBed.PART)
+					.ignore(BlockBed.OCCUPIED).ignore(BlockBed.FACING).build());
+			ModelLoader.setCustomStateMapper(MainInit.bedFuton, (new StateMap.Builder()).ignore(BlockBed.PART)
+					.ignore(BlockBed.OCCUPIED).ignore(BlockBed.FACING).build());
+			MAIN_INSTANCE.regSimpleBlock(MainInit.bed, ClimateCore.PACKAGE_ID, "dcs_bed", "build", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.bedWhite, ClimateCore.PACKAGE_ID, "dcs_bed_white", "build", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.bedRattan, ClimateCore.PACKAGE_ID, "dcs_bed_rattan", "build", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.bedFuton, ClimateCore.PACKAGE_ID, "dcs_bed_futon", "build", 0);
+			MAIN_INSTANCE.regSimpleItem(MainInit.itemBed, ClimateCore.PACKAGE_ID, "dcs_bed_item", "build", 3);
 		}
 
 		if (!ModuleConfig.delete_old) {

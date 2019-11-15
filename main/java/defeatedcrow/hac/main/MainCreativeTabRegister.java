@@ -150,6 +150,7 @@ public class MainCreativeTabRegister {
 			MainInit.chandelierGypsum.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorMarble.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorSteel.setCreativeTab(ClimateMain.build);
+			MainInit.itemBed.setCreativeTab(ClimateMain.build);
 
 			// furniture
 			MainInit.chestMetal.setCreativeTab(ClimateMain.build);

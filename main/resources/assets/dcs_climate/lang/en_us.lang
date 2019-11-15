@@ -1126,6 +1126,10 @@ tile.dcs_build_oillamp_wood.name=Oil Lamp (Wood)
 tile.dcs_build_oillamp_gold.name=Oil Lamp (Gold)
 tile.dcs_build_oillamp_chalcedony.name=Oil Lamp (White)
 tile.dcs_build_oillamp_serpentine.name=Oil Lamp (Serpentine)
+tile.dcs_bed_item.name=No Save Bed (Iron)
+tile.dcs_bed_white_item.name=No Save Bed (White)
+tile.dcs_bed_rattan_item.name=No Save Bed (Rattan)
+tile.dcs_bed_futon_item.name=No Save Bed (Futon)
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -1511,6 +1515,7 @@ dcs.tip.toolsteel.hoe2=Dismount a target riding entity.
 dcs.tip.toolsteel.tools=Consumes saturation and destroys 3x3 range blocks.
 dcs.tip.toolsteel.sword=Armor Bypass Damage
 dcs.tip.entitypanel=Change the target entity type.
+dcs.tip.bed=This bed does not register respawn point at bedtime.
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products

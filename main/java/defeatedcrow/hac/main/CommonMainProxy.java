@@ -50,6 +50,10 @@ import defeatedcrow.hac.magic.client.gui.GuiLivingDC;
 import defeatedcrow.hac.magic.client.gui.GuiVillagerDC;
 import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
+import defeatedcrow.hac.main.block.build.TileBedDC;
+import defeatedcrow.hac.main.block.build.TileBedDCFuton;
+import defeatedcrow.hac.main.block.build.TileBedDCRattan;
+import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileChandelierSalt;
@@ -378,6 +382,10 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l");
 		GameRegistry.registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l");
 		GameRegistry.registerTileEntity(TilePail.class, "dcs_te_pail");
+		GameRegistry.registerTileEntity(TileBedDC.class, "dcs_te_bed_iron");
+		GameRegistry.registerTileEntity(TileBedDCWhite.class, "dcs_te_bed_white");
+		GameRegistry.registerTileEntity(TileBedDCRattan.class, "dcs_te_bed_rattan");
+		GameRegistry.registerTileEntity(TileBedDCFuton.class, "dcs_te_bed_futon");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();

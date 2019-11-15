@@ -16,6 +16,10 @@ import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.magic.MagicInitRegister;
 import defeatedcrow.hac.main.block.FuelItemBlock;
 import defeatedcrow.hac.main.block.build.BlockAwning;
+import defeatedcrow.hac.main.block.build.BlockBedDC;
+import defeatedcrow.hac.main.block.build.BlockBedDCFuton;
+import defeatedcrow.hac.main.block.build.BlockBedDCRattan;
+import defeatedcrow.hac.main.block.build.BlockBedDCWhite;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockCarbideLamp;
 import defeatedcrow.hac.main.block.build.BlockChain;
@@ -53,6 +57,7 @@ import defeatedcrow.hac.main.block.build.BlockTableBase;
 import defeatedcrow.hac.main.block.build.BlockVillageChest;
 import defeatedcrow.hac.main.block.build.BlockWallLamp;
 import defeatedcrow.hac.main.block.build.BlockWallShelf;
+import defeatedcrow.hac.main.block.build.ItemBedDC;
 import defeatedcrow.hac.main.block.build.ItemDoorDC;
 import defeatedcrow.hac.main.block.build.ItemLowChest;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
@@ -832,6 +837,24 @@ public class MainMaterialRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_door_steel_item");
 			MainInit.itemDoorSteel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_door_steel_item");
 			ForgeRegistries.ITEMS.register(MainInit.itemDoorSteel);
+
+			MainInit.bed = new BlockBedDC(ClimateCore.PACKAGE_BASE + "_bed");
+			DCMaterialReg.registerBlock(MainInit.bed, ClimateCore.PACKAGE_BASE + "_bed", ClimateMain.MOD_ID);
+
+			MainInit.bedWhite = new BlockBedDCWhite(ClimateCore.PACKAGE_BASE + "_bed_white");
+			DCMaterialReg.registerBlock(MainInit.bedWhite, ClimateCore.PACKAGE_BASE + "_bed_white", ClimateMain.MOD_ID);
+
+			MainInit.bedRattan = new BlockBedDCRattan(ClimateCore.PACKAGE_BASE + "_bed_rattan");
+			DCMaterialReg
+					.registerBlock(MainInit.bedRattan, ClimateCore.PACKAGE_BASE + "_bed_rattan", ClimateMain.MOD_ID);
+
+			MainInit.bedFuton = new BlockBedDCFuton(ClimateCore.PACKAGE_BASE + "_bed_futon");
+			DCMaterialReg.registerBlock(MainInit.bedFuton, ClimateCore.PACKAGE_BASE + "_bed_futon", ClimateMain.MOD_ID);
+
+			MainInit.itemBed = new ItemBedDC((BlockBedDC) MainInit.bed)
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_bed_item");
+			MainInit.itemBed.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_bed_item");
+			ForgeRegistries.ITEMS.register(MainInit.itemBed);
 
 			MainInit.realtimeClock = new BlockRealtimeClock(Material.GROUND,
 					ClimateCore.PACKAGE_BASE + "_device_realtimeclock");
