@@ -114,7 +114,7 @@ public class ClimateMain {
 
 		if (ClimateCore.isDebug) {
 			RecipeJsonMaker.canUse = false;
-			RecipeJsonMaker.canDeprecate = false;
+			RecipeJsonMaker.canDeprecate = true;
 			RecipeJsonMaker.dir = Paths
 					.get("E:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources\\assets\\dcs_climate\\recipes\\");
 		}

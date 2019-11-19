@@ -361,7 +361,9 @@ item.dcs_food_plate_soup_tomato_baked.name=Tomato Stew Plate
 item.dcs_food_plate_soup_gratin_raw.name=Raw Gratin
 item.dcs_food_plate_soup_gratin_baked.name=Gratin
 item.dcs_food_plate_soup_paella_raw.name=Raw Paella
-item.dcs_food_plate_soup_paella_baked.name=Paella
+item.dcs_food_plate_soup_paella_baked.name=Seafood Paella
+item.dcs_food_plate_soup_meat_paella_raw.name=Raw Meat Paella
+item.dcs_food_plate_soup_meat_paella_baked.name=Meat Paella
 item.dcs_food_bowl_stew_vegi.name=Vegetable Soup
 item.dcs_food_bowl_stew_egg.name=Egg Soup
 item.dcs_food_bowl_stew_congee.name=Congee
@@ -1126,10 +1128,14 @@ tile.dcs_build_oillamp_wood.name=Oil Lamp (Wood)
 tile.dcs_build_oillamp_gold.name=Oil Lamp (Gold)
 tile.dcs_build_oillamp_chalcedony.name=Oil Lamp (White)
 tile.dcs_build_oillamp_serpentine.name=Oil Lamp (Serpentine)
-tile.dcs_bed_item.name=No Save Bed (Iron)
-tile.dcs_bed_white_item.name=No Save Bed (White)
-tile.dcs_bed_rattan_item.name=No Save Bed (Rattan)
-tile.dcs_bed_futon_item.name=No Save Bed (Futon)
+tile.dcs_bed_0.name=No Save Bed (Iron)
+tile.dcs_bed_white_0.name=No Save Bed (White)
+tile.dcs_bed_rattan_0.name=No Save Bed (Rattan)
+tile.dcs_bed_futon_0.name=No Save Bed (Futon)
+item.dcs_bed_item_iron.name=No Save Bed (Iron)
+item.dcs_bed_item_white.name=No Save Bed (White)
+item.dcs_bed_item_rattan.name=No Save Bed (Rattan)
+item.dcs_bed_item_futon.name=No Save Bed (Futon)
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -1693,6 +1699,7 @@ entity.dcs.food.pita_bread.name=Pita Bread
 entity.dcs.food.pancake.name=Pancake
 entity.dcs.food.walnut_bread.name=Walnut Bread
 entity.dcs.food.gingerman.name=Gingerman
+entity.dcs.food.tortilla.name=Tortilla
 
 entity.dcs.food.fish_stick.name=Fish Skewers
 entity.dcs.food.yakitori_stick.name=Yakitori
@@ -1741,6 +1748,9 @@ entity.dcs.food.plate_chicken.name=Chicken Steak
 entity.dcs.food.plate_fish.name=Fish Steak
 entity.dcs.food.plate_big_garlic.name=Garlic Steak
 entity.dcs.food.plate_potato.name=Buttered Potato
+entity.dcs.food.plate_gratin.name=Gratin
+entity.dcs.food.plate_paella.name=Seafood Paella
+entity.dcs.food.plate_meat_paella.name=Meat Paella
 
 entity.dcs.food.soup_tomato.name=Tomato Stew
 entity.dcs.food.stew_vegi.name=Vegetable Soup
@@ -1807,6 +1817,7 @@ entity.dcs.food.fried_fish.name=Fried Fish
 entity.dcs.food.fried_falafel.name=Falafel
 entity.dcs.food.fried_fishcake.name=Fishcake
 entity.dcs.food.fried_porkginger.name=Pork Ginger
+entity.dcs.food.fried_prawn.name=Fried Prawn
 
 entity.dcs.food.fried_potato.name=Fried Potato
 entity.dcs.food.fish_and_chips.name=Fish and Chips
@@ -1828,6 +1839,10 @@ entity.dcs.food.dish_tamago.name=Tamagoyaki
 entity.dcs.food.dish_yakko.name=Yakko Tofu
 
 entity.dcs.food.dish_mabo.name=Mapo Doufu
+entity.dcs.food.dish_omerice.name=Omerice
+entity.dcs.food.dish_taco.name=Taco
+entity.dcs.food.dish_tacorice.name=Tacorice
+entity.dcs.food.dish_nachos.name=Nachos
 
 entity.dcs.food.udon_meat.name=Udon
 entity.dcs.food.udon_seaweed.name=Seaweed Udon

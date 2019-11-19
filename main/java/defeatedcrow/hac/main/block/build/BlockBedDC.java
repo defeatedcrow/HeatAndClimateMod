@@ -4,10 +4,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import defeatedcrow.hac.api.energy.IWrenchDC;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.BlockContainerDC;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
@@ -97,19 +94,6 @@ public class BlockBedDC extends BlockContainerDC {
 	@Override
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
-		ItemStack stack = player.getHeldItem(hand);
-		if (!DCUtil.isEmpty(stack) && stack.getItem() instanceof IWrenchDC) {
-			TileEntity tile = world.getTileEntity(pos);
-			if (tile instanceof TileBedDC) {
-				BlockPos p1 = ((TileBedDC) tile).getSleepPos();
-				BlockPos p2 = ((TileBedDC) tile).getRespawnPos();
-
-				DCLogger.debugInfoLog("Sleep Pos: " + p1.toString());
-				DCLogger.debugInfoLog("Respawn Pos: " + p2.toString());
-			}
-			return true;
-		}
-
 		if (world.isRemote) {
 			return true;
 		} else {
@@ -124,9 +108,24 @@ public class BlockBedDC extends BlockContainerDC {
 
 			// tile
 			TileBedDC bed = null;
-			TileEntity tile = world.getTileEntity(pos);
-			if (tile instanceof TileBedDC) {
-				bed = (TileBedDC) tile;
+			TileBedDC bed2 = null;
+			TileEntity t1;
+			TileEntity t2;
+			EnumFacing face = state.getValue(BlockBed.FACING);
+			if (state.getValue(BlockBed.PART) == BlockBed.EnumPartType.HEAD) {
+				t1 = world.getTileEntity(pos);
+				t2 = world.getTileEntity(pos.offset(face.getOpposite()));
+			} else {
+				t1 = world.getTileEntity(pos.offset(face));
+				t2 = world.getTileEntity(pos);
+			}
+			if (t1 instanceof TileBedDC) {
+				bed = (TileBedDC) t1;
+			} else {
+				return true;
+			}
+			if (t2 instanceof TileBedDC) {
+				bed2 = (TileBedDC) t2;
 			} else {
 				return true;
 			}
@@ -148,13 +147,14 @@ public class BlockBedDC extends BlockContainerDC {
 				}
 
 				// Player側のSleep判定
-				BlockPos pos2 = player.getPosition();
+				BlockPos pos2 = new BlockPos(player.getPosition());
 				bed.setSleepPos(pos2);
+				bed2.setSleepPos(pos2);
+				// DCLogger.debugInfoLog("Sleep Pos: " + pos2.toString());
 
 				EntityPlayer.SleepResult result = player.trySleep(pos);
 
 				if (result == EntityPlayer.SleepResult.OK) {
-					bed.setSleepPos(player.getPosition());
 					state = state.withProperty(BlockBed.OCCUPIED, Boolean.valueOf(true));
 					world.setBlockState(pos, state, 4);
 					return true;
@@ -190,6 +190,7 @@ public class BlockBedDC extends BlockContainerDC {
 		TileEntity tile = world.getTileEntity(pos);
 		if (tile instanceof TileBedDC) {
 			BlockPos ret = ((TileBedDC) tile).getSleepPos();
+			// DCLogger.debugInfoLog("Result pos: " + ret.toString());
 			if (!ret.equals(BlockPos.ORIGIN)) {
 				return ret.up();
 			}
@@ -226,7 +227,7 @@ public class BlockBedDC extends BlockContainerDC {
 
 	@Override
 	public void onFallenUpon(World world, BlockPos pos, Entity entity, float distance) {
-		super.onFallenUpon(world, pos, entity, distance * 0.5F);
+		super.onFallenUpon(world, pos, entity, distance * 0.25F);
 	}
 
 	/* drop */
@@ -236,10 +237,10 @@ public class BlockBedDC extends BlockContainerDC {
 		EnumFacing enumfacing = state.getValue(BlockBed.FACING);
 
 		if (state.getValue(BlockBed.PART) == BlockBed.EnumPartType.FOOT) {
-			if (world.getBlockState(pos.offset(enumfacing.getOpposite())).getBlock() != this) {
+			if (world.getBlockState(pos.offset(enumfacing)).getBlock() != this) {
 				world.setBlockToAir(pos);
 			}
-		} else if (world.getBlockState(pos.offset(enumfacing)).getBlock() != this) {
+		} else if (world.getBlockState(pos.offset(enumfacing.getOpposite())).getBlock() != this) {
 			if (!world.isRemote) {
 				this.dropBlockAsItem(world, pos, state, 0);
 			}
@@ -339,6 +340,15 @@ public class BlockBedDC extends BlockContainerDC {
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
+	}
+
+	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
+		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 }

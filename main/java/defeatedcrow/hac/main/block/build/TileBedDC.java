@@ -9,26 +9,19 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileBedDC extends TileEntity {
 
 	public BlockPos sleep = BlockPos.ORIGIN;
-	public BlockPos lastPos = BlockPos.ORIGIN;
 
 	public BlockPos getSleepPos() {
 		return sleep;
 	}
 
 	public void setSleepPos(BlockPos p) {
-		sleep = p;
-	}
-
-	public BlockPos getRespawnPos() {
-		return lastPos;
-	}
-
-	public void setRespawnPos(BlockPos p) {
-		lastPos = p;
+		sleep = new BlockPos(p.getX(), p.getY(), p.getZ());
 	}
 
 	@Override
@@ -38,11 +31,6 @@ public class TileBedDC extends TileEntity {
 		int y = tag.getInteger("posY");
 		int z = tag.getInteger("posZ");
 		sleep = new BlockPos(x, y, z);
-
-		int x2 = tag.getInteger("2posX");
-		int y2 = tag.getInteger("2posY");
-		int z2 = tag.getInteger("2posZ");
-		lastPos = new BlockPos(x2, y2, z2);
 	}
 
 	@Override
@@ -56,12 +44,6 @@ public class TileBedDC extends TileEntity {
 		tag.setInteger("posY", pos.getY());
 		tag.setInteger("posZ", pos.getZ());
 
-		if (lastPos == null) {
-			lastPos = BlockPos.ORIGIN;
-		}
-		tag.setInteger("2posX", lastPos.getX());
-		tag.setInteger("2posY", lastPos.getY());
-		tag.setInteger("2posZ", lastPos.getZ());
 		return tag;
 	}
 
@@ -87,4 +69,13 @@ public class TileBedDC extends TileEntity {
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
 		return (oldState.getBlock() != newSate.getBlock());
 	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
+		net.minecraft.util.math.AxisAlignedBB bb = INFINITE_EXTENT_AABB;
+		bb = new net.minecraft.util.math.AxisAlignedBB(getPos().add(-1, -1, -1), getPos().add(1, 1, 1));
+		return bb;
+	}
+
 }

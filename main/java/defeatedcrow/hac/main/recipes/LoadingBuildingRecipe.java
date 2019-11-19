@@ -1324,6 +1324,38 @@ public class LoadingBuildingRecipe {
 				new ItemStack(MainInit.cushionGray, 1, 0),
 				"dyeBrown" });
 
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 0), new Object[] {
+				"XXX",
+				"YYY",
+				'X',
+				"itemCloth",
+				'Y',
+				new ItemStack(Blocks.IRON_BARS) });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 1), new Object[] {
+				"XXX",
+				"YYY",
+				'X',
+				"itemCloth",
+				'Y',
+				"blockMarble" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 2), new Object[] {
+				"XXX",
+				"YYY",
+				'X',
+				"itemCloth",
+				'Y',
+				"bunchVine" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 3), new Object[] {
+				"XXX",
+				"YYY",
+				'X',
+				"itemCloth",
+				'Y',
+				"cropCotton" });
+
 		}
 	}
 

@@ -95,7 +95,15 @@ public class ModelPaella extends ModelSteakPlate {
 
 	@Override
 	public void setIndividualRotation(FoodEntityBase entity) {
-
+		if (entity != null) {
+			int i = entity.getIndividual();
+			prawn1.rotateAngleY = 0.05F * (i & 3) * (float) (Math.PI);
+			prawn2.rotateAngleY = -0.05F * (i & 3) * (float) (Math.PI);
+			prawn3.rotateAngleY = 0.05F * (i & 3) * (float) (Math.PI);
+			c1.rotateAngleY = 0.05F * (i & 12) * (float) (Math.PI);
+			c2.rotateAngleY = 2.094395F + 0.05F * (i & 12) * (float) (Math.PI);
+			c3.rotateAngleY = -2.094395F + 0.05F * (i & 12) * (float) (Math.PI);
+		}
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

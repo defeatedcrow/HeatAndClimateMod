@@ -7,11 +7,7 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "foodShrimpraw"
-  },
-  {
-   "type": "forge:ore_dict",
-   "ore": "listAllfishraw"
+   "ore": "listAllchickenraw"
   },
   {
    "type": "forge:ore_dict",
@@ -23,12 +19,16 @@
   },
   {
    "type": "forge:ore_dict",
+   "ore": "cropBean"
+  },
+  {
+   "type": "forge:ore_dict",
    "ore": "foodStock"
   }
  ],
  "result": {
   "item": "dcs_climate:dcs_food_plate_soup",
   "count": 1,
-  "data": 6
+  "data": 8
  }
 }
