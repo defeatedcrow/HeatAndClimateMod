@@ -38,7 +38,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 @Mod(modid = ClimateMain.MOD_ID, name = ClimateMain.MOD_NAME,
 		version = ClimateMain.MOD_MEJOR + "." + ClimateMain.MOD_MINOR + "." + ClimateMain.MOD_BUILD,
 		dependencies = ClimateMain.MOD_DEPENDENCIES, acceptedMinecraftVersions = ClimateCore.MOD_ACCEPTED_MC_VERSIONS,
-		updateJSON = ClimateMain.UPDATE_JSON, useMetadata = true)
+		updateJSON = ClimateMain.UPDATE_JSON, certificateFingerprint = ClimateMain.KEY, useMetadata = true)
 public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
@@ -47,6 +47,7 @@ public class ClimateMain {
 	public static final int MOD_BUILD = 5;
 	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.1.1,)";
 	public static final String UPDATE_JSON = "https://defeatedcrow.jp/version/heatandclimate.json";
+	public static final String KEY = "4cd12b92959105443b7b694fffe0cea9ed004886";
 
 	@SidedProxy(clientSide = "defeatedcrow.hac.main.client.ClientMainProxy",
 			serverSide = "defeatedcrow.hac.main.CommonMainProxy")
