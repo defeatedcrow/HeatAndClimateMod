@@ -182,6 +182,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.paperPack, 1, 3));
 		OreDictionary.registerOre("listAllheavycream", new ItemStack(FoodInit.paperPack, 1, 3));
 		OreDictionary.registerOre("foodCream", new ItemStack(FoodInit.dropCream, 1, 0));
+		OreDictionary.registerOre("listAllheavycream", new ItemStack(FoodInit.dropCream, 1, 0));
 		OreDictionary.registerOre("foodOil", new ItemStack(FoodInit.paperPack, 1, 4));
 		OreDictionary.registerOre("foodOliveoil", new ItemStack(FoodInit.paperPack, 1, 4));
 		OreDictionary.registerOre("dropFuel", new ItemStack(FoodInit.paperPack, 1, 4));

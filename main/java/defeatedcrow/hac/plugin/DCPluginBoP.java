@@ -77,8 +77,10 @@ public class DCPluginBoP {
 
 		addOre("cropWildice", BOPBlocks.plant_1, 3);
 		addOre("listAllgrain", BOPBlocks.plant_1, 3);
-		addOre("cropBarlay", BOPBlocks.plant_1, 11);
+		addOre("cropBarley", BOPBlocks.plant_1, 11);
 		addOre("listAllgrain", BOPBlocks.plant_1, 11);
+
+		addOre("listAllmeatraw", BOPBlocks.flesh, 0);
 
 		// machine
 		if (ModuleConfig.machine && ModuleConfig.r_mill) {
@@ -88,11 +90,11 @@ public class DCPluginBoP {
 					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
 							MachineInit.rotaryBlade, 1, 0), "cropWildrice");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropBarlay");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropBarley");
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
 					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
-							MachineInit.rotaryBlade, 1, 0), "cropBarlay");
+							MachineInit.rotaryBlade, 1, 0), "cropBarley");
 
 			List<ItemStack> leaves = Lists.newArrayList();
 			leaves.add(new ItemStack(Blocks.WATERLILY, 1, 0));
@@ -141,7 +143,7 @@ public class DCPluginBoP {
 		if (ModuleConfig.food && ModuleConfig.r_fluid) {
 			FoodFluidRecipe.regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1,
 					3), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(
-							FluidRegistry.WATER, 200), new Object[] { "cropBarlay" });
+							FluidRegistry.WATER, 200), new Object[] { "cropBarley" });
 
 			FoodFluidRecipe.regNonFoodrecipe(new ItemStack(FoodInit.crops, 1,
 					18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,

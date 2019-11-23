@@ -78,7 +78,7 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 		case 11:
 			return new ItemStack(MainInit.silkworm, 1, 2);
 		case 12:
-			return "cropgarlic";
+			return "cropGarlic";
 		case 13:
 			return "cropLettuce";
 		case 14:

@@ -989,12 +989,12 @@ public class LoadingBuildingRecipe {
 				new ItemStack(MainInit.curtainWhite, 1, 0),
 				"dyeGray" });
 
-			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.curtainGray), new Object[] {
-				new ItemStack(MainInit.curtainRed, 1, 0),
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.curtainRed), new Object[] {
+				new ItemStack(MainInit.curtainWhite, 1, 0),
 				"dyeRed" });
 
-			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.curtainGray), new Object[] {
-				new ItemStack(MainInit.curtainBlue, 1, 0),
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.curtainBlue), new Object[] {
+				new ItemStack(MainInit.curtainWhite, 1, 0),
 				"dyeBlue" });
 
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chestMetal, 1, 0), new Object[] {

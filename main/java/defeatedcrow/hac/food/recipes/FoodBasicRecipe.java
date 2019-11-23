@@ -154,7 +154,7 @@ public class FoodBasicRecipe {
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.pastry, 2, 0), new Object[] {
 			"foodFlour",
 			"foodOil",
-			"bucketWater",
+			"egg",
 			"dustSalt" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.pastry, 1, 1), new Object[] {
@@ -808,19 +808,19 @@ public class FoodBasicRecipe {
 			"foodButter" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.cake, 1, 11), new Object[] {
-			"foodPancake",
-			"foodPancake",
-			"foodPancake",
-			"foodPancake",
+			"foodPancakes",
+			"foodPancakes",
+			"foodPancakes",
+			"foodPancakes",
 			"foodButter",
 			"listAllheavycream",
 			"listAllberry" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.cake, 1, 11), new Object[] {
-			"foodPancake",
-			"foodPancake",
-			"foodPancake",
-			"foodPancake",
+			"foodPancakes",
+			"foodPancakes",
+			"foodPancakes",
+			"foodPancakes",
 			"foodButter",
 			"dropHoney",
 			"listAllberry" });
