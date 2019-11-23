@@ -11,6 +11,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -132,9 +133,7 @@ public class BlockMCClock_L extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.FACING });
 	}
 
 	@Override
@@ -154,5 +153,10 @@ public class BlockMCClock_L extends BlockContainerDC {
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Press shift key: Tooltip expands ===");
 		}
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 }

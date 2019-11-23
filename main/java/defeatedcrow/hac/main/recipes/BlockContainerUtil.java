@@ -13,6 +13,7 @@ import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.block.cont.BlockFuelCont;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.ICompressionRecipe;
+import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.state.IBlockState;
@@ -90,7 +91,7 @@ public class BlockContainerUtil {
 			}
 		}
 
-		ItemStack[] dust = ((ICompressionRecipe) MainInit.dustBlock).containedItem();
+		ItemStack[] dust = BlockDusts.containedItem();
 		for (int i = 0; i < dust.length; i++) {
 			ItemStack check = dust[i];
 			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
@@ -103,14 +104,6 @@ public class BlockContainerUtil {
 			ItemStack check = cont1[i1];
 			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
 				return INS.new ReturnPair(new ItemStack(MainInit.cardboard, 1, i1), 8);
-			}
-		}
-
-		ItemStack[] cont2 = ((ICompressionRecipe) MainInit.cropBasket).containedItem();
-		for (int i2 = 0; i2 < cont2.length; i2++) {
-			ItemStack check = cont2[i2];
-			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
-				return INS.new ReturnPair(new ItemStack(MainInit.cropBasket, 1, i2), 8);
 			}
 		}
 
@@ -154,27 +147,40 @@ public class BlockContainerUtil {
 			}
 		}
 
-		ItemStack[] cont8 = BlockFuelCont.containedItem();
-		for (int i8 = 0; i8 < cont8.length; i8++) {
-			ItemStack check = cont8[i8];
-			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
-				return INS.new ReturnPair(new ItemStack(MachineInit.fuelCont, 1, i8), 9);
-			}
-		}
+		if (ModuleConfig.food) {
 
-		ItemStack[] cont9 = ((ICompressionRecipe) MainInit.cropJute).containedItem();
-		for (int i9 = 0; i9 < cont9.length; i9++) {
-			ItemStack check = cont9[i9];
-			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
-				return INS.new ReturnPair(new ItemStack(MainInit.cropJute, 1, i9), 8);
+			ItemStack[] cont2 = ((ICompressionRecipe) MainInit.cropBasket).containedItem();
+			for (int i2 = 0; i2 < cont2.length; i2++) {
+				ItemStack check = cont2[i2];
+				if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
+					return INS.new ReturnPair(new ItemStack(MainInit.cropBasket, 1, i2), 8);
+				}
+			}
+
+			ItemStack[] cont9 = ((ICompressionRecipe) MainInit.cropJute).containedItem();
+			for (int i9 = 0; i9 < cont9.length; i9++) {
+				ItemStack check = cont9[i9];
+				if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
+					return INS.new ReturnPair(new ItemStack(MainInit.cropJute, 1, i9), 8);
+				}
 			}
 		}
 
 		ItemStack[] cont10 = ((ICompressionRecipe) MainInit.dustCake).containedItem();
-		for (int i10 = 0; i10 < cont9.length; i10++) {
-			ItemStack check = cont9[i10];
+		for (int i10 = 0; i10 < cont10.length; i10++) {
+			ItemStack check = cont10[i10];
 			if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
 				return INS.new ReturnPair(new ItemStack(MainInit.dustCake, 1, i10), 8);
+			}
+		}
+
+		if (ModuleConfig.machine) {
+			ItemStack[] cont8 = BlockFuelCont.containedItem();
+			for (int i8 = 0; i8 < cont8.length; i8++) {
+				ItemStack check = cont8[i8];
+				if (DCUtil.isSameItem(item, check, false) || MainUtil.hasSameDic(item, check)) {
+					return INS.new ReturnPair(new ItemStack(MachineInit.fuelCont, 1, i8), 9);
+				}
 			}
 		}
 

@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -124,8 +125,8 @@ public class BlockDoorDC extends BlockDoor {
 			} else {
 				boolean flag = worldIn.isBlockPowered(pos) || worldIn.isBlockPowered(blockpos1);
 
-				if (blockIn != this && (flag || blockIn.getDefaultState().canProvidePower()) &&
-						flag != iblockstate1.getValue(POWERED).booleanValue()) {
+				if (blockIn != this && (flag || blockIn.getDefaultState().canProvidePower()) && flag != iblockstate1
+						.getValue(POWERED).booleanValue()) {
 					worldIn.setBlockState(blockpos1, iblockstate1.withProperty(POWERED, Boolean.valueOf(flag)), 2);
 
 					if (flag != state.getValue(OPEN).booleanValue()) {
@@ -145,6 +146,11 @@ public class BlockDoorDC extends BlockDoor {
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 			return true;
 		return false;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 }

@@ -876,6 +876,26 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.curtainWhite), "dcs_climate", "dcs_build_curtain", "build", 0, true);
 
+			MainInit.curtainGray = new BlockCurtain("dcs_build_curtain_gray")
+					.setUnlocalizedName("dcs_build_curtain_gray");
+			DCMaterialReg
+					.registerBlock(MainInit.curtainGray, ClimateCore.PACKAGE_BASE + "_build_curtain_gray", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.curtainGray), "dcs_climate", "dcs_build_curtain_gray", "build", 0, true);
+
+			MainInit.curtainRed = new BlockCurtain("dcs_build_curtain_red").setUnlocalizedName("dcs_build_curtain_red");
+			DCMaterialReg
+					.registerBlock(MainInit.curtainRed, ClimateCore.PACKAGE_BASE + "_build_curtain_red", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.curtainRed), "dcs_climate", "dcs_build_curtain_red", "build", 0, true);
+
+			MainInit.curtainBlue = new BlockCurtain("dcs_build_curtain_blue")
+					.setUnlocalizedName("dcs_build_curtain_blue");
+			DCMaterialReg
+					.registerBlock(MainInit.curtainBlue, ClimateCore.PACKAGE_BASE + "_build_curtain_blue", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.curtainBlue), "dcs_climate", "dcs_build_curtain_blue", "build", 0, true);
+
 			MainInit.chestMetal = new BlockMetalChest(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chest_metal");
 			registerChestBlock(MainInit.chestMetal, ClimateCore.PACKAGE_BASE + "_device_chest_metal", ClimateMain.MOD_ID);
 

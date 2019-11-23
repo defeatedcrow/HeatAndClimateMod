@@ -135,6 +135,9 @@ public class MainInit {
 	public static Block carpetGray;
 
 	public static Block curtainWhite;
+	public static Block curtainGray;
+	public static Block curtainRed;
+	public static Block curtainBlue;
 
 	public static Block sinkMetal;
 	public static Block sinkChest;

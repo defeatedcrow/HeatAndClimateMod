@@ -49,8 +49,8 @@ public class BlockMetalFenceBase extends BlockDC {
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(
-				UPPER, false).withProperty(UNDER, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
+				.withProperty(UPPER, false).withProperty(UNDER, false));
 		translusent = b;
 	}
 
@@ -69,8 +69,8 @@ public class BlockMetalFenceBase extends BlockDC {
 		if (face != null) {
 			BlockPos up = pos.up();
 			BlockPos un = pos.down();
-			return state.withProperty(UPPER, Boolean.valueOf(this.canConnectTo(worldIn, up, face))).withProperty(UNDER,
-					Boolean.valueOf(this.canConnectTo(worldIn, un, face)));
+			return state.withProperty(UPPER, Boolean.valueOf(this.canConnectTo(worldIn, up, face)))
+					.withProperty(UNDER, Boolean.valueOf(this.canConnectTo(worldIn, un, face)));
 		}
 		return state.withProperty(UPPER, false).withProperty(UNDER, false);
 	}
@@ -99,11 +99,11 @@ public class BlockMetalFenceBase extends BlockDC {
 			return super.withMirror(state, mirrorIn);
 		switch (mirrorIn) {
 		case LEFT_RIGHT:
-			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(UPPER, state.getValue(
-					UNDER)).withProperty(UNDER, state.getValue(UPPER));
+			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(UPPER, state.getValue(UNDER))
+					.withProperty(UNDER, state.getValue(UPPER));
 		case FRONT_BACK:
-			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(UNDER, state.getValue(
-					UPPER)).withProperty(UPPER, state.getValue(UNDER));
+			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(UNDER, state.getValue(UPPER))
+					.withProperty(UPPER, state.getValue(UNDER));
 		default:
 			return super.withMirror(state, mirrorIn);
 		}
@@ -111,11 +111,7 @@ public class BlockMetalFenceBase extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING,
-				UPPER,
-				UNDER
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.FACING, UPPER, UNDER });
 	}
 
 	@Override

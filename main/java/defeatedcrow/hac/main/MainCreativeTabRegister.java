@@ -163,6 +163,9 @@ public class MainCreativeTabRegister {
 			MainInit.realtimeClock_L.setCreativeTab(ClimateMain.build);
 			MainInit.mcClock_L.setCreativeTab(ClimateMain.build);
 			MainInit.curtainWhite.setCreativeTab(ClimateMain.build);
+			MainInit.curtainGray.setCreativeTab(ClimateMain.build);
+			MainInit.curtainRed.setCreativeTab(ClimateMain.build);
+			MainInit.curtainBlue.setCreativeTab(ClimateMain.build);
 
 			MainInit.lampCarbide.setCreativeTab(ClimateMain.build);
 			MainInit.lampGas.setCreativeTab(ClimateMain.build);
