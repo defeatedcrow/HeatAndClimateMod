@@ -42,7 +42,7 @@ public class StickFoodsItem extends FoodItemBase {
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 15);
+		int i = MathHelper.clamp(0, meta, 17);
 		String s = "items/food/stick_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
