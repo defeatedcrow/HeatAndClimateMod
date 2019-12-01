@@ -63,6 +63,9 @@ public class BlockContainerUtil {
 		if (item.getItem() == Items.QUARTZ) {
 			return INS.new ReturnPair(new ItemStack(Blocks.QUARTZ_BLOCK), 4);
 		}
+		if (item.getItem() == MainInit.foodDust && item.getItemDamage() == 4) {
+			return INS.new ReturnPair(new ItemStack(MainInit.dustCake, 1, 4), 8);
+		}
 
 		int[] ids = OreDictionary.getOreIDs(item);
 		for (int id : ids) {

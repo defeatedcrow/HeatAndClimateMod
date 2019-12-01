@@ -98,6 +98,7 @@ public class FoodRecipes {
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.leavesDatesCrop);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropWisteria);
 		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropGinger);
+		CropAPI.register.addCropData((IClimateCrop) FoodInit.cropGrape);
 	}
 
 	public static void loadOres() {
@@ -118,6 +119,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("cropDate", new ItemStack(FoodInit.crops, 1, 17));
 		OreDictionary.registerOre("bunchVine", new ItemStack(FoodInit.crops, 1, 18));
 		OreDictionary.registerOre("cropGinger", new ItemStack(FoodInit.crops, 1, 19));
+		OreDictionary.registerOre("cropGrape", new ItemStack(FoodInit.crops, 1, 20));
 		OreDictionary.registerOre("listAllgrain", new ItemStack(FoodInit.seeds, 1, 0));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 1));
 		OreDictionary.registerOre("listAllveggie", new ItemStack(FoodInit.crops, 1, 2));
@@ -135,6 +137,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllnut", new ItemStack(FoodInit.crops, 1, 16));
 		OreDictionary.registerOre("listAllfruit", new ItemStack(FoodInit.crops, 1, 17));
 		OreDictionary.registerOre("listAllspice", new ItemStack(FoodInit.crops, 1, 19));
+		OreDictionary.registerOre("listAllfruit", new ItemStack(FoodInit.crops, 1, 20));
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("listAllherb", new ItemStack(FoodInit.crops, 1, 9));
@@ -159,6 +162,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("seedLettuce", new ItemStack(FoodInit.seeds, 1, 13));
 		OreDictionary.registerOre("seedWisteria", new ItemStack(FoodInit.seeds, 1, 14));
 		OreDictionary.registerOre("seedGinger", new ItemStack(FoodInit.seeds, 1, 15));
+		OreDictionary.registerOre("seedGrape", new ItemStack(FoodInit.seeds, 1, 16));
 		OreDictionary.registerOre("saplingLemon", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.saplings, 1, 0));
 		OreDictionary.registerOre("saplingOlive", new ItemStack(FoodInit.saplings, 1, 1));
@@ -249,6 +253,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodTofu", new ItemStack(FoodInit.nonEntity, 1, 3));
 		OreDictionary.registerOre("foodFirmtofu", new ItemStack(FoodInit.nonEntity, 1, 3));
 		OreDictionary.registerOre("foodSmokedsalmon", new ItemStack(FoodInit.nonEntity, 1, 4));
+		OreDictionary.registerOre("foodRaisins", new ItemStack(FoodInit.nonEntity, 1, 5));
 		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 3));
 		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 5));
 		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(FoodInit.sticks, 1, 7));
@@ -282,6 +287,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("listAllrabbitcooked", new ItemStack(Items.COOKED_RABBIT, 1, 0));
 
 		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropWisteria, 1, 32767));
+		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropGrape, 1, 32767));
 		OreDictionary.registerOre("vineLeaves", new ItemStack(Blocks.VINE, 1, 0));
 	}
 

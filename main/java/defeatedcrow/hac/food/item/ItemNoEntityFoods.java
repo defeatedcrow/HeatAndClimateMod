@@ -6,7 +6,8 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCFoodItem;
-import net.minecraft.client.resources.I18n;
+import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -18,16 +19,16 @@ public class ItemNoEntityFoods extends DCFoodItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "marshmallow", "date_and_nut", "toffee", "tofu", "smoked_salmon" };
+	private static String[] names = { "marshmallow", "date_and_nut", "toffee", "tofu", "smoked_salmon", "raisin" };
 
 	public ItemNoEntityFoods() {
 		super(false);
-		maxMeta = 4;
+		maxMeta = 5;
 	}
 
 	@Override
 	public int getMaxMeta() {
-		return 4;
+		return 5;
 	}
 
 	@Override
@@ -57,7 +58,7 @@ public class ItemNoEntityFoods extends DCFoodItem {
 	@Override
 	public boolean addEffects(ItemStack stack, World worldIn, EntityLivingBase living) {
 		if (!worldIn.isRemote && stack != null) {
-			living.clearActivePotions();
+			MainUtil.removeBadPotion(living);
 			return true;
 		}
 		return false;
@@ -66,7 +67,7 @@ public class ItemNoEntityFoods extends DCFoodItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.clear_potion"));
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.REMOVE_BAD_POTION.getLocalizedName());
 	}
 
 }

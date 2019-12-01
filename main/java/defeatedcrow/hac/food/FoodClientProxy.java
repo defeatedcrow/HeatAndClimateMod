@@ -172,6 +172,8 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(TortillaEntity.class, TortillaRenderer.class);
 		ClientMainProxy.registRender(FriedPrawnEntity.class, FriedPrawnRenderer.class);
 		ClientMainProxy.registRender(MotuStickEntity.class, MotuStickRenderer.class);
+		ClientMainProxy.registRender(RaisinBreadEntity.class, RaisinBreadRenderer.class);
+		ClientMainProxy.registRender(CakeGrapeEntity.class, JellyGrapeRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -187,10 +189,10 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.teaLeaves, ClimateCore.PACKAGE_ID, "dcs_food_leaves", "food", 2);
 		instance.regSimpleItem(FoodInit.dropOil, ClimateCore.PACKAGE_ID, "dcs_food_drop_oil", "food", 0);
 		instance.regSimpleItem(FoodInit.dropCream, ClimateCore.PACKAGE_ID, "dcs_food_drop_cream", "food", 0);
-		instance.regSimpleItem(FoodInit.bread, ClimateCore.PACKAGE_ID, "dcs_round_bread", "food", 21);
+		instance.regSimpleItem(FoodInit.bread, ClimateCore.PACKAGE_ID, "dcs_round_bread", "food", 23);
 		instance.regSimpleItem(FoodInit.sticks, ClimateCore.PACKAGE_ID, "dcs_stick_foods", "food", 17);
-		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 19);
-		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 15);
+		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 20);
+		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 16);
 		instance.regSimpleItem(FoodInit.petals, ClimateCore.PACKAGE_ID, "dcs_petals", "food", 1);
 		instance.regSimpleItem(FoodInit.cupSilver, ClimateCore.PACKAGE_ID, "dcs_food_teacup", "food", 2);
 		instance.regSimpleItem(FoodInit.dairy, ClimateCore.PACKAGE_ID, "dcs_food_dairy", "food", 4);
@@ -206,11 +208,11 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.plateSoup, ClimateCore.PACKAGE_ID, "dcs_food_plate_potato", "food", 9);
 		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 15);
 		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 11);
-		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 11);
+		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 12);
 		instance.regSimpleItem(FoodInit.icecream, ClimateCore.PACKAGE_ID, "dcs_food_icecream", "food", 4);
 		instance.regSimpleItem(FoodInit.mochi, ClimateCore.PACKAGE_ID, "dcs_food_mochi", "food", 1);
 		instance.regSimpleItem(FoodInit.wagashi, ClimateCore.PACKAGE_ID, "dcs_food_wagashi", "food", 8);
-		instance.regSimpleItem(FoodInit.nonEntity, ClimateCore.PACKAGE_ID, "dcs_food_noentity", "food", 4);
+		instance.regSimpleItem(FoodInit.nonEntity, ClimateCore.PACKAGE_ID, "dcs_food_noentity", "food", 5);
 		instance.regSimpleItem(FoodInit.snack, ClimateCore.PACKAGE_ID, "dcs_food_snack", "food", 5);
 		instance.regSimpleItem(FoodInit.deepFry, ClimateCore.PACKAGE_ID, "dcs_food_frying", "food", 6);
 		instance.regSimpleItem(FoodInit.setMeal, ClimateCore.PACKAGE_ID, "dcs_food_setmeal", "food", 1);
@@ -256,6 +258,12 @@ public class FoodClientProxy {
 			ModelLoader.setCustomModelResourceLocation(Item
 					.getItemFromBlock(FoodInit.cropWisteria), i, new ModelResourceLocation(
 							"dcs_climate:crop/dcs_crop_wisteria" + i, "inventory"));
+		}
+
+		for (int i = 0; i < 4; i++) {
+			ModelLoader.setCustomModelResourceLocation(Item
+					.getItemFromBlock(FoodInit.cropGrape), i, new ModelResourceLocation(
+							"dcs_climate:crop/dcs_crop_grape" + i, "inventory"));
 		}
 
 		// leaves color

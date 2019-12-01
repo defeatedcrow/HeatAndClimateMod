@@ -1365,9 +1365,9 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 14);
 
-		MainInit.cropJute = new BlockCropJutebag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_jutebag", 3);
+		MainInit.cropJute = new BlockCropJutebag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_jutebag", 4);
 		DCMaterialReg.registerBlock(MainInit.cropJute, ClimateCore.PACKAGE_BASE + "_cont_jutebag", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.cropJute, "cont_jutebag", 3);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropJute, "cont_jutebag", 4);
 
 		MainInit.dustCake = new BlockMiscCake(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cake", 4);
 		DCMaterialReg.registerBlock(MainInit.dustCake, ClimateCore.PACKAGE_BASE + "_cont_cake", ClimateMain.MOD_ID);

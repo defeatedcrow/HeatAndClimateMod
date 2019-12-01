@@ -406,6 +406,7 @@ item.dcs_food_cake_egg_cocotte_raw.name=Raw Eggs en Cocotte
 item.dcs_food_cake_egg_cocotte_baked.name=Eggs en Cocotte
 item.dcs_food_cake_stickey_toffee_pudding.name=Stickey Toffee Pudding
 item.dcs_food_cake_pancake.name=Pancake Tower
+item.dcs_food_cake_grapejelly.name=Grape Jelly and Mousse
 item.dcs_food_icecream_milk.name=Ice Cream
 item.dcs_food_icecream_kinako.name=Ice Cream with Kinako
 item.dcs_food_icecream_berry.name=Berry Ice Cream
@@ -1450,6 +1451,7 @@ dcs.tip.fuel_g=gaseous fuel (ex. fuel gas)
 dcs.tip.right_click=Right-click
 dcs.tip.pairing=Require registering target coordinate. (Held this item and right-click the coordinate of target machine.)
 dcs.tip.on_anvil=Use on the anvil.
+dcs.tip.remove_bad_potion=Clear only bad potion effects.
 
 dcs.tip.clear_potion=Clear all potion effects.
 dcs.tip.danger_drink=Powerful but dangerous!
@@ -1703,6 +1705,7 @@ entity.dcs.food.pancake.name=Pancake
 entity.dcs.food.walnut_bread.name=Walnut Bread
 entity.dcs.food.gingerman.name=Gingerman
 entity.dcs.food.tortilla.name=Tortilla
+entity.dcs.food.raisin_bread.name=Raisin Bread
 
 entity.dcs.food.fish_stick.name=Fish Skewers
 entity.dcs.food.yakitori_stick.name=Yakitori
@@ -1792,11 +1795,12 @@ entity.dcs.food.cake_coffee.name=Coffee Jelly
 entity.dcs.food.cake_lemon.name=Lemon Jelly
 entity.dcs.food.cake_bakedcream.name=Baked Custard
 entity.dcs.food.cake_lemon.name=Lemon Jelly
-entity.dcs.food.cake_berryjelly.name=Berry Jelly
+entity.dcs.food.cake_berry.name=Berry Jelly
 entity.dcs.food.cake_kuzujelly.name=Kuzumochi
 entity.dcs.food.cake_egg_cocotte_raw.name=Raw Eggs en Cocotte
 entity.dcs.food.cake_gg_cocotte_baked.name=Eggs en Cocotte
 entity.dcs.food.cake_tower.name=Pancake Tower
+entity.dcs.food.cake_grape.name=Grape Jelly and Mousse
 
 entity.dcs.food.wagashi_kinako.name=Kinako Mochi
 entity.dcs.food.wagashi_isobe.name=Isobe Mochi

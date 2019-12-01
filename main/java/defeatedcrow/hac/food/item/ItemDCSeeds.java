@@ -2,11 +2,12 @@ package defeatedcrow.hac.food.item;
 
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.ClimateCropBase;
+import defeatedcrow.hac.core.base.ClimateDoubleCropBase;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -39,7 +40,8 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 		"garlic",
 		"lettuce",
 		"wisteria",
-		"ginger" };
+		"ginger",
+		"grape" };
 
 	public ItemDCSeeds(int max) {
 		super();
@@ -122,6 +124,8 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 			return FoodInit.cropWisteria;
 		case 15:
 			return FoodInit.cropGinger;
+		case 16:
+			return FoodInit.cropGrape;
 		default:
 			return FoodInit.cropRice;
 		}
@@ -137,7 +141,9 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		return state.getMaterial() == Material.WATER ? EnumPlantType.Plains : EnumPlantType.Crop;
+		if (state.getBlock() instanceof ClimateCropBase || state.getBlock() instanceof ClimateDoubleCropBase)
+			return EnumPlantType.Crop;
+		return EnumPlantType.Plains;
 	}
 
 	@Override

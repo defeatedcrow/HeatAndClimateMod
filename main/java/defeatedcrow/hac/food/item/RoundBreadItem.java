@@ -11,6 +11,7 @@ import defeatedcrow.hac.food.entity.GingermanEntity;
 import defeatedcrow.hac.food.entity.PancakeEntity;
 import defeatedcrow.hac.food.entity.PitaBreadEntity;
 import defeatedcrow.hac.food.entity.PizzaTomatoEntity;
+import defeatedcrow.hac.food.entity.RaisinBreadEntity;
 import defeatedcrow.hac.food.entity.RoundBreadCreamEntity;
 import defeatedcrow.hac.food.entity.RoundBreadEntity;
 import defeatedcrow.hac.food.entity.SquareBreadEntity;
@@ -36,12 +37,12 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 21;
+		return 23;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 21);
+		int i = MathHelper.clamp(0, meta, 23);
 		String s = "items/food/" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -73,7 +74,9 @@ public class RoundBreadItem extends FoodItemBase {
 			"gingerbreadman_raw",
 			"gingerbreadman_baked",
 			"tortilla_raw",
-			"tortilla_baked" };
+			"tortilla_baked",
+			"raisin_bread_raw",
+			"raisin_bread_baked" };
 		return s;
 	}
 
@@ -117,6 +120,9 @@ public class RoundBreadItem extends FoodItemBase {
 		if (i == 20 || i == 21) {
 			ret = new TortillaEntity(world, x, y, z, player);
 		}
+		if (i == 22 || i == 23) {
+			ret = new RaisinBreadEntity(world, x, y, z, player);
+		}
 
 		if ((i & 1) == 0) {
 			ret.setRAW(true);
@@ -130,7 +136,6 @@ public class RoundBreadItem extends FoodItemBase {
 		case 1:
 		case 3:
 		case 13:
-		case 17:
 		case 21:
 			return 6;
 		case 11:
@@ -144,6 +149,8 @@ public class RoundBreadItem extends FoodItemBase {
 			return 10;
 		case 8:
 		case 9:
+		case 17:
+		case 23:
 			return 8;
 		}
 		return 0;
