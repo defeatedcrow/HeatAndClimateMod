@@ -11,13 +11,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class IcecreamCookieRenderer extends DCRenderFoodBase<FoodEntityBase> {
+public class IcecreamCocoaRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate",
-			"textures/entity/food/icecream_cookie.png");
+			"textures/entity/food/icecream_cocoa.png");
 	private static final ModelIcecream MODEL = new ModelIcecream(false);
 
-	public IcecreamCookieRenderer(RenderManager renderManager) {
+	public IcecreamCocoaRenderer(RenderManager renderManager) {
 		super(renderManager);
 	}
 
@@ -41,6 +41,7 @@ public class IcecreamCookieRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 		MODEL.render(0.0625F, entity);
 		MODEL.renderBiscuit();
+		MODEL.renderSauce();
 
 		GlStateManager.popMatrix();
 

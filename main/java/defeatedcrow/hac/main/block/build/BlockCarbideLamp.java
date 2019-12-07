@@ -12,6 +12,7 @@ import defeatedcrow.hac.main.client.particle.ParticleFlameDC;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
@@ -124,9 +125,7 @@ public class BlockCarbideLamp extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE });
 	}
 
 	@Override
@@ -158,6 +157,11 @@ public class BlockCarbideLamp extends BlockDC {
 		List<ItemStack> list = Lists.newArrayList();
 		list.add(new ItemStack(this, 1, 0));
 		return list;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.CENTER_SMALL;
 	}
 
 }

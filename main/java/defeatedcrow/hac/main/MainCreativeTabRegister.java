@@ -47,6 +47,7 @@ public class MainCreativeTabRegister {
 		MainInit.roofSlateRed.setCreativeTab(ClimateMain.build);
 		MainInit.roofSlateGreen.setCreativeTab(ClimateMain.build);
 		MainInit.roofSlateBrown.setCreativeTab(ClimateMain.build);
+		MainInit.plate.setCreativeTab(ClimateMain.build);
 
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
 		MainInit.wallLamp.setCreativeTab(ClimateMain.build);
@@ -158,7 +159,6 @@ public class MainCreativeTabRegister {
 			MainInit.chestVillage.setCreativeTab(ClimateMain.build);
 			MainInit.sinkMetal.setCreativeTab(ClimateMain.build);
 			MainInit.sinkChest.setCreativeTab(ClimateMain.build);
-			MainInit.plate.setCreativeTab(ClimateMain.build);
 			MainInit.realtimeClock.setCreativeTab(ClimateMain.build);
 			MainInit.realtimeClock_L.setCreativeTab(ClimateMain.build);
 			MainInit.mcClock_L.setCreativeTab(ClimateMain.build);

@@ -607,6 +607,10 @@ public class FoodFluidRecipe {
 				4), null, 0F, null, DCHeatTier.COLD, null, null, false, new FluidStack(MainInit.cream,
 						1000), new Object[] { "dustSugar", new ItemStack(Items.COOKIE, 1, 0) });
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.icecream, 3,
+				5), null, 0F, null, DCHeatTier.COLD, null, null, false, new FluidStack(MainInit.cream,
+						1000), new Object[] { "dustSugar", "cropCocoa" });
+
 	}
 
 	public static void regNonFoodrecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHeatTier heat,

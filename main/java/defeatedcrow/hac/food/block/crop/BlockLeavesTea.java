@@ -156,6 +156,7 @@ public class BlockLeavesTea extends ClimateCropBase implements ITexturePath, ISh
 	@Override
 	public List<DCHeatTier> getSuitableTemp(IBlockState thisState) {
 		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.COOL);
 		ret.add(DCHeatTier.NORMAL);
 		ret.add(DCHeatTier.WARM);
 		ret.add(DCHeatTier.HOT);

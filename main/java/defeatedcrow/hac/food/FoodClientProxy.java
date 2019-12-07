@@ -174,6 +174,9 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(MotuStickEntity.class, MotuStickRenderer.class);
 		ClientMainProxy.registRender(RaisinBreadEntity.class, RaisinBreadRenderer.class);
 		ClientMainProxy.registRender(CakeGrapeEntity.class, JellyGrapeRenderer.class);
+		ClientMainProxy.registRender(IceCreamCocoaEntity.class, IcecreamCocoaRenderer.class);
+		ClientMainProxy.registRender(ParfaitBerryEntity.class, ParfaitBerryRenderer.class);
+		ClientMainProxy.registRender(ParfaitCitrusEntity.class, ParfaitCitrusRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -209,7 +212,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 15);
 		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 11);
 		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 12);
-		instance.regSimpleItem(FoodInit.icecream, ClimateCore.PACKAGE_ID, "dcs_food_icecream", "food", 4);
+		instance.regSimpleItem(FoodInit.icecream, ClimateCore.PACKAGE_ID, "dcs_food_icecream", "food", 7);
 		instance.regSimpleItem(FoodInit.mochi, ClimateCore.PACKAGE_ID, "dcs_food_mochi", "food", 1);
 		instance.regSimpleItem(FoodInit.wagashi, ClimateCore.PACKAGE_ID, "dcs_food_wagashi", "food", 8);
 		instance.regSimpleItem(FoodInit.nonEntity, ClimateCore.PACKAGE_ID, "dcs_food_noentity", "food", 5);

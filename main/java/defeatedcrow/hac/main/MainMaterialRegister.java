@@ -489,6 +489,11 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.roofSlateBrown), "dcs_climate", "dcs_roof_slate_brown", "build", 15, false);
 
+		MainInit.plate = new BlockIronPlate(ClimateCore.PACKAGE_BASE + "_build_plate", 1);
+		DCMaterialReg.registerBlock(MainInit.plate, ClimateCore.PACKAGE_BASE + "_build_plate", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item
+				.getItemFromBlock(MainInit.plate), "dcs_climate", "dcs_build_plate", "build", 1, false);
+
 		MainInit.chalLamp = new BlockChalcedonyLamp(ClimateCore.PACKAGE_BASE + "_build_challamp", 15);
 		DCMaterialReg
 				.registerBlock(MainInit.chalLamp, ClimateCore.PACKAGE_BASE + "_build_challamp", ClimateMain.MOD_ID);
@@ -707,11 +712,6 @@ public class MainMaterialRegister {
 					.registerBlock(MainInit.chairRattan, ClimateCore.PACKAGE_BASE + "_chair_rattan", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.chairRattan), "dcs_climate", "dcs_chair_rattan", "build", 0, false);
-
-			MainInit.plate = new BlockIronPlate(ClimateCore.PACKAGE_BASE + "_build_plate", 1);
-			DCMaterialReg.registerBlock(MainInit.plate, ClimateCore.PACKAGE_BASE + "_build_plate", ClimateMain.MOD_ID);
-			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.plate), "dcs_climate", "dcs_build_plate", "build", 1, false);
 
 			MainInit.lampCarbide = new BlockCarbideLamp(ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern");
 			DCMaterialReg

@@ -3,7 +3,7 @@ package defeatedcrow.hac.food.client;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
-import defeatedcrow.hac.food.client.model.ModelIcecream;
+import defeatedcrow.hac.food.client.model.ModelParfait;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -11,13 +11,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class IcecreamCookieRenderer extends DCRenderFoodBase<FoodEntityBase> {
+public class ParfaitBerryRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate",
-			"textures/entity/food/icecream_cookie.png");
-	private static final ModelIcecream MODEL = new ModelIcecream(false);
+			"textures/entity/food/parfait_berry.png");
+	private static final ModelParfait MODEL = new ModelParfait(false);
 
-	public IcecreamCookieRenderer(RenderManager renderManager) {
+	public ParfaitBerryRenderer(RenderManager renderManager) {
 		super(renderManager);
 	}
 
@@ -26,8 +26,8 @@ public class IcecreamCookieRenderer extends DCRenderFoodBase<FoodEntityBase> {
 		// super.doRender(entity, x, y, z, yaw, partialTicks);
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) x, (float) y + 0.15F, (float) z);
-		GlStateManager.scale(-0.75F, -0.75F, 0.75F);
+		GlStateManager.translate((float) x, (float) y + 0.5F, (float) z);
+		GlStateManager.scale(-1F, -1F, 1F);
 
 		this.bindTexture(TEX);
 
@@ -40,22 +40,28 @@ public class IcecreamCookieRenderer extends DCRenderFoodBase<FoodEntityBase> {
 		GlStateManager.rotate(rotZ, 0.0F, 0.0F, 1.0F);
 
 		MODEL.render(0.0625F, entity);
-		MODEL.renderBiscuit();
+		MODEL.renderFruit();
+		MODEL.renderSauce2();
+		MODEL.renderTop();
 
 		GlStateManager.popMatrix();
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) x, (float) y + 0.15F, (float) z);
+		GlStateManager.translate((float) x, (float) y + 0.5F, (float) z);
 		GlStateManager.enableBlend();
 		GlStateManager
 				.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.5F);
-		GlStateManager.scale(-0.75F, -0.75F, 0.75F);
+		GlStateManager.scale(-1F, -1F, 1F);
 
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(rotZ, 0.0F, 0.0F, 1.0F);
 
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.85F);
+		MODEL.renderSauce();
+
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.5F);
 		MODEL.renderGlass();
 
 		GlStateManager.disableBlend();

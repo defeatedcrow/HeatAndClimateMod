@@ -90,7 +90,7 @@ public class BlockOilLamp extends DCSimpleBlock {
 
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-		return BlockFaceShape.UNDEFINED;
+		return BlockFaceShape.CENTER_SMALL;
 	}
 
 }
