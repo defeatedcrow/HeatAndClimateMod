@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.Random;
+
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 import net.minecraft.block.BlockBreakable;
@@ -11,6 +13,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -98,4 +101,6 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 		return BlockFaceShape.UNDEFINED;
 	}
 
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {}
 }

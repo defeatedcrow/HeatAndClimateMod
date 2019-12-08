@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.1.7 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.1.8 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1805,6 +1805,10 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.1.8
+　修正
+　　・追加階段ブロックのクラッシュを修正
 
 ○3.1.7
 　新規
