@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.packet;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 // biome reset
@@ -11,11 +12,11 @@ public class MessageSingleTank implements IMessage {
 	public int y;
 	public int z;
 	public int amo1;
-	public int id1;
+	public String id1;
 
 	public MessageSingleTank() {}
 
-	public MessageSingleTank(BlockPos pos, int fluid1, int a1) {
+	public MessageSingleTank(BlockPos pos, String fluid1, int a1) {
 		this.x = pos.getX();
 		this.y = pos.getY();
 		this.z = pos.getZ();
@@ -29,8 +30,8 @@ public class MessageSingleTank implements IMessage {
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
-		id1 = buf.readInt();
 		amo1 = buf.readInt();
+		id1 = ByteBufUtils.readUTF8String(buf);
 	}
 
 	// write
@@ -39,7 +40,7 @@ public class MessageSingleTank implements IMessage {
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
-		buf.writeInt(id1);
 		buf.writeInt(amo1);
+		ByteBufUtils.writeUTF8String(buf, id1);
 	}
 }

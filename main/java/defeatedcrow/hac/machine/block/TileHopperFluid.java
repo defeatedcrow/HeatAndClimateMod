@@ -83,8 +83,8 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			}
 
 			if (flag) {
-				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, FluidIDRegisterDC.getID(inputT
-						.getFluidType()), inputT.getFluidAmount()));
+				String name = inputT.isEmpty() ? "empty" : inputT.getFluidType().getName();
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, name, inputT.getFluidAmount()));
 			}
 		} else {
 			cooldown--;

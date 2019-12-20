@@ -111,8 +111,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			}
 
 			if (flag) {
-				int f1 = inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-				int f2 = outputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT.getFluidType());
+				String f1 = inputT.getFluidType() == null ? "empty" : inputT.getFluidType().getName();
+				String f2 = outputT.getFluidType() == null ? "empty" : outputT.getFluidType().getName();
 				int a1 = inputT.getFluidAmount();
 				int a2 = outputT.getFluidAmount();
 				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, f1, a1, f2, a2));

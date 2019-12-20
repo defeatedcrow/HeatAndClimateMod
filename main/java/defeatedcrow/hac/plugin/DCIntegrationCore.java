@@ -21,6 +21,8 @@ public class DCIntegrationCore {
 	public static boolean loadedTaN = false;
 	public static boolean loadedGVC = false;
 	public static boolean loadedEIO = false;
+	public static boolean loadedTektopia = false;
+	public static boolean loadedAnimania = false;
 
 	private DCIntegrationCore() {}
 
@@ -57,6 +59,12 @@ public class DCIntegrationCore {
 		}
 		if (Loader.isModLoaded("enderio") && ModuleConfig.eio) {
 			loadedEIO = true;
+		}
+		if (Loader.isModLoaded("tektopia")) {
+			loadedTektopia = true;
+		}
+		if (Loader.isModLoaded("animania")) {
+			loadedAnimania = true;
 		}
 	}
 
@@ -191,6 +199,24 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: hmggvc");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: hmggvc");
+			}
+		}
+
+		if (loadedTektopia) {
+			try {
+				DCPluginTektopia.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: tektopia");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: tektopia");
+			}
+		}
+
+		if (loadedAnimania) {
+			try {
+				DCPluginAnimania.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: animania");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: animania");
 			}
 		}
 
