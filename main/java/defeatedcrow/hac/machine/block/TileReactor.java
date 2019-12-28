@@ -116,54 +116,17 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	protected int[] slotsTop() {
-		return new int[] {
-				0,
-				2,
-				4,
-				6,
-				8,
-				9,
-				10,
-				11,
-				12
-		};
+		return new int[] { 0, 2, 4, 6, 9, 10, 11, 12 };
 	};
 
 	@Override
 	protected int[] slotsBottom() {
-		return new int[] {
-				1,
-				3,
-				5,
-				7,
-				13,
-				14,
-				15,
-				16
-		};
+		return new int[] { 1, 3, 5, 7, 13, 14, 15, 16 };
 	};
 
 	@Override
 	protected int[] slotsSides() {
-		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12,
-				13,
-				14,
-				15,
-				16
-		};
+		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
 	};
 
 	@Override
@@ -178,7 +141,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 				cont = (IFluidHandlerItem) stack.getItem();
 			}
 			return cont != null;
-		} else if (i > 7 && i < 13)
+		} else if (i > 8 && i < 13)
 			return true;
 		else
 			return false;

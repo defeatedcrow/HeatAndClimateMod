@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.api.orevein.EnumVein;
 import defeatedcrow.hac.main.api.orevein.OreSet;
 import defeatedcrow.hac.main.api.orevein.VeinTable;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockEmptyDrops;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -75,31 +78,28 @@ public class WorldGenOres3 implements IWorldGenerator {
 
 	}
 
-	static boolean isPlaceable(Block block) {
-		if (block == Blocks.STONE)
-			return true;
-		if (block == Blocks.GRAVEL)
-			return true;
-		if (block == Blocks.DIRT)
-			return true;
-		if (block == Blocks.SANDSTONE)
-			return true;
-		if (block == Blocks.SAND)
-			return true;
-		if (block == Blocks.GRASS)
-			return true;
+	static boolean isPlaceable(IBlockState block) {
+		if (block.isNormalCube() && !(block.getBlock() instanceof BlockEmptyDrops))
+			return block.getMaterial() == Material.ROCK || block.getMaterial() == Material.SAND || block
+					.getMaterial() == Material.GROUND || block.getMaterial() == Material.GRASS;
+
+		if (WorldGenConfig.disables.contains(new BlockSet(block.getBlock(), block.getBlock()
+				.getMetaFromState(block)))) {
+			return false;
+		}
 
 		return debug;
 	}
 
-	static boolean isPlaceable3(Block block) {
-		if (block == Blocks.GRAVEL)
-			return true;
-		if (block == Blocks.NETHERRACK)
-			return true;
-		if (block == Blocks.SOUL_SAND)
-			return true;
-
+	static boolean isPlaceable3(IBlockState block) {
+		if (block.isNormalCube() && !(block.getBlock() instanceof BlockEmptyDrops)) {
+			if (block.getMaterial() == Material.GROUND)
+				return true;
+			if (block.getBlock() == Blocks.NETHERRACK)
+				return true;
+			if (block.getBlock() == Blocks.SOUL_SAND)
+				return true;
+		}
 		return debug;
 	}
 
@@ -164,11 +164,13 @@ public class WorldGenOres3 implements IWorldGenerator {
 						int h2 = y;
 
 						BlockPos p = new BlockPos(pos.getX() + x, pos.getY() + y + offY, pos.getZ() + z);
-						Block block = world.getBlockState(p).getBlock();
+						IBlockState block = world.getBlockState(p);
 						double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
 						if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r) {
 							OreSet add = gen[h2];
-							if (isPlaceable(block) || isForced) {
+							if (block.getMaterial() == Material.GRASS && !world.isAirBlock(p.up())) {
+								// 植物を破壊しないように
+							} else if (isPlaceable(block) || isForced) {
 								int j = world.rand.nextInt(100);
 								if (add.hasSecondOre() && j < add.getSecondChance()) {
 									world.setBlockState(p, add.getSecondOre().getState(), isForced ? 3 : 2);
@@ -239,7 +241,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 						int h2 = y;
 
 						BlockPos p = new BlockPos(pos.getX() + x, pos.getY() + y + offY, pos.getZ() + z);
-						Block block = world.getBlockState(p).getBlock();
+						IBlockState block = world.getBlockState(p);
 						double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
 						if (p.getY() > 1 && p.getY() < world.getActualHeight() && d1 < r) {
 							OreSet add = gen[h2];
@@ -296,7 +298,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 				for (int y = pos.getY(); y < pos.getY() + h; y++) {
 					if (x > limX && z > limZ) {
 						BlockPos p = new BlockPos(x, y, z);
-						Block block = world.getBlockState(p).getBlock();
+						IBlockState block = world.getBlockState(p);
 						double d1 = Math.sqrt(pos.distanceSq(p.getX(), pos.getY(), p.getZ()));
 						boolean b1 = world.getBlockState(p.up(1)).getMaterial() == Material.WATER;
 						boolean b2 = world.getBlockState(p.up(2)).getMaterial() == Material.WATER;
