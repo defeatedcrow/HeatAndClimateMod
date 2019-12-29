@@ -26,7 +26,7 @@ public class HUDHandlerClimateMob extends HUDHandlerEntities {
 		if (entity instanceof EntityLivingBase) {
 			float heat = DamageAPI.resistantData.getHeatResistant(entity) + 2.0F;
 			float cold = DamageAPI.resistantData.getColdResistant(entity) + 2.0F;
-			if (entity.isImmuneToFire) {
+			if (entity.isImmuneToFire()) {
 				heat += CoreConfigDC.infernalInferno ? 8.0F : 4.0F;
 				cold -= 2.0F;
 			}
