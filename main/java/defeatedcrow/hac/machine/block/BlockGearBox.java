@@ -25,6 +25,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -35,6 +36,11 @@ public class BlockGearBox extends BlockTorqueBase {
 		super(Material.ROCK, s, 0);
 		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
+	}
+
+	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return true;
 	}
 
 	@Override
@@ -63,8 +69,7 @@ public class BlockGearBox extends BlockTorqueBase {
 				if (flag != state.getValue(DCState.POWERED).booleanValue()) {
 					world.setBlockState(pos, state.withProperty(DCState.POWERED, Boolean.valueOf(flag)), 2);
 					float f = state.getValue(DCState.POWERED).booleanValue() ? 0.6F : 0.5F;
-					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
-							f);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
 				}
 			}
 		}

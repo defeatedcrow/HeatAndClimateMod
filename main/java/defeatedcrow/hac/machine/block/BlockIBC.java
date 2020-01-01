@@ -43,6 +43,11 @@ public class BlockIBC extends DCTileBlock {
 	}
 
 	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return side != EnumFacing.UP;
+	}
+
+	@Override
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
@@ -53,8 +58,7 @@ public class BlockIBC extends DCTileBlock {
 				if (!world.isRemote && tile instanceof TileIBC) {
 					if (!DCUtil.isEmpty(heldItem)) {
 						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
-							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
-									2.0F);
+							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 						}
 					} else {
 						FluidStack f = ((TileIBC) tile).inputT.getFluid();

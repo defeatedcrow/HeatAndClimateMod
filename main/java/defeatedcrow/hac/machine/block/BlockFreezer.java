@@ -24,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -34,6 +35,11 @@ public class BlockFreezer extends BlockTorqueBase implements IHeatTile {
 		super(Material.ROCK, s, 0);
 		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
+	}
+
+	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return side == EnumFacing.DOWN;
 	}
 
 	@Override
@@ -96,12 +102,12 @@ public class BlockFreezer extends BlockTorqueBase implements IHeatTile {
 			tooltip.add(DCName.STAGE.getLocalizedName() + "2: 32.0+ torque/s");
 			tooltip.add(DCName.STAGE.getLocalizedName() + "3: 64.0+ torque/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(DCName.STAGE.getLocalizedName() + "1 " + DCName.HEAT.getLocalizedName() + ": " +
-					TextFormatting.BLUE.toString() + "FROSTBITE");
-			tooltip.add(DCName.STAGE.getLocalizedName() + "2 " + DCName.HEAT.getLocalizedName() + ": " +
-					TextFormatting.BLUE.toString() + "CRYOGENIC");
-			tooltip.add(DCName.STAGE.getLocalizedName() + "3 " + DCName.HEAT.getLocalizedName() + ": " +
-					TextFormatting.BLUE.toString() + "ABSOLUTE");
+			tooltip.add(DCName.STAGE.getLocalizedName() + "1 " + DCName.HEAT
+					.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "FROSTBITE");
+			tooltip.add(DCName.STAGE.getLocalizedName() + "2 " + DCName.HEAT
+					.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "CRYOGENIC");
+			tooltip.add(DCName.STAGE.getLocalizedName() + "3 " + DCName.HEAT
+					.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "ABSOLUTE");
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

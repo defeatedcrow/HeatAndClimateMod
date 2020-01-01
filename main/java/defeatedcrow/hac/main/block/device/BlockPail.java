@@ -55,7 +55,7 @@ public class BlockPail extends DCTileBlock {
 
 	@Override
 	public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		return false;
+		return side.getAxis().isVertical();
 	}
 
 	@Override

@@ -83,6 +83,11 @@ public class BlockColorCube extends DCSimpleBlock implements ITexturePath {
 	}
 
 	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return false;
+	}
+
+	@Override
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		boolean b = world.getBlockState(pos.up()).getMaterial() == Material.AIR;
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)

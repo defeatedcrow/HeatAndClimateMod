@@ -17,6 +17,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -34,6 +35,11 @@ public class BlockShitirin extends BlockNormalChamber {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileShitirin();
+	}
+
+	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return side == EnumFacing.DOWN;
 	}
 
 	public static void changeLitState(World world, BlockPos pos, boolean f) {

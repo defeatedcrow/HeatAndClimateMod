@@ -162,10 +162,7 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE,
-				DCState.POWERED
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE, DCState.POWERED });
 
 	}
 
@@ -183,8 +180,7 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add("WATER: 1000 mB/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + DCName.TURN_OFF
-					.getLocalizedName());
+			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + DCName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

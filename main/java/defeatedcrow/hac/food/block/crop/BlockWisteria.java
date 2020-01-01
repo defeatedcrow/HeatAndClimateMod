@@ -547,10 +547,4 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		this.grow(world, pos, state);
 	}
-
-	@Override
-	public boolean isSolidFace(IBlockState state, BlockPos pos, EnumFacing face) {
-		return false;
-	}
-
 }

@@ -156,8 +156,8 @@ public class BlockConveyor extends BlockTorqueBase {
 
 				ItemStack drop1 = conv.getStackInSlot(0);
 				if (!DCUtil.isEmpty(drop1)) {
-					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
-							0.5D, drop1);
+					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
+							.getZ() + 0.5D, drop1);
 					float f3 = 0.05F;
 					entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 					entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -167,8 +167,8 @@ public class BlockConveyor extends BlockTorqueBase {
 
 				ItemStack drop2 = conv.getStackInSlot(1);
 				if (!DCUtil.isEmpty(drop2)) {
-					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
-							0.5D, drop2);
+					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
+							.getZ() + 0.5D, drop2);
 					float f3 = 0.05F;
 					entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 					entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -189,17 +189,21 @@ public class BlockConveyor extends BlockTorqueBase {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() +
-					": 1 item/16t");
+			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 1 item/16t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.conveyor3"));
 			tooltip.add(I18n.format("dcs.tip.conveyor"));
-			tooltip.add(TextFormatting.RED.toString() + "SMELTING+" + TextFormatting.GRAY.toString() + " and " +
-					TextFormatting.DARK_BLUE.toString() + "TIGHT" + TextFormatting.GRAY.toString() + ": " + I18n.format(
-							"dcs.tip.conveyor2"));
+			tooltip.add(TextFormatting.RED.toString() + "SMELTING+" + TextFormatting.GRAY
+					.toString() + " and " + TextFormatting.DARK_BLUE.toString() + "TIGHT" + TextFormatting.GRAY
+							.toString() + ": " + I18n.format("dcs.tip.conveyor2"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
+	}
+
+	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return false;
 	}
 
 }

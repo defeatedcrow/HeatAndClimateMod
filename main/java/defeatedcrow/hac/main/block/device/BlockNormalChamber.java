@@ -44,6 +44,12 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 	}
 
 	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		EnumFacing face = DCState.getFace(state, DCState.FACING);
+		return face != null && side != face.getOpposite();
+	}
+
+	@Override
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
@@ -162,12 +168,10 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 				boolean power = (m & 2) != 0;
 				if (flag && !power) {
 					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit + 2), 3);
-					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
-							0.6F);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.6F);
 				} else if (!flag && power) {
 					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit), 3);
-					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
-							0.5F);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.5F);
 				}
 			}
 		}

@@ -106,5 +106,4 @@ public class BlockBean extends ClimateCropBase implements ITexturePath {
 		ret.add(DCHumidity.WET);
 		return ret;
 	}
-
 }

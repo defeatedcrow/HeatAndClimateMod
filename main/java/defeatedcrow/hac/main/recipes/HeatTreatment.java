@@ -149,32 +149,36 @@ public class HeatTreatment implements IHeatTreatment {
 
 	@Override
 	public ActionResult<ItemStack> getCurrentOutput(ItemStack in, IClimate climate) {
-		if (matchClimate1(climate))
-			for (ItemStack i1 : input1) {
-				if (DCUtil.isSameItem(in, i1, false)) {
-					if (!DCUtil.isEmpty(input2)) {
-						return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, input2.copy());
-					} else if (!DCUtil.isEmpty(input3)) {
-						return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, input3.copy());
-					} else if (!DCUtil.isEmpty(output)) {
-						return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, output.copy());
-					}
-				}
+		if (matchClimate3(climate) && DCUtil.isSameItem(in, input3, false)) {
+			if (!DCUtil.isEmpty(output)) {
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, output.copy());
 			}
-		if (matchClimate2(climate) && DCUtil.isSameItem(in, input2, false)) {
+		} else if (matchClimate2(climate) && DCUtil.isSameItem(in, input2, false)) {
 			if (!DCUtil.isEmpty(input3)) {
 				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, input3.copy());
 			} else if (!DCUtil.isEmpty(output)) {
 				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, output.copy());
 			}
-		}
-		if (matchClimate3(climate) && DCUtil.isSameItem(in, input3, false)) {
-			if (!DCUtil.isEmpty(output)) {
-				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, output.copy());
+		} else {
+			for (ItemStack i1 : input1) {
+				if (DCUtil.isSameItem(in, i1, false)) {
+					if (matchClimate1(climate)) {
+						if (!DCUtil.isEmpty(input2)) {
+							return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, input2.copy());
+						} else if (!DCUtil.isEmpty(input3)) {
+							return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, input3.copy());
+						} else if (!DCUtil.isEmpty(output)) {
+							return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, output.copy());
+						}
+					} else if (!matchClimate1(climate.addTempTier(1))) {
+						return new ActionResult<ItemStack>(EnumActionResult.FAIL, in.copy());
+					}
+				}
 			}
 		}
+
 		return DCUtil.isEmpty(failure) ? new ActionResult<ItemStack>(EnumActionResult.FAIL, ItemStack.EMPTY) :
-				new ActionResult<ItemStack>(EnumActionResult.FAIL, failure);
+				new ActionResult<ItemStack>(EnumActionResult.FAIL, failure.copy());
 	}
 
 	@Override

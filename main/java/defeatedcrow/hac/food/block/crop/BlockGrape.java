@@ -560,9 +560,4 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 		this.grow(world, pos, state);
 	}
 
-	@Override
-	public boolean isSolidFace(IBlockState state, BlockPos pos, EnumFacing face) {
-		return false;
-	}
-
 }

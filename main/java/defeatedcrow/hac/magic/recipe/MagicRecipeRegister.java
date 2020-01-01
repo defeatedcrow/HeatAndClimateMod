@@ -242,6 +242,16 @@ public class MagicRecipeRegister {
 			'Z',
 			"ingotSilver" });
 
+		// another
+
+		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(Items.BLAZE_POWDER, 1, 1), new Object[] {
+			"dropRed",
+			"gunpowder" });
+
+		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(Items.GLOWSTONE_DUST, 1, 1), new Object[] {
+			"dropWhite",
+			"gunpowder" });
+
 		// advanced
 		if (ModuleConfig.magic_advanced) {
 			// pendant
