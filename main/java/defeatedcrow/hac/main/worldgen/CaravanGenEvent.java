@@ -79,40 +79,42 @@ public class CaravanGenEvent {
 				if (num >= 0 && getSeason(s1) != null && type != CaravanType.BROKEN) {
 					if (type == CaravanType.STANDBY || type == CaravanType.UNINIT) {
 						if (num == 4) {
-							Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 16);
-							if (village == null || village.getNumVillagers() < 10) {
-								ForgeRegistry registry = (ForgeRegistry) ForgeRegistries.VILLAGER_PROFESSIONS;
-								int id = registry.getID(MainInit.trader);
-								EntityVillager vil1 = new EntityVillager(world, id);
-								vil1.setPosition(px, 69, pz);
-								world.spawnEntity(vil1);
-								EntityVillager vil2 = new EntityVillager(world, id);
-								vil2.setPosition(px + 1D, 69, pz);
-								world.spawnEntity(vil2);
-								EntityLlama lla = new EntityLlama(world);
-								lla.setPosition(px + 3D, 69, pz);
-								world.spawnEntity(lla);
-							} else {
-								List<Entity> list = world.getEntitiesInAABBexcluding(null, new AxisAlignedBB(pos
-										.add(-5, 0, -5), pos.add(20, 1, 20)), EntitySelectors.IS_ALIVE);
-								EntityVillager vil1 = null;
-								EntityVillager vil2 = null;
-								for (Entity e : list) {
-									if (e instanceof EntityVillager) {
-										if (vil1 == null) {
-											vil1 = (EntityVillager) e;
-										} else if (vil2 == null) {
-											vil2 = (EntityVillager) e;
-										} else {
-											break;
+							if (ModuleConfig.village) {
+								Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 16);
+								if (village == null || village.getNumVillagers() < 10) {
+									ForgeRegistry registry = (ForgeRegistry) ForgeRegistries.VILLAGER_PROFESSIONS;
+									int id = registry.getID(MainInit.trader);
+									EntityVillager vil1 = new EntityVillager(world, id);
+									vil1.setPosition(px, 69, pz);
+									world.spawnEntity(vil1);
+									EntityVillager vil2 = new EntityVillager(world, id);
+									vil2.setPosition(px + 1D, 69, pz);
+									world.spawnEntity(vil2);
+									EntityLlama lla = new EntityLlama(world);
+									lla.setPosition(px + 3D, 69, pz);
+									world.spawnEntity(lla);
+								} else {
+									List<Entity> list = world.getEntitiesInAABBexcluding(null, new AxisAlignedBB(pos
+											.add(-5, 0, -5), pos.add(20, 1, 20)), EntitySelectors.IS_ALIVE);
+									EntityVillager vil1 = null;
+									EntityVillager vil2 = null;
+									for (Entity e : list) {
+										if (e instanceof EntityVillager) {
+											if (vil1 == null) {
+												vil1 = (EntityVillager) e;
+											} else if (vil2 == null) {
+												vil2 = (EntityVillager) e;
+											} else {
+												break;
+											}
 										}
 									}
-								}
-								if (vil1 != null) {
-									vil1.setDead();
-								}
-								if (vil2 != null) {
-									vil2.setDead();
+									if (vil1 != null) {
+										vil1.setDead();
+									}
+									if (vil2 != null) {
+										vil2.setDead();
+									}
 								}
 							}
 						} else {
@@ -156,7 +158,7 @@ public class CaravanGenEvent {
 								break;
 							}
 						}
-						if (village != null) {
+						if (village != null || !ModuleConfig.village) {
 							DCLogger.debugLog("Caravanserai Stand-By: " + cx + ", " + cz);
 							world.setBlockState(pos.add(7, -7, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
 						} else {
@@ -178,7 +180,7 @@ public class CaravanGenEvent {
 								break;
 							}
 						}
-						if (village != null) {
+						if (village != null || !ModuleConfig.village) {
 							DCLogger.debugLog("Caravanserai Reconstructed: " + cx + ", " + cz);
 							world.setBlockState(pos.add(7, -7, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
 						}

@@ -99,26 +99,26 @@ public class MainUtil {
 	public static ItemStack getCrop(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 19)
-			meta = 19;
+		if (meta > 20)
+			meta = 20;
 		return new ItemStack(FoodInit.crops, 1, meta);
 	}
 
 	public static ItemStack getRandomCrop(int i) {
-		int meta = DCUtil.rand.nextInt(20);
+		int meta = DCUtil.rand.nextInt(21);
 		return new ItemStack(FoodInit.crops, i, meta);
 	}
 
 	public static ItemStack getSeed(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 15)
-			meta = 15;
+		if (meta > 16)
+			meta = 16;
 		return new ItemStack(FoodInit.seeds, 1, meta);
 	}
 
 	public static ItemStack getRandomSeed(int i) {
-		int meta = DCUtil.rand.nextInt(16);
+		int meta = DCUtil.rand.nextInt(17);
 		return new ItemStack(FoodInit.seeds, i, meta);
 	}
 
@@ -133,8 +133,8 @@ public class MainUtil {
 	public static ItemStack getBasket(int meta) {
 		if (meta < 0)
 			meta = 0;
-		if (meta > 11)
-			meta = 11;
+		if (meta > 14)
+			meta = 14;
 		return new ItemStack(MainInit.cropBasket, 1, meta);
 	}
 
@@ -143,8 +143,18 @@ public class MainUtil {
 		return new ItemStack(MainInit.cropBasket, i, meta);
 	}
 
+	public static ItemStack getRandomCont(int i) {
+		int meta = DCUtil.rand.nextInt(12);
+		return new ItemStack(MainInit.cropCont, i, meta);
+	}
+
+	public static ItemStack getRandomCardboard(int i) {
+		int meta = DCUtil.rand.nextInt(6);
+		return new ItemStack(MainInit.cardboard, i, meta);
+	}
+
 	public static ItemStack getRandomBag(int i) {
-		int meta = DCUtil.rand.nextInt(7);
+		int meta = DCUtil.rand.nextInt(8);
 		return new ItemStack(MainInit.dustBags, i, meta);
 	}
 
@@ -154,8 +164,14 @@ public class MainUtil {
 	}
 
 	public static ItemStack getRandomSapling(int i) {
-		int meta = DCUtil.rand.nextInt(4);
-		return new ItemStack(FoodInit.saplings, i, meta);
+		int meta = DCUtil.rand.nextInt(8);
+		if (meta < 4) {
+			return new ItemStack(FoodInit.saplings, i, meta);
+		} else if (meta < 6) {
+			return new ItemStack(FoodInit.saplings2, i, meta - 4);
+		} else {
+			return meta == 6 ? new ItemStack(FoodInit.cropWisteria, i, 0) : new ItemStack(FoodInit.cropGrape, i, 0);
+		}
 	}
 
 	public static ItemStack getRandomRing(int i) {

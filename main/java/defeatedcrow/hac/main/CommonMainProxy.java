@@ -203,12 +203,10 @@ public class CommonMainProxy implements IGuiHandler {
 				"dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.agri);
 
-		if (ModuleConfig.machine) {
-			MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
-					"dcs_climate:textures/models/agri_researcher.png",
-					"dcs_climate:textures/models/zombie_agri_researcher.png");
-			ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
-		}
+		MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
+				"dcs_climate:textures/models/agri_researcher.png",
+				"dcs_climate:textures/models/zombie_agri_researcher.png");
+		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
 
 		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png",
 				"dcs_climate:textures/models/zombie_trader.png");
@@ -266,33 +264,31 @@ public class CommonMainProxy implements IGuiHandler {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
 
-		if (ModuleConfig.machine) {
-			VillagerCareer machineList = new VillagerCareer(MainInit.engineer, "dcs_engineer");
+		VillagerCareer machineList = new VillagerCareer(MainInit.engineer, "dcs_engineer");
 
-			machineList.addTrade(1, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)) });
+		machineList.addTrade(1, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(2, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+		machineList.addTrade(2, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(3, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+		machineList.addTrade(3, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(4, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+		machineList.addTrade(4, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(5, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
+		machineList.addTrade(5, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(6, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
-		}
+		machineList.addTrade(6, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
 
 	}
 

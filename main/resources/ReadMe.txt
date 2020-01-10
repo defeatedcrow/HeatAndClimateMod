@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.2.3 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.2.4 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1806,6 +1806,9 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.2.4
+　村人とキャラバンサライのクラッシュを修正
 
 ○3.2.3
 　変更
