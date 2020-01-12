@@ -391,9 +391,9 @@ public class LivingMainEventDC {
 
 	@SubscribeEvent
 	public void onWakeUp(PlayerSetSpawnEvent event) {
-		if (event.getEntityPlayer() != null) {
+		if (event.getEntityPlayer() != null && event.getNewSpawn() != null) {
 			IBlockState state = event.getEntityPlayer().getEntityWorld().getBlockState(event.getNewSpawn());
-			if (state.getBlock() instanceof BlockBedDC) {
+			if (state != null && state.getBlock() instanceof BlockBedDC) {
 				event.setCanceled(true);
 			}
 		}
