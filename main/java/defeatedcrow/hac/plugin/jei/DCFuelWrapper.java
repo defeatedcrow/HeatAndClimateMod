@@ -13,7 +13,6 @@ public class DCFuelWrapper implements IRecipeWrapper {
 	private final FluidStack fluid;
 	private final int time;
 
-	@SuppressWarnings("unchecked")
 	public DCFuelWrapper(IFluidFuel recipe) {
 		fluid = new FluidStack(recipe.getFluid(), 1000);
 		time = recipe.getBurnTime();

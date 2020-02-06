@@ -1143,6 +1143,7 @@ item.dcs_bed_item_iron.name=No Save Bed (Iron)
 item.dcs_bed_item_white.name=No Save Bed (White)
 item.dcs_bed_item_rattan.name=No Save Bed (Rattan)
 item.dcs_bed_item_futon.name=No Save Bed (Futon)
+tile.dcs_build_scaffold_wood.name=Scaffold
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -1530,6 +1531,7 @@ dcs.tip.toolsteel.tools=Consumes saturation and destroys 3x3 range blocks.
 dcs.tip.toolsteel.sword=Armor Bypass Damage
 dcs.tip.entitypanel=Change the target entity type.
 dcs.tip.bed=This bed does not register respawn point at bedtime.
+dcs.tip.scaffold=Right click: Replace all with blocks in the player main-hand. (limit 64)
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products

@@ -1124,6 +1124,7 @@ item.dcs_bed_item_iron.name=セーブしないベッド(鉄)
 item.dcs_bed_item_white.name=セーブしないベッド(白)
 item.dcs_bed_item_rattan.name=セーブしないベッド(ラタン)
 item.dcs_bed_item_futon.name=セーブしないベッド(和風)
+tile.dcs_build_scaffold_wood.name=足場ブロック
 
 tile.dcs_device_chamber_0.name=燃焼チャンバー
 tile.dcs_device_shitirin_0.name=七輪
@@ -1497,6 +1498,7 @@ dcs.tip.toolsteel.tools=空腹度を消費し、ブロックを3x3の範囲で�
 dcs.tip.toolsteel.sword=防御力無視ダメージ
 dcs.tip.entitypanel=モードを切り替えます
 dcs.tip.bed=就寝時にリスポーン地点を登録しません
+dcs.tip.scaffold=右クリックすると、メインハンドに持っているブロックに一括置換されます。(上限64個)
 
 dcs.tip.heat_treatment_jei1=%d tick以内に処理を行う
 dcs.tip.heat_treatment_jei2=不良品

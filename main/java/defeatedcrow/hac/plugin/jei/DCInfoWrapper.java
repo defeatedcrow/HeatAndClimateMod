@@ -30,7 +30,6 @@ public class DCInfoWrapper implements IRecipeWrapper {
 	public final String TITLE;
 	public final String DISC;
 
-	@SuppressWarnings("unchecked")
 	public DCInfoWrapper(IDCInfoData recipe) {
 		if (!recipe.getInputs().isEmpty()) {
 			IN.addAll(recipe.getInputs());

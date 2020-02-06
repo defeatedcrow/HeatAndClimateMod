@@ -33,6 +33,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 		return "dcs_climate:items/tool/crossbow_iron";
 	}
 
+	@Override
 	public ItemStack findAmmo(EntityPlayer player) {
 		if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND))) {
 			return player.getHeldItem(EnumHand.OFF_HAND);
@@ -57,8 +58,8 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 		boolean flag = !this.findAmmo(playerIn).isEmpty();
 
 		if (!playerIn.capabilities.isCreativeMode && !flag) {
-			return flag ? new ActionResult(EnumActionResult.PASS, itemstack)
-					: new ActionResult(EnumActionResult.FAIL, itemstack);
+			return flag ? new ActionResult(EnumActionResult.PASS, itemstack) : new ActionResult(EnumActionResult.FAIL,
+					itemstack);
 		} else {
 			playerIn.setActiveHand(handIn);
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
@@ -74,8 +75,8 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase living, int timeLeft) {
 		if (living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) living;
-			boolean flag = player.capabilities.isCreativeMode
-					|| EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
+			boolean flag = player.capabilities.isCreativeMode || EnchantmentHelper
+					.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
 			ItemStack ammo = this.findAmmo(player);
 
 			int i = this.getMaxItemUseDuration(stack) - timeLeft;
@@ -88,16 +89,19 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 
 				if (f >= 0.0D) {
 
-					if (!world.isRemote) {
-						EntityIronBolt entityarrow = new EntityIronBolt(world, player);
-						entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
+					EntityIronBolt entityarrow = new EntityIronBolt(world, player);
+					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
 
+					if (!world.isRemote) {
 						int power = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
 						int punch = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
 						int flame = EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack);
 
 						if (power > 0) {
-							entityarrow.setDamage(entityarrow.getDamage() + power * 0.5D + 0.5D);
+							double pow = power + 5.0D;
+							pow *= 0.2D;
+							double damage = entityarrow.getDamage() * pow;
+							entityarrow.setDamage(damage);
 						}
 
 						if (punch > 0) {
@@ -113,9 +117,8 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 						world.spawnEntity(entityarrow);
 					}
 
-					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-							SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F,
-							1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
+							.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 					if (!flag) {
 						DCUtil.reduceStackSize(ammo, 1);

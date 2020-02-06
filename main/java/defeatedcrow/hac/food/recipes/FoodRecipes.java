@@ -12,7 +12,6 @@ import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import defeatedcrow.hac.plugin.DCPluginFluid;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -269,26 +268,9 @@ public class FoodRecipes {
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 2));
 
-		OreDictionary.registerOre("listAllveggie", new ItemStack(Items.CARROT, 1, 0));
-		OreDictionary.registerOre("listAllveggie", new ItemStack(Items.POTATO, 1, 0));
-		OreDictionary.registerOre("listAllveggie", new ItemStack(Items.BEETROOT, 1, 0));
-		OreDictionary.registerOre("listAllveggie", new ItemStack(Blocks.PUMPKIN, 1, 0));
-		OreDictionary.registerOre("bread", new ItemStack(Items.BREAD, 1, 0));
-
-		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(Items.COOKED_BEEF, 1, 0));
-		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(Items.COOKED_CHICKEN, 1, 0));
-		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(Items.COOKED_MUTTON, 1, 0));
-		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(Items.COOKED_PORKCHOP, 1, 0));
-		OreDictionary.registerOre("listAllmeatcooked", new ItemStack(Items.COOKED_RABBIT, 1, 0));
-		OreDictionary.registerOre("listAllbeefcooked", new ItemStack(Items.COOKED_BEEF, 1, 0));
-		OreDictionary.registerOre("listAllchickencooked", new ItemStack(Items.COOKED_CHICKEN, 1, 0));
-		OreDictionary.registerOre("listAllmuttoncooked", new ItemStack(Items.COOKED_MUTTON, 1, 0));
-		OreDictionary.registerOre("listAllporkcooked", new ItemStack(Items.COOKED_PORKCHOP, 1, 0));
-		OreDictionary.registerOre("listAllrabbitcooked", new ItemStack(Items.COOKED_RABBIT, 1, 0));
-
 		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropWisteria, 1, 32767));
 		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropGrape, 1, 32767));
-		OreDictionary.registerOre("vineLeaves", new ItemStack(Blocks.VINE, 1, 0));
+
 	}
 
 	static void loadFuelData() {

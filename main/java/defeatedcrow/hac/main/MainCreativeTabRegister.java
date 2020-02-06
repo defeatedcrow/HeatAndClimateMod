@@ -48,6 +48,7 @@ public class MainCreativeTabRegister {
 		MainInit.roofSlateGreen.setCreativeTab(ClimateMain.build);
 		MainInit.roofSlateBrown.setCreativeTab(ClimateMain.build);
 		MainInit.plate.setCreativeTab(ClimateMain.build);
+		MainInit.scaffold.setCreativeTab(ClimateMain.build);
 
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
 		MainInit.wallLamp.setCreativeTab(ClimateMain.build);

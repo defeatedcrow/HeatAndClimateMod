@@ -42,6 +42,7 @@ public class MainInit {
 
 	// building
 	public static Block bricks;
+	public static Block clayBricks;
 	public static Block selenite;
 	public static Block stairsGlass;
 	public static Block stairsGypsum;
@@ -71,6 +72,15 @@ public class MainInit {
 	public static Block fenceGlass;
 	public static Block fenceLadder;
 
+	public static Block desiccant;
+	public static Block freezepack;
+	public static Block hotPack;
+	public static Block waterPack;
+
+	public static Block scaffold;
+
+	/* building advanced */
+
 	public static Block awning;
 	public static Block lampCarbide;
 	public static Block lampGas;
@@ -85,8 +95,6 @@ public class MainInit {
 	public static Block markingPanel;
 	public static Block lightOrb;
 
-	/* building advanced */
-
 	public static Block asphalt;
 	public static Block fireproofs;
 	public static Block fireproofhalfs;
@@ -97,22 +105,18 @@ public class MainInit {
 	public static Block hedgeAutumn;
 	public static Block hedgeWinter;
 
-	public static Block desiccant;
-	public static Block freezepack;
-	public static Block hotPack;
-	public static Block waterPack;
-
 	public static Item flowerPot;
-
-	public static Block clayBricks;
 
 	// furniture
 	public static Block chalLamp;
 	public static Block wallLamp;
+	public static Block oilLamp;
+
+	/* building advanced */
+
 	public static Block chandelierGypsum;
 	public static Block chandelierChal;
 	public static Block chainCopper;
-	public static Block oilLamp;
 
 	public static Block tableMarble;
 	public static Block tableGypsum;

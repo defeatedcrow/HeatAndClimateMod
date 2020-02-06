@@ -185,6 +185,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 		}
 	}
 
+	// ネザー
 	public void generateNetherVein(World world, OreVein vein, int limX, int limZ) {
 		VeinTable table = VeinTableRegister.INSTANCE.getTable(vein.type);
 		if (table == null) {

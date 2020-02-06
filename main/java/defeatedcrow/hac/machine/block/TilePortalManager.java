@@ -656,7 +656,6 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 			return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
 		public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 			return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY ? (T) this : null;

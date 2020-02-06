@@ -108,6 +108,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.oilLamp, ClimateCore.PACKAGE_ID, "dcs_build_oillamp", "build", 3);
 
 		MAIN_INSTANCE.regSimpleBlock(MainInit.plate, ClimateCore.PACKAGE_ID, "dcs_build_plate", "build", 1);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.scaffold, ClimateCore.PACKAGE_ID, "dcs_build_scaffold", "build", 0);
 
 		MAIN_INSTANCE
 				.regSimpleBlock(MainInit.markingPanel, ClimateCore.PACKAGE_ID, "dcs_build_markingpanel", "build", 0);

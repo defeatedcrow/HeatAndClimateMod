@@ -41,7 +41,6 @@ public class TilePail extends DCTileEntity implements ITagGetter {
 			if (flag) {
 				if (!this.hasWorld())
 					return;
-				@SuppressWarnings("unchecked")
 				List<EntityPlayer> list = this.getWorld().playerEntities;
 				for (EntityPlayer player : list) {
 					if (player instanceof EntityPlayerMP) {

@@ -452,6 +452,24 @@ public class LoadingBuildingRecipe {
 			'Y',
 			"dyeBrown" });
 
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.scaffold, 16, 0), new Object[] {
+			"YXY",
+			"Y Y",
+			"YXY",
+			'X',
+			"plankWood",
+			'Y',
+			"stickWood" });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.scaffold, 16, 0), new Object[] {
+			"YXY",
+			"Y Y",
+			"YXY",
+			'X',
+			"plankWood",
+			'Y',
+			"treeSapling" });
+
 	}
 
 	public static void advanced(RecipeResourcesMain res) {

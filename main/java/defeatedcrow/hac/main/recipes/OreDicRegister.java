@@ -7,8 +7,6 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.OredicConfig;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -261,24 +259,6 @@ public class OreDicRegister {
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.builds, 1, 6));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 2));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 3));
-
-		/* バニラ補足 */
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 0));
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 1));
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 2));
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 2));
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 3));
-
-		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.WHEAT_SEEDS, 1, 0));
-		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.MELON_SEEDS, 1, 0));
-		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.PUMPKIN_SEEDS, 1, 0));
-		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.BEETROOT_SEEDS, 1, 0));
-
-		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 1));
-		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 3));
-		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
-
-		OreDictionary.registerOre("egg", new ItemStack(Items.EGG));
 
 		// deprecated
 		if (!ModuleConfig.delete_old) {

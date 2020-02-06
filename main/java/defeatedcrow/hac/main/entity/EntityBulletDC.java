@@ -62,7 +62,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	public Entity shootingEntity;
 	private int ticksInGround;
 	private int ticksInAir;
-	protected double damage;
+	protected double damage = MainCoreConfig.gun_damage;
 	/** The amount of knockback an arrow applies when it hits a mob. */
 	private int knockbackStrength;
 	protected int groundTimeLimit = 2;
@@ -72,7 +72,6 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		this.xTile = -1;
 		this.yTile = -1;
 		this.zTile = -1;
-		this.damage = MainCoreConfig.gun_damage;
 		if (this.getIsRangedAttack()) {
 			this.setSize(2.0F, 2.0F);
 		} else {
@@ -325,9 +324,10 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	protected void onHit(RayTraceResult raytraceResultIn) {
 		Entity entity = raytraceResultIn.entityHit;
 
-		if (entity != null) {
-			int dam = MathHelper.ceil(this.damage);
-			dam += this.rand.nextInt(8) * 0.25D;
+		if (entity != null && !world.isRemote) {
+			float dam = (float) this.getDamage();
+			float pw = 1.0F + (world.rand.nextFloat() * 0.25F);
+			dam *= pw;
 
 			// 対アンデッドで2倍
 			if (this.getIsSilver() && entity instanceof EntityLiving && ((EntityLiving) entity).isEntityUndead()) {

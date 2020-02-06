@@ -30,7 +30,6 @@ public class DCHeatTreatmentWrapper implements IRecipeWrapper {
 	public int time2 = 0;
 	public int time3 = 0;
 
-	@SuppressWarnings("unchecked")
 	public DCHeatTreatmentWrapper(IHeatTreatment recipe) {
 		rec = recipe;
 		input1 = new ArrayList<ItemStack>();

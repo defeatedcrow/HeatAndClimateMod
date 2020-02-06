@@ -57,9 +57,7 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
-		return new FluidTankProperties[] {
-				new FluidTankProperties(getFluid(), capacity)
-		};
+		return new FluidTankProperties[] { new FluidTankProperties(getFluid(), capacity) };
 	}
 
 	@Override
@@ -97,8 +95,8 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 
 	@Override
 	public FluidStack drain(FluidStack resource, boolean doDrain) {
-		if (container.getCount() != 1 || resource == null || resource.amount <= 0
-				|| !resource.isFluidEqual(getFluid())) {
+		if (container.getCount() != 1 || resource == null || resource.amount <= 0 || !resource
+				.isFluidEqual(getFluid())) {
 			return null;
 		}
 		return drain(resource.amount, doDrain);
@@ -149,14 +147,12 @@ public class FluidItemBlockWrapper extends FluidHandlerItemStack {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
-				|| capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY;
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
-				|| capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ? (T) this : null;
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ?
+				(T) this : null;
 	}
 }

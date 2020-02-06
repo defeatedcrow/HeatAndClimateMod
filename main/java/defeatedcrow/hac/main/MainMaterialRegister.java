@@ -48,6 +48,7 @@ import defeatedcrow.hac.main.block.build.BlockMetalPillar;
 import defeatedcrow.hac.main.block.build.BlockOilLamp;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock_L;
+import defeatedcrow.hac.main.block.build.BlockScaffold;
 import defeatedcrow.hac.main.block.build.BlockSlabChal;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSlabSlate;
@@ -510,6 +511,10 @@ public class MainMaterialRegister {
 
 		MainInit.freezepack = new BlockCoolantPackage(ClimateCore.PACKAGE_BASE + "_coolant");
 		DCMaterialReg.registerBlock(MainInit.freezepack, ClimateCore.PACKAGE_BASE + "_coolant", ClimateMain.MOD_ID);
+
+		MainInit.scaffold = new BlockScaffold(Material.WOOD, ClimateCore.PACKAGE_BASE + "_build_scaffold");
+		DCMaterialReg
+				.registerBlock(MainInit.scaffold, ClimateCore.PACKAGE_BASE + "_build_scaffold", ClimateMain.MOD_ID);
 
 		if (ModuleConfig.build_advanced) {
 
@@ -1713,6 +1718,7 @@ public class MainMaterialRegister {
 	private static void registerHarvestLevel() {
 		MainInit.oreNew.setHarvestLevel("pickaxe", 0);
 		MainInit.layerNew.setHarvestLevel("pickaxe", 0);
+		MainInit.builds.setHarvestLevel("pickaxe", 0);
 	}
 
 }
