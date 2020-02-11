@@ -37,6 +37,7 @@ public class ModuleConfig {
 	public static boolean mce = true;
 	public static boolean tan = true;
 	public static boolean eio = true;
+	public static boolean ugb = false;
 
 	public static boolean r_mill = true;
 	public static boolean r_spinning = true;
@@ -82,6 +83,7 @@ public class ModuleConfig {
 			Property mce_b = cfg.get("plugin setting", "MCEconomyPlugin", mce);
 			Property tan_b = cfg.get("plugin setting", "ToughAsNailsPlugin", tan);
 			Property eio_b = cfg.get("plugin setting", "EnderIO", eio);
+			Property ugb_b = cfg.get("plugin setting", "UndergroundBiomes", ugb);
 
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
 			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
@@ -115,6 +117,7 @@ public class ModuleConfig {
 			mce = mce_b.getBoolean();
 			tan = tan_b.getBoolean();
 			eio = eio_b.getBoolean();
+			ugb = ugb_b.getBoolean();
 
 			r_mill = mill.getBoolean();
 			r_spinning = spinning.getBoolean();

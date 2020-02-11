@@ -131,7 +131,7 @@ public class ItemColorPendant extends CharmItemBase {
 	}
 
 	@Override
-	public float increaceDamage(EntityLivingBase target, ItemStack charm) {
+	public float increaceDamage(EntityLivingBase target, DamageSource source, ItemStack charm) {
 		return 1F;
 	}
 
@@ -144,7 +144,7 @@ public class ItemColorPendant extends CharmItemBase {
 						target.posY + 0.25D, target.posZ, charm.getCount(), CustomExplosion.Type.Silk, true);
 				explosion.doExplosion();
 				owner.world.addWeatherEffect(new EntityLightningBolt(owner.world, target.posX, target.posY - 0.25D,
-						target.posZ, true));
+						target.posZ, !owner.isSneaking()));
 			}
 		}
 		return false;

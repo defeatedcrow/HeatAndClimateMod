@@ -435,6 +435,11 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shears";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		if (DCUtil.isEmpty(item))
 			return false;

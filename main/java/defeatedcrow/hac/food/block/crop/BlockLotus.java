@@ -404,6 +404,11 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shears";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		if (DCUtil.isEmpty(item))
 			return false;

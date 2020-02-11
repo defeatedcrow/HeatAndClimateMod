@@ -1,11 +1,8 @@
 package defeatedcrow.hac.main.block.build;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
@@ -14,6 +11,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -139,7 +137,7 @@ public class BlockScaffold extends DCSimpleBlock implements ITexturePath, IRapid
 					return true;
 
 				Set<BlockPos> set = new LinkedHashSet<>();
-				set = getTargetList(world, pos, this, 100);
+				set = MainUtil.getLumberTargetList(world, pos, this, 100);
 
 				int count = 0;
 				for (BlockPos p2 : set) {
@@ -169,25 +167,12 @@ public class BlockScaffold extends DCSimpleBlock implements ITexturePath, IRapid
 		return Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
 	}
 
-	/**
-	 * @date 2020.02.04
-	 * @author ruby 氏に感謝
-	 */
-	private Set<BlockPos> getTargetList(World world, BlockPos pos, Block block, int limit) {
-		List<BlockPos> nextTargets = new ArrayList<>();
-		nextTargets.add(pos);
-		Set<BlockPos> founds = new LinkedHashSet<>();
-		do {
-			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(EnumFacing.values()).map(target::offset))
-					.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds
-							.size()).filter(founds::add).collect(Collectors.toList());
-
-		} while (founds.size() <= limit && !nextTargets.isEmpty());
-
-		return founds;
-	}
-
 	/* IRapidCollectables */
+
+	@Override
+	public String getCollectableTool() {
+		return "axe";
+	}
 
 	@Override
 	public boolean isCollectable(ItemStack item) {

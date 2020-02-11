@@ -6,8 +6,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:stone",
-   "data": 5
+   "type": "forge:ore_dict",
+   "ore": "stoneAndesite"
   },
   "Y": {
    "type": "forge:ore_dict",

@@ -7,6 +7,7 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.OredicConfig;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -312,5 +313,9 @@ public class OreDicRegister {
 			OreDictionary.registerOre("blockBSCCO", new ItemStack(MainInit.metalBlock, 1, 14));
 			OreDictionary.registerOre("blockLead", new ItemStack(MainInit.metalBlock, 1, 15));
 		}
+
+		OreDictionary.registerOre("stoneGranite", new ItemStack(Blocks.STONE, 1, 1));
+		OreDictionary.registerOre("stoneDiorite", new ItemStack(Blocks.STONE, 1, 3));
+		OreDictionary.registerOre("stoneAndesite", new ItemStack(Blocks.STONE, 1, 5));
 	}
 }

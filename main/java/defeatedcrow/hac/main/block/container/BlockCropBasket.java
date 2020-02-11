@@ -166,6 +166,11 @@ public class BlockCropBasket extends DCSimpleBlock implements ITexturePath, IRap
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shovel";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemSpade;
 	}

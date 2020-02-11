@@ -66,26 +66,26 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 	 * 19: リシア輝石
 	 */
 	private static String[] names = {
-			"chal_blue", /* 水耐性 */
-			"chal_red", /* 火耐性 */
-			"chal_white", /* ダメージ軽減 */
-			"crystal", /* 悪性ポーション */
-			"sapphire", /* 辞書閲覧機能 */
-			"malachite", /* 常時暗視 */
-			"celestite", /* 落下耐性 */
-			"clam", /* 死亡時ワープ */
-			"lapis", /* 範囲回収 */
-			"diamond", /* 採掘速度増加 */
-			"schorl", /* 加速 */
-			"serpentine", /* 透明化 */
-			"olivine", /* EXP増加 */
-			"almandine", /* ノックバック防止 */
-			"elestial", /* カルセドニー投げ */
-			"rutile", /* 爆発耐性 */
-			"bismuth", /* ツールがゆっくり回復 */
-			"jadeite", /* 動物と仲良く */
-			"moonstone", /* 矢の弾速UP */
-			"kunzite"
+		"chal_blue", /* 水耐性 */
+		"chal_red", /* 火耐性 */
+		"chal_white", /* ダメージ軽減 */
+		"crystal", /* 悪性ポーション */
+		"sapphire", /* 辞書閲覧機能 */
+		"malachite", /* 常時暗視 */
+		"celestite", /* 落下耐性 */
+		"clam", /* 死亡時ワープ */
+		"lapis", /* 範囲回収 */
+		"diamond", /* 採掘速度増加 */
+		"schorl", /* 加速 */
+		"serpentine", /* 透明化 */
+		"olivine", /* EXP増加 */
+		"almandine", /* ノックバック防止 */
+		"elestial", /* カルセドニー投げ */
+		"rutile", /* 爆発耐性 */
+		"bismuth", /* ツールがゆっくり回復 */
+		"jadeite", /* 動物と仲良く */
+		"moonstone", /* 矢の弾速UP */
+		"kunzite"
 			/* 攻撃抑制 */ };
 
 	public ItemMagicalPendant(int max) {
@@ -166,7 +166,7 @@ public class ItemMagicalPendant extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public float increaceDamage(EntityLivingBase target, ItemStack charm) {
+	public float increaceDamage(EntityLivingBase target, DamageSource source, ItemStack charm) {
 		return 1.0F;
 	}
 

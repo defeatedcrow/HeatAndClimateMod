@@ -124,6 +124,11 @@ public class BlockLogCont extends DCSidedBlock implements ITexturePath, IRapidCo
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shovel";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemSpade;
 	}

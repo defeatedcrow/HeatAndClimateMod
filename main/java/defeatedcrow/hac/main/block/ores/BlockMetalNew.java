@@ -25,16 +25,7 @@ public class BlockMetalNew extends DCSimpleBlock implements ITexturePath, IRapid
 		this.setResistance(15.0F);
 	}
 
-	private static String[] names = {
-			"zinc",
-			"copper",
-			"tin",
-			"lead",
-			"aluminium",
-			"nickel",
-			"silver",
-			"bismuth"
-	};
+	private static String[] names = { "zinc", "copper", "tin", "lead", "aluminium", "nickel", "silver", "bismuth" };
 
 	@Override
 	public String[] getNameSuffix() {
@@ -54,6 +45,11 @@ public class BlockMetalNew extends DCSimpleBlock implements ITexturePath, IRapid
 	}
 
 	/* IRapidCollectables */
+
+	@Override
+	public String getCollectableTool() {
+		return "pickaxe";
+	}
 
 	@Override
 	public boolean isCollectable(ItemStack item) {

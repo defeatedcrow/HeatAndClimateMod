@@ -175,6 +175,11 @@ public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapid
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shovel";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemSpade;
 	}

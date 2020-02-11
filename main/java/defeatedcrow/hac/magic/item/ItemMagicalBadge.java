@@ -94,26 +94,26 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 	 * 19: リシア輝石
 	 */
 	private static String[] names = {
-			"chal_blue", /* 水属性追撃 */
-			"chal_red", /* 火属性追撃 */
-			"chal_white", /* ダメージ基礎値増加 */
-			"crystal", /* バフ解除 */
-			"sapphire", /* エンチャ本の追加ドロップ */
-			"malachite", /* マーキング追撃 */
-			"celestite", /* 天候制御 */
-			"clam", /* ワープ */
-			"lapis", /* アイテム収集範囲 */
-			"diamond", /* 範囲採掘 */
-			"schorl", /* サンボル */
-			"serpentine", /* マークタワー設置 */
-			"olivine", /* EXP結晶化 */
-			"almandine", /* 敵の強制除去 */
-			"elestial", /* 範囲攻撃 */
-			"rutile", /* 光源設置 */
-			"bismuth", /* Block遠隔使用 */
-			"jadeite", /* 鉱脈索敵 */
-			"moonstone", /* 攻撃対象の書き換え */
-			"kunzite"
+		"chal_blue", /* 水属性追撃 */
+		"chal_red", /* 火属性追撃 */
+		"chal_white", /* ダメージ基礎値増加 */
+		"crystal", /* バフ解除 */
+		"sapphire", /* エンチャ本の追加ドロップ */
+		"malachite", /* マーキング追撃 */
+		"celestite", /* 天候制御 */
+		"clam", /* ワープ */
+		"lapis", /* アイテム収集範囲 */
+		"diamond", /* 範囲採掘 */
+		"schorl", /* サンボル */
+		"serpentine", /* マークタワー設置 */
+		"olivine", /* EXP結晶化 */
+		"almandine", /* 敵の強制除去 */
+		"elestial", /* 範囲攻撃 */
+		"rutile", /* 光源設置 */
+		"bismuth", /* Block遠隔使用 */
+		"jadeite", /* 鉱脈索敵 */
+		"moonstone", /* 攻撃対象の書き換え */
+		"kunzite"
 			/* シルクタッチ破壊 */ };
 
 	public ItemMagicalBadge(int max) {
@@ -441,7 +441,7 @@ public class ItemMagicalBadge extends CharmItemBase implements IJewelCharm {
 	}
 
 	@Override
-	public float increaceDamage(EntityLivingBase target, ItemStack charm) {
+	public float increaceDamage(EntityLivingBase target, DamageSource source, ItemStack charm) {
 		int meta = charm.getMetadata();
 		if (meta == 0) {
 			if (target.isImmuneToFire() || target instanceof EntityEnderman)

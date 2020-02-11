@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "dcs_climate:dcs_ore_gemblock",
-   "data": 6
+   "type": "forge:ore_dict",
+   "ore": "blockMarble"
   }
  },
  "result": {

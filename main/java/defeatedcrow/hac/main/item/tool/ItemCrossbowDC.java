@@ -100,7 +100,7 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 						if (power > 0) {
 							double pow = power + 5.0D;
 							pow *= 0.2D;
-							double damage = entityarrow.getDamage() * pow;
+							double damage = entityarrow.getDamage() * pow * 2;
 							entityarrow.setDamage(damage);
 						}
 

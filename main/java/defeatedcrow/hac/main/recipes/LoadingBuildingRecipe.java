@@ -327,7 +327,7 @@ public class LoadingBuildingRecipe {
 			"XY",
 			"YX",
 			'X',
-			new ItemStack(Blocks.STONE, 1, 3),
+			"stoneDiorite",
 			'Y',
 			"gemFlint" });
 
@@ -335,7 +335,7 @@ public class LoadingBuildingRecipe {
 			"XY",
 			"YX",
 			'X',
-			new ItemStack(Blocks.STONE, 1, 5),
+			"stoneAndesite",
 			'Y',
 			"gemFlint" });
 
@@ -343,7 +343,7 @@ public class LoadingBuildingRecipe {
 			"XY",
 			"YX",
 			'X',
-			new ItemStack(Blocks.STONE, 1, 1),
+			"stoneGranite",
 			'Y',
 			"gemFlint" });
 
@@ -614,7 +614,7 @@ public class LoadingBuildingRecipe {
 				" X ",
 				" X ",
 				'X',
-				new ItemStack(MainInit.gemBlock, 1, 6) });
+				"blockMarble" });
 
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.tableGypsum, 1, 0), new Object[] {
 				"XXX",

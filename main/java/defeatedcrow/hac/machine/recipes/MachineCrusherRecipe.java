@@ -315,9 +315,6 @@ public class MachineCrusherRecipe {
 				1), 0.25F, null, ti, "dirt");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.miscDust, 1,
 				7), 0.5F, null, ti, "netherrack");
-
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 2), new ItemStack(Blocks.SAND, 1,
-				0), 1F, null, ti, "limestone");
 	}
 
 }

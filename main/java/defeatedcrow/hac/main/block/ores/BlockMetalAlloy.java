@@ -26,16 +26,15 @@ public class BlockMetalAlloy extends DCSimpleBlock implements ITexturePath, IRap
 	}
 
 	private static String[] names = {
-			"brass",
-			"bronze",
-			"steel",
-			"nickelsilver",
-			"toolsteel",
-			"sus",
-			"magnet",
-			"titanium",
-			"bscco"
-	};
+		"brass",
+		"bronze",
+		"steel",
+		"nickelsilver",
+		"toolsteel",
+		"sus",
+		"magnet",
+		"titanium",
+		"bscco" };
 
 	@Override
 	public String[] getNameSuffix() {
@@ -55,6 +54,11 @@ public class BlockMetalAlloy extends DCSimpleBlock implements ITexturePath, IRap
 	}
 
 	/* IRapidCollectables */
+
+	@Override
+	public String getCollectableTool() {
+		return "pickaxe";
+	}
 
 	@Override
 	public boolean isCollectable(ItemStack item) {

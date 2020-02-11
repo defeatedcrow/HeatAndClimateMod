@@ -42,16 +42,18 @@ public class OnMiningEventDC {
 				float lv = 2.0F + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant,
 						1, 2)) + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1,
 								9));
-				lv *= 0.5F;
 				event.setNewSpeed(event.getNewSpeed() * lv);
 			} else {
-				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER) && event.getEntityPlayer()
-						.isPotionActive(MainInit.ocean)) {
+				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER)) {
+					float lv = 1.0F;
 					if (event.getEntityPlayer().getActivePotionEffect(MainInit.ocean) != null) {
-						float lv = 1.0F + event.getEntityPlayer().getActivePotionEffect(MainInit.ocean)
-								.getAmplifier() * 1.0F;
-						event.setNewSpeed(event.getNewSpeed() * lv);
+						lv += event.getEntityPlayer().getActivePotionEffect(MainInit.ocean).getAmplifier() * 1.0F;
+
 					}
+					int c = MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant2, 1,
+							0));
+					lv += c * 1F;
+					event.setNewSpeed(event.getNewSpeed() * lv);
 				}
 			}
 		}

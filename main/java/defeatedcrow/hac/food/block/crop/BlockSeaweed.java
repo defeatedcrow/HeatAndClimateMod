@@ -53,8 +53,8 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockSeaweed extends BlockDC
-		implements ISidedTexture, INameSuffix, IClimateCrop, IGrowable, IRapidCollectables {
+public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix, IClimateCrop, IGrowable,
+		IRapidCollectables {
 
 	protected Random cropRand = new Random();
 
@@ -73,8 +73,8 @@ public class BlockSeaweed extends BlockDC
 		}
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			IBlockState target = world.getBlockState(pos.offset(face));
-			if (target.getMaterial() != Material.WATER
-					&& !target.getBlock().isSideSolid(target, world, pos.offset(face), face.getOpposite())) {
+			if (target.getMaterial() != Material.WATER && !target.getBlock().isSideSolid(target, world, pos
+					.offset(face), face.getOpposite())) {
 				ret = false;
 			}
 		}
@@ -339,6 +339,11 @@ public class BlockSeaweed extends BlockDC
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shears";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		if (DCUtil.isEmpty(item))
 			return false;
@@ -384,9 +389,7 @@ public class BlockSeaweed extends BlockDC
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.STAGE4, BlockFluidBase.LEVEL
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.STAGE4, BlockFluidBase.LEVEL });
 	}
 
 	// drop

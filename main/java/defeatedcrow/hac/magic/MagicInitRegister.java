@@ -3,6 +3,7 @@ package defeatedcrow.hac.magic;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.magic.block.BlockBiomeGlass;
+import defeatedcrow.hac.magic.block.BlockColdLamp;
 import defeatedcrow.hac.magic.block.BlockColorCube;
 import defeatedcrow.hac.magic.block.BlockElestial;
 import defeatedcrow.hac.magic.block.BlockIceCluster;
@@ -34,6 +35,7 @@ import defeatedcrow.hac.magic.item.ItemColorBadge;
 import defeatedcrow.hac.magic.item.ItemColorCard;
 import defeatedcrow.hac.magic.item.ItemColorDrop;
 import defeatedcrow.hac.magic.item.ItemColorPendant;
+import defeatedcrow.hac.magic.item.ItemColorPendant2;
 import defeatedcrow.hac.magic.item.ItemColorRing;
 import defeatedcrow.hac.magic.item.ItemColorRing2;
 import defeatedcrow.hac.magic.item.ItemEXPGem;
@@ -91,6 +93,11 @@ public class MagicInitRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_pendant");
 			DCMaterialReg
 					.registerItem(MagicInit.colorPendant, ClimateCore.PACKAGE_BASE + "_color_pendant", ClimateMain.MOD_ID);
+
+			MagicInit.colorPendant2 = new ItemColorPendant2()
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_pendant2");
+			DCMaterialReg
+					.registerItem(MagicInit.colorPendant2, ClimateCore.PACKAGE_BASE + "_color_pendant2", ClimateMain.MOD_ID);
 
 			MagicInit.colorBadge = new ItemColorBadge().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_badge");
 			DCMaterialReg
@@ -154,6 +161,10 @@ public class MagicInitRegister {
 		MagicInit.lotusCandleBlack = new BlockLotusCandle(ClimateCore.PACKAGE_BASE + "_lotus_candle_black", true);
 		DCMaterialReg
 				.registerBlock(MagicInit.lotusCandleBlack, ClimateCore.PACKAGE_BASE + "_lotus_candle_black", ClimateMain.MOD_ID);
+
+		MagicInit.coldLamp = new BlockColdLamp(ClimateCore.PACKAGE_BASE + "_build_coldlamp");
+		DCMaterialReg
+				.registerBlock(MagicInit.coldLamp, ClimateCore.PACKAGE_BASE + "_build_coldlamp", ClimateMain.MOD_ID);
 
 		MagicInit.biomeOrb = new BlockBiomeGlass(ClimateCore.PACKAGE_BASE + "_device_biomeglass");
 		DCMaterialReg
@@ -231,12 +242,14 @@ public class MagicInitRegister {
 		MagicInit.lotusCandle.setCreativeTab(ClimateMain.magic);
 		MagicInit.lotusCandleBlack.setCreativeTab(ClimateMain.magic);
 
+		MagicInit.coldLamp.setCreativeTab(ClimateMain.magic);
 		MagicInit.biomeOrb.setCreativeTab(ClimateMain.magic);
 
 		if (ModuleConfig.magic_advanced) {
 
 			MagicInit.colorRing2.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorPendant.setCreativeTab(ClimateMain.magic);
+			MagicInit.colorPendant2.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorBadge.setCreativeTab(ClimateMain.magic);
 			MagicInit.magicCard.setCreativeTab(ClimateMain.magic);
 

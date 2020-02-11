@@ -1,0 +1,157 @@
+package defeatedcrow.hac.plugin;
+
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.DCRecipe;
+import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
+
+public class DCPluginUGB {
+
+	public static final DCPluginUGB INSTANCE = new DCPluginUGB();
+
+	private DCPluginUGB() {}
+
+	public static void init() {
+		ItemStack ti = new ItemStack(MachineInit.rotaryBlade, 1, 1);
+		ItemStack sc = new ItemStack(MachineInit.rotaryBlade, 1, 2);
+
+		// dic
+		Block igs = Block.REGISTRY.getObject(new ResourceLocation("undergroundbiomes", "igneous_stone"));
+		if (igs != null) {
+			// 花崗岩
+			OreDictionary.registerOre("stoneGranite", new ItemStack(igs, 1, 0));
+			OreDictionary.registerOre("stoneGranite", new ItemStack(igs, 1, 1));
+			// 流紋岩
+			OreDictionary.registerOre("stoneRhyolite", new ItemStack(igs, 1, 2));
+			// 安山岩
+			OreDictionary.registerOre("stoneAndesite", new ItemStack(igs, 1, 3));
+			// 斑糲岩
+			OreDictionary.registerOre("stoneGabro", new ItemStack(igs, 1, 4));
+			// 玄武岩
+			OreDictionary.registerOre("stoneBasalt", new ItemStack(igs, 1, 5));
+			// コマチアイト
+			OreDictionary.registerOre("stoneKomatite", new ItemStack(igs, 1, 6));
+			// デイサイト
+			OreDictionary.registerOre("stoneDacite", new ItemStack(igs, 1, 7));
+
+			DCRecipe.jsonShapedRecipe("plugin", new ItemStack(MainInit.builds, 2, 8), new Object[] {
+				"XY",
+				"YX",
+				'X',
+				"stoneDacite",
+				'Y',
+				"gemFlint" });
+
+			DCRecipe.jsonShapedRecipe("plugin", new ItemStack(MainInit.builds, 2, 9), new Object[] {
+				"XY",
+				"YX",
+				'X',
+				"stoneGabro",
+				'Y',
+				"gemFlint" });
+
+			DCRecipe.jsonShapedRecipe("plugin", new ItemStack(MainInit.builds, 2, 9), new Object[] {
+				"XY",
+				"YX",
+				'X',
+				"stoneBasalt",
+				'Y',
+				"gemFlint" });
+
+			if (ModuleConfig.machine) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
+						7), 0.05F, "stoneBasalt");
+
+				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.oreDust, 1,
+						2), 0.05F, "stoneKomatite");
+
+				if (ModuleConfig.machine_advanced) {
+
+					RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(
+							MainInit.miscDust, 1, 7), 0.2F, new ItemStack(MainInit.oreItem, 1,
+									4), 0.05F, ti, "stoneBasalt");
+
+					RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(
+							MainInit.oreItem, 1, 6), 0.2F, new ItemStack(MainInit.oreItem, 1,
+									4), 0.05F, ti, "stoneKomatite");
+				}
+			}
+		}
+
+		Block met = Block.REGISTRY.getObject(new ResourceLocation("undergroundbiomes", "metamorphic_stone"));
+		if (met != null) {
+
+			OreDictionary.registerOre("stoneEclogite", new ItemStack(met, 1, 1));
+			OreDictionary.registerOre("stoneMarble", new ItemStack(met, 1, 2));
+			OreDictionary.registerOre("blockMarble", new ItemStack(met, 1, 2));
+			OreDictionary.registerOre("stoneQuarzite", new ItemStack(met, 1, 3));
+
+			if (ModuleConfig.machine) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
+						8), 0.1F, "stonEclogite");
+
+				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
+						1), 0.1F, "stoneQuarzite");
+
+				if (ModuleConfig.machine_advanced) {
+
+					RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems,
+							1, 14), 0.15F, new ItemStack(MainInit.gems, 1, 13), 0.05F, sc, "stoneEclogite");
+
+					RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems,
+							1, 2), 0.2F, new ItemStack(Items.QUARTZ, 1, 0), 0.05F, sc, "stoneQuarzite");
+				}
+			}
+		}
+
+		Block sed = Block.REGISTRY.getObject(new ResourceLocation("undergroundbiomes", "sedimentary_stone"));
+		if (sed != null) {
+			OreDictionary.registerOre("oreLime", new ItemStack(sed, 1, 0));
+			OreDictionary.registerOre("stoneChalk", new ItemStack(sed, 1, 1));
+			OreDictionary.registerOre("stoneShele", new ItemStack(sed, 1, 2));
+			OreDictionary.registerOre("stoneSilt", new ItemStack(sed, 1, 3));
+			OreDictionary.registerOre("stoneChart", new ItemStack(sed, 1, 7));
+
+			if (ModuleConfig.machine) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), "stoneChalk");
+
+				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems, 1,
+						23), 0.05F, "stonShele");
+
+				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(
+						Items.FLINT), 0.2F, "stoneChart");
+
+				if (ModuleConfig.machine_advanced) {
+					RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 2), new ItemStack(
+							Items.BONE, 1, 0), 0.1F, ti, "stoneChalk");
+
+					RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 2), new ItemStack(
+							MainInit.gems, 1, 23), 1F, new ItemStack(Items.BONE, 1, 0), 0.1F, ti, "stoneShele");
+
+					RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 1), new ItemStack(
+							Items.FLINT), 0.5F, new ItemStack(MainInit.gems, 1, 0), 0.1F, ti, "stoneChart");
+				}
+			}
+		}
+
+		Item lig = Item.REGISTRY.getObject(new ResourceLocation("undergroundbiomes", "lignite_coal"));
+		if (lig != null) {
+			OreDictionary.registerOre("gemLignite", new ItemStack(lig, 1, 0));
+			// 褐炭改質
+			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(Items.COAL, 1, 0), new ItemStack(
+					MachineInit.reagent, 1, 0), 1F, null, null, DCHeatTier.KILN, new ItemStack(MachineInit.catalyst, 1,
+							0), new FluidStack(MainInit.fuelOil, 400), null, new Object[] { new ItemStack(lig, 4, 0) });
+		}
+	}
+
+}

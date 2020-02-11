@@ -115,6 +115,11 @@ public class BlockCropJutebag extends DCSimpleBlock implements ITexturePath, IRa
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shovel";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		return !DCUtil.isEmpty(item) && item.getItem() instanceof ItemSpade;
 	}

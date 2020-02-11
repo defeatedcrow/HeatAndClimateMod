@@ -1,6 +1,11 @@
 package defeatedcrow.hac.main.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 
@@ -19,10 +24,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -306,6 +314,26 @@ public class MainUtil {
 			return f;
 		}
 		return 1.0F;
+	}
+
+	/**
+	 * ruby氏に感謝!
+	 *
+	 * @date 2020.02.04
+	 * @author ruby
+	 */
+	public static Set<BlockPos> getLumberTargetList(World world, BlockPos pos, Block block, int limit) {
+		List<BlockPos> nextTargets = new ArrayList<>();
+		nextTargets.add(pos);
+		Set<BlockPos> founds = new LinkedHashSet<>();
+		do {
+			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(EnumFacing.values()).map(target::offset))
+					.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds
+							.size()).filter(founds::add).collect(Collectors.toList());
+
+		} while (founds.size() <= limit && !nextTargets.isEmpty());
+
+		return founds;
 	}
 
 	public static boolean hasSameDic(ItemStack item, ItemStack check) {

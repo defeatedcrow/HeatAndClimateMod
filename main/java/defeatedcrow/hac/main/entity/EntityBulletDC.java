@@ -324,7 +324,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 	protected void onHit(RayTraceResult raytraceResultIn) {
 		Entity entity = raytraceResultIn.entityHit;
 
-		if (entity != null && !world.isRemote) {
+		if (entity != null && !entity.world.isRemote) {
 			float dam = (float) this.getDamage();
 			float pw = 1.0F + (world.rand.nextFloat() * 0.25F);
 			dam *= pw;
@@ -359,6 +359,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			}
 
 			if (entity.attackEntityFrom(damagesource, dam)) {
+
 				if (entity instanceof EntityLivingBase) {
 					EntityLivingBase living = (EntityLivingBase) entity;
 					if (!this.getIsPenetrate())

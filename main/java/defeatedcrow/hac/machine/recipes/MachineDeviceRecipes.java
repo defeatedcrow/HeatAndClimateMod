@@ -109,8 +109,6 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.miscDust, 1,
 					7), 0.15F, "netherrack");
 
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), "limestone");
-
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 0), new ItemStack(Items.COAL, 1, 0));
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), "gemQuartz");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), "gemChalcedony");

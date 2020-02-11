@@ -119,7 +119,7 @@ public class ItemColorRing extends CharmItemBase {
 	}
 
 	@Override
-	public float increaceDamage(EntityLivingBase target, ItemStack charm) {
+	public float increaceDamage(EntityLivingBase target, DamageSource source, ItemStack charm) {
 		return 1F;
 	}
 
