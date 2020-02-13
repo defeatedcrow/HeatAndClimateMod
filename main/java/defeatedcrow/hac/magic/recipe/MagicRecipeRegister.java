@@ -1,5 +1,7 @@
 package defeatedcrow.hac.magic.recipe;
 
+import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
@@ -192,55 +194,65 @@ public class MagicRecipeRegister {
 			"Y",
 			"Z",
 			'X',
-			"dustGold",
+			"dustCrystal",
 			'Y',
 			"dropBlue",
 			'Z',
-			"ingotSilver" });
+			"ingotGold" });
 
 		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 1), new Object[] {
 			"X",
 			"Y",
 			"Z",
 			'X',
-			"dustGold",
+			"dustCrystal",
 			'Y',
 			"dropGreen",
 			'Z',
-			"ingotSilver" });
+			"ingotGold" });
 
 		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 2), new Object[] {
 			"X",
 			"Y",
 			"Z",
 			'X',
-			"dustGold",
+			"dustCrystal",
 			'Y',
 			"dropRed",
 			'Z',
-			"ingotSilver" });
+			"ingotGold" });
 
 		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 3), new Object[] {
 			"X",
 			"Y",
 			"Z",
 			'X',
-			"dustGold",
+			"dustCrystal",
 			'Y',
 			"dropBlack",
 			'Z',
-			"ingotSilver" });
+			"ingotGold" });
 
 		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing2, 1, 4), new Object[] {
 			"X",
 			"Y",
 			"Z",
 			'X',
-			"dustGold",
+			"dustCrystal",
 			'Y',
 			"dropWhite",
 			'Z',
-			"ingotSilver" });
+			"ingotGold" });
+
+		// another
+
+		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(Items.BLAZE_POWDER, 1, 0), new Object[] {
+			"dropRed",
+			"gunpowder" });
+
+		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(Items.GLOWSTONE_DUST, 1, 0), new Object[] {
+			"dropWhite",
+			"gunpowder" });
 
 		// advanced
 		if (ModuleConfig.magic_advanced) {
@@ -299,6 +311,61 @@ public class MagicRecipeRegister {
 				"extractWhite",
 				'Z',
 				"ingotSilver" });
+
+			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorPendant2, 1, 0), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractBlue",
+				'Z',
+				"ingotGold" });
+
+			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorPendant2, 1, 1), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractGreen",
+				'Z',
+				"ingotGold" });
+
+			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorPendant2, 1, 2), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractRed",
+				'Z',
+				"ingotGold" });
+
+			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorPendant2, 1, 3), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractBlack",
+				'Z',
+				"ingotGold" });
+
+			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorPendant2, 1, 4), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractWhite",
+				'Z',
+				"ingotGold" });
 
 			// badge
 			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 0), new Object[] {
@@ -600,10 +667,29 @@ public class MagicRecipeRegister {
 
 			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(FoodInit.petals, 8, 1), new Object[] {
 				new ItemStack(MagicInit.lotusCandleBlack, 1, 0) });
+
+			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 0), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 0),
+				"extractBlue" });
+
+			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 1), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 1),
+				"extractBlue" });
+
+			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 2), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 2),
+				"extractBlue" });
+
+			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 3), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 3),
+				"extractBlue" });
 		}
 
 		// elestial
 		GameRegistry.addSmelting(new ItemStack(MainInit.gemBlock, 1, 8), new ItemStack(MagicInit.elestial, 1, 0), 0.5F);
+
+		// climate
+		ClimateAPI.registerBlock.registerHeatBlock(MagicInit.coldLamp, 32767, DCHeatTier.COOL);
 
 	}
 

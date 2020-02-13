@@ -20,6 +20,18 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath {
 	}
 
 	@Override
+	public void setHarvestLevel(String toolClass, int level) {
+		for (int i = 0; i < 16; i++) {
+			super.setHarvestLevel("pickaxe", 0, this.getStateFromMeta(i));
+		}
+	}
+
+	@Override
+	public int getHarvestLevel(IBlockState state) {
+		return 0;
+	}
+
+	@Override
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		int meta = DCState.getInt(state, DCState.TYPE16);
 		if (meta == 5)

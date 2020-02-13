@@ -28,11 +28,11 @@ public class BasicRecipeRegister {
 	static void loadAnotherRecipes(RecipeResourcesMain res) {
 		// 火打ち石のアナザー
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
-			new ItemStack(MainInit.ores, 1, 4),
+			new ItemStack(MainInit.oreItem, 1, 3),
 			"gemChalcedony" });
 
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
-			new ItemStack(MainInit.ores, 1, 4),
+			new ItemStack(MainInit.oreItem, 1, 3),
 			new ItemStack(Items.FLINT) });
 
 		// 矢

@@ -14,6 +14,7 @@ import defeatedcrow.hac.food.block.crop.BlockCoffee;
 import defeatedcrow.hac.food.block.crop.BlockCotton;
 import defeatedcrow.hac.food.block.crop.BlockGarlic;
 import defeatedcrow.hac.food.block.crop.BlockGinger;
+import defeatedcrow.hac.food.block.crop.BlockGrape;
 import defeatedcrow.hac.food.block.crop.BlockHerb;
 import defeatedcrow.hac.food.block.crop.BlockLeavesDates;
 import defeatedcrow.hac.food.block.crop.BlockLeavesDatesCrop;
@@ -156,6 +157,9 @@ public class FoodInitRegister {
 		DCMaterialReg.registerBlock(FoodInit.cropGinger, ClimateCore.PACKAGE_BASE + "_crop_ginger", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addCropBlock(FoodInit.cropGinger, "crop_ginger", 3);
 
+		FoodInit.cropGrape = new BlockGrape(ClimateCore.PACKAGE_BASE + "_crop_grape");
+		DCMaterialReg.registerBlock(FoodInit.cropGrape, ClimateCore.PACKAGE_BASE + "_crop_grape", ClimateMain.MOD_ID);
+
 		FoodInit.leavesLemon = new BlockLeavesLemon(ClimateCore.PACKAGE_BASE + "_leaves_lemon");
 		DCMaterialReg
 				.registerBlock(FoodInit.leavesLemon, ClimateCore.PACKAGE_BASE + "_leaves_lemon", ClimateMain.MOD_ID);
@@ -215,10 +219,10 @@ public class FoodInitRegister {
 
 	static void loadItems() {
 
-		FoodInit.crops = new ItemDCCrops(19).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
+		FoodInit.crops = new ItemDCCrops(20).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
 		DCMaterialReg.registerItem(FoodInit.crops, ClimateCore.PACKAGE_BASE + "_food_crops", ClimateMain.MOD_ID);
 
-		FoodInit.seeds = new ItemDCSeeds(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_seeds");
+		FoodInit.seeds = new ItemDCSeeds(16).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_seeds");
 		DCMaterialReg.registerItem(FoodInit.seeds, ClimateCore.PACKAGE_BASE + "_food_seeds", ClimateMain.MOD_ID);
 
 		FoodInit.teaLeaves = new ItemTeaLeaves(2).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_leaves");
@@ -356,11 +360,11 @@ public class FoodInitRegister {
 		FoodInit.wagashi.setCreativeTab(ClimateMain.food);
 		FoodInit.snack.setCreativeTab(ClimateMain.food);
 		FoodInit.deepFry.setCreativeTab(ClimateMain.food);
-		// FoodInit.dishBig.setCreativeTab(ClimateMain.food);
-		// FoodInit.dishSq.setCreativeTab(ClimateMain.food);
+		FoodInit.dishBig.setCreativeTab(ClimateMain.food);
+		FoodInit.dishSq.setCreativeTab(ClimateMain.food);
 		FoodInit.setMeal.setCreativeTab(ClimateMain.food);
-		// FoodInit.udon.setCreativeTab(ClimateMain.food);
-		// FoodInit.drink.setCreativeTab(ClimateMain.food);
+		FoodInit.udon.setCreativeTab(ClimateMain.food);
+		FoodInit.drink.setCreativeTab(ClimateMain.food);
 
 		FoodInit.nonEntity.setCreativeTab(ClimateMain.food);
 
@@ -401,6 +405,7 @@ public class FoodInitRegister {
 		FoodInit.cropLettuce.setCreativeTab(ClimateMain.food);
 		FoodInit.cropWisteria.setCreativeTab(ClimateMain.food);
 		FoodInit.cropGinger.setCreativeTab(ClimateMain.food);
+		FoodInit.cropGrape.setCreativeTab(ClimateMain.food);
 
 		FoodInit.leavesOlive.setCreativeTab(ClimateMain.food);
 		FoodInit.leavesLemon.setCreativeTab(ClimateMain.food);
@@ -430,6 +435,16 @@ public class FoodInitRegister {
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.sandwich);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.steakplate);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.sticks);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.deepFry);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.dishBig);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.dishSq);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.drink);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.icecream);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.mochi);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.setMeal);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.snack);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.udon);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.wagashi);
 	}
 
 }

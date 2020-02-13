@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:ender_pearl",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "enderpearl"
   }
  },
  "result": {

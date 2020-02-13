@@ -13,6 +13,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
@@ -64,8 +65,8 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	public BlockLotus(String s, int max) {
 		super(Material.WATER, s);
 		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK,
-				false).withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK, false)
+				.withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
 	}
 
 	public boolean isInWater(IBlockAccess world, BlockPos pos) {
@@ -74,8 +75,8 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 			IBlockState target = world.getBlockState(pos.offset(face));
 			if (target.getBlock() instanceof BlockLiquid && target.getMaterial() == Material.WATER) {
 
-			} else if (target.getBlock() != this && !target.getBlock().isSideSolid(target, world, pos.offset(face),
-					face.getOpposite())) {
+			} else if (target.getBlock() != this && !target.getBlock().isSideSolid(target, world, pos.offset(face), face
+					.getOpposite())) {
 				ret = false;
 			}
 		}
@@ -294,23 +295,23 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 			boolean water = this.isInWater(world, pos);
 			if (water) {
 				if (stage < 7) {
-					int season = DCTimeHelper.getSeason(world);
+					EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 					int next = stage;
-					if (stage == 6 && season > 2) {
+					if (stage == 6 && season.id > 2) {
 						// winter
 						next = stage + 1;
-					} else if (stage == 5 && season > 1) {
+					} else if (stage == 5 && season.id > 1) {
 						// autumn
 						next = stage + 1;
-					} else if ((stage == 4 || stage == 3) && (season == 1 || season == 2)) {
+					} else if ((stage == 4 || stage == 3) && (season.id == 1 || season.id == 2)) {
 						// summer
 						next = stage + 1;
-					} else if (stage < 3 && season < 3) {
+					} else if (stage < 3 && season.id < 3) {
 						if (world.rand.nextInt(50) == 0) {
 							black = true;
 						}
 						next = stage + 1;
-					} else if (stage > 1 && season == 3) {
+					} else if (stage > 1 && season.id == 3) {
 						next = 7;
 					}
 
@@ -403,6 +404,11 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shears";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		if (DCUtil.isEmpty(item))
 			return false;
@@ -448,11 +454,7 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.STAGE8,
-				BLACK,
-				BlockFluidBase.LEVEL
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.STAGE8, BLACK, BlockFluidBase.LEVEL });
 	}
 
 	// drop

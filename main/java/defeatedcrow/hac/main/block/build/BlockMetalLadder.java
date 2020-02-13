@@ -13,6 +13,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -97,8 +98,8 @@ public class BlockMetalLadder extends BlockDC {
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
 		if (face != null) {
 			BlockPos up = pos.offset(face);
-			return state.withProperty(CLAMP, Boolean.valueOf(this.canConnectTo(worldIn, up, face))).withProperty(UPPER,
-					worldIn.isAirBlock(pos.up()));
+			return state.withProperty(CLAMP, Boolean.valueOf(this.canConnectTo(worldIn, up, face)))
+					.withProperty(UPPER, worldIn.isAirBlock(pos.up()));
 		}
 		return state.withProperty(CLAMP, false).withProperty(UPPER, false);
 	}
@@ -137,9 +138,7 @@ public class BlockMetalLadder extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING, CLAMP, UPPER
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.FACING, CLAMP, UPPER });
 	}
 
 	@Override
@@ -254,6 +253,11 @@ public class BlockMetalLadder extends BlockDC {
 	@Override
 	public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
 		return true;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 }

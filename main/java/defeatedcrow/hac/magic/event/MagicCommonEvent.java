@@ -28,11 +28,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -40,6 +40,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
@@ -149,26 +150,23 @@ public class MagicCommonEvent {
 	public void afterWarpDimEvent(PlayerChangedDimensionEvent event) {
 		EntityPlayer player = event.player;
 		if (player != null) {
-			NonNullList<ItemStack> map = DCUtil.getPlayerCharm(player, null);
-			for (ItemStack charm : map) {
-				if (!DCUtil.isEmpty(charm) && charm.getItem() == MagicInit.colorBadge && charm.getItemDamage() == 1) {
-					int dim = player.world.provider.getDimension();
-					String dimName = player.world.provider.getDimensionType().getName();
-					int x = MathHelper.floor(player.posX);
-					int y = MathHelper.floor(player.posY);
-					int z = MathHelper.floor(player.posZ);
-					NBTTagCompound tag = charm.getTagCompound();
-					if (tag == null) {
-						tag = new NBTTagCompound();
-					}
-					tag.setString("dcs.portal.dimname", dimName);
-					tag.setInteger("dcs.portal.dim", dim);
-					tag.setInteger("dcs.portal.x", x);
-					tag.setInteger("dcs.portal.y", y);
-					tag.setInteger("dcs.portal.z", z);
-					charm.setTagCompound(tag);
-					break;
+			ItemStack charm = MainUtil.getCharmItem(player, new ItemStack(MagicInit.colorBadge, 1, 1));
+			if (!DCUtil.isEmpty(charm)) {
+				int dim = player.world.provider.getDimension();
+				String dimName = player.world.provider.getDimensionType().getName();
+				int x = MathHelper.floor(player.posX);
+				int y = MathHelper.floor(player.posY);
+				int z = MathHelper.floor(player.posZ);
+				NBTTagCompound tag = charm.getTagCompound();
+				if (tag == null) {
+					tag = new NBTTagCompound();
 				}
+				tag.setString("dcs.portal.dimname", dimName);
+				tag.setInteger("dcs.portal.dim", dim);
+				tag.setInteger("dcs.portal.x", x);
+				tag.setInteger("dcs.portal.y", y);
+				tag.setInteger("dcs.portal.z", z);
+				charm.setTagCompound(tag);
 			}
 		}
 	}
@@ -204,6 +202,24 @@ public class MagicCommonEvent {
 					event.getDrops().get(i2).getItem().grow(1);
 				}
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
+		if (event.getHarvester() != null && DCUtil.hasCharmItem(event.getHarvester(), new ItemStack(
+				MagicInit.colorPendant2, 1, 2))) {
+			List<ItemStack> nList = Lists.newArrayList();
+			for (ItemStack i : event.getDrops()) {
+				ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(i);
+				if (burnt.isEmpty()) {
+					nList.add(i.copy());
+				} else {
+					nList.add(burnt.copy());
+				}
+			}
+			event.getDrops().clear();
+			event.getDrops().addAll(nList);
 		}
 	}
 

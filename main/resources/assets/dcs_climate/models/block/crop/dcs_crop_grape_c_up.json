@@ -1,0 +1,7 @@
+{
+    "parent":"dcs_climate:block/crop/dcs_crop_vine_up",
+    "textures":{
+        "base":"dcs_climate:blocks/crop/leaves_grape_n_o",
+        "overlay":"dcs_climate:blocks/crop/leaves_grape_c_o"
+     }
+}

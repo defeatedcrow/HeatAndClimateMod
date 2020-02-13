@@ -8,7 +8,7 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "dustGold"
+   "ore": "dustCrystal"
   },
   "Y": {
    "type": "forge:ore_dict",
@@ -16,7 +16,7 @@
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "ingotSilver"
+   "ore": "ingotGold"
   }
  },
  "result": {

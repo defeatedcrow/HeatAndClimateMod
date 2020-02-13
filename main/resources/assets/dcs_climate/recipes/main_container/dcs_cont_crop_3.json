@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:pumpkin",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "cropPumpkin"
   }
  },
  "result": {

@@ -44,7 +44,8 @@ public enum DCName {
 	STOPPING("dcs.tip.stopping"),
 	FACING("dcs.tip.facing"),
 	POWER("dcs.tip.power"),
-	TARGET("dcs.tip.target");
+	TARGET("dcs.tip.target"),
+	REMOVE_BAD_POTION("dcs.tip.remove_bad_potion");
 
 	private final String name;
 

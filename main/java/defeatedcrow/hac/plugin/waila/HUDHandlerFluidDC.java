@@ -9,6 +9,7 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
+import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -66,6 +67,9 @@ public class HUDHandlerFluidDC extends HUDHandlerBlocks {
 		registrar.addConfig("HeatAndClimate", "dcs_climate.showfluid", true);
 
 		HUDHandlerFluidDC provider = new HUDHandlerFluidDC();
+
+		registrar.registerBodyProvider(provider, TilePail.class);
+		registrar.registerNBTProvider(provider, TilePail.class);
 
 		registrar.registerBodyProvider(provider, TileIBC.class);
 		registrar.registerNBTProvider(provider, TileIBC.class);

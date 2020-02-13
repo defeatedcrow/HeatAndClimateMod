@@ -6,7 +6,6 @@ import javax.annotation.Nonnull;
 
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.config.CoreConfigDC;
-import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerEntities;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -21,13 +20,13 @@ public class HUDHandlerClimateMob extends HUDHandlerEntities {
 	@Override
 	public List<String> getWailaBody(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor,
 			IWailaConfigHandler config) {
-		if (!ClimateCore.isDebug || !config.getConfig("dcs_climate.showclimate") || entity == null)
+		if (!config.getConfig("dcs_climate.showclimate") || entity == null)
 			return currenttip;
 
 		if (entity instanceof EntityLivingBase) {
 			float heat = DamageAPI.resistantData.getHeatResistant(entity) + 2.0F;
 			float cold = DamageAPI.resistantData.getColdResistant(entity) + 2.0F;
-			if (entity.isImmuneToFire) {
+			if (entity.isImmuneToFire()) {
 				heat += CoreConfigDC.infernalInferno ? 8.0F : 4.0F;
 				cold -= 2.0F;
 			}

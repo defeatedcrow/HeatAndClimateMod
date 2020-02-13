@@ -162,10 +162,7 @@ public class BlockFaucet extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE,
-				DCState.POWERED
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE, DCState.POWERED });
 
 	}
 
@@ -181,11 +178,9 @@ public class BlockFaucet extends BlockContainerDC {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(DCName.FLUID.getLocalizedName() + " " + DCName.TRANSPORT
-					.getLocalizedName() + ": 200 mB/t");
+			tooltip.add(DCName.FLUID.getLocalizedName() + " " + DCName.TRANSPORT.getLocalizedName() + ": 200 mB/t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + DCName.TURN_OFF
-					.getLocalizedName());
+			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + DCName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

@@ -21,7 +21,7 @@ public class ContainerLivingDC extends Container {
 		this.addSlotToContainer(new Slot(inv_liv, 1, 44, 63));
 
 		for (int j = 0; j < 4; ++j) {
-			this.addSlotToContainer(new Slot(inv_liv, j + 2, 116, 9 + j * 18));
+			this.addSlotToContainer(new Slot(inv_liv, 5 - j, 116, 9 + j * 18));
 		}
 
 		for (int k = 0; k < 3; ++k) {

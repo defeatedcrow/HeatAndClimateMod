@@ -47,9 +47,12 @@ public class MainCreativeTabRegister {
 		MainInit.roofSlateRed.setCreativeTab(ClimateMain.build);
 		MainInit.roofSlateGreen.setCreativeTab(ClimateMain.build);
 		MainInit.roofSlateBrown.setCreativeTab(ClimateMain.build);
+		MainInit.plate.setCreativeTab(ClimateMain.build);
+		MainInit.scaffold.setCreativeTab(ClimateMain.build);
 
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
 		MainInit.wallLamp.setCreativeTab(ClimateMain.build);
+		MainInit.oilLamp.setCreativeTab(ClimateMain.build);
 		MainInit.desiccant.setCreativeTab(ClimateMain.build);
 		MainInit.freezepack.setCreativeTab(ClimateMain.build);
 
@@ -61,6 +64,7 @@ public class MainCreativeTabRegister {
 		MainInit.thermometer.setCreativeTab(ClimateCore.climate);
 		MainInit.windvane.setCreativeTab(ClimateCore.climate);
 		MainInit.bellow.setCreativeTab(ClimateMain.machine);
+		MainInit.pail.setCreativeTab(ClimateMain.machine);
 
 		// item
 		// ores
@@ -148,6 +152,7 @@ public class MainCreativeTabRegister {
 			MainInit.chandelierGypsum.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorMarble.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorSteel.setCreativeTab(ClimateMain.build);
+			MainInit.itemBed.setCreativeTab(ClimateMain.build);
 
 			// furniture
 			MainInit.chestMetal.setCreativeTab(ClimateMain.build);
@@ -155,11 +160,13 @@ public class MainCreativeTabRegister {
 			MainInit.chestVillage.setCreativeTab(ClimateMain.build);
 			MainInit.sinkMetal.setCreativeTab(ClimateMain.build);
 			MainInit.sinkChest.setCreativeTab(ClimateMain.build);
-			MainInit.plate.setCreativeTab(ClimateMain.build);
 			MainInit.realtimeClock.setCreativeTab(ClimateMain.build);
 			MainInit.realtimeClock_L.setCreativeTab(ClimateMain.build);
 			MainInit.mcClock_L.setCreativeTab(ClimateMain.build);
 			MainInit.curtainWhite.setCreativeTab(ClimateMain.build);
+			MainInit.curtainGray.setCreativeTab(ClimateMain.build);
+			MainInit.curtainRed.setCreativeTab(ClimateMain.build);
+			MainInit.curtainBlue.setCreativeTab(ClimateMain.build);
 
 			MainInit.lampCarbide.setCreativeTab(ClimateMain.build);
 			MainInit.lampGas.setCreativeTab(ClimateMain.build);
@@ -179,11 +186,13 @@ public class MainCreativeTabRegister {
 		MainInit.cropBasket.setCreativeTab(ClimateMain.cont);
 		MainInit.cropJute.setCreativeTab(ClimateMain.cont);
 		MainInit.dustBags.setCreativeTab(ClimateMain.cont);
+		MainInit.dustCake.setCreativeTab(ClimateMain.cont);
 
 		if (ModuleConfig.weapon_advanced) {
 			MainInit.cartridge.setCreativeTab(ClimateMain.tool);
 			MainInit.crossbow.setCreativeTab(ClimateMain.tool);
 			MainInit.gun.setCreativeTab(ClimateMain.tool);
+			MainInit.throwingArrow.setCreativeTab(ClimateMain.tool);
 		}
 
 		if (DCIntegrationCore.loadedForestry) {

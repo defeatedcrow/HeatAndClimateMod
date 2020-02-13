@@ -10,8 +10,8 @@ import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
+import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
@@ -19,7 +19,6 @@ import defeatedcrow.hac.main.util.portal.DCDimChangeHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -130,7 +129,7 @@ public class ItemColorBadge extends CharmItemBase {
 	}
 
 	@Override
-	public float increaceDamage(EntityLivingBase target, ItemStack charm) {
+	public float increaceDamage(EntityLivingBase target, DamageSource source, ItemStack charm) {
 		return 1F;
 	}
 
@@ -151,14 +150,11 @@ public class ItemColorBadge extends CharmItemBase {
 		if (getColor(charm.getItemDamage()) == MagicColor.RED && owner instanceof EntityPlayer && owner.isSneaking()) {
 			EntityPlayer player = (EntityPlayer) owner;
 			if (!player.world.isRemote && state != null) {
-				boolean silk = false;
 				int c = 1 + charm.getCount() * 3;
 				BlockSet set = new BlockSet(state.getBlock(), state.getBlock().getMetaFromState(state));
 				if (MainCoreConfig.disables.contains(set)) {
 					return false;
 				}
-				silk = DCUtil.hasCharmItem(player, new ItemStack(MagicInit.badge, 1, 19)) || DCUtil
-						.hasCharmItem(player, new ItemStack(MagicInit.colorPendant, 1, 2));
 				// 一括破壊
 				ItemStack hold = player.getHeldItemMainhand();
 				BlockPos min = pos.add(-c, -c, -c);
@@ -176,25 +172,10 @@ public class ItemColorBadge extends CharmItemBase {
 						continue;
 					if (target.equals(state) && target.getBlock().getMetaFromState(target) == state.getBlock()
 							.getMetaFromState(state) && !target.getBlock().hasTileEntity(target)) {
-						// 同Block同Metadata
-						if (silk && target.getBlock().canSilkHarvest(player.world, p, target, player)) {
-							ItemStack item = new ItemStack(target.getBlock(), 1, target.getBlock()
-									.getMetaFromState(target));
-							if (!DCUtil.isEmpty(item)) {
-								EntityItem drop = new EntityItem(player.world, p.getX() + 0.5D, p.getY() + 0.5D, p
-										.getZ() + 0.5D, item);
-								player.world.spawnEntity(drop);
-							} else {
-								target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
-							}
-						} else {
-							target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
-						}
+						target.getBlock().harvestBlock(player.world, player, p, target, null, hold);
 						player.world.setBlockToAir(p);
-						flag = true;
 					}
 				}
-				return flag;
 			}
 		}
 		return false;
@@ -203,15 +184,8 @@ public class ItemColorBadge extends CharmItemBase {
 	@Override
 	public void constantEffect(EntityLivingBase owner, ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.WHITE) {
-			int cool = 100;
-			NBTTagCompound tag = charm.getTagCompound();
-			if (tag == null) {
-				tag = new NBTTagCompound();
-			}
-			if (tag.hasKey("CharmCooldown")) {
-				cool = tag.getInteger("CharmCooldown");
-			}
-			if (cool < 0) {
+			long time = DCTimeHelper.time(owner.world);
+			if ((time & 31) == 0) {
 				ItemStack off = owner.getHeldItemOffhand();
 				if (!DCUtil.isEmpty(off) && off.getItem().isDamageable()) {
 					int dam = off.getItemDamage();
@@ -220,12 +194,7 @@ public class ItemColorBadge extends CharmItemBase {
 						off.setItemDamage(dam);
 					}
 				}
-				tag.setInteger("CharmCooldown", 100);
-			} else {
-				cool--;
-				tag.setInteger("CharmCooldown", cool);
 			}
-			charm.setTagCompound(tag);
 		}
 	}
 
@@ -338,6 +307,10 @@ public class ItemColorBadge extends CharmItemBase {
 		}
 	}
 
-	// green
+	public enum DropType {
+		NORMAL,
+		SILK,
+		SMELTING;
+	}
 
 }

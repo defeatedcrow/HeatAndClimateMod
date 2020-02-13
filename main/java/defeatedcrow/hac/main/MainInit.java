@@ -38,9 +38,11 @@ public class MainInit {
 	public static Block cardboard;
 	public static Block cropBasket;
 	public static Block dustBags;
+	public static Block dustCake;
 
 	// building
 	public static Block bricks;
+	public static Block clayBricks;
 	public static Block selenite;
 	public static Block stairsGlass;
 	public static Block stairsGypsum;
@@ -70,6 +72,15 @@ public class MainInit {
 	public static Block fenceGlass;
 	public static Block fenceLadder;
 
+	public static Block desiccant;
+	public static Block freezepack;
+	public static Block hotPack;
+	public static Block waterPack;
+
+	public static Block scaffold;
+
+	/* building advanced */
+
 	public static Block awning;
 	public static Block lampCarbide;
 	public static Block lampGas;
@@ -84,8 +95,6 @@ public class MainInit {
 	public static Block markingPanel;
 	public static Block lightOrb;
 
-	/* building advanced */
-
 	public static Block asphalt;
 	public static Block fireproofs;
 	public static Block fireproofhalfs;
@@ -96,18 +105,15 @@ public class MainInit {
 	public static Block hedgeAutumn;
 	public static Block hedgeWinter;
 
-	public static Block desiccant;
-	public static Block freezepack;
-	public static Block hotPack;
-	public static Block waterPack;
-
 	public static Item flowerPot;
-
-	public static Block clayBricks;
 
 	// furniture
 	public static Block chalLamp;
 	public static Block wallLamp;
+	public static Block oilLamp;
+
+	/* building advanced */
+
 	public static Block chandelierGypsum;
 	public static Block chandelierChal;
 	public static Block chainCopper;
@@ -133,6 +139,9 @@ public class MainInit {
 	public static Block carpetGray;
 
 	public static Block curtainWhite;
+	public static Block curtainGray;
+	public static Block curtainRed;
+	public static Block curtainBlue;
 
 	public static Block sinkMetal;
 	public static Block sinkChest;
@@ -154,6 +163,12 @@ public class MainInit {
 	public static Block doorSteel;
 	public static Item itemDoorMarble;
 	public static Item itemDoorSteel;
+
+	public static Block bed;
+	public static Block bedWhite;
+	public static Block bedRattan;
+	public static Block bedFuton;
+	public static Item itemBed;
 
 	public static Block realtimeClock;
 	public static Block realtimeClock_L;
@@ -177,6 +192,7 @@ public class MainInit {
 	public static Block bellow;
 	public static Block thermometer;
 	public static Block windvane;
+	public static Block pail;
 
 	// item
 	// ores
@@ -304,6 +320,7 @@ public class MainInit {
 	public static Item gun;
 	public static Item ignis;
 	public static Item cartridge;
+	public static Item throwingArrow;
 
 	public static Item gemShield;
 	public static Item riotShield;

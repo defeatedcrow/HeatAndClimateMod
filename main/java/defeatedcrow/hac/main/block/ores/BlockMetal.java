@@ -25,9 +25,22 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 	}
 
 	private static String[] names = {
-			"copper", "zinc", "nickel", "silver", "brass", "steel", "nickelsilver", "magnet", "tin", "bronze", "sus",
-			"titanium", "aluminium", "bismuth", "bscco", "lead"
-	};
+		"copper",
+		"zinc",
+		"nickel",
+		"silver",
+		"brass",
+		"steel",
+		"nickelsilver",
+		"magnet",
+		"tin",
+		"bronze",
+		"sus",
+		"titanium",
+		"aluminium",
+		"bismuth",
+		"bscco",
+		"lead" };
 
 	@Override
 	public String[] getNameSuffix() {
@@ -47,6 +60,11 @@ public class BlockMetal extends DCSimpleBlock implements ITexturePath, IRapidCol
 	}
 
 	/* IRapidCollectables */
+
+	@Override
+	public String getCollectableTool() {
+		return "pickaxe";
+	}
 
 	@Override
 	public boolean isCollectable(ItemStack item) {

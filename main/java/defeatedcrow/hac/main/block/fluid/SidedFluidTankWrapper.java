@@ -53,9 +53,7 @@ public class SidedFluidTankWrapper implements IFluidHandler, ICapabilityProvider
 	public IFluidTankProperties[] getTankProperties() {
 		if (getTank() == null)
 			return new FluidTankProperties[] {};
-		return new FluidTankProperties[] {
-				new FluidTankProperties(getTank().getFluid(), getTank().getCapacity())
-		};
+		return new FluidTankProperties[] { new FluidTankProperties(getTank().getFluid(), getTank().getCapacity()) };
 	}
 
 	@Override
@@ -92,7 +90,6 @@ public class SidedFluidTankWrapper implements IFluidHandler, ICapabilityProvider
 		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY ? (T) this : null;

@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.block.build;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -29,23 +30,22 @@ public class BlockChalcedonyLamp extends DCSimpleBlock {
 	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"cube_blue",
-				"cube_red",
-				"cube_white",
-				"cube_wood",
-				"glass_blue",
-				"glass_red",
-				"glass_white",
-				"glass_wood",
-				"desk_blue",
-				"desk_red",
-				"desk_white",
-				"desk_wood",
-				"pendant_blue",
-				"pendant_red",
-				"pendant_white",
-				"pendant_wood"
-		};
+			"cube_blue",
+			"cube_red",
+			"cube_white",
+			"cube_wood",
+			"glass_blue",
+			"glass_red",
+			"glass_white",
+			"glass_wood",
+			"desk_blue",
+			"desk_red",
+			"desk_white",
+			"desk_wood",
+			"pendant_blue",
+			"pendant_red",
+			"pendant_white",
+			"pendant_wood" };
 		return name;
 	}
 
@@ -89,6 +89,11 @@ public class BlockChalcedonyLamp extends DCSimpleBlock {
 	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
 			EnumFacing side) {
 		return true;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 }

@@ -8,7 +8,6 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.OredicConfig;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -193,11 +192,14 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustAsbest", new ItemStack(MainInit.miscDust, 1, 11));
 		OreDictionary.registerOre("dustMica", new ItemStack(MainInit.miscDust, 1, 12));
 		OreDictionary.registerOre("gemSlate", new ItemStack(MainInit.miscDust, 1, 13));
-		OreDictionary.registerOre("dustBlan", new ItemStack(MainInit.foodDust, 1, 0));
+		OreDictionary.registerOre("dustBran", new ItemStack(MainInit.foodDust, 1, 0));
 		OreDictionary.registerOre("dustPlant", new ItemStack(MainInit.foodDust, 1, 1));
 		OreDictionary.registerOre("dropMolasses", new ItemStack(MainInit.foodDust, 1, 2));
+		OreDictionary.registerOre("listAllsugar", new ItemStack(MainInit.foodDust, 1, 2));
 		OreDictionary.registerOre("dustMalt", new ItemStack(MainInit.foodDust, 1, 3));
 		OreDictionary.registerOre("foodMalt", new ItemStack(MainInit.foodDust, 1, 3));
+		OreDictionary.registerOre("dustSoycake", new ItemStack(MainInit.foodDust, 1, 4));
+		OreDictionary.registerOre("dustPresscake", new ItemStack(MainInit.foodDust, 1, 4));
 		OreDictionary.registerOre("foodSoypulp", new ItemStack(MainInit.foodDust, 1, 5));
 		OreDictionary.registerOre("foodFlour", new ItemStack(MainInit.foodDust, 1, 5));
 		OreDictionary.registerOre("foodBakingSoda", new ItemStack(MainInit.foodDust, 1, 6));
@@ -259,24 +261,6 @@ public class OreDicRegister {
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 2));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 3));
 
-		/* バニラ補足 */
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 0));
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 1));
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.TALLGRASS, 1, 2));
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 2));
-		OreDictionary.registerOre("blockTallgrass", new ItemStack(Blocks.DOUBLE_PLANT, 1, 3));
-
-		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.WHEAT_SEEDS, 1, 0));
-		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.MELON_SEEDS, 1, 0));
-		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.PUMPKIN_SEEDS, 1, 0));
-		OreDictionary.registerOre("listAllseeds", new ItemStack(Items.BEETROOT_SEEDS, 1, 0));
-
-		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 1));
-		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 3));
-		OreDictionary.registerOre("cobblestone", new ItemStack(Blocks.STONE, 1, 5));
-
-		OreDictionary.registerOre("egg", new ItemStack(Items.EGG));
-
 		// deprecated
 		if (!ModuleConfig.delete_old) {
 			OreDictionary.registerOre("oreGypsum", new ItemStack(MainInit.ores, 1, 0));
@@ -329,5 +313,9 @@ public class OreDicRegister {
 			OreDictionary.registerOre("blockBSCCO", new ItemStack(MainInit.metalBlock, 1, 14));
 			OreDictionary.registerOre("blockLead", new ItemStack(MainInit.metalBlock, 1, 15));
 		}
+
+		OreDictionary.registerOre("stoneGranite", new ItemStack(Blocks.STONE, 1, 1));
+		OreDictionary.registerOre("stoneDiorite", new ItemStack(Blocks.STONE, 1, 3));
+		OreDictionary.registerOre("stoneAndesite", new ItemStack(Blocks.STONE, 1, 5));
 	}
 }

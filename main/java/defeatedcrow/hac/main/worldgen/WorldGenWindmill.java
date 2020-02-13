@@ -25,6 +25,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -324,9 +325,10 @@ public class WorldGenWindmill implements IWorldGenerator {
 		pRandom.nextFloat();
 		pRandom.nextFloat();
 		float r = pRandom.nextFloat() * 10000F;
-		if (r > 0 && r < i)
-			// SkarnGenPoint.addPos(chunkX, chunkZ);
+		int ri = MathHelper.floor(r);
+		if (ri > 0 && ri < i)
 			return true;
+
 		return false;
 	}
 

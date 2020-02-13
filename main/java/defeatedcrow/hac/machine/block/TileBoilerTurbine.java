@@ -12,9 +12,10 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.main.api.ISidedTankChecker;
+import defeatedcrow.hac.main.block.fluid.DCLimitedTank;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -37,7 +38,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider, IInventory, ISidedTankChecker {
 
-	public DCTank inputT = new DCTank(5000);
+	public DCLimitedTank inputT = new DCLimitedTank(5000, "water", "steam");
 
 	// process
 	public int currentBurnTime = 0;
@@ -68,7 +69,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 				if (red > 0) {
 					// 水を減らす
 					FluidStack flu = inputT.getFluid();
-					if (flu != null && flu.getFluid() == FluidRegistry.WATER && inputT.getFluidAmount() > red) {
+					if (flu != null && inputT.getFluidAmount() >= red) {
 						inputT.drain(red, true);
 						f = true;
 					}
@@ -135,7 +136,17 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	/* 燃焼判定 */
 
+	public boolean hasSteam() {
+		if (FluidDictionaryDC.matchFluidName(inputT.getFluidType(), "steam")) {
+			return true;
+		}
+		return false;
+	}
+
 	public int getRequiredWater(DCHeatTier tier) {
+		if (hasSteam()) {
+			return 10;
+		}
 		switch (tier) {
 		case OVEN:
 			return 1;
@@ -151,6 +162,9 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	public int getBurnTime() {
+		if (hasSteam()) {
+			return 4;
+		}
 		FluidStack f = inputT.getFluid();
 		if (f != null && f.getFluid() != null && inputT.getFluidAmount() > 0) {
 			if (f.getFluid() == FluidRegistry.WATER) {
@@ -173,6 +187,9 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	}
 
 	public float getProvideTorque(DCHeatTier tier) {
+		if (hasSteam()) {
+			return 32.0F;
+		}
 		switch (tier) {
 		case OVEN:
 			return 8.0F;
@@ -206,7 +223,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 						.getOpposite());
 				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
-					if (target != null && target.getFluid() != null && target.getFluid() == FluidRegistry.WATER) {
+					if (target != null && inputT.canFillTarget(target)) {
 						int i = Math.min(mov, cap - amo);
 						FluidStack ret = tank.drain(i, false);
 						int fill = inputT.fill(ret, false);
@@ -307,7 +324,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 		this.maxBurnTime = tag.getInteger("MaxTime");
 		this.currentClimate = tag.getByte("Climate");
 
-		inputT = inputT.readFromNBT(tag, "Tank");
+		inputT = (DCLimitedTank) inputT.readFromNBT(tag, "Tank");
 	}
 
 	@Override
@@ -342,7 +359,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 		this.maxBurnTime = tag.getInteger("MaxTime");
 		this.currentClimate = tag.getByte("Climate");
 
-		inputT = inputT.readFromNBT(tag, "Tank");
+		inputT = (DCLimitedTank) inputT.readFromNBT(tag, "Tank");
 	}
 
 	@Override

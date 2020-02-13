@@ -21,6 +21,9 @@ public class DCIntegrationCore {
 	public static boolean loadedTaN = false;
 	public static boolean loadedGVC = false;
 	public static boolean loadedEIO = false;
+	public static boolean loadedTektopia = false;
+	public static boolean loadedAnimania = false;
+	public static boolean loadedUGB = false;
 
 	private DCIntegrationCore() {}
 
@@ -57,6 +60,15 @@ public class DCIntegrationCore {
 		}
 		if (Loader.isModLoaded("enderio") && ModuleConfig.eio) {
 			loadedEIO = true;
+		}
+		if (Loader.isModLoaded("tektopia")) {
+			loadedTektopia = true;
+		}
+		if (Loader.isModLoaded("animania")) {
+			loadedAnimania = true;
+		}
+		if (Loader.isModLoaded("undergroundbiomes") && ModuleConfig.ugb) {
+			loadedUGB = true;
 		}
 	}
 
@@ -126,6 +138,17 @@ public class DCIntegrationCore {
 			}
 		}
 
+		if (loadedUGB) {
+			try {
+				DCPluginUGB.init();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod init plugin: UndergroundBiomes");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: UndergroundBiomes");
+			} catch (Error e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: UndergroundBiomes");
+			}
+		}
+
 		if (loadedMCE) {
 			try {
 				DCPluginMCE.load();
@@ -191,6 +214,24 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: hmggvc");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: hmggvc");
+			}
+		}
+
+		if (loadedTektopia) {
+			try {
+				DCPluginTektopia.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: tektopia");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: tektopia");
+			}
+		}
+
+		if (loadedAnimania) {
+			try {
+				DCPluginAnimania.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: animania");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: animania");
 			}
 		}
 

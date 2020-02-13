@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:beef",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllbeefraw"
   }
  },
  "result": {

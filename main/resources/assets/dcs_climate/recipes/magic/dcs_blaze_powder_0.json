@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dropRed"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "gunpowder"
+  }
+ ],
+ "result": {
+  "item": "minecraft:blaze_powder",
+  "count": 1,
+  "data": 0
+ }
+}

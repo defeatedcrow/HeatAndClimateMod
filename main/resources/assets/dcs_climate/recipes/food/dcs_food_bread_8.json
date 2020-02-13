@@ -2,8 +2,8 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "dcs_climate:dcs_food_bread",
-   "data": 1
+   "type": "forge:ore_dict",
+   "ore": "bread"
   },
   {
    "type": "forge:ore_dict",

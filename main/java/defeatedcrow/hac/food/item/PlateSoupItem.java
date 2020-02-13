@@ -9,8 +9,12 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.entity.PlateGratinEntity;
+import defeatedcrow.hac.food.entity.PlateMeatPaellaEntity;
+import defeatedcrow.hac.food.entity.PlatePaellaEntity;
 import defeatedcrow.hac.food.entity.PotatoPlateEntity;
 import defeatedcrow.hac.food.entity.SoupPlateEntity;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -28,12 +32,12 @@ public class PlateSoupItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 3;
+		return 9;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 9);
 		String s = "items/food/plate_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -44,11 +48,16 @@ public class PlateSoupItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"potato_raw",
-				"potato_baked",
-				"tomato_raw",
-				"tomato_baked"
-		};
+			"potato_raw",
+			"potato_baked",
+			"tomato_raw",
+			"tomato_baked",
+			"gratin_raw",
+			"gratin_baked",
+			"paella_raw",
+			"paella_baked",
+			"meat_paella_raw",
+			"meat_paella_baked" };
 		return s;
 	}
 
@@ -58,6 +67,16 @@ public class PlateSoupItem extends FoodItemBase {
 		FoodEntityBase ret = new PotatoPlateEntity(world, x, y, z, player);
 		if (i == 2 || i == 3) {
 			ret = new SoupPlateEntity(world, x, y, z, player);
+		}
+
+		if (i == 4 || i == 5) {
+			ret = new PlateGratinEntity(world, x, y, z, player);
+		}
+		if (i == 6 || i == 7) {
+			ret = new PlatePaellaEntity(world, x, y, z, player);
+		}
+		if (i == 8 || i == 9) {
+			ret = new PlateMeatPaellaEntity(world, x, y, z, player);
 		}
 
 		if ((i & 1) == 0) {
@@ -78,6 +97,11 @@ public class PlateSoupItem extends FoodItemBase {
 			return 12;
 		case 3:
 			return 12;
+		case 5:
+			return 10;
+		case 7:
+		case 9:
+			return 16;
 		}
 		return 0;
 	}
@@ -90,7 +114,7 @@ public class PlateSoupItem extends FoodItemBase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		tooltip.add("Placeable as an Entity");
+		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
 	}
 
 }

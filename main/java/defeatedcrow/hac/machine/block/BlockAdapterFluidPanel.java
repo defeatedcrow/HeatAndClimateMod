@@ -44,6 +44,16 @@ public class BlockAdapterFluidPanel extends BlockTorqueBase {
 	}
 
 	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		if (isAcceptor)
 			return new TileAcceptorFluidPanel();
@@ -64,10 +74,10 @@ public class BlockAdapterFluidPanel extends BlockTorqueBase {
 						String mes1 = "Stored this coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
 						player.sendMessage(new TextComponentString(mes1));
 					} else if (lastPos != null && tile instanceof TileAdapterFluidPanel) {
-						((TileAdapterFluidPanel) tile)
-								.setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos.getZ()));
-						String mes2 = "Registered the coordinate: " + lastPos.getX() + ", " + lastPos.getY() + ", "
-								+ lastPos.getZ();
+						((TileAdapterFluidPanel) tile).setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos
+								.getZ()));
+						String mes2 = "Registered the coordinate: " + lastPos.getX() + ", " + lastPos
+								.getY() + ", " + lastPos.getZ();
 						player.sendMessage(new TextComponentString(mes2));
 						lastPos = null;
 					}

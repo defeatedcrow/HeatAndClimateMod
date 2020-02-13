@@ -30,6 +30,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
@@ -44,6 +45,11 @@ public class BlockPortalManager extends BlockTorqueBase {
 	}
 
 	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return side == EnumFacing.DOWN;
+	}
+
+	@Override
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
@@ -52,11 +58,10 @@ public class BlockPortalManager extends BlockTorqueBase {
 			if (tile instanceof TilePortalManager) {
 				if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 					ItemStack held = player.getHeldItem(hand);
-					if (!DCUtil.isEmpty(held) && held.hasCapability(
-							CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+					if (!DCUtil.isEmpty(held) && held
+							.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
 						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player))
-							world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
-									2.0F);
+							world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 					} else {
 						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 					}
@@ -98,8 +103,8 @@ public class BlockPortalManager extends BlockTorqueBase {
 		}
 
 		if (!world.isRemote) {
-			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
-					0.5D, drop);
+			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
+					drop);
 			float f3 = 0.05F;
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -126,15 +131,13 @@ public class BlockPortalManager extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(TextFormatting.BLUE.toString() + "ABSOLUTE" + TextFormatting.GRAY.toString() + I18n.format(
-					"dcs.tip.portal1"));
+			tooltip.add(TextFormatting.BLUE.toString() + "ABSOLUTE" + TextFormatting.GRAY.toString() + I18n
+					.format("dcs.tip.portal1"));
 			tooltip.add(DCName.TORQUE.getLocalizedName() + ": 32.0F /s");
 			tooltip.add(I18n.format("dcs.tip.portal2"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() +
-					": 1 item/5t");
-			tooltip.add(DCName.FLUID.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() +
-					": 200 mB/5t");
+			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 1 item/5t");
+			tooltip.add(DCName.FLUID.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 200 mB/5t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.portal3"));
 		} else {

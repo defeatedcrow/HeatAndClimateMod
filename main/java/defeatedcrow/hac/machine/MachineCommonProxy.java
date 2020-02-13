@@ -34,6 +34,7 @@ import defeatedcrow.hac.machine.block.TileMonitorInventory;
 import defeatedcrow.hac.machine.block.TileMonitorRF;
 import defeatedcrow.hac.machine.block.TileMonitorRedStone;
 import defeatedcrow.hac.machine.block.TileMonitorTorque;
+import defeatedcrow.hac.machine.block.TileOscillator;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
@@ -45,6 +46,8 @@ import defeatedcrow.hac.machine.block.TileShaft_L_Steel;
 import defeatedcrow.hac.machine.block.TileShaft_S;
 import defeatedcrow.hac.machine.block.TileShaft_S_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_S_Steel;
+import defeatedcrow.hac.machine.block.TileShaft_Switch;
+import defeatedcrow.hac.machine.block.TileShaft_Switch_Steel;
 import defeatedcrow.hac.machine.block.TileShaft_TA;
 import defeatedcrow.hac.machine.block.TileShaft_TA_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_TA_Steel;
@@ -131,6 +134,9 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileMonitorComparator.class, "dcs_te_monitor_cm");
 		GameRegistry.registerTileEntity(TileWindmill_EX.class, "dcs_te_windmill_ex");
 		GameRegistry.registerTileEntity(TileEntityPanel.class, "dcs_te_entity_panel");
+		GameRegistry.registerTileEntity(TileShaft_Switch.class, "dcs_te_shaft_switch");
+		GameRegistry.registerTileEntity(TileShaft_Switch_Steel.class, "dcs_te_shaft_switch_steel");
+		GameRegistry.registerTileEntity(TileOscillator.class, "dcs_te_oscillator");
 	}
 
 	public static void loadEntity() {

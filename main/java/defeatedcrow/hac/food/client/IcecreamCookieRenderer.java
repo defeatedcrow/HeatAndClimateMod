@@ -13,7 +13,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class IcecreamCookieRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
-	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate", "textures/entity/food/icecream_cookie.png");
+	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate",
+			"textures/entity/food/icecream_cookie.png");
 	private static final ModelIcecream MODEL = new ModelIcecream(false);
 
 	public IcecreamCookieRenderer(RenderManager renderManager) {
@@ -46,11 +47,10 @@ public class IcecreamCookieRenderer extends DCRenderFoodBase<FoodEntityBase> {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y + 0.15F, (float) z);
 		GlStateManager.enableBlend();
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-				GlStateManager.DestFactor.ZERO);
+		GlStateManager
+				.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.5F);
-		GlStateManager.scale(-0.75F, -0.75F, 0.5F);
+		GlStateManager.scale(-0.75F, -0.75F, 0.75F);
 
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);

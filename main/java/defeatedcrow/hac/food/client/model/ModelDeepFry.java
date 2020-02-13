@@ -34,6 +34,17 @@ public class ModelDeepFry extends DCFoodModelBase {
 	ModelRenderer meat42;
 	ModelRenderer meat43;
 
+	ModelRenderer meat51;
+	ModelRenderer meat52;
+	ModelRenderer meat53;
+
+	public ModelRenderer meat61;
+	public ModelRenderer meat62;
+	public ModelRenderer meat63;
+	public ModelRenderer meat64;
+	public ModelRenderer meat65;
+	public ModelRenderer meat66;
+
 	public ModelDeepFry(boolean baked) {
 		super(baked);
 
@@ -163,6 +174,68 @@ public class ModelDeepFry extends DCFoodModelBase {
 		meat43.setTextureSize(64, 32);
 		meat43.mirror = true;
 		setRotation(meat43, 0F, -0.0523599F, 0F);
+
+		meat51 = new ModelRenderer(this, 0, 22);
+		meat51.addBox(1F, -2F, -4F, 3, 1, 3);
+		meat51.setRotationPoint(0F, 0F, 0F);
+		meat51.setTextureSize(64, 32);
+		meat51.mirror = true;
+		setRotation(meat51, 0F, 0.6108652F, 0F);
+		meat52 = new ModelRenderer(this, 0, 22);
+		meat52.addBox(0F, -2F, -3F, 3, 1, 3);
+		meat52.setRotationPoint(0F, 0F, 0F);
+		meat52.setTextureSize(64, 32);
+		meat52.mirror = true;
+		setRotation(meat52, -0.5235988F, 0.6108652F, 0F);
+		meat53 = new ModelRenderer(this, 0, 22);
+		meat53.addBox(-1F, -3F, -2F, 3, 1, 3);
+		meat53.setRotationPoint(0F, 0F, 0F);
+		meat53.setTextureSize(64, 32);
+		meat53.mirror = true;
+		setRotation(meat53, -0.7853982F, 0.6108652F, 0F);
+
+		meat61 = new ModelRenderer(this, 0, 22);
+		meat61.addBox(-1F, -3F, -4F, 2, 2, 7, 0F);
+		meat61.setRotationPoint(0F, 0F, 0F);
+		meat61.rotateAngleX = -0.1396263F;
+		meat61.rotateAngleY = 1.308997F;
+		meat61.rotateAngleZ = 0F;
+		meat61.mirror = false;
+		meat62 = new ModelRenderer(this, 0, 22);
+		meat62.addBox(-0.5F, -2.5F, -5F, 1, 1, 1, 0F);
+		meat62.setRotationPoint(0F, 0F, 0F);
+		meat62.rotateAngleX = -0.2617994F;
+		meat62.rotateAngleY = 1.308997F;
+		meat62.rotateAngleZ = 0F;
+		meat62.mirror = false;
+		meat63 = new ModelRenderer(this, 19, 22);
+		meat63.addBox(1.5F, -3F, -4F, 2, 2, 7, 0F);
+		meat63.setRotationPoint(0F, 0F, 0F);
+		meat63.rotateAngleX = -0.1487144F;
+		meat63.rotateAngleY = 1.047198F;
+		meat63.rotateAngleZ = 0F;
+		meat63.mirror = false;
+		meat64 = new ModelRenderer(this, 0, 22);
+		meat64.addBox(2F, -2.5F, -5F, 1, 1, 1, 0F);
+		meat64.setRotationPoint(0F, 0F, 0F);
+		meat64.rotateAngleX = -0.2617994F;
+		meat64.rotateAngleY = 1.047198F;
+		meat64.rotateAngleZ = 0F;
+		meat64.mirror = false;
+		meat65 = new ModelRenderer(this, 0, 16);
+		meat65.addBox(-1F, -1F, -7.5F, 2, 0, 2, 0F);
+		meat65.setRotationPoint(0F, 0F, 0F);
+		meat65.rotateAngleX = -0.5235988F;
+		meat65.rotateAngleY = 1.308997F;
+		meat65.rotateAngleZ = 0F;
+		meat65.mirror = false;
+		meat66 = new ModelRenderer(this, 0, 16);
+		meat66.addBox(1.5F, -1F, -7.5F, 2, 0, 2, 0F);
+		meat66.setRotationPoint(0F, 0F, 0F);
+		meat66.rotateAngleX = -0.5235988F;
+		meat66.rotateAngleY = 1.047198F;
+		meat66.rotateAngleZ = 0F;
+		meat66.mirror = false;
 	}
 
 	@Override
@@ -208,6 +281,21 @@ public class ModelDeepFry extends DCFoodModelBase {
 		meat41.render(0.0625F);
 		meat42.render(0.0625F);
 		meat43.render(0.0625F);
+	}
+
+	public void fishcake() {
+		meat51.render(0.0625F);
+		meat52.render(0.0625F);
+		meat53.render(0.0625F);
+	}
+
+	public void prawn() {
+		meat61.render(0.0625F);
+		meat62.render(0.0625F);
+		meat63.render(0.0625F);
+		meat64.render(0.0625F);
+		meat65.render(0.0625F);
+		meat66.render(0.0625F);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

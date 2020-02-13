@@ -13,6 +13,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
@@ -60,6 +61,7 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.25D, 1.0D, 1.0D);
 	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.25D);
 	public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.75D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
+	public static final AxisAlignedBB UP_AABB = new AxisAlignedBB(0.0D, 0.5D, 0.0D, 1.0D, 1.0D, 1.0D);
 
 	public static final PropertyBool GROUND = PropertyBool.create("ground");
 	public static final PropertyBool TOP = PropertyBool.create("top");
@@ -197,6 +199,9 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		state = this.getActualState(state, source, pos);
+		if (DCState.getBool(state, TOP)) {
+			return UP_AABB;
+		}
 		EnumFacing face = state.getValue(FACING2);
 		switch (face) {
 		case NORTH:
@@ -270,9 +275,12 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	@Override
 	public boolean isSuitablePlace(World world, BlockPos pos, IBlockState targetState) {
 		for (EnumFacing face : EnumFacing.VALUES) {
-			if (face != EnumFacing.DOWN && !world.isAirBlock(pos.offset(face)) && world.getBlockState(pos.offset(face))
-					.getBlock() != this) {
-				return true;
+			if (face != EnumFacing.DOWN) {
+				if (!world.isAirBlock(pos.offset(face))) {
+					IBlockState check = world.getBlockState(pos.offset(face));
+					if (check.getMaterial() != Material.PLANTS && check.getMaterial().isReplaceable())
+						return true;
+				}
 			}
 		}
 		return isSoil(world, pos.down());
@@ -299,27 +307,27 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	public boolean grow(World world, BlockPos pos, IBlockState state) {
 		if (state != null && state.getBlock() == this && world.getLight(pos) > 7) {
 			// grow
-			int season = DCTimeHelper.getSeason(world);
+			EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 			if (!DCState.getBool(state, GROUND)) {
 				int stage = DCState.getInt(state, DCState.STAGE4);
 				if (stage == 3) {
-					if (season < 2) {
+					if (season.id < 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, 0);
 						world.setBlockState(pos, newstate, 2);
 					}
 				} else if (stage == 2) {
-					if (season >= 2) {
+					if (season.id >= 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, 3);
 						world.setBlockState(pos, newstate, 2);
 					}
 				} else if (stage < 2) {
-					if (season < 2) {
+					if (season.id < 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
 						world.setBlockState(pos, newstate, 2);
 					}
 				}
 			}
-			if (season != 3) {
+			if (season.id != 3) {
 				EnumFacing f = EnumFacing.UP;
 				if (!DCState.getBool(state, GROUND)) {
 					int i = cropRand.nextInt(6);
@@ -345,8 +353,10 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	public boolean isGrowablePlace(World world, BlockPos pos) {
 		for (EnumFacing face : EnumFacing.VALUES) {
 			if (face != EnumFacing.DOWN) {
-				if (!world.isAirBlock(pos.offset(face)) && world.getBlockState(pos.offset(face)).getBlock() != this) {
-					return true;
+				if (!world.isAirBlock(pos.offset(face))) {
+					IBlockState check = world.getBlockState(pos.offset(face));
+					if (check.getMaterial() != Material.PLANTS && !check.getMaterial().isReplaceable())
+						return true;
 				}
 			}
 		}
@@ -425,6 +435,11 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	/* IRapidCollectables */
 
 	@Override
+	public String getCollectableTool() {
+		return "shears";
+	}
+
+	@Override
 	public boolean isCollectable(ItemStack item) {
 		if (DCUtil.isEmpty(item))
 			return false;
@@ -490,15 +505,16 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-		boolean up = !world.isAirBlock(pos.up()) && world.getBlockState(pos.up()).getBlock() != this;
+		boolean up = !world.isAirBlock(pos.up()) && world.getBlockState(pos.up()).getMaterial() != Material.PLANTS;
 		boolean down = isSuitableMaterial(world.getBlockState(pos.down()).getMaterial());
 		EnumFacing f = EnumFacing.DOWN;
 		if (up) {
 			f = EnumFacing.UP;
 		}
 		for (EnumFacing f2 : EnumFacing.HORIZONTALS) {
-			if (!world.isAirBlock(pos.offset(f2)) && world.getBlockState(pos.offset(f2)).getBlock() != this && !world
-					.getBlockState(pos.offset(f2)).getMaterial().isReplaceable()) {
+			if (!world.isAirBlock(pos.offset(f2)) && world.getBlockState(pos.offset(f2))
+					.getMaterial() != Material.PLANTS && !world.getBlockState(pos.offset(f2)).getMaterial()
+							.isReplaceable()) {
 				f = f2;
 				break;
 			}
@@ -536,10 +552,4 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		this.grow(world, pos, state);
 	}
-
-	@Override
-	public boolean isSolidFace(IBlockState state, BlockPos pos, EnumFacing face) {
-		return false;
-	}
-
 }

@@ -1,5 +1,6 @@
 package defeatedcrow.hac.plugin;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
@@ -35,15 +36,15 @@ public class DCPluginForestry {
 
 	public static void loadInit() {
 
+		Item mulch = Item.REGISTRY.getObject(new ResourceLocation("forestry", "mulch"));
+		Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizer_compound"));
+		Fluid seed = FluidRegistry.getFluid("seed.oil");
+		Fluid juice = FluidRegistry.getFluid("juice");
+		Fluid honey = FluidRegistry.getFluid("for.honey");
+		Fluid bio = FluidRegistry.getFluid("biomass");
+		Fluid eta = FluidRegistry.getFluid("bio.ethanol");
+
 		if (ModuleConfig.food) {
-
-			Item mulch = Item.REGISTRY.getObject(new ResourceLocation("forestry", "mulch"));
-			Item fer = Item.REGISTRY.getObject(new ResourceLocation("forestry", "fertilizer_compound"));
-			Fluid seed = FluidRegistry.getFluid("seed.oil");
-			Fluid juice = FluidRegistry.getFluid("juice");
-			Fluid honey = FluidRegistry.getFluid("for.honey");
-			Fluid bio = FluidRegistry.getFluid("biomass");
-
 			if (mulch == null || seed == null || juice == null)
 				return;
 
@@ -174,22 +175,20 @@ public class DCPluginForestry {
 
 			if (slice != null) {
 				DCRecipe.jsonShapedRecipe("plugin", new ItemStack(slice, 4, 0), new Object[] {
-						"XXX",
-						"XYX",
-						"XXX",
-						'Y',
-						"bread",
-						'X',
-						"dropHoney"
-				});
+					"XXX",
+					"XYX",
+					"XXX",
+					'Y',
+					"bread",
+					'X',
+					"dropHoney" });
 			}
 
 			if (fer != null) {
 				DCRecipe.jsonShapelessRecipe("plugin", new ItemStack(fer, 1, 0), new Object[] {
-						"dustPresscake",
-						"dustAsh",
-						new ItemStack(Items.DYE, 1, 15)
-				});
+					"dustPresscake",
+					"dustAsh",
+					new ItemStack(Items.DYE, 1, 15) });
 			}
 
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
@@ -232,6 +231,8 @@ public class DCPluginForestry {
 					(ClimateCropBase) FoodInit.cropGarlic));
 			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
 					(ClimateCropBase) FoodInit.cropLettuce));
+			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmable(
+					(ClimateCropBase) FoodInit.cropGinger));
 			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmableDouble(
 					(ClimateDoubleCropBase) FoodInit.cropTomato));
 			ForestryAPI.farmRegistry.registerFarmables("farmCrops", new DCFarmableDouble(
@@ -269,6 +270,13 @@ public class DCPluginForestry {
 
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
 						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropAlmond");
+			}
+
+			if (bio != null && eta != null) {
+				// Pt エタノール蒸留
+				RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(eta,
+						30), null, DCHeatTier.HOT, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(bio,
+								100), null, new Object[] {});
 			}
 		}
 

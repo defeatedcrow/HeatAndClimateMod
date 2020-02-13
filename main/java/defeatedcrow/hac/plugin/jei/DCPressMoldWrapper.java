@@ -19,7 +19,6 @@ public class DCPressMoldWrapper implements IRecipeWrapper {
 	private final List<ItemStack> input;
 	private final List<ItemStack> output;
 
-	@SuppressWarnings("unchecked")
 	public DCPressMoldWrapper(MoldItem recipe) {
 		mold = recipe.mold;
 		rec = (recipe.rec);

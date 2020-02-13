@@ -37,8 +37,8 @@ public class TileIBC extends DCTileEntity implements ITagGetter {
 			}
 
 			if (flag) {
-				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos,
-						FluidIDRegisterDC.getID(inputT.getFluidType()), inputT.getFluidAmount()));
+				String name = inputT.isEmpty() ? "empty" : inputT.getFluidType().getName();
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, name, inputT.getFluidAmount()));
 			}
 		}
 	}

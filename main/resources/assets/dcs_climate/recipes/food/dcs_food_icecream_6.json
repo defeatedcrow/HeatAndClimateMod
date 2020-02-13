@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_food_icecream",
+   "data": 2
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllheavycream"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropGrape"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllberry"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_icecream",
+  "count": 1,
+  "data": 6
+ }
+}

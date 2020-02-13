@@ -36,17 +36,17 @@ public class DCLootEvent {
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
 					pool.addEntry(new LootEntryItem(ingot, 20, 8, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(4, 6)),
-							new SetCount(new LootCondition[0], new RandomValueRange(5, 8))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":vil_ingot_brass1"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(4, 6)),
+						new SetCount(new LootCondition[0], new RandomValueRange(5, 8)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":vil_ingot_brass1"));
 					pool.addEntry(new LootEntryItem(gear, 15, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(1)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":vil_gear_brass1"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(1)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":vil_gear_brass1"));
 					pool.addEntry(new LootEntryItem(cloth, 10, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
-							new SetCount(new LootCondition[0], new RandomValueRange(2, 4))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":vil_clothes1"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
+						new SetCount(new LootCondition[0], new RandomValueRange(2, 4)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":vil_clothes1"));
 					pool.addEntry(new LootEntryItem(MainInit.dcScythe[1], 5, 1, new LootFunction[0],
 							new LootCondition[0], ClimateMain.MOD_ID + ":vil_scythe1"));
 					pool.addEntry(new LootEntryItem(MainInit.wrench, 3, 1, new LootFunction[0], new LootCondition[0],
@@ -59,62 +59,62 @@ public class DCLootEvent {
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
 					pool.addEntry(new LootEntryItem(ingot, 10, 4, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
-							new SetCount(new LootCondition[0], new RandomValueRange(2, 6))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":desert_ingot_silver1"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
+						new SetCount(new LootCondition[0], new RandomValueRange(2, 6)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":desert_ingot_silver1"));
 					pool.addEntry(new LootEntryItem(gem, 5, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(13)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":desert_gem_per"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(13)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":desert_gem_per"));
 					pool.addEntry(new LootEntryItem(gem, 8, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(5)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":desert_gem_mal"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(5)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":desert_gem_mal"));
 					pool.addEntry(new LootEntryItem(MainInit.leatherHat, 5, 1, new LootFunction[0],
 							new LootCondition[0], ClimateMain.MOD_ID + ":desert_hat1"));
 				}
 				LootPool pool2 = loot.getPool("pool2");
 				if (pool2 != null) {
 					pool2.addEntry(new LootEntryItem(cloth, 10, 5, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
-							new SetCount(new LootCondition[0], new RandomValueRange(4, 6))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":desert_cloth"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
+						new SetCount(new LootCondition[0], new RandomValueRange(4, 6)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":desert_cloth"));
 					pool2.addEntry(new LootEntryItem(gem, 10, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(21)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":desert_gem_kun"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(21)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":desert_gem_kun"));
 					pool2.addEntry(new LootEntryItem(gem, 8, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(6)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":desert_gem_cel"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(6)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":desert_gem_cel"));
 				}
 			} else if (event.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT)) {
 				LootTable loot = event.getTable();
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
 					pool.addEntry(new LootEntryItem(ingot, 10, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(3, 4)),
-							new SetCount(new LootCondition[0], new RandomValueRange(3, 5))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_ingot_brass"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(3, 4)),
+						new SetCount(new LootCondition[0], new RandomValueRange(3, 5)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":mine_ingot_brass"));
 					pool.addEntry(new LootEntryItem(gem, 5, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(4)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gem_sapphire"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(4)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":mine_gem_sapphire"));
 					pool.addEntry(new LootEntryItem(gem, 5, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(7)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gem_clam"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(7)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":mine_gem_clam"));
 					pool.addEntry(new LootEntryItem(jerky, 5, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
-							new SetCount(new LootCondition[0], new RandomValueRange(3, 8))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_food_jerky"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
+						new SetCount(new LootCondition[0], new RandomValueRange(3, 8)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":mine_food_jerky"));
 				}
 				LootPool pool2 = loot.getPool("pool2");
 				if (pool2 != null) {
 					pool2.addEntry(new LootEntryItem(gem, 5, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(6)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gem_cel"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(6)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":mine_gem_cel"));
 					if (ModuleConfig.clothes_advanced) {
 						pool2.addEntry(new LootEntryItem(MainInit.workerWear, 2, 1, new LootFunction[0],
 								new LootCondition[0], ClimateMain.MOD_ID + ":mine_suit"));
@@ -129,30 +129,30 @@ public class DCLootEvent {
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
 					pool.addEntry(new LootEntryItem(ingot, 20, 5, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(4, 5)),
-							new SetCount(new LootCondition[0], new RandomValueRange(5, 8))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_ingot_brass1"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(4, 5)),
+						new SetCount(new LootCondition[0], new RandomValueRange(5, 8)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":mine_ingot_brass1"));
 					pool.addEntry(new LootEntryItem(gear, 15, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(1)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_gear_brass1"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(1)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":mine_gear_brass1"));
 					pool.addEntry(new LootEntryItem(jerky, 5, 3, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
-							new SetCount(new LootCondition[0], new RandomValueRange(3, 8))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":mine_food_jerky"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
+						new SetCount(new LootCondition[0], new RandomValueRange(3, 8)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":mine_food_jerky"));
 				}
 			} else if (event.getName().equals(LootTableList.CHESTS_JUNGLE_TEMPLE)) {
 				LootTable loot = event.getTable();
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
 					pool.addEntry(new LootEntryItem(cloth, 15, 1, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(8, 9)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":jungle_cloth_magic"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(8, 9)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":jungle_cloth_magic"));
 					if (ModuleConfig.magic) {
 						pool.addEntry(new LootEntryItem(MagicInit.magicCard, 15, 3, new LootFunction[] {
-								new SetCount(new LootCondition[0], new RandomValueRange(5, 8))
-						}, new LootCondition[0], ClimateMain.MOD_ID + ":jungle_dagger_silver"));
+							new SetCount(new LootCondition[0], new RandomValueRange(5, 8)) }, new LootCondition[0],
+								ClimateMain.MOD_ID + ":jungle_dagger_silver"));
 					}
 					if (ModuleConfig.weapon_advanced) {
 						pool.addEntry(new LootEntryItem(MainInit.crossbow, 10, 1, new LootFunction[0],
@@ -168,9 +168,9 @@ public class DCLootEvent {
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
 					pool.addEntry(new LootEntryItem(cloth, 25, 1, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(6, 7)),
-							new SetCount(new LootCondition[0], new RandomValueRange(1, 3))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":forest_cloth_silk"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(6, 7)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":forest_cloth_silk"));
 					if (ModuleConfig.clothes_advanced) {
 						pool.addEntry(new LootEntryItem(MainInit.blackSuit, 10, 1, new LootFunction[0],
 								new LootCondition[0], ClimateMain.MOD_ID + ":forest_suit"));
@@ -183,9 +183,9 @@ public class DCLootEvent {
 						pool.addEntry(new LootEntryItem(MainInit.gun, 15, 1, new LootFunction[0], new LootCondition[0],
 								ClimateMain.MOD_ID + ":forest_gun_musket"));
 						pool.addEntry(new LootEntryItem(MainInit.cartridge, 15, 16, new LootFunction[] {
-								new SetMetadata(new LootCondition[0], new RandomValueRange(1, 3)),
-								new SetCount(new LootCondition[0], new RandomValueRange(16, 32))
-						}, new LootCondition[0], ClimateMain.MOD_ID + ":forest_gun_cartridge"));
+							new SetMetadata(new LootCondition[0], new RandomValueRange(1, 3)),
+							new SetCount(new LootCondition[0], new RandomValueRange(16, 32)) }, new LootCondition[0],
+								ClimateMain.MOD_ID + ":forest_gun_cartridge"));
 					}
 				}
 			} else if (event.getName().equals(LootTableList.GAMEPLAY_FISHING_FISH) && ModuleConfig.food) {
@@ -193,8 +193,11 @@ public class DCLootEvent {
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
 					pool.addEntry(new LootEntryItem(meat, 10, 1, new LootFunction[] {
-							new SetMetadata(new LootCondition[0], new RandomValueRange(2))
-					}, new LootCondition[0], ClimateMain.MOD_ID + ":fish_ika"));
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":fish_ika"));
+					pool.addEntry(new LootEntryItem(meat, 15, 1, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(9)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":fish_ebi"));
 				}
 			}
 		}

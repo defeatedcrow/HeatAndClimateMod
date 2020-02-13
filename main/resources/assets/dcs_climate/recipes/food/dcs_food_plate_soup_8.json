@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_food_steakplate_item",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllchickenraw"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodRice"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropTomato"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropBean"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodStock"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_plate_soup",
+  "count": 1,
+  "data": 8
+ }
+}

@@ -18,7 +18,7 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
-		return side.getAxis().isHorizontal() ? side == getBaseSide().rotateY() : side == getBaseSide();
+		return getBaseSide().getAxis().isHorizontal() ? side == getBaseSide().rotateY() : side == getBaseSide();
 	}
 
 	@Override
@@ -92,7 +92,6 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 			if (flag) {
 				if (!this.hasWorld())
 					return;
-				@SuppressWarnings("unchecked")
 				List<EntityPlayer> list = this.getWorld().playerEntities;
 				for (EntityPlayer player : list) {
 					if (player instanceof EntityPlayerMP) {

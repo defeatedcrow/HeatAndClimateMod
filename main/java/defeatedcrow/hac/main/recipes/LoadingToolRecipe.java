@@ -302,6 +302,14 @@ public class LoadingToolRecipe {
 			'W',
 			new ItemStack(Blocks.PISTON, 1, 0) });
 
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.pail, 1, 0), new Object[] {
+			"X X",
+			"YXY",
+			'X',
+			"ingotIron",
+			'Y',
+			"dustTin" });
+
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 0), new Object[] {
 			new ItemStack(Items.SLIME_BALL, 1, 0),
 			"dustIron" });

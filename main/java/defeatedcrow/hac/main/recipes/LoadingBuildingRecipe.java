@@ -327,7 +327,7 @@ public class LoadingBuildingRecipe {
 			"XY",
 			"YX",
 			'X',
-			new ItemStack(Blocks.STONE, 1, 3),
+			"stoneDiorite",
 			'Y',
 			"gemFlint" });
 
@@ -335,7 +335,7 @@ public class LoadingBuildingRecipe {
 			"XY",
 			"YX",
 			'X',
-			new ItemStack(Blocks.STONE, 1, 5),
+			"stoneAndesite",
 			'Y',
 			"gemFlint" });
 
@@ -343,7 +343,7 @@ public class LoadingBuildingRecipe {
 			"XY",
 			"YX",
 			'X',
-			new ItemStack(Blocks.STONE, 1, 1),
+			"stoneGranite",
 			'Y',
 			"gemFlint" });
 
@@ -451,6 +451,24 @@ public class LoadingBuildingRecipe {
 			new ItemStack(MainInit.roofSlate, 1, 0),
 			'Y',
 			"dyeBrown" });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.scaffold, 16, 0), new Object[] {
+			"YXY",
+			"Y Y",
+			"YXY",
+			'X',
+			"plankWood",
+			'Y',
+			"stickWood" });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.scaffold, 16, 0), new Object[] {
+			"YXY",
+			"Y Y",
+			"YXY",
+			'X',
+			"plankWood",
+			'Y',
+			"treeSapling" });
 
 	}
 
@@ -596,7 +614,7 @@ public class LoadingBuildingRecipe {
 				" X ",
 				" X ",
 				'X',
-				new ItemStack(MainInit.gemBlock, 1, 6) });
+				"blockMarble" });
 
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.tableGypsum, 1, 0), new Object[] {
 				"XXX",
@@ -985,6 +1003,18 @@ public class LoadingBuildingRecipe {
 				'Y',
 				"itemCloth" });
 
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.curtainGray), new Object[] {
+				new ItemStack(MainInit.curtainWhite, 1, 0),
+				"dyeGray" });
+
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.curtainRed), new Object[] {
+				new ItemStack(MainInit.curtainWhite, 1, 0),
+				"dyeRed" });
+
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.curtainBlue), new Object[] {
+				new ItemStack(MainInit.curtainWhite, 1, 0),
+				"dyeBlue" });
+
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chestMetal, 1, 0), new Object[] {
 				"XXX",
 				"XYX",
@@ -1246,6 +1276,53 @@ public class LoadingBuildingRecipe {
 
 			}
 
+			if (ModuleConfig.food) {
+				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 0), new Object[] {
+					" X ",
+					"XZX",
+					" Y ",
+					'X',
+					"blockGlass",
+					'Y',
+					"plankWood",
+					'Z',
+					"dropFuel" });
+
+				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 1), new Object[] {
+					" X ",
+					"XZX",
+					" Y ",
+					'X',
+					"blockGlass",
+					'Y',
+					"ingotGold",
+					'Z',
+					"dropFuel" });
+
+				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 2), new Object[] {
+					" X ",
+					"XZX",
+					" Y ",
+					'X',
+					"blockGlass",
+					'Y',
+					"gemChalcedony",
+					'Z',
+					"dropFuel" });
+
+				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 3), new Object[] {
+					" X ",
+					"XZX",
+					" Y ",
+					'X',
+					"blockGlass",
+					'Y',
+					"blockSerpentine",
+					'Z',
+					"dropFuel" });
+
+			}
+
 			for (int i = 0; i < 16; i++) {
 				DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.linoleum, 4, i), new Object[] {
 					"plankWood",
@@ -1276,6 +1353,38 @@ public class LoadingBuildingRecipe {
 			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.cushionGray, 1, 1), new Object[] {
 				new ItemStack(MainInit.cushionGray, 1, 0),
 				"dyeBrown" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 0), new Object[] {
+				"XXX",
+				"YYY",
+				'X',
+				"itemCloth",
+				'Y',
+				new ItemStack(Blocks.IRON_BARS) });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 1), new Object[] {
+				"XXX",
+				"YYY",
+				'X',
+				"itemCloth",
+				'Y',
+				"blockMarble" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 2), new Object[] {
+				"XXX",
+				"YYY",
+				'X',
+				"itemCloth",
+				'Y',
+				"bunchVine" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 3), new Object[] {
+				"XXX",
+				"YYY",
+				'X',
+				"itemCloth",
+				'Y',
+				"cropCotton" });
 
 		}
 	}

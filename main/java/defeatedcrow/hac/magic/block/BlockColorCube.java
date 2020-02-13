@@ -43,18 +43,7 @@ public class BlockColorCube extends DCSimpleBlock implements ITexturePath {
 		this.setResistance(15.0F);
 	}
 
-	private static String[] names = {
-			"u1",
-			"g1",
-			"r1",
-			"b1",
-			"w1",
-			"u2",
-			"g2",
-			"r2",
-			"b2",
-			"w2"
-	};
+	private static String[] names = { "u1", "g1", "r1", "b1", "w1", "u2", "g2", "r2", "b2", "w2" };
 
 	@Override
 	public String[] getNameSuffix() {
@@ -90,6 +79,11 @@ public class BlockColorCube extends DCSimpleBlock implements ITexturePath {
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return false;
 	}
 
@@ -170,7 +164,7 @@ public class BlockColorCube extends DCSimpleBlock implements ITexturePath {
 			return true;
 		}
 		if (num == 2) {
-			if (ClimateAPI.calculator.getAverageTemp(world, pos).getTier() >= DCHeatTier.SMELTING.getTier())
+			if (ClimateAPI.calculator.getAverageTemp(world, pos).getTier() > DCHeatTier.SMELTING.getTier())
 				return true;
 		}
 		if (num == 3) {

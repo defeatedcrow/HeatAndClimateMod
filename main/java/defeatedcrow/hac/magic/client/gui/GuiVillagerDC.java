@@ -39,6 +39,6 @@ public class GuiVillagerDC extends GuiContainer {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		GuiInventory
-				.drawEntityOnScreen(i + 51, j + 80, 30, (float) (i + 51) - mouseX, (float) (j + 95 - 50) - mouseY, this.villager);
+				.drawEntityOnScreen(i + 51, j + 75, 30, (float) (i + 51) - mouseX, (float) (j + 95 - 50) - mouseY, this.villager);
 	}
 }

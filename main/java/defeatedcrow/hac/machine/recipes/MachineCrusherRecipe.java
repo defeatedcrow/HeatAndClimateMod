@@ -43,7 +43,7 @@ public class MachineCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 4), null, 0F, new FluidStack(
 				MainInit.oil, 200), sus, "cropSoybean");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
-				MainInit.oil, 100), sus, "dustBlan");
+				MainInit.oil, 100), sus, "dustBran");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
 				MainInit.oil, 50), sus, "listAllseeds");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
@@ -184,18 +184,18 @@ public class MachineCrusherRecipe {
 				2), 0.1F, null, ti, "oreSerpentine");
 
 		// vanilla
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.QUARTZ, 2, 0), new ItemStack(MainInit.gems, 1,
-				1), 0.1F, null, ti, "oreQuartz");
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.EMERALD, 2, 0), new ItemStack(MainInit.gems, 1,
-				21), 0.05F, null, ti, "oreEmerald");
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DIAMOND, 2, 0), new ItemStack(MainInit.miscDust, 1,
-				12), 0.15F, null, ti, "oreDiamond");
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DYE, 6, 4), new ItemStack(MainInit.oreDust, 1,
-				0), 1F, null, ti, "oreLapis");
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.REDSTONE, 6, 0), new ItemStack(MainInit.oreDust, 1,
-				9), 0.25F, null, ti, "oreRedstone");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.QUARTZ, 3, 0), new ItemStack(MainInit.gems, 1,
+				1), 0.1F, null, sc, "oreQuartz");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.EMERALD, 3, 0), new ItemStack(MainInit.gems, 1,
+				21), 0.05F, null, sc, "oreEmerald");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DIAMOND, 3, 0), new ItemStack(MainInit.miscDust, 1,
+				12), 0.15F, null, sc, "oreDiamond");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DYE, 8, 4), new ItemStack(MainInit.oreDust, 1,
+				0), 1F, null, sc, "oreLapis");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.REDSTONE, 8, 0), new ItemStack(MainInit.oreDust, 1,
+				9), 0.25F, null, sc, "oreRedstone");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.COAL, 3, 0), new ItemStack(MainInit.miscDust, 1,
-				0), 1F, null, ti, "oreCoal");
+				0), 1F, null, sc, "oreCoal");
 
 		// old
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 2, 0), new ItemStack(Items.QUARTZ, 1,
@@ -311,6 +311,10 @@ public class MachineCrusherRecipe {
 				Blocks.STAINED_HARDENED_CLAY, 1, 32767));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), null, 0F, ti, new ItemStack(
 				Blocks.HARDENED_CLAY, 1, 0));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				1), 0.25F, null, ti, "dirt");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.miscDust, 1,
+				7), 0.5F, null, ti, "netherrack");
 	}
 
 }

@@ -16,6 +16,10 @@ import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.magic.client.TESRInfernalFlame;
 import defeatedcrow.hac.magic.event.MagicClientEvent;
 import defeatedcrow.hac.main.CommonMainProxy;
+import defeatedcrow.hac.main.block.build.TileBedDC;
+import defeatedcrow.hac.main.block.build.TileBedDCFuton;
+import defeatedcrow.hac.main.block.build.TileBedDCRattan;
+import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileChandelierSalt;
@@ -30,6 +34,7 @@ import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
+import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
@@ -37,6 +42,10 @@ import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.block.fluid.FluidUtil;
 import defeatedcrow.hac.main.client.block.TESRAnalogClock;
+import defeatedcrow.hac.main.client.block.TESRBedFuton;
+import defeatedcrow.hac.main.client.block.TESRBedIron;
+import defeatedcrow.hac.main.client.block.TESRBedRattan;
+import defeatedcrow.hac.main.client.block.TESRBedWhite;
 import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRChandelier;
 import defeatedcrow.hac.main.client.block.TESRChandelierChal;
@@ -47,6 +56,7 @@ import defeatedcrow.hac.main.client.block.TESRMCClock;
 import defeatedcrow.hac.main.client.block.TESRMagnetChest;
 import defeatedcrow.hac.main.client.block.TESRMetalChest;
 import defeatedcrow.hac.main.client.block.TESRNormalChamber;
+import defeatedcrow.hac.main.client.block.TESRPail;
 import defeatedcrow.hac.main.client.block.TESRShitirin;
 import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
 import defeatedcrow.hac.main.client.block.TESRThermometer;
@@ -86,6 +96,7 @@ import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
+import defeatedcrow.hac.main.entity.EntityThrowingArrow;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -176,6 +187,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityCrowBalloon.class, RenderEntityBalloon.class);
 		registRender(EntityBigCushion.class, RenderEntityBigCushion.class);
 		registRender(EntityBigCushionBrown.class, RenderEntityBigCushionB.class);
+		registRender(EntityThrowingArrow.class, BoltRenderer.class);
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadEntity();
@@ -208,6 +220,11 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock", new TESRAnalogClock());
 		registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l", new TESRLargeClock());
 		registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l", new TESRMCClock());
+		registerTileEntity(TilePail.class, "dcs_te_pail", new TESRPail());
+		registerTileEntity(TileBedDC.class, "dcs_te_bed_iron", new TESRBedIron());
+		registerTileEntity(TileBedDCWhite.class, "dcs_te_bed_white", new TESRBedWhite());
+		registerTileEntity(TileBedDCRattan.class, "dcs_te_bed_rattan", new TESRBedRattan());
+		registerTileEntity(TileBedDCFuton.class, "dcs_te_bed_futon", new TESRBedFuton());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();

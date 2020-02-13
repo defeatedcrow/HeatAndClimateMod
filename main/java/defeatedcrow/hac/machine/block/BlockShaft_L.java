@@ -96,8 +96,8 @@ public class BlockShaft_L extends BlockTorqueBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() +
-					"=== Transmission device ===");
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD
+					.toString() + "=== Transmission device ===");
 			tooltip.add("Max torque: 32.0F");
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");

@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:porkchop",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllporkraw"
   }
  },
  "result": {

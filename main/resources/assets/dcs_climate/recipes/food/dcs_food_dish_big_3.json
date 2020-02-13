@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodBowlofrice"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropLettuce"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropTomato"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropChilipepper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllmeatcooked"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_dish_big",
+  "count": 2,
+  "data": 3
+ }
+}

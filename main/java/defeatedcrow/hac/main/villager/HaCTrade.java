@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.villager.HaCTradeData.TradeType;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;
@@ -23,17 +24,14 @@ public class HaCTrade {
 		private final PriceInfo info;
 		private final List<HaCTradeData> data;
 
-		public Get(
-				List<HaCTradeData> list, @Nullable PriceInfo priceInfo) {
+		public Get(List<HaCTradeData> list, @Nullable PriceInfo priceInfo) {
 			info = priceInfo;
 			data = list;
 		}
 
 		@Override
-		public void addMerchantRecipe(
-				IMerchant merchant, MerchantRecipeList recipes, Random random) {
-			if (data != null
-					&& !data.isEmpty()) {
+		public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipes, Random random) {
+			if (data != null && !data.isEmpty()) {
 				int p1 = 1;
 				if (info != null) {
 					p1 = info.getPrice(random);
@@ -41,6 +39,9 @@ public class HaCTrade {
 				int l = data.size();
 				HaCTradeData trade = data.get(random.nextInt(l));
 				ItemStack item = trade.item;
+				if (DCUtil.isEmpty(item)) {
+					return;
+				}
 				p1 += trade.price;
 				ItemStack emerald = new ItemStack(Items.EMERALD, p1);
 				if (trade.type == TradeType.BUY) {

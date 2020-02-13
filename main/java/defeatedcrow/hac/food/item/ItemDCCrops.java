@@ -27,7 +27,8 @@ public class ItemDCCrops extends DCFoodItem {
 		"walnut",
 		"dates",
 		"vine",
-		"ginger" };
+		"ginger",
+		"grape" };
 
 	public ItemDCCrops(int max) {
 		super(false);
@@ -58,7 +59,8 @@ public class ItemDCCrops extends DCFoodItem {
 		switch (meta) {
 		case 3:
 		case 17:
-			return 5;
+		case 20:
+			return 4;
 		case 10:
 		case 11:
 		case 15:

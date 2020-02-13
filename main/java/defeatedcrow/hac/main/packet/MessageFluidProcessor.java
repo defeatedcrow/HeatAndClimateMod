@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.packet;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 // biome reset
@@ -11,13 +12,13 @@ public class MessageFluidProcessor implements IMessage {
 	public int y;
 	public int z;
 	public int amo1;
-	public int id1;
+	public String id1;
 	public int amo2;
-	public int id2;
+	public String id2;
 
 	public MessageFluidProcessor() {}
 
-	public MessageFluidProcessor(BlockPos pos, int fluid1, int a1, int fluid2, int a2) {
+	public MessageFluidProcessor(BlockPos pos, String fluid1, int a1, String fluid2, int a2) {
 		this.x = pos.getX();
 		this.y = pos.getY();
 		this.z = pos.getZ();
@@ -33,10 +34,10 @@ public class MessageFluidProcessor implements IMessage {
 		this.x = buf.readInt();
 		this.y = buf.readInt();
 		this.z = buf.readInt();
-		id1 = buf.readInt();
 		amo1 = buf.readInt();
-		id2 = buf.readInt();
 		amo2 = buf.readInt();
+		id1 = ByteBufUtils.readUTF8String(buf);
+		id2 = ByteBufUtils.readUTF8String(buf);
 
 	}
 
@@ -46,9 +47,9 @@ public class MessageFluidProcessor implements IMessage {
 		buf.writeInt(x);
 		buf.writeInt(y);
 		buf.writeInt(z);
-		buf.writeInt(id1);
 		buf.writeInt(amo1);
-		buf.writeInt(id2);
 		buf.writeInt(amo2);
+		ByteBufUtils.writeUTF8String(buf, id1);
+		ByteBufUtils.writeUTF8String(buf, id2);
 	}
 }

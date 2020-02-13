@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "dcs_climate:dcs_food_materials",
-   "data": 3
+   "type": "forge:ore_dict",
+   "ore": "dustStarch"
   }
  },
  "result": {

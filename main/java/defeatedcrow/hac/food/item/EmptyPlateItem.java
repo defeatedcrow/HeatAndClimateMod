@@ -72,7 +72,7 @@ public class EmptyPlateItem extends FoodItemBase {
 	// たべられない
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-		return new ActionResult(EnumActionResult.FAIL, ItemStack.EMPTY);
+		return new ActionResult<ItemStack>(EnumActionResult.FAIL, player.getHeldItem(hand));
 	}
 
 }

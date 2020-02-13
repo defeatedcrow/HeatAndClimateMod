@@ -148,7 +148,7 @@ public class OredicConfig {
 		{ "blockChalcedonyRed" },
 		{ "blockChalcedonyWhite" },
 		{ "blockGypsum" },
-		{ "blockSaphhire" },
+		{ "blockSapphire" },
 		{ "blockSalt" },
 		{ "blockMarble" },
 		{ "blockSchorl" },

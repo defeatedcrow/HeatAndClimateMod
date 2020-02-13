@@ -282,4 +282,9 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 		return Container.calcRedstone(worldIn.getTileEntity(pos));
 	}
 
+	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return false;
+	}
+
 }

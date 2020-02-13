@@ -53,9 +53,7 @@ public class FluidPaperContDC implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
-		return new FluidTankProperties[] {
-				new FluidTankProperties(getFluid(), 250)
-		};
+		return new FluidTankProperties[] { new FluidTankProperties(getFluid(), 250) };
 	}
 
 	@Override
@@ -80,8 +78,8 @@ public class FluidPaperContDC implements IFluidHandlerItem, ICapabilityProvider 
 
 	@Override
 	public FluidStack drain(FluidStack resource, boolean doDrain) {
-		if (container.getCount() != 1 || resource == null || resource.amount < 250 || !resource.isFluidEqual(
-				getFluid())) {
+		if (container.getCount() != 1 || resource == null || resource.amount < 250 || !resource
+				.isFluidEqual(getFluid())) {
 			return null;
 		}
 		return drain(resource.amount, doDrain);
@@ -129,7 +127,6 @@ public class FluidPaperContDC implements IFluidHandlerItem, ICapabilityProvider 
 		return capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		return capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ? (T) this : null;

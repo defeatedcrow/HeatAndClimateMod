@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.BlockDC;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -52,8 +53,9 @@ public class BlockCurtain extends BlockDC {
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.CLOTH);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(
-				DCState.POWERED, false).withProperty(DCState.FLAG, false).withProperty(DCState.DOUBLE, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
+				.withProperty(DCState.POWERED, false).withProperty(DCState.FLAG, false)
+				.withProperty(DCState.DOUBLE, false));
 		this.maxMeta = 0;
 	}
 
@@ -87,16 +89,16 @@ public class BlockCurtain extends BlockDC {
 					boolean p = DCState.getBool(state, DCState.FLAG);
 					st = st.withProperty(DCState.FLAG, !p);
 					world.setBlockState(pos.up(i), st);
-					world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-							SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F +
-									0.9F);
+					world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
+							.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand
+									.nextFloat() * 0.1F + 0.9F);
 				} else {
 					boolean p = DCState.getBool(state, DCState.POWERED);
 					st = st.withProperty(DCState.POWERED, !p);
 					world.setBlockState(pos.up(i), st);
-					world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-							SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F +
-									0.9F);
+					world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
+							.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand
+									.nextFloat() * 0.1F + 0.9F);
 				}
 			}
 		}
@@ -211,11 +213,15 @@ public class BlockCurtain extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING,
-				DCState.DOUBLE,
-				DCState.FLAG,
-				DCState.POWERED
-		});
+			DCState.FACING,
+			DCState.DOUBLE,
+			DCState.FLAG,
+			DCState.POWERED });
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 }

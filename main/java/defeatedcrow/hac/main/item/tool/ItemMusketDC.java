@@ -87,9 +87,8 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 				player.setActiveHand(hand);
 				return new ActionResult(EnumActionResult.SUCCESS, stack);
 			} else {
-				worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-						SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() *
-								0.4F + 1.2F) + 0.5F);
+				worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
+						.nextFloat() * 0.4F + 1.2F) + 0.5F);
 				ItemStack ammo = this.findAmmo(player);
 				boolean flag = !DCUtil.isEmpty(ammo);
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0) {
@@ -137,47 +136,50 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 				if (f >= 0.0D) {
 					boolean flag1 = player.capabilities.isCreativeMode;
 
+					EntityBulletDC entityarrow = new EntityIronBullet(world, player);
+					float speed = 5.0F;
+
+					switch (ItemBullets.getType(type)) {
+					case BOLT:
+						break;
+					case GHOST:
+						entityarrow = new EntityGhostBullet(world, player);
+						break;
+					case NORMAL:
+						break;
+					case SHOT:
+						entityarrow = new EntityShotgunBullet(world, player);
+						speed = 2.0F;
+						break;
+					case SILVER:
+						entityarrow = new EntitySilverBullet(world, player);
+						break;
+					case LIGHT:
+						entityarrow = new EntityLightBullet(world, player);
+						break;
+					case EXTINCTION:
+						entityarrow = new EntityExtinctionBullet(world, player);
+						break;
+					case CROW:
+						entityarrow = new EntityCrowBullet(world, player);
+						break;
+					default:
+						break;
+
+					}
+
+					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, speed, 0.1F);
+
 					if (!world.isRemote) {
-						EntityBulletDC entityarrow = new EntityIronBullet(world, player);
-						float speed = 5.0F;
-
-						switch (ItemBullets.getType(type)) {
-						case BOLT:
-							break;
-						case GHOST:
-							entityarrow = new EntityGhostBullet(world, player);
-							break;
-						case NORMAL:
-							break;
-						case SHOT:
-							entityarrow = new EntityShotgunBullet(world, player);
-							speed = 2.0F;
-							break;
-						case SILVER:
-							entityarrow = new EntitySilverBullet(world, player);
-							break;
-						case LIGHT:
-							entityarrow = new EntityLightBullet(world, player);
-							break;
-						case EXTINCTION:
-							entityarrow = new EntityExtinctionBullet(world, player);
-							break;
-						case CROW:
-							entityarrow = new EntityCrowBullet(world, player);
-							break;
-						default:
-							break;
-
-						}
-
-						entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, speed, 0.1F);
-
 						int power = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
 						int punch = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
 						int flame = EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack);
 
 						if (power > 0) {
-							entityarrow.setDamage(entityarrow.getDamage() + power * 2.0D);
+							double pow = (power * 2) + 5.0D;
+							pow *= 0.2D;
+							double damage = entityarrow.getDamage() * pow;
+							entityarrow.setDamage(damage);
 						}
 
 						if (punch > 0) {
@@ -194,9 +196,8 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 						world.spawnEntity(entityarrow);
 					}
 
-					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ,
-							SoundEvents.ENTITY_FIREWORK_BLAST, SoundCategory.NEUTRAL, 1.0F, 1.0F /
-									(itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_FIREWORK_BLAST, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
+							.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 					player.addStat(StatList.getObjectUseStats(this));
 				}

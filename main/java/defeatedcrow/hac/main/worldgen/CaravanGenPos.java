@@ -4,6 +4,7 @@ import java.util.Random;
 
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.init.Biomes;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
@@ -76,7 +77,8 @@ public class CaravanGenPos {
 		rand.nextFloat();
 		rand.nextFloat();
 		float r = rand.nextFloat() * 10000F;
-		if (r < WorldGenConfig.caravanGen) {
+		int ri = MathHelper.floor(r);
+		if (ri > 0 && ri < WorldGenConfig.caravanGen) {
 			return true;
 		}
 		return false;

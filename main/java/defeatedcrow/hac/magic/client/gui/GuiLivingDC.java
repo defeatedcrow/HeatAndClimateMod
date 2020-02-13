@@ -39,6 +39,6 @@ public class GuiLivingDC extends GuiContainer {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		GuiInventory
-				.drawEntityOnScreen(i + 90, j + 80, 30, (float) (i + 90) - mouseX, (float) (j + 95 - 50) - mouseY, this.living);
+				.drawEntityOnScreen(i + 90, j + 75, 30, (float) (i + 90) - mouseX, (float) (j + 95 - 50) - mouseY, this.living);
 	}
 }

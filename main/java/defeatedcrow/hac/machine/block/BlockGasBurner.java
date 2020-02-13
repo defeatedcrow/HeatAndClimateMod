@@ -49,6 +49,11 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 	}
 
 	@Override
+	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
+		return side == EnumFacing.DOWN;
+	}
+
+	@Override
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null && !player.world.isRemote) {
@@ -56,16 +61,15 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 			TileEntity tile = world.getTileEntity(pos);
 			if (!player.isSneaking() && tile instanceof TileGasBurner && hand == EnumHand.MAIN_HAND) {
 				boolean flag = false;
-				if (!DCUtil.isEmpty(heldItem) && heldItem.hasCapability(
-						CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
-					IFluidHandlerItem cont = heldItem.getCapability(
-							CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
+				if (!DCUtil.isEmpty(heldItem) && heldItem
+						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+					IFluidHandlerItem cont = heldItem
+							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
 						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid())) {
 							if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
-								world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F,
-										2.0F);
+								world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 								flag = true;
 							}
 						}
@@ -183,12 +187,10 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 				boolean power = (m & 2) != 0;
 				if (flag && !power) {
 					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit + 2), 3);
-					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
-							0.6F);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.6F);
 				} else if (!flag && power) {
 					world.setBlockState(pos, state.withProperty(DCState.TYPE4, lit), 3);
-					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F,
-							0.5F);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.5F);
 				}
 			}
 		}

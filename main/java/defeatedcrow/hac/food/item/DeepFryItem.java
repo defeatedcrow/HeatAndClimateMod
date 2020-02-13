@@ -10,7 +10,10 @@ import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.FriedChickenEntity;
 import defeatedcrow.hac.food.entity.FriedFalafelEntity;
 import defeatedcrow.hac.food.entity.FriedFishEntity;
+import defeatedcrow.hac.food.entity.FriedFishcakeEntity;
 import defeatedcrow.hac.food.entity.FriedPorkEntity;
+import defeatedcrow.hac.food.entity.FriedPorkGingerEntity;
+import defeatedcrow.hac.food.entity.FriedPrawnEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,12 +31,12 @@ public class DeepFryItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 3;
+		return 6;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 5);
+		int i = MathHelper.clamp(0, meta, 6);
 		String s = "items/food/frying_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -43,7 +46,7 @@ public class DeepFryItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = { "pork", "chicken", "fish", "falafel", "fishcake", "pork_ginger" };
+		String[] s = { "pork", "chicken", "fish", "falafel", "fishcake", "pork_ginger", "prawn" };
 		return s;
 	}
 
@@ -59,6 +62,15 @@ public class DeepFryItem extends FoodItemBase {
 		}
 		if (i == 3) {
 			ret = new FriedFalafelEntity(world, x, y, z, player);
+		}
+		if (i == 4) {
+			ret = new FriedFishcakeEntity(world, x, y, z, player);
+		}
+		if (i == 5) {
+			ret = new FriedPorkGingerEntity(world, x, y, z, player);
+		}
+		if (i == 6) {
+			ret = new FriedPrawnEntity(world, x, y, z, player);
 		}
 		return ret;
 	}

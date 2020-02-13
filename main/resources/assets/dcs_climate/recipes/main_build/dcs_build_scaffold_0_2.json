@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "YXY",
+  "Y Y",
+  "YXY"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "treeSapling"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_scaffold",
+  "count": 16,
+  "data": 0
+ }
+}

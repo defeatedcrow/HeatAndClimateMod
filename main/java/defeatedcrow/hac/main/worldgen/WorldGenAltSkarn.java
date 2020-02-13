@@ -10,11 +10,12 @@ import defeatedcrow.hac.main.api.orevein.OreSet;
 import defeatedcrow.hac.main.api.orevein.VeinTable;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockEmptyDrops;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -108,7 +109,9 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 						for (int z = posZ - rr; z <= posZ + rr; z++) {
 							BlockPos p = new BlockPos(x, y, z);
 							IBlockState block = world.getBlockState(p);
-							if (this.isPlaceable(block.getBlock())) {
+							if (block.getMaterial() == Material.GRASS && !world.isAirBlock(p.up())) {
+								// 植物を破壊しないように
+							} else if (this.isPlaceable(block, isForced)) {
 								int x1 = p.getX() - posX;
 								int z1 = p.getZ() - posZ;
 								double dist = Math.sqrt(x1 * x1 + z1 * z1);
@@ -128,7 +131,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 							} else if (block.getMaterial() == Material.WOOD || block.getMaterial() == Material.LEAVES) {
 								world.setBlockToAir(p);
 							} else if (block.getMaterial() == Material.GRASS) {
-								if (world.rand.nextBoolean()) {
+								if (world.rand.nextBoolean() && world.isAirBlock(p.up())) {
 									world.setBlockToAir(p);
 								}
 							}
@@ -148,7 +151,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 			int i = WorldGenConfig.skarnGen;
 			pRandom.nextFloat();
 			float r = pRandom.nextFloat() * 10000F;
-			if (r > 0 && r < i) {
+			int ri = MathHelper.floor(r);
+			if (ri > 0 && ri < i) {
 				SkarnGenPoint.addPos(chunkX, chunkZ);
 				return true;
 			}
@@ -229,19 +233,12 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		}
 	}
 
-	static boolean isPlaceable(Block block) {
-		if (block == Blocks.STONE)
-			return true;
-		if (block == Blocks.GRAVEL)
-			return true;
-		if (block == Blocks.DIRT)
-			return true;
-		if (block == Blocks.SANDSTONE)
-			return true;
-		if (block == Blocks.SAND)
-			return true;
+	static boolean isPlaceable(IBlockState block, boolean b) {
+		if (block.isNormalCube() && !(block.getBlock() instanceof BlockEmptyDrops))
+			return block.getMaterial() == Material.ROCK || block.getMaterial() == Material.SAND || block
+					.getMaterial() == Material.GROUND || block.getMaterial() == Material.GRASS;
 
-		return false;
+		return b;
 	}
 
 	private static final BlockSet AIR = new BlockSet(Blocks.AIR, 0);

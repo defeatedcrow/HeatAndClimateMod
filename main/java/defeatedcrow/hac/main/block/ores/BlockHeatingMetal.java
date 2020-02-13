@@ -60,7 +60,7 @@ public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IR
 			ItemStack check = new ItemStack(this, 1, meta);
 			IHeatTreatment recipe = MainAPIManager.heatTreatmentRegister.getRecipe(check);
 			if (recipe != null) {
-				ItemStack output = recipe.getCurrentOutput(check, clm);
+				ItemStack output = recipe.getCurrentOutput(check, clm).getResult();
 				if (!DCUtil.isEmpty(output) && output.getItem() instanceof ItemBlock) {
 					Block ret = ((ItemBlock) output.getItem()).getBlock();
 					IBlockState retS = ret.getStateFromMeta(output.getMetadata());
@@ -87,19 +87,18 @@ public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IR
 	}
 
 	private static String[] names = {
-			"steel_heating",
-			"steel_cooling",
-			"steel_fail",
-			"sus_heating",
-			"sus_cooling",
-			"sus_fail",
-			"titanium_heating",
-			"titanium_cooling",
-			"titanium_fail",
-			"toolsteel_heating",
-			"toolsteel_cooling",
-			"toolsteel_fail"
-	};
+		"steel_heating",
+		"steel_cooling",
+		"steel_fail",
+		"sus_heating",
+		"sus_cooling",
+		"sus_fail",
+		"titanium_heating",
+		"titanium_cooling",
+		"titanium_fail",
+		"toolsteel_heating",
+		"toolsteel_cooling",
+		"toolsteel_fail" };
 
 	@Override
 	public String[] getNameSuffix() {
@@ -119,6 +118,11 @@ public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IR
 	}
 
 	/* IRapidCollectables */
+
+	@Override
+	public String getCollectableTool() {
+		return "shovel";
+	}
 
 	@Override
 	public boolean isCollectable(ItemStack item) {

@@ -18,6 +18,8 @@ public class BoltRenderer extends Render<EntityBulletDC> {
 			"textures/entity/bullet_bolt.png");
 	private static final ResourceLocation BULLET_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/bullet_iron.png");
+	private static final ResourceLocation ARROW_TEX = new ResourceLocation("dcs_climate",
+			"textures/entity/bullet_arrow.png");
 	private static final ModelDagger MODEL = new ModelDagger(false);
 
 	public BoltRenderer(RenderManager renderManager) {
@@ -39,8 +41,8 @@ public class BoltRenderer extends Render<EntityBulletDC> {
 			this.bindTexture(tex);
 
 			float rotX = -(entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks);
-			float rotY = 180.0F
-					- (entity.prevRotationYaw + (entity.rotationYaw - entity.prevRotationYaw) * partialTicks);
+			float rotY =
+					180.0F - (entity.prevRotationYaw + (entity.rotationYaw - entity.prevRotationYaw) * partialTicks);
 			float rotZ = 0.0F;
 
 			GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
@@ -56,7 +58,11 @@ public class BoltRenderer extends Render<EntityBulletDC> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityBulletDC entity) {
-		return entity.getBulletType() == BulletType.BOLT ? BOLT_TEX : BULLET_TEX;
+		if (entity.getBulletType() == BulletType.BOLT)
+			return BOLT_TEX;
+		if (entity.getBulletType() == BulletType.ARROW)
+			return ARROW_TEX;
+		return BULLET_TEX;
 	}
 
 	protected ResourceLocation getTexture() {

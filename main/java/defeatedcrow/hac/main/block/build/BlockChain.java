@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -109,5 +110,10 @@ public class BlockChain extends DCSimpleBlock {
 		if (!this.canBlockStay(world, pos, state)) {
 			world.destroyBlock(pos, true);
 		}
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.MIDDLE_POLE_THIN;
 	}
 }

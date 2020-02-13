@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:gunpowder",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "gunpowder"
   }
  },
  "result": {

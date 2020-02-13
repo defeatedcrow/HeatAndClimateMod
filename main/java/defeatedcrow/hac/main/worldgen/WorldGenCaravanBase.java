@@ -839,8 +839,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 				return Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, face.getOpposite());
 			case 2:
 			case 13:
-				if (ModuleConfig.build_advanced)
-					return MainInit.tableWood.getDefaultState();
+				return ModuleConfig.build_advanced ? MainInit.tableWood.getDefaultState() : Blocks.PLANKS
+						.getDefaultState();
 			default:
 				return Blocks.AIR.getDefaultState();
 			}
@@ -849,8 +849,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			switch (x) {
 			case 2:
 			case 13:
-				if (ModuleConfig.build_advanced)
-					return MainInit.tableWood.getDefaultState();
+				return ModuleConfig.build_advanced ? MainInit.tableWood.getDefaultState() : Blocks.PLANKS
+						.getDefaultState();
 			default:
 				return Blocks.AIR.getDefaultState();
 			}
@@ -863,8 +863,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			case 13:
 			case 14:
 			case 15:
-				if (ModuleConfig.build_advanced)
-					return MainInit.tableWood.getDefaultState();
+				return ModuleConfig.build_advanced ? MainInit.tableWood.getDefaultState() : Blocks.PLANKS
+						.getDefaultState();
 			default:
 				return Blocks.AIR.getDefaultState();
 			}

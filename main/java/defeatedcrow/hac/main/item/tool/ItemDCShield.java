@@ -84,4 +84,9 @@ public class ItemDCShield extends DCItem {
 		return null;
 	}
 
+	@Override
+	public boolean isShield(ItemStack stack, @Nullable EntityLivingBase entity) {
+		return stack.getItem() == this || super.isShield(stack, entity);
+	}
+
 }

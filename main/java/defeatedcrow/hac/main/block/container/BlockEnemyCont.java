@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.api.ICompressionRecipe;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -19,7 +20,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapidCollectables {
+public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapidCollectables, ICompressionRecipe {
 
 	public BlockEnemyCont(Material m, String s, int max) {
 		super(m, s, max, false);
@@ -31,18 +32,39 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = {
-				"rotten",
-				"bone",
-				"spider",
-				"ender",
-				"powder",
-				"blaze"
-		};
+		String[] name = { "rotten", "bone", "spider", "ender", "powder", "blaze" };
 		return name;
 	}
 
-	public static ItemStack[] containedItem() {
+	@Override
+	public Object getInputDic(int i) {
+		switch (i) {
+		case 0:
+			return new ItemStack(Items.ROTTEN_FLESH);
+		case 1:
+			return "bone";
+		case 2:
+			return new ItemStack(Items.SPIDER_EYE);
+		case 3:
+			return "enderpearl";
+		case 4:
+			return "gunpowder";
+		case 5:
+			return "stickBlaze";
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack getOutputItem(int i) {
+		if (i >= 0 && i < containedItem().length) {
+			return containedItem()[i];
+		}
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public ItemStack[] containedItem() {
 		ItemStack[] ret = new ItemStack[6];
 		ret[0] = new ItemStack(Items.ROTTEN_FLESH, 8);
 		ret[1] = new ItemStack(Items.BONE, 8);
@@ -97,6 +119,11 @@ public class BlockEnemyCont extends DCSimpleBlock implements ITexturePath, IRapi
 	}
 
 	/* IRapidCollectables */
+
+	@Override
+	public String getCollectableTool() {
+		return "shovel";
+	}
 
 	@Override
 	public boolean isCollectable(ItemStack item) {

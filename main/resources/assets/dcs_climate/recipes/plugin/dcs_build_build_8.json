@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XY",
+  "YX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "stoneDacite"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemFlint"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_build",
+  "count": 2,
+  "data": 8
+ }
+}

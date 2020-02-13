@@ -11,6 +11,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -35,8 +36,8 @@ public class BlockMetalPillar extends BlockDC {
 	// public static final PropertyBool SOUTH = PropertyBool.create("south");
 	// public static final PropertyBool WEST = PropertyBool.create("west");
 
-	public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis",
-			EnumFacing.Axis.class);
+	public static final PropertyEnum<EnumFacing.Axis> AXIS =
+			PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
 
 	public BlockMetalPillar(String s) {
 		super(Material.CLAY, s);
@@ -189,8 +190,7 @@ public class BlockMetalPillar extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				AXIS
+		return new BlockStateContainer(this, new IProperty[] { AXIS
 				// NORTH,
 				// EAST,
 				// WEST,
@@ -235,6 +235,11 @@ public class BlockMetalPillar extends BlockDC {
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 			return true;
 		return false;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 }

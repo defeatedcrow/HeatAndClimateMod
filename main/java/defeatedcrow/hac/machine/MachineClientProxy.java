@@ -36,6 +36,7 @@ import defeatedcrow.hac.machine.block.TileMonitorInventory;
 import defeatedcrow.hac.machine.block.TileMonitorRF;
 import defeatedcrow.hac.machine.block.TileMonitorRedStone;
 import defeatedcrow.hac.machine.block.TileMonitorTorque;
+import defeatedcrow.hac.machine.block.TileOscillator;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
@@ -47,6 +48,8 @@ import defeatedcrow.hac.machine.block.TileShaft_L_Steel;
 import defeatedcrow.hac.machine.block.TileShaft_S;
 import defeatedcrow.hac.machine.block.TileShaft_S_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_S_Steel;
+import defeatedcrow.hac.machine.block.TileShaft_Switch;
+import defeatedcrow.hac.machine.block.TileShaft_Switch_Steel;
 import defeatedcrow.hac.machine.block.TileShaft_TA;
 import defeatedcrow.hac.machine.block.TileShaft_TA_SUS;
 import defeatedcrow.hac.machine.block.TileShaft_TA_Steel;
@@ -83,6 +86,7 @@ import defeatedcrow.hac.machine.client.KineticMotorTESR;
 import defeatedcrow.hac.machine.client.L_ShaftTESR;
 import defeatedcrow.hac.machine.client.L_WindmillTESR;
 import defeatedcrow.hac.machine.client.MonitorTESR;
+import defeatedcrow.hac.machine.client.OscillatorTESR;
 import defeatedcrow.hac.machine.client.PortalManagerTESR;
 import defeatedcrow.hac.machine.client.PressMachineTESR;
 import defeatedcrow.hac.machine.client.ReactorTESR;
@@ -101,10 +105,12 @@ import defeatedcrow.hac.machine.client.S_ShaftTESR;
 import defeatedcrow.hac.machine.client.SpinningMachineTESR;
 import defeatedcrow.hac.machine.client.Steel_L_ShaftTESR;
 import defeatedcrow.hac.machine.client.Steel_S_ShaftTESR;
+import defeatedcrow.hac.machine.client.Steel_Switch_ShaftTESR;
 import defeatedcrow.hac.machine.client.Steel_TA_ShaftTESR;
 import defeatedcrow.hac.machine.client.Steel_TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.Steel_X_ShaftTESR;
 import defeatedcrow.hac.machine.client.StoneMillTESR;
+import defeatedcrow.hac.machine.client.Switch_ShaftTESR;
 import defeatedcrow.hac.machine.client.TA_ShaftTESR;
 import defeatedcrow.hac.machine.client.TB_ShaftTESR;
 import defeatedcrow.hac.machine.client.WaterPumpTESR;
@@ -191,6 +197,10 @@ public class MachineClientProxy {
 		GameRegistry.registerTileEntity(TileMonitorComparator.class, "dcs_te_monitor_cm");
 		ClientMainProxy.registerTileEntity(TileWindmill_EX.class, "dcs_te_windmill_ex", new EX_WindmillTESR());
 		GameRegistry.registerTileEntity(TileEntityPanel.class, "dcs_te_entity_panel");
+		ClientMainProxy.registerTileEntity(TileShaft_Switch.class, "dcs_te_shaft_switch", new Switch_ShaftTESR());
+		ClientMainProxy
+				.registerTileEntity(TileShaft_Switch_Steel.class, "dcs_te_shaft_switch_steel", new Steel_Switch_ShaftTESR());
+		ClientMainProxy.registerTileEntity(TileOscillator.class, "dcs_te_oscillator", new OscillatorTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -229,6 +239,8 @@ public class MachineClientProxy {
 		instance.regTEBlock(MachineInit.IBC, ClimateCore.PACKAGE_ID, "dcs_device_ibc", "machine", 0);
 		instance.regSimpleBlock(MachineInit.faucet, ClimateCore.PACKAGE_ID, "dcs_device_faucet", "machine", 0);
 		instance.regSimpleBlock(MachineInit.faucet_sus, ClimateCore.PACKAGE_ID, "dcs_device_faucet_sus", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft_switch, ClimateCore.PACKAGE_ID, "dcs_device_shaft_switch", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.shaft3_switch, ClimateCore.PACKAGE_ID, "dcs_device_shaft_switch_steel", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_ID, "dcs_device_mechanical", "machine", 9);
 		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
@@ -250,6 +262,7 @@ public class MachineClientProxy {
 		instance.regTEBlock(MachineInit.burner, ClimateCore.PACKAGE_ID, "dcs_device_gas_burner", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_ID, "dcs_device_diesel_engine", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.crusher, ClimateCore.PACKAGE_ID, "dcs_device_crusher", "machine", 0);
+		instance.regTETorqueBlock(MachineInit.oscillator, ClimateCore.PACKAGE_ID, "dcs_device_oscillator", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 14);
 		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 4);
@@ -277,7 +290,6 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorCM, ClimateCore.PACKAGE_ID, "dcs_device_monitor_cm", "machine", 0);
 		instance.regSimpleBlock(MachineInit.entityPanel, ClimateCore.PACKAGE_ID, "dcs_device_entity_panel", "machine", 0);
-
 	}
 
 }

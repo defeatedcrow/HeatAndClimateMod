@@ -1,0 +1,35 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "WZ ",
+  "WYV",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotStainlessSteel"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gasAmmonia"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "bucketWater"
+  },
+  "W": {
+   "item": "dcs_climate:dcs_device_ibc",
+   "data": 0
+  },
+  "V": {
+   "type": "forge:ore_dict",
+   "ore": "gearToolSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_freezer",
+  "count": 1,
+  "data": 0
+ }
+}

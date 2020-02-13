@@ -12,6 +12,7 @@ import defeatedcrow.hac.food.entity.BeefStickEntity;
 import defeatedcrow.hac.food.entity.FishStickEntity;
 import defeatedcrow.hac.food.entity.GoheiStickEntity;
 import defeatedcrow.hac.food.entity.MarshmallowStick;
+import defeatedcrow.hac.food.entity.MotuStickEntity;
 import defeatedcrow.hac.food.entity.MuttonStickEntity;
 import defeatedcrow.hac.food.entity.PorkStickEntity;
 import defeatedcrow.hac.food.entity.SquidStickEntity;
@@ -36,12 +37,12 @@ public class StickFoodsItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 15;
+		return 17;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 15);
+		int i = MathHelper.clamp(0, meta, 17);
 		String s = "items/food/stick_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -52,23 +53,24 @@ public class StickFoodsItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"fish_raw",
-				"fish_cooked",
-				"yakitori_raw",
-				"yakitori_cooked",
-				"pork_raw",
-				"pork_cooked",
-				"beef_raw",
-				"beef_cooked",
-				"mutton_raw",
-				"mutton_cooked",
-				"squid_raw",
-				"squid_cooked",
-				"gohei_raw",
-				"gohei_cooked",
-				"marshmallow_raw",
-				"marshmallow_cooked"
-		};
+			"fish_raw",
+			"fish_cooked",
+			"yakitori_raw",
+			"yakitori_cooked",
+			"pork_raw",
+			"pork_cooked",
+			"beef_raw",
+			"beef_cooked",
+			"mutton_raw",
+			"mutton_cooked",
+			"squid_raw",
+			"squid_cooked",
+			"gohei_raw",
+			"gohei_cooked",
+			"marshmallow_raw",
+			"marshmallow_cooked",
+			"motu_raw",
+			"motu_cooked" };
 		return s;
 	}
 
@@ -109,6 +111,10 @@ public class StickFoodsItem extends FoodItemBase {
 		case 15:
 			ret = new MarshmallowStick(world, x, y, z, player);
 			break;
+		case 16:
+		case 17:
+			ret = new MotuStickEntity(world, x, y, z, player);
+			break;
 		default:
 			ret = new FishStickEntity(world, x, y, z, player);
 		}
@@ -141,6 +147,8 @@ public class StickFoodsItem extends FoodItemBase {
 			return 2;
 		case 15:
 			return 4;
+		case 17:
+			return 7;
 		default:
 			return 1;
 		}

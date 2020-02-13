@@ -29,12 +29,7 @@ public class BlockFuelCont extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = {
-				"coke",
-				"carbide",
-				"smokeless",
-				"synthetic"
-		};
+		String[] name = { "coke", "carbide", "smokeless", "synthetic" };
 		return name;
 	}
 
@@ -88,6 +83,11 @@ public class BlockFuelCont extends DCSimpleBlock implements ITexturePath, IRapid
 	}
 
 	/* IRapidCollectables */
+
+	@Override
+	public String getCollectableTool() {
+		return "shovel";
+	}
 
 	@Override
 	public boolean isCollectable(ItemStack item) {

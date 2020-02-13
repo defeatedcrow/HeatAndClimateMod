@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:melon_block",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "cropMelon"
   }
  },
  "result": {

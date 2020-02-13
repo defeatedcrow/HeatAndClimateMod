@@ -1,0 +1,9 @@
+{
+    "parent": "dcs_climate:block/build/dcs_oillamp_base",
+    "textures": {
+        "inner": "dcs_climate:blocks/ores/oreblock_brass",
+        "shade": "dcs_climate:blocks/build/glass_crystal",
+        "foot": "dcs_climate:blocks/ores/gemblock_chal_white",
+        "foot2": "dcs_climate:blocks/ores/gemblock_chal_white"
+    }
+}

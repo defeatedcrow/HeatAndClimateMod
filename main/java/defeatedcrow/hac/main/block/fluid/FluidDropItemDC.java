@@ -43,9 +43,7 @@ public class FluidDropItemDC implements IFluidHandlerItem, ICapabilityProvider {
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
-		return new FluidTankProperties[] {
-				new FluidTankProperties(getFluid(), 200)
-		};
+		return new FluidTankProperties[] { new FluidTankProperties(getFluid(), 200) };
 	}
 
 	@Override
@@ -98,15 +96,13 @@ public class FluidDropItemDC implements IFluidHandlerItem, ICapabilityProvider {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
-				|| capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY;
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY
-				|| capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ? (T) this : null;
+		return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || capability == CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY ?
+				(T) this : null;
 	}
 
 	@Override

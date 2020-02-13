@@ -1,5 +1,9 @@
 package defeatedcrow.hac.plugin;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import biomesoplenty.api.block.BOPBlocks;
 import biomesoplenty.api.item.BOPItems;
 import defeatedcrow.hac.api.climate.ClimateAPI;
@@ -14,6 +18,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -72,12 +77,37 @@ public class DCPluginBoP {
 
 		addOre("cropWildice", BOPBlocks.plant_1, 3);
 		addOre("listAllgrain", BOPBlocks.plant_1, 3);
-		addOre("cropBarlay", BOPBlocks.plant_1, 11);
+		addOre("cropBarley", BOPBlocks.plant_1, 11);
 		addOre("listAllgrain", BOPBlocks.plant_1, 11);
+
+		addOre("listAllmeatraw", BOPBlocks.flesh, 0);
 
 		// machine
 		if (ModuleConfig.machine && ModuleConfig.r_mill) {
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "plantWildrice");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropWildrice");
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
+					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
+							MachineInit.rotaryBlade, 1, 0), "cropWildrice");
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropBarley");
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
+					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
+							MachineInit.rotaryBlade, 1, 0), "cropBarley");
+
+			List<ItemStack> leaves = Lists.newArrayList();
+			leaves.add(new ItemStack(Blocks.WATERLILY, 1, 0));
+			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 10));
+			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 11));
+			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 12));
+			leaves.add(new ItemStack(BOPBlocks.waterlily, 1, 32767));
+			leaves.add(new ItemStack(BOPBlocks.coral, 1, 4));
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0.0F, leaves);
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(
+					MainInit.foodDust, 1, 1), 0.25F, new ItemStack(MachineInit.rotaryBlade, 1, 0), leaves);
 
 			Block stalagmite = Block.REGISTRY.getObject(new ResourceLocation("biomesoplenty", "stone_formations"));
 			if (stalagmite != null && stalagmite != Blocks.AIR) {
@@ -88,6 +118,12 @@ public class DCPluginBoP {
 						MachineInit.rotaryBlade, 1, 1), new ItemStack(stalagmite, 1, 0));
 			}
 
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), new ItemStack(Items.SLIME_BALL, 1,
+					0), 0.25F, new ItemStack(BOPBlocks.mud, 1, 0));
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), new ItemStack(Items.SLIME_BALL,
+					1, 0), 0.25F, new ItemStack(MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPBlocks.mud, 1, 0));
+
 			Item wax = Item.REGISTRY.getObject(new ResourceLocation("forestry", "beeswax"));
 			if (DCIntegrationCore.loadedForestry && wax != null) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
@@ -96,10 +132,6 @@ public class DCPluginBoP {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
 						MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPItems.honeycomb, 1, 0));
 			}
-
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
-					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
-							MachineInit.rotaryBlade, 1, 0), "cropWildrice");
 
 		}
 
@@ -111,7 +143,7 @@ public class DCPluginBoP {
 		if (ModuleConfig.food && ModuleConfig.r_fluid) {
 			FoodFluidRecipe.regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1,
 					3), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(
-							FluidRegistry.WATER, 200), new Object[] { "cropBarlay" });
+							FluidRegistry.WATER, 200), new Object[] { "cropBarley" });
 
 			FoodFluidRecipe.regNonFoodrecipe(new ItemStack(FoodInit.crops, 1,
 					18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,

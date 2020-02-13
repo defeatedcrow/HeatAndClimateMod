@@ -16,6 +16,10 @@ import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.magic.MagicInitRegister;
 import defeatedcrow.hac.main.block.FuelItemBlock;
 import defeatedcrow.hac.main.block.build.BlockAwning;
+import defeatedcrow.hac.main.block.build.BlockBedDC;
+import defeatedcrow.hac.main.block.build.BlockBedDCFuton;
+import defeatedcrow.hac.main.block.build.BlockBedDCRattan;
+import defeatedcrow.hac.main.block.build.BlockBedDCWhite;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
 import defeatedcrow.hac.main.block.build.BlockCarbideLamp;
 import defeatedcrow.hac.main.block.build.BlockChain;
@@ -41,8 +45,10 @@ import defeatedcrow.hac.main.block.build.BlockMetalChest;
 import defeatedcrow.hac.main.block.build.BlockMetalFenceBase;
 import defeatedcrow.hac.main.block.build.BlockMetalLadder;
 import defeatedcrow.hac.main.block.build.BlockMetalPillar;
+import defeatedcrow.hac.main.block.build.BlockOilLamp;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock_L;
+import defeatedcrow.hac.main.block.build.BlockScaffold;
 import defeatedcrow.hac.main.block.build.BlockSlabChal;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSlabSlate;
@@ -52,6 +58,7 @@ import defeatedcrow.hac.main.block.build.BlockTableBase;
 import defeatedcrow.hac.main.block.build.BlockVillageChest;
 import defeatedcrow.hac.main.block.build.BlockWallLamp;
 import defeatedcrow.hac.main.block.build.BlockWallShelf;
+import defeatedcrow.hac.main.block.build.ItemBedDC;
 import defeatedcrow.hac.main.block.build.ItemDoorDC;
 import defeatedcrow.hac.main.block.build.ItemLowChest;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
@@ -61,11 +68,13 @@ import defeatedcrow.hac.main.block.container.BlockCropJutebag;
 import defeatedcrow.hac.main.block.container.BlockDustBag;
 import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
+import defeatedcrow.hac.main.block.container.BlockMiscCake;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
 import defeatedcrow.hac.main.block.device.BlockAcvShield;
 import defeatedcrow.hac.main.block.device.BlockBellow;
 import defeatedcrow.hac.main.block.device.BlockCookingStove;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
+import defeatedcrow.hac.main.block.device.BlockPail;
 import defeatedcrow.hac.main.block.device.BlockShitirin;
 import defeatedcrow.hac.main.block.device.BlockSink;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
@@ -73,6 +82,7 @@ import defeatedcrow.hac.main.block.device.BlockThermometer;
 import defeatedcrow.hac.main.block.device.BlockWindVane;
 import defeatedcrow.hac.main.block.device.ItemBlockShield;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
+import defeatedcrow.hac.main.block.device.ItemPail;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.block.ores.BlockDusts;
 import defeatedcrow.hac.main.block.ores.BlockDusts2;
@@ -134,6 +144,7 @@ import defeatedcrow.hac.main.item.tool.ItemSpadeEarth;
 import defeatedcrow.hac.main.item.tool.ItemStoneYagen;
 import defeatedcrow.hac.main.item.tool.ItemSwordDC;
 import defeatedcrow.hac.main.item.tool.ItemThermalScope;
+import defeatedcrow.hac.main.item.tool.ItemThrowingArrow;
 import defeatedcrow.hac.main.item.tool.ItemTinderDC;
 import defeatedcrow.hac.main.item.tool.ItemWrench;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
@@ -266,6 +277,11 @@ public class MainMaterialRegister {
 		ForgeRegistries.BLOCKS.register(MainInit.bellow);
 		ForgeRegistries.ITEMS.register(new ItemBlockHighTier(MainInit.bellow, 1));
 
+		MainInit.pail = new BlockPail(ClimateCore.PACKAGE_BASE + "_device_pail");
+		MainInit.pail.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_pail");
+		ForgeRegistries.BLOCKS.register(MainInit.pail);
+		ForgeRegistries.ITEMS.register(new ItemPail(MainInit.pail));
+
 		// items
 
 		// title
@@ -327,7 +343,7 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerItem(MainInit.foodMaterials, ClimateCore.PACKAGE_BASE + "_food_materials", ClimateMain.MOD_ID);
 
-		MainInit.bakedApple = new ItemDCFoods(6, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
+		MainInit.bakedApple = new ItemDCFoods(7, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		DCMaterialReg
 				.registerItem(MainInit.bakedApple, ClimateCore.PACKAGE_BASE + "_food_itemfood", ClimateMain.MOD_ID);
 
@@ -370,36 +386,36 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsGlass), "dcs_climate", "dcs_stairs_glass", "build", 15, false);
 
-		MainInit.stairsGypsum = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_gypsum", false,
+		MainInit.stairsGypsum = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_gypsum", false,
 				false).setUnlocalizedName("dcs_stairs_gypsum");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsGypsum, ClimateCore.PACKAGE_BASE + "_stairs_gypsum", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsGypsum), "dcs_climate", "dcs_stairs_gypsum", "build", 15, false);
 
-		MainInit.stairsMarble = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_marble", false,
+		MainInit.stairsMarble = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_marble", false,
 				false).setUnlocalizedName("dcs_stairs_marble");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsMarble, ClimateCore.PACKAGE_BASE + "_stairs_marble", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsMarble), "dcs_climate", "dcs_stairs_marble", "build", 15, false);
 
-		MainInit.stairsSerpentine = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_serpentine",
+		MainInit.stairsSerpentine = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_serpentine",
 				false, false).setUnlocalizedName("dcs_stairs_serpentine");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsSerpentine, ClimateCore.PACKAGE_BASE + "_stairs_serpentine", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsSerpentine), "dcs_climate", "dcs_stairs_serpentine", "build", 15, false);
 
-		MainInit.stairsBedrock = new BlockStairsBase(MainInit.ores.getDefaultState(), "ores/gemblock_bedrock", false,
-				false).setUnlocalizedName("dcs_stairs_bedrock");
+		MainInit.stairsBedrock = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_bedrock",
+				false, false).setUnlocalizedName("dcs_stairs_bedrock");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsBedrock, ClimateCore.PACKAGE_BASE + "_stairs_bedrock", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsBedrock), "dcs_climate", "dcs_stairs_bedrock", "build", 15, false);
 
-		MainInit.stairsDirtbrick = new BlockStairsBase(MainInit.ores.getDefaultState(), "build/build_dirtbrick", false,
-				false).setUnlocalizedName("dcs_stairs_dirtbrick");
+		MainInit.stairsDirtbrick = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "build/build_dirtbrick",
+				false, false).setUnlocalizedName("dcs_stairs_dirtbrick");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsDirtbrick, ClimateCore.PACKAGE_BASE + "_stairs_dirtbrick", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
@@ -474,6 +490,11 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.roofSlateBrown), "dcs_climate", "dcs_roof_slate_brown", "build", 15, false);
 
+		MainInit.plate = new BlockIronPlate(ClimateCore.PACKAGE_BASE + "_build_plate", 1);
+		DCMaterialReg.registerBlock(MainInit.plate, ClimateCore.PACKAGE_BASE + "_build_plate", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item
+				.getItemFromBlock(MainInit.plate), "dcs_climate", "dcs_build_plate", "build", 1, false);
+
 		MainInit.chalLamp = new BlockChalcedonyLamp(ClimateCore.PACKAGE_BASE + "_build_challamp", 15);
 		DCMaterialReg
 				.registerBlock(MainInit.chalLamp, ClimateCore.PACKAGE_BASE + "_build_challamp", ClimateMain.MOD_ID);
@@ -482,11 +503,18 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.wallLamp, ClimateCore.PACKAGE_BASE + "_build_walllamp", ClimateMain.MOD_ID);
 
+		MainInit.oilLamp = new BlockOilLamp(ClimateCore.PACKAGE_BASE + "_build_oillamp");
+		DCMaterialReg.registerBlock(MainInit.oilLamp, ClimateCore.PACKAGE_BASE + "_build_oillamp", ClimateMain.MOD_ID);
+
 		MainInit.desiccant = new BlockDesiccantPackage(ClimateCore.PACKAGE_BASE + "_desiccant");
 		DCMaterialReg.registerBlock(MainInit.desiccant, ClimateCore.PACKAGE_BASE + "_desiccant", ClimateMain.MOD_ID);
 
 		MainInit.freezepack = new BlockCoolantPackage(ClimateCore.PACKAGE_BASE + "_coolant");
 		DCMaterialReg.registerBlock(MainInit.freezepack, ClimateCore.PACKAGE_BASE + "_coolant", ClimateMain.MOD_ID);
+
+		MainInit.scaffold = new BlockScaffold(Material.WOOD, ClimateCore.PACKAGE_BASE + "_build_scaffold");
+		DCMaterialReg
+				.registerBlock(MainInit.scaffold, ClimateCore.PACKAGE_BASE + "_build_scaffold", ClimateMain.MOD_ID);
 
 		if (ModuleConfig.build_advanced) {
 
@@ -690,11 +718,6 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.chairRattan), "dcs_climate", "dcs_chair_rattan", "build", 0, false);
 
-			MainInit.plate = new BlockIronPlate(ClimateCore.PACKAGE_BASE + "_build_plate", 1);
-			DCMaterialReg.registerBlock(MainInit.plate, ClimateCore.PACKAGE_BASE + "_build_plate", ClimateMain.MOD_ID);
-			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.plate), "dcs_climate", "dcs_build_plate", "build", 1, false);
-
 			MainInit.lampCarbide = new BlockCarbideLamp(ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern");
 			DCMaterialReg
 					.registerBlock(MainInit.lampCarbide, ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern", ClimateMain.MOD_ID);
@@ -820,6 +843,24 @@ public class MainMaterialRegister {
 			MainInit.itemDoorSteel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_door_steel_item");
 			ForgeRegistries.ITEMS.register(MainInit.itemDoorSteel);
 
+			MainInit.bed = new BlockBedDC(ClimateCore.PACKAGE_BASE + "_bed");
+			DCMaterialReg.registerBlock(MainInit.bed, ClimateCore.PACKAGE_BASE + "_bed", ClimateMain.MOD_ID);
+
+			MainInit.bedWhite = new BlockBedDCWhite(ClimateCore.PACKAGE_BASE + "_bed_white");
+			DCMaterialReg.registerBlock(MainInit.bedWhite, ClimateCore.PACKAGE_BASE + "_bed_white", ClimateMain.MOD_ID);
+
+			MainInit.bedRattan = new BlockBedDCRattan(ClimateCore.PACKAGE_BASE + "_bed_rattan");
+			DCMaterialReg
+					.registerBlock(MainInit.bedRattan, ClimateCore.PACKAGE_BASE + "_bed_rattan", ClimateMain.MOD_ID);
+
+			MainInit.bedFuton = new BlockBedDCFuton(ClimateCore.PACKAGE_BASE + "_bed_futon");
+			DCMaterialReg.registerBlock(MainInit.bedFuton, ClimateCore.PACKAGE_BASE + "_bed_futon", ClimateMain.MOD_ID);
+
+			MainInit.itemBed = new ItemBedDC((BlockBedDC) MainInit.bed)
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_bed_item");
+			MainInit.itemBed.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_bed_item");
+			ForgeRegistries.ITEMS.register(MainInit.itemBed);
+
 			MainInit.realtimeClock = new BlockRealtimeClock(Material.GROUND,
 					ClimateCore.PACKAGE_BASE + "_device_realtimeclock");
 			DCMaterialReg
@@ -839,6 +880,26 @@ public class MainMaterialRegister {
 					.registerBlock(MainInit.curtainWhite, ClimateCore.PACKAGE_BASE + "_build_curtain", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.curtainWhite), "dcs_climate", "dcs_build_curtain", "build", 0, true);
+
+			MainInit.curtainGray = new BlockCurtain("dcs_build_curtain_gray")
+					.setUnlocalizedName("dcs_build_curtain_gray");
+			DCMaterialReg
+					.registerBlock(MainInit.curtainGray, ClimateCore.PACKAGE_BASE + "_build_curtain_gray", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.curtainGray), "dcs_climate", "dcs_build_curtain_gray", "build", 0, true);
+
+			MainInit.curtainRed = new BlockCurtain("dcs_build_curtain_red").setUnlocalizedName("dcs_build_curtain_red");
+			DCMaterialReg
+					.registerBlock(MainInit.curtainRed, ClimateCore.PACKAGE_BASE + "_build_curtain_red", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.curtainRed), "dcs_climate", "dcs_build_curtain_red", "build", 0, true);
+
+			MainInit.curtainBlue = new BlockCurtain("dcs_build_curtain_blue")
+					.setUnlocalizedName("dcs_build_curtain_blue");
+			DCMaterialReg
+					.registerBlock(MainInit.curtainBlue, ClimateCore.PACKAGE_BASE + "_build_curtain_blue", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.curtainBlue), "dcs_climate", "dcs_build_curtain_blue", "build", 0, true);
 
 			MainInit.chestMetal = new BlockMetalChest(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chest_metal");
 			registerChestBlock(MainInit.chestMetal, ClimateCore.PACKAGE_BASE + "_device_chest_metal", ClimateMain.MOD_ID);
@@ -1006,6 +1067,11 @@ public class MainMaterialRegister {
 
 			MainInit.cartridge = new ItemBullets(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_cartridge");
 			DCMaterialReg.registerItem(MainInit.cartridge, ClimateCore.PACKAGE_BASE + "_cartridge", ClimateMain.MOD_ID);
+
+			MainInit.throwingArrow = new ItemThrowingArrow()
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_throwing_arrow");
+			DCMaterialReg
+					.registerItem(MainInit.throwingArrow, ClimateCore.PACKAGE_BASE + "_throwing_arrow", ClimateMain.MOD_ID);
 		}
 
 		if (ModuleConfig.tool) {
@@ -1287,9 +1353,9 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.dropCont, ClimateCore.PACKAGE_BASE + "_cont_metal", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.dropCont, "cont_metal", 5);
 
-		MainInit.miscCont = new BlockMiscCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_misc", 3);
+		MainInit.miscCont = new BlockMiscCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_misc", 4);
 		DCMaterialReg.registerBlock(MainInit.miscCont, ClimateCore.PACKAGE_BASE + "_cont_misc", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.miscCont, "cont_misc", 3);
+		ClimateMain.proxy.addSidedBlock(MainInit.miscCont, "cont_misc", 4);
 
 		MainInit.cardboard = new BlockCardboard(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cardboard", 5);
 		DCMaterialReg
@@ -1300,13 +1366,17 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.dustBags, ClimateCore.PACKAGE_BASE + "_cont_bags", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.dustBags, "cont_bags", 7);
 
-		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 13);
+		MainInit.cropBasket = new BlockCropBasket(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_basket", 14);
 		DCMaterialReg.registerBlock(MainInit.cropBasket, ClimateCore.PACKAGE_BASE + "_cont_basket", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 13);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropBasket, "cont_basket", 14);
 
-		MainInit.cropJute = new BlockCropJutebag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_jutebag", 3);
+		MainInit.cropJute = new BlockCropJutebag(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_jutebag", 4);
 		DCMaterialReg.registerBlock(MainInit.cropJute, ClimateCore.PACKAGE_BASE + "_cont_jutebag", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.cropJute, "cont_jutebag", 3);
+		ClimateMain.proxy.addSidedBlock(MainInit.cropJute, "cont_jutebag", 4);
+
+		MainInit.dustCake = new BlockMiscCake(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cake", 4);
+		DCMaterialReg.registerBlock(MainInit.dustCake, ClimateCore.PACKAGE_BASE + "_cont_cake", ClimateMain.MOD_ID);
+		ClimateMain.proxy.addSidedBlock(MainInit.dustCake, "cont_cake", 4);
 
 	}
 
@@ -1648,6 +1718,7 @@ public class MainMaterialRegister {
 	private static void registerHarvestLevel() {
 		MainInit.oreNew.setHarvestLevel("pickaxe", 0);
 		MainInit.layerNew.setHarvestLevel("pickaxe", 0);
+		MainInit.builds.setHarvestLevel("pickaxe", 0);
 	}
 
 }

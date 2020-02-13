@@ -8,10 +8,13 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.IceCreamBerryEntity;
+import defeatedcrow.hac.food.entity.IceCreamCocoaEntity;
 import defeatedcrow.hac.food.entity.IceCreamCookieEntity;
 import defeatedcrow.hac.food.entity.IceCreamEntity;
 import defeatedcrow.hac.food.entity.IceCreamKinakoEntity;
 import defeatedcrow.hac.food.entity.IceCreamLemonEntity;
+import defeatedcrow.hac.food.entity.ParfaitBerryEntity;
+import defeatedcrow.hac.food.entity.ParfaitCitrusEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -34,12 +37,12 @@ public class IceCreamItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 4;
+		return 7;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 4);
+		int i = MathHelper.clamp(0, meta, 7);
 		String s = "items/food/icecream";
 		s += "_" + this.getNameSuffix()[i];
 		if (f) {
@@ -50,12 +53,8 @@ public class IceCreamItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"milk",
-				"kinako",
-				"berry",
-				"lemon",
-				"cookie"
+		String[] s = { "milk", "kinako", "berry", "lemon", "cookie", "cocoa", "parfait_berry", "parfait_citrus"
+
 		};
 		return s;
 	}
@@ -76,18 +75,31 @@ public class IceCreamItem extends FoodItemBase {
 		if (i == 4) {
 			ret = new IceCreamCookieEntity(world, x, y, z, player);
 		}
+		if (i == 5) {
+			ret = new IceCreamCocoaEntity(world, x, y, z, player);
+		}
+		if (i == 6) {
+			ret = new ParfaitBerryEntity(world, x, y, z, player);
+		}
+		if (i == 7) {
+			ret = new ParfaitCitrusEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
 	@Override
 	public List<PotionEffect> getPotionEffect(int meta) {
 		List<PotionEffect> ret = super.getPotionEffect(meta);
-		ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(600), 0));
+		int i = meta == 6 || meta == 7 ? 3600 : 600;
+		ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, i, 0));
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
+		if (meta == 6 || meta == 7) {
+			return 12;
+		}
 		return meta == 0 ? 3 : 4;
 	}
 
@@ -100,9 +112,10 @@ public class IceCreamItem extends FoodItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
-		PotionEffect eff = new PotionEffect(MobEffects.FIRE_RESISTANCE, MathHelper.ceil(600));
+		int i = stack.getItemDamage() == 6 || stack.getItemDamage() == 7 ? 3600 : 600;
+		PotionEffect eff = new PotionEffect(MobEffects.FIRE_RESISTANCE, i);
 		String effName = I18n.format(MobEffects.FIRE_RESISTANCE.getName());
-		effName += " (" + StringUtils.ticksToElapsedTime(600) + ")";
+		effName += " (" + StringUtils.ticksToElapsedTime(i) + ")";
 		tooltip.add(TextFormatting.AQUA.toString() + effName);
 	}
 

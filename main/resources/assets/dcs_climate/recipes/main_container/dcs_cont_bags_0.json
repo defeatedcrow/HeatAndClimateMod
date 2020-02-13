@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "minecraft:sugar",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "dustSugar"
   }
  },
  "result": {

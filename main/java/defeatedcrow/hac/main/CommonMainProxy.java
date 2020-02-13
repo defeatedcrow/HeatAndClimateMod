@@ -50,6 +50,10 @@ import defeatedcrow.hac.magic.client.gui.GuiLivingDC;
 import defeatedcrow.hac.magic.client.gui.GuiVillagerDC;
 import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
+import defeatedcrow.hac.main.block.build.TileBedDC;
+import defeatedcrow.hac.main.block.build.TileBedDCFuton;
+import defeatedcrow.hac.main.block.build.TileBedDCRattan;
+import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileChandelierSalt;
@@ -64,6 +68,7 @@ import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
+import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
@@ -96,6 +101,7 @@ import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
+import defeatedcrow.hac.main.entity.EntityThrowingArrow;
 import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.CombatEvent;
@@ -197,12 +203,10 @@ public class CommonMainProxy implements IGuiHandler {
 				"dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.agri);
 
-		if (ModuleConfig.machine) {
-			MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
-					"dcs_climate:textures/models/agri_researcher.png",
-					"dcs_climate:textures/models/zombie_agri_researcher.png");
-			ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
-		}
+		MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
+				"dcs_climate:textures/models/agri_researcher.png",
+				"dcs_climate:textures/models/zombie_agri_researcher.png");
+		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
 
 		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png",
 				"dcs_climate:textures/models/zombie_trader.png");
@@ -217,7 +221,9 @@ public class CommonMainProxy implements IGuiHandler {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)) });
 
-		agriList.addTrade(2, new ITradeList[] { HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)) });
+		agriList.addTrade(2, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)) });
 
 		agriList.addTrade(3, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
@@ -235,6 +241,7 @@ public class CommonMainProxy implements IGuiHandler {
 		VillagerCareer traderList = new VillagerCareer(MainInit.trader, "dcs_trader");
 
 		traderList.addTrade(1, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3)) });
 
 		traderList.addTrade(2, new ITradeList[] {
@@ -243,42 +250,45 @@ public class CommonMainProxy implements IGuiHandler {
 
 		traderList.addTrade(3, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)) });
 
 		traderList.addTrade(4, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)) });
 
 		traderList.addTrade(5, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
+
+		traderList.addTrade(6, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
 
-		if (ModuleConfig.machine) {
-			VillagerCareer machineList = new VillagerCareer(MainInit.engineer, "dcs_engineer");
+		VillagerCareer machineList = new VillagerCareer(MainInit.engineer, "dcs_engineer");
 
-			machineList.addTrade(1, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)) });
+		machineList.addTrade(1, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(2, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+		machineList.addTrade(2, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(3, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+		machineList.addTrade(3, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(4, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+		machineList.addTrade(4, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
 
-			machineList.addTrade(5, new ITradeList[] {
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
-				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
-		}
+		machineList.addTrade(5, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
+
+		machineList.addTrade(6, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
 
 	}
 
@@ -335,6 +345,8 @@ public class CommonMainProxy implements IGuiHandler {
 
 		DCRegistryUtil.addEntity(EntityBigCushionBrown.class, "main", "big_cushion_brown");
 
+		DCRegistryUtil.addEntity(EntityThrowingArrow.class, "main", "bullet_arrow", 1);
+
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadEntity();
 
@@ -365,6 +377,11 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileRealtimeClock.class, "dcs_te_realtime_clock");
 		GameRegistry.registerTileEntity(TileRealtimeClock_L.class, "dcs_te_realtime_clock_l");
 		GameRegistry.registerTileEntity(TileMCClock_L.class, "dcs_te_mc_clock_l");
+		GameRegistry.registerTileEntity(TilePail.class, "dcs_te_pail");
+		GameRegistry.registerTileEntity(TileBedDC.class, "dcs_te_bed_iron");
+		GameRegistry.registerTileEntity(TileBedDCWhite.class, "dcs_te_bed_white");
+		GameRegistry.registerTileEntity(TileBedDCRattan.class, "dcs_te_bed_rattan");
+		GameRegistry.registerTileEntity(TileBedDCFuton.class, "dcs_te_bed_futon");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();

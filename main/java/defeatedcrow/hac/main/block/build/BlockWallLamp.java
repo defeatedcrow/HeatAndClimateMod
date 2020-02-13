@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.base.BlockDC;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -39,8 +40,8 @@ public class BlockWallLamp extends BlockDC {
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.GLASS);
 		this.setLightLevel(1.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(
-				DCState.TYPE4, 0));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
+				.withProperty(DCState.TYPE4, 0));
 		this.maxMeta = 3;
 		this.fullBlock = false;
 		this.lightOpacity = 0;
@@ -152,10 +153,7 @@ public class BlockWallLamp extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.FACING,
-				DCState.TYPE4
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.FACING, DCState.TYPE4 });
 	}
 
 	// 接してる面側が水だったら、その接してる水の側面を描画しない
@@ -165,6 +163,11 @@ public class BlockWallLamp extends BlockDC {
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 			return true;
 		return false;
+	}
+
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
 	}
 
 }

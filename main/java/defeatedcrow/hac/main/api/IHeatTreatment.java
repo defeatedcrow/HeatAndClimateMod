@@ -7,6 +7,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 
 public interface IHeatTreatment {
 
@@ -50,6 +51,6 @@ public interface IHeatTreatment {
 
 	ItemStack getFail();
 
-	ItemStack getCurrentOutput(ItemStack in, IClimate climate);
+	ActionResult<ItemStack> getCurrentOutput(ItemStack in, IClimate climate);
 
 }

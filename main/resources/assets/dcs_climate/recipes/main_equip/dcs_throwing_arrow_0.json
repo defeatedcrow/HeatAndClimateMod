@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "feather"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_throwing_arrow",
+  "count": 4,
+  "data": 0
+ }
+}
