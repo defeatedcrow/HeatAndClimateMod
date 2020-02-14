@@ -1,6 +1,7 @@
 
 ## item
 ## mod tools
+item.dcs_icons_hac.name=Heat And Climate Icon
 item.dcs_checker_normal.name=Climate Checker
 item.dcs_creative_drill_normal.name=Crow's Drill
 item.dcs_wrench_brass.name=Adjustable Wrench
@@ -267,6 +268,7 @@ item.dcs_food_noentity_date_and_nut.name=Date and Nut
 item.dcs_food_noentity_toffee.name=Toffee
 item.dcs_food_noentity_tofu.name=Tofu
 item.dcs_food_noentity_smoked_salmon.name=Smoked Salmon
+item.dcs_food_noentity_raisin.name=Raisin
 item.dcs_food_bread_roundbread_raw.name=Dough
 item.dcs_food_bread_roundbread_baked.name=Round Bread
 item.dcs_food_bread_squarebread_raw.name=Molded Dough
@@ -1705,8 +1707,10 @@ tipped_arrow.effect.dcs.heavyboots=Arrow of Iron Boots
 
 dcs.potion.nimble=Nimble
 potion.effect.dcs.nimble=Nimble
-splash_potion.effect.dcs.nimble=Nimbleのスプラッシュポーション
-lingering_potion.effect.dcs.nimble=Nimbleの残留ポーション
+splash_potion.effect.dcs.nimble=Splash Potion of Nimble
+lingering_potion.effect.dcs.nimble=Lingering Potion of Nimble
+
+tipped_arrow.effect.dcs.freeze_res=Arrow of Freeze Resistance
 
 ## enchantment
 enchantment.dcs.venom=Venom Arrow
