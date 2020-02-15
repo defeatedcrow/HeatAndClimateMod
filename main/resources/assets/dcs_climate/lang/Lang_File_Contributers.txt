@@ -4,6 +4,7 @@ I thank authors of each language files.
 en_US
 TartaricAcid
 0999312
+RisingInIris2017
 
 zh_CN
 TartaricAcid

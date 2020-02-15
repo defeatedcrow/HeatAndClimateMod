@@ -37,8 +37,8 @@ public class GuiCrusher extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String s = I18n.translateToLocal(this.machine.getName());
-		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92,
-				4210752);
+		this.fontRenderer.drawString(this.playerInventory.getDisplayName()
+				.getUnformattedText(), 8, this.ySize - 92, 4210752);
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class GuiCrusher extends GuiContainer {
 	private int getCookProgressScaled(int pixels) {
 		int i = this.machine.getField(0);
 		int j = this.machine.getMaxBurnTime();
-		return i != 0 ? i * pixels / j : 0;
+		return i != 0 && j != 0 ? i * pixels / j : 0;
 	}
 
 	protected static ResourceLocation guiTex() {

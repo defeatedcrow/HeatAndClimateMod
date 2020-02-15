@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.2.7 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.2.8 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1833,6 +1833,12 @@ Y = 色のキューブ
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
 
+○3.2.8
+　修正
+　　・マシンGUIのクラッシュを修正
+　EX
+　　・zh_cn、en_us更新 (RisingInIris2017氏に感謝!)
+
 ○3.2.7
 　新規
 　　・金のペンダント
@@ -1843,6 +1849,8 @@ Y = 色のキューブ
 　　・魔法のバッジのテクスチャを変更
 　修正
 　　・ボウガンのダメージ計算式がおかしい
+　EX
+　　・UndergroundBiomesの連携要素を追加
 
 ○3.2.6
 　新規

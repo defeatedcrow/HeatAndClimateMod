@@ -137,7 +137,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 	/* 燃焼判定 */
 
 	public boolean hasSteam() {
-		if (FluidDictionaryDC.matchFluidName(inputT.getFluidType(), "steam")) {
+		if (FluidDictionaryDC.matchFluidName(inputT.getFluidType(), "steam") && inputT.getFluidAmount() >= 10) {
 			return true;
 		}
 		return false;

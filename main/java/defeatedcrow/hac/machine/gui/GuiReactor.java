@@ -46,8 +46,8 @@ public class GuiReactor extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92,
-				4210752);
+		this.fontRenderer.drawString(this.playerInventory.getDisplayName()
+				.getUnformattedText(), 8, this.ySize - 92, 4210752);
 
 		String s1 = machine.getField(11) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(11)).name();
 		String s2 = machine.getField(12) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(12)).name();
@@ -199,7 +199,7 @@ public class GuiReactor extends GuiContainer {
 	private int getCookProgressScaled(int pixels) {
 		int i = this.machine.getField(0);
 		int j = this.machine.getMaxBurnTime();
-		return i != 0 ? i * pixels / j : 0;
+		return i != 0 && j != 0 ? i * pixels / j : 0;
 	}
 
 	protected static ResourceLocation guiTex() {
@@ -220,8 +220,8 @@ public class GuiReactor extends GuiContainer {
 				} else {
 					n = machine.getField(11) + 1;
 				}
-				mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK,
-						1.0F));
+				mc.getSoundHandler().playSound(PositionedSoundRecord
+						.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 0, (byte) n));
 			}
 			if (isPointInRegion(69, 9, 12, 6, x, y)) {
@@ -230,8 +230,8 @@ public class GuiReactor extends GuiContainer {
 				} else {
 					n = machine.getField(12) + 1;
 				}
-				mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK,
-						1.0F));
+				mc.getSoundHandler().playSound(PositionedSoundRecord
+						.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 1, (byte) n));
 			}
 			if (isPointInRegion(110, 39, 12, 6, x, y)) {
@@ -240,8 +240,8 @@ public class GuiReactor extends GuiContainer {
 				} else {
 					n = machine.getField(13) + 1;
 				}
-				mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK,
-						1.0F));
+				mc.getSoundHandler().playSound(PositionedSoundRecord
+						.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 2, (byte) n));
 			}
 			if (isPointInRegion(150, 39, 12, 6, x, y)) {
@@ -250,8 +250,8 @@ public class GuiReactor extends GuiContainer {
 				} else {
 					n = machine.getField(14) + 1;
 				}
-				mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK,
-						1.0F));
+				mc.getSoundHandler().playSound(PositionedSoundRecord
+						.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 3, (byte) n));
 			}
 		}
