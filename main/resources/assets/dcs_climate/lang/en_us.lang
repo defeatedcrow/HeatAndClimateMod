@@ -1729,6 +1729,7 @@ enchantment.dcs.robber=Highway Robber
 entity.Villager.dcs_trader=Merchant
 entity.Villager.dcs_agri_researcher=Agricultural Researcher
 entity.Villager.dcs_engineer=Mechanical Engineer
+entity.Villager.dcs_tailor=Tailor
 
 ## entities
 entity.dcs.food.r_bread.name=Round Bread

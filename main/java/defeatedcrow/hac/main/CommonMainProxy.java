@@ -215,6 +215,10 @@ public class CommonMainProxy implements IGuiHandler {
 				"dcs_climate:textures/models/zombie_trader.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.trader);
 
+		MainInit.tailor = new VillagerProfession("dcs_climate:tailor", "dcs_climate:textures/models/tailor.png",
+				"dcs_climate:textures/models/zombie_tailor.png");
+		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.tailor);
+
 		HaCTradeData.init();
 
 		// HaCCrops
@@ -292,6 +296,32 @@ public class CommonMainProxy implements IGuiHandler {
 		machineList.addTrade(6, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
+
+		VillagerCareer tailorList = new VillagerCareer(MainInit.tailor, "dcs_tailor");
+
+		tailorList.addTrade(1, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)) });
+
+		tailorList.addTrade(2, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)) });
+
+		tailorList.addTrade(3, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)) });
+
+		tailorList.addTrade(4, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)) });
+
+		tailorList.addTrade(5, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)) });
+
+		tailorList.addTrade(6, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)) });
 
 	}
 

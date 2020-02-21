@@ -9,6 +9,7 @@ import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -38,6 +39,9 @@ public class HaCTradeData {
 	public static final List<HaCTradeData> MACHINE1 = Lists.newArrayList();
 	public static final List<HaCTradeData> MACHINE2 = Lists.newArrayList();
 	public static final List<HaCTradeData> MACHINE3 = Lists.newArrayList();
+	public static final List<HaCTradeData> TAILOR1 = Lists.newArrayList();
+	public static final List<HaCTradeData> TAILOR2 = Lists.newArrayList();
+	public static final List<HaCTradeData> TAILOR3 = Lists.newArrayList();
 
 	public static void init() {
 
@@ -161,6 +165,47 @@ public class HaCTradeData {
 			MACHINE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.rotaryBlade, 1, 0), 12));
 			MACHINE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.rotaryBlade, 1, 1), 24));
 			MACHINE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.scooter, 1, 0), 32));
+		}
+
+		TAILOR1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.leatherHat, 1, 0), 3));
+		TAILOR1.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.linenUnder, 1,
+				0)), 3));
+		TAILOR1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 3), 1));
+
+		TAILOR2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 4), 1));
+		TAILOR2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothCoat, 1, 0), 5));
+		TAILOR2.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.clothUnder, 1,
+				0)), 5));
+
+		TAILOR3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.cottonHat, 1, 0), 8));
+		TAILOR3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 7), 4));
+
+		if (ModuleConfig.clothes_advanced) {
+			TAILOR1.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.linenShirt, 1,
+					0)), 3));
+			TAILOR1.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.linenBottom,
+					1, 0)), 3));
+
+			TAILOR2.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.clothShirt, 1,
+					0)), 5));
+			TAILOR2.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.clothBottom,
+					1, 0)), 5));
+			TAILOR2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.modsCoat, 1, 0), 5));
+			TAILOR2.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.woolJacket, 1,
+					0)), 4));
+			TAILOR2.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.hoodie, 1,
+					0)), 5));
+
+			TAILOR3.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.trackSuit, 1,
+					0)), 7));
+			TAILOR3.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.silkCape, 1,
+					0)), 8));
+			TAILOR3.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.workerWear, 1,
+					0)), 6));
+
+			if (ModuleConfig.machine) {
+				TAILOR3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.synthetic, 1, 1), 5));
+			}
 		}
 
 	}

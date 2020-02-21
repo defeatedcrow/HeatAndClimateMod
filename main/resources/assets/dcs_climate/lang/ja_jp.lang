@@ -1701,6 +1701,7 @@ enchantment.dcs.robber=追い剥ぎ
 entity.Villager.dcs_trader=貿易商人
 entity.Villager.dcs_agri_researcher=農業研究家
 entity.Villager.dcs_engineer=機械技師
+entity.Villager.dcs_tailor=裁縫師
 
 ## advancement
 advancements.dcs_climate.core.title=Heat and Climate

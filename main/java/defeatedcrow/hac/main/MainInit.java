@@ -355,6 +355,7 @@ public class MainInit {
 	public static VillagerProfession trader;
 	public static VillagerProfession agri;
 	public static VillagerProfession engineer;
+	public static VillagerProfession tailor;
 
 	// plugin
 	public static Item circuit;
