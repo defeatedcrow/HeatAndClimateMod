@@ -108,7 +108,7 @@ public class GuiFluidProcessor extends GuiContainer {
 			int i = x - this.guiLeft;
 			int j = y - this.guiTop;
 			if (isPointInRegion(80, 14, 18, 14, x, y)) {
-				if (!processor.inputT.isEmpty() && !processor.outputT.isEmpty()) {
+				if (!processor.inputT.isEmpty() || !processor.outputT.isEmpty()) {
 					mc.getSoundHandler().playSound(PositionedSoundRecord
 							.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 					DCMainPacket.INSTANCE.sendToServer(new MessageFluidSwitchButton(processor.getPos()));

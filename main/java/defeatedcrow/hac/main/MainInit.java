@@ -185,6 +185,7 @@ public class MainInit {
 	public static Block wallshelfRattan;
 
 	// device
+	public static Block firestand;
 	public static Block chamber;
 	public static Block shitirin;
 	public static Block fuelStove;
@@ -193,6 +194,8 @@ public class MainInit {
 	public static Block thermometer;
 	public static Block windvane;
 	public static Block pail;
+
+	public static Block geyser;
 
 	// item
 	// ores
@@ -383,6 +386,7 @@ public class MainInit {
 	public static Fluid fuelGas;
 	public static Fluid nitrogen;
 	public static Fluid ethanol;
+	public static Fluid steam;
 
 	public static Block oilBlock;
 	public static Block greenTeaBlock;
@@ -404,5 +408,6 @@ public class MainInit {
 	public static Block fuelGasBlock;
 	public static Block nitrogenBlock;
 	public static Block ethanolBlock;
+	public static Block steamBlock;
 
 }

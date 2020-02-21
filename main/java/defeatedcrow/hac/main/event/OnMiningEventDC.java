@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.BlockBush;
@@ -141,6 +142,27 @@ public class OnMiningEventDC {
 		IBlockState fluid = event.getWorld().getBlockState(event.getPos());
 		if (fluid.getBlock() == MainInit.hotSpringBlock) {
 			event.setResult(Result.ALLOW);
+		}
+	}
+
+	@SubscribeEvent
+	public void onFirePlace(BlockEvent.PlaceEvent event) {
+		IBlockState placed = event.getPlacedBlock();
+		IBlockState against = event.getPlacedAgainst();
+		if (placed.getBlock() == Blocks.FIRE && against.getBlock() == MainInit.firestand) {
+			if (!event.getWorld().isRemote) {
+				BlockPos p = null;
+				for (EnumFacing f : EnumFacing.VALUES) {
+					if (event.getWorld().getBlockState(event.getPos().offset(f)).getBlock() == MainInit.firestand) {
+						p = event.getPos().offset(f);
+					}
+				}
+				if (p != null) {
+					BlockFirestand.changeLitState(event.getWorld(), p, true);
+				}
+				event.getPlayer().playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 0.8F, 1.0F);
+			}
+			event.setCanceled(true);
 		}
 	}
 

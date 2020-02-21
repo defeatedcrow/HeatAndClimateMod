@@ -24,6 +24,14 @@ public class FoodBasicRecipe {
 			'Y',
 			"itemCloth" });
 
+		DCRecipe.jsonShapedRecipe("food", new ItemStack(FoodInit.skillet, 1, 0), new Object[] {
+			"XXX",
+			"XXY",
+			'X',
+			"ingotIron",
+			'Y',
+			"itemCloth" });
+
 		DCRecipe.jsonShapedRecipe("food", new ItemStack(FoodInit.steelPot, 1, 0), new Object[] {
 			"XYX",
 			"X X",
@@ -79,6 +87,9 @@ public class FoodBasicRecipe {
 		// 中身リセット
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.potteryPot, 1, 0), new Object[] {
 			new ItemStack(FoodInit.potteryPot, 1, 0) });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.skillet, 1, 0), new Object[] {
+			new ItemStack(FoodInit.skillet, 1, 0) });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.steelPot, 1, 0), new Object[] {
 			new ItemStack(FoodInit.steelPot, 1, 0) });

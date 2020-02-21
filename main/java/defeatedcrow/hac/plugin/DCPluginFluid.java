@@ -57,6 +57,7 @@ public class DCPluginFluid {
 				ClimateAPI.registerBlock.registerHeatBlock(b5, 32767, DCHeatTier.BOIL);
 				ClimateAPI.registerBlock.registerAirBlock(b5, 32767, DCAirflow.NORMAL);
 			}
+			FluidDictionaryDC.registerFluidDic(f5, "steam");
 		}
 
 		registerPotion(FluidRegistry.getFluid("ic2biomass"), MobEffects.NAUSEA);
@@ -239,6 +240,8 @@ public class DCPluginFluid {
 		registerPotion(FluidRegistry.getFluid("dcs.milk_cream"), MobEffects.INSTANT_HEALTH);
 
 		registerPotion(FluidRegistry.getFluid("dcs.hotspring"), MobEffects.REGENERATION);
+
+		registerPotion(FluidRegistry.getFluid("dcs.steam"), MobEffects.LEVITATION);
 
 		// animania
 		registerPotion(FluidRegistry.getFluid("milk_holstein"), MobEffects.REGENERATION);

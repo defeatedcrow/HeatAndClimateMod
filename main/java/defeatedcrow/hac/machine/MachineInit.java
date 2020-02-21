@@ -19,10 +19,11 @@ public class MachineInit {
 	public static Block shaft_t_b;
 	public static Block shaft_x;
 	public static Block gearbox;
-
+	@Deprecated
 	public static Block piston;
 
 	public static Block fan;
+	@Deprecated
 	public static Block redbox;
 	public static Block spinning;
 

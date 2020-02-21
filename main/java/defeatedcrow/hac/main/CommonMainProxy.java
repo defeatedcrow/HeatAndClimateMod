@@ -67,6 +67,8 @@ import defeatedcrow.hac.main.block.build.TileVillageChest;
 import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
+import defeatedcrow.hac.main.block.device.TileFirestand;
+import defeatedcrow.hac.main.block.device.TileGeyser;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
@@ -130,6 +132,7 @@ import defeatedcrow.hac.main.worldgen.MazaiLakeGen;
 import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
+import defeatedcrow.hac.main.worldgen.WorldGenHotspring;
 import defeatedcrow.hac.main.worldgen.WorldGenOres3;
 import defeatedcrow.hac.main.worldgen.WorldGenSaplings;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
@@ -382,6 +385,8 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileBedDCWhite.class, "dcs_te_bed_white");
 		GameRegistry.registerTileEntity(TileBedDCRattan.class, "dcs_te_bed_rattan");
 		GameRegistry.registerTileEntity(TileBedDCFuton.class, "dcs_te_bed_futon");
+		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
+		GameRegistry.registerTileEntity(TileFirestand.class, "dcs_te_firestand");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();
@@ -409,6 +414,9 @@ public class CommonMainProxy implements IGuiHandler {
 			}
 			if (ModuleConfig.food) {
 				GameRegistry.registerWorldGenerator(new WorldGenSaplings(false), 5);
+			}
+			if (WorldGenConfig.hotspringGen > 0) {
+				GameRegistry.registerWorldGenerator(new WorldGenHotspring(), 3);
 			}
 		}
 	}

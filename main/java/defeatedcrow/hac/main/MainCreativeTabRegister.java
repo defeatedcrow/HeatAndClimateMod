@@ -57,6 +57,7 @@ public class MainCreativeTabRegister {
 		MainInit.freezepack.setCreativeTab(ClimateMain.build);
 
 		// device
+		MainInit.firestand.setCreativeTab(ClimateMain.machine);
 		MainInit.chamber.setCreativeTab(ClimateMain.machine);
 		MainInit.shitirin.setCreativeTab(ClimateMain.machine);
 		MainInit.fuelStove.setCreativeTab(ClimateMain.machine);
@@ -65,6 +66,7 @@ public class MainCreativeTabRegister {
 		MainInit.windvane.setCreativeTab(ClimateCore.climate);
 		MainInit.bellow.setCreativeTab(ClimateMain.machine);
 		MainInit.pail.setCreativeTab(ClimateMain.machine);
+		MainInit.geyser.setCreativeTab(ClimateCore.climate);
 
 		// item
 		// ores

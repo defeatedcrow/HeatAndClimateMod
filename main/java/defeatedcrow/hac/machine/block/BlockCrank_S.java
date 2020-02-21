@@ -15,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+@Deprecated
 public class BlockCrank_S extends BlockTorqueBase {
 
 	public BlockCrank_S(String s) {

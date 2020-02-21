@@ -122,7 +122,7 @@ public class MainCoreConfig {
 
 	}
 
-	public static void leadBlockNames() {
+	public static void loadBlockNames() {
 		disables.addAll(MainUtil.getListFromStrings(blocknames, "DiamondBadge Invalid List"));
 	}
 

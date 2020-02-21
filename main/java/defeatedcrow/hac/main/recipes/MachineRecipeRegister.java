@@ -320,6 +320,7 @@ public class MachineRecipeRegister {
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.lampCarbide, 32767, DCHeatTier.WARM);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.lampGas, 32767, DCHeatTier.WARM);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.oilLamp, 32767, DCHeatTier.WARM);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.geyser, 32767, DCHeatTier.OVEN);
 	}
 
 }

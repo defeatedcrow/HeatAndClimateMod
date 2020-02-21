@@ -73,6 +73,8 @@ import defeatedcrow.hac.main.block.container.BlockMiscCont;
 import defeatedcrow.hac.main.block.device.BlockAcvShield;
 import defeatedcrow.hac.main.block.device.BlockBellow;
 import defeatedcrow.hac.main.block.device.BlockCookingStove;
+import defeatedcrow.hac.main.block.device.BlockFirestand;
+import defeatedcrow.hac.main.block.device.BlockGeyser;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
 import defeatedcrow.hac.main.block.device.BlockPail;
 import defeatedcrow.hac.main.block.device.BlockShitirin;
@@ -209,7 +211,7 @@ public class MainMaterialRegister {
 		MainInit.oreNew = new BlockOreNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone_new", 14);
 		DCMaterialReg.registerBlock(MainInit.oreNew, ClimateCore.PACKAGE_BASE + "_ore_stone_new", ClimateMain.MOD_ID);
 
-		MainInit.layerNew = new BlockLayerNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_layer_stone_new", 6);
+		MainInit.layerNew = new BlockLayerNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_layer_stone_new", 7);
 		DCMaterialReg
 				.registerBlock(MainInit.layerNew, ClimateCore.PACKAGE_BASE + "_layer_stone_new", ClimateMain.MOD_ID);
 
@@ -245,12 +247,16 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.lightOrb, ClimateCore.PACKAGE_BASE + "_build_lightorb", ClimateMain.MOD_ID);
 
-		MainInit.chamber = new BlockNormalChamber(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chamber", 1);
+		MainInit.firestand = new BlockFirestand(ClimateCore.PACKAGE_BASE + "_device_firestand");
+		DCMaterialReg
+				.registerBlock(MainInit.firestand, ClimateCore.PACKAGE_BASE + "_device_firestand", ClimateMain.MOD_ID);
+
+		MainInit.chamber = new BlockNormalChamber(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chamber", 3);
 		MainInit.chamber.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_chamber");
 		ForgeRegistries.BLOCKS.register(MainInit.chamber);
 		ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.chamber));
 
-		MainInit.shitirin = new BlockShitirin(Material.CLAY, ClimateCore.PACKAGE_BASE + "_device_shitirin", 1);
+		MainInit.shitirin = new BlockShitirin(Material.CLAY, ClimateCore.PACKAGE_BASE + "_device_shitirin", 3);
 		MainInit.shitirin.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_shitirin");
 		ForgeRegistries.BLOCKS.register(MainInit.shitirin);
 		ForgeRegistries.ITEMS.register(new ItemBlockShitirin(MainInit.shitirin));
@@ -281,6 +287,10 @@ public class MainMaterialRegister {
 		MainInit.pail.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_pail");
 		ForgeRegistries.BLOCKS.register(MainInit.pail);
 		ForgeRegistries.ITEMS.register(new ItemPail(MainInit.pail));
+
+		MainInit.geyser = new BlockGeyser(ClimateCore.PACKAGE_BASE + "_device_geyser_stone");
+		DCMaterialReg
+				.registerBlock(MainInit.geyser, ClimateCore.PACKAGE_BASE + "_device_geyser_stone", ClimateMain.MOD_ID);
 
 		// items
 
@@ -1610,6 +1620,17 @@ public class MainMaterialRegister {
 				.registerBlock(MainInit.milkBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_raw_milk", ClimateMain.MOD_ID);
 		MainInit.milk.setBlock(MainInit.milkBlock);
 
+		MainInit.steam = new Fluid("dcs.steam", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/steam_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/steam_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".steam").setDensity(-500).setViscosity(300)
+						.setGaseous(true).setTemperature(390);
+		FluidRegistry.registerFluid(MainInit.steam);
+		MainInit.steamBlock = new DCFluidBlockBase(MainInit.steam, "steam_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_steam");
+		DCMaterialReg
+				.registerBlock(MainInit.steamBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_steam", ClimateMain.MOD_ID);
+		MainInit.steam.setBlock(MainInit.steamBlock);
+
 		// bucket
 		FluidRegistry.addBucketForFluid(MainInit.oil);
 		FluidRegistry.addBucketForFluid(MainInit.greenTea);
@@ -1632,6 +1653,7 @@ public class MainMaterialRegister {
 		FluidRegistry.addBucketForFluid(MainInit.nitrogen);
 		FluidRegistry.addBucketForFluid(MainInit.ethanol);
 		FluidRegistry.addBucketForFluid(MainInit.milk);
+		FluidRegistry.addBucketForFluid(MainInit.steam);
 
 		// heat tier
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.coffeeBlock, 0, DCHeatTier.HOT);
@@ -1645,6 +1667,7 @@ public class MainMaterialRegister {
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.stockBlock, 0, DCHeatTier.HOT);
 		ClimateAPI.registerBlock.registerHumBlock(MainInit.stockBlock, 0, DCHumidity.UNDERWATER);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.nitrogenBlock, 0, DCHeatTier.CRYOGENIC);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.steamBlock, 0, DCHeatTier.BOIL);
 
 		// dic
 		FluidDictionaryDC.registerFluidDic(MainInit.hydrogen, "hydrogen");
@@ -1669,7 +1692,7 @@ public class MainMaterialRegister {
 		FluidDictionaryDC.registerFluidDic(MainInit.stock, "stock");
 		FluidDictionaryDC.registerFluidDic(MainInit.soyMilk, "soymilk");
 		FluidDictionaryDC.registerFluidDic(MainInit.milk, "milk");
-
+		FluidDictionaryDC.registerFluidDic(MainInit.steam, "steam");
 	}
 
 	static void registerIntegration() {

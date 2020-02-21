@@ -38,7 +38,8 @@ public class OredicConfig {
 		{ "oreNiter" },
 		{ "oreSulfur" },
 		{ "oreSalt" },
-		{ "oreSerpentine" } };
+		{ "oreSerpentine" },
+		{ "oreTravertine" } };
 
 	public static String[][] items = new String[][] {
 		{ "oreCopper" },

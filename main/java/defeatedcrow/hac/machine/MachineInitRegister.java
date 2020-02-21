@@ -456,12 +456,12 @@ public class MachineInitRegister {
 		MachineInit.shaft2_x.setCreativeTab(ClimateMain.machine);
 		MachineInit.gearbox.setCreativeTab(ClimateMain.machine);
 		MachineInit.gearbox2.setCreativeTab(ClimateMain.machine);
-		MachineInit.piston.setCreativeTab(ClimateMain.machine);
+		// MachineInit.piston.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.stonemill.setCreativeTab(ClimateMain.machine);
 		MachineInit.fan.setCreativeTab(ClimateMain.machine);
 		MachineInit.spinning.setCreativeTab(ClimateMain.machine);
-		MachineInit.redbox.setCreativeTab(ClimateMain.machine);
+		// MachineInit.redbox.setCreativeTab(ClimateMain.machine);
 		MachineInit.catapult.setCreativeTab(ClimateMain.machine);
 		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
 

@@ -728,6 +728,7 @@ tile.dcs_layer_stone_new_3.name=Niter Ore
 tile.dcs_layer_stone_new_4.name=Sulfur Ore
 tile.dcs_layer_stone_new_5.name=Salt Ore
 tile.dcs_layer_stone_new_6.name=Serpentine Ore
+tile.dcs_layer_stone_new_7.name=Travertine
 tile.dcs_ore_stone_new_0.name=Red Ore
 tile.dcs_ore_stone_new_1.name=Green Ore
 tile.dcs_ore_stone_new_2.name=Blue Ore
@@ -1239,6 +1240,9 @@ tile.dcs_device_silkworm_box_0.name=Silkworm Rearing Box
 tile.dcs_device_entity_panel_0.name=Thermal Entity Sensor
 tile.dcs_device_pail_0.name=Pail
 tile.dcs_device_oscillator_0.name=RS Oscillator
+tile.dcs_device_geyser_stone_0.name=Fumarole Block
+tile.dcs_device_firestand_0.name=Fire Stand
+tile.dcs_device_skillet_0.name=Iron Skillet
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -1422,6 +1426,8 @@ fluid.dcs.soy_milk=Soy Milk
 tile.dcs_fluidblock_soy_milk_0.name=Soy Milk
 fluid.dcs.raw_milk=Raw Milk
 tile.dcs_fluidblock_raw_milk_0.name=Raw Milk
+fluid.dcs.steam=Steam
+tile.dcs_fluidblock_steam_0.name=Steam
 
 ## tip
 dcs.tip.heat=HeatTier
@@ -1544,6 +1550,9 @@ dcs.tip.entitypanel=Change the target entity type.
 dcs.tip.bed=This bed does not register respawn point at bedtime.
 dcs.tip.scaffold=Right click: Replace all with blocks in the player main-hand. (limit 64)
 dcs.tip.rapid_collect=This blocks can be quickly collected.
+dcs.tip.firestand1=Ignited by an ignition item or fire block.
+dcs.tip.firestand2=Extinguished by rain or high humidity.
+dcs.tip.geyser=Require a tier 4+ pickaxe for drop.
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products

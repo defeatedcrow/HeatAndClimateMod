@@ -60,8 +60,8 @@ public class TileSteelPot extends TileFluidProcessorBase {
 				i *= -1;
 			}
 			int ret = 20 - i * 4;
-			if (ret < 4) {
-				ret = 4;
+			if (ret < 2) {
+				ret = 2;
 			}
 			return ret;
 		}

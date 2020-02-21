@@ -17,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+@Deprecated
 public class BlockRedBox extends BlockTorqueBase {
 
 	public BlockRedBox(String s) {

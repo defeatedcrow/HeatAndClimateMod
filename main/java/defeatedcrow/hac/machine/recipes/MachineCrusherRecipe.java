@@ -171,17 +171,19 @@ public class MachineCrusherRecipe {
 
 		// layer
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 4, 3), new ItemStack(MainInit.gems, 1,
-				8), 0.1F, null, ti, "oreGypsum");
+				8), 0.1F, ti, "oreGypsum");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 4, 2), new ItemStack(
-				Items.PRISMARINE_SHARD), 0.1F, null, ti, "oreLime");
+				Items.PRISMARINE_SHARD), 0.1F, ti, "oreLime");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 4, 8), new ItemStack(MainInit.oreDust, 1,
-				5), 0.1F, null, 0F, null, ti, "oreSalt");
+				5), 0.1F, ti, "oreSalt");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 2, 9), new ItemStack(MainInit.miscDust, 1,
 				9), 0.1F, null, ti, "oreNiter");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 2, 10), new ItemStack(Items.BLAZE_POWDER, 1,
 				0), 0.1F, null, ti, "oreSulfur");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 2, 12), new ItemStack(MainInit.oreDust, 1,
 				2), 0.1F, null, ti, "oreSerpentine");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems, 1, 10), new ItemStack(MainInit.gems, 2,
+				3), 1F, null, ti, "oreTravertine");
 
 		// vanilla
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.QUARTZ, 3, 0), new ItemStack(MainInit.gems, 1,

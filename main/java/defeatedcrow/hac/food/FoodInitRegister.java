@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.event.DispenseEntityItem;
 import defeatedcrow.hac.food.block.BlockDish;
 import defeatedcrow.hac.food.block.BlockPotteryPot;
 import defeatedcrow.hac.food.block.BlockSilkwormBox;
+import defeatedcrow.hac.food.block.BlockSkillet;
 import defeatedcrow.hac.food.block.BlockSteelPot;
 import defeatedcrow.hac.food.block.BlockTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockBean;
@@ -201,6 +202,9 @@ public class FoodInitRegister {
 		DCMaterialReg
 				.registerBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_BASE + "_device_pottery_pot", ClimateMain.MOD_ID);
 
+		FoodInit.skillet = new BlockSkillet(ClimateCore.PACKAGE_BASE + "_device_skillet");
+		DCMaterialReg.registerBlock(FoodInit.skillet, ClimateCore.PACKAGE_BASE + "_device_skillet", ClimateMain.MOD_ID);
+
 		FoodInit.steelPot = new BlockSteelPot(ClimateCore.PACKAGE_BASE + "_device_steel_pot");
 		DCMaterialReg
 				.registerBlock(FoodInit.steelPot, ClimateCore.PACKAGE_BASE + "_device_steel_pot", ClimateMain.MOD_ID);
@@ -385,6 +389,7 @@ public class FoodInitRegister {
 		FoodInit.steakplate.setCreativeTab(ClimateMain.food);
 
 		FoodInit.potteryPot.setCreativeTab(ClimateMain.food);
+		FoodInit.skillet.setCreativeTab(ClimateMain.food);
 		FoodInit.steelPot.setCreativeTab(ClimateMain.food);
 		FoodInit.teaPot.setCreativeTab(ClimateMain.food);
 		FoodInit.silkwormBox.setCreativeTab(ClimateMain.cloth);

@@ -91,7 +91,6 @@ public class DCPluginUGB {
 		Block met = Block.REGISTRY.getObject(new ResourceLocation("undergroundbiomes", "metamorphic_stone"));
 		if (met != null) {
 
-			// エコロジャイト
 			OreDictionary.registerOre("stoneEclogite", new ItemStack(met, 1, 1));
 			OreDictionary.registerOre("stoneMarble", new ItemStack(met, 1, 2));
 			OreDictionary.registerOre("blockMarble", new ItemStack(met, 1, 2));

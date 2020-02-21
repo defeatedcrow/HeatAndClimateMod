@@ -90,6 +90,8 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 11), "oreSchorl");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 4, 12), "oreSerpentine");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 14), "oreGarnet");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 2, 7), new ItemStack(MainInit.gems, 1,
+					3), 0.5F, "oreTravertine");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 3, 2), "oreLime");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 2, 9), "oreApatite");

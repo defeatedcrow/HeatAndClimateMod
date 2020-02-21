@@ -33,6 +33,8 @@ import defeatedcrow.hac.main.block.build.TileVillageChest;
 import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
+import defeatedcrow.hac.main.block.device.TileFirestand;
+import defeatedcrow.hac.main.block.device.TileGeyser;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
@@ -50,6 +52,7 @@ import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRChandelier;
 import defeatedcrow.hac.main.client.block.TESRChandelierChal;
 import defeatedcrow.hac.main.client.block.TESRChandelierSalt;
+import defeatedcrow.hac.main.client.block.TESRFirestand;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
 import defeatedcrow.hac.main.client.block.TESRLargeClock;
 import defeatedcrow.hac.main.client.block.TESRMCClock;
@@ -225,6 +228,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileBedDCWhite.class, "dcs_te_bed_white", new TESRBedWhite());
 		registerTileEntity(TileBedDCRattan.class, "dcs_te_bed_rattan", new TESRBedRattan());
 		registerTileEntity(TileBedDCFuton.class, "dcs_te_bed_futon", new TESRBedFuton());
+		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
+		registerTileEntity(TileFirestand.class, "dcs_te_firestand", new TESRFirestand());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();
@@ -379,13 +384,13 @@ public class ClientMainProxy extends CommonMainProxy {
 		int i = Minecraft.getMinecraft().gameSettings.particleSetting;
 		switch (i) {
 		case 0:
-			return 4;
-		case 1:
 			return 12;
+		case 1:
+			return 6;
 		case 2:
 			return 0;
 		default:
-			return 10;
+			return 6;
 		}
 	}
 }

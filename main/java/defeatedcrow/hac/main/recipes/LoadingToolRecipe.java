@@ -276,6 +276,24 @@ public class LoadingToolRecipe {
 			'X',
 			new ItemStack(Items.CLAY_BALL, 1, 0) });
 
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.firestand, 1, 0), new Object[] {
+			" Y ",
+			" X ",
+			"X X",
+			'Y',
+			"logWood",
+			'X',
+			"ingotIron" });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.firestand, 1, 0), new Object[] {
+			" Y ",
+			" X ",
+			"X X",
+			'Y',
+			"logWood",
+			'X',
+			"ingotAluminum" });
+
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.fuelStove, 1, 0), new Object[] {
 			"XYX",
 			"XZX",

@@ -9,6 +9,7 @@ import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFreezer;
 import defeatedcrow.hac.machine.block.TileHeatExchanger;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
@@ -44,6 +45,15 @@ public class HUDHandlerChamber extends HUDHandlerBlocks {
 				DCHeatTier heat = DCHeatTier.getTypeByID(tier);
 				currenttip.add(String.format("%s: %s", DCName.TEMP2.getLocalizedName(), SpecialChars.GOLD + heat
 						.localize()));
+			} else {
+				currenttip.add(String.format("%s", DCName.STOPPING.getLocalizedName()));
+			}
+		}
+
+		if (block == MainInit.firestand) {
+			if (meta == 1) {
+				currenttip.add(String.format("%s: %s", DCName.TEMP2
+						.getLocalizedName(), SpecialChars.GOLD + DCHeatTier.KILN.localize()));
 			} else {
 				currenttip.add(String.format("%s", DCName.STOPPING.getLocalizedName()));
 			}
@@ -122,5 +132,7 @@ public class HUDHandlerChamber extends HUDHandlerBlocks {
 
 		registrar.registerBodyProvider(provider, TileFreezer.class);
 		registrar.registerNBTProvider(provider, TileFreezer.class);
+
+		registrar.registerBodyProvider(provider, BlockFirestand.class);
 	}
 }

@@ -53,6 +53,7 @@ public class FoodInit {
 	public static Block potteryPot;
 	public static Block steelPot;
 	public static Block teaPot;
+	public static Block skillet;
 	public static Block dish;
 	public static Block silkwormBox;
 

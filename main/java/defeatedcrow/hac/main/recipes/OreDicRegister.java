@@ -8,6 +8,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.OredicConfig;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -52,6 +53,7 @@ public class OreDicRegister {
 		OredicConfig.regOreDic(OredicConfig.layers[4], new ItemStack(MainInit.layerNew, 1, 4));
 		OredicConfig.regOreDic(OredicConfig.layers[5], new ItemStack(MainInit.layerNew, 1, 5));
 		OredicConfig.regOreDic(OredicConfig.layers[6], new ItemStack(MainInit.layerNew, 1, 6));
+		OredicConfig.regOreDic(OredicConfig.layers[7], new ItemStack(MainInit.layerNew, 1, 7));
 
 		OredicConfig.regOreDic(OredicConfig.items[0], new ItemStack(MainInit.oreItem, 1, 0));
 		OredicConfig.regOreDic(OredicConfig.items[1], new ItemStack(MainInit.oreItem, 1, 1));
@@ -205,6 +207,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("foodBakingSoda", new ItemStack(MainInit.foodDust, 1, 6));
 
 		// material
+		OreDictionary.registerOre("string", new ItemStack(Items.STRING, 1, 0));
 		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 0));
 		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 1));
 		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.clothes, 1, 2));
