@@ -310,7 +310,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				return item.getCount();
 			} else {
 				int size = this.isItemStackable(item, this.getStackInSlot(i));
-				if (this.isItemStackable(item, this.getStackInSlot(i)) > 0) {
+				if (size > 0) {
 					DCUtil.addStackSize(this.getStackInSlot(i), size);
 					return size;
 				}

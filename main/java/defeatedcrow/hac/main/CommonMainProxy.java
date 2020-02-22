@@ -300,12 +300,12 @@ public class CommonMainProxy implements IGuiHandler {
 		VillagerCareer tailorList = new VillagerCareer(MainInit.tailor, "dcs_tailor");
 
 		tailorList.addTrade(1, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(2, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)) });
 
 		tailorList.addTrade(2, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)) });
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(2, 3)) });
 
 		tailorList.addTrade(3, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)),
@@ -317,10 +317,10 @@ public class CommonMainProxy implements IGuiHandler {
 
 		tailorList.addTrade(5, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)) });
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 2)) });
 
 		tailorList.addTrade(6, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 2)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)) });
 
 	}

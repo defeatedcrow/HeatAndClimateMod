@@ -167,9 +167,9 @@ public class HaCTradeData {
 			MACHINE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.scooter, 1, 0), 32));
 		}
 
-		TAILOR1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.leatherHat, 1, 0), 3));
+		TAILOR1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.leatherHat, 1, 0), 2));
 		TAILOR1.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.linenUnder, 1,
-				0)), 3));
+				0)), 2));
 		TAILOR1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 3), 1));
 
 		TAILOR2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 4), 1));
@@ -195,6 +195,8 @@ public class HaCTradeData {
 					0)), 4));
 			TAILOR2.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.hoodie, 1,
 					0)), 5));
+			TAILOR2.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.clothSkirt, 1,
+					0)), 5));
 
 			TAILOR3.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.trackSuit, 1,
 					0)), 7));
@@ -202,6 +204,7 @@ public class HaCTradeData {
 					0)), 8));
 			TAILOR3.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.workerWear, 1,
 					0)), 6));
+			TAILOR3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.peaCoat, 1, 0), 5));
 
 			if (ModuleConfig.machine) {
 				TAILOR3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MachineInit.synthetic, 1, 1), 5));
