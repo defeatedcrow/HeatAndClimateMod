@@ -1,7 +1,7 @@
 package defeatedcrow.hac.main.block.device;
 
-import net.minecraft.tileentity.TileEntity;
+import defeatedcrow.hac.core.base.DCTileEntity;
 
-public class TileFirestand extends TileEntity {
+public class TileFirestand extends DCTileEntity {
 
 }

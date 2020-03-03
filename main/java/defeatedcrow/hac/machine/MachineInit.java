@@ -41,6 +41,8 @@ public class MachineInit {
 	public static Block faucet;
 	public static Block faucet_sus;
 	public static Block IBC;
+	public static Block tankYard;
+	public static Block tankYardPart;
 
 	public static Block conveyor;
 	public static Block hopperFilter;

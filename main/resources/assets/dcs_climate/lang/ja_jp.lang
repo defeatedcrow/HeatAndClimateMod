@@ -1222,6 +1222,8 @@ tile.dcs_device_pail_0.name=一斗缶
 tile.dcs_device_geyser_stone_0.name=蒸気孔ブロック
 tile.dcs_device_firestand_0.name=ファイアスタンド
 tile.dcs_device_skillet_0.name=スキレット
+tile.dcs_device_tankyard_0.name=タンクヤードコア
+tile.dcs_device_yardpart_0.name=タンクヤードブロック
 
 tile.dcs_crop_rice_0.name=稲
 tile.dcs_crop_rice_1.name=稲
@@ -1519,6 +1521,8 @@ dcs.tip.rapid_collect=一括回収可能
 dcs.tip.firestand1=アイテムや火によって着火できます。
 dcs.tip.firestand2=雨や湿気を受けると自然に鎮火します。
 dcs.tip.geyser=破壊にはTier4以上のツルハシが必要です。
+dcs.tip.tankyard1=マルチブロックタンクの構成ブロックです。
+dcs.tip.tankyard2=WxWxHの箱型を組み立て、底の中央をタンクヤードコアに置き換え、スパナで右クリックします。
 
 dcs.tip.heat_treatment_jei1=%d tick以内に処理を行う
 dcs.tip.heat_treatment_jei2=不良品

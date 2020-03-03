@@ -93,34 +93,17 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 
 	@Override
 	protected int[] slotsTop() {
-		return new int[] {
-				0,
-				1,
-				6
-		};
+		return new int[] { 0, 1, 6 };
 	};
 
 	@Override
 	protected int[] slotsBottom() {
-		return new int[] {
-				2,
-				3,
-				4,
-				5
-		};
+		return new int[] { 2, 3, 4, 5 };
 	};
 
 	@Override
 	protected int[] slotsSides() {
-		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6
-		};
+		return new int[] { 0, 1, 2, 3, 4, 5, 6 };
 	};
 
 	@Override
@@ -382,15 +365,15 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			world.rand.nextInt(100);
 
 			if (!DCUtil.isEmpty(out) && world.rand.nextInt(100) < chance0) {
-				this.insertResult(out.copy());
+				inventory.insertResult(out.copy(), 3, 6);
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance1) {
-				this.insertResult(sec.copy());
+				inventory.insertResult(sec.copy(), 3, 6);
 			}
 
 			if (!DCUtil.isEmpty(tert) && world.rand.nextInt(100) < chance2) {
-				this.insertResult(tert.copy());
+				inventory.insertResult(tert.copy(), 3, 6);
 			}
 
 			this.markDirty();
@@ -415,22 +398,6 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			}
 		}
 		return -1;
-	}
-
-	@Override
-	public int insertResult(ItemStack item) {
-		if (DCUtil.isEmpty(item))
-			return 0;
-
-		int count = 0;
-		for (int i = 3; i < 6; i++) {
-			int size = inventory.incrStackInSlot(i, item.copy());
-			if (size > 0) {
-				item.shrink(size);
-				count += size;
-			}
-		}
-		return count;
 	}
 
 	@Override

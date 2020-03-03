@@ -286,6 +286,8 @@ public class MachineCrusherRecipe {
 				12), 0.05F, ti, new ItemStack(Blocks.STONE, 1, 5));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(Items.FLINT, 1,
 				0), 1.0F, ti, new ItemStack(Blocks.GRAVEL, 1, 0));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 4, 0), ti, new ItemStack(Blocks.SANDSTONE, 1,
+				32767));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 4, 0), new ItemStack(MainInit.oreDust, 1,
 				11), 1F, null, 0F, null, ti, new ItemStack(Blocks.RED_SANDSTONE, 1, 32767));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.oreDust, 1,

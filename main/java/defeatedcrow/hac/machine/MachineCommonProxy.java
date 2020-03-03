@@ -64,6 +64,8 @@ import defeatedcrow.hac.machine.block.TileWatermill;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_EX;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
+import defeatedcrow.hac.machine.block.tankyard.TileTankYard;
+import defeatedcrow.hac.machine.block.tankyard.TileYardPart;
 import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
@@ -137,6 +139,8 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileShaft_Switch.class, "dcs_te_shaft_switch");
 		GameRegistry.registerTileEntity(TileShaft_Switch_Steel.class, "dcs_te_shaft_switch_steel");
 		GameRegistry.registerTileEntity(TileOscillator.class, "dcs_te_oscillator");
+		GameRegistry.registerTileEntity(TileTankYard.class, "dcs_te_tankyard");
+		GameRegistry.registerTileEntity(TileYardPart.class, "dcs_te_yardpart");
 	}
 
 	public static void loadEntity() {

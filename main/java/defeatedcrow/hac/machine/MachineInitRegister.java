@@ -69,6 +69,9 @@ import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
 import defeatedcrow.hac.machine.block.ItemMonitor;
 import defeatedcrow.hac.machine.block.cont.BlockFuelCont;
+import defeatedcrow.hac.machine.block.tankyard.BlockTankYard;
+import defeatedcrow.hac.machine.block.tankyard.BlockYardPart;
+import defeatedcrow.hac.machine.block.tankyard.ItemTankYard;
 import defeatedcrow.hac.machine.item.ItemAdapterCard;
 import defeatedcrow.hac.machine.item.ItemAlloyMold;
 import defeatedcrow.hac.machine.item.ItemAluminiumMold;
@@ -280,6 +283,14 @@ public class MachineInitRegister {
 			MachineInit.freezer = new BlockFreezer(ClimateCore.PACKAGE_BASE + "_device_freezer");
 			registerTierBlock(MachineInit.freezer, ClimateCore.PACKAGE_BASE + "_device_freezer", 3);
 
+			MachineInit.tankYard = new BlockTankYard(ClimateCore.PACKAGE_BASE + "_device_tankyard");
+			MachineInit.tankYard.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_tankyard");
+			ForgeRegistries.BLOCKS.register(MachineInit.tankYard);
+			ForgeRegistries.ITEMS.register(new ItemTankYard(MachineInit.tankYard));
+
+			MachineInit.tankYardPart = new BlockYardPart(ClimateCore.PACKAGE_BASE + "_device_yardpart");
+			registerTierBlock(MachineInit.tankYardPart, ClimateCore.PACKAGE_BASE + "_device_yardpart", 3);
+
 			MachineInit.pressMachine = new BlockPressMachine(ClimateCore.PACKAGE_BASE + "_device_press_machine");
 			registerTierBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_BASE + "_device_press_machine", 3);
 
@@ -474,6 +485,8 @@ public class MachineInitRegister {
 		MachineInit.faucet_sus.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
+		MachineInit.tankYard.setCreativeTab(ClimateMain.machine);
+		MachineInit.tankYardPart.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
 		MachineInit.machimeMaterials.setCreativeTab(ClimateCore.climate);

@@ -100,7 +100,7 @@ public class DCPluginUGB {
 
 			if (ModuleConfig.machine) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
-						8), 0.1F, "stonEclogite");
+						8), 0.1F, "stoneEclogite");
 
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
 						1), 0.1F, "stoneQuarzite");
@@ -139,7 +139,7 @@ public class DCPluginUGB {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), "stoneChalk");
 
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems, 1,
-						23), 0.05F, "stonShele");
+						23), 0.05F, "stoneShele");
 
 				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(
 						Items.FLINT), 0.2F, "stoneChart");

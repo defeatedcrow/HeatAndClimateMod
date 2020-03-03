@@ -123,7 +123,7 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueP
 		if (recipe != null) {
 			if (recipe.matchOutput(out)) {
 				ItemStack out2 = recipe.getOutput();
-				int i1 = this.insertResult(out2);
+				int i1 = inventory.insertResult(out2, 1, 2);
 				if (i1 > 0) {
 					this.decrStackSize(0, recipe.getInputCount());
 					return true;

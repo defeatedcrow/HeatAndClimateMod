@@ -75,7 +75,7 @@ public class DCPluginBoP {
 		addOre("blockTallgrass", BOPBlocks.plant_0, 15);
 		addOre("blockTallgrass", BOPBlocks.plant_1, 0);
 
-		addOre("cropWildice", BOPBlocks.plant_1, 3);
+		addOre("cropWildrice", BOPBlocks.plant_1, 3);
 		addOre("listAllgrain", BOPBlocks.plant_1, 3);
 		addOre("cropBarley", BOPBlocks.plant_1, 11);
 		addOre("listAllgrain", BOPBlocks.plant_1, 11);

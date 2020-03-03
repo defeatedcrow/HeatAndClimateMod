@@ -483,33 +483,17 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			}
 
 			if (!DCUtil.isEmpty(out)) {
-				this.insertResult(out.copy());
+				inventory.insertResult(out.copy(), 13, 17);
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance) {
-				this.insertResult(sec.copy());
+				inventory.insertResult(sec.copy(), 13, 17);
 			}
 
 			this.markDirty();
 			return true;
 		}
 		return false;
-	}
-
-	@Override
-	public int insertResult(ItemStack item) {
-		if (DCUtil.isEmpty(item))
-			return 0;
-
-		int count = 0;
-		for (int i = 13; i < this.getSizeInventory(); i++) {
-			int size = inventory.incrStackInSlot(i, item.copy());
-			if (size > 0) {
-				item.shrink(size);
-				count += size;
-			}
-		}
-		return count;
 	}
 
 	@Override

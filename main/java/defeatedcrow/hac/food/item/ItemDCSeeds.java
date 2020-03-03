@@ -79,7 +79,8 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 		if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, stack)) {
 			Block crop = getCropBlock(meta);
 			if (crop instanceof IClimateCrop) {
-				if (((IClimateCrop) crop).isSuitablePlace(world, pos, state) && world.isAirBlock(pos.up())) {
+				if (((IClimateCrop) crop).isSuitablePlace(world, pos, state) && world.getBlockState(pos.up()).getBlock()
+						.isReplaceable(world, pos.up())) {
 					world.setBlockState(pos.up(), crop.getDefaultState(), 3);
 					DCUtil.reduceStackSize(stack, 1);
 					return EnumActionResult.SUCCESS;

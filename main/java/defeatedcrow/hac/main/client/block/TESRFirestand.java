@@ -63,7 +63,7 @@ public class TESRFirestand extends TileEntitySpecialRenderer<TileFirestand> {
 			GlStateManager.disableRescaleNormal();
 			GlStateManager.popMatrix();
 
-			if (type == 1) {
+			if ((type & 1) == 1) {
 				renderFire(x, y, z, partialTicks);
 			}
 

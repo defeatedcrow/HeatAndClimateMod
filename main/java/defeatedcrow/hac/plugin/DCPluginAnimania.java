@@ -14,10 +14,10 @@ public class DCPluginAnimania {
 	private DCPluginAnimania() {}
 
 	public static void load() {
-		DamageAPI.resistantData.registerEntityResistant(EntityAnimaniaChicken.class, 1.0F, 0.0F);
-		DamageAPI.resistantData.registerEntityResistant(EntityHamster.class, 2.0F, 0.0F);
-		DamageAPI.resistantData.registerEntityResistant(EntityHedgehog.class, 1.0F, 1.0F);
-		DamageAPI.resistantData.registerEntityResistant(EntityAnimaniaPeacock.class, 1.0F, 0.0F);
+		DamageAPI.resistantData.registerEntityResistant(EntityAnimaniaChicken.class, 3.0F, 2.0F);
+		DamageAPI.resistantData.registerEntityResistant(EntityHamster.class, 3.0F, 0.0F);
+		DamageAPI.resistantData.registerEntityResistant(EntityHedgehog.class, 2.0F, 1.0F);
+		DamageAPI.resistantData.registerEntityResistant(EntityAnimaniaPeacock.class, 3.0F, 2.0F);
 	}
 
 }

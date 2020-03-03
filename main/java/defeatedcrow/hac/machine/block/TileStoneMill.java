@@ -91,12 +91,12 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 				ItemStack cont = recipe.getContainerItem(in);
 				float chance = recipe.getSecondaryChance();
 				int r = (int) (chance * 100);
-				int i1 = this.insertResult(out);
+				int i1 = inventory.insertResult(out, 1, 3);
 				if (i1 > 0) {
 					if (this.world.rand.nextInt(100) < r) {
-						int i2 = this.insertResult(sec);
+						int i2 = inventory.insertResult(sec, 1, 3);
 					}
-					int i3 = this.insertResult(cont);
+					int i3 = inventory.insertResult(cont, 1, 3);
 					int con = consumeAmo(recipe, in);
 					this.decrStackSize(0, con);
 					return true;

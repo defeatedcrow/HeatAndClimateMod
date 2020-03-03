@@ -66,6 +66,8 @@ import defeatedcrow.hac.machine.block.TileWatermill;
 import defeatedcrow.hac.machine.block.TileWindmill;
 import defeatedcrow.hac.machine.block.TileWindmill_EX;
 import defeatedcrow.hac.machine.block.TileWindmill_L;
+import defeatedcrow.hac.machine.block.tankyard.TileTankYard;
+import defeatedcrow.hac.machine.block.tankyard.TileYardPart;
 import defeatedcrow.hac.machine.client.BoilerTurbineTESR;
 import defeatedcrow.hac.machine.client.CatapultTESR;
 import defeatedcrow.hac.machine.client.ConveyorTESR;
@@ -113,6 +115,7 @@ import defeatedcrow.hac.machine.client.StoneMillTESR;
 import defeatedcrow.hac.machine.client.Switch_ShaftTESR;
 import defeatedcrow.hac.machine.client.TA_ShaftTESR;
 import defeatedcrow.hac.machine.client.TB_ShaftTESR;
+import defeatedcrow.hac.machine.client.TankYardTESR;
 import defeatedcrow.hac.machine.client.WaterPumpTESR;
 import defeatedcrow.hac.machine.client.WatermillTESR;
 import defeatedcrow.hac.machine.client.WindmillTESR;
@@ -121,6 +124,10 @@ import defeatedcrow.hac.machine.entity.EntityMagneticHover;
 import defeatedcrow.hac.machine.entity.EntityMinecartMotor;
 import defeatedcrow.hac.machine.entity.EntityScooter;
 import defeatedcrow.hac.main.client.ClientMainProxy;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -201,6 +208,8 @@ public class MachineClientProxy {
 		ClientMainProxy
 				.registerTileEntity(TileShaft_Switch_Steel.class, "dcs_te_shaft_switch_steel", new Steel_Switch_ShaftTESR());
 		ClientMainProxy.registerTileEntity(TileOscillator.class, "dcs_te_oscillator", new OscillatorTESR());
+		ClientMainProxy.registerTileEntity(TileTankYard.class, "dcs_te_tankyard", new TankYardTESR());
+		GameRegistry.registerTileEntity(TileYardPart.class, "dcs_te_yardpart");
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -241,6 +250,7 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.faucet_sus, ClimateCore.PACKAGE_ID, "dcs_device_faucet_sus", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft_switch, ClimateCore.PACKAGE_ID, "dcs_device_shaft_switch", "machine", 0);
 		instance.regTETorqueBlock(MachineInit.shaft3_switch, ClimateCore.PACKAGE_ID, "dcs_device_shaft_switch_steel", "machine", 0);
+		instance.regTEBlock(MachineInit.tankYard, ClimateCore.PACKAGE_ID, "dcs_device_tankyard", "machine", 0);
 
 		instance.regSimpleItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_ID, "dcs_device_mechanical", "machine", 9);
 		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
@@ -290,6 +300,18 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorCM, ClimateCore.PACKAGE_ID, "dcs_device_monitor_cm", "machine", 0);
 		instance.regSimpleBlock(MachineInit.entityPanel, ClimateCore.PACKAGE_ID, "dcs_device_entity_panel", "machine", 0);
+
+		ModelResourceLocation[] models = new ModelResourceLocation[4];
+		for (int i = 0; i < 4; i++) {
+			models[i] = new ModelResourceLocation(ClimateCore.PACKAGE_ID + ":machine/dcs_device_yardpart" + i, "type");
+		}
+		ModelBakery.registerItemVariants(Item.getItemFromBlock(MachineInit.tankYardPart), models);
+		for (int i = 0; i < 16; i++) {
+			int m = i & 3;
+			ModelLoader.setCustomModelResourceLocation(Item
+					.getItemFromBlock(MachineInit.tankYardPart), i, new ModelResourceLocation(
+							ClimateCore.PACKAGE_ID + ":machine/dcs_device_yardpart" + m, "inventory"));
+		}
 	}
 
 }

@@ -648,6 +648,19 @@ public class MachineAdvancedRecipe {
 			new ItemStack(Blocks.PISTON, 1, 0),
 			'Z',
 			"ingotStainlessSteel" });
+
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.tankYardPart, 8, 0), new Object[] {
+			" X ",
+			"XYX",
+			" X ",
+			'X',
+			"ingotStainlessSteel",
+			'Y',
+			"blockGlass" });
+
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.tankYard, 1, 0), new Object[] {
+			new ItemStack(MachineInit.tankYardPart, 1, 0),
+			"gearSteel" });
 	}
 
 }

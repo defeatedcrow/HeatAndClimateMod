@@ -6,6 +6,7 @@ import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.block.tankyard.BlockYardPart;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,9 +20,7 @@ public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 
 	private final int maxMeta;
 
-	private static String[] names = {
-			"brass"
-	};
+	private static String[] names = { "brass" };
 
 	public ItemWrench(ToolMaterial m) {
 		super(m, "brass");
@@ -38,6 +37,11 @@ public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 			if (!DCUtil.isEmpty(stack) && tile != null && tile.getBlock() instanceof BlockTorqueBase) {
 				EnumFacing face = tile.getValue(DCState.SIDE).getFacing();
 				world.setBlockState(pos, tile.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite())));
+
+				return EnumActionResult.SUCCESS;
+			} else if (!DCUtil.isEmpty(stack) && tile != null && tile.getBlock() instanceof BlockYardPart) {
+				EnumFacing face = tile.getValue(DCState.SIDE).getFacing();
+				tile.getBlock().onBlockActivated(world, pos, tile, player, hand, facing, hitX, hitY, hitZ);
 
 				return EnumActionResult.SUCCESS;
 			}

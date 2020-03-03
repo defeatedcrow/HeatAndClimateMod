@@ -143,7 +143,7 @@ public class MachineDeviceRecipes {
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 11), "ingotAluminum");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 12), "ingotBismuth");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 13), "ingotLead");
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 14), "ingotMagnanese");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 14), "ingotManganese");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeSapling");
 			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "blockTallgrass");
