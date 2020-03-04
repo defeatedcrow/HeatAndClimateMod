@@ -40,7 +40,7 @@ public class ItemWrench extends ItemPickaxeDC implements IWrenchDC {
 
 				return EnumActionResult.SUCCESS;
 			} else if (!DCUtil.isEmpty(stack) && tile != null && tile.getBlock() instanceof BlockYardPart) {
-				EnumFacing face = tile.getValue(DCState.SIDE).getFacing();
+				EnumFacing face = tile.getValue(DCState.FACING);
 				tile.getBlock().onBlockActivated(world, pos, tile, player, hand, facing, hitX, hitY, hitZ);
 
 				return EnumActionResult.SUCCESS;

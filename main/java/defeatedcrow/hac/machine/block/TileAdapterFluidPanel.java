@@ -77,14 +77,14 @@ public class TileAdapterFluidPanel extends DCTileEntity {
 			EnumFacing face = getSide().face;
 			TileAcceptorFluidPanel panel = (TileAcceptorFluidPanel) targetTile();
 			TileEntity tile = world.getTileEntity(pos.offset(face));
-			if (tile != null
-					&& tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
-				IFluidHandler target = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-						face.getOpposite());
-				IFluidHandler send = panel.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-						face.getOpposite());
+			if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
+					.getOpposite())) {
+				IFluidHandler target = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
+						.getOpposite());
+				IFluidHandler send = panel.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
+						.getOpposite());
 				if (send != null && target != null) {
-					int limit = 200; // 200mBまでしか送らない
+					int limit = 1000;
 
 					// 引き出せる量
 					FluidStack get = target.drain(limit, false);
