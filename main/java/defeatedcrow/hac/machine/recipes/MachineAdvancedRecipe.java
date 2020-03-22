@@ -354,6 +354,19 @@ public class MachineAdvancedRecipe {
 			'V',
 			"ingotBSCCO" });
 
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.playerPanel, 1, 0), new Object[] {
+			"XXX",
+			" Y ",
+			"ZWZ",
+			'X',
+			"blockGlass",
+			'Y',
+			"gemBismuth",
+			'Z',
+			"gemSchorl",
+			'W',
+			new ItemStack(MachineInit.machimeMaterials, 1, 6) });
+
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.gemcore, 1, 0), new Object[] {
 			"ZXZ",
 			"XYX",

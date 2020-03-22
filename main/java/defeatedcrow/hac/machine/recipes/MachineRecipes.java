@@ -83,19 +83,6 @@ public class MachineRecipes {
 			new ItemStack(MachineInit.shaft_s, 1, 0),
 			new ItemStack(Blocks.LEVER) });
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.piston, 1, 0), new Object[] {
-			" X ",
-			"YZY",
-			" W ",
-			'X',
-			new ItemStack(MachineInit.shaft_s, 1, 0),
-			'Y',
-			"ingotBrass",
-			'Z',
-			"gearBrass",
-			'W',
-			"dustRedstone" });
-
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.handcrank, 1, 0), new Object[] {
 			"Z",
 			"Y",
@@ -117,15 +104,6 @@ public class MachineRecipes {
 			"gearAlloy",
 			'Z',
 			"ingotIron" });
-
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.redbox, 1, 0), new Object[] {
-			"XXX",
-			"XYX",
-			"XXX",
-			'X',
-			"dustRedstone",
-			'Y',
-			"gearAlloy" });
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.windmill, 1, 0), new Object[] {
 			" X ",
@@ -592,19 +570,6 @@ public class MachineRecipes {
 			"ingotBronze",
 			'Y',
 			"gearBrass" });
-
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.piston, 1, 0), new Object[] {
-			" X ",
-			"YZY",
-			" W ",
-			'X',
-			new ItemStack(MachineInit.shaft_s, 1, 0),
-			'Y',
-			"ingotBronze",
-			'Z',
-			"gearBrass",
-			'W',
-			"dustRedstone" });
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.handcrank, 1, 0), new Object[] {
 			"Z",

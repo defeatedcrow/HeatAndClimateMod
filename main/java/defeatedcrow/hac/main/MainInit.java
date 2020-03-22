@@ -20,8 +20,6 @@ public class MainInit {
 	public static Block dustBlock;
 	public static Block dustBlock_2;
 	public static Block gemBlock;
-	@Deprecated
-	public static Block metalBlock;
 	public static Block metalBlockNew;
 	public static Block metalBlockAlloy;
 	public static Block heatedMetalBlock;
@@ -85,7 +83,6 @@ public class MainInit {
 	public static Block lampCarbide;
 	public static Block lampGas;
 	public static Block chain;
-	public static Block achievementShield;
 
 	public static Block fenceLadderSteel;
 	public static Block fenceSteel;
@@ -204,8 +201,6 @@ public class MainInit {
 	public static Item oreIngot;
 	public static Item gems;
 	public static Item miscDust;
-	@Deprecated
-	public static Item materials;
 	public static Item foodDust;
 	public static Item silkworm;
 	public static Item gears;

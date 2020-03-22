@@ -3,9 +3,11 @@ package defeatedcrow.hac.main.event;
 import java.util.Random;
 
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
@@ -38,11 +40,9 @@ public class OnMiningEventDC {
 	@SubscribeEvent
 	public void preMining(PlayerEvent.BreakSpeed event) {
 		if (event.getEntityPlayer() != null) {
-			if (DCUtil.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2)) || DCUtil
-					.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1, 9))) {
+			if (DCUtil.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2))) {
 				float lv = 2.0F + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant,
-						1, 2)) + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1,
-								9));
+						1, 2));
 				event.setNewSpeed(event.getNewSpeed() * lv);
 			} else {
 				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER)) {
@@ -87,6 +87,9 @@ public class OnMiningEventDC {
 		ItemStack stack = event.getItemStack();
 		if (player != null && !DCUtil.isEmpty(stack)) {
 			if (stack.getItem() instanceof ItemScytheDC) {
+				// jewel
+				if (MagicCommonEvent.getOffhandJewelColor(player) == MagicColor.BLUE)
+					return;
 				if (!player.world.isRemote) {
 					boolean b = false;
 					int area = ((ItemScytheDC) stack.getItem()).range;

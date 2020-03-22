@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -224,27 +225,35 @@ public class MainUtil {
 		return false;
 	}
 
-	public static boolean isPlayerHeldItem(Item item, EntityPlayer player) {
+	public static boolean isHeldWrench(EntityLivingBase player, EnumHand hand) {
+		ItemStack main = player.getHeldItem(hand);
+		return !DCUtil.isEmpty(main) && main.getItem() instanceof IWrenchDC;
+	}
+
+	public static boolean isHeldItem(Item item, EntityLivingBase player) {
 		if (item == null || player == null)
 			return false;
 
-		return isPlayerHeldItem(new ItemStack(item, 1, 0), player);
+		return isHeldItem(new ItemStack(item, 1, 0), player);
 	}
 
-	public static boolean isPlayerHeldItem(ItemStack item, EntityPlayer player) {
+	public static boolean isHeldItem(ItemStack item, EntityLivingBase player) {
 		if (DCUtil.isEmpty(item) || player == null)
 			return false;
 
-		if (player.getHeldItem(EnumHand.MAIN_HAND) != null) {
-			if (DCUtil.isSameItem(item, player.getHeldItem(EnumHand.MAIN_HAND), false))
-				return true;
-		}
-		if (player.getHeldItem(EnumHand.OFF_HAND) != null) {
-			if (DCUtil.isSameItem(item, player.getHeldItem(EnumHand.OFF_HAND), false))
-				return true;
-		}
+		if (DCUtil.isSameItem(item, player.getHeldItem(EnumHand.MAIN_HAND), false))
+			return true;
+		if (DCUtil.isSameItem(item, player.getHeldItem(EnumHand.OFF_HAND), false))
+			return true;
 
 		return false;
+	}
+
+	public static boolean isHeldOffhandTool(ItemStack item, EntityLivingBase player) {
+		if (item == null || player == null)
+			return false;
+
+		return DCUtil.isSameItem(item, player.getHeldItem(EnumHand.OFF_HAND), false);
 	}
 
 	public static int getCharmLevel(EntityLivingBase living, ItemStack item) {

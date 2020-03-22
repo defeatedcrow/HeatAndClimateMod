@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "YZ",
+  "WW"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotToolSteel"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "cubeGreen"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "cubeWhite"
+  },
+  "W": {
+   "item": "minecraft:glowstone_dust",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_color_gauntlet",
+  "count": 1,
+  "data": 1
+ }
+}

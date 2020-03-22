@@ -25,6 +25,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -79,7 +80,7 @@ public class BlockYardPart extends DCTileBlock {
 						if (core != null) {
 							TileEntity tile2 = world.getTileEntity(core);
 							if (tile2 instanceof TileTankYard) {
-								((TileTankYard) tile2).setRequest(player.isSneaking());
+								((TileTankYard) tile2).setRequest(true);
 							}
 						}
 					} else if (part.parent != null && world.isBlockLoaded(part.parent)) {
@@ -168,7 +169,17 @@ public class BlockYardPart extends DCTileBlock {
 				}
 			}
 		}
-		super.breakBlock(world, pos, state);
+		world.removeTileEntity(pos);
+	}
+
+	@Override
+	public int quantityDropped(Random random) {
+		return 1;
+	}
+
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(this);
 	}
 
 	@Override

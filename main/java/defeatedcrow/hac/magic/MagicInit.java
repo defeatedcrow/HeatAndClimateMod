@@ -13,18 +13,9 @@ public class MagicInit {
 	public static Item colorPendant;
 	public static Item colorPendant2;
 	public static Item colorBadge;
+	public static Item colorGauntlet;
 
 	public static Item magicCard;
-
-	@Deprecated
-	public static Item pendant;
-	@Deprecated
-	public static Item badge;
-
-	@Deprecated
-	public static Item daggerSilver;
-	@Deprecated
-	public static Item daggerMagic;
 
 	public static Item expGem;
 
@@ -35,33 +26,6 @@ public class MagicInit {
 
 	public static Block elestial;
 
-	// magical mace
-
-	@Deprecated
-	public static Item maceStarItem;
-	@Deprecated
-	public static Item macehandle;
-	@Deprecated
-	public static Block maceSun;
-	@Deprecated
-	public static Block maceMoon;
-	@Deprecated
-	public static Block maceBird;
-	@Deprecated
-	public static Block maceIce;
-	@Deprecated
-	public static Block maceOcean;
-	@Deprecated
-	public static Block maceBurn;
-	@Deprecated
-	public static Block maceFlower;
-	@Deprecated
-	public static Block maceGlory;
-	@Deprecated
-	public static Block maceDrought;
-	@Deprecated
-	public static Block maceImpact;
-
 	// advanced
 	public static Block lotusCandleBlack;
 	public static Block lotusCandle;
@@ -69,6 +33,12 @@ public class MagicInit {
 	public static Block coldLamp;
 
 	public static Block biomeOrb;
+
+	public static Block pictureBlue;
+	public static Block pictureGreen;
+	public static Block pictureRed;
+	public static Block pictureBlack;
+	public static Block pictureWhite;
 
 	// equip
 	public static Item gemBootsBird;

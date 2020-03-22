@@ -22,7 +22,6 @@ public class MainCoreConfig {
 
 	public static boolean steel_hardmode = true;
 	public static boolean steel = true;
-	public static boolean pendant_clam = true;
 
 	public static boolean bird_effect = true;
 	public static boolean ocean_effect = true;

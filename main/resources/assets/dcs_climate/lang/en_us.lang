@@ -675,6 +675,11 @@ item.dcs_color_badge_g1.name=Ivy Badge
 item.dcs_color_badge_r1.name=Wyvern Badge
 item.dcs_color_badge_w1.name=Sunlight Badge
 item.dcs_color_badge_b1.name=Darknight Badge
+item.dcs_color_gauntlet_ub.name=Ice Bird Gauntlet
+item.dcs_color_gauntlet_gw.name=Armadillo Gauntlet
+item.dcs_color_gauntlet_rg.name=Beast Gauntlet
+item.dcs_color_gauntlet_br.name=Raven Gauntlet
+item.dcs_color_gauntlet_wu.name=Silver Gauntlet
 item.dcs_magic_card_u1.name=Blue Spell (Memory)
 item.dcs_magic_card_g1.name=Green Spell (Growth)
 item.dcs_magic_card_r1.name=Red Spell (Strength)
@@ -1103,16 +1108,6 @@ tile.dcs_hedge_spring_0.name=Azalea Hedge
 tile.dcs_hedge_summer_0.name=Hydrangea Hedge
 tile.dcs_hedge_autumn_0.name=Osmanthus Hedge
 tile.dcs_hedge_winter_0.name=Camellia Hedge
-tile.dcs_lotus_candle_white_0.name=Lotus Candle
-tile.dcs_lotus_candle_black_0.name=Black Lotus Candle
-tile.dcs_build_shield_0.name=Commendation shield of the Climate
-tile.dcs_build_shield_1.name=Commendation shield of the Machine
-tile.dcs_build_shield_2.name=Commendation shield of the Magic
-tile.dcs_device_biomeglass_0.name=Biome Cube (Plain)
-tile.dcs_device_biomeglass_1.name=Biome Cube (Jungle)
-tile.dcs_device_biomeglass_2.name=Biome Cube (Desert)
-tile.dcs_device_biomeglass_3.name=Biome Cube (Ice)
-tile.dcs_time_cage_0.name=Butterfly of Time Flow
 tile.dcs_build_chandelier_0.name=Gypsum Chandelier
 tile.dcs_build_chandelier_1.name=Rock Salt Chandelier
 tile.dcs_build_chandelier_2.name=Chalcedony Chandelier
@@ -1160,6 +1155,20 @@ tile.dcs_build_coldlamp_wood.name=Cold Lamp (Wood)
 tile.dcs_build_coldlamp_gold.name=Cold Lamp (Gold)
 tile.dcs_build_coldlamp_chalcedony.name=Cold Lamp (White)
 tile.dcs_build_coldlamp_serpentine.name=Cold Lamp (Serpentine)
+
+## magic
+tile.dcs_lotus_candle_white_0.name=Lotus Candle
+tile.dcs_lotus_candle_black_0.name=Black Lotus Candle
+tile.dcs_device_biomeglass_0.name=Biome Cube (Plain)
+tile.dcs_device_biomeglass_1.name=Biome Cube (Jungle)
+tile.dcs_device_biomeglass_2.name=Biome Cube (Desert)
+tile.dcs_device_biomeglass_3.name=Biome Cube (Ice)
+tile.dcs_time_cage_0.name=Butterfly of Time Flow
+tile.dcs_magic_picture_u_0.name=Blue-Red Picture
+tile.dcs_magic_picture_g_0.name=Green-Blue Picture
+tile.dcs_magic_picture_r_0.name=Red-White Picture
+tile.dcs_magic_picture_b_0.name=Black-Green Picture
+tile.dcs_magic_picture_w_0.name=White-Black Picture
 
 ## machines
 tile.dcs_device_chamber_0.name=Combustion Chamber
@@ -1249,6 +1258,7 @@ tile.dcs_device_firestand_0.name=Fire Stand
 tile.dcs_device_skillet_0.name=Iron Skillet
 tile.dcs_device_tankyard_0.name=Tank Yard Core
 tile.dcs_device_yardpart_0.name=Tank Yard Block
+tile.dcs_device_player_panel_0.name=Player Transporter
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -1586,6 +1596,7 @@ dcs_climate.info=Information
 
 dcs.tip.allcharm=This item works in top slots of player inventory.
 dcs.tip.amulet=This item works in creature or player inventory.
+dcs.tip.offhand_tool=This item works in creature or player off-hand slot.
 dcs.tip.color_ring.0=Drop of Knowledge
 dcs.tip.color_ring.1=Harvest
 dcs.tip.color_ring.2=Blessing of Flames
@@ -1611,6 +1622,16 @@ dcs.tip.color_badge.1=Elder Regenerator
 dcs.tip.color_badge.2=Collapse
 dcs.tip.color_badge.3=Sneak Attack
 dcs.tip.color_badge.4=Restoration
+dcs.tip.color_gauntlet.0=Grim Reaper
+dcs.tip.color_gauntlet.1=Melon Color Invader
+dcs.tip.color_gauntlet.2=Acrobatics
+dcs.tip.color_gauntlet.3=Dissociation
+dcs.tip.color_gauntlet.4=Capture
+dcs.tip.color_picture.ur=Lamprey Dragon
+dcs.tip.color_picture.gu=Whirlwind
+dcs.tip.color_picture.rw=Shining Dawn
+dcs.tip.color_picture.bg=Black Cedar Forest
+dcs.tip.color_picture.wb=Milky Way
 
 dcs.comment.color_ring.0=Display the ore dictionary name in the item's tooltip.
 dcs.comment.color_ring.1=When destroy a block, collect drop items around it.
@@ -1637,6 +1658,17 @@ dcs.comment.color_badge.1=Prevent the death of the owner.
 dcs.comment.color_badge.2=Chain destruction of similar blocks.
 dcs.comment.color_badge.3=Disguise as if there were no attackers. (When the attacker is a pet, it will disguise itself as the owner's attack.)
 dcs.comment.color_badge.4=Slowly recover items in the off-hand slot.
+dcs.comment.color_gauntlet.0=Occasionally monster's skull drop with a scythe.
+dcs.comment.color_gauntlet.1=Heal HP when attacking.
+dcs.comment.color_gauntlet.2=You can climb a wall like using a ladder block.
+dcs.comment.color_gauntlet.3=Crush the drop items of the block. (Using the mill recipe.)
+dcs.comment.color_gauntlet.4=Right-click to ride the mobs on the player. (Cancel by sneak.)
+dcs.comment.color_picture.all=Affects 5x5 chunks.
+dcs.comment.color_picture.ur=Apply high HeatTier in the area.
+dcs.comment.color_picture.gu=Apply wind and bird potion effect in the area.
+dcs.comment.color_picture.rw=Apply some potion effects in the area.
+dcs.comment.color_picture.bg=Summon black dogs in night time in the area.
+dcs.comment.color_picture.wb=Suppresses spawns of hostile mobs in the area.
 
 dcs.tip.color_cube0=Bottom deeper than 5 blocks
 dcs.tip.color_cube1=A place surrounded by flowers
@@ -1927,6 +1959,8 @@ entity.dcs.machine.magnetic_hover.name=Magnetic Hovercraft
 entity.dcs.main.balloon_crow.name=Defeatedcrow Balloon
 entity.dcs.main.big_cushion.name=Gray Big Cushion for the lazy mobs
 entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs
+
+entity.dcs.magic.dcs_blackdog.name=Black Dog
 
 ## advancements
 advancements.dcs_climate.core.title=Heat and Climate

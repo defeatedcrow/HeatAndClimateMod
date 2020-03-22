@@ -59,7 +59,7 @@ public class BlockTankYard extends DCTileBlock {
 						if (heldItem.getItem() instanceof ItemBlock) {
 							return false;
 						} else if (heldItem.getItem() instanceof IWrenchDC) {
-							((TileTankYard) tile).setRequest(player.isSneaking());
+							((TileTankYard) tile).setRequest(true);
 						} else if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player)) {
 							world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 						}

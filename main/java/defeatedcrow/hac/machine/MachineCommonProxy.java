@@ -7,7 +7,6 @@ import defeatedcrow.hac.machine.block.TileAdapterPanel;
 import defeatedcrow.hac.machine.block.TileBoilerTurbine;
 import defeatedcrow.hac.machine.block.TileCatapult;
 import defeatedcrow.hac.machine.block.TileConveyor;
-import defeatedcrow.hac.machine.block.TileCrank_S;
 import defeatedcrow.hac.machine.block.TileCreativeBox;
 import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileDynamo;
@@ -35,10 +34,10 @@ import defeatedcrow.hac.machine.block.TileMonitorRF;
 import defeatedcrow.hac.machine.block.TileMonitorRedStone;
 import defeatedcrow.hac.machine.block.TileMonitorTorque;
 import defeatedcrow.hac.machine.block.TileOscillator;
+import defeatedcrow.hac.machine.block.TilePlayerPanel;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
-import defeatedcrow.hac.machine.block.TileRedBox;
 import defeatedcrow.hac.machine.block.TileRollerCrusher;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_L_SUS;
@@ -83,10 +82,8 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileShaft_TB.class, "dcs_te_shaft_tb");
 		GameRegistry.registerTileEntity(TileShaft_X.class, "dcs_te_shaft_x");
 		GameRegistry.registerTileEntity(TileGearBox.class, "dcs_te_gearbox");
-		GameRegistry.registerTileEntity(TileCrank_S.class, "dcs_te_crank_s");
 		GameRegistry.registerTileEntity(TileHandCrank.class, "dcs_te_handcrank");
 		GameRegistry.registerTileEntity(TileStoneMill.class, "dcs_te_stonemill");
-		GameRegistry.registerTileEntity(TileRedBox.class, "dcs_te_redbox");
 		GameRegistry.registerTileEntity(TileFan.class, "dcs_te_fan");
 		GameRegistry.registerTileEntity(TileFaucet.class, "dcs_te_faucet");
 		GameRegistry.registerTileEntity(TileFaucet_SUS.class, "dcs_te_faucet_sus");
@@ -141,6 +138,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileOscillator.class, "dcs_te_oscillator");
 		GameRegistry.registerTileEntity(TileTankYard.class, "dcs_te_tankyard");
 		GameRegistry.registerTileEntity(TileYardPart.class, "dcs_te_yardpart");
+		GameRegistry.registerTileEntity(TilePlayerPanel.class, "dcs_te_player_panel");
 	}
 
 	public static void loadEntity() {

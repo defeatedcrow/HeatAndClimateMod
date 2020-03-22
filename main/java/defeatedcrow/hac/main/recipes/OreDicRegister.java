@@ -297,24 +297,6 @@ public class OreDicRegister {
 			OreDictionary.registerOre("oreTitanium", new ItemStack(MainInit.ores_2, 1, 11));
 			OreDictionary.registerOre("oreApatite", new ItemStack(MainInit.ores_2, 1, 12));
 
-			OreDictionary.registerOre("blockCopper", new ItemStack(MainInit.metalBlock, 1, 0));
-			OreDictionary.registerOre("blockZinc", new ItemStack(MainInit.metalBlock, 1, 1));
-			OreDictionary.registerOre("blockNickel", new ItemStack(MainInit.metalBlock, 1, 2));
-			OreDictionary.registerOre("blockSilver", new ItemStack(MainInit.metalBlock, 1, 3));
-			OreDictionary.registerOre("blockBrass", new ItemStack(MainInit.metalBlock, 1, 4));
-			OreDictionary.registerOre("blockSteel", new ItemStack(MainInit.metalBlock, 1, 5));
-			OreDictionary.registerOre("blockNickelsilver", new ItemStack(MainInit.metalBlock, 1, 6));
-			OreDictionary.registerOre("blockMagnet", new ItemStack(MainInit.metalBlock, 1, 7));
-			OreDictionary.registerOre("blockTin", new ItemStack(MainInit.metalBlock, 1, 8));
-			OreDictionary.registerOre("blockBronze", new ItemStack(MainInit.metalBlock, 1, 9));
-			OreDictionary.registerOre("blockSUS", new ItemStack(MainInit.metalBlock, 1, 10));
-			OreDictionary.registerOre("blockStainlessSteel", new ItemStack(MainInit.metalBlock, 1, 10));
-			OreDictionary.registerOre("blockTitaniumAlloy", new ItemStack(MainInit.metalBlock, 1, 11));
-			OreDictionary.registerOre("blockAluminium", new ItemStack(MainInit.metalBlock, 1, 12));
-			OreDictionary.registerOre("blockAluminum", new ItemStack(MainInit.metalBlock, 1, 12));
-			OreDictionary.registerOre("blockBismuth", new ItemStack(MainInit.metalBlock, 1, 13));
-			OreDictionary.registerOre("blockBSCCO", new ItemStack(MainInit.metalBlock, 1, 14));
-			OreDictionary.registerOre("blockLead", new ItemStack(MainInit.metalBlock, 1, 15));
 		}
 
 		OreDictionary.registerOre("stoneGranite", new ItemStack(Blocks.STONE, 1, 1));

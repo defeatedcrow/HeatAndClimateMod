@@ -194,39 +194,5 @@ public class BasicRecipeRegister {
 		// なんでバニラにねぇのこれ
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.PRISMARINE_SHARD, 4, 0), new Object[] {
 			new ItemStack(Blocks.PRISMARINE, 1, 0) });
-
-		// マテリアル変換
-		if (!ModuleConfig.delete_old) {
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.clothes, 1, 0), new Object[] {
-				new ItemStack(MainInit.materials, 1, 0) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.clothes, 1, 1), new Object[] {
-				new ItemStack(MainInit.materials, 1, 1) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.clothes, 1, 2), new Object[] {
-				new ItemStack(MainInit.materials, 1, 2) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.clothes, 1, 3), new Object[] {
-				new ItemStack(MainInit.materials, 1, 3) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.clothes, 1, 4), new Object[] {
-				new ItemStack(MainInit.materials, 1, 8) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.clothes, 1, 5), new Object[] {
-				new ItemStack(MainInit.materials, 1, 9) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gears, 1, 0), new Object[] {
-				new ItemStack(MainInit.materials, 1, 4) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gears, 1, 1), new Object[] {
-				new ItemStack(MainInit.materials, 1, 5) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gears, 1, 2), new Object[] {
-				new ItemStack(MainInit.materials, 1, 6) });
-
-			DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gears, 1, 3), new Object[] {
-				new ItemStack(MainInit.materials, 1, 7) });
-
-		}
 	}
 }

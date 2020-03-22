@@ -4,6 +4,10 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.magic.CharmType;
+import defeatedcrow.hac.api.magic.IJewel;
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
@@ -24,7 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemArmorGemBoots extends ItemArmor implements ITexturePath {
+public class ItemArmorGemBoots extends ItemArmor implements ITexturePath, IJewel {
 
 	private final String tex;
 	private final DCMaterialEnum material;
@@ -79,6 +83,26 @@ public class ItemArmorGemBoots extends ItemArmor implements ITexturePath {
 				tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.potion.ocean"));
 			}
 		}
+	}
+
+	@Override
+	public CharmType getCharmType(int meta) {
+		return CharmType.CONSTANT;
+	}
+
+	@Override
+	public MagicType getType(int meta) {
+		return MagicType.ARMOR;
+	}
+
+	@Override
+	public MagicColor getColor(int meta) {
+		if (this == MagicInit.gemBootsBird) {
+			return MagicColor.WHITE;
+		} else if (this == MagicInit.gemBootsFish) {
+			return MagicColor.BLUE;
+		}
+		return MagicColor.NONE;
 	}
 
 }

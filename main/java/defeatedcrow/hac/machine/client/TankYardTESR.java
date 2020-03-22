@@ -61,6 +61,7 @@ public class TankYardTESR extends DCTESRBase {
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GlStateManager.translate((float) x + 0.5F, (float) y + 1F, (float) z + 0.5F);
 		float f2 = height * amount / limit;
+		Math.min(f2, 1.0F);
 		float f = width * 0.5F;
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder vertexbuffer = tessellator.getBuffer();

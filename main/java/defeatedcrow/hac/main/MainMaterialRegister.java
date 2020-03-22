@@ -70,7 +70,6 @@ import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCake;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
-import defeatedcrow.hac.main.block.device.BlockAcvShield;
 import defeatedcrow.hac.main.block.device.BlockBellow;
 import defeatedcrow.hac.main.block.device.BlockCookingStove;
 import defeatedcrow.hac.main.block.device.BlockFirestand;
@@ -82,7 +81,6 @@ import defeatedcrow.hac.main.block.device.BlockSink;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
 import defeatedcrow.hac.main.block.device.BlockThermometer;
 import defeatedcrow.hac.main.block.device.BlockWindVane;
-import defeatedcrow.hac.main.block.device.ItemBlockShield;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
 import defeatedcrow.hac.main.block.device.ItemPail;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
@@ -91,7 +89,6 @@ import defeatedcrow.hac.main.block.ores.BlockDusts2;
 import defeatedcrow.hac.main.block.ores.BlockGem;
 import defeatedcrow.hac.main.block.ores.BlockHeatingMetal;
 import defeatedcrow.hac.main.block.ores.BlockLayerNew;
-import defeatedcrow.hac.main.block.ores.BlockMetal;
 import defeatedcrow.hac.main.block.ores.BlockMetalAlloy;
 import defeatedcrow.hac.main.block.ores.BlockMetalNew;
 import defeatedcrow.hac.main.block.ores.BlockOreNew;
@@ -118,7 +115,6 @@ import defeatedcrow.hac.main.item.misc.ItemClothN;
 import defeatedcrow.hac.main.item.misc.ItemDCIcon;
 import defeatedcrow.hac.main.item.misc.ItemFoodDust;
 import defeatedcrow.hac.main.item.misc.ItemGearN;
-import defeatedcrow.hac.main.item.misc.ItemMiscs;
 import defeatedcrow.hac.main.item.misc.ItemPetternPaper;
 import defeatedcrow.hac.main.item.misc.ItemRepairPutty;
 import defeatedcrow.hac.main.item.misc.ItemSilkworm;
@@ -198,13 +194,6 @@ public class MainMaterialRegister {
 
 			MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 12);
 			DCMaterialReg.registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone", ClimateMain.MOD_ID);
-
-			MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 15);
-			DCMaterialReg
-					.registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock", ClimateMain.MOD_ID);
-
-			MainInit.materials = new ItemMiscs(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
-			DCMaterialReg.registerItem(MainInit.materials, ClimateCore.PACKAGE_BASE + "_material", ClimateMain.MOD_ID);
 		}
 
 		// blocks
@@ -921,12 +910,6 @@ public class MainMaterialRegister {
 			MainInit.chestVillage = new BlockVillageChest(Material.IRON,
 					ClimateCore.PACKAGE_BASE + "_device_chest_village");
 			registerChestBlock(MainInit.chestVillage, ClimateCore.PACKAGE_BASE + "_device_chest_village", ClimateMain.MOD_ID);
-
-			MainInit.achievementShield = new BlockAcvShield(Material.GROUND, "dcs_build_shield", 2)
-					.setUnlocalizedName("dcs_build_shield");
-			MainInit.achievementShield.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_build_shield");
-			ForgeRegistries.BLOCKS.register(MainInit.achievementShield);
-			ForgeRegistries.ITEMS.register(new ItemBlockShield(MainInit.achievementShield));
 
 			// items
 			MainInit.flowerPot = new ItemFlowerPot().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_flowerpot");

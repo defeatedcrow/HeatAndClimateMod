@@ -7,14 +7,13 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -51,7 +50,7 @@ public class BlockRollerCrusher extends BlockTorqueBase {
 			ItemStack heldItem = player.getHeldItem(hand);
 
 			if (tile instanceof TileTorqueProcessor) {
-				if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {
+				if (MainUtil.isHeldWrench(player, hand)) {
 					((TileTorqueProcessor) tile).rotateFace();
 				} else if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());

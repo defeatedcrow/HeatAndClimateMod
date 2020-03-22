@@ -30,7 +30,6 @@ import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
-import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileFirestand;
@@ -216,7 +215,6 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileBellow.class, "dcs_te_bellow", new TESRBellow());
 		registerTileEntity(TileThermometer.class, "dcs_te_thermometer", new TESRThermometer());
 		registerTileEntity(TileWindVane.class, "dcs_te_windvane", new TESRWindVane());
-		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum", new TESRChandelier());
 		registerTileEntity(TileChandelierSalt.class, "dcs_te_chandelier_salt", new TESRChandelierSalt());
 		registerTileEntity(TileChandelierChal.class, "dcs_te_chandelier_chal", new TESRChandelierChal());

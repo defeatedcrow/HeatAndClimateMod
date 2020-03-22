@@ -19,12 +19,8 @@ public class MachineInit {
 	public static Block shaft_t_b;
 	public static Block shaft_x;
 	public static Block gearbox;
-	@Deprecated
-	public static Block piston;
 
 	public static Block fan;
-	@Deprecated
-	public static Block redbox;
 	public static Block spinning;
 
 	// tier 2
@@ -103,6 +99,7 @@ public class MachineInit {
 	public static Block adapterFluidPanel;
 	public static Block acceptorFluidPanel;
 	public static Block wirelessPortal;
+	public static Block playerPanel;
 
 	public static Block reactor;
 	public static Block freezer;

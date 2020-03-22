@@ -64,7 +64,6 @@ import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
-import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileFirestand;
@@ -403,7 +402,6 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow");
 		GameRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer");
 		GameRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane");
-		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		GameRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum");
 		GameRegistry.registerTileEntity(TileChandelierSalt.class, "dcs_te_chandelier_salt");
 		GameRegistry.registerTileEntity(TileChandelierChal.class, "dcs_te_chandelier_chal");

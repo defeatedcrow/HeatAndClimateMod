@@ -404,12 +404,7 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.cartridge, 1, 6), 100);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.cartridge, 1, 7), 120);
 
-		int[] num = {
-				5,
-				7,
-				6,
-				4
-		};
+		int[] num = { 5, 7, 6, 4 };
 		for (int i = 0; i < 4; i++) {
 			MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.brassArmor[i], 1, 0), 125 * i + 50);
 			MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.steelArmor[i], 1, 0), 300 * i + 50);
@@ -621,87 +616,6 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.lotusCandle, 1, 0), 500);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.lotusCandleBlack, 1, 0), 1000);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.macehandle, 1, 0), 9000);
-
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceStarItem, 1, 0), 16600);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceStarItem, 1, 1), 19000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceStarItem, 1, 2), 20500);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceStarItem, 1, 3), 17000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceStarItem, 1, 4), 23100);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceStarItem, 1, 5), 16800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceStarItem, 1, 6), 17300);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceStarItem, 1, 7), 42500);
-
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceSun, 1, 0), 25600);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceMoon, 1, 0), 28000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceBird, 1, 0), 29500);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceIce, 1, 0), 26000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceOcean, 1, 0), 32100);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceBurn, 1, 0), 25800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceFlower, 1, 0), 26300);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.maceGlory, 1, 0), 51500);
-
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 0), 1800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 1), 1700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 2), 1700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 3), 2000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 4), 3200);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 5), 2000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 6), 4700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 7), 4700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 8), 1950);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 9), 11700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 10), 2200);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 11), 1700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 12), 1950);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 13), 1800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 14), 2150);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 15), 2200);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 16), 2000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 17), 9700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 18), 2700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.pendant, 1, 19), 11700);
-
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 0), 1800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 1), 1700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 2), 1700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 3), 2000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 4), 3200);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 5), 2000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 6), 4700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 7), 4700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 8), 1950);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 9), 11700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 10), 2200);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 11), 1700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 12), 1950);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 13), 1800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 14), 2150);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 15), 2200);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 16), 2000);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 17), 9700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 18), 2700);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.badge, 1, 19), 11700);
-
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerSilver, 1, 0), 300);
-
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 0), 320);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 1), 1800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 2), 400);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 3), 1900);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 4), 330);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 5), 1850);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 6), 900);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 7), 3600);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 8), 1820);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 9), 820);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 10), 1020);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 11), 820);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 12), 3950);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 13), 3800);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 14), 21300);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.daggerMagic, 1, 15), 11500);
-
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.gemBootsBird, 1, 0), 27200);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MagicInit.gemBootsFish, 1, 0), 31300);
 
@@ -845,11 +759,9 @@ public class DCPluginMCE {
 
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.fan, 1, 0), 3200);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.spinning, 1, 0), 2600);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.piston, 1, 0), 5850);
 
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.watermill, 1, 0), 2300);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.redbox, 1, 0), 2600);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.conveyor, 1, 0), 460);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.stonemill, 1, 0), 2500);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MachineInit.catapult, 1, 0), 1200);

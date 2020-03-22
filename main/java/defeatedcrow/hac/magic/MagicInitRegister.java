@@ -9,49 +9,28 @@ import defeatedcrow.hac.magic.block.BlockElestial;
 import defeatedcrow.hac.magic.block.BlockIceCluster;
 import defeatedcrow.hac.magic.block.BlockInfernalFlame;
 import defeatedcrow.hac.magic.block.BlockLotusCandle;
-import defeatedcrow.hac.magic.block.BlockMaceBird;
-import defeatedcrow.hac.magic.block.BlockMaceBurn;
-import defeatedcrow.hac.magic.block.BlockMaceDry;
-import defeatedcrow.hac.magic.block.BlockMaceFlower;
-import defeatedcrow.hac.magic.block.BlockMaceGlory;
-import defeatedcrow.hac.magic.block.BlockMaceIce;
-import defeatedcrow.hac.magic.block.BlockMaceImpact;
-import defeatedcrow.hac.magic.block.BlockMaceLight;
-import defeatedcrow.hac.magic.block.BlockMaceMoon;
-import defeatedcrow.hac.magic.block.BlockMaceOcean;
+import defeatedcrow.hac.magic.block.BlockPictureBG;
+import defeatedcrow.hac.magic.block.BlockPictureGU;
+import defeatedcrow.hac.magic.block.BlockPictureRW;
+import defeatedcrow.hac.magic.block.BlockPictureUR;
+import defeatedcrow.hac.magic.block.BlockPictureWB;
 import defeatedcrow.hac.magic.block.BlockTimeCage;
-import defeatedcrow.hac.magic.block.ItemBlockMaceBird;
-import defeatedcrow.hac.magic.block.ItemBlockMaceBurn;
-import defeatedcrow.hac.magic.block.ItemBlockMaceDry;
-import defeatedcrow.hac.magic.block.ItemBlockMaceFlower;
-import defeatedcrow.hac.magic.block.ItemBlockMaceGlory;
-import defeatedcrow.hac.magic.block.ItemBlockMaceIce;
-import defeatedcrow.hac.magic.block.ItemBlockMaceImpact;
-import defeatedcrow.hac.magic.block.ItemBlockMaceLight;
-import defeatedcrow.hac.magic.block.ItemBlockMaceMoon;
-import defeatedcrow.hac.magic.block.ItemBlockMaceOcean;
 import defeatedcrow.hac.magic.item.ItemArmorGemBoots;
 import defeatedcrow.hac.magic.item.ItemColorBadge;
 import defeatedcrow.hac.magic.item.ItemColorCard;
 import defeatedcrow.hac.magic.item.ItemColorDrop;
+import defeatedcrow.hac.magic.item.ItemColorGauntlet;
 import defeatedcrow.hac.magic.item.ItemColorPendant;
 import defeatedcrow.hac.magic.item.ItemColorPendant2;
 import defeatedcrow.hac.magic.item.ItemColorRing;
 import defeatedcrow.hac.magic.item.ItemColorRing2;
 import defeatedcrow.hac.magic.item.ItemEXPGem;
-import defeatedcrow.hac.magic.item.ItemMaceCore;
-import defeatedcrow.hac.magic.item.ItemMaceHandle;
-import defeatedcrow.hac.magic.item.ItemMagicDagger;
-import defeatedcrow.hac.magic.item.ItemMagicalBadge;
-import defeatedcrow.hac.magic.item.ItemMagicalPendant;
-import defeatedcrow.hac.magic.item.ItemSilverDagger;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.DCMaterialEnum;
 import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class MagicInitRegister {
 
@@ -77,12 +56,6 @@ public class MagicInitRegister {
 		MagicInit.colorRing = new ItemColorRing().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_ring");
 		DCMaterialReg.registerItem(MagicInit.colorRing, ClimateCore.PACKAGE_BASE + "_color_ring", ClimateMain.MOD_ID);
 
-		MagicInit.pendant = new ItemMagicalPendant(19).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_pendant");
-		DCMaterialReg.registerItem(MagicInit.pendant, ClimateCore.PACKAGE_BASE + "_jewel_pendant", ClimateMain.MOD_ID);
-
-		MagicInit.badge = new ItemMagicalBadge(19).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_jewel_badge");
-		DCMaterialReg.registerItem(MagicInit.badge, ClimateCore.PACKAGE_BASE + "_jewel_badge", ClimateMain.MOD_ID);
-
 		if (ModuleConfig.magic_advanced) {
 
 			MagicInit.colorRing2 = new ItemColorRing2().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_ring2");
@@ -103,27 +76,14 @@ public class MagicInitRegister {
 			DCMaterialReg
 					.registerItem(MagicInit.colorBadge, ClimateCore.PACKAGE_BASE + "_color_badge", ClimateMain.MOD_ID);
 
+			MagicInit.colorGauntlet = new ItemColorGauntlet()
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_gauntlet");
+			DCMaterialReg
+					.registerItem(MagicInit.colorGauntlet, ClimateCore.PACKAGE_BASE + "_color_gauntlet", ClimateMain.MOD_ID);
+
 			MagicInit.magicCard = new ItemColorCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card");
 			DCMaterialReg
 					.registerItem(MagicInit.magicCard, ClimateCore.PACKAGE_BASE + "_magic_card", ClimateMain.MOD_ID);
-
-			MagicInit.daggerSilver = new ItemSilverDagger()
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dagger_silver");
-			DCMaterialReg
-					.registerItem(MagicInit.daggerSilver, ClimateCore.PACKAGE_BASE + "_dagger_silver", ClimateMain.MOD_ID);
-
-			MagicInit.daggerMagic = new ItemMagicDagger()
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dagger_magic");
-			DCMaterialReg
-					.registerItem(MagicInit.daggerMagic, ClimateCore.PACKAGE_BASE + "_dagger_magic", ClimateMain.MOD_ID);
-
-			MagicInit.macehandle = new ItemMaceHandle(0).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_mace_handle");
-			DCMaterialReg
-					.registerItem(MagicInit.macehandle, ClimateCore.PACKAGE_BASE + "_mace_handle", ClimateMain.MOD_ID);
-
-			MagicInit.maceStarItem = new ItemMaceCore(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_macecore");
-			DCMaterialReg
-					.registerItem(MagicInit.maceStarItem, ClimateCore.PACKAGE_BASE + "_macecore", ClimateMain.MOD_ID);
 
 			MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
 					EntityEquipmentSlot.FEET, "blue").setCreativeTab(ClimateMain.magic)
@@ -172,55 +132,25 @@ public class MagicInitRegister {
 
 		if (ModuleConfig.magic_advanced) {
 
-			MagicInit.maceSun = new BlockMaceLight(ClimateCore.PACKAGE_BASE + "_magicmace_light");
-			MagicInit.maceSun.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_light");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceSun);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceLight(MagicInit.maceSun));
+			MagicInit.pictureBlue = new BlockPictureUR(ClimateCore.PACKAGE_BASE + "_magic_picture_u");
+			DCMaterialReg
+					.registerBlock(MagicInit.pictureBlue, ClimateCore.PACKAGE_BASE + "_magic_picture_u", ClimateMain.MOD_ID);
 
-			MagicInit.maceMoon = new BlockMaceMoon(ClimateCore.PACKAGE_BASE + "_magicmace_moon");
-			MagicInit.maceMoon.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_moon");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceMoon);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceMoon(MagicInit.maceMoon));
+			MagicInit.pictureGreen = new BlockPictureGU(ClimateCore.PACKAGE_BASE + "_magic_picture_g");
+			DCMaterialReg
+					.registerBlock(MagicInit.pictureGreen, ClimateCore.PACKAGE_BASE + "_magic_picture_g", ClimateMain.MOD_ID);
 
-			MagicInit.maceBird = new BlockMaceBird(ClimateCore.PACKAGE_BASE + "_magicmace_bird");
-			MagicInit.maceBird.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_bird");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceBird);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceBird(MagicInit.maceBird));
+			MagicInit.pictureRed = new BlockPictureRW(ClimateCore.PACKAGE_BASE + "_magic_picture_r");
+			DCMaterialReg
+					.registerBlock(MagicInit.pictureRed, ClimateCore.PACKAGE_BASE + "_magic_picture_r", ClimateMain.MOD_ID);
 
-			MagicInit.maceIce = new BlockMaceIce(ClimateCore.PACKAGE_BASE + "_magicmace_ice");
-			MagicInit.maceIce.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_ice");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceIce);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceIce(MagicInit.maceIce));
+			MagicInit.pictureBlack = new BlockPictureBG(ClimateCore.PACKAGE_BASE + "_magic_picture_b");
+			DCMaterialReg
+					.registerBlock(MagicInit.pictureBlack, ClimateCore.PACKAGE_BASE + "_magic_picture_b", ClimateMain.MOD_ID);
 
-			MagicInit.maceOcean = new BlockMaceOcean(ClimateCore.PACKAGE_BASE + "_magicmace_ocean");
-			MagicInit.maceOcean.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_ocean");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceOcean);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceOcean(MagicInit.maceOcean));
-
-			MagicInit.maceBurn = new BlockMaceBurn(ClimateCore.PACKAGE_BASE + "_magicmace_burn");
-			MagicInit.maceBurn.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_burn");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceBurn);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceBurn(MagicInit.maceBurn));
-
-			MagicInit.maceFlower = new BlockMaceFlower(ClimateCore.PACKAGE_BASE + "_magicmace_flower");
-			MagicInit.maceFlower.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_flower");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceFlower);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceFlower(MagicInit.maceFlower));
-
-			MagicInit.maceGlory = new BlockMaceGlory(ClimateCore.PACKAGE_BASE + "_magicmace_glory");
-			MagicInit.maceGlory.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_glory");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceGlory);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceGlory(MagicInit.maceGlory));
-
-			MagicInit.maceDrought = new BlockMaceDry(ClimateCore.PACKAGE_BASE + "_magicmace_drought");
-			MagicInit.maceDrought.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_drought");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceDrought);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceDry(MagicInit.maceDrought));
-
-			MagicInit.maceImpact = new BlockMaceImpact(ClimateCore.PACKAGE_BASE + "_magicmace_impact");
-			MagicInit.maceImpact.setRegistryName(ClimateCore.PACKAGE_BASE + "_magicmace_impact");
-			ForgeRegistries.BLOCKS.register(MagicInit.maceImpact);
-			ForgeRegistries.ITEMS.register(new ItemBlockMaceImpact(MagicInit.maceImpact));
+			MagicInit.pictureWhite = new BlockPictureWB(ClimateCore.PACKAGE_BASE + "_magic_picture_w");
+			DCMaterialReg
+					.registerBlock(MagicInit.pictureWhite, ClimateCore.PACKAGE_BASE + "_magic_picture_w", ClimateMain.MOD_ID);
 
 			MagicInit.timeCage = new BlockTimeCage(ClimateCore.PACKAGE_BASE + "_time_cage");
 			DCMaterialReg
@@ -232,11 +162,9 @@ public class MagicInitRegister {
 	static void loadCreativeTab() {
 		MagicInit.colorDrop.setCreativeTab(ClimateMain.magic);
 		MagicInit.colorRing.setCreativeTab(ClimateMain.magic);
+		MagicInit.colorRing2.setCreativeTab(ClimateMain.magic);
+		MagicInit.colorPendant2.setCreativeTab(ClimateMain.magic);
 
-		// MagicInit.pendant.setCreativeTab(ClimateMain.tool);
-		// MagicInit.badge.setCreativeTab(ClimateMain.tool);
-
-		// MagicInit.elestial.setCreativeTab(ClimateCore.climate);
 		MagicInit.colorCube.setCreativeTab(ClimateMain.magic);
 		MagicInit.expGem.setCreativeTab(ClimateMain.magic);
 		MagicInit.lotusCandle.setCreativeTab(ClimateMain.magic);
@@ -247,27 +175,16 @@ public class MagicInitRegister {
 
 		if (ModuleConfig.magic_advanced) {
 
-			MagicInit.colorRing2.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorPendant.setCreativeTab(ClimateMain.magic);
-			MagicInit.colorPendant2.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorBadge.setCreativeTab(ClimateMain.magic);
+			MagicInit.colorGauntlet.setCreativeTab(ClimateMain.magic);
 			MagicInit.magicCard.setCreativeTab(ClimateMain.magic);
 
-			// MagicInit.daggerSilver.setCreativeTab(ClimateMain.tool);
-			// MagicInit.daggerMagic.setCreativeTab(ClimateMain.tool);
-
-			// MagicInit.macehandle.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceStarItem.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceSun.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceMoon.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceBird.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceIce.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceOcean.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceBurn.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceFlower.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceGlory.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceDrought.setCreativeTab(ClimateMain.tool);
-			// MagicInit.maceImpact.setCreativeTab(ClimateMain.tool);
+			MagicInit.pictureBlue.setCreativeTab(ClimateMain.magic);
+			MagicInit.pictureGreen.setCreativeTab(ClimateMain.magic);
+			MagicInit.pictureRed.setCreativeTab(ClimateMain.magic);
+			MagicInit.pictureWhite.setCreativeTab(ClimateMain.magic);
+			MagicInit.pictureBlack.setCreativeTab(ClimateMain.magic);
 
 			MagicInit.timeCage.setCreativeTab(ClimateMain.magic);
 

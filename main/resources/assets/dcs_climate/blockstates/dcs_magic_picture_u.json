@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north,type=0":  { "model": "dcs_climate:device/dcs_magic_picture_u" },
+        "facing=north,type=1":  { "model": "dcs_climate:device/dcs_magic_picture_u" },
+        "facing=north,type=2": { "model": "dcs_climate:device/dcs_magic_picture_u" },
+        "facing=north,type=3": { "model": "dcs_climate:device/dcs_magic_picture_u" },
+        "facing=south,type=0":  { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 180, "uvlock": false  },
+        "facing=south,type=1":  { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 180, "uvlock": false },
+        "facing=south,type=2": { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 180, "uvlock": false },
+        "facing=south,type=3": { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 180, "uvlock": false },
+        "facing=west,type=0":  { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 270, "uvlock": false  },
+        "facing=west,type=1":  { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 270, "uvlock": false },
+        "facing=west,type=2": { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 270, "uvlock": false },
+        "facing=west,type=3": { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 270, "uvlock": false },
+        "facing=east,type=0":  { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 90, "uvlock": false  },
+        "facing=east,type=1":  { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 90, "uvlock": false },
+        "facing=east,type=2": { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 90, "uvlock": false },
+        "facing=east,type=3": { "model": "dcs_climate:device/dcs_magic_picture_u", "y": 90, "uvlock": false }
+    }
+}
