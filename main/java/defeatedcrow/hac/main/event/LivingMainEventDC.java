@@ -17,6 +17,7 @@ import defeatedcrow.hac.main.util.DCAdvancementUtil;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.util.portal.DCDimChangeHelper;
+import defeatedcrow.hac.main.worldgen.CaravanGenEvent.CaravanType;
 import defeatedcrow.hac.main.worldgen.CaravanGenPos;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
@@ -63,8 +64,8 @@ public class LivingMainEventDC {
 				if (num > -1) {
 					int cx2 = (num % 3) + cx - 1;
 					int cz2 = (num / 3) + cz - 1;
-					if (CaravanGenPos.canGenerateBiome(cx2, cz2, living.getEntityWorld()) && !CaravanGenPos
-							.isDupe(cx2, cz2, living.getEntityWorld())) {
+					if (living.world.isBlockLoaded(new BlockPos(7 + cx2 * 16, 61, 7 + cz2 * 16)) && CaravanGenPos
+							.getType(event.getWorld(), cx2, cz2) != CaravanType.BROKEN) {
 						event.setResult(Result.DENY);
 					}
 				}

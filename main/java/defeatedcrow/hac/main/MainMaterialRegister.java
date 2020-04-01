@@ -4,7 +4,6 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.event.DispenseEntityItem;
@@ -935,7 +934,7 @@ public class MainMaterialRegister {
 				"garnet",
 				"toolsteel" };
 			for (int j = 0; j < 9; j++) {
-				DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
+				// DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 				MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]);

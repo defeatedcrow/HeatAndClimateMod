@@ -17,6 +17,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,11 +26,7 @@ public class ItemRepairPutty extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = {
-			"putty",
-			"abrasive",
-			"soap"
-	};
+	private static String[] names = { "putty", "abrasive", "soap" };
 
 	public ItemRepairPutty() {
 		super();
@@ -59,6 +56,7 @@ public class ItemRepairPutty extends DCItem {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, World world, List<String> tooltip) {
 		if (stack != null) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			int m = stack.getItemDamage();
 			if (m == 0) {
 				tooltip.add(I18n.format("dcs.tip.repair_putty.description"));

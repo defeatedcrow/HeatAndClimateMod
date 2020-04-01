@@ -12,7 +12,6 @@ import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -173,30 +172,29 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 			y1 = getPos().getY() - 2D;
 			y2 = getPos().getY() + 0.5D;
 		}
-		List list = this.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
+		List<EntityItem> list = this.world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(x1, y1, z1, x2, y2,
+				z2));
 		if (list == null || list.isEmpty())
 			return false;
 
 		for (int i = 0; i < list.size(); ++i) {
-			Entity entity = (Entity) list.get(i);
+			EntityItem entity = list.get(i);
 			if (entity != null) {
-				if (entity instanceof EntityItem) {
-					EntityItem drop = (EntityItem) entity;
-					if (!DCUtil.isEmpty(drop.getItem())) {
-						ItemStack ins = drop.getItem().copy();
-						for (int j = 0; j < this.getSizeInventory(); j++) {
-							ItemStack cur = this.getStackInSlot(j);
-							int count = this.isItemStackable(ins, cur);
-							if (count > 0) {
-								ins.setCount(count);
-								this.incrStackInSlot(j, ins);
-								drop.getItem().splitStack(count);
-								this.markDirty();
-								if (DCUtil.isEmpty(drop.getItem())) {
-									drop.setDead();
-								}
-								return true;
+				EntityItem drop = entity;
+				if (!DCUtil.isEmpty(drop.getItem())) {
+					ItemStack ins = drop.getItem().copy();
+					for (int j = 0; j < this.getSizeInventory(); j++) {
+						ItemStack cur = this.getStackInSlot(j);
+						int count = this.isItemStackable(ins, cur);
+						if (count > 0) {
+							ins.setCount(count);
+							this.incrStackInSlot(j, ins);
+							drop.getItem().splitStack(count);
+							this.markDirty();
+							if (DCUtil.isEmpty(drop.getItem())) {
+								drop.setDead();
 							}
+							return true;
 						}
 					}
 				}
@@ -354,13 +352,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	/* === SidedInventory === */
 
 	protected int[] slotsSides() {
-		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4
-		};
+		return new int[] { 0, 1, 2, 3, 4 };
 	};
 
 	@Override

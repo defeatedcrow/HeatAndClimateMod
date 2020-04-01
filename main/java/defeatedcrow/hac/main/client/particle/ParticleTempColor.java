@@ -21,10 +21,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ParticleTempColor extends Particle {
 
 	public static final String TEMP_TEX = new String("dcs_climate:textures/particles/particle_temp.png");
-	private static final VertexFormat VERTEX_FORMAT = (new VertexFormat()).addElement(
-			DefaultVertexFormats.POSITION_3F).addElement(DefaultVertexFormats.TEX_2F).addElement(
-					DefaultVertexFormats.COLOR_4UB).addElement(DefaultVertexFormats.TEX_2S).addElement(
-							DefaultVertexFormats.NORMAL_3B).addElement(DefaultVertexFormats.PADDING_1B);
+	private static final VertexFormat VERTEX_FORMAT = (new VertexFormat()).addElement(DefaultVertexFormats.POSITION_3F)
+			.addElement(DefaultVertexFormats.TEX_2F).addElement(DefaultVertexFormats.COLOR_4UB)
+			.addElement(DefaultVertexFormats.TEX_2S).addElement(DefaultVertexFormats.NORMAL_3B)
+			.addElement(DefaultVertexFormats.PADDING_1B);
 	private TextureManager textureManager;
 
 	protected ParticleTempColor(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, int colorR,
@@ -71,18 +71,78 @@ public class ParticleTempColor extends Particle {
 		float fx = (float) (this.prevPosX + (this.posX - this.prevPosX) * partialTicks - interpPosX);
 		float fy = (float) (this.prevPosY + (this.posY - this.prevPosY) * partialTicks - interpPosY);
 		float fz = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * partialTicks - interpPosZ);
+		float a = 0.3F;
+		float b = 0.565F;
 		GlStateManager.color(1F, 1F, 1F, 1F);
 		GlStateManager.disableLighting();
 		RenderHelper.disableStandardItemLighting();
 		worldRendererIn.begin(7, VERTEX_FORMAT);
-		worldRendererIn.pos(fx - 0.30D, fy + 0.565D, fz + 0.30D).tex(fU, fV).color(this.particleRed, this.particleGreen,
-				this.particleBlue, this.particleAlpha).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-		worldRendererIn.pos(fx - 0.30D, fy + 0.565D, fz - 0.30D).tex(fU, fv).color(this.particleRed, this.particleGreen,
-				this.particleBlue, this.particleAlpha).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-		worldRendererIn.pos(fx + 0.30D, fy + 0.565D, fz - 0.30D).tex(fu, fv).color(this.particleRed, this.particleGreen,
-				this.particleBlue, this.particleAlpha).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-		worldRendererIn.pos(fx + 0.30D, fy + 0.565D, fz + 0.30D).tex(fu, fV).color(this.particleRed, this.particleGreen,
-				this.particleBlue, this.particleAlpha).lightmap(0, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
+
+		worldRendererIn.pos(fx - a, fy + b, fz + a).tex(fU, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - a, fy + b, fz - a).tex(fU, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + a, fy + b, fz - a).tex(fu, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + a, fy + b, fz + a).tex(fu, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+
+		worldRendererIn.pos(fx - b, fy + a, fz - a).tex(fU, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - b, fy + a, fz + a).tex(fU, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - b, fy - a, fz + a).tex(fu, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - b, fy - a, fz - a).tex(fu, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+
+		worldRendererIn.pos(fx + b, fy + a, fz + a).tex(fU, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + b, fy + a, fz - a).tex(fU, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + b, fy - a, fz - a).tex(fu, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + b, fy - a, fz + a).tex(fu, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+
+		worldRendererIn.pos(fx - a, fy + a, fz + b).tex(fU, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + a, fy + a, fz + b).tex(fU, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + a, fy - a, fz + b).tex(fu, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - a, fy - a, fz + b).tex(fu, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+
+		worldRendererIn.pos(fx + a, fy + a, fz - b).tex(fU, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - a, fy + a, fz - b).tex(fU, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx - a, fy - a, fz - b).tex(fu, fv)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+		worldRendererIn.pos(fx + a, fy - a, fz - b).tex(fu, fV)
+				.color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(0, 240)
+				.normal(0.0F, 1.0F, 0.0F).endVertex();
+
 		Tessellator.getInstance().draw();
 		GlStateManager.enableLighting();
 	}

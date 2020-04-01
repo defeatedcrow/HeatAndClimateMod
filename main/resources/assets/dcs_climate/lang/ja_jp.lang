@@ -1459,10 +1459,10 @@ dcs.tip.right_click=右クリック
 dcs.tip.pairing=リンク先の座標登録が必要です。 (アイテムを手に持って、対象のマシンをスニーク右クリックする)
 dcs.tip.on_anvil=金床で使用します。
 dcs.tip.remove_bad_potion=悪性ポーション効果のみを解除します。
-
 dcs.tip.clear_potion=すべてのポーション効果を解除。
+
 dcs.tip.danger_drink=全回復 (ときどき即死)
-dcs.tip.correct_from_cow=近くにいる牛から液体ホッパーで集める。
+dcs.tip.correct_from_cow=近くにいる牛から空容器または液体ホッパーで集める。
 dcs.tip.upper_only=真上のブロックのみ
 dcs.tip.forward_only=前方のブロックのみ
 dcs.tip.catapult=トルク入力により飛距離がアップします。
@@ -1518,7 +1518,7 @@ dcs.tip.cloth.color=カラーバリエーション
 dcs.tip.tinder=高温のブロックや燃えているエンティティから火を移します。
 dcs.tip.firestarter=対象のブロックやエンティティに着火します。
 dcs.tip.scythe1=植物や作物、葉ブロックを範囲破壊します。
-dcs.tip.scythe2=スニークに羊を右クリックすると、毛を刈り取ります。
+dcs.tip.scythe2=スニーク中に羊を右クリックすると、毛を刈り取ります。
 dcs.tip.toolsteel.hoe1=3x3の範囲の土を耕します。
 dcs.tip.toolsteel.hoe2=騎乗中のエンティティを騎乗解除します。
 dcs.tip.toolsteel.tools=空腹度を消費し、ブロックを3x3の範囲で破壊します。
@@ -1532,6 +1532,17 @@ dcs.tip.firestand2=雨や湿気を受けると自然に鎮火します。
 dcs.tip.geyser=破壊にはTier4以上のツルハシが必要です。
 dcs.tip.tankyard1=マルチブロックタンクの構成ブロックです。
 dcs.tip.tankyard2=WxWxHの箱型を組み立て、底の中央をタンクヤードコアに置き換え、スパナで右クリックします。
+dcs.tip.crow_drill=右クリックでチャンク内のブロックを除去します。
+dcs.tip.thermal_scope=手に持っている間、熱源ブロックの温度を表示します。
+dcs.tip.entity_scope=手に持っている間、モンスターの位置を表示します。
+dcs.tip.penetrate_block=ブロック貫通
+dcs.tip.ranged_attack=範囲攻撃
+dcs.tip.silver_bullet=アンデッドモンスターに大ダメージ
+dcs.tip.light_bullet=着弾地点に光源を設置します。
+dcs.tip.extinction_bullet=着弾地点の火を消します。
+dcs.tip.balloon_bullet=着弾地点にデコイ風船を設置します。
+dcs.tip.throwing_arrow=攻撃力上昇ポーションによって威力が増加します。
+dcs.tip.presscake=骨粉のように植物に撒くことが出来ます。
 
 dcs.tip.heat_treatment_jei1=%d tick以内に処理を行う
 dcs.tip.heat_treatment_jei2=不良品
@@ -1636,6 +1647,7 @@ dcs.comment.color_picture.ur=気温を上昇させる
 dcs.comment.color_picture.gu=通気を上昇させ、プレイヤーに鳥の加護のポーション効果を与える
 dcs.comment.color_picture.rw=プレイヤーと友好・中立モブを強化する
 dcs.comment.color_picture.bg=夜間のみ活動する黒い番犬をスポーンさせる
+dcs.comment.color_picture.bg2=絵画の下にチェストを置くと、番犬が拾ったアイテムを収集します。
 dcs.comment.color_picture.wb=モンスターがスポーンしなくなる
 
 dcs.tip.color_cube0=5ブロック以上深い水の底

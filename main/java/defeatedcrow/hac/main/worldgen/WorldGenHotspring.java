@@ -41,7 +41,7 @@ public class WorldGenHotspring implements IWorldGenerator {
 			Biome b = world.getBiome(pos);
 			pos.down(2);
 			// DCLogger.debugInfoLog("hotspring: " + pos.toString());
-			int r = 6 + rand.nextInt(4);
+			int r = 5 + rand.nextInt(4);
 			double r1 = r - 1D;
 			double r2 = r - 3D;
 			for (BlockPos p : BlockPos.getAllInBox(pos.add(-r, -4, -r), pos.add(r, 2, r))) {

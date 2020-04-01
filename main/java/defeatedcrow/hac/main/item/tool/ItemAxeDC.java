@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -29,6 +30,9 @@ public class ItemAxeDC extends ItemAxe implements ITexturePath {
 
 	public ItemAxeDC(ToolMaterial m, String t) {
 		super(m, m.getAttackDamage() + 2.0F, -3.0F);
+		if (m == DCToolMaterial.DC_TOOLMETAL) {
+			isToolsteel = true;
+		}
 		tex = t;
 	}
 
@@ -109,8 +113,10 @@ public class ItemAxeDC extends ItemAxe implements ITexturePath {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		if (isToolsteel)
+		if (isToolsteel) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.toolsteel.tools"));
+		}
 	}
 
 }

@@ -157,13 +157,14 @@ public class BlockPlayerPanel extends DCTileBlock {
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (!world.isRemote) {
-			int step = DCState.getInt(state, DCState.TYPE4);
-			if (step == 3) {
-				TileEntity tile = world.getTileEntity(pos);
-				if (tile instanceof TilePlayerPanel) {
-					TilePlayerPanel panel = (TilePlayerPanel) world.getTileEntity(pos);
-					if (entity != null && entity instanceof EntityPlayer) {
+
+		int step = DCState.getInt(state, DCState.TYPE4);
+		if (step == 3) {
+			TileEntity tile = world.getTileEntity(pos);
+			if (tile instanceof TilePlayerPanel) {
+				TilePlayerPanel panel = (TilePlayerPanel) world.getTileEntity(pos);
+				if (entity != null && entity instanceof EntityPlayer) {
+					if (!world.isRemote) {
 						if (panel.cooltime > 0) {
 							panel.cooltime--;
 						} else {
@@ -173,31 +174,25 @@ public class BlockPlayerPanel extends DCTileBlock {
 								entity.setPositionAndUpdate(p.getX() + 0.5D, p.getY() + 0.25D, p.getZ() + 0.5D);
 								entity.fallDistance = 0.0F;
 							}
-							panel.cooltime = 20;
+							panel.cooltime = 40;
 						}
+					} else {
+						int c = ClimateMain.proxy.getParticleCount();
+						if (ClimateMain.proxy.getParticleCount() > 0) {
+							for (int i = 0; i < 3; i++) {
+								double x = pos.getX() + rand.nextDouble();
+								double y = pos.getY() + rand.nextDouble() * 0.5D;
+								double z = pos.getZ() + rand.nextDouble();
 
-					} else if (panel.cooltime != 20) {
-						panel.cooltime = 20;
+								Particle p = new ParticleBlink.Factory()
+										.createParticle(0, world, x, y, z, 0.0D, 0.15D, 0.0D, new int[0]);
+								FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
+							}
+						}
 					}
+				} else if (panel.cooltime != 40) {
+					panel.cooltime = 40;
 				}
-			}
-		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (world.isRemote && state != null && DCState.getInt(state, DCState.TYPE4) == 3) {
-			int c = ClimateMain.proxy.getParticleCount();
-			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
-				double x = pos.getX() + rand.nextDouble();
-				double y = pos.getY() + rand.nextDouble() * 0.5D;
-				double z = pos.getZ() + rand.nextDouble();
-
-				Particle p = new ParticleBlink.Factory()
-						.createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
-				FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
-
 			}
 		}
 	}

@@ -24,6 +24,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -32,11 +33,7 @@ public class ItemTinderDC extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = {
-			"tinder",
-			"fire",
-			"firestarter"
-	};
+	private static String[] names = { "tinder", "fire", "firestarter" };
 
 	public ItemTinderDC() {
 		super();
@@ -179,6 +176,7 @@ public class ItemTinderDC extends DCItem {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, World world, List<String> tooltip) {
 		if (stack != null) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			int m = stack.getItemDamage();
 			if (m == 0) {
 				tooltip.add(I18n.format("dcs.tip.tinder"));

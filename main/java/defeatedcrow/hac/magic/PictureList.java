@@ -27,6 +27,18 @@ public class PictureList {
 		return false;
 	}
 
+	public static BlockPos getPos(ChunkPos chunk, MagicColor color) {
+		for (Entry<BlockPos, MagicColor> e : INSTANCE.colorMap.entrySet()) {
+			if (color == e.getValue()) {
+				ChunkPos c = new ChunkPos(e.getKey());
+				if (Math.abs(chunk.x - c.x) < 3 && Math.abs(chunk.z - c.z) < 3) {
+					return new BlockPos(e.getKey());
+				}
+			}
+		}
+		return null;
+	}
+
 	public static void checkList(World world) {
 		Iterator<BlockPos> itr = INSTANCE.colorMap.keySet().iterator();
 		while (itr.hasNext()) {

@@ -250,7 +250,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 					IFluidHandler intank = inT.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f1);
 					IFluidHandler outtank = outT.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, f2);
 					if (intank != null && outtank != null) {
-						int limit = 200; // 200mBまでしか送らない
+						int limit = 1000; // 1000mBまでしか送らない
 
 						// 引き出せる量
 						FluidStack get = intank.drain(limit, false);

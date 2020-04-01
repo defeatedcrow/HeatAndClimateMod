@@ -312,6 +312,8 @@ public class MagicCommonEvent {
 			} else if (isCollidedBlock(event.getEntityLiving())) {
 				if (event.getEntityLiving().isSneaking()) {
 					event.getEntityLiving().motionY = 0.0D;
+					event.getEntityLiving().motionX *= 0.5D;
+					event.getEntityLiving().motionZ *= 0.5D;
 				}
 			}
 			event.getEntityLiving().fallDistance = 0F;
@@ -387,8 +389,11 @@ public class MagicCommonEvent {
 			ChunkPos chunk = new ChunkPos(cx, cz);
 			if (!event.getEntityLiving().getEntityWorld().isDaytime() && !event.getEntityLiving()
 					.isInWater() && PictureList.INSTANCE.hasColor(chunk, MagicColor.BLACK)) {
-				if (event.getWorld().rand.nextInt(100) < 35 || event.getEntityLiving() instanceof EntityCreeper)
+				if (event.getWorld().rand.nextInt(100) < 50 || event.getEntityLiving() instanceof EntityCreeper) {
 					event.getEntityLiving().addTag("blackdog");
+				} else {
+					event.setResult(Result.DENY);
+				}
 			} else if (PictureList.INSTANCE.hasColor(chunk, MagicColor.WHITE)) {
 				event.setResult(Result.DENY);
 			}

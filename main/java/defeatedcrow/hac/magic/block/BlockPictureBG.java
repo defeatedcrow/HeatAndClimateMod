@@ -31,6 +31,7 @@ public class BlockPictureBG extends BlockPictureBase {
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 		tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.color_picture.all"));
 		tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.color_picture.bg"));
+		tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.color_picture.bg2"));
 	}
 
 }

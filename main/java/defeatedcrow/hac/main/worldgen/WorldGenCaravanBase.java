@@ -34,11 +34,11 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		if (num > -1) {
 			int cx2 = (num % 3) + cx - 1;
 			int cz2 = (num / 3) + cz - 1;
-			// DCLogger.infoLog("test1 Biome: x" + cx2 + ", z " + cz2 + ", " +
-			// CaravanGenPos.canGenerateBiome(cx2, cz2, world));
-			// DCLogger.infoLog("test1 DupeCheck: x" + cx2 + ", z " + cz2 + ", " + !CaravanGenPos.isDupe(cx2, cz2,
-			// world));
-			if (CaravanGenPos.canGenerateBiome(cx2, cz2, world) && !CaravanGenPos.isDupe(cx2, cz2, world)) {
+			boolean check = CaravanGenPos.canGenerateBiome(cx2, cz2, world);
+			int check2 = CaravanGenPos.isDupe(cx2, cz2, world);
+			// DCLogger.infoLog("test1 Biome: x " + cx2 + ", z " + cz2 + ", " + check);
+			// DCLogger.infoLog("test1 DupeCheck: x " + cx2 + ", z " + cz2 + ", " + check2);
+			if (check && check2 == 0) {
 				if (num == 4) {
 					generateCore(rand, cx, cz, world);
 					CaravanGenPos.chunk = prov.getLoadedChunk(cx, cz);
@@ -46,7 +46,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 					generatePart(num, rand, cx, cz, world);
 				}
 
-				// DCLogger.debugLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2);
+				// DCLogger.debugInfoLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2);
 			}
 		}
 	}
@@ -79,6 +79,10 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		int cz2 = (num / 3) - 1;
 		int[] type = CaravanGenPos.getRoomNum(cx + cx2 - 1, cz + cz2 - 1, world);
 		int gate = type[0] * 2 + 1;
+		int minX2 = 0;
+		int minZ2 = 0;
+		int maxX2 = 16;
+		int maxZ2 = 16;
 
 		EnumFacing face = EnumFacing.SOUTH;
 		if (num == 7) {
@@ -93,26 +97,30 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 
 		if (cx2 == -1) {
 			maxX = 13;
+			maxX2 = 15;
 		}
 		if (cx2 == 1) {
 			minX = 3;
+			minX2 = 1;
 		}
 		if (cz2 == -1) {
 			maxZ = 13;
+			maxZ2 = 15;
 		}
 		if (cz2 == 1) {
 			minZ = 3;
+			minZ2 = 1;
 		}
 
 		for (int y = -10; y < 40; y++) {
-			for (int x = 0; x < 16; x++) {
-				for (int z = 0; z < 16; z++) {
+			for (int x = minX2; x < maxX2; x++) {
+				for (int z = minZ2; z < maxZ2; z++) {
 					BlockPos pos = new BlockPos(px + x, py + y, pz + z);
 					IBlockState set = getPartBase(num, x, y, z, rand);
 					if (x >= minX && x < maxX && z >= minZ && z < maxZ) {
 						world.setBlockState(pos, set, 2);
 					} else if (y > 0) {
-						world.setBlockToAir(pos);
+						world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
 					}
 				}
 			}

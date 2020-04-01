@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class TilePlayerPanel extends TileEntity {
 
-	public int cooltime = 20;
+	public int cooltime = 40;
 
 	// pair
 	protected BlockPos pairPos = null;

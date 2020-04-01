@@ -1,12 +1,17 @@
 package defeatedcrow.hac.main.item.tool;
 
+import java.util.List;
+
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.entity.EntityThrowingArrow;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -23,7 +28,10 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemThrowingArrow extends DCItem implements ITexturePath {
 
@@ -123,6 +131,14 @@ public class ItemThrowingArrow extends DCItem implements ITexturePath {
 	@Override
 	public String[] getNameSuffix() {
 		return names;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
+		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+		tooltip.add("Damage: " + MainCoreConfig.gun_damage * 0.5F);
+		tooltip.add(I18n.format("dcs.tip.throwing_arrow"));
 	}
 
 }

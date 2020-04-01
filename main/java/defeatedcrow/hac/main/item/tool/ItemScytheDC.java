@@ -216,7 +216,7 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack itemstack, EntityPlayer player, EntityLivingBase entity,
 			EnumHand hand) {
-		if (entity == null || entity.world.isRemote) {
+		if (entity == null || entity.world.isRemote || player == null) {
 			return false;
 		}
 		if (player.isSneaking() && entity instanceof IShearable) {

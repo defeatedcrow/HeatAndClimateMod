@@ -1497,8 +1497,8 @@ dcs.tip.right_click=Right-click
 dcs.tip.pairing=Require registering target coordinate. (Held this item and right-click the coordinate of target machine.)
 dcs.tip.on_anvil=Use on the anvil.
 dcs.tip.remove_bad_potion=Clear only bad potion effects.
-
 dcs.tip.clear_potion=Clear all potion effects.
+
 dcs.tip.danger_drink=Powerful but dangerous!
 dcs.tip.correct_from_cow=Collect from cow with Fluid Hopper.
 dcs.tip.upper_only=only upper side coordinate
@@ -1579,6 +1579,17 @@ dcs.tip.firestand2=Extinguished by rain or high humidity.
 dcs.tip.geyser=Require a tier 4+ pickaxe for drop.
 dcs.tip.tankyard1=A part of the multi-block fluid tank.
 dcs.tip.tankyard2=Assemble the hollow box of WxWxH, replace the center of the bottom with the Tank Yard Core, and right-click with a wrench.
+dcs.tip.crow_drill=Right-click: Erase blocks in the chunks.
+dcs.tip.thermal_scope=When this is in your hand, it shows the HeatTier of the heat source block.
+dcs.tip.entity_scope=When this is in your hand, it shows the enemy mobs.
+dcs.tip.penetrate_block=Block Penetration
+dcs.tip.ranged_attack=Ranged Attack
+dcs.tip.silver_bullet=x2 damage to undead monsters
+dcs.tip.light_bullet=Place a light source at the point of impact.
+dcs.tip.extinction_bullet=Extinguish the impact point.
+dcs.tip.balloon_bullet=Place a decoy balloon at the point of impact.
+dcs.tip.throwing_arrow=Affected by the strength potion effect.
+dcs.tip.presscake=Has the effect of bone meal.
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products
@@ -1668,7 +1679,8 @@ dcs.comment.color_picture.ur=Apply high HeatTier in the area.
 dcs.comment.color_picture.gu=Apply wind and bird potion effect in the area.
 dcs.comment.color_picture.rw=Apply some potion effects in the area.
 dcs.comment.color_picture.bg=Summon black dogs in night time in the area.
-dcs.comment.color_picture.wb=Suppresses spawns of hostile mobs in the area.
+dcs.comment.color_picture.bg2=Place a chest under the picture will collect the items picked up by the black dog.
+dcs.comment.color_picture.wb=Suppresses spawns of monsters in the area.
 
 dcs.tip.color_cube0=Bottom deeper than 5 blocks
 dcs.tip.color_cube1=A place surrounded by flowers

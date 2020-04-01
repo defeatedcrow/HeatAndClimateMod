@@ -1,8 +1,14 @@
 package defeatedcrow.hac.main.item.ores;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
@@ -10,28 +16,30 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMiscDust extends DCItem {
 
 	private final int maxMeta;
 
 	private static String[] names = {
-			"coal",
-			"crystal",
-			"lime",
-			"wood",
-			"presscake",
-			"ash",
-			"niter",
-			"sulfur",
-			"garnet",
-			"apatite",
-			"borax",
-			"chrysotile",
-			"mica",
-			"slate"
-	};
+		"coal",
+		"crystal",
+		"lime",
+		"wood",
+		"presscake",
+		"ash",
+		"niter",
+		"sulfur",
+		"garnet",
+		"apatite",
+		"borax",
+		"chrysotile",
+		"mica",
+		"slate" };
 
 	public ItemMiscDust(int max) {
 		super();
@@ -88,6 +96,15 @@ public class ItemMiscDust extends DCItem {
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flagIn) {
+		if (!DCUtil.isEmpty(stack) && stack.getItemDamage() == 4) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add(I18n.format("dcs.tip.presscake"));
+		}
 	}
 
 }

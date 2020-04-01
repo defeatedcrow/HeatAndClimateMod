@@ -77,10 +77,11 @@ public class ItemArmorGemBoots extends ItemArmor implements ITexturePath, IJewel
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flagIn) {
 		if (!DCUtil.isEmpty(stack)) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			if (stack.getItem() == MagicInit.gemBootsBird) {
-				tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.potion.bird"));
+				tooltip.add(I18n.format("dcs.potion.bird"));
 			} else if (stack.getItem() == MagicInit.gemBootsFish) {
-				tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.potion.ocean"));
+				tooltip.add(I18n.format("dcs.potion.ocean"));
 			}
 		}
 	}
