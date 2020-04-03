@@ -12,11 +12,11 @@
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "cubeBlack"
+   "ore": "extractBlack"
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "cubeRed"
+   "ore": "extractRed"
   },
   "W": {
    "item": "minecraft:ghast_tear",

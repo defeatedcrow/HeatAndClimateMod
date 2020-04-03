@@ -211,6 +211,58 @@ public class EntityBlackDog extends EntityWolf {
 		super.onLivingUpdate();
 	}
 
+	@Override
+	public void onDeath(DamageSource cause) {
+		// 死亡時に持ち物をドロップ
+		if (!world.isRemote) {
+			if (this.picturePos == null) {
+				int cx = getPosition().getX() >> 4;
+				int cz = getPosition().getZ() >> 4;
+				ChunkPos chunk = new ChunkPos(cx, cz);
+				BlockPos pos = PictureList.INSTANCE.getPos(chunk, MagicColor.BLACK);
+				if (pos != null) {
+					setPicturePos(new BlockPos(pos));
+				}
+			} else {
+				IItemHandler chest = null;
+				int y = 1;
+				while (chest == null && y < 10) {
+					TileEntity tile = world.getTileEntity(picturePos.down(y));
+					if (tile != null && tile
+							.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP)) {
+						chest = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+					}
+					y++;
+				}
+
+				for (ItemStack item : this.getHeldEquipment()) {
+					if (!DCUtil.isEmpty(item)) {
+						if (chest != null) {
+							for (int j = 0; j < chest.getSlots(); j++) {
+								ItemStack rem = chest.insertItem(j, item, true);
+								if (rem.getCount() < item.getCount()) {
+									chest.insertItem(j, item, false);
+									if (!DCUtil.isEmpty(rem) && rem.getCount() > 0) {
+										item.setCount(rem.getCount());
+									} else {
+										item.setCount(0);
+									}
+								}
+							}
+						}
+						if (!item.isEmpty()) {
+							EntityItem drop = new EntityItem(world, getPosition().getX(), getPosition().getY() + 0.125D,
+									getPosition().getZ(), item.copy());
+							world.spawnEntity(drop);
+						}
+					}
+				}
+			}
+		}
+
+		super.onDeath(cause);
+	}
+
 	// クリーパー許すまじ
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {

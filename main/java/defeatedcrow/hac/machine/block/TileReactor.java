@@ -622,15 +622,16 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			if (facing == this.tankSide1.face)
-				return (T) handlerTank1;
+				return (T) inputT1;
 			else if (facing == this.tankSide2.face)
-				return (T) handlerTank2;
+				return (T) inputT2;
 			else if (facing == this.tankSide3.face)
-				return (T) handlerTank3;
+				return (T) outputT1;
 			else if (facing == this.tankSide4.face)
-				return (T) handlerTank4;
+				return (T) outputT2;
 			else
-				return facing == EnumFacing.DOWN ? (T) handlerTank3 : (T) handlerTank1;
+				return facing == EnumFacing.DOWN ? (T) handlerTank3 : facing == EnumFacing.UP ? (T) handlerTank1 :
+						(T) handlerTank4;
 		}
 		return super.getCapability(capability, facing);
 	}

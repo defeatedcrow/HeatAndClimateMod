@@ -12,11 +12,11 @@
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "cubeGreen"
+   "ore": "extractGreen"
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "cubeWhite"
+   "ore": "extractWhite"
   },
   "W": {
    "item": "minecraft:glowstone_dust",

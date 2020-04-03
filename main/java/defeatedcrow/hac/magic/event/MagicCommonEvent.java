@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.ClimateCalculateEvent;
+import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.WorldHeatTierEvent;
@@ -408,8 +409,10 @@ public class MagicCommonEvent {
 		ChunkPos chunk = new ChunkPos(cx, cz);
 		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.GREEN)) {
 			IClimate old = event.currentClimate();
-			event.setNewClimate(old.addAirTier(1));
-			event.setResult(Result.ALLOW);
+			if (old.getAirflow() != DCAirflow.TIGHT) {
+				event.setNewClimate(old.addAirTier(1));
+				event.setResult(Result.ALLOW);
+			}
 		}
 	}
 

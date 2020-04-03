@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
@@ -35,7 +36,9 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -66,6 +69,19 @@ public class BlockReactor extends BlockTorqueBase {
 						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player))
 							world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 						return true;
+					} else {
+						TileReactor rec = (TileReactor) tile;
+						DCLogger.debugInfoLog("Side: " + side);
+						IFluidHandler handler = tile
+								.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
+						if (handler != null) {
+							FluidStack get = handler.getTankProperties()[0].getContents();
+							String s = get == null ? "Empty" : get.getLocalizedName();
+							DCLogger.debugInfoLog("Tank: " + s);
+						} else {
+							DCLogger.debugInfoLog("Tank: Null");
+						}
+						DCLogger.debugInfoLog("TankSide: " + rec.tankSide1.face + ", " + rec.tankSide2.face + ", " + rec.tankSide3.face + ", " + rec.tankSide4.face);
 					}
 				}
 				if (!world.isRemote) {

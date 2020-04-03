@@ -109,27 +109,27 @@ public class MagicRecipeRegister {
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 0), new Object[] {
 			"gemMoonstone",
-			"dustBismuth",
+			"extractBlue",
 			"blockElestial" });
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 1), new Object[] {
 			"gemJadeite",
-			"dustChromium",
+			"extractGreen",
 			"blockElestial" });
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 2), new Object[] {
 			"gemKunzite",
-			"dustManganese",
+			"extractRed",
 			"blockElestial" });
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 3), new Object[] {
 			"gemOpal",
-			"dustMolybdenum",
+			"extractBlack",
 			"blockElestial" });
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 4), new Object[] {
 			"gemCelestite",
-			"dustTitanium",
+			"extractWhite",
 			"blockElestial" });
 
 		// ring
@@ -497,9 +497,9 @@ public class MagicRecipeRegister {
 				'X',
 				"ingotToolSteel",
 				'Y',
-				"cubeGreen",
+				"extractGreen",
 				'Z',
-				"cubeWhite",
+				"extractWhite",
 				'W',
 				new ItemStack(Items.GLOWSTONE_DUST) });
 
@@ -523,9 +523,9 @@ public class MagicRecipeRegister {
 				'X',
 				"ingotTitaniumAlloy",
 				'Y',
-				"cubeBlack",
+				"extractBlack",
 				'Z',
-				"cubeRed",
+				"extractRed",
 				'W',
 				new ItemStack(Items.GHAST_TEAR) });
 
