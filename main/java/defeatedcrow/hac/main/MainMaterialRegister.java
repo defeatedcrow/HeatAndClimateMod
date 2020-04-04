@@ -7,7 +7,6 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.event.DispenseEntityItem;
-import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInitRegister;
 import defeatedcrow.hac.machine.MachineInitRegister;
@@ -1651,30 +1650,6 @@ public class MainMaterialRegister {
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.nitrogenBlock, 0, DCHeatTier.CRYOGENIC);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.steamBlock, 0, DCHeatTier.BOIL);
 
-		// dic
-		FluidDictionaryDC.registerFluidDic(MainInit.hydrogen, "hydrogen");
-		FluidDictionaryDC.registerFluidDic(MainInit.nitricAcid, "nitricacid");
-		FluidDictionaryDC.registerFluidDic(MainInit.sulfuricAcid, "sulfuricacid");
-		FluidDictionaryDC.registerFluidDic(MainInit.ammonia, "ammonia");
-		FluidDictionaryDC.registerFluidDic(MainInit.fuelOil, "fuel_oil");
-		FluidDictionaryDC.registerFluidDic(MainInit.fuelGas, "fuel_gaseous");
-		FluidDictionaryDC.registerFluidDic(MainInit.oil, "seed_oil");
-		FluidDictionaryDC.registerFluidDic(MainInit.nitrogen, "nitrogen");
-		FluidDictionaryDC.registerFluidDic(MainInit.ethanol, "ethanol");
-		FluidDictionaryDC.registerFluidDic(MainInit.blackLiquor, "black_liquor");
-
-		FluidDictionaryDC.registerFluidDic(MainInit.greenTea, "greentea");
-		FluidDictionaryDC.registerFluidDic(MainInit.blackTea, "blacktea");
-		FluidDictionaryDC.registerFluidDic(MainInit.coffee, "coffee");
-		FluidDictionaryDC.registerFluidDic(MainInit.cream, "cream");
-		FluidDictionaryDC.registerFluidDic(MainInit.lemon, "lemonade");
-		FluidDictionaryDC.registerFluidDic(MainInit.tomatoJuice, "vegetable");
-		FluidDictionaryDC.registerFluidDic(MainInit.mazai, "mazai");
-		FluidDictionaryDC.registerFluidDic(MainInit.hotSpring, "hot_spring");
-		FluidDictionaryDC.registerFluidDic(MainInit.stock, "stock");
-		FluidDictionaryDC.registerFluidDic(MainInit.soyMilk, "soymilk");
-		FluidDictionaryDC.registerFluidDic(MainInit.milk, "milk");
-		FluidDictionaryDC.registerFluidDic(MainInit.steam, "steam");
 	}
 
 	static void registerIntegration() {

@@ -3,20 +3,15 @@ package defeatedcrow.hac.food.recipes;
 import defeatedcrow.hac.api.cultivate.CropAPI;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
-import defeatedcrow.hac.plugin.DCPluginFluid;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.GameData;
 
@@ -35,8 +30,6 @@ public class FoodRecipes {
 			FoodFluidRecipe.load();
 		}
 		loadCropData();
-		loadFuelData();
-		loadDrinkData();
 
 		GameData.register_impl(new DrinkCustomRecipeDC().setRegistryName(new ResourceLocation(ClimateMain.MOD_ID,
 				"drinkcustom")));
@@ -271,24 +264,6 @@ public class FoodRecipes {
 		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropWisteria, 1, 32767));
 		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropGrape, 1, 32767));
 
-	}
-
-	static void loadFuelData() {
-		MainAPIManager.fuelRegister.registerFuel(MainInit.oil, 60);
-		MainAPIManager.fuelRegister.registerFuel(MainInit.blackLiquor, 60);
-	}
-
-	static void loadDrinkData() {
-		DCPluginFluid.registerPotion(MainInit.greenTea, MobEffects.HASTE);
-		DCPluginFluid.registerPotion(MainInit.blackTea, MobEffects.RESISTANCE);
-		DCPluginFluid.registerPotion(MainInit.coffee, MobEffects.NIGHT_VISION);
-		DCPluginFluid.registerPotion(MainInit.cream, DCInit.prevFreeze);
-		DCPluginFluid.registerPotion(MainInit.oil, MobEffects.SPEED);
-		DCPluginFluid.registerPotion(MainInit.stock, MobEffects.FIRE_RESISTANCE);
-		DCPluginFluid.registerPotion(MainInit.lemon, MobEffects.JUMP_BOOST);
-		DCPluginFluid.registerPotion(MainInit.blackLiquor, MobEffects.POISON);
-		DCPluginFluid.registerPotion(FluidRegistry.LAVA, MobEffects.FIRE_RESISTANCE);
-		DCPluginFluid.registerPotion(MainInit.soyMilk, MobEffects.INSTANT_HEALTH);
 	}
 
 }

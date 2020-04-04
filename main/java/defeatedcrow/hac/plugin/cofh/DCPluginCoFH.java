@@ -2,13 +2,9 @@ package defeatedcrow.hac.plugin.cofh;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
-import defeatedcrow.hac.plugin.DCPluginFluid;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -45,62 +41,13 @@ public class DCPluginCoFH {
 	}
 
 	static void loadFluid() {
+
 		crude = FluidRegistry.getFluid("crude_oil");
-		if (crude != null) {
-			DCPluginFluid.registerPotion(crude, MainInit.gravity);
-		}
 		coal = FluidRegistry.getFluid("coal");
-		if (coal != null) {
-			DCPluginFluid.registerPotion(coal, MainInit.gravity);
-			MainAPIManager.fuelRegister.registerFuel("coal", 20);
-		}
 		resin = FluidRegistry.getFluid("resin");
-		if (resin != null) {
-			DCPluginFluid.registerPotion(resin, MobEffects.WEAKNESS);
-		}
 		tree = FluidRegistry.getFluid("tree_oil");
-		if (tree != null) {
-			DCPluginFluid.registerPotion(tree, MobEffects.RESISTANCE);
-			MainAPIManager.fuelRegister.registerFuel("tree_oil", 30);
-		}
 		naphtha = FluidRegistry.getFluid("refined_oil");
-		if (naphtha != null) {
-			DCPluginFluid.registerPotion(naphtha, MobEffects.HASTE);
-			MainAPIManager.fuelRegister.registerFuel("refined_oil", 100);
-		}
 		refined = FluidRegistry.getFluid("refined_fuel");
-		if (refined != null) {
-			DCPluginFluid.registerPotion(refined, MobEffects.HASTE);
-			MainAPIManager.fuelRegister.registerFuel("refined_fuel", 150);
-		}
-		Fluid refined_bio = FluidRegistry.getFluid("refined_biofuel");
-		if (refined_bio != null) {
-			DCPluginFluid.registerPotion(refined_bio, MobEffects.SPEED);
-			MainAPIManager.fuelRegister.registerFuel("refined_biofuel", 120);
-		}
-		Fluid biocrude = FluidRegistry.getFluid("biocrude");
-		if (biocrude != null) {
-			DCPluginFluid.registerPotion(biocrude, MobEffects.SLOWNESS);
-			MainAPIManager.fuelRegister.registerFuel("biocrude", 60);
-		}
-
-		Fluid rs = FluidRegistry.getFluid("redstone");
-		if (rs != null) {
-			DCPluginFluid.registerPotion(rs, MobEffects.JUMP_BOOST);
-		}
-
-		Fluid gs = FluidRegistry.getFluid("glowstone");
-		if (gs != null) {
-			DCPluginFluid.registerPotion(gs, MobEffects.GLOWING);
-		}
-
-		// other fluid
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("ender"), MobEffects.NAUSEA);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("pyrotheum"), MobEffects.FIRE_RESISTANCE);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("cryotheum"), DCInit.prevFreeze);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("aerotheum"), MainInit.bird);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("petrotheum"), MainInit.heavyboots);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("mana"), MainInit.ocean);
 
 		Item material = Item.REGISTRY.getObject(new ResourceLocation("thermalfoundation", "material"));
 		if (material != null) {
@@ -119,8 +66,7 @@ public class DCPluginCoFH {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1,
 					7), null, 0F, new FluidStack(MainInit.fuelOil, 200), null, DCHeatTier.KILN, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 500), null, new Object[] {
-									tar
-			});
+								tar });
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1, 0), new ItemStack(
 					MachineInit.reagent, 1, 14), 1F, new FluidStack(MainInit.fuelOil,
@@ -136,8 +82,7 @@ public class DCPluginCoFH {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1,
 					1), null, 0, new FluidStack(MainInit.fuelOil, 100), null, DCHeatTier.KILN, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 200), null, new Object[] {
-									rogin
-			});
+								rogin });
 		}
 
 		if (naphtha != null && refined != null) {

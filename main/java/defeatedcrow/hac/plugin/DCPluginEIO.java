@@ -2,14 +2,10 @@ package defeatedcrow.hac.plugin;
 
 import crazypants.enderio.base.fluid.FluidFuelRegister;
 import crazypants.enderio.base.paint.PaintSourceValidator;
-import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.api.MainAPIManager;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public class DCPluginEIO {
 	public static final DCPluginEIO INSTANCE = new DCPluginEIO();
@@ -18,32 +14,14 @@ public class DCPluginEIO {
 
 	public static void init() {
 		// fluid
-		Fluid hootch = FluidRegistry.getFluid("hootch");
-		if (hootch != null) {
-			DCPluginFluid.registerPotion(hootch, MobEffects.HASTE);
-			MainAPIManager.fuelRegister.registerFuel("hootch", 40);
-			FluidDictionaryDC.registerFluidDic(hootch, "ethanol");
-		}
 
-		Fluid fire = FluidRegistry.getFluid("fire_water");
-		if (fire != null) {
-			DCPluginFluid.registerPotion(fire, MobEffects.STRENGTH);
-			MainAPIManager.fuelRegister.registerFuel("fire_water", 100);
-		}
-
-		Fluid rocket = FluidRegistry.getFluid("rocket_fuel");
-		if (rocket != null) {
-			DCPluginFluid.registerPotion(rocket, MobEffects.STRENGTH);
-			MainAPIManager.fuelRegister.registerFuel("rocket_fuel", 150);
-		}
-
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("nutrient_distillation"), MobEffects.HEALTH_BOOST);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("ender_distillation"), MobEffects.INVISIBILITY);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("vapor_of_levity"), MobEffects.JUMP_BOOST);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("xpjuice"), MobEffects.LUCK);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("liquid_sunshine"), MobEffects.FIRE_RESISTANCE);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("cloud_seed"), MobEffects.WATER_BREATHING);
-		DCPluginFluid.registerPotion(FluidRegistry.getFluid("cloud_seed_concentrated"), MainInit.ocean);
+		DCPluginFluid.registerPotion("nutrient_distillation", MobEffects.HEALTH_BOOST);
+		DCPluginFluid.registerPotion("ender_distillation", MobEffects.INVISIBILITY);
+		DCPluginFluid.registerPotion("vapor_of_levity", MobEffects.JUMP_BOOST);
+		DCPluginFluid.registerPotion("xpjuice", MobEffects.LUCK);
+		DCPluginFluid.registerPotion("liquid_sunshine", MobEffects.FIRE_RESISTANCE);
+		DCPluginFluid.registerPotion("cloud_seed", MobEffects.WATER_BREATHING);
+		DCPluginFluid.registerPotion("cloud_seed_concentrated", MainInit.ocean);
 
 		// fuel
 		FluidFuelRegister.instance.addFuel(MainInit.blackLiquor, 10, 20000);
