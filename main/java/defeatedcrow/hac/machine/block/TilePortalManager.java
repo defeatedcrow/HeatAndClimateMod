@@ -67,7 +67,21 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		} else {
 			active = isActiveMachine();
 			reduceCoolant();
+		}
 
+		for (int i = 0; i < 6; i++) {
+			activeSlot[i] = isActiveSlot(i);
+		}
+	}
+
+	private boolean flag = false;
+	private int tickCount = 5;
+
+	@Override
+	protected void onServerUpdate() {
+		super.onServerUpdate();
+		if (tickCount <= 0) {
+			tickCount = 5;
 			if (!world.isRemote) {
 				if (active) {
 					// 処理
@@ -80,9 +94,9 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 				// packet
 				boolean flag = false;
-				if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
+				if (inputT.getFluidAmount() != lastInT) {
 					flag = true;
-					lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
+					lastInT = inputT.getFluidAmount();
 				}
 
 				if (flag) {
@@ -100,11 +114,10 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 					HaCPacket.INSTANCE.sendToAll(new MessageClimateUpdate(pos, lastHeat));
 				}
 			}
+		} else {
+			tickCount--;
 		}
 
-		for (int i = 0; i < 6; i++) {
-			activeSlot[i] = isActiveSlot(i);
-		}
 	}
 
 	/* 隣接tankから燃料液体を吸い取る */
@@ -267,21 +280,6 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 			}
 		}
 		return false;
-	}
-
-	private boolean flag = false;
-	private int tickCount = 5;
-
-	@Override
-	protected void onServerUpdate() {
-		super.onServerUpdate();
-		if (tickCount <= 0) {
-			tickCount = 20;
-
-		} else {
-			tickCount--;
-		}
-
 	}
 
 	@Override

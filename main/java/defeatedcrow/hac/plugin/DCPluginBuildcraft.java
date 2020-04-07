@@ -41,7 +41,7 @@ public class DCPluginBuildcraft {
 		if (black == null || gas == null || fuel == null || dense == null || mixed == null || heavy == null || denseoil == null || dist == null || residue == null)
 			return;
 
-		if (ModuleConfig.machine && ModuleConfig.machine_advanced) {
+		if (ModuleConfig.r_reactor) {
 
 			ItemStack tar = new ItemStack(MachineInit.reagent, 1, 0);
 			ItemStack coke = new ItemStack(MachineInit.reagent, 1, 13);

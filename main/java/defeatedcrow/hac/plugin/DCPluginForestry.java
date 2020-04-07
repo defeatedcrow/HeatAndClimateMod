@@ -172,7 +172,6 @@ public class DCPluginForestry {
 			}
 
 			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyed_slice"));
-
 			if (slice != null) {
 				DCRecipe.jsonShapedRecipe("plugin", new ItemStack(slice, 4, 0), new Object[] {
 					"XXX",
@@ -247,31 +246,41 @@ public class DCPluginForestry {
 
 		// HaC側のレシピ
 
-		if (ModuleConfig.machine && ModuleConfig.r_mill) {
+		if (ModuleConfig.r_mill && ModuleConfig.food) {
 			if (!OreDictionary.getOres("cropChestnut").isEmpty()) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 2, 0), new ItemStack(
 						MainInit.miscDust, 1, 4), 0.25F, "cropChestnut");
-
-				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
-						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropChestnut");
 			}
 
 			if (!OreDictionary.getOres("cropHazelnut").isEmpty()) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(
 						MainInit.miscDust, 1, 4), 0.25F, "cropHazelnut");
-
-				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
-						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropHazelnut");
 			}
 
 			if (!OreDictionary.getOres("cropAlmond").isEmpty()) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(
 						MainInit.miscDust, 1, 4), 0.25F, "cropAlmond");
+			}
+		}
 
+		if (ModuleConfig.r_crusher) {
+			if (!OreDictionary.getOres("cropChestnut").isEmpty()) {
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
+						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropChestnut");
+			}
+
+			if (!OreDictionary.getOres("cropHazelnut").isEmpty()) {
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
+						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropHazelnut");
+			}
+
+			if (!OreDictionary.getOres("cropAlmond").isEmpty()) {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
 						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropAlmond");
 			}
+		}
 
+		if (ModuleConfig.r_reactor) {
 			if (bio != null && eta != null) {
 				// Pt エタノール蒸留
 				RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(eta,

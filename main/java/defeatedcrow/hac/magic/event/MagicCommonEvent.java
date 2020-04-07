@@ -90,9 +90,10 @@ public class MagicCommonEvent {
 						target.attackEntityFrom(DamageSource.causeMobDamage(target), event.getAmount());
 						event.setCanceled(true);
 					}
-					if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.GREEN) {
+					if (getOffhandJewelColor(owner) == MagicColor.GREEN) {
 						// green-white gauntlet
 						float healamo = event.getAmount() * 0.25F;
+						owner.heal(healamo);
 						event.getSource().setDamageBypassesArmor();
 					}
 				}
@@ -213,31 +214,35 @@ public class MagicCommonEvent {
 				List<ItemStack> nList = Lists.newArrayList();
 				boolean flag = false;
 				for (ItemStack i : event.getDrops()) {
-					IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
-					if (recipe != null) {
-						ItemStack o1 = recipe.getOutput();
-						if (!DCUtil.isEmpty(o1))
-							nList.add(o1);
-						ItemStack o2 = recipe.getSecondary();
-						if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < recipe.getSecondaryChance())
-							nList.add(o2);
-						flag = true;
-					} else {
-						nList.add(i.copy());
+					if (!DCUtil.isEmpty(i)) {
+						IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
+						if (recipe != null) {
+							ItemStack o1 = recipe.getOutput();
+							if (!DCUtil.isEmpty(o1))
+								nList.add(o1);
+							ItemStack o2 = recipe.getSecondary();
+							if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < recipe.getSecondaryChance())
+								nList.add(o2);
+							flag = true;
+						} else {
+							nList.add(i.copy());
+						}
 					}
-					event.getDrops().clear();
-					event.getDrops().addAll(nList);
 				}
+				event.getDrops().clear();
+				event.getDrops().addAll(nList);
 			}
 			/* 精錬 */
 			if (DCUtil.hasCharmItem(event.getHarvester(), new ItemStack(MagicInit.colorPendant2, 1, 2))) {
 				List<ItemStack> nList = Lists.newArrayList();
 				for (ItemStack i : event.getDrops()) {
-					ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(i);
-					if (burnt.isEmpty()) {
-						nList.add(i.copy());
-					} else {
-						nList.add(burnt.copy());
+					if (!DCUtil.isEmpty(i)) {
+						ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(i);
+						if (burnt.isEmpty()) {
+							nList.add(i.copy());
+						} else {
+							nList.add(burnt.copy());
+						}
 					}
 				}
 				event.getDrops().clear();

@@ -30,7 +30,7 @@ public class DCPluginCoFH {
 	public static void load() {
 		loadFluid();
 
-		if (ModuleConfig.machine && ModuleConfig.machine_advanced && ModuleConfig.r_reactor) {
+		if (ModuleConfig.r_reactor) {
 			loadDCRecipes();
 		}
 

@@ -131,7 +131,7 @@ public class BlockPortalManager extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(TextFormatting.BLUE.toString() + "ABSOLUTE" + TextFormatting.GRAY.toString() + I18n
+			tooltip.add(TextFormatting.BLUE.toString() + "CRYOGENIC-" + TextFormatting.GRAY.toString() + I18n
 					.format("dcs.tip.portal1"));
 			tooltip.add(DCName.TORQUE.getLocalizedName() + ": 32.0F /s");
 			tooltip.add(I18n.format("dcs.tip.portal2"));

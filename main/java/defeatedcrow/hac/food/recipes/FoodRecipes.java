@@ -2,14 +2,10 @@ package defeatedcrow.hac.food.recipes;
 
 import defeatedcrow.hac.api.cultivate.CropAPI;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
-import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
@@ -23,48 +19,10 @@ public class FoodRecipes {
 		FoodBasicRecipe.load(res);
 		FoodBasicRecipe.loadCrops(res);
 		FoodClimateRecipe.load();
-		if (ModuleConfig.r_mill) {
-			loadMillRecipe();
-		}
-		if (ModuleConfig.r_fluid) {
-			FoodFluidRecipe.load();
-		}
 		loadCropData();
 
 		GameData.register_impl(new DrinkCustomRecipeDC().setRegistryName(new ResourceLocation(ClimateMain.MOD_ID,
 				"drinkcustom")));
-	}
-
-	static void loadMillRecipe() {
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), "seedRice");
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				4), 0.25F, new ItemStack(FoodInit.seeds, 2, 5));
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.foodDust, 1,
-				4), 0.25F, new ItemStack(FoodInit.seeds, 2, 9));
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				4), 0.25F, "cropOlive");
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 8, 0), new ItemStack(MainInit.miscDust, 1,
-				4), 0.25F, new ItemStack(MainInit.cropBasket, 1, 7));
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				4), 0.25F, new ItemStack(Items.WHEAT_SEEDS, 8, 0));
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				4), 0.25F, new ItemStack(Items.BEETROOT_SEEDS, 8, 0));
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				4), 0.25F, new ItemStack(Items.MELON_SEEDS, 8, 0));
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				4), 0.25F, new ItemStack(Items.PUMPKIN_SEEDS, 8, 0));
-
-		RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
-				4), 0.25F, "cropWalnut");
-
 	}
 
 	static void loadCropData() {

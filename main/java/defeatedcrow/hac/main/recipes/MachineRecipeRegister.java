@@ -12,9 +12,16 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainCoreConfig;
+import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
+import defeatedcrow.hac.main.recipes.device.RegisterFluidRecipe;
+import defeatedcrow.hac.main.recipes.device.RegisterMillRecipe;
+import defeatedcrow.hac.main.recipes.device.RegisterReactorRecipe;
+import defeatedcrow.hac.main.recipes.device.RegisterSpinningRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -29,6 +36,30 @@ public class MachineRecipeRegister {
 		loadVanillaRecipes();
 		loadSmelting();
 		registerClimate();
+
+		if (ModuleConfig.machine) {
+			loadMachineClimateRecipe();
+		}
+
+		if (ModuleConfig.r_mill) {
+			RegisterMillRecipe.load();
+		}
+
+		if (ModuleConfig.r_spinning) {
+			RegisterSpinningRecipe.load();
+		}
+
+		if (ModuleConfig.r_crusher) {
+			RegisterCrusherRecipe.load();
+		}
+
+		if (ModuleConfig.r_reactor) {
+			RegisterReactorRecipe.load();
+		}
+
+		if (ModuleConfig.r_fluid) {
+			RegisterFluidRecipe.load();
+		}
 
 	}
 
@@ -261,6 +292,15 @@ public class MachineRecipeRegister {
 		ClimateSmelting clay = new ClimateSmelting(new ItemStack(MainInit.miscDust, 1, 13), null, DCHeatTier.UHT, null,
 				null, 0, false, new ItemStack(Items.CLAY_BALL, 1, 0));
 		RecipeAPI.registerSmelting.addRecipe(clay);
+	}
+
+	// machine
+	static void loadMachineClimateRecipe() {
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1,
+				0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, "blockCoal");
+
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1,
+				1), DCHeatTier.UHT, DCHumidity.DRY, DCAirflow.TIGHT, false, "blockFuelCoke");
 	}
 
 	static void loadSmelting() {
