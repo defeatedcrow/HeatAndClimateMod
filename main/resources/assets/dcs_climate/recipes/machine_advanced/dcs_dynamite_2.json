@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_reagent",
+   "data": 4
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustWood"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "paper"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_dynamite",
+  "count": 3,
+  "data": 2
+ }
+}

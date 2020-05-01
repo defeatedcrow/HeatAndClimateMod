@@ -76,7 +76,8 @@ public class OredicConfig {
 		{ "ingotBSCCO" },
 		{ "ingotLead" },
 		{ "ingotManganese" },
-		{ "ingotToolSteel" } };
+		{ "ingotToolSteel" },
+		{ "ingotMangalloy" } };
 
 	public static String[][] dusts = new String[][] {
 		{ "dustCopper" },
@@ -115,7 +116,8 @@ public class OredicConfig {
 		{ "blockSUS", "blockStainlessSteel" },
 		{ "blockMagnet" },
 		{ "blockTitaniumAlloy" },
-		{ "blockBSCCO" } };
+		{ "blockBSCCO" },
+		{ "blockMangalloy" } };
 
 	public static String[][] gems = new String[][] {
 		{ "gemChalcedony", "gemChalcedonyBlue" },
@@ -233,6 +235,7 @@ public class OredicConfig {
 		Property i15 = cfg.get("2_metals", "4_15_LeadIngot", ingots[15]);
 		Property i16 = cfg.get("2_metals", "4_16_ManganeseIngot", ingots[16]);
 		Property i17 = cfg.get("2_metals", "4_17_ToolSteelIngot", ingots[17]);
+		Property i18 = cfg.get("2_metals", "4_18_MangalloyIngot", ingots[18]);
 
 		Property d0 = cfg.get("2_metals", "5_00_CopperDust", dusts[0]);
 		Property d1 = cfg.get("2_metals", "5_01_ZincDust", dusts[1]);
@@ -269,6 +272,7 @@ public class OredicConfig {
 		Property a6 = cfg.get("2_metals", "7_06_MagnetBlock", alloys[6]);
 		Property a7 = cfg.get("2_metals", "7_07_TitaniumAlloyBlock", alloys[7]);
 		Property a8 = cfg.get("2_metals", "7_08_BSCCOBlock", alloys[8]);
+		Property a9 = cfg.get("2_metals", "7_09_MangalloyBlock", alloys[9]);
 
 		Property g0 = cfg.get("3_gems", "8_00_BlueChalcedony", gems[0]);
 		Property g1 = cfg.get("3_gems", "8_01_RedChalcedony", gems[1]);
@@ -373,6 +377,7 @@ public class OredicConfig {
 		ingots[15] = i15.getStringList();
 		ingots[16] = i16.getStringList();
 		ingots[17] = i17.getStringList();
+		ingots[18] = i18.getStringList();
 
 		dusts[0] = d0.getStringList();
 		dusts[1] = d1.getStringList();
@@ -409,6 +414,7 @@ public class OredicConfig {
 		alloys[6] = a6.getStringList();
 		alloys[7] = a7.getStringList();
 		alloys[8] = a8.getStringList();
+		alloys[9] = a9.getStringList();
 
 		gems[0] = g0.getStringList();
 		gems[1] = g1.getStringList();

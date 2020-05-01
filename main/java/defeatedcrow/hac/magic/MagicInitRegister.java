@@ -6,8 +6,6 @@ import defeatedcrow.hac.magic.block.BlockBiomeGlass;
 import defeatedcrow.hac.magic.block.BlockColdLamp;
 import defeatedcrow.hac.magic.block.BlockColorCube;
 import defeatedcrow.hac.magic.block.BlockElestial;
-import defeatedcrow.hac.magic.block.BlockIceCluster;
-import defeatedcrow.hac.magic.block.BlockInfernalFlame;
 import defeatedcrow.hac.magic.block.BlockLotusCandle;
 import defeatedcrow.hac.magic.block.BlockPictureBG;
 import defeatedcrow.hac.magic.block.BlockPictureGU;
@@ -103,13 +101,13 @@ public class MagicInitRegister {
 		MagicInit.colorCube = new BlockColorCube(Material.GLASS, ClimateCore.PACKAGE_BASE + "_color_cube");
 		DCMaterialReg.registerBlock(MagicInit.colorCube, ClimateCore.PACKAGE_BASE + "_color_cube", ClimateMain.MOD_ID);
 
-		MagicInit.clusterIce = new BlockIceCluster(ClimateCore.PACKAGE_BASE + "_cluster_ice");
-		DCMaterialReg
-				.registerBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_BASE + "_cluster_ice", ClimateMain.MOD_ID);
-
-		MagicInit.infernalFlame = new BlockInfernalFlame(ClimateCore.PACKAGE_BASE + "_infernal_flame");
-		DCMaterialReg
-				.registerBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_BASE + "_infernal_flame", ClimateMain.MOD_ID);
+		// MagicInit.clusterIce = new BlockIceCluster(ClimateCore.PACKAGE_BASE + "_cluster_ice");
+		// DCMaterialReg
+		// .registerBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_BASE + "_cluster_ice", ClimateMain.MOD_ID);
+		//
+		// MagicInit.infernalFlame = new BlockInfernalFlame(ClimateCore.PACKAGE_BASE + "_infernal_flame");
+		// DCMaterialReg
+		// .registerBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_BASE + "_infernal_flame", ClimateMain.MOD_ID);
 
 		MagicInit.elestial = new BlockElestial(Material.GLASS, ClimateCore.PACKAGE_BASE + "_ore_elestial");
 		DCMaterialReg.registerBlock(MagicInit.elestial, ClimateCore.PACKAGE_BASE + "_ore_elestial", ClimateMain.MOD_ID);

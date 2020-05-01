@@ -70,6 +70,7 @@ import defeatedcrow.hac.main.client.entity.RenderEntityBigCushion;
 import defeatedcrow.hac.main.client.entity.RenderEntityBigCushionB;
 import defeatedcrow.hac.main.client.entity.RenderEntityCution;
 import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
+import defeatedcrow.hac.main.client.entity.RenderEntityDynamiteSmall;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.model.ModelDress;
 import defeatedcrow.hac.main.client.model.ModelHat;
@@ -90,6 +91,7 @@ import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
+import defeatedcrow.hac.main.entity.EntityDynamiteSmall;
 import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
@@ -190,6 +192,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityBigCushion.class, RenderEntityBigCushion.class);
 		registRender(EntityBigCushionBrown.class, RenderEntityBigCushionB.class);
 		registRender(EntityThrowingArrow.class, BoltRenderer.class);
+		registRender(EntityDynamiteSmall.class, RenderEntityDynamiteSmall.class);
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadEntity();

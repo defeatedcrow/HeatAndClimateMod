@@ -543,6 +543,7 @@ public class MachineRecipes {
 		OreDictionary.registerOre("catalystBladeSUS", new ItemStack(MachineInit.rotaryBlade, 1, 0));
 		OreDictionary.registerOre("catalystBladeTitanium", new ItemStack(MachineInit.rotaryBlade, 1, 1));
 		OreDictionary.registerOre("catalystBladeScreen", new ItemStack(MachineInit.rotaryBlade, 1, 2));
+		OreDictionary.registerOre("catalystBladeMangalloy", new ItemStack(MachineInit.rotaryBlade, 1, 3));
 		OreDictionary.registerOre("bladeToolSteel", new ItemStack(MachineInit.machimeMaterials, 1, 7));
 		OreDictionary.registerOre("barrelGun", new ItemStack(MachineInit.machimeMaterials, 1, 8));
 		OreDictionary.registerOre("barrelMortar", new ItemStack(MachineInit.machimeMaterials, 1, 9));

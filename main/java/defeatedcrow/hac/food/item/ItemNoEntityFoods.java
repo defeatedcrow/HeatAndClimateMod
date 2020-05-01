@@ -19,16 +19,24 @@ public class ItemNoEntityFoods extends DCFoodItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "marshmallow", "date_and_nut", "toffee", "tofu", "smoked_salmon", "raisin" };
+	private static String[] names = {
+		"marshmallow",
+		"date_and_nut",
+		"toffee",
+		"tofu",
+		"smoked_salmon",
+		"raisin",
+		"egg_bolo_cookie",
+		"cereal_bar" };
 
 	public ItemNoEntityFoods() {
 		super(false);
-		maxMeta = 5;
+		maxMeta = 7;
 	}
 
 	@Override
 	public int getMaxMeta() {
-		return 5;
+		return 7;
 	}
 
 	@Override
@@ -47,12 +55,20 @@ public class ItemNoEntityFoods extends DCFoodItem {
 
 	@Override
 	public int getFoodAmo(int meta) {
+		if (meta == 1)
+			return 3;
+		if (meta == 2)
+			return 3;
+		if (meta == 4)
+			return 4;
+		if (meta == 7)
+			return 4;
 		return 2;
 	}
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.1F;
+		return 0.2F;
 	}
 
 	@Override

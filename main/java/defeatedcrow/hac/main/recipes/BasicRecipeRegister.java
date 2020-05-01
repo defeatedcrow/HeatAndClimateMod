@@ -134,7 +134,8 @@ public class BasicRecipeRegister {
 
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Blocks.MYCELIUM, 1, 0), new Object[] {
 			new ItemStack(Blocks.DIRT, 1, 0),
-			"dustBlan", });
+			"dustBran",
+			"dustPlant" });
 
 		// ウール
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(Blocks.WOOL, 1, 0), new Object[] {

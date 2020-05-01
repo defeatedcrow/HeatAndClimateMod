@@ -148,6 +148,15 @@ public class MachineAdvancedRecipe {
 			'Y',
 			new ItemStack(Blocks.IRON_BARS, 1, 0) });
 
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.rotaryBlade, 1, 3), new Object[] {
+			" X ",
+			"XYX",
+			" X ",
+			'X',
+			"ingotMangalloy",
+			'Y',
+			"gearToolSteel" });
+
 		if (ModuleConfig.food) {
 			DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.reactor, 1, 0), new Object[] {
 				"YXX",
@@ -541,6 +550,11 @@ public class MachineAdvancedRecipe {
 			'Z',
 			new ItemStack(MachineInit.reagent, 1, 4),
 			'W',
+			"paper" });
+
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.dynamite, 3, 2), new Object[] {
+			new ItemStack(MachineInit.reagent, 1, 4),
+			"dustWood",
 			"paper" });
 
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.burner, 1, 0), new Object[] {

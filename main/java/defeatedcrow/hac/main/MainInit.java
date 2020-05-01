@@ -218,9 +218,9 @@ public class MainInit {
 	public static Item scope;
 	public static Item entityScope;
 
-	public static Item[] dcAxe = new Item[9];
-	public static Item[] dcPickaxe = new Item[9];
-	public static Item[] dcSpade = new Item[9];
+	public static Item[] dcAxe = new Item[10];
+	public static Item[] dcPickaxe = new Item[10];
+	public static Item[] dcSpade = new Item[10];
 	public static Item[] dcSword = new Item[9];
 	public static Item[] dcScythe = new Item[6];
 	public static Item toolsteelRake;

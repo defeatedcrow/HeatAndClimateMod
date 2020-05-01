@@ -78,7 +78,14 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 		IBlockState state = world.getBlockState(pos);
 		if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, stack)) {
 			Block crop = getCropBlock(meta);
-			if (crop instanceof IClimateCrop) {
+			if (crop == FoodInit.cropLotusN) {
+				if (((IClimateCrop) crop).isSuitablePlace(world, pos, state) && world.getBlockState(pos).getBlock()
+						.isReplaceable(world, pos.up())) {
+					world.setBlockState(pos, crop.getDefaultState(), 3);
+					DCUtil.reduceStackSize(stack, 1);
+					return EnumActionResult.SUCCESS;
+				}
+			} else if (crop instanceof IClimateCrop) {
 				if (((IClimateCrop) crop).isSuitablePlace(world, pos, state) && world.getBlockState(pos.up()).getBlock()
 						.isReplaceable(world, pos.up())) {
 					world.setBlockState(pos.up(), crop.getDefaultState(), 3);
@@ -106,7 +113,7 @@ public class ItemDCSeeds extends DCItem implements IPlantable {
 		case 5:
 			return FoodInit.cropCotton;
 		case 6:
-			return FoodInit.cropLotus;
+			return FoodInit.cropLotusN;
 		case 7:
 			return FoodInit.cropHerb;
 		case 8:

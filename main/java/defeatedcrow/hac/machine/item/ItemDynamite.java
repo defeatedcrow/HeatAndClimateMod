@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCEntityItem;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
+import defeatedcrow.hac.main.entity.EntityDynamiteSmall;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -27,12 +28,12 @@ public class ItemDynamite extends DCEntityItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 1;
+		return 2;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 2);
 		String s = "items/misc/dynamite_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -42,10 +43,7 @@ public class ItemDynamite extends DCEntityItem {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"red",
-				"blue"
-		};
+		String[] s = { "red", "blue", "small" };
 		return s;
 	}
 
@@ -56,6 +54,9 @@ public class ItemDynamite extends DCEntityItem {
 		if (i == 1) {
 			ret = new EntityDynamiteBlue(world, x, y, z, player);
 		}
+		if (i == 2) {
+			ret = new EntityDynamiteSmall(world, x, y, z, player);
+		}
 		return ret;
 	}
 
@@ -64,7 +65,12 @@ public class ItemDynamite extends DCEntityItem {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
-		tooltip.add(TextFormatting.RED.toString() + TextFormatting.BOLD.toString() + I18n.format("dcs.tip.dynamite"));
+		if (stack.getMetadata() < 2)
+			tooltip.add(TextFormatting.RED.toString() + TextFormatting.BOLD.toString() + I18n
+					.format("dcs.tip.dynamite"));
+		else
+			tooltip.add(TextFormatting.RED.toString() + TextFormatting.BOLD.toString() + I18n
+					.format("dcs.tip.dynamite3"));
 		tooltip.add(I18n.format("dcs.tip.dynamite2"));
 	}
 

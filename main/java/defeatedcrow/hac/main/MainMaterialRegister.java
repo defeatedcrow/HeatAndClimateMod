@@ -206,7 +206,7 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.metalBlockNew, ClimateCore.PACKAGE_BASE + "_ore_metal_new", ClimateMain.MOD_ID);
 
-		MainInit.metalBlockAlloy = new BlockMetalAlloy(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal_alloy", 8);
+		MainInit.metalBlockAlloy = new BlockMetalAlloy(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal_alloy", 9);
 		DCMaterialReg
 				.registerBlock(MainInit.metalBlockAlloy, ClimateCore.PACKAGE_BASE + "_ore_metal_alloy", ClimateMain.MOD_ID);
 
@@ -214,12 +214,12 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock", ClimateMain.MOD_ID);
 
-		MainInit.dustBlock_2 = new BlockDusts2(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock2", 2);
+		MainInit.dustBlock_2 = new BlockDusts2(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock2", 3);
 		DCMaterialReg
 				.registerBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_BASE + "_ore_dustblock2", ClimateMain.MOD_ID);
 
 		MainInit.heatedMetalBlock = new BlockHeatingMetal(Material.GROUND, ClimateCore.PACKAGE_BASE + "_heatingmetal",
-				11);
+				14);
 		DCMaterialReg
 				.registerBlock(MainInit.heatedMetalBlock, ClimateCore.PACKAGE_BASE + "_ore_heatingmetal", ClimateMain.MOD_ID);
 
@@ -289,7 +289,7 @@ public class MainMaterialRegister {
 		MainInit.oreItem = new ItemOreCrystal(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oreitem");
 		DCMaterialReg.registerItem(MainInit.oreItem, ClimateCore.PACKAGE_BASE + "_oreitem", ClimateMain.MOD_ID);
 
-		MainInit.oreIngot = new ItemIngots(17).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(18).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		DCMaterialReg.registerItem(MainInit.oreIngot, ClimateCore.PACKAGE_BASE + "_ingot", ClimateMain.MOD_ID);
 
 		MainInit.oreDust = new ItemOreDusts(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
@@ -931,8 +931,9 @@ public class MainMaterialRegister {
 				"sapphire",
 				"titanium",
 				"garnet",
-				"toolsteel" };
-			for (int j = 0; j < 9; j++) {
+				"toolsteel",
+				"mangalloy" };
+			for (int j = 0; j < 10; j++) {
 				// DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 				MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
@@ -941,7 +942,7 @@ public class MainMaterialRegister {
 						.registerItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_BASE + "_axe_" + name[j], ClimateMain.MOD_ID);
 			}
 
-			for (int j = 0; j < 9; j++) {
+			for (int j = 0; j < 10; j++) {
 				MainInit.dcPickaxe[j] = new ItemPickaxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]);
@@ -949,7 +950,7 @@ public class MainMaterialRegister {
 						.registerItem(MainInit.dcPickaxe[j], ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j], ClimateMain.MOD_ID);
 			}
 
-			for (int j = 0; j < 9; j++) {
+			for (int j = 0; j < 10; j++) {
 				MainInit.dcSpade[j] = new ItemSpadeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]);

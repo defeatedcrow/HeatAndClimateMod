@@ -34,7 +34,7 @@ public class JsonRegister {
 
 	static void regItems() {
 		MAIN_INSTANCE.regSimpleItem(MainInit.iconItem, ClimateCore.PACKAGE_ID, "dcs_icons", "misc", 2);
-		MAIN_INSTANCE.regSimpleItem(MainInit.oreIngot, ClimateCore.PACKAGE_ID, "dcs_ore_ingot", "ores", 17);
+		MAIN_INSTANCE.regSimpleItem(MainInit.oreIngot, ClimateCore.PACKAGE_ID, "dcs_ore_ingot", "ores", 18);
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreDust, ClimateCore.PACKAGE_ID, "dcs_ore_dust", "ores", 15);
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreItem, ClimateCore.PACKAGE_ID, "dcs_ore_item", "ores", 14);
 		MAIN_INSTANCE.regSimpleItem(MainInit.gems, ClimateCore.PACKAGE_ID, "dcs_ore_gem", "ores", 24);
@@ -71,10 +71,10 @@ public class JsonRegister {
 
 	static void regBlocks() {
 		regCube((ITexturePath) MainInit.dustBlock, ClimateCore.PACKAGE_ID, "dcs_ore_dustblock", "ores", 15);
-		regCube((ITexturePath) MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 2);
+		regCube((ITexturePath) MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 3);
 		regCube((ITexturePath) MainInit.metalBlockNew, ClimateCore.PACKAGE_ID, "dcs_ore_metal_new", "ores", 7);
-		regCube((ITexturePath) MainInit.metalBlockAlloy, ClimateCore.PACKAGE_ID, "dcs_ore_metal_alloy", "ores", 8);
-		regCube((ITexturePath) MainInit.heatedMetalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_heatingmetal", "ores", 11);
+		regCube((ITexturePath) MainInit.metalBlockAlloy, ClimateCore.PACKAGE_ID, "dcs_ore_metal_alloy", "ores", 9);
+		regCube((ITexturePath) MainInit.heatedMetalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_heatingmetal", "ores", 14);
 		regCube((ITexturePath) MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
 		regCube((ITexturePath) MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		regCube((ITexturePath) MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 2);
@@ -88,12 +88,12 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.oreNew, ClimateCore.PACKAGE_ID, "dcs_ore_stone_new", "ores", 14);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.layerNew, ClimateCore.PACKAGE_ID, "dcs_layer_stone_new", "ores", 7);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock, ClimateCore.PACKAGE_ID, "dcs_ore_dustblock", "ores", 15);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 2);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.metalBlockNew, ClimateCore.PACKAGE_ID, "dcs_ore_metal_new", "ores", 7);
 		MAIN_INSTANCE
-				.regSimpleBlock(MainInit.metalBlockAlloy, ClimateCore.PACKAGE_ID, "dcs_ore_metal_alloy", "ores", 8);
+				.regSimpleBlock(MainInit.metalBlockAlloy, ClimateCore.PACKAGE_ID, "dcs_ore_metal_alloy", "ores", 9);
 		MAIN_INSTANCE
-				.regSimpleBlock(MainInit.heatedMetalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_heatingmetal", "ores", 11);
+				.regSimpleBlock(MainInit.heatedMetalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_heatingmetal", "ores", 14);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.chalLamp, ClimateCore.PACKAGE_ID, "dcs_build_challamp", "build", 15);
@@ -208,7 +208,8 @@ public class JsonRegister {
 				"sapphire",
 				"titanium",
 				"garnet",
-				"toolsteel" };
+				"toolsteel",
+				"mangalloy" };
 			for (int j = 0; j < name.length; j++) {
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip", 0);
@@ -216,8 +217,9 @@ public class JsonRegister {
 						.regSimpleItem(MainInit.dcPickaxe[j], ClimateCore.PACKAGE_ID, "dcs_pickaxe_" + name[j], "equip", 0);
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.dcSpade[j], ClimateCore.PACKAGE_ID, "dcs_spade_" + name[j], "equip", 0);
-				MAIN_INSTANCE
-						.regSimpleItem(MainInit.dcSword[j], ClimateCore.PACKAGE_ID, "dcs_sword_" + name[j], "equip", 0);
+				if (j < 9)
+					MAIN_INSTANCE
+							.regSimpleItem(MainInit.dcSword[j], ClimateCore.PACKAGE_ID, "dcs_sword_" + name[j], "equip", 0);
 			}
 			String[] type = { "met", "plate", "leggins", "boots" };
 			for (int i = 0; i < 4; i++) {

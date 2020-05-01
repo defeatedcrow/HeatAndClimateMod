@@ -16,7 +16,7 @@
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "gemQuartz"
+   "ore": "gemSchorl"
   },
   "W": {
    "item": "dcs_climate:dcs_mechanical",

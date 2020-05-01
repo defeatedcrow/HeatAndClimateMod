@@ -275,7 +275,7 @@ public class MachineClientProxy {
 		instance.regSimpleItem(MachineInit.moldAluminium, ClimateCore.PACKAGE_ID, "dcs_device_mold_aluminium", "machine", 5);
 		instance.regSimpleItem(MachineInit.moldAlloy, ClimateCore.PACKAGE_ID, "dcs_device_mold_alloy", "machine", 9);
 		instance.regSimpleItem(MachineInit.adapterCard, ClimateCore.PACKAGE_ID, "dcs_device_adapter_card", "machine", 3);
-		instance.regSimpleItem(MachineInit.dynamite, ClimateCore.PACKAGE_ID, "dcs_tool_dynamite", "tool", 1);
+		instance.regSimpleItem(MachineInit.dynamite, ClimateCore.PACKAGE_ID, "dcs_tool_dynamite", "tool", 2);
 		instance.regSimpleItem(MachineInit.slotCard, ClimateCore.PACKAGE_ID, "dcs_tool_slotcard", "machine", 0);
 
 		instance.regSimpleBlock(MachineInit.adapterPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_item", "machine", 0);
@@ -286,7 +286,7 @@ public class MachineClientProxy {
 		instance.regSimpleItem(MachineInit.scooter, ClimateCore.PACKAGE_ID, "dcs_motor_scooter", "device", 3);
 		instance.regSimpleItem(MachineInit.magneticHover, ClimateCore.PACKAGE_ID, "dcs_magnetic_hover", "device", 0);
 		instance.regSimpleItem(MachineInit.platingChrome, ClimateCore.PACKAGE_ID, "dcs_coating_tool", "misc", 9);
-		instance.regSimpleItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_ID, "dcs_rotaryblade", "device", 2);
+		instance.regSimpleItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_ID, "dcs_rotaryblade", "device", 3);
 		instance.regSimpleBlock(MachineInit.monitorRS, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rs", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorTorque, ClimateCore.PACKAGE_ID, "dcs_device_monitor_torque", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorRF, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rf", "machine", 0);

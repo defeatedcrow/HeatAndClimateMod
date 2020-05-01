@@ -125,7 +125,7 @@ public class MachineRecipeRegister {
 					2), 0F);
 
 			IClimate c1 = ClimateAPI.register
-					.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL, DCAirflow.TIGHT);
+					.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL, DCAirflow.NORMAL);
 			IClimate c2 = ClimateAPI.register
 					.getClimateFromParam(DCHeatTier.NORMAL, DCHumidity.UNDERWATER, DCAirflow.TIGHT);
 			IClimate c3 = ClimateAPI.register.getClimateFromParam(DCHeatTier.OVEN, DCHumidity.NORMAL, DCAirflow.TIGHT);
@@ -142,7 +142,7 @@ public class MachineRecipeRegister {
 			r1.hum1.add(DCHumidity.DRY);
 			r1.hum2.add(DCHumidity.WET);
 			r1.hum3.add(DCHumidity.DRY);
-			r1.air1.add(DCAirflow.NORMAL);
+			r1.air1.add(DCAirflow.TIGHT);
 			r1.air2.add(DCAirflow.NORMAL);
 			r1.air3.add(DCAirflow.NORMAL);
 			MainAPIManager.heatTreatmentRegister.registerRecipe(r1);
@@ -185,7 +185,7 @@ public class MachineRecipeRegister {
 			HeatTreatment r4 = new HeatTreatment(l4, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 6), c2,
 					new ItemStack(MainInit.heatedMetalBlock, 1, 7), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 7),
 					new ItemStack(MainInit.heatedMetalBlock, 1, 8));
-			r3.temp1.add(DCHeatTier.INFERNO);
+			r4.temp1.add(DCHeatTier.INFERNO);
 			r4.temp2.add(DCHeatTier.COOL);
 			r4.hum1.add(DCHumidity.DRY);
 			r4.hum2.add(DCHumidity.WET);
@@ -194,6 +194,25 @@ public class MachineRecipeRegister {
 			r4.air2.add(DCAirflow.NORMAL);
 			r4.air3.add(DCAirflow.NORMAL);
 			MainAPIManager.heatTreatmentRegister.registerRecipe(r4);
+
+			List<ItemStack> l5 = Lists.newArrayList();
+			l5.add(new ItemStack(MainInit.dustBlock_2, 1, 3));
+			l5.add(new ItemStack(MainInit.heatedMetalBlock, 1, 14));
+			HeatTreatment r5 = new HeatTreatment(l5, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 12), c2,
+					new ItemStack(MainInit.heatedMetalBlock, 1, 13), c1, new ItemStack(MainInit.metalBlockAlloy, 1, 9),
+					new ItemStack(MainInit.heatedMetalBlock, 1, 14));
+			r5.temp1.add(DCHeatTier.INFERNO);
+			r5.temp2.add(DCHeatTier.COOL);
+			r5.hum1.add(DCHumidity.DRY);
+			r5.hum2.add(DCHumidity.WET);
+			r5.hum2.add(DCHumidity.NORMAL);
+			r5.hum3.add(DCHumidity.DRY);
+			r5.air1.add(DCAirflow.NORMAL);
+			r5.air2.add(DCAirflow.NORMAL);
+			r5.air2.add(DCAirflow.FLOW);
+			r5.air3.add(DCAirflow.FLOW);
+			r5.air3.add(DCAirflow.WIND);
+			MainAPIManager.heatTreatmentRegister.registerRecipe(r5);
 
 		} else {
 
@@ -225,6 +244,10 @@ public class MachineRecipeRegister {
 			// titanium
 			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
 					7), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 12));
+
+			// mangalloy
+			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+					8), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock_2, 1, 3));
 		}
 
 	}

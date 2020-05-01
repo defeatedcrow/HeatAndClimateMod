@@ -9,25 +9,33 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.api.recipe.ICrusherRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.climate.recipe.CrusherRecipe;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.gui.ContainerCrusher;
 import defeatedcrow.hac.main.block.fluid.SidedFluidTankWrapper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueReceiver {
 
@@ -320,14 +328,15 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			return false;
 		}
 		ItemStack ins = this.getStackInSlot(0);
-		FluidStack outf1 = outputT1.getFluid();
-		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
 		ItemStack cat = this.getStackInSlot(6);
 		ICrusherRecipe recipe = RecipeAPI.registerCrushers.getRecipe(ins, cat);
 
 		if (recipe != null) {
 			currentRecipe = recipe;
+		} else if (DCUtil.isSameItem(cat, new ItemStack(MachineInit.rotaryBlade, 1, 3), false)) {
+			currentRecipe = getReverseRecipe();
 		}
+
 		return currentRecipe != null;
 	}
 
@@ -523,4 +532,92 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 	public boolean isEmpty() {
 		return inventory.isEmpty();
 	}
+
+	public CrusherRecipe getReverseRecipe() {
+		ItemStack ins = this.getStackInSlot(0);
+		ItemStack cat = this.getStackInSlot(6);
+		if (DCUtil.isSameItem(cat, new ItemStack(MachineInit.rotaryBlade, 1, 3), false)) {
+			if (DCUtil.isEmpty(ins) || ins.getItem() instanceof ItemBlock)
+				return null;
+			else {
+				IRecipe recipe = null;
+				Iterator<IRecipe> targetRecipes = CraftingManager.REGISTRY.iterator();
+				while (targetRecipes.hasNext()) {
+					IRecipe rec = targetRecipes.next();
+					ItemStack out = rec.getRecipeOutput();
+					if (rec != null && !DCUtil.isEmpty(out)) {
+						if (ins.getItem().isDamageable() && ins.getItem() == out.getItem()) {
+							recipe = rec;
+							break;
+						}
+						if (DCUtil.isSameItem(ins, out, false)) {
+							recipe = rec;
+							break;
+						}
+					}
+				}
+				NonNullList<ItemStack> list = NonNullList.create();
+				NonNullList<Ingredient> items = recipe.getIngredients();
+				for (Ingredient item : items) {
+					if (!DCUtil.isEmptyIngredient(item)) {
+						ItemStack check = item.getMatchingStacks()[0];
+						String name = getIngotOrGem(check);
+						if (name != null) {
+							ItemStack ret = getNamedItem(name);
+							if (!DCUtil.isEmpty(ret)) {
+								boolean b = false;
+								for (ItemStack c2 : list) {
+									if (DCUtil.isSameItem(ret, c2, false)) {
+										c2.grow(1);
+										b = true;
+										break;
+									}
+								}
+								if (!b && list.size() < 3) {
+									list.add(ret.copy());
+								}
+							}
+						}
+					}
+				}
+				if (!list.isEmpty()) {
+					for (ItemStack c3 : list) {
+						if (c3.getCount() > 1) {
+							c3.shrink(1);
+						}
+					}
+					ItemStack o1 = list.get(0).copy();
+					ItemStack o2 = list.size() < 2 ? ItemStack.EMPTY : list.get(1).copy();
+					ItemStack o3 = list.size() < 3 ? ItemStack.EMPTY : list.get(2).copy();
+
+					CrusherRecipe current = new CrusherRecipe(o1, 1F, o2, 1F, o3, 1F, null, cat, ins.copy());
+					return current;
+				}
+			}
+		}
+		return null;
+	}
+
+	private String getIngotOrGem(ItemStack item) {
+		int[] ids = OreDictionary.getOreIDs(item);
+		for (int id : ids) {
+			String name = OreDictionary.getOreName(id);
+			if (name.contains("ingot") || name.contains("gem") || name.contains("dust")) {
+				return name;
+			} else if (name.contains("gear")) {
+				String name2 = name.replace("gear", "ingot");
+				return name2;
+			}
+		}
+		return null;
+	}
+
+	private ItemStack getNamedItem(String name) {
+		NonNullList<ItemStack> ret = OreDictionary.getOres(name);
+		if (!ret.isEmpty()) {
+			return ret.get(0);
+		}
+		return ItemStack.EMPTY;
+	}
+
 }

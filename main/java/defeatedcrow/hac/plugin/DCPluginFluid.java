@@ -33,6 +33,7 @@ public class DCPluginFluid {
 		registerFluidDic("honey", "honey");
 		registerFluidDic("for.honey", "honey");
 		registerFluidDic("blood", "blood");
+		registerFluidDic("nitricacid", "nitricacid");
 		registerFluidDic("sulfuricacid", "sulfuricacid");
 		registerFluidDic("milk_holstein", "milk");
 		registerFluidDic("milk_friesian", "milk");

@@ -90,6 +90,7 @@ public class OreDicRegister {
 		OredicConfig.regOreDic(OredicConfig.ingots[15], new ItemStack(MainInit.oreIngot, 1, 15));
 		OredicConfig.regOreDic(OredicConfig.ingots[16], new ItemStack(MainInit.oreIngot, 1, 16));
 		OredicConfig.regOreDic(OredicConfig.ingots[17], new ItemStack(MainInit.oreIngot, 1, 17));
+		OredicConfig.regOreDic(OredicConfig.ingots[18], new ItemStack(MainInit.oreIngot, 1, 18));
 
 		OredicConfig.regOreDic(OredicConfig.dusts[0], new ItemStack(MainInit.oreDust, 1, 0));
 		OredicConfig.regOreDic(OredicConfig.dusts[1], new ItemStack(MainInit.oreDust, 1, 1));
@@ -126,6 +127,7 @@ public class OreDicRegister {
 		OredicConfig.regOreDic(OredicConfig.alloys[6], new ItemStack(MainInit.metalBlockAlloy, 1, 6));
 		OredicConfig.regOreDic(OredicConfig.alloys[7], new ItemStack(MainInit.metalBlockAlloy, 1, 7));
 		OredicConfig.regOreDic(OredicConfig.alloys[8], new ItemStack(MainInit.metalBlockAlloy, 1, 8));
+		OredicConfig.regOreDic(OredicConfig.alloys[9], new ItemStack(MainInit.metalBlockAlloy, 1, 9));
 
 		// gems
 		OredicConfig.regOreDic(OredicConfig.gems[0], new ItemStack(MainInit.gems, 1, 0));

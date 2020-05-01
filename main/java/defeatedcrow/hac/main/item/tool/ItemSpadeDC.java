@@ -1,6 +1,8 @@
 package defeatedcrow.hac.main.item.tool;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -10,11 +12,16 @@ import defeatedcrow.hac.main.util.DCToolMaterial;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextFormatting;
@@ -27,13 +34,22 @@ public class ItemSpadeDC extends ItemSpade implements ITexturePath {
 
 	private final String tex;
 	private boolean isToolsteel;
+	private boolean isMangalloy;
 
 	public ItemSpadeDC(ToolMaterial m, String t) {
 		super(m);
 		if (m == DCToolMaterial.DC_TOOLMETAL) {
 			isToolsteel = true;
 		}
+		if (m == DCToolMaterial.DC_MANGALLOY) {
+			isMangalloy = true;
+		}
 		tex = t;
+	}
+
+	public ItemSpadeDC setMangalloy() {
+		isMangalloy = true;
+		return this;
 	}
 
 	public ItemSpadeDC setToolsteel() {
@@ -107,6 +123,28 @@ public class ItemSpadeDC extends ItemSpade implements ITexturePath {
 				}
 			}
 			return ret;
+		}
+	}
+
+	@Override
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		if (isMangalloy) {
+			Map<Enchantment, Integer> map = Collections.singletonMap(Enchantments.SILK_TOUCH, 1);
+			EnchantmentHelper.setEnchantments(map, stack);
+		} else {
+			super.onCreated(stack, world, player);
+		}
+	}
+
+	@Override
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+		if (isMangalloy && this.isInCreativeTab(tab)) {
+			ItemStack ret = new ItemStack(this);
+			Map<Enchantment, Integer> map = Collections.singletonMap(Enchantments.SILK_TOUCH, 1);
+			EnchantmentHelper.setEnchantments(map, ret);
+			items.add(ret);
+		} else {
+			super.getSubItems(tab, items);
 		}
 	}
 

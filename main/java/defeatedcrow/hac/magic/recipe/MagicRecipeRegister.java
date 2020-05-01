@@ -132,6 +132,61 @@ public class MagicRecipeRegister {
 			"extractWhite",
 			"blockElestial" });
 
+		// DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 0), new Object[] {
+		// "XZX",
+		// "XYX",
+		// "XXX",
+		// 'X',
+		// "extractBlue",
+		// 'Y',
+		// "blockElestial",
+		// 'Z',
+		// "dustMica" });
+		//
+		// DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 1), new Object[] {
+		// "XZX",
+		// "XYX",
+		// "XXX",
+		// 'X',
+		// "extractGreen",
+		// 'Y',
+		// "blockElestial",
+		// 'Z',
+		// "dustMica" });
+		//
+		// DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 2), new Object[] {
+		// "XZX",
+		// "XYX",
+		// "XXX",
+		// 'X',
+		// "extractRed",
+		// 'Y',
+		// "blockElestial",
+		// 'Z',
+		// "dustMica" });
+		//
+		// DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 3), new Object[] {
+		// "XZX",
+		// "XYX",
+		// "XXX",
+		// 'X',
+		// "extractBlack",
+		// 'Y',
+		// "blockElestial",
+		// 'Z',
+		// "dustMica" });
+		//
+		// DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 4), new Object[] {
+		// "XZX",
+		// "XYX",
+		// "XXX",
+		// 'X',
+		// "extractWhite",
+		// 'Y',
+		// "blockElestial",
+		// 'Z',
+		// "dustMica" });
+
 		// ring
 		DCRecipe.jsonShapedRecipe("magic", new ItemStack(MagicInit.colorRing, 1, 0), new Object[] {
 			"X",

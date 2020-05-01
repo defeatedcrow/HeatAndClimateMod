@@ -5,6 +5,7 @@ import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSkillet;
 import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
+import defeatedcrow.hac.food.block.crop.TileEntityLotus;
 import defeatedcrow.hac.food.entity.*;
 import defeatedcrow.hac.main.util.DCRegistryUtil;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -17,6 +18,7 @@ public class FoodCommonProxy {
 		GameRegistry.registerTileEntity(TileTeaPot.class, "dcs_te_tea_pot");
 		GameRegistry.registerTileEntity(TileSilkwormBox.class, "dcs_te_silkworm_box");
 		GameRegistry.registerTileEntity(TileSkillet.class, "dcs_te_skillet");
+		GameRegistry.registerTileEntity(TileEntityLotus.class, "dcs_te_crop_lotus");
 	}
 
 	public static void loadEntity() {

@@ -3,7 +3,6 @@ package defeatedcrow.hac.plugin;
 import defeatedcrow.hac.core.plugin.DCsJEIPluginLists;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
-import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.item.ItemStack;
@@ -17,8 +16,8 @@ public class DCPluginJeiMain {
 	public static void load() {
 
 		if (ModuleConfig.magic) {
-			DCsJEIPluginLists.excluder.add(new ItemStack(MagicInit.clusterIce));
-			DCsJEIPluginLists.excluder.add(new ItemStack(MagicInit.infernalFlame));
+			// DCsJEIPluginLists.excluder.add(new ItemStack(MagicInit.clusterIce));
+			// DCsJEIPluginLists.excluder.add(new ItemStack(MagicInit.infernalFlame));
 			DCsJEIPluginLists.excluder.add(new ItemStack(MainInit.markingPanel));
 		}
 

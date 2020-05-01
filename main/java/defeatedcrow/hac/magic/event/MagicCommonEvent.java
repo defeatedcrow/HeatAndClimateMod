@@ -81,6 +81,10 @@ public class MagicCommonEvent {
 					target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) living.getOwner()), event
 							.getAmount());
 					event.setCanceled(true);
+				} else if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorPendant, 1,
+						4)) && !(target instanceof IMob)) {
+					event.setCanceled(true);
+					return;
 				}
 			} else if (source.getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase owner = (EntityLivingBase) source.getTrueSource();
@@ -89,6 +93,11 @@ public class MagicCommonEvent {
 						// black badge
 						target.attackEntityFrom(DamageSource.causeMobDamage(target), event.getAmount());
 						event.setCanceled(true);
+					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1,
+							4)) && !(target instanceof IMob)) {
+						// white pendant
+						event.setCanceled(true);
+						return;
 					}
 					if (getOffhandJewelColor(owner) == MagicColor.GREEN) {
 						// green-white gauntlet

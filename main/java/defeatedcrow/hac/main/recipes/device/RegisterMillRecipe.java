@@ -103,7 +103,8 @@ public class RegisterMillRecipe {
 				.getDyeDamage()), "gemMalachite");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 4, 3), "logWood");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 1), "cropWheat");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 1), new ItemStack(MainInit.foodDust,
+				1, 1), 0.25F, "cropWheat");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 3), "cropPotato");
 
 		// ingot粉砕

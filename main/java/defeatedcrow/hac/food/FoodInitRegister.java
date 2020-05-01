@@ -26,6 +26,7 @@ import defeatedcrow.hac.food.block.crop.BlockLeavesTea;
 import defeatedcrow.hac.food.block.crop.BlockLeavesWalnut;
 import defeatedcrow.hac.food.block.crop.BlockLettuce;
 import defeatedcrow.hac.food.block.crop.BlockLotus;
+import defeatedcrow.hac.food.block.crop.BlockLotusN;
 import defeatedcrow.hac.food.block.crop.BlockOnion;
 import defeatedcrow.hac.food.block.crop.BlockRice;
 import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
@@ -136,6 +137,10 @@ public class FoodInitRegister {
 		FoodInit.cropLotus = new BlockLotus(ClimateCore.PACKAGE_BASE + "_crop_lotus", 15)
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus");
 		DCMaterialReg.registerBlock(FoodInit.cropLotus, ClimateCore.PACKAGE_BASE + "_crop_lotus", ClimateMain.MOD_ID);
+
+		FoodInit.cropLotusN = new BlockLotusN(ClimateCore.PACKAGE_BASE + "_crop_lotus2", 15)
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus2");
+		DCMaterialReg.registerBlock(FoodInit.cropLotusN, ClimateCore.PACKAGE_BASE + "_crop_lotus2", ClimateMain.MOD_ID);
 
 		FoodInit.cropHerb = new BlockHerb(ClimateCore.PACKAGE_BASE + "_crop_herb");
 		DCMaterialReg.registerBlock(FoodInit.cropHerb, ClimateCore.PACKAGE_BASE + "_crop_herb", ClimateMain.MOD_ID);
@@ -400,7 +405,7 @@ public class FoodInitRegister {
 		FoodInit.cropTomato.setCreativeTab(ClimateMain.food);
 		FoodInit.cropCoffee.setCreativeTab(ClimateMain.food);
 		FoodInit.cropCotton.setCreativeTab(ClimateMain.food);
-		FoodInit.cropLotus.setCreativeTab(ClimateMain.food);
+		FoodInit.cropLotusN.setCreativeTab(ClimateMain.food);
 		FoodInit.cropHerb.setCreativeTab(ClimateMain.food);
 		FoodInit.cropSeaweed.setCreativeTab(ClimateMain.food);
 		FoodInit.cropSoy.setCreativeTab(ClimateMain.food);

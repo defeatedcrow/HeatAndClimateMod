@@ -101,6 +101,30 @@ public class LoadingEquipRecipe {
 				'Y',
 				"ingotSteel" });
 
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcPickaxe[9], 1, 0), new Object[] {
+				"  X",
+				"YYX",
+				"  X",
+				'X',
+				"ingotMangalloy",
+				'Y',
+				"ingotSteel" });
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcAxe[9], 1, 0), new Object[] {
+				" XX",
+				"YYX",
+				'X',
+				"ingotMangalloy",
+				'Y',
+				"ingotSteel" });
+
+			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcSpade[9], 1, 0), new Object[] {
+				"YYX",
+				'X',
+				"ingotMangalloy",
+				'Y',
+				"ingotSteel" });
+
 			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.dcScythe[0], 1, 0), new Object[] {
 				" X ",
 				"  X",
