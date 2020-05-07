@@ -7,15 +7,11 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "cropLettuce"
+   "ore": "listAllgreenveggie"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "cropTomato"
-  },
-  {
-   "type": "forge:ore_dict",
-   "ore": "cropChilipepper"
+   "ore": "foodSalsa"
   },
   {
    "type": "forge:ore_dict",

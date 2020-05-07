@@ -27,7 +27,7 @@ public class DishCapreseRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 	@Override
 	protected float getOffset() {
-		return 0.0625F;
+		return 0F;
 	}
 
 	@Override

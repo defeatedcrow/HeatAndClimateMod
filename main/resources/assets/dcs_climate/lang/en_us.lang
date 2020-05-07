@@ -297,6 +297,10 @@ item.dcs_food_bread_tortilla_raw.name=Raw Tortilla
 item.dcs_food_bread_tortilla_baked.name=Tortilla
 item.dcs_food_bread_raisin_bread_raw.name=Raw Raisin Bread
 item.dcs_food_bread_raisin_bread_baked.name=Raisin Bread
+item.dcs_food_bread_sausage_bread_raw.name=Raw Sausage Bread Roll
+item.dcs_food_bread_sausage_bread_baked.name=Sausage Bread Roll
+item.dcs_food_bread_graham_crackers_raw.name=Raw Graham Crackers
+item.dcs_food_bread_graham_crackers_baked.name=Graham Crackers
 item.dcs_food_stick_fish_raw.name=Skewered Fish
 item.dcs_food_stick_fish_cooked.name=Cooked Skewered Fish
 item.dcs_food_stick_yakitori_raw.name=Raw Yakitori
@@ -344,6 +348,8 @@ item.dcs_food_sandwich_apple.name=Apple Sandwich
 item.dcs_food_sandwich_egg.name=Egg Sandwich
 item.dcs_food_sandwich_lemon.name=Lemon Sandwich
 item.dcs_food_sandwich_salad.name=Salad Sandwich
+item.dcs_food_sandwich_liver.name=Liver Spread Sandwich
+item.dcs_food_sandwich_salmon.name=Salmon Sandwich
 item.dcs_food_rice_boiled.name=Boiled Rice
 item.dcs_food_rice_mushroom.name=Mushroom-Meshi
 item.dcs_food_rice_ball.name=Rice Ball
@@ -415,6 +421,10 @@ item.dcs_food_cake_egg_cocotte_baked.name=Eggs en Cocotte
 item.dcs_food_cake_stickey_toffee_pudding.name=Stickey Toffee Pudding
 item.dcs_food_cake_pancake.name=Pancake Tower
 item.dcs_food_cake_grapejelly.name=Grape Jelly and Mousse
+item.dcs_food_cake_onion_soup_raw.name=Raw Onion Soup
+item.dcs_food_cake_onion_soup_baked.name=Baked Onion Siup
+item.dcs_food_cake_smore.name=S'more
+item.dcs_food_cake_raisinwich.name=Raisinwich
 item.dcs_food_icecream_milk.name=Ice Cream
 item.dcs_food_icecream_kinako.name=Ice Cream with Kinako
 item.dcs_food_icecream_berry.name=Berry Ice Cream
@@ -446,7 +456,8 @@ item.dcs_food_snack_croquette_pumpkin.name=Pumpkin Croquette
 item.dcs_food_snack_shawarma.name=Shawarma
 item.dcs_food_snack_falafel_sandwich.name=Falafel Sandwich
 item.dcs_food_setmeal_breakfast.name=Breakfast Plate
-item.dcs_food_setmeal_japanese.name=Japanese Breakfast
+item.dcs_food_setmeal_japanese.name=Japanese Breakfast (Natto)
+item.dcs_food_setmeal_japanese2.name=Japanese Breakfast (Fish)
 item.dcs_food_dish_sq_caprese.name=Caprese
 item.dcs_food_dish_sq_bruschetta.name=Bruschetta
 item.dcs_food_dish_sq_salmon_cheese.name=Salmon and Cheese
@@ -460,12 +471,16 @@ item.dcs_food_dish_big_omerice.name=Ome Rice
 item.dcs_food_dish_big_taco.name=Tacos
 item.dcs_food_dish_big_tacorice.name=Taco Rice
 item.dcs_food_dish_big_nachos.name=Nachos
+item.dcs_food_dish_big_ikameshi.name=Ikameshi
 item.dcs_food_udon_meat.name=Udon
 item.dcs_food_udon_seaweed.name=Seaweed Udon
 item.dcs_food_udon_egg.name=Egg Udon
 item.dcs_food_drink_ginger.name=Ginger Ale
 item.dcs_food_drink_kuzu.name=Kuzuyu
 item.dcs_food_drink_tomato.name=Gazpacho
+item.dcs_food_dipsauce_liver.name=Liver Spread
+item.dcs_food_dipsauce_raisins.name=Raisins Butter
+item.dcs_food_dipsauce_salsa.name=Red Salsa
 
 ## crops
 item.dcs_food_crops_rice.name=Rice Plant
@@ -584,7 +599,7 @@ item.dcs_throwing_arrow_normal.name=Throwing Arrow
 
 item.dcs_dynamite_red.name=Dynamite
 item.dcs_dynamite_blue.name=Silky Dynamite
-item.dcs_dynamite_snall.name=採掘用爆薬
+item.dcs_dynamite_small.name=ANFO
 
 ## armors
 item.dcs_met_brass.name=Brass Helmet
@@ -1836,6 +1851,8 @@ entity.dcs.food.walnut_bread.name=Walnut Bread
 entity.dcs.food.gingerman.name=Gingerman
 entity.dcs.food.tortilla.name=Tortilla
 entity.dcs.food.raisin_bread.name=Raisin Bread
+entity.dcs.food.sausage_bread.name=Sausage Bread
+entity.dcs.food.graham_cracker.name=Graham Crackers
 
 entity.dcs.food.fish_stick.name=Fish Skewers
 entity.dcs.food.yakitori_stick.name=Yakitori
@@ -1855,6 +1872,7 @@ entity.dcs.food.tart_lemon.name=Lemon Cream Tart
 entity.dcs.food.quiche_spinach.name=Spinach Quiche
 entity.dcs.food.quiche_potato.name=Potato Quiche
 entity.dcs.food.tart_crostata.name=Crostata
+entity.dcs.food.tart_chocolate.name=Chocolate Tart
 
 entity.dcs.food.pie_sugar.name=Sugar Pastry
 entity.dcs.food.pie_meat.name=Meat Pie
@@ -1867,6 +1885,8 @@ entity.dcs.food.sandwich_apple.name=Apple Sandwich
 entity.dcs.food.sandwich_egg.name=Egg Sandwich
 entity.dcs.food.sandwich_lemon.name=Lemon Sandwich
 entity.dcs.food.sandwich_salad.name=Salad Sandwich
+entity.dcs.food.sandwich_liver.name=Liver Sandwich
+entity.dcs.food.sandwich_salmon.name=Salmon Sandwich
 entity.dcs.food.clubsand_square.name=Beef Club Sandwich
 entity.dcs.food.clubsand_round.name=Fish Club Sandwich
 
@@ -1931,6 +1951,9 @@ entity.dcs.food.cake_egg_cocotte_raw.name=Raw Eggs en Cocotte
 entity.dcs.food.cake_gg_cocotte_baked.name=Eggs en Cocotte
 entity.dcs.food.cake_tower.name=Pancake Tower
 entity.dcs.food.cake_grape.name=Grape Jelly and Mousse
+entity.dcs.food.cake_onion_soup.name=Baked Onion Soup
+entity.dcs.food.cake_smore.name=Smore
+entity.dcs.food.cake_raisinwich.name=Raisinwich
 
 entity.dcs.food.wagashi_kinako.name=Kinako Mochi
 entity.dcs.food.wagashi_isobe.name=Isobe Mochi
@@ -1968,6 +1991,7 @@ entity.dcs.food.falafel_sandwich.name=Falafel Sandwich
 
 entity.dcs.food.breakfast_b.name=Breakfast Plate
 entity.dcs.food.breakfast_j.name=Japanese Breakfast
+entity.dcs.food.breakfast_j2.name=Japanese Breakfast
 
 entity.dcs.food.dish_caprese.name=Caprese
 entity.dcs.food.dish_bruschetta.name=Bruschetta
@@ -1983,6 +2007,7 @@ entity.dcs.food.dish_omerice.name=Omerice
 entity.dcs.food.dish_taco.name=Taco
 entity.dcs.food.dish_tacorice.name=Tacorice
 entity.dcs.food.dish_nachos.name=Nachos
+entity.dcs.food.dish_ikameshi.name=Ikameshi
 
 entity.dcs.food.udon_meat.name=Udon
 entity.dcs.food.udon_seaweed.name=Seaweed Udon
@@ -1991,6 +2016,10 @@ entity.dcs.food.udon_egg.name=Egg Udon
 entity.dcs.food.drink_ginger.name=Ginger Ale
 entity.dcs.food.drink_kuzu.name=Kuzuyu
 entity.dcs.food.drink_tomato.name=Gazpacho
+
+entity.dcs.food.sauce_liver.name=Liver Spread
+entity.dcs.food.sauce_raisin.name=Raisins Butter
+entity.dcs.food.sauce_salsa.name=Red Salsa
 
 entity.dcs.main.flowerpot.name=Flower Pot
 entity.dcs.main.dynamite_red.name=Dynamite

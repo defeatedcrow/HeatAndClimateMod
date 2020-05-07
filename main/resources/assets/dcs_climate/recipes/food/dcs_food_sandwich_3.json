@@ -14,8 +14,8 @@
    "ore": "cropOnion"
   },
   {
-   "item": "minecraft:cooked_porkchop",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllmeatcooked"
   }
  ],
  "result": {

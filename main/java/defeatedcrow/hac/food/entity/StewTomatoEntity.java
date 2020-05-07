@@ -16,22 +16,22 @@ public class StewTomatoEntity extends FoodEntityBase {
 
 	public StewTomatoEntity(World worldIn) {
 		super(worldIn);
+		this.setSize(0.4F, 0.2F);
 	}
 
 	public StewTomatoEntity(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(0.4F, 0.2F);
 	}
 
 	public StewTomatoEntity(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(0.4F, 0.2F);
 	}
 
 	@Override
 	protected ItemStack[] drops() {
-		return new ItemStack[] {
-				new ItemStack(FoodInit.bowlSoup, 1, 3),
-				new ItemStack(FoodInit.bowlSoup, 1, 3)
-		};
+		return new ItemStack[] { new ItemStack(FoodInit.bowlSoup, 1, 3), new ItemStack(FoodInit.bowlSoup, 1, 3) };
 	}
 
 	// particle

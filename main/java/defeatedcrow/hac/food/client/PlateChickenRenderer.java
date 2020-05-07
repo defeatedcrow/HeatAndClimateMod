@@ -4,7 +4,7 @@ import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelBeefSteak;
 import defeatedcrow.hac.food.client.model.ModelSteakPlate;
-import defeatedcrow.hac.food.entity.ChickenPlateEntity;
+import defeatedcrow.hac.food.entity.PlateChickenEntity;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class PlateChickenRenderer extends DCRenderFoodBase<ChickenPlateEntity> {
+public class PlateChickenRenderer extends DCRenderFoodBase<PlateChickenEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/steak_chicken_raw.png");
@@ -25,7 +25,7 @@ public class PlateChickenRenderer extends DCRenderFoodBase<ChickenPlateEntity> {
 	private static final ModelSteakPlate PLATE_MODEL = new ModelSteakPlate(true);
 
 	@Override
-	public void doRender(ChickenPlateEntity entity, double x, double y, double z, float yaw, float partialTicks) {
+	public void doRender(PlateChickenEntity entity, double x, double y, double z, float yaw, float partialTicks) {
 		float height = entity.height * 0.5F;
 
 		GlStateManager.pushMatrix();

@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodCheese"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodStock"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropOnion"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_cake",
+  "count": 2,
+  "data": 13
+ }
+}

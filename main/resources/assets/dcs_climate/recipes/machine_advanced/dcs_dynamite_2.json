@@ -7,7 +7,7 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dustWood"
+   "ore": "dropFuel"
   },
   {
    "type": "forge:ore_dict",
@@ -16,7 +16,7 @@
  ],
  "result": {
   "item": "dcs_climate:dcs_dynamite",
-  "count": 3,
+  "count": 8,
   "data": 2
  }
 }

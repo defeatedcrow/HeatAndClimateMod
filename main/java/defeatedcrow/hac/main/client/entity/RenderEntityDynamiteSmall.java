@@ -27,7 +27,7 @@ public class RenderEntityDynamiteSmall extends Render<EntityDynamite> {
 	public void doRender(EntityDynamite entity, double x, double y, double z, float yaw, float partialTicks) {
 		GlStateManager.pushMatrix();
 		GlStateManager.disableLighting();
-		GlStateManager.translate((float) x, (float) y + 0.0625D, (float) z);
+		GlStateManager.translate((float) x, (float) y + 0.25D, (float) z);
 		GlStateManager.scale(-0.5F, -0.5F, 0.5F);
 		this.bindTexture(TEX);
 

@@ -8,11 +8,11 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.food.entity.BeefPlateEntity;
-import defeatedcrow.hac.food.entity.BigGarlicPlateEntity;
-import defeatedcrow.hac.food.entity.ChickenPlateEntity;
-import defeatedcrow.hac.food.entity.FishPlateEntity;
-import defeatedcrow.hac.food.entity.PorkPlateEntity;
+import defeatedcrow.hac.food.entity.PlateBeefEntity;
+import defeatedcrow.hac.food.entity.PlateBigGarlicEntity;
+import defeatedcrow.hac.food.entity.PlateChickenEntity;
+import defeatedcrow.hac.food.entity.PlateFishEntity;
+import defeatedcrow.hac.food.entity.PlatePorkEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -64,18 +64,18 @@ public class PlateMeatItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new BeefPlateEntity(world, x, y, z, player);
+		FoodEntityBase ret = new PlateBeefEntity(world, x, y, z, player);
 		if (i == 2 || i == 3) {
-			ret = new PorkPlateEntity(world, x, y, z, player);
+			ret = new PlatePorkEntity(world, x, y, z, player);
 		}
 		if (i == 4 || i == 5) {
-			ret = new ChickenPlateEntity(world, x, y, z, player);
+			ret = new PlateChickenEntity(world, x, y, z, player);
 		}
 		if (i == 6 || i == 7) {
-			ret = new FishPlateEntity(world, x, y, z, player);
+			ret = new PlateFishEntity(world, x, y, z, player);
 		}
 		if (i == 8 || i == 9) {
-			ret = new BigGarlicPlateEntity(world, x, y, z, player);
+			ret = new PlateBigGarlicEntity(world, x, y, z, player);
 			ret.setIndividual(world.rand.nextInt(32));
 		}
 

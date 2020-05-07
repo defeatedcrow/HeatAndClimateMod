@@ -12,14 +12,17 @@ public class DrinkGingerEntity extends FoodEntityBase {
 
 	public DrinkGingerEntity(World worldIn) {
 		super(worldIn);
+		this.setSize(0.2F, 0.375F);
 	}
 
 	public DrinkGingerEntity(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(0.2F, 0.375F);
 	}
 
 	public DrinkGingerEntity(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(0.2F, 0.375F);
 	}
 
 	@Override

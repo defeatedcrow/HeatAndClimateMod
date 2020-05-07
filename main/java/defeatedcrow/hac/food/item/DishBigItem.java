@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.DishIkameshiEntity;
 import defeatedcrow.hac.food.entity.DishMaboEntity;
 import defeatedcrow.hac.food.entity.DishNachosEntity;
 import defeatedcrow.hac.food.entity.DishOmericeEntity;
@@ -29,7 +30,7 @@ public class DishBigItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 4;
+		return 5;
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class DishBigItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = { "mabo", "omerice", "taco", "tacorice", "nachos" };
+		String[] s = { "mabo", "omerice", "taco", "tacorice", "nachos", "ikameshi" };
 		return s;
 	}
 
@@ -63,6 +64,9 @@ public class DishBigItem extends FoodItemBase {
 		}
 		if (i == 4) {
 			ret = new DishNachosEntity(world, x, y, z, player);
+		}
+		if (i == 5) {
+			ret = new DishIkameshiEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		return ret;

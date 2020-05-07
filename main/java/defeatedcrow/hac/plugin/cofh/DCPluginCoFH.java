@@ -64,7 +64,7 @@ public class DCPluginCoFH {
 									500), new FluidStack(FluidRegistry.WATER, 500), new Object[] {});
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1,
-					7), null, 0F, new FluidStack(MainInit.fuelOil, 200), null, DCHeatTier.KILN, new ItemStack(
+					7), null, 0F, new FluidStack(MainInit.fuelOil, 100), null, DCHeatTier.KILN, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 500), null, new Object[] {
 								tar });
 

@@ -8,12 +8,12 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.ChocolatePieEntity;
-import defeatedcrow.hac.food.entity.CustardPieEntity;
-import defeatedcrow.hac.food.entity.FruitPieEntity;
-import defeatedcrow.hac.food.entity.MeatPieEntity;
-import defeatedcrow.hac.food.entity.MooncakeEntity;
-import defeatedcrow.hac.food.entity.SugarPieEntity;
+import defeatedcrow.hac.food.entity.PieChocolateEntity;
+import defeatedcrow.hac.food.entity.PieCustardEntity;
+import defeatedcrow.hac.food.entity.PieFruitEntity;
+import defeatedcrow.hac.food.entity.PieMeatEntity;
+import defeatedcrow.hac.food.entity.PieMooncakeEntity;
+import defeatedcrow.hac.food.entity.PieSugarEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -48,19 +48,18 @@ public class SquarePastryItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"sugar_raw",
-				"sugar_baked",
-				"meat_raw",
-				"meat_baked",
-				"choco_raw",
-				"choco_baked",
-				"fruit_raw",
-				"fruit_baked",
-				"mooncake_raw",
-				"mooncake_baked",
-				"cream_raw",
-				"cream_baked"
-		};
+			"sugar_raw",
+			"sugar_baked",
+			"meat_raw",
+			"meat_baked",
+			"choco_raw",
+			"choco_baked",
+			"fruit_raw",
+			"fruit_baked",
+			"mooncake_raw",
+			"mooncake_baked",
+			"cream_raw",
+			"cream_baked" };
 		return s;
 	}
 
@@ -71,30 +70,30 @@ public class SquarePastryItem extends FoodItemBase {
 		switch (i) {
 		case 0:
 		case 1:
-			ret = new SugarPieEntity(world, x, y, z, player);
+			ret = new PieSugarEntity(world, x, y, z, player);
 			break;
 		case 2:
 		case 3:
-			ret = new MeatPieEntity(world, x, y, z, player);
+			ret = new PieMeatEntity(world, x, y, z, player);
 			break;
 		case 4:
 		case 5:
-			ret = new ChocolatePieEntity(world, x, y, z, player);
+			ret = new PieChocolateEntity(world, x, y, z, player);
 			break;
 		case 6:
 		case 7:
-			ret = new FruitPieEntity(world, x, y, z, player);
+			ret = new PieFruitEntity(world, x, y, z, player);
 			break;
 		case 8:
 		case 9:
-			ret = new MooncakeEntity(world, x, y, z, player);
+			ret = new PieMooncakeEntity(world, x, y, z, player);
 			break;
 		case 10:
 		case 11:
-			ret = new CustardPieEntity(world, x, y, z, player);
+			ret = new PieCustardEntity(world, x, y, z, player);
 			break;
 		default:
-			ret = new SugarPieEntity(world, x, y, z, player);
+			ret = new PieSugarEntity(world, x, y, z, player);
 		}
 
 		if (ret != null && (i & 1) == 0) {
@@ -125,7 +124,7 @@ public class SquarePastryItem extends FoodItemBase {
 
 	@Override
 	public float getSaturation(int meta) {
-		return (meta & 1) == 0 ? 0F : 0.9F;
+		return (meta & 1) == 0 ? 0F : 0.4F;
 	}
 
 	@Override

@@ -7,15 +7,15 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "cropHerb"
+   "ore": "listAllgreenveggie"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "cropTomato"
+   "ore": "cropOnion"
   },
   {
-   "item": "minecraft:cooked_chicken",
-   "data": 0
+   "item": "dcs_climate:dcs_food_meat",
+   "data": 5
   }
  ],
  "result": {

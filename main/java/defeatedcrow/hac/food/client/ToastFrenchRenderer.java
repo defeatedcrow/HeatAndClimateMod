@@ -29,4 +29,9 @@ public class ToastFrenchRenderer extends DCRenderFoodBase<FoodEntityBase> {
 	protected DCFoodModelBase getEntityModel(boolean baked) {
 		return RAW_MODEL;
 	}
+
+	@Override
+	protected float getScale() {
+		return 0.75F;
+	}
 }

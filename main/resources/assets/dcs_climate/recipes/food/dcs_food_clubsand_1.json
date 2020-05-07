@@ -14,8 +14,8 @@
    "ore": "cropTomato"
   },
   {
-   "item": "minecraft:cooked_fish",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllfishcooked"
   }
  ],
  "result": {

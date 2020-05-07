@@ -15,6 +15,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
@@ -59,7 +60,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable {
+public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable,
+		IHumidityTile {
 
 	public static final PropertyBool BLACK = PropertyBool.create("black");
 
@@ -323,7 +325,7 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 
 					if (next > stage) {
 						IBlockState newstate = state.withProperty(DCState.STAGE8, next).withProperty(BLACK, black);
-						if (next == 4 && !world.isRemote) {
+						if (next == 3 && !world.isRemote) {
 							((TileEntityLotus) world.getTileEntity(pos)).setRandNum();
 						}
 						return world.setBlockState(pos, newstate, 2);
@@ -492,14 +494,13 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	@Override
 	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient) {
 		int stage = state.getValue(DCState.STAGE8);
-		IClimate clm = this.getClimate(world, pos, state);
-		return this.isSuitableClimate(clm, state) && stage > -1 && stage < 7;
+		return this.isSuitablePlace(world, pos, state) && stage < 7;
 	}
 
 	@Override
 	public boolean canUseBonemeal(World world, Random rand, BlockPos pos, IBlockState state) {
 		int stage = DCState.getInt(state, DCState.STAGE8);
-		return stage > -1 && stage < 7;
+		return stage < 7;
 	}
 
 	@Override
@@ -526,6 +527,11 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
 			EnumFacing side) {
 		return true;
+	}
+
+	@Override
+	public DCHumidity getHumdiity(World world, BlockPos targrt, BlockPos thisTile) {
+		return DCHumidity.UNDERWATER;
 	}
 
 }

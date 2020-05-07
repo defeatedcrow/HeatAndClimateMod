@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.MealBreakfastBEntity;
+import defeatedcrow.hac.food.entity.MealBreakfastJ2Entity;
 import defeatedcrow.hac.food.entity.MealBreakfastJEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
@@ -26,12 +27,12 @@ public class SetMealItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 1;
+		return 2;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 2);
 		String s = "items/food/setmeal_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -41,10 +42,7 @@ public class SetMealItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"breakfast",
-				"japanese"
-		};
+		String[] s = { "breakfast", "japanese", "japanese2" };
 		return s;
 	}
 
@@ -54,6 +52,9 @@ public class SetMealItem extends FoodItemBase {
 		FoodEntityBase ret = new MealBreakfastBEntity(world, x, y, z, player);
 		if (i == 1) {
 			ret = new MealBreakfastJEntity(world, x, y, z, player);
+		}
+		if (i == 2) {
+			ret = new MealBreakfastJ2Entity(world, x, y, z, player);
 		}
 		return ret;
 	}

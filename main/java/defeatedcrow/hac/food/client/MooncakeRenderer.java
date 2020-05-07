@@ -16,8 +16,7 @@ public class MooncakeRenderer extends DCRenderFoodBase<FoodEntityBase> {
 			"textures/entity/food/mooncake_raw.png");
 	private static final ResourceLocation BAKED_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/mooncake_baked.png");
-	private static final ModelRoundPie RAW_MODEL = new ModelRoundPie(false);
-	private static final ModelRoundPie BAKED_MODEL = new ModelRoundPie(true);
+	private static final ModelRoundPie MODEL = new ModelRoundPie(true);
 
 	public MooncakeRenderer(RenderManager renderManager) {
 		super(renderManager);
@@ -30,7 +29,7 @@ public class MooncakeRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 	@Override
 	protected DCFoodModelBase getEntityModel(boolean baked) {
-		return baked ? RAW_MODEL : BAKED_MODEL;
+		return MODEL;
 	}
 
 }

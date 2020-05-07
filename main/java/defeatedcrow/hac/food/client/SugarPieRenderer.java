@@ -7,10 +7,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelSquarePie;
-import defeatedcrow.hac.food.entity.SugarPieEntity;
+import defeatedcrow.hac.food.entity.PieSugarEntity;
 
 @SideOnly(Side.CLIENT)
-public class SugarPieRenderer extends DCRenderFoodBase<SugarPieEntity> {
+public class SugarPieRenderer extends DCRenderFoodBase<PieSugarEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/pie_sugar_raw.png");

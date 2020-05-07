@@ -17,6 +17,9 @@ import defeatedcrow.hac.food.entity.CakeCreamEntity;
 import defeatedcrow.hac.food.entity.CakeGrapeEntity;
 import defeatedcrow.hac.food.entity.CakeKuzuEntity;
 import defeatedcrow.hac.food.entity.CakeLemonEntity;
+import defeatedcrow.hac.food.entity.CakeOnionEntity;
+import defeatedcrow.hac.food.entity.CakeRaisinEntity;
+import defeatedcrow.hac.food.entity.CakeSmoreEntity;
 import defeatedcrow.hac.food.entity.CakeToffeeEntity;
 import defeatedcrow.hac.food.entity.CakeTowerEntity;
 import defeatedcrow.hac.main.util.DCName;
@@ -40,12 +43,12 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 12;
+		return 16;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(meta, 0, 12);
+		int i = MathHelper.clamp(meta, 0, 16);
 		String s = "items/food/cake_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -68,7 +71,11 @@ public class CakeItem extends FoodItemBase {
 			"egg_cocotte_baked",
 			"stickey_toffee_pudding",
 			"pancake",
-			"grapejelly" };
+			"grapejelly",
+			"onion_soup_raw",
+			"onion_soup_baked",
+			"smore",
+			"raisinwich" };
 		return s;
 	}
 
@@ -113,6 +120,19 @@ public class CakeItem extends FoodItemBase {
 		if (i == 12) {
 			ret = new CakeGrapeEntity(world, x, y, z, player);
 		}
+		if (i == 13) {
+			ret = new CakeOnionEntity(world, x, y, z, player);
+			ret.setRAW(true);
+		}
+		if (i == 14) {
+			ret = new CakeOnionEntity(world, x, y, z, player);
+		}
+		if (i == 15) {
+			ret = new CakeSmoreEntity(world, x, y, z, player);
+		}
+		if (i == 16) {
+			ret = new CakeRaisinEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
@@ -145,6 +165,14 @@ public class CakeItem extends FoodItemBase {
 			return 20;
 		case 12:
 			return 9;
+		case 13:
+			return 0;
+		case 14:
+			return 10;
+		case 15:
+			return 10;
+		case 16:
+			return 10;
 		}
 		return 0;
 	}
@@ -157,7 +185,7 @@ public class CakeItem extends FoodItemBase {
 	@Override
 	public List<PotionEffect> getPotionEffect(int meta) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
-		if (meta != 0 && meta != 8) {
+		if (meta != 0 && meta != 8 && meta != 13) {
 			ret.add(new PotionEffect(MobEffects.INSTANT_HEALTH, 1, 0));
 		}
 		return ret;
@@ -167,7 +195,7 @@ public class CakeItem extends FoodItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
-		if (stack.getItemDamage() != 0 && stack.getItemDamage() != 8) {
+		if (stack.getItemDamage() != 0 && stack.getItemDamage() != 8 && stack.getItemDamage() != 13) {
 			String effName = I18n.format(MobEffects.INSTANT_HEALTH.getName());
 			tooltip.add(TextFormatting.AQUA.toString() + effName);
 		}

@@ -12,21 +12,21 @@ public class WagashiNerikiriEntity extends FoodEntityBase {
 
 	public WagashiNerikiriEntity(World worldIn) {
 		super(worldIn);
+		this.setSize(0.45F, 0.15F);
 	}
 
 	public WagashiNerikiriEntity(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(0.45F, 0.15F);
 	}
 
 	public WagashiNerikiriEntity(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(0.45F, 0.15F);
 	}
 
 	@Override
 	protected ItemStack[] drops() {
-		return new ItemStack[] {
-				new ItemStack(FoodInit.wagashi, 1, 7),
-				new ItemStack(FoodInit.wagashi, 1, 7)
-		};
+		return new ItemStack[] { new ItemStack(FoodInit.wagashi, 1, 7), new ItemStack(FoodInit.wagashi, 1, 7) };
 	}
 }

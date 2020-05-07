@@ -7,10 +7,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.core.client.base.ModelRoundBread;
-import defeatedcrow.hac.food.entity.RoundBreadEntity;
+import defeatedcrow.hac.food.entity.BreadRoundEntity;
 
 @SideOnly(Side.CLIENT)
-public class RoundBreadRenderer extends DCRenderFoodBase<RoundBreadEntity> {
+public class RoundBreadRenderer extends DCRenderFoodBase<BreadRoundEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/round_bread_raw.png");

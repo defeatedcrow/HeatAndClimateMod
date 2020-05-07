@@ -304,5 +304,7 @@ public class OreDicRegister {
 		OreDictionary.registerOre("stoneGranite", new ItemStack(Blocks.STONE, 1, 1));
 		OreDictionary.registerOre("stoneDiorite", new ItemStack(Blocks.STONE, 1, 3));
 		OreDictionary.registerOre("stoneAndesite", new ItemStack(Blocks.STONE, 1, 5));
+
+		OreDictionary.registerOre("listAllsugar", new ItemStack(Items.SUGAR));
 	}
 }

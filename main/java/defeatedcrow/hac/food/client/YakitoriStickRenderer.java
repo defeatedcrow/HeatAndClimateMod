@@ -7,10 +7,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelYakitoriStick;
-import defeatedcrow.hac.food.entity.YakitoriStickEntity;
+import defeatedcrow.hac.food.entity.StickYakitoriEntity;
 
 @SideOnly(Side.CLIENT)
-public class YakitoriStickRenderer extends DCRenderFoodBase<YakitoriStickEntity> {
+public class YakitoriStickRenderer extends DCRenderFoodBase<StickYakitoriEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/stick_yakitori_raw.png");

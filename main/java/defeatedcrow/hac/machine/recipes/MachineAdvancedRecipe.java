@@ -552,9 +552,9 @@ public class MachineAdvancedRecipe {
 			'W',
 			"paper" });
 
-		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.dynamite, 3, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine_advanced", new ItemStack(MachineInit.dynamite, 8, 2), new Object[] {
 			new ItemStack(MachineInit.reagent, 1, 4),
-			"dustWood",
+			"dropFuel",
 			"paper" });
 
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.burner, 1, 0), new Object[] {

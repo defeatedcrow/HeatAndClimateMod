@@ -82,7 +82,7 @@ public class DeepFryItem extends FoodItemBase {
 
 	@Override
 	public float getSaturation(int meta) {
-		return 0.25F;
+		return 0.75F;
 	}
 
 	@Override

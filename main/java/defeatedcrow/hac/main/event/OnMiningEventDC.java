@@ -118,7 +118,7 @@ public class OnMiningEventDC {
 			} else if (player.isSneaking() && stack.getItem() instanceof ItemPickaxe) {
 				ItemPickaxe pic = (ItemPickaxe) stack.getItem();
 				IBlockState state = event.getWorld().getBlockState(pos);
-				if (pos.getY() > 1 && pic.getHarvestLevel(stack, "pickaxe", player, state) >= 4) {
+				if (pos.getY() > 0 && pic.getHarvestLevel(stack, "pickaxe", player, state) >= 4) {
 					if (state != null && state.getBlock() == Blocks.BEDROCK && player
 							.canPlayerEdit(pos, EnumFacing.UP, stack)) {
 						ItemStack item = new ItemStack(Blocks.BEDROCK);

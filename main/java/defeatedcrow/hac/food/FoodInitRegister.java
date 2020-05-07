@@ -40,6 +40,7 @@ import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.item.CakeItem;
 import defeatedcrow.hac.food.item.ClubSandItem;
 import defeatedcrow.hac.food.item.DeepFryItem;
+import defeatedcrow.hac.food.item.DipSauceItem;
 import defeatedcrow.hac.food.item.DishBigItem;
 import defeatedcrow.hac.food.item.DishItem;
 import defeatedcrow.hac.food.item.DrinkItem;
@@ -330,6 +331,9 @@ public class FoodInitRegister {
 
 		FoodInit.drink = new DrinkItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_drink");
 		DCMaterialReg.registerItem(FoodInit.drink, ClimateCore.PACKAGE_BASE + "_food_drink", ClimateMain.MOD_ID);
+
+		FoodInit.dip = new DipSauceItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_dipsauce");
+		DCMaterialReg.registerItem(FoodInit.dip, ClimateCore.PACKAGE_BASE + "_food_dipsauce", ClimateMain.MOD_ID);
 	}
 
 	public static void loadFluids() {
@@ -374,6 +378,7 @@ public class FoodInitRegister {
 		FoodInit.setMeal.setCreativeTab(ClimateMain.food);
 		FoodInit.udon.setCreativeTab(ClimateMain.food);
 		FoodInit.drink.setCreativeTab(ClimateMain.food);
+		FoodInit.dip.setCreativeTab(ClimateMain.food);
 
 		FoodInit.nonEntity.setCreativeTab(ClimateMain.food);
 
@@ -455,6 +460,7 @@ public class FoodInitRegister {
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.snack);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.udon);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.wagashi);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.dip);
 	}
 
 }

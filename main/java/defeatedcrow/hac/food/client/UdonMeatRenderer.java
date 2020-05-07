@@ -26,8 +26,8 @@ public class UdonMeatRenderer extends DCRenderFoodBase<FoodEntityBase> {
 		// super.doRender(entity, x, y, z, yaw, partialTicks);
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) x, (float) y + 0.0675F, (float) z);
-		GlStateManager.scale(-0.75F, -0.75F, 0.75F);
+		GlStateManager.translate((float) x, (float) y, (float) z);
+		GlStateManager.scale(-0.6F, -0.6F, 0.6F);
 
 		this.bindTexture(TEX);
 
@@ -44,11 +44,11 @@ public class UdonMeatRenderer extends DCRenderFoodBase<FoodEntityBase> {
 		GlStateManager.popMatrix();
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) x, (float) y + 0.0675F, (float) z);
+		GlStateManager.translate((float) x, (float) y, (float) z);
 		GlStateManager.enableBlend();
 		GlStateManager
 				.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-		GlStateManager.scale(-0.75F, -0.75F, 0.75F);
+		GlStateManager.scale(-0.6F, -0.6F, 0.6F);
 
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(rotX, 1.0F, 0.0F, 0.0F);

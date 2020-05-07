@@ -14,8 +14,8 @@
    "ore": "cropTomato"
   },
   {
-   "item": "minecraft:cooked_beef",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllmeatcooked"
   }
  ],
  "result": {

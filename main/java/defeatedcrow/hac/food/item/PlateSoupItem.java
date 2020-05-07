@@ -12,8 +12,8 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.entity.PlateGratinEntity;
 import defeatedcrow.hac.food.entity.PlateMeatPaellaEntity;
 import defeatedcrow.hac.food.entity.PlatePaellaEntity;
-import defeatedcrow.hac.food.entity.PotatoPlateEntity;
-import defeatedcrow.hac.food.entity.SoupPlateEntity;
+import defeatedcrow.hac.food.entity.PlatePotatoEntity;
+import defeatedcrow.hac.food.entity.PlateSoupEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -64,9 +64,9 @@ public class PlateSoupItem extends FoodItemBase {
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new PotatoPlateEntity(world, x, y, z, player);
+		FoodEntityBase ret = new PlatePotatoEntity(world, x, y, z, player);
 		if (i == 2 || i == 3) {
-			ret = new SoupPlateEntity(world, x, y, z, player);
+			ret = new PlateSoupEntity(world, x, y, z, player);
 		}
 
 		if (i == 4 || i == 5) {
