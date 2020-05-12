@@ -530,7 +530,7 @@ public class FoodBasicRecipe {
 			new ItemStack(FoodInit.bread, 1, 3),
 			"listAllgreenveggie",
 			"cropTomato",
-			"listAllmeatcooked" });
+			"listAllbeefcooked" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.clubsandwich, 2, 1), new Object[] {
 			new ItemStack(FoodInit.bread, 1, 1),

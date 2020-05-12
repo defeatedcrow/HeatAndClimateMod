@@ -75,7 +75,10 @@ public class EntityDynamite extends Entity {
 							.nextFloat() * 0.2F + 0.9F));
 					doBlockDestroy(getRange(), explosion);
 				} else {
-					world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
+					if (this.getPower() > 2.0F)
+						world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
+					else
+						world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
 				}
 			}
 

@@ -342,7 +342,7 @@ public class RegisterFluidRecipe {
 					0), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(MainInit.cream,
 							500), new Object[] { "dustSalt" });
 
-			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 1,
+			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 4,
 					1), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(MainInit.milk,
 							1000), new Object[] { "foodRennet" });
 

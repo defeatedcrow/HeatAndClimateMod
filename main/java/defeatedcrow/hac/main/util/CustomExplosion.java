@@ -155,9 +155,9 @@ public class CustomExplosion extends Explosion {
 	public void doExplosionEffect(boolean eff, boolean flame) {
 		this.worldObj
 				.playSound((EntityPlayer) null, this.expX, this.expY, this.expZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.worldObj.rand
-						.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
+						.nextFloat() - this.worldObj.rand.nextFloat()) * 0.1F * size) * 0.7F);
 
-		if (this.size >= 2.0F && eff) {
+		if (this.size >= 3.0F && eff) {
 			this.worldObj
 					.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.expX, this.expY, this.expZ, 1.0D, 0.0D, 0.0D, new int[0]);
 		} else {

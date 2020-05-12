@@ -231,6 +231,12 @@ public class LoadingBuildingRecipe {
 			'X',
 			"oreLime" });
 
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.bricks, 4, 3), new Object[] {
+			"XX",
+			"XX",
+			'X',
+			new ItemStack(MainInit.gemBlock, 1, 12) });
+
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 0), new Object[] {
 			"dustLime",
 			"dustLime",
@@ -364,6 +370,9 @@ public class LoadingBuildingRecipe {
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.layerNew, 1, 1), new Object[] {
 			new ItemStack(MainInit.bricks, 1, 2) });
+
+		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.gemBlock, 1, 12), new Object[] {
+			new ItemStack(MainInit.bricks, 1, 3) });
 
 		for (int i = 0; i < 16; i++) {
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.clayBricks, 4, i), new Object[] {

@@ -537,7 +537,7 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 		ItemStack ins = this.getStackInSlot(0);
 		ItemStack cat = this.getStackInSlot(6);
 		if (DCUtil.isSameItem(cat, new ItemStack(MachineInit.rotaryBlade, 1, 3), false)) {
-			if (DCUtil.isEmpty(ins) || ins.getItem() instanceof ItemBlock)
+			if (DCUtil.isEmpty(ins) || ins.getItem() instanceof ItemBlock || getIngotOrGem(ins) != null)
 				return null;
 			else {
 				IRecipe recipe = null;
@@ -547,15 +547,22 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 					ItemStack out = rec.getRecipeOutput();
 					if (rec != null && !DCUtil.isEmpty(out)) {
 						if (ins.getItem().isDamageable() && ins.getItem() == out.getItem()) {
-							recipe = rec;
+							if (out.getCount() == 1) {
+								recipe = rec;
+							}
 							break;
 						}
 						if (DCUtil.isSameItem(ins, out, false)) {
-							recipe = rec;
+							if (out.getCount() == 1) {
+								recipe = rec;
+							}
 							break;
 						}
 					}
 				}
+				if (recipe == null)
+					return null;
+
 				NonNullList<ItemStack> list = NonNullList.create();
 				NonNullList<Ingredient> items = recipe.getIngredients();
 				for (Ingredient item : items) {

@@ -405,7 +405,7 @@ public class MainMaterialRegister {
 				.getItemFromBlock(MainInit.stairsSerpentine), "dcs_climate", "dcs_stairs_serpentine", "build", 15, false);
 
 		MainInit.stairsBedrock = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_bedrock",
-				false, false).setUnlocalizedName("dcs_stairs_bedrock");
+				false, false).setBedRock().setUnlocalizedName("dcs_stairs_bedrock");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsBedrock, ClimateCore.PACKAGE_BASE + "_stairs_bedrock", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
@@ -454,7 +454,8 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.fenceSerpentine), "dcs_climate", "dcs_fence_serpentine", "build", 15, false);
 
-		MainInit.fenceBedrock = new BlockFenceBase("dcs_fence_bedrock").setUnlocalizedName("dcs_fence_bedrock");
+		MainInit.fenceBedrock = new BlockFenceBase("dcs_fence_bedrock").setBedRock()
+				.setUnlocalizedName("dcs_fence_bedrock");
 		DCMaterialReg
 				.registerBlock(MainInit.fenceBedrock, ClimateCore.PACKAGE_BASE + "_fence_bedrock", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item

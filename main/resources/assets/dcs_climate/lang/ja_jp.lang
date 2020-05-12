@@ -995,6 +995,7 @@ tile.dcs_pillar_steel_0.name=鋼の柱
 tile.dcs_build_bricks_gypsum.name=石膏レンガブロック
 tile.dcs_build_bricks_marble.name=大理石レンガブロック
 tile.dcs_build_bricks_lime.name=石灰岩レンガブロック
+tile.dcs_build_bricks_bedrock.name=岩盤レンガブロック
 tile.dcs_build_build_concrete.name=コンクリートブロック
 tile.dcs_build_build_mosaic_red.name=モザイクタイル(赤)
 tile.dcs_build_build_mosaic_blue.name=モザイクタイル(青)

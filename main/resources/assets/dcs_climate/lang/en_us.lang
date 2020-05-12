@@ -1017,6 +1017,7 @@ tile.dcs_pillar_steel_0.name=Steel Pillar
 tile.dcs_build_bricks_gypsum.name=Gypsum Bricks
 tile.dcs_build_bricks_marble.name=Marble Bricks
 tile.dcs_build_bricks_lime.name=Lime Bricks
+tile.dcs_build_bricks_bedrock.name=Bedrock Bricks
 tile.dcs_build_build_concrete.name=Concrete Block
 tile.dcs_build_build_mosaic_red.name=Red Mosaic Block
 tile.dcs_build_build_mosaic_blue.name=Blue Mosaic Block
@@ -1953,7 +1954,7 @@ entity.dcs.food.cake_tower.name=Pancake Tower
 entity.dcs.food.cake_grape.name=Grape Jelly and Mousse
 entity.dcs.food.cake_onion_soup.name=Baked Onion Soup
 entity.dcs.food.cake_smore.name=Smore
-entity.dcs.food.cake_raisinwich.name=Raisinwich
+entity.dcs.food.cake_raisin.name=Raisinwich
 
 entity.dcs.food.wagashi_kinako.name=Kinako Mochi
 entity.dcs.food.wagashi_isobe.name=Isobe Mochi
