@@ -119,6 +119,8 @@ public class RegisterMillRecipe {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeSapling");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "blockTallgrass");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeLeaves");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(Items.POISONOUS_POTATO,
+				1, 0));
 
 		// 以下バニラ
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 4, 3), "logWood");

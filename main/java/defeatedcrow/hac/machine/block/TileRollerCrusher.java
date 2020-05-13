@@ -537,7 +537,7 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 		ItemStack ins = this.getStackInSlot(0);
 		ItemStack cat = this.getStackInSlot(6);
 		if (DCUtil.isSameItem(cat, new ItemStack(MachineInit.rotaryBlade, 1, 3), false)) {
-			if (DCUtil.isEmpty(ins) || ins.getItem() instanceof ItemBlock || getIngotOrGem(ins) != null)
+			if (DCUtil.isEmpty(ins) || ins.getItem() instanceof ItemBlock || isIngotOrGem(ins) != null)
 				return null;
 			else {
 				IRecipe recipe = null;
@@ -593,11 +593,13 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 							c3.shrink(1);
 						}
 					}
+
 					ItemStack o1 = list.get(0).copy();
 					ItemStack o2 = list.size() < 2 ? ItemStack.EMPTY : list.get(1).copy();
 					ItemStack o3 = list.size() < 3 ? ItemStack.EMPTY : list.get(2).copy();
 
-					CrusherRecipe current = new CrusherRecipe(o1, 1F, o2, 1F, o3, 1F, null, cat, ins.copy());
+					CrusherRecipe current = new CrusherRecipe(o1, 1F, o2, 1F, o3, 1F, null, cat, ins.copy()
+							.splitStack(1));
 					return current;
 				}
 			}
@@ -614,6 +616,23 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			} else if (name.contains("gear")) {
 				String name2 = name.replace("gear", "ingot");
 				return name2;
+			} else if (name.contains("plate")) {
+				String name2 = name.replace("plate", "ingot");
+				return name2;
+			} else if (name.contains("blade")) {
+				String name2 = name.replace("blade", "ingot");
+				return name2;
+			}
+		}
+		return null;
+	}
+
+	private String isIngotOrGem(ItemStack item) {
+		int[] ids = OreDictionary.getOreIDs(item);
+		for (int id : ids) {
+			String name = OreDictionary.getOreName(id);
+			if (name.contains("ingot") || name.contains("gem") || name.contains("dust")) {
+				return name;
 			}
 		}
 		return null;

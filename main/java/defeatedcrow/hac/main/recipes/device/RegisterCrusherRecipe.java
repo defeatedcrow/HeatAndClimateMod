@@ -61,6 +61,8 @@ public class RegisterCrusherRecipe {
 					MainInit.foodDust, 1, 1), 0.5F, sus, "foodRice");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 3), new ItemStack(
 					MainInit.foodDust, 1, 1), 0.5F, sus, "foodFlour");
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 3), new ItemStack(
+					MainInit.foodDust, 1, 1), 0.5F, sus, new ItemStack(Items.POISONOUS_POTATO));
 
 			if (OreDictionary.doesOreNameExist("plantRoot")) {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 3), new ItemStack(
