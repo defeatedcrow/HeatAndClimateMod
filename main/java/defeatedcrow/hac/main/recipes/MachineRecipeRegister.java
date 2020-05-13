@@ -247,7 +247,7 @@ public class MachineRecipeRegister {
 
 			// mangalloy
 			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
-					8), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock_2, 1, 3));
+					9), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock_2, 1, 3));
 		}
 
 	}
