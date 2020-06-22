@@ -13,6 +13,7 @@ import defeatedcrow.hac.machine.block.TileDynamo;
 import defeatedcrow.hac.machine.block.TileEntityPanel;
 import defeatedcrow.hac.machine.block.TileFan;
 import defeatedcrow.hac.machine.block.TileFaucet;
+import defeatedcrow.hac.machine.block.TileFaucetR;
 import defeatedcrow.hac.machine.block.TileFaucet_SUS;
 import defeatedcrow.hac.machine.block.TileFreezer;
 import defeatedcrow.hac.machine.block.TileGasBurner;
@@ -38,6 +39,7 @@ import defeatedcrow.hac.machine.block.TilePlayerPanel;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
+import defeatedcrow.hac.machine.block.TileReactorIBC;
 import defeatedcrow.hac.machine.block.TileRollerCrusher;
 import defeatedcrow.hac.machine.block.TileShaft_L;
 import defeatedcrow.hac.machine.block.TileShaft_L_SUS;
@@ -86,6 +88,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileStoneMill.class, "dcs_te_stonemill");
 		GameRegistry.registerTileEntity(TileFan.class, "dcs_te_fan");
 		GameRegistry.registerTileEntity(TileFaucet.class, "dcs_te_faucet");
+		GameRegistry.registerTileEntity(TileFaucetR.class, "dcs_te_faucet_r");
 		GameRegistry.registerTileEntity(TileFaucet_SUS.class, "dcs_te_faucet_sus");
 		GameRegistry.registerTileEntity(TileIBC.class, "dcs_te_ibc");
 		GameRegistry.registerTileEntity(TileHeatExchanger.class, "dcs_te_heatexchanger");
@@ -139,6 +142,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileTankYard.class, "dcs_te_tankyard");
 		GameRegistry.registerTileEntity(TileYardPart.class, "dcs_te_yardpart");
 		GameRegistry.registerTileEntity(TilePlayerPanel.class, "dcs_te_player_panel");
+		GameRegistry.registerTileEntity(TileReactorIBC.class, "dcs_te_reactor_ibc");
 	}
 
 	public static void loadEntity() {

@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_food_bread",
+   "data": 3
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllgreenveggie"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropOnion"
+  },
+  {
+   "item": "dcs_climate:dcs_food_meat",
+   "data": 5
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_sandwich",
+  "count": 2,
+  "data": 3
+ }
+}

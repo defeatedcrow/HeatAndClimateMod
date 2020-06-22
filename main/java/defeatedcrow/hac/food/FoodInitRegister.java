@@ -58,6 +58,7 @@ import defeatedcrow.hac.food.item.ItemPastry;
 import defeatedcrow.hac.food.item.ItemSilverCup;
 import defeatedcrow.hac.food.item.ItemTeaLeaves;
 import defeatedcrow.hac.food.item.MochiItem;
+import defeatedcrow.hac.food.item.PastaItem;
 import defeatedcrow.hac.food.item.PlateMeatItem;
 import defeatedcrow.hac.food.item.PlateSoupItem;
 import defeatedcrow.hac.food.item.RiceBowlItem;
@@ -326,6 +327,9 @@ public class FoodInitRegister {
 		FoodInit.udon = new UdonItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_udon");
 		DCMaterialReg.registerItem(FoodInit.udon, ClimateCore.PACKAGE_BASE + "_food_udon", ClimateMain.MOD_ID);
 
+		FoodInit.pasta = new PastaItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_pasta");
+		DCMaterialReg.registerItem(FoodInit.pasta, ClimateCore.PACKAGE_BASE + "_food_pasta", ClimateMain.MOD_ID);
+
 		FoodInit.setMeal = new SetMealItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_setmeal");
 		DCMaterialReg.registerItem(FoodInit.setMeal, ClimateCore.PACKAGE_BASE + "_food_setmeal", ClimateMain.MOD_ID);
 
@@ -377,6 +381,7 @@ public class FoodInitRegister {
 		FoodInit.dishSq.setCreativeTab(ClimateMain.food);
 		FoodInit.setMeal.setCreativeTab(ClimateMain.food);
 		FoodInit.udon.setCreativeTab(ClimateMain.food);
+		FoodInit.pasta.setCreativeTab(ClimateMain.food);
 		FoodInit.drink.setCreativeTab(ClimateMain.food);
 		FoodInit.dip.setCreativeTab(ClimateMain.food);
 

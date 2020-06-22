@@ -137,7 +137,7 @@ public class EntityDynamite extends Entity {
 	}
 
 	public int getRange() {
-		return 3;
+		return 4;
 	}
 
 	@Override

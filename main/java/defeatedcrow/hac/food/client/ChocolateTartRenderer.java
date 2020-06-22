@@ -3,14 +3,14 @@ package defeatedcrow.hac.food.client;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelTart;
-import defeatedcrow.hac.food.entity.TartLemonEntity;
+import defeatedcrow.hac.food.entity.TartChocolateEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ChocolateTartRenderer extends DCRenderFoodBase<TartLemonEntity> {
+public class ChocolateTartRenderer extends DCRenderFoodBase<TartChocolateEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/tart_chocolate_raw.png");

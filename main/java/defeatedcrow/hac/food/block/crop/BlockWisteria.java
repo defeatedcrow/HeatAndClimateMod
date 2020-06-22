@@ -24,6 +24,7 @@ import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -311,23 +312,23 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 			if (!DCState.getBool(state, GROUND)) {
 				int stage = DCState.getInt(state, DCState.STAGE4);
 				if (stage == 3) {
-					if (season.id < 2) {
+					if (ModuleConfig.crop || season.id < 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, 0);
 						world.setBlockState(pos, newstate, 2);
 					}
 				} else if (stage == 2) {
-					if (season.id >= 2) {
+					if (ModuleConfig.crop || season.id >= 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, 3);
 						world.setBlockState(pos, newstate, 2);
 					}
 				} else if (stage < 2) {
-					if (season.id < 2) {
+					if (ModuleConfig.crop || season.id < 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
 						world.setBlockState(pos, newstate, 2);
 					}
 				}
 			}
-			if (season.id != 3) {
+			if (ModuleConfig.crop || season.id != 3) {
 				EnumFacing f = EnumFacing.UP;
 				if (!DCState.getBool(state, GROUND)) {
 					int i = cropRand.nextInt(6);

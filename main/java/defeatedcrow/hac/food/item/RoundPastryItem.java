@@ -8,12 +8,14 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.QuichePotatoEntity;
+import defeatedcrow.hac.food.entity.QuicheSpinachEntity;
 import defeatedcrow.hac.food.entity.TartAppleEntity;
 import defeatedcrow.hac.food.entity.TartChocolateEntity;
 import defeatedcrow.hac.food.entity.TartCrostataEntity;
+import defeatedcrow.hac.food.entity.TartCustardEntity;
 import defeatedcrow.hac.food.entity.TartLemonEntity;
-import defeatedcrow.hac.food.entity.QuichePotatoEntity;
-import defeatedcrow.hac.food.entity.QuicheSpinachEntity;
+import defeatedcrow.hac.food.entity.TartLiverEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,7 +34,7 @@ public class RoundPastryItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 11;
+		return 15;
 	}
 
 	@Override
@@ -59,7 +61,11 @@ public class RoundPastryItem extends FoodItemBase {
 			"crostata_raw",
 			"crostata_baked",
 			"chocolate_raw",
-			"chocolate_baked" };
+			"chocolate_baked",
+			"custard_raw",
+			"custard_baked",
+			"liver_raw",
+			"liver_baked" };
 		return s;
 	}
 
@@ -92,6 +98,14 @@ public class RoundPastryItem extends FoodItemBase {
 		case 11:
 			ret = new TartChocolateEntity(world, x, y, z, player);
 			break;
+		case 12:
+		case 13:
+			ret = new TartCustardEntity(world, x, y, z, player);
+			break;
+		case 14:
+		case 15:
+			ret = new TartLiverEntity(world, x, y, z, player);
+			break;
 		default:
 			ret = new TartAppleEntity(world, x, y, z, player);
 		}
@@ -116,7 +130,10 @@ public class RoundPastryItem extends FoodItemBase {
 		case 9:
 			return 10;
 		case 11:
+		case 13:
 			return 12;
+		case 15:
+			return 14;
 		default:
 			return 0;
 		}

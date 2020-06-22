@@ -194,6 +194,16 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(SauceRaisinEntity.class, SauceRaisinRenderer.class);
 		ClientMainProxy.registRender(SauceSalsaEntity.class, SauceSalsaRenderer.class);
 		ClientMainProxy.registRender(MealBreakfastJ2Entity.class, SetmealBreakfastJ2Renderer.class);
+		ClientMainProxy.registRender(PlateBigChickenEntity.class, PlateBigChickenRenderer.class);
+		ClientMainProxy.registRender(TartCustardEntity.class, CustardTartRenderer.class);
+		ClientMainProxy.registRender(TartLiverEntity.class, LiverTartRenderer.class);
+		ClientMainProxy.registRender(PastaOilEntity.class, PastaOilRenderer.class);
+		ClientMainProxy.registRender(PastaBasilEntity.class, PastaBasilRenderer.class);
+		ClientMainProxy.registRender(PastaTomatoEntity.class, PastaTomatoRenderer.class);
+		ClientMainProxy.registRender(PastaPrawnEntity.class, PastaPrawnRenderer.class);
+		ClientMainProxy.registRender(PastaCodEntity.class, PastaCodRenderer.class);
+		ClientMainProxy.registRender(PastaSquidEntity.class, PastaSquidRenderer.class);
+		ClientMainProxy.registRender(PastaBeefEntity.class, PastaBeefRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -220,13 +230,13 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.dairy, ClimateCore.PACKAGE_ID, "dcs_food_dairy", "food", 4);
 		instance.regSimpleItem(FoodInit.meat, ClimateCore.PACKAGE_ID, "dcs_food_meat", "food", 9);
 		instance.regSimpleItem(FoodInit.pastry, ClimateCore.PACKAGE_ID, "dcs_food_pastry", "food", 1);
-		instance.regSimpleItem(FoodInit.pastryRound, ClimateCore.PACKAGE_ID, "dcs_food_tart", "food", 11);
+		instance.regSimpleItem(FoodInit.pastryRound, ClimateCore.PACKAGE_ID, "dcs_food_tart", "food", 15);
 		instance.regSimpleItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_ID, "dcs_food_pie", "food", 11);
 		instance.regSimpleItem(FoodInit.sandwich, ClimateCore.PACKAGE_ID, "dcs_food_sandwich", "food", 5);
 		instance.regSimpleItem(FoodInit.clubsandwich, ClimateCore.PACKAGE_ID, "dcs_food_clubsand", "food", 1);
 		instance.regSimpleItem(FoodInit.ricebowl, ClimateCore.PACKAGE_ID, "dcs_food_rice_bowl", "food", 4);
 		instance.regSimpleItem(FoodInit.steakplate, ClimateCore.PACKAGE_ID, "dcs_food_empty_plate", "food", 0);
-		instance.regSimpleItem(FoodInit.plateMeal, ClimateCore.PACKAGE_ID, "dcs_food_plate_meat", "food", 9);
+		instance.regSimpleItem(FoodInit.plateMeal, ClimateCore.PACKAGE_ID, "dcs_food_plate_meat", "food", 11);
 		instance.regSimpleItem(FoodInit.plateSoup, ClimateCore.PACKAGE_ID, "dcs_food_plate_potato", "food", 9);
 		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 15);
 		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 11);
@@ -241,6 +251,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.dishSq, ClimateCore.PACKAGE_ID, "dcs_food_dish_sq", "food", 7);
 		instance.regSimpleItem(FoodInit.dishBig, ClimateCore.PACKAGE_ID, "dcs_food_dish_big", "food", 5);
 		instance.regSimpleItem(FoodInit.udon, ClimateCore.PACKAGE_ID, "dcs_food_udon", "food", 2);
+		instance.regSimpleItem(FoodInit.pasta, ClimateCore.PACKAGE_ID, "dcs_food_pasta", "food", 6);
 		instance.regSimpleItem(FoodInit.drink, ClimateCore.PACKAGE_ID, "dcs_food_drink", "food", 2);
 		instance.regSimpleItem(FoodInit.dip, ClimateCore.PACKAGE_ID, "dcs_food_dipsauce", "food", 2);
 

@@ -20,7 +20,7 @@ public class EntityDynamiteSmall extends EntityDynamite {
 
 	@Override
 	public int getRange() {
-		return 1;
+		return 2;
 	}
 
 }

@@ -24,6 +24,7 @@ import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -306,21 +307,21 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 			EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 			if (!DCState.getBool(state, GROUND)) {
 				int stage = DCState.getInt(state, DCState.STAGE4);
-				if (stage == 3 || season == EnumSeason.WINTER) {
+				if (stage == 3) {
 					return false;
 				} else if (stage >= 1) {
-					if (season != EnumSeason.SPRING && season != EnumSeason.WINTER) {
+					if (ModuleConfig.crop || (season != EnumSeason.SPRING && season != EnumSeason.WINTER)) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
 						world.setBlockState(pos, newstate, 2);
 					}
 				} else if (stage < 1) {
-					if (season != EnumSeason.WINTER) {
+					if (ModuleConfig.crop || season != EnumSeason.WINTER) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
 						world.setBlockState(pos, newstate, 2);
 					}
 				}
 			}
-			if (season != EnumSeason.WINTER) {
+			if (ModuleConfig.crop || season != EnumSeason.WINTER) {
 				EnumFacing f = EnumFacing.UP;
 				if (!DCState.getBool(state, GROUND)) {
 					int i = cropRand.nextInt(6);

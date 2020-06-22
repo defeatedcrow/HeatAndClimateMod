@@ -26,14 +26,22 @@ public class DCPluginJeiMain {
 		if (ModuleConfig.machine) {
 			DCsJEIPluginLists.millstones.add(new ItemStack(MachineInit.stonemill));
 			DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.reactor, 1, 0));
+			DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.IBC_reactor, 1, 0));
 			DCsJEIPluginLists.spinning.add(new ItemStack(MachineInit.spinning, 1, 0));
 			DCsJEIPluginLists.crusher.add(new ItemStack(MachineInit.crusher, 1, 0));
 		}
 
 		if (ModuleConfig.food) {
 			DCsJEIPluginLists.fluidcrafters.add(new ItemStack(FoodInit.potteryPot));
+			DCsJEIPluginLists.fluidcrafters.add(new ItemStack(FoodInit.skillet));
 			DCsJEIPluginLists.fluidcrafters.add(new ItemStack(FoodInit.steelPot));
 			DCsJEIPluginLists.fluidcrafters.add(new ItemStack(FoodInit.teaPot));
+
+			DCsJEIPluginLists.fluidcrafters_pot.add(new ItemStack(FoodInit.potteryPot));
+			DCsJEIPluginLists.fluidcrafters_steel.add(new ItemStack(FoodInit.steelPot));
+			DCsJEIPluginLists.fluidcrafters_drink.add(new ItemStack(FoodInit.teaPot));
+			DCsJEIPluginLists.fluidcrafters_skillet.add(new ItemStack(FoodInit.skillet));
+
 			DCsJEIPluginLists.crops.add(new ItemStack(FoodInit.cropRice, 1, 3));
 		}
 

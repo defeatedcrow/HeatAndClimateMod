@@ -44,6 +44,13 @@ public class TileShitirin extends TileNormalChamber {
 	/* === 燃焼判定 === */
 
 	@Override
+	protected void onServerUpdate() {
+		if (this.currentBurnTime > 0 && BlockShitirin.isPower(getWorld(), getPos())) {
+			this.currentBurnTime--;
+		}
+	}
+
+	@Override
 	public int getFuel(ItemStack item) {
 		return getBurnTime(item) * 4;
 	}

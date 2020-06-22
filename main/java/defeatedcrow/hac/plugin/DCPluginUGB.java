@@ -60,7 +60,7 @@ public class DCPluginUGB {
 				'Y',
 				"gemFlint" });
 
-			DCRecipe.jsonShapedRecipe("plugin", new ItemStack(MainInit.builds, 2, 9), new Object[] {
+			DCRecipe.jsonShapedRecipe("plugin", 2, new ItemStack(MainInit.builds, 2, 9), new Object[] {
 				"XY",
 				"YX",
 				'X',

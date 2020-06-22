@@ -1,14 +1,7 @@
 package defeatedcrow.hac.plugin;
 
-import java.lang.reflect.Method;
-
 import defeatedcrow.hac.api.damage.DamageAPI;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.main.MainInit;
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
-import net.tangotek.tektopia.entities.ai.EntityAIEatFood;
 
 public class DCPluginTektopia {
 
@@ -40,31 +33,31 @@ public class DCPluginTektopia {
 		// loadFoodData();
 	}
 
-	public static void loadFoodData() {
-		try {
-			Method m = ReflectionHelper
-					.findMethod(EntityAIEatFood.class, "registerFood", "registerFood", Item.class, int.class, int.class);
-			if (m != null) {
-				m.invoke(null, MainInit.bakedApple, 18, 2);
-				m.invoke(null, FoodInit.cake, 15, 20);
-				m.invoke(null, FoodInit.bowlSoup, 40, 8);
-				m.invoke(null, FoodInit.sandwich, 35, 3);
-				m.invoke(null, FoodInit.deepFry, 60, 7);
-				m.invoke(null, FoodInit.clubsandwich, 60, 8);
-				m.invoke(null, FoodInit.dishSq, 20, 4);
-				m.invoke(null, FoodInit.dishBig, 60, 6);
-				m.invoke(null, FoodInit.icecream, 10, 12);
-				m.invoke(null, FoodInit.salad, 15, 8);
-				m.invoke(null, FoodInit.setMeal, 80, 12);
-				m.invoke(null, FoodInit.snack, 35, 8);
-				m.invoke(null, FoodInit.udon, 60, 15);
-				m.invoke(null, FoodInit.wagashi, 20, 15);
-				m.invoke(null, FoodInit.ricebowl, 30, 6);
-				m.invoke(null, FoodInit.nonEntity, 8, 6);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	// public static void loadFoodData() {
+	// try {
+	// Method m = ReflectionHelper
+	// .findMethod(EntityAIEatFood.class, "registerFood", "registerFood", Item.class, int.class, int.class);
+	// if (m != null) {
+	// m.invoke(null, MainInit.bakedApple, 18, 2);
+	// m.invoke(null, FoodInit.cake, 15, 20);
+	// m.invoke(null, FoodInit.bowlSoup, 40, 8);
+	// m.invoke(null, FoodInit.sandwich, 35, 3);
+	// m.invoke(null, FoodInit.deepFry, 60, 7);
+	// m.invoke(null, FoodInit.clubsandwich, 60, 8);
+	// m.invoke(null, FoodInit.dishSq, 20, 4);
+	// m.invoke(null, FoodInit.dishBig, 60, 6);
+	// m.invoke(null, FoodInit.icecream, 10, 12);
+	// m.invoke(null, FoodInit.salad, 15, 8);
+	// m.invoke(null, FoodInit.setMeal, 80, 12);
+	// m.invoke(null, FoodInit.snack, 35, 8);
+	// m.invoke(null, FoodInit.udon, 60, 15);
+	// m.invoke(null, FoodInit.wagashi, 20, 15);
+	// m.invoke(null, FoodInit.ricebowl, 30, 6);
+	// m.invoke(null, FoodInit.nonEntity, 8, 6);
+	// }
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// }
 
 }

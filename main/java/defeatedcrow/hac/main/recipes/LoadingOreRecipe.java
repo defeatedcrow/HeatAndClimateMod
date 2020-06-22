@@ -52,7 +52,7 @@ public class LoadingOreRecipe {
 			'X',
 			"dustAluminium" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.dustBlock, 1, 13), new Object[] {
 			"XXX",
 			"XXX",
 			"XXX",
@@ -99,7 +99,7 @@ public class LoadingOreRecipe {
 			"dustTin",
 			"dustTin" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.dustBlock, 1, 9), new Object[] {
 			"XXX",
 			"XXX",
 			"XXX",
@@ -117,7 +117,7 @@ public class LoadingOreRecipe {
 			"dustIron",
 			"dustGraphite" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 			"dustMagnetite",
 			"dustMagnetite",
 			"dustMagnetite",
@@ -128,7 +128,7 @@ public class LoadingOreRecipe {
 			"dustMagnetite",
 			"dustGraphite" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 3, new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 			"dustIron",
 			"dustIron",
 			"dustIron",
@@ -139,7 +139,7 @@ public class LoadingOreRecipe {
 			"dustIron",
 			"dustCoal" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 4, new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 			"dustMagnetite",
 			"dustMagnetite",
 			"dustMagnetite",
@@ -172,7 +172,7 @@ public class LoadingOreRecipe {
 			"dustChromium",
 			"dustNickel" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.dustBlock, 1, 10), new Object[] {
 			"dustMagnetite",
 			"dustMagnetite",
 			"dustMagnetite",
@@ -205,7 +205,7 @@ public class LoadingOreRecipe {
 			"dustAluminium",
 			"dustChromium" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.dustBlock, 1, 12), new Object[] {
 			"dustTitanium",
 			"dustTitanium",
 			"dustTitanium",
@@ -249,7 +249,7 @@ public class LoadingOreRecipe {
 			"dustChromium",
 			"dustMolybdenum" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock_2, 1, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.dustBlock_2, 1, 2), new Object[] {
 			"dustMagnetite",
 			"dustMagnetite",
 			"dustMagnetite",
@@ -271,7 +271,7 @@ public class LoadingOreRecipe {
 			"dustManganese",
 			"dustCoal" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.dustBlock_2, 1, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.dustBlock_2, 1, 3), new Object[] {
 			"dustMagnetite",
 			"dustMagnetite",
 			"dustMagnetite",
@@ -283,40 +283,40 @@ public class LoadingOreRecipe {
 			"dustCoal" });
 
 		// dustBlock -> dust
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 0), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 0) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 1), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 1) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 2), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 2) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 3), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 3) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 5), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 5) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 7), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 7), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 7) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 8), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 8), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 8) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 4), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 4), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 11) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 11), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 11), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 13) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreDust, 9, 12), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.oreDust, 9, 12), new Object[] {
 			new ItemStack(MainInit.dustBlock, 1, 14) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
 			new ItemStack(MainInit.dustBlock_2, 1, 1) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.IRON_INGOT, 9, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(Items.IRON_INGOT, 9, 0), new Object[] {
 			new ItemStack(MainInit.heatedMetalBlock, 1, 2) });
 
 		// ingot <-> metalBlock
@@ -356,21 +356,21 @@ public class LoadingOreRecipe {
 		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 10), new ItemStack(MainInit.gems, 4, 13), "Olivine");
 		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 11), new ItemStack(MainInit.gems, 4, 14), "Garnet");
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_container", new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
 			"XXX",
 			"X X",
 			"XXX",
 			'X',
 			"gemChalcedony" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_container", new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
 			"XXX",
 			"X X",
 			"XXX",
 			'X',
 			"gemQuartz" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.gems, 8, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", new ItemStack(MainInit.gems, 8, 2), new Object[] {
 			new ItemStack(MainInit.gemBlock, 1, 8) });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 4, 12), new Object[] {
@@ -384,15 +384,15 @@ public class LoadingOreRecipe {
 	}
 
 	static void ingotRecipe(ItemStack block, ItemStack ingot, String name) {
-		DCRecipe.jsonShapedRecipe("main", block, new Object[] { "XXX", "XXX", "XXX", 'X', "ingot" + name });
+		DCRecipe.jsonShapedRecipe("main_container", block, new Object[] { "XXX", "XXX", "XXX", 'X', "ingot" + name });
 
-		DCRecipe.jsonShapelessRecipe("main", ingot, new Object[] { "block" + name });
+		DCRecipe.jsonShapelessRecipe("main_container", ingot, new Object[] { "block" + name });
 	}
 
 	static void gemRecipe(ItemStack block, ItemStack gem, String name) {
-		DCRecipe.jsonShapedRecipe("main", block, new Object[] { "XX", "XX", 'X', "gem" + name });
+		DCRecipe.jsonShapedRecipe("main_container", block, new Object[] { "XX", "XX", 'X', "gem" + name });
 
-		DCRecipe.jsonShapelessRecipe("main", gem, new Object[] { "block" + name });
+		DCRecipe.jsonShapelessRecipe("main_container", gem, new Object[] { "block" + name });
 	}
 
 }

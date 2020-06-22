@@ -134,12 +134,12 @@ public class DCPluginBoP {
 		}
 
 		if (ModuleConfig.r_fluid) {
-			RegisterFluidRecipe.regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1,
+			RegisterFluidRecipe.regNonFoodRecipe(new ItemStack(MainInit.foodDust, 1,
 					3), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(
 							FluidRegistry.WATER, 200), new Object[] { "cropBarley" });
 
 			if (ModuleConfig.food)
-				RegisterFluidRecipe.regNonFoodrecipe(new ItemStack(FoodInit.crops, 1,
+				RegisterFluidRecipe.regNonFoodRecipe(new ItemStack(FoodInit.crops, 1,
 						18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
 								200), new Object[] { "plantReed", "dustAsh" });
 		}

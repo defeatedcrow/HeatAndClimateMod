@@ -31,7 +31,7 @@ public class LoadingBuildingRecipe {
 			'Y',
 			"dustSilver" });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.selenite, 8, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.selenite, 8, 2), new Object[] {
 			"XXX",
 			"XYX",
 			"XXX",
@@ -47,7 +47,7 @@ public class LoadingBuildingRecipe {
 			'X',
 			new ItemStack(MainInit.selenite, 1, 0) });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsGlass, 4, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.stairsGlass, 4, 0), new Object[] {
 			"  X",
 			" XX",
 			"XXX",
@@ -61,7 +61,7 @@ public class LoadingBuildingRecipe {
 			'X',
 			new ItemStack(MainInit.gemBlock, 1, 3) });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsGypsum, 4, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.stairsGypsum, 4, 0), new Object[] {
 			"  X",
 			" XX",
 			"XXX",
@@ -75,7 +75,7 @@ public class LoadingBuildingRecipe {
 			'X',
 			new ItemStack(MainInit.gemBlock, 1, 6) });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsMarble, 4, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.stairsMarble, 4, 0), new Object[] {
 			"  X",
 			" XX",
 			"XXX",
@@ -89,7 +89,7 @@ public class LoadingBuildingRecipe {
 			'X',
 			new ItemStack(MainInit.gemBlock, 1, 9) });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsSerpentine, 4, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.stairsSerpentine, 4, 0), new Object[] {
 			"  X",
 			" XX",
 			"XXX",
@@ -103,7 +103,7 @@ public class LoadingBuildingRecipe {
 			'X',
 			new ItemStack(MainInit.gemBlock, 1, 12) });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsBedrock, 4, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.stairsBedrock, 4, 0), new Object[] {
 			"  X",
 			" XX",
 			"XXX",
@@ -117,7 +117,7 @@ public class LoadingBuildingRecipe {
 			'X',
 			new ItemStack(MainInit.builds, 1, 7) });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsDirtbrick, 4, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.stairsDirtbrick, 4, 0), new Object[] {
 			"  X",
 			" XX",
 			"XXX",
@@ -262,42 +262,42 @@ public class LoadingBuildingRecipe {
 			new ItemStack(MainInit.builds, 1, 0),
 			"blockGlass" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(MainInit.builds, 1, 1), new Object[] {
 			"dyeRed",
 			new ItemStack(MainInit.builds, 1, 0),
 			"dustBorax" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(MainInit.builds, 1, 2), new Object[] {
 			"dyeBlue",
 			new ItemStack(MainInit.builds, 1, 0),
 			"dustBorax" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(MainInit.builds, 1, 3), new Object[] {
 			"dyeYellow",
 			new ItemStack(MainInit.builds, 1, 0),
 			"dustBorax" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 4), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(MainInit.builds, 1, 4), new Object[] {
 			"dyeBlack",
 			new ItemStack(MainInit.builds, 1, 0),
 			"dustBorax" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 3, new ItemStack(MainInit.builds, 1, 1), new Object[] {
 			"dyeRed",
 			new ItemStack(Blocks.CONCRETE, 1, 32767),
 			"blockGlass" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 3, new ItemStack(MainInit.builds, 1, 2), new Object[] {
 			"dyeBlue",
 			new ItemStack(Blocks.CONCRETE, 1, 32767),
 			"blockGlass" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 3, new ItemStack(MainInit.builds, 1, 3), new Object[] {
 			"dyeYellow",
 			new ItemStack(Blocks.CONCRETE, 1, 32767),
 			"blockGlass" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 4), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 3, new ItemStack(MainInit.builds, 1, 4), new Object[] {
 			"dyeBlack",
 			new ItemStack(Blocks.CONCRETE, 1, 32767),
 			"blockGlass" });
@@ -307,7 +307,7 @@ public class LoadingBuildingRecipe {
 				"gravel",
 				new ItemStack(MachineInit.reagent, 1, 0) });
 		} else {
-			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 5), new Object[] {
+			DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(MainInit.builds, 1, 5), new Object[] {
 				"gravel",
 				"slimeball",
 				"dyeBlack" });
@@ -318,7 +318,7 @@ public class LoadingBuildingRecipe {
 			"blockTallgrass",
 			"cropSeaweed" });
 
-		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 6), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(MainInit.builds, 1, 6), new Object[] {
 			"dustLime",
 			"cropWheat",
 			"cropSeaweed" });
@@ -381,7 +381,7 @@ public class LoadingBuildingRecipe {
 				'X',
 				new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, i) });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(Blocks.STAINED_HARDENED_CLAY, 4, i), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(Blocks.STAINED_HARDENED_CLAY, 4, i), new Object[] {
 				"XX",
 				"XX",
 				'X',
@@ -400,7 +400,7 @@ public class LoadingBuildingRecipe {
 			'X',
 			"gemSlate" });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.roofSlate, 3, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.roofSlate, 3, 0), new Object[] {
 			"X  ",
 			" X ",
 			"  X",
@@ -470,7 +470,7 @@ public class LoadingBuildingRecipe {
 			'Y',
 			"stickWood" });
 
-		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.scaffold, 16, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.scaffold, 16, 0), new Object[] {
 			"YXY",
 			"Y Y",
 			"YXY",
@@ -905,7 +905,7 @@ public class LoadingBuildingRecipe {
 				'Y',
 				"stickWood" });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.awning, 1, 1), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.awning, 1, 1), new Object[] {
 				"XXX",
 				"Y Y",
 				'X',
@@ -1053,7 +1053,7 @@ public class LoadingBuildingRecipe {
 				'Z',
 				"gemEmerald" });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chestVillage, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.chestVillage, 1, 0), new Object[] {
 				"XZX",
 				"XYX",
 				"XXX",
@@ -1080,7 +1080,7 @@ public class LoadingBuildingRecipe {
 				'X',
 				"ingotNickelsilver" });
 
-			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.sinkMetal, 1, 0), new Object[] {
+			DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(MainInit.sinkMetal, 1, 0), new Object[] {
 				new ItemStack(MainInit.sinkChest, 1, 0) });
 
 			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.sinkChest, 1, 0), new Object[] {
@@ -1103,7 +1103,7 @@ public class LoadingBuildingRecipe {
 				'X',
 				"ingotAluminium" });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.fenceAluminium, 6, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.fenceAluminium, 6, 0), new Object[] {
 				"XXX",
 				"XXX",
 				'X',
@@ -1125,7 +1125,7 @@ public class LoadingBuildingRecipe {
 				'Y',
 				new ItemStack(Blocks.GLASS, 1, 0) });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
 				"XYX",
 				"XYX",
 				'X',
@@ -1133,7 +1133,7 @@ public class LoadingBuildingRecipe {
 				'Y',
 				"blockGlass" });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.fenceNet, 6, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.fenceNet, 6, 0), new Object[] {
 				"XYX",
 				"XYX",
 				'X',
@@ -1141,7 +1141,7 @@ public class LoadingBuildingRecipe {
 				'Y',
 				new ItemStack(Blocks.IRON_BARS, 1, 0) });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 3, new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
 				"XYX",
 				"XYX",
 				'X',
@@ -1149,7 +1149,7 @@ public class LoadingBuildingRecipe {
 				'Y',
 				new ItemStack(Blocks.GLASS, 1, 0) });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 4, new ItemStack(MainInit.fenceGlass, 6, 0), new Object[] {
 				"XYX",
 				"XYX",
 				'X',
@@ -1172,7 +1172,7 @@ public class LoadingBuildingRecipe {
 				'X',
 				"ingotAluminium" });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.fenceLadder, 6, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.fenceLadder, 6, 0), new Object[] {
 				"X X",
 				"XXX",
 				"X X",
@@ -1350,7 +1350,7 @@ public class LoadingBuildingRecipe {
 				'Y',
 				new ItemStack(Blocks.WOOL, 1, 32767) });
 
-			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.cushionGray, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.cushionGray, 1, 0), new Object[] {
 				" X ",
 				"YYY",
 				" X ",

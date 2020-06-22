@@ -25,6 +25,7 @@ import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
@@ -305,16 +306,16 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 				if (stage < 7) {
 					EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 					int next = stage;
-					if (stage == 6 && season.id > 2) {
+					if (stage == 6 && (ModuleConfig.crop || season.id > 2)) {
 						// winter
 						next = stage + 1;
-					} else if (stage == 5 && season.id > 1) {
+					} else if (stage == 5 && (ModuleConfig.crop || season.id > 1)) {
 						// autumn
 						next = stage + 1;
-					} else if ((stage == 4 || stage == 3) && (season.id == 1 || season.id == 2)) {
+					} else if ((stage == 4 || stage == 3) && (ModuleConfig.crop || season.id == 1 || season.id == 2)) {
 						// summer
 						next = stage + 1;
-					} else if (stage < 3 && season.id < 3) {
+					} else if (stage < 3 && (ModuleConfig.crop || season.id < 3)) {
 						if (world.rand.nextInt(50) == 0) {
 							black = true;
 						}

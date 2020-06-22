@@ -18,6 +18,7 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
+import defeatedcrow.hac.machine.block.TileReactorIBC;
 import defeatedcrow.hac.machine.block.TileRollerCrusher;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
@@ -30,6 +31,7 @@ import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
 import defeatedcrow.hac.machine.gui.ContainerPortalManager;
 import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
+import defeatedcrow.hac.machine.gui.ContainerReactorIBC;
 import defeatedcrow.hac.machine.gui.ContainerSpinning;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 import defeatedcrow.hac.machine.gui.GuiCrusher;
@@ -40,6 +42,7 @@ import defeatedcrow.hac.machine.gui.GuiHopperFluid;
 import defeatedcrow.hac.machine.gui.GuiPortalManager;
 import defeatedcrow.hac.machine.gui.GuiPressMachine;
 import defeatedcrow.hac.machine.gui.GuiReactor;
+import defeatedcrow.hac.machine.gui.GuiReactorIBC;
 import defeatedcrow.hac.machine.gui.GuiSpinning;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
@@ -531,6 +534,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
 			return new ContainerHopperFluid((TileHopperFluid) tile, player);
+		if (tile instanceof TileReactorIBC)
+			return new ContainerReactorIBC((TileReactorIBC) tile, player.inventory);
 		if (tile instanceof TileReactor)
 			return new ContainerReactor((TileReactor) tile, player.inventory);
 		if (tile instanceof TileSpinningMachine)
@@ -583,6 +588,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
 			return new GuiHopperFluid((TileHopperFluid) tile, player);
+		if (tile instanceof TileReactorIBC)
+			return new GuiReactorIBC((TileReactorIBC) tile, player.inventory);
 		if (tile instanceof TileReactor)
 			return new GuiReactor((TileReactor) tile, player.inventory);
 		if (tile instanceof TileSpinningMachine)

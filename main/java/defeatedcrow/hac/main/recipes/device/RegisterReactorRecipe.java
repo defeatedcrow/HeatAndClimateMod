@@ -26,11 +26,11 @@ public class RegisterReactorRecipe {
 		// 硝酸2
 		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.nitricAcid,
 				200), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(MainInit.sulfuricAcid,
-						200), new FluidStack(FluidRegistry.WATER, 200), new Object[] { "dustNiter" });
+						200), null, new Object[] { "dustNiter" });
 
 		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.nitricAcid,
 				200), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(MainInit.sulfuricAcid,
-						200), new FluidStack(FluidRegistry.WATER, 200), new Object[] { "dustSaltpeter" });
+						200), null, new Object[] { "dustSaltpeter" });
 
 		// 硫酸
 		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.sulfuricAcid,

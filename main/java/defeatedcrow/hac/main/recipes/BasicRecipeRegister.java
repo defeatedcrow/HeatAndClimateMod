@@ -31,7 +31,7 @@ public class BasicRecipeRegister {
 			new ItemStack(MainInit.oreItem, 1, 3),
 			"gemChalcedony" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(Items.FLINT_AND_STEEL, 1, 0), new Object[] {
 			new ItemStack(MainInit.oreItem, 1, 3),
 			new ItemStack(Items.FLINT) });
 
@@ -47,7 +47,7 @@ public class BasicRecipeRegister {
 			'Z',
 			"feather" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(Items.ARROW, 4, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(Items.ARROW, 4, 0), new Object[] {
 			"X",
 			"Y",
 			"Z",
@@ -87,7 +87,7 @@ public class BasicRecipeRegister {
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.DYE, 1, 15), new Object[] {
 			new ItemStack(MainInit.miscDust, 1, 5) });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.oreIngot, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.oreIngot, 1, 5), new Object[] {
 			new ItemStack(MainInit.oreIngot, 1, 7) });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(Blocks.GLASS, 8, 0), new Object[] {
@@ -126,7 +126,7 @@ public class BasicRecipeRegister {
 			"dustAsh",
 			"dustPresscake", });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Blocks.DIRT, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(Blocks.DIRT, 1, 0), new Object[] {
 			new ItemStack(Blocks.SAND, 1, 32767),
 			new ItemStack(Items.DYE, 1, 15),
 			"dustAsh",
@@ -145,12 +145,20 @@ public class BasicRecipeRegister {
 			'X',
 			"dustChrysotile" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(Blocks.WOOL, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(Blocks.WOOL, 1, 0), new Object[] {
 			"XXX",
 			"XXX",
 			"XXX",
 			'X',
 			"cropCotton" });
+
+		// 紙
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(Items.PAPER, 3, 0), new Object[] {
+			"X",
+			"X",
+			"X",
+			'X',
+			"dustWood" });
 
 		// アルミ関連
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(Items.BUCKET, 1, 0), new Object[] {

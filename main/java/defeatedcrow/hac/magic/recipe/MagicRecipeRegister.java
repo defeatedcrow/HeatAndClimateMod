@@ -35,7 +35,7 @@ public class MagicRecipeRegister {
 			"gemChalcedonyBlue",
 			"dyeBlue" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 0), new Object[] {
 			"gemLapis",
 			"dyeBlue" });
 
@@ -43,7 +43,7 @@ public class MagicRecipeRegister {
 			"gemMalachite",
 			"dyeGreen" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 1), new Object[] {
 			"gemSerpentine",
 			"dyeGreen" });
 
@@ -51,7 +51,7 @@ public class MagicRecipeRegister {
 			"gemChalcedonyRed",
 			"dyeRed" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 2), new Object[] {
 			"dustRedstone",
 			"dyeRed" });
 
@@ -59,11 +59,11 @@ public class MagicRecipeRegister {
 			"gemCrudeOil",
 			"dyeBlack" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 3), new Object[] {
 			"obsidian",
 			"dyeBlack" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
 			"gemQuartz",
 			"dyeWhite" });
 
@@ -75,7 +75,7 @@ public class MagicRecipeRegister {
 			"gemSapphire",
 			"dropBlue" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
 			"gemAquamarine",
 			"dropBlue" });
 
@@ -83,7 +83,7 @@ public class MagicRecipeRegister {
 			"gemPeridot",
 			"dropGreen" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
 			"gemEmerald",
 			"dropGreen" });
 
@@ -91,7 +91,7 @@ public class MagicRecipeRegister {
 			"gemGarnet",
 			"dropRed" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
 			"gemRuby",
 			"dropRed" });
 
@@ -103,7 +103,7 @@ public class MagicRecipeRegister {
 			"gemRutile",
 			"dropWhite" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 9), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 9), new Object[] {
 			"gemDiamond",
 			"dropWhite" });
 
@@ -477,7 +477,7 @@ public class MagicRecipeRegister {
 				'Z',
 				"ingotSilver" });
 
-			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 0), new Object[] {
 				" X ",
 				"ZYZ",
 				" Z ",
@@ -488,7 +488,7 @@ public class MagicRecipeRegister {
 				'Z',
 				"ingotSilver" });
 
-			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 1), new Object[] {
+			DCRecipe.jsonShapedRecipe("magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 1), new Object[] {
 				" X ",
 				"ZYZ",
 				" Z ",
@@ -499,7 +499,7 @@ public class MagicRecipeRegister {
 				'Z',
 				"ingotSilver" });
 
-			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 2), new Object[] {
+			DCRecipe.jsonShapedRecipe("magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 2), new Object[] {
 				" X ",
 				"ZYZ",
 				" Z ",
@@ -510,7 +510,7 @@ public class MagicRecipeRegister {
 				'Z',
 				"ingotSilver" });
 
-			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 3), new Object[] {
+			DCRecipe.jsonShapedRecipe("magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 3), new Object[] {
 				" X ",
 				"ZYZ",
 				" Z ",
@@ -521,7 +521,7 @@ public class MagicRecipeRegister {
 				'Z',
 				"ingotSilver" });
 
-			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 4), new Object[] {
+			DCRecipe.jsonShapedRecipe("magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 4), new Object[] {
 				" X ",
 				"ZYZ",
 				" Z ",
@@ -777,7 +777,7 @@ public class MagicRecipeRegister {
 				'Z',
 				"cubeBlue" });
 
-			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.timeCage, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("magic_advanced", 2, new ItemStack(MagicInit.timeCage, 1, 0), new Object[] {
 				"XYX",
 				"YZY",
 				"XYX",

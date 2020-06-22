@@ -45,6 +45,8 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(QuichePotatoEntity.class, "food", "quiche_potato");
 		DCRegistryUtil.addEntity(TartCrostataEntity.class, "food", "tart_crostata");
 		DCRegistryUtil.addEntity(TartChocolateEntity.class, "food", "tart_chocolate");
+		DCRegistryUtil.addEntity(TartCustardEntity.class, "food", "tart_custard");
+		DCRegistryUtil.addEntity(TartLiverEntity.class, "food", "tart_liver");
 
 		DCRegistryUtil.addEntity(PieSugarEntity.class, "food", "pie_sugar");
 		DCRegistryUtil.addEntity(PieMeatEntity.class, "food", "pie_meat");
@@ -88,6 +90,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(PlateChickenEntity.class, "food", "plate_chicken");
 		DCRegistryUtil.addEntity(PlateFishEntity.class, "food", "plate_fish");
 		DCRegistryUtil.addEntity(PlateBigGarlicEntity.class, "food", "plate_big_garlic");
+		DCRegistryUtil.addEntity(PlateBigChickenEntity.class, "food", "plate_big_chicken");
 		DCRegistryUtil.addEntity(PlatePotatoEntity.class, "food", "plate_potato");
 		DCRegistryUtil.addEntity(PlateSoupEntity.class, "food", "soup_tomato");
 		DCRegistryUtil.addEntity(PlateGratinEntity.class, "food", "plate_gratin");
@@ -204,6 +207,14 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(UdonMeatEntity.class, "food", "udon_meat");
 		DCRegistryUtil.addEntity(UdonSeaweedEntity.class, "food", "udon_seaweed");
 		DCRegistryUtil.addEntity(UdonEggEntity.class, "food", "udon_egg");
+
+		DCRegistryUtil.addEntity(PastaOilEntity.class, "food", "pasta_oil");
+		DCRegistryUtil.addEntity(PastaBasilEntity.class, "food", "pasta_basil");
+		DCRegistryUtil.addEntity(PastaTomatoEntity.class, "food", "pasta_tomato");
+		DCRegistryUtil.addEntity(PastaPrawnEntity.class, "food", "pasta_prawn");
+		DCRegistryUtil.addEntity(PastaCodEntity.class, "food", "pasta_cod");
+		DCRegistryUtil.addEntity(PastaSquidEntity.class, "food", "pasta_squid");
+		DCRegistryUtil.addEntity(PastaBeefEntity.class, "food", "pasta_beef");
 
 	}
 

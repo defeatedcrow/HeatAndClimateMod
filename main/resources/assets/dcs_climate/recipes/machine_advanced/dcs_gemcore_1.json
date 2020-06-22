@@ -12,11 +12,11 @@
   },
   "X": {
    "type": "forge:ore_dict",
-   "ore": "gemCelestite"
+   "ore": "gemMoonstone"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "gemOpal"
+   "ore": "dustMica"
   },
   "Z": {
    "type": "forge:ore_dict",

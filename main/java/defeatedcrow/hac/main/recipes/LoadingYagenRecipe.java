@@ -52,6 +52,10 @@ public class LoadingYagenRecipe {
 			"toolNormalYagen",
 			"oreChromium" });
 
+		DCRecipe.jsonShapelessRecipe("main_yagen", 2, new ItemStack(MainInit.oreDust, 1, 10), new Object[] {
+			"toolNormalYagen",
+			"gemRutile" });
+
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 10), new Object[] {
 			"toolNormalYagen",
 			"oreTitanium" });
@@ -60,9 +64,17 @@ public class LoadingYagenRecipe {
 			"toolNormalYagen",
 			"oreAluminum" });
 
+		DCRecipe.jsonShapelessRecipe("main_yagen", 2, new ItemStack(MainInit.oreDust, 1, 11), new Object[] {
+			"toolNormalYagen",
+			"gemBauxite" });
+
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 12), new Object[] {
 			"toolNormalYagen",
 			"oreBismuth" });
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", 2, new ItemStack(MainInit.oreDust, 1, 12), new Object[] {
+			"toolNormalYagen",
+			"gemBismuth" });
 
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 13), new Object[] {
 			"toolNormalYagen",
@@ -75,6 +87,10 @@ public class LoadingYagenRecipe {
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 15), new Object[] {
 			"toolNormalYagen",
 			"oreMolybdenum" });
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.gems, 2, 3), new Object[] {
+			"toolNormalYagen",
+			"oreGypsum" });
 
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.gems, 1, 8), new Object[] {
 			"toolNormalYagen",
@@ -108,17 +124,25 @@ public class LoadingYagenRecipe {
 			"toolNormalYagen",
 			"oreAluminum" });
 
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
+			"toolNormalYagen",
+			new ItemStack(Items.COAL, 1, 0) });
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
+			"toolNormalYagen",
+			"gemChalcedony" });
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", 2, new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
+			"toolNormalYagen",
+			"gemQuartz" });
+
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 2), new Object[] {
 			"toolNormalYagen",
 			"oreLime" });
 
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 10), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 2, 3), new Object[] {
 			"toolNormalYagen",
-			"oreTitanium" });
-
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 9), new Object[] {
-			"toolNormalYagen",
-			"oreApatite" });
+			"logWood" });
 
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 6), new Object[] {
 			"toolNormalYagen",
@@ -128,35 +152,19 @@ public class LoadingYagenRecipe {
 			"toolNormalYagen",
 			"gemSulfur" });
 
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 7), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_yagen", 2, new ItemStack(MainInit.miscDust, 1, 7), new Object[] {
 			"toolNormalYagen",
 			"oreTravertine" });
-
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
-			"toolNormalYagen",
-			"gemChalcedony" });
-
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 1), new Object[] {
-			"toolNormalYagen",
-			"gemQuartz" });
 
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 8), new Object[] {
 			"toolNormalYagen",
 			"gemGarnet" });
 
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 11), new Object[] {
-			"toolNormalYagen",
-			"gemBauxite" });
-
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 12), new Object[] {
-			"toolNormalYagen",
-			"gemBismuth" });
-
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.oreDust, 1, 10), new Object[] {
-			"toolNormalYagen",
-			"gemRutile" });
-
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 9), new Object[] {
+			"toolNormalYagen",
+			"oreApatite" });
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", 2, new ItemStack(MainInit.miscDust, 1, 9), new Object[] {
 			"toolNormalYagen",
 			"gemApatite" });
 
@@ -164,15 +172,15 @@ public class LoadingYagenRecipe {
 			"toolNormalYagen",
 			"gemSerpentine" });
 
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 1, 0), new Object[] {
-			"toolNormalYagen",
-			new ItemStack(Items.COAL, 1, 0) });
-
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(Items.DYE, 5, 15), new Object[] {
 			"toolNormalYagen",
 			new ItemStack(Items.BONE, 1, 0) });
 
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(Items.BLAZE_POWDER, 3, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(Items.BLAZE_POWDER, 1, 0), new Object[] {
+			"toolNormalYagen",
+			new ItemStack(Blocks.MAGMA, 1, 0) });
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", 2, new ItemStack(Items.BLAZE_POWDER, 3, 0), new Object[] {
 			"toolNormalYagen",
 			new ItemStack(Items.BLAZE_ROD, 1, 0) });
 
@@ -184,7 +192,7 @@ public class LoadingYagenRecipe {
 			"toolNormalYagen",
 			"cropWheat" });
 
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.foodMaterials, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_yagen", 2, new ItemStack(MainInit.foodMaterials, 1, 1), new Object[] {
 			"toolNormalYagen",
 			new ItemStack(Items.WHEAT_SEEDS) });
 
@@ -192,17 +200,13 @@ public class LoadingYagenRecipe {
 			"toolNormalYagen",
 			"seedRice" });
 
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(Items.BLAZE_POWDER, 1, 0), new Object[] {
-			"toolNormalYagen",
-			new ItemStack(Blocks.MAGMA, 1, 0) });
-
-		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(MainInit.miscDust, 2, 3), new Object[] {
-			"toolNormalYagen",
-			"logWood" });
-
 		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(Items.FLINT, 1, 0), new Object[] {
 			"toolNormalYagen",
 			"gravel" });
+
+		DCRecipe.jsonShapelessRecipe("main_yagen", new ItemStack(Items.STRING, 3, 0), new Object[] {
+			"toolNormalYagen",
+			"blockWool" });
 	}
 
 	static void addNewOre() {

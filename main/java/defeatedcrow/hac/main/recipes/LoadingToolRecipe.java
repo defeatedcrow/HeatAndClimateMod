@@ -33,7 +33,7 @@ public class LoadingToolRecipe {
 			'Y',
 			"stickWood" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.clothes, 1, 1), new Object[] {
 			"XXX",
 			"XYX",
 			"XXX",
@@ -74,7 +74,7 @@ public class LoadingToolRecipe {
 			'X',
 			"ingotBrass" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.gears, 1, 1), new Object[] {
 			" X ",
 			"XYX",
 			" X ",
@@ -110,7 +110,7 @@ public class LoadingToolRecipe {
 			'X',
 			"ingotToolSteel" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 2), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.gears, 1, 2), new Object[] {
 			" X ",
 			"XYX",
 			" X ",
@@ -119,7 +119,7 @@ public class LoadingToolRecipe {
 			'X',
 			"ingotNickelsilver" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 3), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.gears, 1, 3), new Object[] {
 			" X ",
 			"XYX",
 			" X ",
@@ -128,7 +128,7 @@ public class LoadingToolRecipe {
 			'X',
 			"ingotSteel" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gears, 1, 4), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.gears, 1, 4), new Object[] {
 			" X ",
 			"XYX",
 			" X ",
@@ -236,7 +236,7 @@ public class LoadingToolRecipe {
 			'Y',
 			new ItemStack(DCInit.climate_checker) });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.windvane, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.windvane, 1, 0), new Object[] {
 			" X ",
 			"XYX",
 			" X ",
@@ -256,7 +256,7 @@ public class LoadingToolRecipe {
 			'Z',
 			"ingotBrass" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.chamber, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.chamber, 1, 0), new Object[] {
 			"ZXZ",
 			"XYX",
 			"ZXZ",
@@ -285,7 +285,7 @@ public class LoadingToolRecipe {
 			'X',
 			"ingotIron" });
 
-		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.firestand, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.firestand, 1, 0), new Object[] {
 			" Y ",
 			" X ",
 			"X X",
@@ -336,7 +336,7 @@ public class LoadingToolRecipe {
 			new ItemStack(Items.CLAY_BALL, 1, 0),
 			"dustGarnet" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
 			"dustClay",
 			"dustGarnet" });
 
@@ -344,19 +344,19 @@ public class LoadingToolRecipe {
 			"stickWood",
 			"blockTallgrass" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.tinder, 1, 0), new Object[] {
 			"stickWood",
 			"dustPlant" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 3, new ItemStack(MainInit.tinder, 1, 0), new Object[] {
 			"stickWood",
 			"dustWood" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 4, new ItemStack(MainInit.tinder, 1, 0), new Object[] {
 			"stickWood",
 			"cropCotton" });
 
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main", 5, new ItemStack(MainInit.tinder, 1, 0), new Object[] {
 			"stickWood",
 			"feather" });
 
@@ -386,7 +386,7 @@ public class LoadingToolRecipe {
 				'Z',
 				new ItemStack(MainInit.selenite, 1, 2) });
 		} else {
-			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.scope, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",
@@ -397,7 +397,7 @@ public class LoadingToolRecipe {
 				'Z',
 				"ingotSteel" });
 
-			DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
 				"X",
 				"Y",
 				"Z",

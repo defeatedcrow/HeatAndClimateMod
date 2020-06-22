@@ -646,7 +646,7 @@ public class LoadingEquipRecipe {
 					'Z',
 					"plankWood" });
 
-				DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.cartridge, 8, 1), new Object[] {
+				DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.cartridge, 8, 1), new Object[] {
 					"X",
 					"Y",
 					"Z",
@@ -709,7 +709,7 @@ public class LoadingEquipRecipe {
 					'Z',
 					"ingotBrass" });
 
-				DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.cartridge, 4, 5), new Object[] {
+				DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.cartridge, 4, 5), new Object[] {
 					"X",
 					"Y",
 					"Z",

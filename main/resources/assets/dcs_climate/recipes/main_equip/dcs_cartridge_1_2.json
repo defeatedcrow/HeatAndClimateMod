@@ -8,7 +8,7 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotLead"
+   "ore": "ingotIron"
   },
   "Y": {
    "item": "dcs_climate:dcs_reagent",

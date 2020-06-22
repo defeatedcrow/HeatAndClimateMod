@@ -359,16 +359,32 @@ public class MachineRecipeRegister {
 
 		// gems
 		GameRegistry.addSmelting(new ItemStack(Items.FLINT, 1, 0), new ItemStack(MainInit.gems, 1, 1), 0.2F);
+
 		GameRegistry.addSmelting(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(Blocks.GLASS, 1, 0), 0.2F);
-		// GameRegistry.addSmelting(new ItemStack(MainInit.gems, 1, 12), new ItemStack(Items.ENDER_PEARL, 1, 0), 0.2F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.layerNew, 1, 1), new ItemStack(MainInit.gemBlock, 1, 6), 0.2F);
 
-		GameRegistry.addSmelting(new ItemStack(MainInit.desiccant, 1, 3), new ItemStack(MainInit.desiccant, 1, 0), 0F);
+		// foods
+
+		GameRegistry.addSmelting(new ItemStack(Items.APPLE, 1, 0), new ItemStack(MainInit.bakedApple, 1, 0), 0F);
 
 		GameRegistry.addSmelting(new ItemStack(FoodInit.meat, 1, 2), new ItemStack(MainInit.bakedApple, 1, 4), 0.5F);
 
 		GameRegistry.addSmelting(new ItemStack(FoodInit.meat, 1, 9), new ItemStack(MainInit.bakedApple, 1, 7), 0.5F);
+
+		GameRegistry.addSmelting(new ItemStack(MainInit.cropCont, 1, 0), new ItemStack(MainInit.cropCont, 1, 9), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.cropCont, 1, 1), new ItemStack(MainInit.cropCont, 1, 10), 0.5F);
+
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 0), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 1), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 2), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 3), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 4), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 5), new ItemStack(MainInit.logCont, 1, 6), 0F);
+
+		// misc
+
+		GameRegistry.addSmelting(new ItemStack(MainInit.desiccant, 1, 3), new ItemStack(MainInit.desiccant, 1, 0), 0F);
 	}
 
 	static void loadVanillaRecipes() {

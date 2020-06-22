@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.recipe.IRecipeCatalyst;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -14,16 +15,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemCatalyst extends DCItem {
+public class ItemCatalyst extends DCItem implements IRecipeCatalyst {
 
 	private final int maxMeta;
 
-	private static String[] names = {
-			"silver",
-			"titanium",
-			"bismuth",
-			"blaze"
-	};
+	private static String[] names = { "silver", "titanium", "bismuth", "blaze" };
 
 	public ItemCatalyst() {
 		super();

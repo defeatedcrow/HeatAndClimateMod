@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "Z",
+  "Y",
+  "X"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_device_ibc",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearAlloy"
+  },
+  "Z": {
+   "item": "dcs_climate:dcs_mechanical",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_reactor_ibc",
+  "count": 1,
+  "data": 0
+ }
+}

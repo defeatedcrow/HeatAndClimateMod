@@ -13,6 +13,7 @@ import defeatedcrow.hac.machine.block.BlockDynamo;
 import defeatedcrow.hac.machine.block.BlockEntityPanel;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFaucet;
+import defeatedcrow.hac.machine.block.BlockFaucetR;
 import defeatedcrow.hac.machine.block.BlockFaucet_SUS;
 import defeatedcrow.hac.machine.block.BlockFreezer;
 import defeatedcrow.hac.machine.block.BlockGasBurner;
@@ -38,6 +39,7 @@ import defeatedcrow.hac.machine.block.BlockPlayerPanel;
 import defeatedcrow.hac.machine.block.BlockPortalManager;
 import defeatedcrow.hac.machine.block.BlockPressMachine;
 import defeatedcrow.hac.machine.block.BlockReactor;
+import defeatedcrow.hac.machine.block.BlockReactorIBC;
 import defeatedcrow.hac.machine.block.BlockRollerCrusher;
 import defeatedcrow.hac.machine.block.BlockShaft_L;
 import defeatedcrow.hac.machine.block.BlockShaft_L_SUS;
@@ -200,6 +202,9 @@ public class MachineInitRegister {
 		MachineInit.faucet = new BlockFaucet(ClimateCore.PACKAGE_BASE + "_device_faucet");
 		registerTierBlock(MachineInit.faucet, ClimateCore.PACKAGE_BASE + "_device_faucet", 2);
 
+		MachineInit.faucet_r = new BlockFaucetR(ClimateCore.PACKAGE_BASE + "_device_faucet_r");
+		registerTierBlock(MachineInit.faucet_r, ClimateCore.PACKAGE_BASE + "_device_faucet_r", 2);
+
 		MachineInit.faucet_sus = new BlockFaucet_SUS(ClimateCore.PACKAGE_BASE + "_device_faucet_sus");
 		registerTierBlock(MachineInit.faucet_sus, ClimateCore.PACKAGE_BASE + "_device_faucet_sus", 3);
 
@@ -207,6 +212,9 @@ public class MachineInitRegister {
 		MachineInit.IBC.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_ibc");
 		ForgeRegistries.BLOCKS.register(MachineInit.IBC);
 		ForgeRegistries.ITEMS.register(new ItemIBC(MachineInit.IBC));
+
+		MachineInit.IBC_reactor = new BlockReactorIBC(ClimateCore.PACKAGE_BASE + "_device_reactor_ibc");
+		registerTierBlock(MachineInit.IBC_reactor, ClimateCore.PACKAGE_BASE + "_device_reactor_ibc", 2);
 
 		MachineInit.hopperFluid = new BlockHopperFluid(ClimateCore.PACKAGE_BASE + "_device_hopper_fluid");
 		registerTierBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_BASE + "_device_hopper_fluid", 2);
@@ -478,8 +486,10 @@ public class MachineInitRegister {
 		MachineInit.hopperSilver.setCreativeTab(ClimateMain.machine);
 		MachineInit.conveyor.setCreativeTab(ClimateMain.machine);
 		MachineInit.faucet.setCreativeTab(ClimateMain.machine);
+		MachineInit.faucet_r.setCreativeTab(ClimateMain.machine);
 		MachineInit.faucet_sus.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
+		MachineInit.IBC_reactor.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
 		MachineInit.tankYard.setCreativeTab(ClimateMain.machine);
 		MachineInit.tankYardPart.setCreativeTab(ClimateMain.machine);

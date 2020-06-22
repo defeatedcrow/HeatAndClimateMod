@@ -47,6 +47,8 @@ public class FoodClimateRecipe {
 		addFoodRecipe(new ItemStack(FoodInit.pastryRound, 1, 7), new ItemStack(FoodInit.pastryRound, 1, 6));
 		addFoodRecipe(new ItemStack(FoodInit.pastryRound, 1, 9), new ItemStack(FoodInit.pastryRound, 1, 8));
 		addFoodRecipe(new ItemStack(FoodInit.pastryRound, 1, 11), new ItemStack(FoodInit.pastryRound, 1, 10));
+		addFoodRecipe(new ItemStack(FoodInit.pastryRound, 1, 13), new ItemStack(FoodInit.pastryRound, 1, 12));
+		addFoodRecipe(new ItemStack(FoodInit.pastryRound, 1, 15), new ItemStack(FoodInit.pastryRound, 1, 14));
 
 		addFoodRecipe(new ItemStack(FoodInit.pastrySquare, 1, 1), new ItemStack(FoodInit.pastrySquare, 1, 0));
 		addFoodRecipe(new ItemStack(FoodInit.pastrySquare, 1, 3), new ItemStack(FoodInit.pastrySquare, 1, 2));
@@ -60,6 +62,7 @@ public class FoodClimateRecipe {
 		addFoodRecipe(new ItemStack(FoodInit.plateMeal, 1, 5), new ItemStack(FoodInit.plateMeal, 1, 4));
 		addFoodRecipe(new ItemStack(FoodInit.plateMeal, 1, 7), new ItemStack(FoodInit.plateMeal, 1, 6));
 		addFoodRecipe(new ItemStack(FoodInit.plateMeal, 1, 9), new ItemStack(FoodInit.plateMeal, 1, 8));
+		addFoodRecipe(new ItemStack(FoodInit.plateMeal, 1, 11), new ItemStack(FoodInit.plateMeal, 1, 10));
 
 		addFoodRecipe(new ItemStack(FoodInit.plateSoup, 1, 1), new ItemStack(FoodInit.plateSoup, 1, 0));
 		addFoodRecipe(new ItemStack(FoodInit.plateSoup, 1, 3), new ItemStack(FoodInit.plateSoup, 1, 2));

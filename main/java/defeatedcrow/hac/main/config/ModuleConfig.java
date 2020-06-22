@@ -27,6 +27,7 @@ public class ModuleConfig {
 
 	public static boolean village = true;
 	public static boolean agri = true;
+	public static boolean crop = true;
 
 	public static boolean ffm = true;
 	public static boolean mek = true;
@@ -63,6 +64,7 @@ public class ModuleConfig {
 			Property village_b = cfg.get("module setting", "EnableVillager", village);
 			Property agri_b = cfg.get("module setting", "EnableCraftingCropRecipe", agri);
 			Property world_b = cfg.get("module setting", "EnableWorldgen", world);
+			Property crop_b = cfg.get("module setting", "EnableCropSeasonality", agri);
 
 			Property machine_a = cfg.get("module setting", "EnableAdvancedMachine", machine_advanced);
 			Property magic_a = cfg.get("module setting", "EnableAdvancedMagic", magic_advanced);
@@ -98,6 +100,7 @@ public class ModuleConfig {
 			village = village_b.getBoolean();
 			agri = agri_b.getBoolean();
 			world = world_b.getBoolean();
+			crop = crop_b.getBoolean();
 
 			machine_advanced = machine_a.getBoolean();
 			magic_advanced = magic_a.getBoolean();
