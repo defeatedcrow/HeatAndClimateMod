@@ -4,7 +4,7 @@ import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.client.model.ModelStickBase;
-import defeatedcrow.hac.food.entity.FishStickEntity;
+import defeatedcrow.hac.food.entity.StickFishEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class FishStickRenderer extends DCRenderFoodBase<FishStickEntity> {
+public class FishStickRenderer extends DCRenderFoodBase<StickFishEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/stick_base.png");
@@ -40,7 +40,7 @@ public class FishStickRenderer extends DCRenderFoodBase<FishStickEntity> {
 	}
 
 	@Override
-	public void doRender(FishStickEntity entity, double x, double y, double z, float yaw, float partialTicks) {
+	public void doRender(StickFishEntity entity, double x, double y, double z, float yaw, float partialTicks) {
 		float height = entity.height * 0.5F;
 		EnumFacing side = entity.getSide();
 		boolean baked = !entity.getRaw();
@@ -55,7 +55,7 @@ public class FishStickRenderer extends DCRenderFoodBase<FishStickEntity> {
 		super.doRender(entity, x, y, z, yaw, partialTicks);
 	}
 
-	private void renderItem(FishStickEntity entity, boolean baked, int i) {
+	private void renderItem(StickFishEntity entity, boolean baked, int i) {
 		ItemStack fish = baked ? COOKED_ITEM : RAW_ITEM;
 
 		if (!DCUtil.isEmpty(fish)) {

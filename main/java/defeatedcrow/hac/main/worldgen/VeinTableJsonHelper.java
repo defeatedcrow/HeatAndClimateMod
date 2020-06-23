@@ -56,7 +56,7 @@ public class VeinTableJsonHelper {
 					}
 
 				} else {
-					DCLogger.infoLog("fail to register target block from json: " + name);
+					DCLogger.infoLog("fail to register oregen data from json: " + name);
 					return;
 				}
 			}
@@ -66,7 +66,7 @@ public class VeinTableJsonHelper {
 				DCLogger.infoLog("register target oregen data from json: " + modid + ":" + itemName + ", " + meta + " ; weight" + i + " ; " + table.vein);
 				table.addOreToTable(i, block, meta);
 			} else {
-				DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
+				DCLogger.infoLog("Failed find oregen data target: " + modid + ":" + itemName);
 			}
 		}
 	}

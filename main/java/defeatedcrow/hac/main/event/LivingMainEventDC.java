@@ -17,6 +17,7 @@ import defeatedcrow.hac.main.util.DCAdvancementUtil;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.util.portal.DCDimChangeHelper;
+import defeatedcrow.hac.main.worldgen.CaravanGenEvent.CaravanType;
 import defeatedcrow.hac.main.worldgen.CaravanGenPos;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
@@ -55,16 +56,18 @@ public class LivingMainEventDC {
 	@SubscribeEvent
 	public void onSpawn(LivingSpawnEvent.CheckSpawn event) {
 		EntityLivingBase living = event.getEntityLiving();
-		if (living instanceof IMob && event.getY() > 65 && event.getY() < 105) {
+		if (living instanceof IMob) {
 			int cx = (int) event.getX() >> 4;
 			int cz = (int) event.getZ() >> 4;
-			int num = CaravanGenPos.getCaravanPartNum(cx, cz, living.getEntityWorld());
-			if (num > -1) {
-				int cx2 = (num % 3) + cx - 1;
-				int cz2 = (num / 3) + cz - 1;
-				if (CaravanGenPos.canGenerateBiome(cx2, cz2, living.getEntityWorld()) && !CaravanGenPos
-						.isDupe(cx2, cz2, living.getEntityWorld())) {
-					event.setResult(Result.DENY);
+			if (event.getY() > 65 && event.getY() < 120) {
+				int num = CaravanGenPos.getCaravanPartNum(cx, cz, living.getEntityWorld());
+				if (num > -1) {
+					int cx2 = (num % 3) + cx - 1;
+					int cz2 = (num / 3) + cz - 1;
+					if (living.world.isBlockLoaded(new BlockPos(7 + cx2 * 16, 61, 7 + cz2 * 16)) && CaravanGenPos
+							.getType(event.getWorld(), cx2, cz2) != CaravanType.BROKEN) {
+						event.setResult(Result.DENY);
+					}
 				}
 			}
 		}
@@ -149,7 +152,7 @@ public class LivingMainEventDC {
 				if (p.isEntityAlive()) {
 					double d1 = p.getPosition().distanceSq(entity.getPosition());
 					double dist = Math.sqrt(d1);
-					if (dist < 32.0D && MainUtil.isPlayerHeldItem(MainInit.entityScope, p)) {
+					if (dist < 32.0D && MainUtil.isHeldItem(MainInit.entityScope, p)) {
 						flag = true;
 					}
 				}

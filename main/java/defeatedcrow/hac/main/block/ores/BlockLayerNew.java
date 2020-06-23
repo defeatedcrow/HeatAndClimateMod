@@ -49,24 +49,7 @@ public class BlockLayerNew extends DCSimpleBlock implements ITexturePath {
 		return harvestL[getMetaFromState(state)];
 	}
 
-	private int[] harvestL = new int[] {
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1,
-			1
-	};
+	private int[] harvestL = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
 	/* Drop Itemの管理 */
 
@@ -139,23 +122,22 @@ public class BlockLayerNew extends DCSimpleBlock implements ITexturePath {
 
 	private DropTable getTable(int meta) {
 		DropTable[] table = {
-				DropTable.GYPSUM,
-				DropTable.NONE,
-				DropTable.GUANO,
-				DropTable.NITER,
-				DropTable.SULFUR,
-				DropTable.SALT,
-				DropTable.SERPENTINE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE
-		};
+			DropTable.GYPSUM,
+			DropTable.NONE,
+			DropTable.GUANO,
+			DropTable.NITER,
+			DropTable.SULFUR,
+			DropTable.SALT,
+			DropTable.SERPENTINE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE };
 		if (meta < 16)
 			return table[meta];
 		return DropTable.NONE;
@@ -171,14 +153,14 @@ public class BlockLayerNew extends DCSimpleBlock implements ITexturePath {
 	}
 
 	private static String[] names = {
-			"alabaster",
-			"lime",
-			"guano",
-			"niter",
-			"sulfur",
-			"salt",
-			"serpentine"
-	};
+		"alabaster",
+		"lime",
+		"guano",
+		"niter",
+		"sulfur",
+		"salt",
+		"serpentine",
+		"travertine" };
 
 	@Override
 	public String getTexPath(int meta, boolean f) {

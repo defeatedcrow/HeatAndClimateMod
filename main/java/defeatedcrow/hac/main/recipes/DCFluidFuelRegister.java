@@ -45,7 +45,7 @@ public class DCFluidFuelRegister implements IFluidFuelRegister {
 	@Override
 	public boolean isRegistered(Fluid fluid) {
 		for (IFluidFuel f : list) {
-			if (f.content(fluid)) {
+			if (((FluidFuel) f).registered(fluid)) {
 				return true;
 			}
 		}
@@ -87,13 +87,17 @@ public class DCFluidFuelRegister implements IFluidFuelRegister {
 			return f.equals(fluid) || FluidDictionaryDC.matchFluid(f, fluid);
 		}
 
+		public boolean registered(Fluid f) {
+			return f != null && f.equals(fluid);
+		}
+
 	}
 
 	@Override
 	public void removeFuel(Fluid fluid) {
 		IFluidFuel ret = null;
 		for (IFluidFuel f : list) {
-			if (f.content(fluid)) {
+			if (((FluidFuel) f).registered(fluid)) {
 				ret = f;
 			}
 		}

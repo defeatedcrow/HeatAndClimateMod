@@ -2,6 +2,8 @@ package defeatedcrow.hac.main.block.build;
 
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 import net.minecraft.block.BlockBreakable;
@@ -9,9 +11,11 @@ import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,6 +26,7 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 	public final String TEX;
 	public final boolean isGlass;
 	public final boolean isForcedRender;
+	public boolean isBedrock;
 
 	public BlockStairsBase(IBlockState state, String name, boolean glass, boolean force) {
 		super(state);
@@ -30,6 +35,11 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 		isForcedRender = force;
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
+	}
+
+	public BlockStairsBase setBedRock() {
+		isBedrock = true;
+		return this;
 	}
 
 	/** T, B, N, S, W, E */
@@ -103,4 +113,12 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {}
+
+	@Override
+	public float getExplosionResistance(World world, BlockPos pos, @Nullable Entity exploder, Explosion explosion) {
+		if (isBedrock) {
+			return 10000F;
+		}
+		return super.getExplosionResistance(world, pos, exploder, explosion);
+	}
 }

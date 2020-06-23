@@ -53,7 +53,7 @@ public class EntityFlowerPot extends DCEntityBase {
 
 	public void setFlower(ItemStack item) {
 		if (!DCUtil.isEmpty(item)) {
-			this.dataManager.set(FLOWER, item);
+			this.dataManager.set(FLOWER, item.copy().splitStack(1));
 		}
 	}
 
@@ -76,7 +76,8 @@ public class EntityFlowerPot extends DCEntityBase {
 			ItemStack hold = player.getHeldItem(hand);
 			ItemStack flower = this.dataManager.get(FLOWER);
 			if (isFlower(hold)) {
-				setFlower(hold);
+				if (!world.isRemote)
+					setFlower(hold);
 				this.playSound(SoundEvents.BLOCK_GRASS_PLACE, 1.0F, 1.0F);
 				return true;
 			}

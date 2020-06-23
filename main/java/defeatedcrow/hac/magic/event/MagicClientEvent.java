@@ -31,9 +31,6 @@ public class MagicClientEvent {
 
 			if (CoreConfigDC.showAltTips) {
 				// charm
-				if (DCUtil.hasCharmItem(player, new ItemStack(MagicInit.pendant, 1, 4))) {
-					flag = true;
-				}
 				if (DCUtil.hasCharmItem(player, new ItemStack(MagicInit.colorRing, 1, 0))) {
 					flag = true;
 				}

@@ -12,9 +12,16 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainCoreConfig;
+import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
+import defeatedcrow.hac.main.recipes.device.RegisterFluidRecipe;
+import defeatedcrow.hac.main.recipes.device.RegisterMillRecipe;
+import defeatedcrow.hac.main.recipes.device.RegisterReactorRecipe;
+import defeatedcrow.hac.main.recipes.device.RegisterSpinningRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -29,6 +36,30 @@ public class MachineRecipeRegister {
 		loadVanillaRecipes();
 		loadSmelting();
 		registerClimate();
+
+		if (ModuleConfig.machine) {
+			loadMachineClimateRecipe();
+		}
+
+		if (ModuleConfig.r_mill) {
+			RegisterMillRecipe.load();
+		}
+
+		if (ModuleConfig.r_spinning) {
+			RegisterSpinningRecipe.load();
+		}
+
+		if (ModuleConfig.r_crusher) {
+			RegisterCrusherRecipe.load();
+		}
+
+		if (ModuleConfig.r_reactor) {
+			RegisterReactorRecipe.load();
+		}
+
+		if (ModuleConfig.r_fluid) {
+			RegisterFluidRecipe.load();
+		}
 
 	}
 
@@ -94,7 +125,7 @@ public class MachineRecipeRegister {
 					2), 0F);
 
 			IClimate c1 = ClimateAPI.register
-					.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL, DCAirflow.TIGHT);
+					.getClimateFromParam(DCHeatTier.SMELTING, DCHumidity.NORMAL, DCAirflow.NORMAL);
 			IClimate c2 = ClimateAPI.register
 					.getClimateFromParam(DCHeatTier.NORMAL, DCHumidity.UNDERWATER, DCAirflow.TIGHT);
 			IClimate c3 = ClimateAPI.register.getClimateFromParam(DCHeatTier.OVEN, DCHumidity.NORMAL, DCAirflow.TIGHT);
@@ -111,7 +142,7 @@ public class MachineRecipeRegister {
 			r1.hum1.add(DCHumidity.DRY);
 			r1.hum2.add(DCHumidity.WET);
 			r1.hum3.add(DCHumidity.DRY);
-			r1.air1.add(DCAirflow.NORMAL);
+			r1.air1.add(DCAirflow.TIGHT);
 			r1.air2.add(DCAirflow.NORMAL);
 			r1.air3.add(DCAirflow.NORMAL);
 			MainAPIManager.heatTreatmentRegister.registerRecipe(r1);
@@ -154,7 +185,7 @@ public class MachineRecipeRegister {
 			HeatTreatment r4 = new HeatTreatment(l4, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 6), c2,
 					new ItemStack(MainInit.heatedMetalBlock, 1, 7), c3, new ItemStack(MainInit.metalBlockAlloy, 1, 7),
 					new ItemStack(MainInit.heatedMetalBlock, 1, 8));
-			r3.temp1.add(DCHeatTier.INFERNO);
+			r4.temp1.add(DCHeatTier.INFERNO);
 			r4.temp2.add(DCHeatTier.COOL);
 			r4.hum1.add(DCHumidity.DRY);
 			r4.hum2.add(DCHumidity.WET);
@@ -163,6 +194,25 @@ public class MachineRecipeRegister {
 			r4.air2.add(DCAirflow.NORMAL);
 			r4.air3.add(DCAirflow.NORMAL);
 			MainAPIManager.heatTreatmentRegister.registerRecipe(r4);
+
+			List<ItemStack> l5 = Lists.newArrayList();
+			l5.add(new ItemStack(MainInit.dustBlock_2, 1, 3));
+			l5.add(new ItemStack(MainInit.heatedMetalBlock, 1, 14));
+			HeatTreatment r5 = new HeatTreatment(l5, c4, new ItemStack(MainInit.heatedMetalBlock, 1, 12), c2,
+					new ItemStack(MainInit.heatedMetalBlock, 1, 13), c1, new ItemStack(MainInit.metalBlockAlloy, 1, 9),
+					new ItemStack(MainInit.heatedMetalBlock, 1, 14));
+			r5.temp1.add(DCHeatTier.INFERNO);
+			r5.temp2.add(DCHeatTier.COOL);
+			r5.hum1.add(DCHumidity.DRY);
+			r5.hum2.add(DCHumidity.WET);
+			r5.hum2.add(DCHumidity.NORMAL);
+			r5.hum3.add(DCHumidity.DRY);
+			r5.air1.add(DCAirflow.NORMAL);
+			r5.air2.add(DCAirflow.NORMAL);
+			r5.air2.add(DCAirflow.FLOW);
+			r5.air3.add(DCAirflow.FLOW);
+			r5.air3.add(DCAirflow.WIND);
+			MainAPIManager.heatTreatmentRegister.registerRecipe(r5);
 
 		} else {
 
@@ -194,6 +244,10 @@ public class MachineRecipeRegister {
 			// titanium
 			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
 					7), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 12));
+
+			// mangalloy
+			RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
+					9), DCHeatTier.UHT, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock_2, 1, 3));
 		}
 
 	}
@@ -263,6 +317,15 @@ public class MachineRecipeRegister {
 		RecipeAPI.registerSmelting.addRecipe(clay);
 	}
 
+	// machine
+	static void loadMachineClimateRecipe() {
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1,
+				0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, "blockCoal");
+
+		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MachineInit.fuelCont, 1,
+				1), DCHeatTier.UHT, DCHumidity.DRY, DCAirflow.TIGHT, false, "blockFuelCoke");
+	}
+
 	static void loadSmelting() {
 		// KILNはバニラカマドに対応する
 		GameRegistry.addSmelting(new ItemStack(MainInit.dustBlock, 1, 0), new ItemStack(MainInit.metalBlockNew, 1,
@@ -296,16 +359,32 @@ public class MachineRecipeRegister {
 
 		// gems
 		GameRegistry.addSmelting(new ItemStack(Items.FLINT, 1, 0), new ItemStack(MainInit.gems, 1, 1), 0.2F);
+
 		GameRegistry.addSmelting(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(Blocks.GLASS, 1, 0), 0.2F);
-		// GameRegistry.addSmelting(new ItemStack(MainInit.gems, 1, 12), new ItemStack(Items.ENDER_PEARL, 1, 0), 0.2F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.layerNew, 1, 1), new ItemStack(MainInit.gemBlock, 1, 6), 0.2F);
 
-		GameRegistry.addSmelting(new ItemStack(MainInit.desiccant, 1, 3), new ItemStack(MainInit.desiccant, 1, 0), 0F);
+		// foods
+
+		GameRegistry.addSmelting(new ItemStack(Items.APPLE, 1, 0), new ItemStack(MainInit.bakedApple, 1, 0), 0F);
 
 		GameRegistry.addSmelting(new ItemStack(FoodInit.meat, 1, 2), new ItemStack(MainInit.bakedApple, 1, 4), 0.5F);
 
 		GameRegistry.addSmelting(new ItemStack(FoodInit.meat, 1, 9), new ItemStack(MainInit.bakedApple, 1, 7), 0.5F);
+
+		GameRegistry.addSmelting(new ItemStack(MainInit.cropCont, 1, 0), new ItemStack(MainInit.cropCont, 1, 9), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.cropCont, 1, 1), new ItemStack(MainInit.cropCont, 1, 10), 0.5F);
+
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 0), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 1), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 2), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 3), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 4), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 5), new ItemStack(MainInit.logCont, 1, 6), 0F);
+
+		// misc
+
+		GameRegistry.addSmelting(new ItemStack(MainInit.desiccant, 1, 3), new ItemStack(MainInit.desiccant, 1, 0), 0F);
 	}
 
 	static void loadVanillaRecipes() {
@@ -320,6 +399,7 @@ public class MachineRecipeRegister {
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.lampCarbide, 32767, DCHeatTier.WARM);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.lampGas, 32767, DCHeatTier.WARM);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.oilLamp, 32767, DCHeatTier.WARM);
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.geyser, 32767, DCHeatTier.OVEN);
 	}
 
 }

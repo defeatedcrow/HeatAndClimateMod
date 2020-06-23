@@ -8,15 +8,15 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.BeefStickEntity;
-import defeatedcrow.hac.food.entity.FishStickEntity;
-import defeatedcrow.hac.food.entity.GoheiStickEntity;
-import defeatedcrow.hac.food.entity.MarshmallowStick;
-import defeatedcrow.hac.food.entity.MotuStickEntity;
-import defeatedcrow.hac.food.entity.MuttonStickEntity;
-import defeatedcrow.hac.food.entity.PorkStickEntity;
-import defeatedcrow.hac.food.entity.SquidStickEntity;
-import defeatedcrow.hac.food.entity.YakitoriStickEntity;
+import defeatedcrow.hac.food.entity.StickBeefEntity;
+import defeatedcrow.hac.food.entity.StickFishEntity;
+import defeatedcrow.hac.food.entity.StickGoheiEntity;
+import defeatedcrow.hac.food.entity.StickMarshmallowEntity;
+import defeatedcrow.hac.food.entity.StickMotuEntity;
+import defeatedcrow.hac.food.entity.StickMuttonEntity;
+import defeatedcrow.hac.food.entity.StickPorkEntity;
+import defeatedcrow.hac.food.entity.StickSquidEntity;
+import defeatedcrow.hac.food.entity.StickYakitoriEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -81,42 +81,42 @@ public class StickFoodsItem extends FoodItemBase {
 		switch (i) {
 		case 0:
 		case 1:
-			ret = new FishStickEntity(world, x, y, z, player);
+			ret = new StickFishEntity(world, x, y, z, player);
 			break;
 		case 2:
 		case 3:
-			ret = new YakitoriStickEntity(world, x, y, z, player);
+			ret = new StickYakitoriEntity(world, x, y, z, player);
 			break;
 		case 4:
 		case 5:
-			ret = new PorkStickEntity(world, x, y, z, player);
+			ret = new StickPorkEntity(world, x, y, z, player);
 			break;
 		case 6:
 		case 7:
-			ret = new BeefStickEntity(world, x, y, z, player);
+			ret = new StickBeefEntity(world, x, y, z, player);
 			break;
 		case 8:
 		case 9:
-			ret = new MuttonStickEntity(world, x, y, z, player);
+			ret = new StickMuttonEntity(world, x, y, z, player);
 			break;
 		case 10:
 		case 11:
-			ret = new SquidStickEntity(world, x, y, z, player);
+			ret = new StickSquidEntity(world, x, y, z, player);
 			break;
 		case 12:
 		case 13:
-			ret = new GoheiStickEntity(world, x, y, z, player);
+			ret = new StickGoheiEntity(world, x, y, z, player);
 			break;
 		case 14:
 		case 15:
-			ret = new MarshmallowStick(world, x, y, z, player);
+			ret = new StickMarshmallowEntity(world, x, y, z, player);
 			break;
 		case 16:
 		case 17:
-			ret = new MotuStickEntity(world, x, y, z, player);
+			ret = new StickMotuEntity(world, x, y, z, player);
 			break;
 		default:
-			ret = new FishStickEntity(world, x, y, z, player);
+			ret = new StickFishEntity(world, x, y, z, player);
 		}
 
 		if (ret != null && (i & 1) == 0) {

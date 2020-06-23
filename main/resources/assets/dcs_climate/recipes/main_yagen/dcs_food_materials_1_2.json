@@ -6,8 +6,8 @@
    "ore": "toolNormalYagen"
   },
   {
-   "type": "forge:ore_dict",
-   "ore": "seedWheat"
+   "item": "minecraft:wheat_seeds",
+   "data": 0
   }
  ],
  "result": {

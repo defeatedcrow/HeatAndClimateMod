@@ -16,14 +16,17 @@ public class FriedFishcakeEntity extends FoodEntityBase {
 
 	public FriedFishcakeEntity(World worldIn) {
 		super(worldIn);
+		this.setSize(0.25F, 0.15F);
 	}
 
 	public FriedFishcakeEntity(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(0.25F, 0.15F);
 	}
 
 	public FriedFishcakeEntity(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(0.25F, 0.15F);
 	}
 
 	@Override

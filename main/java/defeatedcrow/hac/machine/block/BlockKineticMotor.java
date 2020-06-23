@@ -6,10 +6,8 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.EnergyConvertRate;
 import net.minecraft.block.SoundType;
@@ -39,16 +37,6 @@ public class BlockKineticMotor extends BlockTorqueBase {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileKineticMotor();
-	}
-
-	@Override
-	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null) {
-			ItemStack heldItem = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {}
-		}
-		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	// 設置時にはプレイヤーの方を向いている方が自然なので

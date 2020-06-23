@@ -31,13 +31,13 @@ public class DCRecipeCoFH {
 		// refinary
 		if (DCPluginCoFH.naphtha != null && DCPluginCoFH.tree != null && DCPluginCoFH.tar != null && DCPluginCoFH.rogin != null) {
 			addRefineryRecipe(5000, new FluidStack(MainInit.fuelOil, 200), new FluidStack(DCPluginCoFH.naphtha,
-					100), DCPluginCoFH.tar, 70);
+					100), DCPluginCoFH.tar, 50);
 
 			addRefineryRecipe(5000, new FluidStack(MainInit.blackLiquor, 200), new FluidStack(DCPluginCoFH.tree,
-					100), DCPluginCoFH.tar, 70);
+					100), DCPluginCoFH.tar, 50);
 
 			addRefineryRecipe(5000, new FluidStack(MainInit.oil, 200), new FluidStack(DCPluginCoFH.naphtha,
-					50), new ItemStack(MachineInit.reagent, 1, 1), 70);
+					50), new ItemStack(MachineInit.reagent, 1, 1), 50);
 		}
 
 		// pulvarizer

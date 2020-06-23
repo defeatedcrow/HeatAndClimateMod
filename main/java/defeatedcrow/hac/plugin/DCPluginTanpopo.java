@@ -3,7 +3,6 @@ package defeatedcrow.hac.plugin;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.MobEffects;
@@ -26,16 +25,8 @@ public class DCPluginTanpopo {
 
 			OreDictionary.registerOre("cropFluff", new ItemStack(fluff, 1, 0));
 
-			DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(MainInit.clothes, 1, 1),
-					new Object[] {
-							"XXX",
-							"XYX",
-							"XXX",
-							'X',
-							"cropFluff",
-							'Y',
-							"stickWood"
-					});
+			DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(MainInit.clothes, 1,
+					1), new Object[] { "XXX", "XYX", "XXX", 'X', "cropFluff", 'Y', "stickWood" });
 
 			if (ModuleConfig.r_spinning) {
 				RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 1), 4, "cropFluff");
@@ -45,7 +36,7 @@ public class DCPluginTanpopo {
 		Fluid f = FluidRegistry.getFluid("fluid_essence");
 		if (f != null) {
 			DrinkPotionType.registerPotion(f.getName(), MobEffects.HEALTH_BOOST);
-			MainAPIManager.fuelRegister.registerFuel(f.getName(), 60);
+			DCPluginFluid.registerFuel(f.getName(), "seed_oil", 60);
 		}
 
 	}

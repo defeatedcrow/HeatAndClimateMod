@@ -2,13 +2,17 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "dcs_climate:dcs_cont_jutebag",
-   "data": 0
+   "item": "minecraft:red_flower",
+   "data": 1
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedony"
   }
  ],
  "result": {
   "item": "dcs_climate:dcs_food_seeds",
-  "count": 8,
+  "count": 1,
   "data": 10
  }
 }

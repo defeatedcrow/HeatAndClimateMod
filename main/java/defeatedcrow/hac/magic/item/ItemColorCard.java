@@ -59,22 +59,21 @@ public class ItemColorCard extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"u1",
-			"g1",
-			"r1",
-			"b1",
-			"w1",
-			"u2",
-			"g2",
-			"r2",
-			"b2",
-			"w2",
-			"u3",
-			"g3",
-			"r3",
-			"b3",
-			"w3"
-	};
+		"u1",
+		"g1",
+		"r1",
+		"b1",
+		"w1",
+		"u2",
+		"g2",
+		"r2",
+		"b2",
+		"w2",
+		"u3",
+		"g3",
+		"r3",
+		"b3",
+		"w3" };
 
 	public ItemColorCard() {
 		super();
@@ -249,9 +248,10 @@ public class ItemColorCard extends DCItem {
 
 	private boolean onEffect_Red1(World world, EntityPlayer player, float f) {
 		int r = MathHelper.floor(6000 * f);
-		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, r, 1));
-		player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, r, 1));
-		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, r, 1));
+		int amp = 1 + MathHelper.floor(2F * f);
+		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, r, amp));
+		player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, r, amp));
+		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, r, amp));
 		return true;
 	}
 

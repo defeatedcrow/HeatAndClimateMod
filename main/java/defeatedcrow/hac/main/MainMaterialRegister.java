@@ -4,11 +4,9 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.core.base.DCItemBlock;
 import defeatedcrow.hac.core.event.DispenseEntityItem;
-import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInitRegister;
 import defeatedcrow.hac.machine.MachineInitRegister;
@@ -70,9 +68,10 @@ import defeatedcrow.hac.main.block.container.BlockEnemyCont;
 import defeatedcrow.hac.main.block.container.BlockLogCont;
 import defeatedcrow.hac.main.block.container.BlockMiscCake;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
-import defeatedcrow.hac.main.block.device.BlockAcvShield;
 import defeatedcrow.hac.main.block.device.BlockBellow;
 import defeatedcrow.hac.main.block.device.BlockCookingStove;
+import defeatedcrow.hac.main.block.device.BlockFirestand;
+import defeatedcrow.hac.main.block.device.BlockGeyser;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
 import defeatedcrow.hac.main.block.device.BlockPail;
 import defeatedcrow.hac.main.block.device.BlockShitirin;
@@ -80,7 +79,6 @@ import defeatedcrow.hac.main.block.device.BlockSink;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
 import defeatedcrow.hac.main.block.device.BlockThermometer;
 import defeatedcrow.hac.main.block.device.BlockWindVane;
-import defeatedcrow.hac.main.block.device.ItemBlockShield;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
 import defeatedcrow.hac.main.block.device.ItemPail;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
@@ -89,7 +87,6 @@ import defeatedcrow.hac.main.block.ores.BlockDusts2;
 import defeatedcrow.hac.main.block.ores.BlockGem;
 import defeatedcrow.hac.main.block.ores.BlockHeatingMetal;
 import defeatedcrow.hac.main.block.ores.BlockLayerNew;
-import defeatedcrow.hac.main.block.ores.BlockMetal;
 import defeatedcrow.hac.main.block.ores.BlockMetalAlloy;
 import defeatedcrow.hac.main.block.ores.BlockMetalNew;
 import defeatedcrow.hac.main.block.ores.BlockOreNew;
@@ -116,7 +113,6 @@ import defeatedcrow.hac.main.item.misc.ItemClothN;
 import defeatedcrow.hac.main.item.misc.ItemDCIcon;
 import defeatedcrow.hac.main.item.misc.ItemFoodDust;
 import defeatedcrow.hac.main.item.misc.ItemGearN;
-import defeatedcrow.hac.main.item.misc.ItemMiscs;
 import defeatedcrow.hac.main.item.misc.ItemPetternPaper;
 import defeatedcrow.hac.main.item.misc.ItemRepairPutty;
 import defeatedcrow.hac.main.item.misc.ItemSilkworm;
@@ -196,20 +192,13 @@ public class MainMaterialRegister {
 
 			MainInit.ores_2 = new BlockOres2(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore2_stone", 12);
 			DCMaterialReg.registerBlock(MainInit.ores_2, ClimateCore.PACKAGE_BASE + "_ore2_stone", ClimateMain.MOD_ID);
-
-			MainInit.metalBlock = new BlockMetal(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal", 15);
-			DCMaterialReg
-					.registerBlock(MainInit.metalBlock, ClimateCore.PACKAGE_BASE + "_ore_metalblock", ClimateMain.MOD_ID);
-
-			MainInit.materials = new ItemMiscs(9).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_material");
-			DCMaterialReg.registerItem(MainInit.materials, ClimateCore.PACKAGE_BASE + "_material", ClimateMain.MOD_ID);
 		}
 
 		// blocks
 		MainInit.oreNew = new BlockOreNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_ore_stone_new", 14);
 		DCMaterialReg.registerBlock(MainInit.oreNew, ClimateCore.PACKAGE_BASE + "_ore_stone_new", ClimateMain.MOD_ID);
 
-		MainInit.layerNew = new BlockLayerNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_layer_stone_new", 6);
+		MainInit.layerNew = new BlockLayerNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_layer_stone_new", 7);
 		DCMaterialReg
 				.registerBlock(MainInit.layerNew, ClimateCore.PACKAGE_BASE + "_layer_stone_new", ClimateMain.MOD_ID);
 
@@ -217,7 +206,7 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.metalBlockNew, ClimateCore.PACKAGE_BASE + "_ore_metal_new", ClimateMain.MOD_ID);
 
-		MainInit.metalBlockAlloy = new BlockMetalAlloy(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal_alloy", 8);
+		MainInit.metalBlockAlloy = new BlockMetalAlloy(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal_alloy", 9);
 		DCMaterialReg
 				.registerBlock(MainInit.metalBlockAlloy, ClimateCore.PACKAGE_BASE + "_ore_metal_alloy", ClimateMain.MOD_ID);
 
@@ -225,12 +214,12 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.dustBlock, ClimateCore.PACKAGE_BASE + "_ore_dustblock", ClimateMain.MOD_ID);
 
-		MainInit.dustBlock_2 = new BlockDusts2(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock2", 2);
+		MainInit.dustBlock_2 = new BlockDusts2(Material.GROUND, ClimateCore.PACKAGE_BASE + "_dustblock2", 3);
 		DCMaterialReg
 				.registerBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_BASE + "_ore_dustblock2", ClimateMain.MOD_ID);
 
 		MainInit.heatedMetalBlock = new BlockHeatingMetal(Material.GROUND, ClimateCore.PACKAGE_BASE + "_heatingmetal",
-				11);
+				14);
 		DCMaterialReg
 				.registerBlock(MainInit.heatedMetalBlock, ClimateCore.PACKAGE_BASE + "_ore_heatingmetal", ClimateMain.MOD_ID);
 
@@ -245,12 +234,16 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.lightOrb, ClimateCore.PACKAGE_BASE + "_build_lightorb", ClimateMain.MOD_ID);
 
-		MainInit.chamber = new BlockNormalChamber(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chamber", 1);
+		MainInit.firestand = new BlockFirestand(ClimateCore.PACKAGE_BASE + "_device_firestand");
+		DCMaterialReg
+				.registerBlock(MainInit.firestand, ClimateCore.PACKAGE_BASE + "_device_firestand", ClimateMain.MOD_ID);
+
+		MainInit.chamber = new BlockNormalChamber(Material.IRON, ClimateCore.PACKAGE_BASE + "_device_chamber", 3);
 		MainInit.chamber.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_chamber");
 		ForgeRegistries.BLOCKS.register(MainInit.chamber);
 		ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.chamber));
 
-		MainInit.shitirin = new BlockShitirin(Material.CLAY, ClimateCore.PACKAGE_BASE + "_device_shitirin", 1);
+		MainInit.shitirin = new BlockShitirin(Material.CLAY, ClimateCore.PACKAGE_BASE + "_device_shitirin", 3);
 		MainInit.shitirin.setRegistryName(ClimateCore.PACKAGE_BASE + "_device_shitirin");
 		ForgeRegistries.BLOCKS.register(MainInit.shitirin);
 		ForgeRegistries.ITEMS.register(new ItemBlockShitirin(MainInit.shitirin));
@@ -282,6 +275,10 @@ public class MainMaterialRegister {
 		ForgeRegistries.BLOCKS.register(MainInit.pail);
 		ForgeRegistries.ITEMS.register(new ItemPail(MainInit.pail));
 
+		MainInit.geyser = new BlockGeyser(ClimateCore.PACKAGE_BASE + "_device_geyser_stone");
+		DCMaterialReg
+				.registerBlock(MainInit.geyser, ClimateCore.PACKAGE_BASE + "_device_geyser_stone", ClimateMain.MOD_ID);
+
 		// items
 
 		// title
@@ -292,7 +289,7 @@ public class MainMaterialRegister {
 		MainInit.oreItem = new ItemOreCrystal(14).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oreitem");
 		DCMaterialReg.registerItem(MainInit.oreItem, ClimateCore.PACKAGE_BASE + "_oreitem", ClimateMain.MOD_ID);
 
-		MainInit.oreIngot = new ItemIngots(17).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
+		MainInit.oreIngot = new ItemIngots(18).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ingot");
 		DCMaterialReg.registerItem(MainInit.oreIngot, ClimateCore.PACKAGE_BASE + "_ingot", ClimateMain.MOD_ID);
 
 		MainInit.oreDust = new ItemOreDusts(15).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_oredust");
@@ -408,7 +405,7 @@ public class MainMaterialRegister {
 				.getItemFromBlock(MainInit.stairsSerpentine), "dcs_climate", "dcs_stairs_serpentine", "build", 15, false);
 
 		MainInit.stairsBedrock = new BlockStairsBase(MainInit.layerNew.getDefaultState(), "ores/gemblock_bedrock",
-				false, false).setUnlocalizedName("dcs_stairs_bedrock");
+				false, false).setBedRock().setUnlocalizedName("dcs_stairs_bedrock");
 		DCMaterialReg
 				.registerBlock(MainInit.stairsBedrock, ClimateCore.PACKAGE_BASE + "_stairs_bedrock", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
@@ -457,7 +454,8 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.fenceSerpentine), "dcs_climate", "dcs_fence_serpentine", "build", 15, false);
 
-		MainInit.fenceBedrock = new BlockFenceBase("dcs_fence_bedrock").setUnlocalizedName("dcs_fence_bedrock");
+		MainInit.fenceBedrock = new BlockFenceBase("dcs_fence_bedrock").setBedRock()
+				.setUnlocalizedName("dcs_fence_bedrock");
 		DCMaterialReg
 				.registerBlock(MainInit.fenceBedrock, ClimateCore.PACKAGE_BASE + "_fence_bedrock", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
@@ -912,12 +910,6 @@ public class MainMaterialRegister {
 					ClimateCore.PACKAGE_BASE + "_device_chest_village");
 			registerChestBlock(MainInit.chestVillage, ClimateCore.PACKAGE_BASE + "_device_chest_village", ClimateMain.MOD_ID);
 
-			MainInit.achievementShield = new BlockAcvShield(Material.GROUND, "dcs_build_shield", 2)
-					.setUnlocalizedName("dcs_build_shield");
-			MainInit.achievementShield.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_build_shield");
-			ForgeRegistries.BLOCKS.register(MainInit.achievementShield);
-			ForgeRegistries.ITEMS.register(new ItemBlockShield(MainInit.achievementShield));
-
 			// items
 			MainInit.flowerPot = new ItemFlowerPot().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_flowerpot");
 			DCMaterialReg.registerItem(MainInit.flowerPot, ClimateCore.PACKAGE_BASE + "_flowerpot", ClimateMain.MOD_ID);
@@ -940,9 +932,10 @@ public class MainMaterialRegister {
 				"sapphire",
 				"titanium",
 				"garnet",
-				"toolsteel" };
-			for (int j = 0; j < 9; j++) {
-				DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
+				"toolsteel",
+				"mangalloy" };
+			for (int j = 0; j < 10; j++) {
+				// DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 				MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_axe_" + name[j]);
@@ -950,7 +943,7 @@ public class MainMaterialRegister {
 						.registerItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_BASE + "_axe_" + name[j], ClimateMain.MOD_ID);
 			}
 
-			for (int j = 0; j < 9; j++) {
+			for (int j = 0; j < 10; j++) {
 				MainInit.dcPickaxe[j] = new ItemPickaxeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j]);
@@ -958,7 +951,7 @@ public class MainMaterialRegister {
 						.registerItem(MainInit.dcPickaxe[j], ClimateCore.PACKAGE_BASE + "_pickaxe_" + name[j], ClimateMain.MOD_ID);
 			}
 
-			for (int j = 0; j < 9; j++) {
+			for (int j = 0; j < 10; j++) {
 				MainInit.dcSpade[j] = new ItemSpadeDC(DCToolMaterial.getToolMaterial(j), name[j])
 						.setCreativeTab(ClimateMain.tool)
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_spade_" + name[j]);
@@ -1610,6 +1603,17 @@ public class MainMaterialRegister {
 				.registerBlock(MainInit.milkBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_raw_milk", ClimateMain.MOD_ID);
 		MainInit.milk.setBlock(MainInit.milkBlock);
 
+		MainInit.steam = new Fluid("dcs.steam", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/steam_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/steam_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".steam").setDensity(-500).setViscosity(300)
+						.setGaseous(true).setTemperature(390);
+		FluidRegistry.registerFluid(MainInit.steam);
+		MainInit.steamBlock = new DCFluidBlockBase(MainInit.steam, "steam_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_steam");
+		DCMaterialReg
+				.registerBlock(MainInit.steamBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_steam", ClimateMain.MOD_ID);
+		MainInit.steam.setBlock(MainInit.steamBlock);
+
 		// bucket
 		FluidRegistry.addBucketForFluid(MainInit.oil);
 		FluidRegistry.addBucketForFluid(MainInit.greenTea);
@@ -1632,6 +1636,7 @@ public class MainMaterialRegister {
 		FluidRegistry.addBucketForFluid(MainInit.nitrogen);
 		FluidRegistry.addBucketForFluid(MainInit.ethanol);
 		FluidRegistry.addBucketForFluid(MainInit.milk);
+		FluidRegistry.addBucketForFluid(MainInit.steam);
 
 		// heat tier
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.coffeeBlock, 0, DCHeatTier.HOT);
@@ -1645,30 +1650,7 @@ public class MainMaterialRegister {
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.stockBlock, 0, DCHeatTier.HOT);
 		ClimateAPI.registerBlock.registerHumBlock(MainInit.stockBlock, 0, DCHumidity.UNDERWATER);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.nitrogenBlock, 0, DCHeatTier.CRYOGENIC);
-
-		// dic
-		FluidDictionaryDC.registerFluidDic(MainInit.hydrogen, "hydrogen");
-		FluidDictionaryDC.registerFluidDic(MainInit.nitricAcid, "nitricacid");
-		FluidDictionaryDC.registerFluidDic(MainInit.sulfuricAcid, "sulfuricacid");
-		FluidDictionaryDC.registerFluidDic(MainInit.ammonia, "ammonia");
-		FluidDictionaryDC.registerFluidDic(MainInit.fuelOil, "fuel_oil");
-		FluidDictionaryDC.registerFluidDic(MainInit.fuelGas, "fuel_gaseous");
-		FluidDictionaryDC.registerFluidDic(MainInit.oil, "seed_oil");
-		FluidDictionaryDC.registerFluidDic(MainInit.nitrogen, "nitrogen");
-		FluidDictionaryDC.registerFluidDic(MainInit.ethanol, "ethanol");
-		FluidDictionaryDC.registerFluidDic(MainInit.blackLiquor, "black_liquor");
-
-		FluidDictionaryDC.registerFluidDic(MainInit.greenTea, "greentea");
-		FluidDictionaryDC.registerFluidDic(MainInit.blackTea, "blacktea");
-		FluidDictionaryDC.registerFluidDic(MainInit.coffee, "coffee");
-		FluidDictionaryDC.registerFluidDic(MainInit.cream, "cream");
-		FluidDictionaryDC.registerFluidDic(MainInit.lemon, "lemonade");
-		FluidDictionaryDC.registerFluidDic(MainInit.tomatoJuice, "vegetable");
-		FluidDictionaryDC.registerFluidDic(MainInit.mazai, "mazai");
-		FluidDictionaryDC.registerFluidDic(MainInit.hotSpring, "hot_spring");
-		FluidDictionaryDC.registerFluidDic(MainInit.stock, "stock");
-		FluidDictionaryDC.registerFluidDic(MainInit.soyMilk, "soymilk");
-		FluidDictionaryDC.registerFluidDic(MainInit.milk, "milk");
+		ClimateAPI.registerBlock.registerHeatBlock(MainInit.steamBlock, 0, DCHeatTier.BOIL);
 
 	}
 

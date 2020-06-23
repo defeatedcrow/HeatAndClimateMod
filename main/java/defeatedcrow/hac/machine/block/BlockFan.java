@@ -8,17 +8,14 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.IAirflowTile;
-import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -40,16 +37,6 @@ public class BlockFan extends BlockTorqueBase implements IAirflowTile {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileFan();
-	}
-
-	@Override
-	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null) {
-			ItemStack heldItem = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {}
-		}
-		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

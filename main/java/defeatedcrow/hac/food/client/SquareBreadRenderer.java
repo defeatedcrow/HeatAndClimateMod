@@ -3,7 +3,7 @@ package defeatedcrow.hac.food.client;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelSquareBread;
-import defeatedcrow.hac.food.entity.SquareBreadEntity;
+import defeatedcrow.hac.food.entity.BreadSquareEntity;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.EnumFacing;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class SquareBreadRenderer extends DCRenderFoodBase<SquareBreadEntity> {
+public class SquareBreadRenderer extends DCRenderFoodBase<BreadSquareEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/square_bread_raw.png");
@@ -36,7 +36,7 @@ public class SquareBreadRenderer extends DCRenderFoodBase<SquareBreadEntity> {
 	}
 
 	@Override
-	public void doRender(SquareBreadEntity entity, double x, double y, double z, float yaw, float partialTicks) {
+	public void doRender(BreadSquareEntity entity, double x, double y, double z, float yaw, float partialTicks) {
 		float height = entity.height * 0.5F;
 		EnumFacing side = entity.getSide();
 		boolean baked = !entity.getRaw();

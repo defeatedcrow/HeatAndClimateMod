@@ -83,14 +83,13 @@ public class WorldGenWindmill implements IWorldGenerator {
 
 		int X = chunkX << 4;
 		int Z = chunkZ << 4;
-		int posX = X + 8 + pRandom.nextInt(8);
-		int posZ = Z + 8 + pRandom.nextInt(8);
+		int posX = X + 8;
+		int posZ = Z + 8;
 		if (isForced && forceX != 0 & forceZ != 0) {
 			posX = forceX;
 			posZ = forceZ;
 		}
 		BlockPos pos = new BlockPos(posX, 60, posZ);
-
 		Biome biome = world.getBiomeForCoordsBody(pos);
 
 		if (world.villageCollection.getNearestVillage(pos, 32) != null)
@@ -326,9 +325,12 @@ public class WorldGenWindmill implements IWorldGenerator {
 		pRandom.nextFloat();
 		float r = pRandom.nextFloat() * 10000F;
 		int ri = MathHelper.floor(r);
-		if (ri > 0 && ri < i)
-			return true;
-
+		if (ri > 0 && ri < i) {
+			if (OreGenPos.INSTANCE.canWindmillGenChunk(chunkX, chunkZ)) {
+				// DCLogger.debugInfoLog("WindmillGen:" + chunkX + ", " + chunkZ);
+				return true;
+			}
+		}
 		return false;
 	}
 

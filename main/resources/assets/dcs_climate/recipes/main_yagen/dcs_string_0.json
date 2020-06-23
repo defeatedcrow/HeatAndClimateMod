@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "toolNormalYagen"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "blockWool"
+  }
+ ],
+ "result": {
+  "item": "minecraft:string",
+  "count": 3,
+  "data": 0
+ }
+}

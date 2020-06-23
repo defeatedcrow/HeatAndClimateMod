@@ -4,9 +4,23 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.climate.ClimateCalculateEvent;
+import defeatedcrow.hac.api.climate.DCAirflow;
+import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.api.climate.WorldHeatTierEvent;
+import defeatedcrow.hac.api.magic.IJewel;
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.recipe.IMillRecipe;
+import defeatedcrow.hac.api.recipe.RecipeAPI;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.magic.PictureList;
+import defeatedcrow.hac.magic.entity.EntityBlackDog;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -18,30 +32,37 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGuardian;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.passive.AbstractHorse;
-import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityTameable;
-import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.GetCollisionBoxesEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 
@@ -60,34 +81,30 @@ public class MagicCommonEvent {
 					target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) living.getOwner()), event
 							.getAmount());
 					event.setCanceled(true);
+				} else if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorPendant, 1,
+						4)) && !(target instanceof IMob)) {
+					event.setCanceled(true);
+					return;
 				}
 			} else if (source.getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase owner = (EntityLivingBase) source.getTrueSource();
 				if (owner != null) {
-					if (!(target instanceof IMob) && (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.pendant, 1,
-							19)) || DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1, 4)))) {
-						// white pendant
-						event.setCanceled(true);
-					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorBadge, 1, 3))) {
+					if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorBadge, 1, 3))) {
 						// black badge
 						target.attackEntityFrom(DamageSource.causeMobDamage(target), event.getAmount());
 						event.setCanceled(true);
+					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1,
+							4)) && !(target instanceof IMob)) {
+						// white pendant
+						event.setCanceled(true);
+						return;
 					}
-				}
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public void onJoin(EntityJoinWorldEvent event) {
-		Entity entity = event.getEntity();
-		if (entity != null && entity instanceof EntityArrow) {
-			EntityArrow arrow = (EntityArrow) entity;
-
-			if (arrow.shootingEntity instanceof EntityLivingBase) {
-				EntityLivingBase liv = (EntityLivingBase) arrow.shootingEntity;
-				if (DCUtil.hasCharmItem(liv, new ItemStack(MagicInit.pendant, 1, 18))) {
-					arrow.shoot(liv, liv.rotationPitch, liv.rotationYaw, 0.0F, 5.0F, 0.0F);
+					if (getOffhandJewelColor(owner) == MagicColor.GREEN) {
+						// green-white gauntlet
+						float healamo = event.getAmount() * 0.25F;
+						owner.heal(healamo);
+						event.getSource().setDamageBypassesArmor();
+					}
 				}
 			}
 		}
@@ -97,36 +114,19 @@ public class MagicCommonEvent {
 	public void onInteract(PlayerInteractEvent.EntityInteractSpecific event) {
 		EntityPlayer player = event.getEntityPlayer();
 		Entity target = event.getTarget();
-		if (player != null && target != null && !player.world.isRemote) {
-			if (DCUtil.hasCharmItem(player, new ItemStack(MagicInit.pendant, 1, 17))) {
-				if (target instanceof EntityTameable) {
-					EntityTameable animal = (EntityTameable) target;
-					if (player.getHeldItem(event.getHand()).getItem() == Items.APPLE && !animal.isTamed()) {
-						animal.setTamedBy(player);
-						animal.setHealth(animal.getMaxHealth());
-						animal.setAttackTarget((EntityLivingBase) null);
-						animal.getEntityWorld().setEntityState(animal, (byte) 7);
-						playTameEffect(animal);
-						if (animal instanceof EntityWolf) {
-							((EntityWolf) animal).getAISit().setSitting(true);
-						} else if (animal instanceof EntityOcelot) {
-							((EntityOcelot) animal).getAISit().setSitting(true);
-							((EntityOcelot) animal).setTameSkin(1 + animal.getEntityWorld().rand.nextInt(3));
-						}
-						event.setCancellationResult(EnumActionResult.SUCCESS);
-					}
-				} else if (target instanceof AbstractHorse) {
-					AbstractHorse horse = (AbstractHorse) target;
-					if (player.getHeldItem(event.getHand()).getItem() == Items.APPLE && !horse.isTame()) {
-						horse.increaseTemper(100);
-						event.setCancellationResult(EnumActionResult.SUCCESS);
-					}
-				}
-			} else if (player.isSneaking() && DCUtil.hasCharmItem(player, new ItemStack(MagicInit.colorRing2, 1, 0))) {
+		if (player != null && target != null) {
+			if (player.isSneaking() && !player.world.isRemote && DCUtil.hasCharmItem(player, new ItemStack(
+					MagicInit.colorRing2, 1, 0))) {
 				if (target instanceof EntityLiving) {
 					player.openGui(ClimateMain.instance, target.getEntityId(), player.world, target.getPosition()
 							.getX(), target.getPosition().getY(), target.getPosition().getZ());
 					event.setCancellationResult(EnumActionResult.SUCCESS);
+				}
+			} else if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE) {
+				if (target instanceof EntityLiving) {
+					if (target.getRidingEntity() != player) {
+						target.startRiding(player, true);
+					}
 				}
 			}
 		}
@@ -182,10 +182,12 @@ public class MagicCommonEvent {
 		if (!living.world.isRemote && living instanceof IMob) {
 			int lu1 = 0;
 			int lb2 = 0;
+			boolean blue = false;
 			if (source.getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase liv2 = (EntityLivingBase) source.getTrueSource();
 				lu1 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing, 1, 0));
 				lb2 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing2, 1, 3));
+				blue = getOffhandJewelColor(liv2) == MagicColor.BLUE;
 			}
 			int m = 1 + (lu1 + level) * 5;
 			if (living.world.rand.nextInt(100) < m) {
@@ -202,24 +204,60 @@ public class MagicCommonEvent {
 					event.getDrops().get(i2).getItem().grow(1);
 				}
 			}
+			if (blue && living.world.rand.nextInt(100) < 25) {
+				ItemStack head = getDropSkull(living);
+				if (!head.isEmpty()) {
+					EntityItem drop2 = new EntityItem(living.world, living.posX, living.posY, living.posZ, head);
+					event.getDrops().add(drop2);
+				}
+			}
 		}
 	}
 
 	@SubscribeEvent
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
-		if (event.getHarvester() != null && DCUtil.hasCharmItem(event.getHarvester(), new ItemStack(
-				MagicInit.colorPendant2, 1, 2))) {
-			List<ItemStack> nList = Lists.newArrayList();
-			for (ItemStack i : event.getDrops()) {
-				ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(i);
-				if (burnt.isEmpty()) {
-					nList.add(i.copy());
-				} else {
-					nList.add(burnt.copy());
+		if (event.getHarvester() != null) {
+			/* 粉砕 */
+			if (getOffhandJewelColor(event.getHarvester()) == MagicColor.BLACK) {
+				ItemStack off = event.getHarvester().getHeldItem(EnumHand.OFF_HAND);
+				List<ItemStack> nList = Lists.newArrayList();
+				boolean flag = false;
+				for (ItemStack i : event.getDrops()) {
+					if (!DCUtil.isEmpty(i)) {
+						IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
+						if (recipe != null) {
+							ItemStack o1 = recipe.getOutput();
+							if (!DCUtil.isEmpty(o1))
+								nList.add(o1);
+							ItemStack o2 = recipe.getSecondary();
+							if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < recipe.getSecondaryChance())
+								nList.add(o2);
+							flag = true;
+						} else {
+							nList.add(i.copy());
+						}
+					}
 				}
+				event.getDrops().clear();
+				event.getDrops().addAll(nList);
 			}
-			event.getDrops().clear();
-			event.getDrops().addAll(nList);
+			/* 精錬 */
+			if (DCUtil.hasCharmItem(event.getHarvester(), new ItemStack(MagicInit.colorPendant2, 1, 2))) {
+				List<ItemStack> nList = Lists.newArrayList();
+				for (ItemStack i : event.getDrops()) {
+					if (!DCUtil.isEmpty(i)) {
+						ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(i);
+						if (burnt.isEmpty()) {
+							nList.add(i.copy());
+						} else {
+							nList.add(burnt.copy());
+						}
+					}
+				}
+				event.getDrops().clear();
+				event.getDrops().addAll(nList);
+			}
+
 		}
 	}
 
@@ -237,31 +275,171 @@ public class MagicCommonEvent {
 		}
 	}
 
-	// @SubscribeEvent
-	public void collisionEvent(GetCollisionBoxesEvent event) {
-		if (event.getAabb() != null && !event.getCollisionBoxesList().isEmpty()) {
-			List<AxisAlignedBB> list = event.getCollisionBoxesList();
-			List<AxisAlignedBB> ret = Lists.newArrayList();
-			int lv = 0;
-			if (event.getEntity() != null) {
-				if (event.getEntity() instanceof EntityPlayer && !event.getEntity().isSneaking()) {
-					lv += MainUtil.getCharmLevel((EntityPlayer) event.getEntity(), new ItemStack(MagicInit.colorRing2,
-							1, 3));
-				}
-			}
+	static ItemStack getDropSkull(EntityLivingBase living) {
+		if (living instanceof EntityWitherSkeleton) {
+			return new ItemStack(Items.SKULL, 1, 1);
+		} else if (living instanceof EntitySkeleton) {
+			return new ItemStack(Items.SKULL, 1, 0);
+		} else if (living instanceof EntityZombie) {
+			return new ItemStack(Items.SKULL, 1, 2);
+		} else if (living instanceof EntityCreeper) {
+			return new ItemStack(Items.SKULL, 1, 4);
+		} else {
+			return ItemStack.EMPTY;
+		}
+	}
 
-			List<EntityPlayer> entities = event.getWorld().playerEntities;
-			for (EntityPlayer player : entities) {
-				Vec3d p = new Vec3d(player.posX, player.posY, player.posZ);
-				if (!player.isSneaking() && event.getAabb().contains(p)) {
-					lv += MainUtil.getCharmLevel(player, new ItemStack(MagicInit.colorRing2, 1, 3));
-				}
-			}
+	/* gauntlet */
 
-			if (lv > 0) {
-				event.getCollisionBoxesList().clear();
+	@SubscribeEvent
+	public void onLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
+		EntityPlayer player = event.getEntityPlayer();
+		if (ClimateCore.isDebug && player != null && player.isSprinting()) {
+			if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.BLUE && event.getItemStack()
+					.getItem() instanceof ItemScytheDC) {
+				double x = player.getForward().x * 0.5D + player.motionX;
+				double y = 0.05D;
+				double z = player.getForward().z * 0.5D + player.motionZ;
+				player.motionX = x;
+				player.motionY = y;
+				player.motionZ = z;
 			}
 		}
 	}
 
+	// 確定Crit
+	@SubscribeEvent
+	public void onCrit(CriticalHitEvent event) {
+		if (getOffhandJewelColor(event.getEntityPlayer()) == MagicColor.BLUE && event.getEntityPlayer()
+				.getHeldItemMainhand().getItem() instanceof ItemScytheDC) {
+			event.setDamageModifier(1.8F);
+			event.setResult(Result.ALLOW);
+		}
+	}
+
+	int count = 99;
+
+	@SubscribeEvent
+	public void onLiving(LivingEvent.LivingUpdateEvent event) {
+		if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.RED) {
+			if (event.getEntityLiving().collidedHorizontally) {
+				event.getEntityLiving().motionY = 0.2D;
+			} else if (isCollidedBlock(event.getEntityLiving())) {
+				if (event.getEntityLiving().isSneaking()) {
+					event.getEntityLiving().motionY = 0.0D;
+					event.getEntityLiving().motionX *= 0.5D;
+					event.getEntityLiving().motionZ *= 0.5D;
+				}
+			}
+			event.getEntityLiving().fallDistance = 0F;
+		} else if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE && event.getEntityLiving()
+				.isSneaking()) {
+			if (event.getEntityLiving().isBeingRidden()) {
+				event.getEntityLiving().removePassengers();
+			}
+		}
+		if (event.getEntityLiving() != null && !event.getEntityLiving().world.isRemote) {
+			BlockPos pos = event.getEntityLiving().getPosition();
+			int cx = pos.getX() >> 4;
+			int cz = pos.getZ() >> 4;
+			ChunkPos chunk = new ChunkPos(cx, cz);
+			if (PictureList.INSTANCE.hasColor(chunk, MagicColor.GREEN) && event
+					.getEntityLiving() instanceof EntityPlayer) {
+				event.getEntityLiving().addPotionEffect(new PotionEffect(MainInit.bird, 205, 0));
+			}
+			if (PictureList.INSTANCE.hasColor(chunk, MagicColor.RED) && !(event.getEntityLiving() instanceof IMob)) {
+				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.HASTE, 205, 0));
+				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 205, 0));
+				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 205, 0));
+			}
+
+			if (event.getEntityLiving() instanceof IMob) {
+				if (event.getEntityLiving().getTags().contains("blackdog")) {
+					EntityBlackDog dog = new EntityBlackDog(event.getEntityLiving().getEntityWorld());
+					dog.copyLocationAndAnglesFrom(event.getEntityLiving());
+					event.getEntityLiving().getEntityWorld().spawnEntity(dog);
+					event.getEntityLiving().setDead();
+				}
+			}
+
+			// 定期的に絵画の存在チェック
+			if (event.getEntityLiving() instanceof EntityPlayer) {
+				if (count < 0) {
+					PictureList.INSTANCE.checkList(event.getEntityLiving().getEntityWorld());
+				}
+				count = 99;
+			} else {
+				count--;
+			}
+		}
+	}
+
+	boolean isCollidedBlock(EntityLivingBase living) {// プレイヤー周囲ブロックへのコリジョンチェック
+		World world = living.getEntityWorld();
+		EnumFacing f = living.getHorizontalFacing();
+		AxisAlignedBB bb = living.getEntityBoundingBox().grow(0.1D, 0, 0.1D);
+		return !world.getCollisionBoxes(living, bb).isEmpty();
+	}
+
+	public static MagicColor getOffhandJewelColor(EntityLivingBase player) {
+		if (player == null || DCUtil.isEmpty(player.getHeldItem(EnumHand.OFF_HAND)))
+			return MagicColor.NONE;
+
+		ItemStack held = player.getHeldItem(EnumHand.OFF_HAND);
+		if (held.getItem() instanceof IJewel) {
+			return ((IJewel) held.getItem()).getColor(held.getItemDamage());
+		}
+
+		return MagicColor.NONE;
+	}
+
+	/* pictures */
+
+	@SubscribeEvent
+	public void onSpawn(LivingSpawnEvent.CheckSpawn event) {
+		EntityLivingBase living = event.getEntityLiving();
+		if (living instanceof IMob) {
+			int cx = (int) event.getX() >> 4;
+			int cz = (int) event.getZ() >> 4;
+			ChunkPos chunk = new ChunkPos(cx, cz);
+			if (!event.getEntityLiving().getEntityWorld().isDaytime() && !event.getEntityLiving()
+					.isInWater() && PictureList.INSTANCE.hasColor(chunk, MagicColor.BLACK)) {
+				if (event.getWorld().rand.nextInt(100) < 50 || event.getEntityLiving() instanceof EntityCreeper) {
+					event.getEntityLiving().addTag("blackdog");
+				} else {
+					event.setResult(Result.DENY);
+				}
+			} else if (PictureList.INSTANCE.hasColor(chunk, MagicColor.WHITE)) {
+				event.setResult(Result.DENY);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onCalcClimate(ClimateCalculateEvent event) {
+		BlockPos pos = event.getPos();
+		int cx = pos.getX() >> 4;
+		int cz = pos.getZ() >> 4;
+		ChunkPos chunk = new ChunkPos(cx, cz);
+		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.GREEN)) {
+			IClimate old = event.currentClimate();
+			if (old.getAirflow() != DCAirflow.TIGHT) {
+				event.setNewClimate(old.addAirTier(1));
+				event.setResult(Result.ALLOW);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onBiomeTemp(WorldHeatTierEvent event) {
+		BlockPos pos = event.getPos();
+		int cx = pos.getX() >> 4;
+		int cz = pos.getZ() >> 4;
+		ChunkPos chunk = new ChunkPos(cx, cz);
+		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.BLUE)) {
+			DCHeatTier old = event.currentClimate();
+			event.setNewClimate(old.addTier(4));
+			event.setResult(Result.ALLOW);
+		}
+	}
 }

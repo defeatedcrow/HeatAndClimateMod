@@ -18,4 +18,9 @@ public class EntityDynamiteBlue extends EntityDynamite {
 		return true;
 	}
 
+	@Override
+	public int getRange() {
+		return 4;
+	}
+
 }

@@ -5,10 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -54,16 +52,6 @@ public class BlockShaft_S extends BlockTorqueBase {
 			EntityPlayer player = (EntityPlayer) placer;
 		}
 		return state;
-	}
-
-	@Override
-	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null) {
-			ItemStack heldItem = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {}
-		}
-		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

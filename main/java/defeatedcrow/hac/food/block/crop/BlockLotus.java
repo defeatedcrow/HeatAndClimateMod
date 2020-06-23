@@ -151,14 +151,11 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		super.updateTick(world, pos, state, rand);
 		if (!world.isRemote && state != null && state.getBlock() == this) {
-			IClimate clm = this.getClimate(world, pos, state);
 			int stage = state.getValue(DCState.STAGE8);
-			int chance = this.isSuitableClimate(clm, state) ? 12 : 30;
-			if (rand.nextInt(chance) == 0) {
-				this.grow(world, pos, state);
-			} else {
-				this.checkAndDropBlock(world, pos, state);
-			}
+			boolean black = state.getValue(BLACK);
+			world.setBlockState(pos, Blocks.WATER.getDefaultState(), 2);
+			world.setBlockState(pos.down(), FoodInit.cropLotusN.getDefaultState().withProperty(DCState.STAGE8, stage)
+					.withProperty(BlockLotusN.BLACK, black), 2);
 		}
 	}
 

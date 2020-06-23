@@ -79,6 +79,51 @@ public class DCInfoDataRegister implements IDCInfoDataRegister {
 				"dcs.info.title.metal_dust", "dcs.info.desc.metal_dust");
 		MainAPIManager.infoRegister.registerInfo(dust);
 
+		DCInfoData gem1 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 0), "dcs.info.title.gem_u",
+				"dcs.info.desc.gem_u");
+		gem1.machine.add(new ItemStack(MainInit.gems, 1, 4));
+		MainAPIManager.infoRegister.registerInfo(gem1);
+
+		DCInfoData gem2 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 1), "dcs.info.title.gem_r",
+				"dcs.info.desc.gem_r");
+		gem2.machine.add(new ItemStack(MainInit.gems, 1, 14));
+		MainAPIManager.infoRegister.registerInfo(gem2);
+
+		DCInfoData gem3 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 5), "dcs.info.title.gem_g",
+				"dcs.info.desc.gem_g");
+		gem3.machine.add(new ItemStack(MainInit.gems, 1, 13));
+		MainAPIManager.infoRegister.registerInfo(gem3);
+
+		DCInfoData gem4 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 23), "dcs.info.title.gem_b",
+				"dcs.info.desc.gem_b");
+		gem4.machine.add(new ItemStack(MainInit.gems, 1, 11));
+		MainAPIManager.infoRegister.registerInfo(gem4);
+
+		DCInfoData gem5 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 2), "dcs.info.title.gem_w",
+				"dcs.info.desc.gem_w");
+		gem5.machine.add(new ItemStack(MainInit.gems, 1, 15));
+		MainAPIManager.infoRegister.registerInfo(gem5);
+
+		DCInfoData gem6 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 20), "dcs.info.title.gem_u2",
+				"dcs.info.desc.gem_u2");
+		MainAPIManager.infoRegister.registerInfo(gem6);
+
+		DCInfoData gem7 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 21), "dcs.info.title.gem_r2",
+				"dcs.info.desc.gem_r2");
+		MainAPIManager.infoRegister.registerInfo(gem7);
+
+		DCInfoData gem8 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 19), "dcs.info.title.gem_g2",
+				"dcs.info.desc.gem_g2");
+		MainAPIManager.infoRegister.registerInfo(gem8);
+
+		DCInfoData gem9 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 22), "dcs.info.title.gem_b2",
+				"dcs.info.desc.gem_b2");
+		MainAPIManager.infoRegister.registerInfo(gem9);
+
+		DCInfoData gem10 = new DCInfoData(null, null, new ItemStack(MainInit.gems, 1, 6), "dcs.info.title.gem_w2",
+				"dcs.info.desc.gem_w2");
+		MainAPIManager.infoRegister.registerInfo(gem10);
+
 		if (ModuleConfig.tool) {
 			DCInfoData scythe = new DCInfoData(null, null, new ItemStack(MainInit.dcScythe[0], 1, 0),
 					"dcs.info.title.scythe", "dcs.info.desc.scythe");
@@ -102,10 +147,6 @@ public class DCInfoDataRegister implements IDCInfoDataRegister {
 				"dcs.info.desc.chamber");
 		MainAPIManager.infoRegister.registerInfo(chamber);
 
-		DCInfoData milk = new DCInfoData(null, null, new ItemStack(MachineInit.hopperFluid), "dcs.info.title.milk",
-				"dcs.info.desc.milk").setAdditionalFluid(new FluidStack(MainInit.milk, 1000));
-		MainAPIManager.infoRegister.registerInfo(milk);
-
 		DCInfoData silk = new DCInfoData(new ItemStack(MainInit.silkworm, 1, 0), new ItemStack(MainInit.silkworm, 1, 2),
 				new ItemStack(FoodInit.silkwormBox), "dcs.info.title.silk", "dcs.info.desc.silk");
 		MainAPIManager.infoRegister.registerInfo(silk);
@@ -115,6 +156,11 @@ public class DCInfoDataRegister implements IDCInfoDataRegister {
 		MainAPIManager.infoRegister.registerInfo(silk2);
 
 		if (ModuleConfig.machine) {
+
+			DCInfoData milk = new DCInfoData(null, null, new ItemStack(MachineInit.hopperFluid), "dcs.info.title.milk",
+					"dcs.info.desc.milk").setAdditionalFluid(new FluidStack(MainInit.milk, 1000));
+			MainAPIManager.infoRegister.registerInfo(milk);
+
 			DCInfoData wrench = new DCInfoData(null, null, new ItemStack(MainInit.wrench), "dcs.info.title.wrench",
 					"dcs.info.desc.wrench");
 			MainAPIManager.infoRegister.registerInfo(wrench);

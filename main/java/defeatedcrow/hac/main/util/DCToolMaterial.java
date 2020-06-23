@@ -1,6 +1,8 @@
 package defeatedcrow.hac.main.util;
 
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class DCToolMaterial {
@@ -16,6 +18,7 @@ public class DCToolMaterial {
 	public static Item.ToolMaterial DC_TITANIUM;
 	public static Item.ToolMaterial DC_GARNET;
 	public static Item.ToolMaterial DC_TOOLMETAL;
+	public static Item.ToolMaterial DC_MANGALLOY;
 
 	public static Item.ToolMaterial getToolMaterial(int i) {
 
@@ -37,6 +40,8 @@ public class DCToolMaterial {
 			return DCToolMaterial.DC_GARNET;
 		if (i == 8)
 			return DCToolMaterial.DC_TOOLMETAL;
+		if (i == 9)
+			return DCToolMaterial.DC_MANGALLOY;
 		return null;
 	}
 
@@ -59,6 +64,8 @@ public class DCToolMaterial {
 			return DCMaterialEnum.GARNET;
 		if (i == 8)
 			return DCMaterialEnum.TOOLMETAL;
+		if (i == 9)
+			return DCMaterialEnum.TITANIUM;
 		return null;
 	}
 
@@ -98,6 +105,10 @@ public class DCToolMaterial {
 		DCToolMaterial.DC_TOOLMETAL = EnumHelper
 				.addToolMaterial("dcs_" + DCMaterialEnum.TOOLMETAL.name, DCMaterialEnum.TOOLMETAL.harvestTier, DCMaterialEnum.TOOLMETAL.duration, DCMaterialEnum.TOOLMETAL.efficiency, DCMaterialEnum.TOOLMETAL.attackDam, DCMaterialEnum.TOOLMETAL.enchant);
 		DCToolMaterial.DC_TOOLMETAL.setRepairItem(DCMaterialEnum.TOOLMETAL.repairItem);
+
+		DCToolMaterial.DC_MANGALLOY = EnumHelper
+				.addToolMaterial("dcs_mangalloy", DCMaterialEnum.TOOLMETAL.harvestTier, DCMaterialEnum.TOOLMETAL.duration, DCMaterialEnum.TOOLMETAL.efficiency, DCMaterialEnum.TOOLMETAL.attackDam, DCMaterialEnum.TOOLMETAL.enchant);
+		DCToolMaterial.DC_MANGALLOY.setRepairItem(new ItemStack(MainInit.oreIngot, 1, 18));
 	}
 
 }

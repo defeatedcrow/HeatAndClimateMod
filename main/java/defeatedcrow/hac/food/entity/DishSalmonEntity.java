@@ -12,14 +12,17 @@ public class DishSalmonEntity extends FoodEntityBase {
 
 	public DishSalmonEntity(World worldIn) {
 		super(worldIn);
+		this.setSize(0.375F, 0.125F);
 	}
 
 	public DishSalmonEntity(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(0.375F, 0.125F);
 	}
 
 	public DishSalmonEntity(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(0.375F, 0.125F);
 	}
 
 	@Override

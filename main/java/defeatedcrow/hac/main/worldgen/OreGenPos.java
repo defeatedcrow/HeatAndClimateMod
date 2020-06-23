@@ -1,10 +1,13 @@
 package defeatedcrow.hac.main.worldgen;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import defeatedcrow.hac.main.api.orevein.EnumVein;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -24,6 +27,9 @@ public class OreGenPos {
 	private static int netherP = WorldGenConfig.depositGen[6];
 
 	public static final OreGenPos INSTANCE = new OreGenPos();
+
+	private static Set<ChunkPos> windmillPos = new HashSet<>();
+	private static Set<ChunkPos> caravanPos = new HashSet<>();
 
 	public OreVein[] getVeins(int cx, int cz, World world) {
 		long seed = world.getSeed() + cx + cz * 31;
@@ -70,16 +76,17 @@ public class OreGenPos {
 					.hasType(biome2, BiomeDictionary.Type.DRY))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.RED, seed);
 			}
-			if (rand2 < blueP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.SWAMP) || BiomeDictionary
+			if ((100 - rand2) < blueP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.SWAMP) || BiomeDictionary
 					.hasType(biome2, BiomeDictionary.Type.WATER) || BiomeDictionary
 							.hasType(biome2, BiomeDictionary.Type.SNOWY) || BiomeDictionary
 									.hasType(biome2, BiomeDictionary.Type.COLD))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.BLUE, seed);
 			}
-			if (rand2 < greenP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.FOREST) || BiomeDictionary
-					.hasType(biome2, BiomeDictionary.Type.JUNGLE) || BiomeDictionary
-							.hasType(biome2, BiomeDictionary.Type.CONIFEROUS) || BiomeDictionary
-									.hasType(biome2, BiomeDictionary.Type.LUSH))) {
+			if ((100 - rand2) < greenP && (BiomeDictionary
+					.hasType(biome2, BiomeDictionary.Type.FOREST) || BiomeDictionary
+							.hasType(biome2, BiomeDictionary.Type.JUNGLE) || BiomeDictionary
+									.hasType(biome2, BiomeDictionary.Type.CONIFEROUS) || BiomeDictionary
+											.hasType(biome2, BiomeDictionary.Type.LUSH))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.GREEN, seed);
 			}
 			if (rand2 < whiteP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.PLAINS) || BiomeDictionary
@@ -188,6 +195,58 @@ public class OreGenPos {
 		default:
 			return WorldGenConfig.radGen[0];
 		}
+	}
+
+	public static boolean canWindmillGenChunk(int x, int z) {
+		ChunkPos target = new ChunkPos(x, z);
+		ChunkPos rem = null;
+		double c = 0;
+		if (!windmillPos.isEmpty()) {
+			for (ChunkPos check : windmillPos) {
+				int dx = x - check.x;
+				int dz = z - check.z;
+				double r = Math.sqrt(dx * dx + dz * dz);
+				if (r < 16) {
+					return false;
+				} else {
+					if (r > c) {
+						c = r;
+						rem = check;
+					}
+				}
+			}
+		}
+
+		if (rem != null && windmillPos.size() > 2) {
+			windmillPos.remove(rem);
+		}
+		windmillPos.add(target);
+		return true;
+	}
+
+	public static boolean canCaravanChunk(int x, int z) {
+		ChunkPos target = new ChunkPos(x, z);
+		ChunkPos rem = null;
+		double c = 0;
+		for (ChunkPos check : caravanPos) {
+			int dx = target.x - check.x;
+			int dz = target.z - check.z;
+			double r = Math.sqrt(dx * dx + dz * dz);
+			if (r < 32) {
+				return false;
+			} else {
+				if (r > c) {
+					c = r;
+					rem = check;
+				}
+			}
+		}
+
+		if (caravanPos.size() > 2) {
+			caravanPos.remove(rem);
+		}
+		caravanPos.add(target);
+		return true;
 	}
 
 }

@@ -6,6 +6,7 @@ import defeatedcrow.hac.core.event.DispenseEntityItem;
 import defeatedcrow.hac.food.block.BlockDish;
 import defeatedcrow.hac.food.block.BlockPotteryPot;
 import defeatedcrow.hac.food.block.BlockSilkwormBox;
+import defeatedcrow.hac.food.block.BlockSkillet;
 import defeatedcrow.hac.food.block.BlockSteelPot;
 import defeatedcrow.hac.food.block.BlockTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockBean;
@@ -25,6 +26,7 @@ import defeatedcrow.hac.food.block.crop.BlockLeavesTea;
 import defeatedcrow.hac.food.block.crop.BlockLeavesWalnut;
 import defeatedcrow.hac.food.block.crop.BlockLettuce;
 import defeatedcrow.hac.food.block.crop.BlockLotus;
+import defeatedcrow.hac.food.block.crop.BlockLotusN;
 import defeatedcrow.hac.food.block.crop.BlockOnion;
 import defeatedcrow.hac.food.block.crop.BlockRice;
 import defeatedcrow.hac.food.block.crop.BlockSaplingDC;
@@ -38,6 +40,7 @@ import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.item.CakeItem;
 import defeatedcrow.hac.food.item.ClubSandItem;
 import defeatedcrow.hac.food.item.DeepFryItem;
+import defeatedcrow.hac.food.item.DipSauceItem;
 import defeatedcrow.hac.food.item.DishBigItem;
 import defeatedcrow.hac.food.item.DishItem;
 import defeatedcrow.hac.food.item.DrinkItem;
@@ -55,6 +58,7 @@ import defeatedcrow.hac.food.item.ItemPastry;
 import defeatedcrow.hac.food.item.ItemSilverCup;
 import defeatedcrow.hac.food.item.ItemTeaLeaves;
 import defeatedcrow.hac.food.item.MochiItem;
+import defeatedcrow.hac.food.item.PastaItem;
 import defeatedcrow.hac.food.item.PlateMeatItem;
 import defeatedcrow.hac.food.item.PlateSoupItem;
 import defeatedcrow.hac.food.item.RiceBowlItem;
@@ -136,6 +140,10 @@ public class FoodInitRegister {
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus");
 		DCMaterialReg.registerBlock(FoodInit.cropLotus, ClimateCore.PACKAGE_BASE + "_crop_lotus", ClimateMain.MOD_ID);
 
+		FoodInit.cropLotusN = new BlockLotusN(ClimateCore.PACKAGE_BASE + "_crop_lotus2", 15)
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_crop_lotus2");
+		DCMaterialReg.registerBlock(FoodInit.cropLotusN, ClimateCore.PACKAGE_BASE + "_crop_lotus2", ClimateMain.MOD_ID);
+
 		FoodInit.cropHerb = new BlockHerb(ClimateCore.PACKAGE_BASE + "_crop_herb");
 		DCMaterialReg.registerBlock(FoodInit.cropHerb, ClimateCore.PACKAGE_BASE + "_crop_herb", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addCropBlock(FoodInit.cropHerb, "crop_herb", 3);
@@ -200,6 +208,9 @@ public class FoodInitRegister {
 		FoodInit.potteryPot = new BlockPotteryPot(ClimateCore.PACKAGE_BASE + "_device_pottery_pot");
 		DCMaterialReg
 				.registerBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_BASE + "_device_pottery_pot", ClimateMain.MOD_ID);
+
+		FoodInit.skillet = new BlockSkillet(ClimateCore.PACKAGE_BASE + "_device_skillet");
+		DCMaterialReg.registerBlock(FoodInit.skillet, ClimateCore.PACKAGE_BASE + "_device_skillet", ClimateMain.MOD_ID);
 
 		FoodInit.steelPot = new BlockSteelPot(ClimateCore.PACKAGE_BASE + "_device_steel_pot");
 		DCMaterialReg
@@ -316,11 +327,17 @@ public class FoodInitRegister {
 		FoodInit.udon = new UdonItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_udon");
 		DCMaterialReg.registerItem(FoodInit.udon, ClimateCore.PACKAGE_BASE + "_food_udon", ClimateMain.MOD_ID);
 
+		FoodInit.pasta = new PastaItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_pasta");
+		DCMaterialReg.registerItem(FoodInit.pasta, ClimateCore.PACKAGE_BASE + "_food_pasta", ClimateMain.MOD_ID);
+
 		FoodInit.setMeal = new SetMealItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_setmeal");
 		DCMaterialReg.registerItem(FoodInit.setMeal, ClimateCore.PACKAGE_BASE + "_food_setmeal", ClimateMain.MOD_ID);
 
 		FoodInit.drink = new DrinkItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_drink");
 		DCMaterialReg.registerItem(FoodInit.drink, ClimateCore.PACKAGE_BASE + "_food_drink", ClimateMain.MOD_ID);
+
+		FoodInit.dip = new DipSauceItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_dipsauce");
+		DCMaterialReg.registerItem(FoodInit.dip, ClimateCore.PACKAGE_BASE + "_food_dipsauce", ClimateMain.MOD_ID);
 	}
 
 	public static void loadFluids() {
@@ -364,7 +381,9 @@ public class FoodInitRegister {
 		FoodInit.dishSq.setCreativeTab(ClimateMain.food);
 		FoodInit.setMeal.setCreativeTab(ClimateMain.food);
 		FoodInit.udon.setCreativeTab(ClimateMain.food);
+		FoodInit.pasta.setCreativeTab(ClimateMain.food);
 		FoodInit.drink.setCreativeTab(ClimateMain.food);
+		FoodInit.dip.setCreativeTab(ClimateMain.food);
 
 		FoodInit.nonEntity.setCreativeTab(ClimateMain.food);
 
@@ -385,6 +404,7 @@ public class FoodInitRegister {
 		FoodInit.steakplate.setCreativeTab(ClimateMain.food);
 
 		FoodInit.potteryPot.setCreativeTab(ClimateMain.food);
+		FoodInit.skillet.setCreativeTab(ClimateMain.food);
 		FoodInit.steelPot.setCreativeTab(ClimateMain.food);
 		FoodInit.teaPot.setCreativeTab(ClimateMain.food);
 		FoodInit.silkwormBox.setCreativeTab(ClimateMain.cloth);
@@ -395,7 +415,7 @@ public class FoodInitRegister {
 		FoodInit.cropTomato.setCreativeTab(ClimateMain.food);
 		FoodInit.cropCoffee.setCreativeTab(ClimateMain.food);
 		FoodInit.cropCotton.setCreativeTab(ClimateMain.food);
-		FoodInit.cropLotus.setCreativeTab(ClimateMain.food);
+		FoodInit.cropLotusN.setCreativeTab(ClimateMain.food);
 		FoodInit.cropHerb.setCreativeTab(ClimateMain.food);
 		FoodInit.cropSeaweed.setCreativeTab(ClimateMain.food);
 		FoodInit.cropSoy.setCreativeTab(ClimateMain.food);
@@ -445,6 +465,7 @@ public class FoodInitRegister {
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.snack);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.udon);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.wagashi);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.dip);
 	}
 
 }

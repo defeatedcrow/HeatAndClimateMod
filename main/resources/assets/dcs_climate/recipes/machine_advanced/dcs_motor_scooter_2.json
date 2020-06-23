@@ -1,28 +1,15 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  " X ",
-  "WYW",
-  "Z Z"
- ],
- "key": {
-  "X": {
-   "item": "minecraft:saddle",
-   "data": 0
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_motor_scooter",
+   "data": 32767
   },
-  "Y": {
-   "item": "dcs_climate:dcs_mechanical",
-   "data": 3
-  },
-  "W": {
+  {
    "type": "forge:ore_dict",
-   "ore": "gearToolSteel"
-  },
-  "Z": {
-   "item": "dcs_climate:dcs_mechanical",
-   "data": 4
+   "ore": "dyeWhite"
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_motor_scooter",
   "count": 1,

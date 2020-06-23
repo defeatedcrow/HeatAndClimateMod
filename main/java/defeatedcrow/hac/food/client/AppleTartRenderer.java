@@ -7,10 +7,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelTart;
-import defeatedcrow.hac.food.entity.AppleTartEntity;
+import defeatedcrow.hac.food.entity.TartAppleEntity;
 
 @SideOnly(Side.CLIENT)
-public class AppleTartRenderer extends DCRenderFoodBase<AppleTartEntity> {
+public class AppleTartRenderer extends DCRenderFoodBase<TartAppleEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/tart_apple_raw.png");

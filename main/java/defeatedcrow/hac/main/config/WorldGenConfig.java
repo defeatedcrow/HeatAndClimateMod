@@ -5,9 +5,12 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 
 public class WorldGenConfig {
 
@@ -32,7 +35,12 @@ public class WorldGenConfig {
 
 	public static int caravanGen = 20;
 
+	public static int hotspringGen = 100;
+
 	public static boolean mazaiLake = true;
+
+	public static String geyserGas = "dcs.steam";
+	public static Fluid geyserProduct;
 
 	public void load(Configuration cfg) {
 
@@ -93,6 +101,12 @@ public class WorldGenConfig {
 			Property sap = cfg
 					.get("world setting", "Wild Sapling Gen Probability", saplingGen, "Generate on the surface of Overworld. 0.00-100.00% (default: 5.0%)");
 
+			Property hotspring = cfg
+					.get("world setting", "Hot Spring Gen Probability", hotspringGen, "Generate in Cold Mountains. 0.00-100.00% (default: 1.0%)");
+
+			Property geyser_gas = cfg
+					.get("world setting", "Fumarole Gas Settng", geyserGas, "Set the fluid provided by the fumarole. (It must be gas.)");
+
 			int s = sed_ore.getInt();
 			if (s < 0 || s > 100) {
 				s = 0;
@@ -148,20 +162,24 @@ public class WorldGenConfig {
 			}
 
 			int sk = skarn_ore.getInt();
-			if (sk < 0 || sk > 10000) {
+			if (sk < 0 || sk > 5000) {
 				sk = 0;
 			}
 			int wm = windmill.getInt();
-			if (wm < 0 || wm > 10000) {
+			if (wm < 0 || wm > 5000) {
 				wm = 0;
 			}
 			int cs = caravan.getInt();
-			if (cs < 0 || cs > 10000) {
+			if (cs < 0 || cs > 5000) {
 				cs = 0;
 			}
 			int sp = sap.getInt();
-			if (sp < 0 || sp > 10000) {
+			if (sp < 0 || sp > 5000) {
 				sp = 0;
+			}
+			int hs = hotspring.getInt();
+			if (hs < 0 || hs > 5000) {
+				hs = 0;
 			}
 
 			depositGen[0] = s;
@@ -183,6 +201,8 @@ public class WorldGenConfig {
 			mazaiLake = mazai.getBoolean();
 			blocknames = b_gen.getStringList();
 			saplingGen = sp;
+			hotspringGen = hs;
+			geyserGas = geyser_gas.getString();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,8 +212,18 @@ public class WorldGenConfig {
 
 	}
 
-	public static void leadBlockNames() {
+	public static void loadBlockNames() {
 		disables.addAll(MainUtil.getListFromStrings(blocknames, "OreGen Invalid List"));
+	}
+
+	public static void loadGeyserGas() {
+		geyserProduct = MainInit.steam;
+		if (geyserGas != null) {
+			Fluid f = FluidRegistry.getFluid(geyserGas);
+			if (f != null && f.isGaseous()) {
+				geyserProduct = f;
+			}
+		}
 	}
 
 }

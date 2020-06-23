@@ -1,11 +1,15 @@
 package defeatedcrow.hac.food;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
+import defeatedcrow.hac.food.block.TileSkillet;
 import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
+import defeatedcrow.hac.food.block.crop.BlockLotusN;
+import defeatedcrow.hac.food.block.crop.TileEntityLotus;
 import defeatedcrow.hac.food.client.*;
 import defeatedcrow.hac.food.entity.*;
 import defeatedcrow.hac.main.client.ClientMainProxy;
@@ -28,35 +32,35 @@ public class FoodClientProxy {
 	}
 
 	public static void loadEntity() {
-		ClientMainProxy.registRender(RoundBreadEntity.class, RoundBreadRenderer.class);
-		ClientMainProxy.registRender(SquareBreadEntity.class, SquareBreadRenderer.class);
-		ClientMainProxy.registRender(FishStickEntity.class, FishStickRenderer.class);
-		ClientMainProxy.registRender(YakitoriStickEntity.class, YakitoriStickRenderer.class);
-		ClientMainProxy.registRender(PorkStickEntity.class, PorkStickRenderer.class);
-		ClientMainProxy.registRender(BeefStickEntity.class, BeefStickRenderer.class);
+		ClientMainProxy.registRender(BreadRoundEntity.class, RoundBreadRenderer.class);
+		ClientMainProxy.registRender(BreadSquareEntity.class, SquareBreadRenderer.class);
+		ClientMainProxy.registRender(StickFishEntity.class, FishStickRenderer.class);
+		ClientMainProxy.registRender(StickYakitoriEntity.class, YakitoriStickRenderer.class);
+		ClientMainProxy.registRender(StickPorkEntity.class, PorkStickRenderer.class);
+		ClientMainProxy.registRender(StickBeefEntity.class, BeefStickRenderer.class);
 		ClientMainProxy.registRender(EntityTeaCupSilver.class, CupSilverRenderer.class);
 		ClientMainProxy.registRender(EntityTeaCupWhite.class, CupWhiteRenderer.class);
-		ClientMainProxy.registRender(AppleTartEntity.class, AppleTartRenderer.class);
-		ClientMainProxy.registRender(LemonTartEntity.class, LemonTartRenderer.class);
-		ClientMainProxy.registRender(SpinachQuicheEntity.class, SpinachQuicheRenderer.class);
-		ClientMainProxy.registRender(PotatoQuicheEntity.class, PotatoQuicheRenderer.class);
-		ClientMainProxy.registRender(SugarPieEntity.class, SugarPieRenderer.class);
-		ClientMainProxy.registRender(MeatPieEntity.class, MeatPieRenderer.class);
-		ClientMainProxy.registRender(ToastBreadEntity.class, ToastRenderer.class);
-		ClientMainProxy.registRender(EntitySandwich.class, SandwichAppleRenderer.class);
-		ClientMainProxy.registRender(EggSandwichEntity.class, SandwichEggRenderer.class);
-		ClientMainProxy.registRender(LemonSandwichEntity.class, SandwichAppleRenderer.class);
+		ClientMainProxy.registRender(TartAppleEntity.class, AppleTartRenderer.class);
+		ClientMainProxy.registRender(TartLemonEntity.class, LemonTartRenderer.class);
+		ClientMainProxy.registRender(QuicheSpinachEntity.class, SpinachQuicheRenderer.class);
+		ClientMainProxy.registRender(QuichePotatoEntity.class, PotatoQuicheRenderer.class);
+		ClientMainProxy.registRender(PieSugarEntity.class, SugarPieRenderer.class);
+		ClientMainProxy.registRender(PieMeatEntity.class, MeatPieRenderer.class);
+		ClientMainProxy.registRender(BreadToastEntity.class, ToastRenderer.class);
+		ClientMainProxy.registRender(SandwichEntity.class, SandwichAppleRenderer.class);
+		ClientMainProxy.registRender(SandwichEggEntity.class, SandwichEggRenderer.class);
+		ClientMainProxy.registRender(SandwichLemonEntity.class, SandwichAppleRenderer.class);
 		ClientMainProxy.registRender(SaladSandwichEntity.class, SandwichSaladRenderer.class);
 		ClientMainProxy.registRender(EntityRiceBowl.class, RiceBowlRenderer.class);
 		ClientMainProxy.registRender(EmptyPlateEntity.class, EmptyPlateRenderer.class);
-		ClientMainProxy.registRender(BeefPlateEntity.class, PlateBeefRenderer.class);
-		ClientMainProxy.registRender(PorkPlateEntity.class, PlatePorkRenderer.class);
-		ClientMainProxy.registRender(ChickenPlateEntity.class, PlateChickenRenderer.class);
-		ClientMainProxy.registRender(FishPlateEntity.class, PlateFishRenderer.class);
-		ClientMainProxy.registRender(PotatoPlateEntity.class, PlatePotatoRenderer.class);
-		ClientMainProxy.registRender(SoupPlateEntity.class, PlateTomatoRenderer.class);
-		ClientMainProxy.registRender(ChocolatePieEntity.class, ChocolatePieRenderer.class);
-		ClientMainProxy.registRender(FruitPieEntity.class, FruitPieRenderer.class);
+		ClientMainProxy.registRender(PlateBeefEntity.class, PlateBeefRenderer.class);
+		ClientMainProxy.registRender(PlatePorkEntity.class, PlatePorkRenderer.class);
+		ClientMainProxy.registRender(PlateChickenEntity.class, PlateChickenRenderer.class);
+		ClientMainProxy.registRender(PlateFishEntity.class, PlateFishRenderer.class);
+		ClientMainProxy.registRender(PlatePotatoEntity.class, PlatePotatoRenderer.class);
+		ClientMainProxy.registRender(PlateSoupEntity.class, PlateTomatoRenderer.class);
+		ClientMainProxy.registRender(PieChocolateEntity.class, ChocolatePieRenderer.class);
+		ClientMainProxy.registRender(PieFruitEntity.class, FruitPieRenderer.class);
 		ClientMainProxy.registRender(EntityTumbler.class, TumblerRenderer.class);
 		ClientMainProxy.registRender(EntityRiceMushroom.class, RiceMushroomRenderer.class);
 		ClientMainProxy.registRender(ClubSandwichSEntity.class, ClubSandwichSRenderer.class);
@@ -69,9 +73,9 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(StewBorschtEntity.class, StewBorschtRenderer.class);
 		ClientMainProxy.registRender(StewMushroomEntity.class, StewMushroomRenderer.class);
 		ClientMainProxy.registRender(StewPurpleEntity.class, StewPurpleRenderer.class);
-		ClientMainProxy.registRender(MuttonStickEntity.class, MuttonStickRenderer.class);
-		ClientMainProxy.registRender(SquidStickEntity.class, SquidStickRenderer.class);
-		ClientMainProxy.registRender(MooncakeEntity.class, MooncakeRenderer.class);
+		ClientMainProxy.registRender(StickMuttonEntity.class, MuttonStickRenderer.class);
+		ClientMainProxy.registRender(StickSquidEntity.class, SquidStickRenderer.class);
+		ClientMainProxy.registRender(PieMooncakeEntity.class, MooncakeRenderer.class);
 		ClientMainProxy.registRender(StewLotusrootEntity.class, StewLotusrootRenderer.class);
 		ClientMainProxy.registRender(StewSquidEntity.class, StewSquidRenderer.class);
 		ClientMainProxy.registRender(PizzaTomatoEntity.class, PizzaTomatoRenderer.class);
@@ -83,10 +87,10 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(CakeCoffeeEntity.class, JellyCoffeeRenderer.class);
 		ClientMainProxy.registRender(CakeLemonEntity.class, JellyLemonRenderer.class);
 		ClientMainProxy.registRender(CakeCreamEntity.class, JellyCreamRenderer.class);
-		ClientMainProxy.registRender(CustardPieEntity.class, CustardPieRenderer.class);
-		ClientMainProxy.registRender(RoundBreadCreamEntity.class, RoundBreadCreamRenderer.class);
+		ClientMainProxy.registRender(PieCustardEntity.class, CustardPieRenderer.class);
+		ClientMainProxy.registRender(BreadRoundCreamEntity.class, RoundBreadCreamRenderer.class);
 		ClientMainProxy.registRender(StewSeaweedEntity.class, StewSeaweedRenderer.class);
-		ClientMainProxy.registRender(CrostataTartEntity.class, CrostataTartRenderer.class);
+		ClientMainProxy.registRender(TartCrostataEntity.class, CrostataTartRenderer.class);
 		ClientMainProxy.registRender(CakeBerryEntity.class, JellyBerryRenderer.class);
 		ClientMainProxy.registRender(CakeKuzuEntity.class, JellyKuzuRenderer.class);
 		ClientMainProxy.registRender(CakeCocotteEntity.class, CakeCocotteRenderer.class);
@@ -101,7 +105,7 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(IceCreamCookieEntity.class, IcecreamCookieRenderer.class);
 		ClientMainProxy.registRender(EntityRiceBallMiso.class, RiceBallMisoRenderer.class);
 		ClientMainProxy.registRender(MochiEntity.class, MochiRenderer.class);
-		ClientMainProxy.registRender(GoheiStickEntity.class, GoheiStickRenderer.class);
+		ClientMainProxy.registRender(StickGoheiEntity.class, GoheiStickRenderer.class);
 		ClientMainProxy.registRender(StewMisosoupEntity.class, StewMisosoupRenderer.class);
 		ClientMainProxy.registRender(StewMotsuEntity.class, StewMotsuRenderer.class);
 		ClientMainProxy.registRender(SimmeredSpinachEntity.class, SimmeredSpinachRenderer.class);
@@ -113,11 +117,11 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(WagashiKurumiEntity.class, WagashiKurumiRenderer.class);
 		ClientMainProxy.registRender(WagashiKurimanjuEntity.class, WagashiKurimanjuRenderer.class);
 		ClientMainProxy.registRender(WagashiNerikiriEntity.class, WagashiNerikiriRenderer.class);
-		ClientMainProxy.registRender(MarshmallowStick.class, MarshmallowStickRenderer.class);
-		ClientMainProxy.registRender(ToastFrenchEntity.class, ToastFrenchRenderer.class);
-		ClientMainProxy.registRender(ToastGarlicEntity.class, ToastGarlicRenderer.class);
-		ClientMainProxy.registRender(PitaBreadEntity.class, PitaBreadRenderer.class);
-		ClientMainProxy.registRender(PancakeEntity.class, PancakeRenderer.class);
+		ClientMainProxy.registRender(StickMarshmallowEntity.class, MarshmallowStickRenderer.class);
+		ClientMainProxy.registRender(BreadToastFrenchEntity.class, ToastFrenchRenderer.class);
+		ClientMainProxy.registRender(BreadToastGarlicEntity.class, ToastGarlicRenderer.class);
+		ClientMainProxy.registRender(BreadPitaEntity.class, PitaBreadRenderer.class);
+		ClientMainProxy.registRender(BreadPancakeEntity.class, PancakeRenderer.class);
 		ClientMainProxy.registRender(StewChiliEntity.class, StewChiliRenderer.class);
 		ClientMainProxy.registRender(StewGarlicOilEntity.class, StewGarlicOilRenderer.class);
 		ClientMainProxy.registRender(StewLazijiEntity.class, StewLazijiRenderer.class);
@@ -136,9 +140,9 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(FriedFalafelEntity.class, FriedFalafelRenderer.class);
 		ClientMainProxy.registRender(MealBreakfastBEntity.class, SetmealBreakfastRenderer.class);
 		ClientMainProxy.registRender(MealBreakfastJEntity.class, SetmealBreakfastJRenderer.class);
-		ClientMainProxy.registRender(BigGarlicPlateEntity.class, PlateBigGarlicRenderer.class);
-		ClientMainProxy.registRender(WalnutBreadEntity.class, WalnutBreadRenderer.class);
-		ClientMainProxy.registRender(GingermanEntity.class, GingermanRenderer.class);
+		ClientMainProxy.registRender(PlateBigGarlicEntity.class, PlateBigGarlicRenderer.class);
+		ClientMainProxy.registRender(BreadWalnutEntity.class, WalnutBreadRenderer.class);
+		ClientMainProxy.registRender(BreadGingermanEntity.class, GingermanRenderer.class);
 		ClientMainProxy.registRender(SimmeredPumpkinEntity.class, SimmeredPumpkinRenderer.class);
 		ClientMainProxy.registRender(SaladSalmonEntity.class, SaladSalmonRenderer.class);
 		ClientMainProxy.registRender(SaladTofuEntity.class, SaladTofuRenderer.class);
@@ -169,14 +173,37 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(PlateGratinEntity.class, PlateGratinRenderer.class);
 		ClientMainProxy.registRender(PlatePaellaEntity.class, PlatePaellaRenderer.class);
 		ClientMainProxy.registRender(PlateMeatPaellaEntity.class, PlateMeatPaellaRenderer.class);
-		ClientMainProxy.registRender(TortillaEntity.class, TortillaRenderer.class);
+		ClientMainProxy.registRender(BreadTortillaEntity.class, TortillaRenderer.class);
 		ClientMainProxy.registRender(FriedPrawnEntity.class, FriedPrawnRenderer.class);
-		ClientMainProxy.registRender(MotuStickEntity.class, MotuStickRenderer.class);
-		ClientMainProxy.registRender(RaisinBreadEntity.class, RaisinBreadRenderer.class);
+		ClientMainProxy.registRender(StickMotuEntity.class, MotuStickRenderer.class);
+		ClientMainProxy.registRender(BreadRaisinEntity.class, RaisinBreadRenderer.class);
 		ClientMainProxy.registRender(CakeGrapeEntity.class, JellyGrapeRenderer.class);
 		ClientMainProxy.registRender(IceCreamCocoaEntity.class, IcecreamCocoaRenderer.class);
 		ClientMainProxy.registRender(ParfaitBerryEntity.class, ParfaitBerryRenderer.class);
 		ClientMainProxy.registRender(ParfaitCitrusEntity.class, ParfaitCitrusRenderer.class);
+		ClientMainProxy.registRender(BreadSausageEntity.class, SausageBreadRenderer.class);
+		ClientMainProxy.registRender(BreadGrahamCrackerEntity.class, GrahamCrackerRenderer.class);
+		ClientMainProxy.registRender(TartChocolateEntity.class, ChocolateTartRenderer.class);
+		ClientMainProxy.registRender(SandwichLiverEntity.class, SandwichLiverRenderer.class);
+		ClientMainProxy.registRender(SandwichSalmonEntity.class, SandwichSalmonRenderer.class);
+		ClientMainProxy.registRender(CakeOnionEntity.class, CakeOnionRenderer.class);
+		ClientMainProxy.registRender(CakeSmoreEntity.class, CakeSmoreRenderer.class);
+		ClientMainProxy.registRender(CakeRaisinEntity.class, CakeRaisinRenderer.class);
+		ClientMainProxy.registRender(DishIkameshiEntity.class, DishIkameshiRenderer.class);
+		ClientMainProxy.registRender(SauceLiverEntity.class, SauceLiverRenderer.class);
+		ClientMainProxy.registRender(SauceRaisinEntity.class, SauceRaisinRenderer.class);
+		ClientMainProxy.registRender(SauceSalsaEntity.class, SauceSalsaRenderer.class);
+		ClientMainProxy.registRender(MealBreakfastJ2Entity.class, SetmealBreakfastJ2Renderer.class);
+		ClientMainProxy.registRender(PlateBigChickenEntity.class, PlateBigChickenRenderer.class);
+		ClientMainProxy.registRender(TartCustardEntity.class, CustardTartRenderer.class);
+		ClientMainProxy.registRender(TartLiverEntity.class, LiverTartRenderer.class);
+		ClientMainProxy.registRender(PastaOilEntity.class, PastaOilRenderer.class);
+		ClientMainProxy.registRender(PastaBasilEntity.class, PastaBasilRenderer.class);
+		ClientMainProxy.registRender(PastaTomatoEntity.class, PastaTomatoRenderer.class);
+		ClientMainProxy.registRender(PastaPrawnEntity.class, PastaPrawnRenderer.class);
+		ClientMainProxy.registRender(PastaCodEntity.class, PastaCodRenderer.class);
+		ClientMainProxy.registRender(PastaSquidEntity.class, PastaSquidRenderer.class);
+		ClientMainProxy.registRender(PastaBeefEntity.class, PastaBeefRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -184,6 +211,8 @@ public class FoodClientProxy {
 		ClientMainProxy.registerTileEntity(TileSteelPot.class, "dcs_te_steel_pot", new TESRSteelPot());
 		ClientMainProxy.registerTileEntity(TileTeaPot.class, "dcs_te_tea_pot", new TESRTeaPot());
 		GameRegistry.registerTileEntity(TileSilkwormBox.class, "dcs_te_silkworm_box");
+		ClientMainProxy.registerTileEntity(TileSkillet.class, "dcs_te_skillet", new TESRSkillet());
+		ClientMainProxy.registerTileEntity(TileEntityLotus.class, "dcs_te_crop_lotus", new TESRLotusCrop());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -192,7 +221,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.teaLeaves, ClimateCore.PACKAGE_ID, "dcs_food_leaves", "food", 2);
 		instance.regSimpleItem(FoodInit.dropOil, ClimateCore.PACKAGE_ID, "dcs_food_drop_oil", "food", 0);
 		instance.regSimpleItem(FoodInit.dropCream, ClimateCore.PACKAGE_ID, "dcs_food_drop_cream", "food", 0);
-		instance.regSimpleItem(FoodInit.bread, ClimateCore.PACKAGE_ID, "dcs_round_bread", "food", 23);
+		instance.regSimpleItem(FoodInit.bread, ClimateCore.PACKAGE_ID, "dcs_round_bread", "food", 27);
 		instance.regSimpleItem(FoodInit.sticks, ClimateCore.PACKAGE_ID, "dcs_stick_foods", "food", 17);
 		instance.regSimpleItem(FoodInit.crops, ClimateCore.PACKAGE_ID, "dcs_crops", "food", 20);
 		instance.regSimpleItem(FoodInit.seeds, ClimateCore.PACKAGE_ID, "dcs_seeds", "food", 16);
@@ -201,28 +230,30 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.dairy, ClimateCore.PACKAGE_ID, "dcs_food_dairy", "food", 4);
 		instance.regSimpleItem(FoodInit.meat, ClimateCore.PACKAGE_ID, "dcs_food_meat", "food", 9);
 		instance.regSimpleItem(FoodInit.pastry, ClimateCore.PACKAGE_ID, "dcs_food_pastry", "food", 1);
-		instance.regSimpleItem(FoodInit.pastryRound, ClimateCore.PACKAGE_ID, "dcs_food_tart", "food", 9);
+		instance.regSimpleItem(FoodInit.pastryRound, ClimateCore.PACKAGE_ID, "dcs_food_tart", "food", 15);
 		instance.regSimpleItem(FoodInit.pastrySquare, ClimateCore.PACKAGE_ID, "dcs_food_pie", "food", 11);
-		instance.regSimpleItem(FoodInit.sandwich, ClimateCore.PACKAGE_ID, "dcs_food_sandwich", "food", 3);
+		instance.regSimpleItem(FoodInit.sandwich, ClimateCore.PACKAGE_ID, "dcs_food_sandwich", "food", 5);
 		instance.regSimpleItem(FoodInit.clubsandwich, ClimateCore.PACKAGE_ID, "dcs_food_clubsand", "food", 1);
 		instance.regSimpleItem(FoodInit.ricebowl, ClimateCore.PACKAGE_ID, "dcs_food_rice_bowl", "food", 4);
 		instance.regSimpleItem(FoodInit.steakplate, ClimateCore.PACKAGE_ID, "dcs_food_empty_plate", "food", 0);
-		instance.regSimpleItem(FoodInit.plateMeal, ClimateCore.PACKAGE_ID, "dcs_food_plate_meat", "food", 9);
+		instance.regSimpleItem(FoodInit.plateMeal, ClimateCore.PACKAGE_ID, "dcs_food_plate_meat", "food", 11);
 		instance.regSimpleItem(FoodInit.plateSoup, ClimateCore.PACKAGE_ID, "dcs_food_plate_potato", "food", 9);
 		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 15);
 		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 11);
-		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 12);
+		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 16);
 		instance.regSimpleItem(FoodInit.icecream, ClimateCore.PACKAGE_ID, "dcs_food_icecream", "food", 7);
 		instance.regSimpleItem(FoodInit.mochi, ClimateCore.PACKAGE_ID, "dcs_food_mochi", "food", 1);
 		instance.regSimpleItem(FoodInit.wagashi, ClimateCore.PACKAGE_ID, "dcs_food_wagashi", "food", 8);
-		instance.regSimpleItem(FoodInit.nonEntity, ClimateCore.PACKAGE_ID, "dcs_food_noentity", "food", 5);
+		instance.regSimpleItem(FoodInit.nonEntity, ClimateCore.PACKAGE_ID, "dcs_food_noentity", "food", 7);
 		instance.regSimpleItem(FoodInit.snack, ClimateCore.PACKAGE_ID, "dcs_food_snack", "food", 5);
 		instance.regSimpleItem(FoodInit.deepFry, ClimateCore.PACKAGE_ID, "dcs_food_frying", "food", 6);
-		instance.regSimpleItem(FoodInit.setMeal, ClimateCore.PACKAGE_ID, "dcs_food_setmeal", "food", 1);
+		instance.regSimpleItem(FoodInit.setMeal, ClimateCore.PACKAGE_ID, "dcs_food_setmeal", "food", 2);
 		instance.regSimpleItem(FoodInit.dishSq, ClimateCore.PACKAGE_ID, "dcs_food_dish_sq", "food", 7);
-		instance.regSimpleItem(FoodInit.dishBig, ClimateCore.PACKAGE_ID, "dcs_food_dish_big", "food", 4);
+		instance.regSimpleItem(FoodInit.dishBig, ClimateCore.PACKAGE_ID, "dcs_food_dish_big", "food", 5);
 		instance.regSimpleItem(FoodInit.udon, ClimateCore.PACKAGE_ID, "dcs_food_udon", "food", 2);
+		instance.regSimpleItem(FoodInit.pasta, ClimateCore.PACKAGE_ID, "dcs_food_pasta", "food", 6);
 		instance.regSimpleItem(FoodInit.drink, ClimateCore.PACKAGE_ID, "dcs_food_drink", "food", 2);
+		instance.regSimpleItem(FoodInit.dip, ClimateCore.PACKAGE_ID, "dcs_food_dipsauce", "food", 2);
 
 		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 20);
 
@@ -238,6 +269,7 @@ public class FoodClientProxy {
 		instance.regSimpleBlock(FoodInit.dish, ClimateCore.PACKAGE_ID, "dcs_build_dish", "build", 1);
 
 		instance.regTEBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_ID, "dcs_device_pottery_pot", "machine", 0);
+		instance.regTEBlock(FoodInit.skillet, ClimateCore.PACKAGE_ID, "dcs_device_skillet", "machine", 0);
 		instance.regTEBlock(FoodInit.steelPot, ClimateCore.PACKAGE_ID, "dcs_device_steel_pot", "machine", 0);
 		instance.regTEBlock(FoodInit.teaPot, ClimateCore.PACKAGE_ID, "dcs_device_tea_pot", "machine", 0);
 		instance.regSimpleBlock(FoodInit.silkwormBox, ClimateCore.PACKAGE_ID, "dcs_device_silkworm_box", "device", 0);
@@ -250,6 +282,27 @@ public class FoodClientProxy {
 			ModelLoader.setCustomModelResourceLocation(Item
 					.getItemFromBlock(FoodInit.cropLotus), i, new ModelResourceLocation(
 							"dcs_climate:crop/dcs_crop_lotus", "inventory"));
+		}
+
+		ModelLoader.setCustomStateMapper(FoodInit.cropLotusN, (new StateMap.Builder()).ignore(DCState.STAGE8)
+				.ignore(BlockLotusN.BLACK).build());
+		ModelBakery.registerItemVariants(Item.getItemFromBlock(FoodInit.cropLotusN), new ModelResourceLocation(
+				"dcs_climate:dcs_crop_lotus2"));
+		for (int i = 0; i < 16; i++) {
+			int m = i & 7;
+			int m2 = 0;
+			if (m == 1) {
+				m2 = 0;
+			} else if (m == 2 || m == 3) {
+				m2 = 1;
+			} else if (m == 4 || m == 5) {
+				m2 = 2;
+			} else {
+				m2 = 3;
+			}
+			ModelLoader.setCustomModelResourceLocation(Item
+					.getItemFromBlock(FoodInit.cropLotusN), i, new ModelResourceLocation(
+							"dcs_climate:crop/dcs_crop_lotus2_" + m2, "inventory"));
 		}
 
 		ModelLoader.setCustomStateMapper(FoodInit.cropSeaweed, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL)

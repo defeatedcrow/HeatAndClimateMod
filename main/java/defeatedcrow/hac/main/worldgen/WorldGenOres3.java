@@ -12,6 +12,7 @@ import defeatedcrow.hac.main.api.orevein.VeinTable;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockEmptyDrops;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -79,7 +80,8 @@ public class WorldGenOres3 implements IWorldGenerator {
 	}
 
 	static boolean isPlaceable(IBlockState block) {
-		if (block.isNormalCube() && !(block.getBlock() instanceof BlockEmptyDrops))
+		if (block.isNormalCube() && !(block.getBlock() instanceof BlockEmptyDrops) && !(block
+				.getBlock() instanceof BlockContainer))
 			return block.getMaterial() == Material.ROCK || block.getMaterial() == Material.SAND || block
 					.getMaterial() == Material.GROUND || block.getMaterial() == Material.GRASS;
 

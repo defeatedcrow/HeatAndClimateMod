@@ -32,6 +32,8 @@ public class FoodInit {
 	public static Item dishBig;
 	public static Item drink;
 	public static Item udon;
+	public static Item dip;
+	public static Item pasta;
 
 	public static Item crops;
 	public static Item seeds;
@@ -53,6 +55,7 @@ public class FoodInit {
 	public static Block potteryPot;
 	public static Block steelPot;
 	public static Block teaPot;
+	public static Block skillet;
 	public static Block dish;
 	public static Block silkwormBox;
 
@@ -73,6 +76,7 @@ public class FoodInit {
 	public static Block cropWisteria;
 	public static Block cropGinger;
 	public static Block cropGrape;
+	public static Block cropLotusN;
 
 	public static Block leavesOlive;
 	public static Block leavesLemon;

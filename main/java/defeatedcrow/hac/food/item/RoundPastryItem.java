@@ -8,11 +8,14 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.AppleTartEntity;
-import defeatedcrow.hac.food.entity.CrostataTartEntity;
-import defeatedcrow.hac.food.entity.LemonTartEntity;
-import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
-import defeatedcrow.hac.food.entity.SpinachQuicheEntity;
+import defeatedcrow.hac.food.entity.QuichePotatoEntity;
+import defeatedcrow.hac.food.entity.QuicheSpinachEntity;
+import defeatedcrow.hac.food.entity.TartAppleEntity;
+import defeatedcrow.hac.food.entity.TartChocolateEntity;
+import defeatedcrow.hac.food.entity.TartCrostataEntity;
+import defeatedcrow.hac.food.entity.TartCustardEntity;
+import defeatedcrow.hac.food.entity.TartLemonEntity;
+import defeatedcrow.hac.food.entity.TartLiverEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,7 +34,7 @@ public class RoundPastryItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 9;
+		return 15;
 	}
 
 	@Override
@@ -47,17 +50,22 @@ public class RoundPastryItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-				"apple_raw",
-				"apple_baked",
-				"lemon_raw",
-				"lemon_baked",
-				"spinach_raw",
-				"spinach_baked",
-				"potato_raw",
-				"potato_baked",
-				"crostata_raw",
-				"crostata_baked"
-		};
+			"apple_raw",
+			"apple_baked",
+			"lemon_raw",
+			"lemon_baked",
+			"spinach_raw",
+			"spinach_baked",
+			"potato_raw",
+			"potato_baked",
+			"crostata_raw",
+			"crostata_baked",
+			"chocolate_raw",
+			"chocolate_baked",
+			"custard_raw",
+			"custard_baked",
+			"liver_raw",
+			"liver_baked" };
 		return s;
 	}
 
@@ -68,26 +76,38 @@ public class RoundPastryItem extends FoodItemBase {
 		switch (i) {
 		case 0:
 		case 1:
-			ret = new AppleTartEntity(world, x, y, z, player);
+			ret = new TartAppleEntity(world, x, y, z, player);
 			break;
 		case 2:
 		case 3:
-			ret = new LemonTartEntity(world, x, y, z, player);
+			ret = new TartLemonEntity(world, x, y, z, player);
 			break;
 		case 4:
 		case 5:
-			ret = new SpinachQuicheEntity(world, x, y, z, player);
+			ret = new QuicheSpinachEntity(world, x, y, z, player);
 			break;
 		case 6:
 		case 7:
-			ret = new PotatoQuicheEntity(world, x, y, z, player);
+			ret = new QuichePotatoEntity(world, x, y, z, player);
 			break;
 		case 8:
 		case 9:
-			ret = new CrostataTartEntity(world, x, y, z, player);
+			ret = new TartCrostataEntity(world, x, y, z, player);
+			break;
+		case 10:
+		case 11:
+			ret = new TartChocolateEntity(world, x, y, z, player);
+			break;
+		case 12:
+		case 13:
+			ret = new TartCustardEntity(world, x, y, z, player);
+			break;
+		case 14:
+		case 15:
+			ret = new TartLiverEntity(world, x, y, z, player);
 			break;
 		default:
-			ret = new AppleTartEntity(world, x, y, z, player);
+			ret = new TartAppleEntity(world, x, y, z, player);
 		}
 
 		if (ret != null && (i & 1) == 0) {
@@ -109,6 +129,11 @@ public class RoundPastryItem extends FoodItemBase {
 			return 12;
 		case 9:
 			return 10;
+		case 11:
+		case 13:
+			return 12;
+		case 15:
+			return 14;
 		default:
 			return 0;
 		}

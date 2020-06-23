@@ -8,6 +8,8 @@ import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TileIBC;
 import defeatedcrow.hac.machine.block.TileReactor;
+import defeatedcrow.hac.machine.block.tankyard.TileTankYard;
+import defeatedcrow.hac.machine.block.tankyard.TileYardPart;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.util.DCName;
@@ -38,12 +40,13 @@ public class HUDHandlerFluidDC extends HUDHandlerBlocks {
 		if (accessor.getNBTData() != null && accessor.getNBTData().hasKey("DCTank")) {
 			NBTTagList list = accessor.getNBTData().getTagList("DCTank", 10);
 			NBTTagCompound nbt2 = list.getCompoundTagAt(0);
+			int lim = accessor.getNBTData().getInteger("Limit");
 			if (!nbt2.hasKey("Empty")) {
 				FluidStack fluid = FluidStack.loadFluidStackFromNBT(nbt2);
 				if (fluid != null && fluid.getFluid() != null) {
 					currenttip.add(String.format(DCName.FLUID.getLocalizedName() + " : %s", fluid.getLocalizedName()));
-					currenttip.add(String.format(DCName.AMOUNT.getLocalizedName() + " : %d mB", fluid.amount));
-
+					currenttip.add(String.format(DCName.AMOUNT
+							.getLocalizedName() + " : %d / %d mB", fluid.amount, lim));
 				}
 			}
 
@@ -57,8 +60,10 @@ public class HUDHandlerFluidDC extends HUDHandlerBlocks {
 			BlockPos pos) {
 		if (te.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
 			IFluidHandler tank = te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
-			if (tank != null && tank instanceof DCTank)
+			if (tank != null && tank instanceof DCTank) {
+				tag.setInteger("Limit", ((DCTank) tank).getCapacity());
 				return ((DCTank) tank).writeToNBT(tag, "DCTank");
+			}
 		}
 		return te.writeToNBT(tag);
 	}
@@ -73,6 +78,12 @@ public class HUDHandlerFluidDC extends HUDHandlerBlocks {
 
 		registrar.registerBodyProvider(provider, TileIBC.class);
 		registrar.registerNBTProvider(provider, TileIBC.class);
+
+		registrar.registerBodyProvider(provider, TileTankYard.class);
+		registrar.registerNBTProvider(provider, TileTankYard.class);
+
+		registrar.registerBodyProvider(provider, TileYardPart.class);
+		registrar.registerNBTProvider(provider, TileYardPart.class);
 
 		registrar.registerBodyProvider(provider, TileHopperFluid.class);
 		registrar.registerNBTProvider(provider, TileHopperFluid.class);

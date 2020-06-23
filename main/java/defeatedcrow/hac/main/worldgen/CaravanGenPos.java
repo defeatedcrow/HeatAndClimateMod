@@ -3,7 +3,12 @@ package defeatedcrow.hac.main.worldgen;
 import java.util.Random;
 
 import defeatedcrow.hac.main.config.WorldGenConfig;
+import defeatedcrow.hac.main.worldgen.CaravanGenEvent.CaravanType;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -17,7 +22,7 @@ public class CaravanGenPos {
 
 	public static Chunk chunk = null;
 
-	public static boolean isDupe(int cx, int cz, World world) {
+	public static int isDupe(int cx, int cz, World world) {
 		int count = 0;
 		for (int x = -8; x < 9; x++) {
 			for (int z = -8; z < 9; z++) {
@@ -26,7 +31,7 @@ public class CaravanGenPos {
 				}
 			}
 		}
-		return count > 0;
+		return count;
 	}
 
 	public static boolean isAlreadyHasCaravan(int cx, int cz, World world) {
@@ -71,9 +76,8 @@ public class CaravanGenPos {
 	}
 
 	public static boolean canGeneratePos(int cx, int cz, World world) {
-		long seed = world.getSeed() + cx + cz * 31;
+		long seed = world.getSeed() + cx * 31 + cz * 131;
 		Random rand = new Random(seed);
-		rand.nextFloat();
 		rand.nextFloat();
 		rand.nextFloat();
 		float r = rand.nextFloat() * 10000F;
@@ -85,7 +89,7 @@ public class CaravanGenPos {
 	}
 
 	public static int[] getRoomNum(int cx, int cz, World world) {
-		long seed = world.getSeed() + cx + cz * 31;
+		long seed = world.getSeed() + cx * 31 + cz * 131;
 		Random rand = new Random(seed);
 		rand.nextInt(4);
 		rand.nextInt(4);
@@ -99,9 +103,7 @@ public class CaravanGenPos {
 
 	public static boolean canGenerateBiome(int cx, int cz, World world) {
 		if (world != null) {
-			Chunk chunk = world.getChunkFromChunkCoords(cx, cz);
-			byte biomeID = chunk.getBiomeArray()[7 << 4 | 7];
-			Biome biome = Biome.getBiome(biomeID);
+			Biome biome = getBiome(cx, cz, world);
 			if (biome != null) {
 				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary
 						.hasType(biome, BiomeDictionary.Type.SAVANNA);
@@ -111,6 +113,36 @@ public class CaravanGenPos {
 			}
 		}
 		return false;
+	}
+
+	public static Biome getBiome(int cx, int cz, World world) {
+		int x = 8 + cx * 16;
+		int z = 8 + cz * 16;
+		Biome ret = null;
+		Biome[] gen = world.getBiomeProvider().getBiomes(null, cx * 16, cz * 16, 16, 16, false);
+		boolean f = world.isBlockLoaded(new BlockPos(x, 0, z));
+		if (gen != null) {
+			ret = gen[8 + 8 * 16];
+			// DCLogger.debugInfoLog("Caravan Test: Loaded " + f + ", Biome" + ret.getBiomeName());
+		}
+		return ret;
+	}
+
+	public static CaravanType getType(World world, int x, int z) {
+		IBlockState state = world.getBlockState(new BlockPos(7 + x * 16, 61, 7 + z * 16));
+		if (state != null) {
+			Block block = state.getBlock();
+			if (block == Blocks.IRON_BLOCK) {
+				return CaravanType.UNINIT;
+			} else if (block == Blocks.DIAMOND_BLOCK) {
+				return CaravanType.LOADED;
+			} else if (block == Blocks.EMERALD_BLOCK) {
+				return CaravanType.STANDBY;
+			} else {
+				return CaravanType.BROKEN;
+			}
+		}
+		return CaravanType.BROKEN;
 	}
 
 }

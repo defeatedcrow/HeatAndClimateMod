@@ -21,6 +21,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
@@ -285,6 +286,29 @@ public class ItemFluidPack extends DCItem {
 
 	/* 飲用効果 */
 
+	@Override
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target,
+			EnumHand hand) {
+		if (!DCUtil.isEmpty(stack) && stack.getMetadata() == 0) {
+			if (target instanceof EntityCow) {
+				if (!player.world.isRemote) {
+					EntityItem drop = new EntityItem(player.world, player.posX, player.posY + 0.5D, player.posZ,
+							new ItemStack(this, 1, 2));
+					player.world.spawnEntity(drop);
+				}
+				if (!player.capabilities.isCreativeMode) {
+					DCUtil.reduceStackSize(stack, 1);
+				}
+				return true;
+			}
+		} else if (this.addEffects(stack, player.world, target)) {
+			this.dropContainerItem(player.world, stack, player);
+			DCUtil.reduceStackSize(stack, 1);
+			return true;
+		}
+		return super.itemInteractionForEntity(stack, player, target, hand);
+	}
+
 	// カラなら飲食できない
 	@Override
 	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
@@ -292,8 +316,8 @@ public class ItemFluidPack extends DCItem {
 			ItemStack item = player.getHeldItem(hand);
 			/* 水のみ直接汲むことができる */
 			if (!DCUtil.isEmpty(item)) {
+				RayTraceResult res = this.rayTrace(world, player, true);
 				if (item.getItemDamage() == 0) {
-					RayTraceResult res = this.rayTrace(world, player, true);
 					if (res != null && res.typeOfHit == RayTraceResult.Type.BLOCK) {
 						BlockPos pos = res.getBlockPos();
 						if (world.isBlockModifiable(player, pos) && player.canPlayerEdit(pos
@@ -313,15 +337,16 @@ public class ItemFluidPack extends DCItem {
 							}
 						}
 					}
-					return new ActionResult<ItemStack>(EnumActionResult.PASS, item);
 				} else {
-					player.setActiveHand(hand);
-					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+					ActionResult<ItemStack> ret = super.onItemRightClick2(world, player, hand);
+					if (ret.getType() == EnumActionResult.PASS) {
+						player.setActiveHand(hand);
+						return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+					}
 				}
 			}
-			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.FAIL, ItemStack.EMPTY);
+		return super.onItemRightClick2(world, player, hand);
 	}
 
 	@Override
@@ -341,22 +366,11 @@ public class ItemFluidPack extends DCItem {
 		return stack;
 	}
 
-	@Override
-	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target,
-			EnumHand hand) {
-		if (this.addEffects(stack, player.world, target)) {
-			if (!player.capabilities.isCreativeMode) {
-				this.dropContainerItem(player.world, stack, player);
-				DCUtil.reduceStackSize(stack, 1);
-			}
-			return true;
-		}
-		return super.itemInteractionForEntity(stack, player, target, hand);
-	}
-
 	public boolean addEffects(ItemStack stack, World world, EntityLivingBase living) {
-		if (!world.isRemote && stack != null) {
+		if (!world.isRemote && !DCUtil.isEmpty(stack) && living != null) {
 			int meta = stack.getMetadata();
+			if (meta == 0)
+				return false;
 			Fluid fluid = getFluid(meta);
 			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 1F, 1);
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);

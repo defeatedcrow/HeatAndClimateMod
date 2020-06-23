@@ -7,10 +7,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelTart;
-import defeatedcrow.hac.food.entity.PotatoQuicheEntity;
+import defeatedcrow.hac.food.entity.QuichePotatoEntity;
 
 @SideOnly(Side.CLIENT)
-public class PotatoQuicheRenderer extends DCRenderFoodBase<PotatoQuicheEntity> {
+public class PotatoQuicheRenderer extends DCRenderFoodBase<QuichePotatoEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/quiche_potato_raw.png");

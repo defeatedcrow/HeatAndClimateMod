@@ -34,7 +34,8 @@ public class BlockMetalAlloy extends DCSimpleBlock implements ITexturePath, IRap
 		"sus",
 		"magnet",
 		"titanium",
-		"bscco" };
+		"bscco",
+		"mangalloy" };
 
 	@Override
 	public String[] getNameSuffix() {

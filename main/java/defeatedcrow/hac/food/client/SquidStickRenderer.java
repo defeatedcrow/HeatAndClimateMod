@@ -5,7 +5,7 @@ import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.client.model.ModelStickBase;
-import defeatedcrow.hac.food.entity.SquidStickEntity;
+import defeatedcrow.hac.food.entity.StickSquidEntity;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class SquidStickRenderer extends DCRenderFoodBase<SquidStickEntity> {
+public class SquidStickRenderer extends DCRenderFoodBase<StickSquidEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/stick_base.png");
@@ -41,7 +41,7 @@ public class SquidStickRenderer extends DCRenderFoodBase<SquidStickEntity> {
 	}
 
 	@Override
-	public void doRender(SquidStickEntity entity, double x, double y, double z, float yaw, float partialTicks) {
+	public void doRender(StickSquidEntity entity, double x, double y, double z, float yaw, float partialTicks) {
 		float height = entity.height * 0.5F;
 		EnumFacing side = entity.getSide();
 		boolean baked = !entity.getRaw();
@@ -56,7 +56,7 @@ public class SquidStickRenderer extends DCRenderFoodBase<SquidStickEntity> {
 		super.doRender(entity, x, y, z, yaw, partialTicks);
 	}
 
-	private void renderItem(SquidStickEntity entity, boolean baked, int i) {
+	private void renderItem(StickSquidEntity entity, boolean baked, int i) {
 		ItemStack fish = baked ? COOKED_ITEM : RAW_ITEM;
 
 		if (!DCUtil.isEmpty(fish)) {

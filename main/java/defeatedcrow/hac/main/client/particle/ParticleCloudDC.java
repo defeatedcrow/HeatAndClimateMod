@@ -22,9 +22,9 @@ public class ParticleCloudDC extends Particle {
 	protected ParticleCloudDC(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn,
 			double ySpeedIn, double zSpeedIn) {
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
-		this.motionX = this.motionX * 0.01D + xSpeedIn;
-		this.motionY = this.motionY * 0.01D + ySpeedIn;
-		this.motionZ = this.motionZ * 0.01D + zSpeedIn;
+		this.motionX = xSpeedIn;
+		this.motionY = 0.05D + ySpeedIn;
+		this.motionZ = zSpeedIn;
 		this.flameScale = this.particleScale;
 		this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
 		this.particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D)) + 4;
@@ -45,9 +45,7 @@ public class ParticleCloudDC extends Particle {
 		int r = (color >> 16) & 255;
 		int g = (color >> 8) & 255;
 		int b = color & 255;
-		return new int[] {
-				r, g, b
-		};
+		return new int[] { r, g, b };
 	}
 
 	@Override
@@ -63,9 +61,8 @@ public class ParticleCloudDC extends Particle {
 	public void renderParticle(BufferBuilder worldRendererIn, Entity entityIn, float partialTicks, float rotationX,
 			float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
 		float f = (this.particleAge + partialTicks) / this.particleMaxAge;
-		this.particleScale = this.flameScale * (1.0F + f * 0.5F);
-		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY,
-				rotationXZ);
+		this.particleScale = this.flameScale * (2.0F + f * 0.5F);
+		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
 	}
 
 	@Override
@@ -95,13 +92,9 @@ public class ParticleCloudDC extends Particle {
 		}
 
 		this.move(this.motionX, this.motionY, this.motionZ);
-		this.motionX *= 0.95D;
-		this.motionY += 0.001D;
-		this.motionZ *= 0.95D;
-
-		if (motionY > 1.00D) {
-			motionY = 1.00D;
-		}
+		this.motionX *= 0.9D;
+		this.motionY *= 0.9D;
+		this.motionZ *= 0.9D;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -36,7 +36,7 @@ public class TileMagnetChest extends TileLowChest {
 
 			if (!list.isEmpty()) {
 				for (EntityItem drop : list) {
-					if (drop != null && !DCUtil.isEmpty(drop.getItem())) {
+					if (drop != null && !DCUtil.isEmpty(drop.getItem()) && this.isItemValidForSlot(1, drop.getItem())) {
 						ItemStack copy = drop.getItem().copy();
 						int slot = canInsertSlot(copy);
 						// DCLogger.debugLog("slot: " + slot);

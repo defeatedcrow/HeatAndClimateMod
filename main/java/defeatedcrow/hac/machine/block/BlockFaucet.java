@@ -90,7 +90,7 @@ public class BlockFaucet extends BlockContainerDC {
 
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.MODEL;
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Override

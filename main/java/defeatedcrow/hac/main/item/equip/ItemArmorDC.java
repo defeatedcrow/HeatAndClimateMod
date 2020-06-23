@@ -235,4 +235,21 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath, IColorableAr
 		return chat.toString();
 	}
 
+	public static ItemStack setRondomColor(ItemStack stack) {
+		if (DCUtil.isEmpty(stack))
+			return stack;
+		if (stack.getItem() instanceof ItemArmorDC && ((ItemArmorDC) stack.getItem()).getColorableList() != null) {
+			EnumDyeColor[] list = ((ItemArmorDC) stack.getItem()).getColorableList();
+			int c = itemRand.nextInt(list.length);
+			NBTTagCompound tag = stack.getTagCompound();
+			if (tag == null) {
+				tag = new NBTTagCompound();
+				stack.setTagCompound(tag);
+			}
+			tag.setInteger("color", list[c].getMetadata());
+			stack.setTagCompound(tag);
+		}
+		return stack;
+	}
+
 }

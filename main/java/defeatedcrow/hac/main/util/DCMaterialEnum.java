@@ -27,13 +27,13 @@ public enum DCMaterialEnum {
 	SILVER(5, "silver", 2.0F, new int[] { 4, 8, 7, 4 }, 1, 256, 12.0F, 22, 1.0F, 1.0F, new ItemStack(MainInit.oreIngot,
 			1, 3), SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.5F),
 	// 普段使い用の金属。鉄の上位互換。
-	BRASS(6, "brass", 2.0F, new int[] { 3, 6, 5, 2 }, 2, 480, 6.0F, 10, 0.25F, 0.25F, new ItemStack(MainInit.oreIngot,
+	BRASS(6, "brass", 2.0F, new int[] { 3, 6, 5, 2 }, 2, 680, 6.0F, 10, 0.25F, 0.25F, new ItemStack(MainInit.oreIngot,
 			1, 4), SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F),
 	// 耐久値が高いが鉄より弱い
 	NICKELSILVER(7, "nickelsilver", 2.0F, new int[] { 3, 5, 4, 2 }, 2, 1200, 4.0F, 10, 0.5F, 0.5F, new ItemStack(
 			MainInit.oreIngot, 1, 6), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
 	// 熱に弱いが他が強い
-	STEEL(8, "steel", 4.0F, new int[] { 6, 10, 8, 5 }, 3, 720, 8.0F, 5, 0.0F, 0.0F, new ItemStack(MainInit.oreIngot, 1,
+	STEEL(8, "steel", 4.0F, new int[] { 6, 10, 8, 5 }, 3, 800, 8.0F, 5, 0.0F, 0.0F, new ItemStack(MainInit.oreIngot, 1,
 			5), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F),
 	// ピーキー性能
 	CHALCEDONY(9, "chalcedony", 8.0F, new int[] { 6, 12, 7, 6 }, 4, 36, 12.0F, 25, 1.0F, 1.0F, new ItemStack(

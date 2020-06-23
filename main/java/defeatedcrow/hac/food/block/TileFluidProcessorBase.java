@@ -1,11 +1,14 @@
 package defeatedcrow.hac.food.block;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.recipe.IFluidRecipe;
+import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.fluid.DCTank;
@@ -22,6 +25,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
@@ -31,6 +35,7 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import net.minecraftforge.oredict.OreDictionary;
 
 public abstract class TileFluidProcessorBase extends ClimateReceiverLockable implements ISidedInventory {
 
@@ -101,13 +106,13 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			count--;
 		} else {
 			boolean flag = false;
-			if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
+			if (inputT.getFluidAmount() != lastInT) {
 				flag = true;
-				lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
+				lastInT = inputT.getFluidAmount();
 			}
-			if (FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount() != lastOutT) {
+			if (outputT.getFluidAmount() != lastOutT) {
 				flag = true;
-				lastOutT = FluidIDRegisterDC.getID(outputT.getFluidType()) + outputT.getFluidAmount();
+				lastOutT = outputT.getFluidAmount();
 			}
 
 			if (flag) {
@@ -117,7 +122,6 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				int a2 = outputT.getFluidAmount();
 				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, f1, a1, f2, a2));
 			}
-
 			count = 20;
 		}
 	}
@@ -270,14 +274,123 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// レシピにかかる所要時間の取得、0以下の場合はレシピ判定失敗
 	public abstract int getProcessTime();
 
-	// レシピがあるかどうか
-	public abstract boolean canRecipeProcess();
+	// ゲージが進むかどうか
+	public boolean canRecipeProcess() {
+		if (!isSuitableClimate())
+			return false;
+		FluidStack inf = inputT.getFluid();
+		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
+		FluidStack outf = outputT.getFluid();
+		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
+		if (currentRecipe == null) {
+			return false;
+		} else {
+			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {
+				int outAmo = currentRecipe.getOutputFluid() == null ? 0 : currentRecipe.getOutputFluid().amount;
+				return currentRecipe.matchOutput(outs, outf, 3) && outputT.getFluidAmount() + outAmo <= outputT
+						.getCapacity();
+			}
+		}
+		return false;
+	}
 
-	// レシピ開始できるか
-	public abstract boolean canStartProcess();
+	// 処理開始判定
+	public boolean canStartProcess() {
+		if (!isSuitableClimate())
+			return false;
 
-	// 完了処理
-	public abstract boolean onProcess();
+		FluidStack inf = inputT.getFluid();
+		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
+		FluidStack outf = outputT.getFluid();
+		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
+		currentRecipe = RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf);
+		return currentRecipe != null && currentRecipe.matchOutput(outs, outf, 3);
+	}
+
+	// レシピ処理
+	public boolean onProcess() {
+		if (currentRecipe != null) {
+			ItemStack out = currentRecipe.getOutput();
+			ItemStack sec = currentRecipe.getSecondary();
+			float chance = MathHelper.ceil(currentRecipe.getSecondaryChance() * 100);
+			FluidStack inF = currentRecipe.getInputFluid();
+			FluidStack outF = currentRecipe.getOutputFluid();
+
+			if (outF != null) {
+				int c1 = outputT.fill(outF, false);
+				if (c1 < outF.amount)
+					return false;
+			}
+
+			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
+			if (!required.isEmpty()) {
+				for (int i = 4; i < 7; i++) {
+					ItemStack slot = this.getStackInSlot(i);
+					if (!DCUtil.isEmpty(slot)) {
+						boolean inRecipe = false;
+						Iterator<Object> req = required.iterator();
+
+						// 9スロットについて、要求材料の数だけ回す
+						while (req.hasNext()) {
+							boolean match = false;
+							Object next = req.next();
+							int count = 1;
+
+							if (next instanceof ItemStack) {
+								count = ((ItemStack) next).getCount();
+								match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot
+										.getCount() >= count;
+							} else if (next instanceof List) {
+								List<ItemStack> list = new ArrayList<ItemStack>((List<ItemStack>) next);
+								if (list != null && !list.isEmpty()) {
+									for (ItemStack item : list) {
+										boolean f = OreDictionary.itemMatches(item, slot, false) && slot.getCount() > 0;
+										if (f) {
+											match = true;
+										}
+									}
+								}
+							}
+
+							if (match) {
+								inRecipe = true;
+								required.remove(next);
+								this.decrStackSize(i, 1);
+								break;
+							}
+						}
+
+						if (!inRecipe) {
+							break;// 中断
+						}
+					}
+				}
+				if (!required.isEmpty()) {
+					return false;
+				}
+			}
+
+			if (inF != null) {
+				inputT.drain(inF.amount, true);
+			}
+
+			if (outF != null) {
+				outputT.fill(outF, true);
+			}
+
+			if (!DCUtil.isEmpty(out)) {
+				this.insertResult(out.copy(), 7, 10);
+			}
+
+			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance) {
+				this.insertResult(sec.copy(), 7, 10);
+			}
+
+			this.markDirty();
+			return true;
+		}
+		return false;
+	}
 
 	// 気候の適合性
 	public abstract boolean isSuitableClimate();
@@ -285,38 +398,12 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	public abstract String climateSuitableMassage();
 
 	public int canInsertResult(ItemStack item, int s1, int s2) {
-		int ret = 0;
-		if (DCUtil.isEmpty(item))
-			return -1;
-		for (int i = s1; i < s2; i++) {
-			if (DCUtil.isEmpty(this.getStackInSlot(i))) {
-				ret = item.getCount();
-			} else {
-				ret = this.isItemStackable(item, this.getStackInSlot(i));
-			}
-			if (ret > 0)
-				return ret;
-		}
-		return 0;
+		return inv.canInsertResult(item, s1, s2);
 	}
 
 	/** itemの減少数を返す */
 	public int insertResult(ItemStack item, int s1, int s2) {
-		if (DCUtil.isEmpty(item))
-			return 0;
-		for (int i = s1; i < s2; i++) {
-			if (DCUtil.isEmpty(this.getStackInSlot(i))) {
-				this.incrStackInSlot(i, item.copy());
-				return item.getCount();
-			} else {
-				int size = this.isItemStackable(item, this.getStackInSlot(i));
-				if (this.isItemStackable(item, this.getStackInSlot(i)) > 0) {
-					DCUtil.addStackSize(this.getStackInSlot(i), size);
-					return size;
-				}
-			}
-		}
-		return 0;
+		return inv.insertResult(item, s1, s2);
 	}
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */

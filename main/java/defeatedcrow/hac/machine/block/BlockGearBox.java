@@ -5,10 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -21,7 +19,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -46,16 +43,6 @@ public class BlockGearBox extends BlockTorqueBase {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileGearBox();
-	}
-
-	@Override
-	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null) {
-			ItemStack heldItem = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {}
-		}
-		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	// redstone

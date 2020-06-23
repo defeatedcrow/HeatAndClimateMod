@@ -20,10 +20,7 @@ public class MachineInit {
 	public static Block shaft_x;
 	public static Block gearbox;
 
-	public static Block piston;
-
 	public static Block fan;
-	public static Block redbox;
 	public static Block spinning;
 
 	// tier 2
@@ -38,8 +35,11 @@ public class MachineInit {
 	public static Block shaft3_switch;
 
 	public static Block faucet;
+	public static Block faucet_r;
 	public static Block faucet_sus;
 	public static Block IBC;
+	public static Block tankYard;
+	public static Block tankYardPart;
 
 	public static Block conveyor;
 	public static Block hopperFilter;
@@ -54,6 +54,7 @@ public class MachineInit {
 	public static Block stonemill;
 	public static Block heatPump;
 	public static Block catapult;
+	public static Block IBC_reactor;
 
 	public static Block oscillator;
 
@@ -100,6 +101,7 @@ public class MachineInit {
 	public static Block adapterFluidPanel;
 	public static Block acceptorFluidPanel;
 	public static Block wirelessPortal;
+	public static Block playerPanel;
 
 	public static Block reactor;
 	public static Block freezer;

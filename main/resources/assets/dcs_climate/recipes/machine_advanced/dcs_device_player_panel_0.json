@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  " Y ",
+  "ZWZ"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "blockGlass"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemBismuth"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "gemSchorl"
+  },
+  "W": {
+   "item": "dcs_climate:dcs_mechanical",
+   "data": 6
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_player_panel",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -39,9 +39,6 @@ public class OnDeathEventDC {
 			ItemStack charm = ItemStack.EMPTY;
 			if (ModuleConfig.magic) {
 				charm = MainUtil.getCharmItem(player, new ItemStack(MagicInit.colorBadge, 1, 1));
-				if (DCUtil.isEmpty(charm)) {
-					charm = MainUtil.getCharmItem(player, new ItemStack(MagicInit.pendant, 1, 7));
-				}
 			}
 
 			if (!DCUtil.isEmpty(charm)) {
@@ -88,8 +85,7 @@ public class OnDeathEventDC {
 			return;
 
 		if (!(living instanceof EntityPlayer) && dam >= living.getHealth()) {
-			if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorBadge, 1, 1)) || DCUtil
-					.hasCharmItem(living, new ItemStack(MagicInit.pendant, 1, 7))) {
+			if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorBadge, 1, 1))) {
 				// DCLogger.debugInfoLog("on amulet process");
 				living.fallDistance = 0.0F;
 				living.setHealth(living.getMaxHealth() * 0.5F);

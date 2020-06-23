@@ -27,21 +27,21 @@ public class TileFaucet extends DCTileEntity {
 			else {
 				EnumFacing face = DCState.getSide(state, DCState.SIDE).face;
 				TileEntity fromTE = world.getTileEntity(getPos().offset(face));
-				if (fromTE == null
-						|| !fromTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+				if (fromTE == null || !fromTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
+						.getOpposite())) {
 					fromTE = world.getTileEntity(getPos().offset(face, 2));
 				}
 				TileEntity toTE = world.getTileEntity(getPos().down());
-				if (fromTE != null && toTE != null
-						&& fromTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())
-						&& toTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
-					IFluidHandler intank = fromTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-							face.getOpposite());
-					IFluidHandler outtank = toTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-							EnumFacing.UP);
+				if (fromTE != null && toTE != null && fromTE
+						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite()) && toTE
+								.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
+					IFluidHandler intank = fromTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
+							.getOpposite());
+					IFluidHandler outtank = toTE
+							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
 					if (intank != null && outtank != null) {
 
-						int limit = 200; // 200mBまでしか送らない
+						int limit = getLimit();
 
 						// 引き出せる量
 						FluidStack get = intank.drain(limit, false);
@@ -57,6 +57,10 @@ public class TileFaucet extends DCTileEntity {
 				}
 			}
 		}
+	}
+
+	protected int getLimit() {
+		return 200;
 	}
 
 	/* Packet,NBT */

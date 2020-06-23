@@ -7,15 +7,15 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "cropSpinach"
+   "ore": "listAllgreenveggie"
   },
   {
    "type": "forge:ore_dict",
    "ore": "cropOnion"
   },
   {
-   "item": "minecraft:cooked_porkchop",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllmeatcooked"
   }
  ],
  "result": {

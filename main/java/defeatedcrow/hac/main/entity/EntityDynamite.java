@@ -68,14 +68,17 @@ public class EntityDynamite extends Entity {
 			if (!this.isDead) {
 				if (!this.world.isRemote && count == 10) {
 					count = 3;
-					CustomExplosion explosion = new CustomExplosion(world, this, placer, posX, posY, posZ, 4.0F,
+					CustomExplosion explosion = new CustomExplosion(world, this, placer, posX, posY, posZ, getPower(),
 							CustomExplosion.Type.Silk, true);
 					explosion.doExplosion();
 					this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.2F / (this.rand
 							.nextFloat() * 0.2F + 0.9F));
-					doBlockDestroy(3, explosion);
+					doBlockDestroy(getRange(), explosion);
 				} else {
-					world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
+					if (this.getPower() > 2.0F)
+						world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
+					else
+						world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
 				}
 			}
 
@@ -108,7 +111,9 @@ public class EntityDynamite extends Entity {
 						}
 					}
 
-				} else if (this.canExplosionDestroyBlock(exp, world, pos, world.getBlockState(pos), 4F)) {
+				} else if (state != null && state.getBlock()
+						.getExplosionResistance(world, p, getPlacer(), exp) <= 60.0F * range && this
+								.canExplosionDestroyBlock(exp, world, pos, world.getBlockState(pos), range)) {
 					if (isSilk() && state.getBlock().canSilkHarvest(world, p, state, null)) {
 						ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
 						EntityItem drop = new EntityItem(world, p.getX() + 0.5D, p.getY() + 0.5D, p.getZ() + 0.5D,
@@ -125,6 +130,14 @@ public class EntityDynamite extends Entity {
 
 	public boolean isSilk() {
 		return false;
+	}
+
+	public float getPower() {
+		return 4.0F;
+	}
+
+	public int getRange() {
+		return 4;
 	}
 
 	@Override

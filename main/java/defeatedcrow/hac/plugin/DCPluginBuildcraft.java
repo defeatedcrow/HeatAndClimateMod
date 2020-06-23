@@ -5,10 +5,8 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
-import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -37,49 +35,21 @@ public class DCPluginBuildcraft {
 		Item wax = Item.REGISTRY.getObject(new ResourceLocation("buildcrafttransport:waterproof"));
 		if (wax != null) {
 			DCRecipe.addShapelessNBTRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(wax, 1,
-					0), new Object[] {
-							new ItemStack(MachineInit.reagent, 1, 0)
-			});
+					0), new Object[] { new ItemStack(MachineInit.reagent, 1, 0) });
 		}
 
-		if (black == null || gas == null || fuel == null || dense == null || mixed == null || heavy == null ||
-				denseoil == null || dist == null || residue == null)
+		if (black == null || gas == null || fuel == null || dense == null || mixed == null || heavy == null || denseoil == null || dist == null || residue == null)
 			return;
 
-		DCPluginFluid.registerPotion(black, MobEffects.WITHER);
-		MainAPIManager.fuelRegister.registerFuel("oil", 30);
-
-		DCPluginFluid.registerPotion(gas, MobEffects.LEVITATION);
-		MainAPIManager.fuelRegister.registerFuel("fuel_gaseous", 120);
-
-		DCPluginFluid.registerPotion(fuel, MobEffects.SPEED);
-		MainAPIManager.fuelRegister.registerFuel("fuel_light", 150);
-
-		DCPluginFluid.registerPotion(dense, MobEffects.STRENGTH);
-		MainAPIManager.fuelRegister.registerFuel("dense", 120);
-
-		DCPluginFluid.registerPotion(heavy, MobEffects.BLINDNESS);
-		DCPluginFluid.registerPotion(denseoil, MobEffects.BLINDNESS);
-		DCPluginFluid.registerPotion(dist, MobEffects.HUNGER);
-		DCPluginFluid.registerPotion(residue, MobEffects.BLINDNESS);
-
-		// if (BCModules.ENERGY.isLoaded()) {
-		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.hydrogen, 8 * MjAPI.MJ, 1200);
-		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelGas, 8 * MjAPI.MJ, 2000);
-		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.fuelOil, 5 * MjAPI.MJ, 16000);
-		// BuildcraftFuelRegistry.fuel.addFuel(FoodInit.blackLiquor, 2 * MjAPI.MJ, 20000);
-		// BuildcraftFuelRegistry.fuel.addFuel(FoodInit.oil, 4 * MjAPI.MJ, 10000);
-		// BuildcraftFuelRegistry.fuel.addFuel(MachineInit.ethanol, 6 * MjAPI.MJ, 4000);
-		// }
-
-		if (ModuleConfig.machine && ModuleConfig.machine_advanced) {
+		if (ModuleConfig.r_reactor) {
 
 			ItemStack tar = new ItemStack(MachineInit.reagent, 1, 0);
 			ItemStack coke = new ItemStack(MachineInit.reagent, 1, 13);
 
 			// coke
-			RecipeAPI.registerReactorRecipes.addRecipe(coke, tar, 1.0F, null, null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(
-					residue, 1000), null, new Object[] {});
+			RecipeAPI.registerReactorRecipes
+					.addRecipe(coke, tar, 1.0F, null, null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(residue,
+							1000), null, new Object[] {});
 
 			// Ni 水蒸気改質
 			RecipeAPI.registerReactorRecipes.addRecipe(tar, null, 0F, new FluidStack(dist,

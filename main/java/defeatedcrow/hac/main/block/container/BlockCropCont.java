@@ -60,7 +60,7 @@ public class BlockCropCont extends DCSimpleBlock implements ITexturePath, IRapid
 		case 3:
 			return "cropPumpkin";
 		case 4:
-			return "cropMelon";
+			return new ItemStack(Blocks.MELON_BLOCK);
 		case 5:
 			return "blockCactus";
 		case 6:

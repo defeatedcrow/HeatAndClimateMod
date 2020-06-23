@@ -2,12 +2,8 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "minecraft:waterlily",
-   "data": 0
-  },
-  {
-   "type": "forge:ore_dict",
-   "ore": "gemChalcedony"
+   "item": "dcs_climate:dcs_food_crops",
+   "data": 10
   }
  ],
  "result": {

@@ -9,10 +9,8 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatCanceler;
 import defeatedcrow.hac.api.climate.IHeatTile;
-import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -48,18 +46,6 @@ public class BlockHeatExchanger extends BlockTorqueBase implements IHeatTile, IH
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileHeatExchanger();
-	}
-
-	@Override
-	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null) {
-			ItemStack heldItem = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(heldItem) && heldItem.getItem() instanceof IWrenchDC) {
-
-			}
-		}
-		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

@@ -7,13 +7,13 @@ import defeatedcrow.hac.machine.block.BlockAdapterPanel;
 import defeatedcrow.hac.machine.block.BlockBoilerTurbine;
 import defeatedcrow.hac.machine.block.BlockCatapult;
 import defeatedcrow.hac.machine.block.BlockConveyor;
-import defeatedcrow.hac.machine.block.BlockCrank_S;
 import defeatedcrow.hac.machine.block.BlockCreativeBox;
 import defeatedcrow.hac.machine.block.BlockDieselEngine;
 import defeatedcrow.hac.machine.block.BlockDynamo;
 import defeatedcrow.hac.machine.block.BlockEntityPanel;
 import defeatedcrow.hac.machine.block.BlockFan;
 import defeatedcrow.hac.machine.block.BlockFaucet;
+import defeatedcrow.hac.machine.block.BlockFaucetR;
 import defeatedcrow.hac.machine.block.BlockFaucet_SUS;
 import defeatedcrow.hac.machine.block.BlockFreezer;
 import defeatedcrow.hac.machine.block.BlockGasBurner;
@@ -35,10 +35,11 @@ import defeatedcrow.hac.machine.block.BlockMonitorRF;
 import defeatedcrow.hac.machine.block.BlockMonitorRedStone;
 import defeatedcrow.hac.machine.block.BlockMonitorTorque;
 import defeatedcrow.hac.machine.block.BlockOscillator;
+import defeatedcrow.hac.machine.block.BlockPlayerPanel;
 import defeatedcrow.hac.machine.block.BlockPortalManager;
 import defeatedcrow.hac.machine.block.BlockPressMachine;
 import defeatedcrow.hac.machine.block.BlockReactor;
-import defeatedcrow.hac.machine.block.BlockRedBox;
+import defeatedcrow.hac.machine.block.BlockReactorIBC;
 import defeatedcrow.hac.machine.block.BlockRollerCrusher;
 import defeatedcrow.hac.machine.block.BlockShaft_L;
 import defeatedcrow.hac.machine.block.BlockShaft_L_SUS;
@@ -69,6 +70,9 @@ import defeatedcrow.hac.machine.block.ItemBlockHighTier;
 import defeatedcrow.hac.machine.block.ItemIBC;
 import defeatedcrow.hac.machine.block.ItemMonitor;
 import defeatedcrow.hac.machine.block.cont.BlockFuelCont;
+import defeatedcrow.hac.machine.block.tankyard.BlockTankYard;
+import defeatedcrow.hac.machine.block.tankyard.BlockYardPart;
+import defeatedcrow.hac.machine.block.tankyard.ItemTankYard;
 import defeatedcrow.hac.machine.item.ItemAdapterCard;
 import defeatedcrow.hac.machine.item.ItemAlloyMold;
 import defeatedcrow.hac.machine.item.ItemAluminiumMold;
@@ -138,9 +142,6 @@ public class MachineInitRegister {
 		MachineInit.gearbox = new BlockGearBox(ClimateCore.PACKAGE_BASE + "_device_gearbox");
 		registerTierBlock(MachineInit.gearbox, ClimateCore.PACKAGE_BASE + "_device_gearbox", 2);
 
-		MachineInit.piston = new BlockCrank_S(ClimateCore.PACKAGE_BASE + "_device_crank_s");
-		registerTierBlock(MachineInit.piston, ClimateCore.PACKAGE_BASE + "_device_crank_s", 1);
-
 		MachineInit.handcrank = new BlockHandCrank(ClimateCore.PACKAGE_BASE + "_device_handcrank");
 		registerTierBlock(MachineInit.handcrank, ClimateCore.PACKAGE_BASE + "_device_handcrank", 1);
 
@@ -172,9 +173,6 @@ public class MachineInitRegister {
 				ClimateCore.PACKAGE_BASE + "_device_shaft_switch_steel");
 		registerTierBlock(MachineInit.shaft3_switch, ClimateCore.PACKAGE_BASE + "_device_shaft_switch_steel", 2);
 
-		MachineInit.redbox = new BlockRedBox(ClimateCore.PACKAGE_BASE + "_device_redbox");
-		registerTierBlock(MachineInit.redbox, ClimateCore.PACKAGE_BASE + "_device_redbox", 2);
-
 		MachineInit.conveyor = new BlockConveyor(ClimateCore.PACKAGE_BASE + "_device_conveyor");
 		registerTierBlock(MachineInit.conveyor, ClimateCore.PACKAGE_BASE + "_device_conveyor", 2);
 
@@ -204,6 +202,9 @@ public class MachineInitRegister {
 		MachineInit.faucet = new BlockFaucet(ClimateCore.PACKAGE_BASE + "_device_faucet");
 		registerTierBlock(MachineInit.faucet, ClimateCore.PACKAGE_BASE + "_device_faucet", 2);
 
+		MachineInit.faucet_r = new BlockFaucetR(ClimateCore.PACKAGE_BASE + "_device_faucet_r");
+		registerTierBlock(MachineInit.faucet_r, ClimateCore.PACKAGE_BASE + "_device_faucet_r", 2);
+
 		MachineInit.faucet_sus = new BlockFaucet_SUS(ClimateCore.PACKAGE_BASE + "_device_faucet_sus");
 		registerTierBlock(MachineInit.faucet_sus, ClimateCore.PACKAGE_BASE + "_device_faucet_sus", 3);
 
@@ -211,6 +212,9 @@ public class MachineInitRegister {
 		MachineInit.IBC.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_ibc");
 		ForgeRegistries.BLOCKS.register(MachineInit.IBC);
 		ForgeRegistries.ITEMS.register(new ItemIBC(MachineInit.IBC));
+
+		MachineInit.IBC_reactor = new BlockReactorIBC(ClimateCore.PACKAGE_BASE + "_device_reactor_ibc");
+		registerTierBlock(MachineInit.IBC_reactor, ClimateCore.PACKAGE_BASE + "_device_reactor_ibc", 2);
 
 		MachineInit.hopperFluid = new BlockHopperFluid(ClimateCore.PACKAGE_BASE + "_device_hopper_fluid");
 		registerTierBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_BASE + "_device_hopper_fluid", 2);
@@ -280,6 +284,14 @@ public class MachineInitRegister {
 			MachineInit.freezer = new BlockFreezer(ClimateCore.PACKAGE_BASE + "_device_freezer");
 			registerTierBlock(MachineInit.freezer, ClimateCore.PACKAGE_BASE + "_device_freezer", 3);
 
+			MachineInit.tankYard = new BlockTankYard(ClimateCore.PACKAGE_BASE + "_device_tankyard");
+			MachineInit.tankYard.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_tankyard");
+			ForgeRegistries.BLOCKS.register(MachineInit.tankYard);
+			ForgeRegistries.ITEMS.register(new ItemTankYard(MachineInit.tankYard));
+
+			MachineInit.tankYardPart = new BlockYardPart(ClimateCore.PACKAGE_BASE + "_device_yardpart");
+			registerTierBlock(MachineInit.tankYardPart, ClimateCore.PACKAGE_BASE + "_device_yardpart", 3);
+
 			MachineInit.pressMachine = new BlockPressMachine(ClimateCore.PACKAGE_BASE + "_device_press_machine");
 			registerTierBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_BASE + "_device_press_machine", 3);
 
@@ -311,6 +323,9 @@ public class MachineInitRegister {
 
 			MachineInit.wirelessPortal = new BlockPortalManager(ClimateCore.PACKAGE_BASE + "_device_portal_manager");
 			registerTierBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_BASE + "_device_portal_manager", 3);
+
+			MachineInit.playerPanel = new BlockPlayerPanel(ClimateCore.PACKAGE_BASE + "_device_player_panel");
+			registerTierBlock(MachineInit.playerPanel, ClimateCore.PACKAGE_BASE + "_device_player_panel", 3);
 
 			MachineInit.monitorRS = new BlockMonitorRedStone(ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
 			MachineInit.monitorRS.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_rs");
@@ -456,12 +471,12 @@ public class MachineInitRegister {
 		MachineInit.shaft2_x.setCreativeTab(ClimateMain.machine);
 		MachineInit.gearbox.setCreativeTab(ClimateMain.machine);
 		MachineInit.gearbox2.setCreativeTab(ClimateMain.machine);
-		MachineInit.piston.setCreativeTab(ClimateMain.machine);
+		// MachineInit.piston.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.stonemill.setCreativeTab(ClimateMain.machine);
 		MachineInit.fan.setCreativeTab(ClimateMain.machine);
 		MachineInit.spinning.setCreativeTab(ClimateMain.machine);
-		MachineInit.redbox.setCreativeTab(ClimateMain.machine);
+		// MachineInit.redbox.setCreativeTab(ClimateMain.machine);
 		MachineInit.catapult.setCreativeTab(ClimateMain.machine);
 		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
 
@@ -471,9 +486,13 @@ public class MachineInitRegister {
 		MachineInit.hopperSilver.setCreativeTab(ClimateMain.machine);
 		MachineInit.conveyor.setCreativeTab(ClimateMain.machine);
 		MachineInit.faucet.setCreativeTab(ClimateMain.machine);
+		MachineInit.faucet_r.setCreativeTab(ClimateMain.machine);
 		MachineInit.faucet_sus.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
+		MachineInit.IBC_reactor.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
+		MachineInit.tankYard.setCreativeTab(ClimateMain.machine);
+		MachineInit.tankYardPart.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
 		MachineInit.machimeMaterials.setCreativeTab(ClimateCore.climate);
@@ -510,6 +529,7 @@ public class MachineInitRegister {
 			MachineInit.acceptorFluidPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.wirelessPortal.setCreativeTab(ClimateMain.machine);
 			MachineInit.adapterCard.setCreativeTab(ClimateMain.machine);
+			MachineInit.playerPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorRS.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorCM.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorTorque.setCreativeTab(ClimateMain.machine);

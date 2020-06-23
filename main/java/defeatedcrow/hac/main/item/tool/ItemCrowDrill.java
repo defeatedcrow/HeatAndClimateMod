@@ -1,11 +1,15 @@
 package defeatedcrow.hac.main.item.tool;
 
+import java.util.List;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockLiquid;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -16,6 +20,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fluids.IFluidBlock;
@@ -48,9 +53,7 @@ public class ItemCrowDrill extends DCItem {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"normal"
-		};
+		String[] s = { "normal" };
 		return s;
 	}
 
@@ -144,6 +147,13 @@ public class ItemCrowDrill extends DCItem {
 			return tag.getBoolean("dcs_oredig");
 		}
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
+		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+		tooltip.add(I18n.format("dcs.tip.crow_drill"));
 	}
 
 }

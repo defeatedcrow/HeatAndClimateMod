@@ -20,7 +20,6 @@ public class MainCreativeTabRegister {
 		MainInit.dustBlock.setCreativeTab(ClimateCore.climate);
 		MainInit.dustBlock_2.setCreativeTab(ClimateCore.climate);
 		MainInit.gemBlock.setCreativeTab(ClimateCore.climate);
-		// MainInit.metalBlock.setCreativeTab(ClimateCore.climate);
 		MainInit.metalBlockNew.setCreativeTab(ClimateCore.climate);
 		MainInit.metalBlockAlloy.setCreativeTab(ClimateCore.climate);
 		MainInit.heatedMetalBlock.setCreativeTab(ClimateCore.climate);
@@ -57,6 +56,7 @@ public class MainCreativeTabRegister {
 		MainInit.freezepack.setCreativeTab(ClimateMain.build);
 
 		// device
+		MainInit.firestand.setCreativeTab(ClimateMain.machine);
 		MainInit.chamber.setCreativeTab(ClimateMain.machine);
 		MainInit.shitirin.setCreativeTab(ClimateMain.machine);
 		MainInit.fuelStove.setCreativeTab(ClimateMain.machine);
@@ -65,6 +65,7 @@ public class MainCreativeTabRegister {
 		MainInit.windvane.setCreativeTab(ClimateCore.climate);
 		MainInit.bellow.setCreativeTab(ClimateMain.machine);
 		MainInit.pail.setCreativeTab(ClimateMain.machine);
+		MainInit.geyser.setCreativeTab(ClimateCore.climate);
 
 		// item
 		// ores
@@ -74,7 +75,6 @@ public class MainCreativeTabRegister {
 		MainInit.gems.setCreativeTab(ClimateCore.climate);
 		MainInit.miscDust.setCreativeTab(ClimateCore.climate);
 		MainInit.foodDust.setCreativeTab(ClimateCore.climate);
-		// MainInit.materials.setCreativeTab(ClimateCore.climate);
 		MainInit.silkworm.setCreativeTab(ClimateMain.cloth);
 		MainInit.gears.setCreativeTab(ClimateMain.machine);
 		MainInit.clothes.setCreativeTab(ClimateMain.cloth);
@@ -195,9 +195,6 @@ public class MainCreativeTabRegister {
 			MainInit.throwingArrow.setCreativeTab(ClimateMain.tool);
 		}
 
-		if (DCIntegrationCore.loadedForestry) {
-			// MainInit.circuit.setCreativeTab(ClimateCore.climate);
-		}
 		if (DCIntegrationCore.loadedMekanism) {
 			MainInit.metalMaterials.setCreativeTab(ClimateCore.climate);
 			OreDictionary.registerOre("dustDirtyZinc", new ItemStack(MainInit.metalMaterials, 1, 0));

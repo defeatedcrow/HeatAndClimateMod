@@ -1,21 +1,27 @@
 package defeatedcrow.hac.machine.item;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemRotaryBlade extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = {
-			"sus",
-			"titanium",
-			"screen"
-	};
+	private static String[] names = { "sus", "titanium", "screen", "mangalloy" };
 
 	public ItemRotaryBlade() {
 		super();
-		maxMeta = 2;
+		maxMeta = 3;
 	}
 
 	@Override
@@ -35,6 +41,16 @@ public class ItemRotaryBlade extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
+		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+
+		tooltip.add(I18n.format("dcs.tip.rotary_blade"));
+		if (stack.getMetadata() == 3)
+			tooltip.add(I18n.format("dcs.tip.rotary_blade2"));
 	}
 
 }

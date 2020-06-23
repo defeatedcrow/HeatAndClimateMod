@@ -1,0 +1,25 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYZ"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "cubeRed"
+  },
+  "Y": {
+   "item": "minecraft:painting",
+   "data": 0
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "cubeWhite"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_magic_picture_r",
+  "count": 1,
+  "data": 0
+ }
+}

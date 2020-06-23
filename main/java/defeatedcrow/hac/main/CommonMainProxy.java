@@ -18,6 +18,7 @@ import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
 import defeatedcrow.hac.machine.block.TileReactor;
+import defeatedcrow.hac.machine.block.TileReactorIBC;
 import defeatedcrow.hac.machine.block.TileRollerCrusher;
 import defeatedcrow.hac.machine.block.TileSpinningMachine;
 import defeatedcrow.hac.machine.block.TileStoneMill;
@@ -30,6 +31,7 @@ import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
 import defeatedcrow.hac.machine.gui.ContainerPortalManager;
 import defeatedcrow.hac.machine.gui.ContainerPressMachine;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
+import defeatedcrow.hac.machine.gui.ContainerReactorIBC;
 import defeatedcrow.hac.machine.gui.ContainerSpinning;
 import defeatedcrow.hac.machine.gui.ContainerStoneMill;
 import defeatedcrow.hac.machine.gui.GuiCrusher;
@@ -40,6 +42,7 @@ import defeatedcrow.hac.machine.gui.GuiHopperFluid;
 import defeatedcrow.hac.machine.gui.GuiPortalManager;
 import defeatedcrow.hac.machine.gui.GuiPressMachine;
 import defeatedcrow.hac.machine.gui.GuiReactor;
+import defeatedcrow.hac.machine.gui.GuiReactorIBC;
 import defeatedcrow.hac.machine.gui.GuiSpinning;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
@@ -64,9 +67,10 @@ import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
-import defeatedcrow.hac.main.block.device.TileAcvShield;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
+import defeatedcrow.hac.main.block.device.TileFirestand;
+import defeatedcrow.hac.main.block.device.TileGeyser;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
@@ -93,6 +97,7 @@ import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
+import defeatedcrow.hac.main.entity.EntityDynamiteSmall;
 import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
@@ -130,6 +135,7 @@ import defeatedcrow.hac.main.worldgen.MazaiLakeGen;
 import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
 import defeatedcrow.hac.main.worldgen.VeinTableRegister;
 import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
+import defeatedcrow.hac.main.worldgen.WorldGenHotspring;
 import defeatedcrow.hac.main.worldgen.WorldGenOres3;
 import defeatedcrow.hac.main.worldgen.WorldGenSaplings;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
@@ -212,6 +218,10 @@ public class CommonMainProxy implements IGuiHandler {
 				"dcs_climate:textures/models/zombie_trader.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.trader);
 
+		MainInit.tailor = new VillagerProfession("dcs_climate:tailor", "dcs_climate:textures/models/tailor.png",
+				"dcs_climate:textures/models/zombie_tailor.png");
+		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.tailor);
+
 		HaCTradeData.init();
 
 		// HaCCrops
@@ -290,6 +300,32 @@ public class CommonMainProxy implements IGuiHandler {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
 			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
 
+		VillagerCareer tailorList = new VillagerCareer(MainInit.tailor, "dcs_tailor");
+
+		tailorList.addTrade(1, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(2, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)) });
+
+		tailorList.addTrade(2, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(2, 3)) });
+
+		tailorList.addTrade(3, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)) });
+
+		tailorList.addTrade(4, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)) });
+
+		tailorList.addTrade(5, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 2)) });
+
+		tailorList.addTrade(6, new ITradeList[] {
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 2)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)) });
+
 	}
 
 	public void loadRecipes() {
@@ -347,6 +383,8 @@ public class CommonMainProxy implements IGuiHandler {
 
 		DCRegistryUtil.addEntity(EntityThrowingArrow.class, "main", "bullet_arrow", 1);
 
+		DCRegistryUtil.addEntity(EntityDynamiteSmall.class, "main", "dynamite_small");
+
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadEntity();
 
@@ -370,7 +408,6 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow");
 		GameRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer");
 		GameRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane");
-		GameRegistry.registerTileEntity(TileAcvShield.class, "dcs_te_acv_shield");
 		GameRegistry.registerTileEntity(TileChandelierGypsum.class, "dcs_te_chandelier_gypsum");
 		GameRegistry.registerTileEntity(TileChandelierSalt.class, "dcs_te_chandelier_salt");
 		GameRegistry.registerTileEntity(TileChandelierChal.class, "dcs_te_chandelier_chal");
@@ -382,6 +419,8 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileBedDCWhite.class, "dcs_te_bed_white");
 		GameRegistry.registerTileEntity(TileBedDCRattan.class, "dcs_te_bed_rattan");
 		GameRegistry.registerTileEntity(TileBedDCFuton.class, "dcs_te_bed_futon");
+		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
+		GameRegistry.registerTileEntity(TileFirestand.class, "dcs_te_firestand");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();
@@ -409,6 +448,9 @@ public class CommonMainProxy implements IGuiHandler {
 			}
 			if (ModuleConfig.food) {
 				GameRegistry.registerWorldGenerator(new WorldGenSaplings(false), 5);
+			}
+			if (WorldGenConfig.hotspringGen > 0) {
+				GameRegistry.registerWorldGenerator(new WorldGenHotspring(), 3);
 			}
 		}
 	}
@@ -492,6 +534,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
 			return new ContainerHopperFluid((TileHopperFluid) tile, player);
+		if (tile instanceof TileReactorIBC)
+			return new ContainerReactorIBC((TileReactorIBC) tile, player.inventory);
 		if (tile instanceof TileReactor)
 			return new ContainerReactor((TileReactor) tile, player.inventory);
 		if (tile instanceof TileSpinningMachine)
@@ -544,6 +588,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
 			return new GuiHopperFluid((TileHopperFluid) tile, player);
+		if (tile instanceof TileReactorIBC)
+			return new GuiReactorIBC((TileReactorIBC) tile, player.inventory);
 		if (tile instanceof TileReactor)
 			return new GuiReactor((TileReactor) tile, player.inventory);
 		if (tile instanceof TileSpinningMachine)

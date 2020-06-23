@@ -98,7 +98,10 @@ public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IR
 		"titanium_fail",
 		"toolsteel_heating",
 		"toolsteel_cooling",
-		"toolsteel_fail" };
+		"toolsteel_fail",
+		"mangalloy_heating",
+		"mangalloy_cooling",
+		"mangalloy_fail" };
 
 	@Override
 	public String[] getNameSuffix() {
@@ -176,7 +179,7 @@ public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IR
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		if (state != null && inWater(world, pos)) {
 			int m = DCState.getInt(state, DCState.TYPE16);
-			if (m == 0 || m == 3 || m == 6 || m == 9) {
+			if (m == 0 || m == 3 || m == 6 || m == 9 || m == 12) {
 				for (int i = 0; i < 5; i++) {
 					double x = pos.getX() + rand.nextDouble() * 1D;
 					double y = pos.getY() + 1.05D;
@@ -212,6 +215,9 @@ public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IR
 		case 9:
 		case 10:
 			return new BlockSet(MainInit.heatedMetalBlock, 11);
+		case 12:
+		case 13:
+			return new BlockSet(MainInit.heatedMetalBlock, 14);
 		}
 		return null;
 	}
@@ -219,6 +225,6 @@ public class BlockHeatingMetal extends DCSimpleBlock implements ITexturePath, IR
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
 		int meta = state.getBlock().getMetaFromState(state);
-		return meta == 0 || meta == 3 || meta == 6 || meta == 9 ? 10 : 0;
+		return meta == 0 || meta == 3 || meta == 6 || meta == 9 || meta == 12 ? 10 : 0;
 	}
 }

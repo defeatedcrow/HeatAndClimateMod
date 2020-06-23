@@ -3,10 +3,13 @@ package defeatedcrow.hac.main.event;
 import java.util.Random;
 
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.BlockBush;
@@ -37,11 +40,9 @@ public class OnMiningEventDC {
 	@SubscribeEvent
 	public void preMining(PlayerEvent.BreakSpeed event) {
 		if (event.getEntityPlayer() != null) {
-			if (DCUtil.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2)) || DCUtil
-					.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1, 9))) {
+			if (DCUtil.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2))) {
 				float lv = 2.0F + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant,
-						1, 2)) + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.pendant, 1,
-								9));
+						1, 2));
 				event.setNewSpeed(event.getNewSpeed() * lv);
 			} else {
 				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER)) {
@@ -86,6 +87,9 @@ public class OnMiningEventDC {
 		ItemStack stack = event.getItemStack();
 		if (player != null && !DCUtil.isEmpty(stack)) {
 			if (stack.getItem() instanceof ItemScytheDC) {
+				// jewel
+				if (MagicCommonEvent.getOffhandJewelColor(player) == MagicColor.BLUE)
+					return;
 				if (!player.world.isRemote) {
 					boolean b = false;
 					int area = ((ItemScytheDC) stack.getItem()).range;
@@ -114,7 +118,7 @@ public class OnMiningEventDC {
 			} else if (player.isSneaking() && stack.getItem() instanceof ItemPickaxe) {
 				ItemPickaxe pic = (ItemPickaxe) stack.getItem();
 				IBlockState state = event.getWorld().getBlockState(pos);
-				if (pos.getY() > 1 && pic.getHarvestLevel(stack, "pickaxe", player, state) >= 4) {
+				if (pos.getY() > 0 && pic.getHarvestLevel(stack, "pickaxe", player, state) >= 4) {
 					if (state != null && state.getBlock() == Blocks.BEDROCK && player
 							.canPlayerEdit(pos, EnumFacing.UP, stack)) {
 						ItemStack item = new ItemStack(Blocks.BEDROCK);
@@ -141,6 +145,27 @@ public class OnMiningEventDC {
 		IBlockState fluid = event.getWorld().getBlockState(event.getPos());
 		if (fluid.getBlock() == MainInit.hotSpringBlock) {
 			event.setResult(Result.ALLOW);
+		}
+	}
+
+	@SubscribeEvent
+	public void onFirePlace(BlockEvent.PlaceEvent event) {
+		IBlockState placed = event.getPlacedBlock();
+		IBlockState against = event.getPlacedAgainst();
+		if (placed.getBlock() == Blocks.FIRE && against.getBlock() == MainInit.firestand) {
+			if (!event.getWorld().isRemote) {
+				BlockPos p = null;
+				for (EnumFacing f : EnumFacing.VALUES) {
+					if (event.getWorld().getBlockState(event.getPos().offset(f)).getBlock() == MainInit.firestand) {
+						p = event.getPos().offset(f);
+					}
+				}
+				if (p != null) {
+					BlockFirestand.changeLitState(event.getWorld(), p, true);
+				}
+				event.getPlayer().playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 0.8F, 1.0F);
+			}
+			event.setCanceled(true);
 		}
 	}
 

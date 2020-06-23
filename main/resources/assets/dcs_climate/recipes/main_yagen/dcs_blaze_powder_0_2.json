@@ -6,13 +6,13 @@
    "ore": "toolNormalYagen"
   },
   {
-   "item": "minecraft:magma",
+   "item": "minecraft:blaze_rod",
    "data": 0
   }
  ],
  "result": {
   "item": "minecraft:blaze_powder",
-  "count": 1,
+  "count": 3,
   "data": 0
  }
 }

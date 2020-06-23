@@ -3,7 +3,7 @@ package defeatedcrow.hac.food.client;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelToast;
-import defeatedcrow.hac.food.entity.ToastBreadEntity;
+import defeatedcrow.hac.food.entity.BreadToastEntity;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ToastRenderer extends DCRenderFoodBase<ToastBreadEntity> {
+public class ToastRenderer extends DCRenderFoodBase<BreadToastEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/butter_toast_raw.png");
@@ -25,17 +25,16 @@ public class ToastRenderer extends DCRenderFoodBase<ToastBreadEntity> {
 	}
 
 	@Override
-	public void doRender(ToastBreadEntity entity, double x, double y, double z, float yaw, float partialTicks) {
+	public void doRender(BreadToastEntity entity, double x, double y, double z, float yaw, float partialTicks) {
 		super.doRender(entity, x, y, z, yaw, partialTicks);
 		boolean baked = !entity.getRaw();
 		if (baked) {
 			GlStateManager.pushMatrix();
 			GlStateManager.translate((float) x, (float) y, (float) z);
-			GlStateManager.scale(-1.0F, -1.0F, 1.0F);
+			GlStateManager.scale(-0.75F, -0.75F, 0.75F);
 			GlStateManager.enableBlend();
-			GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-					GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-					GlStateManager.DestFactor.ZERO);
+			GlStateManager
+					.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 0.35F);
 
 			this.bindTexture(BAKED_TEX);
@@ -53,6 +52,11 @@ public class ToastRenderer extends DCRenderFoodBase<ToastBreadEntity> {
 			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();
 		}
+	}
+
+	@Override
+	protected float getScale() {
+		return 0.75F;
 	}
 
 	@Override

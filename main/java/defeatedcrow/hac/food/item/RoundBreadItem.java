@@ -7,19 +7,21 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.GingermanEntity;
-import defeatedcrow.hac.food.entity.PancakeEntity;
-import defeatedcrow.hac.food.entity.PitaBreadEntity;
+import defeatedcrow.hac.food.entity.BreadGingermanEntity;
+import defeatedcrow.hac.food.entity.BreadGrahamCrackerEntity;
+import defeatedcrow.hac.food.entity.BreadPancakeEntity;
+import defeatedcrow.hac.food.entity.BreadPitaEntity;
 import defeatedcrow.hac.food.entity.PizzaTomatoEntity;
-import defeatedcrow.hac.food.entity.RaisinBreadEntity;
-import defeatedcrow.hac.food.entity.RoundBreadCreamEntity;
-import defeatedcrow.hac.food.entity.RoundBreadEntity;
-import defeatedcrow.hac.food.entity.SquareBreadEntity;
-import defeatedcrow.hac.food.entity.ToastBreadEntity;
-import defeatedcrow.hac.food.entity.ToastFrenchEntity;
-import defeatedcrow.hac.food.entity.ToastGarlicEntity;
-import defeatedcrow.hac.food.entity.TortillaEntity;
-import defeatedcrow.hac.food.entity.WalnutBreadEntity;
+import defeatedcrow.hac.food.entity.BreadRaisinEntity;
+import defeatedcrow.hac.food.entity.BreadRoundCreamEntity;
+import defeatedcrow.hac.food.entity.BreadRoundEntity;
+import defeatedcrow.hac.food.entity.BreadSausageEntity;
+import defeatedcrow.hac.food.entity.BreadSquareEntity;
+import defeatedcrow.hac.food.entity.BreadToastEntity;
+import defeatedcrow.hac.food.entity.BreadToastFrenchEntity;
+import defeatedcrow.hac.food.entity.BreadToastGarlicEntity;
+import defeatedcrow.hac.food.entity.BreadTortillaEntity;
+import defeatedcrow.hac.food.entity.BreadWalnutEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,12 +39,12 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 23;
+		return 27;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 23);
+		int i = MathHelper.clamp(0, meta, 27);
 		String s = "items/food/" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -76,52 +78,62 @@ public class RoundBreadItem extends FoodItemBase {
 			"tortilla_raw",
 			"tortilla_baked",
 			"raisin_bread_raw",
-			"raisin_bread_baked" };
+			"raisin_bread_baked",
+			"sausage_bread_raw",
+			"sausage_bread_baked",
+			"graham_crackers_raw",
+			"graham_crackers_baked" };
 		return s;
 	}
 
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new RoundBreadEntity(world, x, y, z, player);
+		FoodEntityBase ret = new BreadRoundEntity(world, x, y, z, player);
 		if (i == 2 || i == 3) {
-			ret = new SquareBreadEntity(world, x, y, z, player);
+			ret = new BreadSquareEntity(world, x, y, z, player);
 			if (i == 2) {
-				((SquareBreadEntity) ret).setMOLD(true);
+				((BreadSquareEntity) ret).setMOLD(true);
 			}
 		}
 		if (i == 4 || i == 5) {
-			ret = new ToastBreadEntity(world, x, y, z, player);
+			ret = new BreadToastEntity(world, x, y, z, player);
 		}
 		if (i == 6 || i == 7) {
 			ret = new PizzaTomatoEntity(world, x, y, z, player);
 		}
 		if (i == 8) {
-			ret = new RoundBreadCreamEntity(world, x, y, z, player);
+			ret = new BreadRoundCreamEntity(world, x, y, z, player);
 		}
 		if (i == 9) {
-			ret = new ToastFrenchEntity(world, x, y, z, player);
+			ret = new BreadToastFrenchEntity(world, x, y, z, player);
 		}
 		if (i == 10 || i == 11) {
-			ret = new ToastGarlicEntity(world, x, y, z, player);
+			ret = new BreadToastGarlicEntity(world, x, y, z, player);
 		}
 		if (i == 12 || i == 13) {
-			ret = new PitaBreadEntity(world, x, y, z, player);
+			ret = new BreadPitaEntity(world, x, y, z, player);
 		}
 		if (i == 14 || i == 15) {
-			ret = new PancakeEntity(world, x, y, z, player);
+			ret = new BreadPancakeEntity(world, x, y, z, player);
 		}
 		if (i == 16 || i == 17) {
-			ret = new WalnutBreadEntity(world, x, y, z, player);
+			ret = new BreadWalnutEntity(world, x, y, z, player);
 		}
 		if (i == 18 || i == 19) {
-			ret = new GingermanEntity(world, x, y, z, player);
+			ret = new BreadGingermanEntity(world, x, y, z, player);
 		}
 		if (i == 20 || i == 21) {
-			ret = new TortillaEntity(world, x, y, z, player);
+			ret = new BreadTortillaEntity(world, x, y, z, player);
 		}
 		if (i == 22 || i == 23) {
-			ret = new RaisinBreadEntity(world, x, y, z, player);
+			ret = new BreadRaisinEntity(world, x, y, z, player);
+		}
+		if (i == 24 || i == 25) {
+			ret = new BreadSausageEntity(world, x, y, z, player);
+		}
+		if (i == 26 || i == 27) {
+			ret = new BreadGrahamCrackerEntity(world, x, y, z, player);
 		}
 
 		if ((i & 1) == 0) {
@@ -137,6 +149,7 @@ public class RoundBreadItem extends FoodItemBase {
 		case 3:
 		case 13:
 		case 21:
+		case 27:
 			return 6;
 		case 11:
 		case 15:
@@ -146,6 +159,7 @@ public class RoundBreadItem extends FoodItemBase {
 		case 10:
 			return 6;
 		case 7:
+		case 25:
 			return 10;
 		case 8:
 		case 9:

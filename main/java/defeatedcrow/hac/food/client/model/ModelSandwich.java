@@ -32,6 +32,12 @@ public class ModelSandwich extends DCFoodModelBase {
 	ModelRenderer cassis1;
 	ModelRenderer cassis2;
 	ModelRenderer cassis3;
+	ModelRenderer liver1;
+	ModelRenderer liver2;
+	ModelRenderer liver3;
+	ModelRenderer salmon1;
+	ModelRenderer salmon2;
+	ModelRenderer salmon3;
 
 	public ModelSandwich(boolean baked) {
 		super(baked);
@@ -104,6 +110,7 @@ public class ModelSandwich extends DCFoodModelBase {
 		bread32.setTextureSize(64, 32);
 		bread32.mirror = true;
 		setRotation(bread32, 0F, 0F, 0F);
+
 		apple1 = new ModelRenderer(this, 0, 24);
 		apple1.addBox(-3.5F, 3F, -2F, 1, 3, 4);
 		apple1.setRotationPoint(0F, -8F, 0F);
@@ -122,6 +129,7 @@ public class ModelSandwich extends DCFoodModelBase {
 		apple3.setTextureSize(64, 32);
 		apple3.mirror = true;
 		setRotation(apple3, 0F, 0F, 0F);
+
 		egg1 = new ModelRenderer(this, 10, 24);
 		egg1.addBox(-3.5F, 3F, -2F, 1, 3, 4);
 		egg1.setRotationPoint(0F, -8F, 0F);
@@ -140,6 +148,7 @@ public class ModelSandwich extends DCFoodModelBase {
 		egg3.setTextureSize(64, 32);
 		egg3.mirror = true;
 		setRotation(egg3, 0F, 0F, 0F);
+
 		cassis1 = new ModelRenderer(this, 20, 24);
 		cassis1.addBox(-3.5F, 3F, -2F, 1, 3, 4);
 		cassis1.setRotationPoint(0F, -8F, 0F);
@@ -158,6 +167,44 @@ public class ModelSandwich extends DCFoodModelBase {
 		cassis3.setTextureSize(64, 32);
 		cassis3.mirror = true;
 		setRotation(cassis3, 0F, 0F, 0F);
+
+		liver1 = new ModelRenderer(this, 30, 24);
+		liver1.addBox(-3.5F, 3F, -2F, 1, 3, 4);
+		liver1.setRotationPoint(0F, -8F, 0F);
+		liver1.setTextureSize(64, 32);
+		liver1.mirror = true;
+		setRotation(liver1, 0F, -0.0698132F, 0F);
+		liver2 = new ModelRenderer(this, 30, 24);
+		liver2.addBox(-0.5F, 3.5F, -2F, 1, 3, 4);
+		liver2.setRotationPoint(0F, -8F, 0F);
+		liver2.setTextureSize(64, 32);
+		liver2.mirror = true;
+		setRotation(liver2, 0F, 0F, 0F);
+		liver3 = new ModelRenderer(this, 30, 24);
+		liver3.addBox(3F, 3.5F, -2F, 1, 3, 4);
+		liver3.setRotationPoint(0F, -8F, 0F);
+		liver3.setTextureSize(64, 32);
+		liver3.mirror = true;
+		setRotation(liver3, 0F, 0F, 0F);
+
+		salmon1 = new ModelRenderer(this, 40, 24);
+		salmon1.addBox(-3.5F, 3F, -2F, 1, 3, 4);
+		salmon1.setRotationPoint(0F, -8F, 0F);
+		salmon1.setTextureSize(64, 32);
+		salmon1.mirror = true;
+		setRotation(salmon1, 0F, -0.0698132F, 0F);
+		salmon2 = new ModelRenderer(this, 40, 24);
+		salmon2.addBox(-0.5F, 3.5F, -2F, 1, 3, 4);
+		salmon2.setRotationPoint(0F, -8F, 0F);
+		salmon2.setTextureSize(64, 32);
+		salmon2.mirror = true;
+		setRotation(salmon2, 0F, 0F, 0F);
+		salmon3 = new ModelRenderer(this, 40, 24);
+		salmon3.addBox(3F, 3.5F, -2F, 1, 3, 4);
+		salmon3.setRotationPoint(0F, -8F, 0F);
+		salmon3.setTextureSize(64, 32);
+		salmon3.mirror = true;
+		setRotation(salmon3, 0F, 0F, 0F);
 	}
 
 	public void render(float scale, int meta) {
@@ -182,18 +229,30 @@ public class ModelSandwich extends DCFoodModelBase {
 		bread31.render(0.0625F);
 		bread32.render(0.0625F);
 
+		if (meta == 0) {
+			apple1.render(0.0625F);
+			apple2.render(0.0625F);
+			apple3.render(0.0625F);
+		}
 		if (meta == 1) {
 			egg1.render(0.0625F);
 			egg2.render(0.0625F);
 			egg3.render(0.0625F);
-		} else if (meta == 2) {
+		}
+		if (meta == 2) {
 			cassis1.render(0.0625F);
 			cassis2.render(0.0625F);
 			cassis3.render(0.0625F);
-		} else {
-			apple1.render(0.0625F);
-			apple2.render(0.0625F);
-			apple3.render(0.0625F);
+		}
+		if (meta == 3) {
+			liver1.render(0.0625F);
+			liver2.render(0.0625F);
+			liver3.render(0.0625F);
+		}
+		if (meta == 4) {
+			salmon1.render(0.0625F);
+			salmon2.render(0.0625F);
+			salmon3.render(0.0625F);
 		}
 	}
 

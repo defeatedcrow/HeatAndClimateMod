@@ -20,10 +20,6 @@ public class MachineRecipes {
 		if (ModuleConfig.machine_advanced) {
 			MachineAdvancedRecipe.load(res);
 		}
-		MachineDeviceRecipes.load();
-		if (ModuleConfig.r_crusher) {
-			MachineCrusherRecipe.load();
-		}
 	}
 
 	static void loadBasicRecipe() {
@@ -83,19 +79,6 @@ public class MachineRecipes {
 			new ItemStack(MachineInit.shaft_s, 1, 0),
 			new ItemStack(Blocks.LEVER) });
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.piston, 1, 0), new Object[] {
-			" X ",
-			"YZY",
-			" W ",
-			'X',
-			new ItemStack(MachineInit.shaft_s, 1, 0),
-			'Y',
-			"ingotBrass",
-			'Z',
-			"gearBrass",
-			'W',
-			"dustRedstone" });
-
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.handcrank, 1, 0), new Object[] {
 			"Z",
 			"Y",
@@ -117,15 +100,6 @@ public class MachineRecipes {
 			"gearAlloy",
 			'Z',
 			"ingotIron" });
-
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.redbox, 1, 0), new Object[] {
-			"XXX",
-			"XYX",
-			"XXX",
-			'X',
-			"dustRedstone",
-			'Y',
-			"gearAlloy" });
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.windmill, 1, 0), new Object[] {
 			" X ",
@@ -211,6 +185,12 @@ public class MachineRecipes {
 			'Y',
 			"gearAlloy" });
 
+		DCRecipe.jsonShapelessRecipe("machine", 2, new ItemStack(MachineInit.faucet, 1, 0), new Object[] {
+			new ItemStack(MachineInit.faucet_r, 1, 0) });
+
+		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.faucet_r, 1, 0), new Object[] {
+			new ItemStack(MachineInit.faucet, 1, 0) });
+
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.faucet_sus, 1, 0), new Object[] {
 			" Z ",
 			"XYX",
@@ -231,6 +211,17 @@ public class MachineRecipes {
 			"ingotNickelsilver",
 			'Z',
 			new ItemStack(Blocks.IRON_BARS, 1, 0) });
+
+		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.IBC_reactor, 1, 0), new Object[] {
+			"Z",
+			"Y",
+			"X",
+			'X',
+			new ItemStack(MachineInit.IBC, 1, 0),
+			'Y',
+			"gearAlloy",
+			'Z',
+			new ItemStack(MachineInit.machimeMaterials, 1, 0) });
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.heatPump, 1, 0), new Object[] {
 			"XXX",
@@ -396,7 +387,7 @@ public class MachineRecipes {
 			'Z',
 			new ItemStack(Blocks.IRON_BARS, 1, 0) });
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.hopperFilter, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", 2, new ItemStack(MachineInit.hopperFilter, 1, 0), new Object[] {
 			"Z",
 			"Y",
 			'Y',
@@ -422,7 +413,7 @@ public class MachineRecipes {
 			'Y',
 			new ItemStack(MachineInit.hopperFilter, 1, 0) });
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.hopperFilterG, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", 2, new ItemStack(MachineInit.hopperFilterG, 1, 0), new Object[] {
 			"Z",
 			"Y",
 			'Y',
@@ -490,6 +481,10 @@ public class MachineRecipes {
 		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.reagent, 9, 2), new Object[] {
 			new ItemStack(MachineInit.fuelCont, 1, 3) });
 
+		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.reagent, 1, 4), new Object[] {
+			"dropNitricAcid",
+			"gasAmmonia" });
+
 		/* == items == */
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.torqueChecker, 1, 0), new Object[] {
@@ -510,7 +505,7 @@ public class MachineRecipes {
 			'Y',
 			"ingotSteel" });
 
-		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.mold, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine", 2, new ItemStack(MachineInit.mold, 1, 0), new Object[] {
 			new ItemStack(MachineInit.mold, 1, 0) });
 
 		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.machimeMaterials, 1, 0), new Object[] {
@@ -569,13 +564,14 @@ public class MachineRecipes {
 		OreDictionary.registerOre("catalystBladeSUS", new ItemStack(MachineInit.rotaryBlade, 1, 0));
 		OreDictionary.registerOre("catalystBladeTitanium", new ItemStack(MachineInit.rotaryBlade, 1, 1));
 		OreDictionary.registerOre("catalystBladeScreen", new ItemStack(MachineInit.rotaryBlade, 1, 2));
+		OreDictionary.registerOre("catalystBladeMangalloy", new ItemStack(MachineInit.rotaryBlade, 1, 3));
 		OreDictionary.registerOre("bladeToolSteel", new ItemStack(MachineInit.machimeMaterials, 1, 7));
 		OreDictionary.registerOre("barrelGun", new ItemStack(MachineInit.machimeMaterials, 1, 8));
 		OreDictionary.registerOre("barrelMortar", new ItemStack(MachineInit.machimeMaterials, 1, 9));
 	}
 
 	static void loadAltRecipes() {
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MainInit.wrench, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", 2, new ItemStack(MainInit.wrench, 1, 0), new Object[] {
 			"X X",
 			" Y ",
 			" X ",
@@ -584,7 +580,7 @@ public class MachineRecipes {
 			'Y',
 			"gearBrass" });
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.shaft_s, 8, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", 2, new ItemStack(MachineInit.shaft_s, 8, 0), new Object[] {
 			"X",
 			"Y",
 			"X",
@@ -593,20 +589,7 @@ public class MachineRecipes {
 			'Y',
 			"gearBrass" });
 
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.piston, 1, 0), new Object[] {
-			" X ",
-			"YZY",
-			" W ",
-			'X',
-			new ItemStack(MachineInit.shaft_s, 1, 0),
-			'Y',
-			"ingotBronze",
-			'Z',
-			"gearBrass",
-			'W',
-			"dustRedstone" });
-
-		DCRecipe.jsonShapedRecipe("machine", new ItemStack(MachineInit.handcrank, 1, 0), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine", 2, new ItemStack(MachineInit.handcrank, 1, 0), new Object[] {
 			"Z",
 			"Y",
 			"X",

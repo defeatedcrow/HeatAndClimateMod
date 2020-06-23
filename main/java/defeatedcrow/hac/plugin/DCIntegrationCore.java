@@ -158,6 +158,15 @@ public class DCIntegrationCore {
 			}
 		}
 
+		if (loadedTektopia) {
+			try {
+				DCPluginTektopia.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: tektopia");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: tektopia");
+			}
+		}
+
 	}
 
 	public static void loadPost() {
@@ -214,15 +223,6 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: hmggvc");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: hmggvc");
-			}
-		}
-
-		if (loadedTektopia) {
-			try {
-				DCPluginTektopia.load();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: tektopia");
-			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: tektopia");
 			}
 		}
 

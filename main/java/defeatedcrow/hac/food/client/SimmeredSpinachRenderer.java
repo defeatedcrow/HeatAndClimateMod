@@ -27,7 +27,7 @@ public class SimmeredSpinachRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 	@Override
 	protected float getOffset() {
-		return 0.5F;
+		return 0.45F;
 	}
 
 	@Override

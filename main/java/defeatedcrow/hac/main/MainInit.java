@@ -20,8 +20,6 @@ public class MainInit {
 	public static Block dustBlock;
 	public static Block dustBlock_2;
 	public static Block gemBlock;
-	@Deprecated
-	public static Block metalBlock;
 	public static Block metalBlockNew;
 	public static Block metalBlockAlloy;
 	public static Block heatedMetalBlock;
@@ -85,7 +83,6 @@ public class MainInit {
 	public static Block lampCarbide;
 	public static Block lampGas;
 	public static Block chain;
-	public static Block achievementShield;
 
 	public static Block fenceLadderSteel;
 	public static Block fenceSteel;
@@ -185,6 +182,7 @@ public class MainInit {
 	public static Block wallshelfRattan;
 
 	// device
+	public static Block firestand;
 	public static Block chamber;
 	public static Block shitirin;
 	public static Block fuelStove;
@@ -194,6 +192,8 @@ public class MainInit {
 	public static Block windvane;
 	public static Block pail;
 
+	public static Block geyser;
+
 	// item
 	// ores
 	public static Item oreItem;
@@ -201,8 +201,6 @@ public class MainInit {
 	public static Item oreIngot;
 	public static Item gems;
 	public static Item miscDust;
-	@Deprecated
-	public static Item materials;
 	public static Item foodDust;
 	public static Item silkworm;
 	public static Item gears;
@@ -220,9 +218,9 @@ public class MainInit {
 	public static Item scope;
 	public static Item entityScope;
 
-	public static Item[] dcAxe = new Item[9];
-	public static Item[] dcPickaxe = new Item[9];
-	public static Item[] dcSpade = new Item[9];
+	public static Item[] dcAxe = new Item[10];
+	public static Item[] dcPickaxe = new Item[10];
+	public static Item[] dcSpade = new Item[10];
 	public static Item[] dcSword = new Item[9];
 	public static Item[] dcScythe = new Item[6];
 	public static Item toolsteelRake;
@@ -352,6 +350,7 @@ public class MainInit {
 	public static VillagerProfession trader;
 	public static VillagerProfession agri;
 	public static VillagerProfession engineer;
+	public static VillagerProfession tailor;
 
 	// plugin
 	public static Item circuit;
@@ -383,6 +382,7 @@ public class MainInit {
 	public static Fluid fuelGas;
 	public static Fluid nitrogen;
 	public static Fluid ethanol;
+	public static Fluid steam;
 
 	public static Block oilBlock;
 	public static Block greenTeaBlock;
@@ -404,5 +404,6 @@ public class MainInit {
 	public static Block fuelGasBlock;
 	public static Block nitrogenBlock;
 	public static Block ethanolBlock;
+	public static Block steamBlock;
 
 }

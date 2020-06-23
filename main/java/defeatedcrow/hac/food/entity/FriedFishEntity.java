@@ -16,22 +16,22 @@ public class FriedFishEntity extends FoodEntityBase {
 
 	public FriedFishEntity(World worldIn) {
 		super(worldIn);
+		this.setSize(0.25F, 0.15F);
 	}
 
 	public FriedFishEntity(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(0.25F, 0.15F);
 	}
 
 	public FriedFishEntity(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(0.25F, 0.15F);
 	}
 
 	@Override
 	protected ItemStack[] drops() {
-		return new ItemStack[] {
-				new ItemStack(FoodInit.deepFry, 1, 2),
-				new ItemStack(FoodInit.deepFry, 1, 2)
-		};
+		return new ItemStack[] { new ItemStack(FoodInit.deepFry, 1, 2), new ItemStack(FoodInit.deepFry, 1, 2) };
 	}
 
 	// particle

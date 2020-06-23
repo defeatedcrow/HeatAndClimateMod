@@ -7,10 +7,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelMeatStick;
-import defeatedcrow.hac.food.entity.PorkStickEntity;
+import defeatedcrow.hac.food.entity.StickPorkEntity;
 
 @SideOnly(Side.CLIENT)
-public class PorkStickRenderer extends DCRenderFoodBase<PorkStickEntity> {
+public class PorkStickRenderer extends DCRenderFoodBase<StickPorkEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/stick_pork_raw.png");

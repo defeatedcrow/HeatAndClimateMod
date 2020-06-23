@@ -75,7 +75,7 @@ public class BlockDusts2 extends DCSimpleBlock implements ITexturePath, IRapidCo
 		world.scheduleUpdate(pos, this, this.tickRate(world));
 	}
 
-	private static String[] names = { "dirt", "crystal", "toolsteel" };
+	private static String[] names = { "dirt", "crystal", "toolsteel", "mangalloy" };
 
 	@Override
 	public String[] getNameSuffix() {

@@ -131,13 +131,13 @@ public class BlockPortalManager extends BlockTorqueBase {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(TextFormatting.BLUE.toString() + "ABSOLUTE" + TextFormatting.GRAY.toString() + I18n
+			tooltip.add(TextFormatting.BLUE.toString() + "CRYOGENIC-" + TextFormatting.GRAY.toString() + I18n
 					.format("dcs.tip.portal1"));
 			tooltip.add(DCName.TORQUE.getLocalizedName() + ": 32.0F /s");
 			tooltip.add(I18n.format("dcs.tip.portal2"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 1 item/5t");
-			tooltip.add(DCName.FLUID.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 200 mB/5t");
+			tooltip.add(DCName.FLUID.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 1000 mB/5t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.portal3"));
 		} else {

@@ -3,14 +3,14 @@ package defeatedcrow.hac.food.client;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelSquarePie;
-import defeatedcrow.hac.food.entity.ChocolatePieEntity;
+import defeatedcrow.hac.food.entity.PieChocolateEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class CustardPieRenderer extends DCRenderFoodBase<ChocolatePieEntity> {
+public class CustardPieRenderer extends DCRenderFoodBase<PieChocolateEntity> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/pie_cream_raw.png");

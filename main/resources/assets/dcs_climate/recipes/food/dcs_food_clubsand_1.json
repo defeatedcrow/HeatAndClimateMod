@@ -14,13 +14,13 @@
    "ore": "cropTomato"
   },
   {
-   "item": "minecraft:cooked_fish",
-   "data": 0
+   "type": "forge:ore_dict",
+   "ore": "listAllfishcooked"
   }
  ],
  "result": {
   "item": "dcs_climate:dcs_food_clubsand",
-  "count": 2,
+  "count": 1,
   "data": 1
  }
 }

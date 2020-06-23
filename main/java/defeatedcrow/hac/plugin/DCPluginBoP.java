@@ -12,10 +12,10 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.SpinningRecipe;
 import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.food.recipes.FoodFluidRecipe;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.device.RegisterFluidRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -75,79 +75,73 @@ public class DCPluginBoP {
 		addOre("blockTallgrass", BOPBlocks.plant_0, 15);
 		addOre("blockTallgrass", BOPBlocks.plant_1, 0);
 
-		addOre("cropWildice", BOPBlocks.plant_1, 3);
+		addOre("cropWildrice", BOPBlocks.plant_1, 3);
 		addOre("listAllgrain", BOPBlocks.plant_1, 3);
 		addOre("cropBarley", BOPBlocks.plant_1, 11);
 		addOre("listAllgrain", BOPBlocks.plant_1, 11);
 
 		addOre("listAllmeatraw", BOPBlocks.flesh, 0);
 
-		// machine
-		if (ModuleConfig.machine && ModuleConfig.r_mill) {
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropWildrice");
+		List<ItemStack> leaves = Lists.newArrayList();
+		leaves.add(new ItemStack(Blocks.WATERLILY, 1, 0));
+		leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 10));
+		leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 11));
+		leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 12));
+		leaves.add(new ItemStack(BOPBlocks.waterlily, 1, 32767));
+		leaves.add(new ItemStack(BOPBlocks.coral, 1, 4));
 
+		Item wax = Item.REGISTRY.getObject(new ResourceLocation("forestry", "beeswax"));
+
+		// machine
+		if (ModuleConfig.r_mill) {
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropWildrice");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropBarley");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0.0F, leaves);
+			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), new ItemStack(Items.SLIME_BALL, 1,
+					0), 0.25F, new ItemStack(BOPBlocks.mud, 1, 0));
+
+			if (DCIntegrationCore.loadedForestry && wax != null) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
+						BOPItems.honeycomb, 1, 0));
+			}
+		}
+
+		if (ModuleConfig.r_crusher && ModuleConfig.machine) {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
 					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
 							MachineInit.rotaryBlade, 1, 0), "cropWildrice");
-
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), null, 0.0F, "cropBarley");
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
 					MainInit.foodDust, 1, 0), 0.25F, new ItemStack(MainInit.foodDust, 1, 1), 0.25F, null, new ItemStack(
 							MachineInit.rotaryBlade, 1, 0), "cropBarley");
 
-			List<ItemStack> leaves = Lists.newArrayList();
-			leaves.add(new ItemStack(Blocks.WATERLILY, 1, 0));
-			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 10));
-			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 11));
-			leaves.add(new ItemStack(BOPBlocks.plant_0, 1, 12));
-			leaves.add(new ItemStack(BOPBlocks.waterlily, 1, 32767));
-			leaves.add(new ItemStack(BOPBlocks.coral, 1, 4));
-
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0.0F, leaves);
-
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(
 					MainInit.foodDust, 1, 1), 0.25F, new ItemStack(MachineInit.rotaryBlade, 1, 0), leaves);
-
-			Block stalagmite = Block.REGISTRY.getObject(new ResourceLocation("biomesoplenty", "stone_formations"));
-			if (stalagmite != null && stalagmite != Blocks.AIR) {
-				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F, new ItemStack(
-						stalagmite, 1, 0));
-
-				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), null, 0.0F, new ItemStack(
-						MachineInit.rotaryBlade, 1, 1), new ItemStack(stalagmite, 1, 0));
-			}
-
-			RecipeAPI.registerMills.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), new ItemStack(Items.SLIME_BALL, 1,
-					0), 0.25F, new ItemStack(BOPBlocks.mud, 1, 0));
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), new ItemStack(Items.SLIME_BALL,
 					1, 0), 0.25F, new ItemStack(MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPBlocks.mud, 1, 0));
 
-			Item wax = Item.REGISTRY.getObject(new ResourceLocation("forestry", "beeswax"));
 			if (DCIntegrationCore.loadedForestry && wax != null) {
-				RecipeAPI.registerMills.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
-						BOPItems.honeycomb, 1, 0));
-
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(wax, 1, 0), null, 0.0F, new ItemStack(
 						MachineInit.rotaryBlade, 1, 0), new ItemStack(BOPItems.honeycomb, 1, 0));
 			}
 
 		}
 
-		if (ModuleConfig.machine && ModuleConfig.r_spinning) {
+		if (ModuleConfig.r_spinning) {
 			RecipeAPI.registerSpinningRecipes.addRecipe(new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 2,
 					"plantFlax"));
 		}
 
-		if (ModuleConfig.food && ModuleConfig.r_fluid) {
-			FoodFluidRecipe.regNonFoodrecipe(new ItemStack(MainInit.foodDust, 1,
+		if (ModuleConfig.r_fluid) {
+			RegisterFluidRecipe.regNonFoodRecipe(new ItemStack(MainInit.foodDust, 1,
 					3), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(
 							FluidRegistry.WATER, 200), new Object[] { "cropBarley" });
 
-			FoodFluidRecipe.regNonFoodrecipe(new ItemStack(FoodInit.crops, 1,
-					18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
-							200), new Object[] { "plantReed", "dustAsh" });
+			if (ModuleConfig.food)
+				RegisterFluidRecipe.regNonFoodRecipe(new ItemStack(FoodInit.crops, 1,
+						18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
+								200), new Object[] { "plantReed", "dustAsh" });
 		}
 
 	}

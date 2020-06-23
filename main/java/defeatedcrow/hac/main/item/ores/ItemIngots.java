@@ -16,25 +16,25 @@ public class ItemIngots extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-			"copper",
-			"zinc",
-			"nickel",
-			"silver",
-			"brass",
-			"steel",
-			"nickelsilver",
-			"magnet",
-			"tin",
-			"bronze",
-			"sus",
-			"titanium",
-			"aluminium",
-			"bismuth",
-			"bscco",
-			"lead",
-			"manganese",
-			"toolsteel"
-	};
+		"copper",
+		"zinc",
+		"nickel",
+		"silver",
+		"brass",
+		"steel",
+		"nickelsilver",
+		"magnet",
+		"tin",
+		"bronze",
+		"sus",
+		"titanium",
+		"aluminium",
+		"bismuth",
+		"bscco",
+		"lead",
+		"manganese",
+		"toolsteel",
+		"mangalloy" };
 
 	public ItemIngots(int max) {
 		super();
@@ -65,6 +65,7 @@ public class ItemIngots extends DCItem {
 	 * 15: 鉛
 	 * 16: マンガン
 	 * 17: 工具鋼
+	 * 18: 高マンガン鋼
 	 */
 	@Override
 	public String[] getNameSuffix() {
@@ -117,7 +118,8 @@ public class ItemIngots extends DCItem {
 		BSCCO("bscco", 3),
 		LEAD("lead", 1),
 		MANGANESE("manganese", 3),
-		TOOLSTEEL("toolsteel", 3);
+		TOOLSTEEL("toolsteel", 3),
+		MANGALLOY("mangalloy", 3);
 
 		public String name;
 		public int tier;
@@ -128,25 +130,25 @@ public class ItemIngots extends DCItem {
 		}
 
 		public static final Metal[] VALUES = {
-				COPPER,
-				ZINC,
-				NICKEL,
-				SILVER,
-				BRASS,
-				STEEL,
-				NICKELSILVER,
-				MAGNET,
-				TIN,
-				BRONZE,
-				SUS,
-				TITANIUM,
-				ALUMINIUM,
-				BISMUTH,
-				BSCCO,
-				LEAD,
-				MANGANESE,
-				TOOLSTEEL
-		};
+			COPPER,
+			ZINC,
+			NICKEL,
+			SILVER,
+			BRASS,
+			STEEL,
+			NICKELSILVER,
+			MAGNET,
+			TIN,
+			BRONZE,
+			SUS,
+			TITANIUM,
+			ALUMINIUM,
+			BISMUTH,
+			BSCCO,
+			LEAD,
+			MANGANESE,
+			TOOLSTEEL,
+			MANGALLOY };
 	}
 
 }

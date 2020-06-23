@@ -26,7 +26,7 @@ public class DCPluginMekanism {
 
 	public static void load() {
 		Fluid e = FluidRegistry.getFluid("liquidethene");
-		if (e != null) {
+		if (e != null && ModuleConfig.r_reactor) {
 			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0F, new FluidStack(e,
 					1000), null, DCHeatTier.KILN, new ItemStack(MachineInit.catalyst, 1, 1), new FluidStack(
 							MainInit.ethanol, 1000), new FluidStack(MainInit.sulfuricAcid, 500), new Object[] {});

@@ -60,7 +60,7 @@ public class DCPluginUGB {
 				'Y',
 				"gemFlint" });
 
-			DCRecipe.jsonShapedRecipe("plugin", new ItemStack(MainInit.builds, 2, 9), new Object[] {
+			DCRecipe.jsonShapedRecipe("plugin", 2, new ItemStack(MainInit.builds, 2, 9), new Object[] {
 				"XY",
 				"YX",
 				'X',
@@ -68,23 +68,21 @@ public class DCPluginUGB {
 				'Y',
 				"gemFlint" });
 
-			if (ModuleConfig.machine) {
+			if (ModuleConfig.r_mill) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
 						7), 0.05F, "stoneBasalt");
 
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.oreDust, 1,
 						2), 0.05F, "stoneKomatite");
+			}
 
-				if (ModuleConfig.machine_advanced) {
+			if (ModuleConfig.r_crusher) {
 
-					RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(
-							MainInit.miscDust, 1, 7), 0.2F, new ItemStack(MainInit.oreItem, 1,
-									4), 0.05F, ti, "stoneBasalt");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust,
+						1, 7), 0.2F, new ItemStack(MainInit.oreItem, 1, 4), 0.05F, ti, "stoneBasalt");
 
-					RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(
-							MainInit.oreItem, 1, 6), 0.2F, new ItemStack(MainInit.oreItem, 1,
-									4), 0.05F, ti, "stoneKomatite");
-				}
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.oreItem,
+						1, 6), 0.2F, new ItemStack(MainInit.oreItem, 1, 4), 0.05F, ti, "stoneKomatite");
 			}
 		}
 
@@ -95,22 +93,32 @@ public class DCPluginUGB {
 			OreDictionary.registerOre("stoneMarble", new ItemStack(met, 1, 2));
 			OreDictionary.registerOre("blockMarble", new ItemStack(met, 1, 2));
 			OreDictionary.registerOre("stoneQuarzite", new ItemStack(met, 1, 3));
+			OreDictionary.registerOre("stoneSchist", new ItemStack(met, 1, 4));
+			OreDictionary.registerOre("stoneSchist", new ItemStack(met, 1, 5));
 
-			if (ModuleConfig.machine) {
+			if (ModuleConfig.r_mill) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
-						8), 0.1F, "stonEclogite");
+						8), 0.1F, "stoneEclogite");
 
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
 						1), 0.1F, "stoneQuarzite");
 
-				if (ModuleConfig.machine_advanced) {
+				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
+						12), 0.1F, "stoneSchist");
+			}
+			if (ModuleConfig.r_crusher) {
 
-					RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems,
-							1, 14), 0.15F, new ItemStack(MainInit.gems, 1, 13), 0.05F, sc, "stoneEclogite");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems, 1,
+						14), 0.15F, new ItemStack(MainInit.gems, 1, 13), 0.05F, sc, "stoneEclogite");
 
-					RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems,
-							1, 2), 0.2F, new ItemStack(Items.QUARTZ, 1, 0), 0.05F, sc, "stoneQuarzite");
-				}
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems, 1,
+						2), 0.2F, new ItemStack(Items.QUARTZ, 1, 0), 0.05F, sc, "stoneQuarzite");
+
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust,
+						1, 12), 0.3F, new ItemStack(MainInit.miscDust, 1, 11), 0.1F, ti, new ItemStack(met, 1, 4));
+
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust,
+						1, 12), 0.3F, new ItemStack(MainInit.miscDust, 1, 11), 0.1F, ti, new ItemStack(met, 1, 5));
 			}
 		}
 
@@ -122,30 +130,30 @@ public class DCPluginUGB {
 			OreDictionary.registerOre("stoneSilt", new ItemStack(sed, 1, 3));
 			OreDictionary.registerOre("stoneChart", new ItemStack(sed, 1, 7));
 
-			if (ModuleConfig.machine) {
+			if (ModuleConfig.r_mill) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), "stoneChalk");
 
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems, 1,
-						23), 0.05F, "stonShele");
+						23), 0.05F, "stoneShele");
 
 				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(
 						Items.FLINT), 0.2F, "stoneChart");
+			}
 
-				if (ModuleConfig.machine_advanced) {
-					RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 2), new ItemStack(
-							Items.BONE, 1, 0), 0.1F, ti, "stoneChalk");
+			if (ModuleConfig.r_crusher) {
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 2), new ItemStack(Items.BONE,
+						1, 0), 0.1F, ti, "stoneChalk");
 
-					RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 2), new ItemStack(
-							MainInit.gems, 1, 23), 1F, new ItemStack(Items.BONE, 1, 0), 0.1F, ti, "stoneShele");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 2), new ItemStack(
+						MainInit.gems, 1, 23), 1F, new ItemStack(Items.BONE, 1, 0), 0.1F, ti, "stoneShele");
 
-					RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 1), new ItemStack(
-							Items.FLINT), 0.5F, new ItemStack(MainInit.gems, 1, 0), 0.1F, ti, "stoneChart");
-				}
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 1), new ItemStack(
+						Items.FLINT), 0.5F, new ItemStack(MainInit.gems, 1, 2), 0.1F, ti, "stoneChart");
 			}
 		}
 
 		Item lig = Item.REGISTRY.getObject(new ResourceLocation("undergroundbiomes", "lignite_coal"));
-		if (lig != null) {
+		if (lig != null && ModuleConfig.r_reactor) {
 			OreDictionary.registerOre("gemLignite", new ItemStack(lig, 1, 0));
 			// 褐炭改質
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(Items.COAL, 1, 0), new ItemStack(
