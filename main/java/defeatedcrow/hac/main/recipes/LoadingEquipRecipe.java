@@ -265,7 +265,7 @@ public class LoadingEquipRecipe {
 					"itemCloth" });
 			}
 
-			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.silverArmor[0], 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.silverArmor[0], 1, 0), new Object[] {
 				"XXX",
 				"XYX",
 				'X',
@@ -273,7 +273,7 @@ public class LoadingEquipRecipe {
 				'Y',
 				"itemCloth" });
 
-			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.silverArmor[1], 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.silverArmor[1], 1, 0), new Object[] {
 				"X X",
 				"XYX",
 				"XXX",
@@ -282,7 +282,7 @@ public class LoadingEquipRecipe {
 				'Y',
 				"itemCloth" });
 
-			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.silverArmor[2], 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.silverArmor[2], 1, 0), new Object[] {
 				"XYX",
 				"X X",
 				"X X",
@@ -291,7 +291,7 @@ public class LoadingEquipRecipe {
 				'Y',
 				"itemCloth" });
 
-			DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.silverArmor[3], 1, 0), new Object[] {
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.silverArmor[3], 1, 0), new Object[] {
 				"X X",
 				"XYX",
 				'X',
@@ -364,7 +364,7 @@ public class LoadingEquipRecipe {
 			'Y',
 			"charcoal" });
 
-		DCRecipe.jsonShapedRecipe("main_equip", new ItemStack(MainInit.patternPaper, 1, 6), new Object[] {
+		DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.patternPaper, 1, 6), new Object[] {
 			"YX",
 			"XX",
 			"XX",

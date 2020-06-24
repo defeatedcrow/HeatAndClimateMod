@@ -15,7 +15,7 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "cropRice"
+   "ore": "foodRice"
   },
   {
    "type": "forge:ore_dict",

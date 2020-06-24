@@ -2,13 +2,12 @@
  "type": "forge:ore_shaped",
  "pattern": [
   "X X",
-  "XYX",
-  "XXX"
+  "XYX"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotSilver"
+   "ore": "ingotNickelsilver"
   },
   "Y": {
    "type": "forge:ore_dict",
@@ -16,7 +15,7 @@
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_plate_silver",
+  "item": "dcs_climate:dcs_boots_silver",
   "count": 1,
   "data": 0
  }

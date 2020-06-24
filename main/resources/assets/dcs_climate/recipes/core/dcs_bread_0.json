@@ -1,21 +1,16 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "XXX",
-  "XYX"
+  "YYY"
  ],
  "key": {
-  "X": {
-   "type": "forge:ore_dict",
-   "ore": "ingotSilver"
-  },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
+   "ore": "foodFlour"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_met_silver",
+  "item": "minecraft:bread",
   "count": 1,
   "data": 0
  }

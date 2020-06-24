@@ -1,22 +1,26 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "X X",
-  "XYX",
-  "XXX"
+  "X",
+  "Y",
+  "Z"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotSilver"
+   "ore": "leather"
   },
   "Y": {
    "type": "forge:ore_dict",
    "ore": "itemCloth"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_plate_silver",
+  "item": "minecraft:saddle",
   "count": 1,
   "data": 0
  }

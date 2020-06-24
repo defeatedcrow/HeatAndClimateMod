@@ -2,7 +2,7 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "item": "dcs_climate:dcs_desiccant",
+   "item": "dcs_climate:dcs_coolant",
    "data": 3
   }
  ],

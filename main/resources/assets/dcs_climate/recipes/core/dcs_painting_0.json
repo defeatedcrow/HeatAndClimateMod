@@ -1,14 +1,14 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "X X",
+  "XXX",
   "XYX",
   "XXX"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotSilver"
+   "ore": "stickWood"
   },
   "Y": {
    "type": "forge:ore_dict",
@@ -16,7 +16,7 @@
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_plate_silver",
+  "item": "minecraft:painting",
   "count": 1,
   "data": 0
  }

@@ -1,22 +1,21 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "X X",
-  "XYX",
-  "XXX"
+  "XXX",
+  "YYY"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotSilver"
+   "ore": "itemCloth"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
+   "ore": "plankWood"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_plate_silver",
+  "item": "minecraft:bed",
   "count": 1,
   "data": 0
  }

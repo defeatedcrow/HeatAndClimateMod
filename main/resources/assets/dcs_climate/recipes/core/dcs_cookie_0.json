@@ -1,23 +1,21 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "X X",
-  "XYX",
-  "XXX"
+  "YZY"
  ],
  "key": {
-  "X": {
-   "type": "forge:ore_dict",
-   "ore": "ingotSilver"
-  },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
+   "ore": "foodFlour"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "cropCocoa"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_plate_silver",
-  "count": 1,
+  "item": "minecraft:cookie",
+  "count": 8,
   "data": 0
  }
 }

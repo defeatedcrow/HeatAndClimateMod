@@ -1,31 +1,31 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "ZXZ",
-  "WYW",
-  "ZXZ"
+  "XXX",
+  "YZY",
+  "WWW"
  ],
  "key": {
-  "W": {
-   "type": "forge:ore_dict",
-   "ore": "gemSapphire"
-  },
   "X": {
    "type": "forge:ore_dict",
-   "ore": "gemCelestite"
+   "ore": "bucketMilk"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "gemOpal"
+   "ore": "dustSugar"
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "obsidian"
+   "ore": "egg"
+  },
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "foodFlour"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_gemcore",
+  "item": "minecraft:cake",
   "count": 1,
-  "data": 1
+  "data": 0
  }
 }

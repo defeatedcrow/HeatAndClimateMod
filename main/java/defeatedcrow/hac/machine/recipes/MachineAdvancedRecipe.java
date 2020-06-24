@@ -397,7 +397,7 @@ public class MachineAdvancedRecipe {
 			'Z',
 			"obsidian" });
 
-		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
+		DCRecipe.jsonShapedRecipe("machine_advanced", 2, new ItemStack(MachineInit.gemcore, 1, 1), new Object[] {
 			"ZXZ",
 			"WYW",
 			"ZXZ",

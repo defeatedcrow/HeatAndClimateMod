@@ -1280,7 +1280,7 @@ public class LoadingBuildingRecipe {
 					new ItemStack(MachineInit.reagent, 1, 4),
 					"bucketWater" });
 
-				DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(Items.DYE, 1, 15), new Object[] {
+				DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(Items.DYE, 1, 15), new Object[] {
 					new ItemStack(MainInit.freezepack, 1, 3) });
 
 			}
