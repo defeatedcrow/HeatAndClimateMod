@@ -10,7 +10,7 @@
       "translate": "advancements.dcs_climate.metal_chamber.description"
     }
   },
-  "parent": "dcs_climate:metal_blass2",
+  "parent": "dcs_climate:metal_brass2",
   "criteria": {
         "dcs_chamber": {
             "trigger": "minecraft:placed_block",

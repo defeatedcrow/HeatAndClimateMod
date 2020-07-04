@@ -5,10 +5,10 @@
       "data": 4
     },
     "title": {
-      "translate": "advancements.dcs_climate.metal_blass1.title"
+      "translate": "advancements.dcs_climate.metal_brass1.title"
     },
     "description": {
-      "translate": "advancements.dcs_climate.metal_blass1.description"
+      "translate": "advancements.dcs_climate.metal_brass1.description"
     }
   },
   "parent": "dcs_climate:climate_oredust",
