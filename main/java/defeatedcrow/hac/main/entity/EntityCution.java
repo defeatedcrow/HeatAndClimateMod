@@ -38,7 +38,7 @@ public class EntityCution extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 
-		if (world.isRemote) {
+		if (!world.isRemote) {
 			if (count > 0) {
 				count--;
 			} else {

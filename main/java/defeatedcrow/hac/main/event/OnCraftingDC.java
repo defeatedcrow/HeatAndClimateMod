@@ -47,7 +47,7 @@ public class OnCraftingDC {
 				}
 				if (asbest > 0) {
 					Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(craft);
-					map.put(Enchantments.FIRE_ASPECT, asbest);
+					map.put(Enchantments.FIRE_PROTECTION, asbest);
 					EnchantmentHelper.setEnchantments(map, craft);
 				}
 				if (silk > 0) {

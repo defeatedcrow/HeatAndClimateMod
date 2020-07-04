@@ -70,12 +70,6 @@ public class BasicRecipeRegister {
 			'Z',
 			"dustSulfur" });
 
-		// ブレイズパウダー
-		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.BLAZE_POWDER, 1, 0), new Object[] {
-			"dustCoal",
-			"dustPhosphorus",
-			"dustSulfur" });
-
 		// 棒の処理
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(Blocks.PLANKS, 1, 0), new Object[] {
 			"XX",

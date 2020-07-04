@@ -209,6 +209,7 @@ public class MainInit {
 	// tool
 	public static Item stoneYagen;
 	public static Item brassYagen;
+	public static Item handSpindle;
 	public static Item crowDrill;
 	public static Item tinder;
 	public static Item bucketClay;
@@ -230,6 +231,8 @@ public class MainInit {
 
 	public static Item shieldTitanium;
 	public static Item shieldSynthetic;
+
+	public static Item handNet;
 
 	// armor
 	public static Item[] brassArmor = new Item[4];

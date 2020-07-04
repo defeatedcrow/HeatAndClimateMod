@@ -217,11 +217,10 @@ public class RegisterReactorRecipe {
 					14), null, 0, null, null, DCHeatTier.KILN, new ItemStack(MachineInit.catalyst, 1,
 							3), new FluidStack(MainInit.fuelGas, 500), null, new Object[] {});
 
-			// Ni 水素ガス
-			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1,
-					3), null, 0, new FluidStack(MainInit.hydrogen, 500), null, DCHeatTier.NORMAL, new ItemStack(
-							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 1000), null, new Object[] {
-								"dustSalt" });
+			// Au or Ni 水素ガス
+			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.hydrogen,
+					100), null, DCHeatTier.NORMAL, new ItemStack(Items.GOLD_INGOT, 1, 0), new FluidStack(
+							FluidRegistry.WATER, 1000), null, new Object[] { "dustAlkali" });
 
 			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.hydrogen,
 					1000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(

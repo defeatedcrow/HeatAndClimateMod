@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.3.8 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.3.9 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -1932,6 +1932,8 @@ Y = 色のキューブ
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
 
 ○3.3.8
+　変更
+　　・水素生成レシピを少し緩和
 　修正
 　　・en_usの新規追加分の差し戻し
 

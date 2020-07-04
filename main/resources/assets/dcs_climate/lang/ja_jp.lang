@@ -547,6 +547,7 @@ item.dcs_food_petals_black.name=黒蓮の花びら
 
 item.dcs_yagen_stone_normal.name=石の薬研
 item.dcs_yagen_brass_normal.name=真鍮の薬研
+item.dcs_handspindle_normal.name=紡錘
 
 item.dcs_repair_putty.name=修繕ペースト
 item.dcs_repair_abrasive.name=砥石
@@ -595,6 +596,8 @@ item.dcs_scythe_toolsteel.name=工具鋼の大鎌
 
 item.dcs_shield_titanium.name=チタン合金の盾
 item.dcs_shield_synthetic.name=ライオットシールド
+
+item.dcs_handnet.name=タモ網
 
 item.dcs_sword_brass.name=真鍮の剣
 item.dcs_sword_steel.name=鋼の剣
@@ -1992,6 +1995,8 @@ dcs.info.title.flower_pot=花瓶
 dcs.info.desc.flower_pot=植物や苗木などを飾ることが出来るEntityです。
 dcs.info.title.cushion=モブをダメにするクッション
 dcs.info.desc.cushion=触れたモブを強制的に座らせます。
+dcs.info.title.handnet=タモ網
+dcs.info.desc.handnet=浅い水辺で使用すると魚やエビを得られます。同じ場所で使用を続けるとアイテムが出なくなります。
 
 ## deprecated items
 tile.dcs_metal_copper.name=銅ブロック

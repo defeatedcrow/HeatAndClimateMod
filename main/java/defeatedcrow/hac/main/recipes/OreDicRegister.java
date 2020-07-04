@@ -7,7 +7,6 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.OredicConfig;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -246,6 +245,7 @@ public class OreDicRegister {
 		// tool
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.stoneYagen, 1, 32767));
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.brassYagen, 1, 32767));
+		OreDictionary.registerOre("toolSpindle", new ItemStack(MainInit.handSpindle, 1, 0));
 		OreDictionary.registerOre("soap", new ItemStack(MainInit.repairPutty, 1, 2));
 
 		// food
@@ -301,10 +301,5 @@ public class OreDicRegister {
 
 		}
 
-		OreDictionary.registerOre("stoneGranite", new ItemStack(Blocks.STONE, 1, 1));
-		OreDictionary.registerOre("stoneDiorite", new ItemStack(Blocks.STONE, 1, 3));
-		OreDictionary.registerOre("stoneAndesite", new ItemStack(Blocks.STONE, 1, 5));
-
-		OreDictionary.registerOre("listAllsugar", new ItemStack(Items.SUGAR));
 	}
 }

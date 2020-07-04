@@ -83,6 +83,7 @@ public class MainCreativeTabRegister {
 		// tool
 		MainInit.stoneYagen.setCreativeTab(ClimateMain.tool);
 		MainInit.brassYagen.setCreativeTab(ClimateMain.tool);
+		MainInit.handSpindle.setCreativeTab(ClimateMain.tool);
 		MainInit.crowDrill.setCreativeTab(ClimateMain.tool);
 
 		MainInit.repairPutty.setCreativeTab(ClimateMain.tool);

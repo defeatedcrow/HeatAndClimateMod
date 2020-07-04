@@ -1,9 +1,9 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "XXX",
-  "XYX",
-  "XXX"
+  "X",
+  "Y",
+  "X"
  ],
  "key": {
   "X": {
@@ -12,11 +12,11 @@
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
+   "ore": "gearWood"
   }
  },
  "result": {
-  "item": "minecraft:painting",
+  "item": "dcs_climate:dcs_handspindle",
   "count": 1,
   "data": 0
  }

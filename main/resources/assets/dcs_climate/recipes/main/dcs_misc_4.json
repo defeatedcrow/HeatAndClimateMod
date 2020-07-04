@@ -12,7 +12,7 @@
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "stickWood"
+   "ore": "toolSpindle"
   }
  },
  "result": {

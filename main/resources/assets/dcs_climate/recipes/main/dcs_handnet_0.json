@@ -1,21 +1,23 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "YZY"
+  " YY",
+  " YY",
+  "XXX"
  ],
  "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "foodFlour"
-  },
-  "Z": {
-   "type": "forge:ore_dict",
-   "ore": "cropCocoa"
+   "ore": "string"
   }
  },
  "result": {
-  "item": "minecraft:cookie",
-  "count": 8,
+  "item": "dcs_climate:dcs_handnet",
+  "count": 1,
   "data": 0
  }
 }

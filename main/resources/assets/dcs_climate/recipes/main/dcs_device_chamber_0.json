@@ -12,7 +12,7 @@
   },
   "X": {
    "type": "forge:ore_dict",
-   "ore": "stickBlaze"
+   "ore": "dustRedstone"
   },
   "Z": {
    "type": "forge:ore_dict",

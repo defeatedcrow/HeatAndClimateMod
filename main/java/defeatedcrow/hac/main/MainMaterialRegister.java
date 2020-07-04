@@ -130,6 +130,8 @@ import defeatedcrow.hac.main.item.tool.ItemCrossbowDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemDCShield;
 import defeatedcrow.hac.main.item.tool.ItemEntityScope;
+import defeatedcrow.hac.main.item.tool.ItemHandNet;
+import defeatedcrow.hac.main.item.tool.ItemHandSpindle;
 import defeatedcrow.hac.main.item.tool.ItemHoeDC;
 import defeatedcrow.hac.main.item.tool.ItemMusketDC;
 import defeatedcrow.hac.main.item.tool.ItemPickaxeDC;
@@ -323,6 +325,9 @@ public class MainMaterialRegister {
 
 		MainInit.brassYagen = new ItemAlloyYagen().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_yagen_brass");
 		DCMaterialReg.registerItem(MainInit.brassYagen, ClimateCore.PACKAGE_BASE + "_yagen_brass", ClimateMain.MOD_ID);
+
+		MainInit.handSpindle = new ItemHandSpindle().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_handspindle");
+		DCMaterialReg.registerItem(MainInit.handSpindle, ClimateCore.PACKAGE_BASE + "_handspindle", ClimateMain.MOD_ID);
 
 		MainInit.crowDrill = new ItemCrowDrill().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_creative_drill");
 		DCMaterialReg
@@ -1048,6 +1053,10 @@ public class MainMaterialRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_shield_titanium");
 			DCMaterialReg
 					.registerItem(MainInit.shieldTitanium, ClimateCore.PACKAGE_BASE + "_shield_titanium", ClimateMain.MOD_ID);
+
+			MainInit.handNet = new ItemHandNet().setCreativeTab(ClimateMain.tool)
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_handnet");
+			DCMaterialReg.registerItem(MainInit.handNet, ClimateCore.PACKAGE_BASE + "_handnet", ClimateMain.MOD_ID);
 
 		}
 

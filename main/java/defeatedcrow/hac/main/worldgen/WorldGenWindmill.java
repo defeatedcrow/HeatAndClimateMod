@@ -8,9 +8,11 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.machine.MachineInit;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
+import defeatedcrow.hac.main.util.LootTablesDC;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockLadder;
@@ -306,13 +308,7 @@ public class WorldGenWindmill implements IWorldGenerator {
 				.withProperty(BlockChest.FACING, EnumFacing.WEST), 2);
 		TileEntity chest = world.getTileEntity(pos.add(2, 1, -2));
 		if (chest != null && chest instanceof TileEntityChest) {
-			for (int l = 0; l < 27; l++) {
-				int r = pRandom.nextInt(80);
-				if (r < loot.size()) {
-					ItemStack ret = loot.get(r);
-					((TileEntityChest) chest).setInventorySlotContents(l, ret);
-				}
-			}
+			((TileEntityChest) chest).setLootTable(LootTablesDC.WINDMILL_CHEST_LOOT, world.rand.nextLong());
 		}
 	}
 
@@ -353,51 +349,22 @@ public class WorldGenWindmill implements IWorldGenerator {
 	public static List<ItemStack> loot = new ArrayList<ItemStack>();
 
 	public static void initLoot() {
-		loot.add(new ItemStack(MainInit.oreIngot, 3, 4));
-		loot.add(new ItemStack(MainInit.oreIngot, 3, 4));
-		loot.add(new ItemStack(MainInit.oreIngot, 3, 4));
-		loot.add(new ItemStack(MainInit.oreIngot, 4, 4));
-		loot.add(new ItemStack(MainInit.oreIngot, 4, 4));
-		loot.add(new ItemStack(MainInit.oreIngot, 5, 4));
-		loot.add(new ItemStack(MainInit.oreIngot, 3, 3));
-		loot.add(new ItemStack(MainInit.oreIngot, 5, 3));
-		loot.add(new ItemStack(MainInit.oreIngot, 3, 3));
-		loot.add(new ItemStack(MainInit.oreIngot, 5, 3));
-		loot.add(new ItemStack(MainInit.oreIngot, 3, 5));
-		loot.add(new ItemStack(MainInit.oreIngot, 5, 5));
-		loot.add(new ItemStack(MainInit.oreIngot, 5, 6));
-		loot.add(new ItemStack(MainInit.oreIngot, 5, 6));
-		loot.add(new ItemStack(MainInit.oreDust, 6, 0));
-		loot.add(new ItemStack(MainInit.oreDust, 12, 0));
-		loot.add(new ItemStack(MainInit.oreDust, 6, 1));
-		loot.add(new ItemStack(MainInit.oreDust, 12, 1));
-		loot.add(new ItemStack(MainInit.gems, 3, 0));
-		loot.add(new ItemStack(MainInit.gems, 3, 1));
-		loot.add(new ItemStack(MainInit.gems, 3, 2));
-		loot.add(new ItemStack(MainInit.gems, 4, 3));
-		loot.add(new ItemStack(MainInit.gems, 8, 3));
-		loot.add(new ItemStack(MainInit.wrench, 1, 0));
-		loot.add(new ItemStack(MainInit.wrench, 1, 0));
-		loot.add(new ItemStack(MainInit.clothes, 2, 2));
-		loot.add(new ItemStack(MainInit.clothes, 2, 2));
-		loot.add(new ItemStack(MainInit.clothes, 2, 3));
-		loot.add(new ItemStack(MainInit.clothes, 2, 3));
-		loot.add(new ItemStack(MainInit.gears, 1, 1));
-		loot.add(new ItemStack(MainInit.gears, 1, 1));
-		loot.add(new ItemStack(MainInit.gears, 1, 2));
-		loot.add(new ItemStack(MainInit.gears, 1, 2));
-		loot.add(new ItemStack(MainInit.bakedApple, 3, 2));
-		loot.add(new ItemStack(MainInit.bakedApple, 3, 3));
 		if (ModuleConfig.machine) {
-			loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
 			loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
 			loot.add(new ItemStack(MachineInit.shaft_s, 1, 0));
 			loot.add(new ItemStack(MachineInit.shaft_l, 1, 0));
 		}
-		loot.add(new ItemStack(MainInit.leatherHat, 1, 0));
-		loot.add(new ItemStack(MainInit.linenUnder, 1, 0));
+		if (ModuleConfig.magic) {
+			loot.add(new ItemStack(MagicInit.colorDrop, 1, 0));
+			loot.add(new ItemStack(MagicInit.colorDrop, 1, 1));
+			loot.add(new ItemStack(MagicInit.colorDrop, 1, 2));
+			loot.add(new ItemStack(MagicInit.colorDrop, 1, 3));
+			loot.add(new ItemStack(MagicInit.colorDrop, 1, 4));
+		}
 		if (ModuleConfig.tool) {
 			loot.add(new ItemStack(MainInit.dcScythe[1], 1, 0));
+			loot.add(new ItemStack(MainInit.dcPickaxe[0], 1, 0));
+			loot.add(new ItemStack(MainInit.dcAxe[0], 1, 0));
 		}
 	}
 

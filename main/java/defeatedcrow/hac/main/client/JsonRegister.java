@@ -42,6 +42,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.foodDust, ClimateCore.PACKAGE_ID, "dcs_food_dust", "food", 6);
 		MAIN_INSTANCE.regSimpleItem(MainInit.stoneYagen, ClimateCore.PACKAGE_ID, "dcs_stone_yagen", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.brassYagen, ClimateCore.PACKAGE_ID, "dcs_brass_yagen", "tool", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.handSpindle, ClimateCore.PACKAGE_ID, "dcs_handspindle", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.gears, ClimateCore.PACKAGE_ID, "dcs_gear", "tool", 4);
 		MAIN_INSTANCE.regSimpleItem(MainInit.clothes, ClimateCore.PACKAGE_ID, "dcs_cloth", "tool", 11);
 		MAIN_INSTANCE.regSimpleItem(MainInit.patternPaper, ClimateCore.PACKAGE_ID, "dcs_pattern_paper", "tool", 8);
@@ -251,6 +252,7 @@ public class JsonRegister {
 					.regSimpleItem(MainInit.shieldSynthetic, ClimateCore.PACKAGE_ID, "dcs_shield_synthetic", "equip", 0);
 			MAIN_INSTANCE
 					.regSimpleItem(MainInit.shieldTitanium, ClimateCore.PACKAGE_ID, "dcs_shield_titanium", "equip", 0);
+			MAIN_INSTANCE.regSimpleItem(MainInit.handNet, ClimateCore.PACKAGE_ID, "dcs_handnet", "equip", 0);
 
 		}
 

@@ -542,6 +542,7 @@ item.dcs_food_petals_black.name=Black Petal
 ## craft tools
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
 item.dcs_yagen_brass_normal.name=Brass Druggist's Mortar
+item.dcs_handspindle_normal.name=Hand Spindle
 
 item.dcs_repair_putty.name=Repair Putty
 item.dcs_repair_abrasive.name=Molded Abrasibe
@@ -590,6 +591,8 @@ item.dcs_rake_toolsteel.name=Tool Steel Rake
 
 item.dcs_shield_titanium.name=Titanium Alloy Shield
 item.dcs_shield_synthetic.name=Riot Shield
+
+item.dcs_handnet.name=Hand Net
 
 ## weapons
 item.dcs_sword_brass.name=Brass Sword
@@ -2239,6 +2242,8 @@ dcs.info.title.flower_pot=Flower Pot
 dcs.info.desc.flower_pot=This entity can contain plants and saplings inside.
 dcs.info.title.cushion=Cushion
 dcs.info.desc.cushion=Capture the mob that touches it.
+dcs.info.title.handnet=Hand Net
+dcs.info.desc.handnet=Get items from shallow natural waters. Items with the same coordinates will decrease.
 
 
 # deprecated

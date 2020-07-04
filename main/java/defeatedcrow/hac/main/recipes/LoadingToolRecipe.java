@@ -22,7 +22,7 @@ public class LoadingToolRecipe {
 			'X',
 			"blockTallgrass",
 			'Y',
-			"stickWood" });
+			"toolSpindle" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 1), new Object[] {
 			"XXX",
@@ -31,7 +31,7 @@ public class LoadingToolRecipe {
 			'X',
 			new ItemStack(Items.STRING, 1, 0),
 			'Y',
-			"stickWood" });
+			"toolSpindle" });
 
 		DCRecipe.jsonShapedRecipe("main", 2, new ItemStack(MainInit.clothes, 1, 1), new Object[] {
 			"XXX",
@@ -40,7 +40,7 @@ public class LoadingToolRecipe {
 			'X',
 			"cropCotton",
 			'Y',
-			"stickWood" });
+			"toolSpindle" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 2), new Object[] {
 			" X ",
@@ -144,7 +144,7 @@ public class LoadingToolRecipe {
 			'X',
 			"dustChrysotile",
 			'Y',
-			"stickWood" });
+			"toolSpindle" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 5), new Object[] {
 			" X ",
@@ -167,7 +167,7 @@ public class LoadingToolRecipe {
 			'X',
 			"bunchVine",
 			'Y',
-			"stickWood" });
+			"toolSpindle" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.clothes, 1, 11), new Object[] {
 			" X ",
@@ -193,6 +193,24 @@ public class LoadingToolRecipe {
 			"ingotBrass",
 			'Y',
 			"gearWood" });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.handSpindle, 1, 0), new Object[] {
+			"X",
+			"Y",
+			"X",
+			'X',
+			"stickWood",
+			'Y',
+			"gearWood" });
+
+		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.handNet, 1, 0), new Object[] {
+			" YY",
+			" YY",
+			"XXX",
+			'X',
+			"stickWood",
+			'Y',
+			"string" });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(DCInit.climate_checker, 1, 0), new Object[] {
 			" Z ",
@@ -252,7 +270,7 @@ public class LoadingToolRecipe {
 			'Y',
 			new ItemStack(Blocks.FURNACE, 1, 0),
 			'X',
-			"stickBlaze",
+			"dustRedstone",
 			'Z',
 			"ingotBrass" });
 
@@ -263,7 +281,7 @@ public class LoadingToolRecipe {
 			'Y',
 			new ItemStack(Blocks.FURNACE, 1, 0),
 			'X',
-			"stickBlaze",
+			"dustRedstone",
 			'Z',
 			"ingotBronze" });
 

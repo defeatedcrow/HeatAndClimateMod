@@ -141,6 +141,10 @@ public class DCInfoDataRegister implements IDCInfoDataRegister {
 			DCInfoData rake_earth = new DCInfoData(null, null, new ItemStack(MainInit.earthRake, 1, 0),
 					"dcs.info.title.rake_earth", "dcs.info.desc.rake_earth");
 			MainAPIManager.infoRegister.registerInfo(rake_earth);
+
+			DCInfoData hand_net = new DCInfoData(null, null, new ItemStack(MainInit.handNet, 1, 0),
+					"dcs.info.title.handnet", "dcs.info.desc.handnet");
+			MainAPIManager.infoRegister.registerInfo(hand_net);
 		}
 
 		DCInfoData chamber = new DCInfoData(null, null, new ItemStack(MainInit.chamber), "dcs.info.title.chamber",
