@@ -78,7 +78,7 @@ public class DCsJeiPlugin2 implements IModPlugin {
 
 			registry.addRecipeClickArea(GuiReactor.class, 120, 18, 16, 16, new String[] { "dcs_climate.reactor" });
 
-			registry.addRecipeClickArea(GuiReactorIBC.class, 68, 38, 35, 16, new String[] { "dcs_climate.reactor" });
+			registry.addRecipeClickArea(GuiReactorIBC.class, 93, 38, 16, 16, new String[] { "dcs_climate.reactor" });
 
 			registry.addRecipeClickArea(GuiCrusher.class, 80, 22, 12, 23, new String[] { "dcs_climate.crusher" });
 		}

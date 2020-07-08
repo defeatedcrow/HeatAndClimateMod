@@ -10,7 +10,7 @@
       "translate": "advancements.dcs_climate.machine_wrench.description"
     }
   },
-  "parent": "dcs_climate:metal_blass2",
+  "parent": "dcs_climate:metal_brass2",
   "criteria": {
         "get_wrench": {
             "trigger": "minecraft:inventory_changed",

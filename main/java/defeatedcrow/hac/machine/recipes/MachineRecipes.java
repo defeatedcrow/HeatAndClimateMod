@@ -554,6 +554,7 @@ public class MachineRecipes {
 		OreDictionary.registerOre("dropGlycerin", new ItemStack(MachineInit.reagent, 1, 1));
 		OreDictionary.registerOre("dropPlastic", new ItemStack(MachineInit.reagent, 1, 2));
 		OreDictionary.registerOre("dustAlkali", new ItemStack(MachineInit.reagent, 1, 3));
+		OreDictionary.registerOre("dustAmmoniumNitrate", new ItemStack(MachineInit.reagent, 1, 4));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(MachineInit.reagent, 1, 7));
 		OreDictionary.registerOre("gemCarbide", new ItemStack(MachineInit.reagent, 1, 9));
 		OreDictionary.registerOre("dustPhosphorus", new ItemStack(MachineInit.reagent, 1, 10));

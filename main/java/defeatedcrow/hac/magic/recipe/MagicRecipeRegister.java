@@ -845,6 +845,22 @@ public class MagicRecipeRegister {
 			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 3), new Object[] {
 				new ItemStack(MainInit.oilLamp, 1, 3),
 				"extractBlue" });
+
+			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 0), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 0),
+				"dustAmmoniumNitrate" });
+
+			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 1), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 1),
+				"dustAmmoniumNitrate" });
+
+			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 2), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 2),
+				"dustAmmoniumNitrate" });
+
+			DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.coldLamp, 1, 3), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 3),
+				"dustAmmoniumNitrate" });
 		}
 
 		// elestial

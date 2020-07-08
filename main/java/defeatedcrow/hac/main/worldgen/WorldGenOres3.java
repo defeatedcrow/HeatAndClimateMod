@@ -82,25 +82,29 @@ public class WorldGenOres3 implements IWorldGenerator {
 	static boolean isPlaceable(IBlockState block) {
 		if (block.isNormalCube() && !(block.getBlock() instanceof BlockEmptyDrops) && !(block
 				.getBlock() instanceof BlockContainer))
-			return block.getMaterial() == Material.ROCK || block.getMaterial() == Material.SAND || block
-					.getMaterial() == Material.GROUND || block.getMaterial() == Material.GRASS;
-
-		if (WorldGenConfig.disables.contains(new BlockSet(block.getBlock(), block.getBlock()
-				.getMetaFromState(block)))) {
-			return false;
-		}
+			if (block.getMaterial() == Material.ROCK || block.getMaterial() == Material.SAND || block
+					.getMaterial() == Material.GROUND || block.getMaterial() == Material.GRASS) {
+				if (WorldGenConfig.disables.contains(new BlockSet(block.getBlock(), block.getBlock()
+						.getMetaFromState(block)))) {
+					return false;
+				}
+				return true;
+			}
 
 		return debug;
 	}
 
 	static boolean isPlaceable3(IBlockState block) {
 		if (block.isNormalCube() && !(block.getBlock() instanceof BlockEmptyDrops)) {
-			if (block.getMaterial() == Material.GROUND)
+			if (block.getMaterial() == Material.GROUND || block.getBlock() == Blocks.NETHERRACK || block
+					.getBlock() == Blocks.SOUL_SAND) {
+				if (WorldGenConfig.disables.contains(new BlockSet(block.getBlock(), block.getBlock()
+						.getMetaFromState(block)))) {
+					return false;
+				}
 				return true;
-			if (block.getBlock() == Blocks.NETHERRACK)
-				return true;
-			if (block.getBlock() == Blocks.SOUL_SAND)
-				return true;
+			}
+
 		}
 		return debug;
 	}

@@ -1274,16 +1274,13 @@ public class LoadingBuildingRecipe {
 			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(Items.DYE, 1, 15), new Object[] {
 				new ItemStack(MainInit.desiccant, 1, 3) });
 
-			if (ModuleConfig.machine_advanced) {
-				DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.freezepack, 1, 0), new Object[] {
-					new ItemStack(Items.PAPER, 1, 0),
-					new ItemStack(MachineInit.reagent, 1, 4),
-					"bucketWater" });
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.freezepack, 1, 0), new Object[] {
+				new ItemStack(Items.PAPER, 1, 0),
+				"dustAmmoniumNitrate",
+				"bucketWater" });
 
-				DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(Items.DYE, 1, 15), new Object[] {
-					new ItemStack(MainInit.freezepack, 1, 3) });
-
-			}
+			DCRecipe.jsonShapelessRecipe("main_build", 2, new ItemStack(Items.DYE, 1, 15), new Object[] {
+				new ItemStack(MainInit.freezepack, 1, 3) });
 
 			if (ModuleConfig.food) {
 				DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.oilLamp, 1, 0), new Object[] {

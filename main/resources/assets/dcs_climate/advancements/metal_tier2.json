@@ -2,7 +2,7 @@
   "display": {
     "icon": {
       "item": "dcs_climate:dcs_ore_metal_alloy",
-      "data": 2
+      "data": 3
     },
     "title": {
       "translate": "advancements.dcs_climate.metal_tier2.title"

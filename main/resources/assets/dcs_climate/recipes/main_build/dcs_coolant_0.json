@@ -6,8 +6,8 @@
    "data": 0
   },
   {
-   "item": "dcs_climate:dcs_reagent",
-   "data": 4
+   "type": "forge:ore_dict",
+   "ore": "dustAmmoniumNitrate"
   },
   {
    "type": "forge:ore_dict",
