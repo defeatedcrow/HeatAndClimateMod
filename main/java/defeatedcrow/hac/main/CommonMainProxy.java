@@ -132,13 +132,12 @@ import defeatedcrow.hac.main.villager.HaCTradeData;
 import defeatedcrow.hac.main.villager.VillagerCreationHaCAgri;
 import defeatedcrow.hac.main.worldgen.CaravanGenEvent;
 import defeatedcrow.hac.main.worldgen.MazaiLakeGen;
-import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
-import defeatedcrow.hac.main.worldgen.VeinTableRegister;
-import defeatedcrow.hac.main.worldgen.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.WorldGenHotspring;
-import defeatedcrow.hac.main.worldgen.WorldGenOres3;
 import defeatedcrow.hac.main.worldgen.WorldGenSaplings;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
+import defeatedcrow.hac.main.worldgen.vein.VeinTableJson;
+import defeatedcrow.hac.main.worldgen.vein.WorldGenAltSkarn;
+import defeatedcrow.hac.main.worldgen.vein.WorldGenOres3;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -457,9 +456,8 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadWorldGenPost() {
 		if (ModuleConfig.world) {
-			VeinTableRegister.INSTANCE.registerVeins();
-			VeinTableJsonHelper.pre();
-			VeinTableJsonHelper.post();
+			VeinTableJson.pre();
+			VeinTableJson.post();
 		}
 	}
 

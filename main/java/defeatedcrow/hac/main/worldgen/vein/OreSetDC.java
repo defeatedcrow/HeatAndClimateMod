@@ -1,4 +1,4 @@
-package defeatedcrow.hac.main.worldgen;
+package defeatedcrow.hac.main.worldgen.vein;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -125,6 +125,6 @@ public class OreSetDC extends OreSet {
 		return weight + i1 + i2 + probability * 13;
 	}
 
-	private static final BlockSet AIR = new BlockSet(Blocks.AIR, 0);
+	public static final BlockSet AIR = new BlockSet(Blocks.AIR, 0);
 
 }

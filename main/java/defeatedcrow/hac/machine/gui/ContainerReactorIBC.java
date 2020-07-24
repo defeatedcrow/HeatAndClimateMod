@@ -92,7 +92,7 @@ public class ContainerReactorIBC extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < 9) {
-				if (!this.mergeItemStack(itemstack1, 10, 52, true))
+				if (!this.mergeItemStack(itemstack1, 10, this.inventorySlots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else {

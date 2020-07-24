@@ -1,4 +1,4 @@
-package defeatedcrow.hac.main.worldgen;
+package defeatedcrow.hac.main.worldgen.vein;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -82,15 +82,15 @@ public class OreGenPos {
 									.hasType(biome2, BiomeDictionary.Type.COLD))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.BLUE, seed);
 			}
-			if ((100 - rand2) < greenP && (BiomeDictionary
-					.hasType(biome2, BiomeDictionary.Type.FOREST) || BiomeDictionary
-							.hasType(biome2, BiomeDictionary.Type.JUNGLE) || BiomeDictionary
-									.hasType(biome2, BiomeDictionary.Type.CONIFEROUS) || BiomeDictionary
-											.hasType(biome2, BiomeDictionary.Type.LUSH))) {
+			if (rand2 < greenP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.FOREST) || BiomeDictionary
+					.hasType(biome2, BiomeDictionary.Type.JUNGLE) || BiomeDictionary
+							.hasType(biome2, BiomeDictionary.Type.CONIFEROUS) || BiomeDictionary
+									.hasType(biome2, BiomeDictionary.Type.LUSH))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.GREEN, seed);
 			}
-			if (rand2 < whiteP && (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.PLAINS) || BiomeDictionary
-					.hasType(biome2, BiomeDictionary.Type.SAVANNA))) {
+			if ((100 - rand2) < whiteP && (BiomeDictionary
+					.hasType(biome2, BiomeDictionary.Type.PLAINS) || BiomeDictionary
+							.hasType(biome2, BiomeDictionary.Type.SAVANNA))) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.WHITE, seed);
 			}
 		}

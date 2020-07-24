@@ -91,7 +91,7 @@ public class ContainerTeaPot extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < lim) {
-				if (!this.mergeItemStack(itemstack1, lim + 1, 36 + lim, true))
+				if (!this.mergeItemStack(itemstack1, lim + 1, this.inventorySlots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (!this.mergeItemStack(itemstack1, 0, lim, false))

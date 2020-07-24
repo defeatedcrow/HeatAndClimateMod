@@ -13,6 +13,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.util.LootTablesDC;
+import defeatedcrow.hac.main.worldgen.vein.OreGenPos;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockLadder;

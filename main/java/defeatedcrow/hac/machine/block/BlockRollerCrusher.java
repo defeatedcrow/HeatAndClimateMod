@@ -46,13 +46,17 @@ public class BlockRollerCrusher extends BlockTorqueBase {
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
+			if (MainUtil.isHeldWrench(player, hand)) {
+				EnumSide current = DCState.getSide(state, DCState.SIDE);
+				EnumSide next = MainUtil.getRotatedSide(current, true);
+				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
+				return true;
+			}
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack heldItem = player.getHeldItem(hand);
 
 			if (tile instanceof TileTorqueProcessor) {
-				if (MainUtil.isHeldWrench(player, hand)) {
-					((TileTorqueProcessor) tile).rotateFace();
-				} else if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
+				if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				}
 			}
@@ -67,11 +71,6 @@ public class BlockRollerCrusher extends BlockTorqueBase {
 		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (placer != null) {
 			EnumFacing face = placer.getHorizontalFacing();
-			if (placer.rotationPitch < -75.0F) {
-				face = EnumFacing.UP;
-			} else if (placer.rotationPitch > 75.0F) {
-				face = EnumFacing.DOWN;
-			}
 			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite()));
 		} else {
 			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(facing.getOpposite()));

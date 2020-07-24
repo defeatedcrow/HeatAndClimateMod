@@ -96,7 +96,7 @@ public class ContainerReactor extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < 16) {
-				if (!this.mergeItemStack(itemstack1, 17, 52, true))
+				if (!this.mergeItemStack(itemstack1, 17, this.inventorySlots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else {

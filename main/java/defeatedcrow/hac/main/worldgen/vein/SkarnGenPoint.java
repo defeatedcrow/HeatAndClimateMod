@@ -1,4 +1,4 @@
-package defeatedcrow.hac.main.worldgen;
+package defeatedcrow.hac.main.worldgen.vein;
 
 import defeatedcrow.hac.core.DCLogger;
 

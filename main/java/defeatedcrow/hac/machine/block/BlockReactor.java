@@ -56,6 +56,12 @@ public class BlockReactor extends BlockTorqueBase {
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
+			if (MainUtil.isHeldWrench(player, hand)) {
+				EnumSide current = DCState.getSide(state, DCState.SIDE);
+				EnumSide next = MainUtil.getRotatedSide(current, true);
+				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
+				return true;
+			}
 			ItemStack heldItem = player.getHeldItem(hand);
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile != null) {

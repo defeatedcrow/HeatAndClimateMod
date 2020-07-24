@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
@@ -12,6 +14,7 @@ import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -53,6 +56,12 @@ public class BlockPortalManager extends BlockTorqueBase {
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
+			if (MainUtil.isHeldWrench(player, hand)) {
+				EnumSide current = DCState.getSide(state, DCState.SIDE);
+				EnumSide next = MainUtil.getRotatedSide(current, false);
+				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
+				return true;
+			}
 			ItemStack heldItem = player.getHeldItem(hand);
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TilePortalManager) {

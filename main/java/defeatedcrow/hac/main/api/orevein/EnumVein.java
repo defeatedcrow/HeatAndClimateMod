@@ -13,17 +13,16 @@ public enum EnumVein {
 	NETHER(11, 5, 25);
 
 	public static final EnumVein[] VALUES = {
-			RED,
-			GREEN,
-			BLUE,
-			WHITE,
-			BLACK,
-			HIGH_RED,
-			GUANO,
-			SKARN,
-			SKARN_UNDER,
-			NETHER
-	};
+		RED,
+		GREEN,
+		BLUE,
+		WHITE,
+		BLACK,
+		HIGH_RED,
+		GUANO,
+		SKARN,
+		SKARN_UNDER,
+		NETHER };
 
 	public final int id;
 	public final int range;

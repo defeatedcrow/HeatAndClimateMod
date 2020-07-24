@@ -21,7 +21,7 @@ import defeatedcrow.hac.main.recipes.DCHeatTreatmentRegister;
 import defeatedcrow.hac.main.recipes.DCInfoDataRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
-import defeatedcrow.hac.main.worldgen.VeinTableRegister;
+import defeatedcrow.hac.main.worldgen.vein.VeinTableRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.ForgeModContainer;
@@ -45,7 +45,7 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 3;
 	public static final int MOD_MINOR = 3;
-	public static final int MOD_BUILD = 10;
+	public static final int MOD_BUILD = 11;
 	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.3.4,)";
 	public static final String UPDATE_JSON = "https://defeatedcrow.jp/version/heatandclimate.json";
 	public static final String KEY = "4cd12b92959105443b7b694fffe0cea9ed004886";

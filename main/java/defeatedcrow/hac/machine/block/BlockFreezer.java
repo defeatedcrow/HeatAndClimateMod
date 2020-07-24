@@ -10,8 +10,8 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -51,8 +51,12 @@ public class BlockFreezer extends BlockTorqueBase implements IHeatTile {
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
-			ItemStack heldItem = player.getHeldItem(hand);
-			if (!DCUtil.isEmpty(heldItem)) {}
+			if (MainUtil.isHeldWrench(player, hand)) {
+				EnumSide current = DCState.getSide(state, DCState.SIDE);
+				EnumSide next = MainUtil.getRotatedSide(current, false);
+				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
+				return true;
+			}
 		}
 		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}

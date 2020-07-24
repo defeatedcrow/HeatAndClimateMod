@@ -469,16 +469,16 @@ public class MachineRecipes {
 			'X',
 			new ItemStack(MachineInit.reagent, 1, 2) });
 
-		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.reagent, 9, 13), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine", 2, new ItemStack(MachineInit.reagent, 9, 13), new Object[] {
 			new ItemStack(MachineInit.fuelCont, 1, 0) });
 
-		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.reagent, 9, 9), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine", 2, new ItemStack(MachineInit.reagent, 9, 9), new Object[] {
 			new ItemStack(MachineInit.fuelCont, 1, 1) });
 
-		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.reagent, 9, 8), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine", 2, new ItemStack(MachineInit.reagent, 9, 8), new Object[] {
 			new ItemStack(MachineInit.fuelCont, 1, 2) });
 
-		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.reagent, 9, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("machine", 2, new ItemStack(MachineInit.reagent, 9, 2), new Object[] {
 			new ItemStack(MachineInit.fuelCont, 1, 3) });
 
 		DCRecipe.jsonShapelessRecipe("machine", new ItemStack(MachineInit.reagent, 1, 4), new Object[] {

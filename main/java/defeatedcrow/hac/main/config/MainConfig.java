@@ -2,7 +2,7 @@ package defeatedcrow.hac.main.config;
 
 import java.io.File;
 
-import defeatedcrow.hac.main.worldgen.VeinTableJsonHelper;
+import defeatedcrow.hac.main.worldgen.vein.VeinTableJson;
 import net.minecraftforge.common.config.Configuration;
 
 public class MainConfig {
@@ -24,7 +24,7 @@ public class MainConfig {
 		File cfgFile4 = new File(file, "defeatedcrow/climate/oredic.cfg");
 		OredicConfig.INSTANCE.load(new Configuration(cfgFile4));
 
-		VeinTableJsonHelper.setDir(file);
+		VeinTableJson.INSTANCE.setDir(file);
 	}
 
 }

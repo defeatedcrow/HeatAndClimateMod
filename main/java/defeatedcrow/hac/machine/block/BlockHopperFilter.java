@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -48,8 +49,8 @@ public class BlockHopperFilter extends BlockContainerDC {
 		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(
-				DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
+				.withProperty(DCState.POWERED, false));
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -119,6 +120,12 @@ public class BlockHopperFilter extends BlockContainerDC {
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
+			if (MainUtil.isHeldWrench(player, hand)) {
+				EnumSide current = DCState.getSide(state, DCState.SIDE);
+				EnumSide next = MainUtil.getRotatedSide(current, false);
+				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
+				return true;
+			}
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile != null && tile instanceof TileHopperFilter) {
 				if (!player.world.isRemote && hand == EnumHand.MAIN_HAND) {
@@ -139,8 +146,8 @@ public class BlockHopperFilter extends BlockContainerDC {
 			int meta, EntityLivingBase placer, EnumHand hand) {
 		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		EnumFacing face = facing.getOpposite();
-		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face)).withProperty(
-				DCState.POWERED, Boolean.valueOf(true));
+		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face))
+				.withProperty(DCState.POWERED, Boolean.valueOf(true));
 	}
 
 	@Override
@@ -170,8 +177,8 @@ public class BlockHopperFilter extends BlockContainerDC {
 		}
 
 		if (!world.isRemote) {
-			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
-					0.5D, drop);
+			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
+					drop);
 			float f3 = 0.05F;
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -227,8 +234,8 @@ public class BlockHopperFilter extends BlockContainerDC {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(
-				DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
+				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -250,10 +257,7 @@ public class BlockHopperFilter extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE,
-				DCState.POWERED
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE, DCState.POWERED });
 
 	}
 
@@ -264,8 +268,7 @@ public class BlockHopperFilter extends BlockContainerDC {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() +
-					": 1 item/4t");
+			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 1 item/4t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.hopper_f"));
 		} else {

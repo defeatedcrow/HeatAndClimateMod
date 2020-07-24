@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.DCLogger;
@@ -18,6 +19,7 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.worldgen.vein.OreSetDC;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -74,6 +76,25 @@ public class MainUtil {
 		TextFormatting.GREEN,
 		TextFormatting.RED,
 		TextFormatting.DARK_GRAY };
+
+	public static EnumSide getRotatedSide(EnumSide side, boolean h) {
+		switch (side) {
+		case DOWN:
+			return h ? EnumSide.NORTH : EnumSide.UP;
+		case EAST:
+			return EnumSide.SOUTH;
+		case NORTH:
+			return EnumSide.EAST;
+		case SOUTH:
+			return h ? EnumSide.WEST : EnumSide.DOWN;
+		case UP:
+			return h ? EnumSide.NORTH : EnumSide.WEST;
+		case WEST:
+			return EnumSide.NORTH;
+		default:
+			return EnumSide.NORTH;
+		}
+	}
 
 	public static ItemStack getIngot(int meta) {
 		if (meta < 0)
@@ -401,46 +422,58 @@ public class MainUtil {
 		List<BlockSet> list = Lists.newArrayList();
 		if (names != null && names.length > 0) {
 			for (String name : names) {
-				if (name != null) {
-					String itemName = name;
-					String modid = "minecraft";
-					int meta = 32767;
-					if (name.contains(":")) {
-						String[] n2 = name.split(":");
-						if (n2 != null && n2.length > 0) {
-							if (n2.length > 2) {
-								Integer m = null;
-								try {
-									m = Integer.parseInt(n2[2]);
-								} catch (NumberFormatException e) {
-									DCLogger.debugLog("Tried to parse non Integer target: " + n2[2]);
-								}
-								if (m != null && m >= 0) {
-									meta = m;
-								}
-							}
-
-							if (n2.length == 1) {
-								itemName = n2[0];
-							} else {
-								modid = n2[0];
-								itemName = n2[1];
-							}
-						}
-					}
-
-					Block block = Block.REGISTRY.getObject(new ResourceLocation(modid, itemName));
-					if (block != null && block != Blocks.AIR) {
-						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName + ", " + meta);
-						BlockSet set = new BlockSet(block, meta);
-						list.add(set);
-					} else {
-						DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
-					}
+				BlockSet set = getBlockSetFromString(name);
+				if (set != null && !set.equals(OreSetDC.AIR)) {
+					DCLogger.infoLog(logname + " add target: " + set.toString());
+					list.add(set);
 				}
 			}
 		}
 		return list;
+	}
+
+	public static BlockSet getBlockSetFromString(String name) {
+		if (name == null || name.equalsIgnoreCase("empty")) {
+			return OreSetDC.AIR;
+		} else {
+			String itemName = name;
+			String modid = "minecraft";
+			int meta = 32767;
+
+			if (name.contains(":")) {
+				String[] n2 = name.split(":");
+				if (n2 != null && n2.length > 0) {
+					if (n2.length > 2) {
+						Integer m = null;
+						try {
+							m = Integer.parseInt(n2[2]);
+						} catch (NumberFormatException e) {
+							DCLogger.debugLog("Tried to parse non Integer target: " + n2[2]);
+						}
+						if (m != null && m >= 0) {
+							meta = m;
+						}
+					}
+
+					if (n2.length == 1) {
+						itemName = n2[0];
+					} else {
+						modid = n2[0];
+						itemName = n2[1];
+					}
+				}
+			}
+
+			Block block = Block.REGISTRY.getObject(new ResourceLocation(modid, itemName));
+			if (block != null && block != Blocks.AIR) {
+				DCLogger.debugTrace("Find target: " + modid + ":" + itemName + ", " + meta);
+				BlockSet set = new BlockSet(block, meta);
+				return set;
+			} else {
+				DCLogger.debugLog("Failed find target: " + modid + ":" + itemName);
+			}
+		}
+		return OreSetDC.AIR;
 	}
 
 	public static final int[][][] MATRIX = new int[][][] {

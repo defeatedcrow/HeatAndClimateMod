@@ -89,7 +89,7 @@ public class ContainerSilkwormBox extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < lim) {
-				if (!this.mergeItemStack(itemstack1, lim, 35 + lim, true)) {
+				if (!this.mergeItemStack(itemstack1, lim, this.inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 				slot.onSlotChange(itemstack1, itemstack);

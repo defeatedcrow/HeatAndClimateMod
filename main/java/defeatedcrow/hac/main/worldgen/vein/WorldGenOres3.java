@@ -1,4 +1,4 @@
-package defeatedcrow.hac.main.worldgen;
+package defeatedcrow.hac.main.worldgen.vein;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import defeatedcrow.hac.main.api.orevein.OreSet;
 import defeatedcrow.hac.main.api.orevein.VeinTable;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.WorldGenConfig;
-import defeatedcrow.hac.main.worldgen.OreGenPos.OreVein;
+import defeatedcrow.hac.main.worldgen.vein.OreGenPos.OreVein;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockEmptyDrops;
 import net.minecraft.block.material.Material;

@@ -91,7 +91,7 @@ public class ContainerSpinning extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < 2) {
-				if (!this.mergeItemStack(itemstack1, 2, 37, true))
+				if (!this.mergeItemStack(itemstack1, 2, this.inventorySlots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (!this.mergeItemStack(itemstack1, 0, 1, false))

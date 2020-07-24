@@ -91,7 +91,7 @@ public class ContainerPressMachine extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index < 12) {
-				if (!this.mergeItemStack(itemstack1, 21, 46, true))
+				if (!this.mergeItemStack(itemstack1, 21, this.inventorySlots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (index > 21) {

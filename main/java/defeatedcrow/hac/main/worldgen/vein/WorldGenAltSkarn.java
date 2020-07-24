@@ -1,4 +1,4 @@
-package defeatedcrow.hac.main.worldgen;
+package defeatedcrow.hac.main.worldgen.vein;
 
 import java.util.List;
 import java.util.Random;

@@ -93,7 +93,7 @@ public class ContainerNormalChamber extends Container {
 			itemstack = itemstack1.copy();
 
 			if (index == 0) {
-				if (!this.mergeItemStack(itemstack1, 1, 36, true)) {
+				if (!this.mergeItemStack(itemstack1, 1, this.inventorySlots.size(), true)) {
 					return ItemStack.EMPTY;
 				}
 				slot.onSlotChange(itemstack1, itemstack);

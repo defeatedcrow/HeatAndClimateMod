@@ -61,7 +61,9 @@ public class BlockReactorIBC extends BlockTorqueBase {
 			if (tile != null) {
 				if (!DCUtil.isEmpty(heldItem)) {
 					if (MainUtil.isHeldWrench(player, hand)) {
-						return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+						EnumSide current = DCState.getSide(state, DCState.SIDE);
+						EnumSide next = MainUtil.getRotatedSide(current, true);
+						world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
 					} else if (heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 						if (DCFluidUtil.onActivateDCTank(tile, heldItem, world, state, side, player))
 							world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);

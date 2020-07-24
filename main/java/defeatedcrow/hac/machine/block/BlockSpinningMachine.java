@@ -13,6 +13,7 @@ import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -55,6 +56,12 @@ public class BlockSpinningMachine extends BlockTorqueBase {
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
+			if (MainUtil.isHeldWrench(player, hand)) {
+				EnumSide current = DCState.getSide(state, DCState.SIDE);
+				EnumSide next = MainUtil.getRotatedSide(current, true);
+				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
+				return true;
+			}
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile instanceof TileTorqueProcessor) {
 				if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {

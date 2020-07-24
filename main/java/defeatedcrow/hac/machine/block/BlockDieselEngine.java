@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
@@ -16,6 +15,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -77,8 +77,11 @@ public class BlockDieselEngine extends BlockTorqueBase {
 							return true;
 						}
 					}
-				} else if (held.getItem() instanceof IWrenchDC) {
-					return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+				} else if (MainUtil.isHeldWrench(player, hand)) {
+					EnumSide current = DCState.getSide(state, DCState.SIDE);
+					EnumSide next = MainUtil.getRotatedSide(current, false);
+					world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
+					return true;
 				} else {
 					if (!world.isRemote) {
 						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
