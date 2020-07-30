@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_fuel",
+   "data": 1
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_reagent",
+  "count": 9,
+  "data": 9
+ }
+}

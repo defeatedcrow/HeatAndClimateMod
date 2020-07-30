@@ -51,7 +51,7 @@ public class TESRLotusCrop extends TileEntitySpecialRenderer<TileEntityLotus> {
 			r1 = te.rand1;
 			r2 = te.rand2;
 			meta = te.getBlockMetadata() & 7;
-			black = meta > 7;
+			black = te.getBlockMetadata() > 7;
 		}
 
 		switch (meta) {
@@ -92,6 +92,7 @@ public class TESRLotusCrop extends TileEntitySpecialRenderer<TileEntityLotus> {
 		GlStateManager.translate((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 		GlStateManager.scale(1.0F, -1.0F, -1.0F);
 
+		model.setRotationAngles(r1 + r2);
 		model.render(0.0625F);
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.popMatrix();
@@ -122,6 +123,7 @@ public class TESRLotusCrop extends TileEntitySpecialRenderer<TileEntityLotus> {
 			GlStateManager.translate((float) x + 1F - fx2, (float) y + 1.5F, (float) z + 1F - fz2);
 			GlStateManager.scale(1.0F, -1.0F, -1.0F);
 
+			MODEL5.setRotationAngles(r1 + r2);
 			MODEL5.renderLeaf(0.0625F);
 
 			GlStateManager.disableRescaleNormal();
@@ -200,7 +202,7 @@ public class TESRLotusCrop extends TileEntitySpecialRenderer<TileEntityLotus> {
 		float vMin = 0F;
 		float uMax = 1F;
 		float vMax = 1F;
-		float f = 0.3F;
+		float f = 0.4F;
 
 		vertexbuffer.pos(f, 0F, f).tex(uMax, vMax).endVertex();
 		vertexbuffer.pos(-f, 0F, -f).tex(uMin, vMax).endVertex();

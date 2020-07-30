@@ -78,10 +78,7 @@ public class BlockDieselEngine extends BlockTorqueBase {
 						}
 					}
 				} else if (MainUtil.isHeldWrench(player, hand)) {
-					EnumSide current = DCState.getSide(state, DCState.SIDE);
-					EnumSide next = MainUtil.getRotatedSide(current, false);
-					world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
-					return true;
+					return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 				} else {
 					if (!world.isRemote) {
 						player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());

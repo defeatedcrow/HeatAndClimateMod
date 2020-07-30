@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 
-import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.DCLogger;
@@ -76,25 +75,6 @@ public class MainUtil {
 		TextFormatting.GREEN,
 		TextFormatting.RED,
 		TextFormatting.DARK_GRAY };
-
-	public static EnumSide getRotatedSide(EnumSide side, boolean h) {
-		switch (side) {
-		case DOWN:
-			return h ? EnumSide.NORTH : EnumSide.UP;
-		case EAST:
-			return EnumSide.SOUTH;
-		case NORTH:
-			return EnumSide.EAST;
-		case SOUTH:
-			return h ? EnumSide.WEST : EnumSide.DOWN;
-		case UP:
-			return h ? EnumSide.NORTH : EnumSide.WEST;
-		case WEST:
-			return EnumSide.NORTH;
-		default:
-			return EnumSide.NORTH;
-		}
-	}
 
 	public static ItemStack getIngot(int meta) {
 		if (meta < 0)
@@ -466,7 +446,7 @@ public class MainUtil {
 
 			Block block = Block.REGISTRY.getObject(new ResourceLocation(modid, itemName));
 			if (block != null && block != Blocks.AIR) {
-				DCLogger.debugTrace("Find target: " + modid + ":" + itemName + ", " + meta);
+				// DCLogger.debugTrace("Find target: " + modid + ":" + itemName + ", " + meta);
 				BlockSet set = new BlockSet(block, meta);
 				return set;
 			} else {

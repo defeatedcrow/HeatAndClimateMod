@@ -310,18 +310,18 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 				if (stage == 3) {
 					return false;
 				} else if (stage >= 1) {
-					if (ModuleConfig.crop || (season != EnumSeason.SPRING && season != EnumSeason.WINTER)) {
+					if (!ModuleConfig.crop || (season != EnumSeason.SPRING && season != EnumSeason.WINTER)) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
 						world.setBlockState(pos, newstate, 2);
 					}
 				} else if (stage < 1) {
-					if (ModuleConfig.crop || season != EnumSeason.WINTER) {
+					if (!ModuleConfig.crop || season != EnumSeason.WINTER) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
 						world.setBlockState(pos, newstate, 2);
 					}
 				}
 			}
-			if (ModuleConfig.crop || season != EnumSeason.WINTER) {
+			if (!ModuleConfig.crop || season != EnumSeason.WINTER) {
 				EnumFacing f = EnumFacing.UP;
 				if (!DCState.getBool(state, GROUND)) {
 					int i = cropRand.nextInt(6);

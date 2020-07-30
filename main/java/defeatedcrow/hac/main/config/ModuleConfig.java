@@ -28,6 +28,7 @@ public class ModuleConfig {
 	public static boolean village = true;
 	public static boolean agri = true;
 	public static boolean crop = true;
+	public static boolean lotus = true;
 
 	public static boolean ffm = true;
 	public static boolean mek = true;
@@ -39,6 +40,7 @@ public class ModuleConfig {
 	public static boolean tan = true;
 	public static boolean eio = true;
 	public static boolean ugb = false;
+	public static boolean rc = false;
 
 	public static boolean r_mill = true;
 	public static boolean r_spinning = true;
@@ -64,7 +66,8 @@ public class ModuleConfig {
 			Property village_b = cfg.get("module setting", "EnableVillager", village);
 			Property agri_b = cfg.get("module setting", "EnableCraftingCropRecipe", agri);
 			Property world_b = cfg.get("module setting", "EnableWorldgen", world);
-			Property crop_b = cfg.get("module setting", "EnableCropSeasonality", agri);
+			Property crop_b = cfg.get("module setting", "EnableCropSeasonality", crop);
+			Property lotus_b = cfg.get("module setting", "EnableLotusPetalRecipe", lotus);
 
 			Property machine_a = cfg.get("module setting", "EnableAdvancedMachine", machine_advanced);
 			Property magic_a = cfg.get("module setting", "EnableAdvancedMagic", magic_advanced);
@@ -86,6 +89,7 @@ public class ModuleConfig {
 			Property tan_b = cfg.get("plugin setting", "ToughAsNailsPlugin", tan);
 			Property eio_b = cfg.get("plugin setting", "EnderIO", eio);
 			Property ugb_b = cfg.get("plugin setting", "UndergroundBiomes", ugb);
+			Property rc_b = cfg.get("plugin setting", "Railcraft", rc);
 
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
 			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
@@ -101,6 +105,7 @@ public class ModuleConfig {
 			agri = agri_b.getBoolean();
 			world = world_b.getBoolean();
 			crop = crop_b.getBoolean();
+			lotus = lotus_b.getBoolean();
 
 			machine_advanced = machine_a.getBoolean();
 			magic_advanced = magic_a.getBoolean();
@@ -121,6 +126,7 @@ public class ModuleConfig {
 			tan = tan_b.getBoolean();
 			eio = eio_b.getBoolean();
 			ugb = ugb_b.getBoolean();
+			rc = rc_b.getBoolean();
 
 			r_mill = mill.getBoolean();
 			r_spinning = spinning.getBoolean();

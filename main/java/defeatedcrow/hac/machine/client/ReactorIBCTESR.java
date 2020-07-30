@@ -32,15 +32,13 @@ public class ReactorIBCTESR extends DCTorqueTESRBase {
 
 		if (te instanceof TileReactorIBC && te.hasWorld()) {
 
-			int type = 0;
 			int face = 0;
 			float f = 0.0F;
 
 			if (te.hasWorld()) {
 				int meta = te.getBlockMetadata();
 
-				type = meta & 3;
-				face = 5 - (meta >> 2);
+				face = meta & 7;
 				if (face == 2) {
 					f = 0F;
 				}

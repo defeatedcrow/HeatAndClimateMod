@@ -94,6 +94,11 @@ public class ModelLotusLeaves1 extends DCTileModelBase {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
 	}
 
-	public void setRotationAngles(int num1, int num2) {}
+	@Override
+	public void setRotationAngles(float f) {
+		float f2 = f * 10F; // 0 ~ 320F
+		float r = (float) (f2 * Math.PI / 180F);// f * 0.01745329F;
+		leaf3.rotateAngleY = r;
+	}
 
 }

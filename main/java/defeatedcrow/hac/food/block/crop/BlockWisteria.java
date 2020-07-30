@@ -312,23 +312,23 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 			if (!DCState.getBool(state, GROUND)) {
 				int stage = DCState.getInt(state, DCState.STAGE4);
 				if (stage == 3) {
-					if (ModuleConfig.crop || season.id < 2) {
+					if (!ModuleConfig.crop || season.id < 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, 0);
 						world.setBlockState(pos, newstate, 2);
 					}
 				} else if (stage == 2) {
-					if (ModuleConfig.crop || season.id >= 2) {
+					if (!ModuleConfig.crop || season.id >= 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, 3);
 						world.setBlockState(pos, newstate, 2);
 					}
 				} else if (stage < 2) {
-					if (ModuleConfig.crop || season.id < 2) {
+					if (!ModuleConfig.crop || season.id < 2) {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
 						world.setBlockState(pos, newstate, 2);
 					}
 				}
 			}
-			if (ModuleConfig.crop || season.id != 3) {
+			if (!ModuleConfig.crop || season.id != 3) {
 				EnumFacing f = EnumFacing.UP;
 				if (!DCState.getBool(state, GROUND)) {
 					int i = cropRand.nextInt(6);

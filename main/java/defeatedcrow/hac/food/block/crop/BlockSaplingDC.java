@@ -128,6 +128,11 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 		return list;
 	}
 
+	@Override
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
+		return isSuitablePlace(world, pos.down(), world.getBlockState(pos.down()));
+	}
+
 	/* ClimateCrop */
 
 	// 得られる作物はない

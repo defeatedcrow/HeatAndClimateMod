@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.worldgen.vein.OreSetDC;
 import net.minecraft.block.Block;
 
@@ -24,20 +25,15 @@ public class VeinTable implements IVeinTable {
 		vein = veinIn;
 	}
 
-	public void addOres(OreSet... stacks) {
-		for (OreSet ore : stacks) {
-			if (ore.getWeight() > 0) {
-				table.add(ore);
-				tableCount += ore.getWeight();
-			}
-		}
-	}
-
 	public void addOres(List<OreSet> stacks) {
 		for (OreSet ore : stacks) {
 			if (ore.getWeight() > 0) {
 				table.add(ore);
 				tableCount += ore.getWeight();
+				DCLogger.debugTrace("- Oreset: " + ore.getOre().toString() + " " + ore.getWeight());
+				if (ore.hasSecondOre()) {
+					DCLogger.debugTrace("-- Secondary: " + ore.getSecondOre().toString() + " " + ore.getSecondChance());
+				}
 			}
 		}
 	}

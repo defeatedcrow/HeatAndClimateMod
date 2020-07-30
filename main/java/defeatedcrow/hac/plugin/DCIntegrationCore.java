@@ -24,6 +24,7 @@ public class DCIntegrationCore {
 	public static boolean loadedTektopia = false;
 	public static boolean loadedAnimania = false;
 	public static boolean loadedUGB = false;
+	public static boolean loadedRC = false;
 
 	private DCIntegrationCore() {}
 
@@ -69,6 +70,9 @@ public class DCIntegrationCore {
 		}
 		if (Loader.isModLoaded("undergroundbiomes") && ModuleConfig.ugb) {
 			loadedUGB = true;
+		}
+		if (Loader.isModLoaded("railcraft") && ModuleConfig.rc) {
+			loadedRC = true;
 		}
 	}
 
@@ -146,6 +150,17 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: UndergroundBiomes");
 			} catch (Error e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: UndergroundBiomes");
+			}
+		}
+
+		if (loadedRC) {
+			try {
+				DCPluginRailcraft.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod init plugin: Railcraft");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Railcraft");
+			} catch (Error e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Railcraft");
 			}
 		}
 

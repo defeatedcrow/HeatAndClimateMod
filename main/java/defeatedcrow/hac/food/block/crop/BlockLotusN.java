@@ -20,6 +20,7 @@ import defeatedcrow.hac.api.cultivate.GrowingStage;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.config.CoreConfigDC;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
@@ -144,6 +145,10 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 			IBlockState crop = world.getBlockState(pos);
 			int stage = state.getValue(DCState.STAGE8);
 			ItemStack held = player.inventory.getCurrentItem();
+			if (ClimateCore.isDebug && DCUtil.isHeldWrench(player, hand)) {
+				IBlockState newS = state.withProperty(BLACK, true);
+				world.setBlockState(pos, newS);
+			}
 			if (!DCUtil.isEmpty(held) && held.getItem() == Items.DYE && held.getItemDamage() == 15) {
 				ItemDye.applyBonemeal(held, world, pos, player, hand);
 				return true;
@@ -306,16 +311,16 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 				if (stage < 7) {
 					EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 					int next = stage;
-					if (stage == 6 && (ModuleConfig.crop || season.id > 2)) {
+					if (stage == 6 && (!ModuleConfig.crop || season.id > 2)) {
 						// winter
 						next = stage + 1;
-					} else if (stage == 5 && (ModuleConfig.crop || season.id > 1)) {
+					} else if (stage == 5 && (!ModuleConfig.crop || season.id > 1)) {
 						// autumn
 						next = stage + 1;
-					} else if ((stage == 4 || stage == 3) && (ModuleConfig.crop || season.id == 1 || season.id == 2)) {
+					} else if ((stage == 4 || stage == 3) && (!ModuleConfig.crop || season.id == 1 || season.id == 2)) {
 						// summer
 						next = stage + 1;
-					} else if (stage < 3 && (ModuleConfig.crop || season.id < 3)) {
+					} else if (stage < 3 && (!ModuleConfig.crop || season.id < 3)) {
 						if (world.rand.nextInt(50) == 0) {
 							black = true;
 						}
@@ -341,6 +346,7 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	public boolean harvest(World world, BlockPos pos, IBlockState thisState, EntityPlayer player) {
 		if (thisState != null && thisState.getBlock() == this) {
 			int stage = thisState.getValue(DCState.STAGE8);
+			boolean black = thisState.getValue(BLACK);
 			EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 			if (stage > 4) {
 				int f = 0;
@@ -366,11 +372,14 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 					if (stage == 7) {
 						world.setBlockState(pos, Blocks.DIRT.getDefaultState(), 2);
 					} else {
+						if (black && world.rand.nextInt(5) == 0) {
+							thisState = thisState.withProperty(BLACK, false);
+						}
 						if (season == EnumSeason.WINTER) {
 							IBlockState next = thisState.withProperty(DCState.STAGE8, 7);
 							world.setBlockState(pos, next, 3);
 						} else {
-							IBlockState next = thisState.withProperty(DCState.STAGE8, 2);
+							IBlockState next = thisState.withProperty(DCState.STAGE8, 3);
 							world.setBlockState(pos, next, 3);
 						}
 					}
@@ -525,9 +534,16 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
-			EnumFacing side) {
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess access, BlockPos pos, EnumFacing side) {
 		return true;
+	}
+
+	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	@Override
+	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
+		if (face.getAxis().isHorizontal() && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
+			return true;
+		return false;
 	}
 
 	@Override

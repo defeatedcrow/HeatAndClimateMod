@@ -1352,6 +1352,56 @@ public class FoodBasicRecipe {
 			new ItemStack(FoodInit.paperPack, 1, 0),
 			new ItemStack(Items.MILK_BUCKET) });
 
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 5), new Object[] {
+			"oreGold",
+			"petalLotus",
+			"dyeRed" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 6), new Object[] {
+			"oreGold",
+			"petalLotus",
+			"dyeGreen" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 7), new Object[] {
+			"oreGold",
+			"petalLotus",
+			"dyeBlue" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 8), new Object[] {
+			"oreGold",
+			"petalLotus",
+			"dyeWhite" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 9), new Object[] {
+			"oreGold",
+			"petalLotus",
+			"dyeBlack" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 10), new Object[] {
+			"oreGold",
+			"petalBlackLotus",
+			"dyeRed" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 11), new Object[] {
+			"oreGold",
+			"petalBlackLotus",
+			"dyeGreen" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 12), new Object[] {
+			"oreGold",
+			"petalBlackLotus",
+			"dyeBlue" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 13), new Object[] {
+			"oreGold",
+			"petalBlackLotus",
+			"dyeWhite" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MainInit.oreItem, 1, 14), new Object[] {
+			"oreGold",
+			"petalBlackLotus",
+			"dyeBlack" });
+
 	}
 
 }

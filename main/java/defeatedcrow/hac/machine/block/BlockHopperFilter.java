@@ -12,9 +12,9 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.core.base.ITagGetter;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
-import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -120,9 +120,9 @@ public class BlockHopperFilter extends BlockContainerDC {
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
-			if (MainUtil.isHeldWrench(player, hand)) {
+			if (DCUtil.isHeldWrench(player, hand)) {
 				EnumSide current = DCState.getSide(state, DCState.SIDE);
-				EnumSide next = MainUtil.getRotatedSide(current, false);
+				EnumSide next = current.rotatSide();
 				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
 				return true;
 			}

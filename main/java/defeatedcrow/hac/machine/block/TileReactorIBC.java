@@ -53,7 +53,7 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
-		return side == getBaseSide().rotateY().getOpposite(); // back
+		return side == getBaseSide().getOpposite(); // back
 	}
 
 	@Override

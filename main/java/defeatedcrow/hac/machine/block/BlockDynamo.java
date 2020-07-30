@@ -4,22 +4,17 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.main.util.DCName;
-import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -43,20 +38,6 @@ public class BlockDynamo extends BlockTorqueBase {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileDynamo();
-	}
-
-	@Override
-	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (player != null) {
-			if (MainUtil.isHeldWrench(player, hand)) {
-				EnumSide current = DCState.getSide(state, DCState.SIDE);
-				EnumSide next = MainUtil.getRotatedSide(current, false);
-				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
-				return true;
-			}
-		}
-		return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

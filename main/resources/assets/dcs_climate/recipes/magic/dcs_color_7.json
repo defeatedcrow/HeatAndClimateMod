@@ -3,11 +3,11 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "gemGarnet"
+   "ore": "petalBlackLotus"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dropRed"
+   "ore": "dyeBlue"
   }
  ],
  "result": {

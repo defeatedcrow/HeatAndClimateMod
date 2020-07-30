@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "oreGold"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "petalBlackLotus"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dyeRed"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_oreitem",
+  "count": 1,
+  "data": 10
+ }
+}

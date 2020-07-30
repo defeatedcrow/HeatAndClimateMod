@@ -16,7 +16,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -39,27 +38,12 @@ public class BlockCatapult extends BlockTorqueBase {
 		super(Material.ROCK, s, 0);
 		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
+		this.setHorizontal();
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileCatapult();
-	}
-
-	@Override
-	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
-		if (placer != null) {
-			EnumFacing face = placer.getHorizontalFacing();
-			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face));
-		} else {
-			if (facing == EnumFacing.DOWN || facing == EnumFacing.UP) {
-				facing = EnumFacing.SOUTH;
-			}
-			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(facing));
-		}
-		return state;
 	}
 
 	@Override

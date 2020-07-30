@@ -25,6 +25,11 @@ public class TileShaft_L extends TileTorqueBase implements ITorqueProvider, ITor
 	}
 
 	@Override
+	public boolean hasFaceSide() {
+		return true;
+	}
+
+	@Override
 	public List<EnumFacing> getOutputSide() {
 		List<EnumFacing> ret = Lists.newArrayList();
 		int i = this.facing;

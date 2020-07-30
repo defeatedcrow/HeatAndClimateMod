@@ -10,9 +10,9 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
-import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -41,6 +41,7 @@ public class BlockPressMachine extends BlockTorqueBase {
 		super(Material.ROCK, s, 0);
 		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
+		isHorizontal();
 	}
 
 	@Override
@@ -58,11 +59,8 @@ public class BlockPressMachine extends BlockTorqueBase {
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
-			if (MainUtil.isHeldWrench(player, hand)) {
-				EnumSide current = DCState.getSide(state, DCState.SIDE);
-				EnumSide next = MainUtil.getRotatedSide(current, false);
-				world.setBlockState(pos, state.withProperty(DCState.SIDE, next));
-				return true;
+			if (DCUtil.isHeldWrench(player, hand)) {
+				return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 			} else if (!player.world.isRemote && hand == EnumHand.MAIN_HAND) {
 				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				return true;

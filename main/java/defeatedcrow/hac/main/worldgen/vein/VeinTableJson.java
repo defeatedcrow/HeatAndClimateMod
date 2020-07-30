@@ -27,6 +27,7 @@ import defeatedcrow.hac.main.api.orevein.VeinTable;
 import defeatedcrow.hac.main.api.orevein.VeinTableRegisterEvent;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.MinecraftForge;
 
 public class VeinTableJson {
@@ -49,6 +50,7 @@ public class VeinTableJson {
 
 				Map<String, Object> map = e1.getValue();
 				if (map != null && !map.isEmpty()) {
+
 					if (map.containsKey("layer")) {
 						Object o1 = map.get("layer");
 						if (o1 instanceof String) {
@@ -59,6 +61,7 @@ public class VeinTableJson {
 							}
 						}
 					}
+
 					if (map.containsKey("entries")) {
 						Object o2 = map.get("entries");
 						if (o2 instanceof List) {
@@ -69,7 +72,7 @@ public class VeinTableJson {
 										Map<String, Object> ores = (Map<String, Object>) o3;
 										BlockSet b1 = STONE;
 										BlockSet b2 = null;
-										int weight = 20;
+										int weight = 10;
 										int chance = 0;
 
 										if (ores.containsKey("ore")) {
@@ -89,21 +92,13 @@ public class VeinTableJson {
 										}
 
 										if (ores.containsKey("weight")) {
-											Object o6 = ores.get("weight");
-											if (o6 instanceof Integer) {
-												Integer i1 = (Integer) o6;
-												if (i1 != null)
-													weight = i1;
-											}
+											double d1 = (double) ores.get("weight");
+											weight = MathHelper.floor(d1);
 										}
 
 										if (ores.containsKey("secondary_chance")) {
-											Object o7 = ores.get("secondary_chance");
-											if (o7 instanceof Integer) {
-												Integer i2 = (Integer) o7;
-												if (i2 != null)
-													chance = i2;
-											}
+											double d2 = (double) ores.get("secondary_chance");
+											chance = MathHelper.floor(d2);
 										}
 
 										if (b1 != null && weight > 0) {
@@ -118,7 +113,7 @@ public class VeinTableJson {
 										}
 
 									} catch (Error e) {
-										DCLogger.debugLog("VainTableJson : Error entry found. This entry is ignored.");
+										DCLogger.debugTrace("VainTableJson : Error entry found. This entry is ignored.");
 										e.printStackTrace();
 										continue;
 									}
@@ -132,12 +127,10 @@ public class VeinTableJson {
 						list.add(new OreSetDC(100, layer));
 					}
 
-					for (OreSet set : list) {
-						table.addOres(list);
-					}
+					table.addOres(list);
 
 					if (VeinTableRegister.INSTANCE.list.add(table)) {
-						DCLogger.debugLog("VainTableJson : Successfilly loaded: " + type);
+						DCLogger.debugLog("VainTableJson : Successfilly loaded: " + type + " count" + table.tableCount);
 					}
 				}
 			}

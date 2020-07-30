@@ -5,6 +5,7 @@ import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -130,6 +131,10 @@ public class FoodRecipes {
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.cropWisteria, 1, 0));
 		OreDictionary.registerOre("saplingWisteria", new ItemStack(FoodInit.cropWisteria, 1, 32767));
 		OreDictionary.registerOre("treeSapling", new ItemStack(FoodInit.cropWisteria, 1, 32767));
+		if (ModuleConfig.lotus) {
+			OreDictionary.registerOre("petalLotus", new ItemStack(FoodInit.petals, 1, 0));
+			OreDictionary.registerOre("petalBlackLotus", new ItemStack(FoodInit.petals, 1, 1));
+		}
 
 		OreDictionary.registerOre("bucketWater", new ItemStack(FoodInit.paperPack, 1, 1));
 		OreDictionary.registerOre("listAllwater", new ItemStack(FoodInit.paperPack, 1, 1));

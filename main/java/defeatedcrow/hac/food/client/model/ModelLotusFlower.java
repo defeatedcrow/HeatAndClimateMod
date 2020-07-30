@@ -75,7 +75,7 @@ public class ModelLotusFlower extends DCTileModelBase {
 		stem4.mirror = false;
 
 		stem5 = new ModelRenderer(this, 0, 0);
-		stem5.addBox(-0.5F, -10F, -0.5F, 1, 18, 1, 0F);
+		stem5.addBox(-0.5F, -8F, -0.5F, 1, 18, 1, 0F);
 		stem5.setRotationPoint(0F, 0F, 0F);
 		stem5.rotateAngleX = 0F;
 		stem5.rotateAngleY = 0F;
@@ -123,8 +123,12 @@ public class ModelLotusFlower extends DCTileModelBase {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
 	}
 
-	public void setRotationAngles1(int num) {}
-
-	public void setRotationAngles2(int num) {}
+	@Override
+	public void setRotationAngles(float f) {
+		float f2 = f * 10F; // 0 ~ 320F
+		float r = (float) (f2 * Math.PI / 180F);// f * 0.01745329F;
+		leaf1.rotateAngleY = r;
+		leaf2.rotateAngleY = r * -0.5F;
+	}
 
 }

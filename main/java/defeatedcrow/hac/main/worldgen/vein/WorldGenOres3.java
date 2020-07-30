@@ -128,7 +128,7 @@ public class WorldGenOres3 implements IWorldGenerator {
 			List<OreSet> list = new ArrayList<OreSet>();
 			int i1 = 0;
 			list = table.getOreTable();
-			i1 = world.rand.nextInt(table.tableCount);
+			i1 = world.rand.nextInt(table.tableCount + 1);
 
 			int i2 = 0;
 			for (OreSet set : list) {

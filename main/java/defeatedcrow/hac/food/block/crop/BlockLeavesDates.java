@@ -40,7 +40,8 @@ public class BlockLeavesDates extends ClimateCropBase implements ITexturePath, I
 		setHardness(0.0F);
 		setResistance(3.0F);
 		setLightOpacity(1);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0).withProperty(DECAYABLE, false).withProperty(CHECK_DECAY, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0)
+				.withProperty(DECAYABLE, false).withProperty(CHECK_DECAY, false));
 	}
 
 	@Override
@@ -185,12 +186,12 @@ public class BlockLeavesDates extends ClimateCropBase implements ITexturePath, I
 					for (int x1 = -i; x1 <= i; ++x1) {
 						for (int y1 = -i; y1 <= i; ++y1) {
 							for (int z1 = -i; z1 <= i; ++z1) {
-								IBlockState iblockstate = world.getBlockState(blockpos$mutableblockpos.setPos(x +
-										x1, y + y1, z + z1));
+								IBlockState iblockstate = world.getBlockState(blockpos$mutableblockpos
+										.setPos(x + x1, y + y1, z + z1));
 								Block block = iblockstate.getBlock();
 
-								if (block.canSustainLeaves(iblockstate, world, blockpos$mutableblockpos.setPos(x +
-										x1, y + y1, z + z1))) {
+								if (block.canSustainLeaves(iblockstate, world, blockpos$mutableblockpos
+										.setPos(x + x1, y + y1, z + z1))) {
 									hasLog = true;
 								}
 							}
@@ -219,7 +220,7 @@ public class BlockLeavesDates extends ClimateCropBase implements ITexturePath, I
 
 	@Override
 	protected float getSeedDropChance() {
-		return 0.2F;
+		return 0.1F;
 	}
 
 	@Override
@@ -234,7 +235,8 @@ public class BlockLeavesDates extends ClimateCropBase implements ITexturePath, I
 		int i = meta & 3;
 		boolean d = (meta & 4) > 0;
 		boolean c = (meta & 8) > 0;
-		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE4, i).withProperty(DECAYABLE, d).withProperty(CHECK_DECAY, c);
+		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE4, i).withProperty(DECAYABLE, d)
+				.withProperty(CHECK_DECAY, c);
 		return state;
 	}
 
@@ -260,11 +262,7 @@ public class BlockLeavesDates extends ClimateCropBase implements ITexturePath, I
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.STAGE4,
-				DECAYABLE,
-				CHECK_DECAY
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.STAGE4, DECAYABLE, CHECK_DECAY });
 	}
 
 	@Override
