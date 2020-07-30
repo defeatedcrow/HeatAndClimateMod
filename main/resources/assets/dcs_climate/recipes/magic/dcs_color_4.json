@@ -3,16 +3,16 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "petalLotus"
+   "ore": "gemChalcedonyWhite"
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dyeBlack"
+   "ore": "dyeWhite"
   }
  ],
  "result": {
   "item": "dcs_climate:dcs_color",
-  "count": 1,
+  "count": 3,
   "data": 4
  }
 }
