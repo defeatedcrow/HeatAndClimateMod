@@ -58,7 +58,7 @@ public class DCPluginRailcraft {
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 3), ti, "orePoorSilver");
 
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 1), ti, "orePoorIron");
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 1), ti, "orePoorZinc");
 		}
 
 	}

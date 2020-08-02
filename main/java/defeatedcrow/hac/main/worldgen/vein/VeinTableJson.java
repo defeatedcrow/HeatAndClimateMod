@@ -92,13 +92,24 @@ public class VeinTableJson {
 										}
 
 										if (ores.containsKey("weight")) {
-											double d1 = (double) ores.get("weight");
-											weight = MathHelper.floor(d1);
+											Number n1 = (Number) ores.get("weight");
+											if (n1 instanceof Integer) {
+												weight = n1.intValue();
+											}
+											if (n1 instanceof Double) {
+												weight = MathHelper.floor(n1.doubleValue());
+											}
+
 										}
 
 										if (ores.containsKey("secondary_chance")) {
-											double d2 = (double) ores.get("secondary_chance");
-											chance = MathHelper.floor(d2);
+											Number n2 = (Number) ores.get("secondary_chance");
+											if (n2 instanceof Integer) {
+												chance = n2.intValue();
+											}
+											if (n2 instanceof Double) {
+												chance = MathHelper.floor(n2.doubleValue());
+											}
 										}
 
 										if (b1 != null && weight > 0) {
@@ -113,8 +124,10 @@ public class VeinTableJson {
 										}
 
 									} catch (Error e) {
-										DCLogger.debugTrace("VainTableJson : Error entry found. This entry is ignored.");
-										e.printStackTrace();
+										DCLogger.warnLog("VainTableJson : Error entry found. This entry is ignored.");
+										continue;
+									} catch (Exception e) {
+										DCLogger.warnLog("VainTableJson : Error entry found. This entry is ignored. ");
 										continue;
 									}
 								}
@@ -279,7 +292,7 @@ public class VeinTableJson {
 		Map<String, Object> black = new HashMap<String, Object>();
 		black.put("layer", blockString(new BlockSet(Blocks.STONE, 0)));
 		List<Map<String, Object>> blackMap = Lists.newArrayList();
-		blackMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 4), new BlockSet(MainInit.oreNew, 9), 9));
+		blackMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 4), new BlockSet(MainInit.oreNew, 9), 5));
 		blackMap.add(getEntry(30, new BlockSet(MainInit.layerNew, 4)));
 		blackMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 9)));
 		blackMap.add(getEntry(5, new BlockSet(Blocks.REDSTONE_ORE, 0)));

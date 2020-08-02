@@ -40,7 +40,7 @@ public class ModuleConfig {
 	public static boolean tan = true;
 	public static boolean eio = true;
 	public static boolean ugb = false;
-	public static boolean rc = false;
+	public static boolean rc = true;
 
 	public static boolean r_mill = true;
 	public static boolean r_spinning = true;
