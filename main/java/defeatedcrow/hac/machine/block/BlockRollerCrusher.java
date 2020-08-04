@@ -38,7 +38,7 @@ public class BlockRollerCrusher extends BlockTorqueBase {
 	public BlockRollerCrusher(String s) {
 		super(Material.ROCK, s, 0);
 		this.setSoundType(SoundType.METAL);
-		isHorizontal();
+		setHorizontal();
 	}
 
 	@Override

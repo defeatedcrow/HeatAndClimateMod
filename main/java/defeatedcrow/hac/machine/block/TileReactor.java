@@ -60,6 +60,9 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
+		if (side.getAxis().isVertical()) {
+			return side == EnumFacing.WEST;
+		}
 		return side == getBaseSide().rotateY().getOpposite();
 	}
 

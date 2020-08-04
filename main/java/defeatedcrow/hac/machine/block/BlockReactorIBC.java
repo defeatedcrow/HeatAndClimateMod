@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
@@ -42,7 +44,7 @@ public class BlockReactorIBC extends BlockTorqueBase {
 		super(Material.CLAY, s, 0);
 		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
-		isHorizontal();
+		setHorizontal();
 	}
 
 	@Override
@@ -84,6 +86,22 @@ public class BlockReactorIBC extends BlockTorqueBase {
 				((ITagGetter) tile).setNBT(tag);
 			}
 		}
+	}
+
+	@Override
+	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
+			int meta, EntityLivingBase placer, EnumHand hand) {
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
+		if (placer != null) {
+			EnumFacing face = placer.getHorizontalFacing();
+			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face));
+		} else {
+			if (facing == EnumFacing.DOWN || facing == EnumFacing.UP) {
+				facing = EnumFacing.SOUTH;
+			}
+			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(facing));
+		}
+		return state;
 	}
 
 	@Override

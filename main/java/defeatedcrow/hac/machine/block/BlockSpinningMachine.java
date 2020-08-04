@@ -38,7 +38,7 @@ public class BlockSpinningMachine extends BlockTorqueBase {
 	public BlockSpinningMachine(String s) {
 		super(Material.WOOD, s, 0);
 		this.setSoundType(SoundType.WOOD);
-		isHorizontal();
+		setHorizontal();
 	}
 
 	@Override

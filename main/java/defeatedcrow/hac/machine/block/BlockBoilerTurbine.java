@@ -38,6 +38,7 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 		super(Material.ROCK, s, 0);
 		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
+		setHorizontal();
 	}
 
 	@Override
