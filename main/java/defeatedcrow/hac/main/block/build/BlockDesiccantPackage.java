@@ -170,8 +170,8 @@ public class BlockDesiccantPackage extends BlockDC implements ITexturePath, INam
 	}
 
 	@Override
-	public DCHumidity getHumdiity(World world, BlockPos targrt, BlockPos thisTile) {
-		IBlockState state = world.getBlockState(thisTile);
+	public DCHumidity getHumidity(World world, BlockPos target, BlockPos source) {
+		IBlockState state = world.getBlockState(source);
 		int type = DCState.getInt(state, DCState.TYPE4);
 		return type == 3 ? DCHumidity.NORMAL : DCHumidity.DRY;
 	}

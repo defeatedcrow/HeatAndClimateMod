@@ -8,7 +8,6 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.capability.DrinkCustomizer;
@@ -316,34 +315,17 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	@Override
 	protected int[] slotsTop() {
-		return new int[] {
-				0,
-				2,
-				4,
-				5,
-				6
-		};
+		return new int[] { 0, 2, 4, 5, 6 };
 	};
 
 	@Override
 	protected int[] slotsBottom() {
-		return new int[] {
-				1,
-				3
-		};
+		return new int[] { 1, 3 };
 	};
 
 	@Override
 	protected int[] slotsSides() {
-		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6
-		};
+		return new int[] { 0, 1, 2, 3, 4, 5, 6 };
 	};
 
 	@Override
@@ -372,21 +354,14 @@ public class TileTeaPot extends TileFluidProcessorBase {
 			return this.maxBurnTime;
 		case 2:
 			return this.current == null ? 0 : this.current.getClimateInt();
+
 		case 3:
-			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		case 4:
-			return this.outputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT.getFluidType());
-		case 5:
-			return this.inputT.getFluidAmount();
-		case 6:
-			return this.outputT.getFluidAmount();
-		case 7:
 			return this.cap.milkID;
-		case 8:
+		case 4:
 			return this.cap.sugarID;
-		case 9:
+		case 5:
 			return this.milkCount;
-		case 10:
+		case 6:
 			return this.sugarCount;
 		default:
 			return 0;
@@ -405,28 +380,17 @@ public class TileTeaPot extends TileFluidProcessorBase {
 		case 2:
 			this.current = ClimateAPI.register.getClimateFromInt(value);
 			break;
+
 		case 3:
-			inputT.setFluidById(value);
-			break;
-		case 4:
-			outputT.setFluidById(value);
-			break;
-		case 5:
-			this.inputT.setAmount(value);
-			break;
-		case 6:
-			this.outputT.setAmount(value);
-			break;
-		case 7:
 			this.cap.milkID = (byte) value;
 			break;
-		case 8:
+		case 4:
 			this.cap.sugarID = (byte) value;
 			break;
-		case 9:
+		case 5:
 			this.milkCount = value;
 			break;
-		case 10:
+		case 6:
 			this.sugarCount = value;
 			break;
 		}
@@ -434,7 +398,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	@Override
 	public int getFieldCount() {
-		return 11;
+		return 7;
 	}
 
 	@Override

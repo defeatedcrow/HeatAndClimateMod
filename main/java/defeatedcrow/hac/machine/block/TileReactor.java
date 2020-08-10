@@ -14,11 +14,11 @@ import defeatedcrow.hac.api.recipe.IReactorRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.main.block.fluid.SidedFluidTankWrapper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
@@ -60,7 +60,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
-		if (side.getAxis().isVertical()) {
+		if (getBaseSide().getAxis().isVertical()) {
 			return side == EnumFacing.WEST;
 		}
 		return side == getBaseSide().rotateY().getOpposite();
@@ -174,10 +174,32 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	/* Reactor */
 
+	private int count = 0;
+	private int last = 0;
+
 	@Override
 	protected void onServerUpdate() {
 		if (current != null) {
 			super.onServerUpdate();
+		}
+		if (count <= 0) {
+			if (inputT1.getFluidAmount() + inputT2.getFluidAmount() + outputT1.getFluidAmount() + outputT2
+					.getFluidAmount() != last) {
+				last = inputT1.getFluidAmount() + inputT2.getFluidAmount() + outputT1.getFluidAmount() + outputT2
+						.getFluidAmount();
+
+				if (!this.hasWorld())
+					return;
+				List<EntityPlayer> list = this.getWorld().playerEntities;
+				for (EntityPlayer player : list) {
+					if (player instanceof EntityPlayerMP) {
+						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+					}
+				}
+			}
+			count = 10;
+		} else {
+			count--;
 		}
 	}
 
@@ -508,29 +530,14 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			return this.maxBurnTime;
 		case 2:
 			return this.current == null ? 0 : this.current.getClimateInt();
+
 		case 3:
-			return this.inputT1.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT1.getFluidType());
-		case 4:
-			return this.inputT2.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT2.getFluidType());
-		case 5:
-			return this.outputT1.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT1.getFluidType());
-		case 6:
-			return this.outputT2.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT2.getFluidType());
-		case 7:
-			return this.inputT1.getFluidAmount();
-		case 8:
-			return this.inputT2.getFluidAmount();
-		case 9:
-			return this.outputT1.getFluidAmount();
-		case 10:
-			return this.outputT2.getFluidAmount();
-		case 11:
 			return this.tankSide1 == null ? 1 : this.tankSide1.index;
-		case 12:
+		case 4:
 			return this.tankSide2 == null ? 2 : this.tankSide2.index;
-		case 13:
+		case 5:
 			return this.tankSide3 == null ? 0 : this.tankSide3.index;
-		case 14:
+		case 6:
 			return this.tankSide4 == null ? 3 : this.tankSide4.index;
 		default:
 			return 0;
@@ -549,47 +556,24 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		case 2:
 			this.current = ClimateAPI.register.getClimateFromInt(value);
 			break;
+
 		case 3:
-			inputT1.setFluidById(value);
-			break;
-		case 4:
-			inputT2.setFluidById(value);
-			break;
-		case 5:
-			outputT1.setFluidById(value);
-			break;
-		case 6:
-			outputT2.setFluidById(value);
-			break;
-		case 7:
-			this.inputT1.setAmount(value);
-			break;
-		case 8:
-			this.inputT2.setAmount(value);
-			break;
-		case 9:
-			this.outputT1.setAmount(value);
-			break;
-		case 10:
-			this.outputT2.setAmount(value);
-			break;
-		case 11:
 			this.tankSide1 = EnumSide.fromIndex(value);
 			break;
-		case 12:
+		case 4:
 			this.tankSide2 = EnumSide.fromIndex(value);
 			break;
-		case 13:
+		case 5:
 			this.tankSide3 = EnumSide.fromIndex(value);
 			break;
-		case 14:
+		case 6:
 			this.tankSide4 = EnumSide.fromIndex(value);
 		}
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 15;
+		return 7;
 	}
 
 	@Override

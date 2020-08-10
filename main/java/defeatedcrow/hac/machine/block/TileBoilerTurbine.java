@@ -13,9 +13,10 @@ import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.block.fluid.DCLimitedTank;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -101,8 +102,23 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	}
 
+	private int last = 0;
+	private int count = 0;
+
 	@Override
-	protected void onServerUpdate() {}
+	protected void onServerUpdate() {
+		if (count <= 0) {
+			if (inputT.getFluidAmount() != last) {
+				last = inputT.getFluidAmount();
+
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, inputT.getFluidIdName(), inputT
+						.getFluidAmount()));
+			}
+			count = 10;
+		} else {
+			count--;
+		}
+	}
 
 	public boolean isActive() {
 		return this.currentBurnTime > 0;
@@ -446,10 +462,6 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 			return this.maxBurnTime;
 		case 2:
 			return this.currentClimate;
-		case 3:
-			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		case 4:
-			return this.inputT.getFluidAmount();
 		default:
 			return 0;
 		}
@@ -467,12 +479,6 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 		case 2:
 			this.currentClimate = value;
 			break;
-		case 3:
-			inputT.setFluidById(value);
-			break;
-		case 4:
-			this.inputT.setAmount(value);
-			break;
 		default:
 			return;
 		}
@@ -480,7 +486,7 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 	@Override
 	public int getFieldCount() {
-		return 5;
+		return 3;
 	}
 
 	@Override

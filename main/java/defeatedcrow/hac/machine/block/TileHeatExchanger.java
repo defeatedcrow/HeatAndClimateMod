@@ -7,10 +7,8 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
@@ -129,19 +127,9 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 
 	private DCHeatTier getUnderHeat() {
 		DCHeatTier hot = ClimateAPI.calculator.getAverageTemp(world, getPos().down(), 0, false);
-
-		Block block = world.getBlockState(pos.down()).getBlock();
-		int m = block.getMetaFromState(world.getBlockState(pos.down()));
-		if (block instanceof IHeatTile) {
-			DCHeatTier current = ((IHeatTile) block).getHeatTier(world, pos, pos.down());
-			if (current.getTier() != hot.getTier()) {
-				hot = current;
-			}
-		} else if (ClimateAPI.registerBlock.isRegisteredHeat(block, m)) {
-			DCHeatTier cur = ClimateAPI.registerBlock.getHeatTier(block, m);
-			if (cur.getTier() != hot.getTier()) {
-				hot = cur;
-			}
+		DCHeatTier current = ClimateAPI.calculator.getBlockHeatTier(world, getPos(), pos.down());
+		if (current.getTier() != hot.getTier()) {
+			hot = current;
 		}
 
 		return hot;

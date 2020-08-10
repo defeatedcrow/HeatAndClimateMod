@@ -9,7 +9,6 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageSingleTank;
@@ -194,9 +193,9 @@ public class TileTankYard extends DCTileEntity implements ITagGetter {
 			count--;
 		} else {
 			boolean flag = false;
-			if (FluidIDRegisterDC.getID(getTank().getFluidType()) + getTank().getFluidAmount() != lastInT) {
+			if (getTank().getFluidAmount() != lastInT) {
 				flag = true;
-				lastInT = FluidIDRegisterDC.getID(getTank().getFluidType()) + getTank().getFluidAmount();
+				lastInT = getTank().getFluidAmount();
 			}
 
 			if (flag) {

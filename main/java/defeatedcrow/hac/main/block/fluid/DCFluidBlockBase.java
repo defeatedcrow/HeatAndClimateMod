@@ -69,7 +69,7 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 	}
 
 	@Override
-	public DCHumidity getHumdiity(World world, BlockPos to, BlockPos from) {
+	public DCHumidity getHumidity(World world, BlockPos to, BlockPos from) {
 		return DCHumidity.UNDERWATER;
 	}
 

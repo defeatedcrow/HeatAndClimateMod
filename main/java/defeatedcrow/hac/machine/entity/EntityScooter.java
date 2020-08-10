@@ -1,12 +1,12 @@
 package defeatedcrow.hac.machine.entity;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.ClimateMain;
@@ -40,6 +40,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -52,10 +53,10 @@ import net.minecraftforge.items.wrapper.InvWrapper;
 
 public class EntityScooter extends Entity implements IInventory {
 
-	protected static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityScooter.class,
-			DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> COLOR = EntityDataManager.<Integer>createKey(EntityScooter.class,
-			DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> POWERED = EntityDataManager
+			.<Boolean>createKey(EntityScooter.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> COLOR = EntityDataManager
+			.<Integer>createKey(EntityScooter.class, DataSerializers.VARINT);
 
 	public float headYaw;
 	public float prevHeadYaw;
@@ -198,8 +199,8 @@ public class EntityScooter extends Entity implements IInventory {
 
 		// collision
 		this.doBlockCollisions();
-		List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox().expand(0.2D, 0.5D,
-				0.2D), EntitySelectors.IS_STANDALONE);
+		List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox()
+				.expand(0.2D, 0.5D, 0.2D), EntitySelectors.IS_STANDALONE);
 
 		if (!list.isEmpty()) {
 			boolean flag = !this.world.isRemote && !(this.getControllingPassenger() instanceof EntityPlayer);
@@ -231,12 +232,12 @@ public class EntityScooter extends Entity implements IInventory {
 		if (this.getPowered()) {
 			int c = ClimateMain.proxy.getParticleCount();
 			if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
-				double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 0.75D - Math.cos(rotationYaw *
-						0.017453292F) * 0.25D;
-				double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 0.75D - Math.sin(rotationYaw * 0.017453292F) *
-						0.25D;
-				this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, px, this.posY + 0.25D, pz, 0.0D, 0.0D, 0.0D,
-						new int[0]);
+				double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 0.75D - Math
+						.cos(rotationYaw * 0.017453292F) * 0.25D;
+				double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 0.75D - Math
+						.sin(rotationYaw * 0.017453292F) * 0.25D;
+				this.world
+						.spawnParticle(EnumParticleTypes.SMOKE_LARGE, px, this.posY + 0.25D, pz, 0.0D, 0.0D, 0.0D, new int[0]);
 			}
 		}
 	}
@@ -477,8 +478,8 @@ public class EntityScooter extends Entity implements IInventory {
 	public boolean processInitialInteract(EntityPlayer player, @Nullable EnumHand hand) {
 		if (player.isSneaking()) {
 			int id = this.getEntityId();
-			player.openGui(ClimateMain.instance, id, world, getPosition().getX(), getPosition().getY(),
-					getPosition().getZ());
+			player.openGui(ClimateMain.instance, id, world, getPosition().getX(), getPosition().getY(), getPosition()
+					.getZ());
 			return true;
 		} else if (this.isBeingRidden() && this.getPassengers().size() < 2)
 			return true;
@@ -511,8 +512,8 @@ public class EntityScooter extends Entity implements IInventory {
 				}
 			}
 
-			Vec3d vec3d = (new Vec3d(f, 0.0D, 0.0D)).rotateYaw(-this.rotationYaw * 0.017453292F - ((float) Math.PI /
-					2F));
+			Vec3d vec3d = (new Vec3d(f, 0.0D, 0.0D))
+					.rotateYaw(-this.rotationYaw * 0.017453292F - ((float) Math.PI / 2F));
 			passenger.setPosition(this.posX + vec3d.x, this.posY + f1, this.posZ + vec3d.z);
 			passenger.rotationYaw = this.rotationYaw;
 			passenger.setRotationYawHead(this.rotationYaw);
@@ -549,8 +550,8 @@ public class EntityScooter extends Entity implements IInventory {
 		if (!this.world.isRemote && !this.isDead && !(this.getControllingPassenger() instanceof EntityPlayer)) {
 			if (this.isEntityInvulnerable(source)) {
 				this.setDead();
-			} else if (source instanceof EntityDamageSource && !source.isProjectile() &&
-					((EntityDamageSource) source).getTrueSource() instanceof EntityPlayer) {
+			} else if (source instanceof EntityDamageSource && !source.isProjectile() && ((EntityDamageSource) source)
+					.getTrueSource() instanceof EntityPlayer) {
 				int m = getColorID();
 				ItemStack itemstack = new ItemStack(MachineInit.scooter, 1, m);
 
@@ -738,8 +739,8 @@ public class EntityScooter extends Entity implements IInventory {
 					fill = dummy.drain(rem, true);
 					ret = dummy.getContainer();
 
-					if (fill != null && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, this.getStackInSlot(
-							slot2)) > 0)) {
+					if (fill != null && (DCUtil.isEmpty(ret) || this.isItemStackable(ret, this
+							.getStackInSlot(slot2)) > 0)) {
 						loose = true;
 						tank.fill(fill, true);
 					}
@@ -773,8 +774,8 @@ public class EntityScooter extends Entity implements IInventory {
 			dummy = (IFluidHandlerItem) in2.getItem();
 		}
 
-		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null &&
-				dummy.getTankProperties().length > 0) {
+		if (tank.getFluidAmount() > 0 && dummy != null && dummy.getTankProperties() != null && dummy
+				.getTankProperties().length > 0) {
 			boolean loose = false;
 			ItemStack ret = ItemStack.EMPTY;
 
@@ -821,8 +822,8 @@ public class EntityScooter extends Entity implements IInventory {
 		else if (DCUtil.isEmpty(current))
 			return target.getCount();
 
-		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata() &&
-				ItemStack.areItemStackTagsEqual(target, current)) {
+		if (target.getItem() == current.getItem() && target.getMetadata() == current.getMetadata() && ItemStack
+				.areItemStackTagsEqual(target, current)) {
 			int i = current.getCount() + target.getCount();
 			if (i > current.getMaxStackSize()) {
 				i = current.getMaxStackSize() - current.getCount();
@@ -837,9 +838,8 @@ public class EntityScooter extends Entity implements IInventory {
 	public void incrStackInSlot(int i, ItemStack input) {
 		if (i < this.getSizeInventory() && !DCUtil.isEmpty(input)) {
 			if (!DCUtil.isEmpty(this.getStackInSlot(i))) {
-				if (this.getStackInSlot(i).getItem() == input.getItem() && this.getStackInSlot(
-						i).getMetadata() == input.getMetadata() && ItemStack.areItemStackTagsEqual(this.getStackInSlot(
-								i), input)) {
+				if (this.getStackInSlot(i).getItem() == input.getItem() && this.getStackInSlot(i).getMetadata() == input
+						.getMetadata() && ItemStack.areItemStackTagsEqual(this.getStackInSlot(i), input)) {
 					DCUtil.addStackSize(this.getStackInSlot(i), input.getCount());
 					if (this.getStackInSlot(i).getCount() > this.getInventoryStackLimit()) {
 						this.getStackInSlot(i).setCount(this.getInventoryStackLimit());
@@ -931,7 +931,7 @@ public class EntityScooter extends Entity implements IInventory {
 		case 1:
 			return this.maxBurnTime;
 		case 2:
-			return this.tank.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(tank.getFluidType());
+			return getFluidID();
 		case 3:
 			return this.tank.getFluidAmount();
 		default:
@@ -949,7 +949,11 @@ public class EntityScooter extends Entity implements IInventory {
 			this.maxBurnTime = value;
 			break;
 		case 2:
-			tank.setFluidById(value);
+			Fluid f = getFluidByID(value);
+			if (f == null)
+				tank.setFluid(null);
+			else
+				tank.setFluid(new FluidStack(f, tank.getFluidAmount()));
 			break;
 		case 3:
 			this.tank.setAmount(value);
@@ -957,6 +961,25 @@ public class EntityScooter extends Entity implements IInventory {
 		default:
 			return;
 		}
+	}
+
+	public int getFluidID() {
+		Fluid fluid = tank.getFluidType();
+		if (fluid != null) {
+			int i = FluidRegistry.getRegisteredFluidIDs().get(fluid);
+			return 1;
+		}
+		return -1;
+	}
+
+	public Fluid getFluidByID(int id) {
+		for (Entry<Fluid, Integer> e : FluidRegistry.getRegisteredFluidIDs().entrySet()) {
+			if (e.getValue() != null && e.getValue().intValue() == id) {
+				tank.setFluid(new FluidStack(e.getKey(), tank.getFluidAmount()));
+				return e.getKey();
+			}
+		}
+		return null;
 	}
 
 	@Override

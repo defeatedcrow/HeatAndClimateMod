@@ -547,7 +547,7 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	}
 
 	@Override
-	public DCHumidity getHumdiity(World world, BlockPos targrt, BlockPos thisTile) {
+	public DCHumidity getHumidity(World world, BlockPos targrt, BlockPos thisTile) {
 		return DCHumidity.UNDERWATER;
 	}
 

@@ -3,24 +3,16 @@ package defeatedcrow.hac.machine.gui;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.lwjgl.opengl.GL11;
-
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
+import defeatedcrow.hac.core.client.base.GuiBaseDC;
 import defeatedcrow.hac.machine.block.TileReactor;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageReactorButton;
 import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
@@ -30,7 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiReactor extends GuiContainer {
+public class GuiReactor extends GuiBaseDC {
 	private static final ResourceLocation guiTex = new ResourceLocation("dcs_climate", "textures/gui/reactor_gui.png");
 	private static final ResourceLocation iconTex = new ResourceLocation("dcs_climate", "textures/gui/gui_icons.png");
 	/** The player inventory bound to this GUI. */
@@ -49,10 +41,10 @@ public class GuiReactor extends GuiContainer {
 		this.fontRenderer.drawString(this.playerInventory.getDisplayName()
 				.getUnformattedText(), 8, this.ySize - 92, 4210752);
 
-		String s1 = machine.getField(11) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(11)).name();
-		String s2 = machine.getField(12) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(12)).name();
-		String s3 = machine.getField(13) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(13)).name();
-		String s4 = machine.getField(14) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(14)).name();
+		String s1 = machine.getField(3) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(3)).name();
+		String s2 = machine.getField(4) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(4)).name();
+		String s3 = machine.getField(5) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(5)).name();
+		String s4 = machine.getField(6) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(6)).name();
 		this.fontRenderer.drawString(s1, 26, 9, 0xFFFFFF);
 		this.fontRenderer.drawString(s2, 66, 9, 0xFFFFFF);
 		this.fontRenderer.drawString(s3, 108, 39, 0xFFFFFF);
@@ -70,10 +62,9 @@ public class GuiReactor extends GuiContainer {
 		// list.add("Point:" + i + ", " + j);
 		// }
 		if (isPointInRegion(11, 20, 12, 40, x, y)) {
-			if (this.machine.getField(3) > -1) {
-				int in = this.machine.getField(3);
-				int inAmo = this.machine.getField(7);
-				Fluid fluid = FluidIDRegisterDC.getFluid(in);
+			if (this.machine.inputT1.getFluidAmount() > 0) {
+				int inAmo = this.machine.inputT1.getFluidAmount();
+				Fluid fluid = this.machine.inputT1.getFluidType();
 				if (fluid != null && inAmo > 0) {
 					String nameIn = fluid.getLocalizedName(new FluidStack(fluid, 1000));
 					list.add(nameIn);
@@ -82,10 +73,9 @@ public class GuiReactor extends GuiContainer {
 			}
 		}
 		if (isPointInRegion(51, 20, 12, 40, x, y)) {
-			if (this.machine.getField(4) > -1) {
-				int in = this.machine.getField(4);
-				int inAmo = this.machine.getField(8);
-				Fluid fluid = FluidIDRegisterDC.getFluid(in);
+			if (this.machine.inputT2.getFluidAmount() > 0) {
+				int inAmo = this.machine.inputT2.getFluidAmount();
+				Fluid fluid = this.machine.inputT2.getFluidType();
 				if (fluid != null && inAmo > 0) {
 					String nameIn = fluid.getLocalizedName(new FluidStack(fluid, 1000));
 					list.add(nameIn);
@@ -94,10 +84,9 @@ public class GuiReactor extends GuiContainer {
 			}
 		}
 		if (isPointInRegion(93, 50, 12, 40, x, y)) {
-			if (this.machine.getField(5) > -1) {
-				int in = this.machine.getField(5);
-				int inAmo = this.machine.getField(9);
-				Fluid fluid = FluidIDRegisterDC.getFluid(in);
+			if (this.machine.outputT1.getFluidAmount() > 0) {
+				int inAmo = this.machine.outputT1.getFluidAmount();
+				Fluid fluid = this.machine.outputT1.getFluidType();
 				if (fluid != null && inAmo > 0) {
 					String nameIn = fluid.getLocalizedName(new FluidStack(fluid, 1000));
 					list.add(nameIn);
@@ -106,10 +95,9 @@ public class GuiReactor extends GuiContainer {
 			}
 		}
 		if (isPointInRegion(133, 50, 12, 40, x, y)) {
-			if (this.machine.getField(6) > -1) {
-				int in = this.machine.getField(6);
-				int inAmo = this.machine.getField(10);
-				Fluid fluid = FluidIDRegisterDC.getFluid(in);
+			if (this.machine.outputT2.getFluidAmount() > 0) {
+				int inAmo = this.machine.outputT2.getFluidAmount();
+				Fluid fluid = this.machine.outputT2.getFluidType();
 				if (fluid != null && inAmo > 0) {
 					String nameIn = fluid.getLocalizedName(new FluidStack(fluid, 1000));
 					list.add(nameIn);
@@ -118,10 +106,10 @@ public class GuiReactor extends GuiContainer {
 			}
 		}
 
-		String s1 = machine.getField(11) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(11)).name();
-		String s2 = machine.getField(12) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(12)).name();
-		String s3 = machine.getField(13) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(13)).name();
-		String s4 = machine.getField(14) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(14)).name();
+		String s1 = machine.getField(11) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(3)).name();
+		String s2 = machine.getField(12) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(4)).name();
+		String s3 = machine.getField(13) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(5)).name();
+		String s4 = machine.getField(14) > 5 ? "ANY" : EnumSide.fromIndex(machine.getField(7)).name();
 		if (isPointInRegion(28, 9, 12, 6, x, y)) {
 			list.add(s1);
 		}
@@ -163,27 +151,27 @@ public class GuiReactor extends GuiContainer {
 			this.drawTexturedModalRect(i + 121, j + 19, 176, 25, 13, l - 36);
 		}
 
-		if (this.machine.getField(3) > -1) {
-			int in = this.machine.getField(3);
-			int inAmo = 40 * this.machine.getField(7) / 4000;
+		if (this.machine.inputT1.getFluidAmount() > 0) {
+			Fluid in = this.machine.inputT1.getFluidType();
+			int inAmo = 40 * this.machine.inputT1.getFluidAmount() / 4000;
 			renderFluid(in, inAmo, i + 11, j + 20, 12, 40);
 		}
 
-		if (this.machine.getField(4) > -1) {
-			int in = this.machine.getField(4);
-			int inAmo = 40 * this.machine.getField(8) / 4000;
+		if (this.machine.inputT2.getFluidAmount() > 0) {
+			Fluid in = this.machine.inputT2.getFluidType();
+			int inAmo = 40 * this.machine.inputT2.getFluidAmount() / 4000;
 			renderFluid(in, inAmo, i + 51, j + 20, 12, 40);
 		}
 
-		if (this.machine.getField(5) > -1) {
-			int in = this.machine.getField(5);
-			int inAmo = 40 * this.machine.getField(9) / 4000;
+		if (this.machine.outputT1.getFluidAmount() > 0) {
+			Fluid in = this.machine.outputT1.getFluidType();
+			int inAmo = 40 * this.machine.outputT1.getFluidAmount() / 4000;
 			renderFluid(in, inAmo, i + 93, j + 50, 12, 40);
 		}
 
-		if (this.machine.getField(6) > -1) {
-			int in = this.machine.getField(6);
-			int inAmo = 40 * this.machine.getField(10) / 4000;
+		if (this.machine.outputT2.getFluidAmount() > 0) {
+			Fluid in = this.machine.outputT2.getFluidType();
+			int inAmo = 40 * this.machine.outputT2.getFluidAmount() / 4000;
 			renderFluid(in, inAmo, i + 133, j + 50, 12, 40);
 		}
 
@@ -215,40 +203,40 @@ public class GuiReactor extends GuiContainer {
 			int j = y - this.guiTop;
 			int n = 0;
 			if (isPointInRegion(28, 9, 12, 6, x, y)) {
-				if (machine.getField(11) > 4) {
+				if (machine.getField(3) > 4) {
 					n = 0;
 				} else {
-					n = machine.getField(11) + 1;
+					n = machine.getField(3) + 1;
 				}
 				mc.getSoundHandler().playSound(PositionedSoundRecord
 						.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 0, (byte) n));
 			}
 			if (isPointInRegion(69, 9, 12, 6, x, y)) {
-				if (machine.getField(12) > 4) {
+				if (machine.getField(4) > 4) {
 					n = 0;
 				} else {
-					n = machine.getField(12) + 1;
+					n = machine.getField(4) + 1;
 				}
 				mc.getSoundHandler().playSound(PositionedSoundRecord
 						.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 1, (byte) n));
 			}
 			if (isPointInRegion(110, 39, 12, 6, x, y)) {
-				if (machine.getField(13) > 4) {
+				if (machine.getField(5) > 4) {
 					n = 0;
 				} else {
-					n = machine.getField(13) + 1;
+					n = machine.getField(5) + 1;
 				}
 				mc.getSoundHandler().playSound(PositionedSoundRecord
 						.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 				DCMainPacket.INSTANCE.sendToServer(new MessageReactorButton(machine.getPos(), (byte) 2, (byte) n));
 			}
 			if (isPointInRegion(150, 39, 12, 6, x, y)) {
-				if (machine.getField(14) > 4) {
+				if (machine.getField(6) > 4) {
 					n = 0;
 				} else {
-					n = machine.getField(14) + 1;
+					n = machine.getField(6) + 1;
 				}
 				mc.getSoundHandler().playSound(PositionedSoundRecord
 						.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
@@ -257,64 +245,4 @@ public class GuiReactor extends GuiContainer {
 		}
 	}
 
-	protected void renderFluid(int id, int amo, int x, int y, int width, int height) {
-		Fluid fluid = FluidIDRegisterDC.getFluid(id);
-		if (fluid != null) {
-			TextureMap textureMapBlocks = mc.getTextureMapBlocks();
-			ResourceLocation res = fluid.getStill();
-			TextureAtlasSprite spr = null;
-			if (res != null) {
-				spr = textureMapBlocks.getTextureExtry(res.toString());
-			}
-			if (spr == null) {
-				spr = textureMapBlocks.getMissingSprite();
-			}
-			mc.getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-			setGLColorFromInt(fluid.getColor());
-
-			int widR = width;
-			int heiR = amo;
-			int yR = y + height;
-
-			int widL = 0;
-			int heiL = 0;
-
-			for (int i = 0; i < widR; i += 16) {
-				for (int j = 0; j < heiR; j += 16) {
-					widL = Math.min(widR - i, 16);
-					heiL = Math.min(heiR - j, 16);
-					if (widL > 0 && heiL > 0) {
-						drawFluidTexture(x + i, yR - j, spr, widL, heiL, 100);
-					}
-				}
-			}
-			GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0F);
-		}
-	}
-
-	public static void setGLColorFromInt(int color) {
-		float red = (color >> 16 & 255) / 255.0F;
-		float green = (color >> 8 & 255) / 255.0F;
-		float blue = (color & 255) / 255.0F;
-		GL11.glColor4f(red, green, blue, 1.0F);
-	}
-
-	private static void drawFluidTexture(double x, double y, TextureAtlasSprite spr, int widL, int heiL,
-			double zLevel) {
-		double uMin = spr.getMinU();
-		double uMax = spr.getMaxU();
-		double vMin = spr.getMinV();
-		double vMax = spr.getMaxV();
-		double l = heiL / 16.0D;
-		vMax = vMin + ((vMax - vMin) * l);
-
-		Tessellator tessellator = Tessellator.getInstance();
-		BufferBuilder vertexBuffer = tessellator.getBuffer();
-		vertexBuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
-		vertexBuffer.pos(x, y, zLevel).tex(uMin, vMax).endVertex();
-		vertexBuffer.pos(x + widL, y, zLevel).tex(uMax, vMax).endVertex();
-		vertexBuffer.pos(x + widL, y - heiL, zLevel).tex(uMax, vMin).endVertex();
-		vertexBuffer.pos(x, y - heiL, zLevel).tex(uMin, vMin).endVertex();
-		tessellator.draw();
-	}
 }

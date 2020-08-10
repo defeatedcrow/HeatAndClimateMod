@@ -5,7 +5,6 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.state.IBlockState;
@@ -31,9 +30,9 @@ public class TileIBC extends DCTileEntity implements ITagGetter {
 			count--;
 		} else {
 			boolean flag = false;
-			if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
+			if (inputT.getFluidAmount() != lastInT) {
 				flag = true;
-				lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
+				lastInT = inputT.getFluidAmount();
 			}
 
 			if (flag) {

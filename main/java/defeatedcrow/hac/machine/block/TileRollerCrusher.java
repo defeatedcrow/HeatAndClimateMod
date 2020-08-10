@@ -12,11 +12,12 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.climate.recipe.CrusherRecipe;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.gui.ContainerCrusher;
 import defeatedcrow.hac.main.block.fluid.SidedFluidTankWrapper;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -163,6 +164,27 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			this.processFluidSlots();
 		}
 		super.updateTile();
+	}
+
+	private int count = 0;
+	private int last = 0;
+
+	@Override
+	protected void onServerUpdate() {
+		if (current != null) {
+			super.onServerUpdate();
+		}
+		if (count <= 0) {
+			if (outputT1.getFluidAmount() != last) {
+				last = outputT1.getFluidAmount();
+
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, outputT1.getFluidIdName(), outputT1
+						.getFluidAmount()));
+			}
+			count = 10;
+		} else {
+			count--;
+		}
 	}
 
 	public void processFluidSlots() {
@@ -416,10 +438,6 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			return this.currentBurnTime;
 		case 1:
 			return this.maxBurnTime;
-		case 2:
-			return this.outputT1.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT1.getFluidType());
-		case 3:
-			return this.outputT1.getFluidAmount();
 		default:
 			return 0;
 		}
@@ -434,18 +452,12 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 		case 1:
 			this.maxBurnTime = value;
 			break;
-		case 2:
-			outputT1.setFluidById(value);
-			break;
-		case 3:
-			this.outputT1.setAmount(value);
-			break;
 		}
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 4;
+		return 2;
 	}
 
 	@Override

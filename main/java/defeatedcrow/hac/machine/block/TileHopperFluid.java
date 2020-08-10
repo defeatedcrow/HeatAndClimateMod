@@ -8,7 +8,6 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
 import defeatedcrow.hac.main.MainInit;
@@ -77,9 +76,9 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 			}
 
 			boolean flag = false;
-			if (FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount() != lastInT) {
+			if (inputT.getFluidAmount() != lastInT) {
 				flag = true;
-				lastInT = FluidIDRegisterDC.getID(inputT.getFluidType()) + inputT.getFluidAmount();
+				lastInT = inputT.getFluidAmount();
 			}
 
 			if (flag) {
@@ -560,31 +559,15 @@ public class TileHopperFluid extends DCLockableTE implements IHopper, ISidedInve
 
 	@Override
 	public int getField(int id) {
-		switch (id) {
-		case 0:
-			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		case 1:
-			return this.inputT.getFluidAmount();
-		default:
-			return 0;
-		}
+		return 0;
 	}
 
 	@Override
-	public void setField(int id, int value) {
-		switch (id) {
-		case 0:
-			inputT.setFluidById(value);
-			break;
-		case 1:
-			this.inputT.setAmount(value);
-			break;
-		}
-	}
+	public void setField(int id, int value) {}
 
 	@Override
 	public int getFieldCount() {
-		return 2;
+		return 0;
 	}
 
 	@Override

@@ -5,7 +5,6 @@ import java.util.List;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
@@ -217,27 +216,6 @@ public class LivingMainEventDC {
 						}
 					}
 				}
-				// else if (ModuleConfig.magic && MainUtil.getCharmLevel(entity, new ItemStack(MagicInit.colorRing2, 1,
-				// 3)) > 0) {
-				// if (!ClimateMain.proxy.isSneakKeyDown()) {
-				// int x = MathHelper.floor(player.posX);
-				// int y = MathHelper.floor(player.posY - 0.5D);
-				// int z = MathHelper.floor(player.posZ);
-				// boolean f = false;
-				// for (int i = 0; i < 2; i++) {
-				// for (int j = 0; j < 2; j++) {
-				// BlockPos p = new BlockPos(x + i, y, z + j);
-				// if (player.world.getBlockState(p).getCollisionBoundingBox(player.world, p) != null) {
-				// f = true;
-				// }
-				// }
-				// }
-				//
-				// if (f) {
-				// player.motionY = 0.0D;
-				// }
-				// }
-				// }
 			}
 		}
 	}
@@ -263,33 +241,16 @@ public class LivingMainEventDC {
 						for (int y1 = -3; y1 < 3; y1++) {
 							mpos.setPos(pos.getX() + x1, pos.getY() + y1, pos.getZ() + z1);
 							IBlockState state = world.getBlockState(mpos);
-
-							if (state.getBlock() instanceof IHeatTile) {
-								IBlockState s2 = world.getBlockState(mpos.up());
-								if (!s2.getBlock().isSideSolid(s2, world, mpos.up(), EnumFacing.DOWN)) {
-									DCHeatTier h1 = ((IHeatTile) state.getBlock()).getHeatTier(world, mpos.up(), mpos);
-									if (h1 != DCHeatTier.NORMAL) {
-										double px = mpos.getX() + 0.5D;
-										double py = mpos.getY() + 0.5D;
-										double pz = mpos.getZ() + 0.5D;
-										Particle shock = new ParticleTempColor.Factory()
-												.createParticle(0, world, px, py, pz, 0D, 0D, 0D, h1.getColor());
-										FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
-									}
-								}
-							} else {
-								DCHeatTier h1 = ClimateAPI.registerBlock.getHeatTier(state.getBlock(), state.getBlock()
-										.getMetaFromState(state));
-								if (h1 != DCHeatTier.NORMAL) {
-									IBlockState s2 = world.getBlockState(mpos.up());
-									if (!s2.getBlock().isSideSolid(s2, world, mpos.up(), EnumFacing.DOWN)) {
-										double px = mpos.getX() + 0.5D;
-										double py = mpos.getY() + 0.5D;
-										double pz = mpos.getZ() + 0.5D;
-										Particle shock = new ParticleTempColor.Factory()
-												.createParticle(0, world, px, py, pz, 0D, 0D, 0D, h1.getColor());
-										FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
-									}
+							IBlockState s2 = world.getBlockState(mpos.up());
+							if (!s2.getBlock().isNormalCube(s2, world, mpos.up())) {
+								DCHeatTier heat = ClimateAPI.calculator.getBlockHeatTier(world, mpos.up(), mpos);
+								if (heat != DCHeatTier.NORMAL) {
+									double px = mpos.getX() + 0.5D;
+									double py = mpos.getY() + 0.5D;
+									double pz = mpos.getZ() + 0.5D;
+									Particle shock = new ParticleTempColor.Factory()
+											.createParticle(0, world, px, py, pz, 0D, 0D, 0D, heat.getColor());
+									FMLClientHandler.instance().getClient().effectRenderer.addEffect(shock);
 								}
 							}
 						}

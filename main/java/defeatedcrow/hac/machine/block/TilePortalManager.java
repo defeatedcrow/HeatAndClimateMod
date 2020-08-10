@@ -8,7 +8,6 @@ import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.energy.TileTorqueLockable;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.packet.HaCPacket;
 import defeatedcrow.hac.core.packet.MessageClimateUpdate;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -504,10 +503,6 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	public int getField(int id) {
 		if (id >= 0 && id < 6)
 			return this.activeSlot[id];
-		else if (id == 6)
-			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		else if (id == 7)
-			return this.inputT.getFluidAmount();
 		else
 			return 0;
 	}
@@ -516,16 +511,12 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	public void setField(int id, int value) {
 		if (id >= 0 && id < 6) {
 			this.activeSlot[id] = value;
-		} else if (id == 6) {
-			inputT.setFluidById(value);
-		} else if (id == 7) {
-			this.inputT.setAmount(value);
 		}
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 8;
+		return 6;
 	}
 
 	@Override

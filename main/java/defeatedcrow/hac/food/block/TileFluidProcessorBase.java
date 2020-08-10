@@ -12,7 +12,6 @@ import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageFluidProcessor;
@@ -98,7 +97,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		}
 	}
 
-	private int count = 20;
+	private int count = 10;
 
 	@Override
 	protected void onServerUpdate() {
@@ -106,13 +105,13 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			count--;
 		} else {
 			boolean flag = false;
-			if (inputT.getFluidAmount() != lastInT) {
+			if (inputT.getFluidAmount() + inputT.getFluidIdName().hashCode() != lastInT) {
 				flag = true;
-				lastInT = inputT.getFluidAmount();
+				lastInT = inputT.getFluidAmount() + inputT.getFluidIdName().hashCode();
 			}
-			if (outputT.getFluidAmount() != lastOutT) {
+			if (outputT.getFluidAmount() + outputT.getFluidIdName().hashCode() != lastOutT) {
 				flag = true;
-				lastOutT = outputT.getFluidAmount();
+				lastOutT = outputT.getFluidAmount() + outputT.getFluidIdName().hashCode();
 			}
 
 			if (flag) {
@@ -122,7 +121,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				int a2 = outputT.getFluidAmount();
 				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, f1, a1, f2, a2));
 			}
-			count = 20;
+			count = 10;
 		}
 	}
 
@@ -568,14 +567,6 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			return this.maxBurnTime;
 		case 2:
 			return this.current == null ? 0 : this.current.getClimateInt();
-		case 3:
-			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		case 4:
-			return this.outputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT.getFluidType());
-		case 5:
-			return this.inputT.getFluidAmount();
-		case 6:
-			return this.outputT.getFluidAmount();
 		default:
 			return 0;
 		}
@@ -593,24 +584,12 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		case 2:
 			this.current = ClimateAPI.register.getClimateFromInt(value);
 			break;
-		case 3:
-			inputT.setFluidById(value);
-			break;
-		case 4:
-			outputT.setFluidById(value);
-			break;
-		case 5:
-			this.inputT.setAmount(value);
-			break;
-		case 6:
-			this.outputT.setAmount(value);
-			break;
 		}
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 7;
+		return 3;
 	}
 
 	@Override

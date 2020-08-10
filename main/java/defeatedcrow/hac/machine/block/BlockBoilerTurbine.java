@@ -6,7 +6,6 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.main.ClimateMain;
@@ -16,13 +15,11 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -38,31 +35,11 @@ public class BlockBoilerTurbine extends BlockTorqueBase {
 		super(Material.ROCK, s, 0);
 		this.setHardness(1.5F);
 		this.setSoundType(SoundType.METAL);
-		setHorizontal();
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileBoilerTurbine();
-	}
-
-	// 設置時にはプレイヤーの方を向いている方が自然なので
-	@Override
-	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
-		if (placer != null) {
-			EnumFacing face = placer.getHorizontalFacing();
-			if (placer.rotationPitch < -75.0F) {
-				face = EnumFacing.DOWN;
-			} else if (placer.rotationPitch > 75.0F) {
-				face = EnumFacing.UP;
-			}
-			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(face.getOpposite()));
-		} else {
-			state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(facing.getOpposite()));
-		}
-		return state;
 	}
 
 	// 見た目の更新

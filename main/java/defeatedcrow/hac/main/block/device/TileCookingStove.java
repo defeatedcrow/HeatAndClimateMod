@@ -6,9 +6,10 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -74,10 +75,10 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISidedTankChecker) && tile.hasCapability(
-					CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
-				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-						face.getOpposite());
+			if (tile != null && !(tile instanceof ISidedTankChecker) && tile
+					.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
+						.getOpposite());
 				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
 					if (target != null && target.getFluid() != null && getBurnTime(target.getFluid()) > 0) {
@@ -131,10 +132,25 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	/* 燃焼判定 */
 
+	private int last = 0;
+	private int count = 0;
+
 	@Override
 	protected void onServerUpdate() {
 		if (this.currentBurnTime > 0 && BlockCookingStove.isPower(getWorld(), getPos())) {
 			this.currentBurnTime--;
+		}
+
+		if (count <= 0) {
+			if (inputT.getFluidAmount() != last) {
+				last = inputT.getFluidAmount();
+
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, inputT.getFluidIdName(), inputT
+						.getFluidAmount()));
+			}
+			count = 10;
+		} else {
+			count--;
 		}
 	}
 
@@ -303,10 +319,6 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 			return this.maxBurnTime;
 		case 2:
 			return this.currentClimate;
-		case 3:
-			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		case 4:
-			return this.inputT.getFluidAmount();
 		default:
 			return 0;
 		}
@@ -324,12 +336,6 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		case 2:
 			this.currentClimate = value;
 			break;
-		case 3:
-			inputT.setFluidById(value);
-			break;
-		case 4:
-			this.inputT.setAmount(value);
-			break;
 		default:
 			return;
 		}
@@ -337,7 +343,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 
 	@Override
 	public int getFieldCount() {
-		return 5;
+		return 3;
 	}
 
 	@Override

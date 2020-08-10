@@ -33,6 +33,9 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueP
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
+		if (getBaseSide().getAxis().isVertical()) {
+			return side == EnumFacing.WEST;
+		}
 		return side == getBaseSide().rotateY().getOpposite();
 	}
 

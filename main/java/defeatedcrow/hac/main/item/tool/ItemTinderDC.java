@@ -4,7 +4,6 @@ import java.util.List;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import net.minecraft.block.material.Material;
@@ -104,14 +103,10 @@ public class ItemTinderDC extends DCItem {
 			} else if (state.getBlock() == Blocks.TORCH || state.getBlock() == Blocks.LIT_FURNACE || state
 					.getBlock() == Blocks.LIT_PUMPKIN) {
 				return true;
-			} else if (state.getBlock() instanceof IHeatTile) {
-				DCHeatTier heat = ((IHeatTile) state.getBlock()).getHeatTier(world, pos, pos);
-				return heat != null && heat.getTier() > DCHeatTier.BOIL.getTier();
-			} else if (ClimateAPI.registerBlock.isRegisteredHeat(state.getBlock(), state.getBlock()
-					.getMetaFromState(state))) {
-				DCHeatTier heat = ClimateAPI.registerBlock.getHeatTier(state.getBlock(), state.getBlock()
-						.getMetaFromState(state));
-				return heat != null && heat.getTier() > DCHeatTier.BOIL.getTier();
+			} else {
+				DCHeatTier heat = ClimateAPI.calculator.getBlockHeatTier(world, pos.up(), pos);
+				if (heat != null && heat.getTier() > DCHeatTier.BOIL.getTier())
+					return true;
 			}
 		}
 		return false;

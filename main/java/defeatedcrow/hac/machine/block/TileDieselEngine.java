@@ -15,9 +15,10 @@ import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -119,6 +120,24 @@ public class TileDieselEngine extends TileTorqueBase implements ITorqueProvider,
 		super.updateTile();
 	}
 
+	private int last = 0;
+	private int count = 0;
+
+	@Override
+	protected void onServerUpdate() {
+		if (count <= 0) {
+			if (inputT.getFluidAmount() != last) {
+				last = inputT.getFluidAmount();
+
+				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, inputT.getFluidIdName(), inputT
+						.getFluidAmount()));
+			}
+			count = 10;
+		} else {
+			count--;
+		}
+	}
+
 	/* 燃焼判定 */
 
 	public static int getBurnTime(Fluid fluid) {
@@ -139,10 +158,10 @@ public class TileDieselEngine extends TileTorqueBase implements ITorqueProvider,
 			}
 
 			TileEntity tile = world.getTileEntity(getPos().offset(face));
-			if (tile != null && !(tile instanceof ISidedTankChecker) && tile.hasCapability(
-					CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
-				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-						face.getOpposite());
+			if (tile != null && !(tile instanceof ISidedTankChecker) && tile
+					.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
+				IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
+						.getOpposite());
 				if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
 					FluidStack target = tank.getTankProperties()[0].getContents();
 					if (target != null && target.getFluid() != null && getBurnTime(target.getFluid()) > 0) {
@@ -397,10 +416,6 @@ public class TileDieselEngine extends TileTorqueBase implements ITorqueProvider,
 			return this.currentBurnTime;
 		case 1:
 			return this.maxBurnTime;
-		case 2:
-			return this.inputT.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT.getFluidType());
-		case 3:
-			return this.inputT.getFluidAmount();
 		default:
 			return 0;
 		}
@@ -415,12 +430,6 @@ public class TileDieselEngine extends TileTorqueBase implements ITorqueProvider,
 		case 1:
 			this.maxBurnTime = value;
 			break;
-		case 2:
-			inputT.setFluidById(value);
-			break;
-		case 3:
-			this.inputT.setAmount(value);
-			break;
 		default:
 			return;
 		}
@@ -428,7 +437,7 @@ public class TileDieselEngine extends TileTorqueBase implements ITorqueProvider,
 
 	@Override
 	public int getFieldCount() {
-		return 4;
+		return 2;
 	}
 
 	@Override

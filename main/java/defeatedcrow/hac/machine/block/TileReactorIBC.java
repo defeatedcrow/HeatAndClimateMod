@@ -14,10 +14,11 @@ import defeatedcrow.hac.api.recipe.IReactorRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.core.fluid.DCTank;
-import defeatedcrow.hac.core.fluid.FluidIDRegisterDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerReactorIBC;
 import defeatedcrow.hac.main.block.fluid.SidedFluidTankWrapper;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageFluidProcessor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -164,10 +165,24 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 
 	/* Reactor */
 
+	private int count = 0;
+	private int last = 0;
+
 	@Override
 	protected void onServerUpdate() {
 		if (current != null) {
 			super.onServerUpdate();
+		}
+		if (count <= 0) {
+			if (inputT1.getFluidAmount() + outputT1.getFluidAmount() * 5 != last) {
+				last = inputT1.getFluidAmount() + outputT1.getFluidAmount() * 5;
+
+				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, inputT1.getFluidIdName(), inputT1
+						.getFluidAmount(), outputT1.getFluidIdName(), outputT1.getFluidAmount()));
+			}
+			count = 10;
+		} else {
+			count--;
 		}
 	}
 
@@ -458,14 +473,6 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 			return this.maxBurnTime;
 		case 2:
 			return this.current == null ? 0 : this.current.getClimateInt();
-		case 3:
-			return this.inputT1.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(inputT1.getFluidType());
-		case 4:
-			return this.outputT1.getFluidType() == null ? -1 : FluidIDRegisterDC.getID(outputT1.getFluidType());
-		case 5:
-			return this.inputT1.getFluidAmount();
-		case 6:
-			return this.outputT1.getFluidAmount();
 		default:
 			return 0;
 		}
@@ -483,24 +490,12 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 		case 2:
 			this.current = ClimateAPI.register.getClimateFromInt(value);
 			break;
-		case 3:
-			inputT1.setFluidById(value);
-			break;
-		case 4:
-			outputT1.setFluidById(value);
-			break;
-		case 5:
-			this.inputT1.setAmount(value);
-			break;
-		case 6:
-			this.outputT1.setAmount(value);
-			break;
 		}
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 7;
+		return 3;
 	}
 
 	@Override

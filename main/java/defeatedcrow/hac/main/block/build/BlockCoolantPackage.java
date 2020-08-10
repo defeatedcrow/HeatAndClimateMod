@@ -162,8 +162,8 @@ public class BlockCoolantPackage extends BlockDC implements ITexturePath, INameS
 	}
 
 	@Override
-	public DCHeatTier getHeatTier(World world, BlockPos targrt, BlockPos thisTile) {
-		IBlockState state = world.getBlockState(thisTile);
+	public DCHeatTier getHeatTier(World world, BlockPos target, BlockPos source) {
+		IBlockState state = world.getBlockState(source);
 		int type = DCState.getInt(state, DCState.TYPE4);
 		return type == 3 ? DCHeatTier.NORMAL : DCHeatTier.COLD;
 	}
