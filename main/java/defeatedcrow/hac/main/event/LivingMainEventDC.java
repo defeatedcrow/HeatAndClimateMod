@@ -244,7 +244,7 @@ public class LivingMainEventDC {
 							IBlockState s2 = world.getBlockState(mpos.up());
 							if (!s2.getBlock().isNormalCube(s2, world, mpos.up())) {
 								DCHeatTier heat = ClimateAPI.calculator.getBlockHeatTier(world, mpos.up(), mpos);
-								if (heat != DCHeatTier.NORMAL) {
+								if (heat != null && heat != DCHeatTier.NORMAL) {
 									double px = mpos.getX() + 0.5D;
 									double py = mpos.getY() + 0.5D;
 									double pz = mpos.getZ() + 0.5D;
