@@ -165,6 +165,7 @@ public class MainInit {
 	public static Block bedWhite;
 	public static Block bedRattan;
 	public static Block bedFuton;
+	public static Block bedHammock;
 	public static Item itemBed;
 
 	public static Block realtimeClock;

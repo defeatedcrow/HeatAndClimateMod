@@ -16,6 +16,7 @@ import defeatedcrow.hac.main.block.FuelItemBlock;
 import defeatedcrow.hac.main.block.build.BlockAwning;
 import defeatedcrow.hac.main.block.build.BlockBedDC;
 import defeatedcrow.hac.main.block.build.BlockBedDCFuton;
+import defeatedcrow.hac.main.block.build.BlockBedDCHammock;
 import defeatedcrow.hac.main.block.build.BlockBedDCRattan;
 import defeatedcrow.hac.main.block.build.BlockBedDCWhite;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
@@ -858,6 +859,10 @@ public class MainMaterialRegister {
 
 			MainInit.bedFuton = new BlockBedDCFuton(ClimateCore.PACKAGE_BASE + "_bed_futon");
 			DCMaterialReg.registerBlock(MainInit.bedFuton, ClimateCore.PACKAGE_BASE + "_bed_futon", ClimateMain.MOD_ID);
+
+			MainInit.bedHammock = new BlockBedDCHammock(ClimateCore.PACKAGE_BASE + "_bed_hammock");
+			DCMaterialReg
+					.registerBlock(MainInit.bedHammock, ClimateCore.PACKAGE_BASE + "_bed_hammock", ClimateMain.MOD_ID);
 
 			MainInit.itemBed = new ItemBedDC((BlockBedDC) MainInit.bed)
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_bed_item");

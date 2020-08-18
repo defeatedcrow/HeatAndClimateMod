@@ -103,7 +103,10 @@ public class DrinkCustomRecipeDC extends net.minecraftforge.registries.IForgeReg
 
 		for (int i = 0; i < nonnulllist.size(); ++i) {
 			ItemStack itemstack = inv.getStackInSlot(i);
-			nonnulllist.set(i, net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack));
+			if (DrinkMilk.isMilkItem(itemstack) != DrinkMilk.NONE || DrinkSugar
+					.isSugarItem(itemstack) != DrinkSugar.NONE) {
+				nonnulllist.set(i, net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack));
+			}
 		}
 
 		return nonnulllist;

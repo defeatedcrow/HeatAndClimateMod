@@ -1392,6 +1392,16 @@ public class LoadingBuildingRecipe {
 				'Y',
 				"cropCotton" });
 
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemBed, 1, 4), new Object[] {
+				"XXX",
+				"YZY",
+				'X',
+				"itemCloth",
+				'Y',
+				"stickWood",
+				'Z',
+				"string" });
+
 		}
 	}
 

@@ -183,63 +183,70 @@ public class DCPluginFluid {
 		registerPotion("dcs.stock", MobEffects.FIRE_RESISTANCE);
 		registerPotion("dcs.lemonade", MobEffects.JUMP_BOOST);
 		registerPotion("dcs.black_liquor", MobEffects.POISON);
-		registerPotion("dcs.soy_milk", MobEffects.INSTANT_HEALTH);
 
-		Fluid f3 = FluidRegistry.getFluid("ic2coolant");
+		Fluid f1 = FluidRegistry.getFluid("ic2coolant");
+		if (f1 != null) {
+			Block b1 = f1.getBlock();
+			if (b1 != null) {
+				ClimateAPI.registerBlock.registerHeatBlock(b1, 32767, DCHeatTier.COLD);
+			}
+		}
+
+		Fluid f2 = FluidRegistry.getFluid("ic2air");
+
+		if (f2 != null) {
+			Block b2 = f2.getBlock();
+			if (b2 != null) {
+				ClimateAPI.registerBlock.registerAirBlock(b2, 32767, DCAirflow.FLOW);
+			}
+		}
+
+		Fluid f3 = FluidRegistry.getFluid("ic2steam");
 		if (f3 != null) {
 			Block b3 = f3.getBlock();
 			if (b3 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b3, 32767, DCHeatTier.COLD);
+				ClimateAPI.registerBlock.registerHeatBlock(b3, 32767, DCHeatTier.BOIL);
+				ClimateAPI.registerBlock.registerAirBlock(b3, 32767, DCAirflow.NORMAL);
 			}
 		}
 
-		Fluid f4 = FluidRegistry.getFluid("ic2air");
-
+		Fluid f4 = FluidRegistry.getFluid("ic2hot_water");
 		if (f4 != null) {
 			Block b4 = f4.getBlock();
 			if (b4 != null) {
-				ClimateAPI.registerBlock.registerAirBlock(b4, 32767, DCAirflow.FLOW);
+				ClimateAPI.registerBlock.registerHeatBlock(b4, 32767, DCHeatTier.BOIL);
 			}
 		}
 
-		Fluid f5 = FluidRegistry.getFluid("ic2steam");
+		Fluid f5 = FluidRegistry.getFluid("ic2hot_coolant");
 		if (f5 != null) {
 			Block b5 = f5.getBlock();
 			if (b5 != null) {
 				ClimateAPI.registerBlock.registerHeatBlock(b5, 32767, DCHeatTier.BOIL);
-				ClimateAPI.registerBlock.registerAirBlock(b5, 32767, DCAirflow.NORMAL);
 			}
 		}
 
-		Fluid f8 = FluidRegistry.getFluid("ic2hot_water");
+		Fluid f6 = FluidRegistry.getFluid("ic2superheated_steam");
+		if (f6 != null) {
+			Block b6 = f6.getBlock();
+			if (b6 != null) {
+				ClimateAPI.registerBlock.registerHeatBlock(b6, 32767, DCHeatTier.OVEN);
+			}
+		}
+
+		Fluid f7 = FluidRegistry.getFluid("ic2pahoehoe_lava");
+		if (f7 != null) {
+			Block b7 = f7.getBlock();
+			if (b7 != null) {
+				ClimateAPI.registerBlock.registerHeatBlock(b7, 32767, DCHeatTier.KILN);
+			}
+		}
+
+		Fluid f8 = FluidRegistry.getFluid("aerotheum");
 		if (f8 != null) {
 			Block b8 = f8.getBlock();
 			if (b8 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b8, 32767, DCHeatTier.BOIL);
-			}
-		}
-
-		Fluid f9 = FluidRegistry.getFluid("ic2hot_coolant");
-		if (f9 != null) {
-			Block b9 = f9.getBlock();
-			if (b9 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b9, 32767, DCHeatTier.BOIL);
-			}
-		}
-
-		Fluid f11 = FluidRegistry.getFluid("ic2superheated_steam");
-		if (f11 != null) {
-			Block b11 = f11.getBlock();
-			if (b11 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b11, 32767, DCHeatTier.OVEN);
-			}
-		}
-
-		Fluid f12 = FluidRegistry.getFluid("ic2pahoehoe_lava");
-		if (f12 != null) {
-			Block b12 = f12.getBlock();
-			if (b12 != null) {
-				ClimateAPI.registerBlock.registerHeatBlock(b12, 32767, DCHeatTier.KILN);
+				ClimateAPI.registerBlock.registerAirBlock(b8, 32767, DCAirflow.FLOW);
 			}
 		}
 
@@ -301,6 +308,15 @@ public class DCPluginFluid {
 				ClimateAPI.registerBlock.registerHeatBlock(b32, 32767, DCHeatTier.BOIL);
 			}
 		}
+
+		Fluid f33 = FluidRegistry.getFluid("liquidoxygen");
+		if (f33 != null) {
+			Block b33 = f33.getBlock();
+			if (b33 != null) {
+				ClimateAPI.registerBlock.registerAirBlock(b33, 32767, DCAirflow.FLOW);
+			}
+		}
+
 	}
 
 	public static void registerPotion(String name, Potion p) {

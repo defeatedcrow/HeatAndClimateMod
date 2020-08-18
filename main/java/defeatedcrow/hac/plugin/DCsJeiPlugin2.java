@@ -1,5 +1,6 @@
 package defeatedcrow.hac.plugin;
 
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.machine.MachineInit;
@@ -13,6 +14,10 @@ import defeatedcrow.hac.main.api.IDCInfoData;
 import defeatedcrow.hac.main.api.IFluidFuel;
 import defeatedcrow.hac.main.api.IHeatTreatment;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.plugin.jei.ClimateFluidCategory;
+import defeatedcrow.hac.plugin.jei.ClimateFluidMaker;
+import defeatedcrow.hac.plugin.jei.ClimateFluidWrapper;
+import defeatedcrow.hac.plugin.jei.DCFluidInfo;
 import defeatedcrow.hac.plugin.jei.DCFuelCategory;
 import defeatedcrow.hac.plugin.jei.DCFuelMaker;
 import defeatedcrow.hac.plugin.jei.DCFuelWrapper;
@@ -44,14 +49,16 @@ public class DCsJeiPlugin2 implements IModPlugin {
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		final IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 		final IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-		registry.addRecipeCategories(new DCInfoCategory(guiHelper), new DCFuelCategory(
-				guiHelper), new DCHeatTreatmentCategory(guiHelper), new DCPressMoldCategory(guiHelper));
+		registry.addRecipeCategories(new DCInfoCategory(guiHelper), new ClimateFluidCategory(
+				guiHelper), new DCFuelCategory(guiHelper), new DCHeatTreatmentCategory(
+						guiHelper), new DCPressMoldCategory(guiHelper));
 	}
 
 	@Override
 	public void register(IModRegistry registry) {
 		final IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 
+		registry.handleRecipes(DCFluidInfo.class, recipe -> new ClimateFluidWrapper(recipe), "dcs_climate.drink");
 		registry.handleRecipes(IFluidFuel.class, recipe -> new DCFuelWrapper(recipe), "dcs_climate.fuel");
 		registry.handleRecipes(IHeatTreatment.class, recipe -> new DCHeatTreatmentWrapper(
 				recipe), "dcs_climate.treatment");
@@ -62,14 +69,22 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		DCHeatTreatmentMaker.register(registry);
 		DCPressMoldMaker.register(registry);
 		DCInfoDataMaker.register(registry);
+		ClimateFluidMaker.register(registry);
 
 		registry.addRecipeCatalyst(new ItemStack(MainInit.fuelStove), "dcs_climate.fuel");
-		registry.addRecipeCatalyst(new ItemStack(MachineInit.burner), "dcs_climate.fuel");
-		registry.addRecipeCatalyst(new ItemStack(MachineInit.dieselEngine), "dcs_climate.fuel");
-		registry.addRecipeCatalyst(new ItemStack(MachineInit.scooter), "dcs_climate.fuel");
+		if (ModuleConfig.machine) {
+			registry.addRecipeCatalyst(new ItemStack(MachineInit.burner), "dcs_climate.fuel");
+			if (ModuleConfig.machine_advanced) {
+				registry.addRecipeCatalyst(new ItemStack(MachineInit.dieselEngine), "dcs_climate.fuel");
+				registry.addRecipeCatalyst(new ItemStack(MachineInit.scooter), "dcs_climate.fuel");
+				registry.addRecipeCatalyst(new ItemStack(MachineInit.pressMachine, 1, 0), "dcs_climate.pressmold");
+			}
+		}
 		registry.addRecipeCatalyst(new ItemStack(MainInit.metalBlockAlloy, 1, 5), "dcs_climate.treatment");
-		registry.addRecipeCatalyst(new ItemStack(MachineInit.pressMachine, 1, 0), "dcs_climate.pressmold");
 		registry.addRecipeCatalyst(new ItemStack(MainInit.iconItem, 1, 0), "dcs_climate.info");
+		if (ModuleConfig.food) {
+			registry.addRecipeCatalyst(new ItemStack(FoodInit.cupSilver, 1, 0), "dcs_climate.drink");
+		}
 
 		if (ModuleConfig.machine) {
 			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] { "dcs_climate.mill" });

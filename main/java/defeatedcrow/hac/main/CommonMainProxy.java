@@ -55,6 +55,7 @@ import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.block.build.TileBedDC;
 import defeatedcrow.hac.main.block.build.TileBedDCFuton;
+import defeatedcrow.hac.main.block.build.TileBedDCHammock;
 import defeatedcrow.hac.main.block.build.TileBedDCRattan;
 import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
@@ -418,6 +419,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileBedDCWhite.class, "dcs_te_bed_white");
 		GameRegistry.registerTileEntity(TileBedDCRattan.class, "dcs_te_bed_rattan");
 		GameRegistry.registerTileEntity(TileBedDCFuton.class, "dcs_te_bed_futon");
+		GameRegistry.registerTileEntity(TileBedDCHammock.class, "dcs_te_bed_hammock");
 		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
 		GameRegistry.registerTileEntity(TileFirestand.class, "dcs_te_firestand");
 

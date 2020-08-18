@@ -38,10 +38,10 @@ public class ItemBedDC extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 3;
+		return 4;
 	}
 
-	private static String[] names = { "iron", "white", "rattan", "futon" };
+	private static String[] names = { "iron", "white", "rattan", "futon", "hammock" };
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
@@ -67,6 +67,8 @@ public class ItemBedDC extends DCItem {
 			return MainInit.bedRattan;
 		case 3:
 			return MainInit.bedFuton;
+		case 4:
+			return MainInit.bedHammock;
 		}
 		return MainInit.bed;
 	}

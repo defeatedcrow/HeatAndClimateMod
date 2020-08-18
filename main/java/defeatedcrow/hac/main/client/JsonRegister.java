@@ -184,11 +184,14 @@ public class JsonRegister {
 					.ignore(BlockBed.OCCUPIED).ignore(BlockBed.FACING).build());
 			ModelLoader.setCustomStateMapper(MainInit.bedFuton, (new StateMap.Builder()).ignore(BlockBed.PART)
 					.ignore(BlockBed.OCCUPIED).ignore(BlockBed.FACING).build());
+			ModelLoader.setCustomStateMapper(MainInit.bedHammock, (new StateMap.Builder()).ignore(BlockBed.PART)
+					.ignore(BlockBed.OCCUPIED).ignore(BlockBed.FACING).build());
 			MAIN_INSTANCE.regSimpleBlock(MainInit.bed, ClimateCore.PACKAGE_ID, "dcs_bed", "build", 0);
 			MAIN_INSTANCE.regSimpleBlock(MainInit.bedWhite, ClimateCore.PACKAGE_ID, "dcs_bed_white", "build", 0);
 			MAIN_INSTANCE.regSimpleBlock(MainInit.bedRattan, ClimateCore.PACKAGE_ID, "dcs_bed_rattan", "build", 0);
 			MAIN_INSTANCE.regSimpleBlock(MainInit.bedFuton, ClimateCore.PACKAGE_ID, "dcs_bed_futon", "build", 0);
-			MAIN_INSTANCE.regSimpleItem(MainInit.itemBed, ClimateCore.PACKAGE_ID, "dcs_bed_item", "build", 3);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.bedHammock, ClimateCore.PACKAGE_ID, "dcs_bed_hammock", "build", 0);
+			MAIN_INSTANCE.regSimpleItem(MainInit.itemBed, ClimateCore.PACKAGE_ID, "dcs_bed_item", "build", 4);
 		}
 
 		if (!ModuleConfig.delete_old) {

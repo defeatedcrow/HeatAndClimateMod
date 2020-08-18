@@ -18,6 +18,7 @@ import defeatedcrow.hac.magic.event.MagicClientEvent;
 import defeatedcrow.hac.main.CommonMainProxy;
 import defeatedcrow.hac.main.block.build.TileBedDC;
 import defeatedcrow.hac.main.block.build.TileBedDCFuton;
+import defeatedcrow.hac.main.block.build.TileBedDCHammock;
 import defeatedcrow.hac.main.block.build.TileBedDCRattan;
 import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
@@ -44,6 +45,7 @@ import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.block.fluid.FluidUtil;
 import defeatedcrow.hac.main.client.block.TESRAnalogClock;
 import defeatedcrow.hac.main.client.block.TESRBedFuton;
+import defeatedcrow.hac.main.client.block.TESRBedHammock;
 import defeatedcrow.hac.main.client.block.TESRBedIron;
 import defeatedcrow.hac.main.client.block.TESRBedRattan;
 import defeatedcrow.hac.main.client.block.TESRBedWhite;
@@ -229,6 +231,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileBedDCWhite.class, "dcs_te_bed_white", new TESRBedWhite());
 		registerTileEntity(TileBedDCRattan.class, "dcs_te_bed_rattan", new TESRBedRattan());
 		registerTileEntity(TileBedDCFuton.class, "dcs_te_bed_futon", new TESRBedFuton());
+		registerTileEntity(TileBedDCHammock.class, "dcs_te_bed_hammock", new TESRBedHammock());
 		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
 		registerTileEntity(TileFirestand.class, "dcs_te_firestand", new TESRFirestand());
 
