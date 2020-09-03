@@ -69,7 +69,7 @@ public class MonitorTESR extends DCTESRBase {
 				order = 1;
 			}
 
-			String sa = tile.amountString(amo);
+			String sa = tile.amountString(amo, order);
 			String so = "";
 			switch (order) {
 			case 1:
@@ -98,10 +98,15 @@ public class MonitorTESR extends DCTESRBase {
 			GlStateManager.glNormal3f(0.0F, 0.0F, -0.015F);
 			GlStateManager.depthMask(false);
 
-			String s = TextFormatting.BOLD.toString() + sa;
-			font.drawString(s, -font.getStringWidth(s) / 2, 0, 0xFFFFFF);
-			String s2 = TextFormatting.BOLD.toString() + so + su;
-			font.drawString(s2, -font.getStringWidth(s2) / 2, 8, 0xFFFFFF);
+			if (tile.noUnit()) {
+				String s = TextFormatting.BOLD.toString() + sa + so;
+				font.drawString(s, -font.getStringWidth(s) / 2, 4, 0xFFFFFF);
+			} else {
+				String s = TextFormatting.BOLD.toString() + sa;
+				font.drawString(s, -font.getStringWidth(s) / 2, 0, 0xFFFFFF);
+				String s2 = TextFormatting.BOLD.toString() + so + su;
+				font.drawString(s2, -font.getStringWidth(s2) / 2, 8, 0xFFFFFF);
+			}
 
 			GlStateManager.depthMask(true);
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

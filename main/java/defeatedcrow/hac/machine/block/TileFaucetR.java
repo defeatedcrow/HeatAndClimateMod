@@ -27,16 +27,16 @@ public class TileFaucetR extends DCTileEntity {
 			else {
 				EnumFacing face = DCState.getSide(state, DCState.SIDE).face;
 				TileEntity fromTE = world.getTileEntity(getPos().up());
-				if (fromTE == null || !fromTE.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
-						.getOpposite())) {
+				if (fromTE == null || !fromTE
+						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
 					fromTE = world.getTileEntity(getPos().up(2));
 				}
 				TileEntity toTE = world.getTileEntity(getPos().offset(face));
 				if (fromTE != null && toTE != null && fromTE
-						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP) && toTE
+						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN) && toTE
 								.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face.getOpposite())) {
 					IFluidHandler intank = fromTE
-							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
+							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
 					IFluidHandler outtank = toTE.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, face
 							.getOpposite());
 					if (intank != null && outtank != null) {

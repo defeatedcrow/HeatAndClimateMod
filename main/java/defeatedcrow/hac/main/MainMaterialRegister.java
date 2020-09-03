@@ -304,7 +304,7 @@ public class MainMaterialRegister {
 		MainInit.miscDust = new ItemMiscDust(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		DCMaterialReg.registerItem(MainInit.miscDust, ClimateCore.PACKAGE_BASE + "_miscdust", ClimateMain.MOD_ID);
 
-		MainInit.foodDust = new ItemFoodDust(6).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fooddust");
+		MainInit.foodDust = new ItemFoodDust(7).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fooddust");
 		DCMaterialReg.registerItem(MainInit.foodDust, ClimateCore.PACKAGE_BASE + "_fooddust", ClimateMain.MOD_ID);
 
 		// tools
@@ -1381,9 +1381,9 @@ public class MainMaterialRegister {
 		DCMaterialReg.registerBlock(MainInit.cropJute, ClimateCore.PACKAGE_BASE + "_cont_jutebag", ClimateMain.MOD_ID);
 		ClimateMain.proxy.addSidedBlock(MainInit.cropJute, "cont_jutebag", 4);
 
-		MainInit.dustCake = new BlockMiscCake(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cake", 4);
+		MainInit.dustCake = new BlockMiscCake(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_cake", 5);
 		DCMaterialReg.registerBlock(MainInit.dustCake, ClimateCore.PACKAGE_BASE + "_cont_cake", ClimateMain.MOD_ID);
-		ClimateMain.proxy.addSidedBlock(MainInit.dustCake, "cont_cake", 4);
+		ClimateMain.proxy.addSidedBlock(MainInit.dustCake, "cont_cake", 5);
 
 	}
 

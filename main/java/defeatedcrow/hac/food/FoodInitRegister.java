@@ -73,6 +73,10 @@ import defeatedcrow.hac.food.item.StewBowlItem;
 import defeatedcrow.hac.food.item.StickFoodsItem;
 import defeatedcrow.hac.food.item.UdonItem;
 import defeatedcrow.hac.food.item.WagashiItem;
+import defeatedcrow.hac.food.item.brewing.ItemAntibiotic;
+import defeatedcrow.hac.food.item.brewing.ItemMedium;
+import defeatedcrow.hac.food.item.brewing.ItemResidue;
+import defeatedcrow.hac.food.item.brewing.ItemUnidentified;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.config.ModuleConfig;
 
@@ -88,8 +92,13 @@ public class FoodInitRegister {
 			loadFluids();
 			loadFoods();
 
+			if (ModuleConfig.food_advanced) {
+				loadAdvanced();
+			}
+
 			loadCreativeTab();
 			registerDispense();
+
 		}
 	}
 
@@ -250,6 +259,9 @@ public class FoodInitRegister {
 
 		FoodInit.pastry = new ItemPastry().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_pastry");
 		DCMaterialReg.registerItem(FoodInit.pastry, ClimateCore.PACKAGE_BASE + "_food_pastry", ClimateMain.MOD_ID);
+
+		FoodInit.residue = new ItemResidue().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_residue");
+		DCMaterialReg.registerItem(FoodInit.residue, ClimateCore.PACKAGE_BASE + "_food_residue", ClimateMain.MOD_ID);
 	}
 
 	static void loadFoods() {
@@ -357,6 +369,21 @@ public class FoodInitRegister {
 
 	}
 
+	public static void loadAdvanced() {
+
+		FoodInit.medium = new ItemMedium().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_medium");
+		DCMaterialReg.registerItem(FoodInit.medium, ClimateCore.PACKAGE_BASE + "_food_medium", ClimateMain.MOD_ID);
+
+		FoodInit.antibiotic = new ItemAntibiotic().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_antibiotic");
+		DCMaterialReg
+				.registerItem(FoodInit.antibiotic, ClimateCore.PACKAGE_BASE + "_food_antibiotic", ClimateMain.MOD_ID);
+
+		FoodInit.unidentified = new ItemUnidentified()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_unidentified");
+		DCMaterialReg
+				.registerItem(FoodInit.unidentified, ClimateCore.PACKAGE_BASE + "_food_unidentified", ClimateMain.MOD_ID);
+	}
+
 	static void loadCreativeTab() {
 		FoodInit.bread.setCreativeTab(ClimateMain.food);
 		FoodInit.sticks.setCreativeTab(ClimateMain.food);
@@ -399,6 +426,7 @@ public class FoodInitRegister {
 		FoodInit.meat.setCreativeTab(ClimateMain.food);
 		FoodInit.dairy.setCreativeTab(ClimateMain.food);
 		FoodInit.pastry.setCreativeTab(ClimateMain.food);
+		FoodInit.residue.setCreativeTab(ClimateMain.food);
 
 		FoodInit.cupSilver.setCreativeTab(ClimateMain.food);
 		FoodInit.steakplate.setCreativeTab(ClimateMain.food);
@@ -438,6 +466,12 @@ public class FoodInitRegister {
 		FoodInit.saplings2.setCreativeTab(ClimateMain.food);
 
 		FoodInit.dish.setCreativeTab(ClimateMain.build);
+
+		if (ModuleConfig.food_advanced) {
+			FoodInit.medium.setCreativeTab(ClimateMain.food);
+			FoodInit.antibiotic.setCreativeTab(ClimateMain.food);
+			FoodInit.unidentified.setCreativeTab(ClimateMain.food);
+		}
 	}
 
 	static void registerDispense() {

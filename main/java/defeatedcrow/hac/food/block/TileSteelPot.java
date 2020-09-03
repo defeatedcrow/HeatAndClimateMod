@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class TileSteelPot extends TileFluidProcessorBase {
@@ -126,6 +127,67 @@ public class TileSteelPot extends TileFluidProcessorBase {
 	@Override
 	public String getGuiID() {
 		return "dcs_climate:fluidprocessor_steel";
+	}
+	/* サイズ変更 */
+
+	/*
+	 * 0: fluid in 1
+	 * 1: fluid out 1
+	 * 2: fluid in 2
+	 * 3: fluid out 2
+	 * 4-9: in
+	 * 10-12: out
+	 */
+
+	@Override
+	protected int getInputSlotTop() {
+		return 4;
+	}
+
+	@Override
+	protected int getInputSlotEnd() {
+		return 9;
+	}
+
+	@Override
+	protected int getOutputSlotTop() {
+		return 10;
+	}
+
+	@Override
+	protected int getOutputSlotEnd() {
+		return 12;
+	}
+
+	@Override
+	protected int[] slotsTop() {
+		return new int[] { 0, 2, 4, 5, 6, 7, 8, 9 };
+	};
+
+	@Override
+	protected int[] slotsBottom() {
+		return new int[] { 1, 3, 10, 11, 12 };
+	};
+
+	@Override
+	protected int[] slotsSides() {
+		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+	};
+
+	@Override
+	public List<ItemStack> getInputs() {
+		return inv.getInputs(4, 9);
+	}
+
+	@Override
+	public List<ItemStack> getOutputs() {
+		return inv.getOutputs(10, 12);
+	}
+
+	// スロット数
+	@Override
+	public int getSizeInventory() {
+		return 13;
 	}
 
 }

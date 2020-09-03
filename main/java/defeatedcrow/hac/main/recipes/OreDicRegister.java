@@ -206,6 +206,9 @@ public class OreDicRegister {
 		OreDictionary.registerOre("foodSoypulp", new ItemStack(MainInit.foodDust, 1, 5));
 		OreDictionary.registerOre("foodFlour", new ItemStack(MainInit.foodDust, 1, 5));
 		OreDictionary.registerOre("foodBakingSoda", new ItemStack(MainInit.foodDust, 1, 6));
+		OreDictionary.registerOre("dustBagasse", new ItemStack(MainInit.foodDust, 1, 7));
+		OreDictionary.registerOre("dustDraff", new ItemStack(MainInit.foodDust, 1, 7));
+		OreDictionary.registerOre("dustWood", new ItemStack(MainInit.foodDust, 1, 7));
 
 		// material
 		OreDictionary.registerOre("string", new ItemStack(Items.STRING, 1, 0));

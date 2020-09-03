@@ -81,6 +81,9 @@ public class BasicRecipeRegister {
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Items.DYE, 1, 15), new Object[] {
 			new ItemStack(MainInit.miscDust, 1, 5) });
 
+		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(Items.DYE, 1, 15), new Object[] {
+			new ItemStack(MainInit.miscDust, 1, 4) });
+
 		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.oreIngot, 1, 5), new Object[] {
 			new ItemStack(MainInit.oreIngot, 1, 7) });
 

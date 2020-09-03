@@ -3,12 +3,15 @@ package defeatedcrow.hac.main;
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
+import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
 import defeatedcrow.hac.food.gui.ContainerSilkwormBox;
+import defeatedcrow.hac.food.gui.ContainerSteelPot;
 import defeatedcrow.hac.food.gui.ContainerTeaPot;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiSilkwormBox;
+import defeatedcrow.hac.food.gui.GuiSteelPot;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
@@ -522,6 +525,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerStoneMill((TileStoneMill) tile, player.inventory);
 		if (tile instanceof TileTeaPot)
 			return new ContainerTeaPot((TileTeaPot) tile, player.inventory);
+		if (tile instanceof TileSteelPot)
+			return new ContainerSteelPot((TileSteelPot) tile, player.inventory);
 		if (tile instanceof TileFluidProcessorBase)
 			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)
@@ -576,6 +581,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiStoneMill((TileStoneMill) tile, player.inventory);
 		if (tile instanceof TileTeaPot)
 			return new GuiTeaPot((TileTeaPot) tile, player.inventory);
+		if (tile instanceof TileSteelPot)
+			return new GuiSteelPot((TileSteelPot) tile, player.inventory);
 		if (tile instanceof TileFluidProcessorBase)
 			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)

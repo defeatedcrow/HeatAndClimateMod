@@ -30,18 +30,19 @@ public class BlockMiscCake extends DCSimpleBlock implements ITexturePath, IRapid
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = { "bran", "presscake", "ash", "plant", "soycake" };
+		String[] name = { "bran", "presscake", "ash", "plant", "soycake", "draff" };
 		return name;
 	}
 
 	@Override
 	public ItemStack[] containedItem() {
-		ItemStack[] ret = new ItemStack[5];
+		ItemStack[] ret = new ItemStack[6];
 		ret[0] = new ItemStack(MainInit.foodDust, 8);
 		ret[1] = new ItemStack(MainInit.miscDust, 8, 4);
 		ret[2] = new ItemStack(MainInit.miscDust, 8, 5);
 		ret[3] = new ItemStack(MainInit.foodDust, 8, 1);
 		ret[4] = new ItemStack(MainInit.foodDust, 8, 4);
+		ret[5] = new ItemStack(MainInit.foodDust, 8, 7);
 
 		return ret;
 	}
@@ -67,6 +68,8 @@ public class BlockMiscCake extends DCSimpleBlock implements ITexturePath, IRapid
 			return "dustPlant";
 		case 4:
 			return new ItemStack(MainInit.foodDust, 1, 4);
+		case 5:
+			return "dustDraff";
 		}
 		return ItemStack.EMPTY;
 	}
@@ -74,8 +77,8 @@ public class BlockMiscCake extends DCSimpleBlock implements ITexturePath, IRapid
 	@Override
 	public String getTexture(int meta, int side, boolean face) {
 		int m = meta & 15;
-		if (m > 4)
-			m = 4;
+		if (m > 5)
+			m = 5;
 		String b = "dcs_climate:blocks/cont/";
 		return b + "cake_" + getNameSuffix()[m];
 	}
@@ -88,14 +91,15 @@ public class BlockMiscCake extends DCSimpleBlock implements ITexturePath, IRapid
 		list.add(b + "ash");
 		list.add(b + "plant");
 		list.add(b + "soycake");
+		list.add(b + "draff");
 		return list;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean isFull) {
 		int m = meta & 15;
-		if (m > 4)
-			m = 4;
+		if (m > 5)
+			m = 5;
 		String b = "dcs_climate:items/block/cont/";
 		return b + "cake_" + getNameSuffix()[m];
 	}

@@ -295,6 +295,14 @@ public class MachineRecipeRegister {
 		clay.requiredAir().add(DCAirflow.WIND);
 		RecipeAPI.registerSmelting.addRecipe(clay);
 
+		for (int i = 0; i < 6; i++) {
+			if (i != 2) {
+				ClimateSmelting recipe = new ClimateSmelting(new ItemStack(Items.COAL, 1, 1), null, DCHeatTier.KILN,
+						null, DCAirflow.TIGHT, 0, false, new ItemStack(MainInit.dustCake, 1, i));
+				RecipeAPI.registerSmelting.addRecipe(recipe);
+			}
+		}
+
 	}
 
 	static void loadBuildRecipes() {
@@ -375,12 +383,14 @@ public class MachineRecipeRegister {
 		GameRegistry.addSmelting(new ItemStack(MainInit.cropCont, 1, 0), new ItemStack(MainInit.cropCont, 1, 9), 0.5F);
 		GameRegistry.addSmelting(new ItemStack(MainInit.cropCont, 1, 1), new ItemStack(MainInit.cropCont, 1, 10), 0.5F);
 
-		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 0), new ItemStack(MainInit.logCont, 1, 6), 0F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 1), new ItemStack(MainInit.logCont, 1, 6), 0F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 2), new ItemStack(MainInit.logCont, 1, 6), 0F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 3), new ItemStack(MainInit.logCont, 1, 6), 0F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 4), new ItemStack(MainInit.logCont, 1, 6), 0F);
-		GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, 5), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		for (int i = 0; i < 6; i++) {
+			GameRegistry.addSmelting(new ItemStack(MainInit.logCont, 1, i), new ItemStack(MainInit.logCont, 1, 6), 0F);
+		}
+
+		for (int i = 0; i < 6; i++) {
+			if (i != 2)
+				GameRegistry.addSmelting(new ItemStack(MainInit.dustCake, 1, i), new ItemStack(Items.COAL, 1, 1), 0F);
+		}
 
 		// misc
 

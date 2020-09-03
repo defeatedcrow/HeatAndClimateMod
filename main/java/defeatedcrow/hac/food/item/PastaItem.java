@@ -79,7 +79,7 @@ public class PastaItem extends FoodItemBase {
 	@Override
 	public int getFoodAmo(int meta) {
 		if (meta == 0) {
-			return 11;
+			return 10;
 		}
 		if (meta == 1) {
 			return 12;

@@ -137,6 +137,7 @@ item.dcs_fooddust_malt.name=Malt
 item.dcs_fooddust_defatted_soy.name=Defatted Soy
 item.dcs_fooddust_soy_pulp.name=Soy Pulp
 item.dcs_fooddust_baking_soda.name=Baking Soda
+item.dcs_fooddust_bagasse.name=Bagasse
 item.dcs_expgem_exp.name=EXP Gem
 
 ## materials
@@ -234,6 +235,20 @@ item.dcs_food_meat_miso.name=Miso
 item.dcs_food_meat_soysauce.name=Soysauce
 item.dcs_food_meat_siroan.name=White Bean Paste
 item.dcs_food_meat_raw_prawn.name=Raw Prawn
+item.dcs_food_residue_bsg.name=Spent Grain
+item.dcs_food_residue_sake.name=Sake lees
+item.dcs_food_residue_wine.name=Pomace
+item.dcs_food_residue_silage.name=Silage
+item.dcs_food_residue_ex_yeast.name=Yeast Extract
+item.dcs_food_residue_ex_peptone.name=Peptone
+item.dcs_food_residue_ex_whey.name=Whey
+item.dcs_food_medium_simple.name=Simple Agar Medium
+item.dcs_food_medium_standard.name=Standard Methods Agar
+item.dcs_food_medium_potato.name=Potato Sugar Agar
+item.dcs_food_medium_giblets.name=Lactoce Agar
+item.dcs_food_medium_bacteria.name=Monoxenic Culture Medium
+item.dcs_food_antibiotic_pcn.name=Antibiotic (Blue)
+item.dcs_food_antibiotic_cp.name=Antibiotic (Green)
 
 item.dcs_food_pack_milk.name=Milk Pack
 item.dcs_food_pack_water.name=Water Pack
@@ -538,6 +553,11 @@ item.dcs_food_seeds_ginger.name=Ginger Seeds
 item.dcs_food_seeds_grape.name=Grape Seeds
 item.dcs_food_petals_lotus.name=Lotus Petal
 item.dcs_food_petals_black.name=Black Petal
+
+##brewing and biology
+item.dcs_food_unidentified_bacilli.name=Bacilli (Unidentified)
+item.dcs_food_unidentified_yeast.name=Yeast (Unidentified)
+item.dcs_food_unidentified_mold.name=Mold (Unidentified)
 
 ## craft tools
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
@@ -987,6 +1007,7 @@ tile.dcs_cont_cake_presscake.name=Presscake Block
 tile.dcs_cont_cake_ash.name=Ash Block
 tile.dcs_cont_cake_plant.name=Plant Dust Block
 tile.dcs_cont_cake_soycake.name=Soycake Block
+tile.dcs_cont_cake_draff.name=Draff Block
 
 ## building blocks
 tile.dcs_build_selenite_normal.name=Selenite Glass
@@ -1194,10 +1215,12 @@ tile.dcs_bed_0.name=No Save Bed (Iron)
 tile.dcs_bed_white_0.name=No Save Bed (White)
 tile.dcs_bed_rattan_0.name=No Save Bed (Rattan)
 tile.dcs_bed_futon_0.name=No Save Bed (Futon)
+tile.dcs_bed_hammock_0.name=No Save Bed (Hammock)
 item.dcs_bed_item_iron.name=No Save Bed (Iron)
 item.dcs_bed_item_white.name=No Save Bed (White)
 item.dcs_bed_item_rattan.name=No Save Bed (Rattan)
 item.dcs_bed_item_futon.name=No Save Bed (Futon)
+item.dcs_bed_item_hammock.name=No Save Bed (Hammock)
 tile.dcs_build_scaffold_wood.name=Scaffold
 tile.dcs_build_coldlamp_wood.name=Cold Lamp (Wood)
 tile.dcs_build_coldlamp_gold.name=Cold Lamp (Gold)
@@ -1673,6 +1696,7 @@ dcs_climate.fuel=Fluid Fuel
 dcs_climate.treatment=Metal Heat Treatment
 dcs_climate.pressmold=Press Processing
 dcs_climate.info=Information
+dcs_climate.drink=Fluid Information
 
 dcs.tip.allcharm=This item works in top slots of player inventory.
 dcs.tip.amulet=This item works in creature or player inventory.

@@ -61,8 +61,10 @@ public class BlockPressMachine extends BlockTorqueBase {
 			ItemStack heldItem = player.getHeldItem(hand);
 			if (DCUtil.isHeldWrench(player, hand)) {
 				return super.onRightClick(world, pos, state, player, hand, side, hitX, hitY, hitZ);
-			} else if (!player.world.isRemote && hand == EnumHand.MAIN_HAND) {
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+			} else if (hand == EnumHand.MAIN_HAND) {
+				if (!player.world.isRemote) {
+					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				}
 				return true;
 			}
 		}

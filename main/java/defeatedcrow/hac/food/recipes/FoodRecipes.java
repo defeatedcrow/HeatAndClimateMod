@@ -191,6 +191,16 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodDough", new ItemStack(FoodInit.bread, 1, 0));
 		OreDictionary.registerOre("foodBowlofrice", new ItemStack(FoodInit.ricebowl, 1, 0));
 		OreDictionary.registerOre("foodRicecake", new ItemStack(FoodInit.mochi, 1, 1));
+		OreDictionary.registerOre("dustSpentGrain", new ItemStack(FoodInit.residue, 1, 0));
+		OreDictionary.registerOre("dustSakeLees", new ItemStack(FoodInit.residue, 1, 1));
+		OreDictionary.registerOre("dustPomace", new ItemStack(FoodInit.residue, 1, 2));
+		OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 0));
+		OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 1));
+		OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 2));
+		OreDictionary.registerOre("dustSilage", new ItemStack(FoodInit.residue, 1, 3));
+		OreDictionary.registerOre("dustYeast", new ItemStack(FoodInit.residue, 1, 4));
+		OreDictionary.registerOre("dustPeptone", new ItemStack(FoodInit.residue, 1, 5));
+		OreDictionary.registerOre("dustWhey", new ItemStack(FoodInit.residue, 1, 6));
 
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 1));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 3));

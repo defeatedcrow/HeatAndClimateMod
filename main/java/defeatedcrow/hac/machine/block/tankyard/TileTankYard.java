@@ -35,6 +35,7 @@ public class TileTankYard extends DCTileEntity implements ITagGetter {
 	private boolean forcedUpdate = false;
 	private boolean lastMulti;
 	private int lastInT = 0;
+	private int lastSize = 0;
 	private int count = 20;
 
 	public int width = 1;
@@ -175,7 +176,8 @@ public class TileTankYard extends DCTileEntity implements ITagGetter {
 			updateRequest = false;
 			return;
 		}
-		if (multi != lastMulti) {
+		int size = this.width + this.height;
+		if (multi != lastMulti || size != lastSize) {
 			updateTankYard(multi);
 			if (!this.hasWorld())
 				return;
@@ -186,6 +188,7 @@ public class TileTankYard extends DCTileEntity implements ITagGetter {
 				}
 			}
 			lastMulti = multi;
+			lastSize = size;
 			return;
 		}
 
@@ -203,6 +206,19 @@ public class TileTankYard extends DCTileEntity implements ITagGetter {
 				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, name, getTank().getFluidAmount()));
 			}
 			count = 20;
+		}
+	}
+
+	@Override
+	public void updateTile() {
+		if (world.isRemote) {
+			if (inT.getCapacity() < limit) {
+				FluidStack fluid = null;
+				if (!inT.isEmpty()) {
+					fluid = inT.getFluid().copy();
+				}
+				inT = new DCTank(limit).setFluid(fluid);
+			}
 		}
 	}
 

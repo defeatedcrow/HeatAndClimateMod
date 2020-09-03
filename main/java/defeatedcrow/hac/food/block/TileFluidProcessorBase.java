@@ -323,7 +323,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 			List<Object> required = new ArrayList<Object>(currentRecipe.getProcessedInput());
 			if (!required.isEmpty()) {
-				for (int i = 4; i < 7; i++) {
+				for (int i = getInputSlotTop(); i <= getInputSlotEnd(); i++) {
 					ItemStack slot = this.getStackInSlot(i);
 					if (!DCUtil.isEmpty(slot)) {
 						boolean inRecipe = false;
@@ -378,11 +378,11 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 			}
 
 			if (!DCUtil.isEmpty(out)) {
-				this.insertResult(out.copy(), 7, 10);
+				this.insertResult(out.copy(), getOutputSlotTop(), getOutputSlotEnd() + 1);
 			}
 
 			if (!DCUtil.isEmpty(sec) && world.rand.nextInt(100) < chance) {
-				this.insertResult(sec.copy(), 7, 10);
+				this.insertResult(sec.copy(), getOutputSlotTop(), getOutputSlotEnd() + 1);
 			}
 
 			this.markDirty();
@@ -415,6 +415,22 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	 * 4-6: in
 	 * 7-9: out
 	 */
+
+	protected int getInputSlotTop() {
+		return 4;
+	}
+
+	protected int getInputSlotEnd() {
+		return 6;
+	}
+
+	protected int getOutputSlotTop() {
+		return 7;
+	}
+
+	protected int getOutputSlotEnd() {
+		return 9;
+	}
 
 	protected int[] slotsTop() {
 		return new int[] { 0, 2, 4, 5, 6 };
@@ -512,7 +528,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				cont = (IFluidHandlerItem) stack.getItem();
 			}
 			return cont != null;
-		} else if (i > 3 && i < 7)
+		} else if (i > getInputSlotTop() && i <= getInputSlotEnd())
 			return true;
 		else
 			return false;
@@ -533,7 +549,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// 隣接するホッパーにアイテムを送れるかどうか
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (index == 0 || index == 4 || index == 5 || index == 6)
+		if (index == 0 || index == 4 || (index >= getOutputSlotTop() && index <= getOutputSlotEnd()))
 			return false;
 
 		return true;

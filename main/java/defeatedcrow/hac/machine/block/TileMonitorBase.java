@@ -30,7 +30,11 @@ public class TileMonitorBase extends DCTileEntity implements ITagGetter {
 		return "";
 	}
 
-	public String amountString(float amo) {
+	public boolean noUnit() {
+		return false;
+	}
+
+	public String amountString(float amo, int order) {
 		return amo == 0 ? "---.-" : String.format("%1$.1f", amo);
 	}
 

@@ -67,16 +67,25 @@ public class ClimateFluidCategory implements IRecipeCategory {
 		}
 
 		DCHeatTier temp = wrapper.getTemp();
-		recipeLayout.getIngredientsGroup(ClimateTypes.TEMP).init(0, true, new HeatTierRenderer(), 51, 15, 40, 5, 0, 0);
-		recipeLayout.getIngredientsGroup(ClimateTypes.TEMP).set(0, temp);
+		if (temp != null) {
+			recipeLayout.getIngredientsGroup(ClimateTypes.TEMP)
+					.init(0, true, new HeatTierRenderer(), 51, 15, 40, 5, 0, 0);
+			recipeLayout.getIngredientsGroup(ClimateTypes.TEMP).set(0, temp);
+		}
 
 		DCHumidity hum = wrapper.getHum();
-		recipeLayout.getIngredientsGroup(ClimateTypes.HUM).init(0, true, new HumidityRenderer(), 51, 26, 40, 5, 0, 0);
-		recipeLayout.getIngredientsGroup(ClimateTypes.HUM).set(0, hum);
+		if (hum != null) {
+			recipeLayout.getIngredientsGroup(ClimateTypes.HUM)
+					.init(0, true, new HumidityRenderer(), 51, 26, 40, 5, 0, 0);
+			recipeLayout.getIngredientsGroup(ClimateTypes.HUM).set(0, hum);
+		}
 
 		DCAirflow air = wrapper.getAir();
-		recipeLayout.getIngredientsGroup(ClimateTypes.AIR).init(0, true, new AirflowRenderer(), 51, 37, 40, 5, 0, 0);
-		recipeLayout.getIngredientsGroup(ClimateTypes.AIR).set(0, air);
+		if (air != null) {
+			recipeLayout.getIngredientsGroup(ClimateTypes.AIR)
+					.init(0, true, new AirflowRenderer(), 51, 37, 40, 5, 0, 0);
+			recipeLayout.getIngredientsGroup(ClimateTypes.AIR).set(0, air);
+		}
 
 	}
 

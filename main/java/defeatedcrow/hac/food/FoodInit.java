@@ -89,4 +89,21 @@ public class FoodInit {
 	public static Block saplings2;
 	public static Block logs;
 
+	/* brewing */
+	public static Item medium;
+	public static Item residue;
+	public static Item antibiotic;
+
+	public static Item unidentified;
+
+	public static Item bacillus;
+	public static Item coliformes;
+	public static Item lab;
+	public static Item beer;
+	public static Item oryzae;
+	public static Item nether;
+	public static Item blue;
+	public static Item slime;
+	public static Item mushroom;
+
 }

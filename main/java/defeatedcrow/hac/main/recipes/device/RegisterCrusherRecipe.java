@@ -51,8 +51,8 @@ public class RegisterCrusherRecipe {
 					MainInit.oil, 50), sus, "listAllseeds");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
 					MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropWalnut");
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.SUGAR, 4, 0), new ItemStack(MainInit.foodDust, 1,
-					2), 0.5F, new ItemStack(MainInit.foodDust, 1, 1), 0.5F, sus, "sugarcane");
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.SUGAR, 6, 0), new ItemStack(MainInit.foodDust, 1,
+					7), 1.0F, new ItemStack(MainInit.foodDust, 1, 2), 1.0F, sus, "sugarcane");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.SUGAR, 2, 0), new ItemStack(MainInit.foodDust, 1,
 					2), 0.2F, new ItemStack(MainInit.foodDust, 1, 1), 0.2F, sus, "cropBeetroot");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 3, 3), new ItemStack(

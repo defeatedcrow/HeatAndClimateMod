@@ -33,22 +33,34 @@ public class DCFluidInfo {
 		fluid = recipe;
 		stack = new FluidStack(recipe, 1000);
 		Block block = fluid.getBlock();
-		if (block != null && ClimateAPI.registerBlock.isRegisteredHeat(block, 0)) {
-			temp = ClimateAPI.registerBlock.getHeatTier(block, 0);
+		if (block != null) {
+			if (ClimateAPI.registerBlock.isRegisteredHeat(block, 0)) {
+				temp = ClimateAPI.registerBlock.getHeatTier(block, 0);
+			} else {
+				temp = DCHeatTier.getTypeByTemperature(fluid.getTemperature());
+			}
 		} else {
-			temp = DCHeatTier.getTypeByTemperature(fluid.getTemperature());
+			temp = null;
 		}
-		if (block != null && ClimateAPI.registerBlock.isRegisteredHum(block, 0)) {
-			hum = ClimateAPI.registerBlock.getHumidity(block, 0);
-		} else if (block != null && block.getDefaultState().getMaterial() == Material.WATER) {
-			hum = DCHumidity.UNDERWATER;
+		if (block != null) {
+			if (ClimateAPI.registerBlock.isRegisteredHum(block, 0)) {
+				hum = ClimateAPI.registerBlock.getHumidity(block, 0);
+			} else if (block.getDefaultState().getMaterial() == Material.WATER) {
+				hum = DCHumidity.UNDERWATER;
+			} else {
+				hum = DCHumidity.NORMAL;
+			}
 		} else {
-			hum = DCHumidity.NORMAL;
+			hum = null;
 		}
-		if (block != null && ClimateAPI.registerBlock.isRegisteredAir(block, 0)) {
-			air = ClimateAPI.registerBlock.getAirflow(block, 0);
+		if (block != null) {
+			if (ClimateAPI.registerBlock.isRegisteredAir(block, 0)) {
+				air = ClimateAPI.registerBlock.getAirflow(block, 0);
+			} else {
+				air = DCAirflow.NORMAL;
+			}
 		} else {
-			air = DCAirflow.NORMAL;
+			air = null;
 		}
 		FluidDic dic = FluidDictionaryDC.getDic(fluid);
 		if (dic != null) {

@@ -2,6 +2,7 @@ package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
+import defeatedcrow.hac.food.gui.GuiSteelPot;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.gui.GuiCrusher;
@@ -101,6 +102,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		if (ModuleConfig.food) {
 			registry.addRecipeClickArea(GuiFluidProcessor.class, 80, 35, 16, 16, new String[] {
 				"dcs_climate.fluidcraft" });
+
+			registry.addRecipeClickArea(GuiSteelPot.class, 90, 35, 16, 16, new String[] { "dcs_climate.fluidcraft" });
 
 			registry.addRecipeClickArea(GuiTeaPot.class, 80, 35, 16, 16, new String[] { "dcs_climate.fluidcraft" });
 		}

@@ -134,8 +134,7 @@ public class RegisterMillRecipe {
 				0), 0.5F, "stickBlaze");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 5, 15), new ItemStack(Items.DYE, 2,
 				15), 0.5F, "bone");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.SUGAR, 3, 0), new ItemStack(MainInit.foodDust, 1,
-				2), 0.25F, "sugarcane");
+
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.SAND, 4, 0), null, 0.0F, new ItemStack(Blocks.SANDSTONE,
 				1, 32767));
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(MainInit.miscDust, 1,
@@ -160,7 +159,8 @@ public class RegisterMillRecipe {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), null, 0F, new ItemStack(
 				Blocks.HARDENED_CLAY, 1, 0));
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.CLAY_BALL, 1, 0), "dirt");
-
+		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.SUGAR, 3, 0), new ItemStack(MainInit.foodDust, 1,
+				2), 0.25F, "sugarcane");
 		// plugin
 		List<ItemStack> dust_o = OreDictionary.getOres("dustOsmium");
 		if (!dust_o.isEmpty()) {

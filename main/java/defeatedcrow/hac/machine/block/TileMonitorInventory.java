@@ -9,21 +9,26 @@ public class TileMonitorInventory extends TileMonitorBase {
 
 	@Override
 	public String unit() {
-		return getSide().getFacing().name();
+		return "";
 	}
 
 	@Override
-	public String amountString(float amo) {
-		return amo == 0 ? "----" : String.format("%1$.0f", amo);
+	public boolean noUnit() {
+		return true;
+	}
+
+	@Override
+	public String amountString(float amo, int order) {
+		return amo == 0 ? "----" : order == 0 ? String.format("%1$.0f", amo) : String.format("%1$.1f", amo);
 	}
 
 	@Override
 	protected boolean updateAmount() {
 		TileEntity target = world.getTileEntity(getPairPos());
-		if (target != null && target.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
-				getSide().getFacing())) {
-			IItemHandler inv = target.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
-					getSide().getFacing());
+		if (target != null && target.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getSide()
+				.getFacing())) {
+			IItemHandler inv = target.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getSide()
+					.getFacing());
 			if (inv != null) {
 				amountMax = 0;
 				amount = 0;

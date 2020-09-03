@@ -77,7 +77,7 @@ public class DishBigItem extends FoodItemBase {
 		if (meta == 1 || meta == 4) {
 			return 8;
 		}
-		return 12;
+		return 14;
 	}
 
 	@Override

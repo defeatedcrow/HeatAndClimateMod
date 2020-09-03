@@ -270,6 +270,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
+		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
 	}
 
 	@Override

@@ -7,7 +7,7 @@
 /**
  * HaCMainModのAPIです。<br>
  */
-@API(apiVersion = "2.0.1", owner = "dcs_climate", provides = "DCsHaCAPI|main")
+@API(apiVersion = "3.4.0", owner = "dcs_climate", provides = "DCsHaCAPI|main")
 package defeatedcrow.hac.main.api;
 
 import net.minecraftforge.fml.common.API;
