@@ -1878,6 +1878,7 @@ dcs.gui.message.require.airflow2=周囲のブロックを減らしてみよう
 dcs.gui.message.require.wind=通気WINDが必要です
 dcs.gui.message.require.wind2=ふいごを利用して風を送り込んでみよう
 dcs.gui.message.require.absolute=気温ABSOLUTEまたは液体窒素が必要です
+dcs.gui.message.brewing.badclimate=常温のHeatTier、NORMALの湿度、NORMAL以下の通気が必要です。
 
 death.attack.dcs_heat=%1$sはこんがり焼き上がった。
 death.attack.dcs_cold=%1$sはシャーベットになった。

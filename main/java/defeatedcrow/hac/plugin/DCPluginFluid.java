@@ -190,7 +190,7 @@ public class DCPluginFluid {
 		registerPotion("dcs.black_liquor", MobEffects.POISON);
 		if (ModuleConfig.food && ModuleConfig.food_advanced) {
 			registerPotion("dcs.beer", MainInit.wideMining);
-			registerPotion("dcs.wine", MobEffects.RESISTANCE);
+			registerPotion("dcs.wine", MainInit.wideMining);
 		}
 
 		Fluid f1 = FluidRegistry.getFluid("ic2coolant");

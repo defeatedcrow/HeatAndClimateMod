@@ -1914,6 +1914,7 @@ dcs.gui.message.require.airflow2=Reduce surrounding blocks.
 dcs.gui.message.require.wind=This device needs the wind.
 dcs.gui.message.require.wind2=Use the bellow or the fan.
 dcs.gui.message.require.absolute=This device needs the ABSOLUTE temp or the liquid nitrogen.
+dcs.gui.message.brewing.badclimate=Required around NORMAL temp, NORMAL humidity, NORMAL airflow.
 
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.

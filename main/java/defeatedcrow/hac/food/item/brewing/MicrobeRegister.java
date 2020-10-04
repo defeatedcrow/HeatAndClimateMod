@@ -62,7 +62,7 @@ public class MicrobeRegister implements IMicrobeRegister {
 		int total = 1;
 		Random rand = new Random();
 		List<IMicrobe> set = Lists.newArrayList();
-		DCLogger.debugInfoLog("check 4 List size " + getList().size());
+		// DCLogger.debugInfoLog("List size " + getList().size());
 		for (IMicrobe check : getList()) {
 			if (check.getChance(habitat) > 0 && check.getMediums().contains(medium)) {
 				total += check.getChance(habitat);
@@ -71,7 +71,7 @@ public class MicrobeRegister implements IMicrobeRegister {
 		}
 		if (!set.isEmpty()) {
 			if (set.size() < 2) {
-				DCLogger.debugInfoLog("check 4 chance " + set.get(0).getName() + "/" + total);
+				DCLogger.debugInfoLog("get " + set.get(0).getName() + "/" + total);
 				return set.get(0);
 			} else {
 				rand.nextInt(total);
@@ -80,7 +80,7 @@ public class MicrobeRegister implements IMicrobeRegister {
 				for (IMicrobe check2 : set) {
 					count += check2.getChance(habitat);
 					if (count >= r) {
-						DCLogger.debugInfoLog("check 4 chance " + check2.getName() + " " + r + "/" + total);
+						DCLogger.debugInfoLog("get " + check2.getName() + " " + r + "/" + total);
 						return check2;
 					}
 				}

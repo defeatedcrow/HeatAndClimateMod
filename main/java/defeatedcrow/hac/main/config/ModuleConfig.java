@@ -29,6 +29,7 @@ public class ModuleConfig {
 	public static boolean agri = true;
 	public static boolean crop = true;
 	public static boolean lotus = true;
+	public static boolean liquor = true;
 
 	public static boolean ffm = true;
 	public static boolean mek = true;
@@ -70,6 +71,7 @@ public class ModuleConfig {
 			Property world_b = cfg.get("module setting", "EnableWorldgen", world);
 			Property crop_b = cfg.get("module setting", "EnableCropSeasonality", crop);
 			Property lotus_b = cfg.get("module setting", "EnableLotusPetalRecipe", lotus);
+			Property liquor_b = cfg.get("module setting", "EnableLiquors", liquor);
 
 			Property machine_a = cfg.get("module setting", "EnableAdvancedMachine", machine_advanced);
 			Property magic_a = cfg.get("module setting", "EnableAdvancedMagic", magic_advanced);
@@ -110,6 +112,7 @@ public class ModuleConfig {
 			world = world_b.getBoolean();
 			crop = crop_b.getBoolean();
 			lotus = lotus_b.getBoolean();
+			liquor = liquor_b.getBoolean();
 
 			machine_advanced = machine_a.getBoolean();
 			magic_advanced = magic_a.getBoolean();

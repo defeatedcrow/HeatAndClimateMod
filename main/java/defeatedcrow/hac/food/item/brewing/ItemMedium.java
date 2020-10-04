@@ -5,7 +5,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -15,6 +14,7 @@ import defeatedcrow.hac.main.api.brewing.IMediumItem;
 import defeatedcrow.hac.main.api.brewing.IMicrobe;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
@@ -77,51 +77,34 @@ public class ItemMedium extends DCItem implements IMediumItem {
 			/* 微生物を採取 */
 			if (!DCUtil.isEmpty(item)) {
 				EnumMedium type = getMedium(item);
-				RayTraceResult res = this.rayTrace(world, player, true);
-				DCLogger.debugInfoLog("check 1");
-				if (res != null) {
-					/* Eventフック予定 */
-					// block
-					if (res.typeOfHit == RayTraceResult.Type.BLOCK) {
-						DCLogger.debugInfoLog("check 2");
-						BlockPos pos = res.getBlockPos();
-						if (pos.getY() > 0 && pos.getY() < 255) {
-							IBlockState state = world.getBlockState(pos);
-							EnumHabitat habitat = EnumHabitat.getHabitat(world, pos);
-							if (habitat != null) {
-								DCLogger.debugInfoLog("check 3 " + habitat);
-								IMicrobe microbe = MainAPIManager.microbeRegister.collectSpecies(habitat, type);
-								if (microbe != null) {
-									DCLogger.debugInfoLog("check 5 " + microbe.getName());
-									if (!world.isRemote) {
-										ItemStack ret = setMicrobeItem(item.copy(), microbe, null);
-										ret.setCount(1);
-										EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D,
-												player.posZ, ret);
-										world.spawnEntity(drop);
+				IMicrobe current = getMicrobeData(item);
+				if (current == null) {
+					RayTraceResult res = this.rayTrace(world, player, true);
+					if (res != null) {
+						/* Eventフック予定 */
+						// block
+						if (res.typeOfHit == RayTraceResult.Type.BLOCK) {
+							BlockPos pos = res.getBlockPos();
+							if (pos.getY() > 0 && pos.getY() < 255) {
+								IBlockState state = world.getBlockState(pos);
+								EnumHabitat habitat = EnumHabitat.getHabitat(world, pos);
+								if (habitat != null) {
+									IMicrobe microbe = MainAPIManager.microbeRegister.collectSpecies(habitat, type);
+									if (microbe != null) {
+										if (!world.isRemote) {
+											ItemStack ret = setMicrobeItem(item.copy(), microbe, null);
+											ret.setCount(1);
+											EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D,
+													player.posZ, ret);
+											world.spawnEntity(drop);
+										}
+										if (!player.capabilities.isCreativeMode) {
+											DCUtil.redAndDel(item, 1);
+										}
+										return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 									}
-									if (!player.capabilities.isCreativeMode) {
-										DCUtil.redAndDel(item, 1);
-									}
-									return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 								}
 							}
-						}
-					} else if (res.typeOfHit == RayTraceResult.Type.ENTITY && res.entityHit instanceof IAnimals) {
-						IMicrobe microbe = MainAPIManager.microbeRegister.collectSpecies(EnumHabitat.ANIMAL, type);
-						if (microbe != null) {
-							if (!world.isRemote) {
-								ItemStack ret = setMicrobeItem(item.copy(), microbe, null);
-								ret.setCount(1);
-								EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ,
-										ret);
-								world.spawnEntity(drop);
-							}
-							if (!player.capabilities.isCreativeMode) {
-								DCUtil.redAndDel(item, 1);
-							}
-							player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_WEAK, 0.75F, 1.25F);
-							return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 						}
 					}
 				}
@@ -129,6 +112,33 @@ public class ItemMedium extends DCItem implements IMediumItem {
 			return new ActionResult<ItemStack>(EnumActionResult.PASS, item);
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, ItemStack.EMPTY);
+	}
+
+	@Override
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target,
+			EnumHand hand) {
+		if (!DCUtil.isEmpty(stack) && target instanceof IAnimals) {
+			EnumMedium type = getMedium(stack);
+			IMicrobe current = getMicrobeData(stack);
+			if (current == null && type != null) {
+				IMicrobe microbe = MainAPIManager.microbeRegister.collectSpecies(EnumHabitat.ANIMAL, type);
+				if (microbe != null) {
+					if (!player.world.isRemote) {
+						ItemStack ret = setMicrobeItem(stack.copy(), microbe, null);
+						ret.setCount(1);
+						EntityItem drop = new EntityItem(player.world, player.posX, player.posY + 0.25D, player.posZ,
+								ret);
+						player.world.spawnEntity(drop);
+					}
+					if (!player.capabilities.isCreativeMode) {
+						DCUtil.redAndDel(stack, 1);
+					}
+					player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_WEAK, 0.75F, 1.25F);
+					return true;
+				}
+			}
+		}
+		return super.itemInteractionForEntity(stack, player, target, hand);
 	}
 
 	@Override
@@ -282,16 +292,14 @@ public class ItemMedium extends DCItem implements IMediumItem {
 			if (microbe != null) {
 				tooltip.add(TextFormatting.BOLD.toString() + "=== Cultivation Data ===");
 				if (rarity == null) {
-					tooltip.add(TextFormatting.BOLD.toString() + I18n.format("dcs.tip.unidentified") + " " + microbe
-							.getType().localize());
+					tooltip.add(I18n.format("dcs.tip.unidentified") + " " + microbe.getType().localize());
 				} else {
-					tooltip.add(TextFormatting.BOLD.toString() + I18n.format(microbe.getMicrobeItem()
-							.getUnlocalizedName()));
+					tooltip.add(I18n.format(microbe.getMicrobeItem().getUnlocalizedName() + ".name").trim());
 					tooltip.add(TextFormatting.BOLD.toString() + rarity);
 				}
 				if (stack.getTagCompound().hasKey("microbe_days")) {
 					int i = stack.getTagCompound().getInteger("microbe_days");
-					tooltip.add(TextFormatting.BOLD.toString() + I18n.format("dcs.tip.incubation_days", i));
+					tooltip.add(I18n.format("dcs.tip.incubation_days", i));
 				}
 				if (stack.getTagCompound().hasKey("microbe_baddays")) {
 					tooltip.add(TextFormatting.BOLD.toString() + TextFormatting.RED.toString() + I18n
