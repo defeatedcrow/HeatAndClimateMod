@@ -20,6 +20,11 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath {
 	}
 
 	@Override
+	public boolean canClimateUpdate(IBlockState state) {
+		return false;
+	}
+
+	@Override
 	public void setHarvestLevel(String toolClass, int level) {
 		for (int i = 0; i < 16; i++) {
 			super.setHarvestLevel("pickaxe", 0, this.getStateFromMeta(i));

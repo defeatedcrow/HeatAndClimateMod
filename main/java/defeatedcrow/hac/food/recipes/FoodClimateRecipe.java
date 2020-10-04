@@ -1,5 +1,6 @@
 package defeatedcrow.hac.food.recipes;
 
+import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
@@ -13,6 +14,7 @@ public class FoodClimateRecipe {
 	public static void load() {
 		loadClimateRecipes();
 		loadSmeltingRecipe();
+		loadClimateData();
 	}
 
 	static void loadClimateRecipes() {
@@ -92,6 +94,10 @@ public class FoodClimateRecipe {
 
 		RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.bakedApple, 1,
 				6), DCHeatTier.BOIL, DCHumidity.UNDERWATER, null, false, new ItemStack(FoodInit.crops, 1, 12));
+	}
+
+	private static void loadClimateData() {
+		ClimateAPI.registerBlock.registerHumBlock(FoodInit.baseFertilizer, 0, DCHumidity.WET);
 	}
 
 }

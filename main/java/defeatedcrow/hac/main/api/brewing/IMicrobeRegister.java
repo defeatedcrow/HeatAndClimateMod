@@ -6,8 +6,10 @@ public interface IMicrobeRegister {
 
 	List<IMicrobe> getList();
 
-	void registerSpecies(IMicrobe species);
+	boolean registerSpecies(IMicrobe species);
 
-	IMicrobe getRecipe(String name);
+	IMicrobe getSpecies(String name);
+
+	IMicrobe collectSpecies(EnumHabitat habitat, EnumMedium medium);
 
 }

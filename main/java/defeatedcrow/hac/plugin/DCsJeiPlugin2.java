@@ -1,6 +1,7 @@
 package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.gui.GuiBrewingTank;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiSteelPot;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
@@ -14,10 +15,15 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IDCInfoData;
 import defeatedcrow.hac.main.api.IFluidFuel;
 import defeatedcrow.hac.main.api.IHeatTreatment;
+import defeatedcrow.hac.main.api.brewing.IBrewingRecipeDC;
+import defeatedcrow.hac.main.api.brewing.IMicrobe;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.jei.ClimateFluidCategory;
 import defeatedcrow.hac.plugin.jei.ClimateFluidMaker;
 import defeatedcrow.hac.plugin.jei.ClimateFluidWrapper;
+import defeatedcrow.hac.plugin.jei.DCBrewingCategory;
+import defeatedcrow.hac.plugin.jei.DCBrewingMaker;
+import defeatedcrow.hac.plugin.jei.DCBrewingWrapper;
 import defeatedcrow.hac.plugin.jei.DCFluidInfo;
 import defeatedcrow.hac.plugin.jei.DCFuelCategory;
 import defeatedcrow.hac.plugin.jei.DCFuelMaker;
@@ -31,6 +37,9 @@ import defeatedcrow.hac.plugin.jei.DCInfoWrapper;
 import defeatedcrow.hac.plugin.jei.DCPressMoldCategory;
 import defeatedcrow.hac.plugin.jei.DCPressMoldMaker;
 import defeatedcrow.hac.plugin.jei.DCPressMoldWrapper;
+import defeatedcrow.hac.plugin.jei.MicrobeCategory;
+import defeatedcrow.hac.plugin.jei.MicrobeMaker;
+import defeatedcrow.hac.plugin.jei.MicrobeWrapper;
 import defeatedcrow.hac.plugin.jei.MoldItem;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
@@ -52,7 +61,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		final IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 		registry.addRecipeCategories(new DCInfoCategory(guiHelper), new ClimateFluidCategory(
 				guiHelper), new DCFuelCategory(guiHelper), new DCHeatTreatmentCategory(
-						guiHelper), new DCPressMoldCategory(guiHelper));
+						guiHelper), new DCPressMoldCategory(guiHelper), new MicrobeCategory(
+								guiHelper), new DCBrewingCategory(guiHelper));
 	}
 
 	@Override
@@ -65,12 +75,16 @@ public class DCsJeiPlugin2 implements IModPlugin {
 				recipe), "dcs_climate.treatment");
 		registry.handleRecipes(MoldItem.class, recipe -> new DCPressMoldWrapper(recipe), "dcs_climate.pressmold");
 		registry.handleRecipes(IDCInfoData.class, recipe -> new DCInfoWrapper(recipe), "dcs_climate.info");
+		registry.handleRecipes(IMicrobe.class, recipe -> new MicrobeWrapper(recipe), "dcs_climate.microbe");
+		registry.handleRecipes(IBrewingRecipeDC.class, recipe -> new DCBrewingWrapper(recipe), "dcs_climate.brewing");
 
 		DCFuelMaker.register(registry);
 		DCHeatTreatmentMaker.register(registry);
 		DCPressMoldMaker.register(registry);
 		DCInfoDataMaker.register(registry);
 		ClimateFluidMaker.register(registry);
+		MicrobeMaker.register(registry);
+		DCBrewingMaker.register(registry);
 
 		registry.addRecipeCatalyst(new ItemStack(MainInit.fuelStove), "dcs_climate.fuel");
 		if (ModuleConfig.machine) {
@@ -84,7 +98,11 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(MainInit.metalBlockAlloy, 1, 5), "dcs_climate.treatment");
 		registry.addRecipeCatalyst(new ItemStack(MainInit.iconItem, 1, 0), "dcs_climate.info");
 		if (ModuleConfig.food) {
-			registry.addRecipeCatalyst(new ItemStack(FoodInit.cupSilver, 1, 0), "dcs_climate.drink");
+			registry.addRecipeCatalyst(new ItemStack(FoodInit.paperPack, 1, 1), "dcs_climate.drink");
+			if (ModuleConfig.food_advanced) {
+				registry.addRecipeCatalyst(new ItemStack(FoodInit.unidentified, 1, 1), "dcs_climate.microbe");
+				registry.addRecipeCatalyst(new ItemStack(FoodInit.brewingTankWood, 1, 0), "dcs_climate.brewing");
+			}
 		}
 
 		if (ModuleConfig.machine) {
@@ -106,6 +124,11 @@ public class DCsJeiPlugin2 implements IModPlugin {
 			registry.addRecipeClickArea(GuiSteelPot.class, 90, 35, 16, 16, new String[] { "dcs_climate.fluidcraft" });
 
 			registry.addRecipeClickArea(GuiTeaPot.class, 80, 35, 16, 16, new String[] { "dcs_climate.fluidcraft" });
+
+			if (ModuleConfig.food_advanced) {
+				registry.addRecipeClickArea(GuiBrewingTank.class, 80, 35, 16, 16, new String[] {
+					"dcs_climate.brewing" });
+			}
 		}
 	}
 

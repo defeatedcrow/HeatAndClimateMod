@@ -2,6 +2,7 @@ package defeatedcrow.hac.food;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.fluids.Fluid;
 
 public class FoodInit {
 
@@ -99,11 +100,25 @@ public class FoodInit {
 	public static Item bacillus;
 	public static Item coliformes;
 	public static Item lab;
-	public static Item beer;
+	public static Item beerYeast;
 	public static Item oryzae;
 	public static Item nether;
-	public static Item blue;
-	public static Item slime;
+	public static Item blueMold;
+	public static Item slimeMold;
 	public static Item mushroom;
+
+	public static Item chickInEgg;
+	public static Item liquorBottle;
+
+	public static Block incubator;
+	public static Block brewingTankWood;
+	public static Block brewingTank;
+	public static Block distillator;
+	public static Block barrel;
+
+	public static Block baseFertilizer;
+
+	public static Fluid beer;
+	public static Fluid wine;
 
 }

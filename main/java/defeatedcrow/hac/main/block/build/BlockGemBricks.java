@@ -27,6 +27,11 @@ public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, ITher
 		this.setResistance(15.0F);
 	}
 
+	@Override
+	public boolean canClimateUpdate(IBlockState state) {
+		return false;
+	}
+
 	private static String[] names = { "gypsum", "marble", "lime", "bedrock" };
 
 	@Override

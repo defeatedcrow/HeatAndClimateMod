@@ -11,6 +11,7 @@ import java.util.Calendar;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.recipe.RecipeJsonMaker;
+import defeatedcrow.hac.food.item.brewing.MicrobeRegister;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainConfig;
 import defeatedcrow.hac.main.config.MainCoreConfig;
@@ -19,6 +20,7 @@ import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.recipes.DCFluidFuelRegister;
 import defeatedcrow.hac.main.recipes.DCHeatTreatmentRegister;
 import defeatedcrow.hac.main.recipes.DCInfoDataRegister;
+import defeatedcrow.hac.main.recipes.FoodBrewingRecipeRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.main.worldgen.vein.VeinTableRegister;
@@ -45,7 +47,7 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 3;
 	public static final int MOD_MINOR = 4;
-	public static final int MOD_BUILD = 0;
+	public static final int MOD_BUILD = 1;
 	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.4.0,)";
 	public static final String UPDATE_JSON = "https://defeatedcrow.jp/version/heatandclimate.json";
 	public static final String KEY = "4cd12b92959105443b7b694fffe0cea9ed004886";
@@ -60,6 +62,7 @@ public class ClimateMain {
 	public static final CreativeTabs tool = new CreativeTabClimateTool(MOD_ID);
 	public static final CreativeTabs machine = new CreativeTabClimateMachine(MOD_ID + "_machine");
 	public static final CreativeTabs food = new CreativeTabClimateFood(MOD_ID + "_food");
+	public static final CreativeTabs food_adv = new CreativeTabClimateFoodAdv(MOD_ID + "_food_adv");
 	public static final CreativeTabs build = new CreativeTabClimateBuild(MOD_ID + "_build");
 	public static final CreativeTabs cont = new CreativeTabClimateContainer(MOD_ID + "_container");
 	public static final CreativeTabs cloth = new CreativeTabClimateEquips(MOD_ID + "_clothing");
@@ -87,6 +90,8 @@ public class ClimateMain {
 		MainAPIManager.heatTreatmentRegister = new DCHeatTreatmentRegister();
 		MainAPIManager.veinRegister = VeinTableRegister.INSTANCE;
 		MainAPIManager.infoRegister = new DCInfoDataRegister();
+		MainAPIManager.microbeRegister = new MicrobeRegister();
+		MainAPIManager.brewingRegister = new FoodBrewingRecipeRegister();
 		MainAPIManager.isLoaded = true;
 
 		// integration

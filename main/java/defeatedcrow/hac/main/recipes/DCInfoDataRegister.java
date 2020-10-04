@@ -248,6 +248,16 @@ public class DCInfoDataRegister implements IDCInfoDataRegister {
 			DCInfoData food = new DCInfoData(null, null, new ItemStack(FoodInit.sticks, 1, 32767),
 					"dcs.info.title.food", "dcs.info.desc.food");
 			MainAPIManager.infoRegister.registerInfo(food);
+
+			if (ModuleConfig.food_advanced) {
+				DCInfoData medium = new DCInfoData(new ItemStack(FoodInit.medium, 1, 32767), new ItemStack(
+						FoodInit.unidentified, 1, 32767), null, "dcs.info.title.medium", "dcs.info.desc.medium");
+				MainAPIManager.infoRegister.registerInfo(medium);
+
+				DCInfoData bio = new DCInfoData(null, null, new ItemStack(FoodInit.unidentified, 1, 32767),
+						"dcs.info.title.unidentified", "dcs.info.desc.unidentified");
+				MainAPIManager.infoRegister.registerInfo(bio);
+			}
 		}
 
 		if (ModuleConfig.build_advanced) {

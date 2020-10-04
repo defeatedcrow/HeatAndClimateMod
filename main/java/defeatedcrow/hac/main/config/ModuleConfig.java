@@ -41,12 +41,14 @@ public class ModuleConfig {
 	public static boolean eio = true;
 	public static boolean ugb = false;
 	public static boolean rc = true;
+	public static boolean ani = true;
 
 	public static boolean r_mill = true;
 	public static boolean r_spinning = true;
 	public static boolean r_fluid = true;
 	public static boolean r_reactor = true;
 	public static boolean r_crusher = true;
+	public static boolean r_brewing = true;
 
 	public void load(Configuration cfg) {
 
@@ -64,7 +66,7 @@ public class ModuleConfig {
 			Property food_b = cfg.get("module setting", "EnableFoodModule", food);
 			Property tool_b = cfg.get("module setting", "EnableToolModule", tool);
 			Property village_b = cfg.get("module setting", "EnableVillager", village);
-			Property agri_b = cfg.get("module setting", "EnableCraftingCropRecipe", agri);
+			Property agri_b = cfg.get("module setting", "EnableCropBlocks", agri);
 			Property world_b = cfg.get("module setting", "EnableWorldgen", world);
 			Property crop_b = cfg.get("module setting", "EnableCropSeasonality", crop);
 			Property lotus_b = cfg.get("module setting", "EnableLotusPetalRecipe", lotus);
@@ -90,12 +92,14 @@ public class ModuleConfig {
 			Property eio_b = cfg.get("plugin setting", "EnderIO", eio);
 			Property ugb_b = cfg.get("plugin setting", "UndergroundBiomes", ugb);
 			Property rc_b = cfg.get("plugin setting", "Railcraft", rc);
+			Property ani_b = cfg.get("plugin setting", "Animania", ani);
 
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
 			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
 			Property fluid = cfg.get("recipe setting", "EnableCookingPanRecipe", r_fluid);
 			Property reactor = cfg.get("recipe setting", "EnableReactorRecipe", r_reactor);
 			Property crusher = cfg.get("recipe setting", "EnableHammerMillRecipe", r_crusher);
+			Property brewing = cfg.get("recipe setting", "EnableBrewingRecipe", r_brewing);
 
 			machine = machine_b.getBoolean();
 			magic = magic_b.getBoolean();
@@ -127,12 +131,14 @@ public class ModuleConfig {
 			eio = eio_b.getBoolean();
 			ugb = ugb_b.getBoolean();
 			rc = rc_b.getBoolean();
+			ani = ani_b.getBoolean();
 
 			r_mill = mill.getBoolean();
 			r_spinning = spinning.getBoolean();
 			r_fluid = fluid.getBoolean();
 			r_reactor = reactor.getBoolean();
 			r_crusher = crusher.getBoolean();
+			r_brewing = brewing.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

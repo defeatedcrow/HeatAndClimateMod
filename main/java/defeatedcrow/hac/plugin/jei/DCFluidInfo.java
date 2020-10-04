@@ -6,12 +6,16 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.fluid.FluidDic;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DrinkPotionType;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fluids.Fluid;
@@ -28,6 +32,8 @@ public class DCFluidInfo {
 	public final PotionEffect effect;
 	public final boolean clearPotion;
 	public final String dictionary;
+	public final ItemStack cup;
+	public final ItemStack bucket;
 
 	public DCFluidInfo(Fluid recipe) {
 		fluid = recipe;
@@ -62,6 +68,12 @@ public class DCFluidInfo {
 		} else {
 			air = null;
 		}
+		if (fluid.getBlock() != null) {
+			bucket = new ItemStack(Items.BUCKET);
+		} else {
+			bucket = ItemStack.EMPTY;
+		}
+
 		FluidDic dic = FluidDictionaryDC.getDic(fluid);
 		if (dic != null) {
 			dictionary = dic.dicName;
@@ -77,10 +89,15 @@ public class DCFluidInfo {
 			} else {
 				effect = new PotionEffect(potion, 1200, 0);
 			}
-
+			if (ModuleConfig.food) {
+				cup = new ItemStack(FoodInit.cupSilver);
+			} else {
+				cup = ItemStack.EMPTY;
+			}
 		} else {
 			potion = null;
 			effect = null;
+			cup = ItemStack.EMPTY;
 		}
 		if (FluidDictionaryDC
 				.matchFluidName(fluid, "milk") || fluid == MainInit.soyMilk || fluid == MainInit.tomatoJuice) {
@@ -88,6 +105,7 @@ public class DCFluidInfo {
 		} else {
 			clearPotion = false;
 		}
+
 	}
 
 	public String getFluidName() {

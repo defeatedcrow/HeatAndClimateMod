@@ -18,5 +18,6 @@ public class DCMainPacket {
 		INSTANCE.registerMessage(MHandlerMagicParticle.class, MessageMagicParticle.class, 6, Side.CLIENT);
 		INSTANCE.registerMessage(MHandlerFluidSwitchButton.class, MessageFluidSwitchButton.class, 7, Side.SERVER);
 		INSTANCE.registerMessage(MHandlerOscillator.class, MessageOscillator.class, 8, Side.CLIENT);
+		INSTANCE.registerMessage(MHandlerIncubatorButton.class, MessageIncubatorButton.class, 9, Side.SERVER);
 	}
 }

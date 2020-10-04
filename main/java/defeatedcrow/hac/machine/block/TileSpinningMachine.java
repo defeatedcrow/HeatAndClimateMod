@@ -42,7 +42,11 @@ public class TileSpinningMachine extends TileTorqueProcessor implements ITorqueP
 	@Override
 	public List<EnumFacing> getOutputSide() {
 		List<EnumFacing> ret = Lists.newArrayList();
-		ret.add(getBaseSide().rotateY());
+		if (getBaseSide().getAxis().isVertical()) {
+			ret.add(EnumFacing.EAST);
+		} else {
+			ret.add(getBaseSide().rotateY());
+		}
 		return ret;
 	}
 

@@ -20,25 +20,29 @@ public class BlockClayBricks extends DCSimpleBlock implements ITexturePath, IThe
 	}
 
 	@Override
+	public boolean canClimateUpdate(IBlockState state) {
+		return false;
+	}
+
+	@Override
 	public String[] getNameSuffix() {
 		String[] name = {
-				"white",
-				"orange",
-				"magenta",
-				"light_blue",
-				"yellow",
-				"lime",
-				"pink",
-				"gray",
-				"silver",
-				"cyan",
-				"purple",
-				"blue",
-				"brown",
-				"green",
-				"red",
-				"black"
-		};
+			"white",
+			"orange",
+			"magenta",
+			"light_blue",
+			"yellow",
+			"lime",
+			"pink",
+			"gray",
+			"silver",
+			"cyan",
+			"purple",
+			"blue",
+			"brown",
+			"green",
+			"red",
+			"black" };
 		return name;
 	}
 

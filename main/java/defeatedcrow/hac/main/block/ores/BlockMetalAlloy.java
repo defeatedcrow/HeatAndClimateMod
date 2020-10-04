@@ -25,6 +25,11 @@ public class BlockMetalAlloy extends DCSimpleBlock implements ITexturePath, IRap
 		this.setResistance(15.0F);
 	}
 
+	@Override
+	public boolean canClimateUpdate(IBlockState state) {
+		return false;
+	}
+
 	private static String[] names = {
 		"brass",
 		"bronze",

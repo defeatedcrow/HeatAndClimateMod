@@ -32,6 +32,11 @@ public class BlockLayerNew extends DCSimpleBlock implements ITexturePath {
 	}
 
 	@Override
+	public boolean canClimateUpdate(IBlockState state) {
+		return false;
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.SOLID;

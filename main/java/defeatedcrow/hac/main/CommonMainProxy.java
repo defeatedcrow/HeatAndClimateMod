@@ -1,15 +1,21 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.food.FoodCommonProxy;
+import defeatedcrow.hac.food.block.TileBrewingTankWood;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
+import defeatedcrow.hac.food.block.TileIncubator;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSteelPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
+import defeatedcrow.hac.food.gui.ContainerBrewingTank;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
+import defeatedcrow.hac.food.gui.ContainerIncubator;
 import defeatedcrow.hac.food.gui.ContainerSilkwormBox;
 import defeatedcrow.hac.food.gui.ContainerSteelPot;
 import defeatedcrow.hac.food.gui.ContainerTeaPot;
+import defeatedcrow.hac.food.gui.GuiBrewingTank;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
+import defeatedcrow.hac.food.gui.GuiIncubator;
 import defeatedcrow.hac.food.gui.GuiSilkwormBox;
 import defeatedcrow.hac.food.gui.GuiSteelPot;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
@@ -126,6 +132,7 @@ import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
 import defeatedcrow.hac.main.potion.PotionNimbleDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
+import defeatedcrow.hac.main.potion.PotionWideMiningDC;
 import defeatedcrow.hac.main.recipes.ArmorDyesRecipeDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.BlockContainerUtil;
@@ -188,6 +195,9 @@ public class CommonMainProxy implements IGuiHandler {
 
 		MainInit.nimble = new PotionNimbleDC();
 		DCRegistryUtil.addPotion(MainInit.nimble, MainInit.nimbleType, "nimble");
+
+		MainInit.wideMining = new PotionWideMiningDC();
+		DCRegistryUtil.addPotion(MainInit.wideMining, MainInit.wideMiningType, "wideMining");
 	}
 
 	public void loadEnchantment() {
@@ -450,7 +460,7 @@ public class CommonMainProxy implements IGuiHandler {
 			if (WorldGenConfig.mazaiLake && MainInit.mazaiBlock != null) {
 				GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);
 			}
-			if (ModuleConfig.food) {
+			if (ModuleConfig.food && ModuleConfig.crop) {
 				GameRegistry.registerWorldGenerator(new WorldGenSaplings(false), 5);
 			}
 			if (WorldGenConfig.hotspringGen > 0) {
@@ -527,6 +537,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerTeaPot((TileTeaPot) tile, player.inventory);
 		if (tile instanceof TileSteelPot)
 			return new ContainerSteelPot((TileSteelPot) tile, player.inventory);
+		if (tile instanceof TileBrewingTankWood)
+			return new ContainerBrewingTank((TileBrewingTankWood) tile, player.inventory);
 		if (tile instanceof TileFluidProcessorBase)
 			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)
@@ -553,6 +565,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerCrusher((TileRollerCrusher) tile, player.inventory);
 		if (tile instanceof TileSilkwormBox)
 			return new ContainerSilkwormBox((TileSilkwormBox) tile, player.inventory);
+		if (tile instanceof TileIncubator)
+			return new ContainerIncubator((TileIncubator) tile, player.inventory);
 		return null;
 	}
 
@@ -583,6 +597,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiTeaPot((TileTeaPot) tile, player.inventory);
 		if (tile instanceof TileSteelPot)
 			return new GuiSteelPot((TileSteelPot) tile, player.inventory);
+		if (tile instanceof TileBrewingTankWood)
+			return new GuiBrewingTank((TileBrewingTankWood) tile, player.inventory);
 		if (tile instanceof TileFluidProcessorBase)
 			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)
@@ -609,6 +625,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiCrusher((TileRollerCrusher) tile, player.inventory);
 		if (tile instanceof TileSilkwormBox)
 			return new GuiSilkwormBox((TileSilkwormBox) tile, player.inventory);
+		if (tile instanceof TileIncubator)
+			return new GuiIncubator((TileIncubator) tile, player.inventory);
 		return null;
 	}
 

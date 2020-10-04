@@ -1,0 +1,17 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "YYY"
+ ],
+ "key": {
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "foodFlour"
+  }
+ },
+ "result": {
+  "item": "minecraft:bread",
+  "count": 1,
+  "data": 0
+ }
+}

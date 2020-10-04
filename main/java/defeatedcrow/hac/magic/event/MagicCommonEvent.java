@@ -250,6 +250,8 @@ public class MagicCommonEvent {
 						if (burnt.isEmpty()) {
 							nList.add(i.copy());
 						} else {
+							int d = burnt.getCount() * i.getCount();
+							burnt.setCount(d);
 							nList.add(burnt.copy());
 						}
 					}

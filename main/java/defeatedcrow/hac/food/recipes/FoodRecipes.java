@@ -5,6 +5,8 @@ import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.api.MainAPIManager;
+import defeatedcrow.hac.main.api.brewing.IMicrobe;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.item.ItemStack;
@@ -18,12 +20,21 @@ public class FoodRecipes {
 
 	public static void load() {
 		FoodBasicRecipe.load(res);
+		FoodBasicRecipe.loadAdvanced(res);
 		FoodBasicRecipe.loadCrops(res);
 		FoodClimateRecipe.load();
-		loadCropData();
+		if (ModuleConfig.agri) {
+			loadCropData();
+		}
 
 		GameData.register_impl(new DrinkCustomRecipeDC().setRegistryName(new ResourceLocation(ClimateMain.MOD_ID,
 				"drinkcustom")));
+		GameData.register_impl(new MediumCraftRecipeDC().setRegistryName(new ResourceLocation(ClimateMain.MOD_ID,
+				"medium")));
+
+		if (ModuleConfig.food_advanced) {
+			loadMicrobe();
+		}
 	}
 
 	static void loadCropData() {
@@ -242,6 +253,19 @@ public class FoodRecipes {
 
 		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropWisteria, 1, 32767));
 		OreDictionary.registerOre("vineLeaves", new ItemStack(FoodInit.cropGrape, 1, 32767));
+
+	}
+
+	static void loadMicrobe() {
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.bacillus);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.coliformes);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.lab);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.beerYeast);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.oryzae);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.nether);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.blueMold);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.slimeMold);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.mushroom);
 
 	}
 

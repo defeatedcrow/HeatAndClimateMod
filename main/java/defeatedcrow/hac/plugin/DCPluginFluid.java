@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.Potion;
@@ -58,6 +59,10 @@ public class DCPluginFluid {
 		registerFluidDic("dcs.soy_milk", "soymilk");
 		registerFluidDic("dcs.raw_milk", "milk");
 		registerFluidDic("dcs.steam", "steam");
+		if (ModuleConfig.food && ModuleConfig.food_advanced) {
+			registerFluidDic("dcs.beer", "beer");
+			registerFluidDic("dcs.wine", "wine");
+		}
 
 		// fuel
 		registerFuel("ic2hydrogen", "hydrogen", 100);
@@ -183,6 +188,10 @@ public class DCPluginFluid {
 		registerPotion("dcs.stock", MobEffects.FIRE_RESISTANCE);
 		registerPotion("dcs.lemonade", MobEffects.JUMP_BOOST);
 		registerPotion("dcs.black_liquor", MobEffects.POISON);
+		if (ModuleConfig.food && ModuleConfig.food_advanced) {
+			registerPotion("dcs.beer", MainInit.wideMining);
+			registerPotion("dcs.wine", MobEffects.RESISTANCE);
+		}
 
 		Fluid f1 = FluidRegistry.getFluid("ic2coolant");
 		if (f1 != null) {

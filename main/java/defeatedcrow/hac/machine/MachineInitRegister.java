@@ -495,7 +495,7 @@ public class MachineInitRegister {
 		MachineInit.tankYardPart.setCreativeTab(ClimateMain.machine);
 
 		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
-		MachineInit.machimeMaterials.setCreativeTab(ClimateCore.climate);
+		MachineInit.machimeMaterials.setCreativeTab(ClimateMain.machine);
 		MachineInit.mold.setCreativeTab(ClimateMain.machine);
 		MachineInit.reagent.setCreativeTab(ClimateMain.machine);
 		MachineInit.slotCard.setCreativeTab(ClimateMain.machine);

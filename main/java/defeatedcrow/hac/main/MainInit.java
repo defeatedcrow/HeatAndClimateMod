@@ -347,6 +347,9 @@ public class MainInit {
 	public static Potion nimble;
 	public static PotionType nimbleType;
 
+	public static Potion wideMining;
+	public static PotionType wideMiningType;
+
 	public static Enchantment venom;
 	public static Enchantment corrosion;
 	public static Enchantment robber;

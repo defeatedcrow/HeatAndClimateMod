@@ -1,14 +1,20 @@
 package defeatedcrow.hac.main.event;
 
+import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
+import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.IWideMining;
 import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.util.MainUtil;
@@ -23,9 +29,16 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.EnumDifficulty;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -76,6 +89,112 @@ public class OnMiningEventDC {
 				}
 			}
 		}
+	}
+
+	@SubscribeEvent
+	public void onBreakBlock(BlockEvent.BreakEvent event) {
+		if (event.getPlayer() != null && !event.getWorld().isRemote) {
+			IBlockState state = event.getState();
+			ItemStack held = event.getPlayer().getHeldItemMainhand();
+			BlockPos pos = event.getPos();
+			EnumFacing face;
+			int range = 0;
+			if (held.getItem() instanceof IWideMining) {
+				range += ((IWideMining) held.getItem()).getMiningRange(event.getPlayer(), held, 0);
+			}
+			if (!event.getPlayer().getActivePotionEffects().isEmpty()) {
+				for (PotionEffect eff : event.getPlayer().getActivePotionEffects()) {
+					if (eff.getPotion() instanceof IWideMining) {
+						range += ((IWideMining) eff.getPotion()).getMiningRange(event.getPlayer(), held, eff
+								.getAmplifier());
+					}
+				}
+			}
+			NonNullList<ItemStack> charms = DCUtil.getPlayerCharm(event.getPlayer(), CharmType.CONSTANT);
+			if (!charms.isEmpty()) {
+				for (ItemStack check : charms) {
+					if (check.getItem() instanceof IWideMining) {
+						range += ((IWideMining) check.getItem()).getMiningRange(event.getPlayer(), check, 0);
+					}
+				}
+			}
+			if (range > 0) {
+				RayTraceResult ret = this.rayTrace(event.getWorld(), event.getPlayer());
+				if (ret != null && ret.typeOfHit == RayTraceResult.Type.BLOCK) {
+					face = ret.sideHit;
+					List<BlockPos> list = getTargetPos(pos, face, range);
+					for (BlockPos p : list) {
+						if (event.getPlayer().canPlayerEdit(p, face, held)) {
+							IBlockState block = event.getWorld().getBlockState(p);
+							if (block.getBlock().canHarvestBlock(event.getWorld(), p, event.getPlayer()) && !block
+									.getBlock().hasTileEntity(block) && block.getBlockHardness(event
+											.getWorld(), p) >= 0) {
+								block.getBlock().harvestBlock(event.getWorld(), event
+										.getPlayer(), p, block, null, held);
+								event.getWorld().setBlockToAir(p);
+							}
+						}
+					}
+				}
+				if (!event.getPlayer().capabilities.isCreativeMode && (event.getWorld()
+						.getDifficulty() != EnumDifficulty.PEACEFUL || CoreConfigDC.peacefulDam)) {
+					event.getPlayer().addExhaustion(0.1F);
+				}
+			}
+		}
+	}
+
+	List<BlockPos> getTargetPos(BlockPos pos, EnumFacing face, int r) {
+		List<BlockPos> ret = Lists.newArrayList();
+		if (face.getAxis() == EnumFacing.Axis.X) {
+			for (int z = -r; z <= r; z++) {
+				for (int y = -r; y <= r; y++) {
+					if (z == 0 && y == 0)
+						continue;
+					BlockPos p = pos.add(0, y, z);
+					ret.add(p);
+				}
+			}
+			return ret;
+		} else if (face.getAxis() == EnumFacing.Axis.Z) {
+			for (int x = -r; x <= r; x++) {
+				for (int y = -r; y <= r; y++) {
+					if (x == 0 && y == 0)
+						continue;
+					BlockPos p = pos.add(x, y, 0);
+					ret.add(p);
+				}
+			}
+			return ret;
+		} else {
+			for (int z = -r; z <= r; z++) {
+				for (int x = -r; x <= r; x++) {
+					if (z == 0 && x == 0)
+						continue;
+					BlockPos p = pos.add(x, 0, z);
+					ret.add(p);
+				}
+			}
+			return ret;
+		}
+	}
+
+	protected RayTraceResult rayTrace(World world, EntityPlayer player) {
+		float f = player.rotationPitch;
+		float f1 = player.rotationYaw;
+		double d0 = player.posX;
+		double d1 = player.posY + player.getEyeHeight();
+		double d2 = player.posZ;
+		Vec3d vec3d = new Vec3d(d0, d1, d2);
+		float f2 = MathHelper.cos(-f1 * 0.017453292F - (float) Math.PI);
+		float f3 = MathHelper.sin(-f1 * 0.017453292F - (float) Math.PI);
+		float f4 = -MathHelper.cos(-f * 0.017453292F);
+		float f5 = MathHelper.sin(-f * 0.017453292F);
+		float f6 = f3 * f4;
+		float f7 = f2 * f4;
+		double d3 = player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getAttributeValue();
+		Vec3d vec3d1 = vec3d.addVector(f6 * d3, f5 * d3, f7 * d3);
+		return world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
 	}
 
 	// 右クリック回収機構

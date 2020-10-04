@@ -71,6 +71,11 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 	}
 
 	@Override
+	public boolean canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player) {
+		return true;
+	}
+
+	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		stack.damageItem(1, attacker);
 		return true;

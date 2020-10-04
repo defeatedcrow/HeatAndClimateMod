@@ -3,7 +3,7 @@ package defeatedcrow.hac.food.client;
 import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
-import defeatedcrow.hac.food.client.model.ModelTeaPot;
+import defeatedcrow.hac.food.client.model.ModelBlockTeaPot;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TESRTeaPot extends DCLockableTESRBase {
 
 	private static final String TEX = "dcs_climate:textures/tiles/teapot_silver.png";
-	private static final ModelTeaPot MODEL = new ModelTeaPot();
+	private static final ModelBlockTeaPot MODEL = new ModelBlockTeaPot();
 
 	@Override
 	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {

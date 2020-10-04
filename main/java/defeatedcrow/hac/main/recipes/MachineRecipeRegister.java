@@ -17,6 +17,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.device.RegisterBrewingDC;
 import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
 import defeatedcrow.hac.main.recipes.device.RegisterFluidRecipe;
 import defeatedcrow.hac.main.recipes.device.RegisterMillRecipe;
@@ -59,6 +60,10 @@ public class MachineRecipeRegister {
 
 		if (ModuleConfig.r_fluid) {
 			RegisterFluidRecipe.load();
+		}
+
+		if (ModuleConfig.r_brewing) {
+			RegisterBrewingDC.load();
 		}
 
 	}

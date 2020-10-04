@@ -5,12 +5,17 @@ import java.util.List;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import net.minecraft.item.Item;
 
 public interface IMicrobe {
 
+	public Item getMicrobeItem();
+
 	public String getName();
 
-	public int getSpeed();
+	public boolean getGramStaining();
+
+	public int getIncubationDays();
 
 	public EnumMicrobeType getType();
 
@@ -20,7 +25,7 @@ public interface IMicrobe {
 
 	public List<DCHeatTier> getHeats();
 
-	public List<DCHumidity> hetHums();
+	public List<DCHumidity> getHums();
 
 	public List<DCAirflow> getAirs();
 

@@ -4,7 +4,7 @@ import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.food.block.TilePotteryPot;
-import defeatedcrow.hac.food.client.model.ModelPotteryPot;
+import defeatedcrow.hac.food.client.model.ModelBlockPotteryPot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TESRPotteryPot extends DCLockableTESRBase {
 
 	private static final String TEX = "dcs_climate:textures/tiles/pottery_pot.png";
-	private static final ModelPotteryPot MODEL = new ModelPotteryPot();
+	private static final ModelBlockPotteryPot MODEL = new ModelBlockPotteryPot();
 
 	@Override
 	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {

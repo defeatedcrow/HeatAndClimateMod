@@ -3,7 +3,7 @@ package defeatedcrow.hac.food.block;
 import java.util.List;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
+import defeatedcrow.hac.food.gui.ContainerSteelPot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -121,7 +121,7 @@ public class TileSteelPot extends TileFluidProcessorBase {
 
 	@Override
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		return new ContainerFluidProcessor(this, playerInventory);
+		return new ContainerSteelPot(this, playerInventory);
 	}
 
 	@Override

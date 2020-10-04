@@ -15,7 +15,10 @@ public final class ClimateFluidMaker {
 		List<DCFluidInfo> list = Lists.newArrayList();
 		for (Fluid f : FluidRegistry.getRegisteredFluids().values()) {
 			if (f != null) {
-				list.add(new DCFluidInfo(f));
+				DCFluidInfo info = new DCFluidInfo(f);
+				if (!info.cup.isEmpty() || !info.bucket.isEmpty()) {
+					list.add(info);
+				}
 			}
 		}
 		registry.addRecipes(list, "dcs_climate.drink");

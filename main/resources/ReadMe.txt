@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.4.0 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.4.1 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -7,7 +7,7 @@
 
 ・MincraftForge 1.12.2-14.23.3.2768 以上
 
-・HeatAndClimateLib 1.12.2_3.4.0 以上
+・HeatAndClimateLib 1.12.2_3.4.1 以上
 
 ### 注意事項! ###
 

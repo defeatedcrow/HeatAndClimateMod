@@ -12,25 +12,35 @@ public interface IBrewingRecipeRegister {
 	/**
 	 * Recipeのリストを得る。
 	 */
-	List<? extends IBrewingRecipe> getRecipeList();
+	List<IBrewingRecipeDC> getBrewingList();
+
+	List<IStillRecipeDC> getStillList();
+
+	List<IAgingRecipeDC> getAgingList();
 
 	/**
 	 * 登録はこのメソッドのみ
 	 */
-	void addRecipe(IBrewingRecipe recipe);
+	void addBrewingRecipe(IBrewingRecipeDC recipe);
+
+	void addStillRecipe(IStillRecipeDC recipe);
+
+	void addAgingRecipe(IAgingRecipeDC recipe);
 
 	/**
 	 * 段階別にレシピを得る
 	 */
 
-	IBrewingRecipe getFermentationRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid);
+	IBrewingRecipeDC getBrewingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid);
 
-	IBrewingRecipe getDistillationRecipe(DCHeatTier hot, DCHeatTier cold, List<ItemStack> inputs, FluidStack inFluid);
+	IStillRecipeDC getStillRecipe(DCHeatTier hot, DCHeatTier cold, List<ItemStack> inputs, FluidStack inFluid);
 
-	IBrewingRecipe getAgingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid);
+	IAgingRecipeDC getAgingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid);
 
-	IBrewingRecipe getRecipe(FluidStack finalOutputFluid);
+	boolean removeBrewingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid);
 
-	boolean removeRecipe(FluidStack finalOutputFluid);
+	boolean removeStillRecipe(DCHeatTier hot, DCHeatTier cold, List<ItemStack> inputs, FluidStack inFluid);
+
+	boolean removeAgingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid);
 
 }

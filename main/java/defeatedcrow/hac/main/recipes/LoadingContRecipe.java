@@ -17,6 +17,7 @@ public class LoadingContRecipe {
 		addCompressionRecipe(MainInit.miscCont);
 		addCompressionRecipe(MainInit.cardboard);
 		addCompressionRecipe(MainInit.dustBags);
+		addCompressionRecipe(MainInit.cropJute);
 		addCompressionRecipe(MainInit.dustCake);
 	}
 

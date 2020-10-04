@@ -3,7 +3,7 @@ package defeatedcrow.hac.food.client;
 import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
-import defeatedcrow.hac.food.client.model.ModelSkillet;
+import defeatedcrow.hac.food.client.model.ModelBlockSkillet;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TESRSkillet extends DCLockableTESRBase {
 
 	private static final String TEX = "dcs_climate:textures/tiles/iron_skillet.png";
-	private static final ModelSkillet MODEL = new ModelSkillet();
+	private static final ModelBlockSkillet MODEL = new ModelBlockSkillet();
 
 	@Override
 	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {

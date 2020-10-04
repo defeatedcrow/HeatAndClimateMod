@@ -29,13 +29,13 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, I
 	}
 
 	@Override
+	public boolean canClimateUpdate(IBlockState state) {
+		return false;
+	}
+
+	@Override
 	public String[] getNameSuffix() {
-		String[] name = {
-				"normal",
-				"light",
-				"half",
-				"crystal"
-		};
+		String[] name = { "normal", "light", "half", "crystal" };
 		return name;
 	}
 

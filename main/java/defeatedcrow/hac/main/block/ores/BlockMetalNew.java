@@ -25,6 +25,11 @@ public class BlockMetalNew extends DCSimpleBlock implements ITexturePath, IRapid
 		this.setResistance(15.0F);
 	}
 
+	@Override
+	public boolean canClimateUpdate(IBlockState state) {
+		return false;
+	}
+
 	private static String[] names = { "zinc", "copper", "tin", "lead", "aluminium", "nickel", "silver", "bismuth" };
 
 	@Override

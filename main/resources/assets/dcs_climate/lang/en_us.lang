@@ -249,6 +249,9 @@ item.dcs_food_medium_giblets.name=Lactoce Agar
 item.dcs_food_medium_bacteria.name=Monoxenic Culture Medium
 item.dcs_food_antibiotic_pcn.name=Antibiotic (Blue)
 item.dcs_food_antibiotic_cp.name=Antibiotic (Green)
+item.dcs_liquor_bottle_empty.name=Empty Liquor Bottle
+item.dcs_liquor_bottle_beer.name=Beer
+item.dcs_liquor_bottle_wine.name=Wine
 
 item.dcs_food_pack_milk.name=Milk Pack
 item.dcs_food_pack_water.name=Water Pack
@@ -555,9 +558,22 @@ item.dcs_food_petals_lotus.name=Lotus Petal
 item.dcs_food_petals_black.name=Black Petal
 
 ##brewing and biology
+item.dcs_food_unidentified_archaea.name=Archaea (Unidentified)
 item.dcs_food_unidentified_bacilli.name=Bacilli (Unidentified)
+item.dcs_food_unidentified_cocci.name=Cocci (Unidentified)
 item.dcs_food_unidentified_yeast.name=Yeast (Unidentified)
 item.dcs_food_unidentified_mold.name=Mold (Unidentified)
+item.dcs_food_microbe_bacillus.name=Soil Bacteria
+item.dcs_food_microbe_coliformes.name=Coliformes
+item.dcs_food_microbe_lab.name=Lactic Acid Bacteria
+item.dcs_food_microbe_yeast.name=Yeast
+item.dcs_food_microbe_oryzae.name=Koji Mold
+item.dcs_food_microbe_nether.name=Nether Mold
+item.dcs_food_microbe_blue.name=Blue Mold
+item.dcs_food_microbe_slime.name=Slime Mold
+item.dcs_food_microbe_mushroom.name=Fungus
+
+item.dcs_food_chick.name=Chick in Egg
 
 ## craft tools
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
@@ -998,6 +1014,7 @@ tile.dcs_cont_jutebag_chili.name=Chili Pepper Bag
 tile.dcs_cont_jutebag_walnut.name=Walnut Bag
 tile.dcs_cont_jutebag_date.name=Date Bag
 tile.dcs_cont_jutebag_grape.name=Grape Bag
+tile.dcs_cont_jutebag_malt.name=Malt Bag
 tile.dcs_cont_fuel_coke.name=Fuel Coke Container
 tile.dcs_cont_fuel_carbide.name=Carbide Container
 tile.dcs_cont_fuel_smokeless.name=Smokeless Powder Container
@@ -1332,6 +1349,9 @@ tile.dcs_device_skillet_0.name=Iron Skillet
 tile.dcs_device_tankyard_0.name=Tank Yard Core
 tile.dcs_device_yardpart_0.name=Tank Yard Block
 tile.dcs_device_player_panel_0.name=Player Transporter
+tile.dcs_device_incubator_0.name=Incubator
+tile.dcs_device_brewing_wood_0.name=Wooden Brewing Tank
+tile.dcs_crop_fertilizer_0.name=Base Fertilizer
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -1542,6 +1562,9 @@ tile.dcs_fluidblock_raw_milk_0.name=Raw Milk
 fluid.dcs.steam=Steam
 tile.dcs_fluidblock_steam_0.name=Steam
 
+fluid.dcs.beer=Beer
+fluid.dcs.wine=Wine
+
 ## tip
 dcs.tip.heat=HeatTier
 dcs.tip.temp=Temperature
@@ -1682,6 +1705,7 @@ dcs.tip.throwing_arrow=Affected by the strength potion effect.
 dcs.tip.presscake=Has the effect of bone meal.
 dcs.tip.rotary_blade=Use in the Hammer Mill GUI.
 dcs.tip.rotary_blade2=Destroy tools to get some ingots or gems.
+dcs.tip.fertilizer=If it's placed under the Farmland, it helps the crop grow.
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products
@@ -1697,6 +1721,8 @@ dcs_climate.treatment=Metal Heat Treatment
 dcs_climate.pressmold=Press Processing
 dcs_climate.info=Information
 dcs_climate.drink=Fluid Information
+dcs_climate.microbe=Microbe Information
+dcs_climate.brewing=Brewing
 
 dcs.tip.allcharm=This item works in top slots of player inventory.
 dcs.tip.amulet=This item works in creature or player inventory.
@@ -1805,6 +1831,53 @@ dcs.comment.card.14=Magic circle to heal creatures
 dcs.tip.shift=Lshift Key: expand tooltip
 dcs.tip.require_achievement=Require the achievement for using!
 
+## microbe
+dcs.tip.archaea=Archaea
+dcs.tip.bacilli=Bacilli
+dcs.tip.cocci=Cocci
+dcs.tip.yeast=Yeast
+dcs.tip.fungi=Fungi
+
+dcs.tip.soil=Soil
+dcs.tip.flower=Flower Nectar
+dcs.tip.crop=Crop Block
+dcs.tip.animal=Animal Body
+dcs.tip.water=Water
+
+dcs.tip.unidentified=Unidentified
+dcs.tip.incubation_days=Cultivation Days: %d
+dcs.tip.habitat=Habitable Environment
+dcs.tip.medium=Culturable Medium
+dcs.tip.vbnc=VBNC in this climate.
+
+dcs.tip.microbe.bacillus_0=Soil Activation
+dcs.tip.microbe.bacillus_1=Antibiotic Production (Green)
+dcs.tip.microbe.bacillus_2=Natto
+dcs.tip.microbe.coliformes_0=Meat Rot
+dcs.tip.microbe.coliformes_1=Metamorphosis (Zombie)
+dcs.tip.microbe.coliformes_2=Sponge
+dcs.tip.microbe.lab_0=Yogurt
+dcs.tip.microbe.lab_1=Cheese
+dcs.tip.microbe.lab_2=Immersion
+dcs.tip.microbe.yeast_0=Beer/Rum
+dcs.tip.microbe.yeast_1=Wine
+dcs.tip.microbe.yeast_2=Oil
+dcs.tip.microbe.oryzae_0=Soy Sauce
+dcs.tip.microbe.oryzae_1=Sake
+dcs.tip.microbe.oryzae_2=Katsuobushi
+dcs.tip.microbe.nether_0=Netherrack
+dcs.tip.microbe.nether_1=Glowstone
+dcs.tip.microbe.nether_2=Metamorphosis (Pigman)
+dcs.tip.microbe.penicillium_0=Antibiotic Production (Blue)
+dcs.tip.microbe.penicillium_1=Rennet
+dcs.tip.microbe.penicillium_2=Anti-Undead
+dcs.tip.microbe.slime_0=Slime Ball
+dcs.tip.microbe.slime_1=Explosives
+dcs.tip.microbe.slime_2=Magical Essence
+dcs.tip.microbe.mushroom_0=Brown Mushroom
+dcs.tip.microbe.mushroom_1=Red Mushroom
+dcs.tip.microbe.mushroom_2=Metamorphosis (Mooshroom)
+
 ## message
 dcs_climate.smelting=Climate Smelting
 dcs_climate.recipe=Climate Crafting
@@ -1827,6 +1900,8 @@ dcs.gui.device.gas_burner=Gas Burner
 dcs.gui.device.diesel_engine=Diesel Engine
 dcs.gui.device.crusher=Hammer Mill
 dcs.gui.device.silkworm_box=Silkworm Rearing Box
+dcs.gui.device.incubator=Incubator
+dcs.gui.device.brewing=Brewing
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold
@@ -1872,6 +1947,13 @@ dcs.potion.nimble=Nimble
 potion.effect.dcs.nimble=Nimble
 splash_potion.effect.dcs.nimble=Splash Potion of Nimble
 lingering_potion.effect.dcs.nimble=Lingering Potion of Nimble
+tipped_arrow.effect.dcs.nimble=Arrow of Nimble
+
+dcs.potion.wide_mining=Wide Mining
+potion.effect.dcs.wide_mining=Wide Mining
+splash_potion.effect.dcs.wide_mining=Splash Potion of Wide Mining
+lingering_potion.effect.dcs.wide_mining=Lingering Potion of Wide Mining
+tipped_arrow.effect.dcs.wide_mining=Arrow of Wide Mining
 
 tipped_arrow.effect.dcs.freeze_res=Arrow of Freeze Resistance
 
@@ -2268,6 +2350,10 @@ dcs.info.title.cushion=Cushion
 dcs.info.desc.cushion=Capture the mob that touches it.
 dcs.info.title.handnet=Hand Net
 dcs.info.desc.handnet=Get items from shallow natural waters. Items with the same coordinates will decrease.
+dcs.info.title.medium=Culture Medium
+dcs.info.desc.medium=Click natural blocks with it, or craft with microbes. Then incubate in an incubator.
+dcs.info.title.unidentified=Unidentified Microbe
+dcs.info.desc.unidentified=When used with a click, the species of microbe is identified.
 
 
 # deprecated

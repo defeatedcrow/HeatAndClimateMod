@@ -11,9 +11,7 @@ public class DCPluginAnimania {
 
 	public static final DCPluginAnimania INSTANCE = new DCPluginAnimania();
 
-	private DCPluginAnimania() {}
-
-	public static void load() {
+	public static void loadInit() {
 		DamageAPI.resistantData.registerEntityResistant(EntityAnimaniaChicken.class, 3.0F, 2.0F);
 		DamageAPI.resistantData.registerEntityResistant(EntityHamster.class, 3.0F, 0.0F);
 		DamageAPI.resistantData.registerEntityResistant(EntityHedgehog.class, 2.0F, 1.0F);

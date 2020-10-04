@@ -56,24 +56,7 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 		return harvestL[getMetaFromState(state)];
 	}
 
-	private int[] harvestL = new int[] {
-			1,
-			1,
-			1,
-			1,
-			1,
-			2,
-			2,
-			2,
-			2,
-			2,
-			1,
-			2,
-			1,
-			2,
-			1,
-			1
-	};
+	private int[] harvestL = new int[] { 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 1 };
 
 	/* Drop Itemの管理 */
 
@@ -128,23 +111,22 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 
 	private DropTable getTable(int meta) {
 		DropTable[] table = {
-				DropTable.RED,
-				DropTable.GREEN,
-				DropTable.BLUE,
-				DropTable.WHITE,
-				DropTable.BLACK,
-				DropTable.RED_2,
-				DropTable.GREEN_2,
-				DropTable.BLUE_2,
-				DropTable.WHITE_2,
-				DropTable.BLACK_2,
-				DropTable.NETHER_RED_1,
-				DropTable.NETHER_RED_2,
-				DropTable.NETHER_BLACK_1,
-				DropTable.NETHER_BLACK_2,
-				DropTable.NETHER_SULFUR,
-				DropTable.NONE
-		};
+			DropTable.RED,
+			DropTable.GREEN,
+			DropTable.BLUE,
+			DropTable.WHITE,
+			DropTable.BLACK,
+			DropTable.RED_2,
+			DropTable.GREEN_2,
+			DropTable.BLUE_2,
+			DropTable.WHITE_2,
+			DropTable.BLACK_2,
+			DropTable.NETHER_RED_1,
+			DropTable.NETHER_RED_2,
+			DropTable.NETHER_BLACK_1,
+			DropTable.NETHER_BLACK_2,
+			DropTable.NETHER_SULFUR,
+			DropTable.NONE };
 		if (meta < 16)
 			return table[meta];
 		return DropTable.NONE;
@@ -179,22 +161,21 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 	}
 
 	private static String[] names = {
-			"n2_red",
-			"n2_green",
-			"n2_blue",
-			"n2_white",
-			"n2_black",
-			"n1_red",
-			"n1_green",
-			"n1_blue",
-			"n1_white",
-			"n1_black",
-			"n2_red_n",
-			"n1_red_n",
-			"n2_black_n",
-			"n1_black_n",
-			"b_sulfur_n"
-	};
+		"n2_red",
+		"n2_green",
+		"n2_blue",
+		"n2_white",
+		"n2_black",
+		"n1_red",
+		"n1_green",
+		"n1_blue",
+		"n1_white",
+		"n1_black",
+		"n2_red_n",
+		"n1_red_n",
+		"n2_black_n",
+		"n1_black_n",
+		"b_sulfur_n" };
 
 	@Override
 	public String getTexPath(int meta, boolean f) {

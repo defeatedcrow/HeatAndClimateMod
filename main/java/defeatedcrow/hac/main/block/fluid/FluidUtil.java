@@ -28,21 +28,21 @@ public class FluidUtil {
 	 */
 	public static boolean onActivateDCTank(TileEntity tile, ItemStack item, World world, IBlockState state,
 			EnumFacing side, EntityPlayer player) {
-		if (!DCUtil.isEmpty(item) && tile != null && item.hasCapability(
-				CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile.hasCapability(
-						CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+		if (!DCUtil.isEmpty(item) && tile != null && item
+				.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile
+						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 			ItemStack copy = new ItemStack(item.getItem(), 1, item.getItemDamage());
 			if (item.getTagCompound() != null) {
 				copy.setTagCompound(item.getTagCompound());
 			}
 			IFluidHandlerItem dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 			IFluidHandler intank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
-			IFluidHandler outtank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY,
-					EnumFacing.DOWN);
+			IFluidHandler outtank = tile
+					.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
 
 			// dummyを使った検証
-			if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0 &&
-					intank instanceof DCTank && outtank instanceof DCTank) {
+			if (dummy != null && dummy.getTankProperties() != null && dummy
+					.getTankProperties().length > 0 && intank instanceof DCTank && outtank instanceof DCTank) {
 				int max = dummy.getTankProperties()[0].getCapacity();
 				FluidStack f1 = dummy.drain(max, false);
 				DCTank dc_in = (DCTank) intank;
@@ -104,6 +104,8 @@ public class FluidUtil {
 		list.add(b + "fuel_oil_still");
 		list.add(b + "nitric_acid_still");
 		list.add(b + "sulfuric_acid_still");
+		list.add(b + "beer_still");
+		list.add(b + "wine_still");
 		return list;
 	}
 

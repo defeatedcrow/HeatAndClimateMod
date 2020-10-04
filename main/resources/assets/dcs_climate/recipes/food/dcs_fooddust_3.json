@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_cont_jutebag",
+   "data": 5
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_fooddust",
+  "count": 8,
+  "data": 3
+ }
+}

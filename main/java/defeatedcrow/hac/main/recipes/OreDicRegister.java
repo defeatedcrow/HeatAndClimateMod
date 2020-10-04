@@ -261,6 +261,89 @@ public class OreDicRegister {
 
 		OreDictionary.registerOre("foodSausage", new ItemStack(MainInit.bakedApple, 1, 3));
 
+		// container
+		OreDictionary.registerOre("containerLog", new ItemStack(MainInit.logCont, 1, 0));
+		OreDictionary.registerOre("containerLog", new ItemStack(MainInit.logCont, 1, 1));
+		OreDictionary.registerOre("containerLog", new ItemStack(MainInit.logCont, 1, 2));
+		OreDictionary.registerOre("containerLog", new ItemStack(MainInit.logCont, 1, 3));
+		OreDictionary.registerOre("containerLog", new ItemStack(MainInit.logCont, 1, 4));
+		OreDictionary.registerOre("containerLog", new ItemStack(MainInit.logCont, 1, 5));
+		OreDictionary.registerOre("containerCharcoal", new ItemStack(MainInit.logCont, 1, 6));
+
+		OreDictionary.registerOre("containerApple", new ItemStack(MainInit.cropCont, 1, 0));
+		OreDictionary.registerOre("containerPotato", new ItemStack(MainInit.cropCont, 1, 1));
+		OreDictionary.registerOre("containerCarrot", new ItemStack(MainInit.cropCont, 1, 2));
+		OreDictionary.registerOre("containerPumpkin", new ItemStack(MainInit.cropCont, 1, 3));
+		OreDictionary.registerOre("containerMelon", new ItemStack(MainInit.cropCont, 1, 4));
+		OreDictionary.registerOre("containerCactus", new ItemStack(MainInit.cropCont, 1, 5));
+		OreDictionary.registerOre("containerReeds", new ItemStack(MainInit.cropCont, 1, 6));
+		OreDictionary.registerOre("containerNetherWart", new ItemStack(MainInit.cropCont, 1, 7));
+		OreDictionary.registerOre("containerCocoa", new ItemStack(MainInit.cropCont, 1, 8));
+		OreDictionary.registerOre("containerBeetroot", new ItemStack(MainInit.cropCont, 1, 11));
+
+		OreDictionary.registerOre("containerRottenFlesh", new ItemStack(MainInit.dropCont, 1, 0));
+		OreDictionary.registerOre("containerBone", new ItemStack(MainInit.dropCont, 1, 1));
+		OreDictionary.registerOre("containerSpiderEye", new ItemStack(MainInit.dropCont, 1, 2));
+		OreDictionary.registerOre("containerEnderPearl", new ItemStack(MainInit.dropCont, 1, 3));
+		OreDictionary.registerOre("containerGunpowder", new ItemStack(MainInit.dropCont, 1, 4));
+		OreDictionary.registerOre("containerBlazeRod", new ItemStack(MainInit.dropCont, 1, 4));
+
+		OreDictionary.registerOre("containerClay", new ItemStack(MainInit.miscCont, 1, 0));
+		OreDictionary.registerOre("containerFish", new ItemStack(MainInit.miscCont, 1, 1));
+		OreDictionary.registerOre("containerLeather", new ItemStack(MainInit.miscCont, 1, 2));
+		OreDictionary.registerOre("containerRabbitHide", new ItemStack(MainInit.miscCont, 1, 3));
+		OreDictionary.registerOre("containerFeather", new ItemStack(MainInit.miscCont, 1, 4));
+
+		OreDictionary.registerOre("containerBeef", new ItemStack(MainInit.cardboard, 1, 0));
+		OreDictionary.registerOre("containerPork", new ItemStack(MainInit.cardboard, 1, 1));
+		OreDictionary.registerOre("containerChicken", new ItemStack(MainInit.cardboard, 1, 2));
+		OreDictionary.registerOre("containerMutton", new ItemStack(MainInit.cardboard, 1, 3));
+		OreDictionary.registerOre("containerMeatRaw", new ItemStack(MainInit.cardboard, 1, 0));
+		OreDictionary.registerOre("containerMeatRaw", new ItemStack(MainInit.cardboard, 1, 1));
+		OreDictionary.registerOre("containerMeatRaw", new ItemStack(MainInit.cardboard, 1, 2));
+		OreDictionary.registerOre("containerMeatRaw", new ItemStack(MainInit.cardboard, 1, 3));
+		OreDictionary.registerOre("containerEgg", new ItemStack(MainInit.cardboard, 1, 4));
+		OreDictionary.registerOre("containerWool", new ItemStack(MainInit.cardboard, 1, 5));
+
+		OreDictionary.registerOre("containerSugar", new ItemStack(MainInit.dustBags, 1, 0));
+		OreDictionary.registerOre("containerSalt", new ItemStack(MainInit.dustBags, 1, 1));
+		OreDictionary.registerOre("containerFlour", new ItemStack(MainInit.dustBags, 1, 2));
+		OreDictionary.registerOre("containerRiceFood", new ItemStack(MainInit.dustBags, 1, 3));
+		OreDictionary.registerOre("containerStarch", new ItemStack(MainInit.dustBags, 1, 4));
+		OreDictionary.registerOre("containerSeed", new ItemStack(MainInit.dustBags, 1, 5));
+		OreDictionary.registerOre("containerSoybean", new ItemStack(MainInit.dustBags, 1, 6));
+		OreDictionary.registerOre("containerRiceSeed", new ItemStack(MainInit.dustBags, 1, 7));
+
+		OreDictionary.registerOre("containerRice", new ItemStack(MainInit.cropBasket, 1, 0));
+		OreDictionary.registerOre("containerOnion", new ItemStack(MainInit.cropBasket, 1, 1));
+		OreDictionary.registerOre("containerSpinach", new ItemStack(MainInit.cropBasket, 1, 2));
+		OreDictionary.registerOre("containerTomato", new ItemStack(MainInit.cropBasket, 1, 3));
+		OreDictionary.registerOre("containerCoffee", new ItemStack(MainInit.cropBasket, 1, 4));
+		OreDictionary.registerOre("containerCotton", new ItemStack(MainInit.cropBasket, 1, 5));
+		OreDictionary.registerOre("containerLemon", new ItemStack(MainInit.cropBasket, 1, 6));
+		OreDictionary.registerOre("containerOlive", new ItemStack(MainInit.cropBasket, 1, 7));
+		OreDictionary.registerOre("containerTeaLeaf", new ItemStack(MainInit.cropBasket, 1, 8));
+		OreDictionary.registerOre("containerLotusSeed", new ItemStack(MainInit.cropBasket, 1, 9));
+		OreDictionary.registerOre("containerMulberry", new ItemStack(MainInit.cropBasket, 1, 10));
+		OreDictionary.registerOre("containerSilk", new ItemStack(MainInit.cropBasket, 1, 11));
+		OreDictionary.registerOre("containerGarlic", new ItemStack(MainInit.cropBasket, 1, 12));
+		OreDictionary.registerOre("containerLettuce", new ItemStack(MainInit.cropBasket, 1, 13));
+		OreDictionary.registerOre("containerGinger", new ItemStack(MainInit.cropBasket, 1, 14));
+
+		OreDictionary.registerOre("containerBean", new ItemStack(MainInit.cropJute, 1, 0));
+		OreDictionary.registerOre("containerChilipepper", new ItemStack(MainInit.cropJute, 1, 1));
+		OreDictionary.registerOre("containerWalnut", new ItemStack(MainInit.cropJute, 1, 2));
+		OreDictionary.registerOre("containerDate", new ItemStack(MainInit.cropJute, 1, 3));
+		OreDictionary.registerOre("containerGrape", new ItemStack(MainInit.cropJute, 1, 4));
+		OreDictionary.registerOre("containerMalt", new ItemStack(MainInit.cropJute, 1, 5));
+
+		OreDictionary.registerOre("containerBran", new ItemStack(MainInit.dustCake, 1, 0));
+		OreDictionary.registerOre("containerPresscake", new ItemStack(MainInit.dustCake, 1, 1));
+		OreDictionary.registerOre("containerAsh", new ItemStack(MainInit.dustCake, 1, 2));
+		OreDictionary.registerOre("containerPlantDust", new ItemStack(MainInit.dustCake, 1, 3));
+		OreDictionary.registerOre("containerSoycake", new ItemStack(MainInit.dustCake, 1, 4));
+		OreDictionary.registerOre("containerDraff", new ItemStack(MainInit.dustCake, 1, 5));
+
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.clothes, 1, 1));

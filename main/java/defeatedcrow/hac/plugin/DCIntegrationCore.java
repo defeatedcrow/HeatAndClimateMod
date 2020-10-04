@@ -65,7 +65,7 @@ public class DCIntegrationCore {
 		if (Loader.isModLoaded("tektopia")) {
 			loadedTektopia = true;
 		}
-		if (Loader.isModLoaded("animania")) {
+		if (Loader.isModLoaded("animania") && ModuleConfig.ani) {
 			loadedAnimania = true;
 		}
 		if (Loader.isModLoaded("undergroundbiomes") && ModuleConfig.ugb) {
@@ -243,9 +243,11 @@ public class DCIntegrationCore {
 
 		if (loadedAnimania) {
 			try {
-				DCPluginAnimania.load();
+				DCPluginAnimania.loadInit();
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: animania");
 			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: animania");
+			} catch (Error e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: animania");
 			}
 		}

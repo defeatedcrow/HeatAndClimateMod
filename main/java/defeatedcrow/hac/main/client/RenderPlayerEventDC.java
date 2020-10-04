@@ -19,8 +19,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderPlayerEventDC {
 
-	private static final ResourceLocation WING_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID, "textures/entity/magic/magical_wings.png");
-	private static final ResourceLocation TAIL_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID, "textures/entity/magic/magical_fishtail.png");
+	private static final ResourceLocation WING_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
+			"textures/entity/magic/magical_wings.png");
+	private static final ResourceLocation TAIL_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
+			"textures/entity/magic/magical_fishtail.png");
 	private static final ModelMagicalWing MODEL = new ModelMagicalWing();
 	private static final ModelPanel PANEL_MODEL = new ModelPanel();
 
@@ -65,9 +67,8 @@ public class RenderPlayerEventDC {
 						GlStateManager.rotate(180F - f, 0.0F, 1.0F, 0.0F);
 						GlStateManager.enableBlend();
 						GlStateManager.disableLighting();
-						GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-								GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-								GlStateManager.DestFactor.ZERO);
+						GlStateManager
+								.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
 						int i = 15728880;
 						int j = i % 65536;
@@ -107,9 +108,8 @@ public class RenderPlayerEventDC {
 						GlStateManager.rotate(180F - f, 0.0F, 1.0F, 0.0F);
 						GlStateManager.enableBlend();
 						GlStateManager.disableLighting();
-						GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-								GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-								GlStateManager.DestFactor.ZERO);
+						GlStateManager
+								.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
 						int i = 15728880;
 						int j = i % 65536;
@@ -132,19 +132,20 @@ public class RenderPlayerEventDC {
 	}
 
 	private static String[] name = {
-			"absolute",
-			"frostbite",
-			"cold",
-			"cool",
-			"normal",
-			"warm",
-			"hot",
-			"oven",
-			"kiln",
-			"smelting",
-			"uht",
-			"inforno"
-	};
+		"absolute",
+		"cryogenic",
+		"frostbite",
+		"cold",
+		"cool",
+		"normal",
+		"warm",
+		"hot",
+		"boil",
+		"oven",
+		"kiln",
+		"smelting",
+		"uht",
+		"inferno" };
 
 	private float interpolateRotation(float prevYawOffset, float yawOffset, float partialTicks) {
 		float f = yawOffset - prevYawOffset;

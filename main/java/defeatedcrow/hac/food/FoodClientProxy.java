@@ -3,6 +3,8 @@ package defeatedcrow.hac.food;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
+import defeatedcrow.hac.food.block.TileBrewingTankWood;
+import defeatedcrow.hac.food.block.TileIncubator;
 import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSkillet;
@@ -213,6 +215,8 @@ public class FoodClientProxy {
 		GameRegistry.registerTileEntity(TileSilkwormBox.class, "dcs_te_silkworm_box");
 		ClientMainProxy.registerTileEntity(TileSkillet.class, "dcs_te_skillet", new TESRSkillet());
 		ClientMainProxy.registerTileEntity(TileEntityLotus.class, "dcs_te_crop_lotus", new TESRLotusCrop());
+		ClientMainProxy.registerTileEntity(TileIncubator.class, "dcs_te_incubator", new TESRIncubator());
+		ClientMainProxy.registerTileEntity(TileBrewingTankWood.class, "dcs_te_brewing_wood", new TESRBrewingTankWood());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -260,7 +264,18 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.medium, ClimateCore.PACKAGE_ID, "dcs_food_medium", "food", 4);
 		instance.regSimpleItem(FoodInit.residue, ClimateCore.PACKAGE_ID, "dcs_food_residue", "food", 6);
 		instance.regSimpleItem(FoodInit.antibiotic, ClimateCore.PACKAGE_ID, "dcs_food_antibiotic", "food", 1);
-		instance.regSimpleItem(FoodInit.unidentified, ClimateCore.PACKAGE_ID, "dcs_food_unidentified", "food", 2);
+		instance.regSimpleItem(FoodInit.unidentified, ClimateCore.PACKAGE_ID, "dcs_food_unidentified", "food", 4);
+		instance.regSimpleItem(FoodInit.bacillus, ClimateCore.PACKAGE_ID, "dcs_food_microbe_bacillus", "food", 2);
+		instance.regSimpleItem(FoodInit.coliformes, ClimateCore.PACKAGE_ID, "dcs_food_microbe_coliformes", "food", 2);
+		instance.regSimpleItem(FoodInit.lab, ClimateCore.PACKAGE_ID, "dcs_food_microbe_lab", "food", 2);
+		instance.regSimpleItem(FoodInit.beerYeast, ClimateCore.PACKAGE_ID, "dcs_food_microbe_yeast", "food", 2);
+		instance.regSimpleItem(FoodInit.oryzae, ClimateCore.PACKAGE_ID, "dcs_food_microbe_oryzae", "food", 2);
+		instance.regSimpleItem(FoodInit.nether, ClimateCore.PACKAGE_ID, "dcs_food_microbe_nether", "food", 2);
+		instance.regSimpleItem(FoodInit.blueMold, ClimateCore.PACKAGE_ID, "dcs_food_microbe_blue", "food", 2);
+		instance.regSimpleItem(FoodInit.slimeMold, ClimateCore.PACKAGE_ID, "dcs_food_microbe_slime", "food", 2);
+		instance.regSimpleItem(FoodInit.mushroom, ClimateCore.PACKAGE_ID, "dcs_food_microbe_musuroom", "food", 2);
+		instance.regSimpleItem(FoodInit.chickInEgg, ClimateCore.PACKAGE_ID, "dcs_food_chick", "food", 0);
+		instance.regSimpleItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_ID, "dcs_liquor_bottle", "food", 2);
 
 		// block
 
@@ -278,6 +293,9 @@ public class FoodClientProxy {
 		instance.regTEBlock(FoodInit.steelPot, ClimateCore.PACKAGE_ID, "dcs_device_steel_pot", "machine", 0);
 		instance.regTEBlock(FoodInit.teaPot, ClimateCore.PACKAGE_ID, "dcs_device_tea_pot", "machine", 0);
 		instance.regSimpleBlock(FoodInit.silkwormBox, ClimateCore.PACKAGE_ID, "dcs_device_silkworm_box", "device", 0);
+		instance.regTEBlock(FoodInit.incubator, ClimateCore.PACKAGE_ID, "dcs_device_incubator", "machine", 0);
+		instance.regTEBlock(FoodInit.brewingTankWood, ClimateCore.PACKAGE_ID, "dcs_device_brewing_wood", "machine", 0);
+		instance.regSimpleBlock(FoodInit.baseFertilizer, ClimateCore.PACKAGE_ID, "dcs_crop_fertilizer", "crop", 0);
 
 		ModelLoader.setCustomStateMapper(FoodInit.cropLotus, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL)
 				.build());
