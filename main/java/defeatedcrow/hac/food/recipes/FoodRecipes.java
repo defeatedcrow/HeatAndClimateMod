@@ -212,6 +212,10 @@ public class FoodRecipes {
 		OreDictionary.registerOre("dustYeast", new ItemStack(FoodInit.residue, 1, 4));
 		OreDictionary.registerOre("dustPeptone", new ItemStack(FoodInit.residue, 1, 5));
 		OreDictionary.registerOre("dustWhey", new ItemStack(FoodInit.residue, 1, 6));
+		OreDictionary.registerOre("brothIncreace", new ItemStack(FoodInit.broth, 1, 0));
+		OreDictionary.registerOre("brothGrow", new ItemStack(FoodInit.broth, 1, 1));
+		OreDictionary.registerOre("foodKoji", new ItemStack(FoodInit.inoculum, 1, 0));
+		OreDictionary.registerOre("dustMana", new ItemStack(FoodInit.antibiotic, 1, 7));
 
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 1));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 3));

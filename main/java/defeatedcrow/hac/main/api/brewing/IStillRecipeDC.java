@@ -25,6 +25,10 @@ public interface IStillRecipeDC {
 	@Nullable
 	FluidStack getOutputFluid();
 
+	DCHeatTier requiredHeatTemp();
+
+	DCHeatTier requiredColdTemp();
+
 	/**
 	 * macth条件判定用、鉱石辞書変換後のInputリスト
 	 */

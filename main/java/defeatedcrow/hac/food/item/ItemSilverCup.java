@@ -22,6 +22,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.DrinkPotionType;
+import defeatedcrow.hac.plugin.DrinkPotionType.PotionSet;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -96,6 +97,7 @@ public class ItemSilverCup extends FoodItemBase {
 		FluidStack f = null;
 		DrinkMilk milk = DrinkMilk.NONE;
 		DrinkSugar sugar = DrinkSugar.NONE;
+		int aging = 0;
 		IFluidHandlerItem cont = item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 		IDrinkCustomize drink = item.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 		if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
@@ -104,17 +106,18 @@ public class ItemSilverCup extends FoodItemBase {
 		if (drink != null) {
 			milk = drink.getMilk();
 			sugar = drink.getSugar();
+			aging = drink.getAgingLevel();
 		}
 		DCEntityBase ret = null;
 		switch (i) {
 		case 1:
-			ret = new EntityTeaCupWhite(world, x, y, z, player).setFluid(f).setCustom(milk, sugar);
+			ret = new EntityTeaCupWhite(world, x, y, z, player).setFluid(f).setCustom(milk, sugar, aging);
 			break;
 		case 2:
-			ret = new EntityTumbler(world, x, y, z, player).setFluid(f).setCustom(milk, sugar);
+			ret = new EntityTumbler(world, x, y, z, player).setFluid(f).setCustom(milk, sugar, aging);
 			break;
 		default:
-			ret = new EntityTeaCupSilver(world, x, y, z, player).setFluid(f).setCustom(milk, sugar);
+			ret = new EntityTeaCupSilver(world, x, y, z, player).setFluid(f).setCustom(milk, sugar, aging);
 			break;
 		}
 
@@ -167,11 +170,16 @@ public class ItemSilverCup extends FoodItemBase {
 				IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 				if (cont != null && cont.getTankProperties() != null && cont.getTankProperties().length > 0) {
 					FluidStack f = cont.getTankProperties()[0].getContents();
-					float dirF = 1.0F;
+					float durF = 1.0F;
 					int ampF = 0;
 					if (drink != null) {
-						dirF *= drink.getMilk().effect;
+						durF *= drink.getMilk().effect;
 						ampF += drink.getSugar().effect;
+						int l = drink.getAgingLevel();
+						if (l > 0) {
+							ampF++;
+							durF *= l;
+						}
 					}
 					if (f != null && f.getFluid() != null) {
 						if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
@@ -190,7 +198,7 @@ public class ItemSilverCup extends FoodItemBase {
 							}
 							return false;
 						} else {
-							List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
+							List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), durF, ampF);
 							if (!effects.isEmpty()) {
 								for (PotionEffect get : effects) {
 									if (get != null && get.getPotion() != null) {
@@ -219,20 +227,20 @@ public class ItemSilverCup extends FoodItemBase {
 		return false;
 	}
 
-	public static List<PotionEffect> getPotionEffect(Fluid fluid, float dirF, int ampF) {
+	public static List<PotionEffect> getPotionEffect(Fluid fluid, float durF, int ampF) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
 		if (fluid != null) {
 			if (DrinkPotionType.isRegistered(fluid)) {
-				Potion potion = DrinkPotionType.getPotion(fluid);
+				PotionSet potion = DrinkPotionType.getPotionSet(fluid);
 				if (potion != null) {
-					float duration = potion.isBadEffect() ? 600 * dirF : 1200 * dirF;
-					if (potion == MobEffects.INSTANT_HEALTH || potion == MobEffects.INSTANT_DAMAGE) {
-						duration = 1F * dirF;
+					float duration = potion.potion.isBadEffect() ? 600 * durF : 1200 * durF;
+					if (potion.potion == MobEffects.INSTANT_HEALTH || potion.potion == MobEffects.INSTANT_DAMAGE) {
+						duration = 1F * durF;
 					}
-					ret.add(new PotionEffect(potion, MathHelper.ceil(duration), ampF));
+					ret.add(new PotionEffect(potion.potion, MathHelper.ceil(duration), potion.amp + ampF));
 				}
 			} else {
-				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceil(300 * dirF), ampF));
+				ret.add(new PotionEffect(MobEffects.REGENERATION, MathHelper.ceil(300 * durF), ampF));
 			}
 		}
 		return ret;
@@ -247,8 +255,13 @@ public class ItemSilverCup extends FoodItemBase {
 
 		if (cont != null && cont.getTankProperties() != null && drink != null && cont.getTankProperties().length > 0) {
 			FluidStack f = cont.getTankProperties()[0].getContents();
-			float dirF = 1.0F * drink.getMilk().effect;
+			float durF = 1.0F * drink.getMilk().effect;
 			int ampF = drink.getSugar().effect;
+			int l = drink.getAgingLevel();
+			if (l > 0) {
+				ampF++;
+				durF *= l;
+			}
 			if (f != null && f.getFluid() != null) {
 				if (FluidDictionaryDC.matchFluidName(f.getFluid(), "milk") || f.getFluid() == MainInit.tomatoJuice || f
 						.getFluid() == MainInit.soyMilk) {
@@ -256,7 +269,7 @@ public class ItemSilverCup extends FoodItemBase {
 				} else if (f.getFluid() == MainInit.mazai) {
 					tooltip.add(TextFormatting.RED.toString() + I18n.format("dcs.tip.danger_drink"));
 				} else {
-					List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), dirF, ampF);
+					List<PotionEffect> effects = this.getPotionEffect(f.getFluid(), durF, ampF);
 					if (!effects.isEmpty()) {
 						PotionEffect eff = effects.get(0);
 						if (eff != null && eff.getPotion() != null) {
@@ -276,6 +289,9 @@ public class ItemSilverCup extends FoodItemBase {
 					tooltip.add(TextFormatting.BOLD.toString() + "= DRINK CUSTOMIZE =");
 					tooltip.add("Milk: " + drink.getMilk().toString());
 					tooltip.add("Sugar: " + drink.getSugar().toString());
+					if (l > 0) {
+						tooltip.add("Aging Level: " + l);
+					}
 				} else {
 					String mes = "";
 					mes += f.getLocalizedName();
@@ -291,6 +307,9 @@ public class ItemSilverCup extends FoodItemBase {
 						} else {
 							mes += " " + drink.getMilk().toString() + "," + drink.getSugar().toString();
 						}
+					}
+					if (l > 0) {
+						mes += (" (Aged)");
 					}
 					tooltip.add(TextFormatting.BOLD.toString() + mes);
 					tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));

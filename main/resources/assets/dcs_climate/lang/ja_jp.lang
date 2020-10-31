@@ -249,6 +249,7 @@ item.dcs_food_residue_silage.name=サイレージ
 item.dcs_food_residue_ex_yeast.name=酵母エキス
 item.dcs_food_residue_ex_peptone.name=ペプトン
 item.dcs_food_residue_ex_whey.name=ホエイ
+item.dcs_food_residue_bhi.name=増菌用ブロス
 item.dcs_food_medium_simple.name=簡易培地
 item.dcs_food_medium_standard.name=標準培地
 item.dcs_food_medium_potato.name=ジャガイモ培地
@@ -256,9 +257,38 @@ item.dcs_food_medium_giblets.name=乳糖培地
 item.dcs_food_medium_bacteria.name=細菌添加培地
 item.dcs_food_antibiotic_pcn.name=抗生物質 (青)
 item.dcs_food_antibiotic_cp.name=抗生物質 (緑)
+item.dcs_food_antibiotic_anti_zombie.name=ゾンビ治療薬
+item.dcs_food_antibiotic_poison.name=毒薬
+item.dcs_food_antibiotic_zombie.name=ゾンビ化薬
+item.dcs_food_antibiotic_pigman.name=ピッグマン化薬
+item.dcs_food_antibiotic_mushroom.name=ムーシュルーム化薬
+item.dcs_food_antibiotic_mana.name=マナの粉末
+item.dcs_food_inoculum_koji.name=米麹
+
 item.dcs_liquor_bottle_empty.name=空の酒瓶
 item.dcs_liquor_bottle_beer.name=ビール
 item.dcs_liquor_bottle_wine.name=ワイン
+item.dcs_liquor_bottle_sake.name=日本酒
+item.dcs_liquor_bottle_date_wine.name=デーツワイン
+item.dcs_liquor_bottle_whisky.name=ウイスキー
+item.dcs_liquor_bottle_brandy.name=ブランデー
+item.dcs_liquor_bottle_pomace_brandy.name=ポマースブランデー
+item.dcs_liquor_bottle_shotyu.name=焼酎
+item.dcs_liquor_bottle_araq.name=アラック
+item.dcs_liquor_bottle_rum_white.name=ホワイトラム
+item.dcs_liquor_bottle_rum.name=ダークラム
+item.dcs_liquor_bottle_akvavit.name=アクアヴィット
+item.dcs_liquor_bottle_vodka.name=ウォッカ
+item.dcs_liquor_bottle_nether.name=ネザーワイン
+item.dcs_liquor_bottle_ender.name=コーラスリキュール
+item.dcs_rose_water_bottle.name=ローズウォーター
+item.dcs_food_essencial_oil_rose.name=バラの精油
+item.dcs_food_essencial_oil_citrus.name=シトラスの精油
+item.dcs_food_essencial_oil_mint.name=ミントの精油
+item.dcs_food_essencial_oil_birch.name=シラカバの精油
+item.dcs_food_essencial_oil_lotus.name=蓮の精油
+item.dcs_food_essencial_oil_lavender.name=ラベンダーの精油
+
 
 item.dcs_food_pack_milk.name=牛乳パック
 item.dcs_food_pack_water.name=水パック
@@ -1325,6 +1355,10 @@ tile.dcs_device_player_panel_0.name=プレイヤー転送パネル
 tile.dcs_device_incubator_0.name=インキュベーター
 tile.dcs_device_brewing_wood_0.name=木製の醸造樽
 tile.dcs_crop_fertilizer_0.name=元肥ブロック
+tile.dcs_device_brewing_under_0.name=醸造タンク
+tile.dcs_device_brewing_upper_0.name=醸造タンク
+tile.dcs_device_distillator_0.name=蒸留器
+tile.dcs_device_aging_barrel_0.name=熟成樽
 
 tile.dcs_crop_rice_0.name=稲
 tile.dcs_crop_rice_1.name=稲
@@ -1533,9 +1567,30 @@ fluid.dcs.raw_milk=生乳
 tile.dcs_fluidblock_raw_milk_0.name=生乳
 fluid.dcs.steam=蒸気
 tile.dcs_fluidblock_steam_0.name=蒸気
+fluid.dcs.oxygen=酸素
+tile.dcs_fluidblock_oxygen_0.name=酸素
 
 fluid.dcs.beer=ビール
 fluid.dcs.wine=ワイン
+fluid.dcs.sake=日本酒
+fluid.dcs.date=デーツワイン
+fluid.dcs.raw_whisky=ニューポット
+fluid.dcs.whisky=ウイスキー
+fluid.dcs.raw_brandy=未熟なブランデー
+fluid.dcs.brandy=ブランデー
+fluid.dcs.pomace_brandy=ポマースブランデー
+fluid.dcs.shotyu=焼酎
+fluid.dcs.araq=アラック
+fluid.dcs.fermented_sugar=発酵した砂糖汁
+fluid.dcs.white_rum=ホワイトラム
+fluid.dcs.dark_rum=ダークラム
+fluid.dcs.fermented_potato=発酵したジャガイモ汁
+fluid.dcs.akvavit=アクアヴィット
+fluid.dcs.vodka=ウォッカ
+fluid.dcs.nether=ネザーワイン
+tile.dcs_fluidblock_nether_0.name=ネザーワイン
+fluid.dcs.chorus_liquor=コーラスリキュール
+fluid.dcs.rose_water=ローズウォーター
 
 ## tip
 dcs.tip.heat=HeatTier
@@ -1688,6 +1743,8 @@ dcs_climate.pressmold=プレス金型
 dcs_climate.info=説明書
 dcs_climate.microbe=微生物図鑑
 dcs_climate.brewing=醸造
+dcs_climate.still=蒸留
+dcs_climate.aging=樽熟成
 
 ## magic
 dcs.tip.allcharm=プレイヤーインベントリの最上段に置くと効果を発揮します。

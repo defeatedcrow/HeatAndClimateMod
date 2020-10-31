@@ -1,23 +1,29 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.food.FoodCommonProxy;
+import defeatedcrow.hac.food.block.TileAgingBarrel;
 import defeatedcrow.hac.food.block.TileBrewingTankWood;
 import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import defeatedcrow.hac.food.block.TileIncubator;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSteelPot;
+import defeatedcrow.hac.food.block.TileStillPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
+import defeatedcrow.hac.food.gui.ContainerAgingBarrel;
 import defeatedcrow.hac.food.gui.ContainerBrewingTank;
 import defeatedcrow.hac.food.gui.ContainerFluidProcessor;
 import defeatedcrow.hac.food.gui.ContainerIncubator;
 import defeatedcrow.hac.food.gui.ContainerSilkwormBox;
 import defeatedcrow.hac.food.gui.ContainerSteelPot;
+import defeatedcrow.hac.food.gui.ContainerStillPot;
 import defeatedcrow.hac.food.gui.ContainerTeaPot;
+import defeatedcrow.hac.food.gui.GuiAgingBarrel;
 import defeatedcrow.hac.food.gui.GuiBrewingTank;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiIncubator;
 import defeatedcrow.hac.food.gui.GuiSilkwormBox;
 import defeatedcrow.hac.food.gui.GuiSteelPot;
+import defeatedcrow.hac.food.gui.GuiStillPot;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
@@ -121,6 +127,7 @@ import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
 import defeatedcrow.hac.main.event.CombatEvent;
 import defeatedcrow.hac.main.event.DCLootEvent;
+import defeatedcrow.hac.main.event.FoodEventDC;
 import defeatedcrow.hac.main.event.LivingMainEventDC;
 import defeatedcrow.hac.main.event.OnCraftingDC;
 import defeatedcrow.hac.main.event.OnDeathEventDC;
@@ -128,10 +135,16 @@ import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.potion.PotionBirdDC;
+import defeatedcrow.hac.main.potion.PotionDigestiveDC;
+import defeatedcrow.hac.main.potion.PotionEXPAbsorptionDC;
 import defeatedcrow.hac.main.potion.PotionGravityDC;
 import defeatedcrow.hac.main.potion.PotionHeavyBootsDC;
+import defeatedcrow.hac.main.potion.PotionImmunityDC;
 import defeatedcrow.hac.main.potion.PotionNimbleDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
+import defeatedcrow.hac.main.potion.PotionProjectileResistantDC;
+import defeatedcrow.hac.main.potion.PotionReflexionDC;
+import defeatedcrow.hac.main.potion.PotionWarpDC;
 import defeatedcrow.hac.main.potion.PotionWideMiningDC;
 import defeatedcrow.hac.main.recipes.ArmorDyesRecipeDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
@@ -198,6 +211,24 @@ public class CommonMainProxy implements IGuiHandler {
 
 		MainInit.wideMining = new PotionWideMiningDC();
 		DCRegistryUtil.addPotion(MainInit.wideMining, MainInit.wideMiningType, "wideMining");
+
+		MainInit.digestive = new PotionDigestiveDC();
+		DCRegistryUtil.addPotion(MainInit.digestive, MainInit.digestiveType, "digestive");
+
+		MainInit.immunity = new PotionImmunityDC();
+		DCRegistryUtil.addPotion(MainInit.immunity, MainInit.immunityType, "immunity");
+
+		MainInit.warp = new PotionWarpDC();
+		DCRegistryUtil.addPotion(MainInit.warp, MainInit.warpType, "warp");
+
+		MainInit.projectileResistant = new PotionProjectileResistantDC();
+		DCRegistryUtil.addPotion(MainInit.projectileResistant, MainInit.projectileResistantType, "projectileResistant");
+
+		MainInit.reflexion = new PotionReflexionDC();
+		DCRegistryUtil.addPotion(MainInit.reflexion, MainInit.reflexionType, "reflextion");
+
+		MainInit.absorptionEXP = new PotionEXPAbsorptionDC();
+		DCRegistryUtil.addPotion(MainInit.absorptionEXP, MainInit.absorptionEXPType, "absorptionEXP");
 	}
 
 	public void loadEnchantment() {
@@ -499,6 +530,7 @@ public class CommonMainProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new AnvilMoldEvent());
 		MinecraftForge.EVENT_BUS.register(new CombatEvent());
 		MinecraftForge.EVENT_BUS.register(new DCLootEvent());
+		MinecraftForge.EVENT_BUS.register(new FoodEventDC());
 		if (ModuleConfig.magic) {
 			MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
 			MinecraftForge.EVENT_BUS.register(new MagicCommonEvent());
@@ -539,6 +571,10 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerSteelPot((TileSteelPot) tile, player.inventory);
 		if (tile instanceof TileBrewingTankWood)
 			return new ContainerBrewingTank((TileBrewingTankWood) tile, player.inventory);
+		if (tile instanceof TileStillPot)
+			return new ContainerStillPot((TileStillPot) tile, player.inventory);
+		if (tile instanceof TileAgingBarrel)
+			return new ContainerAgingBarrel((TileAgingBarrel) tile, player.inventory);
 		if (tile instanceof TileFluidProcessorBase)
 			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)
@@ -599,6 +635,10 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiSteelPot((TileSteelPot) tile, player.inventory);
 		if (tile instanceof TileBrewingTankWood)
 			return new GuiBrewingTank((TileBrewingTankWood) tile, player.inventory);
+		if (tile instanceof TileStillPot)
+			return new GuiStillPot((TileStillPot) tile, player.inventory);
+		if (tile instanceof TileAgingBarrel)
+			return new GuiAgingBarrel((TileAgingBarrel) tile, player.inventory);
 		if (tile instanceof TileFluidProcessorBase)
 			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)

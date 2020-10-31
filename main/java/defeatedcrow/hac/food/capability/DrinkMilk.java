@@ -12,7 +12,8 @@ public enum DrinkMilk {
 	NONE(0, 1.0F),
 	MILK(1, 2.0F),
 	CREAM(2, 4.0F),
-	SOY(3, 3.0F);
+	SOY(3, 3.0F),
+	CITRUS(4, 3.0F);
 
 	public final float effect;
 	public final int id;
@@ -31,6 +32,8 @@ public enum DrinkMilk {
 			return CREAM;
 		} else if (i == 3) {
 			return SOY;
+		} else if (i == 4) {
+			return CITRUS;
 		}
 		return NONE;
 	}
@@ -54,6 +57,8 @@ public enum DrinkMilk {
 						return CREAM;
 					} else if (name.contains("milk") || name.contains("Milk")) {
 						return MILK;
+					} else if (name.contains("lemon") || name.contains("lime")) {
+						return CITRUS;
 					}
 				}
 			}
@@ -68,6 +73,8 @@ public enum DrinkMilk {
 				} else if (name.contains("milk") || name.contains("Milk")) {
 					if (ret != SOY)
 						ret = MILK;
+				} else if (name.contains("lemon") || name.contains("lime")) {
+					ret = CITRUS;
 				}
 			}
 			return ret;

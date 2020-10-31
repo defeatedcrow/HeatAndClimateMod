@@ -10,8 +10,12 @@ public interface IDrinkCustomize {
 
 	DrinkSugar getSugar();
 
+	int getAgingLevel();
+
 	boolean setMilk(DrinkMilk milk);
 
 	boolean setSugar(DrinkSugar sugar);
+
+	boolean setAging(int level);
 
 }

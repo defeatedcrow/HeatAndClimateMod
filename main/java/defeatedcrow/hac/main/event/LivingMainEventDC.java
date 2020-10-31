@@ -27,6 +27,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
@@ -61,10 +62,17 @@ public class LivingMainEventDC {
 			if (event.getY() > 65 && event.getY() < 120) {
 				int num = CaravanGenPos.getCaravanPartNum(cx, cz, living.getEntityWorld());
 				if (num > -1) {
-					int cx2 = (num % 3) + cx - 1;
-					int cz2 = (num / 3) + cz - 1;
-					if (living.world.isBlockLoaded(new BlockPos(7 + cx2 * 16, 61, 7 + cz2 * 16)) && CaravanGenPos
-							.getType(event.getWorld(), cx2, cz2) != CaravanType.BROKEN) {
+					int nx = (num % 3) - 1;
+					int nz = (num / 3) - 1;
+					int cx2 = cx + nx;
+					int cz2 = cz + nz;
+					int height = CaravanGenPos.getCoreHeight(cx2, cz2, event.getWorld());
+					int px = cx << 4;
+					int pz = cz << 4;
+					int py = height;
+					BlockPos p1 = new BlockPos(px + 7, height - 7, pz + 7);
+					if (event.getWorld().isBlockLoaded(p1) && CaravanGenPos.getType(event
+							.getWorld(), p1) != CaravanType.BROKEN) {
 						event.setResult(Result.DENY);
 					}
 				}
@@ -87,6 +95,8 @@ public class LivingMainEventDC {
 		this.onLivingUpdate(event);
 	}
 
+	private int count;
+
 	public void onPlayerUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
 		if (entity != null && !entity.isRiding()) {
@@ -99,6 +109,18 @@ public class LivingMainEventDC {
 				if (player.isPotionActive(MainInit.bird)) {
 					// bird potion
 					player.fallDistance = 0.0F;
+				}
+				if (player.isPotionActive(MainInit.warp)) {
+					if (player.collidedHorizontally) {
+						EnumFacing face = player.getHorizontalFacing();
+						BlockPos pos = player.getPosition().offset(face, 2).up();
+						if (player.world.getBlockState(pos).getBoundingBox(player.world, pos) == null && player.world
+								.getBlockState(pos.up()).getBoundingBox(player.world, pos.up()) == null) {
+							player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 0.125D, pos.getZ() + 0.5D);
+							player.fallDistance = 0.0F;
+							player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
+						}
+					}
 				}
 
 				if (!player.world.isRemote && player instanceof EntityPlayerMP) {
@@ -131,6 +153,13 @@ public class LivingMainEventDC {
 				}
 			}
 		}
+	}
+
+	boolean isCollidedBlock(EntityLivingBase living) {// プレイヤー周囲ブロックへのコリジョンチェック
+		World world = living.getEntityWorld();
+		EnumFacing f = living.getHorizontalFacing();
+		AxisAlignedBB bb = living.getEntityBoundingBox().grow(0.1D, 0, 0.1D);
+		return !world.getCollisionBoxes(living, bb).isEmpty();
 	}
 
 	public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {

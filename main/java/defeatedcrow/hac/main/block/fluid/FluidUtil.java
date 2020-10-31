@@ -104,8 +104,8 @@ public class FluidUtil {
 		list.add(b + "fuel_oil_still");
 		list.add(b + "nitric_acid_still");
 		list.add(b + "sulfuric_acid_still");
-		list.add(b + "beer_still");
-		list.add(b + "wine_still");
+		list.add(b + "oxygen_still");
+
 		return list;
 	}
 

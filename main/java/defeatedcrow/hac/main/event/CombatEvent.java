@@ -1,12 +1,15 @@
 package defeatedcrow.hac.main.event;
 
+import codechicken.lib.math.MathHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.MainCoreConfig;
+import defeatedcrow.hac.main.entity.EntityIronBullet;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -14,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -25,12 +29,17 @@ public class CombatEvent {
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
+		if (living == null)
+			return;
+
 		DamageSource source = event.getSource();
 		float newDam = event.getAmount();
 		if (source instanceof EntityDamageSource) {
 			Entity owner = ((EntityDamageSource) source).getTrueSource();
 			if (owner != null && owner instanceof EntityLivingBase && owner.isEntityAlive()) {
 				EntityLivingBase ownerLiv = (EntityLivingBase) owner;
+
+				// enchantment
 
 				int venom = EnchantmentHelper.getEnchantmentLevel(MainInit.venom, ownerLiv.getHeldItemMainhand());
 				if (MainCoreConfig.e_venom && venom > 0) {
@@ -56,8 +65,57 @@ public class CombatEvent {
 						}
 					}
 				}
+
+				// potion effect
+
+				boolean b = false;
+
+				if (source instanceof EntityDamageSourceIndirect) {
+					if (living.isPotionActive(MainInit.reflexion)) {
+						b = true;
+						PotionEffect eff = living.getActivePotionEffect(MainInit.reflexion);
+						float damage = 4.0F + eff.getAmplifier() * 2.0F;
+						Entity proj = source.getImmediateSource();
+						double dx = owner.posX - living.posX;
+						double dz = owner.posZ - living.posZ;
+						double dy = owner.getEntityBoundingBox().minY + (owner.height / 2D) - source
+								.getImmediateSource().posY;
+						EntityIronBullet bullet = new EntityIronBullet(living.world, living);
+						bullet.setDamage(damage);
+						bullet.shoot(dx, dy, dz, 2.0F, 6.0F);
+						bullet.playSound(SoundEvents.BLOCK_ANVIL_USE, 1.0F, 4.0F);
+						if (!living.world.isRemote) {
+							living.world.spawnEntity(bullet);
+						}
+					} else if (living.isPotionActive(MainInit.projectileResistant)) {
+						PotionEffect eff = living.getActivePotionEffect(MainInit.projectileResistant);
+						float red = 1.0F - (eff.getAmplifier() * 0.2F);
+						if (red < 0F) {
+							b = true;
+						} else {
+							newDam *= red;
+							event.setAmount(newDam);
+						}
+					}
+				} else if (living.isPotionActive(MainInit.absorptionEXP)) {
+					PotionEffect eff = living.getActivePotionEffect(MainInit.absorptionEXP);
+					float abs = eff.getAmplifier() * 0.2F * newDam;
+					b = true;
+					if (!living.world.isRemote) {
+						EntityXPOrb orb = new EntityXPOrb(living.world, living.posX, living.posY, living.posZ,
+								MathHelper.ceil(abs));
+						living.world.spawnEntity(orb);
+					}
+				}
+
+				if (b) {
+					event.setCanceled(true);
+				}
+
 			}
+
 		}
+
 	}
 
 	@SubscribeEvent

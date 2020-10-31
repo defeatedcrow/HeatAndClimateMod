@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustPeptone"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllmeatraw"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustSalt"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_broth",
+  "count": 3,
+  "data": 0
+ }
+}

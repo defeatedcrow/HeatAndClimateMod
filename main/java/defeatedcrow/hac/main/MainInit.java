@@ -350,6 +350,24 @@ public class MainInit {
 	public static Potion wideMining;
 	public static PotionType wideMiningType;
 
+	public static Potion digestive;
+	public static PotionType digestiveType;
+
+	public static Potion immunity;
+	public static PotionType immunityType;
+
+	public static Potion warp;
+	public static PotionType warpType;
+
+	public static Potion projectileResistant;
+	public static PotionType projectileResistantType;
+
+	public static Potion reflexion;
+	public static PotionType reflexionType;
+
+	public static Potion absorptionEXP;
+	public static PotionType absorptionEXPType;
+
 	public static Enchantment venom;
 	public static Enchantment corrosion;
 	public static Enchantment robber;
@@ -390,6 +408,7 @@ public class MainInit {
 	public static Fluid nitrogen;
 	public static Fluid ethanol;
 	public static Fluid steam;
+	public static Fluid oxygen;
 
 	public static Block oilBlock;
 	public static Block greenTeaBlock;
@@ -412,5 +431,6 @@ public class MainInit {
 	public static Block nitrogenBlock;
 	public static Block ethanolBlock;
 	public static Block steamBlock;
+	public static Block oxygenBlock;
 
 }

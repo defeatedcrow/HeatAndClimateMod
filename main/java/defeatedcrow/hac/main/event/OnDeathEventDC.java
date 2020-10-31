@@ -97,7 +97,7 @@ public class OnDeathEventDC {
 	}
 
 	@SubscribeEvent
-	public void onDrop(LivingDropsEvent event) {
+	public void onDropLoot(LivingDropsEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
 		DamageSource source = event.getSource();
 		int level = event.getLootingLevel();

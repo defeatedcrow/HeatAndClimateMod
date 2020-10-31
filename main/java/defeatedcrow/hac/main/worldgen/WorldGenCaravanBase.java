@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.worldgen;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.build.BlockSlabBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -32,29 +33,34 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 
 		int num = CaravanGenPos.getCaravanPartNum(cx, cz, world);
 		if (num > -1) {
-			int cx2 = (num % 3) + cx - 1;
-			int cz2 = (num / 3) + cz - 1;
+			int nx = (num % 3) - 1;
+			int nz = (num / 3) - 1;
+			int cx2 = cx + nx;
+			int cz2 = cz + nz;
 			boolean check = CaravanGenPos.canGenerateBiome(cx2, cz2, world);
 			int check2 = CaravanGenPos.isDupe(cx2, cz2, world);
-			// DCLogger.infoLog("test1 Biome: x " + cx2 + ", z " + cz2 + ", " + check);
-			// DCLogger.infoLog("test1 DupeCheck: x " + cx2 + ", z " + cz2 + ", " + check2);
+			// DCLogger.debugInfoLog("test1 Biome: x " + cx2 + ", z " + cz2 + ", " + check);
+			// DCLogger.debugInfoLog("test1 DupeCheck: x " + cx2 + ", z " + cz2 + ", " + check2);
 			if (check && check2 == 0) {
-				if (num == 4) {
-					generateCore(rand, cx, cz, world);
-					CaravanGenPos.chunk = prov.getLoadedChunk(cx, cz);
-				} else {
-					generatePart(num, rand, cx, cz, world);
-				}
+				int height = CaravanGenPos.getCoreHeight(cx2, cz2, world);
+				if (height > 40 && height < 100) {
+					if (num == 4) {
+						generateCore(rand, cx, cz, height, world);
+						CaravanGenPos.chunk = prov.getLoadedChunk(cx, cz);
+					} else {
+						generatePart(num, rand, cx, cz, height, world);
+					}
 
-				// DCLogger.debugInfoLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2);
+					DCLogger.debugInfoLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2 + " from " + cx + ", " + cz);
+				}
 			}
 		}
 	}
 
-	public void generateCore(Random rand, int cx, int cz, World world) {
+	public void generateCore(Random rand, int cx, int cz, int h, World world) {
 		int px = cx << 4;
 		int pz = cz << 4;
-		int py = 68;
+		int py = h;
 		for (int y = -7; y < 40; y++) {
 			for (int x = 0; x < 16; x++) {
 				for (int z = 0; z < 16; z++) {
@@ -66,18 +72,21 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		}
 	}
 
-	public void generatePart(int num, Random rand, int cx, int cz, World world) {
+	public void generatePart(int num, Random rand, int cx, int cz, int h, World world) {
 		int px = cx << 4;
 		int pz = cz << 4;
-		int py = 68;
+		int py = h;
 
 		int minX = 0;
 		int minZ = 0;
 		int maxX = 16;
 		int maxZ = 16;
-		int cx2 = (num % 3) - 1;
-		int cz2 = (num / 3) - 1;
-		int[] type = CaravanGenPos.getRoomNum(cx + cx2 - 1, cz + cz2 - 1, world);
+		int nx = (num % 3) - 1;
+		int nz = (num / 3) - 1;
+		int cx2 = cx + nx;
+		int cz2 = cz + nz;
+		int[] type = CaravanGenPos.getRoomNum(cx2, cz2, world);
+		// DCLogger.debugInfoLog("Caravanserai Room Gen" + num + " & " + type);
 		int gate = type[0] * 2 + 1;
 		int minX2 = 0;
 		int minZ2 = 0;
@@ -95,19 +104,19 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			face = EnumFacing.WEST;
 		}
 
-		if (cx2 == -1) {
+		if (nx == -1) {
 			maxX = 13;
 			maxX2 = 15;
 		}
-		if (cx2 == 1) {
+		if (nx == 1) {
 			minX = 3;
 			minX2 = 1;
 		}
-		if (cz2 == -1) {
+		if (nz == -1) {
 			maxZ = 13;
 			maxZ2 = 15;
 		}
-		if (cz2 == 1) {
+		if (nz == 1) {
 			minZ = 3;
 			minZ2 = 1;
 		}

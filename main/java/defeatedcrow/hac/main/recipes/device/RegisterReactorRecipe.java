@@ -73,11 +73,13 @@ public class RegisterReactorRecipe {
 
 		// 液体窒素
 		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.nitrogen,
-				1000), null, DCHeatTier.ABSOLUTE, (ItemStack) null, null, null, new Object[] { "dustCoal" });
+				1000), new FluidStack(MainInit.oxygen,
+						500), DCHeatTier.ABSOLUTE, (ItemStack) null, null, null, new Object[] { "dustCoal" });
 
 		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.nitrogen,
-				1000), null, DCHeatTier.ABSOLUTE, (ItemStack) null, null, null, new Object[] {
-					new ItemStack(Items.COAL, 1, 1) });
+				1000), new FluidStack(MainInit.oxygen,
+						500), DCHeatTier.ABSOLUTE, (ItemStack) null, null, null, new Object[] {
+							new ItemStack(Items.COAL, 1, 1) });
 
 		// 丸石生成
 		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(
@@ -219,8 +221,8 @@ public class RegisterReactorRecipe {
 
 			// Au or Ni 水素ガス
 			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.hydrogen,
-					100), null, DCHeatTier.NORMAL, new ItemStack(Items.GOLD_INGOT, 1, 0), new FluidStack(
-							FluidRegistry.WATER, 1000), null, new Object[] { "dustAlkali" });
+					200), new FluidStack(MainInit.oxygen, 200), DCHeatTier.NORMAL, new ItemStack(Items.GOLD_INGOT, 1,
+							0), new FluidStack(FluidRegistry.WATER, 1000), null, new Object[] { "dustAlkali" });
 
 			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.hydrogen,
 					1000), null, DCHeatTier.SMELTING, new ItemStack(MachineInit.catalyst, 1, 0), new FluidStack(

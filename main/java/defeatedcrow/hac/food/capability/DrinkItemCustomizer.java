@@ -11,6 +11,8 @@ public class DrinkItemCustomizer implements IDrinkCustomize {
 
 	public final ItemStack cont;
 
+	public static final String AGING_KEY = "dcs.drink.aging";
+
 	public DrinkItemCustomizer(ItemStack item) {
 		cont = item;
 	}
@@ -44,6 +46,19 @@ public class DrinkItemCustomizer implements IDrinkCustomize {
 	}
 
 	@Override
+	public int getAgingLevel() {
+		if (DCUtil.isEmpty(cont)) {
+			return 0;
+		}
+		NBTTagCompound tag = cont.getTagCompound();
+		if (tag != null && tag.hasKey(AGING_KEY)) {
+			byte i = tag.getByte(AGING_KEY);
+			return i;
+		}
+		return 0;
+	}
+
+	@Override
 	public boolean setMilk(DrinkMilk milk) {
 		NBTTagCompound tag = cont.getTagCompound();
 		if (tag == null) {
@@ -61,6 +76,20 @@ public class DrinkItemCustomizer implements IDrinkCustomize {
 			tag = new NBTTagCompound();
 		}
 		tag.setByte(DrinkSugar.getTagKey(), (byte) sugar.id);
+		cont.setTagCompound(tag);
+		return true;
+	}
+
+	@Override
+	public boolean setAging(int level) {
+		NBTTagCompound tag = cont.getTagCompound();
+		if (tag == null) {
+			tag = new NBTTagCompound();
+		}
+		if (level > 100)
+			level = 100;
+
+		tag.setByte(AGING_KEY, (byte) level);
 		cont.setTagCompound(tag);
 		return true;
 	}

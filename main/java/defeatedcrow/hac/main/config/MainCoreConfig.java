@@ -33,6 +33,8 @@ public class MainCoreConfig {
 
 	public static double gun_damage = 12.0D;
 
+	public static int aging_day = 60;
+
 	public static String[] blocknames = new String[] {
 		"minecraft:stone:32767",
 		"minecraft:dirt:32767",
@@ -87,6 +89,9 @@ public class MainCoreConfig {
 			Property e_rob = cfg
 					.get("enchantment setting", "Enable Robber", e_robber, "Enable effect of the Highway Robber Enchantment.");
 
+			Property aging_i = cfg
+					.get("item setting", "Aging Day", aging_day, "Set the number of days required to age the drink in a barrel.");
+
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
 
@@ -107,6 +112,8 @@ public class MainCoreConfig {
 			e_robber = e_rob.getBoolean();
 
 			blocknames = b_dia.getStringList();
+
+			aging_day = aging_i.getInt();
 
 			// TimeZone tz = TimeZone.getTimeZone(timeZone);
 			// if (tz != null) {

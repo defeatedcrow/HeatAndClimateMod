@@ -61,9 +61,21 @@ public class CaravanGenEvent {
 				Chunk chunk = event.getChunk();
 				int cx = chunk.x;
 				int cz = chunk.z;
+
+				int num = CaravanGenPos.getCaravanPartNum(cx, cz, world);
+				if (num < 0) {
+					return;
+				}
+
+				int nx = (num % 3) - 1;
+				int nz = (num / 3) - 1;
+				int cx2 = cx + nx;
+				int cz2 = cz + nz;
+				int height = CaravanGenPos.getCoreHeight(cx2, cz2, world);
+
 				int px = cx << 4;
 				int pz = cz << 4;
-				int py = 68;
+				int py = height;
 				BlockPos pos = new BlockPos(px, py, pz);
 				EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 				IBlockState s1 = world.getBlockState(pos.add(8, -7, 8));
@@ -74,9 +86,8 @@ public class CaravanGenEvent {
 				if (type == CaravanType.BROKEN) {
 					type = CaravanType.getType(s4.getBlock());
 				}
-				int num = CaravanGenPos.getCaravanPartNum(cx, cz, world);
 
-				if (num >= 0 && getSeason(s1) != null && type != CaravanType.BROKEN) {
+				if (getSeason(s1) != null && type != CaravanType.BROKEN) {
 					if (type == CaravanType.STANDBY || type == CaravanType.UNINIT) {
 						if (num == 4) {
 							if (ModuleConfig.village) {
@@ -85,13 +96,13 @@ public class CaravanGenEvent {
 									ForgeRegistry registry = (ForgeRegistry) ForgeRegistries.VILLAGER_PROFESSIONS;
 									int id = registry.getID(MainInit.trader);
 									EntityVillager vil1 = new EntityVillager(world, id);
-									vil1.setPosition(px, 69, pz);
+									vil1.setPosition(px, py + 1, pz);
 									world.spawnEntity(vil1);
 									EntityVillager vil2 = new EntityVillager(world, id);
-									vil2.setPosition(px + 1D, 69, pz);
+									vil2.setPosition(px + 1D, py + 1, pz);
 									world.spawnEntity(vil2);
 									EntityLlama lla = new EntityLlama(world);
-									lla.setPosition(px + 3D, 69, pz);
+									lla.setPosition(px + 3D, py + 1, pz);
 									world.spawnEntity(lla);
 								} else {
 									List<Entity> list = world.getEntitiesInAABBexcluding(null, new AxisAlignedBB(pos
@@ -118,9 +129,8 @@ public class CaravanGenEvent {
 								}
 							}
 						} else {
-							int cx2 = (num % 3) - 1;
-							int cz2 = (num / 3) - 1;
-							int[] room = CaravanGenPos.getRoomNum(cx + cx2 - 1, cz + cz2 - 1, world);
+							int[] room = CaravanGenPos.getRoomNum(cx + nx, cz + nz, world);
+							// DCLogger.debugInfoLog("Caravanserai Room Loading" + num + " & " + room);
 							int gate = room[0] * 2 + 1;
 
 							EnumFacing face = EnumFacing.SOUTH;

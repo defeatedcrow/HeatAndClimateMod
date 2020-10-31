@@ -8,8 +8,8 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
-import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +22,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -120,25 +119,16 @@ public class BlockPail extends DCTileBlock {
 		return EnumBlockRenderType.MODEL;
 	}
 
-	@Override
-	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
-		return calcRedstone(worldIn.getTileEntity(pos));
-	}
-
-	private int calcRedstone(TileEntity te) {
-		if (te != null && te instanceof TilePail) {
-			TilePail ibc = (TilePail) te;
-			DCTank tank = ibc.inputT;
-			float amo = tank.getFluidAmount() * 15.0F / tank.getCapacity();
-			int lit = MathHelper.floor(amo);
-			return lit;
-		}
-		return 0;
-	}
+	// redstone
 
 	@Override
 	public boolean hasComparatorInputOverride(IBlockState state) {
 		return true;
+	}
+
+	@Override
+	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+		return MainUtil.calcTankRedstone(worldIn.getTileEntity(pos));
 	}
 
 }

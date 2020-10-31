@@ -277,7 +277,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 						if (match) {
 							inRecipe = true;
 							required.remove(next);
-							this.decrStackSize(i, 1);
+							this.decrStackSize(i, count);
 							break;
 						}
 					}

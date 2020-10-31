@@ -18,7 +18,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class RegisterFluidRecipe {
 
-	public static boolean addEthanolRecipe = true;
+	public static boolean addEthanolRecipe = !ModuleConfig.liquor;
 
 	public static void load() {
 

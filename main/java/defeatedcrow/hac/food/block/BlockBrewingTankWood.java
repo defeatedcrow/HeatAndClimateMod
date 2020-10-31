@@ -12,11 +12,11 @@ import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -91,7 +91,10 @@ public class BlockBrewingTankWood extends DCTileBlock {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(DCName.REQUIRE_CLIMATE.getLocalizedName());
+			tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE
+					.toString() + "COOL " + TextFormatting.RED.toString() + "~ HOT");
+			tooltip.add(DCName.HUM.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "NORMAL ~ WET");
+			tooltip.add(DCName.AIR.getLocalizedName() + ": " + TextFormatting.GREEN.toString() + "NORMAL-");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add(DCName.OUTPUT_FLUID.getLocalizedName());
 		} else {
@@ -107,7 +110,7 @@ public class BlockBrewingTankWood extends DCTileBlock {
 
 	@Override
 	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
-		return Container.calcRedstone(worldIn.getTileEntity(pos));
+		return MainUtil.calcTankRedstone(worldIn.getTileEntity(pos));
 	}
 
 	@Override

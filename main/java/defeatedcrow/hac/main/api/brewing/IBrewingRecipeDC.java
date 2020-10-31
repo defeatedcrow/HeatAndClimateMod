@@ -27,6 +27,10 @@ public interface IBrewingRecipeDC {
 	@Nullable
 	FluidStack getOutputFluid();
 
+	int getPriority();
+
+	void setPriority(int i);
+
 	/**
 	 * macth条件判定用、鉱石辞書変換後のInputリスト
 	 */

@@ -5,8 +5,8 @@ import java.util.Random;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.worldgen.CaravanGenEvent.CaravanType;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -56,6 +56,31 @@ public class CaravanGenPos {
 			}
 		}
 		return -1;
+	}
+
+	public static int getCoreHeight(int cx, int cz, World world) {
+		int px = cx << 4;
+		int pz = cz << 4;
+		int h = -1;
+		for (int y = 50; y < 100; y++) {
+			BlockPos p1 = new BlockPos(px + 7, y, pz + 7);
+			if (getType(world, p1) != CaravanType.BROKEN) {
+				h = y + 7;
+				return h;
+			}
+			if (!isReplaceable(world, p1) && isReplaceable(world, p1.up())) {
+				h = y;
+			}
+		}
+		return h;
+	}
+
+	public static boolean isReplaceable(World world, BlockPos pos) {
+		net.minecraft.block.state.IBlockState state = world.getBlockState(pos);
+		if (state.getMaterial().isLiquid())
+			return false;
+		return state.getBlock().isAir(state, world, pos) || state.getMaterial().isReplaceable() || state
+				.getMaterial() == Material.LEAVES || state.getMaterial() == Material.WOOD;
 	}
 
 	public static boolean isSuitableChunk(int cx, int cz, World world) {
@@ -108,7 +133,7 @@ public class CaravanGenPos {
 				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary
 						.hasType(biome, BiomeDictionary.Type.SAVANNA);
 				boolean b2 = !BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) && !BiomeDictionary
-						.hasType(biome, BiomeDictionary.Type.MOUNTAIN) && biome != Biomes.SAVANNA_PLATEAU;
+						.hasType(biome, BiomeDictionary.Type.MOUNTAIN);
 				return b1 && b2;
 			}
 		}
@@ -128,8 +153,8 @@ public class CaravanGenPos {
 		return ret;
 	}
 
-	public static CaravanType getType(World world, int x, int z) {
-		IBlockState state = world.getBlockState(new BlockPos(7 + x * 16, 61, 7 + z * 16));
+	public static CaravanType getType(World world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
 		if (state != null) {
 			Block block = state.getBlock();
 			if (block == Blocks.IRON_BLOCK) {

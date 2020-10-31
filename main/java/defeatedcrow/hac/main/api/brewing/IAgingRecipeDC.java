@@ -1,6 +1,6 @@
 package defeatedcrow.hac.main.api.brewing;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
 import defeatedcrow.hac.api.climate.IClimate;
 import net.minecraftforge.fluids.FluidStack;
@@ -11,11 +11,13 @@ import net.minecraftforge.fluids.FluidStack;
  */
 public interface IAgingRecipeDC {
 
-	@Nullable
+	@Nonnull
 	FluidStack getInputFluid();
 
-	@Nullable
+	@Nonnull
 	FluidStack getOutputFluid();
+
+	int agingDay();
 
 	/**
 	 * Input条件判定

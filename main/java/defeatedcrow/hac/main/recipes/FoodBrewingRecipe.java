@@ -30,6 +30,8 @@ public class FoodBrewingRecipe implements IBrewingRecipeDC {
 	private final FluidStack outputF;
 	private static final ArrayList<Object> EMPTY = new ArrayList<Object>();
 
+	private int priority = 1;
+
 	public FoodBrewingRecipe(ItemStack o, FluidStack oF, FluidStack iF, Object... inputs) {
 		input = inputs;
 		inputF = iF;
@@ -61,6 +63,11 @@ public class FoodBrewingRecipe implements IBrewingRecipeDC {
 				}
 			}
 		}
+	}
+
+	public FoodBrewingRecipe priority(int i) {
+		setPriority(i);
+		return this;
 	}
 
 	@Override
@@ -190,7 +197,7 @@ public class FoodBrewingRecipe implements IBrewingRecipeDC {
 	@Override
 	public boolean matchClimate(IClimate climate) {
 		if (climate != null) {
-			if (climate.getHeat().getID() > DCHeatTier.HOT.getID() || climate.getHeat().getID() < DCHeatTier.COLD
+			if (climate.getHeat().getID() > DCHeatTier.HOT.getID() || climate.getHeat().getID() < DCHeatTier.COOL
 					.getID()) {
 				return false;
 			}
@@ -208,6 +215,16 @@ public class FoodBrewingRecipe implements IBrewingRecipeDC {
 	@Override
 	public boolean additionalRequire(World world, BlockPos pos) {
 		return true;
+	}
+
+	@Override
+	public int getPriority() {
+		return priority;
+	}
+
+	@Override
+	public void setPriority(int i) {
+		priority = i;
 	}
 
 }

@@ -1,24 +1,37 @@
 package defeatedcrow.hac.food;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
+import defeatedcrow.hac.food.block.TileAgingBarrel;
+import defeatedcrow.hac.food.block.TileBrewingTankUnder;
+import defeatedcrow.hac.food.block.TileBrewingTankUpper;
 import defeatedcrow.hac.food.block.TileBrewingTankWood;
 import defeatedcrow.hac.food.block.TileIncubator;
 import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSkillet;
 import defeatedcrow.hac.food.block.TileSteelPot;
+import defeatedcrow.hac.food.block.TileStillPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockLotusN;
 import defeatedcrow.hac.food.block.crop.TileEntityLotus;
 import defeatedcrow.hac.food.client.*;
 import defeatedcrow.hac.food.entity.*;
+import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.ClientMainProxy;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.BlockFluidBase;
@@ -30,7 +43,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class FoodClientProxy {
 
 	public static void loadConst() {
-
+		JsonBakery.instance.addTex(getTexList());
 	}
 
 	public static void loadEntity() {
@@ -217,6 +230,11 @@ public class FoodClientProxy {
 		ClientMainProxy.registerTileEntity(TileEntityLotus.class, "dcs_te_crop_lotus", new TESRLotusCrop());
 		ClientMainProxy.registerTileEntity(TileIncubator.class, "dcs_te_incubator", new TESRIncubator());
 		ClientMainProxy.registerTileEntity(TileBrewingTankWood.class, "dcs_te_brewing_wood", new TESRBrewingTankWood());
+		ClientMainProxy
+				.registerTileEntity(TileBrewingTankUnder.class, "dcs_te_brewing_under", new TESRBrewingTankUnder());
+		GameRegistry.registerTileEntity(TileBrewingTankUpper.class, "dcs_te_brewing_upper");
+		ClientMainProxy.registerTileEntity(TileStillPot.class, "dcs_te_distillator", new TESRStill());
+		ClientMainProxy.registerTileEntity(TileAgingBarrel.class, "dcs_te_aging_barrel", new TESRAgingBarrel());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -259,11 +277,12 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.drink, ClimateCore.PACKAGE_ID, "dcs_food_drink", "food", 2);
 		instance.regSimpleItem(FoodInit.dip, ClimateCore.PACKAGE_ID, "dcs_food_dipsauce", "food", 2);
 
-		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 20);
+		instance.regSimpleItem(FoodInit.paperPack, ClimateCore.PACKAGE_ID, "dcs_food_pack", "food", 21);
 
 		instance.regSimpleItem(FoodInit.medium, ClimateCore.PACKAGE_ID, "dcs_food_medium", "food", 4);
+		instance.regSimpleItem(FoodInit.broth, ClimateCore.PACKAGE_ID, "dcs_food_broth", "food", 1);
 		instance.regSimpleItem(FoodInit.residue, ClimateCore.PACKAGE_ID, "dcs_food_residue", "food", 6);
-		instance.regSimpleItem(FoodInit.antibiotic, ClimateCore.PACKAGE_ID, "dcs_food_antibiotic", "food", 1);
+		instance.regSimpleItem(FoodInit.antibiotic, ClimateCore.PACKAGE_ID, "dcs_food_antibiotic", "food", 7);
 		instance.regSimpleItem(FoodInit.unidentified, ClimateCore.PACKAGE_ID, "dcs_food_unidentified", "food", 4);
 		instance.regSimpleItem(FoodInit.bacillus, ClimateCore.PACKAGE_ID, "dcs_food_microbe_bacillus", "food", 2);
 		instance.regSimpleItem(FoodInit.coliformes, ClimateCore.PACKAGE_ID, "dcs_food_microbe_coliformes", "food", 2);
@@ -275,7 +294,10 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.slimeMold, ClimateCore.PACKAGE_ID, "dcs_food_microbe_slime", "food", 2);
 		instance.regSimpleItem(FoodInit.mushroom, ClimateCore.PACKAGE_ID, "dcs_food_microbe_musuroom", "food", 2);
 		instance.regSimpleItem(FoodInit.chickInEgg, ClimateCore.PACKAGE_ID, "dcs_food_chick", "food", 0);
-		instance.regSimpleItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_ID, "dcs_liquor_bottle", "food", 2);
+		instance.regSimpleItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_ID, "dcs_liquor_bottle", "food", 15);
+		instance.regSimpleItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_ID, "dcs_rose_water_bottle", "food", 15);
+		instance.regSimpleItem(FoodInit.essencialOil, ClimateCore.PACKAGE_ID, "dcs_food_essencial_oil", "food", 5);
+		instance.regSimpleItem(FoodInit.inoculum, ClimateCore.PACKAGE_ID, "dcs_food_inoculum", "food", 0);
 
 		// block
 
@@ -295,7 +317,11 @@ public class FoodClientProxy {
 		instance.regSimpleBlock(FoodInit.silkwormBox, ClimateCore.PACKAGE_ID, "dcs_device_silkworm_box", "device", 0);
 		instance.regTEBlock(FoodInit.incubator, ClimateCore.PACKAGE_ID, "dcs_device_incubator", "machine", 0);
 		instance.regTEBlock(FoodInit.brewingTankWood, ClimateCore.PACKAGE_ID, "dcs_device_brewing_wood", "machine", 0);
+		instance.regTEBlock(FoodInit.brewingTank, ClimateCore.PACKAGE_ID, "dcs_device_brewing_under", "machine", 0);
+		instance.regTEBlock(FoodInit.brewingTankUpper, ClimateCore.PACKAGE_ID, "dcs_device_brewing_upper", "machine", 0);
 		instance.regSimpleBlock(FoodInit.baseFertilizer, ClimateCore.PACKAGE_ID, "dcs_crop_fertilizer", "crop", 0);
+		instance.regTEBlock(FoodInit.distillator, ClimateCore.PACKAGE_ID, "dcs_device_distillator", "machine", 0);
+		instance.regTEBlock(FoodInit.barrel, ClimateCore.PACKAGE_ID, "dcs_device_aging_barrel", "machine", 0);
 
 		ModelLoader.setCustomStateMapper(FoodInit.cropLotus, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL)
 				.build());
@@ -345,8 +371,44 @@ public class FoodClientProxy {
 							"dcs_climate:crop/dcs_crop_grape" + i, "inventory"));
 		}
 
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(FoodInit.netherWineBlock), new ItemMeshDefinition() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nether", "fluid");
+
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return fluidModel;
+			}
+		});
+		ModelLoader.setCustomStateMapper(FoodInit.netherWineBlock, new StateMapperBase() {
+			final ModelResourceLocation fluidModel = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nether", "fluid");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return fluidModel;
+			}
+		});
+
 		// leaves color
 		MinecraftForge.EVENT_BUS.register(new LeavesColorsDC());
+	}
+
+	public static List<String> getTexList() {
+		List<String> list = new ArrayList<String>();
+		String b = "dcs_climate:blocks/fluid/";
+		list.add(b + "beer_still");
+		list.add(b + "wine_still");
+		list.add(b + "akvavit_still");
+		list.add(b + "brandy_still");
+		list.add(b + "chorus_liquor_still");
+		list.add(b + "clear_liquor_still");
+		list.add(b + "rose_water_still");
+		list.add(b + "rum_still");
+		list.add(b + "whisky_still");
+		list.add(b + "wine_still");
+
+		return list;
 	}
 
 }

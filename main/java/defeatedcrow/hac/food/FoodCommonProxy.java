@@ -1,11 +1,15 @@
 package defeatedcrow.hac.food;
 
+import defeatedcrow.hac.food.block.TileAgingBarrel;
+import defeatedcrow.hac.food.block.TileBrewingTankUnder;
+import defeatedcrow.hac.food.block.TileBrewingTankUpper;
 import defeatedcrow.hac.food.block.TileBrewingTankWood;
 import defeatedcrow.hac.food.block.TileIncubator;
 import defeatedcrow.hac.food.block.TilePotteryPot;
 import defeatedcrow.hac.food.block.TileSilkwormBox;
 import defeatedcrow.hac.food.block.TileSkillet;
 import defeatedcrow.hac.food.block.TileSteelPot;
+import defeatedcrow.hac.food.block.TileStillPot;
 import defeatedcrow.hac.food.block.TileTeaPot;
 import defeatedcrow.hac.food.block.crop.TileEntityLotus;
 import defeatedcrow.hac.food.entity.*;
@@ -23,6 +27,10 @@ public class FoodCommonProxy {
 		GameRegistry.registerTileEntity(TileEntityLotus.class, "dcs_te_crop_lotus");
 		GameRegistry.registerTileEntity(TileIncubator.class, "dcs_te_incubator");
 		GameRegistry.registerTileEntity(TileBrewingTankWood.class, "dcs_te_brewing_wood");
+		GameRegistry.registerTileEntity(TileBrewingTankUnder.class, "dcs_te_brewing_under");
+		GameRegistry.registerTileEntity(TileBrewingTankUpper.class, "dcs_te_brewing_upper");
+		GameRegistry.registerTileEntity(TileStillPot.class, "dcs_te_distillator");
+		GameRegistry.registerTileEntity(TileAgingBarrel.class, "dcs_te_aging_barrel");
 	}
 
 	public static void loadEntity() {

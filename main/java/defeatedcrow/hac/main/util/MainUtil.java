@@ -7,11 +7,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -26,13 +29,17 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -454,6 +461,19 @@ public class MainUtil {
 			}
 		}
 		return OreSetDC.AIR;
+	}
+
+	public static int calcTankRedstone(@Nullable TileEntity te) {
+		if (te != null && te.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN)) {
+			IFluidHandler handler = te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
+			if (handler != null && handler instanceof DCTank) {
+				double max = ((DCTank) handler).getCapacity();
+				double cur = ((DCTank) handler).getFluidAmount();
+				double d = cur / max;
+				return MathHelper.floor(d * 16D);
+			}
+		}
+		return 0;
 	}
 
 	public static final int[][][] MATRIX = new int[][][] {

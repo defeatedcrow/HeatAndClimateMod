@@ -23,15 +23,17 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 
 public class EntityTeaCupSilver extends DCEntityBase {
 
-	protected static final DataParameter<String> FLUID = EntityDataManager.<String>createKey(EntityTeaCupSilver.class,
-			DataSerializers.STRING);
+	protected static final DataParameter<String> FLUID = EntityDataManager
+			.<String>createKey(EntityTeaCupSilver.class, DataSerializers.STRING);
 	protected static final DataParameter<Integer> AMOUNT = EntityDataManager
 			.<Integer>createKey(EntityTeaCupSilver.class, DataSerializers.VARINT);
 
-	protected static final DataParameter<Byte> MILK = EntityDataManager.<Byte>createKey(EntityTeaCupSilver.class,
-			DataSerializers.BYTE);
-	protected static final DataParameter<Byte> SUGAR = EntityDataManager.<Byte>createKey(EntityTeaCupSilver.class,
-			DataSerializers.BYTE);
+	protected static final DataParameter<Byte> MILK = EntityDataManager
+			.<Byte>createKey(EntityTeaCupSilver.class, DataSerializers.BYTE);
+	protected static final DataParameter<Byte> SUGAR = EntityDataManager
+			.<Byte>createKey(EntityTeaCupSilver.class, DataSerializers.BYTE);
+	protected static final DataParameter<Byte> AGING = EntityDataManager
+			.<Byte>createKey(EntityTeaCupSilver.class, DataSerializers.BYTE);
 
 	public EntityTeaCupSilver(World worldIn) {
 		super(worldIn);
@@ -56,9 +58,10 @@ public class EntityTeaCupSilver extends DCEntityBase {
 		return this;
 	}
 
-	public EntityTeaCupSilver setCustom(DrinkMilk milk, DrinkSugar sugar) {
+	public EntityTeaCupSilver setCustom(DrinkMilk milk, DrinkSugar sugar, int aging) {
 		this.dataManager.set(MILK, (byte) milk.id);
 		this.dataManager.set(SUGAR, (byte) sugar.id);
+		this.dataManager.set(AGING, (byte) aging);
 		return this;
 	}
 
@@ -75,6 +78,7 @@ public class EntityTeaCupSilver extends DCEntityBase {
 		if (drink != null) {
 			drink.setMilk(DrinkMilk.getFromId(getMilk()));
 			drink.setSugar(DrinkSugar.getFromId(getSugar()));
+			drink.setAging(getAging());
 		}
 		return drop;
 	}
@@ -86,6 +90,7 @@ public class EntityTeaCupSilver extends DCEntityBase {
 		this.dataManager.register(AMOUNT, 0);
 		this.dataManager.register(MILK, (byte) 0);
 		this.dataManager.register(SUGAR, (byte) 0);
+		this.dataManager.register(AGING, (byte) 0);
 	}
 
 	@Override
@@ -95,10 +100,12 @@ public class EntityTeaCupSilver extends DCEntityBase {
 		int a = tag.getInteger("dcs.entityamo");
 		byte m = tag.getByte("dcs.entitymilk");
 		byte su = tag.getByte("dcs.entitysugar");
+		byte ag = tag.getByte("dcs.entityaging");
 		this.dataManager.set(FLUID, s);
 		this.dataManager.set(AMOUNT, a);
 		this.dataManager.set(MILK, m);
 		this.dataManager.set(SUGAR, su);
+		this.dataManager.set(AGING, ag);
 	}
 
 	@Override
@@ -108,10 +115,12 @@ public class EntityTeaCupSilver extends DCEntityBase {
 		int a = getAmount();
 		byte m = this.getMilk();
 		byte su = this.getSugar();
+		byte ag = this.getAging();
 		tag.setInteger("dcs.entityamo", a);
 		tag.setString("dcs.entityfluid", s);
 		tag.setByte("dcs.entitymilk", m);
 		tag.setByte("dcs.entitysugar", su);
+		tag.setByte("dcs.entityaging", ag);
 	}
 
 	public String getFluidName() {
@@ -128,5 +137,9 @@ public class EntityTeaCupSilver extends DCEntityBase {
 
 	public byte getSugar() {
 		return this.dataManager.get(SUGAR);
+	}
+
+	public byte getAging() {
+		return this.dataManager.get(AGING);
 	}
 }

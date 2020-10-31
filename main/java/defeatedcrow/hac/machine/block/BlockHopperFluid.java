@@ -13,9 +13,9 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
-import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -39,7 +39,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -52,8 +51,8 @@ public class BlockHopperFluid extends BlockContainerDC {
 		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(
-				DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
+				.withProperty(DCState.POWERED, false));
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -151,8 +150,8 @@ public class BlockHopperFluid extends BlockContainerDC {
 			face = EnumFacing.DOWN;
 		}
 
-		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face)).withProperty(
-				DCState.POWERED, Boolean.valueOf(true));
+		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face))
+				.withProperty(DCState.POWERED, Boolean.valueOf(true));
 	}
 
 	@Override
@@ -182,8 +181,8 @@ public class BlockHopperFluid extends BlockContainerDC {
 		}
 
 		if (!world.isRemote) {
-			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() +
-					0.5D, drop);
+			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
+					drop);
 			float f3 = 0.05F;
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -226,6 +225,8 @@ public class BlockHopperFluid extends BlockContainerDC {
 		}
 	}
 
+	// redstone
+
 	@Override
 	public boolean hasComparatorInputOverride(IBlockState state) {
 		return true;
@@ -233,26 +234,15 @@ public class BlockHopperFluid extends BlockContainerDC {
 
 	@Override
 	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
-		return calcRedstone(worldIn.getTileEntity(pos));
-	}
-
-	private int calcRedstone(TileEntity te) {
-		if (te != null && te instanceof TileHopperFluid) {
-			TileHopperFluid ibc = (TileHopperFluid) te;
-			DCTank tank = ibc.inputT;
-			float amo = tank.getFluidAmount() * 15.0F / tank.getCapacity();
-			int lit = MathHelper.floor(amo);
-			return lit;
-		}
-		return 0;
+		return MainUtil.calcTankRedstone(worldIn.getTileEntity(pos));
 	}
 
 	// state関連
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(
-				DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
+				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -274,10 +264,7 @@ public class BlockHopperFluid extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE,
-				DCState.POWERED
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE, DCState.POWERED });
 
 	}
 
@@ -288,10 +275,9 @@ public class BlockHopperFluid extends BlockContainerDC {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() +
-					" (fluid container only): 1 item/5t");
-			tooltip.add(DCName.FLUID.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() +
-					": 200 mB/5t");
+			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT
+					.getLocalizedName() + " (fluid container only): 1 item/5t");
+			tooltip.add(DCName.FLUID.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 200 mB/5t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.hopper_flu1"));
 			tooltip.add(I18n.format("dcs.tip.hopper_flu2"));

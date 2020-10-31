@@ -60,12 +60,23 @@ public class FoodBrewingRecipeRegister implements IBrewingRecipeRegister {
 
 	@Override
 	public void addStillRecipe(IStillRecipeDC recipe) {
-
+		if (recipe != null) {
+			boolean b1 = recipe.getInput() == null && recipe.getInputFluid() == null;
+			boolean b2 = DCUtil.isEmpty(recipe.getOutput()) && recipe.getOutputFluid() == null;
+			boolean b3 = hasEmptyInput(recipe.getInput());
+			if (!b1 && !b2 && !b3) {
+				still.add(recipe);
+			}
+		}
 	}
 
 	@Override
 	public void addAgingRecipe(IAgingRecipeDC recipe) {
-
+		if (recipe != null) {
+			if (recipe.getInputFluid() != null && recipe.getOutputFluid() != null) {
+				aging.add(recipe);
+			}
+		}
 	}
 
 	@Override
@@ -80,11 +91,21 @@ public class FoodBrewingRecipeRegister implements IBrewingRecipeRegister {
 
 	@Override
 	public IStillRecipeDC getStillRecipe(DCHeatTier hot, DCHeatTier cold, List<ItemStack> inputs, FluidStack inFluid) {
+		for (IStillRecipeDC recipe : still) {
+			if (recipe.matches(inputs, inFluid) && recipe.matchClimate(hot, cold)) {
+				return recipe;
+			}
+		}
 		return null;
 	}
 
 	@Override
-	public IAgingRecipeDC getAgingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid) {
+	public IAgingRecipeDC getAgingRecipe(IClimate clm, FluidStack inFluid) {
+		for (IAgingRecipeDC recipe : aging) {
+			if (recipe.matches(inFluid) && recipe.matchClimate(clm)) {
+				return recipe;
+			}
+		}
 		return null;
 	}
 
@@ -99,11 +120,19 @@ public class FoodBrewingRecipeRegister implements IBrewingRecipeRegister {
 
 	@Override
 	public boolean removeStillRecipe(DCHeatTier hot, DCHeatTier cold, List<ItemStack> inputs, FluidStack inFluid) {
+		IStillRecipeDC recipe = getStillRecipe(hot, cold, inputs, inFluid);
+		if (recipe != null && still.remove(recipe)) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
-	public boolean removeAgingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid) {
+	public boolean removeAgingRecipe(IClimate clm, FluidStack inFluid) {
+		IAgingRecipeDC recipe = getAgingRecipe(clm, inFluid);
+		if (recipe != null && aging.remove(recipe)) {
+			return true;
+		}
 		return false;
 	}
 

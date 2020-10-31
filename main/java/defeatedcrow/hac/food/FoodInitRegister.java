@@ -3,6 +3,9 @@ package defeatedcrow.hac.food;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.core.event.DispenseEntityItem;
+import defeatedcrow.hac.food.block.BlockAgingBarrel;
+import defeatedcrow.hac.food.block.BlockBrewingTankUnder;
+import defeatedcrow.hac.food.block.BlockBrewingTankUpper;
 import defeatedcrow.hac.food.block.BlockBrewingTankWood;
 import defeatedcrow.hac.food.block.BlockDish;
 import defeatedcrow.hac.food.block.BlockFertilizer;
@@ -11,6 +14,7 @@ import defeatedcrow.hac.food.block.BlockPotteryPot;
 import defeatedcrow.hac.food.block.BlockSilkwormBox;
 import defeatedcrow.hac.food.block.BlockSkillet;
 import defeatedcrow.hac.food.block.BlockSteelPot;
+import defeatedcrow.hac.food.block.BlockStillPot;
 import defeatedcrow.hac.food.block.BlockTeaPot;
 import defeatedcrow.hac.food.block.crop.BlockBean;
 import defeatedcrow.hac.food.block.crop.BlockChili;
@@ -77,7 +81,10 @@ import defeatedcrow.hac.food.item.StickFoodsItem;
 import defeatedcrow.hac.food.item.UdonItem;
 import defeatedcrow.hac.food.item.WagashiItem;
 import defeatedcrow.hac.food.item.brewing.ItemAntibiotic;
+import defeatedcrow.hac.food.item.brewing.ItemBroth;
 import defeatedcrow.hac.food.item.brewing.ItemChickInEgg;
+import defeatedcrow.hac.food.item.brewing.ItemEssencialOil;
+import defeatedcrow.hac.food.item.brewing.ItemInoculum;
 import defeatedcrow.hac.food.item.brewing.ItemLiquorBottle;
 import defeatedcrow.hac.food.item.brewing.ItemMedium;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeBacillus;
@@ -90,8 +97,10 @@ import defeatedcrow.hac.food.item.brewing.ItemMicrobeOryzae;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeSlime;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeYeast;
 import defeatedcrow.hac.food.item.brewing.ItemResidue;
+import defeatedcrow.hac.food.item.brewing.ItemRoseWaterBottle;
 import defeatedcrow.hac.food.item.brewing.ItemUnidentified;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
@@ -410,12 +419,38 @@ public class FoodInitRegister {
 		DCMaterialReg
 				.registerBlock(FoodInit.brewingTankWood, ClimateCore.PACKAGE_BASE + "_device_brewing_wood", ClimateMain.MOD_ID);
 
+		FoodInit.brewingTank = new BlockBrewingTankUnder(ClimateCore.PACKAGE_BASE + "_device_brewing_under");
+		DCMaterialReg
+				.registerBlock(FoodInit.brewingTank, ClimateCore.PACKAGE_BASE + "_device_brewing_under", ClimateMain.MOD_ID);
+
+		FoodInit.brewingTankUpper = new BlockBrewingTankUpper(ClimateCore.PACKAGE_BASE + "_device_brewing_upper");
+		DCMaterialReg
+				.registerBlock(FoodInit.brewingTankUpper, ClimateCore.PACKAGE_BASE + "_device_brewing_upper", ClimateMain.MOD_ID);
+
+		FoodInit.distillator = new BlockStillPot(ClimateCore.PACKAGE_BASE + "_device_distillator");
+		DCMaterialReg
+				.registerBlock(FoodInit.distillator, ClimateCore.PACKAGE_BASE + "_device_distillator", ClimateMain.MOD_ID);
+
+		FoodInit.barrel = new BlockAgingBarrel(ClimateCore.PACKAGE_BASE + "_device_aging_barrel");
+		DCMaterialReg
+				.registerBlock(FoodInit.barrel, ClimateCore.PACKAGE_BASE + "_device_aging_barrel", ClimateMain.MOD_ID);
+
+		FoodInit.baseFertilizer = new BlockFertilizer(ClimateCore.PACKAGE_BASE + "_crop_fertilizer");
+		DCMaterialReg
+				.registerBlock(FoodInit.baseFertilizer, ClimateCore.PACKAGE_BASE + "_crop_fertilizer", ClimateMain.MOD_ID);
+
 		FoodInit.medium = new ItemMedium().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_medium");
 		DCMaterialReg.registerItem(FoodInit.medium, ClimateCore.PACKAGE_BASE + "_food_medium", ClimateMain.MOD_ID);
+
+		FoodInit.broth = new ItemBroth().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_broth");
+		DCMaterialReg.registerItem(FoodInit.broth, ClimateCore.PACKAGE_BASE + "_food_broth", ClimateMain.MOD_ID);
 
 		FoodInit.antibiotic = new ItemAntibiotic().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_antibiotic");
 		DCMaterialReg
 				.registerItem(FoodInit.antibiotic, ClimateCore.PACKAGE_BASE + "_food_antibiotic", ClimateMain.MOD_ID);
+
+		FoodInit.inoculum = new ItemInoculum().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_inoculum");
+		DCMaterialReg.registerItem(FoodInit.inoculum, ClimateCore.PACKAGE_BASE + "_food_inoculum", ClimateMain.MOD_ID);
 
 		FoodInit.chickInEgg = new ItemChickInEgg().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_chick");
 		DCMaterialReg.registerItem(FoodInit.chickInEgg, ClimateCore.PACKAGE_BASE + "_food_chick", ClimateMain.MOD_ID);
@@ -470,20 +505,150 @@ public class FoodInitRegister {
 		DCMaterialReg
 				.registerItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_BASE + "_liquor_bottle", ClimateMain.MOD_ID);
 
-		// fluids
+		FoodInit.roseWaterBottle = new ItemRoseWaterBottle()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_rose_water_bottle");
+		DCMaterialReg
+				.registerItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_BASE + "_rose_water_bottle", ClimateMain.MOD_ID);
+
+		FoodInit.essencialOil = new ItemEssencialOil()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_essencial_oil");
+		DCMaterialReg
+				.registerItem(FoodInit.essencialOil, ClimateCore.PACKAGE_BASE + "_food_essencial_oil", ClimateMain.MOD_ID);
+
+		/* fluids */
+
 		FoodInit.beer = new Fluid("dcs.beer", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/beer_still"),
 				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/beer_still"))
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".beer");
 		FluidRegistry.registerFluid(FoodInit.beer);
+
+		FoodInit.rawWhisky = new Fluid("dcs.raw_whisky", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".raw_whisky");
+		FluidRegistry.registerFluid(FoodInit.rawWhisky);
+
+		FoodInit.whisky = new Fluid("dcs.whisky", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/whisky_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/whisky_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".whisky");
+		FluidRegistry.registerFluid(FoodInit.whisky);
 
 		FoodInit.wine = new Fluid("dcs.wine", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/wine_still"),
 				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/wine_still"))
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".wine");
 		FluidRegistry.registerFluid(FoodInit.wine);
 
-		FoodInit.baseFertilizer = new BlockFertilizer(ClimateCore.PACKAGE_BASE + "_crop_fertilizer");
+		FoodInit.rawBrandy = new Fluid("dcs.raw_brandy", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".raw_brandy");
+		FluidRegistry.registerFluid(FoodInit.rawBrandy);
+
+		FoodInit.brandy = new Fluid("dcs.brandy", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/brandy_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/brandy_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".brandy");
+		FluidRegistry.registerFluid(FoodInit.brandy);
+
+		FoodInit.pomaceBrandy = new Fluid("dcs.pomace_brandy", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".pomace_brandy");
+		FluidRegistry.registerFluid(FoodInit.pomaceBrandy);
+
+		FoodInit.sake = new Fluid("dcs.sake", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".sake");
+		FluidRegistry.registerFluid(FoodInit.sake);
+
+		FoodInit.shotyu = new Fluid("dcs.shotyu", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".shotyu");
+		FluidRegistry.registerFluid(FoodInit.shotyu);
+
+		FoodInit.dateWine = new Fluid("dcs.date", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/black_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/black_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".date");
+		FluidRegistry.registerFluid(FoodInit.dateWine);
+
+		FoodInit.araq = new Fluid("dcs.araq", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".araq");
+		FluidRegistry.registerFluid(FoodInit.araq);
+
+		FoodInit.fermentedSugar = new Fluid("dcs.fermented_sugar", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/sulfuric_acid_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/sulfuric_acid_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".fermented_sugar");
+		FluidRegistry.registerFluid(FoodInit.fermentedSugar);
+
+		FoodInit.whiteRum = new Fluid("dcs.white_rum", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".white_rum");
+		FluidRegistry.registerFluid(FoodInit.whiteRum);
+
+		FoodInit.darkRum = new Fluid("dcs.dark_rum", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/rum_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/rum_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".dark_rum");
+		FluidRegistry.registerFluid(FoodInit.darkRum);
+
+		FoodInit.fermentedPotato = new Fluid("dcs.fermented_potato", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/sulfuric_acid_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/sulfuric_acid_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".fermented_potato");
+		FluidRegistry.registerFluid(FoodInit.fermentedPotato);
+
+		FoodInit.akvavit = new Fluid("dcs.akvavit", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/akvavit_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/akvavit_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".akvavit");
+		FluidRegistry.registerFluid(FoodInit.akvavit);
+
+		FoodInit.vodka = new Fluid("dcs.vodka", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".vodka");
+		FluidRegistry.registerFluid(FoodInit.vodka);
+
+		FoodInit.netherWine = new Fluid("dcs.nether", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/vegetable_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/vegetable_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".nether")
+								.setTemperature(2000);
+		FluidRegistry.registerFluid(FoodInit.netherWine);
+		FoodInit.netherWineBlock = new DCFluidBlockBase(FoodInit.netherWine, "nether_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_nether");
 		DCMaterialReg
-				.registerBlock(FoodInit.baseFertilizer, ClimateCore.PACKAGE_BASE + "_crop_fertilizer", ClimateMain.MOD_ID);
+				.registerBlock(FoodInit.netherWineBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_nether", ClimateMain.MOD_ID);
+		FoodInit.netherWine.setBlock(FoodInit.netherWineBlock);
+
+		FoodInit.chorusLiquor = new Fluid("dcs.chorus_liquor", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/chorus_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/chorus_liquor_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".chorus_liquor");
+		FluidRegistry.registerFluid(FoodInit.chorusLiquor);
+
+		FoodInit.roseWater = new Fluid("dcs.rose_water", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/rose_water_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/rose_water_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".rose_water");
+		FluidRegistry.registerFluid(FoodInit.roseWater);
+
+		FluidRegistry.addBucketForFluid(FoodInit.beer);
+		FluidRegistry.addBucketForFluid(FoodInit.rawWhisky);
+		FluidRegistry.addBucketForFluid(FoodInit.whisky);
+		FluidRegistry.addBucketForFluid(FoodInit.wine);
+		FluidRegistry.addBucketForFluid(FoodInit.rawBrandy);
+		FluidRegistry.addBucketForFluid(FoodInit.brandy);
+		FluidRegistry.addBucketForFluid(FoodInit.pomaceBrandy);
+		FluidRegistry.addBucketForFluid(FoodInit.sake);
+		FluidRegistry.addBucketForFluid(FoodInit.shotyu);
+		FluidRegistry.addBucketForFluid(FoodInit.dateWine);
+		FluidRegistry.addBucketForFluid(FoodInit.araq);
+		FluidRegistry.addBucketForFluid(FoodInit.fermentedSugar);
+		FluidRegistry.addBucketForFluid(FoodInit.whiteRum);
+		FluidRegistry.addBucketForFluid(FoodInit.darkRum);
+		FluidRegistry.addBucketForFluid(FoodInit.fermentedPotato);
+		FluidRegistry.addBucketForFluid(FoodInit.akvavit);
+		FluidRegistry.addBucketForFluid(FoodInit.vodka);
+		FluidRegistry.addBucketForFluid(FoodInit.netherWine);
+		FluidRegistry.addBucketForFluid(FoodInit.chorusLiquor);
+		FluidRegistry.addBucketForFluid(FoodInit.roseWater);
 
 	}
 
@@ -575,8 +740,13 @@ public class FoodInitRegister {
 		if (ModuleConfig.food_advanced) {
 			FoodInit.incubator.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.brewingTankWood.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.brewingTank.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.distillator.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.barrel.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.residue.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.inoculum.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.medium.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.broth.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.antibiotic.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.chickInEgg.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.unidentified.setCreativeTab(ClimateMain.food_adv);
@@ -590,6 +760,8 @@ public class FoodInitRegister {
 			FoodInit.slimeMold.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.mushroom.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.liquorBottle.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.roseWaterBottle.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.essencialOil.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.baseFertilizer.setCreativeTab(ClimateMain.food_adv);
 		}
 	}

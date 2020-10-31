@@ -70,6 +70,9 @@ public class DCFluidBlockBase extends BlockFluidClassic implements ITexturePath,
 
 	@Override
 	public DCHumidity getHumidity(World world, BlockPos to, BlockPos from) {
+		if (this.stack.getFluid() != null && this.stack.getFluid().isGaseous()) {
+			return DCHumidity.NORMAL;
+		}
 		return DCHumidity.UNDERWATER;
 	}
 

@@ -1,7 +1,9 @@
 package defeatedcrow.hac.plugin.tan;
 
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DrinkPotionType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -11,16 +13,16 @@ import net.minecraftforge.fluids.Fluid;
 public class DCThirstHelper {
 
 	public static boolean enableThirst() {
-		return toughasnails.api.config.SyncedConfig.getBooleanValue(
-				toughasnails.api.config.GameplayOption.ENABLE_THIRST);
+		return toughasnails.api.config.SyncedConfig
+				.getBooleanValue(toughasnails.api.config.GameplayOption.ENABLE_THIRST);
 	}
 
 	public static void onDrink(EntityPlayer player, Fluid f) {
 		if (f != null) {
-			toughasnails.thirst.ThirstHandler handler = (toughasnails.thirst.ThirstHandler) toughasnails.api.thirst.ThirstHelper.getThirstData(
-					player);
-			toughasnails.api.stat.capability.IThirst thirst = toughasnails.api.thirst.ThirstHelper.getThirstData(
-					player);
+			toughasnails.thirst.ThirstHandler handler =
+					(toughasnails.thirst.ThirstHandler) toughasnails.api.thirst.ThirstHelper.getThirstData(player);
+			toughasnails.api.stat.capability.IThirst thirst = toughasnails.api.thirst.ThirstHelper
+					.getThirstData(player);
 			toughasnails.api.thirst.IDrink type = DCDrink.getType(f);
 			DCLogger.infoLog("on thirst effect: " + type);
 			thirst.addStats(type.getThirst(), type.getHydration());
@@ -78,6 +80,10 @@ public class DCThirstHelper {
 					return TEA;
 				if (f == MainInit.tomatoJuice)
 					return TEA;
+				if (f == MainInit.milk)
+					return TEA;
+				if (f == MainInit.soyMilk)
+					return TEA;
 				if (f == MainInit.hotSpring)
 					return RAW;
 				if (f == MainInit.cream)
@@ -98,6 +104,11 @@ public class DCThirstHelper {
 					return RISK;
 				if (f == MainInit.nitrogen)
 					return RISK;
+
+				if (ModuleConfig.food) {
+					if (f == FoodInit.roseWater)
+						return TEA;
+				}
 
 				Potion p = DrinkPotionType.getPotion(f);
 				if (p != null && p.isBadEffect()) {

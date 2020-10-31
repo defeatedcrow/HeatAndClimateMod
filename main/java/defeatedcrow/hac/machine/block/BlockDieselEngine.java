@@ -226,4 +226,16 @@ public class BlockDieselEngine extends BlockTorqueBase {
 		return side == EnumFacing.DOWN;
 	}
 
+	// redstone
+
+	@Override
+	public boolean hasComparatorInputOverride(IBlockState state) {
+		return true;
+	}
+
+	@Override
+	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+		return MainUtil.calcTankRedstone(worldIn.getTileEntity(pos));
+	}
+
 }

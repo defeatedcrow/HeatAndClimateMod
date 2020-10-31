@@ -9,9 +9,9 @@ public class DrinkCustomizer implements IDrinkCustomize {
 
 	public byte milkID = 0;
 	public byte sugarID = 0;
+	public byte agingLevel = 0;
 
-	public DrinkCustomizer() {
-	}
+	public DrinkCustomizer() {}
 
 	@Override
 	public DrinkMilk getMilk() {
@@ -21,6 +21,11 @@ public class DrinkCustomizer implements IDrinkCustomize {
 	@Override
 	public DrinkSugar getSugar() {
 		return DrinkSugar.getFromId(sugarID);
+	}
+
+	@Override
+	public int getAgingLevel() {
+		return agingLevel;
 	}
 
 	@Override
@@ -35,6 +40,14 @@ public class DrinkCustomizer implements IDrinkCustomize {
 		return true;
 	}
 
+	@Override
+	public boolean setAging(int l) {
+		if (l > 100)
+			l = 100;
+		agingLevel = (byte) l;
+		return true;
+	}
+
 	public DrinkCustomizer readFromNBT(NBTTagCompound nbt) {
 		if (nbt.hasKey(DrinkMilk.getTagKey())) {
 			byte milk = nbt.getByte(DrinkMilk.getTagKey());
@@ -44,12 +57,17 @@ public class DrinkCustomizer implements IDrinkCustomize {
 			byte sugar = nbt.getByte(DrinkSugar.getTagKey());
 			sugarID = sugar;
 		}
+		if (nbt.hasKey(DrinkItemCustomizer.AGING_KEY)) {
+			byte sugar = nbt.getByte(DrinkItemCustomizer.AGING_KEY);
+			agingLevel = sugar;
+		}
 		return this;
 	}
 
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		nbt.setByte(DrinkMilk.getTagKey(), milkID);
 		nbt.setByte(DrinkSugar.getTagKey(), sugarID);
+		nbt.setByte(DrinkItemCustomizer.AGING_KEY, agingLevel);
 		return nbt;
 	}
 

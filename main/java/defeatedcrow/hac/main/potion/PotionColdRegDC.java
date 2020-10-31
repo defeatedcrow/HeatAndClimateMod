@@ -24,8 +24,8 @@ public class PotionColdRegDC extends Potion {
 
 	@Override
 	public int getStatusIconIndex() {
-		Minecraft.getMinecraft().getTextureManager()
-				.bindTexture(new ResourceLocation("dcs_climate:textures/gui/icons_potion.png"));
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(
+				"dcs_climate:textures/gui/icons_potion_main.png"));
 		return super.getStatusIconIndex();
 	}
 

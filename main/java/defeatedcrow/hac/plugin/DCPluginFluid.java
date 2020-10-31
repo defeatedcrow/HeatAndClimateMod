@@ -36,6 +36,7 @@ public class DCPluginFluid {
 		registerFluidDic("blood", "blood");
 		registerFluidDic("nitricacid", "nitricacid");
 		registerFluidDic("sulfuricacid", "sulfuricacid");
+		registerFluidDic("hootch", "whisky");
 		registerFluidDic("milk_holstein", "milk");
 		registerFluidDic("milk_friesian", "milk");
 		registerFluidDic("milk_jersey", "milk");
@@ -59,10 +60,9 @@ public class DCPluginFluid {
 		registerFluidDic("dcs.soy_milk", "soymilk");
 		registerFluidDic("dcs.raw_milk", "milk");
 		registerFluidDic("dcs.steam", "steam");
-		if (ModuleConfig.food && ModuleConfig.food_advanced) {
-			registerFluidDic("dcs.beer", "beer");
-			registerFluidDic("dcs.wine", "wine");
-		}
+		registerFluidDic("dcs.oxygen", "oxygen");
+		registerFluidDic("dcs.whisky", "whisky");
+		registerFluidDic("dcs.vodka", "ethanol");
 
 		// fuel
 		registerFuel("ic2hydrogen", "hydrogen", 100);
@@ -142,13 +142,13 @@ public class DCPluginFluid {
 		registerPotion("fuelium", MobEffects.HASTE);
 		registerPotion("hootch", MobEffects.HASTE);
 		registerPotion("fire_water", MobEffects.STRENGTH);
-		registerPotion("rocket_fuel", MobEffects.STRENGTH);
+		registerPotion("rocket_fuel", MobEffects.STRENGTH, 1);
 		registerPotion("crude_oil", MainInit.gravity);
 		registerPotion("coal", MainInit.gravity);
 		registerPotion("resin", MobEffects.WEAKNESS);
 		registerPotion("tree_oil", MobEffects.RESISTANCE);
 		registerPotion("refined_oil", MobEffects.HASTE);
-		registerPotion("refined_fuel", MobEffects.HASTE);
+		registerPotion("refined_fuel", MobEffects.HASTE, 1);
 		registerPotion("refined_biofuel", MobEffects.SPEED);
 		registerPotion("biocrude", MobEffects.SLOWNESS);
 		registerPotion("redstone", MobEffects.JUMP_BOOST);
@@ -188,9 +188,26 @@ public class DCPluginFluid {
 		registerPotion("dcs.stock", MobEffects.FIRE_RESISTANCE);
 		registerPotion("dcs.lemonade", MobEffects.JUMP_BOOST);
 		registerPotion("dcs.black_liquor", MobEffects.POISON);
+		registerPotion("dcs.oxygen", MobEffects.WATER_BREATHING);
 		if (ModuleConfig.food && ModuleConfig.food_advanced) {
-			registerPotion("dcs.beer", MainInit.wideMining);
-			registerPotion("dcs.wine", MainInit.wideMining);
+			if (ModuleConfig.liquor) {
+				registerPotion("dcs.beer", MainInit.wideMining);
+				registerPotion("dcs.whisky", MainInit.wideMining, 1);
+				registerPotion("dcs.wine", MobEffects.ABSORPTION);
+				registerPotion("dcs.brandy", MainInit.absorptionEXP, 1);
+				registerPotion("dcs.pomace_brandy", MainInit.absorptionEXP);
+				registerPotion("dcs.sake", MainInit.projectileResistant);
+				registerPotion("dcs.shotyu", MainInit.reflexion);
+				registerPotion("dcs.date", MobEffects.ABSORPTION);
+				registerPotion("dcs.araq", MainInit.absorptionEXP);
+				registerPotion("dcs.white_rum", MainInit.wideMining);
+				registerPotion("dcs.dark_rum", MainInit.wideMining, 1);
+				registerPotion("dcs.akvavit", MainInit.immunity);
+				registerPotion("dcs.vodka", MainInit.reflexion);
+				registerPotion("dcs.nether", MobEffects.FIRE_RESISTANCE);
+				registerPotion("dcs.chorus_liquor", MainInit.warp);
+			}
+			registerPotion("dcs.rose_water", MainInit.wideMining);
 		}
 
 		Fluid f1 = FluidRegistry.getFluid("ic2coolant");
@@ -332,6 +349,13 @@ public class DCPluginFluid {
 		if (FluidRegistry.getFluid(name) != null) {
 			Fluid f = FluidRegistry.getFluid(name);
 			DrinkPotionType.registerPotion(f.getName(), p);
+		}
+	}
+
+	public static void registerPotion(String name, Potion p, int amp) {
+		if (FluidRegistry.getFluid(name) != null) {
+			Fluid f = FluidRegistry.getFluid(name);
+			DrinkPotionType.registerPotion(f.getName(), p, amp);
 		}
 	}
 

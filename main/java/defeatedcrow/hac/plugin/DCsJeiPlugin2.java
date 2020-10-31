@@ -15,12 +15,17 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IDCInfoData;
 import defeatedcrow.hac.main.api.IFluidFuel;
 import defeatedcrow.hac.main.api.IHeatTreatment;
+import defeatedcrow.hac.main.api.brewing.IAgingRecipeDC;
 import defeatedcrow.hac.main.api.brewing.IBrewingRecipeDC;
 import defeatedcrow.hac.main.api.brewing.IMicrobe;
+import defeatedcrow.hac.main.api.brewing.IStillRecipeDC;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.jei.ClimateFluidCategory;
 import defeatedcrow.hac.plugin.jei.ClimateFluidMaker;
 import defeatedcrow.hac.plugin.jei.ClimateFluidWrapper;
+import defeatedcrow.hac.plugin.jei.DCAgingCategory;
+import defeatedcrow.hac.plugin.jei.DCAgingMaker;
+import defeatedcrow.hac.plugin.jei.DCAgingWrapper;
 import defeatedcrow.hac.plugin.jei.DCBrewingCategory;
 import defeatedcrow.hac.plugin.jei.DCBrewingMaker;
 import defeatedcrow.hac.plugin.jei.DCBrewingWrapper;
@@ -37,6 +42,9 @@ import defeatedcrow.hac.plugin.jei.DCInfoWrapper;
 import defeatedcrow.hac.plugin.jei.DCPressMoldCategory;
 import defeatedcrow.hac.plugin.jei.DCPressMoldMaker;
 import defeatedcrow.hac.plugin.jei.DCPressMoldWrapper;
+import defeatedcrow.hac.plugin.jei.DCStillCategory;
+import defeatedcrow.hac.plugin.jei.DCStillMaker;
+import defeatedcrow.hac.plugin.jei.DCStillWrapper;
 import defeatedcrow.hac.plugin.jei.MicrobeCategory;
 import defeatedcrow.hac.plugin.jei.MicrobeMaker;
 import defeatedcrow.hac.plugin.jei.MicrobeWrapper;
@@ -62,7 +70,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		registry.addRecipeCategories(new DCInfoCategory(guiHelper), new ClimateFluidCategory(
 				guiHelper), new DCFuelCategory(guiHelper), new DCHeatTreatmentCategory(
 						guiHelper), new DCPressMoldCategory(guiHelper), new MicrobeCategory(
-								guiHelper), new DCBrewingCategory(guiHelper));
+								guiHelper), new DCBrewingCategory(guiHelper), new DCStillCategory(
+										guiHelper), new DCAgingCategory(guiHelper));
 	}
 
 	@Override
@@ -77,6 +86,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		registry.handleRecipes(IDCInfoData.class, recipe -> new DCInfoWrapper(recipe), "dcs_climate.info");
 		registry.handleRecipes(IMicrobe.class, recipe -> new MicrobeWrapper(recipe), "dcs_climate.microbe");
 		registry.handleRecipes(IBrewingRecipeDC.class, recipe -> new DCBrewingWrapper(recipe), "dcs_climate.brewing");
+		registry.handleRecipes(IStillRecipeDC.class, recipe -> new DCStillWrapper(recipe), "dcs_climate.still");
+		registry.handleRecipes(IAgingRecipeDC.class, recipe -> new DCAgingWrapper(recipe), "dcs_climate.aging");
 
 		DCFuelMaker.register(registry);
 		DCHeatTreatmentMaker.register(registry);
@@ -85,6 +96,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		ClimateFluidMaker.register(registry);
 		MicrobeMaker.register(registry);
 		DCBrewingMaker.register(registry);
+		DCStillMaker.register(registry);
+		DCAgingMaker.register(registry);
 
 		registry.addRecipeCatalyst(new ItemStack(MainInit.fuelStove), "dcs_climate.fuel");
 		if (ModuleConfig.machine) {
@@ -102,6 +115,7 @@ public class DCsJeiPlugin2 implements IModPlugin {
 			if (ModuleConfig.food_advanced) {
 				registry.addRecipeCatalyst(new ItemStack(FoodInit.unidentified, 1, 1), "dcs_climate.microbe");
 				registry.addRecipeCatalyst(new ItemStack(FoodInit.brewingTankWood, 1, 0), "dcs_climate.brewing");
+				registry.addRecipeCatalyst(new ItemStack(FoodInit.brewingTank, 1, 0), "dcs_climate.brewing");
 			}
 		}
 

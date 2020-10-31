@@ -92,6 +92,7 @@ public class FoodInit {
 
 	/* brewing */
 	public static Item medium;
+	public static Item broth;
 	public static Item residue;
 	public static Item antibiotic;
 
@@ -109,16 +110,40 @@ public class FoodInit {
 
 	public static Item chickInEgg;
 	public static Item liquorBottle;
+	public static Item roseWaterBottle;
+	public static Item essencialOil;
+	public static Item inoculum;
 
 	public static Block incubator;
 	public static Block brewingTankWood;
 	public static Block brewingTank;
+	public static Block brewingTankUpper;
 	public static Block distillator;
 	public static Block barrel;
 
 	public static Block baseFertilizer;
 
 	public static Fluid beer;
+	public static Fluid rawWhisky;
+	public static Fluid whisky;
+	public static Fluid fermentedPotato;
+	public static Fluid akvavit;
+	public static Fluid vodka;
 	public static Fluid wine;
+	public static Fluid rawBrandy;
+	public static Fluid pomaceBrandy;
+	public static Fluid brandy;
+	public static Fluid sake;
+	public static Fluid shotyu;
+	public static Fluid dateWine;
+	public static Fluid araq;
+	public static Fluid fermentedSugar;
+	public static Fluid whiteRum;
+	public static Fluid darkRum;
+	public static Fluid netherWine;
+	public static Fluid chorusLiquor;
+	public static Fluid roseWater;
+
+	public static Block netherWineBlock;
 
 }

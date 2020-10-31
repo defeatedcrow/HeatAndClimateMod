@@ -3,6 +3,7 @@ package defeatedcrow.hac.food.recipes;
 import defeatedcrow.hac.core.DCInit;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.recipes.LoadingContRecipe;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
@@ -1351,9 +1352,53 @@ public class FoodBasicRecipe {
 			'Y',
 			"itemCloth" });
 
+		DCRecipe.jsonShapedRecipe("food", new ItemStack(FoodInit.brewingTank, 1, 0), new Object[] {
+			"YYY",
+			"YZY",
+			"XYX",
+			'X',
+			"ingotSteel",
+			'Y',
+			"ingotSUS",
+			'Z',
+			"bucketEmpty" });
+
+		DCRecipe.jsonShapedRecipe("food", new ItemStack(FoodInit.distillator, 1, 0), new Object[] {
+			"YYY",
+			"Y Y",
+			"XXX",
+			'X',
+			"ingotCopper",
+			'Y',
+			"ingotSUS" });
+
+		DCRecipe.jsonShapedRecipe("food", new ItemStack(FoodInit.barrel, 1, 0), new Object[] {
+			"YXY",
+			"Y Y",
+			"YXY",
+			'X',
+			"ingotSteel",
+			'Y',
+			"logWood" });
+
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.medium, 1, 4), new Object[] {
 			new ItemStack(FoodInit.medium, 1, 1),
 			new ItemStack(FoodInit.coliformes, 1, 0) });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.broth, 6, 0), new Object[] {
+			"dustPeptone",
+			"foodViscera",
+			"dustSalt" });
+
+		DCRecipe.jsonShapelessRecipe("food", 2, new ItemStack(FoodInit.broth, 3, 0), new Object[] {
+			"dustPeptone",
+			"listAllmeatraw",
+			"dustSalt" });
+
+		DCRecipe.jsonShapelessRecipe("food", 2, new ItemStack(FoodInit.broth, 3, 1), new Object[] {
+			"dustPeptone",
+			"dustYeast",
+			"dustSugar" });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.baseFertilizer, 1, 0), new Object[] {
 			"dirt",
@@ -1364,6 +1409,14 @@ public class FoodBasicRecipe {
 			"dirt",
 			"dustDraff",
 			new ItemStack(FoodInit.bacillus, 1, 0) });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MachineInit.reagent, 1, 5), new Object[] {
+			"cropCotton",
+			new ItemStack(FoodInit.slimeMold, 1, 1) });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(MachineInit.reagent, 1, 6), new Object[] {
+			"dropGlycerin",
+			new ItemStack(FoodInit.slimeMold, 1, 1) });
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0), new Object[] {
 			new ItemStack(FoodInit.mushroom, 1, 0) });

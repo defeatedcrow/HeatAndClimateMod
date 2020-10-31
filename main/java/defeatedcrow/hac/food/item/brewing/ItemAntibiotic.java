@@ -7,11 +7,11 @@ public class ItemAntibiotic extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "pcn", "cp" };
+	private static String[] names = { "pcn", "cp", "anti_zombie", "poison", "zombie", "pigman", "mushroom", "mana" };
 
 	public ItemAntibiotic() {
 		super();
-		maxMeta = 1;
+		maxMeta = 7;
 	}
 
 	@Override

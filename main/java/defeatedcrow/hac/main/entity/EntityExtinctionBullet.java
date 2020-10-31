@@ -47,9 +47,10 @@ public class EntityExtinctionBullet extends EntityBulletDC {
 	}
 
 	private void onEffect(BlockPos pos) {
-		for (int x = -5; x < 5; x++) {
-			for (int y = -5; y < 5; y++) {
-				for (int z = -5; z < 5; z++) {
+		int r = 8;
+		for (int x = -r; x < r; x++) {
+			for (int y = -r; y < r; y++) {
+				for (int z = -r; z < r; z++) {
 					BlockPos p = new BlockPos(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
 					IBlockState state = world.getBlockState(p);
 					if (state.getBlock() instanceof BlockFire || state.getBlock() == MagicInit.infernalFlame) {

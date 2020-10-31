@@ -2,6 +2,8 @@ package defeatedcrow.hac.food.item.brewing;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -19,7 +21,7 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
  */
 public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider {
 
-	protected final ItemStack container;
+	protected ItemStack container;
 
 	public FluidBottleContDC(ItemStack container) {
 		this.container = container;
@@ -29,9 +31,7 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 
 	@Nullable
 	public FluidStack getFluid() {
-		int meta = container.getItemDamage();
-		String name = ItemLiquorBottle.getFluidName(meta);
-		Fluid fluid = FluidRegistry.getFluid(name);
+		Fluid fluid = getFluid(container);
 		if (fluid != null) {
 			return new FluidStack(fluid, 500);
 		}
@@ -42,13 +42,7 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 		if (container.getCount() != 1 || resource == null || !canFillFluidType(resource)) {
 			return;
 		}
-		int meta = ItemLiquorBottle.getMetaFromFluid(resource.getFluid());
-
-		if (meta == 0) {
-			return;
-		}
-
-		container.setItemDamage(meta);
+		container = getItemFromFluid(resource.getFluid());
 	}
 
 	@Override
@@ -63,14 +57,14 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 		}
 
 		int fillAmo = 500;
-		int meta = ItemLiquorBottle.getMetaFromFluid(resource.getFluid());
+		ItemStack ret = getItemFromFluid(resource.getFluid());
 
-		if (meta == 0) {
+		if (DCUtil.isEmpty(ret)) {
 			return 0;
 		}
 
 		if (doFill) {
-			container.setItemDamage(meta);
+			container = ret;
 		}
 		return fillAmo;
 
@@ -108,10 +102,12 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 	}
 
 	public boolean canFillFluidType(FluidStack fluid) {
-		if (container.getItemDamage() > 0) {
+		if (!DCUtil.isEmpty(container))
 			return false;
+		if (container.getItemDamage() == 0 || container.getItem() == FoodInit.liquorBottle) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public boolean canDrainFluidType(FluidStack fluid) {
@@ -119,7 +115,7 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 	}
 
 	protected void setContainerToEmpty() {
-		container.setItemDamage(0);
+		container = new ItemStack(FoodInit.liquorBottle);
 	}
 
 	@Override
@@ -135,6 +131,64 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 	@Override
 	public ItemStack getContainer() {
 		return container;
+	}
+
+	public static Fluid getFluid(ItemStack item) {
+		if (!DCUtil.isEmpty(item)) {
+			if (item.getItem() == FoodInit.liquorBottle) {
+				String name = ItemLiquorBottle.getFluidName(item.getItemDamage());
+				return FluidRegistry.getFluid(name);
+			} else if (item.getItem() == FoodInit.roseWaterBottle) {
+				String name = ItemRoseWaterBottle.getFluidName(item.getItemDamage());
+				return FluidRegistry.getFluid(name);
+			}
+		}
+		return null;
+	}
+
+	public static ItemStack getItemFromFluid(Fluid fluid) {
+		if (fluid == FoodInit.roseWater) {
+			ItemStack ret = new ItemStack(FoodInit.roseWaterBottle);
+			return ret;
+		} else {
+			int meta = -1;
+			if (fluid == FoodInit.beer) {
+				meta = 1;
+			} else if (fluid == FoodInit.wine) {
+				meta = 2;
+			} else if (fluid == FoodInit.sake) {
+				meta = 3;
+			} else if (fluid == FoodInit.dateWine) {
+				meta = 4;
+			} else if (fluid == FoodInit.whisky) {
+				meta = 5;
+			} else if (fluid == FoodInit.brandy) {
+				meta = 6;
+			} else if (fluid == FoodInit.pomaceBrandy) {
+				meta = 7;
+			} else if (fluid == FoodInit.shotyu) {
+				meta = 8;
+			} else if (fluid == FoodInit.araq) {
+				meta = 9;
+			} else if (fluid == FoodInit.whiteRum) {
+				meta = 10;
+			} else if (fluid == FoodInit.darkRum) {
+				meta = 11;
+			} else if (fluid == FoodInit.akvavit) {
+				meta = 12;
+			} else if (fluid == FoodInit.vodka) {
+				meta = 13;
+			} else if (fluid == FoodInit.netherWine) {
+				meta = 14;
+			} else if (fluid == FoodInit.chorusLiquor) {
+				meta = 15;
+			}
+			if (meta > 0) {
+				return new ItemStack(FoodInit.liquorBottle, 1, meta);
+			} else {
+				return ItemStack.EMPTY;
+			}
+		}
 	}
 
 }

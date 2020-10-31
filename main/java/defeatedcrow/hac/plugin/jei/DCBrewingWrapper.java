@@ -172,7 +172,6 @@ public class DCBrewingWrapper implements IRecipeWrapper {
 				s.add(DCAirflow.getTypeByID(i).localize());
 			}
 		}
-		// if (s.isEmpty())
 		// s.add(x + ", " + y);
 
 		return s.isEmpty() ? null : s;

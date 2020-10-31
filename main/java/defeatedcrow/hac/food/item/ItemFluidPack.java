@@ -74,7 +74,8 @@ public class ItemFluidPack extends DCItem {
 		"fuel_gas",
 		"hydrogen",
 		"nitrogen",
-		"ammonia" };
+		"ammonia",
+		"oxygen" };
 
 	public static final String[] FLUIDS = {
 		"empty",
@@ -97,7 +98,8 @@ public class ItemFluidPack extends DCItem {
 		"dcs.fuel_gas",
 		"dcs.hydrogen",
 		"dcs.nitrogen",
-		"dcs.ammonia" };
+		"dcs.ammonia",
+		"dcs.oxygen" };
 
 	public ItemFluidPack() {
 		super();
@@ -117,7 +119,7 @@ public class ItemFluidPack extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 20;
+		return 21;
 	}
 
 	@Override
@@ -170,9 +172,15 @@ public class ItemFluidPack extends DCItem {
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 			float durF = 1.0F;
 			int ampF = 0;
+			int l = 0;
 			if (drink != null) {
 				durF *= drink.getMilk().effect;
 				ampF += drink.getSugar().effect;
+				l = drink.getAgingLevel();
+				if (l > 0) {
+					ampF++;
+					durF *= l;
+				}
 			}
 
 			String mes = "";
@@ -187,6 +195,9 @@ public class ItemFluidPack extends DCItem {
 						mes2 += ",";
 					}
 					mes2 += drink.getSugar().toString();
+				}
+				if (l > 0) {
+					mes += (" (Aged)");
 				}
 				if (mes2.length() > 1) {
 					mes += " (" + mes2 + ")";
@@ -227,8 +238,8 @@ public class ItemFluidPack extends DCItem {
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 20) {
-			meta = 20;
+		if (meta > 21) {
+			meta = 21;
 		}
 		return FLUIDS[meta];
 	}
@@ -280,6 +291,8 @@ public class ItemFluidPack extends DCItem {
 			meta = 19;
 		} else if (fluid == MainInit.ammonia) {
 			meta = 20;
+		} else if (fluid == MainInit.oxygen) {
+			meta = 21;
 		}
 		return meta;
 	}
@@ -379,6 +392,11 @@ public class ItemFluidPack extends DCItem {
 			if (drink != null) {
 				durF *= drink.getMilk().effect;
 				ampF += drink.getSugar().effect;
+				int l = drink.getAgingLevel();
+				if (l > 0) {
+					ampF++;
+					durF *= l;
+				}
 			}
 
 			if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.main;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.ClimateCore;
@@ -1628,6 +1629,17 @@ public class MainMaterialRegister {
 				.registerBlock(MainInit.steamBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_steam", ClimateMain.MOD_ID);
 		MainInit.steam.setBlock(MainInit.steamBlock);
 
+		MainInit.oxygen = new Fluid("dcs.oxygen", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/oxygen_still"), new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/oxygen_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".oxygen").setDensity(-500).setViscosity(300)
+						.setGaseous(true);
+		FluidRegistry.registerFluid(MainInit.oxygen);
+		MainInit.oxygenBlock = new DCFluidBlockBase(MainInit.oxygen, "oxygen_still")
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_fluidblock_oxygen");
+		DCMaterialReg
+				.registerBlock(MainInit.oxygenBlock, ClimateCore.PACKAGE_BASE + "_fluidblock_oxygen", ClimateMain.MOD_ID);
+		MainInit.oxygen.setBlock(MainInit.oxygenBlock);
+
 		// bucket
 		FluidRegistry.addBucketForFluid(MainInit.oil);
 		FluidRegistry.addBucketForFluid(MainInit.greenTea);
@@ -1651,6 +1663,7 @@ public class MainMaterialRegister {
 		FluidRegistry.addBucketForFluid(MainInit.ethanol);
 		FluidRegistry.addBucketForFluid(MainInit.milk);
 		FluidRegistry.addBucketForFluid(MainInit.steam);
+		FluidRegistry.addBucketForFluid(MainInit.oxygen);
 
 		// heat tier
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.coffeeBlock, 0, DCHeatTier.HOT);
@@ -1663,8 +1676,15 @@ public class MainMaterialRegister {
 		ClimateAPI.registerBlock.registerHumBlock(MainInit.hotSpringBlock, 0, DCHumidity.UNDERWATER);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.stockBlock, 0, DCHeatTier.HOT);
 		ClimateAPI.registerBlock.registerHumBlock(MainInit.stockBlock, 0, DCHumidity.UNDERWATER);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.sulfuricAcidBlock, 0, DCHumidity.DRY);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.fuelOilBlock, 0, DCHumidity.NORMAL);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.fuelGasBlock, 0, DCHumidity.NORMAL);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.nitrogenBlock, 0, DCHeatTier.CRYOGENIC);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.nitrogenBlock, 0, DCHumidity.NORMAL);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.steamBlock, 0, DCHeatTier.BOIL);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.steamBlock, 0, DCHumidity.WET);
+		ClimateAPI.registerBlock.registerAirBlock(MainInit.oxygenBlock, 0, DCAirflow.FLOW);
+		ClimateAPI.registerBlock.registerHumBlock(MainInit.oxygenBlock, 0, DCHumidity.NORMAL);
 
 	}
 
