@@ -6,6 +6,7 @@ import java.util.List;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
@@ -110,16 +111,20 @@ public class LivingMainEventDC {
 					// bird potion
 					player.fallDistance = 0.0F;
 				}
-				if (player.isPotionActive(MainInit.warp)) {
-					if (player.collidedHorizontally) {
-						EnumFacing face = player.getHorizontalFacing();
-						BlockPos pos = player.getPosition().offset(face, 2).up();
-						if (player.world.getBlockState(pos).getBoundingBox(player.world, pos) == null && player.world
-								.getBlockState(pos.up()).getBoundingBox(player.world, pos.up()) == null) {
-							player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 0.125D, pos.getZ() + 0.5D);
-							player.fallDistance = 0.0F;
-							player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
+				if (player.isPotionActive(MainInit.warp) && !player.isRiding() && player.collidedHorizontally) {
+					DCLogger.debugInfoLog("check");
+					EnumFacing face = player.getHorizontalFacing();
+					BlockPos pos = player.getPosition().offset(face, 2);
+					if (isAir(player.world, pos) && isAir(player.world, pos.up())) {
+						if (!player.world.isRemote && player instanceof EntityPlayerMP) {
+							((EntityPlayerMP) player).connection.setPlayerLocation(pos.getX() + 0.5D, pos
+									.getY() + 0.125D, pos.getZ() + 0.5D, player.rotationYaw, player.rotationPitch);
+						} else {
+							player.setLocationAndAngles(pos.getX() + 0.5D, pos.getY() + 0.125D, pos
+									.getZ() + 0.5D, player.rotationYaw, player.rotationPitch);
 						}
+						player.fallDistance = 0.0F;
+						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
 					}
 				}
 
@@ -155,18 +160,19 @@ public class LivingMainEventDC {
 		}
 	}
 
-	boolean isCollidedBlock(EntityLivingBase living) {// プレイヤー周囲ブロックへのコリジョンチェック
-		World world = living.getEntityWorld();
-		EnumFacing f = living.getHorizontalFacing();
-		AxisAlignedBB bb = living.getEntityBoundingBox().grow(0.1D, 0, 0.1D);
-		return !world.getCollisionBoxes(living, bb).isEmpty();
+	boolean isAir(World world, BlockPos pos) {
+		if (world.isAirBlock(pos))
+			return true;
+		if (world.getBlockState(pos).getCollisionBoundingBox(world, pos) == null)
+			return true;
+		return false;
 	}
 
 	public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
 		if (entity != null && !entity.world.isRemote) {
-			if (entity.isPotionActive(MainInit.gravity) && entity.isInWater()) {
-				entity.motionY -= 0.1D * entity.getEntityAttribute(EntityLivingBase.SWIM_SPEED).getAttributeValue();
+			if (entity.isPotionActive(MainInit.gravity) && entity.isInWater() && !entity.onGround) {
+				entity.motionY -= 0.25D;
 			}
 		}
 	}

@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.device.RegisterBrewingDC;
 import defeatedcrow.hac.main.recipes.device.RegisterFluidRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -142,6 +143,15 @@ public class DCPluginBoP {
 				RegisterFluidRecipe.regNonFoodRecipe(new ItemStack(FoodInit.crops, 1,
 						18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
 								200), new Object[] { "plantReed", "dustAsh" });
+		}
+
+		if (ModuleConfig.r_fluid) {
+			RegisterBrewingDC.still(new ItemStack(FoodInit.essencialOil, 1, 0), new FluidStack(FoodInit.roseWater,
+					1000), new FluidStack(FluidRegistry.WATER, 5000), new Object[] {
+						new ItemStack(BOPBlocks.flower_1, 8, 5) });
+
+			RegisterBrewingDC.still(new ItemStack(FoodInit.essencialOil, 1, 5), null, new FluidStack(
+					FluidRegistry.WATER, 5000), new Object[] { new ItemStack(BOPBlocks.flower_1, 8, 0) });
 		}
 
 	}

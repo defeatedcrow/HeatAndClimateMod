@@ -5,6 +5,7 @@ import java.util.List;
 
 import defeatedcrow.hac.core.client.base.GuiBaseDC;
 import defeatedcrow.hac.food.block.TileAgingBarrel;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -53,7 +54,7 @@ public class GuiAgingBarrel extends GuiBaseDC {
 		// String hov = "point " + x + "," + y;
 		// list.add(hov);
 
-		if (isPointInRegion(38, 20, 12, 50, x, y)) {
+		if (isPointInRegion(56, 20, 12, 50, x, y)) {
 			if (!processor.inputT.isEmpty()) {
 				int inAmo = 5000 * this.processor.inputT.getFluidAmount() / 5000;
 				Fluid fluid = this.processor.inputT.getFluidType();
@@ -86,12 +87,13 @@ public class GuiAgingBarrel extends GuiBaseDC {
 		if (!processor.inputT.isEmpty()) {
 			Fluid in = this.processor.inputT.getFluidType();
 			int inAmo = 50 * this.processor.inputT.getFluidAmount() / 5000;
-			renderFluid(in, inAmo, i + 38, j + 20, 12, 50);
+			renderFluid(in, inAmo, i + 56, j + 20, 12, 50);
 		}
 
 		if (getAge() > 0) {
 			String s = getAge() + " Day";
-			this.fontRenderer.drawString(s, i + 100, j + 50, 0xFFFFFF, true);
+			int color = getAge() >= MainCoreConfig.aging_day ? 0xFF8080 : 0xFFFFFF;
+			this.fontRenderer.drawString(s, i + 125 - this.fontRenderer.getStringWidth(s) / 2, j + 53, color, true);
 		}
 	}
 

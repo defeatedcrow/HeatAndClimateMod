@@ -96,7 +96,7 @@ public class BlockAgingBarrel extends DCTileBlock {
 						if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
 							IDrinkCustomize drink = ret
 									.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-							if (dc_in.getAge() > MainCoreConfig.aging_day) {
+							if (dc_in.getAge() >= MainCoreConfig.aging_day) {
 								int level = dc_in.getAge() / MainCoreConfig.aging_day;
 								drink.setAging(level);
 							}

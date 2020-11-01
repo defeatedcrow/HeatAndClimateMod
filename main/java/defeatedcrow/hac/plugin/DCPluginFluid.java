@@ -36,7 +36,6 @@ public class DCPluginFluid {
 		registerFluidDic("blood", "blood");
 		registerFluidDic("nitricacid", "nitricacid");
 		registerFluidDic("sulfuricacid", "sulfuricacid");
-		registerFluidDic("hootch", "whisky");
 		registerFluidDic("milk_holstein", "milk");
 		registerFluidDic("milk_friesian", "milk");
 		registerFluidDic("milk_jersey", "milk");
@@ -61,7 +60,6 @@ public class DCPluginFluid {
 		registerFluidDic("dcs.raw_milk", "milk");
 		registerFluidDic("dcs.steam", "steam");
 		registerFluidDic("dcs.oxygen", "oxygen");
-		registerFluidDic("dcs.whisky", "whisky");
 		registerFluidDic("dcs.vodka", "ethanol");
 
 		// fuel
@@ -109,9 +107,9 @@ public class DCPluginFluid {
 		registerPotion("ic2pahoehoe_lava", MobEffects.FIRE_RESISTANCE);
 		registerPotion("juice", MobEffects.LUCK);
 		registerPotion("ice", DCInit.prevFreeze);
-		registerPotion("honey", MobEffects.RESISTANCE);
+		registerPotion("honey", MainInit.immunity);
 		registerPotion("seed.oil", MobEffects.HASTE);
-		registerPotion("for.honey", MobEffects.RESISTANCE);
+		registerPotion("for.honey", MainInit.immunity);
 		registerPotion("bio.ethanol", MobEffects.BLINDNESS);
 		registerPotion("biomass", MobEffects.NAUSEA);
 		registerPotion("glass", MobEffects.FIRE_RESISTANCE);
@@ -141,7 +139,7 @@ public class DCPluginFluid {
 		registerPotion("milk_sheep", MobEffects.REGENERATION);
 		registerPotion("fuelium", MobEffects.HASTE);
 		registerPotion("hootch", MobEffects.HASTE);
-		registerPotion("fire_water", MobEffects.STRENGTH);
+		registerPotion("fire_water", MainInit.wideMining);
 		registerPotion("rocket_fuel", MobEffects.STRENGTH, 1);
 		registerPotion("crude_oil", MainInit.gravity);
 		registerPotion("coal", MainInit.gravity);
@@ -153,11 +151,11 @@ public class DCPluginFluid {
 		registerPotion("biocrude", MobEffects.SLOWNESS);
 		registerPotion("redstone", MobEffects.JUMP_BOOST);
 		registerPotion("glowstone", MobEffects.GLOWING);
-		registerPotion("ender", MobEffects.NAUSEA);
+		registerPotion("ender", MainInit.warp);
 		registerPotion("pyrotheum", MobEffects.FIRE_RESISTANCE);
 		registerPotion("cryotheum", DCInit.prevFreeze);
 		registerPotion("aerotheum", MainInit.bird);
-		registerPotion("petrotheum", MainInit.heavyboots);
+		registerPotion("petrotheum", MainInit.wideMining);
 		registerPotion("mana", MainInit.ocean);
 		registerPotion("oil", MobEffects.WITHER);
 		registerPotion("fuel_gaseous", MobEffects.LEVITATION);
@@ -196,7 +194,7 @@ public class DCPluginFluid {
 				registerPotion("dcs.wine", MobEffects.ABSORPTION);
 				registerPotion("dcs.brandy", MainInit.absorptionEXP, 1);
 				registerPotion("dcs.pomace_brandy", MainInit.absorptionEXP);
-				registerPotion("dcs.sake", MainInit.projectileResistant);
+				registerPotion("dcs.sake", MainInit.projectileResistant, 1);
 				registerPotion("dcs.shotyu", MainInit.reflexion);
 				registerPotion("dcs.date", MobEffects.ABSORPTION);
 				registerPotion("dcs.araq", MainInit.absorptionEXP);
@@ -207,7 +205,7 @@ public class DCPluginFluid {
 				registerPotion("dcs.nether", MobEffects.FIRE_RESISTANCE);
 				registerPotion("dcs.chorus_liquor", MainInit.warp);
 			}
-			registerPotion("dcs.rose_water", MainInit.wideMining);
+			registerPotion("dcs.rose_water", MainInit.projectileResistant);
 		}
 
 		Fluid f1 = FluidRegistry.getFluid("ic2coolant");

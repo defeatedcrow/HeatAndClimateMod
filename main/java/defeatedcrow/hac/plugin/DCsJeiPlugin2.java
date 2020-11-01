@@ -1,9 +1,11 @@
 package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.gui.GuiAgingBarrel;
 import defeatedcrow.hac.food.gui.GuiBrewingTank;
 import defeatedcrow.hac.food.gui.GuiFluidProcessor;
 import defeatedcrow.hac.food.gui.GuiSteelPot;
+import defeatedcrow.hac.food.gui.GuiStillPot;
 import defeatedcrow.hac.food.gui.GuiTeaPot;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.machine.gui.GuiCrusher;
@@ -116,6 +118,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 				registry.addRecipeCatalyst(new ItemStack(FoodInit.unidentified, 1, 1), "dcs_climate.microbe");
 				registry.addRecipeCatalyst(new ItemStack(FoodInit.brewingTankWood, 1, 0), "dcs_climate.brewing");
 				registry.addRecipeCatalyst(new ItemStack(FoodInit.brewingTank, 1, 0), "dcs_climate.brewing");
+				registry.addRecipeCatalyst(new ItemStack(FoodInit.distillator, 1, 0), "dcs_climate.still");
+				registry.addRecipeCatalyst(new ItemStack(FoodInit.barrel, 1, 0), "dcs_climate.aging");
 			}
 		}
 
@@ -140,8 +144,13 @@ public class DCsJeiPlugin2 implements IModPlugin {
 			registry.addRecipeClickArea(GuiTeaPot.class, 80, 35, 16, 16, new String[] { "dcs_climate.fluidcraft" });
 
 			if (ModuleConfig.food_advanced) {
-				registry.addRecipeClickArea(GuiBrewingTank.class, 80, 35, 16, 16, new String[] {
+				registry.addRecipeClickArea(GuiBrewingTank.class, 80, 30, 16, 16, new String[] {
 					"dcs_climate.brewing" });
+
+				registry.addRecipeClickArea(GuiStillPot.class, 80, 30, 16, 16, new String[] { "dcs_climate.still" });
+
+				registry.addRecipeClickArea(GuiAgingBarrel.class, 110, 35, 16, 16, new String[] {
+					"dcs_climate.aging" });
 			}
 		}
 	}

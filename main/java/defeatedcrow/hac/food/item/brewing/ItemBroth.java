@@ -7,7 +7,7 @@ public class ItemBroth extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "increace", "grow" };
+	private static String[] names = { "increase", "grow" };
 
 	public ItemBroth() {
 		super();

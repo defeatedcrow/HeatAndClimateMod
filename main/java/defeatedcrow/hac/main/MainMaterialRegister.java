@@ -1331,7 +1331,8 @@ public class MainMaterialRegister {
 					.registerItem(MainInit.magicUnder, ClimateCore.PACKAGE_BASE + "_leggins_magic", ClimateMain.MOD_ID);
 
 			MainInit.magicCoat = new ItemArmorOvercoat(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
-					EntityEquipmentSlot.CHEST, "magic").setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK)
+					EntityEquipmentSlot.CHEST, "magic")
+							.setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK, EnumDyeColor.PURPLE)
 							.setCreativeTab(ClimateMain.cloth)
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_magic");
 			DCMaterialReg

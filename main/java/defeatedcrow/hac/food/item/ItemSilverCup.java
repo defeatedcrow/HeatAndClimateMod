@@ -177,7 +177,7 @@ public class ItemSilverCup extends FoodItemBase {
 						ampF += drink.getSugar().effect;
 						int l = drink.getAgingLevel();
 						if (l > 0) {
-							ampF++;
+							ampF += l;
 							durF *= l;
 						}
 					}
@@ -259,7 +259,7 @@ public class ItemSilverCup extends FoodItemBase {
 			int ampF = drink.getSugar().effect;
 			int l = drink.getAgingLevel();
 			if (l > 0) {
-				ampF++;
+				ampF += l;
 				durF *= l;
 			}
 			if (f != null && f.getFluid() != null) {
@@ -282,6 +282,7 @@ public class ItemSilverCup extends FoodItemBase {
 				}
 				if (ClimateCore.proxy.isShiftKeyDown()) {
 					tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
+					tooltip.add(DCName.DRINK_CUSTOMIZE.getLocalizedName());
 					tooltip.add(TextFormatting.BOLD.toString() + "= CONTAINED FLUID =");
 					tooltip.add("Fluid: " + f.getLocalizedName());
 					tooltip.add("Amount: " + f.amount);

@@ -80,6 +80,7 @@ import defeatedcrow.hac.food.item.StewBowlItem;
 import defeatedcrow.hac.food.item.StickFoodsItem;
 import defeatedcrow.hac.food.item.UdonItem;
 import defeatedcrow.hac.food.item.WagashiItem;
+import defeatedcrow.hac.food.item.YogurtItem;
 import defeatedcrow.hac.food.item.brewing.ItemAntibiotic;
 import defeatedcrow.hac.food.item.brewing.ItemBroth;
 import defeatedcrow.hac.food.item.brewing.ItemChickInEgg;
@@ -390,6 +391,9 @@ public class FoodInitRegister {
 
 		FoodInit.dip = new DipSauceItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_dipsauce");
 		DCMaterialReg.registerItem(FoodInit.dip, ClimateCore.PACKAGE_BASE + "_food_dipsauce", ClimateMain.MOD_ID);
+
+		FoodInit.yogurt = new YogurtItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_yogurt");
+		DCMaterialReg.registerItem(FoodInit.yogurt, ClimateCore.PACKAGE_BASE + "_food_yogurt", ClimateMain.MOD_ID);
 	}
 
 	public static void loadFluids() {
@@ -679,6 +683,7 @@ public class FoodInitRegister {
 		FoodInit.pasta.setCreativeTab(ClimateMain.food);
 		FoodInit.drink.setCreativeTab(ClimateMain.food);
 		FoodInit.dip.setCreativeTab(ClimateMain.food);
+		FoodInit.yogurt.setCreativeTab(ClimateMain.food);
 
 		FoodInit.nonEntity.setCreativeTab(ClimateMain.food);
 

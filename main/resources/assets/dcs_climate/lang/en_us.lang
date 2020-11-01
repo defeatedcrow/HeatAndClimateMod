@@ -242,7 +242,8 @@ item.dcs_food_residue_silage.name=Silage
 item.dcs_food_residue_ex_yeast.name=Yeast Extract
 item.dcs_food_residue_ex_peptone.name=Peptone
 item.dcs_food_residue_ex_whey.name=Whey
-item.dcs_food_residue_bhi.name=BHI Broth
+item.dcs_food_broth_grow.name=Culture Broth
+item.dcs_food_broth_increase.name=Increase Broth
 item.dcs_food_medium_simple.name=Simple Agar Medium
 item.dcs_food_medium_standard.name=Standard Methods Agar
 item.dcs_food_medium_potato.name=Potato Sugar Agar
@@ -302,6 +303,7 @@ item.dcs_food_pack_fuel_gas.name=Fuel Gas Pack
 item.dcs_food_pack_hydrogen.name=Hydrogen Pack
 item.dcs_food_pack_nitrogen.name=Nitrogen Pack
 item.dcs_food_pack_ammonia.name=Ammonia Pack
+item.dcs_food_pack_oxygen.name=Oxygen Pack
 item.dcs_food_pack_empty.name=Empty Paper Pack
 
 item.dcs_food_itemfood_baked_apple.name=Baked Apple
@@ -480,6 +482,7 @@ item.dcs_food_cake_onion_soup_raw.name=Raw Onion Soup
 item.dcs_food_cake_onion_soup_baked.name=Baked Onion Soup
 item.dcs_food_cake_smore.name=S'more
 item.dcs_food_cake_raisinwich.name=Raisinwich
+item.dcs_food_cake_yogurt.name=Yogurt Cake
 item.dcs_food_icecream_milk.name=Ice Cream
 item.dcs_food_icecream_kinako.name=Ice Cream with Kinako
 item.dcs_food_icecream_berry.name=Berry Ice Cream
@@ -543,6 +546,8 @@ item.dcs_food_drink_tomato.name=Gazpacho
 item.dcs_food_dipsauce_liver.name=Liver Spread
 item.dcs_food_dipsauce_raisins.name=Raisins Butter
 item.dcs_food_dipsauce_salsa.name=Red Salsa
+item.dcs_food_yogurt_plain.name=Yogurt
+item.dcs_food_yogurt_special.name=Special Yogurt
 
 ## crops
 item.dcs_food_crops_rice.name=Rice Plant
@@ -1664,6 +1669,7 @@ dcs.tip.pairing=Require registering target coordinate. (Held this item and right
 dcs.tip.on_anvil=Use on the anvil.
 dcs.tip.remove_bad_potion=Clear only bad potion effects.
 dcs.tip.clear_potion=Clear all potion effects.
+dcs.tip.drink_customize=Customizable with milk or sugar item.
 
 dcs.tip.danger_drink=Powerful but dangerous!
 dcs.tip.correct_from_cow=Collect from cow with Fluid Hopper.
@@ -1760,6 +1766,13 @@ dcs.tip.presscake=Has the effect of bone meal.
 dcs.tip.rotary_blade=Use in the Hammer Mill GUI.
 dcs.tip.rotary_blade2=Destroy tools to get some ingots or gems.
 dcs.tip.fertilizer=If it's placed under the Farmland, it helps the crop grow.
+dcs.tip.temp_difference=Require the temperature difference.
+dcs.tip.antibiotic_2=Cure the zombie condition.
+dcs.tip.antibiotic_3=Poisons the target.
+dcs.tip.antibiotic_4=Zombie the target villagers and horses.
+dcs.tip.antibiotic_5=Turn the pig into Pigman.
+dcs.tip.antibiotic_6=Turn the cow into Mooshroom.
+dcs.tip.essencial_oil=Lingering Potion effect:
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products
@@ -1778,7 +1791,7 @@ dcs_climate.drink=Fluid Information
 dcs_climate.microbe=Microbe Information
 dcs_climate.brewing=Brewing
 dcs_climate.still=Still
-dcs_climate.aging=Aging
+dcs_climate.aging=Aging Barrel
 
 dcs.tip.allcharm=This item works in top slots of player inventory.
 dcs.tip.amulet=This item works in creature or player inventory.
@@ -1958,6 +1971,8 @@ dcs.gui.device.crusher=Hammer Mill
 dcs.gui.device.silkworm_box=Silkworm Rearing Box
 dcs.gui.device.incubator=Incubator
 dcs.gui.device.brewing=Brewing
+dcs.gui.device.still=Still
+dcs.gui.device.barrel=Aging Barrel
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold
@@ -1971,6 +1986,8 @@ dcs.gui.message.require.wind=This device needs the wind.
 dcs.gui.message.require.wind2=Use the bellow or the fan.
 dcs.gui.message.require.absolute=This device needs the ABSOLUTE temp or the liquid nitrogen.
 dcs.gui.message.brewing.badclimate=Required around NORMAL temp, NORMAL humidity, NORMAL airflow.
+dcs.gui.message.still.badclimate=Required BOIL+ heat source and NORMAL- cold source.
+dcs.gui.message.aging.badclimate=Required around NORMAL temp, NORMAL humidity, NORMAL airflow.
 
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.
@@ -2011,6 +2028,42 @@ potion.effect.dcs.wide_mining=Wide Mining
 splash_potion.effect.dcs.wide_mining=Splash Potion of Wide Mining
 lingering_potion.effect.dcs.wide_mining=Lingering Potion of Wide Mining
 tipped_arrow.effect.dcs.wide_mining=Arrow of Wide Mining
+
+dcs.potion.projectile_resistant=Projectile Resistant
+potion.effect.dcs.projectile_resistant=Projectile Resistant
+splash_potion.effect.dcs.projectile_resistant=Splash Potion of Projectile Resistant
+lingering_potion.effect.dcs.projectile_resistant=Lingering Potion of Projectile Resistant
+tipped_arrow.effect.dcs.projectile_resistant=Arrow of Projectile Resistant
+
+dcs.potion.reflexion=Reflexion
+potion.effect.dcs.reflexion=Reflexion
+splash_potion.effect.dcs.reflexion=Splash Potion of Reflexion
+lingering_potion.effect.dcs.reflexion=Lingering Potion of Reflexion
+tipped_arrow.effect.dcs.reflexion=Arrow of Reflexion
+
+dcs.potion.absorption_exp=EXP Absorption
+potion.effect.dcs.absorption_exp=EXP Absorption
+splash_potion.effect.dcs.absorption_exp=Splash Potion of EXP Absorption
+lingering_potion.effect.dcs.absorption_exp=Lingering Potion of EXP Absorption
+tipped_arrow.effect.dcs.absorption_exp=Arrow of EXP Absorption
+
+dcs.potion.immunity=Immunity
+potion.effect.dcs.immunity=Immunity
+splash_potion.effect.dcs.immunity=Splash Potion of Immunity
+lingering_potion.effect.dcs.immunity=Lingering Potion of Immunity
+tipped_arrow.effect.dcs.immunity=Arrow of Immunity
+
+dcs.potion.digestive=Digestive
+potion.effect.dcs.digestive=Digestive
+splash_potion.effect.dcs.digestive=Splash Potion of Digestive
+lingering_potion.effect.dcs.digestive=Lingering Potion of Digestive
+tipped_arrow.effect.dcs.digestive=Arrow of Digestive
+
+dcs.potion.warp=Wall Through
+potion.effect.dcs.warp=Wall Through
+splash_potion.effect.dcs.warp=Splash Potion of Wall Through
+lingering_potion.effect.dcs.warp=Lingering Potion of Wall Through
+tipped_arrow.effect.dcs.warp=Arrow of Wall Through
 
 tipped_arrow.effect.dcs.freeze_res=Arrow of Freeze Resistance
 
@@ -2144,6 +2197,7 @@ entity.dcs.food.cake_grape.name=Grape Jelly and Mousse
 entity.dcs.food.cake_onion_soup.name=Baked Onion Soup
 entity.dcs.food.cake_smore.name=Smore
 entity.dcs.food.cake_raisin.name=Raisinwich
+entity.dcs.food.cake_yogurt.name=Yogurt Cake
 
 entity.dcs.food.wagashi_kinako.name=Kinako Mochi
 entity.dcs.food.wagashi_isobe.name=Isobe Mochi
@@ -2218,6 +2272,9 @@ entity.dcs.food.drink_tomato.name=Gazpacho
 entity.dcs.food.sauce_liver.name=Liver Spread
 entity.dcs.food.sauce_raisin.name=Raisins Butter
 entity.dcs.food.sauce_salsa.name=Red Salsa
+
+entity.dcs.food.yogurt_plain.name=Plain Yogurt
+entity.dcs.food.yogurt_special.name=Special Yogurt
 
 entity.dcs.main.flowerpot.name=Flower Pot
 entity.dcs.main.dynamite_red.name=Dynamite

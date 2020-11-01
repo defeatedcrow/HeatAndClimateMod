@@ -249,7 +249,8 @@ item.dcs_food_residue_silage.name=サイレージ
 item.dcs_food_residue_ex_yeast.name=酵母エキス
 item.dcs_food_residue_ex_peptone.name=ペプトン
 item.dcs_food_residue_ex_whey.name=ホエイ
-item.dcs_food_residue_bhi.name=増菌用ブロス
+item.dcs_food_broth_grow.name=培養ブロス
+item.dcs_food_broth_increase.name=増菌用ブロス
 item.dcs_food_medium_simple.name=簡易培地
 item.dcs_food_medium_standard.name=標準培地
 item.dcs_food_medium_potato.name=ジャガイモ培地
@@ -310,6 +311,7 @@ item.dcs_food_pack_fuel_gas.name=燃料ガスパック
 item.dcs_food_pack_hydrogen.name=水素パック
 item.dcs_food_pack_nitrogen.name=液体窒素パック
 item.dcs_food_pack_ammonia.name=アンモニアパック
+item.dcs_food_pack_oxygen.name=酸素パック
 item.dcs_food_pack_empty.name=紙パック
 
 item.dcs_food_itemfood_baked_apple.name=焼きリンゴ
@@ -488,6 +490,7 @@ item.dcs_food_cake_onion_soup_raw.name=生のオニオングラタンスープ
 item.dcs_food_cake_onion_soup_baked.name=オニオングラタンスープ
 item.dcs_food_cake_smore.name=スモア
 item.dcs_food_cake_raisinwich.name=レーズンバターサンド
+item.dcs_food_cake_yogurt.name=ヨーグルトケーキ
 item.dcs_food_icecream_milk.name=アイスクリーム
 item.dcs_food_icecream_kinako.name=黒蜜きなこアイス
 item.dcs_food_icecream_berry.name=ベリーアイス
@@ -551,6 +554,8 @@ item.dcs_food_drink_tomato.name=ガスパチョ
 item.dcs_food_dipsauce_liver.name=レバーペースト
 item.dcs_food_dipsauce_raisins.name=レーズンバター
 item.dcs_food_dipsauce_salsa.name=サルサソース
+item.dcs_food_yogurt_plain.name=ヨーグルト
+item.dcs_food_yogurt_special.name=スペシャルヨーグルト
 
 item.dcs_food_crops_rice.name=稲束
 item.dcs_food_crops_onion.name=玉ねぎ
@@ -1626,6 +1631,7 @@ dcs.tip.pairing=リンク先の座標登録が必要です。 (アイテムを�
 dcs.tip.on_anvil=金床で使用します。
 dcs.tip.remove_bad_potion=悪性ポーション効果のみを解除します。
 dcs.tip.clear_potion=すべてのポーション効果を解除。
+dcs.tip.drink_customize=砂糖やミルクとクラフトしてカスタマイズ可能。
 
 dcs.tip.danger_drink=全回復 (ときどき即死)
 dcs.tip.correct_from_cow=近くにいる牛から空容器または液体ホッパーで集める。
@@ -1713,6 +1719,13 @@ dcs.tip.presscake=骨粉のように植物に撒くことが出来ます。
 dcs.tip.rotary_blade=ハンマーミルで使用します。
 dcs.tip.rotary_blade2=ツールを破砕してインゴットを取り出します。
 dcs.tip.fertilizer=耕地ブロックの下に設置すると、作物の成長を早めます。
+dcs.tip.temp_difference=周囲の温度差が必要です。
+dcs.tip.antibiotic_2=対象のゾンビ状態を治療します。
+dcs.tip.antibiotic_3=モブに使用すると、対象に毒を与えます。
+dcs.tip.antibiotic_4=村人やウマをゾンビ化します。
+dcs.tip.antibiotic_5=ブタをピッグマンに変化させます。
+dcs.tip.antibiotic_6=ウシをムーシュルームに変化させます。
+dcs.tip.essencial_oil=使用すると、残留ポーション効果を発生します。
 
 dcs.tip.heat_treatment_jei1=%d tick以内に処理を行う
 dcs.tip.heat_treatment_jei2=不良品
@@ -1923,6 +1936,8 @@ dcs.gui.device.crusher=ハンマーミル
 dcs.gui.device.silkworm_box=蚕の飼育箱
 dcs.gui.device.incubator=インキュベーター
 dcs.gui.device.brewing=醸造
+dcs.gui.device.still=蒸留
+dcs.gui.device.barrel=熟成
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます
@@ -1936,6 +1951,8 @@ dcs.gui.message.require.wind=通気WINDが必要です
 dcs.gui.message.require.wind2=ふいごを利用して風を送り込んでみよう
 dcs.gui.message.require.absolute=気温ABSOLUTEまたは液体窒素が必要です
 dcs.gui.message.brewing.badclimate=常温のHeatTier、NORMALの湿度、NORMAL以下の通気が必要です。
+dcs.gui.message.still.badclimate=BOIL以上の熱源、NORMAL以下の冷却源が必要です。
+dcs.gui.message.aging.badclimate=常温のHeatTier、NORMALの湿度、NORMAL以下の通気が必要です。
 
 death.attack.dcs_heat=%1$sはこんがり焼き上がった。
 death.attack.dcs_cold=%1$sはシャーベットになった。
@@ -1970,6 +1987,36 @@ dcs.potion.wide_mining=採掘範囲
 potion.effect.dcs.wide_mining=採掘範囲
 splash_potion.effect.dcs.wide_mining=採掘範囲のスプラッシュポーション
 lingering_potion.effect.dcs.wide_mining=採掘範囲の残留ポーション
+
+dcs.potion.projectile_resistant=射撃耐性
+potion.effect.dcs.projectile_resistant=射撃耐性
+splash_potion.effect.dcs.projectile_resistant=射撃耐性のスプラッシュポーション
+lingering_potion.effect.dcs.projectile_resistant=射撃耐性の残留ポーション
+
+dcs.potion.reflexion=射撃反射
+potion.effect.dcs.reflexion=射撃反射
+splash_potion.effect.dcs.reflexion=射撃反射のスプラッシュポーション
+lingering_potion.effect.dcs.reflexion=射撃反射の残留ポーション
+
+dcs.potion.absorption_exp=EXP吸収
+potion.effect.dcs.absorption_exp=EXP吸収
+splash_potion.effect.dcs.absorption_exp=EXP吸収のスプラッシュポーション
+lingering_potion.effect.dcs.absorption_exp=EXP吸収の残留ポーション
+
+dcs.potion.immunity=免疫力
+potion.effect.dcs.immunity=免疫力
+splash_potion.effect.dcs.immunity=免疫力のスプラッシュポーション
+lingering_potion.effect.dcs.immunity=免疫力の残留ポーション
+
+dcs.potion.digestive=胃腸
+potion.effect.dcs.digestive=胃腸
+splash_potion.effect.dcs.digestive=胃腸のスプラッシュポーション
+lingering_potion.effect.dcs.digestive=胃腸の残留ポーション
+
+dcs.potion.warp=壁抜け
+potion.effect.dcs.warp=壁抜け
+splash_potion.effect.dcs.warp=壁抜けのスプラッシュポーション
+lingering_potion.effect.dcs.warp=壁抜けの残留ポーション
 
 ## enchantment
 enchantment.dcs.venom=毒矢

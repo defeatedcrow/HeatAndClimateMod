@@ -953,6 +953,12 @@ public class FoodBasicRecipe {
 			"foodCrackers",
 			"foodRaisinbutter" });
 
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.cake, 2, 17), new Object[] {
+			"foodPlainyogurt",
+			"listAllheavycream",
+			"cropLemon",
+			"dustSugar" });
+
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.icecream, 1, 6), new Object[] {
 			new ItemStack(FoodInit.icecream, 1, 2),
 			"listAllheavycream",
@@ -984,13 +990,6 @@ public class FoodBasicRecipe {
 			"listAllgreenveggie",
 			"cropTomato",
 			new ItemStack(FoodInit.meat, 1, 5) });
-
-		DCRecipe.jsonShapelessRecipe("food", 2, new ItemStack(FoodInit.salad, 2, 4), new Object[] {
-			new ItemStack(FoodInit.meat, 1, 5),
-			"cropSoybean",
-			new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0),
-			"cropCarrot",
-			"listAllrootveggie" });
 
 		// sweets
 
@@ -1368,9 +1367,9 @@ public class FoodBasicRecipe {
 			"Y Y",
 			"XXX",
 			'X',
-			"ingotCopper",
+			"ingotSUS",
 			'Y',
-			"ingotSUS" });
+			"ingotCopper" });
 
 		DCRecipe.jsonShapedRecipe("food", new ItemStack(FoodInit.barrel, 1, 0), new Object[] {
 			"YXY",
@@ -1423,6 +1422,14 @@ public class FoodBasicRecipe {
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Blocks.RED_MUSHROOM, 1, 0), new Object[] {
 			new ItemStack(FoodInit.mushroom, 1, 1) });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Items.EXPERIENCE_BOTTLE, 1, 0), new Object[] {
+			new ItemStack(Items.GLASS_BOTTLE, 1, 0),
+			"dustMana" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Items.ENDER_PEARL, 1, 0), new Object[] {
+			new ItemStack(Items.EMERALD, 1, 0),
+			"dustMana" });
 	}
 
 }

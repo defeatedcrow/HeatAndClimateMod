@@ -20,6 +20,7 @@ import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageSingleTank;
 import defeatedcrow.hac.plugin.DrinkPotionType;
+import defeatedcrow.hac.plugin.DrinkPotionType.PotionSet;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -29,8 +30,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
@@ -265,8 +266,11 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 	public boolean hasAgingFluid() {
 		Fluid f = inputT.getFluidType();
 		if (f != null) {
-			Potion eff = DrinkPotionType.INSTANCE.getPotionSet(f).potion;
-			if (eff != null && !eff.isBadEffect()) {
+			if (currentRecipe != null && currentRecipe.matches(inputT.getFluid())) {
+				return true;
+			}
+			PotionSet eff = DrinkPotionType.INSTANCE.getPotionSet(f);
+			if (eff != null && !eff.potion.isBadEffect()) {
 				return true;
 			}
 		}
@@ -279,7 +283,7 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 			return false;
 		FluidStack inf = inputT.getFluid();
 		if (currentRecipe != null) {
-			if (currentRecipe.matchClimate(current) && currentRecipe.matches(inf)) {
+			if (currentRecipe.matches(inf)) {
 				return true;
 			}
 		}
@@ -307,7 +311,7 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 			FluidStack outF = currentRecipe.getOutputFluid();
 
 			int c = inputT.getAge();
-			int a = inputT.getFluidAmount();
+			int a = MathHelper.floor(inputT.getFluidAmount() * 0.9F);
 
 			if (outF != null) {
 				inputT.setFluid(new FluidStack(outF.getFluid(), a));
@@ -700,8 +704,20 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 			if (get != null) {
 				if (isEmpty()) {
 					return true;
-				} else if (get.isFluidEqual(fluid)) {
-					return getAge() == 0 || getAge() <= getFluidAge(get);
+				} else if (get.getFluid() == getFluidType()) {
+					return getAge() < 2 || getAge() <= getFluidAge(get);
+				}
+			}
+			return false;
+		}
+
+		@Override
+		public boolean canDrainTarget(FluidStack get) {
+			if (get != null) {
+				if (isEmpty()) {
+					return false;
+				} else if (get.getFluid() == getFluidType()) {
+					return true;
 				}
 			}
 			return false;

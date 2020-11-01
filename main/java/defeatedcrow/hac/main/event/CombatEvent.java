@@ -55,7 +55,7 @@ public class CombatEvent {
 							EntityItem drop = new EntityItem(ownerLiv.world, living.posX, living.posY, living.posZ, item
 									.copy());
 							drop.motionY += 0.3D;
-							if (ownerLiv.world.spawnEntity(drop)) {
+							if (!ownerLiv.world.isRemote && ownerLiv.world.spawnEntity(drop)) {
 								living.setItemStackToSlot(EntityEquipmentSlot.values()[i], ItemStack.EMPTY);
 								ownerLiv.world
 										.playSound(null, ownerLiv.posX, ownerLiv.posY, ownerLiv.posZ, SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.5F, 1.0F / (ownerLiv.world.rand
@@ -74,7 +74,7 @@ public class CombatEvent {
 					if (living.isPotionActive(MainInit.reflexion)) {
 						b = true;
 						PotionEffect eff = living.getActivePotionEffect(MainInit.reflexion);
-						float damage = 4.0F + eff.getAmplifier() * 2.0F;
+						float damage = 4.0F * (eff.getAmplifier() + 1.0F);
 						Entity proj = source.getImmediateSource();
 						double dx = owner.posX - living.posX;
 						double dz = owner.posZ - living.posZ;
@@ -82,15 +82,15 @@ public class CombatEvent {
 								.getImmediateSource().posY;
 						EntityIronBullet bullet = new EntityIronBullet(living.world, living);
 						bullet.setDamage(damage);
-						bullet.shoot(dx, dy, dz, 2.0F, 6.0F);
-						bullet.playSound(SoundEvents.BLOCK_ANVIL_USE, 1.0F, 4.0F);
+						bullet.shoot(dx, dy, dz, 2.0F, 5.0F);
+						bullet.playSound(SoundEvents.BLOCK_ANVIL_PLACE, 1.0F, 4.0F);
 						if (!living.world.isRemote) {
 							living.world.spawnEntity(bullet);
 						}
 					} else if (living.isPotionActive(MainInit.projectileResistant)) {
 						PotionEffect eff = living.getActivePotionEffect(MainInit.projectileResistant);
-						float red = 1.0F - (eff.getAmplifier() * 0.2F);
-						if (red < 0F) {
+						float red = 1.0F - (eff.getAmplifier() * 0.5F);
+						if (red <= 0F) {
 							b = true;
 						} else {
 							newDam *= red;
@@ -99,7 +99,7 @@ public class CombatEvent {
 					}
 				} else if (living.isPotionActive(MainInit.absorptionEXP)) {
 					PotionEffect eff = living.getActivePotionEffect(MainInit.absorptionEXP);
-					float abs = eff.getAmplifier() * 0.2F * newDam;
+					float abs = eff.getAmplifier() * 0.5F * newDam;
 					b = true;
 					if (!living.world.isRemote) {
 						EntityXPOrb orb = new EntityXPOrb(living.world, living.posX, living.posY, living.posZ,

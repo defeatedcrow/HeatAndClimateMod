@@ -100,12 +100,20 @@ public class GuiStillPot extends GuiBaseDC {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		int l = this.getCookProgressScaled(44);
-		this.drawTexturedModalRect(i + 76, j + 19, 176, 0, l, 26);
+		this.drawTexturedModalRect(i + 75, j + 19, 176, 0, l, 26);
 
 		if (processor.isSuitableClimate()) {
 			this.drawTexturedModalRect(i - 20, j + 4, 176, 29, 20, 20);
 		} else {
 			this.drawTexturedModalRect(i - 20, j + 4, 176, 49, 20, 20);
+		}
+
+		if (processor.getField(3) > DCHeatTier.WARM.getID()) {
+			this.drawTexturedModalRect(i + 73, j + 57, 196, 29, 15, 17);
+		}
+
+		if (processor.getField(4) < DCHeatTier.WARM.getID()) {
+			this.drawTexturedModalRect(i + 88, j + 57, 196, 46, 15, 17);
 		}
 
 		if (!processor.inputT.isEmpty()) {
@@ -120,13 +128,6 @@ public class GuiStillPot extends GuiBaseDC {
 			renderFluid(out, outAmo, i + 125, j + 20, 12, 50);
 		}
 
-		if (processor.getField(3) > DCHeatTier.WARM.getID()) {
-			this.drawTexturedModalRect(i + 73, j + 57, 196, 29, 15, 17);
-		}
-
-		if (processor.getField(4) < DCHeatTier.WARM.getID()) {
-			this.drawTexturedModalRect(i + 88, j + 57, 196, 46, 15, 17);
-		}
 	}
 
 	private int getCookProgressScaled(int pixels) {

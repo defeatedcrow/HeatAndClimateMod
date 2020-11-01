@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 public class PotionReflexionDC extends Potion {
 
 	public PotionReflexionDC() {
-		super(false, 0x8080FF);
+		super(false, 0x80C0FF);
 		this.setPotionName("dcs.potion.reflexion");
 		this.setIconIndex(5, 0);
 	}

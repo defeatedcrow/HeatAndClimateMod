@@ -169,6 +169,7 @@ public class ItemFluidPack extends DCItem {
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
 		if (f != null) {
+			tooltip.add(TextFormatting.BOLD.toString() + DCName.DRINK_CUSTOMIZE.getLocalizedName());
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 			float durF = 1.0F;
 			int ampF = 0;
@@ -394,7 +395,7 @@ public class ItemFluidPack extends DCItem {
 				ampF += drink.getSugar().effect;
 				int l = drink.getAgingLevel();
 				if (l > 0) {
-					ampF++;
+					ampF += l;
 					durF *= l;
 				}
 			}

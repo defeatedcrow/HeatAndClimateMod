@@ -178,6 +178,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("gasHydrogen", new ItemStack(FoodInit.paperPack, 1, 18));
 		OreDictionary.registerOre("gasNitrogen", new ItemStack(FoodInit.paperPack, 1, 19));
 		OreDictionary.registerOre("gasAmmonia", new ItemStack(FoodInit.paperPack, 1, 20));
+		OreDictionary.registerOre("gasOxygen", new ItemStack(FoodInit.paperPack, 1, 21));
 
 		OreDictionary.registerOre("foodButter", new ItemStack(FoodInit.dairy, 1, 0));
 		OreDictionary.registerOre("foodCheese", new ItemStack(FoodInit.dairy, 1, 1));
@@ -192,6 +193,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodAgar", new ItemStack(FoodInit.meat, 1, 3));
 		OreDictionary.registerOre("foodGelatine", new ItemStack(FoodInit.meat, 1, 4));
 		OreDictionary.registerOre("listAllmeatraw", new ItemStack(FoodInit.meat, 1, 5));
+		OreDictionary.registerOre("foodVegimeat", new ItemStack(FoodInit.meat, 1, 5));
 		OreDictionary.registerOre("foodMiso", new ItemStack(FoodInit.meat, 1, 6));
 		OreDictionary.registerOre("foodSoysauce", new ItemStack(FoodInit.meat, 1, 7));
 		OreDictionary.registerOre("foodSiroanko", new ItemStack(FoodInit.meat, 1, 8));
@@ -251,6 +253,8 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodLiverpaste", new ItemStack(FoodInit.dip, 1, 0));
 		OreDictionary.registerOre("foodRaisinbutter", new ItemStack(FoodInit.dip, 1, 1));
 		OreDictionary.registerOre("foodSalsa", new ItemStack(FoodInit.dip, 1, 2));
+		OreDictionary.registerOre("foodPlainyogurt", new ItemStack(FoodInit.yogurt, 1, 0));
+		OreDictionary.registerOre("foodPlainyogurt", new ItemStack(FoodInit.yogurt, 1, 1));
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 2));

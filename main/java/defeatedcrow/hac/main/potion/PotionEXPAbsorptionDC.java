@@ -9,7 +9,7 @@ public class PotionEXPAbsorptionDC extends Potion {
 	public PotionEXPAbsorptionDC() {
 		super(false, 0x50FF50);
 		this.setPotionName("dcs.potion.absorption_exp");
-		this.setIconIndex(6, 1);
+		this.setIconIndex(6, 0);
 	}
 
 	@Override

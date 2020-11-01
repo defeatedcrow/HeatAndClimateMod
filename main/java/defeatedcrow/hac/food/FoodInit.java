@@ -35,6 +35,7 @@ public class FoodInit {
 	public static Item udon;
 	public static Item dip;
 	public static Item pasta;
+	public static Item yogurt;
 
 	public static Item crops;
 	public static Item seeds;

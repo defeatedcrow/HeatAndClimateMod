@@ -73,7 +73,7 @@ public enum DrinkMilk {
 				} else if (name.contains("milk") || name.contains("Milk")) {
 					if (ret != SOY)
 						ret = MILK;
-				} else if (name.contains("lemon") || name.contains("lime")) {
+				} else if (name.contains("cropLemon") || name.contains("cropLime")) {
 					ret = CITRUS;
 				}
 			}

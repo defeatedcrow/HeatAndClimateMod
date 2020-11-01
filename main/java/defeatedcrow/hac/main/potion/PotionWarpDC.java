@@ -7,9 +7,9 @@ import net.minecraft.util.ResourceLocation;
 public class PotionWarpDC extends Potion {
 
 	public PotionWarpDC() {
-		super(false, 0xE0E000);
+		super(false, 0xE000E0);
 		this.setPotionName("dcs.potion.warp");
-		this.setIconIndex(6, 0);
+		this.setIconIndex(6, 1);
 	}
 
 	@Override

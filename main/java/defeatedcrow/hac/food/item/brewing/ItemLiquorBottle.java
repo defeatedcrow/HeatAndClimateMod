@@ -125,11 +125,11 @@ public class ItemLiquorBottle extends DCItem {
 	@Override
 	public int getItemBurnTime(ItemStack stack) {
 		int i = stack.getMetadata();
-		if (i > 4 && i < 12)
+		if (i > 4 && i < 13)
 			return 800;
-		if (i == 12)
-			return 0;
-		return 1600;
+		if (i == 13)
+			return 1600;
+		return 0;
 	}
 
 	@Override
@@ -146,6 +146,7 @@ public class ItemLiquorBottle extends DCItem {
 
 		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
 		if (f != null) {
+			tooltip.add(TextFormatting.BOLD.toString() + DCName.DRINK_CUSTOMIZE.getLocalizedName());
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 			float durF = 3.0F;
 			int ampF = 0;
@@ -155,7 +156,7 @@ public class ItemLiquorBottle extends DCItem {
 				ampF += drink.getSugar().effect;
 				l = drink.getAgingLevel();
 				if (l > 0) {
-					ampF++;
+					ampF += l;
 					durF *= l;
 				}
 			}
@@ -311,7 +312,7 @@ public class ItemLiquorBottle extends DCItem {
 			Fluid fluid = getFluid(meta);
 			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 3F, 1);
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-			float durF = 3.0F;
+			float durF = 1.0F;
 			int ampF = 0;
 			if (drink != null) {
 				durF *= drink.getMilk().effect;

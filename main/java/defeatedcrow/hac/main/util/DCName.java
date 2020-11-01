@@ -45,7 +45,8 @@ public enum DCName {
 	FACING("dcs.tip.facing"),
 	POWER("dcs.tip.power"),
 	TARGET("dcs.tip.target"),
-	REMOVE_BAD_POTION("dcs.tip.remove_bad_potion");
+	REMOVE_BAD_POTION("dcs.tip.remove_bad_potion"),
+	DRINK_CUSTOMIZE("dcs.tip.drink_customize");
 
 	private final String name;
 

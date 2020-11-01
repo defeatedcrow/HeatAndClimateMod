@@ -172,6 +172,10 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(CakeOnionEntity.class, "food", "cake_onion_soup");
 		DCRegistryUtil.addEntity(CakeSmoreEntity.class, "food", "cake_smore");
 		DCRegistryUtil.addEntity(CakeRaisinEntity.class, "food", "cake_raisin");
+		DCRegistryUtil.addEntity(CakeYogurtEntity.class, "food", "cake_yogurt");
+
+		DCRegistryUtil.addEntity(YogurtPlainEntity.class, "food", "yogurt_plain");
+		DCRegistryUtil.addEntity(YogurtSPEntity.class, "food", "yogurt_special");
 
 		DCRegistryUtil.addEntity(IceCreamEntity.class, "food", "icecream_milk");
 		DCRegistryUtil.addEntity(IceCreamKinakoEntity.class, "food", "icecream_kinako");

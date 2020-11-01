@@ -22,6 +22,7 @@ import defeatedcrow.hac.food.entity.CakeRaisinEntity;
 import defeatedcrow.hac.food.entity.CakeSmoreEntity;
 import defeatedcrow.hac.food.entity.CakeToffeeEntity;
 import defeatedcrow.hac.food.entity.CakeTowerEntity;
+import defeatedcrow.hac.food.entity.CakeYogurtEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -43,12 +44,12 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 16;
+		return 17;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(meta, 0, 16);
+		int i = MathHelper.clamp(meta, 0, 17);
 		String s = "items/food/cake_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -75,7 +76,8 @@ public class CakeItem extends FoodItemBase {
 			"onion_soup_raw",
 			"onion_soup_baked",
 			"smore",
-			"raisinwich" };
+			"raisinwich",
+			"yogurt" };
 		return s;
 	}
 
@@ -133,6 +135,9 @@ public class CakeItem extends FoodItemBase {
 		if (i == 16) {
 			ret = new CakeRaisinEntity(world, x, y, z, player);
 		}
+		if (i == 17) {
+			ret = new CakeYogurtEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
@@ -172,6 +177,8 @@ public class CakeItem extends FoodItemBase {
 		case 15:
 			return 10;
 		case 16:
+			return 10;
+		case 17:
 			return 10;
 		}
 		return 0;

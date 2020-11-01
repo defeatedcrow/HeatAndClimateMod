@@ -210,7 +210,7 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addPotion(MainInit.nimble, MainInit.nimbleType, "nimble");
 
 		MainInit.wideMining = new PotionWideMiningDC();
-		DCRegistryUtil.addPotion(MainInit.wideMining, MainInit.wideMiningType, "wideMining");
+		DCRegistryUtil.addPotion(MainInit.wideMining, MainInit.wideMiningType, "wide_mining");
 
 		MainInit.digestive = new PotionDigestiveDC();
 		DCRegistryUtil.addPotion(MainInit.digestive, MainInit.digestiveType, "digestive");
@@ -222,13 +222,14 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addPotion(MainInit.warp, MainInit.warpType, "warp");
 
 		MainInit.projectileResistant = new PotionProjectileResistantDC();
-		DCRegistryUtil.addPotion(MainInit.projectileResistant, MainInit.projectileResistantType, "projectileResistant");
+		DCRegistryUtil
+				.addPotion(MainInit.projectileResistant, MainInit.projectileResistantType, "projectile_resistant");
 
 		MainInit.reflexion = new PotionReflexionDC();
 		DCRegistryUtil.addPotion(MainInit.reflexion, MainInit.reflexionType, "reflextion");
 
 		MainInit.absorptionEXP = new PotionEXPAbsorptionDC();
-		DCRegistryUtil.addPotion(MainInit.absorptionEXP, MainInit.absorptionEXPType, "absorptionEXP");
+		DCRegistryUtil.addPotion(MainInit.absorptionEXP, MainInit.absorptionEXPType, "absorption_exp");
 	}
 
 	public void loadEnchantment() {

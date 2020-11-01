@@ -24,8 +24,8 @@ public class ContainerAgingBarrel extends Container {
 		this.player = playerInv;
 
 		// 液体系
-		this.addSlotToContainer(new Slot(tile, 0, 40, 18));
-		this.addSlotToContainer(new SlotInvalid(tile, 1, 40, 54));
+		this.addSlotToContainer(new Slot(tile, 0, 37, 18));
+		this.addSlotToContainer(new SlotInvalid(tile, 1, 37, 54));
 
 		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {

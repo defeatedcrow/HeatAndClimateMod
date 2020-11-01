@@ -102,9 +102,9 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 	}
 
 	public boolean canFillFluidType(FluidStack fluid) {
-		if (!DCUtil.isEmpty(container))
+		if (DCUtil.isEmpty(container))
 			return false;
-		if (container.getItemDamage() == 0 || container.getItem() == FoodInit.liquorBottle) {
+		if (container.getItemDamage() == 0 && container.getItem() == FoodInit.liquorBottle) {
 			return true;
 		}
 		return false;

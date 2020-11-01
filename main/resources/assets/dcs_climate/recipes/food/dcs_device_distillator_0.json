@@ -8,11 +8,11 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotCopper"
+   "ore": "ingotSUS"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "ingotSUS"
+   "ore": "ingotCopper"
   }
  },
  "result": {

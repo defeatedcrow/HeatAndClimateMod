@@ -44,13 +44,10 @@ public class FoodAgingRecipe implements IAgingRecipeDC {
 	@Override
 	public boolean matches(FluidStack fluid) {
 		boolean b1 = false;
-		if (this.inputF == null) {
-			if (fluid == null)
-				b1 = true;
-		} else if (fluid != null) {
+		if (fluid != null && inputF != null) {
 			if (inputF.getFluid() == fluid.getFluid() || FluidDictionaryDC.matchFluid(fluid.getFluid(), inputF
 					.getFluid())) {
-				return inputF.amount <= fluid.amount;
+				return true;
 			}
 		}
 
@@ -59,12 +56,7 @@ public class FoodAgingRecipe implements IAgingRecipeDC {
 
 	@Override
 	public boolean matchOutput(FluidStack fluid) {
-		boolean b1 = false;
-		if (this.outputF == null || fluid == null) {
-			return true;
-		} else {
-			return outputF.getFluid() == fluid.getFluid();
-		}
+		return true;
 	}
 
 	@Override
@@ -74,8 +66,7 @@ public class FoodAgingRecipe implements IAgingRecipeDC {
 					.getID()) {
 				return false;
 			}
-			if (climate.getHumidity().getID() > DCHumidity.WET.getID() || climate.getHumidity()
-					.getID() < DCHumidity.NORMAL.getID()) {
+			if (climate.getHumidity().getID() > DCHumidity.WET.getID()) {
 				return false;
 			}
 			if (climate.getAirflow().getID() > DCAirflow.NORMAL.getID()) {
