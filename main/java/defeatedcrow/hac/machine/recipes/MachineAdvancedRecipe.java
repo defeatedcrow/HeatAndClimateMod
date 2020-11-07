@@ -512,6 +512,17 @@ public class MachineAdvancedRecipe {
 			'Z',
 			new ItemStack(Blocks.CHEST, 1, 0) });
 
+		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.monitorTemp, 1, 0), new Object[] {
+			"X",
+			"Y",
+			"Z",
+			'X',
+			new ItemStack(Blocks.REDSTONE_LAMP, 1, 0),
+			'Y',
+			"gemBismuth",
+			'Z',
+			new ItemStack(DCInit.climate_checker, 1, 0) });
+
 		DCRecipe.jsonShapedRecipe("machine_advanced", new ItemStack(MachineInit.entityPanel, 1, 0), new Object[] {
 			"X",
 			"Y",

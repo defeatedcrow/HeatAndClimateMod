@@ -7,11 +7,11 @@ public class ItemInoculum extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "koji" };
+	private static String[] names = { "koji", "koji_black" };
 
 	public ItemInoculum() {
 		super();
-		maxMeta = 0;
+		maxMeta = 1;
 	}
 
 	@Override

@@ -182,6 +182,8 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 				meta = 14;
 			} else if (fluid == FoodInit.chorusLiquor) {
 				meta = 15;
+			} else if (fluid == FoodInit.awamori) {
+				meta = 16;
 			}
 			if (meta > 0) {
 				return new ItemStack(FoodInit.liquorBottle, 1, meta);

@@ -3,10 +3,12 @@ package defeatedcrow.hac.plugin.waila;
 import java.util.List;
 
 import defeatedcrow.hac.api.blockstate.EnumSide;
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.machine.block.BlockEntityPanel;
 import defeatedcrow.hac.machine.block.BlockMonitorPanel;
+import defeatedcrow.hac.machine.block.BlockMonitorTemp;
 import defeatedcrow.hac.machine.block.TileEntityPanel;
 import defeatedcrow.hac.machine.block.TileMonitorBase;
 import defeatedcrow.hac.main.util.DCName;
@@ -33,7 +35,21 @@ public class HUDHandlerTorque extends HUDHandlerBlocks {
 		Block block = accessor.getBlock();
 		int meta = accessor.getMetadata();
 
-		if (BlockMonitorPanel.class.isInstance(accessor.getBlock())) {
+		if (BlockMonitorTemp.class.isInstance(accessor.getBlock())) {
+			float amount = accessor.getNBTData().getFloat("gauge");
+			int s = meta & 7;
+			EnumSide side = EnumSide.fromIndex(s);
+			boolean power = meta > 7;
+			int id = (int) amount - 1;
+			if (id < 0) {
+				currenttip.add(DCName.CLIMATE.getLocalizedName() + " : NO DATA");
+				currenttip.add(String.format(DCName.FACING.getLocalizedName() + " : %s", side.getFacing()));
+			} else {
+				currenttip.add(String.format(DCName.CLIMATE.getLocalizedName() + " : %s", DCHeatTier.getTypeByID(id)
+						.toString()));
+				currenttip.add(String.format(DCName.FACING.getLocalizedName() + " : %s", side.getFacing()));
+			}
+		} else if (BlockMonitorPanel.class.isInstance(accessor.getBlock())) {
 			float amount = accessor.getNBTData().getFloat("gauge");
 			int s = meta & 7;
 			EnumSide side = EnumSide.fromIndex(s);

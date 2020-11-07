@@ -796,6 +796,9 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 					.withProperty(DCState.FACING, face);
 		}
 		if (ModuleConfig.build_advanced) {
+			if ((x > 5 && x < 10) && z == 9 && y == 3) {
+				return MainInit.displayShelf.getDefaultState().withProperty(DCState.FACING, face.getOpposite());
+			}
 			if ((x == 0 || x == 15) && z == 8 && y == 4) {
 				return MainInit.chandelierGypsum.getDefaultState();
 			}

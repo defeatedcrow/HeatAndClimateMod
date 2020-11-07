@@ -201,9 +201,10 @@ public class DCPluginFluid {
 				registerPotion("dcs.white_rum", MainInit.wideMining);
 				registerPotion("dcs.dark_rum", MainInit.wideMining, 1);
 				registerPotion("dcs.akvavit", MainInit.immunity);
-				registerPotion("dcs.vodka", MainInit.reflexion);
+				registerPotion("dcs.vodka", MainInit.reflexion, 2);
 				registerPotion("dcs.nether", MobEffects.FIRE_RESISTANCE);
 				registerPotion("dcs.chorus_liquor", MainInit.warp);
+				registerPotion("dcs.awamori", MainInit.reflexion);
 			}
 			registerPotion("dcs.rose_water", MainInit.projectileResistant);
 		}

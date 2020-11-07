@@ -3,6 +3,7 @@ package defeatedcrow.hac.plugin;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.cofh.DCPluginCoFH;
+import defeatedcrow.hac.plugin.sd.DCPluginSD;
 import defeatedcrow.hac.plugin.tan.DCPluginTaN;
 import net.minecraftforge.fml.common.Loader;
 
@@ -25,6 +26,7 @@ public class DCIntegrationCore {
 	public static boolean loadedAnimania = false;
 	public static boolean loadedUGB = false;
 	public static boolean loadedRC = false;
+	public static boolean loadedSD = false;
 
 	private DCIntegrationCore() {}
 
@@ -73,6 +75,9 @@ public class DCIntegrationCore {
 		}
 		if (Loader.isModLoaded("railcraft") && ModuleConfig.rc) {
 			loadedRC = true;
+		}
+		if (Loader.isModLoaded("simpledifficulty") && ModuleConfig.sd) {
+			loadedSD = true;
 		}
 	}
 
@@ -179,6 +184,17 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: tektopia");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: tektopia");
+			}
+		}
+
+		if (loadedSD) {
+			try {
+				DCPluginSD.loadInit();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod init plugin: SimpleDifficulty");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: SimpleDifficulty");
+			} catch (Error e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: SimpleDifficulty");
 			}
 		}
 

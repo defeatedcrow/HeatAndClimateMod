@@ -43,6 +43,7 @@ public class ModuleConfig {
 	public static boolean ugb = false;
 	public static boolean rc = true;
 	public static boolean ani = true;
+	public static boolean sd = true;
 
 	public static boolean r_mill = true;
 	public static boolean r_spinning = true;
@@ -95,6 +96,7 @@ public class ModuleConfig {
 			Property ugb_b = cfg.get("plugin setting", "UndergroundBiomes", ugb);
 			Property rc_b = cfg.get("plugin setting", "Railcraft", rc);
 			Property ani_b = cfg.get("plugin setting", "Animania", ani);
+			Property sd_b = cfg.get("plugin setting", "SimpleDifficulty", sd);
 
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
 			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
@@ -135,6 +137,7 @@ public class ModuleConfig {
 			ugb = ugb_b.getBoolean();
 			rc = rc_b.getBoolean();
 			ani = ani_b.getBoolean();
+			sd = sd_b.getBoolean();
 
 			r_mill = mill.getBoolean();
 			r_spinning = spinning.getBoolean();

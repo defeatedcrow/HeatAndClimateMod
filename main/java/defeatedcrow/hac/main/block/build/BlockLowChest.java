@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.Random;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.main.ClimateMain;
@@ -96,6 +98,9 @@ public class BlockLowChest extends DCTileBlock {
 	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
 		return Container.calcRedstone(worldIn.getTileEntity(pos));
 	}
+
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {}
 
 	// 接してる面側が水だったら、その接してる水の側面を描画しない
 	@Override

@@ -84,7 +84,7 @@ import defeatedcrow.hac.food.item.YogurtItem;
 import defeatedcrow.hac.food.item.brewing.ItemAntibiotic;
 import defeatedcrow.hac.food.item.brewing.ItemBroth;
 import defeatedcrow.hac.food.item.brewing.ItemChickInEgg;
-import defeatedcrow.hac.food.item.brewing.ItemEssencialOil;
+import defeatedcrow.hac.food.item.brewing.ItemEssentialOil;
 import defeatedcrow.hac.food.item.brewing.ItemInoculum;
 import defeatedcrow.hac.food.item.brewing.ItemLiquorBottle;
 import defeatedcrow.hac.food.item.brewing.ItemMedium;
@@ -514,10 +514,10 @@ public class FoodInitRegister {
 		DCMaterialReg
 				.registerItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_BASE + "_rose_water_bottle", ClimateMain.MOD_ID);
 
-		FoodInit.essencialOil = new ItemEssencialOil()
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_essencial_oil");
+		FoodInit.essentialOil = new ItemEssentialOil()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_essential_oil");
 		DCMaterialReg
-				.registerItem(FoodInit.essencialOil, ClimateCore.PACKAGE_BASE + "_food_essencial_oil", ClimateMain.MOD_ID);
+				.registerItem(FoodInit.essentialOil, ClimateCore.PACKAGE_BASE + "_food_essential_oil", ClimateMain.MOD_ID);
 
 		/* fluids */
 
@@ -633,6 +633,17 @@ public class FoodInitRegister {
 						"blocks/fluid/rose_water_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".rose_water");
 		FluidRegistry.registerFluid(FoodInit.roseWater);
 
+		FoodInit.moromiBlack = new Fluid("dcs.moromi_black", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/moromi_black_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/moromi_black_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".moromi_black");
+		FluidRegistry.registerFluid(FoodInit.moromiBlack);
+
+		FoodInit.awamori = new Fluid("dcs.awamori", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/clear_liquor_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/clear_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".awamori");
+		FluidRegistry.registerFluid(FoodInit.awamori);
+
 		FluidRegistry.addBucketForFluid(FoodInit.beer);
 		FluidRegistry.addBucketForFluid(FoodInit.rawWhisky);
 		FluidRegistry.addBucketForFluid(FoodInit.whisky);
@@ -653,6 +664,8 @@ public class FoodInitRegister {
 		FluidRegistry.addBucketForFluid(FoodInit.netherWine);
 		FluidRegistry.addBucketForFluid(FoodInit.chorusLiquor);
 		FluidRegistry.addBucketForFluid(FoodInit.roseWater);
+		FluidRegistry.addBucketForFluid(FoodInit.moromiBlack);
+		FluidRegistry.addBucketForFluid(FoodInit.awamori);
 
 	}
 
@@ -766,7 +779,7 @@ public class FoodInitRegister {
 			FoodInit.mushroom.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.liquorBottle.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.roseWaterBottle.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.essencialOil.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.essentialOil.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.baseFertilizer.setCreativeTab(ClimateMain.food_adv);
 		}
 	}

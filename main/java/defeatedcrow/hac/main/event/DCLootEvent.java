@@ -151,7 +151,7 @@ public class DCLootEvent {
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":mine_gem_jed2"));
 					if (ModuleConfig.clothes_advanced) {
-						pool2.addEntry(new LootEntryItem(MainInit.workerWear, 2, 1, new LootFunction[0],
+						pool2.addEntry(new LootEntryItem(MainInit.workerSuit, 2, 1, new LootFunction[0],
 								new LootCondition[0], ClimateMain.MOD_ID + ":mine_suit"));
 					}
 					if (ModuleConfig.tool) {

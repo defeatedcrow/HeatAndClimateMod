@@ -49,6 +49,7 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 
 	// process
 	public int lastDay = 0;
+	public int startDay = 0;
 	public int maxCount = -1;
 
 	private int lastTier = 0;
@@ -69,29 +70,38 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 			if (this.hasAgingFluid()) {
 				if (DCTimeHelper.getDay(getWorld()) > lastDay) {
 					lastDay = DCTimeHelper.getDay(getWorld());
-					int c = inputT.getAge();
-					inputT.setAge(c + 1);
+					if (startDay == 0) {
+						startDay = lastDay;
+					} else {
+						int c = inputT.getAge();
+						int d = lastDay - startDay;
+						if (d > 0)
+							inputT.setAge(d);
+					}
 				}
 			} else {
 				inputT.setAge(0);
-				this.maxCount = -1;
+				boolean b = startDay > 0;
+				maxCount = -1;
+				startDay = 0;
 				currentRecipe = null;
-				this.markDirty();
+				if (b)
+					markDirty();
 			}
 
 			// 完了処理
 			if (this.maxCount > 0) {
-				if (inputT.getAge() >= this.maxCount) {
+				if (inputT.getAge() >= maxCount) {
 					// レシピ進行の再チェック
-					if (this.canRecipeProcess()) {
-						if (this.onProcess()) {
-							this.maxCount = -1;
-							this.markDirty();
+					if (canRecipeProcess()) {
+						if (onProcess()) {
+							maxCount = -1;
+							markDirty();
 						}
 					}
 				}
 			} else {
-				this.canStartProcess();
+				canStartProcess();
 			}
 		}
 	}
@@ -575,6 +585,7 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 
 		inv.readFromNBT(tag);
 		this.maxCount = tag.getInteger("MaxTime");
+		this.startDay = tag.getInteger("StartDay");
 		inputT = inputT.readFromNBT(tag, "Tank");
 	}
 
@@ -583,6 +594,7 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 		super.writeToNBT(tag);
 		// 燃焼時間や調理時間などの書き込み
 		tag.setInteger("MaxTime", this.maxCount);
+		tag.setInteger("StartDay", this.startDay);
 
 		// アイテムの書き込み
 		inv.writeToNBT(tag);
@@ -595,6 +607,7 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 		super.getNBT(tag);
 		// 燃焼時間や調理時間などの書き込み
 		tag.setInteger("MaxTime", this.maxCount);
+		tag.setInteger("StartDay", this.startDay);
 
 		// アイテムの書き込み
 		inv.writeToNBT(tag);
@@ -608,6 +621,7 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 
 		inv.readFromNBT(tag);
 		this.maxCount = tag.getInteger("MaxTime");
+		this.startDay = tag.getInteger("StartDay");
 		inputT = inputT.readFromNBT(tag, "Tank");
 	}
 

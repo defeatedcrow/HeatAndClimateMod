@@ -33,6 +33,7 @@ import defeatedcrow.hac.machine.block.TileMonitorFluid;
 import defeatedcrow.hac.machine.block.TileMonitorInventory;
 import defeatedcrow.hac.machine.block.TileMonitorRF;
 import defeatedcrow.hac.machine.block.TileMonitorRedStone;
+import defeatedcrow.hac.machine.block.TileMonitorTemp;
 import defeatedcrow.hac.machine.block.TileMonitorTorque;
 import defeatedcrow.hac.machine.block.TileOscillator;
 import defeatedcrow.hac.machine.block.TilePlayerPanel;
@@ -143,6 +144,7 @@ public class MachineCommonProxy {
 		GameRegistry.registerTileEntity(TileYardPart.class, "dcs_te_yardpart");
 		GameRegistry.registerTileEntity(TilePlayerPanel.class, "dcs_te_player_panel");
 		GameRegistry.registerTileEntity(TileReactorIBC.class, "dcs_te_reactor_ibc");
+		GameRegistry.registerTileEntity(TileMonitorTemp.class, "dcs_te_monitor_temp");
 	}
 
 	public static void loadEntity() {

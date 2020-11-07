@@ -146,11 +146,11 @@ public class DCPluginBoP {
 		}
 
 		if (ModuleConfig.r_fluid) {
-			RegisterBrewingDC.still(new ItemStack(FoodInit.essencialOil, 1, 0), new FluidStack(FoodInit.roseWater,
+			RegisterBrewingDC.still(new ItemStack(FoodInit.essentialOil, 1, 0), new FluidStack(FoodInit.roseWater,
 					1000), new FluidStack(FluidRegistry.WATER, 5000), new Object[] {
 						new ItemStack(BOPBlocks.flower_1, 8, 5) });
 
-			RegisterBrewingDC.still(new ItemStack(FoodInit.essencialOil, 1, 5), null, new FluidStack(
+			RegisterBrewingDC.still(new ItemStack(FoodInit.essentialOil, 1, 5), null, new FluidStack(
 					FluidRegistry.WATER, 5000), new Object[] { new ItemStack(BOPBlocks.flower_1, 8, 0) });
 		}
 

@@ -24,6 +24,7 @@ import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileChandelierSalt;
+import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMCClock_L;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
@@ -53,6 +54,7 @@ import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRChandelier;
 import defeatedcrow.hac.main.client.block.TESRChandelierChal;
 import defeatedcrow.hac.main.client.block.TESRChandelierSalt;
+import defeatedcrow.hac.main.client.block.TESRDisplayShelf;
 import defeatedcrow.hac.main.client.block.TESRFirestand;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
 import defeatedcrow.hac.main.client.block.TESRLargeClock;
@@ -79,6 +81,7 @@ import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
 import defeatedcrow.hac.main.client.model.ModelOvercoat;
 import defeatedcrow.hac.main.client.model.ModelSkirt;
+import defeatedcrow.hac.main.client.model.ModelSkirtSilk;
 import defeatedcrow.hac.main.client.model.ModelWoolWear;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
@@ -134,6 +137,7 @@ public class ClientMainProxy extends CommonMainProxy {
 	private static final ModelDress dressModel = new ModelDress(2);
 	private static final ModelSkirt skirtModel = new ModelSkirt(3);
 	private static final ModelDress shirtModel2 = new ModelDress(2).setShort();
+	private static final ModelSkirtSilk skirtSilkModel = new ModelSkirtSilk(3);
 	private static final ModelThinBiped thinBootsModel = new ModelThinBiped(0.40F, 3);
 	private static final ModelThinBiped legginsModel2 = new ModelThinBiped(0.45F, 2);
 	private static final ModelThinBiped bodyModel2 = new ModelThinBiped(0.60F, 1);
@@ -234,6 +238,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileBedDCHammock.class, "dcs_te_bed_hammock", new TESRBedHammock());
 		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
 		registerTileEntity(TileFirestand.class, "dcs_te_firestand", new TESRFirestand());
+		registerTileEntity(TileDisplayShelf.class, "dcs_te_display_shelf", new TESRDisplayShelf());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();
@@ -368,6 +373,8 @@ public class ClientMainProxy extends CommonMainProxy {
 			return bodyModel3;
 		case 12:
 			return shirtModel2;
+		case 13:
+			return skirtSilkModel;
 		default:
 			return null;
 		}

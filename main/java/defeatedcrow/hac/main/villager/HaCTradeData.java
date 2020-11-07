@@ -202,8 +202,7 @@ public class HaCTradeData {
 					0)), 7));
 			TAILOR3.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.silkCape, 1,
 					0)), 8));
-			TAILOR3.add(new HaCTradeData(TradeType.BUY, ItemArmorDC.setRondomColor(new ItemStack(MainInit.workerWear, 1,
-					0)), 6));
+			TAILOR3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.workerSuit, 1, 0), 6));
 			TAILOR3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.peaCoat, 1, 0), 5));
 
 			if (ModuleConfig.machine) {

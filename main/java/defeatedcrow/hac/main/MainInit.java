@@ -156,6 +156,9 @@ public class MainInit {
 	public static Block wallshelfChecker;
 	public static Block wallshelfBlack;
 
+	public static Block displayCube;
+	public static Block displayShelf;
+
 	public static Block doorMarble;
 	public static Block doorSteel;
 	public static Item itemDoorMarble;
@@ -269,10 +272,10 @@ public class MainInit {
 	public static Item cottonHat;
 
 	// worker
-	public static Item workerDress;
+	// public static Item workerDress;
 	public static Item workerSuit;
 
-	public static Item workerWear;
+	// public static Item workerWear;
 
 	// silk
 	public static Item blackCoat;
@@ -281,11 +284,11 @@ public class MainInit {
 	// dress
 	public static Item silkDress;
 	public static Item silkCape;
-	public static Item silkKimono;
+	// public static Item silkKimono;
 
 	public static Item silkSkirt;
 
-	public static Item silkWear;
+	// public static Item silkWear;
 
 	// wool
 	public static Item peaCoat;
@@ -299,7 +302,7 @@ public class MainInit {
 	public static Item furCape;
 
 	// synthetic
-	public static Item blouson;
+	// public static Item blouson;
 
 	public static Item trackSuit;
 	public static Item combatDress;

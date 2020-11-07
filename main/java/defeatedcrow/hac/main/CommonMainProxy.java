@@ -76,6 +76,7 @@ import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileChandelierSalt;
+import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMCClock_L;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
@@ -94,10 +95,12 @@ import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
+import defeatedcrow.hac.main.client.gui.ContainerDisplayShelf;
 import defeatedcrow.hac.main.client.gui.ContainerFuelStove;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import defeatedcrow.hac.main.client.gui.ContainerStevensonScreen;
+import defeatedcrow.hac.main.client.gui.GuiDisplayShelf;
 import defeatedcrow.hac.main.client.gui.GuiFuelStove;
 import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
@@ -467,6 +470,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileBedDCHammock.class, "dcs_te_bed_hammock");
 		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
 		GameRegistry.registerTileEntity(TileFirestand.class, "dcs_te_firestand");
+		GameRegistry.registerTileEntity(TileDisplayShelf.class, "dcs_te_display_shelf");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();
@@ -580,6 +584,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)
 			return new ContainerLowChest((TileLowChest) tile, player);
+		if (tile instanceof TileDisplayShelf)
+			return new ContainerDisplayShelf((TileDisplayShelf) tile, player);
 		if (tile instanceof TileCookingStove)
 			return new ContainerFuelStove((TileCookingStove) tile, player.inventory);
 		if (tile instanceof TilePressMachine)
@@ -644,6 +650,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)
 			return new GuiLowChest((TileLowChest) tile, player);
+		if (tile instanceof TileDisplayShelf)
+			return new GuiDisplayShelf((TileDisplayShelf) tile, player);
 		if (tile instanceof TileCookingStove)
 			return new GuiFuelStove((TileCookingStove) tile, player.inventory);
 		if (tile instanceof TilePressMachine)

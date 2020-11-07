@@ -503,6 +503,12 @@ public class LoadingEquipRecipe {
 			"itemSilkCloth",
 			"stringMagic" });
 
+		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.silkSkirt, 1, 0), new Object[] {
+			"patternSkirt",
+			"itemSilkCloth",
+			"itemSilkCloth",
+			"string" });
+
 		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.silkCape, 1, 0), new Object[] {
 			"patternWear",
 			"itemSilkCloth",

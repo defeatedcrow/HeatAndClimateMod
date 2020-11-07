@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -14,7 +15,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TileStillPot extends TileFluidProcessorBase {
@@ -33,6 +38,7 @@ public class TileStillPot extends TileFluidProcessorBase {
 			speed = this.highTemp.getTier() - this.lowTemp.getTier();
 			// 液体スロットの処理
 			this.processFluidSlots();
+			this.extractOutputFluid();
 			// 完了処理
 			if (this.maxBurnTime > 0) {
 				if (this.currentBurnTime >= this.maxBurnTime) {
@@ -69,6 +75,39 @@ public class TileStillPot extends TileFluidProcessorBase {
 
 			}
 		}
+	}
+
+	public boolean extractOutputFluid() {
+		int cap = outputT.getCapacity();
+		int amo = outputT.getFluidAmount();
+		int mov = 200; // 200mBずつ
+
+		if (outputT.isEmpty() || amo <= 0)
+			return false;
+
+		EnumFacing face = EnumFacing.NORTH;
+		EnumFacing side = DCState.getFace(world.getBlockState(pos), DCState.FACING);
+		if (side != null && face.getAxis().isHorizontal()) {
+			face = side.rotateY();
+		}
+
+		TileEntity tile = world.getTileEntity(getPos().offset(face));
+		if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
+			IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
+			if (tank != null && tank.getTankProperties() != null && tank.getTankProperties().length > 0) {
+				int i = Math.min(mov, amo);
+				FluidStack ret = new FluidStack(outputT.getFluidType(), i);
+				int fill = tank.fill(ret, false);
+				if (fill > 0) {
+					ret = outputT.drain(fill, true);
+					tank.fill(ret, true);
+					tile.markDirty();
+					this.markDirty();
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	// ゲージが進むかどうか

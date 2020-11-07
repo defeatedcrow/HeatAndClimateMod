@@ -298,10 +298,10 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.slimeMold, ClimateCore.PACKAGE_ID, "dcs_food_microbe_slime", "food", 2);
 		instance.regSimpleItem(FoodInit.mushroom, ClimateCore.PACKAGE_ID, "dcs_food_microbe_musuroom", "food", 2);
 		instance.regSimpleItem(FoodInit.chickInEgg, ClimateCore.PACKAGE_ID, "dcs_food_chick", "food", 0);
-		instance.regSimpleItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_ID, "dcs_liquor_bottle", "food", 15);
-		instance.regSimpleItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_ID, "dcs_rose_water_bottle", "food", 15);
-		instance.regSimpleItem(FoodInit.essencialOil, ClimateCore.PACKAGE_ID, "dcs_food_essencial_oil", "food", 5);
-		instance.regSimpleItem(FoodInit.inoculum, ClimateCore.PACKAGE_ID, "dcs_food_inoculum", "food", 0);
+		instance.regSimpleItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_ID, "dcs_liquor_bottle", "food", 16);
+		instance.regSimpleItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_ID, "dcs_rose_water_bottle", "food", 0);
+		instance.regSimpleItem(FoodInit.essentialOil, ClimateCore.PACKAGE_ID, "dcs_food_essential_oil", "food", 5);
+		instance.regSimpleItem(FoodInit.inoculum, ClimateCore.PACKAGE_ID, "dcs_food_inoculum", "food", 1);
 
 		// block
 
@@ -411,6 +411,7 @@ public class FoodClientProxy {
 		list.add(b + "rum_still");
 		list.add(b + "whisky_still");
 		list.add(b + "wine_still");
+		list.add(b + "moromi_black_still");
 
 		return list;
 	}

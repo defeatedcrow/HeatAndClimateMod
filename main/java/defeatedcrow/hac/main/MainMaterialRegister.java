@@ -29,6 +29,7 @@ import defeatedcrow.hac.main.block.build.BlockClayBricks;
 import defeatedcrow.hac.main.block.build.BlockCoolantPackage;
 import defeatedcrow.hac.main.block.build.BlockCurtain;
 import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
+import defeatedcrow.hac.main.block.build.BlockDisplayShelf;
 import defeatedcrow.hac.main.block.build.BlockDoorDC;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
@@ -108,6 +109,7 @@ import defeatedcrow.hac.main.item.equip.ItemArmorOvercoat;
 import defeatedcrow.hac.main.item.equip.ItemArmorPants;
 import defeatedcrow.hac.main.item.equip.ItemArmorShirt;
 import defeatedcrow.hac.main.item.equip.ItemArmorSkirt;
+import defeatedcrow.hac.main.item.equip.ItemArmorSkirtSilk;
 import defeatedcrow.hac.main.item.equip.ItemArmorWool;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
@@ -921,6 +923,11 @@ public class MainMaterialRegister {
 					ClimateCore.PACKAGE_BASE + "_device_chest_village");
 			registerChestBlock(MainInit.chestVillage, ClimateCore.PACKAGE_BASE + "_device_chest_village", ClimateMain.MOD_ID);
 
+			MainInit.displayShelf = new BlockDisplayShelf(Material.WOOD,
+					ClimateCore.PACKAGE_BASE + "_device_display_shelf");
+			registerChestBlock(MainInit.displayShelf, ClimateCore.PACKAGE_BASE + "_device_display_shelf", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regTEJson(MainInit.displayShelf, "dcs_climate", "dcs_device_display_shelf", "device");
+
 			// items
 			MainInit.flowerPot = new ItemFlowerPot().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_flowerpot");
 			DCMaterialReg.registerItem(MainInit.flowerPot, ClimateCore.PACKAGE_BASE + "_flowerpot", ClimateMain.MOD_ID);
@@ -1251,6 +1258,12 @@ public class MainMaterialRegister {
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_dress_silk");
 			DCMaterialReg
 					.registerItem(MainInit.silkDress, ClimateCore.PACKAGE_BASE + "_dress_silk", ClimateMain.MOD_ID);
+
+			MainInit.silkSkirt = new ItemArmorSkirtSilk(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+					EntityEquipmentSlot.FEET, "skirt_silk").setCreativeTab(ClimateMain.cloth)
+							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_skirt_silk");
+			DCMaterialReg
+					.registerItem(MainInit.silkSkirt, ClimateCore.PACKAGE_BASE + "_skirt_silk", ClimateMain.MOD_ID);
 
 			MainInit.silkCape = new ItemArmorCape(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
 					EntityEquipmentSlot.HEAD, "cape_silk")

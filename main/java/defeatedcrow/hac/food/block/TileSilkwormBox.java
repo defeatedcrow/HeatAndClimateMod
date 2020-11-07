@@ -100,8 +100,8 @@ public class TileSilkwormBox extends ClimateReceiverLockable implements ISidedIn
 	public boolean isActive() {
 		if (current != null) {
 			boolean air = current.getAirflow() != DCAirflow.TIGHT;
-			boolean temp = current.getHeat().getTier() > DCHeatTier.COOL.getTier() &&
-					current.getHeat().getTier() < DCHeatTier.BOIL.getTier();
+			boolean temp = current.getHeat().getTier() > DCHeatTier.COOL.getTier() && current.getHeat()
+					.getTier() < DCHeatTier.BOIL.getTier();
 			boolean leaves = !DCUtil.isEmpty(getStackInSlot(0));
 			return air && temp && leaves;
 		}
@@ -113,56 +113,15 @@ public class TileSilkwormBox extends ClimateReceiverLockable implements ISidedIn
 	protected DCInventory invs = new DCInventory(19);
 
 	protected int[] slotsTop() {
-		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9
-		};
+		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 	};
 
 	protected int[] slotsBottom() {
-		return new int[] {
-				10,
-				11,
-				12,
-				13,
-				14,
-				15,
-				16,
-				17,
-				18
-		};
+		return new int[] { 10, 11, 12, 13, 14, 15, 16, 17, 18 };
 	};
 
 	protected int[] slotsSides() {
-		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12,
-				13,
-				14,
-				15,
-				16,
-				17,
-				18
-		};
+		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
 	};
 
 	// スロット数
@@ -284,7 +243,7 @@ public class TileSilkwormBox extends ClimateReceiverLockable implements ISidedIn
 		case 1:
 			return this.lastH;
 		case 2:
-			return this.current.getClimateInt();
+			return current == null ? 0 : current.getClimateInt();
 		default:
 			return 0;
 		}

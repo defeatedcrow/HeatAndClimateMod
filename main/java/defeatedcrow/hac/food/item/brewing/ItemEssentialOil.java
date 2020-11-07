@@ -23,13 +23,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemEssencialOil extends DCItem {
+public class ItemEssentialOil extends DCItem {
 
 	private final int maxMeta;
 
 	private static String[] names = { "rose", "citrus", "mint", "birch", "lotus", "lavender" };
 
-	public ItemEssencialOil() {
+	public ItemEssentialOil() {
 		super();
 		maxMeta = 5;
 	}

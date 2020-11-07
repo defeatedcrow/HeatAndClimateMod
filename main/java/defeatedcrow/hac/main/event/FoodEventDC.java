@@ -31,8 +31,8 @@ public class FoodEventDC {
 			int h = 0;
 
 			if (player.isPotionActive(MainInit.digestive) && item.getItem() instanceof ItemFood) {
-				s += 0.1F;
-				h += player.getActivePotionEffect(MainInit.digestive).getAmplifier() + 1;
+				s += 0.2F;
+				h += player.getActivePotionEffect(MainInit.digestive).getAmplifier() + 2;
 				player.getFoodStats().addStats(h, s);
 			}
 			if (player.isPotionActive(MainInit.immunity) && event.potion != null && event.potion.getPotion()

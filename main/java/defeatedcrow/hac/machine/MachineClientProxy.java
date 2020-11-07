@@ -35,6 +35,7 @@ import defeatedcrow.hac.machine.block.TileMonitorFluid;
 import defeatedcrow.hac.machine.block.TileMonitorInventory;
 import defeatedcrow.hac.machine.block.TileMonitorRF;
 import defeatedcrow.hac.machine.block.TileMonitorRedStone;
+import defeatedcrow.hac.machine.block.TileMonitorTemp;
 import defeatedcrow.hac.machine.block.TileMonitorTorque;
 import defeatedcrow.hac.machine.block.TileOscillator;
 import defeatedcrow.hac.machine.block.TilePlayerPanel;
@@ -91,6 +92,7 @@ import defeatedcrow.hac.machine.client.KineticMotorTESR;
 import defeatedcrow.hac.machine.client.L_ShaftTESR;
 import defeatedcrow.hac.machine.client.L_WindmillTESR;
 import defeatedcrow.hac.machine.client.MonitorTESR;
+import defeatedcrow.hac.machine.client.MonitorTempTESR;
 import defeatedcrow.hac.machine.client.OscillatorTESR;
 import defeatedcrow.hac.machine.client.PortalManagerTESR;
 import defeatedcrow.hac.machine.client.PressMachineTESR;
@@ -213,6 +215,7 @@ public class MachineClientProxy {
 		GameRegistry.registerTileEntity(TileYardPart.class, "dcs_te_yardpart");
 		GameRegistry.registerTileEntity(TilePlayerPanel.class, "dcs_te_player_panel");
 		ClientMainProxy.registerTileEntity(TileReactorIBC.class, "dcs_te_reactor_ibc", new ReactorIBCTESR());
+		ClientMainProxy.registerTileEntity(TileMonitorTemp.class, "dcs_te_monitor_temp", new MonitorTempTESR());
 	}
 
 	public static void regJson(JsonRegisterHelper instance) {
@@ -302,6 +305,7 @@ public class MachineClientProxy {
 		instance.regSimpleBlock(MachineInit.monitorFluid, ClimateCore.PACKAGE_ID, "dcs_device_monitor_fluid", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine", 0);
 		instance.regSimpleBlock(MachineInit.monitorCM, ClimateCore.PACKAGE_ID, "dcs_device_monitor_cm", "machine", 0);
+		instance.regSimpleBlock(MachineInit.monitorTemp, ClimateCore.PACKAGE_ID, "dcs_device_monitor_temp", "machine", 0);
 		instance.regSimpleBlock(MachineInit.entityPanel, ClimateCore.PACKAGE_ID, "dcs_device_entity_panel", "machine", 0);
 		instance.regSimpleBlock(MachineInit.playerPanel, ClimateCore.PACKAGE_ID, "dcs_device_player_panel", "machine", 3);
 

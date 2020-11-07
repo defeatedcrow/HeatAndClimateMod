@@ -16,6 +16,7 @@ import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.food.item.ItemSilverCup;
 import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
+import defeatedcrow.hac.plugin.sd.DCThirstHelperSD;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -63,7 +64,8 @@ public class ItemLiquorBottle extends DCItem {
 		"akvavit",
 		"vodka",
 		"nether",
-		"ender" };
+		"ender",
+		"awamori" };
 
 	public static final String[] FLUIDS = {
 		"empty",
@@ -81,7 +83,8 @@ public class ItemLiquorBottle extends DCItem {
 		"dcs.akvavit",
 		"dcs.vodka",
 		"dcs.nether",
-		"dcs.chorus_liquor" };
+		"dcs.chorus_liquor",
+		"dcs.awamori" };
 
 	public ItemLiquorBottle() {
 		super();
@@ -101,7 +104,7 @@ public class ItemLiquorBottle extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 15;
+		return 16;
 	}
 
 	@Override
@@ -198,8 +201,8 @@ public class ItemLiquorBottle extends DCItem {
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 15) {
-			meta = 15;
+		if (meta > 16) {
+			meta = 16;
 		}
 		return FLUIDS[meta];
 	}
@@ -241,6 +244,8 @@ public class ItemLiquorBottle extends DCItem {
 			meta = 14;
 		} else if (fluid == FoodInit.chorusLiquor) {
 			meta = 15;
+		} else if (fluid == FoodInit.awamori) {
+			meta = 16;
 		}
 		return meta;
 	}
@@ -326,6 +331,10 @@ public class ItemLiquorBottle extends DCItem {
 
 			if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
 				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
+			}
+
+			if (living instanceof EntityPlayer && DCIntegrationCore.loadedSD) {
+				DCThirstHelperSD.drink((EntityPlayer) living, fluid);
 			}
 
 			if (!effects.isEmpty()) {

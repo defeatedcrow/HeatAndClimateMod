@@ -112,7 +112,7 @@ public class FoodInit {
 	public static Item chickInEgg;
 	public static Item liquorBottle;
 	public static Item roseWaterBottle;
-	public static Item essencialOil;
+	public static Item essentialOil;
 	public static Item inoculum;
 
 	public static Block incubator;
@@ -144,6 +144,8 @@ public class FoodInit {
 	public static Fluid netherWine;
 	public static Fluid chorusLiquor;
 	public static Fluid roseWater;
+	public static Fluid moromiBlack;
+	public static Fluid awamori;
 
 	public static Block netherWineBlock;
 

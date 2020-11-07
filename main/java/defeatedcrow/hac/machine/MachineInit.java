@@ -114,6 +114,7 @@ public class MachineInit {
 	public static Block monitorTorque;
 	public static Block monitorRF;
 	public static Block monitorItem;
+	public static Block monitorTemp;
 
 	public static Block entityPanel;
 

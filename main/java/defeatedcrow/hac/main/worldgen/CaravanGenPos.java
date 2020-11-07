@@ -68,6 +68,9 @@ public class CaravanGenPos {
 				h = y + 7;
 				return h;
 			}
+		}
+		for (int y = 50; y < 100; y++) {
+			BlockPos p1 = new BlockPos(px + 7, y, pz + 7);
 			if (!isReplaceable(world, p1) && isReplaceable(world, p1.up())) {
 				h = y;
 			}

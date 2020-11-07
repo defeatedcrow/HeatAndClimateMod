@@ -16,6 +16,7 @@ import defeatedcrow.hac.food.capability.IDrinkCustomize;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
+import defeatedcrow.hac.plugin.sd.DCThirstHelperSD;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -402,6 +403,10 @@ public class ItemFluidPack extends DCItem {
 
 			if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
 				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
+			}
+
+			if (living instanceof EntityPlayer && DCIntegrationCore.loadedSD) {
+				DCThirstHelperSD.drink((EntityPlayer) living, fluid);
 			}
 
 			if (meta == 2 || meta == 13 || fluid == MainInit.tomatoJuice) {

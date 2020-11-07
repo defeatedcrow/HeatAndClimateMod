@@ -33,6 +33,7 @@ import defeatedcrow.hac.machine.block.BlockMonitorFluid;
 import defeatedcrow.hac.machine.block.BlockMonitorInventory;
 import defeatedcrow.hac.machine.block.BlockMonitorRF;
 import defeatedcrow.hac.machine.block.BlockMonitorRedStone;
+import defeatedcrow.hac.machine.block.BlockMonitorTemp;
 import defeatedcrow.hac.machine.block.BlockMonitorTorque;
 import defeatedcrow.hac.machine.block.BlockOscillator;
 import defeatedcrow.hac.machine.block.BlockPlayerPanel;
@@ -360,6 +361,12 @@ public class MachineInitRegister {
 			ForgeRegistries.BLOCKS.register(MachineInit.monitorItem);
 			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorItem));
 
+			MachineInit.monitorTemp = new BlockMonitorTemp(ClimateCore.PACKAGE_BASE + "_device_monitor_temp");
+			MachineInit.monitorTemp
+					.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_monitor_temp");
+			ForgeRegistries.BLOCKS.register(MachineInit.monitorTemp);
+			ForgeRegistries.ITEMS.register(new ItemMonitor(MachineInit.monitorTemp));
+
 			MachineInit.entityPanel = new BlockEntityPanel(ClimateCore.PACKAGE_BASE + "_device_entity_panel");
 			registerTierBlock(MachineInit.entityPanel, ClimateCore.PACKAGE_BASE + "_device_entity_panel", 3);
 
@@ -536,6 +543,7 @@ public class MachineInitRegister {
 			MachineInit.monitorRF.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorFluid.setCreativeTab(ClimateMain.machine);
 			MachineInit.monitorItem.setCreativeTab(ClimateMain.machine);
+			MachineInit.monitorTemp.setCreativeTab(ClimateMain.machine);
 			MachineInit.entityPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.oscillator.setCreativeTab(ClimateMain.machine);
 

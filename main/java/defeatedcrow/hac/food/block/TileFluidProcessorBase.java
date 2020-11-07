@@ -549,7 +549,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	// 隣接するホッパーにアイテムを送れるかどうか
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		if (index == 0 || index == 4 || (index >= getOutputSlotTop() && index <= getOutputSlotEnd()))
+		if (index == 0 || index == 2 || (index >= getInputSlotTop() && index <= getInputSlotEnd()))
 			return false;
 
 		return true;

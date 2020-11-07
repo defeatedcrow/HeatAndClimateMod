@@ -3,20 +3,29 @@ package defeatedcrow.hac.main.worldgen;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.util.DCTimeHelper;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.block.TileAgingBarrel;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.recipes.BlockContainerUtil;
+import defeatedcrow.hac.main.util.LootTablesDC;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityLlama;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EntitySelectors;
@@ -29,6 +38,8 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.world.ChunkEvent;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistry;
@@ -150,6 +161,9 @@ public class CaravanGenEvent {
 								case 1:
 									updateInterior0(world, pos, rand, face);
 									break;
+								case 2:
+									updateInterior2(world, pos, rand, face);
+									break;
 								case 3:
 									updateInterior1(world, pos, rand, face);
 									break;
@@ -157,7 +171,7 @@ public class CaravanGenEvent {
 								}
 							}
 						}
-						DCLogger.debugLog("Caravanserai Updated: " + cx + ", " + cz);
+						DCLogger.debugInfoLog("Caravanserai Updated: " + cx + ", " + cz);
 						world.setBlockState(pos.add(7, -7, 7), Blocks.DIAMOND_BLOCK.getDefaultState(), 2);
 					} else if (getSeason(s1) != season) {
 						Village village = null;
@@ -169,10 +183,10 @@ public class CaravanGenEvent {
 							}
 						}
 						if (village != null || !ModuleConfig.village) {
-							DCLogger.debugLog("Caravanserai Stand-By: " + cx + ", " + cz);
+							DCLogger.debugInfoLog("Caravanserai Stand-By: " + cx + ", " + cz);
 							world.setBlockState(pos.add(7, -7, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
 						} else {
-							DCLogger.debugLog("Broken Caravanserai: " + cx + ", " + cz);
+							DCLogger.debugInfoLog("Broken Caravanserai: " + cx + ", " + cz);
 							world.setBlockState(pos.add(7, -7, 7), Blocks.LAPIS_BLOCK.getDefaultState(), 2);
 						}
 						world.setBlockState(pos.add(8, -7, 8), MainInit.gemBlock.getDefaultState()
@@ -191,7 +205,7 @@ public class CaravanGenEvent {
 							}
 						}
 						if (village != null || !ModuleConfig.village) {
-							DCLogger.debugLog("Caravanserai Reconstructed: " + cx + ", " + cz);
+							DCLogger.debugInfoLog("Caravanserai Reconstructed: " + cx + ", " + cz);
 							world.setBlockState(pos.add(7, -7, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
 						}
 						world.setBlockState(pos.add(8, -7, 8), MainInit.gemBlock.getDefaultState()
@@ -255,6 +269,84 @@ public class CaravanGenEvent {
 
 	}
 
+	private void updateInterior2(World world, BlockPos pos, Random rand, EnumFacing face) {
+
+		if (ModuleConfig.food) {
+
+			if (ModuleConfig.liquor && ModuleConfig.food_advanced) {
+
+				if (ModuleConfig.build_advanced)
+					for (int x = 6; x < 10; x++) {
+						List<ItemStack> list = Lists.newArrayList();
+						getLiquorList(list, rand);
+						BlockPos p = rotate(pos, x, 3, 9, face);
+						if (world.isAirBlock(p)) {
+							IBlockState shelf = MainInit.displayShelf.getDefaultState()
+									.withProperty(DCState.FACING, face.getOpposite());
+							world.setBlockState(p, shelf, 2);
+						}
+						TileEntity tile = world.getTileEntity(p);
+						if (tile != null && tile instanceof TileDisplayShelf) {
+							for (int i = 0; i < 3; i++) {
+								if (list.size() > i && !DCUtil.isEmpty(list.get(i)))
+									((TileDisplayShelf) tile).setInventorySlotContents(i, list.get(i));
+							}
+						}
+					}
+
+				BlockPos p1 = rotate(pos, -2, 1, 8, face);
+				IBlockState barrel = FoodInit.barrel.getDefaultState().withProperty(DCState.FACING, face.rotateY());
+				if (world.isAirBlock(p1))
+					world.setBlockState(p1, barrel, 2);
+				if (rand.nextBoolean()) {
+					Fluid f = getFluid(rand.nextInt(8));
+					TileEntity te = world.getTileEntity(p1);
+					if (f != null && te instanceof TileAgingBarrel) {
+						((TileAgingBarrel) te).inputT.setFluid(new FluidStack(f, 2000));
+					}
+				}
+				BlockPos p2 = rotate(pos, -2, 1, 9, face);
+				world.setBlockState(p2, barrel, 2);
+				if (world.isAirBlock(p2))
+					if (rand.nextBoolean()) {
+						Fluid f = getFluid(rand.nextInt(8));
+						TileEntity te = world.getTileEntity(p2);
+						if (f != null && te instanceof TileAgingBarrel) {
+							((TileAgingBarrel) te).inputT.setFluid(new FluidStack(f, 2000));
+						}
+					}
+				BlockPos p3 = rotate(pos, 17, 1, 8, face);
+				if (world.isAirBlock(p3))
+					world.setBlockState(p3, barrel, 2);
+				if (rand.nextBoolean()) {
+					Fluid f = getFluid(rand.nextInt(8));
+					TileEntity te = world.getTileEntity(p3);
+					if (f != null && te instanceof TileAgingBarrel) {
+						((TileAgingBarrel) te).inputT.setFluid(new FluidStack(f, 2000));
+					}
+				}
+				BlockPos p4 = rotate(pos, 17, 1, 9, face);
+				world.setBlockState(p4, barrel, 2);
+				if (rand.nextBoolean()) {
+					Fluid f = getFluid(rand.nextInt(8));
+					TileEntity te = world.getTileEntity(p4);
+					if (f != null && te instanceof TileAgingBarrel) {
+						((TileAgingBarrel) te).inputT.setFluid(new FluidStack(f, 2000));
+					}
+				}
+
+			}
+
+			BlockPos p5 = rotate(pos, -2, 1, 7, face);
+			IBlockState chest = Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, face.getOpposite());
+			world.setBlockState(p5, chest, 2);
+			TileEntity tile = world.getTileEntity(p5);
+			if (tile != null && tile instanceof TileEntityChest) {
+				((TileEntityChest) tile).setLootTable(LootTablesDC.CARAVAN_CHEST_LOOT, rand.nextLong());
+			}
+		}
+	}
+
 	private BlockPos rotate(BlockPos pos, int x, int y, int z, EnumFacing face) {
 		int x1 = x;
 		int y1 = y;
@@ -301,6 +393,43 @@ public class CaravanGenEvent {
 					return s;
 				}
 			}
+		}
+		return null;
+	}
+
+	private List<ItemStack> getLiquorList(List<ItemStack> list, Random rand) {
+		for (int i = 0; i < 3; i++) {
+			if (rand.nextFloat() > 0.85F) {
+				int m = rand.nextInt(17);
+				if (m == 0) {
+					list.add(new ItemStack(FoodInit.roseWaterBottle, 1, 0));
+				} else {
+					list.add(new ItemStack(FoodInit.liquorBottle, 1, m));
+				}
+			} else if (rand.nextFloat() > 0.6F) {
+				int m = rand.nextInt(5);
+				if (m == 0) {
+					list.add(new ItemStack(FoodInit.roseWaterBottle, 1, 0));
+				} else {
+					list.add(new ItemStack(FoodInit.liquorBottle, 1, m));
+				}
+			}
+		}
+		return list;
+	}
+
+	private Fluid getFluid(int i) {
+		switch (i) {
+		case 0:
+			return FoodInit.roseWater;
+		case 1:
+			return FoodInit.beer;
+		case 2:
+			return FoodInit.wine;
+		case 3:
+			return FoodInit.dateWine;
+		case 4:
+			return FoodInit.araq;
 		}
 		return null;
 	}

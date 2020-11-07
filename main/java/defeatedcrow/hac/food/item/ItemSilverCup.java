@@ -23,6 +23,7 @@ import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.DrinkPotionType;
 import defeatedcrow.hac.plugin.DrinkPotionType.PotionSet;
+import defeatedcrow.hac.plugin.sd.DCThirstHelperSD;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -184,6 +185,10 @@ public class ItemSilverCup extends FoodItemBase {
 					if (f != null && f.getFluid() != null) {
 						if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
 							DCThirstHelper.onDrink((EntityPlayer) living, f.getFluid());
+						}
+
+						if (living instanceof EntityPlayer && DCIntegrationCore.loadedSD) {
+							DCThirstHelperSD.drink((EntityPlayer) living, f.getFluid());
 						}
 
 						if (FluidDictionaryDC.matchFluidName(f.getFluid(), "milk") || f
