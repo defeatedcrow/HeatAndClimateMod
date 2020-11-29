@@ -27,6 +27,9 @@ public class MainCoreConfig {
 	public static boolean ocean_effect = true;
 	public static boolean armor_effect = false;
 
+	public static int flower_turret_limit = 30;
+	public static double flower_turret_damage = 8.0D;
+
 	public static boolean e_corrosion = true;
 	public static boolean e_robber = true;
 	public static boolean e_venom = true;
@@ -92,6 +95,12 @@ public class MainCoreConfig {
 			Property aging_i = cfg
 					.get("item setting", "Aging Day", aging_day, "Set the number of days required to age the drink in a barrel.");
 
+			Property turret_dam = cfg
+					.get("item setting", "Flower Turret Damage", aging_day, "Set the shooting damage of the flower turret.");
+
+			Property turret_live = cfg
+					.get("item setting", "Flower Turret Lifespan", aging_day, "Set the lifespan of the flower turret.");
+
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
 
@@ -114,6 +123,9 @@ public class MainCoreConfig {
 			blocknames = b_dia.getStringList();
 
 			aging_day = aging_i.getInt();
+
+			flower_turret_damage = turret_dam.getDouble();
+			flower_turret_limit = turret_live.getInt();
 
 			// TimeZone tz = TimeZone.getTimeZone(timeZone);
 			// if (tz != null) {

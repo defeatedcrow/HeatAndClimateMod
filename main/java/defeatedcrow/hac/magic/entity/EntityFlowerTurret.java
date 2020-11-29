@@ -11,6 +11,7 @@ import com.google.common.base.Optional;
 import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.magic.proj.EntityFlowerBolt;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,7 +37,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 	protected static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager
 			.<Optional<UUID>>createKey(EntityFlowerTurret.class, DataSerializers.OPTIONAL_UNIQUE_ID);
 
-	public int maxLivingTime = 30;
+	public int maxLivingTime = MainCoreConfig.flower_turret_limit;
 	public int livingDay = 0;
 	public int lastDay = 0;
 
@@ -122,7 +123,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 			if (look != null) {
 
 				double lookX = look.posX;
-				double lookY = look.posY + look.getEyeHeight();
+				double lookY = look.posY + (look.getEyeHeight() * 0.5D);
 				double lookZ = look.posZ;
 
 				double d0 = lookX - this.posX;
@@ -198,7 +199,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 	}
 
 	private boolean onMeleeAttack() {
-		return targetClose.attackEntityFrom(DamageSource.CACTUS, 20.0F);
+		return targetClose.attackEntityFrom(DamageSource.CACTUS, (float) (MainCoreConfig.flower_turret_damage * 2.0D));
 	}
 
 	private boolean keepRangedAttack() {
@@ -209,6 +210,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 	private boolean onRangedAttack() {
 		EntityFlowerBolt entityarrow = new EntityFlowerBolt(world, this);
 		entityarrow.setAim(this, rotationPitch, rotationYaw, 0.0F, 5.0F, 0.1F);
+		entityarrow.setTarget(targetEntity);
 		this.playSound(SoundEvents.ENTITY_ITEM_PICKUP, 0.75F, 1.5F);
 		return world.spawnEntity(entityarrow);
 	}
@@ -232,7 +234,8 @@ public class EntityFlowerTurret extends DCEntityBase {
 			} else if (!targetEntity.isEntityAlive() || dist > 36F) {
 				targetEntity = null;
 			}
-		} else {
+		}
+		if (targetEntity == null) {
 			// オーナーの敵が最優先
 			EntityLivingBase owner = getOwner();
 
@@ -281,7 +284,8 @@ public class EntityFlowerTurret extends DCEntityBase {
 			} else if (!targetClose.isEntityAlive() || dist > 36F) {
 				targetClose = null;
 			}
-		} else {
+		}
+		if (targetClose == null) {
 			// 既に着座しているとき
 			if (!this.getPassengers().isEmpty() && this.getPassengers().size() > 0 && this.getPassengers()
 					.get(0) instanceof EntityLivingBase) {

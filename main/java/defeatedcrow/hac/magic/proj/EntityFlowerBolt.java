@@ -1,6 +1,7 @@
 package defeatedcrow.hac.magic.proj;
 
 import defeatedcrow.hac.magic.entity.EntityFlowerTurret;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.entity.EntityBulletDC;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -28,9 +29,15 @@ public class EntityFlowerBolt extends EntityBulletDC {
 		super(worldIn, shooter);
 	}
 
+	private EntityLivingBase target = null;
+
+	public void setTarget(EntityLivingBase targetIn) {
+		target = targetIn;
+	}
+
 	@Override
 	public double getDamage() {
-		return 8.0D;
+		return MainCoreConfig.flower_turret_damage;
 	}
 
 	@Override
@@ -53,6 +60,10 @@ public class EntityFlowerBolt extends EntityBulletDC {
 		Entity entity = raytraceResultIn.entityHit;
 
 		if (entity != null && !entity.world.isRemote) {
+			if (entity != target) {
+				return;
+			}
+
 			float dam = (float) this.getDamage();
 
 			// 対アンデッドで2倍
