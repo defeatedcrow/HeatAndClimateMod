@@ -20,6 +20,7 @@ import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -136,4 +137,21 @@ public class CombatEvent {
 			}
 		}
 	}
+
+	@SubscribeEvent
+	public void onHealEvent(LivingHealEvent event) {
+		EntityLivingBase target = event.getEntityLiving();
+		float amount = event.getAmount();
+		if (MainInit.unrepair != null && target.isPotionActive(MainInit.unrepair)) {
+			PotionEffect p = target.getActivePotionEffect(MainInit.unrepair);
+			float amo = p.getAmplifier() * 1.0F;
+			amount -= amo;
+			if (amount <= 0F) {
+				event.setCanceled(true);
+			} else {
+				event.setAmount(amount);
+			}
+		}
+	}
+
 }

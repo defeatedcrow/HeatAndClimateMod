@@ -13,9 +13,11 @@ import defeatedcrow.hac.food.FoodClientProxy;
 import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.magic.MagicClientProxy;
-import defeatedcrow.hac.magic.client.TESRInfernalFlame;
+import defeatedcrow.hac.magic.client.MagicCushionRenderer;
 import defeatedcrow.hac.magic.event.MagicClientEvent;
+import defeatedcrow.hac.magic.proj.EntityFlowerBolt;
 import defeatedcrow.hac.main.CommonMainProxy;
+import defeatedcrow.hac.main.block.build.BlockMetalFenceBase;
 import defeatedcrow.hac.main.block.build.TileBedDC;
 import defeatedcrow.hac.main.block.build.TileBedDCFuton;
 import defeatedcrow.hac.main.block.build.TileBedDCHammock;
@@ -27,6 +29,9 @@ import defeatedcrow.hac.main.block.build.TileChandelierSalt;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMCClock_L;
+import defeatedcrow.hac.main.block.build.TileMFence;
+import defeatedcrow.hac.main.block.build.TileMFenceGlass;
+import defeatedcrow.hac.main.block.build.TileMFenceNet;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock;
@@ -59,6 +64,9 @@ import defeatedcrow.hac.main.client.block.TESRFirestand;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
 import defeatedcrow.hac.main.client.block.TESRLargeClock;
 import defeatedcrow.hac.main.client.block.TESRMCClock;
+import defeatedcrow.hac.main.client.block.TESRMFence;
+import defeatedcrow.hac.main.client.block.TESRMFenceGlass;
+import defeatedcrow.hac.main.client.block.TESRMFenceNet;
 import defeatedcrow.hac.main.client.block.TESRMagnetChest;
 import defeatedcrow.hac.main.client.block.TESRMetalChest;
 import defeatedcrow.hac.main.client.block.TESRNormalChamber;
@@ -85,6 +93,7 @@ import defeatedcrow.hac.main.client.model.ModelSkirtSilk;
 import defeatedcrow.hac.main.client.model.ModelWoolWear;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.client.particle.ParticleCloudDC;
+import defeatedcrow.hac.main.client.particle.ParticleCloudRev;
 import defeatedcrow.hac.main.client.particle.ParticleFallingStar;
 import defeatedcrow.hac.main.client.particle.ParticleFlameDC;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
@@ -108,6 +117,7 @@ import defeatedcrow.hac.main.entity.EntitySilverBullet;
 import defeatedcrow.hac.main.entity.EntityThrowingArrow;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.Render;
@@ -151,12 +161,10 @@ public class ClientMainProxy extends CommonMainProxy {
 		particles.add(ParticleBlink.BLINK_TEX);
 		particles.add(ParticleFallingStar.STAR_TEX);
 		particles.add(ParticleCloudDC.CLOUD_TEX);
+		particles.add(ParticleCloudRev.CLOUD_TEX);
 		particles.add(ParticleOrb.ORB_TEX);
 		particles.add(ParticleFlameDC.FLAME_TEX);
-
-		particles.add(TESRInfernalFlame.TEX1.toString());
-		particles.add(TESRInfernalFlame.TEX2.toString());
-
+		particles.add(MagicCushionRenderer.PARTICLE_TEX);
 		particles.add(GasBurnerTESR.TEX1.toString());
 
 		JsonBakery.instance.addTex(particles);
@@ -199,6 +207,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityBigCushionBrown.class, RenderEntityBigCushionB.class);
 		registRender(EntityThrowingArrow.class, BoltRenderer.class);
 		registRender(EntityDynamiteSmall.class, RenderEntityDynamiteSmall.class);
+		registRender(EntityFlowerBolt.class, BoltRenderer.class);
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadEntity();
@@ -239,6 +248,9 @@ public class ClientMainProxy extends CommonMainProxy {
 		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
 		registerTileEntity(TileFirestand.class, "dcs_te_firestand", new TESRFirestand());
 		registerTileEntity(TileDisplayShelf.class, "dcs_te_display_shelf", new TESRDisplayShelf());
+		registerTileEntity(TileMFence.class, "dcs_te_mfence_normal", new TESRMFence());
+		registerTileEntity(TileMFenceGlass.class, "dcs_te_mfence_glass", new TESRMFenceGlass());
+		registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net", new TESRMFenceNet());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();
@@ -310,13 +322,25 @@ public class ClientMainProxy extends CommonMainProxy {
 		}
 	}
 
+	/** MetalFence専用 */
+	@Override
+	public void regBlockMFence(Block block, String domein, String name, String dir) {
+		if (block == null)
+			return;
+		ModelLoader.setCustomStateMapper(block, (new StateMap.Builder())
+				.ignore(BlockMetalFenceBase.BACK_FACING, BlockMetalFenceBase.BACK_UNDER, BlockMetalFenceBase.BACK_UPPER, DCState.FACING, BlockMetalFenceBase.UNDER, BlockMetalFenceBase.UPPER)
+				.build());
+		ModelBakery.registerItemVariants(Item.getItemFromBlock(block), new ModelResourceLocation(
+				domein + ":" + "basetile"));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
+				domein + ":" + dir + "/" + name, "inventory"));
+	}
+
 	@Override
 	public void regTEJson(Block block, String domein, String name, String dir) {
 		if (block == null)
 			return;
 		ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(DCState.TYPE4).build());
-		// ModelBakery.registerItemVariants(Item.getItemFromBlock(block), new
-		// ModelResourceLocation(domein + ":" + name));
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
 				domein + ":" + dir + "/" + name, "inventory"));
 	}

@@ -1,7 +1,7 @@
 package defeatedcrow.hac.magic;
 
-import defeatedcrow.hac.magic.block.TileIceCluster;
-import defeatedcrow.hac.magic.block.TileInfernalFlame;
+import defeatedcrow.hac.magic.block.TileCubeFlame;
+import defeatedcrow.hac.magic.block.TileCubeIce;
 import defeatedcrow.hac.magic.block.TileLotusCandle;
 import defeatedcrow.hac.magic.block.TileLotusCandleBlack;
 import defeatedcrow.hac.magic.block.TilePictureBG;
@@ -11,6 +11,8 @@ import defeatedcrow.hac.magic.block.TilePictureUR;
 import defeatedcrow.hac.magic.block.TilePictureWB;
 import defeatedcrow.hac.magic.block.TileTimeCage;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
+import defeatedcrow.hac.magic.entity.EntityFlowerTurret;
+import defeatedcrow.hac.magic.entity.EntityMagicCushion;
 import defeatedcrow.hac.magic.proj.EntityFireBarrier;
 import defeatedcrow.hac.magic.proj.EntityHealBarrier;
 import defeatedcrow.hac.magic.proj.EntityMobBarrier;
@@ -38,11 +40,15 @@ public class MagicCommonProxy {
 		DCRegistryUtil.addEntity(EntityProjBlackSpit.class, "magic", "proj_black", 1);
 
 		DCRegistryUtil.addEntity(EntityBlackDog.class, "magic", "dcs_blackdog", 5);
+
+		DCRegistryUtil.addEntity(EntityFlowerTurret.class, "magic", "dcs_magic_flower_turret", 5);
+
+		DCRegistryUtil.addEntity(EntityMagicCushion.class, "magic", "dcs_magic_cushion", 5);
 	}
 
 	public static void loadTE() {
-		GameRegistry.registerTileEntity(TileIceCluster.class, "dcs_te_cluster_ice");
-		GameRegistry.registerTileEntity(TileInfernalFlame.class, "dcs_te_infernal_flame");
+		GameRegistry.registerTileEntity(TileCubeIce.class, "dcs_te_cube_ice");
+		GameRegistry.registerTileEntity(TileCubeFlame.class, "dcs_te_cube_flame");
 		GameRegistry.registerTileEntity(TileLotusCandle.class, "dcs_te_lotus_candle");
 		GameRegistry.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black");
 

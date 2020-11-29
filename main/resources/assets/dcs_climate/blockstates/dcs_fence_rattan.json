@@ -1,20 +1,5 @@
 {
     "variants": {
-        "facing=north,under=false,upper=false":  { "model": "dcs_climate:build/dcs_fence_rattan_double" },
-        "facing=north,under=false,upper=true":  { "model": "dcs_climate:build/dcs_fence_rattan_upper" },
-        "facing=north,under=true,upper=false": { "model": "dcs_climate:build/dcs_fence_rattan_under" },
-        "facing=north,under=true,upper=true": { "model": "dcs_climate:build/dcs_fence_rattan_normal" },
-        "facing=south,under=false,upper=false":  { "model": "dcs_climate:build/dcs_fence_rattan_double", "y": 180, "uvlock": true  },
-        "facing=south,under=false,upper=true":  { "model": "dcs_climate:build/dcs_fence_rattan_upper", "y": 180, "uvlock": true },
-        "facing=south,under=true,upper=false": { "model": "dcs_climate:build/dcs_fence_rattan_under", "y": 180, "uvlock": true },
-        "facing=south,under=true,upper=true": { "model": "dcs_climate:build/dcs_fence_rattan_normal", "y": 180, "uvlock": true },
-        "facing=west,under=false,upper=false":  { "model": "dcs_climate:build/dcs_fence_rattan_double", "y": 270, "uvlock": true  },
-        "facing=west,under=false,upper=true":  { "model": "dcs_climate:build/dcs_fence_rattan_upper", "y": 270, "uvlock": true },
-        "facing=west,under=true,upper=false": { "model": "dcs_climate:build/dcs_fence_rattan_under", "y": 270, "uvlock": true },
-        "facing=west,under=true,upper=true": { "model": "dcs_climate:build/dcs_fence_rattan_normal", "y": 270, "uvlock": true },
-        "facing=east,under=false,upper=false":  { "model": "dcs_climate:build/dcs_fence_rattan_double", "y": 90, "uvlock": true  },
-        "facing=east,under=false,upper=true":  { "model": "dcs_climate:build/dcs_fence_rattan_upper", "y": 90, "uvlock": true },
-        "facing=east,under=true,upper=false": { "model": "dcs_climate:build/dcs_fence_rattan_under", "y": 90, "uvlock": true },
-        "facing=east,under=true,upper=true": { "model": "dcs_climate:build/dcs_fence_rattan_normal", "y": 90, "uvlock": true }
+        "normal": { "model": "dcs_climate:basetile" }
     }
 }

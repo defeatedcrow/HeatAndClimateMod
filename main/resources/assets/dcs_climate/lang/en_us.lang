@@ -810,6 +810,11 @@ item.dcs_magic_card_g3.name=Green Cube Spell (Vein)
 item.dcs_magic_card_r3.name=Red Cube Spell (Flame)
 item.dcs_magic_card_w3.name=White Cube Spell (Cure)
 item.dcs_magic_card_b3.name=Black Cube Spell (Exile)
+item.dcs_magic_card_m_ug2.name=Blue-Green Spell (Cryogenic)
+item.dcs_magic_card_m_gb2.name=Green-Black Spell (Verdant)
+item.dcs_magic_card_m_ru2.name=Red-Blue Spell (Paralysys)
+item.dcs_magic_card_m_wr2.name=White-Red Spell (Inferno)
+item.dcs_magic_card_m_bw2.name=Black-White Spell (Clairvoyance)
 tile.dcs_color_cube_u1.name=Inactive Blue Cube
 tile.dcs_color_cube_g1.name=Inactive Green Cube
 tile.dcs_color_cube_r1.name=Inactive Red Cube
@@ -820,6 +825,8 @@ tile.dcs_color_cube_g2.name=Activated Green Cube
 tile.dcs_color_cube_r2.name=Activated Red Cube
 tile.dcs_color_cube_b2.name=Activated Black Cube
 tile.dcs_color_cube_w2.name=Activated White Cube
+tile.dcs_cube_ice_0.name=Cryogenic Cube
+tile.dcs_cube_flame_0.name=Infernal Cube
 
 ## entities
 item.dcs_motor_minecart_white.name=Motorized Cart
@@ -1885,6 +1892,7 @@ dcs.tip.card_type.SELF_BUFF=Type... Self-Buff
 dcs.tip.card_type.PROJECTILE=Type... Projectile
 dcs.tip.card_type.AREA=Type... Ranged Effect
 dcs.tip.card_type.CIRCLE=Type... Magic Circle
+dcs.tip.card_type.SPAWN=Type.. Summon
 
 dcs.comment.card.0=Register the current location as a respawn point
 dcs.comment.card.1=Sprinkle bone powder around
@@ -1901,6 +1909,11 @@ dcs.comment.card.11=Regeneration ore veins in the current chunk
 dcs.comment.card.12=Magic circle to refine blocks and entities
 dcs.comment.card.13=Magic circle to erase monsters
 dcs.comment.card.14=Magic circle to heal creatures
+dcs.comment.card2.0=Spawn a cryogenic cube block
+dcs.comment.card2.1=Spawn a flower turret entity
+dcs.comment.card2.2=Paralyse surrounding creatures
+dcs.comment.card2.3=Add glow effect to surrounding monsters
+dcs.comment.card2.4=Spawn an infernal cube block
 
 dcs.tip.shift=Lshift Key: expand tooltip
 dcs.tip.require_achievement=Require the achievement for using!
@@ -2069,6 +2082,18 @@ potion.effect.dcs.warp=Wall Through
 splash_potion.effect.dcs.warp=Splash Potion of Wall Through
 lingering_potion.effect.dcs.warp=Lingering Potion of Wall Through
 tipped_arrow.effect.dcs.warp=Arrow of Wall Through
+
+dcs.potion.unrepair=Recovery Inhibitor
+potion.effect.dcs.unrepair=Recovery Inhibitor
+splash_potion.effect.dcs.unrepair=Splash Potion of Recovery Inhibitor
+lingering_potion.effect.dcs.unrepair=Lingering Potion of Recovery Inhibitor
+tipped_arrow.effect.dcs.unrepair=Arrow of Recovery Inhibitor
+
+dcs.potion.clairvoyance=Clairvoyance
+potion.effect.dcs.clairvoyance=Clairvoyance
+splash_potion.effect.dcs.clairvoyance=Splash Potion of Clairvoyance
+lingering_potion.effect.dcs.clairvoyance=Lingering Potion of Clairvoyance
+tipped_arrow.effect.dcs.clairvoyance=Arrow of Clairvoyance
 
 tipped_arrow.effect.dcs.freeze_res=Arrow of Freeze Resistance
 
@@ -2292,6 +2317,7 @@ entity.dcs.main.big_cushion.name=Gray Big Cushion for the lazy mobs
 entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs
 
 entity.dcs.magic.dcs_blackdog.name=Black Dog
+entity.dcs.magic.dcs_magic_flower_turret.name=Flower Turret
 
 ## advancements
 advancements.dcs_climate.core.title=Heat and Climate

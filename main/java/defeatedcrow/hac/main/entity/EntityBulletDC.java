@@ -85,7 +85,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		this.setPosition(x, y, z);
 	}
 
-	public EntityBulletDC(World worldIn, EntityLivingBase shooter) {
+	public EntityBulletDC(World worldIn, Entity shooter) {
 		this(worldIn, shooter.posX, shooter.posY + shooter.getEyeHeight() - 0.1D, shooter.posZ);
 		this.shootingEntity = shooter;
 	}
@@ -577,6 +577,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 		BOLT,
 		BULLET,
 		SHOTGUN,
-		ARROW;
+		ARROW,
+		LIGHT;
 	}
 }

@@ -67,6 +67,7 @@ import defeatedcrow.hac.magic.client.gui.ContainerVillagerDC;
 import defeatedcrow.hac.magic.client.gui.GuiLivingDC;
 import defeatedcrow.hac.magic.client.gui.GuiVillagerDC;
 import defeatedcrow.hac.magic.event.MagicCommonEvent;
+import defeatedcrow.hac.magic.proj.EntityFlowerBolt;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.block.build.TileBedDC;
 import defeatedcrow.hac.main.block.build.TileBedDCFuton;
@@ -79,6 +80,9 @@ import defeatedcrow.hac.main.block.build.TileChandelierSalt;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMCClock_L;
+import defeatedcrow.hac.main.block.build.TileMFence;
+import defeatedcrow.hac.main.block.build.TileMFenceGlass;
+import defeatedcrow.hac.main.block.build.TileMFenceNet;
 import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock;
@@ -138,6 +142,7 @@ import defeatedcrow.hac.main.event.OnJumpEventDC;
 import defeatedcrow.hac.main.event.OnMiningEventDC;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.potion.PotionBirdDC;
+import defeatedcrow.hac.main.potion.PotionClairvoyanceDC;
 import defeatedcrow.hac.main.potion.PotionDigestiveDC;
 import defeatedcrow.hac.main.potion.PotionEXPAbsorptionDC;
 import defeatedcrow.hac.main.potion.PotionGravityDC;
@@ -147,6 +152,7 @@ import defeatedcrow.hac.main.potion.PotionNimbleDC;
 import defeatedcrow.hac.main.potion.PotionOceanDC;
 import defeatedcrow.hac.main.potion.PotionProjectileResistantDC;
 import defeatedcrow.hac.main.potion.PotionReflexionDC;
+import defeatedcrow.hac.main.potion.PotionUnrepairDC;
 import defeatedcrow.hac.main.potion.PotionWarpDC;
 import defeatedcrow.hac.main.potion.PotionWideMiningDC;
 import defeatedcrow.hac.main.recipes.ArmorDyesRecipeDC;
@@ -233,6 +239,12 @@ public class CommonMainProxy implements IGuiHandler {
 
 		MainInit.absorptionEXP = new PotionEXPAbsorptionDC();
 		DCRegistryUtil.addPotion(MainInit.absorptionEXP, MainInit.absorptionEXPType, "absorption_exp");
+
+		MainInit.unrepair = new PotionUnrepairDC();
+		DCRegistryUtil.addPotion(MainInit.unrepair, MainInit.unrepairType, "unrepair");
+
+		MainInit.clairvoyance = new PotionClairvoyanceDC();
+		DCRegistryUtil.addPotion(MainInit.clairvoyance, MainInit.clairvoyanceType, "clairvoyance");
 	}
 
 	public void loadEnchantment() {
@@ -431,6 +443,8 @@ public class CommonMainProxy implements IGuiHandler {
 
 		DCRegistryUtil.addEntity(EntityThrowingArrow.class, "main", "bullet_arrow", 1);
 
+		DCRegistryUtil.addEntity(EntityFlowerBolt.class, "main", "bullet_flower", 1);
+
 		DCRegistryUtil.addEntity(EntityDynamiteSmall.class, "main", "dynamite_small");
 
 		if (ModuleConfig.food)
@@ -471,6 +485,9 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileGeyser.class, "dcs_te_geyser");
 		GameRegistry.registerTileEntity(TileFirestand.class, "dcs_te_firestand");
 		GameRegistry.registerTileEntity(TileDisplayShelf.class, "dcs_te_display_shelf");
+		GameRegistry.registerTileEntity(TileMFence.class, "dcs_te_mfence_normal");
+		GameRegistry.registerTileEntity(TileMFenceGlass.class, "dcs_te_mfence_glass");
+		GameRegistry.registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();
@@ -520,6 +537,9 @@ public class CommonMainProxy implements IGuiHandler {
 	 * メタ無しJson製Block。一部の階段・ハーフにのみ使用している
 	 */
 	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {}
+
+	/** MetalFence専用 */
+	public void regBlockMFence(Block block, String domein, String name, String dir) {}
 
 	/**
 	 * TEの向きのみ対応させたJsonタイプモデル

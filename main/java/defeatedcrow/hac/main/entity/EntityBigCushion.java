@@ -36,21 +36,6 @@ public class EntityBigCushion extends DCEntityBase {
 		super(worldIn, posX, posY, posZ, player);
 	}
 
-	// @Override
-	// public void onUpdate() {
-	// super.onUpdate();
-	// if (!this.getPassengers().isEmpty()) {
-	// Entity rider = this.getPassengers().get(0);
-	// if (rider == null) {
-	// DCLogger.infoLog("null");
-	// } else if (rider.isDead) {
-	// DCLogger.infoLog("dead");
-	// } else {
-	// DCLogger.infoLog("rider pos: " + rider.getPosition().toString());
-	// }
-	// }
-	// }
-
 	@Override
 	protected ItemStack drops() {
 		return new ItemStack(MainInit.cushionGray, 1, 0);

@@ -528,7 +528,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				cont = (IFluidHandlerItem) stack.getItem();
 			}
 			return cont != null;
-		} else if (i > getInputSlotTop() && i <= getInputSlotEnd())
+		} else if (i >= getInputSlotTop() && i <= getInputSlotEnd())
 			return true;
 		else
 			return false;

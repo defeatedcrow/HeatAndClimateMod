@@ -186,8 +186,10 @@ public class LivingMainEventDC {
 				if (p.isEntityAlive()) {
 					double d1 = p.getPosition().distanceSq(entity.getPosition());
 					double dist = Math.sqrt(d1);
-					if (dist < 32.0D && MainUtil.isHeldItem(MainInit.entityScope, p)) {
-						flag = true;
+					if (dist < 32.0D) {
+						if (MainUtil.isHeldItem(MainInit.entityScope, p) || p.isPotionActive(MainInit.clairvoyance)) {
+							flag = true;
+						}
 					}
 				}
 			}

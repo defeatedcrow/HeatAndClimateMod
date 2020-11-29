@@ -811,6 +811,11 @@ item.dcs_magic_card_g3.name=緑結晶のスペル (地脈)
 item.dcs_magic_card_r3.name=赤結晶のスペル (焼却)
 item.dcs_magic_card_w3.name=白結晶のスペル (治療)
 item.dcs_magic_card_b3.name=黒結晶のスペル (追放)
+item.dcs_magic_card_m_ug2.name=青緑のスペル (凍結)
+item.dcs_magic_card_m_gb2.name=緑黒のスペル (新緑)
+item.dcs_magic_card_m_ru2.name=赤青のスペル (麻痺)
+item.dcs_magic_card_m_wr2.name=白赤のスペル (灼熱)
+item.dcs_magic_card_m_bw2.name=黒白のスペル (透視)
 tile.dcs_color_cube_u1.name=不活性な青キューブ
 tile.dcs_color_cube_g1.name=不活性な緑キューブ
 tile.dcs_color_cube_r1.name=不活性な赤キューブ
@@ -821,6 +826,8 @@ tile.dcs_color_cube_g2.name=緑の活性化キューブ
 tile.dcs_color_cube_r2.name=赤の活性化キューブ
 tile.dcs_color_cube_b2.name=黒の活性化キューブ
 tile.dcs_color_cube_w2.name=白の活性化キューブ
+tile.dcs_cube_ice_0.name=凍結のキューブ
+tile.dcs_cube_flame_0.name=灼熱のキューブ
 
 item.dcs_motor_minecart_white.name=原付トロッコ
 item.dcs_motor_scooter_orange.name=スクーター(オレンジ)
@@ -1854,6 +1861,7 @@ dcs.tip.card_type.SELF_BUFF=カードタイプ―自己強化
 dcs.tip.card_type.PROJECTILE=カードタイプ―遠隔攻撃
 dcs.tip.card_type.AREA=カードタイプ―範囲効果
 dcs.tip.card_type.CIRCLE=カードタイプ―魔法陣
+dcs.tip.card_type.SPAWN=カードタイプ―召喚
 
 dcs.comment.card.0=リスポーン地点を現在地に登録する
 dcs.comment.card.1=周囲の植物に骨粉効果を与える
@@ -1870,6 +1878,11 @@ dcs.comment.card.11=現在地のチャンクの鉱脈を再生成する
 dcs.comment.card.12=ブロックやエンティティを精錬する魔法陣
 dcs.comment.card.13=モンスターを消滅させる魔法陣
 dcs.comment.card.14=友好・中立生物を回復させる魔法陣
+dcs.comment.card2.0=凍結のキューブを設置する
+dcs.comment.card2.1=花の支援Entityを召喚する
+dcs.comment.card2.2=周囲の生物を一定時間拘束する
+dcs.comment.card2.3=周囲のモンスターを可視化する
+dcs.comment.card2.4=灼熱のキューブを設置する
 
 ## microbe
 dcs.tip.archaea=古細菌
@@ -2024,6 +2037,16 @@ dcs.potion.warp=壁抜け
 potion.effect.dcs.warp=壁抜け
 splash_potion.effect.dcs.warp=壁抜けのスプラッシュポーション
 lingering_potion.effect.dcs.warp=壁抜けの残留ポーション
+
+dcs.potion.unrepair=回復阻害
+potion.effect.dcs.unrepair=回復阻害
+splash_potion.effect.dcs.unrepair=回復阻害のスプラッシュポーション
+lingering_potion.effect.dcs.unrepair=回復阻害の残留ポーション
+
+dcs.potion.clairvoyance=透視
+potion.effect.dcs.clairvoyance=透視
+splash_potion.effect.dcs.clairvoyance=透視のスプラッシュポーション
+lingering_potion.effect.dcs.clairvoyance=透視の残留ポーション
 
 ## enchantment
 enchantment.dcs.venom=毒矢

@@ -11,7 +11,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.base.BlockContainerDC;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.client.particle.ParticleBlink;
+import defeatedcrow.hac.main.client.particle.ParticleCloudRev;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -28,9 +28,9 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockIceCluster extends BlockContainerDC implements IHeatTile {
+public class BlockCubeFlame extends BlockContainerDC implements IHeatTile {
 
-	public BlockIceCluster(String s) {
+	public BlockCubeFlame(String s) {
 		super(Material.ICE, s);
 		this.setSoundType(SoundType.GLASS);
 		this.setHardness(0.5F);
@@ -41,25 +41,7 @@ public class BlockIceCluster extends BlockContainerDC implements IHeatTile {
 
 	@Override
 	public int tickRate(World world) {
-		return 120;
-	}
-
-	@Override
-	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
-		super.onBlockAdded(world, pos, state);
-		world.scheduleUpdate(pos, this, this.tickRate(world));
-	}
-
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-		super.updateTick(world, pos, state, rand);
-		if (!world.isRemote) {
-			if (world.rand.nextInt(3) == 0) {
-				world.setBlockToAir(pos);
-			} else {
-				world.scheduleUpdate(pos, this, this.tickRate(world));
-			}
-		}
+		return 10;
 	}
 
 	@Override
@@ -102,26 +84,27 @@ public class BlockIceCluster extends BlockContainerDC implements IHeatTile {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileIceCluster();
+		return new TileCubeFlame();
 	}
 
 	@Override
 	public DCHeatTier getHeatTier(World world, BlockPos to, BlockPos from) {
-		return DCHeatTier.ABSOLUTE;
+		return DCHeatTier.INFERNO;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		int c = ClimateMain.proxy.getParticleCount();
-		if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
-			double x = pos.getX() + rand.nextDouble();
-			double y = pos.getY() + 0.25D + rand.nextDouble();
-			double z = pos.getZ() + rand.nextDouble();
-
-			Particle p = new ParticleBlink.Factory().createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
-			FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
-
+		if (ClimateMain.proxy.getParticleCount() > 0) {
+			for (int i = 0; i < 3; i++) {
+				double x = pos.getX() + 0.25D + rand.nextDouble() * 0.5D;
+				double y = pos.getY() + 0.25D + rand.nextDouble() * 0.5D;
+				double z = pos.getZ() + 0.25D + rand.nextDouble() * 0.5D;
+				Particle p = new ParticleCloudRev.Factory()
+						.createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+				FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
+			}
 		}
 	}
 

@@ -677,6 +677,41 @@ public class MagicRecipeRegister {
 				"paper",
 				"cubeWhite" });
 
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 0), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractBlue",
+				"extractGreen" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 1), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractGreen",
+				"extractBlack" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 2), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractRed",
+				"extractBlue" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 3), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractBlack",
+				"extractWhite" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 4), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractWhite",
+				"extractRed" });
+
 			// buimeOrb
 			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.biomeOrb, 1, 0), new Object[] {
 				"XYX",

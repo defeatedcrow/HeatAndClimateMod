@@ -371,6 +371,12 @@ public class MainInit {
 	public static Potion absorptionEXP;
 	public static PotionType absorptionEXPType;
 
+	public static Potion unrepair;
+	public static PotionType unrepairType;
+
+	public static Potion clairvoyance;
+	public static PotionType clairvoyanceType;
+
 	public static Enchantment venom;
 	public static Enchantment corrosion;
 	public static Enchantment robber;

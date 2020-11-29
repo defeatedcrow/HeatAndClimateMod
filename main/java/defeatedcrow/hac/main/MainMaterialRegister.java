@@ -62,6 +62,9 @@ import defeatedcrow.hac.main.block.build.BlockWallShelf;
 import defeatedcrow.hac.main.block.build.ItemBedDC;
 import defeatedcrow.hac.main.block.build.ItemDoorDC;
 import defeatedcrow.hac.main.block.build.ItemLowChest;
+import defeatedcrow.hac.main.block.build.TileMFence;
+import defeatedcrow.hac.main.block.build.TileMFenceGlass;
+import defeatedcrow.hac.main.block.build.TileMFenceNet;
 import defeatedcrow.hac.main.block.container.BlockCardboard;
 import defeatedcrow.hac.main.block.container.BlockCropBasket;
 import defeatedcrow.hac.main.block.container.BlockCropCont;
@@ -160,7 +163,9 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -537,12 +542,60 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.fenceSteel), "dcs_climate", "dcs_fence_steel", "build", 15, false);
 
-			MainInit.fenceNetSteel = new BlockMetalFenceBase("dcs_fence_net_steel", false)
-					.setUnlocalizedName("dcs_fence_net_steel");
+			MainInit.fenceNetSteel = new BlockMetalFenceBase("dcs_fence_net_steel", false) {
+				@Override
+				public TileEntity createNewTileEntity(World world, int meta) {
+					return new TileMFenceNet();
+				}
+			}.setUnlocalizedName("dcs_fence_net_steel");
 			DCMaterialReg
 					.registerBlock(MainInit.fenceNetSteel, ClimateCore.PACKAGE_BASE + "_fence_net_steel", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockMFence(MainInit.fenceNetSteel, "dcs_climate", "dcs_fence_net_steel", "build");
+
+			MainInit.fenceAluminium = new BlockMetalFenceBase("dcs_fence_aluminium", false) {
+				@Override
+				public TileEntity createNewTileEntity(World world, int meta) {
+					return new TileMFence();
+				}
+			}.setUnlocalizedName("dcs_fence_aluminium");
+			DCMaterialReg
+					.registerBlock(MainInit.fenceAluminium, ClimateCore.PACKAGE_BASE + "_fence_aluminium", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockMFence(MainInit.fenceAluminium, "dcs_climate", "dcs_fence_aluminium", "build");
+
+			MainInit.fenceNet = new BlockMetalFenceBase("dcs_fence_net", false) {
+				@Override
+				public TileEntity createNewTileEntity(World world, int meta) {
+					return new TileMFenceNet();
+				}
+			}.setUnlocalizedName("dcs_fence_net");
+			DCMaterialReg.registerBlock(MainInit.fenceNet, ClimateCore.PACKAGE_BASE + "_fence_net", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockMFence(MainInit.fenceNet, "dcs_climate", "dcs_fence_net", "build");
+
+			MainInit.fenceGlass = new BlockMetalFenceBase("dcs_fence_glass", true) {
+				@Override
+				public TileEntity createNewTileEntity(World world, int meta) {
+					return new TileMFenceGlass();
+				}
+			}.setUnlocalizedName("dcs_fence_glass");
+			DCMaterialReg
+					.registerBlock(MainInit.fenceGlass, ClimateCore.PACKAGE_BASE + "_fence_glass", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockMFence(MainInit.fenceGlass, "dcs_climate", "dcs_fence_glass", "build");
+
+			MainInit.fenceRattan = new BlockMetalFenceBase("dcs_fence_rattan", false) {
+				@Override
+				public TileEntity createNewTileEntity(World world, int meta) {
+					return new TileMFenceNet();
+				}
+			}.setUnlocalizedName("dcs_fence_rattan");
+			DCMaterialReg
+					.registerBlock(MainInit.fenceRattan, ClimateCore.PACKAGE_BASE + "_fence_rattan", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockMFence(MainInit.fenceRattan, "dcs_climate", "dcs_fence_rattan", "build");
+
+			MainInit.fenceLadder = new BlockMetalLadder("dcs_fence_ladder").setUnlocalizedName("dcs_fence_ladder");
+			DCMaterialReg
+					.registerBlock(MainInit.fenceLadder, ClimateCore.PACKAGE_BASE + "_fence_ladder", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.fenceNetSteel), "dcs_climate", "dcs_fence_net_steel", "build", 3, false);
+					.getItemFromBlock(MainInit.fenceLadder), "dcs_climate", "dcs_fence_ladder", "build", 3, false);
 
 			MainInit.fenceLadderSteel = new BlockMetalLadder("dcs_fence_ladder_steel")
 					.setUnlocalizedName("dcs_fence_ladder_steel");
@@ -550,38 +603,6 @@ public class MainMaterialRegister {
 					.registerBlock(MainInit.fenceLadderSteel, ClimateCore.PACKAGE_BASE + "_fence_ladder_steel", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.fenceLadderSteel), "dcs_climate", "dcs_fence_ladder_steel", "build", 3, false);
-
-			MainInit.fenceAluminium = new BlockMetalFenceBase("dcs_fence_aluminium", false)
-					.setUnlocalizedName("dcs_fence_aluminium");
-			DCMaterialReg
-					.registerBlock(MainInit.fenceAluminium, ClimateCore.PACKAGE_BASE + "_fence_aluminium", ClimateMain.MOD_ID);
-			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.fenceAluminium), "dcs_climate", "dcs_fence_aluminium", "build", 3, false);
-
-			MainInit.fenceNet = new BlockMetalFenceBase("dcs_fence_net", false).setUnlocalizedName("dcs_fence_net");
-			DCMaterialReg.registerBlock(MainInit.fenceNet, ClimateCore.PACKAGE_BASE + "_fence_net", ClimateMain.MOD_ID);
-			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.fenceNet), "dcs_climate", "dcs_fence_net", "build", 3, false);
-
-			MainInit.fenceGlass = new BlockMetalFenceBase("dcs_fence_glass", true)
-					.setUnlocalizedName("dcs_fence_glass");
-			DCMaterialReg
-					.registerBlock(MainInit.fenceGlass, ClimateCore.PACKAGE_BASE + "_fence_glass", ClimateMain.MOD_ID);
-			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.fenceGlass), "dcs_climate", "dcs_fence_glass", "build", 3, false);
-
-			MainInit.fenceRattan = new BlockMetalFenceBase("dcs_fence_rattan", false)
-					.setUnlocalizedName("dcs_fence_rattan");
-			DCMaterialReg
-					.registerBlock(MainInit.fenceRattan, ClimateCore.PACKAGE_BASE + "_fence_rattan", ClimateMain.MOD_ID);
-			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.fenceRattan), "dcs_climate", "dcs_fence_rattan", "build", 3, false);
-
-			MainInit.fenceLadder = new BlockMetalLadder("dcs_fence_ladder").setUnlocalizedName("dcs_fence_ladder");
-			DCMaterialReg
-					.registerBlock(MainInit.fenceLadder, ClimateCore.PACKAGE_BASE + "_fence_ladder", ClimateMain.MOD_ID);
-			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.fenceLadder), "dcs_climate", "dcs_fence_ladder", "build", 3, false);
 
 			MainInit.awning = new BlockAwning("dcs_build_awning").setUnlocalizedName("dcs_build_awning");
 			DCMaterialReg
