@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.worldgen;
 
 import java.util.Random;
 
+import defeatedcrow.hac.core.util.BiomeCatchDC;
 import defeatedcrow.hac.main.config.WorldGenConfig;
 import defeatedcrow.hac.main.worldgen.CaravanGenEvent.CaravanType;
 import net.minecraft.block.Block;
@@ -131,7 +132,7 @@ public class CaravanGenPos {
 
 	public static boolean canGenerateBiome(int cx, int cz, World world) {
 		if (world != null) {
-			Biome biome = BiomeCheckerDC.getBiome(cx, cx, world);
+			Biome biome = BiomeCatchDC.getBiome(cx, cx, world);
 			if (biome != null) {
 				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary
 						.hasType(biome, BiomeDictionary.Type.SAVANNA);

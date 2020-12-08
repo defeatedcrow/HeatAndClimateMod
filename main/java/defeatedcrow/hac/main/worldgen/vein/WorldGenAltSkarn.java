@@ -78,7 +78,7 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		}
 		BlockPos pos = new BlockPos(posX, 75, posZ);
 
-		Biome biome = world.getBiomeForCoordsBody(pos);
+		Biome biome = world.getBiome(pos);
 		int f = world.rand.nextInt(15);
 		if (range > 0) {
 			f = (range / 2) + world.rand.nextInt(range);

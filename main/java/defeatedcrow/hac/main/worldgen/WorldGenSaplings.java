@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.worldgen;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.util.BiomeCatchDC;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -78,7 +79,7 @@ public class WorldGenSaplings implements IWorldGenerator {
 		}
 		BlockPos pos = new BlockPos(posX, 60, posZ);
 
-		Biome biome = BiomeCheckerDC.getBiome(chunkX, chunkZ, world);
+		Biome biome = BiomeCatchDC.getBiome(pos, world);
 		float temp = biome.getDefaultTemperature();
 
 		TreeType type = null;

@@ -10,6 +10,7 @@ zh_CN
 TartaricAcid
 0999312
 RisingInIris2017
+Tacx
 
 zh_TW
 ckhomo

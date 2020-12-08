@@ -7,6 +7,7 @@ import java.util.Random;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import defeatedcrow.hac.core.util.BiomeCatchDC;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
@@ -93,7 +94,7 @@ public class WorldGenWindmill implements IWorldGenerator {
 			posZ = forceZ;
 		}
 		BlockPos pos = new BlockPos(posX, 60, posZ);
-		Biome biome = BiomeCheckerDC.getBiome(chunkX, chunkZ, world);
+		Biome biome = BiomeCatchDC.getBiome(pos, world);
 
 		if (world.villageCollection.getNearestVillage(pos, 32) != null)
 			return false;
