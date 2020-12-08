@@ -93,7 +93,7 @@ public class WorldGenWindmill implements IWorldGenerator {
 			posZ = forceZ;
 		}
 		BlockPos pos = new BlockPos(posX, 60, posZ);
-		Biome biome = world.getBiomeForCoordsBody(pos);
+		Biome biome = BiomeCheckerDC.getBiome(chunkX, chunkZ, world);
 
 		if (world.villageCollection.getNearestVillage(pos, 32) != null)
 			return false;

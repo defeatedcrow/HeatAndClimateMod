@@ -78,7 +78,7 @@ public class WorldGenSaplings implements IWorldGenerator {
 		}
 		BlockPos pos = new BlockPos(posX, 60, posZ);
 
-		Biome biome = world.getBiomeForCoordsBody(pos);
+		Biome biome = BiomeCheckerDC.getBiome(chunkX, chunkZ, world);
 		float temp = biome.getDefaultTemperature();
 
 		TreeType type = null;

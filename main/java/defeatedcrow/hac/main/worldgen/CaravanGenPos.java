@@ -62,14 +62,14 @@ public class CaravanGenPos {
 		int px = cx << 4;
 		int pz = cz << 4;
 		int h = -1;
-		for (int y = 50; y < 100; y++) {
+		for (int y = 30; y < 100; y++) {
 			BlockPos p1 = new BlockPos(px + 7, y, pz + 7);
 			if (getType(world, p1) != CaravanType.BROKEN) {
 				h = y + 7;
 				return h;
 			}
 		}
-		for (int y = 50; y < 100; y++) {
+		for (int y = 40; y < 100; y++) {
 			BlockPos p1 = new BlockPos(px + 7, y, pz + 7);
 			if (!isReplaceable(world, p1) && isReplaceable(world, p1.up())) {
 				h = y;
@@ -131,7 +131,7 @@ public class CaravanGenPos {
 
 	public static boolean canGenerateBiome(int cx, int cz, World world) {
 		if (world != null) {
-			Biome biome = getBiome(cx, cz, world);
+			Biome biome = BiomeCheckerDC.getBiome(cx, cx, world);
 			if (biome != null) {
 				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary
 						.hasType(biome, BiomeDictionary.Type.SAVANNA);
@@ -141,19 +141,6 @@ public class CaravanGenPos {
 			}
 		}
 		return false;
-	}
-
-	public static Biome getBiome(int cx, int cz, World world) {
-		int x = 8 + cx * 16;
-		int z = 8 + cz * 16;
-		Biome ret = null;
-		Biome[] gen = world.getBiomeProvider().getBiomes(null, cx * 16, cz * 16, 16, 16, false);
-		boolean f = world.isBlockLoaded(new BlockPos(x, 0, z));
-		if (gen != null) {
-			ret = gen[8 + 8 * 16];
-			// DCLogger.debugInfoLog("Caravan Test: Loaded " + f + ", Biome" + ret.getBiomeName());
-		}
-		return ret;
 	}
 
 	public static CaravanType getType(World world, BlockPos pos) {
