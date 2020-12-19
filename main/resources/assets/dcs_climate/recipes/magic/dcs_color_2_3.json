@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "petalLotus"
+   "ore": "dustRedstone"
   },
   {
    "type": "forge:ore_dict",

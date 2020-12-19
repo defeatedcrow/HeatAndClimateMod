@@ -38,6 +38,12 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreDust, ClimateCore.PACKAGE_ID, "dcs_ore_dust", "ores", 15);
 		MAIN_INSTANCE.regSimpleItem(MainInit.oreItem, ClimateCore.PACKAGE_ID, "dcs_ore_item", "ores", 14);
 		MAIN_INSTANCE.regSimpleItem(MainInit.gems, ClimateCore.PACKAGE_ID, "dcs_ore_gem", "ores", 24);
+		MAIN_INSTANCE.regSimpleItem(MainInit.gems_red, ClimateCore.PACKAGE_ID, "dcs_ore_gem_red", "ores", 5);
+		MAIN_INSTANCE.regSimpleItem(MainInit.gems_green, ClimateCore.PACKAGE_ID, "dcs_ore_gem_green", "ores", 5);
+		MAIN_INSTANCE.regSimpleItem(MainInit.gems_blue, ClimateCore.PACKAGE_ID, "dcs_ore_gem_blue", "ores", 5);
+		MAIN_INSTANCE.regSimpleItem(MainInit.gems_white, ClimateCore.PACKAGE_ID, "dcs_ore_gem_white", "ores", 5);
+		MAIN_INSTANCE.regSimpleItem(MainInit.gems_black, ClimateCore.PACKAGE_ID, "dcs_ore_gem_black", "ores", 5);
+		MAIN_INSTANCE.regSimpleItem(MainInit.gems_layer, ClimateCore.PACKAGE_ID, "dcs_ore_gem_layer", "ores", 6);
 		MAIN_INSTANCE.regSimpleItem(MainInit.miscDust, ClimateCore.PACKAGE_ID, "dcs_misc_dust", "ores", 13);
 		MAIN_INSTANCE.regSimpleItem(MainInit.foodDust, ClimateCore.PACKAGE_ID, "dcs_food_dust", "food", 7);
 		MAIN_INSTANCE.regSimpleItem(MainInit.stoneYagen, ClimateCore.PACKAGE_ID, "dcs_stone_yagen", "tool", 0);
@@ -78,16 +84,20 @@ public class JsonRegister {
 		regCube((ITexturePath) MainInit.heatedMetalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_heatingmetal", "ores", 14);
 		regCube((ITexturePath) MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
 		regCube((ITexturePath) MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
-		regCube((ITexturePath) MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 3);
+		regCube((ITexturePath) MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 7);
 		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 11);
 		regCube((ITexturePath) MainInit.syntheticBlock, ClimateCore.PACKAGE_ID, "dcs_build_synthetic_glass", "build", 15);
 		regCube((ITexturePath) MainInit.linoleum, ClimateCore.PACKAGE_ID, "dcs_build_linoleum", "build", 15);
 		regCube((ITexturePath) MainInit.clayBricks, ClimateCore.PACKAGE_ID, "dcs_build_claybrick", "build", 15);
 		regCube((ITexturePath) MainInit.oreNew, ClimateCore.PACKAGE_ID, "dcs_ore_stone_new", "ores", 14);
 		regCube((ITexturePath) MainInit.layerNew, ClimateCore.PACKAGE_ID, "dcs_layer_stone_new", "ores", 7);
+		regCube((ITexturePath) MainInit.skarnBlock, ClimateCore.PACKAGE_ID, "dcs_layer_skarn", "ores", 2);
+		regCube((ITexturePath) MainInit.skarnOre, ClimateCore.PACKAGE_ID, "dcs_layer_skarn_ore", "ores", 8);
 
 		MAIN_INSTANCE.regSimpleBlock(MainInit.oreNew, ClimateCore.PACKAGE_ID, "dcs_ore_stone_new", "ores", 14);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.layerNew, ClimateCore.PACKAGE_ID, "dcs_layer_stone_new", "ores", 7);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.skarnBlock, ClimateCore.PACKAGE_ID, "dcs_layer_skarn", "ores", 2);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.skarnOre, ClimateCore.PACKAGE_ID, "dcs_layer_skarn_ore", "ores", 8);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock, ClimateCore.PACKAGE_ID, "dcs_ore_dustblock", "ores", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.dustBlock_2, ClimateCore.PACKAGE_ID, "dcs_ore2_dustblock", "ores", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.metalBlockNew, ClimateCore.PACKAGE_ID, "dcs_ore_metal_new", "ores", 7);
@@ -98,7 +108,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.chalLamp, ClimateCore.PACKAGE_ID, "dcs_build_challamp", "build", 15);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 3);
+		MAIN_INSTANCE.regSimpleBlock(MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 7);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 11);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.linoleum, ClimateCore.PACKAGE_ID, "dcs_build_linoleum", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.wallLamp, ClimateCore.PACKAGE_ID, "dcs_build_walllamp", "build", 3);

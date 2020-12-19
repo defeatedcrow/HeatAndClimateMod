@@ -286,11 +286,13 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.medium, ClimateCore.PACKAGE_ID, "dcs_food_medium", "food", 4);
 		instance.regSimpleItem(FoodInit.broth, ClimateCore.PACKAGE_ID, "dcs_food_broth", "food", 1);
 		instance.regSimpleItem(FoodInit.residue, ClimateCore.PACKAGE_ID, "dcs_food_residue", "food", 6);
-		instance.regSimpleItem(FoodInit.antibiotic, ClimateCore.PACKAGE_ID, "dcs_food_antibiotic", "food", 7);
+		instance.regSimpleItem(FoodInit.antibiotic, ClimateCore.PACKAGE_ID, "dcs_food_antibiotic", "food", 8);
 		instance.regSimpleItem(FoodInit.unidentified, ClimateCore.PACKAGE_ID, "dcs_food_unidentified", "food", 4);
 		instance.regSimpleItem(FoodInit.bacillus, ClimateCore.PACKAGE_ID, "dcs_food_microbe_bacillus", "food", 2);
 		instance.regSimpleItem(FoodInit.coliformes, ClimateCore.PACKAGE_ID, "dcs_food_microbe_coliformes", "food", 2);
 		instance.regSimpleItem(FoodInit.lab, ClimateCore.PACKAGE_ID, "dcs_food_microbe_lab", "food", 2);
+		instance.regSimpleItem(FoodInit.skin, ClimateCore.PACKAGE_ID, "dcs_food_microbe_skin", "food", 2);
+		instance.regSimpleItem(FoodInit.cyano, ClimateCore.PACKAGE_ID, "dcs_food_microbe_cyano", "food", 2);
 		instance.regSimpleItem(FoodInit.beerYeast, ClimateCore.PACKAGE_ID, "dcs_food_microbe_yeast", "food", 2);
 		instance.regSimpleItem(FoodInit.oryzae, ClimateCore.PACKAGE_ID, "dcs_food_microbe_oryzae", "food", 2);
 		instance.regSimpleItem(FoodInit.nether, ClimateCore.PACKAGE_ID, "dcs_food_microbe_nether", "food", 2);

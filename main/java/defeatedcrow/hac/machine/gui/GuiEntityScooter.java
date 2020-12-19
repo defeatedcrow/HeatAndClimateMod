@@ -43,9 +43,8 @@ public class GuiEntityScooter extends GuiBaseDC {
 		int j = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
-		if (processor.getField(2) > -1) {
-			int id = processor.getField(2);
-			Fluid in = processor.getFluidByID(id);
+		if (!processor.tank.isEmpty()) {
+			Fluid in = processor.tank.getFluidType();
 			int inAmo = 50 * processor.getField(3) / 5000;
 			renderFluid(in, inAmo, i + 38, j + 18, 12, 50);
 		}

@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "dustRedstone"
+   "ore": "gemChiastolite"
   },
   {
    "type": "forge:ore_dict",
@@ -12,7 +12,7 @@
  ],
  "result": {
   "item": "dcs_climate:dcs_color",
-  "count": 1,
+  "count": 3,
   "data": 2
  }
 }

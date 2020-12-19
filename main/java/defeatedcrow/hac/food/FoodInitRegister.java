@@ -91,10 +91,12 @@ import defeatedcrow.hac.food.item.brewing.ItemMedium;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeBacillus;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeBlueMold;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeColiformes;
+import defeatedcrow.hac.food.item.brewing.ItemMicrobeCyano;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeLab;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeMushroom;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeNether;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeOryzae;
+import defeatedcrow.hac.food.item.brewing.ItemMicrobeSkin;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeSlime;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeYeast;
 import defeatedcrow.hac.food.item.brewing.ItemResidue;
@@ -477,6 +479,13 @@ public class FoodInitRegister {
 		FoodInit.lab = new ItemMicrobeLab().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_microbe_lab");
 		DCMaterialReg.registerItem(FoodInit.lab, ClimateCore.PACKAGE_BASE + "_food_microbe_lab", ClimateMain.MOD_ID);
 
+		FoodInit.skin = new ItemMicrobeSkin().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_microbe_skin");
+		DCMaterialReg.registerItem(FoodInit.skin, ClimateCore.PACKAGE_BASE + "_food_microbe_skin", ClimateMain.MOD_ID);
+
+		FoodInit.cyano = new ItemMicrobeCyano().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_microbe_cyano");
+		DCMaterialReg
+				.registerItem(FoodInit.cyano, ClimateCore.PACKAGE_BASE + "_food_microbe_cyano", ClimateMain.MOD_ID);
+
 		FoodInit.beerYeast = new ItemMicrobeYeast()
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_microbe_yeast");
 		DCMaterialReg
@@ -771,6 +780,8 @@ public class FoodInitRegister {
 			FoodInit.bacillus.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.coliformes.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.lab.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.skin.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.cyano.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.beerYeast.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.oryzae.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.nether.setCreativeTab(ClimateMain.food_adv);

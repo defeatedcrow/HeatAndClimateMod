@@ -169,8 +169,8 @@ import defeatedcrow.hac.main.worldgen.WorldGenHotspring;
 import defeatedcrow.hac.main.worldgen.WorldGenSaplings;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import defeatedcrow.hac.main.worldgen.vein.VeinTableJson;
-import defeatedcrow.hac.main.worldgen.vein.WorldGenAltSkarn;
 import defeatedcrow.hac.main.worldgen.vein.WorldGenOres3;
+import defeatedcrow.hac.main.worldgen.vein.WorldGenSkarn;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -504,7 +504,7 @@ public class CommonMainProxy implements IGuiHandler {
 		if (ModuleConfig.world) {
 			GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
 			if (WorldGenConfig.skarnGen > 0) {
-				GameRegistry.registerWorldGenerator(new WorldGenAltSkarn(false), 3);
+				GameRegistry.registerWorldGenerator(new WorldGenSkarn(false), 3);
 			}
 			if (ModuleConfig.machine) {
 				WorldGenWindmill.initLoot();

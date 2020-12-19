@@ -80,12 +80,14 @@ public class MediumCraftRecipeDC extends net.minecraftforge.registries.IForgeReg
 				if (microbe.getItem() == FoodInit.unidentified) {
 					IMicrobe type = ItemUnidentified.getSpecies(microbe);
 					output = medium.copy();
+					output.setCount(1);
 					ItemMedium.setMicrobeItem(output, type, null);
 					return output;
 				} else if (microbe.getItem() instanceof MicrobeItem) {
 					MicrobeItem type = ((MicrobeItem) microbe.getItem());
 					EnumRarity rarity = type.getRarity(microbe);
 					output = medium.copy();
+					output.setCount(1);
 					ItemMedium.setMicrobeItem(output, type, rarity);
 					return output;
 				}
@@ -102,6 +104,14 @@ public class MediumCraftRecipeDC extends net.minecraftforge.registries.IForgeReg
 	@Override
 	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
 		NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>withSize(inv.getSizeInventory(), ItemStack.EMPTY);
+
+		for (int i = 0; i < nonnulllist.size(); ++i) {
+			ItemStack check = inv.getStackInSlot(i);
+			if (check.getItem() instanceof MicrobeItem || check.getItem() == FoodInit.unidentified) {
+				nonnulllist.set(i, check.copy());
+			}
+		}
+
 		return nonnulllist;
 	}
 

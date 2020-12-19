@@ -90,20 +90,20 @@ public class RegisterReactorRecipe {
 		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(Items.QUARTZ, 1,
 				0), null, 0F, null, null, DCHeatTier.UHT, "gemQuartz", null, null, new Object[] { "dustCrystal" });
 
-		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems, 1,
-				4), null, 0F, null, null, DCHeatTier.UHT, "gemSapphire", null, null, new Object[] {
+		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems_blue, 1,
+				1), null, 0F, null, null, DCHeatTier.UHT, "gemSapphire", null, null, new Object[] {
 					"dustAluminum",
 					"dustChromium",
 					"dustIron" });
 
-		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems, 1,
-				14), null, 0F, null, null, DCHeatTier.UHT, "gemGarnet", null, null, new Object[] {
+		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems_red, 1,
+				1), null, 0F, null, null, DCHeatTier.UHT, "gemGarnet", null, null, new Object[] {
 					"dustCrystal",
 					"dustAluminum",
 					"dustIron" });
 
-		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems, 1,
-				24), null, 0F, null, null, DCHeatTier.UHT, "gemDiamond", null, null, new Object[] {
+		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.gems_white, 1,
+				4), null, 0F, null, null, DCHeatTier.UHT, "gemDiamond", null, null, new Object[] {
 					"dustTitanium",
 					"dustBlaze",
 					"gemCelestite" });
@@ -147,31 +147,31 @@ public class RegisterReactorRecipe {
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
 											200), new Object[] { "oreBlack", "soap" });
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 10), new ItemStack(
-					MainInit.gems, 1, 21), 0.5F, new FluidStack(MainInit.blackLiquor,
+					MainInit.gems_red, 1, 2), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
 											200), new Object[] { "oreLargeRed", "soap" });
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 11), new ItemStack(
-					MainInit.gems, 1, 19), 0.5F, new FluidStack(MainInit.blackLiquor,
+					MainInit.gems_green, 1, 2), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
 											200), new Object[] { "oreLargeGreen", "soap" });
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 12), new ItemStack(
-					MainInit.gems, 1, 20), 0.5F, new FluidStack(MainInit.blackLiquor,
+					MainInit.gems_blue, 1, 2), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
 											200), new Object[] { "oreLargeBlue", "soap" });
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 13), new ItemStack(
-					MainInit.gems, 1, 6), 0.5F, new FluidStack(MainInit.blackLiquor,
+					MainInit.gems_white, 1, 2), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
 											200), new Object[] { "oreLargeWhite", "soap" });
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 2, 14), new ItemStack(
-					MainInit.gems, 1, 22), 0.5F, new FluidStack(MainInit.blackLiquor,
+					MainInit.gems_black, 1, 2), 0.5F, new FluidStack(MainInit.blackLiquor,
 							200), null, DCHeatTier.NORMAL, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 									FluidRegistry.WATER, 200), new FluidStack(MainInit.sulfuricAcid,
 											200), new Object[] { "oreLargeBlack", "soap" });

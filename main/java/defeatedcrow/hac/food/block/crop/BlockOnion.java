@@ -113,4 +113,19 @@ public class BlockOnion extends ClimateCropBase implements ITexturePath {
 		return ret;
 	}
 
+	@Override
+	public List<DCHeatTier> getHardmodeTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.COLD);
+		ret.add(DCHeatTier.COOL);
+		return ret;
+	}
+
+	@Override
+	public List<DCHumidity> getHardmodeHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.NORMAL);
+		return ret;
+	}
+
 }

@@ -12,9 +12,9 @@
         "side=true,type=4": { "model": "dcs_climate:build/dcs_slab_upper_bedrock" },
         "side=false,type=5": { "model": "dcs_climate:build/dcs_slab_under_dirtbrick" },
         "side=true,type=5": { "model": "dcs_climate:build/dcs_slab_upper_dirtbrick" },
-        "side=false,type=6": { "model": "dcs_climate:build/dcs_slab_under_dirtbrick" },
-        "side=true,type=6": { "model": "dcs_climate:build/dcs_slab_upper_dirtbrick" },
-        "side=false,type=7": { "model": "dcs_climate:build/dcs_slab_under_dirtbrick" },
-        "side=true,type=7": { "model": "dcs_climate:build/dcs_slab_upper_dirtbrick" }
+        "side=false,type=6": { "model": "dcs_climate:build/dcs_slab_under_skarn" },
+        "side=true,type=6": { "model": "dcs_climate:build/dcs_slab_upper_skarn" },
+        "side=false,type=7": { "model": "dcs_climate:build/dcs_slab_under_greisen" },
+        "side=true,type=7": { "model": "dcs_climate:build/dcs_slab_upper_greisen" }
     }
 }

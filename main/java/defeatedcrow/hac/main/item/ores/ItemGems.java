@@ -1,7 +1,9 @@
 package defeatedcrow.hac.main.item.ores;
 
+import defeatedcrow.hac.api.climate.ItemSet;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.ItemStack;
 
 public class ItemGems extends DCItem {
@@ -94,4 +96,31 @@ public class ItemGems extends DCItem {
 		else
 			return 0;
 	}
+
+	public static ItemSet[] table = {
+		new ItemSet(MainInit.gems_blue, 0),
+		new ItemSet(MainInit.gems_red, 0),
+		new ItemSet(MainInit.gems_white, 0),
+		new ItemSet(MainInit.gems_layer, 0),
+		new ItemSet(MainInit.gems_blue, 1),
+		new ItemSet(MainInit.gems_green, 0),
+		new ItemSet(MainInit.gems_white, 2),
+		new ItemSet(MainInit.gems_black, 5),
+		new ItemSet(MainInit.gems_layer, 1),
+		new ItemSet(MainInit.gems_layer, 2),
+		new ItemSet(MainInit.gems_layer, 3),
+		new ItemSet(MainInit.gems_black, 1),
+		new ItemSet(MainInit.gems_green, 1),
+		new ItemSet(MainInit.gems_green, 1),
+		new ItemSet(MainInit.gems_red, 1),
+		new ItemSet(MainInit.gems_white, 1),
+		new ItemSet(MainInit.gems_layer, 4),
+		new ItemSet(MainInit.gems_layer, 5),
+		new ItemSet(MainInit.gems_layer, 6),
+		new ItemSet(MainInit.gems_green, 2),
+		new ItemSet(MainInit.gems_blue, 2),
+		new ItemSet(MainInit.gems_red, 2),
+		new ItemSet(MainInit.gems_black, 2),
+		new ItemSet(MainInit.gems_black, 0),
+		new ItemSet(MainInit.gems_white, 4) };
 }

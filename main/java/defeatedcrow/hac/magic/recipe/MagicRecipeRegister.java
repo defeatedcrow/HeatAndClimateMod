@@ -35,7 +35,11 @@ public class MagicRecipeRegister {
 			"gemChalcedonyBlue",
 			"dyeBlue" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 3, 0), new Object[] {
+			"gemVivianite",
+			"dyeBlue" });
+
+		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 0), new Object[] {
 			"gemLapis",
 			"dyeBlue" });
 
@@ -51,7 +55,11 @@ public class MagicRecipeRegister {
 			"gemChalcedonyRed",
 			"dyeRed" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 3, 2), new Object[] {
+			"gemChiastolite",
+			"dyeRed" });
+
+		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 2), new Object[] {
 			"dustRedstone",
 			"dyeRed" });
 
@@ -63,12 +71,16 @@ public class MagicRecipeRegister {
 			"obsidian",
 			"dyeBlack" });
 
+		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 3, 4), new Object[] {
+			"gemChalcedonyWhite",
+			"dyeWhite" });
+
 		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
 			"gemQuartz",
 			"dyeWhite" });
 
-		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 3, 4), new Object[] {
-			"gemChalcedonyWhite",
+		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
+			"gemSakura",
 			"dyeWhite" });
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
@@ -76,7 +88,7 @@ public class MagicRecipeRegister {
 			"dropBlue" });
 
 		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
-			"gemAquamarine",
+			"gemLarimar",
 			"dropBlue" });
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
@@ -87,16 +99,28 @@ public class MagicRecipeRegister {
 			"gemEmerald",
 			"dropGreen" });
 
+		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
+			"gemFluorite",
+			"dropGreen" });
+
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
 			"gemGarnet",
 			"dropRed" });
 
 		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
-			"gemRuby",
+			"gemAmethyst",
+			"dropRed" });
+
+		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
+			new ItemStack(MainInit.oreItem, 1, 10),
 			"dropRed" });
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 8), new Object[] {
 			"gemSchorl",
+			"dropBlack" });
+
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorDrop, 1, 8), new Object[] {
+			"gemIolite",
 			"dropBlack" });
 
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorDrop, 1, 9), new Object[] {
@@ -112,8 +136,18 @@ public class MagicRecipeRegister {
 			"extractBlue",
 			"blockElestial" });
 
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorCube, 1, 0), new Object[] {
+			"gemAquamarine",
+			"extractBlue",
+			"blockElestial" });
+
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 1), new Object[] {
 			"gemJadeite",
+			"extractGreen",
+			"blockElestial" });
+
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorCube, 1, 1), new Object[] {
+			"gemTsavorite",
 			"extractGreen",
 			"blockElestial" });
 
@@ -122,13 +156,28 @@ public class MagicRecipeRegister {
 			"extractRed",
 			"blockElestial" });
 
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorCube, 1, 2), new Object[] {
+			"gemRuby",
+			"extractRed",
+			"blockElestial" });
+
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 3), new Object[] {
 			"gemOpal",
 			"extractBlack",
 			"blockElestial" });
 
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorCube, 1, 3), new Object[] {
+			"gemAlexandrite",
+			"extractBlack",
+			"blockElestial" });
+
 		DCRecipe.jsonShapelessRecipe("magic", new ItemStack(MagicInit.colorCube, 1, 4), new Object[] {
 			"gemCelestite",
+			"extractWhite",
+			"blockElestial" });
+
+		DCRecipe.jsonShapelessRecipe("magic", 2, new ItemStack(MagicInit.colorCube, 1, 4), new Object[] {
+			"gemTopaz",
 			"extractWhite",
 			"blockElestial" });
 
@@ -427,7 +476,7 @@ public class MagicRecipeRegister {
 				"ZYZ",
 				" Z ",
 				'X',
-				new ItemStack(MainInit.gems, 1, 24),
+				new ItemStack(MainInit.gems_white, 1, 4),
 				'Y',
 				"cubeBlue",
 				'Z',
@@ -438,7 +487,7 @@ public class MagicRecipeRegister {
 				"ZYZ",
 				" Z ",
 				'X',
-				new ItemStack(MainInit.gems, 1, 24),
+				new ItemStack(MainInit.gems_white, 1, 4),
 				'Y',
 				"cubeGreen",
 				'Z',
@@ -449,7 +498,7 @@ public class MagicRecipeRegister {
 				"ZYZ",
 				" Z ",
 				'X',
-				new ItemStack(MainInit.gems, 1, 24),
+				new ItemStack(MainInit.gems_white, 1, 4),
 				'Y',
 				"cubeRed",
 				'Z',
@@ -460,7 +509,7 @@ public class MagicRecipeRegister {
 				"ZYZ",
 				" Z ",
 				'X',
-				new ItemStack(MainInit.gems, 1, 24),
+				new ItemStack(MainInit.gems_white, 1, 4),
 				'Y',
 				"cubeBlack",
 				'Z',
@@ -471,7 +520,7 @@ public class MagicRecipeRegister {
 				"ZYZ",
 				" Z ",
 				'X',
-				new ItemStack(MainInit.gems, 1, 24),
+				new ItemStack(MainInit.gems_white, 1, 4),
 				'Y',
 				"cubeWhite",
 				'Z',
@@ -849,43 +898,43 @@ public class MagicRecipeRegister {
 		// climate
 		ClimateAPI.registerBlock.registerHeatBlock(MagicInit.coldLamp, 32767, DCHeatTier.COOL);
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 0), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 0), new Object[] {
 			"petalLotus",
 			"dyeBlue" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 1), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 1), new Object[] {
 			"petalLotus",
 			"dyeGreen" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 2), new Object[] {
 			"petalLotus",
 			"dyeRed" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 3), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 3), new Object[] {
 			"petalLotus",
 			"dyeBlack" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
 			"petalLotus",
 			"dyeWhite" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
 			"petalBlackLotus",
 			"dyeBlue" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
 			"petalBlackLotus",
 			"dyeGreen" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
 			"petalBlackLotus",
 			"dyeRed" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 8), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 8), new Object[] {
 			"petalBlackLotus",
 			"dyeBlack" });
 
-		DCRecipe.jsonShapelessRecipe("magic", 3, new ItemStack(MagicInit.colorDrop, 1, 9), new Object[] {
+		DCRecipe.jsonShapelessRecipe("magic", 4, new ItemStack(MagicInit.colorDrop, 1, 9), new Object[] {
 			"petalBlackLotus",
 			"dyeWhite" });
 

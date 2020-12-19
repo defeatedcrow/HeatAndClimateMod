@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateCropBase;
@@ -37,7 +38,8 @@ public class BlockLeavesDatesCrop extends ClimateCropBase implements ITexturePat
 		setHardness(0.0F);
 		setResistance(3.0F);
 		setLightOpacity(1);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0).withProperty(DECAYABLE, false).withProperty(CHECK_DECAY, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0)
+				.withProperty(DECAYABLE, false).withProperty(CHECK_DECAY, false));
 	}
 
 	@Override
@@ -125,12 +127,12 @@ public class BlockLeavesDatesCrop extends ClimateCropBase implements ITexturePat
 					for (int x1 = -i; x1 <= i; ++x1) {
 						for (int y1 = -i; y1 <= i; ++y1) {
 							for (int z1 = -i; z1 <= i; ++z1) {
-								IBlockState iblockstate = world.getBlockState(blockpos$mutableblockpos.setPos(x +
-										x1, y + y1, z + z1));
+								IBlockState iblockstate = world.getBlockState(blockpos$mutableblockpos
+										.setPos(x + x1, y + y1, z + z1));
 								Block block = iblockstate.getBlock();
 
-								if (block.canSustainLeaves(iblockstate, world, blockpos$mutableblockpos.setPos(x +
-										x1, y + y1, z + z1))) {
+								if (block.canSustainLeaves(iblockstate, world, blockpos$mutableblockpos
+										.setPos(x + x1, y + y1, z + z1))) {
 									hasLog = true;
 								}
 							}
@@ -174,7 +176,8 @@ public class BlockLeavesDatesCrop extends ClimateCropBase implements ITexturePat
 		int i = meta & 3;
 		boolean d = (meta & 4) > 0;
 		boolean c = (meta & 8) > 0;
-		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE4, i).withProperty(DECAYABLE, d).withProperty(CHECK_DECAY, c);
+		IBlockState state = this.getDefaultState().withProperty(DCState.STAGE4, i).withProperty(DECAYABLE, d)
+				.withProperty(CHECK_DECAY, c);
 		return state;
 	}
 
@@ -200,11 +203,7 @@ public class BlockLeavesDatesCrop extends ClimateCropBase implements ITexturePat
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.STAGE4,
-				DECAYABLE,
-				CHECK_DECAY
-		});
+		return new BlockStateContainer(this, new IProperty[] { DCState.STAGE4, DECAYABLE, CHECK_DECAY });
 	}
 
 	@Override
@@ -224,6 +223,29 @@ public class BlockLeavesDatesCrop extends ClimateCropBase implements ITexturePat
 		ret.add(DCHumidity.DRY);
 		ret.add(DCHumidity.NORMAL);
 		ret.add(DCHumidity.WET);
+		return ret;
+	}
+
+	@Override
+	public List<DCHeatTier> getHardmodeTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.WARM);
+		ret.add(DCHeatTier.HOT);
+		return ret;
+	}
+
+	@Override
+	public List<DCHumidity> getHardmodeHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.DRY);
+		return ret;
+	}
+
+	@Override
+	public List<DCAirflow> getHardmodeAir(IBlockState thisState) {
+		List<DCAirflow> ret = new ArrayList<DCAirflow>();
+		ret.add(DCAirflow.NORMAL);
+		ret.add(DCAirflow.FLOW);
 		return ret;
 	}
 

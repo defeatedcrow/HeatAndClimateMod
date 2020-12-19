@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_food_chick"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.food_chick.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.food_chick.description"
+    }
+  },
+  "parent": "dcs_climate:food_incubator",
+  "criteria": {
+        "dcs_bio": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_chick"
+                    }
+                ]
+            }
+        }
+    }
+}

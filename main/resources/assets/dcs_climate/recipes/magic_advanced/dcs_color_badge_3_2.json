@@ -7,8 +7,8 @@
  ],
  "key": {
   "X": {
-   "item": "dcs_climate:dcs_gem",
-   "data": 24
+   "item": "dcs_climate:dcs_gem_white",
+   "data": 4
   },
   "Y": {
    "type": "forge:ore_dict",

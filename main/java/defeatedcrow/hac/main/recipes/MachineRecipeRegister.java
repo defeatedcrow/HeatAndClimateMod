@@ -371,7 +371,7 @@ public class MachineRecipeRegister {
 		GameRegistry.addSmelting(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(MainInit.miscDust, 1, 5), 0.15F);
 
 		// gems
-		GameRegistry.addSmelting(new ItemStack(Items.FLINT, 1, 0), new ItemStack(MainInit.gems, 1, 1), 0.2F);
+		GameRegistry.addSmelting(new ItemStack(Items.FLINT, 1, 0), new ItemStack(MainInit.gems_red, 1, 0), 0.2F);
 
 		GameRegistry.addSmelting(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(Blocks.GLASS, 1, 0), 0.2F);
 

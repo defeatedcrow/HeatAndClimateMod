@@ -54,6 +54,16 @@ public class OreDicRegister {
 		OredicConfig.regOreDic(OredicConfig.layers[6], new ItemStack(MainInit.layerNew, 1, 6));
 		OredicConfig.regOreDic(OredicConfig.layers[7], new ItemStack(MainInit.layerNew, 1, 7));
 
+		OredicConfig.regOreDic(OredicConfig.layers2[0], new ItemStack(MainInit.skarnOre, 1, 0));
+		OredicConfig.regOreDic(OredicConfig.layers2[1], new ItemStack(MainInit.skarnOre, 1, 1));
+		OredicConfig.regOreDic(OredicConfig.layers2[2], new ItemStack(MainInit.skarnOre, 1, 2));
+		OredicConfig.regOreDic(OredicConfig.layers2[3], new ItemStack(MainInit.skarnOre, 1, 3));
+		OredicConfig.regOreDic(OredicConfig.layers2[4], new ItemStack(MainInit.skarnOre, 1, 4));
+		OredicConfig.regOreDic(OredicConfig.layers2[5], new ItemStack(MainInit.skarnOre, 1, 5));
+		OredicConfig.regOreDic(OredicConfig.layers2[6], new ItemStack(MainInit.skarnOre, 1, 6));
+		OredicConfig.regOreDic(OredicConfig.layers2[7], new ItemStack(MainInit.skarnOre, 1, 7));
+		OredicConfig.regOreDic(OredicConfig.layers2[8], new ItemStack(MainInit.skarnOre, 1, 8));
+
 		OredicConfig.regOreDic(OredicConfig.items[0], new ItemStack(MainInit.oreItem, 1, 0));
 		OredicConfig.regOreDic(OredicConfig.items[1], new ItemStack(MainInit.oreItem, 1, 1));
 		OredicConfig.regOreDic(OredicConfig.items[2], new ItemStack(MainInit.oreItem, 1, 2));
@@ -129,31 +139,43 @@ public class OreDicRegister {
 		OredicConfig.regOreDic(OredicConfig.alloys[9], new ItemStack(MainInit.metalBlockAlloy, 1, 9));
 
 		// gems
-		OredicConfig.regOreDic(OredicConfig.gems[0], new ItemStack(MainInit.gems, 1, 0));
-		OredicConfig.regOreDic(OredicConfig.gems[1], new ItemStack(MainInit.gems, 1, 1));
-		OredicConfig.regOreDic(OredicConfig.gems[2], new ItemStack(MainInit.gems, 1, 2));
-		OredicConfig.regOreDic(OredicConfig.gems[3], new ItemStack(MainInit.gems, 1, 3));
-		OredicConfig.regOreDic(OredicConfig.gems[4], new ItemStack(MainInit.gems, 1, 4));
-		OredicConfig.regOreDic(OredicConfig.gems[5], new ItemStack(MainInit.gems, 1, 5));
-		OredicConfig.regOreDic(OredicConfig.gems[6], new ItemStack(MainInit.gems, 1, 6));
-		OredicConfig.regOreDic(OredicConfig.gems[7], new ItemStack(MainInit.gems, 1, 7));
-		OredicConfig.regOreDic(OredicConfig.gems[8], new ItemStack(MainInit.gems, 1, 8));
-		OredicConfig.regOreDic(OredicConfig.gems[9], new ItemStack(MainInit.gems, 1, 9));
-		OredicConfig.regOreDic(OredicConfig.gems[10], new ItemStack(MainInit.gems, 1, 10));
-		OredicConfig.regOreDic(OredicConfig.gems[11], new ItemStack(MainInit.gems, 1, 11));
-		OredicConfig.regOreDic(OredicConfig.gems[12], new ItemStack(MainInit.gems, 1, 12));
-		OredicConfig.regOreDic(OredicConfig.gems[13], new ItemStack(MainInit.gems, 1, 13));
-		OredicConfig.regOreDic(OredicConfig.gems[14], new ItemStack(MainInit.gems, 1, 14));
-		OredicConfig.regOreDic(OredicConfig.gems[15], new ItemStack(MainInit.gems, 1, 15));
-		OredicConfig.regOreDic(OredicConfig.gems[16], new ItemStack(MainInit.gems, 1, 16));
-		OredicConfig.regOreDic(OredicConfig.gems[17], new ItemStack(MainInit.gems, 1, 17));
-		OredicConfig.regOreDic(OredicConfig.gems[18], new ItemStack(MainInit.gems, 1, 18));
-		OredicConfig.regOreDic(OredicConfig.gems[19], new ItemStack(MainInit.gems, 1, 19));
-		OredicConfig.regOreDic(OredicConfig.gems[20], new ItemStack(MainInit.gems, 1, 20));
-		OredicConfig.regOreDic(OredicConfig.gems[21], new ItemStack(MainInit.gems, 1, 21));
-		OredicConfig.regOreDic(OredicConfig.gems[22], new ItemStack(MainInit.gems, 1, 22));
-		OredicConfig.regOreDic(OredicConfig.gems[23], new ItemStack(MainInit.gems, 1, 23));
-		OredicConfig.regOreDic(OredicConfig.gems[24], new ItemStack(MainInit.gems, 1, 24));
+		OredicConfig.regOreDic(OredicConfig.gems[0], new ItemStack(MainInit.gems_red, 1, 0));
+		OredicConfig.regOreDic(OredicConfig.gems[14], new ItemStack(MainInit.gems_red, 1, 1));
+		OredicConfig.regOreDic(OredicConfig.gems[21], new ItemStack(MainInit.gems_red, 1, 2));
+		OredicConfig.regOreDic(OredicConfig.gems[25], new ItemStack(MainInit.gems_red, 1, 3));
+		OredicConfig.regOreDic(OredicConfig.gems[26], new ItemStack(MainInit.gems_red, 1, 4));
+		OredicConfig.regOreDic(OredicConfig.gems[27], new ItemStack(MainInit.gems_red, 1, 5));
+		OredicConfig.regOreDic(OredicConfig.gems[0], new ItemStack(MainInit.gems_blue, 1, 0));
+		OredicConfig.regOreDic(OredicConfig.gems[4], new ItemStack(MainInit.gems_blue, 1, 1));
+		OredicConfig.regOreDic(OredicConfig.gems[20], new ItemStack(MainInit.gems_blue, 1, 2));
+		OredicConfig.regOreDic(OredicConfig.gems[28], new ItemStack(MainInit.gems_blue, 1, 3));
+		OredicConfig.regOreDic(OredicConfig.gems[29], new ItemStack(MainInit.gems_blue, 1, 4));
+		OredicConfig.regOreDic(OredicConfig.gems[30], new ItemStack(MainInit.gems_blue, 1, 5));
+		OredicConfig.regOreDic(OredicConfig.gems[5], new ItemStack(MainInit.gems_green, 1, 0));
+		OredicConfig.regOreDic(OredicConfig.gems[13], new ItemStack(MainInit.gems_green, 1, 1));
+		OredicConfig.regOreDic(OredicConfig.gems[19], new ItemStack(MainInit.gems_green, 1, 2));
+		OredicConfig.regOreDic(OredicConfig.gems[12], new ItemStack(MainInit.gems_green, 1, 3));
+		OredicConfig.regOreDic(OredicConfig.gems[31], new ItemStack(MainInit.gems_green, 1, 4));
+		OredicConfig.regOreDic(OredicConfig.gems[32], new ItemStack(MainInit.gems_green, 1, 5));
+		OredicConfig.regOreDic(OredicConfig.gems[2], new ItemStack(MainInit.gems_white, 1, 0));
+		OredicConfig.regOreDic(OredicConfig.gems[15], new ItemStack(MainInit.gems_white, 1, 1));
+		OredicConfig.regOreDic(OredicConfig.gems[6], new ItemStack(MainInit.gems_white, 1, 2));
+		OredicConfig.regOreDic(OredicConfig.gems[33], new ItemStack(MainInit.gems_white, 1, 3));
+		OredicConfig.regOreDic(OredicConfig.gems[24], new ItemStack(MainInit.gems_white, 1, 4));
+		OredicConfig.regOreDic(OredicConfig.gems[34], new ItemStack(MainInit.gems_white, 1, 5));
+		OredicConfig.regOreDic(OredicConfig.gems[23], new ItemStack(MainInit.gems_black, 1, 0));
+		OredicConfig.regOreDic(OredicConfig.gems[11], new ItemStack(MainInit.gems_black, 1, 1));
+		OredicConfig.regOreDic(OredicConfig.gems[22], new ItemStack(MainInit.gems_black, 1, 2));
+		OredicConfig.regOreDic(OredicConfig.gems[35], new ItemStack(MainInit.gems_black, 1, 3));
+		OredicConfig.regOreDic(OredicConfig.gems[36], new ItemStack(MainInit.gems_black, 1, 4));
+		OredicConfig.regOreDic(OredicConfig.gems[7], new ItemStack(MainInit.gems_black, 1, 5));
+		OredicConfig.regOreDic(OredicConfig.gems[3], new ItemStack(MainInit.gems_layer, 1, 0));
+		OredicConfig.regOreDic(OredicConfig.gems[8], new ItemStack(MainInit.gems_layer, 1, 1));
+		OredicConfig.regOreDic(OredicConfig.gems[9], new ItemStack(MainInit.gems_layer, 1, 2));
+		OredicConfig.regOreDic(OredicConfig.gems[10], new ItemStack(MainInit.gems_layer, 1, 3));
+		OredicConfig.regOreDic(OredicConfig.gems[16], new ItemStack(MainInit.gems_layer, 1, 4));
+		OredicConfig.regOreDic(OredicConfig.gems[17], new ItemStack(MainInit.gems_layer, 1, 5));
+		OredicConfig.regOreDic(OredicConfig.gems[18], new ItemStack(MainInit.gems_layer, 1, 6));
 
 		OredicConfig.regOreDic(OredicConfig.gemb[0], new ItemStack(MainInit.gemBlock, 1, 0));
 		OredicConfig.regOreDic(OredicConfig.gemb[1], new ItemStack(MainInit.gemBlock, 1, 1));
@@ -244,6 +266,10 @@ public class OreDicRegister {
 		OreDictionary.registerOre("patternWear", new ItemStack(MainInit.patternPaper, 1, 8));
 
 		OreDictionary.registerOre("blockGlass", new ItemStack(MainInit.syntheticBlock, 1, 32767));
+
+		OreDictionary.registerOre("blockSkarn", new ItemStack(MainInit.skarnBlock, 1, 0));
+		OreDictionary.registerOre("blockHornfels", new ItemStack(MainInit.skarnBlock, 1, 1));
+		OreDictionary.registerOre("blockGreisen", new ItemStack(MainInit.skarnBlock, 1, 2));
 
 		// tool
 		OreDictionary.registerOre("toolNormalYagen", new ItemStack(MainInit.stoneYagen, 1, 32767));
@@ -351,6 +377,33 @@ public class OreDicRegister {
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.builds, 1, 6));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 2));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.miscCont, 1, 3));
+
+		// old
+		OredicConfig.regOreDic(OredicConfig.gems[0], new ItemStack(MainInit.gems, 1, 0));
+		OredicConfig.regOreDic(OredicConfig.gems[1], new ItemStack(MainInit.gems, 1, 1));
+		OredicConfig.regOreDic(OredicConfig.gems[2], new ItemStack(MainInit.gems, 1, 2));
+		OredicConfig.regOreDic(OredicConfig.gems[3], new ItemStack(MainInit.gems, 1, 3));
+		OredicConfig.regOreDic(OredicConfig.gems[4], new ItemStack(MainInit.gems, 1, 4));
+		OredicConfig.regOreDic(OredicConfig.gems[5], new ItemStack(MainInit.gems, 1, 5));
+		OredicConfig.regOreDic(OredicConfig.gems[6], new ItemStack(MainInit.gems, 1, 6));
+		OredicConfig.regOreDic(OredicConfig.gems[7], new ItemStack(MainInit.gems, 1, 7));
+		OredicConfig.regOreDic(OredicConfig.gems[8], new ItemStack(MainInit.gems, 1, 8));
+		OredicConfig.regOreDic(OredicConfig.gems[9], new ItemStack(MainInit.gems, 1, 9));
+		OredicConfig.regOreDic(OredicConfig.gems[10], new ItemStack(MainInit.gems, 1, 10));
+		OredicConfig.regOreDic(OredicConfig.gems[11], new ItemStack(MainInit.gems, 1, 11));
+		OredicConfig.regOreDic(OredicConfig.gems[12], new ItemStack(MainInit.gems, 1, 12));
+		OredicConfig.regOreDic(OredicConfig.gems[13], new ItemStack(MainInit.gems, 1, 13));
+		OredicConfig.regOreDic(OredicConfig.gems[14], new ItemStack(MainInit.gems, 1, 14));
+		OredicConfig.regOreDic(OredicConfig.gems[15], new ItemStack(MainInit.gems, 1, 15));
+		OredicConfig.regOreDic(OredicConfig.gems[16], new ItemStack(MainInit.gems, 1, 16));
+		OredicConfig.regOreDic(OredicConfig.gems[17], new ItemStack(MainInit.gems, 1, 17));
+		OredicConfig.regOreDic(OredicConfig.gems[18], new ItemStack(MainInit.gems, 1, 18));
+		OredicConfig.regOreDic(OredicConfig.gems[19], new ItemStack(MainInit.gems, 1, 19));
+		OredicConfig.regOreDic(OredicConfig.gems[20], new ItemStack(MainInit.gems, 1, 20));
+		OredicConfig.regOreDic(OredicConfig.gems[21], new ItemStack(MainInit.gems, 1, 21));
+		OredicConfig.regOreDic(OredicConfig.gems[22], new ItemStack(MainInit.gems, 1, 22));
+		OredicConfig.regOreDic(OredicConfig.gems[23], new ItemStack(MainInit.gems, 1, 23));
+		OredicConfig.regOreDic(OredicConfig.gems[24], new ItemStack(MainInit.gems, 1, 24));
 
 		// deprecated
 		if (!ModuleConfig.delete_old) {

@@ -4,11 +4,13 @@ import defeatedcrow.hac.api.cultivate.CropAPI;
 import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.core.recipe.ConvertTargetList;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.item.brewing.DispenseChickInEgg;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.api.brewing.IMicrobe;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
@@ -218,6 +220,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("brothGrow", new ItemStack(FoodInit.broth, 1, 1));
 		OreDictionary.registerOre("foodKoji", new ItemStack(FoodInit.inoculum, 1, 0));
 		OreDictionary.registerOre("dustMana", new ItemStack(FoodInit.antibiotic, 1, 7));
+		OreDictionary.registerOre("dyeBlue", new ItemStack(FoodInit.cyano, 1, 2));
 
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 1));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 3));
@@ -268,6 +271,8 @@ public class FoodRecipes {
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.bacillus);
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.coliformes);
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.lab);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.skin);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.cyano);
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.beerYeast);
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.oryzae);
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.nether);
@@ -275,6 +280,7 @@ public class FoodRecipes {
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.slimeMold);
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.mushroom);
 
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(FoodInit.chickInEgg, DispenseChickInEgg.getInstance());
 	}
 
 }

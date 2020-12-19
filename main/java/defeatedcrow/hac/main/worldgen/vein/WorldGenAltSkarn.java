@@ -178,8 +178,8 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 			else
 				return new OreSetDC(100, MARBLE, false);
 		} else {
-			VeinTable table = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN);
-			VeinTable table2 = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN_UNDER);
+			VeinTable table = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN_IRON);
+			VeinTable table2 = VeinTableRegister.INSTANCE.getTable(EnumVein.SKARN_COPPER);
 			if (table == null || table2 == null) {
 				return new OreSetDC(100, MARBLE);
 			}

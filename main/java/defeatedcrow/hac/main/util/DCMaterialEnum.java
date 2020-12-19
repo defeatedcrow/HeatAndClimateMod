@@ -37,10 +37,10 @@ public enum DCMaterialEnum {
 			5), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F),
 	// ピーキー性能
 	CHALCEDONY(9, "chalcedony", 8.0F, new int[] { 6, 12, 7, 6 }, 4, 36, 12.0F, 25, 1.0F, 1.0F, new ItemStack(
-			MainInit.gems, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F),
+			MainInit.gems_white, 1, 0), SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F),
 	// 黒曜石が掘れないだけのダイヤ
-	SAPPHIRE(10, "sapphire", 3.0F, new int[] { 3, 8, 6, 3 }, 2, 1280, 7.0F, 18, 1.0F, 1.0F, new ItemStack(MainInit.gems,
-			1, 4), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F),
+	SAPPHIRE(10, "sapphire", 3.0F, new int[] { 3, 8, 6, 3 }, 2, 1280, 7.0F, 18, 1.0F, 1.0F, new ItemStack(
+			MainInit.gems_blue, 1, 1), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F),
 	// 防御と耐久特化
 	TITANIUM(11, "titanium", 8.0F, new int[] { 7, 12, 10, 6 }, 4, 2400, 8.0F, 5, 0F, 0F, new ItemStack(
 			MainInit.oreIngot, 1, 11), SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
@@ -48,8 +48,8 @@ public enum DCMaterialEnum {
 	SYNTHETIC(12, "synthetic", 3.0F, new int[] { 3, 5, 4, 2 }, 1, 240, 3.0F, 15, 3.0F, 1.0F, new ItemStack(
 			MachineInit.synthetic, 1, 1), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),
 	// ほぼ真鍮と同程度
-	GARNET(13, "garnet", 2.0F, new int[] { 3, 6, 5, 2 }, 2, 540, 6.0F, 18, 0.5F, 0.5F, new ItemStack(MainInit.gems, 1,
-			14), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F),
+	GARNET(13, "garnet", 2.0F, new int[] { 3, 6, 5, 2 }, 2, 540, 6.0F, 18, 0.5F, 0.5F, new ItemStack(MainInit.gems_red,
+			1, 1), SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.0F),
 	// 防寒着
 	WOOL(14, "wool", 3.0F, new int[] { 1, 2, 2, 1 }, 1, 64, 0.0F, 10, 1.0F, 3.0F, new ItemStack(Blocks.WOOL, 1,
 			0), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F),

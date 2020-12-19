@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "XX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_layer_skarn",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_bricks",
+  "count": 4,
+  "data": 6
+ }
+}

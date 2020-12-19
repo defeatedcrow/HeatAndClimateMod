@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "  X",
+  " XX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_layer_skarn",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_stairs_skarn",
+  "count": 4,
+  "data": 0
+ }
+}

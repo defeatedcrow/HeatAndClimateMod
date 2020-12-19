@@ -124,6 +124,34 @@ public class LoadingBuildingRecipe {
 			'X',
 			new ItemStack(MainInit.builds, 1, 7) });
 
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsSkarn, 4, 0), new Object[] {
+			"X  ",
+			"XX ",
+			"XXX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 0) });
+
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.stairsSkarn, 4, 0), new Object[] {
+			"  X",
+			" XX",
+			"XXX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 0) });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.stairsGreisen, 4, 0), new Object[] {
+			"X  ",
+			"XX ",
+			"XXX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 2) });
+
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.stairsGreisen, 4, 0), new Object[] {
+			"  X",
+			" XX",
+			"XXX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 2) });
+
 		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.halfSlab, 6, 1), new Object[] {
 			"XXX",
 			'X',
@@ -153,6 +181,16 @@ public class LoadingBuildingRecipe {
 			"XXX",
 			'X',
 			new ItemStack(MainInit.builds, 1, 7) });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.halfSlab, 6, 6), new Object[] {
+			"XXX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 0) });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.halfSlab, 6, 7), new Object[] {
+			"XXX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 2) });
 
 		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.halfSlab2, 6, 0), new Object[] {
 			"XXX",
@@ -236,6 +274,30 @@ public class LoadingBuildingRecipe {
 			"XX",
 			'X',
 			new ItemStack(MainInit.gemBlock, 1, 12) });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.bricks, 4, 4), new Object[] {
+			"XX",
+			"XX",
+			'X',
+			new ItemStack(MainInit.gemBlock, 1, 5) });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.bricks, 4, 5), new Object[] {
+			"XX",
+			"XX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 0) });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.bricks, 4, 6), new Object[] {
+			"XX",
+			"XX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 1) });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.bricks, 4, 7), new Object[] {
+			"XX",
+			"XX",
+			'X',
+			new ItemStack(MainInit.skarnBlock, 1, 2) });
 
 		DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.builds, 1, 0), new Object[] {
 			"dustLime",
@@ -658,6 +720,18 @@ public class LoadingBuildingRecipe {
 				'X',
 				"blockMarble" });
 
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.squaretableSkarn, 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				'X',
+				"blockSkarn" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.squaretableGreisen, 1, 0), new Object[] {
+				"XXX",
+				"X X",
+				'X',
+				"blockGreisen" });
+
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.squaretableChecker, 1, 0), new Object[] {
 				"XXX",
 				"X X",
@@ -772,6 +846,24 @@ public class LoadingBuildingRecipe {
 				'Y',
 				"itemCloth" });
 
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chairSkarn, 1, 0), new Object[] {
+				"  X",
+				"XYX",
+				"X X",
+				'X',
+				"blockSkarn",
+				'Y',
+				"itemCloth" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chairGreisen, 1, 0), new Object[] {
+				"  X",
+				"XYX",
+				"X X",
+				'X',
+				"blockGreisen",
+				'Y',
+				"itemCloth" });
+
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chairChecker, 1, 0), new Object[] {
 				"  X",
 				"XYX",
@@ -805,6 +897,24 @@ public class LoadingBuildingRecipe {
 				"XXX",
 				'X',
 				"blockMarble",
+				'Y',
+				new ItemStack(Blocks.CHEST, 1, 0) });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chestSkarn, 1, 0), new Object[] {
+				"XXX",
+				" Y ",
+				"XXX",
+				'X',
+				"blockSkarn",
+				'Y',
+				new ItemStack(Blocks.CHEST, 1, 0) });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.chestGreisen, 1, 0), new Object[] {
+				"XXX",
+				" Y ",
+				"XXX",
+				'X',
+				"blockGreisen",
 				'Y',
 				new ItemStack(Blocks.CHEST, 1, 0) });
 
@@ -850,6 +960,24 @@ public class LoadingBuildingRecipe {
 				"X X",
 				'X',
 				"blockMarble",
+				'Y',
+				new ItemStack(Blocks.CHEST, 1, 0) });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.wallshelfSkarn, 1, 0), new Object[] {
+				"X X",
+				"XYX",
+				"X X",
+				'X',
+				"blockSkarn",
+				'Y',
+				new ItemStack(Blocks.CHEST, 1, 0) });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.wallshelfGreisen, 1, 0), new Object[] {
+				"X X",
+				"XYX",
+				"X X",
+				'X',
+				"blockGreisen",
 				'Y',
 				new ItemStack(Blocks.CHEST, 1, 0) });
 

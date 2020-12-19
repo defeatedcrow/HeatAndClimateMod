@@ -57,24 +57,7 @@ public class BlockOres extends DCSimpleBlock {
 		return harvestL[getMetaFromState(state)];
 	}
 
-	private int[] harvestL = new int[] {
-			1,
-			1,
-			1,
-			2,
-			2,
-			2,
-			2,
-			2,
-			2,
-			3,
-			3,
-			3,
-			3,
-			3,
-			3,
-			3
-	};
+	private int[] harvestL = new int[] { 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3 };
 
 	/* Drop Itemの管理 */
 
@@ -123,11 +106,11 @@ public class BlockOres extends DCSimpleBlock {
 	}
 
 	public enum DropTable {
-		GYPSUM(MainInit.gems, 2, 3, true),
-		HEMATITE(MainInit.oreDust, 1, 5, true),
-		CHAL_B(MainInit.gems, 1, 0, true),
-		SAPPIRE(MainInit.gems, 1, 4, true),
-		CHAL_W(MainInit.gems, 1, 2, true),
+		GYPSUM(MainInit.gems_layer, 2, 0, true),
+		HEMATITE(MainInit.oreDust, 2, 5, true),
+		CHAL_B(MainInit.gems_blue, 1, 0, true),
+		SAPPIRE(MainInit.gems_blue, 1, 1, true),
+		CHAL_W(MainInit.gems_white, 1, 0, true),
 		CRYSTAL(Items.QUARTZ, 1, 0, true),
 		DIAMOND(Items.DIAMOND, 1, 0, true),
 		EMERALD(Items.EMERALD, 1, 0, true),
@@ -148,23 +131,22 @@ public class BlockOres extends DCSimpleBlock {
 
 	private DropTable getTable(int meta) {
 		DropTable[] table = {
-				DropTable.GYPSUM,
-				DropTable.HEMATITE,
-				DropTable.CHAL_B,
-				DropTable.SAPPIRE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.CHAL_W,
-				DropTable.CRYSTAL,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.DIAMOND,
-				DropTable.EMERALD,
-				DropTable.NONE
-		};
+			DropTable.GYPSUM,
+			DropTable.HEMATITE,
+			DropTable.CHAL_B,
+			DropTable.SAPPIRE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.CHAL_W,
+			DropTable.CRYSTAL,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.DIAMOND,
+			DropTable.EMERALD,
+			DropTable.NONE };
 		if (meta < 16)
 			return table[meta];
 		return DropTable.NONE;
@@ -182,10 +164,11 @@ public class BlockOres extends DCSimpleBlock {
 		if (rand.nextInt(50) < par) {
 			switch (meta) {
 			case 0:
-				add = rand.nextInt(2) == 0 ? new ItemStack(MainInit.gems, 1, 7) : new ItemStack(MainInit.gems, 1, 6);
+				add = rand.nextInt(2) == 0 ? new ItemStack(MainInit.gems_black, 1, 5) : new ItemStack(
+						MainInit.gems_white, 1, 5);
 				break;
 			case 6:
-				add = new ItemStack(MainInit.gems, 1, 5);
+				add = new ItemStack(MainInit.gems_green, 1, 0);
 			}
 		}
 

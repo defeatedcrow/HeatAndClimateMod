@@ -1,0 +1,119 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_food_microbe_yeast"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.food_bio2.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.food_bio2.description"
+    }
+  },
+  "parent": "dcs_climate:food_incubator",
+  "criteria": {
+        "dcs_bio1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_bacillus"
+                    }
+                ]
+            }
+        },
+        "dcs_bio2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_lab"
+                    }
+                ]
+            }
+        },
+        "dcs_bio3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_coliformes"
+                    }
+                ]
+            }
+        },
+        "dcs_bio4": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_yeast"
+                    }
+                ]
+            }
+        },
+        "dcs_bio5": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_oryzae"
+                    }
+                ]
+            }
+        },
+        "dcs_bio6": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_nether"
+                    }
+                ]
+            }
+        },
+        "dcs_bio7": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_blue"
+                    }
+                ]
+            }
+        },
+        "dcs_bio8": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_slime"
+                    }
+                ]
+            }
+        },
+        "dcs_bio9": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_microbe_mushroom"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "dcs_bio1",
+            "dcs_bio2",
+            "dcs_bio3",
+            "dcs_bio4",
+            "dcs_bio5",
+            "dcs_bio6",
+            "dcs_bio7",
+            "dcs_bio8",
+            "dcs_bio9"
+        ]
+    ]
+}

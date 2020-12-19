@@ -57,8 +57,7 @@ public class ItemPickaxeDC extends ItemPickaxe implements ITexturePath, IWideMin
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		if (isMangalloy) {
-			Map<Enchantment, Integer> map = Collections.singletonMap(Enchantments.SILK_TOUCH, 1);
-			EnchantmentHelper.setEnchantments(map, stack);
+			EnchantmentHelper.setEnchantments(FORTUNE, stack);
 		} else {
 			super.onCreated(stack, world, player);
 		}
@@ -68,8 +67,7 @@ public class ItemPickaxeDC extends ItemPickaxe implements ITexturePath, IWideMin
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (isMangalloy && this.isInCreativeTab(tab)) {
 			ItemStack ret = new ItemStack(this);
-			Map<Enchantment, Integer> map = Collections.singletonMap(Enchantments.SILK_TOUCH, 1);
-			EnchantmentHelper.setEnchantments(map, ret);
+			EnchantmentHelper.setEnchantments(FORTUNE, ret);
 			items.add(ret);
 		} else {
 			super.getSubItems(tab, items);
@@ -89,5 +87,7 @@ public class ItemPickaxeDC extends ItemPickaxe implements ITexturePath, IWideMin
 	public int getMiningRange(EntityPlayer player, ItemStack stack, int level) {
 		return isToolsteel ? 1 : 0;
 	}
+
+	public static final Map<Enchantment, Integer> FORTUNE = Collections.singletonMap(Enchantments.SILK_TOUCH, 1);
 
 }

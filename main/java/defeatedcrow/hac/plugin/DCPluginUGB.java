@@ -108,11 +108,12 @@ public class DCPluginUGB {
 			}
 			if (ModuleConfig.r_crusher) {
 
-				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems, 1,
-						14), 0.15F, new ItemStack(MainInit.gems, 1, 13), 0.05F, sc, "stoneEclogite");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems_red,
+						1, 1), 0.15F, new ItemStack(MainInit.gems_green, 1, 1), 0.05F, sc, "stoneEclogite");
 
-				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems, 1,
-						2), 0.2F, new ItemStack(Items.QUARTZ, 1, 0), 0.05F, sc, "stoneQuarzite");
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(
+						MainInit.gems_white, 1, 0), 0.2F, new ItemStack(Items.QUARTZ, 1,
+								0), 0.05F, sc, "stoneQuarzite");
 
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust,
 						1, 12), 0.3F, new ItemStack(MainInit.miscDust, 1, 11), 0.1F, ti, new ItemStack(met, 1, 4));
@@ -124,7 +125,7 @@ public class DCPluginUGB {
 
 		Block sed = Block.REGISTRY.getObject(new ResourceLocation("undergroundbiomes", "sedimentary_stone"));
 		if (sed != null) {
-			OreDictionary.registerOre("oreLime", new ItemStack(sed, 1, 0));
+			// OreDictionary.registerOre("oreLime", new ItemStack(sed, 1, 0));
 			OreDictionary.registerOre("stoneChalk", new ItemStack(sed, 1, 1));
 			OreDictionary.registerOre("stoneShele", new ItemStack(sed, 1, 2));
 			OreDictionary.registerOre("stoneSilt", new ItemStack(sed, 1, 3));
@@ -133,8 +134,8 @@ public class DCPluginUGB {
 			if (ModuleConfig.r_mill) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 2), "stoneChalk");
 
-				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems, 1,
-						23), 0.05F, "stoneShele");
+				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.gems_black,
+						1, 0), 0.05F, "stoneShele");
 
 				RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 1), new ItemStack(
 						Items.FLINT), 0.2F, "stoneChart");
@@ -145,10 +146,10 @@ public class DCPluginUGB {
 						1, 0), 0.1F, ti, "stoneChalk");
 
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 2), new ItemStack(
-						MainInit.gems, 1, 23), 1F, new ItemStack(Items.BONE, 1, 0), 0.1F, ti, "stoneShele");
+						MainInit.gems_black, 1, 0), 1F, new ItemStack(Items.BONE, 1, 0), 0.1F, ti, "stoneShele");
 
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 1), new ItemStack(
-						Items.FLINT), 0.5F, new ItemStack(MainInit.gems, 1, 2), 0.1F, ti, "stoneChart");
+						Items.FLINT), 0.5F, new ItemStack(MainInit.gems_white, 1, 0), 0.1F, ti, "stoneChart");
 			}
 		}
 

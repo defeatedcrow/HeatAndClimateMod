@@ -90,6 +90,23 @@ public class RegisterBrewingDC {
 		brewng(new ItemStack(FoodInit.yogurt, 3, 1), null, new FluidStack(MainInit.milk, 1000), new Object[] {
 			new ItemStack(FoodInit.lab, 1, 2) });
 
+		// skin
+
+		brewng(new ItemStack(FoodInit.antibiotic, 1, 8), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
+			"brothGrow",
+			new ItemStack(FoodInit.skin, 1, 1) });
+
+		brewng(new ItemStack(FoodInit.yogurt, 3, 0), null, new FluidStack(MainInit.milk, 1000), new Object[] {
+			new ItemStack(FoodInit.skin, 1, 2) });
+
+		// cyano
+
+		brewng(ItemStack.EMPTY, new FluidStack(MainInit.oxygen, 200), new FluidStack(FluidRegistry.WATER,
+				1000), new Object[] { "brothGrow", new ItemStack(FoodInit.cyano, 1, 0) });
+
+		brewng(new ItemStack(FoodInit.seeds, 1, 8), new FluidStack(MainInit.oxygen, 200), new FluidStack(
+				FluidRegistry.WATER, 1000), new Object[] { "brothGrow", new ItemStack(FoodInit.cyano, 1, 1) });
+
 		// yeast
 
 		brewng(new ItemStack(FoodInit.residue, 1, 4), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
@@ -218,6 +235,18 @@ public class RegisterBrewingDC {
 		increace(new ItemStack(FoodInit.lab, 1, 1));
 
 		increace(new ItemStack(FoodInit.lab, 1, 2));
+
+		increace(new ItemStack(FoodInit.skin, 1, 0));
+
+		increace(new ItemStack(FoodInit.skin, 1, 1));
+
+		increace(new ItemStack(FoodInit.skin, 1, 2));
+
+		increace(new ItemStack(FoodInit.cyano, 1, 0));
+
+		increace(new ItemStack(FoodInit.cyano, 1, 1));
+
+		increace(new ItemStack(FoodInit.cyano, 1, 2));
 
 		increace(new ItemStack(FoodInit.beerYeast, 1, 0));
 

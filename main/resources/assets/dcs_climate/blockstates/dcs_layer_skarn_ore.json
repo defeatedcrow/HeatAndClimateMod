@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "type=0": { "model": "dcs_climate:ores/dcs_layer_skarn_ore0" },
+        "type=1": { "model": "dcs_climate:ores/dcs_layer_skarn_ore1" },
+        "type=2": { "model": "dcs_climate:ores/dcs_layer_skarn_ore2" },
+        "type=3": { "model": "dcs_climate:ores/dcs_layer_skarn_ore3" },
+        "type=4": { "model": "dcs_climate:ores/dcs_layer_skarn_ore4" },
+        "type=5": { "model": "dcs_climate:ores/dcs_layer_skarn_ore5" },
+        "type=6": { "model": "dcs_climate:ores/dcs_layer_skarn_ore6" },
+        "type=7": { "model": "dcs_climate:ores/dcs_layer_skarn_ore7" },
+        "type=8": { "model": "dcs_climate:ores/dcs_layer_skarn_ore8" },
+        "type=9": { "model": "dcs_climate:ores/dcs_layer_skarn_ore8" },
+        "type=10": { "model": "dcs_climate:ores/dcs_layer_skarn_ore8" },
+        "type=11": { "model": "dcs_climate:ores/dcs_layer_skarn_ore8" },
+        "type=12": { "model": "dcs_climate:ores/dcs_layer_skarn_ore8" },
+        "type=13": { "model": "dcs_climate:ores/dcs_layer_skarn_ore8" },
+        "type=14": { "model": "dcs_climate:ores/dcs_layer_skarn_ore8" },
+        "type=15": { "model": "dcs_climate:ores/dcs_layer_skarn_ore8" }
+    }
+}

@@ -186,9 +186,9 @@ public class OreGenPos {
 			return WorldGenConfig.radGen[4];
 		case GUANO:
 			return WorldGenConfig.radGen[5];
-		case SKARN:
+		case SKARN_IRON:
 			return vein.range;
-		case SKARN_UNDER:
+		case SKARN_COPPER:
 			return vein.range;
 		case NETHER:
 			return vein.range;

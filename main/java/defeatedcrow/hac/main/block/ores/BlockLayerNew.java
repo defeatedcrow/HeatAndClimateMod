@@ -13,9 +13,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -90,6 +92,20 @@ public class BlockLayerNew extends DCSimpleBlock implements ITexturePath {
 	}
 
 	@Override
+	public void getDrops(NonNullList<ItemStack> list, IBlockAccess world, BlockPos pos, IBlockState state,
+			int fortune) {
+		super.getDrops(list, world, pos, state, fortune);
+		int meta = this.getMetaFromState(state);
+		Random rand = world instanceof World ? ((World) world).rand : new Random();
+		DropTable table = getTable(meta);
+
+		int par = 15 + fortune * 5;
+		if (rand.nextInt(100) < par && table.secondary != null) {
+			list.add(new ItemStack(table.secondary, 1, table.secondaryMeta));
+		}
+	}
+
+	@Override
 	public int damageDropped(IBlockState state) {
 		int meta = this.getMetaFromState(state);
 		DropTable table = getTable(meta);
@@ -101,13 +117,13 @@ public class BlockLayerNew extends DCSimpleBlock implements ITexturePath {
 	}
 
 	public enum DropTable {
-		GYPSUM(MainInit.gems, 3, MainInit.gems, 3, true),
-		LIME(MainInit.gems, 0, MainInit.gems, 0, false),
-		GUANO(MainInit.gems, 18, MainInit.gems, 18, true),
-		NITER(MainInit.gems, 9, MainInit.gems, 9, true),
-		SULFUR(MainInit.gems, 10, MainInit.gems, 10, true),
-		SALT(MainInit.gems, 8, MainInit.gems, 8, true),
-		SERPENTINE(MainInit.gems, 12, MainInit.gems, 12, true),
+		GYPSUM(MainInit.gems_layer, 0, MainInit.gems_layer, 0, true),
+		LIME(MainInit.gems_layer, 0, MainInit.gems_layer, 0, false),
+		GUANO(MainInit.gems_layer, 6, MainInit.gems_blue, 3, true),
+		NITER(MainInit.gems_layer, 2, MainInit.gems_layer, 2, true),
+		SULFUR(MainInit.gems_layer, 3, MainInit.gems_layer, 3, true),
+		SALT(MainInit.gems_layer, 1, MainInit.gems_layer, 1, true),
+		SERPENTINE(MainInit.gems_green, 3, MainInit.gems_green, 1, true),
 		NONE(null, 0, null, 0, false);
 
 		public Item dropItem;

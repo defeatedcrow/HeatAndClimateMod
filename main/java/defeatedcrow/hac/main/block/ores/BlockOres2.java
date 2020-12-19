@@ -60,24 +60,7 @@ public class BlockOres2 extends DCSimpleBlock {
 		return harvestL[getMetaFromState(state)];
 	}
 
-	private int[] harvestL = new int[] {
-			1,
-			1,
-			2,
-			2,
-			2,
-			3,
-			2,
-			2,
-			2,
-			2,
-			1,
-			3,
-			0,
-			0,
-			0,
-			0
-	};
+	private int[] harvestL = new int[] { 1, 1, 2, 2, 2, 3, 2, 2, 2, 2, 1, 3, 0, 0, 0, 0 };
 
 	/* Drop Itemの管理 */
 
@@ -126,15 +109,15 @@ public class BlockOres2 extends DCSimpleBlock {
 	}
 
 	public enum DropTable {
-		SALT(MainInit.gems, 1, 8, true),
-		NITER(MainInit.gems, 1, 9, true),
-		SULFER(MainInit.gems, 1, 10, true),
-		SCHORL(MainInit.gems, 1, 11, true),
-		SERPENTINE(MainInit.gems, 2, 12, true),
-		OLIVINE(MainInit.gems, 1, 13, true),
-		ALMANDINE(MainInit.gems, 1, 14, true),
-		RUTILE(MainInit.gems, 1, 15, true),
-		BAUXITE(MainInit.gems, 2, 16, true),
+		SALT(MainInit.gems_layer, 1, 1, true),
+		NITER(MainInit.gems_layer, 1, 2, true),
+		SULFER(MainInit.gems_layer, 1, 3, true),
+		SCHORL(MainInit.gems_black, 1, 1, true),
+		SERPENTINE(MainInit.gems_layer, 2, 3, true),
+		OLIVINE(MainInit.gems_green, 1, 1, true),
+		ALMANDINE(MainInit.gems_red, 1, 1, true),
+		RUTILE(MainInit.gems_white, 1, 1, true),
+		BAUXITE(MainInit.gems_layer, 2, 4, true),
 		NONE(null, 1, 0, false);
 
 		public Item dropItem;
@@ -152,23 +135,22 @@ public class BlockOres2 extends DCSimpleBlock {
 
 	private DropTable getTable(int meta) {
 		DropTable[] table = {
-				DropTable.NONE,
-				DropTable.SALT,
-				DropTable.NITER,
-				DropTable.SULFER,
-				DropTable.NONE,
-				DropTable.SCHORL,
-				DropTable.SERPENTINE,
-				DropTable.ALMANDINE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.BAUXITE,
-				DropTable.RUTILE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE,
-				DropTable.NONE
-		};
+			DropTable.NONE,
+			DropTable.SALT,
+			DropTable.NITER,
+			DropTable.SULFER,
+			DropTable.NONE,
+			DropTable.SCHORL,
+			DropTable.SERPENTINE,
+			DropTable.ALMANDINE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.BAUXITE,
+			DropTable.RUTILE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE,
+			DropTable.NONE };
 		if (meta < 16)
 			return table[meta];
 		return DropTable.NONE;
@@ -186,15 +168,15 @@ public class BlockOres2 extends DCSimpleBlock {
 		int par = 3 + fortune * 3;
 		if (rand.nextInt(100) < par) {
 			if (meta == 6)
-				add = new ItemStack(MainInit.gems, 1, 13);
+				add = new ItemStack(MainInit.gems_green, 1, 2);
 			else if (meta == 7) {
 				if (biome.getRainfall() > 0.8F || BiomeDictionary.hasType(biome, BiomeDictionary.Type.WET)) {
-					add = new ItemStack(MainInit.gems, 1, 19);
+					add = new ItemStack(MainInit.gems_green, 1, 4);
 				} else {
-					add = new ItemStack(MainInit.gems, 1, 20);
+					add = new ItemStack(MainInit.gems_blue, 1, 3);
 				}
 			} else if (meta == 11)
-				add = new ItemStack(MainInit.gems, 1, 21);
+				add = new ItemStack(MainInit.gems_red, 1, 3);
 		}
 
 		if (!DCUtil.isEmpty(add)) {

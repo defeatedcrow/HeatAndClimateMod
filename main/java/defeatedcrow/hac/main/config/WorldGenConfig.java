@@ -27,7 +27,7 @@ public class WorldGenConfig {
 
 	public static int[] radGen = new int[] { 5, 4, 5, 4, 3, 4 };
 
-	public static int skarnGen = 50;
+	public static int skarnGen = 30;
 
 	public static int windmillGen = 50;
 
@@ -38,6 +38,8 @@ public class WorldGenConfig {
 	public static int hotspringGen = 100;
 
 	public static boolean mazaiLake = true;
+
+	public static boolean skarnDupeCheck = true;
 
 	public static String geyserGas = "dcs.steam";
 	public static Fluid geyserProduct;
@@ -84,7 +86,7 @@ public class WorldGenConfig {
 			Property geode_rad = cfg.get("ore gen setting", "Geode Gen Radius", radGen[5], "Default radius: 4");
 
 			Property skarn_ore = cfg
-					.get("ore gen setting", "Skarn Gen Probability", skarnGen, "Generate in Forest. 0.00-100.00% (default: 0.5%)");
+					.get("ore gen setting", "Skarn Gen Probability", skarnGen, "Generate in Forest. 0.00-100.00% (default: 0.3%)");
 
 			Property windmill = cfg
 					.get("world setting", "Windmill Gen Probability", windmillGen, "Generate in Forest or Plain. 0.00-100.00% (default: 0.5%)");
@@ -106,6 +108,9 @@ public class WorldGenConfig {
 
 			Property geyser_gas = cfg
 					.get("world setting", "Fumarole Gas Settng", geyserGas, "Set the fluid provided by the fumarole. (It must be gas.)");
+
+			Property skarn_check = cfg
+					.get("world setting", "Skarn Dupe Check", skarnDupeCheck, "Limits skarn generation chunks within a 16x16 chunk partition.");
 
 			int s = sed_ore.getInt();
 			if (s < 0 || s > 100) {
@@ -203,6 +208,7 @@ public class WorldGenConfig {
 			saplingGen = sp;
 			hotspringGen = hs;
 			geyserGas = geyser_gas.getString();
+			skarnDupeCheck = skarn_check.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

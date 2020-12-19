@@ -56,18 +56,27 @@ public class RegisterMillRecipe {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 14), "oreManganese");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 2, 15), "oreMolybdenum");
 
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 0), "oreChalcedonyBlue");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 2), "oreChalcedonyWhite");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 3, 3), "oreGypsum");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 4), "oreSapphire");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 3, 8), "oreSalt");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 9), "oreNiter");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 10), "oreSulfur");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 11), "oreSchorl");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 4, 12), "oreSerpentine");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems, 2, 14), "oreGarnet");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 2, 7), new ItemStack(MainInit.gems, 1,
-				3), 0.5F, "oreTravertine");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_blue, 2, 0), "oreChalcedonyBlue");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_white, 2, 0), "oreChalcedonyWhite");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_layer, 3, 0), "oreGypsum");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_blue, 2, 1), "oreSapphire");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_layer, 3, 1), "oreSalt");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_layer, 2, 2), "oreNiter");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_layer, 2, 3), "oreSulfur");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_black, 2, 1), "oreSchorl");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_green, 4, 3), "oreSerpentine");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_red, 2, 1), "oreGarnet");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 2, 7), new ItemStack(MainInit.gems_layer, 1,
+				0), 0.5F, "oreTravertine");
+
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_red, 2, 5), "oreRuby");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_blue, 2, 5), "oreAquamarine");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_white, 2, 3), "oreSakura");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_black, 2, 3), "oreIolite");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_white, 2, 5), "oreTopaz");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_red, 2, 3), "oreAmethyst");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_blue, 2, 4), "orelarimar");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_green, 2, 4), "oreFluorite");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 3, 2), "oreLime");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 2, 9), "oreApatite");
@@ -101,6 +110,8 @@ public class RegisterMillRecipe {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 11), "gemSerpentine");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(Items.DYE, 1, EnumDyeColor.GREEN
 				.getDyeDamage()), "gemMalachite");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 9), "gemVivianite");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 1, 12), "gemSakura");
 
 		// ingot粉砕
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.oreDust, 1, 0), "ingotCopper");

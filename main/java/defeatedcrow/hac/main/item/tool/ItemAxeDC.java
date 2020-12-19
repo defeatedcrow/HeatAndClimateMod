@@ -1,8 +1,6 @@
 package defeatedcrow.hac.main.item.tool;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.main.api.IWideMining;
@@ -10,10 +8,8 @@ import defeatedcrow.hac.main.util.DCToolMaterial;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -62,8 +58,7 @@ public class ItemAxeDC extends ItemAxe implements ITexturePath, IWideMining {
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		if (isMangalloy) {
-			Map<Enchantment, Integer> map = Collections.singletonMap(Enchantments.SILK_TOUCH, 1);
-			EnchantmentHelper.setEnchantments(map, stack);
+			EnchantmentHelper.setEnchantments(ItemPickaxeDC.FORTUNE, stack);
 		} else {
 			super.onCreated(stack, world, player);
 		}
@@ -73,8 +68,7 @@ public class ItemAxeDC extends ItemAxe implements ITexturePath, IWideMining {
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (isMangalloy && this.isInCreativeTab(tab)) {
 			ItemStack ret = new ItemStack(this);
-			Map<Enchantment, Integer> map = Collections.singletonMap(Enchantments.SILK_TOUCH, 1);
-			EnchantmentHelper.setEnchantments(map, ret);
+			EnchantmentHelper.setEnchantments(ItemPickaxeDC.FORTUNE, ret);
 			items.add(ret);
 		} else {
 			super.getSubItems(tab, items);

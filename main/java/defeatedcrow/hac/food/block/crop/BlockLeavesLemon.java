@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.base.ClimateCropBase;
@@ -316,6 +317,28 @@ public class BlockLeavesLemon extends ClimateCropBase implements ITexturePath, I
 		List<DCHumidity> ret = new ArrayList<DCHumidity>();
 		ret.add(DCHumidity.DRY);
 		ret.add(DCHumidity.NORMAL);
+		return ret;
+	}
+
+	@Override
+	public List<DCHeatTier> getHardmodeTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.NORMAL);
+		return ret;
+	}
+
+	@Override
+	public List<DCHumidity> getHardmodeHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.NORMAL);
+		return ret;
+	}
+
+	@Override
+	public List<DCAirflow> getHardmodeAir(IBlockState thisState) {
+		List<DCAirflow> ret = new ArrayList<DCAirflow>();
+		ret.add(DCAirflow.NORMAL);
+		ret.add(DCAirflow.FLOW);
 		return ret;
 	}
 

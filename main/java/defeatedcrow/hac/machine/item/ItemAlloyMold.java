@@ -136,8 +136,8 @@ public class ItemAlloyMold extends DCItem implements IPressMold {
 				list.add(new ItemStack(MainInit.oreIngot, 4, 14));
 				list.add(new ItemStack(MainInit.oreIngot, 4, 11));
 			} else if (mold.getItemDamage() == 6) {
-				list.add(new ItemStack(MainInit.gems, 1, 17));
-				list.add(new ItemStack(MainInit.gems, 1, 24));
+				list.add(new ItemStack(MainInit.gems_layer, 1, 5));
+				list.add(new ItemStack(MainInit.gems_white, 1, 4));
 				list.add(new ItemStack(MainInit.oreIngot, 1, 15));
 			} else if (mold.getItemDamage() == 7) {
 				list.add(new ItemStack(MainInit.oreIngot, 1, 17));

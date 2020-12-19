@@ -91,26 +91,40 @@ public class MainUtil {
 		return new ItemStack(MainInit.oreIngot, 1, meta);
 	}
 
-	public static ItemStack getGem(int meta) {
-		if (meta < 0)
-			meta = 0;
-		if (meta > 22)
-			meta = 22;
-		return new ItemStack(MainInit.gems, 1, meta);
+	public static ItemStack getGem(Item gem, int meta) {
+		return new ItemStack(gem, 1, meta);
 	}
 
 	public static ItemStack getRandomGem(int i) {
-		int meta = DCUtil.rand.nextInt(23);
-		if (meta == 7)
-			meta = 4;
-		return new ItemStack(MainInit.gems, i, meta);
+		int meta = DCUtil.rand.nextInt(27);
+		if (meta < 4) {
+			return new ItemStack(MainInit.gems_red, i, meta);
+		}
+		if (meta < 9) {
+			int m = meta - 4;
+			return new ItemStack(MainInit.gems_green, i, m);
+		}
+		if (meta < 15) {
+			int m = meta - 9;
+			return new ItemStack(MainInit.gems_blue, i, m);
+		}
+		if (meta < 21) {
+			int m = meta - 15;
+			return new ItemStack(MainInit.gems_white, i, m);
+		}
+		if (meta < 27) {
+			int m = meta - 21;
+			return new ItemStack(MainInit.gems_black, i, m);
+		}
+		return new ItemStack(MainInit.gems_red, i, 1);
 	}
 
 	public static ItemStack getRandomGem2(int i) {
-		int meta = 4 + DCUtil.rand.nextInt(18);
-		if (meta == 7)
-			meta = 4;
-		return new ItemStack(MainInit.gems, i, meta);
+		ItemStack ret = getRandomGem(i);
+		if (ret.getItemDamage() == 0) {
+			ret.setItemDamage(1);
+		}
+		return ret;
 	}
 
 	public static ItemStack getCrop(int meta) {

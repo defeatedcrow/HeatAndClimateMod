@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, IThermalInsulationBlock {
 
 	public BlockGemBricks(Material m, String s) {
-		super(m, s, 3, false);
+		super(m, s, 7, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
@@ -32,7 +32,7 @@ public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, ITher
 		return false;
 	}
 
-	private static String[] names = { "gypsum", "marble", "lime", "bedrock" };
+	private static String[] names = { "gypsum", "marble", "lime", "bedrock", "salt", "skarn", "hornfels", "greisen" };
 
 	@Override
 	public String[] getNameSuffix() {

@@ -215,6 +215,71 @@ public class LoadingEquipRecipe {
 				'Y',
 				"blockGlass" });
 
+			// tsavorite & ruby
+
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.dcPickaxe[7], 1, 0), new Object[] {
+				"  X",
+				"YYX",
+				"  X",
+				'X',
+				"gemTsavorite",
+				'Y',
+				"ingotSteel" });
+
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.dcAxe[7], 1, 0), new Object[] {
+				" XX",
+				"YYX",
+				"   ",
+				'X',
+				"gemTsavorite",
+				'Y',
+				"ingotSteel" });
+
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.dcSpade[7], 1, 0), new Object[] {
+				"   ",
+				"YYX",
+				"   ",
+				'X',
+				"gemTsavorite",
+				'Y',
+				"ingotSteel" });
+
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.dcScythe[3], 1, 0), new Object[] {
+				" X ",
+				"  X",
+				"YYX",
+				'X',
+				"gemGarnet",
+				'Y',
+				"stickWood" });
+
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.dcPickaxe[5], 1, 0), new Object[] {
+				"  X",
+				"YYX",
+				"  X",
+				'X',
+				"gemRuby",
+				'Y',
+				"ingotSteel" });
+
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.dcAxe[5], 1, 0), new Object[] {
+				" XX",
+				"YYX",
+				"   ",
+				'X',
+				"gemRuby",
+				'Y',
+				"ingotSteel" });
+
+			DCRecipe.jsonShapedRecipe("main_equip", 2, new ItemStack(MainInit.dcSpade[5], 1, 0), new Object[] {
+				"   ",
+				"YYX",
+				"   ",
+				'X',
+				"gemRuby",
+				'Y',
+				"ingotSteel" });
+
 			String[] name2 = {
 				"ingotBrass",
 				"ingotSteel",

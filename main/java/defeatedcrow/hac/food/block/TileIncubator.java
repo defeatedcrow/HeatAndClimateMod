@@ -50,7 +50,7 @@ public class TileIncubator extends ClimateReceiverLockable implements ISidedInve
 		if (!getWorld().isRemote && current != null) {
 			int day = DCTimeHelper.getDay(getWorld());
 			if (day > lastD) {
-				for (int s = 0; s < 17; s++) {
+				for (int s = 0; s < 18; s++) {
 					ItemStack item = getStackInSlot(s);
 					if (!DCUtil.isEmpty(item)) {
 						if (isItemValidForSlot(s, item)) {

@@ -76,11 +76,11 @@ public class RegisterFluidRecipe {
 				2), null, 0F, null, DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.oil,
 						100), new Object[] { "dustAlkali" });
 
-		regReactorRecipe(new ItemStack(MainInit.gems, 1,
-				17), null, 0F, null, DCHeatTier.OVEN, null, null, false, null, new Object[] { "dustBismuth" });
+		regReactorRecipe(new ItemStack(MainInit.gems_layer, 1,
+				5), null, 0F, null, DCHeatTier.OVEN, null, null, false, null, new Object[] { "dustBismuth" });
 
-		regReactorRecipe(new ItemStack(MainInit.gems, 1,
-				18), null, 0F, null, DCHeatTier.OVEN, null, null, false, null, new Object[] { "dustApatite" });
+		regReactorRecipe(new ItemStack(MainInit.gems_layer, 1,
+				6), null, 0F, null, DCHeatTier.OVEN, null, null, false, null, new Object[] { "dustApatite" });
 
 		regReactorRecipe(new ItemStack(MainInit.miscDust, 1,
 				9), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER,
@@ -95,8 +95,8 @@ public class RegisterFluidRecipe {
 						100), new Object[] { "cropHerb", "dustCrystal", new ItemStack(MachineInit.reagent, 1, 1) });
 
 		// その他
-		regReactorRecipe(new ItemStack(MainInit.gems, 1,
-				3), null, 0F, null, DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.sulfuricAcid,
+		regReactorRecipe(new ItemStack(MainInit.gems_layer, 1,
+				0), null, 0F, null, DCHeatTier.NORMAL, null, null, false, new FluidStack(MainInit.sulfuricAcid,
 						200), new Object[] { "dustLime" });
 
 		regNonFoodRecipe(new ItemStack(MainInit.clothes, 1,
@@ -177,12 +177,12 @@ public class RegisterFluidRecipe {
 
 		if (ModuleConfig.machine) {
 			// 合成
-			regReactorRecipe(new ItemStack(MachineInit.reagent, 1, 10), new ItemStack(MainInit.gems, 1,
-					3), 1F, null, DCHeatTier.KILN, null, null, false, new FluidStack(FluidRegistry.WATER,
+			regReactorRecipe(new ItemStack(MachineInit.reagent, 1, 10), new ItemStack(MainInit.gems_layer, 1,
+					0), 1F, null, DCHeatTier.KILN, null, null, false, new FluidStack(FluidRegistry.WATER,
 							100), new Object[] { "dustApatite", "sand", "gemCoal" });
 
-			regReactorRecipe(new ItemStack(MachineInit.reagent, 2, 10), new ItemStack(MainInit.gems, 1,
-					3), 1.0F, null, DCHeatTier.KILN, null, null, false, new FluidStack(FluidRegistry.WATER,
+			regReactorRecipe(new ItemStack(MachineInit.reagent, 2, 10), new ItemStack(MainInit.gems_layer, 1,
+					0), 1.0F, null, DCHeatTier.KILN, null, null, false, new FluidStack(FluidRegistry.WATER,
 							100), new Object[] { "dustApatite", "sand", "fuelCoke" });
 
 			regReactorRecipe(new ItemStack(MachineInit.reagent, 1,

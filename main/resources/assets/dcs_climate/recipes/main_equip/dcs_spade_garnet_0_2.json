@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "   ",
+  "YYX",
+  "   "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemTsavorite"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_spade_garnet",
+  "count": 1,
+  "data": 0
+ }
+}

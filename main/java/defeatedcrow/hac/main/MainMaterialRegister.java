@@ -98,6 +98,8 @@ import defeatedcrow.hac.main.block.ores.BlockMetalNew;
 import defeatedcrow.hac.main.block.ores.BlockOreNew;
 import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
+import defeatedcrow.hac.main.block.ores.BlockSkarn;
+import defeatedcrow.hac.main.block.ores.BlockSkarnOre;
 import defeatedcrow.hac.main.block.plant.BlockHedge;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.item.entity.ItemCushionGray;
@@ -124,8 +126,14 @@ import defeatedcrow.hac.main.item.misc.ItemPetternPaper;
 import defeatedcrow.hac.main.item.misc.ItemRepairPutty;
 import defeatedcrow.hac.main.item.misc.ItemSilkworm;
 import defeatedcrow.hac.main.item.ores.ItemCircuitChal;
+import defeatedcrow.hac.main.item.ores.ItemGemBlack;
+import defeatedcrow.hac.main.item.ores.ItemGemBlue;
+import defeatedcrow.hac.main.item.ores.ItemGemGreen;
+import defeatedcrow.hac.main.item.ores.ItemGemRed;
+import defeatedcrow.hac.main.item.ores.ItemGemWhite;
 import defeatedcrow.hac.main.item.ores.ItemGems;
 import defeatedcrow.hac.main.item.ores.ItemIngots;
+import defeatedcrow.hac.main.item.ores.ItemLayerGems;
 import defeatedcrow.hac.main.item.ores.ItemMetalMaterials;
 import defeatedcrow.hac.main.item.ores.ItemMiscDust;
 import defeatedcrow.hac.main.item.ores.ItemOreCrystal;
@@ -212,6 +220,13 @@ public class MainMaterialRegister {
 		MainInit.layerNew = new BlockLayerNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_layer_stone_new", 7);
 		DCMaterialReg
 				.registerBlock(MainInit.layerNew, ClimateCore.PACKAGE_BASE + "_layer_stone_new", ClimateMain.MOD_ID);
+
+		MainInit.skarnBlock = new BlockSkarn(ClimateCore.PACKAGE_BASE + "_layer_skarn");
+		DCMaterialReg.registerBlock(MainInit.skarnBlock, ClimateCore.PACKAGE_BASE + "_layer_skarn", ClimateMain.MOD_ID);
+
+		MainInit.skarnOre = new BlockSkarnOre(ClimateCore.PACKAGE_BASE + "_layer_skarn_ore");
+		DCMaterialReg
+				.registerBlock(MainInit.skarnOre, ClimateCore.PACKAGE_BASE + "_layer_skarn_ore", ClimateMain.MOD_ID);
 
 		MainInit.metalBlockNew = new BlockMetalNew(Material.IRON, ClimateCore.PACKAGE_BASE + "_metal_new", 7);
 		DCMaterialReg
@@ -308,6 +323,24 @@ public class MainMaterialRegister {
 
 		MainInit.gems = new ItemGems(24).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem");
 		DCMaterialReg.registerItem(MainInit.gems, ClimateCore.PACKAGE_BASE + "_gem", ClimateMain.MOD_ID);
+
+		MainInit.gems_red = new ItemGemRed(5).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem_red");
+		DCMaterialReg.registerItem(MainInit.gems_red, ClimateCore.PACKAGE_BASE + "_gem_red", ClimateMain.MOD_ID);
+
+		MainInit.gems_green = new ItemGemGreen(5).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem_green");
+		DCMaterialReg.registerItem(MainInit.gems_green, ClimateCore.PACKAGE_BASE + "_gem_green", ClimateMain.MOD_ID);
+
+		MainInit.gems_blue = new ItemGemBlue(5).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem_blue");
+		DCMaterialReg.registerItem(MainInit.gems_blue, ClimateCore.PACKAGE_BASE + "_gem_blue", ClimateMain.MOD_ID);
+
+		MainInit.gems_white = new ItemGemWhite(5).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem_white");
+		DCMaterialReg.registerItem(MainInit.gems_white, ClimateCore.PACKAGE_BASE + "_gem_white", ClimateMain.MOD_ID);
+
+		MainInit.gems_black = new ItemGemBlack(5).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem_black");
+		DCMaterialReg.registerItem(MainInit.gems_black, ClimateCore.PACKAGE_BASE + "_gem_black", ClimateMain.MOD_ID);
+
+		MainInit.gems_layer = new ItemLayerGems(6).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gem_layer");
+		DCMaterialReg.registerItem(MainInit.gems_layer, ClimateCore.PACKAGE_BASE + "_gem_layer", ClimateMain.MOD_ID);
 
 		MainInit.miscDust = new ItemMiscDust(13).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_miscdust");
 		DCMaterialReg.registerItem(MainInit.miscDust, ClimateCore.PACKAGE_BASE + "_miscdust", ClimateMain.MOD_ID);
@@ -432,10 +465,24 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.stairsDirtbrick), "dcs_climate", "dcs_stairs_dirtbrick", "build", 15, false);
 
+		MainInit.stairsSkarn = new BlockStairsBase(MainInit.skarnBlock.getDefaultState(), "ores/gemblock_skarn", false,
+				false).setUnlocalizedName("dcs_stairs_skarn");
+		DCMaterialReg
+				.registerBlock(MainInit.stairsSkarn, ClimateCore.PACKAGE_BASE + "_stairs_skarn", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item
+				.getItemFromBlock(MainInit.stairsSkarn), "dcs_climate", "dcs_stairs_skarn", "build", 15, false);
+
+		MainInit.stairsGreisen = new BlockStairsBase(MainInit.skarnBlock.getDefaultState(), "ores/gemblock_greisen",
+				false, false).setUnlocalizedName("dcs_stairs_greisen");
+		DCMaterialReg
+				.registerBlock(MainInit.stairsGreisen, ClimateCore.PACKAGE_BASE + "_stairs_greisen", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item
+				.getItemFromBlock(MainInit.stairsGreisen), "dcs_climate", "dcs_stairs_greisen", "build", 15, false);
+
 		MainInit.halfSlab = new BlockSlabDC();
 		DCMaterialReg.registerBlock(MainInit.halfSlab, ClimateCore.PACKAGE_BASE + "_build_slab", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
-				.getItemFromBlock(MainInit.halfSlab), "dcs_climate", "dcs_build_slab", "build", 5, true);
+				.getItemFromBlock(MainInit.halfSlab), "dcs_climate", "dcs_build_slab", "build", 7, true);
 
 		MainInit.halfSlab2 = new BlockSlabChal();
 		DCMaterialReg
@@ -651,6 +698,18 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.squaretableMarble), "dcs_climate", "dcs_squaretable_marble", "build", 0, false);
 
+			MainInit.squaretableSkarn = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_squaretable_skarn", false);
+			DCMaterialReg
+					.registerBlock(MainInit.squaretableSkarn, ClimateCore.PACKAGE_BASE + "_squaretable_skarn", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.squaretableSkarn), "dcs_climate", "dcs_squaretable_skarn", "build", 0, false);
+
+			MainInit.squaretableGreisen = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_squaretable_greisen", false);
+			DCMaterialReg
+					.registerBlock(MainInit.squaretableGreisen, ClimateCore.PACKAGE_BASE + "_squaretable_greisen", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.squaretableGreisen), "dcs_climate", "dcs_squaretable_greisen", "build", 0, false);
+
 			MainInit.squaretableChecker = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_squaretable_checker", false);
 			DCMaterialReg
 					.registerBlock(MainInit.squaretableChecker, ClimateCore.PACKAGE_BASE + "_squaretable_checker", ClimateMain.MOD_ID);
@@ -728,6 +787,18 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.chairMarble), "dcs_climate", "dcs_chair_marble", "build", 0, false);
 
+			MainInit.chairSkarn = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_chair_skarn").setSmallAABB();
+			DCMaterialReg
+					.registerBlock(MainInit.chairSkarn, ClimateCore.PACKAGE_BASE + "_chair_skarn", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.chairSkarn), "dcs_climate", "dcs_chair_skarn", "build", 0, false);
+
+			MainInit.chairGreisen = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_chair_greisen").setSmallAABB();
+			DCMaterialReg
+					.registerBlock(MainInit.chairGreisen, ClimateCore.PACKAGE_BASE + "_chair_greisen", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.chairGreisen), "dcs_climate", "dcs_chair_greisen", "build", 0, false);
+
 			MainInit.chairChecker = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_chair_checker").setSmallAABB();
 			DCMaterialReg
 					.registerBlock(MainInit.chairChecker, ClimateCore.PACKAGE_BASE + "_chair_checker", ClimateMain.MOD_ID);
@@ -763,6 +834,16 @@ public class MainMaterialRegister {
 			registerChestBlock(MainInit.chestMarble, ClimateCore.PACKAGE_BASE + "_device_lowchest_marble", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regTEJson(MainInit.chestMarble, "dcs_climate", "dcs_device_lowchest_marble", "device");
 
+			MainInit.chestSkarn = new BlockLowChest(Material.WOOD, ClimateCore.PACKAGE_BASE + "_device_lowchest_skarn",
+					true);
+			registerChestBlock(MainInit.chestSkarn, ClimateCore.PACKAGE_BASE + "_device_lowchest_skarn", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regTEJson(MainInit.chestSkarn, "dcs_climate", "dcs_device_lowchest_skarn", "device");
+
+			MainInit.chestGreisen = new BlockLowChest(Material.WOOD,
+					ClimateCore.PACKAGE_BASE + "_device_lowchest_greisen", true);
+			registerChestBlock(MainInit.chestGreisen, ClimateCore.PACKAGE_BASE + "_device_lowchest_greisen", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regTEJson(MainInit.chestGreisen, "dcs_climate", "dcs_device_lowchest_greisen", "device");
+
 			MainInit.chestWood = new BlockLowChest(Material.WOOD, ClimateCore.PACKAGE_BASE + "_device_lowchest_wood",
 					true);
 			registerChestBlock(MainInit.chestWood, ClimateCore.PACKAGE_BASE + "_device_lowchest_wood", ClimateMain.MOD_ID);
@@ -787,6 +868,16 @@ public class MainMaterialRegister {
 					true);
 			registerChestBlock(MainInit.wallshelfMarble, ClimateCore.PACKAGE_BASE + "_wallshelf_marble", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regTEJson(MainInit.wallshelfMarble, "dcs_climate", "dcs_wallshelf_marble", "device");
+
+			MainInit.wallshelfSkarn = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_skarn",
+					true);
+			registerChestBlock(MainInit.wallshelfSkarn, ClimateCore.PACKAGE_BASE + "_wallshelf_skarn", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regTEJson(MainInit.wallshelfSkarn, "dcs_climate", "dcs_wallshelf_skarn", "device");
+
+			MainInit.wallshelfGreisen = new BlockWallShelf(Material.WOOD,
+					ClimateCore.PACKAGE_BASE + "_wallshelf_greisen", true);
+			registerChestBlock(MainInit.wallshelfGreisen, ClimateCore.PACKAGE_BASE + "_wallshelf_greisen", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regTEJson(MainInit.wallshelfGreisen, "dcs_climate", "dcs_wallshelf_greisen", "device");
 
 			MainInit.wallshelfWood = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_wood",
 					true);

@@ -11,6 +11,7 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -53,6 +54,23 @@ public class OnCraftingDC {
 				if (silk > 0) {
 					Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(craft);
 					map.put(Enchantments.BLAST_PROTECTION, silk);
+					EnchantmentHelper.setEnchantments(map, craft);
+				}
+			} else if (craft.getItem() instanceof ItemTool) {
+				int tsavorite = 0;
+				int ruby = 0;
+				for (int i = 0; i < matrix.getSizeInventory(); i++) {
+					ItemStack check = matrix.getStackInSlot(i);
+					if (MainUtil.hasDicPart("Tsavorite", check)) {
+						tsavorite++;
+					}
+					if (MainUtil.hasDicPart("Ruby", check)) {
+						ruby++;
+					}
+				}
+				if (tsavorite > 0 || ruby > 0) {
+					Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(craft);
+					map.put(Enchantments.FORTUNE, 1);
 					EnchantmentHelper.setEnchantments(map, craft);
 				}
 			}

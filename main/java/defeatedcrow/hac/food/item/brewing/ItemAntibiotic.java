@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -39,11 +40,20 @@ public class ItemAntibiotic extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "pcn", "cp", "anti_zombie", "poison", "zombie", "pigman", "mushroom", "mana" };
+	private static String[] names = {
+		"pcn",
+		"cp",
+		"anti_zombie",
+		"poison",
+		"zombie",
+		"pigman",
+		"mushroom",
+		"mana",
+		"anti_heal" };
 
 	public ItemAntibiotic() {
 		super();
-		maxMeta = 7;
+		maxMeta = 8;
 	}
 
 	@Override
@@ -185,6 +195,12 @@ public class ItemAntibiotic extends DCItem {
 					player.world.spawnEntity(cow);
 					cow.playLivingSound();
 					player.world.playEvent(null, 1027, new BlockPos(cow), 0);
+				}
+				b = true;
+			} else if (stack.getItemDamage() == 8) {
+				if (!player.world.isRemote) {
+					target.addPotionEffect(new PotionEffect(MainInit.unrepair, 2400, 0));
+					target.playSound(SoundEvents.ENTITY_PLAYER_HURT_DROWN, 1.0F, 1.0F);
 				}
 				b = true;
 			}

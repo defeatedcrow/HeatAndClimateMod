@@ -406,7 +406,7 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 		ret.add(DCHeatTier.WARM);
 		ret.add(DCHeatTier.HOT);
 		ret.add(DCHeatTier.BOIL);
-		return ret;
+		return CoreConfigDC.harderCrop ? getHardmodeTemp(thisState) : ret;
 	}
 
 	@Override
@@ -414,7 +414,7 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 		List<DCHumidity> ret = new ArrayList<DCHumidity>();
 		ret.add(DCHumidity.WET);
 		ret.add(DCHumidity.UNDERWATER);
-		return ret;
+		return CoreConfigDC.harderCrop ? getHardmodeHum(thisState) : ret;
 	}
 
 	@Override
@@ -424,6 +424,26 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 		ret.add(DCAirflow.NORMAL);
 		ret.add(DCAirflow.FLOW);
 		ret.add(DCAirflow.WIND);
+		return CoreConfigDC.harderCrop ? getHardmodeAir(thisState) : ret;
+	}
+
+	public List<DCHeatTier> getHardmodeTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.NORMAL);
+		ret.add(DCHeatTier.WARM);
+		return ret;
+	}
+
+	public List<DCHumidity> getHardmodeHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.UNDERWATER);
+		return ret;
+	}
+
+	public List<DCAirflow> getHardmodeAir(IBlockState thisState) {
+		List<DCAirflow> ret = new ArrayList<DCAirflow>();
+		ret.add(DCAirflow.TIGHT);
+		ret.add(DCAirflow.NORMAL);
 		return ret;
 	}
 

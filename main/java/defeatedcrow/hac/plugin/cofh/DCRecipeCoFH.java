@@ -42,19 +42,19 @@ public class DCRecipeCoFH {
 
 		// pulvarizer
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreNew, 1, 0), new ItemStack(MainInit.oreItem, 2,
-				0), new ItemStack(MainInit.gems, 1, 1), 25);
+				0), new ItemStack(MainInit.gems_red, 1, 0), 25);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreNew, 1, 1), new ItemStack(MainInit.oreItem, 2,
-				1), new ItemStack(MainInit.gems, 1, 5), 25);
+				1), new ItemStack(MainInit.gems_green, 1, 0), 25);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreNew, 1, 2), new ItemStack(MainInit.oreItem, 2,
-				2), new ItemStack(MainInit.gems, 1, 0), 25);
+				2), new ItemStack(MainInit.gems_blue, 1, 0), 25);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreNew, 1, 3), new ItemStack(MainInit.oreItem, 2,
-				3), new ItemStack(MainInit.gems, 1, 2), 25);
+				3), new ItemStack(MainInit.gems_white, 1, 0), 25);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreNew, 1, 4), new ItemStack(MainInit.oreItem, 2,
-				4), new ItemStack(MainInit.gems, 1, 23), 25);
+				4), new ItemStack(MainInit.gems_black, 1, 0), 25);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreNew, 1, 5), new ItemStack(MainInit.oreItem, 2,
 				5), new ItemStack(MainInit.oreItem, 1, 10), 25);
@@ -83,11 +83,11 @@ public class DCRecipeCoFH {
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreNew, 1, 13), new ItemStack(MainInit.oreItem, 2,
 				9), new ItemStack(MainInit.oreItem, 1, 14), 25);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.layerNew, 1, 0), new ItemStack(MainInit.gems, 2,
-				3), new ItemStack(MainInit.gems, 1, 6), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.layerNew, 1, 0), new ItemStack(MainInit.gems_layer, 2,
+				0), new ItemStack(MainInit.gems_white, 1, 2), 10);
 
-		addPulverizerRecipe(5000, new ItemStack(MainInit.layerNew, 1, 6), new ItemStack(MainInit.gems, 2,
-				12), new ItemStack(MainInit.gems, 1, 13), 10);
+		addPulverizerRecipe(5000, new ItemStack(MainInit.layerNew, 1, 6), new ItemStack(MainInit.gems_green, 2,
+				1), new ItemStack(MainInit.gems_green, 1, 1), 10);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreItem, 1, 4), new ItemStack(MainInit.oreDust, 2,
 				7), new ItemStack(MainInit.oreDust, 1, 9), 25);
@@ -99,7 +99,7 @@ public class DCRecipeCoFH {
 				12), new ItemStack(MainInit.oreDust, 1, 1), 25);
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreItem, 1, 5), new ItemStack(MainInit.oreDust, 2,
-				10), new ItemStack(MainInit.gems, 1, 15), 10);
+				10), new ItemStack(MainInit.gems_white, 1, 0), 10);
 	}
 
 	private static void addCompressionFuel(String name, int amount) {

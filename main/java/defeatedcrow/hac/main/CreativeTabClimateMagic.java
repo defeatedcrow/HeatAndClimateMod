@@ -20,7 +20,7 @@ public class CreativeTabClimateMagic extends CreativeTabs {
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(MainInit.gems, 1, 4);
+		return new ItemStack(MainInit.gems_blue, 1, 1);
 	}
 
 }

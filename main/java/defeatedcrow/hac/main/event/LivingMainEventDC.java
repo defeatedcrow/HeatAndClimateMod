@@ -5,6 +5,7 @@ import java.util.List;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.ItemSet;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -13,6 +14,7 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.build.BlockBedDC;
 import defeatedcrow.hac.main.client.particle.ParticleTempColor;
 import defeatedcrow.hac.main.config.MainCoreConfig;
+import defeatedcrow.hac.main.item.ores.ItemGems;
 import defeatedcrow.hac.main.util.DCAdvancementUtil;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.MainUtil;
@@ -23,6 +25,7 @@ import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -96,7 +99,7 @@ public class LivingMainEventDC {
 		this.onLivingUpdate(event);
 	}
 
-	private int count;
+	private int count = 0;
 
 	public void onPlayerUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
@@ -128,6 +131,32 @@ public class LivingMainEventDC {
 					}
 				}
 
+				// old gem check
+				if (count > 20) {
+					count = 0;
+					for (int c = 0; c < player.inventory.getSizeInventory(); c++) {
+						ItemStack item = player.inventory.getStackInSlot(c);
+						if (!DCUtil.isEmpty(item) && item.getItem() == MainInit.gems) {
+							// old gems
+							ItemGems gem = (ItemGems) item.getItem();
+							int i = item.getItemDamage();
+							if (i > 24)
+								i = 24;
+							ItemSet set = gem.table[i];
+							DCLogger.debugInfoLog("debug " + set.item.getUnlocalizedName());
+							ItemStack ret = new ItemStack(set.item, item.copy().getCount(), set.meta);
+							EntityItem drop = new EntityItem(player.world, player.posX, player.posY + 0.25D,
+									player.posZ, ret);
+							if (!player.world.isRemote && player.world.spawnEntity(drop)) {
+								player.inventory.setInventorySlotContents(c, ItemStack.EMPTY);
+								player.inventory.markDirty();
+							}
+						}
+					}
+				} else {
+					count++;
+				}
+
 				if (!player.world.isRemote && player instanceof EntityPlayerMP) {
 					// advancement
 					boolean b1 = false;
@@ -142,6 +171,17 @@ public class LivingMainEventDC {
 									.getArmorMaterial() == DCArmorMaterial.DC_CLOTH || ((ItemArmor) armor.getItem())
 											.getArmorMaterial() == DCArmorMaterial.DC_SYNTHETIC)
 								b2 = true;
+						} else if (!DCUtil.isEmpty(armor) && armor.getItem() == MainInit.gems) {
+							// old gems
+							ItemGems gem = (ItemGems) armor.getItem();
+							int i = armor.getItemDamage();
+							if (i > 24)
+								i = 24;
+							ItemSet set = gem.table[i];
+							if (player.inventory.addItemStackToInventory(new ItemStack(set.item, armor.copy()
+									.getCount(), set.meta))) {
+
+							}
 						}
 					}
 					if (b1) {

@@ -6,7 +6,6 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -77,21 +76,21 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 	}
 
 	public enum DropTable {
-		RED(MainInit.gems, 1, MainInit.gems, 14, true),
-		GREEN(MainInit.gems, 5, MainInit.gems, 13, true),
-		BLUE(MainInit.gems, 0, MainInit.gems, 4, true),
-		WHITE(MainInit.gems, 2, MainInit.gems, 15, true),
-		BLACK(MainInit.gems, 23, MainInit.gems, 11, true),
-		RED_2(MainInit.gems, 14, MainInit.gems, 21, true),
-		GREEN_2(MainInit.gems, 13, MainInit.gems, 20, true),
-		BLUE_2(MainInit.gems, 4, MainInit.gems, 19, true),
-		WHITE_2(MainInit.gems, 15, MainInit.gems, 6, true),
-		BLACK_2(MainInit.gems, 11, MainInit.gems, 22, true),
-		NETHER_RED_1(MainInit.gems, 1, MainInit.gems, 14, true),
-		NETHER_RED_2(MainInit.gems, 14, MainInit.gems, 21, true),
-		NETHER_BLACK_1(MainInit.gems, 23, MainInit.gems, 11, true),
-		NETHER_BLACK_2(MainInit.gems, 11, MainInit.gems, 22, true),
-		NETHER_SULFUR(MainInit.gems, 10, Items.REDSTONE, 0, true),
+		RED(MainInit.gems_red, 0, MainInit.gems_red, 1, true),
+		GREEN(MainInit.gems_green, 0, MainInit.gems_green, 1, true),
+		BLUE(MainInit.gems_blue, 0, MainInit.gems_blue, 1, true),
+		WHITE(MainInit.gems_white, 0, MainInit.gems_white, 1, true),
+		BLACK(MainInit.gems_black, 0, MainInit.gems_black, 1, true),
+		RED_2(MainInit.gems_red, 1, MainInit.gems_red, 2, true),
+		GREEN_2(MainInit.gems_green, 1, MainInit.gems_green, 2, true),
+		BLUE_2(MainInit.gems_blue, 1, MainInit.gems_blue, 2, true),
+		WHITE_2(MainInit.gems_white, 1, MainInit.gems_white, 2, true),
+		BLACK_2(MainInit.gems_black, 1, MainInit.gems_black, 2, true),
+		NETHER_RED_1(MainInit.gems_red, 0, MainInit.gems_red, 1, true),
+		NETHER_RED_2(MainInit.gems_red, 1, MainInit.gems_red, 2, true),
+		NETHER_BLACK_1(MainInit.gems_black, 0, MainInit.gems_black, 1, true),
+		NETHER_BLACK_2(MainInit.gems_black, 1, MainInit.gems_black, 2, true),
+		NETHER_SULFUR(MainInit.gems_layer, 3, Items.REDSTONE, 0, true),
 		NONE(null, 0, null, 0, false);
 
 		public Item dropItem;
@@ -138,16 +137,15 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 		super.getDrops(list, world, pos, state, fortune);
 		int meta = this.getMetaFromState(state);
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
-
-		ItemStack add = ItemStack.EMPTY;
 		DropTable table = getTable(meta);
-		int par = 5 + fortune * 5;
+
+		int par = 1 + fortune * 5;
 		if (rand.nextInt(100) < par && table.dropItem != null) {
-			add = new ItemStack(table.dropItem, 1, table.dropMeta);
+			list.add(new ItemStack(table.dropItem, 1, table.dropMeta));
 		}
 
-		if (!DCUtil.isEmpty(add)) {
-			list.add(add);
+		if (rand.nextInt(100) < fortune && table.secondary != null) {
+			list.add(new ItemStack(table.secondary, 1, table.secondaryMeta));
 		}
 	}
 

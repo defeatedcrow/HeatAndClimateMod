@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "blockChalcedonyBlue"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_gem_blue",
+  "count": 4,
+  "data": 0
+ }
+}

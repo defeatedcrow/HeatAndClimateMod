@@ -143,7 +143,7 @@ public class VeinTableJson {
 					table.addOres(list);
 
 					if (VeinTableRegister.INSTANCE.list.add(table)) {
-						DCLogger.debugLog("VainTableJson : Successfilly loaded: " + type + " count" + table.tableCount);
+						DCLogger.debugInfoLog("VainTableJson : Successfilly loaded: " + type + " count" + table.tableCount);
 					}
 				}
 			}
@@ -189,17 +189,13 @@ public class VeinTableJson {
 		if (!INSTANCE.jsonMap.isEmpty()) {
 			loadVeins();
 		}
-
 	}
 
 	// 生成は初回のみ
 	public static void post() {
+		boolean b = registerVeins();
 
-		if (!INSTANCE.jsonMap.isEmpty()) {
-			DCLogger.debugLog("VainTableJson : Orevein custom data json is already exists.");
-			return;
-		} else {
-			registerVeins();
+		if (b) {
 
 			for (Entry<EnumVein, Map<String, Object>> entry : INSTANCE.jsonMap.entrySet()) {
 				String fName = entry.getKey().toString().toLowerCase();
@@ -227,115 +223,159 @@ public class VeinTableJson {
 					}
 
 				} catch (IOException e) {
-					DCLogger.debugLog("VainTableJson : Failed to create json file: " + fName);
+					DCLogger.debugInfoLog("VainTableJson : Failed to create json file: " + fName);
 					e.printStackTrace();
 				}
 			}
-		}
 
-		loadVeins();
+			loadVeins();
+
+		} else {
+			DCLogger.debugInfoLog("VainTableJson : Orevein custom data json is already exists.");
+			return;
+		}
 
 	}
 
-	public static void registerVeins() {
-		Map<String, Object> red = new HashMap<String, Object>();
-		red.put("layer", blockString(new BlockSet(MainInit.layerNew, 1)));
-		List<Map<String, Object>> redMap = Lists.newArrayList();
-		redMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 0), new BlockSet(MainInit.oreNew, 5), 5));
-		redMap.add(getEntry(20, new BlockSet(MainInit.layerNew, 3)));
-		redMap.add(getEntry(40, new BlockSet(MainInit.layerNew, 1)));
-		redMap.add(getEntry(5, new BlockSet(MainInit.oreNew, 5)));
-		red.put("entries", redMap);
-		INSTANCE.jsonMap.put(EnumVein.RED, red);
+	public static boolean registerVeins() {
 
-		Map<String, Object> high_red = new HashMap<String, Object>();
-		high_red.put("layer", blockString(new BlockSet(MainInit.layerNew, 1)));
-		List<Map<String, Object>> high_redMap = Lists.newArrayList();
-		high_redMap.add(getEntry(60, new BlockSet(MainInit.oreNew, 0), new BlockSet(MainInit.oreNew, 5), 5));
-		high_redMap.add(getEntry(20, new BlockSet(MainInit.layerNew, 3)));
-		high_redMap.add(getEntry(50, new BlockSet(MainInit.layerNew, 1)));
-		high_redMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 5)));
-		high_red.put("entries", high_redMap);
-		INSTANCE.jsonMap.put(EnumVein.HIGH_RED, high_red);
+		boolean ret = false;
 
-		Map<String, Object> green = new HashMap<String, Object>();
-		green.put("layer", blockString(new BlockSet(MainInit.layerNew, 6)));
-		List<Map<String, Object>> greenMap = Lists.newArrayList();
-		greenMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 1), new BlockSet(MainInit.oreNew, 6), 5));
-		greenMap.add(getEntry(30, new BlockSet(MainInit.layerNew, 6), new BlockSet(Blocks.EMERALD_ORE, 0), 20));
-		greenMap.add(getEntry(5, new BlockSet(MainInit.oreNew, 6)));
-		greenMap.add(getEntry(10, new BlockSet(Blocks.CLAY, 0)));
-		green.put("entries", greenMap);
-		INSTANCE.jsonMap.put(EnumVein.GREEN, green);
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.RED)) {
+			Map<String, Object> red = new HashMap<String, Object>();
+			red.put("layer", blockString(new BlockSet(MainInit.layerNew, 1)));
+			List<Map<String, Object>> redMap = Lists.newArrayList();
+			redMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 0), new BlockSet(MainInit.oreNew, 5), 5));
+			redMap.add(getEntry(20, new BlockSet(MainInit.layerNew, 3)));
+			redMap.add(getEntry(40, new BlockSet(MainInit.layerNew, 1)));
+			redMap.add(getEntry(5, new BlockSet(MainInit.oreNew, 5)));
+			red.put("entries", redMap);
+			INSTANCE.jsonMap.put(EnumVein.RED, red);
+			ret = true;
+		}
 
-		Map<String, Object> blue = new HashMap<String, Object>();
-		blue.put("layer", blockString(new BlockSet(MainInit.layerNew, 0)));
-		List<Map<String, Object>> blueMap = Lists.newArrayList();
-		blueMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 2), new BlockSet(MainInit.oreNew, 7), 5));
-		blueMap.add(getEntry(40, new BlockSet(MainInit.layerNew, 0)));
-		blueMap.add(getEntry(5, new BlockSet(Blocks.LAPIS_ORE, 0)));
-		blueMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 7)));
-		blue.put("entries", blueMap);
-		INSTANCE.jsonMap.put(EnumVein.BLUE, blue);
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.HIGH_RED)) {
+			Map<String, Object> high_red = new HashMap<String, Object>();
+			high_red.put("layer", blockString(new BlockSet(MainInit.layerNew, 1)));
+			List<Map<String, Object>> high_redMap = Lists.newArrayList();
+			high_redMap.add(getEntry(60, new BlockSet(MainInit.oreNew, 0), new BlockSet(MainInit.oreNew, 5), 5));
+			high_redMap.add(getEntry(20, new BlockSet(MainInit.layerNew, 3)));
+			high_redMap.add(getEntry(50, new BlockSet(MainInit.layerNew, 1)));
+			high_redMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 5)));
+			high_red.put("entries", high_redMap);
+			INSTANCE.jsonMap.put(EnumVein.HIGH_RED, high_red);
+			ret = true;
+		}
 
-		Map<String, Object> white = new HashMap<String, Object>();
-		white.put("layer", blockString(new BlockSet(MainInit.gemBlock, 6)));
-		List<Map<String, Object>> whiteMap = Lists.newArrayList();
-		whiteMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 3), new BlockSet(MainInit.oreNew, 8), 5));
-		whiteMap.add(getEntry(30, new BlockSet(MainInit.layerNew, 5)));
-		whiteMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 8)));
-		whiteMap.add(getEntry(10, new BlockSet(MainInit.gemBlock, 6)));
-		whiteMap.add(getEntry(5, new BlockSet(MainInit.gemBlock, 2)));
-		white.put("entries", whiteMap);
-		INSTANCE.jsonMap.put(EnumVein.WHITE, white);
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.GREEN)) {
+			Map<String, Object> green = new HashMap<String, Object>();
+			green.put("layer", blockString(new BlockSet(MainInit.layerNew, 6)));
+			List<Map<String, Object>> greenMap = Lists.newArrayList();
+			greenMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 1), new BlockSet(MainInit.oreNew, 6), 5));
+			greenMap.add(getEntry(30, new BlockSet(MainInit.layerNew, 6), new BlockSet(Blocks.EMERALD_ORE, 0), 20));
+			greenMap.add(getEntry(5, new BlockSet(MainInit.oreNew, 6)));
+			greenMap.add(getEntry(10, new BlockSet(Blocks.CLAY, 0)));
+			green.put("entries", greenMap);
+			INSTANCE.jsonMap.put(EnumVein.GREEN, green);
+			ret = true;
+		}
 
-		Map<String, Object> black = new HashMap<String, Object>();
-		black.put("layer", blockString(new BlockSet(Blocks.STONE, 0)));
-		List<Map<String, Object>> blackMap = Lists.newArrayList();
-		blackMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 4), new BlockSet(MainInit.oreNew, 9), 5));
-		blackMap.add(getEntry(30, new BlockSet(MainInit.layerNew, 4)));
-		blackMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 9)));
-		blackMap.add(getEntry(5, new BlockSet(Blocks.REDSTONE_ORE, 0)));
-		blackMap.add(getEntry(5, new BlockSet(Blocks.COAL_ORE, 0)));
-		black.put("entries", blackMap);
-		INSTANCE.jsonMap.put(EnumVein.BLACK, black);
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.BLUE)) {
+			Map<String, Object> blue = new HashMap<String, Object>();
+			blue.put("layer", blockString(new BlockSet(MainInit.layerNew, 0)));
+			List<Map<String, Object>> blueMap = Lists.newArrayList();
+			blueMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 2), new BlockSet(MainInit.oreNew, 7), 5));
+			blueMap.add(getEntry(40, new BlockSet(MainInit.layerNew, 0)));
+			blueMap.add(getEntry(5, new BlockSet(Blocks.LAPIS_ORE, 0)));
+			blueMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 7)));
+			blue.put("entries", blueMap);
+			INSTANCE.jsonMap.put(EnumVein.BLUE, blue);
+			ret = true;
+		}
 
-		Map<String, Object> guano = new HashMap<String, Object>();
-		guano.put("layer", blockString(new BlockSet(Blocks.GRAVEL, 0)));
-		List<Map<String, Object>> guanoMap = Lists.newArrayList();
-		guanoMap.add(getEntry(80, new BlockSet(MainInit.layerNew, 2), new BlockSet(Blocks.GRAVEL, 0), 30));
-		guano.put("entries", guanoMap);
-		INSTANCE.jsonMap.put(EnumVein.GUANO, guano);
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.WHITE)) {
+			Map<String, Object> white = new HashMap<String, Object>();
+			white.put("layer", blockString(new BlockSet(MainInit.gemBlock, 6)));
+			List<Map<String, Object>> whiteMap = Lists.newArrayList();
+			whiteMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 3), new BlockSet(MainInit.oreNew, 8), 5));
+			whiteMap.add(getEntry(30, new BlockSet(MainInit.layerNew, 5)));
+			whiteMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 8)));
+			whiteMap.add(getEntry(10, new BlockSet(MainInit.gemBlock, 6)));
+			whiteMap.add(getEntry(5, new BlockSet(MainInit.skarnOre, 8)));
+			white.put("entries", whiteMap);
+			INSTANCE.jsonMap.put(EnumVein.WHITE, white);
+			ret = true;
+		}
 
-		Map<String, Object> skarn = new HashMap<String, Object>();
-		skarn.put("layer", blockString(new BlockSet(MainInit.gemBlock, 6)));
-		List<Map<String, Object>> skarnMap = Lists.newArrayList();
-		skarnMap.add(getEntry(30, new BlockSet(MainInit.oreNew, 0), new BlockSet(MainInit.oreNew, 5), 15));
-		skarnMap.add(getEntry(30, new BlockSet(MainInit.oreNew, 1), new BlockSet(MainInit.oreNew, 6), 15));
-		skarnMap.add(getEntry(30, new BlockSet(MainInit.oreNew, 2), new BlockSet(MainInit.oreNew, 7), 15));
-		skarnMap.add(getEntry(10, new BlockSet(MainInit.gemBlock, 6)));
-		skarn.put("entries", skarnMap);
-		INSTANCE.jsonMap.put(EnumVein.SKARN, skarn);
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.BLACK)) {
+			Map<String, Object> black = new HashMap<String, Object>();
+			black.put("layer", blockString(new BlockSet(Blocks.STONE, 0)));
+			List<Map<String, Object>> blackMap = Lists.newArrayList();
+			blackMap.add(getEntry(80, new BlockSet(MainInit.oreNew, 4), new BlockSet(MainInit.oreNew, 9), 5));
+			blackMap.add(getEntry(30, new BlockSet(MainInit.layerNew, 4)));
+			blackMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 9)));
+			blackMap.add(getEntry(5, new BlockSet(Blocks.REDSTONE_ORE, 0)));
+			blackMap.add(getEntry(5, new BlockSet(Blocks.COAL_ORE, 0)));
+			black.put("entries", blackMap);
+			INSTANCE.jsonMap.put(EnumVein.BLACK, black);
+			ret = true;
+		}
 
-		Map<String, Object> skarn_under = new HashMap<String, Object>();
-		skarn_under.put("layer", blockString(new BlockSet(Blocks.STONE, 1)));
-		List<Map<String, Object>> skarn_underMap = Lists.newArrayList();
-		skarn_underMap.add(getEntry(40, new BlockSet(MainInit.oreNew, 3), new BlockSet(MainInit.oreNew, 8), 15));
-		skarn_underMap.add(getEntry(40, new BlockSet(MainInit.oreNew, 4), new BlockSet(MainInit.oreNew, 9), 15));
-		skarn_underMap.add(getEntry(10, new BlockSet(Blocks.STONE, 1), new BlockSet(Blocks.REDSTONE_ORE, 0), 10));
-		skarn_under.put("entries", skarn_underMap);
-		INSTANCE.jsonMap.put(EnumVein.SKARN_UNDER, skarn_under);
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.GUANO)) {
+			Map<String, Object> guano = new HashMap<String, Object>();
+			guano.put("layer", blockString(new BlockSet(Blocks.GRAVEL, 0)));
+			List<Map<String, Object>> guanoMap = Lists.newArrayList();
+			guanoMap.add(getEntry(80, new BlockSet(MainInit.layerNew, 2), new BlockSet(Blocks.GRAVEL, 0), 30));
+			guano.put("entries", guanoMap);
+			INSTANCE.jsonMap.put(EnumVein.GUANO, guano);
+			ret = true;
+		}
 
-		Map<String, Object> nether = new HashMap<String, Object>();
-		nether.put("layer", blockString(new BlockSet(MainInit.oreNew, 10)));
-		List<Map<String, Object>> netherMap = Lists.newArrayList();
-		netherMap.add(getEntry(40, new BlockSet(MainInit.oreNew, 10), new BlockSet(MainInit.oreNew, 11), 20));
-		netherMap.add(getEntry(40, new BlockSet(MainInit.oreNew, 12), new BlockSet(MainInit.oreNew, 13), 20));
-		netherMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 14)));
-		netherMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 11)));
-		netherMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 13)));
-		nether.put("entries", netherMap);
-		INSTANCE.jsonMap.put(EnumVein.NETHER, nether);
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.SKARN_IRON)) {
+			Map<String, Object> skarn = new HashMap<String, Object>();
+			skarn.put("layer", blockString(new BlockSet(MainInit.skarnBlock, 0)));
+			List<Map<String, Object>> skarnMap = Lists.newArrayList();
+			skarnMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 1), new BlockSet(MainInit.oreNew, 6), 15));
+			skarnMap.add(getEntry(30, new BlockSet(MainInit.oreNew, 2), new BlockSet(MainInit.oreNew, 7), 15));
+			skarnMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 4), new BlockSet(MainInit.oreNew, 9), 15));
+			skarnMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 6)));
+			skarnMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 7)));
+			skarnMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 9)));
+			skarn.put("entries", skarnMap);
+			INSTANCE.jsonMap.put(EnumVein.SKARN_IRON, skarn);
+			ret = true;
+		}
+
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.SKARN_COPPER)) {
+			Map<String, Object> skarn_under = new HashMap<String, Object>();
+			skarn_under.put("layer", blockString(new BlockSet(MainInit.skarnBlock, 2)));
+			List<Map<String, Object>> skarn_underMap = Lists.newArrayList();
+			skarn_underMap.add(getEntry(40, new BlockSet(MainInit.oreNew, 0), new BlockSet(MainInit.oreNew, 5), 15));
+			skarn_underMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 3), new BlockSet(MainInit.oreNew, 8), 15));
+			skarn_underMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 5)));
+			skarn_underMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 6)));
+			skarn_underMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 8)));
+			skarn_underMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 9)));
+			skarn_under.put("entries", skarn_underMap);
+			INSTANCE.jsonMap.put(EnumVein.SKARN_COPPER, skarn_under);
+			ret = true;
+		}
+
+		if (!INSTANCE.jsonMap.containsKey(EnumVein.NETHER)) {
+			Map<String, Object> nether = new HashMap<String, Object>();
+			nether.put("layer", blockString(new BlockSet(MainInit.oreNew, 10)));
+			List<Map<String, Object>> netherMap = Lists.newArrayList();
+			netherMap.add(getEntry(40, new BlockSet(MainInit.oreNew, 10), new BlockSet(MainInit.oreNew, 11), 20));
+			netherMap.add(getEntry(40, new BlockSet(MainInit.oreNew, 12), new BlockSet(MainInit.oreNew, 13), 20));
+			netherMap.add(getEntry(20, new BlockSet(MainInit.oreNew, 14)));
+			netherMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 11)));
+			netherMap.add(getEntry(10, new BlockSet(MainInit.oreNew, 13)));
+			nether.put("entries", netherMap);
+			INSTANCE.jsonMap.put(EnumVein.NETHER, nether);
+			ret = true;
+		}
+
+		return ret;
 	}
 
 	public static void setDir(File file) {

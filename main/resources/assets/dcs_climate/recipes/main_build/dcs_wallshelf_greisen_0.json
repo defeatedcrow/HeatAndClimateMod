@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X X",
+  "XYX",
+  "X X"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "blockGreisen"
+  },
+  "Y": {
+   "item": "minecraft:chest",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_wallshelf_greisen",
+  "count": 1,
+  "data": 0
+ }
+}

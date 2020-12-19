@@ -425,7 +425,7 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 		ret.add(DCHeatTier.COOL);
 		ret.add(DCHeatTier.NORMAL);
 		ret.add(DCHeatTier.WARM);
-		return ret;
+		return CoreConfigDC.harderCrop ? getHardmodeTemp(thisState) : ret;
 	}
 
 	@Override
@@ -433,7 +433,7 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 		List<DCHumidity> ret = new ArrayList<DCHumidity>();
 		ret.add(DCHumidity.DRY);
 		ret.add(DCHumidity.NORMAL);
-		return ret;
+		return CoreConfigDC.harderCrop ? getHardmodeHum(thisState) : ret;
 	}
 
 	@Override
@@ -442,6 +442,25 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 		ret.add(DCAirflow.NORMAL);
 		ret.add(DCAirflow.FLOW);
 		ret.add(DCAirflow.WIND);
+		return CoreConfigDC.harderCrop ? getHardmodeAir(thisState) : ret;
+	}
+
+	public List<DCHeatTier> getHardmodeTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.NORMAL);
+		return ret;
+	}
+
+	public List<DCHumidity> getHardmodeHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.NORMAL);
+		return ret;
+	}
+
+	public List<DCAirflow> getHardmodeAir(IBlockState thisState) {
+		List<DCAirflow> ret = new ArrayList<DCAirflow>();
+		ret.add(DCAirflow.NORMAL);
+		ret.add(DCAirflow.FLOW);
 		return ret;
 	}
 

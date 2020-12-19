@@ -24,7 +24,6 @@ public class DCLootEvent {
 	public void onEvent(LootTableLoadEvent event) {
 		if (event.getTable() != null) {
 			Item ingot = MainInit.oreIngot;
-			Item gem = MainInit.gems;
 			Item jerky = MainInit.bakedApple;
 			Item meat = FoodInit.meat;
 			Item gear = MainInit.gears;
@@ -91,12 +90,12 @@ public class DCLootEvent {
 						new SetMetadata(new LootCondition[0], new RandomValueRange(3)),
 						new SetCount(new LootCondition[0], new RandomValueRange(2, 6)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":desert_ingot_silver1"));
-					pool.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(13)),
+					pool.addEntry(new LootEntryItem(MainInit.gems_green, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(1)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":desert_gem_per"));
-					pool.addEntry(new LootEntryItem(gem, 8, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(5)),
+					pool.addEntry(new LootEntryItem(MainInit.gems_green, 8, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(0)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":desert_gem_mal"));
 					pool.addEntry(new LootEntryItem(MainInit.leatherHat, 5, 1, new LootFunction[0],
@@ -108,14 +107,14 @@ public class DCLootEvent {
 						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
 						new SetCount(new LootCondition[0], new RandomValueRange(4, 6)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":desert_cloth"));
-					pool2.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(21)),
+					pool2.addEntry(new LootEntryItem(MainInit.gems_red, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(5)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
-							ClimateMain.MOD_ID + ":desert_gem_kun"));
-					pool2.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(6)),
-						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
-							ClimateMain.MOD_ID + ":desert_gem_cel"));
+							ClimateMain.MOD_ID + ":desert_gem_rub"));
+					pool2.addEntry(new LootEntryItem(MainInit.gems_white, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(5)),
+						new SetCount(new LootCondition[0], new RandomValueRange(1, 5)) }, new LootCondition[0],
+							ClimateMain.MOD_ID + ":desert_gem_top"));
 				}
 			}
 			// 廃坑 白緑
@@ -127,12 +126,12 @@ public class DCLootEvent {
 						new SetMetadata(new LootCondition[0], new RandomValueRange(3, 4)),
 						new SetCount(new LootCondition[0], new RandomValueRange(3, 5)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":mine_ingot_brass"));
-					pool.addEntry(new LootEntryItem(gem, 10, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(4)),
+					pool.addEntry(new LootEntryItem(MainInit.gems_blue, 10, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(5)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
-							ClimateMain.MOD_ID + ":mine_gem_sapphire"));
-					pool.addEntry(new LootEntryItem(gem, 10, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(19)),
+							ClimateMain.MOD_ID + ":mine_gem_aqua"));
+					pool.addEntry(new LootEntryItem(MainInit.gems_green, 10, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":mine_gem_jed"));
 					pool.addEntry(new LootEntryItem(jerky, 5, 3, new LootFunction[] {
@@ -142,14 +141,14 @@ public class DCLootEvent {
 				}
 				LootPool pool2 = loot.getPool("pool2");
 				if (pool2 != null) {
-					pool2.addEntry(new LootEntryItem(gem, 10, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(6)),
+					pool2.addEntry(new LootEntryItem(MainInit.gems_white, 10, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
-							ClimateMain.MOD_ID + ":mine_gem_cel"));
-					pool2.addEntry(new LootEntryItem(gem, 10, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(19)),
+							ClimateMain.MOD_ID + ":mine_gem_cel2"));
+					pool2.addEntry(new LootEntryItem(MainInit.gems_green, 10, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(5)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
-							ClimateMain.MOD_ID + ":mine_gem_jed2"));
+							ClimateMain.MOD_ID + ":mine_gem_tsav"));
 					if (ModuleConfig.clothes_advanced) {
 						pool2.addEntry(new LootEntryItem(MainInit.workerSuit, 2, 1, new LootFunction[0],
 								new LootCondition[0], ClimateMain.MOD_ID + ":mine_suit"));
@@ -167,12 +166,12 @@ public class DCLootEvent {
 				LootTable loot = event.getTable();
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
-					pool.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(22)),
+					pool.addEntry(new LootEntryItem(MainInit.gems_black, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(4)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
-							ClimateMain.MOD_ID + ":stronghold_gem_opal"));
-					pool.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(20)),
+							ClimateMain.MOD_ID + ":stronghold_gem_alex"));
+					pool.addEntry(new LootEntryItem(MainInit.gems_blue, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":stronghold_gem_moon"));
 					if (ModuleConfig.tool) {
@@ -199,12 +198,12 @@ public class DCLootEvent {
 				LootTable loot = event.getTable();
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
-					pool.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(21)),
+					pool.addEntry(new LootEntryItem(MainInit.gems_red, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":nether_gem_kun"));
-					pool.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(22)),
+					pool.addEntry(new LootEntryItem(MainInit.gems_black, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":nether_gem_opal"));
 					pool.addEntry(new LootEntryItem(jerky, 10, 3, new LootFunction[] {
@@ -218,12 +217,12 @@ public class DCLootEvent {
 				LootTable loot = event.getTable();
 				LootPool pool = loot.getPool("main");
 				if (pool != null) {
-					pool.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(19)),
+					pool.addEntry(new LootEntryItem(MainInit.gems_green, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":jungle_gem_jed"));
-					pool.addEntry(new LootEntryItem(gem, 15, 3, new LootFunction[] {
-						new SetMetadata(new LootCondition[0], new RandomValueRange(20)),
+					pool.addEntry(new LootEntryItem(MainInit.gems_blue, 15, 3, new LootFunction[] {
+						new SetMetadata(new LootCondition[0], new RandomValueRange(2)),
 						new SetCount(new LootCondition[0], new RandomValueRange(1, 3)) }, new LootCondition[0],
 							ClimateMain.MOD_ID + ":jungle_gem_moon"));
 					pool.addEntry(new LootEntryItem(cloth, 15, 1, new LootFunction[] {

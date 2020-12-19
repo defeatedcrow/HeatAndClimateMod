@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "gemRuby"
+   "ore": "gemAmethyst"
   },
   {
    "type": "forge:ore_dict",

@@ -2,12 +2,12 @@
  "type": "forge:ore_shapeless",
  "ingredients": [
   {
-   "type": "forge:ore_dict",
-   "ore": "petalBlackLotus"
+   "item": "dcs_climate:dcs_oreitem",
+   "data": 10
   },
   {
    "type": "forge:ore_dict",
-   "ore": "dyeRed"
+   "ore": "dropRed"
   }
  ],
  "result": {

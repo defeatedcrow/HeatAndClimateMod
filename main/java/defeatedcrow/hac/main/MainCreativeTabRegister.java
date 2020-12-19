@@ -17,6 +17,8 @@ public class MainCreativeTabRegister {
 		// MainInit.ores_2.setCreativeTab(ClimateCore.climate);
 		MainInit.oreNew.setCreativeTab(ClimateCore.climate);
 		MainInit.layerNew.setCreativeTab(ClimateCore.climate);
+		MainInit.skarnBlock.setCreativeTab(ClimateCore.climate);
+		MainInit.skarnOre.setCreativeTab(ClimateCore.climate);
 		MainInit.dustBlock.setCreativeTab(ClimateCore.climate);
 		MainInit.dustBlock_2.setCreativeTab(ClimateCore.climate);
 		MainInit.gemBlock.setCreativeTab(ClimateCore.climate);
@@ -35,6 +37,8 @@ public class MainCreativeTabRegister {
 		MainInit.stairsSerpentine.setCreativeTab(ClimateMain.build);
 		MainInit.stairsBedrock.setCreativeTab(ClimateMain.build);
 		MainInit.stairsDirtbrick.setCreativeTab(ClimateMain.build);
+		MainInit.stairsSkarn.setCreativeTab(ClimateMain.build);
+		MainInit.stairsGreisen.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab2.setCreativeTab(ClimateMain.build);
 		MainInit.halfSlab3.setCreativeTab(ClimateMain.build);
@@ -72,7 +76,13 @@ public class MainCreativeTabRegister {
 		MainInit.oreItem.setCreativeTab(ClimateCore.climate);
 		MainInit.oreDust.setCreativeTab(ClimateCore.climate);
 		MainInit.oreIngot.setCreativeTab(ClimateCore.climate);
-		MainInit.gems.setCreativeTab(ClimateCore.climate);
+		// MainInit.gems.setCreativeTab(ClimateCore.climate);
+		MainInit.gems_red.setCreativeTab(ClimateCore.climate);
+		MainInit.gems_green.setCreativeTab(ClimateCore.climate);
+		MainInit.gems_blue.setCreativeTab(ClimateCore.climate);
+		MainInit.gems_white.setCreativeTab(ClimateCore.climate);
+		MainInit.gems_black.setCreativeTab(ClimateCore.climate);
+		MainInit.gems_layer.setCreativeTab(ClimateCore.climate);
 		MainInit.miscDust.setCreativeTab(ClimateCore.climate);
 		MainInit.foodDust.setCreativeTab(ClimateMain.food);
 		MainInit.silkworm.setCreativeTab(ClimateMain.cloth);
@@ -121,6 +131,8 @@ public class MainCreativeTabRegister {
 			MainInit.tableDark.setCreativeTab(ClimateMain.build);
 			MainInit.squaretableWood.setCreativeTab(ClimateMain.build);
 			MainInit.squaretableMarble.setCreativeTab(ClimateMain.build);
+			MainInit.squaretableSkarn.setCreativeTab(ClimateMain.build);
+			MainInit.squaretableGreisen.setCreativeTab(ClimateMain.build);
 			MainInit.squaretableChecker.setCreativeTab(ClimateMain.build);
 			MainInit.squaretableBlack.setCreativeTab(ClimateMain.build);
 			MainInit.squaretableRattan.setCreativeTab(ClimateMain.build);
@@ -131,6 +143,8 @@ public class MainCreativeTabRegister {
 			MainInit.stoolRattan.setCreativeTab(ClimateMain.build);
 			MainInit.chairWood.setCreativeTab(ClimateMain.build);
 			MainInit.chairMarble.setCreativeTab(ClimateMain.build);
+			MainInit.chairSkarn.setCreativeTab(ClimateMain.build);
+			MainInit.chairGreisen.setCreativeTab(ClimateMain.build);
 			MainInit.chairChecker.setCreativeTab(ClimateMain.build);
 			MainInit.chairBlack.setCreativeTab(ClimateMain.build);
 			MainInit.chairRattan.setCreativeTab(ClimateMain.build);
@@ -138,11 +152,15 @@ public class MainCreativeTabRegister {
 			MainInit.carpetWhite.setCreativeTab(ClimateMain.build);
 			MainInit.carpetGray.setCreativeTab(ClimateMain.build);
 			MainInit.chestMarble.setCreativeTab(ClimateMain.build);
+			MainInit.chestSkarn.setCreativeTab(ClimateMain.build);
+			MainInit.chestGreisen.setCreativeTab(ClimateMain.build);
 			MainInit.chestWood.setCreativeTab(ClimateMain.build);
 			MainInit.chestChecker.setCreativeTab(ClimateMain.build);
 			MainInit.chestBlack.setCreativeTab(ClimateMain.build);
 			MainInit.chestRattan.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfMarble.setCreativeTab(ClimateMain.build);
+			MainInit.wallshelfSkarn.setCreativeTab(ClimateMain.build);
+			MainInit.wallshelfGreisen.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfWood.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfChecker.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfBlack.setCreativeTab(ClimateMain.build);

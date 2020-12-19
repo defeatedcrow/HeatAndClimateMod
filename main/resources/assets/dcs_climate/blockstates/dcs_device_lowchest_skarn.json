@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north":  { "model": "dcs_climate:device/dcs_device_lowchest_skarn" },
+        "facing=south":  { "model": "dcs_climate:device/dcs_device_lowchest_skarn", "y": 180, "uvlock": true  },
+        "facing=west":  { "model": "dcs_climate:device/dcs_device_lowchest_skarn", "y": 270, "uvlock": true  },
+        "facing=east":  { "model": "dcs_climate:device/dcs_device_lowchest_skarn", "y": 90, "uvlock": true  }
+    }
+}

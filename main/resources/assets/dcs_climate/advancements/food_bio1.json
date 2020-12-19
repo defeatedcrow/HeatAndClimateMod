@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "dcs_climate:dcs_food_medium"
+    },
+    "title": {
+      "translate": "advancements.dcs_climate.food_bio1.title"
+    },
+    "description": {
+      "translate": "advancements.dcs_climate.food_bio1.description"
+    }
+  },
+  "parent": "dcs_climate:climate_cooking3",
+  "criteria": {
+        "dcs_bio": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dcs_climate:dcs_food_medium"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.4.4 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.5.0 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -7,7 +7,7 @@
 
 ・MincraftForge 1.12.2-14.23.3.2768 以上
 
-・HeatAndClimateLib 1.12.2_3.4.2 以上
+・HeatAndClimateLib 1.12.2_3.4.4 以上
 
 ### 注意事項! ###
 
@@ -2150,6 +2150,12 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.4.5
+　修正
+　　・地形生成の処理を微修正
+　EX
+　　・zh_CN更新(
 
 ○3.4.4
 　新規

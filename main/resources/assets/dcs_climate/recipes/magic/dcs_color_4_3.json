@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "type": "forge:ore_dict",
-   "ore": "petalLotus"
+   "ore": "gemSakura"
   },
   {
    "type": "forge:ore_dict",

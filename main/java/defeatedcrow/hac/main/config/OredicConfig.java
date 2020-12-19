@@ -41,6 +41,17 @@ public class OredicConfig {
 		{ "oreSerpentine" },
 		{ "oreTravertine" } };
 
+	public static String[][] layers2 = new String[][] {
+		{ "oreRuby" },
+		{ "oreAquamarine" },
+		{ "oreSakura" },
+		{ "oreIolite" },
+		{ "oreTopaz" },
+		{ "oreAmethyst" },
+		{ "oreLarimar" },
+		{ "oreFluorite" },
+		{ "oreQuartz" } };
+
 	public static String[][] items = new String[][] {
 		{ "oreCopper" },
 		{ "oreTin" },
@@ -144,7 +155,19 @@ public class OredicConfig {
 		{ "gemKunzite", "gemSpodumene" },
 		{ "gemOpal" },
 		{ "gemCrudeOil" },
-		{ "gemTausonite" } };
+		{ "gemTausonite" },
+		{ "gemAmethyst" },
+		{ "gemChiastolite" },
+		{ "gemRuby" },
+		{ "gemVivianite" },
+		{ "gemLarimar" },
+		{ "gemAquamarine" },
+		{ "gemFluorite" },
+		{ "gemTsavorite" },
+		{ "gemSakura" },
+		{ "gemTopaz" },
+		{ "gemIolite" },
+		{ "gemAlexandrite" } };
 
 	public static String[][] gemb = new String[][] {
 		{ "blockChalcedonyBlue" },
@@ -200,6 +223,7 @@ public class OredicConfig {
 		Property l4 = cfg.get("1_ores", "2_04_SulfurOre", layers[4]);
 		Property l5 = cfg.get("1_ores", "2_05_SaltOre", layers[5]);
 		Property l6 = cfg.get("1_ores", "2_06_SerpentineOre", layers[6]);
+		Property l7 = cfg.get("1_ores", "2_07_TravertineOre", layers[7]);
 
 		Property c0 = cfg.get("1_ores", "3_00_CopperOreItem", items[0]);
 		Property c1 = cfg.get("1_ores", "3_01_TinOreItem", items[1]);
@@ -216,6 +240,16 @@ public class OredicConfig {
 		Property c12 = cfg.get("1_ores", "3_12_BismuthOreItem", items[12]);
 		Property c13 = cfg.get("1_ores", "3_13_TitaniumOreItem", items[13]);
 		Property c14 = cfg.get("1_ores", "3_14_MolybdenumOreItem", items[14]);
+
+		Property ll0 = cfg.get("1_ores", "11_00_RubyOre", layers2[0]);
+		Property ll1 = cfg.get("1_ores", "11_01_AquamarineOre", layers2[1]);
+		Property ll2 = cfg.get("1_ores", "11_02_SakuraOre", layers2[2]);
+		Property ll3 = cfg.get("1_ores", "11_03_IoliteOre", layers2[3]);
+		Property ll4 = cfg.get("1_ores", "11_04_TopazOre", layers2[4]);
+		Property ll5 = cfg.get("1_ores", "11_05_AmethystOre", layers2[5]);
+		Property ll6 = cfg.get("1_ores", "11_06_LarimarOre", layers2[6]);
+		Property ll7 = cfg.get("1_ores", "11_07_FluoriteOre", layers2[7]);
+		Property ll8 = cfg.get("1_ores", "11_08_QuartzOre", layers2[8]);
 
 		Property i0 = cfg.get("2_metals", "4_00_CopperIngot", ingots[0]);
 		Property i1 = cfg.get("2_metals", "4_01_ZincIngot", ingots[1]);
@@ -299,6 +333,18 @@ public class OredicConfig {
 		Property g22 = cfg.get("3_gems", "8_22_Opal", gems[22]);
 		Property g23 = cfg.get("3_gems", "8_23_CrudeOilGem", gems[23]);
 		Property g24 = cfg.get("3_gems", "8_24_Tausonite", gems[24]);
+		Property g25 = cfg.get("3_gems", "8_25_Amethyst", gems[25]);
+		Property g26 = cfg.get("3_gems", "8_26_Chiastolite", gems[26]);
+		Property g27 = cfg.get("3_gems", "8_27_Ruby", gems[27]);
+		Property g28 = cfg.get("3_gems", "8_28_Vivianite", gems[28]);
+		Property g29 = cfg.get("3_gems", "8_29_Larimar", gems[29]);
+		Property g30 = cfg.get("3_gems", "8_30_Aquamarine", gems[30]);
+		Property g31 = cfg.get("3_gems", "8_31_Fluorite", gems[31]);
+		Property g32 = cfg.get("3_gems", "8_32_Tsavorite", gems[32]);
+		Property g33 = cfg.get("3_gems", "8_33_Sakura", gems[33]);
+		Property g34 = cfg.get("3_gems", "8_34_Topaz", gems[34]);
+		Property g35 = cfg.get("3_gems", "8_35_Iolite", gems[35]);
+		Property g36 = cfg.get("3_gems", "8_36_Alexandrite", gems[36]);
 
 		Property b0 = cfg.get("3_gems", "9_00_BlueChalcedonyBlock", gemb[0]);
 		Property b1 = cfg.get("3_gems", "9_01_RedChalcedonyBlock", gemb[1]);
@@ -342,6 +388,17 @@ public class OredicConfig {
 		layers[4] = l4.getStringList();
 		layers[5] = l5.getStringList();
 		layers[6] = l6.getStringList();
+		layers[7] = l7.getStringList();
+
+		layers2[0] = ll0.getStringList();
+		layers2[1] = ll1.getStringList();
+		layers2[2] = ll2.getStringList();
+		layers2[3] = ll3.getStringList();
+		layers2[4] = ll4.getStringList();
+		layers2[5] = ll5.getStringList();
+		layers2[6] = ll6.getStringList();
+		layers2[7] = ll7.getStringList();
+		layers2[8] = ll8.getStringList();
 
 		items[0] = c0.getStringList();
 		items[1] = c1.getStringList();
@@ -441,6 +498,18 @@ public class OredicConfig {
 		gems[22] = g22.getStringList();
 		gems[23] = g23.getStringList();
 		gems[24] = g24.getStringList();
+		gems[25] = g25.getStringList();
+		gems[26] = g26.getStringList();
+		gems[27] = g27.getStringList();
+		gems[28] = g28.getStringList();
+		gems[29] = g29.getStringList();
+		gems[30] = g30.getStringList();
+		gems[31] = g31.getStringList();
+		gems[32] = g32.getStringList();
+		gems[33] = g33.getStringList();
+		gems[34] = g34.getStringList();
+		gems[35] = g35.getStringList();
+		gems[36] = g36.getStringList();
 
 		gemb[0] = b0.getStringList();
 		gemb[1] = b1.getStringList();

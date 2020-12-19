@@ -108,6 +108,8 @@ public class FoodInit {
 	public static Item blueMold;
 	public static Item slimeMold;
 	public static Item mushroom;
+	public static Item skin;
+	public static Item cyano;
 
 	public static Item chickInEgg;
 	public static Item liquorBottle;

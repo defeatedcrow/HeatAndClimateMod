@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.cultivate.GrowingStage;
@@ -109,6 +110,27 @@ public class BlockGarlic extends ClimateCropBase implements ITexturePath {
 		List<DCHumidity> ret = new ArrayList<DCHumidity>();
 		ret.add(DCHumidity.NORMAL);
 		ret.add(DCHumidity.WET);
+		return ret;
+	}
+
+	@Override
+	public List<DCHeatTier> getHardmodeTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.HOT);
+		return ret;
+	}
+
+	@Override
+	public List<DCHumidity> getHardmodeHum(IBlockState thisState) {
+		List<DCHumidity> ret = new ArrayList<DCHumidity>();
+		ret.add(DCHumidity.WET);
+		return ret;
+	}
+
+	@Override
+	public List<DCAirflow> getHardmodeAir(IBlockState thisState) {
+		List<DCAirflow> ret = new ArrayList<DCAirflow>();
+		ret.add(DCAirflow.FLOW);
 		return ret;
 	}
 

@@ -1,7 +1,6 @@
 package defeatedcrow.hac.machine.entity;
 
 import java.util.List;
-import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
@@ -11,6 +10,8 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.api.MainAPIManager;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageEntityTank;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -40,7 +41,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -68,6 +68,7 @@ public class EntityScooter extends Entity implements IInventory {
 	protected double lastYaw;
 	protected double lastRot;
 	public double lastMoveY;
+	protected int lastInT;
 
 	public boolean brake;
 
@@ -225,6 +226,18 @@ public class EntityScooter extends Entity implements IInventory {
 
 		if (world.isRemote) {
 			addParticle();
+		} else {
+			boolean flag = false;
+			if (tank.getFluidAmount() + tank.getFluidIdName().hashCode() != lastInT) {
+				flag = true;
+				lastInT = tank.getFluidAmount() + tank.getFluidIdName().hashCode();
+			}
+
+			if (flag) {
+				String f1 = tank.getFluidType() == null ? "empty" : tank.getFluidType().getName();
+				int a1 = tank.getFluidAmount();
+				DCMainPacket.INSTANCE.sendToAll(new MessageEntityTank(this.getEntityId(), f1, a1));
+			}
 		}
 	}
 
@@ -930,10 +943,6 @@ public class EntityScooter extends Entity implements IInventory {
 			return this.currentBurnTime;
 		case 1:
 			return this.maxBurnTime;
-		case 2:
-			return getFluidID();
-		case 3:
-			return this.tank.getFluidAmount();
 		default:
 			return 0;
 		}
@@ -948,43 +957,14 @@ public class EntityScooter extends Entity implements IInventory {
 		case 1:
 			this.maxBurnTime = value;
 			break;
-		case 2:
-			Fluid f = getFluidByID(value);
-			if (f == null)
-				tank.setFluid(null);
-			else
-				tank.setFluid(new FluidStack(f, tank.getFluidAmount()));
-			break;
-		case 3:
-			this.tank.setAmount(value);
-			break;
 		default:
 			return;
 		}
 	}
 
-	public int getFluidID() {
-		Fluid fluid = tank.getFluidType();
-		if (fluid != null) {
-			int i = FluidRegistry.getRegisteredFluidIDs().get(fluid);
-			return 1;
-		}
-		return -1;
-	}
-
-	public Fluid getFluidByID(int id) {
-		for (Entry<Fluid, Integer> e : FluidRegistry.getRegisteredFluidIDs().entrySet()) {
-			if (e.getValue() != null && e.getValue().intValue() == id) {
-				tank.setFluid(new FluidStack(e.getKey(), tank.getFluidAmount()));
-				return e.getKey();
-			}
-		}
-		return null;
-	}
-
 	@Override
 	public int getFieldCount() {
-		return 4;
+		return 2;
 	}
 
 	@Override

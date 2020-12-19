@@ -112,4 +112,11 @@ public class BlockGinger extends ClimateCropBase implements ITexturePath {
 		return ret;
 	}
 
+	@Override
+	public List<DCHeatTier> getHardmodeTemp(IBlockState thisState) {
+		List<DCHeatTier> ret = new ArrayList<DCHeatTier>();
+		ret.add(DCHeatTier.HOT);
+		return ret;
+	}
+
 }

@@ -23,9 +23,11 @@ public class MainInit {
 	public static Block metalBlockNew;
 	public static Block metalBlockAlloy;
 	public static Block heatedMetalBlock;
+	public static Block skarnBlock;
 
 	public static Block oreNew;
 	public static Block layerNew;
+	public static Block skarnOre;
 
 	// cont
 	public static Block logCont;
@@ -48,6 +50,8 @@ public class MainInit {
 	public static Block stairsSerpentine;
 	public static Block stairsBedrock;
 	public static Block stairsDirtbrick;
+	public static Block stairsSkarn;
+	public static Block stairsGreisen;
 	public static Block halfSlab;
 	public static Block halfSlab2;
 	public static Block halfSlab3;
@@ -121,6 +125,8 @@ public class MainInit {
 	public static Block tableDark;
 	public static Block squaretableWood;
 	public static Block squaretableMarble;
+	public static Block squaretableSkarn;
+	public static Block squaretableGreisen;
 	public static Block squaretableChecker;
 	public static Block squaretableBlack;
 	public static Block stoolBlack;
@@ -129,6 +135,8 @@ public class MainInit {
 	public static Block sofaRed;
 	public static Block chairWood;
 	public static Block chairMarble;
+	public static Block chairSkarn;
+	public static Block chairGreisen;
 	public static Block chairChecker;
 	public static Block chairBlack;
 	public static Block carpetRed;
@@ -144,6 +152,8 @@ public class MainInit {
 	public static Block sinkChest;
 
 	public static Block chestMarble;
+	public static Block chestSkarn;
+	public static Block chestGreisen;
 	public static Block chestWood;
 	public static Block chestChecker;
 	public static Block chestBlack;
@@ -152,6 +162,8 @@ public class MainInit {
 	public static Block chestVillage;
 
 	public static Block wallshelfMarble;
+	public static Block wallshelfSkarn;
+	public static Block wallshelfGreisen;
 	public static Block wallshelfWood;
 	public static Block wallshelfChecker;
 	public static Block wallshelfBlack;
@@ -203,7 +215,15 @@ public class MainInit {
 	public static Item oreItem;
 	public static Item oreDust;
 	public static Item oreIngot;
+	@Deprecated
 	public static Item gems;
+	public static Item gems_blue;
+	public static Item gems_green;
+	public static Item gems_red;
+	public static Item gems_black;
+	public static Item gems_white;
+	public static Item gems_layer;
+
 	public static Item miscDust;
 	public static Item foodDust;
 	public static Item silkworm;

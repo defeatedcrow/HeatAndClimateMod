@@ -115,7 +115,7 @@ public class LoadingOreRecipe {
 			"dustIron",
 			"dustIron",
 			"dustIron",
-			"dustGraphite" });
+			"gemFluorite" });
 
 		DCRecipe.jsonShapelessRecipe("main", 2, new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 			"dustMagnetite",
@@ -126,7 +126,7 @@ public class LoadingOreRecipe {
 			"dustMagnetite",
 			"dustMagnetite",
 			"dustMagnetite",
-			"dustGraphite" });
+			"gemFluorite" });
 
 		DCRecipe.jsonShapelessRecipe("main", 3, new ItemStack(MainInit.dustBlock, 1, 5), new Object[] {
 			"dustIron",
@@ -345,16 +345,16 @@ public class LoadingOreRecipe {
 		ingotRecipe(new ItemStack(MainInit.metalBlockAlloy, 1, 9), new ItemStack(MainInit.oreIngot, 9,
 				18), "Mangalloy");
 
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 0), new ItemStack(MainInit.gems, 4, 0), "ChalcedonyBlue");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 1), new ItemStack(MainInit.gems, 4, 1), "ChalcedonyRed");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 2), new ItemStack(MainInit.gems, 4, 2), "ChalcedonyWhite");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 3), new ItemStack(MainInit.gems, 4, 3), "Gypsum");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 4), new ItemStack(MainInit.gems, 4, 4), "Sapphire");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 5), new ItemStack(MainInit.gems, 4, 8), "Salt");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 7), new ItemStack(MainInit.gems, 4, 11), "Schorl");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 9), new ItemStack(MainInit.gems, 4, 12), "Serpentine");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 10), new ItemStack(MainInit.gems, 4, 13), "Olivine");
-		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 11), new ItemStack(MainInit.gems, 4, 14), "Garnet");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 0), new ItemStack(MainInit.gems_blue, 4, 0), "ChalcedonyBlue");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 1), new ItemStack(MainInit.gems_red, 4, 0), "ChalcedonyRed");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 2), new ItemStack(MainInit.gems_white, 4, 0), "ChalcedonyWhite");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 3), new ItemStack(MainInit.gems_layer, 4, 0), "Gypsum");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 4), new ItemStack(MainInit.gems_blue, 4, 1), "Sapphire");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 5), new ItemStack(MainInit.gems_layer, 4, 1), "Salt");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 7), new ItemStack(MainInit.gems_black, 4, 1), "Schorl");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 9), new ItemStack(MainInit.gems_green, 4, 3), "Serpentine");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 10), new ItemStack(MainInit.gems_green, 4, 1), "Olivine");
+		gemRecipe(new ItemStack(MainInit.gemBlock, 1, 11), new ItemStack(MainInit.gems_red, 4, 1), "Garnet");
 
 		DCRecipe.jsonShapedRecipe("main_container", new ItemStack(MainInit.gemBlock, 1, 8), new Object[] {
 			"XXX",
@@ -370,7 +370,7 @@ public class LoadingOreRecipe {
 			'X',
 			"gemQuartz" });
 
-		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.gems, 8, 2), new Object[] {
+		DCRecipe.jsonShapelessRecipe("main_container", 2, new ItemStack(MainInit.gems_white, 8, 0), new Object[] {
 			new ItemStack(MainInit.gemBlock, 1, 8) });
 
 		DCRecipe.jsonShapedRecipe("main", new ItemStack(MainInit.gemBlock, 4, 12), new Object[] {
