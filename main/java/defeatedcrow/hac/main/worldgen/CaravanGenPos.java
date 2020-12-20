@@ -27,7 +27,9 @@ public class CaravanGenPos {
 		int count = 0;
 		for (int x = -8; x < 9; x++) {
 			for (int z = -8; z < 9; z++) {
-				if ((x > 0 || z > 0) && canGeneratePos(cx + x, cz + z, world)) {
+				if (x == 0 && z == 0)
+					continue;
+				if (canGeneratePos(cx + x, cz + z, world)) {
 					count++;
 				}
 			}
@@ -132,8 +134,13 @@ public class CaravanGenPos {
 
 	public static boolean canGenerateBiome(int cx, int cz, World world) {
 		if (world != null) {
-			Biome biome = BiomeCatchDC.getBiome(cx, cx, world);
+			int px = cx << 4;
+			int pz = cz << 4;
+			px += 8;
+			pz += 8;
+			Biome biome = BiomeCatchDC.getBiome(new BlockPos(px, 1, pz), world);
 			if (biome != null) {
+				// DCLogger.debugInfoLog("test1 Biome: " + biome.getBiomeName());
 				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary
 						.hasType(biome, BiomeDictionary.Type.SAVANNA);
 				boolean b2 = !BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) && !BiomeDictionary

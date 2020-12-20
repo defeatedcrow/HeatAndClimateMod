@@ -51,7 +51,9 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 						generatePart(num, rand, cx, cz, height, world);
 					}
 
-					DCLogger.debugInfoLog("Caravanserai Core for Part" + num + " : " + cx2 + ", " + cz2 + " height " + height);
+					if (cx == cx2 && cz == cz2) {
+						DCLogger.debugInfoLog("Caravanserai Core" + " : " + cx2 + ", " + cz2 + " height " + height);
+					}
 				}
 			}
 		}

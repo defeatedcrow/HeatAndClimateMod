@@ -66,7 +66,7 @@ public class OreGenPos {
 		if (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.BEACH) && rand2 < guanoP) {
 			ret[1] = getVeinFromSeed(world, pos2, EnumVein.GUANO, seed);
 		} else if (BiomeDictionary.hasType(biome2, BiomeDictionary.Type.OCEAN)) {
-			if (y2 > 50 && rand2 < guanoP) {
+			if (y2 > 45 && rand2 < guanoP) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.GUANO, seed);
 			} else if (rand2 < blueP) {
 				ret[1] = getVeinFromSeed(world, pos2, EnumVein.BLUE, seed);

@@ -201,8 +201,8 @@ public class RegisterCrusherRecipe {
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_red, 2, 5), new ItemStack(MainInit.oreItem,
 					1, 10), 0.3F, null, sc, "oreRuby");
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_blue, 2, 5), new ItemStack(Items.EMERALD,
-					1, 0), 0.3F, null, sc, "oreAquamarine");
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_blue, 2, 5), new ItemStack(
+					MainInit.gems_red, 1, 2), 0.3F, null, sc, "oreAquamarine");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_white, 2, 3), new ItemStack(
 					MainInit.gems_red, 1, 4), 0.3F, null, sc, "oreSakura");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_black, 2, 3), new ItemStack(
@@ -292,6 +292,8 @@ public class RegisterCrusherRecipe {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 2, 11), ti, "gemBauxite");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 12), ti, "gemBismuth");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 3, 9), ti, "gemApatite");
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 9), new ItemStack(MainInit.oreDust,
+					1, 5), 1.0F, ti, "gemVivianite");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 11), ti, "gemSerpentine");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 12), ti, "gemSakura");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.DYE, 2, EnumDyeColor.GREEN

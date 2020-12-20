@@ -45,7 +45,7 @@ public class GuiEntityScooter extends GuiBaseDC {
 
 		if (!processor.tank.isEmpty()) {
 			Fluid in = processor.tank.getFluidType();
-			int inAmo = 50 * processor.getField(3) / 5000;
+			int inAmo = 50 * processor.tank.getFluidAmount() / 5000;
 			renderFluid(in, inAmo, i + 38, j + 18, 12, 50);
 		}
 	}

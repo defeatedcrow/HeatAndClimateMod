@@ -361,7 +361,17 @@ public class EntityScooter extends Entity implements IInventory {
 				this.setPowered(false);
 			}
 
-			// setBucketTag();
+			boolean flag = false;
+			if (tank.getFluidAmount() + tank.getFluidIdName().hashCode() != lastInT) {
+				flag = true;
+				lastInT = tank.getFluidAmount() + tank.getFluidIdName().hashCode();
+			}
+
+			if (flag) {
+				String f1 = tank.getFluidType() == null ? "empty" : tank.getFluidType().getName();
+				int a1 = tank.getFluidAmount();
+				DCMainPacket.INSTANCE.sendToAll(new MessageEntityTank(this.getEntityId(), f1, a1));
+			}
 
 		} else {
 			cooltime--;

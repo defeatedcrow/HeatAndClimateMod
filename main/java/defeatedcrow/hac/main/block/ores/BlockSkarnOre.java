@@ -7,7 +7,6 @@ import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCSimpleBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -100,21 +99,21 @@ public class BlockSkarnOre extends DCSimpleBlock implements ITexturePath {
 		ItemStack add = ItemStack.EMPTY;
 		DropTable table = getTable(meta);
 
-		int par = 15 + fortune * 5;
-		if (rand.nextInt(100) < par && table.secondary != null) {
-			add = new ItemStack(table.secondary, 1, table.secondaryMeta);
+		if (table.dropItem != null) {
+			list.add(new ItemStack(table.dropItem, 1, table.dropMeta));
 		}
 
-		if (!DCUtil.isEmpty(add)) {
-			list.add(add);
+		int par2 = 5 + fortune * 5;
+		if (rand.nextInt(100) < par2 && table.secondary != null) {
+			list.add(new ItemStack(table.secondary, 1, table.secondaryMeta));
 		}
 	}
 
 	public enum DropTable {
-		RUBY(MainInit.gems_red, 5, MainInit.gems_black, 5, true, new BlockSet(MainInit.gemBlock, 6)),
-		AQUAMARINE(MainInit.gems_blue, 5, Items.EMERALD, 0, true, new BlockSet(MainInit.gemBlock, 6)),
-		SAKURA(MainInit.gems_white, 3, MainInit.gems_white, 3, true, new BlockSet(MainInit.skarnBlock, 1)),
-		IOLITE(MainInit.gems_black, 3, MainInit.gems_red, 4, true, new BlockSet(MainInit.skarnBlock, 1)),
+		RUBY(MainInit.gems_red, 5, MainInit.oreItem, 10, true, new BlockSet(MainInit.gemBlock, 6)),
+		AQUAMARINE(MainInit.gems_blue, 5, MainInit.gems_red, 2, true, new BlockSet(MainInit.gemBlock, 6)),
+		SAKURA(MainInit.gems_white, 3, MainInit.gems_red, 3, true, new BlockSet(MainInit.skarnBlock, 1)),
+		IOLITE(MainInit.gems_black, 3, MainInit.gems_black, 5, true, new BlockSet(MainInit.skarnBlock, 1)),
 		TOPAZ(MainInit.gems_white, 5, MainInit.gems_white, 5, true, new BlockSet(MainInit.skarnBlock, 2)),
 		AMETHYST(MainInit.gems_red, 3, MainInit.gems_black, 4, true, new BlockSet(MainInit.skarnBlock, 2)),
 		LARIMAR(MainInit.gems_blue, 4, MainInit.gems_blue, 4, true, new BlockSet(MainInit.skarnBlock, 0)),

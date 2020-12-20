@@ -139,12 +139,13 @@ public class BlockOreNew extends DCSimpleBlock implements ITexturePath {
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 		DropTable table = getTable(meta);
 
-		int par = 1 + fortune * 5;
+		int par = 5 + fortune * 10;
 		if (rand.nextInt(100) < par && table.dropItem != null) {
 			list.add(new ItemStack(table.dropItem, 1, table.dropMeta));
 		}
 
-		if (rand.nextInt(100) < fortune && table.secondary != null) {
+		int par2 = 1 + fortune * 5;
+		if (rand.nextInt(100) < par2 && table.secondary != null) {
 			list.add(new ItemStack(table.secondary, 1, table.secondaryMeta));
 		}
 	}

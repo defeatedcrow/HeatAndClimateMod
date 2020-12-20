@@ -127,6 +127,10 @@ public class SkarnGenPos {
 	}
 
 	public static boolean canGeneratePos(int cx, int cz, World world) {
+		// 奇数チャンクに限定
+		if ((cx & 1) == 0 || (cz & 1) == 0)
+			return false;
+
 		long seed = world.getSeed() + cx + cz * 17;
 		Random rand = new Random(seed);
 		rand.nextInt(10000);

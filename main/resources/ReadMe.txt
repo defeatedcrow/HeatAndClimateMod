@@ -7,7 +7,7 @@
 
 ・MincraftForge 1.12.2-14.23.3.2768 以上
 
-・HeatAndClimateLib 1.12.2_3.4.4 以上
+・HeatAndClimateLib 1.12.2_3.5.0 以上
 
 ### 注意事項! ###
 

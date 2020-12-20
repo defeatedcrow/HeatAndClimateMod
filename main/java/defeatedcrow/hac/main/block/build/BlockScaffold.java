@@ -141,10 +141,10 @@ public class BlockScaffold extends DCSimpleBlock implements ITexturePath, IRapid
 
 				int count = 0;
 				for (BlockPos p2 : set) {
-					if (count > held.getCount())
-						break;
 					world.setBlockState(p2, tS);
 					count++;
+					if (count >= held.getCount())
+						break;
 				}
 
 				if (count > 0) {
