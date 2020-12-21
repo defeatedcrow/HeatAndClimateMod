@@ -1,7 +1,9 @@
 package defeatedcrow.hac.main.recipes;
 
+import defeatedcrow.hac.api.climate.ItemSet;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.item.ores.ItemGems;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -381,6 +383,13 @@ public class LoadingOreRecipe {
 
 		DCRecipe.jsonShapelessRecipe("main", new ItemStack(Blocks.BEDROCK, 1, 0), new Object[] {
 			new ItemStack(MainInit.gemBlock, 1, 12) });
+
+		// old gems
+		for (int i = 0; i < 25; i++) {
+			ItemSet gem = ItemGems.getTable(i);
+			DCRecipe.jsonShapelessRecipe("main", new ItemStack(gem.item, 1, gem.meta), new Object[] {
+				new ItemStack(MainInit.gems, 1, i) });
+		}
 	}
 
 	static void ingotRecipe(ItemStack block, ItemStack ingot, String name) {

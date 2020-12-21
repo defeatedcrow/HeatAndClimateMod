@@ -97,30 +97,60 @@ public class ItemGems extends DCItem {
 			return 0;
 	}
 
-	public static ItemSet[] table = {
-		new ItemSet(MainInit.gems_blue, 0),
-		new ItemSet(MainInit.gems_red, 0),
-		new ItemSet(MainInit.gems_white, 0),
-		new ItemSet(MainInit.gems_layer, 0),
-		new ItemSet(MainInit.gems_blue, 1),
-		new ItemSet(MainInit.gems_green, 0),
-		new ItemSet(MainInit.gems_white, 2),
-		new ItemSet(MainInit.gems_black, 5),
-		new ItemSet(MainInit.gems_layer, 1),
-		new ItemSet(MainInit.gems_layer, 2),
-		new ItemSet(MainInit.gems_layer, 3),
-		new ItemSet(MainInit.gems_black, 1),
-		new ItemSet(MainInit.gems_green, 1),
-		new ItemSet(MainInit.gems_green, 1),
-		new ItemSet(MainInit.gems_red, 1),
-		new ItemSet(MainInit.gems_white, 1),
-		new ItemSet(MainInit.gems_layer, 4),
-		new ItemSet(MainInit.gems_layer, 5),
-		new ItemSet(MainInit.gems_layer, 6),
-		new ItemSet(MainInit.gems_green, 2),
-		new ItemSet(MainInit.gems_blue, 2),
-		new ItemSet(MainInit.gems_red, 2),
-		new ItemSet(MainInit.gems_black, 2),
-		new ItemSet(MainInit.gems_black, 0),
-		new ItemSet(MainInit.gems_white, 4) };
+	public static final ItemSet getTable(int m) {
+		switch (m) {
+		case 0:
+			return new ItemSet(MainInit.gems_blue, 0);
+		case 1:
+			return new ItemSet(MainInit.gems_red, 0);
+		case 2:
+			return new ItemSet(MainInit.gems_white, 0);
+		case 3:
+			return new ItemSet(MainInit.gems_layer, 0);
+		case 4:
+			return new ItemSet(MainInit.gems_blue, 1);
+		case 5:
+			return new ItemSet(MainInit.gems_green, 0);
+		case 6:
+			return new ItemSet(MainInit.gems_white, 2);
+		case 7:
+			return new ItemSet(MainInit.gems_black, 5);
+		case 8:
+			return new ItemSet(MainInit.gems_layer, 1);
+		case 9:
+			return new ItemSet(MainInit.gems_layer, 2);
+		case 10:
+			return new ItemSet(MainInit.gems_layer, 3);
+		case 11:
+			return new ItemSet(MainInit.gems_black, 1);
+		case 12:
+			return new ItemSet(MainInit.gems_green, 1);
+		case 13:
+			return new ItemSet(MainInit.gems_green, 1);
+		case 14:
+			return new ItemSet(MainInit.gems_red, 1);
+		case 15:
+			return new ItemSet(MainInit.gems_white, 1);
+		case 16:
+			return new ItemSet(MainInit.gems_layer, 4);
+		case 17:
+			return new ItemSet(MainInit.gems_layer, 5);
+		case 18:
+			return new ItemSet(MainInit.gems_layer, 6);
+		case 19:
+			return new ItemSet(MainInit.gems_green, 2);
+		case 20:
+			return new ItemSet(MainInit.gems_blue, 2);
+		case 21:
+			return new ItemSet(MainInit.gems_red, 2);
+		case 22:
+			return new ItemSet(MainInit.gems_black, 2);
+		case 23:
+			return new ItemSet(MainInit.gems_black, 0);
+		case 24:
+			return new ItemSet(MainInit.gems_white, 4);
+		default:
+			return new ItemSet(MainInit.gems_blue, 0);
+		}
+	};
 }

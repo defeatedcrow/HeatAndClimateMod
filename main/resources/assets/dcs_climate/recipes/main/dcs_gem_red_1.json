@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_gem",
+   "data": 14
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_gem_red",
+  "count": 1,
+  "data": 1
+ }
+}
