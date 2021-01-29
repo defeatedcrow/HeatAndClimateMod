@@ -230,7 +230,7 @@ public class ItemAntibiotic extends DCItem {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		if (!DCUtil.isEmpty(stack)) {
 			int m = stack.getItemDamage();
-			if (m > 1 && m < 7) {
+			if (m != 0 && m != 1 && m != 7) {
 				tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 				tooltip.add(I18n.format("dcs.tip.antibiotic_" + m));
 			}

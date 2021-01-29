@@ -169,7 +169,7 @@ import defeatedcrow.hac.main.worldgen.WorldGenHotspring;
 import defeatedcrow.hac.main.worldgen.WorldGenSaplings;
 import defeatedcrow.hac.main.worldgen.WorldGenWindmill;
 import defeatedcrow.hac.main.worldgen.vein.VeinTableJson;
-import defeatedcrow.hac.main.worldgen.vein.WorldGenOres3;
+import defeatedcrow.hac.main.worldgen.vein.WorldGenOres;
 import defeatedcrow.hac.main.worldgen.vein.WorldGenSkarn;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -269,9 +269,8 @@ public class CommonMainProxy implements IGuiHandler {
 				"dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.agri);
 
-		MainInit.engineer = new VillagerProfession("dcs_climate:engineer",
-				"dcs_climate:textures/models/agri_researcher.png",
-				"dcs_climate:textures/models/zombie_agri_researcher.png");
+		MainInit.engineer = new VillagerProfession("dcs_climate:engineer", "dcs_climate:textures/models/engineer.png",
+				"dcs_climate:textures/models/zombie_engineer.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
 
 		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png",
@@ -297,15 +296,15 @@ public class CommonMainProxy implements IGuiHandler {
 
 		agriList.addTrade(3, new ITradeList[] {
 			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)) });
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3)) });
 
 		agriList.addTrade(4, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)) });
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3)) });
 
 		agriList.addTrade(5, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)) });
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)),
+			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3)) });
 
 		// Gems, Clothes, Furnitures
 		VillagerCareer traderList = new VillagerCareer(MainInit.trader, "dcs_trader");
@@ -502,7 +501,7 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadWorldGen() {
 		// gen
 		if (ModuleConfig.world) {
-			GameRegistry.registerWorldGenerator(new WorldGenOres3(), 2);
+			GameRegistry.registerWorldGenerator(new WorldGenOres(), 2);
 			if (WorldGenConfig.skarnGen > 0) {
 				GameRegistry.registerWorldGenerator(new WorldGenSkarn(false), 3);
 			}

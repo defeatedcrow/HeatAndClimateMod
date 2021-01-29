@@ -25,17 +25,17 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 // 新型
-public class WorldGenOres3 implements IWorldGenerator {
+public class WorldGenOres implements IWorldGenerator {
 
 	private static final boolean debug = false;
 	private final boolean isForced;
 
-	public WorldGenOres3(boolean force) {
+	public WorldGenOres(boolean force) {
 		super();
 		isForced = force;
 	}
 
-	public WorldGenOres3() {
+	public WorldGenOres() {
 		super();
 		isForced = false;
 	}

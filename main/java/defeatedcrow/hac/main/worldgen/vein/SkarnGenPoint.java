@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.worldgen.vein;
 import defeatedcrow.hac.core.DCLogger;
 
 // ゲーム外に保存できないので保留中
+@Deprecated
 public class SkarnGenPoint {
 
 	public static final SkarnGenPoint INSTANCE = new SkarnGenPoint();
@@ -12,8 +13,7 @@ public class SkarnGenPoint {
 	public static int count = 0;
 	public static int current = 0;
 
-	private SkarnGenPoint() {
-	}
+	private SkarnGenPoint() {}
 
 	protected static void addPos(int x, int z) {
 		ChunkCoord c = INSTANCE.new ChunkCoord(x, z);

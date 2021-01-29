@@ -50,7 +50,7 @@ public class EntityProjRedSpit extends EntityProjBase {
 			ign = (EntityLivingBase) this.shootingEntity;
 		}
 		CustomExplosion explosion = new CustomExplosion(world, this, ign, posX, posY, posZ, range,
-				CustomExplosion.Type.Silk, true);
+				CustomExplosion.Type.Normal, true);
 		explosion.doExplosion();
 		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.8F / (this.rand.nextFloat() * 0.2F + 0.9F));
 		this.setDead();

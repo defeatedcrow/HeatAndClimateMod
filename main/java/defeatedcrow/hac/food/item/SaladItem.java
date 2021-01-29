@@ -15,6 +15,7 @@ import defeatedcrow.hac.food.entity.SaladPotatoEntity;
 import defeatedcrow.hac.food.entity.SaladSalmonEntity;
 import defeatedcrow.hac.food.entity.SaladTofuEntity;
 import defeatedcrow.hac.food.entity.SaladWalnutEntity;
+import defeatedcrow.hac.food.entity.SaladWatermelonEntity;
 import defeatedcrow.hac.food.entity.SimmeredBeansEntity;
 import defeatedcrow.hac.food.entity.SimmeredGomokuEntity;
 import defeatedcrow.hac.food.entity.SimmeredNattoEntity;
@@ -42,13 +43,13 @@ public class SaladItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 11;
+		return 12;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 11);
-		String s = "items/food/" + this.getNameSuffix()[i];
+		int i = MathHelper.clamp(0, meta, 12);
+		String s = "items/food/";
 		if (i < 2 || i > 8) {
 			s += "salad_" + this.getNameSuffix()[i];
 		} else {
@@ -74,7 +75,8 @@ public class SaladItem extends FoodItemBase {
 			"pumpkin",
 			"salmon",
 			"tofu",
-			"walnut" };
+			"walnut",
+			"watermelon" };
 		return s;
 	}
 
@@ -114,6 +116,9 @@ public class SaladItem extends FoodItemBase {
 		}
 		if (i == 11) {
 			ret = new SaladWalnutEntity(world, x, y, z, player);
+		}
+		if (i == 12) {
+			ret = new SaladWatermelonEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		return ret;

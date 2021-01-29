@@ -32,6 +32,7 @@ public class HaCTradeData {
 
 	public static final List<HaCTradeData> AGRI1 = Lists.newArrayList();
 	public static final List<HaCTradeData> AGRI2 = Lists.newArrayList();
+	public static final List<HaCTradeData> AGRI3 = Lists.newArrayList();
 	public static final List<HaCTradeData> TRADE1 = Lists.newArrayList();
 	public static final List<HaCTradeData> TRADE2 = Lists.newArrayList();
 	public static final List<HaCTradeData> TRADE3 = Lists.newArrayList();
@@ -52,6 +53,11 @@ public class HaCTradeData {
 		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomCont(1), 0));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomCardboard(1), 2));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomLogCont(16), 4));
+		AGRI2.add(new HaCTradeData(TradeType.SELL, new ItemStack(Items.STONE_HOE, 1, 0), 1));
+
+		AGRI3.add(new HaCTradeData(TradeType.BUY, new ItemStack(Items.PUMPKIN_PIE), 2));
+		AGRI3.add(new HaCTradeData(TradeType.BUY, new ItemStack(Items.BEETROOT_SOUP), 1));
+		AGRI3.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.dcScythe[0], 1, 0), 3));
 
 		if (ModuleConfig.food) {
 			AGRI1.add(new HaCTradeData(TradeType.SELL, MainUtil.getRandomBasket(1), 2));
@@ -65,11 +71,12 @@ public class HaCTradeData {
 			AGRI2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.paperPack, 4, 4), 3));
 			AGRI2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.bread, 3, 0), 1));
 			AGRI2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.bread, 3, 0), 1));
-			AGRI2.add(new HaCTradeData(TradeType.BUY, new ItemStack(Items.DYE, 8, 15), 2));
 			AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomSapling(1), 0));
-			AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomSapling(1), 0));
-			AGRI2.add(new HaCTradeData(TradeType.SELL, new ItemStack(FoodInit.teaLeaves, 4, 2), 1));
 			AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomSeed(1), 0));
+
+			AGRI3.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.dairy, 8, 0), 2));
+			AGRI3.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.dairy, 8, 1), 2));
+			AGRI3.add(new HaCTradeData(TradeType.SELL, new ItemStack(FoodInit.paperPack, 4, 2), 1));
 		}
 
 		TRADE1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 3), 2));

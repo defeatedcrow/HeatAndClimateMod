@@ -107,6 +107,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("cropTea", new ItemStack(FoodInit.crops, 1, 8));
 		OreDictionary.registerOre("cropHerb", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("listAllherb", new ItemStack(FoodInit.crops, 1, 9));
+		OreDictionary.registerOre("listAllspice", new ItemStack(FoodInit.crops, 1, 9));
 		OreDictionary.registerOre("cropLotusSeed", new ItemStack(FoodInit.crops, 1, 10));
 		OreDictionary.registerOre("cropLotusRoot", new ItemStack(FoodInit.seeds, 1, 6));
 		OreDictionary.registerOre("seedRice", new ItemStack(FoodInit.seeds, 1, 0));
@@ -201,6 +202,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodSiroanko", new ItemStack(FoodInit.meat, 1, 8));
 		OreDictionary.registerOre("foodShrimp", new ItemStack(FoodInit.meat, 1, 9));
 		OreDictionary.registerOre("foodShrimpraw", new ItemStack(FoodInit.meat, 1, 9));
+		OreDictionary.registerOre("foodRoe", new ItemStack(FoodInit.meat, 1, 10));
 		OreDictionary.registerOre("foodPastry", new ItemStack(FoodInit.pastry, 1, 0));
 		OreDictionary.registerOre("foodNoodles", new ItemStack(FoodInit.pastry, 1, 1));
 		OreDictionary.registerOre("foodDough", new ItemStack(FoodInit.bread, 1, 0));

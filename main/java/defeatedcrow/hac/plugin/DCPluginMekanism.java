@@ -36,73 +36,25 @@ public class DCPluginMekanism {
 	public static void sendIMC() {
 		Item bio = Item.REGISTRY.getObject(new ResourceLocation("mekanism", "biofuel"));
 		if (bio != null && ModuleConfig.food) {
-			NBTTagCompound crop0 = new NBTTagCompound();
-			crop0.setTag("input", new ItemStack(FoodInit.crops, 1, 0).writeToNBT(new NBTTagCompound()));
-			crop0.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop0);
-
-			NBTTagCompound crop1 = new NBTTagCompound();
-			crop1.setTag("input", new ItemStack(FoodInit.crops, 1, 1).writeToNBT(new NBTTagCompound()));
-			crop1.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop1);
-
-			NBTTagCompound crop2 = new NBTTagCompound();
-			crop2.setTag("input", new ItemStack(FoodInit.crops, 1, 2).writeToNBT(new NBTTagCompound()));
-			crop2.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop2);
-
-			NBTTagCompound crop3 = new NBTTagCompound();
-			crop3.setTag("input", new ItemStack(FoodInit.crops, 1, 3).writeToNBT(new NBTTagCompound()));
-			crop3.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop3);
-
-			NBTTagCompound crop4 = new NBTTagCompound();
-			crop4.setTag("input", new ItemStack(FoodInit.crops, 1, 4).writeToNBT(new NBTTagCompound()));
-			crop4.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop4);
-
-			NBTTagCompound crop5 = new NBTTagCompound();
-			crop5.setTag("input", new ItemStack(FoodInit.crops, 1, 5).writeToNBT(new NBTTagCompound()));
-			crop5.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop5);
-
-			NBTTagCompound crop6 = new NBTTagCompound();
-			crop6.setTag("input", new ItemStack(FoodInit.crops, 1, 6).writeToNBT(new NBTTagCompound()));
-			crop6.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop6);
-
-			NBTTagCompound crop7 = new NBTTagCompound();
-			crop7.setTag("input", new ItemStack(FoodInit.crops, 1, 7).writeToNBT(new NBTTagCompound()));
-			crop7.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop7);
-
-			NBTTagCompound crop8 = new NBTTagCompound();
-			crop8.setTag("input", new ItemStack(FoodInit.crops, 1, 8).writeToNBT(new NBTTagCompound()));
-			crop8.setTag("output", new ItemStack(bio, 2, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop8);
-
-			NBTTagCompound crop9 = new NBTTagCompound();
-			crop9.setTag("input", new ItemStack(FoodInit.crops, 1, 9).writeToNBT(new NBTTagCompound()));
-			crop9.setTag("output", new ItemStack(bio, 2, 0).writeToNBT(new NBTTagCompound()));
-			FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop9);
+			for (int i = 0; i < 20; i++) {
+				NBTTagCompound crop = new NBTTagCompound();
+				crop.setTag("input", new ItemStack(FoodInit.crops, 1, 0).writeToNBT(new NBTTagCompound()));
+				crop.setTag("output", new ItemStack(bio, 4, 0).writeToNBT(new NBTTagCompound()));
+				FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", crop);
+			}
 		}
 
 		// enrichment
 
 		NBTTagCompound dust_zinc = new NBTTagCompound();
-		dust_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
+		dust_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
 		dust_zinc.setTag("output", new ItemStack(MainInit.oreDust, 2, 1).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "EnrichmentChamberRecipe", dust_zinc);
 
 		NBTTagCompound dust_nickel = new NBTTagCompound();
-		dust_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
+		dust_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		dust_nickel.setTag("output", new ItemStack(MainInit.oreDust, 2, 2).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "EnrichmentChamberRecipe", dust_nickel);
-
-		NBTTagCompound dust_nickel2 = new NBTTagCompound();
-		dust_nickel2.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
-		dust_nickel2.setTag("output", new ItemStack(MainInit.oreDust, 2, 2).writeToNBT(new NBTTagCompound()));
-		FMLInterModComms.sendMessage("mekanism", "EnrichmentChamberRecipe", dust_nickel2);
 
 		NBTTagCompound dirty_zinc = new NBTTagCompound();
 		dirty_zinc.setTag("input", new ItemStack(MainInit.metalMaterials, 1, 0).writeToNBT(new NBTTagCompound()));
@@ -118,7 +70,7 @@ public class DCPluginMekanism {
 
 		NBTTagCompound cotton = new NBTTagCompound();
 		cotton.setTag("input", new ItemStack(MainInit.clothes, 1, 3).writeToNBT(new NBTTagCompound()));
-		cotton.setTag("output", new ItemStack(Items.STRING, 4, 1).writeToNBT(new NBTTagCompound()));
+		cotton.setTag("output", new ItemStack(Items.STRING, 4, 0).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "CrusherRecipe", cotton);
 
 		NBTTagCompound clump_zinc = new NBTTagCompound();
@@ -144,22 +96,16 @@ public class DCPluginMekanism {
 		// purification
 
 		NBTTagCompound ore3_zinc = new NBTTagCompound();
-		ore3_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
+		ore3_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
 		ore3_zinc.setTag("gasType", new GasStack(GasRegistry.getGas("oxygen"), 1000).write(new NBTTagCompound()));
 		ore3_zinc.setTag("output", new ItemStack(MainInit.metalMaterials, 3, 2).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "PurificationChamberRecipe", ore3_zinc);
 
 		NBTTagCompound ore3_nickel = new NBTTagCompound();
-		ore3_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
+		ore3_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		ore3_nickel.setTag("gasType", new GasStack(GasRegistry.getGas("oxygen"), 1000).write(new NBTTagCompound()));
 		ore3_nickel.setTag("output", new ItemStack(MainInit.metalMaterials, 3, 6).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "PurificationChamberRecipe", ore3_nickel);
-
-		NBTTagCompound ore3_nickel2 = new NBTTagCompound();
-		ore3_nickel2.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
-		ore3_nickel2.setTag("gasType", new GasStack(GasRegistry.getGas("oxygen"), 1000).write(new NBTTagCompound()));
-		ore3_nickel2.setTag("output", new ItemStack(MainInit.metalMaterials, 3, 6).writeToNBT(new NBTTagCompound()));
-		FMLInterModComms.sendMessage("mekanism", "PurificationChamberRecipe", ore3_nickel2);
 
 		NBTTagCompound shard_zinc = new NBTTagCompound();
 		shard_zinc.setTag("input", new ItemStack(MainInit.metalMaterials, 1, 1).writeToNBT(new NBTTagCompound()));
@@ -176,25 +122,18 @@ public class DCPluginMekanism {
 		// c_injection
 
 		NBTTagCompound ore4_zinc = new NBTTagCompound();
-		ore4_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
+		ore4_zinc.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
 		ore4_zinc.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000)
 				.write(new NBTTagCompound()));
 		ore4_zinc.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 1).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "ChemicalInjectionChamberRecipe", ore4_zinc);
 
 		NBTTagCompound ore4_nickel = new NBTTagCompound();
-		ore4_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 2).writeToNBT(new NBTTagCompound()));
+		ore4_nickel.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
 		ore4_nickel.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000)
 				.write(new NBTTagCompound()));
 		ore4_nickel.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 5).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage("mekanism", "ChemicalInjectionChamberRecipe", ore4_nickel);
-
-		NBTTagCompound ore4_nickel2 = new NBTTagCompound();
-		ore4_nickel2.setTag("input", new ItemStack(MainInit.oreItem, 1, 6).writeToNBT(new NBTTagCompound()));
-		ore4_nickel2.setTag("gasType", new GasStack(GasRegistry.getGas("hydrogenchloride"), 1000)
-				.write(new NBTTagCompound()));
-		ore4_nickel2.setTag("output", new ItemStack(MainInit.metalMaterials, 4, 5).writeToNBT(new NBTTagCompound()));
-		FMLInterModComms.sendMessage("mekanism", "ChemicalInjectionChamberRecipe", ore4_nickel2);
 
 		NBTTagCompound crystal_zinc = new NBTTagCompound();
 		crystal_zinc.setTag("input", new ItemStack(MainInit.metalMaterials, 1, 3).writeToNBT(new NBTTagCompound()));

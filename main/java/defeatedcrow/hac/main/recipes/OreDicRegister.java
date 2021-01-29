@@ -7,7 +7,6 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.OredicConfig;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -233,7 +232,6 @@ public class OreDicRegister {
 		OreDictionary.registerOre("dustWood", new ItemStack(MainInit.foodDust, 1, 7));
 
 		// material
-		OreDictionary.registerOre("string", new ItemStack(Items.STRING, 1, 0));
 		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 0));
 		OreDictionary.registerOre("string", new ItemStack(MainInit.clothes, 1, 1));
 		OreDictionary.registerOre("itemCloth", new ItemStack(MainInit.clothes, 1, 2));

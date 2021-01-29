@@ -172,8 +172,12 @@ public class MainInit {
 	public static Block displayShelf;
 
 	public static Block doorMarble;
+	public static Block doorGreisen;
+	public static Block doorGypsum;
 	public static Block doorSteel;
 	public static Item itemDoorMarble;
+	public static Item itemDoorGreisen;
+	public static Item itemDoorGypsum;
 	public static Item itemDoorSteel;
 
 	public static Block bed;

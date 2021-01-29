@@ -1,16 +1,16 @@
 package defeatedcrow.hac.food.client;
 
+import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.client.base.DCFoodModelBase;
 import defeatedcrow.hac.core.client.base.DCRenderFoodBase;
 import defeatedcrow.hac.food.client.model.ModelPizza;
-import defeatedcrow.hac.food.entity.BreadToastEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class PizzaTomatoRenderer extends DCRenderFoodBase<BreadToastEntity> {
+public class PizzaTomatoRenderer extends DCRenderFoodBase<FoodEntityBase> {
 
 	private static final ResourceLocation RAW_TEX = new ResourceLocation("dcs_climate",
 			"textures/entity/food/pizza_tomato_raw.png");

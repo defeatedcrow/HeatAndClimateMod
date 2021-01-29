@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XX",
+  "XX",
+  "XX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "blockGypsum"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_door_gypsum_item",
+  "count": 2,
+  "data": 0
+ }
+}

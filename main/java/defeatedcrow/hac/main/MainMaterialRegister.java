@@ -951,6 +951,29 @@ public class MainMaterialRegister {
 			MainInit.itemDoorMarble.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_door_marble_item");
 			ForgeRegistries.ITEMS.register(MainInit.itemDoorMarble);
 
+			MainInit.doorGreisen = new BlockDoorDC(ClimateCore.PACKAGE_BASE + "_door_greisen", Material.ROCK);
+			DCMaterialReg
+					.registerBlock(MainInit.doorGreisen, ClimateCore.PACKAGE_BASE + "_door_greisen", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.doorGreisen), "dcs_climate", "dcs_door_greisen", "build", 0, true);
+
+			MainInit.itemDoorGreisen = new ItemDoorDC(MainInit.doorGreisen)
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_door_greisen_item");
+			MainInit.itemDoorGreisen
+					.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_door_greisen_item");
+			ForgeRegistries.ITEMS.register(MainInit.itemDoorGreisen);
+
+			MainInit.doorGypsum = new BlockDoorDC(ClimateCore.PACKAGE_BASE + "_door_gypsum", Material.ROCK);
+			DCMaterialReg
+					.registerBlock(MainInit.doorGypsum, ClimateCore.PACKAGE_BASE + "_door_gypsum", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.doorGypsum), "dcs_climate", "dcs_door_gypsum", "build", 0, true);
+
+			MainInit.itemDoorGypsum = new ItemDoorDC(MainInit.doorGypsum)
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_door_gypsum_item");
+			MainInit.itemDoorGypsum.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_door_gypsum_item");
+			ForgeRegistries.ITEMS.register(MainInit.itemDoorGypsum);
+
 			MainInit.doorSteel = new BlockDoorDC(ClimateCore.PACKAGE_BASE + "_door_steel", Material.ROCK);
 			DCMaterialReg
 					.registerBlock(MainInit.doorSteel, ClimateCore.PACKAGE_BASE + "_door_steel", ClimateMain.MOD_ID);

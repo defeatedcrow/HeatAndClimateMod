@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.entity.PlateGratinEntity;
+import defeatedcrow.hac.food.entity.PlateGyozaEntity;
 import defeatedcrow.hac.food.entity.PlateMeatPaellaEntity;
 import defeatedcrow.hac.food.entity.PlatePaellaEntity;
 import defeatedcrow.hac.food.entity.PlatePotatoEntity;
@@ -32,12 +33,12 @@ public class PlateSoupItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 9;
+		return 11;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 9);
+		int i = MathHelper.clamp(0, meta, 11);
 		String s = "items/food/plate_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -57,7 +58,9 @@ public class PlateSoupItem extends FoodItemBase {
 			"paella_raw",
 			"paella_baked",
 			"meat_paella_raw",
-			"meat_paella_baked" };
+			"meat_paella_baked",
+			"gyoza_raw",
+			"gyoza_baked" };
 		return s;
 	}
 
@@ -78,6 +81,9 @@ public class PlateSoupItem extends FoodItemBase {
 		if (i == 8 || i == 9) {
 			ret = new PlateMeatPaellaEntity(world, x, y, z, player);
 		}
+		if (i == 10 || i == 11) {
+			ret = new PlateGyozaEntity(world, x, y, z, player);
+		}
 
 		if ((i & 1) == 0) {
 			ret.setRAW(true);
@@ -94,13 +100,13 @@ public class PlateSoupItem extends FoodItemBase {
 		case 2:
 			return 0;
 		case 1:
-			return 12;
 		case 3:
 			return 12;
 		case 5:
 			return 10;
 		case 7:
 		case 9:
+		case 11:
 			return 16;
 		}
 		return 0;

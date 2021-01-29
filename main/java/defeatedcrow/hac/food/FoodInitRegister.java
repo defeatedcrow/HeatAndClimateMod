@@ -46,6 +46,7 @@ import defeatedcrow.hac.food.block.crop.BlockWisteria;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.item.CakeItem;
 import defeatedcrow.hac.food.item.ClubSandItem;
+import defeatedcrow.hac.food.item.CookieItem;
 import defeatedcrow.hac.food.item.DeepFryItem;
 import defeatedcrow.hac.food.item.DipSauceItem;
 import defeatedcrow.hac.food.item.DishBigItem;
@@ -66,6 +67,7 @@ import defeatedcrow.hac.food.item.ItemSilverCup;
 import defeatedcrow.hac.food.item.ItemTeaLeaves;
 import defeatedcrow.hac.food.item.MochiItem;
 import defeatedcrow.hac.food.item.PastaItem;
+import defeatedcrow.hac.food.item.PizzaItem;
 import defeatedcrow.hac.food.item.PlateMeatItem;
 import defeatedcrow.hac.food.item.PlateSoupItem;
 import defeatedcrow.hac.food.item.RiceBowlItem;
@@ -313,6 +315,12 @@ public class FoodInitRegister {
 
 		FoodInit.bread = new RoundBreadItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_bread");
 		DCMaterialReg.registerItem(FoodInit.bread, ClimateCore.PACKAGE_BASE + "_food_bread", ClimateMain.MOD_ID);
+
+		FoodInit.pizza = new PizzaItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_pizza");
+		DCMaterialReg.registerItem(FoodInit.pizza, ClimateCore.PACKAGE_BASE + "_food_pizza", ClimateMain.MOD_ID);
+
+		FoodInit.cookie = new CookieItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_cookie");
+		DCMaterialReg.registerItem(FoodInit.cookie, ClimateCore.PACKAGE_BASE + "_food_cookie", ClimateMain.MOD_ID);
 
 		FoodInit.sticks = new StickFoodsItem(true).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_stick");
 		DCMaterialReg.registerItem(FoodInit.sticks, ClimateCore.PACKAGE_BASE + "_food_stick", ClimateMain.MOD_ID);
@@ -680,6 +688,8 @@ public class FoodInitRegister {
 
 	static void loadCreativeTab() {
 		FoodInit.bread.setCreativeTab(ClimateMain.food);
+		FoodInit.pizza.setCreativeTab(ClimateMain.food);
+		FoodInit.cookie.setCreativeTab(ClimateMain.food);
 		FoodInit.sticks.setCreativeTab(ClimateMain.food);
 		FoodInit.pastryRound.setCreativeTab(ClimateMain.food);
 		FoodInit.pastrySquare.setCreativeTab(ClimateMain.food);

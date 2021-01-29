@@ -13,11 +13,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockDoorDC extends BlockDoor {
 
@@ -46,6 +49,12 @@ public class BlockDoorDC extends BlockDoor {
 	private Item getItem() {
 		if (this == MainInit.doorMarble) {
 			return MainInit.itemDoorMarble;
+		}
+		if (this == MainInit.doorGreisen) {
+			return MainInit.itemDoorGreisen;
+		}
+		if (this == MainInit.doorGypsum) {
+			return MainInit.itemDoorGypsum;
 		}
 		if (this == MainInit.doorSteel) {
 			return MainInit.itemDoorSteel;
@@ -146,6 +155,12 @@ public class BlockDoorDC extends BlockDoor {
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 			return true;
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override

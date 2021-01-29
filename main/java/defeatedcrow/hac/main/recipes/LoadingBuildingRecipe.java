@@ -385,6 +385,11 @@ public class LoadingBuildingRecipe {
 			"cropWheat",
 			"cropSeaweed" });
 
+		DCRecipe.jsonShapelessRecipe("main_build", 3, new ItemStack(MainInit.builds, 1, 6), new Object[] {
+			"dustLime",
+			"foodBagasse",
+			"cropSeaweed" });
+
 		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.builds, 4, 7), new Object[] {
 			"XX",
 			"XX",
@@ -1103,6 +1108,20 @@ public class LoadingBuildingRecipe {
 				"XX",
 				'X',
 				"blockMarble" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemDoorGreisen, 2, 0), new Object[] {
+				"XX",
+				"XX",
+				"XX",
+				'X',
+				"blockGreisen" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemDoorGypsum, 2, 0), new Object[] {
+				"XX",
+				"XX",
+				"XX",
+				'X',
+				"blockGypsum" });
 
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.itemDoorSteel, 2, 0), new Object[] {
 				"XX",

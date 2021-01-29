@@ -234,6 +234,26 @@ public class RegisterFluidRecipe {
 		regBoilrecipe(null, new ItemStack(MainInit.foodDust, 1, 5), 0.25F, new FluidStack(MainInit.soyMilk,
 				500), null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] { "cropSoybean" });
 
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
+				10), null, 0F, null, DCHeatTier.NORMAL, null, null, false, null, new Object[] {
+					"foodCodraw",
+					"dustSalt" });
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
+				10), null, 0F, null, DCHeatTier.NORMAL, null, null, false, null, new Object[] {
+					"foodSalmonraw",
+					"dustSalt" });
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
+				10), null, 0F, null, DCHeatTier.NORMAL, null, null, false, null, new Object[] {
+					"foodHerringraw",
+					"dustSalt" });
+
+		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
+				10), null, 0F, null, DCHeatTier.NORMAL, null, null, false, null, new Object[] {
+					"foodTroutraw",
+					"dustSalt" });
+
 		// おだし
 
 		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.stock, 5000), null, null, false, new FluidStack(
@@ -649,6 +669,10 @@ public class RegisterFluidRecipe {
 								"cropCarrot",
 								"listAllbeefraw",
 								"foodCheese" });
+
+			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.pasta, 2,
+					7), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,
+							100), new Object[] { "foodNoodles", "foodRoe", "foodSoysauce", "foodButter", "cropHerb" });
 
 			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dishBig, 3,
 					0), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(MainInit.oil,

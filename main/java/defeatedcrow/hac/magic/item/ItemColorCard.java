@@ -22,7 +22,7 @@ import defeatedcrow.hac.main.packet.MessageMagicParticle;
 import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.worldgen.vein.OreGenPos;
 import defeatedcrow.hac.main.worldgen.vein.OreGenPos.OreVein;
-import defeatedcrow.hac.main.worldgen.vein.WorldGenOres3;
+import defeatedcrow.hac.main.worldgen.vein.WorldGenOres;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -352,7 +352,7 @@ public class ItemColorCard extends DCItem {
 	}
 
 	private boolean onEffect_Green3(World world, EntityPlayer player, float f) {
-		WorldGenOres3 gen = new WorldGenOres3(true);
+		WorldGenOres gen = new WorldGenOres(true);
 		int x = MathHelper.floor(player.posX);
 		int y = MathHelper.floor(player.posY);
 		int z = MathHelper.floor(player.posZ);

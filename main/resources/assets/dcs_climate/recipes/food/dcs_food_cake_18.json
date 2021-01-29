@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "foodFlour"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dropMolasses"
+  },
+  {
+   "item": "dcs_climate:dcs_food_leaves",
+   "data": 1
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllheavycream"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "egg"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_cake",
+  "count": 2,
+  "data": 18
+ }
+}

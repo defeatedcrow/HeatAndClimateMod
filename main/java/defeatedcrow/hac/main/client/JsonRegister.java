@@ -62,6 +62,8 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.scope, ClimateCore.PACKAGE_ID, "dcs_thermal_scope", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.entityScope, ClimateCore.PACKAGE_ID, "dcs_entity_scope", "tool", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorMarble, ClimateCore.PACKAGE_ID, "dcs_door_marble", "build", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorGreisen, ClimateCore.PACKAGE_ID, "dcs_door_greisen", "build", 0);
+		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorGypsum, ClimateCore.PACKAGE_ID, "dcs_door_gypsum", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorSteel, ClimateCore.PACKAGE_ID, "dcs_door_steel", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, ClimateCore.PACKAGE_ID, "dcs_big_cushion", "build", 1);
 		MAIN_INSTANCE.regSimpleItem(MainInit.tinder, ClimateCore.PACKAGE_ID, "dcs_tinder", "tool", 2);
@@ -160,6 +162,10 @@ public class JsonRegister {
 			MAIN_INSTANCE.regSimpleBlock(MainInit.hedgeWinter, ClimateCore.PACKAGE_ID, "dcs_hedge_winter", "crop", 0);
 
 			ModelLoader.setCustomStateMapper(MainInit.doorMarble, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
+					.build());
+			ModelLoader.setCustomStateMapper(MainInit.doorGreisen, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
+					.build());
+			ModelLoader.setCustomStateMapper(MainInit.doorGypsum, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
 					.build());
 			ModelLoader.setCustomStateMapper(MainInit.doorSteel, (new StateMap.Builder()).ignore(BlockDoor.POWERED)
 					.build());

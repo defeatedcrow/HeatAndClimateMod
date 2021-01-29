@@ -9,6 +9,8 @@ public class FoodInit {
 	private FoodInit() {}
 
 	public static Item bread;
+	public static Item pizza;
+	public static Item cookie;
 	public static Item sandwich;
 	public static Item sticks;
 	public static Item pastryRound;

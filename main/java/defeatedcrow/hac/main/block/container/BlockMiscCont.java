@@ -40,7 +40,7 @@ public class BlockMiscCont extends DCSimpleBlock implements ITexturePath, IRapid
 		case 0:
 			return new ItemStack(Items.CLAY_BALL);
 		case 1:
-			return new ItemStack(Items.FISH);
+			return "foodCodraw";
 		case 2:
 			return "leather";
 		case 3:

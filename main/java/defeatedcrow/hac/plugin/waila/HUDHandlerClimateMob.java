@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.damage.DamageAPI;
-import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerEntities;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -24,16 +24,8 @@ public class HUDHandlerClimateMob extends HUDHandlerEntities {
 			return currenttip;
 
 		if (entity instanceof EntityLivingBase) {
-			float heat = DamageAPI.resistantData.getHeatResistant(entity);
-			float cold = DamageAPI.resistantData.getColdResistant(entity);
-			if (entity.isImmuneToFire()) {
-				heat += CoreConfigDC.infernalInferno ? 8.0F : 4.0F;
-				cold -= 2.0F;
-			}
-			if (((EntityLivingBase) entity).isEntityUndead()) {
-				heat -= 2.0F;
-				cold += 2.0F;
-			}
+			float heat = DamageAPI.resistantData.getHeatResistant(entity, DCHeatTier.OVEN);
+			float cold = DamageAPI.resistantData.getHeatResistant(entity, DCHeatTier.FROSTBITE);
 
 			currenttip.add(String.format("%s : %.1f / %.1f", DCName.CLIMATE_R.getLocalizedName(), heat, cold));
 		}

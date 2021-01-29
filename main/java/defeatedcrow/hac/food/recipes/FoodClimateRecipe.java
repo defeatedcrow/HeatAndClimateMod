@@ -33,6 +33,11 @@ public class FoodClimateRecipe {
 		addFoodRecipe(new ItemStack(FoodInit.bread, 1, 25), new ItemStack(FoodInit.bread, 1, 24));
 		addFoodRecipe(new ItemStack(FoodInit.bread, 1, 27), new ItemStack(FoodInit.bread, 1, 26));
 
+		addFoodRecipe(new ItemStack(FoodInit.pizza, 1, 1), new ItemStack(FoodInit.pizza, 1, 0));
+		addFoodRecipe(new ItemStack(FoodInit.pizza, 1, 3), new ItemStack(FoodInit.pizza, 1, 2));
+
+		addFoodRecipe(new ItemStack(FoodInit.cookie, 1, 1), new ItemStack(FoodInit.cookie, 1, 0));
+
 		addFoodRecipe(new ItemStack(FoodInit.sticks, 1, 1), new ItemStack(FoodInit.sticks, 1, 0));
 		addFoodRecipe(new ItemStack(FoodInit.sticks, 1, 3), new ItemStack(FoodInit.sticks, 1, 2));
 		addFoodRecipe(new ItemStack(FoodInit.sticks, 1, 5), new ItemStack(FoodInit.sticks, 1, 4));
@@ -71,6 +76,7 @@ public class FoodClimateRecipe {
 		addFoodRecipe(new ItemStack(FoodInit.plateSoup, 1, 5), new ItemStack(FoodInit.plateSoup, 1, 4));
 		addFoodRecipe(new ItemStack(FoodInit.plateSoup, 1, 7), new ItemStack(FoodInit.plateSoup, 1, 6));
 		addFoodRecipe(new ItemStack(FoodInit.plateSoup, 1, 9), new ItemStack(FoodInit.plateSoup, 1, 8));
+		addFoodRecipe(new ItemStack(FoodInit.plateSoup, 1, 11), new ItemStack(FoodInit.plateSoup, 1, 10));
 
 		addFoodRecipe(new ItemStack(FoodInit.cake, 1, 1), new ItemStack(FoodInit.cake, 1, 0));
 		addFoodRecipe(new ItemStack(FoodInit.cake, 1, 9), new ItemStack(FoodInit.cake, 1, 8));

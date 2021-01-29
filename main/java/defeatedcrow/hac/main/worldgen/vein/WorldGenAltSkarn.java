@@ -23,6 +23,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
+@Deprecated
 public class WorldGenAltSkarn implements IWorldGenerator {
 
 	private final boolean isForced;

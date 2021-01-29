@@ -17,11 +17,12 @@ public class ItemMeatMaterials extends DCItem {
 		"miso",
 		"soysauce",
 		"siroan",
-		"raw_prawn" };
+		"raw_prawn",
+		"raw_roe" };
 
 	public ItemMeatMaterials() {
 		super();
-		maxMeta = 9;
+		maxMeta = 10;
 	}
 
 	@Override

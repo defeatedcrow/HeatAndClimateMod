@@ -171,6 +171,8 @@ public class MainCreativeTabRegister {
 			MainInit.cushionGray.setCreativeTab(ClimateMain.build);
 			MainInit.chandelierGypsum.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorMarble.setCreativeTab(ClimateMain.build);
+			MainInit.itemDoorGreisen.setCreativeTab(ClimateMain.build);
+			MainInit.itemDoorGypsum.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorSteel.setCreativeTab(ClimateMain.build);
 			MainInit.itemBed.setCreativeTab(ClimateMain.build);
 
@@ -219,11 +221,11 @@ public class MainCreativeTabRegister {
 			MainInit.metalMaterials.setCreativeTab(ClimateCore.climate);
 			OreDictionary.registerOre("dustDirtyZinc", new ItemStack(MainInit.metalMaterials, 1, 0));
 			OreDictionary.registerOre("shardZinc", new ItemStack(MainInit.metalMaterials, 1, 1));
-			OreDictionary.registerOre("chunkZinc", new ItemStack(MainInit.metalMaterials, 1, 2));
+			OreDictionary.registerOre("clumpZinc", new ItemStack(MainInit.metalMaterials, 1, 2));
 			OreDictionary.registerOre("crystalZinc", new ItemStack(MainInit.metalMaterials, 1, 3));
 			OreDictionary.registerOre("dustDirtyNickel", new ItemStack(MainInit.metalMaterials, 1, 4));
 			OreDictionary.registerOre("shardNickel", new ItemStack(MainInit.metalMaterials, 1, 5));
-			OreDictionary.registerOre("chunkNickel", new ItemStack(MainInit.metalMaterials, 1, 6));
+			OreDictionary.registerOre("clumpNickel", new ItemStack(MainInit.metalMaterials, 1, 6));
 			OreDictionary.registerOre("crystalNickel", new ItemStack(MainInit.metalMaterials, 1, 7));
 		}
 	}

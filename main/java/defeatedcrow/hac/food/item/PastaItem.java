@@ -12,6 +12,7 @@ import defeatedcrow.hac.food.entity.PastaBeefEntity;
 import defeatedcrow.hac.food.entity.PastaCodEntity;
 import defeatedcrow.hac.food.entity.PastaOilEntity;
 import defeatedcrow.hac.food.entity.PastaPrawnEntity;
+import defeatedcrow.hac.food.entity.PastaRoeEntity;
 import defeatedcrow.hac.food.entity.PastaSquidEntity;
 import defeatedcrow.hac.food.entity.PastaTomatoEntity;
 import defeatedcrow.hac.main.util.DCName;
@@ -31,12 +32,12 @@ public class PastaItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 6;
+		return 7;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 0);
+		int i = MathHelper.clamp(meta, 0, getMaxMeta());
 		String s = "items/food/pasta_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -46,7 +47,7 @@ public class PastaItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = { "oil", "basil", "tomato", "prawn", "cod", "squid", "beef" };
+		String[] s = { "oil", "basil", "tomato", "prawn", "cod", "squid", "beef", "roe" };
 		return s;
 	}
 
@@ -71,6 +72,9 @@ public class PastaItem extends FoodItemBase {
 		}
 		if (i == 6) {
 			ret = new PastaBeefEntity(world, x, y, z, player);
+		}
+		if (i == 7) {
+			ret = new PastaRoeEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		return ret;
