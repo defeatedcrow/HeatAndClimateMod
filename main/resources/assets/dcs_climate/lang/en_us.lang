@@ -2162,7 +2162,6 @@ splash_potion.effect.dcs.clairvoyance=Splash Potion of Clairvoyance
 lingering_potion.effect.dcs.clairvoyance=Lingering Potion of Clairvoyance
 tipped_arrow.effect.dcs.clairvoyance=Arrow of Clairvoyance
 
-tipped_arrow.effect.dcs.freeze_res=Arrow of Freeze Resistance
 
 ## enchantment
 enchantment.dcs.venom=Venom Arrow

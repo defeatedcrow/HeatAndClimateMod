@@ -235,7 +235,7 @@ public class CommonMainProxy implements IGuiHandler {
 				.addPotion(MainInit.projectileResistant, MainInit.projectileResistantType, "projectile_resistant");
 
 		MainInit.reflexion = new PotionReflexionDC();
-		DCRegistryUtil.addPotion(MainInit.reflexion, MainInit.reflexionType, "reflextion");
+		DCRegistryUtil.addPotion(MainInit.reflexion, MainInit.reflexionType, "reflexion");
 
 		MainInit.absorptionEXP = new PotionEXPAbsorptionDC();
 		DCRegistryUtil.addPotion(MainInit.absorptionEXP, MainInit.absorptionEXPType, "absorption_exp");

@@ -38,6 +38,14 @@ public class SkarnGenPos {
 		return false;
 	}
 
+	public static boolean isDupe(BlockPos pos, World world) {
+		if (!WorldGenConfig.skarnDupeCheck)
+			return false;
+		int cx2 = pos.getX() >> 4;
+		int cz2 = pos.getZ() >> 4;
+		return isDupe(cx2, cz2, world);
+	}
+
 	public static boolean hasCenterPoint(int cx, int cz, World world) {
 		BlockPos ret = null;
 		int count = 100;
@@ -51,11 +59,11 @@ public class SkarnGenPos {
 		return false;
 	}
 
-	public static BlockPos getNearestPoint(int cx, int cz, World world) {
+	public static BlockPos getNearestPoint(int cx, int cz, World world, int r) {
 		BlockPos ret = null;
 		int count = 100;
-		for (int x = -2; x < 3; x++) {
-			for (int z = -2; z < 3; z++) {
+		for (int x = -r; x < r + 1; x++) {
+			for (int z = -r; z < r + 1; z++) {
 				if (canGeneratePos(cx + x, cz + z, world)) {
 					int i = x * x + z * z;
 					if (i < count) {

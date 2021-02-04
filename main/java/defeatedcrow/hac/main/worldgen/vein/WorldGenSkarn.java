@@ -56,16 +56,15 @@ public class WorldGenSkarn implements IWorldGenerator {
 		if (!world.getChunkFromChunkCoords(chunkX, chunkZ).isLoaded())
 			return;
 
-		BlockPos center = SkarnGenPos.getNearestPoint(chunkX, chunkZ, world);
+		BlockPos center = SkarnGenPos.getNearestPoint(chunkX, chunkZ, world, 2);
 		if (center == null)
 			return;
-
-		int cx2 = center.getX() >> 4;
-		int cz2 = center.getZ() >> 4;
-		if (SkarnGenPos.isDupe(cx2, cz2, world)) {
+		if (SkarnGenPos.isDupe(center, world)) {
 			return;
 		}
 
+		int cx2 = center.getX() >> 4;
+		int cz2 = center.getZ() >> 4;
 		if (chunkX == cx2 && chunkZ == cz2) {
 			DCLogger.debugInfoLog("Generation skarn : " + chunkX + "," + chunkZ);
 		}

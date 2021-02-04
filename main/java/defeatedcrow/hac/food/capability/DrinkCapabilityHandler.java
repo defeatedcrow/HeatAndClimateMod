@@ -15,8 +15,7 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
  */
 public class DrinkCapabilityHandler {
 
-	private DrinkCapabilityHandler() {
-	}
+	private DrinkCapabilityHandler() {}
 
 	public static final DrinkCapabilityHandler INSTANCE = new DrinkCapabilityHandler();
 
@@ -35,8 +34,17 @@ public class DrinkCapabilityHandler {
 			DrinkMilk milk = instance.getMilk();
 			DrinkSugar sugar = instance.getSugar();
 
-			nbt.setByte(DrinkMilk.getTagKey(), (byte) milk.id);
-			nbt.setByte(DrinkSugar.getTagKey(), (byte) sugar.id);
+			if ((byte) milk.id > 0) {
+				nbt.setByte(DrinkMilk.getTagKey(), (byte) milk.id);
+			} else if (nbt.hasKey(DrinkMilk.getTagKey())) {
+				nbt.removeTag(DrinkMilk.getTagKey());
+			}
+			if ((byte) sugar.id > 0) {
+				nbt.setByte(DrinkSugar.getTagKey(), (byte) sugar.id);
+			} else if (nbt.hasKey(DrinkSugar.getTagKey())) {
+				nbt.removeTag(DrinkSugar.getTagKey());
+			}
+
 			return nbt;
 		}
 

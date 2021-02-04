@@ -278,6 +278,8 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 		if (f != null) {
 			if (currentRecipe != null && currentRecipe.matches(inputT.getFluid())) {
 				return true;
+			} else if (canStartProcess()) {
+				return true;
 			}
 			PotionSet eff = DrinkPotionType.INSTANCE.getPotionSet(f);
 			if (eff != null && !eff.potion.isBadEffect()) {

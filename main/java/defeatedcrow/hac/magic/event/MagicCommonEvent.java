@@ -319,7 +319,7 @@ public class MagicCommonEvent {
 		}
 	}
 
-	int count = 99;
+	int count = 60;
 
 	@SubscribeEvent
 	public void onLiving(LivingEvent.LivingUpdateEvent event) {
@@ -369,7 +369,7 @@ public class MagicCommonEvent {
 				if (count < 0) {
 					PictureList.INSTANCE.checkList(event.getEntityLiving().getEntityWorld());
 				}
-				count = 99;
+				count = 60;
 			} else {
 				count--;
 			}

@@ -120,6 +120,9 @@ public class FluidPaperContDC implements IFluidHandlerItem, ICapabilityProvider 
 
 	protected void setContainerToEmpty() {
 		container.setItemDamage(0);
+		if(container.getTagCompound() != null) {
+			container.setTagCompound(null);
+		}
 	}
 
 	@Override

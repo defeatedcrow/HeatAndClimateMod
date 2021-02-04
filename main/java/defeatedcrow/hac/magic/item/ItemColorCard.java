@@ -23,6 +23,7 @@ import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.worldgen.vein.OreGenPos;
 import defeatedcrow.hac.main.worldgen.vein.OreGenPos.OreVein;
 import defeatedcrow.hac.main.worldgen.vein.WorldGenOres;
+import defeatedcrow.hac.main.worldgen.vein.WorldGenSkarn;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -353,6 +354,7 @@ public class ItemColorCard extends DCItem {
 
 	private boolean onEffect_Green3(World world, EntityPlayer player, float f) {
 		WorldGenOres gen = new WorldGenOres(true);
+		WorldGenSkarn skarn = new WorldGenSkarn(false);
 		int x = MathHelper.floor(player.posX);
 		int y = MathHelper.floor(player.posY);
 		int z = MathHelper.floor(player.posZ);
@@ -362,6 +364,10 @@ public class ItemColorCard extends DCItem {
 			for (int j = -1; j < 2; j++) {
 				gen.generate(world.rand, c.x + i, c.z + j, world, world.provider.createChunkGenerator(), world
 						.getChunkProvider());
+				if (f > 0F) {
+					skarn.generate(world.rand, c.x + i, c.z + j, world, world.provider.createChunkGenerator(), world
+							.getChunkProvider());
+				}
 			}
 		}
 		return true;

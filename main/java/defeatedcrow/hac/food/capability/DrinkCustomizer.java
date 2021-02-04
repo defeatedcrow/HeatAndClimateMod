@@ -52,23 +52,41 @@ public class DrinkCustomizer implements IDrinkCustomize {
 		if (nbt.hasKey(DrinkMilk.getTagKey())) {
 			byte milk = nbt.getByte(DrinkMilk.getTagKey());
 			milkID = milk;
+		} else {
+			milkID = 0;
 		}
 		if (nbt.hasKey(DrinkSugar.getTagKey())) {
 			byte sugar = nbt.getByte(DrinkSugar.getTagKey());
 			sugarID = sugar;
+		} else {
+			sugarID = 0;
 		}
 		if (nbt.hasKey(DrinkItemCustomizer.AGING_KEY)) {
 			byte sugar = nbt.getByte(DrinkItemCustomizer.AGING_KEY);
 			agingLevel = sugar;
+		} else {
+			agingLevel = 0;
 		}
 		return this;
 	}
 
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-		nbt.setByte(DrinkMilk.getTagKey(), milkID);
-		nbt.setByte(DrinkSugar.getTagKey(), sugarID);
-		nbt.setByte(DrinkItemCustomizer.AGING_KEY, agingLevel);
+		if (milkID == 0) {
+			nbt.setByte(DrinkMilk.getTagKey(), milkID);
+		} else {
+			nbt.removeTag(DrinkMilk.getTagKey());
+		}
+		if (sugarID == 0) {
+			nbt.setByte(DrinkSugar.getTagKey(), sugarID);
+		} else {
+			nbt.removeTag(DrinkSugar.getTagKey());
+		}
+		if (agingLevel == 0) {
+			nbt.setByte(DrinkItemCustomizer.AGING_KEY, agingLevel);
+		} else {
+			nbt.removeTag(DrinkItemCustomizer.AGING_KEY);
+		}
+
 		return nbt;
 	}
-
 }

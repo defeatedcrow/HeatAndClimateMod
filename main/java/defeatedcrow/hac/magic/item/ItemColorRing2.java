@@ -16,6 +16,8 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.util.MainUtil;
+import defeatedcrow.hac.main.worldgen.vein.SkarnGenPos;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -209,8 +211,20 @@ public class ItemColorRing2 extends CharmItemBase {
 					break;
 			}
 
+			float eff = MainUtil.magicSuitEff(owner);
+			if (eff > 0F) {
+				int cx = x >> 4;
+				int cz = z >> 4;
+				BlockPos center = SkarnGenPos.getNearestPoint(cx, cz, owner.world, (int) (8 * eff));
+				if (center != null && !SkarnGenPos.isDupe(center, owner.world)) {
+					owner.sendMessage(new TextComponentString("== Nearby Skarn detected =="));
+					owner.sendMessage(new TextComponentString("* Center Coodinate: " + center.getX() + ", 40, " + center
+							.getZ() + " *"));
+				}
+			}
+
 			if (air != null) {
-				owner.sendMessage(new TextComponentString("* Cavity ditected: Y=" + air.getY() + " *"));
+				owner.sendMessage(new TextComponentString("== Cavity ditected: Y=" + air.getY() + " =="));
 			}
 			if (!map.isEmpty()) {
 				owner.sendMessage(new TextComponentString("== Ore block detected =="));
