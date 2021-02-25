@@ -249,7 +249,9 @@ public class ItemColorCard extends DCItem {
 
 	private boolean onEffect_Red1(World world, EntityPlayer player, float f) {
 		int r = MathHelper.floor(6000 * f);
-		int amp = 1 + MathHelper.floor(2F * f);
+		int amp = MathHelper.floor(2F * f);
+		amp--;
+		// DCLogger.debugInfoLog("Magic Eff: " + f + ", dur " + r + ", amp " + amp);
 		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, r, amp));
 		player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, r, amp));
 		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, r, amp));

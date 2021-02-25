@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import codechicken.lib.math.MathHelper;
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.MagicColor;
@@ -15,6 +16,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
+import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.util.portal.DCDimChangeHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -151,6 +153,7 @@ public class ItemColorBadge extends CharmItemBase {
 			EntityPlayer player = (EntityPlayer) owner;
 			if (!player.world.isRemote && state != null) {
 				int c = 1 + charm.getCount() * 3;
+				c = MathHelper.floor(MainUtil.magicSuitEff(owner) * c);
 				BlockSet set = new BlockSet(state.getBlock(), state.getBlock().getMetaFromState(state));
 				if (MainCoreConfig.disables.contains(set)) {
 					return false;

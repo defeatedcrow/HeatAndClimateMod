@@ -56,6 +56,9 @@ public class TileWindVane extends ClimateReceiveTile {
 			while (f1 > 720.0F) {
 				f1 -= 720.0F;
 			}
+			while (f1 < -720.0F) {
+				f1 += 720.0F;
+			}
 			rot = f1;
 		}
 

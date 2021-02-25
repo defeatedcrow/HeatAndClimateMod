@@ -21,6 +21,7 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.IMagicClothing;
 import defeatedcrow.hac.main.worldgen.vein.OreSetDC;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
@@ -329,17 +330,12 @@ public class MainUtil {
 		return ItemStack.EMPTY;
 	}
 
-	public static float magicSuitEff(EntityPlayer player) {
-		if (player != null) {
+	public static float magicSuitEff(EntityLivingBase owner) {
+		if (owner != null) {
 			float f = 1.0F;
-			for (ItemStack armor : player.getArmorInventoryList()) {
-				if (!DCUtil.isEmpty(armor)) {
-					if (armor.getItem() == MainInit.magicCoat) {
-						f += 0.5F;
-					}
-					if (armor.getItem() == MainInit.magicUnder) {
-						f += 0.5F;
-					}
+			for (ItemStack armor : owner.getArmorInventoryList()) {
+				if (!DCUtil.isEmpty(armor) && armor.getItem() instanceof IMagicClothing) {
+					f += ((IMagicClothing) armor.getItem()).getEffect();
 				}
 			}
 			return f;

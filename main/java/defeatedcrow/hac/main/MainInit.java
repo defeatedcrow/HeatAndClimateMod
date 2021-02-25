@@ -81,6 +81,9 @@ public class MainInit {
 
 	public static Block scaffold;
 
+	public static Block pressureChal;
+	public static Block pressureOlivine;
+
 	/* building advanced */
 
 	public static Block awning;
@@ -142,6 +145,7 @@ public class MainInit {
 	public static Block carpetRed;
 	public static Block carpetWhite;
 	public static Block carpetGray;
+	public static Block carpetLinen;
 
 	public static Block curtainWhite;
 	public static Block curtainGray;

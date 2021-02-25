@@ -30,7 +30,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
@@ -129,12 +128,6 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	@Override
 	public int damageDropped(IBlockState state) {
 		return 0;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	public static void changeLitState(World world, BlockPos pos, boolean f) {

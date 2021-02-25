@@ -140,8 +140,12 @@ public class ItemColorPendant extends CharmItemBase {
 			ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.BLACK) {
 			if (owner != null && target != null && !source.isExplosion() && source.isProjectile()) {
+				float pow = charm.getCount() + 1.0F;
+				if (ClimateCore.isDebug)
+					pow += 1.0F;
+				pow *= MainUtil.magicSuitEff(owner);
 				CustomExplosion explosion = new CustomExplosion(owner.world, owner, owner, target.posX,
-						target.posY + 0.25D, target.posZ, charm.getCount(), CustomExplosion.Type.Silk, true);
+						target.posY + 0.25D, target.posZ, pow, CustomExplosion.Type.Normal, true);
 				explosion.doExplosion();
 				owner.world.addWeatherEffect(new EntityLightningBolt(owner.world, target.posX, target.posY - 0.25D,
 						target.posZ, !owner.isSneaking()));
@@ -167,10 +171,13 @@ public class ItemColorPendant extends CharmItemBase {
 	@Override
 	public boolean onUsing(EntityPlayer owner, ItemStack charm) {
 		if (owner != null && !DCUtil.isEmpty(charm) && !owner.world.isRemote) {
+			float eff = MainUtil.magicSuitEff(owner);
 			DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(owner.posX, owner.posY, owner.posZ));
 			if (getColor(charm.getItemDamage()) == MagicColor.BLUE) {
-				owner.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 600 * charm.getCount(), 0));
+				owner.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, (int) (600 * charm.getCount() * eff),
+						0));
 				double a = 4D + charm.getCount() * 2;
+				a *= eff;
 				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a,
 						owner.posY + 2D, owner.posZ + a);
 				List<EntityMob> list = owner.world.getEntitiesWithinAABB(EntityMob.class, aabb);
@@ -194,7 +201,7 @@ public class ItemColorPendant extends CharmItemBase {
 			} else if (getColor(charm.getItemDamage()) == MagicColor.GREEN) {
 				DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(owner.posX, owner.posY, owner.posZ));
 				MainUtil.removeBadPotion(owner);
-				float h = 2.0F * charm.getCount();
+				float h = 2.0F * charm.getCount() * eff;
 				owner.heal(h);
 				double a = 8D + charm.getCount() * 4;
 				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a,

@@ -19,8 +19,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -69,17 +67,6 @@ public class BlockSink extends DCTileBlock {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
-	}
-
-	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.MODEL;
-	}
-
-	@Override
 	public List<ItemStack> getSubItemList() {
 		List<ItemStack> list = Lists.newArrayList();
 		list.add(new ItemStack(this, 1, 0));
@@ -107,8 +94,8 @@ public class BlockSink extends DCTileBlock {
 		if (player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack held = player.getHeldItem(hand);
-			if (tile instanceof TileSink && !DCUtil.isEmpty(held) && held.hasCapability(
-					CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+			if (tile instanceof TileSink && !DCUtil.isEmpty(held) && held
+					.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
 				if (!player.world.isRemote) {
 					DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player);
 				}

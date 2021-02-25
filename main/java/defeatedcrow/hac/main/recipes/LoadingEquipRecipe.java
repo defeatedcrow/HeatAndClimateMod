@@ -599,6 +599,12 @@ public class LoadingEquipRecipe {
 			new ItemStack(Blocks.WOOL, 1, 32767),
 			"rabbithide" });
 
+		DCRecipe.jsonShapelessRecipe("main_equip", 2, new ItemStack(MainInit.modsCoat, 1, 0), new Object[] {
+			"patternHoodie",
+			new ItemStack(Blocks.WOOL, 1, 32767),
+			new ItemStack(Blocks.WOOL, 1, 32767),
+			"feather" });
+
 		DCRecipe.jsonShapelessRecipe("main_equip", new ItemStack(MainInit.woolBoots, 1, 0), new Object[] {
 			"patternBoots",
 			new ItemStack(Blocks.WOOL, 1, 32767),
@@ -620,6 +626,12 @@ public class LoadingEquipRecipe {
 			"patternWear",
 			"leather",
 			"rabbithide",
+			"string" });
+
+		DCRecipe.jsonShapelessRecipe("main_equip", 2, new ItemStack(MainInit.furCape, 1, 0), new Object[] {
+			"patternWear",
+			"leather",
+			"feather",
 			"string" });
 
 		// leather

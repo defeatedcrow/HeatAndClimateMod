@@ -15,14 +15,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockBrewingTankUpper extends DCTileBlock {
 
@@ -69,12 +66,6 @@ public class BlockBrewingTankUpper extends DCTileBlock {
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		world.removeTileEntity(pos);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Override

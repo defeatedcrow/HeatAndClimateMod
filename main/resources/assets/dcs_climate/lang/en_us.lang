@@ -1211,6 +1211,7 @@ tile.dcs_squaretable_rattan_0.name=Rattan Square Table
 tile.dcs_carpet_red_0.name=Carpet Wood (Red)
 tile.dcs_carpet_white_0.name=Carpet Wood (White)
 tile.dcs_carpet_gray_0.name=Carpet Wood (Black)
+tile.dcs_carpet_linen_0.name=Carpet Wood (Yellow)
 tile.dcs_sofa_black_0.name=Sofa (Black)
 tile.dcs_sofa_red_0.name=Sofa (Red)
 tile.dcs_stool_black_0.name=Stool (Black)
@@ -1348,6 +1349,8 @@ tile.dcs_build_coldlamp_gold.name=Cold Lamp (Gold)
 tile.dcs_build_coldlamp_chalcedony.name=Cold Lamp (White)
 tile.dcs_build_coldlamp_serpentine.name=Cold Lamp (Serpentine)
 tile.dcs_device_display_shelf_0.name=Display Shelf
+tile.dcs_build_pressure_chal_0.name=Chalcedony Pressure Plate
+tile.dcs_build_pressure_olivine_0.name=Emerald Pressure Plate
 
 ## magic
 tile.dcs_lotus_candle_white_0.name=Lotus Candle
@@ -1807,6 +1810,7 @@ dcs.tip.dynamite2=Used underwater: Dynamite fishing
 dcs.tip.dynamite3=CAUTION! It explodes in the range of 5x5x5.
 dcs.tip.slotpanel=This item will work as an empty input slot in the recipe devices of HaC.
 dcs.tip.cloth.color=Color Variations
+dcs.tip.cloth.magic=Enhances the effects of magical accessories and cards.
 dcs.tip.tinder=Get a fire from a burning block or entity.
 dcs.tip.firestarter=Ignite the target block or entity.
 dcs.tip.scythe1=Destroy the surrounding grass and leaves.
@@ -1846,6 +1850,8 @@ dcs.tip.antibiotic_5=Turn the pig into Pigman.
 dcs.tip.antibiotic_6=Turn the cow into Mooshroom.
 dcs.tip.antibiotic_8=Add the recovery inhibitor effect to target.
 dcs.tip.essential_oil=Lingering Potion effect:
+dcs.tip.pressure_plate_0=Detects only the players.
+dcs.tip.pressure_plate_1=Detects players and tamed mobs.
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products

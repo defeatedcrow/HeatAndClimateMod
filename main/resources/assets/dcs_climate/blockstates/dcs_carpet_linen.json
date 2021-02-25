@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "east=false,north=false,south=false,west=false":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_0000" },
+        "east=false,north=true,south=false,west=false":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_1000" },
+        "east=false,north=false,south=true,west=false":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_0100" },
+        "east=false,north=false,south=false,west=true":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_0010" },
+        "east=true,north=false,south=false,west=false":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_0001" },
+        "east=false,north=true,south=true,west=false":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_1100" },
+        "east=false,north=true,south=false,west=true":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_1010" },
+        "east=true,north=true,south=false,west=false":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_1001" },
+        "east=false,north=false,south=true,west=true":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_0110" },
+        "east=true,north=false,south=true,west=false":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_0101" },
+        "east=true,north=false,south=false,west=true":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_0011" },
+        "east=false,north=true,south=true,west=true":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_1110" },
+        "east=true,north=true,south=true,west=false":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_1101" },
+        "east=true,north=true,south=false,west=true":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_1011" },
+        "east=true,north=false,south=true,west=true":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_0111" },
+        "east=true,north=true,south=true,west=true":  { "model": "dcs_climate:build/carpet/dcs_carpet_linen_1111" }
+    }
+}

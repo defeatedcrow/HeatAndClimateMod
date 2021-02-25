@@ -1,0 +1,7 @@
+{
+    "parent": "block/pressure_plate_up",
+    "textures": {
+        "texture": "dcs_climate:blocks/ores/gemblock_chal_white"
+    }
+}
+

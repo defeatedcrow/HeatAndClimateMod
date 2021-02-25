@@ -52,6 +52,8 @@ public class MainCreativeTabRegister {
 		MainInit.roofSlateBrown.setCreativeTab(ClimateMain.build);
 		MainInit.plate.setCreativeTab(ClimateMain.build);
 		MainInit.scaffold.setCreativeTab(ClimateMain.build);
+		MainInit.pressureChal.setCreativeTab(ClimateMain.build);
+		MainInit.pressureOlivine.setCreativeTab(ClimateMain.build);
 
 		MainInit.chalLamp.setCreativeTab(ClimateMain.build);
 		MainInit.wallLamp.setCreativeTab(ClimateMain.build);
@@ -151,6 +153,7 @@ public class MainCreativeTabRegister {
 			MainInit.carpetRed.setCreativeTab(ClimateMain.build);
 			MainInit.carpetWhite.setCreativeTab(ClimateMain.build);
 			MainInit.carpetGray.setCreativeTab(ClimateMain.build);
+			MainInit.carpetLinen.setCreativeTab(ClimateMain.build);
 			MainInit.chestMarble.setCreativeTab(ClimateMain.build);
 			MainInit.chestSkarn.setCreativeTab(ClimateMain.build);
 			MainInit.chestGreisen.setCreativeTab(ClimateMain.build);

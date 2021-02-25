@@ -25,20 +25,20 @@ public class BlockThermometer extends DCTileBlock {
 		return false;
 	}
 
-	// コンパレーター出力
-	@Override
-	public boolean hasComparatorInputOverride(IBlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
-		TileEntity tile = worldIn.getTileEntity(pos);
-		if (tile instanceof TileThermometer) {
-			return getHeatTier((TileThermometer) tile);
-		}
-		return 0;
-	}
+	// // コンパレーター出力
+	// @Override
+	// public boolean hasComparatorInputOverride(IBlockState state) {
+	// return true;
+	// }
+	//
+	// @Override
+	// public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+	// TileEntity tile = worldIn.getTileEntity(pos);
+	// if (tile instanceof TileThermometer) {
+	// return getHeatTier((TileThermometer) tile);
+	// }
+	// return 0;
+	// }
 
 	private int getHeatTier(TileThermometer tile) {
 		if (tile.getClimate() != null) {

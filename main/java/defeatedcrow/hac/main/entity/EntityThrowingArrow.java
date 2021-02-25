@@ -17,11 +17,12 @@ public class EntityThrowingArrow extends EntityBulletDC {
 
 	public EntityThrowingArrow(World worldIn, EntityLivingBase shooter) {
 		super(worldIn, shooter);
+		this.damage = 6.0D;
 	}
 
 	@Override
 	public double getDamage() {
-		return this.damage * 0.5D;
+		return this.damage;
 	}
 
 	@Override

@@ -20,7 +20,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
@@ -89,41 +88,33 @@ public class ItemThrowingArrow extends DCItem implements ITexturePath {
 			EntityPlayer player = (EntityPlayer) living;
 			boolean flag = player.capabilities.isCreativeMode;
 
-			int i = this.getMaxItemUseDuration(stack) - timeLeft;
-			if (i < 0)
-				return;
-
 			if (!DCUtil.isEmpty(stack)) {
 
-				float f = ItemBow.getArrowVelocity(i);
+				if (!world.isRemote) {
+					EntityThrowingArrow entityarrow = new EntityThrowingArrow(world, player);
+					entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
 
-				if (f >= 0.0D) {
+					PotionEffect eff = player.getActivePotionEffect(MobEffects.STRENGTH);
 
-					if (!world.isRemote) {
-						EntityThrowingArrow entityarrow = new EntityThrowingArrow(world, player);
-						entityarrow.setAim(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
+					if (eff != null) {
+						float d = 6.0F + 3.0F * eff.getAmplifier();
 
-						PotionEffect eff = player.getActivePotionEffect(MobEffects.STRENGTH);
-
-						if (eff != null) {
-							float p = 1.0F + (1 + eff.getAmplifier()) * 0.25F;
-							entityarrow.setDamage(entityarrow.getDamage() * p);
-						}
-
-						stack.damageItem(1, player);
-
-						world.spawnEntity(entityarrow);
+						entityarrow.setDamage(d);
 					}
 
-					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
-							.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+					stack.damageItem(1, player);
 
-					if (!flag) {
-						DCUtil.reduceStackSize(stack, 1);
-					}
-
-					player.addStat(StatList.getObjectUseStats(this));
+					world.spawnEntity(entityarrow);
 				}
+
+				world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
+						.nextFloat() * 0.4F + 1.2F) + 0.5F);
+
+				if (!flag) {
+					DCUtil.reduceStackSize(stack, 1);
+				}
+
+				player.addStat(StatList.getObjectUseStats(this));
 			}
 		}
 	}

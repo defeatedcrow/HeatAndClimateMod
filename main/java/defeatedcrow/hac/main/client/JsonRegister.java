@@ -132,17 +132,19 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(Item
 				.getItemFromBlock(MainInit.freezepack), ClimateCore.PACKAGE_ID, "dcs_coolant", "build", 3);
 
-		MAIN_INSTANCE.regTEBlock(MainInit.firestand, ClimateCore.PACKAGE_ID, "dcs_device_firestand", "device", 0);
-		MAIN_INSTANCE.regTEBlock(MainInit.chamber, ClimateCore.PACKAGE_ID, "dcs_device_chamber", "machine", 0);
-		MAIN_INSTANCE.regTEBlock(MainInit.shitirin, ClimateCore.PACKAGE_ID, "dcs_device_shitirin", "machine", 0);
-		MAIN_INSTANCE.regTEBlock(MainInit.fuelStove, ClimateCore.PACKAGE_ID, "dcs_device_fuelstove", "machine", 0);
-
-		MAIN_INSTANCE.regTETorqueBlock(MainInit.bellow, ClimateCore.PACKAGE_ID, "dcs_device_bellow", "device", 0);
-		MAIN_INSTANCE.regTEBlock(MainInit.thermometer, ClimateCore.PACKAGE_ID, "dcs_device_thermometer", "device", 0);
-		MAIN_INSTANCE.regTEBlock(MainInit.windvane, ClimateCore.PACKAGE_ID, "dcs_device_windvane", "device", 0);
+		MAIN_INSTANCE.regTEBlock(MainInit.firestand, ClimateCore.PACKAGE_ID, "dcs_device_firestand", "device", 0, true);
+		MAIN_INSTANCE.regTEBlock(MainInit.chamber, ClimateCore.PACKAGE_ID, "dcs_device_chamber", "machine", 0, true);
+		MAIN_INSTANCE.regTEBlock(MainInit.shitirin, ClimateCore.PACKAGE_ID, "dcs_device_shitirin", "machine", 0, true);
 		MAIN_INSTANCE
-				.regTEBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_ID, "dcs_device_stevenson_screen", "machine", 0);
-		MAIN_INSTANCE.regTEBlock(MainInit.pail, ClimateCore.PACKAGE_ID, "dcs_device_pail", "machine", 0);
+				.regTEBlock(MainInit.fuelStove, ClimateCore.PACKAGE_ID, "dcs_device_fuelstove", "machine", 0, true);
+
+		MAIN_INSTANCE.regTETorqueBlock(MainInit.bellow, ClimateCore.PACKAGE_ID, "dcs_device_bellow", "device", 0, true);
+		MAIN_INSTANCE
+				.regTEBlock(MainInit.thermometer, ClimateCore.PACKAGE_ID, "dcs_device_thermometer", "device", 0, true);
+		MAIN_INSTANCE.regTEBlock(MainInit.windvane, ClimateCore.PACKAGE_ID, "dcs_device_windvane", "device", 0, true);
+		MAIN_INSTANCE
+				.regTEBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_ID, "dcs_device_stevenson_screen", "machine", 0, true);
+		MAIN_INSTANCE.regTEBlock(MainInit.pail, ClimateCore.PACKAGE_ID, "dcs_device_pail", "machine", 0, false);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.geyser, ClimateCore.PACKAGE_ID, "dcs_device_geyser_stone", "device", 0);
 
 		// door
@@ -171,11 +173,11 @@ public class JsonRegister {
 					.build());
 
 			MAIN_INSTANCE
-					.regTEBlock(MainInit.chestMetal, ClimateCore.PACKAGE_ID, "dcs_device_chest_metal", "device", 0);
+					.regTEBlock(MainInit.chestMetal, ClimateCore.PACKAGE_ID, "dcs_device_chest_metal", "device", 0, true);
 			MAIN_INSTANCE
-					.regTEBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_ID, "dcs_device_chest_magnet", "device", 0);
+					.regTEBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_ID, "dcs_device_chest_magnet", "device", 0, true);
 			MAIN_INSTANCE
-					.regTEBlock(MainInit.chestVillage, ClimateCore.PACKAGE_ID, "dcs_device_chest_village", "device", 0);
+					.regTEBlock(MainInit.chestVillage, ClimateCore.PACKAGE_ID, "dcs_device_chest_village", "device", 0, true);
 
 			ModelLoader.setCustomStateMapper(MainInit.realtimeClock, (new StateMap.Builder()).ignore(DCState.FACING)
 					.build());

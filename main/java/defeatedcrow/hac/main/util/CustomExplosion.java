@@ -25,6 +25,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
 
 /**
  * AMTからもってきたカスタムエクスプロ―ジョン
@@ -81,10 +82,14 @@ public class CustomExplosion extends Explosion {
 		int k2 = MathHelper.floor(this.expZ + this.size + 1.0D);
 		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this.bomb, new AxisAlignedBB(i, j, k, i2, j2,
 				k2));
+		ForgeEventFactory.onExplosionDetonate(this.worldObj, this, list, f * 2.0F);
 		Vec3d vec3 = new Vec3d(this.expX, this.expY, this.expZ);
 
 		for (int i1 = 0; i1 < list.size(); ++i1) {
 			Entity entity = (Entity) list.get(i1);
+			if (entity == null || !entity.isEntityAlive() || entity.isImmuneToExplosions())
+				continue;
+
 			double d4 = entity.getDistance(this.expX, this.expY, this.expZ) / this.size;
 
 			if (d4 <= 1.0D && d4 > 0.0D) {
@@ -97,42 +102,28 @@ public class CustomExplosion extends Explosion {
 				d7 *= d11;
 
 				boolean flag = true;
-				float damage = (int) ((this.size * this.size * 2) * (d11 * d11));
-				damage = Math.max(damage, 15.0F);
+				float damage = (float) ((this.size * this.size * 2) * (d11 * d11));
+				damage = Math.max(damage, 4.0F);
 
-				if (this.type == Type.Silk) {
-					if (entity instanceof EntityItem || entity instanceof IProjectile || entity == this.bomb) {
-						flag = false;
-					} else if (entity instanceof EntityLivingBase) {
-						if (this.igniter != null) {
-							EntityLivingBase living = (EntityLivingBase) entity;
-							flag = !(living == this.igniter);
-						}
-					} else if (entity instanceof EntityBoat || entity instanceof EntityMinecart) {
-						flag = false;
-					} else if (entity instanceof EntityPlayer) {
-						flag = false;
-					}
-				} else if (this.type == Type.Anchor) {
-					if (entity instanceof EntityLivingBase) {
-						if (this.igniter != null) {
-							EntityLivingBase living = (EntityLivingBase) entity;
-							flag = !(living == this.igniter);
-						}
-					} else if (entity instanceof EntityBoat || entity instanceof EntityMinecart) {
-						flag = false;
-					} else if (entity instanceof EntityPlayer) {
-						flag = false;
-					} else if (entity instanceof EntityDragon) {
-						damage *= 2.0F;
-					} else if (!entity.onGround) {
-						damage *= 10.0F;
+				if (entity == this.igniter || entity == this.bomb) {
+					flag = false;
+				} else if (entity instanceof EntityBoat || entity instanceof EntityMinecart) {
+					flag = false;
+				} else if (entity instanceof EntityPlayer) {
+					if (this.igniter instanceof EntityPlayer) {
+						flag = ((EntityPlayer) igniter).canAttackPlayer((EntityPlayer) entity);
 					}
 				} else {
-					if (entity instanceof EntityLivingBase) {
-						if (this.igniter != null) {
-							EntityLivingBase living = (EntityLivingBase) entity;
-							flag = !(living == this.igniter);
+					if (this.type == Type.Silk) {
+						if (entity instanceof EntityItem || entity instanceof IProjectile) {
+							flag = false;
+						}
+						damage *= 0.5F;
+					} else if (this.type == Type.Anchor) {
+						if (entity instanceof EntityDragon) {
+							damage *= 2.0F;
+						} else if (!entity.onGround) {
+							damage *= 10.0F;
 						}
 					}
 				}
@@ -141,6 +132,7 @@ public class CustomExplosion extends Explosion {
 					if (entity instanceof IProjectile) {
 						entity.setDead();
 					} else {
+						entity.hurtResistantTime = 0;
 						entity.attackEntityFrom(DamageSource.causeExplosionDamage(this), damage);
 					}
 					entity.motionY += 0.3D;

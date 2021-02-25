@@ -47,6 +47,7 @@ import defeatedcrow.hac.main.block.build.BlockMetalFenceBase;
 import defeatedcrow.hac.main.block.build.BlockMetalLadder;
 import defeatedcrow.hac.main.block.build.BlockMetalPillar;
 import defeatedcrow.hac.main.block.build.BlockOilLamp;
+import defeatedcrow.hac.main.block.build.BlockPressurePlateDC;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock;
 import defeatedcrow.hac.main.block.build.BlockRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.BlockScaffold;
@@ -116,6 +117,8 @@ import defeatedcrow.hac.main.item.equip.ItemArmorShirt;
 import defeatedcrow.hac.main.item.equip.ItemArmorSkirt;
 import defeatedcrow.hac.main.item.equip.ItemArmorSkirtSilk;
 import defeatedcrow.hac.main.item.equip.ItemArmorWool;
+import defeatedcrow.hac.main.item.equip.ItemMagicOvercoat;
+import defeatedcrow.hac.main.item.equip.ItemMagicSuit;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
 import defeatedcrow.hac.main.item.misc.ItemClothN;
@@ -575,6 +578,20 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.scaffold, ClimateCore.PACKAGE_BASE + "_build_scaffold", ClimateMain.MOD_ID);
 
+		MainInit.pressureChal = new BlockPressurePlateDC(Material.CLAY, true,
+				ClimateCore.PACKAGE_BASE + "_build_pressure_chal");
+		DCMaterialReg
+				.registerBlock(MainInit.pressureChal, ClimateCore.PACKAGE_BASE + "_build_pressure_chal", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item
+				.getItemFromBlock(MainInit.pressureChal), "dcs_climate", "dcs_build_pressure_chal", "build", 0, false);
+
+		MainInit.pressureOlivine = new BlockPressurePlateDC(Material.CLAY, false,
+				ClimateCore.PACKAGE_BASE + "_build_pressure_olivine");
+		DCMaterialReg
+				.registerBlock(MainInit.pressureOlivine, ClimateCore.PACKAGE_BASE + "_build_pressure_olivine", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item
+				.getItemFromBlock(MainInit.pressureOlivine), "dcs_climate", "dcs_build_pressure_olivine", "build", 0, false);
+
 		if (ModuleConfig.build_advanced) {
 
 			MainInit.pillarSteel = new BlockMetalPillar("dcs_pillar_steel").setUnlocalizedName("dcs_pillar_steel");
@@ -746,6 +763,12 @@ public class MainMaterialRegister {
 					.registerBlock(MainInit.carpetGray, ClimateCore.PACKAGE_BASE + "_carpet_gray", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.carpetGray), "dcs_climate", "dcs_carpet_gray", "build", 0, false);
+
+			MainInit.carpetLinen = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_linen", true);
+			DCMaterialReg
+					.registerBlock(MainInit.carpetLinen, ClimateCore.PACKAGE_BASE + "_carpet_linen", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.carpetLinen), "dcs_climate", "dcs_carpet_linen", "build", 0, false);
 
 			MainInit.sofaBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_black");
 			DCMaterialReg
@@ -1452,7 +1475,7 @@ public class MainMaterialRegister {
 
 			MainInit.trackSuit = new ItemArmorDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
 					EntityEquipmentSlot.LEGS, "leggins_tracksuit")
-							.setColorList(EnumDyeColor.PINK, EnumDyeColor.BLUE, EnumDyeColor.RED)
+							.setColorList(EnumDyeColor.YELLOW, EnumDyeColor.PINK, EnumDyeColor.BLUE, EnumDyeColor.RED)
 							.setCreativeTab(ClimateMain.cloth)
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_track");
 			DCMaterialReg
@@ -1471,14 +1494,14 @@ public class MainMaterialRegister {
 
 		if (ModuleConfig.clothes_advanced && ModuleConfig.magic) {
 
-			MainInit.magicUnder = new ItemArmorDC(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+			MainInit.magicUnder = new ItemMagicSuit(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
 					EntityEquipmentSlot.LEGS, "leggins_magic").setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK)
 							.setCreativeTab(ClimateMain.cloth)
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_leggins_magic");
 			DCMaterialReg
 					.registerItem(MainInit.magicUnder, ClimateCore.PACKAGE_BASE + "_leggins_magic", ClimateMain.MOD_ID);
 
-			MainInit.magicCoat = new ItemArmorOvercoat(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
+			MainInit.magicCoat = new ItemMagicOvercoat(DCArmorMaterial.DC_SYNTHETIC, DCMaterialEnum.SYNTHETIC,
 					EntityEquipmentSlot.CHEST, "magic")
 							.setColorList(EnumDyeColor.BROWN, EnumDyeColor.BLACK, EnumDyeColor.PURPLE)
 							.setCreativeTab(ClimateMain.cloth)

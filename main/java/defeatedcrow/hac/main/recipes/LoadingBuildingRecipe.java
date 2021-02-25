@@ -546,6 +546,21 @@ public class LoadingBuildingRecipe {
 			'Y',
 			"treeSapling" });
 
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.pressureChal, 1, 0), new Object[] {
+			"XX",
+			'X',
+			"gemChalcedony" });
+
+		DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.pressureOlivine, 1, 0), new Object[] {
+			"XX",
+			'X',
+			"gemEmerald" });
+
+		DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.pressureOlivine, 1, 0), new Object[] {
+			"XX",
+			'X',
+			"gemPeridot" });
+
 	}
 
 	public static void advanced(RecipeResourcesMain res) {
@@ -780,6 +795,58 @@ public class LoadingBuildingRecipe {
 				new ItemStack(Blocks.CARPET, 1, 15),
 				'Y',
 				"plankWood" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.carpetLinen, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(Blocks.CARPET, 1, 4),
+				'Y',
+				"plankWood" });
+
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.carpetRed, 1, 0), new Object[] {
+				"Z",
+				"X",
+				"Y",
+				'X',
+				"itemCloth",
+				'Y',
+				"plankWood",
+				'Z',
+				"dyeRed" });
+
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.carpetWhite, 1, 0), new Object[] {
+				"Z",
+				"X",
+				"Y",
+				'X',
+				"itemCloth",
+				'Y',
+				"plankWood",
+				'Z',
+				"dyeWhite" });
+
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.carpetGray, 1, 0), new Object[] {
+				"Z",
+				"X",
+				"Y",
+				'X',
+				"itemCloth",
+				'Y',
+				"plankWood",
+				'Z',
+				"dyeBlack" });
+
+			DCRecipe.jsonShapedRecipe("main_build", 2, new ItemStack(MainInit.carpetLinen, 1, 0), new Object[] {
+				"Z",
+				"X",
+				"Y",
+				'X',
+				"itemCloth",
+				'Y',
+				"plankWood",
+				'Z',
+				"dyeYellow" });
 
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.sofaBlack, 1, 0), new Object[] {
 				" X ",

@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "normal": { "model": "dcs_climate:basetile" }
-    }
+ "variants": {
+  "normal": {
+   "model": "dcs_climate:basetile"
+  }
+ }
 }

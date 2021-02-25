@@ -14,10 +14,15 @@ public class RegisterSpinningRecipe {
 		RecipeAPI.registerSpinningRecipes.addRecipe(new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 4,
 				"blockTallgrass"));
 
+		RecipeAPI.registerSpinningRecipes.addRecipe(new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 4,
+				"dustPlant"));
+
 		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 1), 4, new ItemStack(
 				Items.STRING));
 
 		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 1), 4, "cropCotton");
+
+		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 1), 1, "blockWool");
 
 		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 2, 0), 1, new ItemStack(
 				Blocks.HAY_BLOCK, 1, 0));

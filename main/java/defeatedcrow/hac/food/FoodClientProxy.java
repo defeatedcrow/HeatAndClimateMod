@@ -353,18 +353,18 @@ public class FoodClientProxy {
 		instance.regSimpleBlock(FoodInit.leavesDatesCrop, ClimateCore.PACKAGE_ID, "dcs_leaves_datescrop", "crop", 3);
 		instance.regSimpleBlock(FoodInit.dish, ClimateCore.PACKAGE_ID, "dcs_build_dish", "build", 1);
 
-		instance.regTEBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_ID, "dcs_device_pottery_pot", "machine", 0);
-		instance.regTEBlock(FoodInit.skillet, ClimateCore.PACKAGE_ID, "dcs_device_skillet", "machine", 0);
-		instance.regTEBlock(FoodInit.steelPot, ClimateCore.PACKAGE_ID, "dcs_device_steel_pot", "machine", 0);
-		instance.regTEBlock(FoodInit.teaPot, ClimateCore.PACKAGE_ID, "dcs_device_tea_pot", "machine", 0);
+		instance.regTEBlock(FoodInit.potteryPot, ClimateCore.PACKAGE_ID, "dcs_device_pottery_pot", "machine", 0, true);
+		instance.regTEBlock(FoodInit.skillet, ClimateCore.PACKAGE_ID, "dcs_device_skillet", "machine", 0, true);
+		instance.regTEBlock(FoodInit.steelPot, ClimateCore.PACKAGE_ID, "dcs_device_steel_pot", "machine", 0, true);
+		instance.regTEBlock(FoodInit.teaPot, ClimateCore.PACKAGE_ID, "dcs_device_tea_pot", "machine", 0, true);
 		instance.regSimpleBlock(FoodInit.silkwormBox, ClimateCore.PACKAGE_ID, "dcs_device_silkworm_box", "device", 0);
-		instance.regTEBlock(FoodInit.incubator, ClimateCore.PACKAGE_ID, "dcs_device_incubator", "machine", 0);
-		instance.regTEBlock(FoodInit.brewingTankWood, ClimateCore.PACKAGE_ID, "dcs_device_brewing_wood", "machine", 0);
-		instance.regTEBlock(FoodInit.brewingTank, ClimateCore.PACKAGE_ID, "dcs_device_brewing_under", "machine", 0);
-		instance.regTEBlock(FoodInit.brewingTankUpper, ClimateCore.PACKAGE_ID, "dcs_device_brewing_upper", "machine", 0);
+		instance.regTEBlock(FoodInit.incubator, ClimateCore.PACKAGE_ID, "dcs_device_incubator", "machine", 0, true);
+		instance.regTEBlock(FoodInit.brewingTankWood, ClimateCore.PACKAGE_ID, "dcs_device_brewing_wood", "machine", 0, true);
+		instance.regTEBlock(FoodInit.brewingTank, ClimateCore.PACKAGE_ID, "dcs_device_brewing_under", "machine", 0, true);
+		instance.regTEBlock(FoodInit.brewingTankUpper, ClimateCore.PACKAGE_ID, "dcs_device_brewing_upper", "machine", 0, true);
 		instance.regSimpleBlock(FoodInit.baseFertilizer, ClimateCore.PACKAGE_ID, "dcs_crop_fertilizer", "crop", 0);
-		instance.regTEBlock(FoodInit.distillator, ClimateCore.PACKAGE_ID, "dcs_device_distillator", "machine", 0);
-		instance.regTEBlock(FoodInit.barrel, ClimateCore.PACKAGE_ID, "dcs_device_aging_barrel", "machine", 0);
+		instance.regTEBlock(FoodInit.distillator, ClimateCore.PACKAGE_ID, "dcs_device_distillator", "machine", 0, true);
+		instance.regTEBlock(FoodInit.barrel, ClimateCore.PACKAGE_ID, "dcs_device_aging_barrel", "machine", 0, true);
 
 		ModelLoader.setCustomStateMapper(FoodInit.cropLotus, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL)
 				.build());

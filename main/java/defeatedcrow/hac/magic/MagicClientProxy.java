@@ -102,14 +102,14 @@ public class MagicClientProxy {
 
 		// block
 		instance.regSimpleBlock(MagicInit.colorCube, ClimateCore.PACKAGE_ID, "dcs_color_cube", "device", 9);
-		instance.regTEBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_ID, "dcs_cube_ice", "magic", 0);
-		instance.regTEBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_ID, "dcs_cube_flame", "magic", 0);
+		instance.regTEBlock(MagicInit.clusterIce, ClimateCore.PACKAGE_ID, "dcs_cube_ice", "magic", 0, false);
+		instance.regTEBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_ID, "dcs_cube_flame", "magic", 0, false);
 		instance.regSimpleBlock(MagicInit.elestial, ClimateCore.PACKAGE_ID, "dcs_ore_elestial", "ores", 0);
-		instance.regTEBlock(MagicInit.lotusCandle, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_white", "magic", 0);
-		instance.regTEBlock(MagicInit.lotusCandleBlack, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_black", "magic", 0);
+		instance.regTEBlock(MagicInit.lotusCandle, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_white", "magic", 0, false);
+		instance.regTEBlock(MagicInit.lotusCandleBlack, ClimateCore.PACKAGE_ID, "dcs_lotus_candle_black", "magic", 0, false);
 		instance.regSimpleBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_ID, "dcs_magic_biomeglass", "magic", 3);
 		instance.regSimpleBlock(MagicInit.coldLamp, ClimateCore.PACKAGE_ID, "dcs_build_coldlamp", "magic", 3);
-		instance.regTEBlock(MagicInit.timeCage, ClimateCore.PACKAGE_ID, "dcs_time_cage", "magic", 0);
+		instance.regTEBlock(MagicInit.timeCage, ClimateCore.PACKAGE_ID, "dcs_time_cage", "magic", 0, false);
 		instance.regSimpleItem(Item
 				.getItemFromBlock(MagicInit.pictureBlue), ClimateCore.PACKAGE_ID, "dcs_magic_picture_u", "device", 0);
 		instance.regSimpleItem(Item
