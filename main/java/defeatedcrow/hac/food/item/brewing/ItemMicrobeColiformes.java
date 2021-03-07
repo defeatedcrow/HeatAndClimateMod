@@ -59,7 +59,7 @@ public class ItemMicrobeColiformes extends MicrobeItem implements IMicrobe {
 	public int getChance(EnumHabitat habitat) {
 		switch (habitat) {
 		case ANIMAL:
-			return 50;
+			return 30;
 		case CROP:
 			return 0;
 		case FLOWER:
@@ -67,7 +67,7 @@ public class ItemMicrobeColiformes extends MicrobeItem implements IMicrobe {
 		case SOIL:
 			return 10;
 		case WATER:
-			return 75;
+			return 50;
 		default:
 			return 0;
 		}

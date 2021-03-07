@@ -26,6 +26,9 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 			DCAirflow air = ClimateAPI.calculator.getAirflow(world, pos);
 			float wind = getGearTier() * 0.125F;
 			switch (air) {
+			case TIGHT:
+				wind *= 0F;
+				break;
 			case NORMAL:
 				wind *= 0.5F;
 				break;

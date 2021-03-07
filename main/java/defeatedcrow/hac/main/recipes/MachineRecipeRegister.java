@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.recipes;
 
 import java.util.List;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
@@ -229,10 +230,8 @@ public class MachineRecipeRegister {
 				RecipeAPI.registerSmelting.addRecipe(new ItemStack(MainInit.metalBlockAlloy, 1,
 						2), DCHeatTier.SMELTING, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));
 				// iron
-				ClimateSmelting iron = new ClimateSmelting(new ItemStack(Blocks.IRON_BLOCK, 1, 0), null,
-						DCHeatTier.KILN, null, DCAirflow.TIGHT, 0F, false, new ItemStack(MainInit.dustBlock, 1, 5));
-				iron.requiredHeat().remove(DCHeatTier.SMELTING);
-				RecipeAPI.registerSmelting.addRecipe(iron);
+				RecipeAPI.registerSmelting.addRecipe(new ItemStack(Blocks.IRON_BLOCK, 1, 0), ImmutableList
+						.of(DCHeatTier.KILN), null, DCAirflow.TIGHT, new ItemStack(MainInit.dustBlock, 1, 5));
 			} else {
 				RecipeAPI.registerSmelting.addRecipe(new ItemStack(Blocks.IRON_BLOCK, 1,
 						0), DCHeatTier.KILN, null, DCAirflow.TIGHT, false, new ItemStack(MainInit.dustBlock, 1, 5));

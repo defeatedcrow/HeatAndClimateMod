@@ -65,7 +65,7 @@ public class ItemMicrobeSlime extends MicrobeItem implements IMicrobe {
 		case FLOWER:
 			return 0;
 		case SOIL:
-			return 30;
+			return 20;
 		case WATER:
 			return 5;
 		default:

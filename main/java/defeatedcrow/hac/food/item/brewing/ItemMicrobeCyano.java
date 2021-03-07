@@ -67,7 +67,7 @@ public class ItemMicrobeCyano extends MicrobeItem implements IMicrobe {
 		case SOIL:
 			return 10;
 		case WATER:
-			return 90;
+			return 25;
 		default:
 			return 0;
 		}

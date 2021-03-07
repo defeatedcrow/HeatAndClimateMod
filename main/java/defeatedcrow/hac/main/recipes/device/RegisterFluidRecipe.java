@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.recipes.device;
 
+import com.google.common.collect.ImmutableList;
+
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
@@ -833,9 +835,7 @@ public class RegisterFluidRecipe {
 
 	public static void regBoilRecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHumidity hum,
 			DCAirflow air, boolean cooling, FluidStack inF, Object... input) {
-		FluidCraftRecipe recipe = new FluidCraftRecipe(out, sec, outF, DCHeatTier.OVEN, hum, air, chance, cooling, inF,
-				input);
-		recipe.requiredHeat().add(DCHeatTier.BOIL);
-		RecipeAPI.registerFluidRecipes.addRecipe(recipe);
+		RecipeAPI.registerFluidRecipes.addRecipe(out, sec, chance, outF, ImmutableList
+				.of(DCHeatTier.BOIL, DCHeatTier.OVEN, DCHeatTier.KILN), hum, air, cooling, inF, input);
 	}
 }
