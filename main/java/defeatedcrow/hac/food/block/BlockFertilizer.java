@@ -16,9 +16,13 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -58,6 +62,19 @@ public class BlockFertilizer extends DCSimpleBlock implements ITexturePath {
 				}
 			}
 		}
+	}
+
+	@Override
+	public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction,
+			IPlantable plantable) {
+		IBlockState plant = plantable.getPlant(world, pos.offset(direction));
+		EnumPlantType plantType = plantable.getPlantType(world, pos.offset(direction));
+
+		if (plantType == EnumPlantType.Cave) {
+			return true;
+		}
+
+		return false;
 	}
 
 	@Override

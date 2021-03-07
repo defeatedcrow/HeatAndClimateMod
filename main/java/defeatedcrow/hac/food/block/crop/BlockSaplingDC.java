@@ -146,7 +146,9 @@ public class BlockSaplingDC extends ClimateCropBase implements ITexturePath, IPl
 	public boolean isSuitablePlace(World world, BlockPos pos, IBlockState targetState) {
 		if (targetState == null)
 			return false;
-		return targetState.getMaterial() == Material.GRASS || targetState.getMaterial() == Material.GROUND;
+		return targetState.getMaterial() == Material.GRASS || targetState
+				.getMaterial() == Material.GROUND || targetState.getBlock()
+						.canSustainPlant(targetState, world, pos, EnumFacing.UP, this);
 	}
 
 	@Override

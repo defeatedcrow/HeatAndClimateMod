@@ -1,27 +1,27 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "X",
-  "Y",
-  "Z"
+  " Z ",
+  "XYX",
+  "XXX"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "leather"
+   "ore": "itemClay"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
+   "ore": "bucketWater"
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "ingotIron"
+   "ore": "dyeBlack"
   }
  },
  "result": {
-  "item": "minecraft:saddle",
+  "item": "dcs_climate:dcs_build_vase",
   "count": 1,
-  "data": 0
+  "data": 4
  }
 }

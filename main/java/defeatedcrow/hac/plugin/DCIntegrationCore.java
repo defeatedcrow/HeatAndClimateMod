@@ -257,17 +257,6 @@ public class DCIntegrationCore {
 			}
 		}
 
-		if (loadedAnimania) {
-			try {
-				DCPluginAnimania.loadInit();
-				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: animania");
-			} catch (Exception e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: animania");
-			} catch (Error e) {
-				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: animania");
-			}
-		}
-
 		try {
 			MobResistantData.load();
 			DCLogger.infoLog("dcs_climate", "Successfully loaded mob resistant data");

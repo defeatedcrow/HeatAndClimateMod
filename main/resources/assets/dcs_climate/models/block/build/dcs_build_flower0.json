@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/build/dcs_flower_base",
+    "textures": {
+        "main": "dcs_climate:blocks/build/flower/flower_rose1",
+        "side": "dcs_climate:blocks/build/flower/flower_rose2",
+        "vine": "dcs_climate:blocks/build/flower/flower_rose3"
+    }
+}

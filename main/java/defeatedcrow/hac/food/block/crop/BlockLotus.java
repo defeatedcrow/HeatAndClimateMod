@@ -56,6 +56,7 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@Deprecated
 public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable {
 
 	public static final PropertyBool BLACK = PropertyBool.create("black");

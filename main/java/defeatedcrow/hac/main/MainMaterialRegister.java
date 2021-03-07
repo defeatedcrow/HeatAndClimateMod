@@ -32,6 +32,7 @@ import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockDisplayShelf;
 import defeatedcrow.hac.main.block.build.BlockDoorDC;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
+import defeatedcrow.hac.main.block.build.BlockFlowerVase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
 import defeatedcrow.hac.main.block.build.BlockGlassPlastic;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
@@ -101,6 +102,7 @@ import defeatedcrow.hac.main.block.ores.BlockOres;
 import defeatedcrow.hac.main.block.ores.BlockOres2;
 import defeatedcrow.hac.main.block.ores.BlockSkarn;
 import defeatedcrow.hac.main.block.ores.BlockSkarnOre;
+import defeatedcrow.hac.main.block.plant.BlockFlowerGarden;
 import defeatedcrow.hac.main.block.plant.BlockHedge;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.item.entity.ItemCushionGray;
@@ -955,6 +957,14 @@ public class MainMaterialRegister {
 					.registerBlock(MainInit.hedgeWinter, ClimateCore.PACKAGE_BASE + "_hedge_winter", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.hedgeWinter), "dcs_climate", "dcs_hedge_winter", "crop", 15, false);
+
+			MainInit.planting = new BlockFlowerGarden(ClimateCore.PACKAGE_BASE + "_build_flower_planting");
+			DCMaterialReg
+					.registerBlock(MainInit.planting, ClimateCore.PACKAGE_BASE + "_build_flower_planting", ClimateMain.MOD_ID);
+
+			MainInit.flowerVase = new BlockFlowerVase(Material.GROUND, ClimateCore.PACKAGE_BASE + "_build_vase");
+			DCMaterialReg
+					.registerBlock(MainInit.flowerVase, ClimateCore.PACKAGE_BASE + "_build_vase", ClimateMain.MOD_ID);
 
 			MainInit.chandelierGypsum = new BlockChandelier("dcs_build_chandelier")
 					.setUnlocalizedName("dcs_build_chandelier");

@@ -1,23 +1,27 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  " X ",
+  " Z ",
   "XYX",
-  " X "
+  "XXX"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotIron"
+   "ore": "itemClay"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "dustMagnetite"
+   "ore": "bucketWater"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "dyeBlue"
   }
  },
  "result": {
-  "item": "minecraft:compass",
+  "item": "dcs_climate:dcs_build_vase",
   "count": 1,
-  "data": 0
+  "data": 2
  }
 }

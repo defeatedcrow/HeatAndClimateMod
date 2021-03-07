@@ -1351,6 +1351,15 @@ tile.dcs_build_coldlamp_serpentine.name=Cold Lamp (Serpentine)
 tile.dcs_device_display_shelf_0.name=Display Shelf
 tile.dcs_build_pressure_chal_0.name=Chalcedony Pressure Plate
 tile.dcs_build_pressure_olivine_0.name=Emerald Pressure Plate
+tile.dcs_build_vase_planter.name=Plant Pot
+tile.dcs_build_vase_white.name=Vase (White)
+tile.dcs_build_vase_blue.name=Vase (Blue)
+tile.dcs_build_vase_pink.name=Vase (Red)
+tile.dcs_build_vase_gray.name=Vase (Black)
+tile.dcs_build_flower_planting_rose.name=Flower Planting (Rose)
+tile.dcs_build_flower_planting_lily.name=Flower Planting (Goldband Lily)
+tile.dcs_build_flower_planting_orchid.name=Flower Planting (Moon Orchid)
+tile.dcs_build_flower_planting_snapdragon.name=Flower Planting (Snapdragon)
 
 ## magic
 tile.dcs_lotus_candle_white_0.name=Lotus Candle

@@ -169,6 +169,8 @@ public class MainCreativeTabRegister {
 			MainInit.wallshelfBlack.setCreativeTab(ClimateMain.build);
 			MainInit.wallshelfRattan.setCreativeTab(ClimateMain.build);
 			MainInit.displayShelf.setCreativeTab(ClimateMain.build);
+			MainInit.flowerVase.setCreativeTab(ClimateMain.build);
+			MainInit.planting.setCreativeTab(ClimateMain.build);
 
 			MainInit.flowerPot.setCreativeTab(ClimateMain.build);
 			MainInit.cushionGray.setCreativeTab(ClimateMain.build);

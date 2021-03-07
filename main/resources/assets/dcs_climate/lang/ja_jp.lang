@@ -1327,6 +1327,15 @@ tile.dcs_build_coldlamp_serpentine.name=冷たいランプ(蛇紋石)
 tile.dcs_device_display_shelf_0.name=飾り棚
 tile.dcs_build_pressure_chal_0.name=玉髄の感圧板
 tile.dcs_build_pressure_olivine_0.name=エメラルドの感圧板
+tile.dcs_build_vase_planter.name=プランター
+tile.dcs_build_vase_white.name=花瓶(白磁)
+tile.dcs_build_vase_blue.name=花瓶(青)
+tile.dcs_build_vase_pink.name=花瓶(赤)
+tile.dcs_build_vase_gray.name=花瓶(黒)
+tile.dcs_build_flower_planting_rose.name=バラの寄せ植え
+tile.dcs_build_flower_planting_lily.name=山百合の寄せ植え
+tile.dcs_build_flower_planting_orchid.name=胡蝶蘭の寄せ植え
+tile.dcs_build_flower_planting_snapdragon.name=金魚草の寄せ植え
 
 tile.dcs_lotus_candle_white_0.name=蓮のキャンドル
 tile.dcs_lotus_candle_black_0.name=黒蓮のキャンドル

@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " Z ",
+  "XYX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "itemClay"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "bucketWater"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "dustAsh"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_build_vase",
+  "count": 1,
+  "data": 1
+ }
+}

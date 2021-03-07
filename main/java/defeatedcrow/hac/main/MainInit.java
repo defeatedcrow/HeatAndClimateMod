@@ -174,6 +174,8 @@ public class MainInit {
 
 	public static Block displayCube;
 	public static Block displayShelf;
+	public static Block flowerVase;
+	public static Block planting;
 
 	public static Block doorMarble;
 	public static Block doorGreisen;

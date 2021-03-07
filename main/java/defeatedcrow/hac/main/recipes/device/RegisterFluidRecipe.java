@@ -128,7 +128,7 @@ public class RegisterFluidRecipe {
 							new ItemStack(Blocks.DOUBLE_PLANT, 1, 1),
 							"dustMana" });
 
-		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.mazai, 500), null, null, false, new FluidStack(
+		regBoilRecipe(null, null, 0F, new FluidStack(MainInit.mazai, 500), null, null, false, new FluidStack(
 				MainInit.ethanol, 1000), new Object[] {
 					"cropHerb",
 					"seedHerb",
@@ -231,7 +231,7 @@ public class RegisterFluidRecipe {
 				0), null, 0F, null, DCHeatTier.OVEN, null, null, false, new FluidStack(FluidRegistry.WATER,
 						100), new Object[] { "cropDate" });
 
-		regBoilrecipe(null, new ItemStack(MainInit.foodDust, 1, 5), 0.25F, new FluidStack(MainInit.soyMilk,
+		regBoilRecipe(null, new ItemStack(MainInit.foodDust, 1, 5), 0.25F, new FluidStack(MainInit.soyMilk,
 				500), null, null, false, new FluidStack(FluidRegistry.WATER, 1000), new Object[] { "cropSoybean" });
 
 		RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
@@ -256,16 +256,16 @@ public class RegisterFluidRecipe {
 
 		// おだし
 
-		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.stock, 5000), null, null, false, new FluidStack(
+		regBoilRecipe(null, null, 0F, new FluidStack(MainInit.stock, 5000), null, null, false, new FluidStack(
 				FluidRegistry.WATER, 5000), new Object[] { "listAllmeatraw", "cropHerb", "listAllveggie" });
 
-		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.stock, 1000), null, null, false, new FluidStack(
+		regBoilRecipe(null, null, 0F, new FluidStack(MainInit.stock, 1000), null, null, false, new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] { "cropSeaweed" });
 
-		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.stock, 1000), null, null, false, new FluidStack(
+		regBoilRecipe(null, null, 0F, new FluidStack(MainInit.stock, 1000), null, null, false, new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] { "bone", "listAllspice" });
 
-		regBoilrecipe(null, null, 0F, new FluidStack(MainInit.stock, 1000), null, null, false, new FluidStack(
+		regBoilRecipe(null, null, 0F, new FluidStack(MainInit.stock, 1000), null, null, false, new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] { "foodShrimpraw" });
 
 		RecipeAPI.registerFluidRecipes.addRecipe(null, null, 0F, new FluidStack(FluidRegistry.WATER,
@@ -294,44 +294,44 @@ public class RegisterFluidRecipe {
 					"dustSalt",
 					"listAllmeatraw" });
 
-		regBoilrecipe(new ItemStack(MainInit.bakedApple, 1, 1), null, 0F, null, null, null, false, new FluidStack(
+		regBoilRecipe(new ItemStack(MainInit.bakedApple, 1, 1), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] { "egg" });
 
-		regBoilrecipe(new ItemStack(MainInit.bakedApple, 1, 5), null, 0F, null, null, null, false, new FluidStack(
+		regBoilRecipe(new ItemStack(MainInit.bakedApple, 1, 5), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] { "cropLotusSeed", "dustSalt" });
 
-		regBoilrecipe(new ItemStack(MainInit.bakedApple, 1, 6), null, 0F, null, null, null, false, new FluidStack(
+		regBoilRecipe(new ItemStack(MainInit.bakedApple, 1, 6), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] { "cropGreenSoybeans", "dustSalt" });
 
-		regBoilrecipe(new ItemStack(MainInit.bakedApple, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+		regBoilRecipe(new ItemStack(MainInit.bakedApple, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] { "dustSalt", "cropHerb", "listAllmeatraw" });
 
-		regBoilrecipe(new ItemStack(MainInit.bakedApple, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+		regBoilRecipe(new ItemStack(MainInit.bakedApple, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 				FluidRegistry.WATER, 100), new Object[] { "dustSalt", "cropHerb", "foodViscera" });
 
 		if (ModuleConfig.food) {
 
-			regBoilrecipe(new ItemStack(FoodInit.dairy, 1, 3), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.dairy, 1, 3), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.soyMilk, 1000), new Object[] { "dustSalt" });
 
 			// tea
-			regBoilrecipe(null, null, 0F, new FluidStack(MainInit.coffee, 1000), null, null, false, new FluidStack(
+			regBoilRecipe(null, null, 0F, new FluidStack(MainInit.coffee, 1000), null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { new ItemStack(FoodInit.teaLeaves, 1, 0) });
 
-			regBoilrecipe(null, null, 0F, new FluidStack(MainInit.greenTea, 1000), null, null, false, new FluidStack(
+			regBoilRecipe(null, null, 0F, new FluidStack(MainInit.greenTea, 1000), null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { new ItemStack(FoodInit.teaLeaves, 1, 1) });
 
-			regBoilrecipe(null, null, 0F, new FluidStack(MainInit.blackTea, 1000), null, null, false, new FluidStack(
+			regBoilRecipe(null, null, 0F, new FluidStack(MainInit.blackTea, 1000), null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { new ItemStack(FoodInit.teaLeaves, 1, 2) });
 
 			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.nonEntity, 1,
 					5), null, 0F, null, DCHeatTier.WARM, DCHumidity.DRY, null, false, null, new Object[] {
 						"cropGrape" });
 
-			regBoilrecipe(new ItemStack(FoodInit.teaLeaves, 1,
+			regBoilRecipe(new ItemStack(FoodInit.teaLeaves, 1,
 					0), null, 0F, null, null, null, false, null, new Object[] { "seedCoffee" });
 
-			regBoilrecipe(new ItemStack(FoodInit.teaLeaves, 1,
+			regBoilRecipe(new ItemStack(FoodInit.teaLeaves, 1,
 					1), null, 0F, null, null, null, false, null, new Object[] { "cropTea" });
 
 			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.teaLeaves, 1,
@@ -367,94 +367,94 @@ public class RegisterFluidRecipe {
 
 			// cooking
 
-			regBoilrecipe(new ItemStack(FoodInit.bread, 1, 9), null, 0F, null, null, null, false, null, new Object[] {
+			regBoilRecipe(new ItemStack(FoodInit.bread, 1, 9), null, 0F, null, null, null, false, null, new Object[] {
 				"bread",
 				"egg",
 				"bucketMilk" });
 
-			regBoilrecipe(new ItemStack(FoodInit.ricebowl, 1, 0), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.ricebowl, 1, 0), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 200), new Object[] { "foodRice" });
 
-			regBoilrecipe(new ItemStack(FoodInit.ricebowl, 1, 1), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.ricebowl, 1, 1), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 200), new Object[] { "foodRice", "listAllmushroom" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 0), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 0), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "cropOnion", "cropCarrot", "listAllveggie" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 1), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 1), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "egg", "cropSpinach" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 1), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 1), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "egg", "cropSeaweed" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 2), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 2), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodRice", "foodCheese" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 2), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 2), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { "foodRice", "cropHerb", "cropSeaweed" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodRice", "cropTomato" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 4), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 4), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "cropPumpkin", "cropOnion", "foodCream" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 4), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 4), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "cropPumpkin", "cropOnion", "foodButter" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 5), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 5), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "listAllveggie", "listAllmeatraw", "cropBeetroot" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] {
 						new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0),
 						new ItemStack(Blocks.RED_MUSHROOM, 1, 0),
 						"foodCream" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 7), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 7), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodCream", new ItemStack(Items.CHORUS_FRUIT, 1, 0) });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 8), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 8), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "listAllgreenveggie", "cropLotusRoot" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 9), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 9), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "cropTomato", "foodRice", "foodSquid" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 10), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 10), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "cropSeaweed", "foodRice" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 11), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 11), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "listAllgreenveggie", "cropSeaweed", "foodMiso" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 11), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 11), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodFirmtofu", "cropSeaweed", "foodMiso" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 12), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 12), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodViscera", "listAllrootveggie", "foodMiso" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3,
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3,
 					13), null, 0F, null, null, null, false, null, new Object[] {
 						"listAllbeefcooked",
 						"cropChilipepper",
 						"cropBean" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 14), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 14), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.oil, 1000), new Object[] { "listAllmushroom", "cropChilipepper", "cropGarlic" });
 
-			regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 15), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 15), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.oil, 200), new Object[] {
 						new ItemStack(FoodInit.deepFry, 1, 1),
 						"cropChilipepper",
 						"cropHerb" });
 
 			if (MainInit.milk != null) {
-				regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+				regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 6), null, 0F, null, null, null, false, new FluidStack(
 						MainInit.milk, 1000), new Object[] {
 							new ItemStack(Blocks.BROWN_MUSHROOM, 1, 0),
 							new ItemStack(Blocks.RED_MUSHROOM, 1, 0),
 							"foodButter" });
 
-				regBoilrecipe(new ItemStack(FoodInit.bowlSoup, 3, 7), null, 0F, null, null, null, false, new FluidStack(
+				regBoilRecipe(new ItemStack(FoodInit.bowlSoup, 3, 7), null, 0F, null, null, null, false, new FluidStack(
 						MainInit.milk, 1000), new Object[] { "cropOnion", new ItemStack(Items.CHORUS_FRUIT, 1, 0) });
 			}
 
@@ -506,78 +506,78 @@ public class RegisterFluidRecipe {
 
 			// sweets
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.coffee, 1000), new Object[] { "dustSugar", "foodCream", "foodAgar" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.coffee, 1000), new Object[] { "dustSugar", "foodCream", "foodGelatine" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 4), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 4), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.cream, 1000), new Object[] { "dustSugar", "cropLemon", "foodAgar" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 4), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 4), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.cream, 1000), new Object[] { "dustSugar", "cropLemon", "foodGelatine" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 5), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 5), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 200), new Object[] { "dustSugar", "foodCustard" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { "dustSugar", "listAllberry", "foodAgar" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { "dustSugar", "listAllberry", "foodGelatine" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { "dustSugar", "listApple", "foodAgar" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 6), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { "dustSugar", "listApple", "foodGelatine" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 7), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 7), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] { "dustSugar", "dustStarch", "dropMolasses" });
 
-			regBoilrecipe(new ItemStack(FoodInit.cake, 3, 12), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.cake, 3, 12), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.cream, 1000), new Object[] { "dustSugar", "cropGrape", "foodGelatine" });
 
-			regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 0), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.nonEntity, 3, 0), null, 0F, null, null, null, false, new FluidStack(
 					FluidRegistry.WATER, 200), new Object[] { "egg", "dustSugar", "foodGelatine" });
 
-			regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3,
+			regBoilRecipe(new ItemStack(FoodInit.nonEntity, 3,
 					2), null, 0F, null, null, null, false, null, new Object[] {
 						"listAllnut",
 						"dustSugar",
 						"foodButter" });
 
-			regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3,
+			regBoilRecipe(new ItemStack(FoodInit.nonEntity, 3,
 					2), null, 0F, null, null, null, false, null, new Object[] {
 						"listAllnut",
 						"dropMolasses",
 						"foodButter" });
 
-			regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.nonEntity, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.soyMilk, 1000), new Object[] { "gemGypsum" });
 
-			regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3, 3), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.nonEntity, 3, 3), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.soyMilk, 1000), new Object[] { "dustLime" });
 
-			regBoilrecipe(new ItemStack(FoodInit.nonEntity, 3,
+			regBoilRecipe(new ItemStack(FoodInit.nonEntity, 3,
 					4), null, 0F, null, null, null, false, null, new Object[] { "foodSalmonraw", "dustWood" });
 
-			regBoilrecipe(new ItemStack(FoodInit.dishSq, 2, 5), null, 0F, null, null, null, false, null, new Object[] {
+			regBoilRecipe(new ItemStack(FoodInit.dishSq, 2, 5), null, 0F, null, null, null, false, null, new Object[] {
 				"listAllfishraw",
 				"cropGinger",
 				"foodMiso" });
 
-			regBoilrecipe(new ItemStack(FoodInit.dishBig, 1, 5), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.dishBig, 1, 5), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodCalamariraw", "foodSoysauce", "foodRice" });
 
-			regBoilrecipe(new ItemStack(FoodInit.udon, 2, 0), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.udon, 2, 0), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodNoodles", "foodSoysauce", "listAllmeatraw" });
 
-			regBoilrecipe(new ItemStack(FoodInit.udon, 2, 1), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.udon, 2, 1), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodNoodles", "foodSoysauce", "cropSeaweed" });
 
-			regBoilrecipe(new ItemStack(FoodInit.udon, 2, 2), null, 0F, null, null, null, false, new FluidStack(
+			regBoilRecipe(new ItemStack(FoodInit.udon, 2, 2), null, 0F, null, null, null, false, new FluidStack(
 					MainInit.stock, 1000), new Object[] { "foodNoodles", "foodSoysauce", "egg" });
 
 			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.meat, 1,
@@ -831,7 +831,7 @@ public class RegisterFluidRecipe {
 		}
 	}
 
-	public static void regBoilrecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHumidity hum,
+	public static void regBoilRecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHumidity hum,
 			DCAirflow air, boolean cooling, FluidStack inF, Object... input) {
 		FluidCraftRecipe recipe = new FluidCraftRecipe(out, sec, outF, DCHeatTier.OVEN, hum, air, chance, cooling, inF,
 				input);

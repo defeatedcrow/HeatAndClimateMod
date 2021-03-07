@@ -193,6 +193,9 @@ public class JsonRegister {
 					.build());
 			MAIN_INSTANCE.regSimpleItem(Item
 					.getItemFromBlock(MainInit.mcClock_L), ClimateCore.PACKAGE_ID, "dcs_device_mcclock_l", "device", 0);
+			MAIN_INSTANCE.regSimpleBlock(MainInit.flowerVase, ClimateCore.PACKAGE_ID, "dcs_build_vase", "build", 4);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.planting, ClimateCore.PACKAGE_ID, "dcs_build_flower_planting", "build", 3);
 
 			ModelLoader.setCustomStateMapper(MainInit.bed, (new StateMap.Builder()).ignore(BlockBed.PART)
 					.ignore(BlockBed.OCCUPIED).ignore(BlockBed.FACING).build());

@@ -3,7 +3,7 @@
  "ingredients": [
   {
    "item": "minecraft:red_flower",
-   "data": 2
+   "data": 0
   },
   {
    "type": "forge:ore_dict",

@@ -54,10 +54,13 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable {
+public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable,
+		IPlantable {
 
 	public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.75D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.25D, 1.0D, 1.0D);
@@ -261,8 +264,9 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 	}
 
 	protected boolean isSoil(World world, BlockPos pos) {
-		return world.getBlockState(pos).getBlock() == this || isSuitableMaterial(world.getBlockState(pos)
-				.getMaterial());
+		IBlockState state = world.getBlockState(pos);
+		return state.getBlock() == this || isSuitableMaterial(state.getMaterial()) || world.getBlockState(pos)
+				.getBlock().canSustainPlant(state, world, pos, EnumFacing.UP, this);
 	}
 
 	protected boolean isSuitableMaterial(Material mat) {
@@ -583,6 +587,16 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 	@Override
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		this.grow(world, pos, state);
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+		return EnumPlantType.Plains;
+	}
+
+	@Override
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
+		return world.getBlockState(pos);
 	}
 
 }

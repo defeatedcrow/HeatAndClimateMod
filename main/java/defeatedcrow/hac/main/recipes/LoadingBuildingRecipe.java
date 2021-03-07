@@ -1624,6 +1624,74 @@ public class LoadingBuildingRecipe {
 				'Z',
 				"string" });
 
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.flowerVase, 1, 0), new Object[] {
+				"XYX",
+				"XXX",
+				'X',
+				"ingotBrick",
+				'Y',
+				"dirt" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.flowerVase, 1, 1), new Object[] {
+				" Z ",
+				"XYX",
+				"XXX",
+				'X',
+				"itemClay",
+				'Y',
+				"bucketWater",
+				'Z',
+				"dustAsh" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.flowerVase, 1, 2), new Object[] {
+				" Z ",
+				"XYX",
+				"XXX",
+				'X',
+				"itemClay",
+				'Y',
+				"bucketWater",
+				'Z',
+				"dyeBlue" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.flowerVase, 1, 3), new Object[] {
+				" Z ",
+				"XYX",
+				"XXX",
+				'X',
+				"itemClay",
+				'Y',
+				"bucketWater",
+				'Z',
+				"dyeRed" });
+
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.flowerVase, 1, 4), new Object[] {
+				" Z ",
+				"XYX",
+				"XXX",
+				'X',
+				"itemClay",
+				'Y',
+				"bucketWater",
+				'Z',
+				"dyeBlack" });
+
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.planting, 1, 0), new Object[] {
+				"gemMalachite",
+				new ItemStack(Blocks.DOUBLE_PLANT, 1, 4) });
+
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.planting, 1, 1), new Object[] {
+				"gemMalachite",
+				new ItemStack(Blocks.DOUBLE_PLANT, 1, 5) });
+
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.planting, 1, 2), new Object[] {
+				"gemMalachite",
+				new ItemStack(Blocks.DOUBLE_PLANT, 1, 1) });
+
+			DCRecipe.jsonShapelessRecipe("main_build", new ItemStack(MainInit.planting, 1, 3), new Object[] {
+				"gemMalachite",
+				new ItemStack(Blocks.DOUBLE_PLANT, 1, 0) });
+
 		}
 	}
 

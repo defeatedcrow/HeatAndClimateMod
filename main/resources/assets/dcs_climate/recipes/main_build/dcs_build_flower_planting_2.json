@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemMalachite"
+  },
+  {
+   "item": "minecraft:double_plant",
+   "data": 1
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_build_flower_planting",
+  "count": 1,
+  "data": 2
+ }
+}

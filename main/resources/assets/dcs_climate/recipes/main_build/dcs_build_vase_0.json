@@ -1,22 +1,21 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "XXX",
   "XYX",
   "XXX"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "stickWood"
+   "ore": "ingotBrick"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
+   "ore": "dirt"
   }
  },
  "result": {
-  "item": "minecraft:painting",
+  "item": "dcs_climate:dcs_build_vase",
   "count": 1,
   "data": 0
  }

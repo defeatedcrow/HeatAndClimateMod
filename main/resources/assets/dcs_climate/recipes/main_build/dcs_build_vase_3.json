@@ -1,31 +1,27 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "XXX",
-  "YZY",
-  "WWW"
+  " Z ",
+  "XYX",
+  "XXX"
  ],
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "bucketMilk"
+   "ore": "itemClay"
   },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "dustSugar"
+   "ore": "bucketWater"
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "egg"
-  },
-  "W": {
-   "type": "forge:ore_dict",
-   "ore": "foodFlour"
+   "ore": "dyeRed"
   }
  },
  "result": {
-  "item": "minecraft:cake",
+  "item": "dcs_climate:dcs_build_vase",
   "count": 1,
-  "data": 0
+  "data": 3
  }
 }

@@ -138,7 +138,9 @@ public class BlockSaplingDC2 extends ClimateCropBase implements ITexturePath, IP
 		if (targetState == null)
 			return false;
 		return targetState.getMaterial() == Material.GRASS || targetState
-				.getMaterial() == Material.GROUND || targetState.getMaterial() == Material.SAND;
+				.getMaterial() == Material.GROUND || targetState.getMaterial() == Material.SAND || targetState
+						.getMaterial() == Material.GROUND || targetState.getBlock()
+								.canSustainPlant(targetState, world, pos, EnumFacing.UP, this);
 	}
 
 	@Override
