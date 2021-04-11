@@ -1,15 +1,18 @@
 package defeatedcrow.hac.magic.item;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.proj.EntityFireBarrier;
 import defeatedcrow.hac.magic.proj.EntityHealBarrier;
 import defeatedcrow.hac.magic.proj.EntityMobBarrier;
@@ -19,16 +22,20 @@ import defeatedcrow.hac.magic.proj.EntityProjRedSpit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
+import defeatedcrow.hac.main.util.EntitySelectorsDC;
 import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.worldgen.vein.OreGenPos;
 import defeatedcrow.hac.main.worldgen.vein.OreGenPos.OreVein;
 import defeatedcrow.hac.main.worldgen.vein.WorldGenOres;
 import defeatedcrow.hac.main.worldgen.vein.WorldGenSkarn;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.ai.EntityAITarget;
+import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
@@ -39,6 +46,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -259,19 +267,36 @@ public class ItemColorCard extends DCItem {
 	}
 
 	private boolean onEffect_Black1(World world, EntityPlayer player, float f) {
-		int r = MathHelper.floor(8 * f);
+		int r = MathHelper.floor(16 * f);
 		AxisAlignedBB aabb = new AxisAlignedBB(player.posX - r, player.posY - 2D, player.posZ - r, player.posX + r,
 				player.posY + 2D, player.posZ + r);
-		List<EntityMob> list = player.world.getEntitiesWithinAABB(EntityMob.class, aabb);
+		List<EntityLivingBase> list = player.world
+				.getEntitiesWithinAABB(EntityLiving.class, aabb, EntitySelectorsDC.NOT_TAMED);
 		if (list.isEmpty() || list.size() < 2)
 			return false;
 		else {
-			EntityMob t1 = null;
-			EntityMob t2 = null;
+			EntityLivingBase t1 = null;
+			EntityLivingBase t2 = null;
 			for (int i = 0; i < list.size(); i++) {
 				t1 = list.get(i);
 				t2 = i == list.size() - 1 ? list.get(0) : list.get(i + 1);
-				t1.setAttackTarget(t2);
+
+				if (t1 instanceof EntityLiving) {
+					EntityLiving liv = (EntityLiving) t1;
+					Set<EntityAITaskEntry> set = liv.targetTasks.taskEntries;
+					for (EntityAITaskEntry ai : set) {
+						if (ai == null || ai.action == null)
+							continue;
+						if (ai.action instanceof EntityAITarget) {
+							EntityAITarget tai = (EntityAITarget) ai.action;
+							tai.resetTask();
+						}
+					}
+					liv.setAttackTarget(null);
+					liv.setAttackTarget(t2);
+				}
+
+				t1.attackEntityFrom(DamageSource.causeMobDamage(t2), 0.5F);
 				DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(t1.posX, t1.posY, t1.posZ));
 			}
 		}
@@ -298,30 +323,59 @@ public class ItemColorCard extends DCItem {
 		int z = MathHelper.floor(player.posZ);
 		BlockPos p = new BlockPos(x, y + 1, z);
 		ChunkPos c = new ChunkPos(p);
-		OreVein[] veins = OreGenPos.INSTANCE.getVeins(c.x, c.z, player.world);
-		List<OreVein> list = Lists.newArrayList();
-		if (veins != null) {
-			for (OreVein v : veins) {
-				if (v != null)
-					list.add(v);
+		boolean b = false;
+
+		if (!world.isRemote) {
+			int r = MathHelper.floor(f * 2.0F) - 1;
+			for (int x1 = -r; x1 <= r; x1++) {
+				for (int z1 = -r; z1 <= r; z1++) {
+					OreVein[] veins = OreGenPos.INSTANCE.getVeins(c.x + x1, c.z + z1, player.world);
+					List<OreVein> list = Lists.newArrayList();
+					if (veins != null) {
+						for (OreVein v : veins) {
+							if (v != null) {
+								if (world.getBlockState(v.pos).getMaterial() == Material.ROCK || world
+										.getBlockState(v.pos).getMaterial() == Material.GROUND) {
+
+									int i = 120;
+									if (world.provider.getHeight() <= 128) {
+										i = 64;
+									}
+									for (int j = 0; j < 64; j++) {
+										i--;
+										BlockPos p1 = new BlockPos(v.pos.getX(), i, v.pos.getZ());
+										if (!world.isAirBlock(p1) && world.getBlockState(p1)
+												.getBlock() != MagicInit.veinBeacon) {
+											break;
+										}
+									}
+
+									BlockPos p2 = new BlockPos(v.pos.getX(), i + 2, v.pos.getZ());
+									if (!world.isBlockLoaded(p2) || world.getTileEntity(p2) != null)
+										continue;
+
+									IBlockState state = MagicInit.veinBeacon.getDefaultState();
+									state = state.withProperty(DCState.TYPE16, v.type.id);
+									world.setBlockState(p2, state, 3);
+									b = true;
+								}
+							}
+						}
+					}
+				}
 			}
-		}
-		if (!list.isEmpty()) {
-			player.sendMessage(new TextComponentString("== Ore vein detected! =="));
-			for (OreVein v : list) {
-				player.sendMessage(new TextComponentString("* Type: " + v.type.name() + " *"));
-				player.sendMessage(new TextComponentString(" Pos: " + v.pos.getX() + ", " + v.pos.getY() + ", " + v.pos
-						.getZ()));
+			if (b) {
+				player.sendMessage(new TextComponentString("== Ore vein has been detected! =="));
+			} else {
+				player.sendMessage(new TextComponentString("== No ore vein detected in this chank =="));
 			}
-		} else {
-			player.sendMessage(new TextComponentString("== No ore vein detected in this chank =="));
 		}
 		return true;
 	}
 
 	private boolean onEffect_Red2(World world, EntityPlayer player, float f) {
 		EntityProjRedSpit entityarrow = new EntityProjRedSpit(world, player);
-		entityarrow.setExplodeRange(f);
+		entityarrow.setExplodeRange(f * 2F);
 		entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
 		world.spawnEntity(entityarrow);
 		return true;
@@ -362,8 +416,9 @@ public class ItemColorCard extends DCItem {
 		int z = MathHelper.floor(player.posZ);
 		BlockPos p = new BlockPos(x, y + 1, z);
 		ChunkPos c = new ChunkPos(p);
-		for (int i = -1; i < 2; i++) {
-			for (int j = -1; j < 2; j++) {
+		int r = MathHelper.floor(f);
+		for (int i = -r; i <= r; i++) {
+			for (int j = -r; j <= r; j++) {
 				gen.generate(world.rand, c.x + i, c.z + j, world, world.provider.createChunkGenerator(), world
 						.getChunkProvider());
 				if (f > 0F) {

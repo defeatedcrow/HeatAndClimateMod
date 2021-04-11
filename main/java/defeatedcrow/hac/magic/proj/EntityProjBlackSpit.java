@@ -4,6 +4,7 @@ import java.util.List;
 
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.entity.EntityProjBase;
+import defeatedcrow.hac.main.util.EntitySelectorsDC;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -51,12 +52,12 @@ public class EntityProjBlackSpit extends EntityProjBase {
 	@Override
 	protected boolean onGroundHit() {
 		AxisAlignedBB aabb = new AxisAlignedBB(posX - 1, posY - 1, posZ - 1, posX + 1, posY + 1, posZ + 1);
-		List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, aabb);
+		List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityMob.class, aabb, EntitySelectorsDC.NOT_TAMED);
 		if (list.isEmpty()) {
 			this.setDead();
 			return false;
 		} else {
-			for (EntityMob mob : list) {
+			for (EntityLivingBase mob : list) {
 				if (mob.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
 					IItemHandler handler = mob.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 					for (int i = 0; i < handler.getSlots(); i++) {

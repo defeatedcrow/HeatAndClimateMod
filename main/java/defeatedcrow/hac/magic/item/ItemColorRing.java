@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.magic.MagicType;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -139,7 +140,8 @@ public class ItemColorRing extends CharmItemBase {
 	public boolean onToolUsing(EntityLivingBase owner, BlockPos pos, IBlockState state, ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.GREEN) {
 			if (!owner.world.isRemote && state != null) {
-				double a = 3 + charm.getCount() * 2;
+				double a = MainUtil.magicSuitEff(owner) * 3;
+				a += charm.getCount() * 2;
 				AxisAlignedBB aabb = new AxisAlignedBB(pos.getX() - a, (double) pos.getY() - 2, pos.getZ() - a, pos
 						.getX() + a, (double) pos.getY() + 3, pos.getZ() + a);
 				List<EntityItem> drops = owner.world.getEntitiesWithinAABB(EntityItem.class, aabb);
@@ -156,6 +158,9 @@ public class ItemColorRing extends CharmItemBase {
 		int l = charm.getCount() - 1;
 		if (l < 0) {
 			l = 0;
+		}
+		if (MainUtil.magicSuitEff(owner) > 1.0F) {
+			l += 1;
 		}
 		if (getColor(charm.getItemDamage()) == MagicColor.RED) {
 			owner.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 205, 0));

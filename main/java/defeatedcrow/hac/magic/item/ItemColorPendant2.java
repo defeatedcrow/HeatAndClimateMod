@@ -137,12 +137,13 @@ public class ItemColorPendant2 extends CharmItemBase {
 			ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.BLACK) {
 			int f = charm.getCount();
+			float eff = MainUtil.magicSuitEff(owner) * 0.5F;
 			DCLogger.debugInfoLog("stats " + f);
 			if (owner != null && target != null) {
 				if (owner instanceof EntityPlayer) {
-					((EntityPlayer) owner).getFoodStats().addStats(f, 0.5F);
+					((EntityPlayer) owner).getFoodStats().addStats(f, eff);
 				} else {
-					owner.heal(f * 0.5F);
+					owner.heal(f * eff);
 				}
 			}
 

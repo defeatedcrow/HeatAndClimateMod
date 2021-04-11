@@ -15,6 +15,7 @@ import defeatedcrow.hac.magic.block.BlockPictureRW;
 import defeatedcrow.hac.magic.block.BlockPictureUR;
 import defeatedcrow.hac.magic.block.BlockPictureWB;
 import defeatedcrow.hac.magic.block.BlockTimeCage;
+import defeatedcrow.hac.magic.block.BlockVeinBeacon;
 import defeatedcrow.hac.magic.item.ItemArmorGemBoots;
 import defeatedcrow.hac.magic.item.ItemColorBadge;
 import defeatedcrow.hac.magic.item.ItemColorCard;
@@ -114,6 +115,10 @@ public class MagicInitRegister {
 		MagicInit.infernalFlame = new BlockCubeFlame(ClimateCore.PACKAGE_BASE + "_cube_flame");
 		DCMaterialReg
 				.registerBlock(MagicInit.infernalFlame, ClimateCore.PACKAGE_BASE + "_cube_flame", ClimateMain.MOD_ID);
+
+		MagicInit.veinBeacon = new BlockVeinBeacon(ClimateCore.PACKAGE_BASE + "_beacon_vein");
+		DCMaterialReg
+				.registerBlock(MagicInit.veinBeacon, ClimateCore.PACKAGE_BASE + "_beacon_vein", ClimateMain.MOD_ID);
 
 		MagicInit.elestial = new BlockElestial(Material.GLASS, ClimateCore.PACKAGE_BASE + "_ore_elestial");
 		DCMaterialReg.registerBlock(MagicInit.elestial, ClimateCore.PACKAGE_BASE + "_ore_elestial", ClimateMain.MOD_ID);

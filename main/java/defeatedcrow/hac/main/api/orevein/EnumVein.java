@@ -7,10 +7,10 @@ public enum EnumVein {
 	WHITE(3, 4, 25),
 	BLACK(4, 3, 10),
 	HIGH_RED(5, 5, 140),
-	GUANO(8, 4, 25),
-	SKARN_IRON(9, 8, 40),
-	SKARN_COPPER(10, 8, 30),
-	NETHER(11, 5, 25);
+	GUANO(6, 4, 25),
+	SKARN_IRON(7, 8, 40),
+	SKARN_COPPER(8, 8, 30),
+	NETHER(9, 5, 25);
 
 	public static final EnumVein[] VALUES = {
 		RED,

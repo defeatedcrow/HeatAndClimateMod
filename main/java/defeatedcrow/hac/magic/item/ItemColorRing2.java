@@ -162,6 +162,9 @@ public class ItemColorRing2 extends CharmItemBase {
 		if (l < 0) {
 			l = 0;
 		}
+		if (MainUtil.magicSuitEff(owner) > 1.0F) {
+			l += 1;
+		}
 		if (getColor(charm.getItemDamage()) == MagicColor.RED) {
 			owner.addPotionEffect(new PotionEffect(MainInit.nimble, 205, l));
 		} else if (getColor(charm.getItemDamage()) == MagicColor.WHITE) {
@@ -212,15 +215,13 @@ public class ItemColorRing2 extends CharmItemBase {
 			}
 
 			float eff = MainUtil.magicSuitEff(owner);
-			if (eff > 0F) {
-				int cx = x >> 4;
-				int cz = z >> 4;
-				BlockPos center = SkarnGenPos.getNearestPoint(cx, cz, owner.world, (int) (8 * eff));
-				if (center != null && !SkarnGenPos.isDupe(center, owner.world)) {
-					owner.sendMessage(new TextComponentString("== Nearby Skarn detected =="));
-					owner.sendMessage(new TextComponentString("* Center Coodinate: " + center.getX() + ", 40, " + center
-							.getZ() + " *"));
-				}
+			int cx = x >> 4;
+			int cz = z >> 4;
+			BlockPos center = SkarnGenPos.getNearestPoint(cx, cz, owner.world, (int) (8 * eff));
+			if (center != null && !SkarnGenPos.isDupe(center, owner.world)) {
+				owner.sendMessage(new TextComponentString("== Nearby Skarn detected =="));
+				owner.sendMessage(new TextComponentString("* Center Coodinate: " + center.getX() + ", 40, " + center
+						.getZ() + " *"));
 			}
 
 			if (air != null) {

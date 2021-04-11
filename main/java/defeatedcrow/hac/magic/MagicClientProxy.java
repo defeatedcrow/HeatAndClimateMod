@@ -1,5 +1,6 @@
 package defeatedcrow.hac.magic;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.magic.block.TileCubeFlame;
@@ -12,6 +13,7 @@ import defeatedcrow.hac.magic.block.TilePictureRW;
 import defeatedcrow.hac.magic.block.TilePictureUR;
 import defeatedcrow.hac.magic.block.TilePictureWB;
 import defeatedcrow.hac.magic.block.TileTimeCage;
+import defeatedcrow.hac.magic.block.TileVeinBeacon;
 import defeatedcrow.hac.magic.client.BlackDogRenderer;
 import defeatedcrow.hac.magic.client.FireCircleRenderer;
 import defeatedcrow.hac.magic.client.FlowerTurretRenderer;
@@ -28,6 +30,7 @@ import defeatedcrow.hac.magic.client.TESRCubeFlame;
 import defeatedcrow.hac.magic.client.TESRCubeIce;
 import defeatedcrow.hac.magic.client.TESRLotusCandle;
 import defeatedcrow.hac.magic.client.TESRTimeCage;
+import defeatedcrow.hac.magic.client.TESRVeinBeacon;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
 import defeatedcrow.hac.magic.entity.EntityFlowerTurret;
 import defeatedcrow.hac.magic.entity.EntityMagicCushion;
@@ -41,7 +44,9 @@ import defeatedcrow.hac.magic.proj.EntityProjLightSpit;
 import defeatedcrow.hac.magic.proj.EntityProjRedSpit;
 import defeatedcrow.hac.magic.proj.EntityProjWhiteSpit;
 import defeatedcrow.hac.main.client.ClientMainProxy;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -72,6 +77,7 @@ public class MagicClientProxy {
 		ClientMainProxy.registerTileEntity(TileCubeIce.class, "dcs_te_cube_ice", new TESRCubeIce());
 		ClientMainProxy.registerTileEntity(TileCubeFlame.class, "dcs_te_cube_flame", new TESRCubeFlame());
 		ClientMainProxy.registerTileEntity(TileLotusCandle.class, "dcs_te_lotus_candle", new TESRLotusCandle());
+		ClientMainProxy.registerTileEntity(TileVeinBeacon.class, "dcs_te_vein_beacon", new TESRVeinBeacon());
 		ClientMainProxy
 				.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black", new TESRLotusCandle());
 
@@ -120,6 +126,8 @@ public class MagicClientProxy {
 				.getItemFromBlock(MagicInit.pictureWhite), ClimateCore.PACKAGE_ID, "dcs_magic_picture_w", "device", 0);
 		instance.regSimpleItem(Item
 				.getItemFromBlock(MagicInit.pictureBlack), ClimateCore.PACKAGE_ID, "dcs_magic_picture_b", "device", 0);
+		ModelLoader.setCustomStateMapper(MagicInit.veinBeacon, (new StateMap.Builder()).ignore(DCState.TYPE16).build());
+		instance.regSimpleBlock(MagicInit.veinBeacon, ClimateCore.PACKAGE_ID, "dcs_beacon_vein", "magic", 0);
 
 	}
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import codechicken.lib.math.MathHelper;
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.MagicColor;
@@ -30,6 +29,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -171,7 +171,7 @@ public class ItemColorBadge extends CharmItemBase {
 					if (!player.canPlayerEdit(p, EnumFacing.UP, charm))
 						continue;
 					IBlockState target = player.world.getBlockState(p);
-					if (!target.getBlock().canHarvestBlock(player.world, p, player))
+					if (target == null || !target.getBlock().canHarvestBlock(player.world, p, player))
 						continue;
 					if (target.equals(state) && target.getBlock().getMetaFromState(target) == state.getBlock()
 							.getMetaFromState(state) && !target.getBlock().hasTileEntity(target)) {
@@ -187,10 +187,14 @@ public class ItemColorBadge extends CharmItemBase {
 	@Override
 	public void constantEffect(EntityLivingBase owner, ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.WHITE) {
-			long time = DCTimeHelper.time(owner.world);
-			if ((time & 31) == 0) {
-				ItemStack off = owner.getHeldItemOffhand();
-				if (!DCUtil.isEmpty(off) && off.getItem().isDamageable()) {
+			ItemStack off = owner.getHeldItemOffhand();
+			if (!DCUtil.isEmpty(off) && off.getItem().isDamageable()) {
+				long time = DCTimeHelper.time(owner.world);
+				int f = MathHelper.ceil(MainUtil.magicSuitEff(owner) * charm.getCount() * 2);
+				if (f > 16)
+					f = 16;
+				int i = (128 / f) - 1;
+				if ((time & i) == 0) {
 					int dam = off.getItemDamage();
 					if (dam > 0) {
 						dam -= charm.getCount();

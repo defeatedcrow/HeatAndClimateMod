@@ -17,6 +17,7 @@ import defeatedcrow.hac.main.util.CustomExplosion;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
@@ -180,11 +181,11 @@ public class ItemColorPendant extends CharmItemBase {
 				a *= eff;
 				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a,
 						owner.posY + 2D, owner.posZ + a);
-				List<EntityMob> list = owner.world.getEntitiesWithinAABB(EntityMob.class, aabb);
+				List<EntityLiving> list = owner.world.getEntitiesWithinAABB(EntityMob.class, aabb);
 				if (list.isEmpty())
 					return false;
 				else {
-					for (EntityMob liv : list) {
+					for (EntityLiving liv : list) {
 						Set<EntityAITaskEntry> set = liv.targetTasks.taskEntries;
 						for (EntityAITaskEntry ai : set) {
 							if (ai == null || ai.action == null)

@@ -14,6 +14,7 @@ import defeatedcrow.hac.machine.MachineClientProxy;
 import defeatedcrow.hac.machine.client.GasBurnerTESR;
 import defeatedcrow.hac.magic.MagicClientProxy;
 import defeatedcrow.hac.magic.client.MagicCushionRenderer;
+import defeatedcrow.hac.magic.client.TESRVeinBeacon;
 import defeatedcrow.hac.magic.event.MagicClientEvent;
 import defeatedcrow.hac.magic.proj.EntityFlowerBolt;
 import defeatedcrow.hac.main.CommonMainProxy;
@@ -166,6 +167,12 @@ public class ClientMainProxy extends CommonMainProxy {
 		particles.add(ParticleFlameDC.FLAME_TEX);
 		particles.add(MagicCushionRenderer.PARTICLE_TEX);
 		particles.add(GasBurnerTESR.TEX1.toString());
+		particles.add(TESRVeinBeacon.RED);
+		particles.add(TESRVeinBeacon.GREEN);
+		particles.add(TESRVeinBeacon.BLUE);
+		particles.add(TESRVeinBeacon.WHITE);
+		particles.add(TESRVeinBeacon.BLACK);
+		particles.add(TESRVeinBeacon.GUANO);
 
 		JsonBakery.instance.addTex(particles);
 

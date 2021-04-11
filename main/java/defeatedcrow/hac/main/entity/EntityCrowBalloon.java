@@ -171,21 +171,22 @@ public class EntityCrowBalloon extends EntityLivingBase {
 	}
 
 	private void playBrokenSound() {
-		this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_FIREWORK_BLAST,
-				this.getSoundCategory(), 1.0F, 1.0F);
+		this.world
+				.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_FIREWORK_BLAST, this
+						.getSoundCategory(), 1.0F, 1.0F);
 	}
 
 	private void playDamageSound() {
-		this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_ARMORSTAND_HIT,
-				this.getSoundCategory(), 1.0F, 1.0F);
+		this.world
+				.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_ARMORSTAND_HIT, this
+						.getSoundCategory(), 1.0F, 1.0F);
 	}
 
 	private void playParticles() {
 		if (this.world instanceof WorldServer) {
-			((WorldServer) this.world).spawnParticle(EnumParticleTypes.BLOCK_DUST, this.posX,
-					this.posY + this.height / 1.5D, this.posZ, 10, (double) (this.width / 4.0F),
-					(double) (this.height / 4.0F), (double) (this.width / 4.0F), 0.05D,
-					Block.getStateId(Blocks.BEDROCK.getDefaultState()));
+			((WorldServer) this.world)
+					.spawnParticle(EnumParticleTypes.BLOCK_DUST, this.posX, this.posY + this.height / 1.5D, this.posZ, 10, (double) (this.width / 4.0F), (double) (this.height / 4.0F), (double) (this.width / 4.0F), 0.05D, Block
+							.getStateId(Blocks.BEDROCK.getDefaultState()));
 		}
 	}
 

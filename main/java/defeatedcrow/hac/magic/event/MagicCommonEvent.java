@@ -11,15 +11,18 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.WorldHeatTierEvent;
 import defeatedcrow.hac.api.magic.IJewel;
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.api.recipe.ICrusherRecipe;
 import defeatedcrow.hac.api.recipe.IMillRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.PictureList;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.entity.Entity;
@@ -27,17 +30,17 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGuardian;
+import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -179,15 +182,18 @@ public class MagicCommonEvent {
 		if (living == null)
 			return;
 
-		if (!living.world.isRemote && living instanceof IMob) {
+		if (!living.world.isRemote) {
 			int lu1 = 0;
 			int lb2 = 0;
 			boolean blue = false;
 			if (source.getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase liv2 = (EntityLivingBase) source.getTrueSource();
-				lu1 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing, 1, 0));
-				lb2 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing2, 1, 3));
+				int eff = MathHelper.floor(MainUtil.magicSuitEff(liv2) * 2) - 1;
+				lu1 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing, 1, 0)) * eff;
+				lb2 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing2, 1, 3)) * eff;
 				blue = getOffhandJewelColor(liv2) == MagicColor.BLUE;
+			} else {
+				return;
 			}
 			int m = 1 + (lu1 + level) * 5;
 			if (living.world.rand.nextInt(100) < m) {
@@ -220,21 +226,46 @@ public class MagicCommonEvent {
 			/* 粉砕 */
 			if (getOffhandJewelColor(event.getHarvester()) == MagicColor.BLACK) {
 				ItemStack off = event.getHarvester().getHeldItem(EnumHand.OFF_HAND);
+				float eff = MainUtil.magicSuitEff(event.getHarvester());
 				List<ItemStack> nList = Lists.newArrayList();
 				boolean flag = false;
 				for (ItemStack i : event.getDrops()) {
 					if (!DCUtil.isEmpty(i)) {
-						IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
-						if (recipe != null) {
-							ItemStack o1 = recipe.getOutput();
+						ICrusherRecipe cr = null;
+						if (eff >= 2.0F && ModuleConfig.machine_advanced) {
+							cr = RecipeAPI.registerCrushers.getRecipe(i, new ItemStack(MachineInit.rotaryBlade));
+							ICrusherRecipe cr2 = RecipeAPI.registerCrushers.getRecipe(i, new ItemStack(
+									MachineInit.rotaryBlade, 1, 1));
+							if (cr2 != null) {
+								cr = cr2;
+							}
+						}
+						if (cr != null) {
+							ItemStack o1 = cr.getOutput();
 							if (!DCUtil.isEmpty(o1))
 								nList.add(o1);
-							ItemStack o2 = recipe.getSecondary();
-							if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < recipe.getSecondaryChance())
+							ItemStack o2 = cr.getSecondary();
+							if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < cr
+									.getSecondaryChance() * eff)
 								nList.add(o2);
+							ItemStack o3 = cr.getSecondary();
+							if (!DCUtil.isEmpty(o3) && event.getWorld().rand.nextFloat() < cr.getTertialyChance() * eff)
+								nList.add(o3);
 							flag = true;
 						} else {
-							nList.add(i.copy());
+							IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
+							if (recipe != null) {
+								ItemStack o1 = recipe.getOutput();
+								if (!DCUtil.isEmpty(o1))
+									nList.add(o1);
+								ItemStack o2 = recipe.getSecondary();
+								if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < recipe
+										.getSecondaryChance() * eff)
+									nList.add(o2);
+								flag = true;
+							} else {
+								nList.add(i.copy());
+							}
 						}
 					}
 				}
@@ -264,13 +295,14 @@ public class MagicCommonEvent {
 	}
 
 	static int getDropMeta(EntityLivingBase living) {
-		if (living.getCreatureAttribute() == EnumCreatureAttribute.ILLAGER || living instanceof EntityEnderman) {
+		if (living
+				.getCreatureAttribute() == EnumCreatureAttribute.ILLAGER || living instanceof EntityEnderman || living instanceof EntityVillager) {
 			return 4;
 		} else if (living.isEntityUndead() || living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 			return 3;
-		} else if (living instanceof EntityCreeper || living instanceof EntityGhast || living instanceof EntityBlaze) {
+		} else if (living instanceof EntityCreeper || living.isImmuneToFire) {
 			return 2;
-		} else if (living instanceof EntitySlime || living instanceof EntityGuardian) {
+		} else if (living instanceof EntitySlime || living instanceof EntityGuardian || living instanceof EntityShulker) {
 			return 0;
 		} else {
 			return 1;

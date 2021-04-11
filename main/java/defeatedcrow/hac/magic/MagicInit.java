@@ -27,6 +27,8 @@ public class MagicInit {
 
 	public static Block elestial;
 
+	public static Block veinBeacon;
+
 	// advanced
 	public static Block lotusCandleBlack;
 	public static Block lotusCandle;

@@ -9,17 +9,18 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.magic.block.TileCubeIce;
 import defeatedcrow.hac.magic.entity.EntityFlowerTurret;
 import defeatedcrow.hac.magic.entity.EntityMagicCushion;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
+import defeatedcrow.hac.main.util.EntitySelectorsDC;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
@@ -27,6 +28,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -148,6 +150,10 @@ public class ItemColorCard2 extends DCItem {
 		IBlockState set = MagicInit.clusterIce.getDefaultState();
 		if (cur.getMaterial().isReplaceable() && player.world.setBlockState(pos, set))
 			return true;
+		TileEntity t = player.world.getTileEntity(pos);
+		if (t instanceof TileCubeIce) {
+			((TileCubeIce) t).setMaxTime((int) (1200 * f));
+		}
 		return false;
 	}
 
@@ -185,13 +191,14 @@ public class ItemColorCard2 extends DCItem {
 		int r = MathHelper.floor(16 + 8 * f);
 		AxisAlignedBB aabb = new AxisAlignedBB(player.posX - r, player.posY - 2D, player.posZ - r, player.posX + r,
 				player.posY + 2D, player.posZ + r);
-		List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
+		List<EntityLivingBase> list = player.world
+				.getEntitiesWithinAABB(EntityLivingBase.class, aabb, EntitySelectorsDC.NOT_TAMED);
 		if (list.isEmpty())
 			return false;
 		else {
 			for (int i = 0; i < list.size(); i++) {
 				EntityLivingBase mob = list.get(i);
-				if (!mob.isRiding() && !(mob instanceof EntityPlayer) && !(mob instanceof EntityTameable)) {
+				if (!mob.isRiding() && mob.isEntityAlive()) {
 					EntityMagicCushion cushion = new EntityMagicCushion(world);
 					cushion.setPosition(mob.posX, mob.posY, mob.posZ);
 					cushion.setMaxLivingTime((int) (60 * f));
@@ -220,6 +227,10 @@ public class ItemColorCard2 extends DCItem {
 		IBlockState set = MagicInit.infernalFlame.getDefaultState();
 		if (cur.getMaterial().isReplaceable() && player.world.setBlockState(pos, set))
 			return true;
+		TileEntity t = player.world.getTileEntity(pos);
+		if (t instanceof TileCubeIce) {
+			((TileCubeIce) t).setMaxTime((int) (1200 * f));
+		}
 		return true;
 	}
 
