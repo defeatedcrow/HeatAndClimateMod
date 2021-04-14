@@ -8,7 +8,6 @@ import defeatedcrow.hac.main.util.EntitySelectorsDC;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -52,7 +51,8 @@ public class EntityProjBlackSpit extends EntityProjBase {
 	@Override
 	protected boolean onGroundHit() {
 		AxisAlignedBB aabb = new AxisAlignedBB(posX - 1, posY - 1, posZ - 1, posX + 1, posY + 1, posZ + 1);
-		List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityMob.class, aabb, EntitySelectorsDC.NOT_TAMED);
+		List<EntityLivingBase> list = world
+				.getEntitiesWithinAABB(EntityLivingBase.class, aabb, EntitySelectorsDC.NOT_TAMED);
 		if (list.isEmpty()) {
 			this.setDead();
 			return false;

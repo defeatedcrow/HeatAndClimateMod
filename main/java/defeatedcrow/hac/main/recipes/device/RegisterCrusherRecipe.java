@@ -247,8 +247,6 @@ public class RegisterCrusherRecipe {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_red, 2, 1), new ItemStack(
 						MainInit.gems_blue, 1, 2), 0.1F, new ItemStack(MainInit.oreDust, 2,
 								14), 0.03F, null, ti, "oreGarnet");
-				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_layer, 2, 6), new ItemStack(
-						MainInit.miscDust, 1, 6), 0.5F, new ItemStack(Items.DYE, 1, 15), 0.5F, null, ti, "oreApatite");
 			}
 
 			// ex
