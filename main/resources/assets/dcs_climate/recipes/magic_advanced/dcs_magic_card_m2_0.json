@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "paper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "paper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dropBlue"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dropBlack"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_magic_card_m2",
+  "count": 2,
+  "data": 0
+ }
+}

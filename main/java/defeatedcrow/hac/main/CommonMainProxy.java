@@ -78,6 +78,7 @@ import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileChandelierSalt;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
+import defeatedcrow.hac.main.block.build.TileDisplayStand;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMCClock_L;
 import defeatedcrow.hac.main.block.build.TileMFence;
@@ -179,17 +180,20 @@ import net.minecraft.entity.passive.EntityVillager.ITradeList;
 import net.minecraft.entity.passive.EntityVillager.PriceInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.server.management.UserListOps;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
+import net.minecraftforge.fml.server.FMLServerHandler;
 import net.minecraftforge.registries.GameData;
 
 public class CommonMainProxy implements IGuiHandler {
@@ -487,6 +491,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileMFence.class, "dcs_te_mfence_normal");
 		GameRegistry.registerTileEntity(TileMFenceGlass.class, "dcs_te_mfence_glass");
 		GameRegistry.registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net");
+		GameRegistry.registerTileEntity(TileDisplayStand.class, "dcs_te_display_stand");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();
@@ -712,6 +717,19 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public int getParticleCount() {
 		return 0;
+	}
+
+	public boolean isOP(EntityPlayer player) {
+		if (FMLCommonHandler.instance().getMinecraftServerInstance().isSinglePlayer()) {
+			return true;
+		}
+		if (FMLServerHandler.instance().getServer().getPlayerList() != null) {
+			UserListOps ops = FMLServerHandler.instance().getServer().getPlayerList().getOppedPlayers();
+			if (ops.getPermissionLevel(player.getGameProfile()) > 1) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

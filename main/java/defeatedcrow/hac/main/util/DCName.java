@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.util;
 
+import java.util.Calendar;
+import java.util.Locale;
+
 import net.minecraft.client.resources.I18n;
 
 public enum DCName {
@@ -56,6 +59,10 @@ public enum DCName {
 
 	public String getLocalizedName() {
 		return I18n.format(name);
+	}
+
+	public static String getLocalizedDate() {
+		return String.format(Locale.getDefault(), "%1$tb %1$te, %1$tY", Calendar.getInstance());
 	}
 
 }

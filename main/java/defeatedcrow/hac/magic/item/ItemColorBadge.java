@@ -292,6 +292,15 @@ public class ItemColorBadge extends CharmItemBase {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.allcharm"));
 			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.color_badge." + meta));
+			if (meta == 2) {
+				tooltip.add(TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "=== Boost ===");
+				tooltip.add(TextFormatting.GOLD.toString() + I18n.format("dcs.tip.buff1") + "," + I18n
+						.format("dcs.tip.buff2") + TextFormatting.WHITE.toString() + I18n
+								.format("dcs.comment.buff.color_badge." + meta));
+
+			}
+			tooltip.add(TextFormatting.GRAY.toString() + TextFormatting.BOLD.toString() + "============");
+			tooltip.add(TextFormatting.GRAY.toString() + I18n.format("dcs.comment.flavor.color_badge." + meta));
 		} else {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
 		}
@@ -301,16 +310,18 @@ public class ItemColorBadge extends CharmItemBase {
 			int x = tag.getInteger("dcs.charm.x");
 			int y = tag.getInteger("dcs.charm.y");
 			int z = tag.getInteger("dcs.charm.z");
-			tooltip.add(TextFormatting.RESET + "Registered Coord");
-			tooltip.add(TextFormatting.RESET + warpDim + ", " + x + ", " + y + ", " + z);
+			tooltip.add(TextFormatting.RESET + " ");
+			tooltip.add("Registered Coord");
+			tooltip.add(warpDim + ", " + x + ", " + y + ", " + z);
 		}
 		if (tag != null && tag.hasKey("dcs.portal.dim")) {
 			String warpDim = tag.getString("dcs.portal.dimname");
 			int x = tag.getInteger("dcs.portal.x");
 			int y = tag.getInteger("dcs.portal.y");
 			int z = tag.getInteger("dcs.portal.z");
-			tooltip.add(TextFormatting.RESET + "Last Portal Coord");
-			tooltip.add(TextFormatting.RESET + warpDim + ", " + x + ", " + y + ", " + z);
+			tooltip.add(TextFormatting.RESET + " ");
+			tooltip.add("Last Portal Coord");
+			tooltip.add(warpDim + ", " + x + ", " + y + ", " + z);
 		}
 	}
 

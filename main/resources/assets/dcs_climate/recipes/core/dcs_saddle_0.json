@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y",
+  "Z"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "leather"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "itemCloth"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  }
+ },
+ "result": {
+  "item": "minecraft:saddle",
+  "count": 1,
+  "data": 0
+ }
+}

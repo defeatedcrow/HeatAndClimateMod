@@ -34,7 +34,7 @@ public class ConveyorTESR extends DCTorqueTESRBase {
 		if (te == null) {
 			return;
 		}
-		ItemStack in = null;
+		ItemStack in = ItemStack.EMPTY;
 		float move = 0F;
 		int fF = 0;
 		EnumFacing face = EnumFacing.SOUTH;

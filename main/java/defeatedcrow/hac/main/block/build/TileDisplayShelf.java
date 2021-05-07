@@ -1,11 +1,15 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.DCInventory;
-import defeatedcrow.hac.core.base.DCLockableTE;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.block.DCExclusiveTE;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayShelf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -21,10 +25,45 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class TileDisplayShelf extends DCLockableTE implements IInventory {
+public class TileDisplayShelf extends DCExclusiveTE implements IInventory {
 
 	public TileDisplayShelf() {
 		super();
+	}
+
+	private int lastCount = 0;
+	private int count = 0;
+
+	@Override
+	protected void onServerUpdate() {
+		super.onServerUpdate();
+		boolean flag = false;
+		if (count > 10) {
+			int i = 0;
+			for (int j = 0; j < this.getSizeInventory(); j++) {
+				if (!DCUtil.isEmpty(this.getStackInSlot(j))) {
+					i += this.getStackInSlot(j).getCount() + this.getStackInSlot(j).getItem().hashCode();
+				}
+			}
+			if (lastCount != i) {
+				lastCount = i;
+				flag = true;
+			}
+			count = 0;
+		} else {
+			count++;
+		}
+
+		if (flag) {
+			if (!this.hasWorld())
+				return;
+			List<EntityPlayer> list = this.getWorld().playerEntities;
+			for (EntityPlayer player : list) {
+				if (player instanceof EntityPlayerMP) {
+					((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+				}
+			}
+		}
 	}
 
 	/* ========== NBT ========== */

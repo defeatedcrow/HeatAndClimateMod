@@ -6,10 +6,11 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCTileEntity;
+import defeatedcrow.hac.main.util.EntitySelectorsDC;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,14 +45,14 @@ public class TileEntityPanel extends DCTileEntity {
 				list.addAll(world.getEntitiesWithinAABB(EntityPlayer.class, aabb, EntitySelectors.NOT_SPECTATING));
 				empty = list.isEmpty();
 			} else if (type == 1) {
-				list.addAll(world.getEntitiesWithinAABB(EntityMob.class, aabb, EntitySelectors.NOT_SPECTATING));
+				list.addAll(world.getEntitiesWithinAABB(EntityLivingBase.class, aabb, EntitySelectorsDC.MOB));
 				empty = list.isEmpty();
 			} else if (type == 2) {
-				list.addAll(world.getEntitiesWithinAABB(EntityAnimal.class, aabb, EntitySelectors.NOT_SPECTATING));
-				list.addAll(world.getEntitiesWithinAABB(EntityTameable.class, aabb, EntitySelectors.NOT_SPECTATING));
+				list.addAll(world.getEntitiesWithinAABB(EntityAnimal.class, aabb, EntitySelectors.IS_ALIVE));
+				list.addAll(world.getEntitiesWithinAABB(EntityTameable.class, aabb, EntitySelectors.IS_ALIVE));
 				empty = list.isEmpty();
 			} else {
-				list.addAll(world.getEntitiesWithinAABB(EntityItem.class, aabb, EntitySelectors.NOT_SPECTATING));
+				list.addAll(world.getEntitiesWithinAABB(EntityItem.class, aabb, EntitySelectors.IS_ALIVE));
 				empty = list.isEmpty();
 
 				if (empty) {

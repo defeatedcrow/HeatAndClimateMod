@@ -42,7 +42,6 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 		return "dcs_climate:items/tool/musket";
 	}
 
-	@Override
 	public ItemStack findAmmo(EntityPlayer player) {
 		if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
 			return player.getHeldItem(EnumHand.OFF_HAND);

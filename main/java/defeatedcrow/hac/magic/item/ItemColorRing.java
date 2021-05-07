@@ -200,6 +200,10 @@ public class ItemColorRing extends CharmItemBase {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.allcharm"));
 			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.color_ring." + meta));
+			tooltip.add(TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "=== Boost ===");
+			tooltip.add(TextFormatting.GOLD.toString() + I18n.format("dcs.tip.buff1") + "," + I18n
+					.format("dcs.tip.buff2") + TextFormatting.WHITE.toString() + I18n
+							.format("dcs.comment.buff.color_ring." + meta));
 		} else {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
 		}

@@ -21,15 +21,20 @@ public class MediumCraftRecipeDC extends net.minecraftforge.registries.IForgeReg
 	public boolean matches(InventoryCrafting inv, World world) {
 		ItemStack medium = ItemStack.EMPTY;
 		ItemStack microbe = ItemStack.EMPTY;
+		boolean dupe = false;
 
 		for (int i = 0; i < inv.getSizeInventory(); ++i) {
 			ItemStack check = inv.getStackInSlot(i);
 
 			if (!check.isEmpty()) {
-				if (check.getItem() == FoodInit.unidentified) {
-					microbe = check;
-				} else if (check.getItem() instanceof MicrobeItem) {
-					microbe = check;
+				if (check.getItem() == FoodInit.unidentified || check.getItem() instanceof MicrobeItem) {
+					// dupe チェック
+					if (dupe) {
+						return false;
+					} else {
+						microbe = check;
+						dupe = true;
+					}
 				} else if (check.getItem() instanceof IMediumItem) {
 					medium = check;
 				}

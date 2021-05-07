@@ -3,8 +3,8 @@ package defeatedcrow.hac.main.block.build;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.block.BlockExclusiveDC;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockDisplayShelf extends DCTileBlock {
+public class BlockDisplayShelf extends BlockExclusiveDC {
 
 	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.5D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.5D, 1.0D, 1.0D);

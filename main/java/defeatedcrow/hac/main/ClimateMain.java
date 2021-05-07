@@ -47,8 +47,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MEJOR = 3;
 	public static final int MOD_MINOR = 6;
-	public static final int MOD_BUILD = 4;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.6.3,)";
+	public static final int MOD_BUILD = 5;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.6.5,)";
 	public static final String UPDATE_JSON = "https://defeatedcrow.jp/version/heatandclimate.json";
 	public static final String KEY = "4cd12b92959105443b7b694fffe0cea9ed004886";
 
@@ -123,7 +123,7 @@ public class ClimateMain {
 			RecipeJsonMaker.canUse = false;
 			RecipeJsonMaker.canDeprecate = true;
 			RecipeJsonMaker.dir = Paths
-					.get("E:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources\\assets\\dcs_climate\\recipes\\");
+					.get("F:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources\\assets\\dcs_climate\\recipes\\");
 		}
 	}
 

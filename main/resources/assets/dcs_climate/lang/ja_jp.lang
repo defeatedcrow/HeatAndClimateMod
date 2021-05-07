@@ -846,6 +846,11 @@ item.dcs_magic_card_m_gb2.name=緑黒のスペル (新緑)
 item.dcs_magic_card_m_ru2.name=赤青のスペル (麻痺)
 item.dcs_magic_card_m_wr2.name=白赤のスペル (灼熱)
 item.dcs_magic_card_m_bw2.name=黒白のスペル (透視)
+item.dcs_magic_card_m2_ub1.name=青黒のスペル (安眠)
+item.dcs_magic_card_m2_gw1.name=緑白のスペル (治療)
+item.dcs_magic_card_m2_rg1.name=赤緑のスペル (火炎舌)
+item.dcs_magic_card_m2_wu1.name=白青のスペル (帰還)
+item.dcs_magic_card_m2_br1.name=黒赤のスペル (破裂)
 tile.dcs_color_cube_u1.name=不活性な青キューブ
 tile.dcs_color_cube_g1.name=不活性な緑キューブ
 tile.dcs_color_cube_r1.name=不活性な赤キューブ
@@ -1325,6 +1330,7 @@ tile.dcs_build_coldlamp_gold.name=冷たいランプ(金)
 tile.dcs_build_coldlamp_chalcedony.name=冷たいランプ(玉髄)
 tile.dcs_build_coldlamp_serpentine.name=冷たいランプ(蛇紋石)
 tile.dcs_device_display_shelf_0.name=飾り棚
+tile.dcs_device_display_stand_0.name=アイテムスタンド
 tile.dcs_build_pressure_chal_0.name=玉髄の感圧板
 tile.dcs_build_pressure_olivine_0.name=エメラルドの感圧板
 tile.dcs_build_vase_planter.name=プランター
@@ -1816,6 +1822,8 @@ dcs.tip.antibiotic_8=対象に回復阻害のポーション効果を与えま�
 dcs.tip.essential_oil=使用すると、残留ポーション効果を発生します。
 dcs.tip.pressure_plate_0=プレイヤーのみ反応します。
 dcs.tip.pressure_plate_1=プレイヤーと飼いならしモブに反応します。
+dcs.tip.exclusive=スニークしながら設置: 設置したオーナーのみ編集・破壊できるようロックできます。
+dcs.tip.display.date=%s に設置
 
 dcs.tip.heat_treatment_jei1=%d tick以内に処理を行う
 dcs.tip.heat_treatment_jei2=不良品
@@ -1945,7 +1953,7 @@ dcs.comment.card.2=使用者の攻撃力・防御力・採掘速度を強化
 dcs.comment.card.3=周囲のモンスターを同士討ちさせる
 dcs.comment.card.4=不可視の光源を設置する(このカードを手に持っているとき可視化され、クリックで破壊できる)
 dcs.comment.card.5=使用者に魚の加護の効果を与える
-dcs.comment.card.6=チャンク内にある鉱脈の位置を探る
+dcs.comment.card.6=周囲にある鉱脈の位置を可視化する
 dcs.comment.card.7=着弾地点に爆発を起こして攻撃する
 dcs.comment.card.8=着弾した対象の武器や防具を剥がす
 dcs.comment.card.9=使用者に鳥の加護の効果を与える
@@ -1959,6 +1967,100 @@ dcs.comment.card2.1=花の支援Entityを召喚する
 dcs.comment.card2.2=周囲の生物を一定時間拘束する
 dcs.comment.card2.3=周囲のモンスターを可視化する
 dcs.comment.card2.4=灼熱のキューブを設置する
+dcs.comment.card3.0=周囲のモンスターをデスポーンさせる
+dcs.comment.card3.1=周囲のプレイヤーや動物を回復させる
+dcs.comment.card3.2=犬型の支援Mobを召喚する
+dcs.comment.card3.3=自傷ダメージのある爆発攻撃を起こす
+dcs.comment.card3.4=リスポーン地点にワープする
+
+dcs.tip.buff1=所持個数
+dcs.tip.buff2=魔導服:
+
+dcs.comment.buff.color_card.0=なし
+dcs.comment.buff.color_card.1=範囲拡大
+dcs.comment.buff.color_card.2=効果時間延長
+dcs.comment.buff.color_card.3=範囲拡大
+dcs.comment.buff.color_card.4=なし
+dcs.comment.buff.color_card.5=効果時間延長
+dcs.comment.buff.color_card.6=範囲拡大
+dcs.comment.buff.color_card.7=威力上昇
+dcs.comment.buff.color_card.8=なし
+dcs.comment.buff.color_card.9=効果時間延長
+dcs.comment.buff.color_card.10=効果時間延長
+dcs.comment.buff.color_card.11=範囲拡大
+dcs.comment.buff.color_card.12=効果時間延長
+dcs.comment.buff.color_card.13=効果時間延長
+dcs.comment.buff.color_card.14=効果時間延長
+dcs.comment.buff.color_card2.0=効果時間延長
+dcs.comment.buff.color_card2.1=威力上昇
+dcs.comment.buff.color_card2.2=範囲拡大
+dcs.comment.buff.color_card2.3=効果時間延長
+dcs.comment.buff.color_card2.4=効果時間延長
+dcs.comment.buff.color_card3.0=範囲拡大
+dcs.comment.buff.color_card3.1=範囲拡大
+dcs.comment.buff.color_card3.2=効果時間延長
+dcs.comment.buff.color_card3.3=威力上昇
+dcs.comment.buff.color_card3.4=なし
+
+dcs.comment.buff.color_gauntlet.0=ドロップ率上昇
+dcs.comment.buff.color_gauntlet.1=回復量増加
+dcs.comment.buff.color_gauntlet.2=なし
+dcs.comment.buff.color_gauntlet.3=上位レシピに変化
+dcs.comment.buff.color_gauntlet.4=なし
+
+dcs.comment.buff.color_ring.0=ドロップ率上昇
+dcs.comment.buff.color_ring.1=範囲拡大
+dcs.comment.buff.color_ring.2=効果上昇
+dcs.comment.buff.color_ring.3=なし
+dcs.comment.buff.color_ring.4=効果上昇
+dcs.comment.buff.color_ring2.0=なし
+dcs.comment.buff.color_ring2.1=効果上昇
+dcs.comment.buff.color_ring2.2=効果上昇
+dcs.comment.buff.color_ring2.3=効果上昇
+dcs.comment.buff.color_ring2.4=なし
+
+dcs.comment.buff.color_pendant.0=範囲拡大・効果時間延長
+dcs.comment.buff.color_pendant.1=範囲拡大・効果上昇
+dcs.comment.buff.color_pendant.2=効果上昇
+dcs.comment.buff.color_pendant.3=効果上昇
+dcs.comment.buff.color_pendant.4=なし
+dcs.comment.buff.color_pendant2.0=なし
+dcs.comment.buff.color_pendant2.1=なし
+dcs.comment.buff.color_pendant2.2=なし
+dcs.comment.buff.color_pendant2.3=効果上昇
+dcs.comment.buff.color_pendant2.4=効果上昇
+
+dcs.comment.buff.color_badge.2=範囲拡大
+
+## flavor texts
+dcs.comment.flavor.color_card2.0=この世の果てに吹き荒れる風の、慎ましやかな欠片。
+dcs.comment.flavor.color_card2.1=どんな鋼鉄よりもよく街を守る花の守護者。
+dcs.comment.flavor.color_card2.2="そこに座っていてくれ。"
+dcs.comment.flavor.color_card2.3=見えないままのほうが良いこともある。
+dcs.comment.flavor.color_card2.4=地の底に満ちる熱気の、ほんの一息の欠片。
+dcs.comment.flavor.color_card3.0="眠いんだ、静かにしていてくれ。"
+dcs.comment.flavor.color_card3.1="仲間を守ることは、自分を守るよりもずっと難しいんだ。"
+dcs.comment.flavor.color_card3.2=天使、ドラゴン、ジン、精霊...みんな火炎舌に撃墜されてしまった。
+dcs.comment.flavor.color_card3.3="時には、面倒になってみんな吹き飛ばしたくなる時もあるさ。"
+dcs.comment.flavor.color_card3.4=この世界では、無事に家に帰り着くだけでも難しいものだ。
+
+dcs.comment.flavor.color_gauntlet.0="これでも精一杯手加減しているんだ。"
+dcs.comment.flavor.color_gauntlet.1="これをトロールに付けて突撃させてみようぜ!"
+dcs.comment.flavor.color_gauntlet.2=大抵のことはできるスティーブだが、木登りは苦手だった。
+dcs.comment.flavor.color_gauntlet.3=この世界では、しばしば純粋な破壊が知的な行いとみなされる。
+dcs.comment.flavor.color_gauntlet.4="首綱で引き回すよりは優しいだろう?"
+
+dcs.comment.flavor.color_badge.0=次元を渡り歩くもの。
+dcs.comment.flavor.color_badge.1=切り落とされた常盤木の枝。
+dcs.comment.flavor.color_badge.2=破壊と財宝の象徴。
+dcs.comment.flavor.color_badge.3=システムへの目くらまし。
+dcs.comment.flavor.color_badge.4=命なき者への癒やし。
+
+dcs.comment.flavor.color_picture.ur="リリース前にナーフされることほど虚しいことはないよ。"
+dcs.comment.flavor.color_picture.gu=風の恩恵は遠くへは及きません。墜落に注意しましょう。
+dcs.comment.flavor.color_picture.rw=軍団を照らす栄光の頌歌。
+dcs.comment.flavor.color_picture.bg=影の中に隠れ潜む捕食者の群れ。
+dcs.comment.flavor.color_picture.wb=地上がどんなに荒れていても、星空は静かで平和だ。
 
 ## microbe
 dcs.tip.archaea=古細菌
@@ -2040,6 +2142,7 @@ dcs.gui.device.incubator=インキュベーター
 dcs.gui.device.brewing=醸造
 dcs.gui.device.still=蒸留
 dcs.gui.device.barrel=熟成
+dcs.gui.device.exclusive=設置者: %s
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます

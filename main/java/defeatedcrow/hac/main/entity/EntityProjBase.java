@@ -51,11 +51,7 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 
 		if (!this.world.isRemote) {
 			if (this.start) {
-				if (count > 0) {
-					if (this.onGroundHit()) {}
-				} else {
-					count++;
-				}
+				this.onGroundHit();
 			} else if (this.inGround) {
 				this.setStart(true);
 			} else if (this.inWater) {
@@ -65,13 +61,13 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 			if (this.inGround) {
 				this.onGroundClient();
 			} else {
-				this.world.spawnParticle(EnumParticleTypes.SPELL_INSTANT, this.posX, this.posY, this.posZ, 0.0D, 0.0D,
-						0.0D, new int[0]);
+				this.world
+						.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
 			}
 		}
 
-		if ((this.motionX * this.motionX + this.motionZ * this.motionZ + this.motionY * this.motionY) < 0.005D) {
-			if (age > 3000) {
+		if ((this.motionX * this.motionX + this.motionZ * this.motionZ + this.motionY * this.motionY) < 0.1D) {
+			if (age > 600) {
 				this.setDead();
 			}
 		}
@@ -96,18 +92,17 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 			if (this.onEntityHit(entity))
 				return;
 
-			float speed = MathHelper.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ *
-					this.motionZ);
+			float speed = MathHelper
+					.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 			float damage = this.getHitDamage(entity, speed);
 			DamageSource source = this.getHitSource(entity);
 
 			if (source != null && damage > 0.0F && entity.attackEntityFrom(source, damage)) {
 				if (entity instanceof EntityLivingBase) {
 					EntityLivingBase living = (EntityLivingBase) entity;
-					if (this.shootingEntity != null && living != this.shootingEntity &&
-							living instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP) {
-						((EntityPlayerMP) this.shootingEntity).connection.sendPacket(
-								new SPacketChangeGameState(6, 0.0F));
+					if (this.shootingEntity != null && living != this.shootingEntity && living instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP) {
+						((EntityPlayerMP) this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6,
+								0.0F));
 					}
 				}
 

@@ -11,10 +11,6 @@
   },
   {
    "type": "forge:ore_dict",
-   "ore": "paper"
-  },
-  {
-   "type": "forge:ore_dict",
    "ore": "extractWhite"
   },
   {
@@ -24,7 +20,7 @@
  ],
  "result": {
   "item": "dcs_climate:dcs_magic_card_m",
-  "count": 3,
+  "count": 2,
   "data": 4
  }
 }

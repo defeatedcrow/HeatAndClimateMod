@@ -235,7 +235,7 @@ public class EntityBlackDog extends EntityWolf {
 					y++;
 				}
 
-				for (ItemStack item : this.getHeldEquipment()) {
+				for (ItemStack item : this.getEquipmentAndArmor()) {
 					if (!DCUtil.isEmpty(item)) {
 						if (chest != null) {
 							for (int j = 0; j < chest.getSlots(); j++) {

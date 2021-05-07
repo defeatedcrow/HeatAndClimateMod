@@ -260,6 +260,15 @@ public class ItemColorCard2 extends DCItem {
 		tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.card_type." + type.toString()));
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 		tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.card2." + meta));
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "=== Boost ===");
+			tooltip.add(TextFormatting.GOLD.toString() + I18n.format("dcs.tip.buff2") + TextFormatting.WHITE
+					.toString() + I18n.format("dcs.comment.buff.color_card2." + meta));
+			tooltip.add(TextFormatting.GRAY.toString() + TextFormatting.BOLD.toString() + "============");
+			tooltip.add(TextFormatting.GRAY.toString() + I18n.format("dcs.comment.flavor.color_card2." + meta));
+		} else {
+			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
+		}
 	}
 
 	public enum CardType {

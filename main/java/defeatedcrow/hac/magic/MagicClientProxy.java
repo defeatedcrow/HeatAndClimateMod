@@ -16,6 +16,7 @@ import defeatedcrow.hac.magic.block.TileTimeCage;
 import defeatedcrow.hac.magic.block.TileVeinBeacon;
 import defeatedcrow.hac.magic.client.BlackDogRenderer;
 import defeatedcrow.hac.magic.client.FireCircleRenderer;
+import defeatedcrow.hac.magic.client.FlametongueDogRenderer;
 import defeatedcrow.hac.magic.client.FlowerTurretRenderer;
 import defeatedcrow.hac.magic.client.HealCircleRenderer;
 import defeatedcrow.hac.magic.client.MagicBlackSpitRenderer;
@@ -32,6 +33,7 @@ import defeatedcrow.hac.magic.client.TESRLotusCandle;
 import defeatedcrow.hac.magic.client.TESRTimeCage;
 import defeatedcrow.hac.magic.client.TESRVeinBeacon;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
+import defeatedcrow.hac.magic.entity.EntityFTDog;
 import defeatedcrow.hac.magic.entity.EntityFlowerTurret;
 import defeatedcrow.hac.magic.entity.EntityMagicCushion;
 import defeatedcrow.hac.magic.proj.EntityFireBarrier;
@@ -39,6 +41,7 @@ import defeatedcrow.hac.magic.proj.EntityHealBarrier;
 import defeatedcrow.hac.magic.proj.EntityMobBarrier;
 import defeatedcrow.hac.magic.proj.EntityProjBarrier;
 import defeatedcrow.hac.magic.proj.EntityProjBlackSpit;
+import defeatedcrow.hac.magic.proj.EntityProjDogSpit;
 import defeatedcrow.hac.magic.proj.EntityProjIceSpit;
 import defeatedcrow.hac.magic.proj.EntityProjLightSpit;
 import defeatedcrow.hac.magic.proj.EntityProjRedSpit;
@@ -60,6 +63,7 @@ public class MagicClientProxy {
 		ClientMainProxy.registRender(EntityProjWhiteSpit.class, MagicWhiteSpitRenderer.class);
 		ClientMainProxy.registRender(EntityProjRedSpit.class, MagicRedSpitRenderer.class);
 		ClientMainProxy.registRender(EntityProjBlackSpit.class, MagicBlackSpitRenderer.class);
+		ClientMainProxy.registRender(EntityProjDogSpit.class, MagicRedSpitRenderer.class);
 
 		ClientMainProxy.registRender(EntityMobBarrier.class, MagicCircleRenderer.class);
 		ClientMainProxy.registRender(EntityProjBarrier.class, ProjCircleRenderer.class);
@@ -67,6 +71,7 @@ public class MagicClientProxy {
 		ClientMainProxy.registRender(EntityFireBarrier.class, FireCircleRenderer.class);
 
 		ClientMainProxy.registRender(EntityBlackDog.class, BlackDogRenderer.class);
+		ClientMainProxy.registRender(EntityFTDog.class, FlametongueDogRenderer.class);
 
 		ClientMainProxy.registRender(EntityFlowerTurret.class, FlowerTurretRenderer.class);
 
@@ -101,6 +106,7 @@ public class MagicClientProxy {
 		instance.regSimpleItem(MagicInit.colorGauntlet, ClimateCore.PACKAGE_ID, "dcs_color_gauntlet", "magic", 4);
 		instance.regSimpleItem(MagicInit.magicCard, ClimateCore.PACKAGE_ID, "dcs_magic_card", "magic", 14);
 		instance.regSimpleItem(MagicInit.magicCard2, ClimateCore.PACKAGE_ID, "dcs_magic_card_m", "magic", 4);
+		instance.regSimpleItem(MagicInit.magicCard3, ClimateCore.PACKAGE_ID, "dcs_magic_card_m2", "magic", 4);
 
 		instance.regSimpleItem(MagicInit.expGem, ClimateCore.PACKAGE_ID, "dcs_expgem", "magic", 0);
 		instance.regSimpleItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_ID, "dcs_gemboots_blue", "equip", 0);

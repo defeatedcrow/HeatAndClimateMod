@@ -100,6 +100,44 @@ public class DCRecipeCoFH {
 
 		addPulverizerRecipe(5000, new ItemStack(MainInit.oreItem, 1, 5), new ItemStack(MainInit.oreDust, 2,
 				10), new ItemStack(MainInit.gems_white, 1, 0), 10);
+
+		// numismatic
+		// HaC基準: common:10,000~50,000 uncommon 150,000 rare 500,000
+		// 他modのほうが低い場合は自重
+		// addNumismaticFuel(30000, new ItemStack(MainInit.gems_red, 1, 0));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_red, 1, 1));
+		// addNumismaticFuel(500000, new ItemStack(MainInit.gems_red, 1, 2));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_red, 1, 3));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_red, 1, 4));
+		// addNumismaticFuel(500000, new ItemStack(MainInit.gems_red, 1, 5));
+		//
+		// addNumismaticFuel(30000, new ItemStack(MainInit.gems_green, 1, 0));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_green, 1, 1));
+		// addNumismaticFuel(500000, new ItemStack(MainInit.gems_green, 1, 2));
+		// addNumismaticFuel(10000, new ItemStack(MainInit.gems_green, 1, 3));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_green, 1, 4));
+		// addNumismaticFuel(800000, new ItemStack(MainInit.gems_green, 1, 5));
+		//
+		// addNumismaticFuel(30000, new ItemStack(MainInit.gems_blue, 1, 0));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_blue, 1, 1));
+		// addNumismaticFuel(500000, new ItemStack(MainInit.gems_blue, 1, 2));
+		// addNumismaticFuel(50000, new ItemStack(MainInit.gems_blue, 1, 3));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_blue, 1, 4));
+		// addNumismaticFuel(500000, new ItemStack(MainInit.gems_blue, 1, 5));
+		//
+		// addNumismaticFuel(10000, new ItemStack(MainInit.gems_white, 1, 0));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_white, 1, 1));
+		// addNumismaticFuel(500000, new ItemStack(MainInit.gems_white, 1, 2));
+		// addNumismaticFuel(50000, new ItemStack(MainInit.gems_white, 1, 3));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_white, 1, 4));
+		// addNumismaticFuel(500000, new ItemStack(MainInit.gems_white, 1, 5));
+		//
+		// addNumismaticFuel(30000, new ItemStack(MainInit.gems_black, 1, 0));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_black, 1, 1));
+		// addNumismaticFuel(500000, new ItemStack(MainInit.gems_black, 1, 2));
+		// addNumismaticFuel(150000, new ItemStack(MainInit.gems_black, 1, 3));
+		// addNumismaticFuel(800000, new ItemStack(MainInit.gems_black, 1, 4));
+		// addNumismaticFuel(1200000, new ItemStack(MainInit.gems_black, 1, 5));
 	}
 
 	private static void addCompressionFuel(String name, int amount) {
@@ -182,5 +220,9 @@ public class DCRecipeCoFH {
 		// toSend.setInteger("secondaryChance", chance);
 		// }
 		// FMLInterModComms.sendMessage("thermalexpansion", ThermalExpansionHelper.ADD_PULVERIZER_RECIPE, toSend);
+	}
+
+	private static void addNumismaticFuel(int energy, ItemStack input) {
+		ThermalExpansionHelper.addNumismaticFuel(input, energy);
 	}
 }

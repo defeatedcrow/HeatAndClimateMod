@@ -29,6 +29,11 @@ public class GuiDisplayShelf extends GuiBaseDC {
 		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
 		this.fontRenderer.drawString(this.playerInventory.getDisplayName()
 				.getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
+		if (shelf.getOwner() != null) {
+			String name = I18n.format("dcs.gui.device.exclusive", this.shelf.getOwnerName());
+			this.fontRenderer.drawString(name, this.xSize / 2 - this.fontRenderer
+					.getStringWidth(name) / 2, 18, 0xFFFF00);
+		}
 	}
 
 	@Override

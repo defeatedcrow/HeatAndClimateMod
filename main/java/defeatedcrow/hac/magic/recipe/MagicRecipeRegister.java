@@ -2,10 +2,13 @@ package defeatedcrow.hac.magic.recipe;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.magic.entity.EntityBlackDog;
+import defeatedcrow.hac.magic.entity.EntityFTDog;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.RecipeResourcesMain;
@@ -26,6 +29,9 @@ public class MagicRecipeRegister {
 	public static void load() {
 		loadItemRecipes();
 		loadPotionRecipe();
+
+		DamageAPI.resistantData.registerEntityResistant(EntityBlackDog.class, DCHeatTier.NORMAL, 4.0F);
+		DamageAPI.resistantData.registerEntityResistant(EntityFTDog.class, DCHeatTier.NORMAL, 4.0F);
 	}
 
 	static void loadItemRecipes() {
@@ -726,40 +732,65 @@ public class MagicRecipeRegister {
 				"paper",
 				"cubeWhite" });
 
-			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 0), new Object[] {
-				"paper",
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 0), new Object[] {
 				"paper",
 				"paper",
 				"extractBlue",
 				"extractGreen" });
 
-			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 1), new Object[] {
-				"paper",
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 1), new Object[] {
 				"paper",
 				"paper",
 				"extractGreen",
 				"extractBlack" });
 
-			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 2), new Object[] {
-				"paper",
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 2), new Object[] {
 				"paper",
 				"paper",
 				"extractRed",
 				"extractBlue" });
 
-			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 3), new Object[] {
-				"paper",
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 3), new Object[] {
 				"paper",
 				"paper",
 				"extractBlack",
 				"extractWhite" });
 
-			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 3, 4), new Object[] {
-				"paper",
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 4), new Object[] {
 				"paper",
 				"paper",
 				"extractWhite",
 				"extractRed" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 0), new Object[] {
+				"paper",
+				"paper",
+				"dropBlue",
+				"dropBlack" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 1), new Object[] {
+				"paper",
+				"paper",
+				"dropGreen",
+				"dropWhite" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 2), new Object[] {
+				"paper",
+				"paper",
+				"dropRed",
+				"dropGreen" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 3), new Object[] {
+				"paper",
+				"paper",
+				"dropBlack",
+				"dropRed" });
+
+			DCRecipe.jsonShapelessRecipe("magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 4), new Object[] {
+				"paper",
+				"paper",
+				"dropWhite",
+				"dropBlue" });
 
 			// buimeOrb
 			DCRecipe.jsonShapedRecipe("magic_advanced", new ItemStack(MagicInit.biomeOrb, 1, 0), new Object[] {

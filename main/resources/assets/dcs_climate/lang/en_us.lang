@@ -845,6 +845,11 @@ item.dcs_magic_card_m_gb2.name=Green-Black Spell (Verdant)
 item.dcs_magic_card_m_ru2.name=Red-Blue Spell (Paralysys)
 item.dcs_magic_card_m_wr2.name=White-Red Spell (Inferno)
 item.dcs_magic_card_m_bw2.name=Black-White Spell (Clairvoyance)
+item.dcs_magic_card_m2_ub1.name=Blue-Black Spell (Sleepy　Night)
+item.dcs_magic_card_m2_gw1.name=Green-White Spell (Medicine)
+item.dcs_magic_card_m2_rg1.name=Red-Green Spell (Flametongue)
+item.dcs_magic_card_m2_wu1.name=White-Blue Spell (Return)
+item.dcs_magic_card_m2_br1.name=Black-Red Spell (Burst)
 tile.dcs_color_cube_u1.name=Inactive Blue Cube
 tile.dcs_color_cube_g1.name=Inactive Green Cube
 tile.dcs_color_cube_r1.name=Inactive Red Cube
@@ -1349,6 +1354,7 @@ tile.dcs_build_coldlamp_gold.name=Cold Lamp (Gold)
 tile.dcs_build_coldlamp_chalcedony.name=Cold Lamp (White)
 tile.dcs_build_coldlamp_serpentine.name=Cold Lamp (Serpentine)
 tile.dcs_device_display_shelf_0.name=Display Shelf
+tile.dcs_device_display_stand_0.name=Display Stand
 tile.dcs_build_pressure_chal_0.name=Chalcedony Pressure Plate
 tile.dcs_build_pressure_olivine_0.name=Emerald Pressure Plate
 tile.dcs_build_vase_planter.name=Plant Pot
@@ -1861,6 +1867,8 @@ dcs.tip.antibiotic_8=Add the recovery inhibitor effect to target.
 dcs.tip.essential_oil=Lingering Potion effect:
 dcs.tip.pressure_plate_0=Detects only the players.
 dcs.tip.pressure_plate_1=Detects players and tamed mobs.
+dcs.tip.exclusive=Place while sneaking: Register the placer as the owner to limit editing and destruction.
+dcs.tip.display.date=Placed on %s
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products
@@ -1881,6 +1889,7 @@ dcs_climate.brewing=Brewing
 dcs_climate.still=Still
 dcs_climate.aging=Aging Barrel
 
+##magic
 dcs.tip.allcharm=This item works in top slots of player inventory.
 dcs.tip.amulet=This item works in creature or player inventory.
 dcs.tip.offhand_tool=This item works in creature or player off-hand slot.
@@ -1990,6 +1999,100 @@ dcs.comment.card2.1=Spawn a flower turret entity
 dcs.comment.card2.2=Paralyse surrounding creatures
 dcs.comment.card2.3=Add glow effect to surrounding monsters
 dcs.comment.card2.4=Spawn an infernal cube block
+dcs.comment.card3.0=Despawn surrounding monsters
+dcs.comment.card3.1=Heal surrounding players and animals
+dcs.comment.card3.2=Spawn a dog that spits a fire arrow.
+dcs.comment.card3.3=Explosive attack with self-harm.
+dcs.comment.card3.4=Return to the bed respawn point.
+
+dcs.tip.buff1=Multiple possession
+dcs.tip.buff2=Magical cloth:
+
+dcs.comment.buff.color_card.0=NO EFFECT
+dcs.comment.buff.color_card.1=Expand Range
+dcs.comment.buff.color_card.2=Extend duration
+dcs.comment.buff.color_card.3=Expand Range
+dcs.comment.buff.color_card.4=NO EFFECT
+dcs.comment.buff.color_card.5=Extend duration
+dcs.comment.buff.color_card.6=Expand Range
+dcs.comment.buff.color_card.7=Enhancement
+dcs.comment.buff.color_card.8=NO EFFECT
+dcs.comment.buff.color_card.9=Extend duration
+dcs.comment.buff.color_card.10=Extend duration
+dcs.comment.buff.color_card.11=Expand Range
+dcs.comment.buff.color_card.12=Extend duration
+dcs.comment.buff.color_card.13=Extend duration
+dcs.comment.buff.color_card.14=Extend duration
+dcs.comment.buff.color_card2.0=Extend duration
+dcs.comment.buff.color_card2.1=Enhancement
+dcs.comment.buff.color_card2.2=Expand Range
+dcs.comment.buff.color_card2.3=Extend duration
+dcs.comment.buff.color_card2.4=Extend duration
+dcs.comment.buff.color_card3.0=Expand Range
+dcs.comment.buff.color_card3.1=Expand Range
+dcs.comment.buff.color_card3.2=Extend duration
+dcs.comment.buff.color_card3.3=Enhancement
+dcs.comment.buff.color_card3.4=NO EFFECT
+
+dcs.comment.buff.color_gauntlet.0=Increase probability
+dcs.comment.buff.color_gauntlet.1=Enhancement
+dcs.comment.buff.color_gauntlet.2=NO EFFECT
+dcs.comment.buff.color_gauntlet.3=Enhancement
+dcs.comment.buff.color_gauntlet.4=NO EFFECT
+
+dcs.comment.buff.color_ring.0=Increase probability
+dcs.comment.buff.color_ring.1=Expand Range
+dcs.comment.buff.color_ring.2=Enhancement
+dcs.comment.buff.color_ring.3=NO EFFECT
+dcs.comment.buff.color_ring.4=Enhancement
+dcs.comment.buff.color_ring2.0=NO EFFECT
+dcs.comment.buff.color_ring2.1=Enhancement
+dcs.comment.buff.color_ring2.2=Enhancement
+dcs.comment.buff.color_ring2.3=Enhancement
+dcs.comment.buff.color_ring2.4=NO EFFECT
+
+dcs.comment.buff.color_pendant.0=Expand Range・Extend duration
+dcs.comment.buff.color_pendant.1=Expand Range・Enhancement
+dcs.comment.buff.color_pendant.2=Enhancement
+dcs.comment.buff.color_pendant.3=Enhancement
+dcs.comment.buff.color_pendant.4=NO EFFECT
+dcs.comment.buff.color_pendant2.0=NO EFFECT
+dcs.comment.buff.color_pendant2.1=NO EFFECT
+dcs.comment.buff.color_pendant2.2=NO EFFECT
+dcs.comment.buff.color_pendant2.3=Enhancement
+dcs.comment.buff.color_pendant2.4=Enhancement
+
+dcs.comment.buff.color_badge.2=Expand Range
+
+## flavor texts
+dcs.comment.flavor.color_card2.0=A small piece of a cold wind of the End.
+dcs.comment.flavor.color_card2.1=A guardian who protects the village better than iron.
+dcs.comment.flavor.color_card2.2="Sit there."
+dcs.comment.flavor.color_card2.3=Sometimes, sharp eyesight causes more anxiety.
+dcs.comment.flavor.color_card2.4=A small piece of a heat storm blowing in the Nether.
+dcs.comment.flavor.color_card3.0="I'm sleepy, be quiet. "
+dcs.comment.flavor.color_card3.1="Protecting friends is much harder than protecting myself."
+dcs.comment.flavor.color_card3.2=Angels, dragons, djinns, spirits ... all have been shot down by the flametongue.
+dcs.comment.flavor.color_card3.3="Sometimes, you may find everything annoying or want to blow it away."
+dcs.comment.flavor.color_card3.4=In this overworld, it is difficult to get home safely.
+
+dcs.comment.flavor.color_gauntlet.0="Even with this, I'm holding back."
+dcs.comment.flavor.color_gauntlet.1="Hey! Equip this to the troll and let it charge!"
+dcs.comment.flavor.color_gauntlet.2=Steve can do most things, but he's not good at climbing trees.
+dcs.comment.flavor.color_gauntlet.3=In this overworld, pure destruction is often considered intellectual.
+dcs.comment.flavor.color_gauntlet.4="Isn't it gentler than dragging with a lead?"
+
+dcs.comment.flavor.color_badge.0=Wanderer from the outside world.
+dcs.comment.flavor.color_badge.1=Pruned branch of the evergreen tree.
+dcs.comment.flavor.color_badge.2=Destruction and treasure.
+dcs.comment.flavor.color_badge.3=Disturbance to the system.
+dcs.comment.flavor.color_badge.4=Healer for the tools.
+
+dcs.comment.flavor.color_picture.ur="Nothing is more empty than got nerfed before the release."
+dcs.comment.flavor.color_picture.gu="If you fly too far, you will lose your wings and fall. Be careful."
+dcs.comment.flavor.color_picture.rw=A glorious ode that illuminates the legions.
+dcs.comment.flavor.color_picture.bg=Predators lurking in the shadows.
+dcs.comment.flavor.color_picture.wb=The starry sky is quiet and peaceful.
 
 dcs.tip.shift=Lshift Key: expand tooltip
 dcs.tip.require_achievement=Require the achievement for using!
@@ -2073,6 +2176,7 @@ dcs.gui.device.incubator=Incubator
 dcs.gui.device.brewing=Brewing
 dcs.gui.device.still=Still
 dcs.gui.device.barrel=Aging Barrel
+dcs.gui.device.exclusive=Owner: %s
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold
@@ -2410,6 +2514,7 @@ entity.dcs.main.big_cushion.name=Gray Big Cushion for the lazy mobs
 entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs
 
 entity.dcs.magic.dcs_blackdog.name=Black Dog
+entity.dcs.magic.dcs_flametongue.name=Flametongue Dog
 entity.dcs.magic.dcs_magic_flower_turret.name=Flower Turret
 
 ## advancements

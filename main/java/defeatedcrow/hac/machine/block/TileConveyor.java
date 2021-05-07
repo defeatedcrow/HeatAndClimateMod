@@ -97,7 +97,7 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 			}
 
 			if (move != prevMove) {
-				DCMainPacket.INSTANCE.sendToAll(new MessageConveyor(pos, move, inv.getStackInSlot(0)));
+				DCMainPacket.INSTANCE.sendToAll(new MessageConveyor(pos, move, disp));
 			}
 
 			// DCLogger.infoLog(

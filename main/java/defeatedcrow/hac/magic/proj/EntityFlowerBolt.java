@@ -19,6 +19,7 @@ public class EntityFlowerBolt extends EntityBulletDC {
 
 	public EntityFlowerBolt(World worldIn) {
 		super(worldIn);
+		this.setDamage(1.0F);
 	}
 
 	public EntityFlowerBolt(World worldIn, double x, double y, double z) {
@@ -37,7 +38,7 @@ public class EntityFlowerBolt extends EntityBulletDC {
 
 	@Override
 	public double getDamage() {
-		return MainCoreConfig.flower_turret_damage;
+		return MainCoreConfig.flower_turret_damage * damage;
 	}
 
 	@Override

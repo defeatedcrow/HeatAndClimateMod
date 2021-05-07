@@ -115,8 +115,8 @@ public class ItemColorPendant2 extends CharmItemBase {
 
 	@Override
 	public float reduceDamage(DamageSource source, ItemStack charm) {
-		if (getColor(charm.getItemDamage()) == MagicColor.WHITE) {
-			float f = charm.getCount() * 10.0F;
+		if (getColor(charm.getItemDamage()) == MagicColor.WHITE && source.isExplosion()) {
+			float f = charm.getCount() * 10F;
 			return f;
 		}
 		return 0;
@@ -230,6 +230,10 @@ public class ItemColorPendant2 extends CharmItemBase {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.allcharm"));
 			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.color_pendant2." + meta));
+			tooltip.add(TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "=== Boost ===");
+			tooltip.add(TextFormatting.GOLD.toString() + I18n.format("dcs.tip.buff1") + "," + I18n
+					.format("dcs.tip.buff2") + TextFormatting.WHITE.toString() + I18n
+							.format("dcs.comment.buff.color_pendant2." + meta));
 		} else {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
 		}

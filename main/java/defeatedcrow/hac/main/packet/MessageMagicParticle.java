@@ -9,6 +9,10 @@ public class MessageMagicParticle implements IMessage {
 	public double x;
 	public double y;
 	public double z;
+	public byte num;
+	public float dx = 0F;
+	public float dy = 0F;
+	public float dz = 0F;
 
 	public MessageMagicParticle() {}
 
@@ -16,6 +20,17 @@ public class MessageMagicParticle implements IMessage {
 		this.x = x1;
 		this.y = y1;
 		this.z = z1;
+		num = 50;
+	}
+
+	public MessageMagicParticle(double x1, double y1, double z1, byte b1, float fx, float fy, float fz) {
+		this.x = x1;
+		this.y = y1;
+		this.z = z1;
+		num = b1;
+		dx = fx;
+		dy = fy;
+		dz = fz;
 	}
 
 	// read
@@ -24,6 +39,10 @@ public class MessageMagicParticle implements IMessage {
 		this.x = buf.readDouble();
 		this.y = buf.readDouble();
 		this.z = buf.readDouble();
+		num = buf.readByte();
+		dx = buf.readFloat();
+		dy = buf.readFloat();
+		dz = buf.readFloat();
 	}
 
 	// write
@@ -32,5 +51,9 @@ public class MessageMagicParticle implements IMessage {
 		buf.writeDouble(x);
 		buf.writeDouble(y);
 		buf.writeDouble(z);
+		buf.writeByte(num);
+		buf.writeFloat(dx);
+		buf.writeFloat(dy);
+		buf.writeFloat(dz);
 	}
 }

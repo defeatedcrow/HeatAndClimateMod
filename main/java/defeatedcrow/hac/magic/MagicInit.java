@@ -17,6 +17,7 @@ public class MagicInit {
 
 	public static Item magicCard;
 	public static Item magicCard2;
+	public static Item magicCard3;
 
 	public static Item expGem;
 

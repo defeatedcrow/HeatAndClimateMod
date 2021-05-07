@@ -172,7 +172,7 @@ public class MainInit {
 	public static Block wallshelfChecker;
 	public static Block wallshelfBlack;
 
-	public static Block displayCube;
+	public static Block displayStand;
 	public static Block displayShelf;
 	public static Block flowerVase;
 	public static Block planting;

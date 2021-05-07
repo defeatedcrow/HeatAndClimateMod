@@ -1498,8 +1498,32 @@ public class FoodBasicRecipe {
 			new ItemStack(Items.GLASS_BOTTLE, 1, 0),
 			"dustMana" });
 
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Items.NETHER_WART, 1, 0), new Object[] {
+			"listAllmushroom",
+			"dustMana" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Items.GHAST_TEAR, 1, 0), new Object[] {
+			"gemOpal",
+			"dustMana" });
+
+		DCRecipe.jsonShapelessRecipe("food", 2, new ItemStack(Items.GHAST_TEAR, 1, 0), new Object[] {
+			"gemAlexandrite",
+			"dustMana" });
+
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Items.ENDER_PEARL, 1, 0), new Object[] {
 			new ItemStack(Items.EMERALD, 1, 0),
+			"dustMana" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Items.PRISMARINE_SHARD, 1, 0), new Object[] {
+			"gemSapphire",
+			"dustMana" });
+
+		DCRecipe.jsonShapelessRecipe("food", 2, new ItemStack(Items.PRISMARINE_SHARD, 1, 0), new Object[] {
+			"gemLarimar",
+			"dustMana" });
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(Items.PRISMARINE_CRYSTALS, 1, 0), new Object[] {
+			"gemAquamarine",
 			"dustMana" });
 	}
 

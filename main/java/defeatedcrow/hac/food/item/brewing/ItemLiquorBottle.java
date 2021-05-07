@@ -281,7 +281,7 @@ public class ItemLiquorBottle extends DCItem {
 		if (player != null) {
 			ItemStack item = player.getHeldItem(hand);
 			/* 水のみ直接汲むことができる */
-			if (!DCUtil.isEmpty(item)) {
+			if (!DCUtil.isEmpty(item) && item.getItemDamage() != 0) {
 				ActionResult<ItemStack> ret = super.onItemRightClick2(world, player, hand);
 				if (ret.getType() == EnumActionResult.PASS) {
 					player.setActiveHand(hand);

@@ -397,6 +397,7 @@ public class ItemColorCard extends DCItem {
 	private boolean onEffect_Red3(World world, EntityPlayer player, float f) {
 		EntityFireBarrier circle = new EntityFireBarrier(world);
 		circle.setPosition(player.posX, player.posY, player.posZ);
+		circle.setMaxAge((int) (2400 * f));
 		world.spawnEntity(circle);
 		return true;
 	}
@@ -404,6 +405,7 @@ public class ItemColorCard extends DCItem {
 	private boolean onEffect_Blue3(World world, EntityPlayer player, float f) {
 		EntityProjBarrier circle = new EntityProjBarrier(world);
 		circle.setPosition(player.posX, player.posY, player.posZ);
+		circle.setMaxAge((int) (2400 * f));
 		world.spawnEntity(circle);
 		return true;
 	}
@@ -433,6 +435,7 @@ public class ItemColorCard extends DCItem {
 	private boolean onEffect_Black3(World world, EntityPlayer player, float f) {
 		EntityMobBarrier circle = new EntityMobBarrier(world);
 		circle.setPosition(player.posX, player.posY, player.posZ);
+		circle.setMaxAge((int) (2400 * f));
 		world.spawnEntity(circle);
 		return true;
 	}
@@ -440,6 +443,7 @@ public class ItemColorCard extends DCItem {
 	private boolean onEffect_White3(World world, EntityPlayer player, float f) {
 		EntityHealBarrier circle = new EntityHealBarrier(world);
 		circle.setPosition(player.posX, player.posY, player.posZ);
+		circle.setMaxAge((int) (2400 * f));
 		world.spawnEntity(circle);
 		return true;
 	}
@@ -470,6 +474,14 @@ public class ItemColorCard extends DCItem {
 		tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.card_type." + type.toString()));
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 		tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.card." + meta));
+
+		if (ClimateCore.proxy.isShiftKeyDown()) {
+			tooltip.add(TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "=== Boost ===");
+			tooltip.add(TextFormatting.GOLD.toString() + I18n.format("dcs.tip.buff2") + TextFormatting.WHITE
+					.toString() + I18n.format("dcs.comment.buff.color_card." + meta));
+		} else {
+			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
+		}
 	}
 
 	public enum CardType {

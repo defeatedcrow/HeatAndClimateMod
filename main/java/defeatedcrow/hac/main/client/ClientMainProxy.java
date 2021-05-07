@@ -28,6 +28,7 @@ import defeatedcrow.hac.main.block.build.TileChandelierChal;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileChandelierSalt;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
+import defeatedcrow.hac.main.block.build.TileDisplayStand;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMCClock_L;
 import defeatedcrow.hac.main.block.build.TileMFence;
@@ -61,6 +62,7 @@ import defeatedcrow.hac.main.client.block.TESRChandelier;
 import defeatedcrow.hac.main.client.block.TESRChandelierChal;
 import defeatedcrow.hac.main.client.block.TESRChandelierSalt;
 import defeatedcrow.hac.main.client.block.TESRDisplayShelf;
+import defeatedcrow.hac.main.client.block.TESRDisplayStand;
 import defeatedcrow.hac.main.client.block.TESRFirestand;
 import defeatedcrow.hac.main.client.block.TESRFuelStove;
 import defeatedcrow.hac.main.client.block.TESRLargeClock;
@@ -125,6 +127,7 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.model.ModelLoader;
@@ -132,6 +135,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -258,6 +262,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileMFence.class, "dcs_te_mfence_normal", new TESRMFence());
 		registerTileEntity(TileMFenceGlass.class, "dcs_te_mfence_glass", new TESRMFenceGlass());
 		registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net", new TESRMFenceNet());
+		registerTileEntity(TileDisplayStand.class, "dcs_te_display_stand", new TESRDisplayStand());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();
@@ -434,5 +439,13 @@ public class ClientMainProxy extends CommonMainProxy {
 		default:
 			return 6;
 		}
+	}
+
+	@Override
+	public boolean isOP(EntityPlayer player) {
+		if (FMLCommonHandler.instance().getMinecraftServerInstance().isSinglePlayer()) {
+			return true;
+		}
+		return false;
 	}
 }

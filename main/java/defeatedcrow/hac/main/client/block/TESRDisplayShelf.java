@@ -52,13 +52,13 @@ public class TESRDisplayShelf extends TileEntitySpecialRenderer<TileDisplayShelf
 			GlStateManager.rotate(f, 0.0F, 1.0F, 0.0F);
 
 			if (!DCUtil.isEmpty(te.getStackInSlot(0))) {
-				renderItem(te.getStackInSlot(0), -0.25F, -0.1875F, 0.125F, te);
+				renderItem(te.getStackInSlot(0).copy(), -0.25F, -0.1875F, 0.125F, te);
 			}
 			if (!DCUtil.isEmpty(te.getStackInSlot(1))) {
-				renderItem(te.getStackInSlot(1), 0F, -0.1875F, 0.35F, te);
+				renderItem(te.getStackInSlot(1).copy(), 0F, -0.1875F, 0.35F, te);
 			}
 			if (!DCUtil.isEmpty(te.getStackInSlot(2))) {
-				renderItem(te.getStackInSlot(2), 0.25F, -0.1875F, 0.125F, te);
+				renderItem(te.getStackInSlot(2).copy(), 0.25F, -0.1875F, 0.125F, te);
 			}
 
 			GlStateManager.disableRescaleNormal();
@@ -79,7 +79,7 @@ public class TESRDisplayShelf extends TileEntitySpecialRenderer<TileDisplayShelf
 			GlStateManager.pushMatrix();
 			GlStateManager.disableLighting();
 			if (item instanceof ItemBlock) {
-				GlStateManager.translate(x, y + 0.25F, z);
+				GlStateManager.translate(x, y + 0.15F, z);
 				GlStateManager.scale(0.45F, 0.45F, 0.45F);
 			} else {
 				GlStateManager.translate(x, y, z);

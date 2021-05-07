@@ -80,7 +80,7 @@ public class ParticleOrbCircle extends Particle {
 		this.motionZ *= 0.96D;
 
 		int i = particleAge & 3;
-		float r = i + Minecraft.getMinecraft().timer.renderPartialTicks;
+		float r = i + Minecraft.getMinecraft().getRenderPartialTicks();
 		double rad = (r * 2 * Math.PI) / 5;
 
 		double fx = 0.5D * Math.sin(rad);

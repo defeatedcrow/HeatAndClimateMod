@@ -44,6 +44,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
@@ -53,6 +54,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -61,6 +63,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -91,6 +94,7 @@ public class MagicCommonEvent {
 				}
 			} else if (source.getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase owner = (EntityLivingBase) source.getTrueSource();
+				float eff = MainUtil.magicSuitEff(owner);
 				if (owner != null) {
 					if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorBadge, 1, 3))) {
 						// black badge
@@ -104,7 +108,7 @@ public class MagicCommonEvent {
 					}
 					if (getOffhandJewelColor(owner) == MagicColor.GREEN) {
 						// green-white gauntlet
-						float healamo = event.getAmount() * 0.25F;
+						float healamo = event.getAmount() * 0.25F * eff;
 						owner.heal(healamo);
 						event.getSource().setDamageBypassesArmor();
 					}
@@ -175,6 +179,26 @@ public class MagicCommonEvent {
 	}
 
 	@SubscribeEvent
+	public void onHurt(LivingHurtEvent event) {
+		EntityLivingBase living = event.getEntityLiving();
+		DamageSource source = event.getSource();
+		float dam = event.getAmount();
+		if (living == null)
+			return;
+
+		if (!(living instanceof EntityPlayer) && dam >= living.getHealth()) {
+			if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorBadge, 1, 1))) {
+				// DCLogger.debugInfoLog("on amulet process");
+				living.fallDistance = 0.0F;
+				living.setHealth(living.getMaxHealth() * 0.5F);
+				living.world.playSound(null, living
+						.getPosition(), SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.PLAYERS, 1.0F, 0.75F);
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	@SubscribeEvent
 	public void onDrop(LivingDropsEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
 		DamageSource source = event.getSource();
@@ -232,11 +256,11 @@ public class MagicCommonEvent {
 				for (ItemStack i : event.getDrops()) {
 					if (!DCUtil.isEmpty(i)) {
 						ICrusherRecipe cr = null;
-						if (eff >= 2.0F && ModuleConfig.machine_advanced) {
+						if (eff > 1.0F && ModuleConfig.machine_advanced) {
 							cr = RecipeAPI.registerCrushers.getRecipe(i, new ItemStack(MachineInit.rotaryBlade));
 							ICrusherRecipe cr2 = RecipeAPI.registerCrushers.getRecipe(i, new ItemStack(
 									MachineInit.rotaryBlade, 1, 1));
-							if (cr2 != null) {
+							if (eff >= 2.0F && cr2 != null) {
 								cr = cr2;
 							}
 						}
@@ -300,7 +324,7 @@ public class MagicCommonEvent {
 			return 4;
 		} else if (living.isEntityUndead() || living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 			return 3;
-		} else if (living instanceof EntityCreeper || living.isImmuneToFire) {
+		} else if (living instanceof EntityCreeper || living.isImmuneToFire()) {
 			return 2;
 		} else if (living instanceof EntitySlime || living instanceof EntityGuardian || living instanceof EntityShulker) {
 			return 0;

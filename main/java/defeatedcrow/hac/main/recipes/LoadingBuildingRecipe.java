@@ -1097,6 +1097,14 @@ public class LoadingBuildingRecipe {
 				'Y',
 				"ingotCopper" });
 
+			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.displayStand, 1, 0), new Object[] {
+				" Y ",
+				"XXX",
+				'X',
+				"plankWood",
+				'Y',
+				"ingotTin" });
+
 			DCRecipe.jsonShapedRecipe("main_build", new ItemStack(MainInit.awning, 1, 0), new Object[] {
 				"XXX",
 				"Y Y",

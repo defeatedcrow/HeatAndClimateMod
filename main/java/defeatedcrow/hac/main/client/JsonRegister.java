@@ -23,7 +23,7 @@ import net.minecraftforge.client.model.ModelLoader;
 public class JsonRegister {
 
 	protected static final JsonRegisterHelper MAIN_INSTANCE = new JsonRegisterHelper(
-			"E:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources");
+			"F:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources");
 
 	public static void load() {
 		regItems();

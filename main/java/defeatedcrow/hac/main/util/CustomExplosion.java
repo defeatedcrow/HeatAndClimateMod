@@ -10,9 +10,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityMinecart;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -105,26 +104,42 @@ public class CustomExplosion extends Explosion {
 				float damage = (float) ((this.size * this.size * 2) * (d11 * d11));
 				damage = Math.max(damage, 4.0F);
 
-				if (entity == this.igniter || entity == this.bomb) {
+				if (entity == null || entity == this.igniter || entity == this.bomb) {
 					flag = false;
-				} else if (entity instanceof EntityBoat || entity instanceof EntityMinecart) {
+				} else if (!(entity instanceof EntityLivingBase)) {
 					flag = false;
 				} else if (entity instanceof EntityPlayer) {
 					if (this.igniter instanceof EntityPlayer) {
 						flag = ((EntityPlayer) igniter).canAttackPlayer((EntityPlayer) entity);
 					}
-				} else {
-					if (this.type == Type.Silk) {
-						if (entity instanceof EntityItem || entity instanceof IProjectile) {
-							flag = false;
-						}
-						damage *= 0.5F;
-					} else if (this.type == Type.Anchor) {
-						if (entity instanceof EntityDragon) {
-							damage *= 2.0F;
-						} else if (!entity.onGround) {
-							damage *= 10.0F;
-						}
+				}
+
+				if (this.type == Type.Friends && igniter != null) {
+					EntityLivingBase owner = null;
+					EntityLivingBase owner2 = null;
+					if (igniter instanceof EntityTameable) {
+						owner = ((EntityTameable) igniter).getOwner();
+					}
+					if (entity instanceof EntityTameable) {
+						owner2 = ((EntityTameable) entity).getOwner();
+					}
+					if (owner == owner2 || entity == owner || igniter == owner2) {
+						flag = false;
+					} else if (igniter instanceof EntityPlayer && owner2 instanceof EntityPlayer) {
+						flag = false;
+					} else if (entity instanceof EntityPlayer && owner instanceof EntityPlayer) {
+						flag = false;
+					}
+				} else if (this.type == Type.Silk) {
+					if (entity instanceof EntityItem || entity instanceof IProjectile) {
+						flag = false;
+					}
+					damage *= 0.5F;
+				} else if (this.type == Type.Anchor) {
+					if (entity instanceof EntityDragon) {
+						damage *= 2.0F;
+					} else if (!entity.onGround) {
+						damage *= 10.0F;
 					}
 				}
 
@@ -157,35 +172,6 @@ public class CustomExplosion extends Explosion {
 					.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.expX, this.expY, this.expZ, 1.0D, 0.0D, 0.0D, new int[0]);
 		}
 
-		// if (eff) {
-		// for (BlockPos blockpos : this.getAffectedBlockPositions()) {
-		// IBlockState iblockstate = this.worldObj.getBlockState(blockpos);
-		// Block block = iblockstate.getBlock();
-		//
-		// if (eff) {
-		// double d0 = blockpos.getX() + this.worldObj.rand.nextFloat();
-		// double d1 = blockpos.getY() + this.worldObj.rand.nextFloat();
-		// double d2 = blockpos.getZ() + this.worldObj.rand.nextFloat();
-		// double d3 = d0 - this.expX;
-		// double d4 = d1 - this.expY;
-		// double d5 = d2 - this.expZ;
-		// double d6 = MathHelper.sqrt_double(d3 * d3 + d4 * d4 + d5 * d5);
-		// d3 = d3 / d6;
-		// d4 = d4 / d6;
-		// d5 = d5 / d6;
-		// double d7 = 0.5D / (d6 / this.size + 0.1D);
-		// d7 = d7 * (this.worldObj.rand.nextFloat() * this.worldObj.rand.nextFloat() + 0.3F);
-		// d3 = d3 * d7;
-		// d4 = d4 * d7;
-		// d5 = d5 * d7;
-		// this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, (d0 + this.expX) / 2.0D,
-		// (d1 + this.expY) / 2.0D, (d2 + this.expZ) / 2.0D, d3, d4, d5, new int[0]);
-		// this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, d3, d4, d5, new
-		// int[0]);
-		// }
-		// }
-		// }
-
 		if (flame) {
 			for (BlockPos blockpos1 : this.getAffectedBlockPositions()) {
 				if (this.worldObj.getBlockState(blockpos1).getMaterial() == Material.AIR && this.worldObj
@@ -199,6 +185,7 @@ public class CustomExplosion extends Explosion {
 	public static enum Type {
 		Silk,
 		Anchor,
+		Friends,
 		Normal;
 	}
 

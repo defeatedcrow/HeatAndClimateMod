@@ -15,6 +15,8 @@ import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IWideMining;
+import defeatedcrow.hac.main.block.BlockExclusiveDC;
+import defeatedcrow.hac.main.block.DCExclusiveTE;
 import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.util.MainUtil;
@@ -30,6 +32,7 @@ import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
@@ -53,6 +56,8 @@ public class OnMiningEventDC {
 	@SubscribeEvent
 	public void preMining(PlayerEvent.BreakSpeed event) {
 		if (event.getEntityPlayer() != null) {
+			IBlockState state = event.getState();
+
 			if (DCUtil.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2))) {
 				float lv = 2.0F + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant,
 						1, 2));
@@ -78,6 +83,7 @@ public class OnMiningEventDC {
 		if (event.getHarvester() != null && !event.getWorld().isRemote) {
 			IBlockState state = event.getState();
 			ItemStack held = event.getHarvester().getHeldItemMainhand();
+
 			int level = event.getFortuneLevel() + 1;
 			if (state == null || DCUtil.isEmpty(held))
 				return;
@@ -95,6 +101,17 @@ public class OnMiningEventDC {
 	public void onBreakBlock(BlockEvent.BreakEvent event) {
 		if (event.getPlayer() != null && !event.getWorld().isRemote) {
 			IBlockState state = event.getState();
+
+			// 破壊不能処理
+			if (state != null && state.getBlock() instanceof BlockExclusiveDC) {
+				TileEntity tile = event.getWorld().getTileEntity(event.getPos());
+				if (tile != null && tile instanceof DCExclusiveTE) {
+					DCExclusiveTE exclusive = (DCExclusiveTE) tile;
+					if (!exclusive.isOwnerOrOP(event.getPlayer()))
+						event.setCanceled(true);
+				}
+			}
+
 			ItemStack held = event.getPlayer().getHeldItemMainhand();
 			BlockPos pos = event.getPos();
 			EnumFacing face;

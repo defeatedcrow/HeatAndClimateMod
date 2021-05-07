@@ -40,6 +40,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 	public int maxLivingTime = MainCoreConfig.flower_turret_limit;
 	public int livingDay = 0;
 	public int lastDay = 0;
+	public float damageFactor = 1.0F;
 
 	public EntityLivingBase targetEntity = null;
 	public EntityLivingBase targetClose = null;
@@ -47,6 +48,10 @@ public class EntityFlowerTurret extends DCEntityBase {
 	public EntityFlowerTurret(World worldIn) {
 		super(worldIn);
 		this.setSize(1.0F, 1.0F);
+	}
+
+	public void setDamageFactor(float f) {
+		damageFactor = f;
 	}
 
 	@Override
@@ -199,7 +204,8 @@ public class EntityFlowerTurret extends DCEntityBase {
 	}
 
 	private boolean onMeleeAttack() {
-		return targetClose.attackEntityFrom(DamageSource.CACTUS, (float) (MainCoreConfig.flower_turret_damage * 2.0D));
+		return targetClose
+				.attackEntityFrom(DamageSource.CACTUS, (float) (MainCoreConfig.flower_turret_damage * 2.0D * damageFactor));
 	}
 
 	private boolean keepRangedAttack() {
@@ -209,6 +215,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 
 	private boolean onRangedAttack() {
 		EntityFlowerBolt entityarrow = new EntityFlowerBolt(world, this);
+		entityarrow.setDamage(damageFactor);
 		entityarrow.setAim(this, rotationPitch, rotationYaw, 0.0F, 5.0F, 0.1F);
 		entityarrow.setTarget(targetEntity);
 		this.playSound(SoundEvents.ENTITY_ITEM_PICKUP, 0.75F, 1.5F);
@@ -357,6 +364,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 		super.readEntityFromNBT(tag);
 		livingDay = tag.getInteger("LivingDay");
 		lastDay = tag.getInteger("LastDay");
+		damageFactor = tag.getFloat("DamageFactor");
 		String s;
 		if (tag.hasKey("OwnerUUID", 8)) {
 			s = tag.getString("OwnerUUID");
@@ -380,6 +388,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 		super.writeEntityToNBT(tag);
 		tag.setInteger("LivingDay", livingDay);
 		tag.setInteger("LastDay", lastDay);
+		tag.setFloat("DamageFactor", damageFactor);
 		if (this.getOwnerId() == null) {
 			tag.setString("OwnerUUID", "");
 		} else {

@@ -116,12 +116,9 @@ public class LivingMainEventDC {
 					EnumFacing face = player.getHorizontalFacing();
 					BlockPos pos = player.getPosition().offset(face, 2);
 					if (isAir(player.world, pos) && isAir(player.world, pos.up())) {
+						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
 						if (!player.world.isRemote && player instanceof EntityPlayerMP) {
-							((EntityPlayerMP) player).connection.setPlayerLocation(pos.getX() + 0.5D, pos
-									.getY() + 0.125D, pos.getZ() + 0.5D, player.rotationYaw, player.rotationPitch);
-						} else {
-							player.setLocationAndAngles(pos.getX() + 0.5D, pos.getY() + 0.125D, pos
-									.getZ() + 0.5D, player.rotationYaw, player.rotationPitch);
+							player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 0.125D, pos.getZ() + 0.5D);
 						}
 						player.fallDistance = 0.0F;
 						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);

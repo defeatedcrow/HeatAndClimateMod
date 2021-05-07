@@ -159,13 +159,13 @@ public class CaravanGenEvent {
 							if ((num & 1) == 1 && num != gate) {
 								switch (room[t]) {
 								case 1:
-									updateInterior0(world, pos, rand, face);
+									updateInterior0(world, pos, rand, face, type);
 									break;
 								case 2:
-									updateInterior2(world, pos, rand, face);
+									updateInterior2(world, pos, rand, face, type);
 									break;
 								case 3:
-									updateInterior1(world, pos, rand, face);
+									updateInterior1(world, pos, rand, face, type);
 									break;
 								default:
 								}
@@ -216,28 +216,28 @@ public class CaravanGenEvent {
 		}
 	}
 
-	private void updateInterior0(World world, BlockPos pos, Random rand, EnumFacing face) {
+	private void updateInterior0(World world, BlockPos pos, Random rand, EnumFacing face, CaravanType type) {
 		int[] i = { 0, 3, 7, 11, 14 };
 		for (int x : i) {
 			BlockPos p1 = rotate(pos, x, 1, 8, face);
 			BlockPos p2 = rotate(pos, x + 1, 1, 8, face);
 			IBlockState cont = BlockContainerUtil.INS.getRondomContainer2(rand);
-			world.setBlockState(p1, cont, 2);
-			world.setBlockState(p2, cont, 2);
+			setBlock(type, world, p1, cont, 2);
+			setBlock(type, world, p2, cont, 2);
 			if (rand.nextBoolean()) {
-				world.setBlockState(p1.up(), cont, 2);
+				setBlock(type, world, p1.up(), cont, 2);
 			}
 			if (rand.nextBoolean()) {
-				world.setBlockState(p2.up(), cont, 2);
+				setBlock(type, world, p2.up(), cont, 2);
 			}
 			if (rand.nextBoolean()) {
 				BlockPos p3 = rotate(pos, x, 1, 7, face);
-				world.setBlockState(p3, cont, 2);
+				setBlock(type, world, p3, cont, 2);
 			}
 		}
 	}
 
-	private void updateInterior1(World world, BlockPos pos, Random rand, EnumFacing face) {
+	private void updateInterior1(World world, BlockPos pos, Random rand, EnumFacing face, CaravanType type) {
 		BlockPos p1 = rotate(pos, 0, 1, 9, face);
 		TileEntity tile1 = world.getTileEntity(p1);
 		if (tile1 != null && tile1 instanceof TileEntityChest) {
@@ -255,21 +255,21 @@ public class CaravanGenEvent {
 		for (int x = 5; x < 11; x++) {
 			BlockPos p3 = rotate(pos, x, 1, 9, face);
 			IBlockState cont = BlockContainerUtil.INS.getRondomContainer1(rand);
-			world.setBlockState(p3, cont, 2);
+			setBlock(type, world, p3, cont, 2);
 			if (rand.nextBoolean()) {
 				BlockPos p4 = rotate(pos, x, 2, 9, face);
-				world.setBlockState(p4, cont, 2);
+				setBlock(type, world, p4, cont, 2);
 			}
 			if (rand.nextBoolean()) {
 				BlockPos p4 = rotate(pos, x, 1, 8, face);
 				IBlockState cont2 = BlockContainerUtil.INS.getRondomContainer1(rand);
-				world.setBlockState(p4, cont2, 2);
+				setBlock(type, world, p4, cont2, 2);
 			}
 		}
 
 	}
 
-	private void updateInterior2(World world, BlockPos pos, Random rand, EnumFacing face) {
+	private void updateInterior2(World world, BlockPos pos, Random rand, EnumFacing face, CaravanType type) {
 
 		if (ModuleConfig.food) {
 
@@ -280,11 +280,9 @@ public class CaravanGenEvent {
 						List<ItemStack> list = Lists.newArrayList();
 						getLiquorList(list, rand);
 						BlockPos p = rotate(pos, x, 3, 9, face);
-						if (world.isAirBlock(p)) {
-							IBlockState shelf = MainInit.displayShelf.getDefaultState()
-									.withProperty(DCState.FACING, face.getOpposite());
-							world.setBlockState(p, shelf, 2);
-						}
+						IBlockState shelf = MainInit.displayShelf.getDefaultState().withProperty(DCState.FACING, face
+								.getOpposite());
+						setBlock(type, world, p, shelf, 2);
 						TileEntity tile = world.getTileEntity(p);
 						if (tile != null && tile instanceof TileDisplayShelf) {
 							for (int i = 0; i < 3; i++) {
@@ -296,8 +294,7 @@ public class CaravanGenEvent {
 
 				BlockPos p1 = rotate(pos, -2, 1, 8, face);
 				IBlockState barrel = FoodInit.barrel.getDefaultState().withProperty(DCState.FACING, face.rotateY());
-				if (world.isAirBlock(p1))
-					world.setBlockState(p1, barrel, 2);
+				setBlock(type, world, p1, barrel, 2);
 				if (rand.nextBoolean()) {
 					Fluid f = getFluid(rand.nextInt(8));
 					TileEntity te = world.getTileEntity(p1);
@@ -306,18 +303,16 @@ public class CaravanGenEvent {
 					}
 				}
 				BlockPos p2 = rotate(pos, -2, 1, 9, face);
-				world.setBlockState(p2, barrel, 2);
-				if (world.isAirBlock(p2))
-					if (rand.nextBoolean()) {
-						Fluid f = getFluid(rand.nextInt(8));
-						TileEntity te = world.getTileEntity(p2);
-						if (f != null && te instanceof TileAgingBarrel) {
-							((TileAgingBarrel) te).inputT.setFluid(new FluidStack(f, 2000));
-						}
+				setBlock(type, world, p2, barrel, 2);
+				if (rand.nextBoolean()) {
+					Fluid f = getFluid(rand.nextInt(8));
+					TileEntity te = world.getTileEntity(p2);
+					if (f != null && te instanceof TileAgingBarrel) {
+						((TileAgingBarrel) te).inputT.setFluid(new FluidStack(f, 2000));
 					}
+				}
 				BlockPos p3 = rotate(pos, 17, 1, 8, face);
-				if (world.isAirBlock(p3))
-					world.setBlockState(p3, barrel, 2);
+				setBlock(type, world, p3, barrel, 2);
 				if (rand.nextBoolean()) {
 					Fluid f = getFluid(rand.nextInt(8));
 					TileEntity te = world.getTileEntity(p3);
@@ -326,7 +321,7 @@ public class CaravanGenEvent {
 					}
 				}
 				BlockPos p4 = rotate(pos, 17, 1, 9, face);
-				world.setBlockState(p4, barrel, 2);
+				setBlock(type, world, p4, barrel, 2);
 				if (rand.nextBoolean()) {
 					Fluid f = getFluid(rand.nextInt(8));
 					TileEntity te = world.getTileEntity(p4);
@@ -339,7 +334,7 @@ public class CaravanGenEvent {
 
 			BlockPos p5 = rotate(pos, -2, 1, 7, face);
 			IBlockState chest = Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, face.getOpposite());
-			world.setBlockState(p5, chest, 2);
+			setBlock(type, world, p5, chest, 2);
 			TileEntity tile = world.getTileEntity(p5);
 			if (tile != null && tile instanceof TileEntityChest) {
 				((TileEntityChest) tile).setLootTable(LootTablesDC.CARAVAN_CHEST_LOOT, rand.nextLong());
@@ -432,6 +427,13 @@ public class CaravanGenEvent {
 			return FoodInit.araq;
 		}
 		return null;
+	}
+
+	private boolean setBlock(CaravanType type, World world, BlockPos pos, IBlockState state, int i) {
+		if (type == CaravanType.UNINIT || world.isAirBlock(pos)) {
+			return world.setBlockState(pos, state, i);
+		}
+		return false;
 	}
 
 }

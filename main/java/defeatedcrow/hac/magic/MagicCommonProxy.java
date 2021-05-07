@@ -12,6 +12,7 @@ import defeatedcrow.hac.magic.block.TilePictureWB;
 import defeatedcrow.hac.magic.block.TileTimeCage;
 import defeatedcrow.hac.magic.block.TileVeinBeacon;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
+import defeatedcrow.hac.magic.entity.EntityFTDog;
 import defeatedcrow.hac.magic.entity.EntityFlowerTurret;
 import defeatedcrow.hac.magic.entity.EntityMagicCushion;
 import defeatedcrow.hac.magic.proj.EntityFireBarrier;
@@ -19,6 +20,7 @@ import defeatedcrow.hac.magic.proj.EntityHealBarrier;
 import defeatedcrow.hac.magic.proj.EntityMobBarrier;
 import defeatedcrow.hac.magic.proj.EntityProjBarrier;
 import defeatedcrow.hac.magic.proj.EntityProjBlackSpit;
+import defeatedcrow.hac.magic.proj.EntityProjDogSpit;
 import defeatedcrow.hac.magic.proj.EntityProjIceSpit;
 import defeatedcrow.hac.magic.proj.EntityProjLightSpit;
 import defeatedcrow.hac.magic.proj.EntityProjRedSpit;
@@ -39,8 +41,10 @@ public class MagicCommonProxy {
 		DCRegistryUtil.addEntity(EntityProjWhiteSpit.class, "magic", "proj_white", 1);
 		DCRegistryUtil.addEntity(EntityProjRedSpit.class, "magic", "proj_red", 1);
 		DCRegistryUtil.addEntity(EntityProjBlackSpit.class, "magic", "proj_black", 1);
+		DCRegistryUtil.addEntity(EntityProjDogSpit.class, "magic", "proj_dog", 1);
 
-		DCRegistryUtil.addEntity(EntityBlackDog.class, "magic", "dcs_blackdog", 5);
+		DCRegistryUtil.addEntity(EntityBlackDog.class, "magic", "dcs_blackdog", 1);
+		DCRegistryUtil.addEntity(EntityFTDog.class, "magic", "dcs_flametongue", 1);
 
 		DCRegistryUtil.addEntity(EntityFlowerTurret.class, "magic", "dcs_magic_flower_turret", 5);
 
