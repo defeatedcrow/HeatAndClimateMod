@@ -1689,8 +1689,8 @@ fluid.dcs.raw_milk=生牛奶
 tile.dcs_fluidblock_raw_milk_0.name=生牛奶
 fluid.dcs.steam=蒸汽
 tile.dcs_fluidblock_steam_0.name=蒸汽
-fluid.dcs.oxygan=氧气
-tile.dcs_fluidblock_oxygan_0.name=氧气
+fluid.dcs.oxygen=氧气
+tile.dcs_fluidblock_oxygen_0.name=氧气
 
 fluid.dcs.beer=啤酒
 fluid.dcs.wine=红酒
