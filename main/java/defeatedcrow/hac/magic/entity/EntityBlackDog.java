@@ -140,6 +140,7 @@ public class EntityBlackDog extends EntityWolf {
 		super.onUpdate();
 
 		if (!this.world.isRemote && this.world.isDaytime()) {
+			world.playEvent(2004, this.getPosition(), 0);
 			this.setDead();
 		}
 	}

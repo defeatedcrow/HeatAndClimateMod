@@ -143,6 +143,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 			}
 
 			if (this.livingDay > maxLivingTime) {
+				world.playEvent(2004, this.getPosition(), 0);
 				this.setDead();
 			} else {
 				int day = (int) (DCTimeHelper.totalTime(world) / 24000L);
@@ -238,7 +239,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 			if (targetEntity.isEntityAlive() && dist < 5F) {
 				targetClose = targetEntity;
 				targetEntity = null;
-			} else if (!targetEntity.isEntityAlive() || dist > 36F) {
+			} else if (!targetEntity.isEntityAlive() || dist > 64F) {
 				targetEntity = null;
 			}
 		}
@@ -248,11 +249,11 @@ public class EntityFlowerTurret extends DCEntityBase {
 
 			if (owner != null) {
 				if (owner.getLastAttackedEntity() != null && owner.getLastAttackedEntity() != targetClose && MathHelper
-						.sqrt(owner.getLastAttackedEntity().getDistanceSq(this)) <= 36F) {
+						.sqrt(owner.getLastAttackedEntity().getDistanceSq(this)) <= 64F) {
 					targetEntity = owner.getLastAttackedEntity();
 					return;
 				} else if (owner.getRevengeTarget() != null && owner.getRevengeTarget() != targetClose && MathHelper
-						.sqrt(owner.getRevengeTarget().getDistanceSq(this)) <= 36F) {
+						.sqrt(owner.getRevengeTarget().getDistanceSq(this)) <= 64F) {
 					targetEntity = owner.getRevengeTarget();
 					return;
 				}
@@ -267,7 +268,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 				if (mob == null)
 					continue;
 				float d1 = MathHelper.sqrt(mob.getDistanceSq(this));
-				if (owner != null && mob.getRevengeTarget() == owner && d1 < 36F && mob != targetClose) {
+				if (owner != null && mob.getRevengeTarget() == owner && d1 < 64F && mob != targetClose) {
 					targetEntity = mob;
 					return;
 				}
@@ -362,6 +363,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound tag) {
 		super.readEntityFromNBT(tag);
+		maxLivingTime = tag.getInteger("MaxLivingTime");
 		livingDay = tag.getInteger("LivingDay");
 		lastDay = tag.getInteger("LastDay");
 		damageFactor = tag.getFloat("DamageFactor");
@@ -386,6 +388,7 @@ public class EntityFlowerTurret extends DCEntityBase {
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound tag) {
 		super.writeEntityToNBT(tag);
+		tag.setInteger("MaxLivingTime", maxLivingTime);
 		tag.setInteger("LivingDay", livingDay);
 		tag.setInteger("LastDay", lastDay);
 		tag.setFloat("DamageFactor", damageFactor);

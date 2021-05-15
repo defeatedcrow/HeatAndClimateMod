@@ -150,7 +150,7 @@ public class CustomExplosion extends Explosion {
 						entity.hurtResistantTime = 0;
 						entity.attackEntityFrom(DamageSource.causeExplosionDamage(this), damage);
 					}
-					entity.motionY += 0.3D;
+					entity.motionY += 0.05D;
 				}
 			}
 		}

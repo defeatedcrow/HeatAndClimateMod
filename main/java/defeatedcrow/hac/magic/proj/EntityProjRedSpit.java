@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class EntityProjRedSpit extends EntityProjBase {
 
 	public float damage = 10.0F;
-	public float range = 4.0F;
+	public float range = 6.0F;
 
 	public EntityProjRedSpit(World worldIn) {
 		super(worldIn);
@@ -27,7 +27,7 @@ public class EntityProjRedSpit extends EntityProjBase {
 	}
 
 	public EntityProjRedSpit setExplodeRange(float f) {
-		range = 4.0F * f;
+		range = 6.0F * f;
 		return this;
 	}
 

@@ -13,6 +13,7 @@ import defeatedcrow.hac.magic.block.TileCubeIce;
 import defeatedcrow.hac.magic.entity.EntityFlowerTurret;
 import defeatedcrow.hac.magic.entity.EntityMagicCushion;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
 import defeatedcrow.hac.main.util.EntitySelectorsDC;
@@ -176,6 +177,7 @@ public class ItemColorCard2 extends DCItem {
 			EntityFlowerTurret flower = new EntityFlowerTurret(world);
 			flower.setPosition(set.getX() + 0.5D, set.getY(), set.getZ() + 0.5D);
 			flower.setTamedBy(player);
+			flower.setMaxLivingTime((int) (MainCoreConfig.flower_turret_limit * f));
 			if (!world.isRemote && world.spawnEntity(flower)) {
 				if (world instanceof WorldServer) {
 					((WorldServer) world).spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, set.getX() + 0.5D, set

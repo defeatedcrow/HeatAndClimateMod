@@ -147,13 +147,6 @@ public class EntityFTDog extends EntityWolf implements IRangedAttackMob {
 				}
 			}
 
-			if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(itemstack)) {
-				if (this.aiSit != null)
-					this.aiSit.setSitting(!this.isSitting());
-				this.isJumping = false;
-				this.navigator.clearPath();
-				this.setAttackTarget((EntityLivingBase) null);
-			}
 		}
 		return false;
 	}
@@ -192,6 +185,7 @@ public class EntityFTDog extends EntityWolf implements IRangedAttackMob {
 			 * 時間経過で消滅
 			 */
 			if (this.getGrowingAge() < 1) {
+				world.playEvent(2004, this.getPosition(), 0);
 				this.setDead();
 			}
 		}
