@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.6.6 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.6.7 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -2181,6 +2181,12 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.6.7
+　修正
+　　・赤の金ペンダントのアイテムDupeを修正
+　EX
+　　・zh_cn lang更新 (Fix from Pliosauroidea)
 
 ○3.6.6
 　修正

@@ -267,25 +267,25 @@ public class MagicCommonEvent {
 						if (cr != null) {
 							ItemStack o1 = cr.getOutput();
 							if (!DCUtil.isEmpty(o1))
-								nList.add(o1);
+								nList.add(o1.copy());
 							ItemStack o2 = cr.getSecondary();
 							if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < cr
 									.getSecondaryChance() * eff)
-								nList.add(o2);
+								nList.add(o2.copy());
 							ItemStack o3 = cr.getSecondary();
 							if (!DCUtil.isEmpty(o3) && event.getWorld().rand.nextFloat() < cr.getTertialyChance() * eff)
-								nList.add(o3);
+								nList.add(o3.copy());
 							flag = true;
 						} else {
 							IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
 							if (recipe != null) {
 								ItemStack o1 = recipe.getOutput();
 								if (!DCUtil.isEmpty(o1))
-									nList.add(o1);
+									nList.add(o1.copy());
 								ItemStack o2 = recipe.getSecondary();
 								if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < recipe
 										.getSecondaryChance() * eff)
-									nList.add(o2);
+									nList.add(o2.copy());
 								flag = true;
 							} else {
 								nList.add(i.copy());
@@ -305,9 +305,10 @@ public class MagicCommonEvent {
 						if (burnt.isEmpty()) {
 							nList.add(i.copy());
 						} else {
-							int d = burnt.getCount() * i.getCount();
-							burnt.setCount(d);
-							nList.add(burnt.copy());
+							ItemStack b2 = burnt.copy();
+							int d = b2.getCount() * i.getCount();
+							b2.setCount(d);
+							nList.add(b2);
 						}
 					}
 				}
