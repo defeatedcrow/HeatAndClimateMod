@@ -1689,8 +1689,8 @@ fluid.dcs.raw_milk=Raw Milk
 tile.dcs_fluidblock_raw_milk_0.name=Raw Milk
 fluid.dcs.steam=Steam
 tile.dcs_fluidblock_steam_0.name=Steam
-fluid.dcs.oxygan=Oxygen
-tile.dcs_fluidblock_oxygan_0.name=Oxygen
+fluid.dcs.oxygen=Oxygen
+tile.dcs_fluidblock_oxygen_0.name=Oxygen
 
 fluid.dcs.beer=Beer
 fluid.dcs.wine=Wine

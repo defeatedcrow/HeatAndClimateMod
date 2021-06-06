@@ -31,7 +31,7 @@ public class ArmorDyesRecipeDC extends net.minecraftforge.registries.IForgeRegis
 					itemstack = check;
 
 				} else {
-					if (!net.minecraftforge.oredict.DyeUtils.isDye(check)) {
+					if (!DyeUtils.isDye(check) && !DCUtil.matchDicName("soap", check)) {
 						return false;
 					}
 					dye = check;
@@ -65,7 +65,7 @@ public class ArmorDyesRecipeDC extends net.minecraftforge.registries.IForgeRegis
 					stack.setCount(1);
 
 				} else {
-					if (!DyeUtils.isDye(check)) {
+					if (!DyeUtils.isDye(check) && !DCUtil.matchDicName("soap", check)) {
 						return ItemStack.EMPTY;
 					}
 					dye = check.copy();

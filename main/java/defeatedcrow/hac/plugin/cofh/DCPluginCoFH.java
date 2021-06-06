@@ -35,8 +35,8 @@ public class DCPluginCoFH {
 		}
 
 		if (Loader.isModLoaded("thermalexpansion")) {
-			// DCRecipeCoFH.loadFuels();
-			// DCRecipeCoFH.loadRecipes();
+			DCRecipeCoFH.loadFuels();
+			DCRecipeCoFH.loadRecipes();
 		}
 	}
 

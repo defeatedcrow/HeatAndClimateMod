@@ -155,7 +155,7 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath, IColorableAr
 	}
 
 	public EnumDyeColor getItemColor(ItemStack item) {
-		if (DCUtil.isEmpty(item)) {
+		if (DCUtil.isEmpty(item) || DCUtil.matchDicName("soap", item)) {
 			return EnumDyeColor.WHITE;
 		}
 		if (getColorableList() != null && getColorableList().length > 0) {
@@ -171,6 +171,9 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath, IColorableAr
 	}
 
 	public int getColorNumber(ItemStack dyeItem) {
+		if (DCUtil.isEmpty(dyeItem) || DCUtil.matchDicName("soap", dyeItem)) {
+			return EnumDyeColor.WHITE.getMetadata();
+		}
 		EnumDyeColor dye = getItemColor(dyeItem);
 		if (dye != null && DyeUtils.isDye(dyeItem)) {
 			EnumDyeColor d = DyeUtils.colorFromStack(dyeItem).orElse(EnumDyeColor.WHITE);

@@ -3,32 +3,31 @@ package defeatedcrow.hac.machine.entity;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.ClimateMain;
-import defeatedcrow.hac.main.util.MainUtil;
-import net.minecraft.block.BlockRailBase;
-import net.minecraft.block.BlockRailPowered;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.item.EntityMinecartEmpty;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class EntityMinecartMotor extends EntityMinecartEmpty {
 
-	private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(
-			EntityMinecartMotor.class, DataSerializers.BOOLEAN);
-	private int fuel;
+	private static final DataParameter<Boolean> POWERED = EntityDataManager
+			.<Boolean>createKey(EntityMinecartMotor.class, DataSerializers.BOOLEAN);
+	private boolean fuel;
+	public double pushX;
+	public double pushZ;
 
 	public EntityMinecartMotor(World worldIn) {
 		super(worldIn);
@@ -38,13 +37,19 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 		super(worldIn, x, y, z);
 	}
 
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(POWERED, Boolean.valueOf(false));
+	}
+
 	public static void registerFixesMinecartEmpty(DataFixer fixer) {
 		EntityMinecart.registerFixesMinecart(fixer, EntityMinecartMotor.class);
 	}
 
 	@Override
 	protected double getMaximumSpeed() {
-		return 0.8D;
+		return 1.0D;
 	}
 
 	@Override
@@ -66,73 +71,6 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 	public void onUpdate() {
 		super.onUpdate();
 
-		int c = ClimateMain.proxy.getParticleCount();
-		if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
-			double px = posX - Math.sin(-rotationYaw * 0.017453292F) * 0.75D - Math.cos(rotationYaw * 0.017453292F) *
-					0.3D;
-			double pz = posZ - Math.cos(rotationYaw * 0.017453292F) * 0.75D - Math.sin(rotationYaw * 0.017453292F) *
-					0.3D;
-			this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, px, this.posY + 0.45D, pz, 0.0D, 0.0D, 0.0D,
-					new int[0]);
-		}
-	}
-
-	@Override
-	protected void moveAlongTrack(BlockPos pos, IBlockState state) {
-		this.fallDistance = 0.0F;
-		Vec3d vec3d = this.getPos(this.posX, this.posY, this.posZ);
-		this.posY = pos.getY();
-		boolean flag = false;
-		boolean flag1 = false;
-		BlockRailBase blockrailbase = (BlockRailBase) state.getBlock();
-
-		if (blockrailbase == Blocks.GOLDEN_RAIL) {
-			flag = state.getValue(BlockRailPowered.POWERED).booleanValue();
-			flag1 = !flag;
-		}
-
-		double slopeAdjustment = getSlopeAdjustment();
-		BlockRailBase.EnumRailDirection blockrailbase$enumraildirection = blockrailbase.getRailDirection(world, pos,
-				state, this);
-
-		switch (blockrailbase$enumraildirection) {
-		case ASCENDING_EAST:
-			this.motionX -= slopeAdjustment;
-			++this.posY;
-			break;
-		case ASCENDING_WEST:
-			this.motionX += slopeAdjustment;
-			++this.posY;
-			break;
-		case ASCENDING_NORTH:
-			this.motionZ += slopeAdjustment;
-			++this.posY;
-			break;
-		case ASCENDING_SOUTH:
-			this.motionZ -= slopeAdjustment;
-			++this.posY;
-		default:
-		}
-
-		int[][] aint = MainUtil.MATRIX[blockrailbase$enumraildirection.getMetadata()];
-		double d1 = aint[1][0] - aint[0][0];
-		double d2 = aint[1][2] - aint[0][2];
-		double d3 = Math.sqrt(d1 * d1 + d2 * d2);
-		double d4 = this.motionX * d1 + this.motionZ * d2;
-
-		if (d4 < 0.0D) {
-			d1 = -d1;
-			d2 = -d2;
-		}
-
-		double d5 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-
-		if (d5 > 2.0D) {
-			d5 = 2.0D;
-		}
-
-		this.motionX = d5 * d1 / d3;
-		this.motionZ = d5 * d2 / d3;
 		Entity entity = this.getPassengers().isEmpty() ? null : (Entity) this.getPassengers().get(0);
 
 		if (entity instanceof EntityLivingBase) {
@@ -140,114 +78,95 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 			DCLogger.debugLog("foward " + d6);
 
 			if (d6 > 0.0D) {
-				double d7 = -Math.sin(entity.rotationYaw * 0.017453292F);
-				double d8 = Math.cos(entity.rotationYaw * 0.017453292F);
-				double d9 = this.motionX * this.motionX + this.motionZ * this.motionZ;
-
-				if (d9 < 0.64D) {
-					this.motionX += d7 * 1.0D;
-					this.motionZ += d8 * 1.0D;
-					flag1 = false;
-				}
+				this.fuel = true;
+				EnumFacing face = ((EntityLivingBase) entity).getHorizontalFacing();
+				this.pushX = face.getFrontOffsetX() * 1D;
+				this.pushZ = face.getFrontOffsetZ() * 1D;
 			}
-		}
-
-		if (flag1 && shouldDoRailFunctions()) {
-			double d17 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-
-			if (d17 < 0.03D) {
-				this.motionX *= 0.0D;
-				this.motionY *= 0.0D;
-				this.motionZ *= 0.0D;
-			} else {
-				this.motionX *= 0.5D;
-				this.motionY *= 0.0D;
-				this.motionZ *= 0.5D;
-			}
-		}
-
-		double d18 = pos.getX() + 0.5D + aint[0][0] * 0.5D;
-		double d19 = pos.getZ() + 0.5D + aint[0][2] * 0.5D;
-		double d20 = pos.getX() + 0.5D + aint[1][0] * 0.5D;
-		double d21 = pos.getZ() + 0.5D + aint[1][2] * 0.5D;
-		d1 = d20 - d18;
-		d2 = d21 - d19;
-		double d10;
-
-		if (d1 == 0.0D) {
-			this.posX = pos.getX() + 0.5D;
-			d10 = this.posZ - pos.getZ();
-		} else if (d2 == 0.0D) {
-			this.posZ = pos.getZ() + 0.5D;
-			d10 = this.posX - pos.getX();
 		} else {
-			double d11 = this.posX - d18;
-			double d12 = this.posZ - d19;
-			d10 = (d11 * d1 + d12 * d2) * 2.0D;
+			this.fuel = false;
 		}
 
-		this.posX = d18 + d1 * d10;
-		this.posZ = d19 + d2 * d10;
-		this.setPosition(this.posX, this.posY, this.posZ);
-		this.moveMinecartOnRail(pos);
-
-		if (aint[0][1] != 0 && MathHelper.floor(this.posX) - pos.getX() == aint[0][0] && MathHelper.floor(this.posZ) -
-				pos.getZ() == aint[0][2]) {
-			this.setPosition(this.posX, this.posY + aint[0][1], this.posZ);
-		} else if (aint[1][1] != 0 && MathHelper.floor(this.posX) - pos.getX() == aint[1][0] && MathHelper.floor(
-				this.posZ) - pos.getZ() == aint[1][2]) {
-			this.setPosition(this.posX, this.posY + aint[1][1], this.posZ);
+		if (!this.fuel) {
+			this.pushX = 0.0D;
+			this.pushZ = 0.0D;
 		}
 
-		this.applyDrag();
-		Vec3d vec3d1 = this.getPos(this.posX, this.posY, this.posZ);
+		this.dataManager.set(POWERED, Boolean.valueOf(fuel));
 
-		if (vec3d1 != null && vec3d != null) {
-			double d14 = (vec3d.y - vec3d1.y) * 0.05D;
-			d5 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-
-			if (d5 > 0.0D) {
-				this.motionX = this.motionX / d5 * (d5 + d14);
-				this.motionZ = this.motionZ / d5 * (d5 + d14);
-			}
-
-			this.setPosition(this.posX, vec3d1.y, this.posZ);
+		int c = ClimateMain.proxy.getParticleCount();
+		if (ClimateMain.proxy.getParticleCount() > 0 && rand.nextInt(c) == 0) {
+			this.world
+					.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY + 0.8D, this.posZ, 0.0D, 0.0D, 0.0D);
 		}
+	}
 
-		int j = MathHelper.floor(this.posX);
-		int i = MathHelper.floor(this.posZ);
+	@Override
+	protected void moveAlongTrack(BlockPos pos, IBlockState state) {
+		super.moveAlongTrack(pos, state);
+		double d0 = this.pushX * this.pushX + this.pushZ * this.pushZ;
 
-		if (j != pos.getX() || i != pos.getZ()) {
-			d5 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-			this.motionX = d5 * (j - pos.getX());
-			this.motionZ = d5 * (i - pos.getZ());
-		}
+		if (d0 > 1.0E-4D && this.motionX * this.motionX + this.motionZ * this.motionZ > 0.001D) {
+			d0 = MathHelper.sqrt(d0);
+			this.pushX /= d0;
+			this.pushZ /= d0;
 
-		if (shouldDoRailFunctions()) {
-			((BlockRailBase) state.getBlock()).onMinecartPass(world, this, pos);
-		}
-
-		if (flag && shouldDoRailFunctions()) {
-			double d15 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-
-			if (d15 > 0.01D) {
-				double d16 = 0.06D;
-				this.motionX += this.motionX / d15 * 0.06D;
-				this.motionZ += this.motionZ / d15 * 0.06D;
-			} else if (blockrailbase$enumraildirection == BlockRailBase.EnumRailDirection.EAST_WEST) {
-				if (this.world.getBlockState(pos.west()).isNormalCube()) {
-					this.motionX = 0.02D;
-				} else if (this.world.getBlockState(pos.east()).isNormalCube()) {
-					this.motionX = -0.02D;
-				}
-			} else if (blockrailbase$enumraildirection == BlockRailBase.EnumRailDirection.NORTH_SOUTH) {
-				if (this.world.getBlockState(pos.north()).isNormalCube()) {
-					this.motionZ = 0.02D;
-				} else if (this.world.getBlockState(pos.south()).isNormalCube()) {
-					this.motionZ = -0.02D;
-				}
+			if (this.pushX * this.motionX + this.pushZ * this.motionZ < 0.0D) {
+				this.pushX = 0.0D;
+				this.pushZ = 0.0D;
+			} else {
+				double d1 = d0 / this.getMaximumSpeed();
+				this.pushX *= d1;
+				this.pushZ *= d1;
 			}
 		}
+	}
+
+	@Override
+	protected void applyDrag() {
+		double d0 = this.pushX * this.pushX + this.pushZ * this.pushZ;
+
+		if (d0 > 1.0E-4D) {
+			d0 = MathHelper.sqrt(d0);
+			this.pushX /= d0;
+			this.pushZ /= d0;
+			double d1 = 1.0D;
+			this.motionX *= 0.8D;
+			this.motionY *= 0.0D;
+			this.motionZ *= 0.8D;
+			this.motionX += this.pushX * 1.0D;
+			this.motionZ += this.pushZ * 1.0D;
+		} else {
+			this.motionX *= 0.98D;
+			this.motionY *= 0.0D;
+			this.motionZ *= 0.98D;
+		}
+
+		super.applyDrag();
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setDouble("PushX", this.pushX);
+		compound.setDouble("PushZ", this.pushZ);
+		compound.setBoolean("Fuel", fuel);
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		this.pushX = compound.getDouble("PushX");
+		this.pushZ = compound.getDouble("PushZ");
+		this.fuel = compound.getBoolean("Fuel");
+	}
+
+	protected boolean isMinecartPowered() {
+		return this.dataManager.get(POWERED).booleanValue();
+	}
+
+	protected void setMinecartPowered(boolean p_94107_1_) {
+		this.dataManager.set(POWERED, Boolean.valueOf(p_94107_1_));
 	}
 
 }
