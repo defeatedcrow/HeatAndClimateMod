@@ -169,4 +169,9 @@ public class EntityMinecartMotor extends EntityMinecartEmpty {
 		this.dataManager.set(POWERED, Boolean.valueOf(p_94107_1_));
 	}
 
+	@Override
+	public ItemStack getCartItem() {
+		return new ItemStack(MachineInit.motorMinecart);
+	}
+
 }
