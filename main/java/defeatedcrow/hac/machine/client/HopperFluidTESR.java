@@ -75,6 +75,7 @@ public class HopperFluidTESR extends DCLockableTESRBase {
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
 		float f2 = 0.0375F + 0.45F * amount / 5000F;
+		float f3 = 0F;
 		float f = 0.45F;
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder vertexbuffer = tessellator.getBuffer();
@@ -89,30 +90,30 @@ public class HopperFluidTESR extends DCLockableTESRBase {
 		float uMax = textureatlassprite.getMaxU();
 		float vMax = textureatlassprite.getMaxV();
 
-		vertexbuffer.pos(f, f2, -f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(-f, f2, -f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(-f, f2, f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(f, f2, f).tex(uMax, vMin).endVertex();
-
-		vertexbuffer.pos(-f, f2, -f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(-f, 0F, -f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(-f, 0F, f).tex(uMin, vMin).endVertex();
+		vertexbuffer.pos(f, f2, -f).tex(uMin, vMax).endVertex();
+		vertexbuffer.pos(-f, f2, -f).tex(uMin, vMin).endVertex();
 		vertexbuffer.pos(-f, f2, f).tex(uMax, vMin).endVertex();
-
 		vertexbuffer.pos(f, f2, f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(f, 0F, f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(f, 0F, -f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(f, f2, -f).tex(uMax, vMin).endVertex();
 
-		vertexbuffer.pos(-f, f2, f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(-f, 0F, f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(f, 0F, f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(f, f2, f).tex(uMax, vMin).endVertex();
-
-		vertexbuffer.pos(f, f2, -f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(f, 0F, -f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(-f, 0F, -f).tex(uMin, vMin).endVertex();
+		vertexbuffer.pos(-f, f3, f).tex(uMin, vMax).endVertex();
+		vertexbuffer.pos(-f, f2, f).tex(uMin, vMin).endVertex();
 		vertexbuffer.pos(-f, f2, -f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(-f, f3, -f).tex(uMax, vMax).endVertex();
+
+		vertexbuffer.pos(f, f3, -f).tex(uMin, vMax).endVertex();
+		vertexbuffer.pos(f, f2, -f).tex(uMin, vMin).endVertex();
+		vertexbuffer.pos(f, f2, f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(f, f3, f).tex(uMax, vMax).endVertex();
+
+		vertexbuffer.pos(f, f3, f).tex(uMin, vMax).endVertex();
+		vertexbuffer.pos(f, f2, f).tex(uMin, vMin).endVertex();
+		vertexbuffer.pos(-f, f2, f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(-f, f3, f).tex(uMax, vMax).endVertex();
+
+		vertexbuffer.pos(-f, f3, -f).tex(uMin, vMax).endVertex();
+		vertexbuffer.pos(-f, f2, -f).tex(uMin, vMin).endVertex();
+		vertexbuffer.pos(f, f2, -f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(f, f3, -f).tex(uMax, vMax).endVertex();
 
 		tessellator.draw();
 		GL11.glDisable(GL11.GL_BLEND);

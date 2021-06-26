@@ -244,6 +244,9 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(PastaBeefEntity.class, "food", "pasta_beef");
 		DCRegistryUtil.addEntity(PastaRoeEntity.class, "food", "pasta_roe");
 
+		DCRegistryUtil.addEntity(LiquorBottleEntity.class, "food", "liquor_bottle");
+		DCRegistryUtil.addEntity(WaterBottleEntity.class, "food", "water_bottle");
+
 	}
 
 }

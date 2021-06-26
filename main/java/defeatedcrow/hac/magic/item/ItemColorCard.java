@@ -20,6 +20,7 @@ import defeatedcrow.hac.magic.proj.EntityProjBarrier;
 import defeatedcrow.hac.magic.proj.EntityProjBlackSpit;
 import defeatedcrow.hac.magic.proj.EntityProjRedSpit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
 import defeatedcrow.hac.main.util.EntitySelectorsDC;
@@ -97,6 +98,19 @@ public class ItemColorCard extends DCItem {
 	@Override
 	public String[] getNameSuffix() {
 		return names;
+	}
+
+	@Override
+	public List<ItemStack> getSubItemList() {
+		List<ItemStack> list = Lists.newArrayList();
+		int j = 10;
+		if (ModuleConfig.magic_advanced) {
+			j = getMaxMeta() + 1;
+		}
+		for (int i = 0; i < j; i++) {
+			list.add(new ItemStack(this, 1, i));
+		}
+		return list;
 	}
 
 	@Override

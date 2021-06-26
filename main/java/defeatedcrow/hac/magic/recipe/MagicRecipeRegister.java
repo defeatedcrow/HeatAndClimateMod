@@ -982,12 +982,15 @@ public class MagicRecipeRegister {
 		OreDictionary.registerOre("extractRed", new ItemStack(MagicInit.colorDrop, 1, 7));
 		OreDictionary.registerOre("extractBlack", new ItemStack(MagicInit.colorDrop, 1, 8));
 		OreDictionary.registerOre("extractWhite", new ItemStack(MagicInit.colorDrop, 1, 9));
-		OreDictionary.registerOre("cubeBlue", new ItemStack(MagicInit.colorCube, 1, 5));
-		OreDictionary.registerOre("cubeGreen", new ItemStack(MagicInit.colorCube, 1, 6));
-		OreDictionary.registerOre("cubeRed", new ItemStack(MagicInit.colorCube, 1, 7));
-		OreDictionary.registerOre("cubeBlack", new ItemStack(MagicInit.colorCube, 1, 8));
-		OreDictionary.registerOre("cubeWhite", new ItemStack(MagicInit.colorCube, 1, 9));
-		OreDictionary.registerOre("blockElestial", new ItemStack(MagicInit.elestial, 1, 0));
+
+		if (ModuleConfig.magic_advanced) {
+			OreDictionary.registerOre("cubeBlue", new ItemStack(MagicInit.colorCube, 1, 5));
+			OreDictionary.registerOre("cubeGreen", new ItemStack(MagicInit.colorCube, 1, 6));
+			OreDictionary.registerOre("cubeRed", new ItemStack(MagicInit.colorCube, 1, 7));
+			OreDictionary.registerOre("cubeBlack", new ItemStack(MagicInit.colorCube, 1, 8));
+			OreDictionary.registerOre("cubeWhite", new ItemStack(MagicInit.colorCube, 1, 9));
+			OreDictionary.registerOre("blockElestial", new ItemStack(MagicInit.elestial, 1, 0));
+		}
 	}
 
 	static void loadOldrecipe() {}

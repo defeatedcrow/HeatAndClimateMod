@@ -140,7 +140,7 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dcs_climate:dcs_rose_water_bottle",
+                        "item": "dcs_climate:dcs_water_bottle",
                         "data": 0
                     }
                 ]

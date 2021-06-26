@@ -148,48 +148,56 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 
 	public static ItemStack getItemFromFluid(Fluid fluid) {
 		if (fluid == FoodInit.roseWater) {
-			ItemStack ret = new ItemStack(FoodInit.roseWaterBottle);
-			return ret;
+			return new ItemStack(FoodInit.roseWaterBottle, 1, 0);
+		}
+		if (fluid == FoodInit.tonic) {
+			return new ItemStack(FoodInit.roseWaterBottle, 1, 1);
+		}
+		if (fluid == FoodInit.lemon_squash) {
+			return new ItemStack(FoodInit.roseWaterBottle, 1, 2);
+		}
+		if (fluid == FoodInit.cola) {
+			return new ItemStack(FoodInit.roseWaterBottle, 1, 3);
+		}
+
+		int meta = -1;
+		if (fluid == FoodInit.beer) {
+			meta = 1;
+		} else if (fluid == FoodInit.wine) {
+			meta = 2;
+		} else if (fluid == FoodInit.sake) {
+			meta = 3;
+		} else if (fluid == FoodInit.dateWine) {
+			meta = 4;
+		} else if (fluid == FoodInit.whisky) {
+			meta = 5;
+		} else if (fluid == FoodInit.brandy) {
+			meta = 6;
+		} else if (fluid == FoodInit.pomaceBrandy) {
+			meta = 7;
+		} else if (fluid == FoodInit.shotyu) {
+			meta = 8;
+		} else if (fluid == FoodInit.araq) {
+			meta = 9;
+		} else if (fluid == FoodInit.whiteRum) {
+			meta = 10;
+		} else if (fluid == FoodInit.darkRum) {
+			meta = 11;
+		} else if (fluid == FoodInit.akvavit) {
+			meta = 12;
+		} else if (fluid == FoodInit.vodka) {
+			meta = 13;
+		} else if (fluid == FoodInit.netherWine) {
+			meta = 14;
+		} else if (fluid == FoodInit.chorusLiquor) {
+			meta = 15;
+		} else if (fluid == FoodInit.awamori) {
+			meta = 16;
+		}
+		if (meta > 0) {
+			return new ItemStack(FoodInit.liquorBottle, 1, meta);
 		} else {
-			int meta = -1;
-			if (fluid == FoodInit.beer) {
-				meta = 1;
-			} else if (fluid == FoodInit.wine) {
-				meta = 2;
-			} else if (fluid == FoodInit.sake) {
-				meta = 3;
-			} else if (fluid == FoodInit.dateWine) {
-				meta = 4;
-			} else if (fluid == FoodInit.whisky) {
-				meta = 5;
-			} else if (fluid == FoodInit.brandy) {
-				meta = 6;
-			} else if (fluid == FoodInit.pomaceBrandy) {
-				meta = 7;
-			} else if (fluid == FoodInit.shotyu) {
-				meta = 8;
-			} else if (fluid == FoodInit.araq) {
-				meta = 9;
-			} else if (fluid == FoodInit.whiteRum) {
-				meta = 10;
-			} else if (fluid == FoodInit.darkRum) {
-				meta = 11;
-			} else if (fluid == FoodInit.akvavit) {
-				meta = 12;
-			} else if (fluid == FoodInit.vodka) {
-				meta = 13;
-			} else if (fluid == FoodInit.netherWine) {
-				meta = 14;
-			} else if (fluid == FoodInit.chorusLiquor) {
-				meta = 15;
-			} else if (fluid == FoodInit.awamori) {
-				meta = 16;
-			}
-			if (meta > 0) {
-				return new ItemStack(FoodInit.liquorBottle, 1, meta);
-			} else {
-				return ItemStack.EMPTY;
-			}
+			return ItemStack.EMPTY;
 		}
 	}
 

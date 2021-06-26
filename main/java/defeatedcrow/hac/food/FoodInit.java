@@ -150,6 +150,9 @@ public class FoodInit {
 	public static Fluid roseWater;
 	public static Fluid moromiBlack;
 	public static Fluid awamori;
+	public static Fluid lemon_squash;
+	public static Fluid cola;
+	public static Fluid tonic;
 
 	public static Block netherWineBlock;
 

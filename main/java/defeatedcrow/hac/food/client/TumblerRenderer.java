@@ -81,40 +81,40 @@ public class TumblerRenderer extends DCEntityRenderBase<EntityTeaCupSilver> {
 		vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
 
 		this.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		float uMin = textureatlassprite.getMinU();
-		float vMin = textureatlassprite.getMinV();
-		float uMax = textureatlassprite.getMaxU();
-		float vMax = textureatlassprite.getMaxV();
+		float uM = textureatlassprite.getMinU();
+		float vM = textureatlassprite.getMinV();
+		float uX = textureatlassprite.getMaxU();
+		float vX = textureatlassprite.getMaxV();
 
-		vertexbuffer.pos(f, f2, -f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(-f, f2, -f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(-f, f2, f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(f, f2, f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(f, f2, -f).tex(uX, vM).endVertex();
+		vertexbuffer.pos(-f, f2, -f).tex(uM, vM).endVertex();
+		vertexbuffer.pos(-f, f2, f).tex(uM, vX).endVertex();
+		vertexbuffer.pos(f, f2, f).tex(uX, vX).endVertex();
 
-		vertexbuffer.pos(f, f3, -f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(f, f2, -f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(f, f2, f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(f, f3, f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(f, f3, -f).tex(uM, vX).endVertex();
+		vertexbuffer.pos(f, f2, -f).tex(uM, vM).endVertex();
+		vertexbuffer.pos(f, f2, f).tex(uX, vM).endVertex();
+		vertexbuffer.pos(f, f3, f).tex(uX, vX).endVertex();
 
-		vertexbuffer.pos(-f, f3, f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(-f, f2, f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(-f, f2, -f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(-f, f3, -f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(-f, f3, f).tex(uM, vX).endVertex();
+		vertexbuffer.pos(-f, f2, f).tex(uM, vM).endVertex();
+		vertexbuffer.pos(-f, f2, -f).tex(uX, vM).endVertex();
+		vertexbuffer.pos(-f, f3, -f).tex(uX, vX).endVertex();
 
-		vertexbuffer.pos(f, f3, f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(f, f2, f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(-f, f2, f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(-f, f3, f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(f, f3, f).tex(uM, vX).endVertex();
+		vertexbuffer.pos(f, f2, f).tex(uM, vM).endVertex();
+		vertexbuffer.pos(-f, f2, f).tex(uX, vM).endVertex();
+		vertexbuffer.pos(-f, f3, f).tex(uX, vX).endVertex();
 
-		vertexbuffer.pos(-f, f3, -f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(-f, f2, -f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(f, f2, -f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(f, f3, -f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(-f, f3, -f).tex(uM, vX).endVertex();
+		vertexbuffer.pos(-f, f2, -f).tex(uM, vM).endVertex();
+		vertexbuffer.pos(f, f2, -f).tex(uX, vM).endVertex();
+		vertexbuffer.pos(f, f3, -f).tex(uX, vX).endVertex();
 
-		vertexbuffer.pos(-f, f3, -f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(f, f3, -f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(f, f3, f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(-f, f3, f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(-f, f3, -f).tex(uX, vM).endVertex();
+		vertexbuffer.pos(f, f3, -f).tex(uM, vM).endVertex();
+		vertexbuffer.pos(f, f3, f).tex(uM, vX).endVertex();
+		vertexbuffer.pos(-f, f3, f).tex(uX, vX).endVertex();
 
 		GlStateManager.rotate(0.0F, 0.0F, 0.0F, 0.0F);
 		tessellator.draw();

@@ -257,6 +257,9 @@ public class FoodClientProxy {
 
 		ClientMainProxy.registRender(YogurtPlainEntity.class, YogurtPlainRenderer.class);
 		ClientMainProxy.registRender(YogurtSPEntity.class, YogurtSPRenderer.class);
+
+		ClientMainProxy.registRender(LiquorBottleEntity.class, BottleLiquorRenderer.class);
+		ClientMainProxy.registRender(WaterBottleEntity.class, BottleWaterRenderer.class);
 	}
 
 	public static void loadTE() {
@@ -338,7 +341,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.mushroom, ClimateCore.PACKAGE_ID, "dcs_food_microbe_musuroom", "food", 2);
 		instance.regSimpleItem(FoodInit.chickInEgg, ClimateCore.PACKAGE_ID, "dcs_food_chick", "food", 0);
 		instance.regSimpleItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_ID, "dcs_liquor_bottle", "food", 16);
-		instance.regSimpleItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_ID, "dcs_rose_water_bottle", "food", 0);
+		instance.regSimpleItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_ID, "dcs_water_bottle", "food", 3);
 		instance.regSimpleItem(FoodInit.essentialOil, ClimateCore.PACKAGE_ID, "dcs_food_essential_oil", "food", 5);
 		instance.regSimpleItem(FoodInit.inoculum, ClimateCore.PACKAGE_ID, "dcs_food_inoculum", "food", 1);
 
@@ -451,6 +454,9 @@ public class FoodClientProxy {
 		list.add(b + "whisky_still");
 		list.add(b + "wine_still");
 		list.add(b + "moromi_black_still");
+		list.add(b + "cola_still");
+		list.add(b + "tonic_water_still");
+		list.add(b + "lemon_squash_still");
 
 		return list;
 	}

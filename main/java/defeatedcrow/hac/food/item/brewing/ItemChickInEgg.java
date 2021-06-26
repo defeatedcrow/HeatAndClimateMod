@@ -1,8 +1,13 @@
 package defeatedcrow.hac.food.item.brewing;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -10,7 +15,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemChickInEgg extends DCItem {
 
@@ -57,6 +65,15 @@ public class ItemChickInEgg extends DCItem {
 			return new ActionResult<ItemStack>(EnumActionResult.PASS, item);
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, ItemStack.EMPTY);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
+		if (!DCUtil.isEmpty(stack)) {
+			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add(I18n.format("dcs.tip.chick_in_egg"));
+		}
 	}
 
 }

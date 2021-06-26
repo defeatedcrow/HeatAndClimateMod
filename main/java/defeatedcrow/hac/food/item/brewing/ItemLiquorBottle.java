@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
@@ -13,15 +13,16 @@ import defeatedcrow.hac.food.capability.DrinkItemCustomizer;
 import defeatedcrow.hac.food.capability.DrinkMilk;
 import defeatedcrow.hac.food.capability.DrinkSugar;
 import defeatedcrow.hac.food.capability.IDrinkCustomize;
+import defeatedcrow.hac.food.entity.LiquorBottleEntity;
 import defeatedcrow.hac.food.item.ItemSilverCup;
 import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import defeatedcrow.hac.plugin.sd.DCThirstHelperSD;
 import defeatedcrow.hac.plugin.tan.DCThirstHelper;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
@@ -46,9 +47,9 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemLiquorBottle extends DCItem {
+public class ItemLiquorBottle extends FoodItemBase {
 
-	private static String[] names = {
+	public static String[] names = {
 		"empty",
 		"beer",
 		"wine",
@@ -87,7 +88,8 @@ public class ItemLiquorBottle extends DCItem {
 		"dcs.awamori" };
 
 	public ItemLiquorBottle() {
-		super();
+		super(false);
+		this.setAlwaysEdible();
 	}
 
 	@Override
@@ -118,11 +120,38 @@ public class ItemLiquorBottle extends DCItem {
 		if (i > getMaxMeta()) {
 			i = getMaxMeta();
 		}
-		String s = "items/food/brewing/bottle_" + names[i];
+		String s = "items/food/brewing/bottle_" + getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
+		int i = item.getMetadata();
+		DrinkMilk milk = DrinkMilk.NONE;
+		DrinkSugar sugar = DrinkSugar.NONE;
+		int aging = 0;
+		IDrinkCustomize drink = item.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
+		if (drink != null) {
+			milk = drink.getMilk();
+			sugar = drink.getSugar();
+			aging = drink.getAgingLevel();
+		}
+		LiquorBottleEntity ret = new LiquorBottleEntity(world, x, y, z, player).setCustom(milk, sugar, aging)
+				.setMetadata(i);
+		return ret;
+	}
+
+	@Override
+	public int getFoodAmo(int meta) {
+		return 0;
+	}
+
+	@Override
+	public float getSaturation(int meta) {
+		return 0F;
 	}
 
 	@Override
@@ -147,7 +176,7 @@ public class ItemLiquorBottle extends DCItem {
 			i = getMaxMeta();
 		}
 
-		Fluid f = FluidRegistry.getFluid(FLUIDS[i]);
+		Fluid f = getFluidLocal(i);
 		if (f != null) {
 			tooltip.add(TextFormatting.BOLD.toString() + DCName.DRINK_CUSTOMIZE.getLocalizedName());
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
@@ -196,8 +225,13 @@ public class ItemLiquorBottle extends DCItem {
 				}
 			}
 		} else {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid is empty: " + FLUIDS[i]);
+			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid is empty");
 		}
+	}
+
+	protected Fluid getFluidLocal(int meta) {
+		String name = getFluidName(meta);
+		return FluidRegistry.getFluid(name);
 	}
 
 	public static String getFluidName(int meta) {
@@ -205,6 +239,13 @@ public class ItemLiquorBottle extends DCItem {
 			meta = 16;
 		}
 		return FLUIDS[meta];
+	}
+
+	public static String getTypeName(int meta) {
+		if (meta > 16) {
+			meta = 16;
+		}
+		return names[meta];
 	}
 
 	public static Fluid getFluid(int meta) {
@@ -255,22 +296,12 @@ public class ItemLiquorBottle extends DCItem {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target,
 			EnumHand hand) {
-		if (!DCUtil.isEmpty(stack) && stack.getMetadata() == 0) {
-			if (target instanceof EntityCow) {
-				if (!player.world.isRemote) {
-					EntityItem drop = new EntityItem(player.world, player.posX, player.posY + 0.5D, player.posZ,
-							new ItemStack(this, 1, 0));
-					player.world.spawnEntity(drop);
-				}
-				if (!player.capabilities.isCreativeMode) {
-					DCUtil.reduceStackSize(stack, 1);
-				}
+		if (!DCUtil.isEmpty(stack) && stack.getItemDamage() != 0) {
+			if (this.addEffects(stack, player.world, target)) {
+				this.dropContainerItem(player.world, stack, player);
+				DCUtil.reduceStackSize(stack, 1);
 				return true;
 			}
-		} else if (this.addEffects(stack, player.world, target)) {
-			this.dropContainerItem(player.world, stack, player);
-			DCUtil.reduceStackSize(stack, 1);
-			return true;
 		}
 		return super.itemInteractionForEntity(stack, player, target, hand);
 	}
@@ -280,7 +311,6 @@ public class ItemLiquorBottle extends DCItem {
 	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		if (player != null) {
 			ItemStack item = player.getHeldItem(hand);
-			/* 水のみ直接汲むことができる */
 			if (!DCUtil.isEmpty(item) && item.getItemDamage() != 0) {
 				ActionResult<ItemStack> ret = super.onItemRightClick2(world, player, hand);
 				if (ret.getType() == EnumActionResult.PASS) {
@@ -309,11 +339,10 @@ public class ItemLiquorBottle extends DCItem {
 		return stack;
 	}
 
+	@Override
 	public boolean addEffects(ItemStack stack, World world, EntityLivingBase living) {
 		if (!world.isRemote && !DCUtil.isEmpty(stack) && living != null) {
 			int meta = stack.getMetadata();
-			if (meta == 0)
-				return false;
 			Fluid fluid = getFluid(meta);
 			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 3F, 1);
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
@@ -369,6 +398,7 @@ public class ItemLiquorBottle extends DCItem {
 		return EnumAction.DRINK;
 	}
 
+	@Override
 	public void dropContainerItem(World world, ItemStack food, EntityLivingBase living) {
 		if (!world.isRemote && living != null) {
 			ItemStack stack = this.getContainerItem(food);

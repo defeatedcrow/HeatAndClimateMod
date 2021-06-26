@@ -45,6 +45,7 @@ public class ModuleConfig {
 	public static boolean ani = true;
 	public static boolean sd = true;
 
+	public static boolean r_climate = true;
 	public static boolean r_mill = true;
 	public static boolean r_spinning = true;
 	public static boolean r_fluid = true;
@@ -98,6 +99,7 @@ public class ModuleConfig {
 			Property ani_b = cfg.get("plugin setting", "Animania", ani);
 			Property sd_b = cfg.get("plugin setting", "SimpleDifficulty", sd);
 
+			Property climate = cfg.get("recipe setting", "EnableClimateSmeltingRecipe", r_climate);
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
 			Property spinning = cfg.get("recipe setting", "EnableSpinningRecipe", r_spinning);
 			Property fluid = cfg.get("recipe setting", "EnableCookingPanRecipe", r_fluid);
@@ -139,6 +141,7 @@ public class ModuleConfig {
 			ani = ani_b.getBoolean();
 			sd = sd_b.getBoolean();
 
+			r_climate = climate.getBoolean();
 			r_mill = mill.getBoolean();
 			r_spinning = spinning.getBoolean();
 			r_fluid = fluid.getBoolean();

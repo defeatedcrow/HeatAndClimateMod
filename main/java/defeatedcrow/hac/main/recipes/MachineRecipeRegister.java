@@ -32,10 +32,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class MachineRecipeRegister {
 
 	public static void load() {
-		loadOreRecipes();
-		loadContRecipes();
-		loadBuildRecipes();
-		loadVanillaRecipes();
+
+		if (ModuleConfig.r_climate) {
+			loadOreRecipes();
+			loadContRecipes();
+			loadBuildRecipes();
+			loadVanillaRecipes();
+		}
+
 		loadSmelting();
 		registerClimate();
 

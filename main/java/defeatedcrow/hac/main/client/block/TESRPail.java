@@ -70,30 +70,30 @@ public class TESRPail extends DCTESRBase {
 		vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
 
 		this.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		float uMin = textureatlassprite.getMinU();
-		float vMin = textureatlassprite.getMinV();
-		float uMax = textureatlassprite.getMaxU();
-		float vMax = textureatlassprite.getMaxV();
+		float uM = textureatlassprite.getMinU();
+		float vM = textureatlassprite.getMinV();
+		float uX = textureatlassprite.getMaxU();
+		float vX = textureatlassprite.getMaxV();
 
-		vertexbuffer.pos(-f, f2, -f4).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(-f, f3, -f4).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(-f, f3, f4).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(-f, f2, f4).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(f, f3, -f4).tex(uM, vX).endVertex();
+		vertexbuffer.pos(f, f2, -f4).tex(uM, vM).endVertex();
+		vertexbuffer.pos(f, f2, f4).tex(uX, vM).endVertex();
+		vertexbuffer.pos(f, f3, f4).tex(uX, vX).endVertex();
 
-		vertexbuffer.pos(f, f2, f4).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(f, f3, f4).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(f, f3, -f4).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(f, f2, -f4).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(-f, f3, f4).tex(uM, vX).endVertex();
+		vertexbuffer.pos(-f, f2, f4).tex(uM, vM).endVertex();
+		vertexbuffer.pos(-f, f2, -f4).tex(uX, vM).endVertex();
+		vertexbuffer.pos(-f, f3, -f4).tex(uX, vX).endVertex();
 
-		vertexbuffer.pos(-f4, f2, f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(-f4, f3, f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(f4, f3, f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(f4, f2, f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(f4, f3, f).tex(uM, vX).endVertex();
+		vertexbuffer.pos(f4, f2, f).tex(uM, vM).endVertex();
+		vertexbuffer.pos(-f4, f2, f).tex(uX, vM).endVertex();
+		vertexbuffer.pos(-f4, f3, f).tex(uX, vX).endVertex();
 
-		vertexbuffer.pos(f4, f2, -f).tex(uMax, vMax).endVertex();
-		vertexbuffer.pos(f4, f3, -f).tex(uMin, vMax).endVertex();
-		vertexbuffer.pos(-f4, f3, -f).tex(uMin, vMin).endVertex();
-		vertexbuffer.pos(-f4, f2, -f).tex(uMax, vMin).endVertex();
+		vertexbuffer.pos(-f4, f3, -f).tex(uM, vX).endVertex();
+		vertexbuffer.pos(-f4, f2, -f).tex(uM, vM).endVertex();
+		vertexbuffer.pos(f4, f2, -f).tex(uX, vM).endVertex();
+		vertexbuffer.pos(f4, f3, -f).tex(uX, vX).endVertex();
 
 		tessellator.draw();
 		GL11.glDisable(GL11.GL_BLEND);

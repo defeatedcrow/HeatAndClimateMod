@@ -291,7 +291,10 @@ item.dcs_liquor_bottle_vodka.name=Vodka
 item.dcs_liquor_bottle_nether.name=Nether Wine
 item.dcs_liquor_bottle_ender.name=Chorus Liquor
 item.dcs_liquor_bottle_awamori.name=Awamori
-item.dcs_rose_water_bottle.name=Rose Water
+item.dcs_water_bottle_rose_water.name=Rose Water
+item.dcs_water_bottle_tonic_water.name=Tonic Water
+item.dcs_water_bottle_lemon_squash.name=Lemon Squash
+item.dcs_water_bottle_cola.name=Cola
 item.dcs_food_essential_oil_rose.name=Rose Oil
 item.dcs_food_essential_oil_citrus.name=Citrus Oil
 item.dcs_food_essential_oil_mint.name=Mint Oil
@@ -1713,6 +1716,11 @@ fluid.dcs.nether=nether Wine
 tile.dcs_fluidblock_nether_0.name=Nether Wine
 fluid.dcs.chorus_liquor=Chorus Liquor
 fluid.dcs.rose_water=Rose Water
+fluid.dcs.moromi_black=Young Awamori
+fluid.dcs.awamori=Awamori
+fluid.dcs.tonic_water=Tonic Water
+fluid.dcs.lemon_squash=Lemon Squash
+fluid.dcs.cola=Cola
 
 ## tip
 dcs.tip.heat=HeatTier
@@ -2502,6 +2510,28 @@ entity.dcs.food.sauce_salsa.name=Red Salsa
 
 entity.dcs.food.yogurt_plain.name=Plain Yogurt
 entity.dcs.food.yogurt_special.name=Special Yogurt
+
+entity.dcs.food.liquor_bottle_empty.name=Empty Liquor Bottle
+entity.dcs.food.liquor_bottle_beer.name=Beer
+entity.dcs.food.liquor_bottle_wine.name=Wine
+entity.dcs.food.liquor_bottle_sake.name=Sake
+entity.dcs.food.liquor_bottle_date_wine.name=Date Wine
+entity.dcs.food.liquor_bottle_whisky.name=Whisky
+entity.dcs.food.liquor_bottle_brandy.name=Brandy
+entity.dcs.food.liquor_bottle_pomace_brandy.name=Pomace Brandy
+entity.dcs.food.liquor_bottle_shotyu.name=Shotyu
+entity.dcs.food.liquor_bottle_araq.name=Araq
+entity.dcs.food.liquor_bottle_rum_white.name=White Rum
+entity.dcs.food.liquor_bottle_rum.name=Dark Rum
+entity.dcs.food.liquor_bottle_akvavit.name=Akvavit
+entity.dcs.food.liquor_bottle_vodka.name=Vodka
+entity.dcs.food.liquor_bottle_nether.name=Nether Wine
+entity.dcs.food.liquor_bottle_ender.name=Chorus Liquor
+entity.dcs.food.liquor_bottle_awamori.name=Awamori
+entity.dcs.food.water_bottle_rose_water.name=Rose Water
+entity.dcs.food.water_bottle_tonic_water.name=Tonic Water
+entity.dcs.food.water_bottle_lemon_squash.name=Lemon Squash
+entity.dcs.food.water_bottle_cola.name=Cola
 
 entity.dcs.main.flowerpot.name=Flower Pot
 entity.dcs.main.dynamite_red.name=Dynamite

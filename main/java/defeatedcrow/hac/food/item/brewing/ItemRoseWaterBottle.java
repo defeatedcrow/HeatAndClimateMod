@@ -1,46 +1,34 @@
 package defeatedcrow.hac.food.item.brewing;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.food.item.ItemSilverCup;
-import defeatedcrow.hac.main.util.DCName;
-import defeatedcrow.hac.plugin.DCIntegrationCore;
-import defeatedcrow.hac.plugin.tan.DCThirstHelper;
-import net.minecraft.client.resources.I18n;
+import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
+import defeatedcrow.hac.food.capability.DrinkMilk;
+import defeatedcrow.hac.food.capability.DrinkSugar;
+import defeatedcrow.hac.food.capability.IDrinkCustomize;
+import defeatedcrow.hac.food.entity.LiquorBottleEntity;
+import defeatedcrow.hac.food.entity.WaterBottleEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemRoseWaterBottle extends DCItem {
+public class ItemRoseWaterBottle extends ItemLiquorBottle {
+
+	public static String[] names2 = { "rose_water", "tonic_water", "lemon_squash", "cola" };
+
+	public static final String[] FLUIDS2 = { "dcs.rose_water", "dcs.tonic_water", "dcs.lemon_squash", "dcs.cola" };
 
 	public ItemRoseWaterBottle() {
 		super();
@@ -58,83 +46,47 @@ public class ItemRoseWaterBottle extends DCItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 0;
+		return 3;
 	}
 
 	@Override
 	public String[] getNameSuffix() {
-		return null;
+		return names2;
 	}
 
 	@Override
-	public String getTexPath(int meta, boolean f) {
-		int i = meta;
-		if (i > getMaxMeta()) {
-			i = getMaxMeta();
+	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
+		int i = item.getMetadata();
+		DrinkMilk milk = DrinkMilk.NONE;
+		DrinkSugar sugar = DrinkSugar.NONE;
+		int aging = 0;
+		IDrinkCustomize drink = item.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
+		if (drink != null) {
+			milk = drink.getMilk();
+			sugar = drink.getSugar();
+			aging = drink.getAgingLevel();
 		}
-		String s = "items/food/brewing/bottle_rose_water";
-		if (f) {
-			s = "textures/" + s;
-		}
-		return ClimateCore.PACKAGE_ID + ":" + s;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
-		if (stack == null)
-			return;
-
-		String s = "";
-		int i = stack.getItemDamage();
-		if (i > getMaxMeta()) {
-			i = getMaxMeta();
-		}
-
-		Fluid f = FluidRegistry.getFluid("dcs.rose_water");
-		if (f != null) {
-			float durF = 3.0F;
-			int ampF = 0;
-			String mes = "";
-			mes += DCName.FLUID.getLocalizedName() + ": " + f.getLocalizedName(new FluidStack(f, 500));
-			tooltip.add(TextFormatting.YELLOW.toString() + mes);
-			tooltip.add(TextFormatting.YELLOW.toString() + DCName.AMOUNT.getLocalizedName() + ": " + 500);
-			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(f, durF, ampF);
-			if (!effects.isEmpty()) {
-				PotionEffect eff = effects.get(0);
-				if (eff != null && eff.getPotion() != null) {
-					String effName = I18n.format(eff.getEffectName());
-					effName += " " + I18n.format("potion.potency." + eff.getAmplifier()).trim();
-					effName += " (" + Potion.getPotionDurationString(eff, 1.0F) + ")";
-					tooltip.add(TextFormatting.AQUA.toString() + effName);
-				}
-			}
-		} else {
-			tooltip.add(TextFormatting.YELLOW.toString() + "Fluid is empty: dcs.rose_water");
-		}
+		LiquorBottleEntity ret = new WaterBottleEntity(world, x, y, z, player).setCustom(milk, sugar, aging)
+				.setMetadata(i);
+		return ret;
 	}
 
 	/* 飲用効果 */
 
 	@Override
+	public int getItemBurnTime(ItemStack stack) {
+		return 0;
+	}
+
+	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target,
 			EnumHand hand) {
-		if (!DCUtil.isEmpty(stack) && stack.getMetadata() == 0) {
-			if (target instanceof EntityCow) {
-				if (!player.world.isRemote) {
-					EntityItem drop = new EntityItem(player.world, player.posX, player.posY + 0.5D, player.posZ,
-							new ItemStack(FoodInit.liquorBottle, 1, 0));
-					player.world.spawnEntity(drop);
-				}
-				if (!player.capabilities.isCreativeMode) {
-					DCUtil.reduceStackSize(stack, 1);
-				}
+		if (!DCUtil.isEmpty(stack)) {
+			if (this.addEffects(stack, player.world, target)) {
+				this.dropContainerItem(player.world, stack, player);
+				DCUtil.reduceStackSize(stack, 1);
 				return true;
 			}
-		} else if (this.addEffects(stack, player.world, target)) {
-			this.dropContainerItem(player.world, stack, player);
-			DCUtil.reduceStackSize(stack, 1);
-			return true;
 		}
 		return super.itemInteractionForEntity(stack, player, target, hand);
 	}
@@ -144,8 +96,7 @@ public class ItemRoseWaterBottle extends DCItem {
 	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
 		if (player != null) {
 			ItemStack item = player.getHeldItem(hand);
-			/* 水のみ直接汲むことができる */
-			if (!DCUtil.isEmpty(item) && item.getItemDamage() != 0) {
+			if (!DCUtil.isEmpty(item)) {
 				ActionResult<ItemStack> ret = super.onItemRightClick2(world, player, hand);
 				if (ret.getType() == EnumActionResult.PASS) {
 					player.setActiveHand(hand);
@@ -156,88 +107,25 @@ public class ItemRoseWaterBottle extends DCItem {
 		return super.onItemRightClick2(world, player, hand);
 	}
 
-	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase living) {
-		int meta = stack.getMetadata();
-		if (living instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) living;
-			worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand
-					.nextFloat() * 0.1F + 0.9F);
-			this.addEffects(stack, worldIn, living);
-			if (!player.capabilities.isCreativeMode) {
-				this.dropContainerItem(worldIn, stack, living);
-				DCUtil.reduceStackSize(stack, 1);
-			}
-		}
-
-		return stack;
-	}
-
-	public boolean addEffects(ItemStack stack, World world, EntityLivingBase living) {
-		if (!world.isRemote && !DCUtil.isEmpty(stack) && living != null) {
-			int meta = stack.getMetadata();
-			if (meta == 0)
-				return false;
-			Fluid fluid = FluidRegistry.getFluid("dcs.rose_water");
-			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 3F, 1);
-			float durF = 1.0F;
-			int ampF = 0;
-
-			if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
-				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
-			}
-
-			if (!effects.isEmpty()) {
-				for (PotionEffect get : effects) {
-					if (get != null && get.getPotion() != null) {
-						Potion por = get.getPotion();
-						if (por == null)
-							continue;
-						int amp = get.getAmplifier() * ampF;
-						int dur = MathHelper.ceil(get.getDuration() * durF);
-						if (living.isPotionActive(get.getPotion())) {
-							PotionEffect check = living.getActivePotionEffect(por);
-							dur += check.getDuration();
-						}
-						living.addPotionEffect(new PotionEffect(get.getPotion(), dur, amp));
-					}
-				}
-			}
-
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return 32;
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.DRINK;
-	}
-
-	public void dropContainerItem(World world, ItemStack food, EntityLivingBase living) {
-		if (!world.isRemote && living != null) {
-			ItemStack stack = this.getContainerItem(food);
-			if (!DCUtil.isEmpty(stack)) {
-				EntityItem drop = new EntityItem(world, living.posX, living.posY + 0.25D, living.posZ, stack);
-				world.spawnEntity(drop);
-			}
-		}
-	}
-
 	/* fluid */
-
-	public static final String[] FLUIDS = { "dcs.rose_water" };
+	@Override
+	protected Fluid getFluidLocal(int meta) {
+		String name = getFluidName(meta);
+		return FluidRegistry.getFluid(name);
+	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 0) {
-			meta = 0;
+		if (meta > 3) {
+			meta = 3;
 		}
-		return FLUIDS[meta];
+		return FLUIDS2[meta];
+	}
+
+	public static String getTypeName(int meta) {
+		if (meta > 3) {
+			meta = 3;
+		}
+		return names2[meta];
 	}
 
 	public static Fluid getFluid(int meta) {
@@ -246,7 +134,17 @@ public class ItemRoseWaterBottle extends DCItem {
 	}
 
 	public static int getMetaFromFluid(Fluid fluid) {
-		return 0;
+		int meta = 0;
+		if (fluid == FoodInit.roseWater) {
+			meta = 0;
+		} else if (fluid == FoodInit.tonic) {
+			meta = 1;
+		} else if (fluid == FoodInit.lemon_squash) {
+			meta = 2;
+		} else if (fluid == FoodInit.cola) {
+			meta = 3;
+		}
+		return meta;
 	}
 
 	/* fluid */

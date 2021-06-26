@@ -56,15 +56,20 @@ public class MagicInitRegister {
 		MagicInit.colorDrop = new ItemColorDrop().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color");
 		DCMaterialReg.registerItem(MagicInit.colorDrop, ClimateCore.PACKAGE_BASE + "_color", ClimateMain.MOD_ID);
 
+		// tier1
+
 		MagicInit.colorRing = new ItemColorRing().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_ring");
 		DCMaterialReg.registerItem(MagicInit.colorRing, ClimateCore.PACKAGE_BASE + "_color_ring", ClimateMain.MOD_ID);
 
+		MagicInit.colorRing2 = new ItemColorRing2().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_ring2");
+		DCMaterialReg.registerItem(MagicInit.colorRing2, ClimateCore.PACKAGE_BASE + "_color_ring2", ClimateMain.MOD_ID);
+
+		MagicInit.magicCard = new ItemColorCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card");
+		DCMaterialReg.registerItem(MagicInit.magicCard, ClimateCore.PACKAGE_BASE + "_magic_card", ClimateMain.MOD_ID);
+
 		if (ModuleConfig.magic_advanced) {
 
-			MagicInit.colorRing2 = new ItemColorRing2().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_ring2");
-			DCMaterialReg
-					.registerItem(MagicInit.colorRing2, ClimateCore.PACKAGE_BASE + "_color_ring2", ClimateMain.MOD_ID);
-
+			// tier2
 			MagicInit.colorPendant = new ItemColorPendant()
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_pendant");
 			DCMaterialReg
@@ -75,6 +80,8 @@ public class MagicInitRegister {
 			DCMaterialReg
 					.registerItem(MagicInit.colorPendant2, ClimateCore.PACKAGE_BASE + "_color_pendant2", ClimateMain.MOD_ID);
 
+			// tier3
+
 			MagicInit.colorBadge = new ItemColorBadge().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_badge");
 			DCMaterialReg
 					.registerItem(MagicInit.colorBadge, ClimateCore.PACKAGE_BASE + "_color_badge", ClimateMain.MOD_ID);
@@ -83,10 +90,6 @@ public class MagicInitRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_gauntlet");
 			DCMaterialReg
 					.registerItem(MagicInit.colorGauntlet, ClimateCore.PACKAGE_BASE + "_color_gauntlet", ClimateMain.MOD_ID);
-
-			MagicInit.magicCard = new ItemColorCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card");
-			DCMaterialReg
-					.registerItem(MagicInit.magicCard, ClimateCore.PACKAGE_BASE + "_magic_card", ClimateMain.MOD_ID);
 
 			MagicInit.magicCard3 = new ItemColorCard3().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card_m2");
 			DCMaterialReg
@@ -177,7 +180,7 @@ public class MagicInitRegister {
 		MagicInit.colorDrop.setCreativeTab(ClimateMain.magic);
 		MagicInit.colorRing.setCreativeTab(ClimateMain.magic);
 		MagicInit.colorRing2.setCreativeTab(ClimateMain.magic);
-		MagicInit.colorPendant2.setCreativeTab(ClimateMain.magic);
+		MagicInit.magicCard.setCreativeTab(ClimateMain.magic);
 
 		MagicInit.colorCube.setCreativeTab(ClimateMain.magic);
 		MagicInit.expGem.setCreativeTab(ClimateMain.magic);
@@ -190,9 +193,10 @@ public class MagicInitRegister {
 		if (ModuleConfig.magic_advanced) {
 
 			MagicInit.colorPendant.setCreativeTab(ClimateMain.magic);
+			MagicInit.colorPendant2.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorBadge.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorGauntlet.setCreativeTab(ClimateMain.magic);
-			MagicInit.magicCard.setCreativeTab(ClimateMain.magic);
+
 			MagicInit.magicCard3.setCreativeTab(ClimateMain.magic);
 			MagicInit.magicCard2.setCreativeTab(ClimateMain.magic);
 

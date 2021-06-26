@@ -53,7 +53,7 @@ public class ModelTumbler extends DCFoodModelBase {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.45F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.5F);
 		this.bottom.render(scale);
 		this.front.render(scale);
 		this.back.render(scale);

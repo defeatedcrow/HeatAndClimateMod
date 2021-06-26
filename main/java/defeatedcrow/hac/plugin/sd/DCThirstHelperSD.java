@@ -102,6 +102,12 @@ public class DCThirstHelperSD {
 				if (ModuleConfig.food_advanced) {
 					if (f == FoodInit.roseWater)
 						return TEA;
+					if (f == FoodInit.tonic)
+						return TEA;
+					if (f == FoodInit.lemon_squash)
+						return JUICE;
+					if (f == FoodInit.cola)
+						return JUICE;
 					if (f == FoodInit.beer)
 						return JUICE;
 					if (f == FoodInit.wine)

@@ -298,7 +298,10 @@ item.dcs_liquor_bottle_vodka.name=ウォッカ
 item.dcs_liquor_bottle_nether.name=ネザーワイン
 item.dcs_liquor_bottle_ender.name=コーラスリキュール
 item.dcs_liquor_bottle_awamori.name=泡盛
-item.dcs_rose_water_bottle.name=ローズウォーター
+item.dcs_water_bottle_rose_water.name=ローズウォーター
+item.dcs_water_bottle_tonic_water.name=トニックウォーター
+item.dcs_water_bottle_lemon_squash.name=レモンスカッシュ
+item.dcs_water_bottle_cola.name=コーラ
 item.dcs_food_essential_oil_rose.name=バラの精油
 item.dcs_food_essential_oil_citrus.name=シトラスの精油
 item.dcs_food_essential_oil_mint.name=ミントの精油
@@ -1688,6 +1691,9 @@ fluid.dcs.chorus_liquor=コーラスリキュール
 fluid.dcs.rose_water=ローズウォーター
 fluid.dcs.moromi_black=泡盛もろみ
 fluid.dcs.awamori=泡盛
+fluid.dcs.tonic_water=トニックウォーター
+fluid.dcs.lemon_squash=レモンスカッシュ
+fluid.dcs.cola=コーラ
 
 ## tip
 dcs.tip.heat=HeatTier

@@ -527,9 +527,9 @@ public class FoodInitRegister {
 				.registerItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_BASE + "_liquor_bottle", ClimateMain.MOD_ID);
 
 		FoodInit.roseWaterBottle = new ItemRoseWaterBottle()
-				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_rose_water_bottle");
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_water_bottle");
 		DCMaterialReg
-				.registerItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_BASE + "_rose_water_bottle", ClimateMain.MOD_ID);
+				.registerItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_BASE + "_water_bottle", ClimateMain.MOD_ID);
 
 		FoodInit.essentialOil = new ItemEssentialOil()
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_essential_oil");
@@ -661,6 +661,23 @@ public class FoodInitRegister {
 						"blocks/fluid/clear_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".awamori");
 		FluidRegistry.registerFluid(FoodInit.awamori);
 
+		FoodInit.tonic = new Fluid("dcs.tonic_water", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/tonic_water_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/tonic_water_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".tonic_water");
+		FluidRegistry.registerFluid(FoodInit.tonic);
+
+		FoodInit.lemon_squash = new Fluid("dcs.lemon_squash", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/lemon_squash_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
+						"blocks/fluid/lemon_squash_still"))
+								.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".lemon_squash");
+		FluidRegistry.registerFluid(FoodInit.lemon_squash);
+
+		FoodInit.cola = new Fluid("dcs.cola", new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/cola_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/cola_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".cola");
+		FluidRegistry.registerFluid(FoodInit.cola);
+
 		FluidRegistry.addBucketForFluid(FoodInit.beer);
 		FluidRegistry.addBucketForFluid(FoodInit.rawWhisky);
 		FluidRegistry.addBucketForFluid(FoodInit.whisky);
@@ -683,6 +700,9 @@ public class FoodInitRegister {
 		FluidRegistry.addBucketForFluid(FoodInit.roseWater);
 		FluidRegistry.addBucketForFluid(FoodInit.moromiBlack);
 		FluidRegistry.addBucketForFluid(FoodInit.awamori);
+		FluidRegistry.addBucketForFluid(FoodInit.tonic);
+		FluidRegistry.addBucketForFluid(FoodInit.lemon_squash);
+		FluidRegistry.addBucketForFluid(FoodInit.cola);
 
 	}
 

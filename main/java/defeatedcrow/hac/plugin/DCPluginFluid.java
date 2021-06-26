@@ -205,6 +205,9 @@ public class DCPluginFluid {
 				registerPotion("dcs.nether", MobEffects.FIRE_RESISTANCE);
 				registerPotion("dcs.chorus_liquor", MainInit.warp);
 				registerPotion("dcs.awamori", MainInit.reflexion);
+				registerPotion("dcs.tonic", MobEffects.WATER_BREATHING);
+				registerPotion("dcs.lemon_squash", MobEffects.ABSORPTION, 1);
+				registerPotion("dcs.cola", MainInit.absorptionEXP);
 			}
 			registerPotion("dcs.rose_water", MainInit.projectileResistant);
 		}
