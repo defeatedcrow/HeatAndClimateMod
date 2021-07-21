@@ -198,6 +198,8 @@ public class DCIntegrationCore {
 			}
 		}
 
+		DCPluginOres.loadInit();
+
 	}
 
 	public static void loadPost() {
@@ -232,7 +234,6 @@ public class DCIntegrationCore {
 		if (loadedMekanism) {
 			try {
 				DCPluginMekanism.load();
-				;
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: Mekanism");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: Mekanism");

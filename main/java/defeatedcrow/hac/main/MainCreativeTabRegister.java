@@ -62,6 +62,7 @@ public class MainCreativeTabRegister {
 		MainInit.freezepack.setCreativeTab(ClimateMain.build);
 
 		// device
+		MainInit.swedishTorch.setCreativeTab(ClimateMain.machine);
 		MainInit.firestand.setCreativeTab(ClimateMain.machine);
 		MainInit.chamber.setCreativeTab(ClimateMain.machine);
 		MainInit.shitirin.setCreativeTab(ClimateMain.machine);

@@ -59,7 +59,8 @@ public abstract class ItemPlatingBase extends DCItem implements IPlatingTool {
 			if (getEnchantments(meta) != null && getEnchantments(meta).length > 0) {
 				tooltip.add(TextFormatting.BOLD.toString() + "Enchantments: ");
 				for (Enchantment enc : getEnchantments(meta)) {
-					tooltip.add(TextFormatting.AQUA.toString() + enc.getTranslatedName(1));
+					if (enc != null)
+						tooltip.add(TextFormatting.AQUA.toString() + enc.getTranslatedName(1));
 				}
 			}
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
@@ -74,8 +75,8 @@ public abstract class ItemPlatingBase extends DCItem implements IPlatingTool {
 			return i < max;
 		else if (enc.canApply(target))
 			return true;
-		else if (target.getItem().isDamageable() && !(target.getItem() instanceof ItemArmor) &&
-				enc.type == EnumEnchantmentType.DIGGER)
+		else if (target.getItem().isDamageable() && !(target
+				.getItem() instanceof ItemArmor) && enc.type == EnumEnchantmentType.DIGGER)
 			return true;
 		else if (target.getItem().isDamageable() && enc.type == EnumEnchantmentType.BREAKABLE)
 			return true;

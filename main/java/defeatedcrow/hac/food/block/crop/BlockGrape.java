@@ -110,6 +110,7 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 	@Override
 	public List<ItemStack> getSubItemList() {
 		List<ItemStack> list = super.getSubItemList();
+		list.add(new ItemStack(this, 1, 0));
 		list.add(new ItemStack(this, 1, 3));
 		return list;
 	}
@@ -560,7 +561,12 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { GROUND, FACING2, DCState.STAGE4, TOP });
+		return new BlockStateContainer(this, new IProperty[] {
+				GROUND,
+				FACING2,
+				DCState.STAGE4,
+				TOP
+		});
 	}
 
 	/* IGrowable */

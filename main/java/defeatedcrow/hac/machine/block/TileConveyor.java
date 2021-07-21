@@ -55,11 +55,9 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	@Override
 	protected void onServerUpdate() {
 		boolean f = false;
-		ItemStack item = inv.getStackInSlot(0);
 		prevMove = move;
-		disp = item;
 
-		if (DCUtil.isEmpty(item)) {
+		if (DCUtil.isEmpty(inv.getStackInSlot(0))) {
 			move = 0;
 			if (insertItem()) {
 				f = true;
@@ -87,22 +85,22 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 					move = 0;
 				}
 			}
-
-			if (f) {
-				this.markDirty();
-			}
-
-			if (DCUtil.isEmpty(getStackInSlot(0)) && inv.getStackInSlot(0).getCount() < 1) {
-				inv.setInventorySlotContents(0, ItemStack.EMPTY);
-			}
-
-			if (move != prevMove) {
-				DCMainPacket.INSTANCE.sendToAll(new MessageConveyor(pos, move, disp));
-			}
-
-			// DCLogger.infoLog(
-			// "I: " + move + " " + (inv.getStackInSlot(0) == null ? "null" : inv.getStackInSlot(0).toString()));
 		}
+
+		if (DCUtil.isEmpty(getStackInSlot(0)) || inv.getStackInSlot(0).getCount() < 1) {
+			inv.setInventorySlotContents(0, ItemStack.EMPTY);
+		}
+
+		disp = inv.getStackInSlot(0);
+
+		if (f) {
+			this.markDirty();
+		}
+
+		if (move != prevMove) {
+			DCMainPacket.INSTANCE.sendToAll(new MessageConveyor(pos, move, disp));
+		}
+
 	}
 
 	private int stay1 = 0;
@@ -322,15 +320,22 @@ public class TileConveyor extends TileTorqueLockable implements ISidedInventory 
 	/* === inventory === */
 
 	protected int[] slotsTop() {
-		return new int[] { 0 };
+		return new int[] {
+				0
+		};
 	};
 
 	protected int[] slotsBottom() {
-		return new int[] { 0, 1 };
+		return new int[] {
+				0,
+				1
+		};
 	};
 
 	protected int[] slotsSides() {
-		return new int[] { 0 };
+		return new int[] {
+				0
+		};
 	};
 
 	public DCInventory inv = new DCInventory(2);

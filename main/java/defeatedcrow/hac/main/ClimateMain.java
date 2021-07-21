@@ -123,7 +123,7 @@ public class ClimateMain {
 			RecipeJsonMaker.canUse = false;
 			RecipeJsonMaker.canDeprecate = true;
 			RecipeJsonMaker.dir = Paths
-					.get("F:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources\\assets\\dcs_climate\\recipes\\");
+					.get("F:\\modding\\1.12.1\\hac_main\\src\\main\\resources\\assets\\dcs_climate\\recipes\\");
 		}
 	}
 

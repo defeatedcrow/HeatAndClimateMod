@@ -48,6 +48,7 @@ import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
+import defeatedcrow.hac.main.block.device.TileSwedishTorch;
 import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.block.fluid.FluidUtil;
@@ -76,6 +77,7 @@ import defeatedcrow.hac.main.client.block.TESRNormalChamber;
 import defeatedcrow.hac.main.client.block.TESRPail;
 import defeatedcrow.hac.main.client.block.TESRShitirin;
 import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
+import defeatedcrow.hac.main.client.block.TESRSwedishTorch;
 import defeatedcrow.hac.main.client.block.TESRThermometer;
 import defeatedcrow.hac.main.client.block.TESRVillageChest;
 import defeatedcrow.hac.main.client.block.TESRWindVane;
@@ -263,6 +265,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileMFenceGlass.class, "dcs_te_mfence_glass", new TESRMFenceGlass());
 		registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net", new TESRMFenceNet());
 		registerTileEntity(TileDisplayStand.class, "dcs_te_display_stand", new TESRDisplayStand());
+		registerTileEntity(TileSwedishTorch.class, "dcs_te_swedish_torch", new TESRSwedishTorch());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();

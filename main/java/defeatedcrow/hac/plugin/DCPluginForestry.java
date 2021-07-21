@@ -10,6 +10,7 @@ import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.device.RegisterBrewingDC;
 import defeatedcrow.hac.plugin.forestry.DCFarmable;
 import defeatedcrow.hac.plugin.forestry.DCFarmableDouble;
 import forestry.api.core.ForestryAPI;
@@ -174,20 +175,22 @@ public class DCPluginForestry {
 			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyed_slice"));
 			if (slice != null) {
 				DCRecipe.jsonShapedRecipe("plugin", new ItemStack(slice, 4, 0), new Object[] {
-					"XXX",
-					"XYX",
-					"XXX",
-					'Y',
-					"bread",
-					'X',
-					"dropHoney" });
+						"XXX",
+						"XYX",
+						"XXX",
+						'Y',
+						"bread",
+						'X',
+						"dropHoney"
+				});
 			}
 
 			if (fer != null) {
 				DCRecipe.jsonShapelessRecipe("plugin", new ItemStack(fer, 1, 0), new Object[] {
-					"dustPresscake",
-					"dustAsh",
-					new ItemStack(Items.DYE, 1, 15) });
+						"dustPresscake",
+						"dustAsh",
+						new ItemStack(Items.DYE, 1, 15)
+				});
 			}
 
 			ItemStack oilcake = new ItemStack(MainInit.miscDust, 1, 4);
@@ -263,7 +266,7 @@ public class DCPluginForestry {
 			}
 		}
 
-		if (ModuleConfig.r_crusher) {
+		if (ModuleConfig.r_crusher && ModuleConfig.machine) {
 			if (!OreDictionary.getOres("cropChestnut").isEmpty()) {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
 						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropChestnut");
@@ -280,12 +283,23 @@ public class DCPluginForestry {
 			}
 		}
 
-		if (ModuleConfig.r_reactor) {
+		if (ModuleConfig.r_reactor && ModuleConfig.machine) {
 			if (bio != null && eta != null) {
 				// Pt エタノール蒸留
 				RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(eta,
 						30), null, DCHeatTier.HOT, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(bio,
 								100), null, new Object[] {});
+			}
+		}
+
+		if (ModuleConfig.food) {
+			if (ModuleConfig.food_advanced && ModuleConfig.r_brewing) {
+				if (bio != null) {
+					RegisterBrewingDC.brewng(ItemStack.EMPTY, new FluidStack(MainInit.fuelGas, 500), new FluidStack(bio,
+							1000), new Object[] {
+									new ItemStack(FoodInit.methanogen, 1, 0)
+					});
+				}
 			}
 		}
 

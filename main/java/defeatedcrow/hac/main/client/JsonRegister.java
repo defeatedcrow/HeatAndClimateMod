@@ -23,7 +23,7 @@ import net.minecraftforge.client.model.ModelLoader;
 public class JsonRegister {
 
 	protected static final JsonRegisterHelper MAIN_INSTANCE = new JsonRegisterHelper(
-			"F:\\modding\\1.12.1\\hac_main_2\\src\\main\\resources");
+			"F:\\modding\\1.12.1\\hac_main\\src\\main\\resources");
 
 	public static void load() {
 		regItems();
@@ -146,6 +146,8 @@ public class JsonRegister {
 				.regTEBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_ID, "dcs_device_stevenson_screen", "machine", 0, true);
 		MAIN_INSTANCE.regTEBlock(MainInit.pail, ClimateCore.PACKAGE_ID, "dcs_device_pail", "machine", 0, false);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.geyser, ClimateCore.PACKAGE_ID, "dcs_device_geyser_stone", "device", 0);
+		MAIN_INSTANCE
+				.regSimpleBlock(MainInit.swedishTorch, ClimateCore.PACKAGE_ID, "dcs_device_swedish_torch", "device", 15);
 
 		// door
 		if (ModuleConfig.build_advanced) {
@@ -225,16 +227,17 @@ public class JsonRegister {
 
 		if (ModuleConfig.tool) {
 			String[] name = {
-				"brass",
-				"steel",
-				"silver",
-				"nickelsilver",
-				"chalcedony",
-				"sapphire",
-				"titanium",
-				"garnet",
-				"toolsteel",
-				"mangalloy" };
+					"brass",
+					"steel",
+					"silver",
+					"nickelsilver",
+					"chalcedony",
+					"sapphire",
+					"titanium",
+					"garnet",
+					"toolsteel",
+					"mangalloy"
+			};
 			for (int j = 0; j < name.length; j++) {
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.dcAxe[j], ClimateCore.PACKAGE_ID, "dcs_axe_" + name[j], "equip", 0);
@@ -246,7 +249,12 @@ public class JsonRegister {
 					MAIN_INSTANCE
 							.regSimpleItem(MainInit.dcSword[j], ClimateCore.PACKAGE_ID, "dcs_sword_" + name[j], "equip", 0);
 			}
-			String[] type = { "met", "plate", "leggins", "boots" };
+			String[] type = {
+					"met",
+					"plate",
+					"leggins",
+					"boots"
+			};
 			for (int i = 0; i < 4; i++) {
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.brassArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_brass", "equip", 0);
@@ -262,7 +270,14 @@ public class JsonRegister {
 						.regSimpleItem(MainInit.silverArmor[i], ClimateCore.PACKAGE_ID, "dcs_" + type[i] + "_silver", "equip", 0);
 			}
 
-			String[] name2 = { "brass", "steel", "chalcedony", "garnet", "stone", "toolsteel" };
+			String[] name2 = {
+					"brass",
+					"steel",
+					"chalcedony",
+					"garnet",
+					"stone",
+					"toolsteel"
+			};
 			for (int j = 0; j < name2.length; j++) {
 				MAIN_INSTANCE
 						.regSimpleItem(MainInit.dcScythe[j], ClimateCore.PACKAGE_ID, "dcs_scythe_" + name[j], "equip", 0);

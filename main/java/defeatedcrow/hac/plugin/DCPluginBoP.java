@@ -23,6 +23,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -61,6 +62,8 @@ public class DCPluginBoP {
 
 		addOre("vineLeaves", BOPBlocks.ivy, 0);
 		addOre("vineLeaves", BOPBlocks.willow_vine, 0);
+
+		addOre("cropBambooshoot", BOPBlocks.sapling_0, 2);
 
 		addOre("blockTallgrass", BOPBlocks.plant_0, 0);
 		addOre("blockTallgrass", BOPBlocks.plant_0, 1);
@@ -137,21 +140,48 @@ public class DCPluginBoP {
 		if (ModuleConfig.r_fluid) {
 			RegisterFluidRecipe.regNonFoodRecipe(new ItemStack(MainInit.foodDust, 1,
 					3), null, 0F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(
-							FluidRegistry.WATER, 200), new Object[] { "cropBarley" });
+							FluidRegistry.WATER, 200), new Object[] {
+									"cropBarley"
+			});
 
-			if (ModuleConfig.food)
-				RegisterFluidRecipe.regNonFoodRecipe(new ItemStack(FoodInit.crops, 1,
-						18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
-								200), new Object[] { "plantReed", "dustAsh" });
 		}
 
-		if (ModuleConfig.r_fluid) {
-			RegisterBrewingDC.still(new ItemStack(FoodInit.essentialOil, 1, 0), new FluidStack(FoodInit.roseWater,
-					1000), new FluidStack(FluidRegistry.WATER, 5000), new Object[] {
-						new ItemStack(BOPBlocks.flower_1, 8, 5) });
+		if (ModuleConfig.food) {
+			RegisterFluidRecipe.regNonFoodRecipe(new ItemStack(FoodInit.crops, 1,
+					18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
+							200), new Object[] {
+									"plantReed",
+									"dustAsh"
+			});
 
-			RegisterBrewingDC.still(new ItemStack(FoodInit.essentialOil, 1, 5), null, new FluidStack(
-					FluidRegistry.WATER, 5000), new Object[] { new ItemStack(BOPBlocks.flower_1, 8, 0) });
+			if (ModuleConfig.food_advanced && ModuleConfig.r_brewing) {
+				RegisterBrewingDC.still(new ItemStack(FoodInit.essentialOil, 1, 0), new FluidStack(FoodInit.roseWater,
+						1000), new FluidStack(FluidRegistry.WATER, 5000), new Object[] {
+								new ItemStack(BOPBlocks.flower_1, 8, 5)
+				});
+
+				RegisterBrewingDC.still(new ItemStack(FoodInit.essentialOil, 1, 5), null, new FluidStack(
+						FluidRegistry.WATER, 5000), new Object[] {
+								new ItemStack(BOPBlocks.flower_1, 8, 0)
+				});
+
+				Fluid fl1 = FluidRegistry.getFluid("poison");
+				if (fl1 != null) {
+					RegisterBrewingDC.brewng(ItemStack.EMPTY, new FluidStack(MainInit.fuelGas, 500), new FluidStack(fl1,
+							1000), new Object[] {
+									new ItemStack(FoodInit.methanogen, 1, 0)
+					});
+				}
+
+				RegisterBrewingDC.brewng(new ItemStack(Blocks.DIRT), new FluidStack(MainInit.fuelGas,
+						50), new FluidStack(
+								FluidRegistry.WATER,
+								1000), new Object[] {
+										new ItemStack(BOPBlocks.mud),
+										new ItemStack(FoodInit.methanogen, 1, 0)
+				});
+
+			}
 		}
 
 	}

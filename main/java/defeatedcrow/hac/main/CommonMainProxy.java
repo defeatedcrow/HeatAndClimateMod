@@ -98,6 +98,7 @@ import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
+import defeatedcrow.hac.main.block.device.TileSwedishTorch;
 import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayShelf;
@@ -291,103 +292,126 @@ public class CommonMainProxy implements IGuiHandler {
 		VillagerCareer agriList = new VillagerCareer(MainInit.agri, "dcs_agri_researcher");
 
 		agriList.addTrade(1, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3))
+		});
 
 		agriList.addTrade(2, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3))
+		});
 
 		agriList.addTrade(3, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3))
+		});
 
 		agriList.addTrade(4, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3))
+		});
 
 		agriList.addTrade(5, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.AGRI3, new PriceInfo(1, 3))
+		});
 
 		// Gems, Clothes, Furnitures
 		VillagerCareer traderList = new VillagerCareer(MainInit.trader, "dcs_trader");
 
 		traderList.addTrade(1, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3))
+		});
 
 		traderList.addTrade(2, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE1, new PriceInfo(1, 3))
+		});
 
 		traderList.addTrade(3, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3))
+		});
 
 		traderList.addTrade(4, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3))
+		});
 
 		traderList.addTrade(5, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3))
+		});
 
 		traderList.addTrade(6, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TRADE4, new PriceInfo(1, 3))
+		});
 
 		VillagerCareer machineList = new VillagerCareer(MainInit.engineer, "dcs_engineer");
 
 		machineList.addTrade(1, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3))
+		});
 
 		machineList.addTrade(2, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+		});
 
 		machineList.addTrade(3, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+		});
 
 		machineList.addTrade(4, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3))
+		});
 
 		machineList.addTrade(5, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3))
+		});
 
 		machineList.addTrade(6, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.MACHINE3, new PriceInfo(1, 3))
+		});
 
 		VillagerCareer tailorList = new VillagerCareer(MainInit.tailor, "dcs_tailor");
 
 		tailorList.addTrade(1, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(2, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(2, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3))
+		});
 
 		tailorList.addTrade(2, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(2, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(2, 3))
+		});
 
 		tailorList.addTrade(3, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3))
+		});
 
 		tailorList.addTrade(4, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 3))
+		});
 
 		tailorList.addTrade(5, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 2)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR1, new PriceInfo(1, 2))
+		});
 
 		tailorList.addTrade(6, new ITradeList[] {
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 2)),
-			HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3)) });
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR2, new PriceInfo(1, 2)),
+				HaCTrade.INSTANCE.new Get(HaCTradeData.TAILOR3, new PriceInfo(1, 3))
+		});
 
 	}
 
@@ -492,6 +516,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileMFenceGlass.class, "dcs_te_mfence_glass");
 		GameRegistry.registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net");
 		GameRegistry.registerTileEntity(TileDisplayStand.class, "dcs_te_display_stand");
+		GameRegistry.registerTileEntity(TileSwedishTorch.class, "dcs_te_swedish_torch");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();

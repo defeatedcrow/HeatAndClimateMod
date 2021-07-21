@@ -7,6 +7,8 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
@@ -71,8 +73,19 @@ public class ItemChickInEgg extends DCItem {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		if (!DCUtil.isEmpty(stack)) {
-			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(I18n.format("dcs.tip.chick_in_egg"));
+			if (ClimateCore.proxy.isShiftKeyDown()) {
+				tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
+				ItemStack disp = new ItemStack(FoodInit.incubator);
+				tooltip.add("Required Machine : " + disp.getDisplayName());
+				tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.RED.toString() + "WARM");
+				tooltip.add(DCName.HUM.getLocalizedName() + ": " + TextFormatting.GREEN.toString() + "NORMAL");
+				tooltip.add(DCName.AIR.getLocalizedName() + ": " + TextFormatting.GREEN.toString() + "NORMAL+");
+				tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+				tooltip.add(I18n.format("dcs.tip.chick_in_egg"));
+			} else {
+				tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
+			}
+
 		}
 	}
 

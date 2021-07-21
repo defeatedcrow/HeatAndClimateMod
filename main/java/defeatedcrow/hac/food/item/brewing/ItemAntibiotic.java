@@ -41,19 +41,21 @@ public class ItemAntibiotic extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-		"pcn",
-		"cp",
-		"anti_zombie",
-		"poison",
-		"zombie",
-		"pigman",
-		"mushroom",
-		"mana",
-		"anti_heal" };
+			"pcn",
+			"cp",
+			"anti_zombie",
+			"poison",
+			"zombie",
+			"pigman",
+			"mushroom",
+			"mana",
+			"anti_heal",
+			"extremozyme"
+	};
 
 	public ItemAntibiotic() {
 		super();
-		maxMeta = 8;
+		maxMeta = 9;
 	}
 
 	@Override
@@ -230,7 +232,7 @@ public class ItemAntibiotic extends DCItem {
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		if (!DCUtil.isEmpty(stack)) {
 			int m = stack.getItemDamage();
-			if (m != 0 && m != 1 && m != 7) {
+			if (m != 0 && m != 1 && m != 7 && m != 9) {
 				tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 				tooltip.add(I18n.format("dcs.tip.antibiotic_" + m));
 			}

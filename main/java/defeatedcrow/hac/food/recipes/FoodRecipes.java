@@ -76,6 +76,7 @@ public class FoodRecipes {
 		OreDictionary.registerOre("cropOlive", new ItemStack(FoodInit.crops, 1, 7));
 		OreDictionary.registerOre("cropMulberry", new ItemStack(FoodInit.crops, 1, 11));
 		OreDictionary.registerOre("cropGreenSoybeans", new ItemStack(FoodInit.crops, 1, 12));
+		OreDictionary.registerOre("listAllbean", new ItemStack(FoodInit.crops, 1, 12));
 		OreDictionary.registerOre("cropChilipepper", new ItemStack(FoodInit.crops, 1, 13));
 		OreDictionary.registerOre("cropGarlic", new ItemStack(FoodInit.crops, 1, 14));
 		OreDictionary.registerOre("cropLettuce", new ItemStack(FoodInit.crops, 1, 15));
@@ -121,9 +122,11 @@ public class FoodRecipes {
 		OreDictionary.registerOre("cropSeaweed", new ItemStack(FoodInit.seeds, 1, 8));
 		OreDictionary.registerOre("cropSoybean", new ItemStack(FoodInit.seeds, 1, 9));
 		OreDictionary.registerOre("cropSoy", new ItemStack(FoodInit.seeds, 1, 9));
+		OreDictionary.registerOre("listAllbean", new ItemStack(FoodInit.seeds, 1, 9));
 		OreDictionary.registerOre("seedSoybean", new ItemStack(FoodInit.seeds, 1, 9));
 		OreDictionary.registerOre("cropBean", new ItemStack(FoodInit.seeds, 1, 10));
 		OreDictionary.registerOre("seedBean", new ItemStack(FoodInit.seeds, 1, 10));
+		OreDictionary.registerOre("listAllbean", new ItemStack(FoodInit.seeds, 1, 10));
 		OreDictionary.registerOre("seedChilipepper", new ItemStack(FoodInit.seeds, 1, 11));
 		OreDictionary.registerOre("seedGarlic", new ItemStack(FoodInit.seeds, 1, 12));
 		OreDictionary.registerOre("seedLettuce", new ItemStack(FoodInit.seeds, 1, 13));
@@ -201,14 +204,29 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodMisopaste", new ItemStack(FoodInit.meat, 1, 6));
 		OreDictionary.registerOre("foodSoysauce", new ItemStack(FoodInit.meat, 1, 7));
 		OreDictionary.registerOre("foodSiroanko", new ItemStack(FoodInit.meat, 1, 8));
+		OreDictionary.registerOre("foodAnko", new ItemStack(FoodInit.meat, 1, 8));
 		OreDictionary.registerOre("foodShrimp", new ItemStack(FoodInit.meat, 1, 9));
 		OreDictionary.registerOre("foodShrimpraw", new ItemStack(FoodInit.meat, 1, 9));
 		OreDictionary.registerOre("foodRoe", new ItemStack(FoodInit.meat, 1, 10));
+		OreDictionary.registerOre("foodAzukianko", new ItemStack(FoodInit.meat, 1, 11));
+		OreDictionary.registerOre("foodAnko", new ItemStack(FoodInit.meat, 1, 11));
 		OreDictionary.registerOre("foodPastry", new ItemStack(FoodInit.pastry, 1, 0));
 		OreDictionary.registerOre("foodNoodles", new ItemStack(FoodInit.pastry, 1, 1));
+		OreDictionary.registerOre("cropCinnamon", new ItemStack(FoodInit.spices, 1, 0));
+		OreDictionary.registerOre("listAllspice", new ItemStack(FoodInit.spices, 1, 0));
+		OreDictionary.registerOre("cropAzuki", new ItemStack(FoodInit.spices, 1, 1));
+		OreDictionary.registerOre("cropRedbean", new ItemStack(FoodInit.spices, 1, 1));
+		OreDictionary.registerOre("foodGarammasala", new ItemStack(FoodInit.spices, 1, 2));
+		OreDictionary.registerOre("listAllspice", new ItemStack(FoodInit.spices, 1, 2));
+
+		OreDictionary.registerOre("foodCoffeeBean", new ItemStack(FoodInit.teaLeaves, 1, 0));
+		OreDictionary.registerOre("foodGreenteaLeaf", new ItemStack(FoodInit.teaLeaves, 1, 1));
+		OreDictionary.registerOre("foodTeaLeaf", new ItemStack(FoodInit.teaLeaves, 1, 2));
+
 		OreDictionary.registerOre("foodDough", new ItemStack(FoodInit.bread, 1, 0));
 		OreDictionary.registerOre("foodBowlofrice", new ItemStack(FoodInit.ricebowl, 1, 0));
 		OreDictionary.registerOre("foodRicecake", new ItemStack(FoodInit.mochi, 1, 1));
+
 		OreDictionary.registerOre("dustSpentGrain", new ItemStack(FoodInit.residue, 1, 0));
 		OreDictionary.registerOre("dustSakeLees", new ItemStack(FoodInit.residue, 1, 1));
 		OreDictionary.registerOre("dustPomace", new ItemStack(FoodInit.residue, 1, 2));
@@ -261,6 +279,26 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodSalsa", new ItemStack(FoodInit.dip, 1, 2));
 		OreDictionary.registerOre("foodPlainyogurt", new ItemStack(FoodInit.yogurt, 1, 0));
 		OreDictionary.registerOre("foodPlainyogurt", new ItemStack(FoodInit.yogurt, 1, 1));
+		OreDictionary.registerOre("foodCurry", new ItemStack(FoodInit.curry, 1, 0));
+		OreDictionary.registerOre("foodCurry", new ItemStack(FoodInit.curry, 1, 1));
+		OreDictionary.registerOre("foodCurry", new ItemStack(FoodInit.curry, 1, 2));
+		OreDictionary.registerOre("foodCurry", new ItemStack(FoodInit.curry, 1, 3));
+		OreDictionary.registerOre("foodCurry", new ItemStack(FoodInit.curry, 1, 4));
+		OreDictionary.registerOre("foodCurry", new ItemStack(FoodInit.curry, 1, 5));
+
+		if (ModuleConfig.food_advanced) {
+			OreDictionary.registerOre("bottleBeer", new ItemStack(FoodInit.liquorBottle, 1, 1));
+			OreDictionary.registerOre("bottleWine", new ItemStack(FoodInit.liquorBottle, 1, 2));
+			OreDictionary.registerOre("bottleSake", new ItemStack(FoodInit.liquorBottle, 1, 3));
+			OreDictionary.registerOre("bottleRoseWater", new ItemStack(FoodInit.roseWaterBottle, 1, 0));
+			OreDictionary.registerOre("bottleTonic", new ItemStack(FoodInit.roseWaterBottle, 1, 1));
+			OreDictionary.registerOre("foodBubblywater", new ItemStack(FoodInit.roseWaterBottle, 1, 1));
+			OreDictionary.registerOre("bottleLemonSquash", new ItemStack(FoodInit.roseWaterBottle, 1, 2));
+			OreDictionary.registerOre("listAllsoda", new ItemStack(FoodInit.roseWaterBottle, 1, 2));
+			OreDictionary.registerOre("bottleCola", new ItemStack(FoodInit.roseWaterBottle, 1, 3));
+			OreDictionary.registerOre("foodColasoda", new ItemStack(FoodInit.roseWaterBottle, 1, 3));
+			OreDictionary.registerOre("listAllsoda", new ItemStack(FoodInit.roseWaterBottle, 1, 3));
+		}
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 2));
@@ -282,6 +320,7 @@ public class FoodRecipes {
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.blueMold);
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.slimeMold);
 		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.mushroom);
+		MainAPIManager.microbeRegister.registerSpecies((IMicrobe) FoodInit.methanogen);
 
 		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(FoodInit.chickInEgg, DispenseChickInEgg.getInstance());
 	}

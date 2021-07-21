@@ -86,6 +86,7 @@ import defeatedcrow.hac.main.block.device.BlockPail;
 import defeatedcrow.hac.main.block.device.BlockShitirin;
 import defeatedcrow.hac.main.block.device.BlockSink;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
+import defeatedcrow.hac.main.block.device.BlockSwedishTorch;
 import defeatedcrow.hac.main.block.device.BlockThermometer;
 import defeatedcrow.hac.main.block.device.BlockWindVane;
 import defeatedcrow.hac.main.block.device.ItemBlockShitirin;
@@ -177,6 +178,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -265,6 +267,16 @@ public class MainMaterialRegister {
 		MainInit.lightOrb = new BlockLightOrb(ClimateCore.PACKAGE_BASE + "_build_lightorb");
 		DCMaterialReg
 				.registerBlock(MainInit.lightOrb, ClimateCore.PACKAGE_BASE + "_build_lightorb", ClimateMain.MOD_ID);
+
+		MainInit.swedishTorch = new BlockSwedishTorch(ClimateCore.PACKAGE_BASE + "_device_swedish_torch");
+		MainInit.swedishTorch.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_device_swedish_torch");
+		ForgeRegistries.BLOCKS.register(MainInit.swedishTorch);
+		ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.swedishTorch) {
+			@Override
+			public String getUnlocalizedName(ItemStack stack) {
+				return super.getUnlocalizedName();
+			}
+		});
 
 		MainInit.firestand = new BlockFirestand(ClimateCore.PACKAGE_BASE + "_device_firestand");
 		DCMaterialReg
@@ -1116,16 +1128,17 @@ public class MainMaterialRegister {
 	static void registerModuleEquip() {
 		if (ModuleConfig.tool) {
 			String[] name = {
-				"brass",
-				"steel",
-				"silver",
-				"nickelsilver",
-				"chalcedony",
-				"sapphire",
-				"titanium",
-				"garnet",
-				"toolsteel",
-				"mangalloy" };
+					"brass",
+					"steel",
+					"silver",
+					"nickelsilver",
+					"chalcedony",
+					"sapphire",
+					"titanium",
+					"garnet",
+					"toolsteel",
+					"mangalloy"
+			};
 			for (int j = 0; j < 10; j++) {
 				// DCLogger.debugLog(j + "/" + DCToolMaterial.getToolMaterial(j).toString());
 				MainInit.dcAxe[j] = new ItemAxeDC(DCToolMaterial.getToolMaterial(j), name[j])
@@ -1264,7 +1277,12 @@ public class MainMaterialRegister {
 		}
 
 		if (ModuleConfig.tool) {
-			String[] type = { "met", "plate", "leggins", "boots" };
+			String[] type = {
+					"met",
+					"plate",
+					"leggins",
+					"boots"
+			};
 			for (int i = 0; i < 4; i++) {
 				EntityEquipmentSlot slot = DCUtil.SLOTS[i];
 				MainInit.brassArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_BRASS, DCMaterialEnum.BRASS, slot, "brass")
@@ -1537,7 +1555,15 @@ public class MainMaterialRegister {
 
 	static void registerModuleContainer() {
 		MainInit.logCont = new BlockLogCont(Material.CLAY, ClimateCore.PACKAGE_BASE + "_cont_log", 6);
-		int[] f = { 1600, 1600, 1600, 1600, 1600, 1600, 14400 };
+		int[] f = {
+				1600,
+				1600,
+				1600,
+				1600,
+				1600,
+				1600,
+				14400
+		};
 		registerBlock(MainInit.logCont, ClimateCore.PACKAGE_BASE + "_cont_log", ClimateMain.MOD_ID, f);
 		ClimateMain.proxy.addSidedBlock(MainInit.logCont, "cont_log", 6);
 

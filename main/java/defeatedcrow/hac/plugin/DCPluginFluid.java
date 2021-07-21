@@ -93,6 +93,11 @@ public class DCPluginFluid {
 		registerFuel("dcs.seed_oil", "seed_oil", 30);
 		registerFuel("dcs.ethanol", "ethanol", 80);
 		registerFuel("dcs.black_liquor", "black_liquor", 30);
+		if (ModuleConfig.food && ModuleConfig.food_advanced) {
+			if (ModuleConfig.liquor) {
+				registerFuel("dcs.vodka", "vodka", 80);
+			}
+		}
 
 		// potion
 		registerPotion("lava", MobEffects.FIRE_RESISTANCE);
@@ -205,7 +210,7 @@ public class DCPluginFluid {
 				registerPotion("dcs.nether", MobEffects.FIRE_RESISTANCE);
 				registerPotion("dcs.chorus_liquor", MainInit.warp);
 				registerPotion("dcs.awamori", MainInit.reflexion);
-				registerPotion("dcs.tonic", MobEffects.WATER_BREATHING);
+				registerPotion("dcs.tonic_water", MobEffects.WATER_BREATHING);
 				registerPotion("dcs.lemon_squash", MobEffects.ABSORPTION, 1);
 				registerPotion("dcs.cola", MainInit.absorptionEXP);
 			}

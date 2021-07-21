@@ -48,7 +48,11 @@ public class DrinkItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = { "ginger", "kuzu", "tomato" };
+		String[] s = {
+				"ginger",
+				"kuzu",
+				"tomato"
+		};
 		return s;
 	}
 

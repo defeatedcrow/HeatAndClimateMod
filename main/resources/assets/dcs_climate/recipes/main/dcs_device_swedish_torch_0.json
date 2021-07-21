@@ -1,0 +1,18 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "logWood"
+  },
+  {
+   "item": "dcs_climate:dcs_tinder",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_device_swedish_torch",
+  "count": 1,
+  "data": 0
+ }
+}

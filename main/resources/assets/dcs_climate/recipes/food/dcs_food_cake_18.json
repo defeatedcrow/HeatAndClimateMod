@@ -10,8 +10,8 @@
    "ore": "dropMolasses"
   },
   {
-   "item": "dcs_climate:dcs_food_leaves",
-   "data": 1
+   "type": "forge:ore_dict",
+   "ore": "foodGreenteaLeaf"
   },
   {
    "type": "forge:ore_dict",

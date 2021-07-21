@@ -8,7 +8,8 @@ public enum DrinkSugar {
 	NONE(0, 0),
 	SUGAR(1, 1),
 	HONEY(2, 2),
-	MAPLE(3, 3);
+	MAPLE(3, 3),
+	SPICE(2, 4);
 
 	public final int effect;
 	public final int id;
@@ -27,6 +28,8 @@ public enum DrinkSugar {
 			return HONEY;
 		else if (i == 3)
 			return MAPLE;
+		else if (i == 4)
+			return SPICE;
 		return NONE;
 	}
 
@@ -46,6 +49,10 @@ public enum DrinkSugar {
 					return HONEY;
 				else if (name.contains("sugar") || name.contains("Sugar"))
 					return SUGAR;
+				else if (name.contains("Maplesyrup") || name.contains("MapleSyrup"))
+					return MAPLE;
+				else if (name.equalsIgnoreCase("listAllspice"))
+					return SPICE;
 			}
 			return NONE;
 		}

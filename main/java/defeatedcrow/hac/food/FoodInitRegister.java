@@ -47,6 +47,8 @@ import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
 import defeatedcrow.hac.food.item.CakeItem;
 import defeatedcrow.hac.food.item.ClubSandItem;
 import defeatedcrow.hac.food.item.CookieItem;
+import defeatedcrow.hac.food.item.CurryItem;
+import defeatedcrow.hac.food.item.CutleryItem;
 import defeatedcrow.hac.food.item.DeepFryItem;
 import defeatedcrow.hac.food.item.DipSauceItem;
 import defeatedcrow.hac.food.item.DishBigItem;
@@ -64,6 +66,7 @@ import defeatedcrow.hac.food.item.ItemMeatMaterials;
 import defeatedcrow.hac.food.item.ItemNoEntityFoods;
 import defeatedcrow.hac.food.item.ItemPastry;
 import defeatedcrow.hac.food.item.ItemSilverCup;
+import defeatedcrow.hac.food.item.ItemSpice;
 import defeatedcrow.hac.food.item.ItemTeaLeaves;
 import defeatedcrow.hac.food.item.MochiItem;
 import defeatedcrow.hac.food.item.PastaItem;
@@ -95,6 +98,7 @@ import defeatedcrow.hac.food.item.brewing.ItemMicrobeBlueMold;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeColiformes;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeCyano;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeLab;
+import defeatedcrow.hac.food.item.brewing.ItemMicrobeMethanogen;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeMushroom;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeNether;
 import defeatedcrow.hac.food.item.brewing.ItemMicrobeOryzae;
@@ -284,6 +288,9 @@ public class FoodInitRegister {
 
 	static void loadItems() {
 
+		FoodInit.cutlery = new CutleryItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_cutlery");
+		DCMaterialReg.registerItem(FoodInit.cutlery, ClimateCore.PACKAGE_BASE + "_food_cutlery", ClimateMain.MOD_ID);
+
 		FoodInit.crops = new ItemDCCrops(20).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_crops");
 		DCMaterialReg.registerItem(FoodInit.crops, ClimateCore.PACKAGE_BASE + "_food_crops", ClimateMain.MOD_ID);
 
@@ -307,6 +314,9 @@ public class FoodInitRegister {
 
 		FoodInit.residue = new ItemResidue().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_residue");
 		DCMaterialReg.registerItem(FoodInit.residue, ClimateCore.PACKAGE_BASE + "_food_residue", ClimateMain.MOD_ID);
+
+		FoodInit.spices = new ItemSpice().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_spice");
+		DCMaterialReg.registerItem(FoodInit.spices, ClimateCore.PACKAGE_BASE + "_food_spice", ClimateMain.MOD_ID);
 	}
 
 	static void loadFoods() {
@@ -386,6 +396,9 @@ public class FoodInitRegister {
 
 		FoodInit.dishBig = new DishBigItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_dish_big");
 		DCMaterialReg.registerItem(FoodInit.dishBig, ClimateCore.PACKAGE_BASE + "_food_dish_big", ClimateMain.MOD_ID);
+
+		FoodInit.curry = new CurryItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_curry");
+		DCMaterialReg.registerItem(FoodInit.curry, ClimateCore.PACKAGE_BASE + "_food_curry", ClimateMain.MOD_ID);
 
 		FoodInit.udon = new UdonItem(false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_udon");
 		DCMaterialReg.registerItem(FoodInit.udon, ClimateCore.PACKAGE_BASE + "_food_udon", ClimateMain.MOD_ID);
@@ -521,6 +534,11 @@ public class FoodInitRegister {
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_microbe_mushroom");
 		DCMaterialReg
 				.registerItem(FoodInit.mushroom, ClimateCore.PACKAGE_BASE + "_food_microbe_mushroom", ClimateMain.MOD_ID);
+
+		FoodInit.methanogen = new ItemMicrobeMethanogen()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_microbe_methanogen");
+		DCMaterialReg
+				.registerItem(FoodInit.methanogen, ClimateCore.PACKAGE_BASE + "_food_microbe_methanogen", ClimateMain.MOD_ID);
 
 		FoodInit.liquorBottle = new ItemLiquorBottle().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_liquor_bottle");
 		DCMaterialReg
@@ -731,6 +749,7 @@ public class FoodInitRegister {
 		FoodInit.dishBig.setCreativeTab(ClimateMain.food);
 		FoodInit.dishSq.setCreativeTab(ClimateMain.food);
 		FoodInit.setMeal.setCreativeTab(ClimateMain.food);
+		FoodInit.curry.setCreativeTab(ClimateMain.food);
 		FoodInit.udon.setCreativeTab(ClimateMain.food);
 		FoodInit.pasta.setCreativeTab(ClimateMain.food);
 		FoodInit.drink.setCreativeTab(ClimateMain.food);
@@ -751,6 +770,7 @@ public class FoodInitRegister {
 		FoodInit.meat.setCreativeTab(ClimateMain.food);
 		FoodInit.dairy.setCreativeTab(ClimateMain.food);
 		FoodInit.pastry.setCreativeTab(ClimateMain.food);
+		FoodInit.spices.setCreativeTab(ClimateMain.food);
 
 		FoodInit.cupSilver.setCreativeTab(ClimateMain.food);
 		FoodInit.steakplate.setCreativeTab(ClimateMain.food);
@@ -793,6 +813,7 @@ public class FoodInitRegister {
 		FoodInit.saplings2.setCreativeTab(ClimateMain.food);
 
 		FoodInit.dish.setCreativeTab(ClimateMain.build);
+		FoodInit.cutlery.setCreativeTab(ClimateMain.tool);
 
 		if (ModuleConfig.food_advanced) {
 			FoodInit.incubator.setCreativeTab(ClimateMain.food_adv);
@@ -818,6 +839,7 @@ public class FoodInitRegister {
 			FoodInit.blueMold.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.slimeMold.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.mushroom.setCreativeTab(ClimateMain.food_adv);
+			FoodInit.methanogen.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.liquorBottle.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.roseWaterBottle.setCreativeTab(ClimateMain.food_adv);
 			FoodInit.essentialOil.setCreativeTab(ClimateMain.food_adv);

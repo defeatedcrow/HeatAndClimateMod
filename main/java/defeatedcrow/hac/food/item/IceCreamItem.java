@@ -13,6 +13,7 @@ import defeatedcrow.hac.food.entity.IceCreamCookieEntity;
 import defeatedcrow.hac.food.entity.IceCreamEntity;
 import defeatedcrow.hac.food.entity.IceCreamKinakoEntity;
 import defeatedcrow.hac.food.entity.IceCreamLemonEntity;
+import defeatedcrow.hac.food.entity.ParfaitAnkoEntity;
 import defeatedcrow.hac.food.entity.ParfaitBerryEntity;
 import defeatedcrow.hac.food.entity.ParfaitCitrusEntity;
 import defeatedcrow.hac.food.entity.ParfaitWatermelonEntity;
@@ -38,7 +39,7 @@ public class IceCreamItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 8;
+		return 9;
 	}
 
 	@Override
@@ -55,16 +56,16 @@ public class IceCreamItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-			"milk",
-			"kinako",
-			"berry",
-			"lemon",
-			"cookie",
-			"cocoa",
-			"parfait_berry",
-			"parfait_citrus",
-			"parfait_watermelon"
-
+				"milk",
+				"kinako",
+				"berry",
+				"lemon",
+				"cookie",
+				"cocoa",
+				"parfait_berry",
+				"parfait_citrus",
+				"parfait_watermelon",
+				"parfait_anko"
 		};
 		return s;
 	}
@@ -97,20 +98,23 @@ public class IceCreamItem extends FoodItemBase {
 		if (i == 8) {
 			ret = new ParfaitWatermelonEntity(world, x, y, z, player);
 		}
+		if (i == 9) {
+			ret = new ParfaitAnkoEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
 	@Override
 	public List<PotionEffect> getPotionEffect(int meta) {
 		List<PotionEffect> ret = super.getPotionEffect(meta);
-		int i = meta == 6 || meta == 7 || meta == 8 ? 3600 : 600;
+		int i = meta > 5 ? 3600 : 600;
 		ret.add(new PotionEffect(MobEffects.FIRE_RESISTANCE, i, 0));
 		return ret;
 	}
 
 	@Override
 	public int getFoodAmo(int meta) {
-		if (meta == 6 || meta == 7 || meta == 8) {
+		if (meta > 5) {
 			return 12;
 		}
 		return meta == 0 ? 3 : 4;
@@ -125,7 +129,7 @@ public class IceCreamItem extends FoodItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
-		int i = stack.getItemDamage() == 6 || stack.getItemDamage() == 7 || stack.getItemDamage() == 8 ? 3600 : 600;
+		int i = stack.getItemDamage() > 5 ? 3600 : 600;
 		PotionEffect eff = new PotionEffect(MobEffects.FIRE_RESISTANCE, i);
 		String effName = I18n.format(MobEffects.FIRE_RESISTANCE.getName());
 		effName += " (" + StringUtils.ticksToElapsedTime(i) + ")";

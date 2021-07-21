@@ -59,7 +59,7 @@ public class ItemMicrobeSkin extends MicrobeItem implements IMicrobe {
 	public int getChance(EnumHabitat habitat) {
 		switch (habitat) {
 		case ANIMAL:
-			return 30;
+			return 20;
 		case CROP:
 			return 0;
 		case FLOWER:

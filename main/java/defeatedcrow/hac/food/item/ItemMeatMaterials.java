@@ -8,21 +8,23 @@ public class ItemMeatMaterials extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-		"viscera",
-		"rennet",
-		"raw_squid",
-		"agar",
-		"gelatine",
-		"soymeat",
-		"miso",
-		"soysauce",
-		"siroan",
-		"raw_prawn",
-		"raw_roe" };
+			"viscera",
+			"rennet",
+			"raw_squid",
+			"agar",
+			"gelatine",
+			"soymeat",
+			"miso",
+			"soysauce",
+			"siroan",
+			"raw_prawn",
+			"raw_roe",
+			"anko"
+	};
 
 	public ItemMeatMaterials() {
 		super();
-		maxMeta = 10;
+		maxMeta = 11;
 	}
 
 	@Override

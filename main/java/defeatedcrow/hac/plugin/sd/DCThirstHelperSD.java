@@ -25,7 +25,7 @@ public class DCThirstHelperSD {
 		TEA(6, 0.5F, 0.0F),
 		JUICE(6, 0.2F, 0.0F),
 		RAW(4, 0.2F, 0.25F),
-		ETHANOL(2, 0.1F, 0.0F),
+		ETHANOL(2, 0.1F, 0.2F),
 		RISK(1, 0.0F, 0.75F);
 
 		final int thirst;

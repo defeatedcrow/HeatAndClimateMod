@@ -21,7 +21,13 @@ public class ItemUnidentified extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "archaea", "bacilli", "cocci", "yeast", "mold" };
+	private static String[] names = {
+			"archaea",
+			"bacilli",
+			"cocci",
+			"yeast",
+			"mold"
+	};
 
 	public ItemUnidentified() {
 		super();
@@ -85,8 +91,7 @@ public class ItemUnidentified extends DCItem {
 				ret = new ItemStack(FoodInit.unidentified, 1, 1);
 			} else if (sp.getType() == EnumMicrobeType.COCCI) {
 				ret = new ItemStack(FoodInit.unidentified, 1, 2);
-			}
-			if (sp.getType() == EnumMicrobeType.YEAST) {
+			} else if (sp.getType() == EnumMicrobeType.YEAST) {
 				ret = new ItemStack(FoodInit.unidentified, 1, 3);
 			} else if (sp.getType() == EnumMicrobeType.FUNGI) {
 				ret = new ItemStack(FoodInit.unidentified, 1, 4);

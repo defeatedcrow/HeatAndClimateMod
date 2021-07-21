@@ -27,194 +27,267 @@ public class RegisterBrewingDC {
 	public static void loadFermentationRecipe() {
 		// 麦芽
 		brewng(new ItemStack(MainInit.foodDust, 2, 3), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"cropWheat" });
+				"cropWheat"
+		});
 
 		brewng(new ItemStack(MainInit.foodDust, 8, 3), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"containerSeed" });
+				"containerSeed"
+		});
 
 		brewng(new ItemStack(MainInit.foodDust, 18, 3), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			new ItemStack(Blocks.HAY_BLOCK, 1, 0) });
+				new ItemStack(Blocks.HAY_BLOCK, 1, 0)
+		});
 
 		// バイオ
 
 		// bacillus
 
 		brewng(new ItemStack(FoodInit.residue, 24, 5), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerMeatRaw",
-			new ItemStack(FoodInit.bacillus, 1, 0) });
+				"containerMeatRaw",
+				new ItemStack(FoodInit.bacillus, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 16, 5), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerFish",
-			new ItemStack(FoodInit.bacillus, 1, 0) });
+				"containerFish",
+				new ItemStack(FoodInit.bacillus, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 8, 5), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerSoybean",
-			new ItemStack(FoodInit.bacillus, 1, 0) });
+				"containerSoybean",
+				new ItemStack(FoodInit.bacillus, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 16, 5), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerRottenFlesh",
-			new ItemStack(FoodInit.bacillus, 1, 0) });
+				"containerRottenFlesh",
+				new ItemStack(FoodInit.bacillus, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.antibiotic, 1, 1), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.bacillus, 1, 1) });
+				"brothGrow",
+				new ItemStack(FoodInit.bacillus, 1, 1)
+		});
 
 		brewng(new ItemStack(FoodInit.salad, 8, 7), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerSoybean",
-			"cropRice",
-			new ItemStack(FoodInit.bacillus, 1, 2) });
+				"containerSoybean",
+				"cropRice",
+				new ItemStack(FoodInit.bacillus, 1, 2)
+		});
 
 		// coliformes
 
 		brewng(new ItemStack(Items.ROTTEN_FLESH, 2, 0), null, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
-			"listAllmeatraw",
-			new ItemStack(FoodInit.coliformes, 1, 0) });
+				"listAllmeatraw",
+				new ItemStack(FoodInit.coliformes, 1, 0)
+		});
 
 		brewng(new ItemStack(Items.ROTTEN_FLESH, 16, 0), null, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
-			"containerMeatRaw",
-			new ItemStack(FoodInit.coliformes, 1, 0) });
+				"containerMeatRaw",
+				new ItemStack(FoodInit.coliformes, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.antibiotic, 1, 4), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.coliformes, 1, 1) });
+				"brothGrow",
+				new ItemStack(FoodInit.coliformes, 1, 1)
+		});
 
 		brewng(new ItemStack(Blocks.SPONGE, 1, 0), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.coliformes, 1, 2) });
+				"brothGrow",
+				new ItemStack(FoodInit.coliformes, 1, 2)
+		});
 
 		// lab
 
 		brewng(new ItemStack(FoodInit.yogurt, 3, 0), null, new FluidStack(MainInit.milk, 1000), new Object[] {
-			new ItemStack(FoodInit.lab, 1, 0) });
+				new ItemStack(FoodInit.lab, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.yogurt, 3, 1), null, new FluidStack(MainInit.milk, 1000), new Object[] {
-			new ItemStack(FoodInit.lab, 1, 2) });
+				new ItemStack(FoodInit.lab, 1, 2)
+		});
 
 		// skin
 
 		brewng(new ItemStack(FoodInit.antibiotic, 1, 8), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.skin, 1, 1) });
+				"brothGrow",
+				new ItemStack(FoodInit.skin, 1, 1)
+		});
 
 		brewng(new ItemStack(FoodInit.yogurt, 3, 0), null, new FluidStack(MainInit.milk, 1000), new Object[] {
-			new ItemStack(FoodInit.skin, 1, 2) });
+				new ItemStack(FoodInit.skin, 1, 2)
+		});
 
 		// cyano
 
 		brewng(ItemStack.EMPTY, new FluidStack(MainInit.oxygen, 200), new FluidStack(FluidRegistry.WATER,
-				1000), new Object[] { "brothGrow", new ItemStack(FoodInit.cyano, 1, 0) });
+				1000), new Object[] {
+						"brothGrow",
+						new ItemStack(FoodInit.cyano, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.seeds, 1, 8), new FluidStack(MainInit.oxygen, 200), new FluidStack(
-				FluidRegistry.WATER, 1000), new Object[] { "brothGrow", new ItemStack(FoodInit.cyano, 1, 1) });
+				FluidRegistry.WATER, 1000), new Object[] {
+						"brothGrow",
+						new ItemStack(FoodInit.cyano, 1, 1)
+		});
 
 		// yeast
 
 		brewng(new ItemStack(FoodInit.residue, 1, 4), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"dustDraff",
-			new ItemStack(FoodInit.beerYeast, 1, 0) });
+				"dustDraff",
+				new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 8, 4), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"containerDraff",
-			new ItemStack(FoodInit.beerYeast, 1, 0) });
+				"containerDraff",
+				new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 8, 4), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"containerSugar",
-			new ItemStack(FoodInit.beerYeast, 1, 0) });
+				"containerSugar",
+				new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(null, new FluidStack(MainInit.fuelOil, 250), new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerSugar",
-			"dustPeptone",
-			new ItemStack(FoodInit.beerYeast, 1, 2) });
+				"containerSugar",
+				"dustPeptone",
+				new ItemStack(FoodInit.beerYeast, 1, 2)
+		});
 
 		brewng(null, new FluidStack(MainInit.fuelOil, 250), new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerStarch",
-			"dustPeptone",
-			new ItemStack(FoodInit.beerYeast, 1, 2) });
+				"containerStarch",
+				"dustPeptone",
+				new ItemStack(FoodInit.beerYeast, 1, 2)
+		});
 
 		// oryzae
 
 		brewng(new ItemStack(FoodInit.meat, 8, 6), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerSoybean",
-			"dustSalt",
-			new ItemStack(FoodInit.oryzae, 1, 0) });
+				"containerSoybean",
+				"dustSalt",
+				new ItemStack(FoodInit.oryzae, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.meat, 8, 7), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerSoybean",
-			"foodMalt",
-			new ItemStack(FoodInit.oryzae, 1, 0) });
+				"containerSoybean",
+				"foodMalt",
+				new ItemStack(FoodInit.oryzae, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.meat, 8, 7), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerSoycake",
-			"foodMalt",
-			new ItemStack(FoodInit.oryzae, 1, 0) });
+				"containerSoycake",
+				"foodMalt",
+				new ItemStack(FoodInit.oryzae, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.inoculum, 8, 0), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerRiceFood",
-			new ItemStack(FoodInit.oryzae, 1, 1) });
+				"containerRiceFood",
+				new ItemStack(FoodInit.oryzae, 1, 1)
+		});
 
 		brewng(new ItemStack(FoodInit.inoculum, 8, 1), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"containerRiceFood",
-			new ItemStack(FoodInit.oryzae, 1, 2) });
+				"containerRiceFood",
+				new ItemStack(FoodInit.oryzae, 1, 2)
+		});
 
 		// nether
 
 		brewng(new ItemStack(Blocks.NETHERRACK, 1, 0), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"cobblestone",
-			new ItemStack(FoodInit.nether, 1, 0) });
+				"cobblestone",
+				new ItemStack(FoodInit.nether, 1, 0)
+		});
 
 		brewng(new ItemStack(Items.GLOWSTONE_DUST, 1, 0), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"gemChalcedony",
-			new ItemStack(FoodInit.nether, 1, 1) });
+				"gemChalcedony",
+				new ItemStack(FoodInit.nether, 1, 1)
+		});
 
 		brewng(new ItemStack(Items.GLOWSTONE_DUST, 1, 0), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"gemQuartz",
-			new ItemStack(FoodInit.nether, 1, 1) });
+				"gemQuartz",
+				new ItemStack(FoodInit.nether, 1, 1)
+		});
 
 		brewng(new ItemStack(FoodInit.antibiotic, 1, 5), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.nether, 1, 2) });
+				"brothGrow",
+				new ItemStack(FoodInit.nether, 1, 2)
+		});
 
 		// blue
 
 		brewng(new ItemStack(FoodInit.antibiotic, 1, 0), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.blueMold, 1, 0) });
+				"brothGrow",
+				new ItemStack(FoodInit.blueMold, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.meat, 3, 1), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.blueMold, 1, 1) });
+				"brothGrow",
+				new ItemStack(FoodInit.blueMold, 1, 1)
+		});
 
 		brewng(new ItemStack(FoodInit.antibiotic, 1, 2), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.blueMold, 1, 2) });
+				"brothGrow",
+				new ItemStack(FoodInit.blueMold, 1, 2)
+		});
 
 		// slime
 
 		brewng(new ItemStack(Items.SLIME_BALL, 1, 0), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.slimeMold, 1, 0) });
+				"brothGrow",
+				new ItemStack(FoodInit.slimeMold, 1, 0)
+		});
 
 		brewng(new ItemStack(Items.GUNPOWDER, 1, 0), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.slimeMold, 1, 1) });
+				"brothGrow",
+				new ItemStack(FoodInit.slimeMold, 1, 1)
+		});
 
 		brewng(new ItemStack(FoodInit.antibiotic, 1, 7), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.slimeMold, 1, 2) });
+				"brothGrow",
+				new ItemStack(FoodInit.slimeMold, 1, 2)
+		});
 
 		// mushroom
 
 		brewng(new ItemStack(Blocks.MYCELIUM, 1, 0), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"dirt",
-			new ItemStack(FoodInit.mushroom, 1, 0) });
+				"dirt",
+				new ItemStack(FoodInit.mushroom, 1, 0)
+		});
 
 		brewng(new ItemStack(Blocks.MYCELIUM, 1, 0), null, new FluidStack(FluidRegistry.WATER, 200), new Object[] {
-			"dirt",
-			new ItemStack(FoodInit.mushroom, 1, 1) });
+				"dirt",
+				new ItemStack(FoodInit.mushroom, 1, 1)
+		});
 
 		brewng(new ItemStack(FoodInit.antibiotic, 1, 6), null, new FluidStack(FluidRegistry.WATER, 1000), new Object[] {
-			"brothGrow",
-			new ItemStack(FoodInit.mushroom, 1, 2) });
+				"brothGrow",
+				new ItemStack(FoodInit.mushroom, 1, 2)
+		});
+
+		// methanogen
+
+		brewng(ItemStack.EMPTY, new FluidStack(MainInit.fuelGas, 500), new FluidStack(MainInit.blackLiquor,
+				1000), new Object[] {
+						new ItemStack(FoodInit.methanogen, 1, 0)
+		});
+
+		brewng(ItemStack.EMPTY, new FluidStack(MainInit.fuelGas, 500), new FluidStack(MainInit.ethanol,
+				1000), new Object[] {
+						new ItemStack(FoodInit.methanogen, 1, 0)
+		});
+
+		brewng(ItemStack.EMPTY, new FluidStack(MainInit.fuelGas, 500), new FluidStack(FluidRegistry.WATER,
+				1000), new Object[] {
+						"containerDraff",
+						new ItemStack(FoodInit.methanogen, 1, 0)
+		});
+
+		brewng(new ItemStack(MainInit.miscDust, 1, 7), null, new FluidStack(MainInit.hotSpring, 1000), new Object[] {
+				new ItemStack(FoodInit.methanogen, 1, 1)
+		});
+
+		brewng(new ItemStack(FoodInit.antibiotic, 1, 9), null, new FluidStack(MainInit.hotSpring, 1000), new Object[] {
+				"brothGrow",
+				new ItemStack(FoodInit.methanogen, 1, 2)
+		});
 
 		// increace
 
@@ -284,24 +357,40 @@ public class RegisterBrewingDC {
 
 		increace(new ItemStack(FoodInit.mushroom, 1, 2));
 
+		increace(new ItemStack(FoodInit.methanogen, 1, 0));
+
+		increace(new ItemStack(FoodInit.methanogen, 1, 1));
+
+		increace(new ItemStack(FoodInit.methanogen, 1, 2));
+
 	}
 
 	public static void loadStillRecipe() {
 
 		still(new ItemStack(FoodInit.essentialOil, 1, 0), new FluidStack(FoodInit.roseWater, 1000), new FluidStack(
-				FluidRegistry.WATER, 5000), new Object[] { new ItemStack(Blocks.DOUBLE_PLANT, 8, 4) });
+				FluidRegistry.WATER, 5000), new Object[] {
+						new ItemStack(Blocks.DOUBLE_PLANT, 8, 4)
+		});
 
 		still(new ItemStack(FoodInit.essentialOil, 1, 1), null, new FluidStack(FluidRegistry.WATER,
-				5000), new Object[] { "containerLemon" });
+				5000), new Object[] {
+						"containerLemon"
+		});
 
 		still(new ItemStack(FoodInit.essentialOil, 1, 2), null, new FluidStack(FluidRegistry.WATER,
-				5000), new Object[] { new ItemStack(FoodInit.crops, 8, 9) });
+				5000), new Object[] {
+						new ItemStack(FoodInit.crops, 8, 9)
+		});
 
 		still(new ItemStack(FoodInit.essentialOil, 1, 3), null, new FluidStack(FluidRegistry.WATER,
-				5000), new Object[] { new ItemStack(MainInit.logCont, 1, 2) });
+				5000), new Object[] {
+						new ItemStack(MainInit.logCont, 1, 2)
+		});
 
 		still(new ItemStack(FoodInit.essentialOil, 1, 4), null, new FluidStack(FluidRegistry.WATER,
-				5000), new Object[] { new ItemStack(FoodInit.petals, 8, 0) });
+				5000), new Object[] {
+						new ItemStack(FoodInit.petals, 8, 0)
+		});
 
 	}
 
@@ -311,50 +400,71 @@ public class RegisterBrewingDC {
 
 		// 特殊レシピ
 		brewng(new ItemStack(FoodInit.residue, 1, 0), new FluidStack(FoodInit.beer, 200), new FluidStack(
-				FluidRegistry.WATER, 1000), new Object[] { "containerMalt" });
+				FluidRegistry.WATER, 1000), new Object[] {
+						"containerMalt"
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 1, 2), new FluidStack(FoodInit.wine, 200), new FluidStack(
-				FluidRegistry.WATER, 1000), new Object[] { "containerGrape" });
+				FluidRegistry.WATER, 1000), new Object[] {
+						"containerGrape"
+		});
 
 		// 通常
 
 		brewng(new ItemStack(FoodInit.residue, 1, 0), new FluidStack(FoodInit.beer, 1000), new FluidStack(
-				FluidRegistry.WATER, 1000), new Object[] { "containerMalt", new ItemStack(FoodInit.beerYeast, 1, 0) });
+				FluidRegistry.WATER, 1000), new Object[] {
+						"containerMalt",
+						new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 1, 1), new FluidStack(FoodInit.sake, 1000), new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
-					new ItemStack(FoodInit.inoculum, 8, 0),
-					new ItemStack(FoodInit.beerYeast, 1, 0) });
+						new ItemStack(FoodInit.inoculum, 8, 0),
+						new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 1, 1), new FluidStack(FoodInit.moromiBlack, 1000), new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
-					new ItemStack(FoodInit.inoculum, 8, 1),
-					new ItemStack(FoodInit.beerYeast, 1, 0) });
+						new ItemStack(FoodInit.inoculum, 8, 1),
+						new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(new ItemStack(MainInit.foodDust, 1, 1), new FluidStack(FoodInit.fermentedPotato, 1000), new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
-					"containerPotato",
-					"foodMalt",
-					new ItemStack(FoodInit.beerYeast, 1, 0) });
+						"containerPotato",
+						"foodMalt",
+						new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(null, new FluidStack(FoodInit.fermentedSugar, 1000), new FluidStack(FluidRegistry.WATER,
 				1000), new Object[] {
-					new ItemStack(MainInit.foodDust, 8, 2),
-					new ItemStack(FoodInit.beerYeast, 1, 0) });
+						new ItemStack(MainInit.foodDust, 8, 2),
+						new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(new ItemStack(MainInit.foodDust, 1, 7), new FluidStack(FoodInit.fermentedSugar, 1000), new FluidStack(
-				FluidRegistry.WATER, 1000), new Object[] { "containerReeds", new ItemStack(FoodInit.beerYeast, 1, 0) });
+				FluidRegistry.WATER, 1000), new Object[] {
+						"containerReeds",
+						new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
 
 		brewng(new ItemStack(FoodInit.residue, 1, 2), new FluidStack(FoodInit.wine, 1000), new FluidStack(
-				FluidRegistry.WATER, 1000), new Object[] { "containerGrape", new ItemStack(FoodInit.beerYeast, 1, 1) });
+				FluidRegistry.WATER, 1000), new Object[] {
+						"containerGrape",
+						new ItemStack(FoodInit.beerYeast, 1, 1)
+		});
 
 		brewng(new ItemStack(MainInit.foodDust, 1, 1), new FluidStack(FoodInit.dateWine, 1000), new FluidStack(
-				FluidRegistry.WATER, 1000), new Object[] { "containerDate", new ItemStack(FoodInit.beerYeast, 1, 1) });
+				FluidRegistry.WATER, 1000), new Object[] {
+						"containerDate",
+						new ItemStack(FoodInit.beerYeast, 1, 1)
+		});
 
 		brewng(new ItemStack(MainInit.miscDust, 1, 7), new FluidStack(FoodInit.netherWine, 1000), new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
-					"containerNetherWart",
-					new ItemStack(FoodInit.nether, 1, 1) });
+						"containerNetherWart",
+						new ItemStack(FoodInit.nether, 1, 1)
+		});
 
 		// still
 
@@ -363,39 +473,52 @@ public class RegisterBrewingDC {
 		still(null, new FluidStack(FoodInit.rawBrandy, 200), new FluidStack(FoodInit.wine, 1000));
 
 		still(null, new FluidStack(FoodInit.pomaceBrandy, 100), null, new Object[] {
-			new ItemStack(FoodInit.residue, 8, 2) });
+				new ItemStack(FoodInit.residue, 8, 2)
+		});
 
 		still(null, new FluidStack(FoodInit.shotyu, 200), new FluidStack(FoodInit.sake, 1000));
 
-		still(null, new FluidStack(FoodInit.shotyu, 100), null, new Object[] { new ItemStack(FoodInit.residue, 8, 1) });
+		still(null, new FluidStack(FoodInit.shotyu, 100), null, new Object[] {
+				new ItemStack(FoodInit.residue, 8, 1)
+		});
 
 		still(null, new FluidStack(FoodInit.awamori, 200), new FluidStack(FoodInit.moromiBlack, 1000));
 
 		still(null, new FluidStack(FoodInit.araq, 200), new FluidStack(FoodInit.dateWine, 1000), new Object[] {
-			"seedHerb" });
+				"seedHerb"
+		});
 
 		still(null, new FluidStack(FoodInit.whiteRum, 200), new FluidStack(FoodInit.fermentedSugar, 1000));
 
 		still(null, new FluidStack(FoodInit.akvavit, 200), new FluidStack(FoodInit.fermentedPotato,
-				1000), new Object[] { "seedHerb" });
+				1000), new Object[] {
+						"seedHerb"
+		});
 
 		still(null, new FluidStack(FoodInit.chorusLiquor, 200), new FluidStack(FoodInit.netherWine,
-				1000), new Object[] { new ItemStack(Items.CHORUS_FRUIT, 1, 0) });
+				1000), new Object[] {
+						new ItemStack(Items.CHORUS_FRUIT, 1, 0)
+		});
 
 		still(null, new FluidStack(FoodInit.vodka, 500), new FluidStack(FoodInit.rawWhisky, 1000), new Object[] {
-			"charcoal" });
+				"charcoal"
+		});
 
 		still(null, new FluidStack(FoodInit.vodka, 500), new FluidStack(FoodInit.rawBrandy, 1000), new Object[] {
-			"charcoal" });
+				"charcoal"
+		});
 
 		still(null, new FluidStack(FoodInit.vodka, 500), new FluidStack(FoodInit.akvavit, 1000), new Object[] {
-			"charcoal" });
+				"charcoal"
+		});
 
 		still(null, new FluidStack(FoodInit.vodka, 500), new FluidStack(FoodInit.araq, 1000), new Object[] {
-			"charcoal" });
+				"charcoal"
+		});
 
 		still(null, new FluidStack(FoodInit.vodka, 500), new FluidStack(FoodInit.whiteRum, 1000), new Object[] {
-			"charcoal" });
+				"charcoal"
+		});
 
 		// aging
 
@@ -425,7 +548,10 @@ public class RegisterBrewingDC {
 		ItemStack out = species.copy();
 		out.setCount(8);
 		FoodBrewingRecipe recipe = new FoodBrewingRecipe(out, null, new FluidStack(FluidRegistry.WATER, 1000),
-				new Object[] { "brothIncreace", species });
+				new Object[] {
+						"brothIncreace",
+						species
+				});
 		MainAPIManager.brewingRegister.addBrewingRecipe(recipe);
 	}
 }

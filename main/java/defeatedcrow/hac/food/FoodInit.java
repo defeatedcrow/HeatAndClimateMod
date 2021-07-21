@@ -38,6 +38,7 @@ public class FoodInit {
 	public static Item dip;
 	public static Item pasta;
 	public static Item yogurt;
+	public static Item curry;
 
 	public static Item crops;
 	public static Item seeds;
@@ -51,10 +52,12 @@ public class FoodInit {
 	public static Item meat;
 	public static Item dairy;
 	public static Item pastry;
+	public static Item spices;
 
 	public static Item cupSilver;
 	public static Item tumbler;
 	public static Item steakplate;
+	public static Item cutlery;
 
 	public static Block potteryPot;
 	public static Block steelPot;
@@ -112,6 +115,7 @@ public class FoodInit {
 	public static Item mushroom;
 	public static Item skin;
 	public static Item cyano;
+	public static Item methanogen;
 
 	public static Item chickInEgg;
 	public static Item liquorBottle;

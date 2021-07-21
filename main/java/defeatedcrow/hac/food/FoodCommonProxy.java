@@ -94,6 +94,8 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(BreadRaisinEntity.class, "food", "raisin_bread");
 		DCRegistryUtil.addEntity(BreadSausageEntity.class, "food", "sausage_bread");
 		DCRegistryUtil.addEntity(BreadGrahamCrackerEntity.class, "food", "graham_cracker");
+		DCRegistryUtil.addEntity(BreadCinnamonEntity.class, "food", "cinnamon_roll");
+		DCRegistryUtil.addEntity(BreadAnkoEntity.class, "food", "anko");
 
 		DCRegistryUtil.addEntity(EntityRiceBowl.class, "food", "rice_bowl");
 		DCRegistryUtil.addEntity(EntityRiceMushroom.class, "food", "rice_mushroom");
@@ -101,6 +103,10 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(EntityRiceBallSeaweed.class, "food", "rice_ball_seaweed");
 		DCRegistryUtil.addEntity(EntityRiceBallMiso.class, "food", "rice_ball_miso");
 		DCRegistryUtil.addEntity(EntityRiceBallRoe.class, "food", "rice_ball_roe");
+		DCRegistryUtil.addEntity(EntityRiceTyadukeSalmon.class, "food", "rice_tyaduke_salmon");
+		DCRegistryUtil.addEntity(EntityRiceTyadukeRoe.class, "food", "rice_tyaduke_roe");
+		DCRegistryUtil.addEntity(EntityRiceSekihan.class, "food", "rice_sekihan");
+		DCRegistryUtil.addEntity(EntityRiceShiruko.class, "food", "rice_shiruko");
 		DCRegistryUtil.addEntity(MochiEntity.class, "food", "mochi");
 
 		DCRegistryUtil.addEntity(EmptyPlateEntity.class, "food", "empty_steakplate");
@@ -196,6 +202,7 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(ParfaitBerryEntity.class, "food", "parfait_berry");
 		DCRegistryUtil.addEntity(ParfaitCitrusEntity.class, "food", "parfait_citrus");
 		DCRegistryUtil.addEntity(ParfaitWatermelonEntity.class, "food", "parfait_watermelon");
+		DCRegistryUtil.addEntity(ParfaitAnkoEntity.class, "food", "parfait_anko");
 
 		DCRegistryUtil.addEntity(WagashiKinakoEntity.class, "food", "wagashi_kinako");
 		DCRegistryUtil.addEntity(WagashiIsobeEntity.class, "food", "wagashi_isobe");
@@ -206,6 +213,9 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(WagashiKurimanjuEntity.class, "food", "wagashi_kurimanju");
 		DCRegistryUtil.addEntity(WagashiNerikiriEntity.class, "food", "wagashi_nerikiri");
 		DCRegistryUtil.addEntity(WagashiAbekawaEntity.class, "food", "wagashi_abekawa");
+		DCRegistryUtil.addEntity(WagashiYoukanEntity.class, "food", "wagashi_youkan");
+		DCRegistryUtil.addEntity(WagashiYatsuhashiEntity.class, "food", "wagashi_yatsuhashi");
+		DCRegistryUtil.addEntity(WagashiBotamochiEntity.class, "food", "wagashi_botamochi");
 
 		DCRegistryUtil.addEntity(DishCapreseEntity.class, "food", "dish_caprese");
 		DCRegistryUtil.addEntity(DishBruschettaEntity.class, "food", "dish_bruschetta");
@@ -222,6 +232,18 @@ public class FoodCommonProxy {
 		DCRegistryUtil.addEntity(DishTacoriceEntity.class, "food", "dish_tacorice");
 		DCRegistryUtil.addEntity(DishNachosEntity.class, "food", "dish_nachos");
 		DCRegistryUtil.addEntity(DishIkameshiEntity.class, "food", "dish_ikameshi");
+		DCRegistryUtil.addEntity(DishBiriyaniEntity.class, "food", "dish_biriyani");
+		DCRegistryUtil.addEntity(DishChickenRiceEntity.class, "food", "dish_chicken_rice");
+		DCRegistryUtil.addEntity(DishTomyumEntity.class, "food", "dish_tomyum");
+
+		DCRegistryUtil.addEntity(CurryVegiEntity.class, "food", "curry_vegi");
+		DCRegistryUtil.addEntity(CurryBeansEntity.class, "food", "curry_beans");
+		DCRegistryUtil.addEntity(CurryFishEntity.class, "food", "curry_fish");
+		DCRegistryUtil.addEntity(CurrySpinachEntity.class, "food", "curry_spinach");
+		DCRegistryUtil.addEntity(CurryButterChickenEntity.class, "food", "curry_butter_chicken");
+		DCRegistryUtil.addEntity(CurryVindalooEntity.class, "food", "curry_vindaloo");
+		DCRegistryUtil.addEntity(CurryGreenEntity.class, "food", "curry_green");
+		DCRegistryUtil.addEntity(CurryRiceEntity.class, "food", "curry_rice");
 
 		DCRegistryUtil.addEntity(DrinkGingerEntity.class, "food", "drink_ginger");
 		DCRegistryUtil.addEntity(DrinkKuzuEntity.class, "food", "drink_kuzu");
@@ -246,6 +268,10 @@ public class FoodCommonProxy {
 
 		DCRegistryUtil.addEntity(LiquorBottleEntity.class, "food", "liquor_bottle");
 		DCRegistryUtil.addEntity(WaterBottleEntity.class, "food", "water_bottle");
+
+		DCRegistryUtil.addEntity(CutleryChopsticksEntity.class, "food", "cutlery_chopsticks");
+		DCRegistryUtil.addEntity(CutlerySpoonEntity.class, "food", "cutlery_spoon");
+		DCRegistryUtil.addEntity(CutleryForkEntity.class, "food", "cutlery_fork");
 
 	}
 

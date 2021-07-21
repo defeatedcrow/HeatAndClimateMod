@@ -9,6 +9,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
 import defeatedcrow.hac.food.entity.WagashiAbekawaEntity;
+import defeatedcrow.hac.food.entity.WagashiBotamochiEntity;
 import defeatedcrow.hac.food.entity.WagashiButterEntity;
 import defeatedcrow.hac.food.entity.WagashiIsobeEntity;
 import defeatedcrow.hac.food.entity.WagashiKinakoEntity;
@@ -16,6 +17,8 @@ import defeatedcrow.hac.food.entity.WagashiKurimanjuEntity;
 import defeatedcrow.hac.food.entity.WagashiKurumiEntity;
 import defeatedcrow.hac.food.entity.WagashiNerikiriEntity;
 import defeatedcrow.hac.food.entity.WagashiStrawberryEntity;
+import defeatedcrow.hac.food.entity.WagashiYatsuhashiEntity;
+import defeatedcrow.hac.food.entity.WagashiYoukanEntity;
 import defeatedcrow.hac.food.entity.WagashiZundaEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
@@ -38,7 +41,7 @@ public class WagashiItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 8;
+		return 11;
 	}
 
 	@Override
@@ -54,15 +57,19 @@ public class WagashiItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-			"kinako",
-			"isobe",
-			"zunda",
-			"butter",
-			"strawberry",
-			"kurumi",
-			"kurimanju",
-			"nerikiri",
-			"abekawa" };
+				"kinako",
+				"isobe",
+				"zunda",
+				"butter",
+				"strawberry",
+				"kurumi",
+				"kurimanju",
+				"nerikiri",
+				"abekawa",
+				"youkan",
+				"yatuhashi",
+				"botamochi"
+		};
 		return s;
 	}
 
@@ -94,6 +101,15 @@ public class WagashiItem extends FoodItemBase {
 			break;
 		case 8:
 			ret = new WagashiAbekawaEntity(world, x, y, z, player);
+			break;
+		case 9:
+			ret = new WagashiYoukanEntity(world, x, y, z, player);
+			break;
+		case 10:
+			ret = new WagashiYatsuhashiEntity(world, x, y, z, player);
+			break;
+		case 11:
+			ret = new WagashiBotamochiEntity(world, x, y, z, player);
 			break;
 		}
 

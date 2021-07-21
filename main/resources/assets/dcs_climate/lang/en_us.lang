@@ -214,6 +214,9 @@ item.dcs_silkworm_silk_eggcard.name=Silkworm Egg Card
 item.dcs_silkworm_silk_worm.name=Silkworm
 item.dcs_silkworm_silk_cocoon.name=Silk Cocoon
 item.dcs_silkworm_silk_moth.name=Silkmoth
+item.dcs_food_cutlery_chopsticks.name=Chopsticks
+item.dcs_food_cutlery_spoon.name=Spoon
+item.dcs_food_cutlery_fork.name=Fork
 
 item.dcs_flowerpot_white.name=White Flower Pot
 item.dcs_flowerpot_brown.name=Brown Flower Pot
@@ -248,6 +251,10 @@ item.dcs_food_meat_soysauce.name=Soysauce
 item.dcs_food_meat_siroan.name=White Bean Paste
 item.dcs_food_meat_raw_prawn.name=Raw Prawn
 item.dcs_food_meat_raw_roe.name=Roe
+item.dcs_food_meat_anko.name=Red Bean Paste
+item.dcs_food_spice_cinnamon.name=Cinnamon
+item.dcs_food_spice_azuki.name=Red Beans
+item.dcs_food_spice_mixed_powder.name=Spice Mix
 item.dcs_food_residue_bsg.name=Spent Grain
 item.dcs_food_residue_sake.name=Sake lees
 item.dcs_food_residue_wine.name=Pomace
@@ -271,6 +278,7 @@ item.dcs_food_antibiotic_pigman.name=Pigman Powder
 item.dcs_food_antibiotic_mushroom.name=Mooshroom Powder
 item.dcs_food_antibiotic_mana.name=Mana Dust
 item.dcs_food_antibiotic_anti_heal.name=Recovery Inhibitor
+item.dcs_food_antibiotic_extremozyme.name=Extremozyme
 item.dcs_food_inoculum_koji.name=Koji
 item.dcs_food_inoculum_koji_black.name=Black Koji
 
@@ -369,6 +377,10 @@ item.dcs_food_bread_sausage_bread_raw.name=Raw Sausage Bread Roll
 item.dcs_food_bread_sausage_bread_baked.name=Sausage Bread Roll
 item.dcs_food_bread_graham_crackers_raw.name=Raw Graham Crackers
 item.dcs_food_bread_graham_crackers_baked.name=Graham Crackers
+item.dcs_food_bread_cinnamon_roll_raw.name=Raw Cinnamon Roll
+item.dcs_food_bread_cinnamon_roll_baked.name=Cinnamon Roll
+item.dcs_food_bread_anko_bread_raw.name=Raw Anpan
+item.dcs_food_bread_anko_bread_baked.name=Anpan
 item.dcs_food_stick_fish_raw.name=Skewered Fish
 item.dcs_food_stick_fish_cooked.name=Cooked Skewered Fish
 item.dcs_food_stick_yakitori_raw.name=Raw Yakitori
@@ -430,6 +442,10 @@ item.dcs_food_rice_ball.name=Rice Ball
 item.dcs_food_rice_ball_seaweed.name=Seaweed Rice Ball
 item.dcs_food_rice_ball_miso.name=Miso Rice Ball
 item.dcs_food_rice_ball_roe.name=Roe Rice Ball
+item.dcs_food_rice_tyaduke_salmon.name=Salmon Chazuke
+item.dcs_food_rice_tyaduke_roe.name=Roe Chazuke
+item.dcs_food_rice_sekihan.name=Red Bean Rice
+item.dcs_food_rice_shiruko.name=Shiruko
 item.dcs_food_mochi_raw.name=Raw Rice Cake
 item.dcs_food_mochi_cooked.name=Cooked Rice Cake
 item.dcs_food_steakplate_item.name=Empty Steak Plate
@@ -516,6 +532,7 @@ item.dcs_food_icecream_cocoa.name=Cocoa Ice Cream
 item.dcs_food_icecream_parfait_berry.name=Berry Parfait
 item.dcs_food_icecream_parfait_citrus.name=Citrus Cheese Parfait
 item.dcs_food_icecream_parfait_watermelon.name=Watermelon Parfait
+item.dcs_food_icecream_parfait_anko.name=Macha Parfait
 item.dcs_food_wagashi_kinako.name=Kinako Mochi
 item.dcs_food_wagashi_isobe.name=Isobe Mochi
 item.dcs_food_wagashi_zunda.name=Zunda Mochi
@@ -525,6 +542,9 @@ item.dcs_food_wagashi_kurumi.name=Walnut Yubeshi
 item.dcs_food_wagashi_kurimanju.name=Chestnut Manju
 item.dcs_food_wagashi_nerikiri.name=Nerikiri
 item.dcs_food_wagashi_abekawa.name=Abekawa Mochi
+item.dcs_food_wagashi_youkan.name=Yokan
+item.dcs_food_wagashi_yatuhashi.name=Yatsuhashi
+item.dcs_food_wagashi_botamochi.name=Botamochi
 item.dcs_food_frying_pork.name=Fried Pork
 item.dcs_food_frying_chicken.name=Fried Chicken
 item.dcs_food_frying_fish.name=Fried Fish
@@ -555,6 +575,9 @@ item.dcs_food_dish_big_taco.name=Tacos
 item.dcs_food_dish_big_tacorice.name=Taco Rice
 item.dcs_food_dish_big_nachos.name=Nachos
 item.dcs_food_dish_big_ikameshi.name=Ikameshi
+item.dcs_food_dish_big_biriyani.name=Biriyani
+item.dcs_food_dish_big_chicken_rice.name=Hainanese Chicken Rice
+item.dcs_food_dish_big_tomyum.name=Tom Yum Goong
 item.dcs_food_udon_meat.name=Udon
 item.dcs_food_udon_seaweed.name=Seaweed Udon
 item.dcs_food_udon_egg.name=Egg Udon
@@ -581,6 +604,14 @@ item.dcs_food_pizza_teriyaki_baked.name=Teriyaki Pizza
 item.dcs_food_cookie_raw.name=Raw Cookie Dough
 item.dcs_food_cookie_baked.name=Butter Cookie (Crow)
 item.dcs_food_cookie_baked_unagi.name=Butter Cookie (Moray)
+item.dcs_food_curry_vegi.name=Sambhar
+item.dcs_food_curry_beans.name=Dal Fry
+item.dcs_food_curry_fish.name=Macher Jhol
+item.dcs_food_curry_spinach.name=Palak paneer
+item.dcs_food_curry_butter_chicken.name=Chicken Tikka Masala
+item.dcs_food_curry_vindaloo.name=Green Curry
+item.dcs_food_curry_rice.name=Vindaloo
+item.dcs_food_curry_green.name=Green Curry
 
 ## crops
 item.dcs_food_crops_rice.name=Rice Plant
@@ -641,6 +672,7 @@ item.dcs_food_microbe_slime.name=Slime Mold
 item.dcs_food_microbe_mushroom.name=Fungus
 item.dcs_food_microbe_skin.name=Skin Bacteria
 item.dcs_food_microbe_cyano.name=Cyanobacteria
+item.dcs_food_microbe_methanogen.name=Methanogen
 
 item.dcs_food_chick.name=Chick in Egg
 
@@ -1483,6 +1515,7 @@ tile.dcs_device_brewing_under_0.name=Metal Brewing Tank
 tile.dcs_device_brewing_upper_0.name=Metal Brewing Tank
 tile.dcs_device_distillator_0.name=Still Pot
 tile.dcs_device_aging_barrel_0.name=Aging Barrel
+tile.dcs_device_swedish_torch.name=Swedish Torch
 
 ## crops
 tile.dcs_crop_rice_0.name=Rice Plant
@@ -1768,6 +1801,7 @@ dcs.tip.on_anvil=Use on the anvil.
 dcs.tip.remove_bad_potion=Clear only bad potion effects.
 dcs.tip.clear_potion=Clear all potion effects.
 dcs.tip.drink_customize=Customizable with milk or sugar item.
+dcs.tip.trade_only=Available from Trader Merchant Villagers.
 
 dcs.tip.danger_drink=Powerful but dangerous!
 dcs.tip.correct_from_cow=Collect from cow with Fluid Hopper.
@@ -1877,6 +1911,7 @@ dcs.tip.pressure_plate_0=Detects only the players.
 dcs.tip.pressure_plate_1=Detects players and tamed mobs.
 dcs.tip.exclusive=Place while sneaking: Register the placer as the owner to limit editing and destruction.
 dcs.tip.display.date=Placed on %s
+dcs.tip.chick_in_egg=Spawn a baby chicken.
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products
@@ -2157,6 +2192,9 @@ dcs.tip.microbe.skin_2=Yogurt
 dcs.tip.microbe.cyano_0=Oxygen
 dcs.tip.microbe.cyano_1=Seaweed
 dcs.tip.microbe.cyano_2=Blue Dye
+dcs.tip.microbe.methanogen_0=Fuel Gas
+dcs.tip.microbe.methanogen_1=Sulfur
+dcs.tip.microbe.methanogen_2=Extremozyme
 
 ## message
 dcs_climate.smelting=Climate Smelting
@@ -2316,6 +2354,8 @@ entity.dcs.food.tortilla.name=Tortilla
 entity.dcs.food.raisin_bread.name=Raisin Bread
 entity.dcs.food.sausage_bread.name=Sausage Bread
 entity.dcs.food.graham_cracker.name=Graham Crackers
+entity.dcs.food.cinnamon_roll.name=Cinnamon Roll
+entity.dcs.food.anko.name=Anpan
 
 entity.dcs.food.pizza_roe.name=Rice Cake and Roe Pizza
 entity.dcs.food.pizza_teriyaki.name=Teriyaki Pizza
@@ -2367,6 +2407,10 @@ entity.dcs.food.rice_ball_seaweed.name=Seaweed Rice Ball
 entity.dcs.food.rice_ball.miso=Miso Rice Ball
 entity.dcs.food.rice_ball.roe=Roe Rice Ball
 entity.dcs.food.rice_mushroom.name=Mushroom Meshi
+entity.dcs.food.rice_sekihan.name=Red Bean Rice
+entity.dcs.food.rice_shiruko.name=Shiruko
+entity.dcs.food.rice_tyaduke_salmon.name=Salmon Chazuke
+entity.dcs.food.rice_tyaduke_roe.name=Roe Chazuke
 entity.dcs.food.mochi.name=Rice Cake
 
 entity.dcs.food.empty_steakplate.name=Empty Steak Plate
@@ -2421,7 +2465,7 @@ entity.dcs.food.cake_lemon.name=Lemon Jelly
 entity.dcs.food.cake_bakedcream.name=Baked Custard
 entity.dcs.food.cake_lemon.name=Lemon Jelly
 entity.dcs.food.cake_berry.name=Berry Jelly
-entity.dcs.food.cake_kuzujelly.name=Kuzumochi
+entity.dcs.food.cake_kuzu.name=Kuzumochi
 entity.dcs.food.cake_egg_cocotte_raw.name=Raw Eggs en Cocotte
 entity.dcs.food.cake_gg_cocotte_baked.name=Eggs en Cocotte
 entity.dcs.food.cake_tower.name=Pancake Tower
@@ -2441,6 +2485,9 @@ entity.dcs.food.wagashi_kurumi.name=Walnut Yubeshi
 entity.dcs.food.wagashi_kurimanju.name=Chestnut Manju
 entity.dcs.food.wagashi_nerikiri.name=Nerikiri
 entity.dcs.food.wagashi_abekawa.name=Abekawa Mochi
+entity.dcs.food.wagashi_botamochi.name=Botamochi
+entity.dcs.food.wagashi_yatsuhashi.name=Yatsuhashi
+entity.dcs.food.wagashi_youkan.name=Youkan
 
 entity.dcs.food.icecream_milk.name=Milk Ice Cream
 entity.dcs.food.icecream_kinako.name=Kinako Ice Cream
@@ -2451,6 +2498,7 @@ entity.dcs.food.icecream_cocoa.name=Cocoa Ice Cream
 entity.dcs.food.parfait_berry.name=Berry Parfait
 entity.dcs.food.parfait_citrus.name=Citrus Cheese parfait
 entity.dcs.food.parfait_watermelon.name=Watermelon parfait
+entity.dcs.food.parfait_anko.name=Macha parfait
 
 entity.dcs.food.fried_pork.name=Fried Pork
 entity.dcs.food.fried_chicken.name=Fried Chicken
@@ -2486,6 +2534,9 @@ entity.dcs.food.dish_taco.name=Taco
 entity.dcs.food.dish_tacorice.name=Tacorice
 entity.dcs.food.dish_nachos.name=Nachos
 entity.dcs.food.dish_ikameshi.name=Ikameshi
+entity.dcs.food.dish_biriyani.name=Biriyani
+entity.dcs.food.dish_chicken_rice.name=Hainanese Chicken Rice
+entity.dcs.food.dish_tomyum.name=Tom Yum Goong
 
 entity.dcs.food.udon_meat.name=Udon
 entity.dcs.food.udon_seaweed.name=Seaweed Udon
@@ -2510,6 +2561,19 @@ entity.dcs.food.sauce_salsa.name=Red Salsa
 
 entity.dcs.food.yogurt_plain.name=Plain Yogurt
 entity.dcs.food.yogurt_special.name=Special Yogurt
+
+entity.dcs.food.curry_vegi.name=Sambhar
+entity.dcs.food.curry_beans.name=Dal Fry
+entity.dcs.food.curry_fish.name=Macher Jhol
+entity.dcs.food.curry_spinach.name=Palak Paneer
+entity.dcs.food.curry_butter_chicken.name=Chicken Tikka Masala
+entity.dcs.food.curry_vindaloo.name=Vindaloo
+entity.dcs.food.curry_green.name=Green Curry
+entity.dcs.food.curry_rice.name=Japanese Curry Rice
+
+entity.dcs.food.cutlery_chopsticks.name=Chopsticks
+entity.dcs.food.cutlery_spoon.name=Spoon
+entity.dcs.food.cutlery_fork.name=Fork
 
 entity.dcs.food.liquor_bottle_empty.name=Empty Liquor Bottle
 entity.dcs.food.liquor_bottle_beer.name=Beer

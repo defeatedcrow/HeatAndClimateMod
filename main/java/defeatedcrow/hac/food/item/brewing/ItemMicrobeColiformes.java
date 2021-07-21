@@ -67,7 +67,7 @@ public class ItemMicrobeColiformes extends MicrobeItem implements IMicrobe {
 		case SOIL:
 			return 10;
 		case WATER:
-			return 50;
+			return 40;
 		default:
 			return 0;
 		}

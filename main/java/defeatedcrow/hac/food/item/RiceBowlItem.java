@@ -13,6 +13,10 @@ import defeatedcrow.hac.food.entity.EntityRiceBallRoe;
 import defeatedcrow.hac.food.entity.EntityRiceBallSeaweed;
 import defeatedcrow.hac.food.entity.EntityRiceBowl;
 import defeatedcrow.hac.food.entity.EntityRiceMushroom;
+import defeatedcrow.hac.food.entity.EntityRiceSekihan;
+import defeatedcrow.hac.food.entity.EntityRiceShiruko;
+import defeatedcrow.hac.food.entity.EntityRiceTyadukeRoe;
+import defeatedcrow.hac.food.entity.EntityRiceTyadukeSalmon;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +34,7 @@ public class RiceBowlItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 5;
+		return 9;
 	}
 
 	@Override
@@ -45,7 +49,18 @@ public class RiceBowlItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = { "boiled", "mushroom", "ball", "ball_seaweed", "ball_miso", "ball_roe" };
+		String[] s = {
+				"boiled",
+				"mushroom",
+				"ball",
+				"ball_seaweed",
+				"ball_miso",
+				"ball_roe",
+				"sekihan",
+				"shiruko",
+				"tyaduke_salmon",
+				"tyaduke_roe"
+		};
 		return s;
 	}
 
@@ -68,6 +83,20 @@ public class RiceBowlItem extends FoodItemBase {
 			break;
 		case 5:
 			ret = new EntityRiceBallRoe(world, x, y, z, player);
+			break;
+		case 6:
+			ret = new EntityRiceSekihan(world, x, y, z, player);
+			break;
+		case 7:
+			ret = new EntityRiceShiruko(world, x, y, z, player);
+			ret.setIndividual(world.rand.nextInt(32));
+			break;
+		case 8:
+			ret = new EntityRiceTyadukeSalmon(world, x, y, z, player);
+			break;
+		case 9:
+			ret = new EntityRiceTyadukeRoe(world, x, y, z, player);
+			break;
 		}
 
 		return ret;
@@ -75,6 +104,8 @@ public class RiceBowlItem extends FoodItemBase {
 
 	@Override
 	public int getFoodAmo(int meta) {
+		if (meta > 6)
+			return 8;
 		return meta == 0 ? 5 : 6;
 	}
 

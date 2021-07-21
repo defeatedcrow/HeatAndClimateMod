@@ -208,6 +208,7 @@ public class MainInit {
 	public static Block wallshelfRattan;
 
 	// device
+	public static Block swedishTorch;
 	public static Block firestand;
 	public static Block chamber;
 	public static Block shitirin;

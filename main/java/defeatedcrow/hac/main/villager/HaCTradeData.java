@@ -99,6 +99,14 @@ public class HaCTradeData {
 		TRADE2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomBuildingBlock(64), 4));
 		TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.selenite, 1, 0), 2));
 
+		if (ModuleConfig.food) {
+			TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.spices, 8, 0), 2));
+			TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.spices, 8, 0), 1));
+			TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.spices, 8, 1), 2));
+			TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.spices, 8, 2), 2));
+			TRADE2.add(new HaCTradeData(TradeType.BUY, new ItemStack(FoodInit.spices, 8, 2), 1));
+		}
+
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.silkworm, 9, 0), 5));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.silkworm, 9, 0), 5));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 6), 4));
@@ -106,6 +114,7 @@ public class HaCTradeData {
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.cropBasket, 1, 11), 4));
 		TRADE3.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.miscDust, 8, 12), 8));
 
+		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.silkworm, 9, 0), 5));
 		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 6), 2));
 		TRADE4.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.clothes, 1, 6), 2));
 		TRADE4.add(new HaCTradeData(TradeType.BUY, MainUtil.getIngot(3), 4));

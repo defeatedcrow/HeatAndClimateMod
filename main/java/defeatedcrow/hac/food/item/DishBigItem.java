@@ -7,12 +7,15 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.DishBiriyaniEntity;
+import defeatedcrow.hac.food.entity.DishChickenRiceEntity;
 import defeatedcrow.hac.food.entity.DishIkameshiEntity;
 import defeatedcrow.hac.food.entity.DishMaboEntity;
 import defeatedcrow.hac.food.entity.DishNachosEntity;
 import defeatedcrow.hac.food.entity.DishOmericeEntity;
 import defeatedcrow.hac.food.entity.DishTacoEntity;
 import defeatedcrow.hac.food.entity.DishTacoriceEntity;
+import defeatedcrow.hac.food.entity.DishTomyumEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +33,7 @@ public class DishBigItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 5;
+		return 8;
 	}
 
 	@Override
@@ -45,7 +48,17 @@ public class DishBigItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = { "mabo", "omerice", "taco", "tacorice", "nachos", "ikameshi" };
+		String[] s = {
+				"mabo",
+				"omerice",
+				"taco",
+				"tacorice",
+				"nachos",
+				"ikameshi",
+				"biriyani",
+				"chicken_rice",
+				"tomyum"
+		};
 		return s;
 	}
 
@@ -67,6 +80,15 @@ public class DishBigItem extends FoodItemBase {
 		}
 		if (i == 5) {
 			ret = new DishIkameshiEntity(world, x, y, z, player);
+		}
+		if (i == 6) {
+			ret = new DishBiriyaniEntity(world, x, y, z, player);
+		}
+		if (i == 7) {
+			ret = new DishChickenRiceEntity(world, x, y, z, player);
+		}
+		if (i == 8) {
+			ret = new DishTomyumEntity(world, x, y, z, player);
 		}
 		ret.setIndividual(world.rand.nextInt(32));
 		return ret;

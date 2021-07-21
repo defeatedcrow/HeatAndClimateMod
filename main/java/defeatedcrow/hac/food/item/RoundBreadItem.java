@@ -7,11 +7,12 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.BreadAnkoEntity;
+import defeatedcrow.hac.food.entity.BreadCinnamonEntity;
 import defeatedcrow.hac.food.entity.BreadGingermanEntity;
 import defeatedcrow.hac.food.entity.BreadGrahamCrackerEntity;
 import defeatedcrow.hac.food.entity.BreadPancakeEntity;
 import defeatedcrow.hac.food.entity.BreadPitaEntity;
-import defeatedcrow.hac.food.entity.PizzaTomatoEntity;
 import defeatedcrow.hac.food.entity.BreadRaisinEntity;
 import defeatedcrow.hac.food.entity.BreadRoundCreamEntity;
 import defeatedcrow.hac.food.entity.BreadRoundEntity;
@@ -22,6 +23,7 @@ import defeatedcrow.hac.food.entity.BreadToastFrenchEntity;
 import defeatedcrow.hac.food.entity.BreadToastGarlicEntity;
 import defeatedcrow.hac.food.entity.BreadTortillaEntity;
 import defeatedcrow.hac.food.entity.BreadWalnutEntity;
+import defeatedcrow.hac.food.entity.PizzaTomatoEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,7 +41,7 @@ public class RoundBreadItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 27;
+		return 31;
 	}
 
 	@Override
@@ -55,34 +57,39 @@ public class RoundBreadItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-			"roundbread_raw",
-			"roundbread_baked",
-			"squarebread_raw",
-			"squarebread_baked",
-			"butter_toast_raw",
-			"butter_toast_baked",
-			"pizza_tomato_raw",
-			"pizza_tomato_baked",
-			"roundbread_cream",
-			"french_toast",
-			"garlic_toast_raw",
-			"garlic_toast_baked",
-			"pita_bread_raw",
-			"pita_bread_baked",
-			"pancake_raw",
-			"pancake_baked",
-			"walnut_bread_raw",
-			"walnut_bread_baked",
-			"gingerbreadman_raw",
-			"gingerbreadman_baked",
-			"tortilla_raw",
-			"tortilla_baked",
-			"raisin_bread_raw",
-			"raisin_bread_baked",
-			"sausage_bread_raw",
-			"sausage_bread_baked",
-			"graham_crackers_raw",
-			"graham_crackers_baked" };
+				"roundbread_raw",
+				"roundbread_baked",
+				"squarebread_raw",
+				"squarebread_baked",
+				"butter_toast_raw",
+				"butter_toast_baked",
+				"pizza_tomato_raw",
+				"pizza_tomato_baked",
+				"roundbread_cream",
+				"french_toast",
+				"garlic_toast_raw",
+				"garlic_toast_baked",
+				"pita_bread_raw",
+				"pita_bread_baked",
+				"pancake_raw",
+				"pancake_baked",
+				"walnut_bread_raw",
+				"walnut_bread_baked",
+				"gingerbreadman_raw",
+				"gingerbreadman_baked",
+				"tortilla_raw",
+				"tortilla_baked",
+				"raisin_bread_raw",
+				"raisin_bread_baked",
+				"sausage_bread_raw",
+				"sausage_bread_baked",
+				"graham_crackers_raw",
+				"graham_crackers_baked",
+				"cinnamon_roll_raw",
+				"cinnamon_roll_baked",
+				"anko_bread_raw",
+				"anko_bread_baked"
+		};
 		return s;
 	}
 
@@ -135,6 +142,12 @@ public class RoundBreadItem extends FoodItemBase {
 		if (i == 26 || i == 27) {
 			ret = new BreadGrahamCrackerEntity(world, x, y, z, player);
 		}
+		if (i == 28 || i == 29) {
+			ret = new BreadCinnamonEntity(world, x, y, z, player);
+		}
+		if (i == 30 || i == 31) {
+			ret = new BreadAnkoEntity(world, x, y, z, player);
+		}
 
 		if ((i & 1) == 0) {
 			ret.setRAW(true);
@@ -160,11 +173,13 @@ public class RoundBreadItem extends FoodItemBase {
 			return 6;
 		case 7:
 		case 25:
+		case 31:
 			return 10;
 		case 8:
 		case 9:
 		case 17:
 		case 23:
+		case 29:
 			return 8;
 		}
 		return 0;
