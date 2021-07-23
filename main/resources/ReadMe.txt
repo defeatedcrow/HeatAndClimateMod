@@ -2234,6 +2234,7 @@ Y = 色のキューブ
 　　・ModuleConfigで一部項目をオフにするとクラッシュする不具合の修正
 　　・MathHelperのインポートミス
 　　・コンベアの描画がおかしい
+　　・内部的なタイプミスの修正
 　EX
 　　・zh_cn.lang更新 (Pliosauroidea氏より)
 

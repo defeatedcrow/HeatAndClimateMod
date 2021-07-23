@@ -39,13 +39,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod(modid = ClimateMain.MOD_ID, name = ClimateMain.MOD_NAME,
-		version = ClimateMain.MOD_MEJOR + "." + ClimateMain.MOD_MINOR + "." + ClimateMain.MOD_BUILD,
+		version = ClimateMain.MOD_MAJOR + "." + ClimateMain.MOD_MINOR + "." + ClimateMain.MOD_BUILD,
 		dependencies = ClimateMain.MOD_DEPENDENCIES, acceptedMinecraftVersions = ClimateCore.MOD_ACCEPTED_MC_VERSIONS,
 		updateJSON = ClimateMain.UPDATE_JSON, certificateFingerprint = ClimateMain.KEY, useMetadata = true)
 public class ClimateMain {
 	public static final String MOD_ID = "dcs_climate";
 	public static final String MOD_NAME = "HeatAndClimateMod";
-	public static final int MOD_MEJOR = 3;
+	public static final int MOD_MAJOR = 3;
 	public static final int MOD_MINOR = 6;
 	public static final int MOD_BUILD = 9;
 	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.6.7,)";
