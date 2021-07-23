@@ -189,7 +189,6 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(DCName.FUEL_FLUID.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
@@ -201,6 +200,7 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
+		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
 	}
 
 }

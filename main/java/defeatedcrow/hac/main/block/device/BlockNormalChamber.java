@@ -200,7 +200,6 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
-			tooltip.add(TextFormatting.BOLD.toString() + "Tier 1");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(DCName.FUEL_SOLID.getLocalizedName());
 			tooltip.add(DCName.AIR.getLocalizedName() + ": " + TextFormatting.AQUA.toString() + "WIND");
@@ -213,6 +212,7 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
+		tooltip.add(TextFormatting.BOLD.toString() + "Tier 1");
 	}
 
 	@Override

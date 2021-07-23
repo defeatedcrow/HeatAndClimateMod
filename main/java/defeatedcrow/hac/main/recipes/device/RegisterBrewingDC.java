@@ -16,7 +16,7 @@ import net.minecraftforge.fluids.FluidStack;
 public class RegisterBrewingDC {
 
 	public static void load() {
-		if (ModuleConfig.food && ModuleConfig.food_advanced) {
+		if (ModuleConfig.food_advanced) {
 			loadFermentationRecipe();
 			loadStillRecipe();
 			if (ModuleConfig.liquor)
@@ -404,6 +404,11 @@ public class RegisterBrewingDC {
 						"containerMalt"
 		});
 
+		brewng(new ItemStack(FoodInit.residue, 1, 0), new FluidStack(FoodInit.cider, 200), new FluidStack(
+				FluidRegistry.WATER, 1000), new Object[] {
+						"containerApple"
+		});
+
 		brewng(new ItemStack(FoodInit.residue, 1, 2), new FluidStack(FoodInit.wine, 200), new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
 						"containerGrape"
@@ -414,6 +419,12 @@ public class RegisterBrewingDC {
 		brewng(new ItemStack(FoodInit.residue, 1, 0), new FluidStack(FoodInit.beer, 1000), new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {
 						"containerMalt",
+						new ItemStack(FoodInit.beerYeast, 1, 0)
+		});
+
+		brewng(new ItemStack(FoodInit.residue, 1, 0), new FluidStack(FoodInit.cider, 1000), new FluidStack(
+				FluidRegistry.WATER, 1000), new Object[] {
+						"containerApple",
 						new ItemStack(FoodInit.beerYeast, 1, 0)
 		});
 

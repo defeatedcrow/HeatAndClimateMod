@@ -118,9 +118,9 @@ public class ModuleConfig {
 			lotus = lotus_b.getBoolean();
 			liquor = liquor_b.getBoolean();
 
-			machine_advanced = machine_a.getBoolean();
-			magic_advanced = magic_a.getBoolean();
-			food_advanced = food_a.getBoolean();
+			machine_advanced = machine_a.getBoolean() && machine;
+			magic_advanced = magic_a.getBoolean() && magic;
+			food_advanced = food_a.getBoolean() && food;
 			weapon_advanced = weapon_a.getBoolean();
 			build_advanced = build_a.getBoolean();
 			clothes_advanced = build_c.getBoolean();

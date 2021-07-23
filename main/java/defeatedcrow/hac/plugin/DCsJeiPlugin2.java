@@ -103,8 +103,8 @@ public class DCsJeiPlugin2 implements IModPlugin {
 
 		registry.addRecipeCatalyst(new ItemStack(MainInit.fuelStove), "dcs_climate.fuel");
 		if (ModuleConfig.machine) {
-			registry.addRecipeCatalyst(new ItemStack(MachineInit.burner), "dcs_climate.fuel");
 			if (ModuleConfig.machine_advanced) {
+				registry.addRecipeCatalyst(new ItemStack(MachineInit.burner), "dcs_climate.fuel");
 				registry.addRecipeCatalyst(new ItemStack(MachineInit.dieselEngine), "dcs_climate.fuel");
 				registry.addRecipeCatalyst(new ItemStack(MachineInit.scooter), "dcs_climate.fuel");
 				registry.addRecipeCatalyst(new ItemStack(MachineInit.pressMachine, 1, 0), "dcs_climate.pressmold");
@@ -124,33 +124,52 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		}
 
 		if (ModuleConfig.machine) {
-			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] { "dcs_climate.mill" });
+			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] {
+					"dcs_climate.mill"
+			});
 
-			registry.addRecipeClickArea(GuiSpinning.class, 80, 32, 16, 16, new String[] { "dcs_climate.spinning" });
+			registry.addRecipeClickArea(GuiSpinning.class, 80, 32, 16, 16, new String[] {
+					"dcs_climate.spinning"
+			});
 
-			registry.addRecipeClickArea(GuiReactor.class, 120, 18, 16, 16, new String[] { "dcs_climate.reactor" });
+			registry.addRecipeClickArea(GuiReactor.class, 120, 18, 16, 16, new String[] {
+					"dcs_climate.reactor"
+			});
 
-			registry.addRecipeClickArea(GuiReactorIBC.class, 93, 38, 16, 16, new String[] { "dcs_climate.reactor" });
+			registry.addRecipeClickArea(GuiReactorIBC.class, 93, 38, 16, 16, new String[] {
+					"dcs_climate.reactor"
+			});
 
-			registry.addRecipeClickArea(GuiCrusher.class, 80, 22, 12, 23, new String[] { "dcs_climate.crusher" });
+			registry.addRecipeClickArea(GuiCrusher.class, 80, 22, 12, 23, new String[] {
+					"dcs_climate.crusher"
+			});
 		}
 
 		if (ModuleConfig.food) {
 			registry.addRecipeClickArea(GuiFluidProcessor.class, 80, 35, 16, 16, new String[] {
-				"dcs_climate.fluidcraft" });
+					"dcs_climate.fluidcraft"
+			});
 
-			registry.addRecipeClickArea(GuiSteelPot.class, 90, 35, 16, 16, new String[] { "dcs_climate.fluidcraft" });
+			registry.addRecipeClickArea(GuiSteelPot.class, 90, 35, 16, 16, new String[] {
+					"dcs_climate.fluidcraft"
+			});
 
-			registry.addRecipeClickArea(GuiTeaPot.class, 80, 35, 16, 16, new String[] { "dcs_climate.fluidcraft" });
+			registry.addRecipeClickArea(GuiTeaPot.class, 80, 35, 16, 16, new String[] {
+					"dcs_climate.fluidcraft"
+			});
 
 			if (ModuleConfig.food_advanced) {
 				registry.addRecipeClickArea(GuiBrewingTank.class, 80, 30, 16, 16, new String[] {
-					"dcs_climate.brewing" });
+						"dcs_climate.brewing"
+				});
 
-				registry.addRecipeClickArea(GuiStillPot.class, 80, 30, 16, 16, new String[] { "dcs_climate.still" });
+				registry.addRecipeClickArea(GuiStillPot.class, 80, 30, 16, 16, new String[] {
+						"dcs_climate.still"
+				});
 
 				registry.addRecipeClickArea(GuiAgingBarrel.class, 110, 35, 16, 16, new String[] {
-					"dcs_climate.aging" });
+						"dcs_climate.aging"
+				});
 			}
 		}
 	}

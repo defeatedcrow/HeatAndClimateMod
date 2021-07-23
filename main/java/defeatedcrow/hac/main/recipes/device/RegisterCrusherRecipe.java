@@ -35,8 +35,7 @@ public class RegisterCrusherRecipe {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 2), new ItemStack(
 					MainInit.foodDust, 1, 0), 0.5F, new ItemStack(MainInit.foodDust, 1,
 							1), 0.5F, null, sus, "cropRice");
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(FoodInit.seeds, 1, 4), new ItemStack(MainInit.foodDust,
-					1, 1), 0.25F, null, 0F, new FluidStack(MainInit.tomatoJuice, 100), sus, "cropCoffee");
+
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(
 					MainInit.lemon, 250), sus, "cropLemon");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
@@ -63,6 +62,12 @@ public class RegisterCrusherRecipe {
 					MainInit.foodDust, 1, 1), 0.5F, sus, "foodFlour");
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 3), new ItemStack(
 					MainInit.foodDust, 1, 1), 0.5F, sus, new ItemStack(Items.POISONOUS_POTATO));
+
+			if (ModuleConfig.food) {
+				RecipeAPI.registerCrushers.addRecipe(new ItemStack(FoodInit.seeds, 1, 4), new ItemStack(
+						MainInit.foodDust,
+						1, 1), 0.25F, null, 0F, new FluidStack(MainInit.tomatoJuice, 100), sus, "cropCoffee");
+			}
 
 			if (OreDictionary.doesOreNameExist("plantRoot")) {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 3), new ItemStack(

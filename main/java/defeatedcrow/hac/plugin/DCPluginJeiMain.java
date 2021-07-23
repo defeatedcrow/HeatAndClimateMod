@@ -16,8 +16,6 @@ public class DCPluginJeiMain {
 	public static void load() {
 
 		if (ModuleConfig.magic) {
-			// DCsJEIPluginLists.excluder.add(new ItemStack(MagicInit.clusterIce));
-			// DCsJEIPluginLists.excluder.add(new ItemStack(MagicInit.infernalFlame));
 			DCsJEIPluginLists.excluder.add(new ItemStack(MainInit.markingPanel));
 		}
 
@@ -25,10 +23,12 @@ public class DCPluginJeiMain {
 
 		if (ModuleConfig.machine) {
 			DCsJEIPluginLists.millstones.add(new ItemStack(MachineInit.stonemill));
-			DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.reactor, 1, 0));
 			DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.IBC_reactor, 1, 0));
 			DCsJEIPluginLists.spinning.add(new ItemStack(MachineInit.spinning, 1, 0));
-			DCsJEIPluginLists.crusher.add(new ItemStack(MachineInit.crusher, 1, 0));
+			if (ModuleConfig.machine_advanced) {
+				DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.reactor, 1, 0));
+				DCsJEIPluginLists.crusher.add(new ItemStack(MachineInit.crusher, 1, 0));
+			}
 		}
 
 		if (ModuleConfig.food) {

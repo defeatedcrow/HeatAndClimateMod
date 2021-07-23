@@ -128,6 +128,7 @@ public class BottleLiquorRenderer extends DCRenderFoodBase<LiquorBottleEntity> {
 		case 12:
 		case 13:
 		case 16:
+		case 17:
 			return MODEL_B;
 		default:
 			return MODEL_A;
@@ -147,9 +148,17 @@ public class BottleLiquorRenderer extends DCRenderFoodBase<LiquorBottleEntity> {
 		case 12:
 		case 13:
 		case 16:
-			return new boolean[] { true, true, true };
+			return new boolean[] {
+					true,
+					true,
+					true
+			};
 		default:
-			return new boolean[] { true, false, false };
+			return new boolean[] {
+					true,
+					false,
+					false
+			};
 		}
 	}
 }

@@ -47,7 +47,9 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 
 	@Override
 	public IFluidTankProperties[] getTankProperties() {
-		return new FluidTankProperties[] { new FluidTankProperties(getFluid(), 500) };
+		return new FluidTankProperties[] {
+				new FluidTankProperties(getFluid(), 500)
+		};
 	}
 
 	@Override
@@ -193,6 +195,8 @@ public class FluidBottleContDC implements IFluidHandlerItem, ICapabilityProvider
 			meta = 15;
 		} else if (fluid == FoodInit.awamori) {
 			meta = 16;
+		} else if (fluid == FoodInit.cider) {
+			meta = 17;
 		}
 		if (meta > 0) {
 			return new ItemStack(FoodInit.liquorBottle, 1, meta);

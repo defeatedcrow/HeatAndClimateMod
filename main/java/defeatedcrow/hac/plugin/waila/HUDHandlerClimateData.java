@@ -92,7 +92,7 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 
 		BlockSet set = new BlockSet(block, meta);
 
-		if (config.getConfig("dcs_climate.showclimate")) {
+		if (ModuleConfig.food && config.getConfig("dcs_climate.showclimate")) {
 
 			if (targetHeatList.contains(set)) {
 				DCHeatTier heat = ClimateAPI.registerBlock.getHeatTier(block, meta);
@@ -118,7 +118,7 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 			}
 		}
 
-		if (config.getConfig("dcs_climate.showcrop")) {
+		if (ModuleConfig.food && config.getConfig("dcs_climate.showcrop")) {
 
 			if (ClimateCropBase.class.isInstance(block) && block != FoodInit.saplings) {
 				ClimateCropBase crop = (ClimateCropBase) block;
@@ -167,17 +167,19 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 
 		HUDHandlerClimateData provider = new HUDHandlerClimateData();
 
-		registrar.registerStackProvider(provider, FoodInit.cropRice.getClass());
-		registrar.registerStackProvider(provider, FoodInit.cropOnion.getClass());
-		registrar.registerStackProvider(provider, FoodInit.cropSpinach.getClass());
-		registrar.registerStackProvider(provider, FoodInit.cropTomato.getClass());
-		registrar.registerStackProvider(provider, FoodInit.cropCoffee.getClass());
-		registrar.registerStackProvider(provider, FoodInit.cropCotton.getClass());
-		registrar.registerStackProvider(provider, FoodInit.leavesLemon.getClass());
-		registrar.registerStackProvider(provider, FoodInit.leavesOlive.getClass());
-		registrar.registerStackProvider(provider, FoodInit.leavesTea.getClass());
-		registrar.registerStackProvider(provider, FoodInit.leavesMorus.getClass());
-		registrar.registerStackProvider(provider, FoodInit.saplings.getClass());
+		if (ModuleConfig.food) {
+			registrar.registerStackProvider(provider, FoodInit.cropRice.getClass());
+			registrar.registerStackProvider(provider, FoodInit.cropOnion.getClass());
+			registrar.registerStackProvider(provider, FoodInit.cropSpinach.getClass());
+			registrar.registerStackProvider(provider, FoodInit.cropTomato.getClass());
+			registrar.registerStackProvider(provider, FoodInit.cropCoffee.getClass());
+			registrar.registerStackProvider(provider, FoodInit.cropCotton.getClass());
+			registrar.registerStackProvider(provider, FoodInit.leavesLemon.getClass());
+			registrar.registerStackProvider(provider, FoodInit.leavesOlive.getClass());
+			registrar.registerStackProvider(provider, FoodInit.leavesTea.getClass());
+			registrar.registerStackProvider(provider, FoodInit.leavesMorus.getClass());
+			registrar.registerStackProvider(provider, FoodInit.saplings.getClass());
+		}
 
 		registrar.registerBodyProvider(provider, ClimateCropBase.class);
 		registrar.registerBodyProvider(provider, ClimateDoubleCropBase.class);

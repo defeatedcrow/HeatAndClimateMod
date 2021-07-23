@@ -12,6 +12,7 @@ import defeatedcrow.hac.machine.block.tankyard.TileTankYard;
 import defeatedcrow.hac.machine.block.tankyard.TileYardPart;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TilePail;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -76,28 +77,34 @@ public class HUDHandlerFluidDC extends HUDHandlerBlocks {
 		registrar.registerBodyProvider(provider, TilePail.class);
 		registrar.registerNBTProvider(provider, TilePail.class);
 
-		registrar.registerBodyProvider(provider, TileIBC.class);
-		registrar.registerNBTProvider(provider, TileIBC.class);
+		registrar.registerBodyProvider(provider, TileCookingStove.class);
+		registrar.registerNBTProvider(provider, TileCookingStove.class);
 
-		registrar.registerBodyProvider(provider, TileTankYard.class);
-		registrar.registerNBTProvider(provider, TileTankYard.class);
+		if (ModuleConfig.machine) {
+			registrar.registerBodyProvider(provider, TileIBC.class);
+			registrar.registerNBTProvider(provider, TileIBC.class);
 
-		registrar.registerBodyProvider(provider, TileYardPart.class);
-		registrar.registerNBTProvider(provider, TileYardPart.class);
+			registrar.registerBodyProvider(provider, TileHopperFluid.class);
+			registrar.registerNBTProvider(provider, TileHopperFluid.class);
 
-		registrar.registerBodyProvider(provider, TileHopperFluid.class);
-		registrar.registerNBTProvider(provider, TileHopperFluid.class);
+			if (ModuleConfig.machine_advanced) {
+				registrar.registerBodyProvider(provider, TileTankYard.class);
+				registrar.registerNBTProvider(provider, TileTankYard.class);
+
+				registrar.registerBodyProvider(provider, TileYardPart.class);
+				registrar.registerNBTProvider(provider, TileYardPart.class);
+
+				registrar.registerBodyProvider(provider, TileReactor.class);
+				registrar.registerNBTProvider(provider, TileReactor.class);
+
+				registrar.registerBodyProvider(provider, TileDieselEngine.class);
+				registrar.registerNBTProvider(provider, TileDieselEngine.class);
+			}
+
+		}
 
 		registrar.registerBodyProvider(provider, TileFluidProcessorBase.class);
 		registrar.registerNBTProvider(provider, TileFluidProcessorBase.class);
 
-		registrar.registerBodyProvider(provider, TileCookingStove.class);
-		registrar.registerNBTProvider(provider, TileCookingStove.class);
-
-		registrar.registerBodyProvider(provider, TileReactor.class);
-		registrar.registerNBTProvider(provider, TileReactor.class);
-
-		registrar.registerBodyProvider(provider, TileDieselEngine.class);
-		registrar.registerNBTProvider(provider, TileDieselEngine.class);
 	}
 }

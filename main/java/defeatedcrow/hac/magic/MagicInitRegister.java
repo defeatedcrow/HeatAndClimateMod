@@ -69,6 +69,14 @@ public class MagicInitRegister {
 
 		if (ModuleConfig.magic_advanced) {
 
+			MagicInit.magicCard3 = new ItemColorCard3().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card_m2");
+			DCMaterialReg
+					.registerItem(MagicInit.magicCard3, ClimateCore.PACKAGE_BASE + "_magic_card_m2", ClimateMain.MOD_ID);
+
+			MagicInit.magicCard2 = new ItemColorCard2().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card_m");
+			DCMaterialReg
+					.registerItem(MagicInit.magicCard2, ClimateCore.PACKAGE_BASE + "_magic_card_m", ClimateMain.MOD_ID);
+
 			// tier2
 			MagicInit.colorPendant = new ItemColorPendant()
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_pendant");
@@ -90,14 +98,6 @@ public class MagicInitRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_gauntlet");
 			DCMaterialReg
 					.registerItem(MagicInit.colorGauntlet, ClimateCore.PACKAGE_BASE + "_color_gauntlet", ClimateMain.MOD_ID);
-
-			MagicInit.magicCard3 = new ItemColorCard3().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card_m2");
-			DCMaterialReg
-					.registerItem(MagicInit.magicCard3, ClimateCore.PACKAGE_BASE + "_magic_card_m2", ClimateMain.MOD_ID);
-
-			MagicInit.magicCard2 = new ItemColorCard2().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card_m");
-			DCMaterialReg
-					.registerItem(MagicInit.magicCard2, ClimateCore.PACKAGE_BASE + "_magic_card_m", ClimateMain.MOD_ID);
 
 			MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
 					EntityEquipmentSlot.FEET, "blue").setCreativeTab(ClimateMain.magic)

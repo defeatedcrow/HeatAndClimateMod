@@ -1176,6 +1176,45 @@ public class FoodBasicRecipe {
 				"cropCucumber"
 		});
 
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.drink, 1, 3), new Object[] {
+				"bucketWater",
+				"cropApple",
+				"dustSugar"
+		});
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.drink, 1, 4), new Object[] {
+				"bucketWater",
+				"cropGrape",
+				"dustSugar"
+		});
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.drink, 1, 7), new Object[] {
+				"bucketWater",
+				"dustSakeLees",
+				"dustSugar"
+		});
+
+		DCRecipe.jsonShapelessRecipe("food", 2, new ItemStack(FoodInit.drink, 1, 7), new Object[] {
+				"bucketWater",
+				"foodKoji"
+		});
+
+		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.drink, 2, 8), new Object[] {
+				new ItemStack(FoodInit.liquorBottle, 1, 6),
+				"egg",
+				"dustSugar",
+				"listAllheavycream",
+				"listAllspice"
+		});
+
+		DCRecipe.jsonShapelessRecipe("food", 2, new ItemStack(FoodInit.drink, 2, 8), new Object[] {
+				new ItemStack(FoodInit.liquorBottle, 1, 11),
+				"egg",
+				"dustSugar",
+				"listAllheavycream",
+				"listAllspice"
+		});
+
 		// cake
 
 		DCRecipe.jsonShapelessRecipe("food", new ItemStack(FoodInit.cake, 1, 0), new Object[] {

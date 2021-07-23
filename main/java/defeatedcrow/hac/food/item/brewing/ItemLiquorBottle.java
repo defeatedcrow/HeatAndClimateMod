@@ -50,42 +50,46 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemLiquorBottle extends FoodItemBase {
 
 	public static String[] names = {
-		"empty",
-		"beer",
-		"wine",
-		"sake",
-		"date_wine",
-		"whisky",
-		"brandy",
-		"pomace_brandy",
-		"shotyu",
-		"araq",
-		"rum_white",
-		"rum",
-		"akvavit",
-		"vodka",
-		"nether",
-		"ender",
-		"awamori" };
+			"empty",
+			"beer",
+			"wine",
+			"sake",
+			"date_wine",
+			"whisky",
+			"brandy",
+			"pomace_brandy",
+			"shotyu",
+			"araq",
+			"rum_white",
+			"rum",
+			"akvavit",
+			"vodka",
+			"nether",
+			"ender",
+			"awamori",
+			"cider"
+	};
 
 	public static final String[] FLUIDS = {
-		"empty",
-		"dcs.beer",
-		"dcs.wine",
-		"dcs.sake",
-		"dcs.date",
-		"dcs.whisky",
-		"dcs.brandy",
-		"dcs.pomace_brandy",
-		"dcs.shotyu",
-		"dcs.araq",
-		"dcs.white_rum",
-		"dcs.dark_rum",
-		"dcs.akvavit",
-		"dcs.vodka",
-		"dcs.nether",
-		"dcs.chorus_liquor",
-		"dcs.awamori" };
+			"empty",
+			"dcs.beer",
+			"dcs.wine",
+			"dcs.sake",
+			"dcs.date",
+			"dcs.whisky",
+			"dcs.brandy",
+			"dcs.pomace_brandy",
+			"dcs.shotyu",
+			"dcs.araq",
+			"dcs.white_rum",
+			"dcs.dark_rum",
+			"dcs.akvavit",
+			"dcs.vodka",
+			"dcs.nether",
+			"dcs.chorus_liquor",
+			"dcs.awamori",
+			"dcs.cider"
+	};
 
 	public ItemLiquorBottle() {
 		super(false);
@@ -106,7 +110,7 @@ public class ItemLiquorBottle extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 16;
+		return 17;
 	}
 
 	@Override
@@ -235,15 +239,15 @@ public class ItemLiquorBottle extends FoodItemBase {
 	}
 
 	public static String getFluidName(int meta) {
-		if (meta > 16) {
-			meta = 16;
+		if (meta > 17) {
+			meta = 17;
 		}
 		return FLUIDS[meta];
 	}
 
 	public static String getTypeName(int meta) {
-		if (meta > 16) {
-			meta = 16;
+		if (meta > 17) {
+			meta = 17;
 		}
 		return names[meta];
 	}
@@ -287,6 +291,8 @@ public class ItemLiquorBottle extends FoodItemBase {
 			meta = 15;
 		} else if (fluid == FoodInit.awamori) {
 			meta = 16;
+		} else if (fluid == FoodInit.cider) {
+			meta = 17;
 		}
 		return meta;
 	}

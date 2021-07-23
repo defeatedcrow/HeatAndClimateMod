@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.food.entity.CakeAppleEntity;
 import defeatedcrow.hac.food.entity.CakeBerryEntity;
 import defeatedcrow.hac.food.entity.CakeButterEntity;
 import defeatedcrow.hac.food.entity.CakeChocolateEntity;
@@ -45,12 +46,12 @@ public class CakeItem extends FoodItemBase {
 
 	@Override
 	public int getMaxMeta() {
-		return 18;
+		return 19;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(meta, 0, 18);
+		int i = MathHelper.clamp(meta, 0, 19);
 		String s = "items/food/cake_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -61,25 +62,27 @@ public class CakeItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-			"butter_raw",
-			"butter",
-			"chocolate",
-			"coffeejelly",
-			"lemonjelly",
-			"bakedcream",
-			"berryjelly",
-			"kuzujelly",
-			"egg_cocotte_raw",
-			"egg_cocotte_baked",
-			"stickey_toffee_pudding",
-			"pancake",
-			"grapejelly",
-			"onion_soup_raw",
-			"onion_soup_baked",
-			"smore",
-			"raisinwich",
-			"yogurt",
-			"greentea" };
+				"butter_raw",
+				"butter",
+				"chocolate",
+				"coffeejelly",
+				"lemonjelly",
+				"bakedcream",
+				"berryjelly",
+				"kuzujelly",
+				"egg_cocotte_raw",
+				"egg_cocotte_baked",
+				"stickey_toffee_pudding",
+				"pancake",
+				"grapejelly",
+				"onion_soup_raw",
+				"onion_soup_baked",
+				"smore",
+				"raisinwich",
+				"yogurt",
+				"greentea",
+				"apple"
+		};
 		return s;
 	}
 
@@ -143,6 +146,9 @@ public class CakeItem extends FoodItemBase {
 		if (i == 18) {
 			ret = new CakeGreenteaEntity(world, x, y, z, player);
 		}
+		if (i == 19) {
+			ret = new CakeAppleEntity(world, x, y, z, player);
+		}
 		return ret;
 	}
 
@@ -182,6 +188,7 @@ public class CakeItem extends FoodItemBase {
 		case 16:
 		case 17:
 		case 18:
+		case 19:
 			return 10;
 		}
 		return 0;

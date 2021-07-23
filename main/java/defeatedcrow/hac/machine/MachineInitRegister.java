@@ -250,10 +250,11 @@ public class MachineInitRegister {
 		MachineInit.fuelCont = new BlockFuelCont(ClimateCore.PACKAGE_BASE + "_cont_fuel");
 		MainMaterialRegister
 				.registerBlock(MachineInit.fuelCont, ClimateCore.PACKAGE_BASE + "_cont_fuel", ClimateMain.MOD_ID, new int[] {
-					54000,
-					128000,
-					0,
-					0 });
+						54000,
+						128000,
+						0,
+						0
+				});
 		ClimateMain.proxy.addSidedBlock(MachineInit.fuelCont, "cont_fuel", 3);
 
 		MachineInit.boilerTurbine = new BlockBoilerTurbine(ClimateCore.PACKAGE_BASE + "_device_boiler_turbine");
@@ -407,6 +408,11 @@ public class MachineInitRegister {
 		MachineInit.slotCard = new ItemSlotCard().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_slotcard");
 		DCMaterialReg.registerItem(MachineInit.slotCard, ClimateCore.PACKAGE_BASE + "_slotcard", ClimateMain.MOD_ID);
 
+		MachineInit.rotaryBlade = new ItemRotaryBlade()
+				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_rotaryblade");
+		DCMaterialReg
+				.registerItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_BASE + "_rotaryblade", ClimateMain.MOD_ID);
+
 		if (ModuleConfig.machine_advanced) {
 
 			MachineInit.moldAluminium = new ItemAluminiumMold()
@@ -443,10 +449,6 @@ public class MachineInitRegister {
 			DCMaterialReg
 					.registerItem(MachineInit.platingChrome, ClimateCore.PACKAGE_BASE + "_coating_tool", ClimateMain.MOD_ID);
 
-			MachineInit.rotaryBlade = new ItemRotaryBlade()
-					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_rotaryblade");
-			DCMaterialReg
-					.registerItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_BASE + "_rotaryblade", ClimateMain.MOD_ID);
 		}
 	}
 
@@ -498,12 +500,9 @@ public class MachineInitRegister {
 		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
 		MachineInit.IBC_reactor.setCreativeTab(ClimateMain.machine);
 		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
-		MachineInit.tankYard.setCreativeTab(ClimateMain.machine);
-		MachineInit.tankYardPart.setCreativeTab(ClimateMain.machine);
-
 		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
 		MachineInit.machimeMaterials.setCreativeTab(ClimateMain.machine);
-		MachineInit.mold.setCreativeTab(ClimateMain.machine);
+
 		MachineInit.reagent.setCreativeTab(ClimateMain.machine);
 		MachineInit.slotCard.setCreativeTab(ClimateMain.machine);
 
@@ -521,6 +520,7 @@ public class MachineInitRegister {
 			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
 			MachineInit.crusher.setCreativeTab(ClimateMain.machine);
 
+			MachineInit.mold.setCreativeTab(ClimateMain.machine);
 			MachineInit.moldAluminium.setCreativeTab(ClimateMain.machine);
 			MachineInit.moldAlloy.setCreativeTab(ClimateMain.machine);
 
@@ -546,6 +546,9 @@ public class MachineInitRegister {
 			MachineInit.monitorTemp.setCreativeTab(ClimateMain.machine);
 			MachineInit.entityPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.oscillator.setCreativeTab(ClimateMain.machine);
+
+			MachineInit.tankYard.setCreativeTab(ClimateMain.machine);
+			MachineInit.tankYardPart.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
 			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);

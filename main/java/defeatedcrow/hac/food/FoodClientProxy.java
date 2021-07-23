@@ -24,6 +24,7 @@ import defeatedcrow.hac.food.client.*;
 import defeatedcrow.hac.food.entity.*;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.ClientMainProxy;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -184,6 +185,7 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(CakeRaisinEntity.class, CakeRaisinRenderer.class);
 		ClientMainProxy.registRender(CakeYogurtEntity.class, CakeYogurtRenderer.class);
 		ClientMainProxy.registRender(CakeGreenteaEntity.class, CakeGreenteaRenderer.class);
+		ClientMainProxy.registRender(CakeAppleEntity.class, CakeAppleRenderer.class);
 
 		ClientMainProxy.registRender(IceCreamEntity.class, IcecreamMilkRenderer.class);
 		ClientMainProxy.registRender(IceCreamKinakoEntity.class, IcecreamKinakoRenderer.class);
@@ -247,9 +249,7 @@ public class FoodClientProxy {
 		ClientMainProxy.registRender(DishYakkoEntity.class, DishYakkoRenderer.class);
 		ClientMainProxy.registRender(DishMaboEntity.class, DishMaboRenderer.class);
 
-		ClientMainProxy.registRender(DrinkGingerEntity.class, DrinkGingerRenderer.class);
-		ClientMainProxy.registRender(DrinkKuzuEntity.class, DrinkKuzuRenderer.class);
-		ClientMainProxy.registRender(DrinkTomatoEntity.class, DrinkTomatoRenderer.class);
+		ClientMainProxy.registRender(DrinkEntity.class, DrinkRenderer.class);
 
 		ClientMainProxy.registRender(UdonMeatEntity.class, UdonMeatRenderer.class);
 		ClientMainProxy.registRender(UdonSeaweedEntity.class, UdonSeaweedRenderer.class);
@@ -334,7 +334,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.plateSoup, ClimateCore.PACKAGE_ID, "dcs_food_plate_potato", "food", 11);
 		instance.regSimpleItem(FoodInit.bowlSoup, ClimateCore.PACKAGE_ID, "dcs_food_bowl_stew", "food", 15);
 		instance.regSimpleItem(FoodInit.salad, ClimateCore.PACKAGE_ID, "dcs_food_salad", "food", 12);
-		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 18);
+		instance.regSimpleItem(FoodInit.cake, ClimateCore.PACKAGE_ID, "dcs_food_cake", "food", 19);
 		instance.regSimpleItem(FoodInit.icecream, ClimateCore.PACKAGE_ID, "dcs_food_icecream", "food", 9);
 		instance.regSimpleItem(FoodInit.mochi, ClimateCore.PACKAGE_ID, "dcs_food_mochi", "food", 1);
 		instance.regSimpleItem(FoodInit.wagashi, ClimateCore.PACKAGE_ID, "dcs_food_wagashi", "food", 11);
@@ -346,7 +346,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.dishBig, ClimateCore.PACKAGE_ID, "dcs_food_dish_big", "food", 8);
 		instance.regSimpleItem(FoodInit.udon, ClimateCore.PACKAGE_ID, "dcs_food_udon", "food", 2);
 		instance.regSimpleItem(FoodInit.pasta, ClimateCore.PACKAGE_ID, "dcs_food_pasta", "food", 7);
-		instance.regSimpleItem(FoodInit.drink, ClimateCore.PACKAGE_ID, "dcs_food_drink", "food", 2);
+		instance.regSimpleItem(FoodInit.drink, ClimateCore.PACKAGE_ID, "dcs_food_drink", "food", 8);
 		instance.regSimpleItem(FoodInit.dip, ClimateCore.PACKAGE_ID, "dcs_food_dipsauce", "food", 2);
 		instance.regSimpleItem(FoodInit.yogurt, ClimateCore.PACKAGE_ID, "dcs_food_yogurt", "food", 1);
 		instance.regSimpleItem(FoodInit.curry, ClimateCore.PACKAGE_ID, "dcs_food_curry", "food", 7);
@@ -371,7 +371,7 @@ public class FoodClientProxy {
 		instance.regSimpleItem(FoodInit.mushroom, ClimateCore.PACKAGE_ID, "dcs_food_microbe_musuroom", "food", 2);
 		instance.regSimpleItem(FoodInit.methanogen, ClimateCore.PACKAGE_ID, "dcs_food_microbe_methanogen", "food", 2);
 		instance.regSimpleItem(FoodInit.chickInEgg, ClimateCore.PACKAGE_ID, "dcs_food_chick", "food", 0);
-		instance.regSimpleItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_ID, "dcs_liquor_bottle", "food", 16);
+		instance.regSimpleItem(FoodInit.liquorBottle, ClimateCore.PACKAGE_ID, "dcs_liquor_bottle", "food", 17);
 		instance.regSimpleItem(FoodInit.roseWaterBottle, ClimateCore.PACKAGE_ID, "dcs_water_bottle", "food", 3);
 		instance.regSimpleItem(FoodInit.essentialOil, ClimateCore.PACKAGE_ID, "dcs_food_essential_oil", "food", 5);
 		instance.regSimpleItem(FoodInit.inoculum, ClimateCore.PACKAGE_ID, "dcs_food_inoculum", "food", 1);
@@ -457,15 +457,19 @@ public class FoodClientProxy {
 				return fluidModel;
 			}
 		});
-		ModelLoader.setCustomStateMapper(FoodInit.netherWineBlock, new StateMapperBase() {
-			final ModelResourceLocation fluidModel = new ModelResourceLocation(
-					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nether", "fluid");
 
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return fluidModel;
-			}
-		});
+		if (ModuleConfig.food_advanced) {
+			ModelLoader.setCustomStateMapper(FoodInit.netherWineBlock, new StateMapperBase() {
+				final ModelResourceLocation fluidModel = new ModelResourceLocation(
+						ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_fluidblock_nether", "fluid");
+
+				@Override
+				protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+					return fluidModel;
+				}
+			});
+
+		}
 
 		// leaves color
 		MinecraftForge.EVENT_BUS.register(new LeavesColorsDC());
@@ -488,6 +492,7 @@ public class FoodClientProxy {
 		list.add(b + "cola_still");
 		list.add(b + "tonic_water_still");
 		list.add(b + "lemon_squash_still");
+		list.add(b + "cider_still");
 
 		return list;
 	}

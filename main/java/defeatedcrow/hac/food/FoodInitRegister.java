@@ -679,6 +679,12 @@ public class FoodInitRegister {
 						"blocks/fluid/clear_liquor_still")).setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".awamori");
 		FluidRegistry.registerFluid(FoodInit.awamori);
 
+		FoodInit.cider = new Fluid("dcs.cider", new ResourceLocation(ClimateCore.PACKAGE_ID,
+				"blocks/fluid/cider_still"),
+				new ResourceLocation(ClimateCore.PACKAGE_ID, "blocks/fluid/cider_still"))
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + ".cider");
+		FluidRegistry.registerFluid(FoodInit.cider);
+
 		FoodInit.tonic = new Fluid("dcs.tonic_water", new ResourceLocation(ClimateCore.PACKAGE_ID,
 				"blocks/fluid/tonic_water_still"), new ResourceLocation(ClimateCore.PACKAGE_ID,
 						"blocks/fluid/tonic_water_still"))

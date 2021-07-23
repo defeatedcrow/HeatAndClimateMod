@@ -115,6 +115,7 @@ public class DCPluginFluid {
 		registerPotion("honey", MainInit.immunity);
 		registerPotion("seed.oil", MobEffects.HASTE);
 		registerPotion("for.honey", MainInit.immunity);
+		registerPotion("short.mead", MobEffects.INSTANT_HEALTH);
 		registerPotion("bio.ethanol", MobEffects.BLINDNESS);
 		registerPotion("biomass", MobEffects.NAUSEA);
 		registerPotion("glass", MobEffects.FIRE_RESISTANCE);
@@ -213,6 +214,7 @@ public class DCPluginFluid {
 				registerPotion("dcs.tonic_water", MobEffects.WATER_BREATHING);
 				registerPotion("dcs.lemon_squash", MobEffects.ABSORPTION, 1);
 				registerPotion("dcs.cola", MainInit.absorptionEXP);
+				registerPotion("dcs.cider", MobEffects.HASTE);
 			}
 			registerPotion("dcs.rose_water", MainInit.projectileResistant);
 		}

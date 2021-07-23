@@ -6,11 +6,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
-import defeatedcrow.hac.food.entity.DrinkGingerEntity;
-import defeatedcrow.hac.food.entity.DrinkKuzuEntity;
-import defeatedcrow.hac.food.entity.DrinkTomatoEntity;
+import defeatedcrow.hac.food.entity.DrinkEntity;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -27,18 +24,30 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class DrinkItem extends FoodItemBase {
 
+	public static String[] names = {
+			"ginger",
+			"kuzu",
+			"tomato",
+			"apple",
+			"grape",
+			"chai",
+			"mulled_wine",
+			"amazake",
+			"eggnog"
+	};
+
 	public DrinkItem(boolean isWolfFood) {
 		super(isWolfFood);
 	}
 
 	@Override
 	public int getMaxMeta() {
-		return 2;
+		return 8;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 2);
+		int i = MathHelper.clamp(0, meta, 8);
 		String s = "items/food/drink_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -48,31 +57,32 @@ public class DrinkItem extends FoodItemBase {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] s = {
-				"ginger",
-				"kuzu",
-				"tomato"
-		};
-		return s;
+		return names;
+	}
+
+	public static String getTypeName(int meta) {
+		if (meta > 8) {
+			meta = 8;
+		}
+		return names[meta];
 	}
 
 	@Override
 	public Entity getPlacementEntity(World world, EntityPlayer player, double x, double y, double z, ItemStack item) {
 		int i = item.getMetadata();
-		FoodEntityBase ret = new DrinkGingerEntity(world, x, y, z, player);
-		if (i == 1) {
-			ret = new DrinkKuzuEntity(world, x, y, z, player);
-		}
-		if (i == 2) {
-			ret = new DrinkTomatoEntity(world, x, y, z, player);
-		}
+		DrinkEntity ret = new DrinkEntity(world, x, y, z, player)
+				.setMetadata(i);
 		return ret;
 	}
 
 	@Override
 	public List<PotionEffect> getPotionEffect(int meta) {
 		List<PotionEffect> ret = new ArrayList<PotionEffect>();
-		ret.add(new PotionEffect(MobEffects.INSTANT_HEALTH, 1, 0));
+		if (meta > 5) {
+			ret.add(new PotionEffect(MobEffects.INSTANT_HEALTH, 1, 1));
+		} else {
+			ret.add(new PotionEffect(MobEffects.INSTANT_HEALTH, 1, 0));
+		}
 		return ret;
 	}
 
@@ -100,8 +110,18 @@ public class DrinkItem extends FoodItemBase {
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(DCName.PLACEABLE_ENTITY.getLocalizedName());
-		String effName = I18n.format(MobEffects.INSTANT_HEALTH.getName());
-		tooltip.add(TextFormatting.AQUA.toString() + effName);
+		if (stack == null)
+			return;
+
+		int i = stack.getItemDamage();
+		if (i < 6) {
+			String effName = I18n.format(MobEffects.INSTANT_HEALTH.getName());
+			tooltip.add(TextFormatting.AQUA.toString() + effName);
+		} else {
+			String effName = I18n.format(MobEffects.INSTANT_HEALTH.getName());
+			tooltip.add(TextFormatting.AQUA.toString() + effName + " II");
+		}
+
 	}
 
 }

@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_liquor_bottle",
+   "data": 11
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "egg"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustSugar"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllheavycream"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllspice"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_food_drink",
+  "count": 2,
+  "data": 8
+ }
+}
