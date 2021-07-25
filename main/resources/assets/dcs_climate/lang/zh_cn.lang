@@ -763,7 +763,7 @@ item.dcs_throwing_arrow_normal.name=投箭
 
 item.dcs_dynamite_red.name=炸药
 item.dcs_dynamite_blue.name=绢布炸药
-item.dcs_dynamite_small.name=小型炸药
+item.dcs_dynamite_small.name=铵油炸药
 
 ## armors
 item.dcs_met_brass.name=黄铜头盔
