@@ -2214,6 +2214,14 @@ Y = 色のキューブ
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
 
+○3.6.10
+　変更
+　　・酒瓶、飲み物entityの液体部分を非透過にする設定を追加(main.cfg/Enable Transparent Texture)
+　修正
+　　・エッセンシャルオイルのToolTip
+　EX
+　　・zh_cn.lang更新 (Pliosauroidea氏より)
+
 ○3.6.9
 　新規
 　　・お箸・カトラリー

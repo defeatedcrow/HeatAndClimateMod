@@ -26,6 +26,7 @@ public class MainCoreConfig {
 	public static boolean bird_effect = true;
 	public static boolean ocean_effect = true;
 	public static boolean armor_effect = false;
+	public static boolean bottle_texture = true;
 
 	public static int flower_turret_limit = 30;
 	public static double flower_turret_damage = 8.0D;
@@ -39,10 +40,11 @@ public class MainCoreConfig {
 	public static int aging_day = 60;
 
 	public static String[] blocknames = new String[] {
-		"minecraft:stone:32767",
-		"minecraft:dirt:32767",
-		"minecraft:bedrock:32767",
-		"ModID:sampleBlock:sampleMeta" };
+			"minecraft:stone:32767",
+			"minecraft:dirt:32767",
+			"minecraft:bedrock:32767",
+			"ModID:sampleBlock:sampleMeta"
+	};
 	public static final List<BlockSet> disables = Lists.newArrayList();
 
 	public void load(Configuration cfg) {
@@ -101,6 +103,9 @@ public class MainCoreConfig {
 			Property turret_live = cfg
 					.get("item setting", "Flower Turret Lifespan", aging_day, "Set the lifespan of the flower turret.");
 
+			Property bottle = cfg
+					.get("render setting", "Enable Transparent Texture", bottle_texture, "Use transparent textures for some food entities." + BR + "This setting is used to avoid rendering problems when using shaders.");
+
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
 
@@ -114,6 +119,7 @@ public class MainCoreConfig {
 			steel = noSteel.getBoolean();
 			bird_effect = p_bird.getBoolean();
 			ocean_effect = p_ocean.getBoolean();
+			bottle_texture = bottle.getBoolean();
 			// timeZone = zone.getString();
 
 			// e_corrosion = e_cor.getBoolean();

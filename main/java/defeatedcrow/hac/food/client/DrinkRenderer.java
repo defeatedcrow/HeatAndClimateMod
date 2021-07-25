@@ -7,6 +7,7 @@ import defeatedcrow.hac.food.client.model.ModelDrinkKuzu;
 import defeatedcrow.hac.food.client.model.ModelDrinkTomato;
 import defeatedcrow.hac.food.entity.DrinkEntity;
 import defeatedcrow.hac.food.item.DrinkItem;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -53,7 +54,7 @@ public class DrinkRenderer extends DCRenderFoodBase<DrinkEntity> {
 
 			GlStateManager.popMatrix();
 
-			if (meta == 6 || meta == 8) {
+			if (meta == 6 || meta == 8 || !MainCoreConfig.bottle_texture) {
 
 				GlStateManager.pushMatrix();
 				GlStateManager.translate((float) x, (float) y, (float) z);

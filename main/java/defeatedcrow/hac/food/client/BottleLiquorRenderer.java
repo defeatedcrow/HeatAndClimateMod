@@ -11,6 +11,7 @@ import defeatedcrow.hac.food.client.model.ModelBottleF;
 import defeatedcrow.hac.food.client.model.ModelBottleJ;
 import defeatedcrow.hac.food.entity.LiquorBottleEntity;
 import defeatedcrow.hac.food.item.brewing.ItemLiquorBottle;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -102,9 +103,13 @@ public class BottleLiquorRenderer extends DCRenderFoodBase<LiquorBottleEntity> {
 	protected ResourceLocation getTex(int meta, boolean isLayer) {
 		String name = ItemLiquorBottle.getTypeName(meta);
 		String s = "textures/entity/food/liquor/" + "" + name;
+		if (MainCoreConfig.bottle_texture) {
+			s = "textures/entity/food/liquor_fixed/" + "" + name;
+		}
 		if (isLayer) {
 			s += "_layer.png";
 		} else {
+
 			s += "_glass.png";
 		}
 		return new ResourceLocation("dcs_climate", s);

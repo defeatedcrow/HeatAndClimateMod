@@ -27,7 +27,14 @@ public class ItemEssentialOil extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "rose", "citrus", "mint", "birch", "lotus", "lavender" };
+	private static String[] names = {
+			"rose",
+			"citrus",
+			"mint",
+			"birch",
+			"lotus",
+			"lavender"
+	};
 
 	public ItemEssentialOil() {
 		super();
@@ -82,7 +89,9 @@ public class ItemEssentialOil extends DCItem {
 
 	public PotionType getType(int meta) {
 		String name = "dcs.essence_" + meta;
-		return new PotionType(name, new PotionEffect[] { getEffect(meta) });
+		return new PotionType(name, new PotionEffect[] {
+				getEffect(meta)
+		});
 	}
 
 	public PotionEffect getEffect(int meta) {
@@ -110,7 +119,7 @@ public class ItemEssentialOil extends DCItem {
 		if (!DCUtil.isEmpty(stack)) {
 			int m = stack.getItemDamage();
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
-			tooltip.add(I18n.format("dcs.tip.essencial_oil"));
+			tooltip.add(I18n.format("dcs.tip.essential_oil"));
 			PotionEffect eff = getEffect(m);
 			if (eff != null && eff.getPotion() != null) {
 				String effName = I18n.format(eff.getEffectName());
