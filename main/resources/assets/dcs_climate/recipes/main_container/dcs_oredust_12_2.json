@@ -10,5 +10,11 @@
   "item": "dcs_climate:dcs_oredust",
   "count": 9,
   "data": 12
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

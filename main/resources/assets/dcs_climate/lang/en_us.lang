@@ -684,6 +684,9 @@ item.dcs_food_microbe_methanogen.name=Methanogen
 
 item.dcs_food_chick.name=Chick in Egg
 
+item.dcs_animalfeed_compound.name=Compound Feed
+item.dcs_animalfeed_hay.name=Hay
+
 ## craft tools
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
 item.dcs_yagen_brass_normal.name=Brass Druggist's Mortar
@@ -1477,6 +1480,7 @@ tile.dcs_device_hopper_gold_0.name=Golden Hopper
 tile.dcs_device_hopper_filter_gold_0.name=Golden Filter Hopper
 tile.dcs_device_hopper_fluid_0.name=Fluid Hopper
 tile.dcs_device_hopper_silver_0.name=Compression Hopper
+tile.dcs_device_hopper_sus_0.name=Junction Filter Hopper
 tile.dcs_device_thermometer_0.name=Galileo Thermometer
 tile.dcs_device_windvane_0.name=Wind Vane
 tile.dcs_device_watermill_0.name=Watermill
@@ -1830,6 +1834,8 @@ dcs.tip.hopper_flu1=Fill and drain the inserted fluid item.
 dcs.tip.hopper_flu2=Transport liquid from top to bottom.
 dcs.tip.hopper_flu3=When it's at the feet of a cow, it milk the cow.
 dcs.tip.hopper_s=This device compress some items to block. (ex. 9 ingots -> 1 metal block)
+dcs.tip.hopper_sus1=One item remains in the filter slot. It works like an item filter.
+dcs.tip.hopper_sus2=Items excluded from the filter will be ejected from the side.
 dcs.tip.portal1= HeatTier or liquid nitrogen
 dcs.tip.portal2=Adapter card with registered coordinates.
 dcs.tip.portal3=This device transport item or fluid between two registered coordinates.
@@ -2220,6 +2226,7 @@ dcs.gui.device.fuel_stove=Fluid Fuel Stove
 dcs.gui.device.pressmachine=Press Machine
 dcs.gui.device.hopper.filter=Filter Hopper
 dcs.gui.device.hopper.fluid=Fluid Hopper
+dcs.gui.device.hopper.sus=Junction Hopper
 dcs.gui.device.reactor=Chemical Reactor
 dcs.gui.device.reactor_ibc=Simple Chemical Reactor
 dcs.gui.device.spinning=Spinning Machine

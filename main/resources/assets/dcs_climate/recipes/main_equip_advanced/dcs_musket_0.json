@@ -1,0 +1,32 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "Y ",
+  "ZX"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:flint_and_steel",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "barrelGun"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_musket",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "weapon_advanced"
+  }
+ ]
+}

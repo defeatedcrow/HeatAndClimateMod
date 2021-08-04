@@ -1,0 +1,5 @@
+{
+  "conditions": {
+    "recipe_enabled": "defeatedcrow.hac.core.recipe.HaCRecipeCondition"
+  }
+}

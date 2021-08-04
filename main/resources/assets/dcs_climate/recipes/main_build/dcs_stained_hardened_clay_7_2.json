@@ -14,5 +14,11 @@
   "item": "minecraft:stained_hardened_clay",
   "count": 4,
   "data": 7
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

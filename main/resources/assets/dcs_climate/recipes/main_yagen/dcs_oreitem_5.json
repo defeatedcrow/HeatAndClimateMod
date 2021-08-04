@@ -14,5 +14,11 @@
   "item": "dcs_climate:dcs_oreitem",
   "count": 1,
   "data": 5
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

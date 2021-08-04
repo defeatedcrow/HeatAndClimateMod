@@ -27,5 +27,11 @@
   "item": "dcs_climate:dcs_dynamite",
   "count": 3,
   "data": 1
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "machine_advanced"
+  }
+ ]
 }

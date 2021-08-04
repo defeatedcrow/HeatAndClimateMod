@@ -17,5 +17,11 @@
   "item": "dcs_climate:dcs_alloy_mold",
   "count": 1,
   "data": 3
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "machine_advanced"
+  }
+ ]
 }

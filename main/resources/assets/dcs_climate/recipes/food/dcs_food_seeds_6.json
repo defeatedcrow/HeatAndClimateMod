@@ -10,5 +10,11 @@
   "item": "dcs_climate:dcs_food_seeds",
   "count": 1,
   "data": 6
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

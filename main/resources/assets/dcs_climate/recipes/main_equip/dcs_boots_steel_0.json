@@ -18,5 +18,11 @@
   "item": "dcs_climate:dcs_boots_steel",
   "count": 1,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "tool"
+  }
+ ]
 }

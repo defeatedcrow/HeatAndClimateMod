@@ -15,5 +15,11 @@
   "item": "minecraft:paper",
   "count": 3,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

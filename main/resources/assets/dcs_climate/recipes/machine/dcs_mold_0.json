@@ -17,5 +17,11 @@
   "item": "dcs_climate:dcs_mold",
   "count": 4,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "machine"
+  }
+ ]
 }

@@ -26,5 +26,11 @@
   "item": "dcs_climate:dcs_leggins_suit",
   "count": 1,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

@@ -10,5 +10,11 @@
   "item": "dcs_climate:dcs_fooddust",
   "count": 8,
   "data": 7
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

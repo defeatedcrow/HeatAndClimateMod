@@ -67,6 +67,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorSteel, ClimateCore.PACKAGE_ID, "dcs_door_steel", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, ClimateCore.PACKAGE_ID, "dcs_big_cushion", "build", 1);
 		MAIN_INSTANCE.regSimpleItem(MainInit.tinder, ClimateCore.PACKAGE_ID, "dcs_tinder", "tool", 2);
+		MAIN_INSTANCE.regSimpleItem(MainInit.animalFeed, ClimateCore.PACKAGE_ID, "dcs_animalfeed", "food", 1);
 
 		if (DCIntegrationCore.loadedForestry) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.circuit, ClimateCore.PACKAGE_ID, "dcs_plugin_circuit", "device", 0);

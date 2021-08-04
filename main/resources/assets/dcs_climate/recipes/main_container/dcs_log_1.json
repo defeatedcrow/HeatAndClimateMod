@@ -10,5 +10,11 @@
   "item": "minecraft:log",
   "count": 8,
   "data": 1
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

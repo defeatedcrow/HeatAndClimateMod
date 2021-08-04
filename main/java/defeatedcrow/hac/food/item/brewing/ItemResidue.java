@@ -1,13 +1,26 @@
 package defeatedcrow.hac.food.item.brewing;
 
+import defeatedcrow.hac.api.item.IAnimalFood;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.item.ItemStack;
 
-public class ItemResidue extends DCItem {
+public class ItemResidue extends DCItem implements IAnimalFood {
 
 	private final int maxMeta;
 
-	private static String[] names = { "bsg", "sake", "wine", "silage", "ex_yeast", "ex_peptone", "ex_whey" };
+	private static String[] names = {
+			"bsg",
+			"sake",
+			"wine",
+			"silage",
+			"ex_yeast",
+			"ex_peptone",
+			"ex_whey"
+	};
 
 	public ItemResidue() {
 		super();
@@ -31,6 +44,18 @@ public class ItemResidue extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	public boolean isTargetAnimal(EntityAnimal entity, ItemStack item) {
+		if (entity == null || DCUtil.isEmpty(item))
+			return false;
+
+		if (item.getItemDamage() == 3) {
+			return !(entity instanceof EntityTameable);
+		} else {
+			return false;
+		}
 	}
 
 }

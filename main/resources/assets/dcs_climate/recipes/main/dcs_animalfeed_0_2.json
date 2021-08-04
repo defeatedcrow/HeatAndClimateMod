@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "listAllgrain"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustDraff"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustPresscake"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_animalfeed",
+  "count": 4,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
+}

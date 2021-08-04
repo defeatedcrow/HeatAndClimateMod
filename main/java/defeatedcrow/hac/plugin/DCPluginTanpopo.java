@@ -1,10 +1,10 @@
 package defeatedcrow.hac.plugin;
 
+import defeatedcrow.hac.api.module.HaCModule;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
-import defeatedcrow.hac.main.util.RecipeResourcesMain;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,8 +25,16 @@ public class DCPluginTanpopo {
 
 			OreDictionary.registerOre("cropFluff", new ItemStack(fluff, 1, 0));
 
-			DCRecipe.addShapedRecipe(RecipeResourcesMain.MAIN.getRecipeName(), new ItemStack(MainInit.clothes, 1,
-					1), new Object[] { "XXX", "XYX", "XXX", 'X', "cropFluff", 'Y', "stickWood" });
+			DCRecipe.jsonShapedRecipe(HaCModule.getPlugin("schr0tanpopo"), "plugin", new ItemStack(MainInit.clothes, 1,
+					1), new Object[] {
+							"XXX",
+							"XYX",
+							"XXX",
+							'X',
+							"cropFluff",
+							'Y',
+							"stickWood"
+			});
 
 			if (ModuleConfig.r_spinning) {
 				RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 1), 4, "cropFluff");

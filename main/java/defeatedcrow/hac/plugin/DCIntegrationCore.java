@@ -27,6 +27,7 @@ public class DCIntegrationCore {
 	public static boolean loadedUGB = false;
 	public static boolean loadedRC = false;
 	public static boolean loadedSD = false;
+	public static boolean loadedMco = false;
 
 	private DCIntegrationCore() {}
 
@@ -64,7 +65,7 @@ public class DCIntegrationCore {
 		if (Loader.isModLoaded("enderio") && ModuleConfig.eio) {
 			loadedEIO = true;
 		}
-		if (Loader.isModLoaded("tektopia")) {
+		if (Loader.isModLoaded("tektopia") && ModuleConfig.tek) {
 			loadedTektopia = true;
 		}
 		if (Loader.isModLoaded("animania") && ModuleConfig.ani) {
@@ -78,6 +79,9 @@ public class DCIntegrationCore {
 		}
 		if (Loader.isModLoaded("simpledifficulty") && ModuleConfig.sd) {
 			loadedSD = true;
+		}
+		if (Loader.isModLoaded("minecolonies") && ModuleConfig.mco) {
+			loadedMco = true;
 		}
 	}
 
@@ -184,6 +188,15 @@ public class DCIntegrationCore {
 				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: tektopia");
 			} catch (Exception e) {
 				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: tektopia");
+			}
+		}
+
+		if (loadedMco) {
+			try {
+				DCPluginMinecolonies.load();
+				DCLogger.infoLog("dcs_climate", "Successfully loaded mod post plugin: minecolonies");
+			} catch (Exception e) {
+				DCLogger.infoLog("dcs_climate", "Failed to load mod plugin: minecolonies");
 			}
 		}
 

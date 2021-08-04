@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y",
+  "Z"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_reagent",
+   "data": 8
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "ingotBrass"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_cartridge",
+  "count": 8,
+  "data": 1
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "weapon_advanced"
+  }
+ ]
+}

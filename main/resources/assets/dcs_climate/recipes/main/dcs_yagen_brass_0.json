@@ -19,5 +19,11 @@
   "item": "dcs_climate:dcs_yagen_brass",
   "count": 1,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

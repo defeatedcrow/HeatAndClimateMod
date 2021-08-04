@@ -23,5 +23,11 @@
   "item": "dcs_climate:dcs_coating_tool",
   "count": 1,
   "data": 9
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "machine_advanced"
+  }
+ ]
 }

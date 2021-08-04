@@ -14,5 +14,11 @@
   "item": "dcs_climate:dcs_food_stick",
   "count": 1,
   "data": 14
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

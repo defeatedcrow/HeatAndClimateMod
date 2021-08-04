@@ -18,5 +18,11 @@
   "item": "dcs_climate:dcs_food_dairy",
   "count": 1,
   "data": 2
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

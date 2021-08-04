@@ -50,22 +50,23 @@ public class RoundPastryItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-			"apple_raw",
-			"apple_baked",
-			"lemon_raw",
-			"lemon_baked",
-			"spinach_raw",
-			"spinach_baked",
-			"potato_raw",
-			"potato_baked",
-			"crostata_raw",
-			"crostata_baked",
-			"chocolate_raw",
-			"chocolate_baked",
-			"custard_raw",
-			"custard_baked",
-			"liver_raw",
-			"liver_baked" };
+				"apple_raw",
+				"apple_baked",
+				"lemon_raw",
+				"lemon_baked",
+				"spinach_raw",
+				"spinach_baked",
+				"potato_raw",
+				"potato_baked",
+				"crostata_raw",
+				"crostata_baked",
+				"chocolate_raw",
+				"chocolate_baked",
+				"custard_raw",
+				"custard_baked",
+				"liver_raw",
+				"liver_baked"
+		};
 		return s;
 	}
 
@@ -120,20 +121,20 @@ public class RoundPastryItem extends FoodItemBase {
 	public int getFoodAmo(int meta) {
 		switch (meta) {
 		case 1:
-			return 10;
+			return 14;
 		case 3:
-			return 10;
+			return 14;
 		case 5:
-			return 12;
+			return 14;
 		case 7:
-			return 12;
+			return 14;
 		case 9:
-			return 10;
+			return 12;
 		case 11:
 		case 13:
-			return 12;
+			return 16;
 		case 15:
-			return 14;
+			return 16;
 		default:
 			return 0;
 		}

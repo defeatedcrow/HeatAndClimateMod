@@ -27,5 +27,11 @@
   "item": "dcs_climate:dcs_device_bellow",
   "count": 1,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

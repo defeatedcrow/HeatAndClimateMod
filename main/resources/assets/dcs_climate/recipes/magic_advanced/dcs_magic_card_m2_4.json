@@ -22,5 +22,11 @@
   "item": "dcs_climate:dcs_magic_card_m2",
   "count": 2,
   "data": 4
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "magic_advanced"
+  }
+ ]
 }

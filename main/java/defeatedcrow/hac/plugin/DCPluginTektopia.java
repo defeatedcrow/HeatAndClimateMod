@@ -2,7 +2,10 @@ package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.damage.DamageAPI;
+import defeatedcrow.hac.food.FoodInit;
 import net.minecraft.util.ResourceLocation;
+import net.tangotek.tektopia.entities.ai.EntityAIEatFood;
+import net.tangotek.tektopia.entities.ai.EntityAIEatFood.VillagerFood;
 
 public class DCPluginTektopia {
 
@@ -50,34 +53,24 @@ public class DCPluginTektopia {
 		DamageAPI.resistantData.registerEntityResistant(new ResourceLocation("tektopia",
 				"bard"), DCHeatTier.NORMAL, 3.0F);
 
-		// loadFoodData();
+		loadFoodData();
 	}
 
-	// public static void loadFoodData() {
-	// try {
-	// Method m = ReflectionHelper
-	// .findMethod(EntityAIEatFood.class, "registerFood", "registerFood", Item.class, int.class, int.class);
-	// if (m != null) {
-	// m.invoke(null, MainInit.bakedApple, 18, 2);
-	// m.invoke(null, FoodInit.cake, 15, 20);
-	// m.invoke(null, FoodInit.bowlSoup, 40, 8);
-	// m.invoke(null, FoodInit.sandwich, 35, 3);
-	// m.invoke(null, FoodInit.deepFry, 60, 7);
-	// m.invoke(null, FoodInit.clubsandwich, 60, 8);
-	// m.invoke(null, FoodInit.dishSq, 20, 4);
-	// m.invoke(null, FoodInit.dishBig, 60, 6);
-	// m.invoke(null, FoodInit.icecream, 10, 12);
-	// m.invoke(null, FoodInit.salad, 15, 8);
-	// m.invoke(null, FoodInit.setMeal, 80, 12);
-	// m.invoke(null, FoodInit.snack, 35, 8);
-	// m.invoke(null, FoodInit.udon, 60, 15);
-	// m.invoke(null, FoodInit.wagashi, 20, 15);
-	// m.invoke(null, FoodInit.ricebowl, 30, 6);
-	// m.invoke(null, FoodInit.nonEntity, 8, 6);
-	// }
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	// }
+	public static void loadFoodData() {
+		EntityAIEatFood.villagerFood.put(FoodInit.cake, new VillagerFood(FoodInit.cake, 10, 18, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.clubsandwich, new VillagerFood(FoodInit.clubsandwich, 35, 5, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.curry, new VillagerFood(FoodInit.curry, 70, 12, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.deepFry, new VillagerFood(FoodInit.deepFry, 40, 3, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.dishBig, new VillagerFood(FoodInit.dishBig, 55, 10, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.sandwich, new VillagerFood(FoodInit.sandwich, 20, 4, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.pasta, new VillagerFood(FoodInit.pasta, 50, 8, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.udon, new VillagerFood(FoodInit.udon, 40, 5, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.setMeal, new VillagerFood(FoodInit.setMeal, 80, 8, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.wagashi, new VillagerFood(FoodInit.wagashi, 12, 15, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.ricebowl, new VillagerFood(FoodInit.ricebowl, 35, 3, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.snack, new VillagerFood(FoodInit.snack, 25, 5, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.bowlSoup, new VillagerFood(FoodInit.bowlSoup, 30, 5, null));
+		EntityAIEatFood.villagerFood.put(FoodInit.yogurt, new VillagerFood(FoodInit.yogurt, 10, 15, null));
+	}
 
 }

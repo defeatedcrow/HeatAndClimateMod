@@ -1,6 +1,7 @@
 package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.module.HaCModule;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.machine.MachineInit;
@@ -44,29 +45,35 @@ public class DCPluginUGB {
 			// デイサイト
 			OreDictionary.registerOre("stoneDacite", new ItemStack(igs, 1, 7));
 
-			DCRecipe.jsonShapedRecipe("plugin", new ItemStack(MainInit.builds, 2, 8), new Object[] {
-				"XY",
-				"YX",
-				'X',
-				"stoneDacite",
-				'Y',
-				"gemFlint" });
+			DCRecipe.jsonShapedRecipe(HaCModule.getPlugin("undergroundbiomes"), "plugin", new ItemStack(MainInit.builds,
+					2, 8), new Object[] {
+							"XY",
+							"YX",
+							'X',
+							"stoneDacite",
+							'Y',
+							"gemFlint"
+			});
 
-			DCRecipe.jsonShapedRecipe("plugin", new ItemStack(MainInit.builds, 2, 9), new Object[] {
-				"XY",
-				"YX",
-				'X',
-				"stoneGabro",
-				'Y',
-				"gemFlint" });
+			DCRecipe.jsonShapedRecipe(HaCModule.getPlugin("undergroundbiomes"), "plugin", new ItemStack(MainInit.builds,
+					2, 9), new Object[] {
+							"XY",
+							"YX",
+							'X',
+							"stoneGabro",
+							'Y',
+							"gemFlint"
+			});
 
-			DCRecipe.jsonShapedRecipe("plugin", 2, new ItemStack(MainInit.builds, 2, 9), new Object[] {
-				"XY",
-				"YX",
-				'X',
-				"stoneBasalt",
-				'Y',
-				"gemFlint" });
+			DCRecipe.jsonShapedRecipe(HaCModule.getPlugin("undergroundbiomes"), "plugin", 2, new ItemStack(
+					MainInit.builds, 2, 9), new Object[] {
+							"XY",
+							"YX",
+							'X',
+							"stoneBasalt",
+							'Y',
+							"gemFlint"
+			});
 
 			if (ModuleConfig.r_mill) {
 				RecipeAPI.registerMills.addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(MainInit.miscDust, 1,
@@ -159,7 +166,9 @@ public class DCPluginUGB {
 			// 褐炭改質
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(Items.COAL, 1, 0), new ItemStack(
 					MachineInit.reagent, 1, 0), 1F, null, null, DCHeatTier.KILN, new ItemStack(MachineInit.catalyst, 1,
-							0), new FluidStack(MainInit.fuelOil, 400), null, new Object[] { new ItemStack(lig, 4, 0) });
+							0), new FluidStack(MainInit.fuelOil, 400), null, new Object[] {
+									new ItemStack(lig, 4, 0)
+			});
 		}
 	}
 

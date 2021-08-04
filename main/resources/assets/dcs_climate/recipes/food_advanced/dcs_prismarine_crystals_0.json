@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemAquamarine"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustMana"
+  }
+ ],
+ "result": {
+  "item": "minecraft:prismarine_crystals",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food_advanced"
+  }
+ ]
+}

@@ -18,5 +18,11 @@
   "item": "dcs_climate:dcs_food_pie",
   "count": 2,
   "data": 4
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

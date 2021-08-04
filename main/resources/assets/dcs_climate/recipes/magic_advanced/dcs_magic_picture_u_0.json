@@ -21,5 +21,11 @@
   "item": "dcs_climate:dcs_magic_picture_u",
   "count": 1,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "magic_advanced"
+  }
+ ]
 }

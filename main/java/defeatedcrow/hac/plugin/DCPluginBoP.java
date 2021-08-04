@@ -74,6 +74,7 @@ public class DCPluginBoP {
 		addOre("blockTallgrass", BOPBlocks.plant_0, 7);
 		addOre("blockTallgrass", BOPBlocks.plant_0, 8);
 		addOre("blockTallgrass", BOPBlocks.plant_0, 9);
+		addOre("blockTallgrass", BOPBlocks.plant_0, 10);
 		addOre("blockTallgrass", BOPBlocks.plant_0, 13);
 		addOre("blockTallgrass", BOPBlocks.plant_0, 14);
 		addOre("blockTallgrass", BOPBlocks.plant_0, 15);
@@ -155,6 +156,7 @@ public class DCPluginBoP {
 			});
 
 			if (ModuleConfig.food_advanced && ModuleConfig.r_brewing) {
+
 				RegisterBrewingDC.still(new ItemStack(FoodInit.essentialOil, 1, 0), new FluidStack(FoodInit.roseWater,
 						1000), new FluidStack(FluidRegistry.WATER, 5000), new Object[] {
 								new ItemStack(BOPBlocks.flower_1, 8, 5)

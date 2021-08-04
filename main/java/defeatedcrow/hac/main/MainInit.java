@@ -364,6 +364,7 @@ public class MainInit {
 	// food
 	public static Item bakedApple;
 	public static Item foodMaterials;
+	public static Item animalFeed;
 
 	// potion
 	public static Potion gravity;

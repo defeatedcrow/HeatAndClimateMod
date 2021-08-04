@@ -22,5 +22,11 @@
   "item": "dcs_climate:dcs_food_dish_sq",
   "count": 2,
   "data": 1
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

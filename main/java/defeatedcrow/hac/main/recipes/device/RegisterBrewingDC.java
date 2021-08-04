@@ -1,5 +1,10 @@
 package defeatedcrow.hac.main.recipes.device;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -12,6 +17,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class RegisterBrewingDC {
 
@@ -98,6 +104,21 @@ public class RegisterBrewingDC {
 		// lab
 
 		brewng(new ItemStack(FoodInit.yogurt, 3, 0), null, new FluidStack(MainInit.milk, 1000), new Object[] {
+				new ItemStack(FoodInit.lab, 1, 0)
+		});
+
+		brewng(new ItemStack(FoodInit.residue, 2, 3), null, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
+				"containerPlantDust",
+				new ItemStack(FoodInit.lab, 1, 0)
+		});
+
+		brewng(new ItemStack(FoodInit.residue, 2, 3), null, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
+				"feedHay",
+				new ItemStack(FoodInit.lab, 1, 0)
+		});
+
+		brewng(new ItemStack(FoodInit.residue, 4, 3), null, new FluidStack(FluidRegistry.WATER, 100), new Object[] {
+				new ItemStack(Blocks.HAY_BLOCK, 1, 0),
 				new ItemStack(FoodInit.lab, 1, 0)
 		});
 
@@ -427,6 +448,19 @@ public class RegisterBrewingDC {
 						"containerApple",
 						new ItemStack(FoodInit.beerYeast, 1, 0)
 		});
+
+		List<ItemStack> pair = Lists.newArrayList();
+		pair.addAll(OreDictionary.getOres("cropPair"));
+		if (!pair.isEmpty()) {
+			for (ItemStack i : pair) {
+				if (!DCUtil.isEmpty(i))
+					brewng(new ItemStack(FoodInit.residue, 1, 0), new FluidStack(FoodInit.cider, 1000), new FluidStack(
+							FluidRegistry.WATER, 1000), new Object[] {
+									new ItemStack(i.getItem(), 8, i.getItemDamage()),
+									new ItemStack(FoodInit.beerYeast, 1, 0)
+					});
+			}
+		}
 
 		brewng(new ItemStack(FoodInit.residue, 1, 1), new FluidStack(FoodInit.sake, 1000), new FluidStack(
 				FluidRegistry.WATER, 1000), new Object[] {

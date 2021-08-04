@@ -25,6 +25,7 @@ public class MobResistantData {
 				"familiarfauna.deer"), DCHeatTier.NORMAL, 3.0F);
 		DamageAPI.resistantData.registerEntityResistant(new ResourceLocation("familiarfauna",
 				"familiarfauna.turkey"), DCHeatTier.NORMAL, 3.0F);
+
 	}
 
 }

@@ -109,6 +109,7 @@ public class MainCreativeTabRegister {
 		// food
 		MainInit.bakedApple.setCreativeTab(ClimateMain.food);
 		MainInit.foodMaterials.setCreativeTab(ClimateMain.food);
+		MainInit.animalFeed.setCreativeTab(ClimateMain.food);
 
 		if (ModuleConfig.build_advanced) {
 

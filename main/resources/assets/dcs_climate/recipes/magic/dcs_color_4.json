@@ -14,5 +14,11 @@
   "item": "dcs_climate:dcs_color",
   "count": 3,
   "data": 4
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "magic"
+  }
+ ]
 }

@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dirt"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustDraff"
+  },
+  {
+   "item": "dcs_climate:dcs_food_microbe_bacillus",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_crop_fertilizer",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food_advanced"
+  }
+ ]
+}

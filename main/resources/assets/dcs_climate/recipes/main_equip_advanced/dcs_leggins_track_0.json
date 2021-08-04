@@ -1,0 +1,32 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "patternSuit"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "itemSyntheticCloth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "itemSyntheticCloth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "string"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_leggins_track",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "cloth_advanced"
+  }
+ ]
+}

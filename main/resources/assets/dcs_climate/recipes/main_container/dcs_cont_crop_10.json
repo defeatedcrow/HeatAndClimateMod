@@ -15,5 +15,11 @@
   "item": "dcs_climate:dcs_cont_crop",
   "count": 1,
   "data": 10
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

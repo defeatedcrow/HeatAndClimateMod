@@ -123,6 +123,7 @@ import defeatedcrow.hac.main.item.equip.ItemArmorSkirtSilk;
 import defeatedcrow.hac.main.item.equip.ItemArmorWool;
 import defeatedcrow.hac.main.item.equip.ItemMagicOvercoat;
 import defeatedcrow.hac.main.item.equip.ItemMagicSuit;
+import defeatedcrow.hac.main.item.food.ItemAnimalFood;
 import defeatedcrow.hac.main.item.food.ItemDCFoods;
 import defeatedcrow.hac.main.item.food.ItemFoodMaterials;
 import defeatedcrow.hac.main.item.misc.ItemClothN;
@@ -408,6 +409,10 @@ public class MainMaterialRegister {
 		MainInit.bakedApple = new ItemDCFoods(7, false).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_food_itemfood");
 		DCMaterialReg
 				.registerItem(MainInit.bakedApple, ClimateCore.PACKAGE_BASE + "_food_itemfood", ClimateMain.MOD_ID);
+
+		MainInit.animalFeed = new ItemAnimalFood(1).setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_animalfeed");
+		DCMaterialReg
+				.registerItem(MainInit.animalFeed, ClimateCore.PACKAGE_BASE + "_animalfeed", ClimateMain.MOD_ID);
 
 		MainInit.wrench = new ItemWrench(DCToolMaterial.getToolMaterial(0))
 				.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_wrench_brass");

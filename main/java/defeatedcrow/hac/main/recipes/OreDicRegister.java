@@ -7,6 +7,7 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.OredicConfig;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -367,6 +368,11 @@ public class OreDicRegister {
 		OreDictionary.registerOre("containerPlantDust", new ItemStack(MainInit.dustCake, 1, 3));
 		OreDictionary.registerOre("containerSoycake", new ItemStack(MainInit.dustCake, 1, 4));
 		OreDictionary.registerOre("containerDraff", new ItemStack(MainInit.dustCake, 1, 5));
+
+		OreDictionary.registerOre("feedCompound", new ItemStack(MainInit.animalFeed, 1, 0));
+		OreDictionary.registerOre("feedHay", new ItemStack(MainInit.animalFeed, 1, 1));
+
+		OreDictionary.registerOre("flistAllgrain", new ItemStack(Items.WHEAT, 1, 0));
 
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));

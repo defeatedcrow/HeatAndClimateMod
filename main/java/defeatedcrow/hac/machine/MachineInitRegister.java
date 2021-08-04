@@ -22,6 +22,7 @@ import defeatedcrow.hac.machine.block.BlockGearBox_SUS;
 import defeatedcrow.hac.machine.block.BlockHandCrank;
 import defeatedcrow.hac.machine.block.BlockHeatExchanger;
 import defeatedcrow.hac.machine.block.BlockHopperFilter;
+import defeatedcrow.hac.machine.block.BlockHopperFilterSUS;
 import defeatedcrow.hac.machine.block.BlockHopperFilterG;
 import defeatedcrow.hac.machine.block.BlockHopperFluid;
 import defeatedcrow.hac.machine.block.BlockHopperGold;
@@ -199,6 +200,12 @@ public class MachineInitRegister {
 		MachineInit.hopperSilver = new BlockHopperSilver(ClimateCore.PACKAGE_BASE + "_device_hopper_silver");
 		registerTierBlock(MachineInit.hopperSilver, ClimateCore.PACKAGE_BASE + "_device_hopper_silver", 2);
 		ClimateMain.proxy.regTEJson(MachineInit.hopperSilver, "dcs_climate", "dcs_device_hopper_silver", "machine");
+
+		if (ModuleConfig.machine_advanced) {
+			MachineInit.hopperSUS = new BlockHopperFilterSUS(ClimateCore.PACKAGE_BASE + "_device_hopper_sus");
+			registerTierBlock(MachineInit.hopperSUS, ClimateCore.PACKAGE_BASE + "_device_hopper_sus", 3);
+			ClimateMain.proxy.regTEJson(MachineInit.hopperSUS, "dcs_climate", "dcs_device_hopper_sus", "machine");
+		}
 
 		MachineInit.faucet = new BlockFaucet(ClimateCore.PACKAGE_BASE + "_device_faucet");
 		registerTierBlock(MachineInit.faucet, ClimateCore.PACKAGE_BASE + "_device_faucet", 2);
@@ -546,6 +553,7 @@ public class MachineInitRegister {
 			MachineInit.monitorTemp.setCreativeTab(ClimateMain.machine);
 			MachineInit.entityPanel.setCreativeTab(ClimateMain.machine);
 			MachineInit.oscillator.setCreativeTab(ClimateMain.machine);
+			MachineInit.hopperSUS.setCreativeTab(ClimateMain.machine);
 
 			MachineInit.tankYard.setCreativeTab(ClimateMain.machine);
 			MachineInit.tankYardPart.setCreativeTab(ClimateMain.machine);

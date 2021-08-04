@@ -26,9 +26,19 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 public class ItemRoseWaterBottle extends ItemLiquorBottle {
 
-	public static String[] names2 = { "rose_water", "tonic_water", "lemon_squash", "cola" };
+	public static String[] names2 = {
+			"rose_water",
+			"tonic_water",
+			"lemon_squash",
+			"cola"
+	};
 
-	public static final String[] FLUIDS2 = { "dcs.rose_water", "dcs.tonic_water", "dcs.lemon_squash", "dcs.cola" };
+	public static final String[] FLUIDS2 = {
+			"dcs.rose_water",
+			"dcs.tonic_water",
+			"dcs.lemon_squash",
+			"dcs.cola"
+	};
 
 	public ItemRoseWaterBottle() {
 		super();
@@ -97,11 +107,8 @@ public class ItemRoseWaterBottle extends ItemLiquorBottle {
 		if (player != null) {
 			ItemStack item = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(item)) {
-				ActionResult<ItemStack> ret = super.onItemRightClick2(world, player, hand);
-				if (ret.getType() == EnumActionResult.PASS) {
-					player.setActiveHand(hand);
-					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
-				}
+				player.setActiveHand(hand);
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 			}
 		}
 		return super.onItemRightClick2(world, player, hand);

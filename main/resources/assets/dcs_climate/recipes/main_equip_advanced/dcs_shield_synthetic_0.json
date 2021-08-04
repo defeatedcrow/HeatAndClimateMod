@@ -1,0 +1,29 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "XXX",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_synthetic",
+   "data": 2
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotToolSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_shield_synthetic",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "cloth_advanced"
+  }
+ ]
+}

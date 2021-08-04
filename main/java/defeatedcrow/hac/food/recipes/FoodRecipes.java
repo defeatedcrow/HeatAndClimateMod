@@ -227,22 +227,6 @@ public class FoodRecipes {
 		OreDictionary.registerOre("foodBowlofrice", new ItemStack(FoodInit.ricebowl, 1, 0));
 		OreDictionary.registerOre("foodRicecake", new ItemStack(FoodInit.mochi, 1, 1));
 
-		OreDictionary.registerOre("dustSpentGrain", new ItemStack(FoodInit.residue, 1, 0));
-		OreDictionary.registerOre("dustSakeLees", new ItemStack(FoodInit.residue, 1, 1));
-		OreDictionary.registerOre("dustPomace", new ItemStack(FoodInit.residue, 1, 2));
-		OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 0));
-		OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 1));
-		OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 2));
-		OreDictionary.registerOre("dustSilage", new ItemStack(FoodInit.residue, 1, 3));
-		OreDictionary.registerOre("dustYeast", new ItemStack(FoodInit.residue, 1, 4));
-		OreDictionary.registerOre("dustPeptone", new ItemStack(FoodInit.residue, 1, 5));
-		OreDictionary.registerOre("dustWhey", new ItemStack(FoodInit.residue, 1, 6));
-		OreDictionary.registerOre("brothIncreace", new ItemStack(FoodInit.broth, 1, 0));
-		OreDictionary.registerOre("brothGrow", new ItemStack(FoodInit.broth, 1, 1));
-		OreDictionary.registerOre("foodKoji", new ItemStack(FoodInit.inoculum, 1, 0));
-		OreDictionary.registerOre("dustMana", new ItemStack(FoodInit.antibiotic, 1, 7));
-		OreDictionary.registerOre("dyeBlue", new ItemStack(FoodInit.cyano, 1, 2));
-
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 1));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 3));
 		OreDictionary.registerOre("bread", new ItemStack(FoodInit.bread, 1, 13));
@@ -298,6 +282,22 @@ public class FoodRecipes {
 			OreDictionary.registerOre("bottleCola", new ItemStack(FoodInit.roseWaterBottle, 1, 3));
 			OreDictionary.registerOre("foodColasoda", new ItemStack(FoodInit.roseWaterBottle, 1, 3));
 			OreDictionary.registerOre("listAllsoda", new ItemStack(FoodInit.roseWaterBottle, 1, 3));
+
+			OreDictionary.registerOre("dustSpentGrain", new ItemStack(FoodInit.residue, 1, 0));
+			OreDictionary.registerOre("dustSakeLees", new ItemStack(FoodInit.residue, 1, 1));
+			OreDictionary.registerOre("dustPomace", new ItemStack(FoodInit.residue, 1, 2));
+			OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 0));
+			OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 1));
+			OreDictionary.registerOre("dustDraff", new ItemStack(FoodInit.residue, 1, 2));
+			OreDictionary.registerOre("feedSilage", new ItemStack(FoodInit.residue, 1, 3));
+			OreDictionary.registerOre("dustYeast", new ItemStack(FoodInit.residue, 1, 4));
+			OreDictionary.registerOre("dustPeptone", new ItemStack(FoodInit.residue, 1, 5));
+			OreDictionary.registerOre("dustWhey", new ItemStack(FoodInit.residue, 1, 6));
+			OreDictionary.registerOre("brothIncreace", new ItemStack(FoodInit.broth, 1, 0));
+			OreDictionary.registerOre("brothGrow", new ItemStack(FoodInit.broth, 1, 1));
+			OreDictionary.registerOre("foodKoji", new ItemStack(FoodInit.inoculum, 1, 0));
+			OreDictionary.registerOre("dustMana", new ItemStack(FoodInit.antibiotic, 1, 7));
+			OreDictionary.registerOre("dyeBlue", new ItemStack(FoodInit.cyano, 1, 2));
 		}
 
 		ConvertTargetList.addExclusing(new ItemStack(FoodInit.paperPack, 1, 1));

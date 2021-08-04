@@ -1,0 +1,32 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "patternWear"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "itemSilkCloth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "itemSilkCloth"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "stringMagic"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_cape_silk",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "cloth_advanced"
+  }
+ ]
+}

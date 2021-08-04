@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.recipes;
 
+import defeatedcrow.hac.api.module.HaCModule;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.ICompressionRecipe;
@@ -30,15 +31,18 @@ public class LoadingContRecipe {
 			ICompressionRecipe cont = (ICompressionRecipe) block;
 			for (int i = 0; i < cont.containedItem().length; i++) {
 				Object ret1 = cont.getInputDic(i);
-				DCRecipe.jsonShapedRecipe(name, new ItemStack(block, 1, i), new Object[] {
-					"XXX",
-					"X X",
-					"XXX",
-					'X',
-					ret1 });
+				DCRecipe.jsonShapedRecipe(HaCModule.CORE, name, new ItemStack(block, 1, i), new Object[] {
+						"XXX",
+						"X X",
+						"XXX",
+						'X',
+						ret1
+				});
 
 				ItemStack ret2 = cont.getOutputItem(i);
-				DCRecipe.jsonShapelessRecipe(name, ret2, new Object[] { new ItemStack(block, 1, i) });
+				DCRecipe.jsonShapelessRecipe(HaCModule.CORE, name, ret2, new Object[] {
+						new ItemStack(block, 1, i)
+				});
 			}
 		}
 	}

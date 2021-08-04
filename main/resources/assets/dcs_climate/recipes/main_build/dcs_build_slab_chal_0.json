@@ -13,5 +13,11 @@
   "item": "dcs_climate:dcs_build_slab_chal",
   "count": 6,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

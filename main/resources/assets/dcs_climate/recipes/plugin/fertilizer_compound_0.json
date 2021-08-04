@@ -18,5 +18,12 @@
   "item": "forestry:fertilizer_compound",
   "count": 1,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "plugin",
+   "modid": "forestry"
+  }
+ ]
 }

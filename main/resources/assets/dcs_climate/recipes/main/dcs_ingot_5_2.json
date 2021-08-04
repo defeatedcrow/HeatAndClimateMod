@@ -10,5 +10,11 @@
   "item": "dcs_climate:dcs_ingot",
   "count": 1,
   "data": 5
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

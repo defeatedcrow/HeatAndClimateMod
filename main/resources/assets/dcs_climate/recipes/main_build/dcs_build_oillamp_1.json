@@ -23,5 +23,11 @@
   "item": "dcs_climate:dcs_build_oillamp",
   "count": 1,
   "data": 1
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "build_advanced"
+  }
+ ]
 }

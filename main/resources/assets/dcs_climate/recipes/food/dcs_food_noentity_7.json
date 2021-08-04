@@ -26,5 +26,11 @@
   "item": "dcs_climate:dcs_food_noentity",
   "count": 3,
   "data": 7
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

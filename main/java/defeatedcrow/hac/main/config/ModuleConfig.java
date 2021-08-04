@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.config;
 
+import defeatedcrow.hac.api.module.HaCModule;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -40,10 +41,12 @@ public class ModuleConfig {
 	public static boolean mce = true;
 	public static boolean tan = true;
 	public static boolean eio = true;
-	public static boolean ugb = false;
+	public static boolean ugb = true;
 	public static boolean rc = true;
 	public static boolean ani = true;
 	public static boolean sd = true;
+	public static boolean tek = true;
+	public static boolean mco = true;
 
 	public static boolean r_climate = true;
 	public static boolean r_mill = true;
@@ -98,6 +101,8 @@ public class ModuleConfig {
 			Property rc_b = cfg.get("plugin setting", "Railcraft", rc);
 			Property ani_b = cfg.get("plugin setting", "Animania", ani);
 			Property sd_b = cfg.get("plugin setting", "SimpleDifficulty", sd);
+			Property tek_b = cfg.get("plugin setting", "Tektopia", tek);
+			Property mco_b = cfg.get("plugin setting", "Minecolonies", mco);
 
 			Property climate = cfg.get("recipe setting", "EnableClimateSmeltingRecipe", r_climate);
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
@@ -140,6 +145,8 @@ public class ModuleConfig {
 			rc = rc_b.getBoolean();
 			ani = ani_b.getBoolean();
 			sd = sd_b.getBoolean();
+			tek = tek_b.getBoolean();
+			mco = mco_b.getBoolean();
 
 			r_climate = climate.getBoolean();
 			r_mill = mill.getBoolean();
@@ -149,12 +156,27 @@ public class ModuleConfig {
 			r_crusher = crusher.getBoolean();
 			r_brewing = brewing.getBoolean();
 
+			loadModuleConfig();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			cfg.save();
 		}
 
+	}
+
+	public void loadModuleConfig() {
+		HaCModule.MACHINE.enabled = machine;
+		HaCModule.MACHINE_ADVANCED.enabled = machine_advanced;
+		HaCModule.MAGIC.enabled = magic;
+		HaCModule.MAGIC_ADVANCED.enabled = magic_advanced;
+		HaCModule.FOOD.enabled = food;
+		HaCModule.FOOD_ADVANCED.enabled = food_advanced;
+		HaCModule.TOOL.enabled = tool;
+		HaCModule.BUILD_ADVANCED.enabled = build_advanced;
+		HaCModule.WEAPON_ADVANCED.enabled = weapon_advanced;
+		HaCModule.CLOTH_ADVANCED.enabled = clothes_advanced;
 	}
 
 }

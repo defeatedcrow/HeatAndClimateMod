@@ -19,5 +19,11 @@
   "item": "dcs_climate:dcs_build_scaffold",
   "count": 16,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

@@ -318,11 +318,8 @@ public class ItemLiquorBottle extends FoodItemBase {
 		if (player != null) {
 			ItemStack item = player.getHeldItem(hand);
 			if (!DCUtil.isEmpty(item) && item.getItemDamage() != 0) {
-				ActionResult<ItemStack> ret = super.onItemRightClick2(world, player, hand);
-				if (ret.getType() == EnumActionResult.PASS) {
-					player.setActiveHand(hand);
-					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
-				}
+				player.setActiveHand(hand);
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 			}
 		}
 		return super.onItemRightClick2(world, player, hand);

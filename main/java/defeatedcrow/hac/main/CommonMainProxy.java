@@ -29,6 +29,7 @@ import defeatedcrow.hac.food.recipes.FoodRecipes;
 import defeatedcrow.hac.machine.MachineCommonProxy;
 import defeatedcrow.hac.machine.block.TileDieselEngine;
 import defeatedcrow.hac.machine.block.TileHopperFilter;
+import defeatedcrow.hac.machine.block.TileHopperFilterSUS;
 import defeatedcrow.hac.machine.block.TileHopperFluid;
 import defeatedcrow.hac.machine.block.TilePortalManager;
 import defeatedcrow.hac.machine.block.TilePressMachine;
@@ -42,6 +43,7 @@ import defeatedcrow.hac.machine.gui.ContainerCrusher;
 import defeatedcrow.hac.machine.gui.ContainerDieselEngine;
 import defeatedcrow.hac.machine.gui.ContainerEntityScooter;
 import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
+import defeatedcrow.hac.machine.gui.ContainerHopperFilterSUS;
 import defeatedcrow.hac.machine.gui.ContainerHopperFluid;
 import defeatedcrow.hac.machine.gui.ContainerPortalManager;
 import defeatedcrow.hac.machine.gui.ContainerPressMachine;
@@ -53,6 +55,7 @@ import defeatedcrow.hac.machine.gui.GuiCrusher;
 import defeatedcrow.hac.machine.gui.GuiDieselEngine;
 import defeatedcrow.hac.machine.gui.GuiEntityScooter;
 import defeatedcrow.hac.machine.gui.GuiHopperFilter;
+import defeatedcrow.hac.machine.gui.GuiHopperFilterSUS;
 import defeatedcrow.hac.machine.gui.GuiHopperFluid;
 import defeatedcrow.hac.machine.gui.GuiPortalManager;
 import defeatedcrow.hac.machine.gui.GuiPressMachine;
@@ -639,6 +642,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerFuelStove((TileCookingStove) tile, player.inventory);
 		if (tile instanceof TilePressMachine)
 			return new ContainerPressMachine((TilePressMachine) tile, player.inventory);
+		if (tile instanceof TileHopperFilterSUS)
+			return new ContainerHopperFilterSUS((TileHopperFilterSUS) tile, player);
 		if (tile instanceof TileHopperFilter)
 			return new ContainerHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)
@@ -705,6 +710,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiFuelStove((TileCookingStove) tile, player.inventory);
 		if (tile instanceof TilePressMachine)
 			return new GuiPressMachine((TilePressMachine) tile, player.inventory);
+		if (tile instanceof TileHopperFilterSUS)
+			return new GuiHopperFilterSUS((TileHopperFilterSUS) tile, player);
 		if (tile instanceof TileHopperFilter)
 			return new GuiHopperFilter((TileHopperFilter) tile, player);
 		if (tile instanceof TileHopperFluid)

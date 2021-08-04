@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "cropCotton"
+  },
+  {
+   "item": "dcs_climate:dcs_food_microbe_slime",
+   "data": 1
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_reagent",
+  "count": 1,
+  "data": 5
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food_advanced"
+  }
+ ]
+}

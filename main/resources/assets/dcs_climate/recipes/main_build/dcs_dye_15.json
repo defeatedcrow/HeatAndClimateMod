@@ -10,5 +10,11 @@
   "item": "minecraft:dye",
   "count": 1,
   "data": 15
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "build_advanced"
+  }
+ ]
 }

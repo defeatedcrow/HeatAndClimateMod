@@ -2,6 +2,7 @@ package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.damage.DamageAPI;
+import defeatedcrow.hac.api.module.HaCModule;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.core.base.ClimateCropBase;
@@ -174,22 +175,24 @@ public class DCPluginForestry {
 
 			Item slice = Item.REGISTRY.getObject(new ResourceLocation("forestry", "honeyed_slice"));
 			if (slice != null) {
-				DCRecipe.jsonShapedRecipe("plugin", new ItemStack(slice, 4, 0), new Object[] {
-						"XXX",
-						"XYX",
-						"XXX",
-						'Y',
-						"bread",
-						'X',
-						"dropHoney"
+				DCRecipe.jsonShapedRecipe(HaCModule.getPlugin("forestry"), "plugin", new ItemStack(slice, 4,
+						0), new Object[] {
+								"XXX",
+								"XYX",
+								"XXX",
+								'Y',
+								"bread",
+								'X',
+								"dropHoney"
 				});
 			}
 
 			if (fer != null) {
-				DCRecipe.jsonShapelessRecipe("plugin", new ItemStack(fer, 1, 0), new Object[] {
-						"dustPresscake",
-						"dustAsh",
-						new ItemStack(Items.DYE, 1, 15)
+				DCRecipe.jsonShapelessRecipe(HaCModule.getPlugin("forestry"), "plugin", new ItemStack(fer, 1,
+						0), new Object[] {
+								"dustPresscake",
+								"dustAsh",
+								new ItemStack(Items.DYE, 1, 15)
 				});
 			}
 

@@ -19,5 +19,11 @@
   "item": "minecraft:glass",
   "count": 8,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

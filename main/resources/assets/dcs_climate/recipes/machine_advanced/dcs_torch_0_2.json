@@ -18,5 +18,11 @@
   "item": "minecraft:torch",
   "count": 6,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "machine_advanced"
+  }
+ ]
 }

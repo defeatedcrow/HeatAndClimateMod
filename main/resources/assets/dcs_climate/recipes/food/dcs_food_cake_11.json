@@ -34,5 +34,11 @@
   "item": "dcs_climate:dcs_food_cake",
   "count": 1,
   "data": 11
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

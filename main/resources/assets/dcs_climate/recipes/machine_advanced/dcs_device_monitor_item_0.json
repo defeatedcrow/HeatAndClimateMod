@@ -23,5 +23,11 @@
   "item": "dcs_climate:dcs_device_monitor_item",
   "count": 1,
   "data": 0
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "machine_advanced"
+  }
+ ]
 }

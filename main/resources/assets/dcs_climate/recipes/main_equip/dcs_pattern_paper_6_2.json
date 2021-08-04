@@ -19,5 +19,11 @@
   "item": "dcs_climate:dcs_pattern_paper",
   "count": 1,
   "data": 6
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

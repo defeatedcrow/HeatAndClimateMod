@@ -14,5 +14,11 @@
   "item": "minecraft:dye",
   "count": 5,
   "data": 15
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

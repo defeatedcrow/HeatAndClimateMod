@@ -75,7 +75,7 @@ public class RegisterMillRecipe {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_black, 2, 3), "oreIolite");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_white, 2, 5), "oreTopaz");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_red, 2, 3), "oreAmethyst");
-		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_blue, 2, 4), "orelarimar");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_blue, 2, 4), "oreLarimar");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.gems_green, 2, 4), "oreFluorite");
 
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 3, 2), "oreLime");

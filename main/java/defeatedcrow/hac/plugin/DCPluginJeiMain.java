@@ -23,7 +23,7 @@ public class DCPluginJeiMain {
 
 		if (ModuleConfig.machine) {
 			DCsJEIPluginLists.millstones.add(new ItemStack(MachineInit.stonemill));
-			DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.IBC_reactor, 1, 0));
+			DCsJEIPluginLists.reactors_simple.add(new ItemStack(MachineInit.IBC_reactor, 1, 0));
 			DCsJEIPluginLists.spinning.add(new ItemStack(MachineInit.spinning, 1, 0));
 			if (ModuleConfig.machine_advanced) {
 				DCsJEIPluginLists.reactors.add(new ItemStack(MachineInit.reactor, 1, 0));

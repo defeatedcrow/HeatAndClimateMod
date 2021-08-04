@@ -19,5 +19,11 @@
   "item": "dcs_climate:dcs_build_synthetic_glass",
   "count": 8,
   "data": 5
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "build_advanced"
+  }
+ ]
 }

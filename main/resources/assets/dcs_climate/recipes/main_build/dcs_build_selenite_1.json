@@ -19,5 +19,11 @@
   "item": "dcs_climate:dcs_build_selenite",
   "count": 8,
   "data": 1
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

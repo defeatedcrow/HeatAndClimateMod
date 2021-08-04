@@ -1,0 +1,32 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "patternHoodie"
+  },
+  {
+   "item": "minecraft:wool",
+   "data": 32767
+  },
+  {
+   "item": "minecraft:wool",
+   "data": 32767
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "rabbithide"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_hoodie_mods",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "cloth_advanced"
+  }
+ ]
+}

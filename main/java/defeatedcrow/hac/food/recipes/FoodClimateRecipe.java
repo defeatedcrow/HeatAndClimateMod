@@ -8,6 +8,7 @@ import defeatedcrow.hac.core.climate.recipe.ClimateSmelting;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class FoodClimateRecipe {
 
@@ -88,12 +89,14 @@ public class FoodClimateRecipe {
 
 	}
 
-	private static void addFoodRecipe(ItemStack in, ItemStack out) {
-		ClimateSmelting r = new ClimateSmelting(in, null, DCHeatTier.OVEN, DCHumidity.DRY, null, 0F, false, out);
+	private static void addFoodRecipe(ItemStack out, ItemStack in) {
+		ClimateSmelting r = new ClimateSmelting(out, null, DCHeatTier.OVEN, DCHumidity.DRY, null, 0F, false, in);
 		r.requiredHeat().add(DCHeatTier.SMELTING);
 		r.requiredHum().add(DCHumidity.NORMAL);
 		r.requiredHum().add(DCHumidity.WET);
 		RecipeAPI.registerSmelting.addRecipe(r);
+
+		GameRegistry.addSmelting(in, out, 0);
 	}
 
 	private static void loadSmeltingRecipe() {

@@ -18,5 +18,11 @@
   "item": "dcs_climate:dcs_food_dipsauce",
   "count": 3,
   "data": 1
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

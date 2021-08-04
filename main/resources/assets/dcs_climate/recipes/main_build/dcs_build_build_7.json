@@ -14,5 +14,11 @@
   "item": "dcs_climate:dcs_build_build",
   "count": 4,
   "data": 7
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "gemAlexandrite"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustMana"
+  }
+ ],
+ "result": {
+  "item": "minecraft:ghast_tear",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food_advanced"
+  }
+ ]
+}

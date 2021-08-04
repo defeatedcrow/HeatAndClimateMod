@@ -22,5 +22,11 @@
   "item": "dcs_climate:dcs_food_icecream",
   "count": 1,
   "data": 9
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "food"
+  }
+ ]
 }

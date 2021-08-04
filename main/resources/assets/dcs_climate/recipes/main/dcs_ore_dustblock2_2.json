@@ -42,5 +42,11 @@
   "item": "dcs_climate:dcs_ore_dustblock2",
   "count": 1,
   "data": 2
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

@@ -10,5 +10,11 @@
   "item": "dcs_climate:dcs_food_crops",
   "count": 8,
   "data": 5
- }
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
 }

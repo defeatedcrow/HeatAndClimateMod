@@ -690,6 +690,9 @@ item.dcs_food_microbe_methanogen.name=メタン菌
 
 item.dcs_food_chick.name=ヒヨコ入りの卵
 
+item.dcs_animalfeed_compound.name=配合飼料
+item.dcs_animalfeed_hay.name=牧草
+
 item.dcs_yagen_stone_normal.name=石の薬研
 item.dcs_yagen_brass_normal.name=真鍮の薬研
 item.dcs_handspindle_normal.name=紡錘
@@ -1450,6 +1453,7 @@ tile.dcs_device_hopper_filter_0.name=フィルターホッパー
 tile.dcs_device_hopper_gold_0.name=金のホッパー
 tile.dcs_device_hopper_filter_gold_0.name=金のフィルターホッパー
 tile.dcs_device_hopper_silver_0.name=圧縮ホッパー
+tile.dcs_device_hopper_sus_0.name=二叉フィルターホッパー
 tile.dcs_device_hopper_fluid_0.name=液体ホッパー
 tile.dcs_device_thermometer_0.name=温度計
 tile.dcs_device_windvane_0.name=風見鶏
@@ -1792,6 +1796,8 @@ dcs.tip.hopper_flu1=液体容器アイテムを充填または開封します。
 dcs.tip.hopper_flu2=真上の液体タンクから真下の液体タンクに液体を輸送します。
 dcs.tip.hopper_flu3=近くに牛がいる時、ミルクやクリームを集めます。
 dcs.tip.hopper_s=圧縮レシピのあるアイテムをコンテナに圧縮します。 (ex. 9 インゴット -> 1 金属ブロック)
+dcs.tip.hopper_sus1=フィルタースロット(下段)にアイテムが1個ずつ残り、アイテムフィルターのように機能します。
+dcs.tip.hopper_sus2=フィルター対象外のアイテムは側面から搬出します。
 dcs.tip.portal1= または液体窒素のどちらかが必要です。
 dcs.tip.portal2=座標登録済みのアダプターカードが必要です。
 dcs.tip.portal3=転送カードの登録座標間でアイテム・液体の輸送を行います。
@@ -2184,6 +2190,7 @@ dcs.gui.device.fuel_stove=液体燃料炉
 dcs.gui.device.pressmachine=プレス加工機
 dcs.gui.device.hopper.filter=フィルターホッパー
 dcs.gui.device.hopper.fluid=液体ホッパー
+dcs.gui.device.hopper.sus=二叉フィルターホッパー
 dcs.gui.device.reactor=化学反応槽
 dcs.gui.device.reactor_ibc=簡易化学反応槽
 dcs.gui.device.spinning=紡績機

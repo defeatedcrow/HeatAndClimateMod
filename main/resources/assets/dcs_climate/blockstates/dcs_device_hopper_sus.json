@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "powered=false,side=north":  { "model": "dcs_climate:machine/dcs_device_hopper_sus" },
+        "powered=true,side=north":  { "model": "dcs_climate:machine/dcs_device_hopper_sus" },
+        "powered=false,side=south":  { "model": "dcs_climate:machine/dcs_device_hopper_sus", "y": 180, "uvlock": true },
+        "powered=true,side=south":  { "model": "dcs_climate:machine/dcs_device_hopper_sus", "y": 180, "uvlock": true },
+        "powered=false,side=west":  { "model": "dcs_climate:machine/dcs_device_hopper_sus", "y": 270, "uvlock": true },
+        "powered=true,side=west":  { "model": "dcs_climate:machine/dcs_device_hopper_sus", "y": 270, "uvlock": true },
+        "powered=false,side=east":  { "model": "dcs_climate:machine/dcs_device_hopper_sus", "y": 90, "uvlock": true },
+        "powered=true,side=east":  { "model": "dcs_climate:machine/dcs_device_hopper_sus", "y": 90, "uvlock": true },
+        "powered=false,side=up":  { "model": "dcs_climate:machine/dcs_device_hopper_sus" },
+        "powered=true,side=up":  { "model": "dcs_climate:machine/dcs_device_hopper_sus" },
+        "powered=false,side=down":  { "model": "dcs_climate:machine/dcs_device_hopper_sus" },
+        "powered=true,side=down":  { "model": "dcs_climate:machine/dcs_device_hopper_sus" }
+    }
+}
