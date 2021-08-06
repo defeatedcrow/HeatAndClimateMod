@@ -2246,7 +2246,7 @@ dcs.gui.device.silkworm_box=饲蚕箱
 dcs.gui.device.incubator=培养箱
 dcs.gui.device.brewing=发酵
 dcs.gui.device.still=蒸馏
-dcs.gui.device.barrel=酿造桶
+dcs.gui.device.barrel=熟成
 dcs.gui.device.exclusive=所有者: %s
 
 dcs.gui.message.nullclimate=气候数据没有正常加载。
