@@ -686,6 +686,10 @@ item.dcs_food_microbe_methanogen.name=产甲烷菌
 
 item.dcs_food_chick.name=毛鸡蛋
 
+
+item.dcs_animalfeed_compound.name=配合饲料
+item.dcs_animalfeed_hay.name=牧草
+
 ## craft tools
 item.dcs_yagen_stone_normal.name=石质药碾子
 item.dcs_yagen_brass_normal.name=青铜药碾子
@@ -1480,6 +1484,7 @@ tile.dcs_device_hopper_gold_0.name=金漏斗
 tile.dcs_device_hopper_filter_gold_0.name=金过滤漏斗
 tile.dcs_device_hopper_fluid_0.name=流体漏斗
 tile.dcs_device_hopper_silver_0.name=压缩漏斗
+tile.dcs_device_hopper_sus_0.name=二叉过滤漏斗
 tile.dcs_device_thermometer_0.name=温度计
 tile.dcs_device_windvane_0.name=风标
 tile.dcs_device_watermill_0.name=水车
@@ -1833,6 +1838,8 @@ dcs.tip.hopper_flu1=填充并释放其中的液体。
 dcs.tip.hopper_flu2=从上方运输流体到下方。
 dcs.tip.hopper_flu3=如果上方有牛，则会对牛挤奶。
 dcs.tip.hopper_s=这个方块可以把部分物品压缩成块(ex. 9个物品=1个方块)
+dcs.tip.hopper_sus1=在漏斗下端槽位中标记一个物品，被标记的物品将从下方输出。
+dcs.tip.hopper_sus2=标记物品外的物品将从侧面输出。
 dcs.tip.portal1= 热量等级或液氮。
 dcs.tip.portal2=需要注册过坐标的传输卡片
 dcs.tip.portal3=这个方块会在两个注册过的坐标内传输物品或液体。
@@ -2227,6 +2234,7 @@ dcs.gui.device.fuel_stove=液体燃料炉
 dcs.gui.device.pressmachine=冲压机
 dcs.gui.device.hopper.filter=过滤漏斗
 dcs.gui.device.hopper.fluid=流体漏斗
+dcs.gui.device.hopper.sus=二叉过滤漏斗
 dcs.gui.device.reactor=化学反应器
 dcs.gui.device.reactor_ibc=简易化学反应器
 dcs.gui.device.spinning=纺织机
@@ -2238,7 +2246,7 @@ dcs.gui.device.silkworm_box=饲蚕箱
 dcs.gui.device.incubator=培养箱
 dcs.gui.device.brewing=发酵
 dcs.gui.device.still=蒸馏
-dcs.gui.device.barrel=酿造桶
+dcs.gui.device.barrel=熟成
 dcs.gui.device.exclusive=所有者: %s
 
 dcs.gui.message.nullclimate=气候数据没有正常加载。
