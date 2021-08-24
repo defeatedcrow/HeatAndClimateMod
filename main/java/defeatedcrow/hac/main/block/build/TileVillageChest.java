@@ -31,7 +31,7 @@ public class TileVillageChest extends TileLowChest {
 			// 最寄りの村
 			double x1 = pos.getX() - 32.0D;
 			double y1 = pos.getY() - 2.0D;
-			double z1 = pos.getZ() - 2.0D;
+			double z1 = pos.getZ() - 32.0D;
 			double x2 = pos.getX() + 32.0D;
 			double y2 = pos.getY() + 3.0D;
 			double z2 = pos.getZ() + 32.0D;
