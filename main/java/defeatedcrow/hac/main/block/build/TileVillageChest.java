@@ -28,14 +28,16 @@ public class TileVillageChest extends TileLowChest {
 	@Override
 	public void updateTile() {
 		if (!world.isRemote) {
-			double x1 = pos.getX() - 15.0D;
+			// 最寄りの村
+			double x1 = pos.getX() - 32.0D;
 			double y1 = pos.getY() - 2.0D;
-			double z1 = pos.getZ() - 15.0D;
-			double x2 = pos.getX() + 16.0D;
+			double z1 = pos.getZ() - 2.0D;
+			double x2 = pos.getX() + 32.0D;
 			double y2 = pos.getY() + 3.0D;
-			double z2 = pos.getZ() + 16.0D;
-			List<EntityVillager> list = this.world.<EntityVillager>getEntitiesWithinAABB(EntityVillager.class,
-					new AxisAlignedBB(x1, y1, z1, x2, y2, z2), EntitySelectors.IS_ALIVE);
+			double z2 = pos.getZ() + 32.0D;
+			List<EntityVillager> list = this.world
+					.<EntityVillager>getEntitiesWithinAABB(EntityVillager.class, new AxisAlignedBB(x1, y1, z1, x2, y2,
+							z2), EntitySelectors.IS_ALIVE);
 
 			if (!list.isEmpty()) {
 				for (EntityVillager vil : list) {

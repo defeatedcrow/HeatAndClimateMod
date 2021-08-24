@@ -23,4 +23,8 @@ public class EntityDynamiteSmall extends EntityDynamite {
 		return 2;
 	}
 
+	public boolean canDestroyBlock() {
+		return true;
+	}
+
 }

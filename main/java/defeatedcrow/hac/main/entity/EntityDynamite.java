@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.entity;
 
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.util.CustomExplosion;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -71,8 +72,9 @@ public class EntityDynamite extends Entity {
 					CustomExplosion explosion = new CustomExplosion(world, this, placer, posX, posY, posZ, getPower(),
 							CustomExplosion.Type.Silk, true);
 					explosion.doExplosion();
-					this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.2F / (this.rand
-							.nextFloat() * 0.2F + 0.9F));
+					if (MainCoreConfig.sound_dynamite > 0D)
+						this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, (float) MainCoreConfig.sound_dynamite, 1.2F / (this.rand
+								.nextFloat() * 0.2F + 0.9F));
 					doBlockDestroy(getRange(), explosion);
 				} else {
 					if (this.getPower() > 2.0F)
@@ -111,7 +113,7 @@ public class EntityDynamite extends Entity {
 						}
 					}
 
-				} else if (state != null && state.getBlock()
+				} else if (canDestroyBlock() && state != null && state.getBlock()
 						.getExplosionResistance(world, p, getPlacer(), exp) <= 60.0F * range && this
 								.canExplosionDestroyBlock(exp, world, pos, world.getBlockState(pos), range)) {
 					if (isSilk() && state.getBlock().canSilkHarvest(world, p, state, null)) {
@@ -134,6 +136,10 @@ public class EntityDynamite extends Entity {
 
 	public float getPower() {
 		return 4.0F;
+	}
+
+	public boolean canDestroyBlock() {
+		return !inWater;
 	}
 
 	public int getRange() {

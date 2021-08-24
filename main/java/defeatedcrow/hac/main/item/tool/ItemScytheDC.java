@@ -92,9 +92,11 @@ public class ItemScytheDC extends ItemSword implements ITexturePath {
 		Multimap<String, AttributeModifier> multimap = HashMultimap.<String, AttributeModifier>create();
 
 		if (slot == EntityEquipmentSlot.MAINHAND) {
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER,
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(
+					ATTACK_DAMAGE_MODIFIER,
 					"Weapon modifier", this.attackDam, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER,
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(
+					ATTACK_SPEED_MODIFIER,
 					"Weapon modifier", -2.5D, 0));
 		}
 

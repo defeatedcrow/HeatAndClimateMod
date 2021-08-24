@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.fluid.FluidDictionaryDC;
 import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.block.fluid.DCLimitedTank;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.state.IBlockState;
@@ -78,7 +79,8 @@ public class TileBoilerTurbine extends TileTorqueBase implements ITorqueProvider
 
 				if (f) {
 					this.currentBurnTime = 1;
-					world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.15F, 0.7F);
+					if (MainCoreConfig.sound_boiler > 0D)
+						world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, (float) MainCoreConfig.sound_boiler, 0.7F);
 				} else {
 					this.currentBurnTime = 0;
 				}

@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.entity.EntityIronBolt;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -116,8 +117,9 @@ public class ItemCrossbowDC extends ItemBow implements ITexturePath {
 						world.spawnEntity(entityarrow);
 					}
 
-					world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
-							.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+					if (MainCoreConfig.sound_gun > 0D)
+						world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, (float) MainCoreConfig.sound_gun, 1.0F / (itemRand
+								.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 					if (!flag) {
 						DCUtil.reduceStackSize(ammo, 1);

@@ -19,13 +19,31 @@ public class WorldGenConfig {
 	public static final WorldGenConfig INSTANCE = new WorldGenConfig();
 	private final String BR = System.getProperty("line.separator");
 
-	public static String[] blocknames = new String[] { "minecraft:dirt:32767", "ModID:sampleBlock:sampleMeta" };
+	public static String[] blocknames = new String[] {
+			"minecraft:dirt:32767",
+			"ModID:sampleBlock:sampleMeta"
+	};
 	public static final List<BlockSet> disables = Lists.newArrayList();
 
 	// ore
-	public static int[] depositGen = new int[] { 50, 30, 30, 30, 10, 30, 20 };
+	public static int[] depositGen = new int[] {
+			50,
+			30,
+			30,
+			30,
+			10,
+			30,
+			20
+	};
 
-	public static int[] radGen = new int[] { 5, 4, 5, 4, 3, 4 };
+	public static int[] radGen = new int[] {
+			5,
+			4,
+			5,
+			4,
+			3,
+			4
+	};
 
 	public static int skarnGen = 30;
 
@@ -53,19 +71,19 @@ public class WorldGenConfig {
 			cfg.addCustomCategoryComment("ore gen setting", "This setting is for ore gen. " + BR + "Please set probability as parsentage." + BR + "If you set 0, those ore deposits will not be generated.");
 
 			Property sed_ore = cfg
-					.get("ore gen setting", "Red Vain Gen Probability", depositGen[0], "Generate in High-altitude of mountain. 0-100%");
+					.get("ore gen setting", "Red Vein Gen Probability", depositGen[0], "Generate in High-altitude and underground of mountain. 0-100%");
 
 			Property char_ore = cfg
-					.get("ore gen setting", "Green Vein Gen Probability", depositGen[1], "Generate in underground of mountain. 0-100%");
+					.get("ore gen setting", "Green Vein Gen Probability", depositGen[1], "Generate in underground of forest. 0-100%");
 
 			Property vein_ore = cfg
-					.get("ore gen setting", "Blue Vein Gen Probability", depositGen[2], "Generate in underground of plane. 0-100%");
+					.get("ore gen setting", "Blue Vein Gen Probability", depositGen[2], "Generate in underground of cold or wet biomes. 0-100%");
 
 			Property lava_ore = cfg
-					.get("ore gen setting", "White Vain Gen Probability", depositGen[3], "Generate in deep-underground. 0-100%");
+					.get("ore gen setting", "White Vein Gen Probability", depositGen[3], "Generate in underground of plane. 0-100%");
 
 			Property geode_ore = cfg
-					.get("ore gen setting", "Black Vain Gen Probability", depositGen[4], "Generate in deep-underground. 0-100%");
+					.get("ore gen setting", "Black Vein Gen Probability", depositGen[4], "Generate in deep-underground. 0-100%");
 
 			Property s_sed_ore = cfg
 					.get("ore gen setting", "Guano Gen Probability", depositGen[5], "Generate under the sea. 0-100%");
@@ -73,20 +91,20 @@ public class WorldGenConfig {
 			Property neth_ore = cfg
 					.get("ore gen setting", "Nether Vain Gen Probability", depositGen[6], "Generate in the nether. 0-100%");
 
-			Property sed_rad = cfg.get("ore gen setting", "Red Vain Gen Radius", radGen[0], "Default radius: 5");
+			Property sed_rad = cfg.get("ore gen setting", "Red Vein Gen Radius", radGen[0], "Default radius: 5");
 
-			Property s_sed_rad = cfg.get("ore gen setting", "Green Vain Gen Radius", radGen[1], "Default radius: 4");
+			Property s_sed_rad = cfg.get("ore gen setting", "Green Vein Gen Radius", radGen[1], "Default radius: 4");
 
-			Property char_rad = cfg.get("ore gen setting", "Blue Vain Gen Radius", radGen[2], "Default radius: 5");
+			Property char_rad = cfg.get("ore gen setting", "Blue Vein Gen Radius", radGen[2], "Default radius: 5");
 
 			Property vein_rad = cfg.get("ore gen setting", "White Vein Gen Radius", radGen[3], "Default radius: 4");
 
-			Property lava_rad = cfg.get("ore gen setting", "Black Vain Gen Radius", radGen[4], "Default radius: 3");
+			Property lava_rad = cfg.get("ore gen setting", "Black Vein Gen Radius", radGen[4], "Default radius: 3");
 
-			Property geode_rad = cfg.get("ore gen setting", "Geode Gen Radius", radGen[5], "Default radius: 4");
+			Property geode_rad = cfg.get("ore gen setting", "Guano Gen Radius", radGen[5], "Default radius: 4");
 
 			Property skarn_ore = cfg
-					.get("ore gen setting", "Skarn Gen Probability", skarnGen, "Generate in Forest. 0.00-100.00% (default: 0.3%)");
+					.get("ore gen setting", "Skarn Gen Probability", skarnGen, "0.00-100.00% (default: 0.3%)");
 
 			Property windmill = cfg
 					.get("world setting", "Windmill Gen Probability", windmillGen, "Generate in Forest or Plain. 0.00-100.00% (default: 0.5%)");
