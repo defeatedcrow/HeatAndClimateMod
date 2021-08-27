@@ -21,6 +21,8 @@ public class RenderPlayerEventDC {
 
 	private static final ResourceLocation WING_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
 			"textures/entity/magic/magical_wings.png");
+	private static final ResourceLocation WING_TEX2 = new ResourceLocation(ClimateCore.PACKAGE_ID,
+			"textures/entity/magic/magical_wings_r.png");
 	private static final ResourceLocation TAIL_TEX = new ResourceLocation(ClimateCore.PACKAGE_ID,
 			"textures/entity/magic/magical_fishtail.png");
 	private static final ModelMagicalWing MODEL = new ModelMagicalWing();
@@ -76,7 +78,10 @@ public class RenderPlayerEventDC {
 						OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
 
 						GlStateManager.color(1.0F, 1.0F, 1.0F, 0.75F);
-						event.getRenderer().bindTexture(WING_TEX);
+						if (ClimateCore.isDebug)
+							event.getRenderer().bindTexture(WING_TEX2);
+						else
+							event.getRenderer().bindTexture(WING_TEX);
 
 						GlStateManager.scale(-1.2F, -1.2F, 1.2F);
 						MODEL.renderWing(player, 0.0625F, sneak, angle);
@@ -132,20 +137,21 @@ public class RenderPlayerEventDC {
 	}
 
 	private static String[] name = {
-		"absolute",
-		"cryogenic",
-		"frostbite",
-		"cold",
-		"cool",
-		"normal",
-		"warm",
-		"hot",
-		"boil",
-		"oven",
-		"kiln",
-		"smelting",
-		"uht",
-		"inferno" };
+			"absolute",
+			"cryogenic",
+			"frostbite",
+			"cold",
+			"cool",
+			"normal",
+			"warm",
+			"hot",
+			"boil",
+			"oven",
+			"kiln",
+			"smelting",
+			"uht",
+			"inferno"
+	};
 
 	private float interpolateRotation(float prevYawOffset, float yawOffset, float partialTicks) {
 		float f = yawOffset - prevYawOffset;

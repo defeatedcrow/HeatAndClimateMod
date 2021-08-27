@@ -75,7 +75,7 @@ public class ModuleConfig {
 			Property agri_b = cfg.get("module setting", "EnableCropBlocks", agri);
 			Property world_b = cfg.get("module setting", "EnableWorldgen", world);
 			Property crop_b = cfg.get("module setting", "EnableCropSeasonality", crop);
-			Property lotus_b = cfg.get("module setting", "EnableLotusPetalRecipe", lotus);
+			// Property lotus_b = cfg.get("module setting", "EnableLotusPetalRecipe", lotus);
 			Property liquor_b = cfg.get("module setting", "EnableLiquors", liquor);
 
 			Property machine_a = cfg.get("module setting", "EnableAdvancedMachine", machine_advanced);
@@ -90,19 +90,19 @@ public class ModuleConfig {
 
 			Property mek_b = cfg.get("plugin setting", "MekanismPlugin", mek);
 			Property for_b = cfg.get("plugin setting", "ForestryPlugin", ffm);
-			Property ic2_b = cfg.get("plugin setting", "IndustrialCraft2Plugin", ic2);
+			// Property ic2_b = cfg.get("plugin setting", "IndustrialCraft2Plugin", ic2);
 			Property bop_b = cfg.get("plugin setting", "BiomesOPlentyPlugin", bop);
 			Property cofh_b = cfg.get("plugin setting", "CoFHPlugin", bop);
 			Property bc_b = cfg.get("plugin setting", "BuildcraftPlugin", bc);
 			Property mce_b = cfg.get("plugin setting", "MCEconomyPlugin", mce);
 			Property tan_b = cfg.get("plugin setting", "ToughAsNailsPlugin", tan);
-			Property eio_b = cfg.get("plugin setting", "EnderIO", eio);
-			Property ugb_b = cfg.get("plugin setting", "UndergroundBiomes", ugb);
-			Property rc_b = cfg.get("plugin setting", "Railcraft", rc);
-			Property ani_b = cfg.get("plugin setting", "Animania", ani);
-			Property sd_b = cfg.get("plugin setting", "SimpleDifficulty", sd);
-			Property tek_b = cfg.get("plugin setting", "Tektopia", tek);
-			Property mco_b = cfg.get("plugin setting", "Minecolonies", mco);
+			Property eio_b = cfg.get("plugin setting", "EnderIOPlugin", eio);
+			Property ugb_b = cfg.get("plugin setting", "UndergroundBiomesPlugin", ugb);
+			Property rc_b = cfg.get("plugin setting", "RailcraftPlugin", rc);
+			// Property ani_b = cfg.get("plugin setting", "AnimaniaPlugin", ani);
+			Property sd_b = cfg.get("plugin setting", "SimpleDifficultyPlugin", sd);
+			Property tek_b = cfg.get("plugin setting", "TektopiaPlugin", tek);
+			Property mco_b = cfg.get("plugin setting", "MinecoloniesPlugin", mco);
 
 			Property climate = cfg.get("recipe setting", "EnableClimateSmeltingRecipe", r_climate);
 			Property mill = cfg.get("recipe setting", "EnableMillRecipe", r_mill);
@@ -120,7 +120,7 @@ public class ModuleConfig {
 			agri = agri_b.getBoolean();
 			world = world_b.getBoolean();
 			crop = crop_b.getBoolean();
-			lotus = lotus_b.getBoolean();
+			// lotus = lotus_b.getBoolean();
 			liquor = liquor_b.getBoolean();
 
 			machine_advanced = machine_a.getBoolean() && machine;
@@ -134,7 +134,7 @@ public class ModuleConfig {
 
 			mek = mek_b.getBoolean();
 			ffm = for_b.getBoolean();
-			ic2 = ic2_b.getBoolean();
+			// ic2 = ic2_b.getBoolean();
 			bop = bop_b.getBoolean();
 			cofh = cofh_b.getBoolean();
 			bc = bc_b.getBoolean();
@@ -143,7 +143,7 @@ public class ModuleConfig {
 			eio = eio_b.getBoolean();
 			ugb = ugb_b.getBoolean();
 			rc = rc_b.getBoolean();
-			ani = ani_b.getBoolean();
+			// ani = ani_b.getBoolean();
 			sd = sd_b.getBoolean();
 			tek = tek_b.getBoolean();
 			mco = mco_b.getBoolean();

@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.entity.EntityBulletDC;
 import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
@@ -86,8 +87,9 @@ public class ItemMusketDC extends ItemBow implements ITexturePath {
 				player.setActiveHand(hand);
 				return new ActionResult(EnumActionResult.SUCCESS, stack);
 			} else {
-				worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand
-						.nextFloat() * 0.4F + 1.2F) + 0.5F);
+				if (MainCoreConfig.sound_gun > 0D)
+					worldIn.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.NEUTRAL, (float) MainCoreConfig.sound_gun, 1.0F / (itemRand
+							.nextFloat() * 0.4F + 1.2F) + 0.5F);
 				ItemStack ammo = this.findAmmo(player);
 				boolean flag = !DCUtil.isEmpty(ammo);
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0) {

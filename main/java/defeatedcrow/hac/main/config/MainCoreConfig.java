@@ -28,8 +28,8 @@ public class MainCoreConfig {
 	public static boolean armor_effect = false;
 	public static boolean bottle_texture = true;
 
-	public static int flower_turret_limit = 30;
-	public static double flower_turret_damage = 8.0D;
+	public static int flower_turret_limit = 60;
+	public static double flower_turret_damage = 16.0D;
 
 	public static boolean e_corrosion = true;
 	public static boolean e_robber = true;
@@ -38,6 +38,10 @@ public class MainCoreConfig {
 	public static double gun_damage = 12.0D;
 
 	public static int aging_day = 60;
+
+	public static double sound_boiler = 0.15D;
+	public static double sound_gun = 1.0D;
+	public static double sound_dynamite = 1.0D;
 
 	public static String[] blocknames = new String[] {
 			"minecraft:stone:32767",
@@ -56,12 +60,14 @@ public class MainCoreConfig {
 			cfg.addCustomCategoryComment("plugin setting", "This setting is for plugin with the other mods.");
 			cfg.addCustomCategoryComment("item setting", "This setting is for the items.");
 			cfg.addCustomCategoryComment("enchantment setting", "This setting is for the enchantment.");
+			cfg.addCustomCategoryComment("sound setting", "This is the sound volume setting.");
 
 			Property vsRF = cfg
 					.get("plugin setting", "Conversion rate vs RF", rateVsRF, "Set the amount of conversion rate as RF/torque.");
 
-			Property vsEU = cfg
-					.get("plugin setting", "Conversion rate vs EU", rateVsEU, "Set the amount of conversion rate as EU/torque.");
+			// Property vsEU = cfg
+			// .get("plugin setting", "Conversion rate vs EU", rateVsEU, "Set the amount of conversion rate as
+			// EU/torque.");
 
 			Property noSteel = cfg
 					.get("item setting", "Enable Steel Recipe", steel, "Enable the climate recipe for smelting the steel block.");
@@ -98,13 +104,20 @@ public class MainCoreConfig {
 					.get("item setting", "Aging Day", aging_day, "Set the number of days required to age the drink in a barrel.");
 
 			Property turret_dam = cfg
-					.get("item setting", "Flower Turret Damage", aging_day, "Set the shooting damage of the flower turret.");
+					.get("item setting", "Flower Turret Damage", flower_turret_damage, "Set the shooting damage of the flower turret.");
 
 			Property turret_live = cfg
-					.get("item setting", "Flower Turret Lifespan", aging_day, "Set the lifespan of the flower turret.");
+					.get("item setting", "Flower Turret Lifespan", flower_turret_limit, "Set the lifespan of the flower turret.");
 
 			Property bottle = cfg
 					.get("render setting", "Enable Transparent Texture", bottle_texture, "Use transparent textures for some food entities." + BR + "This setting is used to avoid rendering problems when using shaders.");
+
+			Property s_boiler = cfg
+					.get("sound setting", "Boiler Turbine Block", sound_boiler);
+			Property s_gun = cfg
+					.get("sound setting", "Gun (Crossbow and Musket)", sound_gun);
+			Property s_dynamite = cfg
+					.get("sound setting", "Dynamite", sound_dynamite);
 
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
@@ -113,7 +126,7 @@ public class MainCoreConfig {
 			steel_hardmode = metal_b.getBoolean();
 
 			rateVsRF = vsRF.getDouble();
-			rateVsEU = vsEU.getDouble();
+			// rateVsEU = vsEU.getDouble();
 			rateVsFU = vsRF.getDouble();
 
 			steel = noSteel.getBoolean();
@@ -132,6 +145,24 @@ public class MainCoreConfig {
 
 			flower_turret_damage = turret_dam.getDouble();
 			flower_turret_limit = turret_live.getInt();
+
+			double sb = s_boiler.getDouble();
+			if (sb < 0 || sb > 5) {
+				sb = 0.15D;
+			}
+			sound_boiler = sb;
+
+			double sg = s_gun.getDouble();
+			if (sg < 0 || sg > 5) {
+				sg = 0.15D;
+			}
+			sound_gun = sg;
+
+			double sd = s_dynamite.getDouble();
+			if (sd < 0 || sd > 5) {
+				sd = 0.15D;
+			}
+			sound_dynamite = sd;
 
 			// TimeZone tz = TimeZone.getTimeZone(timeZone);
 			// if (tz != null) {

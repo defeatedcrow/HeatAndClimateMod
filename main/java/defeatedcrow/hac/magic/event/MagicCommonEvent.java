@@ -16,7 +16,6 @@ import defeatedcrow.hac.api.recipe.IMillRecipe;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.PictureList;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
@@ -24,6 +23,7 @@ import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
+import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -256,10 +256,10 @@ public class MagicCommonEvent {
 				for (ItemStack i : event.getDrops()) {
 					if (!DCUtil.isEmpty(i)) {
 						ICrusherRecipe cr = null;
-						if (eff > 1.0F && ModuleConfig.machine_advanced) {
-							cr = RecipeAPI.registerCrushers.getRecipe(i, new ItemStack(MachineInit.rotaryBlade));
-							ICrusherRecipe cr2 = RecipeAPI.registerCrushers.getRecipe(i, new ItemStack(
-									MachineInit.rotaryBlade, 1, 1));
+						if (eff > 1.0F && ModuleConfig.r_crusher) {
+							cr = RecipeAPI.registerCrushers.getRecipe(i, RegisterCrusherRecipe.SUS_Blade);
+							ICrusherRecipe cr2 = RecipeAPI.registerCrushers
+									.getRecipe(i, RegisterCrusherRecipe.Ti_Blade);
 							if (eff >= 2.0F && cr2 != null) {
 								cr = cr2;
 							}
@@ -276,7 +276,7 @@ public class MagicCommonEvent {
 							if (!DCUtil.isEmpty(o3) && event.getWorld().rand.nextFloat() < cr.getTertialyChance() * eff)
 								nList.add(o3.copy());
 							flag = true;
-						} else {
+						} else if (ModuleConfig.r_mill) {
 							IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
 							if (recipe != null) {
 								ItemStack o1 = recipe.getOutput();
