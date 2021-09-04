@@ -20,6 +20,7 @@ public class MagicInit {
 	public static Item magicCard3;
 
 	public static Item expGem;
+	public static Item medallion;
 
 	// blocks
 	public static Block colorCube;
@@ -49,5 +50,7 @@ public class MagicInit {
 	public static Item gemBootsFish;
 
 	public static Block timeCage;
+
+	public static Item debugGauntlet;
 
 }

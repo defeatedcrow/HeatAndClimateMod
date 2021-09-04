@@ -908,6 +908,7 @@ tile.dcs_color_cube_b2.name=Activated Black Cube
 tile.dcs_color_cube_w2.name=Activated White Cube
 tile.dcs_cube_ice_0.name=Cryogenic Cube
 tile.dcs_cube_flame_0.name=Infernal Cube
+item.dcs_medallion_color.name=Five-color Medallion
 
 ## entities
 item.dcs_motor_minecart_white.name=Motorized Cart
@@ -1421,6 +1422,9 @@ tile.dcs_device_biomeglass_1.name=Biome Cube (Jungle)
 tile.dcs_device_biomeglass_2.name=Biome Cube (Desert)
 tile.dcs_device_biomeglass_3.name=Biome Cube (Ice)
 tile.dcs_time_cage_0.name=Butterfly of Time Flow
+tile.dcs_time_cage_1.name=Butterfly of Time Flow
+tile.dcs_time_cage_2.name=Butterfly of Time Flow
+tile.dcs_time_cage_3.name=Butterfly of Time Flow
 tile.dcs_magic_picture_u_0.name=Blue-Red Picture
 tile.dcs_magic_picture_g_0.name=Green-Blue Picture
 tile.dcs_magic_picture_r_0.name=Red-White Picture
@@ -2829,6 +2833,12 @@ dcs.info.title.medium=Culture Medium
 dcs.info.desc.medium=Click natural blocks with it, or craft with microbes. Then incubate in an incubator.
 dcs.info.title.unidentified=Unidentified Microbe
 dcs.info.desc.unidentified=When used with a click, the species of microbe is identified.
+
+#debug only
+item.dcs_debug_gauntlet_ur.name=Eight-eyes Serpent
+dcs.tip.debug_gauntlet.0=Debug Item
+dcs.comment.debug_gauntlet.0=FOR DEBUGGING ONLY!
+dcs.comment.flavor.debug_gauntlet.0="I can't work without it."
 
 
 # deprecated

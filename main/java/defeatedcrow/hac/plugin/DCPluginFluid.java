@@ -211,12 +211,12 @@ public class DCPluginFluid {
 				registerPotion("dcs.nether", MobEffects.FIRE_RESISTANCE);
 				registerPotion("dcs.chorus_liquor", MainInit.warp);
 				registerPotion("dcs.awamori", MainInit.reflexion);
-				registerPotion("dcs.tonic_water", MobEffects.WATER_BREATHING);
-				registerPotion("dcs.lemon_squash", MobEffects.ABSORPTION, 1);
-				registerPotion("dcs.cola", MainInit.absorptionEXP);
-				registerPotion("dcs.cider", MobEffects.HASTE);
 			}
 			registerPotion("dcs.rose_water", MainInit.projectileResistant);
+			registerPotion("dcs.tonic_water", MobEffects.WATER_BREATHING);
+			registerPotion("dcs.lemon_squash", MobEffects.ABSORPTION, 1);
+			registerPotion("dcs.cola", MainInit.absorptionEXP);
+			registerPotion("dcs.cider", MobEffects.HASTE);
 		}
 
 		Fluid f1 = FluidRegistry.getFluid("ic2coolant");

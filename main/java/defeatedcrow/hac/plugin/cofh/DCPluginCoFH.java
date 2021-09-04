@@ -30,7 +30,7 @@ public class DCPluginCoFH {
 	public static void load() {
 		loadFluid();
 
-		if (ModuleConfig.r_reactor) {
+		if (ModuleConfig.r_reactor && ModuleConfig.machine) {
 			loadDCRecipes();
 		}
 
@@ -66,7 +66,8 @@ public class DCPluginCoFH {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1,
 					7), null, 0F, new FluidStack(MainInit.fuelOil, 100), null, DCHeatTier.KILN, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 500), null, new Object[] {
-								tar });
+									tar
+			});
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1, 0), new ItemStack(
 					MachineInit.reagent, 1, 14), 1F, new FluidStack(MainInit.fuelOil,
@@ -82,7 +83,8 @@ public class DCPluginCoFH {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1,
 					1), null, 0, new FluidStack(MainInit.fuelOil, 100), null, DCHeatTier.KILN, new ItemStack(
 							MachineInit.catalyst, 1, 0), new FluidStack(FluidRegistry.WATER, 200), null, new Object[] {
-								rogin });
+									rogin
+			});
 		}
 
 		if (naphtha != null && refined != null) {

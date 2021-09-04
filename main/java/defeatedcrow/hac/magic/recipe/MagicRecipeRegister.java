@@ -6,7 +6,6 @@ import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.api.module.HaCModule;
 import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
 import defeatedcrow.hac.magic.entity.EntityFTDog;
@@ -176,6 +175,15 @@ public class MagicRecipeRegister {
 				9), new Object[] {
 						"gemDiamond",
 						"dropWhite"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.medallion, 1,
+				0), new Object[] {
+						"extractBlue",
+						"extractGreen",
+						"extractRed",
+						"extractBlack",
+						"extractWhite"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorCube, 1, 0), new Object[] {
@@ -979,7 +987,7 @@ public class MagicRecipeRegister {
 							"dropBlue"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.timeCage,
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage,
 					1, 0), new Object[] {
 							"XYX",
 							"YZY",
@@ -989,7 +997,31 @@ public class MagicRecipeRegister {
 							'Y',
 							new ItemStack(MainInit.selenite, 1, 0),
 							'Z',
-							new ItemStack(MachineInit.gemcore, 1, 1)
+							"medallionColor"
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(
+					MagicInit.timeCage,
+					1, 0), new Object[] {
+							new ItemStack(MagicInit.timeCage, 1, 32767)
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage,
+					1, 1), new Object[] {
+							new ItemStack(MagicInit.timeCage, 1, 0),
+							"dyeGreen"
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage,
+					1, 2), new Object[] {
+							new ItemStack(MagicInit.timeCage, 1, 0),
+							"dyeRed"
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage,
+					1, 3), new Object[] {
+							new ItemStack(MagicInit.timeCage, 1, 0),
+							"dyeWhite"
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.gemBootsBird,
@@ -1218,6 +1250,8 @@ public class MagicRecipeRegister {
 		OreDictionary.registerOre("extractRed", new ItemStack(MagicInit.colorDrop, 1, 7));
 		OreDictionary.registerOre("extractBlack", new ItemStack(MagicInit.colorDrop, 1, 8));
 		OreDictionary.registerOre("extractWhite", new ItemStack(MagicInit.colorDrop, 1, 9));
+
+		OreDictionary.registerOre("medallionColor", new ItemStack(MagicInit.medallion, 1, 0));
 
 		if (ModuleConfig.magic_advanced) {
 			OreDictionary.registerOre("cubeBlue", new ItemStack(MagicInit.colorCube, 1, 5));

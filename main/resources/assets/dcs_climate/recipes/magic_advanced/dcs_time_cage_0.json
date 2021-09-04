@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "YZY",
+  "XYX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSilver"
+  },
+  "Y": {
+   "item": "dcs_climate:dcs_build_selenite",
+   "data": 0
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "medallionColor"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_time_cage",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "magic_advanced"
+  }
+ ]
+}

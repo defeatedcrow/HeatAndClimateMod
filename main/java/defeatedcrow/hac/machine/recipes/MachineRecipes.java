@@ -683,6 +683,7 @@ public class MachineRecipes {
 		OreDictionary.registerOre("bladeToolSteel", new ItemStack(MachineInit.machimeMaterials, 1, 7));
 		OreDictionary.registerOre("barrelGun", new ItemStack(MachineInit.machimeMaterials, 1, 8));
 		OreDictionary.registerOre("barrelMortar", new ItemStack(MachineInit.machimeMaterials, 1, 9));
+		OreDictionary.registerOre("medallionColor", new ItemStack(MachineInit.gemcore, 1, 1));
 	}
 
 	static void loadAltRecipes() {

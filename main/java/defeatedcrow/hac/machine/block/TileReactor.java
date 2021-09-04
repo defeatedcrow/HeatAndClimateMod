@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.api.recipe.IReactorRecipe;
+import defeatedcrow.hac.api.recipe.IRecipePanel;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.core.fluid.DCTank;
@@ -119,17 +120,53 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	protected int[] slotsTop() {
-		return new int[] { 0, 2, 4, 6, 9, 10, 11, 12 };
+		return new int[] {
+				0,
+				2,
+				4,
+				6,
+				9,
+				10,
+				11,
+				12
+		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
-		return new int[] { 1, 3, 5, 7, 13, 14, 15, 16 };
+		return new int[] {
+				1,
+				3,
+				5,
+				7,
+				13,
+				14,
+				15,
+				16
+		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+		};
 	};
 
 	@Override
@@ -452,6 +489,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 						// 4スロットについて、要求材料の数だけ回す
 						while (req.hasNext()) {
 							boolean match = false;
+							boolean panel = false;
 							Object next = req.next();
 							int count = 1;
 
@@ -459,6 +497,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 								count = ((ItemStack) next).getCount();
 								match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot
 										.getCount() >= count;
+								panel = ((ItemStack) next).getItem() instanceof IRecipePanel;
 							} else if (next instanceof ArrayList) {
 								ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
 								if (list != null && !list.isEmpty()) {
@@ -476,6 +515,8 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 								required.remove(next);
 								this.decrStackSize(i, 1);
 								break;
+							} else if (panel) {
+								inRecipe = true;
 							}
 						}
 
@@ -618,7 +659,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 				return (T) outputT2;
 			else
 				return facing == EnumFacing.DOWN ? (T) handlerTank3 : facing == EnumFacing.UP ? (T) handlerTank1 :
-						(T) handlerTank4;
+						null;
 		}
 		return super.getCapability(capability, facing);
 	}

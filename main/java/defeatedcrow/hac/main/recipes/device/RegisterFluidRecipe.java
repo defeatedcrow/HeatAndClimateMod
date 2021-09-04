@@ -143,7 +143,8 @@ public class RegisterFluidRecipe {
 								new ItemStack(MainInit.silkworm, 1, 2)
 		});
 
-		regReactorRecipe(new ItemStack(MainInit.clothes, 1,
+		// 魔導防具素材
+		regNonFoodRecipe(new ItemStack(MainInit.clothes, 1,
 				8), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(MainInit.hotSpring,
 						1000), new Object[] {
 								new ItemStack(MainInit.clothes, 1, 6),
@@ -151,7 +152,7 @@ public class RegisterFluidRecipe {
 								"dustMica"
 		});
 
-		regReactorRecipe(new ItemStack(MainInit.clothes, 1,
+		regNonFoodRecipe(new ItemStack(MainInit.clothes, 1,
 				8), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(MainInit.hotSpring,
 						1000), new Object[] {
 								new ItemStack(MainInit.clothes, 1, 6),
@@ -159,7 +160,7 @@ public class RegisterFluidRecipe {
 								"dustMana"
 		});
 
-		regReactorRecipe(new ItemStack(MainInit.clothes, 1,
+		regNonFoodRecipe(new ItemStack(MainInit.clothes, 1,
 				9), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(MainInit.hotSpring,
 						1000), new Object[] {
 								new ItemStack(MainInit.clothes, 1, 7),
@@ -167,7 +168,7 @@ public class RegisterFluidRecipe {
 								new ItemStack(Items.GHAST_TEAR, 1, 0)
 		});
 
-		regReactorRecipe(new ItemStack(MainInit.clothes, 1,
+		regNonFoodRecipe(new ItemStack(MainInit.clothes, 1,
 				9), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(MainInit.hotSpring,
 						1000), new Object[] {
 								new ItemStack(MainInit.clothes, 1, 7),
@@ -1516,7 +1517,7 @@ public class RegisterFluidRecipe {
 	public static void regNonFoodRecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHeatTier heat,
 			DCHumidity hum, DCAirflow air, boolean cooling, FluidStack inF, Object... input) {
 		RecipeAPI.registerFluidRecipes.addRecipe(out, sec, chance, outF, heat, hum, air, cooling, inF, input);
-		if (ModuleConfig.machine && ModuleConfig.r_reactor) {
+		if (ModuleConfig.r_reactor) {
 			RecipeAPI.registerReactorRecipes
 					.addRecipe(out, sec, chance, outF, null, heat, (ItemStack) null, inF, null, input);
 		}
@@ -1524,7 +1525,7 @@ public class RegisterFluidRecipe {
 
 	public static void regReactorRecipe(ItemStack out, ItemStack sec, float chance, FluidStack outF, DCHeatTier heat,
 			DCHumidity hum, DCAirflow air, boolean cooling, FluidStack inF, Object... input) {
-		if (ModuleConfig.machine && ModuleConfig.r_reactor) {
+		if (ModuleConfig.r_reactor) {
 			RecipeAPI.registerReactorRecipes
 					.addRecipe(out, sec, chance, outF, null, heat, (ItemStack) null, inF, null, input);
 		} else {

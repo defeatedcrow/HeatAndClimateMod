@@ -12,6 +12,7 @@ import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.recipes.device.RegisterBrewingDC;
+import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
 import defeatedcrow.hac.plugin.forestry.DCFarmable;
 import defeatedcrow.hac.plugin.forestry.DCFarmableDouble;
 import forestry.api.core.ForestryAPI;
@@ -269,24 +270,24 @@ public class DCPluginForestry {
 			}
 		}
 
-		if (ModuleConfig.r_crusher && ModuleConfig.machine) {
+		if (ModuleConfig.r_crusher) {
 			if (!OreDictionary.getOres("cropChestnut").isEmpty()) {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
-						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropChestnut");
+						MainInit.oil, 200), RegisterCrusherRecipe.SUS_Blade, "cropChestnut");
 			}
 
 			if (!OreDictionary.getOres("cropHazelnut").isEmpty()) {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
-						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropHazelnut");
+						MainInit.oil, 200), RegisterCrusherRecipe.SUS_Blade, "cropHazelnut");
 			}
 
 			if (!OreDictionary.getOres("cropAlmond").isEmpty()) {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
-						MainInit.oil, 200), new ItemStack(MachineInit.rotaryBlade, 1, 0), "cropAlmond");
+						MainInit.oil, 200), RegisterCrusherRecipe.SUS_Blade, "cropAlmond");
 			}
 		}
 
-		if (ModuleConfig.r_reactor && ModuleConfig.machine) {
+		if (ModuleConfig.r_reactor) {
 			if (bio != null && eta != null) {
 				// Pt エタノール蒸留
 				RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(eta,
