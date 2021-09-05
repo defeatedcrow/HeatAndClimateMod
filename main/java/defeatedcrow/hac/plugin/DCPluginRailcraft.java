@@ -1,9 +1,9 @@
 package defeatedcrow.hac.plugin;
 
 import defeatedcrow.hac.api.recipe.RecipeAPI;
-import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
@@ -42,7 +42,7 @@ public class DCPluginRailcraft {
 		}
 
 		if (ModuleConfig.r_crusher) {
-			ItemStack ti = new ItemStack(MachineInit.rotaryBlade, 1, 1);
+			ItemStack ti = RegisterCrusherRecipe.Ti_Blade;
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.oreDust, 1, 5), ti, "orePoorIron");
 

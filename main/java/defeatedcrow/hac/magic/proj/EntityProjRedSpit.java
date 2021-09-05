@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class EntityProjRedSpit extends EntityProjBase {
 
 	public float damage = 10.0F;
-	public float range = 6.0F;
+	public float range = 5.0F;
 
 	public EntityProjRedSpit(World worldIn) {
 		super(worldIn);
@@ -27,7 +27,7 @@ public class EntityProjRedSpit extends EntityProjBase {
 	}
 
 	public EntityProjRedSpit setExplodeRange(float f) {
-		range = 6.0F * f;
+		range = 5.0F * f;
 		return this;
 	}
 
@@ -50,7 +50,7 @@ public class EntityProjRedSpit extends EntityProjBase {
 			ign = (EntityLivingBase) this.shootingEntity;
 		}
 		CustomExplosion explosion = new CustomExplosion(world, this, ign, posX, posY, posZ, range,
-				CustomExplosion.Type.Normal, true);
+				CustomExplosion.Type.Friends, true);
 		explosion.doExplosion();
 		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.8F / (this.rand.nextFloat() * 0.2F + 0.9F));
 		this.setDead();

@@ -301,6 +301,12 @@ public class RegisterReactorRecipe {
 					1000), null, DCHeatTier.KILN, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
 							MainInit.ethanol, 1000), new FluidStack(MainInit.sulfuricAcid, 200), new Object[] {});
 
+			if (ModuleConfig.food && ModuleConfig.food_advanced) {
+				RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.fuelGas,
+						1000), null, DCHeatTier.KILN, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(
+								FoodInit.vodka, 1000), new FluidStack(MainInit.sulfuricAcid, 200), new Object[] {});
+			}
+
 			// Pt オストワルト
 			RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.nitricAcid,
 					1000), null, DCHeatTier.KILN, new ItemStack(MachineInit.catalyst, 1, 3), new FluidStack(

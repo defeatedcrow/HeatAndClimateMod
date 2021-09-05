@@ -27,7 +27,9 @@ import defeatedcrow.hac.magic.item.ItemColorPendant;
 import defeatedcrow.hac.magic.item.ItemColorPendant2;
 import defeatedcrow.hac.magic.item.ItemColorRing;
 import defeatedcrow.hac.magic.item.ItemColorRing2;
+import defeatedcrow.hac.magic.item.ItemDebugGauntlet;
 import defeatedcrow.hac.magic.item.ItemEXPGem;
+import defeatedcrow.hac.magic.item.ItemMedallion;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
@@ -55,6 +57,9 @@ public class MagicInitRegister {
 
 		MagicInit.colorDrop = new ItemColorDrop().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color");
 		DCMaterialReg.registerItem(MagicInit.colorDrop, ClimateCore.PACKAGE_BASE + "_color", ClimateMain.MOD_ID);
+
+		MagicInit.medallion = new ItemMedallion().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_medallion");
+		DCMaterialReg.registerItem(MagicInit.medallion, ClimateCore.PACKAGE_BASE + "_medallion", ClimateMain.MOD_ID);
 
 		// tier1
 
@@ -119,6 +124,14 @@ public class MagicInitRegister {
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_green");
 			DCMaterialReg
 					.registerItem(MagicInit.gemBootsFish, ClimateCore.PACKAGE_BASE + "_gemboots_green", ClimateMain.MOD_ID);
+
+			if (ClimateCore.isDebug) {
+				MagicInit.debugGauntlet = new ItemDebugGauntlet()
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_debug_gauntlet");
+				DCMaterialReg
+						.registerItem(MagicInit.debugGauntlet, ClimateCore.PACKAGE_BASE + "_debug_gauntlet", ClimateMain.MOD_ID);
+				MagicInit.debugGauntlet.setCreativeTab(ClimateMain.magic);
+			}
 		}
 	}
 
@@ -194,6 +207,7 @@ public class MagicInitRegister {
 
 		MagicInit.colorCube.setCreativeTab(ClimateMain.magic);
 		MagicInit.expGem.setCreativeTab(ClimateMain.magic);
+		MagicInit.medallion.setCreativeTab(ClimateMain.magic);
 		MagicInit.lotusCandle.setCreativeTab(ClimateMain.magic);
 		MagicInit.lotusCandleBlack.setCreativeTab(ClimateMain.magic);
 

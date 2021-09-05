@@ -1,24 +1,11 @@
 {
- "type": "forge:ore_shaped",
- "pattern": [
-  "XYX",
-  "YZY",
-  "XYX"
- ],
- "key": {
-  "X": {
-   "type": "forge:ore_dict",
-   "ore": "ingotSilver"
-  },
-  "Y": {
-   "item": "dcs_climate:dcs_build_selenite",
-   "data": 0
-  },
-  "Z": {
-   "item": "dcs_climate:dcs_gemcore",
-   "data": 1
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_time_cage",
+   "data": 32767
   }
- },
+ ],
  "result": {
   "item": "dcs_climate:dcs_time_cage",
   "count": 1,

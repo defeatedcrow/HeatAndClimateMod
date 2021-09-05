@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.api.recipe.IReactorRecipe;
+import defeatedcrow.hac.api.recipe.IRecipePanel;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.energy.TileTorqueProcessor;
 import defeatedcrow.hac.core.fluid.DCTank;
@@ -110,17 +111,37 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 
 	@Override
 	protected int[] slotsTop() {
-		return new int[] { 0, 2, 4, 5 };
+		return new int[] {
+				0,
+				2,
+				4,
+				5
+		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
-		return new int[] { 1, 3, 6, 7 };
+		return new int[] {
+				1,
+				3,
+				6,
+				7
+		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8
+		};
 	};
 
 	@Override
@@ -407,6 +428,7 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 						// 2スロットについて、要求材料の数だけ回す
 						while (req.hasNext()) {
 							boolean match = false;
+							boolean panel = false;
 							Object next = req.next();
 							int count = 1;
 
@@ -414,6 +436,7 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 								count = ((ItemStack) next).getCount();
 								match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot
 										.getCount() >= count;
+								panel = ((ItemStack) next).getItem() instanceof IRecipePanel;
 							} else if (next instanceof ArrayList) {
 								ArrayList<ItemStack> list = new ArrayList<ItemStack>((ArrayList<ItemStack>) next);
 								if (list != null && !list.isEmpty()) {
@@ -431,6 +454,8 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 								required.remove(next);
 								this.decrStackSize(i, 1);
 								break;
+							} else if (panel) {
+								inRecipe = true;
 							}
 						}
 

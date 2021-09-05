@@ -7,6 +7,7 @@ import defeatedcrow.hac.core.DCRecipe;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -23,8 +24,8 @@ public class DCPluginUGB {
 	private DCPluginUGB() {}
 
 	public static void init() {
-		ItemStack ti = new ItemStack(MachineInit.rotaryBlade, 1, 1);
-		ItemStack sc = new ItemStack(MachineInit.rotaryBlade, 1, 2);
+		ItemStack ti = RegisterCrusherRecipe.Ti_Blade;
+		ItemStack sc = RegisterCrusherRecipe.Screen_Blade;
 
 		// dic
 		Block igs = Block.REGISTRY.getObject(new ResourceLocation("undergroundbiomes", "igneous_stone"));

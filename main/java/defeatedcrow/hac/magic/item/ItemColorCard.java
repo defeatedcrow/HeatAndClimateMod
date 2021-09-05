@@ -69,21 +69,22 @@ public class ItemColorCard extends DCItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-		"u1",
-		"g1",
-		"r1",
-		"b1",
-		"w1",
-		"u2",
-		"g2",
-		"r2",
-		"b2",
-		"w2",
-		"u3",
-		"g3",
-		"r3",
-		"b3",
-		"w3" };
+			"u1",
+			"g1",
+			"r1",
+			"b1",
+			"w1",
+			"u2",
+			"g2",
+			"r2",
+			"b2",
+			"w2",
+			"u3",
+			"g3",
+			"r3",
+			"b3",
+			"w3"
+	};
 
 	public ItemColorCard() {
 		super();
@@ -389,7 +390,7 @@ public class ItemColorCard extends DCItem {
 
 	private boolean onEffect_Red2(World world, EntityPlayer player, float f) {
 		EntityProjRedSpit entityarrow = new EntityProjRedSpit(world, player);
-		entityarrow.setExplodeRange(f * 2F);
+		entityarrow.setExplodeRange(f);
 		entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
 		world.spawnEntity(entityarrow);
 		return true;

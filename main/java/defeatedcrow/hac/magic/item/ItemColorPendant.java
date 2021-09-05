@@ -48,7 +48,13 @@ public class ItemColorPendant extends CharmItemBase {
 	 * B: 雷撃
 	 * W: 味方巻き込み防止
 	 */
-	private static String[] names = { "u1", "g1", "r1", "b1", "w1" };
+	private static String[] names = {
+			"u1",
+			"g1",
+			"r1",
+			"b1",
+			"w1"
+	};
 
 	public ItemColorPendant() {
 		super();
@@ -141,12 +147,10 @@ public class ItemColorPendant extends CharmItemBase {
 			ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.BLACK) {
 			if (owner != null && target != null && !source.isExplosion() && source.isProjectile()) {
-				float pow = charm.getCount() + 1.0F;
-				if (ClimateCore.isDebug)
-					pow += 1.0F;
+				float pow = charm.getCount() + 1F;
 				pow *= MainUtil.magicSuitEff(owner);
 				CustomExplosion explosion = new CustomExplosion(owner.world, owner, owner, target.posX,
-						target.posY + 0.25D, target.posZ, pow, CustomExplosion.Type.Normal, true);
+						target.posY + 0.25D, target.posZ, pow, CustomExplosion.Type.Friends, true);
 				explosion.doExplosion();
 				owner.world.addWeatherEffect(new EntityLightningBolt(owner.world, target.posX, target.posY - 0.25D,
 						target.posZ, !owner.isSneaking()));

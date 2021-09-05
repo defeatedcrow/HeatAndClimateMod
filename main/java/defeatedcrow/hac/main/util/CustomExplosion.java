@@ -72,16 +72,16 @@ public class CustomExplosion extends Explosion {
 		double d7 = this.expZ;
 
 		// エンティティへのダメージ
-		this.size *= 2.0F;
-		i = MathHelper.floor(this.expX - this.size - 1.0D);
-		int i2 = MathHelper.floor(this.expX + this.size + 1.0D);
-		j = MathHelper.floor(this.expY - this.size - 1.0D);
-		int j2 = MathHelper.floor(this.expY + this.size + 1.0D);
-		k = MathHelper.floor(this.expZ - this.size - 1.0D);
-		int k2 = MathHelper.floor(this.expZ + this.size + 1.0D);
+		float r = size * 2F;
+		i = MathHelper.floor(this.expX - r - 1.0D);
+		int i2 = MathHelper.floor(this.expX + r + 1.0D);
+		j = MathHelper.floor(this.expY - r - 1.0D);
+		int j2 = MathHelper.floor(this.expY + r + 1.0D);
+		k = MathHelper.floor(this.expZ - r - 1.0D);
+		int k2 = MathHelper.floor(this.expZ + r + 1.0D);
 		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this.bomb, new AxisAlignedBB(i, j, k, i2, j2,
 				k2));
-		ForgeEventFactory.onExplosionDetonate(this.worldObj, this, list, f * 2.0F);
+		ForgeEventFactory.onExplosionDetonate(this.worldObj, this, list, f);
 		Vec3d vec3 = new Vec3d(this.expX, this.expY, this.expZ);
 
 		for (int i1 = 0; i1 < list.size(); ++i1) {
@@ -102,7 +102,7 @@ public class CustomExplosion extends Explosion {
 
 				boolean flag = true;
 				float damage = (float) ((this.size * this.size * 2) * (d11 * d11));
-				damage = Math.max(damage, 4.0F);
+				damage = MathHelper.clamp(2.0F, damage, size * 4F);
 
 				if (entity == null || entity == this.igniter || entity == this.bomb) {
 					flag = false;
@@ -119,15 +119,17 @@ public class CustomExplosion extends Explosion {
 					EntityLivingBase owner2 = null;
 					if (igniter instanceof EntityTameable) {
 						owner = ((EntityTameable) igniter).getOwner();
+						if (owner instanceof EntityPlayer || owner == entity) {
+							flag = false;
+						}
 					}
 					if (entity instanceof EntityTameable) {
 						owner2 = ((EntityTameable) entity).getOwner();
+						if (owner2 instanceof EntityPlayer || owner2 == igniter) {
+							flag = false;
+						}
 					}
-					if (owner == owner2 || entity == owner || igniter == owner2) {
-						flag = false;
-					} else if (igniter instanceof EntityPlayer && owner2 instanceof EntityPlayer) {
-						flag = false;
-					} else if (entity instanceof EntityPlayer && owner instanceof EntityPlayer) {
+					if (entity instanceof EntityItem) {
 						flag = false;
 					}
 				} else if (this.type == Type.Silk) {

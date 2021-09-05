@@ -909,6 +909,8 @@ tile.dcs_color_cube_b2.name=黒の活性化キューブ
 tile.dcs_color_cube_w2.name=白の活性化キューブ
 tile.dcs_cube_ice_0.name=凍結のキューブ
 tile.dcs_cube_flame_0.name=灼熱のキューブ
+item.dcs_medallion_color.name=5色のメダリオン
+
 
 item.dcs_motor_minecart_white.name=原付トロッコ
 item.dcs_motor_scooter_orange.name=スクーター(オレンジ)
@@ -1396,6 +1398,9 @@ tile.dcs_device_biomeglass_1.name=バイオームグラス(ジャングル)
 tile.dcs_device_biomeglass_2.name=バイオームグラス(砂漠)
 tile.dcs_device_biomeglass_3.name=バイオームグラス(氷原)
 tile.dcs_time_cage_0.name=時の蝶の標本
+tile.dcs_time_cage_1.name=時の蝶の標本
+tile.dcs_time_cage_2.name=時の蝶の標本
+tile.dcs_time_cage_3.name=時の蝶の標本
 tile.dcs_magic_picture_u_0.name=魔法の絵画(青赤)
 tile.dcs_magic_picture_g_0.name=魔法の絵画(緑青)
 tile.dcs_magic_picture_r_0.name=魔法の絵画(赤白)
@@ -2498,4 +2503,10 @@ dcs.info.title.medium=微生物用培地
 dcs.info.desc.medium=自然のブロックに使用したり、微生物とクラフトすることで微生物を植えます。インキュベーターで培養します。
 dcs.info.title.unidentified=未知の微生物
 dcs.info.desc.unidentified=クリックで使用することで種類を同定します。
+
+#debug only
+item.dcs_debug_gauntlet_ur.name=八眼紫龍のガントレット
+dcs.tip.debug_gauntlet.0=デバッグアイテム
+dcs.comment.debug_gauntlet.0=デバッグ専用! 通常のプレイでは使用できない。
+dcs.comment.flavor.debug_gauntlet.0="これがないと仕事にならないんだ。"
 

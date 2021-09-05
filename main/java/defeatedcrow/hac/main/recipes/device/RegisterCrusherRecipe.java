@@ -52,6 +52,8 @@ public class RegisterCrusherRecipe {
 				MainInit.oil, 400), SUS_Blade, "cropOlive");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
 				MainInit.oil, 200), SUS_Blade, "seedCotton");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
+				MainInit.oil, 200), SUS_Blade, "seedGrape");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 4), null, 0F, new FluidStack(
 				MainInit.oil, 200), SUS_Blade, "cropSoybean");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 1, 4), null, 0F, new FluidStack(
@@ -81,12 +83,14 @@ public class RegisterCrusherRecipe {
 
 		if (OreDictionary.doesOreNameExist("plantRoot")) {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 3), new ItemStack(
-					MainInit.foodDust, 1, 0), 0.5F, new ItemStack(MainInit.foodDust, 1, 1), 0.5F, SUS_Blade, "plantRoot");
+					MainInit.foodDust, 1, 0), 0.5F, new ItemStack(MainInit.foodDust, 1,
+							1), 0.5F, SUS_Blade, "plantRoot");
 		}
 
 		if (OreDictionary.doesOreNameExist("cropCorn")) {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 3, 3), new ItemStack(
-					MainInit.foodDust, 1, 0), 0.5F, new ItemStack(MainInit.foodDust, 1, 1), 0.5F, SUS_Blade, "cropCorn");
+					MainInit.foodDust, 1, 0), 0.5F, new ItemStack(MainInit.foodDust, 1,
+							1), 0.5F, SUS_Blade, "cropCorn");
 		}
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.BLAZE_POWDER, 4, 0), new ItemStack(
@@ -135,13 +139,17 @@ public class RegisterCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_red, 1, 0), new ItemStack(
 				MainInit.gems_red, 1, 1), 0.3F, new ItemStack(MainInit.gems_red, 1, 2), 0.03F, Screen_Blade, "oreRed");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_green, 1, 0), new ItemStack(
-				MainInit.gems_green, 1, 1), 0.3F, new ItemStack(MainInit.gems_green, 1, 2), 0.03F, Screen_Blade, "oreGreen");
+				MainInit.gems_green, 1, 1), 0.3F, new ItemStack(MainInit.gems_green, 1,
+						2), 0.03F, Screen_Blade, "oreGreen");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_blue, 1, 0), new ItemStack(
-				MainInit.gems_blue, 1, 1), 0.3F, new ItemStack(MainInit.gems_blue, 1, 2), 0.03F, Screen_Blade, "oreBlue");
+				MainInit.gems_blue, 1, 1), 0.3F, new ItemStack(MainInit.gems_blue, 1,
+						2), 0.03F, Screen_Blade, "oreBlue");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_white, 1, 0), new ItemStack(
-				MainInit.gems_white, 1, 1), 0.3F, new ItemStack(MainInit.gems_white, 1, 2), 0.03F, Screen_Blade, "oreWhite");
+				MainInit.gems_white, 1, 1), 0.3F, new ItemStack(MainInit.gems_white, 1,
+						2), 0.03F, Screen_Blade, "oreWhite");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_black, 1, 0), new ItemStack(
-				MainInit.gems_black, 1, 1), 0.3F, new ItemStack(MainInit.gems_black, 1, 2), 0.03F, Screen_Blade, "oreBlack");
+				MainInit.gems_black, 1, 1), 0.3F, new ItemStack(MainInit.gems_black, 1,
+						2), 0.03F, Screen_Blade, "oreBlack");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_red, 1, 1), new ItemStack(
 				MainInit.gems_red, 1, 2), 0.3F, Screen_Blade, "oreLargeRed");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.gems_green, 1, 1), new ItemStack(
@@ -325,7 +333,8 @@ public class RegisterCrusherRecipe {
 		if (!OreDictionary.getOres("dustObsidian").isEmpty()) {
 			ItemStack dust = OreDictionary.getOres("dustObsidian").get(0).copy();
 			dust.setCount(2);
-			RecipeAPI.registerCrushers.addRecipe(dust, new ItemStack(MainInit.miscDust, 1, 1), 1F, Ti_Blade, "obsidian");
+			RecipeAPI.registerCrushers.addRecipe(dust, new ItemStack(MainInit.miscDust, 1,
+					1), 1F, Ti_Blade, "obsidian");
 		}
 
 		// 以下バニラ
@@ -349,8 +358,9 @@ public class RegisterCrusherRecipe {
 				1, 2), 1F, new ItemStack(MainInit.miscDust, 1, 10), 0.1F, null, Ti_Blade, new ItemStack(Blocks.SAND, 1,
 						0));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 4, 2), new ItemStack(
-				MainInit.miscDust, 1, 9), 1F, new ItemStack(MainInit.miscDust, 1, 6), 0.5F, null, Ti_Blade, new ItemStack(
-						Blocks.BONE_BLOCK, 1, 0));
+				MainInit.miscDust, 1, 9), 1F, new ItemStack(MainInit.miscDust, 1,
+						6), 0.5F, null, Ti_Blade, new ItemStack(
+								Blocks.BONE_BLOCK, 1, 0));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.GLOWSTONE_DUST, 4, 0), Ti_Blade, new ItemStack(
 				Blocks.GLOWSTONE));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.BLAZE_POWDER, 2, 0), Ti_Blade, new ItemStack(

@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -26,8 +28,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
 
+	public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.75D, 1.0D, 1.0D, 1.0D);
+	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.25D, 1.0D, 1.0D);
+	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.25D);
+	public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.75D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
+
 	public BlockTimeCage(String s) {
-		super(Material.GLASS, s, 0);
+		super(Material.GLASS, s, 3);
 		this.setHardness(0.5F);
 		this.setResistance(30.0F);
 		this.setLightLevel(0.5F);
@@ -37,6 +44,23 @@ public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileTimeCage();
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		EnumFacing face = DCState.getFace(state, DCState.FACING);
+		switch (face) {
+		case NORTH:
+			return NORTH_AABB;
+		case SOUTH:
+			return SOUTH_AABB;
+		case WEST:
+			return WEST_AABB;
+		case EAST:
+			return EAST_AABB;
+		default:
+			return NORTH_AABB;
+		}
 	}
 
 	@Override

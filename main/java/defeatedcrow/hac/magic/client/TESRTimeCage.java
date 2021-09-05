@@ -12,8 +12,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TESRTimeCage extends TileEntitySpecialRenderer<TileTimeCage> {
 
 	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate",
-			"textures/entity/magic/butterfly_cage.png");
-	private static final ModelButterflyCage MODEL = new ModelButterflyCage();
+			"textures/tiles/timecage_base.png");
+	private static final ResourceLocation TEX_BLACK = new ResourceLocation("dcs_climate",
+			"textures/tiles/timecage_black.png");
+	private static final ResourceLocation TEX_GREEN = new ResourceLocation("dcs_climate",
+			"textures/tiles/timecage_green.png");
+	private static final ResourceLocation TEX_RED = new ResourceLocation("dcs_climate",
+			"textures/tiles/timecage_red.png");
+	private static final ResourceLocation TEX_WHITE = new ResourceLocation("dcs_climate",
+			"textures/tiles/timecage_white.png");
+	private static final ModelButterflySpecimen MODEL = new ModelButterflySpecimen();
 
 	@Override
 	public void render(TileTimeCage te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
@@ -28,23 +36,23 @@ public class TESRTimeCage extends TileEntitySpecialRenderer<TileTimeCage> {
 			type = meta & 3;
 			face = 5 - (meta >> 2);
 			if (face == 2) {
-				r = 0F;
-			}
-			if (face == 3) {
 				r = 180F;
 			}
+			if (face == 3) {
+				r = 0F;
+			}
 			if (face == 4) {
-				r = -90F;
+				r = 90F;
 			}
 			if (face == 5) {
-				r = 90F;
+				r = -90F;
 			}
 		}
 
 		GlStateManager.pushMatrix();
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		GlStateManager.translate((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+		GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
 		GlStateManager.scale(1.0F, -1.0F, -1.0F);
 
 		GlStateManager.rotate(r, 0.0F, 1.0F, 0.0F);
@@ -52,19 +60,24 @@ public class TESRTimeCage extends TileEntitySpecialRenderer<TileTimeCage> {
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.popMatrix();
 
+		if (type == 1) {
+			this.bindTexture(TEX_GREEN);
+		} else if (type == 2) {
+			this.bindTexture(TEX_RED);
+		} else if (type == 3) {
+			this.bindTexture(TEX_WHITE);
+		} else {
+			this.bindTexture(TEX_BLACK);
+		}
+
 		GlStateManager.pushMatrix();
 		GlStateManager.enableRescaleNormal();
-		GlStateManager.enableBlend();
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-				GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-				GlStateManager.DestFactor.ZERO);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.5F);
-		GlStateManager.translate((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-		GlStateManager.scale(1.0F, -1.0F, -1.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
+		GlStateManager.scale(0.875F, -0.875F, -0.875F);
 
 		GlStateManager.rotate(r, 0.0F, 1.0F, 0.0F);
-		MODEL.renderGlass(0.0625F);
-		GlStateManager.disableBlend();
+		MODEL.renderButterfly(0.0625F);
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.popMatrix();
 	}

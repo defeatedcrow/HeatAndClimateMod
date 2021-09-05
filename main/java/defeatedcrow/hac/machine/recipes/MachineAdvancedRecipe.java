@@ -488,36 +488,6 @@ public class MachineAdvancedRecipe {
 						"gemSchorl"
 		});
 
-		DCRecipe.jsonShapedRecipe(HaCModule.MACHINE_ADVANCED, "machine_advanced", new ItemStack(MachineInit.gemcore, 1,
-				1), new Object[] {
-						"ZXZ",
-						"WYW",
-						"ZXZ",
-						'W',
-						"gemSapphire",
-						'X',
-						"gemCelestite",
-						'Y',
-						"gemOpal",
-						'Z',
-						"obsidian"
-		});
-
-		DCRecipe.jsonShapedRecipe(HaCModule.MACHINE_ADVANCED, "machine_advanced", 2, new ItemStack(MachineInit.gemcore,
-				1, 1), new Object[] {
-						"ZXZ",
-						"WYW",
-						"ZXZ",
-						'W',
-						"gemSapphire",
-						'X',
-						"gemMoonstone",
-						'Y',
-						"dustMica",
-						'Z',
-						"obsidian"
-		});
-
 		DCRecipe.jsonShapedRecipe(HaCModule.MACHINE_ADVANCED, "machine_advanced", new ItemStack(MachineInit.adapterCard,
 				1, 0), new Object[] {
 						"ZXZ",

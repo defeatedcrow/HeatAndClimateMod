@@ -47,7 +47,13 @@ public class ItemColorCard3 extends DCItem {
 
 	private final int maxMeta;
 
-	private static String[] names = { "ub1", "gw1", "rg1", "br1", "wu1" };
+	private static String[] names = {
+			"ub1",
+			"gw1",
+			"rg1",
+			"br1",
+			"wu1"
+	};
 
 	public ItemColorCard3() {
 		super();
@@ -208,7 +214,7 @@ public class ItemColorCard3 extends DCItem {
 				(byte) EnumParticleTypes.EXPLOSION_HUGE.getParticleID(), 1.0F, 0.0F, 0.0F));
 		float damage = player.getHealth() * 0.5F;
 		if (damage > 1.0F) {
-			player.attackEntityFrom(DamageSource.FIREWORKS, damage);
+			player.attackEntityFrom(DamageSource.causeExplosionDamage(explosion), damage);
 		}
 		return true;
 	}

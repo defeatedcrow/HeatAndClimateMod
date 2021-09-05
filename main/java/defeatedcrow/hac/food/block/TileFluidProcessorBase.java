@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.recipe.IFluidRecipe;
+import defeatedcrow.hac.api.recipe.IRecipePanel;
 import defeatedcrow.hac.api.recipe.RecipeAPI;
 import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 import defeatedcrow.hac.core.base.DCInventory;
@@ -332,6 +333,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 						// 9スロットについて、要求材料の数だけ回す
 						while (req.hasNext()) {
 							boolean match = false;
+							boolean panel = false;
 							Object next = req.next();
 							int count = 1;
 
@@ -339,6 +341,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 								count = ((ItemStack) next).getCount();
 								match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot
 										.getCount() >= count;
+								panel = ((ItemStack) next).getItem() instanceof IRecipePanel;
 							} else if (next instanceof List) {
 								List<ItemStack> list = new ArrayList<ItemStack>((List<ItemStack>) next);
 								if (list != null && !list.isEmpty()) {
@@ -356,6 +359,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 								required.remove(next);
 								this.decrStackSize(i, count);
 								break;
+							} else if (panel) {
+								inRecipe = true;
 							}
 						}
 
@@ -433,15 +438,38 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	}
 
 	protected int[] slotsTop() {
-		return new int[] { 0, 2, 4, 5, 6 };
+		return new int[] {
+				0,
+				2,
+				4,
+				5,
+				6
+		};
 	};
 
 	protected int[] slotsBottom() {
-		return new int[] { 1, 3, 7, 8, 9 };
+		return new int[] {
+				1,
+				3,
+				7,
+				8,
+				9
+		};
 	};
 
 	protected int[] slotsSides() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+		};
 	};
 
 	public DCInventory inv = new DCInventory(this.getSizeInventory());

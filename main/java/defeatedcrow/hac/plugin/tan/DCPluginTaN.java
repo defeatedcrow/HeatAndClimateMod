@@ -4,14 +4,24 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.BlockHeatTierEvent;
+import defeatedcrow.hac.api.climate.BlockHeatTierEvent.EventType;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.damage.DamageAPI;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.config.ModuleConfig;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import toughasnails.api.TANBlocks;
 import toughasnails.api.item.TANItems;
+import toughasnails.block.BlockTANCampfire;
+import toughasnails.block.BlockTANTemperatureCoil;
 import toughasnails.config.json.ArmorTemperatureData;
 import toughasnails.config.json.BlockStatePredicate;
 import toughasnails.config.json.BlockTemperatureData;
@@ -19,10 +29,14 @@ import toughasnails.init.ModConfig;
 
 public class DCPluginTaN {
 
+	public static final DCPluginTaN INSTANCE = new DCPluginTaN();
+
 	public static void loadInit() {
 		registerBlockData();
 		registerHeatSource();
 		registerArmor();
+
+		MinecraftForge.EVENT_BUS.register(INSTANCE);
 	}
 
 	private static void registerArmor() {
@@ -78,27 +92,25 @@ public class DCPluginTaN {
 	private static void registerBlockData() {
 		BlockTemperatureData data1 = new BlockTemperatureData(new BlockStatePredicate(MainInit.chamber.getDefaultState()
 				.withProperty(DCState.TYPE4, 1), Sets.newHashSet(DCState.TYPE4)), 10.0F);
+
 		BlockTemperatureData data2 = new BlockTemperatureData(new BlockStatePredicate(MainInit.shitirin
 				.getDefaultState().withProperty(DCState.TYPE4, 1), Sets.newHashSet(DCState.TYPE4)), 5.0F);
+
 		BlockTemperatureData data3 = new BlockTemperatureData(new BlockStatePredicate(MainInit.fuelStove
 				.getDefaultState().withProperty(DCState.TYPE4, 1), Sets.newHashSet(DCState.TYPE4)), 15.0F);
-		BlockTemperatureData data4 = new BlockTemperatureData(new BlockStatePredicate(MachineInit.burner
-				.getDefaultState().withProperty(DCState.TYPE4, 1), Sets.newHashSet(DCState.TYPE4)), 15.0F);
-		ModConfig.blockTemperatureData.put("TempKeysdcs_climate:dcs_device_chamber", Lists.newArrayList(data1));
+
+		ModConfig.blockTemperatureData.put("TempKeysdcs_climate:dcs_device_chamber", Lists
+				.newArrayList(data1, data2, data3));
+
+		if (ModuleConfig.machine) {
+			BlockTemperatureData data4 = new BlockTemperatureData(new BlockStatePredicate(MachineInit.burner
+					.getDefaultState().withProperty(DCState.TYPE4, 1), Sets.newHashSet(DCState.TYPE4)), 15.0F);
+			ModConfig.blockTemperatureData.put("TempKeysdcs_climate:dcs_device_burner", Lists.newArrayList(data4));
+		}
+
 	}
 
 	private static void registerHeatSource() {
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 1, DCHeatTier.OVEN);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 3, DCHeatTier.OVEN);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 5, DCHeatTier.OVEN);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 7, DCHeatTier.OVEN);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 9, DCHeatTier.OVEN);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 11, DCHeatTier.OVEN);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 13, DCHeatTier.BOIL);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.campfire, 15, DCHeatTier.HOT);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.temperature_coil, 9, DCHeatTier.OVEN);
-		ClimateAPI.registerBlock.registerHeatBlock(TANBlocks.temperature_coil, 8, DCHeatTier.COLD);
-
 		DamageAPI.itemRegister.registerMaterial(new ItemStack(TANItems.jelled_slime_boots, 1, 32767), 2.0F, 0.0F);
 		DamageAPI.itemRegister.registerMaterial(new ItemStack(TANItems.jelled_slime_chestplate, 1, 32767), 2.0F, 0.0F);
 		DamageAPI.itemRegister.registerMaterial(new ItemStack(TANItems.jelled_slime_helmet, 1, 32767), 2.0F, 0.0F);
@@ -107,6 +119,37 @@ public class DCPluginTaN {
 		DamageAPI.itemRegister.registerMaterial(new ItemStack(TANItems.wool_chestplate, 1, 32767), 0.0F, 2.0F);
 		DamageAPI.itemRegister.registerMaterial(new ItemStack(TANItems.wool_helmet, 1, 32767), 0.0F, 2.0F);
 		DamageAPI.itemRegister.registerMaterial(new ItemStack(TANItems.wool_leggings, 1, 32767), 0.0F, 2.0F);
+	}
+
+	@SubscribeEvent
+	public void onBlockTempEvent(BlockHeatTierEvent event) {
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		if (world != null && pos != null) {
+			IBlockState state = world.getBlockState(pos);
+
+			if (state.getBlock() == TANBlocks.campfire && state.getValue(BlockTANCampfire.BURNING))
+				if (event.getType() == EventType.COLD || event.currentClimate().getTier() < DCHeatTier.OVEN.getTier()) {
+					event.setNewClimate(DCHeatTier.OVEN);
+					event.setResult(Result.ALLOW);
+				}
+
+			if (state.getBlock() == TANBlocks.temperature_coil && state.getValue(BlockTANTemperatureCoil.POWERED))
+				if (state.getValue(BlockTANTemperatureCoil.VARIANT) == BlockTANTemperatureCoil.CoilType.HEATING) {
+					if (event.getType() == EventType.COLD || event.currentClimate().getTier() < DCHeatTier.KILN
+							.getTier()) {
+						event.setNewClimate(DCHeatTier.OVEN);
+						event.setResult(Result.ALLOW);
+					}
+				} else {
+					if (event.getType() == EventType.HOT || event.currentClimate().getTier() > DCHeatTier.COLD
+							.getTier()) {
+						event.setNewClimate(DCHeatTier.COLD);
+						event.setResult(Result.ALLOW);
+					}
+				}
+
+		}
 	}
 
 }

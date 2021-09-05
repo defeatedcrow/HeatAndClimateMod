@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main;
 
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.food.FoodCommonProxy;
 import defeatedcrow.hac.food.block.TileAgingBarrel;
 import defeatedcrow.hac.food.block.TileBrewingTankWood;
@@ -65,6 +66,7 @@ import defeatedcrow.hac.machine.gui.GuiSpinning;
 import defeatedcrow.hac.machine.gui.GuiStoneMill;
 import defeatedcrow.hac.machine.recipes.MachineRecipes;
 import defeatedcrow.hac.magic.MagicCommonProxy;
+import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.client.gui.ContainerLivingDC;
 import defeatedcrow.hac.magic.client.gui.ContainerVillagerDC;
 import defeatedcrow.hac.magic.client.gui.GuiLivingDC;
@@ -591,6 +593,8 @@ public class CommonMainProxy implements IGuiHandler {
 		if (ModuleConfig.magic) {
 			MinecraftForge.EVENT_BUS.register(new OnCraftingDC());
 			MinecraftForge.EVENT_BUS.register(new MagicCommonEvent());
+			if (ClimateCore.isDebug)
+				MinecraftForge.EVENT_BUS.register(MagicInit.debugGauntlet);
 		}
 		if (ModuleConfig.world) {
 			MinecraftForge.EVENT_BUS.register(new CaravanGenEvent());
