@@ -64,22 +64,35 @@ public class MediumCraftRecipeDC extends net.minecraftforge.registries.IForgeReg
 		ItemStack medium = ItemStack.EMPTY;
 		ItemStack microbe = ItemStack.EMPTY;
 		ItemStack output = ItemStack.EMPTY;
+		boolean dupe = false;
 
 		for (int i = 0; i < inv.getSizeInventory(); ++i) {
 			ItemStack check = inv.getStackInSlot(i);
 
 			if (!check.isEmpty()) {
 				if (check.getItem() == FoodInit.unidentified) {
-					microbe = check;
+					if (!DCUtil.isEmpty(microbe)) {
+						dupe = true;
+					} else {
+						microbe = check;
+					}
 				} else if (check.getItem() instanceof MicrobeItem) {
-					microbe = check;
+					if (!DCUtil.isEmpty(microbe)) {
+						dupe = true;
+					} else {
+						microbe = check;
+					}
 				} else if (check.getItem() instanceof IMediumItem) {
-					medium = check;
+					if (!DCUtil.isEmpty(medium)) {
+						dupe = true;
+					} else {
+						medium = check;
+					}
 				}
 			}
 		}
 
-		if (!DCUtil.isEmpty(medium) && !DCUtil.isEmpty(microbe)) {
+		if (!dupe && !DCUtil.isEmpty(medium) && !DCUtil.isEmpty(microbe)) {
 			if (!DCUtil.isEmpty(medium) && !DCUtil.isEmpty(microbe)) {
 				IMediumItem med = (IMediumItem) medium.getItem();
 				if (microbe.getItem() == FoodInit.unidentified) {
@@ -112,8 +125,12 @@ public class MediumCraftRecipeDC extends net.minecraftforge.registries.IForgeReg
 
 		for (int i = 0; i < nonnulllist.size(); ++i) {
 			ItemStack check = inv.getStackInSlot(i);
-			if (check.getItem() instanceof MicrobeItem || check.getItem() == FoodInit.unidentified) {
-				nonnulllist.set(i, check.copy());
+			if (!DCUtil.isEmpty(check)) {
+				ItemStack ret = check.copy();
+				ret.setCount(1);
+				if (check.getItem() instanceof MicrobeItem || check.getItem() == FoodInit.unidentified) {
+					nonnulllist.set(i, ret);
+				}
 			}
 		}
 

@@ -21,6 +21,7 @@ import defeatedcrow.hac.main.api.brewing.IAgingRecipeDC;
 import defeatedcrow.hac.main.api.brewing.IBrewingRecipeDC;
 import defeatedcrow.hac.main.api.brewing.IMicrobe;
 import defeatedcrow.hac.main.api.brewing.IStillRecipeDC;
+import defeatedcrow.hac.main.client.gui.GuiCraftingCounter;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.jei.ClimateFluidCategory;
 import defeatedcrow.hac.plugin.jei.ClimateFluidMaker;
@@ -60,6 +61,7 @@ import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
 
 @JEIPlugin
@@ -102,6 +104,9 @@ public class DCsJeiPlugin2 implements IModPlugin {
 		DCAgingMaker.register(registry);
 
 		registry.addRecipeCatalyst(new ItemStack(MainInit.fuelStove), "dcs_climate.fuel");
+		if (ModuleConfig.build_advanced) {
+			registry.addRecipeCatalyst(new ItemStack(MainInit.craftingCounter), VanillaRecipeCategoryUid.CRAFTING);
+		}
 		if (ModuleConfig.machine) {
 			if (ModuleConfig.machine_advanced) {
 				registry.addRecipeCatalyst(new ItemStack(MachineInit.burner), "dcs_climate.fuel");
@@ -123,6 +128,9 @@ public class DCsJeiPlugin2 implements IModPlugin {
 			}
 		}
 
+		if (ModuleConfig.build_advanced) {
+			registry.addRecipeClickArea(GuiCraftingCounter.class, 63, 34, 18, 18, VanillaRecipeCategoryUid.CRAFTING);
+		}
 		if (ModuleConfig.machine) {
 			registry.addRecipeClickArea(GuiStoneMill.class, 80, 32, 16, 16, new String[] {
 					"dcs_climate.mill"

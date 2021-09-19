@@ -66,10 +66,11 @@ public class BlockAdapterFluidPanel extends BlockTorqueBase {
 				TileEntity tile = world.getTileEntity(pos);
 				// achievement
 				if (!world.isRemote && tile != null)
-					if (tile instanceof TileAcceptorFluidPanel) {
+					if (tile instanceof TileAcceptorFluidPanel && lastPos == null) {
 						lastPos = pos;
 						String mes1 = "Stored this coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
 						player.sendMessage(new TextComponentString(mes1));
+						return true;
 					} else if (lastPos != null && tile instanceof TileAdapterFluidPanel) {
 						((TileAdapterFluidPanel) tile).setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos
 								.getZ()));
@@ -77,6 +78,7 @@ public class BlockAdapterFluidPanel extends BlockTorqueBase {
 								.getY() + ", " + lastPos.getZ();
 						player.sendMessage(new TextComponentString(mes2));
 						lastPos = null;
+						return true;
 					}
 			}
 		}

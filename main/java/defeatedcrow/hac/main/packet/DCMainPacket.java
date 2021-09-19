@@ -20,5 +20,6 @@ public class DCMainPacket {
 		INSTANCE.registerMessage(MHandlerOscillator.class, MessageOscillator.class, 8, Side.CLIENT);
 		INSTANCE.registerMessage(MHandlerIncubatorButton.class, MessageIncubatorButton.class, 9, Side.SERVER);
 		INSTANCE.registerMessage(MHandlerEntityTank.class, MessageEntityTank.class, 10, Side.CLIENT);
+		INSTANCE.registerMessage(MHandlerColorID.class, MessageColorID.class, 11, Side.CLIENT);
 	}
 }

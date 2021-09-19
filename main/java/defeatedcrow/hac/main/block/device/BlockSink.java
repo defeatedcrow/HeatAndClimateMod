@@ -32,16 +32,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSink extends DCTileBlock {
 
-	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-	protected static final AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
-	protected static final AxisAlignedBB AABB_DOUBLE = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
+	protected static final AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D);
 
-	// Type上限
-	public final boolean isFull;
-
-	public BlockSink(String s, boolean full) {
+	public BlockSink(String s) {
 		super(Material.CLAY, s, 0);
-		isFull = full;
 		this.setTickRandomly(true);
 	}
 
@@ -75,16 +69,13 @@ public class BlockSink extends DCTileBlock {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		if (isFull) {
-			return AABB_DOUBLE;
-		} else {
-			return AABB_HALF;
-		}
+		return AABB_HALF;
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileSink();
+
 	}
 
 	// fluid処理

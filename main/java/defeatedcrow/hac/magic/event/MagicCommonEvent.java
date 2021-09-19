@@ -106,7 +106,7 @@ public class MagicCommonEvent {
 						event.setCanceled(true);
 						return;
 					}
-					if (getOffhandJewelColor(owner) == MagicColor.GREEN) {
+					if (getOffhandJewelColor(owner) == MagicColor.GREEN_WHITE) {
 						// green-white gauntlet
 						float healamo = event.getAmount() * 0.25F * eff;
 						owner.heal(healamo);
@@ -129,7 +129,7 @@ public class MagicCommonEvent {
 							.getX(), target.getPosition().getY(), target.getPosition().getZ());
 					event.setCancellationResult(EnumActionResult.SUCCESS);
 				}
-			} else if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE) {
+			} else if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE_BLUE) {
 				if (target instanceof EntityLiving) {
 					if (target.getRidingEntity() != player) {
 						target.startRiding(player, true);
@@ -215,7 +215,7 @@ public class MagicCommonEvent {
 				int eff = MathHelper.floor(MainUtil.magicSuitEff(liv2) * 2) - 1;
 				lu1 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing, 1, 0)) * eff;
 				lb2 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing2, 1, 3)) * eff;
-				blue = getOffhandJewelColor(liv2) == MagicColor.BLUE;
+				blue = getOffhandJewelColor(liv2) == MagicColor.BLUE_BLACK;
 			} else {
 				return;
 			}
@@ -248,7 +248,7 @@ public class MagicCommonEvent {
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
 		if (event.getHarvester() != null) {
 			/* 粉砕 */
-			if (getOffhandJewelColor(event.getHarvester()) == MagicColor.BLACK) {
+			if (getOffhandJewelColor(event.getHarvester()) == MagicColor.BLACK_RED) {
 				ItemStack off = event.getHarvester().getHeldItem(EnumHand.OFF_HAND);
 				float eff = MainUtil.magicSuitEff(event.getHarvester());
 				List<ItemStack> nList = Lists.newArrayList();
@@ -354,7 +354,7 @@ public class MagicCommonEvent {
 	public void onLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
 		EntityPlayer player = event.getEntityPlayer();
 		if (ClimateCore.isDebug && player != null && player.isSprinting()) {
-			if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.BLUE && event.getItemStack()
+			if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.BLUE_BLACK && event.getItemStack()
 					.getItem() instanceof ItemScytheDC) {
 				double x = player.getForward().x * 0.5D + player.motionX;
 				double y = 0.05D;
@@ -369,7 +369,7 @@ public class MagicCommonEvent {
 	// 確定Crit
 	@SubscribeEvent
 	public void onCrit(CriticalHitEvent event) {
-		if (getOffhandJewelColor(event.getEntityPlayer()) == MagicColor.BLUE && event.getEntityPlayer()
+		if (getOffhandJewelColor(event.getEntityPlayer()) == MagicColor.BLUE_BLACK && event.getEntityPlayer()
 				.getHeldItemMainhand().getItem() instanceof ItemScytheDC) {
 			event.setDamageModifier(1.8F);
 			event.setResult(Result.ALLOW);
@@ -380,7 +380,7 @@ public class MagicCommonEvent {
 
 	@SubscribeEvent
 	public void onLiving(LivingEvent.LivingUpdateEvent event) {
-		if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.RED) {
+		if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.RED_GREEN) {
 			if (event.getEntityLiving().collidedHorizontally) {
 				event.getEntityLiving().motionY = 0.2D;
 			} else if (isCollidedBlock(event.getEntityLiving())) {
@@ -391,7 +391,7 @@ public class MagicCommonEvent {
 				}
 			}
 			event.getEntityLiving().fallDistance = 0F;
-		} else if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE && event.getEntityLiving()
+		} else if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE_BLUE && event.getEntityLiving()
 				.isSneaking()) {
 			if (event.getEntityLiving().isBeingRidden()) {
 				event.getEntityLiving().removePassengers();
@@ -406,7 +406,8 @@ public class MagicCommonEvent {
 					.getEntityLiving() instanceof EntityPlayer) {
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MainInit.bird, 205, 0));
 			}
-			if (PictureList.INSTANCE.hasColor(chunk, MagicColor.RED) && !(event.getEntityLiving() instanceof IMob)) {
+			if (PictureList.INSTANCE.hasColor(chunk, MagicColor.WHITE_RED) && !(event
+					.getEntityLiving() instanceof IMob)) {
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.HASTE, 205, 0));
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 205, 0));
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 205, 0));
@@ -462,13 +463,13 @@ public class MagicCommonEvent {
 			int cz = (int) event.getZ() >> 4;
 			ChunkPos chunk = new ChunkPos(cx, cz);
 			if (!event.getEntityLiving().getEntityWorld().isDaytime() && !event.getEntityLiving()
-					.isInWater() && PictureList.INSTANCE.hasColor(chunk, MagicColor.BLACK)) {
+					.isInWater() && PictureList.INSTANCE.hasColor(chunk, MagicColor.GREEN_BLACK)) {
 				if (event.getWorld().rand.nextInt(100) < 50 || event.getEntityLiving() instanceof EntityCreeper) {
 					event.getEntityLiving().addTag("blackdog");
 				} else {
 					event.setResult(Result.DENY);
 				}
-			} else if (PictureList.INSTANCE.hasColor(chunk, MagicColor.WHITE)) {
+			} else if (PictureList.INSTANCE.hasColor(chunk, MagicColor.BLACK_WHITE)) {
 				event.setResult(Result.DENY);
 			}
 		}
@@ -480,7 +481,7 @@ public class MagicCommonEvent {
 		int cx = pos.getX() >> 4;
 		int cz = pos.getZ() >> 4;
 		ChunkPos chunk = new ChunkPos(cx, cz);
-		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.GREEN)) {
+		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.BLUE_GREEN)) {
 			IClimate old = event.currentClimate();
 			if (old.getAirflow() != DCAirflow.TIGHT) {
 				event.setNewClimate(old.addAirTier(1));
@@ -495,7 +496,7 @@ public class MagicCommonEvent {
 		int cx = pos.getX() >> 4;
 		int cz = pos.getZ() >> 4;
 		ChunkPos chunk = new ChunkPos(cx, cz);
-		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.BLUE)) {
+		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.RED_BLUE)) {
 			DCHeatTier old = event.currentClimate();
 			event.setNewClimate(old.addTier(4));
 			event.setResult(Result.ALLOW);

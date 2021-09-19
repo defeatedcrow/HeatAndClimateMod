@@ -37,6 +37,7 @@ public class FoodBrewingRecipe implements IBrewingRecipeDC {
 		inputF = iF;
 		output = o;
 		outputF = oF;
+		int c = 0;
 		if (inputs != null && inputs.length > 0) {
 			for (int i = 0; i < inputs.length; i++) {
 				if (inputs[i] instanceof String) {
@@ -44,25 +45,33 @@ public class FoodBrewingRecipe implements IBrewingRecipeDC {
 					ret.addAll(OreDictionary.getOres((String) inputs[i]));
 					processedInput.add(ret);
 					inputList.add(inputs[i]);
+					c++;
 				} else if (inputs[i] instanceof ItemStack) {
 					if (!DCUtil.isEmpty((ItemStack) inputs[i])) {
 						ItemStack ret = ((ItemStack) inputs[i]).copy();
 						processedInput.add(ret);
 						inputList.add(ret);
+						c++;
 					}
 				} else if (inputs[i] instanceof Item) {
 					ItemStack ret = new ItemStack((Item) inputs[i], 1, 0);
 					processedInput.add(ret);
 					inputList.add(ret);
+					c++;
 				} else if (inputs[i] instanceof Block) {
 					ItemStack ret = new ItemStack((Block) inputs[i], 1, 0);
 					processedInput.add(ret);
 					inputList.add(ret);
+					c++;
 				} else {
 					throw new IllegalArgumentException("Unknown Object passed to recipe!");
 				}
 			}
 		}
+		if (inputF != null) {
+			c++;
+		}
+		priority = c;
 	}
 
 	public FoodBrewingRecipe priority(int i) {

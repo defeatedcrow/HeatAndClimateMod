@@ -1,1 +1,1 @@
-{"parent":"dcs_climate:block/device/dcs_device_sink_half"}
+{"parent":"item/generated","textures":{"layer0":"dcs_climate:items/block/sink_half_item"}}

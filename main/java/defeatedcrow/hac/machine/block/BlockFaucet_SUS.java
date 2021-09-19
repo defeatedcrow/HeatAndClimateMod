@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -17,6 +18,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -30,6 +32,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -38,10 +44,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class BlockFaucet_SUS extends BlockContainerDC {
 
-	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0.3125D, 0.0D, 0.5D, 0.6875D, 0.75D, 1.0D);
-	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0.3125D, 0.0D, 0.0D, 0.6875D, 0.75D, 0.5D);
-	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0.5D, 0.0D, 0.3125D, 1.0D, 0.75D, 0.6875D);
-	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.0D, 0.0D, 0.3125D, 0.5D, 0.75D, 0.6875D);
+	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0.3125D, 0.25D, 0.5D, 0.6875D, 0.75D, 1.0D);
+	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0.3125D, 0.25D, 0.0D, 0.6875D, 0.75D, 0.5D);
+	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0.5D, 0.25D, 0.3125D, 1.0D, 0.75D, 0.6875D);
+	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.0D, 0.25D, 0.3125D, 0.5D, 0.75D, 0.6875D);
 	protected static final AxisAlignedBB AABB_DOWN = new AxisAlignedBB(0.3125D, 0.0D, 0.3125D, 0.6875D, 1.0D, 0.6875D);
 
 	public BlockFaucet_SUS(String s) {
@@ -59,12 +65,58 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote && hand == EnumHand.MAIN_HAND) {
+			if (player != null) {
+				ItemStack heldItem = player.getHeldItem(hand);
+				if (!DCUtil.isEmpty(heldItem)) {
+					if (onFill(heldItem, world, player)) {
+						world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
+						return true;
+					}
+				}
+			}
 			boolean power = DCState.getBool(state, DCState.POWERED);
 			IBlockState state2 = state.withProperty(DCState.POWERED, !power);
 			world.setBlockState(pos, state2, 2);
 			world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 		}
 		return true;
+	}
+
+	public static boolean onFill(ItemStack item, World world,
+			EntityPlayer player) {
+		if (!DCUtil.isEmpty(item) && item
+				.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+			ItemStack copy = item.copy();
+			if (item.getCount() > 1)
+				copy.setCount(1);
+			IFluidHandlerItem dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+			FluidStack fluid = new FluidStack(FluidRegistry.WATER, 1000);
+
+			// dummyを使った検証
+			if (dummy != null && dummy
+					.getTankProperties() != null) {
+				int max = dummy.getTankProperties()[0].getCapacity();
+				ItemStack ret = ItemStack.EMPTY;
+				boolean success = false;
+				if (dummy.fill(fluid, true) > 0) {
+					ret = dummy.getContainer();
+					success = true;
+				}
+
+				if (success) {
+					if (!player.capabilities.isCreativeMode) {
+						DCUtil.reduceStackSize(item, 1);
+					}
+					player.inventory.markDirty();
+					if (!DCUtil.isEmpty(ret) && !world.isRemote) {
+						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret);
+						world.spawnEntity(drop);
+					}
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -162,7 +214,10 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE, DCState.POWERED });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.SIDE,
+				DCState.POWERED
+		});
 
 	}
 

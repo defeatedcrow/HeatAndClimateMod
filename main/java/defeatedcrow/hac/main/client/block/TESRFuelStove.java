@@ -3,8 +3,11 @@ package defeatedcrow.hac.main.client.block;
 import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.client.base.DCTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
+import defeatedcrow.hac.main.api.IColorChangeTile;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
-import defeatedcrow.hac.main.client.model.ModelFuelStove;
+import defeatedcrow.hac.main.client.model.ModelKitchenBlock;
+import defeatedcrow.hac.main.client.model.ModelKitchenBlock.Shape;
+import defeatedcrow.hac.main.client.model.ModelKitchenBlock.Type;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -12,23 +15,68 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class TESRFuelStove extends DCTESRBase {
 
-	private static final String TEX = "dcs_climate:textures/tiles/fuel_stove.png";
-	private static final ModelFuelStove MODEL = new ModelFuelStove();
+	private static final String TEX_A = "dcs_climate:textures/tiles/fuelstove_white.png";
+	private static final String TEX_B = "dcs_climate:textures/tiles/fuelstove_black.png";
+	private static final String TEX_C = "dcs_climate:textures/tiles/fuelstove_brown.png";
+	private static final String TEX_D = "dcs_climate:textures/tiles/fuelstove_gray.png";
+	private static final ModelKitchenBlock MODEL_A = new ModelKitchenBlock(Type.STOVE, Shape.NORMAL);
+	private static final ModelKitchenBlock MODEL_B = new ModelKitchenBlock(Type.STOVE, Shape.ISLAND);
+	private static final ModelKitchenBlock MODEL_C = new ModelKitchenBlock(Type.DESK, Shape.ISLAND);
 
 	@Override
 	public void render(DCTileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
-		super.render(te, x, y, z, partialTicks, destroyStage, a);
+		int type = 0;
+		int face = 0;
+		float f = 0.0F;
+
+		if (te.hasWorld()) {
+			int meta = te.getBlockMetadata();
+
+			type = meta & 3;
+			face = 5 - (meta >> 2);
+			if (face == 2) {
+				f = 0F;
+			}
+			if (face == 3) {
+				f = 180F;
+			}
+			if (face == 4) {
+				f = -90F;
+			}
+			if (face == 5) {
+				f = 90F;
+			}
+		}
+
+		int color = 0;
+		if (te instanceof IColorChangeTile)
+			color = ((IColorChangeTile) te).getColor();
+
+		DCTileModelBase model = this.getModel(color);
+
+		this.bindTexture(new ResourceLocation(getTexPass(color)));
+
+		GlStateManager.pushMatrix();
+		GlStateManager.enableRescaleNormal();
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
+		GlStateManager.scale(1.0F, -1.0F, -1.0F);
+
+		GlStateManager.rotate(f, 0.0F, 1.0F, 0.0F);
+		this.render(model, 0.0F);
+		GlStateManager.disableRescaleNormal();
+		GlStateManager.popMatrix();
 
 		if (te.hasWorld() && te instanceof TileCookingStove) {
-			int meta = te.getBlockMetadata();
-			boolean lit = (meta & 3) == 1;
-			if (lit) {
+			boolean lit = type == 1;
+			if (lit && color != 3) {
 				renderFire(1, x, y, z, partialTicks);
 			}
 		}
@@ -36,12 +84,32 @@ public class TESRFuelStove extends DCTESRBase {
 
 	@Override
 	protected String getTexPass(int i) {
-		return TEX;
+		switch (i) {
+		case 0:
+			return TEX_A;
+		case 1:
+			return TEX_B;
+		case 2:
+			return TEX_C;
+		case 3:
+			return TEX_D;
+		}
+		return TEX_A;
 	}
 
 	@Override
 	protected DCTileModelBase getModel(int i) {
-		return MODEL;
+		switch (i) {
+		case 0:
+			return MODEL_A;
+		case 1:
+			return MODEL_A;
+		case 2:
+			return MODEL_B;
+		case 3:
+			return MODEL_C;
+		}
+		return MODEL_A;
 	}
 
 	private void renderFire(int level, double x, double y, double z, float partialTicks) {

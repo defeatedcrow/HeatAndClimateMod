@@ -1,0 +1,22 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/magic/small_light",
+        "base": "dcs_climate:blocks/magic/small_light"
+    },
+    "elements": [
+        {   "from": [ 5, 0, 5 ],
+            "to": [ 11, 1, 11 ],
+            "shade": false,
+            "faces": {
+                "north": {"uv": [5, 11, 11, 12], "texture": "#base"},
+                "east":  {"uv": [5, 4, 11, 5], "texture": "#base"},
+                "south": {"uv": [5, 4, 11, 5], "texture": "#base"},
+                "west":  {"uv": [5, 11, 11, 12], "texture": "#base"},
+                "up":    {"uv": [5, 5, 11, 11], "texture": "#base"},
+                "down":  {"uv": [5, 5, 11, 11], "texture": "#base"}
+            }
+        }
+    ]
+}

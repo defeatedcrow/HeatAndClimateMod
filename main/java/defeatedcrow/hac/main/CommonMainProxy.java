@@ -96,21 +96,26 @@ import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
+import defeatedcrow.hac.main.block.device.TileCraftingCounter;
 import defeatedcrow.hac.main.block.device.TileFirestand;
 import defeatedcrow.hac.main.block.device.TileGeyser;
+import defeatedcrow.hac.main.block.device.TileKitchenHood;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TilePail;
 import defeatedcrow.hac.main.block.device.TileShitirin;
 import defeatedcrow.hac.main.block.device.TileSink;
+import defeatedcrow.hac.main.block.device.TileSinkFull;
 import defeatedcrow.hac.main.block.device.TileStevensonScreen;
 import defeatedcrow.hac.main.block.device.TileSwedishTorch;
 import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
+import defeatedcrow.hac.main.client.gui.ContainerCraftingCounter;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayShelf;
 import defeatedcrow.hac.main.client.gui.ContainerFuelStove;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import defeatedcrow.hac.main.client.gui.ContainerStevensonScreen;
+import defeatedcrow.hac.main.client.gui.GuiCraftingCounter;
 import defeatedcrow.hac.main.client.gui.GuiDisplayShelf;
 import defeatedcrow.hac.main.client.gui.GuiFuelStove;
 import defeatedcrow.hac.main.client.gui.GuiLowChest;
@@ -499,6 +504,9 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileMagnetChest.class, "dcs_te_magnetchest");
 		GameRegistry.registerTileEntity(TileVillageChest.class, "dcs_te_villagechest");
 		GameRegistry.registerTileEntity(TileSink.class, "dcs_te_sink");
+		GameRegistry.registerTileEntity(TileSinkFull.class, "dcs_te_sink_full");
+		GameRegistry.registerTileEntity(TileCraftingCounter.class, "dcs_te_crafting_counter");
+		GameRegistry.registerTileEntity(TileKitchenHood.class, "dcs_te_kitchen_hood");
 		GameRegistry.registerTileEntity(TileBellow.class, "dcs_te_bellow");
 		GameRegistry.registerTileEntity(TileThermometer.class, "dcs_te_thermometer");
 		GameRegistry.registerTileEntity(TileWindVane.class, "dcs_te_windvane");
@@ -640,6 +648,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)
 			return new ContainerLowChest((TileLowChest) tile, player);
+		if (tile instanceof TileCraftingCounter)
+			return new ContainerCraftingCounter((TileCraftingCounter) tile, player, player.world, player.getPosition());
 		if (tile instanceof TileDisplayShelf)
 			return new ContainerDisplayShelf((TileDisplayShelf) tile, player);
 		if (tile instanceof TileCookingStove)
@@ -708,6 +718,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiFluidProcessor((TileFluidProcessorBase) tile, player.inventory);
 		if (tile instanceof TileLowChest)
 			return new GuiLowChest((TileLowChest) tile, player);
+		if (tile instanceof TileCraftingCounter)
+			return new GuiCraftingCounter((TileCraftingCounter) tile, player, player.world, player.getPosition());
 		if (tile instanceof TileDisplayShelf)
 			return new GuiDisplayShelf((TileDisplayShelf) tile, player);
 		if (tile instanceof TileCookingStove)

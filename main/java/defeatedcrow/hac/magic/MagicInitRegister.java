@@ -14,6 +14,7 @@ import defeatedcrow.hac.magic.block.BlockPictureGU;
 import defeatedcrow.hac.magic.block.BlockPictureRW;
 import defeatedcrow.hac.magic.block.BlockPictureUR;
 import defeatedcrow.hac.magic.block.BlockPictureWB;
+import defeatedcrow.hac.magic.block.BlockSmallLight;
 import defeatedcrow.hac.magic.block.BlockTimeCage;
 import defeatedcrow.hac.magic.block.BlockVeinBeacon;
 import defeatedcrow.hac.magic.item.ItemArmorGemBoots;
@@ -23,6 +24,7 @@ import defeatedcrow.hac.magic.item.ItemColorCard2;
 import defeatedcrow.hac.magic.item.ItemColorCard3;
 import defeatedcrow.hac.magic.item.ItemColorDrop;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet;
+import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
 import defeatedcrow.hac.magic.item.ItemColorPendant;
 import defeatedcrow.hac.magic.item.ItemColorPendant2;
 import defeatedcrow.hac.magic.item.ItemColorRing;
@@ -113,6 +115,11 @@ public class MagicInitRegister {
 			DCMaterialReg
 					.registerItem(MagicInit.colorGauntlet, ClimateCore.PACKAGE_BASE + "_color_gauntlet", ClimateMain.MOD_ID);
 
+			MagicInit.colorGauntlet2 = new ItemColorGauntlet2()
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_gauntlet2");
+			DCMaterialReg
+					.registerItem(MagicInit.colorGauntlet2, ClimateCore.PACKAGE_BASE + "_color_gauntlet2", ClimateMain.MOD_ID);
+
 			MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
 					EntityEquipmentSlot.FEET, "blue").setCreativeTab(ClimateMain.magic)
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_blue");
@@ -169,6 +176,10 @@ public class MagicInitRegister {
 		DCMaterialReg
 				.registerBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_BASE + "_device_biomeglass", ClimateMain.MOD_ID);
 
+		MagicInit.smallLight = new BlockSmallLight(ClimateCore.PACKAGE_BASE + "_magic_small_light");
+		DCMaterialReg
+				.registerBlock(MagicInit.smallLight, ClimateCore.PACKAGE_BASE + "_magic_small_light", ClimateMain.MOD_ID);
+
 		if (ModuleConfig.magic_advanced) {
 
 			MagicInit.pictureBlue = new BlockPictureUR(ClimateCore.PACKAGE_BASE + "_magic_picture_u");
@@ -205,6 +216,7 @@ public class MagicInitRegister {
 		MagicInit.colorPendant2.setCreativeTab(ClimateMain.magic);
 		MagicInit.magicCard.setCreativeTab(ClimateMain.magic);
 
+		MagicInit.elestial.setCreativeTab(ClimateMain.magic);
 		MagicInit.colorCube.setCreativeTab(ClimateMain.magic);
 		MagicInit.expGem.setCreativeTab(ClimateMain.magic);
 		MagicInit.medallion.setCreativeTab(ClimateMain.magic);
@@ -213,6 +225,7 @@ public class MagicInitRegister {
 
 		MagicInit.coldLamp.setCreativeTab(ClimateMain.magic);
 		MagicInit.biomeOrb.setCreativeTab(ClimateMain.magic);
+		// MagicInit.smallLight.setCreativeTab(ClimateMain.magic);
 
 		if (ModuleConfig.magic_advanced) {
 
@@ -220,6 +233,7 @@ public class MagicInitRegister {
 			MagicInit.colorPendant.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorBadge.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorGauntlet.setCreativeTab(ClimateMain.magic);
+			// MagicInit.colorGauntlet2.setCreativeTab(ClimateMain.magic);
 
 			MagicInit.magicCard3.setCreativeTab(ClimateMain.magic);
 			MagicInit.magicCard2.setCreativeTab(ClimateMain.magic);

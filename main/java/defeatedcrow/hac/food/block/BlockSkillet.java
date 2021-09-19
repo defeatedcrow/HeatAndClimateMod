@@ -38,7 +38,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSkillet extends DCTileBlock implements IAirflowTile {
 
-	protected static final AxisAlignedBB AABB_PLATE = new AxisAlignedBB(0D, 0D, 0D, 1D, 0.25D, 1D);
+	protected static final AxisAlignedBB AABB_PLATE = new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.25D, 0.875D);
 
 	public BlockSkillet(String s) {
 		super(Material.CLAY, s, 0);

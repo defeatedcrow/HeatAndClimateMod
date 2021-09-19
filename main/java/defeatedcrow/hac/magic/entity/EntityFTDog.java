@@ -81,6 +81,7 @@ public class EntityFTDog extends EntityWolf implements IRangedAttackMob {
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
 	}
 
 	@Override
@@ -106,10 +107,6 @@ public class EntityFTDog extends EntityWolf implements IRangedAttackMob {
 	@Override
 	public void setTamed(boolean tamed) {
 		super.setTamed(tamed);
-	}
-
-	public void setAttribute(float f) {
-		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D * f);
 	}
 
 	@Override
@@ -314,7 +311,7 @@ public class EntityFTDog extends EntityWolf implements IRangedAttackMob {
 				double d2 = target.posZ - this.posZ;
 				float f = MathHelper.sqrt(d0 * d0 + d2 * d2) * 0.2F;
 				spit.shoot(d0, d1, d2, 2.0F, 1.0F);
-				spit.setExplodeRange(dam * 0.5F);
+				spit.setExplodeRange(dam);
 				this.world
 						.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_FIREWORK_BLAST, this
 								.getSoundCategory(), 1.0F, 2.0F + (this.rand.nextFloat() - this.rand

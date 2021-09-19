@@ -4,12 +4,10 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.DCTileBlock;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +24,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockRealtimeClock extends BlockContainerDC {
+public class BlockRealtimeClock extends DCTileBlock {
 
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
@@ -34,10 +32,9 @@ public class BlockRealtimeClock extends BlockContainerDC {
 	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0D, 0D, 0D, 0.125D, 1D, 1D);
 
 	public BlockRealtimeClock(Material m, String s) {
-		super(m, s);
+		super(m, s, 3);
 		this.setHardness(0.5F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH));
 	}
 
 	@Override
@@ -94,34 +91,6 @@ public class BlockRealtimeClock extends BlockContainerDC {
 			return AABB_NORTH;
 
 		}
-	}
-
-	// state関連
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		int i = meta & 3;
-		int f = 5 - i;
-		IBlockState state = this.getDefaultState().withProperty(DCState.FACING, EnumFacing.getFront(f));
-		return state;
-	}
-
-	// state
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		int f = 0;
-
-		f = 5 - state.getValue(DCState.FACING).getIndex();
-		return f;
-	}
-
-	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		return state;
-	}
-
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.FACING });
 	}
 
 	@Override

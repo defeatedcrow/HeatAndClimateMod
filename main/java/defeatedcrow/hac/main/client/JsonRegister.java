@@ -68,6 +68,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, ClimateCore.PACKAGE_ID, "dcs_big_cushion", "build", 1);
 		MAIN_INSTANCE.regSimpleItem(MainInit.tinder, ClimateCore.PACKAGE_ID, "dcs_tinder", "tool", 2);
 		MAIN_INSTANCE.regSimpleItem(MainInit.animalFeed, ClimateCore.PACKAGE_ID, "dcs_animalfeed", "food", 1);
+		MAIN_INSTANCE.regSimpleItem(MainInit.colorChanger, ClimateCore.PACKAGE_ID, "dcs_color_changer", "tool", 0);
 
 		if (DCIntegrationCore.loadedForestry) {
 			MAIN_INSTANCE.regSimpleItem(MainInit.circuit, ClimateCore.PACKAGE_ID, "dcs_plugin_circuit", "device", 0);
@@ -156,6 +157,10 @@ public class JsonRegister {
 					.regSimpleBlock(MainInit.sinkMetal, ClimateCore.PACKAGE_ID, "dcs_device_sink_half", "device", 0);
 			MAIN_INSTANCE
 					.regSimpleBlock(MainInit.sinkChest, ClimateCore.PACKAGE_ID, "dcs_device_sink_full", "device", 0);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.craftingCounter, ClimateCore.PACKAGE_ID, "dcs_device_crafting_counter", "device", 0);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.kitchenHood, ClimateCore.PACKAGE_ID, "dcs_device_kitchen_hood", "device", 0);
 			MAIN_INSTANCE.regSimpleBlock(MainInit.awning, ClimateCore.PACKAGE_ID, "dcs_build_awning", "build", 3);
 			MAIN_INSTANCE
 					.regSimpleBlock(MainInit.lampCarbide, ClimateCore.PACKAGE_ID, "dcs_lamp_carbide_lantern", "build", 0);
@@ -182,10 +187,8 @@ public class JsonRegister {
 			MAIN_INSTANCE
 					.regTEBlock(MainInit.chestVillage, ClimateCore.PACKAGE_ID, "dcs_device_chest_village", "device", 0, true);
 
-			ModelLoader.setCustomStateMapper(MainInit.realtimeClock, (new StateMap.Builder()).ignore(DCState.FACING)
-					.build());
-			MAIN_INSTANCE.regSimpleItem(Item
-					.getItemFromBlock(MainInit.realtimeClock), ClimateCore.PACKAGE_ID, "dcs_device_realtimeclock", "device", 0);
+			MAIN_INSTANCE
+					.regTEBlock(MainInit.realtimeClock, ClimateCore.PACKAGE_ID, "dcs_device_realtimeclock", "device", 3, true);
 
 			ModelLoader.setCustomStateMapper(MainInit.realtimeClock_L, (new StateMap.Builder()).ignore(DCState.FACING)
 					.build());

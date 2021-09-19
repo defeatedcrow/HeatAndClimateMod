@@ -6,7 +6,7 @@ public class TilePictureGU extends TilePictureBase {
 
 	@Override
 	protected MagicColor getColor() {
-		return MagicColor.GREEN;
+		return MagicColor.BLUE_GREEN;
 	}
 
 }

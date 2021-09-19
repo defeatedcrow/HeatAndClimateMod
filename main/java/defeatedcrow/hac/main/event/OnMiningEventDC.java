@@ -225,7 +225,7 @@ public class OnMiningEventDC {
 		if (player != null && !DCUtil.isEmpty(stack)) {
 			if (stack.getItem() instanceof ItemScytheDC) {
 				// jewel
-				if (MagicCommonEvent.getOffhandJewelColor(player) == MagicColor.BLUE)
+				if (MagicCommonEvent.getOffhandJewelColor(player) == MagicColor.BLUE_BLACK)
 					return;
 				if (!player.world.isRemote) {
 					boolean b = false;

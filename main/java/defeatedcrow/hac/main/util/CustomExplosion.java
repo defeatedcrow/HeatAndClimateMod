@@ -10,7 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -86,7 +85,7 @@ public class CustomExplosion extends Explosion {
 
 		for (int i1 = 0; i1 < list.size(); ++i1) {
 			Entity entity = (Entity) list.get(i1);
-			if (entity == null || !entity.isEntityAlive() || entity.isImmuneToExplosions())
+			if (entity == null || entity.isImmuneToExplosions())
 				continue;
 
 			double d4 = entity.getDistance(this.expX, this.expY, this.expZ) / this.size;
@@ -102,9 +101,9 @@ public class CustomExplosion extends Explosion {
 
 				boolean flag = true;
 				float damage = (float) ((this.size * this.size * 2) * (d11 * d11));
-				damage = MathHelper.clamp(2.0F, damage, size * 4F);
+				damage = MathHelper.clamp(4.0F, damage, size * 4F);
 
-				if (entity == null || entity == this.igniter || entity == this.bomb) {
+				if (entity == this.igniter || entity == this.bomb) {
 					flag = false;
 				} else if (!(entity instanceof EntityLivingBase)) {
 					flag = false;
@@ -119,29 +118,23 @@ public class CustomExplosion extends Explosion {
 					EntityLivingBase owner2 = null;
 					if (igniter instanceof EntityTameable) {
 						owner = ((EntityTameable) igniter).getOwner();
-						if (owner instanceof EntityPlayer || owner == entity) {
+						if (owner == entity) {
 							flag = false;
 						}
 					}
 					if (entity instanceof EntityTameable) {
 						owner2 = ((EntityTameable) entity).getOwner();
-						if (owner2 instanceof EntityPlayer || owner2 == igniter) {
+						if (owner2 == igniter) {
 							flag = false;
 						}
 					}
-					if (entity instanceof EntityItem) {
-						flag = false;
-					}
 				} else if (this.type == Type.Silk) {
-					if (entity instanceof EntityItem || entity instanceof IProjectile) {
-						flag = false;
-					}
 					damage *= 0.5F;
 				} else if (this.type == Type.Anchor) {
 					if (entity instanceof EntityDragon) {
 						damage *= 2.0F;
 					} else if (!entity.onGround) {
-						damage *= 10.0F;
+						damage *= 2.0F;
 					}
 				}
 

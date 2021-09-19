@@ -40,7 +40,13 @@ public class ItemColorPendant2 extends CharmItemBase {
 	 * B: 吸血
 	 * W: 爆破ダメージ軽減
 	 */
-	private static String[] names = { "u2", "g2", "r2", "b2", "w2" };
+	private static String[] names = {
+			"u2",
+			"g2",
+			"r2",
+			"b2",
+			"w2"
+	};
 
 	public ItemColorPendant2() {
 		super();
@@ -162,27 +168,35 @@ public class ItemColorPendant2 extends CharmItemBase {
 		if (getColor(charm.getItemDamage()) == MagicColor.GREEN) {
 			ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().damageDropped(state));
 			if (state.getBlock().isWood(owner.world, pos) || MainUtil.hasDic(item, "logWood")) {
-				Set<BlockPos> set = new LinkedHashSet<>();
-				set = MainUtil.getLumberTargetList(owner.world, pos, state.getBlock(), 192);
-
 				if (!owner.world.isRemote) {
-					int count = 0;
-					for (BlockPos p2 : set) {
-						owner.world.setBlockToAir(p2);
-						count++;
-					}
+					Set<BlockPos> set = new LinkedHashSet<>();
+					set = MainUtil.getLumberTargetList(owner.world, pos, state.getBlock(), 192);
 
-					while (count > 0) {
-						int i = 0;
-						if (count > 64) {
-							i = 64;
-						} else {
-							i = count;
+					if (!set.isEmpty()) {
+						int count = 0;
+						for (BlockPos p2 : set) {
+							owner.world.setBlockToAir(p2);
+							count++;
 						}
-						count -= i;
+
+						while (count > 0) {
+							int i = 0;
+							if (count > 64) {
+								i = 64;
+							} else {
+								i = count;
+							}
+							count -= i;
+							ItemStack drop = item.copy();
+							drop.setCount(i);
+							EntityItem dropE = new EntityItem(owner.world, owner.posX, owner.posY + 0.5D, owner.posZ,
+									drop);
+							owner.world.spawnEntity(dropE);
+						}
+					} else {
 						ItemStack drop = item.copy();
-						drop.setCount(i);
-						EntityItem dropE = new EntityItem(owner.world, owner.posX, owner.posY + 0.5D, owner.posZ, drop);
+						EntityItem dropE = new EntityItem(owner.world, owner.posX, owner.posY + 0.5D, owner.posZ,
+								drop);
 						owner.world.spawnEntity(dropE);
 					}
 				}

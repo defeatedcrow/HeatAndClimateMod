@@ -144,12 +144,14 @@ public class ClimateMain {
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 
 		DCIntegrationCore.INSTANCE.loadInit();
+
+		// Recipes
+		proxy.loadRecipes();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		// Recipes
-		proxy.loadRecipes();
+
 		DCIntegrationCore.INSTANCE.loadPost();
 
 		// WorldGen

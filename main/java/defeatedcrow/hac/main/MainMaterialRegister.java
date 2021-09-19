@@ -79,12 +79,15 @@ import defeatedcrow.hac.main.block.container.BlockMiscCake;
 import defeatedcrow.hac.main.block.container.BlockMiscCont;
 import defeatedcrow.hac.main.block.device.BlockBellow;
 import defeatedcrow.hac.main.block.device.BlockCookingStove;
+import defeatedcrow.hac.main.block.device.BlockCraftingCounter;
 import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.block.device.BlockGeyser;
+import defeatedcrow.hac.main.block.device.BlockKitchenHood;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
 import defeatedcrow.hac.main.block.device.BlockPail;
 import defeatedcrow.hac.main.block.device.BlockShitirin;
 import defeatedcrow.hac.main.block.device.BlockSink;
+import defeatedcrow.hac.main.block.device.BlockSinkFull;
 import defeatedcrow.hac.main.block.device.BlockStevensonScreen;
 import defeatedcrow.hac.main.block.device.BlockSwedishTorch;
 import defeatedcrow.hac.main.block.device.BlockThermometer;
@@ -149,6 +152,7 @@ import defeatedcrow.hac.main.item.ores.ItemOreDusts;
 import defeatedcrow.hac.main.item.tool.ItemAlloyYagen;
 import defeatedcrow.hac.main.item.tool.ItemAxeDC;
 import defeatedcrow.hac.main.item.tool.ItemBullets;
+import defeatedcrow.hac.main.item.tool.ItemColorChanger;
 import defeatedcrow.hac.main.item.tool.ItemCrossbowDC;
 import defeatedcrow.hac.main.item.tool.ItemCrowDrill;
 import defeatedcrow.hac.main.item.tool.ItemDCShield;
@@ -420,6 +424,10 @@ public class MainMaterialRegister {
 
 		MainInit.tinder = new ItemTinderDC().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_tinder");
 		DCMaterialReg.registerItem(MainInit.tinder, ClimateCore.PACKAGE_BASE + "_tinder", ClimateMain.MOD_ID);
+
+		MainInit.colorChanger = new ItemColorChanger().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_color_changer");
+		DCMaterialReg
+				.registerItem(MainInit.colorChanger, ClimateCore.PACKAGE_BASE + "_color_changer", ClimateMain.MOD_ID);
 	}
 
 	static void registerModuleBuilding() {
@@ -942,15 +950,28 @@ public class MainMaterialRegister {
 			registerChestBlock(MainInit.wallshelfRattan, ClimateCore.PACKAGE_BASE + "_wallshelf_rattan", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regTEJson(MainInit.wallshelfRattan, "dcs_climate", "dcs_wallshelf_rattan", "device");
 
-			MainInit.sinkMetal = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_half", false);
+			MainInit.sinkMetal = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_half");
 			DCMaterialReg
 					.registerBlock(MainInit.sinkMetal, ClimateCore.PACKAGE_BASE + "_device_sink_half", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regTEJson(MainInit.sinkMetal, "dcs_climate", "dcs_device_sink_half", "device");
 
-			MainInit.sinkChest = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_full", true);
+			MainInit.sinkChest = new BlockSinkFull(ClimateCore.PACKAGE_BASE + "_device_sink_full");
 			DCMaterialReg
 					.registerBlock(MainInit.sinkChest, ClimateCore.PACKAGE_BASE + "_device_sink_full", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regTEJson(MainInit.sinkChest, "dcs_climate", "dcs_device_sink_full", "device");
+
+			MainInit.craftingCounter = new BlockCraftingCounter(ClimateCore.PACKAGE_BASE + "_device_crafting_counter",
+					true);
+			DCMaterialReg
+					.registerBlock(MainInit.craftingCounter, ClimateCore.PACKAGE_BASE + "_device_crafting_counter", ClimateMain.MOD_ID);
+			ClimateMain.proxy
+					.regTEJson(MainInit.craftingCounter, "dcs_climate", "dcs_device_crafting_counter", "device");
+
+			MainInit.kitchenHood = new BlockKitchenHood(ClimateCore.PACKAGE_BASE + "_device_kitchen_hood");
+			DCMaterialReg
+					.registerBlock(MainInit.kitchenHood, ClimateCore.PACKAGE_BASE + "_device_kitchen_hood", ClimateMain.MOD_ID);
+			ClimateMain.proxy
+					.regTEJson(MainInit.kitchenHood, "dcs_climate", "dcs_device_kitchen_hood", "device");
 
 			MainInit.hedgeSpring = new BlockHedge("dcs_hedge_spring").setUnlocalizedName("dcs_hedge_spring");
 			DCMaterialReg

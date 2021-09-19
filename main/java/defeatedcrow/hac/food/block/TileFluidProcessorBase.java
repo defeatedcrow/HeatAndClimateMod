@@ -14,7 +14,9 @@ import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.api.IColorChangeTile;
 import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageColorID;
 import defeatedcrow.hac.main.packet.MessageFluidProcessor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -37,7 +39,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import net.minecraftforge.oredict.OreDictionary;
 
-public abstract class TileFluidProcessorBase extends ClimateReceiverLockable implements ISidedInventory {
+public abstract class TileFluidProcessorBase extends ClimateReceiverLockable implements ISidedInventory,
+		IColorChangeTile {
 
 	public DCTank inputT = new DCTank(5000);
 	public DCTank outputT = new DCTank(5000);
@@ -53,6 +56,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	private int lastOutT = 0;
 
 	public IFluidRecipe currentRecipe = null;
+
+	protected int color = 0;
 
 	@Override
 	public void updateTile() {
@@ -695,6 +700,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 		inputT = inputT.readFromNBT(tag, "Tank1");
 		outputT = outputT.readFromNBT(tag, "Tank2");
+
+		this.color = tag.getInteger("Color");
 	}
 
 	@Override
@@ -709,6 +716,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 		inputT.writeToNBT(tag, "Tank1");
 		outputT.writeToNBT(tag, "Tank2");
+
+		tag.setInteger("Color", this.color);
 		return tag;
 	}
 
@@ -724,6 +733,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 		inputT.writeToNBT(tag, "Tank1");
 		outputT.writeToNBT(tag, "Tank2");
+
+		tag.setInteger("Color", this.color);
 		return tag;
 	}
 
@@ -738,6 +749,8 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 		inputT = inputT.readFromNBT(tag, "Tank1");
 		outputT = outputT.readFromNBT(tag, "Tank2");
+
+		this.color = tag.getInteger("Color");
 	}
 
 	@Override
@@ -763,5 +776,29 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	@Override
 	public abstract String getGuiID();
+
+	// color
+	@Override
+	public int getColor() {
+		return color;
+	}
+
+	@Override
+	public void setColor(int num) {
+		color = num;
+		if (color < 0 || color > 3) {
+			color = 0;
+		}
+	}
+
+	@Override
+	public boolean rotateColor() {
+		int c = color + 1;
+		setColor(c);
+		if (!world.isRemote) {
+			DCMainPacket.INSTANCE.sendToAll(new MessageColorID(pos, color));
+		}
+		return true;
+	}
 
 }

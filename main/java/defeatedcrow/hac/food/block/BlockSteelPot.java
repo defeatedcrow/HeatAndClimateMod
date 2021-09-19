@@ -29,6 +29,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -38,9 +39,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 
+	protected static final AxisAlignedBB AABB_PLATE = new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.875D, 0.875D);
+
 	public BlockSteelPot(String s) {
 		super(Material.CLAY, s, 0);
 		this.setSoundType(SoundType.ANVIL);
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return AABB_PLATE;
 	}
 
 	@Override

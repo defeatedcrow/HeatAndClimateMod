@@ -104,6 +104,7 @@ public class MagicClientProxy {
 		instance.regSimpleItem(MagicInit.colorPendant2, ClimateCore.PACKAGE_ID, "dcs_color_pendant2", "magic", 4);
 		instance.regSimpleItem(MagicInit.colorBadge, ClimateCore.PACKAGE_ID, "dcs_color_badge", "magic", 4);
 		instance.regSimpleItem(MagicInit.colorGauntlet, ClimateCore.PACKAGE_ID, "dcs_color_gauntlet", "magic", 4);
+		instance.regSimpleItem(MagicInit.colorGauntlet2, ClimateCore.PACKAGE_ID, "dcs_color_gauntlet2", "magic", 4);
 		instance.regSimpleItem(MagicInit.magicCard, ClimateCore.PACKAGE_ID, "dcs_magic_card", "magic", 14);
 		instance.regSimpleItem(MagicInit.magicCard2, ClimateCore.PACKAGE_ID, "dcs_magic_card_m", "magic", 4);
 		instance.regSimpleItem(MagicInit.magicCard3, ClimateCore.PACKAGE_ID, "dcs_magic_card_m2", "magic", 4);
@@ -127,6 +128,7 @@ public class MagicClientProxy {
 		instance.regSimpleBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_ID, "dcs_magic_biomeglass", "magic", 3);
 		instance.regSimpleBlock(MagicInit.coldLamp, ClimateCore.PACKAGE_ID, "dcs_build_coldlamp", "magic", 3);
 		instance.regTEBlock(MagicInit.timeCage, ClimateCore.PACKAGE_ID, "dcs_time_cage", "magic", 3, false);
+		instance.regTETorqueBlock(MagicInit.smallLight, ClimateCore.PACKAGE_ID, "dcs_magic_small_light", "device", 0, true);
 		instance.regSimpleItem(Item
 				.getItemFromBlock(MagicInit.pictureBlue), ClimateCore.PACKAGE_ID, "dcs_magic_picture_u", "device", 0);
 		instance.regSimpleItem(Item
