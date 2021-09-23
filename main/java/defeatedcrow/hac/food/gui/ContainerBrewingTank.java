@@ -24,14 +24,24 @@ public class ContainerBrewingTank extends Container {
 		this.processor = tile;
 		this.player = playerInv;
 
+		// インプット
 		// 液体系
 		this.addSlotToContainer(new Slot(tile, 0, 19, 18));
-		this.addSlotToContainer(new SlotInvalid(tile, 1, 19, 54));
 		this.addSlotToContainer(new Slot(tile, 2, 140, 18));
-		this.addSlotToContainer(new SlotInvalid(tile, 3, 140, 54));
 
+		// ItemStack系
 		for (int i = 0; i < 3; i++) {
 			this.addSlotToContainer(new Slot(tile, 4 + i, 57, 18 + 18 * i));
+			this.addSlotToContainer(new SlotInvalid(tile, 7 + i, 102, 18 + 18 * i));
+		}
+
+		// アウトプット
+		// 液体系
+		this.addSlotToContainer(new SlotInvalid(tile, 1, 19, 54));
+		this.addSlotToContainer(new SlotInvalid(tile, 3, 140, 54));
+
+		// ItemStack系
+		for (int i = 0; i < 3; i++) {
 			this.addSlotToContainer(new SlotInvalid(tile, 7 + i, 102, 18 + 18 * i));
 		}
 
