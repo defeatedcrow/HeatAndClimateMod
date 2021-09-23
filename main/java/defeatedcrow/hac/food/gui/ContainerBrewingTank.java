@@ -32,7 +32,6 @@ public class ContainerBrewingTank extends Container {
 		// ItemStack系
 		for (int i = 0; i < 3; i++) {
 			this.addSlotToContainer(new Slot(tile, 4 + i, 57, 18 + 18 * i));
-			this.addSlotToContainer(new SlotInvalid(tile, 7 + i, 102, 18 + 18 * i));
 		}
 
 		// アウトプット
