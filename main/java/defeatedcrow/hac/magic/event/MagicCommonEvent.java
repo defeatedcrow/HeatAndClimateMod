@@ -460,29 +460,31 @@ public class MagicCommonEvent {
 					if (map != null && !map.isEmpty()) {
 						ItemStack ins = drop.copy();
 						for (BlockPos pos : map.keySet()) {
-							TileEntity tile = player.world.getTileEntity(pos);
-							if (tile != null && tile
-									.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP)) {
-								IItemHandler target = tile
-										.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
-								if (target != null) {
-									boolean b = false;
-									if (!DCUtil.isEmpty(ins)) {
-										for (int j = 0; j < target.getSlots(); j++) {
-											if (!DCUtil.isEmpty(ins)) {
-												ItemStack ret = target.insertItem(j, ins.copy(), true);
-												if (ins.getCount() > ret.getCount()) {
-													target.insertItem(j, ins.copy(), false);
-													ins.setCount(ret.getCount());
-													tile.markDirty();
+							if (player.world.isBlockLoaded(pos)) {
+								TileEntity tile = player.world.getTileEntity(pos);
+								if (tile != null && tile
+										.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP)) {
+									IItemHandler target = tile
+											.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+									if (target != null) {
+										boolean b = false;
+										if (!DCUtil.isEmpty(ins)) {
+											for (int j = 0; j < target.getSlots(); j++) {
+												if (!DCUtil.isEmpty(ins)) {
+													ItemStack ret = target.insertItem(j, ins.copy(), true);
+													if (ins.getCount() > ret.getCount()) {
+														target.insertItem(j, ins.copy(), false);
+														ins.setCount(ret.getCount());
+														tile.markDirty();
+													}
 												}
 											}
 										}
 									}
 								}
-							}
-							if (DCUtil.isEmpty(ins)) {
-								break;
+								if (DCUtil.isEmpty(ins)) {
+									break;
+								}
 							}
 						}
 						if (ins.getCount() < drop.getCount()) {

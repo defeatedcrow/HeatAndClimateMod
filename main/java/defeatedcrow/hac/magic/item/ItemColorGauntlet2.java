@@ -119,6 +119,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.offhand_tool"));
 			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.color_gauntlet2." + meta));
+			tooltip.add(TextFormatting.YELLOW.toString() + I18n.format("dcs.comment.color_gauntlet2_2." + meta));
 
 			NBTTagCompound tag = stack.getTagCompound();
 			int limit = getLimit(meta);
@@ -185,23 +186,23 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 			if (!DCUtil.isEmpty(stack) && stack.getItem() == this) {
 				int meta = stack.getMetadata();
 				// BLUE-GREEN
-				if (meta == 0) {
+				if (meta == 0 && player.isSneaking()) {
 					if (!world.isRemote) {
 						if (hasCoord(stack, pos)) {
 							removeCoord(stack, player, pos);
 						} else {
-							addCoord(stack, player, pos, 1);
+							addCoord(stack, player, pos, 1, false);
 						}
 					}
 					world.playSound(player, pos, SoundEvents.BLOCK_NOTE_PLING, SoundCategory.BLOCKS, 0.5F, 1.5F);
 					return EnumActionResult.SUCCESS;
 				}
 				// GREEN-BLACK
-				else if (meta == 1) {
+				else if (meta == 1 && player.isSneaking()) {
 					// spawn crow
 				}
 				// RED-BLUE
-				else if (meta == 2) {
+				else if (meta == 2 && player.isSneaking()) {
 					if (state.getBlock() == MagicInit.morayLamp) {
 						TileEntity tile = world.getTileEntity(pos);
 						if (tile instanceof TileMorayLight & ((TileMorayLight) tile).isOwnerID(player)) {
@@ -233,7 +234,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 					return EnumActionResult.SUCCESS;
 				}
 				// BLACK-WHITE
-				else if (meta == 3) {
+				else if (meta == 3 && player.isSneaking()) {
 					// spawn owl
 				}
 				// WHITE-RED
@@ -313,7 +314,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 		return tag;
 	}
 
-	public static boolean addCoord(ItemStack stack, EntityPlayer player, BlockPos add, int limit) {
+	public static boolean addCoord(ItemStack stack, EntityPlayer player, BlockPos add, int limit, boolean delOld) {
 		if (!DCUtil.isEmpty(stack) && add != null) {
 			NBTTagCompound tag = stack.getTagCompound();
 			if (tag == null) {
@@ -321,30 +322,35 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 			}
 			Map<BlockPos, Integer> map = getPosList(tag);
 			if (map.size() >= limit) {
-				// 古い順に消す
-				BlockPos del = null;
-				int count = Integer.MAX_VALUE;
-				for (Entry<BlockPos, Integer> e : map.entrySet()) {
-					if (del == null || e.getValue() < count)
-						del = e.getKey();
-				}
-				if (del != null) {
-					map.remove(del);
-					if (player != null) {
-						String mes1 = I18n.format("dcs.comment.color_gauntlet2.del2") + " " + del.toString();
-						player.sendMessage(new TextComponentString(String.format(mes1)));
+				if (delOld) {
+					// 古い順に消す
+					BlockPos del = null;
+					int count = Integer.MAX_VALUE;
+					for (Entry<BlockPos, Integer> e : map.entrySet()) {
+						if (del == null || e.getValue() < count)
+							del = e.getKey();
+					}
+					if (del != null) {
+						map.remove(del);
+						if (player != null) {
+							String mes1 = I18n.format("dcs.comment.color_gauntlet2.del2") + " " + del.toString();
+							player.sendMessage(new TextComponentString(String.format(mes1)));
+						}
 					}
 				}
-			}
-			int time = (DCTimeHelper.getDay(player.world) * 24) + DCTimeHelper.currentTime(player.world);
-			map.put(add, time);
-			stack.setTagCompound(setPosList(tag, map));
+				int time = (DCTimeHelper.getDay(player.world) * 24) + DCTimeHelper.currentTime(player.world);
+				map.put(add, time);
+				stack.setTagCompound(setPosList(tag, map));
 
-			if (player != null) {
-				String mes2 = I18n.format("dcs.comment.color_gauntlet2.add") + " " + add.toString();
-				player.sendMessage(new TextComponentString(String.format(mes2)));
+				if (player != null) {
+					String mes2 = I18n.format("dcs.comment.color_gauntlet2.add") + " " + add.toString();
+					player.sendMessage(new TextComponentString(String.format(mes2)));
+				}
+				return true;
+			} else {
+				String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
+				player.sendMessage(new TextComponentString(String.format(mes1)));
 			}
-			return true;
 		}
 		return false;
 	}
