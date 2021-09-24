@@ -1793,6 +1793,14 @@ dcs.tip.remove_bad_potion=悪性ポーション効果のみを解除します。
 dcs.tip.clear_potion=すべてのポーション効果を解除。
 dcs.tip.drink_customize=砂糖やミルクとクラフトしてカスタマイズ可能。
 dcs.tip.trade_only=交易商人村人から入手できます。
+dcs.tip.allcharm=プレイヤーインベントリの最上段に置くと効果を発揮します。
+dcs.tip.amulet=モブやプレイヤーインベントリの中に置くと効果を発揮します。
+dcs.tip.offhand_tool=オフハンドスロットに置くと効果を発揮します。
+dcs.tip.r_click_pos=右クリック: 座標を登録します。
+dcs.tip.r_click_use=右クリック: オブジェクトを設置します。
+dcs.tip.r_click_remove=オブジェクトを右クリック: 設置したオブジェクトを除去します。
+dcs.tip.magic_cost=魔法のコスト:
+dcs.tip.magic_limit=設置数上限:
 
 dcs.tip.danger_drink=全回復 (ときどき即死)
 dcs.tip.correct_from_cow=近くにいる牛から空容器または液体ホッパーで集める。
@@ -1934,14 +1942,6 @@ dcs_climate.still=蒸留
 dcs_climate.aging=樽熟成
 
 ## magic
-dcs.tip.allcharm=プレイヤーインベントリの最上段に置くと効果を発揮します。
-dcs.tip.amulet=モブやプレイヤーインベントリの中に置くと効果を発揮します。
-dcs.tip.offhand_tool=オフハンドスロットに置くと効果を発揮します。
-dcs.tip.r_click_pos=右クリック: 座標を登録します。
-dcs.tip.r_click_use=右クリック: オブジェクトを設置します。
-dcs.tip.r_click_remove=オブジェクトを右クリック: 設置したオブジェクトを除去します。
-dcs.tip.magic_cost=魔法のコスト:
-dcs.tip.magic_limit=上限:
 dcs.tip.color_ring.0=知識のしずく
 dcs.tip.color_ring.1=収穫の恵み
 dcs.tip.color_ring.2=炎の加護
@@ -2025,6 +2025,10 @@ dcs.comment.color_picture.rw=プレイヤーと友好・中立モブを強化す
 dcs.comment.color_picture.bg=夜間のみ活動する黒い番犬をスポーンさせる
 dcs.comment.color_picture.bg2=絵画の下にチェストを置くと、番犬が拾ったアイテムを収集します。
 dcs.comment.color_picture.wb=モンスターがスポーンしなくなる
+dcs.comment.color_gauntlet2.del=座標を消去しました。
+dcs.comment.color_gauntlet2.del2=設置数が上限のため、古い座標を消去しました。
+dcs.comment.color_gauntlet2.add=座標を登録しました。
+dcs.comment.color_gauntlet2.limit=設置数が上限です。
 
 dcs.tip.color_cube0=5ブロック以上深い水の底
 dcs.tip.color_cube1=草花に囲まれた場所

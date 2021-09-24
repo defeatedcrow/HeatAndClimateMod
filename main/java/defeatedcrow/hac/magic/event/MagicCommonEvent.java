@@ -1,6 +1,7 @@
 package defeatedcrow.hac.magic.event;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -9,7 +10,6 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.WorldHeatTierEvent;
-import defeatedcrow.hac.api.magic.IJewel;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.recipe.ICrusherRecipe;
 import defeatedcrow.hac.api.recipe.IMillRecipe;
@@ -19,6 +19,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.PictureList;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
+import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
@@ -49,6 +50,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -66,11 +68,14 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 public class MagicCommonEvent {
 
@@ -106,7 +111,7 @@ public class MagicCommonEvent {
 						event.setCanceled(true);
 						return;
 					}
-					if (getOffhandJewelColor(owner) == MagicColor.GREEN_WHITE) {
+					if (MainUtil.getOffhandJewelColor(owner) == MagicColor.GREEN_WHITE) {
 						// green-white gauntlet
 						float healamo = event.getAmount() * 0.25F * eff;
 						owner.heal(healamo);
@@ -129,7 +134,7 @@ public class MagicCommonEvent {
 							.getX(), target.getPosition().getY(), target.getPosition().getZ());
 					event.setCancellationResult(EnumActionResult.SUCCESS);
 				}
-			} else if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE_BLUE) {
+			} else if (MainUtil.getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE_BLUE) {
 				if (target instanceof EntityLiving) {
 					if (target.getRidingEntity() != player) {
 						target.startRiding(player, true);
@@ -215,7 +220,7 @@ public class MagicCommonEvent {
 				int eff = MathHelper.floor(MainUtil.magicSuitEff(liv2) * 2) - 1;
 				lu1 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing, 1, 0)) * eff;
 				lb2 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing2, 1, 3)) * eff;
-				blue = getOffhandJewelColor(liv2) == MagicColor.BLUE_BLACK;
+				blue = MainUtil.getOffhandJewelColor(liv2) == MagicColor.BLUE_BLACK;
 			} else {
 				return;
 			}
@@ -248,7 +253,7 @@ public class MagicCommonEvent {
 	public void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
 		if (event.getHarvester() != null) {
 			/* 粉砕 */
-			if (getOffhandJewelColor(event.getHarvester()) == MagicColor.BLACK_RED) {
+			if (MainUtil.getOffhandJewelColor(event.getHarvester()) == MagicColor.BLACK_RED) {
 				ItemStack off = event.getHarvester().getHeldItem(EnumHand.OFF_HAND);
 				float eff = MainUtil.magicSuitEff(event.getHarvester());
 				List<ItemStack> nList = Lists.newArrayList();
@@ -354,7 +359,7 @@ public class MagicCommonEvent {
 	public void onLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
 		EntityPlayer player = event.getEntityPlayer();
 		if (ClimateCore.isDebug && player != null && player.isSprinting()) {
-			if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.BLUE_BLACK && event.getItemStack()
+			if (MainUtil.getOffhandJewelColor(event.getEntityLiving()) == MagicColor.BLUE_BLACK && event.getItemStack()
 					.getItem() instanceof ItemScytheDC) {
 				double x = player.getForward().x * 0.5D + player.motionX;
 				double y = 0.05D;
@@ -369,7 +374,7 @@ public class MagicCommonEvent {
 	// 確定Crit
 	@SubscribeEvent
 	public void onCrit(CriticalHitEvent event) {
-		if (getOffhandJewelColor(event.getEntityPlayer()) == MagicColor.BLUE_BLACK && event.getEntityPlayer()
+		if (MainUtil.getOffhandJewelColor(event.getEntityPlayer()) == MagicColor.BLUE_BLACK && event.getEntityPlayer()
 				.getHeldItemMainhand().getItem() instanceof ItemScytheDC) {
 			event.setDamageModifier(1.8F);
 			event.setResult(Result.ALLOW);
@@ -380,7 +385,7 @@ public class MagicCommonEvent {
 
 	@SubscribeEvent
 	public void onLiving(LivingEvent.LivingUpdateEvent event) {
-		if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.RED_GREEN) {
+		if (MainUtil.getOffhandJewelColor(event.getEntityLiving()) == MagicColor.RED_GREEN) {
 			if (event.getEntityLiving().collidedHorizontally) {
 				event.getEntityLiving().motionY = 0.2D;
 			} else if (isCollidedBlock(event.getEntityLiving())) {
@@ -391,7 +396,8 @@ public class MagicCommonEvent {
 				}
 			}
 			event.getEntityLiving().fallDistance = 0F;
-		} else if (getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE_BLUE && event.getEntityLiving()
+		} else if (MainUtil.getOffhandJewelColor(event.getEntityLiving()) == MagicColor.WHITE_BLUE && event
+				.getEntityLiving()
 				.isSneaking()) {
 			if (event.getEntityLiving().isBeingRidden()) {
 				event.getEntityLiving().removePassengers();
@@ -441,16 +447,54 @@ public class MagicCommonEvent {
 		return !world.getCollisionBoxes(living, bb).isEmpty();
 	}
 
-	public static MagicColor getOffhandJewelColor(EntityLivingBase player) {
-		if (player == null || DCUtil.isEmpty(player.getHeldItem(EnumHand.OFF_HAND)))
-			return MagicColor.NONE;
-
-		ItemStack held = player.getHeldItem(EnumHand.OFF_HAND);
-		if (held.getItem() instanceof IJewel) {
-			return ((IJewel) held.getItem()).getColor(held.getItemDamage());
+	@SubscribeEvent
+	public void onPickup(EntityItemPickupEvent event) {
+		if (event.getEntityPlayer() != null && event.getItem() != null && !DCUtil.isEmpty(event.getItem().getItem())) {
+			EntityPlayer player = event.getEntityPlayer();
+			if (!player.world.isRemote && !player.isSneaking() && MainUtil
+					.getOffhandJewelColor(player) == MagicColor.BLUE_GREEN) {
+				ItemStack held = player.getHeldItemOffhand();
+				ItemStack drop = event.getItem().getItem();
+				if (held.hasTagCompound()) {
+					Map<BlockPos, Integer> map = ItemColorGauntlet2.getPosList(held.getTagCompound());
+					if (map != null && !map.isEmpty()) {
+						ItemStack ins = drop.copy();
+						for (BlockPos pos : map.keySet()) {
+							TileEntity tile = player.world.getTileEntity(pos);
+							if (tile != null && tile
+									.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP)) {
+								IItemHandler target = tile
+										.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
+								if (target != null) {
+									boolean b = false;
+									if (!DCUtil.isEmpty(ins)) {
+										for (int j = 0; j < target.getSlots(); j++) {
+											if (!DCUtil.isEmpty(ins)) {
+												ItemStack ret = target.insertItem(j, ins.copy(), true);
+												if (ins.getCount() > ret.getCount()) {
+													target.insertItem(j, ins.copy(), false);
+													ins.setCount(ret.getCount());
+													tile.markDirty();
+												}
+											}
+										}
+									}
+								}
+							}
+							if (DCUtil.isEmpty(ins)) {
+								break;
+							}
+						}
+						if (ins.getCount() < drop.getCount()) {
+							drop.setCount(ins.getCount());
+							if (DCUtil.isEmpty(drop)) {
+								event.setResult(Result.ALLOW);
+							}
+						}
+					}
+				}
+			}
 		}
-
-		return MagicColor.NONE;
 	}
 
 	/* pictures */

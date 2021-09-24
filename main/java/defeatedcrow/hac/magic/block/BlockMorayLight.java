@@ -2,6 +2,7 @@ package defeatedcrow.hac.magic.block;
 
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import javax.annotation.Nullable;
 
@@ -9,15 +10,22 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
-import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.core.energy.BlockTorqueBase;
+import defeatedcrow.hac.core.util.DCTimeHelper;
+import defeatedcrow.hac.machine.block.TileMorayLight;
+import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -29,7 +37,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockMorayLight extends BlockDC {
+public class BlockMorayLight extends BlockTorqueBase {
 
 	protected static final AxisAlignedBB AABB_D = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.5D, 0.75D);
 	protected static final AxisAlignedBB AABB_U = new AxisAlignedBB(0.25D, 0.5D, 0.25D, 0.75D, 1.0D, 0.75D);
@@ -42,16 +50,10 @@ public class BlockMorayLight extends BlockDC {
 	public final int maxMeta;
 
 	public BlockMorayLight(String s) {
-		super(Material.GLASS, s);
-		this.setHardness(0.5F);
-		this.setResistance(500.0F);
-		this.setLightLevel(1.0F);
+		super(Material.GLASS, s, 0);
+		this.setResistance(30000.0F);
 		this.maxMeta = 0;
-		this.fullBlock = false;
-		this.lightOpacity = 0;
-		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
-				.withProperty(DCState.POWERED, false));
+		this.setBlockUnbreakable();
 	}
 
 	@Override
@@ -97,7 +99,7 @@ public class BlockMorayLight extends BlockDC {
 	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer, EnumHand hand) {
 		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
-		state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(facing));
+		state = state.withProperty(DCState.SIDE, EnumSide.fromFacing(facing.getOpposite()));
 		return state;
 	}
 
@@ -151,6 +153,12 @@ public class BlockMorayLight extends BlockDC {
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer,
 			ItemStack stack) {
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
+		TileEntity tile = world.getTileEntity(pos);
+		if (tile != null && tile instanceof TileMorayLight) {
+			((TileMorayLight) tile).setOwnerID(placer.getUniqueID());
+			int day = DCTimeHelper.getDay(world);
+			((TileMorayLight) tile).setDate(day);
+		}
 		if (!world.isRemote) {
 			world.notifyNeighborsOfStateChange(pos, this, false);
 		}
@@ -159,6 +167,19 @@ public class BlockMorayLight extends BlockDC {
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		super.breakBlock(world, pos, state);
+		TileEntity tile = world.getTileEntity(pos);
+		if (tile != null && tile instanceof TileMorayLight) {
+			UUID id = ((TileMorayLight) tile).getOwnerID();
+			if (id != null) {
+				EntityPlayer player = world.getPlayerEntityByUUID(id);
+				if (player != null) {
+					ItemStack held = player.getHeldItem(EnumHand.OFF_HAND);
+					if (MainUtil.getOffhandJewelColor(player) == MagicColor.RED_BLUE) {
+						ItemColorGauntlet2.addCount(held, 8, -1);
+					}
+				}
+			}
+		}
 		if (!world.isRemote) {
 			world.notifyNeighborsOfStateChange(pos, this, false);
 		}
@@ -215,5 +236,10 @@ public class BlockMorayLight extends BlockDC {
 				DCState.SIDE,
 				DCState.POWERED
 		});
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileMorayLight();
 	}
 }

@@ -31,19 +31,22 @@ public class BrewingRecipeJson {
 
 	public static BrewingRecipeJson INSTANCE = new BrewingRecipeJson();
 
-	private static final Map<String, Map<String, Object>> jsonMap = new LinkedHashMap<>();
-	private static final Map<String, Map<String, Object>> dummyMap = new LinkedHashMap<>();
+	private static final Map<String, Object> jsonMap = new LinkedHashMap<>();
+	private static final Map<String, Object> dummyMap = new LinkedHashMap<>();
 
 	private static void load() {
 		if (!INSTANCE.jsonMap.isEmpty()) {
-			for (Entry<String, Map<String, Object>> e : INSTANCE.jsonMap.entrySet()) {
-				if (e.getKey() == null || e.getValue() == null || e.getValue().isEmpty()) {
+			for (Entry<String, Object> e : INSTANCE.jsonMap.entrySet()) {
+				if (e == null || e.getValue() instanceof Map) {
+					continue;
+				}
+				if (e.getKey() == null || e.getValue() == null || ((Map) e.getValue()).isEmpty()) {
 					continue;
 				}
 				String recipeID = e.getKey();
 				if (recipeID != null && !recipeID.contains("Sample")) {
 
-					Map<String, Object> map = e.getValue();
+					Map<String, Object> map = (Map<String, Object>) e.getValue();
 					if (map != null && !map.isEmpty()) {
 
 						EnumRecipeReg reg = EnumRecipeReg.ADD;

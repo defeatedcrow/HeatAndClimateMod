@@ -2,7 +2,7 @@
  "variants": {
   "side=west": {
    "model": "dcs_climate:device/dcs_magic_small_light",
-   "y": 270
+   "y": 90
   },
   "side=down": {
    "model": "dcs_climate:device/dcs_magic_small_light",
@@ -14,15 +14,15 @@
   },
   "side=north": {
    "model": "dcs_climate:device/dcs_magic_small_light",
-   "y": 0
+   "y": 180
   },
   "side=south": {
    "model": "dcs_climate:device/dcs_magic_small_light",
-   "y": 180
+   "y": 0
   },
   "side=east": {
    "model": "dcs_climate:device/dcs_magic_small_light",
-   "y": 90
+   "y": 270
   }
  }
 }

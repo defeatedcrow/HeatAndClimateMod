@@ -220,10 +220,11 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 			super.onServerUpdate();
 		}
 		if (count <= 0) {
-			if (inputT1.getFluidAmount() + inputT2.getFluidAmount() + outputT1.getFluidAmount() + outputT2
+			if (inputT1.getFluidAmount() * 7 + inputT2.getFluidAmount() * 13 + outputT1.getFluidAmount() * 17 + outputT2
 					.getFluidAmount() != last) {
-				last = inputT1.getFluidAmount() + inputT2.getFluidAmount() + outputT1.getFluidAmount() + outputT2
-						.getFluidAmount();
+				last = inputT1.getFluidAmount() * 7 + inputT2.getFluidAmount() * 13 + outputT1
+						.getFluidAmount() * 17 + outputT2
+								.getFluidAmount();
 
 				if (!this.hasWorld())
 					return;

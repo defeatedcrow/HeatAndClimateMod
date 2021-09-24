@@ -148,7 +148,6 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 		super.updateTick(world, pos, state, rand);
 		if (state.getBlock() == this && checkAndDropBlock(world, pos, state)) {
 			IClimate clm = this.getClimate(world, pos, state);
-			boolean canGrow = this.isSuitablePlace(world, pos.up(), world.getBlockState(pos.up()));
 			int chance = this.isSuitableClimate(clm, state) ? 8 : 30;
 			if (rand.nextInt(chance) == 0) {
 				this.grow(world, pos, state);
@@ -272,7 +271,8 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 				return false;
 			}
 			boolean water = this.isInWater(world, pos.up());
-			boolean gl = world.getBlockState(pos.up()).getBlock() == Blocks.WATER;
+			boolean gl = world.getBlockState(pos.up(2))
+					.getBlock() == Blocks.WATER;
 			if (gl && water) {
 				IBlockState newstate = state.withProperty(DCState.STAGE4, 3);
 				world.setBlockState(pos.up(), newstate, 2);

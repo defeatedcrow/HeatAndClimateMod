@@ -7,7 +7,7 @@
  "key": {
   "X": {
    "type": "forge:ore_dict",
-   "ore": "ingotSteel"
+   "ore": "ingotSUS"
   },
   "Y": {
    "item": "dcs_climate:dcs_device_bellow",

@@ -32,6 +32,7 @@ public class MagicInit {
 
 	public static Block veinBeacon;
 	public static Block smallLight;
+	public static Block morayLamp;
 
 	// advanced
 	public static Block lotusCandleBlack;

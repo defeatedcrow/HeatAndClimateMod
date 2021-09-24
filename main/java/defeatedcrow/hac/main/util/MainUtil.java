@@ -13,6 +13,8 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.energy.IWrenchDC;
+import defeatedcrow.hac.api.magic.IJewel;
+import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.plugin.baubles.DCPluginBaubles;
@@ -49,40 +51,42 @@ public class MainUtil {
 	public static final String BR = System.getProperty("line.separator");
 
 	public static final String[] DYES = {
-		"dyeWhite",
-		"dyeOrange",
-		"dyeMagenta",
-		"dyeLightBlue",
-		"dyeYellow",
-		"dyeLime",
-		"dyePink",
-		"dyeGray",
-		"dyeLightGray",
-		"dyeCyan",
-		"dyePurple",
-		"dyeBlue",
-		"dyeBrown",
-		"dyeGreen",
-		"dyeRed",
-		"dyeBlack", };
+			"dyeWhite",
+			"dyeOrange",
+			"dyeMagenta",
+			"dyeLightBlue",
+			"dyeYellow",
+			"dyeLime",
+			"dyePink",
+			"dyeGray",
+			"dyeLightGray",
+			"dyeCyan",
+			"dyePurple",
+			"dyeBlue",
+			"dyeBrown",
+			"dyeGreen",
+			"dyeRed",
+			"dyeBlack",
+	};
 
 	public static TextFormatting[] DYE_CHAT_COLOR = {
-		TextFormatting.WHITE,
-		TextFormatting.GOLD,
-		TextFormatting.LIGHT_PURPLE,
-		TextFormatting.AQUA,
-		TextFormatting.YELLOW,
-		TextFormatting.GREEN,
-		TextFormatting.LIGHT_PURPLE,
-		TextFormatting.DARK_GRAY,
-		TextFormatting.GRAY,
-		TextFormatting.DARK_AQUA,
-		TextFormatting.DARK_PURPLE,
-		TextFormatting.BLUE,
-		TextFormatting.DARK_RED,
-		TextFormatting.GREEN,
-		TextFormatting.RED,
-		TextFormatting.DARK_GRAY };
+			TextFormatting.WHITE,
+			TextFormatting.GOLD,
+			TextFormatting.LIGHT_PURPLE,
+			TextFormatting.AQUA,
+			TextFormatting.YELLOW,
+			TextFormatting.GREEN,
+			TextFormatting.LIGHT_PURPLE,
+			TextFormatting.DARK_GRAY,
+			TextFormatting.GRAY,
+			TextFormatting.DARK_AQUA,
+			TextFormatting.DARK_PURPLE,
+			TextFormatting.BLUE,
+			TextFormatting.DARK_RED,
+			TextFormatting.GREEN,
+			TextFormatting.RED,
+			TextFormatting.DARK_GRAY
+	};
 
 	public static ItemStack getIngot(int meta) {
 		if (meta < 0)
@@ -343,6 +347,18 @@ public class MainUtil {
 		return 1.0F;
 	}
 
+	public static MagicColor getOffhandJewelColor(EntityLivingBase player) {
+		if (player == null || DCUtil.isEmpty(player.getHeldItem(EnumHand.OFF_HAND)))
+			return MagicColor.NONE;
+
+		ItemStack held = player.getHeldItem(EnumHand.OFF_HAND);
+		if (held.getItem() instanceof IJewel) {
+			return ((IJewel) held.getItem()).getColor(held.getItemDamage());
+		}
+
+		return MagicColor.NONE;
+	}
+
 	/**
 	 * ruby氏に感謝!
 	 *
@@ -487,15 +503,126 @@ public class MainUtil {
 	}
 
 	public static final int[][][] MATRIX = new int[][][] {
-		{ { 0, 0, -1 }, { 0, 0, 1 } },
-		{ { -1, 0, 0 }, { 1, 0, 0 } },
-		{ { -1, -1, 0 }, { 1, 0, 0 } },
-		{ { -1, 0, 0 }, { 1, -1, 0 } },
-		{ { 0, 0, -1 }, { 0, -1, 1 } },
-		{ { 0, -1, -1 }, { 0, 0, 1 } },
-		{ { 0, 0, 1 }, { 1, 0, 0 } },
-		{ { 0, 0, 1 }, { -1, 0, 0 } },
-		{ { 0, 0, -1 }, { -1, 0, 0 } },
-		{ { 0, 0, -1 }, { 1, 0, 0 } } };
+			{
+					{
+							0,
+							0,
+							-1
+					},
+					{
+							0,
+							0,
+							1
+					}
+			},
+			{
+					{
+							-1,
+							0,
+							0
+					},
+					{
+							1,
+							0,
+							0
+					}
+			},
+			{
+					{
+							-1,
+							-1,
+							0
+					},
+					{
+							1,
+							0,
+							0
+					}
+			},
+			{
+					{
+							-1,
+							0,
+							0
+					},
+					{
+							1,
+							-1,
+							0
+					}
+			},
+			{
+					{
+							0,
+							0,
+							-1
+					},
+					{
+							0,
+							-1,
+							1
+					}
+			},
+			{
+					{
+							0,
+							-1,
+							-1
+					},
+					{
+							0,
+							0,
+							1
+					}
+			},
+			{
+					{
+							0,
+							0,
+							1
+					},
+					{
+							1,
+							0,
+							0
+					}
+			},
+			{
+					{
+							0,
+							0,
+							1
+					},
+					{
+							-1,
+							0,
+							0
+					}
+			},
+			{
+					{
+							0,
+							0,
+							-1
+					},
+					{
+							-1,
+							0,
+							0
+					}
+			},
+			{
+					{
+							0,
+							0,
+							-1
+					},
+					{
+							1,
+							0,
+							0
+					}
+			}
+	};
 
 }

@@ -9,6 +9,7 @@ import defeatedcrow.hac.magic.block.BlockCubeFlame;
 import defeatedcrow.hac.magic.block.BlockCubeIce;
 import defeatedcrow.hac.magic.block.BlockElestial;
 import defeatedcrow.hac.magic.block.BlockLotusCandle;
+import defeatedcrow.hac.magic.block.BlockMorayLight;
 import defeatedcrow.hac.magic.block.BlockPictureBG;
 import defeatedcrow.hac.magic.block.BlockPictureGU;
 import defeatedcrow.hac.magic.block.BlockPictureRW;
@@ -180,6 +181,10 @@ public class MagicInitRegister {
 		DCMaterialReg
 				.registerBlock(MagicInit.smallLight, ClimateCore.PACKAGE_BASE + "_magic_small_light", ClimateMain.MOD_ID);
 
+		MagicInit.morayLamp = new BlockMorayLight(ClimateCore.PACKAGE_BASE + "_magic_moray_lamp");
+		DCMaterialReg
+				.registerBlock(MagicInit.morayLamp, ClimateCore.PACKAGE_BASE + "_magic_moray_lamp", ClimateMain.MOD_ID);
+
 		if (ModuleConfig.magic_advanced) {
 
 			MagicInit.pictureBlue = new BlockPictureUR(ClimateCore.PACKAGE_BASE + "_magic_picture_u");
@@ -225,7 +230,8 @@ public class MagicInitRegister {
 
 		MagicInit.coldLamp.setCreativeTab(ClimateMain.magic);
 		MagicInit.biomeOrb.setCreativeTab(ClimateMain.magic);
-		// MagicInit.smallLight.setCreativeTab(ClimateMain.magic);
+		MagicInit.smallLight.setCreativeTab(ClimateMain.magic);
+		MagicInit.morayLamp.setCreativeTab(ClimateMain.magic);
 
 		if (ModuleConfig.magic_advanced) {
 
@@ -233,7 +239,7 @@ public class MagicInitRegister {
 			MagicInit.colorPendant.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorBadge.setCreativeTab(ClimateMain.magic);
 			MagicInit.colorGauntlet.setCreativeTab(ClimateMain.magic);
-			// MagicInit.colorGauntlet2.setCreativeTab(ClimateMain.magic);
+			MagicInit.colorGauntlet2.setCreativeTab(ClimateMain.magic);
 
 			MagicInit.magicCard3.setCreativeTab(ClimateMain.magic);
 			MagicInit.magicCard2.setCreativeTab(ClimateMain.magic);

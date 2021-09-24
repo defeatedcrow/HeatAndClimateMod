@@ -466,7 +466,7 @@ public class RegisterBrewingDC {
 							"containerGrape"
 			});
 
-			brewng(new ItemStack(FoodInit.residue, 1, 1), new FluidStack(FoodInit.dateWine, 200), new FluidStack(
+			brewng(new ItemStack(MainInit.foodDust, 1, 1), new FluidStack(FoodInit.dateWine, 200), new FluidStack(
 					FluidRegistry.WATER, 1000), new Object[] {
 							"containerDate"
 			});

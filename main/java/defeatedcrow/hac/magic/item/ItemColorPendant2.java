@@ -197,7 +197,8 @@ public class ItemColorPendant2 extends CharmItemBase {
 						ItemStack drop = item.copy();
 						EntityItem dropE = new EntityItem(owner.world, owner.posX, owner.posY + 0.5D, owner.posZ,
 								drop);
-						owner.world.spawnEntity(dropE);
+						if (owner.world.spawnEntity(dropE))
+							owner.world.setBlockToAir(pos);
 					}
 				}
 				return true;
