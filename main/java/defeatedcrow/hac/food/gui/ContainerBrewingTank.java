@@ -9,6 +9,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -23,14 +24,23 @@ public class ContainerBrewingTank extends Container {
 		this.processor = tile;
 		this.player = playerInv;
 
+		// インプット
 		// 液体系
 		this.addSlotToContainer(new Slot(tile, 0, 19, 18));
-		this.addSlotToContainer(new SlotInvalid(tile, 1, 19, 54));
 		this.addSlotToContainer(new Slot(tile, 2, 140, 18));
-		this.addSlotToContainer(new SlotInvalid(tile, 3, 140, 54));
 
+		// ItemStack系
 		for (int i = 0; i < 3; i++) {
 			this.addSlotToContainer(new Slot(tile, 4 + i, 57, 18 + 18 * i));
+		}
+
+		// アウトプット
+		// 液体系
+		this.addSlotToContainer(new SlotInvalid(tile, 1, 19, 54));
+		this.addSlotToContainer(new SlotInvalid(tile, 3, 140, 54));
+
+		// ItemStack系
+		for (int i = 0; i < 3; i++) {
 			this.addSlotToContainer(new SlotInvalid(tile, 7 + i, 102, 18 + 18 * i));
 		}
 
@@ -85,18 +95,29 @@ public class ContainerBrewingTank extends Container {
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.inventorySlots.get(index);
-		int lim = 7;
+		// Tileの持つIFluidHandlerItemを持つアイテムを入れられるスロットの数
+		int fluids = 2;
+		// Tileの持つアイテムを入れられるSlotの数
+		int inputs = 5;
+		// Tileの持つSlotの数
+		int lim = 10;
 
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 
 			if (index < lim) {
-				if (!this.mergeItemStack(itemstack1, lim + 1, this.inventorySlots.size(), true))
+				if (!this.mergeItemStack(itemstack1, lim, this.inventorySlots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
-			} else if (!this.mergeItemStack(itemstack1, 0, lim, false))
-				return ItemStack.EMPTY;
+			} else {
+				if (itemstack1.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+					this.mergeItemStack(itemstack1, 0, fluids, false);
+				}
+				if (!this.mergeItemStack(itemstack1, fluids, inputs, false)) {
+					return ItemStack.EMPTY;
+				}
+			}
 
 			if (!DCUtil.isEmpty(itemstack1)) {
 				slot.onSlotChanged();
