@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYZ",
+  " W ",
+  " W "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedonyRed"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedonyBlue"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "gemChalcedonyWhite"
+  },
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_color_changer",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
+}

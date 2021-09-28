@@ -24,7 +24,8 @@ public class TESRAnalogClock extends TileEntitySpecialRenderer<TileRealtimeClock
 		if (te.hasWorld()) {
 			int meta = te.getBlockMetadata();
 
-			face = 5 - (meta & 3);
+			type = meta & 3;
+			face = 5 - (meta >> 2);
 			if (face == 2) {
 				f = 90F;
 			}
@@ -39,7 +40,7 @@ public class TESRAnalogClock extends TileEntitySpecialRenderer<TileRealtimeClock
 			}
 		}
 
-		this.bindTexture(new ResourceLocation(getTexPass(0)));
+		this.bindTexture(new ResourceLocation(getTexPass(type)));
 
 		GlStateManager.pushMatrix();
 		GlStateManager.enableRescaleNormal();
@@ -54,6 +55,16 @@ public class TESRAnalogClock extends TileEntitySpecialRenderer<TileRealtimeClock
 	}
 
 	protected String getTexPass(int i) {
+		switch (i) {
+		case 0:
+			return "dcs_climate:textures/tiles/realtime_clock.png";
+		case 1:
+			return "dcs_climate:textures/tiles/realtime_clock_black.png";
+		case 2:
+			return "dcs_climate:textures/tiles/realtime_clock_white.png";
+		case 3:
+			return "dcs_climate:textures/tiles/realtime_clock_wood.png";
+		}
 		return "dcs_climate:textures/tiles/realtime_clock.png";
 	}
 }

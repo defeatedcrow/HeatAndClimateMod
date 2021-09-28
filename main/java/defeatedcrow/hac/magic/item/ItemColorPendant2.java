@@ -1,6 +1,6 @@
 package defeatedcrow.hac.magic.item;
 
-import java.util.LinkedHashSet;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -40,7 +40,13 @@ public class ItemColorPendant2 extends CharmItemBase {
 	 * B: 吸血
 	 * W: 爆破ダメージ軽減
 	 */
-	private static String[] names = { "u2", "g2", "r2", "b2", "w2" };
+	private static String[] names = {
+			"u2",
+			"g2",
+			"r2",
+			"b2",
+			"w2"
+	};
 
 	public ItemColorPendant2() {
 		super();
@@ -162,10 +168,11 @@ public class ItemColorPendant2 extends CharmItemBase {
 		if (getColor(charm.getItemDamage()) == MagicColor.GREEN) {
 			ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().damageDropped(state));
 			if (state.getBlock().isWood(owner.world, pos) || MainUtil.hasDic(item, "logWood")) {
-				Set<BlockPos> set = new LinkedHashSet<>();
-				set = MainUtil.getLumberTargetList(owner.world, pos, state.getBlock(), 192);
-
 				if (!owner.world.isRemote) {
+					Set<BlockPos> set = MainUtil.getLumberTargetList(owner.world, pos, state.getBlock(), 192);
+					if (set.isEmpty()) {
+						set = Collections.singleton(pos);
+					}
 					int count = 0;
 					for (BlockPos p2 : set) {
 						owner.world.setBlockToAir(p2);
@@ -182,8 +189,10 @@ public class ItemColorPendant2 extends CharmItemBase {
 						count -= i;
 						ItemStack drop = item.copy();
 						drop.setCount(i);
-						EntityItem dropE = new EntityItem(owner.world, owner.posX, owner.posY + 0.5D, owner.posZ, drop);
-						owner.world.spawnEntity(dropE);
+						EntityItem dropE = new EntityItem(owner.world, owner.posX, owner.posY + 0.5D, owner.posZ,
+								drop);
+						if (owner.world.spawnEntity(dropE))
+							owner.world.setBlockToAir(pos);
 					}
 				}
 				return true;

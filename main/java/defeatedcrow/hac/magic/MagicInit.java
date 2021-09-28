@@ -14,6 +14,7 @@ public class MagicInit {
 	public static Item colorPendant2;
 	public static Item colorBadge;
 	public static Item colorGauntlet;
+	public static Item colorGauntlet2;
 
 	public static Item magicCard;
 	public static Item magicCard2;
@@ -30,6 +31,8 @@ public class MagicInit {
 	public static Block elestial;
 
 	public static Block veinBeacon;
+	public static Block smallLight;
+	public static Block morayLamp;
 
 	// advanced
 	public static Block lotusCandleBlack;

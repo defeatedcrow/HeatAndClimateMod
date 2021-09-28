@@ -25,7 +25,9 @@ public class ContainerIncubator extends Container {
 			for (int i = 0; i < 6; ++i) {
 				this.addSlotToContainer(new SlotSingle(tile, i + k * 6, 62 + i * 18, 16 + k * 18));
 			}
+		}
 
+		for (int k = 0; k < 3; ++k) {
 			for (int i1 = 0; i1 < 9; ++i1) {
 				this.addSlotToContainer(new Slot(playerInv, i1 + k * 9 + 9, 8 + i1 * 18, 84 + k * 18));
 			}

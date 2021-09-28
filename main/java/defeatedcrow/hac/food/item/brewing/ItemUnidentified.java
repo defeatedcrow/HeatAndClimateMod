@@ -61,12 +61,20 @@ public class ItemUnidentified extends DCItem {
 			if (!DCUtil.isEmpty(item)) {
 				IMicrobe microbe = getSpecies(item);
 				if (microbe != null && microbe.getMicrobeItem() != null) {
-					int r = world.rand.nextInt(100);
 					int meta = 0;
-					if (r < 5)
-						meta = 2;// RARE
-					if (r > 69)
-						meta = 1;// UNCOMMON
+					if (item.hasTagCompound() && item.getTagCompound().hasKey("microbe_rarity")) {
+						int rarity = item.getTagCompound().getInteger("microbe_rarity");
+						if (rarity > 0 && rarity < 5) {
+							meta = rarity - 1;
+						}
+					} else {
+						int r = world.rand.nextInt(100);
+						if (r < 5)
+							meta = 2;// RARE
+						if (r > 69)
+							meta = 1;// UNCOMMON
+					}
+
 					ItemStack ret = new ItemStack(microbe.getMicrobeItem(), 1, meta);
 					if (!world.isRemote) {
 						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret);
@@ -102,6 +110,15 @@ public class ItemUnidentified extends DCItem {
 		}
 		ret.setTagCompound(tag);
 		return ret;
+	}
+
+	public static ItemStack setRarity(ItemStack item, int i) {
+		if (!DCUtil.isEmpty(item) && item.hasTagCompound()) {
+			NBTTagCompound tag = item.getTagCompound();
+			tag.setInteger("microbe_rarity", i);
+			item.setTagCompound(tag);
+		}
+		return item;
 	}
 
 	public static IMicrobe getSpecies(ItemStack item) {

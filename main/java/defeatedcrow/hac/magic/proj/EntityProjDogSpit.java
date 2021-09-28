@@ -1,10 +1,11 @@
 package defeatedcrow.hac.magic.proj;
 
 import defeatedcrow.hac.main.entity.EntityProjBase;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageMagicParticle;
 import defeatedcrow.hac.main.util.CustomExplosion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
@@ -27,7 +28,7 @@ public class EntityProjDogSpit extends EntityProjBase {
 	}
 
 	public EntityProjDogSpit setExplodeRange(float f) {
-		range = f * 0.5F;
+		range = f;
 		return this;
 	}
 
@@ -46,7 +47,7 @@ public class EntityProjDogSpit extends EntityProjBase {
 	@Override
 	protected boolean onGroundHit() {
 		EntityLivingBase ign = null;
-		if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase) {
+		if (this.shootingEntity instanceof EntityLivingBase) {
 			ign = (EntityLivingBase) this.shootingEntity;
 		}
 		CustomExplosion explosion = new CustomExplosion(world, this, ign, posX, posY, posZ, range,
@@ -64,9 +65,9 @@ public class EntityProjDogSpit extends EntityProjBase {
 	}
 
 	@Override
-	protected void onGroundClient() {
-		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.5F / (this.rand.nextFloat() * 0.2F + 0.9F));
-		world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
+	protected void onHitEffect() {
+		DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(posX, posY, posZ,
+				(byte) EnumParticleTypes.EXPLOSION_LARGE.getParticleID(), 1.0F, 0.0F, 0.0F));
 	}
 
 	// no gravity

@@ -49,7 +49,15 @@ public enum DCName {
 	POWER("dcs.tip.power"),
 	TARGET("dcs.tip.target"),
 	REMOVE_BAD_POTION("dcs.tip.remove_bad_potion"),
-	DRINK_CUSTOMIZE("dcs.tip.drink_customize");
+	DRINK_CUSTOMIZE("dcs.tip.drink_customize"),
+	MAGIC_CHARM("dcs.tip.allcharm"),
+	MAGIC_AMULET("dcs.tip.amulet"),
+	MAGIC_OFFHAND("dcs.tip.offhand_tool"),
+	MAGIC_CLICK_POS("dcs.tip.r_click_pos"),
+	MAGIC_CLICK_USE("dcs.tip.r_click_use"),
+	MAGIC_CLICK_REMOVE("dcs.tip.r_click_remove"),
+	MAGIC_COST("dcs.tip.magic_cost"),
+	MAGIC_PLACE_LIMIT("dcs.tip.magic_limit");
 
 	private final String name;
 

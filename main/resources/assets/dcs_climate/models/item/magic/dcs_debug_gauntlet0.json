@@ -1,9 +1,9 @@
 {
     "parent": "block/block",
     "textures": {
-        "hand": "dcs_climate:items/magic/gauntlet_ur_0",
-        "arm": "dcs_climate:items/magic/gauntlet_ur_1",
-        "particle": "dcs_climate:items/magic/gauntlet_ur_1"
+        "hand": "dcs_climate:items/magic/gauntlet_ru_0",
+        "arm": "dcs_climate:items/magic/gauntlet_ru_1",
+        "particle": "dcs_climate:items/magic/gauntlet_ru_1"
     },
     "elements": [
         {
@@ -32,8 +32,7 @@
             "from": [3, 6, 4],
             "to": [13, 16, 4],
             "faces": {
-                "north": {"uv": [3, 0, 13, 10], "texture": "#arm"},
-                "south": {"uv": [3, 0, 13, 10], "texture": "#arm"}
+                "north": {"uv": [3, 0, 13, 10], "texture": "#arm"}
             }
         }
     ],

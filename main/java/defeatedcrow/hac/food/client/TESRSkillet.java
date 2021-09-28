@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.food.client.model.ModelBlockSkillet;
+import defeatedcrow.hac.main.api.IColorChangeTile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -11,6 +12,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,48 +20,69 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class TESRSkillet extends DCLockableTESRBase {
 
-	private static final String TEX = "dcs_climate:textures/tiles/iron_skillet.png";
+	private static final String TEX_A = "dcs_climate:textures/tiles/iron_skillet.png";
+	private static final String TEX_B = "dcs_climate:textures/tiles/iron_skillet_white.png";
+	private static final String TEX_C = "dcs_climate:textures/tiles/iron_skillet_orange.png";
+	private static final String TEX_D = "dcs_climate:textures/tiles/iron_skillet_blue.png";
 	private static final ModelBlockSkillet MODEL = new ModelBlockSkillet();
 
 	@Override
 	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
-		super.render(te, x, y, z, partialTicks, destroyStage, a);
-		// int type = 0;
-		// int face = 0;
-		// float f0 = 0.0F;
-		//
-		// if (te instanceof TileSkillet && te.hasWorld()) {
-		// TileSkillet pot = (TileSkillet) te;
-		// int meta = pot.getBlockMetadata();
-		//
-		// type = meta & 3;
-		// face = 5 - (meta >> 2);
-		// if (face == 2) {
-		// f0 = 0F;
-		// }
-		// if (face == 3) {
-		// f0 = 180F;
-		// }
-		// if (face == 4) {
-		// f0 = -90F;
-		// }
-		// if (face == 5) {
-		// f0 = 90F;
-		// }
-		//
-		// FluidStack f = pot.outputT.getFluid();
-		// if (f == null) {
-		// f = pot.inputT.getFluid();
-		// }
-		// if (f != null) {
-		// renderFluid(f.getFluid(), x, y, z, partialTicks, f.amount, f0);
-		// }
-		// }
+		int type = 0;
+		int face = 0;
+		float f = 0.0F;
+
+		if (te.hasWorld()) {
+			int meta = te.getBlockMetadata();
+
+			type = meta & 3;
+			face = 5 - (meta >> 2);
+			if (face == 2) {
+				f = 0F;
+			}
+			if (face == 3) {
+				f = 180F;
+			}
+			if (face == 4) {
+				f = -90F;
+			}
+			if (face == 5) {
+				f = 90F;
+			}
+		}
+
+		if (te instanceof IColorChangeTile)
+			type = ((IColorChangeTile) te).getColor();
+
+		DCTileModelBase model = this.getModel(type);
+
+		this.bindTexture(new ResourceLocation(getTexPass(type)));
+
+		GlStateManager.pushMatrix();
+		GlStateManager.enableRescaleNormal();
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
+		GlStateManager.scale(1.0F, -1.0F, -1.0F);
+
+		GlStateManager.rotate(f, 0.0F, 1.0F, 0.0F);
+		this.render(model, 0.0F);
+		GlStateManager.disableRescaleNormal();
+		GlStateManager.popMatrix();
 	}
 
 	@Override
 	protected String getTexPass(int i) {
-		return TEX;
+		switch (i) {
+		case 0:
+			return TEX_A;
+		case 1:
+			return TEX_B;
+		case 2:
+			return TEX_C;
+		case 3:
+			return TEX_D;
+		}
+		return TEX_A;
 	}
 
 	@Override

@@ -12,7 +12,6 @@ import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IWideMining;
 import defeatedcrow.hac.main.block.BlockExclusiveDC;
@@ -225,7 +224,7 @@ public class OnMiningEventDC {
 		if (player != null && !DCUtil.isEmpty(stack)) {
 			if (stack.getItem() instanceof ItemScytheDC) {
 				// jewel
-				if (MagicCommonEvent.getOffhandJewelColor(player) == MagicColor.BLUE)
+				if (MainUtil.getOffhandJewelColor(player) == MagicColor.BLUE_BLACK)
 					return;
 				if (!player.world.isRemote) {
 					boolean b = false;

@@ -1638,6 +1638,30 @@ public class LoadingBuildingRecipe {
 							new ItemStack(MainInit.sinkMetal, 1, 0)
 			});
 
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.craftingCounter, 1,
+					0), new Object[] {
+							"XYX",
+							" Z ",
+							'X',
+							"ingotSteel",
+							'Y',
+							new ItemStack(Blocks.CRAFTING_TABLE),
+							'Z',
+							new ItemStack(Blocks.CHEST)
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.kitchenHood, 1,
+					0), new Object[] {
+							" Z ",
+							"XYX",
+							'X',
+							"ingotSUS",
+							'Y',
+							new ItemStack(MainInit.bellow),
+							'Z',
+							"gearSteel"
+			});
+
 			for (int i = 0; i < 16; i++) {
 				DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.syntheticBlock,
 						8, i), new Object[] {

@@ -6,7 +6,6 @@ import java.util.List;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
@@ -38,6 +37,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerSetSpawnEvent;
@@ -112,12 +112,12 @@ public class LivingMainEventDC {
 					player.fallDistance = 0.0F;
 				}
 				if (player.isPotionActive(MainInit.warp) && !player.isRiding() && player.collidedHorizontally) {
-					DCLogger.debugInfoLog("check");
+					// DCLogger.debugInfoLog("check");
 					EnumFacing face = player.getHorizontalFacing();
 					BlockPos pos = player.getPosition().offset(face, 2);
 					if (isAir(player.world, pos) && isAir(player.world, pos.up())) {
 						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
-						if (!player.world.isRemote && player instanceof EntityPlayerMP) {
+						if (!player.world.isRemote && player.world instanceof WorldServer) {
 							player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 0.125D, pos.getZ() + 0.5D);
 						}
 						player.fallDistance = 0.0F;

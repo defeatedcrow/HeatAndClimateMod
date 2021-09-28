@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketChangeGameState;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
@@ -42,14 +43,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityBulletDC extends Entity implements IProjectile {
 	private static final Predicate<Entity> ARROW_TARGETS = Predicates.and(new Predicate[] {
-		EntitySelectors.NOT_SPECTATING,
-		EntitySelectors.IS_ALIVE,
-		new Predicate<Entity>() {
-			@Override
-			public boolean apply(@Nullable Entity p_apply_1_) {
-				return p_apply_1_.canBeCollidedWith();
+			EntitySelectors.NOT_SPECTATING,
+			EntitySelectors.IS_ALIVE,
+			new Predicate<Entity>() {
+				@Override
+				public boolean apply(@Nullable Entity p_apply_1_) {
+					return p_apply_1_.canBeCollidedWith();
+				}
 			}
-		} });
+	});
 	private int xTile;
 	private int yTile;
 	private int zTile;
@@ -338,7 +340,8 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			DamageSource damagesource;
 
 			if (this.isBurning()) {
-				damagesource = DamageSource.LAVA;
+				damagesource = new EntityDamageSourceIndirect("onFire", this, shootingEntity).setFireDamage()
+						.setProjectile();
 			} else if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase) {
 				if (this.getIsSilver() && entity instanceof EntityEnderman) {
 					if (this.shootingEntity instanceof EntityPlayer) {

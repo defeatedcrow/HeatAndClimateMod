@@ -90,12 +90,12 @@ public class ContainerEntityScooter extends Container {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 
-			if (index < 16) {
-				if (!this.mergeItemStack(itemstack1, 17, this.inventorySlots.size(), true))
+			if (index < 21) {
+				if (!this.mergeItemStack(itemstack1, 21, this.inventorySlots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			} else {
-				if (!this.mergeItemStack(itemstack1, 13, 16, false))
+				if (!this.mergeItemStack(itemstack1, 3, 20, false))
 					return ItemStack.EMPTY;
 			}
 

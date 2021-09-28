@@ -51,6 +51,7 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 
 		if (!this.world.isRemote) {
 			if (this.start) {
+				this.onHitEffect();
 				this.onGroundHit();
 			} else if (this.inGround) {
 				this.setStart(true);
@@ -58,9 +59,7 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 				this.setStart(true);
 			}
 		} else {
-			if (this.inGround) {
-				this.onGroundClient();
-			} else {
+			if (!this.inGround) {
 				this.world
 						.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
 			}
@@ -78,43 +77,48 @@ public abstract class EntityProjBase extends EntityArrow implements IProjectile 
 
 	}
 
+	/* 着弾時のエフェクト表現用 */
+	protected void onHitEffect() {}
+
 	@Override
 	protected void onHit(RayTraceResult raytraceResultIn) {
 		if (age < 1)
 			return;
 		Entity entity = raytraceResultIn.entityHit;
 
-		if (entity != null && !this.world.isRemote) {
+		if (entity != null) {
+			if (!this.world.isRemote) {
 
-			if (entity.isEntityEqual(this.shootingEntity) || entity instanceof IProjectile)
-				return;
+				if (entity.isEntityEqual(this.shootingEntity) || entity instanceof IProjectile)
+					return;
 
-			if (this.onEntityHit(entity))
-				return;
+				if (this.onEntityHit(entity))
+					return;
 
-			float speed = MathHelper
-					.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-			float damage = this.getHitDamage(entity, speed);
-			DamageSource source = this.getHitSource(entity);
+				float speed = MathHelper
+						.sqrt(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+				float damage = this.getHitDamage(entity, speed);
+				DamageSource source = this.getHitSource(entity);
 
-			if (source != null && damage > 0.0F && entity.attackEntityFrom(source, damage)) {
-				if (entity instanceof EntityLivingBase) {
-					EntityLivingBase living = (EntityLivingBase) entity;
-					if (this.shootingEntity != null && living != this.shootingEntity && living instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP) {
-						((EntityPlayerMP) this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6,
-								0.0F));
+				if (source != null && damage > 0.0F && entity.attackEntityFrom(source, damage)) {
+					if (entity instanceof EntityLivingBase) {
+						EntityLivingBase living = (EntityLivingBase) entity;
+						if (this.shootingEntity != null && living != this.shootingEntity && living instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP) {
+							((EntityPlayerMP) this.shootingEntity).connection.sendPacket(new SPacketChangeGameState(6,
+									0.0F));
+						}
 					}
+
+					this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+
+					// ヒットすると消えてしまう
+					if (!canPenetrate()) {
+						this.setDead();
+					}
+
+				} else {
+					this.dropAndDeath();
 				}
-
-				this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-
-				// ヒットすると消えてしまう
-				if (!canPenetrate()) {
-					this.setDead();
-				}
-
-			} else {
-				this.dropAndDeath();
 			}
 		} else {
 			super.onHit(raytraceResultIn);

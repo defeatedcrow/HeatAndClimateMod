@@ -3,6 +3,7 @@ package defeatedcrow.hac.magic;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
+import defeatedcrow.hac.machine.block.TileMorayLight;
 import defeatedcrow.hac.magic.block.TileCubeFlame;
 import defeatedcrow.hac.magic.block.TileCubeIce;
 import defeatedcrow.hac.magic.block.TileLotusCandle;
@@ -85,6 +86,7 @@ public class MagicClientProxy {
 		ClientMainProxy.registerTileEntity(TileVeinBeacon.class, "dcs_te_vein_beacon", new TESRVeinBeacon());
 		ClientMainProxy
 				.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black", new TESRLotusCandle());
+		GameRegistry.registerTileEntity(TileMorayLight.class, "dcs_te_moray_light");
 
 		ClientMainProxy.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage", new TESRTimeCage());
 
@@ -104,6 +106,7 @@ public class MagicClientProxy {
 		instance.regSimpleItem(MagicInit.colorPendant2, ClimateCore.PACKAGE_ID, "dcs_color_pendant2", "magic", 4);
 		instance.regSimpleItem(MagicInit.colorBadge, ClimateCore.PACKAGE_ID, "dcs_color_badge", "magic", 4);
 		instance.regSimpleItem(MagicInit.colorGauntlet, ClimateCore.PACKAGE_ID, "dcs_color_gauntlet", "magic", 4);
+		instance.regSimpleItem(MagicInit.colorGauntlet2, ClimateCore.PACKAGE_ID, "dcs_color_gauntlet2", "magic", 4);
 		instance.regSimpleItem(MagicInit.magicCard, ClimateCore.PACKAGE_ID, "dcs_magic_card", "magic", 14);
 		instance.regSimpleItem(MagicInit.magicCard2, ClimateCore.PACKAGE_ID, "dcs_magic_card_m", "magic", 4);
 		instance.regSimpleItem(MagicInit.magicCard3, ClimateCore.PACKAGE_ID, "dcs_magic_card_m2", "magic", 4);
@@ -127,6 +130,8 @@ public class MagicClientProxy {
 		instance.regSimpleBlock(MagicInit.biomeOrb, ClimateCore.PACKAGE_ID, "dcs_magic_biomeglass", "magic", 3);
 		instance.regSimpleBlock(MagicInit.coldLamp, ClimateCore.PACKAGE_ID, "dcs_build_coldlamp", "magic", 3);
 		instance.regTEBlock(MagicInit.timeCage, ClimateCore.PACKAGE_ID, "dcs_time_cage", "magic", 3, false);
+		instance.regTETorqueBlock(MagicInit.smallLight, ClimateCore.PACKAGE_ID, "dcs_magic_small_light", "device", 0, true);
+		instance.regSimpleBlock(MagicInit.morayLamp, ClimateCore.PACKAGE_ID, "dcs_magic_moray_lamp", "device", 0);
 		instance.regSimpleItem(Item
 				.getItemFromBlock(MagicInit.pictureBlue), ClimateCore.PACKAGE_ID, "dcs_magic_picture_u", "device", 0);
 		instance.regSimpleItem(Item

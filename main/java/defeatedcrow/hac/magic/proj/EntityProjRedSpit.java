@@ -1,6 +1,8 @@
 package defeatedcrow.hac.magic.proj;
 
 import defeatedcrow.hac.main.entity.EntityProjBase;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageMagicParticle;
 import defeatedcrow.hac.main.util.CustomExplosion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -52,7 +54,6 @@ public class EntityProjRedSpit extends EntityProjBase {
 		CustomExplosion explosion = new CustomExplosion(world, this, ign, posX, posY, posZ, range,
 				CustomExplosion.Type.Friends, true);
 		explosion.doExplosion();
-		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.8F / (this.rand.nextFloat() * 0.2F + 0.9F));
 		this.setDead();
 		return true;
 	}
@@ -65,8 +66,10 @@ public class EntityProjRedSpit extends EntityProjBase {
 	}
 
 	@Override
-	protected void onGroundClient() {
-		world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX, posY, posZ, 1.0D, 0.0D, 0.0D, new int[0]);
+	protected void onHitEffect() {
+		DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(posX, posY, posZ,
+				(byte) EnumParticleTypes.EXPLOSION_HUGE.getParticleID(), 1.0F, 0.0F, 0.0F));
+		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1.0F, 1.8F / (this.rand.nextFloat() * 0.2F + 0.9F));
 	}
 
 	// no gravity

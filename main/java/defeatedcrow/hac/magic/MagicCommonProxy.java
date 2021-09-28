@@ -1,5 +1,6 @@
 package defeatedcrow.hac.magic;
 
+import defeatedcrow.hac.machine.block.TileMorayLight;
 import defeatedcrow.hac.magic.block.TileCubeFlame;
 import defeatedcrow.hac.magic.block.TileCubeIce;
 import defeatedcrow.hac.magic.block.TileLotusCandle;
@@ -57,6 +58,7 @@ public class MagicCommonProxy {
 		GameRegistry.registerTileEntity(TileLotusCandle.class, "dcs_te_lotus_candle");
 		GameRegistry.registerTileEntity(TileLotusCandleBlack.class, "dcs_te_lotus_candle_black");
 		GameRegistry.registerTileEntity(TileVeinBeacon.class, "dcs_te_vein_beacon");
+		GameRegistry.registerTileEntity(TileMorayLight.class, "dcs_te_moray_light");
 
 		GameRegistry.registerTileEntity(TileTimeCage.class, "dcs_te_time_cage");
 

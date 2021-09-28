@@ -2,6 +2,8 @@ package defeatedcrow.hac.magic.item;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.ItemStack;
 
 public class ItemMedallion extends DCItem {
 
@@ -24,6 +26,11 @@ public class ItemMedallion extends DCItem {
 	@Override
 	public String[] getNameSuffix() {
 		return names;
+	}
+
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
 	}
 
 	@Override

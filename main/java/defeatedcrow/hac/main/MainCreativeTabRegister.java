@@ -103,7 +103,7 @@ public class MainCreativeTabRegister {
 		MainInit.wrench.setCreativeTab(ClimateMain.machine);
 		MainInit.scope.setCreativeTab(ClimateMain.tool);
 		MainInit.entityScope.setCreativeTab(ClimateMain.tool);
-
+		MainInit.colorChanger.setCreativeTab(ClimateMain.tool);
 		MainInit.tinder.setCreativeTab(ClimateMain.tool);
 
 		// food
@@ -190,6 +190,8 @@ public class MainCreativeTabRegister {
 			MainInit.chestVillage.setCreativeTab(ClimateMain.build);
 			MainInit.sinkMetal.setCreativeTab(ClimateMain.build);
 			MainInit.sinkChest.setCreativeTab(ClimateMain.build);
+			MainInit.craftingCounter.setCreativeTab(ClimateMain.build);
+			MainInit.kitchenHood.setCreativeTab(ClimateMain.build);
 			MainInit.realtimeClock.setCreativeTab(ClimateMain.build);
 			MainInit.realtimeClock_L.setCreativeTab(ClimateMain.build);
 			MainInit.mcClock_L.setCreativeTab(ClimateMain.build);

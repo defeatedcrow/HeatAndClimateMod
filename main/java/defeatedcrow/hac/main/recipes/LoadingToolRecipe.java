@@ -435,6 +435,21 @@ public class LoadingToolRecipe {
 				"string"
 		});
 
+		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main", new ItemStack(MainInit.colorChanger, 1,
+				0), new Object[] {
+						"XYZ",
+						" W ",
+						" W ",
+						'X',
+						"gemChalcedonyRed",
+						'Y',
+						"gemChalcedonyBlue",
+						'Z',
+						"gemChalcedonyWhite",
+						'W',
+						"ingotSteel"
+		});
+
 		if (ModuleConfig.machine) {
 			DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main", new ItemStack(MainInit.scope, 1, 0), new Object[] {
 					"ZYZ",

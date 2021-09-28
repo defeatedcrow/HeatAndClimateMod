@@ -37,10 +37,10 @@ public interface IBrewingRecipeRegister {
 
 	IAgingRecipeDC getAgingRecipe(IClimate clm, FluidStack inFluid);
 
-	boolean removeBrewingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid);
+	boolean removeBrewingRecipe(List<ItemStack> inputs, FluidStack inFluid);
 
 	boolean removeStillRecipe(DCHeatTier hot, DCHeatTier cold, List<ItemStack> inputs, FluidStack inFluid);
 
-	boolean removeAgingRecipe(IClimate clm, FluidStack inFluid);
+	boolean removeAgingRecipe(FluidStack inFluid);
 
 }

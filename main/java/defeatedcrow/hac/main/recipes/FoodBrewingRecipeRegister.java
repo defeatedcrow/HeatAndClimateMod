@@ -3,7 +3,10 @@ package defeatedcrow.hac.main.recipes;
 import java.util.ArrayList;
 import java.util.List;
 
+import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -81,11 +84,19 @@ public class FoodBrewingRecipeRegister implements IBrewingRecipeRegister {
 
 	@Override
 	public IBrewingRecipeDC getBrewingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid) {
+		IBrewingRecipeDC ret = null;
+		int priority = -1;
 		for (IBrewingRecipeDC recipe : brewing) {
 			if (recipe.matches(inputs, inFluid) && recipe.matchClimate(clm)) {
-				return recipe;
+				if (recipe.getPriority() > priority) {
+					ret = recipe;
+					priority = recipe.getPriority();
+				}
 			}
 		}
+		if (ret != null)
+			return ret;
+
 		return null;
 	}
 
@@ -110,7 +121,8 @@ public class FoodBrewingRecipeRegister implements IBrewingRecipeRegister {
 	}
 
 	@Override
-	public boolean removeBrewingRecipe(IClimate clm, List<ItemStack> inputs, FluidStack inFluid) {
+	public boolean removeBrewingRecipe(List<ItemStack> inputs, FluidStack inFluid) {
+		IClimate clm = ClimateAPI.register.getClimateFromParam(DCHeatTier.WARM, DCHumidity.WET, DCAirflow.NORMAL);
 		IBrewingRecipeDC recipe = getBrewingRecipe(clm, inputs, inFluid);
 		if (recipe != null && brewing.remove(recipe)) {
 			return true;
@@ -128,7 +140,8 @@ public class FoodBrewingRecipeRegister implements IBrewingRecipeRegister {
 	}
 
 	@Override
-	public boolean removeAgingRecipe(IClimate clm, FluidStack inFluid) {
+	public boolean removeAgingRecipe(FluidStack inFluid) {
+		IClimate clm = ClimateAPI.register.getClimateFromParam(DCHeatTier.WARM, DCHumidity.WET, DCAirflow.NORMAL);
 		IAgingRecipeDC recipe = getAgingRecipe(clm, inFluid);
 		if (recipe != null && aging.remove(recipe)) {
 			return true;

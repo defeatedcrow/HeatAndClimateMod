@@ -22,7 +22,13 @@ public class ItemColorGauntlet extends DCItem implements IJewel {
 
 	private final int maxMeta;
 
-	private static String[] names = { "ub", "gw", "rg", "br", "wu" };
+	private static String[] names = {
+			"ub",
+			"gw",
+			"rg",
+			"br",
+			"wu"
+	};
 
 	public ItemColorGauntlet() {
 		super();
@@ -67,15 +73,15 @@ public class ItemColorGauntlet extends DCItem implements IJewel {
 	public MagicColor getColor(int meta) {
 		switch (meta) {
 		case 0:
-			return MagicColor.BLUE;
+			return MagicColor.BLUE_BLACK;
 		case 1:
-			return MagicColor.GREEN;
+			return MagicColor.GREEN_WHITE;
 		case 2:
-			return MagicColor.RED;
+			return MagicColor.RED_GREEN;
 		case 3:
-			return MagicColor.BLACK;
+			return MagicColor.BLACK_RED;
 		case 4:
-			return MagicColor.WHITE;
+			return MagicColor.WHITE_BLUE;
 		default:
 			return MagicColor.NONE;
 		}

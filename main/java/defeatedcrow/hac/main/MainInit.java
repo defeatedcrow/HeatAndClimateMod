@@ -154,6 +154,8 @@ public class MainInit {
 
 	public static Block sinkMetal;
 	public static Block sinkChest;
+	public static Block craftingCounter;
+	public static Block kitchenHood;
 
 	public static Block chestMarble;
 	public static Block chestSkarn;
@@ -253,6 +255,7 @@ public class MainInit {
 	public static Item wrench;
 	public static Item scope;
 	public static Item entityScope;
+	public static Item colorChanger;
 
 	public static Item[] dcAxe = new Item[10];
 	public static Item[] dcPickaxe = new Item[10];

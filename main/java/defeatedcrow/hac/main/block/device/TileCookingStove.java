@@ -6,9 +6,11 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.main.api.IColorChangeTile;
 import defeatedcrow.hac.main.api.ISidedTankChecker;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageColorID;
 import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +30,8 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileCookingStove extends DCTileEntity implements ITagGetter, IInventory, ISidedTankChecker {
+public class TileCookingStove extends DCTileEntity implements ITagGetter, IInventory, ISidedTankChecker,
+		IColorChangeTile {
 
 	public DCTank inputT = new DCTank(5000);
 
@@ -196,6 +199,8 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		this.currentClimate = tag.getByte("Climate");
 
 		inputT = inputT.readFromNBT(tag, "Tank");
+
+		this.color = tag.getInteger("Color");
 	}
 
 	@Override
@@ -207,6 +212,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		tag.setByte("Climate", (byte) this.currentClimate);
 
 		inputT.writeToNBT(tag, "Tank");
+		tag.setInteger("Color", this.color);
 		return tag;
 	}
 
@@ -219,6 +225,7 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		tag.setByte("Climate", (byte) this.currentClimate);
 
 		inputT.writeToNBT(tag, "Tank");
+		tag.setInteger("Color", this.color);
 		return tag;
 	}
 
@@ -231,6 +238,8 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 		this.currentClimate = tag.getByte("Climate");
 
 		inputT = inputT.readFromNBT(tag, "Tank");
+
+		this.color = tag.getInteger("Color");
 	}
 
 	@Override
@@ -357,6 +366,33 @@ public class TileCookingStove extends DCTileEntity implements ITagGetter, IInven
 	@Override
 	public boolean isEmpty() {
 		return false;
+	}
+
+	// color
+
+	protected int color = 0;
+
+	@Override
+	public int getColor() {
+		return color;
+	}
+
+	@Override
+	public void setColor(int num) {
+		color = num;
+		if (color < 0 || color > 3) {
+			color = 0;
+		}
+	}
+
+	@Override
+	public boolean rotateColor() {
+		int c = color + 1;
+		setColor(c);
+		if (!world.isRemote) {
+			DCMainPacket.INSTANCE.sendToAll(new MessageColorID(pos, color));
+		}
+		return true;
 	}
 
 }

@@ -18,6 +18,9 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.MainAPIManager;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.config.recipe.AgingRecipeJson;
+import defeatedcrow.hac.main.config.recipe.BrewingRecipeJson;
+import defeatedcrow.hac.main.config.recipe.StillRecipeJson;
 import defeatedcrow.hac.main.recipes.device.RegisterBrewingDC;
 import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
 import defeatedcrow.hac.main.recipes.device.RegisterFluidRecipe;
@@ -69,6 +72,15 @@ public class MachineRecipeRegister {
 
 		if (ModuleConfig.r_brewing) {
 			RegisterBrewingDC.load();
+
+			BrewingRecipeJson.pre();
+			StillRecipeJson.pre();
+			AgingRecipeJson.pre();
+
+			BrewingRecipeJson.post();
+			StillRecipeJson.post();
+			AgingRecipeJson.post();
+
 		}
 
 	}
@@ -418,6 +430,7 @@ public class MachineRecipeRegister {
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.lampGas, 32767, DCHeatTier.WARM);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.oilLamp, 32767, DCHeatTier.WARM);
 		ClimateAPI.registerBlock.registerHeatBlock(MainInit.geyser, 32767, DCHeatTier.OVEN);
+		ClimateAPI.registerBlock.registerAirBlock(MainInit.kitchenHood, 32767, DCAirflow.WIND);
 	}
 
 }

@@ -17,6 +17,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -38,7 +39,13 @@ public class ItemColorRing extends CharmItemBase {
 	 * B: 暗視
 	 * W: スリップ無効/落下耐性
 	 */
-	private static String[] names = { "u1", "g1", "r1", "b1", "w1" };
+	private static String[] names = {
+			"u1",
+			"g1",
+			"r1",
+			"b1",
+			"w1"
+	};
 
 	public ItemColorRing() {
 		super();
@@ -63,6 +70,11 @@ public class ItemColorRing extends CharmItemBase {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
 	}
 
 	@Override

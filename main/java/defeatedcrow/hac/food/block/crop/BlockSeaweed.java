@@ -73,8 +73,7 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 		}
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			IBlockState target = world.getBlockState(pos.offset(face));
-			if (target.getMaterial() != Material.WATER && !target.getBlock().isSideSolid(target, world, pos
-					.offset(face), face.getOpposite())) {
+			if (target.getMaterial() != Material.WATER && !target.getMaterial().isSolid()) {
 				ret = false;
 			}
 		}
@@ -272,7 +271,8 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 				return false;
 			}
 			boolean water = this.isInWater(world, pos.up());
-			boolean gl = world.getBlockState(pos.up()).getBlock() == Blocks.WATER;
+			boolean gl = world.getBlockState(pos.up(2))
+					.getBlock() == Blocks.WATER;
 			if (gl && water) {
 				IBlockState newstate = state.withProperty(DCState.STAGE4, 3);
 				world.setBlockState(pos.up(), newstate, 2);
@@ -389,7 +389,10 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.STAGE4, BlockFluidBase.LEVEL });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.STAGE4,
+				BlockFluidBase.LEVEL
+		});
 	}
 
 	// drop
@@ -441,7 +444,7 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 	 * flammpfeil氏より
 	 */
 
-	// 接してる面側が水だったら、その接してる水の側面を描画しない
+	// 隣接面の描画をtrueに
 	@Override
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
 		if (world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
