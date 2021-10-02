@@ -30,10 +30,12 @@ public class EntityBigCushion extends DCEntityBase {
 
 	public EntityBigCushion(World worldIn, double posX, double posY, double posZ) {
 		super(worldIn, posX, posY, posZ);
+		this.setSize(1.0F, 0.4F);
 	}
 
 	public EntityBigCushion(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
 		super(worldIn, posX, posY, posZ, player);
+		this.setSize(1.0F, 0.4F);
 	}
 
 	@Override

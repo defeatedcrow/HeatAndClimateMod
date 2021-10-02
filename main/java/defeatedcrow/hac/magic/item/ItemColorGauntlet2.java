@@ -15,12 +15,19 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.machine.block.TileMorayLight;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.magic.block.TileMorayLight;
+import defeatedcrow.hac.magic.entity.EntityCrowDoll;
+import defeatedcrow.hac.magic.entity.EntityOwlDoll;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageMagicParticle;
 import defeatedcrow.hac.main.util.DCName;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
@@ -34,6 +41,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -180,38 +188,73 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 	public EnumActionResult onItemUse2(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		if (player != null && hand == EnumHand.OFF_HAND) {
+			float effect = MainUtil.magicSuitEff(player);
 			ItemStack stack = player.getHeldItem(EnumHand.OFF_HAND);
 			IBlockState state = world.getBlockState(pos);
 			Block block = state.getBlock();
+
 			if (!DCUtil.isEmpty(stack) && stack.getItem() == this) {
 				int meta = stack.getMetadata();
+				int limit = getLimit(meta);
+
 				// BLUE-GREEN
 				if (meta == 0 && player.isSneaking()) {
+					effect -= 1.0F;
+					limit += MathHelper.floor(effect * 2);
 					if (!world.isRemote) {
 						if (hasCoord(stack, pos)) {
+							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+									.getY() + 0.5D,
+									pos.getZ() + 0.5D));
 							removeCoord(stack, player, pos);
 						} else {
+							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+									.getY() + 0.5D,
+									pos.getZ() + 0.5D));
 							addCoord(stack, player, pos, 1, false);
 						}
 					}
 					world.playSound(player, pos, SoundEvents.BLOCK_NOTE_PLING, SoundCategory.BLOCKS, 0.5F, 1.5F);
+
 					return EnumActionResult.SUCCESS;
 				}
 				// GREEN-BLACK
-				else if (meta == 1 && player.isSneaking()) {
-					// spawn crow
+				else if (meta == 1) {
+					effect -= 1.0F;
+					limit += MathHelper.floor(effect * 2);
+					if (getCount(stack) < limit) {
+						EntityCrowDoll doll = new EntityCrowDoll(world);
+						doll.setlimit((int) (effect * 600));
+						doll.setOwnerId(player.getUniqueID());
+						double fX = facing.getFrontOffsetX() * 0.25D;
+						double fY = facing.getFrontOffsetY() * 0.25D;
+						double fZ = facing.getFrontOffsetZ() * 0.25D;
+						doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
+								.getY() + hitY + fY, pos.getZ() + hitZ + fZ, player.rotationYaw, 0F);
+						if (!world.isRemote) {
+							world.spawnEntity(doll);
+						}
+						DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos.getY() + 0.5D,
+								pos.getZ() + 0.5D));
+						world.playSound(player, pos, SoundEvents.BLOCK_NOTE_GUITAR, SoundCategory.BLOCKS, 0.5F, 1.5F);
+						addCount(stack, limit, 1);
+					} else {
+						String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
+						player.sendMessage(new TextComponentString(String.format(mes1)));
+					}
+					return EnumActionResult.SUCCESS;
 				}
 				// RED-BLUE
 				else if (meta == 2 && player.isSneaking()) {
 					if (state.getBlock() == MagicInit.morayLamp) {
 						TileEntity tile = world.getTileEntity(pos);
 						if (tile instanceof TileMorayLight & ((TileMorayLight) tile).isOwnerID(player)) {
-							addCount(stack, 8, -1);
+							addCount(stack, limit, -1);
 							world.setBlockToAir(pos);
 							world.playSound(player, pos, SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 0.5F, 1.0F);
 						}
 					} else {
-						if (getCount(stack) < 8) {
+						if (getCount(stack) < limit) {
 							BlockPos p1 = pos;
 							ItemStack set = new ItemStack(MagicInit.morayLamp);
 							if (!block.isReplaceable(world, p1)) {
@@ -224,7 +267,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 								if (!world.isRemote && world.setBlockState(p1, light, 3))
 									MagicInit.morayLamp.onBlockPlacedBy(world, p1, light, player, set);
 								world.playSound(player, pos, SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 0.5F, 1.0F);
-								addCount(stack, 8, 1);
+								addCount(stack, limit, 1);
 							}
 						} else {
 							String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
@@ -236,6 +279,26 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 				// BLACK-WHITE
 				else if (meta == 3 && player.isSneaking()) {
 					// spawn owl
+					if (getCount(stack) < limit) {
+						EntityOwlDoll doll = new EntityOwlDoll(world);
+						doll.setOwnerId(player.getUniqueID());
+						double fX = facing.getFrontOffsetX() * 0.25D;
+						double fY = facing.getFrontOffsetY() * 0.25D;
+						double fZ = facing.getFrontOffsetZ() * 0.25D;
+						doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
+								.getY() + hitY + fY, pos.getZ() + hitZ + fZ, 180F + player.rotationYaw, 30F);
+						if (!world.isRemote) {
+							world.spawnEntity(doll);
+						}
+						DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos.getY() + 0.5D,
+								pos.getZ() + 0.5D));
+						world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
+						addCount(stack, 1, 1);
+					} else {
+						String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
+						player.sendMessage(new TextComponentString(String.format(mes1)));
+					}
+					return EnumActionResult.SUCCESS;
 				}
 				// WHITE-RED
 				else if (meta == 4) {
@@ -269,6 +332,32 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 					switchActive(stack);
 					world.playSound(player, player
 							.getPosition(), SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 0.5F, 1.5F);
+				}
+				if (meta == 3 && !player.isSpectator()) {
+					if (world.isRemote && ClimateCore.proxy.getPlayer() != null) {
+						if (checkViewEntity()) {
+							removeViewEntity();
+							world.playSound(player, player
+									.getPosition(), SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
+						} else {
+							Entity owl = null;
+							// owlを探す
+							for (Entity entity : world.loadedEntityList) {
+								if (entity instanceof EntityOwlDoll) {
+									EntityOwlDoll owl2 = (EntityOwlDoll) entity;
+									if (owl2.isOwnerID(player)) {
+										owl = owl2;
+										break;
+									}
+								}
+							}
+							if (owl != null) {
+								setViewEntity(owl);
+								world.playSound(player, player
+										.getPosition(), SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
+							}
+						}
+					}
 				}
 			}
 			return new ActionResult(EnumActionResult.SUCCESS, stack);
@@ -464,6 +553,30 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 			stack.setTagCompound(tag);
 		}
 		return stack;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void setViewEntity(Entity target) {
+		if (ClimateCore.proxy.getPlayer() != null && target != null) {
+			Minecraft.getMinecraft().setRenderViewEntity(target);
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void removeViewEntity() {
+		if (ClimateCore.proxy.getPlayer() != null) {
+			EntityPlayer player = ClimateCore.proxy.getPlayer();
+			Minecraft.getMinecraft().setRenderViewEntity(player);
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean checkViewEntity() {
+		if (ClimateCore.proxy.getPlayer() != null) {
+			if (Minecraft.getMinecraft().getRenderViewEntity() != ClimateCore.proxy.getPlayer())
+				return true;
+		}
+		return false;
 	}
 
 }

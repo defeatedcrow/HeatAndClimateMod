@@ -1,10 +1,10 @@
 package defeatedcrow.hac.magic;
 
-import defeatedcrow.hac.machine.block.TileMorayLight;
 import defeatedcrow.hac.magic.block.TileCubeFlame;
 import defeatedcrow.hac.magic.block.TileCubeIce;
 import defeatedcrow.hac.magic.block.TileLotusCandle;
 import defeatedcrow.hac.magic.block.TileLotusCandleBlack;
+import defeatedcrow.hac.magic.block.TileMorayLight;
 import defeatedcrow.hac.magic.block.TilePictureBG;
 import defeatedcrow.hac.magic.block.TilePictureGU;
 import defeatedcrow.hac.magic.block.TilePictureRW;
@@ -13,9 +13,11 @@ import defeatedcrow.hac.magic.block.TilePictureWB;
 import defeatedcrow.hac.magic.block.TileTimeCage;
 import defeatedcrow.hac.magic.block.TileVeinBeacon;
 import defeatedcrow.hac.magic.entity.EntityBlackDog;
+import defeatedcrow.hac.magic.entity.EntityCrowDoll;
 import defeatedcrow.hac.magic.entity.EntityFTDog;
 import defeatedcrow.hac.magic.entity.EntityFlowerTurret;
 import defeatedcrow.hac.magic.entity.EntityMagicCushion;
+import defeatedcrow.hac.magic.entity.EntityOwlDoll;
 import defeatedcrow.hac.magic.proj.EntityFireBarrier;
 import defeatedcrow.hac.magic.proj.EntityHealBarrier;
 import defeatedcrow.hac.magic.proj.EntityMobBarrier;
@@ -46,6 +48,8 @@ public class MagicCommonProxy {
 
 		DCRegistryUtil.addEntity(EntityBlackDog.class, "magic", "dcs_blackdog", 1);
 		DCRegistryUtil.addEntity(EntityFTDog.class, "magic", "dcs_flametongue", 1);
+		DCRegistryUtil.addEntity(EntityCrowDoll.class, "magic", "dcs_crowdoll", 1);
+		DCRegistryUtil.addEntity(EntityOwlDoll.class, "magic", "dcs_owldoll");
 
 		DCRegistryUtil.addEntity(EntityFlowerTurret.class, "magic", "dcs_magic_flower_turret", 5);
 

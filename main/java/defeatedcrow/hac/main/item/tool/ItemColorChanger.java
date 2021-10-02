@@ -88,6 +88,7 @@ public class ItemColorChanger extends DCItem {
 			tooltip.add(I18n.format("dcs.tip.color_changer"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Target Blocks ===");
 			tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.chamber), 0).localizedname());
+			tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.shitirin), 0).localizedname());
 			tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.fuelStove), 0).localizedname());
 			if (ModuleConfig.build_advanced) {
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.sinkMetal), 0).localizedname());
@@ -95,6 +96,7 @@ public class ItemColorChanger extends DCItem {
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.craftingCounter), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.kitchenHood), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.realtimeClock), 0).localizedname());
+				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.doorHikido), 0).localizedname());
 			}
 			if (ModuleConfig.magic && ModuleConfig.magic_advanced) {
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MagicInit.timeCage), 0).localizedname());

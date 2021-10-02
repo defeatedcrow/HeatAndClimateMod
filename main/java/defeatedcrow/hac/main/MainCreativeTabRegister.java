@@ -156,6 +156,7 @@ public class MainCreativeTabRegister {
 			MainInit.carpetWhite.setCreativeTab(ClimateMain.build);
 			MainInit.carpetGray.setCreativeTab(ClimateMain.build);
 			MainInit.carpetLinen.setCreativeTab(ClimateMain.build);
+			MainInit.carpetTatami.setCreativeTab(ClimateMain.build);
 			MainInit.chestMarble.setCreativeTab(ClimateMain.build);
 			MainInit.chestSkarn.setCreativeTab(ClimateMain.build);
 			MainInit.chestGreisen.setCreativeTab(ClimateMain.build);
@@ -182,6 +183,7 @@ public class MainCreativeTabRegister {
 			MainInit.itemDoorGreisen.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorGypsum.setCreativeTab(ClimateMain.build);
 			MainInit.itemDoorSteel.setCreativeTab(ClimateMain.build);
+			MainInit.doorHikido.setCreativeTab(ClimateMain.build);
 			MainInit.itemBed.setCreativeTab(ClimateMain.build);
 
 			// furniture

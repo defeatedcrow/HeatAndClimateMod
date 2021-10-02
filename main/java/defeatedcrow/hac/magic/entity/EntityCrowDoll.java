@@ -1,41 +1,57 @@
 package defeatedcrow.hac.magic.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
-import net.minecraft.block.Block;
+import javax.annotation.Nullable;
+
+import com.google.common.base.Optional;
+
+import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.EntityAITarget;
+import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumHandSide;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 
 public class EntityCrowDoll extends EntityLivingBase {
 
 	private final NonNullList<ItemStack> handItems;
 	private final NonNullList<ItemStack> armorItems;
+	protected static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager
+			.<Optional<UUID>>createKey(EntityCrowDoll.class, DataSerializers.OPTIONAL_UNIQUE_ID);
+	private int livingLimit = 600;
 
 	public EntityCrowDoll(World worldIn) {
 		super(worldIn);
-		this.setSize(0.5F, 2.0F);
+		this.setSize(1.0F, 1.0F);
 		this.handItems = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
 		this.armorItems = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
-		this.setHealth(60.0F);
 	}
 
 	public EntityCrowDoll(World worldIn, double posX, double posY, double posZ) {
@@ -52,12 +68,32 @@ public class EntityCrowDoll extends EntityLivingBase {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
+		this.dataManager.register(OWNER_UNIQUE_ID, Optional.absent());
+	}
+
+	@Nullable
+	public UUID getOwnerId() {
+		return (UUID) ((Optional) this.dataManager.get(OWNER_UNIQUE_ID)).orNull();
+	}
+
+	public void setOwnerId(@Nullable UUID id) {
+		this.dataManager.set(OWNER_UNIQUE_ID, Optional.fromNullable(id));
+	}
+
+	public void setlimit(int i) {
+		this.livingLimit = i;
+	}
+
+	public boolean isOwnerID(EntityPlayer player) {
+		if (getOwnerId() != null && player != null) {
+			return getOwnerId().equals(player.getUniqueID());
+		}
+		return false;
 	}
 
 	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
-		compound.setInteger("livingTimer", livingTimer);
 
 		NBTTagList nbttaglist = new NBTTagList();
 
@@ -83,12 +119,17 @@ public class EntityCrowDoll extends EntityLivingBase {
 
 			nbttaglist1.appendTag(nbttagcompound1);
 		}
+
+		if (this.getOwnerId() == null) {
+			compound.setString("OwnerUUID", "");
+		} else {
+			compound.setString("OwnerUUID", this.getOwnerId().toString());
+		}
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
-		livingTimer = compound.getInteger("livingTimer");
 
 		if (compound.hasKey("ArmorItems", 9)) {
 			NBTTagList nbttaglist = compound.getTagList("ArmorItems", 10);
@@ -103,6 +144,13 @@ public class EntityCrowDoll extends EntityLivingBase {
 
 			for (int j = 0; j < this.handItems.size(); ++j) {
 				this.handItems.set(j, new ItemStack(nbttaglist1.getCompoundTagAt(j)));
+			}
+		}
+
+		if (compound.hasKey("OwnerUUID", 8)) {
+			String s = compound.getString("OwnerUUID");
+			if (s != null) {
+				this.setOwnerId(UUID.fromString(s));
 			}
 		}
 	}
@@ -142,56 +190,24 @@ public class EntityCrowDoll extends EntityLivingBase {
 		}
 	}
 
+	@Nullable
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return SoundEvents.BLOCK_CLOTH_BREAK;
+	}
+
+	@Nullable
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.ENTITY_FIREWORK_BLAST;
+	}
+
 	@Override
 	public EnumHandSide getPrimaryHand() {
 		return EnumHandSide.RIGHT;
 	}
 
-	private void dropContents() {
-		this.playBrokenSound();
-
-		for (int i = 0; i < this.handItems.size(); ++i) {
-			ItemStack itemstack = this.handItems.get(i);
-
-			if (!itemstack.isEmpty()) {
-				Block.spawnAsEntity(this.world, (new BlockPos(this)).up(), itemstack);
-				this.handItems.set(i, ItemStack.EMPTY);
-			}
-		}
-
-		for (int j = 0; j < this.armorItems.size(); ++j) {
-			ItemStack itemstack1 = this.armorItems.get(j);
-
-			if (!itemstack1.isEmpty()) {
-				Block.spawnAsEntity(this.world, (new BlockPos(this)).up(), itemstack1);
-				this.armorItems.set(j, ItemStack.EMPTY);
-			}
-		}
-	}
-
-	private void playBrokenSound() {
-		this.world
-				.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_FIREWORK_BLAST, this
-						.getSoundCategory(), 1.0F, 1.0F);
-	}
-
-	private void playDamageSound() {
-		this.world
-				.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_ARMORSTAND_HIT, this
-						.getSoundCategory(), 1.0F, 1.0F);
-	}
-
-	private void playParticles() {
-		if (this.world instanceof WorldServer) {
-			((WorldServer) this.world)
-					.spawnParticle(EnumParticleTypes.BLOCK_DUST, this.posX, this.posY + this.height / 1.5D, this.posZ, 10, (double) (this.width / 4.0F), (double) (this.height / 4.0F), (double) (this.width / 4.0F), 0.05D, Block
-							.getStateId(Blocks.BEDROCK.getDefaultState()));
-		}
-	}
-
 	@Override
 	public boolean canBePushed() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -210,50 +226,70 @@ public class EntityCrowDoll extends EntityLivingBase {
 		}
 	}
 
+	public void dropAllItems() {
+		List<ItemStack> list = new ArrayList<>();
+		list.addAll(armorItems);
+		list.addAll(handItems);
+		for (ItemStack item : list) {
+			if (!DCUtil.isEmpty(item)) {
+				EntityItem drop = new EntityItem(this.world, this.posX, this.posY + 0.125D, this.posZ, item);
+				drop.setPickupDelay(40);
+				float f = this.rand.nextFloat() * 0.5F;
+				float f1 = this.rand.nextFloat() * ((float) Math.PI * 2F);
+				drop.motionX = (double) (-MathHelper.sin(f1) * f);
+				drop.motionZ = (double) (MathHelper.cos(f1) * f);
+				drop.motionY = 0.2D;
+				world.spawnEntity(drop);
+			}
+		}
+	}
+
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (!this.world.isRemote && !this.isDead) {
-			if (DamageSource.OUT_OF_WORLD.equals(source)) {
-				this.setDead();
-				return false;
-			} else if (DamageSource.IN_WALL.equals(source)) {
-				this.playBrokenSound();
-				this.setDead();
-				return false;
-			} else if (!this.isEntityInvulnerable(source)) {
-				if (source instanceof EntityDamageSource) {
-					if (source.getTrueSource() instanceof EntityPlayer) {
-						this.dropContents();
-						this.setDead();
-						return false;
-					} else {
-						float count = this.getHealth();
-						if (count <= 1.0F) {
-							this.dropContents();
-							this.setDead();
-							return false;
-						} else {
-							this.setHealth(count - 1.0F);
-							this.playDamageSound();
-							this.playParticles();
-							return false;
-						}
-					}
-				}
-			} else {
-				return false;
-			}
-		} else {
+		if (this.isEntityInvulnerable(source)) {
 			return false;
+		} else {
+			amount -= 1.0F;
+			if (amount <= 0F)
+				return false;
+
+			Entity entity = source.getTrueSource();
+			if (entity != null && !(entity instanceof EntityPlayer)) {
+				amount /= 5.0F;
+			}
+		}
+		return super.attackEntityFrom(source, amount);
+	}
+
+	@Override
+	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
+		if (world.isRemote) {
+			return true;
+		}
+		if (player == null) {
+			return true;
+		}
+		if (player.isSneaking() && isOwnerID(player) && MainUtil
+				.getOffhandJewelColor(player) == MagicColor.GREEN_BLACK) {
+			if (!this.getPassengers().isEmpty()) {
+				this.getPassengers().get(0).dismountRidingEntity();
+			}
+			this.setDead();
+			return true;
 		}
 		return false;
 	}
 
-	public int livingTimer = 0;
-
 	@Override
 	public void onEntityUpdate() {
-		super.onEntityUpdate();
+
+		// 30秒で消える
+		if (this.ticksExisted > livingLimit) {
+			if (!world.isRemote) {
+				dropAllItems();
+			}
+			this.setDead();
+		}
 
 		if (this.isInsideOfMaterial(Material.WATER)) {
 			this.motionY = 0.05D;
@@ -267,10 +303,43 @@ public class EntityCrowDoll extends EntityLivingBase {
 
 			if (entity instanceof EntityLiving && entity instanceof IMob) {
 				EntityLiving liv = (EntityLiving) entity;
-				EntityLivingBase target = liv.getAttackTarget();
+				Set<EntityAITaskEntry> set = liv.targetTasks.taskEntries;
+				for (EntityAITaskEntry ai : set) {
+					if (ai == null || ai.action == null)
+						continue;
+					if (ai.action instanceof EntityAITarget) {
+						EntityAITarget tai = (EntityAITarget) ai.action;
+						tai.resetTask();
+					}
+				}
 				liv.setAttackTarget(this);
+				liv.setRevengeTarget(this);
 			}
 		}
+		if (this.collidedHorizontally) {
+			this.motionY = 0.2D;
+		}
+		this.motionX = -MathHelper.sin(this.rotationYaw * 0.017453292F) * MathHelper
+				.cos(this.rotationPitch * 0.017453292F);
+		this.motionZ = MathHelper.cos(this.rotationYaw * 0.017453292F) * MathHelper
+				.cos(this.rotationPitch * 0.017453292F);
+		this.motionX *= 0.1D;
+		this.motionZ *= 0.1D;
+		super.onEntityUpdate();
+	}
+
+	public void setDead() {
+		if (!world.isRemote) {
+			UUID id = this.getOwnerId();
+			if (id != null) {
+				EntityPlayer owner = world.getPlayerEntityByUUID(id);
+				if (owner != null && MainUtil.getOffhandJewelColor(owner) == MagicColor.GREEN_BLACK) {
+					ItemStack held = owner.getHeldItemOffhand();
+					ItemColorGauntlet2.addCount(held, 3, -1);
+				}
+			}
+		}
+		super.setDead();
 	}
 
 }

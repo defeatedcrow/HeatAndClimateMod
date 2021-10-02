@@ -1,0 +1,7 @@
+{
+    "parent": "dcs_climate:block/build/dcs_carpet_base_tatami",
+    "textures": {
+        "tatami": "dcs_climate:blocks/build/carpets/tatami_normal",
+        "base": "blocks/planks_oak"
+    }
+}

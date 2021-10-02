@@ -30,7 +30,7 @@ public class RenderEntityBigCushion extends Render<EntityBigCushion> {
 		this.bindTexture(TEX);
 
 		float rotX = -entity.rotationPitch;
-		float rotY = 180 - entity.rotationYaw;
+		float rotY = 180 + entity.rotationYaw;
 		float rotZ = 0F;
 
 		GlStateManager.rotate(rotY, 0.0F, 1.0F, 0.0F);

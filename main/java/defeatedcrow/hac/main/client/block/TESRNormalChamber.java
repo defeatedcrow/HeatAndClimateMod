@@ -79,7 +79,7 @@ public class TESRNormalChamber extends DCLockableTESRBase {
 			boolean lit = ((TileChamberBase) te).isActive();
 			int level = ((TileChamberBase) te).getCurrentHeatID();
 			if (lit) {
-				renderFire(level, x, y, z, partialTicks, type);
+				renderFire(level, x, y, z, partialTicks, color);
 			}
 		}
 	}

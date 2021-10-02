@@ -32,6 +32,7 @@ import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockDisplayShelf;
 import defeatedcrow.hac.main.block.build.BlockDisplayStand;
 import defeatedcrow.hac.main.block.build.BlockDoorDC;
+import defeatedcrow.hac.main.block.build.BlockDoorHikido;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
 import defeatedcrow.hac.main.block.build.BlockFlowerVase;
 import defeatedcrow.hac.main.block.build.BlockGemBricks;
@@ -59,6 +60,7 @@ import defeatedcrow.hac.main.block.build.BlockSlabSlate;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
 import defeatedcrow.hac.main.block.build.BlockTableBase;
+import defeatedcrow.hac.main.block.build.BlockTatami;
 import defeatedcrow.hac.main.block.build.BlockVillageChest;
 import defeatedcrow.hac.main.block.build.BlockWallLamp;
 import defeatedcrow.hac.main.block.build.BlockWallShelf;
@@ -798,6 +800,12 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.carpetLinen), "dcs_climate", "dcs_carpet_linen", "build", 0, false);
 
+			MainInit.carpetTatami = new BlockTatami(Material.WOOD, ClimateCore.PACKAGE_BASE + "_carpet_tatami");
+			DCMaterialReg
+					.registerBlock(MainInit.carpetTatami, ClimateCore.PACKAGE_BASE + "_carpet_tatami", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.carpetTatami), "dcs_climate", "dcs_carpet_tatami", "build", 0, false);
+
 			MainInit.sofaBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_black");
 			DCMaterialReg
 					.registerBlock(MainInit.sofaBlack, ClimateCore.PACKAGE_BASE + "_sofa_black", ClimateMain.MOD_ID);
@@ -1056,6 +1064,10 @@ public class MainMaterialRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_door_steel_item");
 			MainInit.itemDoorSteel.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_door_steel_item");
 			ForgeRegistries.ITEMS.register(MainInit.itemDoorSteel);
+
+			MainInit.doorHikido = new BlockDoorHikido(ClimateCore.PACKAGE_BASE + "_door_hikido", Material.WOOD);
+			DCMaterialReg
+					.registerBlock(MainInit.doorHikido, ClimateCore.PACKAGE_BASE + "_door_hikido", ClimateMain.MOD_ID);
 
 			MainInit.bed = new BlockBedDC(ClimateCore.PACKAGE_BASE + "_bed");
 			DCMaterialReg.registerBlock(MainInit.bed, ClimateCore.PACKAGE_BASE + "_bed", ClimateMain.MOD_ID);

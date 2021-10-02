@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "type=0": { "model": "dcs_climate:build/carpet/dcs_tatami_huti" },
+        "type=1": { "model": "dcs_climate:build/carpet/dcs_tatami_side" },
+        "type=2": { "model": "dcs_climate:build/carpet/dcs_tatami_side", "y": 90, "uvlock": false },
+        "type=3": { "model": "dcs_climate:build/carpet/dcs_tatami_side", "y": 180, "uvlock": false },
+        "type=4": { "model": "dcs_climate:build/carpet/dcs_tatami_side", "y": 270, "uvlock": false },
+        "type=5": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" }
+    }
+}

@@ -146,6 +146,7 @@ public class MainInit {
 	public static Block carpetWhite;
 	public static Block carpetGray;
 	public static Block carpetLinen;
+	public static Block carpetTatami;
 
 	public static Block curtainWhite;
 	public static Block curtainGray;
@@ -183,10 +184,12 @@ public class MainInit {
 	public static Block doorGreisen;
 	public static Block doorGypsum;
 	public static Block doorSteel;
+	public static Block doorHikido;
 	public static Item itemDoorMarble;
 	public static Item itemDoorGreisen;
 	public static Item itemDoorGypsum;
 	public static Item itemDoorSteel;
+	public static Item itemDoorHikido;
 
 	public static Block bed;
 	public static Block bedWhite;

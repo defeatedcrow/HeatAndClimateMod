@@ -169,6 +169,10 @@ public class ItemColorPendant2 extends CharmItemBase {
 			ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().damageDropped(state));
 			if (state.getBlock().isWood(owner.world, pos) || MainUtil.hasDic(item, "logWood")) {
 				if (!owner.world.isRemote) {
+					/**
+					 * @date 2021.09.24
+					 * @author Fixed by SkyTheory
+					 */
 					Set<BlockPos> set = MainUtil.getLumberTargetList(owner.world, pos, state.getBlock(), 192);
 					if (set.isEmpty()) {
 						set = Collections.singleton(pos);

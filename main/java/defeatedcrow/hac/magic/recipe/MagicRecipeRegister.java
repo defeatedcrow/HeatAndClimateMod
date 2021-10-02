@@ -812,6 +812,86 @@ public class MagicRecipeRegister {
 							"blockWool"
 			});
 
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
+					MagicInit.colorGauntlet2,
+					1, 0), new Object[] {
+							"XX",
+							"YZ",
+							"WW",
+							'X',
+							"ingotSilver",
+							'Y',
+							"cubeGreen",
+							'Z',
+							"cubeBlue",
+							'W',
+							new ItemStack(Items.PRISMARINE_SHARD)
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
+					MagicInit.colorGauntlet2,
+					1, 1), new Object[] {
+							"XX",
+							"YZ",
+							"WW",
+							'X',
+							"ingotSilver",
+							'Y',
+							"cubeBlack",
+							'Z',
+							"cubeGreen",
+							'W',
+							"listAllmushrooms"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
+					MagicInit.colorGauntlet2,
+					1, 2), new Object[] {
+							"XX",
+							"YZ",
+							"WW",
+							'X',
+							"ingotSilver",
+							'Y',
+							"cubeBlue",
+							'Z',
+							"cubeRed",
+							'W',
+							"gearSteel"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
+					MagicInit.colorGauntlet2,
+					1, 3), new Object[] {
+							"XX",
+							"YZ",
+							"WW",
+							'X',
+							"ingotSilver",
+							'Y',
+							"cubeWhite",
+							'Z',
+							"cubeBlack",
+							'W',
+							new ItemStack(Items.ENDER_EYE)
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
+					MagicInit.colorGauntlet2,
+					1, 4), new Object[] {
+							"XX",
+							"YZ",
+							"WW",
+							'X',
+							"ingotSilver",
+							'Y',
+							"cubeRed",
+							'Z',
+							"cubeWhite",
+							'W',
+							new ItemStack(Items.GLOWSTONE_DUST)
+			});
+
 			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureBlue,
 					1, 0), new Object[] {
 							"XYZ",

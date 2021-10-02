@@ -1,4 +1,4 @@
-package defeatedcrow.hac.machine.block;
+package defeatedcrow.hac.magic.block;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,7 +12,6 @@ import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
 import defeatedcrow.hac.core.util.DCTimeHelper;
-import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.state.IBlockState;
@@ -110,12 +109,12 @@ public class TileMorayLight extends TileTorqueBase implements ITorqueProvider {
 				active = ItemColorGauntlet2.getActive(hand);
 			}
 
-			if (livingDay > 3) {
-				active = false;
-				if (!DCUtil.isEmpty(hand)) {
-					world.setBlockToAir(getPos());
-				}
-			}
+			// if (livingDay > 3) {
+			// active = false;
+			// if (!DCUtil.isEmpty(hand)) {
+			// world.setBlockToAir(getPos());
+			// }
+			// }
 
 			IBlockState state = world.getBlockState(getPos());
 			boolean b = DCState.getBool(state, DCState.POWERED);

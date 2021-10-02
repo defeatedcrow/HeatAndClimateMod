@@ -15,14 +15,14 @@ public class ModelOwlDoll extends ModelBase {
 	private final ModelRenderer cube_r2;
 	private final ModelRenderer head;
 
-	public ModelOwlDoll(boolean baked) {
+	public ModelOwlDoll() {
 		super();
 
 		textureWidth = 64;
 		textureHeight = 32;
 
 		body = new ModelRenderer(this);
-		body.setRotationPoint(0.0F, 24.0F, 0.0F);
+		body.setRotationPoint(0.0F, 8.0F, 0.0F);
 		body.cubeList.add(new ModelBox(body, 0, 0, -3.5F, -10.0F, -3.0F, 7, 9, 6, 0.0F, false));
 		body.cubeList.add(new ModelBox(body, 21, 0, -2.0F, -1.0F, -2.0F, 1, 1, 3, 0.0F, false));
 		body.cubeList.add(new ModelBox(body, 21, 0, 1.0F, -1.0F, -2.0F, 1, 1, 3, 0.0F, false));
@@ -40,7 +40,7 @@ public class ModelOwlDoll extends ModelBase {
 		cube_r2.cubeList.add(new ModelBox(cube_r2, 29, 11, -5.0F, -9.0F, -2.0F, 1, 8, 5, 0.0F, false));
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(0.0F, 13.0F, 0.0F);
+		head.setRotationPoint(0.0F, -3.0F, 0.0F);
 		setRotation(head, 0.0873F, 0.0F, 0.0F);
 		head.cubeList.add(new ModelBox(head, 29, 0, -3.5F, -3.0F, -3.5F, 7, 4, 6, 0.0F, false));
 		head.cubeList.add(new ModelBox(head, 50, 3, -1.0F, 0.0F, -4.0F, 2, 1, 1, 0.0F, false));
@@ -66,6 +66,11 @@ public class ModelOwlDoll extends ModelBase {
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
 			float headPitch, float scaleFactor, Entity entityIn) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+		float p = (float) Math.PI / 180F;
+		float fh = netHeadYaw;
+		float fp = 180 - headPitch;
+		body.rotateAngleY = (180 + fh) * p;
+		head.rotateAngleY = (180 + fh) * p;
 	}
 
 }

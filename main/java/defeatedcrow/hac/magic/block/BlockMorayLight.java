@@ -13,7 +13,6 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCTimeHelper;
-import defeatedcrow.hac.machine.block.TileMorayLight;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;

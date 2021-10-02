@@ -9,6 +9,9 @@ import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.core.base.DCEntityItem;
 import defeatedcrow.hac.main.entity.EntityBigCushion;
 import defeatedcrow.hac.main.entity.EntityBigCushionBrown;
+import defeatedcrow.hac.main.entity.EntitySmallCushionA;
+import defeatedcrow.hac.main.entity.EntitySmallCushionB;
+import defeatedcrow.hac.main.entity.EntitySmallCushionC;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,12 +29,12 @@ public class ItemCushionGray extends DCEntityItem {
 
 	@Override
 	public int getMaxMeta() {
-		return 1;
+		return 4;
 	}
 
 	@Override
 	public String getTexPath(int meta, boolean f) {
-		int i = MathHelper.clamp(0, meta, 1);
+		int i = MathHelper.clamp(0, meta, 4);
 		String s = "items/block/cushion_" + this.getNameSuffix()[i];
 		if (f) {
 			s = "textures/" + s;
@@ -43,7 +46,10 @@ public class ItemCushionGray extends DCEntityItem {
 	public String[] getNameSuffix() {
 		String[] s = {
 				"gray",
-				"brown"
+				"brown",
+				"small_red",
+				"small_blue",
+				"small_straw"
 		};
 		return s;
 	}
@@ -54,6 +60,15 @@ public class ItemCushionGray extends DCEntityItem {
 		DCEntityBase ret = new EntityBigCushion(world, x, y, z, player);
 		if (i == 1) {
 			ret = new EntityBigCushionBrown(world, x, y, z, player);
+		}
+		if (i == 2) {
+			ret = new EntitySmallCushionA(world, x, y, z, player);
+		}
+		if (i == 3) {
+			ret = new EntitySmallCushionB(world, x, y, z, player);
+		}
+		if (i == 4) {
+			ret = new EntitySmallCushionC(world, x, y, z, player);
 		}
 		return ret;
 	}

@@ -65,7 +65,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorGreisen, ClimateCore.PACKAGE_ID, "dcs_door_greisen", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorGypsum, ClimateCore.PACKAGE_ID, "dcs_door_gypsum", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorSteel, ClimateCore.PACKAGE_ID, "dcs_door_steel", "build", 0);
-		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, ClimateCore.PACKAGE_ID, "dcs_big_cushion", "build", 1);
+		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, ClimateCore.PACKAGE_ID, "dcs_big_cushion", "build", 4);
 		MAIN_INSTANCE.regSimpleItem(MainInit.tinder, ClimateCore.PACKAGE_ID, "dcs_tinder", "tool", 2);
 		MAIN_INSTANCE.regSimpleItem(MainInit.animalFeed, ClimateCore.PACKAGE_ID, "dcs_animalfeed", "food", 1);
 		MAIN_INSTANCE.regSimpleItem(MainInit.colorChanger, ClimateCore.PACKAGE_ID, "dcs_color_changer", "tool", 0);
@@ -219,6 +219,10 @@ public class JsonRegister {
 			MAIN_INSTANCE.regSimpleBlock(MainInit.bedFuton, ClimateCore.PACKAGE_ID, "dcs_bed_futon", "build", 0);
 			MAIN_INSTANCE.regSimpleBlock(MainInit.bedHammock, ClimateCore.PACKAGE_ID, "dcs_bed_hammock", "build", 0);
 			MAIN_INSTANCE.regSimpleItem(MainInit.itemBed, ClimateCore.PACKAGE_ID, "dcs_bed_item", "build", 4);
+
+			ModelLoader.setCustomStateMapper(MainInit.doorHikido, (new StateMap.Builder()).ignore(DCState.FLAG)
+					.ignore(DCState.POWERED).build());
+			MAIN_INSTANCE.regSimpleBlock(MainInit.doorHikido, ClimateCore.PACKAGE_ID, "dcs_door_hikido", "build", 0);
 		}
 
 		if (!ModuleConfig.delete_old) {

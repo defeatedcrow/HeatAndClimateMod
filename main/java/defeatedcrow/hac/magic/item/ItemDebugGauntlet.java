@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -111,6 +112,18 @@ public class ItemDebugGauntlet extends DCItem implements IJewel {
 			tooltip.add(TextFormatting.GRAY.toString() + I18n.format("dcs.comment.flavor.debug_gauntlet." + meta));
 		} else {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
+		}
+	}
+
+	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		if (entity instanceof EntityPlayer && entity.world.isRemote && hasDebugGauntlet((EntityLivingBase) entity) && ClimateCore.proxy
+				.getPlayer() != null) {
+			if (Minecraft.getMinecraft()
+					.getRenderViewEntity() != Minecraft.getMinecraft().player) {
+				ClimateCore.proxy.getPlayer().setInvisible(true);
+			} else if (!ClimateCore.proxy.getPlayer().isSpectator()) {
+				ClimateCore.proxy.getPlayer().setInvisible(false);
+			}
 		}
 	}
 
