@@ -819,7 +819,7 @@ public class MagicRecipeRegister {
 							"YZ",
 							"WW",
 							'X',
-							"ingotSilver",
+							"ingotNickelsilver",
 							'Y',
 							"cubeGreen",
 							'Z',
@@ -835,13 +835,13 @@ public class MagicRecipeRegister {
 							"YZ",
 							"WW",
 							'X',
-							"ingotSilver",
+							"ingotBismuth",
 							'Y',
 							"cubeBlack",
 							'Z',
 							"cubeGreen",
 							'W',
-							"listAllmushrooms"
+							"listAllmushroom"
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
@@ -851,7 +851,7 @@ public class MagicRecipeRegister {
 							"YZ",
 							"WW",
 							'X',
-							"ingotSilver",
+							"ingotToolSteel",
 							'Y',
 							"cubeBlue",
 							'Z',
@@ -873,7 +873,7 @@ public class MagicRecipeRegister {
 							'Z',
 							"cubeBlack",
 							'W',
-							new ItemStack(Items.ENDER_EYE)
+							new ItemStack(Items.ENDER_PEARL)
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
@@ -883,13 +883,13 @@ public class MagicRecipeRegister {
 							"YZ",
 							"WW",
 							'X',
-							"ingotSilver",
+							"ingotGold",
 							'Y',
 							"cubeRed",
 							'Z',
 							"cubeWhite",
 							'W',
-							new ItemStack(Items.GLOWSTONE_DUST)
+							"feather"
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureBlue,

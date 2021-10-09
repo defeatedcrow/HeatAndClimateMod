@@ -4,10 +4,10 @@ import defeatedcrow.hac.api.item.IAnimalFood;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
+import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.item.ItemStack;
 
@@ -17,7 +17,8 @@ public class ItemAnimalFood extends DCItem implements IAnimalFood {
 
 	private static String[] names = {
 			"compound",
-			"hay"
+			"hay",
+			"straw"
 	};
 
 	public ItemAnimalFood(int max) {
@@ -50,9 +51,9 @@ public class ItemAnimalFood extends DCItem implements IAnimalFood {
 			return false;
 
 		if (item.getItemDamage() == 0) {
-			return entity instanceof EntityChicken || entity instanceof EntityPig || entity instanceof EntityCow;
-		} else {
 			return !(entity instanceof EntityTameable);
+		} else {
+			return entity instanceof AbstractHorse || entity instanceof EntityCow || entity instanceof EntitySheep;
 		}
 	}
 

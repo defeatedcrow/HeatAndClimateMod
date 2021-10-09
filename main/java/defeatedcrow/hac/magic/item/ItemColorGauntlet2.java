@@ -9,8 +9,10 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewel;
+import defeatedcrow.hac.api.magic.IMagicCost;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
+import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCTimeHelper;
@@ -48,7 +50,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemColorGauntlet2 extends DCItem implements IJewel {
+public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 
 	private final int maxMeta;
 
@@ -123,6 +125,11 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 		String s = "";
 		int meta = stack.getMetadata();
 		tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.color_gauntlet2." + meta));
+		if (getCost(stack) > 0) {
+			float f = getCost(stack);
+			tooltip.add(TextFormatting.BLUE.toString() + TextFormatting.BOLD.toString() + "=== Magic Cost ===");
+			tooltip.add(TextFormatting.WHITE.toString() + DCName.getMagicCost() + ": " + String.format("%.1f F", f));
+		}
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.offhand_tool"));
@@ -208,10 +215,13 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 									pos.getZ() + 0.5D));
 							removeCoord(stack, player, pos);
 						} else {
-							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-									.getY() + 0.5D,
-									pos.getZ() + 0.5D));
-							addCoord(stack, player, pos, 1, false);
+							if (DCUtil.playerCanUseCharm(player, stack)) {
+								DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+										.getY() + 0.5D,
+										pos.getZ() + 0.5D));
+								addCoord(stack, player, pos, 1, false);
+								DCUtil.playerConsumeCharm(player, stack);
+							}
 						}
 					}
 					world.playSound(player, pos, SoundEvents.BLOCK_NOTE_PLING, SoundCategory.BLOCKS, 0.5F, 1.5F);
@@ -223,21 +233,25 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 					effect -= 1.0F;
 					limit += MathHelper.floor(effect * 2);
 					if (getCount(stack) < limit) {
-						EntityCrowDoll doll = new EntityCrowDoll(world);
-						doll.setlimit((int) (effect * 600));
-						doll.setOwnerId(player.getUniqueID());
-						double fX = facing.getFrontOffsetX() * 0.25D;
-						double fY = facing.getFrontOffsetY() * 0.25D;
-						double fZ = facing.getFrontOffsetZ() * 0.25D;
-						doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
-								.getY() + hitY + fY, pos.getZ() + hitZ + fZ, player.rotationYaw, 0F);
-						if (!world.isRemote) {
-							world.spawnEntity(doll);
+						if (DCUtil.playerCanUseCharm(player, stack)) {
+							EntityCrowDoll doll = new EntityCrowDoll(world);
+							doll.setlimit(1200);
+							doll.setOwnerId(player.getUniqueID());
+							double fX = facing.getFrontOffsetX() * 0.25D;
+							double fY = facing.getFrontOffsetY() * 0.25D;
+							double fZ = facing.getFrontOffsetZ() * 0.25D;
+							doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
+									.getY() + hitY + fY, pos.getZ() + hitZ + fZ, player.rotationYaw, 0F);
+							if (!world.isRemote) {
+								world.spawnEntity(doll);
+							}
+							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+									.getY() + 0.5D,
+									pos.getZ() + 0.5D));
+							world.playSound(player, pos, SoundEvents.BLOCK_NOTE_GUITAR, SoundCategory.BLOCKS, 0.5F, 1.5F);
+							addCount(stack, limit, 1);
+							DCUtil.playerConsumeCharm(player, stack);
 						}
-						DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos.getY() + 0.5D,
-								pos.getZ() + 0.5D));
-						world.playSound(player, pos, SoundEvents.BLOCK_NOTE_GUITAR, SoundCategory.BLOCKS, 0.5F, 1.5F);
-						addCount(stack, limit, 1);
 					} else {
 						String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
 						player.sendMessage(new TextComponentString(String.format(mes1)));
@@ -255,19 +269,22 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 						}
 					} else {
 						if (getCount(stack) < limit) {
-							BlockPos p1 = pos;
-							ItemStack set = new ItemStack(MagicInit.morayLamp);
-							if (!block.isReplaceable(world, p1)) {
-								p1 = p1.offset(facing);
-							}
-							if (player.canPlayerEdit(p1, facing, set)) {
-								IBlockState light = MagicInit.morayLamp
-										.getStateForPlacement(world, p1, facing, hitX, hitY, hitZ, 0, player, hand);
+							if (DCUtil.playerCanUseCharm(player, stack)) {
+								BlockPos p1 = pos;
+								ItemStack set = new ItemStack(MagicInit.morayLamp);
+								if (!block.isReplaceable(world, p1)) {
+									p1 = p1.offset(facing);
+								}
+								if (player.canPlayerEdit(p1, facing, set) && world.isAirBlock(p1)) {
+									IBlockState light = MagicInit.morayLamp
+											.getStateForPlacement(world, p1, facing, hitX, hitY, hitZ, 0, player, hand);
 
-								if (!world.isRemote && world.setBlockState(p1, light, 3))
-									MagicInit.morayLamp.onBlockPlacedBy(world, p1, light, player, set);
-								world.playSound(player, pos, SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 0.5F, 1.0F);
-								addCount(stack, limit, 1);
+									if (!world.isRemote && world.setBlockState(p1, light, 3))
+										MagicInit.morayLamp.onBlockPlacedBy(world, p1, light, player, set);
+									world.playSound(player, pos, SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 0.5F, 1.0F);
+									addCount(stack, limit, 1);
+									DCUtil.playerConsumeCharm(player, stack);
+								}
 							}
 						} else {
 							String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
@@ -280,20 +297,24 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 				else if (meta == 3 && player.isSneaking()) {
 					// spawn owl
 					if (getCount(stack) < limit) {
-						EntityOwlDoll doll = new EntityOwlDoll(world);
-						doll.setOwnerId(player.getUniqueID());
-						double fX = facing.getFrontOffsetX() * 0.25D;
-						double fY = facing.getFrontOffsetY() * 0.25D;
-						double fZ = facing.getFrontOffsetZ() * 0.25D;
-						doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
-								.getY() + hitY + fY, pos.getZ() + hitZ + fZ, 180F + player.rotationYaw, 30F);
-						if (!world.isRemote) {
-							world.spawnEntity(doll);
+						if (DCUtil.playerCanUseCharm(player, stack)) {
+							EntityOwlDoll doll = new EntityOwlDoll(world);
+							doll.setOwnerId(player.getUniqueID());
+							double fX = facing.getFrontOffsetX() * 0.25D;
+							double fY = facing.getFrontOffsetY() * 0.25D;
+							double fZ = facing.getFrontOffsetZ() * 0.25D;
+							doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
+									.getY() + hitY + fY, pos.getZ() + hitZ + fZ, 180F + player.rotationYaw, 30F);
+							if (!world.isRemote) {
+								world.spawnEntity(doll);
+							}
+							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+									.getY() + 0.5D,
+									pos.getZ() + 0.5D));
+							world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
+							addCount(stack, 1, 1);
+							DCUtil.playerConsumeCharm(player, stack);
 						}
-						DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos.getY() + 0.5D,
-								pos.getZ() + 0.5D));
-						world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
-						addCount(stack, 1, 1);
 					} else {
 						String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
 						player.sendMessage(new TextComponentString(String.format(mes1)));
@@ -307,7 +328,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 					if (!block.isReplaceable(world, p1)) {
 						p1 = p1.offset(facing);
 					}
-					if (player.canPlayerEdit(p1, facing, set)) {
+					if (player.canPlayerEdit(p1, facing, set) && world.isAirBlock(p1)) {
 						IBlockState light = MagicInit.smallLight
 								.getStateForPlacement(world, p1, facing, hitX, hitY, hitZ, 0, player, hand);
 
@@ -577,6 +598,28 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel {
 				return true;
 		}
 		return false;
+	}
+
+	@Override
+	public boolean canUseMagic(EntityPlayer player, ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public boolean beforeConsumption(EntityPlayer player, ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public float getCost(ItemStack item) {
+		if (!DCUtil.isEmpty(item)) {
+			int i = item.getItemDamage();
+			float f = (float) CoreConfigDC.harderMagicCostAmount;
+			if (i != 4) {
+				return f * 2F;
+			}
+		}
+		return 0;
 	}
 
 }

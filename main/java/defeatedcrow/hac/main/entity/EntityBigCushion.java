@@ -29,12 +29,15 @@ public class EntityBigCushion extends DCEntityBase {
 	}
 
 	public EntityBigCushion(World worldIn, double posX, double posY, double posZ) {
-		super(worldIn, posX, posY, posZ);
+		this(worldIn);
 		this.setSize(1.0F, 0.4F);
+		this.setPosition(posX, posY, posZ);
 	}
 
 	public EntityBigCushion(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
-		super(worldIn, posX, posY, posZ, player);
+		this(worldIn, posX, posY, posZ);
+		if (player != null)
+			this.rotationYaw = player.rotationYaw;
 		this.setSize(1.0F, 0.4F);
 	}
 

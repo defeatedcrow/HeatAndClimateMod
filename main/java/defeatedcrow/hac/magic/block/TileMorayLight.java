@@ -122,6 +122,9 @@ public class TileMorayLight extends TileTorqueBase implements ITorqueProvider {
 				IBlockState newState = state.withProperty(DCState.POWERED, active);
 				world.setBlockState(getPos(), newState, 3);
 				world.notifyNeighborsOfStateChange(pos, getBlockType(), true);
+				for (EnumFacing enumfacing : EnumFacing.values()) {
+					world.notifyNeighborsOfStateChange(pos.offset(enumfacing), getBlockType(), false);
+				}
 			}
 		}
 	}

@@ -39,12 +39,12 @@ public class RegisterCrusherRecipe {
 		// foods
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 3, 0), SUS_Blade, "gemSalt");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 3, 1), new ItemStack(
-				MainInit.foodDust, 1, 0), 0.5F, SUS_Blade, "cropWheat");
+				MainInit.animalFeed, 1, 2), 1F, new ItemStack(MainInit.foodDust, 1, 0), 0.5F, SUS_Blade, "cropWheat");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 2), new ItemStack(
 				MainInit.foodDust, 1, 0), 0.5F, SUS_Blade, "seedRice");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 2, 2), new ItemStack(
-				MainInit.foodDust, 1, 0), 0.5F, new ItemStack(MainInit.foodDust, 1,
-						1), 0.5F, null, SUS_Blade, "cropRice");
+				MainInit.animalFeed, 1, 2), 1F, new ItemStack(MainInit.foodDust, 1,
+						0), 0.5F, null, SUS_Blade, "cropRice");
 
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), null, 0F, new FluidStack(
 				MainInit.lemon, 250), SUS_Blade, "cropLemon");
@@ -74,6 +74,8 @@ public class RegisterCrusherRecipe {
 				MainInit.foodDust, 1, 1), 0.5F, SUS_Blade, "foodFlour");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 3), new ItemStack(
 				MainInit.foodDust, 1, 1), 0.5F, SUS_Blade, new ItemStack(Items.POISONOUS_POTATO));
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(
+				MainInit.foodDust, 1, 1), SUS_Blade, "feedStraw");
 
 		if (ModuleConfig.food) {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(FoodInit.seeds, 1, 4), new ItemStack(

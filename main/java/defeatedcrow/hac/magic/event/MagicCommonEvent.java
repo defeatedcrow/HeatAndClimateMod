@@ -103,8 +103,12 @@ public class MagicCommonEvent {
 				if (owner != null) {
 					if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorBadge, 1, 3))) {
 						// black badge
-						target.attackEntityFrom(DamageSource.causeMobDamage(target), event.getAmount());
-						event.setCanceled(true);
+						if (!(owner instanceof EntityPlayer) || DCUtil
+								.playerCanUseCharm((EntityPlayer) owner, new ItemStack(MagicInit.colorBadge, 1, 3))) {
+							target.attackEntityFrom(DamageSource.causeMobDamage(target), event.getAmount());
+							DCUtil.playerConsumeCharm((EntityPlayer) owner, new ItemStack(MagicInit.colorBadge, 1, 3));
+							event.setCanceled(true);
+						}
 					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1,
 							4)) && !(target instanceof IMob)) {
 						// white pendant
@@ -193,12 +197,15 @@ public class MagicCommonEvent {
 
 		if (!(living instanceof EntityPlayer) && dam >= living.getHealth()) {
 			if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorBadge, 1, 1))) {
-				// DCLogger.debugInfoLog("on amulet process");
-				living.fallDistance = 0.0F;
-				living.setHealth(living.getMaxHealth() * 0.5F);
-				living.world.playSound(null, living
-						.getPosition(), SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.PLAYERS, 1.0F, 0.75F);
-				event.setCanceled(true);
+				if (DCUtil.playerCanUseCharm((EntityPlayer) living, new ItemStack(MagicInit.colorBadge, 1, 1))) {
+					// DCLogger.debugInfoLog("on amulet process");
+					living.fallDistance = 0.0F;
+					living.setHealth(living.getMaxHealth() * 0.5F);
+					living.world.playSound(null, living
+							.getPosition(), SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.PLAYERS, 1.0F, 0.75F);
+					DCUtil.playerConsumeCharm((EntityPlayer) living, new ItemStack(MagicInit.colorBadge, 1, 1));
+					event.setCanceled(true);
+				}
 			}
 		}
 	}
@@ -215,21 +222,28 @@ public class MagicCommonEvent {
 			int lu1 = 0;
 			int lb2 = 0;
 			boolean blue = false;
+			EntityPlayer player = null;
 			if (source.getTrueSource() instanceof EntityLivingBase) {
 				EntityLivingBase liv2 = (EntityLivingBase) source.getTrueSource();
 				int eff = MathHelper.floor(MainUtil.magicSuitEff(liv2) * 2) - 1;
 				lu1 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing, 1, 0)) * eff;
 				lb2 = MainUtil.getCharmLevel(liv2, new ItemStack(MagicInit.colorRing2, 1, 3)) * eff;
 				blue = MainUtil.getOffhandJewelColor(liv2) == MagicColor.BLUE_BLACK;
+				if (liv2 instanceof EntityPlayer) {
+					player = (EntityPlayer) liv2;
+				}
 			} else {
 				return;
 			}
 			int m = 1 + (lu1 + level) * 5;
 			if (living.world.rand.nextInt(100) < m) {
-				int meta = getDropMeta(living);
-				ItemStack item1 = new ItemStack(MagicInit.colorDrop, 1, meta);
-				EntityItem drop = new EntityItem(living.world, living.posX, living.posY, living.posZ, item1);
-				event.getDrops().add(drop);
+				if (player != null && DCUtil.playerCanUseCharm(player, new ItemStack(MagicInit.colorRing, 1, 0))) {
+					int meta = getDropMeta(living);
+					ItemStack item1 = new ItemStack(MagicInit.colorDrop, 1, meta);
+					EntityItem drop = new EntityItem(living.world, living.posX, living.posY, living.posZ, item1);
+					event.getDrops().add(drop);
+					DCUtil.playerConsumeCharm(player, new ItemStack(MagicInit.colorRing, 1, 0));
+				}
 			}
 			int m2 = lb2 * 10;
 			if (living.world.rand.nextInt(100) < m2) {
@@ -240,10 +254,13 @@ public class MagicCommonEvent {
 				}
 			}
 			if (blue && living.world.rand.nextInt(100) < 25) {
-				ItemStack head = getDropSkull(living);
-				if (!head.isEmpty()) {
-					EntityItem drop2 = new EntityItem(living.world, living.posX, living.posY, living.posZ, head);
-					event.getDrops().add(drop2);
+				if (player != null && DCUtil.playerCanUseCharm(player, new ItemStack(MagicInit.colorGauntlet, 1, 0))) {
+					ItemStack head = getDropSkull(living);
+					if (!head.isEmpty()) {
+						EntityItem drop2 = new EntityItem(living.world, living.posX, living.posY, living.posZ, head);
+						event.getDrops().add(drop2);
+						DCUtil.playerConsumeCharm(player, new ItemStack(MagicInit.colorGauntlet, 1, 0));
+					}
 				}
 			}
 		}
@@ -254,71 +271,84 @@ public class MagicCommonEvent {
 		if (event.getHarvester() != null) {
 			/* 粉砕 */
 			if (MainUtil.getOffhandJewelColor(event.getHarvester()) == MagicColor.BLACK_RED) {
-				ItemStack off = event.getHarvester().getHeldItem(EnumHand.OFF_HAND);
-				float eff = MainUtil.magicSuitEff(event.getHarvester());
-				List<ItemStack> nList = Lists.newArrayList();
-				boolean flag = false;
-				for (ItemStack i : event.getDrops()) {
-					if (!DCUtil.isEmpty(i)) {
-						ICrusherRecipe cr = null;
-						if (eff > 1.0F && ModuleConfig.r_crusher) {
-							cr = RecipeAPI.registerCrushers.getRecipe(i, RegisterCrusherRecipe.SUS_Blade);
-							ICrusherRecipe cr2 = RecipeAPI.registerCrushers
-									.getRecipe(i, RegisterCrusherRecipe.Ti_Blade);
-							if (eff >= 2.0F && cr2 != null) {
-								cr = cr2;
+				if (DCUtil.playerCanUseCharm(event.getHarvester(), new ItemStack(MagicInit.colorGauntlet, 1, 3))) {
+					ItemStack off = event.getHarvester().getHeldItem(EnumHand.OFF_HAND);
+					float eff = MainUtil.magicSuitEff(event.getHarvester());
+					List<ItemStack> nList = Lists.newArrayList();
+					boolean flag = false;
+					for (ItemStack i : event.getDrops()) {
+						if (!DCUtil.isEmpty(i)) {
+							ICrusherRecipe cr = null;
+							if (eff > 1.0F && ModuleConfig.r_crusher) {
+								cr = RecipeAPI.registerCrushers.getRecipe(i, RegisterCrusherRecipe.SUS_Blade);
+								ICrusherRecipe cr2 = RecipeAPI.registerCrushers
+										.getRecipe(i, RegisterCrusherRecipe.Ti_Blade);
+								if (eff >= 2.0F && cr2 != null) {
+									cr = cr2;
+								}
 							}
-						}
-						if (cr != null) {
-							ItemStack o1 = cr.getOutput();
-							if (!DCUtil.isEmpty(o1))
-								nList.add(o1.copy());
-							ItemStack o2 = cr.getSecondary();
-							if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < cr
-									.getSecondaryChance() * eff)
-								nList.add(o2.copy());
-							ItemStack o3 = cr.getSecondary();
-							if (!DCUtil.isEmpty(o3) && event.getWorld().rand.nextFloat() < cr.getTertialyChance() * eff)
-								nList.add(o3.copy());
-							flag = true;
-						} else if (ModuleConfig.r_mill) {
-							IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
-							if (recipe != null) {
-								ItemStack o1 = recipe.getOutput();
+							if (cr != null) {
+								ItemStack o1 = cr.getOutput();
 								if (!DCUtil.isEmpty(o1))
 									nList.add(o1.copy());
-								ItemStack o2 = recipe.getSecondary();
-								if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < recipe
+								ItemStack o2 = cr.getSecondary();
+								if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < cr
 										.getSecondaryChance() * eff)
 									nList.add(o2.copy());
+								ItemStack o3 = cr.getSecondary();
+								if (!DCUtil.isEmpty(o3) && event.getWorld().rand.nextFloat() < cr
+										.getTertialyChance() * eff)
+									nList.add(o3.copy());
 								flag = true;
-							} else {
-								nList.add(i.copy());
+							} else if (ModuleConfig.r_mill) {
+								IMillRecipe recipe = RecipeAPI.registerMills.getRecipe(i);
+								if (recipe != null) {
+									ItemStack o1 = recipe.getOutput();
+									if (!DCUtil.isEmpty(o1))
+										nList.add(o1.copy());
+									ItemStack o2 = recipe.getSecondary();
+									if (!DCUtil.isEmpty(o2) && event.getWorld().rand.nextFloat() < recipe
+											.getSecondaryChance() * eff)
+										nList.add(o2.copy());
+									flag = true;
+								} else {
+									nList.add(i.copy());
+								}
 							}
 						}
 					}
+					if (flag) {
+						DCUtil.playerConsumeCharm(event.getHarvester(), new ItemStack(MagicInit.colorGauntlet, 1, 3));
+					}
+					event.getDrops().clear();
+					event.getDrops().addAll(nList);
 				}
-				event.getDrops().clear();
-				event.getDrops().addAll(nList);
 			}
 			/* 精錬 */
 			if (DCUtil.hasCharmItem(event.getHarvester(), new ItemStack(MagicInit.colorPendant2, 1, 2))) {
-				List<ItemStack> nList = Lists.newArrayList();
-				for (ItemStack i : event.getDrops()) {
-					if (!DCUtil.isEmpty(i)) {
-						ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(i);
-						if (burnt.isEmpty()) {
-							nList.add(i.copy());
-						} else {
-							ItemStack b2 = burnt.copy();
-							int d = b2.getCount() * i.getCount();
-							b2.setCount(d);
-							nList.add(b2);
+				if (DCUtil.playerCanUseCharm(event.getHarvester(), new ItemStack(MagicInit.colorPendant2, 1, 2))) {
+					List<ItemStack> nList = Lists.newArrayList();
+					boolean flag = false;
+					for (ItemStack i : event.getDrops()) {
+						if (!DCUtil.isEmpty(i)) {
+							ItemStack burnt = FurnaceRecipes.instance().getSmeltingResult(i);
+							if (burnt.isEmpty()) {
+								nList.add(i.copy());
+							} else {
+								ItemStack b2 = burnt.copy();
+								int d = b2.getCount() * i.getCount();
+								b2.setCount(d);
+								nList.add(b2);
+								flag = true;
+							}
 						}
 					}
+					event.getDrops().clear();
+					event.getDrops().addAll(nList);
+					if (flag) {
+						DCUtil.playerConsumeCharm(event.getHarvester(), new ItemStack(MagicInit.colorPendant2, 1, 2));
+					}
 				}
-				event.getDrops().clear();
-				event.getDrops().addAll(nList);
 			}
 
 		}

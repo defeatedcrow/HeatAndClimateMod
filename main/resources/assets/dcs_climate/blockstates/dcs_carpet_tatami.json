@@ -5,6 +5,16 @@
         "type=2": { "model": "dcs_climate:build/carpet/dcs_tatami_side", "y": 90, "uvlock": false },
         "type=3": { "model": "dcs_climate:build/carpet/dcs_tatami_side", "y": 180, "uvlock": false },
         "type=4": { "model": "dcs_climate:build/carpet/dcs_tatami_side", "y": 270, "uvlock": false },
-        "type=5": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" }
+        "type=5": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=6": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=7": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=8": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=9": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=10": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=11": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=12": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=13": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=14": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" },
+        "type=15": { "model": "dcs_climate:build/carpet/dcs_tatami_normal" }
     }
 }

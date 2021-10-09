@@ -41,6 +41,7 @@ import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.TileTatami;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
+import defeatedcrow.hac.main.block.build.TileWindowBlinds;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileCraftingCounter;
@@ -91,6 +92,7 @@ import defeatedcrow.hac.main.client.block.TESRSwedishTorch;
 import defeatedcrow.hac.main.client.block.TESRThermometer;
 import defeatedcrow.hac.main.client.block.TESRVillageChest;
 import defeatedcrow.hac.main.client.block.TESRWindVane;
+import defeatedcrow.hac.main.client.block.TESRWindowBlinds;
 import defeatedcrow.hac.main.client.entity.BoltRenderer;
 import defeatedcrow.hac.main.client.entity.RenderEntityBalloon;
 import defeatedcrow.hac.main.client.entity.RenderEntityBigCushion;
@@ -290,6 +292,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileSwedishTorch.class, "dcs_te_swedish_torch", new TESRSwedishTorch());
 		GameRegistry.registerTileEntity(TileTatami.class, "dcs_te_carpet_tatami");
 		registerTileEntity(TileDoorHikido.class, "dcs_te_door_hikido", new TESRDoorHikido());
+		registerTileEntity(TileWindowBlinds.class, "dcs_te_window_blinds", new TESRWindowBlinds());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();

@@ -159,7 +159,9 @@ public class BlockMorayLight extends BlockTorqueBase {
 			((TileMorayLight) tile).setDate(day);
 		}
 		if (!world.isRemote) {
-			world.notifyNeighborsOfStateChange(pos, this, false);
+			for (EnumFacing enumfacing : EnumFacing.values()) {
+				world.notifyNeighborsOfStateChange(pos.offset(enumfacing), this, false);
+			}
 		}
 	}
 
@@ -180,7 +182,9 @@ public class BlockMorayLight extends BlockTorqueBase {
 			}
 		}
 		if (!world.isRemote) {
-			world.notifyNeighborsOfStateChange(pos, this, false);
+			for (EnumFacing enumfacing : EnumFacing.values()) {
+				world.notifyNeighborsOfStateChange(pos.offset(enumfacing), this, false);
+			}
 		}
 	}
 

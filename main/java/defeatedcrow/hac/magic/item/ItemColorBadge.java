@@ -6,8 +6,10 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.BlockSet;
 import defeatedcrow.hac.api.magic.CharmType;
+import defeatedcrow.hac.api.magic.IMagicCost;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
+import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
 import defeatedcrow.hac.core.util.DCTimeHelper;
@@ -15,6 +17,7 @@ import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
+import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.util.portal.DCDimChangeHelper;
 import net.minecraft.block.state.IBlockState;
@@ -36,7 +39,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemColorBadge extends CharmItemBase {
+public class ItemColorBadge extends CharmItemBase implements IMagicCost {
 
 	private final int maxMeta;
 
@@ -47,7 +50,13 @@ public class ItemColorBadge extends CharmItemBase {
 	 * B: 偽装攻撃
 	 * W: 修復
 	 */
-	private static String[] names = { "u1", "g1", "r1", "b1", "w1" };
+	private static String[] names = {
+			"u1",
+			"g1",
+			"r1",
+			"b1",
+			"w1"
+	};
 
 	public ItemColorBadge() {
 		super();
@@ -280,6 +289,31 @@ public class ItemColorBadge extends CharmItemBase {
 	}
 
 	@Override
+	public boolean canUseMagic(EntityPlayer player, ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public boolean beforeConsumption(EntityPlayer player, ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public float getCost(ItemStack item) {
+		if (!DCUtil.isEmpty(item)) {
+			int i = item.getItemDamage();
+			float f = (float) CoreConfigDC.harderMagicCostAmount;
+			if (i == 0) {
+				return f * 2F;
+			}
+			if (i == 1 || i == 2 || i == 3) {
+				return f;
+			}
+		}
+		return 0;
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		String s = "";
@@ -288,6 +322,11 @@ public class ItemColorBadge extends CharmItemBase {
 			tooltip.add(TextFormatting.BOLD.toString() + "PLAYER ONLY");
 		}
 		tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.color_badge." + meta));
+		if (getCost(stack) > 0) {
+			float f = getCost(stack);
+			tooltip.add(TextFormatting.BLUE.toString() + TextFormatting.BOLD.toString() + "=== Magic Cost ===");
+			tooltip.add(TextFormatting.WHITE.toString() + DCName.getMagicCost() + ": " + String.format("%.1f F", f));
+		}
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.allcharm"));

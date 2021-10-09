@@ -251,6 +251,7 @@ public class TileTeaPot extends TileFluidProcessorBase {
 				if (!DCUtil.isEmpty(slot)) {
 					boolean inRecipe = false;
 					Iterator<Object> req = required.iterator();
+					ItemStack cont = slot.getItem().getContainerItem(slot);
 
 					// 9スロットについて、要求材料の数だけ回す
 					while (req.hasNext()) {
@@ -276,6 +277,10 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 						if (match) {
 							inRecipe = true;
+							if (DCUtil.isEmpty(sec) && !DCUtil.isEmpty(cont)) {
+								sec = cont.copy();
+								chance = 100;
+							}
 							required.remove(next);
 							this.decrStackSize(i, count);
 							break;
@@ -315,17 +320,34 @@ public class TileTeaPot extends TileFluidProcessorBase {
 
 	@Override
 	protected int[] slotsTop() {
-		return new int[] { 0, 2, 4, 5, 6 };
+		return new int[] {
+				0,
+				2,
+				4,
+				5,
+				6
+		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
-		return new int[] { 1, 3 };
+		return new int[] {
+				1,
+				3
+		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+		};
 	};
 
 	@Override

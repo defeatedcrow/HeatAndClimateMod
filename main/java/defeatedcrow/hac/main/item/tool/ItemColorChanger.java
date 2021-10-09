@@ -97,6 +97,8 @@ public class ItemColorChanger extends DCItem {
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.kitchenHood), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.realtimeClock), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.doorHikido), 0).localizedname());
+				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.carpetTatami), 0).localizedname());
+				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.windowBlinds), 0).localizedname());
 			}
 			if (ModuleConfig.magic && ModuleConfig.magic_advanced) {
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MagicInit.timeCage), 0).localizedname());

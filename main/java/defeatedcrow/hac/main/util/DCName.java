@@ -3,6 +3,7 @@ package defeatedcrow.hac.main.util;
 import java.util.Calendar;
 import java.util.Locale;
 
+import defeatedcrow.hac.config.CoreConfigDC;
 import net.minecraft.client.resources.I18n;
 
 public enum DCName {
@@ -71,6 +72,17 @@ public enum DCName {
 
 	public static String getLocalizedDate() {
 		return String.format(Locale.getDefault(), "%1$tb %1$te, %1$tY", Calendar.getInstance());
+	}
+
+	public static String getMagicCost() {
+		if (CoreConfigDC.harderMagicCost == 1) {
+			return "Hunger";
+		}
+		if (CoreConfigDC.harderMagicCost == 2) {
+			return "Health";
+		}
+		return "EXP";
+
 	}
 
 }

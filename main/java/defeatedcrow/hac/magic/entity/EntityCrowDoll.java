@@ -234,7 +234,7 @@ public class EntityCrowDoll extends EntityLivingBase {
 			if (!DCUtil.isEmpty(item)) {
 				EntityItem drop = new EntityItem(this.world, this.posX, this.posY + 0.125D, this.posZ, item);
 				drop.setPickupDelay(40);
-				float f = this.rand.nextFloat() * 0.5F;
+				float f = this.rand.nextFloat() * 0.8F;
 				float f1 = this.rand.nextFloat() * ((float) Math.PI * 2F);
 				drop.motionX = (double) (-MathHelper.sin(f1) * f);
 				drop.motionZ = (double) (MathHelper.cos(f1) * f);

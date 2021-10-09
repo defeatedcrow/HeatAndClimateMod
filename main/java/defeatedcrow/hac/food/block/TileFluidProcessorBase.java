@@ -334,6 +334,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 					if (!DCUtil.isEmpty(slot)) {
 						boolean inRecipe = false;
 						Iterator<Object> req = required.iterator();
+						ItemStack cont = slot.getItem().getContainerItem(slot);
 
 						// 9スロットについて、要求材料の数だけ回す
 						while (req.hasNext()) {
@@ -361,6 +362,10 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 							if (match) {
 								inRecipe = true;
+								if (DCUtil.isEmpty(sec) && !DCUtil.isEmpty(cont)) {
+									sec = cont.copy();
+									chance = 100;
+								}
 								required.remove(next);
 								this.decrStackSize(i, count);
 								break;

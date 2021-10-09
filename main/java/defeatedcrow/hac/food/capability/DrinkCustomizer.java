@@ -71,17 +71,17 @@ public class DrinkCustomizer implements IDrinkCustomize {
 	}
 
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-		if (milkID == 0) {
+		if (milkID != 0) {
 			nbt.setByte(DrinkMilk.getTagKey(), milkID);
 		} else {
 			nbt.removeTag(DrinkMilk.getTagKey());
 		}
-		if (sugarID == 0) {
+		if (sugarID != 0) {
 			nbt.setByte(DrinkSugar.getTagKey(), sugarID);
 		} else {
 			nbt.removeTag(DrinkSugar.getTagKey());
 		}
-		if (agingLevel == 0) {
+		if (agingLevel != 0) {
 			nbt.setByte(DrinkItemCustomizer.AGING_KEY, agingLevel);
 		} else {
 			nbt.removeTag(DrinkItemCustomizer.AGING_KEY);

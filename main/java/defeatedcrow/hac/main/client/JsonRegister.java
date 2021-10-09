@@ -11,6 +11,7 @@ import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.BlockDoor;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -67,7 +68,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorSteel, ClimateCore.PACKAGE_ID, "dcs_door_steel", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, ClimateCore.PACKAGE_ID, "dcs_big_cushion", "build", 4);
 		MAIN_INSTANCE.regSimpleItem(MainInit.tinder, ClimateCore.PACKAGE_ID, "dcs_tinder", "tool", 2);
-		MAIN_INSTANCE.regSimpleItem(MainInit.animalFeed, ClimateCore.PACKAGE_ID, "dcs_animalfeed", "food", 1);
+		MAIN_INSTANCE.regSimpleItem(MainInit.animalFeed, ClimateCore.PACKAGE_ID, "dcs_animalfeed", "food", 2);
 		MAIN_INSTANCE.regSimpleItem(MainInit.colorChanger, ClimateCore.PACKAGE_ID, "dcs_color_changer", "tool", 0);
 
 		if (DCIntegrationCore.loadedForestry) {
@@ -150,6 +151,12 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleBlock(MainInit.geyser, ClimateCore.PACKAGE_ID, "dcs_device_geyser_stone", "device", 0);
 		MAIN_INSTANCE
 				.regSimpleBlock(MainInit.swedishTorch, ClimateCore.PACKAGE_ID, "dcs_device_swedish_torch", "device", 15);
+
+		ModelLoader.setCustomStateMapper(MainInit.roofStraw, (new StateMap.Builder()).ignore(BlockStairs.HALF)
+				.build());
+		ModelLoader.setCustomStateMapper(MainInit.windowBlinds, (new StateMap.Builder()).ignore(DCState.DOUBLE)
+				.ignore(DCState.POWERED)
+				.build());
 
 		// door
 		if (ModuleConfig.build_advanced) {

@@ -63,6 +63,8 @@ public class MainInit {
 	public static Block roofSlateRed;
 	public static Block roofSlateBrown;
 	public static Block roofSlateGreen;
+	public static Block strawBlock;
+	public static Block roofStraw;
 
 	public static Block fenceGypsum;
 	public static Block fenceMarble;
@@ -152,6 +154,8 @@ public class MainInit {
 	public static Block curtainGray;
 	public static Block curtainRed;
 	public static Block curtainBlue;
+	public static Block windowBlinds;
+	public static Block windowWood;
 
 	public static Block sinkMetal;
 	public static Block sinkChest;

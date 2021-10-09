@@ -690,6 +690,7 @@ item.dcs_food_chick.name=Chick in Egg
 
 item.dcs_animalfeed_compound.name=Compound Feed
 item.dcs_animalfeed_hay.name=Hay
+item.dcs_animalfeed_straw.name=Straw
 
 ## craft tools
 item.dcs_yagen_stone_normal.name=Druggist's Mortar
@@ -1190,6 +1191,8 @@ tile.dcs_roof_slate_0.name=Slate Roof
 tile.dcs_roof_slate_red_0.name=Red Slate Roof
 tile.dcs_roof_slate_green_0.name=Green Slate Roof
 tile.dcs_roof_slate_brown_0.name=Brown Slate Roof
+tile.dcs_pillar_straw_0.name=Thatch Block
+tile.dcs_roof_straw_0.name=Thatched Roof
 tile.dcs_build_slab_glass.name=Selenite Slab
 tile.dcs_build_slab_gypsum.name=Gypsum Slab
 tile.dcs_build_slab_marble.name=Marble Slab
@@ -1273,6 +1276,7 @@ tile.dcs_carpet_red_0.name=Carpet Wood (Red)
 tile.dcs_carpet_white_0.name=Carpet Wood (White)
 tile.dcs_carpet_gray_0.name=Carpet Wood (Black)
 tile.dcs_carpet_linen_0.name=Carpet Wood (Yellow)
+tile.dcs_carpet_tatami_0.name=Tatami Block
 tile.dcs_sofa_black_0.name=Sofa (Black)
 tile.dcs_sofa_red_0.name=Sofa (Red)
 tile.dcs_stool_black_0.name=Stool (Black)
@@ -1376,6 +1380,9 @@ tile.dcs_build_curtain_0.name=Curtain
 tile.dcs_build_curtain_red_0.name=Curtain (Red)
 tile.dcs_build_curtain_blue_0.name=Curtain (Blue)
 tile.dcs_build_curtain_gray_0.name=Curtain (Gray)
+tile.dcs_build_curtain_blinds_0.name=Window Blinds
+tile.dcs_window_wood_0.name=Window (Brown)
+tile.dcs_window_wood_1.name=Window (White)
 tile.dcs_build_linoleum_15.name=White Linoleum
 tile.dcs_build_linoleum_14.name=Orange Linoleum
 tile.dcs_build_linoleum_13.name=Magenta Linoleum

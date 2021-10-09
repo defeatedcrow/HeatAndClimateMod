@@ -96,6 +96,7 @@ import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.TileTatami;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
+import defeatedcrow.hac.main.block.build.TileWindowBlinds;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileCraftingCounter;
@@ -543,6 +544,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileSwedishTorch.class, "dcs_te_swedish_torch");
 		GameRegistry.registerTileEntity(TileTatami.class, "dcs_te_carpet_tatami");
 		GameRegistry.registerTileEntity(TileDoorHikido.class, "dcs_te_door_hikido");
+		GameRegistry.registerTileEntity(TileWindowBlinds.class, "dcs_te_curtain_blinds");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();
