@@ -20,6 +20,8 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityOwlDoll extends DCEntityBase {
 
@@ -147,6 +149,13 @@ public class EntityOwlDoll extends DCEntityBase {
 			}
 		}
 		super.setDead();
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean isInRangeToRenderDist(double distance) {
+		double d0 = 16.0D;
+		d0 = d0 * 64.0D * getRenderDistanceWeight();
+		return distance < d0 * d0;
 	}
 
 }

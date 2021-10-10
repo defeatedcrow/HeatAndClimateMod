@@ -138,6 +138,9 @@ public class MainInit {
 	public static Block stoolRed;
 	public static Block sofaBlack;
 	public static Block sofaRed;
+	public static Block sofaPink;
+	public static Block sofaGreen;
+	public static Block sofaBlue;
 	public static Block chairWood;
 	public static Block chairMarble;
 	public static Block chairSkarn;
@@ -213,6 +216,7 @@ public class MainInit {
 	public static Block squaretableRattan;
 	public static Block stoolRattan;
 	public static Block chairRattan;
+	public static Block sofaRattan;
 	public static Block chestRattan;
 	public static Block wallshelfRattan;
 

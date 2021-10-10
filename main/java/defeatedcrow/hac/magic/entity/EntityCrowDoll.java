@@ -38,6 +38,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityCrowDoll extends EntityLivingBase {
 
@@ -340,6 +342,13 @@ public class EntityCrowDoll extends EntityLivingBase {
 			}
 		}
 		super.setDead();
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean isInRangeToRenderDist(double distance) {
+		double d0 = 16.0D;
+		d0 = d0 * 64.0D * getRenderDistanceWeight();
+		return distance < d0 * d0;
 	}
 
 }

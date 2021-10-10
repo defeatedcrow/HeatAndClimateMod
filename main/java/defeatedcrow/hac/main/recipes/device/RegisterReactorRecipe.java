@@ -51,6 +51,19 @@ public class RegisterReactorRecipe {
 								"dustSulfur"
 		});
 
+		// エタノール生成
+		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.ethanol,
+				100), null, DCHeatTier.WARM, (ItemStack) null, new FluidStack(FluidRegistry.WATER,
+						1000), null, new Object[] {
+								"listAllsugar"
+		});
+
+		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.ethanol,
+				250), null, DCHeatTier.WARM, (ItemStack) null, new FluidStack(FluidRegistry.WATER,
+						1000), null, new Object[] {
+								"dustStarch"
+		});
+
 		// 硝石
 		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.miscDust, 1,
 				6), null, 0, null, null, DCHeatTier.OVEN, (ItemStack) null, new FluidStack(MainInit.nitricAcid,

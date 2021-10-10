@@ -277,7 +277,7 @@ public class ItemColorPendant2 extends CharmItemBase implements IMagicCost {
 			int i = item.getItemDamage();
 			float f = (float) CoreConfigDC.harderMagicCostAmount;
 			if (i == 1 || i == 2 || i == 3) {
-				return f * 0.25F;
+				return f * 0.5F;
 			}
 		}
 		return 0;

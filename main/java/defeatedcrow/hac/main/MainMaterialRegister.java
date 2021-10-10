@@ -834,6 +834,28 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.sofaRed), "dcs_climate", "dcs_sofa_red", "build", 0, false);
 
+			MainInit.sofaGreen = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_green");
+			DCMaterialReg
+					.registerBlock(MainInit.sofaGreen, ClimateCore.PACKAGE_BASE + "_sofa_green", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.sofaGreen), "dcs_climate", "dcs_sofa_green", "build", 0, false);
+
+			MainInit.sofaPink = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_pink");
+			DCMaterialReg.registerBlock(MainInit.sofaPink, ClimateCore.PACKAGE_BASE + "_sofa_pink", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.sofaPink), "dcs_climate", "dcs_sofa_pink", "build", 0, false);
+
+			MainInit.sofaBlue = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_blue");
+			DCMaterialReg.registerBlock(MainInit.sofaBlue, ClimateCore.PACKAGE_BASE + "_sofa_blue", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.sofaBlue), "dcs_climate", "dcs_sofa_blue", "build", 0, false);
+
+			MainInit.sofaRattan = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_rattan");
+			DCMaterialReg
+					.registerBlock(MainInit.sofaRattan, ClimateCore.PACKAGE_BASE + "_sofa_rattan", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.sofaRattan), "dcs_climate", "dcs_sofa_rattan", "build", 0, false);
+
 			MainInit.stoolBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_black").setSmallAABB();
 			DCMaterialReg
 					.registerBlock(MainInit.stoolBlack, ClimateCore.PACKAGE_BASE + "_stool_black", ClimateMain.MOD_ID);

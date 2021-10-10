@@ -146,6 +146,10 @@ public class MainCreativeTabRegister {
 			MainInit.stoolRed.setCreativeTab(ClimateMain.build);
 			MainInit.sofaBlack.setCreativeTab(ClimateMain.build);
 			MainInit.sofaRed.setCreativeTab(ClimateMain.build);
+			MainInit.sofaGreen.setCreativeTab(ClimateMain.build);
+			MainInit.sofaPink.setCreativeTab(ClimateMain.build);
+			MainInit.sofaBlue.setCreativeTab(ClimateMain.build);
+			MainInit.sofaRattan.setCreativeTab(ClimateMain.build);
 			MainInit.stoolRattan.setCreativeTab(ClimateMain.build);
 			MainInit.chairWood.setCreativeTab(ClimateMain.build);
 			MainInit.chairMarble.setCreativeTab(ClimateMain.build);
