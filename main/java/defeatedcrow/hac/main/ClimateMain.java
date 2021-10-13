@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.Calendar;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.CreativeTabClimate;
 import defeatedcrow.hac.core.recipe.RecipeJsonMaker;
 import defeatedcrow.hac.food.item.brewing.MicrobeRegister;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -22,10 +23,17 @@ import defeatedcrow.hac.main.recipes.DCHeatTreatmentRegister;
 import defeatedcrow.hac.main.recipes.DCInfoDataRegister;
 import defeatedcrow.hac.main.recipes.FoodBrewingRecipeRegister;
 import defeatedcrow.hac.main.recipes.OreDicRegister;
+import defeatedcrow.hac.main.tabs.CreativeTabClimateBuild;
+import defeatedcrow.hac.main.tabs.CreativeTabClimateContainer;
+import defeatedcrow.hac.main.tabs.CreativeTabClimateEquips;
+import defeatedcrow.hac.main.tabs.CreativeTabClimateFood;
+import defeatedcrow.hac.main.tabs.CreativeTabClimateFoodAdv;
+import defeatedcrow.hac.main.tabs.CreativeTabClimateMachine;
+import defeatedcrow.hac.main.tabs.CreativeTabClimateMagic;
+import defeatedcrow.hac.main.tabs.CreativeTabClimateTool;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.main.worldgen.vein.VeinTableRegister;
 import defeatedcrow.hac.plugin.DCIntegrationCore;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -59,14 +67,14 @@ public class ClimateMain {
 	@Instance("dcs_climate")
 	public static ClimateMain instance;
 
-	public static final CreativeTabs tool = new CreativeTabClimateTool(MOD_ID);
-	public static final CreativeTabs machine = new CreativeTabClimateMachine(MOD_ID + "_machine");
-	public static final CreativeTabs food = new CreativeTabClimateFood(MOD_ID + "_food");
-	public static final CreativeTabs food_adv = new CreativeTabClimateFoodAdv(MOD_ID + "_food_adv");
-	public static final CreativeTabs build = new CreativeTabClimateBuild(MOD_ID + "_build");
-	public static final CreativeTabs cont = new CreativeTabClimateContainer(MOD_ID + "_container");
-	public static final CreativeTabs cloth = new CreativeTabClimateEquips(MOD_ID + "_clothing");
-	public static final CreativeTabs magic = new CreativeTabClimateMagic(MOD_ID + "_magic");
+	public static final CreativeTabClimate tool = new CreativeTabClimateTool(MOD_ID);
+	public static final CreativeTabClimate machine = new CreativeTabClimateMachine(MOD_ID + "_machine");
+	public static final CreativeTabClimate food = new CreativeTabClimateFood(MOD_ID + "_food");
+	public static final CreativeTabClimate food_adv = new CreativeTabClimateFoodAdv(MOD_ID + "_food_adv");
+	public static final CreativeTabClimate build = new CreativeTabClimateBuild(MOD_ID + "_build");
+	public static final CreativeTabClimate cont = new CreativeTabClimateContainer(MOD_ID + "_container");
+	public static final CreativeTabClimate cloth = new CreativeTabClimateEquips(MOD_ID + "_clothing");
+	public static final CreativeTabClimate magic = new CreativeTabClimateMagic(MOD_ID + "_magic");
 
 	public static final Calendar CAL = Calendar.getInstance();
 	public static int month = 0;
@@ -143,10 +151,10 @@ public class ClimateMain {
 		// other things
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 
-		DCIntegrationCore.INSTANCE.loadInit();
-
 		// Recipes
 		proxy.loadRecipes();
+
+		DCIntegrationCore.INSTANCE.loadInit();
 	}
 
 	@EventHandler

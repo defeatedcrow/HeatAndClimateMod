@@ -182,7 +182,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 		case 0:
 			return 1;
 		case 1:
-			return 3;
+			return -1;
 		case 2:
 			return 8;
 		case 3:
@@ -207,7 +207,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 				// BLUE-GREEN
 				if (meta == 0 && player.isSneaking()) {
 					effect -= 1.0F;
-					limit += MathHelper.floor(effect * 2);
+					limit += MathHelper.floor(effect * 2F);
 					if (!world.isRemote) {
 						if (hasCoord(stack, pos)) {
 							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
@@ -219,8 +219,8 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 								DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
 										.getY() + 0.5D,
 										pos.getZ() + 0.5D));
-								addCoord(stack, player, pos, 1, false);
-								DCUtil.playerConsumeCharm(player, stack);
+								if (addCoord(stack, player, pos, limit, false))
+									DCUtil.playerConsumeCharm(player, stack);
 							}
 						}
 					}
@@ -230,31 +230,24 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 				}
 				// GREEN-BLACK
 				else if (meta == 1) {
-					effect -= 1.0F;
-					limit += MathHelper.floor(effect * 2);
-					if (getCount(stack) < limit) {
-						if (DCUtil.playerCanUseCharm(player, stack)) {
-							EntityCrowDoll doll = new EntityCrowDoll(world);
-							doll.setlimit(1200);
-							doll.setOwnerId(player.getUniqueID());
-							double fX = facing.getFrontOffsetX() * 0.25D;
-							double fY = facing.getFrontOffsetY() * 0.25D;
-							double fZ = facing.getFrontOffsetZ() * 0.25D;
-							doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
-									.getY() + hitY + fY, pos.getZ() + hitZ + fZ, player.rotationYaw, 0F);
-							if (!world.isRemote) {
-								world.spawnEntity(doll);
-							}
-							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-									.getY() + 0.5D,
-									pos.getZ() + 0.5D));
-							world.playSound(player, pos, SoundEvents.BLOCK_NOTE_GUITAR, SoundCategory.BLOCKS, 0.5F, 1.5F);
-							addCount(stack, limit, 1);
-							DCUtil.playerConsumeCharm(player, stack);
+					if (DCUtil.playerCanUseCharm(player, stack)) {
+						EntityCrowDoll doll = new EntityCrowDoll(world);
+						int lim = MathHelper.floor(600 * effect);
+						doll.setlimit(lim);
+						doll.setOwnerId(player.getUniqueID());
+						double fX = facing.getFrontOffsetX() * 0.25D;
+						double fY = facing.getFrontOffsetY() * 0.25D;
+						double fZ = facing.getFrontOffsetZ() * 0.25D;
+						doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
+								.getY() + hitY + fY, pos.getZ() + hitZ + fZ, player.rotationYaw, 0F);
+						if (!world.isRemote) {
+							world.spawnEntity(doll);
 						}
-					} else {
-						String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
-						player.sendMessage(new TextComponentString(String.format(mes1)));
+						DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+								.getY() + 0.5D,
+								pos.getZ() + 0.5D));
+						world.playSound(player, pos, SoundEvents.BLOCK_NOTE_GUITAR, SoundCategory.BLOCKS, 0.5F, 1.5F);
+						DCUtil.playerConsumeCharm(player, stack);
 					}
 					return EnumActionResult.SUCCESS;
 				}
@@ -447,20 +440,21 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 							player.sendMessage(new TextComponentString(String.format(mes1)));
 						}
 					}
+				} else {
+					String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
+					player.sendMessage(new TextComponentString(String.format(mes1)));
+					return false;
 				}
-				int time = (DCTimeHelper.getDay(player.world) * 24) + DCTimeHelper.currentTime(player.world);
-				map.put(add, time);
-				stack.setTagCompound(setPosList(tag, map));
-
-				if (player != null) {
-					String mes2 = I18n.format("dcs.comment.color_gauntlet2.add") + " " + add.toString();
-					player.sendMessage(new TextComponentString(String.format(mes2)));
-				}
-				return true;
-			} else {
-				String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
-				player.sendMessage(new TextComponentString(String.format(mes1)));
 			}
+			int time = (DCTimeHelper.getDay(player.world) * 24) + DCTimeHelper.currentTime(player.world);
+			map.put(add, time);
+			stack.setTagCompound(setPosList(tag, map));
+
+			if (player != null) {
+				String mes2 = I18n.format("dcs.comment.color_gauntlet2.add") + " " + add.toString();
+				player.sendMessage(new TextComponentString(String.format(mes2)));
+			}
+			return true;
 		}
 		return false;
 	}

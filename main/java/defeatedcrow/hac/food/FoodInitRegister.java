@@ -109,6 +109,7 @@ import defeatedcrow.hac.food.item.brewing.ItemResidue;
 import defeatedcrow.hac.food.item.brewing.ItemRoseWaterBottle;
 import defeatedcrow.hac.food.item.brewing.ItemUnidentified;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.fluid.DCFluidBlockBase;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.util.ResourceLocation;
@@ -731,125 +732,136 @@ public class FoodInitRegister {
 	}
 
 	static void loadCreativeTab() {
-		FoodInit.bread.setCreativeTab(ClimateMain.food);
-		FoodInit.pizza.setCreativeTab(ClimateMain.food);
-		FoodInit.cookie.setCreativeTab(ClimateMain.food);
-		FoodInit.sticks.setCreativeTab(ClimateMain.food);
-		FoodInit.pastryRound.setCreativeTab(ClimateMain.food);
-		FoodInit.pastrySquare.setCreativeTab(ClimateMain.food);
-		FoodInit.sandwich.setCreativeTab(ClimateMain.food);
-		FoodInit.clubsandwich.setCreativeTab(ClimateMain.food);
 
-		FoodInit.ricebowl.setCreativeTab(ClimateMain.food);
-		FoodInit.mochi.setCreativeTab(ClimateMain.food);
+		// materials
+		ClimateMain.food.addSubItem(FoodInit.crops);
+		ClimateMain.food.addSubItem(FoodInit.seeds);
+		ClimateMain.food.addSubItem(FoodInit.teaLeaves);
+		ClimateMain.food.addSubItem(FoodInit.petals);
 
-		FoodInit.plateMeal.setCreativeTab(ClimateMain.food);
-		FoodInit.plateSoup.setCreativeTab(ClimateMain.food);
-		FoodInit.bowlSoup.setCreativeTab(ClimateMain.food);
-		FoodInit.salad.setCreativeTab(ClimateMain.food);
-		FoodInit.cake.setCreativeTab(ClimateMain.food);
-		FoodInit.icecream.setCreativeTab(ClimateMain.food);
-		FoodInit.wagashi.setCreativeTab(ClimateMain.food);
-		FoodInit.snack.setCreativeTab(ClimateMain.food);
-		FoodInit.deepFry.setCreativeTab(ClimateMain.food);
-		FoodInit.dishBig.setCreativeTab(ClimateMain.food);
-		FoodInit.dishSq.setCreativeTab(ClimateMain.food);
-		FoodInit.setMeal.setCreativeTab(ClimateMain.food);
-		FoodInit.curry.setCreativeTab(ClimateMain.food);
-		FoodInit.udon.setCreativeTab(ClimateMain.food);
-		FoodInit.pasta.setCreativeTab(ClimateMain.food);
-		FoodInit.drink.setCreativeTab(ClimateMain.food);
-		FoodInit.dip.setCreativeTab(ClimateMain.food);
-		FoodInit.yogurt.setCreativeTab(ClimateMain.food);
+		ClimateMain.food.addSubItem(MainInit.foodMaterials);
+		ClimateMain.food.addSubItem(MainInit.foodDust);
+		ClimateMain.food.addSubItem(MainInit.animalFeed);
 
-		FoodInit.nonEntity.setCreativeTab(ClimateMain.food);
+		ClimateMain.food.addSubItem(FoodInit.dropOil);
+		ClimateMain.food.addSubItem(FoodInit.dropCream);
+		ClimateMain.food.addSubItem(FoodInit.paperPack);
 
-		FoodInit.crops.setCreativeTab(ClimateMain.food);
-		FoodInit.seeds.setCreativeTab(ClimateMain.food);
-		FoodInit.teaLeaves.setCreativeTab(ClimateMain.food);
-		FoodInit.petals.setCreativeTab(ClimateMain.food);
+		ClimateMain.food.addSubItem(FoodInit.meat);
+		ClimateMain.food.addSubItem(FoodInit.dairy);
+		ClimateMain.food.addSubItem(FoodInit.pastry);
+		ClimateMain.food.addSubItem(FoodInit.spices);
 
-		FoodInit.dropOil.setCreativeTab(ClimateMain.food);
-		FoodInit.dropCream.setCreativeTab(ClimateMain.food);
-		FoodInit.paperPack.setCreativeTab(ClimateMain.food);
+		ClimateMain.food.addSubItem(FoodInit.cutlery);
+		ClimateMain.food.addSubItem(FoodInit.cupSilver);
+		ClimateMain.food.addSubItem(FoodInit.steakplate);
+		ClimateMain.food.addSubItem(FoodInit.dish);
 
-		FoodInit.meat.setCreativeTab(ClimateMain.food);
-		FoodInit.dairy.setCreativeTab(ClimateMain.food);
-		FoodInit.pastry.setCreativeTab(ClimateMain.food);
-		FoodInit.spices.setCreativeTab(ClimateMain.food);
+		// reactor
+		ClimateMain.food.addSubItem(FoodInit.potteryPot);
+		ClimateMain.food.addSubItem(FoodInit.skillet);
+		ClimateMain.food.addSubItem(FoodInit.steelPot);
+		ClimateMain.food.addSubItem(FoodInit.teaPot);
+		ClimateMain.cloth.addSubItem(FoodInit.silkwormBox);
 
-		FoodInit.cupSilver.setCreativeTab(ClimateMain.food);
-		FoodInit.steakplate.setCreativeTab(ClimateMain.food);
+		// foods
+		ClimateMain.food.addSubItem(MainInit.bakedApple);
+		ClimateMain.food.addSubItem(FoodInit.nonEntity);
+		ClimateMain.food.addSubItem(FoodInit.bread);
+		ClimateMain.food.addSubItem(FoodInit.pizza);
+		ClimateMain.food.addSubItem(FoodInit.cookie);
+		ClimateMain.food.addSubItem(FoodInit.pastryRound);
+		ClimateMain.food.addSubItem(FoodInit.pastrySquare);
+		ClimateMain.food.addSubItem(FoodInit.sandwich);
+		ClimateMain.food.addSubItem(FoodInit.clubsandwich);
+		ClimateMain.food.addSubItem(FoodInit.ricebowl);
+		ClimateMain.food.addSubItem(FoodInit.mochi);
 
-		FoodInit.potteryPot.setCreativeTab(ClimateMain.food);
-		FoodInit.skillet.setCreativeTab(ClimateMain.food);
-		FoodInit.steelPot.setCreativeTab(ClimateMain.food);
-		FoodInit.teaPot.setCreativeTab(ClimateMain.food);
-		FoodInit.silkwormBox.setCreativeTab(ClimateMain.cloth);
+		ClimateMain.food.addSubItem(FoodInit.sticks);
+		ClimateMain.food.addSubItem(FoodInit.plateMeal);
+		ClimateMain.food.addSubItem(FoodInit.plateSoup);
+		ClimateMain.food.addSubItem(FoodInit.bowlSoup);
+		ClimateMain.food.addSubItem(FoodInit.snack);
+		ClimateMain.food.addSubItem(FoodInit.deepFry);
+		ClimateMain.food.addSubItem(FoodInit.dishBig);
+		ClimateMain.food.addSubItem(FoodInit.curry);
+		ClimateMain.food.addSubItem(FoodInit.udon);
+		ClimateMain.food.addSubItem(FoodInit.pasta);
+		ClimateMain.food.addSubItem(FoodInit.dishSq);
+		ClimateMain.food.addSubItem(FoodInit.salad);
+		ClimateMain.food.addSubItem(FoodInit.dip);
+		ClimateMain.food.addSubItem(FoodInit.setMeal);
+		ClimateMain.food.addSubItem(FoodInit.cake);
+		ClimateMain.food.addSubItem(FoodInit.icecream);
+		ClimateMain.food.addSubItem(FoodInit.wagashi);
+		ClimateMain.food.addSubItem(FoodInit.yogurt);
+		ClimateMain.food.addSubItem(FoodInit.drink);
 
-		if (ModuleConfig.agri) {
-			FoodInit.cropRice.setCreativeTab(ClimateMain.food);
-			FoodInit.cropOnion.setCreativeTab(ClimateMain.food);
-			FoodInit.cropSpinach.setCreativeTab(ClimateMain.food);
-			FoodInit.cropTomato.setCreativeTab(ClimateMain.food);
-			FoodInit.cropCoffee.setCreativeTab(ClimateMain.food);
-			FoodInit.cropCotton.setCreativeTab(ClimateMain.food);
-			FoodInit.cropLotusN.setCreativeTab(ClimateMain.food);
-			FoodInit.cropHerb.setCreativeTab(ClimateMain.food);
-			FoodInit.cropSeaweed.setCreativeTab(ClimateMain.food);
-			FoodInit.cropSoy.setCreativeTab(ClimateMain.food);
-			FoodInit.cropBean.setCreativeTab(ClimateMain.food);
-			FoodInit.cropChili.setCreativeTab(ClimateMain.food);
-			FoodInit.cropGarlic.setCreativeTab(ClimateMain.food);
-			FoodInit.cropLettuce.setCreativeTab(ClimateMain.food);
-			FoodInit.cropWisteria.setCreativeTab(ClimateMain.food);
-			FoodInit.cropGinger.setCreativeTab(ClimateMain.food);
-			FoodInit.cropGrape.setCreativeTab(ClimateMain.food);
+		// microbial
+		if (ModuleConfig.food_advanced) {
+			if (ModuleConfig.liquor)
+				ClimateMain.food_adv.addSubItem(FoodInit.liquorBottle);
+			ClimateMain.food_adv.addSubItem(FoodInit.roseWaterBottle);
+			ClimateMain.food_adv.addSubItem(FoodInit.essentialOil);
+			ClimateMain.food_adv.addSubItem(FoodInit.antibiotic);
+			ClimateMain.food_adv.addSubItem(FoodInit.chickInEgg);
+			ClimateMain.food_adv.addSubItem(FoodInit.baseFertilizer);
 
-			FoodInit.leavesOlive.setCreativeTab(ClimateMain.food);
-			FoodInit.leavesLemon.setCreativeTab(ClimateMain.food);
-			FoodInit.leavesTea.setCreativeTab(ClimateMain.food);
-			FoodInit.leavesMorus.setCreativeTab(ClimateMain.food);
-			FoodInit.leavesWalnut.setCreativeTab(ClimateMain.food);
-			FoodInit.leavesDates.setCreativeTab(ClimateMain.food);
-			FoodInit.leavesDatesCrop.setCreativeTab(ClimateMain.food);
+			ClimateMain.food_adv.addSubItem(FoodInit.incubator);
+			ClimateMain.food_adv.addSubItem(FoodInit.brewingTankWood);
+			ClimateMain.food_adv.addSubItem(FoodInit.brewingTank);
+			ClimateMain.food_adv.addSubItem(FoodInit.distillator);
+			ClimateMain.food_adv.addSubItem(FoodInit.barrel);
+			ClimateMain.food_adv.addSubItem(FoodInit.residue);
+			ClimateMain.food_adv.addSubItem(FoodInit.inoculum);
+			ClimateMain.food_adv.addSubItem(FoodInit.medium);
+			ClimateMain.food_adv.addSubItem(FoodInit.broth);
+
+			ClimateMain.food_adv.addSubItem(FoodInit.unidentified);
+			ClimateMain.food_adv.addSubItem(FoodInit.bacillus);
+			ClimateMain.food_adv.addSubItem(FoodInit.coliformes);
+			ClimateMain.food_adv.addSubItem(FoodInit.lab);
+			ClimateMain.food_adv.addSubItem(FoodInit.skin);
+			ClimateMain.food_adv.addSubItem(FoodInit.cyano);
+			ClimateMain.food_adv.addSubItem(FoodInit.beerYeast);
+			ClimateMain.food_adv.addSubItem(FoodInit.oryzae);
+			ClimateMain.food_adv.addSubItem(FoodInit.nether);
+			ClimateMain.food_adv.addSubItem(FoodInit.blueMold);
+			ClimateMain.food_adv.addSubItem(FoodInit.slimeMold);
+			ClimateMain.food_adv.addSubItem(FoodInit.mushroom);
+			ClimateMain.food_adv.addSubItem(FoodInit.methanogen);
 		}
 
-		FoodInit.saplings.setCreativeTab(ClimateMain.food);
-		FoodInit.saplings2.setCreativeTab(ClimateMain.food);
+		// crops
+		ClimateMain.food.addSubItem(FoodInit.saplings);
+		ClimateMain.food.addSubItem(FoodInit.saplings2);
 
-		FoodInit.dish.setCreativeTab(ClimateMain.build);
-		FoodInit.cutlery.setCreativeTab(ClimateMain.tool);
+		if (ModuleConfig.agri) {
+			ClimateMain.food.addSubItem(FoodInit.cropRice);
+			ClimateMain.food.addSubItem(FoodInit.cropOnion);
+			ClimateMain.food.addSubItem(FoodInit.cropSpinach);
+			ClimateMain.food.addSubItem(FoodInit.cropTomato);
+			ClimateMain.food.addSubItem(FoodInit.cropCoffee);
+			ClimateMain.food.addSubItem(FoodInit.cropCotton);
+			ClimateMain.food.addSubItem(FoodInit.cropLotusN);
+			ClimateMain.food.addSubItem(FoodInit.cropHerb);
+			ClimateMain.food.addSubItem(FoodInit.cropSeaweed);
+			ClimateMain.food.addSubItem(FoodInit.cropSoy);
+			ClimateMain.food.addSubItem(FoodInit.cropBean);
+			ClimateMain.food.addSubItem(FoodInit.cropChili);
+			ClimateMain.food.addSubItem(FoodInit.cropGarlic);
+			ClimateMain.food.addSubItem(FoodInit.cropLettuce);
+			ClimateMain.food.addSubItem(FoodInit.cropWisteria);
+			ClimateMain.food.addSubItem(FoodInit.cropGinger);
+			ClimateMain.food.addSubItem(FoodInit.cropGrape);
 
-		if (ModuleConfig.food_advanced) {
-			FoodInit.incubator.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.brewingTankWood.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.brewingTank.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.distillator.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.barrel.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.residue.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.inoculum.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.medium.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.broth.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.antibiotic.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.chickInEgg.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.unidentified.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.bacillus.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.coliformes.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.lab.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.skin.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.cyano.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.beerYeast.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.oryzae.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.nether.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.blueMold.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.slimeMold.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.mushroom.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.methanogen.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.liquorBottle.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.roseWaterBottle.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.essentialOil.setCreativeTab(ClimateMain.food_adv);
-			FoodInit.baseFertilizer.setCreativeTab(ClimateMain.food_adv);
+			ClimateMain.food.addSubItem(FoodInit.leavesOlive);
+			ClimateMain.food.addSubItem(FoodInit.leavesLemon);
+			ClimateMain.food.addSubItem(FoodInit.leavesTea);
+			ClimateMain.food.addSubItem(FoodInit.leavesMorus);
+			ClimateMain.food.addSubItem(FoodInit.leavesWalnut);
+			ClimateMain.food.addSubItem(FoodInit.leavesDates);
+			ClimateMain.food.addSubItem(FoodInit.leavesDatesCrop);
 		}
 	}
 

@@ -141,7 +141,11 @@ public class BlockSofaBase extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.FACING, LEFT, RIGHT });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.FACING,
+				LEFT,
+				RIGHT
+		});
 	}
 
 	@Override
@@ -228,7 +232,13 @@ public class BlockSofaBase extends BlockDC {
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
 			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
-		state = state.withProperty(DCState.FACING, placer.getHorizontalFacing());
+		if (placer != null) {
+			if (isSmallAABB) {
+				state = state.withProperty(DCState.FACING, placer.getHorizontalFacing().getOpposite());
+			} else {
+				state = state.withProperty(DCState.FACING, placer.getHorizontalFacing());
+			}
+		}
 		return state;
 	}
 

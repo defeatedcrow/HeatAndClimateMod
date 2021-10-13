@@ -177,6 +177,7 @@ import defeatedcrow.hac.main.recipes.ArmorDyesRecipeDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.BlockContainerUtil;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
+import defeatedcrow.hac.main.tabs.MainCreativeTabRegister;
 import defeatedcrow.hac.main.util.DCRegistryUtil;
 import defeatedcrow.hac.main.villager.HaCTrade;
 import defeatedcrow.hac.main.villager.HaCTradeData;

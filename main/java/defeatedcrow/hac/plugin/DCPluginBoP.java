@@ -118,26 +118,27 @@ public class DCPluginBoP {
 		}
 
 		if (ModuleConfig.r_crusher) {
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
-					MainInit.animalFeed, 1, 2), 1F, new ItemStack(MainInit.foodDust, 1,
-							0), 0.25F, RegisterCrusherRecipe.SUS_Blade, "cropWildrice");
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
 					MainInit.animalFeed, 1, 2), 1F, new ItemStack(MainInit.foodDust, 1,
-							0), 0.25F, RegisterCrusherRecipe.SUS_Blade, "cropBarley");
+							0), 0.25F, null, RegisterCrusherRecipe.SUS_Blade, "cropWildrice");
 
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(
-					MainInit.animalFeed, 1, 2), 1F, RegisterCrusherRecipe.SUS_Blade, "plantReed");
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
+					MainInit.animalFeed, 1, 2), 1F, new ItemStack(MainInit.foodDust, 1,
+							0), 0.25F, null, RegisterCrusherRecipe.SUS_Blade, "cropBarley");
 
-			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(
-					MainInit.animalFeed, 1, 2), 1F, RegisterCrusherRecipe.SUS_Blade, new ItemStack(
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.animalFeed, 1, 2), new ItemStack(
+					MainInit.foodDust, 1, 1), 0.5F, null, RegisterCrusherRecipe.SUS_Blade, "plantReed");
+
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.animalFeed, 1, 2), new ItemStack(
+					MainInit.foodDust, 1, 1), 0.5F, null, RegisterCrusherRecipe.SUS_Blade, new ItemStack(
 							BOPBlocks.double_plant, 1, 3));
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(
-					MainInit.foodDust, 1, 1), 0.25F, RegisterCrusherRecipe.SUS_Blade, leaves);
+					MainInit.foodDust, 1, 1), 0.25F, null, RegisterCrusherRecipe.SUS_Blade, leaves);
 
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), new ItemStack(Items.SLIME_BALL,
-					1, 0), 0.25F, RegisterCrusherRecipe.SUS_Blade, new ItemStack(BOPBlocks.mud, 1, 0));
+					1, 0), 0.25F, null, RegisterCrusherRecipe.SUS_Blade, new ItemStack(BOPBlocks.mud, 1, 0));
 
 			if (DCIntegrationCore.loadedForestry && wax != null) {
 				RecipeAPI.registerCrushers.addRecipe(new ItemStack(wax, 1,

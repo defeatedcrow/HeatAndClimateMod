@@ -50,7 +50,7 @@ public class BlockMorayLight extends BlockTorqueBase {
 
 	public BlockMorayLight(String s) {
 		super(Material.GLASS, s, 0);
-		this.setResistance(30000.0F);
+		this.setResistance(3600.0F);
 		this.maxMeta = 0;
 		this.setBlockUnbreakable();
 	}

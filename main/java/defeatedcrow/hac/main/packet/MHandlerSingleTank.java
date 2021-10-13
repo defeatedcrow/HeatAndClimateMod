@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.packet;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.main.block.fluid.SidedFluidTankWrapper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -31,6 +32,10 @@ public class MHandlerSingleTank implements IMessageHandler<MessageSingleTank, IM
 						.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
 				if (handler != null && handler instanceof DCTank) {
 					DCTank tank = (DCTank) handler;
+					tank.setFluidByIdName(id1);
+					tank.setAmount(amo1);
+				} else if (handler != null && handler instanceof SidedFluidTankWrapper) {
+					DCTank tank = ((SidedFluidTankWrapper) handler).getTank();
 					tank.setFluidByIdName(id1);
 					tank.setAmount(amo1);
 				}

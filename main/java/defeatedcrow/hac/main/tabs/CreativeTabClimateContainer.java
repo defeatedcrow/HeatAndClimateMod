@@ -1,26 +1,27 @@
-package defeatedcrow.hac.main;
+package defeatedcrow.hac.main.tabs;
 
-import net.minecraft.creativetab.CreativeTabs;
+import defeatedcrow.hac.core.CreativeTabClimate;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CreativeTabClimateTool extends CreativeTabs {
+public class CreativeTabClimateContainer extends CreativeTabClimate {
 
 	// クリエイティブタブのアイコン画像や名称の登録クラス
-	public CreativeTabClimateTool(String type) {
+	public CreativeTabClimateContainer(String type) {
 		super(type);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getTranslatedTabLabel() {
-		return "HeatAndClimate:Tools";
+		return "HeatAndClimate:Containers";
 	}
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(MainInit.crowDrill);
+		return new ItemStack(MainInit.cropCont);
 	}
 
 }

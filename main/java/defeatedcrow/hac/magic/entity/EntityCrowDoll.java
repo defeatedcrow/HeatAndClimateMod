@@ -11,7 +11,6 @@ import com.google.common.base.Optional;
 
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -246,9 +245,13 @@ public class EntityCrowDoll extends EntityLivingBase {
 		}
 	}
 
+	public boolean canBreatheUnderwater() {
+		return true;
+	}
+
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (this.isEntityInvulnerable(source)) {
+		if (source == DamageSource.FALL || source == DamageSource.DROWN) {
 			return false;
 		} else {
 			amount -= 1.0F;
@@ -331,16 +334,16 @@ public class EntityCrowDoll extends EntityLivingBase {
 	}
 
 	public void setDead() {
-		if (!world.isRemote) {
-			UUID id = this.getOwnerId();
-			if (id != null) {
-				EntityPlayer owner = world.getPlayerEntityByUUID(id);
-				if (owner != null && MainUtil.getOffhandJewelColor(owner) == MagicColor.GREEN_BLACK) {
-					ItemStack held = owner.getHeldItemOffhand();
-					ItemColorGauntlet2.addCount(held, 3, -1);
-				}
-			}
-		}
+		// if (!world.isRemote) {
+		// UUID id = this.getOwnerId();
+		// if (id != null) {
+		// EntityPlayer owner = world.getPlayerEntityByUUID(id);
+		// if (owner != null && MainUtil.getOffhandJewelColor(owner) == MagicColor.GREEN_BLACK) {
+		// ItemStack held = owner.getHeldItemOffhand();
+		// ItemColorGauntlet2.addCount(held, 3, -1);
+		// }
+		// }
+		// }
 		super.setDead();
 	}
 

@@ -1,11 +1,12 @@
-package defeatedcrow.hac.main;
+package defeatedcrow.hac.main.tabs;
 
-import net.minecraft.creativetab.CreativeTabs;
+import defeatedcrow.hac.core.CreativeTabClimate;
+import defeatedcrow.hac.main.MainInit;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CreativeTabClimateMachine extends CreativeTabs {
+public class CreativeTabClimateMachine extends CreativeTabClimate {
 
 	// クリエイティブタブのアイコン画像や名称の登録クラス
 	public CreativeTabClimateMachine(String type) {

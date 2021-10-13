@@ -192,8 +192,9 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			super.onServerUpdate();
 		}
 		if (count <= 0) {
-			if (outputT1.getFluidAmount() != last) {
-				last = outputT1.getFluidAmount();
+			int f = outputT1.isEmpty() ? 0 : outputT1.getFluid().hashCode() + outputT1.getFluidAmount();
+			if (f != last) {
+				last = f;
 
 				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, outputT1.getFluidIdName(), outputT1
 						.getFluidAmount()));

@@ -24,7 +24,7 @@ public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, ITher
 		super(m, s, 7, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
-		this.setResistance(15.0F);
+		this.setResistance(30.0F);
 	}
 
 	@Override
@@ -32,7 +32,16 @@ public class BlockGemBricks extends DCSimpleBlock implements ITexturePath, ITher
 		return false;
 	}
 
-	private static String[] names = { "gypsum", "marble", "lime", "bedrock", "salt", "skarn", "hornfels", "greisen" };
+	private static String[] names = {
+			"gypsum",
+			"marble",
+			"lime",
+			"bedrock",
+			"salt",
+			"skarn",
+			"hornfels",
+			"greisen"
+	};
 
 	@Override
 	public String[] getNameSuffix() {
