@@ -94,6 +94,10 @@ public class ContainerFluidProcessor extends Container {
 		return this.processor.isUsableByPlayer(playerIn);
 	}
 
+	/**
+	 * @date 2021.09.24
+	 * @author Fixed by SkyTheory
+	 */
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;

@@ -84,6 +84,7 @@ import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileChandelierSalt;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileDisplayStand;
+import defeatedcrow.hac.main.block.build.TileDoorHikido;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMCClock_L;
 import defeatedcrow.hac.main.block.build.TileMFence;
@@ -93,7 +94,9 @@ import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
+import defeatedcrow.hac.main.block.build.TileTatami;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
+import defeatedcrow.hac.main.block.build.TileWindowBlinds;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileCraftingCounter;
@@ -141,6 +144,9 @@ import defeatedcrow.hac.main.entity.EntityIronBullet;
 import defeatedcrow.hac.main.entity.EntityLightBullet;
 import defeatedcrow.hac.main.entity.EntityShotgunBullet;
 import defeatedcrow.hac.main.entity.EntitySilverBullet;
+import defeatedcrow.hac.main.entity.EntitySmallCushionA;
+import defeatedcrow.hac.main.entity.EntitySmallCushionB;
+import defeatedcrow.hac.main.entity.EntitySmallCushionC;
 import defeatedcrow.hac.main.entity.EntityThrowingArrow;
 import defeatedcrow.hac.main.event.AchievementEventDC;
 import defeatedcrow.hac.main.event.AnvilMoldEvent;
@@ -171,6 +177,7 @@ import defeatedcrow.hac.main.recipes.ArmorDyesRecipeDC;
 import defeatedcrow.hac.main.recipes.BasicRecipeRegister;
 import defeatedcrow.hac.main.recipes.BlockContainerUtil;
 import defeatedcrow.hac.main.recipes.MachineRecipeRegister;
+import defeatedcrow.hac.main.tabs.MainCreativeTabRegister;
 import defeatedcrow.hac.main.util.DCRegistryUtil;
 import defeatedcrow.hac.main.villager.HaCTrade;
 import defeatedcrow.hac.main.villager.HaCTradeData;
@@ -478,6 +485,12 @@ public class CommonMainProxy implements IGuiHandler {
 
 		DCRegistryUtil.addEntity(EntityBigCushionBrown.class, "main", "big_cushion_brown");
 
+		DCRegistryUtil.addEntity(EntitySmallCushionA.class, "main", "small_cushion_red");
+
+		DCRegistryUtil.addEntity(EntitySmallCushionB.class, "main", "small_cushion_blue");
+
+		DCRegistryUtil.addEntity(EntitySmallCushionC.class, "main", "small_cushion_straw");
+
 		DCRegistryUtil.addEntity(EntityThrowingArrow.class, "main", "bullet_arrow", 1);
 
 		DCRegistryUtil.addEntity(EntityFlowerBolt.class, "main", "bullet_flower", 1);
@@ -530,6 +543,9 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net");
 		GameRegistry.registerTileEntity(TileDisplayStand.class, "dcs_te_display_stand");
 		GameRegistry.registerTileEntity(TileSwedishTorch.class, "dcs_te_swedish_torch");
+		GameRegistry.registerTileEntity(TileTatami.class, "dcs_te_carpet_tatami");
+		GameRegistry.registerTileEntity(TileDoorHikido.class, "dcs_te_door_hikido");
+		GameRegistry.registerTileEntity(TileWindowBlinds.class, "dcs_te_curtain_blinds");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();

@@ -95,7 +95,10 @@ public class CaravanGenEvent {
 				IBlockState s4 = world.getBlockState(pos.add(7, -4, 7));
 				CaravanType type = CaravanType.getType(s2.getBlock());
 				if (type == CaravanType.BROKEN) {
-					type = CaravanType.getType(s4.getBlock());
+					CaravanType type2 = CaravanType.getType(s4.getBlock());
+					if (type2 != CaravanType.BROKEN) {
+						type = type2;
+					}
 				}
 
 				if (getSeason(s1) != null && type != CaravanType.BROKEN) {
@@ -217,7 +220,13 @@ public class CaravanGenEvent {
 	}
 
 	private void updateInterior0(World world, BlockPos pos, Random rand, EnumFacing face, CaravanType type) {
-		int[] i = { 0, 3, 7, 11, 14 };
+		int[] i = {
+				0,
+				3,
+				7,
+				11,
+				14
+		};
 		for (int x : i) {
 			BlockPos p1 = rotate(pos, x, 1, 8, face);
 			BlockPos p2 = rotate(pos, x + 1, 1, 8, face);

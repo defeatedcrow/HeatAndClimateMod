@@ -45,7 +45,7 @@ public class BlockScaffold extends DCSimpleBlock implements ITexturePath, IRapid
 		super(m, s, 0, false);
 		this.setTickRandomly(false);
 		this.setHardness(0.1F);
-		this.setResistance(15.0F);
+		this.setResistance(5.0F);
 	}
 
 	@Override
@@ -78,7 +78,9 @@ public class BlockScaffold extends DCSimpleBlock implements ITexturePath, IRapid
 		return 0;
 	}
 
-	private static String[] names = { "wood" };
+	private static String[] names = {
+			"wood"
+	};
 
 	@Override
 	public String[] getNameSuffix() {

@@ -97,7 +97,26 @@ public class MainUtil {
 	}
 
 	public static ItemStack getGem(Item gem, int meta) {
-		return new ItemStack(gem, 1, meta);
+		if (meta < 4) {
+			return new ItemStack(MainInit.gems_red, 1, meta);
+		}
+		if (meta < 9) {
+			int m = meta - 4;
+			return new ItemStack(MainInit.gems_green, 1, m);
+		}
+		if (meta < 15) {
+			int m = meta - 9;
+			return new ItemStack(MainInit.gems_blue, 1, m);
+		}
+		if (meta < 21) {
+			int m = meta - 15;
+			return new ItemStack(MainInit.gems_white, 1, m);
+		}
+		if (meta < 27) {
+			int m = meta - 21;
+			return new ItemStack(MainInit.gems_black, 1, m);
+		}
+		return new ItemStack(MainInit.gems_red, 1, 1);
 	}
 
 	public static ItemStack getRandomGem(int i) {

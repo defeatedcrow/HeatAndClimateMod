@@ -416,8 +416,8 @@ public class EntityFlowerTurret extends DCEntityBase {
 		return (UUID) ((Optional) this.dataManager.get(OWNER_UNIQUE_ID)).orNull();
 	}
 
-	public void setOwnerId(@Nullable UUID p_184754_1_) {
-		this.dataManager.set(OWNER_UNIQUE_ID, Optional.fromNullable(p_184754_1_));
+	public void setOwnerId(@Nullable UUID id) {
+		this.dataManager.set(OWNER_UNIQUE_ID, Optional.fromNullable(id));
 	}
 
 	public void setTamedBy(EntityPlayer player) {

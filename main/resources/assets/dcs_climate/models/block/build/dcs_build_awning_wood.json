@@ -55,5 +55,12 @@
                 "east":  { "uv": [ 0, 0, 16, 1 ], "texture": "#wood", "cullface": "east" }
             }
         }
-    ]
+    ],
+    "display": {
+        "gui": {
+            "rotation": [30, 225, 0],
+            "translation": [0, 3, 0],
+            "scale": [0.68, 0.68, 0.68]
+        }
+    }
 }

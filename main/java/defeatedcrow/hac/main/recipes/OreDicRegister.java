@@ -368,8 +368,11 @@ public class OreDicRegister {
 		OreDictionary.registerOre("containerSoycake", new ItemStack(MainInit.dustCake, 1, 4));
 		OreDictionary.registerOre("containerDraff", new ItemStack(MainInit.dustCake, 1, 5));
 
+		OreDictionary.registerOre("blockStraw", new ItemStack(MainInit.strawBlock, 1, 0));
+
 		OreDictionary.registerOre("feedCompound", new ItemStack(MainInit.animalFeed, 1, 0));
 		OreDictionary.registerOre("feedHay", new ItemStack(MainInit.animalFeed, 1, 1));
+		OreDictionary.registerOre("feedStraw", new ItemStack(MainInit.animalFeed, 1, 2));
 
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));

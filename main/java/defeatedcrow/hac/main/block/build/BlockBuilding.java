@@ -50,18 +50,19 @@ public class BlockBuilding extends DCSimpleBlock implements ITexturePath {
 	}
 
 	private static String[] names = {
-		"concrete",
-		"mosaic_red",
-		"mosaic_blue",
-		"mosaic_yellow",
-		"mosaic_black",
-		"road",
-		"plaster",
-		"dirtbrick",
-		"flintbrick",
-		"flintbrick_gray",
-		"flintbrick_red",
-		"rattan" };
+			"concrete",
+			"mosaic_red",
+			"mosaic_blue",
+			"mosaic_yellow",
+			"mosaic_black",
+			"road",
+			"plaster",
+			"dirtbrick",
+			"flintbrick",
+			"flintbrick_gray",
+			"flintbrick_red",
+			"rattan"
+	};
 
 	@Override
 	public String[] getNameSuffix() {

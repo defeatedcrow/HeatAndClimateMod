@@ -102,17 +102,34 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 
 	@Override
 	protected int[] slotsTop() {
-		return new int[] { 0, 1, 6 };
+		return new int[] {
+				0,
+				1,
+				6
+		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
-		return new int[] { 2, 3, 4, 5 };
+		return new int[] {
+				2,
+				3,
+				4,
+				5
+		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+		};
 	};
 
 	@Override
@@ -175,8 +192,9 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			super.onServerUpdate();
 		}
 		if (count <= 0) {
-			if (outputT1.getFluidAmount() != last) {
-				last = outputT1.getFluidAmount();
+			int f = outputT1.isEmpty() ? 0 : outputT1.getFluid().hashCode() + outputT1.getFluidAmount();
+			if (f != last) {
+				last = f;
 
 				DCMainPacket.INSTANCE.sendToAll(new MessageSingleTank(pos, outputT1.getFluidIdName(), outputT1
 						.getFluidAmount()));
@@ -383,6 +401,11 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			// 2: item required
 			ItemStack slot = inventory.getStackInSlot(0);
 			if (currentRecipe.matches(slot)) {
+				ItemStack cont = slot.getItem().getContainerItem(slot);
+				if (DCUtil.isEmpty(tert) && !DCUtil.isEmpty(cont)) {
+					tert = cont.copy();
+					chance2 = 100;
+				}
 				int consume = consumeAmo(slot);
 				this.decrStackSize(0, consume);
 			} else {

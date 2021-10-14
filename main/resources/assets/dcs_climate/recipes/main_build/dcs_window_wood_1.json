@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_window_wood",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dyeWhite"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_window_wood",
+  "count": 1,
+  "data": 1
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "build_advanced"
+  }
+ ]
+}

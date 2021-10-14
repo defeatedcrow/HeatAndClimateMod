@@ -132,6 +132,8 @@ public class RegisterMillRecipe {
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "treeLeaves");
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), new ItemStack(Items.POISONOUS_POTATO,
 				1, 0));
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "feedHay");
+		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodDust, 1, 1), "feedStraw");
 
 		// 以下バニラ
 		RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.miscDust, 4, 3), "logWood");
@@ -186,7 +188,11 @@ public class RegisterMillRecipe {
 
 		// food
 		if (ModuleConfig.food) {
-			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), "seedRice");
+			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.seeds, 1, 0), new ItemStack(MainInit.animalFeed, 1,
+					2), 1F, "cropRice");
+
+			RecipeAPI.registerMills.addRecipe(new ItemStack(MainInit.foodMaterials, 1, 2), new ItemStack(
+					MainInit.foodDust, 1, 0), 0.25F, "seedRice");
 
 			RecipeAPI.registerMills.addRecipe(new ItemStack(FoodInit.dropOil, 1, 0), new ItemStack(MainInit.miscDust, 1,
 					4), 0.25F, new ItemStack(FoodInit.seeds, 2, 5));

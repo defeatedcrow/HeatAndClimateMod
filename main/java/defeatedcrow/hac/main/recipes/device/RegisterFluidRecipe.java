@@ -240,7 +240,7 @@ public class RegisterFluidRecipe {
 			regNonFoodRecipe(new ItemStack(FoodInit.crops, 1,
 					18), null, 0F, null, DCHeatTier.BOIL, null, null, false, new FluidStack(FluidRegistry.WATER,
 							200), new Object[] {
-									"treeSapling",
+									"feedStraw",
 									"dustAsh"
 			});
 
@@ -1399,15 +1399,13 @@ public class RegisterFluidRecipe {
 			});
 
 			regBoilRecipe(new ItemStack(FoodInit.drink, 1, 6), null, 0F, null, null, null, false, new FluidStack(
-					MainInit.milk, 500), new Object[] {
-							new ItemStack(FoodInit.liquorBottle, 1, 2),
+					FoodInit.wine, 500), new Object[] {
 							"cropLemon",
 							"listAllspice"
 			});
 
 			regBoilRecipe(new ItemStack(FoodInit.drink, 1, 6), null, 0F, null, null, null, false, new FluidStack(
-					MainInit.milk, 500), new Object[] {
-							new ItemStack(FoodInit.liquorBottle, 1, 2),
+					FoodInit.wine, 500), new Object[] {
 							"listAllcitrus",
 							"listAllspice"
 			});

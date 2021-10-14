@@ -23,7 +23,7 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, I
 	public BlockGlassSelenite(String s, int max) {
 		super(Material.GLASS, s, max, false);
 		this.setHardness(0.5F);
-		this.setResistance(10.0F);
+		this.setResistance(15.0F);
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -35,7 +35,12 @@ public class BlockGlassSelenite extends DCSimpleBlock implements ITexturePath, I
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = { "normal", "light", "half", "crystal" };
+		String[] name = {
+				"normal",
+				"light",
+				"half",
+				"crystal"
+		};
 		return name;
 	}
 

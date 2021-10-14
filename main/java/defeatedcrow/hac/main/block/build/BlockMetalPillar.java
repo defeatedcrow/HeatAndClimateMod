@@ -20,7 +20,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -35,8 +34,7 @@ public class BlockMetalPillar extends BlockDC {
 	// public static final PropertyBool SOUTH = PropertyBool.create("south");
 	// public static final PropertyBool WEST = PropertyBool.create("west");
 
-	public static final PropertyEnum<EnumFacing.Axis> AXIS =
-			PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
+	public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
 
 	public BlockMetalPillar(String s) {
 		super(Material.CLAY, s);
@@ -44,11 +42,7 @@ public class BlockMetalPillar extends BlockDC {
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(AXIS, EnumFacing.Axis.Y)
-		/*
-		 * .withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false))
-		 * .withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false))
-		 */);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(AXIS, EnumFacing.Axis.Y));
 	}
 
 	// additional state
@@ -140,55 +134,30 @@ public class BlockMetalPillar extends BlockDC {
 		return Item.getItemFromBlock(state.getBlock());
 	}
 
-	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		// EnumFacing.Axis axis = state.getValue(AXIS);
-		// if (axis != null) {
-		// if (axis == EnumFacing.Axis.X) {
-		// BlockPos n = pos.north();
-		// BlockPos s = pos.south();
-		// return state.withProperty(NORTH, this.canConnectTo(worldIn, n, EnumFacing.SOUTH)).withProperty(SOUTH,
-		// this.canConnectTo(worldIn, s, EnumFacing.NORTH));
-		// } else if (axis == EnumFacing.Axis.Z) {
-		// BlockPos w = pos.west();
-		// BlockPos e = pos.east();
-		// return state.withProperty(WEST, this.canConnectTo(worldIn, w, EnumFacing.EAST)).withProperty(EAST,
-		// this.canConnectTo(worldIn, e, EnumFacing.WEST));
-		// }
-		// }
-		return state/*
-					 * .withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false))
-					 * .withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false))
-					 */;
-	}
-
-	@Override
-	public IBlockState withRotation(IBlockState state, Rotation rot) {
-		switch (rot) {
-		case COUNTERCLOCKWISE_90:
-		case CLOCKWISE_90:
-
-			switch (state.getValue(AXIS)) {
-			case X:
-				return state.withProperty(AXIS, EnumFacing.Axis.Z);
-			case Z:
-				return state.withProperty(AXIS, EnumFacing.Axis.X);
-			default:
-				return state;
-			}
-
-		default:
-			return state;
-		}
-	}
+	// @Override
+	// public IBlockState withRotation(IBlockState state, Rotation rot) {
+	// switch (rot) {
+	// case COUNTERCLOCKWISE_90:
+	// case CLOCKWISE_90:
+	//
+	// switch (state.getValue(AXIS)) {
+	// case X:
+	// return state.withProperty(AXIS, EnumFacing.Axis.Z);
+	// case Z:
+	// return state.withProperty(AXIS, EnumFacing.Axis.X);
+	// default:
+	// return state;
+	// }
+	//
+	// default:
+	// return state;
+	// }
+	// }
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { AXIS
-				// NORTH,
-				// EAST,
-				// WEST,
-				// SOUTH
+		return new BlockStateContainer(this, new IProperty[] {
+				AXIS
 		});
 	}
 

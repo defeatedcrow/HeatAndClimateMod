@@ -1,9 +1,12 @@
 package defeatedcrow.hac.magic.client;
 
+import java.util.Random;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -16,7 +19,7 @@ public class ModelCrowDoll extends ModelBase {
 	private final ModelRenderer arrow;
 	private final ModelRenderer cube_r1;
 
-	public ModelCrowDoll(boolean baked) {
+	public ModelCrowDoll() {
 		super();
 
 		textureWidth = 64;
@@ -70,7 +73,16 @@ public class ModelCrowDoll extends ModelBase {
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
 			float headPitch, float scaleFactor, Entity entityIn) {
-		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+		this.body.rotateAngleZ = MathHelper.cos(limbSwing * 0.6662F) * 0.2F * limbSwingAmount;
+		this.leg1.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leg2.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+	}
+
+	@Override
+	public ModelRenderer getRandomModelBox(Random rand) {
+		// arrowに当たらないように
+		return body;
+
 	}
 
 }

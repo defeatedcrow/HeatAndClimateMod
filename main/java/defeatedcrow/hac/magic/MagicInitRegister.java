@@ -122,13 +122,13 @@ public class MagicInitRegister {
 					.registerItem(MagicInit.colorGauntlet2, ClimateCore.PACKAGE_BASE + "_color_gauntlet2", ClimateMain.MOD_ID);
 
 			MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
-					EntityEquipmentSlot.FEET, "blue").setCreativeTab(ClimateMain.magic)
+					EntityEquipmentSlot.FEET, "blue")
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_blue");
 			DCMaterialReg
 					.registerItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_BASE + "_gemboots_blue", ClimateMain.MOD_ID);
 
 			MagicInit.gemBootsFish = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
-					EntityEquipmentSlot.FEET, "green").setCreativeTab(ClimateMain.magic)
+					EntityEquipmentSlot.FEET, "green")
 							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_green");
 			DCMaterialReg
 					.registerItem(MagicInit.gemBootsFish, ClimateCore.PACKAGE_BASE + "_gemboots_green", ClimateMain.MOD_ID);
@@ -138,7 +138,7 @@ public class MagicInitRegister {
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_debug_gauntlet");
 				DCMaterialReg
 						.registerItem(MagicInit.debugGauntlet, ClimateCore.PACKAGE_BASE + "_debug_gauntlet", ClimateMain.MOD_ID);
-				MagicInit.debugGauntlet.setCreativeTab(ClimateMain.magic);
+				ClimateMain.magic.addSubItem(MagicInit.debugGauntlet);
 			}
 		}
 	}
@@ -215,46 +215,48 @@ public class MagicInitRegister {
 	}
 
 	static void loadCreativeTab() {
-		MagicInit.colorDrop.setCreativeTab(ClimateMain.magic);
+		ClimateMain.magic.addSubItem(MagicInit.colorDrop);
 
-		MagicInit.colorRing2.setCreativeTab(ClimateMain.magic);
-		MagicInit.colorPendant2.setCreativeTab(ClimateMain.magic);
-		MagicInit.magicCard.setCreativeTab(ClimateMain.magic);
+		ClimateMain.magic.addSubItem(MagicInit.magicCard);
+		if (ModuleConfig.magic_advanced) {
+			ClimateMain.magic.addSubItem(MagicInit.magicCard3);
+			ClimateMain.magic.addSubItem(MagicInit.magicCard2);
+		}
 
-		MagicInit.elestial.setCreativeTab(ClimateMain.magic);
-		MagicInit.colorCube.setCreativeTab(ClimateMain.magic);
-		MagicInit.expGem.setCreativeTab(ClimateMain.magic);
-		MagicInit.medallion.setCreativeTab(ClimateMain.magic);
-		MagicInit.lotusCandle.setCreativeTab(ClimateMain.magic);
-		MagicInit.lotusCandleBlack.setCreativeTab(ClimateMain.magic);
-
-		MagicInit.coldLamp.setCreativeTab(ClimateMain.magic);
-		MagicInit.biomeOrb.setCreativeTab(ClimateMain.magic);
-		MagicInit.smallLight.setCreativeTab(ClimateMain.magic);
-		MagicInit.morayLamp.setCreativeTab(ClimateMain.magic);
+		ClimateMain.magic.addSubItem(MagicInit.colorRing2);
+		ClimateMain.magic.addSubItem(MagicInit.colorPendant2);
 
 		if (ModuleConfig.magic_advanced) {
 
-			MagicInit.colorRing.setCreativeTab(ClimateMain.magic);
-			MagicInit.colorPendant.setCreativeTab(ClimateMain.magic);
-			MagicInit.colorBadge.setCreativeTab(ClimateMain.magic);
-			MagicInit.colorGauntlet.setCreativeTab(ClimateMain.magic);
-			MagicInit.colorGauntlet2.setCreativeTab(ClimateMain.magic);
-
-			MagicInit.magicCard3.setCreativeTab(ClimateMain.magic);
-			MagicInit.magicCard2.setCreativeTab(ClimateMain.magic);
-
-			MagicInit.pictureBlue.setCreativeTab(ClimateMain.magic);
-			MagicInit.pictureGreen.setCreativeTab(ClimateMain.magic);
-			MagicInit.pictureRed.setCreativeTab(ClimateMain.magic);
-			MagicInit.pictureBlack.setCreativeTab(ClimateMain.magic);
-			MagicInit.pictureWhite.setCreativeTab(ClimateMain.magic);
-
-			MagicInit.timeCage.setCreativeTab(ClimateMain.magic);
-
+			ClimateMain.magic.addSubItem(MagicInit.colorRing);
+			ClimateMain.magic.addSubItem(MagicInit.colorPendant);
+			ClimateMain.magic.addSubItem(MagicInit.colorBadge);
+			ClimateMain.magic.addSubItem(MagicInit.colorGauntlet);
+			ClimateMain.magic.addSubItem(MagicInit.colorGauntlet2);
 		}
 
-		// MagicInit.clusterIce.setCreativeTab(ClimateMain.magic);
-		// MagicInit.infernalFlame.setCreativeTab(ClimateMain.magic);
+		ClimateMain.magic.addSubItem(MagicInit.gemBootsBird);
+		ClimateMain.magic.addSubItem(MagicInit.gemBootsFish);
+
+		ClimateMain.magic.addSubItem(MagicInit.expGem);
+		ClimateMain.magic.addSubItem(MagicInit.elestial);
+		ClimateMain.magic.addSubItem(MagicInit.colorCube);
+
+		ClimateMain.magic.addSubItem(MagicInit.medallion);
+		ClimateMain.magic.addSubItem(MagicInit.lotusCandle);
+		ClimateMain.magic.addSubItem(MagicInit.lotusCandleBlack);
+
+		ClimateMain.magic.addSubItem(MagicInit.coldLamp);
+		ClimateMain.magic.addSubItem(MagicInit.biomeOrb);
+
+		if (ModuleConfig.magic_advanced) {
+			ClimateMain.magic.addSubItem(MagicInit.pictureBlue);
+			ClimateMain.magic.addSubItem(MagicInit.pictureGreen);
+			ClimateMain.magic.addSubItem(MagicInit.pictureRed);
+			ClimateMain.magic.addSubItem(MagicInit.pictureBlack);
+			ClimateMain.magic.addSubItem(MagicInit.pictureWhite);
+
+			ClimateMain.magic.addSubItem(MagicInit.timeCage);
+		}
 	}
 }

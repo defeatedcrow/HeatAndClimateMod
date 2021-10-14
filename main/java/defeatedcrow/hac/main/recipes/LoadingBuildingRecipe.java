@@ -477,14 +477,21 @@ public class LoadingBuildingRecipe {
 		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", 2, new ItemStack(MainInit.builds, 1,
 				6), new Object[] {
 						"dustLime",
-						"cropWheat",
+						"feedStraw",
 						"cropSeaweed"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", 3, new ItemStack(MainInit.builds, 1,
 				6), new Object[] {
 						"dustLime",
-						"foodBagasse",
+						"dustBagasse",
+						"cropSeaweed"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", 4, new ItemStack(MainInit.builds, 1,
+				6), new Object[] {
+						"dustLime",
+						"dustPlant",
 						"cropSeaweed"
 		});
 
@@ -656,6 +663,45 @@ public class LoadingBuildingRecipe {
 						new ItemStack(MainInit.roofSlate, 1, 0),
 						'Y',
 						"dyeBrown"
+		});
+
+		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.strawBlock, 1,
+				0), new Object[] {
+						"XX",
+						"XX",
+						'X',
+						"feedHay"
+		});
+
+		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main_build", 2, new ItemStack(MainInit.strawBlock, 1,
+				0), new Object[] {
+						"XX",
+						"XX",
+						'X',
+						"feedStraw"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", 3, new ItemStack(MainInit.strawBlock, 1,
+				0), new Object[] {
+						new ItemStack(MainInit.roofStraw, 1, 0)
+		});
+
+		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.roofStraw, 3,
+				0), new Object[] {
+						"  X",
+						" X ",
+						"X  ",
+						'X',
+						"blockStraw"
+		});
+
+		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main_build", 2, new ItemStack(MainInit.roofStraw, 3,
+				0), new Object[] {
+						"X  ",
+						" X ",
+						"  X",
+						'X',
+						"blockStraw"
 		});
 
 		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.scaffold, 16, 0), new Object[] {
@@ -1056,6 +1102,32 @@ public class LoadingBuildingRecipe {
 							"dyeYellow"
 			});
 
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.carpetTatami, 1,
+					0), new Object[] {
+							"Z",
+							"X",
+							"Y",
+							'X',
+							"blockStraw",
+							'Y',
+							"plankWood",
+							'Z',
+							"feedHay"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", 2, new ItemStack(MainInit.carpetTatami, 1,
+					0), new Object[] {
+							"Z",
+							"X",
+							"Y",
+							'X',
+							"blockStraw",
+							'Y',
+							"plankWood",
+							'Z',
+							"feedStraw"
+			});
+
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.sofaBlack, 1,
 					0), new Object[] {
 							" X ",
@@ -1066,7 +1138,7 @@ public class LoadingBuildingRecipe {
 							'Y',
 							"itemCloth",
 							'Z',
-							new ItemStack(Blocks.WOOL, 1, 32767)
+							"blockWool"
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.sofaRed, 1,
@@ -1079,7 +1151,56 @@ public class LoadingBuildingRecipe {
 							'Y',
 							"itemCloth",
 							'Z',
-							new ItemStack(Blocks.WOOL, 1, 32767)
+							"blockWool"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.sofaPink, 1,
+					0), new Object[] {
+							" X ",
+							"YYY",
+							"ZZZ",
+							'X',
+							"dyePink",
+							'Y',
+							"itemCloth",
+							'Z',
+							"blockWool"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.sofaGreen, 1,
+					0), new Object[] {
+							" X ",
+							"YYY",
+							"ZZZ",
+							'X',
+							"dyeGreen",
+							'Y',
+							"itemCloth",
+							'Z',
+							"blockWool"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.sofaBlue, 1,
+					0), new Object[] {
+							" X ",
+							"YYY",
+							"ZZZ",
+							'X',
+							"dyeBlue",
+							'Y',
+							"itemCloth",
+							'Z',
+							"blockWool"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.sofaRattan, 1,
+					0), new Object[] {
+							"YXY",
+							"YYY",
+							'X',
+							"itemCloth",
+							'Y',
+							"bunchVine"
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.stoolBlack, 1,
@@ -1497,6 +1618,17 @@ public class LoadingBuildingRecipe {
 							new ItemStack(Blocks.IRON_BARS, 1, 0)
 			});
 
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.doorHikido, 2,
+					0), new Object[] {
+							"XXX",
+							"YYY",
+							"XXX",
+							'X',
+							"stickWood",
+							'Y',
+							"paper"
+			});
+
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.realtimeClock, 1,
 					0), new Object[] {
 							"X",
@@ -1556,6 +1688,33 @@ public class LoadingBuildingRecipe {
 					MainInit.curtainBlue), new Object[] {
 							new ItemStack(MainInit.curtainWhite, 1, 0),
 							"dyeBlue"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.windowBlinds, 1,
+					0), new Object[] {
+							"XX",
+							"YY",
+							"YY",
+							'X',
+							"string",
+							'Y',
+							"ingotAluminum"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.windowWood, 1,
+					0), new Object[] {
+							"XYX",
+							"XYX",
+							'X',
+							"plankWood",
+							'Y',
+							"blockGlass"
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.windowWood, 1, 1), new Object[] {
+							new ItemStack(MainInit.windowWood, 1, 0),
+							"dyeWhite"
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.chestMetal, 1,
@@ -2002,6 +2161,42 @@ public class LoadingBuildingRecipe {
 					1), new Object[] {
 							new ItemStack(MainInit.cushionGray, 1, 0),
 							"dyeBrown"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.cushionGray, 1,
+					2), new Object[] {
+							"W",
+							"Y",
+							"X",
+							'X',
+							"itemCloth",
+							'Y',
+							"cropCotton",
+							'W',
+							"dyeRed"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.cushionGray, 1,
+					3), new Object[] {
+							"W",
+							"Y",
+							"X",
+							'X',
+							"itemCloth",
+							'Y',
+							"cropCotton",
+							'W',
+							"dyeBlue"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.cushionGray, 1,
+					4), new Object[] {
+							"YY",
+							"XX",
+							'X',
+							"cropCotton",
+							'Y',
+							"feedStraw"
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.itemBed, 1,

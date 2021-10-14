@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "YXY",
+  "YYY"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "itemCloth"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "bunchVine"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_sofa_rattan",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "build_advanced"
+  }
+ ]
+}

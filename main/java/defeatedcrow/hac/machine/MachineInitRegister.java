@@ -22,8 +22,8 @@ import defeatedcrow.hac.machine.block.BlockGearBox_SUS;
 import defeatedcrow.hac.machine.block.BlockHandCrank;
 import defeatedcrow.hac.machine.block.BlockHeatExchanger;
 import defeatedcrow.hac.machine.block.BlockHopperFilter;
-import defeatedcrow.hac.machine.block.BlockHopperFilterSUS;
 import defeatedcrow.hac.machine.block.BlockHopperFilterG;
+import defeatedcrow.hac.machine.block.BlockHopperFilterSUS;
 import defeatedcrow.hac.machine.block.BlockHopperFluid;
 import defeatedcrow.hac.machine.block.BlockHopperGold;
 import defeatedcrow.hac.machine.block.BlockHopperSilver;
@@ -93,6 +93,7 @@ import defeatedcrow.hac.machine.item.ItemSynthetic;
 import defeatedcrow.hac.machine.item.ItemTorqueChecker;
 import defeatedcrow.hac.machine.item.plating.ItemPlatingChrome;
 import defeatedcrow.hac.main.ClimateMain;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.MainMaterialRegister;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.block.Block;
@@ -460,109 +461,142 @@ public class MachineInitRegister {
 	}
 
 	static void loadCreativeTab() {
-		MachineInit.windmill.setCreativeTab(ClimateMain.machine);
-		MachineInit.windmill_l.setCreativeTab(ClimateMain.machine);
-		MachineInit.windmill_ex.setCreativeTab(ClimateMain.machine);
-		MachineInit.handcrank.setCreativeTab(ClimateMain.machine);
-		MachineInit.watermill.setCreativeTab(ClimateMain.machine);
-		MachineInit.boilerTurbine.setCreativeTab(ClimateMain.machine);
-		MachineInit.creativeBox.setCreativeTab(ClimateMain.machine);
 
-		MachineInit.shaft_s.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft_l.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft_t_a.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft_t_b.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft_x.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft_switch.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft3_s.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft3_l.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft3_t_a.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft3_t_b.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft3_x.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft3_switch.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft2_s.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft2_l.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft2_t_a.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft2_t_b.setCreativeTab(ClimateMain.machine);
-		MachineInit.shaft2_x.setCreativeTab(ClimateMain.machine);
-		MachineInit.gearbox.setCreativeTab(ClimateMain.machine);
-		MachineInit.gearbox2.setCreativeTab(ClimateMain.machine);
-		// MachineInit.piston.setCreativeTab(ClimateMain.machine);
+		ClimateMain.machine.addSubItem(MainInit.wrench);
+		ClimateMain.machine.addSubItem(MachineInit.torqueChecker);
+		ClimateMain.machine.addSubItem(MainInit.gears);
 
-		MachineInit.stonemill.setCreativeTab(ClimateMain.machine);
-		MachineInit.fan.setCreativeTab(ClimateMain.machine);
-		MachineInit.spinning.setCreativeTab(ClimateMain.machine);
-		// MachineInit.redbox.setCreativeTab(ClimateMain.machine);
-		MachineInit.catapult.setCreativeTab(ClimateMain.machine);
-		MachineInit.heatPump.setCreativeTab(ClimateMain.machine);
+		ClimateMain.machine.addSubItem(MachineInit.machimeMaterials);
+		ClimateMain.machine.addSubItem(MachineInit.reagent);
+		if (ModuleConfig.machine_advanced) {
+			ClimateMain.machine.addSubItem(MachineInit.synthetic);
+		}
 
-		MachineInit.hopperFilter.setCreativeTab(ClimateMain.machine);
-		MachineInit.hopperGold.setCreativeTab(ClimateMain.machine);
-		MachineInit.hopperFilterG.setCreativeTab(ClimateMain.machine);
-		MachineInit.hopperSilver.setCreativeTab(ClimateMain.machine);
-		MachineInit.conveyor.setCreativeTab(ClimateMain.machine);
-		MachineInit.faucet.setCreativeTab(ClimateMain.machine);
-		MachineInit.faucet_r.setCreativeTab(ClimateMain.machine);
-		MachineInit.faucet_sus.setCreativeTab(ClimateMain.machine);
-		MachineInit.IBC.setCreativeTab(ClimateMain.machine);
-		MachineInit.IBC_reactor.setCreativeTab(ClimateMain.machine);
-		MachineInit.hopperFluid.setCreativeTab(ClimateMain.machine);
-		MachineInit.torqueChecker.setCreativeTab(ClimateMain.machine);
-		MachineInit.machimeMaterials.setCreativeTab(ClimateMain.machine);
-
-		MachineInit.reagent.setCreativeTab(ClimateMain.machine);
-		MachineInit.slotCard.setCreativeTab(ClimateMain.machine);
-
-		MachineInit.fuelCont.setCreativeTab(ClimateMain.cont);
+		// climate
+		ClimateMain.machine.addSubItem(MainInit.swedishTorch);
+		ClimateMain.machine.addSubItem(MainInit.shitirin);
+		ClimateMain.machine.addSubItem(MainInit.firestand);
+		ClimateMain.machine.addSubItem(MainInit.chamber);
+		ClimateMain.machine.addSubItem(MainInit.fuelStove);
 
 		if (ModuleConfig.machine_advanced) {
-			MachineInit.burner.setCreativeTab(ClimateMain.machine);
-			MachineInit.dieselEngine.setCreativeTab(ClimateMain.machine);
-			MachineInit.motor.setCreativeTab(ClimateMain.machine);
-			MachineInit.dynamo.setCreativeTab(ClimateMain.machine);
-
-			MachineInit.waterPump.setCreativeTab(ClimateMain.machine);
-			MachineInit.pressMachine.setCreativeTab(ClimateMain.machine);
-			MachineInit.freezer.setCreativeTab(ClimateMain.machine);
-			MachineInit.reactor.setCreativeTab(ClimateMain.machine);
-			MachineInit.crusher.setCreativeTab(ClimateMain.machine);
-
-			MachineInit.mold.setCreativeTab(ClimateMain.machine);
-			MachineInit.moldAluminium.setCreativeTab(ClimateMain.machine);
-			MachineInit.moldAlloy.setCreativeTab(ClimateMain.machine);
-
-			MachineInit.synthetic.setCreativeTab(ClimateMain.machine);
-			MachineInit.catalyst.setCreativeTab(ClimateMain.machine);
-			MachineInit.gemcore.setCreativeTab(ClimateMain.tool);
-			MachineInit.rotaryBlade.setCreativeTab(ClimateMain.machine);
-			MachineInit.platingChrome.setCreativeTab(ClimateMain.machine);
-
-			MachineInit.adapterPanel.setCreativeTab(ClimateMain.machine);
-			MachineInit.acceptorPanel.setCreativeTab(ClimateMain.machine);
-			MachineInit.adapterFluidPanel.setCreativeTab(ClimateMain.machine);
-			MachineInit.acceptorFluidPanel.setCreativeTab(ClimateMain.machine);
-			MachineInit.wirelessPortal.setCreativeTab(ClimateMain.machine);
-			MachineInit.adapterCard.setCreativeTab(ClimateMain.machine);
-			MachineInit.playerPanel.setCreativeTab(ClimateMain.machine);
-			MachineInit.monitorRS.setCreativeTab(ClimateMain.machine);
-			MachineInit.monitorCM.setCreativeTab(ClimateMain.machine);
-			MachineInit.monitorTorque.setCreativeTab(ClimateMain.machine);
-			MachineInit.monitorRF.setCreativeTab(ClimateMain.machine);
-			MachineInit.monitorFluid.setCreativeTab(ClimateMain.machine);
-			MachineInit.monitorItem.setCreativeTab(ClimateMain.machine);
-			MachineInit.monitorTemp.setCreativeTab(ClimateMain.machine);
-			MachineInit.entityPanel.setCreativeTab(ClimateMain.machine);
-			MachineInit.oscillator.setCreativeTab(ClimateMain.machine);
-			MachineInit.hopperSUS.setCreativeTab(ClimateMain.machine);
-
-			MachineInit.tankYard.setCreativeTab(ClimateMain.machine);
-			MachineInit.tankYardPart.setCreativeTab(ClimateMain.machine);
-
-			MachineInit.dynamite.setCreativeTab(ClimateMain.machine);
-			MachineInit.motorMinecart.setCreativeTab(ClimateMain.machine);
-			MachineInit.scooter.setCreativeTab(ClimateMain.machine);
-			MachineInit.magneticHover.setCreativeTab(ClimateMain.machine);
+			ClimateMain.machine.addSubItem(MachineInit.burner);
+			ClimateMain.machine.addSubItem(MachineInit.freezer);
 		}
+
+		ClimateMain.machine.addSubItem(MainInit.bellow);
+		ClimateMain.machine.addSubItem(MachineInit.fan);
+		ClimateMain.machine.addSubItem(MachineInit.heatPump);
+
+		// power source
+		ClimateMain.machine.addSubItem(MachineInit.handcrank);
+		ClimateMain.machine.addSubItem(MachineInit.windmill);
+		ClimateMain.machine.addSubItem(MachineInit.windmill_l);
+		ClimateMain.machine.addSubItem(MachineInit.windmill_ex);
+		ClimateMain.machine.addSubItem(MachineInit.watermill);
+		ClimateMain.machine.addSubItem(MachineInit.boilerTurbine);
+
+		if (ModuleConfig.machine_advanced) {
+			ClimateMain.machine.addSubItem(MachineInit.dieselEngine);
+			ClimateMain.machine.addSubItem(MachineInit.motor);
+			ClimateMain.machine.addSubItem(MachineInit.dynamo);
+		}
+
+		ClimateMain.machine.addSubItem(MachineInit.creativeBox);
+
+		// shaft
+		ClimateMain.machine.addSubItem(MachineInit.shaft_s);
+		ClimateMain.machine.addSubItem(MachineInit.shaft_l);
+		ClimateMain.machine.addSubItem(MachineInit.shaft_t_a);
+		ClimateMain.machine.addSubItem(MachineInit.shaft_t_b);
+		ClimateMain.machine.addSubItem(MachineInit.shaft_x);
+		ClimateMain.machine.addSubItem(MachineInit.shaft_switch);
+		ClimateMain.machine.addSubItem(MachineInit.shaft3_s);
+		ClimateMain.machine.addSubItem(MachineInit.shaft3_l);
+		ClimateMain.machine.addSubItem(MachineInit.shaft3_t_a);
+		ClimateMain.machine.addSubItem(MachineInit.shaft3_t_b);
+		ClimateMain.machine.addSubItem(MachineInit.shaft3_x);
+		ClimateMain.machine.addSubItem(MachineInit.shaft3_switch);
+		ClimateMain.machine.addSubItem(MachineInit.shaft2_s);
+		ClimateMain.machine.addSubItem(MachineInit.shaft2_l);
+		ClimateMain.machine.addSubItem(MachineInit.shaft2_t_a);
+		ClimateMain.machine.addSubItem(MachineInit.shaft2_t_b);
+		ClimateMain.machine.addSubItem(MachineInit.shaft2_x);
+		ClimateMain.machine.addSubItem(MachineInit.gearbox);
+		ClimateMain.machine.addSubItem(MachineInit.gearbox2);
+
+		// inventory
+		ClimateMain.machine.addSubItem(MachineInit.hopperFilter);
+		ClimateMain.machine.addSubItem(MachineInit.hopperGold);
+		ClimateMain.machine.addSubItem(MachineInit.hopperFilterG);
+		ClimateMain.machine.addSubItem(MachineInit.hopperSilver);
+		if (ModuleConfig.machine_advanced) {
+			ClimateMain.machine.addSubItem(MachineInit.hopperSUS);
+		}
+		ClimateMain.machine.addSubItem(MachineInit.conveyor);
+		ClimateMain.machine.addSubItem(MachineInit.catapult);
+
+		// fluid
+		ClimateMain.machine.addSubItem(MachineInit.faucet);
+		ClimateMain.machine.addSubItem(MachineInit.faucet_r);
+		ClimateMain.machine.addSubItem(MachineInit.faucet_sus);
+		ClimateMain.machine.addSubItem(MainInit.pail);
+		ClimateMain.machine.addSubItem(MachineInit.IBC);
+		ClimateMain.machine.addSubItem(MachineInit.hopperFluid);
+
+		if (ModuleConfig.machine_advanced) {
+			ClimateMain.machine.addSubItem(MachineInit.waterPump);
+			ClimateMain.machine.addSubItem(MachineInit.tankYard);
+			ClimateMain.machine.addSubItem(MachineInit.tankYardPart);
+		}
+
+		// reactor
+		ClimateMain.machine.addSubItem(MachineInit.spinning);
+		ClimateMain.machine.addSubItem(MachineInit.stonemill);
+		ClimateMain.machine.addSubItem(MachineInit.IBC_reactor);
+		if (ModuleConfig.machine_advanced) {
+			ClimateMain.machine.addSubItem(MachineInit.pressMachine);
+			ClimateMain.machine.addSubItem(MachineInit.reactor);
+			ClimateMain.machine.addSubItem(MachineInit.crusher);
+			ClimateMain.machine.addSubItem(MachineInit.oscillator);
+		}
+		if (ModuleConfig.machine_advanced) {
+			// portal
+			ClimateMain.machine.addSubItem(MachineInit.adapterPanel);
+			ClimateMain.machine.addSubItem(MachineInit.acceptorPanel);
+			ClimateMain.machine.addSubItem(MachineInit.adapterFluidPanel);
+			ClimateMain.machine.addSubItem(MachineInit.acceptorFluidPanel);
+			ClimateMain.machine.addSubItem(MachineInit.wirelessPortal);
+			ClimateMain.machine.addSubItem(MachineInit.adapterCard);
+			ClimateMain.machine.addSubItem(MachineInit.playerPanel);
+			ClimateMain.machine.addSubItem(MachineInit.entityPanel);
+			ClimateMain.machine.addSubItem(MachineInit.monitorRS);
+			ClimateMain.machine.addSubItem(MachineInit.monitorCM);
+			ClimateMain.machine.addSubItem(MachineInit.monitorTorque);
+			ClimateMain.machine.addSubItem(MachineInit.monitorRF);
+			ClimateMain.machine.addSubItem(MachineInit.monitorFluid);
+			ClimateMain.machine.addSubItem(MachineInit.monitorItem);
+			ClimateMain.machine.addSubItem(MachineInit.monitorTemp);
+		}
+
+		ClimateMain.machine.addSubItem(MachineInit.slotCard);
+
+		if (ModuleConfig.machine_advanced) {
+			ClimateMain.machine.addSubItem(MachineInit.mold);
+			ClimateMain.machine.addSubItem(MachineInit.moldAluminium);
+			ClimateMain.machine.addSubItem(MachineInit.moldAlloy);
+			ClimateMain.machine.addSubItem(MachineInit.catalyst);
+			ClimateMain.machine.addSubItem(MachineInit.rotaryBlade);
+
+			ClimateMain.machine.addSubItem(MachineInit.dynamite);
+			ClimateMain.machine.addSubItem(MachineInit.motorMinecart);
+			ClimateMain.machine.addSubItem(MachineInit.scooter);
+			ClimateMain.machine.addSubItem(MachineInit.magneticHover);
+
+			ClimateMain.machine.addSubItem(MachineInit.platingChrome);
+			ClimateMain.machine.addSubItem(MachineInit.gemcore);
+		}
+
 	}
 
 	static void loadFluids() {

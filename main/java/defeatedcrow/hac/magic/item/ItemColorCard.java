@@ -339,12 +339,21 @@ public class ItemColorCard extends DCItem {
 		BlockPos p = new BlockPos(x, y + 1, z);
 		ChunkPos c = new ChunkPos(p);
 		boolean b = false;
+		int dim = world.provider.getDimension();
 
 		if (!world.isRemote) {
 			int r = MathHelper.floor(f * 2.0F) - 1;
 			for (int x1 = -r; x1 <= r; x1++) {
 				for (int z1 = -r; z1 <= r; z1++) {
-					OreVein[] veins = OreGenPos.INSTANCE.getVeins(c.x + x1, c.z + z1, player.world);
+					OreVein[] veins;
+					if (dim == -1) {
+						OreVein vein = OreGenPos.INSTANCE.getNetherVeins(c.x + x1, c.z + z1, player.world);
+						veins = new OreVein[] {
+								vein
+						};
+					} else {
+						veins = OreGenPos.INSTANCE.getVeins(c.x + x1, c.z + z1, player.world);
+					}
 					List<OreVein> list = Lists.newArrayList();
 					if (veins != null) {
 						for (OreVein v : veins) {

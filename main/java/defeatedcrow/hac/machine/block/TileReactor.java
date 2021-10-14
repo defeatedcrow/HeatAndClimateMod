@@ -486,6 +486,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 					if (!DCUtil.isEmpty(slot)) {
 						boolean inRecipe = false;
 						Iterator<Object> req = required.iterator();
+						ItemStack cont = slot.getItem().getContainerItem(slot);
 
 						// 4スロットについて、要求材料の数だけ回す
 						while (req.hasNext()) {
@@ -512,6 +513,10 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 							}
 
 							if (match) {
+								if (DCUtil.isEmpty(sec) && !DCUtil.isEmpty(cont)) {
+									sec = cont.copy();
+									chance = 100;
+								}
 								inRecipe = true;
 								required.remove(next);
 								this.decrStackSize(i, 1);

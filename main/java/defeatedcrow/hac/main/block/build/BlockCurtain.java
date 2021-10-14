@@ -115,6 +115,10 @@ public class BlockCurtain extends BlockDC {
 		return false;
 	}
 
+	public boolean getUseNeighborBrightness(IBlockState state) {
+		return false;
+	}
+
 	@Override
 	public int getLightOpacity(IBlockState state) {
 		boolean flag = DCState.getBool(state, DCState.POWERED);
@@ -213,10 +217,11 @@ public class BlockCurtain extends BlockDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-			DCState.FACING,
-			DCState.DOUBLE,
-			DCState.FLAG,
-			DCState.POWERED });
+				DCState.FACING,
+				DCState.DOUBLE,
+				DCState.FLAG,
+				DCState.POWERED
+		});
 	}
 
 	@Override

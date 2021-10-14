@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XYX",
+  "XYX"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "blockGlass"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_window_wood",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "build_advanced"
+  }
+ ]
+}

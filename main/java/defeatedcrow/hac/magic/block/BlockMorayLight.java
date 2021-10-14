@@ -13,7 +13,6 @@ import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCTimeHelper;
-import defeatedcrow.hac.machine.block.TileMorayLight;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
@@ -51,7 +50,7 @@ public class BlockMorayLight extends BlockTorqueBase {
 
 	public BlockMorayLight(String s) {
 		super(Material.GLASS, s, 0);
-		this.setResistance(30000.0F);
+		this.setResistance(3600.0F);
 		this.maxMeta = 0;
 		this.setBlockUnbreakable();
 	}
@@ -160,7 +159,9 @@ public class BlockMorayLight extends BlockTorqueBase {
 			((TileMorayLight) tile).setDate(day);
 		}
 		if (!world.isRemote) {
-			world.notifyNeighborsOfStateChange(pos, this, false);
+			for (EnumFacing enumfacing : EnumFacing.values()) {
+				world.notifyNeighborsOfStateChange(pos.offset(enumfacing), this, false);
+			}
 		}
 	}
 
@@ -181,7 +182,9 @@ public class BlockMorayLight extends BlockTorqueBase {
 			}
 		}
 		if (!world.isRemote) {
-			world.notifyNeighborsOfStateChange(pos, this, false);
+			for (EnumFacing enumfacing : EnumFacing.values()) {
+				world.notifyNeighborsOfStateChange(pos.offset(enumfacing), this, false);
+			}
 		}
 	}
 

@@ -1,0 +1,53 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "bottom": "dcs_climate:blocks/build/straw_bottom",
+        "side": "dcs_climate:blocks/build/straw_side",
+        "particle": "dcs_climate:blocks/build/straw_bottom"
+    },
+    "elements": [
+        {
+            "from": [-0.1, -1.4, 3.9],
+            "to": [16.1, 22.1, 20.1],
+            "rotation": {"angle": 45, "axis": "x", "origin": [8, 8, 8]},
+            "faces": {
+                "north": {"uv": [0, 0, 16, 16], "texture": "#side"},
+                "east": {"uv": [0, 0, 16, 16], "texture": "#side"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#side"},
+                "west": {"uv": [0, 0, 16, 16],  "texture": "#side"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#bottom"},
+                "down": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#bottom"}
+            }
+        }
+    ],
+    "display": {
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 2, 0],
+            "scale":[ 0.35, 0.35, 0.35 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 13, 7],
+            "scale":[ 1, 1, 1]
+        },
+        "thirdperson_righthand": {
+            "scale": [0.3, 0.3, 0.3]
+        },
+        "firstperson_righthand": {
+            "rotation": [0, 0, 25],
+            "translation": [1.13, 3.2, 3.13],
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "gui": {
+            "rotation": [30, 225, 0],
+            "translation": [1.5, 0, 0],
+            "scale": [0.5, 0.5, 0.5]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "scale": [ 1, 1, 1 ]
+        }
+    }
+}

@@ -7,11 +7,15 @@ import java.util.Set;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.magic.CharmType;
+import defeatedcrow.hac.api.magic.IMagicCost;
 import defeatedcrow.hac.api.magic.MagicColor;
 import defeatedcrow.hac.api.magic.MagicType;
+import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -29,7 +33,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemColorPendant2 extends CharmItemBase {
+public class ItemColorPendant2 extends CharmItemBase implements IMagicCost {
 
 	private final int maxMeta;
 
@@ -169,6 +173,10 @@ public class ItemColorPendant2 extends CharmItemBase {
 			ItemStack item = new ItemStack(state.getBlock(), 1, state.getBlock().damageDropped(state));
 			if (state.getBlock().isWood(owner.world, pos) || MainUtil.hasDic(item, "logWood")) {
 				if (!owner.world.isRemote) {
+					/**
+					 * @date 2021.09.24
+					 * @author Fixed by SkyTheory
+					 */
 					Set<BlockPos> set = MainUtil.getLumberTargetList(owner.world, pos, state.getBlock(), 192);
 					if (set.isEmpty()) {
 						set = Collections.singleton(pos);
@@ -235,6 +243,11 @@ public class ItemColorPendant2 extends CharmItemBase {
 			tooltip.add(TextFormatting.BOLD.toString() + "PLAYER ONLY");
 		}
 		tooltip.add(TextFormatting.AQUA.toString() + I18n.format("dcs.tip.color_pendant2." + meta));
+		if (getCost(stack) > 0) {
+			float f = getCost(stack);
+			tooltip.add(TextFormatting.BLUE.toString() + TextFormatting.BOLD.toString() + "=== Magic Cost ===");
+			tooltip.add(TextFormatting.WHITE.toString() + DCName.getMagicCost() + ": " + String.format("%.1f F", f));
+		}
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.allcharm"));
@@ -246,5 +259,27 @@ public class ItemColorPendant2 extends CharmItemBase {
 		} else {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
 		}
+	}
+
+	@Override
+	public boolean canUseMagic(EntityPlayer player, ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public boolean beforeConsumption(EntityPlayer player, ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public float getCost(ItemStack item) {
+		if (!DCUtil.isEmpty(item)) {
+			int i = item.getItemDamage();
+			float f = (float) CoreConfigDC.harderMagicCostAmount;
+			if (i == 1 || i == 2 || i == 3) {
+				return f * 0.5F;
+			}
+		}
+		return 0;
 	}
 }

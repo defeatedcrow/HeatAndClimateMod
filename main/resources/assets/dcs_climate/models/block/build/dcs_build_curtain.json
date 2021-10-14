@@ -73,5 +73,11 @@
                 "east":  { "uv": [ 0, 0, 1, 1 ], "texture": "#base", "cullface": "east" }
             }
         }
-    ]
+    ],
+    "display": {
+        "gui": {
+            "rotation": [30, 45, 0],
+            "scale": [0.6, 0.6, 0.6]
+        }
+    }
 }

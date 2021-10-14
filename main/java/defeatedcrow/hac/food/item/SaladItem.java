@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.FoodEntityBase;
 import defeatedcrow.hac.core.base.FoodItemBase;
+import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.entity.SaladGreenEntity;
 import defeatedcrow.hac.food.entity.SaladLotusrootEntity;
 import defeatedcrow.hac.food.entity.SaladPotatoEntity;
@@ -64,19 +65,20 @@ public class SaladItem extends FoodItemBase {
 	@Override
 	public String[] getNameSuffix() {
 		String[] s = {
-			"green",
-			"potato",
-			"lotusroot",
-			"soy",
-			"gomoku",
-			"spinach",
-			"beans",
-			"natto",
-			"pumpkin",
-			"salmon",
-			"tofu",
-			"walnut",
-			"watermelon" };
+				"green",
+				"potato",
+				"lotusroot",
+				"soy",
+				"gomoku",
+				"spinach",
+				"beans",
+				"natto",
+				"pumpkin",
+				"salmon",
+				"tofu",
+				"walnut",
+				"watermelon"
+		};
 		return s;
 	}
 
@@ -136,11 +138,14 @@ public class SaladItem extends FoodItemBase {
 
 	@Override
 	public boolean addEffects(ItemStack stack, World worldIn, EntityLivingBase living) {
-		if (!worldIn.isRemote && stack != null) {
+		if (!DCUtil.isEmpty(stack)) {
 			List<PotionEffect> rem = Lists.newArrayList();
-			rem.addAll(living.getActivePotionEffects());
-			for (PotionEffect eff : rem) {
+			for (PotionEffect eff : living.getActivePotionEffects()) {
 				if (eff != null && eff.getPotion().isBadEffect())
+					rem.add(eff);
+			}
+			for (PotionEffect eff : rem) {
+				if (eff != null)
 					living.removeActivePotionEffect(eff.getPotion());
 			}
 			return true;

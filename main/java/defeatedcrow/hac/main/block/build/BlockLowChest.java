@@ -27,6 +27,7 @@ public class BlockLowChest extends DCTileBlock {
 	public BlockLowChest(Material m, String s, boolean b) {
 		super(m, s, 0);
 		isTopSolid = b;
+		this.setResistance(30.0F);
 	}
 
 	@Override
