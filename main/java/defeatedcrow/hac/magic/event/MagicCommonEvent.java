@@ -481,14 +481,26 @@ public class MagicCommonEvent {
 				}
 			}
 
-			// 定期的に絵画の存在チェック
 			if (event.getEntityLiving() instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+
+				// OwlDollの挙動
+				if (ClimateCore.proxy.getPlayer() != null && !player.isSpectator()) {
+					if (ClimateCore.proxy.getPlayer() != player && MainUtil
+							.getOffhandJewelColor(player) != MagicColor.BLACK_WHITE && ItemColorGauntlet2
+									.checkViewEntity()) {
+						ItemColorGauntlet2.removeViewEntity();
+					}
+				}
+
+				// 定期的に絵画の存在チェック
 				if (count < 0) {
 					PictureList.INSTANCE.checkList(event.getEntityLiving().getEntityWorld());
+					count = 60;
+				} else {
+					count--;
 				}
-				count = 60;
-			} else {
-				count--;
+
 			}
 		}
 	}

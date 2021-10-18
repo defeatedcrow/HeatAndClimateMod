@@ -66,6 +66,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 	public ItemColorGauntlet2() {
 		super();
 		maxMeta = 4;
+		this.setMaxStackSize(1);
 	}
 
 	@Override
@@ -619,7 +620,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void removeViewEntity() {
+	public static void removeViewEntity() {
 		if (ClimateCore.proxy.getPlayer() != null) {
 			EntityPlayer player = ClimateCore.proxy.getPlayer();
 			Minecraft.getMinecraft().setRenderViewEntity(player);
@@ -627,9 +628,9 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean checkViewEntity() {
+	public static boolean checkViewEntity() {
 		if (ClimateCore.proxy.getPlayer() != null) {
-			if (Minecraft.getMinecraft().getRenderViewEntity() != ClimateCore.proxy.getPlayer())
+			if (Minecraft.getMinecraft().getRenderViewEntity() instanceof EntityOwlDoll)
 				return true;
 		}
 		return false;

@@ -38,6 +38,7 @@ public class ItemColorGauntlet extends DCItem implements IJewel, IMagicCost {
 	public ItemColorGauntlet() {
 		super();
 		maxMeta = 4;
+		this.setMaxStackSize(1);
 	}
 
 	@Override
