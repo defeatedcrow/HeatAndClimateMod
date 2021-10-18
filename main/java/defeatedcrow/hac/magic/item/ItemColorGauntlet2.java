@@ -21,6 +21,7 @@ import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.block.TileMorayLight;
 import defeatedcrow.hac.magic.entity.EntityCrowDoll;
 import defeatedcrow.hac.magic.entity.EntityOwlDoll;
+import defeatedcrow.hac.main.api.DimCoord;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
 import defeatedcrow.hac.main.util.DCName;
@@ -138,7 +139,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 
 			NBTTagCompound tag = stack.getTagCompound();
 			int limit = getLimit(meta);
-			Map<BlockPos, Integer> map = getPosList(tag);
+			Map<DimCoord, Integer> map = getPosList(tag);
 			if (limit < 0) {
 				tooltip.add(TextFormatting.RESET.toString() + String.format(DCName.MAGIC_PLACE_LIMIT
 						.getLocalizedName() + "Unlimited"));
@@ -164,8 +165,8 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			if (map != null && !map.isEmpty()) {
 				tooltip.add(TextFormatting.RESET.toString() + TextFormatting.BOLD.toString() + "=== Coords ===");
 				int n = 1;
-				for (BlockPos p : map.keySet()) {
-					tooltip.add("Coord " + n + " :" + p.toString());
+				for (DimCoord p : map.keySet()) {
+					tooltip.add(p.toString("No" + n));
 					n++;
 				}
 			}
@@ -209,7 +210,8 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 					effect -= 1.0F;
 					limit += MathHelper.floor(effect * 2F);
 					if (!world.isRemote) {
-						if (hasCoord(stack, pos)) {
+						DimCoord coord = new DimCoord(world.provider.getDimension(), pos);
+						if (hasCoord(stack, coord)) {
 							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
 									.getY() + 0.5D,
 									pos.getZ() + 0.5D));
@@ -289,7 +291,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 				// BLACK-WHITE
 				else if (meta == 3 && player.isSneaking()) {
 					// spawn owl
-					if (getCount(stack) < limit) {
+					if (getOwlId(stack) == 0) {
 						if (DCUtil.playerCanUseCharm(player, stack)) {
 							EntityOwlDoll doll = new EntityOwlDoll(world);
 							doll.setOwnerId(player.getUniqueID());
@@ -305,7 +307,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 									.getY() + 0.5D,
 									pos.getZ() + 0.5D));
 							world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
-							addCount(stack, 1, 1);
+							addOwlId(stack, player, doll.getEntityId());
 							DCUtil.playerConsumeCharm(player, stack);
 						}
 					} else {
@@ -342,30 +344,21 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			ItemStack stack = player.getHeldItem(EnumHand.OFF_HAND);
 			if (!DCUtil.isEmpty(stack)) {
 				int meta = stack.getItemDamage();
-				if (meta == 2) {
+				if (meta == 2 && !player.isSneaking()) {
 					switchActive(stack);
 					world.playSound(player, player
 							.getPosition(), SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 0.5F, 1.5F);
-				}
-				if (meta == 3 && !player.isSpectator()) {
+				} else if (meta == 3 && !player.isSpectator()) {
 					if (world.isRemote && ClimateCore.proxy.getPlayer() != null) {
 						if (checkViewEntity()) {
 							removeViewEntity();
 							world.playSound(player, player
 									.getPosition(), SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
 						} else {
-							Entity owl = null;
-							// owlを探す
-							for (Entity entity : world.loadedEntityList) {
-								if (entity instanceof EntityOwlDoll) {
-									EntityOwlDoll owl2 = (EntityOwlDoll) entity;
-									if (owl2.isOwnerID(player)) {
-										owl = owl2;
-										break;
-									}
-								}
-							}
+							int id = getOwlId(stack);
+							Entity owl = world.getEntityByID(id);
 							if (owl != null) {
+								BlockPos owlPos = owl.getPosition();
 								setViewEntity(owl);
 								world.playSound(player, player
 										.getPosition(), SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
@@ -380,7 +373,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 		}
 	}
 
-	public static Map<BlockPos, Integer> getPosList(NBTTagCompound tag) {
+	public static Map<DimCoord, Integer> getPosList(NBTTagCompound tag) {
 		HashMap map = new HashMap<>();
 		if (tag != null) {
 			NBTTagList tags = tag.getTagList("coord", 10);
@@ -388,11 +381,9 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 				for (int i = 0; i < tags.tagCount(); i++) {
 					NBTTagCompound coord = tags.getCompoundTagAt(i);
 					if (coord != null && coord.hasKey("timecount")) {
-						int x = coord.getInteger("coordx");
-						int y = coord.getInteger("coordy");
-						int z = coord.getInteger("coordz");
+						DimCoord co = DimCoord.getCoordFromNBT(coord);
 						int time = coord.getInteger("timecount");
-						map.put(new BlockPos(x, y, z), time);
+						map.put(co, time);
 					}
 				}
 			}
@@ -400,15 +391,13 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 		return map;
 	}
 
-	public static NBTTagCompound setPosList(NBTTagCompound tag, Map<BlockPos, Integer> map) {
+	public static NBTTagCompound setPosList(NBTTagCompound tag, Map<DimCoord, Integer> map) {
 		if (tag != null && map != null && !map.isEmpty()) {
 			NBTTagList tags = new NBTTagList();
-			for (Entry<BlockPos, Integer> e : map.entrySet()) {
-				BlockPos pos = e.getKey();
+			for (Entry<DimCoord, Integer> e : map.entrySet()) {
+				DimCoord pos = e.getKey();
 				NBTTagCompound coord = new NBTTagCompound();
-				coord.setInteger("coordx", pos.getX());
-				coord.setInteger("coordy", pos.getY());
-				coord.setInteger("coordz", pos.getZ());
+				pos.setNBT(coord);
 				coord.setInteger("timecount", e.getValue());
 				tags.appendTag(coord);
 			}
@@ -423,15 +412,17 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			if (tag == null) {
 				tag = new NBTTagCompound();
 			}
-			Map<BlockPos, Integer> map = getPosList(tag);
+			Map<DimCoord, Integer> map = getPosList(tag);
 			if (map.size() >= limit) {
 				if (delOld) {
 					// 古い順に消す
-					BlockPos del = null;
+					DimCoord del = null;
 					int count = Integer.MAX_VALUE;
-					for (Entry<BlockPos, Integer> e : map.entrySet()) {
-						if (del == null || e.getValue() < count)
+					for (Entry<DimCoord, Integer> e : map.entrySet()) {
+						if (del == null || e.getValue() < count) {
 							del = e.getKey();
+							count = e.getValue();
+						}
 					}
 					if (del != null) {
 						map.remove(del);
@@ -447,7 +438,8 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 				}
 			}
 			int time = (DCTimeHelper.getDay(player.world) * 24) + DCTimeHelper.currentTime(player.world);
-			map.put(add, time);
+			DimCoord coord = new DimCoord(player.world.provider.getDimension(), add);
+			map.put(coord, time);
 			stack.setTagCompound(setPosList(tag, map));
 
 			if (player != null) {
@@ -465,11 +457,12 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			if (tag == null) {
 				tag = new NBTTagCompound();
 			}
-			Map<BlockPos, Integer> map = getPosList(tag);
-			if (!map.isEmpty() && map.containsKey(del)) {
-				map.remove(del);
+			DimCoord delc = new DimCoord(player.world.provider.getDimension(), del);
+			Map<DimCoord, Integer> map = getPosList(tag);
+			if (!map.isEmpty() && map.containsKey(delc)) {
+				map.remove(delc);
 				if (player != null) {
-					String mes1 = I18n.format("dcs.comment.color_gauntlet2.del") + " " + del.toString();
+					String mes1 = I18n.format("dcs.comment.color_gauntlet2.del") + " " + delc.toString();
 					player.sendMessage(new TextComponentString(String.format(mes1)));
 				}
 			}
@@ -479,13 +472,13 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 		return false;
 	}
 
-	public static boolean hasCoord(ItemStack stack, BlockPos target) {
+	public static boolean hasCoord(ItemStack stack, DimCoord target) {
 		if (!DCUtil.isEmpty(stack) && target != null) {
 			NBTTagCompound tag = stack.getTagCompound();
 			if (tag == null) {
 				tag = new NBTTagCompound();
 			}
-			Map<BlockPos, Integer> map = getPosList(tag);
+			Map<DimCoord, Integer> map = getPosList(tag);
 			if (!map.isEmpty() && map.containsKey(target)) {
 				return true;
 			}
@@ -499,7 +492,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			if (tag == null) {
 				tag = new NBTTagCompound();
 			}
-			Map<BlockPos, Integer> map = getPosList(tag);
+			Map<DimCoord, Integer> map = getPosList(tag);
 			if (!map.isEmpty()) {
 				return map.size();
 			}
@@ -570,6 +563,54 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 		return stack;
 	}
 
+	public static int getOwlId(ItemStack stack) {
+		if (!DCUtil.isEmpty(stack)) {
+			NBTTagCompound tag = stack.getTagCompound();
+			if (tag == null) {
+				tag = new NBTTagCompound();
+			}
+			if (tag.hasKey("owlid")) {
+				int i = tag.getInteger("owlid");
+				return i;
+			}
+		}
+		return 0;
+	}
+
+	public static ItemStack addOwlId(ItemStack stack, EntityPlayer player, int id) {
+		if (!DCUtil.isEmpty(stack)) {
+			NBTTagCompound tag = stack.getTagCompound();
+			if (tag == null) {
+				tag = new NBTTagCompound();
+			}
+			if (tag.hasKey("owlid")) {
+				int i = tag.getInteger("owlid");
+				if (player.world.getEntityByID(i) != null) {
+					String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
+					player.sendMessage(new TextComponentString(String.format(mes1)));
+					return stack;
+				}
+			}
+			tag.setInteger("owlid", id);
+			stack.setTagCompound(tag);
+		}
+		return stack;
+	}
+
+	public static ItemStack removeOwlId(ItemStack stack) {
+		if (!DCUtil.isEmpty(stack)) {
+			NBTTagCompound tag = stack.getTagCompound();
+			if (tag == null) {
+				return stack;
+			}
+			if (tag.hasKey("owlid")) {
+				tag.removeTag("owlid");
+				stack.setTagCompound(tag);
+			}
+		}
+		return stack;
+	}
+
 	@SideOnly(Side.CLIENT)
 	public void setViewEntity(Entity target) {
 		if (ClimateCore.proxy.getPlayer() != null && target != null) {
@@ -606,7 +647,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 
 	@Override
 	public float getCost(ItemStack item) {
-		if (!DCUtil.isEmpty(item)) {
+		if (!DCUtil.isEmpty(item) && CoreConfigDC.harderMagic) {
 			int i = item.getItemDamage();
 			float f = (float) CoreConfigDC.harderMagicCostAmount;
 			if (i != 4) {

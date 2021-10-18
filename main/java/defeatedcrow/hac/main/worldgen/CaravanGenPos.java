@@ -2,19 +2,10 @@ package defeatedcrow.hac.main.worldgen;
 
 import java.util.Random;
 
-import defeatedcrow.hac.core.util.BiomeCatchDC;
 import defeatedcrow.hac.main.config.WorldGenConfig;
-import defeatedcrow.hac.main.worldgen.CaravanGenEvent.CaravanType;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.common.BiomeDictionary;
 
 /**
  * キャラバンサライの生成座標
@@ -61,34 +52,6 @@ public class CaravanGenPos {
 		return -1;
 	}
 
-	public static int getCoreHeight(int cx, int cz, World world) {
-		int px = cx << 4;
-		int pz = cz << 4;
-		int h = -1;
-		for (int y = 30; y < 100; y++) {
-			BlockPos p1 = new BlockPos(px + 7, y, pz + 7);
-			if (getType(world, p1) != CaravanType.BROKEN) {
-				h = y + 7;
-				return h;
-			}
-		}
-		for (int y = 40; y < 100; y++) {
-			BlockPos p1 = new BlockPos(px + 7, y, pz + 7);
-			if (!isReplaceable(world, p1) && isReplaceable(world, p1.up())) {
-				h = y;
-			}
-		}
-		return h;
-	}
-
-	public static boolean isReplaceable(World world, BlockPos pos) {
-		net.minecraft.block.state.IBlockState state = world.getBlockState(pos);
-		if (state.getMaterial().isLiquid())
-			return false;
-		return state.getBlock().isAir(state, world, pos) || state.getMaterial().isReplaceable() || state
-				.getMaterial() == Material.LEAVES || state.getMaterial() == Material.WOOD;
-	}
-
 	public static boolean isSuitableChunk(int cx, int cz, World world) {
 		if (world.isRemote)
 			return false;
@@ -124,48 +87,13 @@ public class CaravanGenPos {
 		Random rand = new Random(seed);
 		rand.nextInt(4);
 		rand.nextInt(4);
-		int[] r = new int[4];
+		int[] r = new int[5];
 		r[0] = rand.nextInt(4);
 		r[1] = rand.nextInt(4);
 		r[2] = rand.nextInt(4);
 		r[3] = rand.nextInt(4);
+		r[4] = rand.nextInt(4);
 		return r;
-	}
-
-	public static boolean canGenerateBiome(int cx, int cz, World world) {
-		if (world != null) {
-			int px = cx << 4;
-			int pz = cz << 4;
-			px += 8;
-			pz += 8;
-			Biome biome = BiomeCatchDC.getBiome(new BlockPos(px, 1, pz), world);
-			if (biome != null) {
-				// DCLogger.debugInfoLog("test1 Biome: " + biome.getBiomeName());
-				boolean b1 = BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) || BiomeDictionary
-						.hasType(biome, BiomeDictionary.Type.SAVANNA);
-				boolean b2 = !BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) && !BiomeDictionary
-						.hasType(biome, BiomeDictionary.Type.MOUNTAIN);
-				return b1 && b2;
-			}
-		}
-		return false;
-	}
-
-	public static CaravanType getType(World world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
-		if (state != null) {
-			Block block = state.getBlock();
-			if (block == Blocks.IRON_BLOCK) {
-				return CaravanType.UNINIT;
-			} else if (block == Blocks.DIAMOND_BLOCK) {
-				return CaravanType.LOADED;
-			} else if (block == Blocks.EMERALD_BLOCK) {
-				return CaravanType.STANDBY;
-			} else {
-				return CaravanType.BROKEN;
-			}
-		}
-		return CaravanType.BROKEN;
 	}
 
 }

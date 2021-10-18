@@ -20,14 +20,15 @@ public class ItemNoEntityFoods extends DCFoodItem {
 	private final int maxMeta;
 
 	private static String[] names = {
-		"marshmallow",
-		"date_and_nut",
-		"toffee",
-		"tofu",
-		"smoked_salmon",
-		"raisin",
-		"egg_bolo_cookie",
-		"cereal_bar" };
+			"marshmallow",
+			"date_and_nut",
+			"toffee",
+			"tofu",
+			"smoked_salmon",
+			"raisin",
+			"egg_bolo_cookie",
+			"cereal_bar"
+	};
 
 	public ItemNoEntityFoods() {
 		super(false);
@@ -73,7 +74,7 @@ public class ItemNoEntityFoods extends DCFoodItem {
 
 	@Override
 	public boolean addEffects(ItemStack stack, World worldIn, EntityLivingBase living) {
-		if (!worldIn.isRemote && stack != null) {
+		if (stack != null) {
 			MainUtil.removeBadPotion(living);
 			return true;
 		}

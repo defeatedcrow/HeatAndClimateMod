@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.magic.MagicInit;
+import defeatedcrow.hac.main.api.DimCoord;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.entity.EntityLivingBase;
@@ -43,13 +44,15 @@ public class OnDeathEventDC {
 				BlockPos pos = player.getBedLocation(dim);
 				if (pos == null) {
 					NBTTagCompound tag = charm.getTagCompound();
-					if (tag != null && tag.hasKey("dcs.portal.dim")) {
-						String warpDim = tag.getString("dcs.portal.dimname");
-						int x = tag.getInteger("dcs.portal.x");
-						int y = tag.getInteger("dcs.portal.y");
-						int z = tag.getInteger("dcs.portal.z");
-						if (dim == tag.getInteger("dcs.portal.dim")) {
-							pos = new BlockPos(x, y, z);
+					if (tag != null && tag.hasKey("dcs.portal.dimname")) {
+						DimCoord coord = DimCoord.getCoordFromNBT(tag);
+						if (coord != null) {
+							int x = coord.x;
+							int y = coord.y;
+							int z = coord.z;
+							if (dim == coord.dimID) {
+								pos = new BlockPos(x, y, z);
+							}
 						}
 					}
 				}

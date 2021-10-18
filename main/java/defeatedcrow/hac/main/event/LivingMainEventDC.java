@@ -12,12 +12,14 @@ import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.build.BlockBedDC;
 import defeatedcrow.hac.main.client.particle.ParticleTempColor;
 import defeatedcrow.hac.main.config.MainCoreConfig;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageMagicWarp;
 import defeatedcrow.hac.main.util.DCAdvancementUtil;
 import defeatedcrow.hac.main.util.DCArmorMaterial;
 import defeatedcrow.hac.main.util.MainUtil;
 import defeatedcrow.hac.main.util.portal.DCDimChangeHelper;
-import defeatedcrow.hac.main.worldgen.CaravanGenEvent.CaravanType;
-import defeatedcrow.hac.main.worldgen.CaravanGenPos;
+import defeatedcrow.hac.main.worldgen.CaravanData;
+import defeatedcrow.hac.main.worldgen.CaravanData.CaravanType;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
@@ -35,9 +37,9 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerSetSpawnEvent;
@@ -60,22 +62,10 @@ public class LivingMainEventDC {
 		if (living instanceof IMob) {
 			int cx = (int) event.getX() >> 4;
 			int cz = (int) event.getZ() >> 4;
-			if (event.getY() > 65 && event.getY() < 120) {
-				int num = CaravanGenPos.getCaravanPartNum(cx, cz, living.getEntityWorld());
-				if (num > -1) {
-					int nx = (num % 3) - 1;
-					int nz = (num / 3) - 1;
-					int cx2 = cx + nx;
-					int cz2 = cz + nz;
-					int height = CaravanGenPos.getCoreHeight(cx2, cz2, event.getWorld());
-					int px = cx << 4;
-					int pz = cz << 4;
-					int py = height;
-					BlockPos p1 = new BlockPos(px + 7, height - 7, pz + 7);
-					if (event.getWorld().isBlockLoaded(p1) && CaravanGenPos.getType(event
-							.getWorld(), p1) != CaravanType.BROKEN) {
-						event.setResult(Result.DENY);
-					}
+			CaravanData data = CaravanData.getExistingCore(cx, cz, event.getWorld());
+			if (data != null && data.type != CaravanType.NULL) {
+				if (event.getY() > (data.height - 10) && event.getY() < (data.height + 50)) {
+					event.setResult(Result.DENY);
 				}
 			}
 		}
@@ -111,17 +101,32 @@ public class LivingMainEventDC {
 					// bird potion
 					player.fallDistance = 0.0F;
 				}
-				if (player.isPotionActive(MainInit.warp) && !player.isRiding() && player.collidedHorizontally) {
-					// DCLogger.debugInfoLog("check");
-					EnumFacing face = player.getHorizontalFacing();
-					BlockPos pos = player.getPosition().offset(face, 2);
-					if (isAir(player.world, pos) && isAir(player.world, pos.up())) {
-						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
-						if (!player.world.isRemote && player.world instanceof WorldServer) {
-							player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 0.125D, pos.getZ() + 0.5D);
+
+				if (player.world.isRemote) {
+					if (player.isPotionActive(MainInit.warp) && !player.isRiding() && player.collidedHorizontally) {
+						if (count < 5) {
+							count++;
+						} else {
+							count = 0;
+							EnumFacing face = player.getHorizontalFacing();
+							// DCLogger.debugInfoLog("check " + face);
+							int y = MathHelper.floor(player.posY + 0.5D);
+							int offset = 0;
+							BlockPos pos = new BlockPos(player.getPosition().getX(), y, player.getPosition().getZ());
+							for (int i = 1; i < 5; i++) {
+								BlockPos p1 = pos.offset(face, i);
+								if (isAir(player.world, p1) && isAir(player.world, p1.up())) {
+									offset = i;
+									break;
+								}
+							}
+							if (offset > 0) {
+								pos = pos.offset(face, offset);
+								player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
+								DCMainPacket.INSTANCE.sendToServer(new MessageMagicWarp(player.rotationYaw, pos
+										.getX() + 0.5D, y, pos.getZ() + 0.5D));
+							}
 						}
-						player.fallDistance = 0.0F;
-						player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
 					}
 				}
 

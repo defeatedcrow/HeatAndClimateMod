@@ -31,78 +31,69 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		if ((genDim1 != 0))
 			return;
 
-		int num = CaravanGenPos.getCaravanPartNum(cx, cz, world);
-		if (num > -1) {
+		CaravanData data = CaravanData.getInitialCore(cx, cz, world);
+
+		if (data.type == CaravanData.CaravanType.UNINIT && data.partNum > -1) {
+			int num = data.partNum;
 			int nx = (num % 3) - 1;
 			int nz = (num / 3) - 1;
 			int cx2 = cx + nx;
 			int cz2 = cz + nz;
-			boolean check = CaravanGenPos.canGenerateBiome(cx2, cz2, world);
-			int check2 = CaravanGenPos.isDupe(cx2, cz2, world);
-			// DCLogger.debugInfoLog("test1 Biome: x " + cx2 + ", z " + cz2 + ", " + check);
-			// DCLogger.debugInfoLog("test1 DupeCheck: x " + cx2 + ", z " + cz2 + ", " + check2);
-			if (check && check2 == 0) {
-				int height = CaravanGenPos.getCoreHeight(cx2, cz2, world);
-				if (height > 40 && height < 100) {
-					if (num == 4) {
-						generateCore(rand, cx, cz, height, world);
-						CaravanGenPos.chunk = prov.getLoadedChunk(cx, cz);
-					} else {
-						generatePart(num, rand, cx, cz, height, world);
-					}
 
-					if (cx == cx2 && cz == cz2) {
-						DCLogger.debugInfoLog("Caravanserai Core" + " : " + cx2 + ", " + cz2 + " height " + height);
-					}
+			int height = data.height;
+			if (height > 10 && height < 100) {
+				if (num == 4) {
+					generateCore(data, rand, cx, cz, height, world);
+					CaravanGenPos.chunk = prov.getLoadedChunk(cx, cz);
+					DCLogger.debugInfoLog("Caravanserai Core" + " : " + cx2 + ", " + cz2 + " height " + height);
+				} else {
+					generatePart(data, rand, cx, cz, world);
 				}
 			}
 		}
 	}
 
-	public void generateCore(Random rand, int cx, int cz, int h, World world) {
+	public void generateCore(CaravanData data, Random rand, int cx, int cz, int h, World world) {
 		int px = cx << 4;
 		int pz = cz << 4;
 		int py = h;
-		for (int y = -7; y < 40; y++) {
+		for (int y = -10; y < 40; y++) {
 			for (int x = 0; x < 16; x++) {
 				for (int z = 0; z < 16; z++) {
 					BlockPos pos = new BlockPos(px + x, py + y, pz + z);
-					IBlockState set = getCoreState(x, y, z, rand);
+					IBlockState set = getCoreState(data, x, y, z, rand);
 					world.setBlockState(pos, set, 2);
 				}
 			}
 		}
 	}
 
-	public void generatePart(int num, Random rand, int cx, int cz, int h, World world) {
+	public void generatePart(CaravanData data, Random rand, int cx, int cz, World world) {
 		int px = cx << 4;
 		int pz = cz << 4;
-		int py = h;
+		int py = data.height;
 
 		int minX = 0;
 		int minZ = 0;
 		int maxX = 16;
 		int maxZ = 16;
-		int nx = (num % 3) - 1;
-		int nz = (num / 3) - 1;
+		int nx = (data.partNum % 3) - 1;
+		int nz = (data.partNum / 3) - 1;
 		int cx2 = cx + nx;
 		int cz2 = cz + nz;
-		int[] type = CaravanGenPos.getRoomNum(cx2, cz2, world);
-		// DCLogger.debugInfoLog("Caravanserai Room Gen" + num + " & " + type);
-		int gate = type[0] * 2 + 1;
 		int minX2 = 0;
 		int minZ2 = 0;
 		int maxX2 = 16;
 		int maxZ2 = 16;
 
 		EnumFacing face = EnumFacing.SOUTH;
-		if (num == 7) {
+		if (data.partNum == 7) {
 			face = EnumFacing.NORTH;
 		}
-		if (num == 3) {
+		if (data.partNum == 3) {
 			face = EnumFacing.EAST;
 		}
-		if (num == 5) {
+		if (data.partNum == 5) {
 			face = EnumFacing.WEST;
 		}
 
@@ -127,7 +118,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			for (int x = minX2; x < maxX2; x++) {
 				for (int z = minZ2; z < maxZ2; z++) {
 					BlockPos pos = new BlockPos(px + x, py + y, pz + z);
-					IBlockState set = getPartBase(num, x, y, z, rand);
+					IBlockState set = getPartBase(data, data.partNum, x, y, z, rand);
 					if (x >= minX && x < maxX && z >= minZ && z < maxZ) {
 						world.setBlockState(pos, set, 2);
 					} else if (y > 0) {
@@ -143,25 +134,25 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 					BlockPos pos = new BlockPos(px + x, py + y, pz + z);
 					int x1 = x;
 					int z1 = z;
-					if (num == 7) {
+					if (face == EnumFacing.NORTH) {
 						x1 = 15 - x;
 						z1 = 15 - z;
 					}
-					if (num == 3) {
+					if (face == EnumFacing.EAST) {
 						x1 = 15 - z;
 						z1 = x;
 					}
-					if (num == 5) {
+					if (face == EnumFacing.WEST) {
 						x1 = z;
 						z1 = 15 - x;
 					}
 					IBlockState set;
-					if (num == gate) {
-						set = getGate(num, x1, y, z1, rand);
-					} else if ((num & 1) == 0) {
-						set = getCornerRoom(num, x, y, z, rand);
+					if (data.isGate) {
+						set = getGate(data, x1, y, z1, rand);
+					} else if ((data.partNum & 1) == 0) {
+						set = getCornerRoom(data, x, y, z, rand);
 					} else {
-						set = getSmallRoom(num, x1, y, z1, rand);
+						set = getSmallRoom(data, x1, y, z1, rand);
 					}
 
 					if (set != null && set.getBlock() != Blocks.AIR)
@@ -170,42 +161,36 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			}
 		}
 
-		int t = num / 2;
-		if ((num & 1) == 1 && num != gate) {
+		if ((data.partNum & 1) == 1 && !data.isGate) {
 			for (int y = 0; y < 15; y++) {
 				for (int x = minX; x < maxX; x++) {
 					for (int z = minZ; z < maxZ; z++) {
 						int x1 = x;
 						int z1 = z;
-						if (num == 7) {
+						if (face == EnumFacing.NORTH) {
 							x1 = 15 - x;
 							z1 = 15 - z;
 						}
-						if (num == 3) {
+						if (face == EnumFacing.EAST) {
 							x1 = 15 - z;
 							z1 = x;
 						}
-						if (num == 5) {
+						if (face == EnumFacing.WEST) {
 							x1 = z;
 							z1 = 15 - x;
 						}
 						BlockPos pos = new BlockPos(px + x, py + y, pz + z);
 						IBlockState set;
-						switch (type[t]) {
-						case 0:
-							set = getInterior0(num, x1, y, z1, rand, face);
-							break;
-						case 1:
-							set = getInterior1(num, x1, y, z1, rand, face);
-							break;
-						case 2:
-							set = getInterior2(num, x1, y, z1, rand, face);
-							break;
-						case 3:
-							set = getInterior3(num, x1, y, z1, rand, face);
-							break;
-						default:
-							set = getInterior0(num, x1, y, z1, rand, face);
+						if (data.roomNum == 0) {
+							set = getInterior0(data, x1, y, z1, rand, face);
+						} else if (data.roomNum == 1) {
+							set = getInterior1(data, x1, y, z1, rand, face);
+						} else if (data.roomNum == 2) {
+							set = getInterior2(data, x1, y, z1, rand, face);
+						} else if (data.roomNum == 3) {
+							set = getInterior3(data, x1, y, z1, rand, face);
+						} else {
+							set = Blocks.AIR.getDefaultState();
 						}
 
 						if (set != null && set.getBlock() != Blocks.AIR)
@@ -217,13 +202,24 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 
 	}
 
-	private IBlockState getCoreState(int x, int y, int z, Random rand) {
+	private IBlockState getCoreState(CaravanData data, int x, int y, int z, Random rand) {
 		if (y < -3) {
 			if (x == 7 && z == 7 && y == -7) {
 				return Blocks.IRON_BLOCK.getDefaultState();
 			}
 			if (x == 8 && z == 8 && y == -7) {
 				return MainInit.gemBlock.getDefaultState();
+			}
+			if (x == 7 && z == 7 && y == -8) {
+				return MainInit.clayBricks.getDefaultState().withProperty(DCState.TYPE16, data.partNum);
+			}
+			if (x == 8 && z == 8 && y == -8) {
+				IBlockState state = MainInit.metalBlockAlloy.getDefaultState()
+						.withProperty(DCState.TYPE16, data.roomNum);
+				if (data.isGate) {
+					state = state.withProperty(DCState.TYPE16, 4);
+				}
+				return state;
 			}
 			return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
 		} else if (y == -3) {
@@ -302,7 +298,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			return Blocks.AIR.getDefaultState();
 	}
 
-	private IBlockState getPartBase(int num, int x, int y, int z, Random rand) {
+	private IBlockState getPartBase(CaravanData data, int num, int x, int y, int z, Random rand) {
 		if (y < 0) {
 			if (x == 7 && z == 7 && y == -7) {
 				return Blocks.IRON_BLOCK.getDefaultState();
@@ -310,12 +306,24 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 			if (x == 8 && z == 8 && y == -7) {
 				return MainInit.gemBlock.getDefaultState();
 			}
+			if (x == 7 && z == 7 && y == -8) {
+				return MainInit.clayBricks.getDefaultState().withProperty(DCState.TYPE16, data.partNum);
+			}
+			if (x == 8 && z == 8 && y == -8) {
+				IBlockState state = MainInit.metalBlockAlloy.getDefaultState()
+						.withProperty(DCState.TYPE16, data.roomNum);
+				if (data.isGate) {
+					state = state.withProperty(DCState.TYPE16, 4);
+				}
+				return state;
+			}
 			return MainInit.builds.getDefaultState().withProperty(DCState.TYPE16, 7);
 		}
 		return Blocks.AIR.getDefaultState();
 	}
 
-	private IBlockState getCornerRoom(int num, int x, int y, int z, Random rand) {
+	private IBlockState getCornerRoom(CaravanData data, int x, int y, int z, Random rand) {
+		int num = data.partNum;
 		int cx2 = (num % 3) - 1;
 		int cz2 = (num / 3) - 1;
 		if (cx2 == 1) {
@@ -435,7 +443,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		return Blocks.AIR.getDefaultState();
 	}
 
-	private IBlockState getSmallRoom(int num, int x, int y, int z, Random rand) {
+	private IBlockState getSmallRoom(CaravanData data, int x, int y, int z, Random rand) {
+		int num = data.partNum;
 		int cx2 = (num % 3) - 1;
 		int cz2 = (num / 3) - 1;
 		EnumFacing face = EnumFacing.SOUTH;
@@ -532,7 +541,8 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 		return Blocks.AIR.getDefaultState();
 	}
 
-	private IBlockState getGate(int num, int x, int y, int z, Random rand) {
+	private IBlockState getGate(CaravanData data, int x, int y, int z, Random rand) {
+		int num = data.partNum;
 		int cx2 = (num % 3) - 1;
 		int cz2 = (num / 3) - 1;
 		int x1 = x;
@@ -718,7 +728,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 	}
 
 	// 普通の寝室
-	private IBlockState getInterior0(int num, int x, int y, int z, Random rand, EnumFacing face) {
+	private IBlockState getInterior0(CaravanData data, int x, int y, int z, Random rand, EnumFacing face) {
 		if ((x == 3 || x == 8 || x == 13) && z == 4 && y == 2) {
 			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1).withProperty(DCState.FACING, face
 					.getOpposite());
@@ -760,7 +770,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 	}
 
 	// 倉庫
-	private IBlockState getInterior1(int num, int x, int y, int z, Random rand, EnumFacing face) {
+	private IBlockState getInterior1(CaravanData data, int x, int y, int z, Random rand, EnumFacing face) {
 		if ((x == 3 || x == 8 || x == 13) && z == 4 && y == 2) {
 			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1).withProperty(DCState.FACING, face
 					.getOpposite());
@@ -792,7 +802,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 	}
 
 	// カフェ
-	private IBlockState getInterior2(int num, int x, int y, int z, Random rand, EnumFacing face) {
+	private IBlockState getInterior2(CaravanData data, int x, int y, int z, Random rand, EnumFacing face) {
 		if ((x == 5 || x == 10) && z == 6 && y == 3) {
 			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1)
 					.withProperty(DCState.FACING, face);
@@ -849,7 +859,7 @@ public class WorldGenCaravanBase implements IWorldGenerator {
 	}
 
 	// 店
-	private IBlockState getInterior3(int num, int x, int y, int z, Random rand, EnumFacing face) {
+	private IBlockState getInterior3(CaravanData data, int x, int y, int z, Random rand, EnumFacing face) {
 		if ((x == 5 || x == 10) && z == 6 && y == 2) {
 			return MainInit.wallLamp.getDefaultState().withProperty(DCState.TYPE4, 1)
 					.withProperty(DCState.FACING, face);

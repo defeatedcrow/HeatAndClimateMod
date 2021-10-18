@@ -3,7 +3,7 @@
     "ambientocclusion": true,
     "textures": {
         "under": "dcs_climate:blocks/build/sofa_black_under",
-        "upper": "dcs_climate:blocks/build/sofa_leg",
+        "upper": "dcs_climate:blocks/build/sofa_black_upper",
         "foot": "dcs_climate:blocks/build/panel_wood",
         "particle": "#upper"
     },

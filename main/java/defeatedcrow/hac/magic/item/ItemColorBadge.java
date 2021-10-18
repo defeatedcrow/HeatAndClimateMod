@@ -14,6 +14,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.api.DimCoord;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
@@ -221,19 +222,15 @@ public class ItemColorBadge extends CharmItemBase implements IMagicCost {
 				DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(owner.posX, owner.posY, owner.posZ));
 				int dim = owner.world.provider.getDimension();
 				NBTTagCompound tag = charm.getTagCompound();
-				if (tag != null && tag.hasKey("dcs.charm.dim")) {
-					int warpDim = tag.getInteger("dcs.charm.dim");
-					double x = tag.getInteger("dcs.charm.x");
-					double y = tag.getInteger("dcs.charm.y");
-					double z = tag.getInteger("dcs.charm.z");
-					BlockPos pos = new BlockPos(x, y, z);
-
-					if (warpDim != dim) {
-						DCDimChangeHelper.INSTANCE.addCoord(owner, warpDim, pos);
-					} else {
-						owner.setPositionAndUpdate(x + 0.5D, y + 0.5D, z + 0.5D);
-						owner.fallDistance = 0.0F;
-					}
+				if (tag != null && tag.hasKey("dcs.charm.dimname")) {
+					DimCoord coord = DimCoord.getCoordFromNBT(tag);
+					if (coord != null)
+						if (coord.getDim() != dim) {
+							DCDimChangeHelper.INSTANCE.addCoord(owner, coord.getDim(), coord.getPos());
+						} else {
+							owner.setPositionAndUpdate(coord.x + 0.5D, coord.y + 0.5D, coord.z + 0.5D);
+							owner.fallDistance = 0.0F;
+						}
 				}
 			}
 		}
@@ -260,12 +257,12 @@ public class ItemColorBadge extends CharmItemBase implements IMagicCost {
 							int x = pos.getX();
 							int y = pos.getY() + 1;
 							int z = pos.getZ();
+							DimCoord coord = new DimCoord(dim, x, y, z);
 							tag.setString("dcs.charm.dimname", dimName);
-							tag.setInteger("dcs.charm.dim", dim);
-							tag.setInteger("dcs.charm.x", x);
-							tag.setInteger("dcs.charm.y", y);
-							tag.setInteger("dcs.charm.z", z);
+							coord.setNBT(tag);
 							stack.setTagCompound(tag);
+							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+									.getY() + 0.5D, pos.getZ() + 0.5D));
 							return EnumActionResult.SUCCESS;
 						}
 					}
@@ -300,7 +297,7 @@ public class ItemColorBadge extends CharmItemBase implements IMagicCost {
 
 	@Override
 	public float getCost(ItemStack item) {
-		if (!DCUtil.isEmpty(item)) {
+		if (!DCUtil.isEmpty(item) && CoreConfigDC.harderMagic) {
 			int i = item.getItemDamage();
 			float f = (float) CoreConfigDC.harderMagicCostAmount;
 			if (i == 0) {
@@ -344,23 +341,18 @@ public class ItemColorBadge extends CharmItemBase implements IMagicCost {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
 		}
 		NBTTagCompound tag = stack.getTagCompound();
-		if (tag != null && tag.hasKey("dcs.charm.dim")) {
+		DimCoord coord = DimCoord.getCoordFromNBT(tag);
+		if (coord != null && tag.hasKey("dcs.charm.dimname")) {
 			String warpDim = tag.getString("dcs.charm.dimname");
-			int x = tag.getInteger("dcs.charm.x");
-			int y = tag.getInteger("dcs.charm.y");
-			int z = tag.getInteger("dcs.charm.z");
 			tooltip.add(TextFormatting.RESET + " ");
 			tooltip.add("Registered Coord");
-			tooltip.add(warpDim + ", " + x + ", " + y + ", " + z);
+			tooltip.add(coord.toString(warpDim));
 		}
-		if (tag != null && tag.hasKey("dcs.portal.dim")) {
+		if (coord != null && tag.hasKey("dcs.portal.dimname")) {
 			String warpDim = tag.getString("dcs.portal.dimname");
-			int x = tag.getInteger("dcs.portal.x");
-			int y = tag.getInteger("dcs.portal.y");
-			int z = tag.getInteger("dcs.portal.z");
 			tooltip.add(TextFormatting.RESET + " ");
 			tooltip.add("Last Portal Coord");
-			tooltip.add(warpDim + ", " + x + ", " + y + ", " + z);
+			tooltip.add(coord.toString(warpDim));
 		}
 	}
 

@@ -18,6 +18,7 @@ import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.recipes.BlockContainerUtil;
 import defeatedcrow.hac.main.util.LootTablesDC;
+import defeatedcrow.hac.main.worldgen.CaravanData.CaravanType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.state.IBlockState;
@@ -72,8 +73,12 @@ public class CaravanGenEvent {
 				Chunk chunk = event.getChunk();
 				int cx = chunk.x;
 				int cz = chunk.z;
+				CaravanData data = CaravanData.getExistingCore(cx, cz, world);
+				if (data == null || data.type == CaravanType.NULL) {
+					return;
+				}
 
-				int num = CaravanGenPos.getCaravanPartNum(cx, cz, world);
+				int num = data.partNum;
 				if (num < 0) {
 					return;
 				}
@@ -82,7 +87,7 @@ public class CaravanGenEvent {
 				int nz = (num / 3) - 1;
 				int cx2 = cx + nx;
 				int cz2 = cz + nz;
-				int height = CaravanGenPos.getCoreHeight(cx2, cz2, world);
+				int height = data.height;
 
 				int px = cx << 4;
 				int pz = cz << 4;
@@ -90,22 +95,13 @@ public class CaravanGenEvent {
 				BlockPos pos = new BlockPos(px, py, pz);
 				EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 				IBlockState s1 = world.getBlockState(pos.add(8, -7, 8));
-				IBlockState s2 = world.getBlockState(pos.add(7, -7, 7));
-				IBlockState s3 = world.getBlockState(pos.add(8, -4, 8));
-				IBlockState s4 = world.getBlockState(pos.add(7, -4, 7));
-				CaravanType type = CaravanType.getType(s2.getBlock());
-				if (type == CaravanType.BROKEN) {
-					CaravanType type2 = CaravanType.getType(s4.getBlock());
-					if (type2 != CaravanType.BROKEN) {
-						type = type2;
-					}
-				}
+				CaravanType type = data.type;
 
 				if (getSeason(s1) != null && type != CaravanType.BROKEN) {
 					if (type == CaravanType.STANDBY || type == CaravanType.UNINIT) {
 						if (num == 4) {
 							if (ModuleConfig.village) {
-								Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 16);
+								Village village = world.getVillageCollection().getNearestVillage(pos.add(7, 0, 7), 32);
 								if (village == null || village.getNumVillagers() < 10) {
 									ForgeRegistry registry = (ForgeRegistry) ForgeRegistries.VILLAGER_PROFESSIONS;
 									int id = registry.getID(MainInit.trader);
@@ -143,10 +139,6 @@ public class CaravanGenEvent {
 								}
 							}
 						} else {
-							int[] room = CaravanGenPos.getRoomNum(cx + nx, cz + nz, world);
-							// DCLogger.debugInfoLog("Caravanserai Room Loading" + num + " & " + room);
-							int gate = room[0] * 2 + 1;
-
 							EnumFacing face = EnumFacing.SOUTH;
 							if (num == 7) {
 								face = EnumFacing.NORTH;
@@ -159,8 +151,8 @@ public class CaravanGenEvent {
 							}
 
 							int t = num / 2;
-							if ((num & 1) == 1 && num != gate) {
-								switch (room[t]) {
+							if ((num & 1) == 1 && !data.isGate) {
+								switch (data.roomNum) {
 								case 1:
 									updateInterior0(world, pos, rand, face, type);
 									break;
@@ -197,23 +189,20 @@ public class CaravanGenEvent {
 					}
 
 				} else if (type == CaravanType.BROKEN) {
-					if (world.getBlockState(pos.add(7, -7, 7)).getBlock() == Blocks.LAPIS_BLOCK || world
-							.getBlockState(pos.add(7, -4, 7)).getBlock() == Blocks.LAPIS_BLOCK) {
-						Village village = null;
-						List<Village> villages = world.getVillageCollection().getVillageList();
-						for (Village v : villages) {
-							if (v.getCenter().distanceSq(pos.add(7, 0, 7)) < 32D * 32D) {
-								village = v;
-								break;
-							}
+					Village village = null;
+					List<Village> villages = world.getVillageCollection().getVillageList();
+					for (Village v : villages) {
+						if (v.getCenter().distanceSq(pos.add(7, 0, 7)) < 32D * 32D) {
+							village = v;
+							break;
 						}
-						if (village != null || !ModuleConfig.village) {
-							DCLogger.debugInfoLog("Caravanserai Reconstructed: " + cx + ", " + cz + " height" + py);
-							world.setBlockState(pos.add(7, -7, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
-						}
-						world.setBlockState(pos.add(8, -7, 8), MainInit.gemBlock.getDefaultState()
-								.withProperty(DCState.TYPE16, season.id), 2);
 					}
+					if (village != null || !ModuleConfig.village) {
+						DCLogger.debugInfoLog("Caravanserai Reconstructed: " + cx + ", " + cz + " height" + py);
+						world.setBlockState(pos.add(7, -7, 7), Blocks.EMERALD_BLOCK.getDefaultState(), 2);
+					}
+					world.setBlockState(pos.add(8, -7, 8), MainInit.gemBlock.getDefaultState()
+							.withProperty(DCState.TYPE16, season.id), 2);
 				}
 			}
 		}
@@ -370,23 +359,22 @@ public class CaravanGenEvent {
 		return pos.add(x1, y1, z1);
 	}
 
-	public enum CaravanType {
-		UNINIT,
-		STANDBY,
-		LOADED,
-		BROKEN;
-
-		public static CaravanType getType(Block block) {
-			if (block == Blocks.IRON_BLOCK) {
-				return UNINIT;
-			} else if (block == Blocks.DIAMOND_BLOCK) {
-				return LOADED;
-			} else if (block == Blocks.EMERALD_BLOCK) {
-				return STANDBY;
-			} else {
-				return BROKEN;
+	public static int getCore(int cx, int cz, World world) {
+		int px = cx << 4;
+		int pz = cz << 4;
+		int h = -1;
+		for (int y = 4; y < 100; y++) {
+			BlockPos pos = new BlockPos(px + 7, y, pz + 7);
+			IBlockState state = world.getBlockState(pos);
+			if (state != null) {
+				Block block = state.getBlock();
+				if (CaravanData.getType(block) != CaravanType.NULL) {
+					h = y + 7;
+					return h;
+				}
 			}
 		}
+		return h;
 	}
 
 	public EnumSeason getSeason(IBlockState block) {
@@ -398,7 +386,7 @@ public class CaravanGenEvent {
 				}
 			}
 		}
-		return null;
+		return EnumSeason.SPRING;
 	}
 
 	private List<ItemStack> getLiquorList(List<ItemStack> list, Random rand) {
@@ -423,17 +411,30 @@ public class CaravanGenEvent {
 	}
 
 	private Fluid getFluid(int i) {
-		switch (i) {
-		case 0:
-			return FoodInit.roseWater;
-		case 1:
-			return FoodInit.beer;
-		case 2:
-			return FoodInit.wine;
-		case 3:
-			return FoodInit.dateWine;
-		case 4:
-			return FoodInit.araq;
+		if (ModuleConfig.liquor) {
+			switch (i) {
+			case 0:
+				return FoodInit.roseWater;
+			case 1:
+				return FoodInit.beer;
+			case 2:
+				return FoodInit.wine;
+			case 3:
+				return FoodInit.dateWine;
+			case 4:
+				return FoodInit.araq;
+			}
+		} else {
+			switch (i) {
+			case 0:
+				return FoodInit.roseWater;
+			case 1:
+				return FoodInit.cola;
+			case 2:
+				return FoodInit.cider;
+			case 3:
+				return FoodInit.lemon_squash;
+			}
 		}
 		return null;
 	}

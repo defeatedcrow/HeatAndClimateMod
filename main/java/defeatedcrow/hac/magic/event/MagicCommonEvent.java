@@ -22,6 +22,7 @@ import defeatedcrow.hac.magic.entity.EntityBlackDog;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.api.DimCoord;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.item.tool.ItemScytheDC;
 import defeatedcrow.hac.main.recipes.device.RegisterCrusherRecipe;
@@ -43,6 +44,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -61,7 +63,9 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -121,6 +125,29 @@ public class MagicCommonEvent {
 						owner.heal(healamo);
 						event.getSource().setDamageBypassesArmor();
 					}
+
+					if (ClimateCore.isDebug && MainUtil.getOffhandJewelColor(target) == MagicColor.BLUE_BLACK) {
+						if (!target.world.isRemote && target.isSneaking()) {
+							// デバッグモード限定の試作
+							double px = owner.posX;
+							double py = owner.posY;
+							double pz = owner.posZ;
+							float yaw = owner.rotationYaw;
+							Vec3d vec = new Vec3d(px - target.posX, py - target.posY, pz - target.posZ);
+							vec = vec.normalize();
+							px -= vec.x * 1.5D;
+							py -= vec.y;
+							pz -= vec.z * 1.5D;
+							yaw = (float) (MathHelper.atan2(vec.x, vec.z) * (180D / Math.PI));
+							// 落下対策
+							target.addPotionEffect(new PotionEffect(MainInit.bird, 600, 0));
+							target.rotationYaw = yaw;
+							target.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 2.0F);
+							target.setPositionAndUpdate(px, py + 0.5D, pz);
+							target.fallDistance = 0.0F;
+						}
+						event.setCanceled(true);
+					}
 				}
 			}
 		}
@@ -174,14 +201,10 @@ public class MagicCommonEvent {
 				int y = MathHelper.floor(player.posY);
 				int z = MathHelper.floor(player.posZ);
 				NBTTagCompound tag = charm.getTagCompound();
-				if (tag == null) {
-					tag = new NBTTagCompound();
-				}
+				DimCoord coord = new DimCoord(dim, x, y, z);
+				coord.setNBT(tag);
 				tag.setString("dcs.portal.dimname", dimName);
-				tag.setInteger("dcs.portal.dim", dim);
-				tag.setInteger("dcs.portal.x", x);
-				tag.setInteger("dcs.portal.y", y);
-				tag.setInteger("dcs.portal.z", z);
+
 				charm.setTagCompound(tag);
 			}
 		}
@@ -486,12 +509,13 @@ public class MagicCommonEvent {
 				ItemStack held = player.getHeldItemOffhand();
 				ItemStack drop = event.getItem().getItem();
 				if (held.hasTagCompound()) {
-					Map<BlockPos, Integer> map = ItemColorGauntlet2.getPosList(held.getTagCompound());
-					if (map != null && !map.isEmpty()) {
+					Map<DimCoord, Integer> map = ItemColorGauntlet2.getPosList(held.getTagCompound());
+					if (map != null && !map.isEmpty() && player instanceof EntityPlayerMP) {
 						ItemStack ins = drop.copy();
-						for (BlockPos pos : map.keySet()) {
-							if (player.world.isBlockLoaded(pos)) {
-								TileEntity tile = player.world.getTileEntity(pos);
+						for (DimCoord pos : map.keySet()) {
+							WorldServer server = ((EntityPlayerMP) player).mcServer.getWorld(pos.getDim());
+							if (server != null && server.isBlockLoaded(pos.getPos())) {
+								TileEntity tile = server.getTileEntity(pos.getPos());
 								if (tile != null && tile
 										.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP)) {
 									IItemHandler target = tile

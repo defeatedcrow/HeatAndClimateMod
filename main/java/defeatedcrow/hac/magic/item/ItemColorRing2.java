@@ -315,7 +315,7 @@ public class ItemColorRing2 extends CharmItemBase implements IMagicCost {
 
 	@Override
 	public float getCost(ItemStack item) {
-		if (!DCUtil.isEmpty(item)) {
+		if (!DCUtil.isEmpty(item) && CoreConfigDC.harderMagic) {
 			int i = item.getItemDamage();
 			float f = (float) CoreConfigDC.harderMagicCostAmount;
 			if (i == 1) {

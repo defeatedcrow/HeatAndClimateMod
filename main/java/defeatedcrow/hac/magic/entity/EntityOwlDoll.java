@@ -144,7 +144,7 @@ public class EntityOwlDoll extends DCEntityBase {
 				EntityPlayer owner = world.getPlayerEntityByUUID(id);
 				if (owner != null && MainUtil.getOffhandJewelColor(owner) == MagicColor.BLACK_WHITE) {
 					ItemStack held = owner.getHeldItemOffhand();
-					ItemColorGauntlet2.addCount(held, 3, -1);
+					ItemColorGauntlet2.removeOwlId(held);
 				}
 			}
 		}
