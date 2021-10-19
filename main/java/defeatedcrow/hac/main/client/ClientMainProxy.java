@@ -457,6 +457,11 @@ public class ClientMainProxy extends CommonMainProxy {
 	}
 
 	@Override
+	public boolean isItemUseKeyDown() {
+		return Minecraft.getMinecraft().gameSettings.keyBindUseItem.isKeyDown();
+	}
+
+	@Override
 	public int getParticleCount() {
 		int i = Minecraft.getMinecraft().gameSettings.particleSetting;
 		switch (i) {

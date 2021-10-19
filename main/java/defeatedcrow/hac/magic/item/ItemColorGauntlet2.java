@@ -21,6 +21,7 @@ import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.magic.block.TileMorayLight;
 import defeatedcrow.hac.magic.entity.EntityCrowDoll;
 import defeatedcrow.hac.magic.entity.EntityOwlDoll;
+import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.main.api.DimCoord;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageMagicParticle;
@@ -290,32 +291,34 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 					return EnumActionResult.SUCCESS;
 				}
 				// BLACK-WHITE
-				else if (meta == 3 && player.isSneaking()) {
-					// spawn owl
-					if (getOwlId(stack) == 0) {
-						if (DCUtil.playerCanUseCharm(player, stack)) {
-							EntityOwlDoll doll = new EntityOwlDoll(world);
-							doll.setOwnerId(player.getUniqueID());
-							double fX = facing.getFrontOffsetX() * 0.25D;
-							double fY = facing.getFrontOffsetY() * 0.25D;
-							double fZ = facing.getFrontOffsetZ() * 0.25D;
-							doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
-									.getY() + hitY + fY, pos.getZ() + hitZ + fZ, 180F + player.rotationYaw, 30F);
-							if (!world.isRemote) {
-								world.spawnEntity(doll);
+				else if (meta == 3) {
+					if (player.isSneaking()) {
+						// spawn owl
+						if (getOwlId(stack) == 0) {
+							if (DCUtil.playerCanUseCharm(player, stack)) {
+								EntityOwlDoll doll = new EntityOwlDoll(world);
+								doll.setOwnerId(player.getUniqueID());
+								double fX = facing.getFrontOffsetX() * 0.25D;
+								double fY = facing.getFrontOffsetY() * 0.25D;
+								double fZ = facing.getFrontOffsetZ() * 0.25D;
+								doll.setPositionAndRotation(pos.getX() + hitX + fX, pos
+										.getY() + hitY + fY, pos.getZ() + hitZ + fZ, 180F + player.rotationYaw, 30F);
+								if (!world.isRemote) {
+									world.spawnEntity(doll);
+								}
+								DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+										.getY() + 0.5D,
+										pos.getZ() + 0.5D));
+								world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
+								addOwlId(stack, player, doll.getEntityId());
+								DCUtil.playerConsumeCharm(player, stack);
 							}
-							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-									.getY() + 0.5D,
-									pos.getZ() + 0.5D));
-							world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
-							addOwlId(stack, player, doll.getEntityId());
-							DCUtil.playerConsumeCharm(player, stack);
+						} else {
+							String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
+							player.sendMessage(new TextComponentString(String.format(mes1)));
 						}
-					} else {
-						String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
-						player.sendMessage(new TextComponentString(String.format(mes1)));
+						return EnumActionResult.SUCCESS;
 					}
-					return EnumActionResult.SUCCESS;
 				}
 				// WHITE-RED
 				else if (meta == 4) {
@@ -351,11 +354,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 							.getPosition(), SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 0.5F, 1.5F);
 				} else if (meta == 3 && !player.isSpectator()) {
 					if (world.isRemote && ClimateCore.proxy.getPlayer() != null) {
-						if (checkViewEntity()) {
-							removeViewEntity();
-							world.playSound(player, player
-									.getPosition(), SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
-						} else {
+						if (!checkViewEntity()) {
 							int id = getOwlId(stack);
 							Entity owl = world.getEntityByID(id);
 							if (owl != null) {
@@ -363,6 +362,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 								setViewEntity(owl);
 								world.playSound(player, player
 										.getPosition(), SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
+								MagicCommonEvent.coolTime = 20;
 							}
 						}
 					}

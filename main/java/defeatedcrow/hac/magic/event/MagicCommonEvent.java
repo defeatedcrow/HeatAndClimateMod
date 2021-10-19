@@ -78,6 +78,7 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
@@ -484,15 +485,6 @@ public class MagicCommonEvent {
 			if (event.getEntityLiving() instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 
-				// OwlDollの挙動
-				if (ClimateCore.proxy.getPlayer() != null && !player.isSpectator()) {
-					if (ClimateCore.proxy.getPlayer() != player && MainUtil
-							.getOffhandJewelColor(player) != MagicColor.BLACK_WHITE && ItemColorGauntlet2
-									.checkViewEntity()) {
-						ItemColorGauntlet2.removeViewEntity();
-					}
-				}
-
 				// 定期的に絵画の存在チェック
 				if (count < 0) {
 					PictureList.INSTANCE.checkList(event.getEntityLiving().getEntityWorld());
@@ -502,6 +494,27 @@ public class MagicCommonEvent {
 				}
 
 			}
+		}
+	}
+
+	public static int coolTime = 0;
+
+	@SubscribeEvent
+	public void onClientTick(TickEvent.ClientTickEvent event) {
+		// OwlDollの挙動
+		if (coolTime == 0) {
+			if (ClimateCore.proxy.getPlayer() != null) {
+				EntityPlayer player = ClimateCore.proxy.getPlayer();
+				if (!player.isSpectator() && ItemColorGauntlet2
+						.checkViewEntity()) {
+					if (MainUtil.getOffhandJewelColor(player) != MagicColor.BLACK_WHITE || ClimateMain.proxy
+							.isItemUseKeyDown()) {
+						ItemColorGauntlet2.removeViewEntity();
+					}
+				}
+			}
+		} else {
+			coolTime--;
 		}
 	}
 

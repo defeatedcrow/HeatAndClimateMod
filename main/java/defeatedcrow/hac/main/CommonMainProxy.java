@@ -779,6 +779,10 @@ public class CommonMainProxy implements IGuiHandler {
 		return false;
 	}
 
+	public boolean isItemUseKeyDown() {
+		return false;
+	}
+
 	public int getParticleCount() {
 		return 0;
 	}
