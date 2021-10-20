@@ -357,6 +357,17 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 						if (!checkViewEntity()) {
 							int id = getOwlId(stack);
 							Entity owl = world.getEntityByID(id);
+							if (owl == null) {
+								// 見つからないときは登録IDの更新を試みる
+								for (Entity e : world.loadedEntityList) {
+									if (e instanceof EntityOwlDoll && ((EntityOwlDoll) e).isOwnerID(player)) {
+										owl = e;
+										removeOwlId(stack);
+										addOwlId(stack, player, e.getEntityId());
+										break;
+									}
+								}
+							}
 							if (owl != null) {
 								BlockPos owlPos = owl.getPosition();
 								setViewEntity(owl);

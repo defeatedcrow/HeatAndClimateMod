@@ -29,13 +29,16 @@ public class EntitySmallCushionA extends DCEntityBase {
 	}
 
 	public EntitySmallCushionA(World worldIn, double posX, double posY, double posZ) {
-		super(worldIn, posX, posY, posZ);
+		this(worldIn);
 		this.setSize(0.8F, 0.125F);
+		this.setPosition(posX, posY, posZ);
 	}
 
 	public EntitySmallCushionA(World worldIn, double posX, double posY, double posZ, @Nullable EntityPlayer player) {
-		super(worldIn, posX, posY, posZ, player);
+		this(worldIn, posX, posY, posZ);
 		this.setSize(0.8F, 0.125F);
+		if (player != null)
+			this.rotationYaw = player.rotationYaw;
 	}
 
 	@Override
