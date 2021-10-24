@@ -287,6 +287,9 @@ public class DCInfoDataRegister implements IDCInfoDataRegister {
 			DCInfoData cushion = new DCInfoData(null, null, new ItemStack(MainInit.cushionGray, 1, 0),
 					"dcs.info.title.cushion", "dcs.info.desc.cushion");
 			cushion.machine.add(new ItemStack(MainInit.cushionGray, 1, 1));
+			cushion.machine.add(new ItemStack(MainInit.cushionGray, 1, 2));
+			cushion.machine.add(new ItemStack(MainInit.cushionGray, 1, 3));
+			cushion.machine.add(new ItemStack(MainInit.cushionGray, 1, 4));
 			MainAPIManager.infoRegister.registerInfo(cushion);
 		}
 	}

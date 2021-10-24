@@ -9,6 +9,11 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.core.plugin.jei.ingredients.ClimateTypes;
+import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.food.item.ItemFluidPack;
+import defeatedcrow.hac.food.item.brewing.FluidBottleContDC;
+import defeatedcrow.hac.main.config.ModuleConfig;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -40,7 +45,7 @@ public class ClimateFluidWrapper implements IRecipeWrapper {
 	@Override
 	public void getIngredients(IIngredients ing) {
 		List<ItemStack> items = Lists.newArrayList();
-		items.add(cup);
+		items.addAll(getCup());
 		items.add(bucket);
 		ing.setInput(ClimateTypes.TEMP, temp);
 		ing.setInput(ClimateTypes.HUM, hum);
@@ -65,8 +70,33 @@ public class ClimateFluidWrapper implements IRecipeWrapper {
 		return fluidstack;
 	}
 
-	public ItemStack getCup() {
-		return cup;
+	public List<ItemStack> getCup() {
+		List<ItemStack> ret = Lists.newArrayList();
+		if (!DCUtil.isEmpty(cup)) {
+			ret.add(cup);
+		}
+		if (ModuleConfig.food) {
+			int i1 = ItemFluidPack.getMetaFromFluid(fluidstack.getFluid());
+			if (i1 > 0) {
+				ret.add(new ItemStack(FoodInit.paperPack, 1, i1));
+			}
+			if (ModuleConfig.food_advanced) {
+				ItemStack bottle = FluidBottleContDC.getItemFromFluid(fluidstack.getFluid());
+				if (!DCUtil.isEmpty(bottle)) {
+					ret.add(bottle);
+				}
+			}
+		}
+
+		return ret;
+	}
+
+	public List<ItemStack> getBucket() {
+		List<ItemStack> ret = Lists.newArrayList();
+		if (!DCUtil.isEmpty(bucket)) {
+			ret.add(bucket);
+		}
+		return ret;
 	}
 
 	@Override

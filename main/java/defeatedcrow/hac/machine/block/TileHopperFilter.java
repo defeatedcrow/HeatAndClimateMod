@@ -352,7 +352,13 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	/* === SidedInventory === */
 
 	protected int[] slotsSides() {
-		return new int[] { 0, 1, 2, 3, 4 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4
+		};
 	};
 
 	@Override
@@ -468,7 +474,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 		return inv.isEmpty();
 	}
 
-	private class HopperInvWrapper extends SidedInvWrapper {
+	protected class HopperInvWrapper extends SidedInvWrapper {
 		private HopperInvWrapper(TileHopperFilter tile, EnumFacing side) {
 			super(tile, side);
 		}

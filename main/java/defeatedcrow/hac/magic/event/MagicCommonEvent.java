@@ -221,15 +221,12 @@ public class MagicCommonEvent {
 
 		if (!(living instanceof EntityPlayer) && dam >= living.getHealth()) {
 			if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorBadge, 1, 1))) {
-				if (DCUtil.playerCanUseCharm((EntityPlayer) living, new ItemStack(MagicInit.colorBadge, 1, 1))) {
-					// DCLogger.debugInfoLog("on amulet process");
-					living.fallDistance = 0.0F;
-					living.setHealth(living.getMaxHealth() * 0.5F);
-					living.world.playSound(null, living
-							.getPosition(), SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.PLAYERS, 1.0F, 0.75F);
-					DCUtil.playerConsumeCharm((EntityPlayer) living, new ItemStack(MagicInit.colorBadge, 1, 1));
-					event.setCanceled(true);
-				}
+				// DCLogger.debugInfoLog("on amulet process");
+				living.fallDistance = 0.0F;
+				living.setHealth(living.getMaxHealth() * 0.5F);
+				living.world.playSound(null, living
+						.getPosition(), SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.PLAYERS, 1.0F, 0.75F);
+				event.setCanceled(true);
 			}
 		}
 	}

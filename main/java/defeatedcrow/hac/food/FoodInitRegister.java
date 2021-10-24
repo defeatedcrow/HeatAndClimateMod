@@ -728,6 +728,7 @@ public class FoodInitRegister {
 		FluidRegistry.addBucketForFluid(FoodInit.tonic);
 		FluidRegistry.addBucketForFluid(FoodInit.lemon_squash);
 		FluidRegistry.addBucketForFluid(FoodInit.cola);
+		FluidRegistry.addBucketForFluid(FoodInit.cider);
 
 	}
 
@@ -870,6 +871,7 @@ public class FoodInitRegister {
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.bread);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.cake);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.clubsandwich);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.cookie);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.cupSilver);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.pastrySquare);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.pastryRound);
@@ -890,8 +892,10 @@ public class FoodInitRegister {
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.snack);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.udon);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.pasta);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.curry);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.wagashi);
 		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.dip);
+		DispenseEntityItem.getInstance().dispenceList.add(FoodInit.yogurt);
 	}
 
 }

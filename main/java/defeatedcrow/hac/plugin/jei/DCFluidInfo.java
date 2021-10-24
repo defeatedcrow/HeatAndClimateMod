@@ -13,13 +13,15 @@ import defeatedcrow.hac.plugin.DrinkPotionType;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 
 public class DCFluidInfo {
 
@@ -68,11 +70,7 @@ public class DCFluidInfo {
 		} else {
 			air = null;
 		}
-		if (fluid.getBlock() != null) {
-			bucket = new ItemStack(Items.BUCKET);
-		} else {
-			bucket = ItemStack.EMPTY;
-		}
+		bucket = FluidUtil.getFilledBucket(new FluidStack(fluid, 1000));
 
 		FluidDic dic = FluidDictionaryDC.getDic(fluid);
 		if (dic != null) {
@@ -90,7 +88,14 @@ public class DCFluidInfo {
 				effect = new PotionEffect(potion, 1200, 0);
 			}
 			if (ModuleConfig.food) {
-				cup = new ItemStack(FoodInit.cupSilver);
+				ItemStack ret = new ItemStack(FoodInit.cupSilver, 1, 0);
+				IFluidHandlerItem handler = new FluidHandlerItemStack(ret, 200);
+				handler.fill(new FluidStack(recipe, 200), true);
+				if (handler.getTankProperties().length > 0 && handler.getTankProperties()[0].getContents() != null) {
+					cup = ret.copy();
+				} else {
+					cup = ItemStack.EMPTY;
+				}
 			} else {
 				cup = ItemStack.EMPTY;
 			}

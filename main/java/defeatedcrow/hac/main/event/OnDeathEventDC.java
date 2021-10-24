@@ -35,8 +35,9 @@ public class OnDeathEventDC {
 			EntityPlayer player = (EntityPlayer) living;
 			boolean hasCharm = false;
 			ItemStack charm = ItemStack.EMPTY;
-			if (ModuleConfig.magic) {
+			if (ModuleConfig.magic && DCUtil.playerCanUseCharm(player, new ItemStack(MagicInit.colorBadge, 1, 1))) {
 				charm = MainUtil.getCharmItem(player, new ItemStack(MagicInit.colorBadge, 1, 1));
+				DCUtil.playerConsumeCharm(player, new ItemStack(MagicInit.colorBadge, 1, 1));
 			}
 
 			if (!DCUtil.isEmpty(charm)) {

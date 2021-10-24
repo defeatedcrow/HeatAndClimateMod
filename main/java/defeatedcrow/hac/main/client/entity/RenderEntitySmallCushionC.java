@@ -18,7 +18,7 @@ public class RenderEntitySmallCushionC extends Render<EntitySmallCushionA> {
 
 	public RenderEntitySmallCushionC(RenderManager renderManager) {
 		super(renderManager);
-		this.shadowSize = 1.0F;
+		this.shadowSize = 0.5F;
 		this.shadowOpaque = 0.5F;
 	}
 

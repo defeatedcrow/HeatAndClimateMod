@@ -67,7 +67,10 @@ public class ClimateFluidCategory implements IRecipeCategory {
 		}
 
 		recipeLayout.getItemStacks().init(0, true, 22, 38);
-		recipeLayout.getItemStacks().set(0, wrapper.cup);
+		recipeLayout.getItemStacks().set(0, wrapper.getCup());
+
+		recipeLayout.getItemStacks().init(1, true, 1, 17);
+		recipeLayout.getItemStacks().set(1, wrapper.getBucket());
 
 		DCHeatTier temp = wrapper.getTemp();
 		if (temp != null) {
