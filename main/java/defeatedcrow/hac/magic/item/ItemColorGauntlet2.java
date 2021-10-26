@@ -46,7 +46,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -215,14 +214,12 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 						DimCoord coord = new DimCoord(world.provider.getDimension(), pos);
 						if (hasCoord(stack, coord)) {
 							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-									.getY() + 0.5D,
-									pos.getZ() + 0.5D));
+									.getY() + 0.5D, pos.getZ() + 0.5D));
 							removeCoord(stack, player, pos);
 						} else {
 							if (DCUtil.playerCanUseCharm(player, stack)) {
 								DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-										.getY() + 0.5D,
-										pos.getZ() + 0.5D));
+										.getY() + 0.5D, pos.getZ() + 0.5D));
 								if (addCoord(stack, player, pos, limit, false))
 									DCUtil.playerConsumeCharm(player, stack);
 							}
@@ -284,8 +281,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 								}
 							}
 						} else {
-							String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
-							player.sendMessage(new TextComponentString(String.format(mes1)));
+							DCMainPacket.sendChat(player, "dcs.comment.color_gauntlet2.limit");
 						}
 					}
 					return EnumActionResult.SUCCESS;
@@ -307,15 +303,13 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 									world.spawnEntity(doll);
 								}
 								DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-										.getY() + 0.5D,
-										pos.getZ() + 0.5D));
+										.getY() + 0.5D, pos.getZ() + 0.5D));
 								world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
 								addOwlId(stack, player, doll.getEntityId());
 								DCUtil.playerConsumeCharm(player, stack);
 							}
 						} else {
-							String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
-							player.sendMessage(new TextComponentString(String.format(mes1)));
+							DCMainPacket.sendChat(player, "dcs.comment.color_gauntlet2.limit");
 						}
 						return EnumActionResult.SUCCESS;
 					}
@@ -439,13 +433,11 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 					if (del != null) {
 						map.remove(del);
 						if (player != null) {
-							String mes1 = I18n.format("dcs.comment.color_gauntlet2.del2") + " " + del.toString();
-							player.sendMessage(new TextComponentString(String.format(mes1)));
+							DCMainPacket.sendChat(player, "dcs.comment.color_gauntlet2.del2", del.toString());
 						}
 					}
 				} else {
-					String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
-					player.sendMessage(new TextComponentString(String.format(mes1)));
+					DCMainPacket.sendChat(player, "dcs.comment.color_gauntlet2.limit");
 					return false;
 				}
 			}
@@ -455,8 +447,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			stack.setTagCompound(setPosList(tag, map));
 
 			if (player != null) {
-				String mes2 = I18n.format("dcs.comment.color_gauntlet2.add") + " " + add.toString();
-				player.sendMessage(new TextComponentString(String.format(mes2)));
+				DCMainPacket.sendChat(player, "dcs.comment.color_gauntlet2.add", coord.toString());
 			}
 			return true;
 		}
@@ -474,8 +465,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			if (!map.isEmpty() && map.containsKey(delc)) {
 				map.remove(delc);
 				if (player != null) {
-					String mes1 = I18n.format("dcs.comment.color_gauntlet2.del") + " " + delc.toString();
-					player.sendMessage(new TextComponentString(String.format(mes1)));
+					DCMainPacket.sendChat(player, "dcs.comment.color_gauntlet2.del", delc.toString());
 				}
 			}
 			stack.setTagCompound(setPosList(tag, map));
@@ -598,8 +588,7 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			if (tag.hasKey("owlid")) {
 				int i = tag.getInteger("owlid");
 				if (player.world.getEntityByID(i) != null) {
-					String mes1 = I18n.format("dcs.comment.color_gauntlet2.limit");
-					player.sendMessage(new TextComponentString(String.format(mes1)));
+					DCMainPacket.sendChat(player, "dcs.comment.color_gauntlet2.limit");
 					return stack;
 				}
 			}

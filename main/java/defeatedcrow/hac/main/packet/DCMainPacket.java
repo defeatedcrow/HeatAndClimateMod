@@ -1,5 +1,7 @@
 package defeatedcrow.hac.main.packet;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,5 +24,20 @@ public class DCMainPacket {
 		INSTANCE.registerMessage(MHandlerEntityTank.class, MessageEntityTank.class, 10, Side.CLIENT);
 		INSTANCE.registerMessage(MHandlerColorID.class, MessageColorID.class, 11, Side.CLIENT);
 		INSTANCE.registerMessage(MHandlerMagicWarp.class, MessageMagicWarp.class, 12, Side.SERVER);
+		INSTANCE.registerMessage(MHandlerChatDC.class, MessageChatDC.class, 13, Side.CLIENT);
+	}
+
+	public static void sendChat(EntityPlayer player, String message) {
+		if (player instanceof EntityPlayerMP) {
+			EntityPlayerMP playerMP = (EntityPlayerMP) player;
+			INSTANCE.sendTo(new MessageChatDC(message), playerMP);
+		}
+	}
+
+	public static void sendChat(EntityPlayer player, String message, String arg) {
+		if (player instanceof EntityPlayerMP) {
+			EntityPlayerMP playerMP = (EntityPlayerMP) player;
+			INSTANCE.sendTo(new MessageChatDC(message, arg), playerMP);
+		}
 	}
 }

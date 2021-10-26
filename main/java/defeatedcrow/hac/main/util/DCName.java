@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import defeatedcrow.hac.config.CoreConfigDC;
-import net.minecraft.client.resources.I18n;
+import defeatedcrow.hac.core.ClimateCore;
 
 public enum DCName {
 	HEAT("dcs.tip.heat"),
@@ -67,7 +67,11 @@ public enum DCName {
 	}
 
 	public String getLocalizedName() {
-		return I18n.format(name);
+		if (ClimateCore.proxy.getPlayer() != null) {
+			return net.minecraft.client.resources.I18n.format(name);
+		} else {
+			return this.name();
+		}
 	}
 
 	public static String getLocalizedDate() {
