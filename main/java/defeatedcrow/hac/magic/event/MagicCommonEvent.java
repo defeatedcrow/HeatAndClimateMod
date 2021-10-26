@@ -432,8 +432,6 @@ public class MagicCommonEvent {
 		}
 	}
 
-	int count = 60;
-
 	@SubscribeEvent
 	public void onLiving(LivingEvent.LivingUpdateEvent event) {
 		if (MainUtil.getOffhandJewelColor(event.getEntityLiving()) == MagicColor.RED_GREEN) {
@@ -459,7 +457,7 @@ public class MagicCommonEvent {
 			int cx = pos.getX() >> 4;
 			int cz = pos.getZ() >> 4;
 			ChunkPos chunk = new ChunkPos(cx, cz);
-			if (PictureList.INSTANCE.hasColor(chunk, MagicColor.GREEN) && event
+			if (PictureList.INSTANCE.hasColor(chunk, MagicColor.BLUE_GREEN) && event
 					.getEntityLiving() instanceof EntityPlayer) {
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MainInit.bird, 205, 0));
 			}
@@ -478,19 +476,19 @@ public class MagicCommonEvent {
 					event.getEntityLiving().setDead();
 				}
 			}
+		}
+	}
 
-			if (event.getEntityLiving() instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+	private static int count = 60;
 
-				// 定期的に絵画の存在チェック
-				if (count < 0) {
-					PictureList.INSTANCE.checkList(event.getEntityLiving().getEntityWorld());
-					count = 60;
-				} else {
-					count--;
-				}
-
-			}
+	@SubscribeEvent
+	public void onClientTick(TickEvent.WorldTickEvent event) {
+		// 定期的に絵画の存在チェック
+		if (count < 0) {
+			PictureList.INSTANCE.checkList(event.world);
+			count = 60;
+		} else {
+			count--;
 		}
 	}
 

@@ -213,13 +213,17 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 					if (!world.isRemote) {
 						DimCoord coord = new DimCoord(world.provider.getDimension(), pos);
 						if (hasCoord(stack, coord)) {
-							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-									.getY() + 0.5D, pos.getZ() + 0.5D));
+							if (!world.isRemote) {
+								DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+										.getY() + 0.5D, pos.getZ() + 0.5D));
+							}
 							removeCoord(stack, player, pos);
 						} else {
 							if (DCUtil.playerCanUseCharm(player, stack)) {
-								DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-										.getY() + 0.5D, pos.getZ() + 0.5D));
+								if (!world.isRemote) {
+									DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+											.getY() + 0.5D, pos.getZ() + 0.5D));
+								}
 								if (addCoord(stack, player, pos, limit, false))
 									DCUtil.playerConsumeCharm(player, stack);
 							}
@@ -244,9 +248,10 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 						if (!world.isRemote) {
 							world.spawnEntity(doll);
 						}
-						DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-								.getY() + 0.5D,
-								pos.getZ() + 0.5D));
+						if (!world.isRemote) {
+							DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+									.getY() + 0.5D, pos.getZ() + 0.5D));
+						}
 						world.playSound(player, pos, SoundEvents.BLOCK_NOTE_GUITAR, SoundCategory.BLOCKS, 0.5F, 1.5F);
 						DCUtil.playerConsumeCharm(player, stack);
 					}
@@ -302,8 +307,10 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 								if (!world.isRemote) {
 									world.spawnEntity(doll);
 								}
-								DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
-										.getY() + 0.5D, pos.getZ() + 0.5D));
+								if (!world.isRemote) {
+									DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(pos.getX() + 0.5D, pos
+											.getY() + 0.5D, pos.getZ() + 0.5D));
+								}
 								world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BASS, SoundCategory.BLOCKS, 0.5F, 1.5F);
 								addOwlId(stack, player, doll.getEntityId());
 								DCUtil.playerConsumeCharm(player, stack);
@@ -408,6 +415,8 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 				tags.appendTag(coord);
 			}
 			tag.setTag("coord", tags);
+		} else {
+			tag.removeTag("coord");
 		}
 		return tag;
 	}

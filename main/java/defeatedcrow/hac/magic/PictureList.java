@@ -43,7 +43,7 @@ public class PictureList {
 		Iterator<BlockPos> itr = INSTANCE.colorMap.keySet().iterator();
 		while (itr.hasNext()) {
 			BlockPos p = itr.next();
-			if (world.getTileEntity(p) == null) {
+			if (!world.isBlockLoaded(p) || world.getTileEntity(p) == null) {
 				itr.remove();
 			}
 		}

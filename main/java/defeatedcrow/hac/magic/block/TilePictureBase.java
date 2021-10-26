@@ -1,19 +1,31 @@
 package defeatedcrow.hac.magic.block;
 
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.magic.PictureList;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class TilePictureBase extends TileEntity {
+public abstract class TilePictureBase extends DCTileEntity {
+
+	@Override
+	public void updateTile() {
+		if (getColor() != null && getColor() != MagicColor.NONE) {
+			if (!PictureList.INSTANCE.colorMap.containsKey(pos)) {
+				PictureList.INSTANCE.colorMap.put(pos, getColor());
+			}
+		}
+	}
 
 	@Override
 	public void onLoad() {
 		super.onLoad();
-		if (getColor() != null && getColor() != MagicColor.NONE)
-			PictureList.INSTANCE.colorMap.put(pos, getColor());
+		if (getColor() != null && getColor() != MagicColor.NONE) {
+			if (!PictureList.INSTANCE.colorMap.containsKey(pos)) {
+				PictureList.INSTANCE.colorMap.put(pos, getColor());
+			}
+		}
 	}
 
 	@Override
