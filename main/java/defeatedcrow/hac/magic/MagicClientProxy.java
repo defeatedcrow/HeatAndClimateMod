@@ -1,7 +1,11 @@
 package defeatedcrow.hac.magic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.client.JsonBakery;
 import defeatedcrow.hac.core.client.JsonRegisterHelper;
 import defeatedcrow.hac.magic.block.TileCubeFlame;
 import defeatedcrow.hac.magic.block.TileCubeIce;
@@ -61,6 +65,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class MagicClientProxy {
+
+	public static void loadConst() {
+		JsonBakery.instance.addTex(getTexList());
+	}
 
 	public static void loadEntity() {
 		ClientMainProxy.registRender(EntityProjLightSpit.class, MagicLightSpitRenderer.class);
@@ -151,6 +159,16 @@ public class MagicClientProxy {
 		ModelLoader.setCustomStateMapper(MagicInit.veinBeacon, (new StateMap.Builder()).ignore(DCState.TYPE16).build());
 		instance.regSimpleBlock(MagicInit.veinBeacon, ClimateCore.PACKAGE_ID, "dcs_beacon_vein", "magic", 0);
 
+	}
+
+	public static List<String> getTexList() {
+		List<String> particles = new ArrayList<String>();
+		particles.add("dcs_climate:entity/magic/circle_red");
+		particles.add("dcs_climate:entity/magic/circle_blue");
+		particles.add("dcs_climate:entity/magic/circle_white");
+		particles.add("dcs_climate:entity/magic/circle_black");
+
+		return particles;
 	}
 
 }

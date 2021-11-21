@@ -25,6 +25,7 @@ public class TESRCubeFlame extends TileEntitySpecialRenderer<TileCubeFlame> {
 		GlStateManager.pushMatrix();
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.disableLighting();
+		GlStateManager.enableBlend();
 		GlStateManager
 				.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		int i = 15728880;

@@ -88,7 +88,10 @@ public class MainInit {
 
 	/* building advanced */
 
-	public static Block awning;
+	public static Block awningWood;
+	public static Block awningMetal;
+	public static Block awningLinen;
+	public static Block awningCloth;
 	public static Block lampCarbide;
 	public static Block lampGas;
 	public static Block chain;
@@ -174,6 +177,7 @@ public class MainInit {
 	public static Block chestMetal;
 	public static Block chestMagnet;
 	public static Block chestVillage;
+	public static Block chestHopper;
 
 	public static Block wallshelfMarble;
 	public static Block wallshelfSkarn;

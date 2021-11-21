@@ -9,7 +9,6 @@ import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -104,11 +103,6 @@ public class BlockStairsBase extends BlockStairs implements ISidedTexture, ISide
 	@Override
 	public boolean isRendered(EnumFacing face, IBlockState state) {
 		return !isGlass;
-	}
-
-	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-		return BlockFaceShape.UNDEFINED;
 	}
 
 	@Override

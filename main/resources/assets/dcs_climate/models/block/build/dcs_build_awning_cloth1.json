@@ -1,0 +1,9 @@
+{
+    "parent": "dcs_climate:block/build/dcs_build_awning_linen0",
+    "textures": {
+        "particle": "blocks/wool_colored_red",
+        "base": "blocks/wool_colored_red",
+        "wood": "blocks/planks_oak"
+    }
+}
+

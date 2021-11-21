@@ -34,10 +34,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class MagicCommonProxy {
 
 	public static void loadEntity() {
-		DCRegistryUtil.addEntity(EntityMobBarrier.class, "magic", "circle_0");
-		DCRegistryUtil.addEntity(EntityProjBarrier.class, "magic", "circle_1");
-		DCRegistryUtil.addEntity(EntityHealBarrier.class, "magic", "circle_2");
-		DCRegistryUtil.addEntity(EntityFireBarrier.class, "magic", "circle_3");
+		DCRegistryUtil.addEntity(EntityMobBarrier.class, "magic", "circle_0", 1);
+		DCRegistryUtil.addEntity(EntityProjBarrier.class, "magic", "circle_1", 1);
+		DCRegistryUtil.addEntity(EntityHealBarrier.class, "magic", "circle_2", 1);
+		DCRegistryUtil.addEntity(EntityFireBarrier.class, "magic", "circle_3", 1);
 
 		DCRegistryUtil.addEntity(EntityProjLightSpit.class, "magic", "proj_light", 1);
 		DCRegistryUtil.addEntity(EntityProjIceSpit.class, "magic", "proj_ice", 1);

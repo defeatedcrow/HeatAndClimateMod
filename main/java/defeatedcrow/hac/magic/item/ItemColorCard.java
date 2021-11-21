@@ -421,16 +421,20 @@ public class ItemColorCard extends DCItem {
 	private boolean onEffect_Red3(World world, EntityPlayer player, float f) {
 		EntityFireBarrier circle = new EntityFireBarrier(world);
 		circle.setPosition(player.posX, player.posY, player.posZ);
-		circle.setMaxAge((int) (2400 * f));
+		circle.setMaxAge((int) (2400 * 20 * f));
+		circle.setRange(8.0F * f);
 		world.spawnEntity(circle);
+		world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_BLAZE_AMBIENT, SoundCategory.NEUTRAL, 0.75F, 1.8F);
 		return true;
 	}
 
 	private boolean onEffect_Blue3(World world, EntityPlayer player, float f) {
 		EntityProjBarrier circle = new EntityProjBarrier(world);
 		circle.setPosition(player.posX, player.posY, player.posZ);
-		circle.setMaxAge((int) (2400 * f));
+		circle.setMaxAge((int) (2400 * 20 * f));
+		circle.setRange(8.0F * f);
 		world.spawnEntity(circle);
+		world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_BLAZE_AMBIENT, SoundCategory.NEUTRAL, 0.75F, 1.8F);
 		return true;
 	}
 
@@ -459,16 +463,20 @@ public class ItemColorCard extends DCItem {
 	private boolean onEffect_Black3(World world, EntityPlayer player, float f) {
 		EntityMobBarrier circle = new EntityMobBarrier(world);
 		circle.setPosition(player.posX, player.posY, player.posZ);
-		circle.setMaxAge((int) (2400 * f));
+		circle.setMaxAge((int) (2400 * 20 * f));
+		circle.setRange(8.0F * f);
 		world.spawnEntity(circle);
+		world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_BLAZE_AMBIENT, SoundCategory.NEUTRAL, 0.75F, 1.8F);
 		return true;
 	}
 
 	private boolean onEffect_White3(World world, EntityPlayer player, float f) {
 		EntityHealBarrier circle = new EntityHealBarrier(world);
 		circle.setPosition(player.posX, player.posY, player.posZ);
-		circle.setMaxAge((int) (2400 * f));
+		circle.setMaxAge((int) (2400 * 20 * f));
+		circle.setRange(8.0F * f);
 		world.spawnEntity(circle);
+		world.playSound((EntityPlayer) null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_BLAZE_AMBIENT, SoundCategory.NEUTRAL, 0.75F, 1.8F);
 		return true;
 	}
 

@@ -67,7 +67,8 @@ public class BlockReactorIBC extends BlockTorqueBase {
 							world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8F, 2.0F);
 						return true;
 					}
-				} else if (!world.isRemote) {
+				}
+				if (!world.isRemote) {
 					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
 				}
 				return true;

@@ -42,6 +42,7 @@ public enum DCName {
 	TURN_OFF("dcs.tip.turn_off"),
 	DRAIN_SIDED_TANK("dcs.tip.drain_sided_tank"),
 	RIGHT_CLICK("dcs.tip.right_click"),
+	RIGHT_CLICK_WRANCH("dcs.tip.right_click_wrench"),
 	PAIRING("dcs.tip.pairing"),
 	ON_ANVIL("dcs.tip.on_anvil"),
 	BURN_TIME("dcs.tip.burn_time"),

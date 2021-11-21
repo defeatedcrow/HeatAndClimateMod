@@ -47,7 +47,14 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 	public boolean active = true;
 
-	public int[] activeSlot = { 0, 0, 0, 0, 0, 0 };
+	public int[] activeSlot = {
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
+	};
 
 	private int loadCount = 5;
 	private int lastInT = 0;
@@ -80,7 +87,8 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	protected void onServerUpdate() {
 		super.onServerUpdate();
 		if (tickCount <= 0) {
-			tickCount = 5;
+			// 速度上方修正
+			// tickCount = 5;
 			if (!world.isRemote) {
 				if (active) {
 					// 処理
@@ -407,15 +415,43 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	/* === inventory === */
 
 	protected int[] slotsTop() {
-		return new int[] { 0, 1, 2, 3, 4, 5 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+		};
 	};
 
 	protected int[] slotsBottom() {
-		return new int[] { 6, 7, 8, 9, 10, 11 };
+		return new int[] {
+				6,
+				7,
+				8,
+				9,
+				10,
+				11
+		};
 	};
 
 	protected int[] slotsSides() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+		};
 	};
 
 	public DCInventory inv = new DCInventory(12);

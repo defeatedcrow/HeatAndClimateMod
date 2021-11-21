@@ -95,7 +95,10 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.doorHikido);
 
 			ClimateMain.build.addSubItem(MainInit.windowWood);
-			ClimateMain.build.addSubItem(MainInit.awning);
+			ClimateMain.build.addSubItem(MainInit.awningWood);
+			ClimateMain.build.addSubItem(MainInit.awningMetal);
+			ClimateMain.build.addSubItem(MainInit.awningLinen);
+			ClimateMain.build.addSubItem(MainInit.awningCloth);
 			ClimateMain.build.addSubItem(MainInit.chain);
 
 			// interior
@@ -128,6 +131,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.chestMetal);
 			ClimateMain.build.addSubItem(MainInit.chestMagnet);
 			ClimateMain.build.addSubItem(MainInit.chestVillage);
+			ClimateMain.build.addSubItem(MainInit.chestHopper);
 
 			ClimateMain.build.addSubItem(MainInit.displayShelf);
 			ClimateMain.build.addSubItem(MainInit.displayStand);

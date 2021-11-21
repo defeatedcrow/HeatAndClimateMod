@@ -7,12 +7,11 @@ import javax.annotation.Nullable;
 import com.google.common.base.Optional;
 
 import defeatedcrow.hac.api.magic.MagicColor;
-import defeatedcrow.hac.core.base.DCEntityBase;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
+import defeatedcrow.hac.main.entity.EntityDummyWeather;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -23,7 +22,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityOwlDoll extends DCEntityBase {
+public class EntityOwlDoll extends EntityDummyWeather {
 
 	protected static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager
 			.<Optional<UUID>>createKey(EntityOwlDoll.class, DataSerializers.OPTIONAL_UNIQUE_ID);
@@ -70,11 +69,6 @@ public class EntityOwlDoll extends DCEntityBase {
 	}
 
 	@Override
-	protected ItemStack drops() {
-		return ItemStack.EMPTY;
-	}
-
-	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		return false;
 	}
@@ -86,11 +80,6 @@ public class EntityOwlDoll extends DCEntityBase {
 
 	@Override
 	protected void collideWithEntity(Entity entity) {}
-
-	@Override
-	public boolean isCollectable(@Nullable ItemStack item) {
-		return false;
-	}
 
 	@Override
 	protected boolean isFallable() {
@@ -142,10 +131,8 @@ public class EntityOwlDoll extends DCEntityBase {
 			UUID id = this.getOwnerId();
 			if (id != null) {
 				EntityPlayer owner = world.getPlayerEntityByUUID(id);
-				ItemStack held = owner.getHeldItemOffhand();
-				if (owner != null && MainUtil
-						.getOffhandJewelColor(owner) == MagicColor.BLACK_WHITE) {
-					ItemColorGauntlet2.removeOwlId(held);
+				if (MainUtil.getOffhandJewelColor(owner) == MagicColor.BLACK_WHITE) {
+					ItemColorGauntlet2.removeOwlId(owner.getHeldItemOffhand());
 				}
 			}
 		}
@@ -155,7 +142,7 @@ public class EntityOwlDoll extends DCEntityBase {
 	@SideOnly(Side.CLIENT)
 	public boolean isInRangeToRenderDist(double distance) {
 		double d0 = 16.0D;
-		d0 = d0 * 64.0D * getRenderDistanceWeight();
+		d0 = d0 * 128.0D * getRenderDistanceWeight();
 		return distance < d0 * d0;
 	}
 

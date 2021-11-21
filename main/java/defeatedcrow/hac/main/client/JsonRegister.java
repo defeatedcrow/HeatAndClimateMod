@@ -168,7 +168,14 @@ public class JsonRegister {
 					.regSimpleBlock(MainInit.craftingCounter, ClimateCore.PACKAGE_ID, "dcs_device_crafting_counter", "device", 0);
 			MAIN_INSTANCE
 					.regSimpleBlock(MainInit.kitchenHood, ClimateCore.PACKAGE_ID, "dcs_device_kitchen_hood", "device", 0);
-			MAIN_INSTANCE.regSimpleBlock(MainInit.awning, ClimateCore.PACKAGE_ID, "dcs_build_awning", "build", 3);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.awningWood, ClimateCore.PACKAGE_ID, "dcs_build_awning", "build", 0);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.awningMetal, ClimateCore.PACKAGE_ID, "dcs_build_awning_metal", "build", 0);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.awningLinen, ClimateCore.PACKAGE_ID, "dcs_build_awning_linen", "build", 0);
+			MAIN_INSTANCE
+					.regSimpleBlock(MainInit.awningCloth, ClimateCore.PACKAGE_ID, "dcs_build_awning_cloth", "build", 0);
 			MAIN_INSTANCE
 					.regSimpleBlock(MainInit.lampCarbide, ClimateCore.PACKAGE_ID, "dcs_lamp_carbide_lantern", "build", 0);
 			MAIN_INSTANCE
@@ -193,6 +200,8 @@ public class JsonRegister {
 					.regTEBlock(MainInit.chestMagnet, ClimateCore.PACKAGE_ID, "dcs_device_chest_magnet", "device", 0, true);
 			MAIN_INSTANCE
 					.regTEBlock(MainInit.chestVillage, ClimateCore.PACKAGE_ID, "dcs_device_chest_village", "device", 0, true);
+			MAIN_INSTANCE
+					.regTETorqueBlock(MainInit.chestHopper, ClimateCore.PACKAGE_ID, "dcs_device_hopper_chest", "device", 0, true);
 
 			MAIN_INSTANCE
 					.regTEBlock(MainInit.realtimeClock, ClimateCore.PACKAGE_ID, "dcs_device_realtimeclock", "device", 3, true);

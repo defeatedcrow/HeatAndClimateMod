@@ -404,7 +404,12 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.cartridge, 1, 6), 100);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.cartridge, 1, 7), 120);
 
-		int[] num = { 5, 7, 6, 4 };
+		int[] num = {
+				5,
+				7,
+				6,
+				4
+		};
 		for (int i = 0; i < 4; i++) {
 			MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.brassArmor[i], 1, 0), 125 * i + 50);
 			MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.steelArmor[i], 1, 0), 300 * i + 50);
@@ -523,10 +528,10 @@ public class DCPluginMCE {
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.fenceLadder, 1, 0), 350);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.fenceLadderSteel, 1, 0), 580);
 
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.awning, 1, 0), 20);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.awning, 1, 1), 920);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.awning, 1, 2), 160);
-		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.awning, 1, 3), 320);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.awningWood, 1, 0), 20);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.awningMetal, 1, 0), 920);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.awningLinen, 1, 0), 160);
+		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.awningCloth, 1, 0), 320);
 
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.tableWood, 1, 0), 20);
 		MCEconomyAPI.addPurchaseItem(new ItemStack(MainInit.tableDark, 1, 0), 20);

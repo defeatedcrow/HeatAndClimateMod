@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/build/dcs_build_awning_wood0",
+    "textures": {
+        "particle": "blocks/planks_oak",
+        "base": "blocks/planks_oak",
+        "wood": "dcs_climate:blocks/build/panel_slate_red"
+    }
+}

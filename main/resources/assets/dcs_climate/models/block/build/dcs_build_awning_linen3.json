@@ -1,0 +1,30 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/build/yoshizu",
+        "base": "dcs_climate:blocks/build/yoshizu"
+    },
+    "elements": [
+        {
+            "from": [0, -15, 0],
+            "to": [16, 17, 1],
+            "rotation": {"angle": -22.5, "axis": "x", "origin": [8, 16, 0]},
+            "faces": {
+                "north": {"uv": [0, 0, 16, 16], "texture": "#base"},
+                "east": {"uv": [0, 0, 1, 16], "texture": "#base"},
+                "south": {"uv": [0, 0, 16, 16], "texture": "#base"},
+                "west": {"uv": [0, 0, 1, 16], "texture": "#base"},
+                "up": {"uv": [1, 0, 15, 1], "rotation": 180, "texture": "#base"},
+                "down": {"uv": [1, 0, 15, 1], "texture": "#base"}
+            }
+        }
+    ],
+    "display": {
+        "gui": {
+            "rotation": [30, 45, 0],
+            "translation": [0, 3, 0],
+            "scale": [0.68, 0.68, 0.68]
+        }
+    }
+}

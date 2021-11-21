@@ -1,7 +1,5 @@
 package defeatedcrow.hac.magic.proj;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.main.entity.EntityBulletDC;
@@ -12,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class EntityProjBarrier extends EntityMobBarrier {
@@ -21,7 +18,7 @@ public class EntityProjBarrier extends EntityMobBarrier {
 
 	public EntityProjBarrier(World worldIn) {
 		super(worldIn);
-		this.setSize(8.0F, 3.0F);
+		this.setSize(1.0F, 1.0F);
 	}
 
 	public EntityProjBarrier(World worldIn, double posX, double posY, double posZ) {
@@ -35,67 +32,50 @@ public class EntityProjBarrier extends EntityMobBarrier {
 			this.rotationYaw = player.rotationYaw;
 	}
 
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
+	protected void collideWithEntity(Entity entity) {
+		boolean flag = false;
+		Entity shooter = null;
+		if (entity instanceof EntityBulletDC) {
+			EntityBulletDC arrow = (EntityBulletDC) entity;
+			if (arrow.shootingEntity != null) {
+				shooter = arrow.shootingEntity;
+			}
+			flag = true;
+		} else if (entity instanceof EntityArrow) {
+			EntityArrow arrow = (EntityArrow) entity;
+			if (arrow.shootingEntity != null) {
+				shooter = arrow.shootingEntity;
+			}
+			flag = true;
+		} else if (entity instanceof EntityThrowable) {
+			EntityThrowable arrow = (EntityThrowable) entity;
+			if (arrow.getThrower() != null) {
+				shooter = arrow.getThrower();
+			}
+			flag = true;
+		} else if (entity instanceof EntityFireball) {
+			EntityFireball arrow = (EntityFireball) entity;
+			if (arrow.shootingEntity != null) {
+				shooter = arrow.shootingEntity;
+			}
+			flag = true;
+		} else if (entity instanceof IProjectile) {
+			flag = true;
+		}
 
-		// 接触判定
-		if (!world.isRemote) {
-			List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox()
-					.grow(1.0D));
-			if (list != null && !list.isEmpty()) {
-				for (int i = 0; i < list.size(); i++) {
-					Entity entity = list.get(i);
-					if (entity != null) {
-						boolean flag = false;
-						Entity shooter = null;
-						if (entity instanceof EntityBulletDC) {
-							EntityBulletDC arrow = (EntityBulletDC) entity;
-							if (arrow.shootingEntity != null) {
-								shooter = arrow.shootingEntity;
-							}
-							flag = true;
-						} else if (entity instanceof EntityArrow) {
-							EntityArrow arrow = (EntityArrow) entity;
-							if (arrow.shootingEntity != null) {
-								shooter = arrow.shootingEntity;
-							}
-							flag = true;
-						} else if (entity instanceof EntityThrowable) {
-							EntityThrowable arrow = (EntityThrowable) entity;
-							if (arrow.getThrower() != null) {
-								shooter = arrow.getThrower();
-							}
-							flag = true;
-						} else if (entity instanceof EntityFireball) {
-							EntityFireball arrow = (EntityFireball) entity;
-							if (arrow.shootingEntity != null) {
-								shooter = arrow.shootingEntity;
-							}
-							flag = true;
-						} else if (entity instanceof IProjectile) {
-							flag = true;
-						}
-
-						if (flag) {
-							if (shooter instanceof IMob || shooter == null) {
-								entity.setDead();
-							}
-						}
-					}
-
-				}
+		if (flag) {
+			if (shooter instanceof IMob || shooter == null) {
+				entity.setDead();
 			}
 		}
 	}
 
-	@Override
-	public void applyEntityCollision(Entity entity) {}
-
-	@Override
-	@Nullable
-	public AxisAlignedBB getCollisionBox(Entity entity) {
-		return null;
+	protected int[] color() {
+		return new int[] {
+				50,
+				160,
+				255
+		};
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.BlockContainerDC;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,6 +15,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -26,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockAwning extends BlockDC {
+public class BlockAwning extends BlockContainerDC {
 
 	protected static final AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 
@@ -69,7 +70,7 @@ public class BlockAwning extends BlockDC {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.SOLID;
+		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override
@@ -80,9 +81,7 @@ public class BlockAwning extends BlockDC {
 	@Override
 	public List<ItemStack> getSubItemList() {
 		List<ItemStack> list = Lists.newArrayList();
-		for (int i = 0; i < maxMeta + 1; i++) {
-			list.add(new ItemStack(this, 1, i));
-		}
+		list.add(new ItemStack(this, 1, 0));
 		return list;
 	}
 
@@ -93,11 +92,7 @@ public class BlockAwning extends BlockDC {
 
 	@Override
 	public int damageDropped(IBlockState state) {
-		int i = state.getValue(DCState.TYPE4);
-		if (i > maxMeta) {
-			i = maxMeta;
-		}
-		return i;
+		return 0;
 	}
 
 	@Override
@@ -154,7 +149,10 @@ public class BlockAwning extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.FACING, DCState.TYPE4 });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.FACING,
+				DCState.TYPE4
+		});
 	}
 
 	@Override
@@ -168,6 +166,11 @@ public class BlockAwning extends BlockDC {
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileAwning();
 	}
 
 }

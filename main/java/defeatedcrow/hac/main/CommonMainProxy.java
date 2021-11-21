@@ -74,6 +74,7 @@ import defeatedcrow.hac.magic.client.gui.GuiVillagerDC;
 import defeatedcrow.hac.magic.event.MagicCommonEvent;
 import defeatedcrow.hac.magic.proj.EntityFlowerBolt;
 import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
+import defeatedcrow.hac.main.block.build.TileAwning;
 import defeatedcrow.hac.main.block.build.TileBedDC;
 import defeatedcrow.hac.main.block.build.TileBedDCFuton;
 import defeatedcrow.hac.main.block.build.TileBedDCHammock;
@@ -85,6 +86,8 @@ import defeatedcrow.hac.main.block.build.TileChandelierSalt;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileDisplayStand;
 import defeatedcrow.hac.main.block.build.TileDoorHikido;
+import defeatedcrow.hac.main.block.build.TileLampCarbide;
+import defeatedcrow.hac.main.block.build.TileLampGas;
 import defeatedcrow.hac.main.block.build.TileLowChest;
 import defeatedcrow.hac.main.block.build.TileMCClock_L;
 import defeatedcrow.hac.main.block.build.TileMFence;
@@ -94,6 +97,7 @@ import defeatedcrow.hac.main.block.build.TileMagnetChest;
 import defeatedcrow.hac.main.block.build.TileMetalChest;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock;
 import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
+import defeatedcrow.hac.main.block.build.TileStairsRoof;
 import defeatedcrow.hac.main.block.build.TileTatami;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
 import defeatedcrow.hac.main.block.build.TileWindowBlinds;
@@ -102,6 +106,7 @@ import defeatedcrow.hac.main.block.device.TileCookingStove;
 import defeatedcrow.hac.main.block.device.TileCraftingCounter;
 import defeatedcrow.hac.main.block.device.TileFirestand;
 import defeatedcrow.hac.main.block.device.TileGeyser;
+import defeatedcrow.hac.main.block.device.TileHopperChest;
 import defeatedcrow.hac.main.block.device.TileKitchenHood;
 import defeatedcrow.hac.main.block.device.TileNormalChamber;
 import defeatedcrow.hac.main.block.device.TilePail;
@@ -115,12 +120,14 @@ import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.client.gui.ContainerCraftingCounter;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayShelf;
 import defeatedcrow.hac.main.client.gui.ContainerFuelStove;
+import defeatedcrow.hac.main.client.gui.ContainerHopperChest;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import defeatedcrow.hac.main.client.gui.ContainerStevensonScreen;
 import defeatedcrow.hac.main.client.gui.GuiCraftingCounter;
 import defeatedcrow.hac.main.client.gui.GuiDisplayShelf;
 import defeatedcrow.hac.main.client.gui.GuiFuelStove;
+import defeatedcrow.hac.main.client.gui.GuiHopperChest;
 import defeatedcrow.hac.main.client.gui.GuiLowChest;
 import defeatedcrow.hac.main.client.gui.GuiNormalChamber;
 import defeatedcrow.hac.main.client.gui.GuiStevensonScreen;
@@ -546,6 +553,11 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileTatami.class, "dcs_te_carpet_tatami");
 		GameRegistry.registerTileEntity(TileDoorHikido.class, "dcs_te_door_hikido");
 		GameRegistry.registerTileEntity(TileWindowBlinds.class, "dcs_te_curtain_blinds");
+		GameRegistry.registerTileEntity(TileHopperChest.class, "dcs_te_hopper_chest");
+		GameRegistry.registerTileEntity(TileLampCarbide.class, "dcs_te_carbide_lamp");
+		GameRegistry.registerTileEntity(TileLampGas.class, "dcs_te_gas_lamp");
+		GameRegistry.registerTileEntity(TileAwning.class, "dcs_te_awning");
+		GameRegistry.registerTileEntity(TileStairsRoof.class, "dcs_te_stairs_roof");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadTE();
@@ -672,6 +684,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerFuelStove((TileCookingStove) tile, player.inventory);
 		if (tile instanceof TilePressMachine)
 			return new ContainerPressMachine((TilePressMachine) tile, player.inventory);
+		if (tile instanceof TileHopperChest)
+			return new ContainerHopperChest((TileHopperChest) tile, player);
 		if (tile instanceof TileHopperFilterSUS)
 			return new ContainerHopperFilterSUS((TileHopperFilterSUS) tile, player);
 		if (tile instanceof TileHopperFilter)
@@ -742,6 +756,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiFuelStove((TileCookingStove) tile, player.inventory);
 		if (tile instanceof TilePressMachine)
 			return new GuiPressMachine((TilePressMachine) tile, player.inventory);
+		if (tile instanceof TileHopperChest)
+			return new GuiHopperChest((TileHopperChest) tile, player);
 		if (tile instanceof TileHopperFilterSUS)
 			return new GuiHopperFilterSUS((TileHopperFilterSUS) tile, player);
 		if (tile instanceof TileHopperFilter)

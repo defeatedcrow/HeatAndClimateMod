@@ -5,6 +5,8 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
+import defeatedcrow.hac.main.block.device.BlockHopperChest;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -46,10 +48,10 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		if (!world.isRemote && this.numPlayersUsing != 0) {
 			this.numPlayersUsing = 0;
 
-			for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class,
-					new AxisAlignedBB(x - 5.0F, y - 5.0F, z - 5.0F, x + 1 + 5.0F, y + 1 + 5.0F, z + 1 + 5.0F))) {
-				if (entityplayer.openContainer instanceof ContainerLowChest) {
-					IInventory iinventory = ((ContainerLowChest) entityplayer.openContainer).tile;
+			for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(
+					x - 5.0F, y - 5.0F, z - 5.0F, x + 1 + 5.0F, y + 1 + 5.0F, z + 1 + 5.0F))) {
+				if (entityplayer.openContainer instanceof ContainerHopperFilter) {
+					IInventory iinventory = ((ContainerHopperFilter) entityplayer.openContainer).tile;
 
 					if (iinventory == this) {
 						++this.numPlayersUsing;
@@ -67,15 +69,17 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		if (this.numPlayersUsing > 0 && !isOpen) {
 			isOpen = true;
 			// DCLogger.debugLog("open");
-			this.world.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getOpenSound(),
-					SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+			this.world
+					.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getOpenSound(), SoundCategory.BLOCKS, 0.5F, this.world.rand
+							.nextFloat() * 0.1F + 0.9F);
 		}
 
 		if (this.numPlayersUsing == 0 && isOpen) {
 			isOpen = false;
 			// DCLogger.debugLog("close");
-			this.world.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getCloseSound(),
-					SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+			this.world
+					.playSound((EntityPlayer) null, x + 0.5D, y + 0.5D, z + 0.5D, getCloseSound(), SoundCategory.BLOCKS, 0.5F, this.world.rand
+							.nextFloat() * 0.1F + 0.9F);
 		}
 	}
 
@@ -112,7 +116,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	@Override
 	public void closeInventory(EntityPlayer player) {
-		if (!player.isSpectator() && this.getBlockType() instanceof BlockLowChest) {
+		if (!player.isSpectator() && this.getBlockType() instanceof BlockHopperChest) {
 			--this.numPlayersUsing;
 			this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
 			this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false);

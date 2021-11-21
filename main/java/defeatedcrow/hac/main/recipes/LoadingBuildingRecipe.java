@@ -1490,7 +1490,7 @@ public class LoadingBuildingRecipe {
 							"ingotTin"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awning, 1,
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awningWood, 1,
 					0), new Object[] {
 							"XXX",
 							"Y Y",
@@ -1500,8 +1500,8 @@ public class LoadingBuildingRecipe {
 							"stickWood"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awning, 1,
-					1), new Object[] {
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awningMetal, 1,
+					0), new Object[] {
 							"XXX",
 							"Y Y",
 							'X',
@@ -1510,8 +1510,8 @@ public class LoadingBuildingRecipe {
 							"stickWood"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", 2, new ItemStack(MainInit.awning, 1,
-					1), new Object[] {
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", 2, new ItemStack(MainInit.awningMetal, 1,
+					0), new Object[] {
 							"XXX",
 							"Y Y",
 							'X',
@@ -1520,8 +1520,8 @@ public class LoadingBuildingRecipe {
 							"stickWood"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awning, 1,
-					2), new Object[] {
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awningLinen, 1,
+					0), new Object[] {
 							"XXX",
 							"Y Y",
 							'X',
@@ -1530,8 +1530,8 @@ public class LoadingBuildingRecipe {
 							"stickWood"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awning, 1,
-					3), new Object[] {
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awningCloth, 1,
+					0), new Object[] {
 							"XXX",
 							"Y Y",
 							'X',
@@ -1763,6 +1763,27 @@ public class LoadingBuildingRecipe {
 							new ItemStack(Blocks.CHEST, 1, 0),
 							'Z',
 							"gemPeridot"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.chestHopper, 1,
+					0), new Object[] {
+							"X X",
+							"XYX",
+							" X ",
+							'X',
+							"ingotIron",
+							'Y',
+							new ItemStack(MainInit.chestMetal, 1, 0)
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", 2, new ItemStack(MainInit.chestHopper, 1,
+					0), new Object[] {
+							"Y",
+							"X",
+							'X',
+							new ItemStack(Blocks.HOPPER, 1, 0),
+							'Y',
+							new ItemStack(MainInit.chestMetal, 1, 0)
 			});
 
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.plate, 2,

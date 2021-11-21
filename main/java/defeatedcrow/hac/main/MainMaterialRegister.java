@@ -21,9 +21,7 @@ import defeatedcrow.hac.main.block.build.BlockBedDCHammock;
 import defeatedcrow.hac.main.block.build.BlockBedDCRattan;
 import defeatedcrow.hac.main.block.build.BlockBedDCWhite;
 import defeatedcrow.hac.main.block.build.BlockBuilding;
-import defeatedcrow.hac.main.block.build.BlockCarbideLamp;
 import defeatedcrow.hac.main.block.build.BlockChain;
-import defeatedcrow.hac.main.block.build.BlockChalcedonyLamp;
 import defeatedcrow.hac.main.block.build.BlockChandelier;
 import defeatedcrow.hac.main.block.build.BlockClayBricks;
 import defeatedcrow.hac.main.block.build.BlockCoolantPackage;
@@ -40,6 +38,9 @@ import defeatedcrow.hac.main.block.build.BlockGemBricks;
 import defeatedcrow.hac.main.block.build.BlockGlassPlastic;
 import defeatedcrow.hac.main.block.build.BlockGlassSelenite;
 import defeatedcrow.hac.main.block.build.BlockIronPlate;
+import defeatedcrow.hac.main.block.build.BlockLampCarbide;
+import defeatedcrow.hac.main.block.build.BlockLampChalcedony;
+import defeatedcrow.hac.main.block.build.BlockLampGas;
 import defeatedcrow.hac.main.block.build.BlockLightOrb;
 import defeatedcrow.hac.main.block.build.BlockLinoleum;
 import defeatedcrow.hac.main.block.build.BlockLowChest;
@@ -61,6 +62,7 @@ import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSlabSlate;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
+import defeatedcrow.hac.main.block.build.BlockStairsRoof;
 import defeatedcrow.hac.main.block.build.BlockStairsStraw;
 import defeatedcrow.hac.main.block.build.BlockTableBase;
 import defeatedcrow.hac.main.block.build.BlockTatami;
@@ -88,6 +90,7 @@ import defeatedcrow.hac.main.block.device.BlockCookingStove;
 import defeatedcrow.hac.main.block.device.BlockCraftingCounter;
 import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.block.device.BlockGeyser;
+import defeatedcrow.hac.main.block.device.BlockHopperChest;
 import defeatedcrow.hac.main.block.device.BlockKitchenHood;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
 import defeatedcrow.hac.main.block.device.BlockPail;
@@ -559,27 +562,27 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.fenceBedrock), "dcs_climate", "dcs_fence_bedrock", "build", 15, false);
 
-		MainInit.roofSlate = new BlockStairsBase(MainInit.builds.getDefaultState(), "ores/gemblock_bedrock", false,
+		MainInit.roofSlate = new BlockStairsRoof(MainInit.builds.getDefaultState(), false,
 				true).setUnlocalizedName("dcs_roof_slate");
 		DCMaterialReg.registerBlock(MainInit.roofSlate, ClimateCore.PACKAGE_BASE + "_roof_slate", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.roofSlate), "dcs_climate", "dcs_roof_slate", "build", 15, false);
 
-		MainInit.roofSlateRed = new BlockStairsBase(MainInit.builds.getDefaultState(), "ores/gemblock_bedrock", false,
+		MainInit.roofSlateRed = new BlockStairsRoof(MainInit.builds.getDefaultState(), false,
 				true).setUnlocalizedName("dcs_roof_slate_red");
 		DCMaterialReg
 				.registerBlock(MainInit.roofSlateRed, ClimateCore.PACKAGE_BASE + "_roof_slate_red", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.roofSlateRed), "dcs_climate", "dcs_roof_slate_red", "build", 15, false);
 
-		MainInit.roofSlateGreen = new BlockStairsBase(MainInit.builds.getDefaultState(), "ores/gemblock_bedrock", false,
+		MainInit.roofSlateGreen = new BlockStairsRoof(MainInit.builds.getDefaultState(), false,
 				true).setUnlocalizedName("dcs_roof_slate_green");
 		DCMaterialReg
 				.registerBlock(MainInit.roofSlateGreen, ClimateCore.PACKAGE_BASE + "_roof_slate_green", ClimateMain.MOD_ID);
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.roofSlateGreen), "dcs_climate", "dcs_roof_slate_green", "build", 15, false);
 
-		MainInit.roofSlateBrown = new BlockStairsBase(MainInit.builds.getDefaultState(), "ores/gemblock_bedrock", false,
+		MainInit.roofSlateBrown = new BlockStairsRoof(MainInit.builds.getDefaultState(), false,
 				true).setUnlocalizedName("dcs_roof_slate_brown");
 		DCMaterialReg
 				.registerBlock(MainInit.roofSlateBrown, ClimateCore.PACKAGE_BASE + "_roof_slate_brown", ClimateMain.MOD_ID);
@@ -604,7 +607,7 @@ public class MainMaterialRegister {
 		ClimateMain.proxy.regBlockJson(Item
 				.getItemFromBlock(MainInit.plate), "dcs_climate", "dcs_build_plate", "build", 1, false);
 
-		MainInit.chalLamp = new BlockChalcedonyLamp(ClimateCore.PACKAGE_BASE + "_build_challamp", 15);
+		MainInit.chalLamp = new BlockLampChalcedony(ClimateCore.PACKAGE_BASE + "_build_challamp", 15);
 		DCMaterialReg
 				.registerBlock(MainInit.chalLamp, ClimateCore.PACKAGE_BASE + "_build_challamp", ClimateMain.MOD_ID);
 
@@ -715,11 +718,56 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.fenceLadderSteel), "dcs_climate", "dcs_fence_ladder_steel", "build", 3, false);
 
-			MainInit.awning = new BlockAwning("dcs_build_awning").setUnlocalizedName("dcs_build_awning");
-			DCMaterialReg
-					.registerBlock(MainInit.awning, ClimateCore.PACKAGE_BASE + "_build_awning", ClimateMain.MOD_ID);
+			MainInit.awningWood = new BlockAwning("dcs_build_awning").setUnlocalizedName("dcs_build_awning");
+			MainInit.awningWood.setRegistryName(ClimateMain.MOD_ID, "dcs_build_awning");
+			ForgeRegistries.BLOCKS.register(MainInit.awningWood);
+			ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.awningWood) {
+				@Override
+				public String getUnlocalizedName(ItemStack stack) {
+					return super.getUnlocalizedName();
+				}
+			});
 			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.awning), "dcs_climate", "dcs_build_awning", "build", 3, false);
+					.getItemFromBlock(MainInit.awningWood), "dcs_climate", "dcs_build_awning", "build", 0, false);
+
+			MainInit.awningMetal = new BlockAwning("dcs_build_awning_metal")
+					.setUnlocalizedName("dcs_build_awning_metal");
+			MainInit.awningMetal.setRegistryName(ClimateMain.MOD_ID, "dcs_build_awning_metal");
+			ForgeRegistries.BLOCKS.register(MainInit.awningMetal);
+			ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.awningMetal) {
+				@Override
+				public String getUnlocalizedName(ItemStack stack) {
+					return super.getUnlocalizedName();
+				}
+			});
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.awningMetal), "dcs_climate", "dcs_build_awning_metal", "build", 0, false);
+
+			MainInit.awningLinen = new BlockAwning("dcs_build_awning_linen")
+					.setUnlocalizedName("dcs_build_awning_linen");
+			MainInit.awningLinen.setRegistryName(ClimateMain.MOD_ID, "dcs_build_awning_linen");
+			ForgeRegistries.BLOCKS.register(MainInit.awningLinen);
+			ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.awningLinen) {
+				@Override
+				public String getUnlocalizedName(ItemStack stack) {
+					return super.getUnlocalizedName();
+				}
+			});
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.awningLinen), "dcs_climate", "dcs_build_awning_linen", "build", 0, false);
+
+			MainInit.awningCloth = new BlockAwning("dcs_build_awning_cloth")
+					.setUnlocalizedName("dcs_build_awning_cloth");
+			MainInit.awningCloth.setRegistryName(ClimateMain.MOD_ID, "dcs_build_awning_cloth");
+			ForgeRegistries.BLOCKS.register(MainInit.awningCloth);
+			ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.awningCloth) {
+				@Override
+				public String getUnlocalizedName(ItemStack stack) {
+					return super.getUnlocalizedName();
+				}
+			});
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.awningCloth), "dcs_climate", "dcs_build_awning_cloth", "build", 0, false);
 
 			MainInit.chain = new BlockChain(Material.CLAY, "dcs_build_chain").setUnlocalizedName("dcs_build_chain");
 			DCMaterialReg.registerBlock(MainInit.chain, ClimateCore.PACKAGE_BASE + "_build_chain", ClimateMain.MOD_ID);
@@ -915,13 +963,13 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.chairRattan), "dcs_climate", "dcs_chair_rattan", "build", 0, false);
 
-			MainInit.lampCarbide = new BlockCarbideLamp(ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern");
+			MainInit.lampCarbide = new BlockLampCarbide(ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern");
 			DCMaterialReg
 					.registerBlock(MainInit.lampCarbide, ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.lampCarbide), "dcs_climate", "dcs_lamp_carbide_lantern", "build", 0, false);
 
-			MainInit.lampGas = new BlockCarbideLamp(ClimateCore.PACKAGE_BASE + "_lamp_carbide_glass");
+			MainInit.lampGas = new BlockLampGas(ClimateCore.PACKAGE_BASE + "_lamp_carbide_glass");
 			DCMaterialReg
 					.registerBlock(MainInit.lampGas, ClimateCore.PACKAGE_BASE + "_lamp_carbide_glass", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
@@ -1194,6 +1242,9 @@ public class MainMaterialRegister {
 			MainInit.chestVillage = new BlockVillageChest(Material.IRON,
 					ClimateCore.PACKAGE_BASE + "_device_chest_village");
 			registerChestBlock(MainInit.chestVillage, ClimateCore.PACKAGE_BASE + "_device_chest_village", ClimateMain.MOD_ID);
+
+			MainInit.chestHopper = new BlockHopperChest(ClimateCore.PACKAGE_BASE + "_device_hopper_chest");
+			registerChestBlock(MainInit.chestHopper, ClimateCore.PACKAGE_BASE + "_device_hopper_chest", ClimateMain.MOD_ID);
 
 			MainInit.displayShelf = new BlockDisplayShelf(Material.WOOD,
 					ClimateCore.PACKAGE_BASE + "_device_display_shelf");

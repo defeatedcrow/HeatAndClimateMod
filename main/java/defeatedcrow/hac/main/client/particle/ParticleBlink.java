@@ -7,7 +7,6 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,7 +28,9 @@ public class ParticleBlink extends Particle {
 		this.posY += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
 		this.posZ += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
 		this.flameScale = this.particleScale;
-		this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
+		this.particleRed = 0.6F;
+		this.particleGreen = 0.9F;
+		this.particleBlue = 1.0F;
 		this.particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D)) + 4;
 
 		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
@@ -51,23 +52,14 @@ public class ParticleBlink extends Particle {
 			float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
 		float f = (this.particleAge + partialTicks) / this.particleMaxAge;
 		this.particleScale = this.flameScale * (1.0F - f * f * 0.5F);
-		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY,
-				rotationXZ);
+		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
 	}
 
 	@Override
-	public int getBrightnessForRender(float p_189214_1_) {
-		float f = (this.particleAge + p_189214_1_) / this.particleMaxAge;
-		f = MathHelper.clamp(f, 0.0F, 1.0F);
-		int i = super.getBrightnessForRender(p_189214_1_);
-		int j = i & 255;
-		int k = i >> 16 & 255;
-		j = j + (int) (f * 15.0F * 16.0F);
-
-		if (j > 240) {
-			j = 240;
-		}
-
+	public int getBrightnessForRender(float f) {
+		int i = 15728880;
+		int j = i % 65536;
+		int k = i / 65536;
 		return j | k << 16;
 	}
 

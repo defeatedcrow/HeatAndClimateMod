@@ -10,6 +10,7 @@ import defeatedcrow.hac.core.base.DCFacelessTileBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -68,6 +69,11 @@ public class BlockTatami extends DCFacelessTileBlock implements ITexturePath {
 	@Override
 	public int quantityDropped(Random random) {
 		return 1;
+	}
+
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(this);
 	}
 
 	@Override

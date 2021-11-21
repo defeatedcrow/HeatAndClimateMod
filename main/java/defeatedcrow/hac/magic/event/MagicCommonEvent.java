@@ -202,6 +202,9 @@ public class MagicCommonEvent {
 				int y = MathHelper.floor(player.posY);
 				int z = MathHelper.floor(player.posZ);
 				NBTTagCompound tag = charm.getTagCompound();
+				if (tag == null) {
+					tag = new NBTTagCompound();
+				}
 				DimCoord coord = new DimCoord(dim, x, y, z);
 				coord.setNBT(tag);
 				tag.setString("dcs.portal.dimname", dimName);

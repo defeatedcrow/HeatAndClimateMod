@@ -1,20 +1,33 @@
 package defeatedcrow.hac.magic.client;
 
+import defeatedcrow.hac.magic.proj.EntityMobBarrier;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class HealCircleRenderer extends MagicCircleRenderer {
 
 	private static final ResourceLocation TEX = new ResourceLocation("dcs_climate",
-			"textures/entity/magic/circle_flower.png");
+			"textures/entity/magic/circle_white.png");
+	private static final ResourceLocation TEX_L1 = new ResourceLocation("dcs_climate",
+			"textures/entity/magic/circle_white_layer1.png");
+	private static final ResourceLocation TEX_L2 = new ResourceLocation("dcs_climate",
+			"textures/entity/magic/circle_white_layer2.png");
 
 	public HealCircleRenderer(RenderManager renderManager) {
 		super(renderManager);
 	}
 
 	@Override
-	protected ResourceLocation getTexture() {
+	protected ResourceLocation getEntityTexture(EntityMobBarrier entity) {
 		return TEX;
+	}
+
+	protected ResourceLocation getLayer1() {
+		return TEX_L1;
+	}
+
+	protected ResourceLocation getLayer2() {
+		return TEX_L2;
 	}
 
 }

@@ -36,7 +36,7 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInventory {
 
-	protected DCInventory inv = new DCInventory(5);
+	protected DCInventory inv = new DCInventory(getSizeInventory());
 	private int cooldown = -1;
 	private int lastCount = 0;
 
@@ -287,7 +287,6 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 
 	@Override
 	public int getFieldCount() {
-
 		return 0;
 	}
 
