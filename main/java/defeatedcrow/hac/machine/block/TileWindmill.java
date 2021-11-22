@@ -103,7 +103,7 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public double getMaxRenderDistanceSquared() {
-		return 16384.0D;
+		return 65536.0D;
 	}
 
 	@Override

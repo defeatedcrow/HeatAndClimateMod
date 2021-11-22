@@ -61,7 +61,7 @@ public class TileAdapterPanel extends DCTileEntity {
 
 	@Override
 	protected int getMaxCool() {
-		return 5;
+		return 0;
 	}
 
 	@Override
@@ -79,10 +79,10 @@ public class TileAdapterPanel extends DCTileEntity {
 			TileAcceptorPanel panel = (TileAcceptorPanel) targetTile();
 			TileEntity tile = world.getTileEntity(pos.offset(face));
 			if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face.getOpposite())) {
-				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
-						face.getOpposite());
-				IItemHandler panelInv = panel.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
-						face.getOpposite());
+				IItemHandler target = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face
+						.getOpposite());
+				IItemHandler panelInv = panel.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, face
+						.getOpposite());
 				if (panelInv != null && target != null) {
 					boolean b = false;
 					for (int i = 0; i < target.getSlots(); i++) {

@@ -60,7 +60,7 @@ public class TileAdapterFluidPanel extends DCTileEntity {
 
 	@Override
 	protected int getMaxCool() {
-		return 4;
+		return 0;
 	}
 
 	@Override

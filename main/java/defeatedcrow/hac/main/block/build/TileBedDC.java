@@ -78,4 +78,10 @@ public class TileBedDC extends TileEntity {
 		return bb;
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public double getMaxRenderDistanceSquared() {
+		return 65536.0D;
+	}
+
 }

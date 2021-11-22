@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.event;
 
+import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -35,9 +36,21 @@ public class OnDeathEventDC {
 			EntityPlayer player = (EntityPlayer) living;
 			boolean hasCharm = false;
 			ItemStack charm = ItemStack.EMPTY;
+			float magicHealthCost = 0F;
 			if (ModuleConfig.magic && DCUtil.playerCanUseCharm(player, new ItemStack(MagicInit.colorBadge, 1, 1))) {
-				charm = MainUtil.getCharmItem(player, new ItemStack(MagicInit.colorBadge, 1, 1));
-				DCUtil.playerConsumeCharm(player, new ItemStack(MagicInit.colorBadge, 1, 1));
+				// healthをコストにしている場合のみ後払いになる
+				if (!CoreConfigDC.harderMagic || CoreConfigDC.harderMagicCost == 2) {
+					if (CoreConfigDC.harderMagicCost == 2) {
+						magicHealthCost = (float) CoreConfigDC.harderMagicCostAmount;
+						if (magicHealthCost > 6.0F + charm.getCount() * 5.0F) {
+							magicHealthCost = 4.0F + charm.getCount() * 5.0F;
+						}
+					}
+					charm = MainUtil.getCharmItem(player, new ItemStack(MagicInit.colorBadge, 1, 1));
+				} else if (DCUtil.playerCanUseCharm(player, new ItemStack(MagicInit.colorBadge, 1, 1))) {
+					charm = MainUtil.getCharmItem(player, new ItemStack(MagicInit.colorBadge, 1, 1));
+					DCUtil.playerConsumeCharm(player, new ItemStack(MagicInit.colorBadge, 1, 1));
+				}
 			}
 
 			if (!DCUtil.isEmpty(charm)) {
@@ -61,7 +74,9 @@ public class OnDeathEventDC {
 					player.setPositionAndUpdate(pos.getX() + 0.5D, pos.getY() + 1.5D, pos.getZ() + 0.5D);
 				}
 				player.fallDistance = 0.0F;
-				player.setHealth(6.0F + charm.getCount() * 5.0F);
+				float health = 6.0F + charm.getCount() * 5.0F;
+				health -= magicHealthCost;
+				player.setHealth(health);
 				event.setCanceled(true);
 				flag = true;
 			}

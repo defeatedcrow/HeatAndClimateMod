@@ -88,4 +88,10 @@ public class TileDoorHikido extends TileEntity implements IColorChangeTile {
 		return bb;
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public double getMaxRenderDistanceSquared() {
+		return 65536.0D;
+	}
+
 }

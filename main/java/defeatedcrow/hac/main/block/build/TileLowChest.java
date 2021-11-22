@@ -5,8 +5,6 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.core.base.DCInventory;
 import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.machine.gui.ContainerHopperFilter;
-import defeatedcrow.hac.main.block.device.BlockHopperChest;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -50,8 +48,8 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 			for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(
 					x - 5.0F, y - 5.0F, z - 5.0F, x + 1 + 5.0F, y + 1 + 5.0F, z + 1 + 5.0F))) {
-				if (entityplayer.openContainer instanceof ContainerHopperFilter) {
-					IInventory iinventory = ((ContainerHopperFilter) entityplayer.openContainer).tile;
+				if (entityplayer.openContainer instanceof ContainerLowChest) {
+					IInventory iinventory = ((ContainerLowChest) entityplayer.openContainer).tile;
 
 					if (iinventory == this) {
 						++this.numPlayersUsing;
@@ -116,7 +114,7 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 
 	@Override
 	public void closeInventory(EntityPlayer player) {
-		if (!player.isSpectator() && this.getBlockType() instanceof BlockHopperChest) {
+		if (!player.isSpectator() && this.getBlockType() instanceof BlockLowChest) {
 			--this.numPlayersUsing;
 			this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
 			this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false);
