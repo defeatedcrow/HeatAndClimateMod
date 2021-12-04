@@ -452,7 +452,7 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 							if (match) {
 								inRecipe = true;
 								required.remove(next);
-								this.decrStackSize(i, 1);
+								this.decrStackSize(i, count);
 								break;
 							} else if (panel) {
 								inRecipe = true;

@@ -29,6 +29,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -87,6 +88,16 @@ public class MainUtil {
 			TextFormatting.RED,
 			TextFormatting.DARK_GRAY
 	};
+
+	public static boolean isBonemeal(ItemStack item) {
+		if (!DCUtil.isEmpty(item)) {
+			if (item.getItem() == Items.DYE && item.getItemDamage() == 15)
+				return true;
+			if (item.getItem() == MainInit.miscDust && item.getItemDamage() == 4)
+				return true;
+		}
+		return false;
+	}
 
 	public static ItemStack getIngot(int meta) {
 		if (meta < 0)
@@ -201,6 +212,11 @@ public class MainUtil {
 	public static ItemStack getRandomCont(int i) {
 		int meta = DCUtil.rand.nextInt(12);
 		return new ItemStack(MainInit.cropCont, i, meta);
+	}
+
+	public static ItemStack getRandomJutebag(int i) {
+		int meta = DCUtil.rand.nextInt(6);
+		return new ItemStack(MainInit.cropJute, i, meta);
 	}
 
 	public static ItemStack getRandomCardboard(int i) {

@@ -65,6 +65,8 @@ public class HaCVillagerAgriResearchHouse extends StructureVillagePieces.Village
 				return FoodInit.cropGarlic;
 			case 9:
 				return FoodInit.cropSoy;
+			case 10:
+				return FoodInit.cropGinger;
 			default:
 				return FoodInit.cropRice;
 			}

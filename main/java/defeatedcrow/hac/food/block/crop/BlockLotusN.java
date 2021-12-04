@@ -27,6 +27,7 @@ import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
@@ -43,7 +44,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
@@ -149,7 +149,7 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 				IBlockState newS = state.withProperty(BLACK, true);
 				world.setBlockState(pos, newS);
 			}
-			if (!DCUtil.isEmpty(held) && held.getItem() == Items.DYE && held.getItemDamage() == 15) {
+			if (!DCUtil.isEmpty(held) && MainUtil.isBonemeal(held)) {
 				ItemDye.applyBonemeal(held, world, pos, player, hand);
 				return true;
 			} else if (stage > 4) {
@@ -500,7 +500,10 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.STAGE8, BLACK });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.STAGE8,
+				BLACK
+		});
 	}
 
 	// drop

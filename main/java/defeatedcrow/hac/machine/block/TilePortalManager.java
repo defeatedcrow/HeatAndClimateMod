@@ -58,7 +58,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 
 	private int loadCount = 5;
 	private int lastInT = 0;
-	private int lastHeat = 0;
+	private int lastHeat = 5;
 
 	public float requireTorque = 30.0F;
 
@@ -118,7 +118,7 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 				}
 
 				if (flag2) {
-					HaCPacket.INSTANCE.sendToAll(new MessageClimateUpdate(pos, lastHeat));
+					HaCPacket.INSTANCE.sendToAll(new MessageClimateUpdate(pos, current.getClimateInt()));
 				}
 			}
 		} else {
@@ -174,13 +174,13 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 	public boolean hasCoolant() {
 		if (inputT.getFluidType() != null)
 			if (inputT.getFluidType().getTemperature() < 130)
-				return inputT.drain(10, false) != null;
+				return inputT.drain(1, false) != null;
 		return false;
 	}
 
 	public void reduceCoolant() {
 		if (hasCoolant())
-			inputT.drain(10, true);
+			inputT.drain(1, true);
 	}
 
 	public int isActiveSlot(int num) {
@@ -336,8 +336,8 @@ public class TilePortalManager extends TileTorqueLockable implements ITorqueRece
 		if (current == null) {
 			return true; // ロード直後の処置
 		}
-		if (current != null && current.getHeat().getTier() <= DCHeatTier.CRYOGENIC.getTier())
-			return true;
+		if (current != null)
+			return current.getHeat() == DCHeatTier.CRYOGENIC || current.getHeat() == DCHeatTier.ABSOLUTE;
 		else
 			return hasCoolant();
 	}

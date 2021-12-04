@@ -50,6 +50,7 @@ public class HaCTradeData {
 		AGRI1.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomLogCont(8), 2));
 
 		AGRI2.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.foodDust, 4, 2), 0));
+		AGRI2.add(new HaCTradeData(TradeType.SELL, new ItemStack(Items.DYE, 4, 15), 0));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomCont(1), 0));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomCardboard(1), 2));
 		AGRI2.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomLogCont(16), 4));
@@ -60,7 +61,10 @@ public class HaCTradeData {
 		AGRI3.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.dcScythe[0], 1, 0), 3));
 
 		if (ModuleConfig.food) {
-			AGRI1.add(new HaCTradeData(TradeType.SELL, MainUtil.getRandomBasket(1), 2));
+			AGRI1.add(new HaCTradeData(TradeType.SELL, MainUtil.getRandomBasket(1), 1));
+			AGRI1.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomBasket(1), 2));
+			AGRI1.add(new HaCTradeData(TradeType.SELL, MainUtil.getRandomJutebag(1), 1));
+			AGRI1.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomJutebag(1), 2));
 			AGRI1.add(new HaCTradeData(TradeType.BUY, MainUtil.getRandomSeed(1), 1));
 			AGRI1.add(new HaCTradeData(TradeType.BUY, new ItemStack(MainInit.foodMaterials, 4, 0), 1));
 			AGRI1.add(new HaCTradeData(TradeType.SELL, new ItemStack(MainInit.miscDust, 8, 4), 0));

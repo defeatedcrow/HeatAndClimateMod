@@ -14,7 +14,7 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 
 	protected DCHeatTier current = null;
 
-	protected int lastHeat = 0;
+	protected int lastHeat = 5;
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {

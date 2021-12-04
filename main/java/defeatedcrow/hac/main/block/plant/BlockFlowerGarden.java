@@ -3,7 +3,6 @@ package defeatedcrow.hac.main.block.plant;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.DCSimpleBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
@@ -12,7 +11,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
@@ -24,6 +22,7 @@ public class BlockFlowerGarden extends DCSimpleBlock implements IPlantable {
 		super(Material.PLANTS, s, 3, false);
 		this.setTickRandomly(false);
 		this.setSoundType(SoundType.PLANT);
+		this.lightOpacity = 0;
 	}
 
 	@Override
@@ -70,7 +69,12 @@ public class BlockFlowerGarden extends DCSimpleBlock implements IPlantable {
 	 * orchid: コチョウラン、セッコク、ヤドリギ、シダ
 	 * snapdragon: キンギョソウ、ネモフィラ、パンジー、ワイヤープランツ
 	 */
-	private static String[] names = { "rose", "lily", "orchid", "snapdragon" };
+	private static String[] names = {
+			"rose",
+			"lily",
+			"orchid",
+			"snapdragon"
+	};
 
 	@Override
 	public String[] getNameSuffix() {
@@ -92,15 +96,4 @@ public class BlockFlowerGarden extends DCSimpleBlock implements IPlantable {
 		return world.getBlockState(pos);
 	}
 
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState stateIn) {
-		IBlockState state = world.getBlockState(pos.down());
-		return state.getBlock().canSustainPlant(state, world, pos, EnumFacing.UP, this);
-	}
-
-	@Override
-	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
-		if (!this.canBlockStay(world, pos, state)) {
-			world.destroyBlock(pos, true);
-		}
-	}
 }

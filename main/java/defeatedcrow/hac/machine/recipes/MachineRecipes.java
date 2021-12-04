@@ -653,6 +653,9 @@ public class MachineRecipes {
 		GameRegistry.addSmelting(new ItemStack(Blocks.COAL_BLOCK, 1, 0), new ItemStack(MachineInit.fuelCont, 1,
 				0), 0.0F);
 
+		GameRegistry.addSmelting(new ItemStack(MainInit.miscDust, 1, 2), new ItemStack(MachineInit.reagent, 1,
+				3), 0.0F);
+
 	}
 
 	public static void loadOres() {

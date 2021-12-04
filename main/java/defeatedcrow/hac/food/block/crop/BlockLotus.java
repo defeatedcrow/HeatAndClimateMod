@@ -24,6 +24,7 @@ import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.IGrowable;
@@ -37,7 +38,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
@@ -137,7 +137,7 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 			IBlockState crop = world.getBlockState(pos);
 			int stage = state.getValue(DCState.STAGE8);
 			ItemStack held = player.inventory.getCurrentItem();
-			if (!DCUtil.isEmpty(held) && held.getItem() == Items.DYE && held.getItemDamage() == 15) {
+			if (!DCUtil.isEmpty(held) && MainUtil.isBonemeal(held)) {
 				ItemDye.applyBonemeal(held, world, pos, player, hand);
 				return true;
 			} else if (stage > 3) {
@@ -452,7 +452,11 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.STAGE8, BLACK, BlockFluidBase.LEVEL });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.STAGE8,
+				BLACK,
+				BlockFluidBase.LEVEL
+		});
 	}
 
 	// drop

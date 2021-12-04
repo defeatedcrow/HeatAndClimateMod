@@ -388,8 +388,7 @@ public class RegisterReactorRecipe {
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 1, 13), new ItemStack(
 					MachineInit.reagent, 1,
 					0), 0.5F, null, null, DCHeatTier.KILN, (ItemStack) null, null, null, new Object[] {
-							new ItemStack(Items.COAL, 1, 1),
-							new ItemStack(Items.COAL, 1, 1)
+							new ItemStack(Items.COAL, 2, 1)
 			});
 
 			RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MachineInit.reagent, 4, 13), new ItemStack(

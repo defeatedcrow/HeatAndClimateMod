@@ -25,6 +25,7 @@ import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -38,7 +39,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
@@ -122,7 +122,7 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 		if (player != null) {
 			IBlockState crop = world.getBlockState(pos);
 			ItemStack held = player.inventory.getCurrentItem();
-			if (!DCUtil.isEmpty(held) && held.getItem() == Items.DYE && held.getItemDamage() == 15) {
+			if (!DCUtil.isEmpty(held) && MainUtil.isBonemeal(held)) {
 				ItemDye.applyBonemeal(held, world, pos, player, hand);
 				return true;
 			} else if (this.harvest(world, pos, crop, player)) {
@@ -548,7 +548,12 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { GROUND, FACING2, DCState.STAGE4, TOP });
+		return new BlockStateContainer(this, new IProperty[] {
+				GROUND,
+				FACING2,
+				DCState.STAGE4,
+				TOP
+		});
 	}
 
 	/* IGrowable */

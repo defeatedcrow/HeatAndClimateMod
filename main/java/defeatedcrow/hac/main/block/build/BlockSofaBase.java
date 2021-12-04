@@ -57,6 +57,7 @@ public class BlockSofaBase extends BlockDC {
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
 		this.fullBlock = false;
+		this.lightOpacity = 0;
 		this.setSoundType(SoundType.STONE);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
 				.withProperty(LEFT, false).withProperty(RIGHT, false));

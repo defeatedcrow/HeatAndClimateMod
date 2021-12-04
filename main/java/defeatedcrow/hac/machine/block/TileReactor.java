@@ -108,7 +108,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		if (current != null)
 			return current.getHeat();
 		else
-			return DCHeatTier.ABSOLUTE;
+			return DCHeatTier.NORMAL;
 	}
 
 	/* inventory */
@@ -519,7 +519,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 								}
 								inRecipe = true;
 								required.remove(next);
-								this.decrStackSize(i, 1);
+								this.decrStackSize(i, count);
 								break;
 							} else if (panel) {
 								inRecipe = true;
@@ -665,7 +665,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 				return (T) outputT2;
 			else
 				return facing == EnumFacing.DOWN ? (T) handlerTank3 : facing == EnumFacing.UP ? (T) handlerTank1 :
-						null;
+						(T) handlerTank3;
 		}
 		return super.getCapability(capability, facing);
 	}
