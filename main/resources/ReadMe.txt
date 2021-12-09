@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.8.6 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.8.8 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -7,7 +7,7 @@
 
 ・MincraftForge 1.12.2-14.23.5.2847 以上
 
-・HeatAndClimateLib 1.12.2_3.8.2 以上
+・HeatAndClimateLib 1.12.2_3.8.3 以上
 
 ### 注意事項! ###
 
@@ -2293,6 +2293,16 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.8.8
+　変更
+　　・レシピJsonの成否ログの表示とログレベルを変更
+　修正
+　　・レシピ編集コンフィグjsonが動かなくなっているのを修正
+
+○3.8.7
+　EX
+　　・zh_cn.lang更新(Pliosauroidea氏に感謝!)
 
 ○3.8.6
 　変更

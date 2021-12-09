@@ -37,7 +37,7 @@ public class BrewingRecipeJson {
 	private static void load() {
 		if (!INSTANCE.jsonMap.isEmpty()) {
 			for (Entry<String, Object> e : INSTANCE.jsonMap.entrySet()) {
-				if (e == null || e.getValue() instanceof Map) {
+				if (e == null || !(e.getValue() instanceof Map)) {
 					continue;
 				}
 				if (e.getKey() == null || e.getValue() == null || ((Map) e.getValue()).isEmpty()) {
@@ -70,10 +70,10 @@ public class BrewingRecipeJson {
 									List<String> inputs = (List) o2;
 									list = JsonUtilDC.getInputObjects(inputs);
 								} catch (Error err) {
-									DCLogger.debugLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -86,10 +86,10 @@ public class BrewingRecipeJson {
 									Map<String, Object> items = (Map) o2;
 									output = JsonUtilDC.getOutput(items);
 								} catch (Error err) {
-									DCLogger.debugLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -102,10 +102,10 @@ public class BrewingRecipeJson {
 									Map<String, Object> items = (Map) of;
 									inputF = JsonUtilDC.getFluid(items);
 								} catch (Error err) {
-									DCLogger.debugLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -118,10 +118,10 @@ public class BrewingRecipeJson {
 									Map<String, Object> items = (Map) of;
 									outputF = JsonUtilDC.getFluid(items);
 								} catch (Error err) {
-									DCLogger.debugLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("BrewingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -132,13 +132,13 @@ public class BrewingRecipeJson {
 
 						if (reg == EnumRecipeReg.ADD && b) {
 							if (addRecipe(output, outputF, inputF, list))
-								DCLogger.debugLog("BrewingRecipeJson : Successfully added a brewing recipe. " + recipeID);
+								DCLogger.infoLog("BrewingRecipeJson : Successfully added a brewing recipe. " + recipeID);
 						} else if (reg == EnumRecipeReg.REPLACE && b) {
 							if (changeRecipe(output, outputF, inputF, list))
-								DCLogger.debugLog("BrewingRecipeJson : Successfully replaced a brewing recipe. " + recipeID);
+								DCLogger.infoLog("BrewingRecipeJson : Successfully replaced a brewing recipe. " + recipeID);
 						} else if (reg == EnumRecipeReg.REMOVE && b2) {
 							if (removeRecipe(inputF, list))
-								DCLogger.debugLog("BrewingRecipeJson : Successfully removed a brewing recipe. " + recipeID);
+								DCLogger.infoLog("BrewingRecipeJson : Successfully removed a brewing recipe. " + recipeID);
 						}
 					}
 				}

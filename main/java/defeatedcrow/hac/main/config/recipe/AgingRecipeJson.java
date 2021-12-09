@@ -33,7 +33,7 @@ public class AgingRecipeJson {
 	private static void load() {
 		if (!INSTANCE.jsonMap.isEmpty()) {
 			for (Entry<String, Object> e : INSTANCE.jsonMap.entrySet()) {
-				if (e == null || e.getValue() instanceof Map) {
+				if (e == null || !(e.getValue() instanceof Map)) {
 					continue;
 				}
 				if (e.getKey() == null || e.getValue() == null || ((Map) e.getValue()).isEmpty()) {
@@ -65,10 +65,10 @@ public class AgingRecipeJson {
 									Map<String, Object> items = (Map) of;
 									inputF = JsonUtilDC.getFluid(items);
 								} catch (Error err) {
-									DCLogger.debugLog("AgingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("AgingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("AgingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("AgingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -81,10 +81,10 @@ public class AgingRecipeJson {
 									Map<String, Object> items = (Map) of;
 									outputF = JsonUtilDC.getFluid(items);
 								} catch (Error err) {
-									DCLogger.debugLog("AgingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("AgingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("AgingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("AgingRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -100,13 +100,13 @@ public class AgingRecipeJson {
 
 						if (reg == EnumRecipeReg.ADD && b) {
 							if (addRecipe(outputF, inputF, count))
-								DCLogger.debugLog("AgingRecipeJson : Successfully added a aging recipe. " + recipeID);
+								DCLogger.infoLog("AgingRecipeJson : Successfully added a aging recipe. " + recipeID);
 						} else if (reg == EnumRecipeReg.REPLACE && b) {
 							if (changeRecipe(outputF, inputF, count))
-								DCLogger.debugLog("AgingRecipeJson : Successfully replaced a aging recipe. " + recipeID);
+								DCLogger.infoLog("AgingRecipeJson : Successfully replaced a aging recipe. " + recipeID);
 						} else if (reg == EnumRecipeReg.REMOVE && b2) {
 							if (removeRecipe(inputF))
-								DCLogger.debugLog("AgingRecipeJson : Successfully removed a aging recipe. " + recipeID);
+								DCLogger.infoLog("AgingRecipeJson : Successfully removed a aging recipe. " + recipeID);
 						}
 					}
 				}

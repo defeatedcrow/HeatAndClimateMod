@@ -38,7 +38,7 @@ public class StillRecipeJson {
 	private static void load() {
 		if (!INSTANCE.jsonMap.isEmpty()) {
 			for (Entry<String, Object> e : INSTANCE.jsonMap.entrySet()) {
-				if (e == null || e.getValue() instanceof Map) {
+				if (e == null || !(e.getValue() instanceof Map)) {
 					continue;
 				}
 				if (e.getKey() == null || e.getValue() == null || ((Map) e.getValue()).isEmpty()) {
@@ -89,10 +89,10 @@ public class StillRecipeJson {
 									List<String> inputs = (List) o2;
 									list = JsonUtilDC.getInputObjects(inputs);
 								} catch (Error err) {
-									DCLogger.debugLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -105,10 +105,10 @@ public class StillRecipeJson {
 									Map<String, Object> items = (Map) o2;
 									output = JsonUtilDC.getOutput(items);
 								} catch (Error err) {
-									DCLogger.debugLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -121,10 +121,10 @@ public class StillRecipeJson {
 									Map<String, Object> items = (Map) of;
 									inputF = JsonUtilDC.getFluid(items);
 								} catch (Error err) {
-									DCLogger.debugLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -137,10 +137,10 @@ public class StillRecipeJson {
 									Map<String, Object> items = (Map) of;
 									outputF = JsonUtilDC.getFluid(items);
 								} catch (Error err) {
-									DCLogger.debugLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								} catch (Exception exp) {
-									DCLogger.debugLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
+									DCLogger.traceLog("StillRecipeJson : Error entry found. This entry is ignored. " + recipeID);
 									continue;
 								}
 							}
@@ -151,13 +151,13 @@ public class StillRecipeJson {
 
 						if (reg == EnumRecipeReg.ADD && b) {
 							if (addRecipe(hot, cold, output, outputF, inputF, list))
-								DCLogger.debugLog("StillRecipeJson : Successfully added a still recipe. " + recipeID);
+								DCLogger.infoLog("StillRecipeJson : Successfully added a still recipe. " + recipeID);
 						} else if (reg == EnumRecipeReg.REPLACE && b) {
 							if (changeRecipe(hot, cold, output, outputF, inputF, list))
-								DCLogger.debugLog("StillRecipeJson : Successfully replaced a still recipe. " + recipeID);
+								DCLogger.infoLog("StillRecipeJson : Successfully replaced a still recipe. " + recipeID);
 						} else if (reg == EnumRecipeReg.REMOVE && b2) {
 							if (removeRecipe(hot, cold, inputF, list))
-								DCLogger.debugLog("StillRecipeJson : Successfully removed a still recipe. " + recipeID);
+								DCLogger.infoLog("StillRecipeJson : Successfully removed a still recipe. " + recipeID);
 						}
 					}
 				}

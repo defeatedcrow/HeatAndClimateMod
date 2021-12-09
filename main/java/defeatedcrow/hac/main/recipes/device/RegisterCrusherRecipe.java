@@ -348,8 +348,7 @@ public class RegisterCrusherRecipe {
 				12), 0.05F, Ti_Blade, new ItemStack(Blocks.STONE, 1, 3));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(MainInit.miscDust, 1,
 				12), 0.05F, Ti_Blade, new ItemStack(Blocks.STONE, 1, 5));
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(Items.FLINT, 1,
-				0), 1.0F, Ti_Blade, new ItemStack(Blocks.GRAVEL, 1, 0));
+
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 4, 0), Ti_Blade, new ItemStack(Blocks.SANDSTONE,
 				1, 32767));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 4, 0), new ItemStack(MainInit.oreDust, 1,
@@ -383,6 +382,11 @@ public class RegisterCrusherRecipe {
 				Blocks.STAINED_HARDENED_CLAY, 1, 32767));
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 4, 0), null, 0F, Ti_Blade, new ItemStack(
 				Blocks.HARDENED_CLAY, 1, 0));
+
+		// RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.GRAVEL, 1, 0), new ItemStack(MainInit.gems_white,
+		// 1, 0), 0.03F, Ti_Blade, "cobblestone");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(Items.FLINT, 1,
+				0), 1.0F, Ti_Blade, "gravel");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.CLAY_BALL, 1, 0), new ItemStack(MainInit.miscDust,
 				1, 1), 0.25F, null, Ti_Blade, "dirt");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Blocks.SAND, 1, 0), new ItemStack(MainInit.miscDust, 1,
