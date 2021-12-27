@@ -7,6 +7,7 @@ import defeatedcrow.hac.food.client.model.ModelBlockTeaPot_A;
 import defeatedcrow.hac.food.client.model.ModelBlockTeaPot_B;
 import defeatedcrow.hac.food.client.model.ModelBlockTeaPot_C;
 import defeatedcrow.hac.food.client.model.ModelBlockTeaPot_D;
+import defeatedcrow.hac.food.client.model.ModelBlockTeaPot_E;
 import defeatedcrow.hac.main.api.IColorChangeTile;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
@@ -20,10 +21,12 @@ public class TESRTeaPot extends DCLockableTESRBase {
 	private static final String TEX_B = "dcs_climate:textures/tiles/teapot_white.png";
 	private static final String TEX_C = "dcs_climate:textures/tiles/teapot_orange.png";
 	private static final String TEX_D = "dcs_climate:textures/tiles/teapot_black.png";
+	private static final String TEX_E = "dcs_climate:textures/tiles/teapot_machine.png";
 	private static final ModelBlockTeaPot_A MODEL_A = new ModelBlockTeaPot_A();
 	private static final ModelBlockTeaPot_B MODEL_B = new ModelBlockTeaPot_B();
 	private static final ModelBlockTeaPot_C MODEL_C = new ModelBlockTeaPot_C();
 	private static final ModelBlockTeaPot_D MODEL_D = new ModelBlockTeaPot_D();
+	private static final ModelBlockTeaPot_E MODEL_E = new ModelBlockTeaPot_E();
 
 	@Override
 	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
@@ -80,6 +83,8 @@ public class TESRTeaPot extends DCLockableTESRBase {
 			return TEX_C;
 		case 3:
 			return TEX_D;
+		case 4:
+			return TEX_E;
 		}
 		return TEX_A;
 	}
@@ -95,6 +100,8 @@ public class TESRTeaPot extends DCLockableTESRBase {
 			return MODEL_C;
 		case 3:
 			return MODEL_D;
+		case 4:
+			return MODEL_E;
 		}
 		return MODEL_A;
 	}

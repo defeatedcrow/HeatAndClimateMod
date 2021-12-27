@@ -162,6 +162,7 @@ public class MainInit {
 	public static Block curtainBlue;
 	public static Block windowBlinds;
 	public static Block windowWood;
+	public static Block wallDecoration;
 
 	public static Block sinkMetal;
 	public static Block sinkChest;

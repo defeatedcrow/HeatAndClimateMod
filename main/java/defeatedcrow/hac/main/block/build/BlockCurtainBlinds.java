@@ -1,9 +1,5 @@
 package defeatedcrow.hac.main.block.build;
 
-import java.util.List;
-
-import com.google.common.collect.Lists;
-
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
 import net.minecraft.block.SoundType;
@@ -15,7 +11,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
@@ -157,13 +152,6 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
-	}
-
-	@Override
-	public List<ItemStack> getSubItemList() {
-		List<ItemStack> list = Lists.newArrayList();
-		list.add(new ItemStack(this, 1, 0));
-		return list;
 	}
 
 	@Override

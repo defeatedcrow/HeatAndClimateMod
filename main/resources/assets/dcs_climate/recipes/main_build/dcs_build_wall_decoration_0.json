@@ -1,21 +1,22 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "Y",
-  "Z"
+  "XXX",
+  "XYX",
+  "XXX"
  ],
  "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "stickWood"
+  },
   "Y": {
    "type": "forge:ore_dict",
-   "ore": "itemCloth"
-  },
-  "Z": {
-   "type": "forge:ore_dict",
-   "ore": "blockMarble"
+   "ore": "ingotAluminum"
   }
  },
  "result": {
-  "item": "dcs_climate:dcs_stool_black",
+  "item": "dcs_climate:dcs_build_wall_decoration",
   "count": 1,
   "data": 0
  },

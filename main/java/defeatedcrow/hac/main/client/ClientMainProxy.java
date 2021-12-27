@@ -45,6 +45,7 @@ import defeatedcrow.hac.main.block.build.TileRealtimeClock_L;
 import defeatedcrow.hac.main.block.build.TileStairsRoof;
 import defeatedcrow.hac.main.block.build.TileTatami;
 import defeatedcrow.hac.main.block.build.TileVillageChest;
+import defeatedcrow.hac.main.block.build.TileWallDecoration;
 import defeatedcrow.hac.main.block.build.TileWindowBlinds;
 import defeatedcrow.hac.main.block.device.TileBellow;
 import defeatedcrow.hac.main.block.device.TileCookingStove;
@@ -100,6 +101,7 @@ import defeatedcrow.hac.main.client.block.TESRStevensonScreen;
 import defeatedcrow.hac.main.client.block.TESRSwedishTorch;
 import defeatedcrow.hac.main.client.block.TESRThermometer;
 import defeatedcrow.hac.main.client.block.TESRVillageChest;
+import defeatedcrow.hac.main.client.block.TESRWallDecoration;
 import defeatedcrow.hac.main.client.block.TESRWindVane;
 import defeatedcrow.hac.main.client.block.TESRWindowBlinds;
 import defeatedcrow.hac.main.client.entity.BoltRenderer;
@@ -308,6 +310,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileLampGas.class, "dcs_te_gas_lamp", new TESRGasLamp());
 		GameRegistry.registerTileEntity(TileAwning.class, "dcs_te_awning");
 		registerTileEntity(TileStairsRoof.class, "dcs_te_stairs_roof", new TESRStairsRoof());
+		registerTileEntity(TileWallDecoration.class, "dcs_te_wall_decoration", new TESRWallDecoration());
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadTE();

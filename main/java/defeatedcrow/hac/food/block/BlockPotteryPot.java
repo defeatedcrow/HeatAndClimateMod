@@ -26,6 +26,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -34,6 +35,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPotteryPot extends DCTileBlock implements IAirflowTile {
+
+	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.0625D, 0D, 0.0625D, 0.9375D, 0.875D,
+			0.9375D);
 
 	public BlockPotteryPot(String s) {
 		super(Material.CLAY, s, 0);

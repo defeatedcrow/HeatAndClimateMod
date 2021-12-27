@@ -67,6 +67,7 @@ import defeatedcrow.hac.main.block.build.BlockStairsStraw;
 import defeatedcrow.hac.main.block.build.BlockTableBase;
 import defeatedcrow.hac.main.block.build.BlockTatami;
 import defeatedcrow.hac.main.block.build.BlockVillageChest;
+import defeatedcrow.hac.main.block.build.BlockWallDecoration;
 import defeatedcrow.hac.main.block.build.BlockWallLamp;
 import defeatedcrow.hac.main.block.build.BlockWallShelf;
 import defeatedcrow.hac.main.block.build.BlockWindow;
@@ -1255,6 +1256,12 @@ public class MainMaterialRegister {
 					ClimateCore.PACKAGE_BASE + "_device_display_stand");
 			registerChestBlock(MainInit.displayStand, ClimateCore.PACKAGE_BASE + "_device_display_stand", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regTEJson(MainInit.displayStand, "dcs_climate", "dcs_device_display_stand", "device");
+
+			MainInit.wallDecoration = new BlockWallDecoration(Material.WOOD,
+					ClimateCore.PACKAGE_BASE + "_build_wall_decoration");
+			DCMaterialReg
+					.registerBlock(MainInit.wallDecoration, ClimateCore.PACKAGE_BASE + "_build_wall_decoration", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regTEJson(MainInit.wallDecoration, "dcs_climate", "dcs_build_wall_decoration", "device");
 
 			// items
 			MainInit.flowerPot = new ItemFlowerPot().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_flowerpot");

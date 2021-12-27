@@ -100,6 +100,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.awningLinen);
 			ClimateMain.build.addSubItem(MainInit.awningCloth);
 			ClimateMain.build.addSubItem(MainInit.chain);
+			ClimateMain.build.addSubItem(MainInit.wallDecoration);
 
 			// interior
 			ClimateMain.build.addSubItem(MainInit.carpetRed);
@@ -363,7 +364,7 @@ public class MainCreativeTabRegister {
 		ClimateMain.cont.addSubItem(MainInit.cropJute);
 		ClimateMain.cont.addSubItem(MainInit.dustBags);
 		ClimateMain.cont.addSubItem(MainInit.dustCake);
-		if (!ModuleConfig.machine) {
+		if (ModuleConfig.machine) {
 			ClimateMain.cont.addSubItem(MachineInit.fuelCont);
 		}
 

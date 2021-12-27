@@ -1437,6 +1437,7 @@ tile.dcs_build_flower_planting_rose.name=Flower Planting (Rose)
 tile.dcs_build_flower_planting_lily.name=Flower Planting (Goldband Lily)
 tile.dcs_build_flower_planting_orchid.name=Flower Planting (Moon Orchid)
 tile.dcs_build_flower_planting_snapdragon.name=Flower Planting (Snapdragon)
+tile.dcs_build_wall_decoration_0.name=Wall Decoration
 
 ## magic
 tile.dcs_lotus_candle_white_0.name=Lotus Candle

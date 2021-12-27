@@ -788,10 +788,14 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		return color;
 	}
 
+	public int maxColor() {
+		return 3;
+	}
+
 	@Override
 	public void setColor(int num) {
 		color = num;
-		if (color < 0 || color > 3) {
+		if (color < 0 || color > maxColor()) {
 			color = 0;
 		}
 	}

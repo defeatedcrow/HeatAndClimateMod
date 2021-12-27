@@ -239,6 +239,8 @@ public class JsonRegister {
 			ModelLoader.setCustomStateMapper(MainInit.doorHikido, (new StateMap.Builder()).ignore(DCState.FLAG)
 					.ignore(DCState.POWERED).build());
 			MAIN_INSTANCE.regSimpleBlock(MainInit.doorHikido, ClimateCore.PACKAGE_ID, "dcs_door_hikido", "build", 0);
+			MAIN_INSTANCE
+					.regTEBlock(MainInit.wallDecoration, ClimateCore.PACKAGE_ID, "dcs_build_wall_decoration", "build", 0, true);
 		}
 
 		if (!ModuleConfig.delete_old) {

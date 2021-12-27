@@ -9,6 +9,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TilePotteryPot extends TileFluidProcessorBase {
 
@@ -76,6 +78,19 @@ public class TilePotteryPot extends TileFluidProcessorBase {
 			else
 				return "dcs.gui.message.suitableclimate";
 		}
+	}
+
+	@Override
+	public int maxColor() {
+		return 4;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
+		net.minecraft.util.math.AxisAlignedBB bb = INFINITE_EXTENT_AABB;
+		bb = new net.minecraft.util.math.AxisAlignedBB(getPos().add(0, 0, 0), getPos().add(1, 1, 1));
+		return bb;
 	}
 
 	/* Packet,NBT */

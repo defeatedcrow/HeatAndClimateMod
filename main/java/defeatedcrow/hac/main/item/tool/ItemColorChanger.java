@@ -99,6 +99,8 @@ public class ItemColorChanger extends DCItem {
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.doorHikido), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.carpetTatami), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.windowBlinds), 0).localizedname());
+				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.wallDecoration), 0).localizedname());
+				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.awningCloth), 0).localizedname());
 			}
 			if (ModuleConfig.magic && ModuleConfig.magic_advanced) {
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MagicInit.timeCage), 0).localizedname());
@@ -107,6 +109,7 @@ public class ItemColorChanger extends DCItem {
 				tooltip.add(new ItemSet(Item.getItemFromBlock(MachineInit.faucet_sus), 0).localizedname());
 			}
 			if (ModuleConfig.food) {
+				tooltip.add(new ItemSet(Item.getItemFromBlock(FoodInit.potteryPot), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(FoodInit.skillet), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(FoodInit.steelPot), 0).localizedname());
 				tooltip.add(new ItemSet(Item.getItemFromBlock(FoodInit.teaPot), 0).localizedname());

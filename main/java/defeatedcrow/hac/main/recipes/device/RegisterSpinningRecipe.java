@@ -15,6 +15,9 @@ public class RegisterSpinningRecipe {
 				"blockTallgrass"));
 
 		RecipeAPI.registerSpinningRecipes.addRecipe(new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 4,
+				"feedStraw"));
+
+		RecipeAPI.registerSpinningRecipes.addRecipe(new SpinningRecipe(new ItemStack(MainInit.clothes, 1, 0), 4,
 				"dustPlant"));
 
 		RecipeAPI.registerSpinningRecipes.addRecipe(new ItemStack(MainInit.clothes, 1, 1), 4, new ItemStack(

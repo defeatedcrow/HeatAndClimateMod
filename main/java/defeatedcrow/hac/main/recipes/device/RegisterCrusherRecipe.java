@@ -77,10 +77,46 @@ public class RegisterCrusherRecipe {
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(
 				MainInit.foodDust, 1, 1), SUS_Blade, "feedStraw");
 
+		// container
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 24, 1), new ItemStack(
+				MainInit.animalFeed, 8, 2), 1F, new ItemStack(MainInit.foodDust, 4,
+						0), 1F, SUS_Blade, "containerWheat");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 16, 2), new ItemStack(
+				MainInit.animalFeed, 8, 2), 1F, new ItemStack(MainInit.foodDust, 4,
+						0), 1F, null, SUS_Blade, "containerRice");
+
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 2, 1), null, 0F, new FluidStack(
+				MainInit.lemon, 2000), SUS_Blade, "containerLemon");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 4), null, 0F, new FluidStack(
+				MainInit.oil, 3200), SUS_Blade, "containerOlive");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodDust, 2, 4), null, 0F, new FluidStack(
+				MainInit.oil, 1600), SUS_Blade, "containerSoybean");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 4), null, 0F, new FluidStack(
+				MainInit.oil, 800), SUS_Blade, "containerBran");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 4), null, 0F, new FluidStack(
+				MainInit.oil, 400), SUS_Blade, "containerSeeds");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.miscDust, 2, 4), null, 0F, new FluidStack(
+				MainInit.oil, 1600), SUS_Blade, "containerWalnut");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.SUGAR, 42, 0), new ItemStack(MainInit.foodDust, 8,
+				7), 1.0F, new ItemStack(MainInit.foodDust, 8, 2), 1.0F, SUS_Blade, "containerReeds");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(Items.SUGAR, 16, 0), new ItemStack(MainInit.foodDust, 2,
+				2), 1F, new ItemStack(MainInit.foodDust, 2, 1), 1F, SUS_Blade, "containerBeetroot");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 24, 3), new ItemStack(
+				MainInit.foodDust, 4, 1), 1F, SUS_Blade, "containerPotato");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 16, 3), new ItemStack(
+				MainInit.foodDust, 4, 1), 1F, SUS_Blade, "containerRiceFood");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 16, 3), new ItemStack(
+				MainInit.foodDust, 4, 1), 1F, SUS_Blade, "containerFlour");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(
+				MainInit.foodDust, 4, 1), SUS_Blade, "blockStraw");
+
 		if (ModuleConfig.food) {
 			RecipeAPI.registerCrushers.addRecipe(new ItemStack(FoodInit.seeds, 1, 4), new ItemStack(
 					MainInit.foodDust,
 					1, 1), 0.25F, null, 0F, new FluidStack(MainInit.tomatoJuice, 100), SUS_Blade, "cropCoffee");
+			RecipeAPI.registerCrushers.addRecipe(new ItemStack(FoodInit.seeds, 8, 4), new ItemStack(
+					MainInit.foodDust,
+					2, 1), 1F, null, 0F, new FluidStack(MainInit.tomatoJuice, 800), SUS_Blade, "containerCoffee");
 		}
 
 		if (OreDictionary.doesOreNameExist("plantRoot")) {

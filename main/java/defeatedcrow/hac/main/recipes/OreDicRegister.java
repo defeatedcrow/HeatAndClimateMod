@@ -7,6 +7,7 @@ import defeatedcrow.hac.magic.recipe.MagicRecipeRegister;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.config.OredicConfig;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -283,7 +284,16 @@ public class OreDicRegister {
 		OreDictionary.registerOre("foodRice", new ItemStack(MainInit.foodMaterials, 1, 2));
 		OreDictionary.registerOre("dustStarch", new ItemStack(MainInit.foodMaterials, 1, 3));
 
+		OreDictionary.registerOre("foodBakedapple", new ItemStack(MainInit.bakedApple, 1, 0));
+		OreDictionary.registerOre("foodBoiledegg", new ItemStack(MainInit.bakedApple, 1, 1));
+		OreDictionary.registerOre("foodJerky", new ItemStack(MainInit.bakedApple, 1, 2));
 		OreDictionary.registerOre("foodSausage", new ItemStack(MainInit.bakedApple, 1, 3));
+		OreDictionary.registerOre("listAllfishcooked", new ItemStack(MainInit.bakedApple, 1, 4));
+		OreDictionary.registerOre("foodCalamaricooked", new ItemStack(MainInit.bakedApple, 1, 4));
+		OreDictionary.registerOre("foodBoiledlotusseed", new ItemStack(MainInit.bakedApple, 1, 5));
+		OreDictionary.registerOre("foodBoiledLotusSeed", new ItemStack(MainInit.bakedApple, 1, 5));
+		OreDictionary.registerOre("foodBoiledsoybean", new ItemStack(MainInit.bakedApple, 1, 6));
+		OreDictionary.registerOre("foodShrimpcooked", new ItemStack(MainInit.bakedApple, 1, 7));
 
 		// container
 		OreDictionary.registerOre("containerLog", new ItemStack(MainInit.logCont, 1, 0));
@@ -373,6 +383,13 @@ public class OreDicRegister {
 		OreDictionary.registerOre("feedCompound", new ItemStack(MainInit.animalFeed, 1, 0));
 		OreDictionary.registerOre("feedHay", new ItemStack(MainInit.animalFeed, 1, 1));
 		OreDictionary.registerOre("feedStraw", new ItemStack(MainInit.animalFeed, 1, 2));
+
+		OreDictionary.registerOre("fenceWood", new ItemStack(Blocks.OAK_FENCE, 1, 0));
+		OreDictionary.registerOre("fenceWood", new ItemStack(Blocks.BIRCH_FENCE, 1, 0));
+		OreDictionary.registerOre("fenceWood", new ItemStack(Blocks.JUNGLE_FENCE, 1, 0));
+		OreDictionary.registerOre("fenceWood", new ItemStack(Blocks.SPRUCE_FENCE, 1, 0));
+		OreDictionary.registerOre("fenceWood", new ItemStack(Blocks.ACACIA_FENCE, 1, 0));
+		OreDictionary.registerOre("fenceWood", new ItemStack(Blocks.DARK_OAK_FENCE, 1, 0));
 
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));

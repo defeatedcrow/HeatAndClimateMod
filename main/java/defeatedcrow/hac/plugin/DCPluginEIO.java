@@ -104,6 +104,7 @@ public class DCPluginEIO {
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 18));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 19));
 		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 20));
+		PaintSourceValidator.instance.addToBlacklist(new ItemStack(FoodInit.paperPack, 1, 21));
 	}
 
 }

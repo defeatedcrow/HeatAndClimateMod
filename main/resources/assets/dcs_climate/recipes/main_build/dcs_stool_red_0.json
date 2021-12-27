@@ -1,22 +1,17 @@
 {
  "type": "forge:ore_shaped",
  "pattern": [
-  "X",
   "Y",
   "Z"
  ],
  "key": {
-  "X": {
-   "type": "forge:ore_dict",
-   "ore": "dyeRed"
-  },
   "Y": {
    "type": "forge:ore_dict",
    "ore": "itemCloth"
   },
   "Z": {
    "type": "forge:ore_dict",
-   "ore": "plankWood"
+   "ore": "fenceWood"
   }
  },
  "result": {

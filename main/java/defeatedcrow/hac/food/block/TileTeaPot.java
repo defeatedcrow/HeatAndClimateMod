@@ -316,6 +316,11 @@ public class TileTeaPot extends TileFluidProcessorBase {
 			return "dcs.gui.message.suitableclimate";
 	}
 
+	@Override
+	public int maxColor() {
+		return 4;
+	}
+
 	/* ========== 以下、ISidedInventoryのメソッド ========== */
 
 	@Override
