@@ -233,6 +233,15 @@ item.dcs_big_cushion_brown.name=モブをダメにするクッション(茶)
 item.dcs_big_cushion_small_red.name=モブをダメにする座布団(赤)
 item.dcs_big_cushion_small_blue.name=モブをダメにする座布団(青)
 item.dcs_big_cushion_small_straw.name=モブをダメにする座布団(藁)
+item.dcs_desktop_accessories_books.name=ブックスタンド(本)
+item.dcs_desktop_accessories_books2.name=ブックスタンド(ファイル)
+item.dcs_desktop_accessories_note.name=ノート
+item.dcs_desktop_accessories_pen.name=ペンスタンド
+item.dcs_desktop_accessories_organizer.name=デスクオーガナイザー
+item.dcs_desktop_accessories_keyboard.name=キーボード
+item.dcs_desktop_accessories_laptop.name=ノートパソコン
+item.dcs_desktop_accessories_phone.name=スマホ
+item.dcs_desktop_accessories_pen_tablet.name=ペンタブ
 
 
 item.dcs_food_materials_salt.name=食塩

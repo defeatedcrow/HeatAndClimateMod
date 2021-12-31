@@ -11,6 +11,7 @@ import defeatedcrow.hac.main.client.model.ModelWallDecoration_F;
 import defeatedcrow.hac.main.client.model.ModelWallDecoration_G;
 import defeatedcrow.hac.main.client.model.ModelWallDecoration_H;
 import defeatedcrow.hac.main.client.model.ModelWallDecoration_I;
+import defeatedcrow.hac.main.client.model.ModelWallDecoration_J;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -32,6 +33,7 @@ public class TESRWallDecoration extends TileEntitySpecialRenderer<TileEntity> {
 	private static final String TEX_G = "dcs_climate:textures/tiles/wall_deco_g.png";
 	private static final String TEX_H = "dcs_climate:textures/tiles/wall_deco_h.png";
 	private static final String TEX_I = "dcs_climate:textures/tiles/wall_deco_i.png";
+	private static final String TEX_J = "dcs_climate:textures/tiles/wall_deco_j.png";
 	private static final DCTileModelBase MODEL_A = new ModelWallDecoration_A();
 	private static final DCTileModelBase MODEL_B = new ModelWallDecoration_B();
 	private static final DCTileModelBase MODEL_C = new ModelWallDecoration_C();
@@ -41,6 +43,7 @@ public class TESRWallDecoration extends TileEntitySpecialRenderer<TileEntity> {
 	private static final DCTileModelBase MODEL_G = new ModelWallDecoration_G();
 	private static final DCTileModelBase MODEL_H = new ModelWallDecoration_H();
 	private static final DCTileModelBase MODEL_I = new ModelWallDecoration_I();
+	private static final DCTileModelBase MODEL_J = new ModelWallDecoration_J();
 
 	@Override
 	public void render(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float a) {
@@ -110,6 +113,8 @@ public class TESRWallDecoration extends TileEntitySpecialRenderer<TileEntity> {
 			return TEX_H;
 		case 10:
 			return TEX_I;
+		case 11:
+			return TEX_J;
 		}
 		return TEX_G;
 	}
@@ -134,6 +139,8 @@ public class TESRWallDecoration extends TileEntitySpecialRenderer<TileEntity> {
 			return MODEL_H;
 		case 10:
 			return MODEL_I;
+		case 11:
+			return MODEL_J;
 		}
 		return MODEL_G;
 	}

@@ -215,6 +215,7 @@ public class MainInit {
 	public static Block mcClock_L;
 
 	public static Item cushionGray;
+	public static Item desktopAccessories;
 
 	// vine
 	public static Block fenceRattan;

@@ -141,6 +141,15 @@ import defeatedcrow.hac.main.entity.EntityBigCushionBrown;
 import defeatedcrow.hac.main.entity.EntityCrowBalloon;
 import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_A;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_B;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_C;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_D;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_E;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_F;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_G;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_H;
+import defeatedcrow.hac.main.entity.EntityDesktopAccessories_I;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
 import defeatedcrow.hac.main.entity.EntityDynamiteSmall;
@@ -504,6 +513,24 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addEntity(EntityFlowerBolt.class, "main", "bullet_flower", 1);
 
 		DCRegistryUtil.addEntity(EntityDynamiteSmall.class, "main", "dynamite_small");
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_A.class, "main", "desktop_accessories_a", 20);
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_B.class, "main", "desktop_accessories_b", 20);
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_C.class, "main", "desktop_accessories_c", 20);
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_D.class, "main", "desktop_accessories_d", 20);
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_E.class, "main", "desktop_accessories_e", 20);
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_F.class, "main", "desktop_accessories_f", 20);
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_G.class, "main", "desktop_accessories_g", 20);
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_H.class, "main", "desktop_accessories_h", 20);
+
+		DCRegistryUtil.addEntity(EntityDesktopAccessories_I.class, "main", "desktop_accessories_i", 20);
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadEntity();

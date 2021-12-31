@@ -121,6 +121,7 @@ import defeatedcrow.hac.main.block.plant.BlockFlowerGarden;
 import defeatedcrow.hac.main.block.plant.BlockHedge;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.item.entity.ItemCushionGray;
+import defeatedcrow.hac.main.item.entity.ItemDesktopAccessories;
 import defeatedcrow.hac.main.item.entity.ItemFlowerPot;
 import defeatedcrow.hac.main.item.equip.ItemArmorCape;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
@@ -1270,6 +1271,11 @@ public class MainMaterialRegister {
 			MainInit.cushionGray = new ItemCushionGray().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_big_cushion");
 			DCMaterialReg
 					.registerItem(MainInit.cushionGray, ClimateCore.PACKAGE_BASE + "_big_cushion", ClimateMain.MOD_ID);
+
+			MainInit.desktopAccessories = new ItemDesktopAccessories()
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_desktop_accessories");
+			DCMaterialReg
+					.registerItem(MainInit.desktopAccessories, ClimateCore.PACKAGE_BASE + "_desktop_accessories", ClimateMain.MOD_ID);
 
 		}
 	}

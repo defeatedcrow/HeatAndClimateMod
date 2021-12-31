@@ -1718,7 +1718,82 @@ public class LoadingBuildingRecipe {
 							'X',
 							"stickWood",
 							'Y',
-							"ingotAluminum"
+							"ingotCopper"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.desktopAccessories,
+					1,
+					0), new Object[] {
+							"XXX",
+							"XYX",
+							"XXX",
+							'X',
+							"stickWood",
+							'Y',
+							"ingotTin"
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", 2, new ItemStack(
+					MainInit.desktopAccessories, 1,
+					0), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1,
+									32767)
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.desktopAccessories, 1,
+					1), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1, 0),
+							MainUtil.DYES[15]
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.desktopAccessories, 1,
+					2), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1, 0),
+							MainUtil.DYES[14]
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.desktopAccessories, 1,
+					3), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1, 0),
+							MainUtil.DYES[13]
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.desktopAccessories, 1,
+					4), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1, 0),
+							MainUtil.DYES[12]
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.desktopAccessories, 1,
+					5), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1, 0),
+							MainUtil.DYES[11]
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.desktopAccessories, 1,
+					6), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1, 0),
+							MainUtil.DYES[10]
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.desktopAccessories, 1,
+					7), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1, 0),
+							MainUtil.DYES[9]
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(
+					MainInit.desktopAccessories, 1,
+					8), new Object[] {
+							new ItemStack(MainInit.desktopAccessories, 1, 0),
+							MainUtil.DYES[8]
 			});
 
 			DCRecipe.jsonShapelessRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(

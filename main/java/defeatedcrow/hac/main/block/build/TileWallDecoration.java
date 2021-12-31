@@ -42,7 +42,7 @@ public class TileWallDecoration extends TileEntity implements IColorChangeTile {
 	@Override
 	public void setColor(int num) {
 		color = num;
-		if (color < 0 || color > 10) {
+		if (color < 0 || color > 11) {
 			color = 0;
 		}
 	}

@@ -226,6 +226,15 @@ item.dcs_big_cushion_brown.name=Brown Big Cushion for the Lazy Mobs
 item.dcs_big_cushion_small_red.name=Red Cushion for the Lazy Mobs
 item.dcs_big_cushion_small_blue.name=Blue Cushion for the Lazy Mobs
 item.dcs_big_cushion_small_straw.name=Straw Cushion for the Lazy Mobs
+item.dcs_desktop_accessories_books.name=Books
+item.dcs_desktop_accessories_books2.name=Folders
+item.dcs_desktop_accessories_note.name=Notebook
+item.dcs_desktop_accessories_pen.name=Pen Stand
+item.dcs_desktop_accessories_organizer.name=Desktop Organizer
+item.dcs_desktop_accessories_keyboard.name=Keyboard
+item.dcs_desktop_accessories_laptop.name=Laotop
+item.dcs_desktop_accessories_phone.name=Cell Phone
+item.dcs_desktop_accessories_pen_tablet.name=Drawing Tablet
 
 ## foods
 item.dcs_food_materials_salt.name=Salt
@@ -2713,6 +2722,16 @@ entity.dcs.main.big_cushion_brown.name=Brown Big Cushion for the lazy mobs
 entity.dcs.main.small_cushion_red.name=Red Cushion for the lazy mobs
 entity.dcs.main.small_cushion_blue.name=Blue Cushion for the lazy mobs
 entity.dcs.main.small_cushion_straw.name=Straw Cushion for the lazy mobs
+
+entity.dcs.main.desktop_accessories_a.name=Books
+entity.dcs.main.desktop_accessories_b.name=Folders
+entity.dcs.main.desktop_accessories_c.name=Notebook
+entity.dcs.main.desktop_accessories_d.name=Pen Stand
+entity.dcs.main.desktop_accessories_e.name=Desktop Organizer
+entity.dcs.main.desktop_accessories_f.name=Keyboard
+entity.dcs.main.desktop_accessories_g.name=Laotop
+entity.dcs.main.desktop_accessories_h.name=Cell Phone
+entity.dcs.main.desktop_accessories_i.name=Drawing Tablet
 
 entity.dcs.magic.dcs_blackdog.name=Black Dog
 entity.dcs.magic.dcs_flametongue.name=Flametongue Dog

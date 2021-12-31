@@ -62,6 +62,15 @@ public class WorldGenConfig {
 	public static String geyserGas = "dcs.steam";
 	public static Fluid geyserProduct;
 
+	public static boolean chestVillage = true;
+	public static boolean chestMine = true;
+	public static boolean chestPyramid = true;
+	public static boolean chestJungle = true;
+	public static boolean chestDungeon = true;
+	public static boolean chestWoodland = true;
+	public static boolean chestStronghold = true;
+	public static boolean chestNether = true;
+
 	public void load(Configuration cfg) {
 
 		try {
@@ -69,6 +78,7 @@ public class WorldGenConfig {
 
 			cfg.addCustomCategoryComment("world setting", "This setting is for world gen.");
 			cfg.addCustomCategoryComment("ore gen setting", "This setting is for ore gen. " + BR + "Please set probability as parsentage." + BR + "If you set 0, those ore deposits will not be generated.");
+			cfg.addCustomCategoryComment("dungeon loot setting", "This setting is for dungeon chest loot.");
 
 			Property sed_ore = cfg
 					.get("ore gen setting", "Red Vein Gen Probability", depositGen[0], "Generate in High-altitude and underground of mountain. 0-100%");
@@ -129,6 +139,15 @@ public class WorldGenConfig {
 
 			Property skarn_check = cfg
 					.get("world setting", "Skarn Dupe Check", skarnDupeCheck, "Limits skarn generation chunks within a 16x16 chunk partition.");
+
+			Property chest_vil = cfg.get("dungeon loot setting", "Village", chestVillage);
+			Property chest_dun = cfg.get("dungeon loot setting", "Dungeon", chestDungeon);
+			Property chest_pyr = cfg.get("dungeon loot setting", "Pyramid", chestPyramid);
+			Property chest_jun = cfg.get("dungeon loot setting", "Jungle", chestJungle);
+			Property chest_min = cfg.get("dungeon loot setting", "Minecart", chestMine);
+			Property chest_str = cfg.get("dungeon loot setting", "Stronghold", chestStronghold);
+			Property chest_net = cfg.get("dungeon loot setting", "Nether", chestNether);
+			Property chest_wod = cfg.get("dungeon loot setting", "WoodlandMansion", chestWoodland);
 
 			int s = sed_ore.getInt();
 			if (s < 0 || s > 100) {
@@ -227,6 +246,14 @@ public class WorldGenConfig {
 			hotspringGen = hs;
 			geyserGas = geyser_gas.getString();
 			skarnDupeCheck = skarn_check.getBoolean();
+			chestVillage = chest_vil.getBoolean();
+			chestDungeon = chest_dun.getBoolean();
+			chestPyramid = chest_pyr.getBoolean();
+			chestJungle = chest_jun.getBoolean();
+			chestMine = chest_min.getBoolean();
+			chestWoodland = chest_wod.getBoolean();
+			chestStronghold = chest_str.getBoolean();
+			chestNether = chest_net.getBoolean();
 
 		} catch (Exception e) {
 			e.printStackTrace();

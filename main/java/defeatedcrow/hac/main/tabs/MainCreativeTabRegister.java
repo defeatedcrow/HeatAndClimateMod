@@ -195,6 +195,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.hedgeWinter);
 
 			ClimateMain.build.addSubItem(MainInit.flowerPot);
+			ClimateMain.build.addSubItem(MainInit.desktopAccessories);
 			ClimateMain.build.addSubItem(MainInit.cushionGray);
 		}
 
