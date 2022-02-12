@@ -252,7 +252,7 @@ public class ItemLiquorBottle extends FoodItemBase {
 		return names[meta];
 	}
 
-	public static Fluid getFluid(int meta) {
+	public Fluid getFluid(int meta) {
 		String name = getFluidName(meta);
 		return FluidRegistry.getFluid(name);
 	}
@@ -346,7 +346,7 @@ public class ItemLiquorBottle extends FoodItemBase {
 	public boolean addEffects(ItemStack stack, World world, EntityLivingBase living) {
 		if (!world.isRemote && !DCUtil.isEmpty(stack) && living != null) {
 			int meta = stack.getMetadata();
-			Fluid fluid = getFluid(meta);
+			Fluid fluid = getFluidLocal(meta);
 			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 3F, 1);
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 			float durF = 1.0F;
@@ -356,7 +356,7 @@ public class ItemLiquorBottle extends FoodItemBase {
 				ampF += drink.getSugar().effect;
 				int l = drink.getAgingLevel();
 				if (l > 0) {
-					ampF++;
+					ampF += l;
 					durF *= l;
 				}
 			}

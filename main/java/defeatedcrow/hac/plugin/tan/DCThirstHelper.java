@@ -19,8 +19,8 @@ public class DCThirstHelper {
 
 	public static void onDrink(EntityPlayer player, Fluid f) {
 		if (f != null) {
-			toughasnails.thirst.ThirstHandler handler =
-					(toughasnails.thirst.ThirstHandler) toughasnails.api.thirst.ThirstHelper.getThirstData(player);
+			toughasnails.thirst.ThirstHandler handler = (toughasnails.thirst.ThirstHandler) toughasnails.api.thirst.ThirstHelper
+					.getThirstData(player);
 			toughasnails.api.stat.capability.IThirst thirst = toughasnails.api.thirst.ThirstHelper
 					.getThirstData(player);
 			toughasnails.api.thirst.IDrink type = DCDrink.getType(f);
@@ -105,9 +105,45 @@ public class DCThirstHelper {
 				if (f == MainInit.nitrogen)
 					return RISK;
 
-				if (ModuleConfig.food) {
+				if (ModuleConfig.food_advanced) {
 					if (f == FoodInit.roseWater)
 						return TEA;
+					if (f == FoodInit.tonic)
+						return TEA;
+					if (f == FoodInit.lemon_squash)
+						return TEA;
+					if (f == FoodInit.cola)
+						return TEA;
+					if (f == FoodInit.beer)
+						return TEA;
+					if (f == FoodInit.wine)
+						return TEA;
+					if (f == FoodInit.dateWine)
+						return TEA;
+					if (f == FoodInit.sake)
+						return TEA;
+					if (f == FoodInit.whisky)
+						return ETHANOL;
+					if (f == FoodInit.brandy)
+						return ETHANOL;
+					if (f == FoodInit.pomaceBrandy)
+						return ETHANOL;
+					if (f == FoodInit.araq)
+						return ETHANOL;
+					if (f == FoodInit.shotyu)
+						return ETHANOL;
+					if (f == FoodInit.akvavit)
+						return ETHANOL;
+					if (f == FoodInit.whiteRum)
+						return ETHANOL;
+					if (f == FoodInit.darkRum)
+						return ETHANOL;
+					if (f == FoodInit.vodka)
+						return ETHANOL;
+					if (f == FoodInit.netherWine)
+						return TEA;
+					if (f == FoodInit.chorusLiquor)
+						return ETHANOL;
 				}
 
 				Potion p = DrinkPotionType.getPotion(f);

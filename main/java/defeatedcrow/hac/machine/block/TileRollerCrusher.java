@@ -22,6 +22,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -407,6 +408,9 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 					chance2 = 100;
 				}
 				int consume = consumeAmo(slot);
+				if (consume < 0) {
+					return false;
+				}
 				this.decrStackSize(0, consume);
 			} else {
 				return false;
@@ -439,7 +443,7 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 	public int consumeAmo(ItemStack in) {
 		if (currentRecipe == null)
 			return -1;
-		ArrayList<ItemStack> required = new ArrayList<ItemStack>(currentRecipe.getProcessedInput());
+		ArrayList<ItemStack> required = new ArrayList<ItemStack>(DCUtil.getProcessedList(currentRecipe.getInput()));
 		if (!DCUtil.isEmpty(in) && !required.isEmpty()) {
 			Iterator<ItemStack> itr = required.iterator();
 			while (itr.hasNext()) {
@@ -581,7 +585,7 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 					IRecipe rec = targetRecipes.next();
 					ItemStack out = rec.getRecipeOutput();
 					if (rec != null && !DCUtil.isEmpty(out)) {
-						if (ins.getItem().isDamageable() && ins.getItem() == out.getItem()) {
+						if (canReverse(ins) && ins.getItem() == out.getItem()) {
 							if (out.getCount() == 1) {
 								recipe = rec;
 							}
@@ -657,6 +661,12 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			} else if (name.contains("blade")) {
 				String name2 = name.replace("blade", "ingot");
 				return name2;
+			} else if (name.contains("plank")) {
+				String name2 = name.replace("plank", "dust");
+				return name2;
+			} else if (name.contains("cloth")) {
+				String name2 = name.replace("cloth", "string");
+				return name2;
 			}
 		}
 		return null;
@@ -671,6 +681,17 @@ public class TileRollerCrusher extends TileTorqueProcessor implements ITorqueRec
 			}
 		}
 		return null;
+	}
+
+	private boolean canReverse(ItemStack item) {
+		if (DCUtil.isEmpty(item))
+			return false;
+		if (item.getItem() instanceof ItemFood)
+			return false;
+		if (item.getItem().isDamageable())
+			return true;
+		int[] ids = OreDictionary.getOreIDs(item);
+		return ids != null && ids.length > 0;
 	}
 
 	private ItemStack getNamedItem(String name) {

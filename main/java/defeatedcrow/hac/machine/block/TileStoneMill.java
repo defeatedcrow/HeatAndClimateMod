@@ -98,6 +98,9 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 					}
 					int i3 = inventory.insertResult(cont, 1, 3);
 					int con = consumeAmo(recipe, in);
+					if (con < 0) {
+						return false;
+					}
 					this.decrStackSize(0, con);
 					return true;
 				}
@@ -109,7 +112,7 @@ public class TileStoneMill extends TileTorqueProcessor implements ITorqueReceive
 	public int consumeAmo(IMillRecipe recipe, ItemStack in) {
 		if (recipe == null)
 			return -1;
-		ArrayList<ItemStack> required = new ArrayList<ItemStack>(recipe.getProcessedInput());
+		ArrayList<ItemStack> required = new ArrayList<ItemStack>(DCUtil.getProcessedList(recipe.getInput()));
 		if (!DCUtil.isEmpty(in) && !required.isEmpty()) {
 			Iterator<ItemStack> itr = required.iterator();
 			while (itr.hasNext()) {

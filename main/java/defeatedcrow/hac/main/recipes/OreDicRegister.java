@@ -391,6 +391,8 @@ public class OreDicRegister {
 		OreDictionary.registerOre("fenceWood", new ItemStack(Blocks.ACACIA_FENCE, 1, 0));
 		OreDictionary.registerOre("fenceWood", new ItemStack(Blocks.DARK_OAK_FENCE, 1, 0));
 
+		OreDictionary.registerOre("blockWheat", new ItemStack(Blocks.HAY_BLOCK, 1, 0));
+
 		/* 変換除外 */
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.cardboard, 1, 5));
 		ConvertTargetList.addExclusing(new ItemStack(MainInit.clothes, 1, 1));

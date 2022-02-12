@@ -78,7 +78,8 @@ public class TileBrewingTankWood extends TileFluidProcessorBase {
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
-		if (currentBrewing == null) {
+		if (currentBrewing == null || currentRecipe != MainAPIManager.brewingRegister
+				.getBrewingRecipe(current, ins, inf)) {
 			return false;
 		} else {
 			if (currentBrewing.matchClimate(current) && currentBrewing.matches(ins, inf)) {

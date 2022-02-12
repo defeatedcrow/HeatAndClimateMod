@@ -15,6 +15,7 @@ import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.plugin.baubles.CharmItemBase;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.state.IBlockState;
@@ -28,6 +29,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -151,10 +153,21 @@ public class ItemColorPendant2 extends CharmItemBase implements IMagicCost {
 			DCLogger.debugInfoLog("stats " + f);
 			if (owner != null && target != null) {
 				if (owner instanceof EntityPlayer) {
+					if (damage > 8.0F) {
+						int l = MathHelper.floor(damage * 0.25F);
+						eff *= l;
+					}
 					((EntityPlayer) owner).getFoodStats().addStats(f, eff);
+					if (owner.isPotionActive(MainInit.unrepair)) {
+						// 回復禁止回避
+						float f1 = owner.getHealth();
+						float f2 = Math.min(eff, owner.getMaxHealth() - owner.getHealth());
+						owner.setHealth(f1 + f2);
+					}
 				} else {
 					owner.heal(f * eff);
 				}
+				return true;
 			}
 
 		}

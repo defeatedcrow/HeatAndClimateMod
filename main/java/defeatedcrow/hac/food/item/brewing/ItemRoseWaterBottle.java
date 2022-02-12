@@ -135,7 +135,8 @@ public class ItemRoseWaterBottle extends ItemLiquorBottle {
 		return names2[meta];
 	}
 
-	public static Fluid getFluid(int meta) {
+	@Override
+	public Fluid getFluid(int meta) {
 		String name = getFluidName(meta);
 		return FluidRegistry.getFluid(name);
 	}

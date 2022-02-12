@@ -37,8 +37,9 @@ public class GuiStevensonScreen extends GuiContainer {
 		if (t.getWorld() != null) {
 			World world = t.getWorld();
 			Biome biome = world.getBiomeForCoordsBody(t.getPos());
-			boolean snow = biome.isSnowyBiome() || (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) && t
-					.getPos().getY() > 100);
+			float temp = biome.getTemperature(t.getPos());
+			boolean snow = biome.isSnowyBiome() || (BiomeDictionary
+					.hasType(biome, BiomeDictionary.Type.MOUNTAIN) && temp < 0.15F);
 			boolean dry = !biome.canRain() && !biome.isSnowyBiome();
 			if (world.getRainStrength(1.0F) > 0.2F) {
 				if (dry) {

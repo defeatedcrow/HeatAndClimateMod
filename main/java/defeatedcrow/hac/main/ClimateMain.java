@@ -55,8 +55,8 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MAJOR = 3;
 	public static final int MOD_MINOR = 8;
-	public static final int MOD_BUILD = 10;
-	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.8.4,)";
+	public static final int MOD_BUILD = 11;
+	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.8.6,)";
 	public static final String UPDATE_JSON = "https://defeatedcrow.jp/version/heatandclimate.json";
 	public static final String KEY = "4cd12b92959105443b7b694fffe0cea9ed004886";
 
@@ -147,12 +147,10 @@ public class ClimateMain {
 		proxy.loadWorldGen();
 		// event
 		proxy.loadInit();
-
-		// other things
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
-
 		// Recipes
 		proxy.loadRecipes();
+		// other things
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 
 		DCIntegrationCore.INSTANCE.loadInit();
 	}

@@ -11,6 +11,8 @@ import defeatedcrow.hac.machine.block.BlockMonitorPanel;
 import defeatedcrow.hac.machine.block.BlockMonitorTemp;
 import defeatedcrow.hac.machine.block.TileEntityPanel;
 import defeatedcrow.hac.machine.block.TileMonitorBase;
+import defeatedcrow.hac.main.block.device.BlockHopperChest;
+import defeatedcrow.hac.main.block.device.TileHopperChest;
 import defeatedcrow.hac.main.util.DCName;
 import mcp.mobius.waila.addons.core.HUDHandlerBlocks;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -21,6 +23,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -76,6 +79,22 @@ public class HUDHandlerTorque extends HUDHandlerBlocks {
 			}
 			currenttip.add(String.format(DCName.POWER.getLocalizedName() + " : %b", power));
 			currenttip.add(String.format(DCName.TARGET.getLocalizedName() + " : %s", type));
+		} else if (BlockHopperChest.class.isInstance(accessor.getBlock())) {
+			byte face = accessor.getNBTData().getByte("dcs.face");
+			EnumFacing side = EnumFacing.DOWN;
+			switch (face) {
+			case 0:
+				side = EnumFacing.NORTH;
+			case 1:
+				side = EnumFacing.EAST;
+			case 2:
+				side = EnumFacing.SOUTH;
+			case 3:
+				side = EnumFacing.WEST;
+			default:
+				side = EnumFacing.DOWN;
+			}
+			currenttip.add(String.format(DCName.FACING.getLocalizedName() + " : %s", side));
 		}
 
 		return currenttip;
@@ -97,5 +116,6 @@ public class HUDHandlerTorque extends HUDHandlerBlocks {
 		registrar.registerBodyProvider(provider, TileMonitorBase.class);
 		registrar.registerNBTProvider(provider, TileMonitorBase.class);
 		registrar.registerBodyProvider(provider, TileEntityPanel.class);
+		registrar.registerBodyProvider(provider, TileHopperChest.class);
 	}
 }

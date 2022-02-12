@@ -55,52 +55,54 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemFluidPack extends DCItem {
 
 	private static String[] names = {
-		"empty",
-		"water",
-		"milk",
-		"cream",
-		"oil",
-		"vegi",
-		"lemon",
-		"mazai",
-		"greentea",
-		"tea",
-		"coffee",
-		"stock",
-		"ethanol",
-		"soy_milk",
-		"fuel_oil",
-		"sulfuric_acid",
-		"nitric_acid",
-		"fuel_gas",
-		"hydrogen",
-		"nitrogen",
-		"ammonia",
-		"oxygen" };
+			"empty",
+			"water",
+			"milk",
+			"cream",
+			"oil",
+			"vegi",
+			"lemon",
+			"mazai",
+			"greentea",
+			"tea",
+			"coffee",
+			"stock",
+			"ethanol",
+			"soy_milk",
+			"fuel_oil",
+			"sulfuric_acid",
+			"nitric_acid",
+			"fuel_gas",
+			"hydrogen",
+			"nitrogen",
+			"ammonia",
+			"oxygen"
+	};
 
 	public static final String[] FLUIDS = {
-		"empty",
-		"water",
-		"dcs.raw_milk",
-		"dcs.milk_cream",
-		"dcs.seed_oil",
-		"dcs.vegetable_juice",
-		"dcs.lemonade",
-		"dcs.mazai",
-		"dcs.green_tea",
-		"dcs.black_tea",
-		"dcs.black_coffee",
-		"dcs.stock",
-		"dcs.ethanol",
-		"dcs.soy_milk",
-		"dcs.fuel_oil",
-		"dcs.sulfuric_acid",
-		"dcs.nitric_acid",
-		"dcs.fuel_gas",
-		"dcs.hydrogen",
-		"dcs.nitrogen",
-		"dcs.ammonia",
-		"dcs.oxygen" };
+			"empty",
+			"water",
+			"dcs.raw_milk",
+			"dcs.milk_cream",
+			"dcs.seed_oil",
+			"dcs.vegetable_juice",
+			"dcs.lemonade",
+			"dcs.mazai",
+			"dcs.green_tea",
+			"dcs.black_tea",
+			"dcs.black_coffee",
+			"dcs.stock",
+			"dcs.ethanol",
+			"dcs.soy_milk",
+			"dcs.fuel_oil",
+			"dcs.sulfuric_acid",
+			"dcs.nitric_acid",
+			"dcs.fuel_gas",
+			"dcs.hydrogen",
+			"dcs.nitrogen",
+			"dcs.ammonia",
+			"dcs.oxygen"
+	};
 
 	public ItemFluidPack() {
 		super();
@@ -180,7 +182,7 @@ public class ItemFluidPack extends DCItem {
 				ampF += drink.getSugar().effect;
 				l = drink.getAgingLevel();
 				if (l > 0) {
-					ampF++;
+					ampF += l;
 					durF *= l;
 				}
 			}

@@ -78,9 +78,9 @@ public class RegisterCrusherRecipe {
 				MainInit.foodDust, 1, 1), SUS_Blade, "feedStraw");
 
 		// container
-		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 24, 1), new ItemStack(
-				MainInit.animalFeed, 8, 2), 1F, new ItemStack(MainInit.foodDust, 4,
-						0), 1F, SUS_Blade, "containerWheat");
+		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 27, 1), new ItemStack(
+				MainInit.animalFeed, 9, 2), 1F, new ItemStack(MainInit.foodDust, 4,
+						0), 1F, SUS_Blade, "blockWheat");
 		RecipeAPI.registerCrushers.addRecipe(new ItemStack(MainInit.foodMaterials, 16, 2), new ItemStack(
 				MainInit.animalFeed, 8, 2), 1F, new ItemStack(MainInit.foodDust, 4,
 						0), 1F, null, SUS_Blade, "containerRice");

@@ -287,7 +287,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
-		if (currentRecipe == null) {
+		if (currentRecipe == null || currentRecipe != RecipeAPI.registerFluidRecipes.getRecipe(current, ins, inf)) {
 			return false;
 		} else {
 			if (currentRecipe.matchClimate(current) && currentRecipe.matches(ins, inf)) {

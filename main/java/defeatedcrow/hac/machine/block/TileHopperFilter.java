@@ -390,7 +390,7 @@ public class TileHopperFilter extends DCLockableTE implements IHopper, ISidedInv
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			if (facing == getCurrentFacing() || facing == getInsertSide()) {
+			if (facing == getCurrentFacing() || facing == getInsertSide().getOpposite()) {
 				return (T) handler2;
 			} else {
 				return (T) handler;

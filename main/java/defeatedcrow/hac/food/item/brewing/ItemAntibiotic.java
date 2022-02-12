@@ -29,6 +29,8 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -75,6 +77,67 @@ public class ItemAntibiotic extends DCItem {
 			s = "textures/" + s;
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
+	}
+
+	@Override
+	public ActionResult<ItemStack> onItemRightClick2(World world, EntityPlayer player, EnumHand hand) {
+		if (player != null) {
+			ItemStack item = player.getHeldItem(hand);
+			if (!DCUtil.isEmpty(item)) {
+				player.setActiveHand(hand);
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+			}
+		}
+		return super.onItemRightClick2(world, player, hand);
+	}
+
+	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase living) {
+		if (!DCUtil.isEmpty(stack) && living instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) living;
+			boolean b = false;
+			if (stack.getItemDamage() <= 2) {
+				if (!player.world.isRemote) {
+					player.clearActivePotions();
+					player.world.playEvent(null, 1027, new BlockPos(player), 0);
+				}
+				b = true;
+			} else if (stack.getItemDamage() == 3) {
+				if (!player.world.isRemote) {
+					player.addPotionEffect(new PotionEffect(MobEffects.POISON, 200, 1));
+					player.playSound(SoundEvents.ENTITY_PLAYER_HURT_DROWN, 1.0F, 1.0F);
+				}
+				b = true;
+			} else if (stack.getItemDamage() == 4) {
+				if (!player.world.isRemote) {
+					player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 200, 1));
+					player.playSound(SoundEvents.ENTITY_PLAYER_HURT_DROWN, 1.0F, 1.0F);
+				}
+				b = true;
+			} else if (stack.getItemDamage() == 5) {
+				if (!player.world.isRemote) {
+					player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 200, 1));
+					player.playSound(SoundEvents.ENTITY_PLAYER_HURT_DROWN, 1.0F, 1.0F);
+				}
+				b = true;
+			} else if (stack.getItemDamage() == 6) {
+				if (!player.world.isRemote) {
+					player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 200, 1));
+					player.playSound(SoundEvents.ENTITY_PLAYER_HURT_DROWN, 1.0F, 1.0F);
+				}
+				b = true;
+			} else if (stack.getItemDamage() == 8) {
+				if (!player.world.isRemote) {
+					player.addPotionEffect(new PotionEffect(MainInit.unrepair, 3600, 0));
+					player.playSound(SoundEvents.ENTITY_PLAYER_HURT_DROWN, 1.0F, 1.0F);
+				}
+				b = true;
+			}
+
+			if (!player.capabilities.isCreativeMode) {
+				DCUtil.reduceStackSize(stack, 1);
+			}
+		}
+		return stack;
 	}
 
 	@Override

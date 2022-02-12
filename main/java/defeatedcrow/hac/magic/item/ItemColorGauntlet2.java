@@ -142,8 +142,8 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 			int limit = getLimit(meta);
 			Map<DimCoord, Integer> map = getPosList(tag);
 			if (limit < 0) {
-				tooltip.add(TextFormatting.RESET.toString() + String.format(DCName.MAGIC_PLACE_LIMIT
-						.getLocalizedName() + "Unlimited"));
+				tooltip.add(TextFormatting.RESET.toString() + DCName.MAGIC_PLACE_LIMIT
+						.getLocalizedName() + "Unlimited");
 			} else {
 				if (tag != null && tag.hasKey("moraycount")) {
 					int n = getCount(stack);
@@ -153,8 +153,8 @@ public class ItemColorGauntlet2 extends DCItem implements IJewel, IMagicCost {
 						limit -= map.size();
 					}
 				}
-				tooltip.add(TextFormatting.RESET.toString() + String.format(DCName.MAGIC_PLACE_LIMIT
-						.getLocalizedName() + limit));
+				tooltip.add(TextFormatting.RESET.toString() + DCName.MAGIC_PLACE_LIMIT
+						.getLocalizedName() + limit);
 			}
 
 			tooltip.add(TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "=== Boost ===");
