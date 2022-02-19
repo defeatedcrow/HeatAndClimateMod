@@ -65,6 +65,7 @@ public class MainInit {
 	public static Block roofSlateGreen;
 	public static Block strawBlock;
 	public static Block roofStraw;
+	public static Block wallpaper;
 
 	public static Block fenceGypsum;
 	public static Block fenceMarble;

@@ -35,6 +35,7 @@ public class MainCreativeTabRegister {
 		// building
 		ClimateMain.build.addSubItem(MainInit.bricks);
 		ClimateMain.build.addSubItem(MainInit.builds);
+		ClimateMain.build.addSubItem(MainInit.wallpaper);
 		ClimateMain.build.addSubItem(MainInit.selenite);
 		ClimateMain.build.addSubItem(MainInit.clayBricks);
 		ClimateMain.build.addSubItem(MainInit.stairsGlass);

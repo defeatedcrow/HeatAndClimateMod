@@ -15,10 +15,12 @@ public class MessageFluidProcessor implements IMessage {
 	public String id1;
 	public int amo2;
 	public String id2;
+	public boolean cap;
+	public int color;
 
 	public MessageFluidProcessor() {}
 
-	public MessageFluidProcessor(BlockPos pos, String fluid1, int a1, String fluid2, int a2) {
+	public MessageFluidProcessor(BlockPos pos, String fluid1, int a1, String fluid2, int a2, boolean c, int col) {
 		this.x = pos.getX();
 		this.y = pos.getY();
 		this.z = pos.getZ();
@@ -26,6 +28,8 @@ public class MessageFluidProcessor implements IMessage {
 		amo1 = a1;
 		id2 = fluid2;
 		amo2 = a2;
+		cap = c;
+		color = col;
 	}
 
 	// read
@@ -38,7 +42,8 @@ public class MessageFluidProcessor implements IMessage {
 		amo2 = buf.readInt();
 		id1 = ByteBufUtils.readUTF8String(buf);
 		id2 = ByteBufUtils.readUTF8String(buf);
-
+		cap = buf.readBoolean();
+		color = buf.readByte();
 	}
 
 	// write
@@ -51,5 +56,7 @@ public class MessageFluidProcessor implements IMessage {
 		buf.writeInt(amo2);
 		ByteBufUtils.writeUTF8String(buf, id1);
 		ByteBufUtils.writeUTF8String(buf, id2);
+		buf.writeBoolean(cap);
+		buf.writeByte(color);
 	}
 }

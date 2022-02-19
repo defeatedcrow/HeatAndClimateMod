@@ -1254,6 +1254,14 @@ tile.dcs_build_build_flintbrick.name=Flint Brick
 tile.dcs_build_build_flintbrick_red.name=Red Flint Brick
 tile.dcs_build_build_flintbrick_gray.name=Gray Flint Brick
 tile.dcs_build_build_rattan.name=Wisteria Block
+tile.dcs_build_wallpaper_plant.name=Accent Wallpaper (Leaves)
+tile.dcs_build_wallpaper_slate.name=Accent Wallpaper (Black)
+tile.dcs_build_wallpaper_ash.name=Accent Wallpaper (Ash)
+tile.dcs_build_wallpaper_presscake.name=Accent Wallpaper (Flower)
+tile.dcs_build_wallpaper_draff.name=Accent Wallpaper (Pink)
+tile.dcs_build_wallpaper_wood.name=Accent Wallpaper (Blue)
+tile.dcs_build_wallpaper_bran.name=Accent Wallpaper (Houndstooth)
+tile.dcs_build_wallpaper_borax.name=Accent Wallpaper (Cloisonne)
 tile.dcs_build_challamp_cube_blue.name=Blue Chalcedony Lamp
 tile.dcs_build_challamp_cube_red.name=Red Chalcedony Lamp
 tile.dcs_build_challamp_cube_white.name=White Chalcedony Lamp
@@ -2938,6 +2946,20 @@ item.dcs_debug_gauntlet_ur.name=Eight-eyes Serpent
 dcs.tip.debug_gauntlet.0=Debug Item
 dcs.comment.debug_gauntlet.0=FOR DEBUGGING ONLY!
 dcs.comment.flavor.debug_gauntlet.0="I can't work without it."
+
+##vanilla
+potion.potency.3=IV
+potion.potency.4=V
+potion.potency.5=VI
+potion.potency.6=VII
+potion.potency.7=VIII
+potion.potency.8=IX
+potion.potency.9=X
+potion.potency.10=XI
+potion.potency.11=XII
+potion.potency.12=XIII
+potion.potency.13=XIV
+potion.potency.14=XV
 
 
 # deprecated

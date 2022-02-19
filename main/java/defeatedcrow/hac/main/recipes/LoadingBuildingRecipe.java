@@ -536,6 +536,76 @@ public class LoadingBuildingRecipe {
 				"bunchVine"
 		});
 
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.wallpaper, 1,
+				0), new Object[] {
+						"plankWood",
+						"paper",
+						"dustPlant"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.wallpaper, 1,
+				1), new Object[] {
+						"plankWood",
+						"paper",
+						"gemSlate"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", 2, new ItemStack(MainInit.wallpaper, 1,
+				1), new Object[] {
+						"plankWood",
+						"paper",
+						"dustCoal"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.wallpaper, 1,
+				2), new Object[] {
+						"plankWood",
+						"paper",
+						"dustAsh"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.wallpaper, 1,
+				3), new Object[] {
+						"plankWood",
+						"paper",
+						"dustPresscake"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.wallpaper, 1,
+				4), new Object[] {
+						"plankWood",
+						"paper",
+						"dustDraff"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.wallpaper, 1,
+				5), new Object[] {
+						"plankWood",
+						"paper",
+						"dustWood"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.wallpaper, 1,
+				6), new Object[] {
+						"plankWood",
+						"paper",
+						"dustBran"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.wallpaper, 1,
+				7), new Object[] {
+						"plankWood",
+						"paper",
+						"dustBorax"
+		});
+
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", 2, new ItemStack(MainInit.wallpaper, 1,
+				7), new Object[] {
+						"plankWood",
+						"paper",
+						"dropGlycerin"
+		});
+
 		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main_build", new ItemStack(MainInit.dustBlock_2, 1,
 				0), new Object[] {
 						new ItemStack(MainInit.builds, 1, 7)

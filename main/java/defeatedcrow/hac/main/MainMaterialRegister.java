@@ -70,6 +70,7 @@ import defeatedcrow.hac.main.block.build.BlockVillageChest;
 import defeatedcrow.hac.main.block.build.BlockWallDecoration;
 import defeatedcrow.hac.main.block.build.BlockWallLamp;
 import defeatedcrow.hac.main.block.build.BlockWallShelf;
+import defeatedcrow.hac.main.block.build.BlockWallpaper;
 import defeatedcrow.hac.main.block.build.BlockWindow;
 import defeatedcrow.hac.main.block.build.ItemBedDC;
 import defeatedcrow.hac.main.block.build.ItemDoorDC;
@@ -447,6 +448,13 @@ public class MainMaterialRegister {
 
 		MainInit.builds = new BlockBuilding(Material.CLAY, ClimateCore.PACKAGE_BASE + "_build_build");
 		DCMaterialReg.registerBlock(MainInit.builds, ClimateCore.PACKAGE_BASE + "_build_build", ClimateMain.MOD_ID);
+
+		MainInit.wallpaper = new BlockWallpaper(ClimateCore.PACKAGE_BASE + "_build_wallpaper")
+				.setUnlocalizedName("dcs_build_wallpaper");
+		DCMaterialReg
+				.registerBlock(MainInit.wallpaper, ClimateCore.PACKAGE_BASE + "_build_wallpaper", ClimateMain.MOD_ID);
+		ClimateMain.proxy.regBlockJson(Item
+				.getItemFromBlock(MainInit.wallpaper), "dcs_climate", "dcs_build_wallpaper", "build", 15, true);
 
 		MainInit.clayBricks = new BlockClayBricks(ClimateCore.PACKAGE_BASE + "_build_claybrick");
 		DCMaterialReg

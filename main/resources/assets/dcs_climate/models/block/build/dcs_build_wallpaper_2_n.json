@@ -1,0 +1,9 @@
+{
+    "parent":"dcs_climate:block/dcs_cube_sided",
+        "textures":{
+            "down":"dcs_climate:blocks/build/wallpaper/wallpaper_n_ash",
+            "up":"dcs_climate:blocks/build/wallpaper/wallpaper_n_ash",
+            "ns":"dcs_climate:blocks/build/wallpaper/wallpaper_n_ash",
+            "we":"dcs_climate:blocks/build/wallpaper/wallpaper_n_ash"
+        }
+}

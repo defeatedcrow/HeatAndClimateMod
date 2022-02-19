@@ -59,6 +59,17 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 
 	protected int color = 0;
 
+	private boolean cap = false;
+	private boolean lastCap = false;
+
+	public boolean hasCap() {
+		return cap;
+	}
+
+	public void setCap(boolean f) {
+		cap = f;
+	}
+
 	@Override
 	public void updateTile() {
 		super.updateTile();
@@ -119,13 +130,17 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 				flag = true;
 				lastOutT = outputT.getFluidAmount() + outputT.getFluidIdName().hashCode();
 			}
+			if (lastCap != cap) {
+				flag = true;
+				lastCap = cap;
+			}
 
 			if (flag) {
 				String f1 = inputT.getFluidType() == null ? "empty" : inputT.getFluidType().getName();
 				String f2 = outputT.getFluidType() == null ? "empty" : outputT.getFluidType().getName();
 				int a1 = inputT.getFluidAmount();
 				int a2 = outputT.getFluidAmount();
-				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, f1, a1, f2, a2));
+				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, f1, a1, f2, a2, cap, color));
 			}
 			count = 10;
 		}
@@ -707,6 +722,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		outputT = outputT.readFromNBT(tag, "Tank2");
 
 		this.color = tag.getInteger("Color");
+		cap = tag.getBoolean("HasCap");
 	}
 
 	@Override
@@ -723,6 +739,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		outputT.writeToNBT(tag, "Tank2");
 
 		tag.setInteger("Color", this.color);
+		tag.setBoolean("HasCap", cap);
 		return tag;
 	}
 
@@ -740,6 +757,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		outputT.writeToNBT(tag, "Tank2");
 
 		tag.setInteger("Color", this.color);
+		tag.setBoolean("HasCap", cap);
 		return tag;
 	}
 
@@ -756,6 +774,7 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 		outputT = outputT.readFromNBT(tag, "Tank2");
 
 		this.color = tag.getInteger("Color");
+		cap = tag.getBoolean("HasCap");
 	}
 
 	@Override

@@ -5,45 +5,11 @@ import java.util.List;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.food.gui.ContainerSteelPot;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 public class TileSteelPot extends TileFluidProcessorBase {
-
-	private boolean cap = false;
-	private boolean lastCap = false;
-
-	public boolean hasCap() {
-		return cap;
-	}
-
-	public void setCap(boolean f) {
-		cap = f;
-	}
-
-	@Override
-	protected void onServerUpdate() {
-		super.onServerUpdate();
-		boolean flag = false;
-		if (lastCap != cap) {
-			flag = true;
-			lastCap = cap;
-		}
-
-		if (flag) {
-			if (!this.hasWorld())
-				return;
-			List<EntityPlayer> list = this.getWorld().playerEntities;
-			for (EntityPlayer player : list) {
-				if (player instanceof EntityPlayerMP) {
-					((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-				}
-			}
-		}
-	}
 
 	@Override
 	public int getProcessTime() {
@@ -84,38 +50,6 @@ public class TileSteelPot extends TileFluidProcessorBase {
 	// BlockSteelPot.changeLitState(getWorld(), getPos(), lit);
 	// }
 	// }
-
-	/* Packet,NBT */
-
-	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		super.readFromNBT(tag);
-
-		cap = tag.getBoolean("HasCap");
-	}
-
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-		super.writeToNBT(tag);
-		// 燃焼時間や調理時間などの書き込み
-		tag.setBoolean("HasCap", cap);
-		return tag;
-	}
-
-	@Override
-	public NBTTagCompound getNBT(NBTTagCompound tag) {
-		super.getNBT(tag);
-		// 燃焼時間や調理時間などの書き込み
-		tag.setBoolean("HasCap", cap);
-		return tag;
-	}
-
-	@Override
-	public void setNBT(NBTTagCompound tag) {
-		super.setNBT(tag);
-
-		cap = tag.getBoolean("HasCap");
-	}
 
 	/* ========== 以下、ISidedInventoryのメソッド ========== */
 
@@ -161,17 +95,46 @@ public class TileSteelPot extends TileFluidProcessorBase {
 
 	@Override
 	protected int[] slotsTop() {
-		return new int[] { 0, 2, 4, 5, 6, 7, 8, 9 };
+		return new int[] {
+				0,
+				2,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
-		return new int[] { 1, 3, 10, 11, 12 };
+		return new int[] {
+				1,
+				3,
+				10,
+				11,
+				12
+		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+		return new int[] {
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+		};
 	};
 
 	@Override

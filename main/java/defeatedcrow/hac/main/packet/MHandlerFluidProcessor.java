@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.packet;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.food.block.TileFluidProcessorBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -26,8 +27,15 @@ public class MHandlerFluidProcessor implements IMessageHandler<MessageFluidProce
 			int amo1 = message.amo1;
 			String id2 = message.id2;
 			int amo2 = message.amo2;
+			boolean cap = message.cap;
+			int color = message.color;
 			BlockPos pos = new BlockPos(x, y, z);
 			TileEntity tile = player.world.getTileEntity(pos);
+			if (tile instanceof TileFluidProcessorBase) {
+				TileFluidProcessorBase machine = (TileFluidProcessorBase) tile;
+				machine.setCap(cap);
+				machine.setColor(color);
+			}
 			if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP)) {
 				IFluidHandler handler = tile
 						.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
