@@ -74,43 +74,45 @@ public abstract class TileFluidProcessorBase extends ClimateReceiverLockable imp
 	public void updateTile() {
 		super.updateTile();
 		if (!world.isRemote) {
-			// 液体スロットの処理
-			this.processFluidSlots();
-			// 完了処理
-			if (this.maxBurnTime > 0) {
-				if (this.currentBurnTime >= this.maxBurnTime) {
-					// レシピ進行の再チェック
-					if (this.canRecipeProcess()) {
-						if (this.onProcess()) {
-							this.currentBurnTime = 0;
-							this.maxBurnTime = -1;
-							this.markDirty();
-						}
-					} else {
-						// 一致しないためリセット
+			process();
+		}
+	}
+
+	public void process() {
+		// 液体スロットの処理
+		this.processFluidSlots();
+		// 完了処理
+		if (this.maxBurnTime > 0) {
+			if (this.currentBurnTime >= this.maxBurnTime) {
+				// レシピ進行の再チェック
+				if (this.canRecipeProcess()) {
+					if (this.onProcess()) {
 						this.currentBurnTime = 0;
 						this.maxBurnTime = -1;
-						currentRecipe = null;
 						this.markDirty();
 					}
 				} else {
-					// レシピ進行の再チェック
-					if (this.canRecipeProcess()) {
-						this.currentBurnTime += 1;
-					} else {
-						// 一致しないためリセット
-						this.currentBurnTime = 0;
-						this.maxBurnTime = -1;
-						currentRecipe = null;
-						this.markDirty();
-					}
+					// 一致しないためリセット
+					this.currentBurnTime = 0;
+					this.maxBurnTime = -1;
+					currentRecipe = null;
+					this.markDirty();
 				}
-			} else if (this.canStartProcess()) {
-				// レシピ開始可能かどうか
-				this.maxBurnTime = this.getProcessTime();
 			} else {
-
+				// レシピ進行の再チェック
+				if (this.canRecipeProcess()) {
+					this.currentBurnTime += 1;
+				} else {
+					// 一致しないためリセット
+					this.currentBurnTime = 0;
+					this.maxBurnTime = -1;
+					currentRecipe = null;
+					this.markDirty();
+				}
 			}
+		} else if (this.canStartProcess()) {
+			// レシピ開始可能かどうか
+			this.maxBurnTime = this.getProcessTime();
 		}
 	}
 

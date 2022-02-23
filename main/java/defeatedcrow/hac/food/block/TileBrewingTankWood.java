@@ -7,6 +7,7 @@ import java.util.List;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.recipe.IRecipePanel;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.gui.ContainerBrewingTank;
 import defeatedcrow.hac.main.api.MainAPIManager;
@@ -16,7 +17,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class TileBrewingTankWood extends TileFluidProcessorBase {
 
@@ -26,46 +26,41 @@ public class TileBrewingTankWood extends TileFluidProcessorBase {
 	/* === レシピ判定 === */
 
 	@Override
-	public void updateTile() {
-		super.updateTile();
-		if (!world.isRemote) {
-			// 液体スロットの処理
-			this.processFluidSlots();
-			// 完了処理
-			if (this.maxBurnTime > 0) {
-				if (this.currentBurnTime >= this.maxBurnTime) {
-					// レシピ進行の再チェック
-					if (this.canRecipeProcess()) {
-						if (this.onProcess()) {
-							this.currentBurnTime = 0;
-							this.maxBurnTime = -1;
-							this.markDirty();
-						}
-					} else {
-						// 一致しないためリセット
+	public void process() {
+		// 液体スロットの処理
+		this.processFluidSlots();
+		// 完了処理
+		if (this.maxBurnTime > 0) {
+			if (this.currentBurnTime >= this.maxBurnTime) {
+				// レシピ進行の再チェック
+				if (this.canRecipeProcess()) {
+					if (this.onProcess()) {
 						this.currentBurnTime = 0;
 						this.maxBurnTime = -1;
-						currentBrewing = null;
 						this.markDirty();
 					}
 				} else {
-					// レシピ進行の再チェック
-					if (this.canRecipeProcess()) {
-						this.currentBurnTime += 1;
-					} else {
-						// 一致しないためリセット
-						this.currentBurnTime = 0;
-						this.maxBurnTime = -1;
-						currentBrewing = null;
-						this.markDirty();
-					}
+					// 一致しないためリセット
+					this.currentBurnTime = 0;
+					this.maxBurnTime = -1;
+					currentBrewing = null;
+					this.markDirty();
 				}
-			} else if (this.canStartProcess()) {
-				// レシピ開始可能かどうか
-				this.maxBurnTime = this.getProcessTime();
 			} else {
-
+				// レシピ進行の再チェック
+				if (this.canRecipeProcess()) {
+					this.currentBurnTime += 1;
+				} else {
+					// 一致しないためリセット
+					this.currentBurnTime = 0;
+					this.maxBurnTime = -1;
+					currentBrewing = null;
+					this.markDirty();
+				}
 			}
+		} else if (this.canStartProcess()) {
+			// レシピ開始可能かどうか
+			this.maxBurnTime = this.getProcessTime();
 		}
 	}
 
@@ -78,7 +73,7 @@ public class TileBrewingTankWood extends TileFluidProcessorBase {
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
-		if (currentBrewing == null || currentRecipe != MainAPIManager.brewingRegister
+		if (currentBrewing == null || currentBrewing != MainAPIManager.brewingRegister
 				.getBrewingRecipe(current, ins, inf)) {
 			return false;
 		} else {
@@ -101,8 +96,14 @@ public class TileBrewingTankWood extends TileFluidProcessorBase {
 		List<ItemStack> ins = new ArrayList<ItemStack>(this.getInputs());
 		FluidStack outf = outputT.getFluid();
 		List<ItemStack> outs = new ArrayList<ItemStack>(this.getOutputs());
-		currentBrewing = MainAPIManager.brewingRegister.getBrewingRecipe(current, ins, inf);
-		return currentBrewing != null && currentBrewing.matchOutput(outs, outf);
+		IBrewingRecipeDC target = MainAPIManager.brewingRegister.getBrewingRecipe(current, ins, inf);
+		if (target != null && target.matchOutput(outs, outf)) {
+			currentBrewing = target;
+			return true;
+		} else {
+			currentBrewing = null;
+			return false;
+		}
 	}
 
 	// レシピ処理
@@ -119,47 +120,40 @@ public class TileBrewingTankWood extends TileFluidProcessorBase {
 					return false;
 			}
 
-			List<Object> required = new ArrayList<Object>(currentBrewing.getProcessedInput());
+			ArrayList<Object> required = new ArrayList<Object>(currentBrewing.getInputList());
 			if (!required.isEmpty()) {
 				for (int i = getInputSlotTop(); i <= getInputSlotEnd(); i++) {
 					ItemStack slot = this.getStackInSlot(i);
-					if (!DCUtil.isEmpty(slot)) {
-						boolean inRecipe = false;
-						Iterator<Object> req = required.iterator();
+					if (DCUtil.isEmpty(slot) || slot.getItem() instanceof IRecipePanel || required.isEmpty()) {
+						continue;
+					}
 
-						// 9スロットについて、要求材料の数だけ回す
-						while (req.hasNext()) {
-							boolean match = false;
-							Object next = req.next();
-							int count = 1;
+					boolean inRecipe = false;
+					Iterator<Object> req = required.iterator();
 
-							if (next instanceof ItemStack) {
-								count = ((ItemStack) next).getCount();
-								match = OreDictionary.itemMatches((ItemStack) next, slot, false) && slot
-										.getCount() >= count;
-							} else if (next instanceof List) {
-								List<ItemStack> list = new ArrayList<ItemStack>((List<ItemStack>) next);
-								if (list != null && !list.isEmpty()) {
-									for (ItemStack item : list) {
-										boolean f = OreDictionary.itemMatches(item, slot, false) && slot.getCount() > 0;
-										if (f) {
-											match = true;
-										}
-									}
-								}
-							}
+					// 9スロットについて、要求材料の数だけ回す
+					while (req.hasNext()) {
+						boolean match = false;
+						Object next = req.next();
+						int count = 1;
 
-							if (match) {
-								inRecipe = true;
-								required.remove(next);
-								this.decrStackSize(i, count);
-								break;
-							}
+						if (next instanceof ItemStack) {
+							match = DCUtil.isSameItem((ItemStack) next, slot, false) && slot
+									.getCount() >= count;
+						} else if (next instanceof String) {
+							match = DCUtil.matchDicName((String) next, slot) && slot.getCount() > 0;
 						}
 
-						if (!inRecipe) {
-							break;// 中断
+						if (match) {
+							inRecipe = true;
+							required.remove(next);
+							this.decrStackSize(i, count);
+							break;
 						}
+					}
+
+					if (!inRecipe) {
+						break;// 中断
 					}
 				}
 				if (!required.isEmpty()) {

@@ -199,7 +199,7 @@ public class TileReactorIBC extends TileTorqueProcessor implements ITorqueReceiv
 				last = inputT1.getFluidAmount() + outputT1.getFluidAmount() * 5;
 
 				DCMainPacket.INSTANCE.sendToAll(new MessageFluidProcessor(pos, inputT1.getFluidIdName(), inputT1
-						.getFluidAmount(), outputT1.getFluidIdName(), outputT1.getFluidAmount()));
+						.getFluidAmount(), outputT1.getFluidIdName(), outputT1.getFluidAmount(), false, 0));
 			}
 			count = 10;
 		} else {

@@ -25,13 +25,13 @@ public class RegisterReactorRecipe {
 		// 触媒なし
 		// 硝酸2
 		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.nitricAcid,
-				200), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(MainInit.nitricAcid,
+				200), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(MainInit.sulfuricAcid,
 						200), null, new Object[] {
 								"dustNiter"
 		});
 
 		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.nitricAcid,
-				200), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(MainInit.nitricAcid,
+				200), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(MainInit.sulfuricAcid,
 						200), null, new Object[] {
 								"dustSaltpeter"
 		});
@@ -40,15 +40,14 @@ public class RegisterReactorRecipe {
 		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.sulfuricAcid,
 				200), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(FluidRegistry.WATER,
 						200), null, new Object[] {
-								"dustNiter",
 								"dustSulfur"
 		});
 
-		RecipeAPI.registerReactorRecipes.addRecipe(null, null, 0, new FluidStack(MainInit.sulfuricAcid,
-				200), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(FluidRegistry.WATER,
-						200), null, new Object[] {
-								"dustSaltpeter",
-								"dustSulfur"
+		RecipeAPI.registerReactorRecipes.addRecipe(new ItemStack(MainInit.oreItem, 1,
+				4), null, 0, new FluidStack(MainInit.sulfuricAcid,
+						500), null, DCHeatTier.KILN, (ItemStack) null, new FluidStack(FluidRegistry.WATER,
+								500), null, new Object[] {
+										new ItemStack(MainInit.oreItem, 2, 3)
 		});
 
 		// エタノール生成

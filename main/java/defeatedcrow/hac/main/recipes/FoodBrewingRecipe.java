@@ -109,6 +109,15 @@ public class FoodBrewingRecipe implements IBrewingRecipeDC {
 	}
 
 	@Override
+	public List<Object> getInputList() {
+		if (inputList == null || this.inputList.isEmpty()) {
+			return EMPTY;
+		} else {
+			return new ArrayList<Object>(this.inputList);
+		}
+	}
+
+	@Override
 	public boolean matches(List<ItemStack> items, FluidStack fluid) {
 		boolean b1 = false;
 		if (this.inputF == null) {

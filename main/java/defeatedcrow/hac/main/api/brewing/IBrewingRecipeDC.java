@@ -36,6 +36,8 @@ public interface IBrewingRecipeDC {
 	 */
 	List<Object> getProcessedInput();
 
+	List<Object> getInputList();
+
 	/**
 	 * Input条件判定
 	 */
