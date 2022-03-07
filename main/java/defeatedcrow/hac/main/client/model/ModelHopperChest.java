@@ -35,7 +35,7 @@ public class ModelHopperChest extends DCTileModelBase {
 
 		bb_main = new ModelRenderer(this);
 		bb_main.setRotationPoint(0.0F, 8.0F, 0.0F);
-		bb_main.cubeList.add(new ModelBox(bb_main, 8, 4, -6.0F, -2.0F, -5.0F, 12, 1, 12, 0.0F, false));
+		bb_main.cubeList.add(new ModelBox(bb_main, 8, 4, -6.0F, -2.0F, -6.0F, 12, 1, 12, 0.0F, false));
 		bb_main.cubeList.add(new ModelBox(bb_main, 2, 0, -7.5F, -4.0F, -7.5F, 15, 2, 15, 0.0F, false));
 		bb_main.cubeList.add(new ModelBox(bb_main, 0, 0, -8.0F, -5.0F, -8.0F, 16, 1, 16, 0.0F, false));
 		bb_main.cubeList.add(new ModelBox(bb_main, 0, 36, -7.0F, -13.0F, -7.0F, 14, 8, 1, 0.0F, false));
