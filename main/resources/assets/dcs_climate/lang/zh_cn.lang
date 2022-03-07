@@ -227,6 +227,15 @@ item.dcs_big_cushion_brown.name=大坐垫(棕)
 item.dcs_big_cushion_small_red.name=懒人坐垫(红)
 item.dcs_big_cushion_small_blue.name=懒人坐垫(蓝)
 item.dcs_big_cushion_small_straw.name=懒人坐垫(稻草)
+item.dcs_desktop_accessories_books.name=书立(书)
+item.dcs_desktop_accessories_books2.name=书立(文件夹)
+item.dcs_desktop_accessories_note.name=记事本
+item.dcs_desktop_accessories_pen.name=笔架
+item.dcs_desktop_accessories_organizer.name=桌面收纳盒
+item.dcs_desktop_accessories_keyboard.name=键盘
+item.dcs_desktop_accessories_laptop.name=笔记本电脑
+item.dcs_desktop_accessories_phone.name=手机
+item.dcs_desktop_accessories_pen_tablet.name=手绘板
 
 ## foods
 item.dcs_food_materials_salt.name=食盐
@@ -1245,6 +1254,14 @@ tile.dcs_build_build_flintbrick.name=燧石砖
 tile.dcs_build_build_flintbrick_red.name=燧石砖(红)
 tile.dcs_build_build_flintbrick_gray.name=燧石砖(灰)
 tile.dcs_build_build_rattan.name=藤块
+tile.dcs_build_wallpaper_plant.name=装饰墙(叶)
+tile.dcs_build_wallpaper_slate.name=装饰墙(黑)
+tile.dcs_build_wallpaper_ash.name=装饰墙(灰)
+tile.dcs_build_wallpaper_presscake.name=装饰墙(花)
+tile.dcs_build_wallpaper_draff.name=装饰墙(粉)
+tile.dcs_build_wallpaper_wood.name=装饰墙(蓝)
+tile.dcs_build_wallpaper_bran.name=装饰墙(千鸟格)
+tile.dcs_build_wallpaper_borax.name=装饰墙(景泰蓝)
 tile.dcs_build_challamp_cube_blue.name=蓝玉髓灯
 tile.dcs_build_challamp_cube_red.name=红玉髓灯
 tile.dcs_build_challamp_cube_white.name=白玉髓灯
@@ -1441,6 +1458,7 @@ tile.dcs_build_flower_planting_rose.name=花卉植物(玫瑰)
 tile.dcs_build_flower_planting_lily.name=花卉植物(山百合)
 tile.dcs_build_flower_planting_orchid.name=花卉植物(蝴蝶兰)
 tile.dcs_build_flower_planting_snapdragon.name=花卉植物(金鱼草)
+tile.dcs_build_wall_decoration_0.name=墙面装饰
 
 ## magic
 tile.dcs_lotus_candle_white_0.name=莲灯
