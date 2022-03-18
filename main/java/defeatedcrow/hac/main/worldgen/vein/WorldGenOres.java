@@ -45,9 +45,6 @@ public class WorldGenOres implements IWorldGenerator {
 			IChunkProvider chunkProvider) {
 
 		int genDim1 = world.provider.getDimension();
-		if (Math.abs(chunkX) > 1000 || Math.abs(chunkZ) > 1000)
-			// あまり遠いと生成しない
-			return;
 		if (!world.getChunkFromChunkCoords(chunkX, chunkZ).isLoaded())
 			return;
 

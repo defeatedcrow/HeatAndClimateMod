@@ -49,10 +49,6 @@ public class WorldGenSkarn implements IWorldGenerator {
 		if ((genDim1 == 1 || genDim1 == -1))
 			return;
 
-		if (Math.abs(chunkX) > 2000 || Math.abs(chunkZ) > 2000)
-			// あまり遠いと生成しない
-			return;
-
 		if (!world.getChunkFromChunkCoords(chunkX, chunkZ).isLoaded())
 			return;
 
@@ -230,25 +226,28 @@ public class WorldGenSkarn implements IWorldGenerator {
 	private static final BlockSet COPPER = new BlockSet(MainInit.skarnOre, 8);
 
 	private static final BlockSet[] LIME = new BlockSet[] {
-		new BlockSet(MainInit.layerNew, 1),
-		new BlockSet(MainInit.gemBlock, 6),
-		new BlockSet(MainInit.skarnBlock, 2),
-		new BlockSet(Blocks.STONE, 1),
-		new BlockSet(MainInit.oreNew, 4) };
+			new BlockSet(MainInit.layerNew, 1),
+			new BlockSet(MainInit.gemBlock, 6),
+			new BlockSet(MainInit.skarnBlock, 2),
+			new BlockSet(Blocks.STONE, 1),
+			new BlockSet(MainInit.oreNew, 4)
+	};
 
 	private static final BlockSet[] STONE = new BlockSet[] {
-		new BlockSet(Blocks.STONE, 0),
-		new BlockSet(MainInit.skarnBlock, 0),
-		new BlockSet(MainInit.skarnBlock, 2),
-		new BlockSet(Blocks.STONE, 1),
-		new BlockSet(MainInit.oreNew, 4) };
+			new BlockSet(Blocks.STONE, 0),
+			new BlockSet(MainInit.skarnBlock, 0),
+			new BlockSet(MainInit.skarnBlock, 2),
+			new BlockSet(Blocks.STONE, 1),
+			new BlockSet(MainInit.oreNew, 4)
+	};
 
 	private static final BlockSet[] SAND = new BlockSet[] {
-		new BlockSet(Blocks.SANDSTONE, 0),
-		new BlockSet(MainInit.skarnBlock, 1),
-		new BlockSet(MainInit.skarnBlock, 2),
-		new BlockSet(Blocks.STONE, 1),
-		new BlockSet(MainInit.oreNew, 0) };
+			new BlockSet(Blocks.SANDSTONE, 0),
+			new BlockSet(MainInit.skarnBlock, 1),
+			new BlockSet(MainInit.skarnBlock, 2),
+			new BlockSet(Blocks.STONE, 1),
+			new BlockSet(MainInit.oreNew, 0)
+	};
 
 	private static final OreSet LIME_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 0), new BlockSet(
 			MainInit.skarnOre, 1), 20);

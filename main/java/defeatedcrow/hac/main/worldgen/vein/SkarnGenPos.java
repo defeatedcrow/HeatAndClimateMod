@@ -125,12 +125,6 @@ public class SkarnGenPos {
 		if (genDim1 != 0)
 			return false;
 
-		// あまり遠いと生成しない
-		if (cx > 2000 || cz > 2000)
-			return false;
-		if (cx < -2000 || cz < -2000)
-			return false;
-
 		return true;
 	}
 

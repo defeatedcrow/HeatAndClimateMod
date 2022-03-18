@@ -5,13 +5,17 @@ import defeatedcrow.hac.machine.block.TileHopperFilterSUS;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerHopperFilterSUS extends Container {
 
 	public final TileHopperFilterSUS tile;
 	public final InventoryPlayer playerInv;
+	private int[] current = new int[1];
 
 	public ContainerHopperFilterSUS(TileHopperFilterSUS chest, EntityPlayer player) {
 		this.tile = chest;
@@ -37,6 +41,37 @@ public class ContainerHopperFilterSUS extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return this.tile.isUsableByPlayer(playerIn);
+	}
+
+	@Override
+	public void addListener(IContainerListener listener) {
+		super.addListener(listener);
+		listener.sendAllWindowProperties(this, this.tile);
+	}
+
+	@Override
+	public void detectAndSendChanges() {
+		super.detectAndSendChanges();
+
+		for (int i = 0; i < this.listeners.size(); ++i) {
+			IContainerListener icrafting = this.listeners.get(i);
+
+			for (int j = 0; j < this.tile.getFieldCount(); j++) {
+				if (this.current[j] != this.tile.getField(j)) {
+					icrafting.sendWindowProperty(this, j, this.tile.getField(j));
+				}
+			}
+		}
+
+		for (int k = 0; k < this.tile.getFieldCount(); k++) {
+			this.current[k] = this.tile.getField(k);
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void updateProgressBar(int id, int data) {
+		this.tile.setField(id, data);
 	}
 
 	@Override

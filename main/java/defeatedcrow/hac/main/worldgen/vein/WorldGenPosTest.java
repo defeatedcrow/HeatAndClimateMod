@@ -44,13 +44,6 @@ public class WorldGenPosTest implements IWorldGenerator {
 		if ((genDim1 == 1 || genDim1 == -1))
 			return false;
 
-		if (chunkX > 3000 || chunkX < -3000)
-			// あまり遠いと生成しない
-			return false;
-		if (chunkZ > 3000 || chunkZ < -3000)
-			// あまり遠いと生成しない
-			return false;
-
 		int X = chunkX << 4;
 		int Z = chunkZ << 4;
 		int posX = X + 8 + pRandom.nextInt(8);

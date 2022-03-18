@@ -299,7 +299,11 @@ public class BlockLeavesWalnut extends ClimateCropBase implements ITexturePath, 
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.STAGE4, DECAYABLE, CHECK_DECAY });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.STAGE4,
+				DECAYABLE,
+				CHECK_DECAY
+		});
 	}
 
 	@Override

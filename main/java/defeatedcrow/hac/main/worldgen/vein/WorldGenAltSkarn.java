@@ -58,10 +58,6 @@ public class WorldGenAltSkarn implements IWorldGenerator {
 		if ((genDim1 == 1 || genDim1 == -1))
 			return;
 
-		if (Math.abs(chunkX) > 1000 || Math.abs(chunkZ) > 1000)
-			// あまり遠いと生成しない
-			return;
-
 		if (!world.getChunkFromChunkCoords(chunkX, chunkZ).isLoaded())
 			return;
 

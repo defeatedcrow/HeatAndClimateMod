@@ -601,13 +601,13 @@ public class CommonMainProxy implements IGuiHandler {
 	public void loadWorldGen() {
 		// gen
 		if (ModuleConfig.world) {
-			GameRegistry.registerWorldGenerator(new WorldGenOres(), 2);
+			GameRegistry.registerWorldGenerator(new WorldGenOres(), 5);
 			if (WorldGenConfig.skarnGen > 0) {
-				GameRegistry.registerWorldGenerator(new WorldGenSkarn(false), 3);
+				GameRegistry.registerWorldGenerator(new WorldGenSkarn(false), 10);
 			}
 			if (ModuleConfig.machine) {
 				WorldGenWindmill.initLoot();
-				GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 10);
+				GameRegistry.registerWorldGenerator(new WorldGenWindmill(false), 20);
 			}
 			if (WorldGenConfig.mazaiLake && MainInit.mazaiBlock != null) {
 				GameRegistry.registerWorldGenerator(new MazaiLakeGen(), 5);
@@ -662,7 +662,7 @@ public class CommonMainProxy implements IGuiHandler {
 				MinecraftForge.EVENT_BUS.register(MagicInit.debugGauntlet);
 		}
 		if (ModuleConfig.world) {
-			MinecraftForge.EVENT_BUS.register(new CaravanGenEvent());
+			MinecraftForge.TERRAIN_GEN_BUS.register(new CaravanGenEvent());
 		}
 
 		DCMainPacket.init();

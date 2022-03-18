@@ -59,13 +59,6 @@ public class WorldGenSaplings implements IWorldGenerator {
 		if ((genDim1 == 1 || genDim1 == -1))
 			return false;
 
-		if (chunkX > 3000 || chunkZ > 3000)
-			// あまり遠いと生成しない
-			return false;
-		if (chunkX < -3000 || chunkZ < -3000)
-			// あまり遠いと生成しない
-			return false;
-
 		if (!canGenerate(chunkX, chunkZ, world))
 			return false;
 

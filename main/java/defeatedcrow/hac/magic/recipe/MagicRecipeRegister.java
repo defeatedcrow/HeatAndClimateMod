@@ -1317,6 +1317,31 @@ public class MagicRecipeRegister {
 						"dyeWhite"
 		});
 
+		// DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MainInit.oreItem, 1, 0), new Object[] {
+		// "oreGold",
+		// "dropRed"
+		// });
+		//
+		// DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MainInit.oreItem, 1, 1), new Object[] {
+		// "oreGold",
+		// "dropGreen"
+		// });
+		//
+		// DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MainInit.oreItem, 1, 2), new Object[] {
+		// "oreGold",
+		// "dropBlue"
+		// });
+		//
+		// DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MainInit.oreItem, 1, 3), new Object[] {
+		// "oreGold",
+		// "dropWhite"
+		// });
+		//
+		// DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MainInit.oreItem, 1, 4), new Object[] {
+		// "oreGold",
+		// "dropBlack"
+		// });
+
 	}
 
 	public static void loadOres() {

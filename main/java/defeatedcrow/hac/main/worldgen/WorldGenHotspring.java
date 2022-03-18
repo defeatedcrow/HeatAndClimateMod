@@ -152,13 +152,6 @@ public class WorldGenHotspring implements IWorldGenerator {
 		if (genDim1 != 0)
 			return;
 
-		if (chunkX > 500 || chunkZ > 500)
-			// あまり遠いと生成しない
-			return;
-		if (chunkX < -500 || chunkZ < -500)
-			// あまり遠いと生成しない
-			return;
-
 		int posX = chunkX << 4;
 		int posZ = chunkZ << 4;
 

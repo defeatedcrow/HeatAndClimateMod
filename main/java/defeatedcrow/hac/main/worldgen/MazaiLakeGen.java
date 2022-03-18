@@ -79,13 +79,6 @@ public class MazaiLakeGen implements IWorldGenerator {
 		if ((genDim1 != 1 && genDim1 != -1))
 			return;
 
-		if (chunkX > 500 || chunkZ > 500)
-			// あまり遠いと生成しない
-			return;
-		if (chunkX < -500 || chunkZ < -500)
-			// あまり遠いと生成しない
-			return;
-
 		int posX = chunkX << 4;
 		int posZ = chunkZ << 4;
 

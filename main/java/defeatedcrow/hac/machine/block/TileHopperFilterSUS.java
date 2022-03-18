@@ -39,6 +39,8 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 	protected DCInventory inv = new DCInventory(10);
 	private int cooldown = -1;
 	private int lastCount = 0;
+	private boolean lastUni = false;
+	private boolean unifier = false;
 
 	public int getCoolTime() {
 		return 0;
@@ -46,6 +48,14 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 
 	public boolean isFilterd(int slot) {
 		return slot < 5;
+	}
+
+	public boolean isUnifierMode() {
+		return unifier;
+	}
+
+	public void switchUnifierMode() {
+		unifier = !unifier;
 	}
 
 	@Override
@@ -228,6 +238,8 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 				ItemStack cur = this.getStackInSlot(j);
 				if (DCUtil.isSameItem(target, cur, true)) {
 					same = true;
+				} else if (unifier && DCUtil.hasSameDic(target, cur)) {
+					same = true;
 				}
 			}
 
@@ -236,6 +248,11 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 					ItemStack cur = this.getStackInSlot(j);
 					if (this.isItemStackable(target, cur) > 0) {
 						this.incrStackInSlot(j, target);
+						return true;
+					} else if (this.isItemUnifiable(target, cur) > 0) {
+						ItemStack split = cur.copy();
+						split.setCount(target.getCount());
+						this.incrStackInSlot(j, split);
 						return true;
 					}
 				}
@@ -257,6 +274,19 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 
 	public static int isItemStackable(ItemStack target, ItemStack current) {
 		if (DCUtil.isSameItem(target, current, true)) {
+			int i = current.getCount() + target.getCount();
+			if (i > current.getMaxStackSize()) {
+				i = current.getMaxStackSize() - current.getCount();
+				return i;
+			}
+			return target.getCount();
+		}
+
+		return 0;
+	}
+
+	public int isItemUnifiable(ItemStack target, ItemStack current) {
+		if (unifier && DCUtil.hasSameDic(target, current)) {
 			int i = current.getCount() + target.getCount();
 			if (i > current.getMaxStackSize()) {
 				i = current.getMaxStackSize() - current.getCount();
@@ -331,17 +361,21 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 
 	@Override
 	public int getField(int id) {
+		if (id == 0)
+			return this.unifier ? 1 : 0;
 		return 0;
 	}
 
 	@Override
 	public void setField(int id, int value) {
-
+		if (id == 0) {
+			this.unifier = value > 0;
+		}
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 0;
+		return 1;
 	}
 
 	@Override
@@ -449,7 +483,7 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			if (facing == getCurrentFacing() || facing == getInsertSide() || facing == getExtractSide()) {
+			if (facing == getCurrentFacing() || facing == getExtractSide()) {
 				return (T) handler2;
 			} else {
 				return (T) handler;
@@ -467,6 +501,8 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 		inv.readFromNBT(tag);
 
 		this.cooldown = tag.getInteger("Cooldown");
+		this.lastUni = tag.getBoolean("LastUni");
+		this.unifier = tag.getBoolean("Unifier");
 	}
 
 	@Override
@@ -474,6 +510,8 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 		super.writeToNBT(tag);
 		// 燃焼時間や調理時間などの書き込み
 		tag.setInteger("Cooldown", this.cooldown);
+		tag.setBoolean("LastUni", lastUni);
+		tag.setBoolean("Unifier", unifier);
 
 		// アイテムの書き込み
 		inv.writeToNBT(tag);
@@ -485,6 +523,8 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 		super.getNBT(tag);
 		// 燃焼時間や調理時間などの書き込み
 		tag.setInteger("Cooldown", this.cooldown);
+		tag.setBoolean("LastUni", lastUni);
+		tag.setBoolean("Unifier", unifier);
 
 		// アイテムの書き込み
 		inv.writeToNBT(tag);
@@ -499,6 +539,8 @@ public class TileHopperFilterSUS extends DCLockableTE implements IHopper, ISided
 		inv.readFromNBT(tag);
 
 		this.cooldown = tag.getInteger("Cooldown");
+		this.lastUni = tag.getBoolean("LastUni");
+		this.unifier = tag.getBoolean("Unifier");
 	}
 
 	@Override
