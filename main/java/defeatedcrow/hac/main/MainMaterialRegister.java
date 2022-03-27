@@ -1270,7 +1270,7 @@ public class MainMaterialRegister {
 					ClimateCore.PACKAGE_BASE + "_build_wall_decoration");
 			DCMaterialReg
 					.registerBlock(MainInit.wallDecoration, ClimateCore.PACKAGE_BASE + "_build_wall_decoration", ClimateMain.MOD_ID);
-			ClimateMain.proxy.regTEJson(MainInit.wallDecoration, "dcs_climate", "dcs_build_wall_decoration", "device");
+			ClimateMain.proxy.regTEJson(MainInit.wallDecoration, "dcs_climate", "dcs_build_wall_decoration", "build");
 
 			// items
 			MainInit.flowerPot = new ItemFlowerPot().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_flowerpot");

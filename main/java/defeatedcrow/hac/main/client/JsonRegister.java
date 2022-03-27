@@ -90,7 +90,7 @@ public class JsonRegister {
 		regCube((ITexturePath) MainInit.metalBlockAlloy, ClimateCore.PACKAGE_ID, "dcs_ore_metal_alloy", "ores", 9);
 		regCube((ITexturePath) MainInit.heatedMetalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_heatingmetal", "ores", 14);
 		regCube((ITexturePath) MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
-		regCube((ITexturePath) MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
+		// regCube((ITexturePath) MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		regCube((ITexturePath) MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 7);
 		regCube((ITexturePath) MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 11);
 		regCube((ITexturePath) MainInit.syntheticBlock, ClimateCore.PACKAGE_ID, "dcs_build_synthetic_glass", "build", 15);
@@ -113,7 +113,8 @@ public class JsonRegister {
 		MAIN_INSTANCE
 				.regSimpleBlock(MainInit.heatedMetalBlock, ClimateCore.PACKAGE_ID, "dcs_ore_heatingmetal", "ores", 14);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.gemBlock, ClimateCore.PACKAGE_ID, "dcs_ore_gemblock", "ores", 15);
-		MAIN_INSTANCE.regSimpleBlock(MainInit.selenite, ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
+		MAIN_INSTANCE.regSimpleItem(Item
+				.getItemFromBlock(MainInit.selenite), ClimateCore.PACKAGE_ID, "dcs_build_selenite", "build", 3);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.chalLamp, ClimateCore.PACKAGE_ID, "dcs_build_challamp", "build", 15);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.bricks, ClimateCore.PACKAGE_ID, "dcs_build_bricks", "build", 7);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.builds, ClimateCore.PACKAGE_ID, "dcs_build_build", "build", 11);
@@ -149,7 +150,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regTEBlock(MainInit.windvane, ClimateCore.PACKAGE_ID, "dcs_device_windvane", "device", 0, true);
 		MAIN_INSTANCE
 				.regTEBlock(MainInit.stevenson_screen, ClimateCore.PACKAGE_ID, "dcs_device_stevenson_screen", "machine", 0, true);
-		MAIN_INSTANCE.regTEBlock(MainInit.pail, ClimateCore.PACKAGE_ID, "dcs_device_pail", "machine", 0, false);
+		MAIN_INSTANCE.regTEBlock(MainInit.pail, ClimateCore.PACKAGE_ID, "dcs_device_pail", "machine", 3, false);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.geyser, ClimateCore.PACKAGE_ID, "dcs_device_geyser_stone", "device", 0);
 		MAIN_INSTANCE
 				.regSimpleBlock(MainInit.swedishTorch, ClimateCore.PACKAGE_ID, "dcs_device_swedish_torch", "device", 15);
@@ -159,6 +160,38 @@ public class JsonRegister {
 		ModelLoader.setCustomStateMapper(MainInit.windowBlinds, (new StateMap.Builder()).ignore(DCState.DOUBLE)
 				.ignore(DCState.POWERED)
 				.build());
+
+		// selenite glass
+		ModelLoader.setCustomStateMapper(MainInit.selenite, new StateMapperBase() {
+			final ModelResourceLocation selenite = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_glass_selenite", "multipart");
+			final ModelResourceLocation light = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_glass_light", "multipart");
+			final ModelResourceLocation dark = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_glass_dark", "multipart");
+			final ModelResourceLocation crystal = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_glass_crystal", "multipart");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				if (state != null) {
+					int type = DCState.getInt(state, DCState.TYPE16);
+					switch (type) {
+					case 0:
+						return selenite;
+					case 1:
+						return light;
+					case 2:
+						return dark;
+					case 3:
+						return crystal;
+					default:
+						return selenite;
+					}
+				}
+				return selenite;
+			}
+		});
 
 		// door
 		if (ModuleConfig.build_advanced) {
@@ -361,6 +394,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.silkDress, ClimateCore.PACKAGE_ID, "dcs_leggins_dress_silk", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.silkCape, ClimateCore.PACKAGE_ID, "dcs_met_cape_silk", "equip", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.furCape, ClimateCore.PACKAGE_ID, "dcs_met_cape_fur", "equip", 0);
+
 	}
 
 	static void regFluids() {

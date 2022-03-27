@@ -18,8 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -72,37 +70,13 @@ public class BlockTableBase extends BlockDC {
 	}
 
 	@Override
-	public IBlockState withRotation(IBlockState state, Rotation rot) {
-		switch (rot) {
-		case CLOCKWISE_180:
-			return state.withProperty(NORTH, state.getValue(SOUTH)).withProperty(EAST, state.getValue(WEST))
-					.withProperty(SOUTH, state.getValue(NORTH)).withProperty(WEST, state.getValue(EAST));
-		case COUNTERCLOCKWISE_90:
-			return state.withProperty(NORTH, state.getValue(EAST)).withProperty(EAST, state.getValue(SOUTH))
-					.withProperty(SOUTH, state.getValue(WEST)).withProperty(WEST, state.getValue(NORTH));
-		case CLOCKWISE_90:
-			return state.withProperty(NORTH, state.getValue(WEST)).withProperty(EAST, state.getValue(NORTH))
-					.withProperty(SOUTH, state.getValue(EAST)).withProperty(WEST, state.getValue(SOUTH));
-		default:
-			return state;
-		}
-	}
-
-	@Override
-	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-		switch (mirrorIn) {
-		case LEFT_RIGHT:
-			return state.withProperty(NORTH, state.getValue(SOUTH)).withProperty(SOUTH, state.getValue(NORTH));
-		case FRONT_BACK:
-			return state.withProperty(EAST, state.getValue(WEST)).withProperty(WEST, state.getValue(EAST));
-		default:
-			return super.withMirror(state, mirrorIn);
-		}
-	}
-
-	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { NORTH, EAST, WEST, SOUTH });
+		return new BlockStateContainer(this, new IProperty[] {
+				NORTH,
+				EAST,
+				WEST,
+				SOUTH
+		});
 	}
 
 	@Override

@@ -280,7 +280,8 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 			if (face != EnumFacing.DOWN) {
 				if (!world.isAirBlock(pos.offset(face))) {
 					IBlockState check = world.getBlockState(pos.offset(face));
-					if (check.getMaterial() != Material.PLANTS && !check.getMaterial().isReplaceable())
+					if (check.getMaterial() != Material.PLANTS && !check.getMaterial()
+							.isReplaceable())
 						return true;
 				}
 			}

@@ -82,25 +82,44 @@ public class BlockCurtain extends BlockDC {
 	@Override
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
-		for (int i = 2; i > -3; i--) {
-			IBlockState st = world.getBlockState(pos.up(i));
+		// 高さチェックから
+		BlockPos pu = pos.up();
+		BlockPos pd = pos;
+		for (int i = 1; pos.getY() + i < 255; i++) {
+			if (world.getBlockState(pos.up(i)).getBlock() == this) {
+				pu = pos.up(i);
+			} else {
+				break;
+			}
+		}
+		for (int i = 0; pos.getY() - i > 1; i++) {
+			if (world.getBlockState(pos.down(i)).getBlock() == this) {
+				pd = pos.down(i);
+			} else {
+				break;
+			}
+		}
+		boolean b = false;
+		for (int i = 0; i <= pu.getY() - pd.getY(); i++) {
+			IBlockState st = world.getBlockState(pd.up(i));
 			if (st.getBlock() == this) {
 				if (player != null && player.isSneaking()) {
 					boolean p = DCState.getBool(state, DCState.FLAG);
 					st = st.withProperty(DCState.FLAG, !p);
-					world.setBlockState(pos.up(i), st);
-					world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
-							.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand
-									.nextFloat() * 0.1F + 0.9F);
+					world.setBlockState(pd.up(i), st);
+					b = true;
 				} else {
 					boolean p = DCState.getBool(state, DCState.POWERED);
 					st = st.withProperty(DCState.POWERED, !p);
-					world.setBlockState(pos.up(i), st);
-					world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
-							.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand
-									.nextFloat() * 0.1F + 0.9F);
+					world.setBlockState(pd.up(i), st);
+					b = true;
 				}
 			}
+		}
+		if (b) {
+			world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
+					.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand
+							.nextFloat() * 0.1F + 0.9F);
 		}
 		return true;
 	}

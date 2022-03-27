@@ -34,7 +34,7 @@ public class BlockPail extends DCTileBlock {
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 1.0D, 0.875D);
 
 	public BlockPail(String s) {
-		super(Material.CLAY, s, 0);
+		super(Material.CLAY, s, 3);
 	}
 
 	@Override
@@ -106,11 +106,6 @@ public class BlockPail extends DCTileBlock {
 	@Override
 	public boolean onClimateChange(World world, BlockPos pos, IBlockState state, IClimate clm) {
 		return false;
-	}
-
-	@Override
-	public int damageDropped(IBlockState state) {
-		return 0;
 	}
 
 	@Override

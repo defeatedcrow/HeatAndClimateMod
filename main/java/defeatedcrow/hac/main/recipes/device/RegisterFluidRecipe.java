@@ -523,6 +523,12 @@ public class RegisterFluidRecipe {
 								MainInit.milk, 1000), new Object[] {
 										new ItemStack(FoodInit.lab, 1, 1)
 				});
+
+				RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 4, 1), new ItemStack(
+						FoodInit.residue, 1, 6), 1F, null, DCHeatTier.WARM, DCHumidity.WET, null, false, new FluidStack(
+								MainInit.milk, 1000), new Object[] {
+										new ItemStack(FoodInit.skin, 1, 2)
+				});
 			}
 
 			RecipeAPI.registerFluidRecipes.addRecipe(new ItemStack(FoodInit.dairy, 4, 1), new ItemStack(

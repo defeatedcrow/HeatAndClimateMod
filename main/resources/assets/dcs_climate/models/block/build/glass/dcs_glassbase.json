@@ -1,0 +1,142 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "dcs_climate:blocks/build/glass_selenite",
+		"particle": "dcs_climate:blocks/build/glass_selenite"
+	},
+	"elements": [
+		{
+			"name": "DN",
+			"from": [0, 0, 0],
+			"to": [16, 0.5, 0.5],
+			"faces": {
+				"north": {"uv": [0, 15.5, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 15.5, 0.5, 16], "texture": "#0"},
+				"west": {"uv": [15.5, 15.5, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 15.5, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "DS",
+			"from": [0, 0, 15.5],
+			"to": [16, 0.5, 16],
+			"faces": {
+				"east": {"uv": [15.5, 15.5, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 15.5, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 15.5, 0.5, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "UN",
+			"from": [0, 15.5, 0],
+			"to": [16, 16, 0.5],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 0.5], "texture": "#0"},
+				"east": {"uv": [15.5, 0, 16, 0.5], "texture": "#0"},
+				"west": {"uv": [0, 0, 0.5, 0.5], "texture": "#0"},
+				"up": {"uv": [0, 15.5, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "US",
+			"from": [0, 15.5, 15.5],
+			"to": [16, 16, 16],
+			"faces": {
+				"east": {"uv": [0, 0, 0.5, 0.5], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 0.5], "texture": "#0"},
+				"west": {"uv": [15.5, 0, 16, 0.5], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "NW",
+			"from": [0, 0, 0],
+			"to": [0.5, 16, 0.5],
+			"faces": {
+				"north": {"uv": [15.5, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [15.5, 0, 16, 16], "texture": "#0"},
+				"up": {"uv": [15.5, 15.5, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 15.5, 0.5, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "SW",
+			"from": [0, 0, 15.5],
+			"to": [0.5, 16, 16],
+			"faces": {
+				"south": {"uv": [0, 0, 0.5, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 0.5, 16], "texture": "#0"},
+				"up": {"uv": [15.5, 0, 16, 0.5], "texture": "#0"},
+				"down": {"uv": [0, 0, 0.5, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "NE",
+			"from": [15.5, 0, 0],
+			"to": [16, 16, 0.5],
+			"faces": {
+				"north": {"uv": [0, 0, 0.5, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 0.5, 16], "texture": "#0"},
+				"up": {"uv": [0, 15.5, 0.5, 16], "texture": "#0"},
+				"down": {"uv": [15.5, 15.5, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "SE",
+			"from": [15.5, 0, 15.5],
+			"to": [16, 16, 16],
+			"faces": {
+				"east": {"uv": [15.5, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [15.5, 0, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 0.5, 0.5], "texture": "#0"},
+				"down": {"uv": [15.5, 0, 16, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "DE",
+			"from": [0, 0, 0],
+			"to": [0.5, 0.5, 16],
+			"faces": {
+				"north": {"uv": [15.5, 15.5, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 15.5, 0.5, 16], "texture": "#0"},
+				"west": {"uv": [0, 15.5, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 0.5, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "UE",
+			"from": [0, 15.5, 0],
+			"to": [0.5, 16, 16],
+			"faces": {
+				"north": {"uv": [15.5, 0, 16, 0.5], "texture": "#0"},
+				"south": {"uv": [0, 0, 0.5, 0.5], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 0.5], "texture": "#0"},
+				"up": {"uv": [15.5, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "DW",
+			"from": [15.5, 0, 0],
+			"to": [16, 0.5, 16],
+			"faces": {
+				"north": {"uv": [0, 15.5, 0.5, 16], "texture": "#0"},
+				"east": {"uv": [0, 15.5, 16, 16], "texture": "#0"},
+				"south": {"uv": [15.5, 15.5, 16, 16], "texture": "#0"},
+				"down": {"uv": [15.5, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "UW",
+			"from": [15.5, 15.5, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 0.5, 0.5], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 0.5], "texture": "#0"},
+				"south": {"uv": [15.5, 0, 16, 0.5], "texture": "#0"},
+				"up": {"uv": [0, 0, 0.5, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {}
+}

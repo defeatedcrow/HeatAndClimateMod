@@ -11,6 +11,7 @@ import defeatedcrow.hac.core.base.BlockDC;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -23,6 +24,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -32,6 +34,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockWindow extends BlockDC {
+
+	public static final PropertyEnum<BlockWindow.Type> TYPE = PropertyEnum.<BlockWindow.Type>create("connect", BlockWindow.Type.class);
 
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
@@ -48,7 +52,7 @@ public class BlockWindow extends BlockDC {
 		this.setSoundType(SoundType.WOOD);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
 				.withProperty(DCState.POWERED, false)
-				.withProperty(DCState.FLAG, false));
+				.withProperty(DCState.FLAG, false).withProperty(TYPE, Type.SINGLE));
 		this.maxMeta = 1;
 	}
 
@@ -101,11 +105,34 @@ public class BlockWindow extends BlockDC {
 	@Override
 	public boolean onRightClick(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
-		IBlockState target = world.getBlockState(pos);
-		if (target != null && target.getBlock() == this) {
-			boolean p = DCState.getBool(state, DCState.POWERED);
-			target = target.withProperty(DCState.POWERED, !p);
-			world.setBlockState(pos, target);
+		// 高さチェックから
+		BlockPos pu = pos.up();
+		BlockPos pd = pos;
+		for (int i = 1; pos.getY() + i < 255; i++) {
+			if (world.getBlockState(pos.up(i)).getBlock() == this) {
+				pu = pos.up(i);
+			} else {
+				break;
+			}
+		}
+		for (int i = 0; pos.getY() - i > 1; i++) {
+			if (world.getBlockState(pos.down(i)).getBlock() == this) {
+				pd = pos.down(i);
+			} else {
+				break;
+			}
+		}
+		boolean b = false;
+		for (int i = 0; i <= pu.getY() - pd.getY(); i++) {
+			if (world.getBlockState(pd.up(i)).getBlock() == this) {
+				IBlockState target = world.getBlockState(pd.up(i));
+				boolean p = DCState.getBool(state, DCState.POWERED);
+				target = target.withProperty(DCState.POWERED, !p);
+				world.setBlockState(pd.up(i), target);
+				b = true;
+			}
+		}
+		if (b) {
 			world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
 					.getZ() + 0.5D, SoundEvents.BLOCK_WOODEN_DOOR_OPEN, SoundCategory.BLOCKS, 0.5F, world.rand
 							.nextFloat() * 0.1F + 0.9F);
@@ -186,6 +213,34 @@ public class BlockWindow extends BlockDC {
 
 	// state関連
 	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		boolean bot = isSameBlock(state, world, pos.down());
+		boolean up = isSameBlock(state, world, pos.up());
+
+		Type type = Type.SINGLE;
+		if (bot) {
+			if (up)
+				type = Type.MIDDLE;
+			else
+				type = Type.UPPER;
+		} else if (up) {
+			type = Type.LOWER;
+		}
+
+		return state.withProperty(TYPE, type);
+	}
+
+	private boolean isSameBlock(IBlockState state, IBlockAccess world, BlockPos pos) {
+		if (pos.getY() < 0 || pos.getY() > 255)
+			return false;
+		IBlockState check = world.getBlockState(pos);
+		if (check == null)
+			return false;
+		return state.getBlock() == check.getBlock() && DCState.getBool(state, DCState.FLAG) == DCState
+				.getBool(check, DCState.FLAG);
+	}
+
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int i = meta & 3;
 		boolean b2 = i > 1;
@@ -218,13 +273,27 @@ public class BlockWindow extends BlockDC {
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.FACING,
 				DCState.FLAG,
-				DCState.POWERED
+				DCState.POWERED,
+				TYPE
 		});
 	}
 
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
+	}
+
+	public static enum Type implements IStringSerializable {
+		LOWER,
+		MIDDLE,
+		UPPER,
+		SINGLE;
+
+		@Override
+		public String getName() {
+			return this.toString().toLowerCase();
+		}
+
 	}
 
 }

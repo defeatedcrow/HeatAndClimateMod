@@ -2,9 +2,11 @@ package defeatedcrow.hac.main.block.device;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.DCTileEntity;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCTank;
+import defeatedcrow.hac.main.api.IColorChangeTile;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageSingleTank;
 import net.minecraft.block.state.IBlockState;
@@ -17,7 +19,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
-public class TilePail extends DCTileEntity implements ITagGetter {
+public class TilePail extends DCTileEntity implements ITagGetter,
+		IColorChangeTile {
 
 	public DCTank inputT = new DCTank(18000);
 
@@ -114,6 +117,32 @@ public class TilePail extends DCTileEntity implements ITagGetter {
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
 		return (oldState.getBlock() != newSate.getBlock());
+	}
+
+	// color
+
+	@Override
+	public int getColor() {
+		int color = DCState.getInt(world.getBlockState(getPos()), DCState.TYPE4);
+		return color;
+	}
+
+	@Override
+	public void setColor(int num) {
+		if (num < 0 || num > 3) {
+			num = 0;
+		}
+		IBlockState current = world.getBlockState(pos);
+		IBlockState next = current.withProperty(DCState.TYPE4, num);
+		world.setBlockState(pos, next, 3);
+	}
+
+	@Override
+	public boolean rotateColor() {
+		int c = getColor();
+		c++;
+		setColor(c);
+		return true;
 	}
 
 }

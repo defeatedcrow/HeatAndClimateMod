@@ -33,6 +33,11 @@ public class ItemPail extends DCItemBlock {
 	}
 
 	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		return this.block.getUnlocalizedName() + "_0";
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation2(ItemStack stack, @Nullable World world, List<String> tooltip) {
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 1");

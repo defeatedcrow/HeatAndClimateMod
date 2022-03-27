@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/build/dcs_window_open_middle",
+    "textures": {
+        "wood": "dcs_climate:blocks/build/panel_wood_white",
+        "glass": "dcs_climate:blocks/build/window_glass_2",
+        "particle": "dcs_climate:blocks/build/panel_wood_white"
+    }
+}

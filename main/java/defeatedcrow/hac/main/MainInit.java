@@ -138,6 +138,10 @@ public class MainInit {
 	public static Block squaretableGreisen;
 	public static Block squaretableChecker;
 	public static Block squaretableBlack;
+	public static Block smallTableWood;
+	public static Block smallTableWhite;
+	public static Block smallTableDark;
+	public static Block smallTableStone;
 	public static Block stoolBlack;
 	public static Block stoolRed;
 	public static Block sofaBlack;

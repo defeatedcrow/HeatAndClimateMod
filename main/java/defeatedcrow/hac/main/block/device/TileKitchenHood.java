@@ -36,12 +36,10 @@ public class TileKitchenHood extends DCTileEntity implements IClimateTileEntity,
 					if (!((ClimateReceiveTile) targetTE).getHeatTilePos().contains(getPos())) {
 						((ClimateReceiveTile) targetTE).addHeatTilePos(getPos());
 					}
-					break;
 				} else if (targetTE != null && targetTE instanceof ClimateReceiverLockable) {
 					if (!((ClimateReceiverLockable) targetTE).getHeatTilePos().contains(getPos())) {
 						((ClimateReceiverLockable) targetTE).addHeatTilePos(getPos());
 					}
-					break;
 				} else if (world.getBlockState(target).isFullBlock()) {
 					break;
 				}

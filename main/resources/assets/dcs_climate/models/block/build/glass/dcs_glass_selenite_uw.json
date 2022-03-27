@@ -1,0 +1,18 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "0": "dcs_climate:blocks/build/glass_selenite",
+    "particle": "dcs_climate:blocks/build/glass_selenite"
+  },
+  "elements": [
+    {
+      "name": "UW",
+      "from": [0, 15.5, 0],
+      "to": [0.5, 16, 16],
+      "faces": {
+        "west": {"uv": [0, 0, 16, 0.5], "texture": "#0"},
+        "up": {"uv": [15.5, 0, 16, 16], "texture": "#0"}
+      }
+    }
+  ]
+}
