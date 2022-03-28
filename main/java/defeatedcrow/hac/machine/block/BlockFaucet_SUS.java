@@ -236,6 +236,8 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 			tooltip.add("WATER: 1000 mB/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + DCName.TURN_OFF.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + TextFormatting.BOLD.toString() + DCName.COLOR_CHANGE_TARGET
+					.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

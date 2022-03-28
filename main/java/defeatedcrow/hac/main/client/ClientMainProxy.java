@@ -105,6 +105,7 @@ import defeatedcrow.hac.main.client.block.TESRWallDecoration;
 import defeatedcrow.hac.main.client.block.TESRWindVane;
 import defeatedcrow.hac.main.client.block.TESRWindowBlinds;
 import defeatedcrow.hac.main.client.entity.BoltRenderer;
+import defeatedcrow.hac.main.client.entity.RenderCoatRack;
 import defeatedcrow.hac.main.client.entity.RenderEntityBalloon;
 import defeatedcrow.hac.main.client.entity.RenderEntityBigCushion;
 import defeatedcrow.hac.main.client.entity.RenderEntityBigCushionB;
@@ -140,6 +141,7 @@ import defeatedcrow.hac.main.client.particle.ParticleOrb;
 import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.entity.EntityBigCushion;
 import defeatedcrow.hac.main.entity.EntityBigCushionBrown;
+import defeatedcrow.hac.main.entity.EntityCoatRack;
 import defeatedcrow.hac.main.entity.EntityCrowBalloon;
 import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
@@ -281,6 +283,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityDesktopAccessories_G.class, RenderEntityDesktopAccessories_G.class);
 		registRender(EntityDesktopAccessories_H.class, RenderEntityDesktopAccessories_H.class);
 		registRender(EntityDesktopAccessories_I.class, RenderEntityDesktopAccessories_I.class);
+		registRender(EntityCoatRack.class, RenderCoatRack.class);
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadEntity();

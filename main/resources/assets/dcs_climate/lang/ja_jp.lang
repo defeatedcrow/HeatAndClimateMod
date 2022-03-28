@@ -242,7 +242,7 @@ item.dcs_desktop_accessories_keyboard.name=キーボード
 item.dcs_desktop_accessories_laptop.name=ノートパソコン
 item.dcs_desktop_accessories_phone.name=スマホ
 item.dcs_desktop_accessories_pen_tablet.name=ペンタブ
-
+item.dcs_coat_rack_black.name=コートハンガー
 
 item.dcs_food_materials_salt.name=食塩
 item.dcs_food_materials_flour.name=小麦粉
@@ -1265,6 +1265,8 @@ tile.dcs_squaretable_greisen_0.name=グライゼンのスクエアテーブル
 tile.dcs_squaretable_checker_0.name=チェック柄のスクエアテーブル
 tile.dcs_squaretable_black_0.name=黒のスクエアテーブル
 tile.dcs_squaretable_rattan_0.name=ラタンのスクエアテーブル
+tile.dcs_smalltable_wood_0.name=木のミニテーブル
+tile.dcs_smalltable_stone_0.name=石のミニテーブル
 tile.dcs_carpet_red_0.name=カーペットブロック(赤)
 tile.dcs_carpet_white_0.name=カーペットブロック(白)
 tile.dcs_carpet_gray_0.name=カーペットブロック(黒)
@@ -1286,6 +1288,13 @@ tile.dcs_chair_greisen_0.name=グライゼンのチェア
 tile.dcs_chair_checker_0.name=チェック柄のチェア
 tile.dcs_chair_black_0.name=黒のチェア
 tile.dcs_chair_rattan_0.name=ラタンのチェア
+tile.dcs_smallstool_wood.name=木のミニチェア
+tile.dcs_smallstool_white.name=木のミニチェア(白)
+tile.dcs_smallstool_dark.name=木のミニチェア(黒)
+tile.dcs_smallstool_pink.name=オットマン(ピンク)
+tile.dcs_smallstool_green.name=オットマン(緑)
+tile.dcs_smallstool_blue.name=オットマン(青)
+tile.dcs_smallstool_yellow.name=バスチェア
 tile.dcs_device_lowchest_marble_0.name=大理石のローチェスト
 tile.dcs_device_lowchest_skarn_0.name=スカルンのローチェスト
 tile.dcs_device_lowchest_greisen_0.name=グライゼンのローチェスト
@@ -1838,6 +1847,7 @@ dcs.tip.r_click_use=右クリック: オブジェクトを設置します。
 dcs.tip.r_click_remove=オブジェクトを右クリック: 設置したオブジェクトを除去します。
 dcs.tip.magic_cost=魔法のコスト:
 dcs.tip.magic_limit=設置数上限:
+dcs.tip.color_change_target=カラーチェンジの杖で外見を変更できます。
 
 dcs.tip.danger_drink=全回復 (ときどき即死)
 dcs.tip.correct_from_cow=近くにいる牛から空容器または液体ホッパーで集める。
@@ -1946,6 +1956,7 @@ dcs.tip.incubator=ニワトリの卵や微生物の培地を培養します。
 dcs.tip.color_changer=右クリックで使用したブロックのモデルを切り替えます。
 dcs.tip.crafting_counter=作業台の機能を持った小チェストです。
 dcs.tip.hopper_chest_rotate=排出口の向きを回転させます。
+dcs.tip.coat_rack=右クリックすると、装備中の頭・胴防具をスワップします。
 
 dcs.tip.heat_treatment_jei1=%d tick以内に処理を行う
 dcs.tip.heat_treatment_jei2=不良品

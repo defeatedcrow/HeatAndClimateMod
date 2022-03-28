@@ -139,11 +139,10 @@ public class MainInit {
 	public static Block squaretableChecker;
 	public static Block squaretableBlack;
 	public static Block smallTableWood;
-	public static Block smallTableWhite;
-	public static Block smallTableDark;
 	public static Block smallTableStone;
 	public static Block stoolBlack;
 	public static Block stoolRed;
+	public static Block stoolSmall;
 	public static Block sofaBlack;
 	public static Block sofaRed;
 	public static Block sofaPink;
@@ -221,6 +220,7 @@ public class MainInit {
 
 	public static Item cushionGray;
 	public static Item desktopAccessories;
+	public static Item coatRack;
 
 	// vine
 	public static Block fenceRattan;

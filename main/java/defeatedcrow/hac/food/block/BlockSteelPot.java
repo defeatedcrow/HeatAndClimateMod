@@ -171,6 +171,8 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
+				.getLocalizedName());
 	}
 
 	@Override

@@ -42,6 +42,12 @@ public class ItemArmorDC extends ItemArmor implements ITexturePath, IColorableAr
 		tex = t;
 	}
 
+	public ItemArmorDC(ArmorMaterial m, int renderIndex, DCMaterialEnum mat, EntityEquipmentSlot slot, String t) {
+		super(m, renderIndex, slot);
+		material = mat;
+		tex = t;
+	}
+
 	public ItemArmorDC setColorList(EnumDyeColor... list) {
 		if (list != null)
 			colorList = list;

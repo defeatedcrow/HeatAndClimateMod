@@ -154,9 +154,12 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.squaretableChecker);
 			ClimateMain.build.addSubItem(MainInit.squaretableBlack);
 			ClimateMain.build.addSubItem(MainInit.squaretableRattan);
+			ClimateMain.build.addSubItem(MainInit.smallTableWood);
+			ClimateMain.build.addSubItem(MainInit.smallTableStone);
 
 			ClimateMain.build.addSubItem(MainInit.stoolBlack);
 			ClimateMain.build.addSubItem(MainInit.stoolRed);
+			ClimateMain.build.addSubItem(MainInit.stoolSmall);
 			ClimateMain.build.addSubItem(MainInit.stoolRattan);
 
 			ClimateMain.build.addSubItem(MainInit.chairWood);
@@ -198,6 +201,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.flowerPot);
 			ClimateMain.build.addSubItem(MainInit.desktopAccessories);
 			ClimateMain.build.addSubItem(MainInit.cushionGray);
+			ClimateMain.build.addSubItem(MainInit.coatRack);
 		}
 
 		// device

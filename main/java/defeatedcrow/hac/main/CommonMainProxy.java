@@ -138,6 +138,7 @@ import defeatedcrow.hac.main.enchant.EnchantmentRobber;
 import defeatedcrow.hac.main.enchant.EnchantmentVenom;
 import defeatedcrow.hac.main.entity.EntityBigCushion;
 import defeatedcrow.hac.main.entity.EntityBigCushionBrown;
+import defeatedcrow.hac.main.entity.EntityCoatRack;
 import defeatedcrow.hac.main.entity.EntityCrowBalloon;
 import defeatedcrow.hac.main.entity.EntityCrowBullet;
 import defeatedcrow.hac.main.entity.EntityCution;
@@ -531,6 +532,8 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addEntity(EntityDesktopAccessories_H.class, "main", "desktop_accessories_h", 20);
 
 		DCRegistryUtil.addEntity(EntityDesktopAccessories_I.class, "main", "desktop_accessories_i", 20);
+
+		DCRegistryUtil.addEntity(EntityCoatRack.class, "main", "coat_rack");
 
 		if (ModuleConfig.food)
 			FoodCommonProxy.loadEntity();

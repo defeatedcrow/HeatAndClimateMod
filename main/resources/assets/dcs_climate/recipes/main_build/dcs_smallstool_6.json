@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y",
+  "Z"
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dyeYellow"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  },
+  "Z": {
+   "type": "forge:ore_dict",
+   "ore": "fenceWood"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_smallstool",
+  "count": 1,
+  "data": 6
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "build_advanced"
+  }
+ ]
+}

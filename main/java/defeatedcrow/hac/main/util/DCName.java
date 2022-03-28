@@ -59,7 +59,8 @@ public enum DCName {
 	MAGIC_CLICK_USE("dcs.tip.r_click_use"),
 	MAGIC_CLICK_REMOVE("dcs.tip.r_click_remove"),
 	MAGIC_COST("dcs.tip.magic_cost"),
-	MAGIC_PLACE_LIMIT("dcs.tip.magic_limit");
+	MAGIC_PLACE_LIMIT("dcs.tip.magic_limit"),
+	COLOR_CHANGE_TARGET("dcs.tip.color_change_target");
 
 	private final String name;
 

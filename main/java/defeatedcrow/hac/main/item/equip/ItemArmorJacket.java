@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemArmorJacket extends ItemArmorDC implements ITexturePath {
 
 	public ItemArmorJacket(ArmorMaterial m, DCMaterialEnum mat, EntityEquipmentSlot slot, String t) {
-		super(m, mat, slot, t);
+		super(m, 1, mat, slot, t);
 		colorList = new EnumDyeColor[] {
 				EnumDyeColor.GREEN,
 				EnumDyeColor.GRAY,

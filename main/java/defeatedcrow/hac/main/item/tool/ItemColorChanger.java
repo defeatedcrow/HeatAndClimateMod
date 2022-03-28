@@ -2,21 +2,14 @@ package defeatedcrow.hac.main.item.tool;
 
 import java.util.List;
 
-import defeatedcrow.hac.api.climate.ItemSet;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.base.DCItem;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.food.FoodInit;
-import defeatedcrow.hac.machine.MachineInit;
-import defeatedcrow.hac.magic.MagicInit;
-import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.api.IColorChangeTile;
-import defeatedcrow.hac.main.config.ModuleConfig;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
@@ -86,34 +79,6 @@ public class ItemColorChanger extends DCItem {
 		if (stack != null) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.color_changer"));
-			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Target Blocks ===");
-			tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.chamber), 0).localizedname());
-			tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.shitirin), 0).localizedname());
-			tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.fuelStove), 0).localizedname());
-			if (ModuleConfig.build_advanced) {
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.sinkMetal), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.sinkChest), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.craftingCounter), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.kitchenHood), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.realtimeClock), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.doorHikido), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.carpetTatami), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.windowBlinds), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.wallDecoration), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MainInit.awningCloth), 0).localizedname());
-			}
-			if (ModuleConfig.magic && ModuleConfig.magic_advanced) {
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MagicInit.timeCage), 0).localizedname());
-			}
-			if (ModuleConfig.machine) {
-				tooltip.add(new ItemSet(Item.getItemFromBlock(MachineInit.faucet_sus), 0).localizedname());
-			}
-			if (ModuleConfig.food) {
-				tooltip.add(new ItemSet(Item.getItemFromBlock(FoodInit.potteryPot), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(FoodInit.skillet), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(FoodInit.steelPot), 0).localizedname());
-				tooltip.add(new ItemSet(Item.getItemFromBlock(FoodInit.teaPot), 0).localizedname());
-			}
 		}
 	}
 

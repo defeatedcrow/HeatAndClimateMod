@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemArmorHat extends ItemArmorDC implements ITexturePath {
 
 	public ItemArmorHat(ArmorMaterial m, DCMaterialEnum mat, EntityEquipmentSlot slot, String t) {
-		super(m, mat, slot, t);
+		super(m, 0, mat, slot, t);
 	}
 
 	@Override

@@ -60,6 +60,8 @@ import defeatedcrow.hac.main.block.build.BlockScaffold;
 import defeatedcrow.hac.main.block.build.BlockSlabChal;
 import defeatedcrow.hac.main.block.build.BlockSlabDC;
 import defeatedcrow.hac.main.block.build.BlockSlabSlate;
+import defeatedcrow.hac.main.block.build.BlockSmallStool;
+import defeatedcrow.hac.main.block.build.BlockSmallTable;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
 import defeatedcrow.hac.main.block.build.BlockStairsRoof;
@@ -121,6 +123,7 @@ import defeatedcrow.hac.main.block.ores.BlockSkarnOre;
 import defeatedcrow.hac.main.block.plant.BlockFlowerGarden;
 import defeatedcrow.hac.main.block.plant.BlockHedge;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import defeatedcrow.hac.main.item.entity.ItemCoatRack;
 import defeatedcrow.hac.main.item.entity.ItemCushionGray;
 import defeatedcrow.hac.main.item.entity.ItemDesktopAccessories;
 import defeatedcrow.hac.main.item.entity.ItemFlowerPot;
@@ -851,6 +854,18 @@ public class MainMaterialRegister {
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.squaretableRattan), "dcs_climate", "dcs_squaretable_rattan", "build", 0, false);
 
+			MainInit.smallTableWood = new BlockSmallTable(ClimateCore.PACKAGE_BASE + "_smalltable_wood", false);
+			DCMaterialReg
+					.registerBlock(MainInit.smallTableWood, ClimateCore.PACKAGE_BASE + "_smalltable_wood", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.smallTableWood), "dcs_climate", "dcs_smalltable_wood", "build", 0, false);
+
+			MainInit.smallTableStone = new BlockSmallTable(ClimateCore.PACKAGE_BASE + "_smalltable_stone", false);
+			DCMaterialReg
+					.registerBlock(MainInit.smallTableStone, ClimateCore.PACKAGE_BASE + "_smalltable_stone", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.smallTableStone), "dcs_climate", "dcs_smalltable_stone", "build", 0, false);
+
 			MainInit.carpetRed = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_carpet_red", true);
 			DCMaterialReg
 					.registerBlock(MainInit.carpetRed, ClimateCore.PACKAGE_BASE + "_carpet_red", ClimateMain.MOD_ID);
@@ -924,6 +939,12 @@ public class MainMaterialRegister {
 			DCMaterialReg.registerBlock(MainInit.stoolRed, ClimateCore.PACKAGE_BASE + "_stool_red", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.stoolRed), "dcs_climate", "dcs_stool_red", "build", 0, false);
+
+			MainInit.stoolSmall = new BlockSmallStool(ClimateCore.PACKAGE_BASE + "_smallstool");
+			DCMaterialReg
+					.registerBlock(MainInit.stoolSmall, ClimateCore.PACKAGE_BASE + "_smallstool", ClimateMain.MOD_ID);
+			ClimateMain.proxy.regBlockJson(Item
+					.getItemFromBlock(MainInit.stoolSmall), "dcs_climate", "dcs_smallstool", "build", 7, true);
 
 			MainInit.stoolRattan = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_rattan").setSmallAABB();
 			DCMaterialReg
@@ -1284,6 +1305,11 @@ public class MainMaterialRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_desktop_accessories");
 			DCMaterialReg
 					.registerItem(MainInit.desktopAccessories, ClimateCore.PACKAGE_BASE + "_desktop_accessories", ClimateMain.MOD_ID);
+
+			MainInit.coatRack = new ItemCoatRack()
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_rack");
+			DCMaterialReg
+					.registerItem(MainInit.coatRack, ClimateCore.PACKAGE_BASE + "_coat_rack", ClimateMain.MOD_ID);
 
 		}
 	}

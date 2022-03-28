@@ -14,7 +14,7 @@ public class ItemArmorOvercoat extends ItemArmorDC implements ITexturePath {
 	private boolean isShort = false;
 
 	public ItemArmorOvercoat(ArmorMaterial m, DCMaterialEnum mat, EntityEquipmentSlot slot, String t) {
-		super(m, mat, slot, "coat_" + t);
+		super(m, 1, mat, slot, "coat_" + t);
 	}
 
 	public ItemArmorOvercoat setShort() {

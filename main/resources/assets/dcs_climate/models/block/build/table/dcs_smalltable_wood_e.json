@@ -1,0 +1,22 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "1": "dcs_climate:blocks/build/panel_wood",
+    "particle": "dcs_climate:blocks/build/panel_wood"
+  },
+  "elements": [
+    {
+      "name": "E",
+      "from": [14, 7, 2],
+      "to": [16, 8, 14],
+      "faces": {
+        "north": {"uv": [0, 2, 2, 3], "texture": "#1"},
+        "east": {"uv": [2, 2, 14, 3], "texture": "#1"},
+        "south": {"uv": [14, 2, 16, 3], "texture": "#1"},
+        "west": {"uv": [2, 2, 14, 3], "texture": "#1"},
+        "up": {"uv": [14, 2, 16, 14], "texture": "#1"},
+        "down": {"uv": [14, 2, 16, 14], "texture": "#1"}
+      }
+    }
+  ]
+}

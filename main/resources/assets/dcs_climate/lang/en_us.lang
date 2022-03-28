@@ -235,6 +235,7 @@ item.dcs_desktop_accessories_keyboard.name=Keyboard
 item.dcs_desktop_accessories_laptop.name=Laotop
 item.dcs_desktop_accessories_phone.name=Cell Phone
 item.dcs_desktop_accessories_pen_tablet.name=Drawing Tablet
+item.dcs_coat_rack_black.name=Coat Rack
 
 ## foods
 item.dcs_food_materials_salt.name=Salt
@@ -1294,6 +1295,8 @@ tile.dcs_carpet_white_0.name=Carpet Wood (White)
 tile.dcs_carpet_gray_0.name=Carpet Wood (Black)
 tile.dcs_carpet_linen_0.name=Carpet Wood (Yellow)
 tile.dcs_carpet_tatami_0.name=Tatami Block
+tile.dcs_smalltable_wood_0.name=Wooden Small Table
+tile.dcs_smalltable_stone_0.name=Stone Small Table
 tile.dcs_sofa_black_0.name=Sofa (Black)
 tile.dcs_sofa_red_0.name=Sofa (Red)
 tile.dcs_sofa_green_0.name=Sofa (Green)
@@ -1310,6 +1313,13 @@ tile.dcs_chair_greisen_0.name=Greisen Chair
 tile.dcs_chair_checker_0.name=Checker Chair
 tile.dcs_chair_black_0.name=Black Chair
 tile.dcs_chair_rattan_0.name=Rattan Chair
+tile.dcs_smallstool_wood.name=Wooden small chair
+tile.dcs_smallstool_white.name=Wooden small chair (White)
+tile.dcs_smallstool_dark.name=Wooden small chair (Dark)
+tile.dcs_smallstool_pink.name=Footstool (Pink)
+tile.dcs_smallstool_green.name=Footstool (Green)
+tile.dcs_smallstool_blue.name=Footstool (Blue)
+tile.dcs_smallstool_yellow.name=Bathroom Stool
 tile.dcs_device_lowchest_marble_0.name=Marble Low Chest
 tile.dcs_device_lowchest_skarn_0.name=Skarn Low Chest
 tile.dcs_device_lowchest_greisen_0.name=Greisen Low Chest
@@ -1875,6 +1885,7 @@ dcs.tip.r_click_use=Right-click to block: place the object the coordinates.
 dcs.tip.r_click_remove=Right-click to object: Remove the object.
 dcs.tip.magic_cost=Cost:
 dcs.tip.magic_limit=Limit:
+dcs.tip.color_change_target=Appearance change target by color changer.
 
 dcs.tip.danger_drink=Powerful but dangerous!
 dcs.tip.correct_from_cow=Collect from cow with Fluid Hopper.
@@ -1992,6 +2003,7 @@ dcs.tip.incubator=Incubate chicken eggs and microbial media.
 dcs.tip.color_changer=Right-click: Change the target block models.
 dcs.tip.crafting_counter=Includes workbench and mini chest.
 dcs.tip.hopper_chest_rotate=Rotate the direction of the outlet.
+dcs.tip.coat_rack=Right-click to swap the equipped head and chest armor.
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products
@@ -2740,6 +2752,8 @@ entity.dcs.main.desktop_accessories_f.name=Keyboard
 entity.dcs.main.desktop_accessories_g.name=Laotop
 entity.dcs.main.desktop_accessories_h.name=Cell Phone
 entity.dcs.main.desktop_accessories_i.name=Drawing Tablet
+
+entity.dcs.main.coat_rack.name=Coat Rack
 
 entity.dcs.magic.dcs_blackdog.name=Black Dog
 entity.dcs.magic.dcs_flametongue.name=Flametongue Dog

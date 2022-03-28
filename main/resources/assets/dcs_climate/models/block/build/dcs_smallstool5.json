@@ -1,0 +1,74 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "6": "dcs_climate:blocks/build/panel_wood_white",
+    "7": "dcs_climate:blocks/build/sofa_blue_under",
+    "particle": "dcs_climate:blocks/build/sofa_blue_under"
+  },
+  "elements": [
+    {
+      "from": [4, 1, 4],
+      "to": [12, 6, 12],
+      "faces": {
+        "north": {"uv": [4, 10, 12, 16], "texture": "#7"},
+        "east": {"uv": [4, 10, 12, 16], "texture": "#7"},
+        "south": {"uv": [4, 10, 12, 16], "texture": "#7"},
+        "west": {"uv": [4, 10, 12, 16], "texture": "#7"},
+        "up": {"uv": [4, 4, 12, 12], "texture": "#7"},
+        "down": {"uv": [4, 4, 12, 12], "texture": "#7"}
+      }
+    },
+    {
+      "name": "l1",
+      "from": [5, 0, 5],
+      "to": [6, 1, 6],
+      "faces": {
+        "north": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "east": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "south": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "west": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "up": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "down": {"uv": [0, 0, 1, 1], "texture": "#6"}
+      }
+    },
+    {
+      "name": "l2",
+      "from": [5, 0, 10],
+      "to": [6, 1, 11],
+      "faces": {
+        "north": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "east": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "south": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "west": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "up": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "down": {"uv": [0, 0, 1, 1], "texture": "#6"}
+      }
+    },
+    {
+      "name": "l3",
+      "from": [10, 0, 5],
+      "to": [11, 1, 6],
+      "faces": {
+        "north": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "east": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "south": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "west": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "up": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "down": {"uv": [0, 0, 1, 1], "texture": "#6"}
+      }
+    },
+    {
+      "name": "l4",
+      "from": [10, 0, 10],
+      "to": [11, 1, 11],
+      "faces": {
+        "north": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "east": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "south": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "west": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "up": {"uv": [0, 0, 1, 1], "texture": "#6"},
+        "down": {"uv": [0, 0, 1, 1], "texture": "#6"}
+      }
+    }
+  ]
+}
