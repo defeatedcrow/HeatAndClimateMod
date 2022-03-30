@@ -1,0 +1,17 @@
+{
+    "multipart": [
+        {   "apply": { "model": "dcs_climate:crop/dcs_hedge_autumn_leaves_main" }},
+        {   "when": { "north": "true" },
+            "apply": { "model": "dcs_climate:crop/dcs_hedge_autumn_leaves_side", "uvlock": true }
+        },
+        {   "when": { "east": "true" },
+            "apply": { "model": "dcs_climate:crop/dcs_hedge_autumn_leaves_side", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "true" },
+            "apply": { "model": "dcs_climate:crop/dcs_hedge_autumn_leaves_side", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "true" },
+            "apply": { "model": "dcs_climate:crop/dcs_hedge_autumn_leaves_side", "y": 270, "uvlock": true }
+        }
+    ]
+}

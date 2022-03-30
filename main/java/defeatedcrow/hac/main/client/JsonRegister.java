@@ -194,6 +194,67 @@ public class JsonRegister {
 			}
 		});
 
+		// hedge
+		ModelLoader.setCustomStateMapper(MainInit.hedgeSpring, new StateMapperBase() {
+			final ModelResourceLocation flower = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_hedge_spring", "multipart");
+			final ModelResourceLocation leaves = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_hedge_leaves_spring", "multipart");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				if (state != null && DCState.getBool(state, DCState.FLAG)) {
+					return flower;
+				}
+				return leaves;
+			}
+		});
+
+		ModelLoader.setCustomStateMapper(MainInit.hedgeSummer, new StateMapperBase() {
+			final ModelResourceLocation flower = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_hedge_summer", "multipart");
+			final ModelResourceLocation leaves = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_hedge_leaves_summer", "multipart");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				if (state != null && DCState.getBool(state, DCState.FLAG)) {
+					return flower;
+				}
+				return leaves;
+			}
+		});
+
+		ModelLoader.setCustomStateMapper(MainInit.hedgeAutumn, new StateMapperBase() {
+			final ModelResourceLocation flower = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_hedge_autumn", "multipart");
+			final ModelResourceLocation leaves = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_hedge_leaves_autumn", "multipart");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				if (state != null && DCState.getBool(state, DCState.FLAG)) {
+					return flower;
+				}
+				return leaves;
+			}
+		});
+
+		ModelLoader.setCustomStateMapper(MainInit.hedgeWinter, new StateMapperBase() {
+			final ModelResourceLocation flower = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_hedge_winter", "multipart");
+			final ModelResourceLocation leaves = new ModelResourceLocation(
+					ClimateMain.MOD_ID + ":" + ClimateCore.PACKAGE_BASE + "_hedge_leaves_winter", "multipart");
+
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				if (state != null && DCState.getBool(state, DCState.FLAG)) {
+					return flower;
+				}
+				return leaves;
+			}
+		});
+
 		// door
 		if (ModuleConfig.build_advanced) {
 			MAIN_INSTANCE

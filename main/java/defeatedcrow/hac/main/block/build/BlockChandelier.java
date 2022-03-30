@@ -3,16 +3,20 @@ package defeatedcrow.hac.main.block.build;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -20,6 +24,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -68,15 +73,12 @@ public class BlockChandelier extends BlockContainerDC {
 		list.add(new ItemStack(this, 1, 0));
 		list.add(new ItemStack(this, 1, 1));
 		list.add(new ItemStack(this, 1, 2));
+		list.add(new ItemStack(this, 1, 3));
 		return list;
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		if (meta == 1)
-			return new TileChandelierSalt();
-		if (meta == 2)
-			return new TileChandelierChal();
 		return new TileChandelierGypsum();
 	}
 
@@ -84,8 +86,7 @@ public class BlockChandelier extends BlockContainerDC {
 	@Override
 	public int damageDropped(IBlockState state) {
 		int i = state.getValue(DCState.TYPE16);
-		if (i > 2)
-			i = 2;
+		i = i & 3;
 		return i;
 	}
 
@@ -111,10 +112,9 @@ public class BlockChandelier extends BlockContainerDC {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
-
 		i = state.getValue(DCState.TYPE16);
-		if (i > 2)
-			i = 2;
+		if (i > 15)
+			i = 15;
 		return i;
 	}
 
@@ -125,12 +125,20 @@ public class BlockChandelier extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.TYPE16 });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.TYPE16
+		});
 	}
 
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
 
 }

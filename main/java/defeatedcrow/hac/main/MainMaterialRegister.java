@@ -4,6 +4,7 @@ import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCMaterialReg;
 import defeatedcrow.hac.core.base.DCItemBlock;
@@ -785,7 +786,7 @@ public class MainMaterialRegister {
 			MainInit.chain = new BlockChain(Material.CLAY, "dcs_build_chain").setUnlocalizedName("dcs_build_chain");
 			DCMaterialReg.registerBlock(MainInit.chain, ClimateCore.PACKAGE_BASE + "_build_chain", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.chain), "dcs_climate", "dcs_build_chain", "build", 1, true);
+					.getItemFromBlock(MainInit.chain), "dcs_climate", "dcs_build_chain", "build", 3, true);
 
 			MainInit.tableMarble = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_table_marble", false);
 			DCMaterialReg
@@ -1099,25 +1100,29 @@ public class MainMaterialRegister {
 			ClimateMain.proxy
 					.regTEJson(MainInit.kitchenHood, "dcs_climate", "dcs_device_kitchen_hood", "device");
 
-			MainInit.hedgeSpring = new BlockHedge("dcs_hedge_spring").setUnlocalizedName("dcs_hedge_spring");
+			MainInit.hedgeSpring = new BlockHedge("dcs_hedge_spring", EnumSeason.SPRING)
+					.setUnlocalizedName("dcs_hedge_spring");
 			DCMaterialReg
 					.registerBlock(MainInit.hedgeSpring, ClimateCore.PACKAGE_BASE + "_hedge_spring", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.hedgeSpring), "dcs_climate", "dcs_hedge_spring", "crop", 15, false);
 
-			MainInit.hedgeSummer = new BlockHedge("dcs_hedge_summer").setUnlocalizedName("dcs_hedge_summer");
+			MainInit.hedgeSummer = new BlockHedge("dcs_hedge_summer", EnumSeason.SUMMER)
+					.setUnlocalizedName("dcs_hedge_summer");
 			DCMaterialReg
 					.registerBlock(MainInit.hedgeSummer, ClimateCore.PACKAGE_BASE + "_hedge_summer", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.hedgeSummer), "dcs_climate", "dcs_hedge_summer", "crop", 15, false);
 
-			MainInit.hedgeAutumn = new BlockHedge("dcs_hedge_autumn").setUnlocalizedName("dcs_hedge_autumn");
+			MainInit.hedgeAutumn = new BlockHedge("dcs_hedge_autumn", EnumSeason.AUTUMN)
+					.setUnlocalizedName("dcs_hedge_autumn");
 			DCMaterialReg
 					.registerBlock(MainInit.hedgeAutumn, ClimateCore.PACKAGE_BASE + "_hedge_autumn", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
 					.getItemFromBlock(MainInit.hedgeAutumn), "dcs_climate", "dcs_hedge_autumn", "crop", 15, false);
 
-			MainInit.hedgeWinter = new BlockHedge("dcs_hedge_winter").setUnlocalizedName("dcs_hedge_winter");
+			MainInit.hedgeWinter = new BlockHedge("dcs_hedge_winter", EnumSeason.WINTER)
+					.setUnlocalizedName("dcs_hedge_winter");
 			DCMaterialReg
 					.registerBlock(MainInit.hedgeWinter, ClimateCore.PACKAGE_BASE + "_hedge_winter", ClimateMain.MOD_ID);
 			ClimateMain.proxy.regBlockJson(Item
@@ -1133,10 +1138,18 @@ public class MainMaterialRegister {
 
 			MainInit.chandelierGypsum = new BlockChandelier("dcs_build_chandelier")
 					.setUnlocalizedName("dcs_build_chandelier");
-			DCMaterialReg
-					.registerBlock(MainInit.chandelierGypsum, ClimateCore.PACKAGE_BASE + "_build_chandelier", ClimateMain.MOD_ID);
+			MainInit.chandelierGypsum
+					.setRegistryName(ClimateMain.MOD_ID, ClimateCore.PACKAGE_BASE + "_build_chandelier");
+			ForgeRegistries.BLOCKS.register(MainInit.chandelierGypsum);
+			ForgeRegistries.ITEMS.register(new DCItemBlock(MainInit.chandelierGypsum) {
+				@Override
+				public String getUnlocalizedName(ItemStack stack) {
+					int j = stack.getMetadata() & 3;
+					return super.getUnlocalizedName() + "_" + j;
+				}
+			});
 			ClimateMain.proxy.regBlockJson(Item
-					.getItemFromBlock(MainInit.chandelierGypsum), "dcs_climate", "dcs_build_chandelier", "build", 2, true);
+					.getItemFromBlock(MainInit.chandelierGypsum), "dcs_climate", "dcs_build_chandelier", "build", 3, true);
 
 			MainInit.doorMarble = new BlockDoorDC(ClimateCore.PACKAGE_BASE + "_door_marble", Material.ROCK);
 			DCMaterialReg

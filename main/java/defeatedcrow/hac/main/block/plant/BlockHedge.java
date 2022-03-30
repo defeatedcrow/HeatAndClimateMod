@@ -5,11 +5,19 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.api.climate.EnumSeason;
+import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
-import net.minecraft.block.BlockFence;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockFaceShape;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -26,7 +34,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockHedge extends BlockFence {
+public class BlockHedge extends BlockDC {
+
+	public static final PropertyBool NORTH = PropertyBool.create("north");
+	public static final PropertyBool EAST = PropertyBool.create("east");
+	public static final PropertyBool SOUTH = PropertyBool.create("south");
+	public static final PropertyBool WEST = PropertyBool.create("west");
 
 	protected static final AxisAlignedBB[] BOUNDING_BOXES_DC = new AxisAlignedBB[] {
 			new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 1.0D, 0.875D),
@@ -52,12 +65,24 @@ public class BlockHedge extends BlockFence {
 	public static final AxisAlignedBB NORTH_AABB2 = new AxisAlignedBB(0.125D, 0.0D, 0.0D, 0.875D, 1.5D, 0.125D);
 	public static final AxisAlignedBB EAST_AABB2 = new AxisAlignedBB(0.875D, 0.0D, 0.125D, 1.0D, 1.5D, 0.875D);
 
-	public BlockHedge(String s) {
-		super(Material.LEAVES, MapColor.FOLIAGE);
-		this.setUnlocalizedName(s);
+	public final EnumSeason season;
+
+	public BlockHedge(String s, EnumSeason seasonIn) {
+		super(Material.LEAVES, s);
+		season = seasonIn;
 		this.setHardness(0.2F);
 		this.setResistance(10.0F);
 		this.setSoundType(SoundType.PLANT);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(SOUTH, false)
+				.withProperty(WEST, false).withProperty(EAST, false).withProperty(DCState.FLAG, false));
+	}
+
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	public boolean isFullCube(IBlockState state) {
+		return false;
 	}
 
 	@Override
@@ -72,15 +97,12 @@ public class BlockHedge extends BlockFence {
 		if (state.getValue(NORTH).booleanValue()) {
 			i |= 1 << EnumFacing.NORTH.getHorizontalIndex();
 		}
-
 		if (state.getValue(EAST).booleanValue()) {
 			i |= 1 << EnumFacing.EAST.getHorizontalIndex();
 		}
-
 		if (state.getValue(SOUTH).booleanValue()) {
 			i |= 1 << EnumFacing.SOUTH.getHorizontalIndex();
 		}
-
 		if (state.getValue(WEST).booleanValue()) {
 			i |= 1 << EnumFacing.WEST.getHorizontalIndex();
 		}
@@ -111,6 +133,32 @@ public class BlockHedge extends BlockFence {
 		if (state.getValue(WEST).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, WEST_AABB2);
 		}
+	}
+
+	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		// client
+		if (ClimateCore.proxy.getClientWorld() != null) {
+			World cw = ClimateCore.proxy.getClientWorld();
+			EnumSeason s = DCTimeHelper.getSeasonEnum(cw);
+			if (s == season) {
+				state = state.withProperty(DCState.FLAG, true);
+			} else {
+				state = state.withProperty(DCState.FLAG, false);
+			}
+		} else if (ClimateCore.proxy.getWorld() != null) {
+			World sw = ClimateCore.proxy.getWorld();
+			EnumSeason s = DCTimeHelper.getSeasonEnum(sw);
+			if (s == season) {
+				state = state.withProperty(DCState.FLAG, true);
+			} else {
+				state = state.withProperty(DCState.FLAG, false);
+			}
+		}
+
+		return state.withProperty(NORTH, canConnectTo(world, pos.north()))
+				.withProperty(EAST, canConnectTo(world, pos.east()))
+				.withProperty(SOUTH, canConnectTo(world, pos.south()))
+				.withProperty(WEST, canConnectTo(world, pos.west()));
 	}
 
 	@Override
@@ -158,9 +206,35 @@ public class BlockHedge extends BlockFence {
 		return state;
 	}
 
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] {
+				NORTH,
+				EAST,
+				WEST,
+				SOUTH,
+				DCState.FLAG
+		});
+	}
+
 	// state
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return 0;
+	}
+
+	public boolean canConnectTo(IBlockAccess world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
+		return block == this;
+	}
+
+	@Override
+	public boolean canBeConnectedTo(IBlockAccess world, BlockPos pos, EnumFacing facing) {
+		return canConnectTo(world, pos.offset(facing));
+	}
+
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return face != EnumFacing.UP && face != EnumFacing.DOWN ? BlockFaceShape.MIDDLE_POLE : BlockFaceShape.CENTER;
 	}
 }

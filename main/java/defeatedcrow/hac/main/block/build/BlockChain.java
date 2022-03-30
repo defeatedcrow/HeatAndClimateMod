@@ -24,7 +24,7 @@ public class BlockChain extends DCSimpleBlock {
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
 
 	public BlockChain(Material m, String s) {
-		super(m, s, 1, false);
+		super(m, s, 3, false);
 		this.setTickRandomly(false);
 		this.setHardness(3.0F);
 		this.setResistance(30.0F);
@@ -52,10 +52,15 @@ public class BlockChain extends DCSimpleBlock {
 
 	@Override
 	public int getMaxMeta() {
-		return 1;
+		return 3;
 	}
 
-	private static String[] names = { "copper", "steel" };
+	private static String[] names = {
+			"copper",
+			"steel",
+			"tin",
+			"gold"
+	};
 
 	@Override
 	public String[] getNameSuffix() {

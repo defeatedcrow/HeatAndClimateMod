@@ -991,6 +991,19 @@ public class LoadingBuildingRecipe {
 							"ingotSteel"
 			});
 
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.chandelierGypsum,
+					1, 3), new Object[] {
+							" Z ",
+							"XYX",
+							" X ",
+							'X',
+							"blockMarble",
+							'Y',
+							new ItemStack(MainInit.chalLamp, 1, 2),
+							'Z',
+							"ingotCopper"
+			});
+
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.tableMarble, 1,
 					0), new Object[] {
 							"XXX",
