@@ -2,7 +2,7 @@ package defeatedcrow.hac.main.client.block;
 
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.client.model.ModelChandelier;
-import defeatedcrow.hac.main.client.model.ModelChandelierChal;
+import defeatedcrow.hac.main.client.model.ModelChandelierCrystal;
 import defeatedcrow.hac.main.client.model.ModelChandelierMarble;
 import defeatedcrow.hac.main.client.model.ModelChandelierSalt;
 import net.minecraft.client.renderer.GlStateManager;
@@ -18,7 +18,7 @@ public class TESRChandelier extends TileEntitySpecialRenderer<TileChandelierGyps
 	private static final String TEX_D = "dcs_climate:textures/tiles/chandelier_marble";
 	private final ModelChandelier MODEL_A = new ModelChandelier();
 	private final ModelChandelierSalt MODEL_B = new ModelChandelierSalt();
-	private final ModelChandelierChal MODEL_C = new ModelChandelierChal();
+	private final ModelChandelierCrystal MODEL_C = new ModelChandelierCrystal();
 	private final ModelChandelierMarble MODEL_D = new ModelChandelierMarble();
 
 	private String[] colors = {
@@ -154,21 +154,9 @@ public class TESRChandelier extends TileEntitySpecialRenderer<TileChandelierGyps
 		GlStateManager.popMatrix();
 	}
 
-	private void renderChandelierC(TileChandelierGypsum te, double x, double y, double z, ModelChandelierChal model,
+	private void renderChandelierC(TileChandelierGypsum te, double x, double y, double z, ModelChandelierCrystal model,
 			String tex) {
 		this.bindTexture(new ResourceLocation(tex));
-
-		GlStateManager.pushMatrix();
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		GlStateManager.translate((float) x + 0.5F, (float) y + 0.375F, (float) z + 0.5F);
-		GlStateManager.scale(1.25F, -1.25F, -1.25F);
-		GlStateManager.rotate(0.0F, 0.0F, 0.0F, 0.0F);
-
-		model.render(0.0F, 0.0F, 0.0F);
-
-		GlStateManager.enableLighting();
-		GlStateManager.disableRescaleNormal();
-		GlStateManager.popMatrix();
 
 		GlStateManager.pushMatrix();
 		GlStateManager.enableRescaleNormal();
@@ -178,13 +166,17 @@ public class TESRChandelier extends TileEntitySpecialRenderer<TileChandelierGyps
 		int k = i / 65536;
 		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		GlStateManager.translate((float) x + 0.5F, (float) y + 0.375F, (float) z + 0.5F);
-		GlStateManager.scale(1.25F, -1.25F, -1.25F);
+		GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
+		GlStateManager.scale(1F, -1F, -1F);
 		GlStateManager.rotate(0.0F, 0.0F, 0.0F, 0.0F);
 
-		for (int m = 0; m <= 6; m++) {
-			GlStateManager.rotate(60, 0.0F, 1.0F, 0.0F);
-			model.renderLamp();
+		model.render(0.0F, 0.0F, 0.0F);
+		model.renderLight();
+
+		for (int m = 0; m <= 8; m++) {
+			GlStateManager.rotate(45, 0.0F, 1.0F, 0.0F);
+			model.renderPart();
+			model.renderLightPart();
 		}
 
 		GlStateManager.enableLighting();

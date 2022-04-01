@@ -1752,6 +1752,28 @@ public class LoadingBuildingRecipe {
 							"ingotSteel"
 			});
 
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.chain, 1,
+					2), new Object[] {
+							"X",
+							"Y",
+							"Y",
+							'X',
+							"string",
+							'Y',
+							"ingotTin"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.chain, 1,
+					3), new Object[] {
+							"X",
+							"Y",
+							"Y",
+							'X',
+							"string",
+							'Y',
+							"ingotGold"
+			});
+
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.flowerPot, 1,
 					0), new Object[] {
 							" X ",
