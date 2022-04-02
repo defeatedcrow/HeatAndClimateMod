@@ -2687,6 +2687,12 @@ entity.dcs.food.pasta_roe.name=鱼子意面
 entity.dcs.food.drink_ginger.name=姜汁汽水
 entity.dcs.food.drink_kuzu.name=葛根茶
 entity.dcs.food.drink_tomato.name=西班牙冻汤
+entity.dcs.food.drink_apple.name=苹果汁
+entity.dcs.food.drink_grape.name=葡萄汁
+entity.dcs.food.drink_chai.name=印度奶茶
+entity.dcs.food.drink_mulled_wine.name=香料酒
+entity.dcs.food.drink_amazake.name=日本甘酒
+entity.dcs.food.drink_eggnog.name=蛋奶酒
 
 entity.dcs.food.sauce_liver.name=肝酱
 entity.dcs.food.sauce_raisin.name=葡萄干黄油
@@ -2694,6 +2700,42 @@ entity.dcs.food.sauce_salsa.name=萨尔萨酱
 
 entity.dcs.food.yogurt_plain.name=酸奶
 entity.dcs.food.yogurt_special.name=特制酸奶
+
+entity.dcs.food.curry_vegi.name=桑巴汤
+entity.dcs.food.curry_beans.name=印度咖喱
+entity.dcs.food.curry_fish.name=孟加拉式咖喱鱼
+entity.dcs.food.curry_spinach.name=菠菜烩奶酪
+entity.dcs.food.curry_butter_chicken.name=香料烤鸡咖喱
+entity.dcs.food.curry_vindaloo.name=温达卢咖喱
+entity.dcs.food.curry_green.name=日本咖喱饭
+entity.dcs.food.curry_rice.name=甘绿羹
+
+entity.dcs.food.cutlery_chopsticks.name=筷子
+entity.dcs.food.cutlery_spoon.name=勺子
+entity.dcs.food.cutlery_fork.name=叉子
+
+entity.dcs.food.liquor_bottle_empty.name=空酒瓶
+entity.dcs.food.liquor_bottle_beer.name=啤酒
+entity.dcs.food.liquor_bottle_wine.name=红酒
+entity.dcs.food.liquor_bottle_sake.name=清酒
+entity.dcs.food.liquor_bottle_date_wine.name=枣椰酒
+entity.dcs.food.liquor_bottle_whisky.name=威士忌
+entity.dcs.food.liquor_bottle_brandy.name=白兰地
+entity.dcs.food.liquor_bottle_pomace_brandy.name=果渣白兰地
+entity.dcs.food.liquor_bottle_shotyu.name=烧酒
+entity.dcs.food.liquor_bottle_araq.name=中东亚力酒
+entity.dcs.food.liquor_bottle_rum_white.name=白朗姆酒
+entity.dcs.food.liquor_bottle_rum.name=黑朗姆酒
+entity.dcs.food.liquor_bottle_akvavit.name=阿夸维特酒
+entity.dcs.food.liquor_bottle_vodka.name=伏特加
+entity.dcs.food.liquor_bottle_nether.name=下界之酒
+entity.dcs.food.liquor_bottle_ender.name=穿墙液
+entity.dcs.food.liquor_bottle_awamori.name=泡盛
+entity.dcs.food.liquor_bottle_cider.name=苹果酒
+entity.dcs.food.water_bottle_rose_water.name=玫瑰水
+entity.dcs.food.water_bottle_tonic_water.name=汤力水
+entity.dcs.food.water_bottle_lemon_squash.name=柠檬汽水
+entity.dcs.food.water_bottle_cola.name=可乐
 
 entity.dcs.main.flowerpot.name=花盆
 entity.dcs.main.dynamite_red.name=炸药
@@ -2705,10 +2747,27 @@ entity.dcs.machine.motor_scooter.name=摩托车
 entity.dcs.machine.magnetic_hover.name=超导磁悬浮气垫船
 entity.dcs.main.big_cushion.name=为懒货准备的灰色大坐垫
 entity.dcs.main.big_cushion_brown.name=为懒货准备的棕色大坐垫
+entity.dcs.main.small_cushion_red.name=为懒货准备的红色大坐垫
+entity.dcs.main.small_cushion_blue.name=为懒货准备的蓝色大坐垫
+entity.dcs.main.small_cushion_straw.name=为懒货准备的稻草大坐垫
+
+entity.dcs.main.desktop_accessories_a.name=书立(书)
+entity.dcs.main.desktop_accessories_b.name=书立(文件夹)
+entity.dcs.main.desktop_accessories_c.name=记事本
+entity.dcs.main.desktop_accessories_d.name=笔架
+entity.dcs.main.desktop_accessories_e.name=桌面收纳盒
+entity.dcs.main.desktop_accessories_f.name=键盘
+entity.dcs.main.desktop_accessories_g.name=笔记本电脑
+entity.dcs.main.desktop_accessories_h.name=手机
+entity.dcs.main.desktop_accessories_i.name=手绘板
+
+entity.dcs.main.coat_rack.name=衣架
 
 entity.dcs.magic.dcs_blackdog.name=黑狗
 entity.dcs.magic.dcs_flametongue.name=烈焰犬
 entity.dcs.magic.dcs_magic_flower_turret.name=鲜花炮台
+entity.dcs.magic.dcs_crowdoll.name=乌鸦玩偶
+entity.dcs.magic.dcs_owldoll.name=猫头鹰玩偶
 
 ## advancements
 advancements.dcs_climate.core.title=Heat and Climate
@@ -2909,6 +2968,20 @@ item.dcs_debug_gauntlet_ur.name=八目紫龙拳套
 dcs.tip.debug_gauntlet.0=测试物品
 dcs.comment.debug_gauntlet.0=测试专用,正常游戏时不可获取.
 dcs.comment.flavor.debug_gauntlet.0="没有这个就不能工作"
+
+##vanilla
+potion.potency.3=IV
+potion.potency.4=V
+potion.potency.5=VI
+potion.potency.6=VII
+potion.potency.7=VIII
+potion.potency.8=IX
+potion.potency.9=X
+potion.potency.10=XI
+potion.potency.11=XII
+potion.potency.12=XIII
+potion.potency.13=XIV
+potion.potency.14=XV
 
 # deprecated
 #tile.dcs_metal_copper.name=铜块
