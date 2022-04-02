@@ -38,7 +38,7 @@ item.dcs_pattern_paper_wear.name=服装样板(饰品)
 item.dcs_tinder_tinder.name=火种
 item.dcs_tinder_fire.name=火棍
 item.dcs_tinder_firestarter.name=点火器
-item.dcs_color_changer_silver.name=变色法杖
+item.dcs_color_changer_silver.name=变换法杖
 
 ## metals
 item.dcs_oreitem_red_1.name=黄铜矿
@@ -236,6 +236,7 @@ item.dcs_desktop_accessories_keyboard.name=键盘
 item.dcs_desktop_accessories_laptop.name=笔记本电脑
 item.dcs_desktop_accessories_phone.name=手机
 item.dcs_desktop_accessories_pen_tablet.name=手绘板
+item.dcs_coat_rack_black.name=衣架
 
 ## foods
 item.dcs_food_materials_salt.name=食盐
@@ -1289,6 +1290,8 @@ tile.dcs_squaretable_greisen_0.name=云英岩方桌
 tile.dcs_squaretable_checker_0.name=花纹格子方桌
 tile.dcs_squaretable_black_0.name=黑色方桌
 tile.dcs_squaretable_rattan_0.name=藤制方桌
+tile.dcs_smalltable_wood_0.name=木制矮桌
+tile.dcs_smalltable_stone_0.name=石制矮桌
 tile.dcs_carpet_red_0.name=地毯木板(红)
 tile.dcs_carpet_white_0.name=地毯木板(白)
 tile.dcs_carpet_gray_0.name=地毯木板(黑)
@@ -1310,6 +1313,13 @@ tile.dcs_chair_greisen_0.name=云英岩椅子
 tile.dcs_chair_checker_0.name=花纹格子椅子
 tile.dcs_chair_black_0.name=黑色椅子
 tile.dcs_chair_rattan_0.name=藤制椅子
+tile.dcs_smallstool_wood.name=木制迷你椅
+tile.dcs_smallstool_white.name=木制迷你椅(白)
+tile.dcs_smallstool_dark.name=木制迷你椅(黑)
+tile.dcs_smallstool_pink.name=脚凳(粉)
+tile.dcs_smallstool_green.name=脚凳(绿)
+tile.dcs_smallstool_blue.name=脚凳(蓝)
+tile.dcs_smallstool_yellow.name=脚凳
 tile.dcs_device_lowchest_marble_0.name=大理石地柜
 tile.dcs_device_lowchest_skarn_0.name=矽卡岩地柜
 tile.dcs_device_lowchest_greisen_0.name=云英岩地柜
@@ -1384,12 +1394,9 @@ tile.dcs_hedge_spring_0.name=春之树篱
 tile.dcs_hedge_summer_0.name=夏之树篱
 tile.dcs_hedge_autumn_0.name=秋之树篱
 tile.dcs_hedge_winter_0.name=冬之树篱
-//tile.dcs_build_shield_0.name=气候奖励盾牌
-//tile.dcs_build_shield_1.name=扭矩奖励盾牌
-//tile.dcs_build_shield_2.name=宝石奖励盾牌
-tile.dcs_build_chandelier_0.name=石膏吊灯
-tile.dcs_build_chandelier_1.name=岩盐吊灯
-tile.dcs_build_chandelier_2.name=玉髓吊灯
+# tile.dcs_build_shield_0.name=气候奖励盾牌
+# tile.dcs_build_shield_1.name=扭矩奖励盾牌
+# tile.dcs_build_shield_2.name=宝石奖励盾牌
 tile.dcs_device_realtimeclock_0.name=实时时钟
 tile.dcs_device_realtimeclock_1.name=实时时钟
 tile.dcs_device_realtimeclock_2.name=实时时钟
@@ -1401,6 +1408,10 @@ item.dcs_door_greisen_item.name=云英岩门
 item.dcs_door_gypsum_item.name=石膏门
 item.dcs_door_steel_item.name=钢制门
 tile.dcs_door_hikido_0.name=拉门
+tile.dcs_build_chandelier_0.name=石膏吊灯
+tile.dcs_build_chandelier_1.name=岩盐吊灯
+tile.dcs_build_chandelier_2.name=玉髓吊灯
+tile.dcs_build_chandelier_3.name=大理石吊灯
 tile.dcs_build_curtain_0.name=窗帘
 tile.dcs_build_curtain_red_0.name=红色窗帘
 tile.dcs_build_curtain_blue_0.name=蓝色窗帘
@@ -1426,6 +1437,8 @@ tile.dcs_build_linoleum_1.name=红色油毡
 tile.dcs_build_linoleum_0.name=黑色油毡
 tile.dcs_build_chain_copper.name=铜链条
 tile.dcs_build_chain_steel.name=钢链条
+tile.dcs_build_chain_tin.name=锡链条
+tile.dcs_build_chain_gold.name=金链条
 tile.dcs_build_oillamp_wood.name=木油灯
 tile.dcs_build_oillamp_gold.name=金油灯
 tile.dcs_build_oillamp_chalcedony.name=白油灯
@@ -1879,6 +1892,7 @@ dcs.tip.r_click_use=右键单击: 放置对象
 dcs.tip.r_click_remove=右键单击对象: 移除对象
 dcs.tip.magic_cost=魔法消耗:
 dcs.tip.magic_limit=设置数量上限:
+dcs.tip.color_change_target=可以使用变换法杖更改物品外观。
 
 dcs.tip.danger_drink=完全恢复 (有时候会当场死亡)
 dcs.tip.correct_from_cow=从附近的牛和流体漏斗里收集。
@@ -2111,20 +2125,20 @@ dcs.comment.color_gauntlet2.del=坐标已删除。
 dcs.comment.color_gauntlet2.del2=设置数量达到上限,已删除旧坐标。
 dcs.comment.color_gauntlet2.add=已注册坐标。
 dcs.comment.color_gauntlet2.limit=设置数量达到上限。
-2
+#2
 
 dcs.tip.color_cube0=底部达到五格深
 dcs.tip.color_cube1=被花包围的地方
 dcs.tip.color_cube2=高于精炼的温度
 dcs.tip.color_cube3=比熔岩深的地下黑暗
 dcs.tip.color_cube4=比云层高的高度
-3
+#3
 dcs.tip.card_type.SELF_BUFF=类型... 自身效果
 dcs.tip.card_type.PROJECTILE=类型... 弹射物
 dcs.tip.card_type.AREA=类型... 范围效果
 dcs.tip.card_type.CIRCLE=类型... 魔法阵
 dcs.tip.card_type.SPAWN=类型.. 召唤
-4
+#4
 dcs.comment.card.0=标记当前位置为重生点
 dcs.comment.card.1=向周围撒骨粉
 dcs.comment.card.2=药水效果(力量, 抗性提升, 急迫)
@@ -2365,43 +2379,43 @@ potion.effect.dcs.gravity=重力药水
 splash_potion.effect.dcs.gravity=喷溅型重力药水
 lingering_potion.effect.dcs.gravity=滞留型重力药水
 tipped_arrow.effect.dcs.gravity=重力之箭
-//
+#11
 dcs.potion.bird=鸟之祝福
 potion.effect.dcs.bird=鸟之祝福药水
 splash_potion.effect.dcs.bird=喷溅型鸟之祝福药水
 lingering_potion.effect.dcs.bird=滞留型鸟之祝福药水
 tipped_arrow.effect.dcs.bird=鸟之祝福之箭
-22
+#22
 dcs.potion.ocean=海之祝福
 potion.effect.dcs.ocean=海之祝福药水
 splash_potion.effect.dcs.ocean=喷溅型海之祝福药水
 lingering_potion.effect.dcs.ocean=滞留型海之祝福药水
 tipped_arrow.effect.dcs.ocean=海之祝福之箭
-55
+#55
 dcs.potion.heavyboots=铁靴
 potion.effect.dcs.heavyboots=铁靴药水
 splash_potion.effect.dcs.heavyboots=喷溅型铁靴药水
 lingering_potion.effect.dcs.heavyboots=滞留型铁靴药水
 tipped_arrow.effect.dcs.heavyboots=铁靴之箭
-66
+#66
 dcs.potion.nimble=敏捷
 potion.effect.dcs.nimble=敏捷药水
 splash_potion.effect.dcs.nimble=喷溅型敏捷药水
 lingering_potion.effect.dcs.nimble=滞留型敏捷药水
 tipped_arrow.effect.dcs.nimble=敏捷之箭
-77
+#77
 dcs.potion.wide_mining=连锁挖掘
 potion.effect.dcs.wide_mining=连锁挖掘药水
 splash_potion.effect.dcs.wide_mining=喷溅型连锁挖掘药水
 lingering_potion.effect.dcs.wide_mining=滞留型连锁挖掘药水
 tipped_arrow.effect.dcs.wide_mining=连锁挖掘之箭
-88
+#88
 dcs.potion.projectile_resistant=耐射性
 potion.effect.dcs.projectile_resistant=耐射性药水
 splash_potion.effect.dcs.projectile_resistant=喷溅型耐射性药水
 lingering_potion.effect.dcs.projectile_resistant=滞留型耐射性药水
 tipped_arrow.effect.dcs.projectile_resistant=耐射性之箭
-99
+#99
 dcs.potion.reflexion=弹射
 potion.effect.dcs.reflexion=弹射药水
 splash_potion.effect.dcs.reflexion=喷溅型弹射药水
@@ -2467,11 +2481,15 @@ entity.dcs.food.toast_garlic.name=蒜香吐司
 entity.dcs.food.pita_bread.name=皮塔饼
 entity.dcs.food.pancake.name=松饼
 entity.dcs.food.walnut_bread.name=核桃面包
-entity.dcs.food.gingerbreadman.name=姜饼人
+#entity.dcs.food.gingerbreadman.name=姜饼人
+entity.dcs.food.gingerman.name=姜饼人
 entity.dcs.food.tortilla.name=玉米煎饼
 entity.dcs.food.raisin_bread.name=葡萄干面包
 entity.dcs.food.sausage_bread.name=香肠面包卷
-entity.dcs.food.graham_crackers.name=格雷脆饼
+#entity.dcs.food.graham_crackers.name=格雷脆饼
+entity.dcs.food.graham_cracker.name=格雷脆饼
+entity.dcs.food.cinnamon_roll.name=肉桂卷
+entity.dcs.food.anko.name=红豆面包
 
 entity.dcs.food.pizza_roe.name=年糕披萨
 entity.dcs.food.pizza_teriyaki.name=照烧披萨
@@ -2512,8 +2530,8 @@ entity.dcs.food.sandwich_apple.name=苹果三明治
 entity.dcs.food.sandwich_egg.name=鸡蛋三明治
 entity.dcs.food.sandwich_lemon.name=柠檬三明治
 entity.dcs.food.sandwich_salad.name=沙拉三明治
-item.dcs_food_sandwich_liver.name=肝酱三明治
-item.dcs_food_sandwich_salmon.name=鲑鱼三明治
+entity.dcs.food.sandwich_liver.name=肝酱三明治
+entity.dcs.food.sandwich_salmon.name=鲑鱼三明治
 entity.dcs.food.clubsand_square.name=牛肉俱乐部三明治
 entity.dcs.food.clubsand_round.name=鱼肉俱乐部三明治
 
@@ -2573,11 +2591,10 @@ entity.dcs.food.salad_watermelon.name=番茄西瓜沙拉
 entity.dcs.food.cake_butter.name=黄油蛋糕
 entity.dcs.food.cake_chocolate.name=巧克力蛋糕
 entity.dcs.food.cake_coffee.name=咖啡果冻
-entity.dcs.food.cake_lemon.name=柠檬果冻
 entity.dcs.food.cake_bakedcream.name=蛋奶冻布丁
 entity.dcs.food.cake_lemon.name=柠檬果冻
-entity.dcs.food.cake_berryjelly.name=浆果布丁
-entity.dcs.food.cake_kuzujelly.name=渣饼
+entity.dcs.food.cake_berry.name=浆果布丁
+entity.dcs.food.cake_kuzu.name=渣饼
 entity.dcs.food.cake_egg_cocotte_raw.name=生蛋砂锅
 entity.dcs.food.cake_gg_cocotte_baked.name=鸡蛋砂锅
 entity.dcs.food.cake_tower.name=煎饼塔
@@ -2670,7 +2687,7 @@ entity.dcs.food.yogurt_special.name=特制酸奶
 entity.dcs.main.flowerpot.name=花盆
 entity.dcs.main.dynamite_red.name=炸药
 entity.dcs.main.dynamite_blue.name=绢布炸药
-//entity.dcs.main.dynamite_small.name=肥料炸药
+#entity.dcs.main.dynamite_small.name=肥料炸药
 entity.dcs.main.balloon_crow.name=Defeatedcrow气球
 entity.dcs.machine.motor_cart.name=推进矿车
 entity.dcs.machine.motor_scooter.name=摩托车
@@ -2703,7 +2720,7 @@ advancements.dcs_climate.climate_cooking3.title=料理名人
 advancements.dcs_climate.climate_cooking3.description=烹调锅是用来合成多种料理的方块。
 advancements.dcs_climate.climate_tart.title=苹果挞
 advancements.dcs_climate.climate_tart.description=用气候冶炼烤一个苹果馅饼
-//
+##
 advancements.dcs_climate.metal_color_ore.title=彩色的矿石
 advancements.dcs_climate.metal_color_ore.description=每种颜色的矿石生成在相应的群系
 advancements.dcs_climate.metal_oredust.title=新的金属
@@ -2722,7 +2739,7 @@ advancements.dcs_climate.metal_exchanger.title=究极温度调节
 advancements.dcs_climate.metal_exchanger.description=放置热交换器
 advancements.dcs_climate.metal_tier3.title=现代科学之理
 advancements.dcs_climate.metal_tier3.description=得到Tier3的金属块
-//
+##
 advancements.dcs_climate.machine_wrench.title=机械工程之道
 advancements.dcs_climate.machine_wrench.description=得到黄铜扳手
 advancements.dcs_climate.machine_shaft.title=扭矩之力
@@ -2743,7 +2760,7 @@ advancements.dcs_climate.machine_scooter.title=来一场说走就走的旅行
 advancements.dcs_climate.machine_scooter.description=请注意交通安全！
 advancements.dcs_climate.machine_musket.title=精准射手
 advancements.dcs_climate.machine_musket.description=用滑膛枪杀死一只100m开外的骷髅
-//
+##
 advancements.dcs_climate.magic_gem.title=充满魅力的宝石
 advancements.dcs_climate.magic_gem.description=得到任意一个HAC的宝石
 advancements.dcs_climate.magic_all_gem.title=珠宝收藏家
@@ -3117,4 +3134,4 @@ dcs.tip.mace.light=Effect: 发射射线
 dcs.tip.mace.moon=Effect: 治愈玩家并清除负面状态
 dcs.tip.mace.ocean=Effect: 让玩家获得水下呼吸的能力
 
-//建议不要随意删除条目，作者修改物品bug完毕后会重新把物品加入mod。避免二次翻译。
+## 建议不要随意删除条目，作者修改物品bug完毕后会重新把物品加入mod。避免二次翻译。
