@@ -2591,7 +2591,7 @@ entity.dcs.food.cake_chocolate.name=Chocolate Cake
 entity.dcs.food.cake_coffee.name=Coffee Jelly
 entity.dcs.food.cake_lemon.name=Lemon Jelly
 entity.dcs.food.cake_bakedcream.name=Baked Custard
-entity.dcs.food.cake_lemon.name=Lemon Jelly
+#entity.dcs.food.cake_lemon.name=Lemon Jelly
 entity.dcs.food.cake_berry.name=Berry Jelly
 entity.dcs.food.cake_kuzu.name=Kuzumochi
 entity.dcs.food.cake_egg_cocotte_raw.name=Raw Eggs en Cocotte
@@ -2752,7 +2752,7 @@ entity.dcs.main.desktop_accessories_c.name=Notebook
 entity.dcs.main.desktop_accessories_d.name=Pen Stand
 entity.dcs.main.desktop_accessories_e.name=Desktop Organizer
 entity.dcs.main.desktop_accessories_f.name=Keyboard
-entity.dcs.main.desktop_accessories_g.name=Laotop
+entity.dcs.main.desktop_accessories_g.name=Laptop
 entity.dcs.main.desktop_accessories_h.name=Cell Phone
 entity.dcs.main.desktop_accessories_i.name=Drawing Tablet
 
