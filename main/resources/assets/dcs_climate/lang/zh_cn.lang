@@ -2010,7 +2010,7 @@ dcs.tip.incubator=用于培养微生物或孵化鸡蛋。
 dcs.tip.color_changer=右键点击切换目标方块的模型。
 dcs.tip.crafting_counter=具有工作台功能的小型箱子。
 dcs.tip.hopper_chest_rotate=改变漏斗出口朝向。
-dcs.tip.coat_rack=右键以与衣架交换装备中的头盔与胸甲。
+dcs.tip.coat_rack=右键衣架可以将装备中的头盔与胸甲和衣架上的装备对调。
 
 dcs.tip.heat_treatment_jei1=%d刻以内
 dcs.tip.heat_treatment_jei2=失败产物
@@ -3216,3 +3216,4 @@ dcs.tip.mace.moon=Effect: 治愈玩家并清除负面状态
 dcs.tip.mace.ocean=Effect: 让玩家获得水下呼吸的能力
 
 ## 建议不要随意删除条目，作者修改物品bug完毕后会重新把物品加入mod。避免二次翻译。
+
