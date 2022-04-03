@@ -1880,14 +1880,6 @@ dcs.tip.remove_bad_potion=Clear only bad potion effects.
 dcs.tip.clear_potion=Clear all potion effects.
 dcs.tip.drink_customize=Customizable with milk or sugar item.
 dcs.tip.trade_only=Available from Trader Merchant Villagers.
-dcs.tip.allcharm=This item works in top slots of player inventory.
-dcs.tip.amulet=This item works in creature or player inventory.
-dcs.tip.offhand_tool=This item works in creature or player off-hand slot.
-dcs.tip.r_click_pos=Right-click to block: register the coordinates.
-dcs.tip.r_click_use=Right-click to block: place the object the coordinates.
-dcs.tip.r_click_remove=Right-click to object: Remove the object.
-dcs.tip.magic_cost=Cost:
-dcs.tip.magic_limit=Limit:
 dcs.tip.color_change_target=Appearance change target by color changer.
 
 dcs.tip.danger_drink=Powerful but dangerous!
@@ -2466,6 +2458,16 @@ entity.Villager.dcs_agri_researcher=Agricultural Researcher
 entity.Villager.dcs_engineer=Mechanical Engineer
 entity.Villager.dcs_tailor=Tailor
 
+##CreativeTab
+dcs.creativetab.building=HeatAndClimate:Buildings
+dcs.creativetab.container=HeatAndClimate:Containers
+dcs.creativetab.equip=HeatAndClimate:Clothing
+dcs.creativetab.food=HeatAndClimate:Foods
+dcs.creativetab.food_advanced=HeatAndClimate:Foods Advanced
+dcs.creativetab.machine=HeatAndClimate:Machine
+dcs.creativetab.magic=HeatAndClimate:Magic
+dcs.creativetab.tool=HeatAndClimate:Tools
+
 ## entities
 entity.dcs.food.r_bread.name=Round Bread
 entity.dcs.food.s_bread.name=Plain Bread
@@ -2591,7 +2593,6 @@ entity.dcs.food.cake_chocolate.name=Chocolate Cake
 entity.dcs.food.cake_coffee.name=Coffee Jelly
 entity.dcs.food.cake_lemon.name=Lemon Jelly
 entity.dcs.food.cake_bakedcream.name=Baked Custard
-#entity.dcs.food.cake_lemon.name=Lemon Jelly
 entity.dcs.food.cake_berry.name=Berry Jelly
 entity.dcs.food.cake_kuzu.name=Kuzumochi
 entity.dcs.food.cake_egg_cocotte_raw.name=Raw Eggs en Cocotte

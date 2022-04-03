@@ -4,6 +4,7 @@ import defeatedcrow.hac.core.CreativeTabClimate;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,7 +19,7 @@ public class CreativeTabClimateFoodAdv extends CreativeTabClimate {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getTranslatedTabLabel() {
-		return "HeatAndClimate:Foods_Advanced";
+		return I18n.format("dcs.creativetab.food_advanced");
 	}
 
 	@Override

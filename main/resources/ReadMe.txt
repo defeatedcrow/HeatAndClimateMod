@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.8.15 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.8.16 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -2298,6 +2298,14 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.8.16
+　変更
+　　・クリエイティブタブの名前をlangファイル対応
+　修正
+　　・いくつかの翻訳のミスを修正(Pliosauroidea氏より)
+　EX
+　　・zh_cn.lang更新(Pliosauroidea氏より)
 
 ○3.8.15
 　新規
