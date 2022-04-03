@@ -2472,12 +2472,12 @@ entity.Villager.dcs_tailor=裁缝
 
 ##CreativeTab
 dcs.creativetab.building=热量与气候:建筑
-dcs.creativetab.container=热量与气候:容器
+dcs.creativetab.container=热量与气候:打包物品
 dcs.creativetab.equip=热量与气候:衣着
 dcs.creativetab.food=热量与气候:食物
-dcs.creativetab.food_advanced=热量与气候:高级食物
+dcs.creativetab.food_advanced=热量与气候:进阶食物
 dcs.creativetab.machine=热量与气候:机械装置
-dcs.creativetab.magic=热量与气候:魔法
+dcs.creativetab.magic=热量与气候:宝石魔法
 dcs.creativetab.tool=热量与气候:工具
 
 ## entities
