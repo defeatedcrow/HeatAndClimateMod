@@ -347,9 +347,9 @@ public class ItemLiquorBottle extends FoodItemBase {
 		if (!world.isRemote && !DCUtil.isEmpty(stack) && living != null) {
 			int meta = stack.getMetadata();
 			Fluid fluid = getFluidLocal(meta);
-			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, 3F, 1);
+
 			IDrinkCustomize drink = stack.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
-			float durF = 1.0F;
+			float durF = 3.0F;
 			int ampF = 0;
 			if (drink != null) {
 				durF *= drink.getMilk().effect;
@@ -360,7 +360,7 @@ public class ItemLiquorBottle extends FoodItemBase {
 					durF *= l;
 				}
 			}
-
+			List<PotionEffect> effects = ItemSilverCup.getPotionEffect(fluid, durF, ampF);
 			if (living instanceof EntityPlayer && DCIntegrationCore.loadedTaN) {
 				DCThirstHelper.onDrink((EntityPlayer) living, fluid);
 			}
@@ -375,8 +375,8 @@ public class ItemLiquorBottle extends FoodItemBase {
 						Potion por = get.getPotion();
 						if (por == null)
 							continue;
-						int amp = get.getAmplifier() * ampF;
-						int dur = MathHelper.ceil(get.getDuration() * durF);
+						int amp = get.getAmplifier();
+						int dur = MathHelper.ceil(get.getDuration());
 						if (living.isPotionActive(get.getPotion())) {
 							PotionEffect check = living.getActivePotionEffect(por);
 							dur += check.getDuration();
