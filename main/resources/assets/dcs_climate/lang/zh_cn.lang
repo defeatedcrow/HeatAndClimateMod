@@ -56,7 +56,7 @@ item.dcs_oreitem_green_3.name=铬铁矿
 item.dcs_oreitem_blue_3.name=辉铋矿
 item.dcs_oreitem_white_3.name=金红石
 item.dcs_oreitem_black_3.name=辉钼矿
-item.dcs_oreitem_lead.name=鉛粉末
+item.dcs_oreitem_lead.name=铅粉末
 item.dcs_ingot_copper.name=铜锭
 item.dcs_ingot_zinc.name=锌锭
 item.dcs_ingot_silver.name=银锭
@@ -2469,6 +2469,16 @@ entity.Villager.dcs_trader=贸易商人
 entity.Villager.dcs_agri_researcher=农业研究员
 entity.Villager.dcs_engineer=机械技师
 entity.Villager.dcs_tailor=裁缝
+
+##CreativeTab
+dcs.creativetab.building=热量与气候:建筑
+dcs.creativetab.container=热量与气候:装箱物品
+dcs.creativetab.equip=热量与气候:衣着
+dcs.creativetab.food=热量与气候:食物
+dcs.creativetab.food_advanced=热量与气候:进阶食物
+dcs.creativetab.machine=热量与气候:机械装置
+dcs.creativetab.magic=热量与气候:宝石魔法
+dcs.creativetab.tool=热量与气候:工具
 
 ## entities
 entity.dcs.food.r_bread.name=圆面包
