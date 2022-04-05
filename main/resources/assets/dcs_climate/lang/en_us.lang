@@ -2458,7 +2458,7 @@ entity.Villager.dcs_agri_researcher=Agricultural Researcher
 entity.Villager.dcs_engineer=Mechanical Engineer
 entity.Villager.dcs_tailor=Tailor
 
-##CreativeTab
+## CreativeTab
 dcs.creativetab.building=HeatAndClimate:Buildings
 dcs.creativetab.container=HeatAndClimate:Containers
 dcs.creativetab.equip=HeatAndClimate:Clothing

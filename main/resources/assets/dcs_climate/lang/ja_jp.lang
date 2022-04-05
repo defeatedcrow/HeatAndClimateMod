@@ -2411,6 +2411,16 @@ entity.Villager.dcs_agri_researcher=農業研究家
 entity.Villager.dcs_engineer=機械技師
 entity.Villager.dcs_tailor=裁縫師
 
+## CreativeTab
+dcs.creativetab.building=HeatAndClimate:建築
+dcs.creativetab.container=HeatAndClimate:コンテナ
+dcs.creativetab.equip=HeatAndClimate:服飾
+dcs.creativetab.food=HeatAndClimate:料理
+dcs.creativetab.food_advanced=HeatAndClimate:微生物
+dcs.creativetab.machine=HeatAndClimate:機械
+dcs.creativetab.magic=HeatAndClimate:魔法
+dcs.creativetab.tool=HeatAndClimate:ツール
+
 ## advancement
 advancements.dcs_climate.core.title=Heat and Climate
 advancements.dcs_climate.core.description=気候を利用して遊ぼう!

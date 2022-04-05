@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -38,7 +39,7 @@ public class EntityCrowBalloon extends EntityLivingBase {
 		this.setSize(0.5F, 2.0F);
 		this.handItems = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
 		this.armorItems = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
-		this.setHealth(30.0F);
+		this.setHealth(40.0F);
 	}
 
 	public EntityCrowBalloon(World worldIn, double posX, double posY, double posZ) {
@@ -55,6 +56,13 @@ public class EntityCrowBalloon extends EntityLivingBase {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
+	}
+
+	@Override
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
 	}
 
 	@Override

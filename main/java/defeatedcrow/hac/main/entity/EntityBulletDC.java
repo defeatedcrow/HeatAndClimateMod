@@ -247,7 +247,7 @@ public class EntityBulletDC extends Entity implements IProjectile {
 			List<Entity> list = this.findEntityOnPath(vec3d1, vec3d);
 			if (!list.isEmpty()) {
 				for (Entity entity : list) {
-					if (entity != null && entity != this.shootingEntity) {
+					if (entity != null && entity != this.shootingEntity && entity != this) {
 						raytraceresult = new RayTraceResult(entity);
 					}
 

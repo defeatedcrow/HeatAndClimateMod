@@ -1,6 +1,5 @@
 package defeatedcrow.hac.main.entity;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -23,12 +22,7 @@ public class EntityCrowBullet extends EntityBulletDC {
 
 	@Override
 	protected void onHit(RayTraceResult trace) {
-		Entity entity = trace.entityHit;
 
-		if (entity != null) {
-			BlockPos pos = entity.getPosition();
-			onEffect(pos.up());
-		}
 	}
 
 	@Override
@@ -37,9 +31,10 @@ public class EntityCrowBullet extends EntityBulletDC {
 			BlockPos pos = trace.getBlockPos();
 			EnumFacing side = trace.sideHit;
 			if (side != null) {
-				pos.offset(side);
+				pos.offset(side, 2);
 			}
 			onEffect(pos);
+			this.setDead();
 		}
 	}
 
@@ -50,7 +45,6 @@ public class EntityCrowBullet extends EntityBulletDC {
 
 			world.spawnEntity(baloon);
 		}
-		this.setDead();
 	}
 
 	@Override
