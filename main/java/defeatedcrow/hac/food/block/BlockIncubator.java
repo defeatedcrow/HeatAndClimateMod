@@ -9,7 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -28,8 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockIncubator extends DCTileBlock {
-
+public class BlockIncubator extends DCTileBlockFaced {
 	public BlockIncubator(String s) {
 		super(Material.CLAY, s, 0);
 	}

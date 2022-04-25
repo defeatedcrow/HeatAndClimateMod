@@ -20,6 +20,7 @@ import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -60,24 +61,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable,
 		IPlantable {
-
 	public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.75D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.25D, 1.0D, 1.0D);
 	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.25D);
 	public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.75D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB UP_AABB = new AxisAlignedBB(0.0D, 0.5D, 0.0D, 1.0D, 1.0D, 1.0D);
-
 	public static final PropertyBool GROUND = PropertyBool.create("ground");
 	public static final PropertyBool TOP = PropertyBool.create("top");
 	public static final PropertyDirection FACING2 = PropertyDirection.create("facing");
-
 	protected Random cropRand = new Random();
 
 	public BlockWisteria(String s) {
 		super(Material.PLANTS, s);
 		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0)
-				.withProperty(FACING2, EnumFacing.DOWN).withProperty(GROUND, false).withProperty(TOP, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0).withProperty(FACING2, EnumFacing.DOWN).withProperty(GROUND, false).withProperty(TOP, false));
 	}
 
 	@Override
@@ -113,7 +110,6 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 		list.add(new ItemStack(this, 1, 2));
 		return list;
 	}
-
 	/* Block動作 */
 
 	@Override
@@ -226,7 +222,6 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
-
 	/* IClimateCrop */
 
 	@Override
@@ -236,7 +231,6 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 		if (s == 2) {
 			item = new ItemStack(this, 1, 2);
 		}
-
 		return item;
 	}
 
@@ -269,8 +263,7 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 
 	protected boolean isSoil(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		return state.getBlock() == this || isSuitableMaterial(state.getMaterial()) || world.getBlockState(pos)
-				.getBlock().canSustainPlant(state, world, pos, EnumFacing.UP, this);
+		return state.getBlock() == this || isSuitableMaterial(state.getMaterial()) || world.getBlockState(pos).getBlock().canSustainPlant(state, world, pos, EnumFacing.UP, this);
 	}
 
 	protected boolean isSuitableMaterial(Material mat) {
@@ -283,8 +276,7 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 			if (face != EnumFacing.DOWN) {
 				if (!world.isAirBlock(pos.offset(face))) {
 					IBlockState check = world.getBlockState(pos.offset(face));
-					if (check.getMaterial() != Material.PLANTS && !check.getMaterial()
-							.isReplaceable())
+					if (check.getMaterial() != Material.PLANTS && !check.getMaterial().isReplaceable())
 						return true;
 				}
 			}
@@ -342,8 +334,7 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 				if (f == EnumFacing.DOWN) {
 					IBlockState state2 = this.getActualState(state, world, pos);
 					EnumFacing side = state2.getValue(FACING2);
-					if (side.getAxis().isHorizontal() && world.isAirBlock(pos.up().offset(side)) && this
-							.isGrowablePlace(world, pos.up().offset(side))) {
+					if (side.getAxis().isHorizontal() && world.isAirBlock(pos.up().offset(side)) && this.isGrowablePlace(world, pos.up().offset(side))) {
 						IBlockState newstate = this.getDefaultState();
 						world.setBlockState(pos.up().offset(side), newstate, 2);
 					}
@@ -456,7 +447,6 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 		ret.add(DCAirflow.FLOW);
 		return ret;
 	}
-
 	/* IRapidCollectables */
 
 	@Override
@@ -481,14 +471,12 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
 		return this.harvest(world, pos, state, player);
 	}
-
 	/* Json登録用 */
 
 	@Override
 	public String[] getNameSuffix() {
 		return null;
 	};
-
 	/* drop */
 
 	@Override
@@ -505,7 +493,6 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return this.getSeedItem(state).getItem();
 	}
-
 	/* state */
 
 	@Override
@@ -537,9 +524,7 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 			f = EnumFacing.UP;
 		}
 		for (EnumFacing f2 : EnumFacing.HORIZONTALS) {
-			if (!world.isAirBlock(pos.offset(f2)) && world.getBlockState(pos.offset(f2))
-					.getMaterial() != Material.PLANTS && !world.getBlockState(pos.offset(f2)).getMaterial()
-							.isReplaceable()) {
+			if (!world.isAirBlock(pos.offset(f2)) && world.getBlockState(pos.offset(f2)).getMaterial() != Material.PLANTS && !world.getBlockState(pos.offset(f2)).getMaterial().isReplaceable()) {
 				f = f2;
 				break;
 			}
@@ -557,6 +542,15 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 		});
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
 	/* IGrowable */
 
 	@Override

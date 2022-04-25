@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.machine.MachineInit;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
@@ -32,15 +33,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockEntityPanel extends BlockContainerDC {
-
 	public final int maxMeta;
 
 	public BlockEntityPanel(String s) {
 		super(Material.GROUND, s);
 		this.setHardness(1.5F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.TYPE4, 0)
-				.withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.TYPE4, 0).withProperty(DCState.POWERED, false));
 		this.maxMeta = 3;
 	}
 
@@ -141,12 +140,10 @@ public class BlockEntityPanel extends BlockContainerDC {
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 		int f = 0;
-
 		i = state.getValue(DCState.TYPE4);
 		if (i > maxMeta) {
 			i = maxMeta;
 		}
-
 		f = state.getValue(DCState.POWERED) ? 8 : 0;
 		return i + f;
 	}
@@ -158,7 +155,20 @@ public class BlockEntityPanel extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.POWERED, DCState.TYPE4 });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.POWERED,
+				DCState.TYPE4
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override
@@ -171,5 +181,4 @@ public class BlockEntityPanel extends BlockContainerDC {
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
 	}
-
 }

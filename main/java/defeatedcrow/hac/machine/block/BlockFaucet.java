@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -37,7 +38,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * トルク系装置のBlockクラスに似ているが、使い方が違う
  */
 public class BlockFaucet extends BlockContainerDC {
-
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0.3125D, 0.0D, 0.5D, 0.6875D, 0.75D, 1.0D);
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0.3125D, 0.0D, 0.0D, 0.6875D, 0.75D, 0.5D);
 	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0.5D, 0.0D, 0.3125D, 1.0D, 0.75D, 0.6875D);
@@ -48,8 +48,7 @@ public class BlockFaucet extends BlockContainerDC {
 		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
-				.withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(DCState.POWERED, false));
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -109,7 +108,6 @@ public class BlockFaucet extends BlockContainerDC {
 			return AABB_WEST;
 		default:
 			return AABB_DOWN;
-
 		}
 	}
 
@@ -134,8 +132,7 @@ public class BlockFaucet extends BlockContainerDC {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
-				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -144,7 +141,6 @@ public class BlockFaucet extends BlockContainerDC {
 	public int getMetaFromState(IBlockState state) {
 		int f = 0;
 		int i = 0;
-
 		f = state.getValue(DCState.SIDE).index;
 		i = state.getValue(DCState.POWERED) ? 8 : 0;
 		return i + f;
@@ -157,8 +153,22 @@ public class BlockFaucet extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE, DCState.POWERED });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.SIDE,
+				DCState.POWERED
+		});
+	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.POWERED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.SIDE;
 	}
 
 	@Override

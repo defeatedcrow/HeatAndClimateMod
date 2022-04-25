@@ -3,7 +3,6 @@ package defeatedcrow.hac.main.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
@@ -18,7 +17,6 @@ import defeatedcrow.hac.magic.client.TESRVeinBeacon;
 import defeatedcrow.hac.magic.event.MagicClientEvent;
 import defeatedcrow.hac.magic.proj.EntityFlowerBolt;
 import defeatedcrow.hac.main.CommonMainProxy;
-import defeatedcrow.hac.main.block.build.BlockMetalFenceBase;
 import defeatedcrow.hac.main.block.build.TileAwning;
 import defeatedcrow.hac.main.block.build.TileBedDC;
 import defeatedcrow.hac.main.block.build.TileBedDCFuton;
@@ -26,6 +24,7 @@ import defeatedcrow.hac.main.block.build.TileBedDCHammock;
 import defeatedcrow.hac.main.block.build.TileBedDCRattan;
 import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
+import defeatedcrow.hac.main.block.build.TileDisplayCase;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileDisplayStand;
 import defeatedcrow.hac.main.block.build.TileDoorHikido;
@@ -72,6 +71,7 @@ import defeatedcrow.hac.main.client.block.TESRBellow;
 import defeatedcrow.hac.main.client.block.TESRCarbideLamp;
 import defeatedcrow.hac.main.client.block.TESRChandelier;
 import defeatedcrow.hac.main.client.block.TESRCraftingCounter;
+import defeatedcrow.hac.main.client.block.TESRDisplayCase;
 import defeatedcrow.hac.main.client.block.TESRDisplayShelf;
 import defeatedcrow.hac.main.client.block.TESRDisplayStand;
 import defeatedcrow.hac.main.client.block.TESRDoorHikido;
@@ -167,9 +167,7 @@ import defeatedcrow.hac.main.entity.EntitySmallCushionC;
 import defeatedcrow.hac.main.entity.EntityThrowingArrow;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -325,6 +323,7 @@ public class ClientMainProxy extends CommonMainProxy {
 		registerTileEntity(TileMFenceGlass.class, "dcs_te_mfence_glass", new TESRMFenceGlass());
 		registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net", new TESRMFenceNet());
 		registerTileEntity(TileDisplayStand.class, "dcs_te_display_stand", new TESRDisplayStand());
+		registerTileEntity(TileDisplayCase.class, "dcs_te_display_case", new TESRDisplayCase());
 		registerTileEntity(TileSwedishTorch.class, "dcs_te_swedish_torch", new TESRSwedishTorch());
 		GameRegistry.registerTileEntity(TileTatami.class, "dcs_te_carpet_tatami");
 		registerTileEntity(TileDoorHikido.class, "dcs_te_door_hikido", new TESRDoorHikido());
@@ -381,60 +380,24 @@ public class ClientMainProxy extends CommonMainProxy {
 				.regSimpleBlock(block, ClimateCore.PACKAGE_ID, ClimateCore.PACKAGE_BASE + "_" + name, "crop", max);
 	}
 
-	/**
-	 * メタ無しJson製Block。一部の階段・ハーフにのみ使用している
-	 */
 	@Override
-	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {
-		if (item == null)
-			return;
-		int m = 0;
-		if (max == 0) {
-			ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(
-					domein + ":" + dir + "/" + name, "inventory"));
-		} else {
-			while (m < max + 1) {
-				if (f) {
-					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(
-							domein + ":" + dir + "/" + name + m, "inventory"));
-				} else {
-					ModelLoader.setCustomModelResourceLocation(item, m, new ModelResourceLocation(
-							domein + ":" + dir + "/" + name, "inventory"));
-				}
-				m++;
-			}
+	public void regBlockSlab(Block block, String domein, String name, String dir) {
+		for (int i = 0; i < 16; i++) {
+			ModelLoader.setCustomModelResourceLocation(Item
+					.getItemFromBlock(block), i, new ModelResourceLocation(domein + ":" + dir + "/" + name, "inventory"));
 		}
 	}
 
-	/** MetalFence専用 */
 	@Override
-	public void regBlockMFence(Block block, String domein, String name, String dir) {
-		if (block == null)
-			return;
-		ModelLoader.setCustomStateMapper(block, (new StateMap.Builder())
-				.ignore(BlockMetalFenceBase.BACK_FACING, BlockMetalFenceBase.BACK_UNDER, BlockMetalFenceBase.BACK_UPPER, DCState.FACING, BlockMetalFenceBase.UNDER, BlockMetalFenceBase.UPPER)
-				.build());
-		ModelBakery.registerItemVariants(Item.getItemFromBlock(block), new ModelResourceLocation(
-				domein + ":" + "basetile"));
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
-				domein + ":" + dir + "/" + name, "inventory"));
-	}
-
-	@Override
-	public void regTEJson(Block block, String domein, String name, String dir) {
-		if (block == null)
-			return;
-		ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(DCState.TYPE4).build());
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(
-				domein + ":" + dir + "/" + name, "inventory"));
+	public void regBlockStateAndJson(Block block, String domein, String name, String dir, int max, boolean useMeta,
+			boolean useBase) {
+		JsonRegister.MAIN_INSTANCE.regStateAndBlock(block, domein, name, dir, max, useBase);
 	}
 
 	// ruby氏に無限に感謝
 	/**
-	 * @param cls
-	 *        えんちちーのくらす
-	 * @param render
-	 *        Renderの継承クラス
+	 * @param cls えんちちーのくらす
+	 * @param render Renderの継承クラス
 	 */
 	public static void registRender(Class<? extends Entity> cls, final Class<? extends Render> render) {
 		RenderingRegistry.registerEntityRenderingHandler(cls, new IRenderFactory() {

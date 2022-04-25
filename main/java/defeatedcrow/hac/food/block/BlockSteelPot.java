@@ -11,7 +11,7 @@ import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -37,8 +37,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
-
+public class BlockSteelPot extends DCTileBlockFaced implements IAirflowTile {
 	protected static final AxisAlignedBB AABB_PLATE = new AxisAlignedBB(0.125D, 0D, 0.125D, 0.875D, 0.875D, 0.875D);
 
 	public BlockSteelPot(String s) {
@@ -147,7 +146,6 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 					double dx = rand.nextDouble() * 0.05D;
 					double dy = rand.nextDouble() * 0.05D;
 					double dz = rand.nextDouble() * 0.05D;
-
 					world.spawnParticle(EnumParticleTypes.CLOUD, x, y, z, 0.0D, dy, 0.0D, new int[0]);
 				}
 			}
@@ -171,8 +169,7 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
-		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-				.getLocalizedName());
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
 
 	@Override
@@ -189,5 +186,4 @@ public class BlockSteelPot extends DCTileBlock implements IAirflowTile {
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return side == EnumFacing.DOWN;
 	}
-
 }

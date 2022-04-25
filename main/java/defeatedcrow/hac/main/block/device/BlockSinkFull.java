@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
@@ -29,8 +29,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockSinkFull extends DCTileBlock {
-
+public class BlockSinkFull extends DCTileBlockFaced {
 	public BlockSinkFull(String s) {
 		super(Material.CLAY, s, 0);
 		this.setTickRandomly(true);
@@ -76,8 +75,7 @@ public class BlockSinkFull extends DCTileBlock {
 		if (player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack held = player.getHeldItem(hand);
-			if (tile instanceof TileSinkFull && !DCUtil.isEmpty(held) && held
-					.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+			if (tile instanceof TileSinkFull && !DCUtil.isEmpty(held) && held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
 				if (!player.world.isRemote) {
 					DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player);
 				}
@@ -96,11 +94,9 @@ public class BlockSinkFull extends DCTileBlock {
 			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.sink"));
-			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-					.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 }

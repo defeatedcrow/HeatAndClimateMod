@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -31,7 +32,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockChandelier extends BlockContainerDC {
-
 	public BlockChandelier(String s) {
 		super(Material.GLASS, s);
 		this.setSoundType(SoundType.GLASS);
@@ -131,6 +131,16 @@ public class BlockChandelier extends BlockContainerDC {
 	}
 
 	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
+
+	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
@@ -140,5 +150,4 @@ public class BlockChandelier extends BlockContainerDC {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
-
 }

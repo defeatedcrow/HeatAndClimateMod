@@ -10,7 +10,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
@@ -38,8 +38,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCookingStove extends DCTileBlock implements IHeatTile {
-
+public class BlockCookingStove extends DCTileBlockFaced implements IHeatTile {
 	public BlockCookingStove(Material m, String s, int max) {
 		super(m, s, max);
 	}
@@ -57,8 +56,7 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 			if (!player.isSneaking() && tile instanceof TileCookingStove) {
 				boolean flag = false;
 				ItemStack held = player.getHeldItem(hand);
-				if (!DCUtil.isEmpty(held) && held
-						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+				if (!DCUtil.isEmpty(held) && held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
 					IFluidHandler cont = held.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
@@ -151,14 +149,12 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 		int meta = DCState.getInt(state, DCState.TYPE4);
 		return meta == 0 || meta == 1;
 	}
-
 	// redstone
 
 	@Override
 	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
-
 			if (flag || block.getDefaultState().canProvidePower()) {
 				int m = DCState.getInt(state, DCState.TYPE4);
 				int lit = m & 1;
@@ -197,12 +193,10 @@ public class BlockCookingStove extends DCTileBlock implements IHeatTile {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(DCName.DRAIN_SIDED_TANK.getLocalizedName());
 			tooltip.add(DCName.RS.getLocalizedName() + ": " + DCName.TURN_OFF.getLocalizedName());
-			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-					.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
 	}
-
 }

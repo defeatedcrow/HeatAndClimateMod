@@ -5,10 +5,12 @@ import java.util.Random;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,10 +25,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockAdapterPanel extends BlockTorqueBase {
-
 	private static BlockPos lastPos = null;
 	private final boolean isAcceptor;
-
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 	protected static final AxisAlignedBB AABB_AXIS_X1 = new AxisAlignedBB(0.0D, 0.125D, 0.125D, 0.5D, 0.875D, 0.875D);
 	protected static final AxisAlignedBB AABB_AXIS_Y1 = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.5D, 0.875D);
@@ -72,10 +72,8 @@ public class BlockAdapterPanel extends BlockTorqueBase {
 						player.sendMessage(new TextComponentString(mes1));
 						return true;
 					} else if (lastPos != null && tile instanceof TileAdapterPanel) {
-						((TileAdapterPanel) tile).setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos
-								.getZ()));
-						String mes2 = "Registered the coordinate: " + lastPos.getX() + ", " + lastPos
-								.getY() + ", " + lastPos.getZ();
+						((TileAdapterPanel) tile).setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos.getZ()));
+						String mes2 = "Registered the coordinate: " + lastPos.getX() + ", " + lastPos.getY() + ", " + lastPos.getZ();
 						player.sendMessage(new TextComponentString(mes2));
 						lastPos = null;
 						return true;
@@ -107,7 +105,6 @@ public class BlockAdapterPanel extends BlockTorqueBase {
 		}
 		return AABB_FULL;
 	}
-
 	/* change state */
 
 	@Override
@@ -157,4 +154,14 @@ public class BlockAdapterPanel extends BlockTorqueBase {
 		return meta > 0;
 	}
 
+	// state
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
 }

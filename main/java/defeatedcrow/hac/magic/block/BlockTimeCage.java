@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller;
 import defeatedcrow.hac.main.util.DCChunkloadContoroller.IChunkBlock;
 import defeatedcrow.hac.main.util.DCName;
@@ -27,8 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
-
+public class BlockTimeCage extends DCTileBlockFaced implements IChunkBlock {
 	public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.75D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.25D, 1.0D, 1.0D);
 	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.25D);
@@ -76,13 +75,11 @@ public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		super.breakBlock(world, pos, state);
-
 		// チャンクのローダーを削除
 		int coordX = pos.getX() >> 4;
 		int coordZ = pos.getZ() >> 4;
 		int d = world.provider.getDimension();
-		DCChunkloadContoroller.getInstance().deleteBlockTicket(world, pos.getX(), pos.getY(), pos
-				.getZ(), coordX, coordZ, d);
+		DCChunkloadContoroller.getInstance().deleteBlockTicket(world, pos.getX(), pos.getY(), pos.getZ(), coordX, coordZ, d);
 	}
 
 	@Override
@@ -91,8 +88,7 @@ public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
 		int coordX = pos.getX() >> 4;
 		int coordZ = pos.getZ() >> 4;
 		int d = world.provider.getDimension();
-		DCChunkloadContoroller.getInstance().setBlockTicket(world, pos.getX(), pos.getY(), pos
-				.getZ(), coordX, coordZ, d);
+		DCChunkloadContoroller.getInstance().setBlockTicket(world, pos.getX(), pos.getY(), pos.getZ(), coordX, coordZ, d);
 	}
 
 	@Override
@@ -114,8 +110,7 @@ public class BlockTimeCage extends DCTileBlock implements IChunkBlock {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add("The chunk loader device.");
-			tooltip.add(TextFormatting.AQUA.toString() + TextFormatting.BOLD.toString() + DCName.COLOR_CHANGE_TARGET
-					.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + TextFormatting.BOLD.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

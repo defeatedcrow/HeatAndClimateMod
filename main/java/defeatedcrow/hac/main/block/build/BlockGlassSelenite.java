@@ -7,6 +7,7 @@ import java.util.Random;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 import defeatedcrow.hac.core.base.ITexturePath;
@@ -28,10 +29,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockGlassSelenite extends BlockDC implements ITexturePath, ISidedTexture, INameSuffix,
 		ISidedRenderingBlock {
-
 	// Type上限
 	public final int maxMeta;
-
 	public static final PropertyBool NORTH = PropertyBool.create("north");
 	public static final PropertyBool EAST = PropertyBool.create("east");
 	public static final PropertyBool SOUTH = PropertyBool.create("south");
@@ -46,6 +45,7 @@ public class BlockGlassSelenite extends BlockDC implements ITexturePath, ISidedT
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 		this.maxMeta = max;
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.TYPE16, 0).withProperty(NORTH, false).withProperty(NORTH, false).withProperty(SOUTH, false).withProperty(EAST, false).withProperty(WEST, false).withProperty(UP, false).withProperty(DOWN, false));
 	}
 
 	@Override
@@ -120,21 +120,17 @@ public class BlockGlassSelenite extends BlockDC implements ITexturePath, ISidedT
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		BlockPos check = pos.offset(side);
 		IBlockState state2 = world.getBlockState(check);
-
 		if (state.getBlock() == this) {
 			if (state2.getBlock() instanceof BlockBreakable || state2.getBlock() == this) {
 				return false;
 			}
-
 			if (state2.getBlock() instanceof ISidedRenderingBlock) {
 				return ((ISidedRenderingBlock) state2.getBlock()).isRendered(side, state2);
 			}
-
 			if (!state2.isSideSolid(world, check, side.getOpposite())) {
 				return true;
 			}
 		}
-
 		return super.shouldSideBeRendered(state, world, pos, side);
 	}
 
@@ -219,7 +215,6 @@ public class BlockGlassSelenite extends BlockDC implements ITexturePath, ISidedT
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
-
 		i = state.getValue(DCState.TYPE16);
 		if (i > maxMeta)
 			i = maxMeta;
@@ -229,12 +224,7 @@ public class BlockGlassSelenite extends BlockDC implements ITexturePath, ISidedT
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		int meta = DCState.getInt(state, DCState.TYPE16);
-		return state.withProperty(NORTH, !isSameBlock(world, pos.offset(EnumFacing.NORTH), meta))
-				.withProperty(EAST, !isSameBlock(world, pos.offset(EnumFacing.EAST), meta))
-				.withProperty(SOUTH, !isSameBlock(world, pos.offset(EnumFacing.SOUTH), meta))
-				.withProperty(WEST, !isSameBlock(world, pos.offset(EnumFacing.WEST), meta))
-				.withProperty(UP, !isSameBlock(world, pos.offset(EnumFacing.UP), meta))
-				.withProperty(DOWN, !isSameBlock(world, pos.offset(EnumFacing.DOWN), meta));
+		return state.withProperty(NORTH, !isSameBlock(world, pos.offset(EnumFacing.NORTH), meta)).withProperty(EAST, !isSameBlock(world, pos.offset(EnumFacing.EAST), meta)).withProperty(SOUTH, !isSameBlock(world, pos.offset(EnumFacing.SOUTH), meta)).withProperty(WEST, !isSameBlock(world, pos.offset(EnumFacing.WEST), meta)).withProperty(UP, !isSameBlock(world, pos.offset(EnumFacing.UP), meta)).withProperty(DOWN, !isSameBlock(world, pos.offset(EnumFacing.DOWN), meta));
 	}
 
 	private boolean isSameBlock(IBlockAccess world, BlockPos pos, int type) {
@@ -255,4 +245,13 @@ public class BlockGlassSelenite extends BlockDC implements ITexturePath, ISidedT
 		});
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
 }

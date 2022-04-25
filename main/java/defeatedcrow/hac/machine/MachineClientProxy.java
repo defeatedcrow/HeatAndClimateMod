@@ -140,7 +140,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class MachineClientProxy {
-
 	public static void loadEntity() {
 		ClientMainProxy.registRender(EntityMinecartMotor.class, RenderCartMotor.class);
 		ClientMainProxy.registRender(EntityScooter.class, RenderScooter.class);
@@ -187,8 +186,7 @@ public class MachineClientProxy {
 		ClientMainProxy.registerTileEntity(TileDynamo.class, "dcs_te_dynamo", new DynamoTESR());
 		ClientMainProxy.registerTileEntity(TileReactor.class, "dcs_te_reactor", new ReactorTESR());
 		ClientMainProxy.registerTileEntity(TileFreezer.class, "dcs_te_freezer", new FreezerTESR());
-		ClientMainProxy
-				.registerTileEntity(TileSpinningMachine.class, "dcs_te_spinning_machine", new SpinningMachineTESR());
+		ClientMainProxy.registerTileEntity(TileSpinningMachine.class, "dcs_te_spinning_machine", new SpinningMachineTESR());
 		ClientMainProxy.registerTileEntity(TilePortalManager.class, "dcs_te_portal_manager", new PortalManagerTESR());
 		GameRegistry.registerTileEntity(TileAdapterPanel.class, "dcs_te_adapter_item");
 		GameRegistry.registerTileEntity(TileAcceptorPanel.class, "dcs_te_acceptor_item");
@@ -211,8 +209,7 @@ public class MachineClientProxy {
 		ClientMainProxy.registerTileEntity(TileWindmill_EX.class, "dcs_te_windmill_ex", new EX_WindmillTESR());
 		GameRegistry.registerTileEntity(TileEntityPanel.class, "dcs_te_entity_panel");
 		ClientMainProxy.registerTileEntity(TileShaft_Switch.class, "dcs_te_shaft_switch", new Switch_ShaftTESR());
-		ClientMainProxy
-				.registerTileEntity(TileShaft_Switch_Steel.class, "dcs_te_shaft_switch_steel", new Steel_Switch_ShaftTESR());
+		ClientMainProxy.registerTileEntity(TileShaft_Switch_Steel.class, "dcs_te_shaft_switch_steel", new Steel_Switch_ShaftTESR());
 		ClientMainProxy.registerTileEntity(TileOscillator.class, "dcs_te_oscillator", new OscillatorTESR());
 		ClientMainProxy.registerTileEntity(TileTankYard.class, "dcs_te_tankyard", new TankYardTESR());
 		GameRegistry.registerTileEntity(TileYardPart.class, "dcs_te_yardpart");
@@ -223,67 +220,59 @@ public class MachineClientProxy {
 
 	public static void regJson(JsonRegisterHelper instance) {
 		// block
-
-		instance.regTETorqueBlock(MachineInit.windmill, ClimateCore.PACKAGE_ID, "dcs_device_windmill", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_ID, "dcs_device_windmill_l", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.windmill_ex, ClimateCore.PACKAGE_ID, "dcs_device_windmill_ex", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.gearbox, ClimateCore.PACKAGE_ID, "dcs_device_gearbox", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.handcrank, ClimateCore.PACKAGE_ID, "dcs_device_handcrank", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.stonemill, ClimateCore.PACKAGE_ID, "dcs_device_stonemill", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.fan, ClimateCore.PACKAGE_ID, "dcs_device_fan", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.heatPump, ClimateCore.PACKAGE_ID, "dcs_device_heat_exchanger", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft2_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_sus", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft2_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_sus", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft2_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_sus", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft2_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_sus", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft2_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x_sus", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft3_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_steel", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft3_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_steel", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft3_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_steel", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft3_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_steel", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft3_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x_steel", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_ID, "dcs_device_gearbox_sus", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_ID, "dcs_device_boiler_turbine", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.motor, ClimateCore.PACKAGE_ID, "dcs_device_kinetic_motor", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_ID, "dcs_device_press_machine", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.waterPump, ClimateCore.PACKAGE_ID, "dcs_device_water_pump", "machine", 0, true);
-		instance.regTEBlock(MachineInit.IBC, ClimateCore.PACKAGE_ID, "dcs_device_ibc", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.faucet, ClimateCore.PACKAGE_ID, "dcs_device_faucet", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.faucet_r, ClimateCore.PACKAGE_ID, "dcs_device_faucet_r", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.faucet_sus, ClimateCore.PACKAGE_ID, "dcs_device_faucet_sus", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft_switch, ClimateCore.PACKAGE_ID, "dcs_device_shaft_switch", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.shaft3_switch, ClimateCore.PACKAGE_ID, "dcs_device_shaft_switch_steel", "machine", 0, true);
-		instance.regTEBlock(MachineInit.tankYard, ClimateCore.PACKAGE_ID, "dcs_device_tankyard", "machine", 0, false);
-
+		instance.regStateAndBlock(MachineInit.windmill, ClimateCore.PACKAGE_ID, "dcs_device_windmill", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.windmill_l, ClimateCore.PACKAGE_ID, "dcs_device_windmill_l", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.windmill_ex, ClimateCore.PACKAGE_ID, "dcs_device_windmill_ex", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.gearbox, ClimateCore.PACKAGE_ID, "dcs_device_gearbox", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.handcrank, ClimateCore.PACKAGE_ID, "dcs_device_handcrank", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.stonemill, ClimateCore.PACKAGE_ID, "dcs_device_stonemill", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.fan, ClimateCore.PACKAGE_ID, "dcs_device_fan", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.heatPump, ClimateCore.PACKAGE_ID, "dcs_device_heat_exchanger", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft2_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_sus", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft2_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_sus", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft2_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_sus", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft2_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_sus", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft2_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x_sus", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft3_s, ClimateCore.PACKAGE_ID, "dcs_device_shaft_s_steel", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft3_l, ClimateCore.PACKAGE_ID, "dcs_device_shaft_l_steel", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft3_t_a, ClimateCore.PACKAGE_ID, "dcs_device_shaft_ta_steel", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft3_t_b, ClimateCore.PACKAGE_ID, "dcs_device_shaft_tb_steel", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft3_x, ClimateCore.PACKAGE_ID, "dcs_device_shaft_x_steel", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.gearbox2, ClimateCore.PACKAGE_ID, "dcs_device_gearbox_sus", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.boilerTurbine, ClimateCore.PACKAGE_ID, "dcs_device_boiler_turbine", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.motor, ClimateCore.PACKAGE_ID, "dcs_device_kinetic_motor", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.pressMachine, ClimateCore.PACKAGE_ID, "dcs_device_press_machine", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.waterPump, ClimateCore.PACKAGE_ID, "dcs_device_water_pump", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.IBC, ClimateCore.PACKAGE_ID, "dcs_device_ibc", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.faucet, ClimateCore.PACKAGE_ID, "dcs_device_faucet", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.faucet_r, ClimateCore.PACKAGE_ID, "dcs_device_faucet_r", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.faucet_sus, ClimateCore.PACKAGE_ID, "dcs_device_faucet_sus", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft_switch, ClimateCore.PACKAGE_ID, "dcs_device_shaft_switch", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.shaft3_switch, ClimateCore.PACKAGE_ID, "dcs_device_shaft_switch_steel", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.tankYard, ClimateCore.PACKAGE_ID, "dcs_device_tankyard", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_ID, "dcs_device_creative_box", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.catapult, ClimateCore.PACKAGE_ID, "dcs_device_catapult", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.watermill, ClimateCore.PACKAGE_ID, "dcs_device_watermill", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.dynamo, ClimateCore.PACKAGE_ID, "dcs_device_dynamo", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.reactor, ClimateCore.PACKAGE_ID, "dcs_device_reactor", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.freezer, ClimateCore.PACKAGE_ID, "dcs_device_freezer", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.spinning, ClimateCore.PACKAGE_ID, "dcs_device_spinning_machine", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_ID, "dcs_device_portal_manager", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.burner, ClimateCore.PACKAGE_ID, "dcs_device_gas_burner", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_ID, "dcs_device_diesel_engine", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.crusher, ClimateCore.PACKAGE_ID, "dcs_device_crusher", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.oscillator, ClimateCore.PACKAGE_ID, "dcs_device_oscillator", "machine", 0, true);
+		instance.regStateAndBlock(MachineInit.IBC_reactor, ClimateCore.PACKAGE_ID, "dcs_device_reactor_ibc", "machine", 0, true);
+		// item
 		instance.regSimpleItem(MachineInit.machimeMaterials, ClimateCore.PACKAGE_ID, "dcs_device_mechanical", "machine", 9);
 		instance.regSimpleItem(MachineInit.mold, ClimateCore.PACKAGE_ID, "dcs_device_mold_steel", "machine", 0);
 		instance.regSimpleItem(MachineInit.torqueChecker, ClimateCore.PACKAGE_ID, "dcs_device_torque_checker_steel", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.creativeBox, ClimateCore.PACKAGE_ID, "dcs_device_creative_box", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.catapult, ClimateCore.PACKAGE_ID, "dcs_device_catapult", "machine", 0, true);
-		instance.regSimpleBlock(MachineInit.conveyor, ClimateCore.PACKAGE_ID, "dcs_device_conveyor", "machine", 0);
-		instance.regSimpleBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter", "machine", 0);
-		instance.regSimpleBlock(MachineInit.hopperGold, ClimateCore.PACKAGE_ID, "dcs_device_hopper_gold", "machine", 0);
-		instance.regSimpleBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter_gold", "machine", 0);
-		instance.regSimpleBlock(MachineInit.hopperSilver, ClimateCore.PACKAGE_ID, "dcs_device_hopper_silver", "machine", 0);
-		instance.regSimpleBlock(MachineInit.hopperSUS, ClimateCore.PACKAGE_ID, "dcs_device_hopper_sus", "machine", 0);
-		instance.regTETorqueBlock(MachineInit.hopperFluid, ClimateCore.PACKAGE_ID, "dcs_device_hopper_fluid", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.watermill, ClimateCore.PACKAGE_ID, "dcs_device_watermill", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.dynamo, ClimateCore.PACKAGE_ID, "dcs_device_dynamo", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.reactor, ClimateCore.PACKAGE_ID, "dcs_device_reactor", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.freezer, ClimateCore.PACKAGE_ID, "dcs_device_freezer", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.spinning, ClimateCore.PACKAGE_ID, "dcs_device_spinning_machine", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.wirelessPortal, ClimateCore.PACKAGE_ID, "dcs_device_portal_manager", "machine", 0, true);
-		instance.regTEBlock(MachineInit.burner, ClimateCore.PACKAGE_ID, "dcs_device_gas_burner", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.dieselEngine, ClimateCore.PACKAGE_ID, "dcs_device_diesel_engine", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.crusher, ClimateCore.PACKAGE_ID, "dcs_device_crusher", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.oscillator, ClimateCore.PACKAGE_ID, "dcs_device_oscillator", "machine", 0, true);
-		instance.regTETorqueBlock(MachineInit.IBC_reactor, ClimateCore.PACKAGE_ID, "dcs_device_reactor_ibc", "machine", 0, true);
-
 		instance.regSimpleItem(MachineInit.reagent, ClimateCore.PACKAGE_ID, "dcs_misc_reagent", "misc", 14);
 		instance.regSimpleItem(MachineInit.synthetic, ClimateCore.PACKAGE_ID, "dcs_misc_synthetic", "misc", 4);
 		instance.regSimpleItem(MachineInit.catalyst, ClimateCore.PACKAGE_ID, "dcs_misc_catalyst", "misc", 3);
@@ -293,26 +282,31 @@ public class MachineClientProxy {
 		instance.regSimpleItem(MachineInit.adapterCard, ClimateCore.PACKAGE_ID, "dcs_device_adapter_card", "machine", 3);
 		instance.regSimpleItem(MachineInit.dynamite, ClimateCore.PACKAGE_ID, "dcs_tool_dynamite", "tool", 2);
 		instance.regSimpleItem(MachineInit.slotCard, ClimateCore.PACKAGE_ID, "dcs_tool_slotcard", "machine", 0);
-
-		instance.regSimpleBlock(MachineInit.adapterPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_item", "machine", 0);
-		instance.regSimpleBlock(MachineInit.acceptorPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_item", "machine", 0);
-		instance.regSimpleBlock(MachineInit.adapterFluidPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_fluid", "machine", 0);
-		instance.regSimpleBlock(MachineInit.acceptorFluidPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_fluid", "machine", 0);
 		instance.regSimpleItem(MachineInit.motorMinecart, ClimateCore.PACKAGE_ID, "dcs_motor_minecart", "device", 0);
 		instance.regSimpleItem(MachineInit.scooter, ClimateCore.PACKAGE_ID, "dcs_motor_scooter", "device", 3);
 		instance.regSimpleItem(MachineInit.magneticHover, ClimateCore.PACKAGE_ID, "dcs_magnetic_hover", "device", 0);
 		instance.regSimpleItem(MachineInit.platingChrome, ClimateCore.PACKAGE_ID, "dcs_coating_tool", "misc", 9);
 		instance.regSimpleItem(MachineInit.rotaryBlade, ClimateCore.PACKAGE_ID, "dcs_rotaryblade", "device", 3);
-		instance.regSimpleBlock(MachineInit.monitorRS, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rs", "machine", 0);
-		instance.regSimpleBlock(MachineInit.monitorTorque, ClimateCore.PACKAGE_ID, "dcs_device_monitor_torque", "machine", 0);
-		instance.regSimpleBlock(MachineInit.monitorRF, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rf", "machine", 0);
-		instance.regSimpleBlock(MachineInit.monitorFluid, ClimateCore.PACKAGE_ID, "dcs_device_monitor_fluid", "machine", 0);
-		instance.regSimpleBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine", 0);
-		instance.regSimpleBlock(MachineInit.monitorCM, ClimateCore.PACKAGE_ID, "dcs_device_monitor_cm", "machine", 0);
-		instance.regSimpleBlock(MachineInit.monitorTemp, ClimateCore.PACKAGE_ID, "dcs_device_monitor_temp", "machine", 0);
-		instance.regSimpleBlock(MachineInit.entityPanel, ClimateCore.PACKAGE_ID, "dcs_device_entity_panel", "machine", 0);
-		instance.regSimpleBlock(MachineInit.playerPanel, ClimateCore.PACKAGE_ID, "dcs_device_player_panel", "machine", 3);
-
+		// model
+		instance.regStateAndBlock(MachineInit.conveyor, ClimateCore.PACKAGE_ID, "dcs_device_conveyor", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.hopperFilter, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.hopperGold, ClimateCore.PACKAGE_ID, "dcs_device_hopper_gold", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.hopperFilterG, ClimateCore.PACKAGE_ID, "dcs_device_hopper_filter_gold", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.hopperSilver, ClimateCore.PACKAGE_ID, "dcs_device_hopper_silver", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.hopperSUS, ClimateCore.PACKAGE_ID, "dcs_device_hopper_sus", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.adapterPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_item", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.acceptorPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_item", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.adapterFluidPanel, ClimateCore.PACKAGE_ID, "dcs_device_adapter_fluid", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.acceptorFluidPanel, ClimateCore.PACKAGE_ID, "dcs_device_acceptor_fluid", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.monitorRS, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rs", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.monitorTorque, ClimateCore.PACKAGE_ID, "dcs_device_monitor_torque", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.monitorRF, ClimateCore.PACKAGE_ID, "dcs_device_monitor_rf", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.monitorFluid, ClimateCore.PACKAGE_ID, "dcs_device_monitor_fluid", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.monitorItem, ClimateCore.PACKAGE_ID, "dcs_device_monitor_item", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.monitorCM, ClimateCore.PACKAGE_ID, "dcs_device_monitor_cm", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.monitorTemp, ClimateCore.PACKAGE_ID, "dcs_device_monitor_temp", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.entityPanel, ClimateCore.PACKAGE_ID, "dcs_device_entity_panel", "machine", 0, false);
+		instance.regStateAndBlock(MachineInit.playerPanel, ClimateCore.PACKAGE_ID, "dcs_device_player_panel", "machine", 3, false);
 		ModelResourceLocation[] models = new ModelResourceLocation[4];
 		for (int i = 0; i < 4; i++) {
 			models[i] = new ModelResourceLocation(ClimateCore.PACKAGE_ID + ":machine/dcs_device_yardpart" + i, "type");
@@ -320,10 +314,7 @@ public class MachineClientProxy {
 		ModelBakery.registerItemVariants(Item.getItemFromBlock(MachineInit.tankYardPart), models);
 		for (int i = 0; i < 16; i++) {
 			int m = i & 3;
-			ModelLoader.setCustomModelResourceLocation(Item
-					.getItemFromBlock(MachineInit.tankYardPart), i, new ModelResourceLocation(
-							ClimateCore.PACKAGE_ID + ":machine/dcs_device_yardpart" + m, "inventory"));
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(MachineInit.tankYardPart), i, new ModelResourceLocation(ClimateCore.PACKAGE_ID + ":machine/dcs_device_yardpart" + m, "inventory"));
 		}
 	}
-
 }

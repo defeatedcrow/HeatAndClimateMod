@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -32,7 +33,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockRealtimeClock_L extends BlockContainerDC {
-
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
 	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.875D, 0D, 0D, 1D, 1D, 1D);
@@ -99,7 +99,6 @@ public class BlockRealtimeClock_L extends BlockContainerDC {
 			return AABB_WEST;
 		default:
 			return AABB_NORTH;
-
 		}
 	}
 
@@ -116,7 +115,6 @@ public class BlockRealtimeClock_L extends BlockContainerDC {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int f = 0;
-
 		f = 5 - state.getValue(DCState.FACING).getIndex();
 		return f;
 	}
@@ -128,7 +126,19 @@ public class BlockRealtimeClock_L extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.FACING });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.FACING
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.FACING;
 	}
 
 	@Override

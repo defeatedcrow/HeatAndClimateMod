@@ -15,7 +15,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPictureBG extends BlockPictureBase {
-
 	public BlockPictureBG(String s) {
 		super(s);
 	}
@@ -40,5 +39,4 @@ public class BlockPictureBG extends BlockPictureBase {
 			tooltip.add(TextFormatting.RESET.toString() + I18n.format("dcs.tip.shift"));
 		}
 	}
-
 }

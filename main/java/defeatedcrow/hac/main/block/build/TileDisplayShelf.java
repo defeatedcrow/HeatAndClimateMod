@@ -2,6 +2,7 @@ package defeatedcrow.hac.main.block.build;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.DCInventory;
@@ -216,7 +217,19 @@ public class TileDisplayShelf extends DCExclusiveTE implements IInventory {
 		return new TextComponentString(this.getName());
 	}
 
-	IItemHandler handler = new InvWrapper(this);
+	IItemHandler handler = new InvWrapper(this) {
+		@Override
+		@Nonnull
+		public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+			return stack;
+		}
+
+		@Override
+		@Nonnull
+		public ItemStack extractItem(int slot, int amount, boolean simulate) {
+			return ItemStack.EMPTY;
+		}
+	};
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {

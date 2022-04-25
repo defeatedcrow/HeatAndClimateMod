@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
@@ -39,7 +40,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockDoorHikido extends BlockContainerDC {
-
 	protected static final AxisAlignedBB SOUTH_AABB_H = new AxisAlignedBB(0.0D, 0.0D, 0.375D, 1.0D, 1.0D, 0.5D);
 	protected static final AxisAlignedBB NORTH_AABB_H = new AxisAlignedBB(0.0D, 0.0D, 0.5D, 1.0D, 1.0D, 0.625D);
 	protected static final AxisAlignedBB WEST_AABB_H = new AxisAlignedBB(0.5D, 0.0D, 0.0D, 0.625D, 1.0D, 1.0D);
@@ -50,11 +50,8 @@ public class BlockDoorHikido extends BlockContainerDC {
 		this.setSoundType(SoundType.CLOTH);
 		this.setHardness(0.5F);
 		this.setResistance(10.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.NORTH)
-				.withProperty(DCState.FLAG, false)
-				.withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.NORTH).withProperty(DCState.FLAG, false).withProperty(DCState.POWERED, false));
 	}
-
 	// foundation data
 
 	@Override
@@ -82,9 +79,7 @@ public class BlockDoorHikido extends BlockContainerDC {
 		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		if (placer == null)
 			return state;
-
-		EnumFacing face = placer.isSneaking() ? placer.getHorizontalFacing().getOpposite() : placer
-				.getHorizontalFacing();
+		EnumFacing face = placer.isSneaking() ? placer.getHorizontalFacing().getOpposite() : placer.getHorizontalFacing();
 		state = state.withProperty(DCState.FACING, face);
 		return state;
 	}
@@ -93,7 +88,6 @@ public class BlockDoorHikido extends BlockContainerDC {
 		state = state.getActualState(source, pos);
 		EnumFacing enumfacing = DCState.getFace(state, DCState.FACING);
 		boolean half = DCState.getBool(state, DCState.FLAG);
-
 		switch (enumfacing) {
 		case EAST:
 		default:
@@ -112,11 +106,9 @@ public class BlockDoorHikido extends BlockContainerDC {
 		if (!isActualState) {
 			state = state.getActualState(worldIn, pos);
 		}
-
 		EnumFacing enumfacing = DCState.getFace(state, DCState.FACING);
 		boolean half = DCState.getBool(state, DCState.FLAG);
 		boolean pow = DCState.getBool(state, DCState.POWERED);
-
 		if (!pow) {
 			switch (enumfacing) {
 			case EAST:
@@ -146,8 +138,7 @@ public class BlockDoorHikido extends BlockContainerDC {
 			return false;
 		} else {
 			IBlockState state = worldIn.getBlockState(pos.down());
-			return (state.isTopSolid() || state.getBlockFaceShape(worldIn, pos
-					.down(), EnumFacing.UP) == BlockFaceShape.SOLID) && super.canPlaceBlockAt(worldIn, pos);
+			return (state.isTopSolid() || state.getBlockFaceShape(worldIn, pos.down(), EnumFacing.UP) == BlockFaceShape.SOLID) && super.canPlaceBlockAt(worldIn, pos);
 		}
 	}
 
@@ -163,8 +154,7 @@ public class BlockDoorHikido extends BlockContainerDC {
 			click = click.cycleProperty(DCState.POWERED);
 			world.setBlockState(p, click, 10);
 			world.markBlockRangeForRenderUpdate(p, p.up());
-			world.playSound((EntityPlayer) null, p, SoundEvents.BLOCK_CLOTH_BREAK, SoundCategory.BLOCKS, 0.5F, world.rand
-					.nextFloat() * 0.25F + 1.2F);
+			world.playSound((EntityPlayer) null, p, SoundEvents.BLOCK_CLOTH_BREAK, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.25F + 1.2F);
 			return true;
 		} else {
 			return false;
@@ -181,11 +171,9 @@ public class BlockDoorHikido extends BlockContainerDC {
 	}
 
 	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos fromPos) {
-
 		if (DCState.getBool(state, DCState.FLAG) == true) {
 			BlockPos down = pos.down();
 			IBlockState under = world.getBlockState(down);
-
 			if (under == null || under.getBlock() != this) {
 				world.setBlockToAir(pos);
 			} else if (block != this) {
@@ -197,31 +185,25 @@ public class BlockDoorHikido extends BlockContainerDC {
 					world.setBlockState(pos, next, 2);
 				}
 			}
-
 		} else {
-
 			BlockPos up = pos.up();
 			IBlockState upper = world.getBlockState(up);
-
 			if (!checkBlock(world, pos, up)) {
 				world.setBlockToAir(pos);
 			}
-
 			if (!world.getBlockState(pos.down()).isSideSolid(world, pos.down(), EnumFacing.UP)) {
 				world.setBlockToAir(pos);
 				if (upper != null && upper.getBlock() == this) {
 					world.setBlockToAir(up);
 				}
 			}
-
 			boolean pow = world.isBlockPowered(pos) || world.isBlockPowered(up);
 			if (block != this && (pow || block.getDefaultState().canProvidePower())) {
 				if (pow != ((Boolean) state.getValue(DCState.POWERED)).booleanValue()) {
 					IBlockState next = state.withProperty(DCState.POWERED, Boolean.valueOf(pow));
 					world.setBlockState(pos, next, 2);
 					world.markBlockRangeForRenderUpdate(pos, pos.up());
-					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_CLOTH_BREAK, SoundCategory.BLOCKS, 0.5F, world.rand
-							.nextFloat() * 0.25F + 1.2F);
+					world.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_CLOTH_BREAK, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.25F + 1.2F);
 				}
 			}
 		}
@@ -278,11 +260,9 @@ public class BlockDoorHikido extends BlockContainerDC {
 		boolean b2 = DCState.getBool(state, DCState.POWERED);
 		int i = b1 ? 1 : 0;
 		int f = 0;
-
 		if (b2) {
 			i += 2;
 		}
-
 		f = 5 - state.getValue(DCState.FACING).getIndex();
 		f = f << 2;
 		return i + f;
@@ -292,13 +272,10 @@ public class BlockDoorHikido extends BlockContainerDC {
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		if (DCState.getBool(state, DCState.FLAG)) {
 			IBlockState under = world.getBlockState(pos.down());
-
 			if (under.getBlock() == this) {
-				state = state.withProperty(DCState.FACING, DCState.getFace(under, DCState.FACING))
-						.withProperty(DCState.POWERED, DCState.getBool(under, DCState.POWERED));
+				state = state.withProperty(DCState.FACING, DCState.getFace(under, DCState.FACING)).withProperty(DCState.POWERED, DCState.getBool(under, DCState.POWERED));
 			}
 		}
-
 		return state;
 	}
 
@@ -312,6 +289,19 @@ public class BlockDoorHikido extends BlockContainerDC {
 	}
 
 	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.FLAG,
+				DCState.POWERED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.FACING;
+	}
+
+	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileDoorHikido();
 	}
@@ -321,5 +311,4 @@ public class BlockDoorHikido extends BlockContainerDC {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
-
 }

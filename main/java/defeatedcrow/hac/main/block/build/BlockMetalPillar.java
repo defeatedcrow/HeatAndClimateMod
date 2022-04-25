@@ -6,6 +6,7 @@ import java.util.Random;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -27,13 +28,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMetalPillar extends BlockDC {
-
 	/* 左右のチェック */
 	// public static final PropertyBool NORTH = PropertyBool.create("north");
 	// public static final PropertyBool EAST = PropertyBool.create("east");
 	// public static final PropertyBool SOUTH = PropertyBool.create("south");
 	// public static final PropertyBool WEST = PropertyBool.create("west");
-
 	public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
 
 	public BlockMetalPillar(String s) {
@@ -133,7 +132,6 @@ public class BlockMetalPillar extends BlockDC {
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(state.getBlock());
 	}
-
 	// @Override
 	// public IBlockState withRotation(IBlockState state, Rotation rot) {
 	// switch (rot) {
@@ -161,18 +159,26 @@ public class BlockMetalPillar extends BlockDC {
 		});
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
+
 	// state関連
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing.Axis axis = EnumFacing.Axis.Y;
 		int i = meta & 12;
-
 		if (i == 4) {
 			axis = EnumFacing.Axis.X;
 		} else if (i == 8) {
 			axis = EnumFacing.Axis.Z;
 		}
-
 		return this.getDefaultState().withProperty(AXIS, axis);
 	}
 
@@ -181,13 +187,11 @@ public class BlockMetalPillar extends BlockDC {
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 		EnumFacing.Axis axis = state.getValue(AXIS);
-
 		if (axis == EnumFacing.Axis.X) {
 			i |= 4;
 		} else if (axis == EnumFacing.Axis.Z) {
 			i |= 8;
 		}
-
 		return i;
 	}
 
@@ -204,5 +208,4 @@ public class BlockMetalPillar extends BlockDC {
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
 }

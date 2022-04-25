@@ -3,7 +3,7 @@ package defeatedcrow.hac.main.block.build;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -20,8 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLowChest extends DCTileBlock {
-
+public class BlockLowChest extends DCTileBlockFaced {
 	private final boolean isTopSolid;
 
 	public BlockLowChest(Material m, String s, boolean b) {
@@ -98,5 +97,4 @@ public class BlockLowChest extends DCTileBlock {
 			return true;
 		return false;
 	}
-
 }

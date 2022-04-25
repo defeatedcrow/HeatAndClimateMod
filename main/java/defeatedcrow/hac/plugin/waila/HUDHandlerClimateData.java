@@ -61,7 +61,7 @@ public class HUDHandlerClimateData extends HUDHandlerBlocks {
 				return new ItemStack(FoodInit.crops, 1, 7);
 			else if (block == FoodInit.leavesTea)
 				return new ItemStack(FoodInit.crops, 1, 8);
-			else if (block == FoodInit.cropLotus)
+			else if (block == FoodInit.cropLotusN)
 				return new ItemStack(FoodInit.crops, 1, 10);
 			else if (block == FoodInit.saplings) {
 				int meta = accessor.getMetadata();

@@ -1456,6 +1456,7 @@ tile.dcs_build_coldlamp_chalcedony.name=Cold Lamp (White)
 tile.dcs_build_coldlamp_serpentine.name=Cold Lamp (Serpentine)
 tile.dcs_device_display_shelf_0.name=Display Shelf
 tile.dcs_device_display_stand_0.name=Display Stand
+tile.dcs_device_display_case_0.name=Display Case
 tile.dcs_build_pressure_chal_0.name=Chalcedony Pressure Plate
 tile.dcs_build_pressure_olivine_0.name=Emerald Pressure Plate
 tile.dcs_build_vase_planter.name=Plant Pot

@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
@@ -26,8 +26,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCraftingCounter extends DCTileBlock {
-
+public class BlockCraftingCounter extends DCTileBlockFaced {
 	public BlockCraftingCounter(String s, boolean full) {
 		super(Material.CLAY, s, 0);
 		this.setTickRandomly(false);
@@ -84,11 +83,9 @@ public class BlockCraftingCounter extends DCTileBlock {
 			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.crafting_counter"));
-			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-					.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 }

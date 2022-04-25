@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -33,12 +34,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCurtainBlinds extends BlockContainerDC {
-
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
 	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.875D, 0D, 0D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0D, 0D, 0D, 0.125D, 1D, 1D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -47,9 +46,7 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.CLOTH);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(DCState.POWERED, false)
-				.withProperty(DCState.DOUBLE, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(DCState.POWERED, false).withProperty(DCState.DOUBLE, false));
 		this.maxMeta = 0;
 	}
 
@@ -67,7 +64,6 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 			return AABB_WEST;
 		default:
 			return AABB_NORTH;
-
 		}
 	}
 
@@ -80,8 +76,7 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 			int down = 0;
 			for (int i = 1; pos.getY() + i < 255; i++) {
 				IBlockState st = world.getBlockState(pos.up(i));
-				if (st.getBlock() == this && DCState.getFace(st, DCState.FACING) == DCState
-						.getFace(target, DCState.FACING)) {
+				if (st.getBlock() == this && DCState.getFace(st, DCState.FACING) == DCState.getFace(target, DCState.FACING)) {
 					up = i;
 				} else {
 					break;
@@ -89,8 +84,7 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 			}
 			for (int i = 1; pos.getY() - i > 0; i++) {
 				IBlockState st = world.getBlockState(pos.down(i));
-				if (st.getBlock() == this && DCState.getFace(st, DCState.FACING) == DCState
-						.getFace(target, DCState.FACING)) {
+				if (st.getBlock() == this && DCState.getFace(st, DCState.FACING) == DCState.getFace(target, DCState.FACING)) {
 					down = i;
 				} else {
 					break;
@@ -103,10 +97,7 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 				world.setBlockState(pos.up(j), target);
 			}
 			world.markBlockRangeForRenderUpdate(pos.down(down), pos.up(up));
-			world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
-					.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand
-							.nextFloat() * 0.1F + 0.9F);
-
+			world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		}
 		return true;
 	}
@@ -198,11 +189,9 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 		boolean b2 = DCState.getBool(state, DCState.POWERED);
 		int i = b1 ? 1 : 0;
 		int f = 0;
-
 		if (b2) {
 			i += 2;
 		}
-
 		f = 5 - state.getValue(DCState.FACING).getIndex();
 		f = f << 2;
 		return i + f;
@@ -225,6 +214,19 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 	}
 
 	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.DOUBLE,
+				DCState.POWERED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.FACING;
+	}
+
+	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
@@ -239,5 +241,4 @@ public class BlockCurtainBlinds extends BlockContainerDC {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
-
 }

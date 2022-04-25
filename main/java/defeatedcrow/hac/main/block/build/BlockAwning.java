@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -158,6 +159,16 @@ public class BlockAwning extends BlockContainerDC {
 				DCState.FACING,
 				DCState.TYPE4
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override

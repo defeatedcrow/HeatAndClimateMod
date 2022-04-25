@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -29,22 +30,18 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCurtain extends BlockDC {
-
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
 	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.875D, 0D, 0D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0D, 0D, 0D, 0.125D, 1D, 1D);
-
 	protected static final AxisAlignedBB AABB_NORTH_L = new AxisAlignedBB(0.75D, 0D, 0.75D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH_L = new AxisAlignedBB(0D, 0D, 0D, 0.25D, 1D, 0.25D);
 	protected static final AxisAlignedBB AABB_WEST_L = new AxisAlignedBB(0.75D, 0D, 0.75D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_EAST_L = new AxisAlignedBB(0D, 0D, 0D, 0.25D, 1D, 0.25D);
-
 	protected static final AxisAlignedBB AABB_NORTH_R = new AxisAlignedBB(0D, 0D, 0.75D, 0.25D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH_R = new AxisAlignedBB(0.75D, 0D, 0D, 1D, 1D, 0.25D);
 	protected static final AxisAlignedBB AABB_WEST_R = new AxisAlignedBB(0.75D, 0D, 0D, 1D, 1D, 0.25D);
 	protected static final AxisAlignedBB AABB_EAST_R = new AxisAlignedBB(0D, 0D, 0.75D, 0.25D, 1D, 1D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -53,9 +50,7 @@ public class BlockCurtain extends BlockDC {
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.CLOTH);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(DCState.POWERED, false).withProperty(DCState.FLAG, false)
-				.withProperty(DCState.DOUBLE, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(DCState.POWERED, false).withProperty(DCState.FLAG, false).withProperty(DCState.DOUBLE, false));
 		this.maxMeta = 0;
 	}
 
@@ -75,7 +70,6 @@ public class BlockCurtain extends BlockDC {
 			return b2 ? (!b1 ? AABB_WEST_R : AABB_WEST_L) : AABB_WEST;
 		default:
 			return b2 ? (!b1 ? AABB_NORTH_R : AABB_NORTH_L) : AABB_NORTH;
-
 		}
 	}
 
@@ -117,9 +111,7 @@ public class BlockCurtain extends BlockDC {
 			}
 		}
 		if (b) {
-			world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
-					.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand
-							.nextFloat() * 0.1F + 0.9F);
+			world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		}
 		return true;
 	}
@@ -216,11 +208,9 @@ public class BlockCurtain extends BlockDC {
 		boolean b2 = DCState.getBool(state, DCState.POWERED);
 		int i = b1 ? 1 : 0;
 		int f = 0;
-
 		if (b2) {
 			i += 2;
 		}
-
 		f = 5 - state.getValue(DCState.FACING).getIndex();
 		f = f << 2;
 		return i + f;
@@ -244,8 +234,17 @@ public class BlockCurtain extends BlockDC {
 	}
 
 	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
+
+	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
 }

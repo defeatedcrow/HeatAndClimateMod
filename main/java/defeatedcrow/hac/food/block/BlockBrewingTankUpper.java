@@ -3,7 +3,7 @@ package defeatedcrow.hac.food.block;
 import java.util.Random;
 
 import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -21,8 +21,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockBrewingTankUpper extends DCTileBlock {
-
+public class BlockBrewingTankUpper extends DCTileBlockFaced {
 	public BlockBrewingTankUpper(String s) {
 		super(Material.CLAY, s, 0);
 	}
@@ -92,7 +91,6 @@ public class BlockBrewingTankUpper extends DCTileBlock {
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return false;
 	}
-
 	// 2ブロック合体管理
 
 	@Override
@@ -102,5 +100,4 @@ public class BlockBrewingTankUpper extends DCTileBlock {
 			world.destroyBlock(pos, true);
 		}
 	}
-
 }

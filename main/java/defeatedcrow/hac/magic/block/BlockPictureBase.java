@@ -4,9 +4,11 @@ import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -17,8 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public abstract class BlockPictureBase extends DCTileBlock {
-
+public abstract class BlockPictureBase extends DCTileBlockFaced {
 	public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.875D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.125D, 1.0D, 1.0D);
 	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.125D);
@@ -89,7 +90,6 @@ public abstract class BlockPictureBase extends DCTileBlock {
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
-
 	// particleのON/OFF
 
 	@Override
@@ -118,7 +118,6 @@ public abstract class BlockPictureBase extends DCTileBlock {
 		} else
 			return false;
 	}
-
 	/* NBT */
 
 	@Override
@@ -127,5 +126,15 @@ public abstract class BlockPictureBase extends DCTileBlock {
 		if (!b && world.getBlockState(pos.offset(face)).getMaterial() == Material.WATER)
 			return true;
 		return false;
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 }

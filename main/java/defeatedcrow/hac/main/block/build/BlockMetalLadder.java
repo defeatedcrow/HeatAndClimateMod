@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -33,11 +34,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMetalLadder extends BlockDC {
-
 	/* 左右のチェック */
 	public static final PropertyBool CLAMP = PropertyBool.create("clamp");
 	public static final PropertyBool UPPER = PropertyBool.create("upper");
-
 	public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.75D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.25D, 1.0D, 1.0D);
 	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.25D);
@@ -49,8 +48,7 @@ public class BlockMetalLadder extends BlockDC {
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(CLAMP, false).withProperty(UPPER, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(CLAMP, false).withProperty(UPPER, false));
 	}
 
 	@Override
@@ -76,7 +74,6 @@ public class BlockMetalLadder extends BlockDC {
 					world.setBlockState(target, set, 3);
 					DCUtil.reduceStackSize(held, 1);
 					return true;
-
 				}
 			}
 		}
@@ -97,8 +94,7 @@ public class BlockMetalLadder extends BlockDC {
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
 		if (face != null) {
 			BlockPos up = pos.offset(face);
-			return state.withProperty(CLAMP, Boolean.valueOf(this.canConnectTo(worldIn, up, face)))
-					.withProperty(UPPER, worldIn.isAirBlock(pos.up()));
+			return state.withProperty(CLAMP, Boolean.valueOf(this.canConnectTo(worldIn, up, face))).withProperty(UPPER, worldIn.isAirBlock(pos.up()));
 		}
 		return state.withProperty(CLAMP, false).withProperty(UPPER, false);
 	}
@@ -137,7 +133,21 @@ public class BlockMetalLadder extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.FACING, CLAMP, UPPER });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.FACING,
+				CLAMP,
+				UPPER
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override
@@ -253,5 +263,4 @@ public class BlockMetalLadder extends BlockDC {
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
 }

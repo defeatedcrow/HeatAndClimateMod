@@ -11,14 +11,22 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 public class BlockSlabDC extends BlockSlabBase {
-
 	public BlockSlabDC() {
 		super(Material.GLASS, "dcs_build_slab", 7, true);
 	}
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = { "gypsum", "glass", "marble", "serpentine", "bedrock", "dirtbrick", "skarn", "greisen" };
+		String[] name = {
+				"gypsum",
+				"glass",
+				"marble",
+				"serpentine",
+				"bedrock",
+				"dirtbrick",
+				"skarn",
+				"greisen"
+		};
 		return name;
 	}
 
@@ -30,5 +38,4 @@ public class BlockSlabDC extends BlockSlabBase {
 		}
 		return super.getExplosionResistance(world, pos, exploder, explosion);
 	}
-
 }

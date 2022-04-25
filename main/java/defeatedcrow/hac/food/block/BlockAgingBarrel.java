@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.block.TileAgingBarrel.AgingTank;
 import defeatedcrow.hac.food.capability.DrinkCapabilityHandler;
@@ -36,8 +36,7 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockAgingBarrel extends DCTileBlock {
-
+public class BlockAgingBarrel extends DCTileBlockFaced {
 	public BlockAgingBarrel(String s) {
 		super(Material.WOOD, s, 0);
 	}
@@ -59,22 +58,17 @@ public class BlockAgingBarrel extends DCTileBlock {
 
 	public static boolean onActivateDCTank(TileAgingBarrel tile, ItemStack item, World world, IBlockState state,
 			EnumFacing side, EntityPlayer player) {
-		if (!DCUtil.isEmpty(item) && tile != null && item
-				.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile
-						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+		if (!DCUtil.isEmpty(item) && tile != null && item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 			ItemStack copy = item.copy();
 			if (item.getCount() > 1)
 				copy.setCount(1);
 			IFluidHandlerItem dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 			IFluidHandler tank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
-
 			// dummyを使った検証
-			if (dummy != null && dummy.getTankProperties() != null && dummy
-					.getTankProperties().length > 0 && tank instanceof AgingTank) {
+			if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0 && tank instanceof AgingTank) {
 				int max = dummy.getTankProperties()[0].getCapacity();
 				FluidStack f1 = dummy.drain(max, false);
 				AgingTank dc_in = (AgingTank) tank;
-
 				ItemStack ret = ItemStack.EMPTY;
 				boolean success = false;
 				// input
@@ -93,8 +87,7 @@ public class BlockAgingBarrel extends DCTileBlock {
 					ret = dummy.getContainer();
 					if (!DCUtil.isEmpty(ret)) {
 						if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
-							IDrinkCustomize drink = ret
-									.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
+							IDrinkCustomize drink = ret.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 							if (dc_in.getAge() >= MainCoreConfig.aging_day) {
 								int level = dc_in.getAge() / MainCoreConfig.aging_day;
 								drink.setAging(level);
@@ -106,7 +99,6 @@ public class BlockAgingBarrel extends DCTileBlock {
 						success = true;
 					}
 				}
-
 				if (success) {
 					if (!player.capabilities.isCreativeMode) {
 						DCUtil.reduceStackSize(item, 1);
@@ -114,8 +106,7 @@ public class BlockAgingBarrel extends DCTileBlock {
 					tile.markDirty();
 					player.inventory.markDirty();
 					if (!DCUtil.isEmpty(ret)) {
-						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret
-								.copy());
+						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret.copy());
 						world.spawnEntity(drop);
 					}
 					return true;
@@ -160,8 +151,7 @@ public class BlockAgingBarrel extends DCTileBlock {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE
-					.toString() + "COLD " + TextFormatting.RED.toString() + "~ HOT");
+			tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "COLD " + TextFormatting.RED.toString() + "~ HOT");
 			tooltip.add(DCName.HUM.getLocalizedName() + ": " + TextFormatting.GREEN.toString() + "NORMAL-");
 			tooltip.add(DCName.AIR.getLocalizedName() + ": " + TextFormatting.GREEN.toString() + "NORMAL-");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
@@ -186,5 +176,4 @@ public class BlockAgingBarrel extends DCTileBlock {
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return side == EnumFacing.DOWN;
 	}
-
 }

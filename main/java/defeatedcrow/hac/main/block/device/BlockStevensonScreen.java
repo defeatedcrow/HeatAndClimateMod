@@ -1,6 +1,6 @@
 package defeatedcrow.hac.main.block.device;
 
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.ClimateMain;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -12,8 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockStevensonScreen extends DCTileBlock {
-
+public class BlockStevensonScreen extends DCTileBlockFaced {
 	public BlockStevensonScreen(String s) {
 		super(Material.WOOD, s, 0);
 	}
@@ -39,5 +38,4 @@ public class BlockStevensonScreen extends DCTileBlock {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileStevensonScreen();
 	}
-
 }

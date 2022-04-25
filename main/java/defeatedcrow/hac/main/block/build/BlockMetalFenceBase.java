@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -35,21 +36,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMetalFenceBase extends BlockContainerDC {
-
 	/* 左右のチェック */
 	public static final PropertyBool UPPER = PropertyBool.create("upper");
 	public static final PropertyBool UNDER = PropertyBool.create("under");
-
-	public static final PropertyDirection BACK_FACING = PropertyDirection
-			.create("back_facing", EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyDirection BACK_FACING = PropertyDirection.create("back_facing", EnumFacing.Plane.HORIZONTAL);
 	public static final PropertyBool BACK_UPPER = PropertyBool.create("back_upper");
 	public static final PropertyBool BACK_UNDER = PropertyBool.create("back_under");
-
 	public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.125D, 0.0D, 0.875D, 0.875D, 1.0D, 1.0D);
 	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.125D, 0.125D, 1.0D, 0.875D);
 	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.125D, 0.0D, 0.0D, 0.875D, 1.0D, 0.125D);
 	public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.875D, 0.0D, 0.125D, 1.0D, 1.0D, 0.875D);
-
 	public static final AxisAlignedBB SOUTH_BOX = new AxisAlignedBB(0.0D, 0.0D, 0.75D, 1.0D, 1.0D, 1.0D);
 	public static final AxisAlignedBB WEST_BOX = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.25D, 1.0D, 1.0D);
 	public static final AxisAlignedBB NORTH_BOX = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.25D);
@@ -61,9 +57,7 @@ public class BlockMetalFenceBase extends BlockContainerDC {
 		this.setResistance(10.0F);
 		this.fullBlock = false;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(BACK_FACING, EnumFacing.SOUTH).withProperty(UPPER, false).withProperty(UNDER, false)
-				.withProperty(BACK_UPPER, false).withProperty(BACK_UNDER, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(BACK_FACING, EnumFacing.SOUTH).withProperty(UPPER, false).withProperty(UNDER, false).withProperty(BACK_UPPER, false).withProperty(BACK_UNDER, false));
 	}
 
 	// additional state
@@ -82,20 +76,16 @@ public class BlockMetalFenceBase extends BlockContainerDC {
 			boolean under = this.canConnectTo(worldIn, pos.down(), face);
 			boolean upper = this.canConnectTo(worldIn, pos.up(), face);
 			state = state.withProperty(UPPER, upper).withProperty(UNDER, under);
-
 			BlockPos back = pos.offset(face.getOpposite());
 			IBlockState b = worldIn.getBlockState(back);
 			if (b != null && b.getBlock() == this) {
 				EnumFacing b_face = DCState.getFace(b, DCState.FACING);
 				boolean b_under = this.canConnectTo(worldIn, back.down(), b_face);
 				boolean b_upper = this.canConnectTo(worldIn, back.up(), b_face);
-				state = state.withProperty(BACK_FACING, b_face).withProperty(BACK_UPPER, b_upper)
-						.withProperty(BACK_UNDER, b_under);
+				state = state.withProperty(BACK_FACING, b_face).withProperty(BACK_UPPER, b_upper).withProperty(BACK_UNDER, b_under);
 			} else {
-				state = state.withProperty(BACK_FACING, face).withProperty(BACK_UPPER, false)
-						.withProperty(BACK_UNDER, false);
+				state = state.withProperty(BACK_FACING, face).withProperty(BACK_UPPER, false).withProperty(BACK_UNDER, false);
 			}
-
 			return state;
 		}
 		return this.getDefaultState();
@@ -136,12 +126,30 @@ public class BlockMetalFenceBase extends BlockContainerDC {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {
-			DCState.FACING,
-			BACK_FACING,
-			UPPER,
-			UNDER,
-			BACK_UNDER,
-			BACK_UPPER });
+				DCState.FACING,
+				BACK_FACING,
+				UPPER,
+				UNDER,
+				BACK_UNDER,
+				BACK_UPPER
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.FACING,
+				BACK_FACING,
+				UPPER,
+				UNDER,
+				BACK_UNDER,
+				BACK_UPPER
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.NORMAL;
 	}
 
 	@Override
@@ -167,22 +175,17 @@ public class BlockMetalFenceBase extends BlockContainerDC {
 		if (!isActualState) {
 			state = state.getActualState(world, pos);
 		}
-
 		EnumFacing main = DCState.getFace(state, DCState.FACING);
 		EnumFacing back = DCState.getFace(state, BACK_FACING);
-
 		if (main == EnumFacing.EAST || back == EnumFacing.EAST) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, EAST_AABB);
 		}
-
 		if (main == EnumFacing.WEST || back == EnumFacing.WEST) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, WEST_AABB);
 		}
-
 		if (main == EnumFacing.SOUTH || back == EnumFacing.SOUTH) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, SOUTH_AABB);
 		}
-
 		if (main == EnumFacing.NORTH || back == EnumFacing.NORTH) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, NORTH_AABB);
 		}
@@ -296,5 +299,4 @@ public class BlockMetalFenceBase extends BlockContainerDC {
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return null;
 	}
-
 }

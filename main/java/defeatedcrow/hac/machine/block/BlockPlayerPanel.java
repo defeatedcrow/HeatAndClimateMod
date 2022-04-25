@@ -9,12 +9,14 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import defeatedcrow.hac.main.util.DCName;
 import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.resources.I18n;
@@ -37,10 +39,8 @@ import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPlayerPanel extends DCTileBlock {
-
+public class BlockPlayerPanel extends DCTileBlockFaced {
 	private static BlockPos lastPos = null;
-
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D);
 
 	public BlockPlayerPanel(String s) {
@@ -61,7 +61,6 @@ public class BlockPlayerPanel extends DCTileBlock {
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TilePlayerPanel();
 	}
-
 	/* pos登録 */
 
 	@Override
@@ -75,21 +74,16 @@ public class BlockPlayerPanel extends DCTileBlock {
 					if (!world.isRemote) {
 						if (lastPos == null) {
 							lastPos = pos;
-							String mes1 = "Stored this coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos
-									.getZ();
+							String mes1 = "Stored this coordinate: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
 							player.sendMessage(new TextComponentString(mes1));
 						} else {
-							((TilePlayerPanel) tile).setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos
-									.getZ()));
+							((TilePlayerPanel) tile).setPairPos(new BlockPos(lastPos.getX(), lastPos.getY(), lastPos.getZ()));
 							if (world.getTileEntity(lastPos) instanceof TilePlayerPanel) {
 								if (((TilePlayerPanel) world.getTileEntity(lastPos)).getPairPos() == null) {
-									((TilePlayerPanel) world.getTileEntity(lastPos)).setPairPos(new BlockPos(pos.getX(),
-											pos.getY(), pos.getZ()));
+									((TilePlayerPanel) world.getTileEntity(lastPos)).setPairPos(new BlockPos(pos.getX(), pos.getY(), pos.getZ()));
 								}
 							}
-
-							String mes2 = "Registered the coordinate: " + lastPos.getX() + ", " + lastPos
-									.getY() + ", " + lastPos.getZ();
+							String mes2 = "Registered the coordinate: " + lastPos.getX() + ", " + lastPos.getY() + ", " + lastPos.getZ();
 							player.sendMessage(new TextComponentString(mes2));
 							lastPos = null;
 						}
@@ -105,7 +99,6 @@ public class BlockPlayerPanel extends DCTileBlock {
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return AABB;
 	}
-
 	/* Tick更新処理 */
 
 	@Override
@@ -151,7 +144,6 @@ public class BlockPlayerPanel extends DCTileBlock {
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-
 		int step = DCState.getInt(state, DCState.TYPE4);
 		if (step == 3) {
 			TileEntity tile = world.getTileEntity(pos);
@@ -177,9 +169,7 @@ public class BlockPlayerPanel extends DCTileBlock {
 								double x = pos.getX() + rand.nextDouble();
 								double y = pos.getY() + rand.nextDouble() * 0.5D;
 								double z = pos.getZ() + rand.nextDouble();
-
-								Particle p = new ParticleBlink.Factory()
-										.createParticle(0, world, x, y, z, 0.0D, 0.15D, 0.0D, new int[0]);
+								Particle p = new ParticleBlink.Factory().createParticle(0, world, x, y, z, 0.0D, 0.15D, 0.0D, new int[0]);
 								FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
 							}
 						}
@@ -202,7 +192,6 @@ public class BlockPlayerPanel extends DCTileBlock {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 	// drop
 
 	@Override
@@ -225,4 +214,13 @@ public class BlockPlayerPanel extends DCTileBlock {
 		return Item.getItemFromBlock(this);
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
 }

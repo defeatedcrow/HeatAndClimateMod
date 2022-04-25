@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockFaceShape;
@@ -30,14 +31,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSmallLight extends BlockDC {
-
 	protected static final AxisAlignedBB AABB_D = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.0675D, 0.75D);
 	protected static final AxisAlignedBB AABB_U = new AxisAlignedBB(0.25D, 0.9325D, 0.25D, 0.75D, 1.0D, 0.75D);
 	protected static final AxisAlignedBB AABB_N = new AxisAlignedBB(0.25D, 0.25D, 0.0D, 0.75D, 0.75D, 0.0675D);
 	protected static final AxisAlignedBB AABB_S = new AxisAlignedBB(0.25D, 0.25D, 0.9325D, 0.75D, 0.75D, 1.0D);
 	protected static final AxisAlignedBB AABB_E = new AxisAlignedBB(0.9325D, 0.25D, 0.25D, 1.0D, 0.75D, 0.75D);
 	protected static final AxisAlignedBB AABB_W = new AxisAlignedBB(0.0D, 0.25D, 0.25D, 0.0675D, 0.75D, 0.75D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -50,8 +49,7 @@ public class BlockSmallLight extends BlockDC {
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
-				.withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(DCState.POWERED, false));
 	}
 
 	@Override
@@ -119,7 +117,6 @@ public class BlockSmallLight extends BlockDC {
 			return AABB_U;
 		default:
 			return AABB_N;
-
 		}
 	}
 
@@ -149,8 +146,8 @@ public class BlockSmallLight extends BlockDC {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
-				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean
+				.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -159,7 +156,6 @@ public class BlockSmallLight extends BlockDC {
 	public int getMetaFromState(IBlockState state) {
 		int f = 0;
 		int i = 0;
-
 		f = state.getValue(DCState.SIDE).index;
 		i = state.getValue(DCState.POWERED) ? 8 : 0;
 		return i + f;
@@ -176,5 +172,17 @@ public class BlockSmallLight extends BlockDC {
 				DCState.SIDE,
 				DCState.POWERED
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.POWERED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.SIDE;
 	}
 }

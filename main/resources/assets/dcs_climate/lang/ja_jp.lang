@@ -1432,6 +1432,7 @@ tile.dcs_build_coldlamp_chalcedony.name=冷たいランプ(玉髄)
 tile.dcs_build_coldlamp_serpentine.name=冷たいランプ(蛇紋石)
 tile.dcs_device_display_shelf_0.name=飾り棚
 tile.dcs_device_display_stand_0.name=アイテムスタンド
+tile.dcs_device_display_case_0.name=ショーケース
 tile.dcs_build_pressure_chal_0.name=玉髄の感圧板
 tile.dcs_build_pressure_olivine_0.name=エメラルドの感圧板
 tile.dcs_build_vase_planter.name=プランター

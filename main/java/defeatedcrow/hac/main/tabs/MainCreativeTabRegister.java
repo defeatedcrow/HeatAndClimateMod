@@ -137,6 +137,7 @@ public class MainCreativeTabRegister {
 
 			ClimateMain.build.addSubItem(MainInit.displayShelf);
 			ClimateMain.build.addSubItem(MainInit.displayStand);
+			ClimateMain.build.addSubItem(MainInit.displayCase);
 
 			ClimateMain.build.addSubItem(MainInit.sinkMetal);
 			ClimateMain.build.addSubItem(MainInit.sinkChest);

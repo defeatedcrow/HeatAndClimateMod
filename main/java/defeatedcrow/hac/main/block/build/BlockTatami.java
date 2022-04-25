@@ -9,9 +9,11 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCFacelessTileBlock;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.ITexturePath;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -25,7 +27,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTatami extends DCFacelessTileBlock implements ITexturePath {
-
 	public BlockTatami(Material m, String s) {
 		super(m, s, 5, false);
 		this.setTickRandomly(false);
@@ -55,7 +56,6 @@ public class BlockTatami extends DCFacelessTileBlock implements ITexturePath {
 		}
 		return ClimateCore.PACKAGE_ID + ":" + s;
 	}
-
 	// 表向きはメタなし
 
 	@Override
@@ -92,7 +92,17 @@ public class BlockTatami extends DCFacelessTileBlock implements ITexturePath {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-				.getLocalizedName());
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
+	}
+
+	// state
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 }

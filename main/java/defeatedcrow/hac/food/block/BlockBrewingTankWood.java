@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
@@ -28,8 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockBrewingTankWood extends DCTileBlock {
-
+public class BlockBrewingTankWood extends DCTileBlockFaced {
 	public BlockBrewingTankWood(String s) {
 		super(Material.WOOD, s, 0);
 	}
@@ -84,8 +83,7 @@ public class BlockBrewingTankWood extends DCTileBlock {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE
-					.toString() + "COOL " + TextFormatting.RED.toString() + "~ HOT");
+			tooltip.add(DCName.HEAT.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "COOL " + TextFormatting.RED.toString() + "~ HOT");
 			tooltip.add(DCName.HUM.getLocalizedName() + ": " + TextFormatting.BLUE.toString() + "NORMAL ~ WET");
 			tooltip.add(DCName.AIR.getLocalizedName() + ": " + TextFormatting.GREEN.toString() + "NORMAL-");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
@@ -110,5 +108,4 @@ public class BlockBrewingTankWood extends DCTileBlock {
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return side == EnumFacing.DOWN;
 	}
-
 }

@@ -11,6 +11,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.api.magic.MagicColor;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
@@ -18,7 +19,6 @@ import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockFaceShape;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,14 +37,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMorayLight extends BlockTorqueBase {
-
 	protected static final AxisAlignedBB AABB_D = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.5D, 0.75D);
 	protected static final AxisAlignedBB AABB_U = new AxisAlignedBB(0.25D, 0.5D, 0.25D, 0.75D, 1.0D, 0.75D);
 	protected static final AxisAlignedBB AABB_N = new AxisAlignedBB(0.25D, 0.25D, 0.0D, 0.75D, 0.75D, 0.5D);
 	protected static final AxisAlignedBB AABB_S = new AxisAlignedBB(0.25D, 0.25D, 0.5D, 0.75D, 0.75D, 1.0D);
 	protected static final AxisAlignedBB AABB_E = new AxisAlignedBB(0.5D, 0.25D, 0.25D, 1.0D, 0.75D, 0.75D);
 	protected static final AxisAlignedBB AABB_W = new AxisAlignedBB(0.0D, 0.25D, 0.25D, 0.5D, 0.75D, 0.75D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -120,7 +118,6 @@ public class BlockMorayLight extends BlockTorqueBase {
 			return AABB_U;
 		default:
 			return AABB_N;
-
 		}
 	}
 
@@ -145,7 +142,6 @@ public class BlockMorayLight extends BlockTorqueBase {
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
 	/* === RS === */
 
 	@Override
@@ -212,33 +208,19 @@ public class BlockMorayLight extends BlockTorqueBase {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
-				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
 	// state
 	@Override
-	public int getMetaFromState(IBlockState state) {
-		int f = 0;
-		int i = 0;
-
-		f = state.getValue(DCState.SIDE).index;
-		i = state.getValue(DCState.POWERED) ? 8 : 0;
-		return i + f;
+	public IProperty[] ignoreTarget() {
+		return null;
 	}
 
 	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		return state;
-	}
-
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {
-				DCState.SIDE,
-				DCState.POWERED
-		});
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override

@@ -1,0 +1,29 @@
+{
+    "multipart": [
+        {   "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_core" }},
+        {   "when": { "north": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_dn" }},
+            {   "when": { "north": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_un" }},
+            {   "when": { "south": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_ds" }},
+            {   "when": { "south": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_us" }},
+            {   "when": { "east": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_de" }},
+            {   "when": { "east": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_ue" }},
+            {   "when": { "west": "true", "down": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_dw" }},
+            {   "when": { "west": "true", "up": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_uw" }},
+            {   "when": { "north": "true", "east": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_ne" }},
+            {   "when": { "south": "true", "east": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_se" }},
+            {   "when": { "north": "true", "west": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_nw" }},
+            {   "when": { "south": "true", "west": "true" },
+            "apply": { "model": "dcs_climate:build/glass/dcs_glass_selenite_sw" }}
+    ]
+}

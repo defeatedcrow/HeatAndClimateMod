@@ -81,6 +81,7 @@ import defeatedcrow.hac.main.block.build.TileBedDCHammock;
 import defeatedcrow.hac.main.block.build.TileBedDCRattan;
 import defeatedcrow.hac.main.block.build.TileBedDCWhite;
 import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
+import defeatedcrow.hac.main.block.build.TileDisplayCase;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileDisplayStand;
 import defeatedcrow.hac.main.block.build.TileDoorHikido;
@@ -117,6 +118,7 @@ import defeatedcrow.hac.main.block.device.TileSwedishTorch;
 import defeatedcrow.hac.main.block.device.TileThermometer;
 import defeatedcrow.hac.main.block.device.TileWindVane;
 import defeatedcrow.hac.main.client.gui.ContainerCraftingCounter;
+import defeatedcrow.hac.main.client.gui.ContainerDisplayCase;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayShelf;
 import defeatedcrow.hac.main.client.gui.ContainerFuelStove;
 import defeatedcrow.hac.main.client.gui.ContainerHopperChest;
@@ -124,6 +126,7 @@ import defeatedcrow.hac.main.client.gui.ContainerLowChest;
 import defeatedcrow.hac.main.client.gui.ContainerNormalChamber;
 import defeatedcrow.hac.main.client.gui.ContainerStevensonScreen;
 import defeatedcrow.hac.main.client.gui.GuiCraftingCounter;
+import defeatedcrow.hac.main.client.gui.GuiDisplayCase;
 import defeatedcrow.hac.main.client.gui.GuiDisplayShelf;
 import defeatedcrow.hac.main.client.gui.GuiFuelStove;
 import defeatedcrow.hac.main.client.gui.GuiHopperChest;
@@ -213,7 +216,6 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;
 import net.minecraft.entity.passive.EntityVillager.PriceInfo;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.server.management.UserListOps;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -269,8 +271,7 @@ public class CommonMainProxy implements IGuiHandler {
 		DCRegistryUtil.addPotion(MainInit.warp, MainInit.warpType, "warp");
 
 		MainInit.projectileResistant = new PotionProjectileResistantDC();
-		DCRegistryUtil
-				.addPotion(MainInit.projectileResistant, MainInit.projectileResistantType, "projectile_resistant");
+		DCRegistryUtil.addPotion(MainInit.projectileResistant, MainInit.projectileResistantType, "projectile_resistant");
 
 		MainInit.reflexion = new PotionReflexionDC();
 		DCRegistryUtil.addPotion(MainInit.reflexion, MainInit.reflexionType, "reflexion");
@@ -287,12 +288,10 @@ public class CommonMainProxy implements IGuiHandler {
 
 	public void loadEnchantment() {
 		MainInit.venom = new EnchantmentVenom();
-		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom
-				.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.venom.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.venom"));
 
 		MainInit.robber = new EnchantmentRobber();
-		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber
-				.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
+		ForgeRegistries.ENCHANTMENTS.register(MainInit.robber.setRegistryName(ClimateMain.MOD_ID, "dcs.enchantment.robber"));
 
 	}
 
@@ -302,21 +301,16 @@ public class CommonMainProxy implements IGuiHandler {
 		VillagerCreationHaCAgri villageHandler = new VillagerCreationHaCAgri();
 		VillagerRegistry.instance().registerVillageCreationHandler(villageHandler);
 
-		MainInit.agri = new VillagerProfession("dcs_climate:agri_researcher",
-				"dcs_climate:textures/models/agri_researcher.png",
-				"dcs_climate:textures/models/zombie_agri_researcher.png");
+		MainInit.agri = new VillagerProfession("dcs_climate:agri_researcher", "dcs_climate:textures/models/agri_researcher.png", "dcs_climate:textures/models/zombie_agri_researcher.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.agri);
 
-		MainInit.engineer = new VillagerProfession("dcs_climate:engineer", "dcs_climate:textures/models/engineer.png",
-				"dcs_climate:textures/models/zombie_engineer.png");
+		MainInit.engineer = new VillagerProfession("dcs_climate:engineer", "dcs_climate:textures/models/engineer.png", "dcs_climate:textures/models/zombie_engineer.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.engineer);
 
-		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png",
-				"dcs_climate:textures/models/zombie_trader.png");
+		MainInit.trader = new VillagerProfession("dcs_climate:trader", "dcs_climate:textures/models/trader.png", "dcs_climate:textures/models/zombie_trader.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.trader);
 
-		MainInit.tailor = new VillagerProfession("dcs_climate:tailor", "dcs_climate:textures/models/tailor.png",
-				"dcs_climate:textures/models/zombie_tailor.png");
+		MainInit.tailor = new VillagerProfession("dcs_climate:tailor", "dcs_climate:textures/models/tailor.png", "dcs_climate:textures/models/zombie_tailor.png");
 		ForgeRegistries.VILLAGER_PROFESSIONS.register(MainInit.tailor);
 
 		HaCTradeData.init();
@@ -466,8 +460,7 @@ public class CommonMainProxy implements IGuiHandler {
 		}
 
 		BlockContainerUtil.INS.init();
-		GameData.register_impl(new ArmorDyesRecipeDC().setRegistryName(new ResourceLocation(ClimateMain.MOD_ID,
-				"armorcolor")));
+		GameData.register_impl(new ArmorDyesRecipeDC().setRegistryName(new ResourceLocation(ClimateMain.MOD_ID, "armorcolor")));
 	}
 
 	public void loadEntity() {
@@ -576,6 +569,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileMFenceGlass.class, "dcs_te_mfence_glass");
 		GameRegistry.registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net");
 		GameRegistry.registerTileEntity(TileDisplayStand.class, "dcs_te_display_stand");
+		GameRegistry.registerTileEntity(TileDisplayCase.class, "dcs_te_display_case");
 		GameRegistry.registerTileEntity(TileSwedishTorch.class, "dcs_te_swedish_torch");
 		GameRegistry.registerTileEntity(TileTatami.class, "dcs_te_carpet_tatami");
 		GameRegistry.registerTileEntity(TileDoorHikido.class, "dcs_te_door_hikido");
@@ -634,15 +628,10 @@ public class CommonMainProxy implements IGuiHandler {
 	/**
 	 * メタ無しJson製Block。一部の階段・ハーフにのみ使用している
 	 */
-	public void regBlockJson(Item item, String domein, String name, String dir, int max, boolean f) {}
+	public void regBlockSlab(Block block, String domein, String name, String dir) {}
 
-	/** MetalFence専用 */
-	public void regBlockMFence(Block block, String domein, String name, String dir) {}
-
-	/**
-	 * TEの向きのみ対応させたJsonタイプモデル
-	 */
-	public void regTEJson(Block block, String domein, String name, String dir) {}
+	public void regBlockStateAndJson(Block block, String domein, String name, String dir, int max, boolean useMeta,
+			boolean useBase) {}
 
 	public void loadInit() {
 		MinecraftForge.EVENT_BUS.register(new OnMiningEventDC());
@@ -706,6 +695,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerLowChest((TileLowChest) tile, player);
 		if (tile instanceof TileCraftingCounter)
 			return new ContainerCraftingCounter((TileCraftingCounter) tile, player, player.world, player.getPosition());
+		if (tile instanceof TileDisplayCase)
+			return new ContainerDisplayCase((TileDisplayCase) tile, player);
 		if (tile instanceof TileDisplayShelf)
 			return new ContainerDisplayShelf((TileDisplayShelf) tile, player);
 		if (tile instanceof TileCookingStove)
@@ -778,6 +769,8 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiLowChest((TileLowChest) tile, player);
 		if (tile instanceof TileCraftingCounter)
 			return new GuiCraftingCounter((TileCraftingCounter) tile, player, player.world, player.getPosition());
+		if (tile instanceof TileDisplayCase)
+			return new GuiDisplayCase((TileDisplayCase) tile, player);
 		if (tile instanceof TileDisplayShelf)
 			return new GuiDisplayShelf((TileDisplayShelf) tile, player);
 		if (tile instanceof TileCookingStove)

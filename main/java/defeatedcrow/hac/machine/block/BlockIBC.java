@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
@@ -27,8 +27,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
-public class BlockIBC extends DCTileBlock {
-
+public class BlockIBC extends DCTileBlockFaced {
 	public BlockIBC(String s) {
 		super(Material.CLAY, s, 0);
 	}
@@ -49,7 +48,6 @@ public class BlockIBC extends DCTileBlock {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
 			if (hand == EnumHand.MAIN_HAND) {
-
 				TileEntity tile = world.getTileEntity(pos);
 				if (!world.isRemote && tile instanceof TileIBC) {
 					if (!DCUtil.isEmpty(heldItem)) {
@@ -128,7 +126,6 @@ public class BlockIBC extends DCTileBlock {
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
-
 	// redstone
 
 	@Override
@@ -140,5 +137,4 @@ public class BlockIBC extends DCTileBlock {
 	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
 		return MainUtil.calcTankRedstone(worldIn.getTileEntity(pos));
 	}
-
 }

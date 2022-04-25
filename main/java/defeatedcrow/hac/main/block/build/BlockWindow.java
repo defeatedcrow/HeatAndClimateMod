@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -34,14 +35,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockWindow extends BlockDC {
-
 	public static final PropertyEnum<BlockWindow.Type> TYPE = PropertyEnum.<BlockWindow.Type>create("connect", BlockWindow.Type.class);
-
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
 	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.875D, 0D, 0D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0D, 0D, 0D, 0.125D, 1D, 1D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -50,9 +48,7 @@ public class BlockWindow extends BlockDC {
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.WOOD);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(DCState.POWERED, false)
-				.withProperty(DCState.FLAG, false).withProperty(TYPE, Type.SINGLE));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(DCState.POWERED, false).withProperty(DCState.FLAG, false).withProperty(TYPE, Type.SINGLE));
 		this.maxMeta = 1;
 	}
 
@@ -70,7 +66,6 @@ public class BlockWindow extends BlockDC {
 			return AABB_WEST;
 		default:
 			return AABB_NORTH;
-
 		}
 	}
 
@@ -79,10 +74,8 @@ public class BlockWindow extends BlockDC {
 		if (!isActualState) {
 			state = state.getActualState(worldIn, pos);
 		}
-
 		EnumFacing enumfacing = DCState.getFace(state, DCState.FACING);
 		boolean pow = DCState.getBool(state, DCState.POWERED);
-
 		if (!pow) {
 			switch (enumfacing) {
 			case EAST:
@@ -133,9 +126,7 @@ public class BlockWindow extends BlockDC {
 			}
 		}
 		if (b) {
-			world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
-					.getZ() + 0.5D, SoundEvents.BLOCK_WOODEN_DOOR_OPEN, SoundCategory.BLOCKS, 0.5F, world.rand
-							.nextFloat() * 0.1F + 0.9F);
+			world.playSound((EntityPlayer) null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.BLOCK_WOODEN_DOOR_OPEN, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		}
 		return true;
 	}
@@ -216,7 +207,6 @@ public class BlockWindow extends BlockDC {
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		boolean bot = isSameBlock(state, world, pos.down());
 		boolean up = isSameBlock(state, world, pos.up());
-
 		Type type = Type.SINGLE;
 		if (bot) {
 			if (up)
@@ -226,7 +216,6 @@ public class BlockWindow extends BlockDC {
 		} else if (up) {
 			type = Type.LOWER;
 		}
-
 		return state.withProperty(TYPE, type);
 	}
 
@@ -236,8 +225,7 @@ public class BlockWindow extends BlockDC {
 		IBlockState check = world.getBlockState(pos);
 		if (check == null)
 			return false;
-		return state.getBlock() == check.getBlock() && DCState.getBool(state, DCState.FLAG) == DCState
-				.getBool(check, DCState.FLAG);
+		return state.getBlock() == check.getBlock() && DCState.getBool(state, DCState.FLAG) == DCState.getBool(check, DCState.FLAG);
 	}
 
 	@Override
@@ -258,11 +246,9 @@ public class BlockWindow extends BlockDC {
 		boolean b2 = DCState.getBool(state, DCState.POWERED);
 		int i = b1 ? 1 : 0;
 		int f = 0;
-
 		if (b2) {
 			i += 2;
 		}
-
 		f = 5 - state.getValue(DCState.FACING).getIndex();
 		f = f << 2;
 		return i + f;
@@ -276,6 +262,16 @@ public class BlockWindow extends BlockDC {
 				DCState.POWERED,
 				TYPE
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override
@@ -293,7 +289,5 @@ public class BlockWindow extends BlockDC {
 		public String getName() {
 			return this.toString().toLowerCase();
 		}
-
 	}
-
 }

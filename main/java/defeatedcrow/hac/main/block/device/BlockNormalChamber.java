@@ -12,7 +12,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
@@ -36,8 +36,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
-
+public class BlockNormalChamber extends DCTileBlockFaced implements IHeatTile {
 	public BlockNormalChamber(Material m, String s, int max) {
 		super(m, s, max);
 	}
@@ -146,14 +145,12 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 		int meta = DCState.getInt(state, DCState.TYPE4);
 		return meta == 0 || meta == 1;
 	}
-
 	// redstone
 
 	@Override
 	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
-
 			if (flag || block.getDefaultState().canProvidePower()) {
 				int m = DCState.getInt(state, DCState.TYPE4);
 				int lit = m & 1;
@@ -190,7 +187,6 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 				double x = pos.getX() + 0.5D + face.getFrontOffsetX() * 0.5D + rand.nextDouble() * 0.15D;
 				double y = pos.getY() + 0.25D + rand.nextDouble() * 0.15D;
 				double z = pos.getZ() + 0.5D + face.getFrontOffsetZ() * 0.5D + rand.nextDouble() * 0.15D;
-
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
 			}
 		}
@@ -209,8 +205,7 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.chamber2"));
 			tooltip.add(DCName.RS.getLocalizedName() + ": " + DCName.TURN_OFF.getLocalizedName());
-			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-					.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
@@ -226,5 +221,4 @@ public class BlockNormalChamber extends DCTileBlock implements IHeatTile {
 	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
 		return Container.calcRedstone(worldIn.getTileEntity(pos));
 	}
-
 }

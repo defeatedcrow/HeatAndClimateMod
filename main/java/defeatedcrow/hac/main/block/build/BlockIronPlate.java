@@ -6,6 +6,7 @@ import java.util.Random;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.INameSuffix;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -30,13 +31,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockIronPlate extends BlockDC implements INameSuffix {
-
 	public static final PropertyBool SIDE = PropertyBool.create("side");
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 7);
-
 	protected static final AxisAlignedBB AABB_BOTTOM_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D);
 	protected static final AxisAlignedBB AABB_TOP_HALF = new AxisAlignedBB(0.0D, 0.875D, 0.0D, 1.0D, 1.0D, 1.0D);
-
 	public final int maxMeta;
 
 	public BlockIronPlate(String s, int max) {
@@ -51,7 +49,10 @@ public class BlockIronPlate extends BlockDC implements INameSuffix {
 
 	@Override
 	public String[] getNameSuffix() {
-		String[] name = { "iron", "mesh" };
+		String[] name = {
+				"iron",
+				"mesh"
+		};
 		return name;
 	}
 
@@ -91,8 +92,7 @@ public class BlockIronPlate extends BlockDC implements INameSuffix {
 	@Override
 	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand)
-				.withProperty(SIDE, false);
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand).withProperty(SIDE, false);
 		if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5D))
 			return state;
 		else
@@ -136,7 +136,6 @@ public class BlockIronPlate extends BlockDC implements INameSuffix {
 			i = maxMeta;
 		}
 		boolean f = state.getValue(SIDE);
-
 		return f ? i : i | 8;
 	}
 
@@ -147,7 +146,20 @@ public class BlockIronPlate extends BlockDC implements INameSuffix {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { SIDE, TYPE });
+		return new BlockStateContainer(this, new IProperty[] {
+				SIDE,
+				TYPE
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	public int getMaxMeta() {
@@ -174,5 +186,4 @@ public class BlockIronPlate extends BlockDC implements INameSuffix {
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
-
 }

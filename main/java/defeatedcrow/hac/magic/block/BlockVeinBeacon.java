@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -26,7 +27,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockVeinBeacon extends BlockContainerDC {
-
 	protected static final AxisAlignedBB AABB_PANEL = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 0.75D, 0.75D, 0.75D);
 
 	public BlockVeinBeacon(String s) {
@@ -102,7 +102,6 @@ public class BlockVeinBeacon extends BlockContainerDC {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
-
 		i = state.getValue(DCState.TYPE16);
 		if (i > 15)
 			i = 15;
@@ -116,7 +115,20 @@ public class BlockVeinBeacon extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.TYPE16 });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.TYPE16
+		});
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.TYPE16
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.NORMAL;
+	}
 }

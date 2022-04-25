@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.main.ClimateMain;
@@ -46,13 +47,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHopperFluid extends BlockContainerDC {
-
 	public BlockHopperFluid(String s) {
 		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
-				.withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(DCState.POWERED, false));
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -145,13 +144,10 @@ public class BlockHopperFluid extends BlockContainerDC {
 	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer, EnumHand hand) {
 		EnumFacing face = facing.getOpposite();
-
 		if (face == EnumFacing.UP) {
 			face = EnumFacing.DOWN;
 		}
-
-		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face))
-				.withProperty(DCState.POWERED, Boolean.valueOf(true));
+		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face)).withProperty(DCState.POWERED, Boolean.valueOf(true));
 	}
 
 	@Override
@@ -171,7 +167,6 @@ public class BlockHopperFluid extends BlockContainerDC {
 		TileEntity tile = world.getTileEntity(pos);
 		int i = this.damageDropped(state);
 		ItemStack drop = new ItemStack(this, 1, i);
-
 		if (tile != null && tile instanceof ITagGetter) {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag = ((ITagGetter) tile).getNBT(tag);
@@ -179,10 +174,8 @@ public class BlockHopperFluid extends BlockContainerDC {
 				drop.setTagCompound(tag);
 			}
 		}
-
 		if (!world.isRemote) {
-			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-					drop);
+			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop);
 			float f3 = 0.05F;
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -191,7 +184,6 @@ public class BlockHopperFluid extends BlockContainerDC {
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);
-
 	}
 
 	@Override
@@ -203,7 +195,6 @@ public class BlockHopperFluid extends BlockContainerDC {
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
-
 	/* === RS === */
 
 	@Override
@@ -219,12 +210,10 @@ public class BlockHopperFluid extends BlockContainerDC {
 
 	private void updateState(World worldIn, BlockPos pos, IBlockState state) {
 		boolean flag = !worldIn.isBlockPowered(pos);
-
 		if (flag != state.getValue(DCState.POWERED).booleanValue()) {
 			worldIn.setBlockState(pos, state.withProperty(DCState.POWERED, Boolean.valueOf(flag)), 4);
 		}
 	}
-
 	// redstone
 
 	@Override
@@ -241,8 +230,7 @@ public class BlockHopperFluid extends BlockContainerDC {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
-				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -251,7 +239,6 @@ public class BlockHopperFluid extends BlockContainerDC {
 	public int getMetaFromState(IBlockState state) {
 		int f = 0;
 		int i = 0;
-
 		f = state.getValue(DCState.SIDE).index;
 		i = state.getValue(DCState.POWERED) ? 8 : 0;
 		return i + f;
@@ -264,8 +251,22 @@ public class BlockHopperFluid extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE, DCState.POWERED });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.SIDE,
+				DCState.POWERED
+		});
+	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.POWERED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.SIDE;
 	}
 
 	@Override
@@ -275,8 +276,7 @@ public class BlockHopperFluid extends BlockContainerDC {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
 			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
-			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT
-					.getLocalizedName() + " (fluid container only): 1 item/5t");
+			tooltip.add(DCName.ITEM.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + " (fluid container only): 1 item/5t");
 			tooltip.add(DCName.FLUID.getLocalizedName() + DCName.TRANSPORT.getLocalizedName() + ": 200 mB/5t");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.hopper_flu1"));
@@ -286,5 +286,4 @@ public class BlockHopperFluid extends BlockContainerDC {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 }

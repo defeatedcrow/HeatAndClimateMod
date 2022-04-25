@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.base.ITexturePath;
 import net.minecraft.block.SoundType;
@@ -29,9 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCoolantPackage extends BlockDC implements ITexturePath, INameSuffix, IHeatTile {
-
 	protected static final AxisAlignedBB AABB_MAIN = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.1875D, 0.875D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -137,7 +136,19 @@ public class BlockCoolantPackage extends BlockDC implements ITexturePath, INameS
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.TYPE4 });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.TYPE4
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override
@@ -172,5 +183,4 @@ public class BlockCoolantPackage extends BlockDC implements ITexturePath, INameS
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
 }

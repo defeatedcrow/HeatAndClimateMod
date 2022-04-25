@@ -193,6 +193,7 @@ public class MainInit {
 
 	public static Block displayStand;
 	public static Block displayShelf;
+	public static Block displayCase;
 	public static Block flowerVase;
 	public static Block planting;
 

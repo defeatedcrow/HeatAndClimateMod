@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
 import defeatedcrow.hac.main.ClimateMain;
@@ -28,8 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockSilkwormBox extends DCTileBlock {
-
+public class BlockSilkwormBox extends DCTileBlockFaced {
 	public BlockSilkwormBox(String s) {
 		super(Material.WOOD, s, 3);
 	}

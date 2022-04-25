@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
@@ -29,8 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockStillPot extends DCTileBlock {
-
+public class BlockStillPot extends DCTileBlockFaced {
 	public BlockStillPot(String s) {
 		super(Material.WOOD, s, 0);
 	}
@@ -108,5 +107,4 @@ public class BlockStillPot extends DCTileBlock {
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return side == EnumFacing.DOWN;
 	}
-
 }

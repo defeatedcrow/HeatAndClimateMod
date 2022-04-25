@@ -3,10 +3,12 @@ package defeatedcrow.hac.machine.block;
 import java.util.Random;
 
 import defeatedcrow.hac.api.blockstate.DCState;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -21,7 +23,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public abstract class BlockMonitorPanel extends BlockTorqueBase {
-
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 	protected static final AxisAlignedBB AABB_AXIS_X1 = new AxisAlignedBB(0.0D, 0.125D, 0.125D, 0.25D, 0.875D, 0.875D);
 	protected static final AxisAlignedBB AABB_AXIS_Y1 = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.25D, 0.875D);
@@ -75,7 +76,6 @@ public abstract class BlockMonitorPanel extends BlockTorqueBase {
 		TileEntity tile = world.getTileEntity(pos);
 		int i = this.damageDropped(state);
 		ItemStack drop = new ItemStack(this, 1, i);
-
 		if (tile != null && tile instanceof ITagGetter) {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag = ((ITagGetter) tile).getNBT(tag);
@@ -83,10 +83,8 @@ public abstract class BlockMonitorPanel extends BlockTorqueBase {
 				drop.setTagCompound(tag);
 			}
 		}
-
 		if (!world.isRemote) {
-			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-					drop);
+			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop);
 			float f3 = 0.05F;
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -95,7 +93,6 @@ public abstract class BlockMonitorPanel extends BlockTorqueBase {
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);
-
 	}
 
 	@Override
@@ -133,4 +130,14 @@ public abstract class BlockMonitorPanel extends BlockTorqueBase {
 		return 0;
 	}
 
+	// state
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
 }

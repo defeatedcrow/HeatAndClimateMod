@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageBiomeGlass;
@@ -39,7 +40,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockBiomeGlass extends BlockDC {
-
 	// Type上限
 	public final int maxMeta;
 
@@ -48,8 +48,7 @@ public class BlockBiomeGlass extends BlockDC {
 		this.setHardness(0.2F);
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.GLASS);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.TYPE4, 0).withProperty(DCState.POWERED,
-				false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.TYPE4, 0).withProperty(DCState.POWERED, false));
 		this.maxMeta = 3;
 		this.fullBlock = false;
 		this.lightOpacity = 0;
@@ -128,12 +127,10 @@ public class BlockBiomeGlass extends BlockDC {
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 		int f = 0;
-
 		i = state.getValue(DCState.TYPE4);
 		if (i > maxMeta) {
 			i = maxMeta;
 		}
-
 		f = state.getValue(DCState.POWERED) ? 8 : 0;
 		return i + f;
 	}
@@ -149,6 +146,16 @@ public class BlockBiomeGlass extends BlockDC {
 				DCState.POWERED,
 				DCState.TYPE4
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	// biome shape
@@ -195,7 +202,6 @@ public class BlockBiomeGlass extends BlockDC {
 			int i = p.getX() & 15;
 			int j = p.getZ() & 15;
 			int k = c.getBiomeArray()[j << 4 | i] & 255;
-
 			Biome biome = Biomes.PLAINS;
 			switch (meta) {
 			case 1:
@@ -223,12 +229,10 @@ public class BlockBiomeGlass extends BlockDC {
 			int i = p.getX() & 15;
 			int j = p.getZ() & 15;
 			int k = c.getBiomeArray()[j << 4 | i] & 255;
-
 			Biome biome = world.getBiomeProvider().getBiome(p, Biomes.PLAINS);
 			k = Biome.getIdForBiome(biome);
 			c.getBiomeArray()[j << 4 | i] = (byte) (k & 255);
 		}
-
 		if (!world.isRemote) {
 			Biome biome2 = world.getBiomeProvider().getBiome(pos, Biomes.PLAINS);
 			int k2 = Biome.getIdForBiome(biome2) & 255;
@@ -263,11 +267,9 @@ public class BlockBiomeGlass extends BlockDC {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.biomeglass"));
-			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " +
-					DCName.TURN_OFF.getLocalizedName());
+			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + DCName.TURN_OFF.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 }

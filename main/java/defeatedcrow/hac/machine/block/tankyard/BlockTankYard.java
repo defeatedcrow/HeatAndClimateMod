@@ -8,9 +8,11 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -30,7 +32,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTankYard extends DCTileBlock {
-
 	public BlockTankYard(String s) {
 		super(Material.CLAY, s, 0);
 		this.setResistance(120.0F);
@@ -52,7 +53,6 @@ public class BlockTankYard extends DCTileBlock {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
 			if (hand == EnumHand.MAIN_HAND) {
-
 				TileEntity tile = world.getTileEntity(pos);
 				if (!world.isRemote && tile instanceof TileTankYard) {
 					if (!DCUtil.isEmpty(heldItem)) {
@@ -113,13 +113,12 @@ public class BlockTankYard extends DCTileBlock {
 	}
 
 	@Override
-	public boolean isFullCube(IBlockState state) {
-		return false;
+	public IProperty[] ignoreTarget() {
+		return null;
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
+	public EnumStateType getType() {
+		return EnumStateType.NORMAL;
 	}
-
 }

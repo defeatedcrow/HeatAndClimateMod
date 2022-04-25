@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -24,8 +24,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockKitchenHood extends DCTileBlock implements IAirflowTile {
-
+public class BlockKitchenHood extends DCTileBlockFaced implements IAirflowTile {
 	public BlockKitchenHood(String s) {
 		super(Material.CLAY, s, 0);
 		this.setSoundType(SoundType.METAL);
@@ -73,11 +72,9 @@ public class BlockKitchenHood extends DCTileBlock implements IAirflowTile {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add(DCName.AIR.getLocalizedName() + ": " + TextFormatting.AQUA.toString() + "WIND");
 			tooltip.add(DCName.RANGE.getLocalizedName() + ": " + I18n.format("dcs.tip.downward_only"));
-			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-					.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 }

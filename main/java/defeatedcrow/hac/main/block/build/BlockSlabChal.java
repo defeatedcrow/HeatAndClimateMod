@@ -7,7 +7,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 public class BlockSlabChal extends BlockSlabBase {
-
 	public BlockSlabChal() {
 		super(Material.GLASS, "dcs_build_slab", 6, true);
 	}
@@ -30,5 +29,4 @@ public class BlockSlabChal extends BlockSlabBase {
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return DCState.getInt(state, BlockSlabBase.TYPE) > 2 ? 15 : 0;
 	}
-
 }

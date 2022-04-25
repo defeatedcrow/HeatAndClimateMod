@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.entity.EntityCution;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -37,11 +38,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSofaBase extends BlockDC {
-
 	/* 左右のチェック */
 	public static final PropertyBool LEFT = PropertyBool.create("left");
 	public static final PropertyBool RIGHT = PropertyBool.create("right");
-
 	protected static final AxisAlignedBB AABB_SMALL = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.5D, 0.875D);
 	protected static final AxisAlignedBB AABB_FULL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D);
 	protected static final AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
@@ -49,7 +48,6 @@ public class BlockSofaBase extends BlockDC {
 	public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.5D, 0.0D, 0.25D, 1.0D, 1.0D);
 	public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.5D, 0.0D, 1.0D, 1.0D, 0.25D);
 	public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.75D, 0.5D, 0.0D, 1.0D, 1.0D, 1.0D);
-
 	private boolean isSmallAABB = false;
 
 	public BlockSofaBase(String s) {
@@ -59,8 +57,7 @@ public class BlockSofaBase extends BlockDC {
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 		this.setSoundType(SoundType.STONE);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(LEFT, false).withProperty(RIGHT, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(LEFT, false).withProperty(RIGHT, false));
 	}
 
 	public BlockSofaBase setSmallAABB() {
@@ -100,8 +97,7 @@ public class BlockSofaBase extends BlockDC {
 		if (face != null) {
 			BlockPos left = pos.offset(face.rotateYCCW());
 			BlockPos right = pos.offset(face.rotateY());
-			return state.withProperty(LEFT, Boolean.valueOf(this.canConnectTo(worldIn, left)))
-					.withProperty(RIGHT, Boolean.valueOf(this.canConnectTo(worldIn, right)));
+			return state.withProperty(LEFT, Boolean.valueOf(this.canConnectTo(worldIn, left))).withProperty(RIGHT, Boolean.valueOf(this.canConnectTo(worldIn, right)));
 		}
 		return state.withProperty(LEFT, false).withProperty(RIGHT, false);
 	}
@@ -130,11 +126,9 @@ public class BlockSofaBase extends BlockDC {
 			return super.withMirror(state, mirrorIn);
 		switch (mirrorIn) {
 		case LEFT_RIGHT:
-			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(LEFT, state.getValue(RIGHT))
-					.withProperty(RIGHT, state.getValue(LEFT));
+			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(LEFT, state.getValue(RIGHT)).withProperty(RIGHT, state.getValue(LEFT));
 		case FRONT_BACK:
-			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(RIGHT, state.getValue(LEFT))
-					.withProperty(LEFT, state.getValue(RIGHT));
+			return state.withProperty(DCState.FACING, face.getOpposite()).withProperty(RIGHT, state.getValue(LEFT)).withProperty(LEFT, state.getValue(RIGHT));
 		default:
 			return super.withMirror(state, mirrorIn);
 		}
@@ -147,6 +141,16 @@ public class BlockSofaBase extends BlockDC {
 				LEFT,
 				RIGHT
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override
@@ -286,5 +290,4 @@ public class BlockSofaBase extends BlockDC {
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
 }

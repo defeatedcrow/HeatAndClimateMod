@@ -20,6 +20,7 @@ import defeatedcrow.hac.api.cultivate.IClimateCrop;
 import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -58,26 +59,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Deprecated
 public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable {
-
 	public static final PropertyBool BLACK = PropertyBool.create("black");
-
 	protected Random cropRand = new Random();
 
 	public BlockLotus(String s, int max) {
 		super(Material.WATER, s);
 		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK, false)
-				.withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK, false).withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
 	}
 
 	public boolean isInWater(IBlockAccess world, BlockPos pos) {
 		boolean ret = true;
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			IBlockState target = world.getBlockState(pos.offset(face));
-			if (target.getBlock() instanceof BlockLiquid && target.getMaterial() == Material.WATER) {
-
-			} else if (target.getBlock() != this && !target.getBlock().isSideSolid(target, world, pos.offset(face), face
-					.getOpposite())) {
+			if (target.getBlock() instanceof BlockLiquid && target.getMaterial() == Material.WATER) {} else if (target.getBlock() != this && !target.getBlock().isSideSolid(target, world, pos.offset(face), face.getOpposite())) {
 				ret = false;
 			}
 		}
@@ -127,7 +122,6 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
-
 	/* Block動作 */
 
 	@Override
@@ -155,8 +149,7 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 			int stage = state.getValue(DCState.STAGE8);
 			boolean black = state.getValue(BLACK);
 			world.setBlockState(pos, Blocks.WATER.getDefaultState(), 2);
-			world.setBlockState(pos.down(), FoodInit.cropLotusN.getDefaultState().withProperty(DCState.STAGE8, stage)
-					.withProperty(BlockLotusN.BLACK, black), 2);
+			world.setBlockState(pos.down(), FoodInit.cropLotusN.getDefaultState().withProperty(DCState.STAGE8, stage).withProperty(BlockLotusN.BLACK, black), 2);
 		}
 	}
 
@@ -197,7 +190,6 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	protected float getSeedDropChance() {
 		return 1.0F;
 	}
-
 	/* IClimateCrop */
 
 	@Override
@@ -312,7 +304,6 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 					} else if (stage > 1 && season.id == 3) {
 						next = 7;
 					}
-
 					if (next > stage) {
 						IBlockState newstate = state.withProperty(DCState.STAGE8, next).withProperty(BLACK, black);
 						return world.setBlockState(pos, newstate, 2);
@@ -398,7 +389,6 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 		ret.add(DCAirflow.WIND);
 		return ret;
 	}
-
 	/* IRapidCollectables */
 
 	@Override
@@ -423,7 +413,6 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
 		return this.harvest(world, pos, state, player);
 	}
-
 	/* state関連 */
 
 	@Override
@@ -439,7 +428,6 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 		int j = 0;
-
 		i = state.getValue(DCState.STAGE8);
 		j = state.getValue(BLACK) ? 8 : 0;
 		return i + j;
@@ -457,6 +445,16 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 				BLACK,
 				BlockFluidBase.LEVEL
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	// drop
@@ -477,7 +475,6 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 		else
 			return null;
 	}
-
 	/* IGrowable */
 
 	@Override
@@ -516,10 +513,8 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	}
 
 	/**
-	 * 側面描画用
-	 * flammpfeil氏より
+	 * 側面描画用 flammpfeil氏より
 	 */
-
 	// 接してる面側が水だったら、その接してる水の側面を描画しない
 	@Override
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
@@ -534,5 +529,4 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 			EnumFacing side) {
 		return true;
 	}
-
 }

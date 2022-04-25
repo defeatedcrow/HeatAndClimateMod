@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
@@ -38,13 +39,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockBedDC extends BlockContainerDC {
-
 	protected static final AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 
 	public BlockBedDC(String s) {
 		super(Material.CLOTH, s);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT)
-				.withProperty(BlockBed.OCCUPIED, Boolean.valueOf(false)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT).withProperty(BlockBed.OCCUPIED, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -88,7 +87,6 @@ public class BlockBedDC extends BlockContainerDC {
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return AABB_HALF;
 	}
-
 	/* --- bed --- */
 
 	@Override
@@ -100,12 +98,10 @@ public class BlockBedDC extends BlockContainerDC {
 			if (state.getValue(BlockBed.PART) != BlockBed.EnumPartType.HEAD) {
 				pos = pos.offset(state.getValue(BlockBed.FACING));
 				state = world.getBlockState(pos);
-
 				if (state.getBlock() != this) {
 					return true;
 				}
 			}
-
 			// tile
 			TileBedDC bed = null;
 			TileBedDC bed2 = null;
@@ -129,7 +125,6 @@ public class BlockBedDC extends BlockContainerDC {
 			} else {
 				return true;
 			}
-
 			// HELLかどうか
 			WorldSleepResult sleepResult = world.provider.canSleepAt(player, pos);
 			if (sleepResult != WorldSleepResult.BED_EXPLODES && sleepResult != WorldSleepResult.DENY) {
@@ -137,23 +132,18 @@ public class BlockBedDC extends BlockContainerDC {
 				if (state.getValue(BlockBed.OCCUPIED).booleanValue()) {
 					EntityPlayer otherplayer = this.getPlayerInBed(world, pos);
 					if (otherplayer != null) {
-						player.sendStatusMessage(new TextComponentTranslation("tile.bed.occupied",
-								new Object[0]), true);
+						player.sendStatusMessage(new TextComponentTranslation("tile.bed.occupied", new Object[0]), true);
 						return true;
 					}
-
 					state = state.withProperty(BlockBed.OCCUPIED, Boolean.valueOf(false));
 					world.setBlockState(pos, state, 4);
 				}
-
 				// Player側のSleep判定
 				BlockPos pos2 = new BlockPos(player.getPosition());
 				bed.setSleepPos(pos2);
 				bed2.setSleepPos(pos2);
 				// DCLogger.debugInfoLog("Sleep Pos: " + pos2.toString());
-
 				EntityPlayer.SleepResult result = player.trySleep(pos);
-
 				if (result == EntityPlayer.SleepResult.OK) {
 					state = state.withProperty(BlockBed.OCCUPIED, Boolean.valueOf(true));
 					world.setBlockState(pos, state, 4);
@@ -164,10 +154,8 @@ public class BlockBedDC extends BlockContainerDC {
 					} else if (result == EntityPlayer.SleepResult.NOT_SAFE) {
 						player.sendStatusMessage(new TextComponentTranslation("tile.bed.notSafe", new Object[0]), true);
 					} else if (result == EntityPlayer.SleepResult.TOO_FAR_AWAY) {
-						player.sendStatusMessage(new TextComponentTranslation("tile.bed.tooFarAway",
-								new Object[0]), true);
+						player.sendStatusMessage(new TextComponentTranslation("tile.bed.tooFarAway", new Object[0]), true);
 					}
-
 					return true;
 				}
 			} else {
@@ -218,7 +206,6 @@ public class BlockBedDC extends BlockContainerDC {
 			super.onLanded(world, entity);
 		} else if (entity.motionY < 0.0D) {
 			entity.motionY = -entity.motionY * 0.65D;
-
 			if (!(entity instanceof EntityLivingBase)) {
 				entity.motionY *= 0.8D;
 			}
@@ -229,13 +216,11 @@ public class BlockBedDC extends BlockContainerDC {
 	public void onFallenUpon(World world, BlockPos pos, Entity entity, float distance) {
 		super.onFallenUpon(world, pos, entity, distance * 0.25F);
 	}
-
 	/* drop */
 
 	@Override
 	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, @Nullable BlockPos from) {
 		EnumFacing enumfacing = state.getValue(BlockBed.FACING);
-
 		if (state.getValue(BlockBed.PART) == BlockBed.EnumPartType.FOOT) {
 			if (world.getBlockState(pos.offset(enumfacing)).getBlock() != this) {
 				world.setBlockToAir(pos);
@@ -273,25 +258,20 @@ public class BlockBedDC extends BlockContainerDC {
 	public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player) {
 		if (player.capabilities.isCreativeMode && state.getValue(BlockBed.PART) == BlockBed.EnumPartType.FOOT) {
 			BlockPos blockpos = pos.offset(state.getValue(BlockBed.FACING));
-
 			if (worldIn.getBlockState(blockpos).getBlock() == this) {
 				worldIn.setBlockToAir(blockpos);
 			}
 		}
 	}
-
 	/* state */
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing facing = EnumFacing.getHorizontal(meta);
 		if ((meta & 8) > 0) {
-			return this.getDefaultState().withProperty(BlockBed.PART, BlockBed.EnumPartType.HEAD)
-					.withProperty(BlockBed.FACING, facing).withProperty(BlockBed.OCCUPIED, Boolean
-							.valueOf((meta & 4) > 0));
+			return this.getDefaultState().withProperty(BlockBed.PART, BlockBed.EnumPartType.HEAD).withProperty(BlockBed.FACING, facing).withProperty(BlockBed.OCCUPIED, Boolean.valueOf((meta & 4) > 0));
 		} else {
-			return this.getDefaultState().withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT)
-					.withProperty(BlockBed.FACING, facing);
+			return this.getDefaultState().withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT).withProperty(BlockBed.FACING, facing);
 		}
 	}
 
@@ -299,7 +279,6 @@ public class BlockBedDC extends BlockContainerDC {
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 		i = i | state.getValue(BlockBed.FACING).getHorizontalIndex();
-
 		if (state.getValue(BlockBed.PART) == BlockBed.EnumPartType.HEAD) {
 			i |= 8;
 			if (state.getValue(BlockBed.OCCUPIED).booleanValue()) {
@@ -313,18 +292,34 @@ public class BlockBedDC extends BlockContainerDC {
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		if (state.getValue(BlockBed.PART) == BlockBed.EnumPartType.FOOT) {
 			IBlockState s2 = worldIn.getBlockState(pos.offset(state.getValue(BlockBed.FACING)));
-
 			if (s2.getBlock() == this) {
 				state = state.withProperty(BlockBed.OCCUPIED, s2.getValue(BlockBed.OCCUPIED));
 			}
 		}
-
 		return state;
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { BlockBed.FACING, BlockBed.PART, BlockBed.OCCUPIED });
+		return new BlockStateContainer(this, new IProperty[] {
+				BlockBed.FACING,
+				BlockBed.PART,
+				BlockBed.OCCUPIED
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				BlockBed.FACING,
+				BlockBed.PART,
+				BlockBed.OCCUPIED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.NORMAL;
 	}
 
 	@Override
@@ -350,5 +345,4 @@ public class BlockBedDC extends BlockContainerDC {
 			return true;
 		return false;
 	}
-
 }

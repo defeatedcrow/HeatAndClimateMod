@@ -7,11 +7,13 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimateIgnoreBlock;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.energy.BlockTorqueBase;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -29,7 +31,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockConveyor extends BlockTorqueBase implements IClimateIgnoreBlock {
-
 	protected static final AxisAlignedBB AABB_NS = new AxisAlignedBB(0.125D, 0.25D, 0.0D, 0.875D, 0.375D, 1.0D);
 	protected static final AxisAlignedBB AABB_EW = new AxisAlignedBB(0.0D, 0.25D, 0.125D, 1.0D, 0.375D, 0.875D);
 
@@ -65,7 +66,6 @@ public class BlockConveyor extends BlockTorqueBase implements IClimateIgnoreBloc
 			return AABB_EW;
 		default:
 			return AABB_NS;
-
 		}
 	}
 
@@ -88,7 +88,6 @@ public class BlockConveyor extends BlockTorqueBase implements IClimateIgnoreBloc
 				if (mZ < -0.035D) {
 					mZ = -0.035D;
 				}
-
 				double dX = 0D;
 				if (face.rotateY().getFrontOffsetX() != 0 && entity.posX < pos.getX() + 0.4D) {
 					dX = 0.035D;
@@ -103,7 +102,6 @@ public class BlockConveyor extends BlockTorqueBase implements IClimateIgnoreBloc
 				if (face.rotateY().getFrontOffsetZ() != 0 && entity.posZ > pos.getZ() + 0.6D) {
 					dZ = -0.035D;
 				}
-
 				entity.motionX = mX + dX;
 				entity.motionZ = mZ + dZ;
 			}
@@ -116,22 +114,18 @@ public class BlockConveyor extends BlockTorqueBase implements IClimateIgnoreBloc
 			TileEntity tile = world.getTileEntity(pos);
 			if (tile != null && tile instanceof TileConveyor) {
 				TileConveyor conv = (TileConveyor) tile;
-
 				ItemStack drop1 = conv.getStackInSlot(0);
 				if (!DCUtil.isEmpty(drop1)) {
-					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
-							.getZ() + 0.5D, drop1);
+					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop1);
 					float f3 = 0.05F;
 					entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 					entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
 					entityitem.motionZ = (float) world.rand.nextGaussian() * f3;
 					world.spawnEntity(entityitem);
 				}
-
 				ItemStack drop2 = conv.getStackInSlot(1);
 				if (!DCUtil.isEmpty(drop2)) {
-					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos
-							.getZ() + 0.5D, drop2);
+					EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop2);
 					float f3 = 0.05F;
 					entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 					entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -139,7 +133,6 @@ public class BlockConveyor extends BlockTorqueBase implements IClimateIgnoreBloc
 					world.spawnEntity(entityitem);
 				}
 			}
-
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);
@@ -156,9 +149,7 @@ public class BlockConveyor extends BlockTorqueBase implements IClimateIgnoreBloc
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.conveyor3"));
 			tooltip.add(I18n.format("dcs.tip.conveyor"));
-			tooltip.add(TextFormatting.RED.toString() + "SMELTING+" + TextFormatting.GRAY
-					.toString() + " and " + TextFormatting.DARK_BLUE.toString() + "TIGHT" + TextFormatting.GRAY
-							.toString() + ": " + I18n.format("dcs.tip.conveyor2"));
+			tooltip.add(TextFormatting.RED.toString() + "SMELTING+" + TextFormatting.GRAY.toString() + " and " + TextFormatting.DARK_BLUE.toString() + "TIGHT" + TextFormatting.GRAY.toString() + ": " + I18n.format("dcs.tip.conveyor2"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
@@ -183,4 +174,14 @@ public class BlockConveyor extends BlockTorqueBase implements IClimateIgnoreBloc
 		return false;
 	}
 
+	// state
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
 }

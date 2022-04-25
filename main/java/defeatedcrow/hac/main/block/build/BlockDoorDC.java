@@ -2,11 +2,14 @@ package defeatedcrow.hac.main.block.build;
 
 import java.util.Random;
 
+import defeatedcrow.hac.core.base.EnumStateType;
+import defeatedcrow.hac.core.base.IPropertyIgnore;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,8 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockDoorDC extends BlockDoor {
-
+public class BlockDoorDC extends BlockDoor implements IPropertyIgnore {
 	public BlockDoorDC(String s, Material materialIn) {
 		super(materialIn);
 		this.setUnlocalizedName(s);
@@ -66,10 +68,8 @@ public class BlockDoorDC extends BlockDoor {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-
 		BlockPos blockpos = state.getValue(HALF) == BlockDoor.EnumDoorHalf.LOWER ? pos : pos.down();
 		IBlockState iblockstate = pos.equals(blockpos) ? state : worldIn.getBlockState(blockpos);
-
 		if (iblockstate.getBlock() != this) {
 			return false;
 		} else {
@@ -84,11 +84,9 @@ public class BlockDoorDC extends BlockDoor {
 	@Override
 	public void toggleDoor(World worldIn, BlockPos pos, boolean open) {
 		IBlockState iblockstate = worldIn.getBlockState(pos);
-
 		if (iblockstate.getBlock() == this) {
 			BlockPos blockpos = iblockstate.getValue(HALF) == BlockDoor.EnumDoorHalf.LOWER ? pos : pos.down();
 			IBlockState iblockstate1 = pos == blockpos ? iblockstate : worldIn.getBlockState(blockpos);
-
 			if (iblockstate1.getBlock() == this && iblockstate1.getValue(OPEN).booleanValue() != open) {
 				worldIn.setBlockState(blockpos, iblockstate1.withProperty(OPEN, Boolean.valueOf(open)), 10);
 				worldIn.markBlockRangeForRenderUpdate(blockpos, pos);
@@ -102,7 +100,6 @@ public class BlockDoorDC extends BlockDoor {
 		if (state.getValue(HALF) == BlockDoor.EnumDoorHalf.UPPER) {
 			BlockPos blockpos = pos.down();
 			IBlockState iblockstate = worldIn.getBlockState(blockpos);
-
 			if (iblockstate.getBlock() != this) {
 				worldIn.setBlockToAir(pos);
 			} else if (blockIn != this) {
@@ -112,32 +109,25 @@ public class BlockDoorDC extends BlockDoor {
 			boolean flag1 = false;
 			BlockPos blockpos1 = pos.up();
 			IBlockState iblockstate1 = worldIn.getBlockState(blockpos1);
-
 			if (iblockstate1.getBlock() != this) {
 				worldIn.setBlockToAir(pos);
 				flag1 = true;
 			}
-
 			if (!worldIn.getBlockState(pos.down()).isSideSolid(worldIn, pos.down(), EnumFacing.UP)) {
 				worldIn.setBlockToAir(pos);
 				flag1 = true;
-
 				if (iblockstate1.getBlock() == this) {
 					worldIn.setBlockToAir(blockpos1);
 				}
 			}
-
 			if (flag1) {
 				if (!worldIn.isRemote) {
 					this.dropBlockAsItem(worldIn, pos, state, 0);
 				}
 			} else {
 				boolean flag = worldIn.isBlockPowered(pos) || worldIn.isBlockPowered(blockpos1);
-
-				if (blockIn != this && (flag || blockIn.getDefaultState().canProvidePower()) && flag != iblockstate1
-						.getValue(POWERED).booleanValue()) {
+				if (blockIn != this && (flag || blockIn.getDefaultState().canProvidePower()) && flag != iblockstate1.getValue(POWERED).booleanValue()) {
 					worldIn.setBlockState(blockpos1, iblockstate1.withProperty(POWERED, Boolean.valueOf(flag)), 2);
-
 					if (flag != state.getValue(OPEN).booleanValue()) {
 						worldIn.setBlockState(pos, state.withProperty(OPEN, Boolean.valueOf(flag)), 2);
 						worldIn.markBlockRangeForRenderUpdate(pos, pos);
@@ -168,4 +158,15 @@ public class BlockDoorDC extends BlockDoor {
 		return BlockFaceShape.UNDEFINED;
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				BlockDoor.POWERED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
 }

@@ -10,6 +10,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
@@ -43,7 +44,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * トルク系装置のBlockクラスに似ているが、使い方が違う
  */
 public class BlockFaucet_SUS extends BlockContainerDC {
-
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0.3125D, 0.25D, 0.5D, 0.6875D, 0.75D, 1.0D);
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0.3125D, 0.25D, 0.0D, 0.6875D, 0.75D, 0.5D);
 	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0.5D, 0.25D, 0.3125D, 1.0D, 0.75D, 0.6875D);
@@ -54,8 +54,7 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
-				.withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(DCState.POWERED, false));
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -84,17 +83,14 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 
 	public static boolean onFill(ItemStack item, World world,
 			EntityPlayer player) {
-		if (!DCUtil.isEmpty(item) && item
-				.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
+		if (!DCUtil.isEmpty(item) && item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null)) {
 			ItemStack copy = item.copy();
 			if (item.getCount() > 1)
 				copy.setCount(1);
 			IFluidHandlerItem dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 			FluidStack fluid = new FluidStack(FluidRegistry.WATER, 1000);
-
 			// dummyを使った検証
-			if (dummy != null && dummy
-					.getTankProperties() != null) {
+			if (dummy != null && dummy.getTankProperties() != null) {
 				int max = dummy.getTankProperties()[0].getCapacity();
 				ItemStack ret = ItemStack.EMPTY;
 				boolean success = false;
@@ -102,7 +98,6 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 					ret = dummy.getContainer();
 					success = true;
 				}
-
 				if (success) {
 					if (!player.capabilities.isCreativeMode) {
 						DCUtil.reduceStackSize(item, 1);
@@ -166,7 +161,6 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 			return AABB_WEST;
 		default:
 			return AABB_DOWN;
-
 		}
 	}
 
@@ -191,8 +185,7 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
-				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -201,7 +194,6 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 	public int getMetaFromState(IBlockState state) {
 		int f = 0;
 		int i = 0;
-
 		f = state.getValue(DCState.SIDE).index;
 		i = state.getValue(DCState.POWERED) ? 8 : 0;
 		return i + f;
@@ -218,7 +210,18 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 				DCState.SIDE,
 				DCState.POWERED
 		});
+	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.POWERED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.SIDE;
 	}
 
 	@Override
@@ -236,8 +239,7 @@ public class BlockFaucet_SUS extends BlockContainerDC {
 			tooltip.add("WATER: 1000 mB/s");
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(DCName.RIGHT_CLICK.getLocalizedName() + ": " + DCName.TURN_OFF.getLocalizedName());
-			tooltip.add(TextFormatting.AQUA.toString() + TextFormatting.BOLD.toString() + DCName.COLOR_CHANGE_TARGET
-					.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + TextFormatting.BOLD.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}

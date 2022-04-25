@@ -1,5 +1,8 @@
 package defeatedcrow.hac.main.client.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import defeatedcrow.hac.core.client.base.GuiBaseDC;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import net.minecraft.client.renderer.GlStateManager;
@@ -29,11 +32,6 @@ public class GuiDisplayShelf extends GuiBaseDC {
 		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
 		this.fontRenderer.drawString(this.playerInventory.getDisplayName()
 				.getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
-		if (shelf.getOwner() != null) {
-			String name = I18n.format("dcs.gui.device.exclusive", this.shelf.getOwnerName());
-			this.fontRenderer.drawString(name, this.xSize / 2 - this.fontRenderer
-					.getStringWidth(name) / 2, 18, 0xFFFF00);
-		}
 	}
 
 	@Override
@@ -41,6 +39,16 @@ public class GuiDisplayShelf extends GuiBaseDC {
 		this.drawDefaultBackground();
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		this.renderHoveredToolTip(mouseX, mouseY);
+
+		List<String> list = new ArrayList<String>();
+		if (this.isPointInRegion(-20, 4, 20, 20, mouseX, mouseY)) {
+			if (shelf != null) {
+				list.add(I18n.format("dcs.gui.device.exclusive", this.shelf.getOwnerName()));
+			}
+		}
+		if (!list.isEmpty()) {
+			this.drawHoveringText(list, mouseX, mouseY);
+		}
 	}
 
 	@Override
@@ -50,5 +58,11 @@ public class GuiDisplayShelf extends GuiBaseDC {
 		int i = (this.width - this.xSize) / 2;
 		int j = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
+
+		if (shelf != null && shelf.getOwner() != null) {
+			this.drawTexturedModalRect(i - 20, j + 4, 176, 0, 20, 20);
+		} else {
+			this.drawTexturedModalRect(i - 20, j + 4, 176, 20, 20, 20);
+		}
 	}
 }

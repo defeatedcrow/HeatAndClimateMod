@@ -7,8 +7,10 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -19,9 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockLotusCandle extends BlockContainerDC {
-
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 0.5D, 0.875D);
-
 	public final boolean black;
 
 	public BlockLotusCandle(String s, boolean b) {
@@ -79,4 +79,13 @@ public class BlockLotusCandle extends BlockContainerDC {
 		return false;
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.NORMAL;
+	}
 }

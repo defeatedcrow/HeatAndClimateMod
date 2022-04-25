@@ -12,7 +12,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
@@ -41,8 +41,7 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockGasBurner extends DCTileBlock implements IHeatTile {
-
+public class BlockGasBurner extends DCTileBlockFaced implements IHeatTile {
 	public BlockGasBurner(Material m, String s, int max) {
 		super(Material.ROCK, s, 3);
 		this.setHardness(1.5F);
@@ -61,10 +60,8 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 			TileEntity tile = world.getTileEntity(pos);
 			if (!player.isSneaking() && tile instanceof TileGasBurner && hand == EnumHand.MAIN_HAND) {
 				boolean flag = false;
-				if (!DCUtil.isEmpty(heldItem) && heldItem
-						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
-					IFluidHandlerItem cont = heldItem
-							.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
+				if (!DCUtil.isEmpty(heldItem) && heldItem.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+					IFluidHandlerItem cont = heldItem.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side);
 					if (cont != null && cont.drain(1000, false) != null) {
 						FluidStack f = cont.drain(1000, false);
 						if (MainAPIManager.fuelRegister.isRegistered(f.getFluid())) {
@@ -166,14 +163,12 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 		int meta = DCState.getInt(state, DCState.TYPE4);
 		return meta == 0 || meta == 1;
 	}
-
 	// redstone
 
 	@Override
 	public void onNeighborChange(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
 		if (!world.isRemote) {
 			boolean flag = world.isBlockPowered(pos);
-
 			if (flag || block.getDefaultState().canProvidePower()) {
 				int m = DCState.getInt(state, DCState.TYPE4);
 				int lit = m & 1;
@@ -216,7 +211,6 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 	// redstone
 
 	@Override
@@ -228,5 +222,4 @@ public class BlockGasBurner extends DCTileBlock implements IHeatTile {
 	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
 		return MainUtil.calcTankRedstone(worldIn.getTileEntity(pos));
 	}
-
 }

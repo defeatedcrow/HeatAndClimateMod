@@ -15,11 +15,13 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.energy.IWrenchDC;
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.MachineInit;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -43,8 +45,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockYardPart extends DCTileBlock {
-
+public class BlockYardPart extends DCTileBlockFaced {
 	public BlockYardPart(String s) {
 		super(Material.CLAY, s, 3);
 		this.setResistance(120.0F);
@@ -69,7 +70,6 @@ public class BlockYardPart extends DCTileBlock {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
 			if (hand == EnumHand.MAIN_HAND) {
-
 				TileEntity tile = world.getTileEntity(pos);
 				if (!world.isRemote && tile instanceof TileYardPart) {
 					TileYardPart part = (TileYardPart) tile;
@@ -123,7 +123,6 @@ public class BlockYardPart extends DCTileBlock {
 				break;
 			}
 		}
-
 		List<BlockPos> nextTargets = new ArrayList<>();
 		BlockPos core = null;
 		nextTargets.add(pos);
@@ -150,7 +149,6 @@ public class BlockYardPart extends DCTileBlock {
 			if (nextTargets.isEmpty())
 				break;
 		}
-
 		return core;
 	}
 
@@ -217,13 +215,13 @@ public class BlockYardPart extends DCTileBlock {
 	}
 
 	@Override
-	public boolean isFullCube(IBlockState state) {
-		return false;
+	public IProperty[] ignoreTarget() {
+		return null;
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override
@@ -237,12 +235,10 @@ public class BlockYardPart extends DCTileBlock {
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		BlockPos check = pos.offset(side);
 		IBlockState state2 = world.getBlockState(check);
-
 		if (state2 != null && state2.getBlock() == this) {
 			if (DCState.getInt(state, DCState.TYPE4) == DCState.getInt(state2, DCState.TYPE4))
 				return false;
 		}
-
 		return super.shouldSideBeRendered(state, world, pos, side);
 	}
 
@@ -257,5 +253,4 @@ public class BlockYardPart extends DCTileBlock {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Press shift key: Tooltip expands ===");
 		}
 	}
-
 }

@@ -9,11 +9,13 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.magic.MagicInit;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.client.particle.ParticleOrb;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
@@ -32,9 +34,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockLightOrb extends BlockDC {
-
 	protected static final AxisAlignedBB AABB_PANEL = new AxisAlignedBB(0.25D, 0.25D, 0.25D, 0.75D, 0.75D, 0.75D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -90,8 +90,7 @@ public class BlockLightOrb extends BlockDC {
 
 	@Override
 	public float getPlayerRelativeBlockHardness(IBlockState state, EntityPlayer player, World worldIn, BlockPos pos) {
-		if (DCUtil.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), player) || DCUtil
-				.isPlayerHeldItem(new ItemStack(MainInit.cartridge, 1, 5), player)) {
+		if (DCUtil.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), player) || DCUtil.isPlayerHeldItem(new ItemStack(MainInit.cartridge, 1, 5), player)) {
 			return 10.0F;
 		} else {
 			return 0.0F;
@@ -123,8 +122,7 @@ public class BlockLightOrb extends BlockDC {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if (DCUtil.isPlayerHeldItem(new ItemStack(MainInit.cartridge, 1, 5), ClimateCore.proxy.getPlayer()) || DCUtil
-				.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), ClimateCore.proxy.getPlayer())) {
+		if (DCUtil.isPlayerHeldItem(new ItemStack(MainInit.cartridge, 1, 5), ClimateCore.proxy.getPlayer()) || DCUtil.isPlayerHeldItem(new ItemStack(MagicInit.magicCard, 1, 4), ClimateCore.proxy.getPlayer())) {
 			if (state != null && state.getBlock() == this) {
 				double x = pos.getX() + 0.5D;
 				double y = pos.getY() + 0.5D;
@@ -141,5 +139,15 @@ public class BlockLightOrb extends BlockDC {
 	@Override
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 }

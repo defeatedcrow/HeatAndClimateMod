@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -28,9 +29,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMarkingPanel extends BlockDC {
-
 	protected static final AxisAlignedBB AABB_PANEL = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.0625D, 1.0D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -136,6 +135,16 @@ public class BlockMarkingPanel extends BlockDC {
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.FACING
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.FACING;
 	}
 
 	// 接してる面側が水だったら、その接してる水の側面を描画しない

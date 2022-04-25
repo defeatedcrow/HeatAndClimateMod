@@ -10,10 +10,12 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.client.particle.ParticleBlink;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.item.Item;
@@ -28,7 +30,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCubeIce extends BlockContainerDC implements IHeatTile {
-
 	public BlockCubeIce(String s) {
 		super(Material.ICE, s);
 		this.setSoundType(SoundType.GLASS);
@@ -95,11 +96,19 @@ public class BlockCubeIce extends BlockContainerDC implements IHeatTile {
 				double x = pos.getX() + 0.25D + rand.nextDouble() * 0.5D;
 				double y = pos.getY() + 0.25D + rand.nextDouble() * 0.5D;
 				double z = pos.getZ() + 0.25D + rand.nextDouble() * 0.5D;
-				Particle p = new ParticleBlink.Factory()
-						.createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
+				Particle p = new ParticleBlink.Factory().createParticle(0, world, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
 				FMLClientHandler.instance().getClient().effectRenderer.addEffect(p);
 			}
 		}
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.NORMAL;
+	}
 }

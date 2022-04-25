@@ -7,7 +7,7 @@ import java.util.TimeZone;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
@@ -31,8 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockRealtimeClock extends DCTileBlock {
-
+public class BlockRealtimeClock extends DCTileBlockFaced {
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
 	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.875D, 0D, 0D, 1D, 1D, 1D);
@@ -96,7 +95,6 @@ public class BlockRealtimeClock extends DCTileBlock {
 			return AABB_WEST;
 		default:
 			return AABB_NORTH;
-
 		}
 	}
 
@@ -127,7 +125,6 @@ public class BlockRealtimeClock extends DCTileBlock {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-				.getLocalizedName());
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
 }

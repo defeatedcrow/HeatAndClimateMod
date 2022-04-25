@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.base.ISidedRenderingBlock;
 import net.minecraft.block.BlockBreakable;
@@ -38,17 +39,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 // doubleなし
 public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, INameSuffix, ISidedRenderingBlock {
-
 	public static final PropertyBool SIDE = PropertyBool.create("side");
 	public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 7);
-
 	protected static final AxisAlignedBB AABB_BOTTOM_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 	protected static final AxisAlignedBB AABB_TOP_HALF = new AxisAlignedBB(0.0D, 0.5D, 0.0D, 1.0D, 1.0D, 1.0D);
-
 	// Type上限
 	public final int maxMeta;
 	public final boolean isGlass;
-
 	protected Random rand = new Random();
 	public static final String CL_TEX = "dcs_climate:blocks/clear";
 
@@ -90,8 +87,7 @@ public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, IN
 	@Override
 	public IBlockState getPlaceState(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
 			int meta, EntityLivingBase placer, EnumHand hand) {
-		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand)
-				.withProperty(SIDE, false);
+		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand).withProperty(SIDE, false);
 		if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5D))
 			return state;
 		else
@@ -108,7 +104,6 @@ public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, IN
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		BlockPos check = pos.offset(side);
 		IBlockState state2 = world.getBlockState(check);
-
 		if (state.getBlock() == this) {
 			if (this.isGlassType(state) && isGlass) {
 				boolean top = state.getValue(SIDE);
@@ -122,15 +117,12 @@ public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, IN
 						return top != top2;
 				} else if (state2.getBlock() instanceof ISidedRenderingBlock)
 					return ((ISidedRenderingBlock) state2.getBlock()).isRendered(side, state2);
-
 				if (state2.getBlock() instanceof BlockBreakable)
 					return (!top && side != EnumFacing.DOWN) || (top && side != EnumFacing.UP);
-
 				if (!state2.isSideSolid(world, check, side.getOpposite()))
 					return true;
 			}
 		}
-
 		if (side != EnumFacing.UP && side != EnumFacing.DOWN && state2.isNormalCube())
 			return false;
 		// additional logic breaks doesSideBlockRendering and is no longer useful.
@@ -174,7 +166,6 @@ public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, IN
 			i = maxMeta;
 		}
 		boolean f = state.getValue(SIDE);
-
 		return f ? i : i | 8;
 	}
 
@@ -185,7 +176,20 @@ public abstract class BlockSlabBase extends BlockDC implements ISidedTexture, IN
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { SIDE, TYPE });
+		return new BlockStateContainer(this, new IProperty[] {
+				SIDE,
+				TYPE
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	/** T, B, N, S, W, E */

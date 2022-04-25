@@ -22,6 +22,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -31,6 +32,7 @@ import defeatedcrow.hac.main.util.MainUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
+import net.minecraft.block.BlockIce;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -64,11 +66,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClimateCrop, IRapidCollectables, IGrowable,
 		IHumidityTile {
-
 	public static final PropertyBool BLACK = PropertyBool.create("black");
-
 	public static final AxisAlignedBB DOUBLE_BLOCK_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.125D, 1.0D);
-
 	protected Random cropRand = new Random();
 
 	public BlockLotusN(String s, int max) {
@@ -86,6 +85,9 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 
 	public boolean isInWater(IBlockAccess world, BlockPos pos) {
 		IBlockState target = world.getBlockState(pos.up());
+		if (target.getBlock() instanceof BlockIce) {
+			return true;
+		}
 		if (target.getBlock() instanceof BlockLiquid && target.getMaterial() == Material.WATER) {
 			return true;
 		}
@@ -135,7 +137,6 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return FULL_BLOCK_AABB;
 	}
-
 	/* Block動作 */
 
 	@Override
@@ -213,7 +214,6 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	protected float getSeedDropChance() {
 		return 1.0F;
 	}
-
 	/* IClimateCrop */
 
 	@Override
@@ -278,8 +278,7 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 		else {
 			boolean water = this.isInWater(world, pos);
 			boolean air = world.isAirBlock(pos.up(2));
-			boolean soil = target.getBlock() instanceof BlockLotusN || target.getBlock() instanceof BlockDirt || target
-					.getBlock() instanceof BlockGrass;
+			boolean soil = target.getBlock() instanceof BlockLotusN || target.getBlock() instanceof BlockDirt || target.getBlock() instanceof BlockGrass;
 			return water && air && soil;
 		}
 	}
@@ -320,15 +319,19 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 					} else if ((stage == 4 || stage == 3) && (!ModuleConfig.crop || season.id == 1 || season.id == 2)) {
 						// summer
 						next = stage + 1;
-					} else if (stage < 3 && (!ModuleConfig.crop || season.id < 3)) {
-						if (world.rand.nextInt(50) == 0) {
-							black = true;
-						}
-						next = stage + 1;
 					} else if (stage > 0 && season.id == 3) {
 						next = 7;
 					}
-
+					if (stage < 3) {
+						if (world.rand.nextInt(50) == 0 && (!ModuleConfig.crop || season.id < 3)) {
+							black = true;
+						}
+					} else {
+						IBlockState target = world.getBlockState(pos.up());
+						if (target.getBlock() instanceof BlockIce) {
+							next = 7;
+						}
+					}
 					if (next > stage) {
 						IBlockState newstate = state.withProperty(DCState.STAGE8, next).withProperty(BLACK, black);
 						if (next == 3 && !world.isRemote) {
@@ -446,7 +449,6 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 		ret.add(DCAirflow.NORMAL);
 		return ret;
 	}
-
 	/* IRapidCollectables */
 
 	@Override
@@ -471,7 +473,6 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
 		return this.harvest(world, pos, state, player);
 	}
-
 	/* state関連 */
 
 	@Override
@@ -487,7 +488,6 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 		int j = 0;
-
 		i = state.getValue(DCState.STAGE8);
 		j = state.getValue(BLACK) ? 8 : 0;
 		return i + j;
@@ -506,6 +506,19 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 		});
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.STAGE8,
+				BLACK
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.NORMAL;
+	}
+
 	// drop
 	@Override
 	public int damageDropped(IBlockState state) {
@@ -521,7 +534,6 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(Blocks.DIRT);
 	}
-
 	/* IGrowable */
 
 	@Override
@@ -573,5 +585,4 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	public DCHumidity getHumidity(World world, BlockPos targrt, BlockPos thisTile) {
 		return DCHumidity.UNDERWATER;
 	}
-
 }

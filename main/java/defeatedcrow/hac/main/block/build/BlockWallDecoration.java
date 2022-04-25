@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
@@ -26,8 +26,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockWallDecoration extends DCTileBlock {
-
+public class BlockWallDecoration extends DCTileBlockFaced {
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0D, 0D, 0.875D, 1D, 1D, 1D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 0.125D);
 	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.875D, 0D, 0D, 1D, 1D, 1D);
@@ -76,7 +75,6 @@ public class BlockWallDecoration extends DCTileBlock {
 			return AABB_WEST;
 		default:
 			return AABB_NORTH;
-
 		}
 	}
 

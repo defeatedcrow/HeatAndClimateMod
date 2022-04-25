@@ -7,10 +7,12 @@ import javax.annotation.Nullable;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.BlockHopperFilter;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.util.DCName;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -83,6 +85,20 @@ public class BlockHopperChest extends BlockHopperFilter {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
+	}
+
+	// state
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				DCState.POWERED
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.SIDE;
 	}
 
 }

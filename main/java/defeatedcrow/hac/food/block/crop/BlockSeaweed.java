@@ -20,6 +20,7 @@ import defeatedcrow.hac.api.placeable.IRapidCollectables;
 import defeatedcrow.hac.api.placeable.ISidedTexture;
 import defeatedcrow.hac.config.CoreConfigDC;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.INameSuffix;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -55,15 +56,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix, IClimateCrop, IGrowable,
 		IRapidCollectables {
-
 	protected Random cropRand = new Random();
 
 	public BlockSeaweed(String s, int max) {
 		super(Material.WATER, s);
 		this.setSoundType(SoundType.PLANT);
 		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0)
-				.withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0).withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
 	}
 
 	public boolean isInWater(IBlockAccess world, BlockPos pos) {
@@ -123,7 +122,6 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 	public AxisAlignedBB getCollisionBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
-
 	/* Block動作 */
 
 	@Override
@@ -194,7 +192,6 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 	protected float getSeedDropChance() {
 		return 1.0F;
 	}
-
 	/* IClimateCrop */
 
 	@Override
@@ -271,8 +268,7 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 				return false;
 			}
 			boolean water = this.isInWater(world, pos.up());
-			boolean gl = world.getBlockState(pos.up(2))
-					.getBlock() == Blocks.WATER;
+			boolean gl = world.getBlockState(pos.up(2)).getBlock() == Blocks.WATER;
 			if (gl && water) {
 				IBlockState newstate = state.withProperty(DCState.STAGE4, 3);
 				world.setBlockState(pos.up(), newstate, 2);
@@ -285,7 +281,6 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 	@Override
 	public boolean harvest(World world, BlockPos pos, IBlockState thisState, EntityPlayer player) {
 		if (thisState != null && thisState.getBlock() == this && !isSoil(world, pos.down())) {
-
 			ItemStack item = new ItemStack(FoodInit.seeds, 1, 8);
 			EntityItem drop = new EntityItem(world);
 			drop.setItem(item);
@@ -335,7 +330,6 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 		ret.add(DCAirflow.TIGHT);
 		return ret;
 	}
-
 	/* IRapidCollectables */
 
 	@Override
@@ -360,7 +354,6 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 	public boolean doCollect(World world, BlockPos pos, IBlockState state, EntityPlayer player, ItemStack tool) {
 		return this.harvest(world, pos, state, player);
 	}
-
 	/* state関連 */
 
 	@Override
@@ -395,6 +388,18 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 		});
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return new IProperty[] {
+				BlockFluidBase.LEVEL
+		};
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
+
 	// drop
 	@Override
 	public int damageDropped(IBlockState state) {
@@ -410,7 +415,6 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
-
 	/* IGrowable */
 
 	@Override
@@ -440,10 +444,8 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 	}
 
 	/**
-	 * 側面描画用
-	 * flammpfeil氏より
+	 * 側面描画用 flammpfeil氏より
 	 */
-
 	// 隣接面の描画をtrueに
 	@Override
 	public boolean doesSideBlockRendering(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing face) {
@@ -472,5 +474,4 @@ public class BlockSeaweed extends BlockDC implements ISidedTexture, INameSuffix,
 		this.onBlockHarvested(world, pos, state, player);
 		return world.setBlockState(pos, Blocks.WATER.getDefaultState(), world.isRemote ? 11 : 3);
 	}
-
 }

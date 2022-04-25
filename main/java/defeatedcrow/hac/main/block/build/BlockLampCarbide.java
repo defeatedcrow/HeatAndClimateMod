@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -29,9 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockLampCarbide extends BlockContainerDC {
-
 	protected static final AxisAlignedBB AABB_UP = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1.0D, 0.75D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -111,7 +110,6 @@ public class BlockLampCarbide extends BlockContainerDC {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
-
 		i = state.getValue(DCState.SIDE).index;
 		return i;
 	}
@@ -126,6 +124,16 @@ public class BlockLampCarbide extends BlockContainerDC {
 		return new BlockStateContainer(this, new IProperty[] {
 				DCState.SIDE
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.SIDE;
 	}
 
 	@Override
@@ -157,5 +165,4 @@ public class BlockLampCarbide extends BlockContainerDC {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileLampCarbide();
 	}
-
 }

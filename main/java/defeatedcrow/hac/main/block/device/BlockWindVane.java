@@ -1,7 +1,7 @@
 package defeatedcrow.hac.main.block.device;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -10,8 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockWindVane extends DCTileBlock {
-
+public class BlockWindVane extends DCTileBlockFaced {
 	public BlockWindVane(String s) {
 		super(Material.GROUND, s, 0);
 	}
@@ -25,7 +24,6 @@ public class BlockWindVane extends DCTileBlock {
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return side == EnumFacing.DOWN;
 	}
-
 	// // コンパレーター出力
 	// @Override
 	// public boolean hasComparatorInputOverride(IBlockState state) {
@@ -48,5 +46,4 @@ public class BlockWindVane extends DCTileBlock {
 		}
 		return 0;
 	}
-
 }

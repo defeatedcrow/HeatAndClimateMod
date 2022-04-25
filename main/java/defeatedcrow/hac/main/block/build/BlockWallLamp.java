@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -25,12 +26,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockWallLamp extends BlockDC {
-
 	protected static final AxisAlignedBB AABB_NORTH = new AxisAlignedBB(0.3125D, 0.25D, 0.5D, 0.6875D, 1.0D, 1.0D);
 	protected static final AxisAlignedBB AABB_SOUTH = new AxisAlignedBB(0.3125D, 0.25D, 0.0D, 0.6875D, 1.0D, 0.5D);
 	protected static final AxisAlignedBB AABB_WEST = new AxisAlignedBB(0.5D, 0.25D, 0.3125D, 1.0D, 1.0D, 0.6875D);
 	protected static final AxisAlignedBB AABB_EAST = new AxisAlignedBB(0.0D, 0.25D, 0.3125D, 0.5D, 1.0D, 0.6875D);
-
 	// Type上限
 	public final int maxMeta;
 
@@ -40,8 +39,7 @@ public class BlockWallLamp extends BlockDC {
 		this.setResistance(5.0F);
 		this.setSoundType(SoundType.GLASS);
 		this.setLightLevel(1.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH)
-				.withProperty(DCState.TYPE4, 0));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(DCState.TYPE4, 0));
 		this.maxMeta = 3;
 		this.fullBlock = false;
 		this.lightOpacity = 0;
@@ -96,7 +94,6 @@ public class BlockWallLamp extends BlockDC {
 			return AABB_WEST;
 		default:
 			return AABB_NORTH;
-
 		}
 	}
 
@@ -135,12 +132,10 @@ public class BlockWallLamp extends BlockDC {
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 		int f = 0;
-
 		i = state.getValue(DCState.TYPE4);
 		if (i > maxMeta) {
 			i = maxMeta;
 		}
-
 		f = 5 - state.getValue(DCState.FACING).getIndex();
 		f = f << 2;
 		return i + f;
@@ -153,7 +148,20 @@ public class BlockWallLamp extends BlockDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.FACING, DCState.TYPE4 });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.FACING,
+				DCState.TYPE4
+		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	// 接してる面側が水だったら、その接してる水の側面を描画しない
@@ -169,5 +177,4 @@ public class BlockWallLamp extends BlockDC {
 	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
-
 }

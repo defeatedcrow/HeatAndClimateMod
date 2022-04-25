@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
@@ -34,8 +34,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPail extends DCTileBlock {
-
+public class BlockPail extends DCTileBlockFaced {
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 1.0D, 0.875D);
 
 	public BlockPail(String s) {
@@ -73,7 +72,6 @@ public class BlockPail extends DCTileBlock {
 		if (player != null) {
 			ItemStack heldItem = player.getHeldItem(hand);
 			if (hand == EnumHand.MAIN_HAND) {
-
 				TileEntity tile = world.getTileEntity(pos);
 				if (!world.isRemote && tile instanceof TilePail) {
 					if (!DCUtil.isEmpty(heldItem)) {
@@ -118,7 +116,6 @@ public class BlockPail extends DCTileBlock {
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
 	}
-
 	// redstone
 
 	@Override
@@ -134,8 +131,6 @@ public class BlockPail extends DCTileBlock {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-				.getLocalizedName());
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
-
 }

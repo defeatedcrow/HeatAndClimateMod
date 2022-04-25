@@ -14,10 +14,12 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.DCFacelessTileBlock;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -41,7 +43,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSwedishTorch extends DCFacelessTileBlock implements IHeatTile {
-
 	public BlockSwedishTorch(String s) {
 		super(Material.WOOD, s, 16, false);
 		this.setTickRandomly(true);
@@ -137,10 +138,8 @@ public class BlockSwedishTorch extends DCFacelessTileBlock implements IHeatTile 
 					ext = true;
 				}
 			}
-
 			if (ext) {
-				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos
-						.getZ() + 0.5F, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.8F, 1.0F, false);
+				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.8F, 1.0F, false);
 				changeLitState(world, pos, false);
 			} else if (rand.nextInt(4) == 0) {
 				int i = DCState.getInt(state, DCState.TYPE16);
@@ -191,7 +190,6 @@ public class BlockSwedishTorch extends DCFacelessTileBlock implements IHeatTile 
 				double x = pos.getX() + 0.5D + rand.nextDouble() * 0.15D;
 				double y = pos.getY() + 0.75D + rand.nextDouble() * 0.15D;
 				double z = pos.getZ() + 0.5D + rand.nextDouble() * 0.15D;
-
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.0D, 0.0D, 0.0D, new int[0]);
 			}
 		}
@@ -223,4 +221,13 @@ public class BlockSwedishTorch extends DCFacelessTileBlock implements IHeatTile 
 		return DCHeatTier.NORMAL;
 	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
+	}
 }

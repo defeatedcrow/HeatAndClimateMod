@@ -9,6 +9,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.Block;
@@ -35,12 +36,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHedge extends BlockDC {
-
 	public static final PropertyBool NORTH = PropertyBool.create("north");
 	public static final PropertyBool EAST = PropertyBool.create("east");
 	public static final PropertyBool SOUTH = PropertyBool.create("south");
 	public static final PropertyBool WEST = PropertyBool.create("west");
-
 	protected static final AxisAlignedBB[] BOUNDING_BOXES_DC = new AxisAlignedBB[] {
 			new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 1.0D, 0.875D),
 			new AxisAlignedBB(0.125D, 0.0D, 0.125D, 0.875D, 1.0D, 1.0D),
@@ -64,7 +63,6 @@ public class BlockHedge extends BlockDC {
 	public static final AxisAlignedBB WEST_AABB2 = new AxisAlignedBB(0.0D, 0.0D, 0.125D, 0.125D, 1.5D, 0.875D);
 	public static final AxisAlignedBB NORTH_AABB2 = new AxisAlignedBB(0.125D, 0.0D, 0.0D, 0.875D, 1.5D, 0.125D);
 	public static final AxisAlignedBB EAST_AABB2 = new AxisAlignedBB(0.875D, 0.0D, 0.125D, 1.0D, 1.5D, 0.875D);
-
 	public final EnumSeason season;
 
 	public BlockHedge(String s, EnumSeason seasonIn) {
@@ -73,8 +71,7 @@ public class BlockHedge extends BlockDC {
 		this.setHardness(0.2F);
 		this.setResistance(10.0F);
 		this.setSoundType(SoundType.PLANT);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(SOUTH, false)
-				.withProperty(WEST, false).withProperty(EAST, false).withProperty(DCState.FLAG, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(SOUTH, false).withProperty(WEST, false).withProperty(EAST, false).withProperty(DCState.FLAG, false));
 	}
 
 	public boolean isOpaqueCube(IBlockState state) {
@@ -93,7 +90,6 @@ public class BlockHedge extends BlockDC {
 
 	private static int getBoundingBoxIdx(IBlockState state) {
 		int i = 0;
-
 		if (state.getValue(NORTH).booleanValue()) {
 			i |= 1 << EnumFacing.NORTH.getHorizontalIndex();
 		}
@@ -106,7 +102,6 @@ public class BlockHedge extends BlockDC {
 		if (state.getValue(WEST).booleanValue()) {
 			i |= 1 << EnumFacing.WEST.getHorizontalIndex();
 		}
-
 		return i;
 	}
 
@@ -117,19 +112,15 @@ public class BlockHedge extends BlockDC {
 			state = state.getActualState(worldIn, pos);
 		}
 		addCollisionBoxToList(pos, entityBox, collidingBoxes, PILLAR_AABB2);
-
 		if (state.getValue(NORTH).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, NORTH_AABB2);
 		}
-
 		if (state.getValue(EAST).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, EAST_AABB2);
 		}
-
 		if (state.getValue(SOUTH).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, SOUTH_AABB2);
 		}
-
 		if (state.getValue(WEST).booleanValue()) {
 			addCollisionBoxToList(pos, entityBox, collidingBoxes, WEST_AABB2);
 		}
@@ -154,11 +145,7 @@ public class BlockHedge extends BlockDC {
 				state = state.withProperty(DCState.FLAG, false);
 			}
 		}
-
-		return state.withProperty(NORTH, canConnectTo(world, pos.north()))
-				.withProperty(EAST, canConnectTo(world, pos.east()))
-				.withProperty(SOUTH, canConnectTo(world, pos.south()))
-				.withProperty(WEST, canConnectTo(world, pos.west()));
+		return state.withProperty(NORTH, canConnectTo(world, pos.north())).withProperty(EAST, canConnectTo(world, pos.east())).withProperty(SOUTH, canConnectTo(world, pos.south())).withProperty(WEST, canConnectTo(world, pos.west()));
 	}
 
 	@Override
@@ -215,6 +202,16 @@ public class BlockHedge extends BlockDC {
 				SOUTH,
 				DCState.FLAG
 		});
+	}
+
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	// state

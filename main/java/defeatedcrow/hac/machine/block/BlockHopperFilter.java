@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.blockstate.EnumSide;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.base.BlockContainerDC;
+import defeatedcrow.hac.core.base.EnumStateType;
 import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.ClimateMain;
@@ -44,13 +45,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHopperFilter extends BlockContainerDC {
-
 	public BlockHopperFilter(String s) {
 		super(Material.ROCK, s);
 		this.setHardness(2.0F);
 		this.setResistance(15.0F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN)
-				.withProperty(DCState.POWERED, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.SIDE, EnumSide.DOWN).withProperty(DCState.POWERED, false));
 		this.fullBlock = false;
 		this.lightOpacity = 0;
 	}
@@ -146,8 +145,7 @@ public class BlockHopperFilter extends BlockContainerDC {
 			int meta, EntityLivingBase placer, EnumHand hand) {
 		IBlockState state = super.getPlaceState(world, pos, facing, hitX, hitY, hitZ, meta, placer, hand);
 		EnumFacing face = facing.getOpposite();
-		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face))
-				.withProperty(DCState.POWERED, Boolean.valueOf(true));
+		return this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromFacing(face)).withProperty(DCState.POWERED, Boolean.valueOf(true));
 	}
 
 	@Override
@@ -167,7 +165,6 @@ public class BlockHopperFilter extends BlockContainerDC {
 		TileEntity tile = world.getTileEntity(pos);
 		int i = this.damageDropped(state);
 		ItemStack drop = new ItemStack(this, 1, i);
-
 		if (tile != null && tile instanceof ITagGetter) {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag = ((ITagGetter) tile).getNBT(tag);
@@ -175,10 +172,8 @@ public class BlockHopperFilter extends BlockContainerDC {
 				drop.setTagCompound(tag);
 			}
 		}
-
 		if (!world.isRemote) {
-			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D,
-					drop);
+			EntityItem entityitem = new EntityItem(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, drop);
 			float f3 = 0.05F;
 			entityitem.motionX = (float) world.rand.nextGaussian() * f3;
 			entityitem.motionY = (float) world.rand.nextGaussian() * f3 + 0.25F;
@@ -187,7 +182,6 @@ public class BlockHopperFilter extends BlockContainerDC {
 		}
 		world.updateComparatorOutputLevel(pos, state.getBlock());
 		super.breakBlock(world, pos, state);
-
 	}
 
 	@Override
@@ -199,7 +193,6 @@ public class BlockHopperFilter extends BlockContainerDC {
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
-
 	/* === RS === */
 
 	@Override
@@ -214,7 +207,6 @@ public class BlockHopperFilter extends BlockContainerDC {
 
 	private void updateState(World worldIn, BlockPos pos, IBlockState state) {
 		boolean flag = !worldIn.isBlockPowered(pos);
-
 		if (flag != state.getValue(DCState.POWERED).booleanValue()) {
 			worldIn.setBlockState(pos, state.withProperty(DCState.POWERED, Boolean.valueOf(flag)), 4);
 		}
@@ -234,8 +226,7 @@ public class BlockHopperFilter extends BlockContainerDC {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m))
-				.withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
 		return state;
 	}
 
@@ -244,7 +235,6 @@ public class BlockHopperFilter extends BlockContainerDC {
 	public int getMetaFromState(IBlockState state) {
 		int f = 0;
 		int i = 0;
-
 		f = state.getValue(DCState.SIDE).index;
 		i = state.getValue(DCState.POWERED) ? 8 : 0;
 		return i + f;
@@ -257,8 +247,20 @@ public class BlockHopperFilter extends BlockContainerDC {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { DCState.SIDE, DCState.POWERED });
+		return new BlockStateContainer(this, new IProperty[] {
+				DCState.SIDE,
+				DCState.POWERED
+		});
+	}
 
+	@Override
+	public IProperty[] ignoreTarget() {
+		return null;
+	}
+
+	@Override
+	public EnumStateType getType() {
+		return EnumStateType.CUSTOM;
 	}
 
 	@Override
@@ -275,5 +277,4 @@ public class BlockHopperFilter extends BlockContainerDC {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 }

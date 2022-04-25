@@ -1,6 +1,6 @@
 package defeatedcrow.hac.main.block.device;
 
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -9,8 +9,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockThermometer extends DCTileBlock {
-
+public class BlockThermometer extends DCTileBlockFaced {
 	public BlockThermometer(String s) {
 		super(Material.GLASS, s, 0);
 	}
@@ -24,7 +23,6 @@ public class BlockThermometer extends DCTileBlock {
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return false;
 	}
-
 	// // コンパレーター出力
 	// @Override
 	// public boolean hasComparatorInputOverride(IBlockState state) {
@@ -46,5 +44,4 @@ public class BlockThermometer extends DCTileBlock {
 		}
 		return 0;
 	}
-
 }

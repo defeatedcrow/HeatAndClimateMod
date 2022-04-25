@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.ClimateCore;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCFluidUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.util.DCName;
@@ -30,8 +30,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockSink extends DCTileBlock {
-
+public class BlockSink extends DCTileBlockFaced {
 	protected static final AxisAlignedBB AABB_HALF = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D);
 
 	public BlockSink(String s) {
@@ -75,7 +74,6 @@ public class BlockSink extends DCTileBlock {
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileSink();
-
 	}
 
 	// fluid処理
@@ -85,8 +83,7 @@ public class BlockSink extends DCTileBlock {
 		if (player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
 			ItemStack held = player.getHeldItem(hand);
-			if (tile instanceof TileSink && !DCUtil.isEmpty(held) && held
-					.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
+			if (tile instanceof TileSink && !DCUtil.isEmpty(held) && held.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side)) {
 				if (!player.world.isRemote) {
 					DCFluidUtil.onActivateDCTank(tile, held, world, state, side, player);
 				}
@@ -105,11 +102,9 @@ public class BlockSink extends DCTileBlock {
 			tooltip.add(DCName.NON_POWERED.getLocalizedName());
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 			tooltip.add(I18n.format("dcs.tip.sink"));
-			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-					.getLocalizedName());
+			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 	}
-
 }

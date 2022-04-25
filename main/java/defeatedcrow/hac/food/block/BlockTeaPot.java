@@ -11,7 +11,7 @@ import defeatedcrow.hac.api.climate.IAirflowTile;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.base.DCTileBlockFaced;
 import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -45,10 +45,8 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
-
-	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.25D, 0D, 0.25D, 0.75D, 0.5D,
-			0.75D);
+public class BlockTeaPot extends DCTileBlockFaced implements IAirflowTile {
+	protected static final AxisAlignedBB AABB_MIDDLE = new AxisAlignedBB(0.25D, 0D, 0.25D, 0.75D, 0.5D, 0.75D);
 
 	public BlockTeaPot(String s) {
 		super(Material.CLAY, s, 0);
@@ -73,8 +71,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 						if (!player.capabilities.isCreativeMode) {
 							ItemStack cont = held.getItem().getContainerItem(held);
 							if (!DCUtil.isEmpty(cont)) {
-								EntityItem drop = new EntityItem(world, player.posX, player.posY, player.posZ, cont
-										.copy());
+								EntityItem drop = new EntityItem(world, player.posX, player.posY, player.posZ, cont.copy());
 								world.spawnEntity(drop);
 							}
 							DCUtil.reduceStackSize(held, 1);
@@ -90,8 +87,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 						if (!player.capabilities.isCreativeMode) {
 							ItemStack cont = held.getItem().getContainerItem(held);
 							if (!DCUtil.isEmpty(cont)) {
-								EntityItem drop = new EntityItem(world, player.posX, player.posY, player.posZ, cont
-										.copy());
+								EntityItem drop = new EntityItem(world, player.posX, player.posY, player.posZ, cont.copy());
 								world.spawnEntity(drop);
 							}
 							DCUtil.reduceStackSize(held, 1);
@@ -169,25 +165,19 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	 */
 	public static boolean onActivateDCTank(TileTeaPot tile, ItemStack item, World world, IBlockState state,
 			EnumFacing side, EntityPlayer player) {
-		if (!DCUtil.isEmpty(item) && tile != null && item
-				.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile
-						.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+		if (!DCUtil.isEmpty(item) && tile != null && item.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, side) && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
 			ItemStack copy = item.copy();
 			if (item.getCount() > 1)
 				copy.setCount(1);
 			IFluidHandlerItem dummy = copy.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
 			IFluidHandler intank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.UP);
-			IFluidHandler outtank = tile
-					.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
-
+			IFluidHandler outtank = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, EnumFacing.DOWN);
 			// dummyを使った検証
-			if (dummy != null && dummy.getTankProperties() != null && dummy
-					.getTankProperties().length > 0 && intank instanceof DCTank && outtank instanceof DCTank) {
+			if (dummy != null && dummy.getTankProperties() != null && dummy.getTankProperties().length > 0 && intank instanceof DCTank && outtank instanceof DCTank) {
 				int max = dummy.getTankProperties()[0].getCapacity();
 				FluidStack f1 = dummy.drain(max, false);
 				DCTank dc_in = (DCTank) intank;
 				DCTank dc_out = (DCTank) outtank;
-
 				ItemStack ret = ItemStack.EMPTY;
 				boolean success = false;
 				// input
@@ -208,8 +198,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 						// DCLogger.debugInfoLog("check1");
 						if (ret.hasCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null)) {
 							// DCLogger.debugInfoLog("check2");
-							IDrinkCustomize drink = ret
-									.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
+							IDrinkCustomize drink = ret.getCapability(DrinkCapabilityHandler.DRINK_CUSTOMIZE_CAPABILITY, null);
 							DrinkMilk milk = tile.cap.getMilk();
 							DrinkSugar sugar = tile.cap.getSugar();
 							if (drink.setMilk(milk)) {
@@ -233,7 +222,6 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 						success = true;
 					}
 				}
-
 				if (success) {
 					if (!player.capabilities.isCreativeMode) {
 						DCUtil.reduceStackSize(item, 1);
@@ -241,8 +229,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 					tile.markDirty();
 					player.inventory.markDirty();
 					if (!DCUtil.isEmpty(ret)) {
-						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret
-								.copy());
+						EntityItem drop = new EntityItem(world, player.posX, player.posY + 0.25D, player.posZ, ret.copy());
 						world.spawnEntity(drop);
 					}
 					return true;
@@ -264,8 +251,7 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Lshift key: expand tooltip ===");
 		}
 		tooltip.add(TextFormatting.BOLD.toString() + "Tier 2");
-		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET
-				.getLocalizedName());
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
 
 	@Override
@@ -282,5 +268,4 @@ public class BlockTeaPot extends DCTileBlock implements IAirflowTile {
 	public boolean isSideSolid(IBlockState state, IBlockAccess worldIn, BlockPos pos, EnumFacing side) {
 		return false;
 	}
-
 }
