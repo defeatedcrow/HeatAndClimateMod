@@ -1961,6 +1961,7 @@ dcs.tip.color_changer=右クリックで使用したブロックのモデルを�
 dcs.tip.crafting_counter=作業台の機能を持った小チェストです。
 dcs.tip.hopper_chest_rotate=排出口の向きを回転させます。
 dcs.tip.coat_rack=右クリックすると、装備中の頭・胴防具をスワップします。
+dcs.tip.displaycase=スニークしながら右クリックすると、オーナー用の管理GUIを開きます。
 
 dcs.tip.heat_treatment_jei1=%d tick以内に処理を行う
 dcs.tip.heat_treatment_jei2=不良品
@@ -2312,6 +2313,7 @@ dcs.gui.device.brewing=醸造
 dcs.gui.device.still=蒸留
 dcs.gui.device.barrel=熟成
 dcs.gui.device.exclusive=設置者: %s
+dcs.gui.device.displaycase=ショーケース
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます
@@ -2327,6 +2329,11 @@ dcs.gui.message.require.absolute=気温ABSOLUTEまたは液体窒素が必要で
 dcs.gui.message.brewing.badclimate=常温のHeatTier、NORMALの湿度、NORMAL以下の通気が必要です。
 dcs.gui.message.still.badclimate=BOIL以上の熱源、NORMAL以下の冷却源が必要です。
 dcs.gui.message.aging.badclimate=常温のHeatTier、NORMALの湿度、NORMAL以下の通気が必要です。
+dcs.gui.message.displaycase.price_add=上げる
+dcs.gui.message.displaycase.price_red=下げる
+dcs.gui.message.displaycase.buy=購入する
+dcs.gui.message.displaycase.emerald_max=エメラルドがいっぱいです。設置者に連絡してください。
+dcs.gui.message.displaycase.failed=購入できません。
 
 death.attack.dcs_heat=%1$sはこんがり焼き上がった。
 death.attack.dcs_cold=%1$sはシャーベットになった。

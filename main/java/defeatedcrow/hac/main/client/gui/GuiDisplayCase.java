@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import defeatedcrow.hac.core.client.base.GuiBaseDC;
-import defeatedcrow.hac.main.block.build.TileDisplayCase;
+import defeatedcrow.hac.main.block.build.TileDisplayShopCase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,9 +18,9 @@ public class GuiDisplayCase extends GuiBaseDC {
 	private static final ResourceLocation TEXTURE = new ResourceLocation("dcs_climate", "textures/gui/display_gui.png");
 
 	private final InventoryPlayer playerInventory;
-	private final TileDisplayCase shelf;
+	private final TileDisplayShopCase shelf;
 
-	public GuiDisplayCase(TileDisplayCase te, EntityPlayer player) {
+	public GuiDisplayCase(TileDisplayShopCase te, EntityPlayer player) {
 		super(new ContainerDisplayCase(te, player));
 		this.playerInventory = player.inventory;
 		this.shelf = te;

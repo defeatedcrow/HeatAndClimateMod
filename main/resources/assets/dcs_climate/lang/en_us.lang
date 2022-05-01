@@ -2000,6 +2000,7 @@ dcs.tip.color_changer=Right-click: Change the target block models.
 dcs.tip.crafting_counter=Includes workbench and mini chest.
 dcs.tip.hopper_chest_rotate=Rotate the direction of the outlet.
 dcs.tip.coat_rack=Right-click to swap the equipped head and chest armor.
+dcs.tip.displaycase=Right-click with sneaking: Open owner GUI.
 
 dcs.tip.heat_treatment_jei1=Within %d ticks
 dcs.tip.heat_treatment_jei2=Failure Products
@@ -2344,6 +2345,7 @@ dcs.gui.device.brewing=Brewing
 dcs.gui.device.still=Still
 dcs.gui.device.barrel=Aging Barrel
 dcs.gui.device.exclusive=Owner: %s
+dcs.gui.device.displaycase=Display Case
 
 dcs.gui.message.nullclimate=Climate data is not loaded.
 dcs.gui.message.pottery.toocold=Too cold
@@ -2359,6 +2361,11 @@ dcs.gui.message.require.absolute=This device needs the ABSOLUTE temp or the liqu
 dcs.gui.message.brewing.badclimate=Required around NORMAL temp, NORMAL humidity, NORMAL airflow.
 dcs.gui.message.still.badclimate=Required BOIL+ heat source and NORMAL- cold source.
 dcs.gui.message.aging.badclimate=Required around NORMAL temp, NORMAL humidity, NORMAL airflow.
+dcs.gui.message.displaycase.price_add=UP
+dcs.gui.message.displaycase.price_red=DOWN
+dcs.gui.message.displaycase.buy=BUY
+dcs.gui.message.displaycase.emerald_max=The emeralds are full. Please contact the owner.
+dcs.gui.message.displaycase.failed=This item cannot be purchased.
 
 death.attack.dcs_heat=%1$s was burnt browned.
 death.attack.dcs_cold=%1$s became a sherbet.

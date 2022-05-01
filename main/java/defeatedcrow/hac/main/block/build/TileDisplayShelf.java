@@ -40,7 +40,7 @@ public class TileDisplayShelf extends DCExclusiveTE implements IInventory {
 		super.onServerUpdate();
 		boolean flag = false;
 		if (count > 10) {
-			int i = 0;
+			int i = getUpdateCount();
 			for (int j = 0; j < this.getSizeInventory(); j++) {
 				if (!DCUtil.isEmpty(this.getStackInSlot(j))) {
 					i += this.getStackInSlot(j).getCount() + this.getStackInSlot(j).getItem().hashCode();
@@ -67,20 +67,22 @@ public class TileDisplayShelf extends DCExclusiveTE implements IInventory {
 		}
 	}
 
+	protected int getUpdateCount() {
+		return 0;
+	}
+
 	/* ========== NBT ========== */
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-
-		inv.readFromNBT(tag);
+		this.setNBT(tag);
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
-		// アイテムの書き込み
-		inv.writeToNBT(tag);
+		this.getNBT(tag);
 		return tag;
 	}
 
@@ -147,7 +149,7 @@ public class TileDisplayShelf extends DCExclusiveTE implements IInventory {
 	// インベントリの名前
 	@Override
 	public String getName() {
-		return "dcs.gui.device.chest";
+		return "dcs.gui.device.display";
 	}
 
 	@Override

@@ -30,6 +30,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -392,6 +393,20 @@ public class MainUtil {
 		}
 
 		return MagicColor.NONE;
+	}
+
+	public static int inventoryItemCheck(IInventory inventory, ItemStack target) {
+		if (inventory == null || DCUtil.isEmpty(target))
+			return 0;
+
+		int count = 0;
+		for (int i = 0; i < inventory.getSizeInventory(); i++) {
+			ItemStack check = inventory.getStackInSlot(i);
+			if (!DCUtil.isEmpty(check) && DCUtil.isSameItem(check, target, false)) {
+				count += check.getCount();
+			}
+		}
+		return count;
 	}
 
 	/**

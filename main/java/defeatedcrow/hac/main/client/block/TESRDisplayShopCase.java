@@ -2,8 +2,8 @@ package defeatedcrow.hac.main.client.block;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.util.DCUtil;
-import defeatedcrow.hac.main.block.build.BlockDisplayCase;
-import defeatedcrow.hac.main.block.build.TileDisplayCase;
+import defeatedcrow.hac.main.block.build.BlockDisplayShopCase;
+import defeatedcrow.hac.main.block.build.TileDisplayShopCase;
 import defeatedcrow.hac.main.client.model.ModelDisplayCase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -20,13 +20,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
-public class TESRDisplayCase extends TileEntitySpecialRenderer<TileDisplayCase> {
+public class TESRDisplayShopCase extends TileEntitySpecialRenderer<TileDisplayShopCase> {
 
 	private static final String TEX = "dcs_climate:textures/tiles/showcase_steel.png";
 	private final ModelDisplayCase model = new ModelDisplayCase();
 
 	@Override
-	public void render(TileDisplayCase te, double x, double y, double z, float partialTicks, int destroyStage,
+	public void render(TileDisplayShopCase te, double x, double y, double z, float partialTicks, int destroyStage,
 			float a) {
 		if (te != null) {
 
@@ -40,7 +40,7 @@ public class TESRDisplayCase extends TileEntitySpecialRenderer<TileDisplayCase> 
 			if (te.hasWorld()) {
 				int meta = te.getBlockMetadata();
 				IBlockState block = te.getWorld().getBlockState(te.getPos());
-				if (block.getBlock() instanceof BlockDisplayCase) {
+				if (block.getBlock() instanceof BlockDisplayShopCase) {
 					IBlockState state = block.getActualState(te.getWorld(), te.getPos());
 					sideA = getSideA(state);
 					sideB = getSideB(state);
@@ -143,13 +143,13 @@ public class TESRDisplayCase extends TileEntitySpecialRenderer<TileDisplayCase> 
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
 		switch (face) {
 		case EAST:
-			return DCState.getBool(state, BlockDisplayCase.SOUTH);
+			return DCState.getBool(state, BlockDisplayShopCase.SOUTH);
 		case NORTH:
-			return DCState.getBool(state, BlockDisplayCase.EAST);
+			return DCState.getBool(state, BlockDisplayShopCase.EAST);
 		case SOUTH:
-			return DCState.getBool(state, BlockDisplayCase.WEST);
+			return DCState.getBool(state, BlockDisplayShopCase.WEST);
 		case WEST:
-			return DCState.getBool(state, BlockDisplayCase.NORTH);
+			return DCState.getBool(state, BlockDisplayShopCase.NORTH);
 		default:
 			return false;
 		}
@@ -159,13 +159,13 @@ public class TESRDisplayCase extends TileEntitySpecialRenderer<TileDisplayCase> 
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
 		switch (face) {
 		case EAST:
-			return DCState.getBool(state, BlockDisplayCase.NORTH);
+			return DCState.getBool(state, BlockDisplayShopCase.NORTH);
 		case NORTH:
-			return DCState.getBool(state, BlockDisplayCase.WEST);
+			return DCState.getBool(state, BlockDisplayShopCase.WEST);
 		case SOUTH:
-			return DCState.getBool(state, BlockDisplayCase.EAST);
+			return DCState.getBool(state, BlockDisplayShopCase.EAST);
 		case WEST:
-			return DCState.getBool(state, BlockDisplayCase.SOUTH);
+			return DCState.getBool(state, BlockDisplayShopCase.SOUTH);
 		default:
 			return false;
 		}

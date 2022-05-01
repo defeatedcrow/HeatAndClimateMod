@@ -26,6 +26,7 @@ public class DCMainPacket {
 		INSTANCE.registerMessage(MHandlerMagicWarp.class, MessageMagicWarp.class, 12, Side.SERVER);
 		INSTANCE.registerMessage(MHandlerChatDC.class, MessageChatDC.class, 13, Side.CLIENT);
 		INSTANCE.registerMessage(MHandlerUniHopperButton.class, MessageUniHopperButton.class, 14, Side.SERVER);
+		INSTANCE.registerMessage(MHandlerDisplayCaseButton.class, MessageDisplayCaseButton.class, 14, Side.SERVER);
 	}
 
 	public static void sendChat(EntityPlayer player, String message) {

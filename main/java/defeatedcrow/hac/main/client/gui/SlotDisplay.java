@@ -1,4 +1,4 @@
-package defeatedcrow.hac.machine.gui;
+package defeatedcrow.hac.main.client.gui;
 
 import javax.annotation.Nullable;
 

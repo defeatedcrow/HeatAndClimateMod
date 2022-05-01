@@ -1,6 +1,9 @@
 package defeatedcrow.hac.main.block.build;
 
+import java.util.List;
 import java.util.Random;
+
+import javax.annotation.Nullable;
 
 import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.core.base.EnumStateType;
@@ -11,22 +14,26 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockDisplayCase extends BlockExclusiveDC {
+public class BlockDisplayShopCase extends BlockExclusiveDC {
 
 	public static final PropertyBool NORTH = PropertyBool.create("north");
 	public static final PropertyBool EAST = PropertyBool.create("east");
@@ -35,7 +42,7 @@ public class BlockDisplayCase extends BlockExclusiveDC {
 	public static final PropertyBool UP = PropertyBool.create("up");
 	public static final PropertyBool DOWN = PropertyBool.create("down");
 
-	public BlockDisplayCase(Material m, String s) {
+	public BlockDisplayShopCase(Material m, String s) {
 		super(m, s, 0);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.FACING, EnumFacing.SOUTH).withProperty(NORTH, false).withProperty(NORTH, false)
 				.withProperty(SOUTH, false).withProperty(EAST, false).withProperty(WEST, false).withProperty(UP, false).withProperty(DOWN, false));
@@ -65,8 +72,16 @@ public class BlockDisplayCase extends BlockExclusiveDC {
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!player.world.isRemote && player != null && hand == EnumHand.MAIN_HAND) {
 			TileEntity tile = world.getTileEntity(pos);
-			if (tile instanceof TileDisplayCase) {
-				player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+			if (tile instanceof TileDisplayShopCase) {
+				if (((TileDisplayShopCase) tile).getOwner() != null) {
+					if (((TileDisplayShopCase) tile).isOwnerOrOP(player) && player.isSneaking()) {
+						player.openGui(ClimateMain.instance, 1, world, pos.getX(), pos.getY(), pos.getZ());
+					} else {
+						player.openGui(ClimateMain.instance, 2, world, pos.getX(), pos.getY(), pos.getZ());
+					}
+				} else {
+					player.openGui(ClimateMain.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+				}
 			}
 		}
 		return true;
@@ -74,7 +89,7 @@ public class BlockDisplayCase extends BlockExclusiveDC {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileDisplayCase();
+		return new TileDisplayShopCase();
 	}
 
 	@Override
@@ -94,7 +109,7 @@ public class BlockDisplayCase extends BlockExclusiveDC {
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TileDisplayCase) {
+		if (tile instanceof TileDisplayShopCase) {
 			InventoryHelper.dropInventoryItems(world, pos, (IInventory) tile);
 			world.updateComparatorOutputLevel(pos, state.getBlock());
 		}
@@ -177,5 +192,13 @@ public class BlockDisplayCase extends BlockExclusiveDC {
 	@Override
 	public EnumStateType getType() {
 		return EnumStateType.CUSTOM;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
+		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+		tooltip.add(I18n.format("dcs.tip.exclusive"));
+		tooltip.add(I18n.format("dcs.tip.displaycase"));
 	}
 }

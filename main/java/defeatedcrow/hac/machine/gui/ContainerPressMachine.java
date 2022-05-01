@@ -2,6 +2,7 @@ package defeatedcrow.hac.machine.gui;
 
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.block.TilePressMachine;
+import defeatedcrow.hac.main.client.gui.SlotDisplay;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
