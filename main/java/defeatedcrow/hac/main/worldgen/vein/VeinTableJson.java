@@ -156,7 +156,7 @@ public class VeinTableJson {
 	public static void pre() {
 		for (EnumVein type : EnumVein.VALUES) {
 			String fName = type.toString().toLowerCase();
-			File file = new File(parent + "/" + fName + ".json");
+			File file = new File(parent + File.separator + "veins" + File.separator + fName + ".json");
 
 			if (file != null) {
 				try {
@@ -199,7 +199,7 @@ public class VeinTableJson {
 
 			for (Entry<EnumVein, Map<String, Object>> entry : INSTANCE.jsonMap.entrySet()) {
 				String fName = entry.getKey().toString().toLowerCase();
-				File file = new File(parent + "/" + fName + ".json");
+				File file = new File(parent + File.separator + "veins" + File.separator + fName + ".json");
 				if (!file.getParentFile().exists()) {
 					file.getParentFile().mkdirs();
 				}
@@ -379,7 +379,7 @@ public class VeinTableJson {
 	}
 
 	public static void setDir(File file) {
-		parent = file.toPath().resolve("defeatedcrow\\climate\\veins\\");
+		parent = file.toPath();
 	}
 
 	/* Entry */

@@ -13,9 +13,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -137,26 +134,26 @@ public class BlockDisplayShelf extends BlockExclusiveDC {
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {}
 
-	// 破壊時
-	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TileDisplayShelf) {
-			InventoryHelper.dropInventoryItems(world, pos, (IInventory) tile);
-			world.updateComparatorOutputLevel(pos, state.getBlock());
-		}
-		world.removeTileEntity(pos);
-	}
-
-	@Override
-	public int quantityDropped(Random random) {
-		return 1;
-	}
-
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(this);
-	}
+	// // 破壊時
+	// @Override
+	// public void breakBlock(World world, BlockPos pos, IBlockState state) {
+	// TileEntity tile = world.getTileEntity(pos);
+	// if (tile instanceof TileDisplayShelf) {
+	// InventoryHelper.dropInventoryItems(world, pos, (IInventory) tile);
+	// world.updateComparatorOutputLevel(pos, state.getBlock());
+	// }
+	// world.removeTileEntity(pos);
+	// }
+	//
+	// @Override
+	// public int quantityDropped(Random random) {
+	// return 1;
+	// }
+	//
+	// @Override
+	// public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	// return Item.getItemFromBlock(this);
+	// }
 
 	// 接してる面側が水だったら、その接してる水の側面を描画しない
 	@Override

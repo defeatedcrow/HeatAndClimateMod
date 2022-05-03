@@ -89,7 +89,7 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 				list.add(I18n.format("dcs.gui.message.displaycase.buy"));
 			}
 		}
-		if (emeraldCount > p2 && this.isPointInRegion(128, 46, 25, 11, mouseX, mouseY)) {
+		if (emeraldCount >= p2 && this.isPointInRegion(128, 46, 25, 11, mouseX, mouseY)) {
 			if (shelf != null) {
 				list.add(I18n.format("dcs.gui.message.displaycase.buy"));
 			}

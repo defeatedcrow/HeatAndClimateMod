@@ -178,7 +178,7 @@ public class MainCoreConfig {
 				ItemSet set = JsonUtilDC.getItemSetFromString(cur_name);
 				if (!ItemSet.isEmpty(set)) {
 					currency = set;
-					DCLogger.infoLog("DisplayCase Currency: " + " add " + set.toString());
+					DCLogger.infoLog("DisplayCase Currency: add " + set.localizedname());
 				}
 			}
 
