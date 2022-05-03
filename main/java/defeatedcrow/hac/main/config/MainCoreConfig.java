@@ -5,7 +5,11 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.BlockSet;
+import defeatedcrow.hac.api.climate.ItemSet;
+import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.util.JsonUtilDC;
 import defeatedcrow.hac.main.util.MainUtil;
+import net.minecraft.init.Items;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -50,6 +54,8 @@ public class MainCoreConfig {
 			"ModID:sampleBlock:sampleMeta"
 	};
 	public static final List<BlockSet> disables = Lists.newArrayList();
+
+	public static ItemSet currency = new ItemSet(Items.EMERALD);
 
 	public void load(Configuration cfg) {
 
@@ -119,6 +125,9 @@ public class MainCoreConfig {
 			Property s_dynamite = cfg
 					.get("sound setting", "Dynamite", sound_dynamite);
 
+			Property currency_emerald = cfg
+					.get("item setting", "Display Case Currency", "minecraft:emerald:0", "Set the currency item to use in the display case.");
+
 			// Property zone = cfg.get("item setting", "TimeZone Setting", timeZone,
 			// "Set the time zone for Realtime Clock.");
 
@@ -163,6 +172,15 @@ public class MainCoreConfig {
 				sd = 0.15D;
 			}
 			sound_dynamite = sd;
+
+			String cur_name = currency_emerald.getString();
+			if (cur_name != null) {
+				ItemSet set = JsonUtilDC.getItemSetFromString(cur_name);
+				if (!ItemSet.isEmpty(set)) {
+					currency = set;
+					DCLogger.infoLog("DisplayCase Currency: " + " add " + set.toString());
+				}
+			}
 
 			// TimeZone tz = TimeZone.getTimeZone(timeZone);
 			// if (tz != null) {

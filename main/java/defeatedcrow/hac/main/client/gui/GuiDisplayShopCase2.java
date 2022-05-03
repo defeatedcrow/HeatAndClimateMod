@@ -6,6 +6,7 @@ import java.util.List;
 
 import defeatedcrow.hac.core.client.base.GuiBaseDC;
 import defeatedcrow.hac.main.block.build.TileDisplayShopCase;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageDisplayCaseButton;
 import defeatedcrow.hac.main.util.MainUtil;
@@ -14,9 +15,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
@@ -78,7 +77,7 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 
 		if (this.isPointInRegion(-20, 4, 20, 20, mouseX, mouseY)) {
 			if (shelf != null) {
-				list.add(I18n.format("dcs.gui.message.exclusive", this.shelf.getOwnerName()));
+				list.add(I18n.format("dcs.gui.device.exclusive", this.shelf.getOwnerName()));
 			}
 		}
 
@@ -96,8 +95,25 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 			}
 		}
 
+		if (p1 > 0 && this.isPointInRegion(46, 27, 27, 10, mouseX, mouseY)) {
+			String name = MainCoreConfig.currency.localizedname();
+			list.add(name + " x" + p1);
+		}
+
+		if (p2 > 0 && this.isPointInRegion(127, 27, 27, 10, mouseX, mouseY)) {
+			String name = MainCoreConfig.currency.localizedname();
+			list.add(name + " x" + p2);
+		}
+
 		if (!list.isEmpty()) {
 			this.drawHoveringText(list, mouseX, mouseY);
+		}
+
+		if (button1 > 0) {
+			button1--;
+		}
+		if (button2 > 0) {
+			button2--;
 		}
 	}
 
@@ -113,7 +129,7 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 		this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
 
 		if (limit <= 0) {
-			emeraldCount = MainUtil.inventoryItemCheck(playerInventory, new ItemStack(Items.EMERALD));
+			emeraldCount = MainUtil.inventoryItemCheck(playerInventory, MainCoreConfig.currency.getSingleStack());
 			limit = 20;
 		} else {
 			limit--;
@@ -123,16 +139,12 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 		int eme = shelf.getField(3);
 		if (button1 > 0) {
 			this.drawTexturedModalRect(i + 47, j + 46, 176, 51, 25, 11);
-			if (partialTicks == 0F)
-				button1--;
 		} else if (p1 > 0 && emeraldCount >= p1 && (p1 + eme) <= shelf.EMERALD_MAX) {
 			this.drawTexturedModalRect(i + 47, j + 46, 176, 40, 25, 11);
 		}
 
 		if (button2 > 0) {
 			this.drawTexturedModalRect(i + 128, j + 46, 176, 51, 25, 11);
-			if (partialTicks == 0F)
-				button2--;
 		} else if (p2 > 0 && emeraldCount >= p2 && (p2 + eme) <= shelf.EMERALD_MAX) {
 			this.drawTexturedModalRect(i + 128, j + 46, 176, 40, 25, 11);
 		}
@@ -156,7 +168,7 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.emerald_max")));
 					return;
 				}
-				emeraldCount = MainUtil.inventoryItemCheck(playerInventory, new ItemStack(Items.EMERALD));
+				emeraldCount = MainUtil.inventoryItemCheck(playerInventory, MainCoreConfig.currency.getSingleStack());
 				if (p1 > 0 && emeraldCount >= p1) {
 					mc.getSoundHandler().playSound(PositionedSoundRecord
 							.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
@@ -173,7 +185,7 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.emerald_max")));
 					return;
 				}
-				emeraldCount = MainUtil.inventoryItemCheck(playerInventory, new ItemStack(Items.EMERALD));
+				emeraldCount = MainUtil.inventoryItemCheck(playerInventory, MainCoreConfig.currency.getSingleStack());
 				if (p2 > 0 && emeraldCount >= p2) {
 					mc.getSoundHandler().playSound(PositionedSoundRecord
 							.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));

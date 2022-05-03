@@ -2,11 +2,12 @@ package defeatedcrow.hac.main.block.build;
 
 import javax.annotation.Nullable;
 
+import defeatedcrow.hac.api.climate.ItemSet;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayShopCase;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -68,9 +69,10 @@ public class TileDisplayShopCase extends TileDisplayShelf implements IInventory 
 		if (emeraldCount > 0) {
 			int i = DCUtil.isEmpty(getStackInSlot(2)) ? 0 : getStackInSlot(2).getCount();
 			int add = Math.min(emeraldCount, 64 - i);
-			add = this.inv.canIncr(2, new ItemStack(Items.EMERALD, add, 0));
+			ItemSet ret = MainCoreConfig.currency;
+			add = this.inv.canIncr(2, new ItemStack(ret.item, add, ret.meta));
 			if (add > 0) {
-				this.incrStackInSlot(2, new ItemStack(Items.EMERALD, add, 0));
+				this.incrStackInSlot(2, new ItemStack(ret.item, add, ret.meta));
 				emeraldCount -= add;
 				this.markDirty();
 			}

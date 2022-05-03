@@ -8,6 +8,7 @@ package defeatedcrow.hac.main;
 import java.nio.file.Paths;
 import java.util.Calendar;
 
+import defeatedcrow.hac.config.ClimateConfig;
 import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.CreativeTabClimate;
 import defeatedcrow.hac.core.recipe.RecipeJsonMaker;
@@ -91,7 +92,7 @@ public class ClimateMain {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		// config
-		MainConfig.INSTANCE.load(event.getModConfigurationDirectory());
+		MainConfig.INSTANCE.load(ClimateConfig.configDir);
 		// api
 		MainAPIManager.fuelRegister = new DCFluidFuelRegister();
 		MainAPIManager.heatTreatmentRegister = new DCHeatTreatmentRegister();

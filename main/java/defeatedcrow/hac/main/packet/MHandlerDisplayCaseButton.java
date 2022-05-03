@@ -2,9 +2,9 @@ package defeatedcrow.hac.main.packet;
 
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.block.build.TileDisplayShopCase;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -81,7 +81,7 @@ public class MHandlerDisplayCaseButton implements IMessageHandler<MessageDisplay
 	protected void reduceEmerald(EntityPlayer player, int count) {
 		for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
 			ItemStack check = player.inventory.getStackInSlot(i);
-			if (!DCUtil.isEmpty(check) && DCUtil.isSameItem(check, new ItemStack(Items.EMERALD), false)) {
+			if (!DCUtil.isEmpty(check) && DCUtil.isSameItem(check, MainCoreConfig.currency.getSingleStack(), false)) {
 				int c1 = check.getCount();
 				if (c1 <= count) {
 					count -= c1;

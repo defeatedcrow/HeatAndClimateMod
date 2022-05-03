@@ -6,6 +6,7 @@ import java.util.List;
 
 import defeatedcrow.hac.core.client.base.GuiBaseDC;
 import defeatedcrow.hac.main.block.build.TileDisplayShopCase;
+import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageDisplayCaseButton;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -47,7 +48,7 @@ public class GuiDisplayShopCase extends GuiBaseDC {
 
 		this.fontRenderer.drawString(p1, 46, 26, 0xFFFFFF);
 		this.fontRenderer.drawString(p2, 128, 26, 0xFFFFFF);
-		this.fontRenderer.drawString(e1, 103, 62, 0xFFFFFF);
+		this.fontRenderer.drawString(e1, 105, 62, 0xFFFFFF);
 	}
 
 	@Override
@@ -72,24 +73,36 @@ public class GuiDisplayShopCase extends GuiBaseDC {
 
 		if (this.isPointInRegion(72, 21, 8, 5, mouseX, mouseY)) {
 			if (shelf != null) {
-				list.add(I18n.format("dcs.gui.device.displaycase.price_add"));
+				list.add(I18n.format("dcs.gui.message.displaycase.price_add"));
 			}
 		}
 		if (this.isPointInRegion(72, 30, 8, 5, mouseX, mouseY)) {
 			if (shelf != null) {
-				list.add(I18n.format("dcs.gui.device.displaycase.price_red"));
+				list.add(I18n.format("dcs.gui.message.displaycase.price_red"));
 			}
 		}
 
 		if (this.isPointInRegion(154, 21, 8, 5, mouseX, mouseY)) {
 			if (shelf != null) {
-				list.add(I18n.format("dcs.gui.device.displaycase.price_add"));
+				list.add(I18n.format("dcs.gui.message.displaycase.price_add"));
 			}
 		}
 		if (this.isPointInRegion(154, 30, 8, 5, mouseX, mouseY)) {
 			if (shelf != null) {
-				list.add(I18n.format("dcs.gui.device.displaycase.price_red"));
+				list.add(I18n.format("dcs.gui.message.displaycase.price_red"));
 			}
+		}
+
+		int p1 = shelf.getField(0);
+		if (p1 > 0 && this.isPointInRegion(42, 22, 28, 14, mouseX, mouseY)) {
+			String name = MainCoreConfig.currency.localizedname();
+			list.add(name + " x" + p1);
+		}
+
+		int p2 = shelf.getField(1);
+		if (p2 > 0 && this.isPointInRegion(123, 22, 28, 14, mouseX, mouseY)) {
+			String name = MainCoreConfig.currency.localizedname();
+			list.add(name + " x" + p2);
 		}
 
 		if (!list.isEmpty()) {
