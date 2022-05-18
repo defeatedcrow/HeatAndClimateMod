@@ -161,7 +161,7 @@ public class FoodBrewingRecipe implements IBrewingRecipeDC {
 					}
 
 					if (next instanceof ItemStack) {
-						match = DCUtil.isSameItem((ItemStack) next, slot, false);
+						match = DCUtil.isSameItem((ItemStack) next, slot, false) && ((ItemStack) next).getCount() <= slot.getCount();
 					} else if (next instanceof String) {
 						match = DCUtil.matchDicName((String) next, slot);
 					}

@@ -138,6 +138,7 @@ public class TileBrewingTankWood extends TileFluidProcessorBase {
 						int count = 1;
 
 						if (next instanceof ItemStack) {
+							count = ((ItemStack) next).getCount();
 							match = DCUtil.isSameItem((ItemStack) next, slot, false) && slot
 									.getCount() >= count;
 						} else if (next instanceof String) {
