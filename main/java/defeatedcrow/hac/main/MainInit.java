@@ -194,6 +194,8 @@ public class MainInit {
 	public static Block displayStand;
 	public static Block displayShelf;
 	public static Block displayCase;
+	public static Block displayVender;
+	public static Block displayVenderUpper;
 	public static Block flowerVase;
 	public static Block planting;
 

@@ -270,6 +270,8 @@ public class JsonRegister {
 			MAIN_INSTANCE.regStateAndBlock(MainInit.displayShelf, "dcs_climate", "dcs_device_display_shelf", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.displayStand, "dcs_climate", "dcs_device_display_stand", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.displayCase, "dcs_climate", "dcs_device_display_case", "device", 0, false);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.displayVender, "dcs_climate", "dcs_device_display_vending_machine", "device", 0, true);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.displayVenderUpper, "dcs_climate", "dcs_device_display_vending_dummy", "device", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.wallDecoration, "dcs_climate", "dcs_build_wall_decoration", "build", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.sinkMetal, "dcs_climate", "dcs_device_sink_half", "device", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.sinkChest, "dcs_climate", "dcs_device_sink_full", "device", 0, true);

@@ -71,6 +71,10 @@ public class TileDisplayShelf extends DCExclusiveTE implements IInventory {
 		return 0;
 	}
 
+	public int calcRedstone() {
+		return Container.calcRedstone(this);
+	}
+
 	/* ========== NBT ========== */
 
 	@Override

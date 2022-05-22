@@ -84,6 +84,7 @@ import defeatedcrow.hac.main.block.build.TileChandelierGypsum;
 import defeatedcrow.hac.main.block.build.TileDisplayShelf;
 import defeatedcrow.hac.main.block.build.TileDisplayShopCase;
 import defeatedcrow.hac.main.block.build.TileDisplayStand;
+import defeatedcrow.hac.main.block.build.TileDisplayVendingMachine;
 import defeatedcrow.hac.main.block.build.TileDoorHikido;
 import defeatedcrow.hac.main.block.build.TileLampCarbide;
 import defeatedcrow.hac.main.block.build.TileLampGas;
@@ -121,6 +122,7 @@ import defeatedcrow.hac.main.client.gui.ContainerCraftingCounter;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayCase;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayShelf;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayShopCase;
+import defeatedcrow.hac.main.client.gui.ContainerDisplayVendingMachine;
 import defeatedcrow.hac.main.client.gui.ContainerFuelStove;
 import defeatedcrow.hac.main.client.gui.ContainerHopperChest;
 import defeatedcrow.hac.main.client.gui.ContainerLowChest;
@@ -131,6 +133,8 @@ import defeatedcrow.hac.main.client.gui.GuiDisplayCase;
 import defeatedcrow.hac.main.client.gui.GuiDisplayShelf;
 import defeatedcrow.hac.main.client.gui.GuiDisplayShopCase;
 import defeatedcrow.hac.main.client.gui.GuiDisplayShopCase2;
+import defeatedcrow.hac.main.client.gui.GuiDisplayVendingMachine;
+import defeatedcrow.hac.main.client.gui.GuiDisplayVendingMachine2;
 import defeatedcrow.hac.main.client.gui.GuiFuelStove;
 import defeatedcrow.hac.main.client.gui.GuiHopperChest;
 import defeatedcrow.hac.main.client.gui.GuiLowChest;
@@ -573,6 +577,7 @@ public class CommonMainProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileMFenceNet.class, "dcs_te_mfence_net");
 		GameRegistry.registerTileEntity(TileDisplayStand.class, "dcs_te_display_stand");
 		GameRegistry.registerTileEntity(TileDisplayShopCase.class, "dcs_te_display_shopcase");
+		GameRegistry.registerTileEntity(TileDisplayVendingMachine.class, "dcs_te_display_vending_machine");
 		GameRegistry.registerTileEntity(TileSwedishTorch.class, "dcs_te_swedish_torch");
 		GameRegistry.registerTileEntity(TileTatami.class, "dcs_te_carpet_tatami");
 		GameRegistry.registerTileEntity(TileDoorHikido.class, "dcs_te_door_hikido");
@@ -698,6 +703,12 @@ public class CommonMainProxy implements IGuiHandler {
 			return new ContainerLowChest((TileLowChest) tile, player);
 		if (tile instanceof TileCraftingCounter)
 			return new ContainerCraftingCounter((TileCraftingCounter) tile, player, player.world, player.getPosition());
+		if (tile instanceof TileDisplayVendingMachine) {
+			if (ID == 1)
+				return new ContainerDisplayVendingMachine((TileDisplayVendingMachine) tile, player, false);
+			else
+				return new ContainerDisplayVendingMachine((TileDisplayVendingMachine) tile, player, true);
+		}
 		if (tile instanceof TileDisplayShopCase) {
 			if (ID == 2)
 				return new ContainerDisplayShopCase((TileDisplayShopCase) tile, player, true);
@@ -778,6 +789,12 @@ public class CommonMainProxy implements IGuiHandler {
 			return new GuiLowChest((TileLowChest) tile, player);
 		if (tile instanceof TileCraftingCounter)
 			return new GuiCraftingCounter((TileCraftingCounter) tile, player, player.world, player.getPosition());
+		if (tile instanceof TileDisplayVendingMachine) {
+			if (ID == 1)
+				return new GuiDisplayVendingMachine((TileDisplayVendingMachine) tile, player);
+			else
+				return new GuiDisplayVendingMachine2((TileDisplayVendingMachine) tile, player);
+		}
 		if (tile instanceof TileDisplayShopCase) {
 			if (ID == 2)
 				return new GuiDisplayShopCase2((TileDisplayShopCase) tile, player);

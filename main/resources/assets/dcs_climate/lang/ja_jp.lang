@@ -1433,6 +1433,8 @@ tile.dcs_build_coldlamp_serpentine.name=冷たいランプ(蛇紋石)
 tile.dcs_device_display_shelf_0.name=飾り棚
 tile.dcs_device_display_stand_0.name=アイテムスタンド
 tile.dcs_device_display_case_0.name=ショーケース
+tile.dcs_device_display_vending_machine_0.name=自動販売機
+tile.dcs_device_display_vending_dummy_0.name=自動販売機
 tile.dcs_build_pressure_chal_0.name=玉髄の感圧板
 tile.dcs_build_pressure_olivine_0.name=エメラルドの感圧板
 tile.dcs_build_vase_planter.name=プランター
@@ -2314,6 +2316,7 @@ dcs.gui.device.still=蒸留
 dcs.gui.device.barrel=熟成
 dcs.gui.device.exclusive=設置者: %s
 dcs.gui.device.displaycase=ショーケース
+dcs.gui.device.vending_machine=自動販売機
 
 dcs.gui.message.nullclimate=気候データが読み込まれていません
 dcs.gui.message.pottery.toocold=温度が低すぎます

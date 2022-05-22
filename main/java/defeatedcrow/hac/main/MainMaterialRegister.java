@@ -32,6 +32,8 @@ import defeatedcrow.hac.main.block.build.BlockDesiccantPackage;
 import defeatedcrow.hac.main.block.build.BlockDisplayShelf;
 import defeatedcrow.hac.main.block.build.BlockDisplayShopCase;
 import defeatedcrow.hac.main.block.build.BlockDisplayStand;
+import defeatedcrow.hac.main.block.build.BlockDisplayVendingMachine;
+import defeatedcrow.hac.main.block.build.BlockDisplayVendingUpper;
 import defeatedcrow.hac.main.block.build.BlockDoorDC;
 import defeatedcrow.hac.main.block.build.BlockDoorHikido;
 import defeatedcrow.hac.main.block.build.BlockFenceBase;
@@ -1073,6 +1075,12 @@ public class MainMaterialRegister {
 
 			MainInit.displayCase = new BlockDisplayShopCase(Material.GLASS, ClimateCore.PACKAGE_BASE + "_device_display_case");
 			registerChestBlock(MainInit.displayCase, ClimateCore.PACKAGE_BASE + "_device_display_case", ClimateMain.MOD_ID);
+
+			MainInit.displayVender = new BlockDisplayVendingMachine(Material.CLAY, ClimateCore.PACKAGE_BASE + "_device_display_vending_machine");
+			registerChestBlock(MainInit.displayVender, ClimateCore.PACKAGE_BASE + "_device_display_vending_machine", ClimateMain.MOD_ID);
+
+			MainInit.displayVenderUpper = new BlockDisplayVendingUpper(ClimateCore.PACKAGE_BASE + "_device_display_vending_dummy");
+			registerChestBlock(MainInit.displayVenderUpper, ClimateCore.PACKAGE_BASE + "_device_display_vending_dummy", ClimateMain.MOD_ID);
 
 			MainInit.wallDecoration = new BlockWallDecoration(Material.WOOD, ClimateCore.PACKAGE_BASE + "_build_wall_decoration");
 			DCMaterialReg

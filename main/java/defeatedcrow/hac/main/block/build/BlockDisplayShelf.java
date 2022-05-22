@@ -12,7 +12,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -57,7 +56,7 @@ public class BlockDisplayShelf extends BlockExclusiveDC {
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
 		if (face == null)
-			return super.withRotation(state, rot);
+			return state.withRotation(rot);
 		switch (rot) {
 		case CLOCKWISE_180:
 			return state.withProperty(DCState.FACING, face.getOpposite());
@@ -74,14 +73,14 @@ public class BlockDisplayShelf extends BlockExclusiveDC {
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
 		EnumFacing face = DCState.getFace(state, DCState.FACING);
 		if (face == null)
-			return super.withMirror(state, mirrorIn);
+			return state.withMirror(mirrorIn);
 		switch (mirrorIn) {
 		case LEFT_RIGHT:
 			return state.withProperty(DCState.FACING, face.getOpposite());
 		case FRONT_BACK:
 			return state.withProperty(DCState.FACING, face.getOpposite());
 		default:
-			return super.withMirror(state, mirrorIn);
+			return state.withMirror(mirrorIn);
 		}
 	}
 
@@ -127,33 +126,16 @@ public class BlockDisplayShelf extends BlockExclusiveDC {
 	}
 
 	@Override
-	public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
-		return Container.calcRedstone(worldIn.getTileEntity(pos));
+	public int getComparatorInputOverride(IBlockState state, World world, BlockPos pos) {
+		TileEntity tile = world.getTileEntity(pos);
+		if (tile instanceof TileDisplayShelf) {
+			return ((TileDisplayShelf) tile).calcRedstone();
+		}
+		return 0;
 	}
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {}
-
-	// // 破壊時
-	// @Override
-	// public void breakBlock(World world, BlockPos pos, IBlockState state) {
-	// TileEntity tile = world.getTileEntity(pos);
-	// if (tile instanceof TileDisplayShelf) {
-	// InventoryHelper.dropInventoryItems(world, pos, (IInventory) tile);
-	// world.updateComparatorOutputLevel(pos, state.getBlock());
-	// }
-	// world.removeTileEntity(pos);
-	// }
-	//
-	// @Override
-	// public int quantityDropped(Random random) {
-	// return 1;
-	// }
-	//
-	// @Override
-	// public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-	// return Item.getItemFromBlock(this);
-	// }
 
 	// 接してる面側が水だったら、その接してる水の側面を描画しない
 	@Override
@@ -196,7 +178,6 @@ public class BlockDisplayShelf extends BlockExclusiveDC {
 		return state;
 	}
 
-	// state
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;

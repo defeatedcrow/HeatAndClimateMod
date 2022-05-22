@@ -1546,6 +1546,15 @@ public class LoadingBuildingRecipe {
 					"ingotTin"
 			});
 
+			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.displayVender, 1, 0), new Object[] {
+					"Y",
+					"X",
+					'X',
+					new ItemStack(MainInit.displayCase, 1, 0),
+					'Y',
+					"gemEmerald"
+			});
+
 			DCRecipe.jsonShapedRecipe(HaCModule.BUILD_ADVANCED, "main_build", new ItemStack(MainInit.awningWood, 1, 0), new Object[] {
 					"XXX",
 					"Y Y",

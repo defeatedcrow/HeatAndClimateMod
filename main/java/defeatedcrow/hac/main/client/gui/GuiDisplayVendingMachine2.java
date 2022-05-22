@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import defeatedcrow.hac.core.client.base.GuiBaseDC;
-import defeatedcrow.hac.main.block.build.TileDisplayShopCase;
+import defeatedcrow.hac.main.block.build.TileDisplayVendingMachine;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.packet.DCMainPacket;
 import defeatedcrow.hac.main.packet.MessageDisplayCaseButton;
@@ -25,27 +25,30 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * 購入プレイヤーのためのGUI
  */
 @SideOnly(Side.CLIENT)
-public class GuiDisplayShopCase2 extends GuiBaseDC {
-	private static final ResourceLocation TEXTURE = new ResourceLocation("dcs_climate", "textures/gui/display_shop_gui.png");
+public class GuiDisplayVendingMachine2 extends GuiBaseDC {
+	private static final ResourceLocation TEXTURE = new ResourceLocation("dcs_climate", "textures/gui/display_vender_gui.png");
 
 	private final InventoryPlayer playerInventory;
-	private final TileDisplayShopCase shelf;
+	private final TileDisplayVendingMachine shelf;
 
-	public GuiDisplayShopCase2(TileDisplayShopCase te, EntityPlayer player) {
-		super(new ContainerDisplayShopCase(te, player, true));
+	public GuiDisplayVendingMachine2(TileDisplayVendingMachine te, EntityPlayer player) {
+		super(new ContainerDisplayVendingMachine(te, player, true));
 		this.playerInventory = player.inventory;
 		this.shelf = te;
+		this.ySize = 192;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String s = I18n.format(this.shelf.getName());
-		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
+		this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 4, 4210752);
 		this.fontRenderer.drawString(this.playerInventory.getDisplayName()
 				.getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
 
 		String p1 = "" + shelf.getField(0);
 		String p2 = "" + shelf.getField(1);
+		String p3 = "" + shelf.getField(2);
+		String p4 = "" + shelf.getField(3);
 
 		if (shelf.getField(0) <= 0) {
 			p1 = "---";
@@ -53,9 +56,17 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 		if (shelf.getField(1) <= 0) {
 			p2 = "---";
 		}
+		if (shelf.getField(2) <= 0) {
+			p3 = "---";
+		}
+		if (shelf.getField(3) <= 0) {
+			p4 = "---";
+		}
 
-		this.fontRenderer.drawString(p1, 55, 29, 0xFFFFFF);
-		this.fontRenderer.drawString(p2, 136, 29, 0xFFFFFF);
+		this.fontRenderer.drawString(p1, 55, 23, 0xFFFFFF);
+		this.fontRenderer.drawString(p2, 136, 23, 0xFFFFFF);
+		this.fontRenderer.drawString(p3, 55, 61, 0xFFFFFF);
+		this.fontRenderer.drawString(p4, 136, 61, 0xFFFFFF);
 	}
 
 	private int emeraldCount = 0;
@@ -83,26 +94,45 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 
 		int p1 = shelf.getField(0);
 		int p2 = shelf.getField(1);
+		int p3 = shelf.getField(2);
+		int p4 = shelf.getField(3);
 
-		if (emeraldCount >= p1 && this.isPointInRegion(47, 46, 25, 11, mouseX, mouseY)) {
+		if (emeraldCount >= p1 && this.isPointInRegion(35, 37, 25, 11, mouseX, mouseY)) {
 			if (shelf != null) {
 				list.add(I18n.format("dcs.gui.message.displaycase.buy"));
 			}
 		}
-		if (emeraldCount >= p2 && this.isPointInRegion(128, 46, 25, 11, mouseX, mouseY)) {
+		if (emeraldCount >= p2 && this.isPointInRegion(116, 37, 25, 11, mouseX, mouseY)) {
+			if (shelf != null) {
+				list.add(I18n.format("dcs.gui.message.displaycase.buy"));
+			}
+		}
+		if (emeraldCount >= p3 && this.isPointInRegion(35, 76, 25, 11, mouseX, mouseY)) {
+			if (shelf != null) {
+				list.add(I18n.format("dcs.gui.message.displaycase.buy"));
+			}
+		}
+		if (emeraldCount >= p4 && this.isPointInRegion(116, 76, 25, 11, mouseX, mouseY)) {
 			if (shelf != null) {
 				list.add(I18n.format("dcs.gui.message.displaycase.buy"));
 			}
 		}
 
-		if (p1 > 0 && this.isPointInRegion(46, 27, 27, 10, mouseX, mouseY)) {
+		if (p1 > 0 && this.isPointInRegion(53, 23, 20, 10, mouseX, mouseY)) {
 			String name = MainCoreConfig.currency.localizedname();
 			list.add(name + " x" + p1);
 		}
-
-		if (p2 > 0 && this.isPointInRegion(127, 27, 27, 10, mouseX, mouseY)) {
+		if (p2 > 0 && this.isPointInRegion(134, 23, 20, 10, mouseX, mouseY)) {
 			String name = MainCoreConfig.currency.localizedname();
 			list.add(name + " x" + p2);
+		}
+		if (p3 > 0 && this.isPointInRegion(53, 60, 20, 10, mouseX, mouseY)) {
+			String name = MainCoreConfig.currency.localizedname();
+			list.add(name + " x" + p3);
+		}
+		if (p4 > 0 && this.isPointInRegion(134, 60, 20, 10, mouseX, mouseY)) {
+			String name = MainCoreConfig.currency.localizedname();
+			list.add(name + " x" + p4);
 		}
 
 		if (!list.isEmpty()) {
@@ -115,10 +145,18 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 		if (button2 > 0) {
 			button2--;
 		}
+		if (button3 > 0) {
+			button3--;
+		}
+		if (button4 > 0) {
+			button4--;
+		}
 	}
 
 	private int button1 = 0;
 	private int button2 = 0;
+	private int button3 = 0;
+	private int button4 = 0;
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
@@ -136,17 +174,28 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 		}
 		int p1 = shelf.getField(0);
 		int p2 = shelf.getField(1);
-		int eme = shelf.getField(3);
+		int p3 = shelf.getField(2);
+		int p4 = shelf.getField(3);
+		int eme = shelf.getField(5);
 		if (button1 > 0) {
-			this.drawTexturedModalRect(i + 47, j + 46, 176, 51, 25, 11);
+			this.drawTexturedModalRect(i + 35, j + 37, 176, 51, 25, 11);
 		} else if (p1 > 0 && emeraldCount >= p1 && (p1 + eme) <= shelf.EMERALD_MAX) {
-			this.drawTexturedModalRect(i + 47, j + 46, 176, 40, 25, 11);
+			this.drawTexturedModalRect(i + 35, j + 37, 176, 40, 25, 11);
 		}
-
 		if (button2 > 0) {
-			this.drawTexturedModalRect(i + 128, j + 46, 176, 51, 25, 11);
+			this.drawTexturedModalRect(i + 116, j + 37, 176, 51, 25, 11);
 		} else if (p2 > 0 && emeraldCount >= p2 && (p2 + eme) <= shelf.EMERALD_MAX) {
-			this.drawTexturedModalRect(i + 128, j + 46, 176, 40, 25, 11);
+			this.drawTexturedModalRect(i + 116, j + 37, 176, 40, 25, 11);
+		}
+		if (button3 > 0) {
+			this.drawTexturedModalRect(i + 35, j + 76, 176, 51, 25, 11);
+		} else if (p3 > 0 && emeraldCount >= p3 && (p3 + eme) <= shelf.EMERALD_MAX) {
+			this.drawTexturedModalRect(i + 35, j + 76, 176, 40, 25, 11);
+		}
+		if (button4 > 0) {
+			this.drawTexturedModalRect(i + 116, j + 76, 176, 51, 25, 11);
+		} else if (p4 > 0 && emeraldCount >= p4 && (p4 + eme) <= shelf.EMERALD_MAX) {
+			this.drawTexturedModalRect(i + 116, j + 76, 176, 40, 25, 11);
 		}
 
 		if (shelf != null && shelf.getOwner() != null) {
@@ -160,10 +209,10 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 	protected void mouseClicked(int x, int y, int mouseButton) throws IOException {
 		super.mouseClicked(x, y, mouseButton);
 		boolean flag = this.mc.gameSettings.keyBindPickBlock.isActiveAndMatches(mouseButton - 100);
+		int eme = shelf.getField(5);
 		if (mouseButton == 0 || mouseButton == 1 || flag) {
-			if (isPointInRegion(47, 46, 25, 11, x, y)) {
+			if (isPointInRegion(35, 37, 25, 11, x, y)) {
 				int p1 = shelf.getField(0);
-				int eme = shelf.getField(3);
 				if ((p1 + eme) > shelf.EMERALD_MAX) {
 					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.emerald_max")));
 					return;
@@ -173,14 +222,13 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 					mc.getSoundHandler().playSound(PositionedSoundRecord
 							.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 					button1 = 5;
-					DCMainPacket.INSTANCE.sendToServer(new MessageDisplayCaseButton(shelf.getPos(), (byte) 4, (short) p1));
+					DCMainPacket.INSTANCE.sendToServer(new MessageDisplayCaseButton(shelf.getPos(), (byte) 8, (short) p1));
 				} else {
 					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.failed")));
 				}
 			}
-			if (isPointInRegion(128, 46, 25, 11, x, y)) {
+			if (isPointInRegion(116, 37, 25, 11, x, y)) {
 				int p2 = shelf.getField(1);
-				int eme = shelf.getField(3);
 				if ((p2 + eme) > shelf.EMERALD_MAX) {
 					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.emerald_max")));
 					return;
@@ -190,7 +238,39 @@ public class GuiDisplayShopCase2 extends GuiBaseDC {
 					mc.getSoundHandler().playSound(PositionedSoundRecord
 							.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 					button2 = 5;
-					DCMainPacket.INSTANCE.sendToServer(new MessageDisplayCaseButton(shelf.getPos(), (byte) 5, (short) p2));
+					DCMainPacket.INSTANCE.sendToServer(new MessageDisplayCaseButton(shelf.getPos(), (byte) 9, (short) p2));
+				} else {
+					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.failed")));
+				}
+			}
+			if (isPointInRegion(35, 76, 25, 11, x, y)) {
+				int p3 = shelf.getField(2);
+				if ((p3 + eme) > shelf.EMERALD_MAX) {
+					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.emerald_max")));
+					return;
+				}
+				emeraldCount = MainUtil.inventoryItemCheck(playerInventory, MainCoreConfig.currency.getSingleStack());
+				if (p3 > 0 && emeraldCount >= p3) {
+					mc.getSoundHandler().playSound(PositionedSoundRecord
+							.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+					button3 = 5;
+					DCMainPacket.INSTANCE.sendToServer(new MessageDisplayCaseButton(shelf.getPos(), (byte) 10, (short) p3));
+				} else {
+					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.failed")));
+				}
+			}
+			if (isPointInRegion(116, 76, 25, 11, x, y)) {
+				int p4 = shelf.getField(1);
+				if ((p4 + eme) > shelf.EMERALD_MAX) {
+					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.emerald_max")));
+					return;
+				}
+				emeraldCount = MainUtil.inventoryItemCheck(playerInventory, MainCoreConfig.currency.getSingleStack());
+				if (p4 > 0 && emeraldCount >= p4) {
+					mc.getSoundHandler().playSound(PositionedSoundRecord
+							.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+					button4 = 5;
+					DCMainPacket.INSTANCE.sendToServer(new MessageDisplayCaseButton(shelf.getPos(), (byte) 11, (short) p4));
 				} else {
 					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.failed")));
 				}
