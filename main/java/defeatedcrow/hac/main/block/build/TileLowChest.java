@@ -46,8 +46,8 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 		if (!world.isRemote && this.numPlayersUsing != 0) {
 			this.numPlayersUsing = 0;
 
-			for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(
-					x - 5.0F, y - 5.0F, z - 5.0F, x + 1 + 5.0F, y + 1 + 5.0F, z + 1 + 5.0F))) {
+			for (EntityPlayer entityplayer : this.world
+					.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(x - 5.0F, y - 5.0F, z - 5.0F, x + 1 + 5.0F, y + 1 + 5.0F, z + 1 + 5.0F))) {
 				if (entityplayer.openContainer instanceof ContainerLowChest) {
 					IInventory iinventory = ((ContainerLowChest) entityplayer.openContainer).tile;
 
@@ -127,15 +127,14 @@ public class TileLowChest extends DCLockableTE implements IInventory {
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-
-		inv.readFromNBT(tag);
+		setNBT(tag);
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
 		// アイテムの書き込み
-		inv.writeToNBT(tag);
+		getNBT(tag);
 		return tag;
 	}
 

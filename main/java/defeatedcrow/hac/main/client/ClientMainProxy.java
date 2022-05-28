@@ -119,6 +119,7 @@ import defeatedcrow.hac.main.client.entity.RenderEntityDesktopAccessories_H;
 import defeatedcrow.hac.main.client.entity.RenderEntityDesktopAccessories_I;
 import defeatedcrow.hac.main.client.entity.RenderEntityDynamite;
 import defeatedcrow.hac.main.client.entity.RenderEntityDynamiteSmall;
+import defeatedcrow.hac.main.client.entity.RenderEntityErgonomicChair;
 import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.entity.RenderEntitySmallCushionA;
 import defeatedcrow.hac.main.client.entity.RenderEntitySmallCushionB;
@@ -155,6 +156,8 @@ import defeatedcrow.hac.main.entity.EntityDesktopAccessories_I;
 import defeatedcrow.hac.main.entity.EntityDynamite;
 import defeatedcrow.hac.main.entity.EntityDynamiteBlue;
 import defeatedcrow.hac.main.entity.EntityDynamiteSmall;
+import defeatedcrow.hac.main.entity.EntityErgonomicChair;
+import defeatedcrow.hac.main.entity.EntityErgonomicChairWhite;
 import defeatedcrow.hac.main.entity.EntityExtinctionBullet;
 import defeatedcrow.hac.main.entity.EntityFlowerPot;
 import defeatedcrow.hac.main.entity.EntityGhostBullet;
@@ -280,6 +283,8 @@ public class ClientMainProxy extends CommonMainProxy {
 		registRender(EntityDesktopAccessories_H.class, RenderEntityDesktopAccessories_H.class);
 		registRender(EntityDesktopAccessories_I.class, RenderEntityDesktopAccessories_I.class);
 		registRender(EntityCoatRack.class, RenderCoatRack.class);
+		registRender(EntityErgonomicChair.class, RenderEntityErgonomicChair.class);
+		registRender(EntityErgonomicChairWhite.class, RenderEntityErgonomicChair.class);
 
 		if (ModuleConfig.food)
 			FoodClientProxy.loadEntity();

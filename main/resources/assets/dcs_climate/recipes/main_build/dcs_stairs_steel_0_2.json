@@ -1,0 +1,29 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "  X",
+  " XY",
+  "XY "
+ ],
+ "key": {
+  "X": {
+   "item": "dcs_climate:dcs_build_plate",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "ingotSteel"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_stairs_steel",
+  "count": 4,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
+}

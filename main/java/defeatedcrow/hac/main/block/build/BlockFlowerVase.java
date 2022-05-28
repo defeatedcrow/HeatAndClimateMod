@@ -85,14 +85,9 @@ public class BlockFlowerVase extends DCSimpleBlock implements ITexturePath, IHum
 		IBlockState plant = plantable.getPlant(world, pos.offset(direction));
 		EnumPlantType plantType = plantable.getPlantType(world, pos.offset(direction));
 
-		if (plantable instanceof BlockBush || plantType == EnumPlantType.Plains) {
+		if (plantable instanceof BlockBush || plantType != EnumPlantType.Water) {
 			return true;
 		}
-
-		if (DCState.getInt(state, DCState.TYPE16) == 0) {
-			return plantType != EnumPlantType.Water && plantType != EnumPlantType.Nether;
-		}
-
 		return false;
 	}
 
@@ -111,7 +106,15 @@ public class BlockFlowerVase extends DCSimpleBlock implements ITexturePath, IHum
 		return 4;
 	}
 
-	private static String[] names = { "planter", "white", "blue", "pink", "gray", "orange", "green" };
+	private static String[] names = {
+			"planter",
+			"white",
+			"blue",
+			"pink",
+			"gray",
+			"orange",
+			"green"
+	};
 
 	@Override
 	public String[] getNameSuffix() {

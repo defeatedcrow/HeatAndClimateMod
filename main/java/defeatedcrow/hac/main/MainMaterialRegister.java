@@ -69,6 +69,7 @@ import defeatedcrow.hac.main.block.build.BlockSmallTable;
 import defeatedcrow.hac.main.block.build.BlockSofaBase;
 import defeatedcrow.hac.main.block.build.BlockStairsBase;
 import defeatedcrow.hac.main.block.build.BlockStairsRoof;
+import defeatedcrow.hac.main.block.build.BlockStairsSimple;
 import defeatedcrow.hac.main.block.build.BlockStairsStraw;
 import defeatedcrow.hac.main.block.build.BlockTableBase;
 import defeatedcrow.hac.main.block.build.BlockTatami;
@@ -130,6 +131,7 @@ import defeatedcrow.hac.main.config.ModuleConfig;
 import defeatedcrow.hac.main.item.entity.ItemCoatRack;
 import defeatedcrow.hac.main.item.entity.ItemCushionGray;
 import defeatedcrow.hac.main.item.entity.ItemDesktopAccessories;
+import defeatedcrow.hac.main.item.entity.ItemErgonomicChair;
 import defeatedcrow.hac.main.item.entity.ItemFlowerPot;
 import defeatedcrow.hac.main.item.equip.ItemArmorCape;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
@@ -515,6 +517,11 @@ public class MainMaterialRegister {
 		DCMaterialReg
 				.registerBlock(MainInit.stairsGreisen, ClimateCore.PACKAGE_BASE + "_stairs_greisen", ClimateMain.MOD_ID);
 
+		MainInit.stairsSteel = new BlockStairsSimple(ClimateCore.PACKAGE_BASE + "_stairs_steel")
+				.setUnlocalizedName("dcs_stairs_steel");
+		DCMaterialReg
+				.registerBlock(MainInit.stairsSteel, ClimateCore.PACKAGE_BASE + "_stairs_steel", ClimateMain.MOD_ID);
+
 		MainInit.halfSlab = new BlockSlabDC();
 		DCMaterialReg.registerBlock(MainInit.halfSlab, ClimateCore.PACKAGE_BASE + "_build_slab", ClimateMain.MOD_ID);
 
@@ -636,6 +643,14 @@ public class MainMaterialRegister {
 			}.setUnlocalizedName("dcs_fence_net");
 			DCMaterialReg.registerBlock(MainInit.fenceNet, ClimateCore.PACKAGE_BASE + "_fence_net", ClimateMain.MOD_ID);
 
+			MainInit.fenceNetSilver = new BlockMetalFenceBase("dcs_fence_net_silver", false) {
+				@Override
+				public TileEntity createNewTileEntity(World world, int meta) {
+					return new TileMFenceNet();
+				}
+			}.setUnlocalizedName("dcs_fence_net_silver");
+			DCMaterialReg.registerBlock(MainInit.fenceNetSilver, ClimateCore.PACKAGE_BASE + "_fence_net_silver", ClimateMain.MOD_ID);
+
 			MainInit.fenceGlass = new BlockMetalFenceBase("dcs_fence_glass", true) {
 				@Override
 				public TileEntity createNewTileEntity(World world, int meta) {
@@ -653,6 +668,15 @@ public class MainMaterialRegister {
 			}.setUnlocalizedName("dcs_fence_rattan");
 			DCMaterialReg
 					.registerBlock(MainInit.fenceRattan, ClimateCore.PACKAGE_BASE + "_fence_rattan", ClimateMain.MOD_ID);
+
+			MainInit.fenceRattanWhite = new BlockMetalFenceBase("dcs_fence_rattan_white", false) {
+				@Override
+				public TileEntity createNewTileEntity(World world, int meta) {
+					return new TileMFenceNet();
+				}
+			}.setUnlocalizedName("dcs_fence_rattan_white");
+			DCMaterialReg
+					.registerBlock(MainInit.fenceRattanWhite, ClimateCore.PACKAGE_BASE + "_fence_rattan_white", ClimateMain.MOD_ID);
 
 			MainInit.fenceLadder = new BlockMetalLadder("dcs_fence_ladder").setUnlocalizedName("dcs_fence_ladder");
 			DCMaterialReg
@@ -754,6 +778,11 @@ public class MainMaterialRegister {
 			DCMaterialReg
 					.registerBlock(MainInit.squaretableRattan, ClimateCore.PACKAGE_BASE + "_squaretable_rattan", ClimateMain.MOD_ID);
 
+			MainInit.squaretableRattanWhite = new BlockTableBase(ClimateCore.PACKAGE_BASE + "_squaretable_rattan_white", false)
+					.setHalf();
+			DCMaterialReg
+					.registerBlock(MainInit.squaretableRattanWhite, ClimateCore.PACKAGE_BASE + "_squaretable_rattan_white", ClimateMain.MOD_ID);
+
 			MainInit.smallTableWood = new BlockSmallTable(ClimateCore.PACKAGE_BASE + "_smalltable_wood", false);
 			DCMaterialReg
 					.registerBlock(MainInit.smallTableWood, ClimateCore.PACKAGE_BASE + "_smalltable_wood", ClimateMain.MOD_ID);
@@ -803,6 +832,10 @@ public class MainMaterialRegister {
 			DCMaterialReg
 					.registerBlock(MainInit.sofaRattan, ClimateCore.PACKAGE_BASE + "_sofa_rattan", ClimateMain.MOD_ID);
 
+			MainInit.sofaRattanWhite = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_sofa_rattan_white");
+			DCMaterialReg
+					.registerBlock(MainInit.sofaRattanWhite, ClimateCore.PACKAGE_BASE + "_sofa_rattan_white", ClimateMain.MOD_ID);
+
 			MainInit.stoolBlack = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_black").setSmallAABB();
 			DCMaterialReg
 					.registerBlock(MainInit.stoolBlack, ClimateCore.PACKAGE_BASE + "_stool_black", ClimateMain.MOD_ID);
@@ -817,6 +850,10 @@ public class MainMaterialRegister {
 			MainInit.stoolRattan = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_rattan").setSmallAABB();
 			DCMaterialReg
 					.registerBlock(MainInit.stoolRattan, ClimateCore.PACKAGE_BASE + "_stool_rattan", ClimateMain.MOD_ID);
+
+			MainInit.stoolRattanWhite = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_stool_rattan_white").setSmallAABB();
+			DCMaterialReg
+					.registerBlock(MainInit.stoolRattanWhite, ClimateCore.PACKAGE_BASE + "_stool_rattan_white", ClimateMain.MOD_ID);
 
 			MainInit.chairWood = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_chair_wood").setSmallAABB();
 			DCMaterialReg
@@ -845,6 +882,10 @@ public class MainMaterialRegister {
 			MainInit.chairRattan = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_chair_rattan").setSmallAABB();
 			DCMaterialReg
 					.registerBlock(MainInit.chairRattan, ClimateCore.PACKAGE_BASE + "_chair_rattan", ClimateMain.MOD_ID);
+
+			MainInit.chairRattanWhite = new BlockSofaBase(ClimateCore.PACKAGE_BASE + "_chair_rattan_white").setSmallAABB();
+			DCMaterialReg
+					.registerBlock(MainInit.chairRattanWhite, ClimateCore.PACKAGE_BASE + "_chair_rattan_white", ClimateMain.MOD_ID);
 
 			MainInit.lampCarbide = new BlockLampCarbide(ClimateCore.PACKAGE_BASE + "_lamp_carbide_lantern");
 			DCMaterialReg
@@ -875,6 +916,9 @@ public class MainMaterialRegister {
 			MainInit.chestRattan = new BlockLowChest(Material.WOOD, ClimateCore.PACKAGE_BASE + "_device_lowchest_rattan", true);
 			registerChestBlock(MainInit.chestRattan, ClimateCore.PACKAGE_BASE + "_device_lowchest_rattan", ClimateMain.MOD_ID);
 
+			MainInit.chestRattanWhite = new BlockLowChest(Material.WOOD, ClimateCore.PACKAGE_BASE + "_device_lowchest_rattan_white", true);
+			registerChestBlock(MainInit.chestRattanWhite, ClimateCore.PACKAGE_BASE + "_device_lowchest_rattan_white", ClimateMain.MOD_ID);
+
 			MainInit.wallshelfMarble = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_marble", true);
 			registerChestBlock(MainInit.wallshelfMarble, ClimateCore.PACKAGE_BASE + "_wallshelf_marble", ClimateMain.MOD_ID);
 
@@ -895,6 +939,9 @@ public class MainMaterialRegister {
 
 			MainInit.wallshelfRattan = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_rattan", true);
 			registerChestBlock(MainInit.wallshelfRattan, ClimateCore.PACKAGE_BASE + "_wallshelf_rattan", ClimateMain.MOD_ID);
+
+			MainInit.wallshelfRattanWhite = new BlockWallShelf(Material.WOOD, ClimateCore.PACKAGE_BASE + "_wallshelf_rattan_white", true);
+			registerChestBlock(MainInit.wallshelfRattanWhite, ClimateCore.PACKAGE_BASE + "_wallshelf_rattan_white", ClimateMain.MOD_ID);
 
 			MainInit.sinkMetal = new BlockSink(ClimateCore.PACKAGE_BASE + "_device_sink_half");
 			DCMaterialReg
@@ -1103,6 +1150,10 @@ public class MainMaterialRegister {
 					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_coat_rack");
 			DCMaterialReg
 					.registerItem(MainInit.coatRack, ClimateCore.PACKAGE_BASE + "_coat_rack", ClimateMain.MOD_ID);
+
+			MainInit.ergonomicChair = new ItemErgonomicChair().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_ergonomic_chair");
+			DCMaterialReg
+					.registerItem(MainInit.ergonomicChair, ClimateCore.PACKAGE_BASE + "_ergonomic_chair", ClimateMain.MOD_ID);
 
 		}
 	}

@@ -65,6 +65,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorGypsum, "dcs_climate", "dcs_door_gypsum", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.itemDoorSteel, "dcs_climate", "dcs_door_steel", "build", 0);
 		MAIN_INSTANCE.regSimpleItem(MainInit.cushionGray, "dcs_climate", "dcs_big_cushion", "build", 4);
+		MAIN_INSTANCE.regSimpleItem(MainInit.ergonomicChair, "dcs_climate", "dcs_ergonomic_chair", "build", 1);
 		MAIN_INSTANCE.regSimpleItem(MainInit.tinder, "dcs_climate", "dcs_tinder", "tool", 2);
 		MAIN_INSTANCE.regSimpleItem(MainInit.animalFeed, "dcs_climate", "dcs_animalfeed", "food", 2);
 		MAIN_INSTANCE.regSimpleItem(MainInit.colorChanger, "dcs_climate", "dcs_color_changer", "tool", 0);
@@ -114,6 +115,7 @@ public class JsonRegister {
 		ClimateMain.proxy.regBlockSlab(MainInit.stairsDirtbrick, "dcs_climate", "dcs_stairs_dirtbrick", "build");
 		ClimateMain.proxy.regBlockSlab(MainInit.stairsSkarn, "dcs_climate", "dcs_stairs_skarn", "build");
 		ClimateMain.proxy.regBlockSlab(MainInit.stairsGreisen, "dcs_climate", "dcs_stairs_greisen", "build");
+		MAIN_INSTANCE.regStateAndBlock(MainInit.stairsSteel, "dcs_climate", "dcs_stairs_steel", "build", 2, true);
 		ClimateMain.proxy.regBlockSlab(MainInit.roofSlate, "dcs_climate", "dcs_roof_slate", "build");
 		ClimateMain.proxy.regBlockSlab(MainInit.roofSlateRed, "dcs_climate", "dcs_roof_slate_red", "build");
 		ClimateMain.proxy.regBlockSlab(MainInit.roofSlateGreen, "dcs_climate", "dcs_roof_slate_green", "build");
@@ -191,8 +193,10 @@ public class JsonRegister {
 			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceNetSteel, "dcs_climate", "dcs_fence_net_steel", "build", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceAluminium, "dcs_climate", "dcs_fence_aluminium", "build", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceNet, "dcs_climate", "dcs_fence_net", "build", 0, true);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceNetSilver, "dcs_climate", "dcs_fence_net_silver", "build", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceGlass, "dcs_climate", "dcs_fence_glass", "build", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceRattan, "dcs_climate", "dcs_fence_rattan", "build", 0, true);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceRattanWhite, "dcs_climate", "dcs_fence_rattan_white", "build", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceLadder, "dcs_climate", "dcs_fence_ladder", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.fenceLadderSteel, "dcs_climate", "dcs_fence_ladder_steel", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.awningWood, "dcs_climate", "dcs_build_awning", "build", 0, false);
@@ -211,6 +215,7 @@ public class JsonRegister {
 			MAIN_INSTANCE.regStateAndBlock(MainInit.squaretableChecker, "dcs_climate", "dcs_squaretable_checker", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.squaretableBlack, "dcs_climate", "dcs_squaretable_black", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.squaretableRattan, "dcs_climate", "dcs_squaretable_rattan", "build", 0, false);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.squaretableRattanWhite, "dcs_climate", "dcs_squaretable_rattan_white", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.smallTableWood, "dcs_climate", "dcs_smalltable_wood", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.smallTableStone, "dcs_climate", "dcs_smalltable_stone", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.carpetRed, "dcs_climate", "dcs_carpet_red", "build", 0, false);
@@ -224,10 +229,12 @@ public class JsonRegister {
 			MAIN_INSTANCE.regStateAndBlock(MainInit.sofaPink, "dcs_climate", "dcs_sofa_pink", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.sofaBlue, "dcs_climate", "dcs_sofa_blue", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.sofaRattan, "dcs_climate", "dcs_sofa_rattan", "build", 0, false);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.sofaRattanWhite, "dcs_climate", "dcs_sofa_rattan_white", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.stoolBlack, "dcs_climate", "dcs_stool_black", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.stoolRed, "dcs_climate", "dcs_stool_red", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.stoolSmall, "dcs_climate", "dcs_smallstool", "build", 7, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.stoolRattan, "dcs_climate", "dcs_stool_rattan", "build", 0, false);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.stoolRattanWhite, "dcs_climate", "dcs_stool_rattan_white", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chairWood, "dcs_climate", "dcs_chair_wood", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chairMarble, "dcs_climate", "dcs_chair_marble", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chairSkarn, "dcs_climate", "dcs_chair_skarn", "build", 0, false);
@@ -235,6 +242,7 @@ public class JsonRegister {
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chairChecker, "dcs_climate", "dcs_chair_checker", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chairBlack, "dcs_climate", "dcs_chair_black", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chairRattan, "dcs_climate", "dcs_chair_rattan", "build", 0, false);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.chairRattanWhite, "dcs_climate", "dcs_chair_rattan_white", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.lampCarbide, "dcs_climate", "dcs_lamp_carbide_lantern", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.lampGas, "dcs_climate", "dcs_lamp_carbide_glass", "build", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chestMarble, "dcs_climate", "dcs_device_lowchest_marble", "device", 0, false);
@@ -244,6 +252,7 @@ public class JsonRegister {
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chestChecker, "dcs_climate", "dcs_device_lowchest_checker", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chestBlack, "dcs_climate", "dcs_device_lowchest_black", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.chestRattan, "dcs_climate", "dcs_device_lowchest_rattan", "device", 0, false);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.chestRattanWhite, "dcs_climate", "dcs_device_lowchest_rattan_white", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.wallshelfMarble, "dcs_climate", "dcs_wallshelf_marble", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.wallshelfSkarn, "dcs_climate", "dcs_wallshelf_skarn", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.wallshelfGreisen, "dcs_climate", "dcs_wallshelf_greisen", "device", 0, false);
@@ -251,6 +260,7 @@ public class JsonRegister {
 			MAIN_INSTANCE.regStateAndBlock(MainInit.wallshelfChecker, "dcs_climate", "dcs_wallshelf_checker", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.wallshelfBlack, "dcs_climate", "dcs_wallshelf_black", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.wallshelfRattan, "dcs_climate", "dcs_wallshelf_rattan", "device", 0, false);
+			MAIN_INSTANCE.regStateAndBlock(MainInit.wallshelfRattanWhite, "dcs_climate", "dcs_wallshelf_rattan_white", "device", 0, false);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.sinkMetal, "dcs_climate", "dcs_device_sink_half", "device", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.sinkChest, "dcs_climate", "dcs_device_sink_full", "device", 0, true);
 			MAIN_INSTANCE.regStateAndBlock(MainInit.craftingCounter, "dcs_climate", "dcs_device_crafting_counter", "device", 0, true);

@@ -2,13 +2,13 @@ package defeatedcrow.hac.main.block.build;
 
 import javax.annotation.Nullable;
 
-import defeatedcrow.hac.api.blockstate.DCState;
 import defeatedcrow.hac.api.climate.ItemSet;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.api.IColorChangeTile;
 import defeatedcrow.hac.main.client.gui.ContainerDisplayVendingMachine;
 import defeatedcrow.hac.main.config.MainCoreConfig;
-import net.minecraft.block.state.IBlockState;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageColorID;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -173,6 +173,7 @@ public class TileDisplayVendingMachine extends TileDisplayShelf implements IInve
 		tag.setInteger("price3", price3);
 		tag.setInteger("price4", price4);
 		tag.setInteger("emerald", emeraldCount);
+		tag.setInteger("Color", this.color);
 		return tag;
 	}
 
@@ -185,6 +186,7 @@ public class TileDisplayVendingMachine extends TileDisplayShelf implements IInve
 		price3 = tag.getInteger("price3");
 		price4 = tag.getInteger("price4");
 		emeraldCount = tag.getInteger("emerald");
+		color = tag.getInteger("Color");
 	}
 
 	@Override
@@ -215,27 +217,28 @@ public class TileDisplayVendingMachine extends TileDisplayShelf implements IInve
 
 	// color
 
+	protected int color = 0;
+
 	@Override
 	public int getColor() {
-		int color = DCState.getInt(world.getBlockState(getPos()), DCState.TYPE4);
 		return color;
 	}
 
 	@Override
 	public void setColor(int num) {
-		if (num < 0 || num > 3) {
-			num = 0;
+		color = num;
+		if (color < 0 || color > 3) {
+			color = 0;
 		}
-		IBlockState current = world.getBlockState(pos);
-		IBlockState next = current.withProperty(DCState.TYPE4, num);
-		world.setBlockState(pos, next, 3);
 	}
 
 	@Override
 	public boolean rotateColor() {
-		int c = getColor();
-		c++;
+		int c = color + 1;
 		setColor(c);
+		if (!world.isRemote) {
+			DCMainPacket.INSTANCE.sendToAll(new MessageColorID(pos, color));
+		}
 		return true;
 	}
 }

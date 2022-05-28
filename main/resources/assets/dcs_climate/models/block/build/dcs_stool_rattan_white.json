@@ -1,0 +1,33 @@
+{
+    "parent": "block/block",
+    "ambientocclusion": true,
+    "textures": {
+        "particle": "dcs_climate:blocks/build/build_rattan_white",
+        "base": "dcs_climate:blocks/build/build_rattan_white",
+        "wool": "blocks/wool_colored_white"
+    },
+    "elements": [
+        {   "from": [ 4, 0, 4 ],
+            "to": [ 12, 8, 12 ],
+            "faces": {
+                "down":  { "uv": [ 4, 4, 12, 12 ], "texture": "#base", "cullface": "down" },
+                "up":    { "uv": [ 4, 4, 12, 12 ], "texture": "#base", "cullface": "up" },
+                "north": { "uv": [ 4, 0, 12, 8 ], "texture": "#base", "cullface": "north" },
+                "south": { "uv": [ 4, 0, 12, 8 ], "texture": "#base", "cullface": "south" },
+                "west":  { "uv": [ 4, 2, 12, 8 ], "texture": "#base", "cullface": "west" },
+                "east":  { "uv": [ 4, 2, 12, 8 ], "texture": "#base", "cullface": "east" }
+            }
+        },
+        {   "from": [ 4, 8, 4 ],
+            "to": [ 12, 10, 12 ],
+            "faces": {
+                "down":  { "uv": [ 4, 4, 12, 12 ], "texture": "#wool", "cullface": "down" },
+                "up":    { "uv": [ 4, 4, 12, 12 ], "texture": "#wool", "cullface": "up" },
+                "north": { "uv": [ 4, 10, 12, 12 ], "texture": "#wool", "cullface": "north" },
+                "south": { "uv": [ 4, 10, 12, 12 ], "texture": "#wool", "cullface": "south" },
+                "west":  { "uv": [ 4, 4, 12, 6 ], "texture": "#wool", "cullface": "west" },
+                "east":  { "uv": [ 4, 4, 12, 6 ], "texture": "#wool", "cullface": "east" }
+            }
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "dcs_climate:block/build/dcs_chair_rattan",
+    "textures": {
+        "particle": "dcs_climate:blocks/build/build_rattan_white",
+        "base": "dcs_climate:blocks/build/rattan_side_white",
+        "top": "dcs_climate:blocks/build/build_rattan_white"
+    }
+}

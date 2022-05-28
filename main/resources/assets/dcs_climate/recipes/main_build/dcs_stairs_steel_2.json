@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_stairs_steel",
+   "data": 1
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dyeWhite"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_stairs_steel",
+  "count": 1,
+  "data": 2
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
+}

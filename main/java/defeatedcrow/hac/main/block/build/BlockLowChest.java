@@ -97,4 +97,5 @@ public class BlockLowChest extends DCTileBlockFaced {
 			return true;
 		return false;
 	}
+
 }

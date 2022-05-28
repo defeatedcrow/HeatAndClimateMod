@@ -4,13 +4,13 @@ import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.client.base.DCLockableTESRBase;
 import defeatedcrow.hac.core.client.base.DCTileModelBase;
 import defeatedcrow.hac.main.block.build.TileLowChest;
-import defeatedcrow.hac.main.client.model.ModelMetalChest;
+import defeatedcrow.hac.main.client.model.ModelMetalChest_A;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 public class TESRMagnetChest extends DCLockableTESRBase {
 
-	private final ModelMetalChest model = new ModelMetalChest();
+	private final ModelMetalChest_A model = new ModelMetalChest_A();
 
 	@Override
 	public void render(DCLockableTE te, double x, double y, double z, float partialTicks, int destroyStage, float a) {

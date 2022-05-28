@@ -14,8 +14,10 @@ import net.minecraft.util.ResourceLocation;
 public class TESRMFenceNet extends TileEntitySpecialRenderer<TileMFenceNet> {
 
 	private static final String TEX_NET = "dcs_climate:textures/tiles/mfence_net.png";
+	private static final String TEX_NET_SILVER = "dcs_climate:textures/tiles/mfence_net_silver.png";
 	private static final String TEX_STEEL = "dcs_climate:textures/tiles/mfence_steel.png";
 	private static final String TEX_RATTAN = "dcs_climate:textures/tiles/mfence_rattan.png";
+	private static final String TEX_RATTAN_WHITE = "dcs_climate:textures/tiles/mfence_rattan_white.png";
 	private final ModelMFenceGlass model = new ModelMFenceGlass();
 
 	@Override
@@ -27,8 +29,12 @@ public class TESRMFenceNet extends TileEntitySpecialRenderer<TileMFenceNet> {
 
 				if (block.getBlock() == MainInit.fenceNetSteel) {
 					this.bindTexture(new ResourceLocation(TEX_STEEL));
+				} else if (block.getBlock() == MainInit.fenceNetSilver) {
+					this.bindTexture(new ResourceLocation(TEX_NET_SILVER));
 				} else if (block.getBlock() == MainInit.fenceRattan) {
 					this.bindTexture(new ResourceLocation(TEX_RATTAN));
+				} else if (block.getBlock() == MainInit.fenceRattanWhite) {
+					this.bindTexture(new ResourceLocation(TEX_RATTAN_WHITE));
 				} else {
 					this.bindTexture(new ResourceLocation(TEX_NET));
 				}

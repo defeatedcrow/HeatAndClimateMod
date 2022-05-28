@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "dcs_climate:dcs_stool_rattan",
+   "data": 0
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dyeWhite"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_stool_rattan_white",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "build_advanced"
+  }
+ ]
+}

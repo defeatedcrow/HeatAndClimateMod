@@ -12,6 +12,7 @@ import defeatedcrow.hac.core.base.ITagGetter;
 import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.block.DCExclusiveTE;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -100,6 +101,7 @@ public class BlockDisplayVendingMachine extends BlockDisplayShelf {
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 		tooltip.add(I18n.format("dcs.tip.exclusive"));
 		tooltip.add(I18n.format("dcs.tip.displaycase"));
+		tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 	}
 
 	// 2ブロック合体管理

@@ -46,6 +46,7 @@ public class MainCreativeTabRegister {
 		ClimateMain.build.addSubItem(MainInit.stairsDirtbrick);
 		ClimateMain.build.addSubItem(MainInit.stairsSkarn);
 		ClimateMain.build.addSubItem(MainInit.stairsGreisen);
+		ClimateMain.build.addSubItem(MainInit.stairsSteel);
 		ClimateMain.build.addSubItem(MainInit.halfSlab);
 		ClimateMain.build.addSubItem(MainInit.halfSlab2);
 		ClimateMain.build.addSubItem(MainInit.halfSlab3);
@@ -85,8 +86,10 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.fenceLadderSteel);
 			ClimateMain.build.addSubItem(MainInit.fenceAluminium);
 			ClimateMain.build.addSubItem(MainInit.fenceNet);
+			ClimateMain.build.addSubItem(MainInit.fenceNetSilver);
 			ClimateMain.build.addSubItem(MainInit.fenceGlass);
 			ClimateMain.build.addSubItem(MainInit.fenceRattan);
+			ClimateMain.build.addSubItem(MainInit.fenceRattanWhite);
 			ClimateMain.build.addSubItem(MainInit.fenceLadder);
 
 			ClimateMain.build.addSubItem(MainInit.itemDoorMarble);
@@ -121,6 +124,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.chestChecker);
 			ClimateMain.build.addSubItem(MainInit.chestBlack);
 			ClimateMain.build.addSubItem(MainInit.chestRattan);
+			ClimateMain.build.addSubItem(MainInit.chestRattanWhite);
 
 			ClimateMain.build.addSubItem(MainInit.wallshelfMarble);
 			ClimateMain.build.addSubItem(MainInit.wallshelfSkarn);
@@ -129,6 +133,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.wallshelfChecker);
 			ClimateMain.build.addSubItem(MainInit.wallshelfBlack);
 			ClimateMain.build.addSubItem(MainInit.wallshelfRattan);
+			ClimateMain.build.addSubItem(MainInit.wallshelfRattanWhite);
 
 			ClimateMain.build.addSubItem(MainInit.chestMetal);
 			ClimateMain.build.addSubItem(MainInit.chestMagnet);
@@ -156,6 +161,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.squaretableChecker);
 			ClimateMain.build.addSubItem(MainInit.squaretableBlack);
 			ClimateMain.build.addSubItem(MainInit.squaretableRattan);
+			ClimateMain.build.addSubItem(MainInit.squaretableRattanWhite);
 			ClimateMain.build.addSubItem(MainInit.smallTableWood);
 			ClimateMain.build.addSubItem(MainInit.smallTableStone);
 
@@ -163,6 +169,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.stoolRed);
 			ClimateMain.build.addSubItem(MainInit.stoolSmall);
 			ClimateMain.build.addSubItem(MainInit.stoolRattan);
+			ClimateMain.build.addSubItem(MainInit.stoolRattanWhite);
 
 			ClimateMain.build.addSubItem(MainInit.chairWood);
 			ClimateMain.build.addSubItem(MainInit.chairMarble);
@@ -171,6 +178,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.chairChecker);
 			ClimateMain.build.addSubItem(MainInit.chairBlack);
 			ClimateMain.build.addSubItem(MainInit.chairRattan);
+			ClimateMain.build.addSubItem(MainInit.chairRattanWhite);
 
 			ClimateMain.build.addSubItem(MainInit.sofaBlack);
 			ClimateMain.build.addSubItem(MainInit.sofaRed);
@@ -178,6 +186,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.sofaPink);
 			ClimateMain.build.addSubItem(MainInit.sofaBlue);
 			ClimateMain.build.addSubItem(MainInit.sofaRattan);
+			ClimateMain.build.addSubItem(MainInit.sofaRattanWhite);
 
 			ClimateMain.build.addSubItem(MainInit.itemBed);
 
@@ -204,6 +213,7 @@ public class MainCreativeTabRegister {
 			ClimateMain.build.addSubItem(MainInit.desktopAccessories);
 			ClimateMain.build.addSubItem(MainInit.cushionGray);
 			ClimateMain.build.addSubItem(MainInit.coatRack);
+			ClimateMain.build.addSubItem(MainInit.ergonomicChair);
 		}
 
 		// device

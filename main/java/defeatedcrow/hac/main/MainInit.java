@@ -52,6 +52,8 @@ public class MainInit {
 	public static Block stairsDirtbrick;
 	public static Block stairsSkarn;
 	public static Block stairsGreisen;
+	public static Block stairsSteel;
+
 	public static Block halfSlab;
 	public static Block halfSlab2;
 	public static Block halfSlab3;
@@ -74,6 +76,7 @@ public class MainInit {
 
 	public static Block fenceAluminium;
 	public static Block fenceNet;
+	public static Block fenceNetSilver;
 	public static Block fenceGlass;
 	public static Block fenceLadder;
 
@@ -140,6 +143,7 @@ public class MainInit {
 	public static Block squaretableBlack;
 	public static Block smallTableWood;
 	public static Block smallTableStone;
+
 	public static Block stoolBlack;
 	public static Block stoolRed;
 	public static Block stoolSmall;
@@ -154,6 +158,8 @@ public class MainInit {
 	public static Block chairGreisen;
 	public static Block chairChecker;
 	public static Block chairBlack;
+	public static Block chairErgonomic;
+
 	public static Block carpetRed;
 	public static Block carpetWhite;
 	public static Block carpetGray;
@@ -196,6 +202,7 @@ public class MainInit {
 	public static Block displayCase;
 	public static Block displayVender;
 	public static Block displayVenderUpper;
+
 	public static Block flowerVase;
 	public static Block planting;
 
@@ -222,17 +229,25 @@ public class MainInit {
 	public static Block mcClock_L;
 
 	public static Item cushionGray;
+	public static Item ergonomicChair;
 	public static Item desktopAccessories;
 	public static Item coatRack;
 
 	// vine
 	public static Block fenceRattan;
+	public static Block fenceRattanWhite;
 	public static Block squaretableRattan;
+	public static Block squaretableRattanWhite;
 	public static Block stoolRattan;
+	public static Block stoolRattanWhite;
 	public static Block chairRattan;
+	public static Block chairRattanWhite;
 	public static Block sofaRattan;
+	public static Block sofaRattanWhite;
 	public static Block chestRattan;
+	public static Block chestRattanWhite;
 	public static Block wallshelfRattan;
+	public static Block wallshelfRattanWhite;
 
 	// device
 	public static Block swedishTorch;
