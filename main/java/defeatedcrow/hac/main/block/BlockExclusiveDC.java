@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.mojang.authlib.GameProfile;
 
 import defeatedcrow.hac.core.base.DCTileBlock;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -15,6 +16,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -78,6 +80,16 @@ public abstract class BlockExclusiveDC extends DCTileBlock {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
 		tooltip.add(I18n.format("dcs.tip.exclusive"));
+	}
+
+	public static boolean hasOwner(ItemStack stack) {
+		if (!DCUtil.isEmpty(stack) && stack.hasTagCompound()) {
+			NBTTagCompound tag = stack.getTagCompound();
+			if (tag.hasUniqueId("owner")) {
+				return !tag.getUniqueId("owner").equals(DCExclusiveTE.EMPTY_OWNER);
+			}
+		}
+		return false;
 	}
 
 }

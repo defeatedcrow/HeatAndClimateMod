@@ -4,7 +4,7 @@
     "textures": {
         "particle": "dcs_climate:blocks/build/build_rattan_white",
         "base": "dcs_climate:blocks/build/build_rattan_white",
-        "wool": "blocks/wool_colored_white"
+        "wool": "dcs_climate:blocks/build/build_white"
     },
     "elements": [
         {   "from": [ 4, 0, 4 ],

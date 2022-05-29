@@ -46,10 +46,9 @@ public class ModelMetalChest_D extends DCTileModelBase {
 
 	@Override
 	public void setRotationAngles(float f) {
-		float f1 = f * 0.01745329F;
 
-		if (f > 0F) {
-			door.rotateAngleY = -75F * f;
+		if (f != 0F) {
+			door.rotateAngleY = -0.5236F;
 		} else {
 			door.rotateAngleY = 0F;
 		}

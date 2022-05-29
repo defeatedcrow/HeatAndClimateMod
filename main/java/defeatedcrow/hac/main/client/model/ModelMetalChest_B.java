@@ -40,10 +40,10 @@ public class ModelMetalChest_B extends DCTileModelBase {
 		huta.cubeList.add(new ModelBox(huta, 2, 1, 2.0F, 1.5F, -15.0F, 1, 1, 2, 0.0F, false));
 
 		band = new ModelRenderer(this);
-		band.setRotationPoint(0.0F, 8.0F, -5.1F);
+		band.setRotationPoint(0.0F, 8.0F, -5.2F);
 		setRotation(band, -1.5708F, 0.0F, 0.0F);
-		band.cubeList.add(new ModelBox(band, 1, 31, -6.0F, -0.1F, -2.9F, 2, 0, 3, 0.0F, false));
-		band.cubeList.add(new ModelBox(band, 1, 36, 4.0F, -0.1F, -2.9F, 2, 0, 3, 0.0F, false));
+		band.cubeList.add(new ModelBox(band, 1, 31, -6.0F, -0.2F, -2.9F, 2, 0, 3, 0.0F, false));
+		band.cubeList.add(new ModelBox(band, 1, 36, 4.0F, -0.2F, -2.9F, 2, 0, 3, 0.0F, false));
 	}
 
 	@Override
@@ -62,12 +62,13 @@ public class ModelMetalChest_B extends DCTileModelBase {
 
 	@Override
 	public void setRotationAngles(float f) {
-		float f1 = f * 0.01745329F;
 
-		if (f > 0F) {
-			huta.rotateAngleX = -75F * f;
+		if (f != 0F) {
+			huta.rotateAngleX = -1.0472F;
+			band.rotateAngleX = 0F;
 		} else {
 			huta.rotateAngleX = 0F;
+			band.rotateAngleX = -1.5708F;
 		}
 	}
 

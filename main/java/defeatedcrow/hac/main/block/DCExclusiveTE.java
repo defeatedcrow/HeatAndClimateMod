@@ -14,6 +14,7 @@ public abstract class DCExclusiveTE extends DCLockableTE {
 	protected UUID owner = null;
 	protected String ownerName = "NO OWNER";
 	private String date = " ";
+	public static final UUID EMPTY_OWNER = UUID.fromString("613A8757-2068-4EA5-8EB1-5CB9A41111BF");
 
 	public void setOwner(UUID id) {
 		owner = id;
@@ -39,10 +40,14 @@ public abstract class DCExclusiveTE extends DCLockableTE {
 		return date;
 	}
 
+	public boolean hasOwner() {
+		return owner != null && !owner.equals(EMPTY_OWNER);
+	}
+
 	public boolean isOwnerOrOP(EntityPlayer player) {
 		if (player == null)
 			return false;
-		if (owner == null)
+		if (owner == null || owner.equals(EMPTY_OWNER))
 			return true;
 		if (FMLCommonHandler.instance().getMinecraftServerInstance().isSinglePlayer())
 			return true;
@@ -61,8 +66,11 @@ public abstract class DCExclusiveTE extends DCLockableTE {
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 
-		if (tag.hasUniqueId("owner"))
+		if (tag.hasUniqueId("owner")) {
 			owner = tag.getUniqueId("owner");
+		} else {
+			owner = EMPTY_OWNER;
+		}
 		ownerName = tag.getString("ownerName");
 		date = tag.getString("dateString");
 	}
@@ -92,8 +100,11 @@ public abstract class DCExclusiveTE extends DCLockableTE {
 	@Override
 	public void setNBT(NBTTagCompound tag) {
 		super.setNBT(tag);
-		if (tag.hasUniqueId("owner"))
+		if (tag.hasUniqueId("owner")) {
 			owner = tag.getUniqueId("owner");
+		} else {
+			owner = EMPTY_OWNER;
+		}
 		ownerName = tag.getString("ownerName");
 		date = tag.getString("dateString");
 	}

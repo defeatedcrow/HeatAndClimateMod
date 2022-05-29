@@ -1,7 +1,9 @@
 package defeatedcrow.hac.main.event;
 
+import defeatedcrow.hac.api.hook.DCEntityItemUpdateEvent;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.main.MainInit;
+import defeatedcrow.hac.main.block.BlockExclusiveDC;
 import defeatedcrow.hac.main.config.MainCoreConfig;
 import defeatedcrow.hac.main.entity.EntityIronBullet;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -19,9 +21,11 @@ import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 // 戦闘関連
@@ -103,8 +107,7 @@ public class CombatEvent {
 					float abs = eff.getAmplifier() * 0.5F * newDam;
 					b = true;
 					if (!living.world.isRemote) {
-						EntityXPOrb orb = new EntityXPOrb(living.world, living.posX, living.posY, living.posZ,
-								MathHelper.ceil(abs));
+						EntityXPOrb orb = new EntityXPOrb(living.world, living.posX, living.posY, living.posZ, MathHelper.ceil(abs));
 						living.world.spawnEntity(orb);
 					}
 				}
@@ -150,6 +153,35 @@ public class CombatEvent {
 				event.setCanceled(true);
 			} else {
 				event.setAmount(amount);
+			}
+		}
+	}
+
+	/* dropが消えなくなる */
+	@SubscribeEvent
+	public void DropItemGuardEvent(ItemExpireEvent event) {
+		EntityItem item = event.getEntityItem();
+		int life = event.getExtraLife();
+		if (item != null && !DCUtil.isEmpty(item.getItem())) {
+			ItemStack stack = item.getItem();
+			if (BlockExclusiveDC.hasOwner(stack)) {
+				life += 6000;
+				event.setExtraLife(life);
+				event.setCanceled(true);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onExclusiveItem(DCEntityItemUpdateEvent event) {
+		EntityItem entity = event.entityItem;
+		if (entity != null && !entity.getEntityWorld().isRemote) {
+			if (!entity.getIsInvulnerable() && !DCUtil.isEmpty(entity.getItem())) {
+				ItemStack stack = entity.getItem();
+				if (BlockExclusiveDC.hasOwner(stack)) {
+					entity.setEntityInvulnerable(true);
+					event.setResult(Result.ALLOW);
+				}
 			}
 		}
 	}
