@@ -323,7 +323,8 @@ public class TileAgingBarrel extends ClimateReceiverLockable implements ISidedIn
 			FluidStack outF = currentRecipe.getOutputFluid();
 
 			int c = inputT.getAge();
-			int a = MathHelper.floor(inputT.getFluidAmount() * 0.9F);
+			//　倍率が0.9になっていた（JEI曰く0.8）
+			int a = MathHelper.floor(inputT.getFluidAmount() * 0.8F);
 
 			if (outF != null) {
 				inputT.setFluid(new FluidStack(outF.getFluid(), a));
