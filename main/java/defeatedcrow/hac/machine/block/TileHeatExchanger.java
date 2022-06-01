@@ -3,6 +3,7 @@ package defeatedcrow.hac.machine.block;
 import java.util.List;
 
 import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
@@ -69,8 +70,9 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 		// 気候チェック
 		if (!world.isRemote) {
 			DCHeatTier heat = getUnderHeat();
-			DCHumidity hum = ClimateAPI.calculator.getHumidity(world, pos, 1, false);
-			DCAirflow air = ClimateAPI.calculator.getAirflow(world, pos, 1, false);
+			ClimateSupplier clm = new ClimateSupplier(world, pos);
+			DCHumidity hum = clm.get().getHumidity();
+			DCAirflow air = clm.get().getAirflow();
 
 			int code = (air.getID() << 6) + (hum.getID() << 4) + heat.getID();
 			current = ClimateAPI.register.getClimateFromInt(code);

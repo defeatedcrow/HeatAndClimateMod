@@ -2329,6 +2329,7 @@ dcs.gui.device.brewing=醸造
 dcs.gui.device.still=蒸留
 dcs.gui.device.barrel=熟成
 dcs.gui.device.exclusive=設置者: %s
+dcs.gui.device.display=飾り棚
 dcs.gui.device.displaycase=ショーケース
 dcs.gui.device.vending_machine=自動販売機
 

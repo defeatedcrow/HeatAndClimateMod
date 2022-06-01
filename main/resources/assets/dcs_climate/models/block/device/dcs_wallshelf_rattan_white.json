@@ -4,7 +4,7 @@
     "textures": {
         "particle": "dcs_climate:blocks/build/build_rattan_white",
         "base": "dcs_climate:blocks/build/panel_wood_white",
-        "black": "dcs_climate:blocks/build/build_linoleum_9",
+        "black": "dcs_climate:blocks/build/build_linoleum_15",
         "face": "dcs_climate:blocks/build/build_rattan_white",
         "top": "dcs_climate:blocks/cont/jute_t"
     },

@@ -70,8 +70,7 @@ public class EntityBlackDog extends EntityWolf {
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
 		this.targetTasks.addTask(2, new EntityAIPlayerHurtByTarget(this));
-		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityMob.class, 50, false, true,
-				(Predicate) null));
+		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityMob.class, 50, false, true, (Predicate) null));
 	}
 
 	@Override
@@ -153,7 +152,8 @@ public class EntityBlackDog extends EntityWolf {
 				int cx = getPosition().getX() >> 4;
 				int cz = getPosition().getZ() >> 4;
 				ChunkPos chunk = new ChunkPos(cx, cz);
-				BlockPos pos = PictureList.INSTANCE.getPos(chunk, MagicColor.BLACK);
+				int dim = getEntityWorld().provider.getDimension();
+				BlockPos pos = PictureList.INSTANCE.getPos(dim, chunk, MagicColor.BLACK);
 				if (pos != null) {
 					setPicturePos(new BlockPos(pos));
 				}
@@ -220,7 +220,8 @@ public class EntityBlackDog extends EntityWolf {
 				int cx = getPosition().getX() >> 4;
 				int cz = getPosition().getZ() >> 4;
 				ChunkPos chunk = new ChunkPos(cx, cz);
-				BlockPos pos = PictureList.INSTANCE.getPos(chunk, MagicColor.BLACK);
+				int dim = getEntityWorld().provider.getDimension();
+				BlockPos pos = PictureList.INSTANCE.getPos(dim, chunk, MagicColor.BLACK);
 				if (pos != null) {
 					setPicturePos(new BlockPos(pos));
 				}
@@ -252,8 +253,7 @@ public class EntityBlackDog extends EntityWolf {
 							}
 						}
 						if (!item.isEmpty()) {
-							EntityItem drop = new EntityItem(world, getPosition().getX(), getPosition().getY() + 0.125D,
-									getPosition().getZ(), item.copy());
+							EntityItem drop = new EntityItem(world, getPosition().getX(), getPosition().getY() + 0.125D, getPosition().getZ(), item.copy());
 							world.spawnEntity(drop);
 						}
 					}

@@ -97,8 +97,7 @@ public class MagicCommonEvent {
 					target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) living.getOwner()), event
 							.getAmount());
 					event.setCanceled(true);
-				} else if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorPendant, 1,
-						4)) && !(target instanceof IMob)) {
+				} else if (DCUtil.hasCharmItem(living, new ItemStack(MagicInit.colorPendant, 1, 4)) && !(target instanceof IMob)) {
 					event.setCanceled(true);
 					return;
 				}
@@ -114,8 +113,7 @@ public class MagicCommonEvent {
 							DCUtil.playerConsumeCharm((EntityPlayer) owner, new ItemStack(MagicInit.colorBadge, 1, 3));
 							event.setCanceled(true);
 						}
-					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1,
-							4)) && !(target instanceof IMob)) {
+					} else if (DCUtil.hasCharmItem(owner, new ItemStack(MagicInit.colorPendant, 1, 4)) && !(target instanceof IMob)) {
 						// white pendant
 						event.setCanceled(true);
 						return;
@@ -159,8 +157,7 @@ public class MagicCommonEvent {
 		EntityPlayer player = event.getEntityPlayer();
 		Entity target = event.getTarget();
 		if (player != null && target != null) {
-			if (player.isSneaking() && !player.world.isRemote && DCUtil.hasCharmItem(player, new ItemStack(
-					MagicInit.colorRing2, 1, 0))) {
+			if (player.isSneaking() && !player.world.isRemote && DCUtil.hasCharmItem(player, new ItemStack(MagicInit.colorRing2, 1, 0))) {
 				if (target instanceof EntityLiving) {
 					player.openGui(ClimateMain.instance, target.getEntityId(), player.world, target.getPosition()
 							.getX(), target.getPosition().getY(), target.getPosition().getZ());
@@ -460,11 +457,12 @@ public class MagicCommonEvent {
 			int cx = pos.getX() >> 4;
 			int cz = pos.getZ() >> 4;
 			ChunkPos chunk = new ChunkPos(cx, cz);
-			if (PictureList.INSTANCE.hasColor(chunk, MagicColor.BLUE_GREEN) && event
+			int dim = event.getEntityLiving().getEntityWorld().provider.getDimension();
+			if (PictureList.INSTANCE.hasColor(dim, chunk, MagicColor.BLUE_GREEN) && event
 					.getEntityLiving() instanceof EntityPlayer) {
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MainInit.bird, 205, 0));
 			}
-			if (PictureList.INSTANCE.hasColor(chunk, MagicColor.WHITE_RED) && !(event
+			if (PictureList.INSTANCE.hasColor(dim, chunk, MagicColor.WHITE_RED) && !(event
 					.getEntityLiving() instanceof IMob)) {
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.HASTE, 205, 0));
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 205, 0));
@@ -585,14 +583,15 @@ public class MagicCommonEvent {
 			int cx = (int) event.getX() >> 4;
 			int cz = (int) event.getZ() >> 4;
 			ChunkPos chunk = new ChunkPos(cx, cz);
+			int dim = living.getEntityWorld().provider.getDimension();
 			if (!event.getEntityLiving().getEntityWorld().isDaytime() && !event.getEntityLiving()
-					.isInWater() && PictureList.INSTANCE.hasColor(chunk, MagicColor.GREEN_BLACK)) {
+					.isInWater() && PictureList.INSTANCE.hasColor(dim, chunk, MagicColor.GREEN_BLACK)) {
 				if (event.getWorld().rand.nextInt(100) < 50 || event.getEntityLiving() instanceof EntityCreeper) {
 					event.getEntityLiving().addTag("blackdog");
 				} else {
 					event.setResult(Result.DENY);
 				}
-			} else if (PictureList.INSTANCE.hasColor(chunk, MagicColor.BLACK_WHITE)) {
+			} else if (PictureList.INSTANCE.hasColor(dim, chunk, MagicColor.BLACK_WHITE)) {
 				event.setResult(Result.DENY);
 			}
 		}
@@ -604,7 +603,8 @@ public class MagicCommonEvent {
 		int cx = pos.getX() >> 4;
 		int cz = pos.getZ() >> 4;
 		ChunkPos chunk = new ChunkPos(cx, cz);
-		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.BLUE_GREEN)) {
+		int dim = event.getWorld().provider.getDimension();
+		if (PictureList.INSTANCE.hasColor(dim, chunk, MagicColor.BLUE_GREEN)) {
 			IClimate old = event.currentClimate();
 			if (old.getAirflow() != DCAirflow.TIGHT) {
 				event.setNewClimate(old.addAirTier(1));
@@ -619,7 +619,8 @@ public class MagicCommonEvent {
 		int cx = pos.getX() >> 4;
 		int cz = pos.getZ() >> 4;
 		ChunkPos chunk = new ChunkPos(cx, cz);
-		if (PictureList.INSTANCE.hasColor(chunk, MagicColor.RED_BLUE)) {
+		int dim = event.getWorld().provider.getDimension();
+		if (PictureList.INSTANCE.hasColor(dim, chunk, MagicColor.RED_BLUE)) {
 			DCHeatTier old = event.currentClimate();
 			event.setNewClimate(old.addTier(4));
 			event.setResult(Result.ALLOW);

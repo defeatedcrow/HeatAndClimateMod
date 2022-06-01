@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-import defeatedcrow.hac.api.climate.ClimateAPI;
+import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.energy.ITorqueProvider;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
@@ -23,7 +23,8 @@ public class TileWindmill extends TileTorqueBase implements ITorqueProvider {
 	public void updateTile() {
 		if (!world.isRemote) {
 			// Airflowチェック
-			DCAirflow air = ClimateAPI.calculator.getAirflow(world, pos);
+			ClimateSupplier clm = new ClimateSupplier(world, pos);
+			DCAirflow air = clm.get().getAirflow();
 			float wind = getGearTier() * 0.125F;
 			switch (air) {
 			case TIGHT:

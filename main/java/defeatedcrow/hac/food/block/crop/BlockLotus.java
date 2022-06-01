@@ -65,14 +65,16 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 	public BlockLotus(String s, int max) {
 		super(Material.WATER, s);
 		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK, false).withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE8, 0).withProperty(BLACK, false)
+				.withProperty(BlockFluidBase.LEVEL, Integer.valueOf(0)));
 	}
 
 	public boolean isInWater(IBlockAccess world, BlockPos pos) {
 		boolean ret = true;
 		for (EnumFacing face : EnumFacing.HORIZONTALS) {
 			IBlockState target = world.getBlockState(pos.offset(face));
-			if (target.getBlock() instanceof BlockLiquid && target.getMaterial() == Material.WATER) {} else if (target.getBlock() != this && !target.getBlock().isSideSolid(target, world, pos.offset(face), face.getOpposite())) {
+			if (target.getBlock() instanceof BlockLiquid && target.getMaterial() == Material.WATER) {} else if (target.getBlock() != this && !target.getBlock()
+					.isSideSolid(target, world, pos.offset(face), face.getOpposite())) {
 				ret = false;
 			}
 		}
@@ -149,15 +151,13 @@ public class BlockLotus extends BlockDC implements INameSuffix, IClimateCrop, IR
 			int stage = state.getValue(DCState.STAGE8);
 			boolean black = state.getValue(BLACK);
 			world.setBlockState(pos, Blocks.WATER.getDefaultState(), 2);
-			world.setBlockState(pos.down(), FoodInit.cropLotusN.getDefaultState().withProperty(DCState.STAGE8, stage).withProperty(BlockLotusN.BLACK, black), 2);
+			world.setBlockState(pos.down(), FoodInit.cropLotusN.getDefaultState().withProperty(DCState.STAGE8, stage)
+					.withProperty(BlockLotusN.BLACK, black), 2);
 		}
 	}
 
 	protected IClimate getClimate(World world, BlockPos pos, IBlockState state) {
-		DCHeatTier heat = ClimateAPI.calculator.getAverageTemp(world, pos, checkingRange()[0], false);
-		DCHumidity hum = ClimateAPI.calculator.getHumidity(world, pos.down(), checkingRange()[1], false);
-		DCAirflow air = ClimateAPI.calculator.getAirflow(world, pos, checkingRange()[2], false);
-		IClimate c = ClimateAPI.register.getClimateFromParam(heat, hum, air);
+		IClimate c = ClimateAPI.calculator.getClimate(world, pos, checkingRange());
 		return c;
 	}
 

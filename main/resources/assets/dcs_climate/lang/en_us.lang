@@ -2361,6 +2361,7 @@ dcs.gui.device.brewing=Brewing
 dcs.gui.device.still=Still
 dcs.gui.device.barrel=Aging Barrel
 dcs.gui.device.exclusive=Owner: %s
+dcs.gui.device.display=Display Shelf
 dcs.gui.device.displaycase=Display Case
 dcs.gui.device.vending_machine=Vending Machine
 

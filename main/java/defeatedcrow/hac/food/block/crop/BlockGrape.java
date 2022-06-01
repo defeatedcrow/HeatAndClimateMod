@@ -75,7 +75,8 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 	public BlockGrape(String s) {
 		super(Material.PLANTS, s);
 		this.setTickRandomly(true);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0).withProperty(FACING2, EnumFacing.DOWN).withProperty(GROUND, false).withProperty(TOP, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(DCState.STAGE4, 0).withProperty(FACING2, EnumFacing.DOWN).withProperty(GROUND, false)
+				.withProperty(TOP, false));
 	}
 
 	@Override
@@ -143,10 +144,7 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 	}
 
 	protected IClimate getClimate(World world, BlockPos pos, IBlockState state) {
-		DCHeatTier heat = ClimateAPI.calculator.getAverageTemp(world, pos, checkingRange()[0], false);
-		DCHumidity hum = ClimateAPI.calculator.getHumidity(world, pos.down(), checkingRange()[1], false);
-		DCAirflow air = ClimateAPI.calculator.getAirflow(world, pos, checkingRange()[2], false);
-		IClimate c = ClimateAPI.register.getClimateFromParam(heat, hum, air);
+		IClimate c = ClimateAPI.calculator.getClimate(world, pos, checkingRange());
 		return c;
 	}
 
@@ -261,7 +259,8 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 
 	protected boolean isSoil(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		return state.getBlock() == this || isSuitableMaterial(state.getMaterial()) || world.getBlockState(pos).getBlock().canSustainPlant(state, world, pos, EnumFacing.UP, this);
+		return state.getBlock() == this || isSuitableMaterial(state.getMaterial()) || world.getBlockState(pos).getBlock()
+				.canSustainPlant(state, world, pos, EnumFacing.UP, this);
 	}
 
 	protected boolean isSuitableMaterial(Material mat) {
@@ -538,7 +537,8 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 			f = EnumFacing.UP;
 		}
 		for (EnumFacing f2 : EnumFacing.HORIZONTALS) {
-			if (!world.isAirBlock(pos.offset(f2)) && world.getBlockState(pos.offset(f2)).getMaterial() != Material.PLANTS && !world.getBlockState(pos.offset(f2)).getMaterial().isReplaceable()) {
+			if (!world.isAirBlock(pos.offset(f2)) && world.getBlockState(pos.offset(f2)).getMaterial() != Material.PLANTS && !world.getBlockState(pos
+					.offset(f2)).getMaterial().isReplaceable()) {
 				f = f2;
 				break;
 			}

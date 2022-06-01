@@ -35,11 +35,11 @@ public class KineticMotorTESR extends DCTorqueTESRBase {
 		switch (base) {
 		case DOWN:
 			y = 90F;
-			x = 90F;
+			x = -90F;
 			break;
 		case UP:
 			y = 90F;
-			x = -90F;
+			x = 90F;
 			break;
 		case NORTH:
 			y = 90F;
