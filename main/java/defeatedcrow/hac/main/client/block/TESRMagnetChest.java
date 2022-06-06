@@ -48,7 +48,7 @@ public class TESRMagnetChest extends DCLockableTESRBase {
 		GlStateManager.pushMatrix();
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		GlStateManager.translate((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+		GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
 		GlStateManager.scale(1.0F, -1.0F, -1.0F);
 
 		GlStateManager.rotate(f, 0.0F, 1.0F, 0.0F);
