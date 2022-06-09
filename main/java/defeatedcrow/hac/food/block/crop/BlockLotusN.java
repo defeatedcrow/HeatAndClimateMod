@@ -307,18 +307,23 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 				if (stage < 7) {
 					EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 					int next = stage;
-					if (stage == 6 && (!ModuleConfig.crop || season.id > 2)) {
-						// winter
+					if (ModuleConfig.crop) {
+						if (stage == 6 && season.id > 2) {
+							// winter
+							next = stage + 1;
+						} else if (stage == 5 && season.id > 1) {
+							// autumn
+							next = stage + 1;
+						} else if ((stage == 4 || stage == 3) && (season.id == 1 || season.id == 2)) {
+							// summer
+							next = stage + 1;
+						} else if (stage > 0 && season.id == 3) {
+							next = 7;
+						}
+					} else {
 						next = stage + 1;
-					} else if (stage == 5 && (!ModuleConfig.crop || season.id > 1)) {
-						// autumn
-						next = stage + 1;
-					} else if ((stage == 4 || stage == 3) && (!ModuleConfig.crop || season.id == 1 || season.id == 2)) {
-						// summer
-						next = stage + 1;
-					} else if (stage > 0 && season.id == 3) {
-						next = 7;
 					}
+
 					if (stage < 3) {
 						if (world.rand.nextInt(50) == 0 && (!ModuleConfig.crop || season.id < 3)) {
 							black = true;

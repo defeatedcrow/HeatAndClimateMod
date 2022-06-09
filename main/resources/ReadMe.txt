@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.9.3 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.9.4 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -2311,6 +2311,10 @@ Y = 色のキューブ
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
 
+○3.9.4
+　修正
+　　・EnableCropSeasonalityをオフにすると作物の苗が育たない
+
 ○3.9.3
 　変更
 　　・村人チェストにモデルを追加
@@ -2318,6 +2322,8 @@ Y = 色のキューブ
 　　・SUSホッパーのGUIボタンを操作するとクラッシュする
 　　・EX風車の描画範囲が小さい
 　　・村人チェスト、マグネットチェストの描画を修正
+　EX
+　　・zh_cn.lang更新(Pliosauroidea氏より)
 
 ○3.9.2
 　新規

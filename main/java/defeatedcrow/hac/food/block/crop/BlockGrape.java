@@ -305,18 +305,19 @@ public class BlockGrape extends BlockDC implements INameSuffix, IClimateCrop, IR
 			EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 			if (!DCState.getBool(state, GROUND)) {
 				int stage = DCState.getInt(state, DCState.STAGE4);
-				if (stage == 3) {
-					return false;
-				} else if (stage >= 1) {
-					if (!ModuleConfig.crop || (season != EnumSeason.SPRING && season != EnumSeason.WINTER)) {
+				if (ModuleConfig.crop) {
+					if (stage == 3 || season == EnumSeason.WINTER) {
+						return false;
+					} else if (stage > 0 && season != EnumSeason.SPRING) {
+						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
+						world.setBlockState(pos, newstate, 2);
+					} else {
 						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
 						world.setBlockState(pos, newstate, 2);
 					}
-				} else if (stage < 1) {
-					if (!ModuleConfig.crop || season != EnumSeason.WINTER) {
-						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
-						world.setBlockState(pos, newstate, 2);
-					}
+				} else {
+					IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
+					world.setBlockState(pos, newstate, 2);
 				}
 			}
 			if (!ModuleConfig.crop || season != EnumSeason.WINTER) {
