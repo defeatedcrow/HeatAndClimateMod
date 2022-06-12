@@ -42,16 +42,14 @@ public class MagicRecipeRegister {
 				"dyeBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 3,
-				0), new Object[] {
-						"gemVivianite",
-						"dyeBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 3, 0), new Object[] {
+				"gemVivianite",
+				"dyeBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1,
-				0), new Object[] {
-						"gemLapis",
-						"dyeBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1, 0), new Object[] {
+				"gemLapis",
+				"dyeBlue"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 3, 1), new Object[] {
@@ -59,10 +57,9 @@ public class MagicRecipeRegister {
 				"dyeGreen"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1,
-				1), new Object[] {
-						"gemSerpentine",
-						"dyeGreen"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1, 1), new Object[] {
+				"gemSerpentine",
+				"dyeGreen"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 3, 2), new Object[] {
@@ -70,16 +67,14 @@ public class MagicRecipeRegister {
 				"dyeRed"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 3,
-				2), new Object[] {
-						"gemChiastolite",
-						"dyeRed"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 3, 2), new Object[] {
+				"gemChiastolite",
+				"dyeRed"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1,
-				2), new Object[] {
-						"dustRedstone",
-						"dyeRed"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1, 2), new Object[] {
+				"dustRedstone",
+				"dyeRed"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 3, 3), new Object[] {
@@ -87,10 +82,9 @@ public class MagicRecipeRegister {
 				"dyeBlack"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1,
-				3), new Object[] {
-						"obsidian",
-						"dyeBlack"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1, 3), new Object[] {
+				"obsidian",
+				"dyeBlack"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 3, 4), new Object[] {
@@ -98,16 +92,14 @@ public class MagicRecipeRegister {
 				"dyeWhite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1,
-				4), new Object[] {
-						"gemQuartz",
-						"dyeWhite"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
+				"gemQuartz",
+				"dyeWhite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1,
-				4), new Object[] {
-						"gemSakura",
-						"dyeWhite"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
+				"gemSakura",
+				"dyeWhite"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
@@ -115,10 +107,9 @@ public class MagicRecipeRegister {
 				"dropBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1,
-				5), new Object[] {
-						"gemLarimar",
-						"dropBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
+				"gemLarimar",
+				"dropBlue"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
@@ -126,16 +117,14 @@ public class MagicRecipeRegister {
 				"dropGreen"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1,
-				6), new Object[] {
-						"gemEmerald",
-						"dropGreen"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
+				"gemEmerald",
+				"dropGreen"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1,
-				6), new Object[] {
-						"gemFluorite",
-						"dropGreen"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
+				"gemFluorite",
+				"dropGreen"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
@@ -143,16 +132,14 @@ public class MagicRecipeRegister {
 				"dropRed"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1,
-				7), new Object[] {
-						"gemAmethyst",
-						"dropRed"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
+				"gemAmethyst",
+				"dropRed"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1,
-				7), new Object[] {
-						new ItemStack(MainInit.oreItem, 1, 10),
-						"dropRed"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 3, new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
+				new ItemStack(MainInit.oreItem, 1, 10),
+				"dropRed"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 1, 8), new Object[] {
@@ -160,10 +147,9 @@ public class MagicRecipeRegister {
 				"dropBlack"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1,
-				8), new Object[] {
-						"gemIolite",
-						"dropBlack"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1, 8), new Object[] {
+				"gemIolite",
+				"dropBlack"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorDrop, 1, 9), new Object[] {
@@ -171,19 +157,17 @@ public class MagicRecipeRegister {
 				"dropWhite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1,
-				9), new Object[] {
-						"gemDiamond",
-						"dropWhite"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorDrop, 1, 9), new Object[] {
+				"gemDiamond",
+				"dropWhite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.medallion, 1,
-				0), new Object[] {
-						"extractBlue",
-						"extractGreen",
-						"extractRed",
-						"extractBlack",
-						"extractWhite"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.medallion, 1, 0), new Object[] {
+				"extractBlue",
+				"extractGreen",
+				"extractRed",
+				"extractBlack",
+				"extractWhite"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorCube, 1, 0), new Object[] {
@@ -192,11 +176,10 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1,
-				0), new Object[] {
-						"gemAquamarine",
-						"extractBlue",
-						"blockElestial"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1, 0), new Object[] {
+				"gemAquamarine",
+				"extractBlue",
+				"blockElestial"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorCube, 1, 1), new Object[] {
@@ -205,11 +188,10 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1,
-				1), new Object[] {
-						"gemTsavorite",
-						"extractGreen",
-						"blockElestial"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1, 1), new Object[] {
+				"gemTsavorite",
+				"extractGreen",
+				"blockElestial"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorCube, 1, 2), new Object[] {
@@ -218,11 +200,10 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1,
-				2), new Object[] {
-						"gemRuby",
-						"extractRed",
-						"blockElestial"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1, 2), new Object[] {
+				"gemRuby",
+				"extractRed",
+				"blockElestial"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorCube, 1, 3), new Object[] {
@@ -231,11 +212,10 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1,
-				3), new Object[] {
-						"gemAlexandrite",
-						"extractBlack",
-						"blockElestial"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1, 3), new Object[] {
+				"gemAlexandrite",
+				"extractBlack",
+				"blockElestial"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorCube, 1, 4), new Object[] {
@@ -244,11 +224,10 @@ public class MagicRecipeRegister {
 				"blockElestial"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1,
-				4), new Object[] {
-						"gemTopaz",
-						"extractWhite",
-						"blockElestial"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.colorCube, 1, 4), new Object[] {
+				"gemTopaz",
+				"extractWhite",
+				"blockElestial"
 		});
 
 		// ring
@@ -314,69 +293,64 @@ public class MagicRecipeRegister {
 		});
 
 		// pendant
-		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1,
-				0), new Object[] {
-						"ZZZ",
-						" Y ",
-						" X ",
-						'X',
-						"dustCrystal",
-						'Y',
-						"extractBlue",
-						'Z',
-						"ingotGold"
+		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1, 0), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractBlue",
+				'Z',
+				"ingotGold"
 		});
 
-		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1,
-				1), new Object[] {
-						"ZZZ",
-						" Y ",
-						" X ",
-						'X',
-						"dustCrystal",
-						'Y',
-						"extractGreen",
-						'Z',
-						"ingotGold"
+		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1, 1), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractGreen",
+				'Z',
+				"ingotGold"
 		});
 
-		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1,
-				2), new Object[] {
-						"ZZZ",
-						" Y ",
-						" X ",
-						'X',
-						"dustCrystal",
-						'Y',
-						"extractRed",
-						'Z',
-						"ingotGold"
+		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1, 2), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractRed",
+				'Z',
+				"ingotGold"
 		});
 
-		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1,
-				3), new Object[] {
-						"ZZZ",
-						" Y ",
-						" X ",
-						'X',
-						"dustCrystal",
-						'Y',
-						"extractBlack",
-						'Z',
-						"ingotGold"
+		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1, 3), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractBlack",
+				'Z',
+				"ingotGold"
 		});
 
-		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1,
-				4), new Object[] {
-						"ZZZ",
-						" Y ",
-						" X ",
-						'X',
-						"dustCrystal",
-						'Y',
-						"extractWhite",
-						'Z',
-						"ingotGold"
+		DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.colorPendant2, 1, 4), new Object[] {
+				"ZZZ",
+				" Y ",
+				" X ",
+				'X',
+				"dustCrystal",
+				'Y',
+				"extractWhite",
+				'Z',
+				"ingotGold"
 		});
 
 		// another
@@ -391,741 +365,703 @@ public class MagicRecipeRegister {
 				"gunpowder"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				0), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"dropBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 0), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"dropBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				1), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"dropGreen"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 1), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"dropGreen"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				2), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"dropRed"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 2), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"dropRed"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				3), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"dropBlack"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 3), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"dropBlack"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				4), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"dropWhite"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 4), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"dropWhite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				5), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"extractBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 5), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				6), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"extractGreen"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 6), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractGreen"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				7), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"extractRed"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 7), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractRed"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				8), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"extractBlack"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 8), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractBlack"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3,
-				9), new Object[] {
-						"paper",
-						"paper",
-						"paper",
-						"extractWhite"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.magicCard, 3, 9), new Object[] {
+				"paper",
+				"paper",
+				"paper",
+				"extractWhite"
 		});
 
 		// advanced
 		if (ModuleConfig.magic_advanced) {
 
 			// ring
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1,
-					0), new Object[] {
-							"X",
-							"Y",
-							"Z",
-							'X',
-							"dustCrystal",
-							'Y',
-							"dropBlue",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1, 0), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"dustCrystal",
+					'Y',
+					"dropBlue",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1,
-					1), new Object[] {
-							"X",
-							"Y",
-							"Z",
-							'X',
-							"dustCrystal",
-							'Y',
-							"dropGreen",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1, 1), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"dustCrystal",
+					'Y',
+					"dropGreen",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1,
-					2), new Object[] {
-							"X",
-							"Y",
-							"Z",
-							'X',
-							"dustCrystal",
-							'Y',
-							"dropRed",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1, 2), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"dustCrystal",
+					'Y',
+					"dropRed",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1,
-					3), new Object[] {
-							"X",
-							"Y",
-							"Z",
-							'X',
-							"dustCrystal",
-							'Y',
-							"dropBlack",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1, 3), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"dustCrystal",
+					'Y',
+					"dropBlack",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1,
-					4), new Object[] {
-							"X",
-							"Y",
-							"Z",
-							'X',
-							"dustCrystal",
-							'Y',
-							"dropWhite",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorRing, 1, 4), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"dustCrystal",
+					'Y',
+					"dropWhite",
+					'Z',
+					"ingotSilver"
 			});
 
 			// pendant
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant,
-					1, 0), new Object[] {
-							"ZZZ",
-							" Y ",
-							" X ",
-							'X',
-							"dustCrystal",
-							'Y',
-							"extractBlue",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant, 1, 0), new Object[] {
+					"ZZZ",
+					" Y ",
+					" X ",
+					'X',
+					"dustCrystal",
+					'Y',
+					"extractBlue",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant,
-					1, 1), new Object[] {
-							"ZZZ",
-							" Y ",
-							" X ",
-							'X',
-							"dustCrystal",
-							'Y',
-							"extractGreen",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant, 1, 1), new Object[] {
+					"ZZZ",
+					" Y ",
+					" X ",
+					'X',
+					"dustCrystal",
+					'Y',
+					"extractGreen",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant,
-					1, 2), new Object[] {
-							"ZZZ",
-							" Y ",
-							" X ",
-							'X',
-							"dustCrystal",
-							'Y',
-							"extractRed",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant, 1, 2), new Object[] {
+					"ZZZ",
+					" Y ",
+					" X ",
+					'X',
+					"dustCrystal",
+					'Y',
+					"extractRed",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant,
-					1, 3), new Object[] {
-							"ZZZ",
-							" Y ",
-							" X ",
-							'X',
-							"dustCrystal",
-							'Y',
-							"extractBlack",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant, 1, 3), new Object[] {
+					"ZZZ",
+					" Y ",
+					" X ",
+					'X',
+					"dustCrystal",
+					'Y',
+					"extractBlack",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant,
-					1, 4), new Object[] {
-							"ZZZ",
-							" Y ",
-							" X ",
-							'X',
-							"dustCrystal",
-							'Y',
-							"extractWhite",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorPendant, 1, 4), new Object[] {
+					"ZZZ",
+					" Y ",
+					" X ",
+					'X',
+					"dustCrystal",
+					'Y',
+					"extractWhite",
+					'Z',
+					"ingotSilver"
 			});
 
 			// badge
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1,
-					0), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							"gemDiamond",
-							'Y',
-							"cubeBlue",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 0), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					"gemDiamond",
+					'Y',
+					"cubeBlue",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1,
-					1), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							"gemDiamond",
-							'Y',
-							"cubeGreen",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 1), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					"gemDiamond",
+					'Y',
+					"cubeGreen",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1,
-					2), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							"gemDiamond",
-							'Y',
-							"cubeRed",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 2), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					"gemDiamond",
+					'Y',
+					"cubeRed",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1,
-					3), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							"gemDiamond",
-							'Y',
-							"cubeBlack",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 3), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					"gemDiamond",
+					'Y',
+					"cubeBlack",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1,
-					4), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							"gemDiamond",
-							'Y',
-							"cubeWhite",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorBadge, 1, 4), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					"gemDiamond",
+					'Y',
+					"cubeWhite",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge,
-					1, 0), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							new ItemStack(MainInit.gems_white, 1, 4),
-							'Y',
-							"cubeBlue",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 0), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					new ItemStack(MainInit.gems_white, 1, 4),
+					'Y',
+					"cubeBlue",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge,
-					1, 1), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							new ItemStack(MainInit.gems_white, 1, 4),
-							'Y',
-							"cubeGreen",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 1), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					new ItemStack(MainInit.gems_white, 1, 4),
+					'Y',
+					"cubeGreen",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge,
-					1, 2), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							new ItemStack(MainInit.gems_white, 1, 4),
-							'Y',
-							"cubeRed",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 2), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					new ItemStack(MainInit.gems_white, 1, 4),
+					'Y',
+					"cubeRed",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge,
-					1, 3), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							new ItemStack(MainInit.gems_white, 1, 4),
-							'Y',
-							"cubeBlack",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 3), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					new ItemStack(MainInit.gems_white, 1, 4),
+					'Y',
+					"cubeBlack",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge,
-					1, 4), new Object[] {
-							" X ",
-							"ZYZ",
-							" Z ",
-							'X',
-							new ItemStack(MainInit.gems_white, 1, 4),
-							'Y',
-							"cubeWhite",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.colorBadge, 1, 4), new Object[] {
+					" X ",
+					"ZYZ",
+					" Z ",
+					'X',
+					new ItemStack(MainInit.gems_white, 1, 4),
+					'Y',
+					"cubeWhite",
+					'Z',
+					"ingotSilver"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet,
-					1, 0), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotSteel",
-							'Y',
-							"extractBlue",
-							'Z',
-							"extractBlack",
-							'W',
-							"feather"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet, 1, 0), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotSteel",
+					'Y',
+					"extractBlue",
+					'Z',
+					"extractBlack",
+					'W',
+					"feather"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet,
-					1, 1), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotToolSteel",
-							'Y',
-							"extractGreen",
-							'Z',
-							"extractWhite",
-							'W',
-							new ItemStack(Items.GLOWSTONE_DUST)
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet, 1, 1), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotToolSteel",
+					'Y',
+					"extractGreen",
+					'Z',
+					"extractWhite",
+					'W',
+					new ItemStack(Items.GLOWSTONE_DUST)
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet,
-					1, 2), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotSteel",
-							'Y',
-							"extractRed",
-							'Z',
-							"extractGreen",
-							'W',
-							"leather"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet, 1, 2), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotSteel",
+					'Y',
+					"extractRed",
+					'Z',
+					"extractGreen",
+					'W',
+					"leather"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet,
-					1, 3), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotTitaniumAlloy",
-							'Y',
-							"extractBlack",
-							'Z',
-							"extractRed",
-							'W',
-							new ItemStack(Items.GHAST_TEAR)
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet, 1, 3), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotTitaniumAlloy",
+					'Y',
+					"extractBlack",
+					'Z',
+					"extractRed",
+					'W',
+					new ItemStack(Items.GHAST_TEAR)
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet,
-					1, 4), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotSilver",
-							'Y',
-							"extractWhite",
-							'Z',
-							"extractBlue",
-							'W',
-							"blockWool"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet, 1, 4), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotSilver",
+					'Y',
+					"extractWhite",
+					'Z',
+					"extractBlue",
+					'W',
+					"blockWool"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
-					MagicInit.colorGauntlet2,
-					1, 0), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotNickelsilver",
-							'Y',
-							"cubeGreen",
-							'Z',
-							"cubeBlue",
-							'W',
-							new ItemStack(Items.PRISMARINE_SHARD)
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet2, 1, 0), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotNickelsilver",
+					'Y',
+					"cubeGreen",
+					'Z',
+					"cubeBlue",
+					'W',
+					new ItemStack(Items.PRISMARINE_SHARD)
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
-					MagicInit.colorGauntlet2,
-					1, 1), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotBismuth",
-							'Y',
-							"cubeBlack",
-							'Z',
-							"cubeGreen",
-							'W',
-							"listAllmushroom"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet2, 1, 1), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotBismuth",
+					'Y',
+					"cubeBlack",
+					'Z',
+					"cubeGreen",
+					'W',
+					"listAllmushroom"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
-					MagicInit.colorGauntlet2,
-					1, 2), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotToolSteel",
-							'Y',
-							"cubeBlue",
-							'Z',
-							"cubeRed",
-							'W',
-							"gearSteel"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet2, 1, 2), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotToolSteel",
+					'Y',
+					"cubeBlue",
+					'Z',
+					"cubeRed",
+					'W',
+					"gearSteel"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
-					MagicInit.colorGauntlet2,
-					1, 3), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotSilver",
-							'Y',
-							"cubeWhite",
-							'Z',
-							"cubeBlack",
-							'W',
-							new ItemStack(Items.ENDER_PEARL)
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet2, 1, 3), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotSilver",
+					'Y',
+					"cubeWhite",
+					'Z',
+					"cubeBlack",
+					'W',
+					new ItemStack(Items.ENDER_PEARL)
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(
-					MagicInit.colorGauntlet2,
-					1, 4), new Object[] {
-							"XX",
-							"YZ",
-							"WW",
-							'X',
-							"ingotGold",
-							'Y',
-							"cubeRed",
-							'Z',
-							"cubeWhite",
-							'W',
-							"feather"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.colorGauntlet2, 1, 4), new Object[] {
+					"XX",
+					"YZ",
+					"WW",
+					'X',
+					"ingotGold",
+					'Y',
+					"cubeRed",
+					'Z',
+					"cubeWhite",
+					'W',
+					"feather"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureBlue,
-					1, 0), new Object[] {
-							"XYZ",
-							'X',
-							"cubeBlue",
-							'Y',
-							new ItemStack(Items.PAINTING),
-							'Z',
-							"cubeRed"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureBlue, 1, 0), new Object[] {
+					"XYZ",
+					'X',
+					"cubeBlue",
+					'Y',
+					new ItemStack(Items.PAINTING),
+					'Z',
+					"cubeRed"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureRed, 1,
-					0), new Object[] {
-							"XYZ",
-							'X',
-							"cubeRed",
-							'Y',
-							new ItemStack(Items.PAINTING),
-							'Z',
-							"cubeWhite"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureRed, 1, 0), new Object[] {
+					"XYZ",
+					'X',
+					"cubeRed",
+					'Y',
+					new ItemStack(Items.PAINTING),
+					'Z',
+					"cubeWhite"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureGreen,
-					1, 0), new Object[] {
-							"XYZ",
-							'X',
-							"cubeGreen",
-							'Y',
-							new ItemStack(Items.PAINTING),
-							'Z',
-							"cubeBlue"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureGreen, 1, 0), new Object[] {
+					"XYZ",
+					'X',
+					"cubeGreen",
+					'Y',
+					new ItemStack(Items.PAINTING),
+					'Z',
+					"cubeBlue"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureBlack,
-					1, 0), new Object[] {
-							"XYZ",
-							'X',
-							"cubeBlack",
-							'Y',
-							new ItemStack(Items.PAINTING),
-							'Z',
-							"cubeGreen"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureBlack, 1, 0), new Object[] {
+					"XYZ",
+					'X',
+					"cubeBlack",
+					'Y',
+					new ItemStack(Items.PAINTING),
+					'Z',
+					"cubeGreen"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureWhite,
-					1, 0), new Object[] {
-							"XYZ",
-							'X',
-							"cubeWhite",
-							'Y',
-							new ItemStack(Items.PAINTING),
-							'Z',
-							"cubeBlack"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.pictureWhite, 1, 0), new Object[] {
+					"XYZ",
+					'X',
+					"cubeWhite",
+					'Y',
+					new ItemStack(Items.PAINTING),
+					'Z',
+					"cubeBlack"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard,
-					3, 10), new Object[] {
-							"paper",
-							"paper",
-							"paper",
-							"cubeBlue"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard, 3, 10), new Object[] {
+					"paper",
+					"paper",
+					"paper",
+					"cubeBlue"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard,
-					3, 11), new Object[] {
-							"paper",
-							"paper",
-							"paper",
-							"cubeGreen"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard, 3, 11), new Object[] {
+					"paper",
+					"paper",
+					"paper",
+					"cubeGreen"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard,
-					3, 12), new Object[] {
-							"paper",
-							"paper",
-							"paper",
-							"cubeRed"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard, 3, 12), new Object[] {
+					"paper",
+					"paper",
+					"paper",
+					"cubeRed"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard,
-					3, 13), new Object[] {
-							"paper",
-							"paper",
-							"paper",
-							"cubeBlack"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard, 3, 13), new Object[] {
+					"paper",
+					"paper",
+					"paper",
+					"cubeBlack"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard,
-					3, 14), new Object[] {
-							"paper",
-							"paper",
-							"paper",
-							"cubeWhite"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard, 3, 14), new Object[] {
+					"paper",
+					"paper",
+					"paper",
+					"cubeWhite"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2,
-					2, 0), new Object[] {
-							"paper",
-							"paper",
-							"extractBlue",
-							"extractGreen"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 0), new Object[] {
+					"paper",
+					"paper",
+					"extractBlue",
+					"extractGreen"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2,
-					2, 1), new Object[] {
-							"paper",
-							"paper",
-							"extractGreen",
-							"extractBlack"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 1), new Object[] {
+					"paper",
+					"paper",
+					"extractGreen",
+					"extractBlack"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2,
-					2, 2), new Object[] {
-							"paper",
-							"paper",
-							"extractRed",
-							"extractBlue"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 2), new Object[] {
+					"paper",
+					"paper",
+					"extractRed",
+					"extractBlue"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2,
-					2, 3), new Object[] {
-							"paper",
-							"paper",
-							"extractBlack",
-							"extractWhite"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 3), new Object[] {
+					"paper",
+					"paper",
+					"extractBlack",
+					"extractWhite"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2,
-					2, 4), new Object[] {
-							"paper",
-							"paper",
-							"extractWhite",
-							"extractRed"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard2, 2, 4), new Object[] {
+					"paper",
+					"paper",
+					"extractWhite",
+					"extractRed"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3,
-					2, 0), new Object[] {
-							"paper",
-							"paper",
-							"dropBlue",
-							"dropBlack"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 0), new Object[] {
+					"paper",
+					"paper",
+					"dropBlue",
+					"dropBlack"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3,
-					2, 1), new Object[] {
-							"paper",
-							"paper",
-							"dropGreen",
-							"dropWhite"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 1), new Object[] {
+					"paper",
+					"paper",
+					"dropGreen",
+					"dropWhite"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3,
-					2, 2), new Object[] {
-							"paper",
-							"paper",
-							"dropRed",
-							"dropGreen"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 2), new Object[] {
+					"paper",
+					"paper",
+					"dropRed",
+					"dropGreen"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3,
-					2, 3), new Object[] {
-							"paper",
-							"paper",
-							"dropBlack",
-							"dropRed"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 3), new Object[] {
+					"paper",
+					"paper",
+					"dropBlack",
+					"dropRed"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3,
-					2, 4), new Object[] {
-							"paper",
-							"paper",
-							"dropWhite",
-							"dropBlue"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard3, 2, 4), new Object[] {
+					"paper",
+					"paper",
+					"dropWhite",
+					"dropBlue"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage,
-					1, 0), new Object[] {
-							"XYX",
-							"YZY",
-							"XYX",
-							'X',
-							"ingotSilver",
-							'Y',
-							new ItemStack(MainInit.selenite, 1, 0),
-							'Z',
-							"medallionColor"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard4, 2, 0), new Object[] {
+					"paper",
+					"paper",
+					"cubeGreen",
+					"cubeBlue"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(
-					MagicInit.timeCage,
-					1, 0), new Object[] {
-							new ItemStack(MagicInit.timeCage, 1, 32767)
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard4, 2, 1), new Object[] {
+					"paper",
+					"paper",
+					"cubeGreen",
+					"cubeGreen"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage,
-					1, 1), new Object[] {
-							new ItemStack(MagicInit.timeCage, 1, 0),
-							"dyeGreen"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard4, 2, 2), new Object[] {
+					"paper",
+					"paper",
+					"cubeGreen",
+					"cubeRed"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage,
-					1, 2), new Object[] {
-							new ItemStack(MagicInit.timeCage, 1, 0),
-							"dyeRed"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard4, 2, 3), new Object[] {
+					"paper",
+					"paper",
+					"cubeGreen",
+					"cubeBlack"
 			});
 
-			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage,
-					1, 3), new Object[] {
-							new ItemStack(MagicInit.timeCage, 1, 0),
-							"dyeWhite"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.magicCard4, 2, 4), new Object[] {
+					"paper",
+					"paper",
+					"cubeGreen",
+					"cubeWhite"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.gemBootsBird,
-					1, 0), new Object[] {
-							"XYX",
-							"XZX",
-							'X',
-							"stringMagic",
-							'Y',
-							"cubeWhite",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage, 1, 0), new Object[] {
+					"XYX",
+					"YZY",
+					"XYX",
+					'X',
+					"ingotSilver",
+					'Y',
+					new ItemStack(MainInit.selenite, 1, 0),
+					'Z',
+					"medallionColor"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.gemBootsFish,
-					1, 0), new Object[] {
-							"XYX",
-							"XZX",
-							'X',
-							"stringMagic",
-							'Y',
-							"cubeBlue",
-							'Z',
-							"ingotSilver"
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", 2, new ItemStack(MagicInit.timeCage, 1, 0), new Object[] {
+					new ItemStack(MagicInit.timeCage, 1, 32767)
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage, 1, 1), new Object[] {
+					new ItemStack(MagicInit.timeCage, 1, 0),
+					"dyeGreen"
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage, 1, 2), new Object[] {
+					new ItemStack(MagicInit.timeCage, 1, 0),
+					"dyeRed"
+			});
+
+			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.timeCage, 1, 3), new Object[] {
+					new ItemStack(MagicInit.timeCage, 1, 0),
+					"dyeWhite"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.gemBootsBird, 1, 0), new Object[] {
+					"XYX",
+					"XZX",
+					'X',
+					"stringMagic",
+					'Y',
+					"cubeWhite",
+					'Z',
+					"ingotSilver"
+			});
+
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC_ADVANCED, "magic_advanced", new ItemStack(MagicInit.gemBootsFish, 1, 0), new Object[] {
+					"XYX",
+					"XZX",
+					'X',
+					"stringMagic",
+					'Y',
+					"cubeBlue",
+					'Z',
+					"ingotSilver"
 			});
 		}
 
@@ -1179,26 +1115,24 @@ public class MagicRecipeRegister {
 		});
 
 		if (ModuleConfig.food) {
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.lotusCandle, 1,
-					0), new Object[] {
-							"XXX",
-							"X X",
-							"XXX",
-							'X',
-							new ItemStack(FoodInit.petals, 1, 0)
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.lotusCandle, 1, 0), new Object[] {
+					"XXX",
+					"X X",
+					"XXX",
+					'X',
+					new ItemStack(FoodInit.petals, 1, 0)
 			});
 
 			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(FoodInit.petals, 8, 0), new Object[] {
 					new ItemStack(MagicInit.lotusCandle, 1, 0)
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.lotusCandleBlack, 1,
-					0), new Object[] {
-							"XXX",
-							"X X",
-							"XXX",
-							'X',
-							new ItemStack(FoodInit.petals, 1, 1)
+			DCRecipe.jsonShapedRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.lotusCandleBlack, 1, 0), new Object[] {
+					"XXX",
+					"X X",
+					"XXX",
+					'X',
+					new ItemStack(FoodInit.petals, 1, 1)
 			});
 
 			DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(FoodInit.petals, 8, 1), new Object[] {
@@ -1207,28 +1141,24 @@ public class MagicRecipeRegister {
 
 		}
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.coldLamp, 1,
-				0), new Object[] {
-						new ItemStack(MainInit.oilLamp, 1, 0),
-						"extractBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.coldLamp, 1, 0), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 0),
+				"extractBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.coldLamp, 1,
-				1), new Object[] {
-						new ItemStack(MainInit.oilLamp, 1, 1),
-						"extractBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.coldLamp, 1, 1), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 1),
+				"extractBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.coldLamp, 1,
-				2), new Object[] {
-						new ItemStack(MainInit.oilLamp, 1, 2),
-						"extractBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.coldLamp, 1, 2), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 2),
+				"extractBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.coldLamp, 1,
-				3), new Object[] {
-						new ItemStack(MainInit.oilLamp, 1, 3),
-						"extractBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 2, new ItemStack(MagicInit.coldLamp, 1, 3), new Object[] {
+				new ItemStack(MainInit.oilLamp, 1, 3),
+				"extractBlue"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MagicInit.coldLamp, 1, 0), new Object[] {
@@ -1257,64 +1187,54 @@ public class MagicRecipeRegister {
 		// climate
 		ClimateAPI.registerBlock.registerHeatBlock(MagicInit.coldLamp, 32767, DCHeatTier.COOL);
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				0), new Object[] {
-						"petalLotus",
-						"dyeBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 0), new Object[] {
+				"petalLotus",
+				"dyeBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				1), new Object[] {
-						"petalLotus",
-						"dyeGreen"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 1), new Object[] {
+				"petalLotus",
+				"dyeGreen"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				2), new Object[] {
-						"petalLotus",
-						"dyeRed"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 2), new Object[] {
+				"petalLotus",
+				"dyeRed"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				3), new Object[] {
-						"petalLotus",
-						"dyeBlack"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 3), new Object[] {
+				"petalLotus",
+				"dyeBlack"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				4), new Object[] {
-						"petalLotus",
-						"dyeWhite"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 4), new Object[] {
+				"petalLotus",
+				"dyeWhite"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				5), new Object[] {
-						"petalBlackLotus",
-						"dyeBlue"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 5), new Object[] {
+				"petalBlackLotus",
+				"dyeBlue"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				6), new Object[] {
-						"petalBlackLotus",
-						"dyeGreen"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 6), new Object[] {
+				"petalBlackLotus",
+				"dyeGreen"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				7), new Object[] {
-						"petalBlackLotus",
-						"dyeRed"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 7), new Object[] {
+				"petalBlackLotus",
+				"dyeRed"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				8), new Object[] {
-						"petalBlackLotus",
-						"dyeBlack"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 8), new Object[] {
+				"petalBlackLotus",
+				"dyeBlack"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1,
-				9), new Object[] {
-						"petalBlackLotus",
-						"dyeWhite"
+		DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", 4, new ItemStack(MagicInit.colorDrop, 1, 9), new Object[] {
+				"petalBlackLotus",
+				"dyeWhite"
 		});
 
 		// DCRecipe.jsonShapelessRecipe(HaCModule.MAGIC, "magic", new ItemStack(MainInit.oreItem, 1, 0), new Object[] {

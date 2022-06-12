@@ -260,6 +260,7 @@ public class MainInit {
 	public static Block thermometer;
 	public static Block windvane;
 	public static Block pail;
+	public static Block igniter;
 
 	public static Block geyser;
 

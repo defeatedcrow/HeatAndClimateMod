@@ -157,6 +157,7 @@ public class JsonRegister {
 		MAIN_INSTANCE.regStateAndBlock(MainInit.stevenson_screen, "dcs_climate", "dcs_device_stevenson_screen", "machine", 0, true);
 		MAIN_INSTANCE.regStateAndBlock(MainInit.pail, "dcs_climate", "dcs_device_pail", "machine", 3, false);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.geyser, "dcs_climate", "dcs_device_geyser_stone", "device", 0);
+		MAIN_INSTANCE.regStateAndBlock(MainInit.igniter, "dcs_climate", "dcs_device_igniter", "device", 0, false);
 		MAIN_INSTANCE.regSimpleBlock(MainInit.swedishTorch, "dcs_climate", "dcs_device_swedish_torch", "device", 15);
 		ModelLoader.setCustomStateMapper(MainInit.roofStraw, (new StateMap.Builder()).ignore(BlockStairs.HALF).build());
 		// selenite glass

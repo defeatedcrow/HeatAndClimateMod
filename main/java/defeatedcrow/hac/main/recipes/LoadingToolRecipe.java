@@ -388,6 +388,15 @@ public class LoadingToolRecipe {
 				"dustTin"
 		});
 
+		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main", new ItemStack(MainInit.igniter, 1, 0), new Object[] {
+				"X",
+				"Y",
+				'X',
+				new ItemStack(Items.FLINT_AND_STEEL, 1, 0),
+				'Y',
+				"gearBrass"
+		});
+
 		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main", new ItemStack(MainInit.repairPutty, 1, 0), new Object[] {
 				new ItemStack(Items.SLIME_BALL, 1, 0),
 				"dustIron"
@@ -398,10 +407,9 @@ public class LoadingToolRecipe {
 				"dustGarnet"
 		});
 
-		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main", 2, new ItemStack(MainInit.repairPutty, 1,
-				1), new Object[] {
-						"dustClay",
-						"dustGarnet"
+		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main", 2, new ItemStack(MainInit.repairPutty, 1, 1), new Object[] {
+				"dustClay",
+				"dustGarnet"
 		});
 
 		DCRecipe.jsonShapelessRecipe(HaCModule.CORE, "main", new ItemStack(MainInit.tinder, 1, 0), new Object[] {
@@ -435,19 +443,18 @@ public class LoadingToolRecipe {
 				"string"
 		});
 
-		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main", new ItemStack(MainInit.colorChanger, 1,
-				0), new Object[] {
-						"XYZ",
-						" W ",
-						" W ",
-						'X',
-						"gemChalcedonyRed",
-						'Y',
-						"gemChalcedonyBlue",
-						'Z',
-						"gemChalcedonyWhite",
-						'W',
-						"ingotSteel"
+		DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main", new ItemStack(MainInit.colorChanger, 1, 0), new Object[] {
+				"XYZ",
+				" W ",
+				" W ",
+				'X',
+				"gemChalcedonyRed",
+				'Y',
+				"gemChalcedonyBlue",
+				'Z',
+				"gemChalcedonyWhite",
+				'W',
+				"ingotSteel"
 		});
 
 		if (ModuleConfig.machine) {
@@ -485,17 +492,16 @@ public class LoadingToolRecipe {
 					"ingotSteel"
 			});
 
-			DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main", 2, new ItemStack(MainInit.entityScope, 1,
-					0), new Object[] {
-							"X",
-							"Y",
-							"Z",
-							'X',
-							"gemMalachite",
-							'Y',
-							new ItemStack(DCInit.climate_checker, 1, 0),
-							'Z',
-							"ingotSteel"
+			DCRecipe.jsonShapedRecipe(HaCModule.CORE, "main", 2, new ItemStack(MainInit.entityScope, 1, 0), new Object[] {
+					"X",
+					"Y",
+					"Z",
+					'X',
+					"gemMalachite",
+					'Y',
+					new ItemStack(DCInit.climate_checker, 1, 0),
+					'Z',
+					"ingotSteel"
 			});
 		}
 	}

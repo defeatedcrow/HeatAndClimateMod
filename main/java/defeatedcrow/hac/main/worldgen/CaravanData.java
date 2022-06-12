@@ -1,5 +1,6 @@
 package defeatedcrow.hac.main.worldgen;
 
+import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.BiomeCatchDC;
 import defeatedcrow.hac.main.MainInit;
 import net.minecraft.block.Block;
@@ -116,6 +117,32 @@ public class CaravanData {
 			}
 
 			int height = getCoreHeight(cx2, cz2, world);
+
+			if (height > 0) {
+				int[] roomType = CaravanGenPos.getRoomNum(cx2, cz2, world);
+				int room = roomType[t];
+				int gate = roomType[4] * 2 + 1;
+				boolean isGate = num == gate;
+				return new CaravanData(CaravanType.UNINIT, num, room, height, isGate);
+			}
+		}
+		return new CaravanData(CaravanType.NULL, -1, -1, 1, false);
+	}
+
+	public static CaravanData getForcedData(int cx, int cz, int height, World world, int cx2, int cz2) {
+		if (world == null) {
+			return new CaravanData(CaravanType.NULL, -1, -1, 1, false);
+		} else {
+			int n1 = 1 - cx + cx2;
+			int n2 = 1 - cz + cz2;
+			int num = n1 + (n2 * 3);
+			DCLogger.debugInfoLog("Caravanserai Forced Core" + " : " + num);
+			if (num < 0) {
+				return new CaravanData(CaravanType.NULL, -1, -1, 1, false);
+			}
+			int t = num / 2;
+			int nx = (num % 3) - 1;
+			int nz = (num / 3) - 1;
 
 			if (height > 0) {
 				int[] roomType = CaravanGenPos.getRoomNum(cx2, cz2, world);

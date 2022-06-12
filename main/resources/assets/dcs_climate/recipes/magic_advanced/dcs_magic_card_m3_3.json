@@ -1,0 +1,32 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "paper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "paper"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cubeGreen"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "cubeBlack"
+  }
+ ],
+ "result": {
+  "item": "dcs_climate:dcs_magic_card_m3",
+  "count": 2,
+  "data": 3
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "magic_advanced"
+  }
+ ]
+}

@@ -434,6 +434,7 @@ public class MachineInitRegister {
 		}
 
 		// climate
+		ClimateMain.machine.addSubItem(MainInit.igniter);
 		ClimateMain.machine.addSubItem(MainInit.swedishTorch);
 		ClimateMain.machine.addSubItem(MainInit.shitirin);
 		ClimateMain.machine.addSubItem(MainInit.firestand);

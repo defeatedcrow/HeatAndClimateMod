@@ -18,30 +18,42 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenHotspring implements IWorldGenerator {
 
+	private boolean isForced = false;
+
 	public WorldGenHotspring() {}
 
-	public boolean generate(World world, Random rand, BlockPos pos) {
+	public WorldGenHotspring setForced() {
+		isForced = true;
+		return this;
+	}
 
-		// 山に埋まった生成はしない
-		if (!world.isAirBlock(pos)) {
-			return false;
+	public boolean generate(World world, Random rand, BlockPos pos, int range) {
+
+		if (!isForced) {
+			// 山に埋まった生成はしない
+			if (!world.isAirBlock(pos)) {
+				return false;
+			}
+
+			while (pos.getY() > 55) {
+				pos = pos.down();
+				if (!world.isAirBlock(pos) && (world.getBlockState(pos).getMaterial() == Material.ROCK || world
+						.getBlockState(pos).getMaterial() == Material.GROUND))
+					break;
+			}
+			if (pos.getY() < 56) {
+				// 地表にのみ生成
+				return false;
+			}
 		}
 
-		while (pos.getY() > 55) {
-			pos = pos.down();
-			if (!world.isAirBlock(pos) && (world.getBlockState(pos).getMaterial() == Material.ROCK || world
-					.getBlockState(pos).getMaterial() == Material.GROUND))
-				break;
-		}
-
-		if (pos.getY() < 56) {
-			// 地表にのみ生成
+		if (pos.getY() < 5 || pos.getY() > 250) {
 			return false;
 		} else {
 			Biome b = world.getBiome(pos);
 			pos.down(2);
 			// DCLogger.debugInfoLog("hotspring: " + pos.toString());
-			int r = 5 + rand.nextInt(4);
+			int r = range + rand.nextInt(4);
 			double r1 = r - 1D;
 			double r2 = r - 3D;
 			for (BlockPos p : BlockPos.getAllInBox(pos.add(-r, -4, -r), pos.add(r, 2, r))) {
@@ -175,7 +187,7 @@ public class WorldGenHotspring implements IWorldGenerator {
 			return;
 		}
 
-		this.generate(world, random, pos);
+		this.generate(world, random, pos, 5);
 	}
 
 	private static final BlockSet AIR = new BlockSet(Blocks.AIR, 0);

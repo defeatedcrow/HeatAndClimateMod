@@ -13,15 +13,28 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class MazaiLakeGen implements IWorldGenerator {
 
+	private boolean isForced = false;
+
 	public MazaiLakeGen() {}
+
+	public MazaiLakeGen setForced() {
+		isForced = true;
+		return this;
+	}
 
 	public boolean generate(World world, Random rand, BlockPos pos) {
 
-		while (pos.getY() > 10 && (world.isAirBlock(pos) || world.getBlockState(pos).getMaterial() == Material.LAVA)) {
-			pos = pos.down();
+		if (!isForced) {
+			while (pos.getY() > 10 && (world.isAirBlock(pos) || world.getBlockState(pos).getMaterial() == Material.LAVA)) {
+				pos = pos.down();
+			}
+			if (pos.getY() <= 10) {
+				// 地表にのみ生成
+				return false;
+			}
 		}
 
-		if (pos.getY() <= 10) {
+		if (pos.getY() < 5 || pos.getY() > 250) {
 			return false;
 		} else {
 			// 底
