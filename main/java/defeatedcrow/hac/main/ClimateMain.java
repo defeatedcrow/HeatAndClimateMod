@@ -139,6 +139,7 @@ public class ClimateMain {
 	public void init(FMLInitializationEvent event) {
 
 		// config
+		MainCoreConfig.INSTANCE.loadCurrencyItem();
 		MainCoreConfig.INSTANCE.loadBlockNames();
 		WorldGenConfig.INSTANCE.loadBlockNames();
 		WorldGenConfig.INSTANCE.loadGeyserGas();
