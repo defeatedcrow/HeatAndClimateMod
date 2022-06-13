@@ -57,7 +57,7 @@ public class CaravanGenEvent {
 			if (!event.isHasVillageGenerated() && CaravanGenPos.isSuitableChunk(event.getChunkX(), event
 					.getChunkZ(), event.getWorld()) && CaravanGenPos.getCaravanPartNum(event.getChunkX(), event
 							.getChunkZ(), event.getWorld()) > -1) {
-				// DCLogger.infoLog("caravan gen: x " + event.getChunkX() + ", z " + event.getChunkZ());
+				DCLogger.debugInfoLog("caravan gen: x " + event.getChunkX() + ", z " + event.getChunkZ());
 				WorldGenCaravanBase wgn = new WorldGenCaravanBase();
 				wgn.generate(event.getRand(), event.getChunkX(), event.getChunkZ(), event.getWorld(), event
 						.getGen(), event.getWorld().getChunkProvider());

@@ -23,6 +23,7 @@ import defeatedcrow.hac.magic.item.ItemColorBadge;
 import defeatedcrow.hac.magic.item.ItemColorCard;
 import defeatedcrow.hac.magic.item.ItemColorCard2;
 import defeatedcrow.hac.magic.item.ItemColorCard3;
+import defeatedcrow.hac.magic.item.ItemColorCard4;
 import defeatedcrow.hac.magic.item.ItemColorDrop;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet;
 import defeatedcrow.hac.magic.item.ItemColorGauntlet2;
@@ -80,6 +81,12 @@ public class MagicInitRegister {
 			MagicInit.magicCard2 = new ItemColorCard2().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card_m");
 			DCMaterialReg
 					.registerItem(MagicInit.magicCard2, ClimateCore.PACKAGE_BASE + "_magic_card_m", ClimateMain.MOD_ID);
+
+			// tier3
+
+			MagicInit.magicCard4 = new ItemColorCard4().setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_magic_card_m3");
+			DCMaterialReg
+					.registerItem(MagicInit.magicCard4, ClimateCore.PACKAGE_BASE + "_magic_card_m3", ClimateMain.MOD_ID);
 		}
 
 		// tier1
@@ -121,15 +128,13 @@ public class MagicInitRegister {
 			DCMaterialReg
 					.registerItem(MagicInit.colorGauntlet2, ClimateCore.PACKAGE_BASE + "_color_gauntlet2", ClimateMain.MOD_ID);
 
-			MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
-					EntityEquipmentSlot.FEET, "blue")
-							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_blue");
+			MagicInit.gemBootsBird = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY, EntityEquipmentSlot.FEET, "blue")
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_blue");
 			DCMaterialReg
 					.registerItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_BASE + "_gemboots_blue", ClimateMain.MOD_ID);
 
-			MagicInit.gemBootsFish = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY,
-					EntityEquipmentSlot.FEET, "green")
-							.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_green");
+			MagicInit.gemBootsFish = new ItemArmorGemBoots(DCArmorMaterial.DC_CHALCEDONY, DCMaterialEnum.CHALCEDONY, EntityEquipmentSlot.FEET, "green")
+					.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_gemboots_green");
 			DCMaterialReg
 					.registerItem(MagicInit.gemBootsFish, ClimateCore.PACKAGE_BASE + "_gemboots_green", ClimateMain.MOD_ID);
 
@@ -221,6 +226,7 @@ public class MagicInitRegister {
 		if (ModuleConfig.magic_advanced) {
 			ClimateMain.magic.addSubItem(MagicInit.magicCard3);
 			ClimateMain.magic.addSubItem(MagicInit.magicCard2);
+			ClimateMain.magic.addSubItem(MagicInit.magicCard4);
 		}
 
 		ClimateMain.magic.addSubItem(MagicInit.colorRing2);

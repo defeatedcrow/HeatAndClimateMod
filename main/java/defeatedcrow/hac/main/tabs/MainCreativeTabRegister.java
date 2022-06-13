@@ -220,6 +220,7 @@ public class MainCreativeTabRegister {
 		if (!ModuleConfig.machine) {
 			ClimateMain.machine.addSubItem(MainInit.wrench);
 			ClimateMain.machine.addSubItem(MainInit.gears);
+			ClimateMain.machine.addSubItem(MainInit.igniter);
 			ClimateMain.machine.addSubItem(MainInit.swedishTorch);
 			ClimateMain.machine.addSubItem(MainInit.shitirin);
 			ClimateMain.machine.addSubItem(MainInit.firestand);

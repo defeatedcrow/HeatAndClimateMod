@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "X",
+  "Y"
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:flint_and_steel",
+   "data": 0
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "gearBrass"
+  }
+ },
+ "result": {
+  "item": "dcs_climate:dcs_device_igniter",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
+}

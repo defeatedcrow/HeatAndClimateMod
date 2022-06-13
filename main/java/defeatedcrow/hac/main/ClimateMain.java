@@ -55,7 +55,7 @@ public class ClimateMain {
 	public static final String MOD_NAME = "HeatAndClimateMod";
 	public static final int MOD_MAJOR = 3;
 	public static final int MOD_MINOR = 9;
-	public static final int MOD_BUILD = 2;
+	public static final int MOD_BUILD = 4;
 	public static final String MOD_DEPENDENCIES = "required-after:dcs_lib@[3.9.0,)";
 	public static final String UPDATE_JSON = "https://defeatedcrow.jp/version/heatandclimate.json";
 	public static final String KEY = "4cd12b92959105443b7b694fffe0cea9ed004886";
@@ -128,7 +128,7 @@ public class ClimateMain {
 		DCIntegrationCore.INSTANCE.loadPre();
 
 		if (ClimateCore.isDebug) {
-			RecipeJsonMaker.canUse = true;
+			RecipeJsonMaker.canUse = false;
 			RecipeJsonMaker.canDeprecate = false;
 			RecipeJsonMaker.dir = Paths
 					.get("F:\\modding\\1.12.1\\hac_main\\src\\main\\resources\\assets\\dcs_climate\\recipes\\");
@@ -139,6 +139,7 @@ public class ClimateMain {
 	public void init(FMLInitializationEvent event) {
 
 		// config
+		MainCoreConfig.INSTANCE.loadCurrencyItem();
 		MainCoreConfig.INSTANCE.loadBlockNames();
 		WorldGenConfig.INSTANCE.loadBlockNames();
 		WorldGenConfig.INSTANCE.loadGeyserGas();

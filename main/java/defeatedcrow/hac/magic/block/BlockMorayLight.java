@@ -186,12 +186,14 @@ public class BlockMorayLight extends BlockTorqueBase {
 
 	@Override
 	public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		return state.getValue(DCState.POWERED) ? 15 : 0;
+		EnumSide face = DCState.getSide(state, DCState.SIDE);
+		return state.getValue(DCState.POWERED) && face.face != side.getOpposite() ? 15 : 0;
 	}
 
 	@Override
 	public int getStrongPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		return state.getValue(DCState.POWERED) ? 15 : 0;
+		EnumSide face = DCState.getSide(state, DCState.SIDE);
+		return state.getValue(DCState.POWERED) && face.face != side.getOpposite() ? 15 : 0;
 	}
 
 	@Override
@@ -208,7 +210,8 @@ public class BlockMorayLight extends BlockTorqueBase {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		int m = meta & 7;
-		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean.valueOf((meta & 8) > 0));
+		IBlockState state = this.getDefaultState().withProperty(DCState.SIDE, EnumSide.fromIndex(m)).withProperty(DCState.POWERED, Boolean
+				.valueOf((meta & 8) > 0));
 		return state;
 	}
 

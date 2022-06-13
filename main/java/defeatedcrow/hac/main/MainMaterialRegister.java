@@ -100,6 +100,7 @@ import defeatedcrow.hac.main.block.device.BlockCraftingCounter;
 import defeatedcrow.hac.main.block.device.BlockFirestand;
 import defeatedcrow.hac.main.block.device.BlockGeyser;
 import defeatedcrow.hac.main.block.device.BlockHopperChest;
+import defeatedcrow.hac.main.block.device.BlockIgniter;
 import defeatedcrow.hac.main.block.device.BlockKitchenHood;
 import defeatedcrow.hac.main.block.device.BlockNormalChamber;
 import defeatedcrow.hac.main.block.device.BlockPail;
@@ -346,6 +347,9 @@ public class MainMaterialRegister {
 		MainInit.geyser = new BlockGeyser(ClimateCore.PACKAGE_BASE + "_device_geyser_stone");
 		DCMaterialReg
 				.registerBlock(MainInit.geyser, ClimateCore.PACKAGE_BASE + "_device_geyser_stone", ClimateMain.MOD_ID);
+
+		MainInit.igniter = new BlockIgniter(ClimateCore.PACKAGE_BASE + "_device_igniter");
+		DCMaterialReg.registerBlock(MainInit.igniter, ClimateCore.PACKAGE_BASE + "_device_igniter", ClimateMain.MOD_ID);
 
 		// items
 

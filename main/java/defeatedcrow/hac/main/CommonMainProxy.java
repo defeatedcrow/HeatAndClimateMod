@@ -664,7 +664,7 @@ public class CommonMainProxy implements IGuiHandler {
 				MinecraftForge.EVENT_BUS.register(MagicInit.debugGauntlet);
 		}
 		if (ModuleConfig.world) {
-			MinecraftForge.TERRAIN_GEN_BUS.register(new CaravanGenEvent());
+			MinecraftForge.EVENT_BUS.register(new CaravanGenEvent());
 		}
 
 		DCMainPacket.init();

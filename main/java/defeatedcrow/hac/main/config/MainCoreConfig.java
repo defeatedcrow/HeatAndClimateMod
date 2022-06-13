@@ -55,6 +55,7 @@ public class MainCoreConfig {
 	};
 	public static final List<BlockSet> disables = Lists.newArrayList();
 
+	public static String currencyName = "minecraft:emerald:0";
 	public static ItemSet currency = new ItemSet(Items.EMERALD);
 
 	public void load(Configuration cfg) {
@@ -175,11 +176,7 @@ public class MainCoreConfig {
 
 			String cur_name = currency_emerald.getString();
 			if (cur_name != null) {
-				ItemSet set = JsonUtilDC.getItemSetFromString(cur_name);
-				if (!ItemSet.isEmpty(set)) {
-					currency = set;
-					DCLogger.infoLog("DisplayCase Currency: add " + set.localizedname());
-				}
+				currencyName = cur_name;
 			}
 
 			// TimeZone tz = TimeZone.getTimeZone(timeZone);
@@ -193,6 +190,16 @@ public class MainCoreConfig {
 			cfg.save();
 		}
 
+	}
+
+	public static void loadCurrencyItem() {
+		if (currencyName != null) {
+			ItemSet set = JsonUtilDC.getItemSetFromString(currencyName);
+			if (!ItemSet.isEmpty(set)) {
+				currency = set;
+				DCLogger.infoLog("DisplayCase Currency: add " + set.localizedname());
+			}
+		}
 	}
 
 	public static void loadBlockNames() {

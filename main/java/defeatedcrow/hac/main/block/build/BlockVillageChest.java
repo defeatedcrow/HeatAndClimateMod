@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
@@ -62,6 +63,7 @@ public class BlockVillageChest extends BlockLowChest {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Tips ===");
+			tooltip.add(TextFormatting.AQUA.toString() + DCName.COLOR_CHANGE_TARGET.getLocalizedName());
 			tooltip.add(I18n.format("dcs.tip.v_chest"));
 		} else {
 			tooltip.add(TextFormatting.ITALIC.toString() + "=== Press shift key: Tooltip expands ===");

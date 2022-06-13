@@ -11,6 +11,7 @@ import defeatedcrow.hac.main.api.orevein.EnumVein;
 import defeatedcrow.hac.main.api.orevein.OreSet;
 import defeatedcrow.hac.main.api.orevein.VeinTable;
 import defeatedcrow.hac.main.config.ModuleConfig;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockEmptyDrops;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -28,6 +29,7 @@ public class WorldGenSkarn implements IWorldGenerator {
 	private final boolean isForced;
 	private int forceX = 0;
 	private int forceZ = 0;
+	BlockPos forcedCenter = null;
 
 	public WorldGenSkarn(boolean force) {
 		super();
@@ -37,6 +39,7 @@ public class WorldGenSkarn implements IWorldGenerator {
 	public void setForcePos(int x, int z) {
 		forceX = x;
 		forceZ = z;
+		forcedCenter = new BlockPos(x, 40, z);
 	}
 
 	@Override
@@ -53,10 +56,14 @@ public class WorldGenSkarn implements IWorldGenerator {
 			return;
 
 		BlockPos center = SkarnGenPos.getNearestPoint(chunkX, chunkZ, world, 2);
-		if (center == null)
-			return;
-		if (SkarnGenPos.isDupe(center, world)) {
-			return;
+		if (isForced && forcedCenter != null) {
+			center = forcedCenter;
+		} else {
+			if (center == null)
+				return;
+			if (SkarnGenPos.isDupe(center, world)) {
+				return;
+			}
 		}
 
 		int cx2 = center.getX() >> 4;
@@ -70,10 +77,6 @@ public class WorldGenSkarn implements IWorldGenerator {
 
 		posX += 4;
 		posZ += 4;
-		if (isForced && forceX != 0 & forceZ != 0) {
-			posX = forceX;
-			posZ = forceZ;
-		}
 		BlockPos pos = new BlockPos(posX, 40, posZ);
 
 		Random rand2 = new Random(world.getSeed() + cx2 + cz2 * 31);
@@ -205,7 +208,7 @@ public class WorldGenSkarn implements IWorldGenerator {
 			return block.getMaterial() == Material.ROCK || block.getMaterial() == Material.SAND || block.getBlock()
 					.getUnlocalizedName().contains("gravel") || block.getBlock().getUnlocalizedName().contains("dirt");
 
-		return b;
+		return b && block.getMaterial().isSolid() && !(block.getBlock() instanceof BlockContainer);
 	}
 
 	static boolean isPlaceable2(IBlockState block, boolean b) {
@@ -214,7 +217,7 @@ public class WorldGenSkarn implements IWorldGenerator {
 			return block.getMaterial() == Material.ROCK || block.getMaterial() == Material.SAND || block.getBlock()
 					.getUnlocalizedName().contains("gravel") || block.getBlock().getUnlocalizedName().contains("dirt");
 
-		return b;
+		return b && block.getMaterial().isSolid() && !(block.getBlock() instanceof BlockContainer);
 	}
 
 	private static final BlockSet AIR = new BlockSet(Blocks.AIR, 0);
@@ -249,16 +252,12 @@ public class WorldGenSkarn implements IWorldGenerator {
 			new BlockSet(MainInit.oreNew, 0)
 	};
 
-	private static final OreSet LIME_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 0), new BlockSet(
-			MainInit.skarnOre, 1), 20);
+	private static final OreSet LIME_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 0), new BlockSet(MainInit.skarnOre, 1), 20);
 
-	private static final OreSet HORNFELS_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 2), new BlockSet(
-			MainInit.skarnOre, 3), 20);
+	private static final OreSet HORNFELS_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 2), new BlockSet(MainInit.skarnOre, 3), 20);
 
-	private static final OreSet GREISEN_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 5), new BlockSet(
-			MainInit.skarnOre, 4), 20);
+	private static final OreSet GREISEN_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 5), new BlockSet(MainInit.skarnOre, 4), 20);
 
-	private static final OreSet SKARN_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 6), new BlockSet(
-			MainInit.skarnOre, 7), 20);
+	private static final OreSet SKARN_ORE = new OreSetDC(100, new BlockSet(MainInit.skarnOre, 6), new BlockSet(MainInit.skarnOre, 7), 20);
 
 }

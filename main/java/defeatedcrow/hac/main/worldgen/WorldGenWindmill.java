@@ -89,12 +89,15 @@ public class WorldGenWindmill implements IWorldGenerator {
 		BlockPos pos = new BlockPos(posX, 60, posZ);
 		Biome biome = BiomeCatchDC.getBiome(pos, world);
 
-		if (world.villageCollection.getNearestVillage(pos, 32) != null)
-			return false;
+		if (!isForced) {
 
-		if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) || BiomeDictionary
-				.hasType(biome, BiomeDictionary.Type.HOT) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.COLD))
-			return false;
+			if (world.villageCollection.getNearestVillage(pos, 32) != null)
+				return false;
+
+			if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) || BiomeDictionary
+					.hasType(biome, BiomeDictionary.Type.HOT) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.COLD))
+				return false;
+		}
 
 		if (isForced || BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS) || BiomeDictionary
 				.hasType(biome, BiomeDictionary.Type.FOREST)) {
@@ -109,7 +112,7 @@ public class WorldGenWindmill implements IWorldGenerator {
 				}
 			}
 
-			if (h > 40 && h < 100) {
+			if (h > 6 && h < 245) {
 				// 補正
 				int i1 = 0; // 傾斜確認
 				int adj = 0;
@@ -327,7 +330,7 @@ public class WorldGenWindmill implements IWorldGenerator {
 
 	public boolean isReplaceable(World world, BlockPos pos) {
 		net.minecraft.block.state.IBlockState state = world.getBlockState(pos);
-		if (state.getMaterial().isLiquid())
+		if (pos.getY() < 2 || state.getMaterial().isLiquid())
 			return false;
 		return state.getBlock().isAir(state, world, pos) || state.getMaterial().isReplaceable() || state
 				.getMaterial() == Material.LEAVES;
@@ -335,10 +338,10 @@ public class WorldGenWindmill implements IWorldGenerator {
 
 	public boolean isGround(World world, BlockPos pos) {
 		net.minecraft.block.state.IBlockState state = world.getBlockState(pos);
-		if (state.getMaterial().isLiquid())
+		if (pos.getY() < 2 || state.getMaterial().isLiquid())
 			return false;
 		return state.getMaterial() == Material.GROUND || state.getMaterial() == Material.GRASS || state
-				.getMaterial() == Material.SAND;
+				.getMaterial() == Material.SAND || state.getMaterial() == Material.ROCK;
 	}
 
 	public static List<ItemStack> loot = new ArrayList<ItemStack>();

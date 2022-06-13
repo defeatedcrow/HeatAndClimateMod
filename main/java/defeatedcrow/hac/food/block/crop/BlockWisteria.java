@@ -307,22 +307,26 @@ public class BlockWisteria extends BlockDC implements INameSuffix, IClimateCrop,
 			EnumSeason season = DCTimeHelper.getSeasonEnum(world);
 			if (!DCState.getBool(state, GROUND)) {
 				int stage = DCState.getInt(state, DCState.STAGE4);
-				if (stage == 3) {
-					if (!ModuleConfig.crop || season.id < 2) {
-						IBlockState newstate = state.withProperty(DCState.STAGE4, 0);
-						world.setBlockState(pos, newstate, 2);
+				if (ModuleConfig.crop) {
+					if (season.id < 2) {
+						if (stage == 3) {
+							IBlockState newstate = state.withProperty(DCState.STAGE4, 0);
+							world.setBlockState(pos, newstate, 2);
+						} else if (stage < 2) {
+							IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
+							world.setBlockState(pos, newstate, 2);
+						}
+					} else {
+						if (stage == 2) {
+							IBlockState newstate = state.withProperty(DCState.STAGE4, 3);
+							world.setBlockState(pos, newstate, 2);
+						}
 					}
-				} else if (stage == 2) {
-					if (!ModuleConfig.crop || season.id >= 2) {
-						IBlockState newstate = state.withProperty(DCState.STAGE4, 3);
-						world.setBlockState(pos, newstate, 2);
-					}
-				} else if (stage < 2) {
-					if (!ModuleConfig.crop || season.id < 2) {
-						IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
-						world.setBlockState(pos, newstate, 2);
-					}
+				} else {
+					IBlockState newstate = state.withProperty(DCState.STAGE4, stage + 1);
+					world.setBlockState(pos, newstate, 2);
 				}
+
 			}
 			if (!ModuleConfig.crop || season.id != 3) {
 				EnumFacing f = EnumFacing.UP;

@@ -112,6 +112,7 @@ public class MagicClientProxy {
 		instance.regSimpleItem(MagicInit.magicCard, ClimateCore.PACKAGE_ID, "dcs_magic_card", "magic", 14);
 		instance.regSimpleItem(MagicInit.magicCard2, ClimateCore.PACKAGE_ID, "dcs_magic_card_m", "magic", 4);
 		instance.regSimpleItem(MagicInit.magicCard3, ClimateCore.PACKAGE_ID, "dcs_magic_card_m2", "magic", 4);
+		instance.regSimpleItem(MagicInit.magicCard4, ClimateCore.PACKAGE_ID, "dcs_magic_card_m3", "magic", 4);
 		instance.regSimpleItem(MagicInit.expGem, ClimateCore.PACKAGE_ID, "dcs_expgem", "magic", 0);
 		instance.regSimpleItem(MagicInit.medallion, ClimateCore.PACKAGE_ID, "dcs_medallion", "magic", 0);
 		instance.regSimpleItem(MagicInit.gemBootsBird, ClimateCore.PACKAGE_ID, "dcs_gemboots_blue", "equip", 0);

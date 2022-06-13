@@ -1297,6 +1297,7 @@ tile.dcs_squaretable_greisen_0.name=云英岩方桌
 tile.dcs_squaretable_checker_0.name=花纹格子方桌
 tile.dcs_squaretable_black_0.name=黑色方桌
 tile.dcs_squaretable_rattan_0.name=藤制方桌
+tile.dcs_squaretable_rattan_white_0.name=白色藤制方桌
 tile.dcs_smalltable_wood_0.name=木制矮桌
 tile.dcs_smalltable_stone_0.name=石制矮桌
 tile.dcs_carpet_red_0.name=地毯木板(红)
