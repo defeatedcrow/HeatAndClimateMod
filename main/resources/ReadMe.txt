@@ -1,4 +1,4 @@
-﻿#### Heat&Climate Mod 3.9.4 for Minecraft 1.12.2 ####
+﻿#### Heat&Climate Mod 3.9.5 for Minecraft 1.12.2 ####
 
 
 # 前提Ver&Mod
@@ -2321,6 +2321,12 @@ Y = 色のキューブ
 ### 更新履歴 ###
 
 #1.X.X以前の更新履歴は1.10.2版HaCのReadMeをご確認ください
+
+○3.9.5
+　修正
+　　・作物の苗の基底状態BlockStateの修正
+　　・蓮の苗が育たない
+　　・EX風車の描画範囲の再修正
 
 ○3.9.4
 　新規

@@ -19,7 +19,7 @@ public class TileWindmill_EX extends TileWindmill {
 	@SideOnly(Side.CLIENT)
 	public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
 		net.minecraft.util.math.AxisAlignedBB bb = INFINITE_EXTENT_AABB;
-		bb = new net.minecraft.util.math.AxisAlignedBB(getPos().add(-16, -32, -16), getPos().add(16, 32, 16));
+		bb = new net.minecraft.util.math.AxisAlignedBB(getPos().add(-12, -12, -12), getPos().add(12, 12, 12));
 		return bb;
 	}
 
