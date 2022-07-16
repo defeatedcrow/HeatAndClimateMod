@@ -260,7 +260,7 @@ public class GuiDisplayVendingMachine2 extends GuiBaseDC {
 				}
 			}
 			if (isPointInRegion(116, 76, 25, 11, x, y)) {
-				int p4 = shelf.getField(1);
+				int p4 = shelf.getField(3);
 				if ((p4 + eme) > shelf.EMERALD_MAX) {
 					mc.player.sendMessage(new TextComponentString(I18n.format("dcs.gui.message.displaycase.emerald_max")));
 					return;

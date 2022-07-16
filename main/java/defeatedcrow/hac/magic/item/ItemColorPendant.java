@@ -45,11 +45,7 @@ public class ItemColorPendant extends CharmItemBase implements IMagicCost {
 	private final int maxMeta;
 
 	/*
-	 * U: 透明化 / AI妨害
-	 * G: 味方回復
-	 * R: 採掘速度
-	 * B: 雷撃
-	 * W: 味方巻き込み防止
+	 * U: 透明化 / AI妨害 G: 味方回復 R: 採掘速度 B: 雷撃 W: 味方巻き込み防止
 	 */
 	private static String[] names = {
 			"u1",
@@ -150,13 +146,11 @@ public class ItemColorPendant extends CharmItemBase implements IMagicCost {
 			ItemStack charm) {
 		if (getColor(charm.getItemDamage()) == MagicColor.BLACK) {
 			if (owner != null && target != null && !source.isExplosion() && source.isProjectile()) {
-				float pow = charm.getCount() + 1F;
+				float pow = charm.getCount() + 2F;
 				pow *= MainUtil.magicSuitEff(owner);
-				CustomExplosion explosion = new CustomExplosion(owner.world, owner, owner, target.posX,
-						target.posY + 0.25D, target.posZ, pow, CustomExplosion.Type.Friends, true);
+				CustomExplosion explosion = new CustomExplosion(owner.world, owner, owner, target.posX, target.posY + 0.25D, target.posZ, pow, CustomExplosion.Type.Friends, true);
 				explosion.doExplosion();
-				owner.world.addWeatherEffect(new EntityLightningBolt(owner.world, target.posX, target.posY - 0.25D,
-						target.posZ, !owner.isSneaking()));
+				owner.world.addWeatherEffect(new EntityLightningBolt(owner.world, target.posX, target.posY - 0.25D, target.posZ, !owner.isSneaking()));
 			}
 		}
 		return false;
@@ -182,12 +176,10 @@ public class ItemColorPendant extends CharmItemBase implements IMagicCost {
 			float eff = MainUtil.magicSuitEff(owner);
 			DCMainPacket.INSTANCE.sendToAll(new MessageMagicParticle(owner.posX, owner.posY, owner.posZ));
 			if (getColor(charm.getItemDamage()) == MagicColor.BLUE) {
-				owner.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, (int) (600 * charm.getCount() * eff),
-						0));
+				owner.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, (int) (600 * charm.getCount() * eff), 0));
 				double a = 4D + charm.getCount() * 2;
 				a *= eff;
-				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a,
-						owner.posY + 2D, owner.posZ + a);
+				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a, owner.posY + 2D, owner.posZ + a);
 				List<EntityLiving> list = owner.world.getEntitiesWithinAABB(EntityMob.class, aabb);
 				if (list.isEmpty())
 					return false;
@@ -212,8 +204,7 @@ public class ItemColorPendant extends CharmItemBase implements IMagicCost {
 				float h = 2.0F * charm.getCount() * eff;
 				owner.heal(h);
 				double a = 8D + charm.getCount() * 4;
-				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a,
-						owner.posY + 2D, owner.posZ + a);
+				AxisAlignedBB aabb = new AxisAlignedBB(owner.posX - a, owner.posY - 2D, owner.posZ - a, owner.posX + a, owner.posY + 2D, owner.posZ + a);
 				List<EntityLivingBase> list = owner.world.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
 				if (list.isEmpty())
 					return false;

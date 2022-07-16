@@ -124,6 +124,7 @@ import defeatedcrow.hac.main.client.entity.RenderEntityFlowerPot;
 import defeatedcrow.hac.main.client.entity.RenderEntitySmallCushionA;
 import defeatedcrow.hac.main.client.entity.RenderEntitySmallCushionB;
 import defeatedcrow.hac.main.client.entity.RenderEntitySmallCushionC;
+import defeatedcrow.hac.main.client.model.ModelCombatArmor;
 import defeatedcrow.hac.main.client.model.ModelDress;
 import defeatedcrow.hac.main.client.model.ModelHat;
 import defeatedcrow.hac.main.client.model.ModelHoodie;
@@ -207,6 +208,8 @@ public class ClientMainProxy extends CommonMainProxy {
 	private static final ModelThinBiped legginsModel2 = new ModelThinBiped(0.45F, 2);
 	private static final ModelThinBiped bodyModel2 = new ModelThinBiped(0.60F, 1);
 	private static final ModelThinBiped bodyModel3 = new ModelThinBiped(1.1F, 1);
+	private static final ModelCombatArmor combatMetModel = new ModelCombatArmor(0.4F, 0);
+	private static final ModelCombatArmor combatBodyModel = new ModelCombatArmor(1);
 
 	@Override
 	public void loadConst() {
@@ -454,6 +457,10 @@ public class ClientMainProxy extends CommonMainProxy {
 			return shirtModel2;
 		case 13:
 			return skirtSilkModel;
+		case 14:
+			return combatMetModel;
+		case 15:
+			return combatBodyModel;
 		default:
 			return null;
 		}
