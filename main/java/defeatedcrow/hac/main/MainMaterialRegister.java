@@ -135,6 +135,7 @@ import defeatedcrow.hac.main.item.entity.ItemDesktopAccessories;
 import defeatedcrow.hac.main.item.entity.ItemErgonomicChair;
 import defeatedcrow.hac.main.item.entity.ItemFlowerPot;
 import defeatedcrow.hac.main.item.equip.ItemArmorCape;
+import defeatedcrow.hac.main.item.equip.ItemArmorCombat;
 import defeatedcrow.hac.main.item.equip.ItemArmorDC;
 import defeatedcrow.hac.main.item.equip.ItemArmorDress;
 import defeatedcrow.hac.main.item.equip.ItemArmorHat;
@@ -1332,15 +1333,15 @@ public class MainMaterialRegister {
 				DCMaterialReg
 						.registerItem(MainInit.sapphireArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_sapphire", ClimateMain.MOD_ID);
 
-				MainInit.titaniumArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_TITANIUM, DCMaterialEnum.TITANIUM, slot, "titanium")
-						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium");
-				DCMaterialReg
-						.registerItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium", ClimateMain.MOD_ID);
-
 				MainInit.silverArmor[i] = new ItemArmorDC(DCArmorMaterial.DC_SILVER, DCMaterialEnum.SILVER, slot, "silver")
 						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_silver");
 				DCMaterialReg
 						.registerItem(MainInit.silverArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_silver", ClimateMain.MOD_ID);
+
+				MainInit.titaniumArmor[i] = new ItemArmorCombat(DCArmorMaterial.DC_TITANIUM, DCMaterialEnum.TITANIUM, slot, "titanium")
+						.setUnlocalizedName(ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium");
+				DCMaterialReg
+						.registerItem(MainInit.titaniumArmor[i], ClimateCore.PACKAGE_BASE + "_" + type[i] + "_titanium", ClimateMain.MOD_ID);
 			}
 
 		}

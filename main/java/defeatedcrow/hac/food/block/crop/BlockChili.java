@@ -91,6 +91,11 @@ public class BlockChili extends ClimateCropBase implements ITexturePath {
 	}
 
 	@Override
+	public IBlockState setGroundState(IBlockState state) {
+		return this.getDefaultState().withProperty(DCState.STAGE4, 0);
+	}
+
+	@Override
 	public boolean canStayOnHarvest() {
 		return true;
 	}

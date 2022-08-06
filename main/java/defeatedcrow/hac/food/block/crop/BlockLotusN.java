@@ -304,43 +304,60 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 			boolean black = state.getValue(BLACK);
 			boolean water = this.isInWater(world, pos);
 			if (water) {
-				if (stage < 7) {
-					EnumSeason season = DCTimeHelper.getSeasonEnum(world);
-					int next = stage;
-					if (ModuleConfig.crop) {
-						if (stage == 6 && season.id > 2) {
-							// winter
-							next = stage + 1;
-						} else if (stage == 5 && season.id > 1) {
-							// autumn
-							next = stage + 1;
-						} else if ((stage == 4 || stage == 3) && (season.id == 1 || season.id == 2)) {
-							// summer
-							next = stage + 1;
-						} else if (stage > 0 && season.id == 3) {
+				EnumSeason season = DCTimeHelper.getSeasonEnum(world);
+				int next = stage;
+				if (ModuleConfig.crop) {
+					switch (stage) {
+					case 0:
+					case 1:
+					case 2:
+						if (season.id == 3)
 							next = 7;
-						}
-					} else {
-						next = stage + 1;
+						else
+							next = stage + 1;
+						break;
+					case 3:
+					case 4:
+						if (season.id == 1 || season.id == 2)
+							next = stage + 1;
+						else if (season.id == 3)
+							next = 7;
+						break;
+					case 5:
+						if (season.id > 1)
+							next = stage + 1;
+						else if (season.id == 3)
+							next = 7;
+						break;
+					case 6:
+						if (season.id == 3)
+							next = 7;
+						break;
+					case 7:
+						if (season.id < 2)
+							next = 0;
+						break;
 					}
+				} else {
+					next = stage + 1;
+				}
 
-					if (stage < 3) {
-						if (world.rand.nextInt(50) == 0 && (!ModuleConfig.crop || season.id < 3)) {
-							black = true;
-						}
-					} else {
-						IBlockState target = world.getBlockState(pos.up());
-						if (target.getBlock() instanceof BlockIce) {
-							next = 7;
-						}
+				if (stage < 3) {
+					if (world.rand.nextInt(50) == 0 && (!ModuleConfig.crop || season.id < 3)) {
+						black = true;
 					}
-					if (next > stage) {
-						IBlockState newstate = state.withProperty(DCState.STAGE8, next).withProperty(BLACK, black);
-						if (next == 3 && !world.isRemote) {
-							((TileEntityLotus) world.getTileEntity(pos)).setRandNum();
-						}
-						return world.setBlockState(pos, newstate, 2);
+				} else {
+					IBlockState target = world.getBlockState(pos.up());
+					if (target.getBlock() instanceof BlockIce) {
+						next = 7;
 					}
+				}
+				if (next > stage) {
+					IBlockState newstate = state.withProperty(DCState.STAGE8, next).withProperty(BLACK, black);
+					if (next == 3 && !world.isRemote) {
+						((TileEntityLotus) world.getTileEntity(pos)).setRandNum();
+					}
+					return world.setBlockState(pos, newstate, 2);
 				}
 			}
 		}
@@ -536,11 +553,12 @@ public class BlockLotusN extends BlockContainerDC implements INameSuffix, IClima
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(Blocks.DIRT);
 	}
+
 	/* IGrowable */
 
 	@Override
 	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient) {
-		int stage = state.getValue(DCState.STAGE8);
+		int stage = DCState.getInt(state, DCState.STAGE8);
 		return this.isSuitablePlace(world, pos, state) && stage < 7;
 	}
 
