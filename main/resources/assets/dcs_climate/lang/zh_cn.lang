@@ -2904,10 +2904,10 @@ advancements.dcs_climate.food_incubator.title=微生物研究员
 advancements.dcs_climate.food_incubator.description=制作一个保温箱
 advancements.dcs_climate.food_chick.title=温暖的摇篮
 advancements.dcs_climate.food_chick.description=孵出一只小鸡
-advancements.dcs_climate.magic_bio2.title=小可爱
-advancements.dcs_climate.magic_bio2.description=鉴定一种微生物
-advancements.dcs_climate.magic_bio3.title=开起自己的酿酒厂
-advancements.dcs_climate.magic_bio3.description=获得一种蒸馏酒
+advancements.dcs_climate.food_bio2.title=小可爱
+advancements.dcs_climate.food_bio2.description=鉴定一种微生物
+advancements.dcs_climate.food_bio3.title=开起自己的酿酒厂
+advancements.dcs_climate.food_bio3.description=获得一种蒸馏酒
 
 ## enchantment descriptions
 enchantment.dcs_climate.dcs.enchantment.venom.desc=给予被命中者凋零效果

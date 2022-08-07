@@ -2892,10 +2892,10 @@ advancements.dcs_climate.food_incubator.title=Microbial researcher
 advancements.dcs_climate.food_incubator.description=Get an incubator.
 advancements.dcs_climate.food_chick.title=The warm cradle
 advancements.dcs_climate.food_chick.description=Get a chick in egg.
-advancements.dcs_climate.magic_bio2.title=Little cute creatures!
-advancements.dcs_climate.magic_bio2.description=Get one of the identified microorganisms.
-advancements.dcs_climate.magic_bio3.title=Own your brewery
-advancements.dcs_climate.magic_bio3.description=Get one of the distilled liquors
+advancements.dcs_climate.food_bio2.title=Little cute creatures!
+advancements.dcs_climate.food_bio2.description=Get one of the identified microorganisms.
+advancements.dcs_climate.food_bio3.title=Own your brewery
+advancements.dcs_climate.food_bio3.description=Get one of the distilled liquors
 
 ## enchantment descriptions
 enchantment.dcs_climate.dcs.enchantment.venom.desc=Add the wither effect to the shooting target.
