@@ -139,7 +139,8 @@ public class BlockSwedishTorch extends DCFacelessTileBlock implements IHeatTile 
 				}
 			}
 			if (ext) {
-				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.8F, 1.0F, false);
+				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos
+						.getZ() + 0.5F, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.8F, 1.0F, false);
 				changeLitState(world, pos, false);
 			} else if (rand.nextInt(4) == 0) {
 				int i = DCState.getInt(state, DCState.TYPE16);

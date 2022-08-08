@@ -127,6 +127,7 @@ public class BlockIgniter extends BlockDC {
 			} else if (world.isAirBlock(offset)) {
 				world.setBlockState(offset, Blocks.FIRE.getDefaultState(), 11);
 			}
+			world.scheduleUpdate(offset, target.getBlock(), 20);
 		}
 	}
 

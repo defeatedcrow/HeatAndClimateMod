@@ -14,6 +14,7 @@ import defeatedcrow.hac.main.ClimateMain;
 import defeatedcrow.hac.main.MainInit;
 import defeatedcrow.hac.main.util.DCName;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -59,13 +60,13 @@ public class BlockFirestand extends BlockNormalChamber {
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (isLit(world, pos)) {
 			boolean ext = false;
-			if (world.isRaining()) {
+			if (world.isRaining() && !hasRoof(world, pos)) {
 				ext = true;
 			} else {
 				ClimateSupplier sup = new ClimateSupplier(world, pos);
 				if (sup.get().getHumidity() == DCHumidity.UNDERWATER) {
 					ext = true;
-				} else if (sup.get().getHumidity() == DCHumidity.WET) {
+				} else if (sup.get().getHumidity() == DCHumidity.WET && !hasRoof(world, pos)) {
 					ext = world.rand.nextInt(4 + sup.get().getAirflow().getID() * 3) == 0;
 				}
 			}
@@ -76,6 +77,27 @@ public class BlockFirestand extends BlockNormalChamber {
 						.getZ() + 0.5F, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.8F, 1.0F, false);
 			}
 		}
+	}
+
+	private boolean hasRoof(World world, BlockPos pos) {
+		if (!world.isBlockLoaded(pos)) {
+			return false;
+		}
+		BlockPos pos2 = pos.up();
+		int lim = pos.getY() + 16;
+		if (!world.provider.hasSkyLight()) {
+			lim = pos.getY() + 12;
+		}
+		while (pos2.getY() < lim && pos2.getY() < world.getActualHeight()) {
+			IBlockState state = world.getBlockState(pos2);
+			Block block = world.getBlockState(pos2).getBlock();
+			if (!world.isAirBlock(pos2) && (block.getLightOpacity(state, world, pos2) > 0.0F || state
+					.getMobilityFlag() == EnumPushReaction.NORMAL)) {
+				return true;
+			}
+			pos2 = pos2.up();
+		}
+		return false;
 	}
 
 	@Override

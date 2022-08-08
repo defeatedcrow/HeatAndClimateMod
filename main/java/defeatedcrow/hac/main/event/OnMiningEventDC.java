@@ -59,8 +59,7 @@ public class OnMiningEventDC {
 			IBlockState state = event.getState();
 
 			if (DCUtil.hasCharmItem(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2))) {
-				float lv = 2.0F + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant,
-						1, 2));
+				float lv = 2.0F + MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant, 1, 2));
 				event.setNewSpeed(event.getNewSpeed() * lv);
 			} else {
 				if (event.getEntityPlayer().isInsideOfMaterial(Material.WATER)) {
@@ -69,8 +68,7 @@ public class OnMiningEventDC {
 						lv += event.getEntityPlayer().getActivePotionEffect(MainInit.ocean).getAmplifier() * 1.0F;
 
 					}
-					int c = MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant2, 1,
-							0));
+					int c = MainUtil.getCharmLevel(event.getEntityPlayer(), new ItemStack(MagicInit.colorPendant2, 1, 0));
 					lv += c * 1F;
 					event.setNewSpeed(event.getNewSpeed() * lv);
 				}
@@ -299,6 +297,7 @@ public class OnMiningEventDC {
 					}
 					if (p != null) {
 						BlockFirestand.changeLitState(event.getWorld(), p, true);
+						event.getWorld().scheduleUpdate(p, MainInit.firestand, 20);
 					}
 					event.getPlayer().playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 0.8F, 1.0F);
 				}
@@ -315,6 +314,7 @@ public class OnMiningEventDC {
 					}
 					if (p != null) {
 						BlockSwedishTorch.changeLitState(event.getWorld(), p, true);
+						event.getWorld().scheduleUpdate(p, MainInit.swedishTorch, 20);
 					}
 					event.getPlayer().playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 0.8F, 1.0F);
 				}
