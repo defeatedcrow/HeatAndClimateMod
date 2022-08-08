@@ -918,6 +918,11 @@ item.dcs_magic_card_m2_gw1.name=白绿符咒(治疗)
 item.dcs_magic_card_m2_rg1.name=红绿符咒(焰狼)
 item.dcs_magic_card_m2_wu1.name=白蓝符咒(回家)
 item.dcs_magic_card_m2_br1.name=黑红符咒(爆发)
+item.dcs_magic_card_m3_gu3.name=蓝建筑符咒(风车小屋)
+item.dcs_magic_card_m3_gg3.name=绿建筑符咒(矽卡岩矿脉)
+item.dcs_magic_card_m3_gr3.name=红建筑符咒(温泉)
+item.dcs_magic_card_m3_gw3.name=白建筑符咒(商旅)
+item.dcs_magic_card_m3_gb3.name=黑建筑符咒(魔法试剂泉)
 tile.dcs_color_cube_u1.name=未激活的蓝魔方
 tile.dcs_color_cube_g1.name=未激活的绿魔方
 tile.dcs_color_cube_r1.name=未激活的红魔方
@@ -1612,6 +1617,7 @@ tile.dcs_device_brewing_upper_0.name=金属酿造罐
 tile.dcs_device_distillator_0.name=蒸馏器
 tile.dcs_device_aging_barrel_0.name=酿造桶
 tile.dcs_device_swedish_torch.name=瑞典火炬
+tile.dcs_device_igniter_0.name=打火机
 
 ## crops
 tile.dcs_crop_rice_0.name=水稻(1/4)
@@ -2182,6 +2188,12 @@ dcs.comment.card3.1=治疗周围玩家与动物
 dcs.comment.card3.2=召唤发射火矢的烈焰犬
 dcs.comment.card3.3=自杀式爆炸
 dcs.comment.card3.4=回到重生点
+dcs.comment.card4.0=生成风车小屋
+dcs.comment.card4.1=生成矽卡岩矿脉 (5x5 区块)
+dcs.comment.card4.2=生成温泉
+dcs.comment.card4.3=生成商旅 (3x3 区块)
+dcs.comment.card4.4=生成魔法试剂泉
+dcs.comment.card4_2=!!注意由于大面积地形覆盖造成的方块与物品损失!!
 
 dcs.tip.buff1=多重叠加
 dcs.tip.buff2=魔导服:
@@ -2892,10 +2904,10 @@ advancements.dcs_climate.food_incubator.title=微生物研究员
 advancements.dcs_climate.food_incubator.description=制作一个保温箱
 advancements.dcs_climate.food_chick.title=温暖的摇篮
 advancements.dcs_climate.food_chick.description=孵出一只小鸡
-advancements.dcs_climate.magic_bio2.title=小可爱
-advancements.dcs_climate.magic_bio2.description=鉴定一种微生物
-advancements.dcs_climate.magic_bio3.title=开起自己的酿酒厂
-advancements.dcs_climate.magic_bio3.description=获得一种蒸馏酒
+advancements.dcs_climate.food_bio2.title=小可爱
+advancements.dcs_climate.food_bio2.description=鉴定一种微生物
+advancements.dcs_climate.food_bio3.title=开起自己的酿酒厂
+advancements.dcs_climate.food_bio3.description=获得一种蒸馏酒
 
 ## enchantment descriptions
 enchantment.dcs_climate.dcs.enchantment.venom.desc=给予被命中者凋零效果
