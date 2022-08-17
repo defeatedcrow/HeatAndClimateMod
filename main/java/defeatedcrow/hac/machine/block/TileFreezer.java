@@ -95,7 +95,8 @@ public class TileFreezer extends TileTorqueBase implements ITorqueReceiver {
 				List<EntityPlayer> list = this.getWorld().playerEntities;
 				for (EntityPlayer player : list) {
 					if (player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
+						if (player.getEntityWorld().getTileEntity(getPos()) != null)
+							((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
 					}
 				}
 			}

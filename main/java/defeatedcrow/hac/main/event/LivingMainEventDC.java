@@ -231,7 +231,7 @@ public class LivingMainEventDC {
 					}
 				} else if (MainCoreConfig.bird_effect && player.isPotionActive(MainInit.bird)) {
 					// bird potion
-					if (!player.isInWater() && !player.isElytraFlying()) {
+					if (!player.isInWater()) {
 						if (ClimateCore.proxy.isJumpKeyDown()) {
 							player.motionY += 0.15D;
 							if (player.motionY > 2.0D) {

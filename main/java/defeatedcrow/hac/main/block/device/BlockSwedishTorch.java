@@ -49,6 +49,16 @@ public class BlockSwedishTorch extends DCFacelessTileBlock implements IHeatTile 
 	}
 
 	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
 	public int tickRate(World worldIn) {
 		return 20;
 	}
@@ -216,9 +226,7 @@ public class BlockSwedishTorch extends DCFacelessTileBlock implements IHeatTile 
 	public DCHeatTier getHeatTier(World world, BlockPos targrt, BlockPos source) {
 		IBlockState state = world.getBlockState(source);
 		int i = DCState.getInt(state, DCState.TYPE16);
-		if (i > 7 && i < 15) {
-			return DCHeatTier.OVEN;
-		}
+		if (i > 7 && i < 15) { return DCHeatTier.OVEN; }
 		return DCHeatTier.NORMAL;
 	}
 

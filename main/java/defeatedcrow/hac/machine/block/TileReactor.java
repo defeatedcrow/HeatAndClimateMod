@@ -18,8 +18,9 @@ import defeatedcrow.hac.core.fluid.DCTank;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.machine.gui.ContainerReactor;
 import defeatedcrow.hac.main.block.fluid.SidedFluidTankWrapper;
+import defeatedcrow.hac.main.packet.DCMainPacket;
+import defeatedcrow.hac.main.packet.MessageReactor;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
@@ -61,9 +62,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 
 	@Override
 	public boolean isInputSide(EnumFacing side) {
-		if (getBaseSide().getAxis().isVertical()) {
-			return side == EnumFacing.WEST;
-		}
+		if (getBaseSide().getAxis().isVertical()) { return side == EnumFacing.WEST; }
 		return side == getBaseSide().rotateY().getOpposite();
 	}
 
@@ -121,51 +120,21 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 	@Override
 	protected int[] slotsTop() {
 		return new int[] {
-				0,
-				2,
-				4,
-				6,
-				9,
-				10,
-				11,
-				12
+				0, 2, 4, 6, 9, 10, 11, 12
 		};
 	};
 
 	@Override
 	protected int[] slotsBottom() {
 		return new int[] {
-				1,
-				3,
-				5,
-				7,
-				13,
-				14,
-				15,
-				16
+				1, 3, 5, 7, 13, 14, 15, 16
 		};
 	};
 
 	@Override
 	protected int[] slotsSides() {
 		return new int[] {
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12,
-				13,
-				14,
-				15,
-				16
+				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 		};
 	};
 
@@ -226,14 +195,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 						.getFluidAmount() * 17 + outputT2
 								.getFluidAmount();
 
-				if (!this.hasWorld())
-					return;
-				List<EntityPlayer> list = this.getWorld().playerEntities;
-				for (EntityPlayer player : list) {
-					if (player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-					}
-				}
+				DCMainPacket.INSTANCE.sendToAll(new MessageReactor(pos, this));
 			}
 			count = 10;
 		} else {
@@ -246,18 +208,6 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 		if (!world.isRemote) {
 			// 液体スロットの処理
 			this.processFluidSlots();
-
-			// DCLogger.infoLog("current torque: " + prevTorque);
-			// if (current != null) {
-			// DCLogger.infoLog("current heat: " + current.getHeat());
-			// } else {
-			// DCLogger.infoLog("no climate");
-			// }
-			// if (currentRecipe != null) {
-			// DCLogger.infoLog("has recipe");
-			// } else {
-			// DCLogger.infoLog("no recipe");
-			// }
 		}
 		super.updateTile();
 	}
@@ -532,9 +482,7 @@ public class TileReactor extends TileTorqueProcessor implements ITorqueReceiver 
 					}
 				}
 
-				if (!required.isEmpty()) {
-					return false;
-				}
+				if (!required.isEmpty()) { return false; }
 			}
 
 			// 3: input fluid

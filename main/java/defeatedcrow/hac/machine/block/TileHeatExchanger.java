@@ -1,7 +1,5 @@
 package defeatedcrow.hac.machine.block;
 
-import java.util.List;
-
 import defeatedcrow.hac.api.climate.ClimateAPI;
 import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.DCAirflow;
@@ -10,12 +8,13 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
+import defeatedcrow.hac.core.packet.IClimateUpdateTile;
+import defeatedcrow.hac.core.packet.MessageClimateUpdate;
+import defeatedcrow.hac.main.packet.DCMainPacket;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
-public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver {
+public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver, IClimateUpdateTile {
 
 	protected IClimate current = null;
 	protected int lastClimate = 0;
@@ -93,14 +92,7 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 			}
 
 			if (flag) {
-				if (!this.hasWorld())
-					return;
-				List<EntityPlayer> list = this.getWorld().playerEntities;
-				for (EntityPlayer player : list) {
-					if (player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).connection.sendPacket(this.getUpdatePacket());
-					}
-				}
+				DCMainPacket.INSTANCE.sendToAll(new MessageClimateUpdate(pos, lastClimate));
 			}
 		}
 	}
@@ -135,6 +127,17 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 		}
 
 		return hot;
+	}
+
+	// packet用
+	public IClimate getClimate() {
+		return current == null ? ClimateAPI.register.getClimateFromParam(DCHeatTier.NORMAL, DCHumidity.NORMAL, DCAirflow.NORMAL) : current;
+	}
+
+	public void setClimate(int i) {
+		IClimate clm = ClimateAPI.register.getClimateFromInt(i);
+		if (clm != null)
+			current = clm;
 	}
 
 }
