@@ -1,0 +1,29 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "XYX",
+  " X "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "oreMagnetite"
+  }
+ },
+ "result": {
+  "item": "minecraft:compass",
+  "count": 1,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
+}

@@ -84,7 +84,7 @@ public class BlockStillPot extends DCTileBlockFaced {
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag advanced) {
 		if (ClimateCore.proxy.isShiftKeyDown()) {
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Requirement ===");
-			tooltip.add(I18n.format("dcs.tip.require_temp_difference"));
+			tooltip.add(I18n.format("dcs.tip.temp_difference"));
 			tooltip.add(TextFormatting.YELLOW.toString() + TextFormatting.BOLD.toString() + "=== Output ===");
 			tooltip.add(DCName.OUTPUT_FLUID.getLocalizedName());
 		} else {

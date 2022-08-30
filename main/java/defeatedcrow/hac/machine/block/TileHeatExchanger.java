@@ -8,9 +8,9 @@ import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.energy.ITorqueReceiver;
 import defeatedcrow.hac.core.energy.TileTorqueBase;
+import defeatedcrow.hac.core.packet.HaCPacket;
 import defeatedcrow.hac.core.packet.IClimateUpdateTile;
 import defeatedcrow.hac.core.packet.MessageClimateUpdate;
-import defeatedcrow.hac.main.packet.DCMainPacket;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
@@ -31,9 +31,7 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 
 	@Override
 	public boolean canReceiveTorque(float amount, EnumFacing side) {
-		if (this.currentTorque >= this.maxTorque()) {
-			return false;
-		}
+		if (this.currentTorque >= this.maxTorque()) { return false; }
 		return this.isInputSide(side.getOpposite());
 	}
 
@@ -75,27 +73,16 @@ public class TileHeatExchanger extends TileTorqueBase implements ITorqueReceiver
 
 			int code = (air.getID() << 6) + (hum.getID() << 4) + heat.getID();
 			current = ClimateAPI.register.getClimateFromInt(code);
+
+			if (current != null && current.getClimateInt() != lastClimate) {
+				lastClimate = current.getClimateInt();
+				HaCPacket.INSTANCE.sendToAll(new MessageClimateUpdate(pos, lastClimate));
+			}
+
 		}
 	}
 
 	private int count = 20;
-
-	@Override
-	protected void onServerUpdate() {
-		if (count > 0) {
-			count--;
-		} else {
-			boolean flag = false;
-			if (current != null && current.getClimateInt() != lastClimate) {
-				flag = true;
-				lastClimate = current.getClimateInt();
-			}
-
-			if (flag) {
-				DCMainPacket.INSTANCE.sendToAll(new MessageClimateUpdate(pos, lastClimate));
-			}
-		}
-	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {

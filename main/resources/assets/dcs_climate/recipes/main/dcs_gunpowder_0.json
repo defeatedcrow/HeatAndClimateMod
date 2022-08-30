@@ -1,0 +1,32 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustGraphite"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustGraphite"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustSulfur"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dustNiter"
+  }
+ ],
+ "result": {
+  "item": "minecraft:gunpowder",
+  "count": 4,
+  "data": 0
+ },
+ "conditions": [
+  {
+   "type": "dcs_climate:recipe_enabled",
+   "module": "core"
+  }
+ ]
+}

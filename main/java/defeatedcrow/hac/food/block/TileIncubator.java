@@ -7,8 +7,8 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
-import defeatedcrow.hac.core.base.ClimateReceiverLockable;
 import defeatedcrow.hac.core.base.DCInventory;
+import defeatedcrow.hac.core.base.DCLockableTE;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import defeatedcrow.hac.food.FoodInit;
@@ -37,10 +37,11 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class TileIncubator extends ClimateReceiverLockable implements ISidedInventory {
+public class TileIncubator extends DCLockableTE implements ISidedInventory {
 
 	public int lastD = 0;
 	public int lastClimate = 0;
+	public IClimate current = null;
 
 	public boolean isOpen = false;
 	public int numPlayersUsing = 0;
@@ -117,9 +118,7 @@ public class TileIncubator extends ClimateReceiverLockable implements ISidedInve
 		DCHeatTier heat = current.getHeat();
 		DCHumidity hum = current.getHumidity();
 		DCAirflow air = current.getAirflow();
-		if (microbe.getHeats().contains(heat) && microbe.getHums().contains(hum) && microbe.getAirs().contains(air)) {
-			return true;
-		}
+		if (microbe.getHeats().contains(heat) && microbe.getHums().contains(hum) && microbe.getAirs().contains(air)) { return true; }
 		return false;
 	}
 
@@ -127,9 +126,7 @@ public class TileIncubator extends ClimateReceiverLockable implements ISidedInve
 		DCHeatTier heat = current.getHeat();
 		DCHumidity hum = current.getHumidity();
 		DCAirflow air = current.getAirflow();
-		if (heat == DCHeatTier.WARM && hum == DCHumidity.NORMAL && air.getID() > DCAirflow.TIGHT.getID()) {
-			return true;
-		}
+		if (heat == DCHeatTier.WARM && hum == DCHumidity.NORMAL && air.getID() > DCAirflow.TIGHT.getID()) { return true; }
 		return false;
 	}
 
@@ -195,6 +192,10 @@ public class TileIncubator extends ClimateReceiverLockable implements ISidedInve
 		return item;
 	}
 
+	public IClimate getClimate() {
+		return current == null ? ClimateAPI.register.getClimateFromParam(DCHeatTier.NORMAL, DCHumidity.NORMAL, DCAirflow.NORMAL) : current;
+	}
+
 	public void setClimate(IClimate climate) {
 		this.current = climate;
 	}
@@ -209,7 +210,9 @@ public class TileIncubator extends ClimateReceiverLockable implements ISidedInve
 	protected DCInventory invs = new DCInventory(18);
 
 	protected int[] slots() {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+		return new int[] {
+				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+		};
 	};
 
 	// スロット数
@@ -271,9 +274,7 @@ public class TileIncubator extends ClimateReceiverLockable implements ISidedInve
 		if (!DCUtil.isEmpty(stack)) {
 			if (MainUtil.hasDic(stack, "egg")) {
 				return true;
-			} else if (stack.getItem() instanceof IMediumItem) {
-				return true;
-			}
+			} else if (stack.getItem() instanceof IMediumItem) { return true; }
 		}
 		return false;
 	}
