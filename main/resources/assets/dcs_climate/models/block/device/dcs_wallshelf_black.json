@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/device/dcs_wallshelf_base",
-    "textures": {
-        "base": "dcs_climate:blocks/build/build_black",
-        "face": "dcs_climate:blocks/ores/gemblock_bedrock",
-        "handle": "dcs_climate:blocks/ores/oreblock_brass"
-    }
-}

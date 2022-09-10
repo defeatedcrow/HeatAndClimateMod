@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north":  { "model": "dcs_climate:device/dcs_wallshelf_greisen" },
-        "facing=south":  { "model": "dcs_climate:device/dcs_wallshelf_greisen", "y": 180, "uvlock": true  },
-        "facing=west":  { "model": "dcs_climate:device/dcs_wallshelf_greisen", "y": 270, "uvlock": true  },
-        "facing=east":  { "model": "dcs_climate:device/dcs_wallshelf_greisen", "y": 90, "uvlock": true  }
-    }
-}

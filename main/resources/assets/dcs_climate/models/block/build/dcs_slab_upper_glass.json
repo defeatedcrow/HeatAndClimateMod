@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/dcs_slab_upper_base",
-    "textures": {
-        "down": "dcs_climate:blocks/build/glass_stairs",
-        "up": "dcs_climate:blocks/build/glass_stairs",
-        "side": "dcs_climate:blocks/build/glass_stairs"
-    }
-}

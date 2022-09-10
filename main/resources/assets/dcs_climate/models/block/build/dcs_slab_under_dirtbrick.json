@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/dcs_slab_under_base",
-    "textures": {
-        "down": "dcs_climate:blocks/build/build_dirtbrick",
-        "up": "dcs_climate:blocks/build/build_dirtbrick",
-        "side": "dcs_climate:blocks/build/build_dirtbrick"
-    }
-}

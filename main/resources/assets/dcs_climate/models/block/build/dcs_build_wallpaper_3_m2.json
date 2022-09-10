@@ -1,9 +1,0 @@
-{
-    "parent":"dcs_climate:block/dcs_cube_sided",
-    "textures":{
-        "down":"dcs_climate:blocks/build/wallpaper/wallpaper_n_flower",
-        "up":"dcs_climate:blocks/build/wallpaper/wallpaper_n_flower",
-        "ns":"dcs_climate:blocks/build/wallpaper/wallpaper_m2_flower",
-        "we":"dcs_climate:blocks/build/wallpaper/wallpaper_m2_flower"
-    }
-}

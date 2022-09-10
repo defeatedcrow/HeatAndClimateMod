@@ -1,6 +1,0 @@
-## Contributors ##
-special thanks!
-
-mrAppleXZ: performance fix
-SkyTheory: bug fixes and enhancements
-

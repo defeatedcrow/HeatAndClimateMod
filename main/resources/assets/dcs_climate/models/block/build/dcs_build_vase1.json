@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_vase_stand",
-    "textures": {
-        "base": "dcs_climate:blocks/build/vase_white_base",
-        "side": "dcs_climate:blocks/build/vase_white_side",
-        "top": "dcs_climate:blocks/build/vase_white_top"
-    }
-}

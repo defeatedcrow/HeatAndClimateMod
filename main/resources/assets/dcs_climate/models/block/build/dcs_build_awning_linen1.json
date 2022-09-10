@@ -1,9 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_build_awning_linen0",
-    "textures": {
-        "particle": "dcs_climate:blocks/build/canvas_linen_2",
-        "base": "dcs_climate:blocks/build/canvas_linen_2",
-        "wood": "blocks/planks_oak"
-    }
-}
-

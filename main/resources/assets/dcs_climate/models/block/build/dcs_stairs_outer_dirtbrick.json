@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "dcs_climate:blocks/build/build_dirtbrick",
-        "top": "dcs_climate:blocks/build/build_dirtbrick",
-        "side": "dcs_climate:blocks/build/build_dirtbrick"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:item/magic/dcs_color_gauntlet0",
-    "textures": {
-        "hand": "dcs_climate:items/magic/gauntlet_ug_0",
-        "arm": "dcs_climate:items/magic/gauntlet_ug_1",
-        "particle": "dcs_climate:items/magic/gauntlet_ug_1"
-    }
-}

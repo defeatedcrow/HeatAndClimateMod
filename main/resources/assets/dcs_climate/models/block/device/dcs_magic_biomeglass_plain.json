@@ -1,9 +1,0 @@
-{
-    "parent": "dcs_climate:block/device/dcs_biomeglass_base",
-    "textures": {
-        "base": "dcs_climate:blocks/magic/biomeglass_grass",
-        "inner": "dcs_climate:blocks/magic/biomeglass_grass_i",
-        "down": "dcs_climate:blocks/magic/biomeglass_grass_b",
-        "up": "dcs_climate:blocks/magic/biomeglass_sky"
-    }
-}

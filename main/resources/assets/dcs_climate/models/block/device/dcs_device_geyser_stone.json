@@ -1,7 +1,0 @@
-{"parent":"dcs_climate:block/dcs_cube_sided",
- "textures":{
-    "down":"dcs_climate:blocks/ores/stone_geyser_side",
-    "up":"dcs_climate:blocks/ores/stone_geyser_top",
-    "ns":"dcs_climate:blocks/ores/stone_geyser_side",
-    "we":"dcs_climate:blocks/ores/stone_geyser_side"}
- }

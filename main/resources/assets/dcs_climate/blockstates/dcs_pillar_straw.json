@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "axis=x": { "model": "dcs_climate:build/dcs_pillar_straw", "x": 90, "y": 90   },
-        "axis=y": { "model": "dcs_climate:build/dcs_pillar_straw" },
-        "axis=z": { "model": "dcs_climate:build/dcs_pillar_straw", "x": 90},
-        "axis=none": { "model": "dcs_climate:build/dcs_pillar_straw" }
-    }
-}

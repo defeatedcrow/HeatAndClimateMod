@@ -1,6 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_fence_base_main",
-    "textures": {
-        "base": "dcs_climate:blocks/ores/gemblock_marble"
-    }
-}

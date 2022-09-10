@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/dcs_slab_upper_base",
-    "textures": {
-        "down": "dcs_climate:blocks/ores/gemblock_chal_red",
-        "up": "dcs_climate:blocks/ores/gemblock_chal_red",
-        "side": "dcs_climate:blocks/ores/gemblock_chal_red"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/dcs_desk_lamp",
-    "textures": {
-        "inner": "dcs_climate:blocks/build/panel_chal_lamp_w",
-        "shade": "dcs_climate:blocks/build/panel_chal_lamp_r",
-        "metal": "dcs_climate:blocks/ores/oreblock_copper"
-    }
-}

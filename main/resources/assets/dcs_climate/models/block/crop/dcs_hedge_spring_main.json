@@ -1,6 +1,0 @@
-{
-    "parent": "dcs_climate:block/crop/dcs_hedge_base_main",
-    "textures": {
-        "leaves": "dcs_climate:blocks/crop/flowers_azalea"
-    }
-}

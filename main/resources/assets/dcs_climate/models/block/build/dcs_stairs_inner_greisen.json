@@ -1,8 +1,0 @@
-{
-    "parent": "block/inner_stairs",
-    "textures": {
-        "bottom": "dcs_climate:blocks/ores/gemblock_greisen",
-        "top": "dcs_climate:blocks/ores/gemblock_greisen",
-        "side": "dcs_climate:blocks/ores/gemblock_greisen"
-    }
-}

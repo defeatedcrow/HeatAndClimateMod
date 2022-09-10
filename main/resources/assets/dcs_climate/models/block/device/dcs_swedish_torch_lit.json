@@ -1,9 +1,0 @@
-{
-    "parent": "dcs_climate:block/device/dcs_swedish_torch_base",
-    "textures": {
-        "top": "dcs_climate:blocks/build/swedish_torch_lit_top",
-        "inner": "dcs_climate:blocks/build/swedish_torch_lit_inner",
-        "side": "dcs_climate:blocks/build/swedish_torch_lit_side",
-        "particle": "dcs_climate:blocks/build/swedish_torch_lit_inner"
-    }
-}

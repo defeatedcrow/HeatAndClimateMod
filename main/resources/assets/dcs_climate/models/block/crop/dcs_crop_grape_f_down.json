@@ -1,6 +1,0 @@
-{
-    "parent":"block/cross",
-    "textures":{
-        "cross":"dcs_climate:blocks/crop/leaves_grape_f_s"
-     }
-}

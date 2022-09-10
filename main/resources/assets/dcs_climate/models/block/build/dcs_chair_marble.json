@@ -1,7 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_chair_base",
-    "textures": {
-        "top": "dcs_climate:blocks/ores/gemblock_marble",
-        "base": "dcs_climate:blocks/ores/gemblock_marble"
-    }
-}

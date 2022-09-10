@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "type=0": { "model": "dcs_climate:build/dcs_desiccant_red" },
-        "type=1": { "model": "dcs_climate:build/dcs_desiccant_yellow" },
-        "type=2": { "model": "dcs_climate:build/dcs_desiccant_green" },
-        "type=3": { "model": "dcs_climate:build/dcs_desiccant_blue" }
-    }
-}

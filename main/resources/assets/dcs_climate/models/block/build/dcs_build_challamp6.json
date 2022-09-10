@@ -1,7 +1,0 @@
-{
-    "parent": "dcs_climate:block/dcs_cube_lamp",
-    "textures": {
-        "glass": "blocks/glass",
-        "inner": "dcs_climate:blocks/build/panel_chal_lamp_w"
-    }
-}

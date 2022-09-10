@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north":  { "model": "dcs_climate:build/dcs_build_markingpanel" },
-        "facing=south":  { "model": "dcs_climate:build/dcs_build_markingpanel", "y": 180, "uvlock": false  },
-        "facing=west":  { "model": "dcs_climate:build/dcs_build_markingpanel", "y": 270, "uvlock": false },
-        "facing=east":  { "model": "dcs_climate:build/dcs_build_markingpanel", "y": 90, "uvlock": false  }
-    }
-}

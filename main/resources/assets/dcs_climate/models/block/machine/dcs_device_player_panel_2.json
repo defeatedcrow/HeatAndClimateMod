@@ -1,7 +1,0 @@
-{
-    "parent": "dcs_climate:block/machine/dcs_device_panel_base",
-    "textures": {
-        "particle": "dcs_climate:blocks/machine/warp_panel_on",
-        "base": "dcs_climate:blocks/machine/warp_panel_on"
-    }
-}

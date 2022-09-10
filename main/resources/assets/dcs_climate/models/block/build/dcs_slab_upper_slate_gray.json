@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/dcs_slab_upper_base",
-    "textures": {
-        "down": "dcs_climate:blocks/build/roof_slate",
-        "up": "dcs_climate:blocks/build/roof_slate",
-        "side": "dcs_climate:blocks/build/roof_slate"
-    }
-}

@@ -1,5 +1,0 @@
-{
-    "variants": {
-        "normal": { "model": "dcs_climate:machine/dcs_device_tankyard" }
-    }
-}

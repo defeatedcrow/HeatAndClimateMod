@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "dcs_climate:blocks/build/straw_bottom",
-        "side": "dcs_climate:blocks/build/straw_side"
-    }
-}

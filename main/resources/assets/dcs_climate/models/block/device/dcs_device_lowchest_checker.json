@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/device/dcs_lowchest_base",
-    "textures": {
-        "base": "dcs_climate:blocks/build/build_white",
-        "face": "dcs_climate:blocks/build/build_checker",
-        "handle": "dcs_climate:blocks/ores/oreblock_brass"
-    }
-}

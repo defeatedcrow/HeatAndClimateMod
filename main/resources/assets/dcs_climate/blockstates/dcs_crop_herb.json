@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "stage=0": { "model": "dcs_climate:crop/dcs_crop_herb0" },
-        "stage=1": { "model": "dcs_climate:crop/dcs_crop_herb1" },
-        "stage=2": { "model": "dcs_climate:crop/dcs_crop_herb2" },
-        "stage=3": { "model": "dcs_climate:crop/dcs_crop_herb3" }
-    }
-}

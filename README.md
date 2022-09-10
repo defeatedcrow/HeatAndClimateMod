@@ -1,5 +1,5 @@
 # HeatAndClimateMod
-A Mod for Minecraft 1.12.2
+A Mod for Minecraft 1.19
 
 ## Project Site
 Please visit my new wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
@@ -8,9 +8,8 @@ Please visit my new wiki: http://defeatedcrow.jp/modwiki/HeatAndClimate
 This is a mod being developed by @defeatedcrow. This mod requires HeatAndClimateLib.<br>  このmodはdefeatedcrowが作成する、HeatAndClimateLibを利用したMinecraft用Modです。HeatAndClimateLibを前提Modとして要求します。<br> 現在の開発環境はMC1.12.2です。
 
 ## Current operating environment:
-- Minecraft 1.12.2  
-- MinecraftForge 14.23.5.2768+  
-- [HeatAndClimateLib](https://github.com/defeatedcrow/HeatAndClimateLib)
+- Minecraft 1.19  
+- MinecraftForge 1.19-41.1.0+
    
 ## Licenses
 このmodは以下のライセンスの元で公開されます。 <br>
@@ -18,6 +17,7 @@ This mod is distributed under the following license:
 ### Code: All Rights Reserved
 #### Conditions
 - 著作権者の表示 Copyright notice
+-- このmodのソースコードを流用した場合、クレジットを明記してください。
 - 商用利用禁止 Commercial use prohibition
 
 #### Permissions
@@ -55,9 +55,7 @@ This mod is distributed under the following license:
 
 4. Add some small veins, and new metals. They are required for the construction of the tools, equipment and building blocks in this mod. <br> 新しい金属と、特殊形状のいくつかの小鉱脈と、鉱脈に由来する新しい金属を追加します。それらは、Modのツールや建材に必要になります。<br>
 
-5. Add various functions to improve my work. <br> 私の開発を補助するための様々な機能。<br>
- -  Automatic generation of simple json model. 簡単なものにかぎり、モデル用Jsonの自動生成。<br>
- -  Automatic addition of ore dictionary recipes. 自動的に鉱石辞書に変換・追加する機能。(FluidityFoodstuffsから移植)<br>
+Details about the mod are described in the ReadMe.txt file included in the package. <br> modに関する詳細は、パッケージに同梱のReadMe.txtファイルに記述されています。
 
 <br>
 Copyright (c) defeatedcrow 2016-

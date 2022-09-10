@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/machine/dcs_device_monitor_base",
-    "textures": {
-        "base": "dcs_climate:blocks/machine/monitor_base",
-        "panel": "dcs_climate:blocks/machine/monitor_panel",
-        "lamp": "dcs_climate:blocks/machine/monitor_item_on"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "type=0": { "model": "dcs_climate:build/dcs_coolant_0" },
-        "type=1": { "model": "dcs_climate:build/dcs_coolant_1" },
-        "type=2": { "model": "dcs_climate:build/dcs_coolant_2" },
-        "type=3": { "model": "dcs_climate:build/dcs_coolant_3" }
-    }
-}

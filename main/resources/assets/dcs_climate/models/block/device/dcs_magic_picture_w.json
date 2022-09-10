@@ -1,7 +1,0 @@
-{
-    "parent": "dcs_climate:block/device/dcs_picture_base",
-    "textures": {
-        "base": "dcs_climate:blocks/magic/magic_picture_1",
-        "picture": "dcs_climate:blocks/magic/magic_picture_wb"
-    }
-}

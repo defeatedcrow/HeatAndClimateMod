@@ -1,6 +1,0 @@
-{
-  "parent": "dcs_climate:block/build/glass/dcs_glass_selenite_core",
-  "textures": {
-    "particle": "dcs_climate:blocks/build/glass_crystal"
-  }
-}

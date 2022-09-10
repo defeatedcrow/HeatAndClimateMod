@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_sofabase2_r",
-    "textures": {
-        "upper": "dcs_climate:blocks/build/sofa_pink_upper",
-        "under": "dcs_climate:blocks/build/sofa_pink_under",
-        "foot": "dcs_climate:blocks/build/panel_wood_white"
-    }
-}

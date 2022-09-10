@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "powered=false": { "model": "dcs_climate:build/dcs_build_pressure_chal_up" },
-        "powered=true": { "model": "dcs_climate:build/dcs_build_pressure_chal_down" }
-    }
-}

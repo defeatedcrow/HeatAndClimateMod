@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_build_shield_base",
-    "textures": {
-        "base": "dcs_climate:blocks/misc/shield_silver_base",
-        "face": "dcs_climate:blocks/misc/shield_silver_top"
-    }
-}
-

@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_flower_base",
-    "textures": {
-        "main": "dcs_climate:blocks/build/flower/flower_snapdragon1",
-        "side": "dcs_climate:blocks/build/flower/flower_snapdragon2",
-        "vine": "dcs_climate:blocks/build/flower/flower_snapdragon3"
-    }
-}

@@ -1,7 +1,0 @@
-{
-    "parent": "block/door_bottom",
-    "textures": {
-        "bottom": "dcs_climate:blocks/build/door_gypsum_lower",
-        "top": "dcs_climate:blocks/build/door_gypsum_upper"
-    }
-}

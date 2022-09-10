@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "dcs_climate:blocks/ores/gemblock_marble",
-        "top": "dcs_climate:blocks/ores/gemblock_marble",
-        "side": "dcs_climate:blocks/ores/gemblock_marble"
-    }
-}

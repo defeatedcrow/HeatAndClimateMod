@@ -1,7 +1,0 @@
-{
-    "parent": "block/door_top_rh",
-    "textures": {
-        "bottom": "dcs_climate:blocks/build/door_greisen_lower",
-        "top": "dcs_climate:blocks/build/door_greisen_upper"
-    }
-}

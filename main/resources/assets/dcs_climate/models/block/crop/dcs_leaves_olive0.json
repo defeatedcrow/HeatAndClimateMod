@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/crop/dcs_leaves_base",
-    "textures": {
-        "particle": "dcs_climate:blocks/crop/olive_base",
-        "base": "dcs_climate:blocks/crop/olive_base",
-        "overlay": "dcs_climate:blocks/clear"
-        }
-}

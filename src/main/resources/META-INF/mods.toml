@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[41,)"
+license="All rights reserved, Please see homepage."
+issueTrackerURL="https://github.com/defeatedcrow/HeatAndClimateMod/issues"
+[[mods]]
+modId="dcs_climate"
+version="${file.jarVersion}"
+displayName="HeatAndClimate"
+updateJSONURL="https://defeatedcrow.jp/version/haclib.json"
+displayURL="https://github.com/defeatedcrow/HeatAndClimateMod"
+logoFile="logofile_x256.png"
+authors="defeatedcrow"
+
+description='''
+Take advantage of the climate and have fun!
+'''
+
+[[dependencies.dcs_climate]] #optional
+    modId="forge"
+    mandatory=true
+    versionRange="[41,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.dcs_climate]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19,1.20)"
+    ordering="NONE"
+    side="BOTH"

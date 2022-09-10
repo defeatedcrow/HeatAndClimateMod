@@ -1,8 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_build_curtain_f",
-    "ambientocclusion": true,
-    "textures": {
-        "particle": "dcs_climate:blocks/build/curtain_gray",
-        "cloth": "dcs_climate:blocks/build/curtain_gray"
-    }
-}

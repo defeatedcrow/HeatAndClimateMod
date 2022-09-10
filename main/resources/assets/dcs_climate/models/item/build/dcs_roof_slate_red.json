@@ -1,9 +1,0 @@
-{
-    "parent": "dcs_climate:block/build/dcs_roof_base_item",
-    "textures": {
-        "base": "dcs_climate:blocks/build/build_plaster",
-        "side": "dcs_climate:blocks/build/build_plaster_side",
-        "roof": "dcs_climate:blocks/build/roof_slate_red"
-    }
-}
-
