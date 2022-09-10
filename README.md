@@ -17,7 +17,7 @@ This mod is distributed under the following license:
 ### Code: All Rights Reserved
 #### Conditions
 - 著作権者の表示 Copyright notice
--- このmodのソースコードを流用した場合、クレジットを明記してください。
+<br> このmodのソースコードを流用した場合、クレジットを明記してください。
 - 商用利用禁止 Commercial use prohibition
 
 #### Permissions
