@@ -4,15 +4,14 @@ import java.io.File;
 import java.nio.file.Path;
 
 import defeatedcrow.hac.api.ClimateAPI;
-import defeatedcrow.hac.core.client.DCTextureStitch;
 import defeatedcrow.hac.core.climate.ClimateCalculator;
-import defeatedcrow.hac.core.climate.ClimateHUDEvent;
 import defeatedcrow.hac.core.climate.ClimateHelper;
+import defeatedcrow.hac.core.climate.register.ArmorItemRegister;
+import defeatedcrow.hac.core.climate.register.ArmorMaterialRegister;
 import defeatedcrow.hac.core.climate.register.BiomeClimateRegister;
 import defeatedcrow.hac.core.climate.register.BlockClimateRegister;
-import defeatedcrow.hac.core.event.ClimateTickEvent;
+import defeatedcrow.hac.core.climate.register.MobResistanceRegister;
 import defeatedcrow.hac.core.network.packet.DCPacket;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -67,6 +66,9 @@ public class ClimateCore {
 		ClimateAPI.helper = new ClimateHelper();
 		ClimateAPI.registerBiome = BiomeClimateRegister.INSTANCE;
 		ClimateAPI.registerBlock = new BlockClimateRegister();
+		ClimateAPI.registerMaterial = new ArmorMaterialRegister();
+		ClimateAPI.registerArmor = new ArmorItemRegister();
+		ClimateAPI.registerMob = new MobResistanceRegister();
 	}
 
 	public void commonSetup(FMLCommonSetupEvent event) {
@@ -74,8 +76,6 @@ public class ClimateCore {
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
-		MinecraftForge.EVENT_BUS.addListener(ClimateTickEvent::onClientTick);
-		MinecraftForge.EVENT_BUS.addListener(ClimateHUDEvent::render);
-		MinecraftForge.EVENT_BUS.addListener(DCTextureStitch::register);
+
 	}
 }

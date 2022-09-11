@@ -1,7 +1,5 @@
 package defeatedcrow.hac.api.damage;
 
-import java.util.HashMap;
-
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -10,11 +8,7 @@ import net.minecraft.world.item.ItemStack;
  */
 public interface IArmorItemRegister {
 
-	HashMap<Item, Float> getHeatMap();
-
-	HashMap<Item, Float> getColdMap();
-
-	void registerMaterial(ItemStack item, float heat, float cold);
+	void registerArmorItem(Item item, float heat, float cold);
 
 	float getHeatPreventAmount(ItemStack item);
 

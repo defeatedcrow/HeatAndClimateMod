@@ -54,16 +54,15 @@ public class CoreConfigDC {
 
 	// difficulty
 	public static boolean climateDam = true;
-	public static boolean peacefulDam = false;
+	public static boolean peacefulDam = true;
 	public static int damageDifficulty = 1; // 0-2
 	public static boolean burntFood = false;
 	public static double food_amount = 1.0D;
-	public static boolean heldItem = true;
 
 	// entity
 	public static boolean mobClimateDamage = true;
 	public static boolean sharePotionWithRidingMob = true;
-	public static int entityInterval = 60;
+	public static int entityInterval = 100;
 	public static String[] entityBlackList = new String[] {
 		"minecraft:squid",
 		"minecraft:bat",
@@ -77,7 +76,7 @@ public class CoreConfigDC {
 	public static boolean enableFarmland = true;
 	public static boolean enableIce = true;
 	public static boolean enableSnow = true;
-	public static int updateFrequency = 5;
+	public static int updateFrequency = 3;
 	public static boolean disableCustomRecipe = false;
 	public static boolean enableDropItemSmelting = false;
 

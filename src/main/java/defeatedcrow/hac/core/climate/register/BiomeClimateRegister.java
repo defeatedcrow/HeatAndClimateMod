@@ -16,6 +16,7 @@ import defeatedcrow.hac.core.climate.Climate;
 import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.config.CoreConfigDC;
 import defeatedcrow.hac.core.util.DCTimeHelper;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -81,7 +82,7 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 	public Optional<IClimate> getClimateFromBiome(Level world, BlockPos pos) {
 		if (world.isLoaded(pos)) {
 			Holder<Biome> biome = world.getBiome(pos);
-			ResourceLocation name = getRegName(biome);
+			ResourceLocation name = DCUtil.getLocationName(biome).orElse(DCUtil.DUMMY);
 			return getClimateFromBiome(name);
 		}
 		return Optional.empty();
@@ -105,7 +106,8 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 		if (world.isLoaded(pos)) {
 			Holder<Biome> b = world.getBiome(pos);
 			ResourceLocation dim = world.dimension().location();
-			float temp = getBiomeTemp(world, pos);
+			Optional<DCHeatTier> ret = getRegisteredHeatTier(reg.getKey(b.get()));
+			float temp = ret.map(h -> h.getBiomeTemp()).orElse(getBiomeTemp(world, pos));
 
 			if (CoreConfigDC.enableWeatherEffect) {
 				float offset = WeatherChecker.getTempOffsetFloat(dim, world.getBiome(pos).is(Biomes.IS_HOT_NETHER));
@@ -192,14 +194,6 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 	public Optional<DCHumidity> getRegisteredHumidity(ResourceLocation biomeID) {
 		Optional<IClimate> clm = getClimateFromList(biomeID);
 		return clm.map(ret -> ret.getHumidity());
-	}
-
-	private static ResourceLocation getRegName(Holder<Biome> biome) {
-		return biome.unwrap().map((res) -> {
-			return res.location();
-		}, (b) -> {
-			return null;
-		});
 	}
 
 }

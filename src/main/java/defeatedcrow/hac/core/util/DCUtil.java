@@ -3,11 +3,13 @@ package defeatedcrow.hac.core.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.DCLogger;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -20,7 +22,25 @@ public class DCUtil {
 
 	public static Random rand = new Random();
 
-	public static Block getBlockSetFromStringWildcard(String name) {
+	public static final ResourceLocation DUMMY = new ResourceLocation("dcs_climate:empty");
+
+	public static Optional<ResourceLocation> getRes(Item item) {
+		return Optional.ofNullable(ForgeRegistries.ITEMS.getKey(item));
+	}
+
+	public static Optional<ResourceLocation> getRes(Block block) {
+		return Optional.ofNullable(ForgeRegistries.BLOCKS.getKey(block));
+	}
+
+	public static Optional<ResourceLocation> getLocationName(Holder<?> holder) {
+		return holder.unwrap().map((res) -> {
+			return Optional.ofNullable(res.location());
+		}, (b) -> {
+			return Optional.empty();
+		});
+	}
+
+	public static Block getBlockFromString(String name) {
 		if (name == null || name.equalsIgnoreCase("empty")) {
 			return Blocks.AIR;
 		} else {

@@ -31,8 +31,7 @@ public enum BlockClimateData {
 	WET_SPONGE(Blocks.WET_SPONGE, DCHeatTier.NORMAL, DCHumidity.WET, DCAirflow.TIGHT),
 	SLIME_BLOCK(Blocks.SLIME_BLOCK, DCHeatTier.NORMAL, DCHumidity.WET, DCAirflow.TIGHT),
 	WATER(Blocks.WATER, DCHeatTier.NORMAL, DCHumidity.UNDERWATER, DCAirflow.TIGHT),
-	WATER_CAULDRON(Blocks.WATER_CAULDRON, DCHeatTier.NORMAL, DCHumidity.UNDERWATER, DCAirflow.TIGHT),
-	AIR(Blocks.AIR, DCHeatTier.NORMAL, DCHumidity.NORMAL, DCAirflow.NORMAL);
+	WATER_CAULDRON(Blocks.WATER_CAULDRON, DCHeatTier.NORMAL, DCHumidity.UNDERWATER, DCAirflow.TIGHT);
 
 	private final Block block;
 	private final DCHeatTier heat;

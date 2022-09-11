@@ -12,6 +12,7 @@ import defeatedcrow.hac.api.climate.IHeatCanceler;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.api.event.BlockHeatTierEvent;
+import defeatedcrow.hac.core.config.CoreConfigDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -60,7 +61,7 @@ public class ClimateCalculator implements IClimateCalculator {
 
 	@Override
 	public DCHeatTier getMostHeat(Level level, BlockPos pos) {
-		if (level == null || pos == null || !level.isAreaLoaded(pos, 2)) {
+		if (level == null || pos == null || !level.isLoaded(pos)) {
 			return DCHeatTier.NORMAL;
 		}
 		DCHeatTier temp = ClimateAPI.registerBiome.getHeatTier(level, pos);
@@ -126,7 +127,7 @@ public class ClimateCalculator implements IClimateCalculator {
 
 	@Override
 	public DCHeatTier getMostCold(Level level, BlockPos pos) {
-		if (level == null || pos == null || !level.isAreaLoaded(pos, 2)) {
+		if (level == null || pos == null || !level.isLoaded(pos)) {
 			return DCHeatTier.NORMAL;
 		}
 		DCHeatTier temp = ClimateAPI.registerBiome.getHeatTier(level, pos);
@@ -190,7 +191,7 @@ public class ClimateCalculator implements IClimateCalculator {
 	// 合計値で考える
 	@Override
 	public DCHumidity getHumidity(Level level, BlockPos pos, int r, boolean h) {
-		if (level == null || pos == null || !level.isAreaLoaded(pos, r)) {
+		if (level == null || pos == null || !level.isLoaded(pos)) {
 			return DCHumidity.NORMAL;
 		}
 
@@ -281,7 +282,7 @@ public class ClimateCalculator implements IClimateCalculator {
 	// Airの数をカウントして決定
 	@Override
 	public DCAirflow getAirflow(Level level, BlockPos pos) {
-		if (level == null || pos == null || !level.isAreaLoaded(pos, 1)) {
+		if (level == null || pos == null || !level.isLoaded(pos)) {
 			return DCAirflow.NORMAL;
 		}
 
@@ -302,10 +303,9 @@ public class ClimateCalculator implements IClimateCalculator {
 				air = DCAirflow.FLOW;
 				hasWind = true;
 			}
+		} else if (CoreConfigDC.tightUnderworld && pos.getY() < 30) {
+			air = DCAirflow.TIGHT;
 		}
-		// else if (CoreConfigDC.tightUnderLevel && pos.getY() < 30) {
-		// air = DCAirflow.TIGHT;
-		// }
 
 		/*
 		 * blockの値
@@ -372,7 +372,7 @@ public class ClimateCalculator implements IClimateCalculator {
 		while (pos2.getY() < lim && pos2.getY() < level.getHeight()) {
 			BlockState state = level.getBlockState(pos2);
 			Block block = level.getBlockState(pos2).getBlock();
-			if (!level.isEmptyBlock(pos2) && !state.getMaterial().blocksMotion()) {
+			if (!level.isEmptyBlock(pos2) && state.getMaterial().blocksMotion()) {
 				return true;
 			}
 			pos2 = pos2.above();
@@ -397,7 +397,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			BlockPos p2 = pos.above(i);
 			BlockState state = level.getBlockState(p2);
 			Block block = level.getBlockState(p2).getBlock();
-			if (!level.isEmptyBlock(p2) && !state.getMaterial().blocksMotion()) {
+			if (!level.isEmptyBlock(p2) && state.getMaterial().blocksMotion()) {
 				break;
 			} else {
 				count++;
@@ -410,7 +410,7 @@ public class ClimateCalculator implements IClimateCalculator {
 			BlockPos p2 = pos.below(i);
 			BlockState state = level.getBlockState(p2);
 			Block block = level.getBlockState(p2).getBlock();
-			if (!level.isEmptyBlock(p2) && !state.getMaterial().blocksMotion()) {
+			if (!level.isEmptyBlock(p2) && state.getMaterial().blocksMotion()) {
 				break;
 			} else {
 				count++;
@@ -450,10 +450,10 @@ public class ClimateCalculator implements IClimateCalculator {
 		if (state != null) {
 			Block block = state.getBlock();
 			DCHumidity ret = null;
-			if (ClimateAPI.registerBlock.isRegisteredHum(state)) {
-				ret = ClimateAPI.registerBlock.getHumidity(state).orElse(DCHumidity.NORMAL);
-			} else if (block instanceof IHumidityTile) {
+			if (block instanceof IHumidityTile) {
 				ret = ((IHumidityTile) block).getHumidity(Level, target, source);
+			} else if (ClimateAPI.registerBlock.isRegisteredHum(state)) {
+				ret = ClimateAPI.registerBlock.getHumidity(state).orElse(DCHumidity.NORMAL);
 			} else if (block instanceof IFluidBlock) {
 				Fluid type = ((IFluidBlock) block).getFluid();
 				if (type != null && type.getFluidType().canHydrate(type.defaultFluidState(), Level, target, Blocks.FARMLAND.defaultBlockState(), source)) {
@@ -477,10 +477,10 @@ public class ClimateCalculator implements IClimateCalculator {
 			DCAirflow ret = null;
 			if (block == Blocks.AIR) {
 				ret = DCAirflow.NORMAL;
-			} else if (ClimateAPI.registerBlock.isRegisteredAir(state)) {
-				ret = ClimateAPI.registerBlock.getAirflow(state).orElse(DCAirflow.NORMAL);
 			} else if (block instanceof IAirflowTile) {
 				ret = ((IAirflowTile) block).getAirflow(level, target, source);
+			} else if (ClimateAPI.registerBlock.isRegisteredAir(state)) {
+				ret = ClimateAPI.registerBlock.getAirflow(state).orElse(DCAirflow.TIGHT);
 			} else if (!state.getMaterial().blocksMotion() && !state.getMaterial().isLiquid()) {
 				ret = DCAirflow.NORMAL;
 			}

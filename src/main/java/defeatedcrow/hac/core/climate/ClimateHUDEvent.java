@@ -11,6 +11,7 @@ import com.mojang.math.Matrix4f;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.config.CoreConfigDC;
 import defeatedcrow.hac.core.util.DCTexturePath;
 import defeatedcrow.hac.core.util.DCTimeHelper;
@@ -150,7 +151,8 @@ public class ClimateHUDEvent {
 						String biomeName = printBiome(biome);
 						if (biomeName != null) {
 							float f = biome.get().getBaseTemperature();
-							biomeName += " " + String.format("%.2f", f);
+							if (ClimateCore.isDebug)
+								biomeName += " " + String.format("%.2f", f);
 							fr.width(biomeName);
 							fr.drawShadow(pose, biomeName, x + CoreConfigDC.offsetBiome[0], y + CoreConfigDC.offsetBiome[1], 0xffffff);
 						}

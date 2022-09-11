@@ -32,7 +32,7 @@ public class DamageSourceClimate extends DamageSource {
 	public boolean isAir;
 
 	private DamageSourceClimate setBypassesArmor() {
-		this.setBypassesArmor();
+		super.bypassArmor();
 		return this;
 	}
 

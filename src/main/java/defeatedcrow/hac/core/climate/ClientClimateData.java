@@ -6,19 +6,29 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.climate.IHeatTile;
+import defeatedcrow.hac.api.damage.DamageSourceClimate;
+import defeatedcrow.hac.api.magic.CharmType;
+import defeatedcrow.hac.api.magic.IJewelCharm;
 import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.util.DCItemUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fluids.IFluidBlock;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 @OnlyIn(Dist.CLIENT)
 public class ClientClimateData {
@@ -62,31 +72,33 @@ public class ClientClimateData {
 		// }
 
 		// 防具の計算
-		// Iterable<ItemStack> items = player.getArmorSlots();
-		// if (items != null) {
-		// for (ItemStack item : items) {
-		// if (item.isEmpty())
-		// continue;
-		//
-		// heatPrev += DCUtil.getItemResistantData(item, false);
-		// coldPrev += DCUtil.getItemResistantData(item, true);
-		// }
-		// }
+		IItemHandler handler =
+				player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, Direction.NORTH).orElse(null);
+		if (handler != null) {
+			for (int s = 0; s < handler.getSlots(); s++) {
+				ItemStack item = handler.getStackInSlot(s);
+				if (item.isEmpty())
+					continue;
 
-		// // charm
-		// NonNullList<ItemStack> charms = DCUtil.getPlayerCharm(player, CharmType.DEFFENCE);
-		// DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
-		// DamageSourceClimate.climateColdDamage;
-		// for (ItemStack check : charms) {
-		// IJewelCharm charm = (IJewelCharm) check.getItem();
-		// if (isCold)
-		// coldPrev += charm.reduceDamage(source, check);
-		// else
-		// heatPrev += charm.reduceDamage(source, check);
-		// }
+				float p = DCItemUtil.getItemResistantData(item, false);
+				heatPrev += p;
+				float p2 = DCItemUtil.getItemResistantData(item, true);
+				coldPrev += p2;
+			}
+		}
 
-		// items = null;
-		// charms = null;
+		// charm
+		NonNullList<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.ALL);
+		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
+				DamageSourceClimate.climateColdDamage;
+		for (ItemStack check : charms) {
+			IJewelCharm charm = (IJewelCharm) check.getItem();
+			if (isCold)
+				coldPrev += charm.reduceDamage(player, DamageSourceClimate.climateColdDamage, damage, check);
+			else
+				heatPrev += charm.reduceDamage(player, DamageSourceClimate.climateHeatDamage, damage, check);
+		}
+		charms.clear();
 
 		if (player.level.getDifficulty() != Difficulty.PEACEFUL || CoreConfigDC.peacefulDam) {
 			if (isCold) {
