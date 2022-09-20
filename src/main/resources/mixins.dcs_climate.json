@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "defeatedcrow.hac.core.mixin",
+  "refmap": "dcs.refmap.json",
+  "minVersion": "0.7",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BiomeTempMixin",
+    "BlockUpdateMixin_Block",
+    "BlockUpdateMixin_Farm",
+    "BlockUpdateMixin_Snow"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

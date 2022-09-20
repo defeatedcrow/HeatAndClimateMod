@@ -14,8 +14,10 @@ public class CoreConfigDC {
 
 	public static final CoreConfigDC INSTANCE = new CoreConfigDC();
 
+	// debug
 	public static String debugPass = "Input the password here";
 	private final String BR = System.getProperty("line.separator");
+	public static EnumSeason debugForceSeason = null;
 
 	// key
 	public static int charmWarpKey = 0x2D; // X
@@ -54,7 +56,7 @@ public class CoreConfigDC {
 
 	// difficulty
 	public static boolean climateDam = true;
-	public static boolean peacefulDam = true;
+	public static boolean peacefulDam = false;
 	public static int damageDifficulty = 1; // 0-2
 	public static boolean burntFood = false;
 	public static double food_amount = 1.0D;

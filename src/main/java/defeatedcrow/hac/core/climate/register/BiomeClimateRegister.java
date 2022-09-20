@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.google.common.collect.ImmutableList;
+
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
@@ -20,10 +22,13 @@ import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.LegacyRandomSource;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
+import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
 import net.minecraftforge.common.Tags.Biomes;
-import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -101,16 +106,31 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 		return clm;
 	}
 
+	private static final PerlinSimplexNoise TEMPERATURE_NOISE = new PerlinSimplexNoise(new WorldgenRandom(
+			new LegacyRandomSource(1234L)), ImmutableList.of(0));
+
 	@Override
 	public DCHeatTier getHeatTier(Level world, BlockPos pos) {
 		if (world.isLoaded(pos)) {
 			Holder<Biome> b = world.getBiome(pos);
 			ResourceLocation dim = world.dimension().location();
 			Optional<DCHeatTier> ret = getRegisteredHeatTier(reg.getKey(b.get()));
-			float temp = ret.map(h -> h.getBiomeTemp()).orElse(getBiomeTemp(world, pos));
+			float temp = ret.map(h -> h.getBiomeTemp()).orElse(b.get().getBaseTemperature());
+
+			// Biome補正
+			if (b.is(BiomeTags.IS_NETHER)) {
+				temp += 2.0F;
+			}
+
+			// 高度補正
+			float f1 = (float) (TEMPERATURE_NOISE.getValue(pos.getX() / 8.0F, pos.getZ() / 8.0F, false) * 8.0D);
+			float f2 = (f1 + pos.getY() - 80.0F) * 0.05F / 40.0F;
+			if (f2 < -1.0F)
+				f2 = -1.0F;
+			temp -= f2;
 
 			if (CoreConfigDC.enableWeatherEffect) {
-				float offset = WeatherChecker.getTempOffsetFloat(dim, world.getBiome(pos).is(Biomes.IS_HOT_NETHER));
+				float offset = WeatherChecker.getTempOffsetFloat(dim, world.getBiome(pos).is(BiomeTags.IS_NETHER));
 				temp += offset;
 			}
 
@@ -122,8 +142,7 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 			DCHeatTier current = DCHeatTier.getTypeByBiomeTemp(temp);
 
 			WorldHeatTierEvent event = new WorldHeatTierEvent(world, pos, current, true);
-			if (event.hasResult() && event.getResult() == Result.ALLOW)
-				current = event.result();
+			current = event.result();
 
 			return current;
 
@@ -137,7 +156,7 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 		if (world.isLoaded(pos)) {
 			Holder<Biome> biome = world.getBiome(pos);
 			DCAirflow ret = getRegisteredAirflow(reg.getKey(biome.get())).orElse(DCAirflow.NORMAL);
-			if (biome.is(Biomes.IS_MOUNTAIN) || biome.is(Biomes.IS_PEAK))
+			if (biome.is(BiomeTags.IS_MOUNTAIN) || biome.is(BiomeTags.IS_HILL))
 				return DCAirflow.FLOW;
 			return ret;
 		}
@@ -149,33 +168,14 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 		if (world.isLoaded(pos)) {
 			Holder<Biome> biome = world.getBiome(pos);
 			DCHumidity hum = getRegisteredHumidity(reg.getKey(biome.get())).orElse(DCHumidity.NORMAL);
-			if (biome.is(Biomes.IS_DRY) || biome.is(Biomes.IS_SPARSE)) {
-				return DCHumidity.DRY;
-			} else if (biome.is(Biomes.IS_WATER) || biome.is(Biomes.IS_WET) || biome.get().getDownfall() > 0.8F) {
+			if (biome.is(Biomes.IS_WATER) || biome.is(Biomes.IS_WET) || biome.get().getDownfall() > 0.8F) {
 				return DCHumidity.WET;
+			} else if (biome.is(Biomes.IS_DRY) || biome.is(Biomes.IS_SPARSE)) {
+				return DCHumidity.DRY;
 			}
 			return hum;
 		}
 		return DCHumidity.NORMAL;
-	}
-
-	@Override
-	public float getBiomeTemp(Level world, BlockPos pos) {
-		if (world.isLoaded(pos)) {
-			Holder<Biome> biome = world.getBiome(pos);
-			float temp = biome.get().getBaseTemperature();
-
-			if (biome.is(Biomes.IS_HOT_NETHER)) {
-				temp += 2.0F;
-			} else if (biome.is(Biomes.IS_COLD_END)) {
-				temp -= 1.0F;
-			} else if (biome.is(Biomes.IS_WATER)) {
-				temp += 0.25F;
-			}
-			return temp;
-		} else {
-			return 0.5F;
-		}
 	}
 
 	@Override

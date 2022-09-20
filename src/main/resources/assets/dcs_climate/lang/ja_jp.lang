@@ -1,0 +1,65 @@
+
+## item
+item.dcs_checker_normal.name=気候チェッカー
+item.dcs_repair_patty.name=修繕ペースト
+
+## massage
+dcs.climate.tip.checker=右クリック:対象の座標のClimate値を調べます (range 2)
+dcs_climate.tip.durability=最大耐久値
+dcs_climate.tip.harvestlevel=採掘レベル
+dcs_climate.tip.resistance=気候耐性
+
+dcs.tip.shift=Lshiftキー: 詳細を表示
+
+dcs_climate.smelting=気候精錬レシピ
+dcs_climate.recipe=気候利用クラフト
+dcs_climate.mill=石臼
+dcs_climate.fluidcraft=液体加工レシピ
+dcs_climate.reactor=合成反応レシピ
+dcs_climate.crop=気候利用作物
+dcs_climate.effective=気候に影響するブロック
+dcs_climate.spinning=紡績機
+dcs_climate.biome=バイオーム気候情報
+dcs_climate.crusher=破砕機レシピ
+
+death.attack.dcs_heat=%1$sはこんがり焼き上がった。
+death.attack.dcs_cold=%1$sはシャーベットになった。
+death.attack.dcs_water=%1$sはびしょ濡れになった。
+death.attack.dcs_dry=%1$sはカサカサに乾いてしまった。
+death.attack.dcs_wind=%1$sは風に煽られた。
+death.attack.dcs_suffocation=%1$sは窒息してしまった。
+death.attack.dcs_machine=%1$sは労働災害に遭った。ご安全に!
+
+dcs.potion.freeze_resistance=冷気耐性
+dcs.freeze_resistance=冷気耐性
+
+dcs.potion.freeze_res=冷気耐性
+potion.effect.dcs.freeze_res=冷気耐性のポーション
+splash_potion.effect.dcs.freeze_res=冷気耐性のスプラッシュポーション
+lingering_potion.effect.dcs.freeze_res=冷気耐性の残留ポーション
+tipped_arrow.effect.dcs.freeze_res=冷気耐性の矢
+
+## enum type
+
+dcs.name.croptype.ALLIUM=ネギ
+dcs.name.croptype.AMARANTH=アカザ
+dcs.name.croptype.APIUM=セリ
+dcs.name.croptype.BEECH=ブナ
+dcs.name.croptype.BRASSICA=アブラナ
+dcs.name.croptype.CAPSICUM=トウガラシ
+dcs.name.croptype.CEREALS=ムギ
+dcs.name.croptype.CHERRY=サクラ
+dcs.name.croptype.CINNAMON=クスノキ
+dcs.name.croptype.CITRUS=カンキツ
+dcs.name.croptype.GINGER=ショウガ
+dcs.name.croptype.GRAPE=ブドウ
+dcs.name.croptype.KNOTWEED=タデ
+dcs.name.croptype.HERB=シソ
+dcs.name.croptype.MALLOW=アオイ
+dcs.name.croptype.MORNINGGROLY=ヒルガオ
+dcs.name.croptype.LOTUS=ハス
+dcs.name.croptype.PEAS=マメ
+dcs.name.croptype.REED=アシ
+dcs.name.croptype.RICE=イネ
+dcs.name.croptype.SOLANUM=ナス
+dcs.name.croptype.TRADING=交易限定

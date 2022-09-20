@@ -105,7 +105,7 @@ public class LivingTickEventDC {
 			}
 
 			for (EntityType<?> c : CoreConfigDC.blackListEntity) {
-				if (c.getBaseClass().isInstance(living))
+				if (c.tryCast(living) != null)
 					return;
 			}
 

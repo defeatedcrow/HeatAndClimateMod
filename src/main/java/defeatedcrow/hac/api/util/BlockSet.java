@@ -82,6 +82,6 @@ public class BlockSet {
 	private Property<?> getProp(BlockState state) {
 		Optional<Property<?>> prop =
 				state.getProperties().stream().filter(p -> p.getName().equals(getPropertyName())).findAny();
-		return prop.orElse(EMPTY);
+		return prop.orElse(DCState.EMPTY);
 	}
 }

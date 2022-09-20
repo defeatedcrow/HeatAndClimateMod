@@ -130,6 +130,9 @@ public class DCTimeHelper {
 	}
 
 	public static int getSeason(Level world) {
+		if (CoreConfigDC.debugForceSeason != null) {
+			return CoreConfigDC.debugForceSeason.id;
+		}
 		int season = 0;
 		int d = 0;
 		if (CoreConfigDC.enableRealTime) {
@@ -182,6 +185,6 @@ public class DCTimeHelper {
 		return offset;
 	}
 
-	public static EnumSeason currentSeason = null;
+	public static EnumSeason currentSeason = CoreConfigDC.debugForceSeason;
 
 }

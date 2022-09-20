@@ -61,7 +61,7 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 		registerHeatBlock(new BlockSet(Blocks.RED_CANDLE, "lit", ImmutableList.of("true")), DCHeatTier.WARM);
 		registerHeatBlock(new BlockSet(Blocks.WHITE_CANDLE, "lit", ImmutableList.of("true")), DCHeatTier.WARM);
 		registerHeatBlock(new BlockSet(Blocks.YELLOW_CANDLE, "lit", ImmutableList.of("true")), DCHeatTier.WARM);
-		registerHeatBlock(new BlockSet(Blocks.CAMPFIRE, "lit", ImmutableList.of("true")), DCHeatTier.OVEN);
+		registerHeatBlock(new BlockSet(Blocks.CAMPFIRE, "lit", ImmutableList.of("true")), DCHeatTier.BOIL);
 		registerHeatBlock(new BlockSet(Blocks.FURNACE, "lit", ImmutableList.of("true")), DCHeatTier.OVEN);
 		registerHeatBlock(new BlockSet(Blocks.SMOKER, "lit", ImmutableList.of("true")), DCHeatTier.OVEN);
 		registerHeatBlock(new BlockSet(Blocks.BLAST_FURNACE, "lit", ImmutableList.of("true")), DCHeatTier.KILN);

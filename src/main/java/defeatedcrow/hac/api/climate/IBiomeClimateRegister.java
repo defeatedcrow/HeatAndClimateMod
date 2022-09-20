@@ -55,9 +55,6 @@ public interface IBiomeClimateRegister {
 	/** 補正後の値を得る */
 	DCHumidity getHumidity(Level world, BlockPos pos);
 
-	/** 補正後の値を得る */
-	float getBiomeTemp(Level world, BlockPos pos);
-
 	/** 登録情報の確認 */
 	Optional<DCHeatTier> getRegisteredHeatTier(ResourceLocation biomeID);
 

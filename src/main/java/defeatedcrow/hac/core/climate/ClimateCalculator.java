@@ -240,7 +240,7 @@ public class ClimateCalculator implements IClimateCalculator {
 
 		// 雨が降っている
 		if (!hasRoof(level, pos)) {
-			int offset = level.isRaining() && !level.dimensionType().hasSkyLight() ? 1 : 0;
+			int offset = level.isRaining() && level.dimensionType().hasSkyLight() ? 1 : 0;
 			ret += offset;
 		}
 		/*

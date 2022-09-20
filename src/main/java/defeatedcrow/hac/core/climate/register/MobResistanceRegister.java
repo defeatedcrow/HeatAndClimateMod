@@ -30,14 +30,15 @@ public class MobResistanceRegister implements IMobHeatResistance {
 	public float getHeatResistance(ResourceLocation name, DCHeatTier temp) {
 		if (name != null) {
 			Optional<ParamEntity> ret = regList.stream().filter((p) -> p.entityName.equals(name.toString())).findAny();
+			float f = 2.0F;
 			if (ret.isPresent()) {
-				return temp.isCold() ? ret.map(p -> p.coldResistance).orElse(2.0F) :
+				f = temp.isCold() ? ret.map(p -> p.coldResistance).orElse(2.0F) :
 						ret.map(p -> p.heatResistance).orElse(2.0F);
 			}
 			EntityType<?> type = ForgeRegistries.ENTITY_TYPES.getValue(name);
 			Optional<MobClimateData> data = MobClimateData.getData(type);
-			return temp.isCold() ? data.map(d -> d.getColdResistance()).orElse(2.0F) :
-					data.map(d -> d.getHeatResistance()).orElse(2.0F);
+			return temp.isCold() ? data.map(d -> d.getColdResistance()).orElse(f) :
+					data.map(d -> d.getHeatResistance()).orElse(f);
 		}
 		return 2.0F;
 	}
@@ -46,14 +47,15 @@ public class MobResistanceRegister implements IMobHeatResistance {
 	public float getHeatResistance(Entity entity, DCHeatTier temp) {
 		if (entity != null) {
 			Optional<ParamEntity> ret = regList.stream().filter((
-					p) -> (p.getEntityType().orElse(EntityType.PLAYER).getBaseClass().isInstance(entity))).findAny();
+					p) -> (p.getEntityType().orElse(EntityType.PLAYER).tryCast(entity) != null)).findAny();
+			float f = 2.0F;
 			if (ret.isPresent()) {
-				return temp.isCold() ? ret.map(p -> p.coldResistance).orElse(2.0F) :
+				f = temp.isCold() ? ret.map(p -> p.coldResistance).orElse(2.0F) :
 						ret.map(p -> p.heatResistance).orElse(2.0F);
 			}
 			Optional<MobClimateData> data = MobClimateData.getData(entity);
-			return temp.isCold() ? data.map(d -> d.getColdResistance()).orElse(2.0F) :
-					data.map(d -> d.getHeatResistance()).orElse(2.0F);
+			return temp.isCold() ? data.map(d -> d.getColdResistance()).orElse(f) :
+					data.map(d -> d.getHeatResistance()).orElse(f);
 		}
 		return 2.0F;
 	}

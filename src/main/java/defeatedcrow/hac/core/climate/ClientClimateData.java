@@ -71,34 +71,37 @@ public class ClientClimateData {
 		// coldPrev += 4.0F;
 		// }
 
-		// 防具の計算
-		IItemHandler handler =
-				player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, Direction.NORTH).orElse(null);
-		if (handler != null) {
-			for (int s = 0; s < handler.getSlots(); s++) {
-				ItemStack item = handler.getStackInSlot(s);
-				if (item.isEmpty())
-					continue;
+		// インベントリ走査の頻度は更に落とす
+		if (world.getGameTime() % CoreConfigDC.entityInterval == 0) {
+			// 防具の計算
+			IItemHandler handler =
+					player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, Direction.NORTH).orElse(null);
+			if (handler != null) {
+				for (int s = 0; s < handler.getSlots(); s++) {
+					ItemStack item = handler.getStackInSlot(s);
+					if (item.isEmpty())
+						continue;
 
-				float p = DCItemUtil.getItemResistantData(item, false);
-				heatPrev += p;
-				float p2 = DCItemUtil.getItemResistantData(item, true);
-				coldPrev += p2;
+					float p = DCItemUtil.getItemResistantData(item, false);
+					heatPrev += p;
+					float p2 = DCItemUtil.getItemResistantData(item, true);
+					coldPrev += p2;
+				}
 			}
-		}
 
-		// charm
-		NonNullList<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.ALL);
-		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
-				DamageSourceClimate.climateColdDamage;
-		for (ItemStack check : charms) {
-			IJewelCharm charm = (IJewelCharm) check.getItem();
-			if (isCold)
-				coldPrev += charm.reduceDamage(player, DamageSourceClimate.climateColdDamage, damage, check);
-			else
-				heatPrev += charm.reduceDamage(player, DamageSourceClimate.climateHeatDamage, damage, check);
+			// charm
+			NonNullList<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.ALL);
+			DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
+					DamageSourceClimate.climateColdDamage;
+			for (ItemStack check : charms) {
+				IJewelCharm charm = (IJewelCharm) check.getItem();
+				if (isCold)
+					coldPrev += charm.reduceDamage(player, DamageSourceClimate.climateColdDamage, damage, check);
+				else
+					heatPrev += charm.reduceDamage(player, DamageSourceClimate.climateHeatDamage, damage, check);
+			}
+			charms.clear();
 		}
-		charms.clear();
 
 		if (player.level.getDifficulty() != Difficulty.PEACEFUL || CoreConfigDC.peacefulDam) {
 			if (isCold) {
@@ -131,9 +134,12 @@ public class ClientClimateData {
 			}
 		}
 
+		// Holder<Biome> biome = world.getBiome(pos);
+		// if (biome != null && biome.get() != null) {
 		// DCLogger.debugLog("=client climate info=");
-		// DCLogger.debugLog("temp:" + tempTier + ", icon: " + iconTier);
-		// DCLogger.debugLog("registance h:" + heatPrev + " c:" + coldPrev);
+		// DCLogger.debugLog("biome :" + DCUtil.getLocationName(biome).toString());
+		// biome.getTagKeys().forEach(b -> DCLogger.debugInfoLog("tags " + b.location().toString()));
+		// }
 	}
 
 	public int getTempTier() {

@@ -54,7 +54,7 @@ public enum MobClimateData {
 	TROPICAL_FISH(EntityType.TROPICAL_FISH, 3.0F, 2.0F),
 	TURTLE(EntityType.TURTLE, 3.0F, 2.0F),
 	VEX(EntityType.VEX, 8.0F, 2.0F),
-	VILLAGER(EntityType.VILLAGER, 3.0F, 3.0F),
+	VILLAGER(EntityType.VILLAGER, 4.0F, 4.0F),
 	VINDICATER(EntityType.VINDICATOR, 3.0F, 3.0F),
 	WARDEN(EntityType.WARDEN, 8.0F, 2.0F),
 	WITCH(EntityType.WITCH, 3.0F, 3.0F),
@@ -85,7 +85,7 @@ public enum MobClimateData {
 	public static Optional<MobClimateData> getData(Entity entity) {
 		if (entity != null)
 			for (MobClimateData data : MobClimateData.values()) {
-				if (data.type.getBaseClass().isInstance(entity)) {
+				if (data.type.tryCast(entity) != null) {
 					return Optional.of(data);
 				}
 			}
