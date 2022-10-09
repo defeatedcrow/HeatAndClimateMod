@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "fertile=0,moisture=0": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=0,moisture=1": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=0,moisture=2": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=0,moisture=3": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=0,moisture=4": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=0,moisture=5": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=0,moisture=6": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=0,moisture=7": {
+      "model": "dcs_climate:block/food/fertile_moist"
+    },
+    "fertile=1,moisture=0": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=1,moisture=1": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=1,moisture=2": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=1,moisture=3": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=1,moisture=4": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=1,moisture=5": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=1,moisture=6": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=1,moisture=7": {
+      "model": "dcs_climate:block/food/fertile_moist"
+    },
+    "fertile=2,moisture=0": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=2,moisture=1": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=2,moisture=2": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=2,moisture=3": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=2,moisture=4": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=2,moisture=5": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=2,moisture=6": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=2,moisture=7": {
+      "model": "dcs_climate:block/food/fertile_moist"
+    },
+    "fertile=3,moisture=0": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=3,moisture=1": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=3,moisture=2": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=3,moisture=3": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=3,moisture=4": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=3,moisture=5": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=3,moisture=6": {
+      "model": "dcs_climate:block/food/fertile_dry"
+    },
+    "fertile=3,moisture=7": {
+      "model": "dcs_climate:block/food/fertile_moist"
+    }
+  }
+}

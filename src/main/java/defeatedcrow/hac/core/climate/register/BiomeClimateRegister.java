@@ -34,14 +34,14 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class BiomeClimateRegister implements IBiomeClimateRegister {
 
-	private static Map<ResourceLocation, Climate> recipes;
+	private static Map<ResourceLocation, Climate> regMap;
 	private static List<ResourceLocation> seasons;
 
 	public static BiomeClimateRegister INSTANCE = new BiomeClimateRegister();
 	private static IForgeRegistry<Biome> reg = ForgeRegistries.BIOMES;
 
 	private BiomeClimateRegister() {
-		this.recipes = new HashMap<ResourceLocation, Climate>();
+		this.regMap = new HashMap<ResourceLocation, Climate>();
 		this.seasons = new ArrayList<ResourceLocation>();
 	}
 
@@ -50,7 +50,7 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 		if (biome != null && reg.containsValue(biome)) {
 			ResourceLocation name = reg.getKey(biome);
 			Climate clm = new Climate(temp, hum, airflow);
-			recipes.put(name, clm);
+			regMap.put(name, clm);
 		}
 	}
 
@@ -75,7 +75,7 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 
 	@Override
 	public Map<ResourceLocation, ? extends IClimate> getClimateList() {
-		return recipes;
+		return regMap;
 	}
 
 	@Override
@@ -94,8 +94,8 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 	}
 
 	private Optional<IClimate> getClimateFromList(ResourceLocation id) {
-		if (id != null && recipes.containsKey(id)) {
-			return Optional.ofNullable(recipes.get(id));
+		if (id != null && regMap.containsKey(id)) {
+			return Optional.ofNullable(regMap.get(id));
 		}
 		return Optional.empty();
 	}

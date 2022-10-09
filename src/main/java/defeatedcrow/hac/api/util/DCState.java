@@ -11,9 +11,9 @@ import net.minecraft.world.level.block.state.properties.Property;
 
 public class DCState {
 	// int系
-	public static final IntegerProperty TYPE16 = IntegerProperty.create("type", 0, 15);
-	public static final IntegerProperty TYPE8 = IntegerProperty.create("type", 0, 7);
-	public static final IntegerProperty TYPE4 = IntegerProperty.create("type", 0, 3);
+	public static final IntegerProperty TYPE16 = IntegerProperty.create("type16", 0, 15);
+	public static final IntegerProperty TYPE8 = IntegerProperty.create("type8", 0, 7);
+	public static final IntegerProperty TYPE4 = IntegerProperty.create("type4", 0, 3);
 
 	// bool
 	public static final BooleanProperty FLAG = BooleanProperty.create("flag");
@@ -23,10 +23,12 @@ public class DCState {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
 	// crop
-	public static final IntegerProperty STAGE4 = IntegerProperty.create("stage", 0, 3);
-	public static final IntegerProperty STAGE5 = IntegerProperty.create("stage", 0, 4);
+	public static final IntegerProperty STAGE4 = IntegerProperty.create("stage4", 0, 3);
+	public static final IntegerProperty STAGE5 = IntegerProperty.create("stage5", 0, 4);
 	public static final BooleanProperty DOUBLE = BooleanProperty.create("double");
 	public static final BooleanProperty DEAD = BooleanProperty.create("dead");
+
+	public static final IntegerProperty FERTILE = IntegerProperty.create("fertile", 0, 3);
 
 	public static BooleanProperty EMPTY = BooleanProperty.create("none");
 
@@ -91,8 +93,7 @@ public class DCState {
 	}
 
 	public static Optional<Property<?>> getProp(BlockState state, Property<?> prop) {
-		Optional<Property<?>> ret =
-				state.getProperties().stream().filter(p -> p.getName().equals(prop.getName())).findAny();
+		Optional<Property<?>> ret = state.getProperties().stream().filter(p -> p.getName().equals(prop.getName())).findAny();
 		return ret;
 	}
 }

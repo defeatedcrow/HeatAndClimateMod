@@ -1,17 +1,21 @@
 package defeatedcrow.hac.api.crop;
 
+import net.minecraft.world.item.Rarity;
+
 public enum CropTier {
-	WILD(true, 100),
-	COMMON(false, 75),
-	RARE(false, 20),
-	EPIC(false, 5);
+	WILD(true, 100, Rarity.COMMON),
+	COMMON(false, 75, Rarity.UNCOMMON),
+	RARE(false, 20, Rarity.RARE),
+	EPIC(false, 5, Rarity.EPIC);
 
 	private final boolean isWild;
 	private final int mutationChance;
+	private final Rarity rarity;
 
-	private CropTier(boolean a, int chance) {
+	private CropTier(boolean a, int chance, Rarity r) {
 		isWild = a;
 		mutationChance = chance;
+		rarity = r;
 	}
 
 	public boolean canUseBonemeal() {
@@ -20,6 +24,15 @@ public enum CropTier {
 
 	public int getMutationChance() {
 		return mutationChance;
+	}
+
+	public Rarity getRarity() {
+		return rarity;
+	}
+
+	@Override
+	public String toString() {
+		return name().toLowerCase();
 	}
 
 }

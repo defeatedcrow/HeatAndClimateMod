@@ -4,7 +4,7 @@ import net.minecraft.client.resources.language.I18n;
 
 public enum CropType {
 
-	ALLIUM(), // ネギ
+	ALLIUM, // ネギ
 	AMARANTH, // アカザ
 	APIUM, // セリ
 	BEECH, // ブナ
@@ -28,10 +28,15 @@ public enum CropType {
 	TRADING; // 交易限定種
 
 	public String localize() {
-		return I18n.get("dcs.name.croptype." + this.toString());
+		return I18n.get("dcs.enum.croptype." + this.toString());
 	}
 
 	public static String basename() {
-		return I18n.get("dcs.tip.croptype.name");
+		return I18n.get("dcs.enum.croptype.name");
+	}
+
+	@Override
+	public String toString() {
+		return name().toLowerCase();
 	}
 }

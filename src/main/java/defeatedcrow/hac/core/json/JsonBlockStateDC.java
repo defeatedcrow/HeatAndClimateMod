@@ -1,7 +1,8 @@
 package defeatedcrow.hac.core.json;
 
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,21 +18,22 @@ public class JsonBlockStateDC {
 
 	public static class Build {
 
-		final Map<String, Variant> variants = new HashMap<>();
+		final Map<String, Variant> variants = new LinkedHashMap<>();
 
 		public Build(Block block, IJsonDataDC data) {
 			List<String> vals = getAllVariants(block);
 			List<String> names = getFilenamePath(block);
 
 			if (vals.isEmpty()) {
-				variants.put("", new Variant("dcs_climate:block/" + data.getDomain() + "/" + data.getPath()));
+				variants.put("", new Variant("dcs_climate:block/" + data.getRegistryName() + "_0"));
 			} else {
+				Collections.sort(vals);
+				Collections.sort(names);
 				for (int i = 0; i < vals.size(); i++) {
 					int k = i;
 					if (k > names.size())
 						k = names.size() - 1;
-					variants.put(vals.get(i), new Variant(
-							"dcs_climate:block/" + data.getDomain() + "/" + data.getPath() + names.get(k)));
+					variants.put(vals.get(i), new Variant("dcs_climate:block/" + data.getRegistryName() + names.get(k)));
 				}
 			}
 		}

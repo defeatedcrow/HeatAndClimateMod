@@ -1,0 +1,15 @@
+{
+  "values": [
+    "dcs_climate:main/ore_topaz",
+    "dcs_climate:main/ore_aquamarine",
+    "dcs_climate:main/ore_opal",
+    "dcs_climate:main/ore_spinel",
+    "dcs_climate:main/ore_jadeite",
+    "dcs_climate:main/ore_dragonseye",
+    "dcs_climate:main/ore_white_deep",
+    "dcs_climate:main/ore_blue_deep",
+    "dcs_climate:main/ore_black_deep",
+    "dcs_climate:main/ore_red_deep",
+    "dcs_climate:main/ore_green_deep"
+  ]
+}

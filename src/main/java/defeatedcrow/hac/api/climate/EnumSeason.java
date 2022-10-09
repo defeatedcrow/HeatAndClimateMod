@@ -1,6 +1,7 @@
 package defeatedcrow.hac.api.climate;
 
-import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.DyeColor;
 
 public enum EnumSeason {
@@ -20,8 +21,13 @@ public enum EnumSeason {
 		name = n;
 	}
 
-	public String getName() {
-		return I18n.get(name);
+	public MutableComponent getName() {
+		return Component.translatable("dcs.enum." + toString());
+	}
+
+	@Override
+	public String toString() {
+		return name().toLowerCase();
 	}
 
 	public static EnumSeason getSeasonFromID(int i) {

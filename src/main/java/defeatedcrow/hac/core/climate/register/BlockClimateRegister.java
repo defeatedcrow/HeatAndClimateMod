@@ -13,6 +13,7 @@ import java.util.Set;
 
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
@@ -22,6 +23,7 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IHeatBlockRegister;
 import defeatedcrow.hac.api.util.BlockSet;
+import defeatedcrow.hac.core.ClimateCore;
 import defeatedcrow.hac.core.DCLogger;
 import defeatedcrow.hac.core.util.JsonFileFilter;
 import net.minecraft.resources.ResourceLocation;
@@ -168,63 +170,6 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 		return ret;
 	}
 
-	// private void registerEffectiveHeat(BlockSet block, int meta, DCHeatTier t) {
-	// if (DCsJEIPluginLists.climate.isEmpty()) {
-	// DCsJEIPluginLists.climate.add(new ClimateEffectiveTile(block, meta, t, null, null));
-	// } else {
-	// boolean flag = false;
-	// for (ClimateEffectiveTile tile : DCsJEIPluginLists.climate) {
-	// if (tile.isSameBlock(block) && (tile.getInputMeta() == OreDictionary.WILDCARD_VALUE || tile
-	// .getInputMeta() == meta)) {
-	// tile.setHeat(t);
-	// flag = true;
-	// break;
-	// }
-	// }
-	// if (!flag) {
-	// DCsJEIPluginLists.climate.add(new ClimateEffectiveTile(block, meta, t, null, null));
-	// }
-	// }
-	// }
-	//
-	// private void registerEffectiveHum(BlockSet block, int meta, DCHumidity h) {
-	// if (DCsJEIPluginLists.climate.isEmpty()) {
-	// DCsJEIPluginLists.climate.add(new ClimateEffectiveTile(block, meta, null, h, null));
-	// } else {
-	// boolean flag = false;
-	// for (ClimateEffectiveTile tile : DCsJEIPluginLists.climate) {
-	// if (tile.isSameBlock(block) && (tile.getInputMeta() == OreDictionary.WILDCARD_VALUE || tile
-	// .getInputMeta() == meta)) {
-	// tile.setHumidity(h);
-	// flag = true;
-	// break;
-	// }
-	// }
-	// if (!flag) {
-	// DCsJEIPluginLists.climate.add(new ClimateEffectiveTile(block, meta, null, h, null));
-	// }
-	// }
-	// }
-	//
-	// private void registerEffectiveAir(BlockSet block, int meta, DCAirflow a) {
-	// if (DCsJEIPluginLists.climate.isEmpty()) {
-	// DCsJEIPluginLists.climate.add(new ClimateEffectiveTile(block, meta, null, null, a));
-	// } else {
-	// boolean flag = false;
-	// for (ClimateEffectiveTile tile : DCsJEIPluginLists.climate) {
-	// if (tile.isSameBlock(block) && (tile.getInputMeta() == OreDictionary.WILDCARD_VALUE || tile
-	// .getInputMeta() == meta)) {
-	// tile.setAirflow(a);
-	// flag = true;
-	// break;
-	// }
-	// }
-	// if (!flag) {
-	// DCsJEIPluginLists.climate.add(new ClimateEffectiveTile(block, meta, null, null, a));
-	// }
-	// }
-	// }
-
 	/* json */
 	public static void registerBlockClimate(ParamBlock param) {
 		if (param != null && param.blockName != null) {
@@ -253,34 +198,38 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 		}
 	}
 
-	private static File dir = null;
+	public static void loadFiles() {
+		if (ClimateCore.configDir != null) {
 
-	public static void pre() {
-		if (dir != null) {
+			File dir = new File(ClimateCore.configDir, "/block_climate/");
+			if (dir.getParentFile() != null) {
+				dir.getParentFile().mkdirs();
+			}
+
 			try {
-				File parent = dir.getParentFile();
-				if (!parent.exists() && !parent.createNewFile() && !parent.isDirectory()) {
+				if (!dir.exists() && !dir.mkdirs() && !dir.isDirectory()) {
 					return;
 				}
 
-				File[] files = parent.listFiles(new JsonFileFilter());
-				for (File file : files) {
-					if (file.canRead()) {
-						FileInputStream fis = new FileInputStream(file.getPath());
-						InputStreamReader isr = new InputStreamReader(fis);
-						JsonReader jsr = new JsonReader(isr);
-						Gson gson = new Gson();
-						ParamBlock get = gson.fromJson(jsr, ParamBlock.class);
+				File[] files = dir.listFiles(new JsonFileFilter());
+				if (files != null)
+					for (File file : files) {
+						if (file.canRead()) {
+							FileInputStream fis = new FileInputStream(file.getPath());
+							InputStreamReader isr = new InputStreamReader(fis);
+							JsonReader jsr = new JsonReader(isr);
+							Gson gson = new Gson();
+							ParamBlock get = gson.fromJson(jsr, ParamBlock.class);
 
-						isr.close();
-						fis.close();
-						jsr.close();
+							isr.close();
+							fis.close();
+							jsr.close();
 
-						if (get != null) {
-							registerBlockClimate(get);
+							if (get != null) {
+								registerBlockClimate(get);
+							}
 						}
 					}
-				}
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -289,23 +238,28 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 	}
 
 	// 生成は初回のみ
-	public static void post() {
+	public static void initFile() {
+		if (ClimateCore.configDir != null) {
 
-		if (dir != null) {
+			File dir = new File(ClimateCore.configDir, "/block_climate/sample.json");
+			if (dir.getParentFile() != null) {
+				dir.getParentFile().mkdirs();
+			}
+
 			try {
 				if (!dir.exists() && !dir.createNewFile()) {
 					return;
 				}
 
-				ParamBlock ret = new ParamBlock("sampleModID:sampleBlockName", "PropertyName",
-						ImmutableList.of("sampleValue"), DCHeatTier.HOT, DCHumidity.NORMAL, DCAirflow.TIGHT);
+				ParamBlock ret = new ParamBlock("sample_mod_id:sample_block_name", "PropertyName", ImmutableList
+					.of("sampleValue"), DCHeatTier.HOT, DCHumidity.NORMAL, DCAirflow.TIGHT);
 
 				if (dir.canWrite()) {
 					FileOutputStream fos = new FileOutputStream(dir.getPath());
 					OutputStreamWriter osw = new OutputStreamWriter(fos);
 					JsonWriter jsw = new JsonWriter(osw);
 					jsw.setIndent(" ");
-					Gson gson = new Gson();
+					Gson gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().create();
 					gson.toJson(ret, ParamBlock.class, jsw);
 
 					osw.close();
@@ -315,13 +269,6 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-	}
-
-	public static void setDir(File file) {
-		dir = new File(file, "blockdata/block_climate_sample.json");
-		if (dir.getParentFile() != null) {
-			dir.getParentFile().mkdirs();
 		}
 	}
 

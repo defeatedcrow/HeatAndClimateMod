@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "dcs_climate:block/ore/stone_gypsum"
+  }
+}

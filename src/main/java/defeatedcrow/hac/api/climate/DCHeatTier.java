@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
 
 /**
@@ -169,8 +171,13 @@ public enum DCHeatTier {
 		return color;
 	}
 
-	public String localize() {
-		return I18n.get("dcs.tip.heat." + name());
+	public MutableComponent localize() {
+		return Component.translatable("dcs.enum.heat." + toString());
+	}
+
+	@Override
+	public String toString() {
+		return name().toLowerCase();
 	}
 
 	public static List<DCHeatTier> createList() {
@@ -256,10 +263,10 @@ public enum DCHeatTier {
 	}
 
 	public static String basename() {
-		return I18n.get("dcs.tip.heat_name");
+		return I18n.get("dcs.enum.heat_name");
 	}
 
 	public static String basename2() {
-		return I18n.get("dcs.tip.heat_name2");
+		return I18n.get("dcs.enum.heat_name2");
 	}
 }

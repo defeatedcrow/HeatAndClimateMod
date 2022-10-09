@@ -52,7 +52,7 @@ public interface IClimateCrop {
 	boolean onGrow(Level world, BlockPos pos, BlockState thisState);
 
 	// 収穫
-	boolean canHarvest(Level world, BlockPos pos, BlockState thisState);
+	boolean canHarvest(BlockState thisState);
 
 	// 収穫
 	boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player);

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 /**
  * エアフロー。
@@ -31,8 +33,13 @@ public enum DCAirflow {
 		return id;
 	}
 
-	public String localize() {
-		return I18n.get("dcs.tip.air." + name());
+	public MutableComponent localize() {
+		return Component.translatable("dcs.enum.air." + toString());
+	}
+
+	@Override
+	public String toString() {
+		return name().toLowerCase();
 	}
 
 	public int[] getColor() {
@@ -92,11 +99,11 @@ public enum DCAirflow {
 	}
 
 	public static String basename() {
-		return I18n.get("dcs.tip.airflow_name");
+		return I18n.get("dcs.enum.airflow_name");
 	}
 
 	public static String basename2() {
-		return I18n.get("dcs.tip.airflow_name2");
+		return I18n.get("dcs.enum.airflow_name2");
 	}
 
 }

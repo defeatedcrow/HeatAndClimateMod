@@ -5,6 +5,10 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.climate.EnumSeason;
+import defeatedcrow.hac.core.climate.register.ArmorItemRegister;
+import defeatedcrow.hac.core.climate.register.ArmorMaterialRegister;
+import defeatedcrow.hac.core.climate.register.BlockClimateRegister;
+import defeatedcrow.hac.core.climate.register.MobResistanceRegister;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
@@ -28,7 +32,7 @@ public class CoreConfigDC {
 	public static int altSneakKey = -1;
 
 	public static int[] ranges = new int[] { 2, 1, 1 };
-	public static double[] seasonEffects = new double[] { 0.05D, 0.4D, 0.0D, -0.4D };
+	public static double[] seasonEffects = new double[] { 0.05D, 0.4D, -0.05D, -0.4D };
 	public static double[] weatherEffects = new double[] { -0.2D, 0.2D };
 	public static double nightEffect = -0.2D;
 
@@ -45,14 +49,14 @@ public class CoreConfigDC {
 
 	public static boolean enableHUD = true;
 	public static int HUD_color = 0;
-	public static int[] offsetHUD = { 10, 160 };
+	public static int[] offsetHUD = { 3, 160 };
 	public static boolean showBiome = true;
 	public static boolean showSeason = true;
 	public static boolean showDay = true;
 	public static boolean showClimate = true;
 	public static int[] offsetBiome = { 0, -30 };
 	public static int[] offsetSeason = { 0, -10 };
-	public static int[] offsetClimate = { 10, 15 };
+	public static int[] offsetClimate = { 34, 2 };
 
 	// difficulty
 	public static boolean climateDam = true;
@@ -65,11 +69,7 @@ public class CoreConfigDC {
 	public static boolean mobClimateDamage = true;
 	public static boolean sharePotionWithRidingMob = true;
 	public static int entityInterval = 100;
-	public static String[] entityBlackList = new String[] {
-		"minecraft:squid",
-		"minecraft:bat",
-		"minecraft:villager",
-		"ModID:entityRegistryName" };
+	public static String[] entityBlackList = new String[] { "minecraft:squid", "minecraft:bat", "minecraft:villager", "ModID:entityRegistryName" };
 	public static final List<EntityType<?>> blackListEntity = Lists.newArrayList();
 
 	// recipe
@@ -120,11 +120,7 @@ public class CoreConfigDC {
 	public static int harderMagicCost = 0;
 	public static double harderMagicCostAmount = 1.0D;
 
-	public static String[] updateBlackList = new String[] {
-		"minecraft:leaves",
-		"minecraft:leaves2",
-		"minecraft:tallgrass",
-		"ModID:sampleBlock" };
+	public static String[] updateBlackList = new String[] { "minecraft:leaves", "minecraft:leaves2", "minecraft:tallgrass", "ModID:sampleBlock" };
 	public static final List<Block> blackListBlock = Lists.newArrayList();
 
 	public static double getSeasonTempOffset(EnumSeason season) {
@@ -160,5 +156,20 @@ public class CoreConfigDC {
 				return "yyyy/MM/dd";
 			}
 		}
+	}
+
+	public static void loadConfig() {
+		BlockClimateRegister.loadFiles();
+		ArmorItemRegister.loadFiles();
+		ArmorMaterialRegister.loadFiles();
+		MobResistanceRegister.loadFiles();
+		VeinTableConfig.loadFiles();
+
+		BlockClimateRegister.initFile();
+		ArmorItemRegister.initFile();
+		ArmorMaterialRegister.initFile();
+		MobResistanceRegister.initFile();
+		VeinTableConfig.initFile();
+
 	}
 }

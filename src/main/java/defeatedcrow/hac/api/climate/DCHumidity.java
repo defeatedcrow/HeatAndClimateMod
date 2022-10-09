@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 /**
  * 湿度。
@@ -42,8 +44,13 @@ public enum DCHumidity {
 		return color;
 	}
 
-	public String localize() {
-		return I18n.get("dcs.tip.hum." + name());
+	public MutableComponent localize() {
+		return Component.translatable("dcs.enum.hum." + toString());
+	}
+
+	@Override
+	public String toString() {
+		return name().toLowerCase();
 	}
 
 	public DCHumidity addTier(int i) {
@@ -92,11 +99,11 @@ public enum DCHumidity {
 	}
 
 	public static String basename() {
-		return I18n.get("dcs.tip.humidity_name");
+		return I18n.get("dcs.enum.humidity_name");
 	}
 
 	public static String basename2() {
-		return I18n.get("dcs.tip.humidity_name2");
+		return I18n.get("dcs.enum.humidity_name2");
 	}
 
 }

@@ -1,3 +1,4 @@
+
 package defeatedcrow.hac.core.climate.register;
 
 import java.util.Optional;

@@ -1,11 +1,24 @@
 package defeatedcrow.hac.core.json;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface IJsonDataDC {
 
-	String getDomain();
+	String getRegistryName();
 
-	String getPath();
+	List<JsonModelDC> getBlockModel();
 
-	JsonModelDC getModel();
+	Optional<String[]> getModelNameSuffix();
+
+	JsonModelDC getItemModel();
+
+	BlockType getDropType();
+
+	public static enum BlockType {
+		NORMAL,
+		ENTITY_NBT,
+		ITEM;
+	}
 
 }

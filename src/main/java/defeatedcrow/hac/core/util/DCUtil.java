@@ -40,6 +40,12 @@ public class DCUtil {
 		});
 	}
 
+	public static String getBlockRegName(Block block) {
+		return getRes(block).map((res) -> {
+			return res.getNamespace() + ":" + res.getPath();
+		}).orElse("empty");
+	}
+
 	public static Block getBlockFromString(String name) {
 		if (name == null || name.equalsIgnoreCase("empty")) {
 			return Blocks.AIR;

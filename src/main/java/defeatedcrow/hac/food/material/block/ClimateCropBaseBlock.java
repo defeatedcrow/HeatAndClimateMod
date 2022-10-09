@@ -2,14 +2,9 @@ package defeatedcrow.hac.food.material.block;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import org.apache.commons.compress.utils.Lists;
 
 import defeatedcrow.hac.api.climate.ClimateSupplier;
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.crop.CropGrowType;
 import defeatedcrow.hac.api.crop.CropStage;
@@ -18,11 +13,15 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.crop.IFertileBlock;
 import defeatedcrow.hac.api.util.DCState;
+import defeatedcrow.hac.core.json.IJsonDataDC;
+import defeatedcrow.hac.core.material.block.IBlockDC;
+import defeatedcrow.hac.core.material.tag.TagUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -36,32 +35,37 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public abstract class ClimateCropBaseBlock extends BushBlock implements IClimateCrop, BonemealableBlock {
+public abstract class ClimateCropBaseBlock extends BushBlock implements IClimateCrop, BonemealableBlock, IBlockDC, IJsonDataDC {
 
 	public ClimateCropBaseBlock() {
 		super(getProp());
 	}
 
 	/* 基本データ */
+	protected static BlockBehaviour.Properties getProp() {
+		return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP);
+	}
+
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext col) {
 		int stage = DCState.getInt(state, DCState.STAGE5);
 		if (stage == 0) {
-			return Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
+			return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 2.0D, 14.0D);
 		} else if (stage == 1) {
-			return Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+			return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 8.0D, 14.0D);
 		}
-		return Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+		return Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 	}
 
 	@Override
@@ -75,15 +79,16 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			return;
 		CropStage stage = getCurrentStage(state);
 
-		int c1 = getMutationChance(level, pos, state);
-		if (stage == CropStage.GROUND && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(c1) > 70) {
-			onMutation(level, pos, state, random);
-			return;
-		}
-
 		int c2 = getGrowingChance(level, pos, state);
-		if (c1 > 0 && random.nextInt(c2) == 0) {
-			onGrow(level, pos, state);
+		if (c2 > 0 && random.nextInt(c2) == 0) {
+
+			// チャンスは一度だけ
+			int c1 = getMutationChance(level, pos, state);
+			if (stage == CropStage.GROUND && getTier() == CropTier.WILD && c1 > 0 && random.nextInt(c1) > 70) {
+				onMutation(level, pos, state, random);
+			}
+
+			onGrow(level, pos, level.getBlockState(pos));
 			return;
 		}
 
@@ -98,16 +103,12 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		}
 	}
 
-	public static List<ItemStack> getDrops(BlockState state, ServerLevel level, BlockPos pos,
-			@Nullable BlockEntity tile) {
-		return getDrops(state, level, pos, tile, null, null);
-	}
-
-	public static List<ItemStack> getDrops(BlockState state, ServerLevel level, BlockPos pos,
-			@Nullable BlockEntity p_49878_, @Nullable Entity breaker, ItemStack tool) {
+	@Override
+	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> ret = Lists.newArrayList();
 		if (state.getBlock() instanceof IClimateCrop) {
 			IClimateCrop crop = (IClimateCrop) state.getBlock();
+			ServerLevel level = builder.getLevel();
 
 			CropStage stage = crop.getCurrentStage(state);
 			CropTier tier = crop.getTier();
@@ -116,15 +117,26 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			if (level.random.nextFloat() <= seedChance) {
 				ret.add(crop.getSeedItem(state));
 			}
-			if (crop.canHarvest(level, pos, state)) {
-				int f = tool.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
+			if (crop.canHarvest(state)) {
+				ItemStack tool = builder.getParameter(LootContextParams.TOOL);
+				int f = tool.isEmpty() ? 0 : tool.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
 				ret.addAll(crop.getCropItems(state, f));
 			}
 		}
 		return ret;
 	}
 
+	@Override
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult res) {
+		if (player.getItemInHand(hand).isEmpty()) {
+			if (onHarvest(level, pos, state, player))
+				return InteractionResult.SUCCESS;
+		}
+		return InteractionResult.PASS;
+	}
+
 	/* BushBlock */
+
 	@Override
 	protected boolean mayPlaceOn(BlockState under, BlockGetter level, BlockPos pos) {
 		return isSuitablePlace(level, pos, under);
@@ -132,10 +144,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	// 破壊処理とシェイプ更新を兼ねているよくわからないメソッド
 	@Override
-	public BlockState updateShape(BlockState state, Direction face, BlockState other, LevelAccessor level, BlockPos pos,
-			BlockPos pos2) {
-		return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() :
-				super.updateShape(state, face, other, level, pos, pos2);
+	public BlockState updateShape(BlockState state, Direction face, BlockState other, LevelAccessor level, BlockPos pos, BlockPos pos2) {
+		return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, face, other, level, pos, pos2);
 	}
 
 	@Override
@@ -153,8 +163,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 
 	@Override
 	public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
-		return type == PathComputationType.AIR && !this.hasCollision ? true :
-				super.isPathfindable(state, level, pos, type);
+		return type == PathComputationType.AIR && !this.hasCollision ? true : super.isPathfindable(state, level, pos, type);
 	}
 
 	@Override
@@ -165,18 +174,8 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		return state;
 	}
 
-	/* ClimateCrop */
-	public boolean canSustain(BlockState state, BlockGetter level, BlockPos pos) {
-		BlockPos down = pos.below();
-		BlockState under = level.getBlockState(down);
-		return isSuitablePlace(level, down, under);
-	}
-
-	protected static BlockBehaviour.Properties getProp() {
-		return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP);
-	}
-
 	/* Bonemeal */
+
 	@Override
 	public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean b) {
 		CropStage stage = this.getCurrentStage(state);
@@ -193,13 +192,39 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		this.onGrow(level, pos, state);
 	}
 
+	/* IBlockDC */
+
+	@Override
+	public ItemStack getMainDrop() {
+		return this.getSeedItem(getGrownState());
+	}
+
+	@Override
+	public ItemStack getSilkyDrop() {
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public List<ItemStack> getAdditionalDrop(BlockState state, ItemStack tool, Entity entity) {
+		return Lists.newArrayList();
+	}
+
+	@Override
+	public ToolType getToolType() {
+		return ToolType.NONE;
+	}
+
+	@Override
+	public int getToolTier() {
+		return 0;
+	}
+
+	@Override
+	public BlockType getDropType() {
+		return BlockType.NORMAL;
+	}
+
 	/* IClimateCrop */
-
-	@Override
-	public abstract ItemStack getSeedItem(BlockState thisState);
-
-	@Override
-	public abstract List<ItemStack> getCropItems(BlockState thisState, int fortune);
 
 	@Override
 	public boolean isSuitableForGrowing(Level world, BlockPos pos, BlockState thisState) {
@@ -210,9 +235,6 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 		boolean air = this.getSuitableAir().contains(climate.getAirflow());
 		return temp && hum && air;
 	}
-
-	@Override
-	public abstract boolean isSuitablePlace(BlockGetter level, BlockPos pos, BlockState underState);
 
 	@Override
 	public CropStage getCurrentStage(BlockState state) {
@@ -257,7 +279,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
 			int ret = clm ? 8 : 50;
 			BlockState under = world.getBlockState(pos.below());
-			if (under.getBlock() instanceof IFertileBlock && ((IFertileBlock) under.getBlock()).isFertile(world, pos.below(), under)) {
+			if (getFertile(world, pos.below(), under) > 5) {
 				ret /= 2;
 			}
 			return ret;
@@ -284,7 +306,7 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	}
 
 	@Override
-	public boolean canHarvest(Level world, BlockPos pos, BlockState thisState) {
+	public boolean canHarvest(BlockState thisState) {
 		CropStage stage = this.getCurrentStage(thisState);
 		return stage == CropStage.GROWN;
 	}
@@ -292,10 +314,9 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 	@Override
 	public boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player) {
 		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
-			CropStage stage = this.getCurrentStage(thisState);
-			if (stage == CropStage.GROWN) {
+			if (canHarvest(thisState)) {
 				int f = 0;
-				if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEnchantable()) {
+				if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
 					f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
 				}
 				List<ItemStack> crops = this.getCropItems(thisState, f);
@@ -303,7 +324,6 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 				for (ItemStack item : crops) {
 					ItemEntity drop;
 					if (player != null) {
-
 						drop = new ItemEntity(world, player.getX(), player.getY() + 0.15D, player.getZ(), item);
 					} else {
 						drop = new ItemEntity(world, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, item);
@@ -328,27 +348,22 @@ public abstract class ClimateCropBaseBlock extends BushBlock implements IClimate
 			boolean clm = isSuitableForGrowing(world, pos, thisState);
 			int ret = clm ? 60 : 0;
 			BlockState under = world.getBlockState(pos.below());
-			if (under.getBlock() instanceof FarmBlock) {
-				ret += 20;
-			}
-			if (under.getBlock() instanceof IFertileBlock && ((IFertileBlock) under.getBlock()).isFertile(world, pos.below(), under)) {
-				ret += 20;
-			}
+			ret += getFertile(world, pos.below(), under) * 5;
 			return ret;
 		}
 		return 0;
 	}
 
-	@Override
-	public abstract boolean onMutation(Level world, BlockPos pos, BlockState thisState, RandomSource random);
-
-	@Override
-	public abstract List<DCHeatTier> getSuitableTemp();
-
-	@Override
-	public abstract List<DCHumidity> getSuitableHum();
-
-	@Override
-	public abstract List<DCAirflow> getSuitableAir();
+	/* return 0 ~ 8 */
+	public int getFertile(Level world, BlockPos pos, BlockState state) {
+		int ret = 0;
+		if (TagUtil.matchTag("farmland", state).isPresent()) {
+			ret += 4;
+		}
+		if (state.getBlock() instanceof IFertileBlock) {
+			ret += 1 + ((IFertileBlock) state.getBlock()).isFertile(world, pos, state);
+		}
+		return ret;
+	}
 
 }

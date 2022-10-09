@@ -156,23 +156,34 @@ public class ClimateHUDEvent {
 							fr.width(biomeName);
 							fr.drawShadow(pose, biomeName, x + CoreConfigDC.offsetBiome[0], y + CoreConfigDC.offsetBiome[1], 0xffffff);
 						}
-						String dN = "";
-						String sN = "";
+
 						int c2 = 0xFFFFFF;
 						EnumSeason season = EnumSeason.SPRING;
 						if (CoreConfigDC.showSeason) {
 							season = DCTimeHelper.getSeasonEnum(world);
-							sN += season.name();
+							String sN = season.name();
 							c2 = season.color.getTextColor();
-						}
-						if (CoreConfigDC.showDay) {
-							dN = DCTimeHelper.getDate(world);
-						}
-						if (dN.length() > 1 && sN.length() > 1) {
 							fr.width(sN);
 							fr.drawShadow(pose, sN, x + CoreConfigDC.offsetSeason[0], y + CoreConfigDC.offsetSeason[1] - 10, c2);
+						}
+						if (CoreConfigDC.showDay) {
+							String dN = DCTimeHelper.getDate(world);
 							fr.width(dN);
 							fr.drawShadow(pose, dN, x + CoreConfigDC.offsetSeason[0], y + CoreConfigDC.offsetSeason[1], 0xFFFFFF);
+						}
+						if (CoreConfigDC.showClimate) {
+							String tN = clm.getHeat().name();
+							int tC = clm.getHeat().getColorInt();
+							String hN = clm.getHumidity().name();
+							int hC = clm.getHumidity().getColorInt();
+							String aN = clm.getAirflow().name();
+							int aC = clm.getAirflow().getColorInt();
+							fr.width(tN);
+							fr.drawShadow(pose, tN, x + CoreConfigDC.offsetClimate[0], y + CoreConfigDC.offsetClimate[1], tC);
+							fr.width(hN);
+							fr.drawShadow(pose, hN, x + CoreConfigDC.offsetClimate[0], y + CoreConfigDC.offsetClimate[1] + 10, hC);
+							fr.width(aN);
+							fr.drawShadow(pose, aN, x + CoreConfigDC.offsetClimate[0], y + CoreConfigDC.offsetClimate[1] + 20, aC);
 						}
 					}
 				}
