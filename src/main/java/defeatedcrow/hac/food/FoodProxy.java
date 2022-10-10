@@ -1,4 +1,4 @@
-package defeatedcrow.hac.food.material;
+package defeatedcrow.hac.food;
 
 import defeatedcrow.hac.food.event.ClickBlockEventDC;
 import net.minecraftforge.common.MinecraftForge;

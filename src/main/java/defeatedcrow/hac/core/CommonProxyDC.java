@@ -4,7 +4,7 @@ import defeatedcrow.hac.core.event.BiomeBaseTempEventDC;
 import defeatedcrow.hac.core.event.BlockUpdateEventDC;
 import defeatedcrow.hac.core.event.LivingTickEventDC;
 import defeatedcrow.hac.core.event.ServerTickEventDC;
-import defeatedcrow.hac.food.material.FoodProxy;
+import defeatedcrow.hac.food.FoodProxy;
 import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxyDC {

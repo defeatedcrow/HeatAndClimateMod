@@ -31,9 +31,9 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class LivingTickEventDC {
@@ -140,8 +140,7 @@ public class LivingTickEventDC {
 				/* damage判定 */
 				prevTemp = 0F;
 				// 防具の計算
-				IItemHandler handler =
-						living.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, Direction.NORTH).orElse(null);
+				IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
 				if (handler != null) {
 					for (int s = 0; s < handler.getSlots(); s++) {
 						ItemStack item = handler.getStackInSlot(s);

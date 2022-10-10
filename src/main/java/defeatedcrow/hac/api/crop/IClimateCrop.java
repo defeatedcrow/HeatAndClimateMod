@@ -2,9 +2,6 @@ package defeatedcrow.hac.api.crop;
 
 import java.util.List;
 
-import defeatedcrow.hac.api.climate.DCAirflow;
-import defeatedcrow.hac.api.climate.DCHeatTier;
-import defeatedcrow.hac.api.climate.DCHumidity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
@@ -13,7 +10,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public interface IClimateCrop {
+public interface IClimateCrop extends ICropData {
 
 	// 対応する種や苗
 	ItemStack getSeedItem(BlockState thisState);
@@ -31,10 +28,6 @@ public interface IClimateCrop {
 	CropStage getCurrentStage(BlockState thisState);
 
 	CropTier getTier();
-
-	CropType getFamily();
-
-	CropGrowType getGrowType();
 
 	// 成長後のステート
 	BlockState getGrownState();
@@ -62,11 +55,5 @@ public interface IClimateCrop {
 
 	// 変異
 	boolean onMutation(Level world, BlockPos pos, BlockState thisState, RandomSource random);
-
-	List<DCHeatTier> getSuitableTemp();
-
-	List<DCHumidity> getSuitableHum();
-
-	List<DCAirflow> getSuitableAir();
 
 }

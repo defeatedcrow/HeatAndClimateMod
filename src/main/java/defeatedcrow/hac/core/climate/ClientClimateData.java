@@ -26,8 +26,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.IFluidBlock;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 @OnlyIn(Dist.CLIENT)
@@ -74,8 +74,7 @@ public class ClientClimateData {
 		// インベントリ走査の頻度は更に落とす
 		if (world.getGameTime() % CoreConfigDC.entityInterval == 0) {
 			// 防具の計算
-			IItemHandler handler =
-					player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, Direction.NORTH).orElse(null);
+			IItemHandler handler = player.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
 			if (handler != null) {
 				for (int s = 0; s < handler.getSlots(); s++) {
 					ItemStack item = handler.getStackInSlot(s);

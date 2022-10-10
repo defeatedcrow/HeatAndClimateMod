@@ -40,20 +40,6 @@ public class OreGenPos {
 			}
 		}
 
-		int y2 = 64;
-		int x2 = chunk.getMinBlockX() + 2 + rand.nextInt(12);
-		int z2 = chunk.getMinBlockZ() + 2 + rand.nextInt(12);
-		BlockPos pos2 = new BlockPos(x2, y2, z2);
-		Holder<Biome> biome2 = world.getBiome(pos2);
-
-		List<VeinTable> table2 = VeinTableRegister.INSTANCE.getMachtTable(biome2, false);
-		if (!table2.isEmpty()) {
-			VeinTable get = table2.get(rand.nextInt(table2.size()));
-			if (rand.nextInt(100) < get.generateProbability) {
-				ret[1] = getVeinFromSeed(world, pos2, get, seed);
-			}
-		}
-
 		int y3 = 64;
 		int x3 = chunk.getMinBlockX() + 2 + rand.nextInt(12);
 		int z3 = chunk.getMinBlockZ() + 2 + rand.nextInt(12);

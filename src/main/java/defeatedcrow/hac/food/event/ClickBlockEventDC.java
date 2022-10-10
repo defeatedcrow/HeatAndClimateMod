@@ -28,7 +28,7 @@ public class ClickBlockEventDC {
 				if (target.is(TagDC.BlockTag.FARMLAND) && DCState.getInt(target, BlockStateProperties.MOISTURE) > 0) {
 					if (!level.isClientSide) {
 						int m = DCState.getInt(target, BlockStateProperties.MOISTURE);
-						BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, 3).setValue(BlockStateProperties.MOISTURE, m);
+						BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, 1).setValue(BlockStateProperties.MOISTURE, m);
 						level.setBlockAndUpdate(event.getPos(), next);
 						item.shrink(1);
 						level.levelEvent(1505, event.getPos().above(), 0);

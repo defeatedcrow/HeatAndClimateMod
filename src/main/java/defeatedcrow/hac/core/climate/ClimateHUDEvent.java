@@ -21,6 +21,7 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
@@ -161,7 +162,7 @@ public class ClimateHUDEvent {
 						EnumSeason season = EnumSeason.SPRING;
 						if (CoreConfigDC.showSeason) {
 							season = DCTimeHelper.getSeasonEnum(world);
-							String sN = season.name();
+							MutableComponent sN = season.getName();
 							c2 = season.color.getTextColor();
 							fr.width(sN);
 							fr.drawShadow(pose, sN, x + CoreConfigDC.offsetSeason[0], y + CoreConfigDC.offsetSeason[1] - 10, c2);
@@ -172,11 +173,11 @@ public class ClimateHUDEvent {
 							fr.drawShadow(pose, dN, x + CoreConfigDC.offsetSeason[0], y + CoreConfigDC.offsetSeason[1], 0xFFFFFF);
 						}
 						if (CoreConfigDC.showClimate) {
-							String tN = clm.getHeat().name();
+							MutableComponent tN = clm.getHeat().localize();
 							int tC = clm.getHeat().getColorInt();
-							String hN = clm.getHumidity().name();
+							MutableComponent hN = clm.getHumidity().localize();
 							int hC = clm.getHumidity().getColorInt();
-							String aN = clm.getAirflow().name();
+							MutableComponent aN = clm.getAirflow().localize();
 							int aC = clm.getAirflow().getColorInt();
 							fr.width(tN);
 							fr.drawShadow(pose, tN, x + CoreConfigDC.offsetClimate[0], y + CoreConfigDC.offsetClimate[1], tC);

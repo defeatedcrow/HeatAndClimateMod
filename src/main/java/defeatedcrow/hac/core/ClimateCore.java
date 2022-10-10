@@ -21,6 +21,7 @@ import defeatedcrow.hac.core.material.tag.ItemTagProviderDC;
 import defeatedcrow.hac.core.material.tag.TagDC;
 import defeatedcrow.hac.core.network.packet.DCPacket;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
+import defeatedcrow.hac.plugin.jei.PluginRecipeListDC;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -96,6 +97,8 @@ public class ClimateCore {
 		CoreConfigDC.loadConfig();
 		DCPacket.INSTANCE.init();
 		event.enqueueWork(TileNBTFunction::init);
+
+		PluginRecipeListDC.init();
 	}
 
 	public void gatherData(GatherDataEvent event) {

@@ -3,7 +3,6 @@ package defeatedcrow.hac.api.climate;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
@@ -262,11 +261,11 @@ public enum DCHeatTier {
 		return NORMAL;
 	}
 
-	public static String basename() {
-		return I18n.get("dcs.enum.heat_name");
+	public static MutableComponent basename() {
+		return Component.translatable("dcs.enum.heat_name");
 	}
 
-	public static String basename2() {
-		return I18n.get("dcs.enum.heat_name2");
+	public static MutableComponent basename2() {
+		return Component.translatable("dcs.enum.heat_name2");
 	}
 }

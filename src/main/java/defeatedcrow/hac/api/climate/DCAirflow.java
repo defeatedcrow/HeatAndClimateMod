@@ -3,7 +3,6 @@ package defeatedcrow.hac.api.climate;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -98,12 +97,12 @@ public enum DCAirflow {
 		return TIGHT;
 	}
 
-	public static String basename() {
-		return I18n.get("dcs.enum.airflow_name");
+	public static MutableComponent basename() {
+		return Component.translatable("dcs.enum.airflow_name");
 	}
 
-	public static String basename2() {
-		return I18n.get("dcs.enum.airflow_name2");
+	public static MutableComponent basename2() {
+		return Component.translatable("dcs.enum.airflow_name2");
 	}
 
 }

@@ -1,6 +1,7 @@
 package defeatedcrow.hac.api.crop;
 
-import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public enum CropType {
 
@@ -27,12 +28,12 @@ public enum CropType {
 	SOLANUM, // ナス
 	TRADING; // 交易限定種
 
-	public String localize() {
-		return I18n.get("dcs.enum.croptype." + this.toString());
+	public MutableComponent localize() {
+		return Component.translatable("dcs.enum.croptype." + this.toString());
 	}
 
-	public static String basename() {
-		return I18n.get("dcs.enum.croptype.name");
+	public static MutableComponent basename() {
+		return Component.translatable("dcs.enum.croptype.name");
 	}
 
 	@Override

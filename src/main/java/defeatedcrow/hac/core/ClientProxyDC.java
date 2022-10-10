@@ -16,7 +16,6 @@ public class ClientProxyDC extends CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(DCTextureStitch::register);
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public void updatePlayerClimate() {
 		ClientClimateData.INSTANCE.updatePlayerClimate();
