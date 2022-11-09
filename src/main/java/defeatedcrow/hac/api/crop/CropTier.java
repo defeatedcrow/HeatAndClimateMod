@@ -4,8 +4,8 @@ import net.minecraft.world.item.Rarity;
 
 public enum CropTier {
 	WILD(true, 100, Rarity.COMMON),
-	COMMON(false, 75, Rarity.COMMON),
-	RARE(false, 20, Rarity.UNCOMMON),
+	COMMON(false, 70, Rarity.COMMON),
+	RARE(false, 25, Rarity.UNCOMMON),
 	EPIC(false, 5, Rarity.RARE);
 
 	private final boolean isWild;

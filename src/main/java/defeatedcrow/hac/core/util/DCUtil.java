@@ -2,27 +2,51 @@ package defeatedcrow.hac.core.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.material.tag.TagUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class DCUtil {
+
+	private static final IForgeRegistry<Item> regItem = ForgeRegistries.ITEMS;
 
 	public static Random rand = new Random();
 
 	public static final ResourceLocation DUMMY = new ResourceLocation("dcs_climate:empty");
+
+	public static boolean isEmpty(ItemStack item) {
+		if (item == null) {
+			item = ItemStack.EMPTY;
+			return true;
+		}
+		return item.getItem() == null || item.getItem() == Items.AIR || item.isEmpty();
+	}
 
 	public static Optional<ResourceLocation> getRes(Item item) {
 		return Optional.ofNullable(ForgeRegistries.ITEMS.getKey(item));
@@ -30,6 +54,22 @@ public class DCUtil {
 
 	public static Optional<ResourceLocation> getRes(Block block) {
 		return Optional.ofNullable(ForgeRegistries.BLOCKS.getKey(block));
+	}
+
+	public static String getName(Item item) {
+		return getRes(item).map((res) -> {
+			return res.getPath();
+		}).orElse("empty");
+	}
+
+	public static String getName(Block block) {
+		return getRes(block).map((res) -> {
+			return res.getPath();
+		}).orElse("empty");
+	}
+
+	public static String getName(TagKey<Item> tag) {
+		return tag.location().getPath();
 	}
 
 	public static Optional<ResourceLocation> getLocationName(Holder<?> holder) {
@@ -163,6 +203,44 @@ public class DCUtil {
 			}
 		}
 		return list;
+	}
+
+	public static Boolean getFalse(BlockState state, BlockGetter level, BlockPos pos) {
+		return (boolean) false;
+	}
+
+	/**
+	 * ruby氏に感謝!
+	 *
+	 * @date 2020.02.04
+	 * @author ruby
+	 */
+	public static Set<BlockPos> getLumberTargetList(Level world, BlockPos pos, Block block, int limit) {
+		List<BlockPos> nextTargets = new ArrayList<>();
+		nextTargets.add(pos);
+		Set<BlockPos> founds = new LinkedHashSet<>();
+		do {
+			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
+				.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block)).limit(limit - founds
+					.size()).filter(founds::add).collect(Collectors.toList());
+
+		} while (founds.size() <= limit && !nextTargets.isEmpty());
+
+		return founds;
+	}
+
+	public static boolean findLog(BlockGetter world, BlockPos pos, Block block, int limit) {
+		List<BlockPos> nextTargets = new ArrayList<>();
+		nextTargets.add(pos);
+		Set<BlockPos> founds = new LinkedHashSet<>();
+		do {
+			nextTargets = nextTargets.stream().flatMap(target -> Arrays.stream(Direction.values()).map(target::relative))
+				.filter(fixedPos -> world.getBlockState(fixedPos).getBlock().equals(block) || (TagUtil.matchTag("logs", world.getBlockState(fixedPos)).isPresent() && founds.add(fixedPos)))
+				.limit(limit - founds.size()).collect(Collectors.toList());
+
+		} while (founds.isEmpty() && !nextTargets.isEmpty());
+
+		return !founds.isEmpty();
 	}
 
 	// デバッグモード

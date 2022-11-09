@@ -1,0 +1,6 @@
+{
+  "parent": "dcs_climate:block/dcs_cross_upper",
+  "textures": {
+    "cross": "dcs_climate:block/crop/reed_common_2"
+  }
+}

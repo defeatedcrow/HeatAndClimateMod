@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/metal/oredust_black_2"
+  },
+  "parent": "minecraft:item/generated"
+}

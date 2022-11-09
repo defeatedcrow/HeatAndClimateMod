@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dustblock_pack",
+  "key": {
+    "P": {
+      "tag": "forge:dusts/copper"
+    },
+    "S": {
+      "tag": "forge:dusts/nickel"
+    },
+    "T": {
+      "tag": "forge:dusts/zinc"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    "SST"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_nickel_silver"
+  }
+}

@@ -91,19 +91,19 @@ repositories {
       name = "ModMaven"
       url = "https://modmaven.dev"
     }
-//    maven { url "https://maven.k-4u.nl" }
     maven { url "https://www.cursemaven.com" }
+    maven { url "https://maven.bai.lol" }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.1.0'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.1'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
     runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
-    implementation fg.deobf(project.dependencies.create("mcjty.theoneprobe:theoneprobe:1.19-6.2.0-6") {
-        transitive = false
-    })
+    compileOnly fg.deobf("mcp.mobius.waila:wthit-api:forge-${wthit_version}")
+    runtimeOnly fg.deobf("mcp.mobius.waila:wthit:forge-${wthit_version}")
+    runtimeOnly fg.deobf("lol.bai:badpackets:forge-0.2.0")
 
 }
 

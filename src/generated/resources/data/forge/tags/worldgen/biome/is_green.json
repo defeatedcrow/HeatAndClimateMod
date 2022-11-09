@@ -2,6 +2,7 @@
   "values": [
     "#forge:is_dense",
     "#minecraft:is_forest",
-    "#minecraft:is_jungle"
+    "#minecraft:is_jungle",
+    "#forge:is_lush"
   ]
 }

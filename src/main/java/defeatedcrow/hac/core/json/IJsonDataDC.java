@@ -11,7 +11,11 @@ public interface IJsonDataDC {
 
 	Optional<String[]> getModelNameSuffix();
 
-	JsonModelDC getItemModel();
+	JsonModelSimpleDC getItemModel();
+
+	default boolean requireStateJson() {
+		return true;
+	}
 
 	BlockType getDropType();
 

@@ -33,7 +33,7 @@ public interface IClimateCrop extends ICropData {
 	BlockState getGrownState();
 
 	// 収穫後のステート
-	BlockState getHarvestedState();
+	BlockState getHarvestedState(BlockState state);
 
 	// 基底のステート
 	BlockState setGroundState();

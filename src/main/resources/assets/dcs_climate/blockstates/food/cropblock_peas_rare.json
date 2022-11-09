@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "stage5=0": {
+      "model": "dcs_climate:block/food/cropblock_peas_rare_0"
+    },
+    "stage5=1": {
+      "model": "dcs_climate:block/food/cropblock_peas_rare_1"
+    },
+    "stage5=2": {
+      "model": "dcs_climate:block/food/cropblock_peas_rare_2"
+    },
+    "stage5=3": {
+      "model": "dcs_climate:block/food/cropblock_peas_rare_3"
+    },
+    "stage5=4": {
+      "model": "dcs_climate:block/food/cropblock_peas_rare_4"
+    }
+  }
+}

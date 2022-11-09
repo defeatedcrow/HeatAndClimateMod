@@ -1,0 +1,6 @@
+{
+  "parent": "dcs_climate:block/dcs_cross_under",
+  "textures": {
+    "cross": "dcs_climate:block/crop/solanum_tomato_f"
+  }
+}

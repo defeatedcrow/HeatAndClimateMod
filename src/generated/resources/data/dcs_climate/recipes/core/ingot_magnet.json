@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "storage_unpack",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/magnet"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "dcs_climate:main/ingot_magnet"
+  }
+}

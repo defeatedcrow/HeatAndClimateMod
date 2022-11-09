@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/metalblock_magnet"
+  },
+  "parent": "minecraft:block/cube_all"
+}

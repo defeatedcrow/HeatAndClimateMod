@@ -185,14 +185,12 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		if (t == CropTier.WILD) {
-			return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
-		} else if (t == CropTier.COMMON) {
+		if (t == CropTier.COMMON) {
 			return ImmutableList.of(DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
 		} else if (t == CropTier.RARE) {
 			return ImmutableList.of(DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT, DCHeatTier.BOIL);
 		} else {
-			return Lists.newArrayList();
+			return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 		}
 	}
 

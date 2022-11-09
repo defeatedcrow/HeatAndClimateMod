@@ -77,7 +77,7 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 	public void setRecipe(IRecipeLayoutBuilder builder, ClimateCropBaseBlock recipe, IFocusGroup focuses) {
 		CropTier tier = recipe.getTier();
 
-		builder.addSlot(RecipeIngredientRole.INPUT, 20, 11).addItemStack(new ItemStack(recipe.getSeedItem(tier)));
+		builder.addSlot(RecipeIngredientRole.INPUT, 21, 11).addItemStack(new ItemStack(recipe.getSeedItem(tier)));
 
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 40, 11).addItemStack(new ItemStack(recipe.getCropItem(tier)));
 
@@ -160,7 +160,7 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 
 		MutableComponent text4 = Component.translatable("dcs.gui.jei.habitat");
 		text4.append(":");
-		if (tier == CropTier.WILD) {
+		if (!recipe.getGeneratedBiomeTag(tier).isEmpty()) {
 			for (String s : recipe.getGeneratedBiomeTag(tier)) {
 				text4.append(" " + s);
 			}

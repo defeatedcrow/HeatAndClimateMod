@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "crusher_mortar",
+  "ingredients": [
+    {
+      "tag": "forge:raw_materials/titanium"
+    },
+    {
+      "item": "dcs_climate:main/agate_mortar"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/oredust_black_3"
+  }
+}

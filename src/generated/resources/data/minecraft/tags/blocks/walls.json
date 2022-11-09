@@ -1,0 +1,14 @@
+{
+  "values": [
+    "dcs_climate:build/wall_mud",
+    "dcs_climate:build/wall_gypsum",
+    "dcs_climate:build/wall_serpentine",
+    "dcs_climate:build/wall_greisen",
+    "dcs_climate:build/wall_skarn",
+    "dcs_climate:build/wall_hornfels",
+    "dcs_climate:build/wall_marble",
+    "dcs_climate:build/wall_schist_blue",
+    "dcs_climate:build/wall_schist_nether",
+    "dcs_climate:build/wall_granite"
+  ]
+}

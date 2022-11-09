@@ -5,6 +5,7 @@ import java.util.Optional;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.util.BlockSet;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -52,6 +53,14 @@ public enum BlockClimateData {
 			}
 		}
 		return Optional.empty();
+	}
+
+	public Block getBlock() {
+		return block;
+	}
+
+	public BlockSet getBlockSet() {
+		return new BlockSet(block);
 	}
 
 	public DCHeatTier getHeat() {

@@ -12,6 +12,7 @@ import defeatedcrow.hac.api.crop.IFertileBlock;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
+import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.block.IBlockDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -90,9 +91,8 @@ public class FertileBlock extends FarmBlock implements IFertileBlock, IBlockDC, 
 	}
 
 	@Override
-	public JsonModelDC getItemModel() {
-		return new JsonModelDC("minecraft:block/template_farmland", ImmutableMap
-			.of("dirt", "minecraft:block/dirt", "top", "dcs_climate:block/crop/featile_dry"));
+	public JsonModelSimpleDC getItemModel() {
+		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_dry");
 	}
 
 	@Override

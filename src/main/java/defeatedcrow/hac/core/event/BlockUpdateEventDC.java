@@ -1,18 +1,24 @@
 package defeatedcrow.hac.core.event;
 
+import java.util.Optional;
+
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.event.DCBlockUpdateEvent;
+import defeatedcrow.hac.api.recipe.IClimateSmelting;
 import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.recipe.DCRecipes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
 
@@ -86,6 +92,18 @@ public class BlockUpdateEventDC {
 				return;
 			}
 
+		}
+	}
+
+	public static void onBlockPlacement(BlockEvent.EntityPlaceEvent event) {
+		if (event.getEntity() instanceof Player && !event.getEntity().getLevel().isClientSide) {
+			Player placer = (Player) event.getEntity();
+			BlockState place = event.getPlacedBlock();
+			BlockSnapshot snap = event.getBlockSnapshot();
+			Optional<IClimateSmelting> recipe = DCRecipes.hasAnySmeltingRecipe(place.getBlock());
+			recipe.ifPresent(ret -> {
+				placer.getLevel().scheduleTick(snap.getPos(), place.getBlock(), ret.recipeFrequency());
+			});
 		}
 	}
 

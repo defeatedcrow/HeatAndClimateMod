@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "storage_pack",
+  "key": {
+    "X": {
+      "item": "dcs_climate:main/ingot_steel"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/metalblock_steel"
+  }
+}

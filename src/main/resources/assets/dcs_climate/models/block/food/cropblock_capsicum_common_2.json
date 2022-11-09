@@ -1,0 +1,6 @@
+{
+  "parent": "dcs_climate:block/dcs_cross",
+  "textures": {
+    "cross": "dcs_climate:block/crop/capsicum_paprika_2"
+  }
+}

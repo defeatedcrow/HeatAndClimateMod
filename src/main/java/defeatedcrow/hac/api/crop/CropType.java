@@ -20,7 +20,7 @@ public enum CropType {
 	KNOTWEED, // タデ
 	HERB, // シソ
 	MALLOW, // アオイ
-	MORNINGGROLY, // ヒルガオ
+	MORNINGGLORY, // ヒルガオ
 	LOTUS, // ハス
 	PEAS, // マメ
 	REED, // アシ

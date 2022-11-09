@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/metal/ingot_bscco"
+  },
+  "parent": "minecraft:item/generated"
+}

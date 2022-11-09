@@ -1,0 +1,19 @@
+{
+  "values": [
+    "dcs_climate:food/log_beech_common",
+    "dcs_climate:food/log_beech_walnut",
+    "dcs_climate:food/log_beech_sweet",
+    "dcs_climate:food/plank_beech_common",
+    "dcs_climate:food/plank_beech_walnut",
+    "dcs_climate:food/plank_beech_sweet",
+    "dcs_climate:build/stairs_beech_common",
+    "dcs_climate:build/slab_beech_common",
+    "dcs_climate:build/fence_beech_common",
+    "dcs_climate:build/stairs_beech_walnut",
+    "dcs_climate:build/slab_beech_walnut",
+    "dcs_climate:build/fence_beech_walnut",
+    "dcs_climate:build/stairs_beech_sweet",
+    "dcs_climate:build/slab_beech_sweet",
+    "dcs_climate:build/fence_beech_sweet"
+  ]
+}

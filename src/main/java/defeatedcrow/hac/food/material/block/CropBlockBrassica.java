@@ -12,6 +12,7 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.crop.CropGrowType;
+import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.api.util.DCState;
@@ -72,6 +73,16 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 	@Override
 	public CropGrowType getGrowType(CropTier t) {
 		return CropGrowType.SINGLE;
+	}
+
+	@Override
+	public boolean canHarvest(BlockState state) {
+		CropStage stage = this.getCurrentStage(state);
+		if (this.getTier() == CropTier.WILD) {
+			return stage == CropStage.GROWN;
+		} else {
+			return stage == CropStage.GROWN || stage == CropStage.FLOWER;
+		}
 	}
 
 	@Override

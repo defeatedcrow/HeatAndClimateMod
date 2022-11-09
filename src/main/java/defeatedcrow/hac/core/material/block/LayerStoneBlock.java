@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.core.json.JsonModelDC;
+import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.material.MaterialColor;
 public class LayerStoneBlock extends BlockDC {
 
 	final String name;
+	private String texDir = "ore";
 	private String domain = "main";
 
 	public LayerStoneBlock(String s) {
@@ -28,6 +30,11 @@ public class LayerStoneBlock extends BlockDC {
 
 	public LayerStoneBlock setDomain(String s) {
 		domain = s;
+		return this;
+	}
+
+	public LayerStoneBlock setTexDir(String s) {
+		texDir = s;
 		return this;
 	}
 
@@ -57,7 +64,7 @@ public class LayerStoneBlock extends BlockDC {
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
-		return ImmutableList.of(new JsonModelDC("minecraft:block/cube_all", ImmutableMap.of("all", "dcs_climate:block/ore/" + name)));
+		return ImmutableList.of(new JsonModelDC("minecraft:block/cube_all", ImmutableMap.of("all", "dcs_climate:block/" + texDir + "/" + name)));
 	}
 
 	@Override
@@ -66,8 +73,8 @@ public class LayerStoneBlock extends BlockDC {
 	}
 
 	@Override
-	public JsonModelDC getItemModel() {
-		return new JsonModelDC("minecraft:block/cube_all", ImmutableMap.of("all", "dcs_climate:block/ore/" + name));
+	public JsonModelSimpleDC getItemModel() {
+		return new JsonModelSimpleDC("dcs_climate:block/" + getRegistryName() + "_0");
 	}
 
 	@Override

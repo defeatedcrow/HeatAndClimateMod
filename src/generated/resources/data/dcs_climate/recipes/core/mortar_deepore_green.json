@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "crusher_mortar",
+  "ingredients": [
+    {
+      "tag": "forge:ores/deep_green"
+    },
+    {
+      "item": "dcs_climate:main/agate_mortar"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:main/oreitem_green_2"
+  }
+}

@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
+
+import org.apache.commons.compress.utils.Lists;
 
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
@@ -270,6 +274,33 @@ public class BlockClimateRegister implements IHeatBlockRegister {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public boolean isRegisteredBlock(BlockState block) {
+		return isRegisteredHeat(block) || isRegisteredHum(block) | isRegisteredAir(block);
+	}
+
+	@Override
+	public List<BlockSet> getRegisteredBlocks() {
+		List<BlockSet> ret = Lists.newArrayList();
+		heats.keySet().forEach(b -> {
+			if (!ret.contains(b))
+				ret.add(b);
+		});
+		hums.keySet().forEach(b -> {
+			if (!ret.contains(b))
+				ret.add(b);
+		});
+		airs.keySet().forEach(b -> {
+			if (!ret.contains(b))
+				ret.add(b);
+		});
+		Stream.of(BlockClimateData.values()).forEach(data -> {
+			if (!ret.contains(data.getBlockSet()))
+				ret.add(data.getBlockSet());
+		});
+		return ret;
 	}
 
 }

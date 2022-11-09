@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/dust_crystal"
+  },
+  "parent": "minecraft:item/generated"
+}

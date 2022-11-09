@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/dustblock_mangalloy"
+  },
+  "parent": "minecraft:block/cube_all"
+}

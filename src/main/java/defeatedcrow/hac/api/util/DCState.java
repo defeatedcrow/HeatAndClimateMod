@@ -25,6 +25,7 @@ public class DCState {
 	// crop
 	public static final IntegerProperty STAGE4 = IntegerProperty.create("stage4", 0, 3);
 	public static final IntegerProperty STAGE5 = IntegerProperty.create("stage5", 0, 4);
+	public static final IntegerProperty STAGE6 = IntegerProperty.create("stage6", 0, 5);
 	public static final BooleanProperty DOUBLE = BooleanProperty.create("double");
 	public static final BooleanProperty DEAD = BooleanProperty.create("dead");
 

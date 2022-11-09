@@ -11,6 +11,7 @@ import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
 import defeatedcrow.hac.food.material.FoodInit;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 public class ItemCropDC extends ItemDC {
@@ -21,8 +22,8 @@ public class ItemCropDC extends ItemDC {
 	private final CropType type;
 	private final CropTier tier;
 
-	public ItemCropDC(CropTier rare, CropType t, String s) {
-		super(new Item.Properties().rarity(rare.getRarity()).tab(FoodInit.FOOD));
+	public ItemCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair) {
+		super(new Item.Properties().rarity(rare.getRarity()).tab(FoodInit.FOOD), pair);
 		name = s;
 		type = t;
 		tier = rare;

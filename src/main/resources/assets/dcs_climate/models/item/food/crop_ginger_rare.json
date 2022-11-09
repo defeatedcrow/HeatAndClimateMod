@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "dcs_climate:item/crop/crop_ginger_turmeric"
+  }
+}

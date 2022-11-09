@@ -261,6 +261,16 @@ public enum DCHeatTier {
 		return NORMAL;
 	}
 
+	public static DCHeatTier getFromNameOrNull(String name) {
+		if (name != null)
+			for (DCHeatTier t : DCHeatTier.values()) {
+				if (t.name().equalsIgnoreCase(name)) {
+					return t;
+				}
+			}
+		return null;
+	}
+
 	public static MutableComponent basename() {
 		return Component.translatable("dcs.enum.heat_name");
 	}

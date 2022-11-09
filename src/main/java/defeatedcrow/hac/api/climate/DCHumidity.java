@@ -97,6 +97,16 @@ public enum DCHumidity {
 		return NORMAL;
 	}
 
+	public static DCHumidity getFromNameOrNull(String name) {
+		if (name != null)
+			for (DCHumidity t : DCHumidity.values()) {
+				if (t.name().equalsIgnoreCase(name)) {
+					return t;
+				}
+			}
+		return null;
+	}
+
 	public static MutableComponent basename() {
 		return Component.translatable("dcs.enum.humidity_name");
 	}

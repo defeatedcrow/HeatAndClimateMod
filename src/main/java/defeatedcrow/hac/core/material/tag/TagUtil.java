@@ -6,6 +6,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,7 +15,7 @@ public class TagUtil {
 
 	public static boolean isMatch(String name, TagKey<?> tag) {
 		if (tag != null && tag.location() != null) {
-			return tag.location().toString().contains(name);
+			return tag.location().toString().toLowerCase().contains(name);
 		}
 		return false;
 	}
@@ -46,5 +47,9 @@ public class TagUtil {
 
 	public static Optional<TagKey<Block>> matchTag(ResourceLocation dic, BlockState state) {
 		return state.getTags().filter((tag) -> isMatch(dic, tag)).findAny();
+	}
+
+	public static Optional<TagKey<Biome>> matchTag(String name, Holder<Biome> biome) {
+		return biome.getTagKeys().filter((tag) -> isMatch(name, tag)).findAny();
 	}
 }

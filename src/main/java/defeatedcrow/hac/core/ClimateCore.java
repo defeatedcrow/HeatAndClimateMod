@@ -11,8 +11,6 @@ import defeatedcrow.hac.core.climate.register.ArmorMaterialRegister;
 import defeatedcrow.hac.core.climate.register.BiomeClimateRegister;
 import defeatedcrow.hac.core.climate.register.BlockClimateRegister;
 import defeatedcrow.hac.core.climate.register.MobResistanceRegister;
-import defeatedcrow.hac.core.config.CoreConfigDC;
-import defeatedcrow.hac.core.json.JsonInit;
 import defeatedcrow.hac.core.json.TileNBTFunction;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.tag.BiomeTagProviderDC;
@@ -20,6 +18,8 @@ import defeatedcrow.hac.core.material.tag.BlockTagProviderDC;
 import defeatedcrow.hac.core.material.tag.ItemTagProviderDC;
 import defeatedcrow.hac.core.material.tag.TagDC;
 import defeatedcrow.hac.core.network.packet.DCPacket;
+import defeatedcrow.hac.core.recipe.MatDC;
+import defeatedcrow.hac.core.recipe.vanilla.VanillaRecipeProvider;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
 import defeatedcrow.hac.plugin.jei.PluginRecipeListDC;
 import net.minecraft.data.DataGenerator;
@@ -63,6 +63,7 @@ public class ClimateCore {
 			}
 		}
 
+		TagDC.init();
 		CoreInit.init();
 		FeatureInit.init();
 
@@ -74,6 +75,7 @@ public class ClimateCore {
 		FeatureInit.FEATURES.register(bus);
 
 		TagDC.init();
+		MatDC.init();
 
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
@@ -93,8 +95,9 @@ public class ClimateCore {
 	}
 
 	public void commonSetup(FMLCommonSetupEvent event) {
-		JsonInit.init();
-		CoreConfigDC.loadConfig();
+		proxy.commonInit();
+		proxy.registerRecipes();
+
 		DCPacket.INSTANCE.init();
 		event.enqueueWork(TileNBTFunction::init);
 
@@ -108,6 +111,7 @@ public class ClimateCore {
 		generator.addProvider(event.includeServer(), blockTag);
 		generator.addProvider(event.includeServer(), new ItemTagProviderDC(generator, blockTag, existingFileHelper));
 		generator.addProvider(event.includeServer(), new BiomeTagProviderDC(generator, existingFileHelper));
+		generator.addProvider(event.includeServer(), new VanillaRecipeProvider(generator));
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {

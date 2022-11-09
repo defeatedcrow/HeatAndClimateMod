@@ -5,13 +5,12 @@ import java.util.Map;
 /**
  * JSON出力用クラス
  */
-public class JsonModelDC {
+public class JsonModelDC extends JsonModelSimpleDC {
 
-	final String parent;
 	final Map<String, String> textures;
 
 	public JsonModelDC(String p, Map<String, String> tex) {
-		parent = p;
+		super(p);
 		textures = tex;
 	}
 

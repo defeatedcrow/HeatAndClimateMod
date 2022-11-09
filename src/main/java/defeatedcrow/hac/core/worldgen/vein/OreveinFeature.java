@@ -9,10 +9,12 @@ import com.mojang.serialization.Codec;
 import defeatedcrow.hac.core.material.tag.TagUtil;
 import defeatedcrow.hac.core.worldgen.vein.OreGenPos.OreVein;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -62,10 +64,10 @@ public class OreveinFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	static boolean isPlaceable(BlockState block) {
-		if (!block.hasBlockEntity())
+		if (!block.hasBlockEntity() && !block.is(BlockTags.FEATURES_CANNOT_REPLACE))
 			if (block.getMaterial() == Material.STONE || block.getMaterial() == Material.SAND || block.getMaterial() == Material.CLAY || block
 				.getMaterial() == Material.DIRT) {
-				if (TagUtil.matchTag("ores", block.getBlock().asItem()).isEmpty()) {
+				if (TagUtil.matchTag("ores", block.getBlock().asItem()).isEmpty() && block.getBlock() != Blocks.POINTED_DRIPSTONE) {
 					return true;
 				}
 			}

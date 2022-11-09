@@ -44,7 +44,7 @@ public class JsonBuilderDC {
 		// 生成にIJsonDataDCインターフェイスを使うので、実装チェックをする。
 		if (dir != null && item != null && item instanceof IJsonDataDC) {
 			IJsonDataDC data = (IJsonDataDC) item;
-			JsonModelDC model = data.getItemModel();
+			JsonModelSimpleDC model = data.getItemModel();
 
 			File f = new File(dir, data.getRegistryName() + ".json");
 
@@ -227,7 +227,7 @@ public class JsonBuilderDC {
 
 			// 生成にIJsonDataDCインターフェイスを使うので、実装チェックをする。
 			if (dir4 != null) {
-				JsonModelDC model = data.getItemModel();
+				JsonModelSimpleDC model = data.getItemModel();
 
 				File f = new File(dir4, data.getRegistryName() + ".json");
 
@@ -275,7 +275,7 @@ public class JsonBuilderDC {
 			File dir2 = new File(ClimateCore.assetsDir, "/blockstates/");
 
 			// 生成にIJsonDataDCインターフェイスを使うので、実装チェックをする。
-			if (dir2 != null) {
+			if (dir2 != null && data.requireStateJson()) {
 				JsonBlockStateDC.Build build = new JsonBlockStateDC.Build(block, data);
 
 				File f = new File(dir2, data.getRegistryName() + ".json");

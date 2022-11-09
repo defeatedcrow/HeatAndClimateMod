@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dustblock_pack",
+  "key": {
+    "P": {
+      "tag": "forge:dust_blocks/titanium"
+    },
+    "S": {
+      "tag": "forge:dusts/aluminum"
+    },
+    "T": {
+      "tag": "forge:dusts/chromium"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    "SST"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_titanium"
+  }
+}

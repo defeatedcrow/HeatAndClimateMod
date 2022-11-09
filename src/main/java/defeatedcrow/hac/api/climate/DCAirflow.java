@@ -97,6 +97,16 @@ public enum DCAirflow {
 		return TIGHT;
 	}
 
+	public static DCAirflow getFromNameOrNull(String name) {
+		if (name != null)
+			for (DCAirflow t : DCAirflow.values()) {
+				if (t.name().equalsIgnoreCase(name)) {
+					return t;
+				}
+			}
+		return null;
+	}
+
 	public static MutableComponent basename() {
 		return Component.translatable("dcs.enum.airflow_name");
 	}

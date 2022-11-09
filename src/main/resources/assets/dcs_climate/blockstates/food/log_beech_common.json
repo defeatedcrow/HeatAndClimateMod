@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dcs_climate:block/food/log_beech_common_hol",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "dcs_climate:block/food/log_beech_common_var"
+    },
+    "axis=z": {
+      "model": "dcs_climate:block/food/log_beech_common_hol",
+      "x": 90
+    }
+  }
+}

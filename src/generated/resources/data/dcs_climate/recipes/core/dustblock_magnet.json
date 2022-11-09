@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dustblock_pack",
+  "key": {
+    "P": {
+      "tag": "forge:dusts/magnetite"
+    },
+    "S": {
+      "tag": "forge:dusts/coal"
+    },
+    "T": {
+      "tag": "forge:gems/celestite"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    "SST"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_magnet"
+  }
+}

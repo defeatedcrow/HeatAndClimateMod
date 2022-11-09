@@ -1,5 +1,6 @@
 package defeatedcrow.hac.api.climate;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -30,10 +31,14 @@ public interface IHeatBlockRegister {
 
 	boolean isRegisteredAir(BlockState block);
 
+	boolean isRegisteredBlock(BlockState block);
+
 	Map<BlockSet, DCHeatTier> getHeatList();
 
 	Map<BlockSet, DCHumidity> getHumList();
 
 	Map<BlockSet, DCAirflow> getAirList();
+
+	List<BlockSet> getRegisteredBlocks();
 
 }

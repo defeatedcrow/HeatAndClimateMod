@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dustblock_pack",
+  "key": {
+    "P": {
+      "tag": "forge:dusts/iron"
+    },
+    "S": {
+      "tag": "forge:dusts/iron"
+    },
+    "T": {
+      "tag": "forge:dusts/coal"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    "SST"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_steel"
+  }
+}

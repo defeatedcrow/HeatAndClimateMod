@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "double=false,stage5=0": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_false_0"
+    },
+    "double=false,stage5=1": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_false_1"
+    },
+    "double=false,stage5=2": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_false_2"
+    },
+    "double=false,stage5=3": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_false_3"
+    },
+    "double=false,stage5=4": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_false_4"
+    },
+    "double=true,stage5=0": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_true_0"
+    },
+    "double=true,stage5=1": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_true_1"
+    },
+    "double=true,stage5=2": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_true_2"
+    },
+    "double=true,stage5=3": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_true_3"
+    },
+    "double=true,stage5=4": {
+      "model": "dcs_climate:block/food/cropblock_solanum_rare_true_4"
+    }
+  }
+}

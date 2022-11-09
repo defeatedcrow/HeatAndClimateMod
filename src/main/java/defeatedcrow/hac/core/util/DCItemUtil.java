@@ -1,9 +1,17 @@
 package defeatedcrow.hac.core.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
+import defeatedcrow.hac.core.material.tag.TagDC;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,6 +23,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -198,6 +207,60 @@ public class DCItemUtil {
 			}
 		}
 		return p;
+	}
+
+	public static ArrayList<ItemStack> getProcessedList(Object obj) {
+		ArrayList<ItemStack> ret = Lists.newArrayList();
+		if (obj == null) {
+			return ret;
+		}
+		if (obj instanceof String) {
+			ret.addAll(getOres((String) obj));
+		} else if (obj instanceof TagKey<?>) {
+			Registry.ITEM.getTagOrEmpty((TagKey<Item>) obj).forEach(holder -> ret.add(new ItemStack(holder)));
+		} else if (obj instanceof List && !((List) obj).isEmpty()) {
+			ret.addAll((List<ItemStack>) obj);
+		} else if (obj instanceof ItemStack) {
+			if (!((ItemStack) obj).isEmpty())
+				ret.add(((ItemStack) obj).copy());
+		} else if (obj instanceof Item) {
+			ret.add(new ItemStack((Item) obj));
+		} else if (obj instanceof Block) {
+			ret.add(new ItemStack((Block) obj));
+		} else {
+			throw new IllegalArgumentException("Unknown Object passed to recipe!");
+		}
+		return ret;
+	}
+
+	public static List<ItemStack> getOres(String str) {
+		List<ItemStack> ret = new ArrayList<>();
+		if (str == null)
+			return ret;
+		ResourceLocation tagname = new ResourceLocation(str);
+		ForgeRegistries.ITEMS.tags().getTagNames().filter((r) -> r.location().equals(tagname) || r.location().toString().contains(str)).forEach(key -> {
+			Registry.ITEM.getTagOrEmpty(key).forEach(holder -> ret.add(new ItemStack(holder)));
+		});
+		return ret;
+	}
+
+	public static List<ItemStack> getOres(String domain, String name) {
+		List<ItemStack> ret = new ArrayList<>();
+		if (domain == null || name == null)
+			return ret;
+		ResourceLocation tagname = new ResourceLocation(domain, name);
+		ForgeRegistries.ITEMS.tags().getTagNames().filter((r) -> r.location().equals(tagname) || r.location().toString().contains(name)).forEach(key -> {
+			Registry.ITEM.getTagOrEmpty(key).forEach(holder -> ret.add(new ItemStack(holder)));
+		});
+		return ret;
+	}
+
+	public static TagKey<Item> getTag(String domain, String name) {
+		List<ItemStack> ret = new ArrayList<>();
+		if (domain == null || name == null)
+			return TagDC.ItemTag.DUMMY;
+		ResourceLocation tagname = new ResourceLocation(domain, name);
+		return ForgeRegistries.ITEMS.tags().getTagNames().filter((r) -> r.location().equals(tagname) || r.location().toString().contains(name)).findAny().orElse(TagDC.ItemTag.DUMMY);
 	}
 
 }

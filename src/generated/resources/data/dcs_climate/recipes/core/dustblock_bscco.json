@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dustblock_pack",
+  "key": {
+    "L": {
+      "item": "dcs_climate:main/dust_lime"
+    },
+    "P": {
+      "tag": "forge:dusts/copper"
+    },
+    "S": {
+      "tag": "forge:dusts/bismuth"
+    },
+    "T": {
+      "tag": "forge:gems/celestite"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "PPP",
+    "SST"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_bscco"
+  }
+}

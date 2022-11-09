@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "dcs_climate:block/metal/dustblock_nickel_silver"
+  },
+  "parent": "minecraft:block/cube_all"
+}

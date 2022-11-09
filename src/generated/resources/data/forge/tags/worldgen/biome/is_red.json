@@ -2,6 +2,7 @@
   "values": [
     "#forge:is_sandy",
     "#minecraft:is_mountain",
-    "#minecraft:is_badlands"
+    "#minecraft:is_badlands",
+    "#forge:is_underground"
   ]
 }

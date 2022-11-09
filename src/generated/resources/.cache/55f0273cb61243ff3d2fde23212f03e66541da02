@@ -1,7 +1,7 @@
-// 1.19	2022-10-08T15:00:35.3301689	Tags for minecraft:worldgen/biome
+// 1.19.2	2022-10-17T00:45:46.0712835	Tags for minecraft:worldgen/biome
 ce1cbc16f7289525d942a0b08fe873e549c0c2c5 data/forge/tags/worldgen/biome/is_black.json
 cb0c149c0fd480b9b0987a7c5733e4344f121ea3 data/forge/tags/worldgen/biome/is_blue.json
-7bcdf2eb9211c902c4d5202f02479aa877054654 data/forge/tags/worldgen/biome/is_green.json
-701f640fc7778aeda77a8dfc4eb26080164889f3 data/forge/tags/worldgen/biome/is_red.json
+94cba15993bad81c5564eac09ab4f43aa108041f data/forge/tags/worldgen/biome/is_green.json
+785ddd93ecec0cac2845b2806577cdc6f01487dd data/forge/tags/worldgen/biome/is_red.json
 0f9abc451f329a6e5563e6f348c032d5444d090c data/forge/tags/worldgen/biome/is_white.json
 7cb64d5b31e1fa4a32cc12ce8f5aa7f2f251d479 data/forge/tags/worldgen/biome/ore_target.json
