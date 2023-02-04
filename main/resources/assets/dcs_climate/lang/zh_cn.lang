@@ -710,7 +710,7 @@ item.dcs_animalfeed_straw.name=稻草
 ## craft tools
 item.dcs_yagen_stone_normal.name=石质药碾
 item.dcs_yagen_brass_normal.name=黄铜药碾
-item.dcs_handspindle_normal.name=纺轮
+item.dcs_handspindle_normal.name=纺线器
 
 item.dcs_repair_putty.name=修补油灰
 item.dcs_repair_abrasive.name=磨石
