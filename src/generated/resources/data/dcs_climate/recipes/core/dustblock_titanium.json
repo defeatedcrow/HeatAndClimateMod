@@ -3,7 +3,7 @@
   "group": "dustblock_pack",
   "key": {
     "P": {
-      "tag": "forge:dust_blocks/titanium"
+      "tag": "forge:dusts/titanium"
     },
     "S": {
       "tag": "forge:dusts/aluminum"

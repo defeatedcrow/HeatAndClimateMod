@@ -3,6 +3,10 @@ package defeatedcrow.hac.api.climate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.compress.utils.Lists;
+
+import com.google.common.collect.ImmutableList;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -105,6 +109,27 @@ public enum DCAirflow {
 				}
 			}
 		return null;
+	}
+
+	public static List<DCAirflow> getListFromName(List<String> names) {
+		List<DCAirflow> ret = Lists.newArrayList();
+		for (String name : names)
+			if (name != null && !name.isEmpty())
+				for (DCAirflow t : DCAirflow.values()) {
+					if (t.name().equalsIgnoreCase(name)) {
+						ret.add(t);
+						break;
+					}
+				}
+		return ret;
+	}
+
+	public static List<DCAirflow> exceptTight() {
+		return ImmutableList.of(NORMAL, FLOW, WIND);
+	}
+
+	public static List<DCAirflow> exceptWind() {
+		return ImmutableList.of(TIGHT, NORMAL, FLOW);
 	}
 
 	public static MutableComponent basename() {

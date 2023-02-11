@@ -4,6 +4,7 @@
     "#forge:crops/bindweed",
     "#forge:crops/morning_glory",
     "#forge:crops/lantern",
-    "#forge:seeds/blue_mallow"
+    "#forge:crops/blue_mallow",
+    "#forge:crops/osmanthus"
   ]
 }

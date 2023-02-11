@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dustblock_pack",
+  "key": {
+    "P": {
+      "tag": "forge:dusts/aluminum"
+    },
+    "S": {
+      "tag": "forge:dusts/aluminum"
+    },
+    "T": {
+      "tag": "forge:gems/fluorite"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    "SST"
+  ],
+  "result": {
+    "item": "dcs_climate:main/dustblock_aluminum"
+  }
+}

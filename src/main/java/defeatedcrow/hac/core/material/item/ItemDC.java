@@ -10,7 +10,7 @@ import org.apache.commons.compress.utils.Lists;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
-import defeatedcrow.hac.core.material.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;

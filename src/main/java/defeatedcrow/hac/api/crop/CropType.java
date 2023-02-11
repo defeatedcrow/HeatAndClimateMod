@@ -12,7 +12,7 @@ public enum CropType {
 	BRASSICA, // アブラナ
 	CAPSICUM, // トウガラシ
 	CEREALS, // ムギ
-	CHELLY, // サクラ
+	CHERRY, // サクラ
 	CINNAMON, // クスノキ
 	CITRUS, // カンキツ
 	GINGER, // ショウガ
@@ -22,6 +22,8 @@ public enum CropType {
 	MALLOW, // アオイ
 	MORNINGGLORY, // ヒルガオ
 	LOTUS, // ハス
+	OLIVE, // モクセイ
+	PALM, // ヤシ
 	PEAS, // マメ
 	REED, // アシ
 	RICE, // イネ

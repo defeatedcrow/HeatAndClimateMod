@@ -28,6 +28,7 @@ public class DCState {
 	public static final IntegerProperty STAGE6 = IntegerProperty.create("stage6", 0, 5);
 	public static final BooleanProperty DOUBLE = BooleanProperty.create("double");
 	public static final BooleanProperty DEAD = BooleanProperty.create("dead");
+	public static final BooleanProperty WILD = BooleanProperty.create("wild");
 
 	public static final IntegerProperty FERTILE = IntegerProperty.create("fertile", 0, 3);
 

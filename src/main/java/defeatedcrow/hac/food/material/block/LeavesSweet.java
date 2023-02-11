@@ -11,6 +11,7 @@ import com.google.common.collect.ImmutableMap;
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.crop.CropGrowType;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
@@ -25,6 +26,7 @@ public class LeavesSweet extends LeavesCropBlockDC {
 
 	public LeavesSweet() {
 		super(CropType.BEECH, CropTier.RARE);
+		this.setSeason(EnumSeason.SUMMER_EARLY, EnumSeason.AUTUMN_LATE);
 	}
 
 	/* model */
@@ -85,17 +87,26 @@ public class LeavesSweet extends LeavesCropBlockDC {
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		return Optional.empty();
+		switch (t) {
+		case WILD:
+			return Optional.of(FoodInit.BLOCK_BH_COMMON.get());
+		case COMMON:
+			return Optional.of(FoodInit.BLOCK_BH_WALNUT.get());
+		case RARE:
+			return Optional.of(FoodInit.BLOCK_BH_SWEET.get());
+		default:
+			return Optional.empty();
+		}
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
-		return Lists.newArrayList();
+		return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 	}
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		return ImmutableList.of(DCHeatTier.CRYOGENIC, DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL);
+		return ImmutableList.of(DCHeatTier.CRYOGENIC, DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL);
 	}
 
 	@Override

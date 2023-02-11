@@ -30,12 +30,12 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 
 	public CropBlockAllium(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5);
+		def.add(DCState.STAGE5, DCState.WILD);
 	}
 
 	/* 収穫物の後に花が咲くタイプ */
@@ -52,9 +52,11 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 		return CropStage.YOUNG;
 	}
 
+	/* IClimateCrop */
+
 	@Override
-	public BlockState getGrownState() {
-		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(4));
+	public BlockState getFeatureState() {
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2));
 	}
 
 	@Override
@@ -176,7 +178,7 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
@@ -209,6 +211,8 @@ public class CropBlockAllium extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("PLAINS", "RIVER");
+		// case COMMON:
+		// return ImmutableList.of("MOUNTAIN", "COLD");
 		default:
 			return Lists.newArrayList();
 		}

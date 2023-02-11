@@ -27,12 +27,12 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 
 	public CropBlockCapsicum(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5);
+		def.add(DCState.STAGE5, DCState.WILD);
 	}
 
 	/* model */
@@ -62,7 +62,7 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_capsicum_" + getSpeciesName(cropTier)));
 	}
 
-	/* ICropData */
+	/* IClimateCrop */
 
 	@Override
 	public BlockState getHarvestedState(BlockState state) {
@@ -138,7 +138,7 @@ public class CropBlockCapsicum extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
-		return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);
+		return ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL, DCHumidity.WET);
 	}
 
 	@Override

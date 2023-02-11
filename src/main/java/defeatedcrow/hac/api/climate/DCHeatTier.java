@@ -3,6 +3,8 @@ package defeatedcrow.hac.api.climate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.compress.utils.Lists;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
@@ -269,6 +271,19 @@ public enum DCHeatTier {
 				}
 			}
 		return null;
+	}
+
+	public static List<DCHeatTier> getListFromName(List<String> names) {
+		List<DCHeatTier> ret = Lists.newArrayList();
+		for (String name : names)
+			if (name != null && !name.isEmpty())
+				for (DCHeatTier t : DCHeatTier.values()) {
+					if (t.name().equalsIgnoreCase(name)) {
+						ret.add(t);
+						break;
+					}
+				}
+		return ret;
 	}
 
 	public static MutableComponent basename() {

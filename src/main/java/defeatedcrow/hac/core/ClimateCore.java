@@ -11,30 +11,33 @@ import defeatedcrow.hac.core.climate.register.ArmorMaterialRegister;
 import defeatedcrow.hac.core.climate.register.BiomeClimateRegister;
 import defeatedcrow.hac.core.climate.register.BlockClimateRegister;
 import defeatedcrow.hac.core.climate.register.MobResistanceRegister;
+import defeatedcrow.hac.core.config.ConfigClientBuilder;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.json.TileNBTFunction;
 import defeatedcrow.hac.core.material.CoreInit;
-import defeatedcrow.hac.core.material.tag.BiomeTagProviderDC;
-import defeatedcrow.hac.core.material.tag.BlockTagProviderDC;
-import defeatedcrow.hac.core.material.tag.ItemTagProviderDC;
-import defeatedcrow.hac.core.material.tag.TagDC;
 import defeatedcrow.hac.core.network.packet.DCPacket;
-import defeatedcrow.hac.core.recipe.MatDC;
+import defeatedcrow.hac.core.recipe.MaterialRecipes;
 import defeatedcrow.hac.core.recipe.vanilla.VanillaRecipeProvider;
+import defeatedcrow.hac.core.tag.BiomeTagProviderDC;
+import defeatedcrow.hac.core.tag.BlockTagProviderDC;
+import defeatedcrow.hac.core.tag.ItemTagProviderDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.worldgen.FeatureInit;
+import defeatedcrow.hac.food.client.FoodClientProxy;
 import defeatedcrow.hac.plugin.jei.PluginRecipeListDC;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.entity.EntityType;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod(ClimateCore.MOD_ID)
 public class ClimateCore {
@@ -47,8 +50,6 @@ public class ClimateCore {
 	public static File dataDir = null;
 
 	public static boolean isDebug = true;
-
-	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MOD_ID);
 
 	public ClimateCore() {
 		initAPI();
@@ -71,12 +72,18 @@ public class ClimateCore {
 		CoreInit.BLOCKS.register(bus);
 		CoreInit.ITEMS.register(bus);
 		CoreInit.FLUIDS.register(bus);
-		ENTITIES.register(bus);
+		CoreInit.POTIONS.register(bus);
+		CoreInit.ENTITIES.register(bus);
 		FeatureInit.FEATURES.register(bus);
 
 		TagDC.init();
-		MatDC.init();
+		MaterialRecipes.init();
 
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigClientBuilder.CONFIG_CLIENT);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigCommonBuilder.CONFIG_COMMON);
+
+		bus.addListener(this::registerLayerDefinitions);
+		bus.addListener(this::registerEntityRenderers);
 		bus.addListener(this::commonSetup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
@@ -92,6 +99,14 @@ public class ClimateCore {
 		ClimateAPI.registerMaterial = new ArmorMaterialRegister();
 		ClimateAPI.registerArmor = new ArmorItemRegister();
 		ClimateAPI.registerMob = new MobResistanceRegister();
+	}
+
+	void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+		FoodClientProxy.registerLayerDefinitions(event);
+	}
+
+	void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+		FoodClientProxy.registerEntityRenderers(event);
 	}
 
 	public void commonSetup(FMLCommonSetupEvent event) {

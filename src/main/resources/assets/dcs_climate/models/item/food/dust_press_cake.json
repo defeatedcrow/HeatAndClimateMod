@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/dust_press_cake"
+  },
+  "parent": "minecraft:item/generated"
+}

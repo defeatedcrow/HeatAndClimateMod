@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dust_blocks/titanium": {
+    "has_dusts/titanium": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:dust_blocks/titanium"
+            "tag": "forge:dusts/titanium"
           }
         ]
       },
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_dust_blocks/titanium",
+      "has_dusts/titanium",
       "has_the_recipe"
     ]
   ],

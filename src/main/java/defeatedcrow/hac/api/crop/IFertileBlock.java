@@ -6,6 +6,6 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public interface IFertileBlock {
 
-	public int isFertile(BlockGetter level, BlockPos pos, BlockState state);
+	public int getFertile(BlockGetter level, BlockPos pos, BlockState state);
 
 }

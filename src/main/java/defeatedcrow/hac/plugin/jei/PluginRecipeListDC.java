@@ -4,14 +4,19 @@ import java.util.List;
 
 import org.apache.commons.compress.utils.Lists;
 
+import defeatedcrow.hac.api.recipe.IClimateSmelting;
+import defeatedcrow.hac.core.recipe.DCRecipes;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
+import defeatedcrow.hac.food.material.block.LeavesCropBlockDC;
 
 public class PluginRecipeListDC {
 
 	private PluginRecipeListDC() {}
 
+	public static final List<IClimateSmelting> SMELTING_LIST = Lists.newArrayList();
 	public static final List<ClimateCropBaseBlock> CROP_LIST = Lists.newArrayList();
+	public static final List<LeavesCropBlockDC> TREE_LIST = Lists.newArrayList();
 
 	public static void init() {
 		loadFood();
@@ -83,9 +88,34 @@ public class PluginRecipeListDC {
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_SL_TOMATO.get());
 		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_SL_LANTERN.get());
 
-		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_BH_COMMON.get());
-		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_BH_WALNUT.get());
-		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_BH_SWEET.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_BH_COMMON.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_BH_WALNUT.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_BH_SWEET.get());
+
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_WILD.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_PLUM.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CH_PEACH.get());
+
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CN_CAMPHOR.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CN_CINNAMON.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CN_AVOCADO.get());
+
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CT_POMELO.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CT_MANDARIN.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_CT_LEMON.get());
+
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_ASH.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_OLIVE.get());
+		TREE_LIST.add((LeavesCropBlockDC) FoodInit.LEAVES_OL_OSMANTHUS.get());
+
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_COCONUT.get());
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_DATE.get());
+		CROP_LIST.add((ClimateCropBaseBlock) FoodInit.BLOCK_PL_OIL.get());
+
+		for (IClimateSmelting recipe : DCRecipes.INSTANCE.SMELTING) {
+			if (recipe.isActive())
+				SMELTING_LIST.add(recipe);
+		}
 
 	}
 

@@ -2,6 +2,12 @@
   "values": [
     "dcs_climate:food/log_beech_common",
     "dcs_climate:food/log_beech_walnut",
-    "dcs_climate:food/log_beech_sweet"
+    "dcs_climate:food/log_beech_sweet",
+    "dcs_climate:food/log_cherry_wild",
+    "dcs_climate:food/log_cinnamon_camphor",
+    "dcs_climate:food/log_cinnamon_true",
+    "dcs_climate:food/log_citrus_pomelo",
+    "dcs_climate:food/log_olive_ash",
+    "dcs_climate:food/log_palm_coconut"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/fertilizer_mixed"
+  },
+  "parent": "minecraft:item/generated"
+}

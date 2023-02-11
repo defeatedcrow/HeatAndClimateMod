@@ -10,8 +10,8 @@ import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
 import defeatedcrow.hac.core.material.CoreInit;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 
 public class MaterialItemDC extends ItemDC {
 
@@ -23,8 +23,13 @@ public class MaterialItemDC extends ItemDC {
 		name = s;
 	}
 
-	public MaterialItemDC(Rarity rare, String s, TagKey<Item> pair) {
-		super(new Item.Properties().rarity(rare).tab(CoreInit.CORE), pair);
+	public MaterialItemDC(CreativeModeTab tab, String s, TagKey<Item> pair) {
+		super(new Item.Properties().tab(tab), pair);
+		name = s;
+	}
+
+	public MaterialItemDC(Properties prop, String s, TagKey<Item> pair) {
+		super(prop, pair);
 		name = s;
 	}
 

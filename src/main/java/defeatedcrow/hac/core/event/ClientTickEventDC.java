@@ -1,6 +1,8 @@
 package defeatedcrow.hac.core.event;
 
 import defeatedcrow.hac.core.ClimateCore;
+import defeatedcrow.hac.core.config.ConfigClientBuilder;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
@@ -8,6 +10,10 @@ import net.minecraftforge.fml.LogicalSide;
 public class ClientTickEventDC {
 
 	private static int i = 10;
+
+	private static boolean releaseHUDKey = true;
+
+	private static boolean releaseCharmKey = true;
 
 	@SubscribeEvent
 	public static void onClientTick(TickEvent.ClientTickEvent event) {
@@ -19,7 +25,40 @@ public class ClientTickEventDC {
 				i--;
 			}
 
+			if (ClimateCore.proxy.keyHUDPushed()) {
+				if (!releaseHUDKey) {
+					onHUDKeyPushed();
+					releaseHUDKey = true;
+				}
+			} else {
+				releaseHUDKey = false;
+			}
+
+			if (ClimateCore.proxy.keyCharmPushed()) {
+				if (!releaseCharmKey) {
+					onCharmKeyPushed();
+					releaseCharmKey = true;
+				}
+			} else {
+				releaseCharmKey = false;
+			}
+
 		}
+	}
+
+	@SuppressWarnings("resource")
+	private static void onHUDKeyPushed() {
+		// GUI展開中は切り替えしない
+		if (Minecraft.getInstance().screen == null) {
+			ConfigClientBuilder.INSTANCE.HUD_type++;
+			if (ConfigClientBuilder.INSTANCE.HUD_type > 4) {
+				ConfigClientBuilder.INSTANCE.HUD_type = 0;
+			}
+		}
+	}
+
+	private static void onCharmKeyPushed() {
+
 	}
 
 }

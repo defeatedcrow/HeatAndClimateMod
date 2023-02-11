@@ -2,18 +2,21 @@ package defeatedcrow.hac.core.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.google.common.collect.Lists;
 
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
-import defeatedcrow.hac.core.material.tag.TagDC;
+import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.AbstractVillager;
@@ -22,8 +25,12 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -209,6 +216,20 @@ public class DCItemUtil {
 		return p;
 	}
 
+	public static Optional<ArmorMaterial> getArmorMaterial(Item item) {
+		if (item instanceof ArmorItem) {
+			return Optional.of(((ArmorItem) item).getMaterial());
+		}
+		return Optional.empty();
+	}
+
+	public static Optional<Tier> getToolTier(Item item) {
+		if (item instanceof TieredItem) {
+			return Optional.of(((TieredItem) item).getTier());
+		}
+		return Optional.empty();
+	}
+
 	public static ArrayList<ItemStack> getProcessedList(Object obj) {
 		ArrayList<ItemStack> ret = Lists.newArrayList();
 		if (obj == null) {
@@ -261,6 +282,125 @@ public class DCItemUtil {
 			return TagDC.ItemTag.DUMMY;
 		ResourceLocation tagname = new ResourceLocation(domain, name);
 		return ForgeRegistries.ITEMS.tags().getTagNames().filter((r) -> r.location().equals(tagname) || r.location().toString().contains(name)).findAny().orElse(TagDC.ItemTag.DUMMY);
+	}
+
+	public static Block getBlockFromString(String name) {
+		if (name == null || name.equalsIgnoreCase("empty")) {
+			return Blocks.AIR;
+		} else {
+			String itemName = name;
+			String modid = "minecraft";
+
+			if (name.contains(":")) {
+				String[] n2 = name.split(":");
+				if (n2 != null && n2.length > 0) {
+					if (n2.length == 1) {
+						itemName = n2[0];
+					} else {
+						modid = n2[0];
+						itemName = n2[1];
+					}
+				}
+			}
+
+			Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, itemName));
+			if (block != null && block != Blocks.AIR) {
+				// DCLogger.debugTrace("Find target: " + modid + ":" + itemName);
+				return block;
+			} else {
+				DCLogger.debugLog("Failed find target: " + modid + ":" + itemName);
+			}
+		}
+		return Blocks.AIR;
+	}
+
+	public static List<Block> getBlockListFromStrings(String[] names, String logname) {
+		List<Block> list = Lists.newArrayList();
+		if (names != null && names.length > 0) {
+			for (String name : names) {
+				if (name != null) {
+					String itemName = name;
+					String modid = "minecraft";
+					if (name.contains(":")) {
+						String[] n2 = name.split(":");
+						if (n2 != null && n2.length > 0) {
+							if (n2.length == 1) {
+								itemName = n2[0];
+							} else {
+								modid = n2[0];
+								itemName = n2[1];
+							}
+						}
+					}
+
+					Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, itemName));
+					if (block != null && block != Blocks.AIR) {
+						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName);
+						list.add(block);
+					} else {
+						DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
+					}
+				}
+			}
+		}
+		return list;
+	}
+
+	public static List<Item> getItemListFromStrings(String[] names, String logname) {
+		List<Item> list = Lists.newArrayList();
+		if (names != null && names.length > 0) {
+			for (String name : names) {
+				if (name != null) {
+					String itemName = name;
+					String modid = "minecraft";
+					if (name.contains(":")) {
+						String[] n2 = name.split(":");
+						if (n2 != null && n2.length > 0) {
+							if (n2.length == 1) {
+								itemName = n2[0];
+							} else {
+								modid = n2[0];
+								itemName = n2[1];
+							}
+						}
+					}
+
+					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(modid, itemName));
+					if (item != null && item != Items.AIR) {
+						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName);
+						list.add(item);
+					} else {
+						DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
+					}
+				}
+			}
+		}
+		return list;
+	}
+
+	public static List<EntityType<?>> getEntityListFromStrings(String[] names, String logname) {
+		List<EntityType<?>> list = Lists.newArrayList();
+		if (names != null && names.length > 0) {
+			for (String name : names) {
+				if (name != null) {
+					ResourceLocation res = new ResourceLocation(name);
+					if (res.getNamespace().equalsIgnoreCase("minecraft")) {
+						String n = res.getPath();
+						res = new ResourceLocation(n);
+					}
+					if (ForgeRegistries.ENTITY_TYPES.containsKey(res)) {
+						EntityType<?> entity = ForgeRegistries.ENTITY_TYPES.getValue(res);
+						if (entity != null) {
+							list.add(entity);
+							DCLogger.infoLog("Registered to the update blacklist: " + name);
+						}
+						continue;
+					}
+				}
+				DCLogger.infoLog("Failed find target: " + name);
+			}
+		}
+		return list;
 	}
 
 }

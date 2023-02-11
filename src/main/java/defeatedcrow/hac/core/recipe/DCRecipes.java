@@ -23,7 +23,7 @@ public class DCRecipes {
 
 	public static Optional<IClimateSmelting> getSmeltingRecipe(Supplier<IClimate> clm, ItemStack item) {
 		for (IClimateSmelting recipe : INSTANCE.SMELTING) {
-			if (recipe.matcheInput(item) && recipe.matchClimate(clm.get())) {
+			if (recipe.matcheInput(item) && recipe.matchClimate(clm.get()) && recipe.isActive()) {
 				return Optional.of(recipe);
 			}
 		}
@@ -36,7 +36,7 @@ public class DCRecipes {
 
 	public static Optional<IClimateSmelting> hasAnySmeltingRecipe(ItemLike item) {
 		for (IClimateSmelting recipe : INSTANCE.SMELTING) {
-			if (recipe.matcheInput(new ItemStack(item))) {
+			if (recipe.matcheInput(new ItemStack(item)) && recipe.isActive()) {
 				return Optional.of(recipe);
 			}
 		}

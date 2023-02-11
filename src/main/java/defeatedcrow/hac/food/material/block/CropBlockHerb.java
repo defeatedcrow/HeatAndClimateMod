@@ -27,12 +27,12 @@ public class CropBlockHerb extends ClimateCropBaseBlock {
 
 	public CropBlockHerb(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5);
+		def.add(DCState.STAGE5, DCState.WILD);
 	}
 
 	/* model */
@@ -123,6 +123,8 @@ public class CropBlockHerb extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT, SoilType.MUD);
+		case COMMON:
+			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
 		}
@@ -152,7 +154,9 @@ public class CropBlockHerb extends ClimateCropBaseBlock {
 	public List<String> getGeneratedBiomeTag(CropTier t) {
 		switch (t) {
 		case WILD:
-			return ImmutableList.of("FOREST", "PLAINS");
+			return ImmutableList.of("FOREST", "COLD");
+		case COMMON:
+			return ImmutableList.of("JUNGLE");
 		default:
 			return Lists.newArrayList();
 		}

@@ -109,6 +109,7 @@ dependencies {
 
 jar {
     manifest {
+        exclude '**/Thumbs.db'
         attributes([
                 "Specification-Title"     : "${mod_name}",
                 "Specification-Vendor"    : "defeatedcrow",

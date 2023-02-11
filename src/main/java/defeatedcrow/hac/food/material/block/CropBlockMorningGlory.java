@@ -27,12 +27,12 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 
 	public CropBlockMorningGlory(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5);
+		def.add(DCState.STAGE5, DCState.WILD);
 	}
 
 	/* model */
@@ -156,6 +156,8 @@ public class CropBlockMorningGlory extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("BEACH", "OCEAN");
+		// case COMMON:
+		// return ImmutableList.of("REVER", "SWAMP");
 		default:
 			return Lists.newArrayList();
 		}

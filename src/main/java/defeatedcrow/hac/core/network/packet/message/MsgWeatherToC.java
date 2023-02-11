@@ -1,16 +1,16 @@
 package defeatedcrow.hac.core.network.packet.message;
 
-import java.util.function.Supplier;
-
+import defeatedcrow.hac.core.climate.WeatherChecker;
 import defeatedcrow.hac.core.network.packet.DCPacket;
-import defeatedcrow.hac.core.network.packet.IPacket;
+import defeatedcrow.hac.core.network.packet.IPacketDC;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkEvent.Context;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.PacketDistributor;
 
-public class MsgWeatherToC implements IPacket<MsgWeatherToC> {
+public class MsgWeatherToC implements IPacketDC {
 
 	protected ResourceLocation dim;
 	protected float rain;
@@ -29,16 +29,15 @@ public class MsgWeatherToC implements IPacket<MsgWeatherToC> {
 	}
 
 	@Override
-	public void encode(MsgWeatherToC message, FriendlyByteBuf buf) {
-		buf.writeResourceLocation(message.dim);
-		buf.writeFloat(message.rain);
-		buf.writeInt(message.rainCount);
-		buf.writeInt(message.sunCount);
-		buf.writeByte(message.season);
+	public void encode(FriendlyByteBuf buf) {
+		buf.writeResourceLocation(dim);
+		buf.writeFloat(rain);
+		buf.writeInt(rainCount);
+		buf.writeInt(sunCount);
+		buf.writeByte(season);
 	}
 
-	@Override
-	public MsgWeatherToC decode(FriendlyByteBuf buf) {
+	public static MsgWeatherToC decode(FriendlyByteBuf buf) {
 		ResourceLocation d = buf.readResourceLocation();
 		float r = buf.readFloat();
 		int rC = buf.readInt();
@@ -48,14 +47,15 @@ public class MsgWeatherToC implements IPacket<MsgWeatherToC> {
 	}
 
 	@Override
-	public NetworkDirection senderSide() {
-		return NetworkDirection.PLAY_TO_CLIENT;
-	}
-
-	@Override
-	public void handle(MsgWeatherToC message, Supplier<Context> ctx) {
-		ctx.get().enqueueWork(() -> MsgWeatherHandler.handling(message));
-		ctx.get().setPacketHandled(true);
+	public void handle(NetworkEvent.Context ctx) {
+		if (FMLEnvironment.dist == Dist.CLIENT) {
+			ResourceLocation d = dim;
+			float r = rain;
+			int rC = rainCount;
+			int sC = sunCount;
+			int s = season;
+			WeatherChecker.INSTANCE.setWeather(d, r, sC, s, s);
+		}
 	}
 
 	public static void setdToClient(ResourceLocation d, float r, int rC, int sC, int s) {

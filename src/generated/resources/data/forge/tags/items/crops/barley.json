@@ -1,5 +1,9 @@
 {
   "values": [
-    "dcs_climate:food/crop_cereals_rare"
+    "dcs_climate:food/crop_cereals_rare",
+    {
+      "id": "biomesoplenty:barley",
+      "required": false
+    }
   ]
 }

@@ -9,8 +9,9 @@ import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
-import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.util.DCItemUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
@@ -19,7 +20,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -58,51 +58,42 @@ public class ClientClimateData {
 			tempTier = climate.getHeat().getTier();
 		}
 
-		float conf_prev = 3F - CoreConfigDC.damageDifficulty;
+		float conf_prev = 3F - ConfigCommonBuilder.INSTANCE.vDifficulty.get();
 		float damage = 0;
 		boolean isCold = tempTier < 0;
-		heatPrev = 0;
-		coldPrev = 0;
 
-		if (player.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-			heatPrev += 4.0F;
-		}
-		// if (player.isPotionActive(DCInit.prevFreeze)) {
-		// coldPrev += 4.0F;
-		// }
+		// potion
+		heatPrev = DCUtil.getPotionResistantData(player, true);
+		coldPrev = DCUtil.getPotionResistantData(player, false);
+		// 防具の計算
+		IItemHandler handler = player.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
+		if (handler != null) {
+			for (int s = 0; s < handler.getSlots(); s++) {
+				ItemStack item = handler.getStackInSlot(s);
+				if (item.isEmpty())
+					continue;
 
-		// インベントリ走査の頻度は更に落とす
-		if (world.getGameTime() % CoreConfigDC.entityInterval == 0) {
-			// 防具の計算
-			IItemHandler handler = player.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
-			if (handler != null) {
-				for (int s = 0; s < handler.getSlots(); s++) {
-					ItemStack item = handler.getStackInSlot(s);
-					if (item.isEmpty())
-						continue;
-
-					float p = DCItemUtil.getItemResistantData(item, false);
-					heatPrev += p;
-					float p2 = DCItemUtil.getItemResistantData(item, true);
-					coldPrev += p2;
-				}
+				float p = DCItemUtil.getItemResistantData(item, false);
+				heatPrev += p;
+				float p2 = DCItemUtil.getItemResistantData(item, true);
+				coldPrev += p2;
 			}
-
-			// charm
-			NonNullList<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.ALL);
-			DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
-					DamageSourceClimate.climateColdDamage;
-			for (ItemStack check : charms) {
-				IJewelCharm charm = (IJewelCharm) check.getItem();
-				if (isCold)
-					coldPrev += charm.reduceDamage(player, DamageSourceClimate.climateColdDamage, damage, check);
-				else
-					heatPrev += charm.reduceDamage(player, DamageSourceClimate.climateHeatDamage, damage, check);
-			}
-			charms.clear();
 		}
 
-		if (player.level.getDifficulty() != Difficulty.PEACEFUL || CoreConfigDC.peacefulDam) {
+		// charm
+		NonNullList<ItemStack> charms = DCItemUtil.getCharms(player, CharmType.ALL);
+		DamageSource source = tempTier > 0 ? DamageSourceClimate.climateHeatDamage :
+				DamageSourceClimate.climateColdDamage;
+		for (ItemStack check : charms) {
+			IJewelCharm charm = (IJewelCharm) check.getItem();
+			if (isCold)
+				coldPrev += charm.reduceDamage(player, DamageSourceClimate.climateColdDamage, damage, check);
+			else
+				heatPrev += charm.reduceDamage(player, DamageSourceClimate.climateHeatDamage, damage, check);
+		}
+		charms.clear();
+
+		if (player.level.getDifficulty() != Difficulty.PEACEFUL || ConfigCommonBuilder.INSTANCE.enPeacefulDamage.get()) {
 			if (isCold) {
 				damage = (tempTier + conf_prev) * 2;
 				damage += coldPrev;

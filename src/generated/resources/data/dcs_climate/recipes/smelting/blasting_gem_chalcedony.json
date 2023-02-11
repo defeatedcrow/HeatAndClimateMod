@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.3,
+  "ingredient": {
+    "tag": "forge:gems/flint"
+  },
+  "result": "dcs_climate:main/gem_chalcedony"
+}

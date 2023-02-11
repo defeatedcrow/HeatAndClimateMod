@@ -1,6 +1,0 @@
-{
-  "textures": {
-    "layer0": "dcs_climate:item/metal/ingot_green_1"
-  },
-  "parent": "minecraft:item/generated"
-}

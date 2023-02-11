@@ -1,5 +1,8 @@
 package defeatedcrow.hac.core.recipe.smelting;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
@@ -12,24 +15,62 @@ public class ClimateSmeltingJson {
 	private final IngPair output;
 
 	private final int frequency;
-	private final String heat;
-	private final String hum;
-	private final String air;
+	private final List<String> heats = new ArrayList<>();
+	private final List<String> hums = new ArrayList<>();
+	private final List<String> airs = new ArrayList<>();
 
-	public ClimateSmeltingJson(IngPair o, DCHeatTier t, DCHumidity h, DCAirflow a, int freq,
+	private final boolean active;
+
+	public ClimateSmeltingJson(boolean act, IngPair o, DCHeatTier t, DCHumidity h, DCAirflow a, int freq,
 			IngPair i) {
+		active = act;
 		input = i;
 		output = o;
-		heat = t == null ? "ANY" : t.name();
-		hum = h == null ? "ANY" : h.name();
-		air = a == null ? "ANY" : a.name();
+		if (t == null) {
+			heats.add("ANY");
+		} else {
+			heats.add(t.name());
+		}
+		if (h == null) {
+			hums.add("ANY");
+		} else {
+			hums.add(h.name());
+		}
+		if (a == null) {
+			airs.add("ANY");
+		} else {
+			airs.add(a.name());
+		}
+		frequency = freq;
+	}
+
+	public ClimateSmeltingJson(boolean act, IngPair o, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, int freq,
+			IngPair i) {
+		active = act;
+		input = i;
+		output = o;
+		if (t == null || t.isEmpty()) {
+			heats.add("ANY");
+		} else {
+			t.stream().forEach(temp -> heats.add(temp.name()));
+		}
+		if (h == null || h.isEmpty()) {
+			hums.add("ANY");
+		} else {
+			h.stream().forEach(hum -> hums.add(hum.name()));
+		}
+		if (a == null || a.isEmpty()) {
+			airs.add("ANY");
+		} else {
+			a.stream().forEach(air -> airs.add(air.name()));
+		}
 		frequency = freq;
 	}
 
 	public ClimateSmelting toRecipe() {
 		Object in = input.getItemObject();
 		ItemStack out = output.getItem();
-		return new ClimateSmelting(out, DCHeatTier.getFromNameOrNull(heat), DCHumidity.getFromNameOrNull(hum), DCAirflow.getFromNameOrNull(air), frequency, in);
+		return new ClimateSmelting(active, out, DCHeatTier.getListFromName(heats), DCHumidity.getListFromName(hums), DCAirflow.getListFromName(airs), frequency, in);
 	}
 
 	@Override

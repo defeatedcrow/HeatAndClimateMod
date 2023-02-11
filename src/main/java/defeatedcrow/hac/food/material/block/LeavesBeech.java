@@ -3,14 +3,13 @@ package defeatedcrow.hac.food.material.block;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.compress.utils.Lists;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
+import defeatedcrow.hac.api.climate.EnumSeason;
 import defeatedcrow.hac.api.crop.CropGrowType;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
@@ -25,6 +24,7 @@ public class LeavesBeech extends LeavesCropBlockDC {
 
 	public LeavesBeech() {
 		super(CropType.BEECH, CropTier.WILD);
+		this.setSeason(EnumSeason.SUMMER_EARLY, EnumSeason.AUTUMN_LATE);
 	}
 
 	/* model */
@@ -85,12 +85,21 @@ public class LeavesBeech extends LeavesCropBlockDC {
 
 	@Override
 	public Optional<Block> getMutationTarget(CropTier t) {
-		return Optional.empty();
+		switch (t) {
+		case WILD:
+			return Optional.of(FoodInit.BLOCK_BH_COMMON.get());
+		case COMMON:
+			return Optional.of(FoodInit.BLOCK_BH_WALNUT.get());
+		case RARE:
+			return Optional.of(FoodInit.BLOCK_BH_SWEET.get());
+		default:
+			return Optional.empty();
+		}
 	}
 
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
-		return Lists.newArrayList();
+		return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 	}
 
 	@Override
@@ -110,7 +119,7 @@ public class LeavesBeech extends LeavesCropBlockDC {
 
 	@Override
 	public List<String> getGeneratedBiomeTag(CropTier t) {
-		return Lists.newArrayList();
+		return ImmutableList.of("MOUNTAIN", "COLD");
 	}
 
 	@Override

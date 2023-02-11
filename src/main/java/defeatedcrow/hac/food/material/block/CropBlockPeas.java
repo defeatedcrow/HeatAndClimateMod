@@ -27,12 +27,12 @@ public class CropBlockPeas extends ClimateCropBaseBlock {
 
 	public CropBlockPeas(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5);
+		def.add(DCState.STAGE5, DCState.WILD);
 	}
 
 	/* model */
@@ -121,7 +121,7 @@ public class CropBlockPeas extends ClimateCropBaseBlock {
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
@@ -130,7 +130,7 @@ public class CropBlockPeas extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
-		if (t == CropTier.RARE) {
+		if (t == CropTier.COMMON || t == CropTier.RARE) {
 			return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 		} else if (t == CropTier.EPIC) {
 			return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
@@ -156,6 +156,8 @@ public class CropBlockPeas extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("COLD", "FOREST");
+		case COMMON:
+			return ImmutableList.of("PLAINS", "SAVANNA");
 		default:
 			return Lists.newArrayList();
 		}

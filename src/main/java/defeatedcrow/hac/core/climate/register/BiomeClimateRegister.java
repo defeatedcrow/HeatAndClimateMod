@@ -16,7 +16,6 @@ import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.event.WorldHeatTierEvent;
 import defeatedcrow.hac.core.climate.Climate;
 import defeatedcrow.hac.core.climate.WeatherChecker;
-import defeatedcrow.hac.core.config.CoreConfigDC;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
@@ -106,8 +105,7 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 		return clm;
 	}
 
-	private static final PerlinSimplexNoise TEMPERATURE_NOISE = new PerlinSimplexNoise(new WorldgenRandom(
-			new LegacyRandomSource(1234L)), ImmutableList.of(0));
+	private static final PerlinSimplexNoise TEMPERATURE_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(1234L)), ImmutableList.of(0));
 
 	@Override
 	public DCHeatTier getHeatTier(Level world, BlockPos pos) {
@@ -117,11 +115,6 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 			Optional<DCHeatTier> ret = getRegisteredHeatTier(reg.getKey(b.get()));
 			float temp = ret.map(h -> h.getBiomeTemp()).orElse(b.get().getBaseTemperature());
 
-			// Biome補正
-			if (b.is(BiomeTags.IS_NETHER)) {
-				temp += 2.0F;
-			}
-
 			// 高度補正
 			float f1 = (float) (TEMPERATURE_NOISE.getValue(pos.getX() / 8.0F, pos.getZ() / 8.0F, false) * 8.0D);
 			float f2 = (f1 + pos.getY() - 80.0F) * 0.05F / 40.0F;
@@ -129,15 +122,11 @@ public class BiomeClimateRegister implements IBiomeClimateRegister {
 				f2 = -1.0F;
 			temp -= f2;
 
-			if (CoreConfigDC.enableWeatherEffect) {
-				float offset = WeatherChecker.getTempOffsetFloat(dim, world.getBiome(pos).is(BiomeTags.IS_NETHER));
-				temp += offset;
-			}
+			float offset = WeatherChecker.getTempOffsetFloat(dim, world.getBiome(pos).is(BiomeTags.IS_NETHER));
+			temp += offset;
 
-			if (CoreConfigDC.enableTimeEffect) {
-				float offset = DCTimeHelper.getTimeOffset(world, b);
-				temp += offset;
-			}
+			float offset2 = DCTimeHelper.getTimeOffset(world, b);
+			temp += offset2;
 
 			DCHeatTier current = DCHeatTier.getTypeByBiomeTemp(temp);
 

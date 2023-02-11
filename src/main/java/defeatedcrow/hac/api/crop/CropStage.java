@@ -6,7 +6,8 @@ public enum CropStage {
 	YOUNG(1, true, false),
 	FLOWER(2, true, false),
 	GROWN(3, false, true),
-	DEAD(4, false, false);
+	DEAD(4, false, false),
+	SAPLING(5, true, false);
 
 	private final boolean canBonemeal;
 	private final boolean canHarvest;

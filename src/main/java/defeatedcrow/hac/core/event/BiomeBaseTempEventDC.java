@@ -1,7 +1,7 @@
 package defeatedcrow.hac.core.event;
 
 import defeatedcrow.hac.api.event.DCBiomeTempEvent;
-import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.eventbus.api.Event.Result;
@@ -14,7 +14,7 @@ public class BiomeBaseTempEventDC {
 		if (event.biome != null && DCTimeHelper.currentSeason != null) {
 			Biome biome = event.biome;
 			float temp = event.defaultTemp;
-			float offset = (float) CoreConfigDC.seasonEffects[DCTimeHelper.currentSeason.id];
+			float offset = ConfigCommonBuilder.INSTANCE.getSeasonTempOffset(DCTimeHelper.currentSeason);
 
 			// 凍結回避
 			if (temp == 0.5F) {

@@ -29,6 +29,9 @@ public interface IClimateCrop extends ICropData {
 
 	CropTier getTier();
 
+	// 自然生成時のステート
+	BlockState getFeatureState();
+
 	// 成長後のステート
 	BlockState getGrownState();
 

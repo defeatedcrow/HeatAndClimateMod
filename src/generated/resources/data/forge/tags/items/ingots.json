@@ -1,0 +1,16 @@
+{
+  "values": [
+    "#forge:ingots/brass",
+    "#forge:ingots/bronze",
+    "#forge:ingots/nickel_silver",
+    "#forge:ingots/steel",
+    "#forge:ingots/aluminum",
+    "#forge:ingots/silver",
+    "#forge:ingots/sus",
+    "#forge:ingots/titanium",
+    "#forge:ingots/magnet",
+    "#forge:ingots/cobalt_alloy",
+    "#forge:ingots/hastelloy",
+    "#forge:ingots/bscco"
+  ]
+}

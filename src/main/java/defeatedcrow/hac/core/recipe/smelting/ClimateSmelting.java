@@ -9,8 +9,9 @@ import defeatedcrow.hac.api.climate.DCAirflow;
 import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
+import defeatedcrow.hac.api.material.IEntityItem;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
-import defeatedcrow.hac.api.recipe.IEntityItem;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.util.DCItemUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
@@ -29,8 +30,11 @@ public class ClimateSmelting implements IClimateSmelting {
 	private List<DCHumidity> hum = new ArrayList<DCHumidity>();
 	private List<DCAirflow> air = new ArrayList<DCAirflow>();
 
-	public ClimateSmelting(ItemStack o, DCHeatTier t, DCHumidity h, DCAirflow a, int freq,
+	private final boolean active;
+
+	public ClimateSmelting(boolean act, ItemStack o, DCHeatTier t, DCHumidity h, DCAirflow a, int freq,
 			Object i) {
+		active = act;
 		input = i;
 		output = o;
 		if (t != null) {
@@ -50,6 +54,22 @@ public class ClimateSmelting implements IClimateSmelting {
 			hum.add(h);
 		if (a != null)
 			air.add(a);
+		processedInput = DCItemUtil.getProcessedList(input);
+		frequency = freq;
+	}
+
+	public ClimateSmelting(boolean act, ItemStack o, List<DCHeatTier> t, List<DCHumidity> h, List<DCAirflow> a, int freq,
+			Object i) {
+		active = act;
+		input = i;
+		output = o;
+		if (t != null) {
+			heat.addAll(t);
+		}
+		if (h != null)
+			hum.addAll(h);
+		if (a != null)
+			air.addAll(a);
 		processedInput = DCItemUtil.getProcessedList(input);
 		frequency = freq;
 	}
@@ -99,13 +119,27 @@ public class ClimateSmelting implements IClimateSmelting {
 	}
 
 	@Override
-	public int hasPlaceableOutput() {
-		if (output.getItem() instanceof IEntityItem) {
-			return 2;
-		} else if (output.getItem() instanceof BlockItem) {
-			return 1;
+	public boolean hasBlockProcess() {
+		if (output.getItem() instanceof BlockItem) {
+			return true;
 		}
-		return 0;
+		return false;
+	}
+
+	@Override
+	public boolean hasEntityProcess() {
+		if (output.getItem() instanceof IEntityItem) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean hasDropItemProcess() {
+		if (ConfigCommonBuilder.INSTANCE.enDropSmelting.get()) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -152,6 +186,11 @@ public class ClimateSmelting implements IClimateSmelting {
 			return true;
 		}
 		return true;
+	}
+
+	@Override
+	public boolean isActive() {
+		return active;
 	}
 
 }

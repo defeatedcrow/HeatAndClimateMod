@@ -40,12 +40,12 @@ public class CropBlockSolanum extends ClimateCropBaseBlock {
 
 	public CropBlockSolanum(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.DOUBLE, DCState.STAGE5);
+		def.add(DCState.DOUBLE, DCState.STAGE5, DCState.WILD);
 	}
 
 	/* double */
@@ -181,6 +181,13 @@ public class CropBlockSolanum extends ClimateCropBaseBlock {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_solanum_" + getSpeciesName(cropTier)));
 	}
 
+	/* IClimateCrop */
+
+	@Override
+	public BlockState getFeatureState() {
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2));
+	}
+
 	/* ICropData */
 
 	@Override
@@ -254,7 +261,7 @@ public class CropBlockSolanum extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
-		if (t == CropTier.RARE) {
+		if (t == CropTier.WILD || t == CropTier.RARE) {
 			return ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL);
 		}
 		return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);

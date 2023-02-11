@@ -11,16 +11,16 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.google.common.collect.Lists;
-
 import defeatedcrow.hac.core.DCLogger;
-import defeatedcrow.hac.core.material.tag.TagUtil;
+import defeatedcrow.hac.core.material.CoreInit;
+import defeatedcrow.hac.core.tag.TagUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -86,127 +86,36 @@ public class DCUtil {
 		}).orElse("empty");
 	}
 
-	public static Block getBlockFromString(String name) {
-		if (name == null || name.equalsIgnoreCase("empty")) {
-			return Blocks.AIR;
-		} else {
-			String itemName = name;
-			String modid = "minecraft";
-
-			if (name.contains(":")) {
-				String[] n2 = name.split(":");
-				if (n2 != null && n2.length > 0) {
-					if (n2.length == 1) {
-						itemName = n2[0];
-					} else {
-						modid = n2[0];
-						itemName = n2[1];
-					}
-				}
-			}
-
-			Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, itemName));
-			if (block != null && block != Blocks.AIR) {
-				// DCLogger.debugTrace("Find target: " + modid + ":" + itemName);
-				return block;
-			} else {
-				DCLogger.debugLog("Failed find target: " + modid + ":" + itemName);
-			}
-		}
-		return Blocks.AIR;
-	}
-
-	public static List<Block> getBlockListFromStrings(String[] names, String logname) {
-		List<Block> list = Lists.newArrayList();
-		if (names != null && names.length > 0) {
-			for (String name : names) {
-				if (name != null) {
-					String itemName = name;
-					String modid = "minecraft";
-					if (name.contains(":")) {
-						String[] n2 = name.split(":");
-						if (n2 != null && n2.length > 0) {
-							if (n2.length == 1) {
-								itemName = n2[0];
-							} else {
-								modid = n2[0];
-								itemName = n2[1];
-							}
-						}
-					}
-
-					Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, itemName));
-					if (block != null && block != Blocks.AIR) {
-						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName);
-						list.add(block);
-					} else {
-						DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
-					}
-				}
-			}
-		}
-		return list;
-	}
-
-	public static List<Item> getItemListFromStrings(String[] names, String logname) {
-		List<Item> list = Lists.newArrayList();
-		if (names != null && names.length > 0) {
-			for (String name : names) {
-				if (name != null) {
-					String itemName = name;
-					String modid = "minecraft";
-					if (name.contains(":")) {
-						String[] n2 = name.split(":");
-						if (n2 != null && n2.length > 0) {
-							if (n2.length == 1) {
-								itemName = n2[0];
-							} else {
-								modid = n2[0];
-								itemName = n2[1];
-							}
-						}
-					}
-
-					Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(modid, itemName));
-					if (item != null && item != Items.AIR) {
-						DCLogger.infoLog(logname + " add target: " + modid + ":" + itemName);
-						list.add(item);
-					} else {
-						DCLogger.infoLog("Failed find target: " + modid + ":" + itemName);
-					}
-				}
-			}
-		}
-		return list;
-	}
-
-	public static List<EntityType<?>> getEntityListFromStrings(String[] names, String logname) {
-		List<EntityType<?>> list = Lists.newArrayList();
-		if (names != null && names.length > 0) {
-			for (String name : names) {
-				if (name != null) {
-					ResourceLocation res = new ResourceLocation(name);
-					if (res.getNamespace().equalsIgnoreCase("minecraft")) {
-						String n = res.getPath();
-						res = new ResourceLocation(n);
-					}
-					if (ForgeRegistries.ENTITY_TYPES.containsKey(res)) {
-						EntityType<?> entity = ForgeRegistries.ENTITY_TYPES.getValue(res);
-						if (entity != null) {
-							list.add(entity);
-							DCLogger.infoLog("Registered to the update blacklist: " + name);
-						}
-						continue;
-					}
-				}
-				DCLogger.infoLog("Failed find target: " + name);
-			}
-		}
-		return list;
-	}
-
 	public static Boolean getFalse(BlockState state, BlockGetter level, BlockPos pos) {
 		return (boolean) false;
+	}
+
+	public static boolean setBlockIfReplaceable(Level level, BlockPos pos, BlockState set, boolean needAir) {
+		if (level.getBlockState(pos).getMaterial().isReplaceable() && (!needAir || level.getBlockState(pos).getBlock() == Blocks.AIR)) {
+			return level.setBlock(pos, set, 2);
+		}
+		return false;
+	}
+
+	public static float getPotionResistantData(LivingEntity living, boolean isCold) {
+		float prev = 0F;
+		if (!isCold && living.hasEffect(MobEffects.FIRE_RESISTANCE)) {
+			prev += 4.0F;
+		}
+		if (isCold && living.hasEffect(CoreInit.COLD_RESISTANCE.get())) {
+			prev += 4.0F;
+		}
+
+		// 濡れ状態
+		if (living.hasEffect(CoreInit.WET.get())) {
+			if (isCold) {
+				if (!living.isInWater())
+					prev -= 1.0F;
+			} else {
+				prev += 1.0F;
+			}
+		}
+		return prev;
 	}
 
 	/**

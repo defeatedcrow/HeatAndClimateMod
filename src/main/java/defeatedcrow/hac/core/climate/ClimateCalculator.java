@@ -12,7 +12,7 @@ import defeatedcrow.hac.api.climate.IHeatCanceler;
 import defeatedcrow.hac.api.climate.IHeatTile;
 import defeatedcrow.hac.api.climate.IHumidityTile;
 import defeatedcrow.hac.api.event.BlockHeatTierEvent;
-import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -211,8 +211,7 @@ public class ClimateCalculator implements IClimateCalculator {
 
 		// 周囲
 		for (Direction face : Direction.values()) {
-			BlockPos p1 = new BlockPos(pos.getX() + face.getStepX(), pos.getY() + face.getStepY(),
-					pos.getZ() + face.getStepZ());
+			BlockPos p1 = new BlockPos(pos.getX() + face.getStepX(), pos.getY() + face.getStepY(), pos.getZ() + face.getStepZ());
 			if (level.isLoaded(p1)) {
 				Block block = level.getBlockState(p1).getBlock();
 				if (block instanceof IClimateIgnoreBlock) {
@@ -303,7 +302,7 @@ public class ClimateCalculator implements IClimateCalculator {
 				air = DCAirflow.FLOW;
 				hasWind = true;
 			}
-		} else if (CoreConfigDC.tightUnderworld && pos.getY() < 30) {
+		} else if (ConfigCommonBuilder.INSTANCE.enTightDeep.get() && pos.getY() < 0) {
 			air = DCAirflow.TIGHT;
 		}
 

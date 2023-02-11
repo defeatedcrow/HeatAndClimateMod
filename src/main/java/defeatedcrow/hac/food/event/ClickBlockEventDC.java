@@ -1,8 +1,8 @@
 package defeatedcrow.hac.food.event;
 
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.material.tag.TagDC;
-import defeatedcrow.hac.core.material.tag.TagUtil;
+import defeatedcrow.hac.core.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.food.material.FoodInit;
 import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
 import net.minecraft.sounds.SoundEvents;
@@ -46,33 +46,47 @@ public class ClickBlockEventDC {
 			}
 			// green manure
 			else if (!item.isEmpty() && TagUtil.matchTag("hoes", item.getItem()).isPresent()) {
-				if (target.is(TagDC.BlockTag.CROP_GREEN_MANURES)) {
-					int m = DCState.getInt(target, DCState.STAGE5);
-					if (m == -1 || m > 1) {
-						// 下のブロック
-						BlockState below = level.getBlockState(event.getPos().below());
-						if (below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) {
-							int f = DCState.getInt(below, DCState.FERTILE);
-							if (!level.isClientSide && f < 3) {
-								// 緑肥をすき込む
-								if (target.getBlock() instanceof ClimateCropBaseBlock) {
-									((ClimateCropBaseBlock) target.getBlock()).breakAndDropSeed(level, event.getPos(), target);
-								} else {
-									level.setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
-								}
-								BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, f + 1).setValue(BlockStateProperties.MOISTURE, 7);
-								level.setBlockAndUpdate(event.getPos().below(), next);
-								if (player != null) {
-									item.hurtAndBreak(1, player, (c) -> {
-										c.broadcastBreakEvent(event.getHand());
-									});
-								}
-								level.playSound(player, event.getPos(), SoundEvents.HOE_TILL, SoundSource.BLOCKS, 0.5F, 1.0F);
-								level.levelEvent(1505, event.getPos(), 0);
+				int m = DCState.getInt(target, DCState.STAGE5);
+				if (target.is(TagDC.BlockTag.CROP_GREEN_MANURES) && (m == -1 || m > 1)) {
+					// 下のブロック
+					BlockState below = level.getBlockState(event.getPos().below());
+					if (below.is(BlockTags.DIRT) || below.is(TagDC.BlockTag.FARMLAND)) {
+						int f = DCState.getInt(below, DCState.FERTILE);
+						if (!level.isClientSide && f < 3) {
+							// 緑肥をすき込む
+							if (target.getBlock() instanceof ClimateCropBaseBlock) {
+								((ClimateCropBaseBlock) target.getBlock()).breakAndDropSeed(level, event.getPos(), target);
+							} else {
+								level.setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
 							}
-							event.setCancellationResult(InteractionResult.SUCCESS);
-							event.setUseItem(Result.ALLOW);
+							BlockState next = FoodInit.FERTILE.get().defaultBlockState().setValue(DCState.FERTILE, f + 1).setValue(BlockStateProperties.MOISTURE, 7);
+							level.setBlockAndUpdate(event.getPos().below(), next);
+							if (player != null) {
+								item.hurtAndBreak(1, player, (c) -> {
+									c.broadcastBreakEvent(event.getHand());
+								});
+							}
+							level.playSound(player, event.getPos(), SoundEvents.HOE_TILL, SoundSource.BLOCKS, 0.5F, 1.0F);
+							level.levelEvent(1505, event.getPos(), 0);
 						}
+						event.setCancellationResult(InteractionResult.SUCCESS);
+						event.setUseItem(Result.ALLOW);
+					}
+				} else if (target.getBlock() instanceof ClimateCropBaseBlock) {
+					if (!level.isClientSide) {
+						// 確実に種を取れる
+						if (target.getBlock() instanceof ClimateCropBaseBlock) {
+							((ClimateCropBaseBlock) target.getBlock()).breakAndDropSeed(level, event.getPos(), target);
+						} else {
+							level.setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
+						}
+						if (player != null) {
+							item.hurtAndBreak(1, player, (c) -> {
+								c.broadcastBreakEvent(event.getHand());
+							});
+						}
+						level.playSound(player, event.getPos(), SoundEvents.HOE_TILL, SoundSource.BLOCKS, 0.5F, 1.0F);
+						level.levelEvent(1505, event.getPos(), 0);
 					}
 				}
 			}

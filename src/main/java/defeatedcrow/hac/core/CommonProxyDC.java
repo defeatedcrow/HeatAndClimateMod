@@ -1,5 +1,6 @@
 package defeatedcrow.hac.core;
 
+import defeatedcrow.hac.core.config.ConfigLoadEventDC;
 import defeatedcrow.hac.core.config.CoreConfigDC;
 import defeatedcrow.hac.core.event.BiomeBaseTempEventDC;
 import defeatedcrow.hac.core.event.BlockUpdateEventDC;
@@ -20,11 +21,13 @@ public class CommonProxyDC {
 		MinecraftForge.EVENT_BUS.addListener(BlockUpdateEventDC::onBlockUpdate);
 		MinecraftForge.EVENT_BUS.addListener(BlockUpdateEventDC::onCropUpdate);
 		MinecraftForge.EVENT_BUS.addListener(BlockUpdateEventDC::onBlockPlacement);
+		MinecraftForge.EVENT_BUS.addListener(ConfigLoadEventDC::onLoad);
+		MinecraftForge.EVENT_BUS.addListener(ConfigLoadEventDC::onFileChange);
 
 		FoodProxy.registerEvent();
 	}
 
-	public static void commonInit() {
+	public void commonInit() {
 		JsonInit.init();
 		CoreConfigDC.loadConfig();
 
@@ -39,5 +42,17 @@ public class CommonProxyDC {
 		ClimateSmeltingConfig.loadFiles();
 		ClimateSmeltingConfig.initFile();
 	};
+
+	public boolean keyShiftPushed() {
+		return false;
+	}
+
+	public boolean keyHUDPushed() {
+		return false;
+	}
+
+	public boolean keyCharmPushed() {
+		return false;
+	}
 
 }

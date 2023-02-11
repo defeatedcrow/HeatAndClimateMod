@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "Y",
+    "X",
+    "Y"
+  ],
+  "result": {
+    "item": "dcs_climate:main/hand_spindle"
+  }
+}

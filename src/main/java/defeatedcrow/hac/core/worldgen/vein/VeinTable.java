@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.commons.compress.utils.Lists;
 
-import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.core.util.DCItemUtil;
 import net.minecraft.world.level.block.Block;
 
 public class VeinTable {
@@ -36,7 +36,7 @@ public class VeinTable {
 	}
 
 	public Block getLayer() {
-		return DCUtil.getBlockFromString(layerStone);
+		return DCItemUtil.getBlockFromString(layerStone);
 	}
 
 	public List<OreSet> getOreSet() {

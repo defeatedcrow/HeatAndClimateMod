@@ -1,5 +1,9 @@
 {
   "values": [
-    "dcs_climate:food/crop_reed_wild"
+    "dcs_climate:food/crop_reed_wild",
+    {
+      "id": "biomesoplenty:reed",
+      "required": false
+    }
   ]
 }

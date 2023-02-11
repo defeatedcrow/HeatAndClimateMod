@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "seeding",
+  "ingredients": [
+    {
+      "item": "dcs_climate:food/crop_cinnamon_rare"
+    },
+    {
+      "item": "dcs_climate:main/seeding_pot"
+    }
+  ],
+  "result": {
+    "item": "dcs_climate:food/sapling_cinnamon_rare"
+  }
+}

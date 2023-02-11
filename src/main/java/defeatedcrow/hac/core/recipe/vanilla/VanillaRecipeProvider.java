@@ -9,11 +9,16 @@ import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
 
 import defeatedcrow.hac.core.DCLogger;
+import defeatedcrow.hac.core.material.BuildInit;
 import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.material.item.IItemDC;
-import defeatedcrow.hac.core.material.tag.TagDC;
-import defeatedcrow.hac.core.recipe.MatDC;
+import defeatedcrow.hac.core.recipe.MaterialRecipes;
+import defeatedcrow.hac.core.recipe.mill.MillsDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.core.util.DCUtil;
+import defeatedcrow.hac.food.material.FoodInit;
+import defeatedcrow.hac.food.material.block.ClimateCropBaseBlock;
+import defeatedcrow.hac.food.recipe.PlantRecipes;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -21,9 +26,14 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
 public class VanillaRecipeProvider extends RecipeProvider {
@@ -35,31 +45,45 @@ public class VanillaRecipeProvider extends RecipeProvider {
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> cons) {
 
-		for (MatDC.Color color : MatDC.COLOR_VARIANT) {
+		for (MaterialRecipes.Color color : MaterialRecipes.COLOR_VARIANT) {
 			mortarMetalRecipes(cons, color);
 		}
 
-		for (MatDC.Gem gem : MatDC.GEM_VARIANT) {
+		for (MaterialRecipes.Gem gem : MaterialRecipes.GEM_VARIANT) {
 			mortarGemRecipes(cons, gem);
+		}
+
+		for (MillsDC.Crops crop : MillsDC.VARIANT) {
+			mortarMillsRecipes(cons, crop);
 		}
 
 		mortarOtherRecipes(cons);
 
-		for (MatDC.Alloy alloy : MatDC.ALLOY_VARIANT) {
+		for (MaterialRecipes.Alloy alloy : MaterialRecipes.ALLOY_VARIANT) {
 			alloyRecipes(cons, alloy);
 		}
 
-		for (MatDC.Wood wood : MatDC.WOOD_VARIANT) {
+		for (PlantRecipes.Wood wood : PlantRecipes.INSTANCE.woods) {
 			woodRecipes(cons, wood);
 		}
 
-		for (MatDC.Stone stone : MatDC.STONE_VARIANT) {
+		for (PlantRecipes.Seeding seeding : PlantRecipes.INSTANCE.seedings) {
+			seedingRecipes(cons, seeding);
+		}
+
+		for (MaterialRecipes.Stone stone : MaterialRecipes.STONE_VARIANT) {
 			stoneRecipes(cons, stone);
 		}
 
+		buildingRecipes(cons);
+
+		otherRecipes(cons);
+
+		smeltingRecipes(cons);
+
 	}
 
-	private static void alloyRecipes(Consumer<FinishedRecipe> cons, MatDC.Alloy alloy) {
+	private static void alloyRecipes(Consumer<FinishedRecipe> cons, MaterialRecipes.Alloy alloy) {
 
 		ShapedRecipeBuilder.shaped(alloy.metalBlock().get())
 			.pattern("XXX")
@@ -76,7 +100,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_" + alloy.name() + "_ingot", has(alloy.ingotItem().get()))
 			.save(cons, "dcs_climate:core/ingot_" + alloy.name());
 
-		if (alloy == MatDC.BSCCO) {
+		if (alloy == MaterialRecipes.BSCCO) {
 
 			ShapedRecipeBuilder.shaped(alloy.dustBlock().get())
 				.pattern("LLL")
@@ -90,13 +114,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 				.group("dustblock_pack")
 				.save(cons, "dcs_climate:core/dustblock_" + alloy.name());
 
-		} else if (alloy == MatDC.TOOL_STEEL) {
+		} else if (alloy == MaterialRecipes.HASTELLOY) {
 
 			ShapedRecipeBuilder.shaped(alloy.dustBlock().get())
 				.pattern("PPP")
-				.pattern("PPP")
-				.pattern("LST")
-				.define('L', TagDC.ItemTag.DUST_MANGANESE)
+				.pattern("PSS")
+				.pattern("TTL")
+				.define('L', TagDC.ItemTag.DUST_COBALT)
 				.define('P', alloy.dustPrimary().get())
 				.define('S', alloy.dustSecondary().get())
 				.define('T', alloy.dustTertiary().get())
@@ -121,7 +145,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 	}
 
-	private static void mortarMetalRecipes(Consumer<FinishedRecipe> cons, MatDC.Color color) {
+	private static void mortarMetalRecipes(Consumer<FinishedRecipe> cons, MaterialRecipes.Color color) {
 
 		if (color.oreBlock().get().asItem() instanceof IItemDC) {
 			TagKey<Item> ore = ((IItemDC) color.oreBlock().get().asItem()).getPairTag();
@@ -180,7 +204,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 	}
 
-	private static void mortarGemRecipes(Consumer<FinishedRecipe> cons, MatDC.Gem gem) {
+	private static void mortarGemRecipes(Consumer<FinishedRecipe> cons, MaterialRecipes.Gem gem) {
 		if (gem.ore().get().asItem() instanceof IItemDC) {
 			TagKey<Item> ore = ((IItemDC) gem.ore().get().asItem()).getPairTag();
 
@@ -215,6 +239,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.group("crusher_mortar")
 			.unlockedBy("has_sulfur_ore", has(TagDC.ItemTag.ORES_SULFUR))
 			.save(cons, "dcs_climate:core/mortar_gem_sulfur");
+
+		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_TRONA.get(), 1)
+			.requires(TagDC.ItemTag.ORES_NATRON)
+			.requires(CoreInit.MORTAR.get())
+			.group("crusher_mortar")
+			.unlockedBy("has_natron_ore", has(TagDC.ItemTag.ORES_NATRON))
+			.save(cons, "dcs_climate:core/mortar_dust_trona");
 
 		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_CRYSTAL.get(), 1)
 			.requires(TagDC.ItemTag.GEM_CHALCEDONY)
@@ -258,6 +289,13 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.unlockedBy("has_sulfur_gem", has(TagDC.ItemTag.GEM_SULFUR))
 			.save(cons, "dcs_climate:core/mortar_dust_sulfur");
 
+		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_SALT.get(), 1)
+			.requires(TagDC.ItemTag.GEM_SALT)
+			.requires(CoreInit.MORTAR.get())
+			.group("crusher_mortar")
+			.unlockedBy("has_salt_gem", has(TagDC.ItemTag.GEM_SALT))
+			.save(cons, "dcs_climate:core/mortar_dust_salt");
+
 		ShapelessRecipeBuilder.shapeless(CoreInit.DUST_COAL.get(), 1)
 			.requires(TagDC.ItemTag.GEM_COAL)
 			.requires(CoreInit.MORTAR.get())
@@ -267,7 +305,43 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 	}
 
-	private static void woodRecipes(Consumer<FinishedRecipe> cons, MatDC.Wood wood) {
+	private static void seedingRecipes(Consumer<FinishedRecipe> cons, PlantRecipes.Seeding seed) {
+		if (seed.output().get() instanceof ClimateCropBaseBlock) {
+			String name = ((ClimateCropBaseBlock) seed.output().get()).getFamily().toString() + "_" + ((ClimateCropBaseBlock) seed.output().get()).getTier().toString();
+
+			ShapelessRecipeBuilder.shapeless(seed.output().get(), seed.count())
+				.requires(seed.input().get())
+				.requires(CoreInit.SEEDING_POT.get())
+				.group("seeding")
+				.unlockedBy("has_seeding_pot", has(CoreInit.SEEDING_POT.get()))
+				.save(cons, "dcs_climate:food/seeding_" + name);
+		}
+	}
+
+	private static void mortarMillsRecipes(Consumer<FinishedRecipe> cons, MillsDC.Crops mill) {
+		if (mill.input().get() instanceof IItemDC) {
+			TagKey<Item> ore = ((IItemDC) mill.input().get().asItem()).getPairTag();
+
+			if (mill.needPack()) {
+				ShapelessRecipeBuilder.shapeless(mill.outputPri().get(), 1)
+					.requires(ore)
+					.requires(CoreInit.MORTAR.get())
+					.requires(FoodInit.FOOD_EMPTY_PACK.get())
+					.group("crusher_mortar")
+					.unlockedBy("has_crop_" + mill.name(), has(mill.input().get().asItem()))
+					.save(cons, "dcs_climate:food/mortar_crop_" + mill.name());
+			} else {
+				ShapelessRecipeBuilder.shapeless(mill.outputPri().get(), 1)
+					.requires(ore)
+					.requires(CoreInit.MORTAR.get())
+					.group("crusher_mortar")
+					.unlockedBy("has_crop_" + mill.name(), has(mill.input().get().asItem()))
+					.save(cons, "dcs_climate:food/mortar_crop_" + mill.name());
+			}
+		}
+	}
+
+	private static void woodRecipes(Consumer<FinishedRecipe> cons, PlantRecipes.Wood wood) {
 
 		ShapelessRecipeBuilder.shapeless(wood.plankBlock().get(), 4)
 			.requires(wood.logBlock().get())
@@ -298,7 +372,7 @@ public class VanillaRecipeProvider extends RecipeProvider {
 
 	}
 
-	private static void stoneRecipes(Consumer<FinishedRecipe> cons, MatDC.Stone stone) {
+	private static void stoneRecipes(Consumer<FinishedRecipe> cons, MaterialRecipes.Stone stone) {
 
 		ShapedRecipeBuilder.shaped(stone.bricksBlock().get(), 4)
 			.pattern("XX")
@@ -334,21 +408,145 @@ public class VanillaRecipeProvider extends RecipeProvider {
 			.pattern("XXX")
 			.define('X', stone.stoneBlock().get())
 			.unlockedBy("has_" + stone.name() + "_stone", has(stone.stoneBlock().get()))
-			.save(cons, "dcs_climate:core/stairs2_" + stone.name());
+			.save(cons, "dcs_climate:build/stairs2_" + stone.name());
 
 		ShapedRecipeBuilder.shaped(stone.slabBlock().get(), 6)
 			.pattern("XXX")
 			.define('X', stone.stoneBlock().get())
 			.unlockedBy("has_" + stone.name() + "_stone", has(stone.stoneBlock().get()))
-			.save(cons, "dcs_climate:core/slab2_" + stone.name());
+			.save(cons, "dcs_climate:build/slab2_" + stone.name());
 
 		ShapedRecipeBuilder.shaped(stone.wallBlock().get(), 6)
 			.pattern("XXX")
 			.pattern("XXX")
 			.define('X', stone.stoneBlock().get())
 			.unlockedBy("has_" + stone.name() + "_stone", has(stone.stoneBlock().get()))
-			.save(cons, "dcs_climate:core/wall2_" + stone.name());
+			.save(cons, "dcs_climate:build/wall2_" + stone.name());
 
+	}
+
+	private static void buildingRecipes(Consumer<FinishedRecipe> cons) {
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLINTBRICKS.get(), 4)
+			.pattern("XY")
+			.pattern("YX")
+			.define('X', TagDC.ItemTag.GEM_FLINT)
+			.define('Y', Tags.Items.COBBLESTONE)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:build/normal_flintbricks");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLINTBRICKS_BLACK.get(), 4)
+			.pattern("XY")
+			.pattern("YX")
+			.define('X', TagDC.ItemTag.GEM_FLINT)
+			.define('Y', Blocks.ANDESITE)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:build/black_flintbricks");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLINTBRICKS_BLACK.get(), 4)
+			.pattern("XY")
+			.pattern("YX")
+			.define('X', TagDC.ItemTag.GEM_FLINT)
+			.define('Y', Blocks.DEEPSLATE)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:build/black_flintbricks2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLINTBRICKS_WHITE.get(), 4)
+			.pattern("XY")
+			.pattern("YX")
+			.define('X', TagDC.ItemTag.GEM_FLINT)
+			.define('Y', Blocks.DIORITE)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:build/white_flintbricks");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLINTBRICKS_WHITE.get(), 4)
+			.pattern("XY")
+			.pattern("YX")
+			.define('X', TagDC.ItemTag.GEM_FLINT)
+			.define('Y', Blocks.CALCITE)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:build/white_flintbricks2");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLINTBRICKS_RED.get(), 4)
+			.pattern("XY")
+			.pattern("YX")
+			.define('X', TagDC.ItemTag.GEM_FLINT)
+			.define('Y', Blocks.GRANITE)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:build/red_flintbricks");
+
+		ShapedRecipeBuilder.shaped(BuildInit.FLINTBRICKS_RED.get(), 4)
+			.pattern("XY")
+			.pattern("YX")
+			.define('X', TagDC.ItemTag.GEM_FLINT)
+			.define('Y', Blocks.NETHERRACK)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:build/red_flintbricks2");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.MOSAIC_BLACK.get(), 1)
+			.requires(TagDC.ItemTag.DUST_CRYSTAL)
+			.requires(Tags.Items.STONE)
+			.requires(Tags.Items.DYES_BLACK)
+			.unlockedBy("has_dye_black", has(Tags.Items.DYES_BLACK))
+			.save(cons, "dcs_climate:build/black_mosaic_block");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.MOSAIC_BLUE.get(), 1)
+			.requires(TagDC.ItemTag.DUST_CRYSTAL)
+			.requires(Tags.Items.STONE)
+			.requires(Tags.Items.DYES_BLUE)
+			.unlockedBy("has_dye_blue", has(Tags.Items.DYES_BLUE))
+			.save(cons, "dcs_climate:build/black_mosaic_blue");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.MOSAIC_YELLOW.get(), 1)
+			.requires(TagDC.ItemTag.DUST_CRYSTAL)
+			.requires(Tags.Items.STONE)
+			.requires(Tags.Items.DYES_YELLOW)
+			.unlockedBy("has_dye_yellow", has(Tags.Items.DYES_YELLOW))
+			.save(cons, "dcs_climate:build/black_mosaic_yellow");
+
+		ShapelessRecipeBuilder.shapeless(BuildInit.MOSAIC_RED.get(), 1)
+			.requires(TagDC.ItemTag.DUST_CRYSTAL)
+			.requires(Tags.Items.STONE)
+			.requires(Tags.Items.DYES_RED)
+			.unlockedBy("has_dye_red", has(Tags.Items.DYES_RED))
+			.save(cons, "dcs_climate:build/black_mosaic_red");
+
+	}
+
+	private static void otherRecipes(Consumer<FinishedRecipe> cons) {
+		ShapedRecipeBuilder.shaped(CoreInit.MORTAR.get(), 1)
+			.pattern("X X")
+			.pattern("XXX")
+			.define('X', TagDC.ItemTag.GEM_CHALCEDONY)
+			.unlockedBy("has_chalcedony", has(TagDC.ItemTag.GEM_CHALCEDONY))
+			.save(cons, "dcs_climate:core/agate_mortar");
+
+		ShapedRecipeBuilder.shaped(CoreInit.HAND_SPINDLE.get(), 1)
+			.pattern("Y")
+			.pattern("X")
+			.pattern("Y")
+			.define('X', ItemTags.PLANKS)
+			.define('Y', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+			.save(cons, "dcs_climate:core/hand_spindle");
+
+		ShapedRecipeBuilder.shaped(CoreInit.SEEDING_POT.get(), 1)
+			.pattern("XYX")
+			.pattern("XXX")
+			.define('X', Items.PAPER)
+			.define('Y', ItemTags.DIRT)
+			.unlockedBy("has_dirt", has(ItemTags.DIRT))
+			.save(cons, "dcs_climate:core/seeding_pot");
+	}
+
+	private static void smeltingRecipes(Consumer<FinishedRecipe> cons) {
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 0.3F, 200)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:smelting/smelting_gem_chalcedony");
+
+		SimpleCookingRecipeBuilder.blasting(Ingredient.of(TagDC.ItemTag.GEM_FLINT), CoreInit.GEM_CHALCEDONY.get(), 0.3F, 100)
+			.unlockedBy("has_flint", has(Items.FLINT))
+			.save(cons, "dcs_climate:smelting/blasting_gem_chalcedony");
 	}
 
 	@Override

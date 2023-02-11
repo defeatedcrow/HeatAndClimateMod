@@ -1,5 +1,6 @@
 {
   "values": [
-    "dcs_climate:food/crop_apium_wild"
+    "dcs_climate:food/crop_apium_wild",
+    "dcs_climate:food/crop_cherry_wild"
   ]
 }

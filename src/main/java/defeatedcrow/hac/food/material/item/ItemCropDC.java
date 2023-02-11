@@ -8,13 +8,15 @@ import com.google.common.collect.ImmutableMap;
 
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
+import defeatedcrow.hac.api.material.IFoodTaste;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.material.item.ItemDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
-public class ItemCropDC extends ItemDC {
+public class ItemCropDC extends ItemDC implements IFoodTaste {
 
 	final String name;
 	private String domain = "food";
@@ -23,7 +25,7 @@ public class ItemCropDC extends ItemDC {
 	private final CropTier tier;
 
 	public ItemCropDC(CropTier rare, CropType t, String s, TagKey<Item> pair) {
-		super(new Item.Properties().rarity(rare.getRarity()).tab(FoodInit.FOOD), pair);
+		super(new Item.Properties().rarity(rare.getRarity()).tab(FoodInit.AGRI), pair);
 		name = s;
 		type = t;
 		tier = rare;
@@ -60,6 +62,19 @@ public class ItemCropDC extends ItemDC {
 
 	public CropTier getTier() {
 		return tier;
+	}
+
+	@Override
+	public int getTaste(ItemStack item) {
+		return tier.getTaste();
+	}
+
+	@Override
+	public void setTaste(ItemStack item, int i) {}
+
+	@Override
+	public boolean isSeasoning() {
+		return false;
 	}
 
 }

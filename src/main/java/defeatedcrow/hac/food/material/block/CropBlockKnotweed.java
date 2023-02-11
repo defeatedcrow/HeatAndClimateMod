@@ -15,18 +15,15 @@ import defeatedcrow.hac.api.crop.CropGrowType;
 import defeatedcrow.hac.api.crop.CropStage;
 import defeatedcrow.hac.api.crop.CropTier;
 import defeatedcrow.hac.api.crop.CropType;
-import defeatedcrow.hac.api.crop.IClimateCrop;
 import defeatedcrow.hac.api.util.DCState;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -40,12 +37,12 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 
 	public CropBlockKnotweed(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.DOUBLE, DCState.STAGE5);
+		def.add(DCState.DOUBLE, DCState.STAGE5, DCState.WILD);
 	}
 
 	/* double */
@@ -113,42 +110,6 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 		return false;
 	}
 
-	@Override
-	public boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player) {
-		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
-			if (DCState.getBool(thisState, DCState.DOUBLE)) {
-				thisState = world.getBlockState(pos.below());
-				pos = pos.below();
-			}
-			if (canHarvest(thisState)) {
-				int f = 0;
-				if (player != null && !player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
-					f = player.getItemInHand(InteractionHand.MAIN_HAND).getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
-				}
-				List<ItemStack> crops = this.getCropItems(thisState, f);
-				boolean ret = false;
-				for (ItemStack item : crops) {
-					ItemEntity drop;
-					if (player != null) {
-						drop = new ItemEntity(world, player.getX(), player.getY() + 0.15D, player.getZ(), item);
-					} else {
-						drop = new ItemEntity(world, pos.getX() + 0.5D, pos.getY() + 0.15D, pos.getZ() + 0.5D, item);
-					}
-					if (drop != null && !world.isClientSide)
-						world.addFreshEntity(drop);
-					ret = true;
-				}
-				if (ret) {
-					BlockState next = this.getHarvestedState(thisState);
-					world.setBlock(pos, next, 2);
-					world.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 2);
-				}
-				return ret;
-			}
-		}
-		return false;
-	}
-
 	/* model */
 
 	@Override
@@ -179,6 +140,13 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 	@Override
 	public JsonModelDC getItemModel() {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_knotweed_" + getSpeciesName(cropTier)));
+	}
+
+	/* IClimateCrop */
+
+	@Override
+	public BlockState getFeatureState() {
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(2));
 	}
 
 	/* ICropData */
@@ -234,7 +202,7 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 	@Override
 	public List<SoilType> getSoilTypes(CropTier t) {
 		switch (t) {
-		case WILD:
+		case WILD, COMMON:
 			return ImmutableList.of(SoilType.FARMLAND, SoilType.DIRT);
 		default:
 			return ImmutableList.of(SoilType.FARMLAND);
@@ -244,7 +212,7 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 	@Override
 	public List<DCHeatTier> getSuitableTemp(CropTier t) {
 		if (t == CropTier.COMMON) {
-			return ImmutableList.of(DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
+			return ImmutableList.of(DCHeatTier.FROSTBITE, DCHeatTier.COLD, DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM);
 		}
 		return ImmutableList.of(DCHeatTier.COOL, DCHeatTier.NORMAL, DCHeatTier.WARM, DCHeatTier.HOT);
 	}
@@ -267,6 +235,8 @@ public class CropBlockKnotweed extends ClimateCropBaseBlock {
 		switch (t) {
 		case WILD:
 			return ImmutableList.of("PLAINS", "MOUNTAIN");
+		case COMMON:
+			return ImmutableList.of("COLD", "DRY", "TAIGA");
 		default:
 			return Lists.newArrayList();
 		}

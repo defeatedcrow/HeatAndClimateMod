@@ -28,12 +28,12 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 
 	public CropBlockBrassica(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.STAGE5);
+		def.add(DCState.STAGE5, DCState.WILD);
 	}
 
 	/* model */
@@ -61,6 +61,13 @@ public class CropBlockBrassica extends ClimateCropBaseBlock {
 	@Override
 	public JsonModelDC getItemModel() {
 		return new JsonModelDC("minecraft:item/generated", ImmutableMap.of("layer0", "dcs_climate:item/crop/seed_brassica_" + getSpeciesName(cropTier)));
+	}
+
+	/* IClimateCrop */
+
+	@Override
+	public BlockState getFeatureState() {
+		return this.defaultBlockState().setValue(DCState.STAGE5, Integer.valueOf(3));
 	}
 
 	/* ICropData */

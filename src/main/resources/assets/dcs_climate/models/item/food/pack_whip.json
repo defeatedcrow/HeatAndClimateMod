@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/pack_whip"
+  },
+  "parent": "minecraft:item/generated"
+}

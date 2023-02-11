@@ -8,8 +8,6 @@ import org.apache.commons.compress.utils.Lists;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
-import defeatedcrow.hac.api.crop.CropTier;
-import defeatedcrow.hac.api.crop.CropType;
 import defeatedcrow.hac.core.json.IJsonDataDC;
 import defeatedcrow.hac.core.json.JsonModelDC;
 import defeatedcrow.hac.core.json.JsonModelSimpleDC;
@@ -25,27 +23,25 @@ import net.minecraft.world.level.material.MaterialColor;
 
 public class LogBlockDC extends RotatedPillarBlock implements IBlockDC, IJsonDataDC {
 
-	final CropTier tier;
-	final CropType type;
+	final String name;
 
-	public LogBlockDC(CropType typeIn, CropTier tierIn) {
+	public LogBlockDC(String s) {
 		super(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD));
-		type = typeIn;
-		tier = tierIn;
+		name = s;
 	}
 
 	@Override
 	public String getRegistryName() {
-		return "food/log_" + type.toString() + "_" + getSpeciesName(tier);
+		return "food/log_" + name;
 	}
 
 	@Override
 	public List<JsonModelDC> getBlockModel() {
 		return ImmutableList.of(
-			new JsonModelDC("minecraft:block/cube_column", ImmutableMap.of("end", "dcs_climate:block/tree/" + type.toString() + "_" + getSpeciesName(tier) + "_log_top",
-				"side", "dcs_climate:block/tree/" + type.toString() + "_" + getSpeciesName(tier) + "_log_side")),
-			new JsonModelDC("minecraft:block/cube_column_horizontal", ImmutableMap.of("end", "dcs_climate:block/tree/" + type.toString() + "_" + getSpeciesName(tier) + "_log_top",
-				"side", "dcs_climate:block/tree/" + type.toString() + "_" + getSpeciesName(tier) + "_log_side")));
+			new JsonModelDC("minecraft:block/cube_column", ImmutableMap.of("end", "dcs_climate:block/tree/" + name + "_log_top",
+				"side", "dcs_climate:block/tree/" + name + "_log_side")),
+			new JsonModelDC("minecraft:block/cube_column_horizontal", ImmutableMap.of("end", "dcs_climate:block/tree/" + name + "_log_top",
+				"side", "dcs_climate:block/tree/" + name + "_log_side")));
 	}
 
 	@Override
@@ -86,14 +82,6 @@ public class LogBlockDC extends RotatedPillarBlock implements IBlockDC, IJsonDat
 	@Override
 	public int getToolTier() {
 		return 0;
-	}
-
-	public String getSpeciesName(CropTier tier) {
-		if (tier == CropTier.COMMON)
-			return "walnut";
-		if (tier == CropTier.RARE)
-			return "sweet";
-		return "common";
 	}
 
 }

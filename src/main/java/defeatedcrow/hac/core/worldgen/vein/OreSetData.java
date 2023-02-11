@@ -1,5 +1,6 @@
 package defeatedcrow.hac.core.worldgen.vein;
 
+import defeatedcrow.hac.core.util.DCItemUtil;
 import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.world.level.block.Block;
 
@@ -38,9 +39,9 @@ public class OreSetData {
 
 	public OreSet getOreSet() {
 		int w = weight;
-		Block o1 = DCUtil.getBlockFromString(ore);
-		Block o2 = DCUtil.getBlockFromString(ore2);
-		Block o3 = DCUtil.getBlockFromString(ore3);
+		Block o1 = DCItemUtil.getBlockFromString(ore);
+		Block o2 = DCItemUtil.getBlockFromString(ore2);
+		Block o3 = DCItemUtil.getBlockFromString(ore3);
 		boolean b1 = hasSecondary;
 		boolean b2 = hasTertiary;
 		int p1 = probability1;

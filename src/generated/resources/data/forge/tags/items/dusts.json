@@ -1,0 +1,29 @@
+{
+  "values": [
+    "#forge:dusts/copper",
+    "#forge:dusts/gold",
+    "#forge:dusts/tungsten",
+    "#forge:dusts/zinc",
+    "#forge:dusts/bismuth",
+    "#forge:dusts/cobalt",
+    "#forge:dusts/magnetite",
+    "#forge:dusts/silver",
+    "#forge:dusts/molybdenum",
+    "#forge:dusts/iron",
+    "#forge:dusts/aluminum",
+    "#forge:dusts/titanium",
+    "#forge:dusts/tin",
+    "#forge:dusts/nickel",
+    "#forge:dusts/chromium",
+    "#forge:dusts/coal",
+    "#forge:dusts/salt",
+    "#forge:dusts/niter",
+    "#forge:dusts/sulfur",
+    "#forge:dusts/crystal",
+    "#forge:dusts/lime",
+    "#forge:dusts/trona",
+    "#forge:dusts/ash",
+    "#forge:dusts/wood",
+    "#forge:dusts/plant"
+  ]
+}

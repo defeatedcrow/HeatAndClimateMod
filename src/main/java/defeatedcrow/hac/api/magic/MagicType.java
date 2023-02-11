@@ -2,10 +2,8 @@ package defeatedcrow.hac.api.magic;
 
 public enum MagicType {
 
-	PENDANT,
-	BADGE,
-	RING,
-	AMULET,
+	INSTANT,
+	INVENTORY_TOP,
 	ARMOR,
 	OFFHAND;
 

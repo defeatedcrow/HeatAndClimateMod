@@ -8,13 +8,12 @@ import defeatedcrow.hac.api.climate.DCHeatTier;
 import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.event.DCBlockUpdateEvent;
 import defeatedcrow.hac.api.recipe.IClimateSmelting;
-import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.recipe.DCRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -31,25 +30,21 @@ public class BlockUpdateEventDC {
 			BlockState st = event.getState();
 			Block block = st.getBlock();
 
-			for (Block b : CoreConfigDC.blackListBlock) {
-				if (block == b) {
-					return;
-				}
-			}
+			// for (Block b : CoreConfigDC.blackListBlock) {
+			// if (block == b) {
+			// return;
+			// }
+			// }
 
 			ClimateSupplier clm = new ClimateSupplier(world, p);
 			ClimateSupplier clm_down = new ClimateSupplier(world, p.below());
 
-			if (CoreConfigDC.enableVanillaCrop) {
-				// 寒冷地では枯れる
+			if (ConfigCommonBuilder.INSTANCE.enVanillaCrop.get()) {
+				// 寒冷地では成長しづらい
 				if (clm.get().getHeat().isCold()) {
-					if (CoreConfigDC.harderVanilla && clm.get().getHeat().getTier() < DCHeatTier.FROSTBITE.getTier()) {
-						world.setBlockAndUpdate(p, Blocks.AIR.defaultBlockState());
-					} else {
-						int c = 5 + clm.get().getHeat().getTier();
-						if (c > 0 && world.random.nextInt(c) > 0)
-							event.setResult(Result.DENY);
-					}
+					int c = 5 + clm.get().getHeat().getTier();
+					if (c > 0 && world.random.nextInt(c) > 0)
+						event.setResult(Result.DENY);
 				} else if ((clm.get().getHeat() == DCHeatTier.WARM || clm.get().getHeat() == DCHeatTier.HOT) && clm_down.get().getHumidity() == DCHumidity.WET) {
 					// WETの参照posを真下に
 					// WARMかつWETの場合に成長が促進される
@@ -72,15 +67,15 @@ public class BlockUpdateEventDC {
 			BlockState st = event.state;
 			Block block = st.getBlock();
 
-			for (Block b : CoreConfigDC.blackListBlock) {
-				if (block == b) {
-					return;
-				}
-			}
+			// for (Block b : CoreConfigDC.blackListBlock) {
+			// if (block == b) {
+			// return;
+			// }
+			// }
 
 			ClimateSupplier clm = new ClimateSupplier(world, p);
 
-			if (CoreConfigDC.enableFarmland && FarmBlock.class.isInstance(block) && st.getProperties().contains(BlockStateProperties.MOISTURE)) {
+			if (ConfigCommonBuilder.INSTANCE.enFarmland.get() && FarmBlock.class.isInstance(block) && st.getProperties().contains(BlockStateProperties.MOISTURE)) {
 				DCHumidity hum = ClimateAPI.calculator.getHumidity(world, p, 4, true);
 				DCHumidity hum2 = clm.get().getHumidity();
 				// 耕地はWET以上の湿度では湿る
@@ -95,6 +90,7 @@ public class BlockUpdateEventDC {
 		}
 	}
 
+	// 気候精錬のスターター
 	public static void onBlockPlacement(BlockEvent.EntityPlaceEvent event) {
 		if (event.getEntity() instanceof Player && !event.getEntity().getLevel().isClientSide) {
 			Player placer = (Player) event.getEntity();

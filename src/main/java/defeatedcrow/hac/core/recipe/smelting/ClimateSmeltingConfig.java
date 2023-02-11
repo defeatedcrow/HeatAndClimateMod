@@ -23,9 +23,6 @@ import defeatedcrow.hac.core.util.JsonFileFilter;
 /**
  * @author defeatedcrow
  */
-/**
- * @author defeatedcrow
- */
 public class ClimateSmeltingConfig {
 
 	private ClimateSmeltingConfig() {};
@@ -40,11 +37,11 @@ public class ClimateSmeltingConfig {
 
 	public static void initFile() {
 
-		// 生成は最初のみ
 		if (ClimateCore.configDir == null)
 			return;
 
 		// configフォルダに生成する
+		// 生成は最初のみ
 		File dir = new File(ClimateCore.configDir, "/recipes/climate_smelting/");
 		if (!dir.getParentFile().exists()) {
 			dir.getParentFile().mkdirs();

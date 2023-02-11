@@ -47,9 +47,19 @@ public interface IClimateSmelting {
 	boolean additionalRequire(Level level, BlockPos pos);
 
 	/**
-	 * 0: 設置不可, 1: Block, 2: Entity
+	 * ブロック設置状態で進行する
 	 */
-	int hasPlaceableOutput();
+	boolean hasBlockProcess();
+
+	/**
+	 * エンティティ設置状態で進行する
+	 */
+	boolean hasEntityProcess();
+
+	/**
+	 * ドロップアイテム状態で進行する
+	 */
+	boolean hasDropItemProcess();
 
 	/**
 	 * recipeの更新tick間隔
@@ -70,4 +80,7 @@ public interface IClimateSmelting {
 	List<DCHumidity> requiredHum();
 
 	List<DCAirflow> requiredAir();
+
+	/** レシピが有効かどうか */
+	boolean isActive();
 }

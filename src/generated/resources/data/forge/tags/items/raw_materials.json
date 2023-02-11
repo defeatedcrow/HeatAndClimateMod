@@ -1,0 +1,19 @@
+{
+  "values": [
+    "#forge:raw_materials/copper",
+    "#forge:raw_materials/gold",
+    "#forge:raw_materials/tungsten",
+    "#forge:raw_materials/zinc",
+    "#forge:raw_materials/bismuth",
+    "#forge:raw_materials/cobalt",
+    "#forge:raw_materials/magnetite",
+    "#forge:raw_materials/silver",
+    "#forge:raw_materials/molybdenum",
+    "#forge:raw_materials/iron",
+    "#forge:raw_materials/aluminum",
+    "#forge:raw_materials/titanium",
+    "#forge:raw_materials/tin",
+    "#forge:raw_materials/nickel",
+    "#forge:raw_materials/chromium"
+  ]
+}

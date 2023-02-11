@@ -54,7 +54,7 @@ public class FertileBlock extends FarmBlock implements IFertileBlock, IBlockDC, 
 	}
 
 	@Override
-	public int isFertile(BlockGetter level, BlockPos pos, BlockState state) {
+	public int getFertile(BlockGetter level, BlockPos pos, BlockState state) {
 		return DCState.getInt(state, FERTILE);
 	}
 

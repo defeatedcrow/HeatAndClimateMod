@@ -3,7 +3,7 @@ package defeatedcrow.hac.core.material.item.tool;
 import java.util.function.Supplier;
 
 import defeatedcrow.hac.core.material.CoreInit;
-import defeatedcrow.hac.core.material.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 

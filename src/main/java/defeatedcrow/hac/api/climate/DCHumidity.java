@@ -3,6 +3,10 @@ package defeatedcrow.hac.api.climate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.compress.utils.Lists;
+
+import com.google.common.collect.ImmutableList;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -105,6 +109,23 @@ public enum DCHumidity {
 				}
 			}
 		return null;
+	}
+
+	public static List<DCHumidity> getListFromName(List<String> names) {
+		List<DCHumidity> ret = Lists.newArrayList();
+		for (String name : names)
+			if (name != null && !name.isEmpty())
+				for (DCHumidity t : DCHumidity.values()) {
+					if (t.name().equalsIgnoreCase(name)) {
+						ret.add(t);
+						break;
+					}
+				}
+		return ret;
+	}
+
+	public static List<DCHumidity> exceptUnderwater() {
+		return ImmutableList.of(DRY, NORMAL, WET);
 	}
 
 	public static MutableComponent basename() {

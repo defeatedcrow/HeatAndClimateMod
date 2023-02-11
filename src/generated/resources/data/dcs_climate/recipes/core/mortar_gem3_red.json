@@ -3,7 +3,7 @@
   "group": "crusher_mortar",
   "ingredients": [
     {
-      "tag": "forge:raw_materials/manganese"
+      "tag": "forge:raw_materials/titanium"
     },
     {
       "item": "dcs_climate:main/agate_mortar"

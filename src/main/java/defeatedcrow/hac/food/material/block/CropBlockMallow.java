@@ -40,12 +40,12 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 
 	public CropBlockMallow(CropTier t) {
 		super(t);
-		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE5, Integer.valueOf(0)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(DCState.DOUBLE, Boolean.valueOf(false)).setValue(DCState.STAGE5, Integer.valueOf(0)).setValue(DCState.WILD, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> def) {
-		def.add(DCState.DOUBLE, DCState.STAGE5);
+		def.add(DCState.DOUBLE, DCState.STAGE5, DCState.WILD);
 	}
 
 	/* double */
@@ -120,6 +120,9 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 
 	@Override
 	public boolean onHarvest(Level world, BlockPos pos, BlockState thisState, Player player) {
+		if (this.cropTier == CropTier.WILD || cropTier == CropTier.COMMON) {
+			return super.onHarvest(world, pos, thisState, player);
+		}
 		if (thisState != null && thisState.getBlock() instanceof IClimateCrop) {
 			if (DCState.getBool(thisState, DCState.DOUBLE)) {
 				thisState = world.getBlockState(pos.below());
@@ -145,15 +148,9 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 					ret = true;
 				}
 				if (ret) {
-					if (this.cropTier == CropTier.WILD || cropTier == CropTier.COMMON) {
-						BlockState next = this.getHarvestedState(thisState);
-						world.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 2);
-						world.setBlock(pos, next, 2);
-					} else {
-						BlockState next = this.getHarvestedState(thisState);
-						world.setBlock(pos.above(), next.setValue(DCState.DOUBLE, true), 2);
-						world.setBlock(pos, next, 2);
-					}
+					BlockState next = this.getHarvestedState(thisState);
+					world.setBlock(pos.above(), next.setValue(DCState.DOUBLE, true), 2);
+					world.setBlock(pos, next, 2);
 
 				}
 				return ret;
@@ -264,6 +261,9 @@ public class CropBlockMallow extends ClimateCropBaseBlock {
 
 	@Override
 	public List<DCHumidity> getSuitableHum(CropTier t) {
+		if (t == CropTier.WILD) {
+			return ImmutableList.of(DCHumidity.DRY, DCHumidity.NORMAL, DCHumidity.WET);
+		}
 		return ImmutableList.of(DCHumidity.NORMAL, DCHumidity.WET);
 	}
 

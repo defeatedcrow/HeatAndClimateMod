@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:item/material/animalfeed_hay"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import defeatedcrow.hac.api.climate.EnumSeason;
-import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 import defeatedcrow.hac.core.network.packet.message.MsgWeatherToC;
 import defeatedcrow.hac.core.util.DCTimeHelper;
 import defeatedcrow.hac.core.util.DCUtil;
@@ -25,7 +25,7 @@ public class WeatherChecker {
 
 	public static final Map<ResourceLocation, Integer> sunCountMap = new HashMap<ResourceLocation, Integer>();
 
-	private static final int drought = CoreConfigDC.droughtFrequency;
+	private static final int drought = 30;
 
 	private static int lastDay = 0;
 
@@ -39,7 +39,7 @@ public class WeatherChecker {
 		float rain = world.getRainLevel(1.0F);
 		int sunTime = sunCountMap.getOrDefault(dimName, 0);
 		int rainTime = rainCountMap.getOrDefault(dimName, 0);
-		int season = DCTimeHelper.getSeason(world);
+		EnumSeason season = DCTimeHelper.getSeasonEnum(world, null);
 		int day = DCTimeHelper.getDay(world);
 		boolean flag = false;
 		if (day != lastDay) {
@@ -53,7 +53,7 @@ public class WeatherChecker {
 		// DCLogger.debugLog("thunder:" + world.thunderLevel);
 		// DCLogger.debugLog("sun time:" + sunTime);
 
-		DCTimeHelper.currentSeason = EnumSeason.getSeasonFromID(season);
+		DCTimeHelper.currentSeason = season;
 
 		rainPowerMap.put(dimName, rain);
 		boolean r = rain > 0.25F;
@@ -81,8 +81,7 @@ public class WeatherChecker {
 				rainCountMap.put(dimName, 0);
 		}
 
-		EnumSeason seasonEnum = DCTimeHelper.getSeasonEnum(world);
-		MsgWeatherToC.setdToClient(dim.location(), rain, rainTime, sunTime, seasonEnum.id);
+		MsgWeatherToC.setdToClient(dim.location(), rain, rainTime, sunTime, season.id);
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -95,9 +94,6 @@ public class WeatherChecker {
 	}
 
 	public static float getTempOffsetFloat(ResourceLocation dim, boolean isHell) {
-		if (!CoreConfigDC.enableWeatherEffect) {
-			return 0;
-		}
 		int count = 0;
 		int sun = 0;
 		float rain = 0F;
@@ -112,22 +108,19 @@ public class WeatherChecker {
 		}
 		if (drought > 0 && sun > drought && !isHell) {
 			// 日照り気味
-			return (float) CoreConfigDC.weatherEffects[1];
+			return -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue();
 		}
 		if (count > 0 && rain > 0.25F) {
-			return (float) (isHell ? CoreConfigDC.weatherEffects[1] : CoreConfigDC.weatherEffects[0]);
+			return isHell ? -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue() : ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue();
 		}
 		if (rain > 0.85F) {
-			return (float) (isHell ? CoreConfigDC.weatherEffects[1] : CoreConfigDC.weatherEffects[0]);
+			return isHell ? -1F * ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue() : ConfigCommonBuilder.INSTANCE.vWeatherRain.get().floatValue();
 		}
 
 		return 0;
 	}
 
 	public static int getTempOffset(ResourceLocation dim, boolean isHell) {
-		if (!CoreConfigDC.enableWeatherEffect) {
-			return 0;
-		}
 		int count = 0;
 		int sun = 0;
 		float rain = 0F;
@@ -155,9 +148,6 @@ public class WeatherChecker {
 	}
 
 	public static int getHumOffset(ResourceLocation dim, boolean isHell) {
-		if (!CoreConfigDC.enableWeatherEffect) {
-			return 0;
-		}
 		int count = 0;
 		float rain = 0F;
 		if (rainPowerMap.containsKey(dim)) {
@@ -175,9 +165,6 @@ public class WeatherChecker {
 	}
 
 	public static int getWindOffset(ResourceLocation dim, boolean isHell) {
-		if (!CoreConfigDC.enableWeatherEffect) {
-			return 0;
-		}
 		int count = 0;
 		float rain = 0F;
 		if (rainPowerMap.containsKey(dim)) {

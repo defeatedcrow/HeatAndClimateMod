@@ -1,6 +1,9 @@
 {
   "values": [
     "#forge:crops/rapeseed",
-    "#forge:crops/soy"
+    "#forge:crops/soy",
+    "#forge:crops/avocado",
+    "#forge:crops/olive",
+    "#forge:crops/oil_palm"
   ]
 }

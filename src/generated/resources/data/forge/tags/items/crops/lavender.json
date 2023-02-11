@@ -1,5 +1,13 @@
 {
   "values": [
-    "dcs_climate:food/crop_herb_epic"
+    "dcs_climate:food/crop_herb_epic",
+    {
+      "id": "biomesoplenty:lavender",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:tall_lavender",
+      "required": false
+    }
   ]
 }

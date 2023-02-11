@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "flag=false,stage6=0": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_false"
+    },
+    "flag=false,stage6=1": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_false"
+    },
+    "flag=false,stage6=2": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_false"
+    },
+    "flag=false,stage6=3": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_false"
+    },
+    "flag=false,stage6=4": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_false_f"
+    },
+    "flag=false,stage6=5": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_false_c"
+    },
+    "flag=true,stage6=0": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_true"
+    },
+    "flag=true,stage6=1": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_true"
+    },
+    "flag=true,stage6=2": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_true"
+    },
+    "flag=true,stage6=3": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_true"
+    },
+    "flag=true,stage6=4": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_true_f"
+    },
+    "flag=true,stage6=5": {
+      "model": "dcs_climate:block/food/leaves_olive_osmanthus_true_c"
+    }
+  }
+}

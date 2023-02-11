@@ -6,7 +6,7 @@ import org.apache.commons.compress.utils.Lists;
 
 import com.mojang.serialization.Codec;
 
-import defeatedcrow.hac.core.material.tag.TagUtil;
+import defeatedcrow.hac.core.tag.TagUtil;
 import defeatedcrow.hac.core.worldgen.vein.OreGenPos.OreVein;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;

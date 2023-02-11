@@ -25,7 +25,7 @@ public class CreativeTabClimate_Food extends CreativeModeTab {
 
 	@Override
 	public ItemStack makeIcon() {
-		return new ItemStack(FoodInit.CROP_AL_ONION.get());
+		return new ItemStack(FoodInit.BREAD_ROUND_BAKED_ITEM.get());
 	}
 
 	@Override

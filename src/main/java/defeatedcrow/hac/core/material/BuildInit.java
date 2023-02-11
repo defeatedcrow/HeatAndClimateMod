@@ -96,7 +96,7 @@ public class BuildInit {
 
 	public static final RegistryObject<Block> FLINTBRICKS = regBlock("flintbricks", () -> new LayerStoneBlock("flintbricks").setDomain("build").setTexDir("build"), null);
 	public static final RegistryObject<Block> FLINTBRICKS_WHITE = regBlock("flintbricks_white", () -> new LayerStoneBlock("flintbricks_white").setDomain("build").setTexDir("build"), null);
-	public static final RegistryObject<Block> FLINTBRICKS_BRACK = regBlock("flintbricks_black", () -> new LayerStoneBlock("flintbricks_black").setDomain("build").setTexDir("build"), null);
+	public static final RegistryObject<Block> FLINTBRICKS_BLACK = regBlock("flintbricks_black", () -> new LayerStoneBlock("flintbricks_black").setDomain("build").setTexDir("build"), null);
 	public static final RegistryObject<Block> FLINTBRICKS_RED = regBlock("flintbricks_red", () -> new LayerStoneBlock("flintbricks_red").setDomain("build").setTexDir("build"), null);
 
 	public static final RegistryObject<Block> MOSAIC_BLACK = regBlock("mosaic_black", () -> new LayerStoneBlock("mosaic_black").setDomain("build").setTexDir("build"), null);
@@ -104,7 +104,7 @@ public class BuildInit {
 	public static final RegistryObject<Block> MOSAIC_YELLOW = regBlock("mosaic_yellow", () -> new LayerStoneBlock("mosaic_yellow").setDomain("build").setTexDir("build"), null);
 	public static final RegistryObject<Block> MOSAIC_RED = regBlock("mosaic_red", () -> new LayerStoneBlock("mosaic_red").setDomain("build").setTexDir("build"), null);
 
-	public static final RegistryObject<Block> STARIS_BEECH = regBlock("stairs_beech_common", () -> new StairsWoodDC("beech_common", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_BH_COMMON), null);
+	public static final RegistryObject<Block> STAIRS_BEECH = regBlock("stairs_beech_common", () -> new StairsWoodDC("beech_common", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_BH_COMMON), null);
 	public static final RegistryObject<Block> SLAB_BEECH = regBlock("slab_beech_common", () -> new SlabWoodDC("beech_common", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), null);
 	public static final RegistryObject<Block> FENCE_BEECH = regBlock("fence_beech_common", () -> new FenceWoodDC("beech_common"), ItemTags.FENCES);
 
@@ -112,9 +112,30 @@ public class BuildInit {
 	public static final RegistryObject<Block> SLAB_WALNUT = regBlock("slab_beech_walnut", () -> new SlabWoodDC("beech_walnut", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), null);
 	public static final RegistryObject<Block> FENCE_WALNUT = regBlock("fence_beech_walnut", () -> new FenceWoodDC("beech_walnut"), ItemTags.FENCES);
 
-	public static final RegistryObject<Block> STARIS_SWEET = regBlock("stairs_beech_sweet", () -> new StairsWoodDC("beech_sweet", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_BH_SWEET), null);
+	public static final RegistryObject<Block> STAIRS_SWEET = regBlock("stairs_beech_sweet", () -> new StairsWoodDC("beech_sweet", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_BH_SWEET), null);
 	public static final RegistryObject<Block> SLAB_SWEET = regBlock("slab_beech_sweet", () -> new SlabWoodDC("beech_sweet", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), null);
 	public static final RegistryObject<Block> FENCE_SWEET = regBlock("fence_beech_sweet", () -> new FenceWoodDC("beech_sweet"), ItemTags.FENCES);
+
+	public static final RegistryObject<Block> STAIRS_CHERRY = regBlock("stairs_cherry_wild", () -> new StairsWoodDC("cherry_wild", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_CH_WILD), null);
+	public static final RegistryObject<Block> SLAB_CHERRY = regBlock("slab_cherry_wild", () -> new SlabWoodDC("cherry_wild", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), null);
+	public static final RegistryObject<Block> FENCE_CHERRY = regBlock("fence_cherry_wild", () -> new FenceWoodDC("cherry_wild"), ItemTags.FENCES);
+
+	public static final RegistryObject<Block> STAIRS_CAMPHOR = regBlock("stairs_cinnamon_camphor", () -> new StairsWoodDC("cinnamon_camphor", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_CN_CAMPHOR),
+		null);
+	public static final RegistryObject<Block> SLAB_CAMPHOR = regBlock("slab_cinnamon_camphor", () -> new SlabWoodDC("cinnamon_camphor", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), null);
+	public static final RegistryObject<Block> FENCE_CAMPHOR = regBlock("fence_cinnamon_camphor", () -> new FenceWoodDC("cinnamon_camphor"), ItemTags.FENCES);
+
+	public static final RegistryObject<Block> STAIRS_CITRUS = regBlock("stairs_citrus_pomelo", () -> new StairsWoodDC("citrus_pomelo", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_CT_POMELO), null);
+	public static final RegistryObject<Block> SLAB_CITRUS = regBlock("slab_citrus_pomelo", () -> new SlabWoodDC("citrus_pomelo", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), null);
+	public static final RegistryObject<Block> FENCE_CITRUS = regBlock("fence_citrus_pomelo", () -> new FenceWoodDC("citrus_pomelo"), ItemTags.FENCES);
+
+	public static final RegistryObject<Block> STAIRS_ASH = regBlock("stairs_olive_ash", () -> new StairsWoodDC("olive_ash", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_OL_ASH), null);
+	public static final RegistryObject<Block> SLAB_ASH = regBlock("slab_olive_ash", () -> new SlabWoodDC("olive_ash", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), null);
+	public static final RegistryObject<Block> FENCE_ASH = regBlock("fence_olive_ash", () -> new FenceWoodDC("olive_ash"), ItemTags.FENCES);
+
+	public static final RegistryObject<Block> STAIRS_PALM = regBlock("stairs_palm_coconut", () -> new StairsWoodDC("palm_coconut", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), FoodInit.PLANK_PL_COCONUT), null);
+	public static final RegistryObject<Block> SLAB_PALM = regBlock("slab_palm_coconut", () -> new SlabWoodDC("palm_coconut", BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)), null);
+	public static final RegistryObject<Block> FENCE_PALM = regBlock("fence_palm_coconut", () -> new FenceWoodDC("palm_coconut"), ItemTags.FENCES);
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = CoreInit.BLOCKS.register("build/" + name, block);

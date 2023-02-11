@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "dcs_climate:block/tree/palm_oil_crop_3"
+  },
+  "parent": "minecraft:item/generated"
+}

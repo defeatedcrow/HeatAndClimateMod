@@ -8,17 +8,23 @@ import defeatedcrow.hac.core.material.block.BlockItemDC;
 import defeatedcrow.hac.core.material.block.LayerStoneBlock;
 import defeatedcrow.hac.core.material.block.MetalBlockDC;
 import defeatedcrow.hac.core.material.block.OreBlockGemDC;
+import defeatedcrow.hac.core.material.effects.MobEffectDC;
 import defeatedcrow.hac.core.material.item.ItemGemDC;
 import defeatedcrow.hac.core.material.item.MaterialItemDC;
 import defeatedcrow.hac.core.material.item.MetalItemDC;
 import defeatedcrow.hac.core.material.item.NullItemDC;
 import defeatedcrow.hac.core.material.item.tool.AgateMortarItem;
+import defeatedcrow.hac.core.material.item.tool.HandSpindleItem;
+import defeatedcrow.hac.core.material.item.tool.SeedingPotItem;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Building;
 import defeatedcrow.hac.core.material.tabs.CreativeTabClimate_Machine;
-import defeatedcrow.hac.core.material.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import defeatedcrow.hac.food.material.FoodInit;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -36,6 +42,8 @@ public class CoreInit {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, ClimateCore.MOD_ID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ClimateCore.MOD_ID);
+	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ClimateCore.MOD_ID);
+	public static final DeferredRegister<MobEffect> POTIONS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, ClimateCore.MOD_ID);
 
 	public static final CreativeModeTab CORE = new CreativeTabClimate("core");
 	public static final CreativeModeTab BUILD = new CreativeTabClimate_Building("build");
@@ -49,63 +57,48 @@ public class CoreInit {
 	// item
 	public static final RegistryObject<Item> OREITEM_WHITE1 = regItem("oreitem_white_1", () -> new ItemGemDC(Rarity.COMMON, "oreitem_white_1", Tags.Items.RAW_MATERIALS_COPPER));
 	public static final RegistryObject<Item> OREITEM_WHITE2 = regItem("oreitem_white_2", () -> new ItemGemDC(Rarity.UNCOMMON, "oreitem_white_2", Tags.Items.RAW_MATERIALS_GOLD));
-	public static final RegistryObject<Item> OREITEM_WHITE3 = regItem("oreitem_white_3", () -> new ItemGemDC(Rarity.RARE, "oreitem_white_3", TagDC.ItemTag.RAW_MOLYBDENUM));
+	public static final RegistryObject<Item> OREITEM_WHITE3 = regItem("oreitem_white_3", () -> new ItemGemDC(Rarity.RARE, "oreitem_white_3", TagDC.ItemTag.RAW_TUNGSTEN));
 	public static final RegistryObject<Item> OREITEM_BLUE1 = regItem("oreitem_blue_1", () -> new ItemGemDC(Rarity.COMMON, "oreitem_blue_1", TagDC.ItemTag.RAW_ZINC));
 	public static final RegistryObject<Item> OREITEM_BLUE2 = regItem("oreitem_blue_2", () -> new ItemGemDC(Rarity.UNCOMMON, "oreitem_blue_2", TagDC.ItemTag.RAW_BISMUTH));
 	public static final RegistryObject<Item> OREITEM_BLUE3 = regItem("oreitem_blue_3", () -> new ItemGemDC(Rarity.RARE, "oreitem_blue_3", TagDC.ItemTag.RAW_COBALT));
 	public static final RegistryObject<Item> OREITEM_BLACK1 = regItem("oreitem_black_1", () -> new ItemGemDC(Rarity.COMMON, "oreitem_black_1", TagDC.ItemTag.RAW_MAGNETITE));
 	public static final RegistryObject<Item> OREITEM_BLACK2 = regItem("oreitem_black_2", () -> new ItemGemDC(Rarity.UNCOMMON, "oreitem_black_2", TagDC.ItemTag.RAW_SILVER));
-	public static final RegistryObject<Item> OREITEM_BLACK3 = regItem("oreitem_black_3", () -> new ItemGemDC(Rarity.RARE, "oreitem_black_3", TagDC.ItemTag.RAW_TITANIUM));
+	public static final RegistryObject<Item> OREITEM_BLACK3 = regItem("oreitem_black_3", () -> new ItemGemDC(Rarity.RARE, "oreitem_black_3", TagDC.ItemTag.RAW_MOLYBDENUM));
 	public static final RegistryObject<Item> OREITEM_RED1 = regItem("oreitem_red_1", () -> new ItemGemDC(Rarity.COMMON, "oreitem_red_1", Tags.Items.RAW_MATERIALS_IRON));
 	public static final RegistryObject<Item> OREITEM_RED2 = regItem("oreitem_red_2", () -> new ItemGemDC(Rarity.UNCOMMON, "oreitem_red_2", TagDC.ItemTag.RAW_ALUMINUM));
-	public static final RegistryObject<Item> OREITEM_RED3 = regItem("oreitem_red_3", () -> new ItemGemDC(Rarity.RARE, "oreitem_red_3", TagDC.ItemTag.RAW_MANGANESE));
+	public static final RegistryObject<Item> OREITEM_RED3 = regItem("oreitem_red_3", () -> new ItemGemDC(Rarity.RARE, "oreitem_red_3", TagDC.ItemTag.RAW_TITANIUM));
 	public static final RegistryObject<Item> OREITEM_GREEN1 = regItem("oreitem_green_1", () -> new ItemGemDC(Rarity.COMMON, "oreitem_green_1", TagDC.ItemTag.RAW_TIN));
 	public static final RegistryObject<Item> OREITEM_GREEN2 = regItem("oreitem_green_2", () -> new ItemGemDC(Rarity.UNCOMMON, "oreitem_green_2", TagDC.ItemTag.RAW_NICKEL));
 	public static final RegistryObject<Item> OREITEM_GREEN3 = regItem("oreitem_green_3", () -> new ItemGemDC(Rarity.RARE, "oreitem_green_3", TagDC.ItemTag.RAW_CHROMIUM));
 
 	public static final RegistryObject<Item> OREDUST_WHITE1 = regItem("oredust_white_1", () -> new MetalItemDC(Rarity.COMMON, "oredust_white_1", TagDC.ItemTag.DUST_COPPER));
 	public static final RegistryObject<Item> OREDUST_WHITE2 = regItem("oredust_white_2", () -> new MetalItemDC(Rarity.UNCOMMON, "oredust_white_2", TagDC.ItemTag.DUST_GOLD));
-	public static final RegistryObject<Item> OREDUST_WHITE3 = regItem("oredust_white_3", () -> new MetalItemDC(Rarity.RARE, "oredust_white_3", TagDC.ItemTag.DUST_MOLYBDENUM));
+	public static final RegistryObject<Item> OREDUST_WHITE3 = regItem("oredust_white_3", () -> new MetalItemDC(Rarity.RARE, "oredust_white_3", TagDC.ItemTag.DUST_TUNGSTEN));
 	public static final RegistryObject<Item> OREDUST_BLUE1 = regItem("oredust_blue_1", () -> new MetalItemDC(Rarity.COMMON, "oredust_blue_1", TagDC.ItemTag.DUST_ZINC));
 	public static final RegistryObject<Item> OREDUST_BLUE2 = regItem("oredust_blue_2", () -> new MetalItemDC(Rarity.UNCOMMON, "oredust_blue_2", TagDC.ItemTag.DUST_BISMUTH));
 	public static final RegistryObject<Item> OREDUST_BLUE3 = regItem("oredust_blue_3", () -> new MetalItemDC(Rarity.RARE, "oredust_blue_3", TagDC.ItemTag.DUST_COBALT));
 	public static final RegistryObject<Item> OREDUST_BLACK1 = regItem("oredust_black_1", () -> new MetalItemDC(Rarity.COMMON, "oredust_black_1", TagDC.ItemTag.DUST_MAGNETITE));
 	public static final RegistryObject<Item> OREDUST_BLACK2 = regItem("oredust_black_2", () -> new MetalItemDC(Rarity.UNCOMMON, "oredust_black_2", TagDC.ItemTag.DUST_SILVER));
-	public static final RegistryObject<Item> OREDUST_BLACK3 = regItem("oredust_black_3", () -> new MetalItemDC(Rarity.RARE, "oredust_black_3", TagDC.ItemTag.RAW_TITANIUM));
+	public static final RegistryObject<Item> OREDUST_BLACK3 = regItem("oredust_black_3", () -> new MetalItemDC(Rarity.RARE, "oredust_black_3", TagDC.ItemTag.DUST_MOLYBDENUM));
 	public static final RegistryObject<Item> OREDUST_RED1 = regItem("oredust_red_1", () -> new MetalItemDC(Rarity.COMMON, "oredust_red_1", TagDC.ItemTag.DUST_IRON));
 	public static final RegistryObject<Item> OREDUST_RED2 = regItem("oredust_red_2", () -> new MetalItemDC(Rarity.UNCOMMON, "oredust_red_2", TagDC.ItemTag.DUST_ALUMINUM));
-	public static final RegistryObject<Item> OREDUST_RED3 = regItem("oredust_red_3", () -> new MetalItemDC(Rarity.RARE, "oredust_red_3", TagDC.ItemTag.DUST_MANGANESE));
+	public static final RegistryObject<Item> OREDUST_RED3 = regItem("oredust_red_3", () -> new MetalItemDC(Rarity.RARE, "oredust_red_3", TagDC.ItemTag.DUST_TITANIUM));
 	public static final RegistryObject<Item> OREDUST_GREEN1 = regItem("oredust_green_1", () -> new MetalItemDC(Rarity.COMMON, "oredust_green_1", TagDC.ItemTag.DUST_TIN));
 	public static final RegistryObject<Item> OREDUST_GREEN2 = regItem("oredust_green_2", () -> new MetalItemDC(Rarity.UNCOMMON, "oredust_green_2", TagDC.ItemTag.DUST_NICKEL));
 	public static final RegistryObject<Item> OREDUST_GREEN3 = regItem("oredust_green_3", () -> new MetalItemDC(Rarity.RARE, "oredust_green_3", TagDC.ItemTag.DUST_CHROMIUM));
-
-	// public static final RegistryObject<Item> INGOT_WHITE1 = regItem("ingot_white_1", () -> new MetalItemDC(Rarity.COMMON, "ingot_white_1", TagDC.ItemTag.INGOT_COPPER));
-	// public static final RegistryObject<Item> INGOT_WHITE2 = regItem("ingot_white_2", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_white_2", TagDC.ItemTag.INGOT_GOLD));
-	// public static final RegistryObject<Item> INGOT_WHITE3 = regItem("ingot_white_3", () -> new MetalItemDC(Rarity.RARE, "ingot_white_3", TagDC.ItemTag.INGOT_MOLYBDENUM));
-	// public static final RegistryObject<Item> INGOT_BLUE1 = regItem("ingot_blue_1", () -> new MetalItemDC(Rarity.COMMON, "ingot_blue_1", TagDC.ItemTag.INGOT_ZINC));
-	// public static final RegistryObject<Item> INGOT_BLUE2 = regItem("ingot_blue_2", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_blue_2", TagDC.ItemTag.INGOT_BISMUTH));
-	// public static final RegistryObject<Item> INGOT_BLUE3 = regItem("ingot_blue_3", () -> new MetalItemDC(Rarity.RARE, "ingot_blue_3", TagDC.ItemTag.INGOT_COBALT));
-	// public static final RegistryObject<Item> INGOT_BLACK1 = regItem("ingot_black_1", () -> new MetalItemDC(Rarity.COMMON, "ingot_black_1", TagDC.ItemTag.INGOT_MAGNETITE));
-	// public static final RegistryObject<Item> INGOT_BLACK2 = regItem("ingot_black_2", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_black_2", TagDC.ItemTag.INGOT_SILVER));
-	// public static final RegistryObject<Item> INGOT_BLACK3 = regItem("ingot_black_3", () -> new MetalItemDC(Rarity.RARE, "ingot_black_3", TagDC.ItemTag.INGOT_TITANIUM));
-	// public static final RegistryObject<Item> INGOT_RED1 = regItem("ingot_red_1", () -> new MetalItemDC(Rarity.COMMON, "ingot_red_1", TagDC.ItemTag.INGOT_IRON));
-	// public static final RegistryObject<Item> INGOT_RED2 = regItem("ingot_red_2", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_red_2", TagDC.ItemTag.INGOT_ALUMINUM));
-	// public static final RegistryObject<Item> INGOT_RED3 = regItem("ingot_red_3", () -> new MetalItemDC(Rarity.RARE, "ingot_red_3", TagDC.ItemTag.INGOT_MANGANESE));
-	// public static final RegistryObject<Item> INGOT_GREEN1 = regItem("ingot_green_1", () -> new MetalItemDC(Rarity.COMMON, "ingot_green_1", TagDC.ItemTag.INGOT_TIN));
-	// public static final RegistryObject<Item> INGOT_GREEN2 = regItem("ingot_green_2", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_green_2", TagDC.ItemTag.INGOT_NICKEL));
-	// public static final RegistryObject<Item> INGOT_GREEN3 = regItem("ingot_green_3", () -> new MetalItemDC(Rarity.RARE, "ingot_green_3", TagDC.ItemTag.INGOT_CHROMIUM));
 
 	public static final RegistryObject<Item> INGOT_BRASS = regItem("ingot_brass", () -> new MetalItemDC(Rarity.COMMON, "ingot_brass", TagDC.ItemTag.INGOT_BRASS));
 	public static final RegistryObject<Item> INGOT_BRONZE = regItem("ingot_bronze", () -> new MetalItemDC(Rarity.COMMON, "ingot_bronze", TagDC.ItemTag.INGOT_BRONZE));
 	public static final RegistryObject<Item> INGOT_NICKEL_SILVER = regItem("ingot_nickel_silver", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_nickel_silver", TagDC.ItemTag.INGOT_NICKEL_SILVER));
 	public static final RegistryObject<Item> INGOT_STEEL = regItem("ingot_steel", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_steel", TagDC.ItemTag.INGOT_STEEL));
+	public static final RegistryObject<Item> INGOT_ALUMINUM = regItem("ingot_aluminum", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_aluminum", TagDC.ItemTag.INGOT_ALUMINUM));
+	public static final RegistryObject<Item> INGOT_SILVER = regItem("ingot_silver", () -> new MetalItemDC(Rarity.UNCOMMON, "ingot_silver", TagDC.ItemTag.INGOT_SILVER));
 	public static final RegistryObject<Item> INGOT_SUS = regItem("ingot_sus", () -> new MetalItemDC(Rarity.RARE, "ingot_sus", TagDC.ItemTag.INGOT_SUS));
-	public static final RegistryObject<Item> INGOT_TOOL_STEEL = regItem("ingot_tool_steel", () -> new MetalItemDC(Rarity.RARE, "ingot_tool_steel", TagDC.ItemTag.INGOT_TOOL_STEEL));
 	public static final RegistryObject<Item> INGOT_TITANIUM = regItem("ingot_titanium", () -> new MetalItemDC(Rarity.RARE, "ingot_titanium", TagDC.ItemTag.INGOT_TITANIUM));
 	public static final RegistryObject<Item> INGOT_MAGNET = regItem("ingot_magnet", () -> new MetalItemDC(Rarity.RARE, "ingot_magnet", TagDC.ItemTag.INGOT_MAGNET));
-	public static final RegistryObject<Item> INGOT_MANGALLOY = regItem("ingot_mangalloy", () -> new MetalItemDC(Rarity.RARE, "ingot_mangalloy", TagDC.ItemTag.INGOT_MANGALLOY));
+	public static final RegistryObject<Item> INGOT_COBALT = regItem("ingot_cobalt", () -> new MetalItemDC(Rarity.RARE, "ingot_cobalt", TagDC.ItemTag.INGOT_COBALT));
+	public static final RegistryObject<Item> INGOT_HASTELLOY = regItem("ingot_hastelloy", () -> new MetalItemDC(Rarity.RARE, "ingot_hastelloy", TagDC.ItemTag.INGOT_HASTELLOY));
 	public static final RegistryObject<Item> INGOT_BSCCO = regItem("ingot_bscco", () -> new MetalItemDC(Rarity.RARE, "ingot_bscco", TagDC.ItemTag.INGOT_BSCCO));
-	// TODO silver925, aluminum, cobalt
 
 	public static final RegistryObject<Item> GEM_CHALCEDONY = regItem("gem_chalcedony", () -> new ItemGemDC(Rarity.COMMON, "gem_chalcedony", TagDC.ItemTag.GEM_CHALCEDONY));
 	public static final RegistryObject<Item> GEM_CRYSTAL = regItem("gem_crystal", () -> new ItemGemDC(Rarity.COMMON, "gem_crystal", TagDC.ItemTag.GEM_CRYSTAL));
@@ -141,14 +134,21 @@ public class CoreInit {
 	public static final RegistryObject<Item> GEM_SULFUR = regItem("gem_sulfur", () -> new ItemGemDC(Rarity.COMMON, "gem_sulfur", TagDC.ItemTag.GEM_SULFUR));
 
 	public static final RegistryObject<Item> DUST_COAL = regItem("dust_coal", () -> new MaterialItemDC("dust_coal", TagDC.ItemTag.DUST_COAL));
+	public static final RegistryObject<Item> DUST_SALT = regItem("dust_salt", () -> new MaterialItemDC("dust_salt", TagDC.ItemTag.DUST_SALT));
 	public static final RegistryObject<Item> DUST_NITER = regItem("dust_niter", () -> new MaterialItemDC("dust_niter", TagDC.ItemTag.DUST_NITER));
 	public static final RegistryObject<Item> DUST_SULFUR = regItem("dust_sulfur", () -> new MaterialItemDC("dust_sulfur", TagDC.ItemTag.DUST_SULFUR));
 	public static final RegistryObject<Item> DUST_CRYSTAL = regItem("dust_crystal", () -> new MaterialItemDC("dust_crystal", TagDC.ItemTag.DUST_CRYSTAL));
 	public static final RegistryObject<Item> DUST_LIME = regItem("dust_lime", () -> new MaterialItemDC("dust_lime", TagDC.ItemTag.DUST_LIME));
+	public static final RegistryObject<Item> DUST_TRONA = regItem("dust_trona", () -> new MaterialItemDC("dust_trona", TagDC.ItemTag.DUST_TRONA));
+	public static final RegistryObject<Item> DUST_ASH = regItem("dust_ash", () -> new MaterialItemDC("dust_ash", TagDC.ItemTag.DUST_ASH));
+	public static final RegistryObject<Item> DUST_WOOD = regItem("dust_wood", () -> new MaterialItemDC("dust_wood", TagDC.ItemTag.DUST_WOOD));
+	public static final RegistryObject<Item> DUST_PLANT = regItem("dust_plant", () -> new MaterialItemDC("dust_plant", TagDC.ItemTag.DUST_PLANT));
 
 	public static final RegistryObject<Item> NULL_ITEM = regItem("null_item", () -> new NullItemDC("null_item"));
 
 	public static final RegistryObject<Item> MORTAR = regItem("agate_mortar", () -> new AgateMortarItem("agate_mortar"));
+	public static final RegistryObject<Item> HAND_SPINDLE = regItem("hand_spindle", () -> new HandSpindleItem("hand_spindle"));
+	public static final RegistryObject<Item> SEEDING_POT = regItem("seeding_pot", () -> new SeedingPotItem("seeding_pot"));
 
 	// block
 	public static final RegistryObject<Block> STONE_MUD = regBlock("stone_mud", () -> new LayerStoneBlock("stone_mud"), null);
@@ -184,6 +184,7 @@ public class CoreInit {
 	public static final RegistryObject<Block> STONE_GUANO = regBlock("stone_guano", () -> new LayerStoneBlock("stone_guano"), TagDC.ItemTag.ORES_NITER);
 	public static final RegistryObject<Block> STONE_SULFUR = regBlock("stone_sulfur", () -> new LayerStoneBlock("stone_sulfur"), TagDC.ItemTag.ORES_SULFUR);
 	public static final RegistryObject<Block> STONE_TRAVERTINE = regBlock("stone_travertine", () -> new LayerStoneBlock("stone_travertine"), TagDC.ItemTag.ORES_TRAVERTINE);
+	public static final RegistryObject<Block> STONE_NATRON = regBlock("stone_natron", () -> new LayerStoneBlock("stone_natron"), TagDC.ItemTag.ORES_NATRON);
 
 	public static final RegistryObject<Block> ORE_WHITE = regBlock("ore_white", () -> new OreBlockGemDC(OREITEM_WHITE1, "ore_white").setSecondary(GEM_CRYSTAL), TagDC.ItemTag.ORES_WHITE);
 	public static final RegistryObject<Block> ORE_WHITE_DEEP = regBlock("ore_white_deep", () -> new OreBlockGemDC(OREITEM_WHITE2, "ore_white_deep")
@@ -213,11 +214,13 @@ public class CoreInit {
 	public static final RegistryObject<Block> DUSTBLOCK_NICKEL_SILVER = regBlock("dustblock_nickel_silver", () -> new AlloyDustBlockDC("dustblock_nickel_silver"),
 		TagDC.ItemTag.DUSTBLOCK_NICKEL_SILVER);
 	public static final RegistryObject<Block> DUSTBLOCK_STEEL = regBlock("dustblock_steel", () -> new AlloyDustBlockDC("dustblock_steel"), TagDC.ItemTag.DUSTBLOCK_STEEL);
+	public static final RegistryObject<Block> DUSTBLOCK_ALUMINUM = regBlock("dustblock_aluminum", () -> new AlloyDustBlockDC("dustblock_aluminum"), TagDC.ItemTag.DUSTBLOCK_ALUMINUM);
+	public static final RegistryObject<Block> DUSTBLOCK_SILVER = regBlock("dustblock_silver", () -> new AlloyDustBlockDC("dustblock_silver"), TagDC.ItemTag.DUSTBLOCK_SILVER);
 	public static final RegistryObject<Block> DUSTBLOCK_SUS = regBlock("dustblock_sus", () -> new AlloyDustBlockDC("dustblock_sus"), TagDC.ItemTag.DUSTBLOCK_SUS);
-	public static final RegistryObject<Block> DUSTBLOCK_TOOL_STEEL = regBlock("dustblock_tool_steel", () -> new AlloyDustBlockDC("dustblock_tool_steel"), TagDC.ItemTag.DUSTBLOCK_TOOL_STEEL);
-	public static final RegistryObject<Block> DUSTBLOCK_TITANIUM = regBlock("dustblock_titanium", () -> new AlloyDustBlockDC("dustblock_titanium"), TagDC.ItemTag.DUSTBLOCK_TINANIUM);
+	public static final RegistryObject<Block> DUSTBLOCK_TITANIUM = regBlock("dustblock_titanium", () -> new AlloyDustBlockDC("dustblock_titanium"), TagDC.ItemTag.DUSTBLOCK_TITANIUM);
 	public static final RegistryObject<Block> DUSTBLOCK_MAGNET = regBlock("dustblock_magnet", () -> new AlloyDustBlockDC("dustblock_magnet"), TagDC.ItemTag.DUSTBLOCK_MAGNET);
-	public static final RegistryObject<Block> DUSTBLOCK_MANGALLOY = regBlock("dustblock_mangalloy", () -> new AlloyDustBlockDC("dustblock_mangalloy"), TagDC.ItemTag.DUSTBLOCK_MANGALLOY);
+	public static final RegistryObject<Block> DUSTBLOCK_COBALT = regBlock("dustblock_cobalt", () -> new AlloyDustBlockDC("dustblock_cobalt"), TagDC.ItemTag.DUSTBLOCK_COBALT);
+	public static final RegistryObject<Block> DUSTBLOCK_HASTELLOY = regBlock("dustblock_hastelloy", () -> new AlloyDustBlockDC("dustblock_hastelloy"), TagDC.ItemTag.DUSTBLOCK_HASTELLOY);
 	public static final RegistryObject<Block> DUSTBLOCK_BSCCO = regBlock("dustblock_bscco", () -> new AlloyDustBlockDC("dustblock_bscco"), TagDC.ItemTag.DUSTBLOCK_BSCCO);
 
 	public static final RegistryObject<Block> METALBLOCK_BRASS = regBlock("metalblock_brass", () -> new MetalBlockDC("metalblock_brass"), TagDC.ItemTag.METALBLOCK_BRASS);
@@ -225,12 +228,17 @@ public class CoreInit {
 	public static final RegistryObject<Block> METALBLOCK_NICKEL_SILVER = regBlock("metalblock_nickel_silver", () -> new MetalBlockDC("metalblock_nickel_silver"),
 		TagDC.ItemTag.METALBLOCK_NICKEL_SILVER);
 	public static final RegistryObject<Block> METALBLOCK_STEEL = regBlock("metalblock_steel", () -> new MetalBlockDC("metalblock_steel"), TagDC.ItemTag.METALBLOCK_STEEL);
+	public static final RegistryObject<Block> METALBLOCK_ALUMINUM = regBlock("metalblock_aluminum", () -> new MetalBlockDC("metalblock_aluminum"), TagDC.ItemTag.METALBLOCK_ALUMINUM);
+	public static final RegistryObject<Block> METALBLOCK_SILVER = regBlock("metalblock_silver", () -> new MetalBlockDC("metalblock_silver"), TagDC.ItemTag.METALBLOCK_SILVER);
 	public static final RegistryObject<Block> METALBLOCK_SUS = regBlock("metalblock_sus", () -> new MetalBlockDC("metalblock_sus"), TagDC.ItemTag.METALBLOCK_SUS);
-	public static final RegistryObject<Block> METALBLOCK_TOOL_STEEL = regBlock("metalblock_tool_steel", () -> new MetalBlockDC("metalblock_tool_steel"), TagDC.ItemTag.METALBLOCK_TOOL_STEEL);
-	public static final RegistryObject<Block> METALBLOCK_TITANIUM = regBlock("metalblock_titanium", () -> new MetalBlockDC("metalblock_titanium"), TagDC.ItemTag.METALBLOCK_TINANIUM);
+	public static final RegistryObject<Block> METALBLOCK_TITANIUM = regBlock("metalblock_titanium", () -> new MetalBlockDC("metalblock_titanium"), TagDC.ItemTag.METALBLOCK_TITANIUM);
 	public static final RegistryObject<Block> METALBLOCK_MAGNET = regBlock("metalblock_magnet", () -> new MetalBlockDC("metalblock_magnet"), TagDC.ItemTag.METALBLOCK_MAGNET);
-	public static final RegistryObject<Block> METALBLOCK_MANGALLOY = regBlock("metalblock_mangalloy", () -> new MetalBlockDC("metalblock_mangalloy"), TagDC.ItemTag.METALBLOCK_MANGALLOY);
+	public static final RegistryObject<Block> METALBLOCK_COBALT = regBlock("metalblock_cobalt", () -> new MetalBlockDC("metalblock_cobalt"), TagDC.ItemTag.METALBLOCK_COBALT);
+	public static final RegistryObject<Block> METALBLOCK_HASTELLOY = regBlock("metalblock_hastelloy", () -> new MetalBlockDC("metalblock_hastelloy"), TagDC.ItemTag.METALBLOCK_HASTELLOY);
 	public static final RegistryObject<Block> METALBLOCK_BSCCO = regBlock("metalblock_bscco", () -> new MetalBlockDC("metalblock_bscco"), TagDC.ItemTag.METALBLOCK_BSCCO);
+
+	public static final RegistryObject<MobEffect> COLD_RESISTANCE = regPotion("effect_cold_resistance", () -> new MobEffectDC("effect_cold_resistance", MobEffectCategory.BENEFICIAL, 0xFF5000).setIconIndex(1, 1));
+	public static final RegistryObject<MobEffect> WET = regPotion("effect_wet", () -> new MobEffectDC("effect_wet", MobEffectCategory.NEUTRAL, 0x90E0FF).setIconIndex(1, 2));
 
 	public static RegistryObject<Block> regBlock(String name, Supplier<Block> block, TagKey<Item> tag) {
 		RegistryObject<Block> obj = BLOCKS.register("main/" + name, block);
@@ -240,6 +248,10 @@ public class CoreInit {
 
 	public static RegistryObject<Item> regItem(String name, Supplier<Item> item) {
 		return ITEMS.register("main/" + name, item);
+	}
+
+	public static RegistryObject<MobEffect> regPotion(String name, Supplier<MobEffect> effect) {
+		return POTIONS.register(name, effect);
 	}
 
 }

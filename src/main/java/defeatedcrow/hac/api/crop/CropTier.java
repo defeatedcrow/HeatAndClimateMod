@@ -3,19 +3,21 @@ package defeatedcrow.hac.api.crop;
 import net.minecraft.world.item.Rarity;
 
 public enum CropTier {
-	WILD(true, 100, Rarity.COMMON),
-	COMMON(false, 70, Rarity.COMMON),
-	RARE(false, 25, Rarity.UNCOMMON),
-	EPIC(false, 5, Rarity.RARE);
+	WILD(true, 100, Rarity.COMMON, 1),
+	COMMON(false, 70, Rarity.COMMON, 2),
+	RARE(false, 25, Rarity.UNCOMMON, 3),
+	EPIC(false, 5, Rarity.RARE, 4);
 
 	private final boolean isWild;
 	private final int mutationChance;
 	private final Rarity rarity;
+	private final int taste;
 
-	private CropTier(boolean a, int chance, Rarity r) {
+	private CropTier(boolean a, int chance, Rarity r, int i) {
 		isWild = a;
 		mutationChance = chance;
 		rarity = r;
+		taste = i;
 	}
 
 	public boolean canUseBonemeal() {
@@ -28,6 +30,10 @@ public enum CropTier {
 
 	public Rarity getRarity() {
 		return rarity;
+	}
+
+	public int getTaste() {
+		return taste;
 	}
 
 	@Override

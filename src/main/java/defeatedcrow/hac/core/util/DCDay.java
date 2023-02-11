@@ -1,13 +1,11 @@
 package defeatedcrow.hac.core.util;
 
-import defeatedcrow.hac.api.climate.EnumSeason;
-import defeatedcrow.hac.core.config.CoreConfigDC;
-import net.minecraft.util.Mth;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
 
 public class DCDay {
 	/* int上限でカンスト */
 	public static int getDay(long day) {
-		long d = day + CoreConfigDC.startDate + 1;
+		long d = day + ConfigCommonBuilder.INSTANCE.vStartDate.get() + 1;
 		if (d > Integer.MAX_VALUE) {
 			d %= Integer.MAX_VALUE;
 		}
@@ -28,46 +26,54 @@ public class DCDay {
 	}
 
 	public static int getYear(int day) {
-		int y = (day - 1) / CoreConfigDC.yearLength;
+		int year = ConfigCommonBuilder.INSTANCE.vYear.get();
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
+			year = 365;
+		}
+		int y = (day - 1) / year;
 		return y + 1;
 	}
 
 	public static int getSeason(int day, boolean r) {
+		int spr = ConfigCommonBuilder.INSTANCE.vStartSpr.get();
+		int smr = ConfigCommonBuilder.INSTANCE.vStartSmr.get();
+		int aut = ConfigCommonBuilder.INSTANCE.vStartAut.get();
+		int wtr = ConfigCommonBuilder.INSTANCE.vStartWtr.get();
+		int y = ConfigCommonBuilder.INSTANCE.vYear.get();
+		int oy = ConfigCommonBuilder.INSTANCE.overYear.id;
 		int season = 0;
-		int d = day;
-		if (!r) {
-			double d1 = day * (365D / CoreConfigDC.yearLength);
-			d = Mth.floor(d1);
-			d = d % 365;
-		}
-		for (EnumSeason s : EnumSeason.values()) {
-			if (s == CoreConfigDC.overYear && seasonPeriod(s)[0] > seasonPeriod(s)[1]) {
-				if (d <= seasonPeriod(s)[0] || d >= seasonPeriod(s)[1]) {
-					season = s.id;
-					break;
-				}
-			} else {
-				if (d >= seasonPeriod(s)[0] && d <= seasonPeriod(s)[1]) {
-					season = s.id;
-					break;
-				}
+		if (day >= spr) {
+			int i1 = Math.abs(day - spr);
+			int i2 = Math.abs(day - smr);
+			if (oy == 0) {
+				i2 = Math.abs(y - day + smr);
 			}
+			season = i1 < i2 ? 0 : 1;
+		}
+		if (day >= smr) {
+			int i1 = Math.abs(day - smr);
+			int i2 = Math.abs(day - aut);
+			if (oy == 1) {
+				i2 = Math.abs(y - day + aut);
+			}
+			season = i1 < i2 ? 2 : 3;
+		}
+		if (day >= aut) {
+			int i1 = Math.abs(day - aut);
+			int i2 = Math.abs(day - wtr);
+			if (oy == 2) {
+				i2 = Math.abs(y - day + wtr);
+			}
+			season = i1 < i2 ? 4 : 5;
+		}
+		if (day >= wtr) {
+			int i1 = Math.abs(day - wtr);
+			int i2 = Math.abs(day - spr);
+			if (oy == 3) {
+				i2 = Math.abs(y - day + spr);
+			}
+			season = i1 < i2 ? 6 : 7;
 		}
 		return season;
-	}
-
-	public static int[] seasonPeriod(EnumSeason season) {
-		switch (season) {
-		case AUTUMN:
-			return CoreConfigDC.autumnDate;
-		case SPRING:
-			return CoreConfigDC.springDate;
-		case SUMMER:
-			return CoreConfigDC.summerDate;
-		case WINTER:
-			return CoreConfigDC.winterDate;
-		default:
-			return CoreConfigDC.springDate;
-		}
 	}
 }

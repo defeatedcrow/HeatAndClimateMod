@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import defeatedcrow.hac.api.util.DCState;
-import defeatedcrow.hac.core.material.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;

@@ -4,8 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.annotation.Nullable;
+
 import defeatedcrow.hac.api.climate.EnumSeason;
-import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.api.event.GetSeasonEvent;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
@@ -25,11 +29,11 @@ public class DCTimeHelper {
 
 	public static boolean isDayTime(Level world) {
 		int t = currentTime(world);
-		return t >= CoreConfigDC.dayTime[0] && t <= CoreConfigDC.dayTime[1];
+		return t >= 6 && t <= 17;
 	}
 
 	public static int currentTime(Level world) {
-		if (CoreConfigDC.enableRealTime) {
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
 			int hour = cal.get(cal.HOUR_OF_DAY);
 			return hour;
@@ -54,7 +58,7 @@ public class DCTimeHelper {
 	}
 
 	public static int currentMinute(Level world) {
-		if (CoreConfigDC.enableRealTime) {
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
 			int min = cal.get(cal.MINUTE);
 			return min;
@@ -64,29 +68,29 @@ public class DCTimeHelper {
 	}
 
 	public static int getCount(Level world) {
-		long i = (totalTime(world) % CoreConfigDC.entityInterval);
+		long i = (totalTime(world) % ConfigCommonBuilder.INSTANCE.vUpdateInterval.get());
 		return (int) i;
 	}
 
 	public static int getCount2(Level world) {
-		long f = 1200L / CoreConfigDC.updateFrequency;
+		long f = 1200L / 5;
 		long i = (totalTime(world) % f);
 		return (int) i;
 	}
 
 	// 表示用
 	public static String getDate(Level world) {
-		if (CoreConfigDC.enableRealTime) {
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
 			Date date = cal.getTime();
-			SimpleDateFormat format = new SimpleDateFormat(CoreConfigDC.dateFormat);
+			SimpleDateFormat format = new SimpleDateFormat(ConfigCommonBuilder.INSTANCE.dateFormat);
 			String s = format.format(date);
 			return s;
 		} else {
 			int displayDay = getDisplayDay(world);
 			int day = getDay(world);
-			if (day > CoreConfigDC.yearLength) {
-				day %= CoreConfigDC.yearLength;
+			if (day > ConfigCommonBuilder.INSTANCE.vYear.get()) {
+				day %= ConfigCommonBuilder.INSTANCE.vYear.get();
 			}
 			int year = getYear(world);
 			return "Year" + year + " / Day" + day;
@@ -94,7 +98,7 @@ public class DCTimeHelper {
 	}
 
 	public static int getDay(Level world) {
-		if (CoreConfigDC.enableRealTime) {
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
 			return cal.get(cal.DAY_OF_YEAR);
 		}
@@ -103,7 +107,7 @@ public class DCTimeHelper {
 	}
 
 	public static int getDisplayDay(Level world) {
-		if (CoreConfigDC.enableRealTime) {
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
 			return cal.get(cal.DAY_OF_YEAR);
 		}
@@ -112,7 +116,7 @@ public class DCTimeHelper {
 	}
 
 	public static int getWeek(Level world) {
-		if (CoreConfigDC.enableRealTime) {
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
 			return cal.get(cal.DAY_OF_WEEK);
 		}
@@ -121,7 +125,7 @@ public class DCTimeHelper {
 	}
 
 	public static int getYear(Level world) {
-		if (CoreConfigDC.enableRealTime) {
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
 			return cal.get(cal.YEAR);
 		}
@@ -129,13 +133,15 @@ public class DCTimeHelper {
 		return DCDay.getYear(day);
 	}
 
-	public static int getSeason(Level world) {
-		if (CoreConfigDC.debugForceSeason != null) {
-			return CoreConfigDC.debugForceSeason.id;
+	private static int getSeason(Level world, @Nullable BlockPos pos) {
+		// debug
+		if (currentSeason != null) {
+			return currentSeason.id;
 		}
+
 		int season = 0;
 		int d = 0;
-		if (CoreConfigDC.enableRealTime) {
+		if (ConfigCommonBuilder.INSTANCE.enRealTime.get()) {
 			Calendar cal = Calendar.getInstance();
 			d = cal.get(cal.DAY_OF_YEAR);
 			return DCDay.getSeason(d, true);
@@ -145,20 +151,13 @@ public class DCTimeHelper {
 		}
 	}
 
-	public static EnumSeason getSeasonEnum(Level world) {
-		if (currentSeason != null) {
-			return currentSeason;
-		}
-		int s = getSeason(world);
-		if (s == 1) {
-			return EnumSeason.SUMMER;
-		} else if (s == 2) {
-			return EnumSeason.AUTUMN;
-		} else if (s == 3) {
-			return EnumSeason.WINTER;
-		} else {
-			return EnumSeason.SPRING;
-		}
+	public static EnumSeason getSeasonEnum(Level world, @Nullable BlockPos pos) {
+
+		int s = getSeason(world, pos);
+		EnumSeason current = EnumSeason.getSeasonFromID(s);
+
+		GetSeasonEvent event = new GetSeasonEvent(world, pos, current);
+		return event.result();
 	}
 
 	public static float getTimeOffset(Level world, Holder<Biome> b) {
@@ -167,12 +166,12 @@ public class DCTimeHelper {
 		}
 		float offset = 0F;
 		int t = DCTimeHelper.currentTime(world);
-		int sD = CoreConfigDC.dayTime[0];
-		int eD = CoreConfigDC.dayTime[1];
+		int sD = 6;
+		int eD = 17;
 		if (t < sD - 2 || t > eD + 2) {
-			offset = (float) CoreConfigDC.nightEffect;
+			offset = ConfigCommonBuilder.INSTANCE.vNight.get().floatValue();
 		} else if (t < sD || t > eD) {
-			offset = (float) CoreConfigDC.nightEffect * 0.5F;
+			offset = ConfigCommonBuilder.INSTANCE.vNight.get().floatValue() * 0.5F;
 		}
 		if (b.is(Biomes.IS_WATER) || b.is(Biomes.IS_WET)) {
 			offset *= 0.5F;
@@ -185,6 +184,6 @@ public class DCTimeHelper {
 		return offset;
 	}
 
-	public static EnumSeason currentSeason = CoreConfigDC.debugForceSeason;
+	public static EnumSeason currentSeason = EnumSeason.SPRING_LATE;
 
 }

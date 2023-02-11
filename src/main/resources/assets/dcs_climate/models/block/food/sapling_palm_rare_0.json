@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "cross": "dcs_climate:block/tree/sapling_palm_oil"
+  },
+  "parent": "dcs_climate:block/dcs_cross"
+}

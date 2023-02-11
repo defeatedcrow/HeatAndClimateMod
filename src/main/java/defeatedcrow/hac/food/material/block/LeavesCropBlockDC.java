@@ -53,8 +53,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	final CropType cropType;
 	final CropTier cropTier;
 
-	private EnumSeason flowerSeason = EnumSeason.SUMMER;
-	private EnumSeason cropSeason = EnumSeason.AUTUMN;
+	public final List<EnumSeason> flowerSeasons = Lists.newArrayList();
+	public final List<EnumSeason> cropSeasons = Lists.newArrayList();
 
 	public LeavesCropBlockDC(CropType f, CropTier t) {
 		super(getProp());
@@ -64,8 +64,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	}
 
 	public LeavesCropBlockDC setSeason(EnumSeason flower, EnumSeason crop) {
-		flowerSeason = flower;
-		cropSeason = crop;
+		flowerSeasons.add(flower);
+		cropSeasons.add(crop);
 		return this;
 	}
 
@@ -86,10 +86,10 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		if (!level.isAreaLoaded(pos, 2))
+		if (!level.isAreaLoaded(pos, 2) || random.nextInt(5) > 0)
 			return;
 		int stage = state.getValue(DCState.STAGE6);
-		int next = this.getSeasonLeafStage(level);
+		int next = this.getSeasonLeafStage(level, pos);
 
 		if (stage != next) {
 			onGrow(level, pos, level.getBlockState(pos));
@@ -151,7 +151,7 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 			CropStage stage = crop.getCurrentStage(state);
 			CropTier tier = crop.getTier();
 
-			float seedChance = 0.1F;
+			float seedChance = 0.05F;
 			if (level.random.nextFloat() <= seedChance) {
 				ret.add(crop.getSeedItem(state));
 			}
@@ -266,13 +266,18 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 	public abstract CropGrowType getGrowType(CropTier tier);
 
 	@Override
+	public BlockState getFeatureState() {
+		return this.defaultBlockState();
+	}
+
+	@Override
 	public BlockState getGrownState() {
 		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(5));
 	}
 
 	@Override
 	public BlockState getHarvestedState(BlockState state) {
-		return this.defaultBlockState().setValue(DCState.STAGE6, Integer.valueOf(cropSeason.id));
+		return this.defaultBlockState();
 	}
 
 	@Override
@@ -287,21 +292,21 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 
 	@Override
 	public boolean onGrow(Level level, BlockPos pos, BlockState state) {
-		int next = this.getSeasonLeafStage(level);
+		int next = this.getSeasonLeafStage(level, pos);
 		BlockState nextState = state.setValue(DCState.STAGE6, next);
 		level.setBlock(pos, nextState, 2);
 		return true;
 	}
 
-	public int getSeasonLeafStage(Level world) {
+	public int getSeasonLeafStage(Level world, BlockPos pos) {
 		int day = DCTimeHelper.getDay(world);
-		EnumSeason season = DCTimeHelper.getSeasonEnum(world);
-		if (season == cropSeason)
+		EnumSeason season = DCTimeHelper.getSeasonEnum(world, pos);
+		if (cropSeasons.contains(season))
 			return 5;
-		else if (season == flowerSeason)
+		else if (flowerSeasons.contains(season))
 			return 4;
 		else
-			return season.id;
+			return season.getSeasonLimitedID();
 	}
 
 	@Override
@@ -333,6 +338,8 @@ public abstract class LeavesCropBlockDC extends BlockDC implements IClimateCrop,
 				}
 				if (ret) {
 					BlockState next = this.getHarvestedState(thisState);
+					EnumSeason current = DCTimeHelper.getSeasonEnum(world, pos);
+					next = next.setValue(DCState.STAGE6, current.season);
 					world.setBlock(pos, next, 2);
 				}
 				return ret;

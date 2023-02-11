@@ -123,10 +123,42 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		List<Component> list = Lists.newArrayList();
 		// list.add(Component.translatable("X :" + mouseX + ", Y: " + mouseY));
 
+		List<SoilType> soils = recipe.getSoilTypes(tier);
+
 		if (mouseX > 16 && mouseX < 25 && mouseY > 105 && mouseY < 114) {
-			list.add(Component.translatable("dcs.gui.jei.crop_tip1"));
+			list.add(Component.translatable("dcs.gui.jei.crop_soil"));
 			list.add(Component.translatable("dcs.gui.jei.crop_tip2"));
 		}
+
+		if (soils.contains(SoilType.FARMLAND))
+			if (mouseX > 35 && mouseX < 51 && mouseY > 53 && mouseY < 69) {
+				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
+				list.add(Component.translatable("dcs.gui.jei.crop_farm"));
+			}
+
+		if (soils.contains(SoilType.DIRT))
+			if (mouseX > 52 && mouseX < 68 && mouseY > 53 && mouseY < 69) {
+				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
+				list.add(Component.translatable("dcs.gui.jei.crop_dirt"));
+			}
+
+		if (soils.contains(SoilType.SAND))
+			if (mouseX > 69 && mouseX < 85 && mouseY > 53 && mouseY < 69) {
+				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
+				list.add(Component.translatable("dcs.gui.jei.crop_sand"));
+			}
+
+		if (soils.contains(SoilType.MUD))
+			if (mouseX > 86 && mouseX < 102 && mouseY > 53 && mouseY < 69) {
+				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
+				list.add(Component.translatable("dcs.gui.jei.crop_mud"));
+			}
+
+		if (soils.contains(SoilType.WATER))
+			if (mouseX > 103 && mouseX < 119 && mouseY > 53 && mouseY < 69) {
+				list.add(Component.translatable("dcs.gui.jei.crop_soil"));
+				list.add(Component.translatable("dcs.gui.jei.crop_water"));
+			}
 
 		return list;
 	}
@@ -139,7 +171,7 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 		Font font = minecraft.font;
 
 		MutableComponent name = recipe.getName();
-		font.draw(stack, name, 70, 9, 0xFF000000);
+		font.draw(stack, name, 65, 9, 0xFF000000);
 
 		MutableComponent com = type.localize();
 		int c = 0xFF808080;
@@ -156,7 +188,7 @@ public class CropDataCategory implements IRecipeCategory<ClimateCropBaseBlock> {
 			c = ChatFormatting.DARK_AQUA.getColor();
 			com.append(" EPIC");
 		}
-		font.draw(stack, com, 65, 22, c);
+		font.draw(stack, com, 65, 21, c);
 
 		MutableComponent text4 = Component.translatable("dcs.gui.jei.habitat");
 		text4.append(":");

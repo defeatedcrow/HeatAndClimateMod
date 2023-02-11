@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:paper"
+    },
+    "Y": {
+      "tag": "minecraft:dirt"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dcs_climate:main/seeding_pot"
+  }
+}

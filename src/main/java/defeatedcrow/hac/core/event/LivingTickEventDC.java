@@ -7,26 +7,30 @@ import com.google.common.collect.Lists;
 import defeatedcrow.hac.api.ClimateAPI;
 import defeatedcrow.hac.api.climate.ClimateSupplier;
 import defeatedcrow.hac.api.climate.DCHeatTier;
+import defeatedcrow.hac.api.climate.DCHumidity;
 import defeatedcrow.hac.api.climate.IClimate;
 import defeatedcrow.hac.api.damage.ClimateDamageEvent;
 import defeatedcrow.hac.api.damage.ClimateDamageEvent.DamageSet;
 import defeatedcrow.hac.api.damage.DamageSourceClimate;
 import defeatedcrow.hac.api.magic.CharmType;
 import defeatedcrow.hac.api.magic.IJewelCharm;
-import defeatedcrow.hac.core.config.CoreConfigDC;
+import defeatedcrow.hac.core.config.ConfigCommonBuilder;
+import defeatedcrow.hac.core.material.CoreInit;
 import defeatedcrow.hac.core.util.DCItemUtil;
+import defeatedcrow.hac.core.util.DCUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -42,9 +46,9 @@ public class LivingTickEventDC {
 	public static void onLivingTick(LivingEvent.LivingTickEvent event) {
 		LivingEntity living = event.getEntity();
 		if (living != null && living.level != null) {
-			if (living.level.getGameTime() % CoreConfigDC.entityInterval == 0) {
+			if (living.level.getGameTime() % ConfigCommonBuilder.INSTANCE.vUpdateInterval.get() == 0) {
 				if (!living.level.isClientSide) {
-					if (living instanceof Player && CoreConfigDC.sharePotionWithRidingMob) {
+					if (living instanceof Player && ConfigCommonBuilder.INSTANCE.enPotionSharing.get()) {
 						onLivingPotionUpdate(living);
 					}
 
@@ -60,7 +64,7 @@ public class LivingTickEventDC {
 		}
 		onLivingCharmUpdate(living);
 
-		if (living instanceof Player || CoreConfigDC.mobClimateDamage) {
+		if (living instanceof Player || ConfigCommonBuilder.INSTANCE.enMobDamage.get()) {
 			onLivingClimateUpdate(living);
 		}
 	}
@@ -68,6 +72,9 @@ public class LivingTickEventDC {
 	public static void onLivingPotionUpdate(LivingEntity living) {
 		/* Potion */
 		ArrayList<MobEffect> potions = Lists.newArrayList();
+
+		if (living == null || living.isDeadOrDying())
+			return;
 
 		boolean f = false;
 		if (living.getVehicle() != null && !living.getActiveEffects().isEmpty()) {
@@ -95,19 +102,22 @@ public class LivingTickEventDC {
 	}
 
 	public static void onLivingClimateUpdate(LivingEntity living) {
+		if (living == null || living.isDeadOrDying())
+			return;
+
 		/* climate damage */
 
-		if (CoreConfigDC.climateDam) {
+		if (ConfigCommonBuilder.INSTANCE.enTempDamage.get()) {
 
 			// ピースフルではダメージがない
-			if (living.level.getDifficulty() == Difficulty.PEACEFUL && !CoreConfigDC.peacefulDam) {
+			if (living.level.getDifficulty() == Difficulty.PEACEFUL && !ConfigCommonBuilder.INSTANCE.enPeacefulDamage.get()) {
 				return;
 			}
 
-			for (EntityType<?> c : CoreConfigDC.blackListEntity) {
-				if (c.tryCast(living) != null)
-					return;
-			}
+			// for (EntityType<?> c : CoreConfigDC.blackListEntity) {
+			// if (c.tryCast(living) != null)
+			// return;
+			// }
 
 			IClimate clm = new ClimateSupplier(living.level, living.blockPosition()).get();
 
@@ -115,10 +125,11 @@ public class LivingTickEventDC {
 
 			float prevTemp = 2.0F; // normal
 			if (living instanceof Player) {
-				prevTemp = 1.0F * (3 - CoreConfigDC.damageDifficulty); // 1.0F ~ 3.0F
+				prevTemp = 1.0F * (3 - ConfigCommonBuilder.INSTANCE.vDifficulty.get()); // 1.0F ~ 3.0F
 			} else {
 				// mobごとの特性
-				prevTemp = ClimateAPI.registerMob.getHeatResistance(living, heat);
+				// COOL ~ WARM まではダメージがない
+				prevTemp = 1.0F + ClimateAPI.registerMob.getHeatResistance(living, heat);
 			}
 			float damTemp = Math.abs(heat.getTier()) * 1.0F; // hot 0F ~ 8.0F / cold 0F ~ 10.0F
 			boolean isCold = heat.getTier() < 0;
@@ -139,6 +150,10 @@ public class LivingTickEventDC {
 
 				/* damage判定 */
 				prevTemp = 0F;
+
+				// potion
+				prevTemp += DCUtil.getPotionResistantData(living, isCold);
+
 				// 防具の計算
 				IItemHandler handler = living.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.NORTH).orElse(null);
 				if (handler != null) {
@@ -197,13 +212,22 @@ public class LivingTickEventDC {
 							animal.goalSelector.addGoal(3, new AvoidHeatDamageGoal(animal, 1.0F, vec));
 						}
 					}
+				} else {
+					if (living instanceof PathfinderMob && living.getPersistentData().contains("dcs_lastDamage")) {
+						living.getPersistentData().remove("dcs_lastDamage");
+					}
 				}
 
-			} else {
-				if (living instanceof PathfinderMob && living.getPersistentData().contains("dcs_lastDamage")) {
-					living.getPersistentData().remove("dcs_lastDamage");
-				}
 			}
+
+			/* wet effect */
+
+			if (!(living instanceof WaterAnimal))
+				if (clm.getHumidity() == DCHumidity.UNDERWATER || living.isInWaterRainOrBubble()) {
+					if (!living.hasEffect(CoreInit.WET.get()) || living.getEffect(CoreInit.WET.get()).getDuration() < 20) {
+						living.addEffect(new MobEffectInstance(CoreInit.WET.get(), 600, 0));
+					}
+				}
 		}
 	}
 

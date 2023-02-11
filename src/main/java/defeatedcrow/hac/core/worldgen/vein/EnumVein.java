@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.commons.compress.utils.Lists;
 
 import defeatedcrow.hac.api.magic.MagicColor;
-import defeatedcrow.hac.core.material.tag.TagDC;
+import defeatedcrow.hac.core.tag.TagDC;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
